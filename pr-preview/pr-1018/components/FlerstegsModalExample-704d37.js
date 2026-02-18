@@ -120,27 +120,41 @@ var FlerstegsModal_default = defineComponent({
       treeData: DIALOGUE_TREE_DATA,
       value: {
         organisationNumber: ""
-      },
-      buttons: [
-        {
-          label: "Avbryt",
-          type: "secondary",
-          screenreader: "formul\xE4ret",
-          event: "dismiss"
-        }
-      ]
+      }
     };
+  },
+  computed: {
+    buttons() {
+      if (this.current.lastStep) {
+        return [
+          {
+            label: "Avbryt",
+            type: "secondary",
+            screenreader: "formul\xE4ret",
+            event: "dismiss"
+          },
+          {
+            label: "L\xE4gg till",
+            type: "primary",
+            screenreader: "l\xE4gg till knapp",
+            event: "submit",
+            submitButton: true
+          }
+        ];
+      } else {
+        return [
+          {
+            label: "Avbryt",
+            type: "secondary",
+            screenreader: "formul\xE4ret",
+            event: "dismiss"
+          }
+        ];
+      }
+    }
   },
   methods: {
     onClose(event) {
-      this.buttons = [
-        {
-          label: "Avbryt",
-          type: "secondary",
-          screenreader: "formul\xE4ret",
-          event: "dismiss"
-        }
-      ];
       this.$emit("close", event);
     },
     onCancel(event) {
@@ -150,22 +164,12 @@ var FlerstegsModal_default = defineComponent({
       this.$emit("submit", event);
     },
     onChange(event) {
-      if (event.lastStep) {
-        this.buttons.push({
-          label: "L\xE4gg till",
-          type: "primary",
-          screenreader: "l\xE4gg till knapp",
-          event: "submit",
-          submitButton: true
-        });
-      }
     }
   }
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FDialogueTree/examples/FlerstegsModal.vue?type=template
-import { toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode } from "vue";
-var _hoisted_1 = ["onClick"];
+import { toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, withCtx as _withCtx, createVNode as _createVNode } from "vue";
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_organisationsnummer_text_field = _resolveComponent("f-organisationsnummer-text-field");
   const _component_f_dialogue_tree = _resolveComponent("f-dialogue-tree");
@@ -197,9 +201,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "input-text-fields": _withCtx(() => [
       _createVNode(_component_f_dialogue_tree, {
         modelValue: _ctx.current,
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.current = $event),
-        "dialogue-tree": _ctx.treeData,
-        onChange: _ctx.onChange
+        "onUpdate:modelValue": [
+          _cache[1] || (_cache[1] = ($event) => _ctx.current = $event),
+          _ctx.onChange
+        ],
+        "dialogue-tree": _ctx.treeData
       }, {
         default: _withCtx(({ userData }) => [
           userData.label ? _withDirectives((_openBlock(), _createBlock(_component_f_organisationsnummer_text_field, {
@@ -218,13 +224,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ]),
         _: 1
         /* STABLE */
-      }, 8, ["modelValue", "dialogue-tree", "onChange"])
-    ]),
-    footer: _withCtx(({ onCancel }) => [
-      _createElementVNode("button", {
-        type: "button",
-        onClick: onCancel
-      }, "...", 8, _hoisted_1)
+      }, 8, ["modelValue", "dialogue-tree", "onUpdate:modelValue"])
     ]),
     _: 1
     /* STABLE */
@@ -237,7 +237,7 @@ FlerstegsModal_default.__file = "packages/vue/src/components/FDialogueTree/examp
 var FlerstegsModal_default2 = FlerstegsModal_default;
 
 // virtual-entry:virtual:packages/vue/src/components/FDialogueTree/examples/FlerstegsModalExample.vue:FlerstegsModalExample-704d37.js
-import { createElementVNode as _createElementVNode2, toDisplayString as _toDisplayString2, openBlock as _openBlock2, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode2 } from "vue";
+import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString2, openBlock as _openBlock2, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode2 } from "vue";
 var exampleComponent = defineComponent2({
   name: "FlerstegsModalApiExample",
   data() {
@@ -256,23 +256,23 @@ var exampleComponent = defineComponent2({
     }
   }
 });
-var _hoisted_12 = { key: 0 };
+var _hoisted_1 = { key: 0 };
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock2(), _createElementBlock("div", null, [
-    _createElementVNode2("button", {
+    _createElementVNode("button", {
       type: "button",
       class: "button button--secondary",
       onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
     }, "\xD6ppna Modal"),
-    _ctx.result ? (_openBlock2(), _createElementBlock("div", _hoisted_12, [
-      _cache[1] || (_cache[1] = _createElementVNode2(
+    _ctx.result ? (_openBlock2(), _createElementBlock("div", _hoisted_1, [
+      _cache[1] || (_cache[1] = _createElementVNode(
         "pre",
         null,
         "Modalen st\xE4ngdes med resultatet:",
         -1
         /* CACHED */
       )),
-      _createElementVNode2(
+      _createElementVNode(
         "pre",
         null,
         _toDisplayString2(_ctx.result),
