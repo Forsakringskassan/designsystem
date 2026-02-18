@@ -3532,7 +3532,7 @@ var FFormModal_default = defineComponent11({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=template
-import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, renderList as _renderList3, Fragment as _Fragment4, openBlock as _openBlock11, createElementBlock as _createElementBlock11, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass6, createBlock as _createBlock5 } from "vue";
+import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, normalizeProps as _normalizeProps, guardReactiveProps as _guardReactiveProps, renderList as _renderList3, Fragment as _Fragment4, openBlock as _openBlock11, createElementBlock as _createElementBlock11, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass6, createBlock as _createBlock5 } from "vue";
 var _hoisted_17 = { class: "button-group" };
 var _hoisted_26 = ["type", "form", "onClick"];
 var _hoisted_34 = {
@@ -3580,7 +3580,7 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     footer: _withCtx4(() => [
       _createCommentVNode9(" @slot Slot for the footer. "),
-      _renderSlot10(_ctx.$slots, "footer", {}, () => [
+      _renderSlot10(_ctx.$slots, "footer", _normalizeProps(_guardReactiveProps({ onCancel: _ctx.onCancel })), () => [
         _createElementVNode7("div", _hoisted_17, [
           (_openBlock11(true), _createElementBlock11(
             _Fragment4,
@@ -4293,7 +4293,7 @@ var IPopup_default = defineComponent12({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=template
-import { normalizeProps as _normalizeProps, guardReactiveProps as _guardReactiveProps, renderSlot as _renderSlot11, withModifiers as _withModifiers3, withKeys as _withKeys2, createElementVNode as _createElementVNode8, mergeProps as _mergeProps3, Teleport as _Teleport, openBlock as _openBlock12, createBlock as _createBlock6, createCommentVNode as _createCommentVNode10 } from "vue";
+import { normalizeProps as _normalizeProps2, guardReactiveProps as _guardReactiveProps2, renderSlot as _renderSlot11, withModifiers as _withModifiers3, withKeys as _withKeys2, createElementVNode as _createElementVNode8, mergeProps as _mergeProps3, Teleport as _Teleport, openBlock as _openBlock12, createBlock as _createBlock6, createCommentVNode as _createCommentVNode10 } from "vue";
 function render12(_ctx, _cache, $props, $setup, $data, $options) {
   return _ctx.isOpen ? (_openBlock12(), _createBlock6(_Teleport, {
     key: 0,
@@ -4315,7 +4315,7 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
             onKeydown: _cache[2] || (_cache[2] = _withKeys2((...args) => _ctx.onKeyTab && _ctx.onKeyTab(...args), ["tab"]))
           },
           [
-            _renderSlot11(_ctx.$slots, "default", _normalizeProps(_guardReactiveProps({ toggleIsOpen: _ctx.toggleIsOpen, placement: _ctx.placement })))
+            _renderSlot11(_ctx.$slots, "default", _normalizeProps2(_guardReactiveProps2({ toggleIsOpen: _ctx.toggleIsOpen, placement: _ctx.placement })))
           ],
           544
           /* NEED_HYDRATION, NEED_PATCH */

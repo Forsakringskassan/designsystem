@@ -3498,7 +3498,7 @@ var FFormModal_default = defineComponent11({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=template
-import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, renderList as _renderList3, Fragment as _Fragment4, openBlock as _openBlock11, createElementBlock as _createElementBlock11, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass6, createBlock as _createBlock5 } from "vue";
+import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, normalizeProps as _normalizeProps, guardReactiveProps as _guardReactiveProps, renderList as _renderList3, Fragment as _Fragment4, openBlock as _openBlock11, createElementBlock as _createElementBlock11, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass6, createBlock as _createBlock5 } from "vue";
 var _hoisted_17 = { class: "button-group" };
 var _hoisted_26 = ["type", "form", "onClick"];
 var _hoisted_34 = {
@@ -3546,7 +3546,7 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     footer: _withCtx4(() => [
       _createCommentVNode9(" @slot Slot for the footer. "),
-      _renderSlot10(_ctx.$slots, "footer", {}, () => [
+      _renderSlot10(_ctx.$slots, "footer", _normalizeProps(_guardReactiveProps({ onCancel: _ctx.onCancel })), () => [
         _createElementVNode7("div", _hoisted_17, [
           (_openBlock11(true), _createElementBlock11(
             _Fragment4,
