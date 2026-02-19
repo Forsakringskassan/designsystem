@@ -146,7 +146,6 @@ var FlerstegsModal_default = /* @__PURE__ */ _defineComponent({
             type: "primary",
             screenreader: "l\xE4gg till knapp",
             event: "submit",
-            // `submitButton` is an internal marker to avoid duplicates
             submitButton: true
           });
         }
