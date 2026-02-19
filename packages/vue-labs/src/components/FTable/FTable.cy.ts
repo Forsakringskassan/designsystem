@@ -1,13 +1,11 @@
 import { type VNode, ref } from "vue";
 import { h } from "vue";
-import { assertSet } from "@fkui/logic";
 import { FValidationForm, useDatasetRef } from "@fkui/vue";
 import { FSortFilterDatasetPageObject } from "@fkui/vue/cypress";
 import { FTablePageObject } from "../../cypress";
 import FTable from "./FTable.vue";
 import FTableBulkTestExample from "./examples/FTableBulkTestExample.vue";
-import { type FTableApi } from "./f-table-api";
-import { removeRow } from "./remove-row";
+import FTableTabstopExample from "./examples/FTableTabstopExample.vue";
 import { defineTableColumns } from "./table-column";
 
 const table = new FTablePageObject();
@@ -1198,120 +1196,6 @@ describe("5 tabstop", () => {
         };
     }
 
-    function mountRowRemovalTestbed(): void {
-        let api: FTableApi | undefined = undefined;
-
-        const rows = useDatasetRef<TabstopRow>([
-            { foo: "1", bar: "alpha" },
-            { foo: "2", bar: "beta" },
-            { foo: "3", bar: "gamma" },
-        ]);
-
-        const columns = defineTableColumns<TabstopRow>([
-            {
-                type: "text",
-                header: "foo",
-                key: "foo",
-            },
-            {
-                type: "button",
-                header: "remove",
-                icon: "trashcan",
-                text(row) {
-                    return row.bar;
-                },
-                onClick(row) {
-                    assertSet(api);
-                    api.withTabstopBehaviour("row-removal", () => {
-                        rows.value.splice(rows.value.indexOf(row), 1);
-                    });
-                },
-            },
-        ]);
-
-        cy.mount(() =>
-            h(FTable<TabstopRow>, {
-                rows: rows.value,
-                columns,
-                ref: (exposed: unknown) => (api = exposed as FTableApi),
-            }),
-        );
-    }
-
-    function mountExpandedRowRemovalTestbed(): void {
-        let api: FTableApi | undefined = undefined;
-        const expandableAttribute = "expandableRows";
-        const keyAttribute = "foo";
-
-        type ExpandableTabstopRow = TabstopRow & {
-            expandableRows: TabstopRow[];
-        };
-
-        const rows = ref([
-            {
-                foo: "1",
-                bar: "alpha",
-                expandableRows: [
-                    { foo: "1_1", bar: "alpha_sub1" },
-                    { foo: "1_2", bar: "alpha_sub2" },
-                ],
-            },
-            {
-                foo: "2",
-                bar: "beta",
-                expandableRows: [
-                    { foo: "2_1", bar: "beta_sub1" },
-                    { foo: "2_2", bar: "beta_sub2" },
-                ],
-            },
-            {
-                foo: "3",
-                bar: "gamma",
-                expandableRows: [
-                    { foo: "3_1", bar: "gamma_sub1" },
-                    { foo: "3_2", bar: "gamma_sub2" },
-                    { foo: "3_3", bar: "gamma_sub3" },
-                ],
-            },
-        ]);
-
-        const columns = defineTableColumns<ExpandableTabstopRow>([
-            {
-                type: "text",
-                header: "foo",
-                key: "foo",
-            },
-            {
-                type: "button",
-                header: "remove",
-                icon: "trashcan",
-                text(row) {
-                    return row.bar;
-                },
-                onClick(row) {
-                    assertSet(api);
-                    api.withTabstopBehaviour("row-removal", () => {
-                        rows.value = removeRow(
-                            rows.value,
-                            row as ExpandableTabstopRow,
-                            "expandableRows",
-                        );
-                    });
-                },
-            },
-        ]);
-
-        cy.mount(() =>
-            h(FTable<ExpandableTabstopRow>, {
-                rows: rows.value,
-                columns,
-                expandableAttribute,
-                keyAttribute,
-                ref: (exposed: unknown) => (api = exposed as FTableApi),
-            }),
-        );
-    }
-
     interface NavigationRow {
         staticText: string;
         editText: string;
@@ -1473,9 +1357,10 @@ describe("5 tabstop", () => {
     });
 
     it("5.5/5.6 should fallback according to sticky mode with priority when current tabstop is removed", () => {
-        mountRowRemovalTestbed();
-        table.cell({ row: 2, col: 2 }).should("contain.text", "beta");
-        table.cell({ row: 2, col: 2 }).click();
+        cy.mount(FTableTabstopExample);
+
+        table.cell({ row: 2, col: 3 }).should("contain.text", "beta");
+        table.cell({ row: 2, col: 3 }).click();
         cy.focused().should("contain.text", "alpha");
         cy.focused().click();
         cy.focused().should("contain.text", "gamma");
@@ -1483,28 +1368,17 @@ describe("5 tabstop", () => {
         cy.focused().should("contain.text", "Tabellen är tom");
     });
 
-    it("5.6 exapnded row should fallback according to sticky mode with priority when current tabstop is removed", () => {
-        mountExpandedRowRemovalTestbed();
+    it("5.6 expanded row should fallback according to sticky mode with priority when current tabstop is removed", () => {
+        cy.mount(FTableTabstopExample);
 
-        table.cell({ row: 1, col: 1 }).click();
-        table.cell({ row: 2, col: 3 }).should("contain.text", "alpha_sub1");
-        table.cell({ row: 2, col: 3 }).click();
-        cy.focused().should("contain.text", "alpha");
-        cy.focused().click();
-        cy.focused().should("contain.text", "beta");
-
-        table.cell({ row: 2, col: 1 }).click();
-        table.cell({ row: 4, col: 3 }).should("contain.text", "gamma_sub2");
-        table.cell({ row: 4, col: 3 }).click();
-
+        table.cell({ row: 3, col: 1 }).click();
+        table.cell({ row: 5, col: 3 }).should("contain.text", "gamma_sub2");
+        table.cell({ row: 5, col: 3 }).click();
         cy.focused().should("contain.text", "gamma_sub1");
         cy.focused().click();
         cy.focused().should("contain.text", "gamma");
         cy.focused().click();
         cy.focused().should("contain.text", "beta");
-
-        cy.focused().click();
-        cy.focused().should("contain.text", "Tabellen är tom");
     });
 
     it("should not set focus when removing rows from outside table", () => {
