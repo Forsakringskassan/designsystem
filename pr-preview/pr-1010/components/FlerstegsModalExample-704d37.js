@@ -29,11 +29,12 @@ function setup(options) {
 }
 
 // virtual-entry:virtual:packages/vue/src/components/FDialogueTree/examples/FlerstegsModalExample.vue:FlerstegsModalExample-704d37.js
-import { defineComponent as defineComponent2 } from "vue";
+import { defineComponent } from "vue";
 import { formModal } from "@fkui/vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FDialogueTree/examples/FlerstegsModal.vue?type=script
-import { defineComponent } from "vue";
+import { defineComponent as _defineComponent } from "vue";
+import { reactive, ref } from "vue";
 import {
   FDialogueTree,
   FFormModal,
@@ -99,89 +100,87 @@ function exampleDialogTree() {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FDialogueTree/examples/FlerstegsModal.vue?type=script
-var DIALOGUE_TREE_DATA = exampleDialogTree();
-var FlerstegsModal_default = defineComponent({
-  name: "ExampleFlerstegsModal",
-  components: { FFormModal, FDialogueTree, FOrganisationsnummerTextField },
+var FlerstegsModal_default = /* @__PURE__ */ _defineComponent({
+  __name: "FlerstegsModal",
   props: {
-    isOpen: {
-      type: Boolean,
-      required: false
+    isOpen: { type: Boolean, required: false }
+  },
+  emits: ["cancel", "close", "submit"],
+  setup(__props, { expose: __expose, emit: __emit }) {
+    __expose();
+    const props = __props;
+    const emit = __emit;
+    const DIALOGUE_TREE_DATA = exampleDialogTree();
+    const current = ref({
+      label: "",
+      lastStep: true,
+      steps: []
+    });
+    const treeData = ref(DIALOGUE_TREE_DATA);
+    const value = reactive({ organisationNumber: "" });
+    const createInitialButtons = () => [
+      {
+        label: "Avbryt",
+        type: "secondary",
+        screenreader: "formul\xE4ret",
+        event: "dismiss"
+      }
+    ];
+    const buttons = ref(createInitialButtons());
+    function onCancel() {
+      emit("cancel");
     }
-  },
-  emits: ["close", "cancel", "submit"],
-  data() {
-    return {
-      current: {
-        label: "",
-        lastStep: true,
-        steps: []
-      },
-      treeData: DIALOGUE_TREE_DATA,
-      value: {
-        organisationNumber: ""
-      },
-      buttons: [
-        {
-          label: "Avbryt",
-          type: "secondary",
-          screenreader: "formul\xE4ret",
-          event: "dismiss"
-        }
-      ]
-    };
-  },
-  methods: {
-    onClose(event) {
-      this.buttons = [
-        {
-          label: "Avbryt",
-          type: "secondary",
-          screenreader: "formul\xE4ret",
-          event: "dismiss"
-        }
-      ];
-      this.$emit("close", event);
-    },
-    onCancel(event) {
-      this.$emit("cancel", event);
-    },
-    onSubmit(event) {
-      this.$emit("submit", event);
-    },
-    onChange(event) {
+    function onClose(payload) {
+      buttons.value = createInitialButtons();
+      emit("close", payload);
+    }
+    function onSubmit(payload) {
+      emit("submit", payload);
+    }
+    function onChange(event) {
       if (event.lastStep) {
-        this.buttons.push({
-          label: "L\xE4gg till",
-          type: "primary",
-          screenreader: "l\xE4gg till knapp",
-          event: "submit",
-          submitButton: true
-        });
+        const hasSubmit = buttons.value.some((b) => b.submitButton);
+        if (!hasSubmit) {
+          buttons.value.push({
+            label: "L\xE4gg till",
+            type: "primary",
+            screenreader: "l\xE4gg till knapp",
+            event: "submit",
+            submitButton: true
+          });
+        }
+      } else {
+        buttons.value = buttons.value.filter((b) => !b.submitButton);
       }
     }
+    const __returned__ = { props, emit, DIALOGUE_TREE_DATA, current, treeData, value, createInitialButtons, buttons, onCancel, onClose, onSubmit, onChange, get FDialogueTree() {
+      return FDialogueTree;
+    }, get FFormModal() {
+      return FFormModal;
+    }, get FOrganisationsnummerTextField() {
+      return FOrganisationsnummerTextField;
+    } };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
   }
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FDialogueTree/examples/FlerstegsModal.vue?type=template
-import { toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, withCtx as _withCtx, createVNode as _createVNode } from "vue";
+import { toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, withCtx as _withCtx, createVNode as _createVNode } from "vue";
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_organisationsnummer_text_field = _resolveComponent("f-organisationsnummer-text-field");
-  const _component_f_dialogue_tree = _resolveComponent("f-dialogue-tree");
-  const _component_f_form_modal = _resolveComponent("f-form-modal");
   const _directive_validation = _resolveDirective("validation");
   const _directive_test = _resolveDirective("test");
-  return _openBlock(), _createBlock(_component_f_form_modal, {
-    "is-open": _ctx.isOpen,
-    value: _ctx.value,
-    buttons: _ctx.buttons,
-    onSubmit: _ctx.onSubmit,
-    onCancel: _ctx.onCancel,
-    onClose: _ctx.onClose
+  return _openBlock(), _createBlock($setup["FFormModal"], {
+    "is-open": $props.isOpen,
+    value: $setup.value,
+    buttons: $setup.buttons,
+    onSubmit: $setup.onSubmit,
+    onCancel: $setup.onCancel,
+    onClose: $setup.onClose
   }, {
     header: _withCtx(() => [
       _createTextVNode(
-        _toDisplayString(_ctx.current.label),
+        _toDisplayString($setup.current.label),
         1
         /* TEXT */
       )
@@ -194,17 +193,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )
     ])]),
     "input-text-fields": _withCtx(() => [
-      _createVNode(_component_f_dialogue_tree, {
-        modelValue: _ctx.current,
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.current = $event),
-        "dialogue-tree": _ctx.treeData,
-        onChange: _ctx.onChange
+      _createVNode($setup["FDialogueTree"], {
+        modelValue: $setup.current,
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $setup.current = $event),
+        "dialogue-tree": $setup.treeData,
+        onChange: $setup.onChange
       }, {
         default: _withCtx(({ userData }) => [
-          userData.label ? _withDirectives((_openBlock(), _createBlock(_component_f_organisationsnummer_text_field, {
+          userData.label ? _withDirectives((_openBlock(), _createBlock($setup["FOrganisationsnummerTextField"], {
             key: 0,
-            modelValue: _ctx.value.organisationNumber,
-            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.value.organisationNumber = $event)
+            modelValue: $setup.value.organisationNumber,
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.value.organisationNumber = $event)
           }, null, 8, ["modelValue"])), [
             [
               _directive_validation,
@@ -217,11 +216,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ]),
         _: 1
         /* STABLE */
-      }, 8, ["modelValue", "dialogue-tree", "onChange"])
+      }, 8, ["modelValue", "dialogue-tree"])
     ]),
     _: 1
     /* STABLE */
-  }, 8, ["is-open", "value", "buttons", "onSubmit", "onCancel", "onClose"]);
+  }, 8, ["is-open", "value", "buttons"]);
 }
 
 // packages/vue/src/components/FDialogueTree/examples/FlerstegsModal.vue
@@ -231,7 +230,7 @@ var FlerstegsModal_default2 = FlerstegsModal_default;
 
 // virtual-entry:virtual:packages/vue/src/components/FDialogueTree/examples/FlerstegsModalExample.vue:FlerstegsModalExample-704d37.js
 import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString2, openBlock as _openBlock2, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode2 } from "vue";
-var exampleComponent = defineComponent2({
+var exampleComponent = defineComponent({
   name: "FlerstegsModalApiExample",
   data() {
     return {

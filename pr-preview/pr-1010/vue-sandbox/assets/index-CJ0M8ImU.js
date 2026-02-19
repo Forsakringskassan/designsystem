@@ -18741,7 +18741,8 @@ const _sfc_main$_ = /* @__PURE__ */ defineComponent({
         width: "",
         position: "",
         visibility: "",
-        height: "0px"
+        height: "0px",
+        color: "CanvasText"
       },
       openedStyle: {
         height: "auto"

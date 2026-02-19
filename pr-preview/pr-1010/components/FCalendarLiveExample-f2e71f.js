@@ -6529,7 +6529,8 @@ var FExpand_default = defineComponent20({
         width: "",
         position: "",
         visibility: "",
-        height: "0px"
+        height: "0px",
+        color: "CanvasText"
       },
       openedStyle: {
         height: "auto"
