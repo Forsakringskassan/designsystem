@@ -4,11 +4,12 @@
 
 $vertical-padding: core.densify(size.$padding-025);
 $horizontal-padding: size.$padding-050;
+$underline-thickness: 3px;
 
 .table-ng__cell {
     padding: $vertical-padding $horizontal-padding;
     text-wrap: nowrap;
-    border: 3px solid transparent;
+    border: 1px solid transparent;
 
     &:focus,
     &:focus-within {
@@ -58,20 +59,21 @@ $horizontal-padding: size.$padding-050;
         &:focus,
         &:focus-within {
             .table-ng__editable {
-                border-bottom: 3px solid $table-ng-cell-color-underline;
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+                border-radius: 0;
             }
         }
     }
 
     .table-ng__editable {
-        border: 3px solid transparent;
-
         &:focus-within {
-            border-bottom: 3px solid $table-ng-cell-color-underline;
+            box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+            border-radius: 0;
         }
 
         &:hover {
-            border-bottom: 3px solid $table-ng-cell-color-underline;
+            box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+            border-radius: 0;
         }
     }
 
@@ -82,19 +84,22 @@ $horizontal-padding: size.$padding-050;
 
         &.table-ng__cell--error:not(:focus-within) {
             .table-ng__editable {
-                border-bottom: 3px solid $table-ng-cell-color-error;
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
+                border-radius: 0;
             }
         }
 
         &.table-ng__cell--error:hover:not(:focus-within) {
             .table-ng__editable {
-                border-bottom: 3px solid $table-ng-cell-color-error;
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
+                border-radius: 0;
             }
         }
 
         &.table-ng__cell--error:focus {
             .table-ng__editable {
-                border-bottom: 3px solid $table-ng-cell-color-error;
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
+                border-radius: 0;
             }
         }
 
@@ -103,7 +108,8 @@ $horizontal-padding: size.$padding-050;
             box-sizing: border-box;
 
             &:focus-within {
-                border-bottom: 3px solid $table-ng-cell-color-underline;
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+                border-radius: 0;
 
                 .table-ng__editable__text {
                     display: none;
@@ -115,7 +121,8 @@ $horizontal-padding: size.$padding-050;
             }
 
             &:hover {
-                border-bottom: 3px solid $table-ng-cell-color-underline;
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+                border-radius: 0;
             }
         }
     }
@@ -241,10 +248,7 @@ $horizontal-padding: size.$padding-050;
     .table-ng__cell--select:hover .table-ng__editable,
     .table-ng__cell--text:focus-within .table-ng__editable,
     .table-ng__cell--select:focus-within .table-ng__editable {
-        border-bottom: 3px solid highlight;
-    }
-
-    .table-ng__cell--text.table-ng__cell--error .table-ng__editable {
-        border-bottom: 3px solid CanvasText;
+        box-shadow: inset 0 (-$underline-thickness) 0 0 Highlight;
+        border-radius: 0;
     }
 }
