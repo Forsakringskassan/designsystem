@@ -82,7 +82,11 @@ function onChange(event: FDialogueTreeUserProgress): void {
         <template #header> {{ current.label }} </template>
         <template #error-message>Oj, du har glömt fylla i något. Gå till:</template>
         <template #input-text-fields>
-            <f-dialogue-tree v-model="current" :dialogue-tree="treeData" @change="onChange">
+            <f-dialogue-tree
+                v-model="current"
+                :dialogue-tree="treeData"
+                @update:model-value="onChange"
+            >
                 <template #default="{ userData }">
                     <template v-if="userData.label">
                         <f-organisationsnummer-text-field
