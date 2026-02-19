@@ -1,4 +1,4 @@
-// Palette colors
+// New palette colors
 // Palette colors should follow the following palette-color-<name> convention.
 
 /// @group Neutral
@@ -62,8 +62,7 @@ $palette-color-red-200: hsl(349, 45%, 81%) !default;
 $palette-color-red-100: hsl(347, 35%, 91%) !default;
 $palette-color-red-50: hsl(345, 25%, 97%) !default;
 
-// Palette colors
-// Palette colors should follow the following palette-color-<name> convention.
+// Old palette colors
 
 /// @group FK-Black
 $palette-color-fk-black-100: #1b1e23 !default;
@@ -100,17 +99,13 @@ $palette-color-green-b-5: #f7faf8 !default;
 
 /// @group Yellow
 $palette-color-yellow-120: #cc980d !default;
-
 $palette-color-yellow-85: #ffc834 !default;
-
 $palette-color-yellow-15: #fff5db !default;
 $palette-color-yellow-5: #fffcf3 !default;
 
 /// @group Red
 $palette-color-red-120: #a21111 !default;
-
 $palette-color-red-85: #d23838 !default;
-
 $palette-color-red-15: #f7dcdc !default;
 $palette-color-red-5: #fcf3f3 !default;
 
