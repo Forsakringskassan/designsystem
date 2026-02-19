@@ -3496,13 +3496,6 @@ var FFormModal_default = defineComponent11({
           type: "secondary"
         }
       ]
-    },
-    /**
-     * Hide the submit button.
-     */
-    hideSubmitButton: {
-      type: Boolean,
-      required: false
     }
   },
   emits: {
@@ -3535,9 +3528,7 @@ var FFormModal_default = defineComponent11({
   },
   computed: {
     preparedButtons() {
-      return prepareButtonList(
-        this.hideSubmitButton ? this.buttons.filter((button) => !button.submitButton) : this.buttons
-      );
+      return prepareButtonList(this.buttons);
     }
   },
   methods: {
@@ -6538,7 +6529,8 @@ var FExpand_default = defineComponent20({
         width: "",
         position: "",
         visibility: "",
-        height: "0px"
+        height: "0px",
+        color: "CanvasText"
       },
       openedStyle: {
         height: "auto"

@@ -579,8 +579,8 @@ var metadata_default = {
           "palette": "fk-black-15"
         },
         "dark": {
-          "value": "#bbbbbd",
-          "palette": "fk-black-30"
+          "value": "#8d8e91",
+          "palette": "fk-black-50"
         }
       }
     },
@@ -721,6 +721,20 @@ var metadata_default = {
         "dark": {
           "value": "#e48a8a",
           "palette": "red-50"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-feedback-text-on-warning",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#1b1e23",
+          "palette": "fk-black-100"
+        },
+        "dark": {
+          "value": "#1b1e23",
+          "palette": "fk-black-100"
         }
       }
     },
