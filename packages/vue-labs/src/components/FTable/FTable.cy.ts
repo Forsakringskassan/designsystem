@@ -148,6 +148,22 @@ describe("1.5 Separator", () => {
         table.expandButton(1).click();
         cy.toMatchScreenshot();
     });
+
+    it("should not render divider when disableDividers is set (visual)", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, disableDividers: true },
+            slots: {
+                caption:
+                    "Verifierar att radavskiljare inte renderas när disableDividers är satt.",
+            },
+        });
+
+        cy.get("table")
+            .should("have.class", "table-ng")
+            .and("not.have.class", "table-ng__divided");
+
+        cy.toMatchScreenshot();
+    });
 });
 
 describe("3.1 Feedback to user on invalid input components", () => {
