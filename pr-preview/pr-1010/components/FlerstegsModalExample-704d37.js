@@ -195,9 +195,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "input-text-fields": _withCtx(() => [
       _createVNode($setup["FDialogueTree"], {
         modelValue: $setup.current,
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $setup.current = $event),
-        "dialogue-tree": $setup.treeData,
-        onChange: $setup.onChange
+        "onUpdate:modelValue": [
+          _cache[1] || (_cache[1] = ($event) => $setup.current = $event),
+          $setup.onChange
+        ],
+        "dialogue-tree": $setup.treeData
       }, {
         default: _withCtx(({ userData }) => [
           userData.label ? _withDirectives((_openBlock(), _createBlock($setup["FOrganisationsnummerTextField"], {
