@@ -563,18 +563,6 @@
     "modalfunktion",
     "bekräftelsemodal",
     "options API",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -610,6 +598,18 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -648,15 +648,15 @@
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
-    "FBadgePageObject: FBadgePageObject() constructor",
-    "FFileItemPageObject: status() method",
-    "FFileItemPageObject: inverted() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
+    "FBadgePageObject: FBadgePageObject() constructor",
+    "FFileItemPageObject: status() method",
+    "FFileItemPageObject: inverted() method",
     "CHANGELOG",
     "Bidra till designsystemet",
     "Automatisk testning"
@@ -1966,38 +1966,6 @@
       ]
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -2115,6 +2083,38 @@
       "title": "findElementFromVueRef",
       "terms": [
         "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
       ]
     },
     {
@@ -2305,21 +2305,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
-      "title": "FBadgePageObject: FBadgePageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
-      "title": "FFileItemPageObject: status() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
-      "title": "FFileItemPageObject: inverted() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": []
@@ -2347,6 +2332,21 @@
     {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
       "title": "FDetailsPanelPageObject: closeButton() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
+      "title": "FBadgePageObject: FBadgePageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
+      "title": "FFileItemPageObject: status() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
+      "title": "FFileItemPageObject: inverted() method",
       "terms": []
     },
     {
@@ -2931,49 +2931,49 @@
     "562": 153,
     "563": 154,
     "564": 154,
-    "565": 154,
+    "565": 155,
     "566": 155,
-    "567": 155,
-    "568": 155,
-    "569": 156,
-    "570": 156,
-    "571": 156,
-    "572": 157,
-    "573": 157,
-    "574": 157,
-    "575": 158,
-    "576": 158,
-    "577": 159,
-    "578": 159,
-    "579": 160,
-    "580": 160,
-    "581": 161,
-    "582": 161,
-    "583": 162,
-    "584": 162,
-    "585": 163,
-    "586": 163,
-    "587": 164,
-    "588": 164,
-    "589": 165,
-    "590": 165,
-    "591": 166,
-    "592": 166,
-    "593": 167,
-    "594": 167,
-    "595": 168,
-    "596": 168,
-    "597": 169,
-    "598": 169,
-    "599": 170,
-    "600": 170,
-    "601": 171,
-    "602": 171,
-    "603": 171,
-    "604": 172,
-    "605": 172,
+    "567": 156,
+    "568": 156,
+    "569": 157,
+    "570": 157,
+    "571": 158,
+    "572": 158,
+    "573": 159,
+    "574": 159,
+    "575": 160,
+    "576": 160,
+    "577": 161,
+    "578": 161,
+    "579": 162,
+    "580": 162,
+    "581": 163,
+    "582": 163,
+    "583": 164,
+    "584": 164,
+    "585": 165,
+    "586": 165,
+    "587": 166,
+    "588": 166,
+    "589": 167,
+    "590": 167,
+    "591": 167,
+    "592": 168,
+    "593": 168,
+    "594": 169,
+    "595": 169,
+    "596": 170,
+    "597": 170,
+    "598": 171,
+    "599": 171,
+    "600": 171,
+    "601": 172,
+    "602": 172,
+    "603": 172,
+    "604": 173,
+    "605": 173,
     "606": 173,
-    "607": 173,
+    "607": 174,
     "608": 174,
     "609": 174,
     "610": 175,
