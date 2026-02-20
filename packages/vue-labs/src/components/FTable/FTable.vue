@@ -44,7 +44,7 @@ const {
     keyAttribute = undefined,
     expandableAttribute = undefined,
     striped,
-    divided,
+    disableDividers,
     selectable = undefined,
 } = defineProps<{
     columns: Array<TableColumn<T, KeyAttribute>>;
@@ -52,7 +52,7 @@ const {
     keyAttribute?: KeyAttribute;
     expandableAttribute?: ExpandableAttribute;
     striped?: boolean;
-    divided?: boolean;
+    disableDividers?: boolean;
     selectable?: "single" | "multi";
 }>();
 
@@ -121,7 +121,7 @@ const tableClasses = computed(() => {
         "table-ng",
         {
             "table-ng--striped": striped,
-            "table-ng--divided": divided,
+            "table-ng--divided": !disableDividers,
         },
     ];
 });

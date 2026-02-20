@@ -236,7 +236,8 @@ export default defineComponent({
         return {
             isEmpty: false,
             striped: false,
-            divided: false,
+            divided: true,
+            disableDividers: false,
             hasRowDescription: false,
             hasCustomEmptyText: false,
             hasHiddenCaption: false,
@@ -303,7 +304,7 @@ export default defineComponent({
                     "v-model:selected-rows": selectable ? "selectedRows" : undefined,
                     "key-attribute": "id",
                     striped,
-                    divided,
+                    "disable-dividers": !divided,
                     selectable,
                     expandableAttribute,
                 },
