@@ -5462,7 +5462,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     striped: {
       type: Boolean
     },
-    divided: {
+    disableDividers: {
       type: Boolean
     },
     selectable: {
@@ -5514,7 +5514,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     const tableClasses = computed3(() => {
       return ["table-ng", {
         "table-ng--striped": __props.striped,
-        "table-ng--divided": __props.divided
+        "table-ng--divided": !__props.disableDividers
       }];
     });
     const slots = useSlots();
