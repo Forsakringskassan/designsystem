@@ -528,6 +528,49 @@ describe("3.1 Feedback to user on invalid input components", () => {
         cy.get("@onValidity").should("not.have.been.called");
         cy.get("@onComponentValidity").should("not.have.been.called");
     });
+
+    it("should render invalid cell styling and tooltip (visual)", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            { text: "12345" },
+            { text: "123456" },
+            { text: "12345" },
+            { text: "12345" },
+        ];
+
+        cy.mount(FTable<Row>, {
+            props: { rows, columns },
+            slots: {
+                caption:
+                    "Verifierar felindikering och tooltip vid ogiltigt värde.",
+            },
+        });
+
+        table
+            .cell({ row: 2, col: 1 })
+            .should("have.class", "table-ng__cell--error")
+            .trigger("mouseenter");
+
+        cy.get(".popup-error").should("be.visible");
+
+        cy.toMatchScreenshot();
+    });
 });
 
 describe("3.6 Feedback to user on table validation errors at submit", () => {
