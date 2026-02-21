@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-close-button.vue:FDetailsPanelPageObject-close-button-1d85fc.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FDetailsPanelPageObject/FDetailsPanelPageObject-close-button.vue:FDetailsPanelPageObject-close-button-5ff891.js
 import { defineComponent as _defineComponent } from "vue";
 import { onMounted } from "vue";
 import { FDetailsPanel, FPageLayout, useDetailsPanel } from "@fkui/vue";
@@ -66,7 +66,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-1d85fc"
+  selector: "#example-5ff891"
 });
 export {
   render
