@@ -6524,7 +6524,6 @@ h4:not(.code-preview h4),
 h5:not(.code-preview h5),
 h6:not(.code-preview h6) {
   font-family: var(--docs-heading-font-family);
-  font-weight: var(--docs-heading-font-weight);
   line-height: var(--docs-heading-line-height);
   margin-top: 0;
   margin-bottom: 0.25rem;
@@ -6534,31 +6533,37 @@ h6:not(.code-preview h6) {
 
 h1 {
   font-size: var(--f-font-size-h1);
+  font-weight: var(--docs-heading-font-weight-h1);
   color: var(--f-text-color-heading-1);
 }
 
 h2 {
   font-size: var(--f-font-size-h2);
+  font-weight: var(--docs-heading-font-weight-h2);
   color: var(--f-text-color-heading-2);
 }
 
 h3 {
   font-size: var(--f-font-size-h3);
+  font-weight: var(--docs-heading-font-weight-h3);
   color: var(--f-text-color-heading-3);
 }
 
 h4 {
   font-size: var(--f-font-size-h4);
+  font-weight: var(--docs-heading-font-weight-h4);
   color: var(--f-text-color-heading-4);
 }
 
 h5 {
   font-size: var(--f-font-size-large);
+  font-weight: var(--docs-heading-font-weight-h5);
   color: var(--f-text-color-heading-5);
 }
 
 h6 {
   font-size: var(--f-font-size-standard);
+  font-weight: var(--docs-heading-font-weight-h6);
   color: var(--f-text-color-heading-6);
 }
 
@@ -7872,6 +7877,12 @@ kbd {
   --docs-contextmenu-link-background-hover: #ddddde;
   --docs-heading-font-family: var(--docs-font-family);
   --docs-heading-font-weight: var(--docs-font-weight);
+  --docs-heading-font-weight-h1: var(--docs-font-weight);
+  --docs-heading-font-weight-h2: var(--docs-font-weight);
+  --docs-heading-font-weight-h3: var(--docs-font-weight);
+  --docs-heading-font-weight-h4: var(--docs-font-weight);
+  --docs-heading-font-weight-h5: var(--docs-font-weight);
+  --docs-heading-font-weight-h6: var(--docs-font-weight);
   --docs-heading-line-height: 1.4;
   --docs-header-text-color-default: #1b1e23;
   --docs-header-text-color-discrete: #5f6165;
