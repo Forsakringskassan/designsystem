@@ -1993,3 +1993,50 @@ describe("select cell", () => {
         cy.toMatchScreenshot();
     });
 });
+
+describe("13 Cell interaction states", () => {
+    interface Row {
+        plain: string;
+        text: string;
+        button: string;
+    }
+
+    const columns = defineTableColumns<Row>([
+        {
+            type: "text",
+            header: "Plain",
+            key: "plain",
+        },
+        {
+            type: "text",
+            header: "Editable",
+            editable: true,
+            key: "text",
+            label: () => "text",
+        },
+        {
+            type: "button",
+            header: "Button",
+            key: "button",
+            icon: "trashcan",
+            text: (row) => row.button,
+        },
+    ]);
+
+    const rows: Row[] = [
+        { plain: "A1", text: "A2", button: "A3" },
+        { plain: "B1", text: "B2", button: "B3" },
+    ];
+
+    it("13.1 should render focus underline on editable cell (visual)", () => {
+        cy.mount(FTable<Row>, {
+            props: { rows, columns },
+            slots: { caption: "Verifierar understykning för redigerbar cell" },
+        });
+
+        table.cell({ row: 1, col: 2 }).click();
+        table.cell({ row: 1, col: 2 }).find("input").should("be.focused");
+
+        cy.toMatchScreenshot();
+    });
+});
