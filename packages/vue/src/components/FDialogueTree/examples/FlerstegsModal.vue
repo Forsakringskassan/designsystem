@@ -1,5 +1,5 @@
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { reactive, ref } from "vue";
 import {
     type FDialogueTreeUserProgress,
     type FModalButtonDescriptor,
@@ -9,70 +9,72 @@ import {
 } from "@fkui/vue";
 import { exampleDialogTree } from "./example-dialog-tree";
 
+const props = defineProps<{ isOpen?: boolean }>();
+
+const emit = defineEmits<{
+    cancel: [];
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, FFormModal should use generics
+    close: [payload: { reason: string; data?: any }];
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, FFormModal should use generics
+    submit: [payload: { data: any }];
+}>();
+
 const DIALOGUE_TREE_DATA = exampleDialogTree();
 
-export default defineComponent({
-    name: "ExampleFlerstegsModal",
-    components: { FFormModal, FDialogueTree, FOrganisationsnummerTextField },
-    props: {
-        isOpen: {
-            type: Boolean,
-            required: false,
-        },
-    },
-    emits: ["close", "cancel", "submit"],
-    data() {
-        return {
-            current: {
-                label: "",
-                lastStep: true,
-                steps: [],
-            } satisfies FDialogueTreeUserProgress,
-            treeData: DIALOGUE_TREE_DATA,
-            value: {
-                organisationNumber: "",
-            },
-            buttons: [
-                {
-                    label: "Avbryt",
-                    type: "secondary",
-                    screenreader: "formuläret",
-                    event: "dismiss",
-                },
-            ] as FModalButtonDescriptor[],
-        };
-    },
-    methods: {
-        onClose(event: Event): void {
-            this.buttons = [
-                {
-                    label: "Avbryt",
-                    type: "secondary",
-                    screenreader: "formuläret",
-                    event: "dismiss",
-                },
-            ];
-            this.$emit("close", event);
-        },
-        onCancel(event: Event): void {
-            this.$emit("cancel", event);
-        },
-        onSubmit(event: Event): void {
-            this.$emit("submit", event);
-        },
-        onChange(event: FDialogueTreeUserProgress): void {
-            if (event.lastStep) {
-                this.buttons.push({
-                    label: "Lägg till",
-                    type: "primary",
-                    screenreader: "lägg till knapp",
-                    event: "submit",
-                    submitButton: true,
-                });
-            }
-        },
-    },
+const current = ref<FDialogueTreeUserProgress>({
+    label: "",
+    lastStep: true,
+    steps: [],
 });
+
+const treeData = ref(DIALOGUE_TREE_DATA);
+
+const value = reactive({ organisationNumber: "" });
+
+const createInitialButtons = (): FModalButtonDescriptor[] => [
+    {
+        label: "Avbryt",
+        type: "secondary",
+        screenreader: "formuläret",
+        event: "dismiss",
+    },
+];
+
+const buttons = ref<FModalButtonDescriptor[]>(createInitialButtons());
+
+function onCancel(): void {
+    emit("cancel");
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, FFormModal should use generics
+function onClose(payload: { reason: string; data?: any }): void {
+    buttons.value = createInitialButtons();
+    emit("close", payload);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt, FFormModal should use generics
+function onSubmit(payload: { data: any }): void {
+    emit("submit", payload);
+}
+
+function onChange(event: FDialogueTreeUserProgress): void {
+    if (event.lastStep) {
+        const hasSubmit = buttons.value.some((b) => b.submitButton);
+        if (!hasSubmit) {
+            buttons.value.push({
+                label: "Lägg till",
+                type: "primary",
+                screenreader: "lägg till knapp",
+                event: "submit",
+                submitButton: true,
+            } as FModalButtonDescriptor & { submitButton?: boolean });
+        }
+    } else {
+        buttons.value = buttons.value.filter((b) => !b.submitButton);
+    }
+}
 </script>
 
 <template>
@@ -80,7 +82,11 @@ export default defineComponent({
         <template #header> {{ current.label }} </template>
         <template #error-message>Oj, du har glömt fylla i något. Gå till:</template>
         <template #input-text-fields>
-            <f-dialogue-tree v-model="current" :dialogue-tree="treeData" @change="onChange">
+            <f-dialogue-tree
+                v-model="current"
+                :dialogue-tree="treeData"
+                @update:model-value="onChange"
+            >
                 <template #default="{ userData }">
                     <template v-if="userData.label">
                         <f-organisationsnummer-text-field

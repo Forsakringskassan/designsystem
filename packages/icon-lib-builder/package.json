@@ -1,6 +1,6 @@
 {
   "name": "@fkui/icon-lib-builder",
-  "version": "6.36.0",
+  "version": "6.36.1",
   "description": "Icon library builder",
   "keywords": [
     "fkui",
@@ -33,12 +33,12 @@
     "preset": "@forsakringskassan/jest-config"
   },
   "dependencies": {
-    "glob": "13.0.3",
+    "glob": "13.0.6",
     "sass": "1.97.3",
     "svgo": "4.0.0"
   },
   "engines": {
-    "node": ">= 20",
+    "node": ">= 20.11",
     "npm": ">= 7"
   }
 }

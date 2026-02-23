@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 6.36.1 (2026-02-18)
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/theme-default:** text contrast on warning color (refs SFKUI-6500) f092ee3
+* **@fkui/design:** expandable panel text color in darkmode (refs SFKUI-6500) 46abbf2
+* **@fkui/design:** output-field text color in darkmode (refs SFKUI-6500) 2d52371
+* **@fkui/design:** tooltip text color in darkmode (refs SFKUI-6500) e561a90
+* **@fkui/design:** wizard body text color in darkmode (refs SFKUI-6500) 1d169bc
+* **@fkui/vue:** combo box dropdown list icon pointing down when open (fixes SFKUI-7563) e47f5b1
+* **@fkui/vue:** expand text color in darkmode (refs SFKUI-6500) 65fb265
+* **deps:** update dependency glob to v13.0.2 8267983
+* **deps:** update dependency glob to v13.0.3 fa890c0
+* **deps:** update dependency i18next to v25.8.5 fdee2fd
+* **deps:** update dependency i18next to v25.8.6 a5b1461
+* **deps:** update dependency i18next to v25.8.7 c817a78
+* **deps:** update vue monorepo to v3.5.28 593b8dc
+
 ## 6.36.0 (2026-02-11)
 
 ### Features

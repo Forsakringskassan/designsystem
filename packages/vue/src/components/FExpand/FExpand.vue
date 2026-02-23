@@ -21,6 +21,7 @@ export default defineComponent({
                 position: "",
                 visibility: "",
                 height: "0px",
+                color: "CanvasText",
             },
             openedStyle: {
                 height: "auto",

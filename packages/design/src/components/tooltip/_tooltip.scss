@@ -108,6 +108,7 @@ $inner-border:
     }
 
     &__body {
+        color: $tooltip-color-text-default;
         padding: 0 size.$padding-100;
     }
 
