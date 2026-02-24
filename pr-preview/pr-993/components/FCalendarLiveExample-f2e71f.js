@@ -6469,6 +6469,9 @@ IComboboxDropdown_default.__file = "packages/vue/src/internal-components/combobo
 import { defineComponent as _defineComponent3 } from "vue";
 var IComboboxToggleButton_default = /* @__PURE__ */ _defineComponent3({
   __name: "IComboboxToggleButton",
+  props: {
+    isOpen: { type: Boolean, required: true }
+  },
   emits: ["toggle"],
   setup(__props, { expose: __expose, emit: __emit }) {
     __expose();
@@ -6496,8 +6499,9 @@ function render22(_ctx, _cache, $props, $setup, $data, $options) {
   }, [
     _createVNode8($setup["FIcon"], {
       name: "arrow-down",
+      rotate: $props.isOpen ? "180" : void 0,
       class: "text-field__icon"
-    })
+    }, null, 8, ["rotate"])
   ], 8, _hoisted_118);
 }
 
@@ -6525,7 +6529,8 @@ var FExpand_default = defineComponent20({
         width: "",
         position: "",
         visibility: "",
-        height: "0px"
+        height: "0px",
+        color: "CanvasText"
       },
       openedStyle: {
         height: "auto"
