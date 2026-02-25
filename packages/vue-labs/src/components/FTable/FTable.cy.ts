@@ -2031,7 +2031,7 @@ describe("13 Cell interaction states", () => {
     it("13.1 should render focus underline on editable cell (visual)", () => {
         cy.mount(FTable<Row>, {
             props: { rows, columns },
-            slots: { caption: "Verifierar understykning för redigerbar cell" },
+            slots: { caption: "Verifierar understrykning för redigerbar cell" },
         });
 
         table.cell({ row: 1, col: 2 }).click();
