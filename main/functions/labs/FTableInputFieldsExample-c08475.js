@@ -3425,7 +3425,7 @@ var _hoisted_1$b = {
   scope: "col",
   class: "table-ng__column table-ng__column--selectable"
 };
-var _hoisted_2$9 = ["checked", "indeterminate"];
+var _hoisted_2$9 = ["checked", "indeterminate", "aria-label"];
 var _sfc_main$d = /* @__PURE__ */ defineComponent2({
   __name: "ITableHeaderSelectable",
   props: {
@@ -3440,9 +3440,13 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent2({
     emit: __emit
   }) {
     const emit = __emit;
+    const $t = useTranslate();
     const indeterminate = computed3(() => __props.state === "indeterminate");
     const checked = computed3(() => __props.state === "indeterminate" ? false : __props.state);
     const expose = {};
+    const ariaLabel = computed3(() => {
+      return !checked.value || indeterminate.value ? $t("fkui.ftable.select-all.aria-label", "V\xE4lj alla rader") : $t("fkui.ftable.unselect-all.aria-label", "Avmarkera alla rader");
+    });
     if (__props.selectable === "multi") {
       const inputRef = useTemplateRef("input");
       expose.tabstopEl = inputRef;
@@ -3455,7 +3459,7 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent2({
         checked: checked.value,
         indeterminate: indeterminate.value,
         type: "checkbox",
-        "aria-label": "select all",
+        "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange: _cache[0] || (_cache[0] = ($event) => emit("toggle"))
       }, null, 40, _hoisted_2$9)) : createCommentVNode("", true)]);
