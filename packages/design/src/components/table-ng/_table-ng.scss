@@ -18,7 +18,7 @@ $table-ng-description-background: transparent !default;
 $table-ng-description-font-weight: var(--f-font-weight-normal) !default;
 
 .table-ng {
-    border-collapse: separate;
+    border-collapse: collapse;
     border-spacing: 0;
     font-size: $table-ng-font-size;
     margin: $table-ng-margin;
@@ -81,8 +81,9 @@ $table-ng-description-font-weight: var(--f-font-weight-normal) !default;
     }
 
     &--divided {
-        border-collapse: separate;
-        border-spacing: 0 1px;
-        background: $table-ng-cell-color-border;
+        tbody > tr > td,
+        tbody > tr > th {
+            border-bottom: 1px solid $table-ng-cell-color-border;
+        }
     }
 }

@@ -186,7 +186,7 @@ $underline-thickness: 3px;
 
     &--custom {
         padding: $vertical-padding $horizontal-padding;
-        border: 3px solid transparent;
+        border: 1px solid transparent;
 
         &:focus {
             box-shadow: none;
