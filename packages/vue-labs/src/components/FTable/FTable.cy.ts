@@ -148,6 +148,22 @@ describe("1.5 Separator", () => {
         table.expandButton(1).click();
         cy.toMatchScreenshot();
     });
+
+    it("should not render divider when disableDividers is set (visual)", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, disableDividers: true },
+            slots: {
+                caption:
+                    "Verifierar att radavskiljare inte renderas när disableDividers är satt.",
+            },
+        });
+
+        cy.get("table")
+            .should("have.class", "table-ng")
+            .and("not.have.class", "table-ng__divided");
+
+        cy.toMatchScreenshot();
+    });
 });
 
 describe("3.1 Feedback to user on invalid input components", () => {
@@ -527,6 +543,49 @@ describe("3.1 Feedback to user on invalid input components", () => {
 
         cy.get("@onValidity").should("not.have.been.called");
         cy.get("@onComponentValidity").should("not.have.been.called");
+    });
+
+    it("should render invalid cell styling and tooltip (visual)", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            { text: "12345" },
+            { text: "123456" },
+            { text: "12345" },
+            { text: "12345" },
+        ];
+
+        cy.mount(FTable<Row>, {
+            props: { rows, columns },
+            slots: {
+                caption:
+                    "Verifierar felindikering och tooltip vid ogiltigt värde.",
+            },
+        });
+
+        table
+            .cell({ row: 2, col: 1 })
+            .should("have.class", "table-ng__cell--error")
+            .trigger("mouseenter");
+
+        cy.get(".popup-error").should("be.visible");
+
+        cy.toMatchScreenshot();
     });
 });
 
@@ -1931,6 +1990,53 @@ describe("select cell", () => {
         });
 
         table.cell({ row: 2, col: 1 }).focus();
+        cy.toMatchScreenshot();
+    });
+});
+
+describe("13 Cell interaction states", () => {
+    interface Row {
+        plain: string;
+        text: string;
+        button: string;
+    }
+
+    const columns = defineTableColumns<Row>([
+        {
+            type: "text",
+            header: "Plain",
+            key: "plain",
+        },
+        {
+            type: "text",
+            header: "Editable",
+            editable: true,
+            key: "text",
+            label: () => "text",
+        },
+        {
+            type: "button",
+            header: "Button",
+            key: "button",
+            icon: "trashcan",
+            text: (row) => row.button,
+        },
+    ]);
+
+    const rows: Row[] = [
+        { plain: "A1", text: "A2", button: "A3" },
+        { plain: "B1", text: "B2", button: "B3" },
+    ];
+
+    it("13.1 should render focus underline on editable cell (visual)", () => {
+        cy.mount(FTable<Row>, {
+            props: { rows, columns },
+            slots: { caption: "Verifierar understrykning för redigerbar cell" },
+        });
+
+        table.cell({ row: 1, col: 2 }).click();
+        table.cell({ row: 1, col: 2 }).find("input").should("be.focused");
+
         cy.toMatchScreenshot();
     });
 });

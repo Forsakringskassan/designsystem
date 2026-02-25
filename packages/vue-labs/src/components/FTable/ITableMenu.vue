@@ -61,7 +61,11 @@ defineExpose(expose);
 </script>
 
 <template>
-    <td v-if="renderButton" class="table-ng__cell table-ng__cell--button">
+    <td
+        v-if="renderButton"
+        class="table-ng__cell table-ng__cell--button"
+        :class="{ 'table-ng__cell--menu-open': isOpen }"
+    >
         <button ref="button" class="icon-button" type="button" tabindex="-1" aria-haspopup="menu" @click="onOpen">
             <f-icon name="bars"></f-icon>
             <span class="sr-only">{{ column.text(row) }}</span>

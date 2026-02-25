@@ -8,7 +8,7 @@ import {
     ValidationService,
     assertRef,
 } from "@fkui/logic";
-import { type ComponentValidityEvent, FIcon, IPopupError, dispatchComponentValidityEvent } from "@fkui/vue";
+import { type ComponentValidityEvent, IPopupError, dispatchComponentValidityEvent } from "@fkui/vue";
 import { useElementHover, useEventListener, useFocusWithin } from "@vueuse/core";
 import { type PopupError } from "./PopupEror";
 import { isColumnTypeNumber } from "./columns/helpers";
@@ -122,7 +122,6 @@ const configAttributes = computed(() => {
 
 const tdElement = useTemplateRef("td");
 const inputElement = useTemplateRef("input");
-const penElement = useTemplateRef("pen");
 const { stopEdit } = useStartStopEdit();
 const isHovered = useElementHover(tdElement, { delayEnter: 200 });
 const { focused } = useFocusWithin(tdElement);
@@ -192,7 +191,7 @@ watchEffect(() => {
     if (hasError.value) {
         emit("onError", {
             anchor: tdElement.value ?? undefined,
-            arrowAnchor: penElement.value ?? undefined,
+            arrowAnchor: inputElement.value ?? undefined,
             message: validity.value.validationMessage,
             hasFocus: focused.value,
             hasHover: isHovered.value,
@@ -201,7 +200,7 @@ watchEffect(() => {
     } else {
         emit("closeError", {
             anchor: tdElement.value ?? undefined,
-            arrowAnchor: penElement.value ?? undefined,
+            arrowAnchor: inputElement.value ?? undefined,
             message: validity.value.validationMessage,
             hasFocus: focused.value,
             hasHover: isHovered.value,
@@ -390,15 +389,12 @@ function onPendingValidity(): void {
                 @validity="onValidity"
                 @pending-validity="onPendingValidity"
             />
-            <div ref="pen">
-                <f-icon name="pen" class="table-ng__editable__icon"></f-icon>
-            </div>
         </div>
         <i-popup-error
             :anchor="tdElement"
             :is-open="openPopupError"
             :error-message="validity.validationMessage"
-            :arrow-anchor="penElement"
+            :arrow-anchor="inputElement"
             layout="f-table"
         ></i-popup-error>
     </td>

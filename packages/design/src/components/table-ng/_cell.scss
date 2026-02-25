@@ -1,18 +1,24 @@
 @use "../../core";
 @use "../../core/size";
+@use "variables" as *;
 
 $vertical-padding: core.densify(size.$padding-025);
 $horizontal-padding: size.$padding-050;
+$underline-thickness: 3px;
 
 .table-ng__cell {
     padding: $vertical-padding $horizontal-padding;
     text-wrap: nowrap;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
 
     &:focus,
     &:focus-within {
         box-shadow: none;
-        border: 2px solid var(--f-color-focus);
+        outline: 3px solid $table-ng-cell-color-outline;
+    }
+
+    &:not(&--menu-open):hover:has(button) {
+        background: $table-ng-cell-color-hover-background;
     }
 
     input,
@@ -42,59 +48,69 @@ $horizontal-padding: size.$padding-050;
         }
     }
 
-    &--select {
-        .table-ng__editable__icon--active {
-            rotate: 180deg;
+    &--select,
+    &--text {
+        padding: 0;
+
+        &:hover {
+            background: $table-ng-cell-color-hover-background;
+        }
+
+        &:focus,
+        &:focus-within {
+            .table-ng__editable {
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+                border-radius: 0;
+            }
         }
     }
 
-    &--select,
-    &--text {
-        padding: 0 0.25rem;
-
-        &:focus-visible {
-            .table-ng__editable__icon {
-                visibility: visible;
-            }
+    .table-ng__editable {
+        &:focus-within {
+            box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+            border-radius: 0;
         }
 
         &:hover {
-            .table-ng__editable {
-                @extend %text-hover-state;
-            }
+            box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+            border-radius: 0;
         }
     }
 
     &--text {
         &:focus-visible {
-            outline: none !important;
             box-shadow: none !important;
         }
 
         &.table-ng__cell--error:not(:focus-within) {
             .table-ng__editable {
-                @extend %text-error-state;
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
+                border-radius: 0;
             }
         }
 
         &.table-ng__cell--error:hover:not(:focus-within) {
             .table-ng__editable {
-                @extend %text-error-state;
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
+                border-radius: 0;
             }
         }
 
         &.table-ng__cell--error:focus {
             .table-ng__editable {
-                @extend %text-error-state;
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
+                border-radius: 0;
             }
         }
 
         .table-ng__editable {
-            border-width: 2px;
-            border-style: solid;
-            border-color: transparent;
+            border: 3px solid transparent;
+            box-sizing: border-box;
 
             &:focus-within {
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+                border-radius: 0;
+
                 .table-ng__editable__text {
                     display: none;
                 }
@@ -102,6 +118,11 @@ $horizontal-padding: size.$padding-050;
                 .table-ng__textedit {
                     flex: 1 0 auto;
                 }
+            }
+
+            &:hover {
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+                border-radius: 0;
             }
         }
     }
@@ -115,6 +136,12 @@ $horizontal-padding: size.$padding-050;
             height: var(--f-icon-size-medium);
             width: var(--f-icon-size-medium);
             vertical-align: middle;
+            accent-color: $table-ng-button-primary-color-background-default;
+        }
+
+        &:hover {
+            background: $table-ng-cell-color-hover-background;
+            accent-color: $table-ng-button-primary-color-background-hover;
         }
     }
 
@@ -127,7 +154,11 @@ $horizontal-padding: size.$padding-050;
             min-width: var(--f-icon-size-medium);
             width: 100%;
             background: inherit;
+            color: $table-ng-button-primary-color-background-default;
             cursor: pointer;
+            &:hover {
+                color: $table-ng-button-primary-color-background-hover;
+            }
 
             svg {
                 vertical-align: middle;
@@ -142,6 +173,10 @@ $horizontal-padding: size.$padding-050;
 
     &--selectable {
         width: var(--f-icon-size-medium);
+
+        &:hover {
+            background: $table-ng-cell-color-hover-background;
+        }
     }
 
     &--rowheader {
@@ -151,11 +186,24 @@ $horizontal-padding: size.$padding-050;
 
     &--custom {
         padding: $vertical-padding $horizontal-padding;
-        border: 2px solid transparent;
+        border: 1px solid transparent;
 
         &:focus {
             box-shadow: none;
-            border: 2px solid var(--f-color-focus);
+            outline: 3px solid $table-ng-cell-color-outline;
+        }
+    }
+
+    &--menu-open,
+    &--menu-open:hover {
+        background: $table-ng-cell-color-active-menu;
+
+        .icon-button {
+            color: $table-ng-cell-color-active-menu-text;
+        }
+
+        .table-ng__editable:hover {
+            background: transparent;
         }
     }
 }
@@ -169,7 +217,6 @@ $horizontal-padding: size.$padding-050;
 
     &:focus {
         box-shadow: none !important;
-        outline: none !important;
     }
 }
 
@@ -177,10 +224,6 @@ $horizontal-padding: size.$padding-050;
     padding: $vertical-padding $horizontal-padding;
     display: flex;
     align-items: center;
-
-    &:hover:not(:focus-within) &__icon {
-        visibility: visible;
-    }
 
     &__text {
         flex: 1 1 auto;
@@ -192,19 +235,20 @@ $horizontal-padding: size.$padding-050;
             font-feature-settings: "tnum" 1;
         }
     }
+}
 
-    &__icon {
-        visibility: hidden;
-        margin-left: 1rem;
-        flex: none;
-        color: var(--fkds-color-action-text-primary-default);
+@media (forced-colors: active) {
+    .table-ng__editable {
+        forced-color-adjust: none;
+        border-bottom-color: transparent;
+        border-bottom-width: 0;
     }
-}
 
-%text-hover-state {
-    background: var(--fkds-color-action-background-secondary-hover);
-}
-
-%text-error-state {
-    border-bottom-color: var(--fkds-color-feedback-text-negative);
+    .table-ng__cell--text:hover .table-ng__editable,
+    .table-ng__cell--select:hover .table-ng__editable,
+    .table-ng__cell--text:focus-within .table-ng__editable,
+    .table-ng__cell--select:focus-within .table-ng__editable {
+        box-shadow: inset 0 (-$underline-thickness) 0 0 Highlight;
+        border-radius: 0;
+    }
 }

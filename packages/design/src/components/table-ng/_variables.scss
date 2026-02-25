@@ -16,3 +16,14 @@ $table-ng-row-separator: 1px solid var(--fkds-color-border-primary) !default;
 // Column
 $table-ng-color-icon-sort-selected: var(--fkds-color-text-primary) !default;
 $table-ng-color-icon-sort-default: var(--fkds-color-text-secondary) !default;
+
+// Cell
+$table-ng-cell-color-hover-background: var(--fkds-color-action-background-secondary-hover) !default;
+$table-ng-button-primary-color-background-default: var(--fkds-color-action-background-primary-default) !default;
+$table-ng-button-primary-color-background-hover: var(--fkds-color-action-background-primary-hover) !default;
+$table-ng-cell-color-error: var(--fkds-color-feedback-text-negative) !default;
+$table-ng-cell-color-outline: var(--fkds-color-text-primary) !default;
+$table-ng-cell-color-underline: var(--fkds-color-border-strong) !default;
+$table-ng-cell-color-border: var(--fkds-color-border-primary) !default;
+$table-ng-cell-color-active-menu: var(--fkds-color-action-background-primary-active) !default;
+$table-ng-cell-color-active-menu-text: var(--fkds-color-text-inverted) !default;
