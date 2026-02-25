@@ -83,7 +83,9 @@ $radio_button_label_offset: 0.1rem;
         }
 
         .radio-button__label {
+            color: $radio-button-color-text-disabled;
             cursor: default;
+
             &::before,
             &::after {
                 background: $radio-button-color-background-disabled;
