@@ -15,7 +15,13 @@ import {
     useTemplateRef,
 } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
-import { type ItemIdentifier, FSortFilterDatasetInjected, setItemIdentifiers, useSlotUtils } from "@fkui/vue";
+import {
+    type ItemIdentifier,
+    FSortFilterDatasetInjected,
+    setItemIdentifiers,
+    useSlotUtils,
+    useTranslate,
+} from "@fkui/vue";
 import { activateCell, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./FTable.logic";
 import ITableExpandButton from "./ITableExpandButton.vue";
 import ITableExpandable from "./ITableExpandable.vue";
@@ -80,6 +86,7 @@ defineSlots<{
     }): void;
 }>();
 
+const $t = useTranslate();
 const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
 const expandedKeys: Ref<Set<ItemIdentifier>> = ref(new Set());
@@ -320,7 +327,7 @@ onMounted(() => {
             <template v-if="isEmpty">
                 <tr class="table-ng__row--empty">
                     <td :colspan="columnCount" class="table-ng__cell">
-                        <slot name="empty"> Tabellen är tom </slot>
+                        <slot name="empty"> {{ $t("fkui.ftable.empty.text", "Tabellen är tom") }} </slot>
                     </td>
                 </tr>
             </template>
