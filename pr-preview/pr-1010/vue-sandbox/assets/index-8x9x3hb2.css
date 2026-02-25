@@ -1,48 +1,4 @@
 @charset "UTF-8";
-.contextbar[data-v-f3c4fc0f] {
-    display: flex;
-    gap: 1rem;
-    padding: 0.5rem 0.75rem;
-}
-.contextbar__forman[data-v-f3c4fc0f] {
-    font-weight: bold;
-}
-
-.toolbar {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-[data-v-7fd1e637]::part(grid awesome-layout) {
-    grid-template:
-        "header header header" min-content
-        "left contextbar contextbar" min-content
-        "left toolbar toolbar" min-content
-        "left content right" 1fr
-        / min-content 1fr;
-}
-[data-v-7fd1e637]::part(area header) {
-    --f-page-layout-background: var(--fkds-color-header-background-primary);
-    --f-page-layout-color: var(--fkds-color-text-inverted);
-}
-[data-v-7fd1e637]::part(area contextbar) {
-    --f-page-layout-background: var(--fkds-color-background-secondary);
-    --f-page-layout-color: var(--fkds-color-text-primary);
-}
-[data-v-7fd1e637]::part(area toolbar) {
-    --f-page-layout-background: var(--fkds-color-background-secondary);
-    --f-page-layout-color: var(--fkds-color-text-primary);
-}
-[data-v-7fd1e637]::part(area left) {
-    --f-page-layout-background: var(--fkds-color-background-secondary);
-    --f-page-layout-color: var(--fkds-color-text-primary);
-}
-[data-v-7fd1e637]::part(area right) {
-    --f-page-layout-background: var(--fkds-color-background-secondary);
-    --f-page-layout-color: var(--fkds-color-text-primary);
-}
-
 :root {
   --f-text-color-heading-1: inherit;
   --f-text-color-heading-2: inherit;
@@ -226,6 +182,7 @@
   --fkds-color-navigation-background-hover: #dbe9e2;
   --fkds-color-navigation-background-selected: #35805b;
   --fkds-color-header-background-primary: #116a3e;
+  --fkds-color-header-text-primary: #ffffff;
   --fkui-theme-default-version: "6.36.1";
 }
 
@@ -3036,6 +2993,7 @@ input[type=search]:focus,
   height: var(--f-icon-size-small);
   margin-top: calc((var(--f-line-height-medium) * 1em - var(--f-icon-size-small)) / 2);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  outline: 2px solid transparent;
   display: flex;
   color: var(--fkds-color-text-inverted);
   padding: 3px;
@@ -4709,7 +4667,7 @@ input[type=search]:focus,
   display: flex;
   flex-direction: row;
   width: 100%;
-  color: var(--fkds-color-text-inverted);
+  color: var(--fkds-color-header-text-primary);
   background-color: var(--fkds-color-header-background-primary);
   padding: 1rem 0 1rem 1rem;
   align-items: center;
@@ -4727,7 +4685,7 @@ input[type=search]:focus,
 }
 .page-header__logo::after {
   content: " ";
-  background-color: var(--fkds-color-border-inverted);
+  background-color: var(--fkds-color-header-text-primary);
   height: 1.38rem;
   padding: 0.5px;
   margin: 0 1rem 0.155rem;
@@ -4737,7 +4695,7 @@ input[type=search]:focus,
   margin: 0;
   font-size: var(--f-font-size-h3);
   font-weight: var(--f-font-weight-medium);
-  color: var(--fkds-color-text-inverted);
+  color: var(--fkds-color-header-text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -5392,7 +5350,7 @@ input[type=search]:focus,
 }
 
 .table-ng {
-  border-collapse: separate;
+  border-collapse: collapse;
   border-spacing: 0;
   font-size: var(--f-font-size-standard);
   margin: 0 0 calc(var(--f-margin-component-bottom) * var(--f-density-factor));
@@ -5440,10 +5398,9 @@ input[type=search]:focus,
   background: var(--fkds-color-background-secondary);
   color: var(--fkds-color-text-primary);
 }
-.table-ng--divided {
-  border-collapse: separate;
-  border-spacing: 0 1px;
-  background: var(--fkds-color-border-primary);
+.table-ng--divided tbody > tr > td,
+.table-ng--divided tbody > tr > th {
+  border-bottom: 1px solid var(--fkds-color-border-primary);
 }
 
 .table-ng__cell {
@@ -5575,7 +5532,7 @@ input[type=search]:focus,
 }
 .table-ng__cell--custom {
   padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;
-  border: 3px solid transparent;
+  border: 1px solid transparent;
 }
 .table-ng__cell--custom:focus {
   box-shadow: none;
@@ -6560,13 +6517,13 @@ body {
   --f-font-weight-medium: 600;
   --f-font-weight-bold: 700;
 }
-
-html,
-body {
-  margin: 0;
-  padding: 0;
+.sandbox-root {
+    width: min(100% - 2rem, 80ch);
+    margin: auto;
 }
-
-main {
-  padding: 1rem;
+h1 {
+    margin-top: 2rem;
+}
+hr {
+    margin-bottom: 2rem;
 }

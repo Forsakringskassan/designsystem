@@ -209,6 +209,7 @@
     --fkds-color-navigation-background-hover: #dbe9e2;
     --fkds-color-navigation-background-selected: #35805b;
     --fkds-color-header-background-primary: #116a3e;
+    --fkds-color-header-text-primary: #ffffff;
     --fkui-theme-default-version: "6.36.1";
   }
 }
@@ -397,7 +398,8 @@
     --fkds-color-navigation-border-selected: #35805b;
     --fkds-color-navigation-background-hover: #88b49f;
     --fkds-color-navigation-background-selected: #35805b;
-    --fkds-color-header-background-primary: #116a3e;
+    --fkds-color-header-background-primary: #35805b;
+    --fkds-color-header-text-primary: #ffffff;
     --fkui-theme-default-version: "6.36.1";
   }
 }
