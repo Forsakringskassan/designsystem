@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 6.37.0 (2026-02-25)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** add semantic color token for header texts (refs SFKUI-7658) 136f913
+
+### Bug Fixes
+
+* **@fkui/design:** expandable paragraph icon background not visible in higher contrast (fixes SFKUI-7576) a60742a
+* **@fkui/font-default, @fkui/icon-lib-builder:** fix nodejs version requirements (refs SFKUI-6500) 735dc67
+* **deps:** update dependency glob to v13.0.5 c4501c4
+* **deps:** update dependency glob to v13.0.6 a016f6e
+* **deps:** update dependency i18next to v25.8.10 e09d926
+* **deps:** update dependency i18next to v25.8.11 5b89141
+* **deps:** update dependency i18next to v25.8.13 20d88b1
+* **deps:** update dependency i18next to v25.8.8 8be9a3d
+
 ## 6.36.1 (2026-02-18)
 
 ### Bug Fixes
