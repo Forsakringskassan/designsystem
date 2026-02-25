@@ -49,6 +49,7 @@
     "production",
     "globala inställningar",
     "config",
+    "CHANGELOG v5",
     "Paginering",
     "FPaginateDataset",
     "FPaginator",
@@ -94,7 +95,6 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
-    "CHANGELOG v5",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -202,6 +202,9 @@
     "produktionsklar",
     "beta",
     "experimentell",
+    "EventBus",
+    "EventBus",
+    "services",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -215,9 +218,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -262,6 +262,12 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Om FKUI Vue Labs",
     "Kod (tillhör nya tabellkomponenten)",
     "visa data",
@@ -277,12 +283,6 @@
     "XFileDragdrop",
     "XFileDragdrop",
     "FTablePageObject",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -648,15 +648,15 @@
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
-    "FBadgePageObject: FBadgePageObject() constructor",
-    "FFileItemPageObject: status() method",
-    "FFileItemPageObject: inverted() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
+    "FBadgePageObject: FBadgePageObject() constructor",
+    "FFileItemPageObject: status() method",
+    "FFileItemPageObject: inverted() method",
     "CHANGELOG",
     "Bidra till designsystemet",
     "Automatisk testning"
@@ -770,6 +770,11 @@
         "globala inställningar",
         "config"
       ]
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
     },
     {
       "url": "components/pagination.html",
@@ -890,11 +895,6 @@
       "terms": [
         "FBadge"
       ]
-    },
-    {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -1121,6 +1121,14 @@
       ]
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1151,14 +1159,6 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
       ]
     },
     {
@@ -1241,6 +1241,27 @@
       ]
     },
     {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
       "url": "functions/labs/index.html",
       "title": "Om FKUI Vue Labs",
       "terms": []
@@ -1282,27 +1303,6 @@
       "url": "functions/labs/ftablepageobject.html",
       "title": "FTablePageObject",
       "terms": []
-    },
-    {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
     },
     {
       "url": "functions/helpers/index.html",
@@ -2305,21 +2305,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
-      "title": "FBadgePageObject: FBadgePageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
-      "title": "FFileItemPageObject: status() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
-      "title": "FFileItemPageObject: inverted() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": []
@@ -2347,6 +2332,21 @@
     {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
       "title": "FDetailsPanelPageObject: closeButton() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
+      "title": "FBadgePageObject: FBadgePageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
+      "title": "FFileItemPageObject: status() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
+      "title": "FFileItemPageObject: inverted() method",
       "terms": []
     },
     {
@@ -2416,50 +2416,50 @@
     "47": 12,
     "48": 12,
     "49": 13,
-    "50": 13,
-    "51": 13,
+    "50": 14,
+    "51": 14,
     "52": 14,
-    "53": 14,
+    "53": 15,
     "54": 15,
-    "55": 15,
+    "55": 16,
     "56": 16,
-    "57": 16,
-    "58": 16,
-    "59": 16,
-    "60": 16,
+    "57": 17,
+    "58": 17,
+    "59": 17,
+    "60": 17,
     "61": 17,
-    "62": 17,
+    "62": 18,
     "63": 18,
-    "64": 18,
+    "64": 19,
     "65": 19,
-    "66": 19,
-    "67": 19,
-    "68": 19,
-    "69": 19,
-    "70": 19,
+    "66": 20,
+    "67": 20,
+    "68": 20,
+    "69": 20,
+    "70": 20,
     "71": 20,
-    "72": 20,
+    "72": 21,
     "73": 21,
-    "74": 21,
-    "75": 21,
+    "74": 22,
+    "75": 22,
     "76": 22,
-    "77": 22,
-    "78": 22,
+    "77": 23,
+    "78": 23,
     "79": 23,
-    "80": 23,
+    "80": 24,
     "81": 24,
-    "82": 24,
-    "83": 24,
+    "82": 25,
+    "83": 25,
     "84": 25,
-    "85": 25,
+    "85": 26,
     "86": 26,
-    "87": 26,
-    "88": 26,
-    "89": 26,
-    "90": 26,
-    "91": 26,
+    "87": 27,
+    "88": 27,
+    "89": 27,
+    "90": 27,
+    "91": 27,
     "92": 27,
-    "93": 27,
+    "93": 28,
     "94": 28,
     "95": 29,
     "96": 29,
@@ -2571,17 +2571,17 @@
     "202": 53,
     "203": 53,
     "204": 53,
-    "205": 53,
+    "205": 54,
     "206": 54,
     "207": 54,
     "208": 54,
-    "209": 54,
+    "209": 55,
     "210": 55,
     "211": 55,
     "212": 55,
     "213": 56,
     "214": 56,
-    "215": 57,
+    "215": 56,
     "216": 57,
     "217": 57,
     "218": 58,
@@ -2629,25 +2629,25 @@
     "260": 64,
     "261": 64,
     "262": 65,
-    "263": 66,
+    "263": 65,
     "264": 66,
     "265": 66,
-    "266": 66,
-    "267": 66,
-    "268": 66,
-    "269": 66,
-    "270": 67,
-    "271": 67,
-    "272": 68,
-    "273": 68,
+    "266": 67,
+    "267": 67,
+    "268": 68,
+    "269": 69,
+    "270": 69,
+    "271": 69,
+    "272": 69,
+    "273": 69,
     "274": 69,
     "275": 69,
     "276": 70,
-    "277": 71,
+    "277": 70,
     "278": 71,
-    "279": 72,
+    "279": 71,
     "280": 72,
-    "281": 73,
+    "281": 72,
     "282": 73,
     "283": 74,
     "284": 74,
