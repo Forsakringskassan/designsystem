@@ -761,8 +761,22 @@ var metadata_default = {
           "palette": "green-a-100"
         },
         "dark": {
-          "value": "#116a3e",
-          "palette": "green-a-100"
+          "value": "#35805b",
+          "palette": "green-a-85"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-header-text-primary",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#fff",
+          "palette": null
+        },
+        "dark": {
+          "value": "#fff",
+          "palette": null
         }
       }
     },
