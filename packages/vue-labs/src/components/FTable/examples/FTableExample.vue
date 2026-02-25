@@ -23,6 +23,8 @@ interface Row {
     aktiv?: boolean;
 }
 
+const oformateradTextKolumnSynlig = ref(true);
+
 const columns = defineTableColumns<Row>([
     {
         type: "text",
@@ -31,6 +33,7 @@ const columns = defineTableColumns<Row>([
             /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
             return String(row.antal);
         },
+        enabled: oformateradTextKolumnSynlig,
     },
     {
         type: "checkbox",
@@ -271,6 +274,13 @@ function onRemoveSelectedRows(): void {
         </template>
     </f-sort-filter-dataset>
     <button type="button" class="button button--secondary" @click="onAddRow">Lägg till rad</button>
+    <button
+        type="button"
+        class="button button--secondary"
+        @click="oformateradTextKolumnSynlig = !oformateradTextKolumnSynlig"
+    >
+        Dölj/visa "Oformatterad text"
+    </button>
 </template>
 
 <style>

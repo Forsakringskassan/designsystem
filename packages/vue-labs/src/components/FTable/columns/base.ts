@@ -1,4 +1,4 @@
-import { type Ref, ref, toRef } from "vue";
+import { type MaybeRef, type Ref, ref, toRef } from "vue";
 
 /**
  * @public
@@ -14,6 +14,7 @@ export interface TableColumnBase {
     header: string | Readonly<Ref<string>>;
     description?: string | Readonly<Ref<string | null>>;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
+    enabled?: MaybeRef<boolean>;
 }
 
 /**
@@ -27,6 +28,7 @@ export interface NormalizedTableColumnBase<K> {
     readonly description: Readonly<Ref<string | null>>;
     readonly sortable: K | null;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
+    readonly enabled: MaybeRef<boolean>;
 }
 
 /**
@@ -40,7 +42,8 @@ export type OmittedNormalizedColumnProperties =
     | "header"
     | "description"
     | "size"
-    | "component";
+    | "component"
+    | "enabled";
 
 /**
  * @internal
@@ -65,5 +68,6 @@ export function normalizeBaseColumn(
         header,
         description,
         size,
+        enabled: column.enabled ?? true,
     };
 }
