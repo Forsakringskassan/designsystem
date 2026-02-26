@@ -39,6 +39,7 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
         &--active {
             color: var(--fkds-color-action-text-inverted-default);
             background-color: var(--fkds-color-action-background-primary-default);
+            @include forcedcolors.selected-indicator;
         }
 
         &:hover:enabled:not(&--active) {
