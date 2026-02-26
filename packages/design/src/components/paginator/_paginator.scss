@@ -28,7 +28,7 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
     &__page,
     &__previous,
     &__next {
-        border: none;
+        border: 2px solid transparent;
         color: var(--fkds-color-text-primary);
         height: $button-height;
         background-color: transparent;
@@ -44,7 +44,7 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
 
         &:hover:enabled:not(&--active) {
             background-color: var(--fkds-color-action-background-secondary-hover);
-            @include forcedcolors.hover-indicator(outline, 2px);
+            @include forcedcolors.hover-indicator(border, 2px);
         }
     }
 
