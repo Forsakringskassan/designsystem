@@ -1,4 +1,5 @@
 @use "../../core";
+@use "../../core/mixins/forcedcolors";
 @use "../../core/size";
 @use "variables" as *;
 
@@ -42,6 +43,7 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
 
         &:hover:enabled:not(&--active) {
             background-color: var(--fkds-color-action-background-secondary-hover);
+            @include forcedcolors.hover-indicator(outline, 2px);
         }
     }
 
