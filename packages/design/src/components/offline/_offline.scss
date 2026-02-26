@@ -2,6 +2,7 @@
 @use "../message-box/message-box";
 @use "../z-index";
 @use "../icon/icon";
+@use "../icon/icon-stack";
 
 // @at-root is used to set these classes globally due to styling scope issue where the component is used out of the styling scope
 @at-root {
