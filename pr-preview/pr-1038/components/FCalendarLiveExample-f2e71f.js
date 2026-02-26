@@ -4634,7 +4634,6 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
                   /* TEXT */
                 ),
                 _createCommentVNode11(' `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.\n                        `IPopupError` will be closed on input-field `blur`, so the button is never focusable anyway .\n                    '),
-                _createCommentVNode11(" [html-validate-disable-next fkui/class-deprecated -- technical debt] "),
                 _ctx.layout === "f-interactive-table" ? (_openBlock13(), _createElementBlock12("button", {
                   key: 1,
                   tabindex: "-1",
