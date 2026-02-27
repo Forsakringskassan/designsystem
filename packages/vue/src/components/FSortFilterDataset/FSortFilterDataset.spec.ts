@@ -1,5 +1,5 @@
 import "html-validate/jest";
-import { defineComponent } from "vue";
+import { defineComponent, nextTick } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import FSortFilterDataset from "./FSortFilterDataset.vue";
 import {
@@ -198,6 +198,7 @@ it("should emit event with used attributes when sorting using table heading", as
 
     spyGetUsedSortAttributes.mockClear();
     getUnderlyingComponent(wrapper).triggersort("b", false);
+    await nextTick();
 
     expect(spyGetUsedSortAttributes).toHaveBeenCalledTimes(1);
     expect(spyGetUsedSortAttributes).toHaveBeenCalledWith({
@@ -210,6 +211,7 @@ it("should emit event with used attributes when sorting using table heading", as
 
     spyGetUsedSortAttributes.mockClear();
     getUnderlyingComponent(wrapper).triggersort("", true);
+    await nextTick();
 
     expect(spyGetUsedSortAttributes).toHaveBeenCalledTimes(1);
     expect(spyGetUsedSortAttributes).toHaveBeenCalledWith({
