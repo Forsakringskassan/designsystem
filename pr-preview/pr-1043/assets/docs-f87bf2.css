@@ -4583,6 +4583,11 @@ input[type=search]:focus,
 .imenu--horizontal .imenu__list__item:not(.imenu__list__item--highlight) .imenu__list__anchor-container:hover {
   border-bottom: 5px solid var(--fkds-color-navigation-border-hover);
 }
+@media (forced-colors: active) {
+  .imenu--horizontal .imenu__list__item:not(.imenu__list__item--highlight) .imenu__list__anchor-container:hover {
+    border-bottom: 5px solid highlight;
+  }
+}
 .imenu--horizontal .imenu__list__anchor-container {
   padding-bottom: 0.5rem;
 }
