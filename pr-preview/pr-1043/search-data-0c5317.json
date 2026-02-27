@@ -149,25 +149,6 @@
     "scss",
     "css",
     "ikonbibliotek",
-    "Version 5 migreringsguide",
-    "Vue 3",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
-    "På gång",
-    "pågående arbete",
-    "planerat arbete",
-    "framtid",
-    "Releaser",
-    "deprekering",
-    "borttagna komponenter",
-    "Releaseanteckningar",
-    "version",
-    "Designsystemet",
-    "status",
-    "produktionsklar",
-    "beta",
-    "experimentell",
     "Testverktyg",
     "testfall",
     "jest",
@@ -203,6 +184,25 @@
     "Riktlinjer för kod",
     "Checklista vid publicering",
     "personuppgifter",
+    "På gång",
+    "pågående arbete",
+    "planerat arbete",
+    "framtid",
+    "Releaser",
+    "deprekering",
+    "borttagna komponenter",
+    "Releaseanteckningar",
+    "version",
+    "Designsystemet",
+    "status",
+    "produktionsklar",
+    "beta",
+    "experimentell",
+    "Version 5 migreringsguide",
+    "Vue 3",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -216,9 +216,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -226,6 +223,9 @@
     "densify() function",
     "densitet",
     "sass",
+    "EventBus",
+    "EventBus",
+    "services",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -1007,59 +1007,6 @@
       ]
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": [
-        "Vue 3"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/roadmap.html",
-      "title": "På gång",
-      "terms": [
-        "pågående arbete",
-        "planerat arbete",
-        "framtid"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/releases.html",
-      "title": "Releaser",
-      "terms": [
-        "deprekering",
-        "borttagna komponenter"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/release-notes.html",
-      "title": "Releaseanteckningar",
-      "terms": [
-        "version"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/index.html",
-      "title": "Designsystemet",
-      "terms": [
-        "status",
-        "produktionsklar",
-        "beta",
-        "experimentell"
-      ]
-    },
-    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": [
@@ -1123,6 +1070,59 @@
       ]
     },
     {
+      "url": "gettingstarted/about/roadmap.html",
+      "title": "På gång",
+      "terms": [
+        "pågående arbete",
+        "planerat arbete",
+        "framtid"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/releases.html",
+      "title": "Releaser",
+      "terms": [
+        "deprekering",
+        "borttagna komponenter"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/release-notes.html",
+      "title": "Releaseanteckningar",
+      "terms": [
+        "version"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/index.html",
+      "title": "Designsystemet",
+      "terms": [
+        "status",
+        "produktionsklar",
+        "beta",
+        "experimentell"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": [
+        "Vue 3"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
+    },
+    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1156,14 +1156,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1178,6 +1170,14 @@
       "terms": [
         "densitet",
         "sass"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -2519,54 +2519,54 @@
     "148": 39,
     "149": 40,
     "150": 40,
-    "151": 41,
-    "152": 42,
-    "153": 42,
-    "154": 43,
-    "155": 43,
-    "156": 43,
-    "157": 43,
-    "158": 44,
-    "159": 44,
-    "160": 44,
-    "161": 45,
-    "162": 45,
-    "163": 46,
-    "164": 46,
-    "165": 46,
-    "166": 46,
-    "167": 46,
-    "168": 47,
-    "169": 47,
-    "170": 47,
-    "171": 47,
-    "172": 47,
-    "173": 47,
-    "174": 47,
-    "175": 47,
-    "176": 47,
-    "177": 47,
-    "178": 47,
-    "179": 47,
-    "180": 47,
-    "181": 47,
-    "182": 48,
-    "183": 48,
-    "184": 48,
-    "185": 48,
-    "186": 48,
-    "187": 48,
-    "188": 48,
-    "189": 48,
-    "190": 48,
-    "191": 49,
-    "192": 49,
+    "151": 40,
+    "152": 40,
+    "153": 40,
+    "154": 40,
+    "155": 40,
+    "156": 40,
+    "157": 40,
+    "158": 40,
+    "159": 40,
+    "160": 40,
+    "161": 40,
+    "162": 40,
+    "163": 41,
+    "164": 41,
+    "165": 41,
+    "166": 41,
+    "167": 41,
+    "168": 41,
+    "169": 41,
+    "170": 41,
+    "171": 41,
+    "172": 42,
+    "173": 42,
+    "174": 42,
+    "175": 42,
+    "176": 42,
+    "177": 42,
+    "178": 42,
+    "179": 42,
+    "180": 43,
+    "181": 44,
+    "182": 45,
+    "183": 45,
+    "184": 46,
+    "185": 46,
+    "186": 46,
+    "187": 46,
+    "188": 47,
+    "189": 47,
+    "190": 47,
+    "191": 48,
+    "192": 48,
     "193": 49,
     "194": 49,
     "195": 49,
     "196": 49,
     "197": 49,
-    "198": 49,
+    "198": 50,
     "199": 50,
     "200": 51,
     "201": 52,
@@ -2587,7 +2587,7 @@
     "216": 57,
     "217": 57,
     "218": 57,
-    "219": 58,
+    "219": 57,
     "220": 58,
     "221": 58,
     "222": 58,
