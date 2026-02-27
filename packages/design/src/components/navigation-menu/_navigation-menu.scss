@@ -54,6 +54,7 @@
             &:hover {
                 font-weight: var(--f-font-weight-normal);
                 background-color: $navigationmenu-vertical-color-background-hover;
+                @include forcedcolors.hover-indicator(outline, 2px);
             }
 
             &--highlight {
