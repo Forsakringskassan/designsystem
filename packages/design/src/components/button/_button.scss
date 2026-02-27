@@ -241,6 +241,7 @@ $button--tertiary: (
         font-weight: var(--f-font-weight-bold);
         outline-offset: size.$padding-025;
         line-height: calc(1.25 * var(--f-font-size-standard));
+        align-items: flex-start;
 
         @include core.make-button-variant(".button", $button--discrete...);
 
@@ -267,6 +268,9 @@ $button--tertiary: (
         &:active,
         &:hover {
             border-radius: var(--f-button-discrete-radius-hover);
+        }
+        & > .button__icon {
+            flex-shrink: 0;
         }
     }
 
