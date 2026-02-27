@@ -9,9 +9,17 @@ export {
     SimplePersistenceService,
 } from "./PersistenceService";
 export {
+    type BuildDepth,
+    type CustomTranslationRegistry,
+    type Join,
+    type NestedKeys,
+    type PathMap,
+    type Prev,
+    type ResolveTranslationKey,
     type TranslateFunction,
     type TranslationProviderInterface,
     type TranslationServiceInterface,
+    type ValidKey,
     TranslationService,
 } from "./TranslationService";
 export {

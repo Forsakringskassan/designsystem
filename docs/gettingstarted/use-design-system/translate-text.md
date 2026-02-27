@@ -9,6 +9,7 @@ search:
         - översättning
         - översätta
         - i18n
+        - textnycklar
 ---
 
 Alla komponenter från designsystemet har stöd för att anpassa och översätta texter.
@@ -161,3 +162,111 @@ Om du använder textnycklar måste texterna ha hämtats ner innan valideringsfel
 [TranslationService]: ../../logic/variables/TranslationService.html
 [TranslationProvider]: ../../logic/interfaces/TranslationProviderInterface.html
 [ValidationService]: ../../logic/variables/ValidationService.html
+
+## Strikt typning av textnycklar
+
+Som standard accepterar `$t()`-funktionen och `useTranslate()` vilken textsträng som helst som nyckel.
+För att få en bättre utvecklarupplevelse med autokomplettering i din IDE (IntelliSense) och för att fånga upp felstavade eller saknade textnycklar redan vid kompilering, kan du registrera dina textnycklar globalt i biblioteket.
+
+### TypeScript-konfiguration (`tsconfig.json`)
+
+För att din globala typ-fil (`.d.ts`) ska registreras och för att TypeScript ska kunna läsa in dina JSON-filer som underlag för nycklarna, krävs specifika inställningar i din `tsconfig.json`.
+
+#### Inkludera din definitionsfil
+
+Kontrollera att mappen där du skapat din `translations.d.ts` ingår i projektets källfiler. Om du har en strikt `include`-lista måste du lägga till din types-mapp:
+
+```jsonc
+{
+    "include": [
+        "src/types/**/*.d.ts", // Säkerställ att denna rad finns
+    ],
+}
+```
+
+#### Tillåt import av JSON
+
+Eftersom `RepoSchema` bygger på `typeof data`, där `data` är en importerad `.json`-fil, måste TypeScript tillåtas att läsa JSON-moduler som en del av typsystemet:
+
+```jsonc
+{
+    "compilerOptions": {
+        "resolveJsonModule": true, // Krävs för att importera .json-filer som typ-underlag
+        "esModuleInterop": true, // Krävs ofta för att hantera default imports från JSON
+    },
+}
+```
+
+### Implementering
+
+Skapa en global definitionsfil, förslagsvis `src/types/translations.d.ts`, i ditt projekt. Det är viktigt att du importerar din faktiska JSON-fil och använder hjälptypen `NestedKeys` för att skapa en union av alla möjliga nycklar.
+
+```ts nocompile nolint
+// src/types/translations.d.ts
+
+// 1. Importera biblioteket (krävs för att module augmentation ska fungera)
+import { type NestedKeys } from "@fkui/logic";
+
+// 2. Importera din källa för textnycklar (t.ex. en språkfil)
+import data from "data.json";
+
+// 3. Definiera schemat
+type RepoSchema = typeof data;
+
+// 4. Utöka bibliotekets interna interface
+declare module "@fkui/logic" {
+    export interface CustomTranslationRegistry {
+        Keys: NestedKeys<RepoSchema>;
+    }
+}
+```
+
+Givet att `data.json` har följande format:
+
+```json
+{
+    "awesome-component": {
+        "label": "Awesome label",
+        "screenreader": "Text for screenreader"
+    }
+}
+```
+
+### Undantag: Dynamiska nycklar och råa strängar
+
+Ibland räcker inte den strikta typningen till.
+Ett vanligt scenario är när du bygger en textnyckel dynamiskt baserat på data från ett API (t.ex. en status eller en förmånstyp), eller när du skickar vidare `$t` som en prop till en hjälpfunktion.
+
+Eftersom TypeScript inte kan veta vid kompilering exakt vad ett API-svar kommer att innehålla, kommer den strikta typningen att varna för att en vanlig `string` inte matchar dina kända nycklar.
+
+#### Hantering med Generic `TranslateFunction<string>`
+
+För att lösa detta kan du explicit typa om funktionen till `TranslateFunction<string>`. Detta "låser upp" funktionen så att den återigen accepterar vilken sträng som helst.
+
+**Exempel i en hjälpfunktion:**
+När du skapar en funktion som tar emot översättningsfunktionen som argument, deklarera den som `TranslateFunction<string>`.
+
+```ts nocompile nolint
+function formateraText(t: TranslateFunction<string>): string {
+    // 'value' är en sträng från ett API som byggs ihop till en nyckel.
+    // TypeScript tillåter detta eftersom vi använder TranslateFunction<string>.
+    const value = props.value;
+    return t(`data.${value}`);
+}
+```
+
+#### Användning i template
+
+Om du har aktiverat den strikta typningen globalt (via `CustomTranslationRegistry`) kommer den lokala `$t`-funktionen i dina komponenter att förvänta sig kända nycklar.
+
+När du behöver skicka `$t` till en hjälpfunktion som hanterar dynamiska strängar (som i exemplet med `formateraText`), måste du casta om den med `as TranslateFunction<string>` för att undvika typfel.
+
+**Kodexempel:**
+
+```tsx nocompile nolint
+<p>
+    {{
+       formateraText($t as TranslateFunction<string>),
+    }}
+</p>
+```

@@ -28,6 +28,8 @@ const contentRef = useTemplateRef<HTMLElement>("content");
 const teleportDisabled = false;
 const popupClasses = ["popup", "popup--overlay"];
 const teleportTarget = computed(() => config.teleportTarget);
+const debouncedOnResize = debounce(onResize, 100);
+const debouncedOnScroll = debounce(onScroll, 100);
 let guessedItemHeight: number | undefined = undefined;
 let verticalSpacing: number | undefined = undefined;
 
@@ -53,12 +55,14 @@ watchEffect(() => {
 
 function addListeners(): void {
     document.addEventListener("click", onDocumentClickHandler);
-    window.addEventListener("resize", debounce(onResize, 100));
+    window.addEventListener("resize", debouncedOnResize);
+    window.addEventListener("scroll", debouncedOnScroll, { capture: true });
 }
 
 function removeListeners(): void {
     document.removeEventListener("click", onDocumentClickHandler);
-    window.removeEventListener("resize", debounce(onResize, 100));
+    window.removeEventListener("resize", debouncedOnResize);
+    window.removeEventListener("scroll", debouncedOnScroll, { capture: true });
 }
 
 function isElementInsideViewport(element: Element): boolean {
@@ -110,6 +114,14 @@ function onResize(): void {
     }
 }
 
+function onScroll(event: Event): void {
+    const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
+    if (isPopupTarget) {
+        return;
+    }
+    calculatePosition({ horizontalOnly: true });
+}
+
 function onKeyEsc(event: KeyboardEvent): void {
     if (event.key === "Escape") {
         emit("close");
@@ -120,7 +132,7 @@ function guessItemHeight(numOfItems: number, contentWrapper: HTMLElement): numbe
     return Math.ceil(contentWrapper.clientHeight / numOfItems);
 }
 
-function calculatePosition(): void {
+function calculatePosition(options?: { horizontalOnly: boolean }): void {
     const wrapperElement = wrapperRef.value;
     const contentWrapper = contentRef.value;
 
@@ -153,8 +165,13 @@ function calculatePosition(): void {
         const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
         const offsetLeft = Math.floor((offsetRect?.x ?? 0) + window.scrollX);
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
-        wrapperElement.style.top = `${String(top - offSetTop)}px`;
+
         wrapperElement.style.left = `${String(left - offsetLeft)}px`;
+        if (options?.horizontalOnly) {
+            return;
+        }
+
+        wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.width = `${String(width)}px`;
         contentWrapper.style.maxHeight = `${String(height)}px`;
         contentWrapper.style.width = `${String(width)}px`;
