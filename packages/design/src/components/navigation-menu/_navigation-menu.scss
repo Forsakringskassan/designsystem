@@ -1,5 +1,6 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints";
+@use "../../core/mixins/forcedcolors";
 @use "../../core/config-variables";
 @use "variables" as *;
 
@@ -104,6 +105,7 @@
 
         &__item:not(.imenu__list__item--highlight) .imenu__list__anchor-container:hover {
             border-bottom: 5px solid $navigationmenu-horizontal-color-border-hover;
+            @include forcedcolors.hover-indicator(border-bottom, 5px);
         }
 
         &__anchor-container {
