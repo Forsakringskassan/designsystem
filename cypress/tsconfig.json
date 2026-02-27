@@ -7,7 +7,8 @@
             "cy-mount",
             "cypress-html-validate/commands",
             "cypress-real-events",
-            "@forsakringskassan/cypress-visual-regression/commands"
+            "@forsakringskassan/cypress-visual-regression/commands",
+            "forcedColors"
         ],
         "typeRoots": ["../node_modules", "../node_modules/@types", "./types"],
         "paths": {

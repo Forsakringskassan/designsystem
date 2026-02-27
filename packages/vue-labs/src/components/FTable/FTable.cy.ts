@@ -11,6 +11,8 @@ import { defineTableColumns } from "./table-column";
 
 const table = new FTablePageObject();
 
+const forcedColorModes = ["none", "dark", "light"] as const;
+
 function renderButton(
     text: string,
     options?: { dataTest?: string; onClick?: () => void; type?: string },
@@ -545,47 +547,56 @@ describe("3.1 Feedback to user on invalid input components", () => {
         cy.get("@onComponentValidity").should("not.have.been.called");
     });
 
-    it("should render invalid cell styling and tooltip (visual)", () => {
-        interface Row {
-            text: string;
-        }
-
-        const columns = defineTableColumns<Row>([
-            {
-                type: "text",
-                header: "Max 5",
-                editable: true,
-                key: "text",
-                label: () => "text",
-                validation: {
-                    maxLength: { length: 5 },
-                },
-            },
-        ]);
-
-        const rows: Row[] = [
-            { text: "12345" },
-            { text: "123456" },
-            { text: "12345" },
-            { text: "12345" },
-        ];
-
-        cy.mount(FTable<Row>, {
-            props: { rows, columns },
-            slots: {
-                caption:
-                    "Verifierar felindikering och tooltip vid ogiltigt värde.",
-            },
+    describe("Visual", () => {
+        afterEach(() => {
+            cy.forcedColors("none");
         });
 
-        table
-            .cell({ row: 2, col: 1 })
-            .should("have.class", "table-ng__cell--error")
-            .trigger("mouseenter");
+        Object.values(forcedColorModes).forEach((mode) => {
+            it(`should render invalid cell styling and tooltip, mode ${mode} (visual)`, () => {
+                interface Row {
+                    text: string;
+                }
 
-        cy.get(".popup-error").should("be.visible");
+                const columns = defineTableColumns<Row>([
+                    {
+                        type: "text",
+                        header: "Max 5",
+                        editable: true,
+                        key: "text",
+                        label: () => "text",
+                        validation: {
+                            maxLength: { length: 5 },
+                        },
+                    },
+                ]);
 
-        cy.toMatchScreenshot();
+                const rows: Row[] = [
+                    { text: "12345" },
+                    { text: "123456" },
+                    { text: "12345" },
+                    { text: "12345" },
+                ];
+
+                cy.forcedColors(mode);
+                cy.mount(FTable<Row>, {
+                    props: { rows, columns },
+                    slots: {
+                        caption:
+                            "Verifierar felindikering och tooltip vid ogiltigt värde.",
+                    },
+                });
+
+                table
+                    .cell({ row: 2, col: 1 })
+                    .should("have.class", "table-ng__cell--error")
+                    .trigger("mouseenter");
+
+                cy.get(".popup-error").should("be.visible");
+
+                table.el().toMatchScreenshot();
+            });
+        });
     });
 });
 
@@ -1505,7 +1516,7 @@ describe("Radio button single‑select functionality in table", () => {
         table.selectInput(2).should("not.be.checked");
     });
 
-    it("should render radio buttons, single select correctly (visual check)", () => {
+    it(`should render radio buttons, single select correctly (visual check)`, () => {
         const selectedRows: Row[] = [];
         cy.mount(FTable<Row>, {
             props: {
@@ -2028,15 +2039,25 @@ describe("13 Cell interaction states", () => {
         { plain: "B1", text: "B2", button: "B3" },
     ];
 
-    it("13.1 should render focus underline on editable cell (visual)", () => {
-        cy.mount(FTable<Row>, {
-            props: { rows, columns },
-            slots: { caption: "Verifierar understrykning för redigerbar cell" },
+    afterEach(() => {
+        cy.forcedColors("none");
+    });
+
+    Object.values(forcedColorModes).forEach((mode) => {
+        it(`13.1 should render focus underline on editable cell, mode ${mode} (visual)`, () => {
+            cy.forcedColors(mode);
+
+            cy.mount(FTable<Row>, {
+                props: { rows, columns },
+                slots: {
+                    caption: "Verifierar understrykning för redigerbar cell",
+                },
+            });
+
+            table.cell({ row: 1, col: 2 }).click();
+            table.cell({ row: 1, col: 2 }).find("input").should("be.focused");
+
+            table.el().toMatchScreenshot();
         });
-
-        table.cell({ row: 1, col: 2 }).click();
-        table.cell({ row: 1, col: 2 }).find("input").should("be.focused");
-
-        cy.toMatchScreenshot();
     });
 });
