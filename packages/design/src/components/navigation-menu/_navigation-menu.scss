@@ -59,6 +59,7 @@
             &--highlight {
                 font-weight: var(--f-font-weight-medium);
                 background-color: $navigationmenu-vertical-color-background-selected;
+                @include forcedcolors.selected-indicator;
 
                 .imenu__list__anchor {
                     color: $navigationmenu-vertical-menuitem-color-text-selected;
