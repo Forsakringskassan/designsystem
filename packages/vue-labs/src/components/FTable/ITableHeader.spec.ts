@@ -50,7 +50,7 @@ describe("description", () => {
     });
 });
 
-describe("sorting aria attributes", () => {
+describe("9.1 sorting aria attributes", () => {
     it.each`
         order
         ${"ascending"}

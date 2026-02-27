@@ -512,7 +512,7 @@ describe("6 Expandable table", () => {
         expect(bodyRows[5].attributes("aria-level")).toBe("2");
     });
 
-    it("should render custom expanded row with colspan spanning all columns", async () => {
+    it("6.6 should render custom expanded row with colspan spanning all columns", async () => {
         const customColumns = defineTableColumns<(typeof rows)[number]>([
             {
                 type: "text",
@@ -556,7 +556,7 @@ describe("6 Expandable table", () => {
     });
 });
 
-describe("footer", () => {
+describe("1.17 footer", () => {
     it("should add footer slot content to table footer", () => {
         const wrapper = mount(FTable, {
             props: {
@@ -660,7 +660,7 @@ describe("footer", () => {
     });
 });
 
-describe("caption", () => {
+describe("1.1 caption", () => {
     it("should not render if missing slot 'caption'", () => {
         const wrapper = mount(FTable, {
             attrs: {
