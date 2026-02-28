@@ -5,7 +5,7 @@ import type { Ref } from "vue";
  */
 
 export interface SortableAttribute {
-    attribute: string;
+    attribute: PropertyKey;
     name: string | Readonly<Ref<string>>;
     ascendingName: string;
     ascending: boolean;

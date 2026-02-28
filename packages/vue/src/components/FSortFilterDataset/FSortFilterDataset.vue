@@ -25,7 +25,7 @@ export interface FSortFilterDatasetProps<T> {
      * All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.
      * Structured as `{attributeName: "Name for dropdown", secondAttributeName: "Name for dropdown"}`
      */
-    sortableAttributes: Record<string, string | Readonly<Ref<string>>>;
+    sortableAttributes: Record<PropertyKey, string | Readonly<Ref<string>>>;
     /**
      * If set the data will be sorted by this attribute by default.
      */
@@ -51,7 +51,7 @@ export interface FSortFilterDatasetProps<T> {
      * Attributes that should be included in search when filtering by input.
      * Default includes all attributes.
      */
-    filterAttributes?: string[];
+    filterAttributes?: PropertyKey[];
 }
 
 const {

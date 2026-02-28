@@ -40,8 +40,8 @@ function createWrapper({ slots = {} } = {}): VueWrapper {
 }
 
 interface UnderlyingComponentData {
-    sortableAttributes: string[];
-    currentSortAttribute: string;
+    sortableAttributes: PropertyKey[];
+    currentSortAttribute: PropertyKey;
     currentAscending: boolean;
 }
 
@@ -64,13 +64,13 @@ const UnderlyingComponent = defineComponent({
         testSort(): void {
             this.sort("b", false);
         },
-        triggersort(column: string, ascending: boolean): void {
+        triggersort(column: PropertyKey, ascending: boolean): void {
             this.sort(column, ascending);
         },
-        callbackSortableColumns(columns: string[]): void {
+        callbackSortableColumns(columns: PropertyKey[]): void {
             this.sortableAttributes = columns;
         },
-        callbackOnSort(columnName: string, ascending: boolean): void {
+        callbackOnSort(columnName: PropertyKey, ascending: boolean): void {
             this.currentSortAttribute = columnName;
             this.currentAscending = ascending;
         },
