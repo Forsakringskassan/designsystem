@@ -5,16 +5,16 @@ import { inject } from "vue";
  * @param attribute - is the field that got sorted
  * @param ascending - is the order the fields got sorted
  */
-export type FSortFilterDatasetSortCallback = (
-    attribute: PropertyKey,
+export type FSortFilterDatasetSortCallback<TKeys = PropertyKey> = (
+    attribute: TKeys,
     ascending: boolean,
 ) => void;
 
 /**
  * @public
  */
-export type FSortFilterDatasetMountCallback = (
-    columnNames: PropertyKey[],
+export type FSortFilterDatasetMountCallback<TKeys = PropertyKey> = (
+    columnNames: TKeys[],
 ) => void;
 
 /**
@@ -23,20 +23,20 @@ export type FSortFilterDatasetMountCallback = (
  *
  * @public
  */
-export interface FSortFilterDatasetInterface {
+export interface FSortFilterDatasetInterface<TKeys = PropertyKey> {
     /**
      * Sort the dataset
      * @param attribute - is the field that gets sorted
      * @param ascending - is the order the fields get sorted
      */
-    sort(this: void, attribute: PropertyKey, ascending: boolean): void;
+    sort(this: void, attribute: TKeys, ascending: boolean): void;
 
     /**
      * Callback function that is called when dataset get sorted
      */
     registerCallbackOnSort(
         this: void,
-        callback: FSortFilterDatasetSortCallback,
+        callback: FSortFilterDatasetSortCallback<TKeys>,
     ): void;
 
     /**
@@ -45,7 +45,7 @@ export interface FSortFilterDatasetInterface {
      */
     registerCallbackOnMount(
         this: void,
-        callback: FSortFilterDatasetMountCallback,
+        callback: FSortFilterDatasetMountCallback<TKeys>,
     ): void;
 }
 
@@ -54,19 +54,21 @@ export interface FSortFilterDatasetInterface {
  *
  * @public
  */
-export function FSortFilterDatasetInjected(): FSortFilterDatasetInterface {
+export function FSortFilterDatasetInjected<
+    TKeys = PropertyKey,
+>(): FSortFilterDatasetInterface<TKeys> {
     return {
         sort: inject("sort", () => undefined) as (
-            attribute: string,
+            attribute: TKeys,
             ascending: boolean,
         ) => void,
         registerCallbackOnSort: inject(
             "registerCallbackOnSort",
             () => undefined,
-        ) as (callback: FSortFilterDatasetSortCallback) => void,
+        ) as (callback: FSortFilterDatasetSortCallback<TKeys>) => void,
         registerCallbackOnMount: inject(
             "registerCallbackOnMount",
             () => undefined,
-        ) as (callback: FSortFilterDatasetMountCallback) => void,
+        ) as (callback: FSortFilterDatasetMountCallback<TKeys>) => void,
     };
 }
