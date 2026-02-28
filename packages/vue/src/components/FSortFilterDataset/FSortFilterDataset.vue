@@ -200,7 +200,7 @@ function sortFilterData(): void {
     if (sortAttribute.value.attribute === "") {
         sortFilterResult.value = filteredData;
     } else {
-        sortFilterResult.value = sort([...filteredData], sortAttribute.value.attribute, sortAttribute.value.ascending);
+        sortFilterResult.value = sort(filteredData, sortAttribute.value.attribute, sortAttribute.value.ascending);
     }
     // Await slot mount, otherwise if defaultSortAttribute is used the slot doesn't have time to register tableCallbackOnSort before this is called.
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */

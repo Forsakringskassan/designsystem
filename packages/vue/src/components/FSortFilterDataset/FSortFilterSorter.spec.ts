@@ -98,4 +98,20 @@ describe("FSortFilterSorter", () => {
             Attribute 'val' comparsion of types 'object' and 'string' is not supported.`,
         );
     });
+
+    it("should not mutate the original array", () => {
+        expect.assertions(2);
+        const data = [{ text: "ccc" }, { text: "aaa" }, { text: "bbb" }];
+        const result = sort(data, "text", true);
+        expect(data).toEqual([
+            { text: "ccc" },
+            { text: "aaa" },
+            { text: "bbb" },
+        ]);
+        expect(result).toEqual([
+            { text: "aaa" },
+            { text: "bbb" },
+            { text: "ccc" },
+        ]);
+    });
 });
