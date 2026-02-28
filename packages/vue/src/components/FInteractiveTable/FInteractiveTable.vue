@@ -503,11 +503,11 @@ function onClickColumnHeader(column: FTableColumnData): void {
     sort(columnName, column.sort !== FTableColumnSort.ASCENDING);
 }
 
-function callbackOnSort(columnName: string, ascending: boolean): void {
+function callbackOnSort(columnName: PropertyKey, ascending: boolean): void {
     updateSortOrder(columns.value, columnName, ascending);
 }
 
-function callbackSortableColumns(columnNames: string[]): void {
+function callbackSortableColumns(columnNames: PropertyKey[]): void {
     setSortableColumns(columns.value, columnNames);
 }
 

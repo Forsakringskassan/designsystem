@@ -2,7 +2,7 @@ import { isSet } from "@fkui/logic";
 
 export function sort<T>(
     list: T[],
-    sortAttribute: string,
+    sortAttribute: PropertyKey,
     ascending: boolean,
 ): T[] {
     return list.sort((item1, item2) =>

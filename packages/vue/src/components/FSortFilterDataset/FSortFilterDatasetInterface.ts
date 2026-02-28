@@ -6,14 +6,16 @@ import { inject } from "vue";
  * @param ascending - is the order the fields got sorted
  */
 export type FSortFilterDatasetSortCallback = (
-    attribute: string,
+    attribute: PropertyKey,
     ascending: boolean,
 ) => void;
 
 /**
  * @public
  */
-export type FSortFilterDatasetMountCallback = (columnNames: string[]) => void;
+export type FSortFilterDatasetMountCallback = (
+    columnNames: PropertyKey[],
+) => void;
 
 /**
  * This interface can be implemented (provided) by Vue components
@@ -27,7 +29,7 @@ export interface FSortFilterDatasetInterface {
      * @param attribute - is the field that gets sorted
      * @param ascending - is the order the fields get sorted
      */
-    sort(this: void, attribute: string, ascending: boolean): void;
+    sort(this: void, attribute: PropertyKey, ascending: boolean): void;
 
     /**
      * Callback function that is called when dataset get sorted

@@ -771,14 +771,14 @@ export function FSortFilterDatasetInjected(): FSortFilterDatasetInterface;
 export interface FSortFilterDatasetInterface {
     registerCallbackOnMount(this: void, callback: FSortFilterDatasetMountCallback): void;
     registerCallbackOnSort(this: void, callback: FSortFilterDatasetSortCallback): void;
-    sort(this: void, attribute: string, ascending: boolean): void;
+    sort(this: void, attribute: PropertyKey, ascending: boolean): void;
 }
 
 // @public (undocumented)
-export type FSortFilterDatasetMountCallback = (columnNames: string[]) => void;
+export type FSortFilterDatasetMountCallback = (columnNames: PropertyKey[]) => void;
 
 // @public (undocumented)
-export type FSortFilterDatasetSortCallback = (attribute: string, ascending: boolean) => void;
+export type FSortFilterDatasetSortCallback = (attribute: PropertyKey, ascending: boolean) => void;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_48" needs to be exported by the entry point index.d.ts
 //
@@ -802,7 +802,7 @@ export interface FTableColumnData {
     // (undocumented)
     id: string;
     // (undocumented)
-    name?: string;
+    name?: PropertyKey;
     // (undocumented)
     size: FTableColumnSize;
     // (undocumented)
@@ -1334,7 +1334,7 @@ export interface SortOrder {
     // (undocumented)
     ascendingName: string;
     // (undocumented)
-    attribute: string;
+    attribute: PropertyKey;
     // (undocumented)
     id: number;
     // (undocumented)
