@@ -41,7 +41,7 @@
   "devDependencies": {
     "@fkui/icon-lib-default": "6.37.0",
     "@fkui/theme-default": "6.37.0",
-    "autoprefixer": "10.4.25",
+    "autoprefixer": "10.4.27",
     "cssnano": "7.1.2",
     "glob": "13.0.6",
     "picocolors": "1.1.1",
