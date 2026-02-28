@@ -5,7 +5,10 @@ export function sort<T>(
     sortAttribute: PropertyKey,
     ascending: boolean,
 ): T[] {
-    return list.sort((item1, item2) =>
+    /* until we can use `toSorted()` we need to create the shallow copy
+     * ourselves to avoid mutating the original list. */
+    const shallowCopy = [...list];
+    return shallowCopy.sort((item1, item2) =>
         compare(item1, item2, sortAttribute as keyof T, ascending),
     );
 }
