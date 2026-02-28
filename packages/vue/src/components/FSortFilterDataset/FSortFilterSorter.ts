@@ -5,19 +5,23 @@ import { isSet } from "@fkui/logic";
  */
 export function sort<T>(
     list: T[],
-    sortAttribute: keyof T | "",
-    ascending: boolean,
+    options: {
+        attribute: keyof T | "";
+        ascending: boolean;
+    },
 ): T[] {
+    const { attribute, ascending } = options;
+
     /* until we can use `toSorted()` we need to create the shallow copy
      * ourselves to avoid mutating the original list. */
     const shallowCopy = [...list];
 
-    if (sortAttribute === "") {
+    if (attribute === "") {
         return shallowCopy;
     }
 
     return shallowCopy.sort((item1, item2) =>
-        compare(item1, item2, sortAttribute, ascending),
+        compare(item1, item2, attribute, ascending),
     );
 }
 
