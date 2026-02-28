@@ -196,17 +196,16 @@ watch(
 
 function sortFilterData(): void {
     const filteredData = filter(data, internalFilterAttributes.value, searchString.value);
+    const sortedData = sort(filteredData, sortAttribute.value.attribute, sortAttribute.value.ascending);
 
-    if (sortAttribute.value.attribute === "") {
-        sortFilterResult.value = filteredData;
-    } else {
-        sortFilterResult.value = sort(filteredData, sortAttribute.value.attribute, sortAttribute.value.ascending);
-    }
+    sortFilterResult.value = sortedData;
+
     // Await slot mount, otherwise if defaultSortAttribute is used the slot doesn't have time to register tableCallbackOnSort before this is called.
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     nextTick(() => {
         tableCallbackOnSort(sortAttribute.value.attribute, sortAttribute.value.ascending);
     });
+
     emit("datasetSorted", sortFilterResult.value);
 }
 
