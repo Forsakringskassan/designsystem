@@ -114,4 +114,20 @@ describe("FSortFilterSorter", () => {
             { text: "ccc" },
         ]);
     });
+
+    it("should not sort when sortAttribute is empty", () => {
+        expect.assertions(2);
+        const data = [{ text: "ccc" }, { text: "aaa" }, { text: "bbb" }];
+        const result = sort(data, "", true);
+        expect(data).toEqual([
+            { text: "ccc" },
+            { text: "aaa" },
+            { text: "bbb" },
+        ]);
+        expect(result).toEqual([
+            { text: "ccc" },
+            { text: "aaa" },
+            { text: "bbb" },
+        ]);
+    });
 });

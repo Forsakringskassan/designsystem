@@ -8,6 +8,11 @@ export function sort<T>(
     /* until we can use `toSorted()` we need to create the shallow copy
      * ourselves to avoid mutating the original list. */
     const shallowCopy = [...list];
+
+    if (sortAttribute === "") {
+        return shallowCopy;
+    }
+
     return shallowCopy.sort((item1, item2) =>
         compare(item1, item2, sortAttribute as keyof T, ascending),
     );
