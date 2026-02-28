@@ -196,7 +196,7 @@ watch(
 
 function sortFilterData(): void {
     const filteredData = filter(data, internalFilterAttributes.value, searchString.value);
-    const sortedData = sort(filteredData, sortAttribute.value.attribute, sortAttribute.value.ascending);
+    const sortedData = sort(filteredData, sortAttribute.value.attribute as keyof T | "", sortAttribute.value.ascending);
 
     sortFilterResult.value = sortedData;
 

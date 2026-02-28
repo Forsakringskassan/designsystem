@@ -5,7 +5,7 @@ import { isSet } from "@fkui/logic";
  */
 export function sort<T>(
     list: T[],
-    sortAttribute: PropertyKey,
+    sortAttribute: keyof T | "",
     ascending: boolean,
 ): T[] {
     /* until we can use `toSorted()` we need to create the shallow copy
@@ -17,7 +17,7 @@ export function sort<T>(
     }
 
     return shallowCopy.sort((item1, item2) =>
-        compare(item1, item2, sortAttribute as keyof T, ascending),
+        compare(item1, item2, sortAttribute, ascending),
     );
 }
 
