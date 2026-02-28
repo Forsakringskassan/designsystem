@@ -1,5 +1,8 @@
 import { isSet } from "@fkui/logic";
 
+/**
+ * @internal
+ */
 export function sort<T>(
     list: T[],
     sortAttribute: PropertyKey,
