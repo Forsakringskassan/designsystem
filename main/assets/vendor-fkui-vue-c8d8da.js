@@ -14271,80 +14271,34 @@ var _hoisted_6$b = ["value"];
 var _sfc_main$C = /* @__PURE__ */ defineComponent({
   __name: "FSortFilterDataset",
   props: {
-    /**
-     * The data that you wish to sort or filter.
-     */
-    data: {
-      type: Array,
-      required: true
-    },
-    /**
-     * All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.
-     * Structured as `{attributeName: "Name for dropdown", secondAttributeName: "Name for dropdown"}`
-     */
-    sortableAttributes: {
-      type: Object,
-      required: true
-    },
-    /**
-     * If set the data will be sorted by this attribute by default.
-     */
+    data: {},
+    sortableAttributes: {},
     defaultSortAttribute: {
-      type: String,
-      required: false,
-      default: () => ""
+      default: ""
     },
-    /**
-     * Show/hides the sort dropdown.
-     */
     showSort: {
       type: Boolean,
-      required: false,
-      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
-    /**
-     * Show/hides the filter input.
-     */
     showFilter: {
       type: Boolean,
-      required: false,
-      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
       default: true
     },
-    /**
-     * Set placeholder text in filter input field.
-     * Default is textkey "fkui.sort-filter-dataset.placeholder.filter"
-     */
     placeholderFilter: {
-      type: String,
-      required: false,
-      default: TranslationService.provider.translate("fkui.sort-filter-dataset.placeholder.filter", "S\xF6k")
+      default: () => TranslationService.provider.translate("fkui.sort-filter-dataset.placeholder.filter", "S\xF6k")
     },
-    /**
-     * The order the data will be sorted by if defaultSortAttribute has been set.
-     */
     defaultSortAscending: {
       type: Boolean,
-      required: false,
-      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-      default: () => true
+      default: true
     },
-    /**
-     * Attributes that should be included in search when filtering by input.
-     * Default includes all attributes.
-     */
     filterAttributes: {
-      type: Array,
-      required: false,
-      default: void 0
+      default: () => void 0
     }
   },
   emits: ["datasetSorted", "usedSortAttributes"],
   setup(__props, {
     emit: __emit
   }) {
-    const props = __props;
     const emit = __emit;
     const $t2 = useTranslate();
     const searchField = useTemplateRef("search-field");
@@ -14372,17 +14326,17 @@ var _sfc_main$C = /* @__PURE__ */ defineComponent({
     const sortOrders = computed(() => {
       const arr = [];
       let id = 0;
-      Object.keys(props.sortableAttributes).forEach((key) => {
+      Object.keys(__props.sortableAttributes).forEach((key) => {
         arr.push({
           attribute: key,
-          name: props.sortableAttributes[key],
+          name: __props.sortableAttributes[key],
           ascendingName: $t2("fkui.sort-filter-dataset.label.ascending", "stigande"),
           ascending: true,
           id: id++
         });
         arr.push({
           attribute: key,
-          name: props.sortableAttributes[key],
+          name: __props.sortableAttributes[key],
           ascendingName: $t2("fkui.sort-filter-dataset.label.descending", "fallande"),
           ascending: false,
           id: id++
@@ -14391,11 +14345,11 @@ var _sfc_main$C = /* @__PURE__ */ defineComponent({
       return arr;
     });
     const internalFilterAttributes = computed(() => {
-      if (!props.filterAttributes) {
+      if (!__props.filterAttributes) {
         var _props$data$;
-        return Object.keys((_props$data$ = props.data[0]) !== null && _props$data$ !== void 0 ? _props$data$ : {});
+        return Object.keys((_props$data$ = __props.data[0]) !== null && _props$data$ !== void 0 ? _props$data$ : {});
       }
-      return props.filterAttributes;
+      return __props.filterAttributes;
     });
     provide("sort", (attribute, ascending) => {
       const foundAttribute = sortOrders.value.find((item) => {
@@ -14421,12 +14375,12 @@ var _sfc_main$C = /* @__PURE__ */ defineComponent({
       tableCallbackSortableColumns = callback;
     });
     onMounted(() => {
-      tableCallbackSortableColumns(Object.keys(props.sortableAttributes));
+      tableCallbackSortableColumns(Object.keys(__props.sortableAttributes));
     });
-    watch(() => props.data, () => {
-      if (props.defaultSortAttribute !== "" && useDefaultSortOrder.value) {
+    watch(() => __props.data, () => {
+      if (__props.defaultSortAttribute !== "" && useDefaultSortOrder.value) {
         const foundAttribute = sortOrders.value.find((item) => {
-          return item.attribute === props.defaultSortAttribute && item.ascending === props.defaultSortAscending;
+          return item.attribute === __props.defaultSortAttribute && item.ascending === __props.defaultSortAscending;
         });
         if (foundAttribute) {
           sortAttribute.value = {
@@ -14442,7 +14396,7 @@ var _sfc_main$C = /* @__PURE__ */ defineComponent({
       deep: true
     });
     function sortFilterData() {
-      const filteredData = filter(props.data, internalFilterAttributes.value, searchString.value);
+      const filteredData = filter(__props.data, internalFilterAttributes.value, searchString.value);
       if (sortAttribute.value.attribute === "") {
         sortFilterResult.value = filteredData;
       } else {
