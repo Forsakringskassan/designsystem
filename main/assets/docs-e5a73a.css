@@ -5523,16 +5523,21 @@ input[type=search]:focus,
 .table-ng__cell--text .table-ng__editable {
   border: 3px solid transparent;
   box-sizing: border-box;
+  position: relative;
 }
 .table-ng__cell--text .table-ng__editable:focus-within {
   box-shadow: inset 0 -3px 0 0 var(--fkds-color-border-strong);
   border-radius: 0;
 }
 .table-ng__cell--text .table-ng__editable:focus-within .table-ng__editable__text {
-  display: none;
+  visibility: hidden;
 }
 .table-ng__cell--text .table-ng__editable:focus-within .table-ng__textedit {
-  flex: 1 0 auto;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  min-width: 0;
+  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;
 }
 .table-ng__cell--text .table-ng__editable:hover {
   box-shadow: inset 0 -3px 0 0 var(--fkds-color-border-strong);
