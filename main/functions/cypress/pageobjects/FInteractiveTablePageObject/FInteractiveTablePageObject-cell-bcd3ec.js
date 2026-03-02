@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FInteractiveTablePageObject/FInteractiveTablePageObject-cell.vue:FInteractiveTablePageObject-cell-033955.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FInteractiveTablePageObject/FInteractiveTablePageObject-cell.vue:FInteractiveTablePageObject-cell-bcd3ec.js
 import { defineComponent as _defineComponent } from "vue";
 import { FInteractiveTable, FTableColumn } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -122,7 +122,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-033955"
+  selector: "#example-bcd3ec"
 });
 export {
   render
