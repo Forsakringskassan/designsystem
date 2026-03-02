@@ -106,17 +106,22 @@ $underline-thickness: 3px;
         .table-ng__editable {
             border: 3px solid transparent;
             box-sizing: border-box;
+            position: relative;
 
             &:focus-within {
                 box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
                 border-radius: 0;
 
                 .table-ng__editable__text {
-                    display: none;
+                    visibility: hidden;
                 }
 
                 .table-ng__textedit {
-                    flex: 1 0 auto;
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    min-width: 0;
+                    padding: $vertical-padding $horizontal-padding;
                 }
             }
 
