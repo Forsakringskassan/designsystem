@@ -1,0 +1,18 @@
+{
+    "plugins": [
+        "html-validate-vue",
+        "@fkui/vue/htmlvalidate",
+        "@fkui/vue-labs/htmlvalidate"
+    ],
+    "extends": [
+        "html-validate:recommended",
+        "html-validate:prettier",
+        "html-validate-vue:recommended",
+        "@fkui/vue:recommended",
+        "@fkui/vue-labs:recommended"
+    ],
+    "elements": ["html5"],
+    "transform": {
+        "^.*\\.vue$": "html-validate-vue"
+    }
+}
