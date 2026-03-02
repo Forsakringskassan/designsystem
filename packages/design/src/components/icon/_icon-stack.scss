@@ -91,6 +91,23 @@
         }
     }
 
+    @media (forced-colors: active) {
+        &--info,
+        &--warning,
+        &--error,
+        &--success {
+            .f-icon-circle,
+            .f-icon-triangle {
+                color: Canvas;
+                fill: CanvasText;
+            }
+
+            .f-icon-alert {
+                color: CanvasText;
+            }
+        }
+    }
+
     &--large {
         width: 2.5rem;
         height: 2.5rem;
