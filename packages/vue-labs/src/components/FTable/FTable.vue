@@ -207,15 +207,15 @@ function onTableFocusout(e: FocusEvent): void {
 }
 
 const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
-const sortableColumns = ref<string[]>([]);
-const sortedColumn = ref("");
+const sortableColumns = ref<PropertyKey[]>([]);
+const sortedColumn = ref<PropertyKey>("");
 const sortedAscending = ref(false);
 
-function callbackSortableColumns(columnNames: string[]): void {
+function callbackSortableColumns(columnNames: PropertyKey[]): void {
     sortableColumns.value = columnNames;
 }
 
-function callbackOnSort(columnName: string, ascending: boolean): void {
+function callbackOnSort(columnName: PropertyKey, ascending: boolean): void {
     sortedColumn.value = columnName;
     sortedAscending.value = ascending;
 }

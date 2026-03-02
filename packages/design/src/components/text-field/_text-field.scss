@@ -27,6 +27,10 @@
     &__error-popup-icon {
         color: $textfield-color-icon-error;
         height: 16px;
+
+        @media (forced-colors: active) {
+            color: CanvasText;
+        }
     }
 
     &__input-wrapper {

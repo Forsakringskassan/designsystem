@@ -1,8 +1,8 @@
 import { isSet } from "@fkui/logic";
 
 function includesAllSearchTerms(
-    item: Record<string, string | number | undefined>,
-    filterAttributes: string[],
+    item: Record<PropertyKey, string | number | undefined>,
+    filterAttributes: PropertyKey[],
     searchTerms: string[],
 ): boolean {
     const values = filterAttributes
@@ -25,7 +25,7 @@ function includesAllSearchTerms(
 
 export function filter<T>(
     list: T[],
-    filterAttributes: string[],
+    filterAttributes: PropertyKey[],
     searchString: string,
 ): T[] {
     searchString = searchString.trim();
@@ -39,7 +39,7 @@ export function filter<T>(
 
     return list.filter((item) =>
         includesAllSearchTerms(
-            item as unknown as Record<string, string | number | undefined>,
+            item as unknown as Record<PropertyKey, string | number | undefined>,
             filterAttributes,
             searchTerms,
         ),

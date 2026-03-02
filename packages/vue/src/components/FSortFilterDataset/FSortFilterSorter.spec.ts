@@ -9,7 +9,7 @@ describe("FSortFilterSorter", () => {
             { text: "Aab" },
             { text: "bbb" },
         ];
-        const result = sort(data, "text", true);
+        const result = sort(data, { attribute: "text", ascending: true });
         expect(result[0].text).toBe("Aab");
         expect(result[1].text).toBe("aAc");
         expect(result[2].text).toBe("aba");
@@ -24,7 +24,7 @@ describe("FSortFilterSorter", () => {
             { number: 2 },
             { number: 100 },
         ];
-        const result = sort(data, "number", true);
+        const result = sort(data, { attribute: "number", ascending: true });
         expect(result[0].number).toBe(0);
         expect(result[1].number).toBe(2);
         expect(result[2].number).toBe(9);
@@ -39,7 +39,7 @@ describe("FSortFilterSorter", () => {
             { val: true },
             { val: false },
         ];
-        const result = sort(data, "val", true);
+        const result = sort(data, { attribute: "val", ascending: true });
         expect(result[0].val).toBe(false);
         expect(result[1].val).toBe(false);
         expect(result[2].val).toBe(true);
@@ -48,13 +48,13 @@ describe("FSortFilterSorter", () => {
 
     it("should sort data containing null or undefined values", () => {
         const data = [{ val: "bbb" }, { val: null }, {}, { val: "aaa" }];
-        let result = sort(data, "val", true);
+        let result = sort(data, { attribute: "val", ascending: true });
         expect(result[0].val).toBe("aaa");
         expect(result[1].val).toBe("bbb");
         expect(result[2].val).toBeNull();
         expect(result[3].val).toBeUndefined();
 
-        result = sort(data, "val", false);
+        result = sort(data, { attribute: "val", ascending: false });
         expect(result[0].val).toBe("bbb");
         expect(result[1].val).toBe("aaa");
         expect(result[2].val).toBeNull();
@@ -63,7 +63,9 @@ describe("FSortFilterSorter", () => {
 
     it("should trow error when trying to sort objects", () => {
         const data = [{ myObject: { number: 1 } }, { myObject: { number: 2 } }];
-        expect(() => sort(data, "myObject", true)).toThrow(
+        expect(() =>
+            sort(data, { attribute: "myObject", ascending: true }),
+        ).toThrow(
             `Sorting is only supported for types number, string and boolean.
             Attribute 'myObject' comparsion of types 'object' and 'object' is not supported.`,
         );
@@ -77,7 +79,7 @@ describe("FSortFilterSorter", () => {
             { val: "one" },
             { val: 1 },
         ];
-        const result = sort(data, "val", true);
+        const result = sort(data, { attribute: "val", ascending: true });
         expect(result[0].val).toBe("one");
         expect(result[1].val).toBe("two");
         expect(result[2].val).toBe(1);
@@ -93,9 +95,41 @@ describe("FSortFilterSorter", () => {
         const unsupportedType: CustomType = { a: "one", b: 1 };
         const data = [{ val: 1 }, { val: "text" }, { val: unsupportedType }];
 
-        expect(() => sort(data, "val", true)).toThrow(
+        expect(() => sort(data, { attribute: "val", ascending: true })).toThrow(
             `Sorting is only supported for types number, string and boolean.
             Attribute 'val' comparsion of types 'object' and 'string' is not supported.`,
         );
+    });
+
+    it("should not mutate the original array", () => {
+        expect.assertions(2);
+        const data = [{ text: "ccc" }, { text: "aaa" }, { text: "bbb" }];
+        const result = sort(data, { attribute: "text", ascending: true });
+        expect(data).toEqual([
+            { text: "ccc" },
+            { text: "aaa" },
+            { text: "bbb" },
+        ]);
+        expect(result).toEqual([
+            { text: "aaa" },
+            { text: "bbb" },
+            { text: "ccc" },
+        ]);
+    });
+
+    it("should not sort when sortAttribute is empty", () => {
+        expect.assertions(2);
+        const data = [{ text: "ccc" }, { text: "aaa" }, { text: "bbb" }];
+        const result = sort(data, { attribute: "", ascending: true });
+        expect(data).toEqual([
+            { text: "ccc" },
+            { text: "aaa" },
+            { text: "bbb" },
+        ]);
+        expect(result).toEqual([
+            { text: "ccc" },
+            { text: "aaa" },
+            { text: "bbb" },
+        ]);
     });
 });

@@ -187,12 +187,11 @@ export default defineComponent({
                     <!-- `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.
                         `IPopupError` will be closed on input-field `blur`, so the button is never focusable anyway .
                     -->
-                    <!-- [html-validate-disable-next fkui/class-deprecated -- technical debt] -->
                     <button
                         v-if="layout === 'f-interactive-table'"
                         tabindex="-1"
                         type="button"
-                        class="button button--discrete button--discrete--black modal__close-button popup-error__button"
+                        class="popup-error__button"
                         aria-label="Stäng"
                         @click="onClose"
                     >

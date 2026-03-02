@@ -38,7 +38,7 @@ describe("selectableRowState(row)", () => {
     });
 });
 
-describe("single select", () => {
+describe("12.1 single select", () => {
     describe("toggleSelectableRow(row", () => {
         it("should select row when nothing selected", () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
@@ -78,7 +78,7 @@ describe("single select", () => {
     });
 });
 
-describe("multi select", () => {
+describe("12.1 multi select", () => {
     describe("selectableHeaderState", () => {
         it("should return `false` when no rows selected", () => {
             const { selectableHeaderState } = useSelectable({

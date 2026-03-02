@@ -765,20 +765,20 @@ export const FSelectField: typeof __VLS_export_46;
 export const FSortFilterDataset: typeof __VLS_export_47;
 
 // @public
-export function FSortFilterDatasetInjected(): FSortFilterDatasetInterface;
+export function FSortFilterDatasetInjected<TKeys = PropertyKey>(): FSortFilterDatasetInterface<TKeys>;
 
 // @public
-export interface FSortFilterDatasetInterface {
-    registerCallbackOnMount(this: void, callback: FSortFilterDatasetMountCallback): void;
-    registerCallbackOnSort(this: void, callback: FSortFilterDatasetSortCallback): void;
-    sort(this: void, attribute: string, ascending: boolean): void;
+export interface FSortFilterDatasetInterface<TKeys = PropertyKey> {
+    registerCallbackOnMount(this: void, callback: FSortFilterDatasetMountCallback<TKeys>): void;
+    registerCallbackOnSort(this: void, callback: FSortFilterDatasetSortCallback<TKeys>): void;
+    sort(this: void, attribute: TKeys, ascending: boolean): void;
 }
 
 // @public (undocumented)
-export type FSortFilterDatasetMountCallback = (columnNames: string[]) => void;
+export type FSortFilterDatasetMountCallback<TKeys = PropertyKey> = (columnNames: TKeys[]) => void;
 
 // @public (undocumented)
-export type FSortFilterDatasetSortCallback = (attribute: string, ascending: boolean) => void;
+export type FSortFilterDatasetSortCallback<TKeys = PropertyKey> = (attribute: TKeys, ascending: boolean) => void;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_48" needs to be exported by the entry point index.d.ts
 //
@@ -802,7 +802,7 @@ export interface FTableColumnData {
     // (undocumented)
     id: string;
     // (undocumented)
-    name?: string;
+    name?: PropertyKey;
     // (undocumented)
     size: FTableColumnSize;
     // (undocumented)
@@ -1334,7 +1334,7 @@ export interface SortOrder {
     // (undocumented)
     ascendingName: string;
     // (undocumented)
-    attribute: string;
+    attribute: PropertyKey;
     // (undocumented)
     id: number;
     // (undocumented)
