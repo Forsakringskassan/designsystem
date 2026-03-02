@@ -88,6 +88,7 @@ $checkbox_label_offset: 0.1rem;
         }
 
         .checkbox__label {
+            color: $checkbox-color-text-disabled;
             cursor: default;
 
             &::before {

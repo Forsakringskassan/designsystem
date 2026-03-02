@@ -37,6 +37,11 @@ const deprecatedClasses = [
             "Stacked icons are no longer used for file item links.",
         url: "/components/file-upload/ffileitem.html",
     },
+    {
+        name: "icon--stack",
+        replacement: "icon-stack",
+        url: "/components/ficon.html",
+    },
 ];
 
 /**
