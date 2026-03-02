@@ -78,6 +78,13 @@ $underline-thickness: 3px;
         }
     }
 
+    &--select {
+        .table-ng__editable {
+            border: 3px solid transparent;
+            box-sizing: border-box;
+        }
+    }
+
     &--text {
         &:focus-visible {
             box-shadow: none !important;
@@ -265,8 +272,8 @@ $underline-thickness: 3px;
         background: transparent;
     }
 
-    .table-ng__cell :is(button, a, input, select, [role="combobox"]:focus),
-    .table-ng__cell :is(button, a, input, select, [role="combobox"]:focus-visible) {
+    .table-ng__cell :is(button, a, input, select, [role="combobox"]):focus,
+    .table-ng__cell :is(button, a, input, select, [role="combobox"]):focus-visible {
         outline: none;
         box-shadow: none;
     }
