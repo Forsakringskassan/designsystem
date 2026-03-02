@@ -57,6 +57,12 @@ jobs:
                       | Vue Sandbox | ${{ steps.preview.outputs.preview-url }}vue-sandbox |
                       | Applikationsmall | ${{ steps.preview.outputs.preview-url }}examples/page-layout |
 
+                      Exempel för testning:
+
+                      | Sida | URL |
+                      |-|-
+                      | Tabell | ${{ steps.preview.outputs.preview-url }}examples/table |
+
                       ---
 
                       ###### Senast uppdaterad ${{ steps.preview.outputs.action-start-time }} i [gh-pages](${{ github.server_url }}/${{ github.repository }}/tree/gh-pages).

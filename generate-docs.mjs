@@ -240,6 +240,11 @@ try {
         "examples/page-layout/dist",
         "public/examples/page-layout",
     );
+    await copyDocs(
+        "@fkui/example-table",
+        "examples/table/dist",
+        "public/examples/table",
+    );
 } catch (err) {
     console.error(err.prettyError ? err.prettyError() : err);
     process.exitCode = 1;
