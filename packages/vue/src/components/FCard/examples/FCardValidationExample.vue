@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTemplateRef } from "vue";
 import { ValidationService } from "@fkui/logic";
-import { FCard, FIcon, FValidationForm, getElementFromVueRef } from "@fkui/vue";
+import { FButton, FCard, FValidationForm, getElementFromVueRef } from "@fkui/vue";
 
 const cardRef = useTemplateRef("card");
 const focusRef = useTemplateRef("focus");
@@ -39,49 +39,53 @@ function setValid(): void {
             </template>
             <template #footer="{ hasError }">
                 <div class="button-group">
-                    <button
-                        class="button button-group__item button--tertiary button--medium button--align-text"
-                        type="button"
+                    <f-button
+                        class="button-group__item"
+                        align-text
+                        icon-left="trashcan"
+                        variant="tertiary"
                     >
-                        <f-icon name="trashcan"></f-icon>
                         <span> Ta bort </span>
-                    </button>
+                    </f-button>
 
-                    <button
+                    <f-button
                         id="focus"
                         ref="focus"
-                        class="button button-group__item button--tertiary button--medium button--align-text"
-                        type="button"
+                        class="button-group__item"
+                        align-text
+                        icon-left="pen"
+                        variant="tertiary"
                     >
-                        <f-icon name="pen"></f-icon>
                         <span>
                             Ändra
                             <span v-if="hasError" class="sr-only">
                                 på kortet, det innehåller fel
                             </span>
                         </span>
-                    </button>
+                    </f-button>
                 </div>
             </template>
         </f-card>
 
-        <button type="submit" class="button button--primary">Simulera inskick av formulär</button>
+        <f-button type="submit">Simulera inskick av formulär</f-button>
     </f-validation-form>
 
-    <button
-        type="button"
-        class="button button-group__item button--tertiary button--large"
+    <f-button
+        class="button-group__item"
+        size="large"
+        variant="tertiary"
         data-test="set-invalid"
         @click="setInvalid"
     >
         Markera kort som felaktigt
-    </button>
-    <button
-        type="button"
-        class="button button-group__item button--tertiary button--large"
+    </f-button>
+    <f-button
+        class="button-group__item"
+        size="large"
+        variant="tertiary"
         data-test="set-valid"
         @click="setValid"
     >
         Markera kort som giltigt
-    </button>
+    </f-button>
 </template>
