@@ -4,7 +4,7 @@
  * @public
  */
 export interface SortOrder {
-    attribute: string;
+    attribute: PropertyKey;
     name: string;
     ascendingName: string;
     ascending: boolean;

@@ -30,7 +30,7 @@ export enum FTableColumnSort {
  */
 export interface FTableColumnData {
     id: string;
-    name?: string;
+    name?: PropertyKey;
     title: string;
     description?: string;
     size: FTableColumnSize;
@@ -48,7 +48,7 @@ export function addColumn(
         const hasDuplicateName = src.some((it) => it.name === column.name);
         if (hasDuplicateName) {
             throw new Error(
-                `Expected FTableColumn to have a unique name but encountered duplicate of "${column.name}"`,
+                `Expected FTableColumn to have a unique name but encountered duplicate of "${String(column.name)}"`,
             );
         }
     }
@@ -72,7 +72,7 @@ export function setVisibilityColumn(
 
 export function updateSortOrder(
     src: FTableColumnData[],
-    columnName: string,
+    columnName: PropertyKey,
     ascending: boolean,
 ): void {
     src.forEach((column) => {
@@ -88,7 +88,7 @@ export function updateSortOrder(
 
 export function setSortableColumns(
     src: FTableColumnData[],
-    columnNames: string[],
+    columnNames: PropertyKey[],
 ): void {
     for (const columnName of columnNames) {
         const foundColumn = src.find((col) => col.name === columnName);
