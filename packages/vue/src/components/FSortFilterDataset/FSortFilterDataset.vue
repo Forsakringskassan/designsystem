@@ -29,7 +29,7 @@ export interface FSortFilterDatasetProps<T> {
     /**
      * If set the data will be sorted by this attribute by default.
      */
-    defaultSortAttribute?: string;
+    defaultSortAttribute?: PropertyKey;
     /**
      * Show/hides the sort dropdown.
      */
@@ -106,10 +106,18 @@ const showClearButton = computed(() => {
     return searchString.value.length > 0;
 });
 
+/* all enumerable keys from sortableAttributes */
+const sortableKeys = computed(() => {
+    return Reflect.ownKeys(sortableAttributes).filter((key) => {
+        const descriptor = Object.getOwnPropertyDescriptor(sortableAttributes, key);
+        return descriptor?.enumerable ?? false;
+    });
+});
+
 const sortOrders = computed((): SortableAttribute[] => {
     const arr = [] as SortableAttribute[];
     let id = 0;
-    Object.keys(sortableAttributes).forEach((key: string) => {
+    for (const key of sortableKeys.value) {
         arr.push({
             attribute: key,
             name: sortableAttributes[key],
@@ -124,7 +132,7 @@ const sortOrders = computed((): SortableAttribute[] => {
             ascending: false,
             id: id++,
         });
-    });
+    }
     return arr;
 });
 
@@ -163,7 +171,7 @@ provide("registerCallbackOnMount", (callback: FSortFilterDatasetMountCallback) =
 });
 
 onMounted(() => {
-    tableCallbackSortableColumns(Object.keys(sortableAttributes));
+    tableCallbackSortableColumns(sortableKeys.value);
 });
 
 watch(
