@@ -13,6 +13,11 @@ import {
     FSelectFieldPageObject,
 } from "../../cypress";
 
+const VIEWPORT = {
+    width: 800,
+    height: 600,
+};
+
 function generateModalMarkup(focusStrategy = "on"): string {
     return /* HTML */ `
         <div class="f-modal-example">
@@ -354,7 +359,7 @@ it("should retain scroll by default when closed", () => {
         },
     });
 
-    cy.viewport(800, 600);
+    cy.viewport(VIEWPORT.width, VIEWPORT.height);
     cy.mount(testComponent);
     cy.get('[data-test="open-edit-modal-button"]').click();
     const modal = new FFormModalPageObject(".modal");
