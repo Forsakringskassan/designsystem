@@ -3,8 +3,8 @@
  *
  * @public
  */
-export interface SortOrder {
-    attribute: PropertyKey;
+export interface SortOrder<TKeys = PropertyKey> {
+    attribute: TKeys;
     name: string;
     ascendingName: string;
     ascending: boolean;

@@ -399,7 +399,7 @@ it("should emit event with used attributes when sorting using dropdown", async (
 
 it("should throw error when sorting objects", () => {
     const mountInvalidSort = (): void => {
-        mount(FSortFilterDataset, {
+        mount(FSortFilterDataset<(typeof DATA)[number]>, {
             props: {
                 data: DATA,
                 sortableAttributes: {
