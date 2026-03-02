@@ -6,35 +6,35 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Commits och commitmeddelanden - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-333022.css"
+            href="../../assets/docs-e5a73a.css"
             crossorigin
-            integrity="sha384-Y2r4pjcDp7Bg8g7S9pWEY1IUds9jPyey2PulkRUP73ORUHQVixcKwaaVLbdrB9Y+"
+            integrity="sha384-HxSoOF+NXiEe97EfMyHuWhUZ3bXf2OVjH3/LfR2Yet4XHM9VttIqeFMslleLQ086"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-87834e.css"
+            href="../../assets/docs-fkui-52cb7e.css"
             crossorigin
-            integrity="sha384-5sTTm1WsSCPcJyMdpjtqH1epWCStUOXfzmuLi2h2GoIGqEpt+ZJCRtyWaCuojG7g"
+            integrity="sha384-EUJIadpfYegIgZ2puuIrXL1h8bdIDuO86z947kXtv3JWP6SCQsOHQevJSOVCHShs"
             
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../assets/vendor-vue-df1a86.js",
+    "vue": "../../assets/vendor-vue-6b827b.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-59aa9f.js",
     "@fkui/date": "../../assets/vendor-fkui-date-808bee.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-92af32.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-ded2bd.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
-    "../../assets/vendor-vue-df1a86.js": "sha384-sceNFXQZ3fDGGXBEGAVR5eOsS4wgec5+iD2osNv2hRm6lV/0vkjjE2AflMEB7hwG",
+    "../../assets/vendor-vue-6b827b.js": "sha384-UeYyNh6XCkaTjezzoaAvoL/QO72nGx1pOF2YaNc7GvJeAMyYa9q9b44iNbR3Ts1N",
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
     "../../assets/vendor-fkui-logic-59aa9f.js": "sha384-if5Op9xLJOQ+bexhtVxEfbgViVdwDXK0yKCqmJ7KlArve38A9EfWK+ICL67V5ZjA",
     "../../assets/vendor-fkui-date-808bee.js": "sha384-IN4zHvcRlGuLi0UYOhjEdRxZOn2WIB5rxIl8GIzKfTJeMODVhBb57BAkdW5by1Pd",
-    "../../assets/vendor-fkui-vue-92af32.js": "sha384-qFVZWeZALnnvDc3++QD0GL6LS0tLXxZV8qNczzEus3jEZ2MWE+xTPnKaCL2HaaFZ",
+    "../../assets/vendor-fkui-vue-ded2bd.js": "sha384-winD6zLiucZ4GbG0zkKf14edDYhlk7ee29y+NPOx6WhK2apKZWDRng32HlXnJAZr",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-3c6cd8.json"
+            href="../../search-data-09b8d6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-VuNGX3/mwhUadzgV8UY0gceP2CrOOcURTjKf1t4EHwYA9pXB0peDajQDg7gotrze"
+            integrity="sha384-EQlGN/AcqoVSAyFAUVavLm7OzfSbZg+VbZ+OCipiYuQrROcdBGeTp2rD+Lpw2UVq"
             id="search-data"
         />
     </head>
@@ -587,7 +587,8 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">I FKUI använder vi commits som grund till både Changelog och för att automatiskt bestämma vilken nästkommande version blir.</p>
+                    <div id="content"><p class="docs-paragraph">I FKUI använder vi commits som grund till både Changelog och för att automatiskt bestämma vilken nästkommande version blir.
+Du skriver commitmeddelandet på engelska och det får max innehålla 72 tecken.</p>
 <p class="docs-paragraph">Commitmeddelanden använder en modifierad variant av <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> där skillnaden är att vi kräver en Jira-referens i slutet:</p>
 <pre><code>${type}: ${description} (${relation} ${jira})
 </code></pre>
@@ -598,13 +599,9 @@
 <li><code>${relation}</code> är hur commit relaterat till en Jira, <code>refs</code> eller <code>fixes</code>.</li>
 <li><code>${jira}</code> är den Jira som commit relaterar till.</li>
 </ul>
-
-            <div class="docs-messagebox docs-messagebox--info">
-                <p class="docs-messagebox__title">Exempelvis</p>
-                <p class="docs-paragraph"><code>feat: new component `FFoobar` (fixes XYZ-123)</code></p>
-
-            </div>
-        <p class="docs-paragraph">Scope sätter vi enbart i undantagsfall då det populeras automatiskt i Changelog.
+<p class="docs-paragraph">Skriv till exempel:</p>
+<p class="docs-paragraph"><code>feat: new component `FFoobar` (fixes XYZ-123)</code></p>
+<p class="docs-paragraph">Du sätter scope enbart i undantagsfall då det populeras automatiskt i Changelog.
 Vanligt undantag är <code>chore(deps)</code> för beroenden, <code>chore(release)</code> för releaser samt <code>refactor(${verktyg})</code> och <code>style(${verktyg})</code>.</p>
 <h2 id="typ"><a class="header-anchor" href="#typ">Typ</a></h2><p class="docs-paragraph">Den viktigaste beståndsdelen är <code>type</code> som används för att avgöra om commitmeddelandet ska visas i changelog samt om det ska användas för att skapa en release.</p>
 <p class="docs-paragraph">De vanligaste två är <code>feat</code> (ny funktionalitet) och <code>fix</code> (rättning av existerande funktionalitet).
@@ -703,33 +700,26 @@ Andra vanliga är <code>docs</code> (ändring enbart av dokumentation) och <code
         <p class="docs-paragraph">Läs mer om <a href="./release.html#brytande_andringar">brytande ändringar</a>.</p>
 <h2 id="tumregler"><a class="header-anchor" href="#tumregler">Tumregler</a></h2><p class="docs-paragraph">Ett bra commitmeddelande ska:</p>
 <ul>
-<li>Beskriva vilken eller vilka komponenter eller funktioner som berörs. Skriv &quot;add new prop <code>foo</code> on component <code>FBar</code>&quot; istället för <code>&quot;add new prop&quot;</code> eller &quot;add new prop <code>foo</code>&quot; eftersom läsaren inte känner till sammanhanget.</li>
+<li>Beskriva vilken eller vilka komponenter eller funktioner som berörs.
+Skriv &quot;add new prop <code>foo</code> on component <code>FBar</code>&quot; istället för <code>&quot;add new prop&quot;</code> eller &quot;add new prop <code>foo</code>&quot; eftersom läsaren inte känner till sammanhanget.</li>
 <li>Undvika att benämna ramverkskomponenter (&quot;i-komponenter&quot;) utan skriv istället de publika komponenter (&quot;f-komponenter&quot;) som påverkas av ändringen.</li>
 </ul>
-
-            <div class="docs-messagebox docs-messagebox--info">
-                <p class="docs-messagebox__title">Bra meddelande</p>
-                <ul>
+<p class="docs-paragraph">Exempel på bra meddelande:</p>
+<ul>
 <li>feat: add new prop <code>foo</code> on component <code>FBar</code> (refs XYZ-123)</li>
 <li>fix: fix styling issue when clicking on <code>FBaz</code> (fixes XYZ-123)</li>
 </ul>
-
-            </div>
-        
-            <div class="docs-messagebox docs-messagebox--danger">
-                <p class="docs-messagebox__title">Undvik</p>
-                <ul>
+<p class="docs-paragraph">Undvik:</p>
+<ul>
 <li>feat: add new prop (refs XYZ-123)</li>
 <li>fix: WIP (fix XYZ-123)</li>
 </ul>
-
-            </div>
-        <h2 id="commitlint"><a class="header-anchor" href="#commitlint">Commitlint</a></h2><p class="docs-paragraph">Vi använder <a href="https://commitlint.js.org/">Commitlint</a> för att upprätthålla formatet på commitmeddelanden.
+<h2 id="commitlint"><a class="header-anchor" href="#commitlint">Commitlint</a></h2><p class="docs-paragraph">Vi använder <a href="https://commitlint.js.org/">Commitlint</a> för att upprätthålla formatet på commitmeddelanden.
 Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code> från <code>.husky/commit-msg</code>) och är konfigurerat med att använda <a href="https://github.com/Forsakringskassan/commitlint-config"><code>@forsakringskassan/commitlint-config</code></a>.</p>
 <p class="docs-paragraph">Om det behövs kan du kringgå <code>commitlint</code> med <code>--no-verify</code>:</p>
 
                 <div
-                    id="example-a2af4f"
+                    id="example-87f26a"
                     class="code-preview code-preview--default"
                     
                     
@@ -741,9 +731,11 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
                 </div>
             <h2 id="arbetsflode"><a class="header-anchor" href="#arbetsflode">Arbetsflöde</a></h2><p class="docs-paragraph">För feature-branches rekommenderar vi detta arbetsflödet för dina commits:</p>
 <ol>
-<li>För varje distinkt feature eller buggrättning, skapa en specifik och fristående commit (tänk på det som att den skulle gå att lägga en egen PR och mergas separat från övriga commits i din branch). Denna commit ska använda <code>feat</code> eller <code>fix</code> som type.</li>
-<li>Behöver du bygga vidare på en tidigare commit (i din branch) kan du antingen använda <code>git commit --fixup</code> eller skapar en ny commit med <code>refactor</code> som type.</li>
-<li>Innan det är dags för merge gör du en sista rebase över master där du slår ihop lämpliga commits, framförallt fixups men även de commits som använder <code>refactor</code> (vars syfte inte är att göra en refaktorisering av kod som inte skapats i denna branch).</li>
+<li>För varje distinkt feature eller buggrättning, skapa en specifik och fristående commit (tänk på det som att den skulle gå att lägga en egen PR och mergas separat från övriga commits i din branch).
+Denna commit ska använda <code>feat</code> eller <code>fix</code> som type.</li>
+<li>Behöver du bygga vidare på en tidigare commit (i din branch) kan du antingen använda <code>git commit --fixup</code> eller skapa en ny commit med <code>refactor</code> som type.</li>
+<li>Innan det är dags för merge gör du en sista rebase över master där du slår ihop lämpliga commits, framförallt fixups.
+Slå även ihop commits av typen <code>refactor</code> som avser refaktorisering av kod som tillkommit i din branch.</li>
 </ol>
 
 
@@ -769,9 +761,9 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs/table-update (<a href="https://github.com/Forsakringskassan/designsystem/commits/be14f6c347f2a7db709ad600304b5d4f52d40450">be14f6c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-update (<a href="https://github.com/Forsakringskassan/designsystem/commits/c4c5902e85a7ac8f29cd4b946352e04b02bf9369">c4c5902</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/944">PR 944</a><br />
-        2026-02-17 12:46
+        2026-03-02 10:09
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -883,16 +875,16 @@ Commitlint anropas från git <code>commit-msg</code> hook (via <code>husky</code
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-5d893d.js"
+            src="../../assets/processors/selectable-version/select-version-4b56c8.js"
             type="module"
             crossorigin
-            integrity="sha384-09+MRP3gwXrkStXp2nYE29ZtrT4gVBMkbVPHLzGjHrqJv0ZsH8WaIZnwN5WeOuvB"
+            integrity="sha384-BrWvu/1OUdi6XROWOkLj8ccc5uy5vfXPI1QElMU9Oq1Sf00r2sjACOfY29bsTwpR"
             
         ></script><script
-            src="../../assets/main-f8637e.js"
+            src="../../assets/main-0648c9.js"
             type="module"
             crossorigin
-            integrity="sha384-jzo/moGACvKxkccaNdVeDo4wKxEZb03EvtzuHt5dC8OWbc+DOsirYwhdTHC/7krD"
+            integrity="sha384-afdKyqFIXgGYNgaSCIn/p9wgdDRWvcl3qf8X7OZ6TJ/RMMMNnCnqhlPSfAJjXZJ2"
             
         ></script>
     </body>

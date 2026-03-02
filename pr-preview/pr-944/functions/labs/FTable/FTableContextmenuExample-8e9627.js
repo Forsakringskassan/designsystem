@@ -32,7 +32,7 @@ function setup(options) {
 import { defineComponent as _defineComponent } from "vue";
 
 // packages/vue-labs/dist/esm/index.esm.js
-import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, mergeProps, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
+import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, mergeProps, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
 import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
@@ -2960,7 +2960,7 @@ var _hoisted_1$e = {
   class: "table-ng__cell table-ng__cell--expand"
 };
 var _hoisted_2$a = ["aria-label", "aria-expanded"];
-var _hoisted_3$8 = {
+var _hoisted_3$7 = {
   key: 1,
   ref: "expandable",
   tabindex: "-1",
@@ -3006,7 +3006,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent2({
       }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$a)])) : (openBlock(), createElementBlock("td", _hoisted_3$8, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$a)])) : (openBlock(), createElementBlock("td", _hoisted_3$7, null, 512));
     };
   }
 });
@@ -3049,13 +3049,12 @@ var inputFieldConfig = {
       personnummerFormat: {},
       personnummerLuhn: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "23"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "23"
+      };
+    }
   },
   "text:bankAccountNumber": {
     formatter(value) {
@@ -3067,13 +3066,12 @@ var inputFieldConfig = {
     validationConfig: {
       bankAccountNumber: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "40"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "40"
+      };
+    }
   },
   "text:bankgiro": {
     formatter(value) {
@@ -3088,13 +3086,12 @@ var inputFieldConfig = {
       },
       bankgiro: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "40"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "40"
+      };
+    }
   },
   "text:clearingNumber": {
     formatter(value) {
@@ -3106,13 +3103,12 @@ var inputFieldConfig = {
     validationConfig: {
       clearingNumber: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "16"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "16"
+      };
+    }
   },
   "text:currency": {
     formatter(value) {
@@ -3125,13 +3121,12 @@ var inputFieldConfig = {
       currency: {},
       integer: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "20"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "20"
+      };
+    }
   },
   "text:date": {
     formatter(value) {
@@ -3143,10 +3138,11 @@ var inputFieldConfig = {
     validationConfig: {
       date: {}
     },
-    attributes: () => [{
-      name: "type",
-      value: "text"
-    }]
+    attributes: () => {
+      return {
+        type: "text"
+      };
+    }
   },
   "text:email": {
     formatter(value) {
@@ -3161,13 +3157,12 @@ var inputFieldConfig = {
         length: 80
       }
     },
-    attributes: () => [{
-      name: "type",
-      value: "email"
-    }, {
-      name: "maxlength",
-      value: "80"
-    }]
+    attributes: () => {
+      return {
+        type: "email",
+        maxlength: "80"
+      };
+    }
   },
   "text:number": {
     formatter(value) {
@@ -3181,13 +3176,12 @@ var inputFieldConfig = {
     validationConfig: {
       number: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "20"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "20"
+      };
+    }
   },
   "text:organisationsnummer": {
     formatter(value) {
@@ -3202,13 +3196,12 @@ var inputFieldConfig = {
       },
       organisationsnummer: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "20"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "20"
+      };
+    }
   },
   "text:percent": {
     formatter(value) {
@@ -3228,14 +3221,12 @@ var inputFieldConfig = {
         maxValue: 999
       }
     },
-    attributes: (decimals) => {
-      return [{
-        name: "inputmode",
-        value: decimals ? "decimal" : "numeric"
-      }, {
-        name: "maxlength",
-        value: "10"
-      }];
+    attributes: (options) => {
+      const decimals = options?.decimals;
+      return {
+        inputmode: decimals ? "decimal" : "numeric",
+        maxlength: "10"
+      };
     }
   },
   "text:phoneNumber": {
@@ -3251,13 +3242,12 @@ var inputFieldConfig = {
       },
       phoneNumber: {}
     },
-    attributes: () => [{
-      name: "maxlength",
-      value: "80"
-    }, {
-      name: "type",
-      value: "tel"
-    }]
+    attributes: () => {
+      return {
+        maxlength: "80",
+        type: "tel"
+      };
+    }
   },
   "text:plusgiro": {
     formatter(value) {
@@ -3272,13 +3262,12 @@ var inputFieldConfig = {
       },
       plusgiro: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "16"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "16"
+      };
+    }
   },
   "text:postalCode": {
     formatter(value) {
@@ -3293,13 +3282,12 @@ var inputFieldConfig = {
       },
       postalCode: {}
     },
-    attributes: () => [{
-      name: "inputmode",
-      value: "numeric"
-    }, {
-      name: "maxlength",
-      value: "15"
-    }]
+    attributes: () => {
+      return {
+        inputmode: "numeric",
+        maxlength: "15"
+      };
+    }
   },
   text: {
     formatter(value) {
@@ -3309,7 +3297,9 @@ var inputFieldConfig = {
       return value;
     },
     validationConfig: {},
-    attributes: () => []
+    attributes: () => {
+      return {};
+    }
   }
 };
 var _hoisted_1$c = ["aria-sort"];
@@ -3433,7 +3423,7 @@ var _hoisted_1$b = {
   scope: "col",
   class: "table-ng__column table-ng__column--selectable"
 };
-var _hoisted_2$9 = ["checked", "indeterminate"];
+var _hoisted_2$9 = ["checked", "indeterminate", "aria-label"];
 var _sfc_main$d = /* @__PURE__ */ defineComponent2({
   __name: "ITableHeaderSelectable",
   props: {
@@ -3448,9 +3438,13 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent2({
     emit: __emit
   }) {
     const emit = __emit;
+    const $t = useTranslate();
     const indeterminate = computed3(() => __props.state === "indeterminate");
     const checked = computed3(() => __props.state === "indeterminate" ? false : __props.state);
     const expose = {};
+    const ariaLabel = computed3(() => {
+      return !checked.value || indeterminate.value ? $t("fkui.ftable.select-all.aria-label", "V\xE4lj alla rader") : $t("fkui.ftable.unselect-all.aria-label", "Avmarkera alla rader");
+    });
     if (__props.selectable === "multi") {
       const inputRef = useTemplateRef("input");
       expose.tabstopEl = inputRef;
@@ -3463,7 +3457,7 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent2({
         checked: checked.value,
         indeterminate: indeterminate.value,
         type: "checkbox",
-        "aria-label": "select all",
+        "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange: _cache[0] || (_cache[0] = ($event) => emit("toggle"))
       }, null, 40, _hoisted_2$9)) : createCommentVNode("", true)]);
@@ -3475,7 +3469,7 @@ var _hoisted_1$a = {
   class: "table-ng__cell table-ng__cell--checkbox"
 };
 var _hoisted_2$8 = ["checked", "aria-label"];
-var _hoisted_3$7 = {
+var _hoisted_3$6 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
@@ -3512,7 +3506,7 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent2({
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$8)])) : (openBlock(), createElementBlock("td", _hoisted_3$7, [createElementVNode("input", {
+      }, null, 40, _hoisted_2$8)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, [createElementVNode("input", {
         checked: Boolean(__props.column.checked(__props.row)),
         type: "checkbox",
         "aria-label": ariaLabel.value
@@ -4013,7 +4007,7 @@ var _hoisted_1$7 = {
   class: "table-ng__cell table-ng__cell--anchor"
 };
 var _hoisted_2$6 = ["href"];
-var _hoisted_3$6 = {
+var _hoisted_3$5 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
@@ -4043,7 +4037,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$6)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, null, 512));
+      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$6)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
     };
   }
 });
@@ -4054,7 +4048,7 @@ var _hoisted_1$6 = {
 var _hoisted_2$5 = {
   class: "sr-only"
 };
-var _hoisted_3$5 = {
+var _hoisted_3$4 = {
   key: 1,
   ref: "td",
   tabindex: "-1",
@@ -4096,7 +4090,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
         key: 0,
         library: __props.column.iconLibrary,
         name: __props.column.icon
-      }, null, 8, ["library", "name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$5, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
+      }, null, 8, ["library", "name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$5, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
     };
   }
 });
@@ -4142,13 +4136,9 @@ function requireEs_iterator_find() {
 }
 requireEs_iterator_find();
 var _hoisted_1$5 = {
-  key: 0,
-  class: "table-ng__cell table-ng__cell--button"
-};
-var _hoisted_2$4 = {
   class: "sr-only"
 };
-var _hoisted_3$4 = {
+var _hoisted_2$4 = {
   key: 1,
   tabindex: "-1",
   class: "table-ng__cell"
@@ -4210,7 +4200,12 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
     __expose(expose);
     return (_ctx, _cache) => {
       var _buttonRef$value;
-      return renderButton.value ? (openBlock(), createElementBlock("td", _hoisted_1$5, [createElementVNode("button", {
+      return renderButton.value ? (openBlock(), createElementBlock("td", {
+        key: 0,
+        class: normalizeClass(["table-ng__cell table-ng__cell--button", {
+          "table-ng__cell--menu-open": isOpen.value
+        }])
+      }, [createElementVNode("button", {
         ref: "button",
         class: "icon-button",
         type: "button",
@@ -4219,14 +4214,14 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
         onClick: onOpen
       }, [createVNode(unref3(FIcon), {
         name: "bars"
-      }), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$4, toDisplayString(__props.column.text(__props.row)), 1)], 512), _cache[1] || (_cache[1] = createTextVNode()), createVNode(unref3(FContextMenu), {
+      }), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_1$5, toDisplayString(__props.column.text(__props.row)), 1)], 512), _cache[1] || (_cache[1] = createTextVNode()), createVNode(unref3(FContextMenu), {
         "is-open": isOpen.value,
         items: menuitems.value,
         anchor: (_buttonRef$value = buttonRef.value) !== null && _buttonRef$value !== void 0 ? _buttonRef$value : void 0,
         onClose,
         onSelect,
         onFocusout
-      }, null, 8, ["is-open", "items", "anchor"])])) : (openBlock(), createElementBlock("td", _hoisted_3$4));
+      }, null, 8, ["is-open", "items", "anchor"])], 2)) : (openBlock(), createElementBlock("td", _hoisted_2$4));
     };
   }
 });
@@ -4256,7 +4251,7 @@ var _hoisted_3$3 = ["aria-expanded", "aria-controls", "aria-activedescendant", "
 var _hoisted_4$3 = {
   class: "table-ng__editable__text"
 };
-var _hoisted_5$3 = {
+var _hoisted_5$2 = {
   key: 1,
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--static"
@@ -4409,10 +4404,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
         tabindex: "-1",
         onKeydown: onCellKeyDown,
         onClick: withModifiers(onCellClick, ["stop"])
-      }, [withDirectives(createElementVNode("div", _hoisted_1$4, [createElementVNode("span", _hoisted_2$3, toDisplayString(viewValue.value), 1), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref3(FIcon), {
-        name: "arrow-down",
-        class: "table-ng__editable__icon"
-      })], 512), [[vShow, !editing.value]]), _cache[5] || (_cache[5] = createTextVNode()), withDirectives(createElementVNode("div", {
+      }, [withDirectives(createElementVNode("div", _hoisted_1$4, [createElementVNode("span", _hoisted_2$3, toDisplayString(viewValue.value), 1)], 512), [[vShow, !editing.value]]), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("div", {
         ref: "edit",
         role: "combobox",
         tabindex: "-1",
@@ -4428,10 +4420,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
         }, ["prevent"])),
         onKeydown: withModifiers(onEditKeyDown, ["stop"]),
         onFocusout: _cache[2] || (_cache[2] = (e) => onEditBlur(e))
-      }, [createElementVNode("span", _hoisted_4$3, toDisplayString(viewValue.value), 1), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref3(FIcon), {
-        name: "arrow-down",
-        class: "table-ng__editable__icon--active"
-      })], 40, _hoisted_3$3), [[vShow, editing.value]]), _cache[6] || (_cache[6] = createTextVNode()), withDirectives(createVNode(unref3(IComboboxDropdown), {
+      }, [createElementVNode("span", _hoisted_4$3, toDisplayString(viewValue.value), 1)], 40, _hoisted_3$3), [[vShow, editing.value]]), _cache[4] || (_cache[4] = createTextVNode()), withDirectives(createVNode(unref3(IComboboxDropdown), {
         id: unref3(dropdownId),
         "is-open": dropdownIsOpen.value,
         options: __props.column.options,
@@ -4440,20 +4429,49 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
         "input-node": editRef.value,
         onSelect: selectDropdownOption,
         onClose: onDropdownClose
-      }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$3, toDisplayString(__props.column.selected(__props.row)), 1));
+      }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$2, toDisplayString(__props.column.selected(__props.row)), 1));
     };
   }
 });
-function addInputValidators(inputElement, type, decimals) {
-  ValidationService.addValidatorsToElement(inputElement, inputFieldConfig[type].validationConfig, true);
-  const options = void 0;
-  const attributes = inputFieldConfig[type].attributes(options);
-  for (const {
-    name,
-    value
-  } of attributes) {
-    inputElement.setAttribute(name, value);
+function defaultTnumValue(type) {
+  const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
+  return tnumTypes.includes(type);
+}
+function getLabelFn(fn) {
+  if (fn) {
+    return fn;
   }
+  return () => "";
+}
+function getUpdateFn(fn, key) {
+  if (fn) {
+    return fn;
+  }
+  if (key) {
+    return (row, value) => {
+      row[key] = value;
+    };
+  }
+  return () => void 0;
+}
+function getValueFn(fn, key, coerce, defaultValue) {
+  if (fn) {
+    return fn;
+  }
+  if (key) {
+    return (row) => {
+      var _row$key;
+      return coerce((_row$key = row[key]) !== null && _row$key !== void 0 ? _row$key : defaultValue);
+    };
+  }
+  return () => defaultValue;
+}
+function isColumnTypeNumber(column) {
+  const type = column.type;
+  return numberTypes.includes(type);
+}
+function addInputValidators(inputElement, type) {
+  ValidationService.addValidatorsToElement(inputElement, inputFieldConfig[type].validationConfig, true);
 }
 function isAlphanumeric(e) {
   return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
@@ -4467,9 +4485,6 @@ var _hoisted_3$2 = {
   class: "sr-only"
 };
 var _hoisted_4$2 = ["id", "aria-label"];
-var _hoisted_5$2 = {
-  ref: "pen"
-};
 var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
   __name: "ITableText",
   props: {
@@ -4541,9 +4556,24 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       }
       return value.length > 0 ? value : void 0;
     });
+    const columnAttributes = computed3(() => {
+      if (__props.column.attributes && typeof __props.column.attributes === "function") {
+        return __props.column.attributes(__props.row);
+      } else {
+        return __props.column.attributes;
+      }
+    });
+    const configAttributes = computed3(() => {
+      let decimals = void 0;
+      if (isColumnTypeNumber(__props.column)) {
+        decimals = __props.column.decimals;
+      }
+      return inputFieldConfig[__props.column.type].attributes({
+        decimals
+      });
+    });
     const tdElement = useTemplateRef("td");
     const inputElement = useTemplateRef("input");
-    const penElement = useTemplateRef("pen");
     const {
       stopEdit: stopEdit2
     } = useStartStopEdit();
@@ -4605,20 +4635,20 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     });
     watchEffect3(() => {
       if (hasError.value) {
-        var _tdElement$value, _penElement$value;
+        var _tdElement$value, _inputElement$value;
         emit("onError", {
           anchor: (_tdElement$value = tdElement.value) !== null && _tdElement$value !== void 0 ? _tdElement$value : void 0,
-          arrowAnchor: (_penElement$value = penElement.value) !== null && _penElement$value !== void 0 ? _penElement$value : void 0,
+          arrowAnchor: (_inputElement$value = inputElement.value) !== null && _inputElement$value !== void 0 ? _inputElement$value : void 0,
           message: validity.value.validationMessage,
           hasFocus: focused.value,
           hasHover: isHovered.value,
           inEdit: inEdit.value
         });
       } else {
-        var _tdElement$value2, _penElement$value2;
+        var _tdElement$value2, _inputElement$value2;
         emit("closeError", {
           anchor: (_tdElement$value2 = tdElement.value) !== null && _tdElement$value2 !== void 0 ? _tdElement$value2 : void 0,
-          arrowAnchor: (_penElement$value2 = penElement.value) !== null && _penElement$value2 !== void 0 ? _penElement$value2 : void 0,
+          arrowAnchor: (_inputElement$value2 = inputElement.value) !== null && _inputElement$value2 !== void 0 ? _inputElement$value2 : void 0,
           message: validity.value.validationMessage,
           hasFocus: focused.value,
           hasHover: isHovered.value,
@@ -4778,25 +4808,26 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         onKeydown
       }, [createElementVNode("div", {
         class: normalizeClass(divClasses.value)
-      }, [createElementVNode("span", _hoisted_2$2, toDisplayString(fromColumnValue()), 1), _cache[1] || (_cache[1] = createTextVNode()), viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$2, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), withDirectives(createElementVNode("input", {
+      }, [createElementVNode("span", _hoisted_2$2, toDisplayString(fromColumnValue()), 1), _cache[1] || (_cache[1] = createTextVNode()), viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$2, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), withDirectives(createElementVNode("input", mergeProps({
         id: unref3(inputId),
         ref: "input",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => viewValue.value = $event),
-        class: normalizeClass(inputClasses.value),
+        class: inputClasses.value,
         type: "text",
         maxlength: "40",
         tabindex: "-1",
-        "aria-label": ariaLabel.value,
+        "aria-label": ariaLabel.value
+      }, {
+        ...configAttributes.value,
+        ...columnAttributes.value
+      }, {
         onValidity,
         onPendingValidity
-      }, null, 42, _hoisted_4$2), [[vModelText, viewValue.value]]), _cache[3] || (_cache[3] = createTextVNode()), createElementVNode("div", _hoisted_5$2, [createVNode(unref3(FIcon), {
-        name: "pen",
-        class: "table-ng__editable__icon"
-      })], 512)], 2), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref3(IPopupError), {
+      }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]])], 2), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref3(IPopupError), {
         anchor: tdElement.value,
         "is-open": openPopupError.value,
         "error-message": validity.value.validationMessage,
-        "arrow-anchor": penElement.value,
+        "arrow-anchor": inputElement.value,
         layout: "f-table"
       }, null, 8, ["anchor", "is-open", "error-message", "arrow-anchor"])], 42, _hoisted_1$3)) : (openBlock(), createElementBlock("td", {
         key: 1,
@@ -4807,39 +4838,6 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     };
   }
 });
-function defaultTnumValue(type) {
-  const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
-  return tnumTypes.includes(type);
-}
-function getLabelFn(fn) {
-  if (fn) {
-    return fn;
-  }
-  return () => "";
-}
-function getUpdateFn(fn, key) {
-  if (fn) {
-    return fn;
-  }
-  if (key) {
-    return (row, value) => {
-      row[key] = value;
-    };
-  }
-  return () => void 0;
-}
-function getValueFn(fn, key, coerce, defaultValue) {
-  if (fn) {
-    return fn;
-  }
-  if (key) {
-    return (row) => {
-      var _row$key;
-      return coerce((_row$key = row[key]) !== null && _row$key !== void 0 ? _row$key : defaultValue);
-    };
-  }
-  return () => defaultValue;
-}
 function normalizeAnchorColumn(column) {
   var _column$key;
   return {
@@ -4929,6 +4927,7 @@ function normalizeNumberColumn(column) {
     decimals,
     tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
     align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "right",
+    attributes: column.attributes,
     value: getValueFn(column.value, column.key, String, ""),
     update: getUpdateFn(column.update, column.key),
     editable: typeof column.editable === "function" ? column.editable : () => {
@@ -5010,6 +5009,7 @@ function normalizeTextColumn(column) {
     type,
     tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
     align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "left",
+    attributes: column.attributes,
     label: getLabelFn(column.label),
     value: getValueFn(column.value, column.key, String, ""),
     update: getUpdateFn(column.update, column.key),
@@ -5464,6 +5464,9 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     striped: {
       type: Boolean
     },
+    disableDividers: {
+      type: Boolean
+    },
     selectable: {
       default: () => void 0
     }
@@ -5511,7 +5514,10 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     });
     const columns = computed3(() => normalizeTableColumns(__props.columns));
     const tableClasses = computed3(() => {
-      return __props.striped ? "table-ng table-ng--striped" : "table-ng";
+      return ["table-ng", {
+        "table-ng--striped": __props.striped,
+        "table-ng--divided": !__props.disableDividers
+      }];
     });
     const slots = useSlots();
     const hasExpandableSlot = computed3(() => {
