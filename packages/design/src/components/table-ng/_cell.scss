@@ -15,6 +15,7 @@ $underline-thickness: 3px;
     &:focus-within {
         box-shadow: none;
         outline: 3px solid $table-ng-cell-color-outline;
+        outline-offset: -3px;
     }
 
     &:not(&--menu-open):hover:has(button) {
@@ -196,6 +197,7 @@ $underline-thickness: 3px;
         &:focus {
             box-shadow: none;
             outline: 3px solid $table-ng-cell-color-outline;
+            outline-offset: -3px;
         }
     }
 
@@ -245,8 +247,7 @@ $underline-thickness: 3px;
 @media (forced-colors: active) {
     .table-ng__editable {
         forced-color-adjust: none;
-        border-bottom-color: transparent;
-        border-bottom-width: 0;
+        color: CanvasText;
     }
 
     .table-ng__cell--text:hover .table-ng__editable,
@@ -255,5 +256,18 @@ $underline-thickness: 3px;
     .table-ng__cell--select:focus-within .table-ng__editable {
         box-shadow: inset 0 (-$underline-thickness) 0 0 Highlight;
         border-radius: 0;
+    }
+
+    .table-ng [tabindex="0"]:focus,
+    .table-ng [tabindex="0"]:focus-visible {
+        outline: 3px solid CanvasText;
+        outline-offset: -3px;
+        background: transparent;
+    }
+
+    .table-ng__cell :is(button, a, input, select, [role="combobox"]:focus),
+    .table-ng__cell :is(button, a, input, select, [role="combobox"]:focus-visible) {
+        outline: none;
+        box-shadow: none;
     }
 }
