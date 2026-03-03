@@ -102,8 +102,21 @@
                 fill: CanvasText;
             }
 
-            .f-icon-alert {
+            .f-icon-alert,
+            .f-icon-i,
+            .f-icon-success {
                 color: CanvasText;
+            }
+        }
+
+        &--tooltip {
+            .f-icon-circle {
+                color: Canvas;
+                fill: ButtonBorder;
+            }
+
+            .f-icon-i {
+                color: ButtonText;
             }
         }
     }

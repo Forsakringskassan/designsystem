@@ -97,14 +97,6 @@ watch(
         if (isOpen) {
             currentFocusedItemIndex.value = -1;
             selectedItem.value = "";
-
-            /* wait for popup to be rendered */
-            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-            nextTick(() => {
-                if (contextmenuRef.value) {
-                    focusHandle = pushFocus(contextmenuRef.value);
-                }
-            });
         } else {
             /* this only runs when isOpen is changed programmatically from the
              * outside, if the context menu is closed by selecting, keyboard etc
@@ -117,6 +109,13 @@ watch(
     },
     { immediate: true },
 );
+
+function onPopupOpen(): void {
+    if (!contextmenuRef.value) {
+        return;
+    }
+    focusHandle = pushFocus(contextmenuRef.value);
+}
 
 function hasSeparatorAfterItemAt(index: number): boolean {
     return separatorPositions.value.includes(index);
@@ -221,7 +220,15 @@ async function activateItem(index: number): Promise<void> {
 </script>
 
 <template>
-    <i-popup :is-open :keyboard-trap="false" :anchor :set-focus="false" inline="never" @close="closePopup($event)">
+    <i-popup
+        :is-open
+        :keyboard-trap="false"
+        :anchor
+        :set-focus="false"
+        inline="never"
+        @close="closePopup($event)"
+        @open="onPopupOpen"
+    >
         <nav class="contextmenu" :aria-label @keyup="onKeyUp" @keydown="onKeyDown">
             <ul ref="contextmenu" role="menu" tabindex="-1" class="contextmenu__list">
                 <li v-for="(item, index) in popupItems" :key="item.key" role="menuitem" @click="onClickItem(item)">
