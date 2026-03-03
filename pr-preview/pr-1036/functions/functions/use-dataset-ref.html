@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-8e2485.json"
+            href="../../search-data-88d70c.json"
             as="fetch"
             crossorigin
-            integrity="sha384-NICCC+rO0aMKN57HmtMLnZqAeRDpYcvLJ3JPScB4oCL0LGT3E+wM4B3QgG19Ydhi"
+            integrity="sha384-/ET0ZP3bBs6A7zEhsvFUhGvZlohtOl/bQAwWLlh7puJfvSz6Sht7OYw8njKNV5ia"
             id="search-data"
         />
     </head>
@@ -1801,7 +1801,7 @@
 <h2 id="example"><a class="header-anchor" href="#example">Example</a></h2><p class="docs-paragraph">Skapa en ny datamängd:</p>
 
                 <div
-                    id="example-0a0c34"
+                    id="example-a0fe02"
                     class="code-preview code-preview--default"
                     
                     
@@ -1811,15 +1811,15 @@
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">const</span> dataset = <span class="hljs-title function_">useDatasetRef</span>([
-    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Äpple&quot;</span>, },
-    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Banan&quot;</span>, },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Äpple&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Banan&quot;</span> },
 ]);
 </code></pre>
                 </div>
             <p class="docs-paragraph">Datamängden hanterar alla vanliga operationer en array har:</p>
 
                 <div
-                    id="example-aa7d2d"
+                    id="example-4dea83"
                     class="code-preview code-preview--default"
                     
                     
@@ -1827,8 +1827,8 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(dataset.<span class="hljs-property">value</span>.<span class="hljs-property">length</span>); <span class="hljs-comment">// 2</span>
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(dataset.<span class="hljs-property">value</span>.<span class="hljs-title function_">at</span>(<span class="hljs-number">0</span>)) <span class="hljs-comment">// { id: &quot;1&quot;, name: &quot;Äpple&quot; }</span>
-<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(dataset.<span class="hljs-property">value</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">it</span> =&gt;</span> it.<span class="hljs-property">name</span>.<span class="hljs-title function_">startsWith</span>((<span class="hljs-string">&quot;B&quot;</span>)))) <span class="hljs-comment">// [{ id: &quot;2&quot;, name: &quot;Banan&quot; }]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(dataset.<span class="hljs-property">value</span>.<span class="hljs-title function_">at</span>(<span class="hljs-number">0</span>)); <span class="hljs-comment">// { id: &quot;1&quot;, name: &quot;Äpple&quot; }</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(dataset.<span class="hljs-property">value</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> it.<span class="hljs-property">name</span>.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&quot;B&quot;</span>))); <span class="hljs-comment">// [{ id: &quot;2&quot;, name: &quot;Banan&quot; }]</span>
 </code></pre>
                 </div>
             <h2 id="related"><a class="header-anchor" href="#related">Related</a></h2><ul>
@@ -1860,9 +1860,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">refactor/reactive-dataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/4e95f5035521cea104e89209ea2dd2b93a042edb">4e95f50</a>)<br />
+<div class="footer__right"><div class="version">refactor/reactive-dataset (<a href="https://github.com/Forsakringskassan/designsystem/commits/c1c62804cc5426274367ce2fa547faf8980969d3">c1c6280</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1036">PR 1036</a><br />
-        2026-03-03 15:28
+        2026-03-03 15:36
 </div>
 <div class="toolbar__item">
     <form id="version">
