@@ -1,4 +1,6 @@
 export {
+    type FTableApi,
+    type FTableCellApi,
     type InputType,
     type InputTypeBase,
     type InputTypeNumber,
