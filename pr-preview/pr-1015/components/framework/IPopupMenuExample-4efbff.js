@@ -3559,6 +3559,7 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
         _createCommentVNode9(" @slot Slot for main content above text fields and buttons. "),
         _renderSlot10(_ctx.$slots, "default")
       ]),
+      _createCommentVNode9(" [html-validate-disable-next wcag/h32 -- Submit button with `formId` present in footer ] "),
       _createVNode4(_component_f_validation_form, {
         id: _ctx.formId,
         "before-submit": _ctx.beforeSubmit,
@@ -4165,6 +4166,7 @@ var IPopup_default = defineComponent12({
         } else {
           document.removeEventListener("click", this.onDocumentClickHandler);
           window.removeEventListener("resize", this.onWindowResizeDebounced);
+          window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
         }
       }
     }
@@ -4176,6 +4178,7 @@ var IPopup_default = defineComponent12({
   unmounted() {
     document.removeEventListener("click", this.onDocumentClickHandler);
     window.removeEventListener("resize", this.onWindowResizeDebounced);
+    window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
   },
   methods: {
     async toggleIsOpen(isOpen) {
