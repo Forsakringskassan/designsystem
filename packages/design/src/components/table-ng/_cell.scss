@@ -238,6 +238,7 @@ $underline-thickness: 3px;
     padding: $vertical-padding $horizontal-padding;
     display: flex;
     align-items: center;
+    margin-block: 2px;
 
     &__text {
         flex: 1 1 auto;
@@ -275,6 +276,5 @@ $underline-thickness: 3px;
     .table-ng__cell :is(button, a, input, select, [role="combobox"]):focus,
     .table-ng__cell :is(button, a, input, select, [role="combobox"]):focus-visible {
         outline: none;
-        box-shadow: none;
     }
 }
