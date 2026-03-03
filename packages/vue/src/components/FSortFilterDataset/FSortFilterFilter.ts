@@ -1,4 +1,5 @@
 import { isSet } from "@fkui/logic";
+import { type Dataset } from "../../utils";
 
 function includesAllSearchTerms(
     item: Record<PropertyKey, string | number | undefined>,
@@ -23,11 +24,11 @@ function includesAllSearchTerms(
     return true;
 }
 
-export function filter<T>(
-    list: T[],
+export function filter<T, TArray extends Dataset<T> | T[]>(
+    list: TArray,
     filterAttributes: PropertyKey[],
     searchString: string,
-): T[] {
+): TArray {
     searchString = searchString.trim();
     if (searchString.trim() === "") {
         return list;
@@ -43,5 +44,5 @@ export function filter<T>(
             filterAttributes,
             searchTerms,
         ),
-    );
+    ) as TArray;
 }
