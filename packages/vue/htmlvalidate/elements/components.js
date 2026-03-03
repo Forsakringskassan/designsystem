@@ -125,6 +125,9 @@ module.exports = defineMetadata({
             size: {
                 enum: ["small", "medium", "large"],
             },
+            type: {
+                enum: ["submit", "reset", "button"],
+            },
             "icon-left": {
                 allowed: allowedIfAttributeIsAbsent("icon-right"),
                 enum: ["/.+/"],
@@ -148,6 +151,12 @@ module.exports = defineMetadata({
             "mobile-full-width": {
                 boolean: true,
             },
+            variant: {
+                enum: ["primary", "secondary", "tertiary"],
+            },
+        },
+        submitButton(node) {
+            return node.getAttribute("type") === "submit";
         },
     },
 
