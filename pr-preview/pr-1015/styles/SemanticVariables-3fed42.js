@@ -579,8 +579,8 @@ var metadata_default = {
           "palette": "fk-black-15"
         },
         "dark": {
-          "value": "#bbbbbd",
-          "palette": "fk-black-30"
+          "value": "#8d8e91",
+          "palette": "fk-black-50"
         }
       }
     },
@@ -725,6 +725,20 @@ var metadata_default = {
       }
     },
     {
+      "name": "--fkds-color-feedback-text-on-warning",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#1b1e23",
+          "palette": "fk-black-100"
+        },
+        "dark": {
+          "value": "#1b1e23",
+          "palette": "fk-black-100"
+        }
+      }
+    },
+    {
       "name": "--fkds-color-feedback-text-positive",
       "comment": null,
       "values": {
@@ -747,8 +761,22 @@ var metadata_default = {
           "palette": "green-a-100"
         },
         "dark": {
-          "value": "#116a3e",
-          "palette": "green-a-100"
+          "value": "#35805b",
+          "palette": "green-a-85"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-header-text-primary",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#fff",
+          "palette": null
+        },
+        "dark": {
+          "value": "#fff",
+          "palette": null
         }
       }
     },

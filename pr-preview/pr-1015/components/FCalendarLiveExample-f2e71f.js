@@ -4223,8 +4223,8 @@ var IPopup_default = defineComponent12({
     }
   },
   created() {
-    this.onWindowResizeDebounced = debounce(this.recalculatePlacement, 100).bind(this);
-    this.onScrollDebounced = debounce(this.recalculatePlacement, 100).bind(this);
+    this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
+    this.onScrollDebounced = debounce(this.onScroll, 100).bind(this);
   },
   unmounted() {
     document.removeEventListener("click", this.onDocumentClickHandler);
@@ -4245,7 +4245,7 @@ var IPopup_default = defineComponent12({
       this.applyFocus();
       this.$emit("open");
     },
-    async calculatePlacement() {
+    async calculatePlacement(options) {
       const popup = getHTMLElementFromVueRef(this.$refs.popup);
       const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
       const anchor = getElement(this.anchor);
@@ -4268,6 +4268,9 @@ var IPopup_default = defineComponent12({
         const useOverlay = this.forceOverlay || result.placement !== "Fallback" /* Fallback */;
         if (useOverlay) {
           wrapper.style.left = `${String(result.x)}px`;
+          if (options?.horizontalOnly) {
+            return;
+          }
           wrapper.style.top = `${String(result.y)}px`;
           return;
         }
@@ -4312,7 +4315,13 @@ var IPopup_default = defineComponent12({
     },
     onScrollDebounced() {
     },
-    async recalculatePlacement() {
+    async onWindowResize() {
+      await this.recalculatePlacement();
+    },
+    async onScroll() {
+      await this.recalculatePlacement();
+    },
+    async recalculatePlacement(options) {
       if (!this.isOpen) {
         return;
       }
@@ -4327,7 +4336,7 @@ var IPopup_default = defineComponent12({
         this.teleportDisabled = false;
         await this.$nextTick();
       }
-      await this.calculatePlacement();
+      await this.calculatePlacement(options);
       const { placement, forceInline, forceOverlay } = this;
       this.teleportDisabled = isTeleportDisabled({ window, placement, forceInline, forceOverlay });
     },
@@ -4638,12 +4647,11 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
                   /* TEXT */
                 ),
                 _createCommentVNode11(' `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.\n                        `IPopupError` will be closed on input-field `blur`, so the button is never focusable anyway .\n                    '),
-                _createCommentVNode11(" [html-validate-disable-next fkui/class-deprecated -- technical debt] "),
                 _ctx.layout === "f-interactive-table" ? (_openBlock13(), _createElementBlock12("button", {
                   key: 1,
                   tabindex: "-1",
                   type: "button",
-                  class: "button button--discrete button--discrete--black modal__close-button popup-error__button",
+                  class: "popup-error__button",
                   "aria-label": "St\xE4ng",
                   onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClose && _ctx.onClose(...args))
                 }, [
@@ -4784,6 +4792,8 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
     const contentRef = useTemplateRef("content");
     const popupClasses = ["popup", "popup--overlay"];
     const teleportTarget = computed(() => config.teleportTarget);
+    const debouncedOnResize = debounce2(onResize, 100);
+    const debouncedOnScroll = debounce2(onScroll, 100);
     let guessedItemHeight = void 0;
     let verticalSpacing = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
@@ -4799,11 +4809,13 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
     });
     function addListeners() {
       document.addEventListener("click", onDocumentClickHandler);
-      window.addEventListener("resize", debounce2(onResize, 100));
+      window.addEventListener("resize", debouncedOnResize);
+      window.addEventListener("scroll", debouncedOnScroll, { capture: true });
     }
     function removeListeners() {
       document.removeEventListener("click", onDocumentClickHandler);
-      window.removeEventListener("resize", debounce2(onResize, 100));
+      window.removeEventListener("resize", debouncedOnResize);
+      window.removeEventListener("scroll", debouncedOnScroll, { capture: true });
     }
     function isElementInsideViewport(element) {
       const rect = element.getBoundingClientRect();
@@ -4842,6 +4854,13 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
         calculatePosition();
       }
     }
+    function onScroll(event) {
+      const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
+      if (isPopupTarget) {
+        return;
+      }
+      calculatePosition({ horizontalOnly: true });
+    }
     function onKeyEsc(event) {
       if (event.key === "Escape") {
         emit("close");
@@ -4850,7 +4869,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
     function guessItemHeight(numOfItems, contentWrapper) {
       return Math.ceil(contentWrapper.clientHeight / numOfItems);
     }
-    function calculatePosition() {
+    function calculatePosition(options) {
       const wrapperElement = wrapperRef.value;
       const contentWrapper = contentRef.value;
       if (!__props.anchor || !wrapperElement || !contentWrapper) {
@@ -4878,14 +4897,17 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
         const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
         const offsetLeft = Math.floor((offsetRect?.x ?? 0) + window.scrollX);
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
-        wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.left = `${String(left - offsetLeft)}px`;
+        if (options?.horizontalOnly) {
+          return;
+        }
+        wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.width = `${String(width)}px`;
         contentWrapper.style.maxHeight = `${String(height)}px`;
         contentWrapper.style.width = `${String(width)}px`;
       }
     }
-    const __returned__ = { emit, wrapperRef, contentRef, teleportDisabled, popupClasses, teleportTarget, get guessedItemHeight() {
+    const __returned__ = { emit, wrapperRef, contentRef, teleportDisabled, popupClasses, teleportTarget, debouncedOnResize, debouncedOnScroll, get guessedItemHeight() {
       return guessedItemHeight;
     }, set guessedItemHeight(v) {
       guessedItemHeight = v;
@@ -4893,7 +4915,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
       return verticalSpacing;
     }, set verticalSpacing(v) {
       verticalSpacing = v;
-    }, addListeners, removeListeners, isElementInsideViewport, onDocumentClickHandler, onResize, onKeyEsc, guessItemHeight, calculatePosition };
+    }, addListeners, removeListeners, isElementInsideViewport, onDocumentClickHandler, onResize, onScroll, onKeyEsc, guessItemHeight, calculatePosition };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -6473,6 +6495,9 @@ IComboboxDropdown_default.__file = "packages/vue/src/internal-components/combobo
 import { defineComponent as _defineComponent3 } from "vue";
 var IComboboxToggleButton_default = /* @__PURE__ */ _defineComponent3({
   __name: "IComboboxToggleButton",
+  props: {
+    isOpen: { type: Boolean, required: true }
+  },
   emits: ["toggle"],
   setup(__props, { expose: __expose, emit: __emit }) {
     __expose();
@@ -6500,8 +6525,9 @@ function render22(_ctx, _cache, $props, $setup, $data, $options) {
   }, [
     _createVNode8($setup["FIcon"], {
       name: "arrow-down",
+      rotate: $props.isOpen ? "180" : void 0,
       class: "text-field__icon"
-    })
+    }, null, 8, ["rotate"])
   ], 8, _hoisted_118);
 }
 
@@ -6529,7 +6555,8 @@ var FExpand_default = defineComponent20({
         width: "",
         position: "",
         visibility: "",
-        height: "0px"
+        height: "0px",
+        color: "CanvasText"
       },
       openedStyle: {
         height: "auto"
