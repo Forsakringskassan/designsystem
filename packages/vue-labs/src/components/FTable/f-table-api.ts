@@ -24,7 +24,7 @@ export interface FTableApi {
 /**
  * {@link FTable} optional cell api. Expose in cell component.
  *
- * @internal
+ * @public
  */
 export interface FTableCellApi {
     /**
