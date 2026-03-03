@@ -108,6 +108,17 @@
                 color: CanvasText;
             }
         }
+
+        &--tooltip {
+            .f-icon-circle {
+                color: Canvas;
+                fill: ButtonBorder;
+            }
+
+            .f-icon-i {
+                color: ButtonText;
+            }
+        }
     }
 
     &--large {
