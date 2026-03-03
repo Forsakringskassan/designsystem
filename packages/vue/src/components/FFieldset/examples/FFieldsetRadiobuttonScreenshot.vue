@@ -7,7 +7,6 @@ const modelValue2 = ref();
 </script>
 
 <template>
-    <!-- [html-validate-disable-next wcag/h32 -- false positive, FButton is a submit button ] -->
     <f-validation-form id="screenshot" :use-error-list="false">
         <template #default>
             <f-fieldset v-validation.required name="radio1">

@@ -197,6 +197,8 @@ export default defineComponent({
                 <!-- @slot Slot for main content above text fields and buttons. -->
                 <slot name="default"></slot>
             </div>
+
+            <!-- [html-validate-disable-next wcag/h32 -- Submit button with `formId` present in footer ] -->
             <f-validation-form
                 :id="formId"
                 :before-submit
