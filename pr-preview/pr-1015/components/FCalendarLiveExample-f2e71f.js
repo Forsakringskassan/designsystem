@@ -4249,6 +4249,9 @@ var IPopup_default = defineComponent12({
       this.$emit("open");
     },
     async calculatePlacement(options) {
+      if (!this.isOpen) {
+        return;
+      }
       const popup = getHTMLElementFromVueRef(this.$refs.popup);
       const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
       const anchor = getElement(this.anchor);
