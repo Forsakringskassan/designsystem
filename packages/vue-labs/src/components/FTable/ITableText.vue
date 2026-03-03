@@ -386,6 +386,7 @@ function onPendingValidity(): void {
                 tabindex="-1"
                 :aria-label
                 v-bind="{ ...configAttributes, ...columnAttributes }"
+                :aria-hidden="!inEdit"
                 @validity="onValidity"
                 @pending-validity="onPendingValidity"
             />
