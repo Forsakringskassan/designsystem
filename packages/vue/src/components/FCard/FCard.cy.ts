@@ -106,32 +106,36 @@ describe("density", () => {
     const DensityComponent = defineComponent({
         template: /* HTML */ `
             <density-wrapper>
-                <f-card>
-                    <template #header="{ headingSlotClass }">
-                        <h3 :class="headingSlotClass">Rubrik</h3>
-                    </template>
-                    <template #default> Innehåll </template>
-                    <template #footer>
-                        <div class="button-group">
-                            <f-button
-                                class="button-group__item"
-                                align-text
-                                icon-left="pen"
-                                variant="tertiary"
-                            >
-                                <span> Ändra </span>
-                            </f-button>
-                            <f-button
-                                class="button-group__item"
-                                align-text
-                                icon-left="trashcan"
-                                variant="tertiary"
-                            >
-                                <span> Ta bort </span>
-                            </f-button>
-                        </div>
-                    </template>
-                </f-card>
+                <template #default="{ density }">
+                    <f-card>
+                        <template #header="{ headingSlotClass }">
+                            <h3 :class="headingSlotClass">Rubrik</h3>
+                        </template>
+                        <template #default>
+                            Kort med densitet "{{ density }}"
+                        </template>
+                        <template #footer>
+                            <div class="button-group">
+                                <f-button
+                                    class="button-group__item"
+                                    align-text
+                                    icon-left="pen"
+                                    variant="tertiary"
+                                >
+                                    <span> Ändra </span>
+                                </f-button>
+                                <f-button
+                                    class="button-group__item"
+                                    align-text
+                                    icon-left="trashcan"
+                                    variant="tertiary"
+                                >
+                                    <span> Ta bort </span>
+                                </f-button>
+                            </div>
+                        </template>
+                    </f-card>
+                </template>
             </density-wrapper>
         `,
         components: {
