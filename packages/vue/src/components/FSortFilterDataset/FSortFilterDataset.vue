@@ -25,11 +25,11 @@ export interface FSortFilterDatasetProps<T> {
      * All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.
      * Structured as `{attributeName: "Name for dropdown", secondAttributeName: "Name for dropdown"}`
      */
-    sortableAttributes: Record<PropertyKey, string | Readonly<Ref<string>>>;
+    sortableAttributes: Partial<Record<keyof T, string | Readonly<Ref<string>>>>;
     /**
      * If set the data will be sorted by this attribute by default.
      */
-    defaultSortAttribute?: PropertyKey;
+    defaultSortAttribute?: keyof T;
     /**
      * Show/hides the sort dropdown.
      */
@@ -51,7 +51,7 @@ export interface FSortFilterDatasetProps<T> {
      * Attributes that should be included in search when filtering by input.
      * Default includes all attributes.
      */
-    filterAttributes?: PropertyKey[];
+    filterAttributes?: Array<keyof T>;
 }
 
 const {
@@ -84,21 +84,29 @@ const emit = defineEmits<{
     usedSortAttributes: [sortAttribute: SortOrder];
 }>();
 
+type SortableKeys = keyof T | "";
+
 const $t = useTranslate();
 const searchField = useTemplateRef("search-field");
 
 const useDefaultSortOrder = ref(true);
 const searchString = ref("");
-const defaultSortValue = { attribute: "", name: "", ascendingName: "", ascending: false, id: 0 } satisfies SortOrder;
-const sortAttribute = ref<SortOrder>({ ...defaultSortValue });
+const defaultSortValue = {
+    attribute: "",
+    name: "",
+    ascendingName: "",
+    ascending: false,
+    id: 0,
+} satisfies SortOrder<SortableKeys>;
+const sortAttribute = ref<SortOrder<SortableKeys>>({ ...defaultSortValue }) as Ref<SortOrder<SortableKeys>>;
 const sortFilterResult = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
 const debouncedFilterResultset = debounce(filterResultset, 250);
 
-let tableCallbackOnSort: FSortFilterDatasetSortCallback = () => {
+let tableCallbackOnSort: FSortFilterDatasetSortCallback<SortableKeys> = () => {
     /* do nothing */
 };
 
-let tableCallbackSortableColumns: FSortFilterDatasetMountCallback = () => {
+let tableCallbackSortableColumns: FSortFilterDatasetMountCallback<SortableKeys> = () => {
     /* do nothing */
 };
 
@@ -107,27 +115,31 @@ const showClearButton = computed(() => {
 });
 
 /* all enumerable keys from sortableAttributes */
-const sortableKeys = computed(() => {
+const sortableKeys = computed((): Array<keyof T> => {
     return Reflect.ownKeys(sortableAttributes).filter((key) => {
         const descriptor = Object.getOwnPropertyDescriptor(sortableAttributes, key);
         return descriptor?.enumerable ?? false;
-    });
+    }) as Array<keyof T>;
 });
 
-const sortOrders = computed((): SortableAttribute[] => {
-    const arr = [] as SortableAttribute[];
+const sortOrders = computed((): Array<SortableAttribute<SortableKeys>> => {
+    const arr = [] as Array<SortableAttribute<SortableKeys>>;
     let id = 0;
     for (const key of sortableKeys.value) {
+        const name = sortableAttributes[key] as string | Readonly<Ref<string>> | undefined;
+        if (!name) {
+            continue;
+        }
         arr.push({
             attribute: key,
-            name: sortableAttributes[key],
+            name,
             ascendingName: $t("fkui.sort-filter-dataset.label.ascending", "stigande"),
             ascending: true,
             id: id++,
         });
         arr.push({
             attribute: key,
-            name: sortableAttributes[key],
+            name,
             ascendingName: $t("fkui.sort-filter-dataset.label.descending", "fallande"),
             ascending: false,
             id: id++,
@@ -138,7 +150,7 @@ const sortOrders = computed((): SortableAttribute[] => {
 
 const internalFilterAttributes = computed(() => {
     if (!filterAttributes) {
-        return Object.keys(data[0] ?? {});
+        return Object.keys(data[0] ?? {}) as Array<keyof T>;
     }
     return filterAttributes;
 });
@@ -162,7 +174,7 @@ provide("sort", (attribute: string, ascending: boolean) => {
     emit("usedSortAttributes", sortAttribute.value);
 });
 
-provide("registerCallbackOnSort", (callback: FSortFilterDatasetSortCallback) => {
+provide("registerCallbackOnSort", (callback: FSortFilterDatasetSortCallback<SortableKeys>) => {
     tableCallbackOnSort = callback;
 });
 
@@ -177,6 +189,7 @@ onMounted(() => {
 watch(
     () => data,
     () => {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- false positive */
         if (defaultSortAttribute !== "" && useDefaultSortOrder.value) {
             const foundAttribute = sortOrders.value.find((item) => {
                 return item.attribute === defaultSortAttribute && item.ascending === defaultSortAscending;

@@ -1,31 +1,25 @@
 import { isSet } from "@fkui/logic";
 
-function includesAllSearchTerms(
-    item: Record<PropertyKey, string | number | undefined>,
-    filterAttributes: PropertyKey[],
+function includesAllSearchTerms<T>(
+    item: T,
+    filterAttributes: Array<keyof T>,
     searchTerms: string[],
 ): boolean {
     const values = filterAttributes
         .map((it) => {
             const value = item[it];
-            return isSet(value)
-                ? value.toString().toLocaleLowerCase()
-                : undefined;
+            return isSet(value) ? String(value).toLocaleLowerCase() : undefined;
         })
-        .filter(Boolean);
+        .filter((it): it is string => Boolean(it));
 
-    for (const searchTerm of searchTerms) {
-        const match = values.find((it) => it?.includes(searchTerm));
-        if (!match) {
-            return false;
-        }
-    }
-    return true;
+    return searchTerms.every((searchTerm) => {
+        return values.some((it) => it.includes(searchTerm));
+    });
 }
 
 export function filter<T>(
     list: T[],
-    filterAttributes: PropertyKey[],
+    filterAttributes: Array<keyof T>,
     searchString: string,
 ): T[] {
     searchString = searchString.trim();
@@ -38,10 +32,6 @@ export function filter<T>(
         .map((word) => word.toLocaleLowerCase());
 
     return list.filter((item) =>
-        includesAllSearchTerms(
-            item as unknown as Record<PropertyKey, string | number | undefined>,
-            filterAttributes,
-            searchTerms,
-        ),
+        includesAllSearchTerms(item, filterAttributes, searchTerms),
     );
 }

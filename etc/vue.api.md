@@ -1328,13 +1328,13 @@ export function setItemIdentifiers<T>(items: T[], attribute?: keyof T, expandabl
 export function setRunningContext(app: App): void;
 
 // @public
-export interface SortOrder {
+export interface SortOrder<TKeys = PropertyKey> {
     // (undocumented)
     ascending: boolean;
     // (undocumented)
     ascendingName: string;
     // (undocumented)
-    attribute: PropertyKey;
+    attribute: TKeys;
     // (undocumented)
     id: number;
     // (undocumented)

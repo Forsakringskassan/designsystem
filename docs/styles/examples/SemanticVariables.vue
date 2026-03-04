@@ -15,8 +15,6 @@ const themes = theme.themes;
         :show-sort="false"
         :sortable-attributes="{
             name: 'Semantisk variabel',
-            palette: 'Palettfärg',
-            value: 'Färgkod',
         }"
     >
         <template #default="{ sortFilterResult }">
