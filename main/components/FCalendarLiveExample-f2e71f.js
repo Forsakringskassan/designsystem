@@ -1694,8 +1694,8 @@ function refIsVue(value) {
 function refIsVueArray(value) {
   return Array.isArray(value) && value.length > 0 && refIsVue(value[0]);
 }
-function getSortedHTMLElementsFromVueRef(ref6) {
-  const htmlElements = getHTMLElementsFromVueRef(ref6);
+function getSortedHTMLElementsFromVueRef(ref7) {
+  const htmlElements = getHTMLElementsFromVueRef(ref7);
   htmlElements.sort((lhs, rhs) => {
     const lhsIndex = parseIntOrDefault(lhs.dataset.refIndex, -Infinity);
     const rhsIndex = parseIntOrDefault(rhs.dataset.refIndex, -Infinity);
@@ -1712,38 +1712,38 @@ function parseIntOrDefault(value, defaultValue) {
   }
   return defaultValue;
 }
-function getHTMLElementsFromVueRef(ref6) {
+function getHTMLElementsFromVueRef(ref7) {
   let result = [];
-  if (isEmptyArray(ref6)) {
+  if (isEmptyArray(ref7)) {
     result = [];
-  } else if (refIsVueArray(ref6)) {
-    result = ref6.map((vueRef) => vueRef.$el);
-  } else if (refIsHTMLElementArray(ref6)) {
-    result = [...ref6];
-  } else if (isSet2(ref6)) {
-    result = [getHTMLElementFromVueRef(ref6)];
+  } else if (refIsVueArray(ref7)) {
+    result = ref7.map((vueRef) => vueRef.$el);
+  } else if (refIsHTMLElementArray(ref7)) {
+    result = [...ref7];
+  } else if (isSet2(ref7)) {
+    result = [getHTMLElementFromVueRef(ref7)];
   }
   return result;
 }
 function isEmptyArray(value) {
   return Array.isArray(value) && value.length === 0;
 }
-function findElementFromVueRef(ref6) {
-  if (refIsElement(ref6)) {
-    return ref6;
-  } else if (refIsVue(ref6)) {
-    return ref6.$el;
+function findElementFromVueRef(ref7) {
+  if (refIsElement(ref7)) {
+    return ref7;
+  } else if (refIsVue(ref7)) {
+    return ref7.$el;
   }
 }
-function getHTMLElementFromVueRef(ref6) {
-  const element = findElementFromVueRef(ref6);
+function getHTMLElementFromVueRef(ref7) {
+  const element = findElementFromVueRef(ref7);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref6)}.`);
+    throw new Error(`Unable to find element from ${String(ref7)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${String(ref6)}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref7)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -3801,6 +3801,9 @@ function getAbsolutePosition(src) {
   };
 }
 
+// packages/vue/src/utils/dataset.ts
+import { ref } from "vue";
+
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=script
 import { defineComponent as defineComponent22, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef4 } from "vue";
 import { ElementIdService as ElementIdService6, debounce as debounce4 } from "@fkui/logic";
@@ -3810,7 +3813,7 @@ import {
   computed as computed4,
   defineComponent as defineComponent21,
   inject,
-  ref as ref5,
+  ref as ref6,
   toRef,
   useSlots as useSlots2,
   useTemplateRef as useTemplateRef3,
@@ -5925,9 +5928,9 @@ function isSameMonth(a, b) {
   return a.startOfMonth().equals(b.startOfMonth());
 }
 function getDayTabindex(date, active, entry) {
-  const ref6 = active ?? entry;
-  if (ref6 && isSameMonth(ref6, date)) {
-    return date.equals(ref6) ? 0 : -1;
+  const ref7 = active ?? entry;
+  if (ref7 && isSameMonth(ref7, date)) {
+    return date.equals(ref7) ? 0 : -1;
   } else {
     return date.day === 1 ? 0 : -1;
   }
@@ -6258,8 +6261,8 @@ var ICalendarNavbar_default = defineComponent19({
     getDateText(value) {
       return `${capitalize(value.monthName)} ${String(value.year)}`;
     },
-    isFocused(ref6) {
-      return document.activeElement === this.$refs[ref6];
+    isFocused(ref7) {
+      return document.activeElement === this.$refs[ref7];
     }
   }
 });
@@ -6373,7 +6376,7 @@ import {
   computed as computed2,
   nextTick,
   onMounted as onMounted2,
-  ref,
+  ref as ref2,
   watchEffect as watchEffect2
 } from "vue";
 import { ElementIdService as ElementIdService5, isEmpty as isEmpty2 } from "@fkui/logic";
@@ -6386,7 +6389,7 @@ var $t = useTranslate();
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxDropdown.vue?type=script
 import { defineComponent as _defineComponent2 } from "vue";
-import { nextTick as nextTick2, ref as ref2, useTemplateRef as useTemplateRef2, watchEffect as watchEffect3 } from "vue";
+import { nextTick as nextTick2, ref as ref3, useTemplateRef as useTemplateRef2, watchEffect as watchEffect3 } from "vue";
 var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
   __name: "IComboboxDropdown",
   props: {
@@ -6402,7 +6405,7 @@ var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
     __expose();
     const emit = __emit;
     const listboxRef = useTemplateRef2("listbox");
-    const activeElement = ref2();
+    const activeElement = ref3();
     function isOptionActive(item) {
       return item === __props.activeOption;
     }
@@ -6606,9 +6609,9 @@ var FExpand_default2 = FExpand_default;
 var tooltipAttachTo = /* @__PURE__ */ Symbol("tooltipAttachTo");
 
 // packages/vue/src/components/FTooltip/use-animation.ts
-import { computed as computed3, onMounted as onMounted3, ref as ref3, watchEffect as watchEffect4 } from "vue";
+import { computed as computed3, onMounted as onMounted3, ref as ref4, watchEffect as watchEffect4 } from "vue";
 var initialized = false;
-var reducedMotion = ref3(false);
+var reducedMotion = ref4(false);
 function useAnimation(options) {
   const { duration = 250, easing = "ease-in", element: elementRef } = options;
   let current = "collapse";
@@ -6677,10 +6680,10 @@ function useAnimation(options) {
 }
 
 // packages/vue/src/components/FTooltip/use-horizontal-offset.ts
-import { onMounted as onMounted4, onUnmounted as onUnmounted3, readonly, ref as ref4, watch as watch2 } from "vue";
+import { onMounted as onMounted4, onUnmounted as onUnmounted3, readonly, ref as ref5, watch as watch2 } from "vue";
 function useHorizontalOffset(options) {
   const { element: elementRef, parent: parentRef } = options;
-  const offset2 = ref4(16);
+  const offset2 = ref5(16);
   watch2(() => elementRef.value, updateOffset);
   watch2(() => parentRef, updateOffset);
   onMounted4(() => {
@@ -6781,7 +6784,7 @@ var FTooltip_default = defineComponent21({
   setup(props) {
     const provided = inject(tooltipAttachTo, null);
     const attachTo = toRef(props, "attachTo");
-    const ready = ref5(false);
+    const ready = ref6(false);
     const iconTarget = computed4(() => {
       if (provided?.value) {
         return provided.value;

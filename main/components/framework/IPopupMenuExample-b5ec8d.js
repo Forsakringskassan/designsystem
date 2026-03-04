@@ -1680,8 +1680,8 @@ function refIsVue(value) {
 function refIsVueArray(value) {
   return Array.isArray(value) && value.length > 0 && refIsVue(value[0]);
 }
-function getSortedHTMLElementsFromVueRef(ref) {
-  const htmlElements = getHTMLElementsFromVueRef(ref);
+function getSortedHTMLElementsFromVueRef(ref2) {
+  const htmlElements = getHTMLElementsFromVueRef(ref2);
   htmlElements.sort((lhs, rhs) => {
     const lhsIndex = parseIntOrDefault(lhs.dataset.refIndex, -Infinity);
     const rhsIndex = parseIntOrDefault(rhs.dataset.refIndex, -Infinity);
@@ -1698,38 +1698,38 @@ function parseIntOrDefault(value, defaultValue) {
   }
   return defaultValue;
 }
-function getHTMLElementsFromVueRef(ref) {
+function getHTMLElementsFromVueRef(ref2) {
   let result = [];
-  if (isEmptyArray(ref)) {
+  if (isEmptyArray(ref2)) {
     result = [];
-  } else if (refIsVueArray(ref)) {
-    result = ref.map((vueRef) => vueRef.$el);
-  } else if (refIsHTMLElementArray(ref)) {
-    result = [...ref];
-  } else if (isSet2(ref)) {
-    result = [getHTMLElementFromVueRef(ref)];
+  } else if (refIsVueArray(ref2)) {
+    result = ref2.map((vueRef) => vueRef.$el);
+  } else if (refIsHTMLElementArray(ref2)) {
+    result = [...ref2];
+  } else if (isSet2(ref2)) {
+    result = [getHTMLElementFromVueRef(ref2)];
   }
   return result;
 }
 function isEmptyArray(value) {
   return Array.isArray(value) && value.length === 0;
 }
-function findElementFromVueRef(ref) {
-  if (refIsElement(ref)) {
-    return ref;
-  } else if (refIsVue(ref)) {
-    return ref.$el;
+function findElementFromVueRef(ref2) {
+  if (refIsElement(ref2)) {
+    return ref2;
+  } else if (refIsVue(ref2)) {
+    return ref2.$el;
   }
 }
-function getHTMLElementFromVueRef(ref) {
-  const element = findElementFromVueRef(ref);
+function getHTMLElementFromVueRef(ref2) {
+  const element = findElementFromVueRef(ref2);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref)}.`);
+    throw new Error(`Unable to find element from ${String(ref2)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${String(ref)}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref2)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -3764,6 +3764,9 @@ function getAbsolutePosition(src) {
     height: Math.floor(rect.height)
   };
 }
+
+// packages/vue/src/utils/dataset.ts
+import { ref } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
 import { defineComponent as defineComponent12 } from "vue";
