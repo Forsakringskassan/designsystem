@@ -48,7 +48,7 @@ export default defineComponent({
          * Which element to use as container.
          */
         container: {
-            type: HTMLElement as PropType<HTMLElement | null | undefined>,
+            type: HTMLElement as PropType<HTMLElement | { el: HTMLElement } | null | undefined>,
             required: false,
             default: undefined,
         },
@@ -219,7 +219,12 @@ export default defineComponent({
             // Check candidates for overlay placement.
             const shouldCheckCandidates = this.forceOverlay || !(this.isMobileSize() || this.forceInline);
             if (shouldCheckCandidates) {
-                const area = getContainer(popup, this.container);
+                const rawContainer = getElement(this.container);
+                const containerElement =
+                    rawContainer && "el" in rawContainer
+                        ? rawContainer.el
+                        : (rawContainer as HTMLElement | null | undefined);
+                const area = getContainer(popup, containerElement);
                 const viewport = this.viewport;
                 const result = fitInsideArea({
                     area,
