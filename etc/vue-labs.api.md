@@ -16,6 +16,7 @@ import { ParseFunction } from '@fkui/vue';
 import { PropType } from 'vue';
 import { PublicProps } from 'vue';
 import { Ref } from 'vue';
+import { ShallowRef } from 'vue';
 import { ShallowUnwrapRef } from 'vue';
 import { UnwrapRefSimple } from '@vue/reactivity';
 import { ValidatorConfig } from '@fkui/logic';
@@ -39,6 +40,16 @@ export function formatNumberToTime(value?: number): HoursMinutesString | undefin
 //
 // @public (undocumented)
 export const FTable: typeof __VLS_export;
+
+// @public
+export interface FTableApi {
+    withTabstopBehaviour(behaviour: "default" | "row-removal", action: () => void | Promise<void>): Promise<void>;
+}
+
+// @public
+export interface FTableCellApi {
+    tabstopEl: Readonly<ShallowRef<HTMLElement | null>>;
+}
 
 // @public (undocumented)
 export const HOURS_MINUTES_REGEXP: RegExp;
