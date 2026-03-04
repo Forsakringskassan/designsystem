@@ -30,6 +30,50 @@ function getTestSelector(value: string): string {
     return `[data-test="${value}"]`;
 }
 
+describe("1. 3 Table test – right-aligned column", () => {
+    const rows = [
+        { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+        { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
+    ];
+
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        {
+            type: "text",
+            header: "Höger 1",
+            key: "text",
+            description: "Högerjusterat ",
+            align: "right",
+            editable: true,
+            label: () => "Input label",
+        },
+        {
+            type: "text",
+            header: "Vänster 2 ",
+            key: "text",
+            description: "Vänsterjusterat ",
+            align: "left",
+        },
+    ]);
+
+    const expandableAttribute = "nested";
+
+    it("should verify that text column is left/right alignment and formatted correctly (visual)", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute },
+            slots: {
+                caption:
+                    "Verifierar att kolumner kan vara höger- och vänsterjusterade",
+            },
+        });
+        table.expandButton(2).focus().click();
+        table.expandButton(1).focus().click();
+
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+
+        table.el().toMatchScreenshot();
+    });
+});
+
 describe("1.5 Separator", () => {
     const rows = [
         {
@@ -633,6 +677,49 @@ describe("3.6 Feedback to user on table validation errors at submit", () => {
         cy.get("button").click();
 
         table.cell({ row: 2, col: 1 }).should("have.focus");
+    });
+});
+
+describe("4.4 Home and End keyboard behavior", () => {
+    const rows = [
+        { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+        { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
+    ];
+
+    const columns = defineTableColumns<(typeof rows)[number]>([
+        {
+            type: "text",
+            header: "A",
+            key: "text",
+        },
+    ]);
+
+    const expandableAttribute = "nested";
+
+    it("should handle Home, End, Ctrl+Home and Ctrl+End correctly", () => {
+        cy.mount(FTable<(typeof rows)[number]>, {
+            props: { rows, columns, expandableAttribute },
+        });
+
+        table.expandButton(2).focus().click();
+        table.expandButton(1).focus().click();
+
+        table.cell({ row: 3, col: 2 }).focus().click();
+
+        cy.focused().press(Cypress.Keyboard.Keys.HOME);
+        table.cell({ row: 3, col: 1 }).should("have.focus");
+
+        table.cell({ row: 6, col: 2 }).focus().click();
+        table.cell({ row: 6, col: 2 }).should("have.focus");
+
+        cy.focused().type("{ctrl}{home}");
+        table.expandButton(1).should("have.focus");
+
+        cy.focused().press(Cypress.Keyboard.Keys.END);
+        table.cell({ row: 1, col: 2 }).should("have.focus");
+
+        cy.focused().type("{ctrl}{end}");
+        table.cell({ row: 6, col: 2 }).should("have.focus");
     });
 });
 
