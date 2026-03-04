@@ -138,13 +138,18 @@ export default defineComponent({
             }
 
             // `nextElementSibling` only exists on HTMLElement, cast to satisfy TS
-            const arrowAnchor = this.arrowAnchor ?? (anchorEl?.nextElementSibling as HTMLElement | null);
+            let arrowEl: HTMLElement | null | undefined;
+            if (this.arrowAnchor) {
+                arrowEl = "el" in this.arrowAnchor ? this.arrowAnchor.el : this.arrowAnchor;
+            } else {
+                arrowEl = anchorEl?.nextElementSibling as HTMLElement | null;
+            }
 
             /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-            if (!arrowAnchor || !wrapper) {
+            if (!arrowEl || !wrapper) {
                 return;
             }
-            const arrowAnchorRect = arrowAnchor.getBoundingClientRect();
+            const arrowAnchorRect = arrowEl.getBoundingClientRect();
             const wrapperRect = wrapper.getBoundingClientRect();
             const arrow = computeArrowOffset(this.placement, arrowAnchorRect, wrapperRect);
             this.arrowOffset = arrow.offset;
