@@ -1735,6 +1735,13 @@ function findElementFromVueRef(ref6) {
     return ref6.$el;
   }
 }
+function findHTMLElementFromVueRef(ref6) {
+  const result = findElementFromVueRef(ref6);
+  if (result instanceof HTMLElement) {
+    return result;
+  }
+  return void 0;
+}
 function getHTMLElementFromVueRef(ref6) {
   const element = findElementFromVueRef(ref6);
   if (!isSet2(element)) {
@@ -4249,12 +4256,12 @@ var IPopup_default = defineComponent12({
       this.$emit("open");
     },
     async calculatePlacement(options) {
-      if (!this.isOpen) {
+      const popup = findHTMLElementFromVueRef(this.$refs.popup);
+      const wrapper = findHTMLElementFromVueRef(this.$refs.wrapper);
+      const anchor = getElement(this.anchor);
+      if (!popup || !wrapper) {
         return;
       }
-      const popup = getHTMLElementFromVueRef(this.$refs.popup);
-      const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
-      const anchor = getElement(this.anchor);
       if (!anchor) {
         throw new Error("No anchor element found");
       }
