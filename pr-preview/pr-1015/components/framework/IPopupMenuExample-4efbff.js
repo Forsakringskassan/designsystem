@@ -4272,7 +4272,7 @@ var IPopup_default = defineComponent12({
       await this.recalculatePlacement();
     },
     async onScroll() {
-      await this.recalculatePlacement();
+      await this.recalculatePlacement({ horizontalOnly: true });
     },
     async recalculatePlacement(options) {
       if (!this.isOpen) {
