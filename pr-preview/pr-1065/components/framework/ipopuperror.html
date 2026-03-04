@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-5c0d0e.json"
+            href="../../search-data-3030e6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-LqoCSuFGbFGSFCwzKRItd9vnQftRxS6brVRMNf6dcCL3TqsseYmhZqqJW6MAWgP1"
+            integrity="sha384-T4BuvGQsEVt+jvf/gWVQYiqzR5sbQm0G9m/3ZCmne811tnwRrm/RrzGJjinduB8a"
             id="search-data"
         />
     </head>
@@ -1097,7 +1097,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/205472d5ce77c30f7099f78a6cf92c1691f04b11/packages/vue/src/internal-components/IPopupError/IPopupError.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/a2a2bd3c2c1e5db69a6125df640c84008853ffed/packages/vue/src/internal-components/IPopupError/IPopupError.vue">
                 IPopupError
             </a>
             
@@ -1153,13 +1153,13 @@ Läs mer om detta under <a href="./ipopup.html#teleport"><code>IPopup</code></a>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-350b8a"></div>
+        <div id="example-aa54eb"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IPopupErrorExample-350b8a.js"></script>
+        <script type="module" src="./IPopupErrorExample-aa54eb.js"></script>
     
                 </div>
                 <div>
@@ -1181,6 +1181,7 @@ Läs mer om detta under <a href="./ipopup.html#teleport"><code>IPopup</code></a>
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FButton</span>,
     <span class="hljs-title class_">FEmailTextField</span>,
     <span class="hljs-title class_">FInteractiveTable</span>,
     <span class="hljs-title class_">FPostalCodeTextField</span>,
@@ -1191,11 +1192,12 @@ Läs mer om detta under <a href="./ipopup.html#teleport"><code>IPopup</code></a>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;TestApp&quot;</span>,
     <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FButton</span>,
+        <span class="hljs-title class_">FEmailTextField</span>,
         <span class="hljs-title class_">FInteractiveTable</span>,
+        <span class="hljs-title class_">FPostalCodeTextField</span>,
         <span class="hljs-title class_">FTableColumn</span>,
         <span class="hljs-title class_">FValidationForm</span>,
-        <span class="hljs-title class_">FEmailTextField</span>,
-        <span class="hljs-title class_">FPostalCodeTextField</span>,
     },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
@@ -1241,7 +1243,7 @@ Läs mer om detta under <a href="./ipopup.html#teleport"><code>IPopup</code></a>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -1396,9 +1398,9 @@ Läs mer om detta under <a href="./ipopup.html#teleport"><code>IPopup</code></a>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">button-migration (<a href="https://github.com/Forsakringskassan/designsystem/commits/205472d5ce77c30f7099f78a6cf92c1691f04b11">205472d</a>)<br />
+<div class="footer__right"><div class="version">button-migration (<a href="https://github.com/Forsakringskassan/designsystem/commits/a2a2bd3c2c1e5db69a6125df640c84008853ffed">a2a2bd3</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1065">PR 1065</a><br />
-        2026-03-04 15:13
+        2026-03-04 16:19
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-5c0d0e.json"
+            href="../../search-data-3030e6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-LqoCSuFGbFGSFCwzKRItd9vnQftRxS6brVRMNf6dcCL3TqsseYmhZqqJW6MAWgP1"
+            integrity="sha384-T4BuvGQsEVt+jvf/gWVQYiqzR5sbQm0G9m/3ZCmne811tnwRrm/RrzGJjinduB8a"
             id="search-data"
         />
     </head>
@@ -1775,7 +1775,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-1081f6"></div>
+        <div id="example-d0423d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1801,7 +1801,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-1081f6.js"></script>
+        <script type="module" src="./FTableExample-d0423d.js"></script>
     
                 </div>
                 <div>
@@ -1823,7 +1823,7 @@ body {
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { h, ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { assertRef, formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">TableColumn</span>, <span class="hljs-title class_">FTable</span>, defineTableColumns, removeRow } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
@@ -2071,9 +2071,7 @@ interface <span class="hljs-title class_">Row</span> {
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onRemoveSelectedRows&quot;</span>&gt;</span>
-        Ta bort markerade rader
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onRemoveSelectedRows&quot;</span>&gt;</span> Ta bort markerade rader <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:sortable-attributes</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span>
@@ -2091,7 +2089,7 @@ interface <span class="hljs-title class_">Row</span> {
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onAddRow&quot;</span>&gt;</span>Lägg till rad<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onAddRow&quot;</span>&gt;</span>Lägg till rad<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
@@ -2133,13 +2131,13 @@ interface <span class="hljs-title class_">Row</span> {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-c08475"></div>
+        <div id="example-d30541"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableInputFieldsExample-c08475.js"></script>
+        <script type="module" src="./FTableInputFieldsExample-d30541.js"></script>
     
                 </div>
                 <div>
@@ -2161,6 +2159,7 @@ interface <span class="hljs-title class_">Row</span> {
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { computed, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 interface <span class="hljs-title class_">TableRow</span> {
@@ -2388,9 +2387,7 @@ interface <span class="hljs-title class_">TableRow</span> {
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validataAll&quot;</span>&gt;</span>
-        Interagerbart element före
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validataAll&quot;</span>&gt;</span> Interagerbart element före <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;all&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns1&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;columns2&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">striped</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
@@ -2399,9 +2396,7 @@ interface <span class="hljs-title class_">TableRow</span> {
     <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Summa: {{ { sum } }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Rows ({{ rows.length }} items):<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{{ rows }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validataAll&quot;</span>&gt;</span>
-        Interagerbart element efter
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validataAll&quot;</span>&gt;</span> Interagerbart element efter <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
@@ -2430,9 +2425,9 @@ interface <span class="hljs-title class_">TableRow</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">button-migration (<a href="https://github.com/Forsakringskassan/designsystem/commits/205472d5ce77c30f7099f78a6cf92c1691f04b11">205472d</a>)<br />
+<div class="footer__right"><div class="version">button-migration (<a href="https://github.com/Forsakringskassan/designsystem/commits/a2a2bd3c2c1e5db69a6125df640c84008853ffed">a2a2bd3</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1065">PR 1065</a><br />
-        2026-03-04 15:13
+        2026-03-04 16:19
 </div>
 <div class="toolbar__item">
     <form id="version">
