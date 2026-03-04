@@ -56,7 +56,7 @@ export default defineComponent({
          * Which element to use as viewport.
          */
         viewport: {
-            type: HTMLElement as PropType<HTMLElement>,
+            type: HTMLElement as PropType<HTMLElement | { el: HTMLElement } | null | undefined>,
             required: false,
             default(): HTMLElement {
                 return document.documentElement;
@@ -225,7 +225,12 @@ export default defineComponent({
                         ? rawContainer.el
                         : (rawContainer as HTMLElement | null | undefined);
                 const area = getContainer(popup, containerElement);
-                const viewport = this.viewport;
+
+                // unwrap viewport like the other elements so it fits the expected type
+                const rawViewport = getElement(this.viewport);
+                // Ensure null becomes undefined so the type is `HTMLElement | Rect | undefined`
+                const viewport = rawViewport && "el" in rawViewport ? rawViewport.el : (rawViewport ?? undefined);
+
                 const result = fitInsideArea({
                     area,
                     anchor,
