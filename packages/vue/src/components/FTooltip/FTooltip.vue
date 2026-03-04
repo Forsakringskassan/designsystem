@@ -31,7 +31,7 @@ export default defineComponent({
          * `FLabel` you do not need to set this prop.
          */
         attachTo: {
-            type: HTMLElement as PropType<HTMLElement | null | undefined>,
+            type: HTMLElement as PropType<HTMLElement | { el: HTMLElement } | null | undefined>,
             required: false,
             default: null,
         },
@@ -111,12 +111,15 @@ export default defineComponent({
             easing: "ease-in",
             element: wrapper,
         });
+        const element = iconTarget.value && "el" in iconTarget.value ? iconTarget.value.el : iconTarget.value;
         const offset = useHorizontalOffset({
             element: button,
-            parent: computed(() => iconTarget.value?.parentElement ?? null),
+            parent: computed(() => {
+                return element?.parentElement ?? null;
+            }),
         });
         watchEffect(() => {
-            iconTarget.value?.classList.add("tooltip__container");
+            element?.classList.add("tooltip__container");
         });
         watchEffect(() => {
             if (!wrapper.value) {
