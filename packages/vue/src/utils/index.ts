@@ -44,3 +44,4 @@ export {
     setItemIdentifier,
     setItemIdentifiers,
 } from "./item-identifier";
+export { type Dataset, useDatasetRef } from "./dataset";

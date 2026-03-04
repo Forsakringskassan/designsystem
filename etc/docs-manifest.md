@@ -157,6 +157,7 @@ functions/functions/render-slot-text.html
 functions/functions/table-scroll-classes.html
 functions/functions/table-scroll.html
 functions/functions/use-area-data.html
+functions/functions/use-dataset-ref.html
 functions/functions/use-details-panel.html
 functions/functions/use-modal.html
 functions/functions/use-resize.html

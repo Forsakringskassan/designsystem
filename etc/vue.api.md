@@ -139,6 +139,12 @@ export interface ContextMenuTextItem {
     label: string;
 }
 
+// @public
+export type Dataset<T> = T[] & {
+    readonly [datasetSymbol]: true;
+    readonly __type: T;
+};
+
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_67" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
@@ -1422,6 +1428,9 @@ export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | nul
     selectOption: (value: string) => void;
     closeDropdown: () => void;
 };
+
+// @public
+export function useDatasetRef<T>(initial?: T[]): Ref<Dataset<T>>;
 
 // @public (undocumented)
 export interface UseDetailsPanel<T = unknown> {
