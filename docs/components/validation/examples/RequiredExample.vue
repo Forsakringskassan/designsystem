@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FTextField, FValidationForm } from "@fkui/vue";
+import { FButton, FTextField, FValidationForm } from "@fkui/vue";
 
 export default defineComponent({
     name: "RequiredExample",
-    components: { FTextField, FValidationForm },
+    components: { FButton, FTextField, FValidationForm },
     data() {
         return { model: "" };
     },
@@ -23,20 +23,12 @@ export default defineComponent({
     <f-validation-form :use-error-list="false" @submit="onSubmit">
         <f-text-field v-model="model" v-validation.required> Fyll i minst ett tecken </f-text-field>
         <div class="button-group">
-            <button
-                id="submit"
-                type="submit"
-                class="button button-group__item button--primary button--large"
-            >
+            <f-button id="submit" class="button-group__item" size="large" type="submit">
                 Spara
-            </button>
-            <button
-                type="button"
-                class="button button-group__item button--secondary button--large"
-                @click="onCancel"
-            >
+            </f-button>
+            <f-button class="button-group__item" size="large" variant="secondary" @click="onCancel">
                 Avbryt
-            </button>
+            </f-button>
         </div>
     </f-validation-form>
 </template>

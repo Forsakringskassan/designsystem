@@ -2,6 +2,7 @@
 import { defineComponent } from "vue";
 import {
     type GroupValidityEvent,
+    FButton,
     FFieldset,
     FRadioField,
     FTextField,
@@ -10,7 +11,13 @@ import {
 
 export default defineComponent({
     name: "OptimizationExample",
-    components: { FTextField, FValidationGroup, FFieldset, FRadioField },
+    components: {
+        FButton,
+        FFieldset,
+        FRadioField,
+        FTextField,
+        FValidationGroup,
+    },
     data() {
         return {
             favoritGrupp: {} as GroupValidityEvent,
@@ -63,9 +70,7 @@ export default defineComponent({
             </div>
         </f-validation-group>
 
-        <button type="button" class="button" :disabled="!favoritGrupp.isValid">
-            Lägg till något nytt
-        </button>
+        <f-button :disabled="!favoritGrupp.isValid"> Lägg till något nytt </f-button>
 
         <p>isValid:</p>
         <pre data-test="favorit-grupp-is-valid">{{ favoritGrupp.isValid }}</pre>

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { confirmModal } from "@fkui/vue";
+import { FButton, confirmModal } from "@fkui/vue";
 
 interface Frukt {
     namn: string;
@@ -8,6 +8,7 @@ interface Frukt {
 
 export default defineComponent({
     name: "FConfirmModalApiExample",
+    components: { FButton },
     data() {
         return {
             frukt: {
@@ -35,6 +36,6 @@ export default defineComponent({
 
 <template>
     <div>
-        <button type="button" class="button button--secondary" @click="onClick">Ta bort</button>
+        <f-button variant="secondary" @click="onClick">Ta bort</f-button>
     </div>
 </template>

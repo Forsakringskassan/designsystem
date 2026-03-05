@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FTextField } from "@fkui/vue";
+import { FButton, FTextField } from "@fkui/vue";
 
 export default defineComponent({
     name: "TestPluginHidden",
-    components: { FTextField },
+    components: { FButton, FTextField },
     data() {
         return { isVisible: false };
     },
@@ -21,8 +21,8 @@ export default defineComponent({
             Barnets namn
         </f-text-field>
 
-        <button type="button" @click="isVisible = !isVisible">
+        <f-button @click="isVisible = !isVisible">
             {{ isVisible ? "Göm inmatningsfält" : "Visa inmatningsfält" }}
-        </button>
+        </f-button>
     </div>
 </template>

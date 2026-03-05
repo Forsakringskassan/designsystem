@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { IPopupMenu } from "..";
+import { FButton } from "../../../components";
 
 const exampleItems = [
     { label: "Länk 1", key: "MENU_1" },
@@ -22,7 +23,7 @@ const preventKeys = new Set(["Tab", ...verticalKeys]);
 
 export default defineComponent({
     name: "IPopupMenuExample",
-    components: { IPopupMenu },
+    components: { FButton, IPopupMenu },
     data() {
         return {
             items: exampleItems,
@@ -74,17 +75,16 @@ export default defineComponent({
 
 <template>
     <div>
-        <button
+        <f-button
             id="popup-menu-open-button"
             ref="popup-anchor"
-            type="button"
-            class="button button--secondary"
+            variant="secondary"
             @click="onClick"
             @keyup="onKeyUp"
             @keydown="onKeyDown"
         >
             Öppna popupmeny
-        </button>
+        </f-button>
 
         <i-popup-menu
             id="popup-menu"
