@@ -4486,7 +4486,7 @@ var _hoisted_3$2 = {
   key: 0,
   class: "sr-only"
 };
-var _hoisted_4$2 = ["id", "aria-label"];
+var _hoisted_4$2 = ["id", "aria-label", "aria-hidden"];
 var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
   __name: "ITableText",
   props: {
@@ -4823,6 +4823,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         ...configAttributes.value,
         ...columnAttributes.value
       }, {
+        "aria-hidden": !inEdit.value,
         onValidity,
         onPendingValidity
       }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]])], 2), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref3(IPopupError), {
