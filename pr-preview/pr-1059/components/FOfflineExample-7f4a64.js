@@ -1848,29 +1848,29 @@ function refIsElement(value) {
 function refIsVue(value) {
   return value?.$el !== void 0;
 }
-function findElementFromVueRef(ref) {
-  if (refIsElement(ref)) {
-    return ref;
-  } else if (refIsVue(ref)) {
-    return ref.$el;
+function findElementFromVueRef(ref2) {
+  if (refIsElement(ref2)) {
+    return ref2;
+  } else if (refIsVue(ref2)) {
+    return ref2.$el;
   }
 }
-function getElementFromVueRef(ref) {
-  const element = findElementFromVueRef(ref);
+function getElementFromVueRef(ref2) {
+  const element = findElementFromVueRef(ref2);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref)}.`);
+    throw new Error(`Unable to find element from ${String(ref2)}.`);
   }
   return element;
 }
-function getHTMLElementFromVueRef(ref) {
-  const element = findElementFromVueRef(ref);
+function getHTMLElementFromVueRef(ref2) {
+  const element = findElementFromVueRef(ref2);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref)}.`);
+    throw new Error(`Unable to find element from ${String(ref2)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${String(ref)}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref2)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -3674,6 +3674,9 @@ function hasSlot(vm, name, props = {}, options = {}) {
 
 // packages/vue/src/utils/use-modal.ts
 import { getCurrentInstance } from "vue";
+
+// packages/vue/src/utils/dataset.ts
+import { ref } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FOffline/FOffline.vue?type=script
 var EVENTS = ["online", "offline"];
