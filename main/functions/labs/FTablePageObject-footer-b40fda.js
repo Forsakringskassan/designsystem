@@ -5482,6 +5482,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     expose: __expose
   }) {
     const selectedRows = useModel(__props, "selectedRows");
+    const $t = useTranslate();
     const {
       hasSlot
     } = useSlotUtils();
@@ -5670,7 +5671,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         role: role.value,
         class: normalizeClass(tableClasses.value),
         "aria-rowcount": ariaRowcount.value
-      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", {
+      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("thead", {
         onFocusin: onTableFocusin,
         onFocusout: onTableFocusout,
         onClick,
@@ -5690,7 +5691,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           scope: "col",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])], 32), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", {
+      }), 128))])], 32), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", {
         onFocusin: onTableFocusin,
         onFocusout: onTableFocusout,
         onClick,
@@ -5698,7 +5699,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       }, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell"
-      }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[2] || (_cache[2] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment2, {
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment2, {
         key: 1
       }, renderList(metaRows.value, ({
         key,
@@ -5726,7 +5727,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           "is-expanded": isExpanded,
           "row-key": key,
           onToggle: onToggleExpanded
-        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$f, {
+        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$f, {
           key: 1,
           colspan: columns.value.length
         }, {
@@ -5747,7 +5748,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           state: unref3(selectableRowState)(row),
           row,
           onToggle: unref3(toggleSelectableRow)
-        }, null, 8, ["level", "selectable", "state", "row", "onToggle"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
+        }, null, 8, ["level", "selectable", "state", "row", "onToggle"])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
           return openBlock(), createElementBlock(Fragment2, {
             key: column.id
           }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
@@ -5764,7 +5765,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
         }), 128))], 64))], 8, _hoisted_7$1);
-      }), 128))], 32), _cache[7] || (_cache[7] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
+      }), 128))], 32), _cache[6] || (_cache[6] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
         class: "table-ng__row",
         "aria-rowindex": ariaRowcount.value
       }, [createElementVNode("td", {
