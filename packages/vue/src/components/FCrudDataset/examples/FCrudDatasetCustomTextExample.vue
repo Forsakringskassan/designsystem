@@ -1,13 +1,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FCrudDataset, FIcon, FList, FStaticField, FTextField, FTextareaField } from "@fkui/vue";
+import { FButton, FCrudDataset, FList, FStaticField, FTextField, FTextareaField } from "@fkui/vue";
 import { type FruitData, fruits } from "./fruit-data";
 
 export default defineComponent({
     name: "ExampleApp",
     components: {
+        FButton,
         FCrudDataset,
-        FIcon,
         FList,
         FStaticField,
         FTextField,
@@ -69,24 +69,26 @@ export default defineComponent({
                         <div class="col col--lg-5 col--md-6">
                             <div class="row row--align-end">
                                 <div class="col">
-                                    <button
+                                    <f-button
+                                        icon-left="pen"
+                                        size="small"
                                         type="button"
-                                        class="button button--small button--tertiary"
+                                        variant="tertiary"
                                         @click="updateItem(item)"
                                     >
-                                        <f-icon class="button__icon" name="pen"></f-icon>
                                         Ändra <span class="sr-only">{{ item.name }}</span>
-                                    </button>
+                                    </f-button>
                                 </div>
                                 <div class="col">
-                                    <button
+                                    <f-button
+                                        icon-left="trashcan"
+                                        size="small"
                                         type="button"
-                                        class="button button--small button--tertiary"
+                                        variant="tertiary"
                                         @click="deleteItem(item)"
                                     >
-                                        <f-icon class="button__icon" name="trashcan"></f-icon>
                                         Ta bort <span class="sr-only">{{ item.name }}</span>
-                                    </button>
+                                    </f-button>
                                 </div>
                             </div>
                         </div>

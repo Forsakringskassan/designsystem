@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
-import { FTextField, FValidationForm } from "@fkui/vue";
+import { FButton, FTextField, FValidationForm } from "@fkui/vue";
 
 interface Config {
     minLength: number;
@@ -19,8 +19,9 @@ ValidationService.registerValidator<Config>({
 export default defineComponent({
     name: "ValidationPluginDynamicValidation",
     components: {
-        FValidationForm,
+        FButton,
         FTextField,
+        FValidationForm,
     },
     data() {
         return {
@@ -62,6 +63,6 @@ export default defineComponent({
             </div>
         </div>
 
-        <button class="button" type="submit">Signera</button>
+        <f-button type="submit">Signera</f-button>
     </f-validation-form>
 </template>

@@ -1,11 +1,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FCheckboxField, FLoader } from "@fkui/vue";
+import { FButton, FCheckboxField, FLoader } from "@fkui/vue";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
 
 export default defineComponent({
     name: "FLoaderLiveExample",
     components: {
+        FButton,
         FCheckboxField,
         LiveExample,
     },
@@ -88,9 +89,7 @@ export default defineComponent({
         <f-checkbox-field v-if="overlay" v-model="focusOnOverlay" :value="true">
             Fokusera på meddelande
         </f-checkbox-field>
-        <button class="button button--primary button--medium" type="button" @click="toggleLoader()">
-            Visa
-        </button>
+        <f-button @click="toggleLoader()"> Visa </f-button>
         <p>Laddningsindikatorn visas i {{ loaderTime }} sekunder.</p>
     </live-example>
 </template>

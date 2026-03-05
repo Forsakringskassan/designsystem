@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { type ContextMenuItem, FContextMenu } from "@fkui/vue";
+import { type ContextMenuItem, FButton, FContextMenu } from "@fkui/vue";
 
 const exampleItems: ContextMenuItem[] = [
     { label: "Skriv ut", key: "MENU_1" },
@@ -15,7 +15,7 @@ const exampleItems: ContextMenuItem[] = [
 
 export default defineComponent({
     name: "FContextMenuExampleTextOnly",
-    components: { FContextMenu },
+    components: { FButton, FContextMenu },
     data() {
         return {
             items: exampleItems,
@@ -42,16 +42,14 @@ export default defineComponent({
 
 <template>
     <div data-testid="fcontextmenu-exempel2">
-        <button
+        <f-button
             ref="popupAnchor"
             data-test="open-example-contextmenu-button"
-            type="button"
-            class="button button--primary"
             aria-haspopup="menu"
             @click="onClick"
         >
             Öppna
-        </button>
+        </f-button>
         <pre>Selected: {{ selected }}</pre>
         <f-context-menu
             :is-open

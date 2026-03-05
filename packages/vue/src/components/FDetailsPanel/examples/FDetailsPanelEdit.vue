@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 import {
+    FButton,
     FDetailsPanel,
     FInteractiveTable,
     FPageLayout,
@@ -82,20 +83,21 @@ function openPanel(row: Row): void {
                                     Etikett-rubrik 4
                                 </f-text-field>
                                 <div class="button-group">
-                                    <button
-                                        class="button button-group__item button--primary button--small"
-                                        type="button"
+                                    <f-button
+                                        class="button-group__item"
+                                        size="small"
                                         @click="exampleScope.close('save')"
                                     >
                                         Spara
-                                    </button>
-                                    <button
-                                        class="button button-group__item button--secondary button--small"
-                                        type="button"
+                                    </f-button>
+                                    <f-button
+                                        class="button-group__item"
+                                        size="small"
+                                        variant="secondary"
                                         @click="exampleScope.close()"
                                     >
                                         Avbryt
-                                    </button>
+                                    </f-button>
                                 </div>
                             </div>
                         </template>

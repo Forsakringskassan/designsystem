@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { h, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
-import { FSortFilterDataset } from "@fkui/vue";
+import { FButton, FSortFilterDataset } from "@fkui/vue";
 import { type TableColumn, FTable, defineTableColumns, removeRow } from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
@@ -250,9 +250,7 @@ function onRemoveSelectedRows(): void {
 </script>
 
 <template>
-    <button type="button" class="button button--secondary" @click="onRemoveSelectedRows">
-        Ta bort markerade rader
-    </button>
+    <f-button variant="secondary" @click="onRemoveSelectedRows"> Ta bort markerade rader </f-button>
     <f-sort-filter-dataset :data="rows" :sortable-attributes>
         <template #default="{ sortFilterResult }">
             <f-table
@@ -270,7 +268,7 @@ function onRemoveSelectedRows(): void {
             </f-table>
         </template>
     </f-sort-filter-dataset>
-    <button type="button" class="button button--secondary" @click="onAddRow">Lägg till rad</button>
+    <f-button variant="secondary" @click="onAddRow">Lägg till rad</f-button>
 </template>
 
 <style>

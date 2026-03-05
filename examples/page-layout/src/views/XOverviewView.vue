@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FInteractiveTable, FTableColumn, useDetailsPanel } from "@fkui/vue";
+import { FButton, FInteractiveTable, FTableColumn, useDetailsPanel } from "@fkui/vue";
 import { type Expense } from "../expense";
 import { type Person } from "../person";
 
@@ -25,7 +25,7 @@ function openThing(): void {
 <template>
     <h1>Översikt</h1>
     <p>Lorem ipsum dolor sit amet</p>
-    <button type="button" class="button button--secondary" @click="openThing">Öppna en helt annan detaljpanel</button>
+    <f-button type="button" variant="secondary" @click="openThing">Öppna en helt annan detaljpanel</f-button>
 
     <f-interactive-table
         :rows="ankeborgare"

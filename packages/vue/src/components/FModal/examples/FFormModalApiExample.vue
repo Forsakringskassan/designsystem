@@ -1,10 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { formModal } from "@fkui/vue";
+import { FButton, formModal } from "@fkui/vue";
 import ExampleModal from "./ExampleModal.vue";
 
 export default defineComponent({
     name: "FFormModalApiExample",
+    components: { FButton },
     data() {
         return {
             result: "",
@@ -30,14 +31,9 @@ export default defineComponent({
 
 <template>
     <div class="f-form-modal-example">
-        <button
-            data-test="form-modal-api-example-button"
-            type="button"
-            class="button button--secondary"
-            @click="onClick"
-        >
+        <f-button data-test="form-modal-api-example-button" variant="secondary" @click="onClick">
             Öppna Modal
-        </button>
+        </f-button>
         <div v-if="result">
             <pre>Modalen stängdes med resultatet:</pre>
             <pre id="api-result">{{ result }}</pre>

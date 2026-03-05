@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
+    FButton,
     FCheckboxField,
     FEmailTextField,
     FFieldset,
@@ -12,6 +13,7 @@ import {
 export default defineComponent({
     name: "FValidationFormDefault",
     components: {
+        FButton,
         FCheckboxField,
         FEmailTextField,
         FFieldset,
@@ -70,19 +72,15 @@ export default defineComponent({
             </f-fieldset>
 
             <div class="button-group">
-                <button
-                    type="submit"
-                    class="button button-group__item button--primary button--large"
-                >
-                    Spara
-                </button>
-                <button
-                    type="button"
-                    class="button button-group__item button--secondary button--large"
+                <f-button class="button-group__item" size="large" type="submit">Spara</f-button>
+                <f-button
+                    class="button-group__item"
+                    size="large"
+                    variant="secondary"
                     @click="onCancel"
                 >
                     Avbryt
-                </button>
+                </f-button>
             </div>
         </template>
     </f-validation-form>

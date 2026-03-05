@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FIcon, FInteractiveTable, FSortFilterDataset, FTableColumn } from "@fkui/vue";
+import { FButton, FInteractiveTable, FSortFilterDataset, FTableColumn } from "@fkui/vue";
 import { fruits } from "./fruit-data";
 
 export default defineComponent({
-    components: { FSortFilterDataset, FInteractiveTable, FTableColumn, FIcon },
+    components: { FButton, FInteractiveTable, FSortFilterDataset, FTableColumn },
     data() {
         return {
             sortableAttributes: {
@@ -27,20 +27,22 @@ export default defineComponent({
     >
         <template #header>
             <div class="button-group">
-                <button
-                    class="button button-group__item button--tertiary button--small"
-                    type="button"
+                <f-button
+                    class="button-group__item"
+                    icon-left="trashcan"
+                    size="small"
+                    variant="tertiary"
                 >
-                    <f-icon name="trashcan" class="button__icon"></f-icon>
                     <span> Ta bort </span>
-                </button>
-                <button
-                    class="button button-group__item button--tertiary button--small"
-                    type="button"
+                </f-button>
+                <f-button
+                    class="button-group__item"
+                    icon-left="paper-clip"
+                    size="small"
+                    variant="tertiary"
                 >
-                    <f-icon name="paper-clip" class="button__icon"></f-icon>
                     <span> Bifoga </span>
-                </button>
+                </f-button>
             </div>
         </template>
 

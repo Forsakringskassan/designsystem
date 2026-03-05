@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FProgressbar } from "@fkui/vue";
+import { FButton, FProgressbar } from "@fkui/vue";
 
 export default defineComponent({
     name: "FProgressbarExample",
-    components: { FProgressbar },
+    components: { FButton, FProgressbar },
     data() {
         return {
             currentProgress: 40,
@@ -33,8 +33,8 @@ export default defineComponent({
         <pre
             class="debug-data"
         ><span class="sr-only">Debug-data: </span>value: {{currentProgress}}</pre>
-        <button data-test="increase" type="button" @click="increase()">Increase</button>
-        <button data-test="decrease" type="button" @click="decrease()">Decrease</button>
+        <f-button data-test="increase" @click="increase()">Increase</f-button>
+        <f-button data-test="decrease" @click="decrease()">Decrease</f-button>
         <label>
             Progress:
             <input v-model.number="currentProgress" type="number" />

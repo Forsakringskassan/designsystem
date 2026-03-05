@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FCheckboxField, FFieldset, FIcon, FTextField, FWizard, FWizardStep } from "@fkui/vue";
+import { FButton, FCheckboxField, FFieldset, FTextField, FWizard, FWizardStep } from "@fkui/vue";
 
 interface Frukt {
     value: string;
@@ -15,7 +15,7 @@ interface Fruktkorg {
 
 export default defineComponent({
     name: "WizardExample",
-    components: { FWizard, FWizardStep, FTextField, FIcon, FFieldset, FCheckboxField },
+    components: { FButton, FCheckboxField, FFieldset, FTextField, FWizard, FWizardStep },
     data() {
         return {
             current: undefined as string | undefined,
@@ -72,9 +72,9 @@ export default defineComponent({
         >
             <f-wizard-step key="fruktkorg-antal" v-test="'myOrderStep'" title="Min beställning">
                 <h3>Fruktkorg</h3>
-                <button type="button" class="button button--tertiary" @click="addBasket">
-                    <f-icon class="button__icon" name="plus" /> Lägg till fruktkorg
-                </button>
+                <f-button icon-left="plus" variant="tertiary" @click="addBasket">
+                    Lägg till fruktkorg
+                </f-button>
             </f-wizard-step>
 
             <f-wizard-step
@@ -103,9 +103,9 @@ export default defineComponent({
                     </f-checkbox-field>
                 </f-fieldset>
 
-                <button type="button" class="button button--tertiary" @click="removeBasket(item)">
-                    <f-icon name="trashcan" /> Ta bort fruktkorg
-                </button>
+                <f-button icon-left="trashcan" variant="tertiary" @click="removeBasket(item)">
+                    Ta bort fruktkorg
+                </f-button>
             </f-wizard-step>
 
             <f-wizard-step
@@ -121,7 +121,7 @@ export default defineComponent({
         <!-- [html-validate-disable-next no-inline-style] -->
         <p style="margin-top: 30px">
             Ett steg kan öppnas programatiskt, t.ex. man klickar 'ändra' i ett granska-steg.
-            <button type="button" @click="current = 'baz'">Öppna sista steget</button>
+            <f-button type="button" @click="current = 'baz'">Öppna sista steget</f-button>
         </p>
         <pre>v-model: {{ current }}</pre>
     </div>
