@@ -1,6 +1,6 @@
 {
   "name": "@fkui/icon-lib-builder",
-  "version": "6.37.0",
+  "version": "6.38.0",
   "description": "Icon library builder",
   "keywords": [
     "fkui",
@@ -35,7 +35,7 @@
   "dependencies": {
     "glob": "13.0.6",
     "sass": "1.97.3",
-    "svgo": "4.0.0"
+    "svgo": "4.0.1"
   },
   "engines": {
     "node": ">= 20.11",

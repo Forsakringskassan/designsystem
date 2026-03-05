@@ -3,7 +3,7 @@
  * Consumers (the main project) will merge their specific key types into this.
  *
  * @public
- * @since %version%
+ * @since v6.38.0
  */
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type -- intentional empty interface for module augmentation
 export interface CustomTranslationRegistry {
@@ -17,7 +17,7 @@ export interface CustomTranslationRegistry {
  * Otherwise, fallback to `string` (loose typing).
  *
  * @public
- * @since %version%
+ * @since v6.38.0
  */
 export type ResolveTranslationKey = CustomTranslationRegistry extends {
     Keys: infer K;
@@ -31,7 +31,7 @@ export type ResolveTranslationKey = CustomTranslationRegistry extends {
  * Only allows "string-key": "value" pairs
  *
  * @public
- * @since %version%
+ * @since v6.38.0
  */
 export type ValidKey = string;
 
@@ -40,7 +40,7 @@ export type ValidKey = string;
  * Used internally for recursion depth tracking.
  *
  * @public
- * @since %version%
+ * @since v6.38.0
  */
 export type BuildDepth<
     N extends number,
@@ -51,7 +51,7 @@ export type BuildDepth<
  * Computes `N - 1` at the type level.
  *
  * @public
- * @since %version%
+ * @since v6.38.0
  */
 export type Prev<N extends number> =
     BuildDepth<N> extends [...infer R, unknown] ? R["length"] : never;
@@ -63,7 +63,7 @@ export type Prev<N extends number> =
  * checks to keep it clean. If K or P is not a string/number, TS will error.
  *
  * @public
- * @since %version%
+ * @since v6.38.0
  */
 export type Join<K extends ValidKey, P extends ValidKey> = `${K}.${P}`;
 
@@ -80,7 +80,7 @@ export type Join<K extends ValidKey, P extends ValidKey> = `${K}.${P}`;
  * ```
  *
  * @public
- * @since %version%
+ * @since v6.38.0
  */
 export type PathMap<T, Depth extends number> = {
     [K in keyof T & ValidKey]: T[K] extends object
@@ -95,7 +95,7 @@ export type PathMap<T, Depth extends number> = {
  * the values using `[keyof T]`.
  *
  * @public
- * @since %version%
+ * @since v6.38.0
  * @typeParam T - The object or array to inspect.
  * @typeParam Depth - The maximum recursion depth (defaults to 6).
  * @returns A union of string paths (e.g., `"user" | "user.name"`).

@@ -118,13 +118,13 @@ function shouldMatchScreenshot(): void {
 }
 
 describe("visual regression", () => {
-    it("should have approved design with desktop viewport", () => {
+    it("should have approved design with desktop visual", () => {
         // desktop
         mountAndGetPageObject();
         cy.toMatchScreenshot();
     });
 
-    it("should not remove icon with long texts with desktop viewport", () => {
+    it("should not remove icon with long texts with desktop visual", () => {
         // desktop
 
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
@@ -133,7 +133,7 @@ describe("visual regression", () => {
         shouldMatchScreenshot();
     });
 
-    it("should wrap text when long label in mobile", () => {
+    it("should wrap text when long label in mobile visual", () => {
         // mobile
 
         cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
@@ -142,7 +142,7 @@ describe("visual regression", () => {
         shouldMatchScreenshot();
     });
 
-    it("should not wrap text when long label in desktop", () => {
+    it("should not wrap text when long label in desktop visual", () => {
         // desktop
 
         cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
@@ -151,7 +151,7 @@ describe("visual regression", () => {
         shouldMatchScreenshot();
     });
 
-    it("should not remove icon with long texts with mobile viewport", () => {
+    it("should not remove icon with long texts with mobile visual", () => {
         // mobile
 
         cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
@@ -160,9 +160,22 @@ describe("visual regression", () => {
         shouldMatchScreenshot();
     });
 
-    it("should have approved design with mobile viewport", () => {
+    it("should have approved design with mobile visual", () => {
         // mobile
         mountAndGetPageObject(VIEWPORT.MOBILE);
         cy.toMatchScreenshot();
+    });
+
+    it("hover should not overlap focus desktop visual", () => {
+        const imenuPageObj = mountAndGetPageObject(VIEWPORT.DESKTOP);
+        cy.get("[data-test=open-button]").click();
+        imenuPageObj.item(0).focus();
+        imenuPageObj.item(0).should("have.focus");
+        imenuPageObj.item(0).type("{downarrow}");
+        imenuPageObj.item(1).realHover();
+        cy.toMatchScreenshot({
+            capture: "runner",
+            clip: { x: 600, y: 80, height: 500, width: 500 },
+        });
     });
 });

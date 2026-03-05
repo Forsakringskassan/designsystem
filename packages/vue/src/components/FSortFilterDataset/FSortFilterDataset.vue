@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T">
-import { type Ref, computed, nextTick, onMounted, provide, ref, toValue, useTemplateRef, watch } from "vue";
+import { type Ref, nextTick, onMounted, provide, useTemplateRef, watch } from "vue";
 import { TranslationService, alertScreenReader, debounce } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { useTranslate } from "../../plugins";
@@ -11,10 +11,8 @@ import {
     type FSortFilterDatasetMountCallback,
     type FSortFilterDatasetSortCallback,
 } from "./FSortFilterDatasetInterface";
-import { filter } from "./FSortFilterFilter";
-import { sort } from "./FSortFilterSorter";
 import { type SortOrder } from "./sort-order";
-import { type SortableAttribute } from "./sortable-attribute";
+import { useSortFilterDataset } from "./use-sort-filter-dataset";
 
 export interface FSortFilterDatasetProps<T> {
     /**
@@ -86,153 +84,27 @@ const emit = defineEmits<{
 
 const $t = useTranslate();
 const searchField = useTemplateRef("search-field");
-
-const useDefaultSortOrder = ref(true);
-const searchString = ref("");
-const defaultSortValue = { attribute: "", name: "", ascendingName: "", ascending: false, id: 0 } satisfies SortOrder;
-const sortAttribute = ref<SortOrder>({ ...defaultSortValue });
-const sortFilterResult = ref<T[]>([]) as Ref<T[]>; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt
-const debouncedFilterResultset = debounce(filterResultset, 250);
-
-let tableCallbackOnSort: FSortFilterDatasetSortCallback = () => {
-    /* do nothing */
-};
-
-let tableCallbackSortableColumns: FSortFilterDatasetMountCallback = () => {
-    /* do nothing */
-};
-
-const showClearButton = computed(() => {
-    return searchString.value.length > 0;
-});
-
-/* all enumerable keys from sortableAttributes */
-const sortableKeys = computed(() => {
-    return Reflect.ownKeys(sortableAttributes).filter((key) => {
-        const descriptor = Object.getOwnPropertyDescriptor(sortableAttributes, key);
-        return descriptor?.enumerable ?? false;
-    });
-});
-
-const sortOrders = computed((): SortableAttribute[] => {
-    const arr = [] as SortableAttribute[];
-    let id = 0;
-    for (const key of sortableKeys.value) {
-        arr.push({
-            attribute: key,
-            name: sortableAttributes[key],
-            ascendingName: $t("fkui.sort-filter-dataset.label.ascending", "stigande"),
-            ascending: true,
-            id: id++,
-        });
-        arr.push({
-            attribute: key,
-            name: sortableAttributes[key],
-            ascendingName: $t("fkui.sort-filter-dataset.label.descending", "fallande"),
-            ascending: false,
-            id: id++,
-        });
-    }
-    return arr;
-});
-
-const internalFilterAttributes = computed(() => {
-    if (!filterAttributes) {
-        return Object.keys(data[0] ?? {});
-    }
-    return filterAttributes;
-});
-
-provide("sort", (attribute: string, ascending: boolean) => {
-    const foundAttribute = sortOrders.value.find((item) => {
-        return item.attribute === attribute && item.ascending === ascending;
-    });
-
-    if (foundAttribute) {
-        sortAttribute.value = {
-            ...foundAttribute,
-            name: toValue(foundAttribute.name),
-        };
-    } else {
-        sortAttribute.value = { ...defaultSortValue };
-    }
-
-    sortFilterData();
-
-    emit("usedSortAttributes", sortAttribute.value);
-});
-
-provide("registerCallbackOnSort", (callback: FSortFilterDatasetSortCallback) => {
-    tableCallbackOnSort = callback;
-});
-
-provide("registerCallbackOnMount", (callback: FSortFilterDatasetMountCallback) => {
-    tableCallbackSortableColumns = callback;
-});
-
-onMounted(() => {
-    tableCallbackSortableColumns(sortableKeys.value);
-});
-
-watch(
+const {
+    searchString,
+    sortAttribute,
+    sortFilterResult,
+    showClearButton,
+    defaultSortValue,
+    sortableKeys,
+    sortOrders,
+    onUserChangeSortAttribute,
+    onApiChangeSortAttribute,
+} = useSortFilterDataset(
     () => data,
-    () => {
-        if (defaultSortAttribute !== "" && useDefaultSortOrder.value) {
-            const foundAttribute = sortOrders.value.find((item) => {
-                return item.attribute === defaultSortAttribute && item.ascending === defaultSortAscending;
-            });
-            if (foundAttribute) {
-                sortAttribute.value = {
-                    ...foundAttribute,
-                    name: toValue(foundAttribute.name),
-                };
-            }
-            useDefaultSortOrder.value = false;
-        }
-        sortFilterData();
-    },
-    { immediate: true, deep: true },
+    () => sortableAttributes,
+    () => filterAttributes,
+    defaultSortAttribute,
+    defaultSortAscending,
 );
 
-function sortFilterData(): void {
-    const filteredData = filter(data, internalFilterAttributes.value, searchString.value);
-    const sortedData = sort(filteredData, {
-        attribute: sortAttribute.value.attribute as keyof T | "",
-        ascending: sortAttribute.value.ascending,
-    });
-
-    sortFilterResult.value = sortedData;
-
-    // Await slot mount, otherwise if defaultSortAttribute is used the slot doesn't have time to register tableCallbackOnSort before this is called.
-    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-    nextTick(() => {
-        tableCallbackOnSort(sortAttribute.value.attribute, sortAttribute.value.ascending);
-    });
-
-    emit("datasetSorted", sortFilterResult.value);
-}
-
-function onChangeSortAttribute(): void {
-    sortFilterData();
-    emit("usedSortAttributes", sortAttribute.value);
-}
-
-function onSearchInput(event: InputEvent): void {
-    searchString.value = (event.target as HTMLInputElement).value;
-    debouncedFilterResultset();
-}
-
-function onClickClearSearch(): void {
-    searchString.value = "";
-    sortFilterData();
-    const input = getHTMLElementFromVueRef(searchField.value).querySelector("input");
-    if (input) {
-        input.focus();
-    }
-}
-
 function filterResultset(): void {
-    sortFilterData();
+    searchString.value = searchField.value?.$el.querySelector("input").value;
+
     if (searchString.value === "") {
         alertScreenReader($t("fkui.sort-filter-dataset.aria-live.empty", "Sök redigera Sök tom"));
     } else {
@@ -248,6 +120,66 @@ function filterResultset(): void {
         alertScreenReader(searchAriaLive);
     }
 }
+
+const debouncedFilterResultset = debounce(filterResultset, 250);
+
+let tableCallbackOnSort: FSortFilterDatasetSortCallback = () => {
+    /* do nothing */
+};
+
+let tableCallbackSortableColumns: FSortFilterDatasetMountCallback = () => {
+    /* do nothing */
+};
+
+provide("sort", (attribute: string, ascending: boolean) => {
+    onApiChangeSortAttribute(attribute, ascending);
+});
+
+provide("registerCallbackOnSort", (callback: FSortFilterDatasetSortCallback) => {
+    tableCallbackOnSort = callback;
+});
+
+provide("registerCallbackOnMount", (callback: FSortFilterDatasetMountCallback) => {
+    tableCallbackSortableColumns = callback;
+});
+
+onMounted(() => {
+    tableCallbackSortableColumns(sortableKeys.value);
+});
+
+function onSearchInput(): void {
+    debouncedFilterResultset();
+}
+
+function onClickClearSearch(): void {
+    searchString.value = "";
+
+    const input = getHTMLElementFromVueRef(searchField.value).querySelector("input");
+    if (input) {
+        input.focus();
+    }
+}
+
+watch(sortAttribute, () => {
+    emit("usedSortAttributes", sortAttribute.value);
+});
+
+watch(
+    sortFilterResult,
+    (newValue, oldValue) => {
+        if (newValue === oldValue) {
+            return;
+        }
+
+        // Await slot mount, otherwise if defaultSortAttribute is used the slot doesn't have time to register tableCallbackOnSort before this is called.
+        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+        nextTick(() => {
+            tableCallbackOnSort(sortAttribute.value.attribute, sortAttribute.value.ascending);
+        });
+        emit("datasetSorted", sortFilterResult.value);
+    },
+    { immediate: true },
+);
 </script>
 
 <template>
@@ -299,7 +231,7 @@ function filterResultset(): void {
                             v-model="sortAttribute"
                             class="sort-filter-dataset__sort"
                             inline
-                            @change="onChangeSortAttribute"
+                            @change="onUserChangeSortAttribute"
                         >
                             <template #label>{{
                                 $t("fkui.sort-filter-dataset.label.sort", "Sortera\u00A0på")

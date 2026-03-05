@@ -9,6 +9,15 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version 6.38.0
+
+2026-03-04
+
+Vi har förbättrat textnyckelhanteringen så att det är möjligt att fånga upp saknade textnycklar. Läs mer {@link translate-text#strikt_typning_av_textnycklar Anpassa och översätt text}.  
+Klassen 'icon--stack' har deprekerats och ersatts av 'icon-stack'.
+
+Buggfixar, se {@link changelog Changelog}
+
 ## Version 6.36.0
 
 2026-02-11

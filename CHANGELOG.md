@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## 6.38.0 (2026-03-04)
+
+### Features
+
+* **@fkui/logic, @fkui/vue:** typed translated keys interface and helper functions (refs MISI-4607) 70e9884
+* **@fkui/vue:** deprecate `icon--stack` class (refs SFKUI-6500) b3338c4
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** `IPopupError` add support for forced-colors (refs SFKUI-7588) 9750f35
+* **@fkui/design:** `i` icon not supporting `forced-colors` media feature (fixes SFKUI-7567) 070e4fe
+* **@fkui/design:** `success` icon not supporting `forced-colors` media feature (fixes SFKUI-7567) a5a0e4d
+* **@fkui/design:** disabled checkbox label displayed as default (fixes SFKUI-7551) 3a2fd40
+* **@fkui/design:** disabled radio button label displayed as default (fixes SFKUI-7551) 57dfb2e
+* **@fkui/design:** icons not supporting `forced-colors` media feature (fixes SFKUI-7567) cd7a98e
+* **@fkui/design:** paginator `:hover` effect not supporting `forced-colors` media feature (fixes SFKUI-7510) 4a7a60c
+* **@fkui/design:** paginator button border not supporting `forced-colors` media feature (fixes SFKUI-7510) 93db0db
+* **@fkui/design:** paginator current page button not supporting `forced-colors` media feature (fixes SFKUI-7510) 5d5ffa6
+* **@fkui/design:** tooltip icon stack not supporting `forced-colors` media feature (fixes SFKUI-7672) bb47204
+* **@fkui/design:** visible page header separator (fixes SFKUI-7284) 7ef2d50
+* **@fkui/vue:** combobox list recalculate position on scroll (refs SFKUI-7584) 6fa70ea
+* **@fkui/vue:** fix `FContextMenu` to not scroll to top on open (fixes SFKUI-7683) a6fe8ce
+* **deps:** update dependency get-css-variables to v1.1.1 51e5542
+* **deps:** update vue monorepo to v3.5.29 1645998
+* **html-validate:** proper handling of `FButton` as submit button (refs SFKUI-6500) 6f275c8
+
 ## 6.37.0 (2026-02-25)
 
 ### Features
