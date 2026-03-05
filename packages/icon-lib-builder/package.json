@@ -35,7 +35,7 @@
   "dependencies": {
     "glob": "13.0.6",
     "sass": "1.97.3",
-    "svgo": "4.0.0"
+    "svgo": "4.0.1"
   },
   "engines": {
     "node": ">= 20.11",
