@@ -1670,22 +1670,22 @@ function refIsElement(value) {
 function refIsVue(value) {
   return value?.$el !== void 0;
 }
-function findElementFromVueRef(ref) {
-  if (refIsElement(ref)) {
-    return ref;
-  } else if (refIsVue(ref)) {
-    return ref.$el;
+function findElementFromVueRef(ref2) {
+  if (refIsElement(ref2)) {
+    return ref2;
+  } else if (refIsVue(ref2)) {
+    return ref2.$el;
   }
 }
-function getHTMLElementFromVueRef(ref) {
-  const element = findElementFromVueRef(ref);
+function getHTMLElementFromVueRef(ref2) {
+  const element = findElementFromVueRef(ref2);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref)}.`);
+    throw new Error(`Unable to find element from ${String(ref2)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${String(ref)}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref2)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -3687,6 +3687,9 @@ function getAbsolutePosition(src) {
     height: Math.floor(rect.height)
   };
 }
+
+// packages/vue/src/utils/dataset.ts
+import { ref } from "vue";
 
 // packages/vue/src/internal-components/IPopup/IPopupUtils.ts
 function clamp(value, min, max) {
