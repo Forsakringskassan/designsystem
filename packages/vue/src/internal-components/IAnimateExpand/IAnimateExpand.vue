@@ -8,6 +8,10 @@ const CLOSED_CSS_CLASS_OPACITY = "animate-expand animate-expand--opacity";
 const CLOSED_CSS_CLASS = "animate-expand";
 const ANIMATION_CSS_CLASSES = "animate-expand animate-expand--expanded";
 
+function noop(): void {
+    /* do nothing */
+}
+
 export default defineComponent({
     name: "IAnimateExpand",
     props: {
@@ -47,9 +51,7 @@ export default defineComponent({
             type: Function as PropType<AnimationCallback>,
             required: false,
             default(): AnimationCallback {
-                return () => {
-                    /* do nothing */
-                };
+                return noop;
             },
         },
         /**
@@ -60,9 +62,7 @@ export default defineComponent({
             type: Function as PropType<AnimationCallback>,
             required: false,
             default(): AnimationCallback {
-                return () => {
-                    /* do nothing */
-                };
+                return noop;
             },
         },
     },

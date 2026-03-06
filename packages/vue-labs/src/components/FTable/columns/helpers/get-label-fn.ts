@@ -1,3 +1,5 @@
+const defaultLabelFn = (): string => "";
+
 /**
  * @internal
  */
@@ -7,5 +9,5 @@ export function getLabelFn<TRow>(
     if (fn) {
         return fn;
     }
-    return () => "";
+    return defaultLabelFn;
 }

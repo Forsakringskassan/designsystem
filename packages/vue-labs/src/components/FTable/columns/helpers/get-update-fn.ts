@@ -1,3 +1,5 @@
+const defaultUpdateFn = (): void => undefined;
+
 /**
  * @internal
  */
@@ -16,5 +18,5 @@ export function getUpdateFn<TRow, TValue, K extends keyof TRow>(
             row[key] = value as TRow[K]; // @todo This is not safe :/
         };
     }
-    return () => undefined;
+    return defaultUpdateFn;
 }

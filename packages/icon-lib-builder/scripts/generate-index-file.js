@@ -1,10 +1,10 @@
 import { camelCase } from "./common.js";
 
-export function generateIndexFile(directoryNames) {
-    const lib = (dir) => camelCase(dir);
-    const libMeta = (dir) => `${lib(dir)}Meta`;
-    const libInject = (dir) => `${lib(dir)}Inject`;
+const lib = (dir) => camelCase(dir);
+const libMeta = (dir) => `${lib(dir)}Meta`;
+const libInject = (dir) => `${lib(dir)}Inject`;
 
+export function generateIndexFile(directoryNames) {
     const metaImports = directoryNames.map(
         (it) => `import ${libMeta(it)} from "./${it}/spritesheet.json";`,
     );

@@ -7,7 +7,6 @@ import {
     FValidationForm,
 } from "..";
 import {
-    type DefaultCypressChainable,
     FFormModalPageObject,
     FModalPageObject,
     FSelectFieldPageObject,
@@ -190,8 +189,7 @@ describe("FModal", () => {
     const modalSelector = new FSelectFieldPageObject(
         '[data-test="open-example-modal-type-select-field"]',
     );
-    const openModalButton = (): DefaultCypressChainable =>
-        cy.get('[data-test="open-example-modal-button"]');
+    const openModalButton = '[data-test="open-example-modal-button"]';
     const modal = new FModalPageObject('[data-test="modul-open"]');
 
     beforeEach(() => {
@@ -203,7 +201,7 @@ describe("FModal", () => {
     it("should provide a page object that can access any necessary elements", () => {
         modalSelector.dropdown().select(modalType.standard);
         modal.el().should("not.exist");
-        openModalButton().click();
+        cy.get(openModalButton).click();
         modal.el().should("be.visible");
 
         modal.title().should("contain.text", "Träutensilierna");
@@ -219,45 +217,45 @@ describe("FModal", () => {
 
     it("standard should have approved design", () => {
         modalSelector.dropdown().select(modalType.standard);
-        openModalButton().click();
+        cy.get(openModalButton).click();
         modal.el().toMatchScreenshot();
     });
 
     it("information should have approved design", () => {
         modalSelector.dropdown().select(modalType.information);
-        openModalButton().click();
+        cy.get(openModalButton).click();
         modal.el().toMatchScreenshot();
     });
 
     it("warning should have approved design", () => {
         modalSelector.dropdown().select(modalType.warning);
-        openModalButton().click();
+        cy.get(openModalButton).click();
         modal.el().toMatchScreenshot();
     });
 
     it("error should have approved design", () => {
         modalSelector.dropdown().select(modalType.error);
-        openModalButton().click();
+        cy.get(openModalButton).click();
         modal.el().toMatchScreenshot();
     });
 
     it("should close window on cross clicked", () => {
         modalSelector.dropdown().select(modalType.standard);
-        openModalButton().click();
+        cy.get(openModalButton).click();
         modal.closeCross().click();
         modal.el().should("not.exist");
     });
 
     it("should close window on primary button clicked", () => {
         modalSelector.dropdown().select(modalType.standard);
-        openModalButton().click();
+        cy.get(openModalButton).click();
         modal.primaryButton().click();
         modal.el().should("not.exist");
     });
 
     it("should close window on secondary button clicked", () => {
         modalSelector.dropdown().select(modalType.standard);
-        openModalButton().click();
+        cy.get(openModalButton).click();
         modal.secondaryButton().click();
         modal.el().should("not.exist");
     });
@@ -265,7 +263,7 @@ describe("FModal", () => {
     describe("focus", () => {
         it("default should set focus when modal is opened and closed", () => {
             cy.mount(createComponent(generateModalMarkup("on")));
-            openModalButton().click();
+            cy.get(openModalButton).click();
 
             cy.focused().should("have.class", "modal__title");
 
@@ -279,7 +277,7 @@ describe("FModal", () => {
 
         it("should be able to disable focus strategy", () => {
             cy.mount(createComponent(generateModalMarkup("off")));
-            openModalButton().click();
+            cy.get('[data-test="open-example-modal-button"]').click();
             cy.focused().should(
                 "have.attr",
                 "data-test",
@@ -291,7 +289,7 @@ describe("FModal", () => {
 
         it("should be able to disable close focus", () => {
             cy.mount(createComponent(generateModalMarkup("open")));
-            openModalButton().click();
+            cy.get('[data-test="open-example-modal-button"]').click();
             cy.focused().should("have.class", "modal__title");
             modal.primaryButton().click();
             cy.focused().should("not.exist");

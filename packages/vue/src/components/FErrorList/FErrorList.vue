@@ -7,6 +7,10 @@ import { FIcon } from "../FIcon";
 import { type BeforeNavigate } from "./BeforeNavigate";
 import { focusError } from "./focus-error";
 
+const noop = (): void => {
+    /* do nothing */
+};
+
 export default defineComponent({
     name: "FErrorList",
     components: { FIcon, IFlex, IFlexItem },
@@ -34,9 +38,7 @@ export default defineComponent({
             type: Function as PropType<BeforeNavigate>,
             required: false,
             default(): BeforeNavigate {
-                return () => {
-                    /* do nothing */
-                };
+                return noop;
             },
         },
     },
