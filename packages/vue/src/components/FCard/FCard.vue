@@ -12,7 +12,7 @@ const props = defineProps({
      * Element to focus on when card is invalid. Set when using validation.
      */
     focusRef: {
-        type: Object as PropType<HTMLElement | null>,
+        type: Object as PropType<HTMLElement | { $el: HTMLElement } | null>,
         required: false,
         default: null,
     },
@@ -52,7 +52,8 @@ function onValidity({ detail }: CustomEvent<ValidityEvent>): void {
         );
     }
 
-    const focusElementId = props.focusRef.id;
+    const focusElement = props.focusRef instanceof HTMLElement ? props.focusRef : props.focusRef.$el;
+    const focusElementId = focusElement.id;
     if (!focusElementId) {
         throw new Error("An id must be set on the card's focus element.");
     }
@@ -60,7 +61,7 @@ function onValidity({ detail }: CustomEvent<ValidityEvent>): void {
     hasError.value = !detail.isValid;
     validationMessage.value = detail.validationMessage;
 
-    dispatchComponentValidityEvent(props.focusRef, {
+    dispatchComponentValidityEvent(focusElement, {
         ...detail,
         errorMessage: validationMessage.value,
         focusElementId,
