@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { computed, useTemplateRef } from "vue";
+import { assertRef } from "@fkui/logic";
 import { type FTableCellApi } from "./f-table-api";
 import { type NormalizedTableColumnAnchor } from "./table-column";
 
@@ -16,10 +17,15 @@ const renderAnchor = computed(() => {
 
 const expose: FTableCellApi = { tabstopEl: targetElement };
 defineExpose(expose);
+
+function onClickTd(): void {
+    assertRef(targetElement);
+    targetElement.value.click();
+}
 </script>
 
 <template>
-    <td v-if="renderAnchor" class="table-ng__cell table-ng__cell--anchor">
+    <td v-if="renderAnchor" class="table-ng__cell table-ng__cell--anchor" @click="onClickTd">
         <a ref="target" class="anchor anchor--block" target="_blank" :href="column.href" tabindex="-1">
             {{ column.text(row) }}
         </a>
