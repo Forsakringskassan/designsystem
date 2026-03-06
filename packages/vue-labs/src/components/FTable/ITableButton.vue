@@ -2,6 +2,7 @@
 import { computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { FIcon } from "@fkui/vue";
+import { activateCell } from "./FTable.logic";
 import { type FTableCellApi } from "./f-table-api";
 import { type NormalizedTableColumnButton } from "./table-column";
 
@@ -13,13 +14,22 @@ const { column, row } = defineProps<{
 const buttonElement = useTemplateRef("button");
 const tdElement = useTemplateRef("td");
 
-function onClickButton(): void {
+function onClickButton(e: Event): void {
+    e.stopPropagation();
     assertRef(buttonElement);
+    activateCell(buttonElement.value, { focus: true });
     buttonElement.value.tabIndex = 0;
 
     if (column.onClick) {
         column.onClick(row);
     }
+}
+
+function onClickTd(e: Event): void {
+    e.stopPropagation();
+    assertRef(buttonElement);
+    activateCell(buttonElement.value, { focus: true });
+    buttonElement.value.click();
 }
 
 const renderButton = computed(() => {
@@ -31,7 +41,7 @@ defineExpose(expose);
 </script>
 
 <template>
-    <td v-if="renderButton" class="table-ng__cell table-ng__cell--button">
+    <td v-if="renderButton" class="table-ng__cell table-ng__cell--button" @click="onClickTd">
         <button ref="button" class="icon-button" type="button" tabindex="-1" @click="onClickButton">
             <f-icon v-if="column.icon" :library="column.iconLibrary" :name="column.icon"></f-icon>
             <span class="sr-only">{{ column.text(row) }}</span>
