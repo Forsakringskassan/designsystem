@@ -128,6 +128,14 @@ export function useSortFilterDataset<T>(
     const sortFilterResult: Ref<T[]> = ref([]);
     const useDefaultSortOrder = ref(true);
 
+    /**
+     * Data snapshot taken when new sortfilter is run.
+     *
+     * This data snapshot is used to be compare with new input data in order to
+     * distinguish added and removed rows.
+     */
+    let dataSnapshot: T[] = [];
+
     /* all enumerable keys from sortableAttributes */
     const sortableKeys = computed(() => {
         return Reflect.ownKeys(toValue(sortableAttributes)).filter((key) => {
@@ -158,8 +166,9 @@ export function useSortFilterDataset<T>(
     });
 
     function onUserChangeSortAttribute(): void {
+        dataSnapshot = [...toValue(data)];
         sortFilterResult.value = sortFilterData(
-            toValue(data),
+            dataSnapshot,
             internalFilterAttributes.value,
             searchString.value,
             sortAttribute.value,
@@ -176,8 +185,9 @@ export function useSortFilterDataset<T>(
             sortOrders.value,
         );
 
+        dataSnapshot = [...toValue(data)];
         sortFilterResult.value = sortFilterData(
-            toValue(data),
+            dataSnapshot,
             internalFilterAttributes.value,
             searchString.value,
             sortAttribute.value,
@@ -185,39 +195,79 @@ export function useSortFilterDataset<T>(
     }
 
     watch(searchString, () => {
+        dataSnapshot = [...toValue(data)];
         sortFilterResult.value = sortFilterData(
-            toValue(data),
+            dataSnapshot,
             internalFilterAttributes.value,
             searchString.value,
             sortAttribute.value,
         );
     });
 
+    /**
+     * Visually resets sort without resorting the current output data.
+     *
+     * This is intended when existing input data is mutated.
+     */
+    function handleDataChanged(): void {
+        const newData = toValue(data);
+        const newResult = [...sortFilterResult.value];
+
+        const noLongerIncluded = newResult.filter(
+            (it) => !newData.includes(it),
+        );
+        noLongerIncluded.forEach((it) => {
+            newResult.splice(newResult.indexOf(it), 1);
+        });
+
+        const additions = newData
+            .filter((it) => !dataSnapshot.includes(it))
+            .filter((it) => !newResult.includes(it));
+        additions.forEach((it) => newResult.push(it));
+
+        sortAttribute.value = defaultSortValue;
+        sortFilterResult.value = newResult;
+    }
+
+    /**
+     * Runs a full sort replacing the current output data.
+     *
+     * This is intended when the input data is fully replaced.
+     */
+    function handleDataReplaced(): void {
+        if (defaultSortAttribute !== "" && useDefaultSortOrder.value) {
+            const foundAttribute = sortOrders.value.find((item) => {
+                return (
+                    item.attribute === defaultSortAttribute &&
+                    item.ascending === defaultSortAscending
+                );
+            });
+            if (foundAttribute) {
+                sortAttribute.value = {
+                    ...foundAttribute,
+                    name: toValue(foundAttribute.name),
+                };
+            }
+            useDefaultSortOrder.value = false;
+        }
+
+        dataSnapshot = [...toValue(data)];
+        sortFilterResult.value = sortFilterData(
+            dataSnapshot,
+            internalFilterAttributes.value,
+            searchString.value,
+            sortAttribute.value,
+        );
+    }
+
     watch(
         () => toValue(data),
-        () => {
-            if (defaultSortAttribute !== "" && useDefaultSortOrder.value) {
-                const foundAttribute = sortOrders.value.find((item) => {
-                    return (
-                        item.attribute === defaultSortAttribute &&
-                        item.ascending === defaultSortAscending
-                    );
-                });
-                if (foundAttribute) {
-                    sortAttribute.value = {
-                        ...foundAttribute,
-                        name: toValue(foundAttribute.name),
-                    };
-                }
-                useDefaultSortOrder.value = false;
+        (newData, oldData) => {
+            if (newData === oldData) {
+                handleDataChanged();
+            } else {
+                handleDataReplaced();
             }
-
-            sortFilterResult.value = sortFilterData(
-                toValue(data),
-                internalFilterAttributes.value,
-                searchString.value,
-                sortAttribute.value,
-            );
         },
         { immediate: true, deep: true },
     );
