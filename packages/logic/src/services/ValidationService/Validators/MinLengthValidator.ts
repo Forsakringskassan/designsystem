@@ -11,6 +11,7 @@ export interface MinLengthValidatorConfig extends ValidatorOptions {
 export const minLengthValidator: Validator<MinLengthValidatorConfig> = {
     name: "minLength",
     validation(value, _element, config) {
-        return config.length && value ? value.length >= config.length : true;
+        const { length = 0 } = config;
+        return length > 0 && value ? value.length >= length : true;
     },
 };
