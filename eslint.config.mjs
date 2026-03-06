@@ -142,7 +142,6 @@ export default [
             "unicorn/better-regex": "off",
             "unicorn/consistent-existence-index-check": "off",
             "unicorn/consistent-function-scoping": "off",
-            "unicorn/error-message": "off",
             "unicorn/explicit-length-check": "off",
             "unicorn/filename-case": "off",
             "unicorn/new-for-builtins": "off",

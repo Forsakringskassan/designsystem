@@ -13,7 +13,7 @@ export default defineComponent({
             throw new Error("It's game over man!");
         },
         generateWarning() {
-            const error = new Error();
+            const error = new Error("stacktrace");
             const warnHandler = this.instance?.appContext.config.warnHandler;
             if (warnHandler) {
                 warnHandler("It's game over man!", null, error.stack ?? "");
