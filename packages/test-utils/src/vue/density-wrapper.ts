@@ -1,7 +1,7 @@
 import { defineComponent, h } from "vue";
 
 const aspectRatio = 16 / 9;
-const cypressPadding = 8;
+const cypressPadding = 28;
 
 const densities = [
     {
