@@ -32,6 +32,10 @@ $fk-logo-large-url: "#{config-variables.$asset-path-images}/fk-logo-primary-larg
     }
 }
 
+:root {
+    @include font.font-family;
+}
+
 .code-preview__preview,
 .live-example__example,
 .user-theme {
