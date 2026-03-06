@@ -1,7 +1,7 @@
 import { isEmpty, isString } from "../../../utils";
 import { type Validator } from "../Validator";
 
-const PHONE_NUMBER_REGEXP = /^(\+?[-_/() ]*(\d[-_/() ]*?){3,17})$/;
+const PHONE_NUMBER_REGEXP = /^(\+?[ ()/_-]*(\d[ ()/_-]*?){3,17})$/;
 
 export const phoneNumberValidator: Validator = {
     name: "phoneNumber",

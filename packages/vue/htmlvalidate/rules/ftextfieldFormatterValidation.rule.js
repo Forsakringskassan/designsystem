@@ -11,7 +11,7 @@ const { getDocumentationUrl } = require("./common");
  * @property {Location} location Attribute location (key)
  */
 
-const matchVValidation = /^v-validation($|[.])/;
+const matchVValidation = /^v-validation($|\.)/;
 const validatorsWithFormatters = [
     "bankAccountNumber",
     "bankgiro",

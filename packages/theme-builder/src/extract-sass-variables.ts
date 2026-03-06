@@ -86,7 +86,7 @@ export async function extractSassVariables(
                 break;
             case "decl":
                 variables.push({
-                    name: node.prop.replace(/^[$]palette-color-/, ""),
+                    name: node.prop.replace(/^\$palette-color-/, ""),
                     value: node.value.replace(/!default/, "").trim(),
                     group: docblock?.group ?? "Uncategorised",
                     comment: comment ?? "",

@@ -2,7 +2,7 @@ import { stripWhitespace } from "../../../text";
 import { isEmpty, isSet } from "../../../utils";
 import { type Validator } from "../Validator";
 
-const NUMBER_REGEXP = /^([-−]?\d+)?$/;
+const NUMBER_REGEXP = /^([−-]?\d+)?$/;
 
 export const integerValidator: Validator = {
     name: "integer",
