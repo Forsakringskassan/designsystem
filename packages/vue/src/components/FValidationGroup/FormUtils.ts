@@ -20,13 +20,13 @@ export function cleanUpElements(vm: {
          * used due to only virtual DOM in Vue has been updated and not actual browse DOM.
          */
         window.setTimeout(() => {
-            Object.keys(vm.components).forEach((id) => {
+            for (const id of Object.keys(vm.components)) {
                 const domElement = vm.$el.querySelector(`#${id}`);
                 if (!domElement) {
                     /* eslint-disable-next-line @typescript-eslint/no-dynamic-delete -- technical debt, this is potentially dangerous, should probably use a safer structure such as Map */
                     delete vm.components[id];
                 }
-            });
+            }
             resolve();
         }, 0);
     });

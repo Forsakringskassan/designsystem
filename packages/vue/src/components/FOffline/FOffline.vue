@@ -21,16 +21,16 @@ export default defineComponent({
         };
     },
     created() {
-        EVENTS.forEach((event) => {
+        for (const event of EVENTS) {
             /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             window.addEventListener(event, this.updateOnlineStatus);
-        });
+        }
     },
     beforeUnmount() {
-        EVENTS.forEach((event) => {
+        for (const event of EVENTS) {
             /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             window.removeEventListener(event, this.updateOnlineStatus);
-        });
+        }
     },
     mounted() {
         document.body.prepend(getElementFromVueRef(this.$refs.offline));

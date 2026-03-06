@@ -171,11 +171,11 @@ function onClick(e: MouseEvent): void {
 function onTableFocusin(e: FocusEvent): void {
     assertRef(tableRef);
 
-    tableRef.value.querySelectorAll(`:not(tfoot)[tabindex="0"]`).forEach((it) => {
+    for (const it of tableRef.value.querySelectorAll(`:not(tfoot)[tabindex="0"]`)) {
         if (it !== e.target) {
             it.setAttribute("tabindex", "-1");
         }
-    });
+    }
 }
 
 function isInExpandable(el: HTMLElement): boolean {

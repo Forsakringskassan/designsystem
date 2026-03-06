@@ -61,12 +61,12 @@ function splitSpecsLogic(options) {
         const chunk = chunks[i];
         console.log(`${group}Chunk ${String(i + 1)} of ${splitN}${current}`);
         console.log(`${chunk.length} specs in this chunk`);
-        chunk.forEach((spec, index) => {
+        for (const [index, spec] of chunk.entries()) {
             const last = index === chunk.length - 1;
             const prefix = last ? "└" : "├";
             const filePath = path.relative(cwd, spec);
             console.log(`${prefix} ${filePath}`);
-        });
+        }
         console.log(endgroup);
     }
 

@@ -596,7 +596,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
             cy.forcedColors("none");
         });
 
-        Object.values(forcedColorModes).forEach((mode) => {
+        for (const mode of Object.values(forcedColorModes)) {
             it(`should render invalid cell styling and tooltip, mode ${mode} (visual)`, () => {
                 interface Row {
                     text: string;
@@ -640,7 +640,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
 
                 table.el().toMatchScreenshot();
             });
-        });
+        }
     });
 });
 
@@ -2130,7 +2130,7 @@ describe("13 Cell interaction states", () => {
         cy.forcedColors("none");
     });
 
-    Object.values(forcedColorModes).forEach((mode) => {
+    for (const mode of Object.values(forcedColorModes)) {
         it(`13.1 should render focus underline on editable cell, mode ${mode} (visual)`, () => {
             cy.forcedColors(mode);
 
@@ -2146,5 +2146,5 @@ describe("13 Cell interaction states", () => {
 
             table.el().toMatchScreenshot();
         });
-    });
+    }
 });
