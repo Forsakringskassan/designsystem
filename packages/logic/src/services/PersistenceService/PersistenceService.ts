@@ -49,7 +49,9 @@ export class PersistenceService<T> implements PersistenceServiceInterface<T> {
         if (typeof found !== "undefined") {
             return found;
         }
-        throw Error(`PersistenceService cannot find entry with key "${key}"`);
+        throw new Error(
+            `PersistenceService cannot find entry with key "${key}"`,
+        );
     }
 
     public find(key: string): T | undefined {
