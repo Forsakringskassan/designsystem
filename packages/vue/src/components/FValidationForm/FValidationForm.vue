@@ -6,6 +6,10 @@ import { type BeforeNavigate, FErrorList } from "../FErrorList";
 import { FValidationGroup } from "../FValidationGroup";
 import { type FValidationFormCallback, FValidationFormAction } from "./types";
 
+function noop(): void {
+    /* do nothing */
+}
+
 export default defineComponent({
     name: "FValidationForm",
     components: { FValidationGroup, FErrorList },
@@ -28,7 +32,7 @@ export default defineComponent({
             type: Function as PropType<FValidationFormCallback>,
             required: false,
             default() {
-                return () => undefined;
+                return noop;
             },
         },
         /**
@@ -38,7 +42,7 @@ export default defineComponent({
             type: Function as PropType<FValidationFormCallback>,
             required: false,
             default() {
-                return () => undefined;
+                return noop;
             },
         },
         /**
@@ -75,9 +79,7 @@ export default defineComponent({
             type: Function as PropType<BeforeNavigate>,
             required: false,
             default(): BeforeNavigate {
-                return () => {
-                    /* do nothing */
-                };
+                return noop;
             },
         },
     },

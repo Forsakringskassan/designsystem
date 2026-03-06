@@ -30,6 +30,10 @@ export interface PanelLayoutComposable {
     gridClasses(): Record<string, boolean>;
 }
 
+function disableEvent(event: Event): void {
+    event.preventDefault();
+}
+
 export function useLayoutPanel(
     options: PanelLayoutOptions,
 ): PanelLayoutComposable {
@@ -49,10 +53,6 @@ export function useLayoutPanel(
         panelWidth.value = parseInt(toValue(options.initialWidth ?? "0"), 10);
         minWidth = parseInt(toValue(options.minWidth ?? "150"), 10);
         maxWidth = toValue(options.maxWidth ?? 0.5);
-    }
-
-    function disableEvent(event: Event): void {
-        event.preventDefault();
     }
 
     function onMouseUp(): void {

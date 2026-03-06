@@ -88,6 +88,10 @@ function toOptionalRef<T>(
     return toRef(value) as Ref<T>;
 }
 
+function noop(): void {
+    /* do nothing */
+}
+
 /**
  * Provides an API to control functionallity of an ancestor `FResizePane` component.
  *
@@ -97,8 +101,7 @@ function toOptionalRef<T>(
 export function useResize(options: UseResizeOptions = {}): UseResize {
     const api = inject(injectionKey, {
         register() {
-            /* fallback: do nothing */
-            return () => undefined;
+            return noop;
         },
         size: ref(0),
     });
