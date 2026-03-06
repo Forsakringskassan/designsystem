@@ -1,9 +1,9 @@
-<script setup lang="ts" generic="T">
+<script setup lang="ts" generic="T, TArray extends Dataset<T> | T[] = Dataset<T> | T[]">
 import { type Ref, nextTick, onMounted, provide, useTemplateRef, watch } from "vue";
 import { TranslationService, alertScreenReader, debounce } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { useTranslate } from "../../plugins";
-import { getHTMLElementFromVueRef } from "../../utils";
+import { type Dataset, getHTMLElementFromVueRef } from "../../utils";
 import { FIcon } from "../FIcon";
 import { FSelectField } from "../FSelectField";
 import { FTextField } from "../FTextField";
@@ -14,11 +14,11 @@ import {
 import { type SortOrder } from "./sort-order";
 import { useSortFilterDataset } from "./use-sort-filter-dataset";
 
-export interface FSortFilterDatasetProps<T> {
+export interface FSortFilterDatasetProps<TArray> {
     /**
      * The data that you wish to sort or filter.
      */
-    data: T[];
+    data: TArray;
     /**
      * All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.
      * Structured as `{attributeName: "Name for dropdown", secondAttributeName: "Name for dropdown"}`
@@ -52,6 +52,8 @@ export interface FSortFilterDatasetProps<T> {
     filterAttributes?: PropertyKey[];
 }
 
+type TInfered = TArray extends Dataset<infer U> ? Dataset<U> : TArray;
+
 const {
     data,
     sortableAttributes,
@@ -64,7 +66,7 @@ const {
     /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
     defaultSortAscending = true,
     filterAttributes = undefined,
-} = defineProps<FSortFilterDatasetProps<T>>();
+} = defineProps<FSortFilterDatasetProps<TInfered>>();
 
 const emit = defineEmits<{
     /**
@@ -72,7 +74,7 @@ const emit = defineEmits<{
      *
      * @arg items - The sorted data.
      */
-    datasetSorted: [items: T[]];
+    datasetSorted: [items: TInfered];
 
     /**
      * Emits the used sorting attributes.
@@ -94,7 +96,7 @@ const {
     sortOrders,
     onUserChangeSortAttribute,
     onApiChangeSortAttribute,
-} = useSortFilterDataset(
+} = useSortFilterDataset<T, TInfered>(
     () => data,
     () => sortableAttributes,
     () => filterAttributes,

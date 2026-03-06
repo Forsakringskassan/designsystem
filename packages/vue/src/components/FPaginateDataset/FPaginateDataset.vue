@@ -1,11 +1,12 @@
-<script setup lang="ts" generic="T">
-import { computed, onMounted, provide, ref, watch } from "vue";
+<script setup lang="ts" generic="T, TArray extends Dataset<T> | T[] = Dataset<T> | T[]">
+import { type Ref, computed, onMounted, provide, ref, watch } from "vue";
+import { type Dataset } from "../../utils";
 import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
 import { paginateDatasetKey } from "./provide";
 
 // Defines component props
 const {
-    items = [],
+    items = [] as unknown as TInfered,
     itemsPerPage = 10,
     itemsLength = 0,
     fetchData = () => null,
@@ -13,7 +14,7 @@ const {
     /**
      * The items to be used. The items will be used in the given array order.
      */
-    items?: T[];
+    items?: TInfered;
 
     /**
      * The number of items per page (at most).
@@ -33,11 +34,13 @@ const {
      * @param firstItemIndex - The index of the first item on the page.
      * @param lastItemIndex - The index of the last item on the page.
      */
-    fetchData?(firstItemIndex: number, lastItemIndex: number): T[] | Promise<T[]>;
+    fetchData?(firstItemIndex: number, lastItemIndex: number): TInfered | Promise<TInfered>;
 }>();
 
+type TInfered = TArray extends Dataset<infer U> ? Dataset<U> : TArray;
+
 // References fetched data
-const fetchedData = ref(null as T[] | null);
+const fetchedData = ref(null as TInfered | null) as Ref<TInfered | null>;
 
 // References status of ongoing data fetching
 const dataFetchingInProgress = ref(false);
@@ -50,7 +53,12 @@ const firstItemIndex = computed(() => Math.max(0, itemsPerPage * (currentPage.va
 const lastItemIndex = computed(() => Math.min(itemsPerPage * currentPage.value, numberOfItems.value));
 
 // Computes array of items on current page
-const currentPageItems = computed(() => fetchedData.value ?? items.slice(firstItemIndex.value, lastItemIndex.value));
+const currentPageItems = computed<TInfered>((): TInfered => {
+    if (fetchedData.value) {
+        return fetchedData.value;
+    }
+    return items.slice(firstItemIndex.value, lastItemIndex.value) as TInfered;
+});
 
 // Computes number of items on current page
 const currentPageItemLength = computed(() => currentPageItems.value.length);

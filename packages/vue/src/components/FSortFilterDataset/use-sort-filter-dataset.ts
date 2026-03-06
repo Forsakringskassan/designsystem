@@ -7,6 +7,7 @@ import {
     watch,
 } from "vue";
 import { useTranslate } from "../../plugins";
+import { type Dataset } from "../../utils";
 import { filter } from "./FSortFilterFilter";
 import { sort } from "./FSortFilterSorter";
 import { type SortOrder } from "./sort-order";
@@ -84,24 +85,24 @@ function normalizeFilterAttributes(
     return filterAttributes;
 }
 
-function sortFilterData<T>(
-    data: T[],
+function sortFilterData<T, TArray extends Dataset<T> | T[]>(
+    data: TArray,
     filterAttributes: PropertyKey[],
     searchString: string,
     sortAttribute: SortableAttribute,
-): T[] {
+): TArray {
     const filteredData = filter(data, filterAttributes, searchString);
 
     return sort(filteredData, {
         attribute: sortAttribute.attribute as keyof T | "",
         ascending: sortAttribute.ascending,
-    });
+    }) as TArray;
 }
 
-export interface SortFilterDatasetState<T> {
+export interface SortFilterDatasetState<T, TArray extends Dataset<T> | T[]> {
     searchString: Ref<string>;
     sortAttribute: Ref<SortOrder>;
-    sortFilterResult: Ref<T[]>;
+    sortFilterResult: Ref<TArray>;
     showClearButton: Ref<boolean>;
     defaultSortValue: SortOrder;
     sortableKeys: Ref<Array<string | symbol>>;
@@ -114,18 +115,20 @@ export interface SortFilterDatasetState<T> {
     ): void;
 }
 
-export function useSortFilterDataset<T>(
-    data: MaybeRefOrGetter<T[]>,
+export function useSortFilterDataset<T, TArray extends Dataset<T> | T[]>(
+    data: MaybeRefOrGetter<TArray>,
     sortableAttributes: MaybeRefOrGetter<
         Record<PropertyKey, string | Readonly<Ref<string>>>
     >,
     filterAttributes: MaybeRefOrGetter<PropertyKey[] | undefined>,
     defaultSortAttribute: PropertyKey,
     defaultSortAscending: boolean,
-): SortFilterDatasetState<T> {
+): SortFilterDatasetState<T, TArray> {
     const searchString = ref("");
     const sortAttribute = ref<SortOrder>({ ...defaultSortValue });
-    const sortFilterResult: Ref<T[]> = ref([]);
+    const sortFilterResult = ref<TArray>(
+        [] as unknown as TArray,
+    ) as Ref<TArray>;
     const useDefaultSortOrder = ref(true);
 
     /* all enumerable keys from sortableAttributes */
