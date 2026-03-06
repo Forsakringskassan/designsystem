@@ -17,9 +17,7 @@ const columns = defineTableColumns<Row>([
         type: "text",
         header: "Text",
         key: "text",
-        value(row) {
-            return row.text;
-        },
+        editable: true,
     },
 ]);
 
