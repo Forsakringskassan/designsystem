@@ -4,7 +4,7 @@
 
 @use "@fkui/font-default" as font with (
     $global: false,
-    $asset-path: "./assets/fonts"
+    $asset-path: "./fonts"
 );
 
 @use "@fkui/design/src/core/config-variables" with (
