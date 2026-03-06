@@ -1,9 +1,5 @@
 import { defineComponent } from "vue";
-import {
-    type DefaultCypressChainable,
-    FFormModalPageObject,
-    FTextFieldPageObject,
-} from "../../../cypress";
+import { FFormModalPageObject, FTextFieldPageObject } from "../../../cypress";
 import { formModal } from "../../../utils/form-modal/form-modal";
 import { FTextField } from "../../FTextField";
 import ExampleModal from "../examples/ExampleModal.vue";
@@ -167,12 +163,11 @@ describe("FFormModal usable with API", () => {
 
     const textfield1 = new FTextFieldPageObject('[data-test="field1"]');
     const textfield2 = new FTextFieldPageObject('[data-test="field2"]');
-
-    const openAPIModalButton = (): DefaultCypressChainable =>
-        cy.get('[data-test="form-modal-api-example-button"]');
+    const openAPIModalButton = '[data-test="form-modal-api-example-button"]';
+    const resultText = "pre#api-result";
 
     it("should be usable with API retrieving submitted data in result", () => {
-        openAPIModalButton().click();
+        cy.get(openAPIModalButton).click();
         textfield1.input().focus();
         textfield1.input().clear().type("Päron").blur();
         textfield1.input().should("have.value", "Päron");
@@ -182,15 +177,13 @@ describe("FFormModal usable with API", () => {
         modal.submitButton().scrollIntoView();
         modal.submitButton().should("be.visible");
         modal.submitButton().click();
-        const resultText = (): DefaultCypressChainable =>
-            cy.get("pre#api-result");
-        resultText().should("contain", "Päron");
-        resultText().should("contain", "Söt");
-        resultText().should("not.contain", '""');
+        cy.get(resultText).should("contain", "Päron");
+        cy.get(resultText).should("contain", "Söt");
+        cy.get(resultText).should("not.contain", '""');
     });
 
     it("should have same plugins as calling app", () => {
-        openAPIModalButton().click();
+        cy.get(openAPIModalButton).click();
         modal.submitButton().scrollIntoView().should("be.visible").click();
 
         // verify ValidationPlugin is used
