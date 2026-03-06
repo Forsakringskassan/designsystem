@@ -1,7 +1,7 @@
 import { isEmpty } from "../../../utils";
 import { type Validator } from "../Validator";
 
-const WHITELIST_REGEXP = /^[a-zA-Z0-9 .,\-()\r\n?+=!:@*\u00C0-\u00FF]*$/;
+const WHITELIST_REGEXP = /^[\d\n\r !()*+,.:=?@A-Za-z\u00C0-\u00FF-]*$/;
 
 export const whitelistValidator: Validator = {
     name: "whitelist",

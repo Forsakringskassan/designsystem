@@ -1,7 +1,7 @@
 import { isEmpty } from "../../utils";
 
 const BANK_ACCOUNT_NUMBER_REGEXP = /^\d{3,16}$/;
-const BANK_ACCOUNT_NUMBER_TRIM_REGEXP = /[- .,]+/g;
+const BANK_ACCOUNT_NUMBER_TRIM_REGEXP = /[ ,.-]+/g;
 
 /**
  * A string with 3-16 digits, for example "0123456789"
