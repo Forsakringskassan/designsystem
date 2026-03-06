@@ -90,7 +90,7 @@ export function useExpandableTable<T extends object>(
         if (!isExpandableTable) {
             return undefined;
         }
-        if (!describedby || describedby.length < 1) {
+        if (!describedby || describedby.length === 0) {
             return undefined;
         }
 

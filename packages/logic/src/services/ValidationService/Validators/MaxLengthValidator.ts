@@ -11,6 +11,7 @@ export interface MaxLengthValidatorConfig extends ValidatorOptions {
 export const maxLengthValidator: Validator<MaxLengthValidatorConfig> = {
     name: "maxLength",
     validation(value, _element, config) {
-        return config.length ? value.length <= config.length : true;
+        const { length = 0 } = config;
+        return length > 0 && value ? value.length <= length : true;
     },
 };
