@@ -863,7 +863,7 @@ describe("7.6 aria-selected", () => {
             wrapper.get("tbody tr:first-child").attributes("aria-selected"),
         ).toBe("false");
 
-        await wrapper.get("tbody tr:first-child input").setValue();
+        await wrapper.get("tbody tr:first-child input").trigger("click");
 
         expect(
             wrapper.get("tbody tr:first-child").attributes("aria-selected"),
@@ -895,7 +895,7 @@ describe("7.6 aria-selected", () => {
 
         await wrapper.get("tbody tr:last-child button").trigger("click");
         await wrapper.get("tbody tr:first-child button").trigger("click");
-        await wrapper.get("thead tr input").setValue();
+        await wrapper.get("thead tr input").trigger("click");
 
         const trs = wrapper.findAll("tbody tr");
         expect(
