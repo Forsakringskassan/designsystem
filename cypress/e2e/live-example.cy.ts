@@ -25,7 +25,8 @@ beforeEach(() => {
 });
 
 describe("should visit all pages and ensure examples load properly", () => {
-    Cypress.env("pages").forEach((page: ManifestPage) => {
+    const pages = Cypress.env("pages") as ManifestPage[];
+    for (const page of pages) {
         const { path, examples } = page;
         const liveExamples = examples.filter(isLiveExample);
         const vuePreviewExamples = examples.filter(isVuePreviewExample);
@@ -83,5 +84,5 @@ describe("should visit all pages and ensure examples load properly", () => {
                 });
             }
         });
-    });
+    }
 });

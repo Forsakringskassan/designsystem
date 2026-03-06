@@ -72,6 +72,7 @@ const ariaLabel = computed(() => {
 const separatorPositions = computed((): number[] => {
     const res: number[] = [];
     if (items.length > 1) {
+        /* eslint-disable-next-line unicorn/no-array-for-each -- technical debt */
         items.forEach((it, i) => {
             if (isContextMenuSeparatorItem(it)) {
                 const pos = i - 1 - res.length;
