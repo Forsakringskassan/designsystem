@@ -384,7 +384,7 @@ export function fitInsideArea(
     const index = candidates.findIndex((it) =>
         isInside(clippedArea, it, spacing),
     );
-    if (index >= 0) {
+    if (index !== -1) {
         const match = candidates[index];
         return { x: match.x, y: match.y, placement: match.placement };
     }

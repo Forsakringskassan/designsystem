@@ -46,7 +46,7 @@ export function useTabstop(
 
         const needle = newRows[0];
         const newFirstRowOldIndex = oldRows.findIndex(matching(needle));
-        if (newFirstRowOldIndex > -1) {
+        if (newFirstRowOldIndex !== -1) {
             const target = getCellTarget(
                 tableRef.value,
                 newFirstRowOldIndex + 1,
