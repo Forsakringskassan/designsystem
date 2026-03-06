@@ -42,7 +42,7 @@ export default defineComponent({
         },
         removeBasket(item: Fruktkorg) {
             const index = this.fruktkorgar.findIndex((it) => it.id === item.id);
-            if (index >= 0) {
+            if (index !== -1) {
                 this.fruktkorgar.splice(index, 1);
             }
         },

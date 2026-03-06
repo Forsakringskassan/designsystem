@@ -98,7 +98,7 @@ export function addStep(
     element: Element,
 ): FWizardStepDefinition {
     const index = dst.findIndex((it) => it.key === key);
-    if (index >= 0) {
+    if (index !== -1) {
         throw new Error(
             `An FWizardStep with key "${key.toString()}" is already registered, refusing to register multiple steps with same key.`,
         );
@@ -125,7 +125,7 @@ export function removeStep(
     key: FWizardKey,
 ): void {
     const index = dst.findIndex((it) => it.key === key);
-    if (index >= 0) {
+    if (index !== -1) {
         dst.splice(index, 1);
         reindex(dst);
     }

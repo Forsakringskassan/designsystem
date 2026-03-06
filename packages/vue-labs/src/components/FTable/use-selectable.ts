@@ -64,7 +64,7 @@ export function useSelectable<T>(options: {
         } else {
             const index = selectedRows.value.indexOf(row);
 
-            if (index < 0) {
+            if (index === -1) {
                 selectedRows.value.push(row);
             } else {
                 selectedRows.value.splice(index, 1);
