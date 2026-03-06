@@ -28,6 +28,7 @@ const formatters = {
 };
 
 function removeObsoleteClasses(el: HTMLElement): void {
+    /* eslint-disable-next-line unicorn/no-array-for-each -- false positive */
     el.classList.forEach((it: string) => {
         if (it.startsWith("formatter--")) {
             el.classList.remove(it);

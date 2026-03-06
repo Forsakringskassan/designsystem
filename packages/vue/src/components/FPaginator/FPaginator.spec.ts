@@ -165,11 +165,14 @@ describe("pages and gaps", () => {
             "...",
             "20",
         ];
-        expectedPageButtons.forEach((expectedPageButton, index) => {
+        for (const [
+            index,
+            expectedPageButton,
+        ] of expectedPageButtons.entries()) {
             const selector = paginator.pageButtonByIndex(index);
             const button = wrapper.get(selector);
             expect(button.text()).toEqual(expectedPageButton);
-        });
+        }
     });
 });
 
