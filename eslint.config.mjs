@@ -139,7 +139,6 @@ export default [
     {
         name: "technical-debt",
         rules: {
-            "unicorn/explicit-length-check": "off",
             "unicorn/filename-case": "off",
             "unicorn/new-for-builtins": "off",
             "unicorn/no-array-for-each": "off",
