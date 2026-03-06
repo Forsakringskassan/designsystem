@@ -196,7 +196,7 @@ export class FInteractiveTablePageObject implements BasePageObject {
                 iconName = "f-icon-sort";
                 break;
             default:
-                throw Error("Invalid order");
+                throw new Error("Invalid order");
         }
 
         return cy.get(
