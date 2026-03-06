@@ -8,6 +8,7 @@ import { isSet } from "./is";
 export class MissingValueError extends Error {
     public constructor(message?: string) {
         super(message);
+        this.name = "MissingValueError";
         Object.setPrototypeOf(this, MissingValueError.prototype);
     }
 }
