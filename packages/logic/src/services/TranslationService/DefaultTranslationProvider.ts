@@ -43,7 +43,7 @@ export class DefaultTranslationProvider implements TranslationProviderInterface 
     ): string {
         return defaultValue.replace(
             /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-            /{{\s*([^\s]+)\s*}}/g,
+            /{{\s*(\S+)\s*}}/g,
             (match, key: string) => {
                 return String(args[key]) || match;
             },

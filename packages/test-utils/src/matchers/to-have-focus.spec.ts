@@ -17,7 +17,7 @@ expect.addSnapshotSerializer({
     },
     serialize(value: string) {
         /* eslint-disable-next-line no-control-regex -- expected to replace control regex */
-        return value.replace(/\u001B\[[0-9;]*m/g, "");
+        return value.replace(/\u001B\[[\d;]*m/g, "");
     },
 });
 
