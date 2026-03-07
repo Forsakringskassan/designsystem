@@ -15,5 +15,5 @@ export function getDayStartOffset(days: FDate[]): number {
  * @public
  */
 export function getDayEndOffset(days: FDate[]): number {
-    return 7 - days[days.length - 1].weekDay;
+    return 7 - days.at(-1).weekDay;
 }

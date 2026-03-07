@@ -28,7 +28,7 @@ export function focusTrAbove(
     if (current > 0) {
         tr[current - 1].focus();
     } else {
-        tr[tr.length - 1].focus();
+        tr.at(-1).focus();
     }
 }
 

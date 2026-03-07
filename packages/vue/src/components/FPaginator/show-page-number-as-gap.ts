@@ -3,7 +3,7 @@ export function showPageNumberAsGap(options: {
     pages: number[];
 }): boolean {
     const { page, pages } = options;
-    const numberOfPages = pages[pages.length - 1];
+    const numberOfPages = pages.at(-1);
 
     /**
      * Show gap to first page if these conditions are fulfilled:

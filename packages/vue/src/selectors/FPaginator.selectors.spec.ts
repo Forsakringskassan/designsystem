@@ -155,7 +155,7 @@ it("pageButtons() should return the displayed page buttons", () => {
     const buttons = wrapper.findAll(pageButtons());
     expect(buttons).toHaveLength(9);
     expect(buttons[0].text()).toBe("1");
-    expect(buttons[buttons.length - 1].text()).toBe("10");
+    expect(buttons.at(-1).text()).toBe("10");
 });
 
 it("pageCounter() should return the page counter element", () => {

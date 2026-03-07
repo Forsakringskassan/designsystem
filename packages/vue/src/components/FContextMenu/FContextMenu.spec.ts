@@ -245,7 +245,7 @@ describe("keyboard navigation", () => {
 
         // Then the last item should have focus
         const listItems = wrapper.findAll(".contextmenu__list__item");
-        expect(listItems[listItems.length - 1].element).toHaveFocus();
+        expect(listItems.at(-1).element).toHaveFocus();
     });
 });
 
