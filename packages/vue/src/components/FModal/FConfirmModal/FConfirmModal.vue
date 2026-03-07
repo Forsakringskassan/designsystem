@@ -98,7 +98,7 @@ export default defineComponent({
         preparedButtons(): FModalButton[] {
             const preparedButtonList = prepareButtonList(this.buttons);
             return config.buttonOrder === FKUIConfigButtonOrder.RIGHT_TO_LEFT
-                ? preparedButtonList.reverse()
+                ? preparedButtonList.toReversed()
                 : preparedButtonList;
         },
     },
