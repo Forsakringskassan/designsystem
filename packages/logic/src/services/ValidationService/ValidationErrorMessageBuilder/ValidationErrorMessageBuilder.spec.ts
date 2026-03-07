@@ -37,6 +37,7 @@ it("should create a map with translations for a customer validator", () => {
     const validatorMessageMap = ValidationErrorMessageBuilder.create()
         .map(
             "my-app-specific-validator" as ValidatorName,
+            /* eslint-disable-next-line unicorn/no-array-method-this-argument -- false positive */
             "Some application specific validation error message",
         )
         .build();
