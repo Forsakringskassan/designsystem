@@ -202,7 +202,7 @@ describe("getSortedHTMLElementsFromVueRef", () => {
     it("should return array with original order if ref is an unindexed HTMLElement array", () => {
         const wrapper = createWrapper(TEMPLATE_WITH_AN_ELEMENT_ARRAY_REF);
         const ref = [...(wrapper.vm.$refs[REF_NAME] as unknown[])];
-        const unorderedRef = [...ref].reverse();
+        const unorderedRef = [...ref].toReversed();
         expect(unorderedRef).not.toEqual(ref);
 
         const result = getSortedHTMLElementsFromVueRef(unorderedRef);
@@ -214,7 +214,7 @@ describe("getSortedHTMLElementsFromVueRef", () => {
             TEMPLATE_WITH_AN_INDEXED_ELEMENT_ARRAY_REF,
         );
         const ref = [...(wrapper.vm.$refs[REF_NAME] as unknown[])];
-        const unorderedRef = [...ref].reverse();
+        const unorderedRef = [...ref].toReversed();
         expect(unorderedRef).not.toEqual(ref);
 
         const result = getSortedHTMLElementsFromVueRef(unorderedRef);

@@ -13,7 +13,10 @@ export function testLuhnChecksum(inputString: string): boolean {
         );
     }
 
-    for (const [index, numChar] of inputString.split("").reverse().entries()) {
+    for (const [index, numChar] of inputString
+        .split("")
+        .toReversed()
+        .entries()) {
         const digit = parseInt(numChar, 10) * ((index + 1) % 2 === 0 ? 2 : 1);
         sum += digit >= 10 ? digit - 9 : digit;
     }
