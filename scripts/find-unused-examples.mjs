@@ -109,7 +109,7 @@ const extraneous = difference(
     imported,
 );
 
-const delimiter = process.argv.includes("-z") ? "\x00" : "\n";
+const delimiter = process.argv.includes("-z") ? "\u0000" : "\n";
 
 const s = extraneous.size !== 1 ? "s" : "";
 process.stderr.write(`${extraneous.size} extraneous example${s} found\n`);
