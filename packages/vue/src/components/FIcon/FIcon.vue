@@ -1,8 +1,8 @@
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
 
-const Flip = ["horizontal", "vertical"];
-const Rotate = ["90", "180", "270"];
+const Flip = new Set(["horizontal", "vertical"]);
+const Rotate = new Set(["90", "180", "270"]);
 
 export default defineComponent({
     name: "FIcon",
@@ -36,7 +36,7 @@ export default defineComponent({
             default: null,
             required: false,
             validator(value: string): boolean {
-                return Flip.includes(value);
+                return Flip.has(value);
             },
         },
         /**
@@ -53,7 +53,7 @@ export default defineComponent({
             default: null,
             required: false,
             validator(value: string): boolean {
-                return Rotate.includes(value);
+                return Rotate.has(value);
             },
         },
     },

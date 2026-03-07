@@ -9,14 +9,13 @@ const defaultPort = 8080;
  * @returns {void}
  */
 function CLI(argv) {
-    const flags = argv.filter((it) => it.startsWith("-"));
+    const flags = new Set(argv.filter((it) => it.startsWith("-")));
     const positionals = argv.filter((it) => !it.startsWith("-"));
     const port = process.env.HTTP_PORT
         ? Number.parseInt(process.env.HTTP_PORT, 10)
         : defaultPort;
-    const verbose = flags.includes("-v") || flags.includes("--verbose");
-    const silent =
-        !verbose && (flags.includes("-s") || flags.includes("--silent"));
+    const verbose = flags.has("-v") || flags.has("--verbose");
+    const silent = !verbose && (flags.has("-s") || flags.has("--silent"));
     const folders = positionals;
     serve(port, folders, {
         verbose,

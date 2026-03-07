@@ -16,7 +16,7 @@ const formatters = [
     "plusgiro",
     "postalCode",
 ];
-const allowedTags = ["input", "f-text-field"];
+const allowedTags = new Set(["input", "f-text-field"]);
 
 class RequiredMaxLength extends Rule {
     documentation() {
@@ -36,7 +36,7 @@ class RequiredMaxLength extends Rule {
             const tagName = target.tagName;
             const valueOfType = target.getAttributeValue("type");
 
-            if (!allowedTags.includes(tagName)) {
+            if (!allowedTags.has(tagName)) {
                 return;
             }
 

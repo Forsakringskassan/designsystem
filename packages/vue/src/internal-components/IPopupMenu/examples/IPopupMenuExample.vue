@@ -18,7 +18,7 @@ const exampleItems = [
 const upKeys = ["Up", "ArrowUp"];
 const downKeys = ["Down", "ArrowDown"];
 const verticalKeys = [...upKeys, ...downKeys];
-const preventKeys = ["Tab", ...verticalKeys];
+const preventKeys = new Set(["Tab", ...verticalKeys]);
 
 export default defineComponent({
     name: "IPopupMenuExample",
@@ -45,7 +45,7 @@ export default defineComponent({
             if (!this.popupOpen) {
                 return;
             }
-            if (preventKeys.includes(event.key)) {
+            if (preventKeys.has(event.key)) {
                 event.preventDefault();
             }
         },
@@ -53,7 +53,7 @@ export default defineComponent({
             if (!this.popupOpen) {
                 return;
             }
-            if (!preventKeys.includes(event.key)) {
+            if (!preventKeys.has(event.key)) {
                 return;
             }
 

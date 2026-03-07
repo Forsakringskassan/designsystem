@@ -20,7 +20,7 @@ import { doMenuAction } from "./navigation-menu-logic";
 const upKeys = ["Up", "ArrowUp"];
 const downKeys = ["Down", "ArrowDown"];
 const verticalKeys = [...upKeys, ...downKeys];
-const preventKeys = [
+const preventKeys = new Set([
     "Tab",
     "Left",
     "Right",
@@ -32,7 +32,7 @@ const preventKeys = [
     "Spacebar",
     "Enter",
     ...verticalKeys,
-];
+]);
 
 export default defineComponent({
     name: "FNavigationMenu",
@@ -344,7 +344,7 @@ export default defineComponent({
             this.popupOpen = popupWasOpen;
         },
         onKeyUp(event: KeyboardEvent): void {
-            if (preventKeys.includes(event.key)) {
+            if (preventKeys.has(event.key)) {
                 event.preventDefault();
             }
         },
@@ -353,7 +353,7 @@ export default defineComponent({
                 this.togglePopup(false);
                 return;
             }
-            if (!preventKeys.includes(event.key)) {
+            if (!preventKeys.has(event.key)) {
                 return;
             }
 
