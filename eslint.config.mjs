@@ -147,7 +147,6 @@ export default [
             "unicorn/no-array-for-each": "off",
             "unicorn/no-array-reverse": "off",
             "unicorn/no-array-sort": "off",
-            "unicorn/no-console-spaces": "off",
             "unicorn/no-for-loop": "off",
             "unicorn/no-hex-escape": "off",
             "unicorn/no-instanceof-builtins": "off",
