@@ -97,9 +97,9 @@ async function generateSpritesheetJs(library, data) {
     );
     spritesheet = spritesheet
         /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-        .replace(/.*eslint-disable.*/g, "")
-        .replace(/PACKAGE/g, JSON.stringify(packageName))
-        .replace(/LIBRARY/g, JSON.stringify(library))
+        .replaceAll(/.*eslint-disable.*/g, "")
+        .replaceAll("PACKAGE", JSON.stringify(packageName))
+        .replaceAll("LIBRARY", JSON.stringify(library))
         .replace(
             /IMPORT_SPRITESHEET\(\);.*/,
             `const spritesheet = '${data.content}';`,
@@ -109,7 +109,7 @@ async function generateSpritesheetJs(library, data) {
         "utf8",
     );
     /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-    inject = inject.replace(/.*eslint-disable.*/g, "");
+    inject = inject.replaceAll(/.*eslint-disable.*/g, "");
     const content = [spritesheet, inject].join("\n");
     const indexJs = path.join(dest, library, "index.js");
     const indexDts = path.join(dest, library, "index.d.ts");
@@ -135,9 +135,9 @@ async function generateSpritesheetJsNoInject(library, data) {
     );
     spritesheet = spritesheet
         /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-        .replace(/.*eslint-disable.*/g, "")
-        .replace(/PACKAGE/g, JSON.stringify(packageName))
-        .replace(/LIBRARY/g, JSON.stringify(library))
+        .replaceAll(/.*eslint-disable.*/g, "")
+        .replaceAll("PACKAGE", JSON.stringify(packageName))
+        .replaceAll("LIBRARY", JSON.stringify(library))
         .replace(
             /IMPORT_SPRITESHEET\(\);.*/,
             `const spritesheet = '${data.content}';`,
@@ -159,7 +159,7 @@ async function getSpriteSheetdata(directory, files) {
             ".svg",
         )}`;
         const name = path.basename(file, ".svg");
-        const prettyName = capitalize(name.replace(/-/g, " "));
+        const prettyName = capitalize(name.replaceAll("-", " "));
         const svgFile = await fs.readFile(path.join(directory, file), "utf8");
         const optimizedSvg = optimize(svgFile, {
             plugins: [
@@ -179,9 +179,9 @@ async function getSpriteSheetdata(directory, files) {
         });
 
         const symbol = optimizedSvg.data
-            .replace(/<svg/g, `<symbol id="${id}"`)
-            .replace(/<\/svg>/g, "</symbol>")
-            .replace(/ xmlns="[^"]*"/g, "");
+            .replaceAll("<svg", `<symbol id="${id}"`)
+            .replaceAll("</svg>", "</symbol>")
+            .replaceAll(/ xmlns="[^"]*"/g, "");
 
         content += symbol;
         icons.push({

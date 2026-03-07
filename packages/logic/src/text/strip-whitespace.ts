@@ -6,5 +6,5 @@
  * @returns Text with whitespace stripped.
  */
 export function stripWhitespace(text: string): string {
-    return text.replace(/\s+/g, "");
+    return text.replaceAll(/\s+/g, "");
 }

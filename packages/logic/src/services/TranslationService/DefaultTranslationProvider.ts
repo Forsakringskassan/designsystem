@@ -41,7 +41,7 @@ export class DefaultTranslationProvider implements TranslationProviderInterface 
         defaultValue: string,
         args: Record<string, unknown>,
     ): string {
-        return defaultValue.replace(
+        return defaultValue.replaceAll(
             /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
             /{{\s*(\S+)\s*}}/g,
             (match, key: string) => {

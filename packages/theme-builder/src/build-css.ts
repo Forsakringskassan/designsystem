@@ -109,7 +109,7 @@ export async function buildCss(
 
     /* eslint-disable-next-line @typescript-eslint/await-thenable -- memfs returns a promise instead */
     for await (const item of await fs.glob(pattern, { cwd })) {
-        const src = item.replace(/\\/g, "/");
+        const src = item.replaceAll("\\", "/");
         const { name } = path.parse(src);
         if (name.startsWith("_")) {
             continue;

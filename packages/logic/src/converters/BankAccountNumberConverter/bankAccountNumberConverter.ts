@@ -21,7 +21,7 @@ export function parseBankAccountNumber(
     }
 
     // remove hyphen, blank space, period, comma
-    const trimmedValue = value.replace(BANK_ACCOUNT_NUMBER_TRIM_REGEXP, "");
+    const trimmedValue = value.replaceAll(BANK_ACCOUNT_NUMBER_TRIM_REGEXP, "");
 
     return BANK_ACCOUNT_NUMBER_REGEXP.test(trimmedValue)
         ? trimmedValue

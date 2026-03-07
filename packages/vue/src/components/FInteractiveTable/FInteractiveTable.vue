@@ -569,7 +569,7 @@ function getNextFocus(currentIndex: number): HTMLElement | undefined {
 }
 
 function escapeNewlines(value: string): string {
-    return value.replace(/\n/g, "<br/>");
+    return value.replaceAll("\n", "<br/>");
 }
 
 function updateActiveRowFromVModel(): void {

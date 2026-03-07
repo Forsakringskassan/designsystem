@@ -6,8 +6,8 @@ chai.Assertion.addMethod("trimmedText", function (expectedString) {
 
     const actual = $element
         .text()
-        .replace(/\r/g, " ")
-        .replace(/\s+/g, " ")
+        .replaceAll("\r", " ")
+        .replaceAll(/\s+/g, " ")
         .trim();
     this.assert(
         actual === expectedString,

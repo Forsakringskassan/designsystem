@@ -6,7 +6,7 @@ export function capitalize(s) {
 }
 
 export function camelCase(string) {
-    return string.replace(/-([a-z])/gi, function (all, letter) {
+    return string.replaceAll(/-([a-z])/gi, function (all, letter) {
         return letter.toUpperCase();
     });
 }
