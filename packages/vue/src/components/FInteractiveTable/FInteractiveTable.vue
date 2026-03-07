@@ -349,7 +349,7 @@ watch(
 );
 
 function updateTr(tbodyElement: HTMLElement): void {
-    trAll.value = [].slice.call(tbodyElement.children) as HTMLElement[];
+    trAll.value = Array.prototype.slice.call(tbodyElement.children) as HTMLElement[];
     const trInteractableElements = trAll.value.filter((tr) => {
         return tr.tabIndex === 0;
     });
