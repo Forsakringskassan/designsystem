@@ -58,7 +58,7 @@ If not in a Vue context, use the variant from `@fkui/logic`.
 ```ts
 import { focus } from "@fkui/logic";
 
-focus(document.getElementById("header"), true);
+focus(document.querySelector("#header"), true);
 ```
 
 ### When in Vue Context

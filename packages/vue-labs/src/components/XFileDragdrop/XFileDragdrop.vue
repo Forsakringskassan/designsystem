@@ -132,7 +132,7 @@ function hanteraFil(filer: FileList): void {
 
 function fokusElement(id: string): void {
     setTimeout(() => {
-        const element = document.getElementById(id);
+        const element = document.querySelector(`#${id}`);
         if (element instanceof HTMLElement) {
             element.focus();
         }
@@ -140,7 +140,7 @@ function fokusElement(id: string): void {
 }
 
 function resetElement(id: string): void {
-    const element = document.getElementById(id);
+    const element = document.querySelector(`#${id}`);
     if (element instanceof HTMLInputElement) {
         element.value = "";
     }

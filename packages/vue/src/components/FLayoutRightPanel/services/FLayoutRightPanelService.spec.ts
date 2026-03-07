@@ -26,8 +26,8 @@ it("should restore focus when calling close", () => {
         <button id="button1"></button>
         <button id="button2"></button>
     `;
-    const button1 = document.getElementById("button1");
-    const button2 = document.getElementById("button2");
+    const button1 = document.querySelector<HTMLElement>("#button1");
+    const button2 = document.querySelector<HTMLElement>("#button2");
 
     button1?.focus();
     expect(window.document.activeElement).toBe(button1);

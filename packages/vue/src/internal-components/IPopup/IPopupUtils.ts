@@ -27,7 +27,7 @@ export function getElement(
         return null;
     }
     if (typeof anchor === "string") {
-        return document.getElementById(anchor);
+        return document.querySelector(`#${anchor}`);
     } else {
         return anchor;
     }

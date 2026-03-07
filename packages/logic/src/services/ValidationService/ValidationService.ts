@@ -356,7 +356,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
             };
         }
         if (typeof src === "string") {
-            const element = document.getElementById(src);
+            const element = document.querySelector(`#${src}`);
             if (!element) {
                 throw new Error(
                     `Element with id "${src}" not found when calling validateElement(..)`,
@@ -447,7 +447,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         if (!element) {
             return;
         } else if (typeof element === "string") {
-            const found = document.getElementById(element);
+            const found = document.querySelector(`#${element}`);
             /* eslint-disable-next-line @typescript-eslint/no-deprecated -- internal usage */
             this.setState(found, validationState);
         } else if (!isValidatableHTMLElement(element)) {
@@ -508,7 +508,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         if (!parent) {
             return [];
         } else if (typeof parent === "string") {
-            const element = document.getElementById(parent);
+            const element = document.querySelector(`#${parent}`);
             return this.getValidatableElements(element);
         } else {
             const selector = ["input", "textarea", "select", "fieldset"].join(

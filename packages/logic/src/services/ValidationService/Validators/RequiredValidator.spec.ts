@@ -40,7 +40,7 @@ function createFieldsetWithInputs(
     const fieldsetElement = document.querySelector(
         "fieldset",
     ) as HTMLFieldSetElement;
-    (document.getElementById("input2") as HTMLInputElement).checked = checked;
+    (document.querySelector("#input2") as HTMLInputElement).checked = checked;
     return fieldsetElement;
 }
 
@@ -50,7 +50,7 @@ function createInputElement(
 ): HTMLInputElement {
     const markup = /* HTML */ ` <input type="${type}" id="input1" /> Input 1 `;
     document.body.innerHTML = markup;
-    const inputElement = document.getElementById("input1") as HTMLInputElement;
+    const inputElement = document.querySelector("#input1") as HTMLInputElement;
     inputElement.checked = checked;
     return inputElement;
 }
@@ -170,13 +170,13 @@ describe("nestled fieldsets", () => {
                 </fieldset>
             `;
             document.body.innerHTML = markup;
-            const outerInputElement = document.getElementById(
-                "outerInput2",
+            const outerInputElement = document.querySelector(
+                "#outerInput2",
             ) as HTMLInputElement;
             outerInputElement.checked = outerChecked;
 
-            const innerInputElement = document.getElementById(
-                "innerInput2",
+            const innerInputElement = document.querySelector(
+                "#innerInput2",
             ) as HTMLInputElement;
             innerInputElement.checked = innerChecked;
 

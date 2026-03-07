@@ -293,8 +293,8 @@ describe("focusFirst", () => {
             </div>
         `;
 
-        focusFirst(document.getElementById("innerdiv")!);
-        const shouldBeFocused = document.getElementById("should-be-focused");
+        focusFirst(document.querySelector("#innerdiv")!);
+        const shouldBeFocused = document.querySelector("#should-be-focused");
         expect(shouldBeFocused).toHaveFocus();
     });
 
@@ -318,8 +318,8 @@ describe("focusLast", () => {
             </div>
         `;
 
-        focusLast(document.getElementById("innerdiv")!);
-        const shouldBeFocused = document.getElementById("should-be-focused");
+        focusLast(document.querySelector("#innerdiv")!);
+        const shouldBeFocused = document.querySelector("#should-be-focused");
         expect(shouldBeFocused).toHaveFocus();
     });
 
@@ -346,8 +346,8 @@ describe("focus stack", () => {
                 <input id="i1" />
             `;
 
-            const button = document.getElementById("b1");
-            const inputField = document.getElementById("i1");
+            const button = document.querySelector<HTMLElement>("#b1");
+            const inputField = document.querySelector<HTMLElement>("#i1");
             button?.focus();
 
             pushFocus(inputField);
@@ -373,8 +373,8 @@ describe("focus stack", () => {
                 <button id="b1"></button>
                 <input id="i1" />
             `;
-            const button = document.getElementById("b1");
-            const inputField = document.getElementById("i1");
+            const button = document.querySelector<HTMLElement>("#b1");
+            const inputField = document.querySelector<HTMLElement>("#i1");
             button?.focus();
 
             const focus = pushFocus(inputField);
@@ -391,8 +391,8 @@ describe("focus stack", () => {
                 <button id="b1"></button>
                 <button id="b2"></button>
             `;
-            const button1 = document.getElementById("b1")!;
-            const button2 = document.getElementById("b2")!;
+            const button1 = document.querySelector<HTMLElement>("#b1")!;
+            const button2 = document.querySelector<HTMLElement>("#b2")!;
             button1.focus();
 
             const handle = pushFocus(button2);
@@ -410,8 +410,8 @@ describe("focus stack", () => {
                 <button id="b1"></button>
                 <button id="b2"></button>
             `;
-            const button1 = document.getElementById("b1")!;
-            const button2 = document.getElementById("b2")!;
+            const button1 = document.querySelector<HTMLElement>("#b1")!;
+            const button2 = document.querySelector<HTMLElement>("#b2")!;
             button1.focus();
 
             const handle = pushFocus(button2);
@@ -429,9 +429,9 @@ describe("focus stack", () => {
                 <button id="b2"></button>
                 <button id="b3"></button>
             `;
-            const button1 = document.getElementById("b1");
-            const button2 = document.getElementById("b2");
-            const button3 = document.getElementById("b3");
+            const button1 = document.querySelector<HTMLElement>("#b1");
+            const button2 = document.querySelector<HTMLElement>("#b2");
+            const button3 = document.querySelector<HTMLElement>("#b3");
             button1?.focus();
 
             const handle1 = pushFocus(button2);
