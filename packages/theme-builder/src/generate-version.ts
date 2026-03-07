@@ -12,5 +12,5 @@ export async function generateVersion(
         "",
     ].join("\n");
     const dst = path.posix.join(cwd, filename);
-    await fs.writeFile(dst, content, "utf-8");
+    await fs.writeFile(dst, content, "utf8");
 }

@@ -37,7 +37,7 @@ async function readFile(
     filePath: string,
 ): Promise<string | null> {
     try {
-        return await fs.readFile(filePath, "utf-8");
+        return await fs.readFile(filePath, "utf8");
     } catch {
         return null;
     }

@@ -10,7 +10,7 @@ const __dirname = import.meta.dirname;
  * @returns {any} Parsed content.
  */
 function loadJsonFile(filePath) {
-    return JSON.parse(fs.readFileSync(filePath, "utf-8"));
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
 
 export function buildDemo() {

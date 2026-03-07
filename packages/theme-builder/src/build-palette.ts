@@ -37,8 +37,8 @@ export default value;
 
     const dts = `${dst}.d.ts`;
     const variables = await extractSassVariables(src, options);
-    await fs.writeFile(dst, JSON.stringify(variables, null, 2), "utf-8");
-    await fs.writeFile(dts, dtsContent, "utf-8");
+    await fs.writeFile(dst, JSON.stringify(variables, null, 2), "utf8");
+    await fs.writeFile(dts, dtsContent, "utf8");
 
     logger.groupEnd();
 

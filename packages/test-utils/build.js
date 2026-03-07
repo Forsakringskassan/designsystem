@@ -32,7 +32,7 @@ async function build() {
             },
         });
         const pkg = JSON.stringify({ type: type[format] }, null, 2);
-        await fs.writeFile(path.join(outdir, "package.json"), pkg, "utf-8");
+        await fs.writeFile(path.join(outdir, "package.json"), pkg, "utf8");
     }
 }
 

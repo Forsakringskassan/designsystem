@@ -23,7 +23,7 @@ async function optimzeAssets(src, dst) {
     for (const filename of files) {
         const srcPath = path.join(src, filename);
         const dstPath = path.join(dst, filename);
-        const original = await fs.readFile(srcPath, "utf-8");
+        const original = await fs.readFile(srcPath, "utf8");
         const result = optimize(original, {
             path: srcPath,
             plugins: [
@@ -42,7 +42,7 @@ async function optimzeAssets(src, dst) {
             ],
         });
         await fs.mkdir(path.dirname(dstPath), { recursive: true });
-        await fs.writeFile(dstPath, result.data, "utf-8");
+        await fs.writeFile(dstPath, result.data, "utf8");
         console.log(
             picocolors.cyan(path.join("assets", filename)),
             "optimized  ",
@@ -128,11 +128,11 @@ async function compileSass(src, dst, { theme } = {}) {
     });
     const { dir, name } = path.parse(dst);
 
-    await fs.writeFile(dst, development.css, "utf-8");
+    await fs.writeFile(dst, development.css, "utf8");
     await fs.writeFile(
         path.join(dir, `${name}.min.css`),
         production.css,
-        "utf-8",
+        "utf8",
     );
     console.log(
         picocolors.cyan(dst),

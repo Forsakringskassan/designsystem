@@ -51,7 +51,7 @@ const isRelease = (() => {
     try {
         const cmd = `git log -n1 --format=format:%s`;
         /* eslint-disable-next-line sonarjs/os-command -- want to execute git from PATH */
-        const message = execSync(cmd, { encoding: "utf-8" }).trim();
+        const message = execSync(cmd, { encoding: "utf8" }).trim();
         return message.startsWith("chore(release):");
     } catch (err) {
         console.error(err);
@@ -90,7 +90,7 @@ function sandboxProcessor(folder) {
             const entries = await Promise.all(
                 filenames.map(async (filename) => {
                     const filePath = path.join(folder, filename);
-                    const content = await fs.readFile(filePath, "utf-8");
+                    const content = await fs.readFile(filePath, "utf8");
                     return [filename, content];
                 }),
             );
@@ -224,7 +224,7 @@ try {
         2,
     );
     await fs.mkdir("temp/docs", { recursive: true });
-    await fs.writeFile("temp/docs/versions.json", versions, "utf-8");
+    await fs.writeFile("temp/docs/versions.json", versions, "utf8");
 
     /* copy docs from each package */
     console.log(); // intentional blank line
