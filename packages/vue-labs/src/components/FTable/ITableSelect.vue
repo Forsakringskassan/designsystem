@@ -111,12 +111,14 @@ function setPreviousOption(): void {
         const index = column.options.indexOf(activeOption.value);
 
         if (index === 0) {
-            activeOption.value = column.options[column.options.length - 1];
+            /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+            activeOption.value = column.options.at(-1)!;
         } else {
             activeOption.value = column.options[index - 1];
         }
     } else {
-        activeOption.value = column.options[column.options.length - 1];
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        activeOption.value = column.options.at(-1)!;
     }
 }
 

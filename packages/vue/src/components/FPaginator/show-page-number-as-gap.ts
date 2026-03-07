@@ -3,7 +3,9 @@ export function showPageNumberAsGap(options: {
     pages: number[];
 }): boolean {
     const { page, pages } = options;
-    const numberOfPages = pages[pages.length - 1];
+
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+    const numberOfPages = pages.at(-1)!;
 
     /**
      * Show gap to first page if these conditions are fulfilled:

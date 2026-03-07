@@ -38,9 +38,8 @@ export function parsePlusgiro(value: string): PlusgiroString | undefined {
     }
 
     if (hyphenShouldBeAdded(value)) {
-        value = `${value.substring(0, value.length - 1)}-${
-            value[value.length - 1]
-        }`;
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- length is 2+ so -1 will return a character */
+        value = `${value.substring(0, value.length - 1)}-${value.at(-1)!}`;
     }
 
     const startOffset = 4;

@@ -556,7 +556,7 @@ function getPreviousFocus(currentIndex: number): HTMLElement | undefined {
 
         const tabbables = findTabbableElements(targetRow);
         if (tabbables.length > 0) {
-            return tabbables[tabbables.length - 1];
+            return tabbables.at(-1);
         }
     }
 

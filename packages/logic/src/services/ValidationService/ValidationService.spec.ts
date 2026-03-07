@@ -133,7 +133,7 @@ function triggerValidityEvent(
         return undefined;
     }
 
-    const args = listener.mock.calls[listener.mock.calls.length - 1];
+    const args = listener.mock.calls.at(-1)!;
     return args[0].detail;
 }
 
