@@ -142,7 +142,6 @@ export default [
             "unicorn/filename-case": "off",
             "unicorn/no-array-reverse": "off",
             "unicorn/no-array-sort": "off",
-            "unicorn/no-useless-promise-resolve-reject": "off",
             "unicorn/prefer-array-index-of": "off",
             "unicorn/prefer-array-some": "off",
             "unicorn/prefer-at": "off",
