@@ -27,12 +27,12 @@ export function parsePlusgiro(value: string): PlusgiroString | undefined {
      * If the number of digits is odd then the first pair in the string can be a single digit.
      * If the number of characters is 9, there will be a space after the first 3 characters.
      */
-    value = value.replace(/ /g, "");
-    value = value.replace(/\D/g, "");
+    value = value.replaceAll(" ", "");
+    value = value.replaceAll(/\D/g, "");
 
     if (
         !PLUSGIRO_REGEXP.test(value) ||
-        !testLuhnChecksum(value.replace(/\D/g, ""))
+        !testLuhnChecksum(value.replaceAll(/\D/g, ""))
     ) {
         return undefined;
     }

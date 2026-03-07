@@ -186,7 +186,7 @@ function callbackSortableColumns(columnNames: PropertyKey[]): void {
 }
 
 function escapeNewlines(value: string): string {
-    return value.replace(/\n/g, "<br/>");
+    return value.replaceAll("\n", "<br/>");
 }
 </script>
 

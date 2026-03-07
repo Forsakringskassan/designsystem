@@ -32,7 +32,7 @@ function union(a, b) {
 async function findExamples() {
     const filePaths = await glob("{docs,packages}/**/examples/*.vue");
     const entries = filePaths.map((it) => {
-        const filePath = it.replace(/\\/g, "/");
+        const filePath = it.replaceAll("\\", "/");
         const name = path.basename(filePath);
         return { filePath, name };
     });
@@ -64,7 +64,7 @@ async function findDocsImported() {
             let previous;
             do {
                 previous = stripped;
-                stripped = stripped.replace(/<!--[\S\s]*?-->/g, "");
+                stripped = stripped.replaceAll(/<!--[\S\s]*?-->/g, "");
             } while (stripped !== previous);
             const filename = stripped.trim();
             found.add(filename);
