@@ -82,8 +82,8 @@ export function FWizardApiInjected(): FWizardApi {
 
 function reindex(dst: FWizardStepDefinition[]): void {
     dst.sort((a, b) => documentOrderComparator(a.element, b.element));
-    for (let i = 0; i < dst.length; i++) {
-        dst[i].stepNumber = i + 1;
+    for (const [i, element] of dst.entries()) {
+        element.stepNumber = i + 1;
     }
 }
 
