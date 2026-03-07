@@ -47,7 +47,7 @@ export function alertScreenReader(
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     waitForScreenReader(() => {
         while (wrapper.firstChild) {
-            wrapper.removeChild(wrapper.firstChild);
+            wrapper.firstChild.remove();
         }
 
         wrapper.append(msg);
@@ -55,7 +55,7 @@ export function alertScreenReader(
         setTimeout(() => {
             // Remove element if it is still in the DOM.
             if (msg.parentElement === wrapper) {
-                wrapper.removeChild(msg);
+                msg.remove();
             }
         }, REMOVE_TEXT_DELAY);
     });

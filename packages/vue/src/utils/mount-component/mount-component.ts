@@ -90,7 +90,7 @@ export function mountComponent(
     app.unmount = () => {
         unmount.call(app);
         if (el.parentNode) {
-            el.parentNode.removeChild(el);
+            el.remove();
         }
     };
 
