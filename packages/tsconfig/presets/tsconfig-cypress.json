@@ -8,7 +8,7 @@
         "resolveJsonModule": true,
         "strict": true,
         "target": "esnext",
-        "lib": ["es6", "dom"],
+        "lib": ["es2023", "dom"],
         "types": ["cypress", "node"]
     }
 }
