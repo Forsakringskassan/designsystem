@@ -48,7 +48,7 @@ export function formatNumber(
         value = parseNumber(value) ?? "";
     }
 
-    if (typeof value !== "number" || isNaN(value)) {
+    if (typeof value !== "number" || Number.isNaN(value)) {
         return undefined;
     }
 
@@ -80,7 +80,7 @@ export function parseNumber(
         ? getNumberWithFraction(number, fractionDigits)
         : number;
 
-    return isNaN(parsedNumber) ? undefined : parsedNumber;
+    return Number.isNaN(parsedNumber) ? undefined : parsedNumber;
 }
 
 /**
@@ -88,7 +88,7 @@ export function parseNumber(
  */
 function getNumberWithFraction(value: number, fractionDigits: number): number {
     if (fractionDigits < 0) {
-        return NaN;
+        return Number.NaN;
     }
     const exp = 10 ** fractionDigits;
     return Math.sign(value) * (Math.round(Math.abs(value) * exp) / exp);

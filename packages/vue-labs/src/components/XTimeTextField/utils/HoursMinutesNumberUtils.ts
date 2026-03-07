@@ -39,11 +39,11 @@ export function hoursMinutesStringToMinutes(
     }
 
     const [hours, minutes] = splitHoursMinutes(valueString, extraForgiving).map(
-        (value) => parseInt(value, 10),
+        (value) => Number.parseInt(value, 10),
     );
     const totalMinutes = hours * 60 + minutes;
 
-    return !isNaN(totalMinutes) ? totalMinutes : undefined;
+    return !Number.isNaN(totalMinutes) ? totalMinutes : undefined;
 }
 
 /**
@@ -53,8 +53,8 @@ export function minutesToHoursMinutesString(
     value?: number,
 ): HoursMinutesString {
     let valueString = "";
-    const safeValue = value ?? NaN;
-    if (!isNaN(safeValue)) {
+    const safeValue = value ?? Number.NaN;
+    if (!Number.isNaN(safeValue)) {
         const { hours, minutes } = minutesToObject(safeValue);
         valueString = [hours, minutes]
             .map((value) => String(value).padStart(2, "0"))
@@ -124,7 +124,9 @@ export function minutesToHoursFloat(
     ...values: Array<number | undefined>
 ): number {
     const minutes = values
-        .filter((value): value is number => isSet(value) && !isNaN(value))
+        .filter(
+            (value): value is number => isSet(value) && !Number.isNaN(value),
+        )
         .reduce((sum, value) => sum + value, 0);
 
     return minutes / 60;
@@ -147,7 +149,9 @@ export function minutesToObject(...values: Array<number | undefined>): {
     minutes: number;
 } {
     const minutes = values
-        .filter((value): value is number => isSet(value) && !isNaN(value))
+        .filter(
+            (value): value is number => isSet(value) && !Number.isNaN(value),
+        )
         .reduce((sum, value) => sum + value, 0);
 
     return {

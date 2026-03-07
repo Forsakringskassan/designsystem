@@ -17,7 +17,7 @@ describe("getCandidates()", () => {
     it("should find candidates", () => {
         expect.assertions(10);
         const anchor = { x: 50, y: 50, width: 10, height: 10 };
-        const target = { x: NaN, y: NaN, width: 50, height: 10 };
+        const target = { x: Number.NaN, y: Number.NaN, width: 50, height: 10 };
         const clippedArea = { x: 0, y: 0, width: 100, height: 100 };
         const candidates = getCandidates(
             anchor,
@@ -170,7 +170,7 @@ describe("getCandidates()", () => {
     it("should handle spacing", () => {
         expect.assertions(10);
         const anchor = { x: 50, y: 50, width: 10, height: 10 };
-        const target = { x: NaN, y: NaN, width: 50, height: 10 };
+        const target = { x: Number.NaN, y: Number.NaN, width: 50, height: 10 };
         const clippedArea = { x: 0, y: 0, width: 100, height: 100 };
         const candidates = getCandidates(
             anchor,
@@ -312,7 +312,7 @@ describe("isInside()", () => {
 describe("getFallbackPosition()", () => {
     it("should return fallback position closest to horizontal anchor position", () => {
         const anchor = { x: 80, y: 50, width: 10, height: 10 };
-        const target = { x: NaN, y: NaN, width: 50, height: 10 };
+        const target = { x: Number.NaN, y: Number.NaN, width: 50, height: 10 };
         const clippedArea = { x: 0, y: 0, width: 100, height: 10 };
         const res = getFallbackPosition(anchor, target, clippedArea, 0);
         const expectedFallbackPosition = {
@@ -324,7 +324,7 @@ describe("getFallbackPosition()", () => {
 
     it("should return fallback position without horizontal alignment", () => {
         const anchor = { x: 10, y: 50, width: 10, height: 10 };
-        const target = { x: NaN, y: NaN, width: 50, height: 10 };
+        const target = { x: Number.NaN, y: Number.NaN, width: 50, height: 10 };
         const clippedArea = { x: 20, y: 0, width: 100, height: 10 };
         const res = getFallbackPosition(anchor, target, clippedArea, 0);
         const expectedFallbackPosition = {
@@ -478,7 +478,7 @@ describe("fitInsideArea()", () => {
      */
     it("should align position to bottom left when target fits inside area", () => {
         expect.assertions(1);
-        const target = { x: NaN, y: NaN, width: 100, height: 50 };
+        const target = { x: Number.NaN, y: Number.NaN, width: 100, height: 50 };
         const anchor = { x: 10, y: 10, width: 10, height: 10 };
         const area = { x: 0, y: 0, width: 200, height: 100 };
         const position = fitInsideArea({
@@ -510,7 +510,7 @@ describe("fitInsideArea()", () => {
      */
     it("should clip area by given viewport", () => {
         expect.assertions(1);
-        const target = { x: NaN, y: NaN, width: 100, height: 50 };
+        const target = { x: Number.NaN, y: Number.NaN, width: 100, height: 50 };
         const anchor = { x: 10, y: 10, width: 10, height: 10 };
         const area = { x: 0, y: 0, width: 200, height: 200 };
         const viewport = { x: 0, y: 0, width: 200, height: 200 };

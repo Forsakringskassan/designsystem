@@ -94,7 +94,7 @@ export class CalendarPageObject implements BasePageObject {
                 /(\w+)\s+(\d+)/,
                 (match, p1: string, p2: string) => {
                     currentMonth = monthList.indexOf(p1);
-                    currYear = parseInt(p2, 10);
+                    currYear = Number.parseInt(p2, 10);
                     return String(currYear);
                 },
             );

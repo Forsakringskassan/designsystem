@@ -35,7 +35,7 @@ describe("formatting", () => {
 
     it("should return undefined for NaN", () => {
         expect.assertions(1);
-        expect(formatPercent(NaN)).toBeUndefined();
+        expect(formatPercent(Number.NaN)).toBeUndefined();
     });
 });
 

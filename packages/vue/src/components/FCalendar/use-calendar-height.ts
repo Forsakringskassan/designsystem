@@ -19,7 +19,7 @@ interface UseCalendarHeightOptions {
 export function useCalendarHeight(options: UseCalendarHeightOptions): void {
     const { src, dst, property } = options;
     const { height } = useElementBounding(src);
-    const cachedHeight = ref(NaN);
+    const cachedHeight = ref(Number.NaN);
 
     watchEffect(() => {
         if (height.value > 0) {

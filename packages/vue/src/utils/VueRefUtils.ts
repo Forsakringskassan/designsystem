@@ -117,8 +117,8 @@ function parseIntOrDefault(
     defaultValue: number,
 ): number {
     if (typeof value === "string") {
-        const parsed = parseInt(value, 10);
-        if (!isNaN(parsed)) {
+        const parsed = Number.parseInt(value, 10);
+        if (!Number.isNaN(parsed)) {
             return parsed;
         }
     }

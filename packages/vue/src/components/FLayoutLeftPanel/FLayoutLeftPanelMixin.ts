@@ -50,8 +50,11 @@ export function useLayoutPanel(
     const rightPrimaryClasses = ref({}) as Ref<Record<string, boolean>>;
 
     function updateOptions(): void {
-        panelWidth.value = parseInt(toValue(options.initialWidth ?? "0"), 10);
-        minWidth = parseInt(toValue(options.minWidth ?? "150"), 10);
+        panelWidth.value = Number.parseInt(
+            toValue(options.initialWidth ?? "0"),
+            10,
+        );
+        minWidth = Number.parseInt(toValue(options.minWidth ?? "150"), 10);
         maxWidth = toValue(options.maxWidth ?? 0.5);
     }
 

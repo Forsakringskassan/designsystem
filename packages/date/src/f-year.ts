@@ -15,7 +15,7 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
         if (Math.round(value) === value) {
             this._value = value;
         } else {
-            this._value = NaN;
+            this._value = Number.NaN;
         }
     }
 
@@ -50,7 +50,8 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
      * @param value - The year to set the `FYear` object to.
      */
     public static fromYear(value: number | string): FYear {
-        const parsed = typeof value === "string" ? parseInt(value, 10) : value;
+        const parsed =
+            typeof value === "string" ? Number.parseInt(value, 10) : value;
         return new FYear(parsed);
     }
 
@@ -99,7 +100,7 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
      * @public
      */
     public isValid(): boolean {
-        return !isNaN(this._value);
+        return !Number.isNaN(this._value);
     }
 
     /**

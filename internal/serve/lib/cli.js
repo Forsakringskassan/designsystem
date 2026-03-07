@@ -12,7 +12,7 @@ function CLI(argv) {
     const flags = argv.filter((it) => it.startsWith("-"));
     const positionals = argv.filter((it) => !it.startsWith("-"));
     const port = process.env.HTTP_PORT
-        ? parseInt(process.env.HTTP_PORT, 10)
+        ? Number.parseInt(process.env.HTTP_PORT, 10)
         : defaultPort;
     const verbose = flags.includes("-v") || flags.includes("--verbose");
     const silent =

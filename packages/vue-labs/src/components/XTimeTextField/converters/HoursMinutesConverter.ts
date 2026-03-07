@@ -16,7 +16,7 @@ export type HoursMinutesString = string;
 export function formatNumberToTime(
     value?: number,
 ): HoursMinutesString | undefined {
-    if (typeof value !== "number" || isNaN(value)) {
+    if (typeof value !== "number" || Number.isNaN(value)) {
         return undefined;
     }
 
@@ -32,9 +32,9 @@ function parseTimeToNumberUsingConfig(
     }
 
     const parsedValue =
-        hoursMinutesStringToMinutes(value, extraForgiving) ?? NaN;
+        hoursMinutesStringToMinutes(value, extraForgiving) ?? Number.NaN;
 
-    return !isNaN(parsedValue) ? parsedValue : undefined;
+    return !Number.isNaN(parsedValue) ? parsedValue : undefined;
 }
 
 /**

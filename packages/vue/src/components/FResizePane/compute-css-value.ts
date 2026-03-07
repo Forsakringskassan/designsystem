@@ -12,9 +12,9 @@ export function computeCssValue(
     auto: number,
 ): number {
     if (raw.endsWith("px")) {
-        return parseInt(raw.slice(0, -2), 10);
+        return Number.parseInt(raw.slice(0, -2), 10);
     } else if (raw.endsWith("%")) {
-        const value = parseInt(raw.slice(0, -1), 10);
+        const value = Number.parseInt(raw.slice(0, -1), 10);
         const percent = value / 100;
         return percent * total;
     } else if (raw === "0") {

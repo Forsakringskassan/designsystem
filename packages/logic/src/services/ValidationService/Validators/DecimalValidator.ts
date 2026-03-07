@@ -34,11 +34,11 @@ export const decimalValidator: Validator<DecimalValidatorConfig> = {
             : undefined;
 
         /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt, should actually verfiy value instead */
-        if (config.minDecimals && isNaN(minDecimalsAsNumber!)) {
+        if (config.minDecimals && Number.isNaN(minDecimalsAsNumber!)) {
             throw new Error("config.minDecimals must be a number");
         }
         /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt, should actually verfiy value instead */
-        if (config.maxDecimals && isNaN(maxDecimalsAsNumber!)) {
+        if (config.maxDecimals && Number.isNaN(maxDecimalsAsNumber!)) {
             throw new Error("config.maxDecimals must be a number");
         }
 
