@@ -573,7 +573,7 @@ describe("addValidatorsToElement", () => {
             whitelist: {},
         });
         expect(element.hasAttribute("required")).toBeFalsy();
-        expect(element.hasAttribute("data-required")).toBeFalsy();
+        expect(Object.hasOwn(element.dataset, "required")).toBeFalsy();
     });
 
     it("should add required attribute when required validator config exists and enabled option is undefined", () => {
@@ -581,7 +581,7 @@ describe("addValidatorsToElement", () => {
             required: {},
         });
         expect(element.hasAttribute("required")).toBeTruthy();
-        expect(element.hasAttribute("data-required")).toBeTruthy();
+        expect(Object.hasOwn(element.dataset, "required")).toBeTruthy();
     });
 
     it("should add required attribute when required validator config exists and enabled option is true", () => {
@@ -590,7 +590,7 @@ describe("addValidatorsToElement", () => {
             enabledValidatorConfig(true),
         );
         expect(element.hasAttribute("required")).toBeTruthy();
-        expect(element.hasAttribute("data-required")).toBeTruthy();
+        expect(Object.hasOwn(element.dataset, "required")).toBeTruthy();
     });
 
     it("should not add required attribute when required validator config exists and enabled option is false", () => {
@@ -599,7 +599,7 @@ describe("addValidatorsToElement", () => {
             enabledValidatorConfig(false),
         );
         expect(element.hasAttribute("required")).toBeFalsy();
-        expect(element.hasAttribute("data-required")).toBeFalsy();
+        expect(Object.hasOwn(element.dataset, "required")).toBeFalsy();
     });
 
     it("should only add data-required attribute for fieldset when required validator config exists and enabled option is true", () => {
@@ -616,7 +616,7 @@ describe("addValidatorsToElement", () => {
         );
 
         expect(fieldsetElement.hasAttribute("required")).toBeFalsy();
-        expect(fieldsetElement.hasAttribute("data-required")).toBeTruthy();
+        expect(Object.hasOwn(fieldsetElement.dataset, "required")).toBeTruthy();
     });
 
     it("should remove data-required attribute for fieldset when required validator config exists and enabled option toggles from true to false", () => {
@@ -632,7 +632,7 @@ describe("addValidatorsToElement", () => {
         );
 
         expect(fieldsetElement.hasAttribute("required")).toBeFalsy();
-        expect(fieldsetElement.hasAttribute("data-required")).toBeTruthy();
+        expect(Object.hasOwn(fieldsetElement.dataset, "required")).toBeTruthy();
 
         ValidationService.addValidatorsToElement(
             fieldsetElement,
@@ -640,7 +640,7 @@ describe("addValidatorsToElement", () => {
         );
 
         expect(fieldsetElement.hasAttribute("required")).toBeFalsy();
-        expect(fieldsetElement.hasAttribute("data-required")).toBeFalsy();
+        expect(Object.hasOwn(fieldsetElement.dataset, "required")).toBeFalsy();
     });
 
     it("should place required validator first then keep base config order and add new validators last", () => {

@@ -273,7 +273,8 @@ export default defineComponent({
             }
 
             // trigger v-model update when not handled by onValidity event
-            if (!(this.$refs.input as HTMLInputElement).hasAttribute("data-validation")) {
+            const element = this.$refs.input as HTMLInputElement;
+            if (!Object.hasOwn(element.dataset, "validation")) {
                 this.$emit("update:modelValue", this.viewValue);
 
                 await this.$nextTick(); // wait for model update before triggering change event
@@ -291,7 +292,8 @@ export default defineComponent({
             }
 
             // trigger v-model update when not handled by onValidity event
-            if (!(this.$refs.input as HTMLInputElement).hasAttribute("data-validation")) {
+            const element = this.$refs.input as HTMLInputElement;
+            if (!Object.hasOwn(element.dataset, "validation")) {
                 this.$emit("update:modelValue", this.viewValue);
                 await this.$nextTick(); // wait for model update before triggering blur event
                 this.$emit("blur", this.viewValue);
