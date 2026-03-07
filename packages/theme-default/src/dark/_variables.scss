@@ -84,6 +84,12 @@
     --fkds-color-select-background-secondary-active: #{$palette-color-green-a-85};
     --fkds-color-select-background-secondary-focus: #{$palette-color-green-a-85};
 
+    // INTERACTIVE SURFACE - BACKGROUND
+    --fkds-color-interactive-surface-background-primary-default: #{$palette-color-fk-black-100};
+    --fkds-color-interactive-surface-background-primary-hover: #{$palette-color-fk-black-70};
+    --fkds-color-interactive-surface-background-primary-active: #{$palette-color-fk-black-70};
+    --fkds-color-interactive-surface-background-primary-focus: #{$palette-color-fk-black-70};
+
     // NAVIGATION - BORDER
     --fkds-color-navigation-border-hover: #{$palette-color-green-a-15};
     --fkds-color-navigation-border-selected: #{$palette-color-green-a-85};
