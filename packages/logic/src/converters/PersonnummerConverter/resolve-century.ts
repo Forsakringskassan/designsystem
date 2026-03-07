@@ -10,9 +10,9 @@ function getNowDetails(now: FDate): NowDetails {
     const nowIso = now.toString();
 
     return {
-        nowCentury: nowIso.substring(0, 2),
-        nowYear: nowIso.substring(2, 4),
-        nowMonthDay: nowIso.substring(5, 7) + nowIso.substring(8, 10),
+        nowCentury: nowIso.slice(0, 2),
+        nowYear: nowIso.slice(2, 4),
+        nowMonthDay: nowIso.slice(5, 7) + nowIso.slice(8, 10),
     };
 }
 

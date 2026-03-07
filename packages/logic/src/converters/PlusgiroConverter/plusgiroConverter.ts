@@ -39,14 +39,11 @@ export function parsePlusgiro(value: string): PlusgiroString | undefined {
 
     if (hyphenShouldBeAdded(value)) {
         /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- length is 2+ so -1 will return a character */
-        value = `${value.substring(0, value.length - 1)}-${value.at(-1)!}`;
+        value = `${value.slice(0, -1)}-${value.at(-1)!}`;
     }
 
     const startOffset = 4;
-    let formattedString = value.substring(
-        value.length - startOffset,
-        value.length,
-    );
+    let formattedString = value.slice(-startOffset);
 
     const step = 2;
     for (
@@ -54,14 +51,14 @@ export function parsePlusgiro(value: string): PlusgiroString | undefined {
         i >= (value.length === 9 ? 3 : 1);
         i -= step
     ) {
-        formattedString = `${value.substring(
+        formattedString = `${value.slice(
             Math.max(i - step, 0),
             i,
         )} ${formattedString}`;
     }
 
     if (value.length === 9) {
-        formattedString = value.substring(0, 1) + formattedString;
+        formattedString = value.slice(0, 1) + formattedString;
     }
 
     return formattedString;

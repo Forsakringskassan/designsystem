@@ -26,7 +26,7 @@ export function parseClearingNumber(
 
     // add hyphen between number 4 & 5
     return value.length === 5
-        ? `${value.substring(0, 4)}-${value.substring(4, 5)}`
+        ? `${value.slice(0, 4)}-${value.slice(4, 5)}`
         : value;
 }
 
@@ -37,5 +37,5 @@ export function formatClearingNumberForBackend(
     value: ClearingnumberString,
 ): string | undefined {
     // remove the 5th number
-    return value.substring(0, 4);
+    return value.slice(0, 4);
 }
