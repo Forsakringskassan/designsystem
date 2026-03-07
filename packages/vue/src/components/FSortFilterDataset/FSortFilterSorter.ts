@@ -20,7 +20,7 @@ export function sort<T>(
         return shallowCopy;
     }
 
-    return shallowCopy.sort((item1, item2) =>
+    return shallowCopy.toSorted((item1, item2) =>
         compare(item1, item2, attribute, ascending),
     );
 }
