@@ -36,6 +36,7 @@ async function build() {
     }
 }
 
+/* eslint-disable-next-line unicorn/prefer-top-level-await -- technical debt, this file runs as commonjs */
 build().catch((err) => {
     console.error(err);
 });

@@ -241,7 +241,9 @@ async function main() {
     buildDemo();
 }
 
-main().catch((err) => {
+try {
+    await main();
+} catch (err) {
     console.error(err);
     process.exitCode = 1;
-});
+}
