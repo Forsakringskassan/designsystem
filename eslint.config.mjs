@@ -140,7 +140,6 @@ export default [
         name: "technical-debt",
         rules: {
             "unicorn/filename-case": "off",
-            "unicorn/no-instanceof-builtins": "off",
             "unicorn/no-object-as-default-parameter": "off",
             "unicorn/no-typeof-undefined": "off",
             "unicorn/no-useless-promise-resolve-reject": "off",
