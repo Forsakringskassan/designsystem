@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FTextField, FValidationForm } from "@fkui/vue";
+import { FButton, FTextField, FValidationForm } from "@fkui/vue";
 
 export default defineComponent({
     name: "ValidationPluginFormValidation",
-    components: { FValidationForm, FTextField },
+    components: { FButton, FTextField, FValidationForm },
 });
 </script>
 
@@ -36,6 +36,6 @@ export default defineComponent({
             </f-text-field>
         </div>
 
-        <button type="submit">Trigga fel</button>
+        <f-button type="submit">Trigga fel</f-button>
     </f-validation-form>
 </template>

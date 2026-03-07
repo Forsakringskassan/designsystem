@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
+    FButton,
     FCrudDataset,
-    FIcon,
     FList,
     FSortFilterDataset,
     FStaticField,
@@ -13,8 +13,8 @@ import { type FruitData, fruits } from "./fruit-data";
 
 export default defineComponent({
     components: {
+        FButton,
         FCrudDataset,
-        FIcon,
         FList,
         FSortFilterDataset,
         FStaticField,
@@ -69,26 +69,24 @@ export default defineComponent({
                                     <br />
                                 </div>
                                 <div class="col col--sm-1">
-                                    <button
-                                        type="button"
-                                        class="button button--small button--tertiary"
+                                    <f-button
+                                        icon-left="pen"
+                                        size="small"
+                                        variant="tertiary"
                                         @click="updateItem(item)"
                                     >
-                                        <f-icon class="button__icon" name="pen">
-                                            <title>Ändra {{ item.name }}</title>
-                                        </f-icon>
-                                    </button>
+                                        Ändra <span class="sr-only">{{ item.name }}</span>
+                                    </f-button>
                                 </div>
                                 <div class="col col--sm-1">
-                                    <button
-                                        type="button"
-                                        class="button button--small button--tertiary"
+                                    <f-button
+                                        icon-left="trashcan"
+                                        size="small"
+                                        variant="tertiary"
                                         @click="deleteItem(item)"
                                     >
-                                        <f-icon class="button__icon" name="trashcan">
-                                            <title>Ta bort {{ item.name }}</title>
-                                        </f-icon>
-                                    </button>
+                                        Ta bort <span class="sr-only">{{ item.name }}</span>
+                                    </f-button>
                                 </div>
                             </div>
                         </template>

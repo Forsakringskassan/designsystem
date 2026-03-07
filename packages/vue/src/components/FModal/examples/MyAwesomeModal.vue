@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FModal } from "@fkui/vue";
+import { FButton, FModal } from "@fkui/vue";
 
 const emit = defineEmits<{ close: [] }>();
 </script>
@@ -10,13 +10,9 @@ const emit = defineEmits<{ close: [] }>();
         <template #content> My awesome content </template>
         <template #footer>
             <div class="button-group">
-                <button
-                    type="button"
-                    class="button button--primary button-group__item button--large"
-                    @click="emit('close')"
-                >
+                <f-button class="button-group__item" size="large" @click="emit('close')">
                     Close
-                </button>
+                </f-button>
             </div>
         </template>
     </f-modal>

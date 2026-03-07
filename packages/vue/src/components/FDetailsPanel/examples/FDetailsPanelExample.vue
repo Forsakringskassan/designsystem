@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FDetailsPanel, FPageLayout, FResizePane, useDetailsPanel } from "@fkui/vue";
+import { FButton, FDetailsPanel, FPageLayout, FResizePane, useDetailsPanel } from "@fkui/vue";
 
 interface Item {
     name: string;
@@ -29,14 +29,7 @@ function openPanel(): void {
                     </example-panel>
                 </f-resize-pane>
 
-                <button
-                    :slot="layoutScope.content"
-                    type="button"
-                    class="button button--primary"
-                    @click="openPanel"
-                >
-                    Öppna
-                </button>
+                <f-button :slot="layoutScope.content" @click="openPanel"> Öppna </f-button>
             </template>
         </f-page-layout>
     </div>
