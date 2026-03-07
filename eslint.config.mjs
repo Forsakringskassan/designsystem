@@ -140,7 +140,6 @@ export default [
         name: "technical-debt",
         rules: {
             "unicorn/filename-case": "off",
-            "unicorn/prefer-dom-node-text-content": "off",
             "unicorn/prefer-number-properties": "off",
             "unicorn/prefer-query-selector": "off",
             "unicorn/prefer-set-has": "off",

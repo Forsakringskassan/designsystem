@@ -45,7 +45,7 @@ export class FErrorListPageObject {
         return cy
             .get(`${this.selector} a`)
             .each((el) => {
-                if (el.get(0).innerText.trim() === error) {
+                if (el.get(0).textContent.trim() === error) {
                     link = () => el.get(0);
                 }
             })
@@ -60,7 +60,7 @@ export class FErrorListPageObject {
         return cy
             .get(`${this.selector} li`)
             .each((el) => {
-                if (el.get(0).innerText.trim() === error) {
+                if (el.get(0).textContent.trim() === error) {
                     hasSelectedError = true;
                 }
             })

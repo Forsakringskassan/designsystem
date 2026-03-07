@@ -268,7 +268,7 @@ describe("Option selection", () => {
         cy.mount(FTextField, defaultMountOptions);
         cy.get(input).type("a");
         cy.get(options)
-            .then((it) => [...it].map((it) => it.innerText))
+            .then((it) => [...it].map((it) => it.textContent))
             .should("deep.equal", ["bar", "baz"]);
     });
 
