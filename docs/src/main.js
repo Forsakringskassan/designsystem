@@ -13,6 +13,6 @@ async function importIcons() {
     }
 }
 
-importIcons();
-
 config.teleportTarget = document.getElementById("teleport-target");
+
+await importIcons();
