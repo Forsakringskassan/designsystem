@@ -68,6 +68,4 @@ export {
     waitForScreenReader,
 } from "./wait-for-screen-reader";
 
-import * as DomUtils from "./dom";
-
-export { DomUtils };
+export * as DomUtils from "./dom";

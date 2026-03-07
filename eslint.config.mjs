@@ -156,7 +156,6 @@ export default [
             "unicorn/prefer-dom-node-dataset": "off",
             "unicorn/prefer-dom-node-remove": "off",
             "unicorn/prefer-dom-node-text-content": "off",
-            "unicorn/prefer-export-from": "off",
             "unicorn/prefer-math-min-max": "off",
             "unicorn/prefer-node-protocol": "off",
             "unicorn/prefer-number-properties": "off",
