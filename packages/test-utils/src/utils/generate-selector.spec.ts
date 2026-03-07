@@ -15,7 +15,7 @@ it("should handle detached elements", () => {
     expect.assertions(1);
     const div = document.createElement("div");
     const p = document.createElement("p");
-    div.appendChild(p);
+    div.append(p);
     expect(generateSelector(p)).toBe("div > p");
 });
 

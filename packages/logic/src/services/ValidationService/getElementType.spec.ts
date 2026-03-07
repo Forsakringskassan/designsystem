@@ -6,7 +6,7 @@ function addInputElement(
 ): HTMLInputElement {
     const element = document.createElement("input");
     element.type = type;
-    parent.appendChild(element);
+    parent.append(element);
 
     return element;
 }
@@ -14,7 +14,7 @@ function addInputElement(
 function addFieldsetElement(childType: string): HTMLFieldSetElement {
     const element = document.createElement("fieldset");
     addInputElement(childType, element);
-    document.body.appendChild(element);
+    document.body.append(element);
 
     return element;
 }
@@ -64,12 +64,12 @@ it("should return undefined when fieldset not contains radio or checkbox", () =>
 
 it('should return "textarea" when textarea', () => {
     const element = document.createElement("textarea");
-    document.body.appendChild(element);
+    document.body.append(element);
     expect(getElementType(element)).toBe("textarea");
 });
 
 it('should return "select" when select', () => {
     const element = document.createElement("select");
-    document.body.appendChild(element);
+    document.body.append(element);
     expect(getElementType(element)).toBe("select");
 });

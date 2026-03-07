@@ -13,8 +13,8 @@ beforeAll(() => {
     mockElement.id = "foo";
     mockElement.href = "#";
     mockInput.id = "bar";
-    document.body.appendChild(mockElement);
-    document.body.appendChild(mockInput);
+    document.body.append(mockElement);
+    document.body.append(mockInput);
 });
 
 it("should scroll and move focus to element (by id)", () => {
