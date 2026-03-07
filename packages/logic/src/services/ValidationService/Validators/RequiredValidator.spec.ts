@@ -85,7 +85,7 @@ describe("Fieldset with radio inputs", () => {
         const input = document.createElement("input");
         input.type = "radio";
         input.disabled = true;
-        fieldset.appendChild(input);
+        fieldset.append(input);
         const result = requiredValidator.validation("", fieldset, {});
         expect(result).toBeTruthy();
     });
@@ -119,7 +119,7 @@ describe("Fieldset with checkbox inputs", () => {
         const input = document.createElement("input");
         input.type = "checkbox";
         input.disabled = true;
-        fieldset.appendChild(input);
+        fieldset.append(input);
         const result = requiredValidator.validation("", fieldset, {});
         expect(result).toBeTruthy();
     });

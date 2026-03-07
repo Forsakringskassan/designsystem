@@ -50,7 +50,7 @@ export function alertScreenReader(
             wrapper.removeChild(wrapper.firstChild);
         }
 
-        wrapper.appendChild(msg);
+        wrapper.append(msg);
 
         setTimeout(() => {
             // Remove element if it is still in the DOM.
@@ -77,7 +77,7 @@ export function createScreenReaderWrapper(
         wrapper.className = "sr-only";
         updateProperties(options);
 
-        document.body.appendChild(wrapper);
+        document.body.append(wrapper);
     }
 }
 

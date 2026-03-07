@@ -4,8 +4,8 @@ import { removeFocusListener } from "./remove-listener";
 function setupDomElements(): HTMLElement[] {
     const a = document.createElement("input");
     const b = document.createElement("input");
-    document.body.appendChild(a);
-    document.body.appendChild(b);
+    document.body.append(a);
+    document.body.append(b);
     return [a, b];
 }
 

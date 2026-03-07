@@ -40,7 +40,7 @@ function dispatchValidityEvent(
         target = document.createElement("input");
         target.setAttribute("id", "elementId");
         target.setAttribute("type", "radio");
-        wrapper.element.appendChild(target);
+        wrapper.element.append(target);
     }
 
     wrapper.element.dispatchEvent(
@@ -262,7 +262,7 @@ describe("onValidity should only handle events from itself", () => {
             const inputElement = document.createElement(element);
             inputElement.setAttribute("id", "elementId");
             inputElement.setAttribute("type", inputType);
-            wrapper.element.appendChild(inputElement);
+            wrapper.element.append(inputElement);
 
             dispatchValidityEvent(wrapper, false, "INITIAL", inputElement);
             expect(onComponentValidityListener).not.toHaveBeenCalled();
@@ -287,13 +287,13 @@ describe("onValidity should only handle events from itself", () => {
             );
 
             const fieldset = document.createElement("fieldset");
-            wrapper.element.appendChild(fieldset);
+            wrapper.element.append(fieldset);
 
             const inputElement = document.createElement("input");
             inputElement.setAttribute("id", "elementId");
             inputElement.setAttribute("type", inputType);
 
-            fieldset.appendChild(inputElement);
+            fieldset.append(inputElement);
 
             dispatchValidityEvent(wrapper, false, "INITIAL", inputElement);
             expect(onComponentValidityListener).not.toHaveBeenCalled();
@@ -342,11 +342,11 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
 
         const inputElement1 = document.createElement("input");
         inputElement1.setAttribute("id", "child1Id");
-        wrapper.element.appendChild(inputElement1);
+        wrapper.element.append(inputElement1);
 
         const inputElement2 = document.createElement("input");
         inputElement2.setAttribute("id", "child2Id");
-        wrapper.element.appendChild(inputElement2);
+        wrapper.element.append(inputElement2);
 
         dispatchValidityEvent(
             wrapper,

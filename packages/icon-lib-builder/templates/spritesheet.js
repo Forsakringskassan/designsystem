@@ -8,5 +8,5 @@ function injectSpritesheet() {
     element.setAttribute("aria-hidden", "true");
     element.setAttribute("data-icon-package", PACKAGE);
     element.setAttribute("data-icon-library", LIBRARY);
-    document.body.appendChild(element);
+    document.body.append(element);
 }
