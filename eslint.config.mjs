@@ -140,7 +140,6 @@ export default [
         name: "technical-debt",
         rules: {
             "unicorn/filename-case": "off",
-            "unicorn/prefer-array-flat-map": "off",
             "unicorn/prefer-array-index-of": "off",
             "unicorn/prefer-array-some": "off",
             "unicorn/prefer-at": "off",

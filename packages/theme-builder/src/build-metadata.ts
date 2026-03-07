@@ -93,8 +93,7 @@ async function fromFile(
 
     const palette = Object.fromEntries(
         paletteVariables
-            .map((it) => it.variables)
-            .flat()
+            .flatMap((it) => it.variables)
             .map((it) => [it.value, it.name]),
     );
     const { stylesheet } = parse(css);
