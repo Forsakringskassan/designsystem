@@ -64,7 +64,7 @@ async function findDocsImported() {
             let previous;
             do {
                 previous = stripped;
-                stripped = stripped.replace(/<!--[\s\S]*?-->/g, "");
+                stripped = stripped.replace(/<!--[\S\s]*?-->/g, "");
             } while (stripped !== previous);
             const filename = stripped.trim();
             found.add(filename);
@@ -81,7 +81,7 @@ async function findSrcImported() {
     const found = /** @type {Set<string>} */ new Set();
     for (const filePath of filePaths) {
         const content = await fs.readFile(filePath, "utf-8");
-        const matches = content.matchAll(/from "([.][^"]+[.]vue)"/gm);
+        const matches = content.matchAll(/from "(\.[^"]+\.vue)"/gm);
         for (const match of matches) {
             const name = match[1];
             found.add(path.basename(name));
@@ -109,7 +109,7 @@ const extraneous = difference(
     imported,
 );
 
-const delimiter = process.argv.includes("-z") ? "\x00" : "\n";
+const delimiter = process.argv.includes("-z") ? "\u0000" : "\n";
 
 const s = extraneous.size !== 1 ? "s" : "";
 process.stderr.write(`${extraneous.size} extraneous example${s} found\n`);

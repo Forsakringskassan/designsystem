@@ -47,22 +47,22 @@ function registerValidators(
         binding;
     const target = getValidatableElement(el);
 
-    Object.keys(bindingValue).forEach((validatorName) => {
+    for (const validatorName of Object.keys(bindingValue)) {
         if (!bindingModifiers[validatorName]) {
             throw new Error(
                 `Have you forget to add '${validatorName}' to v-validation.${validatorName}?`,
             );
         }
-    });
+    }
 
     const validatorConfigs: ValidatorConfigs = {};
     /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt */
-    (Object.keys(bindingModifiers) as ValidatorName[]).forEach(
-        (validatorName) => {
-            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-            validatorConfigs[validatorName] = bindingValue[validatorName] || {};
-        },
-    );
+    for (const validatorName of Object.keys(
+        bindingModifiers,
+    ) as ValidatorName[]) {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+        validatorConfigs[validatorName] = bindingValue[validatorName] || {};
+    }
 
     ValidationService.addValidatorsToElement(target, validatorConfigs);
 }

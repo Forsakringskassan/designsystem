@@ -39,7 +39,7 @@ it("should mount component to container selector", () => {
     expect.assertions(1);
     const container = document.createElement("div");
     container.id = "foo";
-    document.body.appendChild(container);
+    document.body.append(container);
     const app = mountComponent(callingInstance, MockComponent, {
         attachTo: "#foo",
     });
@@ -51,7 +51,7 @@ it("should mount component to container selector", () => {
         </body>
     `);
     app.unmount();
-    document.body.removeChild(container);
+    container.remove();
 });
 
 it("should throw error if no component is given", () => {
@@ -75,8 +75,8 @@ it("should throw error if attachTo selector does not yield any results", () => {
 
 it("should attach last when attachFirst is false", () => {
     expect.assertions(1);
-    document.body.appendChild(p("lorem ipsum"));
-    document.body.appendChild(p("dolor sit amet"));
+    document.body.append(p("lorem ipsum"));
+    document.body.append(p("dolor sit amet"));
     const app = mountComponent(callingInstance, MockComponent, {
         attachFirst: false,
     });
@@ -90,8 +90,8 @@ it("should attach last when attachFirst is false", () => {
 
 it("should attach first when attachFirst is true", () => {
     expect.assertions(1);
-    document.body.appendChild(p("lorem ipsum"));
-    document.body.appendChild(p("dolor sit amet"));
+    document.body.append(p("lorem ipsum"));
+    document.body.append(p("dolor sit amet"));
     const app = mountComponent(callingInstance, MockComponent, {
         attachFirst: true,
     });

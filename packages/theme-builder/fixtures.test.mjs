@@ -40,7 +40,7 @@ function printTree(tab = "", children) {
  * @returns {string}
  */
 function basename(path, separator) {
-    if (path[path.length - 1] === separator) {
+    if (path.at(-1) === separator) {
         path = path.slice(0, -1);
     }
     const lastSlashIndex = path.lastIndexOf(separator);
@@ -55,7 +55,7 @@ function basename(path, separator) {
 function toTreeSync(fs, opts = {}) {
     const separator = opts.separator || "/";
     let dir = opts.dir || separator;
-    if (dir[dir.length - 1] !== separator) {
+    if (dir.at(-1) !== separator) {
         dir += separator;
     }
     const tab = opts.tab || "";

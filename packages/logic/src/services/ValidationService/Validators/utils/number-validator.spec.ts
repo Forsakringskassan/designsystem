@@ -21,16 +21,16 @@ it.each`
 );
 
 it.each`
-    config                      | expected    | description
-    ${{ limit: "3" }}           | ${3}        | ${"numeric value should be valid"}
-    ${{ limit: "0,3" }}         | ${0.3}      | ${"value with comma(,) seperator should be valid"}
-    ${{ limit: "-1.2" }}        | ${-1.2}     | ${"value with dot(.) seperator should be valid"}
-    ${{ limit: "1000 00 0 0" }} | ${10000000} | ${"numeric value with multiple spaces should be valid"}
-    ${{ limit: "1000 00" }}     | ${100000}   | ${"numeric value with one space should be valid"}
-    ${{ limit: "1 000" }}       | ${1000}     | ${"value with whitespace and of type number should be valid"}
-    ${{ limit: "1 0000" }}      | ${10000}    | ${"value with whitespace and of type number should be valid"}
-    ${{ limit: " 1 0 0 0 0" }}  | ${10000}    | ${"value with whitespace and of type number should be valid"}
-    ${{ limit: "10\xa0050,3" }} | ${10050.3}  | ${"value with non breaking whitespace and of type number should be valid"}
+    config                        | expected    | description
+    ${{ limit: "3" }}             | ${3}        | ${"numeric value should be valid"}
+    ${{ limit: "0,3" }}           | ${0.3}      | ${"value with comma(,) seperator should be valid"}
+    ${{ limit: "-1.2" }}          | ${-1.2}     | ${"value with dot(.) seperator should be valid"}
+    ${{ limit: "1000 00 0 0" }}   | ${10000000} | ${"numeric value with multiple spaces should be valid"}
+    ${{ limit: "1000 00" }}       | ${100000}   | ${"numeric value with one space should be valid"}
+    ${{ limit: "1 000" }}         | ${1000}     | ${"value with whitespace and of type number should be valid"}
+    ${{ limit: "1 0000" }}        | ${10000}    | ${"value with whitespace and of type number should be valid"}
+    ${{ limit: " 1 0 0 0 0" }}    | ${10000}    | ${"value with whitespace and of type number should be valid"}
+    ${{ limit: "10\u00a0050,3" }} | ${10050.3}  | ${"value with non breaking whitespace and of type number should be valid"}
 `(
     'should be called with "$expected" for "$config" because of $description',
     ({ config, expected }) => {

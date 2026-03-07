@@ -62,7 +62,7 @@ const isRelease = (() => {
 if (isCI) {
     console.group("Configuration");
     console.log("Matomo:", MATOMO_SITE_ID ? "enabled" : "disabled");
-    console.log("Source url format: ", DOCS_SOURCE_URL_FORMAT);
+    console.log("Source url format:", DOCS_SOURCE_URL_FORMAT);
     console.groupEnd();
     console.log();
 }

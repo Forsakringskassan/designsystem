@@ -6,8 +6,10 @@ describe("DecoratedError", () => {
 
         const actual = new DecoratedError("more details here", given);
 
-        expect(actual).toMatchInlineSnapshot(`[Error: more details here]`);
-        expect(actual.stack).toContain(`Error: more details here`);
+        expect(actual).toMatchInlineSnapshot(
+            `[DecoratedError: more details here]`,
+        );
+        expect(actual.stack).toContain(`DecoratedError: more details here`);
         expect(actual.stack).toContain(`Caused by: Error: original message`);
         expect(actual.getCause()).toBe(given);
         expect(actual.getRootCause()).toBe(given);
@@ -19,10 +21,12 @@ describe("DecoratedError", () => {
 
         const actual = new DecoratedError("Decorated 2", givenCause);
 
-        expect(actual).toMatchInlineSnapshot(`[Error: Decorated 2]`);
-        expect(actual.stack).toContain(`Error: Decorated 1`);
-        expect(actual.stack).toContain(`Error: Decorated 2`);
-        expect(actual.stack).toContain(`Caused by: Error: Decorated 1`);
+        expect(actual).toMatchInlineSnapshot(`[DecoratedError: Decorated 2]`);
+        expect(actual.stack).toContain(`DecoratedError: Decorated 1`);
+        expect(actual.stack).toContain(`DecoratedError: Decorated 2`);
+        expect(actual.stack).toContain(
+            `Caused by: DecoratedError: Decorated 1`,
+        );
         expect(actual.stack).toContain(`Caused by: Error: original message`);
         expect(actual.getCause()).toBe(givenCause);
         expect(actual.getRootCause()).toBe(givenRootCause);

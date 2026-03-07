@@ -20,7 +20,7 @@ export function sort<T>(
         return shallowCopy;
     }
 
-    return shallowCopy.sort((item1, item2) =>
+    return shallowCopy.toSorted((item1, item2) =>
         compare(item1, item2, attribute, ascending),
     );
 }
@@ -39,7 +39,7 @@ function compare<T>(
         return nullCompare(value1, value2);
     }
     if (!isSupportedType(value1) || !isSupportedType(value2)) {
-        throw Error(
+        throw new Error(
             `Sorting is only supported for types number, string and boolean.
             Attribute '${attribute.toString()}' comparsion of types '${typeof value1}' and '${typeof value2}' is not supported.`,
         );

@@ -91,11 +91,11 @@ function hanteraFil(filer: FileList): void {
     } else {
         currentStatus.value = STATUS_HAR_INTE_VALT_FIL;
 
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, unicorn/no-array-for-each -- technical debt */
         Object.values(filer ? filer : valdFil.value).forEach(async (value) => {
             try {
                 const buffer = await value.arrayBuffer();
-                const reduced = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCharCode(byte), "");
+                const reduced = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCodePoint(byte), "");
                 uppladdatDokument.value = {
                     dokument: {
                         filnamn: value.name,

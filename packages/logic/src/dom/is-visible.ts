@@ -7,6 +7,6 @@ export function isVisible(element: HTMLElement): boolean {
     return Boolean(
         element.offsetWidth ||
         element.offsetHeight ||
-        element.getClientRects().length,
+        element.getClientRects().length > 0,
     );
 }

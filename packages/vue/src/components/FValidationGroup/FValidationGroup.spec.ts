@@ -246,7 +246,7 @@ describe("events", () => {
             validityMode: "ERROR",
         });
 
-        input1.element.parentElement?.removeChild(input1.element);
+        input1.element.remove();
 
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         triggerComponentValidityEvent(input2.element, {

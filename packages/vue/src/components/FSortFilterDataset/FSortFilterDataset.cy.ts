@@ -113,11 +113,11 @@ const TestComponent = defineComponent({
 });
 
 function assertTable(values: string[], column: number): void {
-    for (let i = 0; i < values.length; i++) {
+    for (const [i, value] of values.entries()) {
         table
             .columnItem(i + 1)
             .tableRowBodyContent(column)
-            .should("contain.text", values[i]);
+            .should("contain.text", value);
     }
 
     if (values.length === 0) {

@@ -352,7 +352,7 @@ describe("7.7 Dataset change resets selection", () => {
         expect(selectableRowState(toValue(rows)[0])).toBeTruthy();
         expect(selectableRowState(toValue(rows)[1])).toBeFalsy();
 
-        const newRows = [...rows.value].reverse();
+        const newRows = [...rows.value].toReversed();
         setItemIdentifiers(newRows);
         rows.value = newRows;
         await flushPromises();

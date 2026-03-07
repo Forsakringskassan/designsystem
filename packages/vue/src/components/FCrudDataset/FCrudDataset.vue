@@ -214,7 +214,7 @@ provide("setNestedKey", setNestedKey);
 
 onMounted(() => {
     if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
-        throw Error("At least one template of the following must be defined. #add, #delete or #modify");
+        throw new Error("At least one template of the following must be defined. #add, #delete or #modify");
     }
 });
 
@@ -228,7 +228,7 @@ watch(
 
 function createItem(): void {
     if (!hasAddSlot.value) {
-        throw Error("No template is defined for #add");
+        throw new Error("No template is defined for #add");
     }
     operation.value = Operation.ADD;
     item.value = props.beforeCreate ? props.beforeCreate() : {};
@@ -237,7 +237,7 @@ function createItem(): void {
 
 function deleteItem(current: T): void {
     if (!hasDeleteSlot.value) {
-        throw Error("No template is defined for #delete");
+        throw new Error("No template is defined for #delete");
     }
     operation.value = Operation.DELETE;
     item.value = current;
@@ -309,7 +309,7 @@ function onFormModalSubmit(): void {
 
 function updateItem(current: T): void {
     if (!hasModifySlot.value) {
-        throw Error("No template is defined for #modify");
+        throw new Error("No template is defined for #modify");
     }
     operation.value = Operation.MODIFY;
     originalItemToUpdate.value = current;

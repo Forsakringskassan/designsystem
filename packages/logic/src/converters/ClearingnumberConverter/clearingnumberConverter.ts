@@ -1,6 +1,6 @@
 import { isEmpty } from "../../utils";
 
-const CLEARINGNUMBER_REGEXP = /^\d{4}([-\s]?\d)?$/;
+const CLEARINGNUMBER_REGEXP = /^\d{4}([\s-]?\d)?$/;
 
 /**
  * A string of 4-5 digits where last digit may be separated by hyphen, for

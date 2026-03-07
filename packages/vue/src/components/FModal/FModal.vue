@@ -163,7 +163,7 @@ export default defineComponent({
 
             const contentElement = getHTMLElementFromVueRef(this.$refs.modalContent);
             const tabbableChildren = findTabbableElements(contentElement);
-            const firstTabbableChildElement = tabbableChildren.length ? tabbableChildren[0] : undefined;
+            const firstTabbableChildElement = tabbableChildren.length > 0 ? tabbableChildren[0] : undefined;
 
             return firstTabbableChildElement ?? contentElement;
         },
@@ -184,7 +184,7 @@ export default defineComponent({
         },
         onFocusFirst() {
             const tabbableElements = findTabbableElements(this.$refs.modalDialogContainer as HTMLElement);
-            const lastTabbableElement = tabbableElements[tabbableElements.length - 2];
+            const lastTabbableElement = tabbableElements.at(-2);
             focusElement(lastTabbableElement, this.$el);
         },
         onFocusLast() {

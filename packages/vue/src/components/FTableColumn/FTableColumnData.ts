@@ -75,7 +75,7 @@ export function updateSortOrder(
     columnName: PropertyKey,
     ascending: boolean,
 ): void {
-    src.forEach((column) => {
+    for (const column of src) {
         if (column.name === columnName) {
             column.sort = ascending
                 ? FTableColumnSort.ASCENDING
@@ -83,7 +83,7 @@ export function updateSortOrder(
         } else {
             column.sort = FTableColumnSort.UNSORTED;
         }
-    });
+    }
 }
 
 export function setSortableColumns(

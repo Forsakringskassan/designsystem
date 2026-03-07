@@ -150,7 +150,7 @@ function setUpFakeValidation(el: HTMLInputElement): void {
     assertRef(inputElement);
     const nativeEvents: ValidityNativeEvent[] = ["change", "blur"];
 
-    nativeEvents.forEach((nativeEvent) => {
+    for (const nativeEvent of nativeEvents) {
         useEventListener(el, nativeEvent, () => {
             const fakeEvent = new CustomEvent<ValidityEvent>("validity", {
                 detail: {
@@ -165,7 +165,7 @@ function setUpFakeValidation(el: HTMLInputElement): void {
 
             onValidity(fakeEvent);
         });
-    });
+    }
 
     useEventListener(el, "input", onPendingValidity);
     useEventListener(el, "component-validity", (e) => {

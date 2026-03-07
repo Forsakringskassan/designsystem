@@ -1,4 +1,4 @@
-/* eslint-disable sonarjs/no-primitive-wrappers -- to ensure it works */
+/* eslint-disable sonarjs/no-primitive-wrappers, unicorn/new-for-builtins -- to ensure it works */
 
 import { isString } from "./is-string";
 

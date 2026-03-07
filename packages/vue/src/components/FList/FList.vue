@@ -160,7 +160,7 @@ watch(
 onMounted(() => {
     if (props.selectable && props.checkbox) {
         if (!slots.screenreader) {
-            throw Error('Slot "screenreader" is required when having "selectable" & "checkbox" option.');
+            throw new Error('Slot "screenreader" is required when having "selectable" & "checkbox" option.');
         }
         registerCallbackAfterItemAdd(callbackAfterItemAdd);
         registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
@@ -239,6 +239,14 @@ function updateActiveItemFromVModel(): void {
     }
 }
 
+function dispatchPaginateDatasetEvent(type: "next" | "previous"): void {
+    assertRef(ulElement);
+    const event = new CustomEvent<FPaginateDatasetPageEventDetail>(`paginateDataset:${type}`, {
+        bubbles: true,
+    });
+    ulElement.value.dispatchEvent(event);
+}
+
 function onItemKeyDown(event: KeyboardEvent, item: T): void {
     switch (event.key) {
         case "Up":
@@ -260,14 +268,6 @@ function onItemKeyDown(event: KeyboardEvent, item: T): void {
         case "PageDown":
             event.preventDefault();
             dispatchPaginateDatasetEvent("next");
-    }
-
-    function dispatchPaginateDatasetEvent(type: "next" | "previous"): void {
-        assertRef(ulElement);
-        const event = new CustomEvent<FPaginateDatasetPageEventDetail>(`paginateDataset:${type}`, {
-            bubbles: true,
-        });
-        ulElement.value.dispatchEvent(event);
     }
 }
 

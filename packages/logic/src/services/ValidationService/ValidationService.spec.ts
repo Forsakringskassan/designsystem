@@ -114,6 +114,7 @@ function triggerValidityEvent(
     inputValue: string | boolean,
     type: "text" | "radio" = "text",
     validityConfigs = lazyValidatorConfigs,
+    /* eslint-disable-next-line unicorn/no-object-as-default-parameter -- technical debt */
     initialState: ValidationState = { touched: false, submitted: false },
 ): ValidityEvent | undefined {
     const element = mountInputElementAndAddValidators(type, validityConfigs);
@@ -132,7 +133,7 @@ function triggerValidityEvent(
         return undefined;
     }
 
-    const args = listener.mock.calls[listener.mock.calls.length - 1];
+    const args = listener.mock.calls.at(-1);
     return args[0].detail;
 }
 
@@ -242,8 +243,8 @@ describe("isValid()", () => {
         const fieldset = document.createElement("fieldset");
         const a = createElement({ valid: true });
         const b = createElement({ valid: true });
-        fieldset.appendChild(a);
-        fieldset.appendChild(b);
+        fieldset.append(a);
+        fieldset.append(b);
         expect(await ValidationService.isValid(fieldset)).toBeTruthy();
     });
 
@@ -252,8 +253,8 @@ describe("isValid()", () => {
         const fieldset = document.createElement("fieldset");
         const a = createElement({ valid: true });
         const b = createElement({ valid: false });
-        fieldset.appendChild(a);
-        fieldset.appendChild(b);
+        fieldset.append(a);
+        fieldset.append(b);
         expect(await ValidationService.isValid(fieldset)).toBeFalsy();
     });
 
@@ -262,8 +263,8 @@ describe("isValid()", () => {
         const div = document.createElement("div");
         const a = createElement({ valid: true });
         const b = createElement({ valid: true });
-        div.appendChild(a);
-        div.appendChild(b);
+        div.append(a);
+        div.append(b);
         expect(await ValidationService.isValid(div)).toBeTruthy();
     });
 
@@ -272,8 +273,8 @@ describe("isValid()", () => {
         const div = document.createElement("div");
         const a = createElement({ valid: true });
         const b = createElement({ valid: false });
-        div.appendChild(a);
-        div.appendChild(b);
+        div.append(a);
+        div.append(b);
         expect(await ValidationService.isValid(div)).toBeFalsy();
     });
 
@@ -296,8 +297,8 @@ describe("isValid()", () => {
         const root = document.createElement("div");
         const foo = createElement({ valid: true, id: "foo" });
         const bar = createElement({ valid: false, id: "bar" });
-        root.appendChild(foo);
-        root.appendChild(bar);
+        root.append(foo);
+        root.append(bar);
         expect(await ValidationService.isValid("foo", root)).toBeTruthy();
         expect(await ValidationService.isValid("bar", root)).toBeFalsy();
     });
@@ -307,8 +308,8 @@ describe("isValid()", () => {
         const root = document.createElement("div");
         const foo = createElement({ valid: true, id: "foo" });
         const bar = createElement({ valid: true, id: "bar" });
-        root.appendChild(foo);
-        root.appendChild(bar);
+        root.append(foo);
+        root.append(bar);
         expect(
             await ValidationService.isValid(["foo", "bar"], root),
         ).toBeTruthy();
@@ -343,7 +344,7 @@ describe("validateElement", () => {
 
     it("should dispatch ValidityEvent to element by id", async () => {
         expect.assertions(1);
-        document.body.appendChild(inputElement);
+        document.body.append(inputElement);
         const validateEventHandler = jest.fn();
         inputElement.addEventListener("validate", validateEventHandler);
         await ValidationService.validateElement(inputElement.id);
@@ -572,7 +573,7 @@ describe("addValidatorsToElement", () => {
             whitelist: {},
         });
         expect(element.hasAttribute("required")).toBeFalsy();
-        expect(element.hasAttribute("data-required")).toBeFalsy();
+        expect(Object.hasOwn(element.dataset, "required")).toBeFalsy();
     });
 
     it("should add required attribute when required validator config exists and enabled option is undefined", () => {
@@ -580,7 +581,7 @@ describe("addValidatorsToElement", () => {
             required: {},
         });
         expect(element.hasAttribute("required")).toBeTruthy();
-        expect(element.hasAttribute("data-required")).toBeTruthy();
+        expect(Object.hasOwn(element.dataset, "required")).toBeTruthy();
     });
 
     it("should add required attribute when required validator config exists and enabled option is true", () => {
@@ -589,7 +590,7 @@ describe("addValidatorsToElement", () => {
             enabledValidatorConfig(true),
         );
         expect(element.hasAttribute("required")).toBeTruthy();
-        expect(element.hasAttribute("data-required")).toBeTruthy();
+        expect(Object.hasOwn(element.dataset, "required")).toBeTruthy();
     });
 
     it("should not add required attribute when required validator config exists and enabled option is false", () => {
@@ -598,7 +599,7 @@ describe("addValidatorsToElement", () => {
             enabledValidatorConfig(false),
         );
         expect(element.hasAttribute("required")).toBeFalsy();
-        expect(element.hasAttribute("data-required")).toBeFalsy();
+        expect(Object.hasOwn(element.dataset, "required")).toBeFalsy();
     });
 
     it("should only add data-required attribute for fieldset when required validator config exists and enabled option is true", () => {
@@ -615,7 +616,7 @@ describe("addValidatorsToElement", () => {
         );
 
         expect(fieldsetElement.hasAttribute("required")).toBeFalsy();
-        expect(fieldsetElement.hasAttribute("data-required")).toBeTruthy();
+        expect(Object.hasOwn(fieldsetElement.dataset, "required")).toBeTruthy();
     });
 
     it("should remove data-required attribute for fieldset when required validator config exists and enabled option toggles from true to false", () => {
@@ -631,7 +632,7 @@ describe("addValidatorsToElement", () => {
         );
 
         expect(fieldsetElement.hasAttribute("required")).toBeFalsy();
-        expect(fieldsetElement.hasAttribute("data-required")).toBeTruthy();
+        expect(Object.hasOwn(fieldsetElement.dataset, "required")).toBeTruthy();
 
         ValidationService.addValidatorsToElement(
             fieldsetElement,
@@ -639,7 +640,7 @@ describe("addValidatorsToElement", () => {
         );
 
         expect(fieldsetElement.hasAttribute("required")).toBeFalsy();
-        expect(fieldsetElement.hasAttribute("data-required")).toBeFalsy();
+        expect(Object.hasOwn(fieldsetElement.dataset, "required")).toBeFalsy();
     });
 
     it("should place required validator first then keep base config order and add new validators last", () => {

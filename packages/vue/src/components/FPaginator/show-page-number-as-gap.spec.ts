@@ -14,6 +14,7 @@ describe("show page number as gap", () => {
     `(
         'should return page numbers "$expectedPageNumbers" for pages "$pages"',
         ({ pages, expectedPageNumbers }) => {
+            /* eslint-disable-next-line unicorn/no-array-for-each -- technical debt */
             pages.forEach((page: number, id: number) => {
                 const gap = showPageNumberAsGap({
                     page,

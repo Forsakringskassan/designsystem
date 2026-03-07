@@ -47,15 +47,15 @@ export function alertScreenReader(
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     waitForScreenReader(() => {
         while (wrapper.firstChild) {
-            wrapper.removeChild(wrapper.firstChild);
+            wrapper.firstChild.remove();
         }
 
-        wrapper.appendChild(msg);
+        wrapper.append(msg);
 
         setTimeout(() => {
             // Remove element if it is still in the DOM.
             if (msg.parentElement === wrapper) {
-                wrapper.removeChild(msg);
+                msg.remove();
             }
         }, REMOVE_TEXT_DELAY);
     });
@@ -77,7 +77,7 @@ export function createScreenReaderWrapper(
         wrapper.className = "sr-only";
         updateProperties(options);
 
-        document.body.appendChild(wrapper);
+        document.body.append(wrapper);
     }
 }
 

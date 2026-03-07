@@ -42,6 +42,7 @@ class FieldsetValidationHandler {
                 (childElement: Element) =>
                     childElement.closest("fieldset") === element,
             )
+            /* eslint-disable-next-line unicorn/no-array-for-each -- technical debt */
             .forEach((childElement: Element) => {
                 childElement.setAttribute("required", "");
             });
@@ -96,11 +97,11 @@ class FieldsetValidationHandler {
             `fieldset#${this.element.id}, #${this.element.id} input[type='checkbox'], #${this.element.id} input[type='radio']`,
         );
 
-        validatableElements.forEach((element) => {
+        for (const element of validatableElements) {
             if (element.id) {
                 /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
                 this.validationService.validateElement(element.id);
             }
-        });
+        }
     }
 }

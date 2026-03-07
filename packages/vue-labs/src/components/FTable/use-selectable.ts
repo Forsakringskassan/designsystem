@@ -64,7 +64,7 @@ export function useSelectable<T>(options: {
         } else {
             const index = selectedRows.value.indexOf(row);
 
-            if (index < 0) {
+            if (index === -1) {
                 selectedRows.value.push(row);
             } else {
                 selectedRows.value.splice(index, 1);
@@ -85,7 +85,7 @@ export function useSelectable<T>(options: {
         () => toValue(rows),
         (newValue) => {
             // eslint-disable-next-line sonarjs/no-alphabetical-sort -- only used to compare
-            const newKeys = newValue.map(rowKey).sort();
+            const newKeys = newValue.map(rowKey).toSorted();
             if (!oldKeys) {
                 oldKeys = newKeys;
                 return;

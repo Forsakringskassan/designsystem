@@ -82,10 +82,14 @@ export interface UseResizeOptions {
 function toOptionalRef<T>(
     value: T | Readonly<Ref<T>> | undefined,
 ): Readonly<Ref<T>> | undefined {
-    if (typeof value === "undefined") {
+    if (value === undefined) {
         return value;
     }
     return toRef(value) as Ref<T>;
+}
+
+function noop(): void {
+    /* do nothing */
 }
 
 /**
@@ -97,8 +101,7 @@ function toOptionalRef<T>(
 export function useResize(options: UseResizeOptions = {}): UseResize {
     const api = inject(injectionKey, {
         register() {
-            /* fallback: do nothing */
-            return () => undefined;
+            return noop;
         },
         size: ref(0),
     });

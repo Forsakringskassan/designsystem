@@ -192,8 +192,7 @@ export function useCombobox(
             } else if (fallback === "first") {
                 activeOption.value = dropdownOptions.value[0];
             } else if (fallback === "last") {
-                activeOption.value =
-                    dropdownOptions.value[dropdownOptions.value.length - 1];
+                activeOption.value = dropdownOptions.value.at(-1);
             } else {
                 activeOption.value = null;
             }
@@ -235,14 +234,12 @@ export function useCombobox(
             const index = dropdownOptions.value.indexOf(activeOption.value);
 
             if (index === 0) {
-                activeOption.value =
-                    dropdownOptions.value[dropdownOptions.value.length - 1];
+                activeOption.value = dropdownOptions.value.at(-1);
             } else {
                 activeOption.value = dropdownOptions.value[index - 1];
             }
         } else {
-            activeOption.value =
-                dropdownOptions.value[dropdownOptions.value.length - 1];
+            activeOption.value = dropdownOptions.value.at(-1);
         }
     }
 

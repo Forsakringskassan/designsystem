@@ -40,8 +40,8 @@ class RequiredMaxLength extends Rule {
                 return;
             }
 
-            for (let i = 0; i < elementAttrs.length; i++) {
-                attributeKeys.push(elementAttrs[i].key);
+            for (const elementAttr of elementAttrs) {
+                attributeKeys.push(elementAttr.key);
             }
             const validation = attributeKeys.find((attr) =>
                 attr.includes("v-validation"),

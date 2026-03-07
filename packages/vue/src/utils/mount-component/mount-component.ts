@@ -44,7 +44,7 @@ function createContainer(options: {
     if (attachFirst) {
         parent.insertBefore(element, parent.firstChild);
     } else {
-        parent.appendChild(element);
+        parent.append(element);
     }
 
     return element;
@@ -90,7 +90,7 @@ export function mountComponent(
     app.unmount = () => {
         unmount.call(app);
         if (el.parentNode) {
-            el.parentNode.removeChild(el);
+            el.remove();
         }
     };
 
