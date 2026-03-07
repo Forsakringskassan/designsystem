@@ -358,7 +358,7 @@ export default defineComponent({
             }
 
             const anchors = this.getVisibleAnchors();
-            const focusedIndex = anchors.findIndex((anchor) => anchor === event.target);
+            const focusedIndex = anchors.indexOf(event.target as HTMLElement);
             const lastItemIndex = anchors.length - 1;
 
             const firstItemFocused = focusedIndex === 0;
