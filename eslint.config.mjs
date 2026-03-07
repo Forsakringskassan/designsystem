@@ -152,7 +152,6 @@ export default [
             "unicorn/prefer-array-index-of": "off",
             "unicorn/prefer-array-some": "off",
             "unicorn/prefer-at": "off",
-            "unicorn/prefer-code-point": "off",
             "unicorn/prefer-dom-node-append": "off",
             "unicorn/prefer-dom-node-dataset": "off",
             "unicorn/prefer-dom-node-remove": "off",

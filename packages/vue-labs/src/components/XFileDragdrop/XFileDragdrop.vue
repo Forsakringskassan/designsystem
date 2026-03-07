@@ -95,7 +95,7 @@ function hanteraFil(filer: FileList): void {
         Object.values(filer ? filer : valdFil.value).forEach(async (value) => {
             try {
                 const buffer = await value.arrayBuffer();
-                const reduced = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCharCode(byte), "");
+                const reduced = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCodePoint(byte), "");
                 uppladdatDokument.value = {
                     dokument: {
                         filnamn: value.name,
