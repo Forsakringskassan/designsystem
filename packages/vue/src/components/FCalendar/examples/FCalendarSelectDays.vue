@@ -27,7 +27,7 @@ export default defineComponent({
             }
         },
         isSelected(date: FDate) {
-            return this.selected.find((it) => date.equals(it)) !== undefined;
+            return this.selected.some((it) => date.equals(it));
         },
     },
 });

@@ -97,7 +97,7 @@ export default defineComponent({
             let checked;
             if (Array.isArray(this.modelValue)) {
                 // `isEqual` since can't compare equality with a reactive (modelValue) object and non-reactive (this.value) object.
-                checked = this.modelValue.findIndex((it) => isEqual(toValue(it), toValue(this.value))) >= 0;
+                checked = this.modelValue.some((it) => isEqual(toValue(it), toValue(this.value)));
             } else {
                 checked = this.value === this.modelValue;
             }
