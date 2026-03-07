@@ -19,7 +19,8 @@ export const matchesValidator: Validator<MatchesValidatorConfig> = {
 
         /** TODO This will crash if the element is not found */
         /** TODO This assumes the id references an `<input>` field */
-        const el = document.getElementById(config.id) as HTMLInputElement;
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        const el = document.querySelector<HTMLInputElement>(`#${config.id}`)!;
         return el.value === value;
     },
 };

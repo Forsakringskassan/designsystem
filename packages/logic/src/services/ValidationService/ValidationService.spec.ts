@@ -89,8 +89,8 @@ function mountFieldsetAndAddValidators(
         </div>
     `;
     document.body.innerHTML = markup;
-    const element = document.getElementById(
-        "test-element",
+    const element = document.querySelector(
+        "#test-element",
     ) as HTMLFieldSetElement;
     ValidationService.addValidatorsToElement(element, validatorConfigs);
 
@@ -377,7 +377,7 @@ describe("validateAllElements", () => {
         id: string,
         validateEventHandler: () => void,
     ): HTMLElement {
-        const element = document.getElementById(id) as HTMLInputElement;
+        const element = document.querySelector(`#${id}`) as HTMLInputElement;
         element.addEventListener("validate", validateEventHandler);
         return element;
     }
@@ -1303,7 +1303,9 @@ describe("isAnyTouched", () => {
         `;
 
         for (const id of ["test-element", "test-element2"]) {
-            const element = document.getElementById(id) as HTMLInputElement;
+            const element = document.querySelector(
+                `#${id}`,
+            ) as HTMLInputElement;
             ValidationService.addValidatorsToElement(
                 element,
                 lazyValidatorConfigs,

@@ -125,7 +125,7 @@ export default defineComponent({
             } else {
                 const firstError = this.validity.componentsWithError[0];
                 /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
-                const element = document.getElementById(firstError.focusElementId)!;
+                const element = document.querySelector(`#${firstError.focusElementId}`)!;
                 focus(element);
             }
 

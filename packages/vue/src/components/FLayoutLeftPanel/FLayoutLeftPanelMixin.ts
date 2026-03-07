@@ -97,12 +97,14 @@ export function useLayoutPanel(
     }
 
     function updatePrimaryGrid(): void {
-        const leftPrimaryElement = document.getElementById(
-            "layout-side-navigation__primary-content",
-        );
-        const rightPrimaryElement = document.getElementById(
-            "layout-secondary__primary",
-        );
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        const leftPrimaryElement = document.querySelector<HTMLElement>(
+            "#layout-side-navigation__primary-content",
+        )!;
+        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+        const rightPrimaryElement = document.querySelector<HTMLElement>(
+            "#layout-secondary__primary",
+        )!;
         leftPrimaryClasses.value = getGridClasses(leftPrimaryElement);
         rightPrimaryClasses.value = getGridClasses(rightPrimaryElement);
     }

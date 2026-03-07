@@ -14,7 +14,7 @@ function mountDocument(): void {
 }
 
 function getElement(id: string): HTMLElement {
-    return document.getElementById(id)!;
+    return document.querySelector(`#${id}`)!;
 }
 
 function getTabKeyboardEvent(target: string, shiftKey: boolean): KeyboardEvent {

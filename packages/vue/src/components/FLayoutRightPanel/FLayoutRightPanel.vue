@@ -72,7 +72,7 @@ export default defineComponent({
         },
     },
     mounted(): void {
-        const headers = document.getElementsByClassName("layout-application-template__header");
+        const headers = document.querySelectorAll(".layout-application-template__header");
         const header = headers.item(0) as HTMLElement;
         /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         if (header) {

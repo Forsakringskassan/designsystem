@@ -5,7 +5,7 @@ class ElementIdServiceImpl implements ElementIdServiceInterface {
 
     public generateElementId(prefix = "fkui"): string {
         const id = this.nextId(prefix);
-        if (document.getElementById(id) === null) {
+        if (document.querySelector(`#${id}`) === null) {
             return id;
         }
         return this.generateElementId(prefix);
