@@ -47,8 +47,20 @@ const emit = defineEmits<{
 
 const $t = useTranslate();
 
-const preventKeys = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter", "Escape"];
-const keyUp = ["ArrowUp", "Up"];
+const preventKeys = new Set([
+    "Tab",
+    "Up",
+    "Down",
+    "ArrowUp",
+    "ArrowDown",
+    "Home",
+    "End",
+    " ",
+    "Spacebar",
+    "Enter",
+    "Escape",
+]);
+const keyUp = new Set(["ArrowUp", "Up"]);
 
 const contextmenuRef = useTemplateRef("contextmenu");
 const itemElementsRef = useTemplateRef("items");
@@ -154,13 +166,13 @@ function tabIndex(index: number): number {
 }
 
 function onKeyUp(event: KeyboardEvent): void {
-    if (preventKeys.includes(event.key)) {
+    if (preventKeys.has(event.key)) {
         event.preventDefault();
     }
 }
 
 async function onKeyDown(event: KeyboardEvent): Promise<void> {
-    if (!preventKeys.includes(event.key)) {
+    if (!preventKeys.has(event.key)) {
         return;
     }
 
@@ -183,7 +195,7 @@ async function onKeyDown(event: KeyboardEvent): Promise<void> {
         return;
     }
 
-    if (keyUp.includes(event.key) && currentFocusedItemIndex.value === -1) {
+    if (keyUp.has(event.key) && currentFocusedItemIndex.value === -1) {
         // If the user presses arrow up key (action MOVE_PREV) but there are no items in focus
         // adjust currentFocusedItemIndex so that MOVE_PREV will put focus on last item
         currentFocusedItemIndex.value = popupItems.value.length > 0 ? popupItems.value.length : 1;

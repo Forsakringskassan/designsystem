@@ -6,14 +6,14 @@ interface TableCellIndex {
     cell: number;
 }
 
-const navKeys = [
+const navKeys = new Set([
     "ArrowLeft",
     "ArrowRight",
     "ArrowUp",
     "ArrowDown",
     "Home",
     "End",
-];
+]);
 
 let prevCellIndex: number | undefined = undefined;
 
@@ -81,7 +81,7 @@ function navigate(
         return;
     }
 
-    if (!navKeys.includes(e.code)) {
+    if (!navKeys.has(e.code)) {
         return;
     }
     e.preventDefault();

@@ -6,7 +6,7 @@ import { actionFromKeyboardEvent, getSortedHTMLElementsFromVueRef } from "../../
 import { IPopup } from "../IPopup";
 import { doMenuAction } from "./ipopupmenu-logic";
 
-const preventKeys: string[] = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
+const preventKeys = new Set(["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"]);
 
 export default defineComponent({
     name: "IPopupMenu",
@@ -230,7 +230,7 @@ export default defineComponent({
                 return;
             }
 
-            if (preventKeys.includes(event.key)) {
+            if (preventKeys.has(event.key)) {
                 event.preventDefault();
             }
         },
@@ -238,7 +238,7 @@ export default defineComponent({
             if (!this.enableKeyboardNavigation) {
                 return;
             }
-            if (!preventKeys.includes(event.key)) {
+            if (!preventKeys.has(event.key)) {
                 return;
             }
 

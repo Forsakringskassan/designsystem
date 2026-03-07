@@ -194,12 +194,14 @@ export default defineComponent({
     },
     async mounted(): Promise<void> {
         await this.$nextTick();
-        const types = Array.from(
-            this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
-            (it: HTMLInputElement) => it.getAttribute("type"),
+        const types = new Set(
+            Array.from(
+                this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
+                (it: HTMLInputElement) => it.getAttribute("type"),
+            ),
         );
-        this.hasCheckbox = types.includes("checkbox");
-        this.hasRadiobutton = types.includes("radio");
+        this.hasCheckbox = types.has("checkbox");
+        this.hasRadiobutton = types.has("radio");
         if (this.hasCheckbox) {
             /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             this.updateCheckboxChildren();
