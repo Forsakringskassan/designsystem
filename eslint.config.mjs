@@ -148,7 +148,6 @@ export default [
             "unicorn/prefer-dom-node-remove": "off",
             "unicorn/prefer-dom-node-text-content": "off",
             "unicorn/prefer-number-properties": "off",
-            "unicorn/prefer-prototype-methods": "off",
             "unicorn/prefer-query-selector": "off",
             "unicorn/prefer-set-has": "off",
             "unicorn/prefer-string-replace-all": "off",
