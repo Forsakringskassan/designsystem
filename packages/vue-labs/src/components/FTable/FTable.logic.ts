@@ -57,7 +57,7 @@ export function getVerticalNavIndex(
         target.cell = prevCellIndex;
         prevCellIndex = undefined;
     } else {
-        target.cell = targetMax < from.cell ? targetMax : from.cell;
+        target.cell = Math.min(targetMax, from.cell);
     }
 
     if (targetMax < from.cell) {
