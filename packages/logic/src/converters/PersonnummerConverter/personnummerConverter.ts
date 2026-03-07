@@ -120,13 +120,13 @@ export function formatPersonnummer(
     }
 
     const currentYear = FDate.now().year;
-    const year = Number(value.substring(0, 4));
+    const year = Number(value.slice(0, 4));
 
     if (currentYear - year >= 100) {
-        return value.substring(2).replace("-", "+");
+        return value.slice(2).replace("-", "+");
     }
 
-    return value.substring(2);
+    return value.slice(2);
 }
 
 /**
