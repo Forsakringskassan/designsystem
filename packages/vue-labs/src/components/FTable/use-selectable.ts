@@ -85,7 +85,7 @@ export function useSelectable<T>(options: {
         () => toValue(rows),
         (newValue) => {
             // eslint-disable-next-line sonarjs/no-alphabetical-sort -- only used to compare
-            const newKeys = newValue.map(rowKey).sort();
+            const newKeys = newValue.map(rowKey).toSorted();
             if (!oldKeys) {
                 oldKeys = newKeys;
                 return;
