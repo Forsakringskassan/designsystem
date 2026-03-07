@@ -44,7 +44,7 @@ export class FExpandablePanelPageObject implements BasePageObject {
             .then((text: string) =>
                 text.replace(/(\d+)/, (match, matchGroup1) => {
                     /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
-                    nrOfNotifications = parseInt(matchGroup1, 10);
+                    nrOfNotifications = Number.parseInt(matchGroup1, 10);
                     /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
                     return matchGroup1;
                 }),

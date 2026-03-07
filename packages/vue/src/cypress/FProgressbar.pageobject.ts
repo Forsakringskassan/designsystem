@@ -56,7 +56,7 @@ export class FProgressbarPageObject implements BasePageObject {
      */
     public value(): Cypress.Chainable<number> {
         return this.progressMeter().then((el) => {
-            return parseInt(el[0].ariaValueNow ?? "0", 10);
+            return Number.parseInt(el[0].ariaValueNow ?? "0", 10);
         });
     }
 }

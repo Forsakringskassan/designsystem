@@ -18,8 +18,8 @@ export default defineComponent({
             type: String,
             default: "320",
             validator(value: string): boolean {
-                const parsed = parseInt(value, 10);
-                return !isNaN(parsed);
+                const parsed = Number.parseInt(value, 10);
+                return !Number.isNaN(parsed);
             },
         },
     },

@@ -80,7 +80,7 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
              * it increases the month, this is not the desired behaviour so we
              * compare the parsed month with the original month, if they differ
              * an invalid FDate is returned instead.*/
-            if (date.isValid() && date.month === parseInt(month, 10)) {
+            if (date.isValid() && date.month === Number.parseInt(month, 10)) {
                 return date;
             }
         }
@@ -256,7 +256,7 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
             return 0;
         }
 
-        const result = parseInt(this.value.format("d"), 10);
+        const result = Number.parseInt(this.value.format("d"), 10);
 
         if (!result) {
             return Weekday.SUNDAY;

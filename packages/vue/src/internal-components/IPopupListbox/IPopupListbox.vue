@@ -151,7 +151,7 @@ function calculatePosition(options?: { horizontalOnly: boolean }): void {
     if (verticalSpacing === undefined) {
         const absWrapper = getAbsolutePosition(wrapperElement);
         const { marginTop, marginBottom } = getComputedStyle(wrapperElement);
-        const marginTotal = parseInt(marginTop, 10) + parseInt(marginBottom, 10); // margin-top + margin-bottom
+        const marginTotal = Number.parseInt(marginTop, 10) + Number.parseInt(marginBottom, 10); // margin-top + margin-bottom
         verticalSpacing = Math.ceil(absWrapper.height - contentItemHeigth * numOfItems) + marginTotal;
     }
 

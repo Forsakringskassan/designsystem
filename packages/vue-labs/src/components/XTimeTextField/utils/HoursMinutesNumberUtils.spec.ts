@@ -53,14 +53,14 @@ describe("hoursMinutesStringToMinutes", () => {
 
 describe("minutesToHoursMinutesString", () => {
     it.each`
-        value   | expected    | description
-        ${645}  | ${"10:45"}  | ${"645 should evaluate to 10 h and 45 m"}
-        ${630}  | ${"10:30"}  | ${"630 should evaluate to 10 h and 30 m"}
-        ${600}  | ${"10:00"}  | ${"60 should evaluate to 10 h and 00 m"}
-        ${6030} | ${"100:30"} | ${"6030 should evaluate to 100 h and 30 m"}
-        ${6000} | ${"100:00"} | ${"6000 should evaluate to 100 h and 00 m"}
-        ${0}    | ${"00:00"}  | ${"0 should evaluate to 00 h and 00 m"}
-        ${NaN}  | ${""}       | ${"NaN should evaluate to an empty string"}
+        value         | expected    | description
+        ${645}        | ${"10:45"}  | ${"645 should evaluate to 10 h and 45 m"}
+        ${630}        | ${"10:30"}  | ${"630 should evaluate to 10 h and 30 m"}
+        ${600}        | ${"10:00"}  | ${"60 should evaluate to 10 h and 00 m"}
+        ${6030}       | ${"100:30"} | ${"6030 should evaluate to 100 h and 30 m"}
+        ${6000}       | ${"100:00"} | ${"6000 should evaluate to 100 h and 00 m"}
+        ${0}          | ${"00:00"}  | ${"0 should evaluate to 00 h and 00 m"}
+        ${Number.NaN} | ${""}       | ${"NaN should evaluate to an empty string"}
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
@@ -92,14 +92,14 @@ describe("splitHoursMinutes", () => {
 
 describe("minutesToUserFriendlyString", () => {
     it.each`
-        value   | expected                       | description
-        ${645}  | ${"10 timmar och 45 minuter"}  | ${"should accept 645"}
-        ${90}   | ${"1 timme och 30 minuter"}    | ${"should accept 90"}
-        ${601}  | ${"10 timmar och 1 minut"}     | ${"should accept 601"}
-        ${6030} | ${"100 timmar och 30 minuter"} | ${"should accept 6030"}
-        ${30}   | ${"0 timmar och 30 minuter"}   | ${"should accept 30"}
-        ${0}    | ${"0 timmar och 0 minuter"}    | ${"should accept 0"}
-        ${NaN}  | ${"0 timmar och 0 minuter"}    | ${"should treat NaN as 0"}
+        value         | expected                       | description
+        ${645}        | ${"10 timmar och 45 minuter"}  | ${"should accept 645"}
+        ${90}         | ${"1 timme och 30 minuter"}    | ${"should accept 90"}
+        ${601}        | ${"10 timmar och 1 minut"}     | ${"should accept 601"}
+        ${6030}       | ${"100 timmar och 30 minuter"} | ${"should accept 6030"}
+        ${30}         | ${"0 timmar och 30 minuter"}   | ${"should accept 30"}
+        ${0}          | ${"0 timmar och 0 minuter"}    | ${"should accept 0"}
+        ${Number.NaN} | ${"0 timmar och 0 minuter"}    | ${"should treat NaN as 0"}
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
@@ -128,10 +128,10 @@ describe("minutesToHoursFloat", () => {
     );
 
     it.each`
-        value              | expected
-        ${[120, 30, 12]}   | ${2.7}
-        ${[undefined, 60]} | ${1}
-        ${[30, NaN]}       | ${0.5}
+        value               | expected
+        ${[120, 30, 12]}    | ${2.7}
+        ${[undefined, 60]}  | ${1}
+        ${[30, Number.NaN]} | ${0.5}
     `('should return "$expected" for ...$value', ({ value, expected }) => {
         expect(minutesToHoursFloat(...value)).toEqual(expected);
     });
@@ -157,10 +157,10 @@ describe("minutesToObject", () => {
     );
 
     it.each`
-        value              | expected
-        ${[120, 30, 12]}   | ${{ hours: 2, minutes: 42 }}
-        ${[undefined, 60]} | ${{ hours: 1, minutes: 0 }}
-        ${[30, NaN]}       | ${{ hours: 0, minutes: 30 }}
+        value               | expected
+        ${[120, 30, 12]}    | ${{ hours: 2, minutes: 42 }}
+        ${[undefined, 60]}  | ${{ hours: 1, minutes: 0 }}
+        ${[30, Number.NaN]} | ${{ hours: 0, minutes: 30 }}
     `('should return "$expected" for $value', ({ value, expected }) => {
         expect(minutesToObject(...value)).toEqual(expected);
     });
