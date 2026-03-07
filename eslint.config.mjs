@@ -145,7 +145,6 @@ export default [
             "unicorn/explicit-length-check": "off",
             "unicorn/filename-case": "off",
             "unicorn/no-array-for-each": "off",
-            "unicorn/no-array-method-this-argument": "off",
             "unicorn/no-array-reverse": "off",
             "unicorn/no-array-sort": "off",
             "unicorn/no-console-spaces": "off",
