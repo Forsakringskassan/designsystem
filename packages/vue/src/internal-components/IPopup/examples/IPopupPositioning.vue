@@ -129,7 +129,7 @@ export default defineComponent({
                 target.style.top = `${String(result.y)}px`;
             }
 
-            target.innerText = `Popup (${result.placement})`;
+            target.textContent = `Popup (${result.placement})`;
         },
     },
 });
