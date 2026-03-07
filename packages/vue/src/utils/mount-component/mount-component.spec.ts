@@ -51,7 +51,7 @@ it("should mount component to container selector", () => {
         </body>
     `);
     app.unmount();
-    document.body.removeChild(container);
+    container.remove();
 });
 
 it("should throw error if no component is given", () => {
