@@ -148,7 +148,6 @@ export default [
             "unicorn/no-array-reverse": "off",
             "unicorn/no-array-sort": "off",
             "unicorn/no-for-loop": "off",
-            "unicorn/no-hex-escape": "off",
             "unicorn/no-instanceof-builtins": "off",
             "unicorn/no-object-as-default-parameter": "off",
             "unicorn/no-typeof-undefined": "off",
