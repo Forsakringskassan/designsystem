@@ -54,11 +54,9 @@ export function normalizeBaseColumn(
     const id = Symbol();
     const header = toRef(column.header);
     const description =
-        typeof column.description !== "undefined"
-            ? toRef(column.description)
-            : ref("");
+        column.description !== undefined ? toRef(column.description) : ref("");
     const size: Readonly<Ref<TableColumnSize | null>> =
-        typeof column.size !== "undefined" ? toRef(column.size) : ref("grow");
+        column.size !== undefined ? toRef(column.size) : ref("grow");
 
     return {
         id,
