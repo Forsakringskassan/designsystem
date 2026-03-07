@@ -295,19 +295,26 @@ function onEditingKeydown(event: KeyboardEvent): void {
     assertRef(inputElement);
     event.stopPropagation();
 
-    if (event.key === "Enter") {
-        if (viewValue.value === initialViewValue) {
-            onStopEdit({ reason: "enter" });
-        } else {
-            pendingStopEditReason = "enter";
+    switch (event.key) {
+        case "Enter": {
+            if (viewValue.value === initialViewValue) {
+                onStopEdit({ reason: "enter" });
+            } else {
+                pendingStopEditReason = "enter";
+            }
+            break;
         }
-    } else if (event.key === "Escape") {
-        onStopEdit({ reason: "escape" });
-        viewValue.value = initialViewValue;
-        inputElement.value.value = initialViewValue; // required for validationservice to pick up value instantly
-        void validationFacade.validateElement(inputElement.value);
-    } else if (event.key === "Tab") {
-        pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
+        case "Escape": {
+            onStopEdit({ reason: "escape" });
+            viewValue.value = initialViewValue;
+            inputElement.value.value = initialViewValue; // required for validationservice to pick up value instantly
+            void validationFacade.validateElement(inputElement.value);
+            break;
+        }
+        case "Tab": {
+            pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
+            break;
+        }
     }
 }
 
