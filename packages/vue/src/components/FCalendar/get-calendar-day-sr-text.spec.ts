@@ -7,7 +7,7 @@ const t: TranslateFunction = (
     defaultValueOrArgs?: string | Record<string, unknown>,
 ): string => {
     if (typeof defaultValueOrArgs !== "string") {
-        throw new Error("default translation missing");
+        throw new TypeError("default translation missing");
     }
 
     return defaultValueOrArgs;

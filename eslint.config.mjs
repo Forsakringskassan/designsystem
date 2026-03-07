@@ -163,7 +163,6 @@ export default [
             "unicorn/prefer-string-replace-all": "off",
             "unicorn/prefer-string-slice": "off",
             "unicorn/prefer-top-level-await": "off",
-            "unicorn/prefer-type-error": "off",
             "unicorn/text-encoding-identifier-case": "off",
             "unicorn/throw-new-error": "off",
         },

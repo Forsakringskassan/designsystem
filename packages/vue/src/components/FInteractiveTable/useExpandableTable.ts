@@ -114,7 +114,7 @@ export function useExpandableTable<T extends object>(
         }
 
         if (!Array.isArray(expandableRows)) {
-            throw new Error(`Expandable rows must be an array`);
+            throw new TypeError(`Expandable rows must be an array`);
         }
 
         if (expandableRows.length === 0) {
