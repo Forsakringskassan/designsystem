@@ -142,7 +142,6 @@ export default [
             "unicorn/filename-case": "off",
             "unicorn/no-array-reverse": "off",
             "unicorn/no-array-sort": "off",
-            "unicorn/prefer-array-some": "off",
             "unicorn/prefer-at": "off",
             "unicorn/prefer-dom-node-append": "off",
             "unicorn/prefer-dom-node-dataset": "off",
