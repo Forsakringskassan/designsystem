@@ -24,7 +24,7 @@ const debouncedUpdate = debounce(update, 250);
 
 function update(): void {
     filtered.value = props.filter(props.data);
-    result.value = props.sort(filtered.value);
+    result.value = props.sort(filtered.value); // eslint-disable-line unicorn/no-array-sort -- false positive
 }
 </script>
 

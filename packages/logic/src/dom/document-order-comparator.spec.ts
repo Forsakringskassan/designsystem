@@ -22,7 +22,7 @@ it("should sort by position in DOM tree", () => {
         <p>third</p>
     `;
     const [a, b, c] = Array.from(root.querySelectorAll("p"));
-    const result = [b, a, c].sort(documentOrderComparator);
+    const result = [b, a, c].toSorted(documentOrderComparator);
     expect(result[0]).toBeSameElement(a);
     expect(result[1]).toBeSameElement(b);
     expect(result[2]).toBeSameElement(c);
@@ -39,7 +39,7 @@ it("should handle when elements have different nesting", () => {
         <p>third</p>
     `;
     const [a, b, c] = Array.from(root.querySelectorAll("p"));
-    const result = [b, a, c].sort(documentOrderComparator);
+    const result = [b, a, c].toSorted(documentOrderComparator);
     expect(result[0]).toBeSameElement(a);
     expect(result[1]).toBeSameElement(b);
     expect(result[2]).toBeSameElement(c);
@@ -50,7 +50,7 @@ it("should retain order when passing disconnected elements", () => {
     const c = document.createElement("div");
     const b = document.createElement("div");
     const a = document.createElement("div");
-    const result = [b, a, c].sort(documentOrderComparator);
+    const result = [b, a, c].toSorted(documentOrderComparator);
     expect(result[0]).toBeSameElement(b);
     expect(result[1]).toBeSameElement(a);
     expect(result[2]).toBeSameElement(c);
@@ -64,7 +64,7 @@ it("should handle null by sorting them last", () => {
         <p>second</p>
     `;
     const [a, b] = Array.from(root.querySelectorAll("p"));
-    const result = [b, null, a].sort(documentOrderComparator);
+    const result = [b, null, a].toSorted(documentOrderComparator);
     expect(result[0]).toBeSameElement(a);
     expect(result[1]).toBeSameElement(b);
     expect(result[2]).toBeNull();
