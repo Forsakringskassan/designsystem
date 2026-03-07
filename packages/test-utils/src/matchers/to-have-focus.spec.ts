@@ -32,7 +32,7 @@ beforeEach(() => {
     document.body.innerHTML = "";
     element = document.createElement("input");
     detached = document.createElement("input");
-    document.body.appendChild(element);
+    document.body.append(element);
 });
 
 it("should pass if element is focused", () => {
@@ -112,7 +112,7 @@ it("should handle document.activeElement being null", () => {
               "<null>"
         `);
     } finally {
-        document.appendChild(root);
+        document.append(root);
     }
 });
 

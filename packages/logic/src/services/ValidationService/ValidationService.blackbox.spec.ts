@@ -86,7 +86,7 @@ describe("validateElement()", () => {
         const element = document.createElement("input");
         element.id = "mock-id";
         element.value = "foobar";
-        document.body.appendChild(element);
+        document.body.append(element);
         ValidationService.addValidatorsToElement(element, { required: {} });
         const state = await ValidationService.validateElement(element.id);
         expect(element.matches(":valid")).toBeTruthy();
@@ -207,8 +207,8 @@ describe("validateElement()", () => {
             option2.value = "foobar";
             option2.selected = false;
             select.id = "mock-id";
-            select.appendChild(option1);
-            select.appendChild(option2);
+            select.append(option1);
+            select.append(option2);
             ValidationService.addValidatorsToElement(select, { required: {} });
             const invalid = await ValidationService.validateElement(select);
             expect(select.matches(":invalid")).toBeTruthy();
@@ -236,7 +236,7 @@ describe("validateElement()", () => {
             radio.type = "radio";
             radio.id = "mock-id";
             fieldset.id = "fieldset-id";
-            fieldset.appendChild(radio);
+            fieldset.append(radio);
             ValidationService.addValidatorsToElement(fieldset, {
                 required: {},
             });

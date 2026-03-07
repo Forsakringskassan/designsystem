@@ -247,7 +247,7 @@ describe("findTabbableElements()", () => {
         const root = document.createElement("div");
         const input = document.createElement("input");
         input.classList.add("test-visible");
-        root.appendChild(input);
+        root.append(input);
         expect(findTabbableElements(root)).toEqual([input]);
     });
 
@@ -255,7 +255,7 @@ describe("findTabbableElements()", () => {
         expect.assertions(1);
         const root = document.createElement("div");
         const input = document.createElement("input");
-        root.appendChild(input);
+        root.append(input);
         expect(findTabbableElements(root)).toEqual([]);
     });
 
@@ -265,7 +265,7 @@ describe("findTabbableElements()", () => {
         const span = document.createElement("span");
         span.tabIndex = 0;
         span.classList.add("test-visible");
-        root.appendChild(span);
+        root.append(span);
         expect(findTabbableElements(root)).toEqual([span]);
     });
 
@@ -275,7 +275,7 @@ describe("findTabbableElements()", () => {
         const span = document.createElement("span");
         span.tabIndex = -1;
         span.classList.add("test-visible");
-        root.appendChild(span);
+        root.append(span);
         expect(findTabbableElements(root)).toEqual([]);
     });
 });

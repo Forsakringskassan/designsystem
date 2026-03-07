@@ -243,8 +243,8 @@ describe("isValid()", () => {
         const fieldset = document.createElement("fieldset");
         const a = createElement({ valid: true });
         const b = createElement({ valid: true });
-        fieldset.appendChild(a);
-        fieldset.appendChild(b);
+        fieldset.append(a);
+        fieldset.append(b);
         expect(await ValidationService.isValid(fieldset)).toBeTruthy();
     });
 
@@ -253,8 +253,8 @@ describe("isValid()", () => {
         const fieldset = document.createElement("fieldset");
         const a = createElement({ valid: true });
         const b = createElement({ valid: false });
-        fieldset.appendChild(a);
-        fieldset.appendChild(b);
+        fieldset.append(a);
+        fieldset.append(b);
         expect(await ValidationService.isValid(fieldset)).toBeFalsy();
     });
 
@@ -263,8 +263,8 @@ describe("isValid()", () => {
         const div = document.createElement("div");
         const a = createElement({ valid: true });
         const b = createElement({ valid: true });
-        div.appendChild(a);
-        div.appendChild(b);
+        div.append(a);
+        div.append(b);
         expect(await ValidationService.isValid(div)).toBeTruthy();
     });
 
@@ -273,8 +273,8 @@ describe("isValid()", () => {
         const div = document.createElement("div");
         const a = createElement({ valid: true });
         const b = createElement({ valid: false });
-        div.appendChild(a);
-        div.appendChild(b);
+        div.append(a);
+        div.append(b);
         expect(await ValidationService.isValid(div)).toBeFalsy();
     });
 
@@ -297,8 +297,8 @@ describe("isValid()", () => {
         const root = document.createElement("div");
         const foo = createElement({ valid: true, id: "foo" });
         const bar = createElement({ valid: false, id: "bar" });
-        root.appendChild(foo);
-        root.appendChild(bar);
+        root.append(foo);
+        root.append(bar);
         expect(await ValidationService.isValid("foo", root)).toBeTruthy();
         expect(await ValidationService.isValid("bar", root)).toBeFalsy();
     });
@@ -308,8 +308,8 @@ describe("isValid()", () => {
         const root = document.createElement("div");
         const foo = createElement({ valid: true, id: "foo" });
         const bar = createElement({ valid: true, id: "bar" });
-        root.appendChild(foo);
-        root.appendChild(bar);
+        root.append(foo);
+        root.append(bar);
         expect(
             await ValidationService.isValid(["foo", "bar"], root),
         ).toBeTruthy();
@@ -344,7 +344,7 @@ describe("validateElement", () => {
 
     it("should dispatch ValidityEvent to element by id", async () => {
         expect.assertions(1);
-        document.body.appendChild(inputElement);
+        document.body.append(inputElement);
         const validateEventHandler = jest.fn();
         inputElement.addEventListener("validate", validateEventHandler);
         await ValidationService.validateElement(inputElement.id);
