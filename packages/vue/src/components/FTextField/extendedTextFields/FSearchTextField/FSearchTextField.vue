@@ -7,6 +7,7 @@ import { FIcon } from "../../../FIcon";
 export default defineComponent({
     name: "FSearchTextField",
     components: { FTextField, FIcon },
+    inheritAttrs: false,
     props: {
         id: {
             type: String,
@@ -49,7 +50,7 @@ export default defineComponent({
     ],
     data() {
         return {
-            defaultText: this.$t("fkui.search-text-field.label", "Sök"),
+            defaultText: TranslationService.provider.translate("fkui.search-text-field.label", "Sök"),
         };
     },
     computed: {
@@ -62,9 +63,11 @@ export default defineComponent({
     },
     methods: {
         clear(): void {
-            alertScreenReader(this.$t("fkui.search-text-field.aria-live.clear", "Inmatningsfältet har tömts"), {
-                assertive: true,
-            });
+            const alertText = TranslationService.provider.translate(
+                "fkui.search-text-field.aria-live.clear",
+                "Inmatningsfältet har tömts",
+            );
+            alertScreenReader(alertText, { assertive: true });
             this.$emit("update:modelValue", "");
 
             this.$el.querySelector("input").focus();
@@ -91,9 +94,9 @@ export default defineComponent({
             :id
             :maxlength="maxLength"
             :model-value
-            v-bind="$attrs"
             type="search"
             class="text-field--search"
+            v-bind="$attrs"
             @change="onChange"
             @input="onInput"
             @blur="onBlur"
