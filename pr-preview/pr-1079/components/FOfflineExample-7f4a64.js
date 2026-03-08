@@ -2091,8 +2091,8 @@ import { FDate } from "@fkui/date";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
 import { defineComponent as defineComponent5 } from "vue";
-var Flip = /* @__PURE__ */ new Set(["horizontal", "vertical"]);
-var Rotate = /* @__PURE__ */ new Set(["90", "180", "270"]);
+var Flip = ["horizontal", "vertical"];
+var Rotate = ["90", "180", "270"];
 var FIcon_default = defineComponent5({
   name: "FIcon",
   inheritAttrs: false,
@@ -2125,7 +2125,7 @@ var FIcon_default = defineComponent5({
       default: null,
       required: false,
       validator(value) {
-        return Flip.has(value);
+        return Flip.includes(value);
       }
     },
     /**
@@ -2142,7 +2142,7 @@ var FIcon_default = defineComponent5({
       default: null,
       required: false,
       validator(value) {
-        return Rotate.has(value);
+        return Rotate.includes(value);
       }
     }
   },
@@ -2413,7 +2413,7 @@ var FModal_default = defineComponent6({
     },
     onFocusFirst() {
       const tabbableElements = findTabbableElements(this.$refs.modalDialogContainer);
-      const lastTabbableElement = tabbableElements.at(-2);
+      const lastTabbableElement = tabbableElements[tabbableElements.length - 2];
       focusElement(lastTabbableElement, this.$el);
     },
     onFocusLast() {
@@ -2662,7 +2662,7 @@ var FConfirmModal_default = defineComponent7({
   computed: {
     preparedButtons() {
       const preparedButtonList = prepareButtonList(this.buttons);
-      return config.buttonOrder === 1 /* RIGHT_TO_LEFT */ ? preparedButtonList.toReversed() : preparedButtonList;
+      return config.buttonOrder === 1 /* RIGHT_TO_LEFT */ ? preparedButtonList.reverse() : preparedButtonList;
     }
   },
   methods: {
@@ -3240,7 +3240,7 @@ var FValidationForm_default = defineComponent10({
         focus4(this.$refs.errors);
       } else {
         const firstError = this.validity.componentsWithError[0];
-        const element = document.querySelector(`#${firstError.focusElementId}`);
+        const element = document.getElementById(firstError.focusElementId);
         focus4(element);
       }
       return true;

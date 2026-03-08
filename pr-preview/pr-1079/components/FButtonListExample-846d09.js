@@ -37,8 +37,8 @@ import { computed, useAttrs } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
 import { defineComponent } from "vue";
-var Flip = /* @__PURE__ */ new Set(["horizontal", "vertical"]);
-var Rotate = /* @__PURE__ */ new Set(["90", "180", "270"]);
+var Flip = ["horizontal", "vertical"];
+var Rotate = ["90", "180", "270"];
 var FIcon_default = defineComponent({
   name: "FIcon",
   inheritAttrs: false,
@@ -71,7 +71,7 @@ var FIcon_default = defineComponent({
       default: null,
       required: false,
       validator(value) {
-        return Flip.has(value);
+        return Flip.includes(value);
       }
     },
     /**
@@ -88,7 +88,7 @@ var FIcon_default = defineComponent({
       default: null,
       required: false,
       validator(value) {
-        return Rotate.has(value);
+        return Rotate.includes(value);
       }
     }
   },

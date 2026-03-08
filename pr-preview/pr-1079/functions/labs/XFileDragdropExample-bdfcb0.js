@@ -2756,84 +2756,6 @@ function requireEs_iterator_find() {
   return es_iterator_find;
 }
 requireEs_iterator_find();
-var es_array_toSorted = {};
-var arrayFromConstructorAndList;
-var hasRequiredArrayFromConstructorAndList;
-function requireArrayFromConstructorAndList() {
-  if (hasRequiredArrayFromConstructorAndList) return arrayFromConstructorAndList;
-  hasRequiredArrayFromConstructorAndList = 1;
-  var lengthOfArrayLike2 = requireLengthOfArrayLike();
-  arrayFromConstructorAndList = function(Constructor, list, $length) {
-    var index = 0;
-    var length = arguments.length > 2 ? $length : lengthOfArrayLike2(list);
-    var result = new Constructor(length);
-    while (length > index) result[index] = list[index++];
-    return result;
-  };
-  return arrayFromConstructorAndList;
-}
-var getBuiltInPrototypeMethod;
-var hasRequiredGetBuiltInPrototypeMethod;
-function requireGetBuiltInPrototypeMethod() {
-  if (hasRequiredGetBuiltInPrototypeMethod) return getBuiltInPrototypeMethod;
-  hasRequiredGetBuiltInPrototypeMethod = 1;
-  var globalThis2 = requireGlobalThis();
-  getBuiltInPrototypeMethod = function(CONSTRUCTOR, METHOD) {
-    var Constructor = globalThis2[CONSTRUCTOR];
-    var Prototype = Constructor && Constructor.prototype;
-    return Prototype && Prototype[METHOD];
-  };
-  return getBuiltInPrototypeMethod;
-}
-var addToUnscopables;
-var hasRequiredAddToUnscopables;
-function requireAddToUnscopables() {
-  if (hasRequiredAddToUnscopables) return addToUnscopables;
-  hasRequiredAddToUnscopables = 1;
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var create = requireObjectCreate();
-  var defineProperty = requireObjectDefineProperty().f;
-  var UNSCOPABLES = wellKnownSymbol2("unscopables");
-  var ArrayPrototype = Array.prototype;
-  if (ArrayPrototype[UNSCOPABLES] === void 0) {
-    defineProperty(ArrayPrototype, UNSCOPABLES, {
-      configurable: true,
-      value: create(null)
-    });
-  }
-  addToUnscopables = function(key) {
-    ArrayPrototype[UNSCOPABLES][key] = true;
-  };
-  return addToUnscopables;
-}
-var hasRequiredEs_array_toSorted;
-function requireEs_array_toSorted() {
-  if (hasRequiredEs_array_toSorted) return es_array_toSorted;
-  hasRequiredEs_array_toSorted = 1;
-  var $ = require_export();
-  var uncurryThis = requireFunctionUncurryThis();
-  var aCallable2 = requireACallable();
-  var toIndexedObject2 = requireToIndexedObject();
-  var arrayFromConstructorAndList2 = requireArrayFromConstructorAndList();
-  var getBuiltInPrototypeMethod2 = requireGetBuiltInPrototypeMethod();
-  var addToUnscopables2 = requireAddToUnscopables();
-  var $Array = Array;
-  var sort = uncurryThis(getBuiltInPrototypeMethod2("Array", "sort"));
-  $({
-    target: "Array",
-    proto: true
-  }, {
-    toSorted: function toSorted(compareFn) {
-      if (compareFn !== void 0) aCallable2(compareFn);
-      var O = toIndexedObject2(this);
-      var A = arrayFromConstructorAndList2($Array, O);
-      return sort(A, compareFn);
-    }
-  });
-  addToUnscopables2("toSorted");
-  return es_array_toSorted;
-}
-requireEs_array_toSorted();
 var es_iterator_some = {};
 var hasRequiredEs_iterator_some;
 function requireEs_iterator_some() {
@@ -2876,6 +2798,27 @@ function requireEs_iterator_some() {
 }
 requireEs_iterator_some();
 var es_array_toSpliced = {};
+var addToUnscopables;
+var hasRequiredAddToUnscopables;
+function requireAddToUnscopables() {
+  if (hasRequiredAddToUnscopables) return addToUnscopables;
+  hasRequiredAddToUnscopables = 1;
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var create = requireObjectCreate();
+  var defineProperty = requireObjectDefineProperty().f;
+  var UNSCOPABLES = wellKnownSymbol2("unscopables");
+  var ArrayPrototype = Array.prototype;
+  if (ArrayPrototype[UNSCOPABLES] === void 0) {
+    defineProperty(ArrayPrototype, UNSCOPABLES, {
+      configurable: true,
+      value: create(null)
+    });
+  }
+  addToUnscopables = function(key) {
+    ArrayPrototype[UNSCOPABLES][key] = true;
+  };
+  return addToUnscopables;
+}
 var hasRequiredEs_array_toSpliced;
 function requireEs_array_toSpliced() {
   if (hasRequiredEs_array_toSpliced) return es_array_toSpliced;
@@ -3543,6 +3486,21 @@ function requireEs_typedArray_toReversed() {
 }
 requireEs_typedArray_toReversed();
 var es_typedArray_toSorted = {};
+var arrayFromConstructorAndList;
+var hasRequiredArrayFromConstructorAndList;
+function requireArrayFromConstructorAndList() {
+  if (hasRequiredArrayFromConstructorAndList) return arrayFromConstructorAndList;
+  hasRequiredArrayFromConstructorAndList = 1;
+  var lengthOfArrayLike2 = requireLengthOfArrayLike();
+  arrayFromConstructorAndList = function(Constructor, list, $length) {
+    var index = 0;
+    var length = arguments.length > 2 ? $length : lengthOfArrayLike2(list);
+    var result = new Constructor(length);
+    while (length > index) result[index] = list[index++];
+    return result;
+  };
+  return arrayFromConstructorAndList;
+}
 var hasRequiredEs_typedArray_toSorted;
 function requireEs_typedArray_toSorted() {
   if (hasRequiredEs_typedArray_toSorted) return es_typedArray_toSorted;
@@ -3908,7 +3866,7 @@ function requireUint8FromHex() {
   var uncurryThis = requireFunctionUncurryThis();
   var Uint8Array2 = globalThis2.Uint8Array;
   var SyntaxError = globalThis2.SyntaxError;
-  var parseInt = globalThis2.parseInt;
+  var parseInt2 = globalThis2.parseInt;
   var min = Math.min;
   var NOT_HEX = /[^\da-f]/i;
   var exec = uncurryThis(NOT_HEX.exec);
@@ -3923,7 +3881,7 @@ function requireUint8FromHex() {
     while (written < maxLength) {
       var hexits = stringSlice(string, read, read += 2);
       if (exec(NOT_HEX, hexits)) throw new SyntaxError("String should only contain hex characters");
-      bytes[written++] = parseInt(hexits, 16);
+      bytes[written++] = parseInt2(hexits, 16);
     }
     return {
       bytes,
@@ -4469,14 +4427,14 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
     }
     function fokusElement(id) {
       setTimeout(() => {
-        const element = document.querySelector(`#${id}`);
+        const element = document.getElementById(id);
         if (element instanceof HTMLElement) {
           element.focus();
         }
       }, 100);
     }
     function resetElement(id) {
-      const element = document.querySelector(`#${id}`);
+      const element = document.getElementById(id);
       if (element instanceof HTMLInputElement) {
         element.value = "";
       }
@@ -4648,14 +4606,14 @@ function hoursMinutesStringToMinutes(valueString, extraForgiving = false) {
   if (isEmpty(valueString.trim())) {
     return void 0;
   }
-  const [hours, minutes] = splitHoursMinutes(valueString, extraForgiving).map((value) => Number.parseInt(value, 10));
+  const [hours, minutes] = splitHoursMinutes(valueString, extraForgiving).map((value) => parseInt(value, 10));
   const totalMinutes = hours * 60 + minutes;
-  return !Number.isNaN(totalMinutes) ? totalMinutes : void 0;
+  return !isNaN(totalMinutes) ? totalMinutes : void 0;
 }
 function minutesToHoursMinutesString(value) {
   let valueString = "";
-  const safeValue = value !== null && value !== void 0 ? value : Number.NaN;
-  if (!Number.isNaN(safeValue)) {
+  const safeValue = value !== null && value !== void 0 ? value : NaN;
+  if (!isNaN(safeValue)) {
     const {
       hours,
       minutes
@@ -4675,14 +4633,14 @@ function splitHoursMinutes(valueString, extraForgiving = false) {
   return [hours, minutes];
 }
 function minutesToObject(...values) {
-  const minutes = values.filter((value) => isSet(value) && !Number.isNaN(value)).reduce((sum, value) => sum + value, 0);
+  const minutes = values.filter((value) => isSet(value) && !isNaN(value)).reduce((sum, value) => sum + value, 0);
   return {
     hours: Math.floor(minutes / 60),
     minutes: minutes % 60
   };
 }
 function formatNumberToTime(value) {
-  if (typeof value !== "number" || Number.isNaN(value)) {
+  if (typeof value !== "number" || isNaN(value)) {
     return void 0;
   }
   return minutesToHoursMinutesString(value);
@@ -4692,8 +4650,8 @@ function parseTimeToNumberUsingConfig(value, extraForgiving) {
   if (typeof value !== "string") {
     return void 0;
   }
-  const parsedValue = (_hoursMinutesStringTo = hoursMinutesStringToMinutes(value, extraForgiving)) !== null && _hoursMinutesStringTo !== void 0 ? _hoursMinutesStringTo : Number.NaN;
-  return !Number.isNaN(parsedValue) ? parsedValue : void 0;
+  const parsedValue = (_hoursMinutesStringTo = hoursMinutesStringToMinutes(value, extraForgiving)) !== null && _hoursMinutesStringTo !== void 0 ? _hoursMinutesStringTo : NaN;
+  return !isNaN(parsedValue) ? parsedValue : void 0;
 }
 function parseTimeToNumber(value) {
   return parseTimeToNumberUsingConfig(value, false);

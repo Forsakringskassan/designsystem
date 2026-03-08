@@ -181,7 +181,7 @@ function injectSpritesheet() {
   element.setAttribute("aria-hidden", "true");
   element.setAttribute("data-icon-package", "@fkui/icon-lib-default");
   element.setAttribute("data-icon-library", "f");
-  document.body.append(element);
+  document.body.appendChild(element);
 }
 var init_injectSpritesheet = __esm({
   "packages/icon-lib-default/dist/f/injectSpritesheet.js"() {
