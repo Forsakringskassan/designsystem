@@ -1,4 +1,4 @@
-/* eslint-disable sonarjs/no-primitive-wrappers -- for this we need actual copies */
+/* eslint-disable sonarjs/no-primitive-wrappers, unicorn/new-for-builtins -- for this we need actual copies */
 
 import { deepClone } from "./deep-clone";
 

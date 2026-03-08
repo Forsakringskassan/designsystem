@@ -113,12 +113,12 @@ it("should build simple theme", async (t) => {
         prefix: "x",
     });
     t.assert.snapshot(toTreeSync(vol));
-    t.assert.snapshot(await fs.readFile("/out/index.css", "utf-8"));
-    t.assert.snapshot(await fs.readFile("/out/index.js", "utf-8"));
-    t.assert.snapshot(await fs.readFile("/out/index.d.ts", "utf-8"));
-    t.assert.snapshot(await fs.readFile("/out/palette.json", "utf-8"));
-    t.assert.snapshot(await fs.readFile("/out/metadata.mjs", "utf-8"));
-    t.assert.snapshot(await fs.readFile("/out/metadata.d.mts", "utf-8"));
+    t.assert.snapshot(await fs.readFile("/out/index.css", "utf8"));
+    t.assert.snapshot(await fs.readFile("/out/index.js", "utf8"));
+    t.assert.snapshot(await fs.readFile("/out/index.d.ts", "utf8"));
+    t.assert.snapshot(await fs.readFile("/out/palette.json", "utf8"));
+    t.assert.snapshot(await fs.readFile("/out/metadata.mjs", "utf8"));
+    t.assert.snapshot(await fs.readFile("/out/metadata.d.mts", "utf8"));
 });
 
 it("should generate version", async (t) => {
@@ -143,8 +143,8 @@ it("should generate version", async (t) => {
         version: "1.2.3",
     });
     t.assert.snapshot(toTreeSync(vol));
-    t.assert.snapshot(await fs.readFile("/out/index.css", "utf-8"));
-    t.assert.snapshot(await fs.readFile("/out/index.js", "utf-8"));
+    t.assert.snapshot(await fs.readFile("/out/index.css", "utf8"));
+    t.assert.snapshot(await fs.readFile("/out/index.js", "utf8"));
 });
 
 it("should include palette", async (t) => {
@@ -171,9 +171,9 @@ it("should include palette", async (t) => {
         prefix: "x",
     });
     t.assert.snapshot(toTreeSync(vol));
-    const css = await fs.readFile("/out/index.css", "utf-8");
-    const js = await fs.readFile("/out/index.js", "utf-8");
-    const palette = await fs.readFile("/out/palette.json", "utf-8");
+    const css = await fs.readFile("/out/index.css", "utf8");
+    const js = await fs.readFile("/out/index.js", "utf8");
+    const palette = await fs.readFile("/out/palette.json", "utf8");
     t.assert.strictEqual(
         css,
         content`
@@ -231,7 +231,7 @@ it("should include deprecated variables", async (t) => {
     t.assert.snapshot(toTreeSync(vol));
     const deprecated = await fs.readFile(
         "/out/deprecated-variables.json",
-        "utf-8",
+        "utf8",
     );
     t.assert.strictEqual(deprecated, `["--foo"]`);
 });

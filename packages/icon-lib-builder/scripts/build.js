@@ -14,7 +14,7 @@ const dest = "dist";
 const templateDir = path.join(__dirname, "../templates");
 
 const packageJson = await fs.readFile("./package.json", {
-    encoding: "utf-8",
+    encoding: "utf8",
 });
 
 const packageName = JSON.parse(packageJson).name;
@@ -106,7 +106,7 @@ async function generateSpritesheetJs(library, data) {
         );
     let inject = await fs.readFile(
         path.join(templateFolder, "inject.js"),
-        "utf-8",
+        "utf8",
     );
     /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
     inject = inject.replace(/.*eslint-disable.*/g, "");

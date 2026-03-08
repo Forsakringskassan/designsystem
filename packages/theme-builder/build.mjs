@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import { analyzeMetafile, build } from "esbuild";
 
 const { externalDependencies } = JSON.parse(
-    await fs.readFile("package.json", "utf-8"),
+    await fs.readFile("package.json", "utf8"),
 );
 
 await fs.rm("dist", { recursive: true, force: true });

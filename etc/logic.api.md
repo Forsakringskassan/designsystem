@@ -130,7 +130,6 @@ declare namespace DomUtils {
         scrollTo_2 as scrollTo
     }
 }
-export { DomUtils }
 
 // @public (undocumented)
 export const ElementIdService: ElementIdServiceInterface;

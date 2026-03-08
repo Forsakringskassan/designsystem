@@ -115,7 +115,7 @@ describe("props", () => {
         });
 
         const button = wrapper.get(".button--secondary");
-        const nbsp = "\xa0";
+        const nbsp = "\u00a0";
         expect(button.text()).toBe(`Lorem ipsum${nbsp}with screenreader text`);
     });
 

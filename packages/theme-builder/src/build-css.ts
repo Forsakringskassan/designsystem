@@ -51,7 +51,7 @@ function fsImporter(options: {
             }
         },
         async load(url) {
-            const contents = await fs.readFile(url, "utf-8");
+            const contents = await fs.readFile(url, "utf8");
             return {
                 contents,
                 syntax: "scss",

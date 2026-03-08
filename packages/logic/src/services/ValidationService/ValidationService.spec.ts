@@ -114,6 +114,7 @@ function triggerValidityEvent(
     inputValue: string | boolean,
     type: "text" | "radio" = "text",
     validityConfigs = lazyValidatorConfigs,
+    /* eslint-disable-next-line unicorn/no-object-as-default-parameter -- technical debt */
     initialState: ValidationState = { touched: false, submitted: false },
 ): ValidityEvent | undefined {
     const element = mountInputElementAndAddValidators(type, validityConfigs);

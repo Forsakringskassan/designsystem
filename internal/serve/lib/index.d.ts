@@ -1,4 +1,4 @@
-import { AddressInfo } from "net";
+import { AddressInfo } from "node:net";
 
 export function CLI(argv: string[]): void;
 

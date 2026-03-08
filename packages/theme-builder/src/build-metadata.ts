@@ -89,12 +89,11 @@ async function fromFile(
     options: NormalizedOptions,
 ): Promise<Variable[]> {
     const { fs, prefix } = options;
-    const css = await fs.readFile(src, "utf-8");
+    const css = await fs.readFile(src, "utf8");
 
     const palette = Object.fromEntries(
         paletteVariables
-            .map((it) => it.variables)
-            .flat()
+            .flatMap((it) => it.variables)
             .map((it) => [it.value, it.name]),
     );
     const { stylesheet } = parse(css);
@@ -183,11 +182,11 @@ export async function buildMetadata(
     await fs.writeFile(
         path.join(outdir, `${basename}.mjs`),
         serialized,
-        "utf-8",
+        "utf8",
     );
     await fs.writeFile(
         path.join(outdir, `${basename}.d.mts`),
         metadataDts,
-        "utf-8",
+        "utf8",
     );
 }

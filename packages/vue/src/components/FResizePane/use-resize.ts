@@ -82,8 +82,8 @@ export interface UseResizeOptions {
 function toOptionalRef<T>(
     value: T | Readonly<Ref<T>> | undefined,
 ): Readonly<Ref<T>> | undefined {
-    if (typeof value === "undefined") {
-        return value;
+    if (value === undefined) {
+        return undefined;
     }
     return toRef(value) as Ref<T>;
 }

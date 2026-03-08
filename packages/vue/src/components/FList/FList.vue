@@ -160,7 +160,7 @@ watch(
 onMounted(() => {
     if (props.selectable && props.checkbox) {
         if (!slots.screenreader) {
-            throw Error('Slot "screenreader" is required when having "selectable" & "checkbox" option.');
+            throw new Error('Slot "screenreader" is required when having "selectable" & "checkbox" option.');
         }
         registerCallbackAfterItemAdd(callbackAfterItemAdd);
         registerCallbackBeforeItemDelete(callbackBeforeItemDelete);

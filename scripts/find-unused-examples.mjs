@@ -55,7 +55,7 @@ async function findDocsImported() {
     });
     const found = /** @type {Set<string>} */ new Set();
     for (const filePath of filePaths) {
-        const content = await fs.readFile(filePath, "utf-8");
+        const content = await fs.readFile(filePath, "utf8");
         /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
         const matches = content.matchAll(/```import[^\n]*([^`]*)```/gm);
         for (const match of matches) {
@@ -80,7 +80,7 @@ async function findSrcImported() {
     const filePaths = await glob("{docs,packages}/**/*.{ts,vue}");
     const found = /** @type {Set<string>} */ new Set();
     for (const filePath of filePaths) {
-        const content = await fs.readFile(filePath, "utf-8");
+        const content = await fs.readFile(filePath, "utf8");
         const matches = content.matchAll(/from "([.][^"]+[.]vue)"/gm);
         for (const match of matches) {
             const name = match[1];
@@ -109,7 +109,7 @@ const extraneous = difference(
     imported,
 );
 
-const delimiter = process.argv.includes("-z") ? "\x00" : "\n";
+const delimiter = process.argv.includes("-z") ? "\u0000" : "\n";
 
 const s = extraneous.size !== 1 ? "s" : "";
 process.stderr.write(`${extraneous.size} extraneous example${s} found\n`);
