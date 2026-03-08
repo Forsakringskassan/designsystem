@@ -1705,8 +1705,8 @@ function getSortedHTMLElementsFromVueRef(ref7) {
 }
 function parseIntOrDefault(value, defaultValue) {
   if (typeof value === "string") {
-    const parsed = parseInt(value, 10);
-    if (!isNaN(parsed)) {
+    const parsed = Number.parseInt(value, 10);
+    if (!Number.isNaN(parsed)) {
       return parsed;
     }
   }
@@ -1969,8 +1969,8 @@ import { FDate } from "@fkui/date";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
 import { defineComponent as defineComponent3 } from "vue";
-var Flip = ["horizontal", "vertical"];
-var Rotate = ["90", "180", "270"];
+var Flip = /* @__PURE__ */ new Set(["horizontal", "vertical"]);
+var Rotate = /* @__PURE__ */ new Set(["90", "180", "270"]);
 var FIcon_default = defineComponent3({
   name: "FIcon",
   inheritAttrs: false,
@@ -2003,7 +2003,7 @@ var FIcon_default = defineComponent3({
       default: null,
       required: false,
       validator(value) {
-        return Flip.includes(value);
+        return Flip.has(value);
       }
     },
     /**
@@ -2020,7 +2020,7 @@ var FIcon_default = defineComponent3({
       default: null,
       required: false,
       validator(value) {
-        return Rotate.includes(value);
+        return Rotate.has(value);
       }
     }
   },
@@ -2291,7 +2291,7 @@ var FModal_default = defineComponent4({
     },
     onFocusFirst() {
       const tabbableElements = findTabbableElements(this.$refs.modalDialogContainer);
-      const lastTabbableElement = tabbableElements[tabbableElements.length - 2];
+      const lastTabbableElement = tabbableElements.at(-2);
       focusElement(lastTabbableElement, this.$el);
     },
     onFocusLast() {
@@ -2540,7 +2540,7 @@ var FConfirmModal_default = defineComponent5({
   computed: {
     preparedButtons() {
       const preparedButtonList = prepareButtonList(this.buttons);
-      return config.buttonOrder === 1 /* RIGHT_TO_LEFT */ ? preparedButtonList.reverse() : preparedButtonList;
+      return config.buttonOrder === 1 /* RIGHT_TO_LEFT */ ? preparedButtonList.toReversed() : preparedButtonList;
     }
   },
   methods: {
@@ -3293,7 +3293,7 @@ var FValidationForm_default = defineComponent10({
         focus4(this.$refs.errors);
       } else {
         const firstError = this.validity.componentsWithError[0];
-        const element = document.getElementById(firstError.focusElementId);
+        const element = document.querySelector(`#${firstError.focusElementId}`);
         focus4(element);
       }
       return true;
@@ -3673,7 +3673,7 @@ var defaultOptions = {
   componentPlaceholder: false
 };
 function collapseWhitespace(text) {
-  return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
+  return text.replaceAll(/\s+/gm, " ").replaceAll(/(^ | $)/g, "");
 }
 function intersection(a, b) {
   return a.filter((it) => b.includes(it));
@@ -3840,7 +3840,7 @@ function getElement(anchor) {
     return null;
   }
   if (typeof anchor === "string") {
-    return document.getElementById(anchor);
+    return document.querySelector(`#${anchor}`);
   } else {
     return anchor;
   }
@@ -4878,7 +4878,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
       if (verticalSpacing === void 0) {
         const absWrapper = getAbsolutePosition(wrapperElement);
         const { marginTop, marginBottom } = getComputedStyle(wrapperElement);
-        const marginTotal = parseInt(marginTop, 10) + parseInt(marginBottom, 10);
+        const marginTotal = Number.parseInt(marginTop, 10) + Number.parseInt(marginBottom, 10);
         verticalSpacing = Math.ceil(absWrapper.height - contentItemHeigth * __props.numOfItems) + marginTotal;
       }
       wrapperElement.style.overflowY = "auto";
@@ -5010,7 +5010,7 @@ async function doMenuAction(action, target) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=script
-var preventKeys = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
+var preventKeys = /* @__PURE__ */ new Set(["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"]);
 var IPopupMenu_default = defineComponent14({
   name: "IPopupMenu",
   components: { IPopup: IPopup_default2 },
@@ -5221,7 +5221,7 @@ var IPopupMenu_default = defineComponent14({
       if (!this.enableKeyboardNavigation) {
         return;
       }
-      if (preventKeys.includes(event.key)) {
+      if (preventKeys.has(event.key)) {
         event.preventDefault();
       }
     },
@@ -5229,7 +5229,7 @@ var IPopupMenu_default = defineComponent14({
       if (!this.enableKeyboardNavigation) {
         return;
       }
-      if (!preventKeys.includes(event.key)) {
+      if (!preventKeys.has(event.key)) {
         return;
       }
       const firstItemFocused = this.currentFocusedItemIndex === 0;
@@ -5639,7 +5639,7 @@ function getDayStartOffset(days) {
   return days[0].weekDay - 1;
 }
 function getDayEndOffset(days) {
-  return 7 - days[days.length - 1].weekDay;
+  return 7 - days.at(-1).weekDay;
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonthGrid.vue?type=script
@@ -6566,7 +6566,7 @@ var FExpand_default = defineComponent20({
       Object.assign(htmlElement.style, this.visibleStyle);
       getComputedStyle(element).height;
       setTimeout(() => {
-        this.height = parseInt(height, 10);
+        this.height = Number.parseInt(height, 10);
         htmlElement.style.height = height;
       });
     },
@@ -7182,12 +7182,14 @@ var FFieldset_default = defineComponent22({
   },
   async mounted() {
     await this.$nextTick();
-    const types = Array.from(
-      this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
-      (it) => it.getAttribute("type")
+    const types = new Set(
+      Array.from(
+        this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
+        (it) => it.getAttribute("type")
+      )
     );
-    this.hasCheckbox = types.includes("checkbox");
-    this.hasRadiobutton = types.includes("radio");
+    this.hasCheckbox = types.has("checkbox");
+    this.hasRadiobutton = types.has("radio");
     if (this.hasCheckbox) {
       this.updateCheckboxChildren();
     }
@@ -7493,7 +7495,7 @@ var FCheckboxField_default = defineComponent23({
     attrs() {
       let checked;
       if (Array.isArray(this.modelValue)) {
-        checked = this.modelValue.findIndex((it) => (0, import_isEqual2.default)(toValue2(it), toValue2(this.value))) >= 0;
+        checked = this.modelValue.some((it) => (0, import_isEqual2.default)(toValue2(it), toValue2(this.value)));
       } else {
         checked = this.value === this.modelValue;
       }
@@ -7578,7 +7580,7 @@ var FCheckboxField_default = defineComponent23({
       Object.assign(htmlElement.style, this.visibleStyle);
       getComputedStyle(element).height;
       setTimeout(() => {
-        this.height = parseInt(height, 10);
+        this.height = Number.parseInt(height, 10);
         htmlElement.style.height = height;
       });
     },
