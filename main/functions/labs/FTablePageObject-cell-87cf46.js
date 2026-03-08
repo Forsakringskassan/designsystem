@@ -2748,7 +2748,7 @@ function getVerticalNavIndex(table, from, to) {
     target.cell = prevCellIndex;
     prevCellIndex = void 0;
   } else {
-    target.cell = targetMax < from.cell ? targetMax : from.cell;
+    target.cell = Math.min(targetMax, from.cell);
   }
   if (targetMax < from.cell) {
     prevCellIndex = from.cell;
@@ -4727,23 +4727,30 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     function onEditingKeydown(event) {
       assertRef(inputElement);
       event.stopPropagation();
-      if (event.key === "Enter") {
-        if (viewValue.value === initialViewValue) {
-          onStopEdit({
-            reason: "enter"
-          });
-        } else {
-          pendingStopEditReason = "enter";
+      switch (event.key) {
+        case "Enter": {
+          if (viewValue.value === initialViewValue) {
+            onStopEdit({
+              reason: "enter"
+            });
+          } else {
+            pendingStopEditReason = "enter";
+          }
+          break;
         }
-      } else if (event.key === "Escape") {
-        onStopEdit({
-          reason: "escape"
-        });
-        viewValue.value = initialViewValue;
-        inputElement.value.value = initialViewValue;
-        void validationFacade.validateElement(inputElement.value);
-      } else if (event.key === "Tab") {
-        pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
+        case "Escape": {
+          onStopEdit({
+            reason: "escape"
+          });
+          viewValue.value = initialViewValue;
+          inputElement.value.value = initialViewValue;
+          void validationFacade.validateElement(inputElement.value);
+          break;
+        }
+        case "Tab": {
+          pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
+          break;
+        }
       }
     }
     function onKeydown(event) {
@@ -4856,8 +4863,8 @@ function normalizeAnchorColumn(column) {
 function normalizeBaseColumn(column) {
   const id = /* @__PURE__ */ Symbol();
   const header = toRef2(column.header);
-  const description = typeof column.description !== "undefined" ? toRef2(column.description) : ref3("");
-  const size = typeof column.size !== "undefined" ? toRef2(column.size) : ref3("grow");
+  const description = column.description !== void 0 ? toRef2(column.description) : ref3("");
+  const size = column.size !== void 0 ? toRef2(column.size) : ref3("grow");
   return {
     id,
     header,
