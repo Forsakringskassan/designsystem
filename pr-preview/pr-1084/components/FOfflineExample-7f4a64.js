@@ -2357,8 +2357,8 @@ var FModal_default = defineComponent6({
       }
     }
   },
-  async beforeUnmount() {
-    await this.restoreState();
+  beforeUnmount() {
+    void this.restoreState();
   },
   methods: {
     onClose() {
