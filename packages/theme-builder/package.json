@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@html-validate/release-scripts": "7.1.15",
-    "@types/node": "22.19.13",
+    "@types/node": "22.19.15",
     "@types/yargs": "17.0.35",
     "dedent": "1.7.2",
     "esbuild": "0.27.3",
