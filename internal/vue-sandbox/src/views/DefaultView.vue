@@ -1,12 +1,57 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FTextField } from "@fkui/vue";
+import { FInteractiveTable, FSortFilterDataset, FTableColumn } from "@fkui/vue";
+
+export const fruits = [
+    {
+        id: "1",
+        name: "Äpple",
+        origin: "Sverige",
+        description: "Rund, ofta röd eller grön frukt med söt eller syrlig smak.",
+        variant: [
+            {
+                id: "1a",
+                name: "Discovery",
+                origin: "Sverige",
+                description: "Rött och gulgrönt äpple. Krispig och smakrik.",
+            },
+            {
+                id: "1b",
+                name: "Ingrid Marie",
+                origin: "Sverige",
+                description: "Mörkrött äpple. Saftig och sötsyrlig.",
+            },
+        ],
+    },
+    {
+        id: "2",
+        name: "Banan",
+        origin: "Colombia",
+        description: "Lång, gul frukt med mjukt och sött fruktkött.",
+    },
+    {
+        id: "3",
+        name: "Vattenmelon",
+        origin: "Spanien",
+        description: "Stor, rund frukt med grönt skal och saftigt, rött fruktkött.",
+    },
+    {
+        id: "4",
+        name: "Grapefrukt",
+        origin: "Turkiet",
+        description: "Stor, rund citrusfrukt med tjockt skal och saftig, syrlig smak.",
+    },
+];
 
 export default defineComponent({
-    components: { FTextField },
+    components: { FSortFilterDataset, FInteractiveTable, FTableColumn },
     data() {
         return {
-            awesomeModel: "",
+            sortableAttributes: {
+                name: "Namn",
+                origin: "Land",
+            },
+            fruits,
         };
     },
 });
@@ -14,28 +59,36 @@ export default defineComponent({
 
 <template>
     <div class="sandbox-root">
-        <h1>FKUI Sandbox</h1>
-        <p>
-            Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga
-            FKUI-paket och innehåller enbart ett tomt exempel.
-        </p>
-        <p>
-            <strong>Ändra och labba gärna här men glöm inte återställa innan merge!</strong>
-        </p>
-        <hr />
-        <f-text-field
-            id="awesome-field"
-            v-model="awesomeModel"
-            v-validation.required.maxLength="{ maxLength: { length: 10 } }"
+        <f-sort-filter-dataset
+            :data="fruits"
+            default-sort-attribute="name"
+            :default-sort-ascending="true"
+            :sortable-attributes
         >
-            <template #default> Inmatningsfält. </template>
-            <template #description="{ descriptionClass }">
-                <span :class="descriptionClass"> Lorem ipsum dolor sit amet. </span>
+            <template #header="{ slotClass }">
+                <h3 :class="slotClass">Frukter</h3>
             </template>
-        </f-text-field>
+            <template #default="{ sortFilterResult }">
+                <f-interactive-table :rows="sortFilterResult" striped key-attribute="id">
+                    <template #caption>
+                        <span class="sr-only"> Frukter </span>
+                    </template>
+                    <template #default="{ row }">
+                        <f-table-column name="name" title="Namn" type="text" shrink>
+                            {{ row.name }}
+                        </f-table-column>
+                        <f-table-column name="origin" title="Land" type="text" shrink>
+                            {{ row.origin }}
+                        </f-table-column>
+                        <f-table-column name="description" title="Beskrivning" type="text" expand>
+                            {{ row.description }}
+                        </f-table-column>
+                    </template>
+                </f-interactive-table>
+            </template>
+        </f-sort-filter-dataset>
     </div>
 </template>
-
 <style>
 .sandbox-root {
     width: min(100% - 2rem, 80ch);
