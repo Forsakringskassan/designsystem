@@ -118,13 +118,13 @@ export default defineComponent({
                     await this.$nextTick();
                     this.openModal();
                 } else {
-                    this.restoreState();
+                    await this.restoreState();
                 }
             },
         },
     },
     beforeUnmount(): void {
-        this.restoreState();
+        void this.restoreState();
     },
     methods: {
         onClose(): void {
@@ -167,17 +167,18 @@ export default defineComponent({
 
             return firstTabbableChildElement ?? contentElement;
         },
-        restoreState(): void {
+        async restoreState(): Promise<void> {
             const root = document.documentElement;
             root.style.removeProperty("top");
             root.style.removeProperty("left");
             root.style.removeProperty("right");
             root.style.removeProperty("overflow");
             root.style.removeProperty("position");
-
             if (this.focus === "on" && this.savedFocus) {
                 root.scrollTop = this.savedScroll ?? 0;
                 this.savedScroll = null;
+                await this.$nextTick();
+                await new Promise((resolve) => window.setTimeout(resolve, 0));
                 popFocus(this.savedFocus);
                 this.savedFocus = null;
             }

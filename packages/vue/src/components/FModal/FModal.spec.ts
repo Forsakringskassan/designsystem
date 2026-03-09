@@ -19,6 +19,10 @@ Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: offsetFn,
 });
 
+afterEach(async () => {
+    await flushPromises();
+});
+
 describe("events", () => {
     it('should send "close" event on close button clicked', async () => {
         const wrapper = shallowMount(FModal, {
@@ -230,6 +234,7 @@ describe("accessibility", () => {
         const closeButton =
             wrapper.get<HTMLButtonElement>(".close-button").element;
         closeButton.click();
+        await flushPromises();
         await flushPromises();
         expect(toggleButton).toHaveFocus();
     });

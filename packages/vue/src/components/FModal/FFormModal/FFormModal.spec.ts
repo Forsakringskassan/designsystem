@@ -74,6 +74,10 @@ async function doTriggerSubmit(wrapper: VueWrapper): Promise<void> {
     await flushPromises();
 }
 
+afterEach(async () => {
+    await flushPromises();
+});
+
 describe("events", () => {
     it('should send "cancel" and "close" event on close button clicked', async () => {
         const wrapper = mount(FFormModal, {

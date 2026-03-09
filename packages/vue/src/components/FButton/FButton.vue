@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type PropType, computed, useAttrs } from "vue";
+import { type PropType, computed, nextTick, ref, useAttrs, watch } from "vue";
 import { FIcon } from "../FIcon";
 import { useInflight } from "./use-inflight";
 
@@ -156,8 +156,19 @@ const buttonClass = computed((): string[] => {
     return classes;
 });
 
-const disabled = computed((): boolean => {
-    return props.disabled || inflight.value;
+const disabled = ref(props.disabled);
+
+watch([inflight, () => props.disabled], async ([newInflight, newDisabled]) => {
+    if (newInflight) {
+        await nextTick();
+        disabled.value = true;
+        return;
+    }
+    if (newDisabled) {
+        disabled.value = true;
+        return;
+    }
+    disabled.value = false;
 });
 </script>
 
