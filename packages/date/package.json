@@ -54,7 +54,7 @@
     "dayjs": "1.11.19"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "29.0.1",
+    "@rollup/plugin-commonjs": "29.0.2",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
     "rollup": "4.59.0"
