@@ -2394,7 +2394,7 @@ var FModal_default = defineComponent6({
       }
       const contentElement = getHTMLElementFromVueRef(this.$refs.modalContent);
       const tabbableChildren = findTabbableElements(contentElement);
-      const firstTabbableChildElement = tabbableChildren.length ? tabbableChildren[0] : void 0;
+      const firstTabbableChildElement = tabbableChildren.length > 0 ? tabbableChildren[0] : void 0;
       return firstTabbableChildElement ?? contentElement;
     },
     restoreState() {
@@ -2787,6 +2787,8 @@ function focusError(item) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
+var noop = () => {
+};
 var FErrorList_default = defineComponent8({
   name: "FErrorList",
   components: { FIcon: FIcon_default2, IFlex: IFlex_default2, IFlexItem: IFlexItem_default2 },
@@ -2814,8 +2816,7 @@ var FErrorList_default = defineComponent8({
       type: Function,
       required: false,
       default() {
-        return () => {
-        };
+        return noop;
       }
     }
   },
@@ -3019,12 +3020,12 @@ import { documentOrderComparator } from "@fkui/logic";
 function cleanUpElements(vm) {
   return new Promise((resolve) => {
     window.setTimeout(() => {
-      Object.keys(vm.components).forEach((id) => {
+      for (const id of Object.keys(vm.components)) {
         const domElement = vm.$el.querySelector(`#${id}`);
         if (!domElement) {
           delete vm.components[id];
         }
-      });
+      }
       resolve();
     }, 0);
   });
@@ -3124,6 +3125,8 @@ FValidationGroup_default.__file = "packages/vue/src/components/FValidationGroup/
 var FValidationGroup_default2 = FValidationGroup_default;
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
+function noop2() {
+}
 var FValidationForm_default = defineComponent10({
   name: "FValidationForm",
   components: { FValidationGroup: FValidationGroup_default2, FErrorList: FErrorList_default2 },
@@ -3146,7 +3149,7 @@ var FValidationForm_default = defineComponent10({
       type: Function,
       required: false,
       default() {
-        return () => void 0;
+        return noop2;
       }
     },
     /**
@@ -3156,7 +3159,7 @@ var FValidationForm_default = defineComponent10({
       type: Function,
       required: false,
       default() {
-        return () => void 0;
+        return noop2;
       }
     },
     /**
@@ -3193,8 +3196,7 @@ var FValidationForm_default = defineComponent10({
       type: Function,
       required: false,
       default() {
-        return () => {
-        };
+        return noop2;
       }
     }
   },
@@ -3601,7 +3603,7 @@ var defaultOptions = {
   componentPlaceholder: false
 };
 function collapseWhitespace(text) {
-  return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
+  return text.replaceAll(/\s+/gm, " ").replaceAll(/(^ | $)/g, "");
 }
 function intersection(a, b) {
   return a.filter((it) => b.includes(it));
@@ -3695,14 +3697,14 @@ var FOffline_default = defineComponent12({
     };
   },
   created() {
-    EVENTS.forEach((event) => {
+    for (const event of EVENTS) {
       window.addEventListener(event, this.updateOnlineStatus);
-    });
+    }
   },
   beforeUnmount() {
-    EVENTS.forEach((event) => {
+    for (const event of EVENTS) {
       window.removeEventListener(event, this.updateOnlineStatus);
-    });
+    }
   },
   mounted() {
     document.body.prepend(getElementFromVueRef(this.$refs.offline));
