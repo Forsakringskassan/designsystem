@@ -203,9 +203,6 @@
     "Riktlinjer för kod",
     "Checklista vid publicering",
     "personuppgifter",
-    "EventBus",
-    "EventBus",
-    "services",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -219,6 +216,9 @@
     "testverktyg",
     "Jest",
     "testverktyg",
+    "EventBus",
+    "EventBus",
+    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -614,6 +614,7 @@
     "ValidationErrorMessageBuilder: build() method",
     "feltext",
     "validator",
+    "FPaginatorPageObject",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -630,7 +631,6 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
-    "FPaginatorPageObject",
     "FProgressbarPageObject: FProgressbarPageObject() constructor",
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
@@ -1126,14 +1126,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1164,6 +1156,14 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -2131,6 +2131,11 @@
       ]
     },
     {
+      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
+      "title": "FPaginatorPageObject",
+      "terms": []
+    },
+    {
       "url": "functions/date/f-year/index.html",
       "title": "FYear",
       "terms": [
@@ -2205,11 +2210,6 @@
     {
       "url": "functions/date/f-year/f-date-next.html",
       "title": "FYear: next() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
-      "title": "FPaginatorPageObject",
       "terms": []
     },
     {
@@ -2585,17 +2585,17 @@
     "203": 53,
     "204": 53,
     "205": 53,
-    "206": 54,
+    "206": 53,
     "207": 54,
     "208": 54,
     "209": 54,
-    "210": 55,
+    "210": 54,
     "211": 55,
     "212": 55,
     "213": 55,
     "214": 56,
     "215": 56,
-    "216": 56,
+    "216": 57,
     "217": 57,
     "218": 57,
     "219": 58,
@@ -2994,7 +2994,7 @@
     "612": 175,
     "613": 175,
     "614": 176,
-    "615": 176,
+    "615": 177,
     "616": 177,
     "617": 178,
     "618": 179,
