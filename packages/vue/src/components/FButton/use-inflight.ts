@@ -8,7 +8,7 @@ export interface UseInflight {
     fn: UseInflightWrapped | undefined;
 }
 
-export function useInflight(fn: unknown): UseInflight {
+export function useInflight(fn: unknown, disabled: Ref<boolean>): UseInflight {
     const inflight = ref(false);
 
     if (!fn || typeof fn !== "function") {
@@ -18,6 +18,9 @@ export function useInflight(fn: unknown): UseInflight {
     const originalFn = fn;
 
     async function wrapper(): Promise<void> {
+        if (disabled.value) {
+            return;
+        }
         try {
             inflight.value = true;
             /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
