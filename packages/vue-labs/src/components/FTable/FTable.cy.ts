@@ -7,6 +7,7 @@ import { FTablePageObject } from "../../cypress";
 import FTable from "./FTable.vue";
 import FTableBulkTestExample from "./examples/FTableBulkTestExample.vue";
 import { type FTableApi } from "./f-table-api";
+import { removeRow } from "./remove-row";
 import { defineTableColumns } from "./table-column";
 
 const table = new FTablePageObject();
@@ -1060,6 +1061,80 @@ describe("5 tabstop", () => {
         );
     }
 
+    function mountExpandedRowRemovalTestbed(): void {
+        let api: FTableApi | undefined = undefined;
+        const expandableAttribute = "expandableRows";
+        const keyAttribute = "foo";
+
+        type ExpandableTabstopRow = TabstopRow & {
+            expandableRows: TabstopRow[];
+        };
+
+        const rows = ref([
+            {
+                foo: "1",
+                bar: "alpha",
+                expandableRows: [
+                    { foo: "1_1", bar: "alpha_sub1" },
+                    { foo: "1_2", bar: "alpha_sub2" },
+                ],
+            },
+            {
+                foo: "2",
+                bar: "beta",
+                expandableRows: [
+                    { foo: "2_1", bar: "beta_sub1" },
+                    { foo: "2_2", bar: "beta_sub2" },
+                ],
+            },
+            {
+                foo: "3",
+                bar: "gamma",
+                expandableRows: [
+                    { foo: "3_1", bar: "gamma_sub1" },
+                    { foo: "3_2", bar: "gamma_sub2" },
+                    { foo: "3_3", bar: "gamma_sub3" },
+                ],
+            },
+        ]);
+
+        const columns = defineTableColumns<ExpandableTabstopRow>([
+            {
+                type: "text",
+                header: "foo",
+                key: "foo",
+            },
+            {
+                type: "button",
+                header: "remove",
+                icon: "trashcan",
+                text(row) {
+                    return row.bar;
+                },
+                onClick(row) {
+                    assertSet(api);
+                    api.withTabstopBehaviour("row-removal", () => {
+                        rows.value = removeRow(
+                            rows.value,
+                            row as ExpandableTabstopRow,
+                            "expandableRows",
+                        );
+                    });
+                },
+            },
+        ]);
+
+        cy.mount(() =>
+            h(FTable<ExpandableTabstopRow>, {
+                rows: rows.value,
+                columns,
+                expandableAttribute,
+                keyAttribute,
+                ref: (exposed: unknown) => (api = exposed as FTableApi),
+            }),
+        );
+    }
+
     interface NavigationRow {
         staticText: string;
         editText: string;
@@ -1225,12 +1300,37 @@ describe("5 tabstop", () => {
         cy.focused().should("contain.text", "Tabellen är tom");
     });
 
-    it("5.5 should fallback according to sticky mode when current tabstop is removed", () => {
+    it("5.5/5.6 should fallback according to sticky mode with priority when current tabstop is removed", () => {
         mountRowRemovalTestbed();
+        table.cell({ row: 2, col: 2 }).should("contain.text", "beta");
         table.cell({ row: 2, col: 2 }).click();
         cy.focused().should("contain.text", "alpha");
         cy.focused().click();
         cy.focused().should("contain.text", "gamma");
+        cy.focused().click();
+        cy.focused().should("contain.text", "Tabellen är tom");
+    });
+
+    it("5.6 exapnded row should fallback according to sticky mode with priority when current tabstop is removed", () => {
+        mountExpandedRowRemovalTestbed();
+
+        table.cell({ row: 1, col: 1 }).click();
+        table.cell({ row: 2, col: 3 }).should("contain.text", "alpha_sub1");
+        table.cell({ row: 2, col: 3 }).click();
+        cy.focused().should("contain.text", "alpha");
+        cy.focused().click();
+        cy.focused().should("contain.text", "beta");
+
+        table.cell({ row: 2, col: 1 }).click();
+        table.cell({ row: 4, col: 3 }).should("contain.text", "gamma_sub2");
+        table.cell({ row: 4, col: 3 }).click();
+
+        cy.focused().should("contain.text", "gamma_sub1");
+        cy.focused().click();
+        cy.focused().should("contain.text", "gamma");
+        cy.focused().click();
+        cy.focused().should("contain.text", "beta");
+
         cy.focused().click();
         cy.focused().should("contain.text", "Tabellen är tom");
     });
