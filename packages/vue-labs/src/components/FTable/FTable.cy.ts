@@ -2182,5 +2182,7 @@ describe("columns", () => {
         table.header(1).should("contain.text", "foo");
         cy.get("button").click();
         table.header(1).should("contain.text", "bar");
+        cy.get("button").click();
+        table.header(1).should("contain.text", "foo");
     });
 });
