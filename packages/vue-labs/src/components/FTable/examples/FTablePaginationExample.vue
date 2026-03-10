@@ -20,12 +20,6 @@ const columns = defineTableColumns<Row>([
         key: "name",
         editable: true,
         label: (row) => `Namn för rad ${row.id}`,
-        value(row) {
-            return row.name;
-        },
-        update(row, newValue) {
-            row.name = newValue;
-        },
         validation: {
             required: {},
             minLength: { length: 3 },
@@ -35,9 +29,6 @@ const columns = defineTableColumns<Row>([
         type: "text",
         header: "Mottaget",
         key: "receivedAt",
-        value(row) {
-            return row.receivedAt;
-        },
     },
     {
         type: "button",
