@@ -183,7 +183,7 @@ describe("FTooltip", () => {
         });
 
         it(`should be densified`, () => {
-            cy.viewport(densityWrapperWidth, densityWrapperHeight + 1000);
+            cy.viewport(densityWrapperWidth, densityWrapperHeight + 400);
             cy.mount(DensityComponent);
             const tooltip1 = new FTooltipPageObject(
                 ".density-default .tooltip",
