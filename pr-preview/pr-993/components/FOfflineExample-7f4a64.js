@@ -1848,29 +1848,29 @@ function refIsElement(value) {
 function refIsVue(value) {
   return value?.$el !== void 0;
 }
-function findElementFromVueRef(ref) {
-  if (refIsElement(ref)) {
-    return ref;
-  } else if (refIsVue(ref)) {
-    return ref.$el;
+function findElementFromVueRef(ref2) {
+  if (refIsElement(ref2)) {
+    return ref2;
+  } else if (refIsVue(ref2)) {
+    return ref2.$el;
   }
 }
-function getElementFromVueRef(ref) {
-  const element = findElementFromVueRef(ref);
+function getElementFromVueRef(ref2) {
+  const element = findElementFromVueRef(ref2);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref)}.`);
+    throw new Error(`Unable to find element from ${String(ref2)}.`);
   }
   return element;
 }
-function getHTMLElementFromVueRef(ref) {
-  const element = findElementFromVueRef(ref);
+function getHTMLElementFromVueRef(ref2) {
+  const element = findElementFromVueRef(ref2);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref)}.`);
+    throw new Error(`Unable to find element from ${String(ref2)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${String(ref)}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref2)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -2091,8 +2091,8 @@ import { FDate } from "@fkui/date";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
 import { defineComponent as defineComponent5 } from "vue";
-var Flip = ["horizontal", "vertical"];
-var Rotate = ["90", "180", "270"];
+var Flip = /* @__PURE__ */ new Set(["horizontal", "vertical"]);
+var Rotate = /* @__PURE__ */ new Set(["90", "180", "270"]);
 var FIcon_default = defineComponent5({
   name: "FIcon",
   inheritAttrs: false,
@@ -2125,7 +2125,7 @@ var FIcon_default = defineComponent5({
       default: null,
       required: false,
       validator(value) {
-        return Flip.includes(value);
+        return Flip.has(value);
       }
     },
     /**
@@ -2142,7 +2142,7 @@ var FIcon_default = defineComponent5({
       default: null,
       required: false,
       validator(value) {
-        return Rotate.includes(value);
+        return Rotate.has(value);
       }
     }
   },
@@ -2394,7 +2394,7 @@ var FModal_default = defineComponent6({
       }
       const contentElement = getHTMLElementFromVueRef(this.$refs.modalContent);
       const tabbableChildren = findTabbableElements(contentElement);
-      const firstTabbableChildElement = tabbableChildren.length ? tabbableChildren[0] : void 0;
+      const firstTabbableChildElement = tabbableChildren.length > 0 ? tabbableChildren[0] : void 0;
       return firstTabbableChildElement ?? contentElement;
     },
     restoreState() {
@@ -2413,7 +2413,7 @@ var FModal_default = defineComponent6({
     },
     onFocusFirst() {
       const tabbableElements = findTabbableElements(this.$refs.modalDialogContainer);
-      const lastTabbableElement = tabbableElements[tabbableElements.length - 2];
+      const lastTabbableElement = tabbableElements.at(-2);
       focusElement(lastTabbableElement, this.$el);
     },
     onFocusLast() {
@@ -2662,7 +2662,7 @@ var FConfirmModal_default = defineComponent7({
   computed: {
     preparedButtons() {
       const preparedButtonList = prepareButtonList(this.buttons);
-      return config.buttonOrder === 1 /* RIGHT_TO_LEFT */ ? preparedButtonList.reverse() : preparedButtonList;
+      return config.buttonOrder === 1 /* RIGHT_TO_LEFT */ ? preparedButtonList.toReversed() : preparedButtonList;
     }
   },
   methods: {
@@ -2787,6 +2787,8 @@ function focusError(item) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
+var noop = () => {
+};
 var FErrorList_default = defineComponent8({
   name: "FErrorList",
   components: { FIcon: FIcon_default2, IFlex: IFlex_default2, IFlexItem: IFlexItem_default2 },
@@ -2814,8 +2816,7 @@ var FErrorList_default = defineComponent8({
       type: Function,
       required: false,
       default() {
-        return () => {
-        };
+        return noop;
       }
     }
   },
@@ -3019,12 +3020,12 @@ import { documentOrderComparator } from "@fkui/logic";
 function cleanUpElements(vm) {
   return new Promise((resolve) => {
     window.setTimeout(() => {
-      Object.keys(vm.components).forEach((id) => {
+      for (const id of Object.keys(vm.components)) {
         const domElement = vm.$el.querySelector(`#${id}`);
         if (!domElement) {
           delete vm.components[id];
         }
-      });
+      }
       resolve();
     }, 0);
   });
@@ -3124,6 +3125,8 @@ FValidationGroup_default.__file = "packages/vue/src/components/FValidationGroup/
 var FValidationGroup_default2 = FValidationGroup_default;
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
+function noop2() {
+}
 var FValidationForm_default = defineComponent10({
   name: "FValidationForm",
   components: { FValidationGroup: FValidationGroup_default2, FErrorList: FErrorList_default2 },
@@ -3146,7 +3149,7 @@ var FValidationForm_default = defineComponent10({
       type: Function,
       required: false,
       default() {
-        return () => void 0;
+        return noop2;
       }
     },
     /**
@@ -3156,7 +3159,7 @@ var FValidationForm_default = defineComponent10({
       type: Function,
       required: false,
       default() {
-        return () => void 0;
+        return noop2;
       }
     },
     /**
@@ -3193,8 +3196,7 @@ var FValidationForm_default = defineComponent10({
       type: Function,
       required: false,
       default() {
-        return () => {
-        };
+        return noop2;
       }
     }
   },
@@ -3238,7 +3240,7 @@ var FValidationForm_default = defineComponent10({
         focus4(this.$refs.errors);
       } else {
         const firstError = this.validity.componentsWithError[0];
-        const element = document.getElementById(firstError.focusElementId);
+        const element = document.querySelector(`#${firstError.focusElementId}`);
         focus4(element);
       }
       return true;
@@ -3525,6 +3527,7 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
         _createCommentVNode9(" @slot Slot for main content above text fields and buttons. "),
         _renderSlot10(_ctx.$slots, "default")
       ]),
+      _createCommentVNode9(" [html-validate-disable-next wcag/h32 -- Submit button with `formId` present in footer ] "),
       _createVNode4(_component_f_validation_form, {
         id: _ctx.formId,
         "before-submit": _ctx.beforeSubmit,
@@ -3600,7 +3603,7 @@ var defaultOptions = {
   componentPlaceholder: false
 };
 function collapseWhitespace(text) {
-  return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
+  return text.replaceAll(/\s+/gm, " ").replaceAll(/(^ | $)/g, "");
 }
 function intersection(a, b) {
   return a.filter((it) => b.includes(it));
@@ -3674,6 +3677,9 @@ function hasSlot(vm, name, props = {}, options = {}) {
 // packages/vue/src/utils/use-modal.ts
 import { getCurrentInstance } from "vue";
 
+// packages/vue/src/utils/dataset.ts
+import { ref } from "vue";
+
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FOffline/FOffline.vue?type=script
 var EVENTS = ["online", "offline"];
 var FOffline_default = defineComponent12({
@@ -3691,14 +3697,14 @@ var FOffline_default = defineComponent12({
     };
   },
   created() {
-    EVENTS.forEach((event) => {
+    for (const event of EVENTS) {
       window.addEventListener(event, this.updateOnlineStatus);
-    });
+    }
   },
   beforeUnmount() {
-    EVENTS.forEach((event) => {
+    for (const event of EVENTS) {
       window.removeEventListener(event, this.updateOnlineStatus);
-    });
+    }
   },
   mounted() {
     document.body.prepend(getElementFromVueRef(this.$refs.offline));

@@ -761,8 +761,78 @@ var metadata_default = {
           "palette": "green-a-100"
         },
         "dark": {
-          "value": "#116a3e",
-          "palette": "green-a-100"
+          "value": "#35805b",
+          "palette": "green-a-85"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-header-text-primary",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#fff",
+          "palette": null
+        },
+        "dark": {
+          "value": "#fff",
+          "palette": null
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-interactive-surface-background-primary-active",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#ddddde",
+          "palette": "fk-black-15"
+        },
+        "dark": {
+          "value": "#5f6165",
+          "palette": "fk-black-70"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-interactive-surface-background-primary-default",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#f4f4f4",
+          "palette": "fk-black-5"
+        },
+        "dark": {
+          "value": "#1b1e23",
+          "palette": "fk-black-100"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-interactive-surface-background-primary-focus",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#ddddde",
+          "palette": "fk-black-15"
+        },
+        "dark": {
+          "value": "#5f6165",
+          "palette": "fk-black-70"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-interactive-surface-background-primary-hover",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#ddddde",
+          "palette": "fk-black-15"
+        },
+        "dark": {
+          "value": "#5f6165",
+          "palette": "fk-black-70"
         }
       }
     },
