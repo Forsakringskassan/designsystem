@@ -1,5 +1,6 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints";
+@use "../../core/mixins/forcedcolors";
 @use "../../core/config-variables";
 @use "variables" as *;
 
@@ -20,10 +21,18 @@
             a:visited,
             a:active {
                 color: $popupmenu-color-text-active;
+
+                @media (forced-colors: active) {
+                    color: LinkText;
+                }
             }
 
             a:hover {
                 color: $popupmenu-color-text-hover;
+
+                @media (forced-colors: active) {
+                    color: LinkText;
+                }
             }
         }
     }
@@ -39,14 +48,20 @@
 
             &:hover:not(.ipopupmenu__list__item--highlight) {
                 background-color: $popupmenu-color-background-hover;
+                @include forcedcolors.hover-indicator(outline, 2px);
             }
 
             &--highlight {
                 background-color: $popupmenu-color-background-selected;
                 font-weight: var(--f-font-weight-medium);
+                @include forcedcolors.selected-indicator;
 
                 & a {
                     color: $popupmenu-color-text-selected;
+
+                    @media (forced-colors: active) {
+                        color: HighlightText;
+                    }
                 }
             }
         }
