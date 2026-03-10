@@ -12,7 +12,6 @@ import { getValueFn } from "./helpers";
 export interface TableColumnMenu<T> extends TableColumnBase {
     type: "menu";
     text(this: void, row: T): string | null;
-    enabled?: boolean | ((row: T) => boolean);
     actions?: Array<{
         label: string;
         icon?: string;
@@ -37,7 +36,6 @@ export interface NormalizedTableColumnMenu<
         column: NormalizedTableColumnMenu<T>;
     }>;
     text(this: void, row: T): string | null;
-    enabled(this: void, row: T): boolean;
 }
 
 function noop(): void {
@@ -61,9 +59,5 @@ export function normalizeMenuColumn<T>(
                 onClick: it.onClick ?? noop,
             };
         }),
-        enabled:
-            typeof column.enabled === "function"
-                ? column.enabled
-                : () => Boolean(column.enabled ?? true),
     };
 }

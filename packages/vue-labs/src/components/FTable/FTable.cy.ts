@@ -2148,3 +2148,41 @@ describe("13 Cell interaction states", () => {
         });
     }
 });
+
+describe("columns", () => {
+    it("should not render column when toggling enabled to false", () => {
+        const rows = ref([{ foo: "1", bar: "alpha" }]);
+        const fooEnabled = ref(true);
+        const columns = defineTableColumns<{ foo: string; bar: string }>([
+            {
+                type: "text",
+                header: "foo",
+                key: "foo",
+                enabled: fooEnabled,
+            },
+            {
+                type: "text",
+                header: "bar",
+                key: "bar",
+            },
+        ]);
+
+        cy.mount(() =>
+            h("div", [
+                renderButton("Toggle first column enabled", {
+                    onClick: () => (fooEnabled.value = !fooEnabled.value),
+                }),
+                h(FTable<{ foo: string; bar: string }>, {
+                    rows: rows.value,
+                    columns,
+                }),
+            ]),
+        );
+
+        table.header(1).should("contain.text", "foo");
+        cy.get("button").click();
+        table.header(1).should("contain.text", "bar");
+        cy.get("button").click();
+        table.header(1).should("contain.text", "foo");
+    });
+});
