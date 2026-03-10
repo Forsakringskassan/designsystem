@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-1fef9e.json"
+            href="../../search-data-af58fb.json"
             as="fetch"
             crossorigin
-            integrity="sha384-3VKxrW8XfjiQZG6bJI0Y3nOVR14cGGWukqV8+znxGjB2xhFJN8y//kAsBU1/1klO"
+            integrity="sha384-mfxTtIBhI93HrqGf+iwB8MLOFW3jFVbqEIfnvjgG1wL7U3aLBdXxakrr6c5FOnGK"
             id="search-data"
         />
     </head>
@@ -1786,7 +1786,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-1081f6"></div>
+        <div id="example-394003"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1812,7 +1812,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-1081f6.js"></script>
+        <script type="module" src="./FTableExample-394003.js"></script>
     
                 </div>
                 <div>
@@ -1856,6 +1856,8 @@ interface <span class="hljs-title class_">Row</span> {
     aktiv?: boolean;
 }
 
+<span class="hljs-keyword">const</span> oformateradTextKolumnSynlig = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">true</span>);
+
 <span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
@@ -1863,6 +1865,7 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title class_">String</span>(row.<span class="hljs-property">antal</span>);
         },
+        <span class="hljs-attr">enabled</span>: oformateradTextKolumnSynlig,
     },
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;checkbox&quot;</span>,
@@ -2103,6 +2106,13 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onAddRow&quot;</span>&gt;</span>Lägg till rad<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
+        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;oformateradTextKolumnSynlig = !oformateradTextKolumnSynlig&quot;</span>
+    &gt;</span>
+        Dölj/visa &quot;Oformatterad text&quot;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
@@ -2144,13 +2154,13 @@ interface <span class="hljs-title class_">Row</span> {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-c08475"></div>
+        <div id="example-34823d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableInputFieldsExample-c08475.js"></script>
+        <script type="module" src="./FTableInputFieldsExample-34823d.js"></script>
     
                 </div>
                 <div>
@@ -2441,9 +2451,9 @@ interface <span class="hljs-title class_">TableRow</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">pagination-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/be1bd24a192baf8a429f541c796a66ccbe0a63de">be1bd24</a>)<br />
+<div class="footer__right"><div class="version">pagination-example (<a href="https://github.com/Forsakringskassan/designsystem/commits/56d94ab0abf73bd499846098cab91c23104dcb37">56d94ab</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1088">PR 1088</a><br />
-        2026-03-10 12:58
+        2026-03-10 14:10
 </div>
 <div class="toolbar__item">
     <form id="version">
