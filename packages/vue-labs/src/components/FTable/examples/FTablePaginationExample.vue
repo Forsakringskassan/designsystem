@@ -168,10 +168,6 @@ function onRemoveRow(row: Row): void {
 function onRemoveSelectedRows(): void {
     rows.value = rows.value.filter((row) => !selectedRows.value.includes(row));
 }
-
-function asRows(value: Row[]): Row[] {
-    return value;
-}
 </script>
 
 <template>
@@ -186,7 +182,7 @@ function asRows(value: Row[]): Row[] {
                     <f-table
                         ref="table"
                         v-model:selected-rows="selectedRows"
-                        :rows="asRows(currentPageItems)"
+                        :rows="currentPageItems"
                         :columns
                         key-attribute="id"
                         selectable="multi"
