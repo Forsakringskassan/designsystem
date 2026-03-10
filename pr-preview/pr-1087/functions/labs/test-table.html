@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-5b17d5.json"
+            href="../../search-data-1c80d5.json"
             as="fetch"
             crossorigin
-            integrity="sha384-iQLVTzPENNXm2X3q56tcW1JZcJL4MmD9qvd3f/mn5S51Wfd3saQyCo4sDOjHgYTM"
+            integrity="sha384-qmkASP+me91kWV+oqonTE1VHWsAqUuUvURUniyGbuA5RvST27N7m79CVK9A/FFXl"
             id="search-data"
         />
     </head>
@@ -1786,7 +1786,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-1081f6"></div>
+        <div id="example-6533c8"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1812,7 +1812,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-1081f6.js"></script>
+        <script type="module" src="./FTableExample-6533c8.js"></script>
     
                 </div>
                 <div>
@@ -1856,6 +1856,8 @@ interface <span class="hljs-title class_">Row</span> {
     aktiv?: boolean;
 }
 
+<span class="hljs-keyword">const</span> oformateradTextKolumnSynlig = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">true</span>);
+
 <span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
@@ -1863,6 +1865,7 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-title class_">String</span>(row.<span class="hljs-property">antal</span>);
         },
+        <span class="hljs-attr">enabled</span>: oformateradTextKolumnSynlig,
     },
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;checkbox&quot;</span>,
@@ -2103,6 +2106,13 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onAddRow&quot;</span>&gt;</span>Lägg till rad<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
+        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;oformateradTextKolumnSynlig = !oformateradTextKolumnSynlig&quot;</span>
+    &gt;</span>
+        Dölj/visa &quot;Oformatterad text&quot;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
@@ -2441,9 +2451,9 @@ interface <span class="hljs-title class_">TableRow</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">tooltip-screenshots (<a href="https://github.com/Forsakringskassan/designsystem/commits/16d509c81613e7c9904b6487c4df392aacbf23f6">16d509c</a>)<br />
+<div class="footer__right"><div class="version">tooltip-screenshots (<a href="https://github.com/Forsakringskassan/designsystem/commits/436bf86f9212a5c3fc7e53f339a6bd0fe2f317db">436bf86</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1087">PR 1087</a><br />
-        2026-03-10 12:18
+        2026-03-10 15:13
 </div>
 <div class="toolbar__item">
     <form id="version">
