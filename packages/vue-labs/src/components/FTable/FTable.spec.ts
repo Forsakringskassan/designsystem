@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { nextTick, ref } from "vue";
 import { flushPromises, mount } from "@vue/test-utils";
 import FTable from "./FTable.vue";
 import { defineTableColumns } from "./table-column";
@@ -770,6 +770,75 @@ describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
             `<i-table-header-selectable-stub selectable="multi" state="false"></i-table-header-selectable-stub>`,
         );
     });
+
+    it("should select all rows when click on checkbox in header", async () => {
+        expect.assertions(3);
+        const rows = [{ text: "Foo" }, { text: "Bar" }, { text: "Baz" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Header",
+                key: "text",
+            },
+        ]);
+        let selectedRows: typeof rows = [];
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                selectable: "multi",
+                rows,
+                columns,
+                "onUpdate:selectedRows": (value: typeof rows) => {
+                    selectedRows = value;
+                },
+            },
+        });
+
+        const selectAllCheckbox = wrapper.get<HTMLInputElement>(
+            "thead th input[type='checkbox']",
+        );
+        await nextTick();
+        expect(selectedRows).toHaveLength(0);
+        await selectAllCheckbox.trigger("click");
+        expect(selectAllCheckbox.element.checked).toBeTruthy();
+        expect(selectedRows).toHaveLength(3);
+    });
+
+    it("should select all rows when click on th cell for sellect all in header", async () => {
+        expect.assertions(3);
+        const rows = [{ text: "Foo" }, { text: "Bar" }, { text: "Baz" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Header",
+                key: "text",
+            },
+        ]);
+        let selectedRows: typeof rows = [];
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                selectable: "multi",
+                rows,
+                columns,
+                "onUpdate:selectedRows": (value: typeof rows) => {
+                    selectedRows = value;
+                },
+            },
+        });
+
+        const selectThCell = wrapper.get<HTMLTableCellElement>(
+            "thead th.table-ng__column--selectable",
+        );
+        const selectAllCheckbox = wrapper.get<HTMLInputElement>(
+            "thead th input[type='checkbox']",
+        );
+        await nextTick();
+        expect(selectedRows).toHaveLength(0);
+        await selectThCell.trigger("click");
+        expect(selectAllCheckbox.element.checked).toBeTruthy();
+        expect(selectedRows).toHaveLength(3);
+    });
 });
 
 describe("7.4 Bulk selection in expandable", () => {
@@ -1015,5 +1084,118 @@ describe("select cell", () => {
         await cell.trigger("click");
         expect(cellEditable[0].attributes("aria-expanded")).toBe("true");
         expect(cellEditable[1].attributes("aria-expanded")).toBe("false");
+    });
+});
+
+describe("Clickable cells", () => {
+    it("Should be possible to click on cell instead of checkbox", async () => {
+        expect.assertions(2);
+        const rows = [{ active: false }, { active: false }, { active: false }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "checkbox",
+                header: "Header",
+                label: () => "Label",
+                key: "active",
+                editable: true,
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                rows,
+                columns,
+            },
+        });
+
+        const cell = wrapper.get<HTMLTableCellElement>(
+            "table tr:nth-child(2) td:first-child",
+        );
+
+        await nextTick();
+        await cell.trigger("click");
+
+        const checkbox = wrapper.get<HTMLInputElement>(
+            "table tr:nth-child(2) td:first-child input[type='checkbox']",
+        );
+
+        expect(checkbox.element.checked).toBeTruthy();
+        expect(rows).toEqual([
+            { active: false },
+            { active: true },
+            { active: false },
+        ]);
+    });
+
+    it("Should be possible to click on cell instead of radio button", async () => {
+        expect.assertions(1);
+        const rows = [{ active: false }, { active: false }, { active: false }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "radio",
+                header: "Header",
+                label: () => "Label",
+                key: "active",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                rows,
+                columns,
+            },
+        });
+
+        const cell = wrapper.get<HTMLTableCellElement>(
+            "table tr:nth-child(2) td:first-child",
+        );
+
+        await nextTick();
+        await cell.trigger("click");
+
+        expect(rows).toEqual([
+            { active: false },
+            { active: true },
+            { active: false },
+        ]);
+    });
+
+    it("Should be possible to click on cell instead of button", async () => {
+        const rows = [
+            { text: "text 1" },
+            { text: "text 2" },
+            { text: "text 3" },
+        ];
+        const onClickSpy = jest.fn();
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "button",
+                header: "Knapp",
+                icon: "trashcan",
+                size: "shrink",
+                text() {
+                    return `Ta bort`;
+                },
+                onClick: (row) => {
+                    onClickSpy(row);
+                },
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                rows,
+                columns,
+            },
+        });
+
+        const cell = wrapper.get<HTMLTableCellElement>(
+            "table tr:nth-child(2) td:first-child",
+        );
+
+        await nextTick();
+        await cell.trigger("click");
+        expect(onClickSpy).toHaveBeenCalledTimes(1);
+        expect(onClickSpy).toHaveBeenCalledWith({ text: "text 2" });
     });
 });

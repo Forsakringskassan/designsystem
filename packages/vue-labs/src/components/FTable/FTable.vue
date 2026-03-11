@@ -164,7 +164,12 @@ function onClick(e: MouseEvent): void {
     const cell = (e.target as HTMLElement).closest<HTMLElement>("td, th");
 
     if (cell) {
-        activateCell(cell, { focus: true });
+        const targetEl = activateCell(cell, { focus: true });
+
+        // If you haven't clicked on target, click on it.
+        if (e.target instanceof Node && !targetEl.contains(e.target)) {
+            targetEl.click();
+        }
     }
 }
 
