@@ -54,6 +54,5 @@ export function normalizeButtonColumn<T, K extends keyof T>(
         onClick: column.onClick,
         icon: column.icon ?? null,
         iconLibrary: column.iconLibrary,
-        sortable: column.key ?? null,
     };
 }

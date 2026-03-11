@@ -1,4 +1,5 @@
 import { type MaybeRef, type Ref, ref, toRef } from "vue";
+import { getSortable } from "./helpers/get-sortable";
 
 /**
  * @public
@@ -14,6 +15,7 @@ export interface TableColumnBase {
     header: string | Readonly<Ref<string>>;
     description?: string | Readonly<Ref<string | null>>;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
+    sort?: boolean;
     enabled?: MaybeRef<boolean>;
 }
 
@@ -41,6 +43,7 @@ export type OmittedNormalizedColumnProperties =
     | "id"
     | "header"
     | "description"
+    | "sortable"
     | "size"
     | "component"
     | "enabled";
@@ -48,11 +51,11 @@ export type OmittedNormalizedColumnProperties =
 /**
  * @internal
  */
-export function normalizeBaseColumn(
+export function normalizeBaseColumn<K = never>(
     column: TableColumnBase,
 ): Pick<
-    NormalizedTableColumnBase<unknown>,
-    Exclude<OmittedNormalizedColumnProperties, "component">
+    NormalizedTableColumnBase<K>,
+    "id" | "header" | "description" | "size" | "enabled" | "sortable"
 > {
     const id = Symbol();
     const header = toRef(column.header);
@@ -60,11 +63,13 @@ export function normalizeBaseColumn(
         column.description !== undefined ? toRef(column.description) : ref("");
     const size: Readonly<Ref<TableColumnSize | null>> =
         column.size !== undefined ? toRef(column.size) : ref("grow");
+    const sortable = getSortable<K>(column);
 
     return {
         id,
         header,
         description,
+        sortable,
         size,
         enabled: column.enabled ?? true,
     };

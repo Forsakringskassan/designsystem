@@ -45,6 +45,5 @@ export function normalizeRowHeaderColumn<T, K extends keyof T>(
     return {
         type: "rowheader",
         text: getValueFn(column.text, column.key, String, ""),
-        sortable: column.key ?? null,
     };
 }
