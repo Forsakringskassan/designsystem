@@ -5665,7 +5665,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         const targetEl = activateCell(cell, {
           focus: true
         });
-        if (e.target !== targetEl) {
+        if (e.target instanceof Node && !targetEl.contains(e.target)) {
           targetEl.click();
         }
       }
