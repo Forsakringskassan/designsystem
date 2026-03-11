@@ -3103,6 +3103,7 @@ function activateCell(element, options) {
   if (options?.focus) {
     targetEl.focus();
   }
+  return targetEl;
 }
 function stopEdit(element, reason) {
   const td = getCell(element);
@@ -3997,7 +3998,7 @@ function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
   const array = [];
   walk(keyedRows, expandableAttribute, (row, level) => {
     const key = getItemIdentifier(row);
-    const isExpandable = !!expandableAttribute && Array.isArray(row[expandableAttribute]) && row[expandableAttribute].length > 0;
+    const isExpandable = Boolean(expandableAttribute && Array.isArray(row[expandableAttribute]) && row[expandableAttribute].length > 0);
     const isExpanded = isExpandable && expandedKeys.has(key);
     const rowIndex = rowIndexes.indexOf(key) + 2;
     array.push({
@@ -5661,9 +5662,12 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     function onClick(e) {
       const cell = e.target.closest("td, th");
       if (cell) {
-        activateCell(cell, {
+        const targetEl = activateCell(cell, {
           focus: true
         });
+        if (e.target instanceof Node && !targetEl.contains(e.target)) {
+          targetEl.click();
+        }
       }
     }
     function onTableFocusin(e) {
