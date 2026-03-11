@@ -60,7 +60,7 @@ export default defineComponent({
          * - Default uses {@link config#teleportTarget}.
          */
         teleport: {
-            type: [String, HTMLElement] as PropType<string | HTMLElement | undefined>,
+            type: [String, HTMLElement] as PropType<string | HTMLElement | { el: HTMLElement } | undefined>,
             required: false,
             default: undefined,
         },

@@ -8,7 +8,7 @@ import { computeListboxRect } from "./compute-listbox-rect";
 
 export interface IPopupListboxProps {
     isOpen: boolean;
-    anchor: HTMLElement | null;
+    anchor: HTMLElement | { el: HTMLElement } | null;
     numOfItems: number;
     itemHeight?: number;
     activeElement?: HTMLElement;
@@ -33,7 +33,16 @@ const debouncedOnScroll = debounce(onScroll, 100);
 let guessedItemHeight: number | undefined = undefined;
 let verticalSpacing: number | undefined = undefined;
 
-useEventListener(anchor, "keyup", onKeyEsc);
+// derive the actual HTMLElement from the anchor union so the listener
+// helper gets an EventTarget/HTMLElement and never the wrapper object
+const anchorElement = computed<HTMLElement | null>(() => {
+    if (!anchor) {
+        return null;
+    }
+    return "el" in anchor ? anchor.el : anchor;
+});
+
+useEventListener(anchorElement, "keyup", onKeyEsc);
 
 watchEffect(() => {
     if (!wrapperRef.value || activeElement === undefined) {
@@ -136,7 +145,9 @@ function calculatePosition(options?: { horizontalOnly: boolean }): void {
     const wrapperElement = wrapperRef.value;
     const contentWrapper = contentRef.value;
 
-    if (!anchor || !wrapperElement || !contentWrapper) {
+    const resolvedAnchor = anchorElement.value;
+
+    if (!resolvedAnchor || !wrapperElement || !contentWrapper) {
         return;
     }
 
@@ -159,7 +170,7 @@ function calculatePosition(options?: { horizontalOnly: boolean }): void {
     wrapperElement.style.overflowX = "hidden";
     wrapperElement.style.left = "0px";
 
-    const rect = computeListboxRect(anchor, { itemHeight: contentItemHeigth, numOfItems, verticalSpacing });
+    const rect = computeListboxRect(resolvedAnchor, { itemHeight: contentItemHeigth, numOfItems, verticalSpacing });
     if (rect) {
         const { top, left, width, height } = rect;
         const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
