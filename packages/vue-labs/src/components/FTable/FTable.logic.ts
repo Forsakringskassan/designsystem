@@ -208,7 +208,7 @@ export function maybeNavigateToCell(e: KeyboardEvent): void {
 export function activateCell(
     element: HTMLElement & { [tableCellApiSymbol]?: FTableCellApi },
     options?: { focus: boolean },
-): void {
+): HTMLElement {
     const api = element[tableCellApiSymbol];
     const targetEl = toValue(api?.tabstopEl) ?? element;
     targetEl.tabIndex = 0;
@@ -216,6 +216,7 @@ export function activateCell(
     if (options?.focus) {
         targetEl.focus();
     }
+    return targetEl;
 }
 
 /** @internal */
