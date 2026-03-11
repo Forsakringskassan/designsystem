@@ -3993,7 +3993,7 @@ function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
   const array = [];
   walk(keyedRows, expandableAttribute, (row, level) => {
     const key = getItemIdentifier(row);
-    const isExpandable = Boolean(expandableAttribute && row[expandableAttribute]);
+    const isExpandable = Boolean(expandableAttribute && Array.isArray(row[expandableAttribute]) && row[expandableAttribute].length > 0);
     const isExpanded = isExpandable && expandedKeys.has(key);
     const rowIndex = rowIndexes.indexOf(key) + 2;
     array.push({
