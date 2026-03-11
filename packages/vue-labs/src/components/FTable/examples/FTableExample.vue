@@ -44,6 +44,22 @@ const columns = defineTableColumns<Row>([
         editable: true,
     },
     {
+        type: "checkbox",
+        header: "Status",
+        key: "aktiv",
+        size: "shrink",
+        label(row) {
+            if (row.aktiv) {
+                return `Rad ${row.id} är klar`;
+            } else {
+                return `Rad ${row.id} är inte klar`;
+            }
+        },
+        editable(row) {
+            return row.id === "1";
+        },
+    },
+    {
         type: "text",
         header: "Formatterad text",
         label: (row) => `Text för rad ${row.id}`,
@@ -55,7 +71,7 @@ const columns = defineTableColumns<Row>([
     {
         type: "text",
         header: "Redigerbar text",
-        editable: true,
+
         key: "level",
         label: (row) => `Text för rad ${row.id}`,
         value(row) {
@@ -66,7 +82,10 @@ const columns = defineTableColumns<Row>([
         },
         validation: {
             required: {},
-            maxLength: { length: 5 },
+            maxLength: { length: 55 },
+        },
+        editable(row) {
+            return row.id === "2";
         },
     },
     {
@@ -95,7 +114,9 @@ const columns = defineTableColumns<Row>([
         key: "animal",
         label: (row) => `Djur för rad ${row.id}`,
         options: selectFieldOptions,
-        editable: true,
+        editable(row) {
+            return row.id === "3";
+        },
     },
     {
         header: "Render function",
