@@ -80,24 +80,22 @@ Proparna
     <template #default="{ updateItem, deleteItem }">
         <f-list :items>
             <template #default="{ item }">
-                <button
-                    type="button"
-                    class="button button--small button--tertiary"
+                <f-button
+                    icon-left="pen"
+                    size="small"
+                    variant="tertiary"
                     @click="updateItem(item)"
                 >
-                    <f-icon name="pen">
-                        <title>Ändra {{ item.name }}</title>
-                    </f-icon>
-                </button>
-                <button
-                    type="button"
-                    class="button button--small button--tertiary"
+                    Ändra {{ item.name }}
+                </f-button>
+                <f-button
+                    icon-left="pen"
+                    size="small"
+                    variant="tertiary"
                     @click="deleteItem(item)"
                 >
-                    <f-icon name="pen">
-                        <title>Ta bort {{ item.name }}</title>
-                    </f-icon>
-                </button>
+                    Ta bort {{ item.name }}
+                </f-button>
             </template>
         </f-list>
     </template>

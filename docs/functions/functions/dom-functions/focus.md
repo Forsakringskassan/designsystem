@@ -98,12 +98,12 @@ The example below will recursively search for a focus target and eventually focu
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { focus } from "@fkui/vue";
+import { FButton, focus } from "@fkui/vue";
 
 const MyButton = defineComponent({
     template: /* HTML */ `
         <p>I have a button</p>
-        <button ref="foo" type="button">My button</button>
+        <f-button ref="foo">My button</f-button>
     `,
     computed: {
         focusTarget() {
