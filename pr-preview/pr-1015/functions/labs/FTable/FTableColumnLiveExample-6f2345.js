@@ -2132,6 +2132,221 @@ function requireEs_iterator_constructor() {
   return es_iterator_constructor;
 }
 requireEs_iterator_constructor();
+var es_iterator_filter = {};
+var defineBuiltIns;
+var hasRequiredDefineBuiltIns;
+function requireDefineBuiltIns() {
+  if (hasRequiredDefineBuiltIns) return defineBuiltIns;
+  hasRequiredDefineBuiltIns = 1;
+  var defineBuiltIn2 = requireDefineBuiltIn();
+  defineBuiltIns = function(target, src, options) {
+    for (var key in src) defineBuiltIn2(target, key, src[key], options);
+    return target;
+  };
+  return defineBuiltIns;
+}
+var createIterResultObject;
+var hasRequiredCreateIterResultObject;
+function requireCreateIterResultObject() {
+  if (hasRequiredCreateIterResultObject) return createIterResultObject;
+  hasRequiredCreateIterResultObject = 1;
+  createIterResultObject = function(value, done) {
+    return {
+      value,
+      done
+    };
+  };
+  return createIterResultObject;
+}
+var iteratorCloseAll;
+var hasRequiredIteratorCloseAll;
+function requireIteratorCloseAll() {
+  if (hasRequiredIteratorCloseAll) return iteratorCloseAll;
+  hasRequiredIteratorCloseAll = 1;
+  var iteratorClose2 = requireIteratorClose();
+  iteratorCloseAll = function(iters, kind, value) {
+    for (var i = iters.length - 1; i >= 0; i--) {
+      if (iters[i] === void 0) continue;
+      try {
+        value = iteratorClose2(iters[i].iterator, kind, value);
+      } catch (error) {
+        kind = "throw";
+        value = error;
+      }
+    }
+    if (kind === "throw") throw value;
+    return value;
+  };
+  return iteratorCloseAll;
+}
+var iteratorCreateProxy;
+var hasRequiredIteratorCreateProxy;
+function requireIteratorCreateProxy() {
+  if (hasRequiredIteratorCreateProxy) return iteratorCreateProxy;
+  hasRequiredIteratorCreateProxy = 1;
+  var call = requireFunctionCall();
+  var create = requireObjectCreate();
+  var createNonEnumerableProperty2 = requireCreateNonEnumerableProperty();
+  var defineBuiltIns2 = requireDefineBuiltIns();
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var InternalStateModule = requireInternalState();
+  var getMethod2 = requireGetMethod();
+  var IteratorPrototype = requireIteratorsCore().IteratorPrototype;
+  var createIterResultObject2 = requireCreateIterResultObject();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorCloseAll2 = requireIteratorCloseAll();
+  var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
+  var ITERATOR_HELPER = "IteratorHelper";
+  var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
+  var NORMAL = "normal";
+  var THROW = "throw";
+  var setInternalState = InternalStateModule.set;
+  var createIteratorProxyPrototype = function(IS_ITERATOR) {
+    var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
+    return defineBuiltIns2(create(IteratorPrototype), {
+      next: function next() {
+        var state = getInternalState(this);
+        if (IS_ITERATOR) return state.nextHandler();
+        if (state.done) return createIterResultObject2(void 0, true);
+        try {
+          var result = state.nextHandler();
+          return state.returnHandlerResult ? result : createIterResultObject2(result, state.done);
+        } catch (error) {
+          state.done = true;
+          throw error;
+        }
+      },
+      "return": function() {
+        var state = getInternalState(this);
+        var iterator = state.iterator;
+        state.done = true;
+        if (IS_ITERATOR) {
+          var returnMethod = getMethod2(iterator, "return");
+          return returnMethod ? call(returnMethod, iterator) : createIterResultObject2(void 0, true);
+        }
+        if (state.inner) try {
+          iteratorClose2(state.inner.iterator, NORMAL);
+        } catch (error) {
+          return iteratorClose2(iterator, THROW, error);
+        }
+        if (state.openIters) try {
+          iteratorCloseAll2(state.openIters, NORMAL);
+        } catch (error) {
+          return iteratorClose2(iterator, THROW, error);
+        }
+        if (iterator) iteratorClose2(iterator, NORMAL);
+        return createIterResultObject2(void 0, true);
+      }
+    });
+  };
+  var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
+  var IteratorHelperPrototype = createIteratorProxyPrototype(false);
+  createNonEnumerableProperty2(IteratorHelperPrototype, TO_STRING_TAG, "Iterator Helper");
+  iteratorCreateProxy = function(nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
+    var IteratorProxy = function Iterator2(record, state) {
+      if (state) {
+        state.iterator = record.iterator;
+        state.next = record.next;
+      } else state = record;
+      state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
+      state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
+      state.nextHandler = nextHandler;
+      state.counter = 0;
+      state.done = false;
+      setInternalState(this, state);
+    };
+    IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
+    return IteratorProxy;
+  };
+  return iteratorCreateProxy;
+}
+var callWithSafeIterationClosing;
+var hasRequiredCallWithSafeIterationClosing;
+function requireCallWithSafeIterationClosing() {
+  if (hasRequiredCallWithSafeIterationClosing) return callWithSafeIterationClosing;
+  hasRequiredCallWithSafeIterationClosing = 1;
+  var anObject2 = requireAnObject();
+  var iteratorClose2 = requireIteratorClose();
+  callWithSafeIterationClosing = function(iterator, fn, value, ENTRIES) {
+    try {
+      return ENTRIES ? fn(anObject2(value)[0], value[1]) : fn(value);
+    } catch (error) {
+      iteratorClose2(iterator, "throw", error);
+    }
+  };
+  return callWithSafeIterationClosing;
+}
+var iteratorHelperThrowsOnInvalidIterator;
+var hasRequiredIteratorHelperThrowsOnInvalidIterator;
+function requireIteratorHelperThrowsOnInvalidIterator() {
+  if (hasRequiredIteratorHelperThrowsOnInvalidIterator) return iteratorHelperThrowsOnInvalidIterator;
+  hasRequiredIteratorHelperThrowsOnInvalidIterator = 1;
+  iteratorHelperThrowsOnInvalidIterator = function(methodName, argument) {
+    var method = typeof Iterator == "function" && Iterator.prototype[methodName];
+    if (method) try {
+      method.call({
+        next: null
+      }, argument).next();
+    } catch (error) {
+      return true;
+    }
+  };
+  return iteratorHelperThrowsOnInvalidIterator;
+}
+var hasRequiredEs_iterator_filter;
+function requireEs_iterator_filter() {
+  if (hasRequiredEs_iterator_filter) return es_iterator_filter;
+  hasRequiredEs_iterator_filter = 1;
+  var $ = require_export();
+  var call = requireFunctionCall();
+  var aCallable2 = requireACallable();
+  var anObject2 = requireAnObject();
+  var getIteratorDirect2 = requireGetIteratorDirect();
+  var createIteratorProxy = requireIteratorCreateProxy();
+  var callWithSafeIterationClosing2 = requireCallWithSafeIterationClosing();
+  var IS_PURE = requireIsPure();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperThrowsOnInvalidIterator2 = requireIteratorHelperThrowsOnInvalidIterator();
+  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
+  var FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator2("filter", function() {
+  });
+  var filterWithoutClosingOnEarlyError = !IS_PURE && !FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError2("filter", TypeError);
+  var FORCED = IS_PURE || FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR || filterWithoutClosingOnEarlyError;
+  var IteratorProxy = createIteratorProxy(function() {
+    var iterator = this.iterator;
+    var predicate = this.predicate;
+    var next = this.next;
+    var result, done, value;
+    while (true) {
+      result = anObject2(call(next, iterator));
+      done = this.done = !!result.done;
+      if (done) return;
+      value = result.value;
+      if (callWithSafeIterationClosing2(iterator, predicate, [value, this.counter++], true)) return value;
+    }
+  });
+  $({
+    target: "Iterator",
+    proto: true,
+    real: true,
+    forced: FORCED
+  }, {
+    filter: function filter(predicate) {
+      anObject2(this);
+      try {
+        aCallable2(predicate);
+      } catch (error) {
+        iteratorClose2(this, "throw", error);
+      }
+      if (filterWithoutClosingOnEarlyError) return call(filterWithoutClosingOnEarlyError, this, predicate);
+      return new IteratorProxy(getIteratorDirect2(this), {
+        predicate
+      });
+    }
+  });
+  return es_iterator_filter;
+}
+requireEs_iterator_filter();
 var es_set_difference_v2 = {};
 var setHelpers;
 var hasRequiredSetHelpers;
@@ -2728,7 +2943,7 @@ function isFTableCellApi(value) {
   return value !== null && typeof value === "object" && Boolean(value.tabstopEl);
 }
 var tableCellApiSymbol = /* @__PURE__ */ Symbol("table:cell-api");
-var navKeys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
+var navKeys = /* @__PURE__ */ new Set(["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"]);
 var prevCellIndex = void 0;
 function getCellTarget(tableElement, rowIndex, cellIndex) {
   return tableElement.rows[rowIndex].cells[cellIndex];
@@ -2755,7 +2970,7 @@ function getVerticalNavIndex(table, from, to) {
     target.cell = prevCellIndex;
     prevCellIndex = void 0;
   } else {
-    target.cell = targetMax < from.cell ? targetMax : from.cell;
+    target.cell = Math.min(targetMax, from.cell);
   }
   if (targetMax < from.cell) {
     prevCellIndex = from.cell;
@@ -2769,7 +2984,7 @@ function navigate(e, table, from, last) {
   if (!isDefined(from) || !isDefined(last)) {
     return;
   }
-  if (!navKeys.includes(e.code)) {
+  if (!navKeys.has(e.code)) {
     return;
   }
   e.preventDefault();
@@ -2888,6 +3103,7 @@ function activateCell(element, options) {
   if (options?.focus) {
     targetEl.focus();
   }
+  return targetEl;
 }
 function stopEdit(element, reason) {
   const td = getCell(element);
@@ -2967,8 +3183,8 @@ var _hoisted_1$e = {
   key: 0,
   class: "table-ng__cell table-ng__cell--expand"
 };
-var _hoisted_2$a = ["aria-label", "aria-expanded"];
-var _hoisted_3$7 = {
+var _hoisted_2$9 = ["aria-label", "aria-expanded"];
+var _hoisted_3$6 = {
   key: 1,
   ref: "expandable",
   tabindex: "-1",
@@ -3014,7 +3230,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent2({
       }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$a)])) : (openBlock(), createElementBlock("td", _hoisted_3$7, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$9)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, null, 512));
     };
   }
 });
@@ -3431,7 +3647,7 @@ var _hoisted_1$b = {
   scope: "col",
   class: "table-ng__column table-ng__column--selectable"
 };
-var _hoisted_2$9 = ["checked", "indeterminate", "aria-label"];
+var _hoisted_2$8 = ["checked", "indeterminate", "aria-label"];
 var _sfc_main$d = /* @__PURE__ */ defineComponent2({
   __name: "ITableHeaderSelectable",
   props: {
@@ -3468,7 +3684,7 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent2({
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange: _cache[0] || (_cache[0] = ($event) => emit("toggle"))
-      }, null, 40, _hoisted_2$9)) : createCommentVNode("", true)]);
+      }, null, 40, _hoisted_2$8)) : createCommentVNode("", true)]);
     };
   }
 });
@@ -3476,8 +3692,8 @@ var _hoisted_1$a = {
   key: 0,
   class: "table-ng__cell table-ng__cell--checkbox"
 };
-var _hoisted_2$8 = ["checked", "aria-label"];
-var _hoisted_3$6 = {
+var _hoisted_2$7 = ["checked", "aria-label"];
+var _hoisted_3$5 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
@@ -3514,7 +3730,7 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent2({
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$8)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, [createElementVNode("input", {
+      }, null, 40, _hoisted_2$7)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, [createElementVNode("input", {
         checked: Boolean(__props.column.checked(__props.row)),
         type: "checkbox",
         "aria-label": ariaLabel.value
@@ -3525,7 +3741,7 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent2({
 var _hoisted_1$9 = {
   class: "table-ng__cell table-ng__cell--radio"
 };
-var _hoisted_2$7 = ["checked", "aria-label"];
+var _hoisted_2$6 = ["checked", "aria-label"];
 var _sfc_main$b = /* @__PURE__ */ defineComponent2({
   __name: "ITableRadio",
   props: {
@@ -3556,7 +3772,7 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent2({
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$7)]);
+      }, null, 40, _hoisted_2$6)]);
     };
   }
 });
@@ -3612,7 +3828,8 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent2({
       },
       update() {
         emit("toggle", __props.row);
-      }
+      },
+      enabled: true
     };
     const singleSelectColumn = {
       type: "radio",
@@ -3630,7 +3847,8 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent2({
       },
       update() {
         emit("toggle", __props.row);
-      }
+      },
+      enabled: true
     };
     return (_ctx, _cache) => {
       return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$8)) : __props.selectable === "multi" ? (openBlock(), createBlock(_sfc_main$c, {
@@ -3780,7 +3998,7 @@ function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
   const array = [];
   walk(keyedRows, expandableAttribute, (row, level) => {
     const key = getItemIdentifier(row);
-    const isExpandable = Boolean(expandableAttribute && row[expandableAttribute]);
+    const isExpandable = Boolean(expandableAttribute && Array.isArray(row[expandableAttribute]) && row[expandableAttribute].length > 0);
     const isExpanded = isExpandable && expandedKeys.has(key);
     const rowIndex = rowIndexes.indexOf(key) + 2;
     array.push({
@@ -3803,166 +4021,6 @@ function useStartStopEdit() {
   };
 }
 var es_iterator_map = {};
-var defineBuiltIns;
-var hasRequiredDefineBuiltIns;
-function requireDefineBuiltIns() {
-  if (hasRequiredDefineBuiltIns) return defineBuiltIns;
-  hasRequiredDefineBuiltIns = 1;
-  var defineBuiltIn2 = requireDefineBuiltIn();
-  defineBuiltIns = function(target, src, options) {
-    for (var key in src) defineBuiltIn2(target, key, src[key], options);
-    return target;
-  };
-  return defineBuiltIns;
-}
-var createIterResultObject;
-var hasRequiredCreateIterResultObject;
-function requireCreateIterResultObject() {
-  if (hasRequiredCreateIterResultObject) return createIterResultObject;
-  hasRequiredCreateIterResultObject = 1;
-  createIterResultObject = function(value, done) {
-    return {
-      value,
-      done
-    };
-  };
-  return createIterResultObject;
-}
-var iteratorCloseAll;
-var hasRequiredIteratorCloseAll;
-function requireIteratorCloseAll() {
-  if (hasRequiredIteratorCloseAll) return iteratorCloseAll;
-  hasRequiredIteratorCloseAll = 1;
-  var iteratorClose2 = requireIteratorClose();
-  iteratorCloseAll = function(iters, kind, value) {
-    for (var i = iters.length - 1; i >= 0; i--) {
-      if (iters[i] === void 0) continue;
-      try {
-        value = iteratorClose2(iters[i].iterator, kind, value);
-      } catch (error) {
-        kind = "throw";
-        value = error;
-      }
-    }
-    if (kind === "throw") throw value;
-    return value;
-  };
-  return iteratorCloseAll;
-}
-var iteratorCreateProxy;
-var hasRequiredIteratorCreateProxy;
-function requireIteratorCreateProxy() {
-  if (hasRequiredIteratorCreateProxy) return iteratorCreateProxy;
-  hasRequiredIteratorCreateProxy = 1;
-  var call = requireFunctionCall();
-  var create = requireObjectCreate();
-  var createNonEnumerableProperty2 = requireCreateNonEnumerableProperty();
-  var defineBuiltIns2 = requireDefineBuiltIns();
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var InternalStateModule = requireInternalState();
-  var getMethod2 = requireGetMethod();
-  var IteratorPrototype = requireIteratorsCore().IteratorPrototype;
-  var createIterResultObject2 = requireCreateIterResultObject();
-  var iteratorClose2 = requireIteratorClose();
-  var iteratorCloseAll2 = requireIteratorCloseAll();
-  var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
-  var ITERATOR_HELPER = "IteratorHelper";
-  var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
-  var NORMAL = "normal";
-  var THROW = "throw";
-  var setInternalState = InternalStateModule.set;
-  var createIteratorProxyPrototype = function(IS_ITERATOR) {
-    var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
-    return defineBuiltIns2(create(IteratorPrototype), {
-      next: function next() {
-        var state = getInternalState(this);
-        if (IS_ITERATOR) return state.nextHandler();
-        if (state.done) return createIterResultObject2(void 0, true);
-        try {
-          var result = state.nextHandler();
-          return state.returnHandlerResult ? result : createIterResultObject2(result, state.done);
-        } catch (error) {
-          state.done = true;
-          throw error;
-        }
-      },
-      "return": function() {
-        var state = getInternalState(this);
-        var iterator = state.iterator;
-        state.done = true;
-        if (IS_ITERATOR) {
-          var returnMethod = getMethod2(iterator, "return");
-          return returnMethod ? call(returnMethod, iterator) : createIterResultObject2(void 0, true);
-        }
-        if (state.inner) try {
-          iteratorClose2(state.inner.iterator, NORMAL);
-        } catch (error) {
-          return iteratorClose2(iterator, THROW, error);
-        }
-        if (state.openIters) try {
-          iteratorCloseAll2(state.openIters, NORMAL);
-        } catch (error) {
-          return iteratorClose2(iterator, THROW, error);
-        }
-        if (iterator) iteratorClose2(iterator, NORMAL);
-        return createIterResultObject2(void 0, true);
-      }
-    });
-  };
-  var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
-  var IteratorHelperPrototype = createIteratorProxyPrototype(false);
-  createNonEnumerableProperty2(IteratorHelperPrototype, TO_STRING_TAG, "Iterator Helper");
-  iteratorCreateProxy = function(nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
-    var IteratorProxy = function Iterator2(record, state) {
-      if (state) {
-        state.iterator = record.iterator;
-        state.next = record.next;
-      } else state = record;
-      state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
-      state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
-      state.nextHandler = nextHandler;
-      state.counter = 0;
-      state.done = false;
-      setInternalState(this, state);
-    };
-    IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
-    return IteratorProxy;
-  };
-  return iteratorCreateProxy;
-}
-var callWithSafeIterationClosing;
-var hasRequiredCallWithSafeIterationClosing;
-function requireCallWithSafeIterationClosing() {
-  if (hasRequiredCallWithSafeIterationClosing) return callWithSafeIterationClosing;
-  hasRequiredCallWithSafeIterationClosing = 1;
-  var anObject2 = requireAnObject();
-  var iteratorClose2 = requireIteratorClose();
-  callWithSafeIterationClosing = function(iterator, fn, value, ENTRIES) {
-    try {
-      return ENTRIES ? fn(anObject2(value)[0], value[1]) : fn(value);
-    } catch (error) {
-      iteratorClose2(iterator, "throw", error);
-    }
-  };
-  return callWithSafeIterationClosing;
-}
-var iteratorHelperThrowsOnInvalidIterator;
-var hasRequiredIteratorHelperThrowsOnInvalidIterator;
-function requireIteratorHelperThrowsOnInvalidIterator() {
-  if (hasRequiredIteratorHelperThrowsOnInvalidIterator) return iteratorHelperThrowsOnInvalidIterator;
-  hasRequiredIteratorHelperThrowsOnInvalidIterator = 1;
-  iteratorHelperThrowsOnInvalidIterator = function(methodName, argument) {
-    var method = typeof Iterator == "function" && Iterator.prototype[methodName];
-    if (method) try {
-      method.call({
-        next: null
-      }, argument).next();
-    } catch (error) {
-      return true;
-    }
-  };
-  return iteratorHelperThrowsOnInvalidIterator;
-}
 var hasRequiredEs_iterator_map;
 function requireEs_iterator_map() {
   if (hasRequiredEs_iterator_map) return es_iterator_map;
@@ -4014,8 +4072,8 @@ var _hoisted_1$7 = {
   key: 0,
   class: "table-ng__cell table-ng__cell--anchor"
 };
-var _hoisted_2$6 = ["href"];
-var _hoisted_3$5 = {
+var _hoisted_2$5 = ["href"];
+var _hoisted_3$4 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
@@ -4031,36 +4089,26 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
     expose: __expose
   }) {
     const targetElement = useTemplateRef("target");
-    const renderAnchor = computed3(() => {
-      return __props.column.enabled(__props.row) && __props.column.text(__props.row) !== null;
-    });
     const expose = {
       tabstopEl: targetElement
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return renderAnchor.value ? (openBlock(), createElementBlock("td", _hoisted_1$7, [createElementVNode("a", {
+      return __props.column.text(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$7, [createElementVNode("a", {
         ref: "target",
         class: "anchor anchor--block",
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$6)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
+      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$5)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
     };
   }
 });
 var _hoisted_1$6 = {
-  key: 0,
   class: "table-ng__cell table-ng__cell--button"
 };
-var _hoisted_2$5 = {
+var _hoisted_2$4 = {
   class: "sr-only"
-};
-var _hoisted_3$4 = {
-  key: 1,
-  ref: "td",
-  tabindex: "-1",
-  class: "table-ng__cell"
 };
 var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
   __name: "ITableButton",
@@ -4072,7 +4120,6 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
     expose: __expose
   }) {
     const buttonElement = useTemplateRef("button");
-    const tdElement = useTemplateRef("td");
     function onClickButton() {
       assertRef(buttonElement);
       buttonElement.value.tabIndex = 0;
@@ -4080,15 +4127,12 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
         __props.column.onClick(__props.row);
       }
     }
-    const renderButton = computed3(() => {
-      return __props.column.enabled(__props.row) && __props.column.text(__props.row) !== null;
-    });
     const expose = {
-      tabstopEl: renderButton.value ? buttonElement : tdElement
+      tabstopEl: buttonElement
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return renderButton.value ? (openBlock(), createElementBlock("td", _hoisted_1$6, [createElementVNode("button", {
+      return openBlock(), createElementBlock("td", _hoisted_1$6, [createElementVNode("button", {
         ref: "button",
         class: "icon-button",
         type: "button",
@@ -4098,7 +4142,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
         key: 0,
         library: __props.column.iconLibrary,
         name: __props.column.icon
-      }, null, 8, ["library", "name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$5, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
+      }, null, 8, ["library", "name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$4, toDisplayString(__props.column.text(__props.row)), 1)], 512)]);
     };
   }
 });
@@ -4146,11 +4190,6 @@ requireEs_iterator_find();
 var _hoisted_1$5 = {
   class: "sr-only"
 };
-var _hoisted_2$4 = {
-  key: 1,
-  tabindex: "-1",
-  class: "table-ng__cell"
-};
 var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
   __name: "ITableMenu",
   props: {
@@ -4183,9 +4222,6 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
         };
       });
     });
-    const renderButton = computed3(() => {
-      return __props.column.enabled(__props.row);
-    });
     function onOpen(event) {
       event.stopPropagation();
       isOpen.value = true;
@@ -4208,8 +4244,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
     __expose(expose);
     return (_ctx, _cache) => {
       var _buttonRef$value;
-      return renderButton.value ? (openBlock(), createElementBlock("td", {
-        key: 0,
+      return openBlock(), createElementBlock("td", {
         class: normalizeClass(["table-ng__cell table-ng__cell--button", {
           "table-ng__cell--menu-open": isOpen.value
         }])
@@ -4229,7 +4264,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
         onClose,
         onSelect,
         onFocusout
-      }, null, 8, ["is-open", "items", "anchor"])], 2)) : (openBlock(), createElementBlock("td", _hoisted_2$4));
+      }, null, 8, ["is-open", "items", "anchor"])], 2);
     };
   }
 });
@@ -4352,12 +4387,12 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
       if (activeOption.value) {
         const index = __props.column.options.indexOf(activeOption.value);
         if (index === 0) {
-          activeOption.value = __props.column.options[__props.column.options.length - 1];
+          activeOption.value = __props.column.options.at(-1);
         } else {
           activeOption.value = __props.column.options[index - 1];
         }
       } else {
-        activeOption.value = __props.column.options[__props.column.options.length - 1];
+        activeOption.value = __props.column.options.at(-1);
       }
     }
     async function onEditKeyDown(e) {
@@ -4445,12 +4480,14 @@ function defaultTnumValue(type) {
   const tnumTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:currency", "text:number", "text:organisationsnummer", "text:percent", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode"];
   return tnumTypes.includes(type);
 }
+var defaultLabelFn = () => "";
 function getLabelFn(fn) {
   if (fn) {
     return fn;
   }
-  return () => "";
+  return defaultLabelFn;
 }
+var defaultUpdateFn = () => void 0;
 function getUpdateFn(fn, key) {
   if (fn) {
     return fn;
@@ -4460,7 +4497,7 @@ function getUpdateFn(fn, key) {
       row[key] = value;
     };
   }
-  return () => void 0;
+  return defaultUpdateFn;
 }
 function getValueFn(fn, key, coerce, defaultValue) {
   if (fn) {
@@ -4492,7 +4529,7 @@ var _hoisted_3$2 = {
   key: 0,
   class: "sr-only"
 };
-var _hoisted_4$2 = ["id", "aria-label"];
+var _hoisted_4$2 = ["id", "aria-label", "aria-hidden"];
 var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
   __name: "ITableText",
   props: {
@@ -4610,7 +4647,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     function setUpFakeValidation(el) {
       assertRef(inputElement);
       const nativeEvents = ["change", "blur"];
-      nativeEvents.forEach((nativeEvent) => {
+      for (const nativeEvent of nativeEvents) {
         useEventListener(el, nativeEvent, () => {
           const fakeEvent = new CustomEvent("validity", {
             detail: {
@@ -4624,7 +4661,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
           });
           onValidity(fakeEvent);
         });
-      });
+      }
       useEventListener(el, "input", onPendingValidity);
       useEventListener(el, "component-validity", (e) => {
         e.stopPropagation();
@@ -4734,23 +4771,30 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     function onEditingKeydown(event) {
       assertRef(inputElement);
       event.stopPropagation();
-      if (event.key === "Enter") {
-        if (viewValue.value === initialViewValue) {
-          onStopEdit({
-            reason: "enter"
-          });
-        } else {
-          pendingStopEditReason = "enter";
+      switch (event.key) {
+        case "Enter": {
+          if (viewValue.value === initialViewValue) {
+            onStopEdit({
+              reason: "enter"
+            });
+          } else {
+            pendingStopEditReason = "enter";
+          }
+          break;
         }
-      } else if (event.key === "Escape") {
-        onStopEdit({
-          reason: "escape"
-        });
-        viewValue.value = initialViewValue;
-        inputElement.value.value = initialViewValue;
-        void validationFacade.validateElement(inputElement.value);
-      } else if (event.key === "Tab") {
-        pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
+        case "Escape": {
+          onStopEdit({
+            reason: "escape"
+          });
+          viewValue.value = initialViewValue;
+          inputElement.value.value = initialViewValue;
+          void validationFacade.validateElement(inputElement.value);
+          break;
+        }
+        case "Tab": {
+          pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
+          break;
+        }
       }
     }
     function onKeydown(event) {
@@ -4829,6 +4873,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         ...configAttributes.value,
         ...columnAttributes.value
       }, {
+        "aria-hidden": !inEdit.value,
         onValidity,
         onPendingValidity
       }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]])], 2), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref3(IPopupError), {
@@ -4852,23 +4897,21 @@ function normalizeAnchorColumn(column) {
     type: "anchor",
     text: getValueFn(column.text, column.key, String, ""),
     href: column.href,
-    enabled: typeof column.enabled === "function" ? column.enabled : () => {
-      var _column$enabled;
-      return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
-    },
     sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
   };
 }
 function normalizeBaseColumn(column) {
+  var _column$enabled;
   const id = /* @__PURE__ */ Symbol();
   const header = toRef2(column.header);
-  const description = typeof column.description !== "undefined" ? toRef2(column.description) : ref3("");
-  const size = typeof column.size !== "undefined" ? toRef2(column.size) : ref3("grow");
+  const description = column.description !== void 0 ? toRef2(column.description) : ref3("");
+  const size = column.size !== void 0 ? toRef2(column.size) : ref3("grow");
   return {
     id,
     header,
     description,
-    size
+    size,
+    enabled: (_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true
   };
 }
 function normalizeButtonColumn(column) {
@@ -4877,10 +4920,6 @@ function normalizeButtonColumn(column) {
     type: "button",
     text: getValueFn(column.text, column.key, String, ""),
     onClick: column.onClick,
-    enabled: typeof column.enabled === "function" ? column.enabled : () => {
-      var _column$enabled;
-      return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
-    },
     icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
     iconLibrary: column.iconLibrary,
     sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
@@ -4915,11 +4954,7 @@ function normalizeMenuColumn(column) {
         icon: (_it$icon = it.icon) !== null && _it$icon !== void 0 ? _it$icon : null,
         onClick: (_it$onClick = it.onClick) !== null && _it$onClick !== void 0 ? _it$onClick : noop2
       };
-    }),
-    enabled: typeof column.enabled === "function" ? column.enabled : () => {
-      var _column$enabled;
-      return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
-    }
+    })
   };
 }
 function normalizeNumberColumn(column) {
@@ -5186,6 +5221,84 @@ function usePopupError() {
     activeErrorAnchor
   };
 }
+var es_array_toSorted = {};
+var arrayFromConstructorAndList;
+var hasRequiredArrayFromConstructorAndList;
+function requireArrayFromConstructorAndList() {
+  if (hasRequiredArrayFromConstructorAndList) return arrayFromConstructorAndList;
+  hasRequiredArrayFromConstructorAndList = 1;
+  var lengthOfArrayLike2 = requireLengthOfArrayLike();
+  arrayFromConstructorAndList = function(Constructor, list, $length) {
+    var index = 0;
+    var length = arguments.length > 2 ? $length : lengthOfArrayLike2(list);
+    var result = new Constructor(length);
+    while (length > index) result[index] = list[index++];
+    return result;
+  };
+  return arrayFromConstructorAndList;
+}
+var getBuiltInPrototypeMethod;
+var hasRequiredGetBuiltInPrototypeMethod;
+function requireGetBuiltInPrototypeMethod() {
+  if (hasRequiredGetBuiltInPrototypeMethod) return getBuiltInPrototypeMethod;
+  hasRequiredGetBuiltInPrototypeMethod = 1;
+  var globalThis2 = requireGlobalThis();
+  getBuiltInPrototypeMethod = function(CONSTRUCTOR, METHOD) {
+    var Constructor = globalThis2[CONSTRUCTOR];
+    var Prototype = Constructor && Constructor.prototype;
+    return Prototype && Prototype[METHOD];
+  };
+  return getBuiltInPrototypeMethod;
+}
+var addToUnscopables;
+var hasRequiredAddToUnscopables;
+function requireAddToUnscopables() {
+  if (hasRequiredAddToUnscopables) return addToUnscopables;
+  hasRequiredAddToUnscopables = 1;
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var create = requireObjectCreate();
+  var defineProperty = requireObjectDefineProperty().f;
+  var UNSCOPABLES = wellKnownSymbol2("unscopables");
+  var ArrayPrototype = Array.prototype;
+  if (ArrayPrototype[UNSCOPABLES] === void 0) {
+    defineProperty(ArrayPrototype, UNSCOPABLES, {
+      configurable: true,
+      value: create(null)
+    });
+  }
+  addToUnscopables = function(key) {
+    ArrayPrototype[UNSCOPABLES][key] = true;
+  };
+  return addToUnscopables;
+}
+var hasRequiredEs_array_toSorted;
+function requireEs_array_toSorted() {
+  if (hasRequiredEs_array_toSorted) return es_array_toSorted;
+  hasRequiredEs_array_toSorted = 1;
+  var $ = require_export();
+  var uncurryThis = requireFunctionUncurryThis();
+  var aCallable2 = requireACallable();
+  var toIndexedObject2 = requireToIndexedObject();
+  var arrayFromConstructorAndList2 = requireArrayFromConstructorAndList();
+  var getBuiltInPrototypeMethod2 = requireGetBuiltInPrototypeMethod();
+  var addToUnscopables2 = requireAddToUnscopables();
+  var $Array = Array;
+  var sort = uncurryThis(getBuiltInPrototypeMethod2("Array", "sort"));
+  $({
+    target: "Array",
+    proto: true
+  }, {
+    toSorted: function toSorted(compareFn) {
+      if (compareFn !== void 0) aCallable2(compareFn);
+      var O = toIndexedObject2(this);
+      var A = arrayFromConstructorAndList2($Array, O);
+      return sort(A, compareFn);
+    }
+  });
+  addToUnscopables2("toSorted");
+  return es_array_toSorted;
+}
+requireEs_array_toSorted();
 var es_iterator_some = {};
 var hasRequiredEs_iterator_some;
 function requireEs_iterator_some() {
@@ -5267,7 +5380,7 @@ function useSelectable(options) {
       selectedRows.value = [row];
     } else {
       const index = selectedRows.value.indexOf(row);
-      if (index < 0) {
+      if (index === -1) {
         selectedRows.value.push(row);
       } else {
         selectedRows.value.splice(index, 1);
@@ -5280,7 +5393,7 @@ function useSelectable(options) {
   }
   let oldKeys = void 0;
   watch3(() => toValue2(rows), (newValue) => {
-    const newKeys = newValue.map(rowKey).sort();
+    const newKeys = newValue.map(rowKey).toSorted();
     if (!oldKeys) {
       oldKeys = newKeys;
       return;
@@ -5319,7 +5432,7 @@ function useTabstop(tableRef, metaRows) {
     assertRef(tableRef);
     const needle = newRows[0];
     const newFirstRowOldIndex = oldRows.findIndex(matching(needle));
-    if (newFirstRowOldIndex > -1) {
+    if (newFirstRowOldIndex !== -1) {
       const target = getCellTarget(tableRef.value, newFirstRowOldIndex + 1, 0);
       activateCell(target, {
         focus
@@ -5333,7 +5446,7 @@ function useTabstop(tableRef, metaRows) {
     const tabFallback = pendingRowRemoval ? "sticky" : "first-cell";
     pendingRowRemoval = false;
     assertRef(tableRef);
-    const oldTabstopElement = tableRef.value.querySelector(`:not(tfoot)[tabindex="0"]`);
+    const oldTabstopElement = tableRef.value.querySelector(`[tabindex="0"]`);
     assertSet(oldTabstopElement);
     const oldTabstopFocused = oldTabstopElement === document.activeElement;
     if (oldTabstopElement.closest("th")) {
@@ -5489,6 +5602,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     expose: __expose
   }) {
     const selectedRows = useModel(__props, "selectedRows");
+    const $t = useTranslate();
     const {
       hasSlot
     } = useSlotUtils();
@@ -5520,7 +5634,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     const hasFooter = computed3(() => {
       return hasSlot("footer");
     });
-    const columns = computed3(() => normalizeTableColumns(__props.columns));
+    const columns = computed3(() => normalizeTableColumns(__props.columns).filter((col) => toValue2(col.enabled)));
     const tableClasses = computed3(() => {
       return ["table-ng", {
         "table-ng--striped": __props.striped,
@@ -5548,18 +5662,21 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     function onClick(e) {
       const cell = e.target.closest("td, th");
       if (cell) {
-        activateCell(cell, {
+        const targetEl = activateCell(cell, {
           focus: true
         });
+        if (e.target instanceof Node && !targetEl.contains(e.target)) {
+          targetEl.click();
+        }
       }
     }
     function onTableFocusin(e) {
       assertRef(tableRef);
-      tableRef.value.querySelectorAll(`:not(tfoot)[tabindex="0"]`).forEach((it) => {
+      for (const it of tableRef.value.querySelectorAll(`[tabindex="0"]`)) {
         if (it !== e.target) {
           it.setAttribute("tabindex", "-1");
         }
-      });
+      }
     }
     function isInExpandable(el) {
       if (!el.parentElement) {
@@ -5582,7 +5699,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       if (!tableRef.value) {
         return;
       }
-      const outsideTable = Boolean(tableRef.value.tFoot?.contains(relatedTarget)) || !tableRef.value.contains(relatedTarget);
+      const outsideTable = !tableRef.value.contains(relatedTarget);
       if (outsideTable) {
         const cell = target.closest("td, th");
         if (cell) {
@@ -5676,13 +5793,12 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         ref: "table",
         role: role.value,
         class: normalizeClass(tableClasses.value),
-        "aria-rowcount": ariaRowcount.value
-      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("thead", {
+        "aria-rowcount": ariaRowcount.value,
         onFocusin: onTableFocusin,
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
+      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
         key: 1,
         ref: bindCellApiRef,
         state: unref3(selectableHeaderState)(),
@@ -5697,15 +5813,10 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           scope: "col",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])], 32), _cache[6] || (_cache[6] = createTextVNode()), createElementVNode("tbody", {
-        onFocusin: onTableFocusin,
-        onFocusout: onTableFocusout,
-        onClick,
-        onKeydown
-      }, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
+      }), 128))])]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell"
-      }, [renderSlot(_ctx.$slots, "empty", {}, () => [_cache[2] || (_cache[2] = createTextVNode(" Tabellen \xE4r tom ", -1))])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment2, {
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment2, {
         key: 1
       }, renderList(metaRows.value, ({
         key,
@@ -5733,7 +5844,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           "is-expanded": isExpanded,
           "row-key": key,
           onToggle: onToggleExpanded
-        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$f, {
+        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$f, {
           key: 1,
           colspan: columns.value.length
         }, {
@@ -5754,7 +5865,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           state: unref3(selectableRowState)(row),
           row,
           onToggle: unref3(toggleSelectableRow)
-        }, null, 8, ["level", "selectable", "state", "row", "onToggle"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
+        }, null, 8, ["level", "selectable", "state", "row", "onToggle"])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
           return openBlock(), createElementBlock(Fragment2, {
             key: column.id
           }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
@@ -5771,38 +5882,17 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
         }), 128))], 64))], 8, _hoisted_7$1);
-      }), 128))], 32), _cache[7] || (_cache[7] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
+      }), 128))]), _cache[6] || (_cache[6] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
         class: "table-ng__row",
         "aria-rowindex": ariaRowcount.value
       }, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell--custom"
-      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 10, _hoisted_1$2);
+      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1$2);
     };
   }
 });
 var es_array_toSpliced = {};
-var addToUnscopables;
-var hasRequiredAddToUnscopables;
-function requireAddToUnscopables() {
-  if (hasRequiredAddToUnscopables) return addToUnscopables;
-  hasRequiredAddToUnscopables = 1;
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var create = requireObjectCreate();
-  var defineProperty = requireObjectDefineProperty().f;
-  var UNSCOPABLES = wellKnownSymbol2("unscopables");
-  var ArrayPrototype = Array.prototype;
-  if (ArrayPrototype[UNSCOPABLES] === void 0) {
-    defineProperty(ArrayPrototype, UNSCOPABLES, {
-      configurable: true,
-      value: create(null)
-    });
-  }
-  addToUnscopables = function(key) {
-    ArrayPrototype[UNSCOPABLES][key] = true;
-  };
-  return addToUnscopables;
-}
 var hasRequiredEs_array_toSpliced;
 function requireEs_array_toSpliced() {
   if (hasRequiredEs_array_toSpliced) return es_array_toSpliced;
@@ -6470,21 +6560,6 @@ function requireEs_typedArray_toReversed() {
 }
 requireEs_typedArray_toReversed();
 var es_typedArray_toSorted = {};
-var arrayFromConstructorAndList;
-var hasRequiredArrayFromConstructorAndList;
-function requireArrayFromConstructorAndList() {
-  if (hasRequiredArrayFromConstructorAndList) return arrayFromConstructorAndList;
-  hasRequiredArrayFromConstructorAndList = 1;
-  var lengthOfArrayLike2 = requireLengthOfArrayLike();
-  arrayFromConstructorAndList = function(Constructor, list, $length) {
-    var index = 0;
-    var length = arguments.length > 2 ? $length : lengthOfArrayLike2(list);
-    var result = new Constructor(length);
-    while (length > index) result[index] = list[index++];
-    return result;
-  };
-  return arrayFromConstructorAndList;
-}
 var hasRequiredEs_typedArray_toSorted;
 function requireEs_typedArray_toSorted() {
   if (hasRequiredEs_typedArray_toSorted) return es_typedArray_toSorted;
@@ -6850,7 +6925,7 @@ function requireUint8FromHex() {
   var uncurryThis = requireFunctionUncurryThis();
   var Uint8Array2 = globalThis2.Uint8Array;
   var SyntaxError = globalThis2.SyntaxError;
-  var parseInt2 = globalThis2.parseInt;
+  var parseInt = globalThis2.parseInt;
   var min = Math.min;
   var NOT_HEX = /[^\da-f]/i;
   var exec = uncurryThis(NOT_HEX.exec);
@@ -6865,7 +6940,7 @@ function requireUint8FromHex() {
     while (written < maxLength) {
       var hexits = stringSlice(string, read, read += 2);
       if (exec(NOT_HEX, hexits)) throw new SyntaxError("String should only contain hex characters");
-      bytes[written++] = parseInt2(hexits, 16);
+      bytes[written++] = parseInt(hexits, 16);
     }
     return {
       bytes,
@@ -7274,61 +7349,6 @@ function requireWeb_domException_stack() {
   return web_domException_stack;
 }
 requireWeb_domException_stack();
-var es_iterator_filter = {};
-var hasRequiredEs_iterator_filter;
-function requireEs_iterator_filter() {
-  if (hasRequiredEs_iterator_filter) return es_iterator_filter;
-  hasRequiredEs_iterator_filter = 1;
-  var $ = require_export();
-  var call = requireFunctionCall();
-  var aCallable2 = requireACallable();
-  var anObject2 = requireAnObject();
-  var getIteratorDirect2 = requireGetIteratorDirect();
-  var createIteratorProxy = requireIteratorCreateProxy();
-  var callWithSafeIterationClosing2 = requireCallWithSafeIterationClosing();
-  var IS_PURE = requireIsPure();
-  var iteratorClose2 = requireIteratorClose();
-  var iteratorHelperThrowsOnInvalidIterator2 = requireIteratorHelperThrowsOnInvalidIterator();
-  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
-  var FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator2("filter", function() {
-  });
-  var filterWithoutClosingOnEarlyError = !IS_PURE && !FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError2("filter", TypeError);
-  var FORCED = IS_PURE || FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR || filterWithoutClosingOnEarlyError;
-  var IteratorProxy = createIteratorProxy(function() {
-    var iterator = this.iterator;
-    var predicate = this.predicate;
-    var next = this.next;
-    var result, done, value;
-    while (true) {
-      result = anObject2(call(next, iterator));
-      done = this.done = !!result.done;
-      if (done) return;
-      value = result.value;
-      if (callWithSafeIterationClosing2(iterator, predicate, [value, this.counter++], true)) return value;
-    }
-  });
-  $({
-    target: "Iterator",
-    proto: true,
-    real: true,
-    forced: FORCED
-  }, {
-    filter: function filter(predicate) {
-      anObject2(this);
-      try {
-        aCallable2(predicate);
-      } catch (error) {
-        iteratorClose2(this, "throw", error);
-      }
-      if (filterWithoutClosingOnEarlyError) return call(filterWithoutClosingOnEarlyError, this, predicate);
-      return new IteratorProxy(getIteratorDirect2(this), {
-        predicate
-      });
-    }
-  });
-  return es_iterator_filter;
-}
-requireEs_iterator_filter();
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
 function findMatch(regexps, value) {
@@ -7348,14 +7368,14 @@ function hoursMinutesStringToMinutes(valueString, extraForgiving = false) {
   if (isEmpty(valueString.trim())) {
     return void 0;
   }
-  const [hours, minutes] = splitHoursMinutes(valueString, extraForgiving).map((value) => parseInt(value, 10));
+  const [hours, minutes] = splitHoursMinutes(valueString, extraForgiving).map((value) => Number.parseInt(value, 10));
   const totalMinutes = hours * 60 + minutes;
-  return !isNaN(totalMinutes) ? totalMinutes : void 0;
+  return !Number.isNaN(totalMinutes) ? totalMinutes : void 0;
 }
 function minutesToHoursMinutesString(value) {
   let valueString = "";
-  const safeValue = value !== null && value !== void 0 ? value : NaN;
-  if (!isNaN(safeValue)) {
+  const safeValue = value !== null && value !== void 0 ? value : Number.NaN;
+  if (!Number.isNaN(safeValue)) {
     const {
       hours,
       minutes
@@ -7375,14 +7395,14 @@ function splitHoursMinutes(valueString, extraForgiving = false) {
   return [hours, minutes];
 }
 function minutesToObject(...values) {
-  const minutes = values.filter((value) => isSet(value) && !isNaN(value)).reduce((sum, value) => sum + value, 0);
+  const minutes = values.filter((value) => isSet(value) && !Number.isNaN(value)).reduce((sum, value) => sum + value, 0);
   return {
     hours: Math.floor(minutes / 60),
     minutes: minutes % 60
   };
 }
 function formatNumberToTime(value) {
-  if (typeof value !== "number" || isNaN(value)) {
+  if (typeof value !== "number" || Number.isNaN(value)) {
     return void 0;
   }
   return minutesToHoursMinutesString(value);
@@ -7392,8 +7412,8 @@ function parseTimeToNumberUsingConfig(value, extraForgiving) {
   if (typeof value !== "string") {
     return void 0;
   }
-  const parsedValue = (_hoursMinutesStringTo = hoursMinutesStringToMinutes(value, extraForgiving)) !== null && _hoursMinutesStringTo !== void 0 ? _hoursMinutesStringTo : NaN;
-  return !isNaN(parsedValue) ? parsedValue : void 0;
+  const parsedValue = (_hoursMinutesStringTo = hoursMinutesStringToMinutes(value, extraForgiving)) !== null && _hoursMinutesStringTo !== void 0 ? _hoursMinutesStringTo : Number.NaN;
+  return !Number.isNaN(parsedValue) ? parsedValue : void 0;
 }
 function parseTimeToNumber(value) {
   return parseTimeToNumberUsingConfig(value, false);
