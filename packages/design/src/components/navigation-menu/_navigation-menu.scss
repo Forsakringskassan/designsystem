@@ -1,5 +1,6 @@
 @use "../../core/size";
 @use "../../core/mixins/breakpoints";
+@use "../../core/mixins/forcedcolors";
 @use "../../core/config-variables";
 @use "variables" as *;
 
@@ -18,10 +19,18 @@
             a:visited,
             a:active {
                 color: $navigationmenu-menuitem-color-text-active;
+
+                @media (forced-colors: active) {
+                    color: LinkText;
+                }
             }
 
             a:hover {
                 color: $navigationmenu-menuitem-color-text-hover;
+
+                @media (forced-colors: active) {
+                    color: LinkText;
+                }
             }
         }
     }
@@ -53,14 +62,20 @@
             &:hover {
                 font-weight: var(--f-font-weight-normal);
                 background-color: $navigationmenu-vertical-color-background-hover;
+                @include forcedcolors.hover-indicator(outline, 2px);
             }
 
             &--highlight {
                 font-weight: var(--f-font-weight-medium);
                 background-color: $navigationmenu-vertical-color-background-selected;
+                @include forcedcolors.selected-indicator;
 
                 .imenu__list__anchor {
                     color: $navigationmenu-vertical-menuitem-color-text-selected;
+
+                    @media (forced-colors: active) {
+                        color: HighlightText;
+                    }
                 }
             }
 
@@ -68,6 +83,7 @@
                 background-color: $navigationmenu-vertical-color-background-selected;
                 font-weight: var(--f-font-weight-medium);
                 color: $navigationmenu-vertical-menuitem-color-text-selected;
+                @include forcedcolors.selected-indicator;
             }
         }
     }
@@ -90,6 +106,7 @@
 
                 .imenu__list__anchor-container {
                     border-bottom: 5px solid $navigationmenu-horizontal-color-border-selected;
+                    @include forcedcolors.hover-indicator(border-bottom, 5px);
                 }
 
                 .imenu__list__anchor:hover {
@@ -104,11 +121,16 @@
 
         &__item:not(.imenu__list__item--highlight) .imenu__list__anchor-container:hover {
             border-bottom: 5px solid $navigationmenu-horizontal-color-border-hover;
+            @include forcedcolors.hover-indicator(border-bottom, 5px);
         }
 
         &__anchor-container {
             padding-bottom: size.$padding-050;
             border-bottom: 5px solid transparent;
+
+            @media (forced-colors: active) {
+                border-bottom: none;
+            }
         }
 
         &__anchor {
