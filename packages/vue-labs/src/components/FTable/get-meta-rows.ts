@@ -29,10 +29,11 @@ export function getMetaRows<T>(
 
     walk(keyedRows, expandableAttribute, (row, level) => {
         const key = getItemIdentifier(row);
-        const isExpandable =
-            !!expandableAttribute &&
+        const isExpandable = Boolean(
+            expandableAttribute &&
             Array.isArray(row[expandableAttribute]) &&
-            row[expandableAttribute].length > 0;
+            row[expandableAttribute].length > 0,
+        );
         const isExpanded = isExpandable && expandedKeys.has(key);
 
         // +2 since header row has rowindex 1.
