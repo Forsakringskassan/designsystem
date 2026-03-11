@@ -1260,8 +1260,9 @@ describe("5 tabstop", () => {
         table.cell({ row: 1, col: 1 }).should("have.attr", "tabindex", "0");
     });
 
-    it("should set correct tabstop for all types of headers and cells on navigation", () => {
-        const { buttonBeforeTable } = mountNavigationTestbed();
+    it("should set correct tabstop for all types of headers, cells and footer on navigation", () => {
+        const slots = { footer: "footer" };
+        const { buttonBeforeTable } = mountNavigationTestbed(slots);
         cy.get(buttonBeforeTable).focus();
         cy.focused().press(Cypress.Keyboard.Keys.TAB);
         // {1, 1}: expand button
@@ -1381,10 +1382,23 @@ describe("5 tabstop", () => {
             .should("have.prop", "tagName", "TD")
             .should("not.have.text")
             .should("have.attr", "tabindex", 0);
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+        // {3, 1}: expand footer
+        cy.focused()
+            .should("have.prop", "tagName", "TD")
+            .should("have.text", "footer")
+            .should("have.attr", "tabindex", 0);
+        cy.focused().press(Cypress.Keyboard.Keys.UP);
+        // {2, 1}: expand for child (empty)
+        cy.focused()
+            .should("have.prop", "tagName", "TD")
+            .should("not.have.text")
+            .should("have.attr", "tabindex", 0);
     });
 
-    it("should set correct tabstop for all types of headers and cells on click", () => {
-        mountNavigationTestbed();
+    it("should set correct tabstop for all types of headers, cells and footer on click", () => {
+        const slots = { footer: "footer" };
+        mountNavigationTestbed(slots);
 
         // {1, 1}: expand button
         table.cell({ row: 1, col: 1 }).click();
@@ -1493,6 +1507,12 @@ describe("5 tabstop", () => {
             .should("have.prop", "tagName", "TD")
             .should("not.have.text")
             .should("have.attr", "tabindex", 0);
+        // {3, 1}: expand footer
+        table.footer().click();
+        cy.focused()
+            .should("have.prop", "tagName", "TD")
+            .should("have.text", "footer")
+            .should("have.attr", "tabindex", 0);
     });
 
     it("should allow tab navigation in and out of expanded row", () => {
@@ -1525,23 +1545,6 @@ describe("5 tabstop", () => {
 
         cy.focused().press(Cypress.Keyboard.Keys.TAB);
         table.cell({ row: 2, col: 2 }).should("have.focus");
-    });
-
-    it("should not change footer tabindex", () => {
-        const footerButtonSelector = "footerButton";
-        const slots = {
-            footer: renderButton("Footer button", {
-                dataTest: footerButtonSelector,
-            }),
-        };
-        mountNavigationTestbed(slots);
-        const footerButton = getTestSelector(footerButtonSelector);
-
-        table.cell({ row: 1, col: 3 }).click();
-        cy.focused().press(Cypress.Keyboard.Keys.TAB);
-        cy.get(footerButton).should("have.focus");
-        cy.focused().realPress(["Shift", "Tab"]);
-        table.cell({ row: 1, col: 3 }).should("have.focus");
     });
 });
 
