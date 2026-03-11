@@ -51,7 +51,7 @@ Se {@link FModal#anvandning `Användning`} för hur du använder `FModal` med AP
 ```diff
  <template>
      <div>
-         <button type="button" @click="onClick">Open modal</button>
+         <f-button @click="onClick">Open modal</f-button>
 -        <f-modal></f-modal>
      </div>
  </template>

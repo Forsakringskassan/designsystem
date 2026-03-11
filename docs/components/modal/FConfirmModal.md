@@ -85,7 +85,7 @@ Se {@link FConfirmModal#anvandning `Användning`} för hur du använder `FConfir
 ```diff
  <template>
      <div>
-         <button type="button" @click="onClick">Open modal</button>
+         <f-button @click="onClick">Open modal</f-button>
 -        <f-confirm-modal></f-confirm-modal>
      </div>
  </template>
