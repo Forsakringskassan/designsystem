@@ -337,7 +337,7 @@ export default defineComponent({
             return ["anchor", "button"].includes(this.columnType);
         },
         editableSupport(): boolean {
-            return ["checkbox", "select", "text"].includes(this.columnType);
+            return ["select", "text"].includes(this.columnType);
         },
         normalizedKey(): TableColumnType {
             return this.columnType === "text" ? this.textType : this.columnType;

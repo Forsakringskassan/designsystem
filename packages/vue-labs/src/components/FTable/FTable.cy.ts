@@ -1124,7 +1124,6 @@ describe("5 tabstop", () => {
                 type: "checkbox",
                 header: "checkbox header",
                 key: "checkbox",
-                editable: true,
                 label: () => "checkbox label",
             },
             {
