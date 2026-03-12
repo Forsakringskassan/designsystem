@@ -3,7 +3,7 @@ import { type PropType, defineComponent } from "vue";
 import { focus, focusFirst } from "@fkui/logic";
 
 import { getHTMLElementsFromVueRef } from "../../utils";
-import { FIcon } from "../FIcon";
+import { FButton } from "../FButton";
 import { type FDialogueTreeData } from "./FDialogueTreeData";
 import {
     type FDialogueTreeOption,
@@ -15,7 +15,7 @@ import {
 export default defineComponent({
     name: "FDialogueTree",
     components: {
-        FIcon,
+        FButton,
     },
     props: {
         /**
@@ -107,10 +107,13 @@ export default defineComponent({
             <!-- [html-validate-disable-next aria-label-misuse -- well supported] -->
             <ul :key="currentStep.label" class="dialogue-tree__list" :aria-label="currentStep.label">
                 <li v-for="(option, index) in options" :key="option.label" class="dialogue-tree__list-item">
-                    <button :ref="`dialogueButton-${index}`" type="button" @click="onClickedOption(option, index)">
+                    <f-button
+                        :ref="`dialogueButton-${index}`"
+                        icon-right="arrow-right"
+                        @click="onClickedOption(option, index)"
+                    >
                         <span>{{ option.label }}</span>
-                        <f-icon name="arrow-right"></f-icon>
-                    </button>
+                    </f-button>
                 </li>
             </ul>
         </template>

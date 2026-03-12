@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FDetailsPanel, FPageLayout, useDetailsPanel } from "@fkui/vue";
+import { FButton, FDetailsPanel, FPageLayout, useDetailsPanel } from "@fkui/vue";
 
 const panel = useDetailsPanel("awesome-panel");
 </script>
@@ -13,7 +13,7 @@ const panel = useDetailsPanel("awesome-panel");
 
             <div :slot="content">
                 Innehåll
-                <button type="button" @click="panel.open('foo')">Öppna</button>
+                <f-button @click="panel.open('foo')">Öppna</f-button>
             </div>
         </template>
     </f-page-layout>
