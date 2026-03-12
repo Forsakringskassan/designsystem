@@ -41,7 +41,6 @@ const columns = defineTableColumns<Row>([
         key: "aktiv",
         size: "shrink",
         label: (row) => `Välj rad ${row.id}`,
-        editable: true,
     },
     {
         type: "text",

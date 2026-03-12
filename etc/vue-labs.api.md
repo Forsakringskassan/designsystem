@@ -163,8 +163,6 @@ export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBa
     // (undocumented)
     checked?(this: void, row: T): boolean;
     // (undocumented)
-    editable?: boolean | ((this: void, row: T) => boolean);
-    // (undocumented)
     key?: K;
     // (undocumented)
     label?(this: void, row: T): string;

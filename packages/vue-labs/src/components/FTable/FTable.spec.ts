@@ -1097,7 +1097,6 @@ describe("Clickable cells", () => {
                 header: "Header",
                 label: () => "Label",
                 key: "active",
-                editable: true,
             },
         ]);
         const wrapper = mount(FTable<(typeof rows)[number]>, {
