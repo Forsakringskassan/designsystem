@@ -4129,6 +4129,8 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
       () => __props.isOpen,
       async (value) => {
         await toggleIsOpen(value);
+        document.addEventListener("click", onDocumentClickHandler);
+        window.addEventListener("resize", onWindowResizeDebounced);
         if (value) {
           teleportDisabled2.value = isTeleportDisabled({
             window,
@@ -4159,8 +4161,6 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
       await nextTick();
       await calculatePlacement();
       applyFocus();
-      document.addEventListener("click", onDocumentClickHandler);
-      window.addEventListener("resize", onWindowResizeDebounced);
       emit("open");
     }
     async function calculatePlacement() {
@@ -4221,7 +4221,10 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
     function isMobileSize() {
       return window.innerWidth < MIN_DESKTOP_WIDTH;
     }
-    function onDocumentClickHandler() {
+    function onDocumentClickHandler(event) {
+      if (event.target === __props.anchor) {
+        return;
+      }
       emit("close", "click-outside");
     }
     async function onWindowResize() {
