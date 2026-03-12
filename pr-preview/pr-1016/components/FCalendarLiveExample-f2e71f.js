@@ -1694,8 +1694,8 @@ function refIsVue(value) {
 function refIsVueArray(value) {
   return Array.isArray(value) && value.length > 0 && refIsVue(value[0]);
 }
-function getSortedHTMLElementsFromVueRef(ref7) {
-  const htmlElements = getHTMLElementsFromVueRef(ref7);
+function getSortedHTMLElementsFromVueRef(ref8) {
+  const htmlElements = getHTMLElementsFromVueRef(ref8);
   htmlElements.sort((lhs, rhs) => {
     const lhsIndex = parseIntOrDefault(lhs.dataset.refIndex, -Infinity);
     const rhsIndex = parseIntOrDefault(rhs.dataset.refIndex, -Infinity);
@@ -1705,45 +1705,45 @@ function getSortedHTMLElementsFromVueRef(ref7) {
 }
 function parseIntOrDefault(value, defaultValue) {
   if (typeof value === "string") {
-    const parsed = parseInt(value, 10);
-    if (!isNaN(parsed)) {
+    const parsed = Number.parseInt(value, 10);
+    if (!Number.isNaN(parsed)) {
       return parsed;
     }
   }
   return defaultValue;
 }
-function getHTMLElementsFromVueRef(ref7) {
+function getHTMLElementsFromVueRef(ref8) {
   let result = [];
-  if (isEmptyArray(ref7)) {
+  if (isEmptyArray(ref8)) {
     result = [];
-  } else if (refIsVueArray(ref7)) {
-    result = ref7.map((vueRef) => vueRef.$el);
-  } else if (refIsHTMLElementArray(ref7)) {
-    result = [...ref7];
-  } else if (isSet2(ref7)) {
-    result = [getHTMLElementFromVueRef(ref7)];
+  } else if (refIsVueArray(ref8)) {
+    result = ref8.map((vueRef) => vueRef.$el);
+  } else if (refIsHTMLElementArray(ref8)) {
+    result = [...ref8];
+  } else if (isSet2(ref8)) {
+    result = [getHTMLElementFromVueRef(ref8)];
   }
   return result;
 }
 function isEmptyArray(value) {
   return Array.isArray(value) && value.length === 0;
 }
-function findElementFromVueRef(ref7) {
-  if (refIsElement(ref7)) {
-    return ref7;
-  } else if (refIsVue(ref7)) {
-    return ref7.$el;
+function findElementFromVueRef(ref8) {
+  if (refIsElement(ref8)) {
+    return ref8;
+  } else if (refIsVue(ref8)) {
+    return ref8.$el;
   }
 }
-function getHTMLElementFromVueRef(ref7) {
-  const element = findElementFromVueRef(ref7);
+function getHTMLElementFromVueRef(ref8) {
+  const element = findElementFromVueRef(ref8);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref7)}.`);
+    throw new Error(`Unable to find element from ${String(ref8)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${String(ref7)}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref8)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -1969,8 +1969,8 @@ import { FDate } from "@fkui/date";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
 import { defineComponent as defineComponent3 } from "vue";
-var Flip = ["horizontal", "vertical"];
-var Rotate = ["90", "180", "270"];
+var Flip = /* @__PURE__ */ new Set(["horizontal", "vertical"]);
+var Rotate = /* @__PURE__ */ new Set(["90", "180", "270"]);
 var FIcon_default = defineComponent3({
   name: "FIcon",
   inheritAttrs: false,
@@ -2003,7 +2003,7 @@ var FIcon_default = defineComponent3({
       default: null,
       required: false,
       validator(value) {
-        return Flip.includes(value);
+        return Flip.has(value);
       }
     },
     /**
@@ -2020,7 +2020,7 @@ var FIcon_default = defineComponent3({
       default: null,
       required: false,
       validator(value) {
-        return Rotate.includes(value);
+        return Rotate.has(value);
       }
     }
   },
@@ -2272,7 +2272,7 @@ var FModal_default = defineComponent4({
       }
       const contentElement = getHTMLElementFromVueRef(this.$refs.modalContent);
       const tabbableChildren = findTabbableElements(contentElement);
-      const firstTabbableChildElement = tabbableChildren.length ? tabbableChildren[0] : void 0;
+      const firstTabbableChildElement = tabbableChildren.length > 0 ? tabbableChildren[0] : void 0;
       return firstTabbableChildElement ?? contentElement;
     },
     restoreState() {
@@ -2291,7 +2291,7 @@ var FModal_default = defineComponent4({
     },
     onFocusFirst() {
       const tabbableElements = findTabbableElements(this.$refs.modalDialogContainer);
-      const lastTabbableElement = tabbableElements[tabbableElements.length - 2];
+      const lastTabbableElement = tabbableElements.at(-2);
       focusElement(lastTabbableElement, this.$el);
     },
     onFocusLast() {
@@ -2540,7 +2540,7 @@ var FConfirmModal_default = defineComponent5({
   computed: {
     preparedButtons() {
       const preparedButtonList = prepareButtonList(this.buttons);
-      return config.buttonOrder === 1 /* RIGHT_TO_LEFT */ ? preparedButtonList.reverse() : preparedButtonList;
+      return config.buttonOrder === 1 /* RIGHT_TO_LEFT */ ? preparedButtonList.toReversed() : preparedButtonList;
     }
   },
   methods: {
@@ -2840,6 +2840,8 @@ function focusError(item) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
+var noop = () => {
+};
 var FErrorList_default = defineComponent8({
   name: "FErrorList",
   components: { FIcon: FIcon_default2, IFlex: IFlex_default2, IFlexItem: IFlexItem_default2 },
@@ -2867,8 +2869,7 @@ var FErrorList_default = defineComponent8({
       type: Function,
       required: false,
       default() {
-        return () => {
-        };
+        return noop;
       }
     }
   },
@@ -3072,12 +3073,12 @@ import { documentOrderComparator } from "@fkui/logic";
 function cleanUpElements(vm) {
   return new Promise((resolve) => {
     window.setTimeout(() => {
-      Object.keys(vm.components).forEach((id) => {
+      for (const id of Object.keys(vm.components)) {
         const domElement = vm.$el.querySelector(`#${id}`);
         if (!domElement) {
           delete vm.components[id];
         }
-      });
+      }
       resolve();
     }, 0);
   });
@@ -3177,6 +3178,8 @@ FValidationGroup_default.__file = "packages/vue/src/components/FValidationGroup/
 var FValidationGroup_default2 = FValidationGroup_default;
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
+function noop2() {
+}
 var FValidationForm_default = defineComponent10({
   name: "FValidationForm",
   components: { FValidationGroup: FValidationGroup_default2, FErrorList: FErrorList_default2 },
@@ -3199,7 +3202,7 @@ var FValidationForm_default = defineComponent10({
       type: Function,
       required: false,
       default() {
-        return () => void 0;
+        return noop2;
       }
     },
     /**
@@ -3209,7 +3212,7 @@ var FValidationForm_default = defineComponent10({
       type: Function,
       required: false,
       default() {
-        return () => void 0;
+        return noop2;
       }
     },
     /**
@@ -3246,8 +3249,7 @@ var FValidationForm_default = defineComponent10({
       type: Function,
       required: false,
       default() {
-        return () => {
-        };
+        return noop2;
       }
     }
   },
@@ -3291,7 +3293,7 @@ var FValidationForm_default = defineComponent10({
         focus4(this.$refs.errors);
       } else {
         const firstError = this.validity.componentsWithError[0];
-        const element = document.getElementById(firstError.focusElementId);
+        const element = document.querySelector(`#${firstError.focusElementId}`);
         focus4(element);
       }
       return true;
@@ -3578,6 +3580,7 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
         _createCommentVNode9(" @slot Slot for main content above text fields and buttons. "),
         _renderSlot10(_ctx.$slots, "default")
       ]),
+      _createCommentVNode9(" [html-validate-disable-next wcag/h32 -- Submit button with `formId` present in footer ] "),
       _createVNode4(_component_f_validation_form, {
         id: _ctx.formId,
         "before-submit": _ctx.beforeSubmit,
@@ -3670,7 +3673,7 @@ var defaultOptions = {
   componentPlaceholder: false
 };
 function collapseWhitespace(text) {
-  return text.replace(/\s+/gm, " ").replace(/(^ | $)/g, "");
+  return text.replaceAll(/\s+/gm, " ").replaceAll(/(^ | $)/g, "");
 }
 function intersection(a, b) {
   return a.filter((it) => b.includes(it));
@@ -3800,6 +3803,9 @@ function getAbsolutePosition(src) {
   };
 }
 
+// packages/vue/src/utils/dataset.ts
+import { ref } from "vue";
+
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=script
 import { defineComponent as defineComponent21, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef5 } from "vue";
 import { ElementIdService as ElementIdService6, debounce as debounce4 } from "@fkui/logic";
@@ -3809,7 +3815,7 @@ import {
   computed as computed5,
   defineComponent as defineComponent20,
   inject,
-  ref as ref6,
+  ref as ref7,
   toRef,
   useSlots as useSlots2,
   useTemplateRef as useTemplateRef4,
@@ -3819,7 +3825,7 @@ import { TranslationService as TranslationService3 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
-import { computed, nextTick, onUnmounted, ref, useAttrs, useTemplateRef, watch } from "vue";
+import { computed, nextTick, onUnmounted, ref as ref2, useAttrs, useTemplateRef, watch } from "vue";
 import { debounce, handleTab, popFocus as popFocus2, pushFocus as pushFocus2 } from "@fkui/logic";
 
 // packages/vue/src/internal-components/IPopup/IPopupUtils.ts
@@ -3835,7 +3841,7 @@ function getElement(anchor) {
     return null;
   }
   if (typeof anchor === "string") {
-    return document.getElementById(anchor);
+    return document.querySelector(`#${anchor}`);
   } else {
     return anchor;
   }
@@ -3994,7 +4000,7 @@ function fitInsideArea(options) {
   const index = candidates.findIndex(
     (it) => isInside(clippedArea, it, spacing)
   );
-  if (index >= 0) {
+  if (index !== -1) {
     const match = candidates[index];
     return { x: match.x, y: match.y, placement: match.placement };
   }
@@ -4097,9 +4103,9 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
     const attrs = useAttrs();
     const popup = useTemplateRef("popup");
     const wrapper = useTemplateRef("wrapper");
-    const teleportDisabled2 = ref(false);
-    const placement = ref("NotCalculated" /* NotCalculated */);
-    const focus8 = ref(null);
+    const teleportDisabled2 = ref2(false);
+    const placement = ref2("NotCalculated" /* NotCalculated */);
+    const focus8 = ref2(null);
     const onWindowResizeDebounced = debounce(onWindowResize, 100);
     const popupClasses = computed(() => {
       const popupState = isInline.value ? ["popup--inline"] : ["popup--overlay"];
@@ -4550,12 +4556,11 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
                   /* TEXT */
                 ),
                 _createCommentVNode11(' `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.\n                        `IPopupError` will be closed on input-field `blur`, so the button is never focusable anyway .\n                    '),
-                _createCommentVNode11(" [html-validate-disable-next fkui/class-deprecated -- technical debt] "),
                 _ctx.layout === "f-interactive-table" ? (_openBlock13(), _createElementBlock12("button", {
                   key: 1,
                   tabindex: "-1",
                   type: "button",
-                  class: "button button--discrete button--discrete--black modal__close-button popup-error__button",
+                  class: "popup-error__button",
                   "aria-label": "St\xE4ng",
                   onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClose && _ctx.onClose(...args))
                 }, [
@@ -4696,6 +4701,8 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent2({
     const contentRef = useTemplateRef2("content");
     const popupClasses = ["popup", "popup--overlay"];
     const teleportTarget = computed2(() => config.teleportTarget);
+    const debouncedOnResize = debounce2(onResize, 100);
+    const debouncedOnScroll = debounce2(onScroll, 100);
     let guessedItemHeight = void 0;
     let verticalSpacing = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
@@ -4711,11 +4718,13 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent2({
     });
     function addListeners() {
       document.addEventListener("click", onDocumentClickHandler);
-      window.addEventListener("resize", debounce2(onResize, 100));
+      window.addEventListener("resize", debouncedOnResize);
+      window.addEventListener("scroll", debouncedOnScroll, { capture: true });
     }
     function removeListeners() {
       document.removeEventListener("click", onDocumentClickHandler);
-      window.removeEventListener("resize", debounce2(onResize, 100));
+      window.removeEventListener("resize", debouncedOnResize);
+      window.removeEventListener("scroll", debouncedOnScroll, { capture: true });
     }
     function isElementInsideViewport(element) {
       const rect = element.getBoundingClientRect();
@@ -4754,6 +4763,13 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent2({
         calculatePosition();
       }
     }
+    function onScroll(event) {
+      const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
+      if (isPopupTarget) {
+        return;
+      }
+      calculatePosition({ horizontalOnly: true });
+    }
     function onKeyEsc(event) {
       if (event.key === "Escape") {
         emit("close");
@@ -4762,7 +4778,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent2({
     function guessItemHeight(numOfItems, contentWrapper) {
       return Math.ceil(contentWrapper.clientHeight / numOfItems);
     }
-    function calculatePosition() {
+    function calculatePosition(options) {
       const wrapperElement = wrapperRef.value;
       const contentWrapper = contentRef.value;
       if (!__props.anchor || !wrapperElement || !contentWrapper) {
@@ -4778,7 +4794,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent2({
       if (verticalSpacing === void 0) {
         const absWrapper = getAbsolutePosition(wrapperElement);
         const { marginTop, marginBottom } = getComputedStyle(wrapperElement);
-        const marginTotal = parseInt(marginTop, 10) + parseInt(marginBottom, 10);
+        const marginTotal = Number.parseInt(marginTop, 10) + Number.parseInt(marginBottom, 10);
         verticalSpacing = Math.ceil(absWrapper.height - contentItemHeigth * __props.numOfItems) + marginTotal;
       }
       wrapperElement.style.overflowY = "auto";
@@ -4790,14 +4806,17 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent2({
         const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
         const offsetLeft = Math.floor((offsetRect?.x ?? 0) + window.scrollX);
         const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
-        wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.left = `${String(left - offsetLeft)}px`;
+        if (options?.horizontalOnly) {
+          return;
+        }
+        wrapperElement.style.top = `${String(top - offSetTop)}px`;
         wrapperElement.style.width = `${String(width)}px`;
         contentWrapper.style.maxHeight = `${String(height)}px`;
         contentWrapper.style.width = `${String(width)}px`;
       }
     }
-    const __returned__ = { emit, wrapperRef, contentRef, teleportDisabled, popupClasses, teleportTarget, get guessedItemHeight() {
+    const __returned__ = { emit, wrapperRef, contentRef, teleportDisabled, popupClasses, teleportTarget, debouncedOnResize, debouncedOnScroll, get guessedItemHeight() {
       return guessedItemHeight;
     }, set guessedItemHeight(v) {
       guessedItemHeight = v;
@@ -4805,7 +4824,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent2({
       return verticalSpacing;
     }, set verticalSpacing(v) {
       verticalSpacing = v;
-    }, addListeners, removeListeners, isElementInsideViewport, onDocumentClickHandler, onResize, onKeyEsc, guessItemHeight, calculatePosition };
+    }, addListeners, removeListeners, isElementInsideViewport, onDocumentClickHandler, onResize, onScroll, onKeyEsc, guessItemHeight, calculatePosition };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -4907,7 +4926,7 @@ async function doMenuAction(action, target) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=script
-var preventKeys = ["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"];
+var preventKeys = /* @__PURE__ */ new Set(["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"]);
 var IPopupMenu_default = defineComponent13({
   name: "IPopupMenu",
   components: { IPopup: IPopup_default2 },
@@ -5118,7 +5137,7 @@ var IPopupMenu_default = defineComponent13({
       if (!this.enableKeyboardNavigation) {
         return;
       }
-      if (preventKeys.includes(event.key)) {
+      if (preventKeys.has(event.key)) {
         event.preventDefault();
       }
     },
@@ -5126,7 +5145,7 @@ var IPopupMenu_default = defineComponent13({
       if (!this.enableKeyboardNavigation) {
         return;
       }
-      if (!preventKeys.includes(event.key)) {
+      if (!preventKeys.has(event.key)) {
         return;
       }
       const firstItemFocused = this.currentFocusedItemIndex === 0;
@@ -5241,6 +5260,8 @@ var NO_CSS_CLASSES = "";
 var CLOSED_CSS_CLASS_OPACITY = "animate-expand animate-expand--opacity";
 var CLOSED_CSS_CLASS = "animate-expand";
 var ANIMATION_CSS_CLASSES = "animate-expand animate-expand--expanded";
+function noop3() {
+}
 var IAnimateExpand_default = defineComponent14({
   name: "IAnimateExpand",
   props: {
@@ -5279,8 +5300,7 @@ var IAnimateExpand_default = defineComponent14({
       type: Function,
       required: false,
       default() {
-        return () => {
-        };
+        return noop3;
       }
     },
     /**
@@ -5291,8 +5311,7 @@ var IAnimateExpand_default = defineComponent14({
       type: Function,
       required: false,
       default() {
-        return () => {
-        };
+        return noop3;
       }
     }
   },
@@ -5536,7 +5555,7 @@ function getDayStartOffset(days) {
   return days[0].weekDay - 1;
 }
 function getDayEndOffset(days) {
-  return 7 - days[days.length - 1].weekDay;
+  return 7 - days.at(-1).weekDay;
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonthGrid.vue?type=script
@@ -5827,9 +5846,9 @@ function isSameMonth(a, b) {
   return a.startOfMonth().equals(b.startOfMonth());
 }
 function getDayTabindex(date, active, entry) {
-  const ref7 = active ?? entry;
-  if (ref7 && isSameMonth(ref7, date)) {
-    return date.equals(ref7) ? 0 : -1;
+  const ref8 = active ?? entry;
+  if (ref8 && isSameMonth(ref8, date)) {
+    return date.equals(ref8) ? 0 : -1;
   } else {
     return date.day === 1 ? 0 : -1;
   }
@@ -6160,8 +6179,8 @@ var ICalendarNavbar_default = defineComponent18({
     getDateText(value) {
       return `${capitalize(value.monthName)} ${String(value.year)}`;
     },
-    isFocused(ref7) {
-      return document.activeElement === this.$refs[ref7];
+    isFocused(ref8) {
+      return document.activeElement === this.$refs[ref8];
     }
   }
 });
@@ -6275,7 +6294,7 @@ import {
   computed as computed3,
   nextTick as nextTick2,
   onMounted as onMounted2,
-  ref as ref2,
+  ref as ref3,
   watchEffect as watchEffect2
 } from "vue";
 import { ElementIdService as ElementIdService5, isEmpty as isEmpty2 } from "@fkui/logic";
@@ -6288,7 +6307,7 @@ var $t = useTranslate();
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxDropdown.vue?type=script
 import { defineComponent as _defineComponent3 } from "vue";
-import { nextTick as nextTick3, ref as ref3, useTemplateRef as useTemplateRef3, watchEffect as watchEffect3 } from "vue";
+import { nextTick as nextTick3, ref as ref4, useTemplateRef as useTemplateRef3, watchEffect as watchEffect3 } from "vue";
 var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent3({
   __name: "IComboboxDropdown",
   props: {
@@ -6304,7 +6323,7 @@ var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent3({
     __expose();
     const emit = __emit;
     const listboxRef = useTemplateRef3("listbox");
-    const activeElement = ref3();
+    const activeElement = ref4();
     function isOptionActive(item) {
       return item === __props.activeOption;
     }
@@ -6463,7 +6482,7 @@ var FExpand_default = defineComponent19({
       Object.assign(htmlElement.style, this.visibleStyle);
       getComputedStyle(element).height;
       setTimeout(() => {
-        this.height = parseInt(height, 10);
+        this.height = Number.parseInt(height, 10);
         htmlElement.style.height = height;
       });
     },
@@ -6508,9 +6527,9 @@ var FExpand_default2 = FExpand_default;
 var tooltipAttachTo = /* @__PURE__ */ Symbol("tooltipAttachTo");
 
 // packages/vue/src/components/FTooltip/use-animation.ts
-import { computed as computed4, onMounted as onMounted3, ref as ref4, watchEffect as watchEffect4 } from "vue";
+import { computed as computed4, onMounted as onMounted3, ref as ref5, watchEffect as watchEffect4 } from "vue";
 var initialized = false;
-var reducedMotion = ref4(false);
+var reducedMotion = ref5(false);
 function useAnimation(options) {
   const { duration = 250, easing = "ease-in", element: elementRef } = options;
   let current = "collapse";
@@ -6579,10 +6598,10 @@ function useAnimation(options) {
 }
 
 // packages/vue/src/components/FTooltip/use-horizontal-offset.ts
-import { onMounted as onMounted4, onUnmounted as onUnmounted4, readonly, ref as ref5, watch as watch3 } from "vue";
+import { onMounted as onMounted4, onUnmounted as onUnmounted4, readonly, ref as ref6, watch as watch3 } from "vue";
 function useHorizontalOffset(options) {
   const { element: elementRef, parent: parentRef } = options;
-  const offset2 = ref5(16);
+  const offset2 = ref6(16);
   watch3(() => elementRef.value, updateOffset);
   watch3(() => parentRef, updateOffset);
   onMounted4(() => {
@@ -6683,7 +6702,7 @@ var FTooltip_default = defineComponent20({
   setup(props) {
     const provided = inject(tooltipAttachTo, null);
     const attachTo = toRef(props, "attachTo");
-    const ready = ref6(false);
+    const ready = ref7(false);
     const iconTarget = computed5(() => {
       if (provided?.value) {
         return provided.value;
@@ -7079,12 +7098,14 @@ var FFieldset_default = defineComponent21({
   },
   async mounted() {
     await this.$nextTick();
-    const types = Array.from(
-      this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
-      (it) => it.getAttribute("type")
+    const types = new Set(
+      Array.from(
+        this.$el.querySelectorAll(`input[type="checkbox"], input[type="radio"]`),
+        (it) => it.getAttribute("type")
+      )
     );
-    this.hasCheckbox = types.includes("checkbox");
-    this.hasRadiobutton = types.includes("radio");
+    this.hasCheckbox = types.has("checkbox");
+    this.hasRadiobutton = types.has("radio");
     if (this.hasCheckbox) {
       this.updateCheckboxChildren();
     }
@@ -7390,7 +7411,7 @@ var FCheckboxField_default = defineComponent22({
     attrs() {
       let checked;
       if (Array.isArray(this.modelValue)) {
-        checked = this.modelValue.findIndex((it) => (0, import_isEqual2.default)(toValue2(it), toValue2(this.value))) >= 0;
+        checked = this.modelValue.some((it) => (0, import_isEqual2.default)(toValue2(it), toValue2(this.value)));
       } else {
         checked = this.value === this.modelValue;
       }
@@ -7475,7 +7496,7 @@ var FCheckboxField_default = defineComponent22({
       Object.assign(htmlElement.style, this.visibleStyle);
       getComputedStyle(element).height;
       setTimeout(() => {
-        this.height = parseInt(height, 10);
+        this.height = Number.parseInt(height, 10);
         htmlElement.style.height = height;
       });
     },
