@@ -4136,12 +4136,6 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
             forceInline: forceInline.value,
             forceOverlay: forceOverlay.value
           });
-          setTimeout(() => {
-            if (__props.isOpen) {
-              document.addEventListener("click", onDocumentClickHandler);
-              window.addEventListener("resize", onWindowResizeDebounced);
-            }
-          }, 0);
         } else {
           document.removeEventListener("click", onDocumentClickHandler);
           window.removeEventListener("resize", onWindowResizeDebounced);
@@ -4165,6 +4159,8 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
       await nextTick();
       await calculatePlacement();
       applyFocus();
+      document.addEventListener("click", onDocumentClickHandler);
+      window.addEventListener("resize", onWindowResizeDebounced);
       emit("open");
     }
     async function calculatePlacement() {
