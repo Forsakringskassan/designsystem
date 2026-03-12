@@ -94,9 +94,6 @@ describe("events", () => {
 
         const closeElement = wrapper.get(".popup__wrapper");
         await closeElement.trigger("keyup.esc");
-        await wrapper.vm.$nextTick();
-        await flushPromises();
-
         expect(wrapper.vm.$data["gotCloseEvent"]).toBeTruthy();
     });
 
@@ -107,9 +104,6 @@ describe("events", () => {
         await openPopup(wrapper);
 
         await wrapper.get("#outside").trigger("click");
-        await wrapper.vm.$nextTick();
-        await flushPromises();
-
         expect(wrapper.vm.$data["gotCloseEvent"]).toBeTruthy();
     });
 
@@ -117,7 +111,13 @@ describe("events", () => {
         const wrapper = await mountPopup();
 
         await wrapper.get("#outside").trigger("click");
+        expect(wrapper.vm.$data["gotCloseEvent"]).toBeFalsy();
+    });
 
+    it('should not emit "close" event when clicked anchor with open popup', async () => {
+        const wrapper = await mountPopup();
+
+        await wrapper.get("#launch-popup").trigger("click");
         expect(wrapper.vm.$data["gotCloseEvent"]).toBeFalsy();
     });
 });
