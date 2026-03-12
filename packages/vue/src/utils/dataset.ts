@@ -9,7 +9,7 @@ const datasetSymbol = Symbol("dataset");
  * Use `useDatasetRef()` to create a new dataset.
  *
  * @public
- * @since %version%
+ * @since v6.39.0
  */
 export type Dataset<T> = T[] & {
     readonly [datasetSymbol]: true;
@@ -26,7 +26,7 @@ export type Dataset<T> = T[] & {
  * Check if a dataset is a dataset.
  *
  * @internal
- * @since %version%
+ * @since v6.39.0
  */
 export function isDataset<T>(
     dataset: T[] | null | undefined,
@@ -42,7 +42,7 @@ export function isDataset<T>(
  * Creates a dataset from an array.
  *
  * @internal
- * @since %version%
+ * @since v6.39.0
  */
 export function toDataset<T>(dataset: T[]): Dataset<T> {
     if (isDataset(dataset)) {
@@ -60,7 +60,7 @@ export function toDataset<T>(dataset: T[]): Dataset<T> {
  * Creates a dataset as a Vue ref.
  *
  * @public
- * @since %version%
+ * @since v6.39.0
  */
 export function useDatasetRef<T>(initial?: T[]): Ref<Dataset<T>> {
     return ref(toDataset(initial ?? [])) as Ref<Dataset<T>>;

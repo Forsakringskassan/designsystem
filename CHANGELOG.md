@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 6.39.0 (2026-03-12)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default:** added semantic token concept interactive surface (refs SFKUI-6500) 22a91fe
+* **@fkui/tsconfig:** update cypress configuration to use ES2023 by default (refs SFKUI-6500) b32da13
+* **@fkui/vue:** add `useDatasetRef()` for creating datasets with metadata (refs SFKUI-7348) 2386793
+* **@fkui/vue:** passing `Dataset<T>` to `FSortFilterDataset` or `FPaginateDataset` returns `Dataset<T>` (refs SFKUI-7348) 1ae187a
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** fix icon vertical at top, no shrink to icon (refs SFKUI-7425) 9dce004
+* **@fkui/design:** navigation menu not supporting `forced-colors` media feature (fixes SFKUI-7565) 2b890dd
+* **@fkui/design:** popup menu not supporting `forced-colors` media feature (fixes SFKUI-7565) d7868b8
+* **@fkui/theme-default:** `--f-font-weight-bold` variable value (fixes SFKUI-7399) 6fcbecc
+* **@fkui/theme-default:** `--f-font-weight-medium` variable value (fixes SFKUI-7399) dad9e83
+* **@fkui/vue:** `focusRef` prop in `FCard` not supporting component references (refs SFKUI-7688) 3cbf4f8
+* **deps:** update dependency cssnano to v7.1.3 1b5c962
+* **deps:** update dependency i18next to v25.8.14 2a97409
+* **deps:** update dependency svgo to v4.0.1 [security] c4e8e3c
+
 ## 6.38.0 (2026-03-04)
 
 ### Features
