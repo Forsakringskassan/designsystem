@@ -2352,13 +2352,13 @@ var FModal_default = defineComponent6({
           await this.$nextTick();
           this.openModal();
         } else {
-          await this.restoreState();
+          this.restoreState();
         }
       }
     }
   },
   beforeUnmount() {
-    void this.restoreState();
+    this.restoreState();
   },
   methods: {
     onClose() {
@@ -2397,7 +2397,7 @@ var FModal_default = defineComponent6({
       const firstTabbableChildElement = tabbableChildren.length > 0 ? tabbableChildren[0] : void 0;
       return firstTabbableChildElement ?? contentElement;
     },
-    async restoreState() {
+    restoreState() {
       const root = document.documentElement;
       root.style.removeProperty("top");
       root.style.removeProperty("left");
@@ -2407,8 +2407,6 @@ var FModal_default = defineComponent6({
       if (this.focus === "on" && this.savedFocus) {
         root.scrollTop = this.savedScroll ?? 0;
         this.savedScroll = null;
-        await this.$nextTick();
-        await new Promise((resolve) => window.setTimeout(resolve, 0));
         popFocus(this.savedFocus);
         this.savedFocus = null;
       }
