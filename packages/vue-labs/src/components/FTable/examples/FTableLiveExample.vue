@@ -34,7 +34,6 @@ const columnsBase = defineTableColumns<Row>([
         header: "Kryssruta",
         key: "aktiv",
         label: (row) => `Välj rad ${row.id}`,
-        editable: true,
     },
     {
         type: "text",

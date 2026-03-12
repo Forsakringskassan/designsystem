@@ -18,7 +18,6 @@ export interface TableColumnCheckbox<
     label?(this: void, row: T): string;
     checked?(this: void, row: T): boolean;
     update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
-    editable?: boolean | ((this: void, row: T) => boolean);
 }
 
 /**
@@ -36,7 +35,6 @@ export interface NormalizedTableColumnCheckbox<
     label(this: void, row: T): string;
     checked(this: void, row: T): boolean | string;
     update(this: void, row: T, newValue: boolean, oldValue: boolean): void;
-    editable(this: void, row: T): boolean;
 }
 
 /**
@@ -53,10 +51,6 @@ export function normalizeCheckboxColumn<T, K extends keyof T>(
         label: getLabelFn(column.label),
         checked: getValueFn(column.checked, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
-        editable:
-            typeof column.editable === "function"
-                ? column.editable
-                : () => Boolean(column.editable ?? false),
         sortable: column.key ?? null,
     };
 }

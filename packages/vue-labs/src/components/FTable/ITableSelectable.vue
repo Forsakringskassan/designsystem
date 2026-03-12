@@ -44,9 +44,6 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, K> = {
     checked() {
         return state;
     },
-    editable() {
-        return true;
-    },
     update() {
         emit("toggle", row);
     },
