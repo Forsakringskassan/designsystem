@@ -1,8 +1,55 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FTextField } from "../components";
+import { FButton } from "../components";
+import { useModal } from "../utils";
 
 const namn = ref("World");
+const { confirmModal } = useModal();
+
+function openModal(): void {
+    confirmModal({
+        confirm: "Confirm",
+        content: "Content",
+        dismiss: "Dismiss",
+        heading: "Heading",
+    })
+        .then((value) => {
+            if (value) {
+                console.log("Confirm");
+            } else {
+                console.log("Close");
+            }
+        })
+        .catch(() => {
+            // ignore
+        });
+}
+async function openModalAsync(): Promise<void> {
+    const confirmed = await confirmModal({
+        confirm: "Confirm",
+        content: "Content",
+        dismiss: "Dismiss",
+        heading: "Heading",
+    });
+    if (confirmed) {
+        console.log("Confirm");
+    } else {
+        console.log("Close");
+    }
+}
+
+async function asyncFunc(): Promise<void> {
+    await new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("");
+        }, 2000);
+    });
+    console.log("Test async func!");
+}
+
+function disabled(): void {
+    console.log("disabled");
+}
 </script>
 
 <template>
@@ -30,8 +77,9 @@ const namn = ref("World");
         <hr />
 
         <h2>Sandbox</h2>
-
-        <f-text-field v-model="namn" v-validation.required maxlength="100"> Namn </f-text-field>
-        <pre>Hello {{ namn }}!</pre>
+        <f-button @click="openModal">Öppna modal</f-button>
+        <f-button @click="openModalAsync">Öppna modal async</f-button>
+        <f-button @click="asyncFunc">Async func</f-button>
+        <f-button disabled @click="disabled">Disabled</f-button>
     </div>
 </template>

@@ -50,10 +50,13 @@
     &.disabled:hover,
     &:disabled,
     &:disabled:hover,
+    &[aria-disabled="true"],
+    &[aria-disabled="true"]:hover,
     &#{$name}--disabled,
     &#{$name}--disabled:hover {
         background-color: $background-color--disabled;
         border-color: $border-color--disabled;
         color: $color--disabled;
+        pointer-events: none;
     }
 }

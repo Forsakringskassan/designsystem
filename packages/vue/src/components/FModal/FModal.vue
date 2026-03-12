@@ -118,13 +118,13 @@ export default defineComponent({
                     await this.$nextTick();
                     this.openModal();
                 } else {
-                    await this.restoreState();
+                    this.restoreState();
                 }
             },
         },
     },
     beforeUnmount(): void {
-        void this.restoreState();
+        this.restoreState();
     },
     methods: {
         onClose(): void {
@@ -167,7 +167,7 @@ export default defineComponent({
 
             return firstTabbableChildElement ?? contentElement;
         },
-        async restoreState(): Promise<void> {
+        restoreState(): void {
             const root = document.documentElement;
             root.style.removeProperty("top");
             root.style.removeProperty("left");
@@ -177,8 +177,6 @@ export default defineComponent({
             if (this.focus === "on" && this.savedFocus) {
                 root.scrollTop = this.savedScroll ?? 0;
                 this.savedScroll = null;
-                await this.$nextTick();
-                await new Promise((resolve) => window.setTimeout(resolve, 0));
                 popFocus(this.savedFocus);
                 this.savedFocus = null;
             }

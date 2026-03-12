@@ -323,7 +323,7 @@ $button--tertiary: (
             }
         }
 
-        &:disabled {
+        &:disabled, &[aria-disabled="true"] {
             border: none;
         }
 
@@ -337,7 +337,7 @@ $button--tertiary: (
                 background-color: $button-tertiary-inverted-color-background-focus;
             }
 
-            &:disabled {
+            &:disabled, &[aria-disabled="true"] {
                 color: $button-tertiary-inverted-color-text-disabled;
                 border: none;
                 border-width: 0;
@@ -350,7 +350,7 @@ $button--tertiary: (
             text-decoration-thickness: 2px;
             text-underline-offset: 4px;
 
-            &:disabled {
+            &:disabled, &[aria-disabled="true"] {
                 text-decoration: none;
             }
         }
@@ -464,6 +464,8 @@ $button--tertiary: (
     &.disabled:hover,
     &:disabled,
     &:disabled:hover,
+    &[aria-disabled="true"],
+    &[aria-disabled="true"]:hover,
     &.button--disabled {
         border-width: var(--f-border-width-medium);
         box-shadow: none;
