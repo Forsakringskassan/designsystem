@@ -119,6 +119,11 @@ watch(
     () => isOpen,
     async (value: boolean) => {
         await toggleIsOpen(value);
+
+        document.addEventListener("click", onDocumentClickHandler);
+        window.addEventListener("resize", onWindowResizeDebounced);
+        window.addEventListener("scroll", onScrollDebounced, { capture: true });
+
         if (value) {
             teleportDisabled.value = isTeleportDisabled({
                 window,
@@ -126,17 +131,6 @@ watch(
                 forceInline: forceInline.value,
                 forceOverlay: forceOverlay.value,
             });
-
-            // wait one tick so we dont get the click
-            // that launches the popup (await nextTick doesnt work here)
-            setTimeout(() => {
-                // verify that it's still open
-                if (isOpen) {
-                    document.addEventListener("click", onDocumentClickHandler);
-                    window.addEventListener("resize", onWindowResizeDebounced);
-                    window.addEventListener("scroll", onScrollDebounced, { capture: true });
-                }
-            }, 0);
         } else {
             document.removeEventListener("click", onDocumentClickHandler);
             window.removeEventListener("resize", onWindowResizeDebounced);
@@ -248,7 +242,11 @@ function isMobileSize(): boolean {
     return window.innerWidth < MIN_DESKTOP_WIDTH;
 }
 
-function onDocumentClickHandler(): void {
+function onDocumentClickHandler(event: Event): void {
+    // Ignore click on anchor.
+    if (event.target === anchor) {
+        return;
+    }
     emit("close", "click-outside");
 }
 

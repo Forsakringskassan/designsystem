@@ -303,6 +303,7 @@ describe("open calendar with year selector enabled and open", () => {
             },
         });
         datepickerField.toggleCalendarButton().click();
+        datepickerField.calendarCaption().should("have.focus");
         datepickerField.navYearSelectorButton().click();
         datepickerField.yearSelector().should("exist");
     });
