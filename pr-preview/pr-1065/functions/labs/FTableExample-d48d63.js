@@ -5441,7 +5441,7 @@ function useTabstop(tableRef, metaRows) {
     const tabFallback = pendingRowRemoval ? "sticky" : "first-cell";
     pendingRowRemoval = false;
     assertRef(tableRef);
-    const oldTabstopElement = tableRef.value.querySelector(`:not(tfoot)[tabindex="0"]`);
+    const oldTabstopElement = tableRef.value.querySelector(`[tabindex="0"]`);
     assertSet(oldTabstopElement);
     const oldTabstopFocused = oldTabstopElement === document.activeElement;
     if (oldTabstopElement.closest("th")) {
@@ -5667,7 +5667,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     }
     function onTableFocusin(e) {
       assertRef(tableRef);
-      for (const it of tableRef.value.querySelectorAll(`:not(tfoot)[tabindex="0"]`)) {
+      for (const it of tableRef.value.querySelectorAll(`[tabindex="0"]`)) {
         if (it !== e.target) {
           it.setAttribute("tabindex", "-1");
         }
@@ -5694,7 +5694,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       if (!tableRef.value) {
         return;
       }
-      const outsideTable = Boolean(tableRef.value.tFoot?.contains(relatedTarget)) || !tableRef.value.contains(relatedTarget);
+      const outsideTable = !tableRef.value.contains(relatedTarget);
       if (outsideTable) {
         const cell = target.closest("td, th");
         if (cell) {
@@ -5788,13 +5788,12 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         ref: "table",
         role: role.value,
         class: normalizeClass(tableClasses.value),
-        "aria-rowcount": ariaRowcount.value
-      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("thead", {
+        "aria-rowcount": ariaRowcount.value,
         onFocusin: onTableFocusin,
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
+      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
         key: 1,
         ref: bindCellApiRef,
         state: unref3(selectableHeaderState)(),
@@ -5809,12 +5808,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           scope: "col",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])], 32), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", {
-        onFocusin: onTableFocusin,
-        onFocusout: onTableFocusout,
-        onClick,
-        onKeydown
-      }, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
+      }), 128))])]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell"
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment2, {
@@ -5883,13 +5877,13 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
         }), 128))], 64))], 8, _hoisted_7$1);
-      }), 128))], 32), _cache[6] || (_cache[6] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
+      }), 128))]), _cache[6] || (_cache[6] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
         class: "table-ng__row",
         "aria-rowindex": ariaRowcount.value
       }, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell--custom"
-      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 10, _hoisted_1$2);
+      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1$2);
     };
   }
 });
