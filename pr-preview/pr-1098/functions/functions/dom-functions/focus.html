@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-7ae527.json"
+            href="../../../search-data-9919df.json"
             as="fetch"
             crossorigin
-            integrity="sha384-n0h9Q2VMXTNQwm9zsVMToPQF9Pnp9rQst9IFVnxw9hYZ5bQXgfxoyjfkBveOJvDF"
+            integrity="sha384-b8xciclZlD4vSfDwUwZFkKwe8p2a6jM6msu+fxoz5hpfrKoX8CxfOv6DXccuE3qr"
             id="search-data"
         />
     </head>
@@ -1877,7 +1877,7 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
 <h4 id="using_focustarget"><a class="header-anchor" href="#using_focustarget">Using <code>focusTarget</code></a></h4><p class="docs-paragraph">The example below will recursively search for a focus target and eventually focus the button inside the <code>MyButton</code> component.</p>
 
                 <div
-                    id="example-f8c3d1"
+                    id="example-a9bf8b"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1892,12 +1892,12 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
 
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { focus } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, focus } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-title class_">MyButton</span> = <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">template</span>: <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">`
         &lt;p&gt;I have a button&lt;/p&gt;
-        &lt;button ref=&quot;foo&quot; type=&quot;button&quot;&gt;My button&lt;/button&gt;
+        &lt;f-button ref=&quot;foo&quot;&gt;My button&lt;/f-button&gt;
     `</span>,
     <span class="hljs-attr">computed</span>: {
         <span class="hljs-title function_">focusTarget</span>(<span class="hljs-params"></span>) {
@@ -1945,9 +1945,9 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">button-docs-migration (<a href="https://github.com/Forsakringskassan/designsystem/commits/bc141250fad229dafbb79ebf5f29cf1364ae7833">bc14125</a>)<br />
+<div class="footer__right"><div class="version">button-docs-migration (<a href="https://github.com/Forsakringskassan/designsystem/commits/495ac2bf36f18bf78b984763621c020eee8ca035">495ac2b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1098">PR 1098</a><br />
-        2026-03-11 16:18
+        2026-03-12 09:18
 </div>
 <div class="toolbar__item">
     <form id="version">
