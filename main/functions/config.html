@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../search-data-67b468.json"
+            href="../search-data-1069c6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-3/6k0y0WMDWMjtYHtgM6MHi5gBLFE2YIIWxzgJUdyvPzYQrHYZiaHBx9qrQa7P8k"
+            integrity="sha384-RKwUNGNFqPQSQf+o03XqsfZeCJ84Xuh8tgwjkdBmROaz61jYMkpc419eqN8BM6AL"
             id="search-data"
         />
     </head>
@@ -1834,7 +1834,7 @@ config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title 
 <p class="docs-paragraph"><code>LEFT_TO_RIGHT</code>: Vänster till höger</p>
 
                 <div
-                    id="example-800a68"
+                    id="example-59ec04"
                     class="code-preview code-preview--borderless"
                     
                     data-tags="nomarkup borderless"
@@ -1842,19 +1842,17 @@ config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title 
                 >
                     
                     <div class="code-preview__preview user-background">
-                        <button inert type="button" class="docs-example-button button--primary">
-    Ta bort
-</button>
-<button inert type="button" class="docs-example-button button--secondary">
+                        <f-button inert class="docs-example-button"> Ta bort </f-button>
+<f-button inert class="docs-example-button" variant="secondary">
     Avbryt
-</button>
+</f-button>
 
                     </div>
                 </div>
             <p class="docs-paragraph"><code>RIGHT_TO_LEFT</code>: Höger till vänster</p>
 
                 <div
-                    id="example-4acf0e"
+                    id="example-18de01"
                     class="code-preview code-preview--borderless"
                     
                     data-tags="nomarkup borderless"
@@ -1862,12 +1860,10 @@ config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title 
                 >
                     
                     <div class="code-preview__preview user-background">
-                        <button inert type="button" class="docs-example-button button--secondary">
+                        <f-button inert class="docs-example-button" variant="secondary">
     Avbryt
-</button>
-<button inert type="button" class="docs-example-button button--primary">
-    Ta bort
-</button>
+</f-button>
+<f-button inert class="docs-example-button"> Ta bort </f-button>
 
                     </div>
                 </div>
@@ -1883,37 +1879,37 @@ config.<span class="hljs-property">buttonOrder</span> = <span class="hljs-title 
 <tr class="table__row">
 <td class="table__column table__column--text">Bekräftelsemodal (FConfirmModal)</td>
 <td class="table__column table__column--text">LEFT_TO_RIGHT</td>
-<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--primary">Spara</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button></td>
+<td class="table__column table__column--text"><f-button inert class="docs-example-button">Spara</f-button><f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button></td>
 </tr>
 <tr class="table__row">
 <td class="table__column table__column--text">Bekräftelsemodal (FConfirmModal)</td>
 <td class="table__column table__column--text">RIGHT_TO_LEFT</td>
-<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--secondary">Avbryt</button><button inert type="button" class="docs-example-button button--primary">Spara</button></td>
+<td class="table__column table__column--text"><f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button><f-button inert class="docs-example-button">Spara</f-button></td>
 </tr>
 <tr class="table__row">
 <td class="table__column table__column--text">Formulärsmodal (FFormModal)</td>
 <td class="table__column table__column--text">*</td>
-<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--primary">Spara</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button></td>
+<td class="table__column table__column--text"><f-button inert class="docs-example-button">Spara</f-button><f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button></td>
 </tr>
 <tr class="table__row">
 <td class="table__column table__column--text">Datamängdredigerare (FCrudDataset) - Lägg till</td>
 <td class="table__column table__column--text">*</td>
-<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--primary">Lägg till</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button></td>
+<td class="table__column table__column--text"><f-button inert class="docs-example-button">Lägg till</f-button><f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button></td>
 </tr>
 <tr class="table__row">
 <td class="table__column table__column--text">Datamängdredigerare (FCrudDataset) - Ändra</td>
 <td class="table__column table__column--text">*</td>
-<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--primary">Spara</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button></td>
+<td class="table__column table__column--text"><f-button inert class="docs-example-button">Spara</f-button><f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button></td>
 </tr>
 <tr class="table__row">
 <td class="table__column table__column--text">Datamängdredigerare (FCrudDataset) - Ta bort</td>
 <td class="table__column table__column--text">LEFT_TO_RIGHT</td>
-<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--primary">Ta bort</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button></td>
+<td class="table__column table__column--text"><f-button inert class="docs-example-button">Ta bort</f-button><f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button></td>
 </tr>
 <tr class="table__row">
 <td class="table__column table__column--text">Datamängdredigerare (FCrudDataset) - Ta bort</td>
 <td class="table__column table__column--text">RIGHT_TO_LEFT</td>
-<td class="table__column table__column--text"><button inert type="button" class="docs-example-button button--secondary">Avbryt</button><button inert type="button" class="docs-example-button button--primary">Ta bort</button></td>
+<td class="table__column table__column--text"><f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button><f-button inert class="docs-example-button">Ta bort</f-button></td>
 </tr>
 </tbody>
 </table>
@@ -1967,9 +1963,9 @@ Ett exempel på skillnad: i produktion vill man inte kasta exception men man log
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/312e8168b1535f6f0721baa786bf3834e4ca22ea">312e816</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/7a5bb780c9b5439e54167d1a7224e8000646447c">7a5bb78</a>)<br />
         
-        2026-03-13 09:45
+        2026-03-13 14:49
 </div>
 <div class="toolbar__item">
     <form id="version">
