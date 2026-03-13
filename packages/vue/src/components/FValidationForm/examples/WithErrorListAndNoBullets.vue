@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FTextField, FValidationForm } from "@fkui/vue";
+import { FButton, FTextField, FValidationForm } from "@fkui/vue";
 
 export default defineComponent({
     name: "WithErrorListAndNoBullets",
-    components: { FTextField, FValidationForm },
+    components: { FButton, FTextField, FValidationForm },
     data() {
         return {
             field1: "",
@@ -40,21 +40,23 @@ export default defineComponent({
                 Field2
             </f-text-field>
             <div class="button-group">
-                <button
-                    type="submit"
+                <f-button
+                    class="button-group__item"
                     data-test="submit-button"
-                    class="button button-group__item button--primary button--large"
+                    size="large"
+                    type="submit"
                 >
                     Spara
-                </button>
-                <button
-                    type="button"
+                </f-button>
+                <f-button
+                    class="button-group__item"
                     data-test="cancel-button"
-                    class="button button-group__item button--secondary button--large"
+                    size="large"
+                    variant="secondary"
                     @click="onCancel"
                 >
                     Avbryt
-                </button>
+                </f-button>
             </div>
         </template>
     </f-validation-form>

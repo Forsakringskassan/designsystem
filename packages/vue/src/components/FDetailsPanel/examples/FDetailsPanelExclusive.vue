@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FDetailsPanel, FFixedPane, FPageLayout, useDetailsPanel } from "@fkui/vue";
+import { FButton, FDetailsPanel, FFixedPane, FPageLayout, useDetailsPanel } from "@fkui/vue";
 
 const { exclusive } = defineProps<{
     exclusive: boolean;
@@ -63,20 +63,12 @@ function openPanel4(): void {
 
             <div :slot="content" class="content">
                 <div>
-                    <button type="button" class="button button--primary" @click="openPanel1">
-                        Öppna panel 1
-                    </button>
-                    <button type="button" class="button button--primary" @click="openPanel2">
-                        Öppna panel 2
-                    </button>
+                    <f-button @click="openPanel1"> Öppna panel 1 </f-button>
+                    <f-button @click="openPanel2"> Öppna panel 2 </f-button>
                 </div>
                 <div>
-                    <button type="button" class="button button--primary" @click="openPanel3">
-                        Öppna panel 3
-                    </button>
-                    <button type="button" class="button button--primary" @click="openPanel4">
-                        Öppna panel 4
-                    </button>
+                    <f-button @click="openPanel3"> Öppna panel 3 </f-button>
+                    <f-button @click="openPanel4"> Öppna panel 4 </f-button>
                 </div>
 
                 <p>

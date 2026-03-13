@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { IAnimateExpand } from "@fkui/vue";
+import { FButton, IAnimateExpand } from "@fkui/vue";
 
 export default defineComponent({
     namne: "IAnimateExpandToggleTwo",
-    components: { IAnimateExpand },
+    components: { FButton, IAnimateExpand },
     data() {
         return {
             toggle: false,
@@ -16,7 +16,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <button type="button" @click="toggle = !toggle">Toggle</button>
+        <f-button @click="toggle = !toggle">Toggle</f-button>
         <label><input v-model="opacity" type="checkbox" /> Toning</label>
 
         <i-animate-expand :opacity :expanded="toggle">

@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { IPopup } from "@fkui/vue";
+import { FButton, IPopup } from "@fkui/vue";
 
 export default defineComponent({
     name: "IPopupExample",
-    components: { IPopup },
+    components: { FButton, IPopup },
     data() {
         return {
             isOpen: false,
@@ -26,14 +26,9 @@ export default defineComponent({
 
 <template>
     <div>
-        <button
-            ref="popupAnchor"
-            type="button"
-            class="button button--secondary"
-            @click="onClickOpen"
-        >
+        <f-button ref="popupAnchor" variant="secondary" @click="onClickOpen">
             Öppna popup
-        </button>
+        </f-button>
 
         <i-popup :is-open :anchor="$refs.popupAnchor as HTMLElement" @close="onClose">
             <div class="my-awesome-popup">
@@ -44,9 +39,7 @@ export default defineComponent({
                     formbräden och regaler tillverkas och försäljas Kaster som äro dåligt hopkomna
                     och af otillräckligt.
                 </p>
-                <button type="button" class="button button--tertiary" @click="onClickClose">
-                    Stäng popup
-                </button>
+                <f-button variant="tertiary" @click="onClickClose"> Stäng popup </f-button>
             </div>
         </i-popup>
     </div>

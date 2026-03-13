@@ -1,9 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
+import { FButton } from "@fkui/vue";
 
 export default defineComponent({
     name: "ValidationPluginRevalidate",
+    components: { FButton },
     methods: {
         validateAllFieldsOnPage() {
             const selector = "input, textarea, select";
@@ -19,7 +21,5 @@ export default defineComponent({
 </script>
 
 <template>
-    <button class="button button--primary" type="button" @click="validateAllFieldsOnPage()">
-        Validera alla fält på sidan
-    </button>
+    <f-button @click="validateAllFieldsOnPage()"> Validera alla fält på sidan </f-button>
 </template>

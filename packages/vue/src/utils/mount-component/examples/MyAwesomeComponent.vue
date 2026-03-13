@@ -1,8 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import { FButton } from "@fkui/vue";
 
 export default defineComponent({
     name: "MyAwesomeComponent",
+    components: { FButton },
     props: {
         name: {
             type: String,
@@ -21,8 +23,6 @@ export default defineComponent({
 <template>
     <div>
         <p>Hej {{ name }}!</p>
-        <button type="button" class="button button--primary button--small" @click="onClick">
-            Svara
-        </button>
+        <f-button size="small" @click="onClick"> Svara </f-button>
     </div>
 </template>
