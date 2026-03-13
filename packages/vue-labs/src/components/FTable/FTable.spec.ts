@@ -1160,6 +1160,135 @@ describe("Clickable cells", () => {
         ]);
     });
 
+    it("Should uncheck previous radio button when another row is selected", async () => {
+        expect.assertions(2);
+        const rows = [{ active: true }, { active: false }, { active: false }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "radio",
+                header: "Header",
+                label: () => "Label",
+                key: "active",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                rows,
+                columns,
+            },
+        });
+
+        const cell = wrapper.get<HTMLTableCellElement>(
+            "tbody tr:nth-child(2) td",
+        );
+
+        await nextTick();
+        await cell.trigger("click");
+        await nextTick();
+
+        const radios = wrapper.findAll<HTMLInputElement>(
+            "tbody input[type='radio']",
+        );
+
+        expect(rows).toEqual([
+            { active: false },
+            { active: true },
+            { active: false },
+        ]);
+        expect(radios[0].element.checked).toBeFalsy();
+
+        wrapper.unmount();
+    });
+
+    it("Should keep separate radio columns isolated", async () => {
+        expect.assertions(1);
+        const rows = [
+            { primary: true, secondary: false },
+            { primary: false, secondary: true },
+        ];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "radio",
+                header: "Primary",
+                label: () => "Primary",
+                key: "primary",
+            },
+            {
+                type: "radio",
+                header: "Secondary",
+                label: () => "Secondary",
+                key: "secondary",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                rows,
+                columns,
+            },
+        });
+
+        const cell = wrapper.get<HTMLTableCellElement>(
+            "tbody tr:nth-child(2) td",
+        );
+
+        await nextTick();
+        await cell.trigger("click");
+        await nextTick();
+
+        expect(rows).toEqual([
+            { primary: false, secondary: false },
+            { primary: true, secondary: true },
+        ]);
+
+        wrapper.unmount();
+    });
+
+    it("Should keep radio buttons isolated between tables", async () => {
+        expect.assertions(1);
+        const firstRows = [{ active: true }, { active: false }];
+        const secondRows = [{ active: false }, { active: false }];
+        const columns = defineTableColumns<(typeof firstRows)[number]>([
+            {
+                type: "radio",
+                header: "Header",
+                label: () => "Label",
+                key: "active",
+            },
+        ]);
+        const firstWrapper = mount(FTable<(typeof firstRows)[number]>, {
+            attachTo: document.body,
+            props: {
+                rows: firstRows,
+                columns,
+            },
+        });
+        const secondWrapper = mount(FTable<(typeof secondRows)[number]>, {
+            attachTo: document.body,
+            props: {
+                rows: secondRows,
+                columns,
+            },
+        });
+
+        const cell = secondWrapper.get<HTMLTableCellElement>(
+            "tbody tr:nth-child(2) td",
+        );
+
+        await nextTick();
+        await cell.trigger("click");
+        await nextTick();
+
+        expect({ firstRows, secondRows }).toEqual({
+            firstRows: [{ active: true }, { active: false }],
+            secondRows: [{ active: false }, { active: true }],
+        });
+
+        firstWrapper.unmount();
+        secondWrapper.unmount();
+    });
+
     it("Should be possible to click on cell instead of button", async () => {
         const rows = [
             { text: "text 1" },

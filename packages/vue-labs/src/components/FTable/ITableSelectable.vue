@@ -7,11 +7,13 @@ import { type FTableCellApi } from "./f-table-api";
 import { type NormalizedTableColumnCheckbox, type NormalizedTableColumnRadio } from "./table-column";
 
 const {
+    group = undefined,
     selectable,
     row,
     state,
     level = 1,
 } = defineProps<{
+    group?: string | symbol;
     selectable: "single" | "multi";
     row: T;
     state: boolean;
@@ -87,6 +89,7 @@ const singleSelectColumn: NormalizedTableColumnRadio<T, K> = {
     <i-table-radio
         v-else-if="selectable === 'single'"
         ref="child"
+        :group
         :row
         :column="singleSelectColumn"
         class="table-ng__cell--selectable"

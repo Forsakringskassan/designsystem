@@ -34,6 +34,7 @@ import { getBodyRowCount } from "./get-body-row-count";
 import { getMetaRows } from "./get-meta-rows";
 import { stopEditKey } from "./start-stop-edit";
 import { type NormalizedTableColumn, type TableColumn, normalizeTableColumns } from "./table-column";
+import { createTableRadioGroupManager, tableRadioGroupManagerKey } from "./table-radio-group-manager";
 import { usePopupError } from "./use-popup-error";
 import { useSelectable } from "./use-selectable";
 import { useTabstop } from "./use-tabstop";
@@ -89,6 +90,8 @@ defineSlots<{
 const $t = useTranslate();
 const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
+const selectableRadioGroup = Symbol("selectable-radio-group");
+const tableRadioGroupManager = createTableRadioGroupManager();
 const expandedKeys: Ref<Set<ItemIdentifier>> = ref(new Set());
 const keyedRows = computed(() => setItemIdentifiers(rows, keyAttribute, expandableAttribute));
 const metaRows = computed(
@@ -147,6 +150,7 @@ async function stopEditHandler(
 }
 
 provide(stopEditKey, stopEditHandler);
+provide(tableRadioGroupManagerKey, tableRadioGroupManager);
 
 function onToggleExpanded(key: ItemIdentifier): void {
     if (expandedKeys.value.has(key)) {
@@ -373,6 +377,7 @@ onMounted(() => {
                     <i-table-selectable
                         v-if="selectable"
                         :ref="bindCellApiRef"
+                        :group="selectable === 'single' ? selectableRadioGroup : undefined"
                         :level
                         :selectable
                         :state="selectableRowState(row)"
