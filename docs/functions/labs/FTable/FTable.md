@@ -22,11 +22,7 @@ Sidan är under omarbetning för nya tabellkomponenten och kan innehålla felakt
 FTableLiveExample.vue
 ```
 
-```import live-example
-FTableColumnLiveExample.vue
-```
-
-## Hur används komponenten?
+## När används komponenten?
 
 Använd en tabell när användaren behöver analysera och jämföra information strukturerad i rader och kolumner.
 Tabeller kan antingen vara enkla tabeller för presentation eller vara mer avancerade tabeller med olika typer av interaktioner.
@@ -76,107 +72,48 @@ Underlätta för användaren genom att formatera innehållet i tabellen så det 
 Undvik långa texter i tabellceller.
 Håll innehållet kort och koncist så att det blir lätt och överskådligt för användaren att hitta.
 
-## Navigera i tabell
-
-I tabellen navigerar användaren med hjälp av piltangenterna. Pilningen är inte cirkulär.
-Om en cell innehåller ett interagerbart objekt som exempelvis inmatningsfält eller dropplista kommer objektet få fokus direkt.
-Användaren tar sig till och från tabellen med hjälp av tabbning.
-Om användaren tabbar sig ur tabellen och sedan tabbar tillbaka med hjälp av shift + tab hamnar fokus på senast besökta cell.
-
-Länk till kodexempel
-
-### Tangentbordsnavigering
-
-Tabellen har stöd för följande tangentbordsnavigering:
-
-- pil upp: flyttar fokus till cell com ligger ovanför
-- pil ner: flyttar fokus till cell som ligger nedanför
-- högerpil: flyttar fokus till cell som ligger till höger
-- vänsterpil: flyttar fokus till cell som ligger till vänster
-- Home: flyttar fokus till första cellen i raden
-- End: flyttar fokus till sista cellen i raden
-- ctrl + Home: flyttar fokus till cell längst till vänster i översta raden
-- ctrl + End: flyttar fokus till cell längst till höger i nedersta raden.
-
-## Välja rader
-
-Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
-Om tabellen har kryssruta (flerval) ingår även funktionen för bulkoperation (länk) i tabellen.
-
-Länk till kodexempel
-
-## Bulkoperation
-
-Bulkoperation innebär att användaren kan välja ett antal rader och utföra åtgärd/operation för alla valda rader samtidigt. Bulkoperation ingår som standard för kolumn med kryssrutor.
-
-Om antal synliga rader ändras i tabellen kommer alla markeringar i kryssrutor tas bort och status för bulkoperation nollställs.
-Till exempel innebär en filtrering och att lägga till/ta bort rader ändringar som nollställer bulkoperation.
-
-Länk till kodexempel
-
-## Expandera rader
-
-Det går att skapa ytterligare tabellrader som visas genom att expandera en rad.
-Raderna kan presenteras på två sätt:
-
-- raden följer existerande kolumner
-- raden är utsträckt över alla kolumner och med valfritt innehåll.
-
-Länk till kodexempel
-
-## Åtgärdsknappar och länkar
-
-Tabellen kan ha åtgärdsknappar för att utföra en operation på en rad som till exempel ta bort, ändra eller visa mer information.
-Det går också att placera länkar i tabellen.
-Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig.
-Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis som förklarar vilken rad som påverkas).
-Om du behöver förtydliga sammanhanget för användare med skärmläsare kan du använda en sr-only för etiketten.
-
-Länk till kodexempel
-
-## Redigera innehåll
-
-För tabell finns det två typer av redigeringar
-
-- inline-redigering: användaren redigerar direkt innehållet på en rad genom att stå i aktuell cell
-- via formulär: användaren öppnar separat formulär eller modal för att redigera innehåll på rad, se avsnitt nedan (länk till Ändra, lägga till och ta bort).
-
-### Inline-redigering
-
-Tabellen har stöd för inline-redigering.
-Förutom vanligt textfält har tabellen även stöd för att lägga de specialiserade inmatningsfälten och dropplista i en cell.
-
-Länk till kodexempel
-
-## Ändra, lägga till eller ta bort rader
-
-Användaren kan utöver att ändra innehåll i en rad även ta bort eller lägga till rader till tabellen.
-
-Exempel på tabell med knappar för ta bort/lägga till.
-
-## Sortera och filtrera
-
-När tabellerna är stora och innehåller många rader behöver användaren kunna sortera och/eller filtrera innehållet.
-Med datamängsorteraren (länk FSortFilterDataset) kan du lägga till funktionalitet för att sortera och filtrera i tabell.
-
-Tänk på att tabell med sortering bör ha en förvald aktiverad kolumn som är sorterad i stigande/fallande ordning.
-Du väljer den kolumn som är mest trolig att användaren vill sortera på och som vanligtvis är den första kolumnen.
-
-Läs mer om hur du använder komponent (länk FSortFilterDataset datamängdsorteraren).
-
 ## Kod
 
-{@link code-table Läs om hur du sätter upp/kodar en tabell för din applikation.}
+{@link table-code Läs om hur du sätter upp/kodar en tabell för din applikation.}
 
-## Förbättringar och buggar
+## Bra att veta om komponenten
+
+Tabellen stödjer inte följande
+
+- redigerbar tabell i mobila enheter/surfplattor
+- redigerbar tabell och skärmläsarverktyg voiceover och talkback
+- felhantering och validering av nästlade rader
+- tangentbordsnavigering och skroll i tabell.
+
+## Återstående förbättringar i komponenten
 
 Följande förbättringar av tabell återstår:
 
-- stöd för paginering
+- stöd för kolumntypen kombobox
 - laddning av data (spinner)
 - konsument ska kunna sätta kolumnbredd
 - användare ska kunna ändra kolumnbredd dynamiskt.
 
 ## Relaterat
+
+{@link table-action-button-links Åtgärdsknappar och länkar}
+
+{@link table-bulk-operation Bulkoperation}
+
+{@link table-column-types Kolumntyper}
+
+{@link table-create-delete-rows Lägga till och ta bort rader}
+
+{@link table-edit Redigera innehåll}
+
+{@link table-expand-rows Expandera rader}
+
+{@link table-navigate Navigera}
+
+{@link table-paginate Paginera}
+
+{@link table-select-rows Välja rader}
+
+{@link table-sort-filter Sortera och filtrera}
 
 {@link test-table Testning av tabell}
