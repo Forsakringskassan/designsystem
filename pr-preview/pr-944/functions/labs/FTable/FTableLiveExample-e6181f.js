@@ -3992,7 +3992,7 @@ function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
   const array = [];
   walk(keyedRows, expandableAttribute, (row, level) => {
     const key = getItemIdentifier(row);
-    const isExpandable = Boolean(expandableAttribute && row[expandableAttribute]);
+    const isExpandable = Boolean(expandableAttribute && Array.isArray(row[expandableAttribute]) && row[expandableAttribute].length > 0);
     const isExpanded = isExpandable && expandedKeys.has(key);
     const rowIndex = rowIndexes.indexOf(key) + 2;
     array.push({
@@ -4886,13 +4886,16 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
   }
 });
 function normalizeAnchorColumn(column) {
-  var _column$key;
   return {
     type: "anchor",
     text: getValueFn(column.text, column.key, String, ""),
-    href: column.href,
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    href: column.href
   };
+}
+function getSortable(column) {
+  var _column$sort, _column$key;
+  const shouldSort = (_column$sort = column.sort) !== null && _column$sort !== void 0 ? _column$sort : !!column.key;
+  return shouldSort ? (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null : null;
 }
 function normalizeBaseColumn(column) {
   var _column$enabled;
@@ -4900,27 +4903,27 @@ function normalizeBaseColumn(column) {
   const header = toRef2(column.header);
   const description = column.description !== void 0 ? toRef2(column.description) : ref3("");
   const size = column.size !== void 0 ? toRef2(column.size) : ref3("grow");
+  const sortable = getSortable(column);
   return {
     id,
     header,
     description,
+    sortable,
     size,
     enabled: (_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true
   };
 }
 function normalizeButtonColumn(column) {
-  var _column$icon, _column$key;
+  var _column$icon;
   return {
     type: "button",
     text: getValueFn(column.text, column.key, String, ""),
     onClick: column.onClick,
     icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
-    iconLibrary: column.iconLibrary,
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    iconLibrary: column.iconLibrary
   };
 }
 function normalizeCheckboxColumn(column) {
-  var _column$key;
   return {
     type: "checkbox",
     label: getLabelFn(column.label),
@@ -4929,8 +4932,7 @@ function normalizeCheckboxColumn(column) {
     editable: typeof column.editable === "function" ? column.editable : () => {
       var _column$editable;
       return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
-    },
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    }
   };
 }
 function noop2() {
@@ -4940,7 +4942,6 @@ function normalizeMenuColumn(column) {
   return {
     type: "menu",
     text: getValueFn(column.text, void 0, String, ""),
-    sortable: null,
     actions: ((_column$actions = column.actions) !== null && _column$actions !== void 0 ? _column$actions : []).map((it) => {
       var _it$icon, _it$onClick;
       return {
@@ -4952,7 +4953,7 @@ function normalizeMenuColumn(column) {
   };
 }
 function normalizeNumberColumn(column) {
-  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key;
+  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation;
   const type = column.type;
   const config = inputFieldConfig[type];
   const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser.bind(column);
@@ -4973,19 +4974,16 @@ function normalizeNumberColumn(column) {
     },
     validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
     hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
     formatter,
     parser
   };
 }
 function normalizeRadioColumn(column) {
-  var _column$key;
   return {
     type: "radio",
     label: getLabelFn(column.label),
     checked: getValueFn(column.checked, column.key, Boolean, false),
-    update: getUpdateFn(column.update, column.key),
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    update: getUpdateFn(column.update, column.key)
   };
 }
 function normalizeRenderColumn(column) {
@@ -4996,15 +4994,12 @@ function normalizeRenderColumn(column) {
   };
 }
 function normalizeRowHeaderColumn(column) {
-  var _column$key;
   return {
     type: "rowheader",
-    text: getValueFn(column.text, column.key, String, ""),
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    text: getValueFn(column.text, column.key, String, "")
   };
 }
 function normalizeSelectColumn(column) {
-  var _column$key;
   return {
     type: "select",
     label: getLabelFn(column.label),
@@ -5014,12 +5009,10 @@ function normalizeSelectColumn(column) {
       var _column$editable;
       return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
     },
-    options: column.options,
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    options: column.options
   };
 }
 function normalizeSimpleColumn(column) {
-  var _column$key;
   return {
     type: "text",
     label: () => "",
@@ -5029,7 +5022,6 @@ function normalizeSimpleColumn(column) {
     update() {
     },
     editable: () => false,
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
     validation: {},
     hasValidation: false,
     formatter: (value) => value,
@@ -5037,7 +5029,7 @@ function normalizeSimpleColumn(column) {
   };
 }
 function normalizeTextColumn(column) {
-  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key;
+  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation;
   const type = column.type;
   const config = inputFieldConfig[type];
   const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser;
@@ -5056,7 +5048,6 @@ function normalizeTextColumn(column) {
     },
     validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
     hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
     formatter,
     parser
   };
@@ -5440,7 +5431,7 @@ function useTabstop(tableRef, metaRows) {
     const tabFallback = pendingRowRemoval ? "sticky" : "first-cell";
     pendingRowRemoval = false;
     assertRef(tableRef);
-    const oldTabstopElement = tableRef.value.querySelector(`:not(tfoot)[tabindex="0"]`);
+    const oldTabstopElement = tableRef.value.querySelector(`[tabindex="0"]`);
     assertSet(oldTabstopElement);
     const oldTabstopFocused = oldTabstopElement === document.activeElement;
     if (oldTabstopElement.closest("th")) {
@@ -5666,7 +5657,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     }
     function onTableFocusin(e) {
       assertRef(tableRef);
-      for (const it of tableRef.value.querySelectorAll(`:not(tfoot)[tabindex="0"]`)) {
+      for (const it of tableRef.value.querySelectorAll(`[tabindex="0"]`)) {
         if (it !== e.target) {
           it.setAttribute("tabindex", "-1");
         }
@@ -5693,7 +5684,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       if (!tableRef.value) {
         return;
       }
-      const outsideTable = Boolean(tableRef.value.tFoot?.contains(relatedTarget)) || !tableRef.value.contains(relatedTarget);
+      const outsideTable = !tableRef.value.contains(relatedTarget);
       if (outsideTable) {
         const cell = target.closest("td, th");
         if (cell) {
@@ -5787,13 +5778,12 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         ref: "table",
         role: role.value,
         class: normalizeClass(tableClasses.value),
-        "aria-rowcount": ariaRowcount.value
-      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("thead", {
+        "aria-rowcount": ariaRowcount.value,
         onFocusin: onTableFocusin,
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
+      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
         key: 1,
         ref: bindCellApiRef,
         state: unref3(selectableHeaderState)(),
@@ -5808,12 +5798,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           scope: "col",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])], 32), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", {
-        onFocusin: onTableFocusin,
-        onFocusout: onTableFocusout,
-        onClick,
-        onKeydown
-      }, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
+      }), 128))])]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell"
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment2, {
@@ -5882,13 +5867,13 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
         }), 128))], 64))], 8, _hoisted_7$1);
-      }), 128))], 32), _cache[6] || (_cache[6] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
+      }), 128))]), _cache[6] || (_cache[6] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
         class: "table-ng__row",
         "aria-rowindex": ariaRowcount.value
       }, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell--custom"
-      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 10, _hoisted_1$2);
+      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1$2);
     };
   }
 });
