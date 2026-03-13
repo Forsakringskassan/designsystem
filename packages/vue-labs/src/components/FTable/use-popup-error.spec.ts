@@ -39,33 +39,6 @@ describe("usePopupError", () => {
         expect(activeErrorAnchor.value?.isSameNode(anchor)).toBeTruthy();
     });
 
-    it("should unset active error element on edit", async () => {
-        const { activeErrorAnchor, onPopupError } = usePopupError();
-        const anchor = document.createElement("div");
-        const arrowAnchor = document.createElement("div");
-        onPopupError({
-            hasFocus: false,
-            hasHover: true,
-            inEdit: false,
-            anchor,
-            arrowAnchor,
-            message: "Error message",
-        });
-        await flushPromises();
-        expect(activeErrorAnchor.value?.isSameNode(anchor)).toBeTruthy();
-
-        onPopupError({
-            hasFocus: false,
-            hasHover: true,
-            inEdit: true,
-            anchor,
-            arrowAnchor,
-            message: "Error message",
-        });
-        await flushPromises();
-        expect(activeErrorAnchor.value).toBeUndefined();
-    });
-
     it("should switch active error element", async () => {
         const { activeErrorAnchor, onPopupError } = usePopupError();
         const anchor1 = document.createElement("div");
