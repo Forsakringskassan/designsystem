@@ -4,17 +4,21 @@
 
 ```ts
 
+import { AllowedComponentProps } from 'vue';
 import { App } from 'vue';
 import { AppContext } from 'vue';
 import { BankAccountNumberString } from '@fkui/logic';
 import { BankgiroString } from '@fkui/logic';
 import { ClearingnumberString } from '@fkui/logic';
 import { Component } from 'vue';
+import { ComponentCustomProps } from 'vue';
 import { ComponentOptions } from 'vue';
+import { ComponentOptionsBase } from 'vue';
 import { ComponentOptionsMixin } from 'vue';
 import { ComponentProvideOptions } from 'vue';
 import { ComponentPublicInstance } from 'vue';
 import { ComputedRef } from 'vue';
+import { CreateComponentPublicInstanceWithMixins } from 'vue';
 import { DefineComponent } from 'vue';
 import { DistributeRef } from '@vue/reactivity';
 import { ExtractPropTypes } from 'vue';
@@ -25,6 +29,8 @@ import { formatNumber } from '@fkui/logic';
 import { formatPersonnummer } from '@fkui/logic';
 import { formatPostalCode } from '@fkui/logic';
 import { FYear } from '@fkui/date';
+import { GlobalComponents } from 'vue';
+import { GlobalDirectives } from 'vue';
 import { IfAny } from '@vue/shared';
 import { InjectionKey } from 'vue';
 import { OrganisationsnummerString } from '@fkui/logic';
@@ -55,6 +61,7 @@ import { ValidationConfigUpdateDetail } from '@fkui/logic';
 import { ValidatorConfigs } from '@fkui/logic';
 import { ValidityEvent } from '@fkui/logic';
 import { VNode } from 'vue';
+import { VNodeProps } from 'vue';
 import { WeekdayNaming } from '@fkui/date';
 
 // @internal (undocumented)
