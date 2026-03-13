@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { computed, useTemplateRef } from "vue";
+import { computed, useTemplateRef, watch } from "vue";
 import { assertRef } from "@fkui/logic";
+import { activeRadioStore } from "./columns/helpers/active-radio-store";
 import { type FTableCellApi } from "./f-table-api";
 import { type NormalizedTableColumnRadio } from "./table-column";
 
@@ -15,9 +16,19 @@ const ariaLabel = computed(() => {
     return value.length > 0 ? value : undefined;
 });
 
+const radioId = Symbol("active-radio");
+
+watch(activeRadioStore, (radio) => {
+    if (radio.id !== radioId && Boolean(column.checked(row))) {
+        assertRef(inputElement);
+        column.update(row, false, inputElement.value.checked);
+    }
+});
+
 function onChange(_e: Event): void {
     assertRef(inputElement);
     column.update(row, inputElement.value.checked, !inputElement.value.checked);
+    activeRadioStore.setData(radioId);
 }
 
 const expose: FTableCellApi = { tabstopEl: inputElement };
@@ -29,6 +40,7 @@ defineExpose(expose);
         <input
             ref="input"
             type="radio"
+            :name="column.header.value"
             :checked="Boolean(column.checked(row))"
             :aria-label
             tabindex="-1"
