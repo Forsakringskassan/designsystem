@@ -4887,13 +4887,16 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
   }
 });
 function normalizeAnchorColumn(column) {
-  var _column$key;
   return {
     type: "anchor",
     text: getValueFn(column.text, column.key, String, ""),
-    href: column.href,
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    href: column.href
   };
+}
+function getSortable(column) {
+  var _column$sort, _column$key;
+  const shouldSort = (_column$sort = column.sort) !== null && _column$sort !== void 0 ? _column$sort : !!column.key;
+  return shouldSort ? (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null : null;
 }
 function normalizeBaseColumn(column) {
   var _column$enabled;
@@ -4901,27 +4904,27 @@ function normalizeBaseColumn(column) {
   const header = toRef2(column.header);
   const description = column.description !== void 0 ? toRef2(column.description) : ref3("");
   const size = column.size !== void 0 ? toRef2(column.size) : ref3("grow");
+  const sortable = getSortable(column);
   return {
     id,
     header,
     description,
+    sortable,
     size,
     enabled: (_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true
   };
 }
 function normalizeButtonColumn(column) {
-  var _column$icon, _column$key;
+  var _column$icon;
   return {
     type: "button",
     text: getValueFn(column.text, column.key, String, ""),
     onClick: column.onClick,
     icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
-    iconLibrary: column.iconLibrary,
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    iconLibrary: column.iconLibrary
   };
 }
 function normalizeCheckboxColumn(column) {
-  var _column$key;
   return {
     type: "checkbox",
     label: getLabelFn(column.label),
@@ -4930,8 +4933,7 @@ function normalizeCheckboxColumn(column) {
     editable: typeof column.editable === "function" ? column.editable : () => {
       var _column$editable;
       return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
-    },
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    }
   };
 }
 function noop2() {
@@ -4941,7 +4943,6 @@ function normalizeMenuColumn(column) {
   return {
     type: "menu",
     text: getValueFn(column.text, void 0, String, ""),
-    sortable: null,
     actions: ((_column$actions = column.actions) !== null && _column$actions !== void 0 ? _column$actions : []).map((it) => {
       var _it$icon, _it$onClick;
       return {
@@ -4953,7 +4954,7 @@ function normalizeMenuColumn(column) {
   };
 }
 function normalizeNumberColumn(column) {
-  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key;
+  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation;
   const type = column.type;
   const config = inputFieldConfig[type];
   const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser.bind(column);
@@ -4974,19 +4975,16 @@ function normalizeNumberColumn(column) {
     },
     validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
     hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
     formatter,
     parser
   };
 }
 function normalizeRadioColumn(column) {
-  var _column$key;
   return {
     type: "radio",
     label: getLabelFn(column.label),
     checked: getValueFn(column.checked, column.key, Boolean, false),
-    update: getUpdateFn(column.update, column.key),
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    update: getUpdateFn(column.update, column.key)
   };
 }
 function normalizeRenderColumn(column) {
@@ -4997,15 +4995,12 @@ function normalizeRenderColumn(column) {
   };
 }
 function normalizeRowHeaderColumn(column) {
-  var _column$key;
   return {
     type: "rowheader",
-    text: getValueFn(column.text, column.key, String, ""),
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    text: getValueFn(column.text, column.key, String, "")
   };
 }
 function normalizeSelectColumn(column) {
-  var _column$key;
   return {
     type: "select",
     label: getLabelFn(column.label),
@@ -5015,12 +5010,10 @@ function normalizeSelectColumn(column) {
       var _column$editable;
       return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
     },
-    options: column.options,
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    options: column.options
   };
 }
 function normalizeSimpleColumn(column) {
-  var _column$key;
   return {
     type: "text",
     label: () => "",
@@ -5030,7 +5023,6 @@ function normalizeSimpleColumn(column) {
     update() {
     },
     editable: () => false,
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
     validation: {},
     hasValidation: false,
     formatter: (value) => value,
@@ -5038,7 +5030,7 @@ function normalizeSimpleColumn(column) {
   };
 }
 function normalizeTextColumn(column) {
-  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key;
+  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation;
   const type = column.type;
   const config = inputFieldConfig[type];
   const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser;
@@ -5057,7 +5049,6 @@ function normalizeTextColumn(column) {
     },
     validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
     hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
     formatter,
     parser
   };
