@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-b76162.json"
+            href="../../search-data-39b42e.json"
             as="fetch"
             crossorigin
-            integrity="sha384-KP7ZB6kqKZV4c5z+EowCgfjlMjv0D1rPRor1nuxePbIfZAVGQ0D9+V8cXnRjCIWo"
+            integrity="sha384-c5FS2e0f/gZFk22Ff99UA3mfALSFYU3fBJ2xyxVyvL8jN7SoQW5YnZVODagopMbF"
             id="search-data"
         />
     </head>
@@ -632,7 +632,7 @@
                 </div>
             <h2 id="lista_och_ovrigt"><a class="header-anchor" href="#lista_och_ovrigt">Lista och övrigt</a></h2>
                 <div
-                    id="example-f42761"
+                    id="example-79d66c"
                     class="code-preview code-preview--default"
                     
                     
@@ -645,29 +645,25 @@
          &lt;f-list :items&gt;
              &lt;template #default=&quot;{ item }&quot;&gt;
 <span class="hljs-deletion">-                &lt;f-crud-button action=&quot;modify&quot; :item icon&gt;</span>
-<span class="hljs-deletion">-                    Ändra {{ item.name }}</span>
-<span class="hljs-deletion">-                &lt;/f-crud-button&gt;</span>
-<span class="hljs-deletion">-                &lt;f-crud-button action=&quot;delete&quot; :item icon&gt;</span>
-<span class="hljs-deletion">-                    Ta bort {{ item.name }}</span>
-<span class="hljs-deletion">-                &lt;/f-crud-button&gt;</span>
-<span class="hljs-addition">+                &lt;button</span>
-<span class="hljs-addition">+                    type=&quot;button&quot;</span>
-<span class="hljs-addition">+                    class=&quot;button button--small button--tertiary&quot;</span>
+<span class="hljs-addition">+                &lt;f-button</span>
+<span class="hljs-addition">+                    icon-left=&quot;pen&quot;</span>
+<span class="hljs-addition">+                    size=&quot;small&quot;</span>
+<span class="hljs-addition">+                    variant=&quot;tertiary&quot;</span>
 <span class="hljs-addition">+                    @click=&quot;updateItem(item)&quot;</span>
 <span class="hljs-addition">+                &gt;</span>
-<span class="hljs-addition">+                    &lt;f-icon name=&quot;pen&quot;&gt;</span>
-<span class="hljs-addition">+                        &lt;title&gt;Ändra {{ item.name }}&lt;/title&gt;</span>
-<span class="hljs-addition">+                    &lt;/f-icon&gt;</span>
-<span class="hljs-addition">+                &lt;/button&gt;</span>
-<span class="hljs-addition">+                &lt;button</span>
-<span class="hljs-addition">+                    type=&quot;button&quot;</span>
-<span class="hljs-addition">+                    class=&quot;button button--small button--tertiary&quot;</span>
+                     Ändra {{ item.name }}
+<span class="hljs-deletion">-                &lt;/f-crud-button&gt;</span>
+<span class="hljs-deletion">-                &lt;f-crud-button action=&quot;delete&quot; :item icon&gt;</span>
+<span class="hljs-addition">+                &lt;/f-button&gt;</span>
+<span class="hljs-addition">+                &lt;f-button</span>
+<span class="hljs-addition">+                    icon-left=&quot;pen&quot;</span>
+<span class="hljs-addition">+                    size=&quot;small&quot;</span>
+<span class="hljs-addition">+                    variant=&quot;tertiary&quot;</span>
 <span class="hljs-addition">+                    @click=&quot;deleteItem(item)&quot;</span>
 <span class="hljs-addition">+                &gt;</span>
-<span class="hljs-addition">+                    &lt;f-icon name=&quot;pen&quot;&gt;</span>
-<span class="hljs-addition">+                        &lt;title&gt;Ta bort {{ item.name }}&lt;/title&gt;</span>
-<span class="hljs-addition">+                    &lt;/f-icon&gt;</span>
-<span class="hljs-addition">+                &lt;/button&gt;</span>
+                     Ta bort {{ item.name }}
+<span class="hljs-deletion">-                &lt;/f-crud-button&gt;</span>
+<span class="hljs-addition">+                &lt;/f-button&gt;</span>
              &lt;/template&gt;
          &lt;/f-list&gt;
      &lt;/template&gt;
@@ -804,9 +800,9 @@ If false, the button will use a visually hidden text for accessibility.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/major-eslint-config-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/fb6b08fcfc329df4bcbec4fa08835478fe461bba">fb6b08f</a>)<br />
+<div class="footer__right"><div class="version">renovate/major-eslint-config-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/7e493169530eb0b9a68f3c76e69b56e0c1c56bd0">7e49316</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1104">PR 1104</a><br />
-        2026-03-13 09:48
+        2026-03-14 13:18
 </div>
 <div class="toolbar__item">
     <form id="version">
