@@ -18,52 +18,9 @@ $sortfilter-header-padding-top: size.$padding-025 !default;
         min-width: 80px;
     }
 
-    &__search {
-        position: relative;
-
-        input {
-            padding-left: 2.1rem;
-            padding-right: 2.1rem;
-
-            @include core.breakpoint-up(md) {
-                width: 160px;
-            }
-        }
-
-        &__magnify-icon {
-            position: absolute;
-            left: size.$margin-175;
-            height: var(--f-height-large);
-
-            /* same as textfield */
-            z-index: 1;
-
-            /* In front of input field */
-            width: 1.2rem;
-            color: $sort-filter-dateset-color-icon-search;
-
-            @include core.breakpoint-down(sm) {
-                top: size.$margin-150;
-                left: size.$margin-075;
-            }
-        }
-
-        &__close-icon.button--discrete {
-            position: absolute;
-            top: calc(-1 * size.$margin-075);
-            right: 0;
-            color: $sort-filter-dateset-color-icon-clear;
-            cursor: pointer;
-            padding: 1rem;
-
-            @include core.breakpoint-down(sm) {
-                top: size.$margin-100;
-            }
-        }
-
-        &__close-icon.button--discrete:hover {
-            box-shadow: none;
-            background-color: transparent;
+    &__search input {
+        @include core.breakpoint-up(md) {
+            width: 160px;
         }
     }
 }

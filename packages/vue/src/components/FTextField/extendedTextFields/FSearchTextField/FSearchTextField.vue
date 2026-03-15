@@ -49,7 +49,7 @@ export default defineComponent({
     ],
     data() {
         return {
-            defaultText: this.$t("fkui.search-text-field.label", "Sök"),
+            defaultText: TranslationService.provider.translate("fkui.search-text-field.label", "Sök"),
         };
     },
     computed: {
@@ -62,9 +62,11 @@ export default defineComponent({
     },
     methods: {
         clear(): void {
-            alertScreenReader(this.$t("fkui.search-text-field.aria-live.clear", "Inmatningsfältet har tömts"), {
-                assertive: true,
-            });
+            const alertText = TranslationService.provider.translate(
+                "fkui.search-text-field.aria-live.clear",
+                "Inmatningsfältet har tömts",
+            );
+            alertScreenReader(alertText, { assertive: true });
             this.$emit("update:modelValue", "");
 
             this.$el.querySelector("input").focus();

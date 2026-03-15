@@ -1,12 +1,11 @@
 <script setup lang="ts" generic="T, TArray extends Dataset<T> | T[] = Dataset<T> | T[]">
-import { type Ref, nextTick, onMounted, provide, useTemplateRef, watch } from "vue";
+import { type Ref, computed, nextTick, onMounted, provide, watch } from "vue";
 import { TranslationService, alertScreenReader, debounce } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { useTranslate } from "../../plugins";
-import { type Dataset, getHTMLElementFromVueRef } from "../../utils";
-import { FIcon } from "../FIcon";
+import { type Dataset } from "../../utils";
 import { FSelectField } from "../FSelectField";
-import { FTextField } from "../FTextField";
+import { FSearchTextField } from "../FTextField";
 import {
     type FSortFilterDatasetMountCallback,
     type FSortFilterDatasetSortCallback,
@@ -37,7 +36,10 @@ export interface FSortFilterDatasetProps<TArray> {
      */
     showFilter?: boolean;
     /**
-     * Set placeholder text in filter input field.
+     * Set text in filter input field label.
+     *
+     * Previously set placeholder text in filter input field, but this is deprecated.
+     *
      * Default is textkey "fkui.sort-filter-dataset.placeholder.filter"
      */
     placeholderFilter?: string;
@@ -85,12 +87,10 @@ const emit = defineEmits<{
 }>();
 
 const $t = useTranslate();
-const searchField = useTemplateRef("search-field");
 const {
     searchString,
     sortAttribute,
     sortFilterResult,
-    showClearButton,
     defaultSortValue,
     sortableKeys,
     sortOrders,
@@ -105,8 +105,6 @@ const {
 );
 
 function filterResultset(): void {
-    searchString.value = searchField.value?.$el.querySelector("input").value;
-
     if (searchString.value === "") {
         alertScreenReader($t("fkui.sort-filter-dataset.aria-live.empty", "Sök redigera Sök tom"));
     } else {
@@ -153,15 +151,6 @@ function onSearchInput(): void {
     debouncedFilterResultset();
 }
 
-function onClickClearSearch(): void {
-    searchString.value = "";
-
-    const input = getHTMLElementFromVueRef(searchField.value).querySelector("input");
-    if (input) {
-        input.focus();
-    }
-}
-
 watch(sortAttribute, () => {
     emit("usedSortAttributes", sortAttribute.value);
 });
@@ -182,6 +171,9 @@ watch(
     },
     { immediate: true },
 );
+
+const clearableScreenReaderText = computed(() => $t("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält"));
+const filterLabel = computed(() => placeholderFilter);
 </script>
 
 <template>
@@ -199,32 +191,15 @@ watch(
                 <i-flex collapse float="right">
                     <i-flex-item v-if="showFilter" shrink align="center">
                         <div class="sort-filter-dataset__search">
-                            <f-icon name="search" class="sort-filter-dataset__search__magnify-icon" />
-
-                            <f-text-field
-                                ref="search-field"
+                            <f-search-text-field
                                 v-model="searchString"
-                                inline
-                                :placeholder="placeholderFilter"
                                 maxlength="64"
+                                :clearable-screen-reader-text
+                                inline
                                 @input="onSearchInput"
                             >
-                                <span class="sr-only">{{ placeholderFilter }}</span>
-                            </f-text-field>
-
-                            <!-- [html-validate-disable-next fkui/class-deprecated -- technical debt] -->
-                            <button
-                                v-if="showClearButton"
-                                type="button"
-                                class="button button--discrete sort-filter-dataset__search__close-icon"
-                                :title="$t('fkui.sort-filter-dataset.clear.filter', 'Rensa sökfält')"
-                                @click="onClickClearSearch"
-                            >
-                                <f-icon name="close" />
-                                <span class="sr-only">{{
-                                    $t("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält")
-                                }}</span>
-                            </button>
+                                {{ filterLabel }}
+                            </f-search-text-field>
                         </div>
                     </i-flex-item>
 

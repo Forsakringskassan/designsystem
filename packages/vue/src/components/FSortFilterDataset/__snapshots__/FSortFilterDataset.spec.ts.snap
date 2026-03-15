@@ -29,23 +29,22 @@ exports[`snapshots should match snapshot with a dropdown with attributes 1`] = `
           <div
             class="sort-filter-dataset__search"
           >
-            <f-icon-stub
-              class="sort-filter-dataset__search__magnify-icon"
-              library="f"
-              name="search"
-            />
-            <f-text-field-stub
-              disabled="false"
-              id="fkui-vue-element-0001"
-              inline="true"
-              inputwidth="sm-12"
-              labelwidth="sm-12"
+            <div
+              inline=""
               maxlength="64"
-              modelvalue=""
-              placeholder="Sök"
-              type="text"
-            />
-            <!--v-if-->
+            >
+              <f-text-field-stub
+                class="text-field--search"
+                disabled="false"
+                id="fkui-vue-element-0001"
+                inline="true"
+                inputwidth="sm-12"
+                labelwidth="sm-12"
+                maxlength="64"
+                modelvalue=""
+                type="search"
+              />
+            </div>
           </div>
           
         </div>
