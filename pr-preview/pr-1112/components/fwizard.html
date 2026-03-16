@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../search-data-11d038.json"
+            href="../search-data-1eccd7.json"
             as="fetch"
             crossorigin
-            integrity="sha384-6WKrM6gXp7GhaisIWvnUggLaPq8hSKcUktazTV9J3rEfUr+4YdkXTc4CDvlz6QYD"
+            integrity="sha384-BFH9TUSw0ePCrkTDKDtnTC8/W6r0JzRrxW8rSPe5vSSlAbMSsxI1vn7ir8jA7z5y"
             id="search-data"
         />
     </head>
@@ -1108,13 +1108,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/f6b2f61b67ea5e6af0b25d417dd9e2c8e2f28e62/packages/vue/src/components/FWizard/FWizard.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/c7e9a980f2cc61aa7da39a703e0ba7fb11e7e632/packages/vue/src/components/FWizard/FWizard.vue">
                 FWizard
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/f6b2f61b67ea5e6af0b25d417dd9e2c8e2f28e62/packages/vue/src/components/FWizard/FWizardStep.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/c7e9a980f2cc61aa7da39a703e0ba7fb11e7e632/packages/vue/src/components/FWizard/FWizardStep.vue">
                 FWizardStep
             </a>
             
@@ -1361,13 +1361,13 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-5a3052"></div>
+        <div id="example-e4ee75"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FWizardExampleAddStep-5a3052.js"></script>
+        <script type="module" src="./FWizardExampleAddStep-e4ee75.js"></script>
     
                 </div>
                 <div>
@@ -1388,7 +1388,7 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCheckboxField</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FCheckboxField</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 interface <span class="hljs-title class_">Frukt</span> {
     <span class="hljs-attr">value</span>: string;
@@ -1403,7 +1403,7 @@ interface <span class="hljs-title class_">Fruktkorg</span> {
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;WizardExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FCheckboxField</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FCheckboxField</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">current</span>: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> string | <span class="hljs-literal">undefined</span>,
@@ -1460,9 +1460,9 @@ interface <span class="hljs-title class_">Fruktkorg</span> {
         &gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard-step</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;fruktkorg-antal&quot;</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myOrderStep&#x27;&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Min beställning&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Fruktkorg<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--tertiary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;addBasket&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-icon</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button__icon&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plus&quot;</span> /&gt;</span> Lägg till fruktkorg
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;plus&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;addBasket&quot;</span>&gt;</span>
+                    Lägg till fruktkorg
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-wizard-step</span>&gt;</span>
 
             <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard-step</span>
@@ -1491,9 +1491,9 @@ interface <span class="hljs-title class_">Fruktkorg</span> {
                     <span class="hljs-tag">&lt;/<span class="hljs-name">f-checkbox-field</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
 
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--tertiary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;removeBasket(item)&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;trashcan&quot;</span> /&gt;</span> Ta bort fruktkorg
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;removeBasket(item)&quot;</span>&gt;</span>
+                    Ta bort fruktkorg
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-wizard-step</span>&gt;</span>
 
             <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard-step</span>
@@ -1508,7 +1508,7 @@ interface <span class="hljs-title class_">Fruktkorg</span> {
 
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 30px&quot;</span>&gt;</span>
             Ett steg kan öppnas programatiskt, t.ex. man klickar &#x27;ändra&#x27; i ett granska-steg.
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;current = &#x27;baz&#x27;&quot;</span>&gt;</span>Öppna sista steget<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;current = &#x27;baz&#x27;&quot;</span>&gt;</span>Öppna sista steget<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>v-model: {{ current }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -2019,9 +2019,9 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/marocchino-sticky-pull-request-comment-3.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/f6b2f61b67ea5e6af0b25d417dd9e2c8e2f28e62">f6b2f61</a>)<br />
+<div class="footer__right"><div class="version">renovate/marocchino-sticky-pull-request-comment-3.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/c7e9a980f2cc61aa7da39a703e0ba7fb11e7e632">c7e9a98</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1112">PR 1112</a><br />
-        2026-03-16 13:48
+        2026-03-16 15:19
 </div>
 <div class="toolbar__item">
     <form id="version">
