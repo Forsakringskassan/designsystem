@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { type ContextMenuItem, FContextMenu } from "@fkui/vue";
+import { type ContextMenuItem, FButton, FContextMenu } from "@fkui/vue";
 
 const exampleItems: ContextMenuItem[] = [
     { label: "Påminnelse", key: "MENU_2", icon: "bell" },
@@ -12,7 +12,7 @@ const exampleItems: ContextMenuItem[] = [
 
 export default defineComponent({
     name: "FContextMenuExample",
-    components: { FContextMenu },
+    components: { FButton, FContextMenu },
     data() {
         return {
             items: exampleItems,
@@ -39,16 +39,14 @@ export default defineComponent({
 
 <template>
     <div data-testid="fcontextmenu-exempel1">
-        <button
+        <f-button
             ref="popupAnchor"
             data-test="open-example-contextmenu-button"
-            type="button"
-            class="button button--primary"
             aria-haspopup="menu"
             @click="onClick"
         >
             Öppna
-        </button>
+        </f-button>
         <pre>Selected: {{ selected }}</pre>
         <f-context-menu
             data-test="contextmenu-open"

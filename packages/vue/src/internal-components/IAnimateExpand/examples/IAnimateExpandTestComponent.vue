@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import IAnimateExpand from "../IAnimateExpand.vue";
+import { FButton, IAnimateExpand } from "@fkui/vue";
 
 export default defineComponent({
-    namne: "IAnimateExpandExample",
-    components: { IAnimateExpand },
+    name: "IAnimateExpandExample",
+    components: { FButton, IAnimateExpand },
     data() {
         return {
             isExpanded: false,
@@ -16,7 +16,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <button type="button" @click="isExpanded = !isExpanded">Öppna/stäng animering</button>
+        <f-button @click="isExpanded = !isExpanded">Öppna/stäng animering</f-button>
         <i-animate-expand :expanded="isExpanded" :opacity="true">
             <!-- [html-validate-disable-next no-inline-style] -->
             <div :style></div>

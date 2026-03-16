@@ -1,11 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
-import { FTextField } from "@fkui/vue";
+import { FButton, FTextField } from "@fkui/vue";
 
 export default defineComponent({
     name: "ValidationPluginToggleEnabled",
-    components: { FTextField },
+    components: { FButton, FTextField },
     data() {
         return { model: "", toggleEnabled: true };
     },
@@ -27,13 +27,8 @@ export default defineComponent({
         >
             Max tio tecken
         </f-text-field>
-        <button
-            class="button button--primary"
-            data-test="validator-enabled-button"
-            type="button"
-            @click="toggleEnabled = !toggleEnabled"
-        >
+        <f-button data-test="validator-enabled-button" @click="toggleEnabled = !toggleEnabled">
             Aktivera/Inaktivera
-        </button>
+        </f-button>
     </div>
 </template>

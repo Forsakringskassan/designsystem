@@ -1,10 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { formModal } from "@fkui/vue";
+import { FButton, formModal } from "@fkui/vue";
 import ExampleModal from "./FlerstegsModal.vue";
 
 export default defineComponent({
-    name: "FlerstegsModalApiExample",
+    name: "FlerstegsModalExample",
+    components: { FButton },
     data() {
         return {
             result: "",
@@ -25,7 +26,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <button type="button" class="button button--secondary" @click="onClick">Öppna Modal</button>
+        <f-button size="small" variant="secondary" @click="onClick">Öppna Modal</f-button>
         <div v-if="result">
             <pre>Modalen stängdes med resultatet:</pre>
             <pre>{{ result }}</pre>

@@ -6,9 +6,9 @@ import { LiveExample } from "@forsakringskassan/docs-live-example";
 export default defineComponent({
     name: "FModalLiveExample",
     components: {
-        LiveExample,
-        FSelectField,
         FCheckboxField,
+        FSelectField,
+        LiveExample,
     },
     data() {
         return {
@@ -37,22 +37,16 @@ export default defineComponent({
         },
         button(): string {
             return /* HTML */ `
-                <button type="button" class="button button--secondary" @click="isOpen = !isOpen">
-                    Öppna modal
-                </button>
+                <f-button variant="secondary" @click="isOpen = !isOpen"> Öppna modal </f-button>
             `;
         },
         footer(): string {
             return /* HTML */ `
                 <template #footer>
                     <div class="button-group">
-                        <button
-                            type="button"
-                            class="button button--primary button-group__item button--large"
-                            @click="isOpen = false"
-                        >
+                        <f-button class="button-group__item" size="large" @click="isOpen = false">
                             Stäng
-                        </button>
+                        </f-button>
                     </div>
                 </template>
             `;
