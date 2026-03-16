@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-7f8652.json"
+            href="../../search-data-771440.json"
             as="fetch"
             crossorigin
-            integrity="sha384-ZxyiDyxQsSUjcAz+/Nns69G9nCtjb+iilGpVT9P5rjA2iO1lPH4kBNxZKQ+j4eLN"
+            integrity="sha384-/pd22Qw099xun8LsHxXgCiA6K/wSVCwoJXPeumn4srPxVQqEmDxvJ9tiUxmE+gEu"
             id="search-data"
         />
     </head>
@@ -1108,7 +1108,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8b844caf35690b03072cf48883b00e7c01400939/packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/87798356515a52522372b129a7cc18b947712e2f/packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue">
                 IAnimateExpand
             </a>
             
@@ -1238,7 +1238,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-037097"></div>
+        <div id="example-44403d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1249,7 +1249,7 @@ select {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IAnimateExpandRecommended-037097.js"></script>
+        <script type="module" src="./IAnimateExpandRecommended-44403d.js"></script>
     
                 </div>
                 <div>
@@ -1270,11 +1270,11 @@ select {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">IAnimateExpand</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IAnimateExpand</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">namne</span>: <span class="hljs-string">&quot;IAnimateExpandRecommended&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">IAnimateExpand</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IAnimateExpand</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">isExpanded</span>: <span class="hljs-literal">false</span>,
@@ -1305,7 +1305,7 @@ select {
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;isExpanded = !isExpanded&quot;</span>&gt;</span>Öppna/stäng animering<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;isExpanded = !isExpanded&quot;</span>&gt;</span>Öppna/stäng animering<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;isAnimated&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> /&gt;</span> Animera<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;hasOpacity&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> /&gt;</span> Opacitet<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;useVShow&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> /&gt;</span> Use v-show instead of v-if<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
@@ -1351,13 +1351,13 @@ select {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-c2a158"></div>
+        <div id="example-e0ba7e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IAnimateExpandToggleTwo-c2a158.js"></script>
+        <script type="module" src="./IAnimateExpandToggleTwo-e0ba7e.js"></script>
     
                 </div>
                 <div>
@@ -1378,11 +1378,11 @@ select {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">IAnimateExpand</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IAnimateExpand</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">namne</span>: <span class="hljs-string">&quot;IAnimateExpandToggleTwo&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">IAnimateExpand</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IAnimateExpand</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">toggle</span>: <span class="hljs-literal">false</span>,
@@ -1394,7 +1394,7 @@ select {
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggle = !toggle&quot;</span>&gt;</span>Toggle<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggle = !toggle&quot;</span>&gt;</span>Toggle<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;opacity&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> /&gt;</span> Toning<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">i-animate-expand</span> <span class="hljs-attr">:opacity</span> <span class="hljs-attr">:expanded</span>=<span class="hljs-string">&quot;toggle&quot;</span>&gt;</span>
@@ -1578,9 +1578,9 @@ Callback will await Promise.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/8b844caf35690b03072cf48883b00e7c01400939">8b844ca</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/87798356515a52522372b129a7cc18b947712e2f">8779835</a>)<br />
         
-        2026-03-16 13:44
+        2026-03-16 15:16
 </div>
 <div class="toolbar__item">
     <form id="version">

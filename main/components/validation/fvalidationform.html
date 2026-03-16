@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-7f8652.json"
+            href="../../search-data-771440.json"
             as="fetch"
             crossorigin
-            integrity="sha384-ZxyiDyxQsSUjcAz+/Nns69G9nCtjb+iilGpVT9P5rjA2iO1lPH4kBNxZKQ+j4eLN"
+            integrity="sha384-/pd22Qw099xun8LsHxXgCiA6K/wSVCwoJXPeumn4srPxVQqEmDxvJ9tiUxmE+gEu"
             id="search-data"
         />
     </head>
@@ -1108,7 +1108,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8b844caf35690b03072cf48883b00e7c01400939/packages/vue/src/components/FValidationForm/FValidationForm.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/87798356515a52522372b129a7cc18b947712e2f/packages/vue/src/components/FValidationForm/FValidationForm.vue">
                 FValidationForm
             </a>
             
@@ -1168,13 +1168,13 @@ Attributet <code>autocomplete</code> är satt till <code>off</code>.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-adcdbd"></div>
+        <div id="example-30ef10"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FValidationFormDefault-adcdbd.js"></script>
+        <script type="module" src="./FValidationFormDefault-30ef10.js"></script>
     
                 </div>
                 <div>
@@ -1196,6 +1196,7 @@ Attributet <code>autocomplete</code> är satt till <code>off</code>.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FButton</span>,
     <span class="hljs-title class_">FCheckboxField</span>,
     <span class="hljs-title class_">FEmailTextField</span>,
     <span class="hljs-title class_">FFieldset</span>,
@@ -1207,6 +1208,7 @@ Attributet <code>autocomplete</code> är satt till <code>off</code>.</p>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FValidationFormDefault&quot;</span>,
     <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FButton</span>,
         <span class="hljs-title class_">FCheckboxField</span>,
         <span class="hljs-title class_">FEmailTextField</span>,
         <span class="hljs-title class_">FFieldset</span>,
@@ -1265,19 +1267,15 @@ Attributet <code>autocomplete</code> är satt till <code>off</code>.</p>
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
 
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--primary button--large&quot;</span>
-                &gt;</span>
-                    Spara
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--secondary button--large&quot;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Spara<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span>
+                    <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span>
                     @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onCancel&quot;</span>
                 &gt;</span>
                     Avbryt
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
@@ -1347,13 +1345,13 @@ Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara yt
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-a39dcd"></div>
+        <div id="example-f4c888"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./WithErrorListAndCbFunction-a39dcd.js"></script>
+        <script type="module" src="./WithErrorListAndCbFunction-f4c888.js"></script>
     
                 </div>
                 <div>
@@ -1374,11 +1372,11 @@ Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara yt
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FExpandablePanel</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FExpandablePanel</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ErrorListWithOptionsExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FExpandablePanel</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FExpandablePanel</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">field1</span>: <span class="hljs-string">&quot;&quot;</span>,
@@ -1426,21 +1424,24 @@ Använd <code>errorListBeforeNavigate</code> för att öppna den expanderbara yt
                 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-expandable-panel</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
                     <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;submit-button&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--primary button--large&quot;</span>
+                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
                 &gt;</span>
                     Spara
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
                     <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;cancel-button&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--secondary button--large&quot;</span>
+                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span>
                     @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onCancel&quot;</span>
                 &gt;</span>
                     Avbryt
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
@@ -1499,13 +1500,13 @@ Första inmatningsfältet kommer alltid få ett fel när man försöker skicka i
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-ab88cf"></div>
+        <div id="example-4f78cd"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FValidationFormServerError-ab88cf.js"></script>
+        <script type="module" src="./FValidationFormServerError-4f78cd.js"></script>
     
                 </div>
                 <div>
@@ -1528,6 +1529,7 @@ Första inmatningsfältet kommer alltid få ett fel när man försöker skicka i
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FButton</span>,
     <span class="hljs-title class_">FTextField</span>,
     <span class="hljs-title class_">FValidationForm</span>,
     <span class="hljs-title class_">FValidationFormAction</span>,
@@ -1536,7 +1538,7 @@ Första inmatningsfältet kommer alltid få ett fel när man försöker skicka i
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FValidationFormServerError&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">field1</span>: <span class="hljs-string">&quot;&quot;</span>,
@@ -1578,19 +1580,15 @@ Första inmatningsfältet kommer alltid få ett fel när man försöker skicka i
                 Ett annat inmatningsfält
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--primary button--large&quot;</span>
-                &gt;</span>
-                    Spara
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--secondary button--large&quot;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span> Spara <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span>
+                    <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span>
                     @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onCancel&quot;</span>
                 &gt;</span>
                     Avbryt
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
@@ -1822,9 +1820,9 @@ If the prop is not set a random value will be generated.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/8b844caf35690b03072cf48883b00e7c01400939">8b844ca</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/87798356515a52522372b129a7cc18b947712e2f">8779835</a>)<br />
         
-        2026-03-16 13:44
+        2026-03-16 15:16
 </div>
 <div class="toolbar__item">
     <form id="version">

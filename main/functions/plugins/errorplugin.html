@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-7f8652.json"
+            href="../../search-data-771440.json"
             as="fetch"
             crossorigin
-            integrity="sha384-ZxyiDyxQsSUjcAz+/Nns69G9nCtjb+iilGpVT9P5rjA2iO1lPH4kBNxZKQ+j4eLN"
+            integrity="sha384-/pd22Qw099xun8LsHxXgCiA6K/wSVCwoJXPeumn4srPxVQqEmDxvJ9tiUxmE+gEu"
             id="search-data"
         />
     </head>
@@ -1844,13 +1844,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-61ebf6"></div>
+        <div id="example-15a962"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ErrorPluginExample-61ebf6.js"></script>
+        <script type="module" src="./ErrorPluginExample-15a962.js"></script>
     
                 </div>
                 <div>
@@ -1871,9 +1871,11 @@
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent, getCurrentInstance } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ErrorPluginExample&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">instance</span>: <span class="hljs-title function_">getCurrentInstance</span>(),
@@ -1896,22 +1898,12 @@
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;generate-error&#x27;&quot;</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;generateError()&quot;</span>
-        &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;generate-error&#x27;&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;generateError()&quot;</span>&gt;</span>
             Fel
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;generate-warning&#x27;&quot;</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;generateWarning()&quot;</span>
-        &gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;generate-warning&#x27;&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;generateWarning()&quot;</span>&gt;</span>
             Varning
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -2005,9 +1997,9 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/8b844caf35690b03072cf48883b00e7c01400939">8b844ca</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/87798356515a52522372b129a7cc18b947712e2f">8779835</a>)<br />
         
-        2026-03-16 13:44
+        2026-03-16 15:16
 </div>
 <div class="toolbar__item">
     <form id="version">
