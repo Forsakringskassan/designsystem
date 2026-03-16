@@ -11,7 +11,6 @@ export {
     type TableColumnCheckbox,
     type TableColumnMenu,
     type TableColumnNumber,
-    type TableColumnRadio,
     type TableColumnRender,
     type TableColumnRowHeader,
     type TableColumnSelect,

@@ -20,7 +20,6 @@ export const baseTypes = [
     "anchor",
     "button",
     "checkbox",
-    "radio",
     "render",
     "rowheader",
     "select",

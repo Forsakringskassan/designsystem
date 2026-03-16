@@ -1100,7 +1100,6 @@ describe("5 tabstop", () => {
         editText: string;
         select: string;
         checkbox: boolean;
-        radio: boolean;
         button: string;
         anchor: string;
         custom: string;
@@ -1116,7 +1115,6 @@ describe("5 tabstop", () => {
                 editText: "awesome edit text",
                 select: "awesome option",
                 checkbox: true,
-                radio: true,
                 button: "awesome button",
                 anchor: "awesome anchor",
                 custom: "awesome custom",
@@ -1126,7 +1124,6 @@ describe("5 tabstop", () => {
                         editText: "child edit text",
                         select: "another option",
                         checkbox: false,
-                        radio: false,
                         button: "child button",
                         anchor: "child anchor",
                         custom: "child custom",
@@ -1160,12 +1157,6 @@ describe("5 tabstop", () => {
                 header: "checkbox header",
                 key: "checkbox",
                 label: () => "checkbox label",
-            },
-            {
-                type: "radio",
-                header: "radio header",
-                key: "radio",
-                label: () => "radio label",
             },
             {
                 type: "button",
@@ -1337,40 +1328,28 @@ describe("5 tabstop", () => {
             .should("have.attr", "type", "checkbox")
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
-        // {1, 7}: radio
-        cy.focused()
-            .should("have.prop", "tagName", "INPUT")
-            .should("have.attr", "type", "radio")
-            .should("have.attr", "tabindex", 0);
-        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
-        // {1, 8}: button
+        // {1, 7}: button
         cy.focused()
             .should("have.prop", "tagName", "BUTTON")
             .should("contain.text", "awesome button")
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
-        // {1, 9}: anchor
+        // {1, 8}: anchor
         cy.focused()
             .should("have.prop", "tagName", "A")
             .should("contain.text", "awesome anchor")
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.UP);
-        // {0, 9}: anchor header
+        // {0, 8}: anchor header
         cy.focused()
             .should("have.prop", "tagName", "TH")
             .should("contain.text", "anchor header", true)
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.LEFT);
-        // {0, 8}: button header
+        // {0, 7}: button header
         cy.focused()
             .should("have.prop", "tagName", "TH")
             .should("contain.text", "button header", true)
-            .should("have.attr", "tabindex", 0);
-        cy.focused().press(Cypress.Keyboard.Keys.LEFT);
-        // {0, 7}: radio header
-        cy.focused()
-            .should("have.prop", "tagName", "TH")
-            .should("contain.text", "radio header", true)
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.LEFT);
         // {0, 6}: checkbox header
@@ -1469,35 +1448,23 @@ describe("5 tabstop", () => {
             .should("have.prop", "tagName", "INPUT")
             .should("have.attr", "type", "checkbox")
             .should("have.attr", "tabindex", 0);
-        // {1, 7}: radio
+        // {1, 7}: button
         table.cell({ row: 1, col: 7 }).click();
-        cy.focused()
-            .should("have.prop", "tagName", "INPUT")
-            .should("have.attr", "type", "radio")
-            .should("have.attr", "tabindex", 0);
-        // {1, 8}: button
-        table.cell({ row: 1, col: 8 }).click();
         cy.focused()
             .should("have.prop", "tagName", "BUTTON")
             .should("contain.text", "awesome button")
             .should("have.attr", "tabindex", 0);
-        // {0, 9}: anchor header
-        table.header(9).click();
+        // {0, 8}: anchor header
+        table.header(8).click();
         cy.focused()
             .should("have.prop", "tagName", "TH")
             .should("contain.text", "anchor header", true)
             .should("have.attr", "tabindex", 0);
-        // {0, 8}: button header
-        table.header(8).click();
-        cy.focused()
-            .should("have.prop", "tagName", "TH")
-            .should("contain.text", "button header", true)
-            .should("have.attr", "tabindex", 0);
-        // {0, 7}: radio header
+        // {0, 7}: button header
         table.header(7).click();
         cy.focused()
             .should("have.prop", "tagName", "TH")
-            .should("contain.text", "radio header", true)
+            .should("contain.text", "button header", true)
             .should("have.attr", "tabindex", 0);
         // {0, 6}: checkbox header
         table.header(6).click();
