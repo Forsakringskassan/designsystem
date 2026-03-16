@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-1df54b.json"
+            href="../../search-data-145015.json"
             as="fetch"
             crossorigin
-            integrity="sha384-E3O/FiMT3qbeFXrIIisneJxj/toRmJVc+m03Y4Eq5F2ltxkhVhJZ1mPvTnc+c9Fu"
+            integrity="sha384-ANkWDfLofpVx5J378L6vZLZzkzYKPhfSG+hZ8D18e+CV3SFYkqHb8ypplt2Kg213"
             id="search-data"
         />
     </head>
@@ -2135,13 +2135,13 @@ Det innebär att du kan lägga direktivet på flera platser för att kontinuerli
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-9789c0"></div>
+        <div id="example-b3eb18"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginFormValidation-9789c0.js"></script>
+        <script type="module" src="./ValidationPluginFormValidation-b3eb18.js"></script>
     
                 </div>
                 <div>
@@ -2162,11 +2162,11 @@ Det innebär att du kan lägga direktivet på flera platser för att kontinuerli
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginFormValidation&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FValidationForm</span>, <span class="hljs-title class_">FTextField</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span> },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
@@ -2198,7 +2198,7 @@ Det innebär att du kan lägga direktivet på flera platser för att kontinuerli
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Trigga fel<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Trigga fel<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -2235,13 +2235,13 @@ Ett use-case för detta är till exempel om ett fält längre ned skall vara req
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-a08114"></div>
+        <div id="example-8ac996"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginToggleEnabled-a08114.js"></script>
+        <script type="module" src="./ValidationPluginToggleEnabled-8ac996.js"></script>
     
                 </div>
                 <div>
@@ -2263,11 +2263,11 @@ Ett use-case för detta är till exempel om ett fält längre ned skall vara req
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginToggleEnabled&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FTextField</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FTextField</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> { <span class="hljs-attr">model</span>: <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attr">toggleEnabled</span>: <span class="hljs-literal">true</span> };
     },
@@ -2289,14 +2289,9 @@ Ett use-case för detta är till exempel om ett fält längre ned skall vara req
         &gt;</span>
             Max tio tecken
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span>
-            <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;validator-enabled-button&quot;</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggleEnabled = !toggleEnabled&quot;</span>
-        &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;validator-enabled-button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggleEnabled = !toggleEnabled&quot;</span>&gt;</span>
             Aktivera/Inaktivera
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -2316,13 +2311,13 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-212a87"></div>
+        <div id="example-0d19c2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginRevalidate-212a87.js"></script>
+        <script type="module" src="./ValidationPluginRevalidate-0d19c2.js"></script>
     
                 </div>
                 <div>
@@ -2344,9 +2339,11 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginRevalidate&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span> },
     <span class="hljs-attr">methods</span>: {
         <span class="hljs-title function_">validateAllFieldsOnPage</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">const</span> selector = <span class="hljs-string">&quot;input, textarea, select&quot;</span>;
@@ -2361,9 +2358,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validateAllFieldsOnPage()&quot;</span>&gt;</span>
-        Validera alla fält på sidan
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validateAllFieldsOnPage()&quot;</span>&gt;</span> Validera alla fält på sidan <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
@@ -2380,13 +2375,13 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-a2df5e"></div>
+        <div id="example-ee89d5"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginValidateAll-a2df5e.js"></script>
+        <script type="module" src="./ValidationPluginValidateAll-ee89d5.js"></script>
     
                 </div>
                 <div>
@@ -2408,9 +2403,11 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginValidateAll&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span> },
     <span class="hljs-attr">methods</span>: {
         <span class="hljs-title function_">validateAllFieldsOnPage</span>(<span class="hljs-params"></span>) {
             <span class="hljs-keyword">const</span> selector = <span class="hljs-string">&quot;input, textarea, select&quot;</span>;
@@ -2425,9 +2422,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validateAllFieldsOnPage()&quot;</span>&gt;</span>
-        Validera alla fält på sidan
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;validateAllFieldsOnPage()&quot;</span>&gt;</span> Validera alla fält på sidan <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
@@ -2574,9 +2569,9 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">fsortfilter-search (<a href="https://github.com/Forsakringskassan/designsystem/commits/410cefaef7823ccd912965aafb325b934319a66c">410cefa</a>)<br />
+<div class="footer__right"><div class="version">fsortfilter-search (<a href="https://github.com/Forsakringskassan/designsystem/commits/e9bab1f59ea28fe3c9e529fe3d4926fd7eb6e33c">e9bab1f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1082">PR 1082</a><br />
-        2026-03-16 14:11
+        2026-03-16 22:10
 </div>
 <div class="toolbar__item">
     <form id="version">

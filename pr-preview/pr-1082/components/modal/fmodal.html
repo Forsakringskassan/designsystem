@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-1df54b.json"
+            href="../../search-data-145015.json"
             as="fetch"
             crossorigin
-            integrity="sha384-E3O/FiMT3qbeFXrIIisneJxj/toRmJVc+m03Y4Eq5F2ltxkhVhJZ1mPvTnc+c9Fu"
+            integrity="sha384-ANkWDfLofpVx5J378L6vZLZzkzYKPhfSG+hZ8D18e+CV3SFYkqHb8ypplt2Kg213"
             id="search-data"
         />
     </head>
@@ -1108,7 +1108,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/410cefaef7823ccd912965aafb325b934319a66c/packages/vue/src/components/FModal/FModal.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/e9bab1f59ea28fe3c9e529fe3d4926fd7eb6e33c/packages/vue/src/components/FModal/FModal.vue">
                 FModal
             </a>
             
@@ -1158,13 +1158,13 @@
                     data-language="vue"
                 >
                     
-        <div id="example-f21776"></div>
+        <div id="example-e72d8e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FModalLiveExample-f21776.js"></script>
+        <script type="module" src="./FModalLiveExample-e72d8e.js"></script>
     
                 </div>
             <p class="docs-paragraph">Använd inte modala dialogrutor för att presentera felmeddelanden eller information som användaren behöver kunna läsa under tiden som hen åtgärdar ett fel eller gör ändringar.</p>
@@ -1191,7 +1191,7 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FModal</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FModal</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">const</span> emit = defineEmits&lt;{ <span class="hljs-attr">close</span>: [] }&gt;();
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
@@ -1202,13 +1202,9 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span> My awesome content <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--primary button-group__item button--large&quot;</span>
-                    @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;emit(&#x27;close&#x27;)&quot;</span>
-                &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;emit(&#x27;close&#x27;)&quot;</span>&gt;</span>
                     Close
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-modal</span>&gt;</span>
@@ -1226,7 +1222,7 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { useModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, useModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">MyAwesomeModal</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./MyAwesomeModal.vue&quot;</span>;
 
 <span class="hljs-keyword">const</span> { openModal } = <span class="hljs-title function_">useModal</span>();
@@ -1238,7 +1234,7 @@
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Open<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Open<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -1613,9 +1609,9 @@ In most use cases the <code>isOpen</code> prop should be set to false when this 
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">fsortfilter-search (<a href="https://github.com/Forsakringskassan/designsystem/commits/410cefaef7823ccd912965aafb325b934319a66c">410cefa</a>)<br />
+<div class="footer__right"><div class="version">fsortfilter-search (<a href="https://github.com/Forsakringskassan/designsystem/commits/e9bab1f59ea28fe3c9e529fe3d4926fd7eb6e33c">e9bab1f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1082">PR 1082</a><br />
-        2026-03-16 14:11
+        2026-03-16 22:10
 </div>
 <div class="toolbar__item">
     <form id="version">

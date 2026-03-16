@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-1df54b.json"
+            href="../../search-data-145015.json"
             as="fetch"
             crossorigin
-            integrity="sha384-E3O/FiMT3qbeFXrIIisneJxj/toRmJVc+m03Y4Eq5F2ltxkhVhJZ1mPvTnc+c9Fu"
+            integrity="sha384-ANkWDfLofpVx5J378L6vZLZzkzYKPhfSG+hZ8D18e+CV3SFYkqHb8ypplt2Kg213"
             id="search-data"
         />
     </head>
@@ -1108,7 +1108,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/410cefaef7823ccd912965aafb325b934319a66c/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/e9bab1f59ea28fe3c9e529fe3d4926fd7eb6e33c/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">
                 FFormModal
             </a>
             
@@ -1359,13 +1359,13 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-c2902b"></div>
+        <div id="example-308eec"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFormModalApiExample-c2902b.js"></script>
+        <script type="module" src="./FFormModalApiExample-308eec.js"></script>
     
                 </div>
                 <div>
@@ -1386,11 +1386,12 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { formModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, formModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">ExampleModal</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./ExampleModal.vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFormModalApiExample&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">result</span>: <span class="hljs-string">&quot;&quot;</span>,
@@ -1416,14 +1417,9 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;f-form-modal-example&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;form-modal-api-example-button&quot;</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
-            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>
-        &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;form-modal-api-example-button&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>
             Öppna Modal
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;result&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Modalen stängdes med resultatet:<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;api-result&quot;</span>&gt;</span>{{ result }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
@@ -1966,9 +1962,9 @@ The event payload is the data that has been submitted.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">fsortfilter-search (<a href="https://github.com/Forsakringskassan/designsystem/commits/410cefaef7823ccd912965aafb325b934319a66c">410cefa</a>)<br />
+<div class="footer__right"><div class="version">fsortfilter-search (<a href="https://github.com/Forsakringskassan/designsystem/commits/e9bab1f59ea28fe3c9e529fe3d4926fd7eb6e33c">e9bab1f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1082">PR 1082</a><br />
-        2026-03-16 14:11
+        2026-03-16 22:10
 </div>
 <div class="toolbar__item">
     <form id="version">
