@@ -87,7 +87,6 @@ Tabellen har nio olika kolumntyper som påverkar hur cellen presenteras:
 - radrubrik: `rowheader` (länk till avsnitt ovan?)
 - text: `text`
 - kryssruta: `checkbox` (länk till avsnitt?)
-- radioknapp: `radio` (länk till avsnitt?)
 - knapp: `button`
 - länk: `anchor`
 - dropplista: `select`
@@ -244,11 +243,11 @@ Texten sätts i slot `#empty`:
 
 // plats för kodexempel
 
-## Kryssruta/radioknapp
+## Välja rader
 
 Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
 Om du använder kryssruta (flerval) ingår även funktionen för bulkoperation (länk) i tabellen.
-För att definiera kolumnen som kryssruta eller radioknapp, se avsnitt Kolumntyper (länk).
+För att definiera kolumnen som kryssruta, se avsnitt Kolumntyper (länk).
 
 ## Lägga till/ta bort rader
 
