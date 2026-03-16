@@ -227,15 +227,15 @@ $button--tertiary: (
     @extend %button-template;
     @include core.make-button-variant(".button", $button--standard...);
 
-    &.button--primary {
+    &--primary {
         @include core.make-button-variant(".button", $button--primary...);
     }
 
-    &.button--secondary {
+    &--secondary {
         @include core.make-button-variant(".button", $button--secondary...);
     }
 
-    &.button--discrete {
+    &--discrete {
         width: inherit;
         min-width: 0;
         font-weight: var(--f-font-weight-bold);
@@ -274,7 +274,7 @@ $button--tertiary: (
         }
     }
 
-    &.button--discrete-inverted {
+    &--discrete-inverted {
         width: inherit;
         min-width: 0;
         font-weight: var(--f-font-weight-bold);
@@ -301,7 +301,7 @@ $button--tertiary: (
         }
     }
 
-    &.button--tertiary {
+    &--tertiary {
         width: inherit;
         min-width: 0;
         font-weight: var(--f-font-weight-medium);
@@ -400,15 +400,15 @@ $button--tertiary: (
         }
     }
 
-    &.button--full-width {
+    &--full-width {
         min-width: var(--f-width-full);
     }
 
-    &.button--margin-bottom-0 {
+    &--margin-bottom-0 {
         margin-bottom: 0;
     }
 
-    &.button--small {
+    &--small {
         font-size: 14px;
         line-height: 1.25rem;
         min-width: 4rem;
@@ -426,7 +426,7 @@ $button--tertiary: (
         }
     }
 
-    &.button--medium {
+    &--medium {
         line-height: 1.5rem;
         min-width: 8rem;
         padding: core.densify(0.625rem) size.$padding-125;
@@ -438,7 +438,7 @@ $button--tertiary: (
         }
     }
 
-    &.button--large {
+    &--large {
         line-height: 1.5rem;
         min-width: 9.5rem;
         padding: core.densify(1rem) size.$padding-150;
@@ -469,7 +469,7 @@ $button--tertiary: (
     &:disabled:hover,
     &[aria-disabled="true"],
     &[aria-disabled="true"]:hover,
-    &.button--disabled {
+    &--disabled {
         border-width: var(--f-border-width-medium);
         box-shadow: none;
         cursor: default;
@@ -509,7 +509,7 @@ $button--tertiary: (
             button-spinner-delay $button-spinner-animation-delay linear;
     }
 
-    &.button.button--small {
+    &--small {
         .button__spinner {
             width: 14px;
             height: 14px;
@@ -530,8 +530,8 @@ $button--tertiary: (
         transition: $button-text-animation;
     }
 
-    &.button__inflight {
-        &.button.button--small {
+    &__inflight {
+        &.button--small {
             .spinner--after {
                 width: 0;
             }
