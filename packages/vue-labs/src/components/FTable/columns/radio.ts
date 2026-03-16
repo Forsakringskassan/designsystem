@@ -48,6 +48,5 @@ export function normalizeRadioColumn<T, K extends keyof T>(
         label: getLabelFn(column.label),
         checked: getValueFn(column.checked, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
-        sortable: column.key ?? null,
     };
 }

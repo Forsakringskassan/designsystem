@@ -45,6 +45,5 @@ export function normalizeAnchorColumn<T, K extends keyof T>(
         type: "anchor",
         text: getValueFn(column.text, column.key, String, ""),
         href: column.href,
-        sortable: column.key ?? null,
     };
 }

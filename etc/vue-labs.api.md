@@ -139,6 +139,8 @@ export interface TableColumnBase {
     header: string | Readonly<Ref<string>>;
     // (undocumented)
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
+    // (undocumented)
+    sort?: boolean;
 }
 
 // @public (undocumented)

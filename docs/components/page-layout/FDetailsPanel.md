@@ -207,9 +207,7 @@ Du kan lägga in egna knappar som stänger detaljpanelen.
             <template #default="panelScope">
                 <h2 :slot="panelScope.header">Rubrik</h2>
                 <div :slot="panelScope.content">
-                    <button type="button" @click="panelScope.close()">
-                        Stäng
-                    </button>
+                    <f-button @click="panelScope.close()"> Stäng </f-button>
                 </div>
                 <div :slot="panelScope.footer">Footer</div>
             </template>
@@ -222,8 +220,8 @@ Du kan lägga in egna knappar som stänger detaljpanelen.
 `close()` tar en optional sträng som kan användas för att särskilja olika knappar:
 
 ```html static
-<button type="button" @click="close('save')">Spara</button>
-<button type="button" @click="close('cancel')">Avbryt</button>
+<f-button @click="close('save')">Spara</f-button>
+<f-button @click="close('cancel')">Avbryt</f-button>
 ```
 
 ```ts

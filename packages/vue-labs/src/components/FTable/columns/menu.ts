@@ -51,7 +51,6 @@ export function normalizeMenuColumn<T>(
     return {
         type: "menu",
         text: getValueFn(column.text, undefined, String, ""),
-        sortable: null,
         actions: (column.actions ?? []).map((it) => {
             return {
                 label: it.label,

@@ -80,7 +80,7 @@
     "flush-promises": "1.0.2",
     "jest-environment-jsdom": "29.7.0",
     "rollup": "4.59.0",
-    "rollup-plugin-dts": "6.3.0"
+    "rollup-plugin-dts": "6.4.0"
   },
   "peerDependencies": {
     "@fkui/date": "^6.39.0"

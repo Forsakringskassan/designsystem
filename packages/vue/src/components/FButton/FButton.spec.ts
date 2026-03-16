@@ -19,7 +19,7 @@ expect.addSnapshotSerializer({
 
 describe("props", () => {
     describe("disabled", () => {
-        it("should disable the button when true", () => {
+        it("should set aria-disabled on the button element when true", () => {
             expect.assertions(1);
             const wrapper = shallowMount(FButton, {
                 props: {
@@ -27,14 +27,14 @@ describe("props", () => {
                 },
             });
             const button = wrapper.get("button");
-            expect(button.attributes("disabled")).toBeDefined();
+            expect(button.attributes("aria-disabled")).toBe("true");
         });
 
-        it("should not disable the button as default", () => {
+        it("should not set aria-disabled on the button as default", () => {
             expect.assertions(1);
             const wrapper = shallowMount(FButton);
             const button = wrapper.get("button");
-            expect(button.attributes("disabled")).toBeUndefined();
+            expect(button.attributes("aria-disabled")).toBe("false");
         });
     });
 

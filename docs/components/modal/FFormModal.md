@@ -194,7 +194,7 @@ Se {@link FFormModal#anvandning `Användning`} för hur du använder `FFormModal
 ```diff
  <template>
      <div>
-         <button type="button" @click="onClick">Open modal</button>
+         <f-button @click="onClick">Open modal</f-button>
 -        <f-form-modal></f-form-modal>
      </div>
  </template>

@@ -1,5 +1,6 @@
 import { type DefineComponent, defineComponent } from "vue";
 import {
+    FButton,
     FConfirmModal,
     FFormModal,
     FModal,
@@ -61,14 +62,14 @@ function generateModalMarkup(focusStrategy = "on"): string {
                     </f-select-field>
                 </div>
             </div>
-            <button
-                type="button"
-                class="button button--secondary"
+            <f-button
                 data-test="open-example-modal-button"
+                variant="secondary"
+                size="large"
                 @click="onClickOpenModal"
             >
                 Öppna modal
-            </button>
+            </f-button>
             <f-modal
                 :is-open="isOpen"
                 data-test="modul-open"
@@ -88,21 +89,22 @@ function generateModalMarkup(focusStrategy = "on"): string {
                 </template>
                 <template #footer>
                     <div class="button-group">
-                        <button
+                        <f-button
                             data-test="closeButton"
-                            type="button"
-                            class="button button--secondary button-group__item button--large"
+                            size="large"
+                            variant="secondary"
+                            class="button-group__item"
                             @click="onClickCloseModal"
                         >
                             Stäng sekundär
-                        </button>
-                        <button
-                            type="button"
-                            class="button button--primary button-group__item button--large"
+                        </f-button>
+                        <f-button
+                            size="large"
+                            class="button-group__item"
                             @click="onClickCloseModal"
                         >
                             Stäng
-                        </button>
+                        </f-button>
                     </div>
                 </template>
             </f-modal>
@@ -153,7 +155,7 @@ const content = {
 function createComponent(template: string): DefineComponent {
     return defineComponent({
         template,
-        components: { FModal, FSelectField },
+        components: { FButton, FModal, FSelectField },
         data() {
             return {
                 fullscreen: false,
@@ -273,6 +275,13 @@ describe("FModal", () => {
                 "data-test",
                 "open-example-modal-button",
             );
+        });
+
+        it("default should set focus on button that opened modal when modal is closed", () => {
+            cy.mount(createComponent(generateModalMarkup("on")));
+            cy.get(openModalButton).click();
+            modal.secondaryButton().click();
+            cy.get(openModalButton).should("have.focus");
         });
 
         it("should be able to disable focus strategy", () => {

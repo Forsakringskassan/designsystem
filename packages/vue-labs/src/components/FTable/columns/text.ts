@@ -92,7 +92,6 @@ export function normalizeTextColumn<T, K extends keyof T>(
         validation: column.validation ?? {},
         hasValidation:
             column.type.startsWith("text:") || Boolean(column.validation),
-        sortable: column.key ?? null,
         formatter,
         parser,
     };
