@@ -28,16 +28,16 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject.vue:FBadgePageObject-9c5e64.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FFileItemPageObject/FFileItemPageObject.vue:FFileItemPageObject-169711.js
 import { defineComponent as _defineComponent } from "vue";
-import { FBadge } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+import { FFileItem } from "@fkui/vue";
+import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FBadgePageObject",
+  __name: "FFileItemPageObject",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FBadge() {
-      return FBadge;
+    const __returned__ = { get FFileItem() {
+      return FFileItem;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
@@ -45,24 +45,23 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock($setup["FBadge"], null, {
-    default: _withCtx(() => [..._cache[0] || (_cache[0] = [
-      _createTextVNode(
-        " MyBadge ",
-        -1
-        /* CACHED */
-      )
-    ])]),
-    _: 1
-    /* STABLE */
-  })), [
-    [_directive_test, "my-badge"]
+  return _withDirectives((_openBlock(), _createBlock(
+    $setup["FFileItem"],
+    {
+      "file-name": "myFile.pdf",
+      "mime-type": "application/pdf"
+    },
+    null,
+    512
+    /* NEED_PATCH */
+  )), [
+    [_directive_test, "file-item"]
   ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-9c5e64"
+  selector: "#example-169711"
 });
 export {
   render
