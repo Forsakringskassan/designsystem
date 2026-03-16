@@ -115,7 +115,11 @@ defineOptions({
     inheritAttrs: false,
 });
 const originalAttrs = useAttrs();
-const { inflight, fn: onClick } = useInflight(originalAttrs.onClick);
+
+const disabled = computed((): boolean => {
+    return props.disabled || inflight.value;
+});
+const { inflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
 const attrs = { ...originalAttrs, onClick };
 
 const hasIconLeft = computed((): boolean => {
@@ -155,14 +159,10 @@ const buttonClass = computed((): string[] => {
 
     return classes;
 });
-
-const disabled = computed((): boolean => {
-    return props.disabled || inflight.value;
-});
 </script>
 
 <template>
-    <button :type :class="buttonClass" :disabled v-bind="attrs">
+    <button :type :class="buttonClass" :aria-disabled="disabled" v-bind="attrs">
         <template v-if="hasIconLeft">
             <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
             <f-icon

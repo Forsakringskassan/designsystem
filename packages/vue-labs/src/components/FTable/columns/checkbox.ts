@@ -57,6 +57,5 @@ export function normalizeCheckboxColumn<T, K extends keyof T>(
             typeof column.editable === "function"
                 ? column.editable
                 : () => Boolean(column.editable ?? false),
-        sortable: column.key ?? null,
     };
 }

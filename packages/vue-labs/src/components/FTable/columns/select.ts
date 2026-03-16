@@ -57,6 +57,5 @@ export function normalizeSelectColumn<T, K extends keyof T>(
                 ? column.editable
                 : () => Boolean(column.editable ?? false),
         options: column.options,
-        sortable: column.key ?? null,
     };
 }

@@ -13,22 +13,15 @@ Låter användaren navigera genom X antal dialoger som leder till en slutvy base
 <div class="dialogue-tree" data-test="dialogue-tree">
     <ul class="dialogue-tree__list">
         <li class="dialogue-tree__list-item">
-            <button type="button">
-                Anställning
-                <f-icon name="arrow-right"></f-icon>
-            </button>
+            <f-button icon-right="arrow-right"> Anställning </f-button>
         </li>
         <li class="dialogue-tree__list-item">
-            <button type="button">
+            <f-button icon-right="arrow-right">
                 Enskild firma eller handelsbolag
-                <f-icon name="arrow-right"></f-icon>
-            </button>
+            </f-button>
         </li>
         <li class="dialogue-tree__list-item">
-            <button type="button">
-                Aktiebolag
-                <f-icon name="arrow-right"></f-icon>
-            </button>
+            <f-button icon-right="arrow-right"> Aktiebolag </f-button>
         </li>
     </ul>
 </div>

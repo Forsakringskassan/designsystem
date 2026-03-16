@@ -42,36 +42,32 @@ Anger i vilken ordning man vill visa knappar i bekräftelsemodal.
 `LEFT_TO_RIGHT`: Vänster till höger
 
 ```html nomarkup borderless
-<button inert type="button" class="docs-example-button button--primary">
-    Ta bort
-</button>
-<button inert type="button" class="docs-example-button button--secondary">
+<f-button inert class="docs-example-button"> Ta bort </f-button>
+<f-button inert class="docs-example-button" variant="secondary">
     Avbryt
-</button>
+</f-button>
 ```
 
 `RIGHT_TO_LEFT`: Höger till vänster
 
 ```html nomarkup borderless
-<button inert type="button" class="docs-example-button button--secondary">
+<f-button inert class="docs-example-button" variant="secondary">
     Avbryt
-</button>
-<button inert type="button" class="docs-example-button button--primary">
-    Ta bort
-</button>
+</f-button>
+<f-button inert class="docs-example-button"> Ta bort </f-button>
 ```
 
 #### Modaler med inbyggd knappordning
 
-| Komponent                                      | Inställning   | Knappordning                                                                                                                                                                        |
-| ---------------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Bekräftelsemodal (FConfirmModal)               | LEFT_TO_RIGHT | <button inert type="button" class="docs-example-button button--primary">Spara</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button>     |
-| Bekräftelsemodal (FConfirmModal)               | RIGHT_TO_LEFT | <button inert type="button" class="docs-example-button button--secondary">Avbryt</button><button inert type="button" class="docs-example-button button--primary">Spara</button>     |
-| Formulärsmodal (FFormModal)                    | \*            | <button inert type="button" class="docs-example-button button--primary">Spara</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button>     |
-| Datamängdredigerare (FCrudDataset) - Lägg till | \*            | <button inert type="button" class="docs-example-button button--primary">Lägg till</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button> |
-| Datamängdredigerare (FCrudDataset) - Ändra     | \*            | <button inert type="button" class="docs-example-button button--primary">Spara</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button>     |
-| Datamängdredigerare (FCrudDataset) - Ta bort   | LEFT_TO_RIGHT | <button inert type="button" class="docs-example-button button--primary">Ta bort</button><button inert type="button" class="docs-example-button button--secondary">Avbryt</button>   |
-| Datamängdredigerare (FCrudDataset) - Ta bort   | RIGHT_TO_LEFT | <button inert type="button" class="docs-example-button button--secondary">Avbryt</button><button inert type="button" class="docs-example-button button--primary">Ta bort</button>   |
+| Komponent                                      | Inställning   | Knappordning                                                                                                                                      |
+| ---------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bekräftelsemodal (FConfirmModal)               | LEFT_TO_RIGHT | <f-button inert class="docs-example-button">Spara</f-button><f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button>     |
+| Bekräftelsemodal (FConfirmModal)               | RIGHT_TO_LEFT | <f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button><f-button inert class="docs-example-button">Spara</f-button>     |
+| Formulärsmodal (FFormModal)                    | \*            | <f-button inert class="docs-example-button">Spara</f-button><f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button>     |
+| Datamängdredigerare (FCrudDataset) - Lägg till | \*            | <f-button inert class="docs-example-button">Lägg till</f-button><f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button> |
+| Datamängdredigerare (FCrudDataset) - Ändra     | \*            | <f-button inert class="docs-example-button">Spara</f-button><f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button>     |
+| Datamängdredigerare (FCrudDataset) - Ta bort   | LEFT_TO_RIGHT | <f-button inert class="docs-example-button">Ta bort</f-button><f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button>   |
+| Datamängdredigerare (FCrudDataset) - Ta bort   | RIGHT_TO_LEFT | <f-button inert class="docs-example-button" variant="secondary">Avbryt</f-button><f-button inert class="docs-example-button">Ta bort</f-button>   |
 
 ### `teleportTarget`
 

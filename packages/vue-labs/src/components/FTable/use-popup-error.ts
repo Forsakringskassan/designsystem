@@ -17,13 +17,8 @@ export function usePopupError(): UsePopupError {
     const activeErrorAnchor = ref<HTMLElement | undefined>(undefined);
 
     async function onPopupError(popupError: PopupError): Promise<void> {
-        const { anchor, arrowAnchor, hasFocus, hasHover, inEdit } = popupError;
+        const { anchor, arrowAnchor, hasFocus, hasHover } = popupError;
         if (!anchor || !arrowAnchor) {
-            return;
-        }
-
-        if (inEdit) {
-            onClosePopupError(popupError);
             return;
         }
 

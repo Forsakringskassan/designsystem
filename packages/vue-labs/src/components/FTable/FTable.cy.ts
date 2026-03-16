@@ -591,6 +591,41 @@ describe("3.1 Feedback to user on invalid input components", () => {
         cy.get("@onComponentValidity").should("not.have.been.called");
     });
 
+    it("should display popup on focus and hide when typing", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "123456",
+            },
+        ];
+
+        cy.mount(FTable<Row>, { props: { rows, columns } });
+
+        table.cell({ row: 1, col: 1 }).focus().should("have.focus");
+        cy.get(".popup-error").should("be.visible");
+
+        cy.focused().click();
+        cy.focused().type("7");
+
+        cy.get(".popup-error").should("not.exist");
+    });
+
     describe("Visual", () => {
         afterEach(() => {
             cy.forcedColors("none");
