@@ -3275,78 +3275,6 @@ function requireEs_arrayBuffer_transferToFixedLength() {
   return es_arrayBuffer_transferToFixedLength;
 }
 requireEs_arrayBuffer_transferToFixedLength();
-var es_iterator_reduce = {};
-var functionApply;
-var hasRequiredFunctionApply;
-function requireFunctionApply() {
-  if (hasRequiredFunctionApply) return functionApply;
-  hasRequiredFunctionApply = 1;
-  var NATIVE_BIND = requireFunctionBindNative();
-  var FunctionPrototype = Function.prototype;
-  var apply = FunctionPrototype.apply;
-  var call = FunctionPrototype.call;
-  functionApply = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
-    return call.apply(apply, arguments);
-  });
-  return functionApply;
-}
-var hasRequiredEs_iterator_reduce;
-function requireEs_iterator_reduce() {
-  if (hasRequiredEs_iterator_reduce) return es_iterator_reduce;
-  hasRequiredEs_iterator_reduce = 1;
-  var $ = require_export();
-  var iterate2 = requireIterate();
-  var aCallable2 = requireACallable();
-  var anObject2 = requireAnObject();
-  var getIteratorDirect2 = requireGetIteratorDirect();
-  var iteratorClose2 = requireIteratorClose();
-  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
-  var apply = requireFunctionApply();
-  var fails2 = requireFails();
-  var $TypeError = TypeError;
-  var FAILS_ON_INITIAL_UNDEFINED = fails2(function() {
-    [].keys().reduce(function() {
-    }, void 0);
-  });
-  var reduceWithoutClosingOnEarlyError = !FAILS_ON_INITIAL_UNDEFINED && iteratorHelperWithoutClosingOnEarlyError2("reduce", $TypeError);
-  $({
-    target: "Iterator",
-    proto: true,
-    real: true,
-    forced: FAILS_ON_INITIAL_UNDEFINED || reduceWithoutClosingOnEarlyError
-  }, {
-    reduce: function reduce(reducer) {
-      anObject2(this);
-      try {
-        aCallable2(reducer);
-      } catch (error) {
-        iteratorClose2(this, "throw", error);
-      }
-      var noInitial = arguments.length < 2;
-      var accumulator = noInitial ? void 0 : arguments[1];
-      if (reduceWithoutClosingOnEarlyError) {
-        return apply(reduceWithoutClosingOnEarlyError, this, noInitial ? [reducer] : [reducer, accumulator]);
-      }
-      var record = getIteratorDirect2(this);
-      var counter = 0;
-      iterate2(record, function(value) {
-        if (noInitial) {
-          noInitial = false;
-          accumulator = value;
-        } else {
-          accumulator = reducer(accumulator, value, counter);
-        }
-        counter++;
-      }, {
-        IS_RECORD: true
-      });
-      if (noInitial) throw new $TypeError("Reduce of empty iterator with no initial value");
-      return accumulator;
-    }
-  });
-  return es_iterator_reduce;
-}
-requireEs_iterator_reduce();
 var es_typedArray_toReversed = {};
 var isPossiblePrototype;
 var hasRequiredIsPossiblePrototype;
@@ -4389,6 +4317,78 @@ function requireWeb_domException_stack() {
 requireWeb_domException_stack();
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
+var es_iterator_reduce = {};
+var functionApply;
+var hasRequiredFunctionApply;
+function requireFunctionApply() {
+  if (hasRequiredFunctionApply) return functionApply;
+  hasRequiredFunctionApply = 1;
+  var NATIVE_BIND = requireFunctionBindNative();
+  var FunctionPrototype = Function.prototype;
+  var apply = FunctionPrototype.apply;
+  var call = FunctionPrototype.call;
+  functionApply = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
+    return call.apply(apply, arguments);
+  });
+  return functionApply;
+}
+var hasRequiredEs_iterator_reduce;
+function requireEs_iterator_reduce() {
+  if (hasRequiredEs_iterator_reduce) return es_iterator_reduce;
+  hasRequiredEs_iterator_reduce = 1;
+  var $ = require_export();
+  var iterate2 = requireIterate();
+  var aCallable2 = requireACallable();
+  var anObject2 = requireAnObject();
+  var getIteratorDirect2 = requireGetIteratorDirect();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
+  var apply = requireFunctionApply();
+  var fails2 = requireFails();
+  var $TypeError = TypeError;
+  var FAILS_ON_INITIAL_UNDEFINED = fails2(function() {
+    [].keys().reduce(function() {
+    }, void 0);
+  });
+  var reduceWithoutClosingOnEarlyError = !FAILS_ON_INITIAL_UNDEFINED && iteratorHelperWithoutClosingOnEarlyError2("reduce", $TypeError);
+  $({
+    target: "Iterator",
+    proto: true,
+    real: true,
+    forced: FAILS_ON_INITIAL_UNDEFINED || reduceWithoutClosingOnEarlyError
+  }, {
+    reduce: function reduce(reducer) {
+      anObject2(this);
+      try {
+        aCallable2(reducer);
+      } catch (error) {
+        iteratorClose2(this, "throw", error);
+      }
+      var noInitial = arguments.length < 2;
+      var accumulator = noInitial ? void 0 : arguments[1];
+      if (reduceWithoutClosingOnEarlyError) {
+        return apply(reduceWithoutClosingOnEarlyError, this, noInitial ? [reducer] : [reducer, accumulator]);
+      }
+      var record = getIteratorDirect2(this);
+      var counter = 0;
+      iterate2(record, function(value) {
+        if (noInitial) {
+          noInitial = false;
+          accumulator = value;
+        } else {
+          accumulator = reducer(accumulator, value, counter);
+        }
+        counter++;
+      }, {
+        IS_RECORD: true
+      });
+      if (noInitial) throw new $TypeError("Reduce of empty iterator with no initial value");
+      return accumulator;
+    }
+  });
+  return es_iterator_reduce;
+}
+requireEs_iterator_reduce();
 function findMatch(regexps, value) {
   for (const regexp of regexps) {
     const match = value.match(regexp);
