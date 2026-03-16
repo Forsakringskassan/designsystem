@@ -75,7 +75,7 @@ jobs:
                   base-artifact: base-size
                   current-artifact: current-size
             - name: Post sticky PR comment
-              uses: marocchino/sticky-pull-request-comment@v2
+              uses: marocchino/sticky-pull-request-comment@v3
               with:
                   header: artifact-size-analyzer
                   message: |

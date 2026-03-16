@@ -43,7 +43,7 @@ jobs:
                   comment: false
             - name: Leave a comment after deployment
               if: steps.preview.outputs.deployment-action == 'deploy' && env.deployment_status == 'success'
-              uses: marocchino/sticky-pull-request-comment@v2
+              uses: marocchino/sticky-pull-request-comment@v3
               with:
                   header: pr-preview
                   message: |
@@ -61,7 +61,7 @@ jobs:
 
                       ###### Senast uppdaterad ${{ steps.preview.outputs.action-start-time }} i [gh-pages](${{ github.server_url }}/${{ github.repository }}/tree/gh-pages).
 
-            - uses: marocchino/sticky-pull-request-comment@v2
+            - uses: marocchino/sticky-pull-request-comment@v3
               if: steps.preview-step.outputs.deployment-action == 'remove' && env.deployment_status == 'success'
               with:
                   header: pr-preview
