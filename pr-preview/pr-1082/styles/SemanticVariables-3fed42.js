@@ -781,6 +781,62 @@ var metadata_default = {
       }
     },
     {
+      "name": "--fkds-color-interactive-surface-background-primary-active",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#ddddde",
+          "palette": "fk-black-15"
+        },
+        "dark": {
+          "value": "#5f6165",
+          "palette": "fk-black-70"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-interactive-surface-background-primary-default",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#f4f4f4",
+          "palette": "fk-black-5"
+        },
+        "dark": {
+          "value": "#1b1e23",
+          "palette": "fk-black-100"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-interactive-surface-background-primary-focus",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#ddddde",
+          "palette": "fk-black-15"
+        },
+        "dark": {
+          "value": "#5f6165",
+          "palette": "fk-black-70"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-interactive-surface-background-primary-hover",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#ddddde",
+          "palette": "fk-black-15"
+        },
+        "dark": {
+          "value": "#5f6165",
+          "palette": "fk-black-70"
+        }
+      }
+    },
+    {
       "name": "--fkds-color-navigation-background-hover",
       "comment": null,
       "values": {

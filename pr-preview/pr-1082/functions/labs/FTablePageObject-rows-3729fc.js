@@ -347,7 +347,7 @@ var DEFAULT_UNITS = [
 ];
 
 // packages/vue-labs/dist/esm/index.esm.js
-var es_iterator_constructor = {};
+var es_iterator_forEach = {};
 var globalThis_1;
 var hasRequiredGlobalThis;
 function requireGlobalThis() {
@@ -1525,302 +1525,6 @@ function require_export() {
   };
   return _export;
 }
-var anInstance;
-var hasRequiredAnInstance;
-function requireAnInstance() {
-  if (hasRequiredAnInstance) return anInstance;
-  hasRequiredAnInstance = 1;
-  var isPrototypeOf = requireObjectIsPrototypeOf();
-  var $TypeError = TypeError;
-  anInstance = function(it, Prototype) {
-    if (isPrototypeOf(Prototype, it)) return it;
-    throw new $TypeError("Incorrect invocation");
-  };
-  return anInstance;
-}
-var correctPrototypeGetter;
-var hasRequiredCorrectPrototypeGetter;
-function requireCorrectPrototypeGetter() {
-  if (hasRequiredCorrectPrototypeGetter) return correctPrototypeGetter;
-  hasRequiredCorrectPrototypeGetter = 1;
-  var fails2 = requireFails();
-  correctPrototypeGetter = !fails2(function() {
-    function F() {
-    }
-    F.prototype.constructor = null;
-    return Object.getPrototypeOf(new F()) !== F.prototype;
-  });
-  return correctPrototypeGetter;
-}
-var objectGetPrototypeOf;
-var hasRequiredObjectGetPrototypeOf;
-function requireObjectGetPrototypeOf() {
-  if (hasRequiredObjectGetPrototypeOf) return objectGetPrototypeOf;
-  hasRequiredObjectGetPrototypeOf = 1;
-  var hasOwn2 = requireHasOwnProperty();
-  var isCallable2 = requireIsCallable();
-  var toObject2 = requireToObject();
-  var sharedKey2 = requireSharedKey();
-  var CORRECT_PROTOTYPE_GETTER = requireCorrectPrototypeGetter();
-  var IE_PROTO = sharedKey2("IE_PROTO");
-  var $Object = Object;
-  var ObjectPrototype = $Object.prototype;
-  objectGetPrototypeOf = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function(O) {
-    var object = toObject2(O);
-    if (hasOwn2(object, IE_PROTO)) return object[IE_PROTO];
-    var constructor = object.constructor;
-    if (isCallable2(constructor) && object instanceof constructor) {
-      return constructor.prototype;
-    }
-    return object instanceof $Object ? ObjectPrototype : null;
-  };
-  return objectGetPrototypeOf;
-}
-var defineBuiltInAccessor;
-var hasRequiredDefineBuiltInAccessor;
-function requireDefineBuiltInAccessor() {
-  if (hasRequiredDefineBuiltInAccessor) return defineBuiltInAccessor;
-  hasRequiredDefineBuiltInAccessor = 1;
-  var makeBuiltIn2 = requireMakeBuiltIn();
-  var defineProperty = requireObjectDefineProperty();
-  defineBuiltInAccessor = function(target, name, descriptor) {
-    if (descriptor.get) makeBuiltIn2(descriptor.get, name, {
-      getter: true
-    });
-    if (descriptor.set) makeBuiltIn2(descriptor.set, name, {
-      setter: true
-    });
-    return defineProperty.f(target, name, descriptor);
-  };
-  return defineBuiltInAccessor;
-}
-var createProperty;
-var hasRequiredCreateProperty;
-function requireCreateProperty() {
-  if (hasRequiredCreateProperty) return createProperty;
-  hasRequiredCreateProperty = 1;
-  var DESCRIPTORS = requireDescriptors();
-  var definePropertyModule = requireObjectDefineProperty();
-  var createPropertyDescriptor2 = requireCreatePropertyDescriptor();
-  createProperty = function(object, key, value) {
-    if (DESCRIPTORS) definePropertyModule.f(object, key, createPropertyDescriptor2(0, value));
-    else object[key] = value;
-  };
-  return createProperty;
-}
-var objectDefineProperties = {};
-var objectKeys;
-var hasRequiredObjectKeys;
-function requireObjectKeys() {
-  if (hasRequiredObjectKeys) return objectKeys;
-  hasRequiredObjectKeys = 1;
-  var internalObjectKeys = requireObjectKeysInternal();
-  var enumBugKeys2 = requireEnumBugKeys();
-  objectKeys = Object.keys || function keys(O) {
-    return internalObjectKeys(O, enumBugKeys2);
-  };
-  return objectKeys;
-}
-var hasRequiredObjectDefineProperties;
-function requireObjectDefineProperties() {
-  if (hasRequiredObjectDefineProperties) return objectDefineProperties;
-  hasRequiredObjectDefineProperties = 1;
-  var DESCRIPTORS = requireDescriptors();
-  var V8_PROTOTYPE_DEFINE_BUG = requireV8PrototypeDefineBug();
-  var definePropertyModule = requireObjectDefineProperty();
-  var anObject2 = requireAnObject();
-  var toIndexedObject2 = requireToIndexedObject();
-  var objectKeys2 = requireObjectKeys();
-  objectDefineProperties.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
-    anObject2(O);
-    var props = toIndexedObject2(Properties);
-    var keys = objectKeys2(Properties);
-    var length = keys.length;
-    var index = 0;
-    var key;
-    while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
-    return O;
-  };
-  return objectDefineProperties;
-}
-var html;
-var hasRequiredHtml;
-function requireHtml() {
-  if (hasRequiredHtml) return html;
-  hasRequiredHtml = 1;
-  var getBuiltIn2 = requireGetBuiltIn();
-  html = getBuiltIn2("document", "documentElement");
-  return html;
-}
-var objectCreate;
-var hasRequiredObjectCreate;
-function requireObjectCreate() {
-  if (hasRequiredObjectCreate) return objectCreate;
-  hasRequiredObjectCreate = 1;
-  var anObject2 = requireAnObject();
-  var definePropertiesModule = requireObjectDefineProperties();
-  var enumBugKeys2 = requireEnumBugKeys();
-  var hiddenKeys2 = requireHiddenKeys();
-  var html2 = requireHtml();
-  var documentCreateElement2 = requireDocumentCreateElement();
-  var sharedKey2 = requireSharedKey();
-  var GT = ">";
-  var LT = "<";
-  var PROTOTYPE = "prototype";
-  var SCRIPT = "script";
-  var IE_PROTO = sharedKey2("IE_PROTO");
-  var EmptyConstructor = function() {
-  };
-  var scriptTag = function(content) {
-    return LT + SCRIPT + GT + content + LT + "/" + SCRIPT + GT;
-  };
-  var NullProtoObjectViaActiveX = function(activeXDocument2) {
-    activeXDocument2.write(scriptTag(""));
-    activeXDocument2.close();
-    var temp = activeXDocument2.parentWindow.Object;
-    activeXDocument2 = null;
-    return temp;
-  };
-  var NullProtoObjectViaIFrame = function() {
-    var iframe = documentCreateElement2("iframe");
-    var JS = "java" + SCRIPT + ":";
-    var iframeDocument;
-    iframe.style.display = "none";
-    html2.appendChild(iframe);
-    iframe.src = String(JS);
-    iframeDocument = iframe.contentWindow.document;
-    iframeDocument.open();
-    iframeDocument.write(scriptTag("document.F=Object"));
-    iframeDocument.close();
-    return iframeDocument.F;
-  };
-  var activeXDocument;
-  var NullProtoObject = function() {
-    try {
-      activeXDocument = new ActiveXObject("htmlfile");
-    } catch (error) {
-    }
-    NullProtoObject = typeof document != "undefined" ? document.domain && activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame() : NullProtoObjectViaActiveX(activeXDocument);
-    var length = enumBugKeys2.length;
-    while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys2[length]];
-    return NullProtoObject();
-  };
-  hiddenKeys2[IE_PROTO] = true;
-  objectCreate = Object.create || function create(O, Properties) {
-    var result;
-    if (O !== null) {
-      EmptyConstructor[PROTOTYPE] = anObject2(O);
-      result = new EmptyConstructor();
-      EmptyConstructor[PROTOTYPE] = null;
-      result[IE_PROTO] = O;
-    } else result = NullProtoObject();
-    return Properties === void 0 ? result : definePropertiesModule.f(result, Properties);
-  };
-  return objectCreate;
-}
-var iteratorsCore;
-var hasRequiredIteratorsCore;
-function requireIteratorsCore() {
-  if (hasRequiredIteratorsCore) return iteratorsCore;
-  hasRequiredIteratorsCore = 1;
-  var fails2 = requireFails();
-  var isCallable2 = requireIsCallable();
-  var isObject22 = requireIsObject();
-  var create = requireObjectCreate();
-  var getPrototypeOf = requireObjectGetPrototypeOf();
-  var defineBuiltIn2 = requireDefineBuiltIn();
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var IS_PURE = requireIsPure();
-  var ITERATOR = wellKnownSymbol2("iterator");
-  var BUGGY_SAFARI_ITERATORS = false;
-  var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
-  if ([].keys) {
-    arrayIterator = [].keys();
-    if (!("next" in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
-    else {
-      PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
-      if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
-    }
-  }
-  var NEW_ITERATOR_PROTOTYPE = !isObject22(IteratorPrototype) || fails2(function() {
-    var test = {};
-    return IteratorPrototype[ITERATOR].call(test) !== test;
-  });
-  if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
-  else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
-  if (!isCallable2(IteratorPrototype[ITERATOR])) {
-    defineBuiltIn2(IteratorPrototype, ITERATOR, function() {
-      return this;
-    });
-  }
-  iteratorsCore = {
-    IteratorPrototype,
-    BUGGY_SAFARI_ITERATORS
-  };
-  return iteratorsCore;
-}
-var hasRequiredEs_iterator_constructor;
-function requireEs_iterator_constructor() {
-  if (hasRequiredEs_iterator_constructor) return es_iterator_constructor;
-  hasRequiredEs_iterator_constructor = 1;
-  var $ = require_export();
-  var globalThis2 = requireGlobalThis();
-  var anInstance2 = requireAnInstance();
-  var anObject2 = requireAnObject();
-  var isCallable2 = requireIsCallable();
-  var getPrototypeOf = requireObjectGetPrototypeOf();
-  var defineBuiltInAccessor2 = requireDefineBuiltInAccessor();
-  var createProperty2 = requireCreateProperty();
-  var fails2 = requireFails();
-  var hasOwn2 = requireHasOwnProperty();
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var IteratorPrototype = requireIteratorsCore().IteratorPrototype;
-  var DESCRIPTORS = requireDescriptors();
-  var IS_PURE = requireIsPure();
-  var CONSTRUCTOR = "constructor";
-  var ITERATOR = "Iterator";
-  var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
-  var $TypeError = TypeError;
-  var NativeIterator = globalThis2[ITERATOR];
-  var FORCED = IS_PURE || !isCallable2(NativeIterator) || NativeIterator.prototype !== IteratorPrototype || !fails2(function() {
-    NativeIterator({});
-  });
-  var IteratorConstructor = function Iterator2() {
-    anInstance2(this, IteratorPrototype);
-    if (getPrototypeOf(this) === IteratorPrototype) throw new $TypeError("Abstract class Iterator not directly constructable");
-  };
-  var defineIteratorPrototypeAccessor = function(key, value) {
-    if (DESCRIPTORS) {
-      defineBuiltInAccessor2(IteratorPrototype, key, {
-        configurable: true,
-        get: function() {
-          return value;
-        },
-        set: function(replacement) {
-          anObject2(this);
-          if (this === IteratorPrototype) throw new $TypeError("You can't redefine this property");
-          if (hasOwn2(this, key)) this[key] = replacement;
-          else createProperty2(this, key, replacement);
-        }
-      });
-    } else IteratorPrototype[key] = value;
-  };
-  if (!hasOwn2(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
-  if (FORCED || !hasOwn2(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) {
-    defineIteratorPrototypeAccessor(CONSTRUCTOR, IteratorConstructor);
-  }
-  IteratorConstructor.prototype = IteratorPrototype;
-  $({
-    global: true,
-    constructor: true,
-    forced: FORCED
-  }, {
-    Iterator: IteratorConstructor
-  });
-  return es_iterator_constructor;
-}
-requireEs_iterator_constructor();
-var es_iterator_forEach = {};
 var functionUncurryThisClause;
 var hasRequiredFunctionUncurryThisClause;
 function requireFunctionUncurryThisClause() {
@@ -2125,6 +1829,517 @@ function requireEs_iterator_forEach() {
 }
 requireEs_iterator_forEach();
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+var es_iterator_constructor = {};
+var anInstance;
+var hasRequiredAnInstance;
+function requireAnInstance() {
+  if (hasRequiredAnInstance) return anInstance;
+  hasRequiredAnInstance = 1;
+  var isPrototypeOf = requireObjectIsPrototypeOf();
+  var $TypeError = TypeError;
+  anInstance = function(it, Prototype) {
+    if (isPrototypeOf(Prototype, it)) return it;
+    throw new $TypeError("Incorrect invocation");
+  };
+  return anInstance;
+}
+var correctPrototypeGetter;
+var hasRequiredCorrectPrototypeGetter;
+function requireCorrectPrototypeGetter() {
+  if (hasRequiredCorrectPrototypeGetter) return correctPrototypeGetter;
+  hasRequiredCorrectPrototypeGetter = 1;
+  var fails2 = requireFails();
+  correctPrototypeGetter = !fails2(function() {
+    function F() {
+    }
+    F.prototype.constructor = null;
+    return Object.getPrototypeOf(new F()) !== F.prototype;
+  });
+  return correctPrototypeGetter;
+}
+var objectGetPrototypeOf;
+var hasRequiredObjectGetPrototypeOf;
+function requireObjectGetPrototypeOf() {
+  if (hasRequiredObjectGetPrototypeOf) return objectGetPrototypeOf;
+  hasRequiredObjectGetPrototypeOf = 1;
+  var hasOwn2 = requireHasOwnProperty();
+  var isCallable2 = requireIsCallable();
+  var toObject2 = requireToObject();
+  var sharedKey2 = requireSharedKey();
+  var CORRECT_PROTOTYPE_GETTER = requireCorrectPrototypeGetter();
+  var IE_PROTO = sharedKey2("IE_PROTO");
+  var $Object = Object;
+  var ObjectPrototype = $Object.prototype;
+  objectGetPrototypeOf = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function(O) {
+    var object = toObject2(O);
+    if (hasOwn2(object, IE_PROTO)) return object[IE_PROTO];
+    var constructor = object.constructor;
+    if (isCallable2(constructor) && object instanceof constructor) {
+      return constructor.prototype;
+    }
+    return object instanceof $Object ? ObjectPrototype : null;
+  };
+  return objectGetPrototypeOf;
+}
+var defineBuiltInAccessor;
+var hasRequiredDefineBuiltInAccessor;
+function requireDefineBuiltInAccessor() {
+  if (hasRequiredDefineBuiltInAccessor) return defineBuiltInAccessor;
+  hasRequiredDefineBuiltInAccessor = 1;
+  var makeBuiltIn2 = requireMakeBuiltIn();
+  var defineProperty = requireObjectDefineProperty();
+  defineBuiltInAccessor = function(target, name, descriptor) {
+    if (descriptor.get) makeBuiltIn2(descriptor.get, name, {
+      getter: true
+    });
+    if (descriptor.set) makeBuiltIn2(descriptor.set, name, {
+      setter: true
+    });
+    return defineProperty.f(target, name, descriptor);
+  };
+  return defineBuiltInAccessor;
+}
+var createProperty;
+var hasRequiredCreateProperty;
+function requireCreateProperty() {
+  if (hasRequiredCreateProperty) return createProperty;
+  hasRequiredCreateProperty = 1;
+  var DESCRIPTORS = requireDescriptors();
+  var definePropertyModule = requireObjectDefineProperty();
+  var createPropertyDescriptor2 = requireCreatePropertyDescriptor();
+  createProperty = function(object, key, value) {
+    if (DESCRIPTORS) definePropertyModule.f(object, key, createPropertyDescriptor2(0, value));
+    else object[key] = value;
+  };
+  return createProperty;
+}
+var objectDefineProperties = {};
+var objectKeys;
+var hasRequiredObjectKeys;
+function requireObjectKeys() {
+  if (hasRequiredObjectKeys) return objectKeys;
+  hasRequiredObjectKeys = 1;
+  var internalObjectKeys = requireObjectKeysInternal();
+  var enumBugKeys2 = requireEnumBugKeys();
+  objectKeys = Object.keys || function keys(O) {
+    return internalObjectKeys(O, enumBugKeys2);
+  };
+  return objectKeys;
+}
+var hasRequiredObjectDefineProperties;
+function requireObjectDefineProperties() {
+  if (hasRequiredObjectDefineProperties) return objectDefineProperties;
+  hasRequiredObjectDefineProperties = 1;
+  var DESCRIPTORS = requireDescriptors();
+  var V8_PROTOTYPE_DEFINE_BUG = requireV8PrototypeDefineBug();
+  var definePropertyModule = requireObjectDefineProperty();
+  var anObject2 = requireAnObject();
+  var toIndexedObject2 = requireToIndexedObject();
+  var objectKeys2 = requireObjectKeys();
+  objectDefineProperties.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
+    anObject2(O);
+    var props = toIndexedObject2(Properties);
+    var keys = objectKeys2(Properties);
+    var length = keys.length;
+    var index = 0;
+    var key;
+    while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
+    return O;
+  };
+  return objectDefineProperties;
+}
+var html;
+var hasRequiredHtml;
+function requireHtml() {
+  if (hasRequiredHtml) return html;
+  hasRequiredHtml = 1;
+  var getBuiltIn2 = requireGetBuiltIn();
+  html = getBuiltIn2("document", "documentElement");
+  return html;
+}
+var objectCreate;
+var hasRequiredObjectCreate;
+function requireObjectCreate() {
+  if (hasRequiredObjectCreate) return objectCreate;
+  hasRequiredObjectCreate = 1;
+  var anObject2 = requireAnObject();
+  var definePropertiesModule = requireObjectDefineProperties();
+  var enumBugKeys2 = requireEnumBugKeys();
+  var hiddenKeys2 = requireHiddenKeys();
+  var html2 = requireHtml();
+  var documentCreateElement2 = requireDocumentCreateElement();
+  var sharedKey2 = requireSharedKey();
+  var GT = ">";
+  var LT = "<";
+  var PROTOTYPE = "prototype";
+  var SCRIPT = "script";
+  var IE_PROTO = sharedKey2("IE_PROTO");
+  var EmptyConstructor = function() {
+  };
+  var scriptTag = function(content) {
+    return LT + SCRIPT + GT + content + LT + "/" + SCRIPT + GT;
+  };
+  var NullProtoObjectViaActiveX = function(activeXDocument2) {
+    activeXDocument2.write(scriptTag(""));
+    activeXDocument2.close();
+    var temp = activeXDocument2.parentWindow.Object;
+    activeXDocument2 = null;
+    return temp;
+  };
+  var NullProtoObjectViaIFrame = function() {
+    var iframe = documentCreateElement2("iframe");
+    var JS = "java" + SCRIPT + ":";
+    var iframeDocument;
+    iframe.style.display = "none";
+    html2.appendChild(iframe);
+    iframe.src = String(JS);
+    iframeDocument = iframe.contentWindow.document;
+    iframeDocument.open();
+    iframeDocument.write(scriptTag("document.F=Object"));
+    iframeDocument.close();
+    return iframeDocument.F;
+  };
+  var activeXDocument;
+  var NullProtoObject = function() {
+    try {
+      activeXDocument = new ActiveXObject("htmlfile");
+    } catch (error) {
+    }
+    NullProtoObject = typeof document != "undefined" ? document.domain && activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame() : NullProtoObjectViaActiveX(activeXDocument);
+    var length = enumBugKeys2.length;
+    while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys2[length]];
+    return NullProtoObject();
+  };
+  hiddenKeys2[IE_PROTO] = true;
+  objectCreate = Object.create || function create(O, Properties) {
+    var result;
+    if (O !== null) {
+      EmptyConstructor[PROTOTYPE] = anObject2(O);
+      result = new EmptyConstructor();
+      EmptyConstructor[PROTOTYPE] = null;
+      result[IE_PROTO] = O;
+    } else result = NullProtoObject();
+    return Properties === void 0 ? result : definePropertiesModule.f(result, Properties);
+  };
+  return objectCreate;
+}
+var iteratorsCore;
+var hasRequiredIteratorsCore;
+function requireIteratorsCore() {
+  if (hasRequiredIteratorsCore) return iteratorsCore;
+  hasRequiredIteratorsCore = 1;
+  var fails2 = requireFails();
+  var isCallable2 = requireIsCallable();
+  var isObject22 = requireIsObject();
+  var create = requireObjectCreate();
+  var getPrototypeOf = requireObjectGetPrototypeOf();
+  var defineBuiltIn2 = requireDefineBuiltIn();
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var IS_PURE = requireIsPure();
+  var ITERATOR = wellKnownSymbol2("iterator");
+  var BUGGY_SAFARI_ITERATORS = false;
+  var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
+  if ([].keys) {
+    arrayIterator = [].keys();
+    if (!("next" in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
+    else {
+      PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
+      if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
+    }
+  }
+  var NEW_ITERATOR_PROTOTYPE = !isObject22(IteratorPrototype) || fails2(function() {
+    var test = {};
+    return IteratorPrototype[ITERATOR].call(test) !== test;
+  });
+  if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
+  else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
+  if (!isCallable2(IteratorPrototype[ITERATOR])) {
+    defineBuiltIn2(IteratorPrototype, ITERATOR, function() {
+      return this;
+    });
+  }
+  iteratorsCore = {
+    IteratorPrototype,
+    BUGGY_SAFARI_ITERATORS
+  };
+  return iteratorsCore;
+}
+var hasRequiredEs_iterator_constructor;
+function requireEs_iterator_constructor() {
+  if (hasRequiredEs_iterator_constructor) return es_iterator_constructor;
+  hasRequiredEs_iterator_constructor = 1;
+  var $ = require_export();
+  var globalThis2 = requireGlobalThis();
+  var anInstance2 = requireAnInstance();
+  var anObject2 = requireAnObject();
+  var isCallable2 = requireIsCallable();
+  var getPrototypeOf = requireObjectGetPrototypeOf();
+  var defineBuiltInAccessor2 = requireDefineBuiltInAccessor();
+  var createProperty2 = requireCreateProperty();
+  var fails2 = requireFails();
+  var hasOwn2 = requireHasOwnProperty();
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var IteratorPrototype = requireIteratorsCore().IteratorPrototype;
+  var DESCRIPTORS = requireDescriptors();
+  var IS_PURE = requireIsPure();
+  var CONSTRUCTOR = "constructor";
+  var ITERATOR = "Iterator";
+  var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
+  var $TypeError = TypeError;
+  var NativeIterator = globalThis2[ITERATOR];
+  var FORCED = IS_PURE || !isCallable2(NativeIterator) || NativeIterator.prototype !== IteratorPrototype || !fails2(function() {
+    NativeIterator({});
+  });
+  var IteratorConstructor = function Iterator2() {
+    anInstance2(this, IteratorPrototype);
+    if (getPrototypeOf(this) === IteratorPrototype) throw new $TypeError("Abstract class Iterator not directly constructable");
+  };
+  var defineIteratorPrototypeAccessor = function(key, value) {
+    if (DESCRIPTORS) {
+      defineBuiltInAccessor2(IteratorPrototype, key, {
+        configurable: true,
+        get: function() {
+          return value;
+        },
+        set: function(replacement) {
+          anObject2(this);
+          if (this === IteratorPrototype) throw new $TypeError("You can't redefine this property");
+          if (hasOwn2(this, key)) this[key] = replacement;
+          else createProperty2(this, key, replacement);
+        }
+      });
+    } else IteratorPrototype[key] = value;
+  };
+  if (!hasOwn2(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
+  if (FORCED || !hasOwn2(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) {
+    defineIteratorPrototypeAccessor(CONSTRUCTOR, IteratorConstructor);
+  }
+  IteratorConstructor.prototype = IteratorPrototype;
+  $({
+    global: true,
+    constructor: true,
+    forced: FORCED
+  }, {
+    Iterator: IteratorConstructor
+  });
+  return es_iterator_constructor;
+}
+requireEs_iterator_constructor();
+var es_iterator_filter = {};
+var defineBuiltIns;
+var hasRequiredDefineBuiltIns;
+function requireDefineBuiltIns() {
+  if (hasRequiredDefineBuiltIns) return defineBuiltIns;
+  hasRequiredDefineBuiltIns = 1;
+  var defineBuiltIn2 = requireDefineBuiltIn();
+  defineBuiltIns = function(target, src, options) {
+    for (var key in src) defineBuiltIn2(target, key, src[key], options);
+    return target;
+  };
+  return defineBuiltIns;
+}
+var createIterResultObject;
+var hasRequiredCreateIterResultObject;
+function requireCreateIterResultObject() {
+  if (hasRequiredCreateIterResultObject) return createIterResultObject;
+  hasRequiredCreateIterResultObject = 1;
+  createIterResultObject = function(value, done) {
+    return {
+      value,
+      done
+    };
+  };
+  return createIterResultObject;
+}
+var iteratorCloseAll;
+var hasRequiredIteratorCloseAll;
+function requireIteratorCloseAll() {
+  if (hasRequiredIteratorCloseAll) return iteratorCloseAll;
+  hasRequiredIteratorCloseAll = 1;
+  var iteratorClose2 = requireIteratorClose();
+  iteratorCloseAll = function(iters, kind, value) {
+    for (var i = iters.length - 1; i >= 0; i--) {
+      if (iters[i] === void 0) continue;
+      try {
+        value = iteratorClose2(iters[i].iterator, kind, value);
+      } catch (error) {
+        kind = "throw";
+        value = error;
+      }
+    }
+    if (kind === "throw") throw value;
+    return value;
+  };
+  return iteratorCloseAll;
+}
+var iteratorCreateProxy;
+var hasRequiredIteratorCreateProxy;
+function requireIteratorCreateProxy() {
+  if (hasRequiredIteratorCreateProxy) return iteratorCreateProxy;
+  hasRequiredIteratorCreateProxy = 1;
+  var call = requireFunctionCall();
+  var create = requireObjectCreate();
+  var createNonEnumerableProperty2 = requireCreateNonEnumerableProperty();
+  var defineBuiltIns2 = requireDefineBuiltIns();
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var InternalStateModule = requireInternalState();
+  var getMethod2 = requireGetMethod();
+  var IteratorPrototype = requireIteratorsCore().IteratorPrototype;
+  var createIterResultObject2 = requireCreateIterResultObject();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorCloseAll2 = requireIteratorCloseAll();
+  var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
+  var ITERATOR_HELPER = "IteratorHelper";
+  var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
+  var NORMAL = "normal";
+  var THROW = "throw";
+  var setInternalState = InternalStateModule.set;
+  var createIteratorProxyPrototype = function(IS_ITERATOR) {
+    var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
+    return defineBuiltIns2(create(IteratorPrototype), {
+      next: function next() {
+        var state = getInternalState(this);
+        if (IS_ITERATOR) return state.nextHandler();
+        if (state.done) return createIterResultObject2(void 0, true);
+        try {
+          var result = state.nextHandler();
+          return state.returnHandlerResult ? result : createIterResultObject2(result, state.done);
+        } catch (error) {
+          state.done = true;
+          throw error;
+        }
+      },
+      "return": function() {
+        var state = getInternalState(this);
+        var iterator = state.iterator;
+        state.done = true;
+        if (IS_ITERATOR) {
+          var returnMethod = getMethod2(iterator, "return");
+          return returnMethod ? call(returnMethod, iterator) : createIterResultObject2(void 0, true);
+        }
+        if (state.inner) try {
+          iteratorClose2(state.inner.iterator, NORMAL);
+        } catch (error) {
+          return iteratorClose2(iterator, THROW, error);
+        }
+        if (state.openIters) try {
+          iteratorCloseAll2(state.openIters, NORMAL);
+        } catch (error) {
+          return iteratorClose2(iterator, THROW, error);
+        }
+        if (iterator) iteratorClose2(iterator, NORMAL);
+        return createIterResultObject2(void 0, true);
+      }
+    });
+  };
+  var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
+  var IteratorHelperPrototype = createIteratorProxyPrototype(false);
+  createNonEnumerableProperty2(IteratorHelperPrototype, TO_STRING_TAG, "Iterator Helper");
+  iteratorCreateProxy = function(nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
+    var IteratorProxy = function Iterator2(record, state) {
+      if (state) {
+        state.iterator = record.iterator;
+        state.next = record.next;
+      } else state = record;
+      state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
+      state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
+      state.nextHandler = nextHandler;
+      state.counter = 0;
+      state.done = false;
+      setInternalState(this, state);
+    };
+    IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
+    return IteratorProxy;
+  };
+  return iteratorCreateProxy;
+}
+var callWithSafeIterationClosing;
+var hasRequiredCallWithSafeIterationClosing;
+function requireCallWithSafeIterationClosing() {
+  if (hasRequiredCallWithSafeIterationClosing) return callWithSafeIterationClosing;
+  hasRequiredCallWithSafeIterationClosing = 1;
+  var anObject2 = requireAnObject();
+  var iteratorClose2 = requireIteratorClose();
+  callWithSafeIterationClosing = function(iterator, fn, value, ENTRIES) {
+    try {
+      return ENTRIES ? fn(anObject2(value)[0], value[1]) : fn(value);
+    } catch (error) {
+      iteratorClose2(iterator, "throw", error);
+    }
+  };
+  return callWithSafeIterationClosing;
+}
+var iteratorHelperThrowsOnInvalidIterator;
+var hasRequiredIteratorHelperThrowsOnInvalidIterator;
+function requireIteratorHelperThrowsOnInvalidIterator() {
+  if (hasRequiredIteratorHelperThrowsOnInvalidIterator) return iteratorHelperThrowsOnInvalidIterator;
+  hasRequiredIteratorHelperThrowsOnInvalidIterator = 1;
+  iteratorHelperThrowsOnInvalidIterator = function(methodName, argument) {
+    var method = typeof Iterator == "function" && Iterator.prototype[methodName];
+    if (method) try {
+      method.call({
+        next: null
+      }, argument).next();
+    } catch (error) {
+      return true;
+    }
+  };
+  return iteratorHelperThrowsOnInvalidIterator;
+}
+var hasRequiredEs_iterator_filter;
+function requireEs_iterator_filter() {
+  if (hasRequiredEs_iterator_filter) return es_iterator_filter;
+  hasRequiredEs_iterator_filter = 1;
+  var $ = require_export();
+  var call = requireFunctionCall();
+  var aCallable2 = requireACallable();
+  var anObject2 = requireAnObject();
+  var getIteratorDirect2 = requireGetIteratorDirect();
+  var createIteratorProxy = requireIteratorCreateProxy();
+  var callWithSafeIterationClosing2 = requireCallWithSafeIterationClosing();
+  var IS_PURE = requireIsPure();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperThrowsOnInvalidIterator2 = requireIteratorHelperThrowsOnInvalidIterator();
+  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
+  var FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator2("filter", function() {
+  });
+  var filterWithoutClosingOnEarlyError = !IS_PURE && !FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError2("filter", TypeError);
+  var FORCED = IS_PURE || FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR || filterWithoutClosingOnEarlyError;
+  var IteratorProxy = createIteratorProxy(function() {
+    var iterator = this.iterator;
+    var predicate = this.predicate;
+    var next = this.next;
+    var result, done, value;
+    while (true) {
+      result = anObject2(call(next, iterator));
+      done = this.done = !!result.done;
+      if (done) return;
+      value = result.value;
+      if (callWithSafeIterationClosing2(iterator, predicate, [value, this.counter++], true)) return value;
+    }
+  });
+  $({
+    target: "Iterator",
+    proto: true,
+    real: true,
+    forced: FORCED
+  }, {
+    filter: function filter(predicate) {
+      anObject2(this);
+      try {
+        aCallable2(predicate);
+      } catch (error) {
+        iteratorClose2(this, "throw", error);
+      }
+      if (filterWithoutClosingOnEarlyError) return call(filterWithoutClosingOnEarlyError, this, predicate);
+      return new IteratorProxy(getIteratorDirect2(this), {
+        predicate
+      });
+    }
+  });
+  return es_iterator_filter;
+}
+requireEs_iterator_filter();
 var es_set_difference_v2 = {};
 var setHelpers;
 var hasRequiredSetHelpers;
@@ -2881,6 +3096,7 @@ function activateCell(element, options) {
   if (options?.focus) {
     targetEl.focus();
   }
+  return targetEl;
 }
 function stopEdit(element, reason) {
   const td = getCell(element);
@@ -2960,8 +3176,8 @@ var _hoisted_1$e = {
   key: 0,
   class: "table-ng__cell table-ng__cell--expand"
 };
-var _hoisted_2$a = ["aria-label", "aria-expanded"];
-var _hoisted_3$7 = {
+var _hoisted_2$9 = ["aria-label", "aria-expanded"];
+var _hoisted_3$5 = {
   key: 1,
   ref: "expandable",
   tabindex: "-1",
@@ -3007,7 +3223,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent2({
       }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$a)])) : (openBlock(), createElementBlock("td", _hoisted_3$7, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$9)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
     };
   }
 });
@@ -3424,7 +3640,7 @@ var _hoisted_1$b = {
   scope: "col",
   class: "table-ng__column table-ng__column--selectable"
 };
-var _hoisted_2$9 = ["checked", "indeterminate", "aria-label"];
+var _hoisted_2$8 = ["checked", "indeterminate", "aria-label"];
 var _sfc_main$d = /* @__PURE__ */ defineComponent2({
   __name: "ITableHeaderSelectable",
   props: {
@@ -3461,22 +3677,14 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent2({
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange: _cache[0] || (_cache[0] = ($event) => emit("toggle"))
-      }, null, 40, _hoisted_2$9)) : createCommentVNode("", true)]);
+      }, null, 40, _hoisted_2$8)) : createCommentVNode("", true)]);
     };
   }
 });
 var _hoisted_1$a = {
-  key: 0,
   class: "table-ng__cell table-ng__cell--checkbox"
 };
-var _hoisted_2$8 = ["checked", "aria-label"];
-var _hoisted_3$6 = {
-  key: 1,
-  ref: "target",
-  tabindex: "-1",
-  class: "table-ng__cell table-ng__cell--checkbox"
-};
-var _hoisted_4$4 = ["checked", "aria-label"];
+var _hoisted_2$7 = ["checked", "aria-label"];
 var _sfc_main$c = /* @__PURE__ */ defineComponent2({
   __name: "ITableCheckbox",
   props: {
@@ -3500,25 +3708,21 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent2({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$a, [createElementVNode("input", {
+      return openBlock(), createElementBlock("td", _hoisted_1$a, [createElementVNode("input", {
         ref: "target",
         checked: Boolean(__props.column.checked(__props.row)),
         type: "checkbox",
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$8)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, [createElementVNode("input", {
-        checked: Boolean(__props.column.checked(__props.row)),
-        type: "checkbox",
-        "aria-label": ariaLabel.value
-      }, null, 8, _hoisted_4$4)], 512));
+      }, null, 40, _hoisted_2$7)]);
     };
   }
 });
 var _hoisted_1$9 = {
   class: "table-ng__cell table-ng__cell--radio"
 };
-var _hoisted_2$7 = ["checked", "aria-label"];
+var _hoisted_2$6 = ["checked", "aria-label"];
 var _sfc_main$b = /* @__PURE__ */ defineComponent2({
   __name: "ITableRadio",
   props: {
@@ -3549,7 +3753,7 @@ var _sfc_main$b = /* @__PURE__ */ defineComponent2({
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$7)]);
+      }, null, 40, _hoisted_2$6)]);
     };
   }
 });
@@ -3600,12 +3804,10 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent2({
       checked() {
         return __props.state;
       },
-      editable() {
-        return true;
-      },
       update() {
         emit("toggle", __props.row);
-      }
+      },
+      enabled: true
     };
     const singleSelectColumn = {
       type: "radio",
@@ -3623,7 +3825,8 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent2({
       },
       update() {
         emit("toggle", __props.row);
-      }
+      },
+      enabled: true
     };
     return (_ctx, _cache) => {
       return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$8)) : __props.selectable === "multi" ? (openBlock(), createBlock(_sfc_main$c, {
@@ -3773,7 +3976,7 @@ function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
   const array = [];
   walk(keyedRows, expandableAttribute, (row, level) => {
     const key = getItemIdentifier(row);
-    const isExpandable = Boolean(expandableAttribute && row[expandableAttribute]);
+    const isExpandable = Boolean(expandableAttribute && Array.isArray(row[expandableAttribute]) && row[expandableAttribute].length > 0);
     const isExpanded = isExpandable && expandedKeys.has(key);
     const rowIndex = rowIndexes.indexOf(key) + 2;
     array.push({
@@ -3796,166 +3999,6 @@ function useStartStopEdit() {
   };
 }
 var es_iterator_map = {};
-var defineBuiltIns;
-var hasRequiredDefineBuiltIns;
-function requireDefineBuiltIns() {
-  if (hasRequiredDefineBuiltIns) return defineBuiltIns;
-  hasRequiredDefineBuiltIns = 1;
-  var defineBuiltIn2 = requireDefineBuiltIn();
-  defineBuiltIns = function(target, src, options) {
-    for (var key in src) defineBuiltIn2(target, key, src[key], options);
-    return target;
-  };
-  return defineBuiltIns;
-}
-var createIterResultObject;
-var hasRequiredCreateIterResultObject;
-function requireCreateIterResultObject() {
-  if (hasRequiredCreateIterResultObject) return createIterResultObject;
-  hasRequiredCreateIterResultObject = 1;
-  createIterResultObject = function(value, done) {
-    return {
-      value,
-      done
-    };
-  };
-  return createIterResultObject;
-}
-var iteratorCloseAll;
-var hasRequiredIteratorCloseAll;
-function requireIteratorCloseAll() {
-  if (hasRequiredIteratorCloseAll) return iteratorCloseAll;
-  hasRequiredIteratorCloseAll = 1;
-  var iteratorClose2 = requireIteratorClose();
-  iteratorCloseAll = function(iters, kind, value) {
-    for (var i = iters.length - 1; i >= 0; i--) {
-      if (iters[i] === void 0) continue;
-      try {
-        value = iteratorClose2(iters[i].iterator, kind, value);
-      } catch (error) {
-        kind = "throw";
-        value = error;
-      }
-    }
-    if (kind === "throw") throw value;
-    return value;
-  };
-  return iteratorCloseAll;
-}
-var iteratorCreateProxy;
-var hasRequiredIteratorCreateProxy;
-function requireIteratorCreateProxy() {
-  if (hasRequiredIteratorCreateProxy) return iteratorCreateProxy;
-  hasRequiredIteratorCreateProxy = 1;
-  var call = requireFunctionCall();
-  var create = requireObjectCreate();
-  var createNonEnumerableProperty2 = requireCreateNonEnumerableProperty();
-  var defineBuiltIns2 = requireDefineBuiltIns();
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var InternalStateModule = requireInternalState();
-  var getMethod2 = requireGetMethod();
-  var IteratorPrototype = requireIteratorsCore().IteratorPrototype;
-  var createIterResultObject2 = requireCreateIterResultObject();
-  var iteratorClose2 = requireIteratorClose();
-  var iteratorCloseAll2 = requireIteratorCloseAll();
-  var TO_STRING_TAG = wellKnownSymbol2("toStringTag");
-  var ITERATOR_HELPER = "IteratorHelper";
-  var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
-  var NORMAL = "normal";
-  var THROW = "throw";
-  var setInternalState = InternalStateModule.set;
-  var createIteratorProxyPrototype = function(IS_ITERATOR) {
-    var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
-    return defineBuiltIns2(create(IteratorPrototype), {
-      next: function next() {
-        var state = getInternalState(this);
-        if (IS_ITERATOR) return state.nextHandler();
-        if (state.done) return createIterResultObject2(void 0, true);
-        try {
-          var result = state.nextHandler();
-          return state.returnHandlerResult ? result : createIterResultObject2(result, state.done);
-        } catch (error) {
-          state.done = true;
-          throw error;
-        }
-      },
-      "return": function() {
-        var state = getInternalState(this);
-        var iterator = state.iterator;
-        state.done = true;
-        if (IS_ITERATOR) {
-          var returnMethod = getMethod2(iterator, "return");
-          return returnMethod ? call(returnMethod, iterator) : createIterResultObject2(void 0, true);
-        }
-        if (state.inner) try {
-          iteratorClose2(state.inner.iterator, NORMAL);
-        } catch (error) {
-          return iteratorClose2(iterator, THROW, error);
-        }
-        if (state.openIters) try {
-          iteratorCloseAll2(state.openIters, NORMAL);
-        } catch (error) {
-          return iteratorClose2(iterator, THROW, error);
-        }
-        if (iterator) iteratorClose2(iterator, NORMAL);
-        return createIterResultObject2(void 0, true);
-      }
-    });
-  };
-  var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
-  var IteratorHelperPrototype = createIteratorProxyPrototype(false);
-  createNonEnumerableProperty2(IteratorHelperPrototype, TO_STRING_TAG, "Iterator Helper");
-  iteratorCreateProxy = function(nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
-    var IteratorProxy = function Iterator2(record, state) {
-      if (state) {
-        state.iterator = record.iterator;
-        state.next = record.next;
-      } else state = record;
-      state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
-      state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
-      state.nextHandler = nextHandler;
-      state.counter = 0;
-      state.done = false;
-      setInternalState(this, state);
-    };
-    IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
-    return IteratorProxy;
-  };
-  return iteratorCreateProxy;
-}
-var callWithSafeIterationClosing;
-var hasRequiredCallWithSafeIterationClosing;
-function requireCallWithSafeIterationClosing() {
-  if (hasRequiredCallWithSafeIterationClosing) return callWithSafeIterationClosing;
-  hasRequiredCallWithSafeIterationClosing = 1;
-  var anObject2 = requireAnObject();
-  var iteratorClose2 = requireIteratorClose();
-  callWithSafeIterationClosing = function(iterator, fn, value, ENTRIES) {
-    try {
-      return ENTRIES ? fn(anObject2(value)[0], value[1]) : fn(value);
-    } catch (error) {
-      iteratorClose2(iterator, "throw", error);
-    }
-  };
-  return callWithSafeIterationClosing;
-}
-var iteratorHelperThrowsOnInvalidIterator;
-var hasRequiredIteratorHelperThrowsOnInvalidIterator;
-function requireIteratorHelperThrowsOnInvalidIterator() {
-  if (hasRequiredIteratorHelperThrowsOnInvalidIterator) return iteratorHelperThrowsOnInvalidIterator;
-  hasRequiredIteratorHelperThrowsOnInvalidIterator = 1;
-  iteratorHelperThrowsOnInvalidIterator = function(methodName, argument) {
-    var method = typeof Iterator == "function" && Iterator.prototype[methodName];
-    if (method) try {
-      method.call({
-        next: null
-      }, argument).next();
-    } catch (error) {
-      return true;
-    }
-  };
-  return iteratorHelperThrowsOnInvalidIterator;
-}
 var hasRequiredEs_iterator_map;
 function requireEs_iterator_map() {
   if (hasRequiredEs_iterator_map) return es_iterator_map;
@@ -4007,8 +4050,8 @@ var _hoisted_1$7 = {
   key: 0,
   class: "table-ng__cell table-ng__cell--anchor"
 };
-var _hoisted_2$6 = ["href"];
-var _hoisted_3$5 = {
+var _hoisted_2$5 = ["href"];
+var _hoisted_3$4 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
@@ -4024,36 +4067,26 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
     expose: __expose
   }) {
     const targetElement = useTemplateRef("target");
-    const renderAnchor = computed3(() => {
-      return __props.column.enabled(__props.row) && __props.column.text(__props.row) !== null;
-    });
     const expose = {
       tabstopEl: targetElement
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return renderAnchor.value ? (openBlock(), createElementBlock("td", _hoisted_1$7, [createElementVNode("a", {
+      return __props.column.text(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$7, [createElementVNode("a", {
         ref: "target",
         class: "anchor anchor--block",
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$6)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
+      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$5)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
     };
   }
 });
 var _hoisted_1$6 = {
-  key: 0,
   class: "table-ng__cell table-ng__cell--button"
 };
-var _hoisted_2$5 = {
+var _hoisted_2$4 = {
   class: "sr-only"
-};
-var _hoisted_3$4 = {
-  key: 1,
-  ref: "td",
-  tabindex: "-1",
-  class: "table-ng__cell"
 };
 var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
   __name: "ITableButton",
@@ -4065,7 +4098,6 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
     expose: __expose
   }) {
     const buttonElement = useTemplateRef("button");
-    const tdElement = useTemplateRef("td");
     function onClickButton() {
       assertRef(buttonElement);
       buttonElement.value.tabIndex = 0;
@@ -4073,15 +4105,12 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
         __props.column.onClick(__props.row);
       }
     }
-    const renderButton = computed3(() => {
-      return __props.column.enabled(__props.row) && __props.column.text(__props.row) !== null;
-    });
     const expose = {
-      tabstopEl: renderButton.value ? buttonElement : tdElement
+      tabstopEl: buttonElement
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return renderButton.value ? (openBlock(), createElementBlock("td", _hoisted_1$6, [createElementVNode("button", {
+      return openBlock(), createElementBlock("td", _hoisted_1$6, [createElementVNode("button", {
         ref: "button",
         class: "icon-button",
         type: "button",
@@ -4091,7 +4120,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent2({
         key: 0,
         library: __props.column.iconLibrary,
         name: __props.column.icon
-      }, null, 8, ["library", "name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$5, toDisplayString(__props.column.text(__props.row)), 1)], 512)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
+      }, null, 8, ["library", "name"])) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), createElementVNode("span", _hoisted_2$4, toDisplayString(__props.column.text(__props.row)), 1)], 512)]);
     };
   }
 });
@@ -4139,11 +4168,6 @@ requireEs_iterator_find();
 var _hoisted_1$5 = {
   class: "sr-only"
 };
-var _hoisted_2$4 = {
-  key: 1,
-  tabindex: "-1",
-  class: "table-ng__cell"
-};
 var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
   __name: "ITableMenu",
   props: {
@@ -4176,9 +4200,6 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
         };
       });
     });
-    const renderButton = computed3(() => {
-      return __props.column.enabled(__props.row);
-    });
     function onOpen(event) {
       event.stopPropagation();
       isOpen.value = true;
@@ -4201,8 +4222,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
     __expose(expose);
     return (_ctx, _cache) => {
       var _buttonRef$value;
-      return renderButton.value ? (openBlock(), createElementBlock("td", {
-        key: 0,
+      return openBlock(), createElementBlock("td", {
         class: normalizeClass(["table-ng__cell table-ng__cell--button", {
           "table-ng__cell--menu-open": isOpen.value
         }])
@@ -4222,7 +4242,7 @@ var _sfc_main$7 = /* @__PURE__ */ defineComponent2({
         onClose,
         onSelect,
         onFocusout
-      }, null, 8, ["is-open", "items", "anchor"])], 2)) : (openBlock(), createElementBlock("td", _hoisted_2$4));
+      }, null, 8, ["is-open", "items", "anchor"])], 2);
     };
   }
 });
@@ -4850,57 +4870,49 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
   }
 });
 function normalizeAnchorColumn(column) {
-  var _column$key;
   return {
     type: "anchor",
     text: getValueFn(column.text, column.key, String, ""),
-    href: column.href,
-    enabled: typeof column.enabled === "function" ? column.enabled : () => {
-      var _column$enabled;
-      return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
-    },
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    href: column.href
   };
 }
+function getSortable(column) {
+  var _column$sort, _column$key;
+  const shouldSort = (_column$sort = column.sort) !== null && _column$sort !== void 0 ? _column$sort : !!column.key;
+  return shouldSort ? (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null : null;
+}
 function normalizeBaseColumn(column) {
+  var _column$enabled;
   const id = /* @__PURE__ */ Symbol();
   const header = toRef2(column.header);
   const description = column.description !== void 0 ? toRef2(column.description) : ref3("");
   const size = column.size !== void 0 ? toRef2(column.size) : ref3("grow");
+  const sortable = getSortable(column);
   return {
     id,
     header,
     description,
-    size
+    sortable,
+    size,
+    enabled: (_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true
   };
 }
 function normalizeButtonColumn(column) {
-  var _column$icon, _column$key;
+  var _column$icon;
   return {
     type: "button",
     text: getValueFn(column.text, column.key, String, ""),
     onClick: column.onClick,
-    enabled: typeof column.enabled === "function" ? column.enabled : () => {
-      var _column$enabled;
-      return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
-    },
     icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
-    iconLibrary: column.iconLibrary,
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    iconLibrary: column.iconLibrary
   };
 }
 function normalizeCheckboxColumn(column) {
-  var _column$key;
   return {
     type: "checkbox",
     label: getLabelFn(column.label),
     checked: getValueFn(column.checked, column.key, Boolean, false),
-    update: getUpdateFn(column.update, column.key),
-    editable: typeof column.editable === "function" ? column.editable : () => {
-      var _column$editable;
-      return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
-    },
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    update: getUpdateFn(column.update, column.key)
   };
 }
 function noop2() {
@@ -4910,7 +4922,6 @@ function normalizeMenuColumn(column) {
   return {
     type: "menu",
     text: getValueFn(column.text, void 0, String, ""),
-    sortable: null,
     actions: ((_column$actions = column.actions) !== null && _column$actions !== void 0 ? _column$actions : []).map((it) => {
       var _it$icon, _it$onClick;
       return {
@@ -4918,15 +4929,11 @@ function normalizeMenuColumn(column) {
         icon: (_it$icon = it.icon) !== null && _it$icon !== void 0 ? _it$icon : null,
         onClick: (_it$onClick = it.onClick) !== null && _it$onClick !== void 0 ? _it$onClick : noop2
       };
-    }),
-    enabled: typeof column.enabled === "function" ? column.enabled : () => {
-      var _column$enabled;
-      return Boolean((_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true);
-    }
+    })
   };
 }
 function normalizeNumberColumn(column) {
-  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key;
+  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation;
   const type = column.type;
   const config = inputFieldConfig[type];
   const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser.bind(column);
@@ -4947,19 +4954,16 @@ function normalizeNumberColumn(column) {
     },
     validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
     hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
     formatter,
     parser
   };
 }
 function normalizeRadioColumn(column) {
-  var _column$key;
   return {
     type: "radio",
     label: getLabelFn(column.label),
     checked: getValueFn(column.checked, column.key, Boolean, false),
-    update: getUpdateFn(column.update, column.key),
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    update: getUpdateFn(column.update, column.key)
   };
 }
 function normalizeRenderColumn(column) {
@@ -4970,15 +4974,12 @@ function normalizeRenderColumn(column) {
   };
 }
 function normalizeRowHeaderColumn(column) {
-  var _column$key;
   return {
     type: "rowheader",
-    text: getValueFn(column.text, column.key, String, ""),
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    text: getValueFn(column.text, column.key, String, "")
   };
 }
 function normalizeSelectColumn(column) {
-  var _column$key;
   return {
     type: "select",
     label: getLabelFn(column.label),
@@ -4988,12 +4989,10 @@ function normalizeSelectColumn(column) {
       var _column$editable;
       return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
     },
-    options: column.options,
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null
+    options: column.options
   };
 }
 function normalizeSimpleColumn(column) {
-  var _column$key;
   return {
     type: "text",
     label: () => "",
@@ -5003,7 +5002,6 @@ function normalizeSimpleColumn(column) {
     update() {
     },
     editable: () => false,
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
     validation: {},
     hasValidation: false,
     formatter: (value) => value,
@@ -5011,7 +5009,7 @@ function normalizeSimpleColumn(column) {
   };
 }
 function normalizeTextColumn(column) {
-  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation, _column$key;
+  var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation;
   const type = column.type;
   const config = inputFieldConfig[type];
   const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser;
@@ -5030,7 +5028,6 @@ function normalizeTextColumn(column) {
     },
     validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
     hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
-    sortable: (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null,
     formatter,
     parser
   };
@@ -5136,14 +5133,9 @@ function usePopupError() {
       anchor,
       arrowAnchor,
       hasFocus,
-      hasHover,
-      inEdit
+      hasHover
     } = popupError;
     if (!anchor || !arrowAnchor) {
-      return;
-    }
-    if (inEdit) {
-      onClosePopupError(popupError);
       return;
     }
     if (hasFocus || hasHover) {
@@ -5414,7 +5406,7 @@ function useTabstop(tableRef, metaRows) {
     const tabFallback = pendingRowRemoval ? "sticky" : "first-cell";
     pendingRowRemoval = false;
     assertRef(tableRef);
-    const oldTabstopElement = tableRef.value.querySelector(`:not(tfoot)[tabindex="0"]`);
+    const oldTabstopElement = tableRef.value.querySelector(`[tabindex="0"]`);
     assertSet(oldTabstopElement);
     const oldTabstopFocused = oldTabstopElement === document.activeElement;
     if (oldTabstopElement.closest("th")) {
@@ -5602,7 +5594,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     const hasFooter = computed3(() => {
       return hasSlot("footer");
     });
-    const columns = computed3(() => normalizeTableColumns(__props.columns));
+    const columns = computed3(() => normalizeTableColumns(__props.columns).filter((col) => toValue2(col.enabled)));
     const tableClasses = computed3(() => {
       return ["table-ng", {
         "table-ng--striped": __props.striped,
@@ -5630,14 +5622,17 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     function onClick(e) {
       const cell = e.target.closest("td, th");
       if (cell) {
-        activateCell(cell, {
+        const targetEl = activateCell(cell, {
           focus: true
         });
+        if (e.target instanceof Node && !targetEl.contains(e.target)) {
+          targetEl.click();
+        }
       }
     }
     function onTableFocusin(e) {
       assertRef(tableRef);
-      for (const it of tableRef.value.querySelectorAll(`:not(tfoot)[tabindex="0"]`)) {
+      for (const it of tableRef.value.querySelectorAll(`[tabindex="0"]`)) {
         if (it !== e.target) {
           it.setAttribute("tabindex", "-1");
         }
@@ -5664,7 +5659,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       if (!tableRef.value) {
         return;
       }
-      const outsideTable = Boolean(tableRef.value.tFoot?.contains(relatedTarget)) || !tableRef.value.contains(relatedTarget);
+      const outsideTable = !tableRef.value.contains(relatedTarget);
       if (outsideTable) {
         const cell = target.closest("td, th");
         if (cell) {
@@ -5758,13 +5753,12 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         ref: "table",
         role: role.value,
         class: normalizeClass(tableClasses.value),
-        "aria-rowcount": ariaRowcount.value
-      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("thead", {
+        "aria-rowcount": ariaRowcount.value,
         onFocusin: onTableFocusin,
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
+      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
         key: 1,
         ref: bindCellApiRef,
         state: unref3(selectableHeaderState)(),
@@ -5779,12 +5773,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           scope: "col",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])], 32), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", {
-        onFocusin: onTableFocusin,
-        onFocusout: onTableFocusout,
-        onClick,
-        onKeydown
-      }, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
+      }), 128))])]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell"
       }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment2, {
@@ -5853,13 +5842,13 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
         }), 128))], 64))], 8, _hoisted_7$1);
-      }), 128))], 32), _cache[6] || (_cache[6] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
+      }), 128))]), _cache[6] || (_cache[6] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
         class: "table-ng__row",
         "aria-rowindex": ariaRowcount.value
       }, [createElementVNode("td", {
         colspan: columnCount.value,
         class: "table-ng__cell--custom"
-      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 10, _hoisted_1$2);
+      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1$2);
     };
   }
 });
@@ -6208,78 +6197,6 @@ function requireEs_arrayBuffer_transferToFixedLength() {
   return es_arrayBuffer_transferToFixedLength;
 }
 requireEs_arrayBuffer_transferToFixedLength();
-var es_iterator_reduce = {};
-var functionApply;
-var hasRequiredFunctionApply;
-function requireFunctionApply() {
-  if (hasRequiredFunctionApply) return functionApply;
-  hasRequiredFunctionApply = 1;
-  var NATIVE_BIND = requireFunctionBindNative();
-  var FunctionPrototype = Function.prototype;
-  var apply = FunctionPrototype.apply;
-  var call = FunctionPrototype.call;
-  functionApply = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
-    return call.apply(apply, arguments);
-  });
-  return functionApply;
-}
-var hasRequiredEs_iterator_reduce;
-function requireEs_iterator_reduce() {
-  if (hasRequiredEs_iterator_reduce) return es_iterator_reduce;
-  hasRequiredEs_iterator_reduce = 1;
-  var $ = require_export();
-  var iterate2 = requireIterate();
-  var aCallable2 = requireACallable();
-  var anObject2 = requireAnObject();
-  var getIteratorDirect2 = requireGetIteratorDirect();
-  var iteratorClose2 = requireIteratorClose();
-  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
-  var apply = requireFunctionApply();
-  var fails2 = requireFails();
-  var $TypeError = TypeError;
-  var FAILS_ON_INITIAL_UNDEFINED = fails2(function() {
-    [].keys().reduce(function() {
-    }, void 0);
-  });
-  var reduceWithoutClosingOnEarlyError = !FAILS_ON_INITIAL_UNDEFINED && iteratorHelperWithoutClosingOnEarlyError2("reduce", $TypeError);
-  $({
-    target: "Iterator",
-    proto: true,
-    real: true,
-    forced: FAILS_ON_INITIAL_UNDEFINED || reduceWithoutClosingOnEarlyError
-  }, {
-    reduce: function reduce(reducer) {
-      anObject2(this);
-      try {
-        aCallable2(reducer);
-      } catch (error) {
-        iteratorClose2(this, "throw", error);
-      }
-      var noInitial = arguments.length < 2;
-      var accumulator = noInitial ? void 0 : arguments[1];
-      if (reduceWithoutClosingOnEarlyError) {
-        return apply(reduceWithoutClosingOnEarlyError, this, noInitial ? [reducer] : [reducer, accumulator]);
-      }
-      var record = getIteratorDirect2(this);
-      var counter = 0;
-      iterate2(record, function(value) {
-        if (noInitial) {
-          noInitial = false;
-          accumulator = value;
-        } else {
-          accumulator = reducer(accumulator, value, counter);
-        }
-        counter++;
-      }, {
-        IS_RECORD: true
-      });
-      if (noInitial) throw new $TypeError("Reduce of empty iterator with no initial value");
-      return accumulator;
-    }
-  });
-  return es_iterator_reduce;
-}
-requireEs_iterator_reduce();
 var es_typedArray_toReversed = {};
 var isPossiblePrototype;
 var hasRequiredIsPossiblePrototype;
@@ -7320,63 +7237,80 @@ function requireWeb_domException_stack() {
   return web_domException_stack;
 }
 requireWeb_domException_stack();
-var es_iterator_filter = {};
-var hasRequiredEs_iterator_filter;
-function requireEs_iterator_filter() {
-  if (hasRequiredEs_iterator_filter) return es_iterator_filter;
-  hasRequiredEs_iterator_filter = 1;
+var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
+var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
+var es_iterator_reduce = {};
+var functionApply;
+var hasRequiredFunctionApply;
+function requireFunctionApply() {
+  if (hasRequiredFunctionApply) return functionApply;
+  hasRequiredFunctionApply = 1;
+  var NATIVE_BIND = requireFunctionBindNative();
+  var FunctionPrototype = Function.prototype;
+  var apply = FunctionPrototype.apply;
+  var call = FunctionPrototype.call;
+  functionApply = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
+    return call.apply(apply, arguments);
+  });
+  return functionApply;
+}
+var hasRequiredEs_iterator_reduce;
+function requireEs_iterator_reduce() {
+  if (hasRequiredEs_iterator_reduce) return es_iterator_reduce;
+  hasRequiredEs_iterator_reduce = 1;
   var $ = require_export();
-  var call = requireFunctionCall();
+  var iterate2 = requireIterate();
   var aCallable2 = requireACallable();
   var anObject2 = requireAnObject();
   var getIteratorDirect2 = requireGetIteratorDirect();
-  var createIteratorProxy = requireIteratorCreateProxy();
-  var callWithSafeIterationClosing2 = requireCallWithSafeIterationClosing();
-  var IS_PURE = requireIsPure();
   var iteratorClose2 = requireIteratorClose();
-  var iteratorHelperThrowsOnInvalidIterator2 = requireIteratorHelperThrowsOnInvalidIterator();
   var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
-  var FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator2("filter", function() {
+  var apply = requireFunctionApply();
+  var fails2 = requireFails();
+  var $TypeError = TypeError;
+  var FAILS_ON_INITIAL_UNDEFINED = fails2(function() {
+    [].keys().reduce(function() {
+    }, void 0);
   });
-  var filterWithoutClosingOnEarlyError = !IS_PURE && !FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError2("filter", TypeError);
-  var FORCED = IS_PURE || FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR || filterWithoutClosingOnEarlyError;
-  var IteratorProxy = createIteratorProxy(function() {
-    var iterator = this.iterator;
-    var predicate = this.predicate;
-    var next = this.next;
-    var result, done, value;
-    while (true) {
-      result = anObject2(call(next, iterator));
-      done = this.done = !!result.done;
-      if (done) return;
-      value = result.value;
-      if (callWithSafeIterationClosing2(iterator, predicate, [value, this.counter++], true)) return value;
-    }
-  });
+  var reduceWithoutClosingOnEarlyError = !FAILS_ON_INITIAL_UNDEFINED && iteratorHelperWithoutClosingOnEarlyError2("reduce", $TypeError);
   $({
     target: "Iterator",
     proto: true,
     real: true,
-    forced: FORCED
+    forced: FAILS_ON_INITIAL_UNDEFINED || reduceWithoutClosingOnEarlyError
   }, {
-    filter: function filter(predicate) {
+    reduce: function reduce(reducer) {
       anObject2(this);
       try {
-        aCallable2(predicate);
+        aCallable2(reducer);
       } catch (error) {
         iteratorClose2(this, "throw", error);
       }
-      if (filterWithoutClosingOnEarlyError) return call(filterWithoutClosingOnEarlyError, this, predicate);
-      return new IteratorProxy(getIteratorDirect2(this), {
-        predicate
+      var noInitial = arguments.length < 2;
+      var accumulator = noInitial ? void 0 : arguments[1];
+      if (reduceWithoutClosingOnEarlyError) {
+        return apply(reduceWithoutClosingOnEarlyError, this, noInitial ? [reducer] : [reducer, accumulator]);
+      }
+      var record = getIteratorDirect2(this);
+      var counter = 0;
+      iterate2(record, function(value) {
+        if (noInitial) {
+          noInitial = false;
+          accumulator = value;
+        } else {
+          accumulator = reducer(accumulator, value, counter);
+        }
+        counter++;
+      }, {
+        IS_RECORD: true
       });
+      if (noInitial) throw new $TypeError("Reduce of empty iterator with no initial value");
+      return accumulator;
     }
   });
-  return es_iterator_filter;
+  return es_iterator_reduce;
 }
-requireEs_iterator_filter();
-var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
-var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
+requireEs_iterator_reduce();
 function findMatch(regexps, value) {
   for (const regexp of regexps) {
     const match = value.match(regexp);
