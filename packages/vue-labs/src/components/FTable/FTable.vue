@@ -117,6 +117,7 @@ const columnCount = computed((): number => {
     const count = columns.value.length + expandCol + selectCol;
     return Math.max(1, count);
 });
+const activeRadioRows = new Map<symbol, T>();
 
 const hasFooter = computed((): boolean => {
     return hasSlot("footer");
@@ -171,6 +172,19 @@ function onClick(e: MouseEvent): void {
             targetEl.click();
         }
     }
+}
+
+function onRadioChecked(column: NormalizedTableColumn<T, KeyAttribute>, row: T): void {
+    if (column.type !== "radio") {
+        return;
+    }
+
+    const previousRow = activeRadioRows.get(column.id);
+    if (previousRow !== undefined && previousRow !== row) {
+        column.update(previousRow, false, true);
+    }
+
+    activeRadioRows.set(column.id, row);
 }
 
 function onTableFocusin(e: FocusEvent): void {
@@ -390,6 +404,7 @@ onMounted(() => {
                             :active-error-anchor
                             @close-error="onClosePopupError"
                             @on-error="onPopupError"
+                            @radio-checked="onRadioChecked(column, row)"
                         ></component>
                         <component :is="column.render(row)" v-else-if="'render' in column" :row></component>
                     </template>

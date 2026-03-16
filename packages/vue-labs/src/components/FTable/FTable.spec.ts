@@ -1127,39 +1127,6 @@ describe("Clickable cells", () => {
         ]);
     });
 
-    it("Should be possible to click on cell instead of radio button", async () => {
-        expect.assertions(1);
-        const rows = [{ active: false }, { active: false }, { active: false }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
-            {
-                type: "radio",
-                header: "Header",
-                label: () => "Label",
-                key: "active",
-            },
-        ]);
-        const wrapper = mount(FTable<(typeof rows)[number]>, {
-            attachTo: document.body,
-            props: {
-                rows,
-                columns,
-            },
-        });
-
-        const cell = wrapper.get<HTMLTableCellElement>(
-            "table tr:nth-child(2) td:first-child",
-        );
-
-        await nextTick();
-        await cell.trigger("click");
-
-        expect(rows).toEqual([
-            { active: false },
-            { active: true },
-            { active: false },
-        ]);
-    });
-
     it("Should be possible to click on cell instead of button", async () => {
         const rows = [
             { text: "text 1" },

@@ -9,15 +9,24 @@ const { column, row } = defineProps<{
     row: T;
 }>();
 
+const emit = defineEmits<{
+    radioChecked: [];
+}>();
+
 const inputElement = useTemplateRef("input");
 const ariaLabel = computed(() => {
     const value = column.label(row);
     return value.length > 0 ? value : undefined;
 });
 
-function onChange(_e: Event): void {
+function onChange(): void {
     assertRef(inputElement);
-    column.update(row, inputElement.value.checked, !inputElement.value.checked);
+    const checked = inputElement.value.checked;
+    column.update(row, checked, !checked);
+
+    if (checked) {
+        emit("radioChecked");
+    }
 }
 
 const expose: FTableCellApi = { tabstopEl: inputElement };
