@@ -1131,6 +1131,7 @@ describe("5 tabstop", () => {
                 type: "radio",
                 header: "radio header",
                 key: "radio",
+                name: "radio-column",
                 label: () => "radio label",
             },
             {

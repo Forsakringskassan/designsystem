@@ -15,6 +15,13 @@ export interface TableColumnRadio<
 > extends TableColumnBase {
     type: "radio";
     key?: K;
+    /**
+     * Name used to group radio buttons. Determines mutual exclusivity:
+     * - A static string groups all radios in this column together (column-wise, one selection per column).
+     * - A function returning the same string for multiple columns in the same row groups those columns
+     *   together (row-wise, one selection per row across those columns).
+     */
+    name: string | ((this: void, row: T) => string);
     label?(this: void, row: T): string;
     checked?(this: void, row: T): boolean;
     update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
@@ -35,6 +42,7 @@ export interface NormalizedTableColumnRadio<
     label(this: void, row: T): string;
     checked(this: void, row: T): boolean | string;
     update(this: void, row: T, newValue: boolean, oldValue: boolean): void;
+    name(this: void, row: T): string;
 }
 
 /**
@@ -43,10 +51,12 @@ export interface NormalizedTableColumnRadio<
 export function normalizeRadioColumn<T, K extends keyof T>(
     column: TableColumnRadio<T, K>,
 ): Omit<NormalizedTableColumnRadio<T, K>, OmittedNormalizedColumnProperties> {
+    const { name } = column;
     return {
         type: "radio",
         label: getLabelFn(column.label),
         checked: getValueFn(column.checked, column.key, Boolean, false),
         update: getUpdateFn(column.update, column.key),
+        name: typeof name === "function" ? name : () => name,
     };
 }

@@ -226,6 +226,7 @@ export interface TableColumnRadio<T, K extends keyof T> extends TableColumnBase 
     key?: K;
     // (undocumented)
     label?(this: void, row: T): string;
+    name: string | ((this: void, row: T) => string);
     // (undocumented)
     type: "radio";
     // (undocumented)

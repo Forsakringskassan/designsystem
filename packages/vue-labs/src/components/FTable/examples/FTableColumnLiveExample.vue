@@ -40,6 +40,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
         type: "radio",
         header: "Radioknapp",
         key: "value",
+        name: "radio-example",
         label: () => {
             return "Radioknapp label";
         },

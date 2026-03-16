@@ -175,6 +175,7 @@ functions/index.html
 functions/labs/code-table.html
 functions/labs/FTable/contextmenu.html
 functions/labs/FTable/index.html
+functions/labs/FTable/radio.html
 functions/labs/ftablepageobject.html
 functions/labs/index.html
 functions/labs/test-table.html

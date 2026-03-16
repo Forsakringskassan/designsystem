@@ -65,6 +65,9 @@ const singleSelectColumn: NormalizedTableColumnRadio<T, K> = {
         /** Screen reader text for radio button in single select table row. */
         return $t("fkui.table.selectable.radio", "Välj rad");
     },
+    name() {
+        return "single-select";
+    },
     checked() {
         return state;
     },

@@ -32,8 +32,14 @@ import { type MetaRow } from "./MetaRow";
 import { isFTableCellApi, tableCellApiSymbol } from "./f-table-api";
 import { getBodyRowCount } from "./get-body-row-count";
 import { getMetaRows } from "./get-meta-rows";
+import { getNextRadioGroupName, radioGroupNameKey } from "./radio-group-name";
 import { stopEditKey } from "./start-stop-edit";
-import { type NormalizedTableColumn, type TableColumn, normalizeTableColumns } from "./table-column";
+import {
+    type NormalizedTableColumn,
+    type NormalizedTableColumnRadio,
+    type TableColumn,
+    normalizeTableColumns,
+} from "./table-column";
 import { usePopupError } from "./use-popup-error";
 import { useSelectable } from "./use-selectable";
 import { useTabstop } from "./use-tabstop";
@@ -117,7 +123,12 @@ const columnCount = computed((): number => {
     const count = columns.value.length + expandCol + selectCol;
     return Math.max(1, count);
 });
-const activeRadioRows = new Map<symbol, T>();
+interface ActiveRadioSelection {
+    row: T;
+    column: NormalizedTableColumnRadio<T, KeyAttribute>;
+}
+
+const activeRadioByName = new Map<string | symbol, ActiveRadioSelection>();
 
 const hasFooter = computed((): boolean => {
     return hasSlot("footer");
@@ -148,6 +159,7 @@ async function stopEditHandler(
 }
 
 provide(stopEditKey, stopEditHandler);
+provide(radioGroupNameKey, getNextRadioGroupName());
 
 function onToggleExpanded(key: ItemIdentifier): void {
     if (expandedKeys.value.has(key)) {
@@ -179,12 +191,14 @@ function onRadioChecked(column: NormalizedTableColumn<T, KeyAttribute>, row: T):
         return;
     }
 
-    const previousRow = activeRadioRows.get(column.id);
-    if (previousRow !== undefined && previousRow !== row) {
-        column.update(previousRow, false, true);
+    const groupKey = column.name(row);
+
+    const previous = activeRadioByName.get(groupKey);
+    if (previous !== undefined && (previous.row !== row || previous.column !== column)) {
+        previous.column.update(previous.row, false, true);
     }
 
-    activeRadioRows.set(column.id, row);
+    activeRadioByName.set(groupKey, { row, column });
 }
 
 function onTableFocusin(e: FocusEvent): void {

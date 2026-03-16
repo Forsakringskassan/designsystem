@@ -180,3 +180,4 @@ Följande förbättringar av tabell återstår:
 ## Relaterat
 
 {@link test-table Testning av tabell}
+{@link radio Radioknappar i FTable}
