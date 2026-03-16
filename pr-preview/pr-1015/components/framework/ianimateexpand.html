@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-1df54b.json"
+            href="../../search-data-115894.json"
             as="fetch"
             crossorigin
-            integrity="sha384-E3O/FiMT3qbeFXrIIisneJxj/toRmJVc+m03Y4Eq5F2ltxkhVhJZ1mPvTnc+c9Fu"
+            integrity="sha384-lffS791jvtrlFCG/w5lumHs1+Qibxo0Ik3lnhW1iA5CAomZ0CMJK80j+YfHufQ85"
             id="search-data"
         />
     </head>
@@ -1108,7 +1108,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/a94fc54e9e46dda63ac7e118bc3dc984f75b634c/packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/6fc26a7d0660eca593ba3a321d364a8a7d9f0e2f/packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue">
                 IAnimateExpand
             </a>
             
@@ -1158,13 +1158,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-b4de7d"></div>
+        <div id="example-34fe71"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IAnimateExpandRadioGroup-b4de7d.js"></script>
+        <script type="module" src="./IAnimateExpandRadioGroup-34fe71.js"></script>
     
                 </div>
                 <div>
@@ -1238,7 +1238,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-6f9f45"></div>
+        <div id="example-f94520"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1249,7 +1249,7 @@ select {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IAnimateExpandRecommended-6f9f45.js"></script>
+        <script type="module" src="./IAnimateExpandRecommended-f94520.js"></script>
     
                 </div>
                 <div>
@@ -1270,11 +1270,11 @@ select {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">IAnimateExpand</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IAnimateExpand</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">namne</span>: <span class="hljs-string">&quot;IAnimateExpandRecommended&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">IAnimateExpand</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IAnimateExpand</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">isExpanded</span>: <span class="hljs-literal">false</span>,
@@ -1305,7 +1305,7 @@ select {
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;isExpanded = !isExpanded&quot;</span>&gt;</span>Öppna/stäng animering<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;isExpanded = !isExpanded&quot;</span>&gt;</span>Öppna/stäng animering<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;isAnimated&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> /&gt;</span> Animera<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;hasOpacity&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> /&gt;</span> Opacitet<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;useVShow&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> /&gt;</span> Use v-show instead of v-if<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
@@ -1351,13 +1351,13 @@ select {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-728756"></div>
+        <div id="example-e80103"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IAnimateExpandToggleTwo-728756.js"></script>
+        <script type="module" src="./IAnimateExpandToggleTwo-e80103.js"></script>
     
                 </div>
                 <div>
@@ -1378,11 +1378,11 @@ select {
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">IAnimateExpand</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IAnimateExpand</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">namne</span>: <span class="hljs-string">&quot;IAnimateExpandToggleTwo&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">IAnimateExpand</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IAnimateExpand</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">toggle</span>: <span class="hljs-literal">false</span>,
@@ -1394,7 +1394,7 @@ select {
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggle = !toggle&quot;</span>&gt;</span>Toggle<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggle = !toggle&quot;</span>&gt;</span>Toggle<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;opacity&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> /&gt;</span> Toning<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">i-animate-expand</span> <span class="hljs-attr">:opacity</span> <span class="hljs-attr">:expanded</span>=<span class="hljs-string">&quot;toggle&quot;</span>&gt;</span>
@@ -1578,9 +1578,9 @@ Callback will await Promise.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">contextmenu-horizontalscroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/a94fc54e9e46dda63ac7e118bc3dc984f75b634c">a94fc54</a>)<br />
+<div class="footer__right"><div class="version">contextmenu-horizontalscroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/6fc26a7d0660eca593ba3a321d364a8a7d9f0e2f">6fc26a7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1015">PR 1015</a><br />
-        2026-03-16 14:26
+        2026-03-16 20:42
 </div>
 <div class="toolbar__item">
     <form id="version">
