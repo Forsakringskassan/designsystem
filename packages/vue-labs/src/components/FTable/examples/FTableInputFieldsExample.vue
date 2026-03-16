@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { ValidationService } from "@fkui/logic";
+import { FButton } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 interface TableRow {
@@ -229,9 +230,7 @@ function validataAll(): void {
 </script>
 
 <template>
-    <button type="button" class="button button--secondary" @click="validataAll">
-        Interagerbart element före
-    </button>
+    <f-button variant="secondary" @click="validataAll"> Interagerbart element före </f-button>
     <div id="all">
         <f-table :rows :columns="columns1" key-attribute="id" striped> </f-table>
         <f-table :rows :columns="columns2" key-attribute="id" striped> </f-table>
@@ -240,7 +239,5 @@ function validataAll(): void {
     <pre>Summa: {{ { sum } }}</pre>
     <h3>Rows ({{ rows.length }} items):</h3>
     <pre>{{ rows }}</pre>
-    <button type="button" class="button button--secondary" @click="validataAll">
-        Interagerbart element efter
-    </button>
+    <f-button variant="secondary" @click="validataAll"> Interagerbart element efter </f-button>
 </template>

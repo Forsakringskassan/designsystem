@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useModal } from "@fkui/vue";
+import { FButton, useModal } from "@fkui/vue";
 import MyAwesomeModal from "./MyAwesomeModal.vue";
 
 const { openModal } = useModal();
@@ -11,6 +11,6 @@ async function onClick(): Promise<void> {
 
 <template>
     <div>
-        <button type="button" class="button button--secondary" @click="onClick">Open</button>
+        <f-button variant="secondary" @click="onClick">Open</f-button>
     </div>
 </template>

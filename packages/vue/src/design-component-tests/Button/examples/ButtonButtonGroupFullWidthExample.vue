@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FIcon } from "@fkui/vue";
+import { FButton } from "@fkui/vue";
 
 export default defineComponent({
-    components: { FIcon },
+    components: { FButton },
     props: {
         useFullWidth: {
             type: Boolean,
@@ -18,120 +18,113 @@ export default defineComponent({
     <div style="background-color: beige; padding: 20px">
         <!-- [html-validate-disable-next no-inline-style] -->
         <div class="button-group" style="border: 1px black dotted">
-            <button
-                class="button button--primary button--small button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
-            >
+            <f-button class="button-group__item" :mobile-full-width="useFullWidth" size="small">
                 Primary
-            </button>
-            <button
-                class="button button--secondary button--small button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
+            </f-button>
+            <f-button
+                class="button-group__item"
+                :mobile-full-width="useFullWidth"
+                size="small"
+                variant="secondary"
             >
                 Secondary
-            </button>
-            <button
-                class="button button--tertiary button--small button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
+            </f-button>
+            <f-button
+                class="button-group__item"
+                icon-left="paper-clip"
+                :mobile-full-width="useFullWidth"
+                size="small"
+                variant="tertiary"
             >
-                <f-icon name="paper-clip" class="button__icon"></f-icon> Tertiary
-            </button>
+                Tertiary
+            </f-button>
         </div>
         <!-- [html-validate-disable-next no-inline-style] -->
         <div class="button-group" style="border: 1px black dotted">
-            <button
-                class="button button--primary button--medium button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
-            >
+            <f-button class="button-group__item" :mobile-full-width="useFullWidth">
                 Primary
-            </button>
-            <button
-                class="button button--secondary button--medium button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
+            </f-button>
+            <f-button
+                class="button-group__item"
+                :mobile-full-width="useFullWidth"
+                variant="secondary"
             >
                 Secondary
-            </button>
-            <button
-                class="button button--tertiary button--medium button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
+            </f-button>
+            <f-button
+                class="button-group__item"
+                icon-left="paper-clip"
+                :mobile-full-width="useFullWidth"
+                variant="tertiary"
             >
-                <f-icon name="paper-clip" class="button__icon"></f-icon> Tertiary
-            </button>
+                Tertiary
+            </f-button>
         </div>
         <!-- [html-validate-disable-next no-inline-style] -->
         <div class="button-group" style="border: 1px black dotted">
-            <button
-                class="button button--primary button--large button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
-            >
+            <f-button class="button-group__item" :mobile-full-width="useFullWidth" size="large">
                 Primary
-            </button>
-            <button
-                class="button button--secondary button--large button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
+            </f-button>
+            <f-button
+                class="button-group__item"
+                :mobile-full-width="useFullWidth"
+                size="large"
+                variant="secondary"
             >
                 Secondary
-            </button>
-            <button
-                class="button button--tertiary button--large button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
+            </f-button>
+            <f-button
+                class="button-group__item"
+                icon-left="paper-clip"
+                :mobile-full-width="useFullWidth"
+                size="large"
+                variant="tertiary"
             >
-                <f-icon name="paper-clip" class="button__icon"></f-icon> Tertiary
-            </button>
+                Tertiary
+            </f-button>
         </div>
         <!-- [html-validate-disable-next no-inline-style] -->
         <div class="button-group" style="border: 1px black dotted">
-            <button
-                class="button button--primary button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
-            >
+            <f-button class="button-group__item" :mobile-full-width="useFullWidth">
                 Primary
-            </button>
-            <button
-                class="button button--secondary button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
+            </f-button>
+            <f-button
+                class="button-group__item"
+                :mobile-full-width="useFullWidth"
+                variant="secondary"
             >
                 Secondary
-            </button>
-            <button
-                class="button button--tertiary button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
+            </f-button>
+            <f-button
+                class="button-group__item"
+                icon-left="paper-clip"
+                :mobile-full-width="useFullWidth"
+                variant="tertiary"
             >
-                <f-icon name="paper-clip" class="button__icon"></f-icon> Tertiary
-            </button>
-            <button
-                class="button button--tertiary button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
+                Tertiary
+            </f-button>
+            <f-button
+                class="button-group__item"
+                :mobile-full-width="useFullWidth"
+                variant="tertiary"
             >
                 Discrete
-            </button>
-            <button
-                class="button button--tertiary-inverted button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
+            </f-button>
+            <f-button
+                class="button-group__item"
+                :mobile-full-width="useFullWidth"
+                tertiary-style="inverted"
+                variant="tertiary"
             >
                 Discrete Inverted
-            </button>
-            <button
-                class="button button--standard button-group__item"
-                :class="useFullWidth ? 'button--full-width' : ''"
-                type="button"
+            </f-button>
+            <f-button
+                class="button-group__item"
+                :mobile-full-width="useFullWidth"
+                variant="secondary"
             >
                 Standard
-            </button>
+            </f-button>
         </div>
     </div>
 </template>

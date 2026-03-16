@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FExpand } from "@fkui/vue";
+import { FButton, FExpand } from "@fkui/vue";
 
 export default defineComponent({
     name: "FExpandExample",
-    components: { FExpand },
+    components: { FButton, FExpand },
     data() {
         return {
             expanded: false,
@@ -18,8 +18,8 @@ export default defineComponent({
         <f-expand>
             <div v-if="expanded">Expanded content</div>
         </f-expand>
-        <button type="button" @click="expanded = !expanded">
+        <f-button @click="expanded = !expanded">
             {{ expanded ? `Close` : `Open` }}
-        </button>
+        </f-button>
     </div>
 </template>

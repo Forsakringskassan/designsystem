@@ -1,8 +1,10 @@
 <script lang="ts">
 import { defineComponent, getCurrentInstance } from "vue";
+import { FButton } from "@fkui/vue";
 
 export default defineComponent({
     name: "ErrorPluginExample",
+    components: { FButton },
     data() {
         return {
             instance: getCurrentInstance(),
@@ -25,21 +27,11 @@ export default defineComponent({
 
 <template>
     <div>
-        <button
-            v-test="'generate-error'"
-            class="button button--secondary"
-            type="button"
-            @click="generateError()"
-        >
+        <f-button v-test="'generate-error'" variant="secondary" @click="generateError()">
             Fel
-        </button>
-        <button
-            v-test="'generate-warning'"
-            class="button button--secondary"
-            type="button"
-            @click="generateWarning()"
-        >
+        </f-button>
+        <f-button v-test="'generate-warning'" variant="secondary" @click="generateWarning()">
             Varning
-        </button>
+        </f-button>
     </div>
 </template>

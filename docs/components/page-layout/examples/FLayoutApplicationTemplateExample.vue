@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
+    FButton,
     FLayoutApplicationTemplate,
     FLayoutLeftPanel,
     FLayoutRightPanel,
@@ -19,8 +20,8 @@ interface ExampleData {
 }
 
 export default defineComponent({
-    name: "FullNavigationExampleApp",
-    components: { FLayoutApplicationTemplate, FLayoutLeftPanel, FLayoutRightPanel },
+    name: "FLayoutApplicationTemplateExample",
+    components: { FButton, FLayoutApplicationTemplate, FLayoutLeftPanel, FLayoutRightPanel },
     data(): ExampleData {
         return {
             selectedText: "",
@@ -77,9 +78,7 @@ export default defineComponent({
 
                     <template #content>
                         <p>{{ selectedText }}</p>
-                        <button class="button button--primary" type="button" @click="closePanel()">
-                            Stäng
-                        </button>
+                        <f-button @click="closePanel()">Stäng</f-button>
                     </template>
                     <template #default>
                         <div class="container-fluid">
