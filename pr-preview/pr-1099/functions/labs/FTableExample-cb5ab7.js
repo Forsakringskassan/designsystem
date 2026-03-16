@@ -5135,14 +5135,9 @@ function usePopupError() {
       anchor,
       arrowAnchor,
       hasFocus,
-      hasHover,
-      inEdit
+      hasHover
     } = popupError;
     if (!anchor || !arrowAnchor) {
-      return;
-    }
-    if (inEdit) {
-      onClosePopupError(popupError);
       return;
     }
     if (hasFocus || hasHover) {
