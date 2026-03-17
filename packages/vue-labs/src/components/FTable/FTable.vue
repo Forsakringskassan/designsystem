@@ -118,6 +118,11 @@ const columnCount = computed((): number => {
     return Math.max(1, count);
 });
 
+const expandableRowColumnCount = computed((): number => {
+    const expandCol = isTreegrid.value ? 1 : 0;
+    return Math.max(1, columnCount.value - expandCol);
+});
+
 const hasFooter = computed((): boolean => {
     return hasSlot("footer");
 });
@@ -364,7 +369,7 @@ onMounted(() => {
                     @toggle="onToggleExpanded"
                 ></i-table-expand-button>
 
-                <i-table-expandable v-if="level! > 1 && hasExpandableSlot" :colspan="columns.length">
+                <i-table-expandable v-if="level! > 1 && hasExpandableSlot" :colspan="expandableRowColumnCount">
                     <!-- @todo "typeof row" is a lie, row is not T but T | T[ExpandableAttribute] -->
                     <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
                 </i-table-expandable>
