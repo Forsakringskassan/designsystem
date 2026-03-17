@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../search-data-045f98.json"
+            href="../search-data-f307fd.json"
             as="fetch"
             crossorigin
-            integrity="sha384-rx7qz8V/vhxgrRzHwvzgWtIF+jkWcyuxoafKGWL7r5uVEYXb7sibySRJoFLKNnMd"
+            integrity="sha384-CNZUyXvWMm9a/TR8rNgY9SjbHePcvd4qg0h4mGT8cmnh4i2nwtjcCE7sFLRVVaeR"
             id="search-data"
         />
     </head>
@@ -1108,7 +1108,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/9335d4e06451b1aa6cac70e51034b926cb6e3e7c/packages/vue/src/components/FContextMenu/FContextMenu.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/80eac6b64df501e231e589685cdc5a5b06ed42fc/packages/vue/src/components/FContextMenu/FContextMenu.vue">
                 FContextMenu
             </a>
             
@@ -1171,13 +1171,13 @@
                 <!-- [html-validate-disable-block element-name, no-unused-disable -- teleport casing issue in html-validate-vue] -->
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-c8f342"></div>
+        <div id="example-497ad1"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FContextMenuExampleTextOnly-c8f342.js"></script>
+        <script type="module" src="./FContextMenuExampleTextOnly-497ad1.js"></script>
     
                 </div>
                 <div>
@@ -1198,7 +1198,7 @@
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">ContextMenuItem</span>, <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FContextMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">ContextMenuItem</span>, <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FContextMenu</span>, getHTMLElementFromVueRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">exampleItems</span>: <span class="hljs-title class_">ContextMenuItem</span>[] = [
     { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Skriv ut&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;MENU_1&quot;</span> },
@@ -1223,7 +1223,10 @@
     },
     <span class="hljs-attr">methods</span>: {
         <span class="hljs-title function_">getAnchor</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">popupAnchor</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-literal">undefined</span>;
+            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">popupAnchor</span>) {
+                <span class="hljs-keyword">return</span> <span class="hljs-title function_">getHTMLElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">popupAnchor</span>);
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">undefined</span>;
         },
         <span class="hljs-title function_">onClose</span>(<span class="hljs-params"></span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
@@ -1602,9 +1605,9 @@ after pressing for example esc in the menu</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">buggfix/fcontext-meny (<a href="https://github.com/Forsakringskassan/designsystem/commits/9335d4e06451b1aa6cac70e51034b926cb6e3e7c">9335d4e</a>)<br />
+<div class="footer__right"><div class="version">buggfix/fcontext-meny (<a href="https://github.com/Forsakringskassan/designsystem/commits/80eac6b64df501e231e589685cdc5a5b06ed42fc">80eac6b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1119">PR 1119</a><br />
-        2026-03-17 13:02
+        2026-03-17 13:18
 </div>
 <div class="toolbar__item">
     <form id="version">
