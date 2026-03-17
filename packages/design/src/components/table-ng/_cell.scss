@@ -5,6 +5,8 @@
 $vertical-padding: core.densify(size.$padding-025);
 $horizontal-padding: size.$padding-050;
 $underline-thickness: 3px;
+$selection-outline: 3px;
+$editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-large) + ($vertical-padding * 2) + ($selection-outline * 2));
 
 .table-ng__cell {
     padding: $vertical-padding $horizontal-padding;
@@ -14,8 +16,8 @@ $underline-thickness: 3px;
     &:focus,
     &:focus-within {
         box-shadow: none;
-        outline: 3px solid $table-ng-cell-color-outline;
-        outline-offset: -3px;
+        outline: $selection-outline solid $table-ng-cell-color-outline;
+        outline-offset: -$selection-outline;
     }
 
     &:not(&--menu-open):hover:has(button) {
@@ -67,6 +69,8 @@ $underline-thickness: 3px;
     }
 
     .table-ng__editable {
+        min-block-size: $editable-min-height;
+
         &:focus-within {
             box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
             border-radius: 0;
@@ -203,8 +207,8 @@ $underline-thickness: 3px;
 
         &:focus {
             box-shadow: none;
-            outline: 3px solid $table-ng-cell-color-outline;
-            outline-offset: -3px;
+            outline: $selection-outline solid $table-ng-cell-color-outline;
+            outline-offset: -$selection-outline;
         }
     }
 
@@ -268,8 +272,8 @@ $underline-thickness: 3px;
 
     .table-ng [tabindex="0"]:focus,
     .table-ng [tabindex="0"]:focus-visible {
-        outline: 3px solid CanvasText;
-        outline-offset: -3px;
+        outline: $selection-outline solid CanvasText;
+        outline-offset: -$selection-outline;
         background: transparent;
     }
 
