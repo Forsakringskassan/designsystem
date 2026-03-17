@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Offline - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-c11cb3.css"
+            href="../assets/docs-d9e39c.css"
             crossorigin
-            integrity="sha384-RaIRJc0LmraMJlZjRuD4b014EjTy2EkQc9V9tXXaq1OuJjEQLfRsKusaeySRliNM"
+            integrity="sha384-Q1jybOTJEgIPqmH8pt+povbszv/1VmSKFq7OFI+2PS68c3GbD37phS9GTlZ8c69l"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../assets/vendor-fkui-vue-selectors-dd52a5.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-98de52.js",
     "@fkui/date": "../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-dc3100.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-305ce5.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
     "../assets/vendor-fkui-logic-98de52.js": "sha384-Ptnc7xByl78++N85l8MGYnpfAGrdohEpKKt9UuQaOU7Avr3TV3rmyjKzInUKGEe5",
     "../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../assets/vendor-fkui-vue-dc3100.js": "sha384-G4CI5OgRhUKYOAi5mvEotKD59IkBUUrXzSlhJp/PGsaWmdJq+bcOvEV6XZ/DI8ln",
+    "../assets/vendor-fkui-vue-305ce5.js": "sha384-fbiQodx+C3mdkGulhG670SucB5KexkglYNiV6o5IDFeRygMOtFu/qAUN4lYQOVWc",
     "../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../search-data-47dc72.json"
+            href="../search-data-b291fc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-p7KcuDAvx4y2CkdXMsA//VSTOQbfQ+QjDWr1xs91LHkVkIW+jDv5+37j7xiJKa34"
+            integrity="sha384-7fi0qH0sLaWCus9z3BioBwMQVk9qA0rfOh9pdVYaDf3BzWYX76loFDhqgKP2kgk0"
             id="search-data"
         />
     </head>
@@ -1004,6 +1004,17 @@
         >
             Datamängdsorterare
         </a>
+    </li><li class="link ">
+        <a
+            href="./table-and-list/fdefinitionlist.html"
+            
+            
+            
+            data-path="components/table-and-list/fdefinitionlist.html"
+            
+        >
+            Definitionslista
+        </a>
     </li></ol>
 
             
@@ -1097,7 +1108,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/5ef87e53bbb4eaf5aeb02e1ed447834ce9b995ba/packages/vue/src/components/FOffline/FOffline.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/67033f597565225a0d3b4ae62478e7ee75cd0d01/packages/vue/src/components/FOffline/FOffline.vue">
                 FOffline
             </a>
             
@@ -1158,13 +1169,13 @@ Obeservera att knappen som simulerar ett offline-event kan bete sig konstigt om 
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-7f4a64"></div>
+        <div id="example-c9feab"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FOfflineExample-7f4a64.js"></script>
+        <script type="module" src="./FOfflineExample-c9feab.js"></script>
     
                 </div>
                 <div>
@@ -1185,11 +1196,11 @@ Obeservera att knappen som simulerar ett offline-event kan bete sig konstigt om 
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FOffline</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;..&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FOffline</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FOfflineExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FOffline</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FOffline</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">isPushed</span>: <span class="hljs-literal">false</span>,
@@ -1214,7 +1225,7 @@ Obeservera att knappen som simulerar ett offline-event kan bete sig konstigt om 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;offlineExample&#x27;&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-offline</span>&gt;</span> {{ offlineMessage }} <span class="hljs-tag">&lt;/<span class="hljs-name">f-offline</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggle&quot;</span>&gt;</span>Visa/Dölj komponent<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggle&quot;</span>&gt;</span>Visa/Dölj komponent<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -1344,9 +1355,9 @@ Obeservera att knappen som simulerar ett offline-event kan bete sig konstigt om 
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">buggfix/hogkontrast-filvaljare (<a href="https://github.com/Forsakringskassan/designsystem/commits/5ef87e53bbb4eaf5aeb02e1ed447834ce9b995ba">5ef87e5</a>)<br />
+<div class="footer__right"><div class="version">buggfix/hogkontrast-filvaljare (<a href="https://github.com/Forsakringskassan/designsystem/commits/67033f597565225a0d3b4ae62478e7ee75cd0d01">67033f5</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1105">PR 1105</a><br />
-        2026-03-16 10:38
+        2026-03-17 10:42
 </div>
 <div class="toolbar__item">
     <form id="version">

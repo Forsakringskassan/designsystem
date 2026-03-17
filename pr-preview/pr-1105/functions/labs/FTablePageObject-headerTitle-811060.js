@@ -3177,7 +3177,7 @@ var _hoisted_1$e = {
   class: "table-ng__cell table-ng__cell--expand"
 };
 var _hoisted_2$9 = ["aria-label", "aria-expanded"];
-var _hoisted_3$6 = {
+var _hoisted_3$5 = {
   key: 1,
   ref: "expandable",
   tabindex: "-1",
@@ -3223,7 +3223,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent2({
       }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$9)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$9)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
     };
   }
 });
@@ -3682,17 +3682,9 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent2({
   }
 });
 var _hoisted_1$a = {
-  key: 0,
   class: "table-ng__cell table-ng__cell--checkbox"
 };
 var _hoisted_2$7 = ["checked", "aria-label"];
-var _hoisted_3$5 = {
-  key: 1,
-  ref: "target",
-  tabindex: "-1",
-  class: "table-ng__cell table-ng__cell--checkbox"
-};
-var _hoisted_4$4 = ["checked", "aria-label"];
 var _sfc_main$c = /* @__PURE__ */ defineComponent2({
   __name: "ITableCheckbox",
   props: {
@@ -3716,18 +3708,14 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent2({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$a, [createElementVNode("input", {
+      return openBlock(), createElementBlock("td", _hoisted_1$a, [createElementVNode("input", {
         ref: "target",
         checked: Boolean(__props.column.checked(__props.row)),
         type: "checkbox",
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$7)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, [createElementVNode("input", {
-        checked: Boolean(__props.column.checked(__props.row)),
-        type: "checkbox",
-        "aria-label": ariaLabel.value
-      }, null, 8, _hoisted_4$4)], 512));
+      }, null, 40, _hoisted_2$7)]);
     };
   }
 });
@@ -3815,9 +3803,6 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent2({
       },
       checked() {
         return __props.state;
-      },
-      editable() {
-        return true;
       },
       update() {
         emit("toggle", __props.row);
@@ -4927,11 +4912,7 @@ function normalizeCheckboxColumn(column) {
     type: "checkbox",
     label: getLabelFn(column.label),
     checked: getValueFn(column.checked, column.key, Boolean, false),
-    update: getUpdateFn(column.update, column.key),
-    editable: typeof column.editable === "function" ? column.editable : () => {
-      var _column$editable;
-      return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
-    }
+    update: getUpdateFn(column.update, column.key)
   };
 }
 function noop2() {
@@ -4975,14 +4956,6 @@ function normalizeNumberColumn(column) {
     hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
     formatter,
     parser
-  };
-}
-function normalizeRadioColumn(column) {
-  return {
-    type: "radio",
-    label: getLabelFn(column.label),
-    checked: getValueFn(column.checked, column.key, Boolean, false),
-    update: getUpdateFn(column.update, column.key)
   };
 }
 function normalizeRenderColumn(column) {
@@ -5065,12 +5038,6 @@ function normalizeTableColumn(column) {
         ...normalizeCheckboxColumn(column),
         ...base,
         component: _sfc_main$c
-      };
-    case "radio":
-      return {
-        ...normalizeRadioColumn(column),
-        ...base,
-        component: _sfc_main$b
       };
     case "text:currency":
     case "text:number":

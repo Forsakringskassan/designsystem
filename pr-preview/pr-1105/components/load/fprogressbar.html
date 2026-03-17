@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Förloppsindikator - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-c11cb3.css"
+            href="../../assets/docs-d9e39c.css"
             crossorigin
-            integrity="sha384-RaIRJc0LmraMJlZjRuD4b014EjTy2EkQc9V9tXXaq1OuJjEQLfRsKusaeySRliNM"
+            integrity="sha384-Q1jybOTJEgIPqmH8pt+povbszv/1VmSKFq7OFI+2PS68c3GbD37phS9GTlZ8c69l"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-98de52.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-dc3100.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-305ce5.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
     "../../assets/vendor-fkui-logic-98de52.js": "sha384-Ptnc7xByl78++N85l8MGYnpfAGrdohEpKKt9UuQaOU7Avr3TV3rmyjKzInUKGEe5",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-dc3100.js": "sha384-G4CI5OgRhUKYOAi5mvEotKD59IkBUUrXzSlhJp/PGsaWmdJq+bcOvEV6XZ/DI8ln",
+    "../../assets/vendor-fkui-vue-305ce5.js": "sha384-fbiQodx+C3mdkGulhG670SucB5KexkglYNiV6o5IDFeRygMOtFu/qAUN4lYQOVWc",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-47dc72.json"
+            href="../../search-data-b291fc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-p7KcuDAvx4y2CkdXMsA//VSTOQbfQ+QjDWr1xs91LHkVkIW+jDv5+37j7xiJKa34"
+            integrity="sha384-7fi0qH0sLaWCus9z3BioBwMQVk9qA0rfOh9pdVYaDf3BzWYX76loFDhqgKP2kgk0"
             id="search-data"
         />
     </head>
@@ -1004,6 +1004,17 @@
         >
             Datamängdsorterare
         </a>
+    </li><li class="link ">
+        <a
+            href="../table-and-list/fdefinitionlist.html"
+            
+            
+            
+            data-path="components/table-and-list/fdefinitionlist.html"
+            
+        >
+            Definitionslista
+        </a>
     </li></ol>
 
             
@@ -1097,7 +1108,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/5ef87e53bbb4eaf5aeb02e1ed447834ce9b995ba/packages/vue/src/components/FProgressbar/FProgressbar.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/67033f597565225a0d3b4ae62478e7ee75cd0d01/packages/vue/src/components/FProgressbar/FProgressbar.vue">
                 FProgressbar
             </a>
             
@@ -1147,13 +1158,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-61f7da"></div>
+        <div id="example-5d8969"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FProgressbarExample-61f7da.js"></script>
+        <script type="module" src="./FProgressbarExample-5d8969.js"></script>
     
                 </div>
                 <div>
@@ -1174,11 +1185,11 @@
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FProgressbar</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FProgressbar</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FProgressbarExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FProgressbar</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FProgressbar</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">currentProgress</span>: <span class="hljs-number">40</span>,
@@ -1207,8 +1218,8 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>
             <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-data&quot;</span>
         &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Debug-data: <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>value: {{currentProgress}}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;increase&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;increase()&quot;</span>&gt;</span>Increase<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;decrease&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;decrease()&quot;</span>&gt;</span>Decrease<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;increase&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;increase()&quot;</span>&gt;</span>Increase<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;decrease&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;decrease()&quot;</span>&gt;</span>Decrease<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
             Progress:
             <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.number</span>=<span class="hljs-string">&quot;currentProgress&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> /&gt;</span>
@@ -1310,9 +1321,9 @@ progressbar.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">buggfix/hogkontrast-filvaljare (<a href="https://github.com/Forsakringskassan/designsystem/commits/5ef87e53bbb4eaf5aeb02e1ed447834ce9b995ba">5ef87e5</a>)<br />
+<div class="footer__right"><div class="version">buggfix/hogkontrast-filvaljare (<a href="https://github.com/Forsakringskassan/designsystem/commits/67033f597565225a0d3b4ae62478e7ee75cd0d01">67033f5</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1105">PR 1105</a><br />
-        2026-03-16 10:38
+        2026-03-17 10:42
 </div>
 <div class="toolbar__item">
     <form id="version">
