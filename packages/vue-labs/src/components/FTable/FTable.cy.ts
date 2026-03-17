@@ -626,6 +626,49 @@ describe("3.1 Feedback to user on invalid input components", () => {
         cy.get(".popup-error").should("not.exist");
     });
 
+    it("should remain invalid after temporary edit that returns to the same invalid vaule", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Max 5",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "123456",
+            },
+        ];
+
+        cy.mount(FTable<Row>, { props: { rows, columns } });
+
+        table
+            .cell({ row: 1, col: 1 })
+            .should("have.class", "table-ng__cell--error");
+
+        table.cell({ row: 1, col: 1 }).click();
+
+        cy.focused().type(" ");
+
+        cy.focused().type("{backspace}");
+
+        cy.focused().type("{enter}");
+
+        table
+            .cell({ row: 1, col: 1 })
+            .should("have.class", "table-ng__cell--error");
+    });
+
     describe("Visual", () => {
         afterEach(() => {
             cy.forcedColors("none");
