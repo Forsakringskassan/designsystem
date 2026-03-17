@@ -554,6 +554,50 @@ describe("6 Expandable table", () => {
         expect(customExpandedCell[2].attributes("colspan")).toBe("3");
         expect(customExpandedCell[3].attributes("colspan")).toBe("3");
     });
+
+    it("6.7 should include selectable column in custom expanded row colspan", async () => {
+        const customColumns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Header 1",
+                key: "text",
+            },
+            {
+                type: "text",
+                header: "Header 2",
+                key: "text",
+            },
+            {
+                type: "text",
+                header: "Header 3",
+                key: "text",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns: customColumns,
+                expandableAttribute,
+                selectable: "multi",
+            },
+            slots: {
+                expandable: "Lorem ipsum",
+            },
+        });
+
+        const expandButtons = wrapper.findAll("tbody button");
+        await expandButtons[0].trigger("click");
+        await expandButtons[1].trigger("click");
+
+        const customExpandedCell = wrapper.findAll(
+            'tbody tr[aria-level="2"] td:nth-child(2)',
+        );
+
+        expect(customExpandedCell[0].attributes("colspan")).toBe("4");
+        expect(customExpandedCell[1].attributes("colspan")).toBe("4");
+        expect(customExpandedCell[2].attributes("colspan")).toBe("4");
+        expect(customExpandedCell[3].attributes("colspan")).toBe("4");
+    });
 });
 
 describe("1.17 footer", () => {
