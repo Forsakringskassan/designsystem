@@ -57,7 +57,8 @@
     &__file-name {
         margin-left: size.$margin-025;
         min-width: 0;
-        overflow-wrap: break-word;
+        overflow-wrap: anywhere;
+        hyphens: auto;
         white-space: normal;
     }
 

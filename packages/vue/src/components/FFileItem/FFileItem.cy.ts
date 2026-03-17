@@ -95,6 +95,33 @@ describe("FFileItem", () => {
         cy.get(pageObject.selector).toMatchScreenshot();
     });
 
+    it("should wrap multiple file name,short, long with hyphen and long with word visual", () => {
+        cy.viewport(400, 300);
+        const fileNameShort = "lorem-ipsum.pdf";
+        const fileNameHyphen =
+            "lorem_ipsum_dolor_sit_amet-consect_adipiscing_elit.pdf";
+        const fileNameWord =
+            "lorem ipsum dolor sit amet consect adipiscing elit.pdf";
+        const fileNameLong = "loremipsumdolorsitametconsectadipiscingelit.pdf";
+        const testComponent = defineComponent({
+            components: { FFileItem },
+            template: /* HTML */ `
+                <div id="files">
+                    <p>FFileItem med kort filnamn.</p>
+                    <f-file-item file-name="${fileNameShort}"> </f-file-item>
+                    <p>FFileItem med långt namn (skiljetecken)</p>
+                    <f-file-item file-name="${fileNameHyphen}"> </f-file-item>
+                    <p>FFileItem med långt namn (whitespace)</p>
+                    <f-file-item file-name="${fileNameWord}"> </f-file-item>
+                    <p>FFileItem med långt namn (utan skiljetecken)</p>
+                    <f-file-item file-name="${fileNameLong}"> </f-file-item>
+                </div>
+            `,
+        });
+        cy.mount(testComponent);
+        cy.get("#files").toMatchScreenshot();
+    });
+
     it("should with row slot wrap file name without natural breakpoints on multiple lines", () => {
         cy.viewport(400, 300);
         const fileName =
