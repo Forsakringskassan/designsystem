@@ -119,6 +119,9 @@ const columnCount = computed((): number => {
 });
 
 const expandableRowColumnCount = computed((): number => {
+    /* The expandable row should not span the expand/toggle column, so we
+     * subtract it from the total. Math.max(1, ...) ensures colspan is at
+     * least 1, e.g. when columns is empty ([]). */
     const expandCol = isTreegrid.value ? 1 : 0;
     return Math.max(1, columnCount.value - expandCol);
 });
