@@ -4960,14 +4960,6 @@ function normalizeNumberColumn(column) {
     parser
   };
 }
-function normalizeRadioColumn(column) {
-  return {
-    type: "radio",
-    label: getLabelFn(column.label),
-    checked: getValueFn(column.checked, column.key, Boolean, false),
-    update: getUpdateFn(column.update, column.key)
-  };
-}
 function normalizeRenderColumn(column) {
   return {
     type: void 0,
@@ -5048,12 +5040,6 @@ function normalizeTableColumn(column) {
         ...normalizeCheckboxColumn(column),
         ...base,
         component: _sfc_main$c
-      };
-    case "radio":
-      return {
-        ...normalizeRadioColumn(column),
-        ...base,
-        component: _sfc_main$b
       };
     case "text:currency":
     case "text:number":
