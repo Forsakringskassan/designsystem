@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { type ContextMenuItem, FButton, FContextMenu } from "@fkui/vue";
+import { type ContextMenuItem, FButton, FContextMenu, getHTMLElementFromVueRef } from "@fkui/vue";
 
 const exampleItems: ContextMenuItem[] = [
     { label: "Skriv ut", key: "MENU_1" },
@@ -25,7 +25,10 @@ export default defineComponent({
     },
     methods: {
         getAnchor() {
-            return this.$refs.popupAnchor as HTMLElement | undefined;
+            if (this.$refs.popupAnchor) {
+                return getHTMLElementFromVueRef(this.$refs.popupAnchor);
+            }
+            return undefined;
         },
         onClose() {
             this.isOpen = false;
