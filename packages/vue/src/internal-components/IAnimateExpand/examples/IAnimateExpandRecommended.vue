@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { IAnimateExpand } from "@fkui/vue";
+import { FButton, IAnimateExpand } from "@fkui/vue";
 
 export default defineComponent({
     namne: "IAnimateExpandRecommended",
-    components: { IAnimateExpand },
+    components: { FButton, IAnimateExpand },
     data() {
         return {
             isExpanded: false,
@@ -35,7 +35,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <button type="button" @click="isExpanded = !isExpanded">Öppna/stäng animering</button>
+        <f-button @click="isExpanded = !isExpanded">Öppna/stäng animering</f-button>
         <label><input v-model="isAnimated" type="checkbox" /> Animera</label>
         <label><input v-model="hasOpacity" type="checkbox" /> Opacitet</label>
         <label><input v-model="useVShow" type="checkbox" /> Use v-show instead of v-if</label>

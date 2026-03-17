@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, defineComponent } from "vue";
-import { FDetailsPanel, FPageLayout, FResizePane, useDetailsPanel } from "@fkui/vue";
+import { FButton, FDetailsPanel, FPageLayout, FResizePane, useDetailsPanel } from "@fkui/vue";
 
 const { area = "left", resize } = defineProps<{
     area?: string;
@@ -42,9 +42,7 @@ function openPanel(): void {
         </component>
 
         <div slot="content" class="content">
-            <button type="button" class="button button--primary" @click="openPanel">
-                Öppna panel
-            </button>
+            <f-button @click="openPanel"> Öppna panel </f-button>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt ipsum
                 tortor. Aliquam erat eros, maximus rhoncus quam ut, dignissim ullamcorper nunc.

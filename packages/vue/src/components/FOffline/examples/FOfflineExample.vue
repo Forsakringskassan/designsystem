@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FOffline } from "..";
+import { FButton, FOffline } from "@fkui/vue";
 
 export default defineComponent({
     name: "FOfflineExample",
-    components: { FOffline },
+    components: { FButton, FOffline },
     data() {
         return {
             isPushed: false,
@@ -29,6 +29,6 @@ export default defineComponent({
 <template>
     <div v-test="'offlineExample'">
         <f-offline> {{ offlineMessage }} </f-offline>
-        <button type="button" @click="toggle">Visa/Dölj komponent</button>
+        <f-button @click="toggle">Visa/Dölj komponent</f-button>
     </div>
 </template>

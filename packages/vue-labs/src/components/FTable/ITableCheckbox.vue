@@ -24,7 +24,7 @@ defineExpose(expose);
 </script>
 
 <template>
-    <td v-if="column.editable(row)" class="table-ng__cell table-ng__cell--checkbox">
+    <td class="table-ng__cell table-ng__cell--checkbox">
         <input
             ref="target"
             :checked="Boolean(column.checked(row))"
@@ -33,8 +33,5 @@ defineExpose(expose);
             tabindex="-1"
             @change="onChange"
         />
-    </td>
-    <td v-else ref="target" tabindex="-1" class="table-ng__cell table-ng__cell--checkbox">
-        <input :checked="Boolean(column.checked(row))" type="checkbox" :aria-label />
     </td>
 </template>

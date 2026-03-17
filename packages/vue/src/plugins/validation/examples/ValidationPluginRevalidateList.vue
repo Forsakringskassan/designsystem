@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FTextField } from "@fkui/vue";
+import { FButton, FTextField } from "@fkui/vue";
 
 const list = ref(["foo", "bar", "baz"]);
 
@@ -25,7 +25,7 @@ function onReplaceList(): void {
             </template>
         </f-text-field>
 
-        <button id="add-item" type="button" @click="onAddItem">Add item</button>
-        <button id="replace-list" type="button" @click="onReplaceList">Replace list</button>
+        <f-button id="add-item" @click="onAddItem">Add item</f-button>
+        <f-button id="replace-list" @click="onReplaceList">Replace list</f-button>
     </div>
 </template>

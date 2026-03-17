@@ -1,9 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { type ModalResult, FConfirmModal, openModal } from "@fkui/vue";
+import { type ModalResult, FButton, FConfirmModal, openModal } from "@fkui/vue";
 
 export default defineComponent({
     name: "FConfirmModalCustomButtons",
+    components: { FButton },
     data() {
         return {
             action: undefined as ModalResult | undefined,
@@ -37,7 +38,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <button type="button" class="button button--secondary" @click="onClick">Tre knappar</button>
+        <f-button variant="secondary" @click="onClick">Tre knappar</f-button>
         <pre> Modalen stängdes med resultatet: {{ action }} </pre>
     </div>
 </template>

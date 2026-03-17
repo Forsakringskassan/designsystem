@@ -2,6 +2,7 @@
 import { defineComponent } from "vue";
 import {
     FBadge,
+    FButton,
     FCard,
     FCheckboxField,
     FDataTable,
@@ -9,7 +10,6 @@ import {
     FExpandablePanel,
     FExpandableParagraph,
     FFieldset,
-    FIcon,
     FList,
     FMessageBox,
     FRadioField,
@@ -23,24 +23,24 @@ import {
 
 export default defineComponent({
     components: {
+        FBadge,
+        FButton,
+        FCard,
+        FCheckboxField,
+        FDataTable,
+        FDatepickerField,
+        FExpandablePanel,
+        FExpandableParagraph,
+        FFieldset,
+        FList,
+        FMessageBox,
+        FRadioField,
+        FSelectField,
+        FStaticField,
+        FTableColumn,
         FTextField,
         FTextareaField,
-        FSelectField,
-        FDatepickerField,
-        FFieldset,
-        FCheckboxField,
-        FRadioField,
-        FDataTable,
-        FTableColumn,
-        FList,
-        FCard,
-        FBadge,
-        FExpandableParagraph,
-        FExpandablePanel,
-        FMessageBox,
         FTooltip,
-        FIcon,
-        FStaticField,
     },
     data() {
         return {
@@ -191,64 +191,53 @@ export default defineComponent({
                     <template #default> Innehåll </template>
                     <template #footer>
                         <div class="button-group">
-                            <button
-                                class="button button-group__item button--tertiary button--medium button--align-text"
-                                type="button"
+                            <f-button
+                                class="button-group__item"
+                                align-text
+                                icon-left="pen"
+                                variant="tertiary"
                             >
-                                <f-icon name="pen"></f-icon>
                                 <span> Ändra </span>
-                            </button>
-                            <button
-                                class="button button-group__item button--tertiary button--medium button--align-text"
-                                type="button"
+                            </f-button>
+                            <f-button
+                                class="button-group__item"
+                                align-text
+                                icon-left="trashcan"
+                                variant="tertiary"
                             >
-                                <f-icon name="trashcan"></f-icon>
                                 <span> Ta bort </span>
-                            </button>
+                            </f-button>
                         </div>
                     </template>
                 </f-card>
 
                 <div class="button-group">
-                    <button
-                        class="button button--primary button--medium button-group__item"
-                        type="button"
+                    <f-button class="button-group__item"> Medium </f-button>
+                    <f-button class="button-group__item" variant="secondary"> Medium </f-button>
+                    <f-button
+                        class="button-group__item"
+                        align-text
+                        icon-left="paper-clip"
+                        variant="tertiary"
                     >
                         Medium
-                    </button>
-                    <button
-                        class="button button--secondary button--medium button-group__item"
-                        type="button"
-                    >
-                        Medium
-                    </button>
-                    <button
-                        class="button button--tertiary button--medium button-group__item"
-                        type="button"
-                    >
-                        <f-icon name="paper-clip" class="button__icon"></f-icon> Medium
-                    </button>
+                    </f-button>
                 </div>
 
                 <div class="button-group">
-                    <button
-                        class="button button--primary button--large button-group__item"
-                        type="button"
+                    <f-button class="button-group__item" size="large"> Large </f-button>
+                    <f-button class="button-group__item" size="large" variant="secondary">
+                        Large
+                    </f-button>
+                    <f-button
+                        class="button-group__item"
+                        align-text
+                        icon-left="paper-clip"
+                        size="large"
+                        variant="tertiary"
                     >
                         Large
-                    </button>
-                    <button
-                        class="button button--secondary button--large button-group__item"
-                        type="button"
-                    >
-                        Large
-                    </button>
-                    <button
-                        class="button button--tertiary button--large button-group__item"
-                        type="button"
-                    >
-                        <f-icon name="paper-clip" class="button__icon"></f-icon> Large
-                    </button>
+                    </f-button>
                 </div>
 
                 <f-badge> Bricka </f-badge>

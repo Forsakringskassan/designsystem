@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { h, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
-import { FSortFilterDataset } from "@fkui/vue";
+import { FButton, FSortFilterDataset } from "@fkui/vue";
 import { type TableColumn, FTable, defineTableColumns, removeRow } from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
@@ -41,7 +41,6 @@ const columns = defineTableColumns<Row>([
         key: "aktiv",
         size: "shrink",
         label: (row) => `Välj rad ${row.id}`,
-        editable: true,
     },
     {
         type: "text",
@@ -253,9 +252,7 @@ function onRemoveSelectedRows(): void {
 </script>
 
 <template>
-    <button type="button" class="button button--secondary" @click="onRemoveSelectedRows">
-        Ta bort markerade rader
-    </button>
+    <f-button variant="secondary" @click="onRemoveSelectedRows"> Ta bort markerade rader </f-button>
     <f-sort-filter-dataset :data="rows" :sortable-attributes>
         <template #default="{ sortFilterResult }">
             <f-table
@@ -273,14 +270,13 @@ function onRemoveSelectedRows(): void {
             </f-table>
         </template>
     </f-sort-filter-dataset>
-    <button type="button" class="button button--secondary" @click="onAddRow">Lägg till rad</button>
-    <button
-        type="button"
-        class="button button--secondary"
+    <f-button variant="secondary" @click="onAddRow">Lägg till rad</f-button>
+    <f-button
+        variant="secondary"
         @click="oformateradTextKolumnSynlig = !oformateradTextKolumnSynlig"
     >
         Dölj/visa "Oformatterad text"
-    </button>
+    </f-button>
 </template>
 
 <style>
