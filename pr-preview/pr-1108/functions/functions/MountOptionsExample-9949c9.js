@@ -34,8 +34,10 @@ import { mountComponent } from "@fkui/vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/utils/mount-component/examples/MyAwesomeComponent.vue?type=script
 import { defineComponent } from "vue";
+import { FButton } from "@fkui/vue";
 var MyAwesomeComponent_default = defineComponent({
   name: "MyAwesomeComponent",
+  components: { FButton },
   props: {
     name: {
       type: String,
@@ -51,8 +53,9 @@ var MyAwesomeComponent_default = defineComponent({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/utils/mount-component/examples/MyAwesomeComponent.vue?type=template
-import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_f_button = _resolveComponent("f-button");
   return _openBlock(), _createElementBlock("div", null, [
     _createElementVNode(
       "p",
@@ -61,11 +64,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       1
       /* TEXT */
     ),
-    _createElementVNode("button", {
-      type: "button",
-      class: "button button--primary button--small",
-      onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClick && _ctx.onClick(...args))
-    }, " Svara ")
+    _createVNode(_component_f_button, {
+      size: "small",
+      onClick: _ctx.onClick
+    }, {
+      default: _withCtx(() => [..._cache[0] || (_cache[0] = [
+        _createTextVNode(
+          " Svara ",
+          -1
+          /* CACHED */
+        )
+      ])]),
+      _: 1
+      /* STABLE */
+    }, 8, ["onClick"])
   ]);
 }
 
