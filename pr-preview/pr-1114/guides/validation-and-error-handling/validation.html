@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-f3c7d2.json"
+            href="../../search-data-606cf8.json"
             as="fetch"
             crossorigin
-            integrity="sha384-yR0cYIiUQiBzivzXSnKtd+8a/CAmiVJbVMgeb/K4tj6slsj95sQD5bINA43CGRsp"
+            integrity="sha384-j0nwfmfw5BRUSBOgwy9nOwQX/fo5I16ceJuO3pUoHEtqdhDISHHFljFP50IXhQzT"
             id="search-data"
         />
     </head>
@@ -392,13 +392,13 @@ I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etike
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-92c757"></div>
+        <div id="example-a40abf"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FValidationFormDefault-92c757.js"></script>
+        <script type="module" src="./FValidationFormDefault-a40abf.js"></script>
     
                 </div>
                 <div>
@@ -420,6 +420,7 @@ I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etike
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FButton</span>,
     <span class="hljs-title class_">FCheckboxField</span>,
     <span class="hljs-title class_">FEmailTextField</span>,
     <span class="hljs-title class_">FFieldset</span>,
@@ -431,6 +432,7 @@ I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etike
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FValidationFormDefault&quot;</span>,
     <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FButton</span>,
         <span class="hljs-title class_">FCheckboxField</span>,
         <span class="hljs-title class_">FEmailTextField</span>,
         <span class="hljs-title class_">FFieldset</span>,
@@ -489,19 +491,15 @@ I <a href="../../components/flabel.html#feltexter_i_etiketten">Feltexter i etike
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
 
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--primary button--large&quot;</span>
-                &gt;</span>
-                    Spara
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--secondary button--large&quot;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Spara<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span>
+                    <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span>
                     @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onCancel&quot;</span>
                 &gt;</span>
                     Avbryt
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
@@ -568,9 +566,9 @@ Använd något av de <a href="../../components/input/textfield-specialized.html"
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">refactor/ftable-remove-radio (<a href="https://github.com/Forsakringskassan/designsystem/commits/396804f728d4163807f4ebfd885cd152faaeb960">396804f</a>)<br />
+<div class="footer__right"><div class="version">refactor/ftable-remove-radio (<a href="https://github.com/Forsakringskassan/designsystem/commits/66af1aceffc493cfeb210e6e1f4f4cd8c1abf636">66af1ac</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1114">PR 1114</a><br />
-        2026-03-16 15:04
+        2026-03-17 08:16
 </div>
 <div class="toolbar__item">
     <form id="version">
