@@ -121,7 +121,8 @@ const columnCount = computed((): number => {
 const hasFooter = computed((): boolean => {
     return hasSlot("footer");
 });
-const columns = computed(() => normalizeTableColumns(rawColumns).filter((col) => toValue(col.enabled)));
+const normalizedColumns = computed(() => normalizeTableColumns(rawColumns));
+const columns = computed(() => normalizedColumns.value.filter((col) => toValue(col.enabled)));
 
 const tableClasses = computed(() => {
     return [
