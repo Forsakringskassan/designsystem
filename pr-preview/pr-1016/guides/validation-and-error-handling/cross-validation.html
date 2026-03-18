@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Korsvalidering - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-e2dc23.css"
+            href="../../assets/docs-cd41b7.css"
             crossorigin
-            integrity="sha384-3rNj4S3zjU+hTBsMHKVO3qJ27CQDi4b+YZRrE7gW1t/2jIPJ0nz5LnW80BYAXPaK"
+            integrity="sha384-LqijjDGHZQOUh7RdGoA6BnVL4xYNTYIFqGkEo2H2ZOMdWMqx2FmLjQsvalKaEfYN"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-98de52.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-1a9258.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-3a3dfd.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
     "../../assets/vendor-fkui-logic-98de52.js": "sha384-Ptnc7xByl78++N85l8MGYnpfAGrdohEpKKt9UuQaOU7Avr3TV3rmyjKzInUKGEe5",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-1a9258.js": "sha384-uTWrkP4aKXBOF9cGMDnrmBgS4YiHfxsOfVQzggebWBdcToopJznYH48u0Hr4CRgM",
+    "../../assets/vendor-fkui-vue-3a3dfd.js": "sha384-uIFFdBkOBSLi1QkeyuAgmfIpydl1phY2WGu5bu6QOys5FXZUTuq2OMejnw8Sh4Am",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-a70860.json"
+            href="../../search-data-40d1f3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-KcAHFJFYUQ9BbOUYV1SEi4FbXO79+y9HwsfKSSCMQ+Ar04ZLnm1JG+N0LdZ5Cj/y"
+            integrity="sha384-4e7blpKZB3yaKnswwjCCSoesamEVBRsTXuysYUkZWl1dLg+nZDqg82Mcrjr9gGqM"
             id="search-data"
         />
     </head>
@@ -493,13 +493,13 @@ som det som anges i fältet minimumlängd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-a9340d"></div>
+        <div id="example-b7b129"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ValidationPluginDynamicValidation-a9340d.js"></script>
+        <script type="module" src="./ValidationPluginDynamicValidation-b7b129.js"></script>
     
                 </div>
                 <div>
@@ -521,7 +521,7 @@ som det som anges i fältet minimumlängd.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FValidationForm</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 interface <span class="hljs-title class_">Config</span> {
     <span class="hljs-attr">minLength</span>: number;
@@ -539,8 +539,9 @@ interface <span class="hljs-title class_">Config</span> {
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ValidationPluginDynamicValidation&quot;</span>,
     <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FValidationForm</span>,
+        <span class="hljs-title class_">FButton</span>,
         <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FValidationForm</span>,
     },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
@@ -582,7 +583,7 @@ interface <span class="hljs-title class_">Config</span> {
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Signera<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Signera<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-validation-form</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -612,9 +613,9 @@ interface <span class="hljs-title class_">Config</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">ipopup-migrate (<a href="https://github.com/Forsakringskassan/designsystem/commits/5b31f517fc3bf0dc1cde1329ff5dd207aaa7f6e4">5b31f51</a>)<br />
+<div class="footer__right"><div class="version">ipopup-migrate (<a href="https://github.com/Forsakringskassan/designsystem/commits/2e47f070df18dd92b7f5b2f93caaae3443936f2f">2e47f07</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1016">PR 1016</a><br />
-        2026-03-13 12:42
+        2026-03-18 14:47
 </div>
 <div class="toolbar__item">
     <form id="version">

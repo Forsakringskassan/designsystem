@@ -4107,6 +4107,7 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
     const placement = ref2("NotCalculated" /* NotCalculated */);
     const focus8 = ref2(null);
     const onWindowResizeDebounced = debounce(onWindowResize, 100);
+    const onScrollDebounced = debounce(onScroll, 100);
     const popupClasses = computed(() => {
       const popupState = isInline.value ? ["popup--inline"] : ["popup--overlay"];
       return ["popup", ...popupState];
@@ -4131,6 +4132,7 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
         await toggleIsOpen(value);
         document.addEventListener("click", onDocumentClickHandler);
         window.addEventListener("resize", onWindowResizeDebounced);
+        window.addEventListener("scroll", onScrollDebounced, { capture: true });
         if (value) {
           teleportDisabled2.value = isTeleportDisabled({
             window,
@@ -4141,6 +4143,7 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
         } else {
           document.removeEventListener("click", onDocumentClickHandler);
           window.removeEventListener("resize", onWindowResizeDebounced);
+          window.removeEventListener("scroll", onScrollDebounced, { capture: true });
         }
       },
       { immediate: true }
@@ -4163,7 +4166,7 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
       applyFocus();
       emit("open");
     }
-    async function calculatePlacement() {
+    async function calculatePlacement(options) {
       const popupEl = getHTMLElementFromVueRef(popup.value);
       const wrapperEl = getHTMLElementFromVueRef(wrapper.value);
       const anchorEl = getElement(__props.anchor);
@@ -4185,6 +4188,9 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
         const useOverlay = forceOverlay.value || result.placement !== "Fallback" /* Fallback */;
         if (useOverlay) {
           wrapperEl.style.left = `${String(result.x)}px`;
+          if (options?.horizontalOnly) {
+            return;
+          }
           wrapperEl.style.top = `${String(result.y)}px`;
           return;
         }
@@ -4228,6 +4234,19 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
       emit("close", "click-outside");
     }
     async function onWindowResize() {
+      await recalculatePlacement();
+    }
+    async function onScroll(event) {
+      if (isInline.value) {
+        return;
+      }
+      const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
+      if (isPopupTarget) {
+        return;
+      }
+      await recalculatePlacement({ horizontalOnly: true });
+    }
+    async function recalculatePlacement(options) {
       if (!__props.isOpen) {
         return;
       }
@@ -4242,7 +4261,7 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
         teleportDisabled2.value = false;
         await nextTick();
       }
-      await calculatePlacement();
+      await calculatePlacement(options);
       teleportDisabled2.value = isTeleportDisabled({
         window,
         placement: placement.value,
@@ -4262,7 +4281,7 @@ var IPopup_default = /* @__PURE__ */ _defineComponent({
         handleTab(event, wrapperEl);
       }
     }
-    const __returned__ = { emit, attrs, popup, wrapper, teleportDisabled: teleportDisabled2, placement, focus: focus8, onWindowResizeDebounced, popupClasses, isInline, forceInline, forceOverlay, teleportTarget, toggleIsOpen, calculatePlacement, applyFocus, isMobileSize, onDocumentClickHandler, onWindowResize, onPopupClickHandler, onKeyEsc, onKeyTab };
+    const __returned__ = { emit, attrs, popup, wrapper, teleportDisabled: teleportDisabled2, placement, focus: focus8, onWindowResizeDebounced, onScrollDebounced, popupClasses, isInline, forceInline, forceOverlay, teleportTarget, toggleIsOpen, calculatePlacement, applyFocus, isMobileSize, onDocumentClickHandler, onWindowResize, onScroll, recalculatePlacement, onPopupClickHandler, onKeyEsc, onKeyTab };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }

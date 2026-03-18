@@ -3177,7 +3177,7 @@ var _hoisted_1$e = {
   class: "table-ng__cell table-ng__cell--expand"
 };
 var _hoisted_2$9 = ["aria-label", "aria-expanded"];
-var _hoisted_3$6 = {
+var _hoisted_3$5 = {
   key: 1,
   ref: "expandable",
   tabindex: "-1",
@@ -3223,7 +3223,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent2({
       }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$9)])) : (openBlock(), createElementBlock("td", _hoisted_3$6, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$9)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
     };
   }
 });
@@ -3682,17 +3682,9 @@ var _sfc_main$d = /* @__PURE__ */ defineComponent2({
   }
 });
 var _hoisted_1$a = {
-  key: 0,
   class: "table-ng__cell table-ng__cell--checkbox"
 };
 var _hoisted_2$7 = ["checked", "aria-label"];
-var _hoisted_3$5 = {
-  key: 1,
-  ref: "target",
-  tabindex: "-1",
-  class: "table-ng__cell table-ng__cell--checkbox"
-};
-var _hoisted_4$4 = ["checked", "aria-label"];
 var _sfc_main$c = /* @__PURE__ */ defineComponent2({
   __name: "ITableCheckbox",
   props: {
@@ -3716,18 +3708,14 @@ var _sfc_main$c = /* @__PURE__ */ defineComponent2({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$a, [createElementVNode("input", {
+      return openBlock(), createElementBlock("td", _hoisted_1$a, [createElementVNode("input", {
         ref: "target",
         checked: Boolean(__props.column.checked(__props.row)),
         type: "checkbox",
         "aria-label": ariaLabel.value,
         tabindex: "-1",
         onChange
-      }, null, 40, _hoisted_2$7)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, [createElementVNode("input", {
-        checked: Boolean(__props.column.checked(__props.row)),
-        type: "checkbox",
-        "aria-label": ariaLabel.value
-      }, null, 8, _hoisted_4$4)], 512));
+      }, null, 40, _hoisted_2$7)]);
     };
   }
 });
@@ -3815,9 +3803,6 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent2({
       },
       checked() {
         return __props.state;
-      },
-      editable() {
-        return true;
       },
       update() {
         emit("toggle", __props.row);
@@ -4927,11 +4912,7 @@ function normalizeCheckboxColumn(column) {
     type: "checkbox",
     label: getLabelFn(column.label),
     checked: getValueFn(column.checked, column.key, Boolean, false),
-    update: getUpdateFn(column.update, column.key),
-    editable: typeof column.editable === "function" ? column.editable : () => {
-      var _column$editable;
-      return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
-    }
+    update: getUpdateFn(column.update, column.key)
   };
 }
 function noop2() {
@@ -4975,14 +4956,6 @@ function normalizeNumberColumn(column) {
     hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
     formatter,
     parser
-  };
-}
-function normalizeRadioColumn(column) {
-  return {
-    type: "radio",
-    label: getLabelFn(column.label),
-    checked: getValueFn(column.checked, column.key, Boolean, false),
-    update: getUpdateFn(column.update, column.key)
   };
 }
 function normalizeRenderColumn(column) {
@@ -5066,12 +5039,6 @@ function normalizeTableColumn(column) {
         ...base,
         component: _sfc_main$c
       };
-    case "radio":
-      return {
-        ...normalizeRadioColumn(column),
-        ...base,
-        component: _sfc_main$b
-      };
     case "text:currency":
     case "text:number":
     case "text:percent":
@@ -5152,14 +5119,9 @@ function usePopupError() {
       anchor,
       arrowAnchor,
       hasFocus,
-      hasHover,
-      inEdit
+      hasHover
     } = popupError;
     if (!anchor || !arrowAnchor) {
-      return;
-    }
-    if (inEdit) {
-      onClosePopupError(popupError);
       return;
     }
     if (hasFocus || hasHover) {
@@ -6221,78 +6183,6 @@ function requireEs_arrayBuffer_transferToFixedLength() {
   return es_arrayBuffer_transferToFixedLength;
 }
 requireEs_arrayBuffer_transferToFixedLength();
-var es_iterator_reduce = {};
-var functionApply;
-var hasRequiredFunctionApply;
-function requireFunctionApply() {
-  if (hasRequiredFunctionApply) return functionApply;
-  hasRequiredFunctionApply = 1;
-  var NATIVE_BIND = requireFunctionBindNative();
-  var FunctionPrototype = Function.prototype;
-  var apply = FunctionPrototype.apply;
-  var call = FunctionPrototype.call;
-  functionApply = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
-    return call.apply(apply, arguments);
-  });
-  return functionApply;
-}
-var hasRequiredEs_iterator_reduce;
-function requireEs_iterator_reduce() {
-  if (hasRequiredEs_iterator_reduce) return es_iterator_reduce;
-  hasRequiredEs_iterator_reduce = 1;
-  var $ = require_export();
-  var iterate2 = requireIterate();
-  var aCallable2 = requireACallable();
-  var anObject2 = requireAnObject();
-  var getIteratorDirect2 = requireGetIteratorDirect();
-  var iteratorClose2 = requireIteratorClose();
-  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
-  var apply = requireFunctionApply();
-  var fails2 = requireFails();
-  var $TypeError = TypeError;
-  var FAILS_ON_INITIAL_UNDEFINED = fails2(function() {
-    [].keys().reduce(function() {
-    }, void 0);
-  });
-  var reduceWithoutClosingOnEarlyError = !FAILS_ON_INITIAL_UNDEFINED && iteratorHelperWithoutClosingOnEarlyError2("reduce", $TypeError);
-  $({
-    target: "Iterator",
-    proto: true,
-    real: true,
-    forced: FAILS_ON_INITIAL_UNDEFINED || reduceWithoutClosingOnEarlyError
-  }, {
-    reduce: function reduce(reducer) {
-      anObject2(this);
-      try {
-        aCallable2(reducer);
-      } catch (error) {
-        iteratorClose2(this, "throw", error);
-      }
-      var noInitial = arguments.length < 2;
-      var accumulator = noInitial ? void 0 : arguments[1];
-      if (reduceWithoutClosingOnEarlyError) {
-        return apply(reduceWithoutClosingOnEarlyError, this, noInitial ? [reducer] : [reducer, accumulator]);
-      }
-      var record = getIteratorDirect2(this);
-      var counter = 0;
-      iterate2(record, function(value) {
-        if (noInitial) {
-          noInitial = false;
-          accumulator = value;
-        } else {
-          accumulator = reducer(accumulator, value, counter);
-        }
-        counter++;
-      }, {
-        IS_RECORD: true
-      });
-      if (noInitial) throw new $TypeError("Reduce of empty iterator with no initial value");
-      return accumulator;
-    }
-  });
-  return es_iterator_reduce;
-}
-requireEs_iterator_reduce();
 var es_typedArray_toReversed = {};
 var isPossiblePrototype;
 var hasRequiredIsPossiblePrototype;
@@ -7335,6 +7225,78 @@ function requireWeb_domException_stack() {
 requireWeb_domException_stack();
 var HOURS_MINUTES_REGEXP = /^(?<hours>\d+)?(:(?<minutes>[0-5]\d))?$/;
 var HOURS_MINUTES_WITHOUT_COLON_REGEXP = /^(?<hours>\d{2})(?<minutes>[0-5]\d)$/;
+var es_iterator_reduce = {};
+var functionApply;
+var hasRequiredFunctionApply;
+function requireFunctionApply() {
+  if (hasRequiredFunctionApply) return functionApply;
+  hasRequiredFunctionApply = 1;
+  var NATIVE_BIND = requireFunctionBindNative();
+  var FunctionPrototype = Function.prototype;
+  var apply = FunctionPrototype.apply;
+  var call = FunctionPrototype.call;
+  functionApply = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function() {
+    return call.apply(apply, arguments);
+  });
+  return functionApply;
+}
+var hasRequiredEs_iterator_reduce;
+function requireEs_iterator_reduce() {
+  if (hasRequiredEs_iterator_reduce) return es_iterator_reduce;
+  hasRequiredEs_iterator_reduce = 1;
+  var $ = require_export();
+  var iterate2 = requireIterate();
+  var aCallable2 = requireACallable();
+  var anObject2 = requireAnObject();
+  var getIteratorDirect2 = requireGetIteratorDirect();
+  var iteratorClose2 = requireIteratorClose();
+  var iteratorHelperWithoutClosingOnEarlyError2 = requireIteratorHelperWithoutClosingOnEarlyError();
+  var apply = requireFunctionApply();
+  var fails2 = requireFails();
+  var $TypeError = TypeError;
+  var FAILS_ON_INITIAL_UNDEFINED = fails2(function() {
+    [].keys().reduce(function() {
+    }, void 0);
+  });
+  var reduceWithoutClosingOnEarlyError = !FAILS_ON_INITIAL_UNDEFINED && iteratorHelperWithoutClosingOnEarlyError2("reduce", $TypeError);
+  $({
+    target: "Iterator",
+    proto: true,
+    real: true,
+    forced: FAILS_ON_INITIAL_UNDEFINED || reduceWithoutClosingOnEarlyError
+  }, {
+    reduce: function reduce(reducer) {
+      anObject2(this);
+      try {
+        aCallable2(reducer);
+      } catch (error) {
+        iteratorClose2(this, "throw", error);
+      }
+      var noInitial = arguments.length < 2;
+      var accumulator = noInitial ? void 0 : arguments[1];
+      if (reduceWithoutClosingOnEarlyError) {
+        return apply(reduceWithoutClosingOnEarlyError, this, noInitial ? [reducer] : [reducer, accumulator]);
+      }
+      var record = getIteratorDirect2(this);
+      var counter = 0;
+      iterate2(record, function(value) {
+        if (noInitial) {
+          noInitial = false;
+          accumulator = value;
+        } else {
+          accumulator = reducer(accumulator, value, counter);
+        }
+        counter++;
+      }, {
+        IS_RECORD: true
+      });
+      if (noInitial) throw new $TypeError("Reduce of empty iterator with no initial value");
+      return accumulator;
+    }
+  });
+  return es_iterator_reduce;
+}
+requireEs_iterator_reduce();
 function findMatch(regexps, value) {
   for (const regexp of regexps) {
     const match = value.match(regexp);
