@@ -5,6 +5,7 @@ import { IAnimateExpand, IFlex, IFlexItem } from "../../internal-components";
 import { TranslationMixin } from "../../plugins";
 import { type GroupValidityEvent } from "../../types";
 import { getHTMLElementFromVueRef } from "../../utils";
+import { FButton } from "../FButton";
 import { FIcon } from "../FIcon";
 import { type FValidationFormResult, FValidationForm } from "../FValidationForm";
 import {
@@ -25,7 +26,7 @@ let ongoingScrollPromise: undefined | Promise<void> = undefined;
 
 export default defineComponent({
     name: "FWizardStep",
-    components: { IAnimateExpand, IFlex, IFlexItem, FValidationForm, FIcon },
+    components: { FButton, FIcon, FValidationForm, IAnimateExpand, IFlex, IFlexItem },
     mixins: [TranslationMixin],
     inheritAttrs: true,
     props: {
@@ -296,11 +297,12 @@ export default defineComponent({
                     <slot name="default"></slot>
 
                     <div class="button-group wizard-step__buttons">
-                        <button
+                        <f-button
                             data-test="submit-button"
                             :data-disabled="ignoreClick ? 'true' : 'false'"
+                            size="large"
                             type="submit"
-                            class="button button--primary button-group__item button--large"
+                            class="button-group__item"
                         >
                             <!--
                                     @slot Use this slot to customize the text of the "Next" button.
@@ -318,11 +320,12 @@ export default defineComponent({
                                     </span>
                                 </template>
                             </slot>
-                        </button>
-                        <button
+                        </f-button>
+                        <f-button
                             data-test="cancel-button"
-                            type="button"
-                            class="button button--secondary button-group__item button--large"
+                            class="button-group__item"
+                            size="large"
+                            variant="secondary"
                             @click="onCancel"
                         >
                             <!--
@@ -333,7 +336,7 @@ export default defineComponent({
                             <slot name="cancel-button-text" v-bind="{ stepNumber, totalSteps }">
                                 {{ $t("fkui.wizard-step.button.cancel.text", "Avbryt") }}
                             </slot>
-                        </button>
+                        </f-button>
                     </div>
                 </template>
             </f-validation-form>
