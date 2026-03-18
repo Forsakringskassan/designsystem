@@ -106,27 +106,46 @@ const isEmpty = computed((): boolean => {
 });
 
 const ariaRowcount = computed((): number => {
-    const headerRow = 1;
     const footerRow = hasFooter.value ? 1 : 0;
-    return getBodyRowCount(keyedRows.value, expandableAttribute) + headerRow + footerRow;
+
+    if (!hasColumns.value) {
+        return footerRow;
+    }
+
+    const headerRow = 1;
+    const bodyRows = getBodyRowCount(keyedRows.value, expandableAttribute);
+    return bodyRows + headerRow + footerRow;
 });
 
-const columnCount = computed((): number => {
-    const expandCol = isTreegrid.value ? 1 : 0;
-    const selectCol = selectable ? 1 : 0;
-    const count = columns.value.length + expandCol + selectCol;
-    return Math.max(1, count);
+// Total number of rendered columns, including expand and select columns.
+const fullColspan = computed((): number => {
+    if (!hasColumns.value) {
+        return 0;
+    }
+
+    let count = columns.value.length;
+
+    if (isTreegrid.value) {
+        count += 1;
+    }
+
+    if (selectable) {
+        count += 1;
+    }
+
+    return count;
 });
 
-const expandableRowColumnCount = computed((): number => {
-    const expandCol = isTreegrid.value ? 1 : 0;
-    return Math.max(1, columnCount.value - expandCol);
+// Number of columns for expanded rows, excluding the expand button column.
+const expandedColspan = computed((): number => {
+    return fullColspan.value - 1;
 });
 
 const hasFooter = computed((): boolean => {
     return hasSlot("footer");
 });
 const columns = computed(() => normalizeTableColumns(rawColumns).filter((col) => toValue(col.enabled)));
+const hasColumns = computed(() => columns.value.length > 0);
 
 const tableClasses = computed(() => {
     return [
@@ -318,7 +337,7 @@ onMounted(() => {
         <caption v-if="hasCaption" data-test="caption">
             <slot name="caption"></slot>
         </caption>
-        <thead>
+        <thead v-if="hasColumns">
             <tr class="table-ng__row" aria-rowindex="1">
                 <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
                 <i-table-header-selectable
@@ -341,10 +360,10 @@ onMounted(() => {
             </tr>
         </thead>
 
-        <tbody>
+        <tbody v-if="hasColumns">
             <template v-if="isEmpty">
                 <tr class="table-ng__row--empty">
-                    <td :colspan="columnCount" class="table-ng__cell">
+                    <td :colspan="fullColspan" class="table-ng__cell">
                         <slot name="empty"> {{ $t("fkui.ftable.empty.text", "Tabellen är tom") }} </slot>
                     </td>
                 </tr>
@@ -369,7 +388,7 @@ onMounted(() => {
                     @toggle="onToggleExpanded"
                 ></i-table-expand-button>
 
-                <i-table-expandable v-if="level! > 1 && hasExpandableSlot" :colspan="expandableRowColumnCount">
+                <i-table-expandable v-if="level! > 1 && hasExpandableSlot" :colspan="expandedColspan">
                     <!-- @todo "typeof row" is a lie, row is not T but T | T[ExpandableAttribute] -->
                     <slot name="expandable" v-bind="{ row: row as ExpandedContent }" />
                 </i-table-expandable>
@@ -403,7 +422,7 @@ onMounted(() => {
         </tbody>
         <tfoot v-if="hasFooter">
             <tr class="table-ng__row" :aria-rowindex="ariaRowcount">
-                <td :colspan="columnCount" class="table-ng__cell--custom">
+                <td :colspan="fullColspan" class="table-ng__cell--custom">
                     <slot name="footer"></slot>
                 </td>
             </tr>

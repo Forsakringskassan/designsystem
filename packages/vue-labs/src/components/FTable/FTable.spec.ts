@@ -135,6 +135,67 @@ describe("1.6 column size", () => {
     });
 });
 
+describe("1.7 enabled columns", () => {
+    it("should not render columns when enabled is false", () => {
+        const rows = [{ foo: "Foo", bar: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Foo",
+                key: "foo",
+                enabled: false,
+            },
+            {
+                type: "text",
+                header: "Bar",
+                key: "bar",
+                enabled: true,
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+            },
+        });
+
+        const headers = wrapper.findAll("thead th");
+        expect(headers).toHaveLength(1);
+        expect(headers[0].text()).toBe("Bar");
+
+        const cells = wrapper.findAll("tbody td");
+        expect(cells).toHaveLength(1);
+        expect(cells[0].text()).toBe("Bar");
+    });
+
+    it("should not render header or body sections when all columns are disabled", () => {
+        const rows = [{ foo: "Foo", bar: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Foo",
+                key: "foo",
+                enabled: false,
+            },
+            {
+                type: "text",
+                header: "Bar",
+                key: "bar",
+                enabled: false,
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+            },
+        });
+
+        expect(wrapper.find("thead").exists()).toBeFalsy();
+        expect(wrapper.find("tbody").exists()).toBeFalsy();
+    });
+});
+
 describe("1.8 when table is empty", () => {
     const rows: never[] = [];
     const columns = defineTableColumns<(typeof rows)[number]>([
@@ -226,15 +287,16 @@ describe("1.8 when table is empty", () => {
         expect(emptyCell.attributes("colspan")).toBe("5");
     });
 
-    it("should span one column when table has no columns", () => {
+    it("should not render table header or body when table has no columns", () => {
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             props: {
                 rows,
                 columns: [],
             },
         });
-        const emptyCell = wrapper.get("tbody td");
-        expect(emptyCell.attributes("colspan")).toBe("1");
+
+        expect(wrapper.find("thead").exists()).toBeFalsy();
+        expect(wrapper.find("tbody").exists()).toBeFalsy();
     });
 });
 
@@ -301,6 +363,33 @@ describe("1.12 aria-rowcount", () => {
         });
         const table = wrapper.get("table");
         expect(table.attributes("aria-rowcount")).toBe("5");
+    });
+
+    it("should exclude header and body rows when table has no columns", () => {
+        const rows = [{ text: "Foo" }, { text: "Bar" }];
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns: [],
+            },
+        });
+        const table = wrapper.get("table");
+        expect(table.attributes("aria-rowcount")).toBe("0");
+    });
+
+    it("should include footer when table has no columns", () => {
+        const rows = [{ text: "Foo" }, { text: "Bar" }];
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns: [],
+            },
+            slots: {
+                footer: "Footer",
+            },
+        });
+        const table = wrapper.get("table");
+        expect(table.attributes("aria-rowcount")).toBe("1");
     });
 });
 
