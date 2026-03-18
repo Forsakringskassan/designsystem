@@ -175,6 +175,12 @@ export async function setDefaultCellTarget(
     table: HTMLTableElement,
 ): Promise<HTMLElement | null> {
     await nextTick(); // wait for dynamic refs to be applied after table onMounted lifecycle hook
+
+    // skip if table has no columns
+    if (!table.tHead) {
+        return null;
+    }
+
     const target = getCellTarget(table, 1, 0);
     activateCell(target, { focus: false });
 
