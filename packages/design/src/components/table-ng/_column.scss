@@ -27,6 +27,11 @@ $horizontal-padding: size.$padding-050;
             vertical-align: middle;
             accent-color: $table-ng-button-primary-color-background-default;
         }
+
+        input[type="checkbox"]:focus,
+        input[type="checkbox"]:focus-visible {
+            box-shadow: none;
+        }
     }
 
     &--rowheader {
