@@ -13,8 +13,8 @@ $horizontal-padding: size.$padding-050;
     &:focus,
     &:focus-within {
         box-shadow: none;
-        border-bottom: 2px solid var(--f-color-focus);
-        border-right: 1px solid var(--f-color-focus);
+        outline: $table-ng-selection-outline solid $table-ng-cell-color-outline;
+        outline-offset: -$table-ng-selection-outline;
     }
 
     &--selectable {

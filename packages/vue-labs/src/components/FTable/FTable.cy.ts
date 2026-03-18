@@ -2151,6 +2151,26 @@ describe("13 Cell interaction states", () => {
             table.el().toMatchScreenshot();
         });
     }
+
+    for (const mode of Object.values(forcedColorModes)) {
+        it(`13.2 should render focus outline on column header, mode ${mode} (visual)`, () => {
+            cy.forcedColors(mode);
+            const modeDescription =
+                mode === "none" ? " (normal mode)" : ` (${mode} mode)`;
+            const caption = `Verifierar fokusmarkering för kolumnrubrik ${modeDescription}`;
+            cy.mount(FTable<Row>, {
+                props: { rows, columns },
+                slots: {
+                    caption,
+                },
+            });
+
+            table.header(2).focus();
+            table.header(2).should("be.focused");
+
+            table.el().toMatchScreenshot();
+        });
+    }
 });
 
 describe("columns", () => {

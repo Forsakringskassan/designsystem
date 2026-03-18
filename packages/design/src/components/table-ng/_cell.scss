@@ -5,8 +5,7 @@
 $vertical-padding: core.densify(size.$padding-025);
 $horizontal-padding: size.$padding-050;
 $underline-thickness: 3px;
-$selection-outline: 3px;
-$editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-large) + ($vertical-padding * 2) + ($selection-outline * 2));
+$editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-large) + ($vertical-padding * 2) + ($table-ng-selection-outline * 2));
 
 .table-ng__cell {
     padding: $vertical-padding $horizontal-padding;
@@ -16,8 +15,8 @@ $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-lar
     &:focus,
     &:focus-within {
         box-shadow: none;
-        outline: $selection-outline solid $table-ng-cell-color-outline;
-        outline-offset: -$selection-outline;
+        outline: $table-ng-selection-outline solid $table-ng-cell-color-outline;
+        outline-offset: -$table-ng-selection-outline;
     }
 
     &:not(&--menu-open):hover:has(button) {
@@ -207,8 +206,8 @@ $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-lar
 
         &:focus {
             box-shadow: none;
-            outline: $selection-outline solid $table-ng-cell-color-outline;
-            outline-offset: -$selection-outline;
+            outline: $table-ng-selection-outline solid $table-ng-cell-color-outline;
+            outline-offset: -$table-ng-selection-outline;
         }
     }
 
@@ -272,8 +271,8 @@ $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-lar
 
     .table-ng [tabindex="0"]:focus,
     .table-ng [tabindex="0"]:focus-visible {
-        outline: $selection-outline solid CanvasText;
-        outline-offset: -$selection-outline;
+        outline: $table-ng-selection-outline solid CanvasText;
+        outline-offset: -$table-ng-selection-outline;
         background: transparent;
     }
 
