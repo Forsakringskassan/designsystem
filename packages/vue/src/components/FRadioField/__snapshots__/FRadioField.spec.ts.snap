@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot with label and input 1`] = `
+<div
+  class="radio-button"
+>
+  <input
+    class="radio-button__input"
+    id="fkui-vue-element-0001"
+    name="providedName"
+    type="radio"
+    value="Default value"
+  />
+  <label
+    class="radio-button__label"
+    for="fkui-vue-element-0001"
+  >
+    
+    Default label
+    
+    <!--v-if-->
+  </label>
+</div>
+`;

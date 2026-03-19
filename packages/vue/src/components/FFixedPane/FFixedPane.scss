@@ -1,0 +1,7 @@
+:host {
+    display: contents;
+}
+
+:host([hidden]) {
+    display: none;
+}

@@ -1,0 +1,44 @@
+{
+  "name": "@fkui/icon-lib-builder",
+  "version": "6.39.0",
+  "description": "Icon library builder",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "icons"
+  ],
+  "homepage": "https://designsystem.forsakringskassan.se/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/icon-lib-builder"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "type": "module",
+  "bin": {
+    "fkui-icon-lib-build": "bin/build.js"
+  },
+  "files": [
+    "bin",
+    "scripts",
+    "templates",
+    "!scripts/**/*.spec.js"
+  ],
+  "scripts": {
+    "test": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js"
+  },
+  "jest": {
+    "preset": "@forsakringskassan/jest-config"
+  },
+  "dependencies": {
+    "glob": "13.0.6",
+    "sass": "1.98.0",
+    "svgo": "4.0.1"
+  },
+  "engines": {
+    "node": ">= 20.11",
+    "npm": ">= 7"
+  }
+}

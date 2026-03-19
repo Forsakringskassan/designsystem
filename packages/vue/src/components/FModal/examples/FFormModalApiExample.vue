@@ -1,0 +1,42 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FButton, formModal } from "@fkui/vue";
+import ExampleModal from "./ExampleModal.vue";
+
+export default defineComponent({
+    name: "FFormModalApiExample",
+    components: { FButton },
+    data() {
+        return {
+            result: "",
+        };
+    },
+    methods: {
+        async onClick() {
+            this.result = "";
+            try {
+                this.result = await formModal(this, ExampleModal, {
+                    props: {
+                        dataTest: "form-modal-api-example",
+                        firstName: "Anton",
+                    },
+                });
+            } catch {
+                console.log("användaren avbröt");
+            }
+        },
+    },
+});
+</script>
+
+<template>
+    <div class="f-form-modal-example">
+        <f-button data-test="form-modal-api-example-button" variant="secondary" @click="onClick">
+            Öppna Modal
+        </f-button>
+        <div v-if="result">
+            <pre>Modalen stängdes med resultatet:</pre>
+            <pre id="api-result">{{ result }}</pre>
+        </div>
+    </div>
+</template>

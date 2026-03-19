@@ -1,0 +1,174 @@
+@use "pkg:@fkui/theme-default";
+@use "@fkui/theme-default/src/palette-variables" as palette;
+@use "@fkui/design/src/core/config-variables" with (
+    $asset-path: ".",
+    $asset-path-images: "./images"
+);
+@use "@fkui/design/src/core/mixins/breakpoints";
+@use "@fkui/design" as fkui;
+@use "@forsakringskassan/docs-generator/style";
+@use "@forsakringskassan/docs-generator/theme/fkui" as theme-fkui;
+@use "@forsakringskassan/docs-live-example";
+
+$fk-logo-small: "fk-logo-primary-small.svg";
+$fk-logo-large: "fk-logo-primary-large.svg";
+
+:root {
+    --f-logo-image-small:
+        url("#{config-variables.$asset-path-images}/#{$fk-logo-small}"),
+        linear-gradient(var(--fkds-color-header-background-primary), var(--fkds-color-header-background-primary));
+
+    --f-logo-image-large:
+        url("#{config-variables.$asset-path-images}/#{$fk-logo-large}"),
+        linear-gradient(var(--fkds-color-header-background-primary), var(--fkds-color-header-background-primary));
+
+    color-scheme: light dark;
+}
+
+.sandbox-link {
+    padding: 0 0.75rem;
+}
+
+#content a.button.docs-button {
+    color: #fff;
+}
+
+.mermaid p {
+    margin-bottom: 0;
+}
+
+.color-table__color {
+    display: inline-block;
+    background: var(--value);
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 0.25rem;
+    vertical-align: text-bottom;
+    margin-right: 0.25rem;
+
+    @media (prefers-color-scheme: light) {
+        border: 1px solid black;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        border: 1px solid white;
+    }
+}
+
+.color-table__term {
+    background: transparent;
+    white-space: nowrap;
+}
+
+.docs-pre {
+    display: inline-block;
+    white-space: pre;
+    font-family: monospace;
+    margin: 1em 0px;
+}
+
+footer {
+    background: palette.$palette-color-green-a-85;
+    color: var(--fkds-color-text-inverted);
+    padding: 3rem;
+
+    @include breakpoints.breakpoint-up(lg) {
+        display: flex;
+        gap: 5rem;
+    }
+
+    h1,
+    .heading--h1 {
+        font-size: 1.5rem;
+        font-weight: var(--f-font-weight-medium);
+    }
+
+    ul {
+        list-style: none;
+        margin: 0 0 1rem;
+        padding: 0;
+    }
+
+    li,
+    #version button {
+        margin-bottom: 0.5rem;
+    }
+
+    .anchor {
+        color: var(--fkds-color-text-inverted);
+        font-weight: var(--f-font-weight-normal);
+        text-decoration-color: var(--fkds-color-text-inverted);
+    }
+
+    .anchor,
+    #version button {
+        &:hover {
+            color: palette.$palette-color-fk-black-100;
+            text-decoration-color: palette.$palette-color-fk-black-100;
+        }
+    }
+
+    .footer__left {
+        flex: 0 0 auto;
+    }
+
+    .footer__center {
+        flex: 1 1 auto;
+    }
+
+    .footer__right {
+        flex: 0 0 auto;
+    }
+
+    .version {
+        color: var(--fkds-color-text-inverted);
+        margin-left: 0;
+    }
+
+    #version {
+        button {
+            appearance: none;
+
+            &:focus {
+                @include fkui.focus-indicator;
+            }
+
+            &:hover,
+            &:active {
+                background: transparent;
+                cursor: pointer;
+            }
+        }
+    }
+
+    #version-dialog .list__item {
+        margin: 0;
+    }
+}
+
+.support-table {
+    .table__row {
+        &.obsolete {
+            background: #f7dcdc;
+            color: #1b1e23;
+        }
+
+        &.supported {
+            background: #fff5db;
+            color: #1b1e23;
+        }
+
+        &.active {
+            background: #dbe9e2;
+            color: #1b1e23;
+        }
+    }
+}
+
+.docs-example-button {
+    @extend .button;
+    @extend .button--small;
+
+    margin: 0 0.75rem 0 0;
+    padding: 0.25rem 0.75rem !important;
+}

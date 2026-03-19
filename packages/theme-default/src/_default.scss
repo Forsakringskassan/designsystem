@@ -1,0 +1,28 @@
+@use "light/theme" as light;
+@use "dark/theme" as dark;
+@use "auto/theme" as auto;
+
+$global: true !default;
+
+@mixin css-variables {
+    @include light.theme;
+}
+
+@mixin light {
+    @include light.theme;
+}
+
+@mixin dark {
+    @include dark.theme;
+}
+
+@mixin auto {
+    @include auto.theme;
+}
+
+// for backwards compability
+@if $global {
+    :root {
+        @include light.theme;
+    }
+}

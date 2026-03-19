@@ -1,0 +1,11 @@
+{
+    "extends": "@fkui/tsconfig/recommended",
+    "compilerOptions": {
+        "types": ["node"],
+        "emitDeclarationOnly": true,
+
+        /* needed with --experimental-strip-types and ESM */
+        "allowImportingTsExtensions": true
+    },
+    "include": ["src/**/*.ts"]
+}

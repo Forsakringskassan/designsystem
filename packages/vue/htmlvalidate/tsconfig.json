@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "rootDir": ".",
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "isolatedModules": true,
+        "strict": true,
+        "declaration": false,
+        "noEmit": true,
+        "allowJs": true,
+        "lib": ["esnext"]
+    },
+    "include": ["**/*.ts"]
+}

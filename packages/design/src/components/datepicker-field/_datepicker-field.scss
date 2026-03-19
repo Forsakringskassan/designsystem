@@ -1,0 +1,80 @@
+@use "../../core";
+@use "../../core/size";
+@use "../../core/config-variables";
+@use "../../core/mixins/breakpoints";
+@use "variables" as *;
+
+// 40px = popup spacing (20px) * 2
+$popup-spacing: 40px;
+$calendar-width: calc(100vw - #{$popup-spacing});
+
+.datepicker-field {
+    &__button {
+        background: transparent;
+        border: 0;
+        border-radius: var(--f-border-radius-medium);
+        flex: 0 0 auto;
+        padding: 0;
+        cursor: pointer;
+
+        .icon {
+            color: $datepickerfield-f-icon-calendar-color-content-default;
+            min-height: var(--f-icon-size-large);
+            min-width: var(--f-icon-size-large);
+            height: core.densify(var(--f-icon-size-x-large));
+            width: core.densify(var(--f-icon-size-x-large));
+            vertical-align: middle;
+        }
+
+        &:hover {
+            .icon {
+                color: $datepickerfield-f-icon-calendar-color-content-hover;
+            }
+        }
+        &:disabled .icon {
+            color: $datepickerfield-f-icon-calendar-color-content-disabled;
+        }
+    }
+
+    &__popup {
+        // 16px = popup spacing (20px) - 4px
+        margin-top: -16px;
+        border-radius: var(--f-border-radius-medium);
+        border: var(--f-border-width-medium) solid $datepickerfield-popup-color-border;
+        background-color: $datepickerfield-popup-color-background;
+    }
+
+    &__close {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__close > &__close__button {
+        margin: 0;
+        padding: 1rem;
+    }
+}
+
+.popup--overlay .datepicker-field {
+    &__popup {
+        width: $calendar-width;
+        max-width: 28rem;
+    }
+}
+
+.popup--inline .datepicker-field {
+    &__popup {
+        width: 100%;
+    }
+    &__table {
+        margin-top: 0;
+    }
+    &__table .calendar-month__cell {
+        padding: 0;
+        border-bottom: unset;
+    }
+    &__table .calendar-month__header-cell {
+        background-color: unset;
+        border: unset;
+    }
+}

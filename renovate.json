@@ -1,0 +1,19 @@
+{
+    "extends": ["local>forsakringskassan/renovate-config"],
+    "ignoreDeps": ["fk-icons"],
+    "ignorePaths": ["**/node_modules/**"],
+    "packageRules": [
+        {
+            "description": "Raise PR instead of merging minor versions of typescript",
+            "matchPackageNames": ["typescript"],
+            "matchUpdateTypes": ["minor"],
+            "automerge": false
+        },
+        {
+            "description": "Group vue and @vue/* packages together",
+            "matchPackageNames": ["vue", "@vue/**"],
+            "groupName": "Vue monorepo",
+            "groupSlug": "vue-monorepo"
+        }
+    ]
+}

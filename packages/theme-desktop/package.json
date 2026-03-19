@@ -1,0 +1,45 @@
+{
+  "name": "@fkui/theme-desktop",
+  "version": "6.39.0",
+  "description": "FK Themes",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "css"
+  ],
+  "homepage": "https://designsystem.forsakringskassan.se/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/theme-desktop"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "sideEffects": [
+    "./dist/**/*.css",
+    "./src/**/*.scss"
+  ],
+  "main": "./dist/theme-light.css",
+  "types": "type-stub.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "type-stub.d.ts"
+  ],
+  "scripts": {
+    "build": "fkui-theme-builder",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@fkui/theme-default": "6.39.0"
+  },
+  "devDependencies": {
+    "@fkui/theme-builder": "6.39.0"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  },
+  "sass": "./src/_default.scss"
+}

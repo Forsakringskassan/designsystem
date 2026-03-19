@@ -1,0 +1,14 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+    "extends": "../../api-extractor.json",
+    "mainEntryPointFilePath": "<projectFolder>/temp/types/cypress/index.d.ts",
+    "compiler": {
+        "tsconfigFilePath": "<projectFolder>/tsconfig.pageobjects.json"
+    },
+    "apiReport": {
+        "reportFileName": "<unscopedPackageName>-cypress.api.md"
+    },
+    "dtsRollup": {
+        "publicTrimmedFilePath": "<projectFolder>/dist/types/cypress.d.ts"
+    }
+}

@@ -1,0 +1,399 @@
+@use "../../core";
+@use "../../core/size";
+@use "variables" as *;
+
+// General variables
+$table-font-size: var(--f-font-size-standard) !default;
+$table-focus-size: 2px !default;
+$table-margin: 0 0 core.densify(var(--f-margin-component-bottom)) !default;
+
+// Header
+$table-header-separator: 1px solid var(--fkds-color-border-primary) !default;
+$table-header-padding: core.densify(size.$padding-025) size.$padding-050 !default;
+$table-header-font-weight: var(--f-font-weight-medium) !default;
+
+// Column description
+$table-color-description-text: var(--fkds-color-text-secondary) !default;
+$table-color-description-background: transparent !default;
+$table-description-font-weight: var(--f-font-weight-normal) !default;
+
+// Rows
+$table-row-font-weight: var(--f-font-weight-normal) !default;
+$table-row-line-height: core.densify(1.5rem) !default;
+
+// Input fields in table cells
+$table-input-margin-top: core.densify(size.$margin-025);
+$table-input-min-width: size.$padding-175;
+$table-input-height: size.$padding-175;
+$table-input-offset-vertical: core.densify(0.15rem);
+$table-input-offset-horizontal: 0.25rem;
+
+%table-monospace {
+    // IE11
+    font-feature-settings: tnum 1;
+
+    // others
+    font-variant-numeric: tabular-nums;
+}
+
+%table-row-normal {
+    background: $table-color-row-background;
+    color: $table-color-row-text;
+}
+
+%table-row-striped {
+    background: $table-color-row-background-alt;
+    color: $table-color-row-text;
+}
+
+%table-row-hover {
+    background: var(--fkds-color-select-background-primary-hover);
+    color: $table-color-row-text;
+    outline: 1px solid var(--fkds-color-border-primary);
+}
+
+%table-row-focus-within {
+    background: var(--fkds-color-select-background-primary-hover);
+    color: $table-color-row-text;
+}
+
+%table-row-focus {
+    background: var(--fkds-color-select-background-primary-hover);
+    color: $table-color-row-text;
+    outline: $table-focus-size solid var(--fkds-color-border-strong);
+
+    // override shadow set by [tabindex]
+    box-shadow: none;
+}
+
+%table-row-active {
+    background: var(--fkds-color-select-background-primary-hover);
+    color: $table-color-row-text;
+}
+
+%table-row-expanded-border {
+    border-bottom-color: var(--fkds-color-border-weak);
+}
+
+%table-row-expandable {
+    cursor: pointer;
+}
+
+%table-row-collapsed {
+    visibility: collapse;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: $table-font-size;
+    margin: $table-margin;
+    width: 100%;
+
+    // preoccupy the space needed for focus border so the size is not affected
+    // while focus is active
+    border: $table-focus-size solid transparent;
+
+    &:focus {
+        // border color is used instead of dual-color shadow because when
+        // combined with scroll the edges are cut by overflow of the container
+        // element, especially on the right side.
+        border-color: var(--fkds-color-border-strong);
+
+        // override shadow set by [tabindex]
+        box-shadow: none;
+    }
+
+    caption {
+        background: $table-color-caption-background;
+        color: $table-color-caption-text;
+        font-size: var(--f-font-size-standard);
+        font-weight: var(--f-font-weight-medium);
+        line-height: var(--f-line-height-large);
+        margin-bottom: core.densify(size.$margin-025);
+        width: var(--f-width-full);
+        text-align: left;
+    }
+
+    thead {
+        th {
+            background: $table-color-header-background;
+            border-bottom: $table-header-border;
+            border-right: $table-header-separator;
+            color: $table-color-header-text;
+            font-weight: $table-header-font-weight;
+            line-height: var(--f-line-height-large);
+            padding: $table-header-padding;
+            text-align: left;
+            vertical-align: top;
+
+            &:last-child {
+                border-right: none;
+            }
+
+            .table__column__header__icon {
+                height: var(--f-icon-size-x-small);
+                width: var(--f-icon-size-x-small);
+                min-width: var(--f-icon-size-x-small);
+
+                &--discrete {
+                    color: var(--fkds-color-text-disabled);
+                }
+            }
+        }
+
+        .table__column--numeric {
+            text-align: right;
+        }
+    }
+
+    tbody {
+        .table__row {
+            @extend %table-row-normal;
+
+            &--normal {
+                @extend %table-row-normal;
+            }
+
+            &--striped {
+                @extend %table-row-striped;
+            }
+
+            &--hover {
+                @extend %table-row-hover;
+            }
+
+            &--expandable {
+                @extend %table-row-expandable;
+            }
+
+            &--expanded-border {
+                td,
+                th {
+                    @extend %table-row-expanded-border;
+                }
+            }
+
+            &:focus-within,
+            &--focus-within {
+                @extend %table-row-focus-within;
+
+                // these have higher priority
+                &.table__row {
+                    &--active {
+                        @extend %table-row-active;
+                    }
+                }
+            }
+
+            &:focus,
+            &--focus {
+                @extend %table-row-focus;
+
+                // these have higher priority
+                &.table__row {
+                    &--active {
+                        @extend %table-row-active;
+                    }
+                }
+            }
+
+            &--active {
+                @extend %table-row-active;
+            }
+        }
+
+        .table__expandable-row {
+            @extend %table-row-normal;
+
+            &--collapsed {
+                display: none;
+            }
+        }
+
+        td,
+        th {
+            padding: core.densify(var(--f-table-body-row-padding)) var(--f-table-body-row-padding);
+            border-bottom: $table-row-separator;
+            vertical-align: top;
+        }
+
+        td {
+            line-height: $table-row-line-height;
+            font-weight: $table-row-font-weight;
+        }
+
+        th {
+            border-right: $table-header-separator;
+            font-weight: $table-header-font-weight;
+            line-height: $table-row-line-height;
+        }
+
+        .table__column {
+            // apply monospace font only on tbody rows, not thead
+            &--numeric,
+            &--date {
+                @extend %table-monospace;
+            }
+
+            // only tbody rows should have nowrap, thead should still be the same
+            &--action {
+                white-space: nowrap;
+            }
+
+            &--selectable {
+                padding: core.densify(0.2rem) 0.2rem;
+            }
+
+            &--placeholder + .table__column {
+                padding-left: size.$padding-150;
+            }
+
+            &--action .button--discrete,
+            &--action .button--tertiary {
+                margin: var(--f-button-tertiary-table-column-action-margin);
+                min-width: 24px;
+                width: max-content;
+
+                .button__icon {
+                    margin: var(--f-button-tertiary-table-column-action-icon-margin);
+                    transform: translate(0, 10%);
+                }
+            }
+        }
+    }
+
+    &__column {
+        &--text {
+            text-align: left;
+        }
+
+        &--numeric {
+            text-align: right;
+        }
+
+        &--date {
+            text-align: left;
+        }
+
+        &--action {
+            text-align: center;
+        }
+
+        &--shrink {
+            width: 1px;
+            white-space: nowrap;
+        }
+
+        &--sortable {
+            cursor: pointer;
+        }
+
+        &__description {
+            display: block;
+            background: $table-color-description-background;
+            color: $table-color-description-text;
+            font-weight: $table-description-font-weight;
+        }
+        &__wrapper {
+            pointer-events: none;
+
+            & > * {
+                pointer-events: auto;
+            }
+        }
+    }
+
+    &--striped tbody {
+        .table__row:nth-child(even) {
+            @extend %table-row-striped;
+
+            // these have higher priority
+            &.table__row {
+                &--active {
+                    @extend %table-row-active;
+                }
+            }
+        }
+    }
+
+    &--hover tbody {
+        .table__row:hover {
+            @extend %table-row-hover;
+
+            // these have higher priority
+            &.table__row {
+                &--active {
+                    @extend %table-row-active;
+                }
+            }
+        }
+    }
+
+    &--selectable .table__row {
+        td:hover,
+        th:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__scroll {
+        // move margin from <table> to the wrapper div
+        margin: $table-margin;
+
+        // set overflow to `hidden` as default
+        overflow: hidden;
+
+        thead th,
+        thead td,
+        tbody th,
+        tbody td {
+            white-space: nowrap;
+        }
+
+        .table {
+            margin: 0;
+        }
+
+        &--horizontal {
+            overflow-x: auto;
+        }
+    }
+
+    &__input {
+        margin-top: $table-input-margin-top;
+
+        .checkbox__label,
+        .radio-button__label {
+            min-width: $table-input-min-width;
+            min-height: $table-input-height;
+            padding: 0;
+        }
+
+        .checkbox__label::after,
+        .checkbox__label::before,
+        .radio-button__label::after,
+        .radio-button__label::before {
+            top: $table-input-offset-vertical;
+            left: $table-input-offset-horizontal;
+        }
+    }
+
+    &__expand-icon {
+        color: var(--fkds-color-action-text-primary-default);
+        background: transparent;
+        border: 0;
+        flex: 0 0 auto;
+        padding: 0;
+        pointer-events: none;
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media (forced-colors: active) {
+            color: ButtonText;
+        }
+    }
+}

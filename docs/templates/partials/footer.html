@@ -1,0 +1,26 @@
+<div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="{{ '/gettingstarted/about/index.html' | relative(doc) }}">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center">
+    <h2 class="heading--h1">Länkar</h2>
+    <ul>
+        <li><a class="anchor" href="{{ 'accessibility.html' | relative(doc) }}">Tillgänglighetsredogörelse</a></li>
+        <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
+        <li><a class="anchor" href="https://www.figma.com/@fkds">Figma</a></li>
+        <li><a class="anchor" target="_blank" rel="external" href="{{ sandboxLink }}">Sandlåda</a></li>
+    </ul>
+</div>
+
+<div class="footer__right">
+    <!-- prettier-ignore -->
+    {% container "footer:right" %}
+
+    <ul>
+        <li><a class="anchor" href="{{ 'changelog.html' | relative(doc) }}">Changelog</a></li>
+    </ul>
+</div>

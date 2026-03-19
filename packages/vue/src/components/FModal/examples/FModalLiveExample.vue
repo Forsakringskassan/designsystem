@@ -1,0 +1,95 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import { FCheckboxField, FModal, FSelectField } from "@fkui/vue";
+import { LiveExample } from "@forsakringskassan/docs-live-example";
+
+export default defineComponent({
+    name: "FModalLiveExample",
+    components: {
+        FCheckboxField,
+        FSelectField,
+        LiveExample,
+    },
+    data() {
+        return {
+            modalType: "",
+            modalSize: "small",
+            modalFullscreen: false,
+        };
+    },
+    computed: {
+        components(): object {
+            return { FModal };
+        },
+        livedata(): object {
+            return {
+                isOpen: false,
+            };
+        },
+        type(): string {
+            return this.modalType ? `type="${this.modalType}"` : "";
+        },
+        size(): string {
+            return `size="${this.modalSize}"`;
+        },
+        fullscreen(): string {
+            return this.modalFullscreen ? "fullscreen" : "";
+        },
+        button(): string {
+            return /* HTML */ `
+                <f-button variant="secondary" @click="isOpen = !isOpen"> Öppna modal </f-button>
+            `;
+        },
+        footer(): string {
+            return /* HTML */ `
+                <template #footer>
+                    <div class="button-group">
+                        <f-button class="button-group__item" size="large" @click="isOpen = false">
+                            Stäng
+                        </f-button>
+                    </div>
+                </template>
+            `;
+        },
+        template(): string {
+            return /* HTML */ `
+                ${this.button}
+                <!-- Example using modal with deprecated template method. This is not recommended. -->
+                <f-modal
+                    :is-open="isOpen"
+                    ${this.type}
+                    ${this.size}
+                    ${this.fullscreen}
+                    @close="isOpen = false"
+                >
+                    <template #header> Rubrik </template>
+                    <template #content> Innehåll </template>
+                    ${this.footer}
+                </f-modal>
+            `;
+        },
+    },
+});
+</script>
+
+<template>
+    <live-example :components :template :livedata>
+        <f-select-field v-model="modalType">
+            <template #label> Typ </template>
+            <option value="">Standard</option>
+            <option value="information">Informationsmodal</option>
+            <option value="warning">Varningsmodal</option>
+            <option value="error">Felmodal</option>
+        </f-select-field>
+        <f-select-field v-model="modalSize">
+            <template #label> Storlek </template>
+            <option value="small">Liten</option>
+            <option value="medium">Medium</option>
+            <option value="large">Stor</option>
+            <option value="fullwidth">Fullbredd</option>
+        </f-select-field>
+        <f-checkbox-field v-model="modalFullscreen" :value="true">
+            Fullskärm i mobilläge
+        </f-checkbox-field>
+    </live-example>
+</template>

@@ -1,0 +1,71 @@
+name: Deploy PR previews
+
+concurrency: preview-${{ github.ref }}
+
+on:
+    pull_request:
+        types:
+            - opened
+            - reopened
+            - synchronize
+            - closed
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    deploy-preview:
+        if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build documentation
+              if: github.event.action != 'closed'
+              uses: ./.github/actions/build-docs
+              with:
+                  example-apps: true
+                  sandbox: true
+            - uses: rossjrw/pr-preview-action@v1
+              id: preview
+              with:
+                  source-dir: ./public/
+                  preview-branch: gh-pages
+                  umbrella-dir: pr-preview
+                  action: auto
+                  comment: false
+            - name: Leave a comment after deployment
+              if: steps.preview.outputs.deployment-action == 'deploy' && env.deployment_status == 'success'
+              uses: marocchino/sticky-pull-request-comment@v3
+              with:
+                  header: pr-preview
+                  message: |
+                      ##  Förhandsgranskning :bug: :mag:
+
+                      Dokumentation och exampel applikationer finns att förhandsgranska på:
+
+                      | Sida | URL |
+                      |-|-
+                      | Dokumentation | ${{ steps.preview.outputs.preview-url }} |
+                      | Vue Sandbox | ${{ steps.preview.outputs.preview-url }}vue-sandbox |
+                      | Applikationsmall | ${{ steps.preview.outputs.preview-url }}examples/page-layout |
+
+                      ---
+
+                      ###### Senast uppdaterad ${{ steps.preview.outputs.action-start-time }} i [gh-pages](${{ github.server_url }}/${{ github.repository }}/tree/gh-pages).
+
+            - uses: marocchino/sticky-pull-request-comment@v3
+              if: steps.preview-step.outputs.deployment-action == 'remove' && env.deployment_status == 'success'
+              with:
+                  header: pr-preview
+                  message: |
+                      ##  Förhandsgranskning :bug: :mag:
+
+                      Förhandsgranskning borttagen då pull request är stängd.

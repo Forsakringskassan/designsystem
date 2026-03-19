@@ -1,0 +1,38 @@
+{
+    "root": true,
+
+    "plugins": [
+        "html-validate-vue",
+        "@forsakringskassan/docs-live-example/htmlvalidate"
+    ],
+
+    "extends": [
+        "html-validate:recommended",
+        "html-validate:prettier",
+        "html-validate-vue:recommended",
+        "@forsakringskassan/docs-live-example/htmlvalidate:recommended"
+    ],
+
+    "elements": ["html5"],
+
+    "transform": {
+        "^.*\\.md$": "html-validate-markdown",
+        "^.*\\.md:html$": "html-validate-vue:html",
+        "^.*\\.vue$": "html-validate-vue"
+    },
+
+    "rules": {
+        "prefer-native-element": [
+            "error",
+            {
+                "exclude": ["button", "progressbar"]
+            }
+        ],
+        "no-unknown-elements": [
+            "error",
+            {
+                "exclude": ["example-*"]
+            }
+        ]
+    }
+}

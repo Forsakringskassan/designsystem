@@ -1,0 +1,39 @@
+{
+    "folders": [
+        {
+            "name": "@fkui",
+            "path": ".",
+        },
+    ],
+    "settings": {
+        "css.validate": false,
+        "less.validate": false,
+        "scss.validate": false,
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "eslint.enable": true,
+        "prettier.requireConfig": true,
+        "editor.renderWhitespace": "boundary",
+        "[vue]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+        },
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit",
+        },
+        "jest.jestCommandLine": "npm exec jest --",
+        "jest.runMode": "on-demand",
+    },
+    "extensions": {
+        "recommendations": [
+            "christian-kohler.npm-intellisense",
+            "davidanson.vscode-markdownlint",
+            "dbaeumer.vscode-eslint",
+            "ecmel.vscode-html-css",
+            "editorconfig.editorconfig",
+            "esbenp.prettier-vscode",
+            "html-validate.vscode-html-validate",
+            "orta.vscode-jest",
+            "vue.volar",
+        ],
+    },
+}

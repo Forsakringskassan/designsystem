@@ -1,0 +1,378 @@
+import {
+    type ValidatorConfigs,
+    formatNumber,
+    formatPersonnummer,
+    formatPostalCode,
+    parseBankAccountNumber,
+    parseBankgiro,
+    parseClearingNumber,
+    parseDate,
+    parseNumber,
+    parseOrganisationsnummer,
+    parsePersonnummer,
+    parsePlusgiro,
+} from "@fkui/logic";
+
+/**
+ * @public
+ */
+export const baseTypes = [
+    "anchor",
+    "button",
+    "checkbox",
+    "render",
+    "rowheader",
+    "select",
+] as const;
+
+/**
+ * @public
+ */
+export type InputTypeBase = (typeof baseTypes)[number];
+
+/**
+ * @public
+ */
+export const textTypes = [
+    "text:bankAccountNumber",
+    "text:bankgiro",
+    "text:clearingNumber",
+    "text:date",
+    "text:email",
+    "text:organisationsnummer",
+    "text:personnummer",
+    "text:phoneNumber",
+    "text:plusgiro",
+    "text:postalCode",
+    "text",
+] as const;
+
+/**
+ * @public
+ */
+export type InputTypeText = (typeof textTypes)[number];
+
+/**
+ * @public
+ */
+export const numberTypes = [
+    "text:currency",
+    "text:number",
+    "text:percent",
+] as const;
+
+/**
+ * @public
+ */
+export type InputTypeNumber = (typeof numberTypes)[number];
+
+/**
+ * @public
+ */
+export type InputType = InputTypeBase | InputTypeNumber | InputTypeText;
+
+/**
+ * @internal
+ */
+export function isInputTypeNumber(value: string): value is InputTypeNumber {
+    return numberTypes.includes(value as InputTypeNumber);
+}
+
+/**
+ * @internal
+ */
+export function isInputTypeText(value: string): value is InputTypeText {
+    return textTypes.includes(value as InputTypeText);
+}
+
+/**
+ * @internal
+ */
+export function isInputTypeBase(value: string): value is InputTypeBase {
+    return baseTypes.includes(value as InputTypeBase);
+}
+
+/**
+ * @internal
+ */
+export interface AttributeOptions {
+    decimals?: number;
+}
+
+/**
+ * @internal
+ */
+export interface InputTypeTextConfig {
+    attributes(
+        options?: AttributeOptions,
+    ): Record<string, string | number | undefined>;
+    formatter(this: void, value: string): string | undefined;
+    parser(this: void, value: string): string | undefined;
+    readonly validationConfig: ValidatorConfigs;
+}
+
+/**
+ * @internal
+ */
+export interface InputTypeNumberConfig {
+    attributes(
+        options?: AttributeOptions,
+    ): Record<string, string | number | undefined>;
+    formatter(
+        this: AttributeOptions,
+        value: string | number,
+    ): string | undefined;
+    parser(this: AttributeOptions, value: string): string | number | undefined;
+    readonly validationConfig: ValidatorConfigs;
+}
+
+/**
+ * @internal
+ */
+export const inputFieldConfig = {
+    "text:personnummer": {
+        formatter(value) {
+            return formatPersonnummer(parsePersonnummer(value));
+        },
+        parser(value) {
+            return parsePersonnummer(value);
+        },
+        validationConfig: {
+            maxLength: { length: 20 },
+            personnummerFormat: {},
+            personnummerLuhn: {},
+        },
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "23",
+            };
+        },
+    } satisfies InputTypeTextConfig,
+    "text:bankAccountNumber": {
+        formatter(value) {
+            return value;
+        },
+        parser(value) {
+            return parseBankAccountNumber(value);
+        },
+        validationConfig: {
+            bankAccountNumber: {},
+        },
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "40",
+            };
+        },
+    } satisfies InputTypeTextConfig,
+    "text:bankgiro": {
+        formatter(value) {
+            return parseBankgiro(value);
+        },
+        parser(value) {
+            return parseBankgiro(value);
+        },
+        validationConfig: {
+            maxLength: { length: 9 },
+            bankgiro: {},
+        },
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "40",
+            };
+        },
+    } satisfies InputTypeTextConfig,
+    "text:clearingNumber": {
+        formatter(value) {
+            return parseClearingNumber(value.trim());
+        },
+        parser(value) {
+            return parseClearingNumber(value.trim());
+        },
+        validationConfig: {
+            clearingNumber: {},
+        },
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "16",
+            };
+        },
+    } satisfies InputTypeTextConfig,
+    "text:currency": {
+        formatter(value) {
+            return formatNumber(value);
+        },
+        parser(value) {
+            return parseNumber(value);
+        },
+        validationConfig: {
+            currency: {},
+            integer: {},
+        },
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "20",
+            };
+        },
+    } satisfies InputTypeNumberConfig,
+    "text:date": {
+        formatter(value) {
+            return parseDate(value);
+        },
+        parser(value) {
+            return parseDate(value);
+        },
+        validationConfig: {
+            date: {},
+        },
+        attributes: () => {
+            return { type: "text" };
+        },
+    } satisfies InputTypeTextConfig,
+    "text:email": {
+        formatter(value) {
+            return value;
+        },
+        parser(value) {
+            return value;
+        },
+        validationConfig: {
+            email: {},
+            maxLength: { length: 80 },
+        },
+        attributes: () => {
+            return {
+                type: "email",
+                maxlength: "80",
+            };
+        },
+    } satisfies InputTypeTextConfig,
+    "text:number": {
+        formatter(value) {
+            return formatNumber(value, this.decimals ?? 2);
+        },
+        parser(value) {
+            return parseNumber(value, this.decimals ?? 2);
+        },
+        validationConfig: {
+            number: {},
+        },
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "20",
+            };
+        },
+    } satisfies InputTypeNumberConfig,
+    "text:organisationsnummer": {
+        formatter(value) {
+            return parseOrganisationsnummer(value);
+        },
+        parser(value) {
+            return parseOrganisationsnummer(value);
+        },
+        validationConfig: {
+            maxLength: { length: 11 },
+            organisationsnummer: {},
+        },
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "20",
+            };
+        },
+    } satisfies InputTypeTextConfig,
+    "text:percent": {
+        formatter(value) {
+            return formatNumber(value, this.decimals ?? 2);
+        },
+        parser(value) {
+            return parseNumber(value, this.decimals ?? 2);
+        },
+        validationConfig: {
+            percent: {},
+            minValue: { minValue: 0 },
+            maxValue: { maxValue: 999 },
+        },
+        attributes: (options) => {
+            const decimals = options?.decimals;
+            return {
+                inputmode: decimals ? "decimal" : "numeric",
+                maxlength: "10",
+            };
+        },
+    } satisfies InputTypeNumberConfig,
+    "text:phoneNumber": {
+        formatter(value) {
+            return value;
+        },
+        parser(value) {
+            return value;
+        },
+        validationConfig: {
+            maxLength: { length: 80 },
+            phoneNumber: {},
+        },
+        attributes: () => {
+            return {
+                maxlength: "80",
+                type: "tel",
+            };
+        },
+    } satisfies InputTypeTextConfig,
+    "text:plusgiro": {
+        formatter(value) {
+            return parsePlusgiro(value);
+        },
+        parser(value) {
+            return parsePlusgiro(value);
+        },
+        validationConfig: {
+            maxLength: { length: 11 },
+            plusgiro: {},
+        },
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "16",
+            };
+        },
+    } satisfies InputTypeTextConfig,
+    "text:postalCode": {
+        formatter(value) {
+            return formatPostalCode(value.trim());
+        },
+        parser(value) {
+            return formatPostalCode(value.trim());
+        },
+        validationConfig: {
+            maxLength: { length: 13 },
+            postalCode: {},
+        },
+        attributes: () => {
+            return {
+                inputmode: "numeric",
+                maxlength: "15",
+            };
+        },
+    } satisfies InputTypeTextConfig,
+    text: {
+        formatter(value) {
+            return value;
+        },
+        parser(value) {
+            return value;
+        },
+        validationConfig: {},
+        attributes: () => {
+            return {};
+        },
+    } satisfies InputTypeTextConfig,
+} satisfies Record<
+    InputTypeText | InputTypeNumber,
+    InputTypeTextConfig | InputTypeNumberConfig
+>;

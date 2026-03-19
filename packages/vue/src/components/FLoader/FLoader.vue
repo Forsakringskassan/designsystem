@@ -1,0 +1,175 @@
+<script lang="ts">
+import { type PropType, defineComponent } from "vue";
+import { addFocusListener, findTabbableElements, removeFocusListener, restoreFocus, saveFocus } from "@fkui/logic";
+import { config } from "../../config";
+import { TranslationMixin } from "../../plugins";
+import { focus } from "../../utils";
+
+export default defineComponent({
+    name: "FLoader",
+    mixins: [TranslationMixin],
+    inheritAttrs: false,
+    props: {
+        /* Aria-live must always be visible, hence v-if on component level is not possible, therefore we use show-prop */
+        /**
+         * Determine if the loader is visible or not
+         */
+        show: {
+            type: Boolean,
+            required: false,
+        },
+        /**
+         * If loader should be displayed as a fullscreen overlay.
+         */
+        overlay: {
+            type: Boolean,
+            required: false,
+        },
+        /**
+         * Delay the loader icon and text by 1 second
+         */
+        delay: {
+            type: Boolean,
+            required: false,
+        },
+        /**
+         * Language used for determining fallback value for the loading text. Useful if loader is displayed before
+         * text keys have been downloaded. Default is Swedish `sv`, can be changed to English `en`.
+         */
+        language: {
+            type: String as PropType<"sv" | "en">,
+            required: false,
+            default: "sv",
+        },
+        /**
+         *   Controls if focus should be set on the loading text when the loader is displayed with overlay.
+         * - When set to true focus will be set on the loading text when the loader is displayed with overlay.
+         * - When set to false no focus will be set, instead aria alert is used to announce loading for screen readers.
+         */
+        focusOnOverlay: {
+            type: Boolean,
+            required: false,
+            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
+            default: true,
+        },
+        /*
+         * Set teleport target (when overlay is enabled).
+         *
+         * - When set to a string it is used as a selector.
+         * - When set to a element it is used directly.
+         * - Default uses {@link config#teleportTarget}.
+         */
+        teleport: {
+            type: [String, HTMLElement] as PropType<string | HTMLElement | undefined>,
+            required: false,
+            default: undefined,
+        },
+    },
+    data() {
+        return {
+            oldFocus: undefined as unknown as HTMLElement,
+        };
+    },
+    computed: {
+        defaultLoadingText(): string {
+            return this.language === "en" ? "Please wait" : "Vänligen vänta";
+        },
+        classes(): Record<string, boolean> {
+            return {
+                "loader--overlay": this.overlay,
+                "loader--delay": this.delay,
+            };
+        },
+        teleportTarget() {
+            if (this.teleport) {
+                return this.teleport;
+            } else {
+                return config.teleportTarget;
+            }
+        },
+        teleportDisabled() {
+            return !this.overlay;
+        },
+        role(): string | undefined {
+            if (this.overlay && this.focusOnOverlay) {
+                return undefined;
+            }
+            return "alert";
+        },
+    },
+    watch: {
+        show(show) {
+            if (show) {
+                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+                this.openLoader();
+            } else {
+                this.closeLoader();
+            }
+        },
+    },
+    mounted() {
+        if (this.show) {
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+            this.openLoader();
+        }
+    },
+    methods: {
+        async listener(): Promise<void> {
+            await this.$nextTick();
+            focus(this.$refs["loader-text"]);
+        },
+        async openLoader() {
+            if (this.overlay) {
+                saveFocus(document);
+                if (this.focusOnOverlay) {
+                    await this.listener();
+                }
+                /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+                addFocusListener(findTabbableElements(document), this.listener);
+            }
+        },
+        closeLoader() {
+            if (this.overlay) {
+                /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+                removeFocusListener(findTabbableElements(document), this.listener);
+                restoreFocus();
+            }
+        },
+    },
+});
+</script>
+
+<template>
+    <teleport :to="teleportTarget" :disabled="teleportDisabled">
+        <div v-show="show" v-bind="$attrs" class="loader" :class="classes">
+            <div class="loader__backdrop">
+                <div class="loader__wrapper">
+                    <div class="loader__spinner-1 loader__spinner">
+                        <div class="loader__spinner-1-circle1 loader__circle loader__circle--1"></div>
+                        <div class="loader__spinner-1-circle2 loader__circle loader__circle--2"></div>
+                        <div class="loader__spinner-1-circle3 loader__circle loader__circle--3"></div>
+                        <div class="loader__spinner-1-circle4 loader__circle loader__circle--4"></div>
+                    </div>
+                    <div class="loader__spinner-2 loader__spinner">
+                        <div class="loader__spinner-2-circle1 loader__circle loader__circle--1"></div>
+                        <div class="loader__spinner-2-circle2 loader__circle loader__circle--2"></div>
+                        <div class="loader__spinner-2-circle3 loader__circle loader__circle--3"></div>
+                        <div class="loader__spinner-2-circle4 loader__circle loader__circle--4"></div>
+                    </div>
+                    <div class="loader__spinner-3 loader__spinner">
+                        <div class="loader__spinner-3-circle1 loader__circle loader__circle--1"></div>
+                        <div class="loader__spinner-3-circle2 loader__circle loader__circle--2"></div>
+                        <div class="loader__spinner-3-circle3 loader__circle loader__circle--3"></div>
+                        <div class="loader__spinner-3-circle4 loader__circle loader__circle--4"></div>
+                    </div>
+                </div>
+                <div ref="loader-text" class="loader__wait-text" :class="{ 'loader--delay': delay }" tabindex="-1">
+                    <span :role>
+                        <!-- @slot Slot for define a custom loading text -->
+                        <slot>{{ $t("fkui.loader.wait.text", defaultLoadingText) }}</slot>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </teleport>
+</template>

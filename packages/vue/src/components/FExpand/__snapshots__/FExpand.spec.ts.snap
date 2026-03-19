@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot with default slot content 1`] = `
+<transition-stub
+  appear="false"
+  css="true"
+  persisted="false"
+>
+  
+  <p>
+    Content
+  </p>
+  
+</transition-stub>
+`;

@@ -1,0 +1,64 @@
+import "html-validate/jest";
+import "@fkui/test-utils/jest";
+import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
+import { VueWrapper, flushPromises, mount } from "@vue/test-utils";
+import FLayoutRightPanel from "./FLayoutRightPanel.vue";
+import { FLayoutRightPanelService } from "./services/FLayoutRightPanelService";
+
+let wrapper: VueWrapper;
+
+const defaultSlots = {
+    default: "DEFAULT",
+    content: "TOPNAVIGATION",
+    heading: /* HTML */ ` <h3>TITEL</h3> `,
+};
+
+async function createWrapper(): Promise<VueWrapper> {
+    const wrapper = mount(FLayoutRightPanel, {
+        slots: {
+            ...defaultSlots,
+        },
+        global: {
+            stubs: ["FIcon"],
+        },
+        attachTo: createPlaceholderInDocument(),
+    });
+    FLayoutRightPanelService.open();
+    // wait for it to open
+    await wrapper.vm.$nextTick();
+    await flushPromises();
+    return wrapper;
+}
+
+describe("snapshot", () => {
+    it("should match snapshot", async () => {
+        wrapper = await createWrapper();
+        expect(wrapper).toMatchSnapshot();
+    });
+});
+
+it("should be closable", async () => {
+    wrapper = await createWrapper();
+    await wrapper.get("button").trigger("click");
+    await flushPromises();
+    expect(wrapper.find(".layout-secondary__secondary").exists()).toBeFalsy();
+});
+
+it("should focus title on open", async () => {
+    wrapper = await createWrapper();
+    const heading = wrapper.get("h3");
+    expect(heading.element).toHaveFocus();
+});
+
+describe("html-validate", () => {
+    it("should allow defined slots", () => {
+        expect.assertions(1);
+        const slotTemplates = Object.entries(defaultSlots).map(
+            ([key, value]) => `<template #${key}>${value}</template>`,
+        );
+
+        expect(
+            `<f-layout-right-panel>${slotTemplates}</f-layout-right-panel>`,
+        ).toHTMLValidate();
+    });
+});

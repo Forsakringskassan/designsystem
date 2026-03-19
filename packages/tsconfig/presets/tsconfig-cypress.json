@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "@fkui/tsconfig/cypress",
+
+    "compilerOptions": {
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "strict": true,
+        "target": "esnext",
+        "lib": ["es2023", "dom"],
+        "types": ["cypress", "node"]
+    }
+}

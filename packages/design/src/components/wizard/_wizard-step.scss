@@ -1,0 +1,230 @@
+@use "../../core";
+@use "variables" as *;
+
+/* Selectors */
+$header-selector: ".wizard-step__header" !default;
+$title-selector: "#{$header-selector}__title" !default;
+$anchor-selector: "#{$title-selector} .anchor" !default;
+$step-of-selector: ".wizard-step__step-of" !default;
+$line-up-selector: ".wizard-step__line-up" !default;
+$line-down-selector: ".wizard-step__line-down" !default;
+$icon-line-down-selector: ".wizard-step__icon-container__line-down" !default;
+$icon-container-selector: ".wizard-step__icon-container" !default;
+$circle-selector: ".wizard-step__icon-container__circle" !default;
+$number-selector: ".wizard-step__icon-container__number" !default;
+$success-selector: ".wizard-step__icon-container__success" !default;
+$form-body-selector: ".wizard-step-body" !default;
+$form-border-container: "#{$form-body-selector}__border-container" !default;
+$buttons: ".wizard-step__buttons" !default;
+
+/* position adjustments for lines */
+
+/* change line-gap-to-circle variable to change distances */
+
+$line-gap-to-circle: 4px;
+$line-width: 2px;
+$icon-size: 30px;
+
+.wizard-step {
+    display: grid;
+    grid-template:
+        "wizard-step__line-up wizard-step__step-of" min-content
+        "wizard-step__icon-container wizard-step__header" min-content
+        "wizard-step__content wizard-step__content" min-content
+        / min-content 1fr;
+    gap: 0 0.5rem;
+
+    &:first-of-type {
+        #{$line-up-selector} {
+            border: 0;
+        }
+    }
+
+    &:last-of-type {
+        #{$line-down-selector},
+        #{$icon-line-down-selector} {
+            border: 0;
+        }
+    }
+
+    #{$buttons} {
+        margin-top: calc(4rem * var(--f-density-factor));
+    }
+
+    #{$title-selector} {
+        font-size: 1.125rem;
+        margin-top: 2px;
+        margin-bottom: 20px;
+    }
+
+    #{$icon-container-selector} {
+        grid-area: wizard-step__icon-container;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #{$circle-selector} {
+        width: $icon-size;
+        height: $icon-size;
+        border-radius: 50%;
+        border: 2px solid $wizardstep-color-circle-border-open;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.25rem;
+        font-weight: bold;
+        text-align: center;
+        color: $wizardstep-color-circle-content-open;
+        transition:
+            background-color 400ms ease-out,
+            border-color 400ms ease-out,
+            opacity 400ms ease-out;
+    }
+
+    #{$form-border-container} {
+        @include core.breakpoint-down(sm) {
+            display: none;
+        }
+
+        #{$line-down-selector} {
+            margin-top: 0;
+        }
+    }
+
+    #{$success-selector} {
+        display: none;
+    }
+
+    #{$header-selector} {
+        grid-area: wizard-step__header;
+    }
+
+    #{$step-of-selector} {
+        color: $wizardstep-color-stepofselector-text;
+        font-weight: normal;
+        font-size: 1rem;
+    }
+
+    #{$line-down-selector},
+    #{$icon-line-down-selector},
+    #{$line-up-selector} {
+        border-left: $line-width solid $wizardstep-color-line;
+        margin-left: 14px;
+    }
+
+    #{$icon-line-down-selector} {
+        margin-top: $line-gap-to-circle;
+    }
+
+    .wizard-step__content {
+        color: $wizardstep-color-text-default;
+        margin-left: 0.5rem;
+        min-width: 0;
+        grid-area: wizard-step__content;
+    }
+
+    #{$line-up-selector} {
+        margin-bottom: $line-gap-to-circle;
+        grid-area: wizard-step__line-up;
+    }
+
+    &--open + &--pending {
+        #{$line-up-selector} {
+            padding-top: 20px;
+            margin-top: -0.5rem;
+        }
+    }
+
+    #{$icon-line-down-selector} {
+        flex: 1;
+    }
+
+    @include core.breakpoint-up(md) {
+        grid-template:
+            "wizard-step__line-up wizard-step__step-of" min-content
+            "wizard-step__icon-container wizard-step__header" min-content
+            "wizard-step__line-down wizard-step__content" min-content
+            / min-content 1fr;
+
+        &--open + &--pending {
+            #{$line-up-selector} {
+                margin-top: 0;
+                padding-top: 0;
+            }
+        }
+
+        .wizard-step__content {
+            margin-left: 0;
+        }
+
+        #{$line-down-selector} {
+            grid-area: wizard-step__line-down;
+        }
+    }
+
+    &--open {
+        #{$title-selector} {
+            color: $wizardstep-color-heading-open;
+        }
+
+        #{$step-of-selector} {
+            display: block;
+        }
+    }
+
+    &--done {
+        #{$anchor-selector} {
+            color: $wizardstep-color-heading-done;
+            text-decoration-color: currentcolor;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 0.25em;
+        }
+
+        #{$anchor-selector}:hover {
+            text-decoration-thickness: 3px;
+            text-underline-offset: 0.25em;
+        }
+
+        #{$success-selector} {
+            display: block;
+            color: $wizardstep-color-circle-content-done;
+            width: 20px;
+            height: auto;
+        }
+
+        #{$circle-selector} {
+            background-color: $wizardstep-color-circle-background-done;
+            border-color: $wizardstep-color-circle-border-done;
+        }
+
+        #{$number-selector} {
+            display: none;
+        }
+
+        #{$line-down-selector} {
+            display: none;
+        }
+    }
+
+    &--pending {
+        #{$title-selector} {
+            color: $wizardstep-color-heading-pending;
+        }
+
+        #{$circle-selector} {
+            border: 2px solid $wizardstep-color-circle-border-pending;
+            background-color: $wizardstep-color-circle-background-pending;
+            color: $wizardstep-color-circle-content-pending;
+        }
+
+        #{$line-down-selector} {
+            display: none;
+        }
+    }
+
+    @media (forced-colors: active) {
+        #{$success-selector} {
+            color: CanvasText;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot when closed 1`] = `
+<div
+  id="outside"
+>
+  <button
+    id="launch-popup"
+  />
+  <!--v-if-->
+</div>
+`;
+
+exports[`snapshots should match snapshot when open 1`] = `
+<div
+  id="outside"
+>
+  <button
+    id="launch-popup"
+  />
+  <teleport-stub
+    disabled="false"
+    to="[object HTMLBodyElement]"
+  >
+    <div
+      class="popup popup--overlay"
+    >
+      <div
+        class="popup__wrapper"
+        role="presentation"
+      >
+        
+        <span>
+           POPUP CONTENT 
+        </span>
+        
+      </div>
+    </div>
+  </teleport-stub>
+</div>
+`;

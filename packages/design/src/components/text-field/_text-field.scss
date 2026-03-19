@@ -1,0 +1,135 @@
+@use "../../core";
+@use "../../core/size";
+@use "../../core/utils/functions" as *;
+@use "variables" as *;
+
+.text-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 0 0 core.densify(var(--f-margin-component-bottom));
+    position: relative;
+    width: var(--f-width-full);
+
+    &--inline {
+        @include core.label-inline;
+    }
+
+    &--table {
+        margin-bottom: 0;
+    }
+
+    // remove clear X in IE11, Edge
+    input[type="text"]::-ms-clear {
+        display: none;
+    }
+
+    &__error-popup-icon {
+        color: $textfield-color-icon-error;
+        height: 16px;
+
+        @media (forced-colors: active) {
+            color: CanvasText;
+        }
+    }
+
+    &__input-wrapper {
+        display: flex;
+        gap: core.densify(size.$padding-050);
+    }
+
+    &__input {
+        background-color: $textfield-color-background-default;
+        color: $textfield-color-text-default;
+        box-shadow: var(--f-input-shadow-inset);
+        border-radius: var(--f-border-radius-medium);
+        border: var(--f-border-width-medium) solid $textfield-color-border-default;
+        min-height: core.densify(var(--f-height-large));
+        padding: 0 0.75rem;
+        width: var(--f-width-full);
+    }
+
+    &__icon-wrapper {
+        flex: 1 1 auto;
+        position: relative;
+
+        &:has(.text-field__append-inner) {
+            .text-field__input {
+                padding: var(--padding-input-fields);
+            }
+        }
+    }
+
+    &__append-inner {
+        display: inline;
+        position: absolute;
+        right: core.densify(size.$margin-075);
+        top: core.densify(size.$margin-050);
+        height: var(--f-icon-size-large);
+        width: var(--f-icon-size-large);
+        overflow: hidden;
+        text-align: center;
+    }
+
+    &__icon {
+        height: var(--f-icon-size-large);
+        transition: opacity var(--f-animation-duration-medium) ease-in-out;
+        width: var(--f-icon-size-large);
+
+        &--left {
+            position: relative;
+            top: 3px;
+        }
+    }
+
+    &__input:disabled + &__icon {
+        color: $textfield-icon-close-color-content-disabled;
+    }
+
+    &__input:disabled {
+        border-color: $textfield-color-border-disabled;
+        color: $textfield-color-text-disabled;
+        background-color: $textfield-color-background-disabled;
+    }
+
+    &--error {
+        .text-field__input {
+            border-color: $textfield-color-border-error;
+        }
+    }
+
+    &--search + .text-field__append-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        right: core.densify(0.25rem);
+        min-height: core.densify(var(--f-height-large));
+        width: 2.5rem;
+    }
+
+    .clear-button {
+        background: none;
+        border: 0;
+        cursor: pointer;
+
+        &__icon {
+            color: $textfield-icon-close-color-content-default;
+            height: var(--f-icon-size-x-small);
+            width: var(--f-icon-size-x-small);
+
+            @media (forced-colors: active) {
+                color: buttonText;
+            }
+        }
+    }
+
+    // Hide the web browsers standard clear-button when input is of type search
+    /* stylelint-disable property-no-vendor-prefix */
+    input[type="search"]::-webkit-search-decoration,
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration {
+        -webkit-appearance: none;
+    }
+}

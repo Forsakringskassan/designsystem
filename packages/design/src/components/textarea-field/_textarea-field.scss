@@ -1,0 +1,55 @@
+@use "../../core/size";
+@use "../../core";
+@use "../../core/utils/functions" as *;
+@use "variables" as *;
+
+.textarea-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    line-height: var(--f-line-height-large);
+    margin: 0 0 core.densify(var(--f-margin-component-bottom));
+    position: relative;
+    width: var(--f-width-full);
+
+    &--inline {
+        @include core.label-inline;
+    }
+
+    &__textarea {
+        background-color: $textareafield-color-background-default;
+        color: $textareafield-color-text-default;
+        box-shadow: var(--f-input-shadow-inset);
+        border-radius: var(--f-border-radius-medium);
+        border: var(--f-border-width-medium) solid $textareafield-color-border-default;
+        box-sizing: border-box;
+        font-size: var(--f-font-size-standard);
+        min-height: core.densify(var(--f-height-large));
+        padding: core.densify(size.$padding-050) size.$padding-075;
+        width: var(--f-width-full);
+    }
+
+    &__textarea[rows] {
+        height: auto;
+    }
+
+    &__textarea:disabled {
+        border-color: $textareafield-color-border-disabled;
+        color: $textareafield-color-text-disabled;
+        background-color: $textareafield-color-background-disabled;
+    }
+
+    &--error {
+        .textarea-field__textarea {
+            border-color: $textareafield-color-border-error;
+        }
+    }
+
+    &__resize--none {
+        resize: none;
+    }
+
+    &__resize--vertical {
+        resize: vertical;
+    }
+}

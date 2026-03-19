@@ -1,0 +1,41 @@
+*.tgz
+*.zip
+node_modules/
+
+# Build artifacts
+.eslintcache
+build/
+dist/
+docs/examples/files/
+public/
+temp/
+*.tsbuildinfo
+
+# Jest output
+.jest-cache/
+coverage/
+jest-junit.xml
+
+# Cypress output
+cypress/screenshots/
+test-results/
+
+# Local env files
+.env.local
+.env.*.local
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.DS_Store
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

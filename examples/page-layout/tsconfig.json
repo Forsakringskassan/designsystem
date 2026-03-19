@@ -1,0 +1,4 @@
+{
+    "extends": ["@fkui/tsconfig/recommended", "@fkui/vue/tsconfig.json"],
+    "include": ["src/**/*.ts", "src/**/*.vue"]
+}

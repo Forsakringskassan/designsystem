@@ -1,0 +1,19 @@
+.formatter {
+    &--date,
+    &--date-full,
+    &--date-long,
+    &--date-range,
+    &--text {
+        white-space: nowrap;
+    }
+
+    &--bankgiro,
+    &--number,
+    &--orgnr,
+    &--plusgiro,
+    &--pnr,
+    &--postnummer {
+        white-space: nowrap;
+        font-feature-settings: "tnum";
+    }
+}

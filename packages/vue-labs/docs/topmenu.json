@@ -1,0 +1,10 @@
+[
+    {
+        "path": "./components/",
+        "title": "Komponenter"
+    },
+    {
+        "path": "./pageobjects/",
+        "title": "Pageobjekt"
+    }
+]

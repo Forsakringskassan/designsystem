@@ -1,0 +1,33 @@
+@use "../../core/size";
+@use "../message-box/message-box";
+@use "../z-index";
+@use "../icon/icon";
+@use "../icon/icon-stack";
+
+// @at-root is used to set these classes globally due to styling scope issue where the component is used out of the styling scope
+@at-root {
+    .offline {
+        @include message-box.messagebox-banner-variant($selector: ".offline", $short-layout: true);
+
+        padding: size.$padding-150;
+
+        // Since @at-root is used also icon classes being used by the component must be redefined,
+        // because they might not exist at the global scope.
+        .icon {
+            @extend %icon--base;
+        }
+
+        .icon-stack {
+            @extend %icon-stack;
+        }
+
+        &__wrapper {
+            position: fixed;
+            position: sticky;
+            z-index: z-index.$OFFLINE_ZINDEX;
+            right: 0;
+            top: 0;
+            left: 0;
+        }
+    }
+}

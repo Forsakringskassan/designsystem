@@ -1,0 +1,33 @@
+@use "../../core/mixins/breakpoints";
+
+.logo {
+    display: inline-block;
+
+    &--small {
+        padding: var(--f-logo-size-small);
+        background: var(--f-logo-image-small);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &--large {
+        padding: var(--f-logo-size-large);
+        background: var(--f-logo-image-large);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &--responsive {
+        padding: var(--f-logo-size-large);
+        background: var(--f-logo-image-large);
+        background-repeat: no-repeat;
+        background-position: center;
+
+        @include breakpoints.breakpoint-only(sm) {
+            padding: var(--f-logo-size-small);
+            background: var(--f-logo-image-small);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+}

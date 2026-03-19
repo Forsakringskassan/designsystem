@@ -1,0 +1,32 @@
+// Selection
+$table-ng-selection-outline: 3px;
+
+// Caption
+$table-ng-caption-background: transparent !default;
+$table-ng-caption-foreground: var(--fkds-color-text-primary) !default;
+
+// Header
+$table-ng-header-background: var(--fkds-color-background-secondary) !default;
+$table-ng-header-foreground: var(--fkds-color-text-primary) !default;
+$table-ng-header-border: 2px solid var(--fkds-color-border-primary) !default;
+
+// Rows -- Flytta till table-ng-rows.scss?
+$table-ng-row-background: var(--fkds-color-background-primary) !default;
+$table-ng-row-background-alt: var(--fkds-color-background-secondary) !default;
+$table-ng-row-foreground: var(--fkds-color-text-primary) !default;
+$table-ng-row-separator: 1px solid var(--fkds-color-border-primary) !default;
+
+// Column
+$table-ng-color-icon-sort-selected: var(--fkds-color-text-primary) !default;
+$table-ng-color-icon-sort-default: var(--fkds-color-text-secondary) !default;
+
+// Cell
+$table-ng-cell-color-hover-background: var(--fkds-color-action-background-secondary-hover) !default;
+$table-ng-button-primary-color-background-default: var(--fkds-color-action-background-primary-default) !default;
+$table-ng-button-primary-color-background-hover: var(--fkds-color-action-background-primary-hover) !default;
+$table-ng-cell-color-error: var(--fkds-color-feedback-text-negative) !default;
+$table-ng-cell-color-outline: var(--fkds-color-text-primary) !default;
+$table-ng-cell-color-underline: var(--fkds-color-border-strong) !default;
+$table-ng-cell-color-border: var(--fkds-color-border-primary) !default;
+$table-ng-cell-color-active-menu: var(--fkds-color-action-background-primary-active) !default;
+$table-ng-cell-color-active-menu-text: var(--fkds-color-text-inverted) !default;

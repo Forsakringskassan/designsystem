@@ -1,0 +1,211 @@
+@use "variables" as *;
+
+$handle-offset: ($handle-size + $handle-expand) * 0.5;
+
+:host {
+    display: contents;
+}
+
+:host([hidden]) {
+    display: none;
+}
+
+:host ::slotted(*) {
+    display: contents;
+}
+
+.resize {
+    flex-grow: 1;
+    display: flex;
+    align-items: stretch;
+
+    &--overlay {
+        position: absolute;
+        z-index: 1;
+        background: var(--f-page-layout-background);
+    }
+
+    &--left {
+        flex-direction: row;
+
+        &:not(.resize--disabled) {
+            width: calc(var(--size) + #{$handle-size});
+        }
+
+        .resize__content {
+            flex-direction: row;
+        }
+
+        &.resize--overlay {
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+    }
+
+    &--right {
+        flex-direction: row-reverse;
+
+        &:not(.resize--disabled) {
+            width: calc(var(--size) + #{$handle-size});
+        }
+
+        .resize__content {
+            flex-direction: row;
+        }
+
+        &.resize--overlay {
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+    }
+
+    &--top {
+        flex-direction: column;
+
+        &:not(.resize--disabled) {
+            height: calc(var(--size) + #{$handle-size});
+        }
+    }
+
+    &--bottom {
+        flex-direction: column-reverse;
+
+        &:not(.resize--disabled) {
+            height: calc(var(--size) + #{$handle-size});
+        }
+    }
+
+    &__offset {
+        width: calc(var(--offset) + #{$handle-size});
+    }
+
+    &__content {
+        flex: 1 1 auto;
+        overflow: auto;
+        box-sizing: border-box;
+        display: flex;
+    }
+
+    &--column &__content {
+        flex-direction: column;
+    }
+
+    &--row &__content {
+        flex-direction: row;
+    }
+
+    &--left,
+    &--right {
+        &:not(.resize--disabled) {
+            .resize__content {
+                min-width: var(--min);
+                max-width: var(--max);
+                flex-basis: var(--size);
+            }
+        }
+    }
+
+    &--top,
+    &--bottom {
+        &:not(.resize--disabled) {
+            .resize__content {
+                min-height: var(--min);
+                max-height: var(--max);
+                flex-basis: var(--size);
+            }
+        }
+    }
+}
+
+.resize__handle {
+    flex: 0 0 $handle-size;
+    background: $handle-background;
+    touch-action: none;
+    user-select: none;
+    z-index: 1;
+    position: relative;
+    transition: z-index 0s $transition-duration;
+
+    @media (forced-colors: active) {
+        background: CanvasText;
+    }
+
+    &[aria-orientation="horizontal"] {
+        cursor: row-resize;
+        height: $handle-size;
+
+        &::before {
+            inset: (-$handle-expand) 0;
+        }
+
+        &::after {
+            inset: (-$handle-click-area) 0;
+        }
+    }
+
+    &[aria-orientation="vertical"] {
+        cursor: col-resize;
+        width: $handle-size;
+
+        &::before {
+            inset: 0 (-$handle-expand);
+        }
+
+        &::after {
+            inset: 0 (-$handle-click-area);
+        }
+    }
+
+    &::before {
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        background-color: transparent;
+        transition: background-color $transition-duration ease-in;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+    }
+
+    &:focus::before,
+    &:hover::before,
+    &.drag::before {
+        background-color: $handle-highlight;
+        transition-delay: $transition-delay;
+
+        @media (forced-colors: active) {
+            background-color: Highlight;
+        }
+    }
+
+    /* disable regular focus indicator as this component has its own */
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    /* when focus by keyboard we dont want the delay or transition */
+    &:focus::before {
+        transition: none;
+    }
+
+    /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */
+    &:hover,
+    &:focus,
+    &.drag {
+        z-index: 2;
+        transition: z-index 0s 0s;
+    }
+
+    &.disabled {
+        cursor: auto;
+
+        &::before {
+            display: none;
+        }
+    }
+}

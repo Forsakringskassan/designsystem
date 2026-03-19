@@ -1,0 +1,14 @@
+{
+    "files": [],
+    "references": [
+        {
+            "path": "./tsconfig.examples.json"
+        },
+        {
+            "path": "./tsconfig.cypress.json"
+        },
+        {
+            "path": "./tsconfig.playground.json"
+        }
+    ]
+}

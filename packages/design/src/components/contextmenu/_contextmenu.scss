@@ -1,0 +1,57 @@
+@use "../../core/size";
+@use "../../core/mixins/breakpoints";
+@use "../../core/config-variables";
+@use "../../core/mixins/forcedcolors";
+@use "variables" as *;
+
+.contextmenu {
+    min-width: 260px;
+    background-color: $contextmenu-color-background;
+    color: $contextmenu-color-text-default;
+
+    &__list {
+        margin: 0;
+        border: var(--f-border-width-small) solid $contextmenu-color-border;
+        padding: size.$padding-050;
+        display: block;
+        list-style-type: none;
+
+        &__item {
+            cursor: pointer;
+            white-space: normal;
+            display: flex;
+            align-items: center;
+            padding: size.$padding-075;
+            margin: size.$margin-050 0;
+
+            a,
+            a:visited,
+            a:active {
+                color: $contextmenu-color-text-active;
+            }
+
+            &:hover {
+                color: $contextmenu-color-text-hover;
+                background-color: $contextmenu-color-item-background-hover;
+                @include forcedcolors.hover-indicator(outline, 2px);
+            }
+
+            // when desktop, long texts expands popup
+            @include breakpoints.breakpoint-up(md) {
+                white-space: nowrap;
+            }
+        }
+    }
+
+    &__separator {
+        margin: 0.75rem;
+        height: 1px;
+        border: none;
+        border-top: var(--f-border-width-small) solid $contextmenu-color-separator;
+    }
+
+    &__lefticon {
+        margin-right: 0.75rem;
+        min-width: var(--f-icon-size-small);
+    }
+}

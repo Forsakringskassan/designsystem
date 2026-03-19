@@ -1,0 +1,24 @@
+@use "../../core";
+@use "../../core/config-variables";
+@use "../../core/size";
+
+.fieldset {
+    border: 0;
+    margin: 0 0 core.densify(var(--f-margin-component-bottom));
+    min-width: 0;
+    padding: 0;
+    width: var(--f-width-full);
+
+    &__label {
+        // make this selector more specific than .label
+        &.label {
+            padding: 0;
+            margin-bottom: core.densify(size.$margin-075);
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+}

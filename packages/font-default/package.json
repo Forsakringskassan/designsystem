@@ -1,0 +1,58 @@
+{
+  "name": "@fkui/font-default",
+  "version": "6.39.0",
+  "description": "Försäkringskassan standardfont",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "css"
+  ],
+  "homepage": "https://designsystem.forsakringskassan.se/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/font-default"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "sideEffects": [
+    "./src/**/*.scss"
+  ],
+  "exports": {
+    ".": {
+      "sass": "./src/font.scss"
+    },
+    "./metadata": {
+      "types": "./metadata.d.mts",
+      "import": "./metadata.mjs"
+    },
+    "./fonts/*": "./fonts/*",
+    "./src/*": "./src/*"
+  },
+  "main": "./src/font.scss",
+  "files": [
+    "fonts",
+    "metadata.mjs",
+    "metadata.d.mts",
+    "src"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "inter-ui": "4.1.1"
+  },
+  "devDependencies": {
+    "sass": "1.98.0"
+  },
+  "engines": {
+    "node": ">= 20.11",
+    "npm": ">= 7"
+  },
+  "sass": "./src/font.scss"
+}

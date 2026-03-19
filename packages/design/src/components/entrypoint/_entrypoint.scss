@@ -1,0 +1,33 @@
+@use "../../core";
+@use "../../core/size";
+@use "variables" as *;
+
+.entrypoint {
+    background-color: $entrypoint-color-background-default;
+    color: $entrypoint-color-text-default;
+    border: var(--f-border-width-medium) solid transparent; // forced-colors mode
+    border-radius: var(--f-border-radius-medium);
+    box-shadow: var(--f-button-shadow);
+    font-size: var(--f-font-size-standard);
+    font-weight: var(--f-font-weight-medium);
+    transition: background-color var(--f-animation-duration-medium) ease-out;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: core.densify(size.$margin-150);
+    margin-top: core.densify(size.$margin-025);
+    text-align: left;
+    padding: core.densify(size.$padding-100) size.$padding-100;
+    line-height: var(--f-line-height-large);
+    width: 100%;
+
+    &__icon {
+        margin-left: 2rem;
+        flex-shrink: 0;
+    }
+
+    &:hover {
+        background-color: $entrypoint-color-background-hover;
+    }
+}

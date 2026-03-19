@@ -1,0 +1,70 @@
+@use "focus";
+@use "variables" as *;
+
+@mixin make-button-variant(
+    $name,
+    $shadow,
+    $shadow-hover,
+    $background-color,
+    $color,
+    $color--hover: $color,
+    $color--focus: $color--hover,
+    $color--disabled: $button-color-text-disabled,
+    $background-color--hover: $background-color,
+    $background-color--focus: $background-color--hover,
+    $background-color--disabled: $button-color-background-disabled,
+    $border-color: $button-color-border-default,
+    $border-color--hover: $border-color,
+    $border-color--focus: $border-color--hover,
+    $border-color--disabled: $button-color-border-disabled,
+    $border-width: var(--f-border-width-medium),
+    $padding-top,
+    $padding-right,
+    $padding-bottom,
+    $padding-left
+) {
+    background-color: $background-color;
+    border-color: $border-color;
+    border-width: $border-width;
+    box-shadow: $shadow;
+    color: $color;
+    padding: $padding-top $padding-right $padding-bottom $padding-left;
+
+    &:hover {
+        background-color: $background-color--hover;
+        border-color: $border-color--hover;
+        color: $color--hover;
+        box-shadow: $shadow-hover;
+    }
+
+    &:active,
+    &:focus {
+        @include focus.focus-indicator;
+
+        background-color: $background-color--focus;
+        border-color: $border-color--focus;
+        color: $color--focus;
+    }
+
+    &.disabled,
+    &.disabled:hover,
+    &:disabled,
+    &:disabled:hover,
+    &[aria-disabled="true"],
+    &[aria-disabled="true"]:hover,
+    &#{$name}--disabled,
+    &#{$name}--disabled:hover {
+        background-color: $background-color--disabled;
+        border-color: $border-color--disabled;
+        color: $color--disabled;
+        pointer-events: none;
+    }
+
+    &[aria-disabled="true"] {
+        pointer-events: none;
+        @media (forced-colors: active) {
+            color: GrayText;
+            border-color: GrayText;
+        }
+    }
+}

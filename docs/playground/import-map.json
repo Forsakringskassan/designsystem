@@ -1,0 +1,11 @@
+{
+    "imports": {
+        "@fkui/date": "https://unpkg.com/@fkui/date@latest/lib/esm/index.js",
+        "@fkui/logic": "https://unpkg.com/@fkui/logic@latest/lib/esm/index.js",
+        "@fkui/vue": "https://unpkg.com/@fkui/vue@latest/dist/esm/index.esm.js",
+        "@fkui/icon-lib-default/dist/f/injectSpritesheet": "https://unpkg.com/@fkui/icon-lib-default@latest/dist/f/injectSpritesheet",
+        "@fkui/vue-labs": "https://unpkg.com/@fkui/vue-labs@latest/dist/esm/index.esm.js",
+        "@vueuse/core": "https://unpkg.com/@vueuse/core@latest/dist/index.js",
+        "@vueuse/shared": "https://unpkg.com/@vueuse/shared@latest/dist/index.js"
+    }
+}

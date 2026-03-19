@@ -1,0 +1,88 @@
+@use "../../core/config-variables";
+@use "../../core/size";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: var(--f-font-weight-bold);
+    margin-bottom: size.$margin-025;
+    line-height: var(--f-line-height-medium);
+}
+h1 {
+    font-size: var(--f-font-size-h1);
+    color: var(--f-text-color-heading-1);
+}
+h2 {
+    font-size: var(--f-font-size-h2);
+    color: var(--f-text-color-heading-2);
+}
+h3 {
+    font-size: var(--f-font-size-h3);
+    color: var(--f-text-color-heading-3);
+}
+h4 {
+    font-size: var(--f-font-size-h4);
+    color: var(--f-text-color-heading-4);
+}
+h5 {
+    font-size: var(--f-font-size-large);
+    color: var(--f-text-color-heading-5);
+}
+h6 {
+    font-size: var(--f-font-size-standard);
+    color: var(--f-text-color-heading-6);
+}
+.heading--strong {
+    font-size: var(--f-font-size-large);
+    font-weight: var(--f-font-weight-medium);
+}
+
+* + h1,
+* + h2,
+* + h3,
+* + h4,
+* + h5,
+* + h6 {
+    margin-top: size.$margin-200;
+}
+
+@media (max-width: config-variables.$f-breakpoint-medium) {
+    h1 {
+        font-size: var(--f-font-size-h2);
+    }
+    h2 {
+        font-size: var(--f-font-size-xxx-large);
+    }
+    h3 {
+        font-size: var(--f-font-size-h4);
+    }
+    h4 {
+        font-size: var(--f-font-size-large);
+    }
+    h5 {
+        font-size: var(--f-font-size-standard);
+    }
+    h6 {
+        font-size: var(--f-font-size-standard);
+    }
+    .heading--strong {
+        font-size: var(--f-font-size-large);
+        font-weight: var(--f-font-weight-medium);
+    }
+}
+
+@for $i from 1 through 6 {
+    .heading--h#{$i} {
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+        @extend h#{$i};
+    }
+}
+
+@for $i from 1 through 5 {
+    h#{$i} + h#{$i + 1} {
+        margin-top: size.$margin-100;
+    }
+}

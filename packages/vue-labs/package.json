@@ -1,0 +1,103 @@
+{
+  "name": "@fkui/vue-labs",
+  "version": "6.39.0",
+  "description": "Experimental and unstable FKUI components",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "vue"
+  ],
+  "homepage": "https://designsystem.forsakringskassan.se/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/vue-labs"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.cjs.js",
+      "import": "./dist/esm/index.esm.js"
+    },
+    "./cypress": {
+      "types": "./dist/types/cypress.d.ts",
+      "require": "./dist/cjs/cypress.cjs.js",
+      "import": "./dist/esm/cypress.esm.js"
+    },
+    "./style.css": "./dummy.css",
+    "./htmlvalidate": "./htmlvalidate/index.cjs"
+  },
+  "main": "./dist/cjs/index.cjs.js",
+  "module": "./dist/esm/index.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "dummy.css",
+    "htmlvalidate",
+    "!**/examples/**",
+    "!**/*.spec.{js,ts,d.ts,d.ts.map}",
+    "!**/.eslintrc.json"
+  ],
+  "scripts": {
+    "prebuild": "run-s clean",
+    "build": "run-s build:lib build:pageobjects build:dts build:api",
+    "build:api": "fk-api-extractor --patch-augmentations api-extractor.*.json",
+    "build:dts": "vue-tsc -b",
+    "build:lib": "fk-build-vue-lib",
+    "build:pageobjects": "node build-pageobjects.mjs",
+    "clean": "rimraf -g .jest-cache *.tsbuildinfo coverage dist public temp test-results",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "start": "vite --",
+    "start:docs": "fkui-serve public",
+    "test": "jest --coverage",
+    "unit": "jest",
+    "unit:watch": "jest --watch"
+  },
+  "jest": {
+    "preset": "@forsakringskassan/jest-config-vue",
+    "setupFilesAfterEnv": [
+      "./jest.setup.ts"
+    ]
+  },
+  "devDependencies": {
+    "@fkui/date": "6.39.0",
+    "@fkui/design": "6.39.0",
+    "@fkui/icon-lib-default": "6.39.0",
+    "@fkui/logic": "6.39.0",
+    "@fkui/test-utils": "6.39.0",
+    "@fkui/theme-default": "6.39.0",
+    "@fkui/vue": "6.39.0",
+    "@forsakringskassan/docs-generator": "2.38.3",
+    "@forsakringskassan/vite-lib-config": "4.3.7",
+    "@vue/test-utils": "2.4.6",
+    "esbuild": "0.27.4",
+    "vite": "7.3.1",
+    "vue": "3.5.30",
+    "vue-router": "4.6.4"
+  },
+  "peerDependencies": {
+    "@fkui/date": "^6.39.0",
+    "@fkui/design": "^6.39.0",
+    "@fkui/logic": "^6.39.0",
+    "@fkui/vue": "^6.39.0",
+    "html-validate": ">= 7.9.0",
+    "vue": "^3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "html-validate": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  },
+  "dependencies": {
+    "@vueuse/core": "12.8.2"
+  }
+}

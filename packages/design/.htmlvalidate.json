@@ -1,0 +1,5 @@
+{
+    "rules": {
+        "no-inline-style": "off"
+    }
+}

@@ -1,0 +1,39 @@
+/* Styling only for demo page. Do not include this file in your project! */
+html,
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.icon {
+    width: 4em;
+    height: 4em;
+    margin: 0.5em;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 800px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: thin solid #ccc;
+    padding: 20px;
+    margin: 5px;
+    width: 125px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+small {
+    color: #999;
+    font-size: 0.75em;
+    white-space: nowrap;
+}
