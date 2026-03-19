@@ -41,9 +41,9 @@ search:
                     Formulär (FForm) och formulärsteg (FFormStep) borttagna.
                 </td>
             </tr>
-            <tr class="table__row supported">
+           <tr class="table__row obsolete">
                 <td class="table__column table__column--text ">v5</td>
-                <td class="table__column table__column--text">underhåll</td>
+                <td class="table__column table__column--text">utgått</td>
                 <td class="table__column table__column--text">2023-09</td>
                 <td class="table__column table__column--text">2026-02</td>
                 <td class="table__column table__column--text">
@@ -71,14 +71,15 @@ search:
     </table>
 </div>
 
-Status
-: **Aktiv**: Vi släpper ny funktionalitet och fixar buggar i releasen.
-: **Underhåll**: Vi fixar endast kritiska buggar.
-Vanligtvis fixar vi kritiska buggar upp till ett år efter att ny release är släppt.
-: **Utgått**: Vi stödjer inte releasen längre och inga uppdateringar sker.
+Status  
+**Aktiv**: Vi släpper ny funktionalitet och fixar buggar i releasen.  
+**Underhåll**: Vi fixar endast kritiska buggar.  
+Vanligtvis fixar vi kritiska buggar upp till ett år efter att ny release är släppt.  
+**Utgått**: Vi stödjer inte releasen längre och inga uppdateringar sker.
 
 Deprekering
-: Förvarning om att komponent eller funktion kommer tas bort. Det sker cirka ett år efter att en komponent eller funktion blivit deprekerad.
+: Förvarning om att komponent eller funktion kommer tas bort.
+Det sker cirka ett år efter att en komponent eller funktion blivit deprekerad.
 
 Borttagna komponenter
 : När komponent tas bort kommer det finnas en rekommenderad ersättningskomponent tillsammans med en migreringsguide.
