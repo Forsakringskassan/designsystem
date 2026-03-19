@@ -4542,6 +4542,9 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     const hasError = computed3(() => validity.value.validityMode === "ERROR");
     const viewModeAriaInvalid = computed3(() => !inEdit.value && hasError.value ? true : void 0);
     const viewModeErrorMessage = computed3(() => !inEdit.value && hasError.value ? validity.value.validationMessage : void 0);
+    let initialValidity = {
+      ...validity.value
+    };
     const divClasses = computed3(() => {
       return {
         "table-ng__editable": true,
@@ -4689,6 +4692,9 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         width
       } = tdElement.value.getBoundingClientRect();
       initialViewValue = viewValue.value;
+      initialValidity = {
+        ...validity.value
+      };
       viewValue.value = value;
       tdElement.value.style.setProperty("width", `${String(width)}px`);
       inputElement.value.tabIndex = 0;
@@ -4751,6 +4757,9 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       switch (event.key) {
         case "Enter": {
           if (viewValue.value === initialViewValue) {
+            validity.value = {
+              ...initialValidity
+            };
             onStopEdit({
               reason: "enter"
             });
