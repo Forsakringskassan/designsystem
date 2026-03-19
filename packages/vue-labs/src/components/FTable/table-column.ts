@@ -143,26 +143,26 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
 ): NormalizedTableColumn<T, K> {
     const base = normalizeBaseColumn(column);
     if ("render" in column) {
-        return {
+        return Object.freeze({
             ...normalizeRenderColumn(column),
             ...base,
-        } satisfies NormalizedTableColumnRender<T>;
+        } satisfies NormalizedTableColumnRender<T>);
     }
     switch (column.type) {
         case "checkbox":
-            return {
+            return Object.freeze({
                 ...normalizeCheckboxColumn(column),
                 ...base,
                 component: ITableCheckbox,
-            } satisfies NormalizedTableColumnCheckbox<T, K>;
+            } satisfies NormalizedTableColumnCheckbox<T, K>);
         case "text:currency":
         case "text:number":
         case "text:percent":
-            return {
+            return Object.freeze({
                 ...normalizeNumberColumn(column),
                 ...base,
                 component: ITableText,
-            } satisfies NormalizedTableColumnNumber<T, K>;
+            } satisfies NormalizedTableColumnNumber<T, K>);
         case "text":
         case "text:bankAccountNumber":
         case "text:bankgiro":
@@ -174,47 +174,47 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
         case "text:phoneNumber":
         case "text:plusgiro":
         case "text:postalCode":
-            return {
+            return Object.freeze({
                 ...normalizeTextColumn(column),
                 ...base,
                 component: ITableText,
-            } satisfies NormalizedTableColumnText<T, K>;
+            } satisfies NormalizedTableColumnText<T, K>);
         case "rowheader":
-            return {
+            return Object.freeze({
                 ...normalizeRowHeaderColumn(column),
                 ...base,
                 component: ITableRowheader,
-            } satisfies NormalizedTableColumnRowHeader<T, K>;
+            } satisfies NormalizedTableColumnRowHeader<T, K>);
         case "anchor":
-            return {
+            return Object.freeze({
                 ...normalizeAnchorColumn(column),
                 ...base,
                 component: ITableAnchor,
-            } satisfies NormalizedTableColumnAnchor<T, K>;
+            } satisfies NormalizedTableColumnAnchor<T, K>);
         case "button":
-            return {
+            return Object.freeze({
                 ...normalizeButtonColumn(column),
                 ...base,
                 component: ITableButton,
-            } satisfies NormalizedTableColumnButton<T, K>;
+            } satisfies NormalizedTableColumnButton<T, K>);
         case "select":
-            return {
+            return Object.freeze({
                 ...normalizeSelectColumn(column),
                 ...base,
                 component: ITableSelect,
-            } satisfies NormalizedTableColumnSelect<T, K>;
+            } satisfies NormalizedTableColumnSelect<T, K>);
         case "menu":
-            return {
+            return Object.freeze({
                 ...normalizeMenuColumn(column),
                 ...base,
                 component: ITableMenu,
-            } satisfies NormalizedTableColumnMenu<T>;
+            } satisfies NormalizedTableColumnMenu<T>);
         case undefined:
-            return {
+            return Object.freeze({
                 ...normalizeSimpleColumn(column),
                 ...base,
                 component: ITableText,
-            } satisfies NormalizedTableColumnText<T, K>;
+            } satisfies NormalizedTableColumnText<T, K>);
     }
 }
 
