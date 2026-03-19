@@ -34,6 +34,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                cursor: pointer;
 
                 span {
                     display: -webkit-box;
@@ -43,7 +44,6 @@
                     font-weight: var(--f-font-weight-medium);
                     font-size: var(--f-font-size-standard);
                     text-align: left;
-                    cursor: pointer;
                 }
 
                 .icon {

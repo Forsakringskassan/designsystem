@@ -3,8 +3,9 @@ import { computed, ref, useTemplateRef } from "vue";
 import { useTranslate } from "@fkui/vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableRadio from "./ITableRadio.vue";
+import { type NormalizedTableColumnRadio } from "./columns";
 import { type FTableCellApi } from "./f-table-api";
-import { type NormalizedTableColumnCheckbox, type NormalizedTableColumnRadio } from "./table-column";
+import { type NormalizedTableColumnCheckbox } from "./table-column";
 
 const {
     selectable,

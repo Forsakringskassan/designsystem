@@ -26,7 +26,7 @@ import { ValidityEvent } from '@fkui/logic';
 import { VNode } from 'vue';
 
 // @public (undocumented)
-export const baseTypes: readonly ["anchor", "button", "checkbox", "radio", "render", "rowheader", "select"];
+export const baseTypes: readonly ["anchor", "button", "checkbox", "render", "rowheader", "select"];
 
 // @public (undocumented)
 export function defineTableColumns<T, K extends keyof T = keyof T>(columns: Array<TableColumn<T, K>>): Array<TableColumn<T, K>>;
@@ -115,7 +115,7 @@ export function removeRow<T>(rows: T[], row: T, expandableAttribute?: keyof T): 
 export function splitHoursMinutes(valueString: string, extraForgiving?: boolean): string[];
 
 // @public (undocumented)
-export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K> | TableColumnCheckbox<T, K> | TableColumnRadio<T, K> | TableColumnRowHeader<T, K> | TableColumnText<T, K> | TableColumnNumber<T, K> | TableColumnAnchor<T, K> | TableColumnButton<T, K> | TableColumnRender<T, K> | TableColumnSelect<T, K> | TableColumnMenu<T>;
+export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K> | TableColumnCheckbox<T, K> | TableColumnRowHeader<T, K> | TableColumnText<T, K> | TableColumnNumber<T, K> | TableColumnAnchor<T, K> | TableColumnButton<T, K> | TableColumnRender<T, K> | TableColumnSelect<T, K> | TableColumnMenu<T>;
 
 // @public (undocumented)
 export interface TableColumnAnchor<T, K extends keyof T> extends TableColumnBase {
@@ -214,20 +214,6 @@ export interface TableColumnNumber<T, K extends keyof T> extends TableColumnBase
     validation?: ValidatorConfigs;
     // (undocumented)
     value?(this: void, row: T): string | number;
-}
-
-// @public (undocumented)
-export interface TableColumnRadio<T, K extends keyof T> extends TableColumnBase {
-    // (undocumented)
-    checked?(this: void, row: T): boolean;
-    // (undocumented)
-    key?: K;
-    // (undocumented)
-    label?(this: void, row: T): string;
-    // (undocumented)
-    type: "radio";
-    // (undocumented)
-    update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
 }
 
 // @public (undocumented)

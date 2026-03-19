@@ -36,14 +36,6 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
             return "Kryssruta label";
         },
     },
-    radio: {
-        type: "radio",
-        header: "Radioknapp",
-        key: "value",
-        label: () => {
-            return "Radioknapp label";
-        },
-    },
     "text:currency": {
         type: "text:currency",
         header: "Valuta",
@@ -218,7 +210,6 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
 
 const rowData: Record<TableColumnType, Array<string | number | boolean>> = {
     checkbox: [true, false],
-    radio: [true, false],
     "text:currency": [3453455, 10000],
     "text:number": [5.4, 10.5],
     "text:percent": [9.987, 51],
@@ -396,7 +387,6 @@ export default defineComponent({
             <template #label> Kolumntyp </template>
             <option value="text">Text</option>
             <option value="checkbox">Kryssruta</option>
-            <option value="radio">Radioknapp</option>
             <option value="rowheader">Radrubrik</option>
             <option value="anchor">Länk</option>
             <option value="button">Knapp</option>

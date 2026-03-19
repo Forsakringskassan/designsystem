@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T, K extends keyof T">
 import { computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
+import { type NormalizedTableColumnRadio } from "./columns";
 import { type FTableCellApi } from "./f-table-api";
-import { type NormalizedTableColumnRadio } from "./table-column";
 
 const { column, row } = defineProps<{
     column: NormalizedTableColumnRadio<T, K>;

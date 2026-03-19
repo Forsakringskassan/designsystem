@@ -159,6 +159,8 @@ export default defineComponent({
                             document.addEventListener("click", this.onDocumentClickHandler);
                             /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                             window.addEventListener("resize", this.onWindowResizeDebounced);
+                            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+                            window.addEventListener("scroll", this.onScrollDebounced, { capture: true });
                         }
                     }, 0);
                 } else {
@@ -166,6 +168,8 @@ export default defineComponent({
                     document.removeEventListener("click", this.onDocumentClickHandler);
                     /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                     window.removeEventListener("resize", this.onWindowResizeDebounced);
+                    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+                    window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
                 }
             },
         },
@@ -173,6 +177,8 @@ export default defineComponent({
     created() {
         /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+        this.onScrollDebounced = debounce(this.onScroll, 100).bind(this);
     },
     unmounted() {
         // Clean up if unmounted but still opened
@@ -180,6 +186,8 @@ export default defineComponent({
         document.removeEventListener("click", this.onDocumentClickHandler);
         /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         window.removeEventListener("resize", this.onWindowResizeDebounced);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+        window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
     },
     methods: {
         async toggleIsOpen(isOpen: boolean): Promise<void> {
@@ -202,7 +210,7 @@ export default defineComponent({
             this.applyFocus();
             this.$emit("open");
         },
-        async calculatePlacement(): Promise<void> {
+        async calculatePlacement(options?: { horizontalOnly: boolean }): Promise<void> {
             const popup = getHTMLElementFromVueRef(this.$refs.popup);
             const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
             const anchor = getElement(this.anchor);
@@ -229,6 +237,10 @@ export default defineComponent({
                 const useOverlay = this.forceOverlay || result.placement !== Placement.Fallback;
                 if (useOverlay) {
                     wrapper.style.left = `${String(result.x)}px`;
+                    if (options?.horizontalOnly) {
+                        return;
+                    }
+
                     wrapper.style.top = `${String(result.y)}px`;
                     return;
                 }
@@ -279,7 +291,25 @@ export default defineComponent({
             // Overwritten in created so that the debounced `onWindowResize`
             // method can be removed by removeEventListener.
         },
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars -- Need to match actual `onScroll` method.
+        onScrollDebounced(event: Event): void {
+            // Overwritten in created so that the debounced `onScroll`
+            // method can be removed by removeEventListener.
+        },
         async onWindowResize(): Promise<void> {
+            await this.recalculatePlacement();
+        },
+        async onScroll(event: Event): Promise<void> {
+            if (this.isInline) {
+                return;
+            }
+            const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
+            if (isPopupTarget) {
+                return;
+            }
+            await this.recalculatePlacement({ horizontalOnly: true });
+        },
+        async recalculatePlacement(options?: { horizontalOnly: boolean }): Promise<void> {
             // Abort if popup was closed during debounce.
             if (!this.isOpen) {
                 return;
@@ -300,7 +330,7 @@ export default defineComponent({
                 await this.$nextTick();
             }
 
-            await this.calculatePlacement();
+            await this.calculatePlacement(options);
             const { placement, forceInline, forceOverlay } = this;
             this.teleportDisabled = isTeleportDisabled({ window, placement, forceInline, forceOverlay });
         },

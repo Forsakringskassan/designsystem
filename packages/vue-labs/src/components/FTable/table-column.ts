@@ -2,7 +2,6 @@ import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
 import ITableMenu from "./ITableMenu.vue";
-import ITableRadio from "./ITableRadio.vue";
 import ITableRowheader from "./ITableRowheader.vue";
 import ITableSelect from "./ITableSelect.vue";
 import ITableText from "./ITableText.vue";
@@ -12,7 +11,6 @@ import {
     type NormalizedTableColumnCheckbox,
     type NormalizedTableColumnMenu,
     type NormalizedTableColumnNumber,
-    type NormalizedTableColumnRadio,
     type NormalizedTableColumnRender,
     type NormalizedTableColumnRowHeader,
     type NormalizedTableColumnSelect,
@@ -22,7 +20,6 @@ import {
     type TableColumnCheckbox,
     type TableColumnMenu,
     type TableColumnNumber,
-    type TableColumnRadio,
     type TableColumnRender,
     type TableColumnRowHeader,
     type TableColumnSelect,
@@ -34,7 +31,6 @@ import {
     normalizeCheckboxColumn,
     normalizeMenuColumn,
     normalizeNumberColumn,
-    normalizeRadioColumn,
     normalizeRenderColumn,
     normalizeRowHeaderColumn,
     normalizeSelectColumn,
@@ -49,7 +45,6 @@ export {
     type NormalizedTableColumnCheckbox,
     type NormalizedTableColumnMenu,
     type NormalizedTableColumnNumber,
-    type NormalizedTableColumnRadio,
     type NormalizedTableColumnRender,
     type NormalizedTableColumnRowHeader,
     type NormalizedTableColumnSelect,
@@ -60,7 +55,6 @@ export {
     type TableColumnCheckbox,
     type TableColumnMenu,
     type TableColumnNumber,
-    type TableColumnRadio,
     type TableColumnRender,
     type TableColumnRowHeader,
     type TableColumnSelect,
@@ -89,7 +83,6 @@ export type TableColumnType =
 export type TableColumn<T, K extends keyof T = keyof T> =
     | TableColumnSimple<T, K>
     | TableColumnCheckbox<T, K>
-    | TableColumnRadio<T, K>
     | TableColumnRowHeader<T, K>
     | TableColumnText<T, K>
     | TableColumnNumber<T, K>
@@ -104,7 +97,6 @@ export type TableColumn<T, K extends keyof T = keyof T> =
  */
 export type NormalizedTableColumn<T, K> =
     | NormalizedTableColumnCheckbox<T, K>
-    | NormalizedTableColumnRadio<T, K>
     | NormalizedTableColumnRowHeader<T, K>
     | NormalizedTableColumnText<T, K>
     | NormalizedTableColumnNumber<T, K>
@@ -126,9 +118,6 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumnCheckbox<T, K>,
 ): NormalizedTableColumnCheckbox<T, K>;
-export function normalizeTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnRadio<T, K>,
-): NormalizedTableColumnRadio<T, K>;
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumnAnchor<T, K>,
 ): NormalizedTableColumnAnchor<T, K>;
@@ -166,12 +155,6 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
                 ...base,
                 component: ITableCheckbox,
             } satisfies NormalizedTableColumnCheckbox<T, K>;
-        case "radio":
-            return {
-                ...normalizeRadioColumn(column),
-                ...base,
-                component: ITableRadio,
-            } satisfies NormalizedTableColumnRadio<T, K>;
         case "text:currency":
         case "text:number":
         case "text:percent":
@@ -247,9 +230,6 @@ export function defineTableColumn<T, K extends keyof T = keyof T>(
 export function defineTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumnCheckbox<T, K>,
 ): TableColumnCheckbox<T, K>;
-export function defineTableColumn<T, K extends keyof T = keyof T>(
-    column: TableColumnRadio<T, K>,
-): TableColumnRadio<T, K>;
 export function defineTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumnAnchor<T, K>,
 ): TableColumnAnchor<T, K>;
