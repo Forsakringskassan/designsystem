@@ -4165,21 +4165,25 @@ var IPopup_default = defineComponent12({
             if (this.isOpen) {
               document.addEventListener("click", this.onDocumentClickHandler);
               window.addEventListener("resize", this.onWindowResizeDebounced);
+              window.addEventListener("scroll", this.onScrollDebounced, { capture: true });
             }
           }, 0);
         } else {
           document.removeEventListener("click", this.onDocumentClickHandler);
           window.removeEventListener("resize", this.onWindowResizeDebounced);
+          window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
         }
       }
     }
   },
   created() {
     this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
+    this.onScrollDebounced = debounce(this.onScroll, 100).bind(this);
   },
   unmounted() {
     document.removeEventListener("click", this.onDocumentClickHandler);
     window.removeEventListener("resize", this.onWindowResizeDebounced);
+    window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
   },
   methods: {
     async toggleIsOpen(isOpen) {
@@ -4196,7 +4200,7 @@ var IPopup_default = defineComponent12({
       this.applyFocus();
       this.$emit("open");
     },
-    async calculatePlacement() {
+    async calculatePlacement(options) {
       const popup = getHTMLElementFromVueRef(this.$refs.popup);
       const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
       const anchor = getElement(this.anchor);
@@ -4219,6 +4223,9 @@ var IPopup_default = defineComponent12({
         const useOverlay = this.forceOverlay || result.placement !== "Fallback" /* Fallback */;
         if (useOverlay) {
           wrapper.style.left = `${String(result.x)}px`;
+          if (options?.horizontalOnly) {
+            return;
+          }
           wrapper.style.top = `${String(result.y)}px`;
           return;
         }
@@ -4261,7 +4268,23 @@ var IPopup_default = defineComponent12({
     },
     onWindowResizeDebounced() {
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars -- Need to match actual `onScroll` method.
+    onScrollDebounced(event) {
+    },
     async onWindowResize() {
+      await this.recalculatePlacement();
+    },
+    async onScroll(event) {
+      if (this.isInline) {
+        return;
+      }
+      const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
+      if (isPopupTarget) {
+        return;
+      }
+      await this.recalculatePlacement({ horizontalOnly: true });
+    },
+    async recalculatePlacement(options) {
       if (!this.isOpen) {
         return;
       }
@@ -4276,7 +4299,7 @@ var IPopup_default = defineComponent12({
         this.teleportDisabled = false;
         await this.$nextTick();
       }
-      await this.calculatePlacement();
+      await this.calculatePlacement(options);
       const { placement, forceInline, forceOverlay } = this;
       this.teleportDisabled = isTeleportDisabled({ window, placement, forceInline, forceOverlay });
     },

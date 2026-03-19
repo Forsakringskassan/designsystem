@@ -4543,6 +4543,9 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     const hasError = computed3(() => validity.value.validityMode === "ERROR");
     const viewModeAriaInvalid = computed3(() => !inEdit.value && hasError.value ? true : void 0);
     const viewModeErrorMessage = computed3(() => !inEdit.value && hasError.value ? validity.value.validationMessage : void 0);
+    let initialValidity = {
+      ...validity.value
+    };
     const divClasses = computed3(() => {
       return {
         "table-ng__editable": true,
@@ -4690,6 +4693,9 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         width
       } = tdElement.value.getBoundingClientRect();
       initialViewValue = viewValue.value;
+      initialValidity = {
+        ...validity.value
+      };
       viewValue.value = value;
       tdElement.value.style.setProperty("width", `${String(width)}px`);
       inputElement.value.tabIndex = 0;
@@ -4752,6 +4758,9 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       switch (event.key) {
         case "Enter": {
           if (viewValue.value === initialViewValue) {
+            validity.value = {
+              ...initialValidity
+            };
             onStopEdit({
               reason: "enter"
             });
@@ -5497,26 +5506,32 @@ var _hoisted_2$1 = {
   "data-test": "caption"
 };
 var _hoisted_3$1 = {
+  key: 1
+};
+var _hoisted_4$1 = {
   class: "table-ng__row",
   "aria-rowindex": "1"
 };
-var _hoisted_4$1 = {
+var _hoisted_5$1 = {
   key: 0,
   scope: "col",
   tabindex: "-1",
   class: "table-ng__column"
 };
-var _hoisted_5$1 = {
+var _hoisted_6$1 = {
+  key: 2
+};
+var _hoisted_7$1 = {
   key: 0,
   class: "table-ng__row--empty"
 };
-var _hoisted_6$1 = ["colspan"];
-var _hoisted_7$1 = ["aria-level", "aria-rowindex", "aria-setsize", "aria-posinset", "aria-selected"];
-var _hoisted_8 = {
-  key: 1
+var _hoisted_8 = ["colspan"];
+var _hoisted_9 = ["aria-level", "aria-rowindex", "aria-setsize", "aria-posinset", "aria-selected"];
+var _hoisted_10 = {
+  key: 3
 };
-var _hoisted_9 = ["aria-rowindex"];
-var _hoisted_10 = ["colspan"];
+var _hoisted_11 = ["aria-rowindex"];
+var _hoisted_12 = ["colspan"];
 var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
   __name: "FTable",
   props: /* @__PURE__ */ mergeModels({
@@ -5567,24 +5582,35 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       return metaRows.value.length === 0;
     });
     const ariaRowcount = computed3(() => {
-      const headerRow = 1;
       const footerRow = hasFooter.value ? 1 : 0;
-      return getBodyRowCount(keyedRows.value, __props.expandableAttribute) + headerRow + footerRow;
+      if (!hasColumns.value) {
+        return footerRow;
+      }
+      const headerRow = 1;
+      const bodyRows = getBodyRowCount(keyedRows.value, __props.expandableAttribute);
+      return bodyRows + headerRow + footerRow;
     });
-    const columnCount = computed3(() => {
-      const expandCol = isTreegrid.value ? 1 : 0;
-      const selectCol = __props.selectable ? 1 : 0;
-      const count = columns.value.length + expandCol + selectCol;
-      return Math.max(1, count);
+    const fullColspan = computed3(() => {
+      if (!hasColumns.value) {
+        return 0;
+      }
+      let count = columns.value.length;
+      if (isTreegrid.value) {
+        count += 1;
+      }
+      if (__props.selectable) {
+        count += 1;
+      }
+      return count;
     });
-    const expandableRowColumnCount = computed3(() => {
-      const expandCol = isTreegrid.value ? 1 : 0;
-      return Math.max(1, columnCount.value - expandCol);
+    const expandedColspan = computed3(() => {
+      return fullColspan.value - 1;
     });
     const hasFooter = computed3(() => {
       return hasSlot("footer");
     });
     const columns = computed3(() => normalizeTableColumns(__props.columns).filter((col) => toValue2(col.enabled)));
+    const hasColumns = computed3(() => columns.value.length > 0);
     const tableClasses = computed3(() => {
       return ["table-ng", {
         "table-ng--striped": __props.striped,
@@ -5748,7 +5774,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
+      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), hasColumns.value ? (openBlock(), createElementBlock("thead", _hoisted_3$1, [createElementVNode("tr", _hoisted_4$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
         key: 1,
         ref: bindCellApiRef,
         state: unref3(selectableHeaderState)(),
@@ -5763,10 +5789,10 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           scope: "col",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])]), _cache[5] || (_cache[5] = createTextVNode()), createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
-        colspan: columnCount.value,
+      }), 128))])])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), hasColumns.value ? (openBlock(), createElementBlock("tbody", _hoisted_6$1, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_7$1, [createElementVNode("td", {
+        colspan: fullColspan.value,
         class: "table-ng__cell"
-      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment2, {
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_8)])) : (openBlock(true), createElementBlock(Fragment2, {
         key: 1
       }, renderList(metaRows.value, ({
         key,
@@ -5796,7 +5822,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           onToggle: onToggleExpanded
         }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$f, {
           key: 1,
-          colspan: expandableRowColumnCount.value
+          colspan: expandedColspan.value
         }, {
           default: withCtx(() => [renderSlot(_ctx.$slots, "expandable", mergeProps({
             ref_for: true
@@ -5831,14 +5857,14 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
             key: 1,
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
-        }), 128))], 64))], 8, _hoisted_7$1);
-      }), 128))]), _cache[6] || (_cache[6] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
+        }), 128))], 64))], 8, _hoisted_9);
+      }), 128))])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_10, [createElementVNode("tr", {
         class: "table-ng__row",
         "aria-rowindex": ariaRowcount.value
       }, [createElementVNode("td", {
-        colspan: columnCount.value,
+        colspan: fullColspan.value,
         class: "table-ng__cell--custom"
-      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)], 42, _hoisted_1$2);
+      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_12)], 8, _hoisted_11)])) : createCommentVNode("", true)], 42, _hoisted_1$2);
     };
   }
 });
