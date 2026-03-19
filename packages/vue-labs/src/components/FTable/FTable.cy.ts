@@ -2214,6 +2214,47 @@ describe("13 Cell interaction states", () => {
             table.el().toMatchScreenshot();
         });
     }
+
+    for (const mode of Object.values(forcedColorModes)) {
+        it(`13.3 should render focus outline on bulk selection header cell, ${mode} (visual)`, () => {
+            interface Row {
+                text: string;
+            }
+
+            const rows: Row[] = [{ text: "A1" }, { text: "A2" }];
+
+            const columns = defineTableColumns<Row>([
+                {
+                    type: "text",
+                    header: "A",
+                    key: "text",
+                },
+            ]);
+
+            const selectedRows: Row[] = [];
+
+            cy.forcedColors(mode);
+            const modeDescription =
+                mode === "none" ? " (normal mode)" : ` (${mode} mode)`;
+            const caption = `Verifierar fokusmarkering för markeringskolumnens rubrik ${modeDescription}`;
+
+            cy.mount(FTable<Row>, {
+                props: {
+                    rows,
+                    columns,
+                    selectable: "multi",
+                    selectedRows,
+                },
+                slots: {
+                    caption,
+                },
+            });
+
+            table.selectHeaderInput().focus().should("be.focused");
+
+            table.el().toMatchScreenshot();
+        });
+    }
 });
 
 describe("columns", () => {
