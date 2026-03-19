@@ -32,7 +32,7 @@ function setup(options) {
 import { defineComponent as _defineComponent } from "vue";
 
 // packages/vue-labs/dist/esm/index.esm.js
-import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, mergeProps, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
+import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, mergeProps, vModelText, withKeys, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
 import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
@@ -4783,17 +4783,8 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         }
       }
     }
-    function isSpaceKey(event) {
-      return event.code === "Space";
-    }
     function onKeydown(event) {
       const editing = document.activeElement === inputElement.value;
-      if (!__props.column.editable(__props.row)) {
-        if (isSpaceKey(event)) {
-          event.preventDefault();
-        }
-        return;
-      }
       if (editing) {
         onEditingKeydown(event);
       } else {
@@ -4855,7 +4846,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         onKeydown
       }, [createElementVNode("div", {
         class: normalizeClass(divClasses.value)
-      }, [createElementVNode("span", _hoisted_2$2, toDisplayString(fromColumnValue()), 1), _cache[1] || (_cache[1] = createTextVNode()), viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$2, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), withDirectives(createElementVNode("input", mergeProps({
+      }, [createElementVNode("span", _hoisted_2$2, toDisplayString(fromColumnValue()), 1), _cache[2] || (_cache[2] = createTextVNode()), viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$2, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("input", mergeProps({
         id: unref3(inputId),
         ref: "input",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => viewValue.value = $event),
@@ -4871,7 +4862,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         "aria-hidden": !inEdit.value,
         onValidity,
         onPendingValidity
-      }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]])], 2), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref3(IPopupError), {
+      }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]])], 2), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref3(IPopupError), {
         anchor: tdElement.value,
         "is-open": openPopupError.value,
         "error-message": validity.value.validationMessage,
@@ -4882,7 +4873,8 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         ref: "td",
         tabindex: "-1",
         class: normalizeClass(staticClasses.value),
-        onKeydown
+        onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {
+        }, ["prevent"]), ["space"]))
       }, toDisplayString(fromColumnValue()), 35));
     };
   }
