@@ -14,7 +14,7 @@ redirect_from:
 2026-03-04
 
 Vi har förbättrat textnyckelhanteringen så att det är möjligt att fånga upp saknade textnycklar. Läs mer {@link translate-text#strikt_typning_av_textnycklar Anpassa och översätt text}.  
-Klassen 'icon--stack' har deprekerats och ersatts av 'icon-stack'.
+Klassen `icon--stack` har deprekerats och ersatts av `icon-stack`.
 
 Buggfixar, se {@link changelog Changelog}
 
