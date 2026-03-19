@@ -1,23 +1,20 @@
 <script setup lang="ts">
 import { type FDefinitionListItem } from "./f-definition-list-item";
 
-const { definitions, justified } = defineProps<{
+const { definitions } = defineProps<{
     /**
-     * The definitions to be displayed in the definition list.
+     * Array with items containing:
+     * - `term` (key)
+     * - `definition` (value).
      */
     definitions: FDefinitionListItem[];
-
-    /**
-     * Show the definition list in a justified layout.
-     */
-    justified?: boolean;
 }>();
 </script>
 <template>
-    <dl class="definition-list" :class="justified ? 'definition-list--justified' : ''">
-        <template v-for="definition in definitions" :key="definition.term">
-            <dt class="definition-list__term">{{ definition.term }}</dt>
-            <dd class="definition-list__description">{{ definition.description }}</dd>
+    <dl class="definition-list">
+        <template v-for="item in definitions" :key="item.term">
+            <dt class="definition-list__term">{{ item.term }}</dt>
+            <dd class="definition-list__definition">{{ item.definition }}</dd>
         </template>
     </dl>
 </template>

@@ -212,7 +212,7 @@ export class FDatepickerFieldPageobject implements BasePageObject {
 // @public
 export class FDefinitionListPageObject implements BasePageObject {
     constructor(selector: string);
-    description(index: number): DefaultCypressChainable;
+    definition(index: number): DefaultCypressChainable;
     el(): DefaultCypressChainable;
     numberOfDefinitions(): Cypress.Chainable<number>;
     selector: string;
