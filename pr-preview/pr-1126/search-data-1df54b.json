@@ -284,6 +284,13 @@
     "TranslationService",
     "I18nextProvider",
     "TranslationService",
+    "Hjälpklasser",
+    "helpers",
+    "h-no-margin",
+    "h-root-size",
+    "h-display-flex",
+    "Skärmläsare",
+    "NVDA",
     "useResize() composable",
     "justerbar yta",
     "useModal() composable",
@@ -310,13 +317,6 @@
     "assertRef() function",
     "clamp() function",
     "datum",
-    "Hjälpklasser",
-    "helpers",
-    "h-no-margin",
-    "h-root-size",
-    "h-display-flex",
-    "Skärmläsare",
-    "NVDA",
     "Tabell",
     "FDataTable",
     "FInteractiveTable",
@@ -569,18 +569,6 @@
     "modalfunktion",
     "bekräftelsemodal",
     "options API",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -616,6 +604,18 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -1313,6 +1313,23 @@
       ]
     },
     {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": [
+        "helpers",
+        "h-no-margin",
+        "h-root-size",
+        "h-display-flex"
+      ]
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
+      "terms": [
+        "NVDA"
+      ]
+    },
+    {
       "url": "functions/functions/use-resize.html",
       "title": "useResize() composable",
       "terms": [
@@ -1409,23 +1426,6 @@
       "title": "clamp() function",
       "terms": [
         "datum"
-      ]
-    },
-    {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": [
-        "helpers",
-        "h-no-margin",
-        "h-root-size",
-        "h-display-flex"
-      ]
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
-      "terms": [
-        "NVDA"
       ]
     },
     {
@@ -1989,38 +1989,6 @@
       ]
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -2138,6 +2106,38 @@
       "title": "findElementFromVueRef",
       "terms": [
         "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
       ]
     },
     {
@@ -2680,9 +2680,9 @@
     "283": 73,
     "284": 74,
     "285": 74,
-    "286": 75,
-    "287": 75,
-    "288": 75,
+    "286": 74,
+    "287": 74,
+    "288": 74,
     "289": 75,
     "290": 75,
     "291": 76,
@@ -2690,24 +2690,24 @@
     "293": 77,
     "294": 77,
     "295": 77,
-    "296": 78,
-    "297": 79,
-    "298": 80,
-    "299": 81,
-    "300": 82,
-    "301": 83,
-    "302": 84,
-    "303": 85,
-    "304": 86,
-    "305": 87,
-    "306": 88,
-    "307": 89,
-    "308": 90,
-    "309": 90,
-    "310": 91,
-    "311": 91,
-    "312": 91,
-    "313": 91,
+    "296": 77,
+    "297": 77,
+    "298": 78,
+    "299": 78,
+    "300": 79,
+    "301": 79,
+    "302": 79,
+    "303": 80,
+    "304": 81,
+    "305": 82,
+    "306": 83,
+    "307": 84,
+    "308": 85,
+    "309": 86,
+    "310": 87,
+    "311": 88,
+    "312": 89,
+    "313": 90,
     "314": 91,
     "315": 92,
     "316": 92,
@@ -2965,49 +2965,49 @@
     "568": 155,
     "569": 156,
     "570": 156,
-    "571": 156,
+    "571": 157,
     "572": 157,
-    "573": 157,
-    "574": 157,
-    "575": 158,
-    "576": 158,
-    "577": 158,
-    "578": 159,
-    "579": 159,
-    "580": 159,
-    "581": 160,
-    "582": 160,
-    "583": 161,
-    "584": 161,
-    "585": 162,
-    "586": 162,
-    "587": 163,
-    "588": 163,
-    "589": 164,
-    "590": 164,
-    "591": 165,
-    "592": 165,
-    "593": 166,
-    "594": 166,
-    "595": 167,
-    "596": 167,
-    "597": 168,
-    "598": 168,
-    "599": 169,
-    "600": 169,
-    "601": 170,
-    "602": 170,
-    "603": 171,
-    "604": 171,
-    "605": 172,
-    "606": 172,
-    "607": 173,
-    "608": 173,
-    "609": 173,
-    "610": 174,
-    "611": 174,
+    "573": 158,
+    "574": 158,
+    "575": 159,
+    "576": 159,
+    "577": 160,
+    "578": 160,
+    "579": 161,
+    "580": 161,
+    "581": 162,
+    "582": 162,
+    "583": 163,
+    "584": 163,
+    "585": 164,
+    "586": 164,
+    "587": 165,
+    "588": 165,
+    "589": 166,
+    "590": 166,
+    "591": 167,
+    "592": 167,
+    "593": 168,
+    "594": 168,
+    "595": 169,
+    "596": 169,
+    "597": 169,
+    "598": 170,
+    "599": 170,
+    "600": 171,
+    "601": 171,
+    "602": 172,
+    "603": 172,
+    "604": 173,
+    "605": 173,
+    "606": 173,
+    "607": 174,
+    "608": 174,
+    "609": 174,
+    "610": 175,
+    "611": 175,
     "612": 175,
-    "613": 175,
+    "613": 176,
     "614": 176,
     "615": 176,
     "616": 177,
