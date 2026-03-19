@@ -5040,26 +5040,26 @@ function normalizeTextColumn(column) {
 function normalizeTableColumn(column) {
   const base = normalizeBaseColumn(column);
   if ("render" in column) {
-    return {
+    return Object.freeze({
       ...normalizeRenderColumn(column),
       ...base
-    };
+    });
   }
   switch (column.type) {
     case "checkbox":
-      return {
+      return Object.freeze({
         ...normalizeCheckboxColumn(column),
         ...base,
         component: _sfc_main$c
-      };
+      });
     case "text:currency":
     case "text:number":
     case "text:percent":
-      return {
+      return Object.freeze({
         ...normalizeNumberColumn(column),
         ...base,
         component: _sfc_main$4
-      };
+      });
     case "text":
     case "text:bankAccountNumber":
     case "text:bankgiro":
@@ -5071,47 +5071,47 @@ function normalizeTableColumn(column) {
     case "text:phoneNumber":
     case "text:plusgiro":
     case "text:postalCode":
-      return {
+      return Object.freeze({
         ...normalizeTextColumn(column),
         ...base,
         component: _sfc_main$4
-      };
+      });
     case "rowheader":
-      return {
+      return Object.freeze({
         ...normalizeRowHeaderColumn(column),
         ...base,
         component: _sfc_main$6
-      };
+      });
     case "anchor":
-      return {
+      return Object.freeze({
         ...normalizeAnchorColumn(column),
         ...base,
         component: _sfc_main$9
-      };
+      });
     case "button":
-      return {
+      return Object.freeze({
         ...normalizeButtonColumn(column),
         ...base,
         component: _sfc_main$8
-      };
+      });
     case "select":
-      return {
+      return Object.freeze({
         ...normalizeSelectColumn(column),
         ...base,
         component: _sfc_main$5
-      };
+      });
     case "menu":
-      return {
+      return Object.freeze({
         ...normalizeMenuColumn(column),
         ...base,
         component: _sfc_main$7
-      };
+      });
     case void 0:
-      return {
+      return Object.freeze({
         ...normalizeSimpleColumn(column),
         ...base,
         component: _sfc_main$4
-      };
+      });
   }
 }
 function defineTableColumns(columns) {
