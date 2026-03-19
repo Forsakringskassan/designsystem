@@ -59,6 +59,7 @@ const viewModeAriaInvalid = computed(() => (!inEdit.value && hasError.value ? tr
 const viewModeErrorMessage = computed(() =>
     !inEdit.value && hasError.value ? validity.value.validationMessage : undefined,
 );
+let initialValidity = { ...validity.value };
 
 const divClasses = computed(() => {
     return {
@@ -220,6 +221,7 @@ function onStartEdit(value: string): void {
 
     const { width } = tdElement.value.getBoundingClientRect();
     initialViewValue = viewValue.value;
+    initialValidity = { ...validity.value };
     viewValue.value = value;
     tdElement.value.style.setProperty("width", `${String(width)}px`);
 
@@ -298,6 +300,7 @@ function onEditingKeydown(event: KeyboardEvent): void {
     switch (event.key) {
         case "Enter": {
             if (viewValue.value === initialViewValue) {
+                validity.value = { ...initialValidity };
                 onStopEdit({ reason: "enter" });
             } else {
                 pendingStopEditReason = "enter";
