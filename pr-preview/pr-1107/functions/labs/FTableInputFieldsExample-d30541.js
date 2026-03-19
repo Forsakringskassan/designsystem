@@ -3025,6 +3025,7 @@ function getCell(element) {
 }
 async function setDefaultCellTarget(table) {
   await nextTick3();
+  if (!table.tHead) return null;
   const target = getCellTarget(table, 1, 0);
   activateCell(target, { focus: false });
   return target;
@@ -5232,31 +5233,33 @@ var _hoisted_2$1 = {
   key: 0,
   "data-test": "caption"
 };
-var _hoisted_3$1 = {
+var _hoisted_3$1 = { key: 1 };
+var _hoisted_4$1 = {
   class: "table-ng__row",
   "aria-rowindex": "1"
 };
-var _hoisted_4$1 = {
+var _hoisted_5$1 = {
   key: 0,
   scope: "col",
   tabindex: "-1",
   class: "table-ng__column"
 };
-var _hoisted_5$1 = {
+var _hoisted_6$1 = { key: 2 };
+var _hoisted_7$1 = {
   key: 0,
   class: "table-ng__row--empty"
 };
-var _hoisted_6$1 = ["colspan"];
-var _hoisted_7$1 = [
+var _hoisted_8 = ["colspan"];
+var _hoisted_9 = [
   "aria-level",
   "aria-rowindex",
   "aria-setsize",
   "aria-posinset",
   "aria-selected"
 ];
-var _hoisted_8 = { key: 1 };
-var _hoisted_9 = ["aria-rowindex"];
-var _hoisted_10 = ["colspan"];
+var _hoisted_10 = { key: 3 };
+var _hoisted_11 = ["aria-rowindex"];
+var _hoisted_12 = ["colspan"];
 var FTable_default = /* @__PURE__ */ defineComponent2({
   __name: "FTable",
   props: /* @__PURE__ */ mergeModels({
@@ -5289,20 +5292,25 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
       return metaRows.value.length === 0;
     });
     const ariaRowcount = computed3(() => {
-      const headerRow = 1;
       const footerRow = hasFooter.value ? 1 : 0;
-      return getBodyRowCount(keyedRows.value, __props.expandableAttribute) + headerRow + footerRow;
+      if (!hasColumns.value) return footerRow;
+      return getBodyRowCount(keyedRows.value, __props.expandableAttribute) + 1 + footerRow;
     });
-    const columnCount = computed3(() => {
-      const expandCol = isTreegrid.value ? 1 : 0;
-      const selectCol = __props.selectable ? 1 : 0;
-      const count = columns.value.length + expandCol + selectCol;
-      return Math.max(1, count);
+    const fullColspan = computed3(() => {
+      if (!hasColumns.value) return 0;
+      let count = columns.value.length;
+      if (isTreegrid.value) count += 1;
+      if (__props.selectable) count += 1;
+      return count;
+    });
+    const expandedColspan = computed3(() => {
+      return fullColspan.value - 1;
     });
     const hasFooter = computed3(() => {
       return hasSlot("footer");
     });
     const columns = computed3(() => normalizeTableColumns(__props.columns).filter((col) => toValue2(col.enabled)));
+    const hasColumns = computed3(() => columns.value.length > 0);
     const tableClasses = computed3(() => {
       return ["table-ng", {
         "table-ng--striped": __props.striped,
@@ -5410,8 +5418,8 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
       }, [
         hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true),
         _cache[4] || (_cache[4] = createTextVNode()),
-        createElementVNode("thead", null, [createElementVNode("tr", _hoisted_3$1, [
-          isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_4$1)) : createCommentVNode("", true),
+        hasColumns.value ? (openBlock(), createElementBlock("thead", _hoisted_3$1, [createElementVNode("tr", _hoisted_4$1, [
+          isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5$1)) : createCommentVNode("", true),
           _cache[0] || (_cache[0] = createTextVNode()),
           __props.selectable ? (openBlock(), createBlock(ITableHeaderSelectable_default, {
             key: 1,
@@ -5439,12 +5447,12 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
               "sort-order"
             ]);
           }), 128))
-        ])]),
+        ])])) : createCommentVNode("", true),
         _cache[5] || (_cache[5] = createTextVNode()),
-        createElementVNode("tbody", null, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_5$1, [createElementVNode("td", {
-          colspan: columnCount.value,
+        hasColumns.value ? (openBlock(), createElementBlock("tbody", _hoisted_6$1, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_7$1, [createElementVNode("td", {
+          colspan: fullColspan.value,
           class: "table-ng__cell"
-        }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_6$1)])) : (openBlock(true), createElementBlock(Fragment2, { key: 1 }, renderList(metaRows.value, ({ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded }) => {
+        }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_8)])) : (openBlock(true), createElementBlock(Fragment2, { key: 1 }, renderList(metaRows.value, ({ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded }) => {
           return openBlock(), createElementBlock("tr", {
             key,
             class: "table-ng__row",
@@ -5470,7 +5478,7 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
             _cache[3] || (_cache[3] = createTextVNode()),
             level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(ITableExpandable_default, {
               key: 1,
-              colspan: columns.value.length
+              colspan: expandedColspan.value
             }, {
               default: withCtx(() => [renderSlot(_ctx.$slots, "expandable", mergeProps({ ref_for: true }, { row }))]),
               _: 2
@@ -5514,16 +5522,16 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
                 }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
               }), 128))
             ], 64))
-          ], 8, _hoisted_7$1);
-        }), 128))]),
+          ], 8, _hoisted_9);
+        }), 128))])) : createCommentVNode("", true),
         _cache[6] || (_cache[6] = createTextVNode()),
-        hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_8, [createElementVNode("tr", {
+        hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_10, [createElementVNode("tr", {
           class: "table-ng__row",
           "aria-rowindex": ariaRowcount.value
         }, [createElementVNode("td", {
-          colspan: columnCount.value,
+          colspan: fullColspan.value,
           class: "table-ng__cell--custom"
-        }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_10)], 8, _hoisted_9)])) : createCommentVNode("", true)
+        }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_12)], 8, _hoisted_11)])) : createCommentVNode("", true)
       ], 42, _hoisted_1$2);
     };
   }
