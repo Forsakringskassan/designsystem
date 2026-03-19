@@ -3062,6 +3062,9 @@ function getCell(element) {
 }
 async function setDefaultCellTarget(table) {
   await nextTick3();
+  if (!table.tHead) {
+    return null;
+  }
   const target = getCellTarget(table, 1, 0);
   activateCell(target, {
     focus: false
