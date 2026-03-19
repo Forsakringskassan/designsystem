@@ -4880,25 +4880,25 @@ function normalizeTextColumn(column) {
 }
 function normalizeTableColumn(column) {
   const base = normalizeBaseColumn(column);
-  if ("render" in column) return {
+  if ("render" in column) return Object.freeze({
     ...normalizeRenderColumn(column),
     ...base
-  };
+  });
   switch (column.type) {
     case "checkbox":
-      return {
+      return Object.freeze({
         ...normalizeCheckboxColumn(column),
         ...base,
         component: ITableCheckbox_default
-      };
+      });
     case "text:currency":
     case "text:number":
     case "text:percent":
-      return {
+      return Object.freeze({
         ...normalizeNumberColumn(column),
         ...base,
         component: ITableText_default
-      };
+      });
     case "text":
     case "text:bankAccountNumber":
     case "text:bankgiro":
@@ -4910,47 +4910,47 @@ function normalizeTableColumn(column) {
     case "text:phoneNumber":
     case "text:plusgiro":
     case "text:postalCode":
-      return {
+      return Object.freeze({
         ...normalizeTextColumn(column),
         ...base,
         component: ITableText_default
-      };
+      });
     case "rowheader":
-      return {
+      return Object.freeze({
         ...normalizeRowHeaderColumn(column),
         ...base,
         component: ITableRowheader_default
-      };
+      });
     case "anchor":
-      return {
+      return Object.freeze({
         ...normalizeAnchorColumn(column),
         ...base,
         component: ITableAnchor_default
-      };
+      });
     case "button":
-      return {
+      return Object.freeze({
         ...normalizeButtonColumn(column),
         ...base,
         component: ITableButton_default
-      };
+      });
     case "select":
-      return {
+      return Object.freeze({
         ...normalizeSelectColumn(column),
         ...base,
         component: ITableSelect_default
-      };
+      });
     case "menu":
-      return {
+      return Object.freeze({
         ...normalizeMenuColumn(column),
         ...base,
         component: ITableMenu_default
-      };
+      });
     case void 0:
-      return {
+      return Object.freeze({
         ...normalizeSimpleColumn(column),
         ...base,
         component: ITableText_default
-      };
+      });
   }
 }
 function defineTableColumns(columns) {
