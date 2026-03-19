@@ -30,14 +30,14 @@ export class FDefinitionListPageObject implements BasePageObject {
     }
 
     /**
-     * Gets the description of a definition.
+     * Gets the definition value.
      *
      * @param index - Index of definition in definition list.
-     * @returns The description of the definition.
+     * @returns The definition value.
      */
-    public description(index: number): DefaultCypressChainable {
+    public definition(index: number): DefaultCypressChainable {
         return cy.get(
-            `${this.selector} .definition-list__description:nth(${index})`,
+            `${this.selector} .definition-list__definition:nth(${index})`,
         );
     }
 

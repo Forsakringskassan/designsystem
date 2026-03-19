@@ -15,6 +15,7 @@ components/fbadge.html
 components/fcalendar.html
 components/fcard.html
 components/fcontextmenu.html
+components/fdefinitionlist.html
 components/fdialoguetree.html
 components/fform.html -> gettingstarted/migration/migrating-to-v6/vue.html
 components/fformdeprecated.html -> gettingstarted/migration/migrating-to-v6/vue.html
@@ -68,7 +69,6 @@ components/pagination.html
 components/presentation/foutputfield.html
 components/presentation/fstaticfield.html
 components/table-and-list/fcruddataset.html
-components/table-and-list/fdefinitionlist.html
 components/table-and-list/flist.html
 components/table-and-list/fsortfilterdataset.html
 components/table-and-list/table.html
