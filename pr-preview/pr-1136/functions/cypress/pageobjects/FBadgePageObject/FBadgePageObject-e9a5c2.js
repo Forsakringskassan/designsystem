@@ -28,48 +28,41 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/links/entrypoint.md:entrypoint-0b42c3.js
-import { FIcon } from "@fkui/vue";
-import { createElementVNode as _createElementVNode, createVNode as _createVNode, createTextVNode as _createTextVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
-var exampleComponent = {
-  __name: "entrypoint",
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject.vue:FBadgePageObject-e9a5c2.js
+import { defineComponent as _defineComponent } from "vue";
+import { FBadge } from "@fkui/vue";
+import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
+var exampleComponent = /* @__PURE__ */ _defineComponent({
+  __name: "FBadgePageObject",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FIcon() {
-      return FIcon;
+    const __returned__ = { get FBadge() {
+      return FBadge;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
-};
-var _hoisted_1 = {
-  class: "entrypoint",
-  href: "javascript:"
-};
+});
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock("a", _hoisted_1, [
-    _cache[0] || (_cache[0] = _createTextVNode(
-      " Ans\xF6k om hundbidrag ",
-      -1
-      /* CACHED */
-    )),
-    _cache[1] || (_cache[1] = _createElementVNode(
-      "span",
-      { class: "sr-only" },
-      " Till tj\xE4nsten ans\xF6k om hundbidrag ",
-      -1
-      /* CACHED */
-    )),
-    _createVNode($setup["FIcon"], {
-      name: "arrow-right",
-      class: "entrypoint__icon"
-    })
+  const _directive_test = _resolveDirective("test");
+  return _withDirectives((_openBlock(), _createBlock($setup["FBadge"], null, {
+    default: _withCtx(() => [..._cache[0] || (_cache[0] = [
+      _createTextVNode(
+        " MyBadge ",
+        -1
+        /* CACHED */
+      )
+    ])]),
+    _: 1
+    /* STABLE */
+  })), [
+    [_directive_test, "my-badge"]
   ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-0b42c3"
+  selector: "#example-e9a5c2"
 });
 export {
   render

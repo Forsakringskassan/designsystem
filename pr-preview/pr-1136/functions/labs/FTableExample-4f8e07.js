@@ -4722,6 +4722,11 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       inputElement.value.tabIndex = -1;
       assertRef(tdElement);
       tdElement.value.style.removeProperty("width");
+      if (reason === "blur") {
+        activateCell(tdElement.value, {
+          focus: false
+        });
+      }
       void stopEdit2(inputElement.value, reason);
     }
     function fromColumnValue() {
