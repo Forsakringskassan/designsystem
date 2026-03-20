@@ -10,6 +10,7 @@ import {
 } from "@fkui/logic";
 import { type ComponentValidityEvent, IPopupError, dispatchComponentValidityEvent } from "@fkui/vue";
 import { useElementHover, useEventListener, useFocusWithin } from "@vueuse/core";
+import { activateCell } from "./FTable.logic";
 import { type PopupError } from "./PopupEror";
 import { isColumnTypeNumber } from "./columns/helpers";
 import { inputFieldConfig } from "./input-fields-config";
@@ -237,6 +238,10 @@ function onStopEdit(options: { reason: "enter" | "escape" | "tab" | "shift-tab" 
 
     assertRef(tdElement);
     tdElement.value.style.removeProperty("width");
+
+    if (reason === "blur") {
+        activateCell(tdElement.value, { focus: false });
+    }
 
     void stopEdit(inputElement.value, reason);
 }
