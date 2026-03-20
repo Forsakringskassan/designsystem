@@ -35,7 +35,7 @@ runs:
         - name: Build example applications
           if: (inputs.example-apps == 'true' || inputs.example-apps == true)
           shell: bash
-          run: npm run -w @fkui/example-page-layout build
+          run: npm exec lerna -- run build --scope='@fkui/example-*'
         - name: Build documentation
           shell: bash
           run: node generate-docs.mjs
