@@ -763,10 +763,10 @@ function requireSharedStore() {
   var SHARED = "__core-js_shared__";
   var store = sharedStore.exports = globalThis2[SHARED] || defineGlobalProperty2(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.48.0",
+    version: "3.49.0",
     mode: IS_PURE ? "pure" : "global",
     copyright: "\xA9 2013\u20132025 Denis Pushkarev (zloirock.ru), 2025\u20132026 CoreJS Company (core-js.io). All rights reserved.",
-    license: "https://github.com/zloirock/core-js/blob/v3.48.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.49.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
   return sharedStore.exports;
@@ -1709,15 +1709,17 @@ function requireIterate() {
     var fn = bind(unboundFunction, that);
     var iterator, iterFn, index, length, result, next, step;
     var stop = function(condition) {
-      if (iterator) iteratorClose2(iterator, "normal");
+      var $iterator = iterator;
+      iterator = void 0;
+      if ($iterator) iteratorClose2($iterator, "normal");
       return new Result(true, condition);
     };
-    var callFn = function(value) {
+    var callFn = function(value2) {
       if (AS_ENTRIES) {
-        anObject2(value);
-        return INTERRUPTED ? fn(value[0], value[1], stop) : fn(value[0], value[1]);
+        anObject2(value2);
+        return INTERRUPTED ? fn(value2[0], value2[1], stop) : fn(value2[0], value2[1]);
       }
-      return INTERRUPTED ? fn(value, stop) : fn(value);
+      return INTERRUPTED ? fn(value2, stop) : fn(value2);
     };
     if (IS_RECORD) {
       iterator = iterable.iterator;
@@ -1737,10 +1739,12 @@ function requireIterate() {
     }
     next = IS_RECORD ? iterable.next : iterator.next;
     while (!(step = call(next, iterator)).done) {
+      var value = step.value;
       try {
-        result = callFn(step.value);
+        result = callFn(value);
       } catch (error) {
-        iteratorClose2(iterator, "throw", error);
+        if (iterator) iteratorClose2(iterator, "throw", error);
+        else throw error;
       }
       if (typeof result == "object" && result && isPrototypeOf(ResultPrototype, result)) return result;
     }
@@ -2214,11 +2218,13 @@ function requireIteratorCreateProxy() {
       "return": function() {
         var state = getInternalState(this);
         var iterator = state.iterator;
+        var done = state.done;
         state.done = true;
         if (IS_ITERATOR) {
           var returnMethod = getMethod2(iterator, "return");
           return returnMethod ? call(returnMethod, iterator) : createIterResultObject2(void 0, true);
         }
+        if (done) return createIterResultObject2(void 0, true);
         if (state.inner) try {
           iteratorClose2(state.inner.iterator, NORMAL);
         } catch (error) {
@@ -2227,7 +2233,8 @@ function requireIteratorCreateProxy() {
         if (state.openIters) try {
           iteratorCloseAll2(state.openIters, NORMAL);
         } catch (error) {
-          return iteratorClose2(iterator, THROW, error);
+          if (iterator) return iteratorClose2(iterator, THROW, error);
+          throw error;
         }
         if (iterator) iteratorClose2(iterator, NORMAL);
         return createIterResultObject2(void 0, true);
@@ -2511,7 +2518,7 @@ function requireSetDifference() {
     var O = aSet2(this);
     var otherRec = getSetRecord2(other);
     var result = clone(O);
-    if (size(O) <= otherRec.size) iterateSet(O, function(e) {
+    if (size(result) <= otherRec.size) iterateSet(result, function(e) {
       if (otherRec.includes(e)) remove(result, e);
     });
     else iterateSimple2(otherRec.getIterator(), function(e) {
@@ -2700,7 +2707,7 @@ function requireSetIsDisjointFrom() {
     }, true) !== false;
     var iterator = otherRec.getIterator();
     return iterateSimple2(iterator, function(e) {
-      if (has(O, e)) return iteratorClose2(iterator, "normal", false);
+      if (has(O, e)) return iteratorClose2(iterator.iterator, "normal", false);
     }) !== false;
   };
   return setIsDisjointFrom;
@@ -2785,7 +2792,7 @@ function requireSetIsSupersetOf() {
     if (size(O) < otherRec.size) return false;
     var iterator = otherRec.getIterator();
     return iterateSimple2(iterator, function(e) {
-      if (!has(O, e)) return iteratorClose2(iterator, "normal", false);
+      if (!has(O, e)) return iteratorClose2(iterator.iterator, "normal", false);
     }) !== false;
   };
   return setIsSupersetOf;
@@ -3915,7 +3922,7 @@ function requireDoesNotExceedSafeInteger() {
   var $TypeError = TypeError;
   var MAX_SAFE_INTEGER = 9007199254740991;
   doesNotExceedSafeInteger = function(it) {
-    if (it > MAX_SAFE_INTEGER) throw $TypeError("Maximum allowed index exceeded");
+    if (it > MAX_SAFE_INTEGER) throw new $TypeError("Maximum allowed index exceeded");
     return it;
   };
   return doesNotExceedSafeInteger;
@@ -5041,26 +5048,26 @@ function normalizeTextColumn(column) {
 function normalizeTableColumn(column) {
   const base = normalizeBaseColumn(column);
   if ("render" in column) {
-    return {
+    return Object.freeze({
       ...normalizeRenderColumn(column),
       ...base
-    };
+    });
   }
   switch (column.type) {
     case "checkbox":
-      return {
+      return Object.freeze({
         ...normalizeCheckboxColumn(column),
         ...base,
         component: _sfc_main$c
-      };
+      });
     case "text:currency":
     case "text:number":
     case "text:percent":
-      return {
+      return Object.freeze({
         ...normalizeNumberColumn(column),
         ...base,
         component: _sfc_main$4
-      };
+      });
     case "text":
     case "text:bankAccountNumber":
     case "text:bankgiro":
@@ -5072,47 +5079,47 @@ function normalizeTableColumn(column) {
     case "text:phoneNumber":
     case "text:plusgiro":
     case "text:postalCode":
-      return {
+      return Object.freeze({
         ...normalizeTextColumn(column),
         ...base,
         component: _sfc_main$4
-      };
+      });
     case "rowheader":
-      return {
+      return Object.freeze({
         ...normalizeRowHeaderColumn(column),
         ...base,
         component: _sfc_main$6
-      };
+      });
     case "anchor":
-      return {
+      return Object.freeze({
         ...normalizeAnchorColumn(column),
         ...base,
         component: _sfc_main$9
-      };
+      });
     case "button":
-      return {
+      return Object.freeze({
         ...normalizeButtonColumn(column),
         ...base,
         component: _sfc_main$8
-      };
+      });
     case "select":
-      return {
+      return Object.freeze({
         ...normalizeSelectColumn(column),
         ...base,
         component: _sfc_main$5
-      };
+      });
     case "menu":
-      return {
+      return Object.freeze({
         ...normalizeMenuColumn(column),
         ...base,
         component: _sfc_main$7
-      };
+      });
     case void 0:
-      return {
+      return Object.freeze({
         ...normalizeSimpleColumn(column),
         ...base,
         component: _sfc_main$4
-      };
+      });
   }
 }
 function defineTableColumns(columns) {
@@ -6146,6 +6153,7 @@ function requireArrayBufferTransfer() {
   var structuredClone = globalThis2.structuredClone;
   var ArrayBuffer2 = globalThis2.ArrayBuffer;
   var DataView2 = globalThis2.DataView;
+  var max = Math.max;
   var min = Math.min;
   var ArrayBufferPrototype = ArrayBuffer2.prototype;
   var DataViewPrototype = DataView2.prototype;
@@ -6170,7 +6178,7 @@ function requireArrayBufferTransfer() {
       newBuffer = slice(arrayBuffer, 0, newByteLength);
     } else {
       var options = preserveResizability && !fixedLength && maxByteLength ? {
-        maxByteLength: maxByteLength(arrayBuffer)
+        maxByteLength: max(newByteLength, maxByteLength(arrayBuffer))
       } : void 0;
       newBuffer = new ArrayBuffer2(newByteLength, options);
       var a = new DataView2(arrayBuffer);
@@ -6430,7 +6438,7 @@ function requireArrayBufferViewCore() {
       }
     });
     for (NAME in TypedArrayConstructorsList) if (globalThis2[NAME]) {
-      createNonEnumerableProperty2(globalThis2[NAME], TYPED_ARRAY_TAG, NAME);
+      createNonEnumerableProperty2(globalThis2[NAME].prototype, TYPED_ARRAY_TAG, NAME);
     }
   }
   arrayBufferViewCore = {
@@ -6834,26 +6842,25 @@ function requireUint8FromHex() {
   var uncurryThis = requireFunctionUncurryThis();
   var Uint8Array2 = globalThis2.Uint8Array;
   var SyntaxError = globalThis2.SyntaxError;
-  var parseInt = globalThis2.parseInt;
   var min = Math.min;
-  var NOT_HEX = /[^\da-f]/i;
-  var exec = uncurryThis(NOT_HEX.exec);
-  var stringSlice = uncurryThis("".slice);
+  var stringMatch = uncurryThis("".match);
   uint8FromHex = function(string, into) {
     var stringLength = string.length;
     if (stringLength % 2 !== 0) throw new SyntaxError("String should be an even number of characters");
     var maxLength = into ? min(into.length, stringLength / 2) : stringLength / 2;
     var bytes = into || new Uint8Array2(maxLength);
-    var read = 0;
+    var segments = stringMatch(string, /.{2}/g);
     var written = 0;
-    while (written < maxLength) {
-      var hexits = stringSlice(string, read, read += 2);
-      if (exec(NOT_HEX, hexits)) throw new SyntaxError("String should only contain hex characters");
-      bytes[written++] = parseInt(hexits, 16);
+    for (; written < maxLength; written++) {
+      var result = +("0x" + segments[written] + "0");
+      if (result !== result) {
+        throw new SyntaxError("String should only contain hex characters");
+      }
+      bytes[written] = result >> 4;
     }
     return {
       bytes,
-      read
+      read: written << 1
     };
   };
   return uint8FromHex;
@@ -6968,6 +6975,8 @@ function requireEs_uint8Array_toHex() {
   var anUint8Array2 = requireAnUint8Array();
   var notDetached = requireArrayBufferNotDetached();
   var numberToString = uncurryThis(1.1.toString);
+  var join = uncurryThis([].join);
+  var $Array = Array;
   var Uint8Array2 = globalThis2.Uint8Array;
   var INCORRECT_BEHAVIOR_OR_DOESNT_EXISTS = !Uint8Array2 || !Uint8Array2.prototype.toHex || !(function() {
     try {
@@ -6985,12 +6994,12 @@ function requireEs_uint8Array_toHex() {
     toHex: function toHex() {
       anUint8Array2(this);
       notDetached(this.buffer);
-      var result = "";
+      var result = $Array(this.length);
       for (var i = 0, length = this.length; i < length; i++) {
         var hex = numberToString(this[i], 16);
-        result += hex.length === 1 ? "0" + hex : hex;
+        result[i] = hex.length === 1 ? "0" + hex : hex;
       }
-      return result;
+      return join(result, "");
     }
   });
   return es_uint8Array_toHex;
