@@ -67,7 +67,6 @@ export function useTabstop(
         assertRef(tableRef);
         const oldTabstopElement =
             tableRef.value.querySelector<HTMLElement>(`[tabindex="0"]`);
-
         assertSet(oldTabstopElement);
         const oldTabstopFocused = oldTabstopElement === document.activeElement;
 

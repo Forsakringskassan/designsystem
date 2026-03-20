@@ -348,7 +348,6 @@ function updateValidity(eventDetail: ValidityEvent): void {
 }
 
 function onValidity(event: CustomEvent<ValidityEvent>): void {
-    console.log("onValidity");
     const nativeEvent = event.detail.nativeEvent;
     const reason = pendingStopEditReason ?? (nativeEvent === "blur" ? "blur" : null);
     pendingStopEditReason = null;
