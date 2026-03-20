@@ -75,7 +75,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.29.0",
-    "@babel/preset-env": "7.29.0",
+    "@babel/preset-env": "7.29.2",
     "@fkui/cypress-split": "*",
     "@forsakringskassan/commitlint-config": "3.3.8",
     "@forsakringskassan/cypress-axe": "4.0.2",
