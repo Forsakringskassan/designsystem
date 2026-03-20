@@ -464,10 +464,10 @@ var require_shared_store = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var SHARED = "__core-js_shared__";
   var store = module.exports = globalThis2[SHARED] || defineGlobalProperty(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.48.0",
+    version: "3.49.0",
     mode: IS_PURE ? "pure" : "global",
     copyright: "\xA9 2013\u20132025 Denis Pushkarev (zloirock.ru), 2025\u20132026 CoreJS Company (core-js.io). All rights reserved.",
-    license: "https://github.com/zloirock/core-js/blob/v3.48.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.49.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
 }));
@@ -1321,6 +1321,7 @@ var require_array_buffer_transfer = /* @__PURE__ */ __commonJSMin(((exports, mod
   var structuredClone = globalThis2.structuredClone;
   var ArrayBuffer2 = globalThis2.ArrayBuffer;
   var DataView2 = globalThis2.DataView;
+  var max = Math.max;
   var min = Math.min;
   var ArrayBufferPrototype = ArrayBuffer2.prototype;
   var DataViewPrototype = DataView2.prototype;
@@ -1341,7 +1342,7 @@ var require_array_buffer_transfer = /* @__PURE__ */ __commonJSMin(((exports, mod
     }
     if (byteLength >= newByteLength && (!preserveResizability || fixedLength)) newBuffer = slice(arrayBuffer, 0, newByteLength);
     else {
-      newBuffer = new ArrayBuffer2(newByteLength, preserveResizability && !fixedLength && maxByteLength ? { maxByteLength: maxByteLength(arrayBuffer) } : void 0);
+      newBuffer = new ArrayBuffer2(newByteLength, preserveResizability && !fixedLength && maxByteLength ? { maxByteLength: max(newByteLength, maxByteLength(arrayBuffer)) } : void 0);
       var a = new DataView2(arrayBuffer);
       var b = new DataView2(newBuffer);
       var copyLength = min(newByteLength, byteLength);
@@ -1606,7 +1607,7 @@ var require_array_buffer_view_core = /* @__PURE__ */ __commonJSMin(((exports, mo
         return isObject2(this) ? this[TYPED_ARRAY_TAG] : void 0;
       }
     });
-    for (NAME in TypedArrayConstructorsList) if (globalThis2[NAME]) createNonEnumerableProperty(globalThis2[NAME], TYPED_ARRAY_TAG, NAME);
+    for (NAME in TypedArrayConstructorsList) if (globalThis2[NAME]) createNonEnumerableProperty(globalThis2[NAME].prototype, TYPED_ARRAY_TAG, NAME);
   }
   module.exports = {
     NATIVE_ARRAY_BUFFER_VIEWS,
@@ -1925,26 +1926,23 @@ var require_uint8_from_hex = /* @__PURE__ */ __commonJSMin(((exports, module) =>
   var uncurryThis = require_function_uncurry_this();
   var Uint8Array2 = globalThis2.Uint8Array;
   var SyntaxError = globalThis2.SyntaxError;
-  var parseInt = globalThis2.parseInt;
   var min = Math.min;
-  var NOT_HEX = /[^\da-f]/i;
-  var exec = uncurryThis(NOT_HEX.exec);
-  var stringSlice = uncurryThis("".slice);
+  var stringMatch = uncurryThis("".match);
   module.exports = function(string, into) {
     var stringLength = string.length;
     if (stringLength % 2 !== 0) throw new SyntaxError("String should be an even number of characters");
     var maxLength = into ? min(into.length, stringLength / 2) : stringLength / 2;
     var bytes = into || new Uint8Array2(maxLength);
-    var read = 0;
+    var segments = stringMatch(string, /.{2}/g);
     var written = 0;
-    while (written < maxLength) {
-      var hexits = stringSlice(string, read, read += 2);
-      if (exec(NOT_HEX, hexits)) throw new SyntaxError("String should only contain hex characters");
-      bytes[written++] = parseInt(hexits, 16);
+    for (; written < maxLength; written++) {
+      var result = +("0x" + segments[written] + "0");
+      if (result !== result) throw new SyntaxError("String should only contain hex characters");
+      bytes[written] = result >> 4;
     }
     return {
       bytes,
-      read
+      read: written << 1
     };
   };
 }));
@@ -2036,6 +2034,8 @@ var require_es_uint8_array_to_hex = /* @__PURE__ */ __commonJSMin((() => {
   var anUint8Array = require_an_uint8_array();
   var notDetached = require_array_buffer_not_detached();
   var numberToString = uncurryThis(1.1.toString);
+  var join = uncurryThis([].join);
+  var $Array = Array;
   var Uint8Array2 = globalThis2.Uint8Array;
   var INCORRECT_BEHAVIOR_OR_DOESNT_EXISTS = !Uint8Array2 || !Uint8Array2.prototype.toHex || !(function() {
     try {
@@ -2060,12 +2060,12 @@ var require_es_uint8_array_to_hex = /* @__PURE__ */ __commonJSMin((() => {
   }, { toHex: function toHex() {
     anUint8Array(this);
     notDetached(this.buffer);
-    var result = "";
+    var result = $Array(this.length);
     for (var i = 0, length = this.length; i < length; i++) {
       var hex = numberToString(this[i], 16);
-      result += hex.length === 1 ? "0" + hex : hex;
+      result[i] = hex.length === 1 ? "0" + hex : hex;
     }
-    return result;
+    return join(result, "");
   } });
 }));
 require_es_array_buffer_detached();
@@ -2369,11 +2369,13 @@ var require_iterator_create_proxy = /* @__PURE__ */ __commonJSMin(((exports, mod
       "return": function() {
         var state = getInternalState(this);
         var iterator = state.iterator;
+        var done = state.done;
         state.done = true;
         if (IS_ITERATOR) {
           var returnMethod = getMethod(iterator, "return");
           return returnMethod ? call(returnMethod, iterator) : createIterResultObject(void 0, true);
         }
+        if (done) return createIterResultObject(void 0, true);
         if (state.inner) try {
           iteratorClose(state.inner.iterator, NORMAL);
         } catch (error) {
@@ -2382,7 +2384,8 @@ var require_iterator_create_proxy = /* @__PURE__ */ __commonJSMin(((exports, mod
         if (state.openIters) try {
           iteratorCloseAll(state.openIters, NORMAL);
         } catch (error) {
-          return iteratorClose(iterator, THROW, error);
+          if (iterator) return iteratorClose(iterator, THROW, error);
+          throw error;
         }
         if (iterator) iteratorClose(iterator, NORMAL);
         return createIterResultObject(void 0, true);
@@ -2608,7 +2611,7 @@ var require_set_difference = /* @__PURE__ */ __commonJSMin(((exports, module) =>
     var O = aSet(this);
     var otherRec = getSetRecord(other);
     var result = clone(O);
-    if (size(O) <= otherRec.size) iterateSet(O, function(e) {
+    if (size(result) <= otherRec.size) iterateSet(result, function(e) {
       if (otherRec.includes(e)) remove(result, e);
     });
     else iterateSimple(otherRec.getIterator(), function(e) {
@@ -2760,7 +2763,7 @@ var require_set_is_disjoint_from = /* @__PURE__ */ __commonJSMin(((exports, modu
     }, true) !== false;
     var iterator = otherRec.getIterator();
     return iterateSimple(iterator, function(e) {
-      if (has(O, e)) return iteratorClose(iterator, "normal", false);
+      if (has(O, e)) return iteratorClose(iterator.iterator, "normal", false);
     }) !== false;
   };
 }));
@@ -2815,7 +2818,7 @@ var require_set_is_superset_of = /* @__PURE__ */ __commonJSMin(((exports, module
     if (size(O) < otherRec.size) return false;
     var iterator = otherRec.getIterator();
     return iterateSimple(iterator, function(e) {
-      if (!has(O, e)) return iteratorClose(iterator, "normal", false);
+      if (!has(O, e)) return iteratorClose(iterator.iterator, "normal", false);
     }) !== false;
   };
 }));
@@ -3759,7 +3762,7 @@ var require_does_not_exceed_safe_integer = /* @__PURE__ */ __commonJSMin(((expor
   var $TypeError = TypeError;
   var MAX_SAFE_INTEGER = 9007199254740991;
   module.exports = function(it) {
-    if (it > MAX_SAFE_INTEGER) throw $TypeError("Maximum allowed index exceeded");
+    if (it > MAX_SAFE_INTEGER) throw new $TypeError("Maximum allowed index exceeded");
     return it;
   };
 }));
@@ -4011,15 +4014,17 @@ var require_iterate = /* @__PURE__ */ __commonJSMin(((exports, module) => {
     var fn = bind(unboundFunction, that);
     var iterator, iterFn, index, length, result, next, step;
     var stop = function(condition) {
-      if (iterator) iteratorClose(iterator, "normal");
+      var $iterator = iterator;
+      iterator = void 0;
+      if ($iterator) iteratorClose($iterator, "normal");
       return new Result(true, condition);
     };
-    var callFn = function(value) {
+    var callFn = function(value2) {
       if (AS_ENTRIES) {
-        anObject(value);
-        return INTERRUPTED ? fn(value[0], value[1], stop) : fn(value[0], value[1]);
+        anObject(value2);
+        return INTERRUPTED ? fn(value2[0], value2[1], stop) : fn(value2[0], value2[1]);
       }
-      return INTERRUPTED ? fn(value, stop) : fn(value);
+      return INTERRUPTED ? fn(value2, stop) : fn(value2);
     };
     if (IS_RECORD) iterator = iterable.iterator;
     else if (IS_ITERATOR) iterator = iterable;
@@ -4037,10 +4042,12 @@ var require_iterate = /* @__PURE__ */ __commonJSMin(((exports, module) => {
     }
     next = IS_RECORD ? iterable.next : iterator.next;
     while (!(step = call(next, iterator)).done) {
+      var value = step.value;
       try {
-        result = callFn(step.value);
+        result = callFn(value);
       } catch (error) {
-        iteratorClose(iterator, "throw", error);
+        if (iterator) iteratorClose(iterator, "throw", error);
+        else throw error;
       }
       if (typeof result == "object" && result && isPrototypeOf(ResultPrototype, result)) return result;
     }
