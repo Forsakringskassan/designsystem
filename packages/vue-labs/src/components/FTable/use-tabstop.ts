@@ -68,11 +68,6 @@ export function useTabstop(
         const oldTabstopElement =
             tableRef.value.querySelector<HTMLElement>(`[tabindex="0"]`);
 
-        // no tablestop present (e.g. focus left table), nothing to restore
-        if (!oldTabstopElement) {
-            return;
-        }
-
         assertSet(oldTabstopElement);
         const oldTabstopFocused = oldTabstopElement === document.activeElement;
 
