@@ -2,7 +2,7 @@
 import { type PropType, defineComponent } from "vue";
 import { debounce, handleTab, popFocus, pushFocus } from "@fkui/logic";
 import { config } from "../../config";
-import { getHTMLElementFromVueRef } from "../../utils";
+import { type Rect, getHTMLElementFromVueRef } from "../../utils";
 import { CandidateOrder, Placement, fitInsideArea, getElement, getScrollToPopup } from "./IPopupUtils";
 import { MIN_DESKTOP_WIDTH, POPUP_SPACING } from "./constants";
 import { getContainer } from "./get-container";
@@ -25,7 +25,7 @@ export default defineComponent({
          * DOM element to position popup at.
          */
         anchor: {
-            type: HTMLElement as PropType<HTMLElement | null | undefined>,
+            type: HTMLElement as PropType<HTMLElement | { el: HTMLElement } | null | undefined>,
             required: false,
             default: undefined,
         },
@@ -48,7 +48,7 @@ export default defineComponent({
          * Which element to use as container.
          */
         container: {
-            type: HTMLElement as PropType<HTMLElement | null | undefined>,
+            type: HTMLElement as PropType<HTMLElement | { el: HTMLElement } | null | undefined>,
             required: false,
             default: undefined,
         },
@@ -56,7 +56,7 @@ export default defineComponent({
          * Which element to use as viewport.
          */
         viewport: {
-            type: HTMLElement as PropType<HTMLElement>,
+            type: HTMLElement as PropType<HTMLElement | { el: HTMLElement } | null | undefined>,
             required: false,
             default(): HTMLElement {
                 return document.documentElement;
@@ -213,17 +213,32 @@ export default defineComponent({
         async calculatePlacement(options?: { horizontalOnly: boolean }): Promise<void> {
             const popup = getHTMLElementFromVueRef(this.$refs.popup);
             const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
-            const anchor = getElement(this.anchor);
+            const rawAnchor = getElement(this.anchor);
 
-            if (!anchor) {
+            if (!rawAnchor) {
                 throw new Error("No anchor element found");
             }
+
+            // unwrap the `{el: HTMLElement}` wrapper so the value
+            // conforms to `HTMLElement | Rect` which is what
+            // `fitInsideArea` expects.
+            const anchor: HTMLElement | Rect = "el" in rawAnchor ? rawAnchor.el : rawAnchor;
 
             // Check candidates for overlay placement.
             const shouldCheckCandidates = this.forceOverlay || !(this.isMobileSize() || this.forceInline);
             if (shouldCheckCandidates) {
-                const area = getContainer(popup, this.container);
-                const viewport = this.viewport;
+                const rawContainer = getElement(this.container);
+                const containerElement =
+                    rawContainer && "el" in rawContainer
+                        ? rawContainer.el
+                        : (rawContainer as HTMLElement | null | undefined);
+                const area = getContainer(popup, containerElement);
+
+                // unwrap viewport like the other elements so it fits the expected type
+                const rawViewport = getElement(this.viewport);
+                // Ensure null becomes undefined so the type is `HTMLElement | Rect | undefined`
+                const viewport = rawViewport && "el" in rawViewport ? rawViewport.el : (rawViewport ?? undefined);
+
                 const result = fitInsideArea({
                     area,
                     anchor,

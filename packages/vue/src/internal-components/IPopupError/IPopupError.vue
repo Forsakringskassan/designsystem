@@ -32,7 +32,7 @@ export default defineComponent({
          * DOM element to position error popup at.
          */
         anchor: {
-            type: HTMLElement as PropType<HTMLElement | null | undefined>,
+            type: HTMLElement as PropType<HTMLElement | { el: HTMLElement } | null | undefined>,
             required: false,
             default: undefined,
         },
@@ -40,7 +40,7 @@ export default defineComponent({
          * DOM element to align arrow with.
          */
         arrowAnchor: {
-            type: HTMLElement as PropType<HTMLElement | null | undefined>,
+            type: HTMLElement as PropType<HTMLElement | { el: HTMLElement } | null | undefined>,
             required: false,
             default: undefined,
         },
@@ -77,14 +77,22 @@ export default defineComponent({
         teleportTarget() {
             return config.teleportTarget;
         },
+        anchorElement(): HTMLElement | undefined {
+            if (!this.anchor) {
+                return undefined;
+            }
+            return "el" in this.anchor ? this.anchor.el : this.anchor;
+        },
     },
     watch: {
         anchor: {
             immediate: true,
-            handler(anchor: HTMLElement | null | undefined): void {
+            handler(anchor: HTMLElement | { el: HTMLElement } | null | undefined): void {
                 if (anchor) {
+                    const el = "el" in anchor ? anchor.el : anchor;
+
                     /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                    anchor.addEventListener("keyup", this.onKeyEsc);
+                    el.addEventListener("keyup", this.onKeyEsc);
                     /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                     window.addEventListener("resize", this.onResize);
                 }
@@ -98,8 +106,12 @@ export default defineComponent({
         },
     },
     unmounted() {
-        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-        this.anchor?.removeEventListener("keyup", this.onKeyEsc);
+        const anchor = this.anchor as HTMLElement | { el: HTMLElement } | null | undefined;
+        if (anchor) {
+            const el = "el" in anchor ? anchor.el : anchor;
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+            el.removeEventListener("keyup", this.onKeyEsc);
+        }
         /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         window.removeEventListener("resize", this.onResize);
     },
@@ -118,13 +130,26 @@ export default defineComponent({
         },
         setArrowOffset() {
             const wrapper = this.$refs.wrapper as HTMLElement;
-            const arrowAnchor = this.arrowAnchor ?? this.anchor?.nextElementSibling;
+
+            // unwrap anchor object if it was passed as { el: HTMLElement }
+            let anchorEl: HTMLElement | undefined;
+            if (this.anchor) {
+                anchorEl = "el" in this.anchor ? this.anchor.el : this.anchor;
+            }
+
+            // `nextElementSibling` only exists on HTMLElement, cast to satisfy TS
+            let arrowEl: HTMLElement | null | undefined;
+            if (this.arrowAnchor) {
+                arrowEl = "el" in this.arrowAnchor ? this.arrowAnchor.el : this.arrowAnchor;
+            } else {
+                arrowEl = anchorEl?.nextElementSibling as HTMLElement | null;
+            }
 
             /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-            if (!arrowAnchor || !wrapper) {
+            if (!arrowEl || !wrapper) {
                 return;
             }
-            const arrowAnchorRect = arrowAnchor.getBoundingClientRect();
+            const arrowAnchorRect = arrowEl.getBoundingClientRect();
             const wrapperRect = wrapper.getBoundingClientRect();
             const arrow = computeArrowOffset(this.placement, arrowAnchorRect, wrapperRect);
             this.arrowOffset = arrow.offset;
@@ -149,9 +174,13 @@ export default defineComponent({
             // Check candidates for overlay position.
             const area = document.body;
             const viewport = document.documentElement;
+
+            // unwrap anchor object if it was passed as { el: HTMLElement }
+            const anchorEl = "el" in this.anchor ? this.anchor.el : this.anchor;
+
             const result = fitInsideArea({
                 area,
-                anchor: this.anchor,
+                anchor: anchorEl,
                 target: wrapper,
                 viewport,
                 spacing: POPUP_SPACING,

@@ -21,7 +21,7 @@ const {
     /**
      * DOM element to position popup at.
      */
-    anchor?: HTMLElement;
+    anchor?: HTMLElement | { el: HTMLElement };
     /**
      * The items to be displayed in the menu.
      */

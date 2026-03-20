@@ -21,8 +21,8 @@ export function clamp(value: number, min: number, max: number): number {
 }
 
 export function getElement(
-    anchor: string | HTMLElement | null | undefined,
-): HTMLElement | null {
+    anchor: string | HTMLElement | { el: HTMLElement } | null | undefined,
+): HTMLElement | { el: HTMLElement } | null {
     if (!anchor) {
         return null;
     }
