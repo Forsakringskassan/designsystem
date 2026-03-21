@@ -137,7 +137,40 @@ export default [
     },
 
     {
-        name: "technical-debt",
+        name: "technical-debt/cypress",
+        files: ["cypress/**/*"],
+        rules: {
+            "unicorn/filename-case": "off",
+        },
+    },
+
+    {
+        name: "technical-debt/docs",
+        files: ["docs/**/*"],
+        rules: {
+            "unicorn/filename-case": "off",
+        },
+    },
+
+    {
+        name: "technical-debt/logic",
+        files: ["packages/logic/**/*"],
+        rules: {
+            "unicorn/filename-case": "off",
+        },
+    },
+
+    {
+        name: "technical-debt/vue",
+        files: ["packages/vue/**/*"],
+        rules: {
+            "unicorn/filename-case": "off",
+        },
+    },
+
+    {
+        name: "technical-debt/vue-labs",
+        files: ["packages/vue-labs/**/*"],
         rules: {
             "unicorn/filename-case": "off",
         },
