@@ -1,5 +1,5 @@
-import { Placement } from "./IPopupUtils";
 import { MIN_DESKTOP_WIDTH } from "./constants";
+import { Placement } from "./i-popup-utils";
 import { isTeleportDisabled } from "./is-teleport-disabled";
 
 const MOBILE_WIDTH = MIN_DESKTOP_WIDTH - 1;

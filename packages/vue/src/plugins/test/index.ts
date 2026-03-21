@@ -1,1 +1,1 @@
-export { TestPlugin } from "./TestPlugin";
+export { TestPlugin } from "./test-plugin";

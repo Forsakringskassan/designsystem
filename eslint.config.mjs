@@ -145,14 +145,6 @@ export default [
     },
 
     {
-        name: "technical-debt/vue",
-        files: ["packages/vue/**/*"],
-        rules: {
-            "unicorn/filename-case": "off",
-        },
-    },
-
-    {
         name: "technical-debt/vue-labs",
         files: ["packages/vue-labs/**/*"],
         rules: {

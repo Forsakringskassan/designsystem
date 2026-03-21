@@ -1,5 +1,5 @@
 import { type Ref, inject, ref } from "vue";
-import { type FTableColumnData } from "./FTableColumnData";
+import { type FTableColumnData } from "./f-table-column-data";
 
 /**
  * This interface must be implemented (provided) by all Vue components

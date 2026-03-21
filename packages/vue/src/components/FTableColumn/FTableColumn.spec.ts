@@ -2,7 +2,7 @@ import { provide, ref } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import FTableColumn from "./FTableColumn.vue";
 import "html-validate/jest";
-import { FTableColumnSize, FTableColumnSort } from "./FTableColumnData";
+import { FTableColumnSize, FTableColumnSort } from "./f-table-column-data";
 
 function createWrapper({
     props = {},

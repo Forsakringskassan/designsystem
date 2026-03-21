@@ -4,7 +4,7 @@ import { ValidationService, formatNumber, parseNumber } from "@fkui/logic";
 import { getInputElement } from "../../../../utils";
 import FTextField from "../../FTextField.vue";
 import { type FormatFunction, type ParseFunction } from "../../index";
-import { useTextFieldSetup } from "../../useTextFieldSetup";
+import { useTextFieldSetup } from "../../use-text-field-setup";
 
 function defaultFormatter(this: { decimals: number }, modelValue: number): string | undefined {
     return formatNumber(modelValue, this.decimals);

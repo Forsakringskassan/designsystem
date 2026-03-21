@@ -10,7 +10,7 @@ import { FTextField } from "../FTextField";
 import {
     type FSortFilterDatasetMountCallback,
     type FSortFilterDatasetSortCallback,
-} from "./FSortFilterDatasetInterface";
+} from "./f-sort-filter-dataset-interface";
 import { type SortOrder } from "./sort-order";
 import { useSortFilterDataset } from "./use-sort-filter-dataset";
 

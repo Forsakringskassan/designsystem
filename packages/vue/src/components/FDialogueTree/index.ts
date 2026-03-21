@@ -1,4 +1,4 @@
-export { type FDialogueTreeData } from "./FDialogueTreeData";
+export { type FDialogueTreeData } from "./f-dialogue-tree-data";
 export {
     type FDialogueTreeEndQuestion,
     type FDialogueTreeOption,
@@ -6,5 +6,5 @@ export {
     type FDialogueTreeSubQuestion,
     type FDialogueTreeUserProgress,
     isDialogueTreeEndQuestion,
-} from "./FDialogueTreeModel";
+} from "./f-dialogue-tree-model";
 export { default as FDialogueTree } from "./FDialogueTree.vue";

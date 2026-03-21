@@ -1,4 +1,4 @@
-import { resolveWidthClass } from "./FSelectField.logic";
+import { resolveWidthClass } from "./f-select-field.logic";
 
 describe("resolveWidthClass", () => {
     it("should return prefixed classes when not inline", () => {

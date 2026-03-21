@@ -1,5 +1,5 @@
 import "html-validate/jest";
-import { sort } from "./FSortFilterSorter";
+import { sort } from "./f-sort-filter-sorter";
 
 describe("FSortFilterSorter", () => {
     it("should sort alphabetically", () => {

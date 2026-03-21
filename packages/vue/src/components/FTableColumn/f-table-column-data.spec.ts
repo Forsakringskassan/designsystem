@@ -9,7 +9,7 @@ import {
     setSortableColumns,
     setVisibilityColumn,
     updateSortOrder,
-} from "./FTableColumnData";
+} from "./f-table-column-data";
 
 function createColumns(sortable: boolean): FTableColumnData[] {
     let src: FTableColumnData[] = [];

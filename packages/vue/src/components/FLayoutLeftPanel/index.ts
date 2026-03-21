@@ -3,4 +3,4 @@ export {
     type PanelLayoutComposable,
     type PanelLayoutOptions,
     useLayoutPanel,
-} from "./FLayoutLeftPanelMixin";
+} from "./f-layout-left-panel-mixin";

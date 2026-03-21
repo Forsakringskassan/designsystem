@@ -3,8 +3,8 @@ import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { createRouter, createWebHashHistory } from "vue-router";
 import { EventBus } from "../../utils";
-import { UNHANDLED_ERROR_EVENT } from "./ErrorPlugin";
 import FErrorHandlingApp from "./FErrorHandlingApp.vue";
+import { UNHANDLED_ERROR_EVENT } from "./error-plugin";
 
 const defaultComponent = defineComponent({
     name: "DefaultComponent",

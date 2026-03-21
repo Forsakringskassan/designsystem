@@ -4,7 +4,7 @@ import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { type ErrorItem } from "../../types";
 import { hasSlot } from "../../utils";
 import { FIcon } from "../FIcon";
-import { type BeforeNavigate } from "./BeforeNavigate";
+import { type BeforeNavigate } from "./before-navigate";
 import { focusError } from "./focus-error";
 
 const noop = (): void => {

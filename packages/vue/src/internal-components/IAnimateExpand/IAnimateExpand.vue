@@ -1,6 +1,6 @@
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
-import { type AnimationCallback } from "./AnimationCallback";
+import { type AnimationCallback } from "./animation-callback";
 
 const ANIMATION_DURATION = 500;
 const NO_CSS_CLASSES = "";

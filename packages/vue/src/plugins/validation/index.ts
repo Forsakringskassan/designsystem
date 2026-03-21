@@ -1,2 +1,2 @@
 /* istanbul ignore file */
-export { ValidationPlugin } from "./ValidationPlugin";
+export { ValidationPlugin } from "./validation-plugin";

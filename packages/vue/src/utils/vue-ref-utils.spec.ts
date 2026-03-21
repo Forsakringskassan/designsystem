@@ -12,7 +12,7 @@ import {
     refIsHTMLElementArray,
     refIsVue,
     refIsVueArray,
-} from "./VueRefUtils";
+} from "./vue-ref-utils";
 
 const REF_NAME = "myReference";
 const TEMPLATE_WITHOUT_A_REF = /* HTML */ `

@@ -6,7 +6,7 @@ import {
     UNHANDLED_ERROR_EVENT,
     errorHandler,
     warnHandler,
-} from "./ErrorPlugin";
+} from "./error-plugin";
 
 const fakeVm: ComponentPublicInstance = {
     vm: "fake",

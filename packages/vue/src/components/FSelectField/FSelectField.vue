@@ -4,7 +4,7 @@ import { type ValidityEvent, ElementIdService } from "@fkui/logic";
 import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
 import { FIcon } from "../FIcon";
 import { FLabel } from "../FLabel";
-import { resolveWidthClass } from "./FSelectField.logic";
+import { resolveWidthClass } from "./f-select-field.logic";
 
 export default defineComponent({
     name: "FSelectField",

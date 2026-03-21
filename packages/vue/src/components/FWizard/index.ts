@@ -8,4 +8,4 @@ export type {
     FWizardValidationCallback,
     FWizardValidationData,
     StepNumber,
-} from "./FWizardApi";
+} from "./f-wizard-api";

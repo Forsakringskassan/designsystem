@@ -1,4 +1,4 @@
-import { filter } from "./FSortFilterFilter";
+import { filter } from "./f-sort-filter-filter";
 
 const data = [
     { text: "aAc", year: 2020 },

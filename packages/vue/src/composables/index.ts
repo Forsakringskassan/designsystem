@@ -1,6 +1,6 @@
-export { useEventListener } from "./useEventListener";
+export { useEventListener } from "./use-event-listener";
 export {
     type UseSlotUtils,
     type WithoutInstance,
     useSlotUtils,
-} from "./useSlotUtils";
+} from "./use-slot-utils";

@@ -5,7 +5,7 @@ import { TranslationMixin } from "../../../../plugins";
 import { getInputElement } from "../../../../utils";
 import FTextField from "../../FTextField.vue";
 import { type FormatFunction } from "../../index";
-import { useTextFieldSetup } from "../../useTextFieldSetup";
+import { useTextFieldSetup } from "../../use-text-field-setup";
 
 export default defineComponent({
     name: "FPlusgiroTextField",
