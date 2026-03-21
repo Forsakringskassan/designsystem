@@ -1,4 +1,4 @@
-import { type Validator } from "./Validator";
+import { type Validator } from "./validator";
 
 /**
  * Registered validators.

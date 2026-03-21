@@ -4,4 +4,4 @@ export {
     formatPersonnummerToDate,
     parsePersonnummer,
     parsePersonnummerLuhn,
-} from "./personnummerConverter";
+} from "./personnummer-converter";

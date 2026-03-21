@@ -1,8 +1,8 @@
-export * from "./BankAccountNumberConverter/bankAccountNumberConverter";
-export * from "./BankgiroConverter/bankgiroConverter";
-export * from "./ClearingnumberConverter/clearingnumberConverter";
-export * from "./DateConverter/dateConverter";
-export * from "./NumberConverter/numberConverter";
+export * from "./BankAccountNumberConverter/bank-account-number-converter";
+export * from "./BankgiroConverter/bankgiro-converter";
+export * from "./ClearingnumberConverter/clearingnumber-converter";
+export * from "./DateConverter/date-converter";
+export * from "./NumberConverter/number-converter";
 export {
     type PersonnummerString,
     formatPersonnummer,
@@ -10,11 +10,11 @@ export {
     parsePersonnummer,
     parsePersonnummerLuhn,
 } from "./PersonnummerConverter";
-export * from "./PlusgiroConverter/plusgiroConverter";
+export * from "./PlusgiroConverter/plusgiro-converter";
 export {
     type PostalCodeString,
     formatPostalCode,
     parsePostalCode,
-} from "./PostalCodeConverter/postalCodeConverter";
-export * from "./OrganisationsnummerConverter/organisationsnummerConverter";
+} from "./PostalCodeConverter/postal-code-converter";
+export * from "./OrganisationsnummerConverter/organisationsnummer-converter";
 export * from "./PercentConverter";

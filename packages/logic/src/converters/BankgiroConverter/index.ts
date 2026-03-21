@@ -1,1 +1,1 @@
-export * from "./bankgiroConverter";
+export * from "./bankgiro-converter";

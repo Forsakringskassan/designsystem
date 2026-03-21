@@ -1,1 +1,1 @@
-export * from "./bankAccountNumberConverter";
+export * from "./bank-account-number-converter";

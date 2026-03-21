@@ -145,14 +145,6 @@ export default [
     },
 
     {
-        name: "technical-debt/logic",
-        files: ["packages/logic/**/*"],
-        rules: {
-            "unicorn/filename-case": "off",
-        },
-    },
-
-    {
         name: "technical-debt/vue",
         files: ["packages/vue/**/*"],
         rules: {

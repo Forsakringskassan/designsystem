@@ -1,1 +1,1 @@
-export * from "./organisationsnummerConverter";
+export * from "./organisationsnummer-converter";

@@ -4,7 +4,7 @@ import {
     isValidDate,
     parsePersonnummer,
     parsePersonnummerLuhn,
-} from "./personnummerConverter";
+} from "./personnummer-converter";
 
 //The test social security numbers(personnummer) used is approved by Skatteverket.
 describe("parsePersonnummer", () => {

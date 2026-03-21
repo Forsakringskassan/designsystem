@@ -1,9 +1,9 @@
-export { type Validator, type ValidatorName } from "./Validator";
+export { type Validator, type ValidatorName } from "./validator";
 
 export {
     ValidationService,
     isValidatableHTMLElement,
-} from "./ValidationService";
+} from "./validation-service";
 export {
     type ElementValidatorsReference,
     type PendingValidityEvent,
@@ -19,7 +19,7 @@ export {
     type ValidityEvent,
     type ValidityMode,
     type ValidityNativeEvent,
-} from "./ValidationServiceInterface";
+} from "./validation-service-interface";
 export {
     type AllowListValidatorConfig,
     type BlacklistValidatorConfig,
