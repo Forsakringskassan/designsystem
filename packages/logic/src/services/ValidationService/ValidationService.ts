@@ -765,7 +765,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     ): string {
         const validatorConfig = validatorConfigs[validatorName];
 
-        if (validatorConfig && validatorConfig.errorMessage) {
+        if (validatorConfig?.errorMessage) {
             return validatorConfig.errorMessage;
         }
 
