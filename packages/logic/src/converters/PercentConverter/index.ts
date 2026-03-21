@@ -1,1 +1,1 @@
-export * from "./percentConverter";
+export * from "./percent-converter";

@@ -1,14 +1,14 @@
 export * from "./is";
-export * from "./StripNull";
+export * from "./strip-null";
 export * from "./exceptions";
 
-export { validLimit } from "./DateUtils";
+export { validLimit } from "./date-utils";
 export { debounce } from "./debounce";
 export { deepClone } from "./deep-clone";
 export { MissingValueError, ensureSet } from "./ensure-set";
 export { flatten } from "./flatten";
 export { normalizeDateFormat } from "./normalize-date-format";
-export { validChecksum } from "./PersonnummerUtils";
+export { validChecksum } from "./personnummer-utils";
 export { testLuhnChecksum } from "./test-luhn-checksum";
 export {
     type CookieOptions,

@@ -1,1 +1,1 @@
-export { type NestedStringRecord } from "./NestedStringRecord";
+export { type NestedStringRecord } from "./nested-string-record";

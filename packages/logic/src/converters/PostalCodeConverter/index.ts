@@ -2,4 +2,4 @@ export {
     type PostalCodeString,
     formatPostalCode,
     parsePostalCode,
-} from "./postalCodeConverter";
+} from "./postal-code-converter";

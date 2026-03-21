@@ -1,2 +1,2 @@
-export { ElementIdService } from "./ElementIdService";
-export { type ElementIdServiceInterface } from "./ElementIdServiceInterface";
+export { ElementIdService } from "./element-id-service";
+export { type ElementIdServiceInterface } from "./element-id-service-interface";
