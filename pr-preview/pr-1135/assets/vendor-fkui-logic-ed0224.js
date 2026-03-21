@@ -2818,7 +2818,7 @@ var ValidationServiceImpl = class {
   }
   getErrorMessage(validatorName, validators, validatorConfigs, elementType) {
     const validatorConfig = validatorConfigs[validatorName];
-    if (validatorConfig && validatorConfig.errorMessage) {
+    if (validatorConfig?.errorMessage) {
       return validatorConfig.errorMessage;
     }
     const candidates = getCandidates(validatorName, validators, elementType);

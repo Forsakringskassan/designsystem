@@ -203,9 +203,6 @@
     "produktionsklar",
     "beta",
     "experimentell",
-    "EventBus",
-    "EventBus",
-    "services",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -219,6 +216,9 @@
     "testverktyg",
     "Jest",
     "testverktyg",
+    "EventBus",
+    "EventBus",
+    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -1129,14 +1129,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1167,6 +1159,14 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -2600,17 +2600,17 @@
     "203": 53,
     "204": 53,
     "205": 53,
-    "206": 54,
+    "206": 53,
     "207": 54,
     "208": 54,
     "209": 54,
-    "210": 55,
+    "210": 54,
     "211": 55,
     "212": 55,
     "213": 55,
     "214": 56,
     "215": 56,
-    "216": 56,
+    "216": 57,
     "217": 57,
     "218": 57,
     "219": 58,
