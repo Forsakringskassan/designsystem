@@ -1,4 +1,4 @@
-import { FLayoutRightPanelService } from "./FLayoutRightPanelService";
+import { FLayoutRightPanelService } from "./f-layout-right-panel-service";
 
 it("should emit open event", () => {
     const listener = jest.fn();

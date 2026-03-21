@@ -1,4 +1,4 @@
-import { TableScroll, tableScrollClasses } from "./TableScroll";
+import { TableScroll, tableScrollClasses } from "./table-scroll";
 
 it("should generate no classes for NONE", () => {
     expect.assertions(1);

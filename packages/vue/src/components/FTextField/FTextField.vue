@@ -6,8 +6,8 @@ import { IComboboxDropdown, IComboboxToggleButton } from "../../internal-compone
 import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
 import { FIcon } from "../FIcon";
 import { FLabel } from "../FLabel";
-import { resolveWidthClass } from "./FTextField.logic";
-import { useTextFieldSetup } from "./useTextFieldSetup";
+import { resolveWidthClass } from "./f-text-field.logic";
+import { useTextFieldSetup } from "./use-text-field-setup";
 import { type FormatFunction, type ParseFunction } from "./index";
 
 export default defineComponent({

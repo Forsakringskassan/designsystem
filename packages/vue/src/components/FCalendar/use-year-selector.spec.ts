@@ -1,6 +1,6 @@
 import { shallowRef } from "vue";
 import { FDate, FYear } from "@fkui/date";
-import { onKeyDown, useYearSelector } from "./useYearSelector";
+import { onKeyDown, useYearSelector } from "./use-year-selector";
 
 describe("keyboard navigation", () => {
     it("arrow down should move to next year", async () => {

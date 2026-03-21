@@ -1,5 +1,5 @@
 export { config } from "./config";
-export { type FKUIConfig, FKUIConfigButtonOrder } from "./FKUIConfig";
+export { type FKUIConfig, FKUIConfigButtonOrder } from "./fkui-config";
 export {
     type FKUIContext,
     type MaybeWithFKUIContext,

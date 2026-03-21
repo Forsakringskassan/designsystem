@@ -3,6 +3,6 @@ export {
     type FSortFilterDatasetMountCallback,
     type FSortFilterDatasetSortCallback,
     FSortFilterDatasetInjected,
-} from "./FSortFilterDatasetInterface";
+} from "./f-sort-filter-dataset-interface";
 export { default as FSortFilterDataset } from "./FSortFilterDataset.vue";
 export { type SortOrder } from "./sort-order";

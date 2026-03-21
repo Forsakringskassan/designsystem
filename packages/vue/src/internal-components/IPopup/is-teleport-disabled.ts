@@ -1,5 +1,5 @@
-import { Placement } from "./IPopupUtils";
 import { MIN_DESKTOP_WIDTH } from "./constants";
+import { Placement } from "./i-popup-utils";
 
 /**
  * @internal

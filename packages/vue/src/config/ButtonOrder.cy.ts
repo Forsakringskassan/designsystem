@@ -2,8 +2,8 @@ import FCrudDatasetTableExample from "../components/FCrudDataset/examples/FCrudD
 import FConfirmModalApiExample from "../components/FModal/examples/FConfirmModalApiExample.vue";
 import FFormModalApiExample from "../components/FModal/examples/FFormModalApiExample.vue";
 import { FCrudDatasetPageObject, FModalPageObject } from "../cypress";
-import { FKUIConfigButtonOrder } from "./FKUIConfig";
 import { config } from "./config";
+import { FKUIConfigButtonOrder } from "./fkui-config";
 
 describe("FConfirmModal", () => {
     describe("LEFT_TO_RIGHT", () => {

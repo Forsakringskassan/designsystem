@@ -4,6 +4,6 @@ export {
     type ActivateItemCallback,
     type ActivateItemInterface,
     ActivateItemInjected,
-} from "./ActivateItemInterface";
-export { type FCrudDatasetInterface } from "./FCrudDatasetInterface";
+} from "./activate-item-interface";
+export { type FCrudDatasetInterface } from "./f-crud-dataset-interface";
 export { Operation } from "./operation";

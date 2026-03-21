@@ -3,7 +3,7 @@ import {
     handleKeyboardFocusNavigation,
     includeItem,
     itemEquals,
-} from "./ListUtils";
+} from "./list-utils";
 
 afterAll(() => {
     jest.resetAllMocks();

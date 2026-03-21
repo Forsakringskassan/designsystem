@@ -9,7 +9,7 @@ export default {};
 import { computed } from "vue";
 import { useTranslate } from "../../plugins";
 import { FTableButton } from "../FTableButton";
-import { FCrudDatasetInjected } from "./FCrudDatasetInterface";
+import { FCrudDatasetInjected } from "./f-crud-dataset-interface";
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */
 const props = defineProps({

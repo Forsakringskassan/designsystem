@@ -1,4 +1,4 @@
-import { resolveWidthClass } from "./FTextField.logic";
+import { resolveWidthClass } from "./f-text-field.logic";
 
 describe("resolveWidthClass", () => {
     it("should return prefixed classes when not inline", () => {

@@ -9,7 +9,7 @@ import {
     getCandidates,
     getFallbackPosition,
     isInside,
-} from "./IPopupUtils";
+} from "./i-popup-utils";
 
 const numberOfCandidates = 9;
 

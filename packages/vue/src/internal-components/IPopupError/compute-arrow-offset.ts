@@ -1,4 +1,4 @@
-import { Placement } from "../IPopup/IPopupUtils";
+import { Placement } from "../IPopup/i-popup-utils";
 
 export interface ArrowPosition {
     offset: number;

@@ -9,7 +9,7 @@ import flushPromises from "flush-promises";
 import { FCheckboxField, FFieldset, FTextField } from "../../components";
 import { ComponentValidityEvent } from "../../types";
 import { dispatchComponentValidityEvent } from "../../utils";
-import { ValidationPlugin } from "./ValidationPlugin";
+import { ValidationPlugin } from "./validation-plugin";
 
 const addValidatorsToElement = jest.spyOn(
     ValidationService,

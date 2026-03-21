@@ -1,1 +1,1 @@
-export { FormatPlugin } from "./FormatPlugin";
+export { FormatPlugin } from "./format-plugin";

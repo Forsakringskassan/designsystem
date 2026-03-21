@@ -1,7 +1,7 @@
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
 import { VueWrapper, mount } from "@vue/test-utils";
-import { FormatPlugin } from "./FormatPlugin";
+import { FormatPlugin } from "./format-plugin";
 
 function createWrapper(
     template: string,

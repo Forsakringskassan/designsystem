@@ -54,8 +54,8 @@ import {
     setVisibilityColumn,
     updateSortOrder,
 } from "../FTableColumn";
-import { onKeydown as onKeydown2 } from "./FTableKeybindings";
-import { useExpandableTable } from "./useExpandableTable";
+import { onKeydown as onKeydown2 } from "./f-table-keybindings";
+import { useExpandableTable } from "./use-expandable-table";
 
 const {
     rows,

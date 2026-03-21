@@ -2,8 +2,8 @@
 import { type Component, type PropType, defineComponent } from "vue";
 import { ErrorViewData } from "../../types";
 import { EventBus } from "../../utils";
-import { UNHANDLED_ERROR_EVENT } from "./ErrorPlugin";
 import FErrorPage from "./FErrorPage.vue";
+import { UNHANDLED_ERROR_EVENT } from "./error-plugin";
 
 export default defineComponent({
     name: "FErrorHandlingApp",

@@ -8,8 +8,8 @@ import {
 } from "vue";
 import { useTranslate } from "../../plugins";
 import { type Dataset } from "../../utils";
-import { filter } from "./FSortFilterFilter";
-import { sort } from "./FSortFilterSorter";
+import { filter } from "./f-sort-filter-filter";
+import { sort } from "./f-sort-filter-sorter";
 import { type SortOrder } from "./sort-order";
 import { type SortableAttribute } from "./sortable-attribute";
 

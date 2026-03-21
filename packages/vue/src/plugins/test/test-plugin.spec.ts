@@ -1,7 +1,7 @@
 import { defineComponent, h, resolveDirective, withDirectives } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import { FTextField } from "../../components/FTextField";
-import { TestPlugin } from "./TestPlugin";
+import { TestPlugin } from "./test-plugin";
 
 function createWrapper(vTestValue: string, isVisible = true): VueWrapper {
     const TestComponent = defineComponent({

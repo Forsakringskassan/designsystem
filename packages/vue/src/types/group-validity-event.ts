@@ -1,4 +1,4 @@
-import { type ComponentValidityEvent } from "./ComponentValidityEvent";
+import { type ComponentValidityEvent } from "./component-validity-event";
 
 /**
  * @public

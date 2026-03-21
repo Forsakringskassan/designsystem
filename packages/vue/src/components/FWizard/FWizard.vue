@@ -7,7 +7,7 @@ import {
     type StepNumber,
     addStep,
     removeStep,
-} from "./FWizardApi";
+} from "./f-wizard-api";
 
 export default defineComponent({
     name: "FWizard",

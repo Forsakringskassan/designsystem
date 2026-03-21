@@ -1,6 +1,6 @@
 import { VueWrapper, mount } from "@vue/test-utils";
 import FDefinitionList from "./FDefinitionList.vue";
-import { FDefinitionListItem } from "./FDefinitionListItem";
+import { FDefinitionListItem } from "./f-definition-list-item";
 
 const definitions = [
     { term: "Term 1", description: "Description 1" },

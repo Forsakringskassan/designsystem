@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type FDefinitionListItem } from "./FDefinitionListItem";
+import { type FDefinitionListItem } from "./f-definition-list-item";
 
 const { definitions, justified } = defineProps<{
     /**

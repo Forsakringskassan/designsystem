@@ -1,4 +1,4 @@
-import { type FDialogueTreeQuestion } from "./FDialogueTreeModel";
+import { type FDialogueTreeQuestion } from "./f-dialogue-tree-model";
 
 /**
  * @public

@@ -2,7 +2,7 @@
 import { type PropType, defineComponent } from "vue";
 import { FIcon } from "../../components/FIcon";
 import { config } from "../../config";
-import { CandidateOrder, Placement, fitInsideArea } from "../IPopup/IPopupUtils";
+import { CandidateOrder, Placement, fitInsideArea } from "../IPopup/i-popup-utils";
 import { computeArrowOffset } from "./compute-arrow-offset";
 import { type IPopupErrorData } from "./ipopuperror-data";
 

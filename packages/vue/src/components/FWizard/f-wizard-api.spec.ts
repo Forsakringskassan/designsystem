@@ -1,4 +1,4 @@
-import { FWizardStepDefinition, addStep, removeStep } from "./FWizardApi";
+import { FWizardStepDefinition, addStep, removeStep } from "./f-wizard-api";
 
 let steps: FWizardStepDefinition[];
 

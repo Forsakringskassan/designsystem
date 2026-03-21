@@ -17,7 +17,7 @@ search:
 ## Inställningar
 
 ```import
-FKUIConfig.ts
+fkui-config.ts
 ```
 
 ## Ändra en inställning

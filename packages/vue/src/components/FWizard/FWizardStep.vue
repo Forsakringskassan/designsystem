@@ -12,7 +12,7 @@ import {
     type FWizardStepDefinition,
     type FWizardValidationCallback,
     FWizardApiInjected,
-} from "./FWizardApi";
+} from "./f-wizard-api";
 
 const SCROLL_DURATION = 500;
 
