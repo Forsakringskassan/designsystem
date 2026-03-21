@@ -137,14 +137,6 @@ export default [
     },
 
     {
-        name: "technical-debt/cypress",
-        files: ["cypress/**/*"],
-        rules: {
-            "unicorn/filename-case": "off",
-        },
-    },
-
-    {
         name: "technical-debt/docs",
         files: ["docs/**/*"],
         rules: {
