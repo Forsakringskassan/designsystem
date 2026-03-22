@@ -2,7 +2,7 @@ import {
     forgivingParseTimeToNumber,
     formatNumberToTime,
     parseTimeToNumber,
-} from "./HoursMinutesConverter";
+} from "./hours-minutes-converter";
 
 describe("parsing", () => {
     it.each`

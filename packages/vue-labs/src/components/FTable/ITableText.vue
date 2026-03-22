@@ -10,11 +10,11 @@ import {
 } from "@fkui/logic";
 import { type ComponentValidityEvent, IPopupError, dispatchComponentValidityEvent } from "@fkui/vue";
 import { useElementHover, useEventListener, useFocusWithin } from "@vueuse/core";
-import { type PopupError } from "./PopupEror";
 import { isColumnTypeNumber } from "./columns/helpers";
 import { inputFieldConfig } from "./input-fields-config";
 import { addInputValidators } from "./input-validators";
 import { isAlphanumeric } from "./is-alphanumeric";
+import { type PopupError } from "./popup-eror";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnNumber, type NormalizedTableColumnText } from "./table-column";
 

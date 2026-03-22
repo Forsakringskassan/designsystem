@@ -1,4 +1,4 @@
-import { greaterThanTimeValidator } from "./GreaterThanTimeValidator";
+import { greaterThanTimeValidator } from "./greater-than-time-validator";
 
 const element = document.createElement("input");
 

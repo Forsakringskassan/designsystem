@@ -22,16 +22,16 @@ import {
     useSlotUtils,
     useTranslate,
 } from "@fkui/vue";
-import { activateCell, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./FTable.logic";
 import ITableExpandButton from "./ITableExpandButton.vue";
 import ITableExpandable from "./ITableExpandable.vue";
 import ITableHeader from "./ITableHeader.vue";
 import ITableHeaderSelectable from "./ITableHeaderSelectable.vue";
 import ITableSelectable from "./ITableSelectable.vue";
-import { type MetaRow } from "./MetaRow";
 import { isFTableCellApi, tableCellApiSymbol } from "./f-table-api";
+import { activateCell, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./f-table.logic";
 import { getBodyRowCount } from "./get-body-row-count";
 import { getMetaRows } from "./get-meta-rows";
+import { type MetaRow } from "./meta-row";
 import { stopEditKey } from "./start-stop-edit";
 import { type NormalizedTableColumn, type TableColumn, normalizeTableColumns } from "./table-column";
 import { usePopupError } from "./use-popup-error";

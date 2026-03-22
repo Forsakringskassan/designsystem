@@ -1,4 +1,4 @@
-import { minTimeValidator } from "./MinTimeValidator";
+import { minTimeValidator } from "./min-time-validator";
 
 const element = document.createElement("input");
 

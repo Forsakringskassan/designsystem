@@ -1,4 +1,4 @@
-import { HoursMinutesValidatorUtils } from "./HoursMinutesValidatorUtils";
+import { HoursMinutesValidatorUtils } from "./hours-minutes-validator-utils";
 
 describe("validate", () => {
     it.each`

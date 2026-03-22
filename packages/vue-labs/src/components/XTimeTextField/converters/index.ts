@@ -1,1 +1,1 @@
-export * from "./HoursMinutesConverter";
+export * from "./hours-minutes-converter";

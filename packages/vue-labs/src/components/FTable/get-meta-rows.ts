@@ -1,5 +1,5 @@
 import { type ItemIdentifier, getItemIdentifier } from "@fkui/vue";
-import { type MetaRow } from "./MetaRow";
+import { type MetaRow } from "./meta-row";
 import { walk } from "./walk";
 
 function getRowIndexes<T>(
