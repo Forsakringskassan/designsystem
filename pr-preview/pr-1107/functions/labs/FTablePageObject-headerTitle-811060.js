@@ -1955,8 +1955,7 @@ var require_es_uint8_array_set_from_hex = /* @__PURE__ */ __commonJSMin((() => {
   var $fromHex = require_uint8_from_hex();
   function throwsOnLengthTrackingView() {
     try {
-      var rab = new ArrayBuffer(16, { maxByteLength: 1024 });
-      new Uint8Array(rab).setFromHex("cafed00d");
+      new Uint8Array(new ArrayBuffer(16, { maxByteLength: 1024 })).setFromHex("cafed00d");
     } catch (error) {
       return true;
     }
