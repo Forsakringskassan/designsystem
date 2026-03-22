@@ -23,18 +23,18 @@
   "exports": {
     ".": {
       "types": "./lib/types/index.d.ts",
-      "require": "./lib/cjs/index.js",
-      "import": "./lib/esm/index.js"
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
     },
     "./polyfills": {
       "types": "./lib/types/polyfills.d.ts",
-      "require": "./lib/cjs/polyfills.js",
-      "import": "./lib/esm/polyfills.js"
+      "import": "./lib/esm/polyfills.js",
+      "require": "./lib/cjs/polyfills.js"
     },
     "./lib/polyfills": {
       "types": "./lib/types/polyfills.d.ts",
-      "require": "./lib/cjs/polyfills.js",
-      "import": "./lib/esm/polyfills.js"
+      "import": "./lib/esm/polyfills.js",
+      "require": "./lib/cjs/polyfills.js"
     }
   },
   "main": "lib/cjs/index.js",
