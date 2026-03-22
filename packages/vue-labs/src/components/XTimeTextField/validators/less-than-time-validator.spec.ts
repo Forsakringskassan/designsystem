@@ -1,4 +1,4 @@
-import { lessThanTimeValidator } from "./LessThanTimeValidator";
+import { lessThanTimeValidator } from "./less-than-time-validator";
 
 const element = document.createElement("input");
 

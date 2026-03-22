@@ -1,4 +1,4 @@
-import { hoursMinutesValidator } from "./HoursMinutesValidator";
+import { hoursMinutesValidator } from "./hours-minutes-validator";
 
 const element = document.createElement("input");
 

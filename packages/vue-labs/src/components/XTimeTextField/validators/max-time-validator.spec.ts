@@ -1,4 +1,4 @@
-import { maxTimeValidator } from "./MaxTimeValidator";
+import { maxTimeValidator } from "./max-time-validator";
 
 const element = document.createElement("input");
 

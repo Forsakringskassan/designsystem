@@ -6,7 +6,7 @@ import {
     minutesToObject,
     minutesToUserFriendlyString,
     splitHoursMinutes,
-} from "./HoursMinutesNumberUtils";
+} from "./hours-minutes-number-utils";
 
 beforeEach(() => {
     const $t = (
