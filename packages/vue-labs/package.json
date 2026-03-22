@@ -19,13 +19,13 @@
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "require": "./dist/cjs/index.cjs.js",
-      "import": "./dist/esm/index.esm.js"
+      "import": "./dist/esm/index.esm.js",
+      "require": "./dist/cjs/index.cjs.js"
     },
     "./cypress": {
       "types": "./dist/types/cypress.d.ts",
-      "require": "./dist/cjs/cypress.cjs.js",
-      "import": "./dist/esm/cypress.esm.js"
+      "import": "./dist/esm/cypress.esm.js",
+      "require": "./dist/cjs/cypress.cjs.js"
     },
     "./style.css": "./dummy.css",
     "./htmlvalidate": "./htmlvalidate/index.cjs"
