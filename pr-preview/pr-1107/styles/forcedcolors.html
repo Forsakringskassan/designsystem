@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Högkontrast - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-a0dfad.css"
+            href="../assets/docs-251cc7.css"
             crossorigin
-            integrity="sha384-b7KCciruy4vDG0XPtzidOHFZAMYO11JyDD25BndylQTfDY5syrTA1HH6BythVkig"
+            integrity="sha384-NmFD7JUiEMEEz7T4bTswwrgDMeZwxeLpXFfqp78mP4j/pJ+tu60VSP1eGPZz1zwU"
             
         />
         <link
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../search-data-f5cb44.json"
+            href="../search-data-0936d0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-RIe3+xF+boZnrteDct/rGJKbINf0Vv6SjpIFodR2WS4UyzuRVbGDwNOHcuogIIbi"
+            integrity="sha384-DOHU60r+O3aeOJn113Ph9ZMyuURgBw4Xqu6xTxh8jjXBFzlARrkOq2e7JLI4Ig0N"
             id="search-data"
         />
     </head>
@@ -319,7 +319,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Högkontrast</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Högkontrast</h1>
 
                     
                     <div id="aside"><dl></dl>
@@ -355,8 +355,8 @@
 <p class="docs-paragraph">Det här kallas Windows högkontrast eller Windows kontrasttema och aktiverar i sin tur <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors">CSS media-funktionen forced-colors</a>.</p>
 <p class="docs-paragraph">Varken Android, iOS eller MacOS har stöd för kontrastteman. Däremot har flera <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors#browser_compatibility">webbläsare stöd för forced-colors</a>. I praktiken är det bara Windows i kombination med någon av webbläsarna med stöd för forced-colors som ger användaren möjlighet att själv välja ett kontrasttema.</p>
 <p class="docs-paragraph">Här används omväxlande begreppen högkontrast och forced-colors.</p>
-<h2 id="fkds_och_hogkontrast"><a class="header-anchor" href="#fkds_och_hogkontrast">FKDS och högkontrast</a></h2><p class="docs-paragraph">I designsystemet försöker vi undvika att designa specifikt för högkontrast, istället ska komponenter i FKDS ha en design som fungerar även i högkontrast. Ibland behöver designers och utvecklare göra val för att designen ska fungera även i högkontrast. Ibland behövs justeringar specifikt för högkontrast. Här tar vi upp några exempel på designval och anpassningar som används i designsystemet.</p>
-<h2 id="bakgrundsfarger"><a class="header-anchor" href="#bakgrundsfarger">Bakgrundsfärger</a></h2><p class="docs-paragraph">Alla element får samma bakgrundsfärg när forced-colors är aktivt. Om du använder en avvikande bakgrundsfärg för att skilja ut ett element eller en del av en sida behöver du hitta andra eller kompletterande metoder.</p>
+<h2 id="fkds_och_hogkontrast" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fkds_och_hogkontrast">FKDS och högkontrast</a></h2><p class="docs-paragraph">I designsystemet försöker vi undvika att designa specifikt för högkontrast, istället ska komponenter i FKDS ha en design som fungerar även i högkontrast. Ibland behöver designers och utvecklare göra val för att designen ska fungera även i högkontrast. Ibland behövs justeringar specifikt för högkontrast. Här tar vi upp några exempel på designval och anpassningar som används i designsystemet.</p>
+<h2 id="bakgrundsfarger" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#bakgrundsfarger">Bakgrundsfärger</a></h2><p class="docs-paragraph">Alla element får samma bakgrundsfärg när forced-colors är aktivt. Om du använder en avvikande bakgrundsfärg för att skilja ut ett element eller en del av en sida behöver du hitta andra eller kompletterande metoder.</p>
 <p class="docs-paragraph">Exempel:</p>
 <ul>
 <li>Du använder en avvikande bakgrundsfärg på en yta med information.</li>
@@ -388,7 +388,7 @@
 Tidigare syntes inte designsystemets modal mot bakgrunden eftersom alla bakgrundsfärger sätts till svart i Windows kontrasttema Natthimmel.</p>
 <p class="docs-paragraph"><img src="../assets/images/5ec99b694b9007c95610dd7e8ceadc7e.png" alt="FKDS modal i Windows kontrasttema Natthimmel. Modalen syns tydligt mot den svarta bakgrunden tack vare en vit kantlinje runt modalen."><br>
 Med en transparent outline får modalen en tydlig kantlinje när forcedcolors är aktivt.</p>
-<h2 id="visuella_effekter_som_feedback_till_anvandaren"><a class="header-anchor" href="#visuella_effekter_som_feedback_till_anvandaren">Visuella effekter som feedback till användaren</a></h2><h3 id="muspekaren_fors_over_ett_element"><a class="header-anchor" href="#muspekaren_fors_over_ett_element">Muspekaren förs över ett element</a></h3><p class="docs-paragraph">I FKDS ändras ofta en komponents bakgrundsfärg för att visa användaren att muspekaren förs över ett interaktivt element.</p>
+<h2 id="visuella_effekter_som_feedback_till_anvandaren" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#visuella_effekter_som_feedback_till_anvandaren">Visuella effekter som feedback till användaren</a></h2><h3 id="muspekaren_fors_over_ett_element" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#muspekaren_fors_over_ett_element">Muspekaren förs över ett element</a></h3><p class="docs-paragraph">I FKDS ändras ofta en komponents bakgrundsfärg för att visa användaren att muspekaren förs över ett interaktivt element.</p>
 <p class="docs-paragraph">Exempel:</p>
 <ul>
 <li>Rad i en utfälld kombobox</li>
@@ -450,7 +450,7 @@ Hover-effekt för en dag i kalendern i Windows kontrasttema Natthimmel.</p>
 </code></pre>
                 </div>
             </div>
-        <h3 id="visa_ett_element_som_valt"><a class="header-anchor" href="#visa_ett_element_som_valt">Visa ett element som valt</a></h3><p class="docs-paragraph">Valbara element markeras ofta som valda genom att bakgrundsfärgen ändras.</p>
+        <h3 id="visa_ett_element_som_valt" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#visa_ett_element_som_valt">Visa ett element som valt</a></h3><p class="docs-paragraph">Valbara element markeras ofta som valda genom att bakgrundsfärgen ändras.</p>
 <p class="docs-paragraph">Exempel i FKDS</p>
 <ul>
 <li>Rad i en utfälld kombobox</li>
@@ -480,7 +480,7 @@ De tre exemplen visar ett valt alternativ i komboboxens lista där bakgrundsfär
 </code></pre>
                 </div>
             <p class="docs-paragraph">Var noggrann med när du använder forced-color-adjust, det kan ge oförutsedda effekter.</p>
-<h2 id="svg_filer_och_farger"><a class="header-anchor" href="#svg_filer_och_farger">SVG-filer och färger</a></h2><p class="docs-paragraph">SVG-filer behåller sina färger när forced-colors är aktivt. Det gäller både SVG-filer som färgsätts i SVG-filen i sig eller via CSS.</p>
+<h2 id="svg_filer_och_farger" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#svg_filer_och_farger">SVG-filer och färger</a></h2><p class="docs-paragraph">SVG-filer behåller sina färger när forced-colors är aktivt. Det gäller både SVG-filer som färgsätts i SVG-filen i sig eller via CSS.</p>
 <p class="docs-paragraph">I FKDS komponenter används ikoner i SVG-format som komplement till text. Till exempel kan en knapp för att radera ha en text samt en ikon i form av en soptunna. Ikonerna är alltid enkla och består oftast bara av en färg, samma som intilliggande text.</p>
 <p class="docs-paragraph">Ikoner i designsystemet har oftast ingen egen färg. Istället pekar SVG-filerna på <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#currentcolor_keyword">currentColor</a>. Därmed kommer ikonen att följa textfärgen i den kontext där ikonen används. Till exempel kommer en ikon som används i en knapp alltid att följa knappens textfärg, även när forced-colors är aktivt.</p>
 <p class="docs-paragraph">I de fall en ikon används som en knapp utan någon relaterad text sätts ikonen till systemfärgen <code>buttonBorder</code>.</p>
@@ -500,7 +500,7 @@ De tre exemplen visar ett valt alternativ i komboboxens lista där bakgrundsfär
 }
 </code></pre>
                 </div>
-            <h2 id="kantlinjer"><a class="header-anchor" href="#kantlinjer">Kantlinjer</a></h2><p class="docs-paragraph">Undvik att skapa linjer med en <code>&lt;div&gt;</code> som färgsätts med en bakgrundsfärg.
+            <h2 id="kantlinjer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kantlinjer">Kantlinjer</a></h2><p class="docs-paragraph">Undvik att skapa linjer med en <code>&lt;div&gt;</code> som färgsätts med en bakgrundsfärg.
 Försök använda en border istället. Om du måste används en <code>&lt;div&gt;</code> med en bakgrundsfärg behöver du sätta en färg med media-query forced-colors.</p>
 <p class="docs-paragraph">Exempel i FKDS:
 Kantlinjen till en <a href="../components/page-layout/fresizepane.html">Justerbar yta</a> använder systemfärgen <code>canvasText</code> som bakgrundsfärg på en <code>&lt;div&gt;</code> som används som en avdelande linje.</p>
@@ -528,9 +528,9 @@ Kantlinjen till en <a href="../components/page-layout/fresizepane.html">Justerba
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/vite-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/e65b4fde386579ff324c2b1b60c797222a2423f3">e65b4fd</a>)<br />
+<div class="footer__right"><div class="version">renovate/vite-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/6fd0754e45acd1270e7b3f137961373ad49e2f96">6fd0754</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1107">PR 1107</a><br />
-        2026-03-23 21:14
+        2026-03-23 21:25
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -670,10 +670,10 @@ Kantlinjen till en <a href="../components/page-layout/fresizepane.html">Justerba
             integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../assets/main-eec4a8.js"
+            src="../assets/main-f68cda.js"
             type="module"
             crossorigin
-            integrity="sha384-AfiKoQqtiIhDv98BWTJGG0XcnF303VsiWCaAPo3a5kbSxZtSOORJkz0Qmk8FfAU5"
+            integrity="sha384-ARuCalqVPs3IlLA12rdhvH79lFkpQ7/wgXP1YgdXqst0Cg3amLJRe5AuuxkU5xgz"
             
         ></script>
     </body>
