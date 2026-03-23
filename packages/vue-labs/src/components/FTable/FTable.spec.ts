@@ -1298,3 +1298,46 @@ describe("Clickable cells", () => {
         expect(onClickSpy).toHaveBeenCalledWith({ text: "text 2" });
     });
 });
+
+describe("editable cells", () => {
+    it("should keep a tabstop after value update and blur", async () => {
+        const rows = [{ text: "Foo" }];
+
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "text",
+                header: "Text",
+                key: "text",
+                editable: true,
+                label: () => "Text",
+            },
+        ]);
+
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            attachTo: document.body,
+            props: {
+                rows,
+                columns,
+            },
+        });
+
+        const td = wrapper.get("tbody td");
+        expect((td.element as HTMLElement).tabIndex).toBe(-1);
+
+        await td.trigger("click");
+        await flushPromises();
+
+        const input = wrapper.get("input");
+        expect(input.element.tabIndex).toBe(0);
+
+        await input.setValue("Bar");
+        await input.trigger("blur");
+        await flushPromises();
+
+        expect(rows[0].text).toBe("Bar");
+
+        const tabstops = wrapper.findAll('[tabindex="0"]');
+        expect(tabstops).toHaveLength(1);
+        expect(tabstops[0].element.tagName).toBe("TD");
+    });
+});
