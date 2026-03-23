@@ -3159,6 +3159,40 @@ var ITableExpandable_default = /* @__PURE__ */ defineComponent2({
     };
   }
 });
+var require_add_to_unscopables = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var wellKnownSymbol = require_well_known_symbol();
+  var create = require_object_create();
+  var defineProperty = require_object_define_property().f;
+  var UNSCOPABLES = wellKnownSymbol("unscopables");
+  var ArrayPrototype = Array.prototype;
+  if (ArrayPrototype[UNSCOPABLES] === void 0) defineProperty(ArrayPrototype, UNSCOPABLES, {
+    configurable: true,
+    value: create(null)
+  });
+  module.exports = function(key) {
+    ArrayPrototype[UNSCOPABLES][key] = true;
+  };
+}));
+(/* @__PURE__ */ __commonJSMin((() => {
+  var $ = require_export();
+  var $includes = require_array_includes().includes;
+  var fails = require_fails();
+  var addToUnscopables = require_add_to_unscopables();
+  var BROKEN_ON_SPARSE = fails(function() {
+    return !Array(1).includes();
+  });
+  var BROKEN_ON_SPARSE_WITH_FROM_INDEX = fails(function() {
+    return [, 1].includes(void 0, 1);
+  });
+  $({
+    target: "Array",
+    proto: true,
+    forced: BROKEN_ON_SPARSE || BROKEN_ON_SPARSE_WITH_FROM_INDEX
+  }, { includes: function includes(el) {
+    return $includes(this, el, arguments.length > 1 ? arguments[1] : void 0);
+  } });
+  addToUnscopables("includes");
+})))();
 var textTypes = [
   "text:bankAccountNumber",
   "text:bankgiro",
@@ -5009,20 +5043,6 @@ var require_get_built_in_prototype_method = /* @__PURE__ */ __commonJSMin(((expo
     var Constructor = globalThis2[CONSTRUCTOR];
     var Prototype = Constructor && Constructor.prototype;
     return Prototype && Prototype[METHOD];
-  };
-}));
-var require_add_to_unscopables = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var wellKnownSymbol = require_well_known_symbol();
-  var create = require_object_create();
-  var defineProperty = require_object_define_property().f;
-  var UNSCOPABLES = wellKnownSymbol("unscopables");
-  var ArrayPrototype = Array.prototype;
-  if (ArrayPrototype[UNSCOPABLES] === void 0) defineProperty(ArrayPrototype, UNSCOPABLES, {
-    configurable: true,
-    value: create(null)
-  });
-  module.exports = function(key) {
-    ArrayPrototype[UNSCOPABLES][key] = true;
   };
 }));
 var require_es_array_to_sorted = /* @__PURE__ */ __commonJSMin((() => {
