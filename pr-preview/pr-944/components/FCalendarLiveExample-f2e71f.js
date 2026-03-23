@@ -1667,10 +1667,10 @@ var import_isEqual2 = __toESM(require_isEqual());
 import { defineComponent as defineComponent23, toValue as toValue2 } from "vue";
 import { ElementIdService as ElementIdService7 } from "@fkui/logic";
 
-// packages/vue/src/utils/ListUtils.ts
+// packages/vue/src/utils/list-utils.ts
 import { isSet } from "@fkui/logic";
 
-// packages/vue/src/utils/ValidationUtils.ts
+// packages/vue/src/utils/validation-utils.ts
 function dispatchComponentValidityEvent(element, detail) {
   element.dispatchEvent(
     new CustomEvent("component-validity", {
@@ -1680,7 +1680,7 @@ function dispatchComponentValidityEvent(element, detail) {
   );
 }
 
-// packages/vue/src/utils/VueRefUtils.ts
+// packages/vue/src/utils/vue-ref-utils.ts
 import { isSet as isSet2 } from "@fkui/logic";
 function refIsElement(value) {
   return value instanceof Element;
@@ -1819,7 +1819,7 @@ function translate(key, defaultValueOrArgs, args) {
   return provider.translate(key, defaultValueOrArgs, args);
 }
 
-// packages/vue/src/plugins/translation/TranslationPlugin.ts
+// packages/vue/src/plugins/translation/translation-plugin.ts
 var TranslationMixin = {
   methods: {
     $t: translate
@@ -1831,7 +1831,7 @@ function useTranslate() {
   return translate;
 }
 
-// packages/vue/src/plugins/validation/ValidationPlugin.ts
+// packages/vue/src/plugins/validation/validation-plugin.ts
 var import_isEqual = __toESM(require_isEqual());
 import {
   ValidationService,
@@ -1839,7 +1839,7 @@ import {
   isValidatableHTMLElement
 } from "@fkui/logic";
 
-// packages/vue/src/types/ErrorViewData.ts
+// packages/vue/src/types/error-view-data.ts
 var ErrorViewData = class {
   hasError;
   payload;
@@ -1849,7 +1849,7 @@ var ErrorViewData = class {
   }
 };
 
-// packages/vue/src/plugins/error/ErrorPlugin.ts
+// packages/vue/src/plugins/error/error-plugin.ts
 var UNHANDLED_ERROR_EVENT = "unhandled-error";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/plugins/error/FErrorHandlingApp.vue?type=script
@@ -3069,7 +3069,7 @@ var FErrorList_default2 = FErrorList_default;
 import { defineComponent as defineComponent9 } from "vue";
 import { documentOrderComparator } from "@fkui/logic";
 
-// packages/vue/src/components/FValidationGroup/FormUtils.ts
+// packages/vue/src/components/FValidationGroup/form-utils.ts
 function cleanUpElements(vm) {
   return new Promise((resolve) => {
     window.setTimeout(() => {
@@ -3803,7 +3803,7 @@ function getAbsolutePosition(src) {
   };
 }
 
-// packages/vue/src/utils/dataset.ts
+// packages/vue/src/utils/dataset/use-dataset-ref.ts
 import { ref } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=script
@@ -3827,7 +3827,34 @@ import { TranslationService as TranslationService3 } from "@fkui/logic";
 import { defineComponent as defineComponent12 } from "vue";
 import { debounce, handleTab, popFocus as popFocus2, pushFocus as pushFocus2 } from "@fkui/logic";
 
-// packages/vue/src/internal-components/IPopup/IPopupUtils.ts
+// packages/vue/src/internal-components/IPopup/constants.ts
+var MIN_DESKTOP_WIDTH = 640;
+var POPUP_SPACING = 20;
+
+// packages/vue/src/internal-components/IPopup/get-container.ts
+function getContainer(element, prop) {
+  if (prop) {
+    return prop;
+  }
+  const parent = element.closest(".popup__container");
+  if (parent) {
+    return parent;
+  }
+  return config.popupContainer;
+}
+
+// packages/vue/src/internal-components/IPopup/get-focusable-element.ts
+import { findTabbableElements as findTabbableElements2 } from "@fkui/logic";
+function getFocusableElement(rootElement, callback) {
+  if (callback) {
+    return callback();
+  }
+  const popupElement = getHTMLElementFromVueRef(rootElement);
+  const elements = findTabbableElements2(popupElement);
+  return elements[0] ?? null;
+}
+
+// packages/vue/src/internal-components/IPopup/i-popup-utils.ts
 function offset(page, el) {
   const rect = el.getBoundingClientRect();
   return {
@@ -4037,33 +4064,6 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
   }
 }
 
-// packages/vue/src/internal-components/IPopup/constants.ts
-var MIN_DESKTOP_WIDTH = 640;
-var POPUP_SPACING = 20;
-
-// packages/vue/src/internal-components/IPopup/get-container.ts
-function getContainer(element, prop) {
-  if (prop) {
-    return prop;
-  }
-  const parent = element.closest(".popup__container");
-  if (parent) {
-    return parent;
-  }
-  return config.popupContainer;
-}
-
-// packages/vue/src/internal-components/IPopup/get-focusable-element.ts
-import { findTabbableElements as findTabbableElements2 } from "@fkui/logic";
-function getFocusableElement(rootElement, callback) {
-  if (callback) {
-    return callback();
-  }
-  const popupElement = getHTMLElementFromVueRef(rootElement);
-  const elements = findTabbableElements2(popupElement);
-  return elements[0] ?? null;
-}
-
 // packages/vue/src/internal-components/IPopup/is-teleport-disabled.ts
 function isTeleportDisabled(options) {
   const { window: window2, placement, forceInline, forceOverlay } = options;
@@ -4218,21 +4218,25 @@ var IPopup_default = defineComponent12({
             if (this.isOpen) {
               document.addEventListener("click", this.onDocumentClickHandler);
               window.addEventListener("resize", this.onWindowResizeDebounced);
+              window.addEventListener("scroll", this.onScrollDebounced, { capture: true });
             }
           }, 0);
         } else {
           document.removeEventListener("click", this.onDocumentClickHandler);
           window.removeEventListener("resize", this.onWindowResizeDebounced);
+          window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
         }
       }
     }
   },
   created() {
     this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
+    this.onScrollDebounced = debounce(this.onScroll, 100).bind(this);
   },
   unmounted() {
     document.removeEventListener("click", this.onDocumentClickHandler);
     window.removeEventListener("resize", this.onWindowResizeDebounced);
+    window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
   },
   methods: {
     async toggleIsOpen(isOpen) {
@@ -4249,7 +4253,7 @@ var IPopup_default = defineComponent12({
       this.applyFocus();
       this.$emit("open");
     },
-    async calculatePlacement() {
+    async calculatePlacement(options) {
       const popup = getHTMLElementFromVueRef(this.$refs.popup);
       const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
       const anchor = getElement(this.anchor);
@@ -4272,6 +4276,9 @@ var IPopup_default = defineComponent12({
         const useOverlay = this.forceOverlay || result.placement !== "Fallback" /* Fallback */;
         if (useOverlay) {
           wrapper.style.left = `${String(result.x)}px`;
+          if (options?.horizontalOnly) {
+            return;
+          }
           wrapper.style.top = `${String(result.y)}px`;
           return;
         }
@@ -4314,7 +4321,23 @@ var IPopup_default = defineComponent12({
     },
     onWindowResizeDebounced() {
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars -- Need to match actual `onScroll` method.
+    onScrollDebounced(event) {
+    },
     async onWindowResize() {
+      await this.recalculatePlacement();
+    },
+    async onScroll(event) {
+      if (this.isInline) {
+        return;
+      }
+      const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
+      if (isPopupTarget) {
+        return;
+      }
+      await this.recalculatePlacement({ horizontalOnly: true });
+    },
+    async recalculatePlacement(options) {
       if (!this.isOpen) {
         return;
       }
@@ -4329,7 +4352,7 @@ var IPopup_default = defineComponent12({
         this.teleportDisabled = false;
         await this.$nextTick();
       }
-      await this.calculatePlacement();
+      await this.calculatePlacement(options);
       const { placement, forceInline, forceOverlay } = this;
       this.teleportDisabled = isTeleportDisabled({ window, placement, forceInline, forceOverlay });
     },
@@ -4677,7 +4700,7 @@ import { defineComponent as _defineComponent } from "vue";
 import { computed, onUnmounted as onUnmounted2, useTemplateRef, watch, watchEffect } from "vue";
 import { debounce as debounce2 } from "@fkui/logic";
 
-// packages/vue/src/composables/useEventListener.ts
+// packages/vue/src/composables/use-event-listener.ts
 import { onMounted, onUnmounted, toValue } from "vue";
 function useEventListener(target, event, callback) {
   onMounted(() => {
@@ -4688,7 +4711,7 @@ function useEventListener(target, event, callback) {
   });
 }
 
-// packages/vue/src/composables/useSlotUtils.ts
+// packages/vue/src/composables/use-slot-utils.ts
 import { useSlots } from "vue";
 
 // packages/vue/src/internal-components/IPopupListbox/compute-listbox-rect.ts
@@ -6373,7 +6396,7 @@ function render20(_ctx, _cache, $props, $setup, $data, $options) {
 ICalendarNavbar_default.render = render20;
 ICalendarNavbar_default.__file = "packages/vue/src/internal-components/calendar/ICalendarNavbar.vue";
 
-// packages/vue/src/internal-components/combobox/useCombobox.ts
+// packages/vue/src/internal-components/combobox/use-combobox.ts
 import {
   computed as computed2,
   nextTick,
@@ -6386,7 +6409,7 @@ import { ElementIdService as ElementIdService5, isEmpty as isEmpty2 } from "@fku
 // packages/vue/src/internal-components/combobox/filter-options.ts
 import { isEmpty } from "@fkui/logic";
 
-// packages/vue/src/internal-components/combobox/useCombobox.ts
+// packages/vue/src/internal-components/combobox/use-combobox.ts
 var $t = useTranslate();
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxDropdown.vue?type=script

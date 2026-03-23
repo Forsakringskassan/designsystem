@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Steg för steg-guide - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-e2dc23.css"
+            href="../assets/docs-4a1ec2.css"
             crossorigin
-            integrity="sha384-3rNj4S3zjU+hTBsMHKVO3qJ27CQDi4b+YZRrE7gW1t/2jIPJ0nz5LnW80BYAXPaK"
+            integrity="sha384-OhQsJQSlNnBRUFqrx4ldNCQd55mGTiPOfcZbL7nR+DJIeI+3QMXTkrm8lzo/vyxM"
             
         />
         <link
@@ -24,17 +24,17 @@
   "imports": {
     "vue": "../assets/vendor-vue-dd241e.js",
     "@fkui/vue/selectors": "../assets/vendor-fkui-vue-selectors-dd52a5.js",
-    "@fkui/logic": "../assets/vendor-fkui-logic-98de52.js",
+    "@fkui/logic": "../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-40bb4d.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-4b3ba3.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
     "../assets/vendor-vue-dd241e.js": "sha384-3bp3RphA5Fue/POFOIMqyfDfPU6ARe/NNr5xPPAVr1ycHv2556I1esecXtk1Wt0s",
     "../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
-    "../assets/vendor-fkui-logic-98de52.js": "sha384-Ptnc7xByl78++N85l8MGYnpfAGrdohEpKKt9UuQaOU7Avr3TV3rmyjKzInUKGEe5",
+    "../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../assets/vendor-fkui-vue-40bb4d.js": "sha384-IYPoD8R5VN/mAonCMPjgFpmzv2VVbh6UvwccTvIPRL8yN2lWb/LkbI3OC8qF9ku+",
+    "../assets/vendor-fkui-vue-4b3ba3.js": "sha384-oRDXZ9Jbst2/4Kumj5PDOcpPhKCFRzoo48IDTsGx1eNBL+XM6Q1vLvIuTilLy2DB",
     "../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../search-data-dcf889.json"
+            href="../search-data-ca1281.json"
             as="fetch"
             crossorigin
-            integrity="sha384-IYMK02yYYIs/Dl3JYpeFUM4lnh/Z9UJDh6GrR5K8C//3RFKtn127Sm8JxO22TyxA"
+            integrity="sha384-d4REJ/n1N9L4/ykSOYaFvRsuEosEqzg3Tinh+uFkUGKIsU40hgIkAfD4bkGyOjZA"
             id="search-data"
         />
     </head>
@@ -112,18 +112,18 @@
 <div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
-    <p>
-        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
-        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
-    </p>
+    <p>Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />Vi använder också kakor för webbanalys för att göra webbplatsen bättre.</p>
     <p>Godkänner du att vi också använder kakor för webbanalys?</p>
 
-    <div class="button-group">
-        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+    <div class="cookie-warning__button-group">
+        <button id="consent-all-button" class="cookie-warning__button cookie-warning__button--primary" type="button">
             Ja, jag godkänner alla kakor
         </button>
-
-        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+        <button
+            id="consent-functional-button"
+            class="cookie-warning__button cookie-warning__button--secondary"
+            type="button"
+        >
             Nej, jag godkänner bara nödvändiga kakor
         </button>
     </div>
@@ -1004,6 +1004,17 @@
         >
             Datamängdsorterare
         </a>
+    </li><li class="link ">
+        <a
+            href="./table-and-list/fdefinitionlist.html"
+            
+            
+            
+            data-path="components/table-and-list/fdefinitionlist.html"
+            
+        >
+            Definitionslista
+        </a>
     </li></ol>
 
             
@@ -1097,13 +1108,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/32fc59cd575dba0387b9a20121f08855075ea1cd/packages/vue/src/components/FWizard/FWizard.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/57472d1571d56306a7da9f57edbf69c7d23f7871/packages/vue/src/components/FWizard/FWizard.vue">
                 FWizard
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/32fc59cd575dba0387b9a20121f08855075ea1cd/packages/vue/src/components/FWizard/FWizardStep.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/57472d1571d56306a7da9f57edbf69c7d23f7871/packages/vue/src/components/FWizard/FWizardStep.vue">
                 FWizardStep
             </a>
             
@@ -1173,11 +1184,13 @@
                 <div>
             <button
                 type="button"
-                class="button button--discrete code-preview__toggle-markup"
+                class="code-preview__button code-preview__toggle-markup"
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <i class="icon icon--code"></i>
+                <svg focusable="false" class="icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
                 Visa kod
             </button>
          </div>
@@ -1350,23 +1363,25 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-5a3052"></div>
+        <div id="example-e4ee75"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FWizardExampleAddStep-5a3052.js"></script>
+        <script type="module" src="./FWizardExampleAddStep-e4ee75.js"></script>
     
                 </div>
                 <div>
             <button
                 type="button"
-                class="button button--discrete code-preview__toggle-markup"
+                class="code-preview__button code-preview__toggle-markup"
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <i class="icon icon--code"></i>
+                <svg focusable="false" class="icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
                 Visa kod
             </button>
          </div>
@@ -1377,7 +1392,7 @@ I <code>onBeforeNext</code> har du möjlighet att sätta nya valideringsfel på 
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCheckboxField</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FCheckboxField</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 interface <span class="hljs-title class_">Frukt</span> {
     <span class="hljs-attr">value</span>: string;
@@ -1392,7 +1407,7 @@ interface <span class="hljs-title class_">Fruktkorg</span> {
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;WizardExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FCheckboxField</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FCheckboxField</span>, <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FWizard</span>, <span class="hljs-title class_">FWizardStep</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">current</span>: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> string | <span class="hljs-literal">undefined</span>,
@@ -1449,9 +1464,9 @@ interface <span class="hljs-title class_">Fruktkorg</span> {
         &gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard-step</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;fruktkorg-antal&quot;</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;myOrderStep&#x27;&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Min beställning&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Fruktkorg<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--tertiary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;addBasket&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-icon</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button__icon&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plus&quot;</span> /&gt;</span> Lägg till fruktkorg
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;plus&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;addBasket&quot;</span>&gt;</span>
+                    Lägg till fruktkorg
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-wizard-step</span>&gt;</span>
 
             <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard-step</span>
@@ -1480,9 +1495,9 @@ interface <span class="hljs-title class_">Fruktkorg</span> {
                     <span class="hljs-tag">&lt;/<span class="hljs-name">f-checkbox-field</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
 
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--tertiary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;removeBasket(item)&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;trashcan&quot;</span> /&gt;</span> Ta bort fruktkorg
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">icon-left</span>=<span class="hljs-string">&quot;trashcan&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;removeBasket(item)&quot;</span>&gt;</span>
+                    Ta bort fruktkorg
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">f-wizard-step</span>&gt;</span>
 
             <span class="hljs-tag">&lt;<span class="hljs-name">f-wizard-step</span>
@@ -1497,7 +1512,7 @@ interface <span class="hljs-title class_">Fruktkorg</span> {
 
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 30px&quot;</span>&gt;</span>
             Ett steg kan öppnas programatiskt, t.ex. man klickar &#x27;ändra&#x27; i ett granska-steg.
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;current = &#x27;baz&#x27;&quot;</span>&gt;</span>Öppna sista steget<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;current = &#x27;baz&#x27;&quot;</span>&gt;</span>Öppna sista steget<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>v-model: {{ current }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -2008,9 +2023,9 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs/table-update (<a href="https://github.com/Forsakringskassan/designsystem/commits/32fc59cd575dba0387b9a20121f08855075ea1cd">32fc59c</a>)<br />
+<div class="footer__right"><div class="version">docs/table-update (<a href="https://github.com/Forsakringskassan/designsystem/commits/57472d1571d56306a7da9f57edbf69c7d23f7871">57472d1</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/944">PR 944</a><br />
-        2026-03-13 12:33
+        2026-03-23 15:55
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2018,28 +2033,7 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
             <span id="version-info" class="anchor"> Byt version </span>
         </button>
     </form>
-
-    <dialog id="version-dialog">
-        <div id="version-dialog-head">
-            <h1>Välj version</h1>
-            <button type="button" class="button button--tertiary button--tertiary--black">
-                <span>Stäng</span>
-                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use href="#f-icon-close"></use>
-                </svg>
-            </button>
-        </div>
-        <div id="version-list">
-            <p>Var god vänta, laddar versionsdata...</p>
-        </div>
-    </dialog>
 </div>
-
-<template id="version-list-item">
-    <li class="list__item">
-        <a class="list__item__itempane">template</a>
-    </li>
-</template>
 
 
     <ul>
@@ -2089,32 +2083,75 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
                 class="i"
             ></path>
         </symbol>
+        <symbol id="docs-icon-code" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M200 354L102 256L200 158L171 128L43 256L171 384L200 354ZM312 354L410 256L312 158L341 128L469 256L341 384L312 354Z"
+            />
+        </symbol>
+        <!--!Font Awesome Free 6.4.2 -->
+        <symbol id="docs-icon-fullscreen" viewBox="0 0 448 512">
+            <path
+                fill="currentColor"
+                d="M160 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V64zM32 320c-17.7 0-32 14.3-32 32s14.3 32 32 32H96v64c0 17.7 14.3 32 32 32s32-14.3 32-32V352c0-17.7-14.3-32-32-32H32zM352 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H352V64zM320 320c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32V384h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320z"
+            />
+        </symbol>
     </svg>
-</div><dialog id="search-dialog">
+</div><dialog class="docs-modal" id="search-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title" id="search-dialog-title">Sök</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
-    <form id="search-form">
-        <div class="text-field">
-            <label for="search-field" class="label">Sök</label>
-            <div class="text-field__input-wrapper">
-                <div class="text-field__icon-wrapper">
-                    <input
-                        autofocus
-                        autocomplete="off"
-                        autocapitalize="off"
-                        autocorrect="off"
-                        id="search-field"
-                        type="text"
-                        class="text-field__input"
-                        maxlength="50"
-                        placeholder="Skriv för att börja söka"
-                    />
-                </div>
-            </div>
-        </div>
-        <div id="search-results"></div>
+    <form class="docs-modal__body" id="search-form">
+        <input
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            id="search-field"
+            type="search"
+            class="docs-search-dialog__input"
+            maxlength="50"
+            placeholder="Skriv för att börja söka"
+            aria-labelledby="search-dialog-title"
+        />
+        <ul class="docs-search-result__list" id="search-results"></ul>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog>
+
+<template id="search-result-item">
+    <li class="docs-search-result__item">
+        <a class="docs-search-result__link"></a>
+    </li>
+</template>
+<dialog class="docs-modal" id="version-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title">Välj version</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="docs-modal__body" id="version-list">
+        <p>Var god vänta, laddar versionsdata...</p>
+    </div>
+</dialog>
+
+<template id="version-list-item">
+    <li class="docs-selectable-version__item">
+        <a class="docs-selectable-version__link"></a>
+    </li>
+</template>
 <div id="teleport-target" class="user-theme"></div><script
             src="../assets/processors/motd/index-cda4cc.js"
             type="module"
@@ -2122,16 +2159,16 @@ When cancelled, the consumer is responsible to indicate why this happened.</p>
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../assets/processors/selectable-version/select-version-1fa30d.js"
+            src="../assets/processors/selectable-version/select-version-92a936.js"
             type="module"
             crossorigin
-            integrity="sha384-S7axHBuhVkx1OrFTW9/nE0lj9cTNqqBRTYRZa+mq6Ts4zb0T3k2yYpqQId3enxkl"
+            integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../assets/main-219bfc.js"
+            src="../assets/main-eec4a8.js"
             type="module"
             crossorigin
-            integrity="sha384-UNW7fFulrX7o/Mb39/sqIwjWf9njgm2zaOvZddGSmM8mmpQ3QfYjzvvt1E3RfE2T"
+            integrity="sha384-AfiKoQqtiIhDv98BWTJGG0XcnF303VsiWCaAPo3a5kbSxZtSOORJkz0Qmk8FfAU5"
             
         ></script>
     </body>
