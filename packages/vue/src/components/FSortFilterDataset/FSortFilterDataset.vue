@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T, TArray extends Dataset<T> | T[] = Dataset<T> | T[]">
+<script setup lang="ts" generic="T extends object, TArray extends Dataset<T> | T[] = Dataset<T> | T[]">
 import { type Ref, nextTick, onMounted, provide, useTemplateRef, watch } from "vue";
 import { TranslationService, alertScreenReader, debounce } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
