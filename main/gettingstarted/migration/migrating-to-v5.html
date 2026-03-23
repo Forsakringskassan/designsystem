@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Version 5 migreringsguide - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-a0dfad.css"
+            href="../../assets/docs-251cc7.css"
             crossorigin
-            integrity="sha384-b7KCciruy4vDG0XPtzidOHFZAMYO11JyDD25BndylQTfDY5syrTA1HH6BythVkig"
+            integrity="sha384-NmFD7JUiEMEEz7T4bTswwrgDMeZwxeLpXFfqp78mP4j/pJ+tu60VSP1eGPZz1zwU"
             
         />
         <link
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-312fd7.json"
+            href="../../search-data-4c4121.json"
             as="fetch"
             crossorigin
-            integrity="sha384-PmXhqwQ5u4PujHJnmLN1HbekQm7eMsSyVFniPQv4KrnBsUZu0C1zD+DjYH9EkjM5"
+            integrity="sha384-JxYWzvRlONy0D6rP58sQ+9TF8VaxLgccFnXsdA+4r1PlBxFTeJaigLNrTn3RdSVC"
             id="search-data"
         />
     </head>
@@ -562,7 +562,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Version 5 migreringsguide</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Version 5 migreringsguide</h1>
 
                     
                     <div id="aside"><dl></dl>
@@ -590,8 +590,8 @@
                     </div>
                     
 
-                    <div id="content"><h2 id="vue_3"><a class="header-anchor" href="#vue_3">Vue 3</a></h2><p class="docs-paragraph"><code>@fkui/vue</code> is migrated to Vue 3 and requires your app to be migrated as well.</p>
-<h3 id="prerequisites"><a class="header-anchor" href="#prerequisites">Prerequisites</a></h3><p class="docs-paragraph">Before you begin make sure to read:</p>
+                    <div id="content"><h2 id="vue_3" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#vue_3">Vue 3</a></h2><p class="docs-paragraph"><code>@fkui/vue</code> is migrated to Vue 3 and requires your app to be migrated as well.</p>
+<h3 id="prerequisites" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#prerequisites">Prerequisites</a></h3><p class="docs-paragraph">Before you begin make sure to read:</p>
 <ul>
 <li>Official <a href="https://v3-migration.vuejs.org/">Vue 3 migration guide</a></li>
 <li>Official <a href="https://router.vuejs.org/guide/migration/">vue-router migration guide</a> (if your application uses routing)</li>
@@ -605,7 +605,7 @@
 <p class="docs-paragraph">If you are using <code>vue-stylegudist</code>:</p>
 <p class="docs-paragraph"><code>vue-stylegudist</code> does not support Vue 3 and must be replaced.
 Suggested replacement is <a href="https://github.com/Forsakringskassan/docs-generator"><code>@forsakringskassan/docs-generator</code></a>.</p>
-<h3 id="broad_instructions"><a class="header-anchor" href="#broad_instructions">Broad instructions</a></h3><ol>
+<h3 id="broad_instructions" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#broad_instructions">Broad instructions</a></h3><ol>
 <li>Replace <code>new Vue(..)</code> with <code>createApp(..)</code>.</li>
 </ol>
 
@@ -663,7 +663,7 @@ Suggested replacement is <a href="https://github.com/Forsakringskassan/docs-gene
  });
 </code></pre>
                 </div>
-            <h3 id="set_running_app_context"><a class="header-anchor" href="#set_running_app_context">Set running app context</a></h3><p class="docs-paragraph">FKUI requires knowledge about the running app instance.</p>
+            <h3 id="set_running_app_context" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#set_running_app_context">Set running app context</a></h3><p class="docs-paragraph">FKUI requires knowledge about the running app instance.</p>
 
                 <div
                     id="example-a3b334"
@@ -680,7 +680,7 @@ const app = createApp(App);
 </code></pre>
                 </div>
             <p class="docs-paragraph">Note: you can still create multiple Vue applications, just make sure to call <code>setRunningContext</code> for each <code>app</code> you create.</p>
-<h3 id="mountcomponent_cleanup"><a class="header-anchor" href="#mountcomponent_cleanup"><code>mountComponent</code> cleanup</a></h3><p class="docs-paragraph"><code>mountComponent(..)</code> returns an <code>App</code> instance instead of Vue 2 <code>Vue</code> instance and thus uses the <code>unmount()</code> method instead of <code>$destroy()</code>.</p>
+<h3 id="mountcomponent_cleanup" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#mountcomponent_cleanup"><code>mountComponent</code> cleanup</a></h3><p class="docs-paragraph"><code>mountComponent(..)</code> returns an <code>App</code> instance instead of Vue 2 <code>Vue</code> instance and thus uses the <code>unmount()</code> method instead of <code>$destroy()</code>.</p>
 
                 <div
                     id="example-22f4ed"
@@ -712,7 +712,7 @@ const app = createApp(App);
  app.unmount();
 </code></pre>
                 </div>
-            <h3 id="mountcomponent_requires_calling_instance"><a class="header-anchor" href="#mountcomponent_requires_calling_instance"><code>mountComponent</code> requires calling instance</a></h3><p class="docs-paragraph"><code>mountComponent</code> and related functions needs the calling instance to be passed as a parameter.</p>
+            <h3 id="mountcomponent_requires_calling_instance" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#mountcomponent_requires_calling_instance"><code>mountComponent</code> requires calling instance</a></h3><p class="docs-paragraph"><code>mountComponent</code> and related functions needs the calling instance to be passed as a parameter.</p>
 <p class="docs-paragraph">This change affects the following functions:</p>
 <ul>
 <li><code>mountComponent</code></li>
@@ -735,7 +735,7 @@ const app = createApp(App);
 <span class="hljs-addition">+mountComponent(this, MyAwesomeComponent, { ... });</span>
 </code></pre>
                 </div>
-            <h3 id="mountcomponent_options_now_follow_vue3_attrs_structure"><a class="header-anchor" href="#mountcomponent_options_now_follow_vue3_attrs_structure"><code>mountComponent</code> options now follow Vue3 <code>$attrs</code> structure</a></h3><p class="docs-paragraph">Passing props:</p>
+            <h3 id="mountcomponent_options_now_follow_vue3_attrs_structure" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#mountcomponent_options_now_follow_vue3_attrs_structure"><code>mountComponent</code> options now follow Vue3 <code>$attrs</code> structure</a></h3><p class="docs-paragraph">Passing props:</p>
 <p class="docs-paragraph">For instance, when using <code>mountComponent(..)</code>:</p>
 
                 <div
@@ -777,11 +777,11 @@ const app = createApp(App);
 });
 </code></pre>
                 </div>
-            <h3 id="i_popup_target_removed"><a class="header-anchor" href="#i_popup_target_removed"><code>&lt;i-popup-target&gt;</code> removed</a></h3><p class="docs-paragraph">If your application includes the <code>&lt;i-popup-target&gt;</code> component you must remove it.
+            <h3 id="i_popup_target_removed" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#i_popup_target_removed"><code>&lt;i-popup-target&gt;</code> removed</a></h3><p class="docs-paragraph">If your application includes the <code>&lt;i-popup-target&gt;</code> component you must remove it.
 By default any <code>IPopup</code> will be mounted as a child of <code>&lt;body&gt;</code> but this can be customized by the <code>Config.popupTarget</code> selector.</p>
-<h3 id="mountoffline_removed"><a class="header-anchor" href="#mountoffline_removed"><code>mountOffline(...)</code> removed</a></h3><p class="docs-paragraph"><code>mountOffline(...)</code> is no longer available. For EXP-applications it´s not needed, as the feature is now included in Sitevision.
+<h3 id="mountoffline_removed" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#mountoffline_removed"><code>mountOffline(...)</code> removed</a></h3><p class="docs-paragraph"><code>mountOffline(...)</code> is no longer available. For EXP-applications it´s not needed, as the feature is now included in Sitevision.
 If you are creating a GHS-application with the need for the <code>FOffline</code> component, just add <code>&lt;f-offline&gt; Custom Message &lt;/f-offline&gt;</code> to your application template.</p>
-<h3 id="tooltip_slot_in_custom_components"><a class="header-anchor" href="#tooltip_slot_in_custom_components"><code>#tooltip</code> slot in custom components</a></h3><p class="docs-paragraph">If you have an application specific input field wrapping the <code>#tooltip</code> slot from <code>FLabel</code> you must now add <code>v-if=&quot;$slots.tooltip&quot;</code> to the component:</p>
+<h3 id="tooltip_slot_in_custom_components" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tooltip_slot_in_custom_components"><code>#tooltip</code> slot in custom components</a></h3><p class="docs-paragraph">If you have an application specific input field wrapping the <code>#tooltip</code> slot from <code>FLabel</code> you must now add <code>v-if=&quot;$slots.tooltip&quot;</code> to the component:</p>
 
                 <div
                     id="example-91a3da"
@@ -798,7 +798,7 @@ If you are creating a GHS-application with the need for the <code>FOffline</code
  &lt;/template&gt;
 </code></pre>
                 </div>
-            <h3 id="class_on_components"><a class="header-anchor" href="#class_on_components">Class on components</a></h3>
+            <h3 id="class_on_components" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#class_on_components">Class on components</a></h3>
                 <div
                     id="example-39b76d"
                     class="code-preview code-preview--default"
@@ -812,7 +812,7 @@ If you are creating a GHS-application with the need for the <code>FOffline</code
                 </div>
             <p class="docs-paragraph">Classes used to be set on the root element of the component.
 It is now transparently set on the <code>&lt;input&gt;</code> element instead.</p>
-<h2 id="vue_runtime"><a class="header-anchor" href="#vue_runtime">Vue Runtime</a></h2><p class="docs-paragraph">The <code>@fkui/vue-runtime</code> package has been removed.</p>
+<h2 id="vue_runtime" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#vue_runtime">Vue Runtime</a></h2><p class="docs-paragraph">The <code>@fkui/vue-runtime</code> package has been removed.</p>
 <p class="docs-paragraph">Instead each package has to be manually installed:</p>
 
                 <div
@@ -844,7 +844,7 @@ npm <span class="hljs-built_in">rm</span> @fkui/vue-runtime
 <span class="hljs-addition">+import { bar } from &quot;@fkui/vue&quot;;</span>
 </code></pre>
                 </div>
-            <h2 id="personnummer_displays_10_digits_instead_of_12"><a class="header-anchor" href="#personnummer_displays_10_digits_instead_of_12">Personnummer displays 10 digits instead of 12</a></h2><p class="docs-paragraph">Personnummer is extended to understand both 12- and 10-digit strings.</p>
+            <h2 id="personnummer_displays_10_digits_instead_of_12" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#personnummer_displays_10_digits_instead_of_12">Personnummer displays 10 digits instead of 12</a></h2><p class="docs-paragraph">Personnummer is extended to understand both 12- and 10-digit strings.</p>
 <p class="docs-paragraph">Personnummer is still saved with 12-digits but displayed with 10 digits.
 Textkeys have been replaced in order to not interfer with already-deployed applications
 using former 12-digit display.</p>
@@ -874,9 +874,9 @@ using former 12-digit display.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/c04952ff79554c803c398ca6e8dc151a062465b2">c04952f</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/5da49a653989ce024669897e868ba0b2b02c52d7">5da49a6</a>)<br />
         
-        2026-03-23 21:09
+        2026-03-23 21:20
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1016,10 +1016,10 @@ using former 12-digit display.</p>
             integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../../assets/main-eec4a8.js"
+            src="../../assets/main-f68cda.js"
             type="module"
             crossorigin
-            integrity="sha384-AfiKoQqtiIhDv98BWTJGG0XcnF303VsiWCaAPo3a5kbSxZtSOORJkz0Qmk8FfAU5"
+            integrity="sha384-ARuCalqVPs3IlLA12rdhvH79lFkpQ7/wgXP1YgdXqst0Cg3amLJRe5AuuxkU5xgz"
             
         ></script>
     </body>
