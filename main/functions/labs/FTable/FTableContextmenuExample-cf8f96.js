@@ -3252,6 +3252,55 @@ var _sfc_main$f = /* @__PURE__ */ defineComponent2({
     };
   }
 });
+var es_array_includes = {};
+var addToUnscopables;
+var hasRequiredAddToUnscopables;
+function requireAddToUnscopables() {
+  if (hasRequiredAddToUnscopables) return addToUnscopables;
+  hasRequiredAddToUnscopables = 1;
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var create = requireObjectCreate();
+  var defineProperty = requireObjectDefineProperty().f;
+  var UNSCOPABLES = wellKnownSymbol2("unscopables");
+  var ArrayPrototype = Array.prototype;
+  if (ArrayPrototype[UNSCOPABLES] === void 0) {
+    defineProperty(ArrayPrototype, UNSCOPABLES, {
+      configurable: true,
+      value: create(null)
+    });
+  }
+  addToUnscopables = function(key) {
+    ArrayPrototype[UNSCOPABLES][key] = true;
+  };
+  return addToUnscopables;
+}
+var hasRequiredEs_array_includes;
+function requireEs_array_includes() {
+  if (hasRequiredEs_array_includes) return es_array_includes;
+  hasRequiredEs_array_includes = 1;
+  var $ = require_export();
+  var $includes = requireArrayIncludes().includes;
+  var fails2 = requireFails();
+  var addToUnscopables2 = requireAddToUnscopables();
+  var BROKEN_ON_SPARSE = fails2(function() {
+    return !Array(1).includes();
+  });
+  var BROKEN_ON_SPARSE_WITH_FROM_INDEX = fails2(function() {
+    return [, 1].includes(void 0, 1);
+  });
+  $({
+    target: "Array",
+    proto: true,
+    forced: BROKEN_ON_SPARSE || BROKEN_ON_SPARSE_WITH_FROM_INDEX
+  }, {
+    includes: function includes(el) {
+      return $includes(this, el, arguments.length > 1 ? arguments[1] : void 0);
+    }
+  });
+  addToUnscopables2("includes");
+  return es_array_includes;
+}
+requireEs_array_includes();
 var textTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:date", "text:email", "text:organisationsnummer", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode", "text"];
 var numberTypes = ["text:currency", "text:number", "text:percent"];
 function isInputTypeNumber(value) {
@@ -5213,27 +5262,6 @@ function requireGetBuiltInPrototypeMethod() {
     return Prototype && Prototype[METHOD];
   };
   return getBuiltInPrototypeMethod;
-}
-var addToUnscopables;
-var hasRequiredAddToUnscopables;
-function requireAddToUnscopables() {
-  if (hasRequiredAddToUnscopables) return addToUnscopables;
-  hasRequiredAddToUnscopables = 1;
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var create = requireObjectCreate();
-  var defineProperty = requireObjectDefineProperty().f;
-  var UNSCOPABLES = wellKnownSymbol2("unscopables");
-  var ArrayPrototype = Array.prototype;
-  if (ArrayPrototype[UNSCOPABLES] === void 0) {
-    defineProperty(ArrayPrototype, UNSCOPABLES, {
-      configurable: true,
-      value: create(null)
-    });
-  }
-  addToUnscopables = function(key) {
-    ArrayPrototype[UNSCOPABLES][key] = true;
-  };
-  return addToUnscopables;
 }
 var hasRequiredEs_array_toSorted;
 function requireEs_array_toSorted() {
