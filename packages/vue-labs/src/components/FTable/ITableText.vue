@@ -304,6 +304,7 @@ function onEditingKeydown(event: KeyboardEvent): void {
                 onStopEdit({ reason: "enter" });
             } else {
                 pendingStopEditReason = "enter";
+                void validationFacade.validateElement(inputElement.value);
             }
             break;
         }
