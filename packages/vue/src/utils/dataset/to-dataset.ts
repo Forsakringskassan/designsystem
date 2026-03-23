@@ -7,7 +7,7 @@ import { isDataset } from "./is-dataset";
  * @internal
  * @since v6.39.0
  */
-export function toDataset<T>(dataset: T[]): Dataset<T> {
+export function toDataset<T extends object>(dataset: T[]): Dataset<T> {
     if (isDataset(dataset)) {
         return dataset;
     }

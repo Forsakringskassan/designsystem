@@ -9,7 +9,7 @@ export const datasetSymbol: unique symbol = Symbol("dataset");
  * @public
  * @since v6.39.0
  */
-export type Dataset<T> = T[] & {
+export type Dataset<T extends object> = T[] & {
     readonly [datasetSymbol]: true;
 
     /**

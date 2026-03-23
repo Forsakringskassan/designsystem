@@ -139,7 +139,7 @@ export interface ContextMenuTextItem {
 }
 
 // @public
-export type Dataset<T> = T[] & {
+export type Dataset<T extends object> = T[] & {
     readonly [datasetSymbol]: true;
     readonly __type: T;
 };
@@ -1440,7 +1440,7 @@ export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | nul
 };
 
 // @public
-export function useDatasetRef<T>(initial?: T[]): Ref<Dataset<T>>;
+export function useDatasetRef<T extends object>(initial?: T[]): Ref<Dataset<T>>;
 
 // @public (undocumented)
 export interface UseDetailsPanel<T = unknown> {
