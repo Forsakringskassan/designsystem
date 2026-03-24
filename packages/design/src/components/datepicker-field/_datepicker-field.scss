@@ -52,6 +52,7 @@ $calendar-width: calc(100vw - #{$popup-spacing});
     &__close > &__close__button {
         margin: 0;
         padding: 1rem;
+        align-items: center;
     }
 }
 
