@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Anpassa och översätt text - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-db3a0b.css"
+            href="../../assets/docs-a6b221.css"
             crossorigin
-            integrity="sha384-FP5ih7hDAMhUCOhrgGoYMtK8cl5SMp4Mld9tPf1JI06lZtFB3r/xPuwayiWZ4tee"
+            integrity="sha384-VP76ELOCZFyMcElroASEx+NkyFbSvd4TSSbwadVMqh27vqeaO3RZmhrLmzaIZ0bn"
             
         />
         <link
@@ -24,17 +24,17 @@
   "imports": {
     "vue": "../../assets/vendor-vue-dd241e.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-98de52.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-5eac52.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-d7c46d.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
     "../../assets/vendor-vue-dd241e.js": "sha384-3bp3RphA5Fue/POFOIMqyfDfPU6ARe/NNr5xPPAVr1ycHv2556I1esecXtk1Wt0s",
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
-    "../../assets/vendor-fkui-logic-98de52.js": "sha384-Ptnc7xByl78++N85l8MGYnpfAGrdohEpKKt9UuQaOU7Avr3TV3rmyjKzInUKGEe5",
+    "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-5eac52.js": "sha384-7+eCJPpE8nZlLM8VAhYdTPzry/LA9Ls4M2SI4i9XkaqkYZLKKIrVcAbrZyAMPP7u",
+    "../../assets/vendor-fkui-vue-d7c46d.js": "sha384-omrxaz0gQfET8dXrkRdFEoJZYEiaZsdkHbROce3okSvXZYVqcp9ZSq7x0sKKZHD7",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-fe2cde.json"
+            href="../../search-data-05bf33.json"
             as="fetch"
             crossorigin
-            integrity="sha384-n2MFVJp2JLxuR911K5DLM8qxo2TP20LmxcV7rgJA3T+nMPVAxViN6M6Oqng+3G+s"
+            integrity="sha384-MY8WncT0U19N2w/d8jjyNlLqg0Hp+ECwdUJ/sEsaWwuB4IOtZ1J/9v4TOHbp3dyy"
             id="search-data"
         />
     </head>
@@ -112,18 +112,18 @@
 <div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
-    <p>
-        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
-        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
-    </p>
+    <p>Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />Vi använder också kakor för webbanalys för att göra webbplatsen bättre.</p>
     <p>Godkänner du att vi också använder kakor för webbanalys?</p>
 
-    <div class="button-group">
-        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+    <div class="cookie-warning__button-group">
+        <button id="consent-all-button" class="cookie-warning__button cookie-warning__button--primary" type="button">
             Ja, jag godkänner alla kakor
         </button>
-
-        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+        <button
+            id="consent-functional-button"
+            class="cookie-warning__button cookie-warning__button--secondary"
+            type="button"
+        >
             Nej, jag godkänner bara nödvändiga kakor
         </button>
     </div>
@@ -562,7 +562,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Anpassa och översätt text</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Anpassa och översätt text</h1>
 
                     
                     <div id="aside"><dl></dl>
@@ -599,7 +599,7 @@ Designsystemet levererar <a href="../../functions/i18next-translate/i18next.html
 Den här guiden förutsätter att i18next används.</p>
 <p class="docs-paragraph">Vissa komponenter använder också slots eller props när formaterat eller komplext innehåll ska visas.
 Läs mer under respektive komponent om hur du anpassar och översätter texter.</p>
-<h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">För att kunna översätta text måste din applikation sätta upp en TranslationProvider som tillhandhåller texter.</p>
+<h2 id="konfiguration" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">För att kunna översätta text måste din applikation sätta upp en TranslationProvider som tillhandhåller texter.</p>
 <p class="docs-paragraph">Texterna kan hämtas med REST-anrop, importeras statiskt och bundlas med i javascript eller hårdkodas direkt in i filen:</p>
 
                 <div
@@ -644,7 +644,7 @@ Läs mer under respektive komponent om hur du anpassar och översätter texter.<
 app.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">TranslationPlugin</span>);
 </code></pre>
                 </div>
-            <h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Översättningar kan antingen ligga som ett platt eller nästlat objekt:</p>
+            <h2 id="textnycklar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Översättningar kan antingen ligga som ett platt eller nästlat objekt:</p>
 
                 <div
                     id="example-c82f66"
@@ -702,7 +702,7 @@ Vi använder endast interpolering med parametrar.</p>
 
             </div>
         <p class="docs-paragraph">Textnycklar som saknas kommer visa standardtexter från designsystemet, vilket innebär att du behöver inte översätta alla texter utan det räcker med de du vill anpassa.</p>
-<h2 id="validering"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Standard-feltexter som visas vid validering hämtas från <a href="../../logic/variables/ValidationService.html">ValidationService</a> och mappas med namnet på validatorn som ger felet:</p>
+<h2 id="validering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Standard-feltexter som visas vid validering hämtas från <a href="../../logic/variables/ValidationService.html">ValidationService</a> och mappas med namnet på validatorn som ger felet:</p>
 
                 <div
                     id="example-1e6e52"
@@ -765,10 +765,10 @@ Vi använder endast interpolering med parametrar.</p>
                 <p class="docs-paragraph">Om du använder textnycklar måste texterna ha hämtats ner innan valideringsfelen skapas då de slås upp direkt.</p>
 
             </div>
-        <h2 id="strikt_typning_av_textnycklar"><a class="header-anchor" href="#strikt_typning_av_textnycklar">Strikt typning av textnycklar</a></h2><p class="docs-paragraph">Som standard accepterar <code>$t()</code>-funktionen och <code>useTranslate()</code> vilken textsträng som helst som nyckel.
+        <h2 id="strikt_typning_av_textnycklar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#strikt_typning_av_textnycklar">Strikt typning av textnycklar</a></h2><p class="docs-paragraph">Som standard accepterar <code>$t()</code>-funktionen och <code>useTranslate()</code> vilken textsträng som helst som nyckel.
 För att få en bättre utvecklarupplevelse med autokomplettering i din IDE (IntelliSense) och för att fånga upp felstavade eller saknade textnycklar redan vid kompilering, kan du registrera dina textnycklar globalt i biblioteket.</p>
-<h3 id="typescript_konfiguration_tsconfig_json"><a class="header-anchor" href="#typescript_konfiguration_tsconfig_json">TypeScript-konfiguration (<code>tsconfig.json</code>)</a></h3><p class="docs-paragraph">För att din globala typ-fil (<code>.d.ts</code>) ska registreras och för att TypeScript ska kunna läsa in dina JSON-filer som underlag för nycklarna, krävs specifika inställningar i din <code>tsconfig.json</code>.</p>
-<h4 id="inkludera_din_definitionsfil"><a class="header-anchor" href="#inkludera_din_definitionsfil">Inkludera din definitionsfil</a></h4><p class="docs-paragraph">Kontrollera att mappen där du skapat din <code>translations.d.ts</code> ingår i projektets källfiler. Om du har en strikt <code>include</code>-lista måste du lägga till din types-mapp:</p>
+<h3 id="typescript_konfiguration_tsconfig_json" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#typescript_konfiguration_tsconfig_json">TypeScript-konfiguration (<code>tsconfig.json</code>)</a></h3><p class="docs-paragraph">För att din globala typ-fil (<code>.d.ts</code>) ska registreras och för att TypeScript ska kunna läsa in dina JSON-filer som underlag för nycklarna, krävs specifika inställningar i din <code>tsconfig.json</code>.</p>
+<h4 id="inkludera_din_definitionsfil" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#inkludera_din_definitionsfil">Inkludera din definitionsfil</a></h4><p class="docs-paragraph">Kontrollera att mappen där du skapat din <code>translations.d.ts</code> ingår i projektets källfiler. Om du har en strikt <code>include</code>-lista måste du lägga till din types-mapp:</p>
 
                 <div
                     id="example-e37a70"
@@ -785,7 +785,7 @@ För att få en bättre utvecklarupplevelse med autokomplettering i din IDE (Int
 <span class="hljs-punctuation">}</span>
 </code></pre>
                 </div>
-            <h4 id="tillat_import_av_json"><a class="header-anchor" href="#tillat_import_av_json">Tillåt import av JSON</a></h4><p class="docs-paragraph">Eftersom <code>RepoSchema</code> bygger på <code>typeof data</code>, där <code>data</code> är en importerad <code>.json</code>-fil, måste TypeScript tillåtas att läsa JSON-moduler som en del av typsystemet:</p>
+            <h4 id="tillat_import_av_json" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#tillat_import_av_json">Tillåt import av JSON</a></h4><p class="docs-paragraph">Eftersom <code>RepoSchema</code> bygger på <code>typeof data</code>, där <code>data</code> är en importerad <code>.json</code>-fil, måste TypeScript tillåtas att läsa JSON-moduler som en del av typsystemet:</p>
 
                 <div
                     id="example-e9a892"
@@ -803,7 +803,7 @@ För att få en bättre utvecklarupplevelse med autokomplettering i din IDE (Int
 <span class="hljs-punctuation">}</span>
 </code></pre>
                 </div>
-            <h3 id="implementering"><a class="header-anchor" href="#implementering">Implementering</a></h3><p class="docs-paragraph">Skapa en global definitionsfil, förslagsvis <code>src/types/translations.d.ts</code>, i ditt projekt. Det är viktigt att du importerar din faktiska JSON-fil och använder hjälptypen <code>NestedKeys</code> för att skapa en union av alla möjliga nycklar.</p>
+            <h3 id="implementering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#implementering">Implementering</a></h3><p class="docs-paragraph">Skapa en global definitionsfil, förslagsvis <code>src/types/translations.d.ts</code>, i ditt projekt. Det är viktigt att du importerar din faktiska JSON-fil och använder hjälptypen <code>NestedKeys</code> för att skapa en union av alla möjliga nycklar.</p>
 
                 <div
                     id="example-a80ae0"
@@ -850,10 +850,10 @@ För att få en bättre utvecklarupplevelse med autokomplettering i din IDE (Int
 <span class="hljs-punctuation">}</span>
 </code></pre>
                 </div>
-            <h3 id="undantag_dynamiska_nycklar_och_raa_strangar"><a class="header-anchor" href="#undantag_dynamiska_nycklar_och_raa_strangar">Undantag: Dynamiska nycklar och råa strängar</a></h3><p class="docs-paragraph">Ibland räcker inte den strikta typningen till.
+            <h3 id="undantag_dynamiska_nycklar_och_raa_strangar" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#undantag_dynamiska_nycklar_och_raa_strangar">Undantag: Dynamiska nycklar och råa strängar</a></h3><p class="docs-paragraph">Ibland räcker inte den strikta typningen till.
 Ett vanligt scenario är när du bygger en textnyckel dynamiskt baserat på data från ett API (t.ex. en status eller en förmånstyp), eller när du skickar vidare <code>$t</code> som en prop till en hjälpfunktion.</p>
 <p class="docs-paragraph">Eftersom TypeScript inte kan veta vid kompilering exakt vad ett API-svar kommer att innehålla, kommer den strikta typningen att varna för att en vanlig <code>string</code> inte matchar dina kända nycklar.</p>
-<h4 id="hantering_med_generic_translatefunction_string"><a class="header-anchor" href="#hantering_med_generic_translatefunction_string">Hantering med Generic <code>TranslateFunction&lt;string&gt;</code></a></h4><p class="docs-paragraph">För att lösa detta kan du explicit typa om funktionen till <code>TranslateFunction&lt;string&gt;</code>. Detta &quot;låser upp&quot; funktionen så att den återigen accepterar vilken sträng som helst.</p>
+<h4 id="hantering_med_generic_translatefunction_string" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#hantering_med_generic_translatefunction_string">Hantering med Generic <code>TranslateFunction&lt;string&gt;</code></a></h4><p class="docs-paragraph">För att lösa detta kan du explicit typa om funktionen till <code>TranslateFunction&lt;string&gt;</code>. Detta &quot;låser upp&quot; funktionen så att den återigen accepterar vilken sträng som helst.</p>
 <p class="docs-paragraph"><strong>Exempel i en hjälpfunktion:</strong>
 När du skapar en funktion som tar emot översättningsfunktionen som argument, deklarera den som <code>TranslateFunction&lt;string&gt;</code>.</p>
 
@@ -873,7 +873,7 @@ När du skapar en funktion som tar emot översättningsfunktionen som argument, 
 }
 </code></pre>
                 </div>
-            <h4 id="anvandning_i_template"><a class="header-anchor" href="#anvandning_i_template">Användning i template</a></h4><p class="docs-paragraph">Om du har aktiverat den strikta typningen globalt (via <code>CustomTranslationRegistry</code>) kommer den lokala <code>$t</code>-funktionen i dina komponenter att förvänta sig kända nycklar.</p>
+            <h4 id="anvandning_i_template" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#anvandning_i_template">Användning i template</a></h4><p class="docs-paragraph">Om du har aktiverat den strikta typningen globalt (via <code>CustomTranslationRegistry</code>) kommer den lokala <code>$t</code>-funktionen i dina komponenter att förvänta sig kända nycklar.</p>
 <p class="docs-paragraph">När du behöver skicka <code>$t</code> till en hjälpfunktion som hanterar dynamiska strängar (som i exemplet med <code>formateraText</code>), måste du casta om den med <code>as TranslateFunction&lt;string&gt;</code> för att undvika typfel.</p>
 <p class="docs-paragraph"><strong>Kodexempel:</strong></p>
 
@@ -916,9 +916,9 @@ När du skapar en funktion som tar emot översättningsfunktionen som argument, 
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/definitionlist (<a href="https://github.com/Forsakringskassan/designsystem/commits/781cb9e702f24581f744c4a2fa1df5015809e44a">781cb9e</a>)<br />
+<div class="footer__right"><div class="version">feature/definitionlist (<a href="https://github.com/Forsakringskassan/designsystem/commits/47d71bfbf37e76e4fa0c0067f6a99634f36d5054">47d71bf</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1132">PR 1132</a><br />
-        2026-03-20 14:57
+        2026-03-24 08:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -926,28 +926,7 @@ När du skapar en funktion som tar emot översättningsfunktionen som argument, 
             <span id="version-info" class="anchor"> Byt version </span>
         </button>
     </form>
-
-    <dialog id="version-dialog">
-        <div id="version-dialog-head">
-            <h1>Välj version</h1>
-            <button type="button" class="button button--tertiary button--tertiary--black">
-                <span>Stäng</span>
-                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use href="#f-icon-close"></use>
-                </svg>
-            </button>
-        </div>
-        <div id="version-list">
-            <p>Var god vänta, laddar versionsdata...</p>
-        </div>
-    </dialog>
 </div>
-
-<template id="version-list-item">
-    <li class="list__item">
-        <a class="list__item__itempane">template</a>
-    </li>
-</template>
 
 
     <ul>
@@ -1011,31 +990,61 @@ När du skapar en funktion som tar emot översättningsfunktionen som argument, 
             />
         </symbol>
     </svg>
-</div><dialog id="search-dialog">
+</div><dialog class="docs-modal" id="search-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title" id="search-dialog-title">Sök</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
-    <form id="search-form">
-        <div class="text-field">
-            <label for="search-field" class="label">Sök</label>
-            <div class="text-field__input-wrapper">
-                <div class="text-field__icon-wrapper">
-                    <input
-                        autofocus
-                        autocomplete="off"
-                        autocapitalize="off"
-                        autocorrect="off"
-                        id="search-field"
-                        type="text"
-                        class="text-field__input"
-                        maxlength="50"
-                        placeholder="Skriv för att börja söka"
-                    />
-                </div>
-            </div>
-        </div>
-        <div id="search-results"></div>
+    <form class="docs-modal__body" id="search-form">
+        <input
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            id="search-field"
+            type="search"
+            class="docs-search-dialog__input"
+            maxlength="50"
+            placeholder="Skriv för att börja söka"
+            aria-labelledby="search-dialog-title"
+        />
+        <ul class="docs-search-result__list" id="search-results"></ul>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog>
+
+<template id="search-result-item">
+    <li class="docs-search-result__item">
+        <a class="docs-search-result__link"></a>
+    </li>
+</template>
+<dialog class="docs-modal" id="version-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title">Välj version</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="docs-modal__body" id="version-list">
+        <p>Var god vänta, laddar versionsdata...</p>
+    </div>
+</dialog>
+
+<template id="version-list-item">
+    <li class="docs-selectable-version__item">
+        <a class="docs-selectable-version__link"></a>
+    </li>
+</template>
 <div id="teleport-target" class="user-theme"></div><script
             src="../../assets/processors/motd/index-cda4cc.js"
             type="module"
@@ -1043,16 +1052,16 @@ När du skapar en funktion som tar emot översättningsfunktionen som argument, 
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-1fa30d.js"
+            src="../../assets/processors/selectable-version/select-version-92a936.js"
             type="module"
             crossorigin
-            integrity="sha384-S7axHBuhVkx1OrFTW9/nE0lj9cTNqqBRTYRZa+mq6Ts4zb0T3k2yYpqQId3enxkl"
+            integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../../assets/main-968011.js"
+            src="../../assets/main-f68cda.js"
             type="module"
             crossorigin
-            integrity="sha384-lLuOt0gDwe+q44Yr+DdMJo2Et5XCAV1RJVsQ9cweqokZN21pHe5qfR5ozaFAe62h"
+            integrity="sha384-ARuCalqVPs3IlLA12rdhvH79lFkpQ7/wgXP1YgdXqst0Cg3amLJRe5AuuxkU5xgz"
             
         ></script>
     </body>

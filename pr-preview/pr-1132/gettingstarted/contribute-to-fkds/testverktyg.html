@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Testverktyg - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-db3a0b.css"
+            href="../../assets/docs-a6b221.css"
             crossorigin
-            integrity="sha384-FP5ih7hDAMhUCOhrgGoYMtK8cl5SMp4Mld9tPf1JI06lZtFB3r/xPuwayiWZ4tee"
+            integrity="sha384-VP76ELOCZFyMcElroASEx+NkyFbSvd4TSSbwadVMqh27vqeaO3RZmhrLmzaIZ0bn"
             
         />
         <link
@@ -24,17 +24,17 @@
   "imports": {
     "vue": "../../assets/vendor-vue-dd241e.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-98de52.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-5eac52.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-d7c46d.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
     "../../assets/vendor-vue-dd241e.js": "sha384-3bp3RphA5Fue/POFOIMqyfDfPU6ARe/NNr5xPPAVr1ycHv2556I1esecXtk1Wt0s",
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
-    "../../assets/vendor-fkui-logic-98de52.js": "sha384-Ptnc7xByl78++N85l8MGYnpfAGrdohEpKKt9UuQaOU7Avr3TV3rmyjKzInUKGEe5",
+    "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-5eac52.js": "sha384-7+eCJPpE8nZlLM8VAhYdTPzry/LA9Ls4M2SI4i9XkaqkYZLKKIrVcAbrZyAMPP7u",
+    "../../assets/vendor-fkui-vue-d7c46d.js": "sha384-omrxaz0gQfET8dXrkRdFEoJZYEiaZsdkHbROce3okSvXZYVqcp9ZSq7x0sKKZHD7",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-fe2cde.json"
+            href="../../search-data-05bf33.json"
             as="fetch"
             crossorigin
-            integrity="sha384-n2MFVJp2JLxuR911K5DLM8qxo2TP20LmxcV7rgJA3T+nMPVAxViN6M6Oqng+3G+s"
+            integrity="sha384-MY8WncT0U19N2w/d8jjyNlLqg0Hp+ECwdUJ/sEsaWwuB4IOtZ1J/9v4TOHbp3dyy"
             id="search-data"
         />
     </head>
@@ -112,18 +112,18 @@
 <div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
-    <p>
-        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
-        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
-    </p>
+    <p>Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />Vi använder också kakor för webbanalys för att göra webbplatsen bättre.</p>
     <p>Godkänner du att vi också använder kakor för webbanalys?</p>
 
-    <div class="button-group">
-        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+    <div class="cookie-warning__button-group">
+        <button id="consent-all-button" class="cookie-warning__button cookie-warning__button--primary" type="button">
             Ja, jag godkänner alla kakor
         </button>
-
-        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+        <button
+            id="consent-functional-button"
+            class="cookie-warning__button cookie-warning__button--secondary"
+            type="button"
+        >
             Nej, jag godkänner bara nödvändiga kakor
         </button>
     </div>
@@ -562,7 +562,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Testverktyg</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Testverktyg</h1>
 
                     
                     <div id="aside"><dl></dl>
@@ -588,7 +588,7 @@
                     </div>
                     
 
-                    <div id="content"><h2 id="testfall"><a class="header-anchor" href="#testfall">Testfall</a></h2><p class="docs-paragraph">Testfall i FKUI implementeras med två verktyg:</p>
+                    <div id="content"><h2 id="testfall" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#testfall">Testfall</a></h2><p class="docs-paragraph">Testfall i FKUI implementeras med två verktyg:</p>
 <ul>
 <li>Jest för enhetstester</li>
 <li>Cypress för komponenttester och E2E-tester</li>
@@ -597,7 +597,7 @@
 <p class="docs-paragraph">Samtliga tester körs från CI-miljö vid branch-byggen.
 PR-byggen kör inte komponenttester eller E2E-tester.</p>
 <p class="docs-paragraph">Läs mer om <a href="./testing.html">att skriva automatiska testfall</a>.</p>
-<h3 id="jest"><a class="header-anchor" href="#jest">Jest</a></h3><p class="docs-paragraph">Paket utan ramverksspecifika komponenter samt logik för Vue-komponenter testas med Jest.
+<h3 id="jest" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#jest">Jest</a></h3><p class="docs-paragraph">Paket utan ramverksspecifika komponenter samt logik för Vue-komponenter testas med Jest.
 Vi testar inte interaktion med komponenter med Jest.</p>
 <p class="docs-paragraph">Enhetstester placeras i samma katalog som filen som ska testas och använder <code>${filename}.spec.ts</code> som filnamn.</p>
 <p class="docs-paragraph">För Jest finns två förinställda konfigurationer:</p>
@@ -610,7 +610,7 @@ CI-miljö läser in samtliga filer.</p>
 <p class="docs-paragraph">Jest anropas från respektive paket via <code>test</code>-scriptet.
 <code>test</code>-scriptet i root anropar i sin tur <code>test</code> i respektive paket.</p>
 <p class="docs-paragraph">Extra hjälpfunktioner finns i ett stödpaket <a href="../../functions/test-utils">Om testverktyg</a> och kan nyttjas både av en applikationsutvecklare och den som bidrar till FKUI.</p>
-<h3 id="komponenttester_cypress"><a class="header-anchor" href="#komponenttester_cypress">Komponenttester (Cypress)</a></h3><p class="docs-paragraph">För paket med Vue-komponenter testar vi interaktion och utseende av komponenten med Cypress Komponenttest.</p>
+<h3 id="komponenttester_cypress" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#komponenttester_cypress">Komponenttester (Cypress)</a></h3><p class="docs-paragraph">För paket med Vue-komponenter testar vi interaktion och utseende av komponenten med Cypress Komponenttest.</p>
 <p class="docs-paragraph">Komponenttester placeras i samma katalog som komponenten för komponenten och använder <code>${component}.cy.ts</code> som filnamn.</p>
 <p class="docs-paragraph">Varje komponent bör ha minst ett komponenttest som testar det visuella utseendet i form av ett screenshot sk &quot;screenshottester&quot;
 Vi använder oss av <code>@forsakringskassan/cypress-visual-regression</code> för att skriva tester med skärmdumpar: visuell regressionstest.</p>
@@ -650,7 +650,7 @@ CI-miljö läser in filen.</p>
 </code></pre>
                 </div>
             <p class="docs-paragraph">Läs mer om <a href="#tsconfig-json">tsconfig.json</a>.</p>
-<h3 id="e2e_cypress"><a class="header-anchor" href="#e2e_cypress">E2E (Cypress)</a></h3><p class="docs-paragraph">I undantagsfall kan du använda E2E-tester om ett större sammanhang ska testas.
+<h3 id="e2e_cypress" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#e2e_cypress">E2E (Cypress)</a></h3><p class="docs-paragraph">I undantagsfall kan du använda E2E-tester om ett större sammanhang ska testas.
 E2E-tester kör mot den genererade dokumentationen och kräver att den byggts och startats som en separat process.</p>
 <p class="docs-paragraph">För att bygga och starta dokumentation:</p>
 
@@ -682,7 +682,7 @@ npm start
                 </div>
             <p class="docs-paragraph">E2E-tester ska endast användas som en sista utväg.</p>
 <p class="docs-paragraph">För konfiguration se <a href="#komponenttester_cypress">komponenttester</a>.</p>
-<h2 id="statisk_kodanalys_och_lintning"><a class="header-anchor" href="#statisk_kodanalys_och_lintning">Statisk kodanalys och lintning</a></h2><p class="docs-paragraph">FKUI använder flera verktyg för statisk kodanalys och lintning:</p>
+<h2 id="statisk_kodanalys_och_lintning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#statisk_kodanalys_och_lintning">Statisk kodanalys och lintning</a></h2><p class="docs-paragraph">FKUI använder flera verktyg för statisk kodanalys och lintning:</p>
 <ul>
 <li>Prettier för att formatera kod.</li>
 <li>ESLint för lintning av javascript-, typescript- och Vue-filer.</li>
@@ -692,7 +692,7 @@ npm start
 <p class="docs-paragraph">Samtliga verktyg körs och är konfigurerade från root men i undantagsfall konfigureras verktygen om i respektive paket.
 Flera verktyg använder färdiga mallar för sin konfiguration, se respektive konfigurationsfil och dokumentation för detaljer.</p>
 <p class="docs-paragraph">Vid commit anropas både Prettier och ESLint via husky (konfigurerat i <code>.husky/pre-commit</code>).</p>
-<h3 id="eslint"><a class="header-anchor" href="#eslint">ESLint</a></h3>
+<h3 id="eslint" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#eslint">ESLint</a></h3>
             <div class="docs-messagebox docs-messagebox--warning">
                 <p class="docs-messagebox__title">Tänk på att</p>
                 <p class="docs-paragraph">Ej migrerat till Eslint v9 och flat config!</p>
@@ -709,10 +709,10 @@ Konfiguration hittas i <code>.eslintrc.cjs</code> samt <code>.eslintignore</code
 Det är kodskuld som bör migreras.</p>
 
             </div>
-        <h3 id="prettier"><a class="header-anchor" href="#prettier">Prettier</a></h3><p class="docs-paragraph">Prettier körs på alla filer i repository.</p>
+        <h3 id="prettier" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#prettier">Prettier</a></h3><p class="docs-paragraph">Prettier körs på alla filer i repository.</p>
 <p class="docs-paragraph">Använder <a href="https://github.com/Forsakringskassan/prettier-config"><code>@forsakringskassan/prettier-config</code></a>.
 Konfiguration hittas i <code>package.json</code> samt <code>.prettierignore</code>.</p>
-<h3 id="html_validate"><a class="header-anchor" href="#html_validate">HTML-Validate</a></h3><p class="docs-paragraph">Körs på alla källkodsfiler och exempel i repository, vid Cypress komponenttester och E2E samt på den genererade dokumentationen i <code>public</code> katalogen.</p>
+<h3 id="html_validate" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#html_validate">HTML-Validate</a></h3><p class="docs-paragraph">Körs på alla källkodsfiler och exempel i repository, vid Cypress komponenttester och E2E samt på den genererade dokumentationen i <code>public</code> katalogen.</p>
 <p class="docs-paragraph">Konfigurerat i:</p>
 <ul>
 <li><code>.htmlvalidate.json</code> för källkodsfiler och exempel.</li>
@@ -732,7 +732,7 @@ Konfiguration hittas i <code>package.json</code> samt <code>.prettierignore</cod
                 <p class="docs-paragraph">Teknisk skuld: html-validate konfiguration från <code>@fkui/vue/htmlvalidate</code> är odokumenterad!</p>
 
             </div>
-        <h3 id="stylelint"><a class="header-anchor" href="#stylelint">Stylelint</a></h3><p class="docs-paragraph">Använder <a href="https://github.com/Forsakringskassan/stylelint-config"><code>@forsakringskassan/stylelint-config</code></a>.
+        <h3 id="stylelint" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#stylelint">Stylelint</a></h3><p class="docs-paragraph">Använder <a href="https://github.com/Forsakringskassan/stylelint-config"><code>@forsakringskassan/stylelint-config</code></a>.
 Konfiguration hittas i <code>package.json</code>.</p>
 <p class="docs-paragraph">Utöver standardkonfiguration så levererar <code>@fkui/design</code> en rekommenderad stylelint-konfiguration.</p>
 
@@ -741,7 +741,7 @@ Konfiguration hittas i <code>package.json</code>.</p>
                 <p class="docs-paragraph">Teknisk skuld: stylelint konfiguration från <code>@fkui/design/stylelint</code> är odokumenterad!</p>
 
             </div>
-        <h3 id="pnr_scanner"><a class="header-anchor" href="#pnr_scanner">pnr-scanner</a></h3><p class="docs-paragraph">Från CI miljö anropas <code>pnr-scanner</code> som söker igenom repository efter personnummer.
+        <h3 id="pnr_scanner" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#pnr_scanner">pnr-scanner</a></h3><p class="docs-paragraph">Från CI miljö anropas <code>pnr-scanner</code> som söker igenom repository efter personnummer.
 Endast personnummer från återfinns i <a href="https://www7.skatteverket.se/portal/apier-och-oppna-data/utvecklarportalen/oppetdata/Test%C2%AD%C2%ADpersonnummer">Skatteverkets resurs för Testpersonnummer</a> tillåts.</p>
 
 
@@ -767,9 +767,9 @@ Endast personnummer från återfinns i <a href="https://www7.skatteverket.se/por
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/definitionlist (<a href="https://github.com/Forsakringskassan/designsystem/commits/781cb9e702f24581f744c4a2fa1df5015809e44a">781cb9e</a>)<br />
+<div class="footer__right"><div class="version">feature/definitionlist (<a href="https://github.com/Forsakringskassan/designsystem/commits/47d71bfbf37e76e4fa0c0067f6a99634f36d5054">47d71bf</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1132">PR 1132</a><br />
-        2026-03-20 14:57
+        2026-03-24 08:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -777,28 +777,7 @@ Endast personnummer från återfinns i <a href="https://www7.skatteverket.se/por
             <span id="version-info" class="anchor"> Byt version </span>
         </button>
     </form>
-
-    <dialog id="version-dialog">
-        <div id="version-dialog-head">
-            <h1>Välj version</h1>
-            <button type="button" class="button button--tertiary button--tertiary--black">
-                <span>Stäng</span>
-                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use href="#f-icon-close"></use>
-                </svg>
-            </button>
-        </div>
-        <div id="version-list">
-            <p>Var god vänta, laddar versionsdata...</p>
-        </div>
-    </dialog>
 </div>
-
-<template id="version-list-item">
-    <li class="list__item">
-        <a class="list__item__itempane">template</a>
-    </li>
-</template>
 
 
     <ul>
@@ -862,31 +841,61 @@ Endast personnummer från återfinns i <a href="https://www7.skatteverket.se/por
             />
         </symbol>
     </svg>
-</div><dialog id="search-dialog">
+</div><dialog class="docs-modal" id="search-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title" id="search-dialog-title">Sök</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
-    <form id="search-form">
-        <div class="text-field">
-            <label for="search-field" class="label">Sök</label>
-            <div class="text-field__input-wrapper">
-                <div class="text-field__icon-wrapper">
-                    <input
-                        autofocus
-                        autocomplete="off"
-                        autocapitalize="off"
-                        autocorrect="off"
-                        id="search-field"
-                        type="text"
-                        class="text-field__input"
-                        maxlength="50"
-                        placeholder="Skriv för att börja söka"
-                    />
-                </div>
-            </div>
-        </div>
-        <div id="search-results"></div>
+    <form class="docs-modal__body" id="search-form">
+        <input
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            id="search-field"
+            type="search"
+            class="docs-search-dialog__input"
+            maxlength="50"
+            placeholder="Skriv för att börja söka"
+            aria-labelledby="search-dialog-title"
+        />
+        <ul class="docs-search-result__list" id="search-results"></ul>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog>
+
+<template id="search-result-item">
+    <li class="docs-search-result__item">
+        <a class="docs-search-result__link"></a>
+    </li>
+</template>
+<dialog class="docs-modal" id="version-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title">Välj version</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="docs-modal__body" id="version-list">
+        <p>Var god vänta, laddar versionsdata...</p>
+    </div>
+</dialog>
+
+<template id="version-list-item">
+    <li class="docs-selectable-version__item">
+        <a class="docs-selectable-version__link"></a>
+    </li>
+</template>
 <div id="teleport-target" class="user-theme"></div><script
             src="../../assets/processors/motd/index-cda4cc.js"
             type="module"
@@ -894,16 +903,16 @@ Endast personnummer från återfinns i <a href="https://www7.skatteverket.se/por
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-1fa30d.js"
+            src="../../assets/processors/selectable-version/select-version-92a936.js"
             type="module"
             crossorigin
-            integrity="sha384-S7axHBuhVkx1OrFTW9/nE0lj9cTNqqBRTYRZa+mq6Ts4zb0T3k2yYpqQId3enxkl"
+            integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../../assets/main-968011.js"
+            src="../../assets/main-f68cda.js"
             type="module"
             crossorigin
-            integrity="sha384-lLuOt0gDwe+q44Yr+DdMJo2Et5XCAV1RJVsQ9cweqokZN21pHe5qfR5ozaFAe62h"
+            integrity="sha384-ARuCalqVPs3IlLA12rdhvH79lFkpQ7/wgXP1YgdXqst0Cg3amLJRe5AuuxkU5xgz"
             
         ></script>
     </body>

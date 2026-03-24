@@ -33,7 +33,7 @@ import { defineComponent as _defineComponent } from "vue";
 import { ref as ref4 } from "vue";
 
 // packages/vue-labs/dist/esm/index.esm.js
-import { nextTick as nextTick3, toValue as toValue2, defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, mergeProps, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
+import { defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, nextTick as nextTick3, toValue as toValue2, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, mergeProps, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
 import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
@@ -2939,249 +2939,6 @@ function requireEs_set_union_v2() {
   return es_set_union_v2;
 }
 requireEs_set_union_v2();
-function isFTableCellApi(value) {
-  return value !== null && typeof value === "object" && Boolean(value.tabstopEl);
-}
-var tableCellApiSymbol = /* @__PURE__ */ Symbol("table:cell-api");
-var navKeys = /* @__PURE__ */ new Set(["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"]);
-var prevCellIndex = void 0;
-function getCellTarget(tableElement, rowIndex, cellIndex) {
-  return tableElement.rows[rowIndex].cells[cellIndex];
-}
-function getTr(td) {
-  return td.parentElement;
-}
-function getTable(tr) {
-  return tr.closest("table");
-}
-function getLastRowIndex(tableElement) {
-  return tableElement.rows.length - 1;
-}
-function getLastCellIndex(tableElement) {
-  return tableElement.rows[0].cells.length - 1;
-}
-function getVerticalNavIndex(table, from, to) {
-  const target = {
-    ...to
-  };
-  const currentMax = table.rows[from.row].cells.length - 1;
-  const targetMax = table.rows[to.row].cells.length - 1;
-  if (prevCellIndex && currentMax < targetMax) {
-    target.cell = prevCellIndex;
-    prevCellIndex = void 0;
-  } else {
-    target.cell = Math.min(targetMax, from.cell);
-  }
-  if (targetMax < from.cell) {
-    prevCellIndex = from.cell;
-  }
-  return target;
-}
-function isDefined(value) {
-  return value.row !== void 0 && value.cell !== void 0;
-}
-function navigate(e, table, from, last) {
-  if (!isDefined(from) || !isDefined(last)) {
-    return;
-  }
-  if (!navKeys.has(e.code)) {
-    return;
-  }
-  e.preventDefault();
-  if (e.code === "ArrowLeft") {
-    if (from.cell === 0) {
-      return;
-    }
-    prevCellIndex = void 0;
-    return {
-      row: from.row,
-      cell: from.cell - 1
-    };
-  }
-  if (e.code === "ArrowRight") {
-    if (from.cell === last.cell) {
-      return;
-    }
-    const lastCellIndex = table.rows[from.row].cells.length - 1;
-    if (lastCellIndex <= from.cell) {
-      return;
-    }
-    prevCellIndex = void 0;
-    return {
-      row: from.row,
-      cell: from.cell + 1
-    };
-  }
-  if (e.code === "ArrowUp") {
-    if (from.row === 0) {
-      return;
-    }
-    const to = {
-      row: from.row - 1,
-      cell: from.cell
-    };
-    return getVerticalNavIndex(table, from, to);
-  }
-  if (e.code === "ArrowDown") {
-    if (from.row === last.row) {
-      return;
-    }
-    const to = {
-      row: from.row + 1,
-      cell: from.cell
-    };
-    return getVerticalNavIndex(table, from, to);
-  }
-  if (e.code === "Home") {
-    if (e.ctrlKey) {
-      return {
-        row: 1,
-        cell: 0
-      };
-    } else {
-      return {
-        row: from.row,
-        cell: 0
-      };
-    }
-  }
-  if (e.code === "End") {
-    if (e.ctrlKey) {
-      return {
-        row: last.row,
-        cell: table.rows[last.row].cells.length - 1
-      };
-    } else {
-      return {
-        row: from.row,
-        cell: table.rows[from.row].cells.length - 1
-      };
-    }
-  }
-}
-function getCell(element) {
-  const closest = element.closest("td, th");
-  if (!closest) {
-    throw new Error("expected th or td parent");
-  }
-  return closest;
-}
-async function setDefaultCellTarget(table) {
-  await nextTick3();
-  if (!table.tHead) {
-    return null;
-  }
-  const target = getCellTarget(table, 1, 0);
-  activateCell(target, {
-    focus: false
-  });
-  return target;
-}
-function maybeNavigateToCell(e) {
-  let newCellTarget = e.target;
-  const cell = getCell(e.target);
-  const tr = getTr(cell);
-  const table = getTable(tr);
-  const fromIndex = {
-    row: tr.rowIndex,
-    cell: cell.cellIndex
-  };
-  const lastIndex = {
-    row: getLastRowIndex(table),
-    cell: getLastCellIndex(table)
-  };
-  const navigateTo = navigate(e, table, fromIndex, lastIndex);
-  if (navigateTo) {
-    newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
-    activateCell(newCellTarget, {
-      focus: true
-    });
-  }
-}
-function activateCell(element, options) {
-  var _toValue;
-  const api = element[tableCellApiSymbol];
-  const targetEl = (_toValue = toValue2(api?.tabstopEl)) !== null && _toValue !== void 0 ? _toValue : element;
-  targetEl.tabIndex = 0;
-  if (options?.focus) {
-    targetEl.focus();
-  }
-  return targetEl;
-}
-function stopEdit(element, reason) {
-  const td = getCell(element);
-  const tr = getTr(td);
-  const table = getTable(tr);
-  const rowIndex = tr.rowIndex;
-  const cellIndex = td.cellIndex;
-  const lastRowIndex = getLastRowIndex(table);
-  const lastCellIndex = getLastCellIndex(table);
-  let newCellTarget = td;
-  switch (reason) {
-    case "enter": {
-      const nextRowIndex = rowIndex + 1;
-      const hasFooter = Boolean(table.tFoot);
-      const isLastRow = rowIndex === lastRowIndex;
-      const footerNext = hasFooter && nextRowIndex === lastRowIndex;
-      if (!isLastRow && !footerNext) {
-        newCellTarget = getCellTarget(table, nextRowIndex, cellIndex);
-        activateCell(newCellTarget, {
-          focus: true
-        });
-      } else {
-        activateCell(newCellTarget, {
-          focus: true
-        });
-      }
-      return newCellTarget;
-    }
-    case "escape": {
-      activateCell(newCellTarget, {
-        focus: true
-      });
-      return newCellTarget;
-    }
-    case "tab": {
-      if (cellIndex === lastCellIndex && rowIndex === lastRowIndex) {
-        activateCell(newCellTarget, {
-          focus: true
-        });
-      } else if (cellIndex === lastCellIndex) {
-        newCellTarget = getCellTarget(table, rowIndex + 1, 0);
-        activateCell(newCellTarget, {
-          focus: true
-        });
-      } else {
-        newCellTarget = getCellTarget(table, rowIndex, cellIndex + 1);
-        activateCell(newCellTarget, {
-          focus: true
-        });
-      }
-      return newCellTarget;
-    }
-    case "shift-tab": {
-      if (cellIndex === 0 && rowIndex === 1) {
-        activateCell(newCellTarget, {
-          focus: true
-        });
-      } else if (cellIndex === 0) {
-        newCellTarget = getCellTarget(table, rowIndex - 1, 0);
-        activateCell(newCellTarget, {
-          focus: true
-        });
-      } else {
-        newCellTarget = getCellTarget(table, rowIndex, cellIndex - 1);
-        activateCell(newCellTarget, {
-          focus: true
-        });
-      }
-      return newCellTarget;
-    }
-    case "blur": {
-      return newCellTarget;
-    }
-  }
-}
 var _hoisted_1$e = {
   key: 0,
   class: "table-ng__cell table-ng__cell--expand"
@@ -3253,6 +3010,55 @@ var _sfc_main$f = /* @__PURE__ */ defineComponent2({
     };
   }
 });
+var es_array_includes = {};
+var addToUnscopables;
+var hasRequiredAddToUnscopables;
+function requireAddToUnscopables() {
+  if (hasRequiredAddToUnscopables) return addToUnscopables;
+  hasRequiredAddToUnscopables = 1;
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var create = requireObjectCreate();
+  var defineProperty = requireObjectDefineProperty().f;
+  var UNSCOPABLES = wellKnownSymbol2("unscopables");
+  var ArrayPrototype = Array.prototype;
+  if (ArrayPrototype[UNSCOPABLES] === void 0) {
+    defineProperty(ArrayPrototype, UNSCOPABLES, {
+      configurable: true,
+      value: create(null)
+    });
+  }
+  addToUnscopables = function(key) {
+    ArrayPrototype[UNSCOPABLES][key] = true;
+  };
+  return addToUnscopables;
+}
+var hasRequiredEs_array_includes;
+function requireEs_array_includes() {
+  if (hasRequiredEs_array_includes) return es_array_includes;
+  hasRequiredEs_array_includes = 1;
+  var $ = require_export();
+  var $includes = requireArrayIncludes().includes;
+  var fails2 = requireFails();
+  var addToUnscopables2 = requireAddToUnscopables();
+  var BROKEN_ON_SPARSE = fails2(function() {
+    return !Array(1).includes();
+  });
+  var BROKEN_ON_SPARSE_WITH_FROM_INDEX = fails2(function() {
+    return [, 1].includes(void 0, 1);
+  });
+  $({
+    target: "Array",
+    proto: true,
+    forced: BROKEN_ON_SPARSE || BROKEN_ON_SPARSE_WITH_FROM_INDEX
+  }, {
+    includes: function includes(el) {
+      return $includes(this, el, arguments.length > 1 ? arguments[1] : void 0);
+    }
+  });
+  addToUnscopables2("includes");
+  return es_array_includes;
+}
+requireEs_array_includes();
 var textTypes = ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:date", "text:email", "text:organisationsnummer", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode", "text"];
 var numberTypes = ["text:currency", "text:number", "text:percent"];
 function isInputTypeNumber(value) {
@@ -3855,6 +3661,249 @@ var _sfc_main$a = /* @__PURE__ */ defineComponent2({
     };
   }
 });
+function isFTableCellApi(value) {
+  return value !== null && typeof value === "object" && Boolean(value.tabstopEl);
+}
+var tableCellApiSymbol = /* @__PURE__ */ Symbol("table:cell-api");
+var navKeys = /* @__PURE__ */ new Set(["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"]);
+var prevCellIndex = void 0;
+function getCellTarget(tableElement, rowIndex, cellIndex) {
+  return tableElement.rows[rowIndex].cells[cellIndex];
+}
+function getTr(td) {
+  return td.parentElement;
+}
+function getTable(tr) {
+  return tr.closest("table");
+}
+function getLastRowIndex(tableElement) {
+  return tableElement.rows.length - 1;
+}
+function getLastCellIndex(tableElement) {
+  return tableElement.rows[0].cells.length - 1;
+}
+function getVerticalNavIndex(table, from, to) {
+  const target = {
+    ...to
+  };
+  const currentMax = table.rows[from.row].cells.length - 1;
+  const targetMax = table.rows[to.row].cells.length - 1;
+  if (prevCellIndex && currentMax < targetMax) {
+    target.cell = prevCellIndex;
+    prevCellIndex = void 0;
+  } else {
+    target.cell = Math.min(targetMax, from.cell);
+  }
+  if (targetMax < from.cell) {
+    prevCellIndex = from.cell;
+  }
+  return target;
+}
+function isDefined(value) {
+  return value.row !== void 0 && value.cell !== void 0;
+}
+function navigate(e, table, from, last) {
+  if (!isDefined(from) || !isDefined(last)) {
+    return;
+  }
+  if (!navKeys.has(e.code)) {
+    return;
+  }
+  e.preventDefault();
+  if (e.code === "ArrowLeft") {
+    if (from.cell === 0) {
+      return;
+    }
+    prevCellIndex = void 0;
+    return {
+      row: from.row,
+      cell: from.cell - 1
+    };
+  }
+  if (e.code === "ArrowRight") {
+    if (from.cell === last.cell) {
+      return;
+    }
+    const lastCellIndex = table.rows[from.row].cells.length - 1;
+    if (lastCellIndex <= from.cell) {
+      return;
+    }
+    prevCellIndex = void 0;
+    return {
+      row: from.row,
+      cell: from.cell + 1
+    };
+  }
+  if (e.code === "ArrowUp") {
+    if (from.row === 0) {
+      return;
+    }
+    const to = {
+      row: from.row - 1,
+      cell: from.cell
+    };
+    return getVerticalNavIndex(table, from, to);
+  }
+  if (e.code === "ArrowDown") {
+    if (from.row === last.row) {
+      return;
+    }
+    const to = {
+      row: from.row + 1,
+      cell: from.cell
+    };
+    return getVerticalNavIndex(table, from, to);
+  }
+  if (e.code === "Home") {
+    if (e.ctrlKey) {
+      return {
+        row: 1,
+        cell: 0
+      };
+    } else {
+      return {
+        row: from.row,
+        cell: 0
+      };
+    }
+  }
+  if (e.code === "End") {
+    if (e.ctrlKey) {
+      return {
+        row: last.row,
+        cell: table.rows[last.row].cells.length - 1
+      };
+    } else {
+      return {
+        row: from.row,
+        cell: table.rows[from.row].cells.length - 1
+      };
+    }
+  }
+}
+function getCell(element) {
+  const closest = element.closest("td, th");
+  if (!closest) {
+    throw new Error("expected th or td parent");
+  }
+  return closest;
+}
+async function setDefaultCellTarget(table) {
+  await nextTick3();
+  if (!table.tHead) {
+    return null;
+  }
+  const target = getCellTarget(table, 1, 0);
+  activateCell(target, {
+    focus: false
+  });
+  return target;
+}
+function maybeNavigateToCell(e) {
+  let newCellTarget = e.target;
+  const cell = getCell(e.target);
+  const tr = getTr(cell);
+  const table = getTable(tr);
+  const fromIndex = {
+    row: tr.rowIndex,
+    cell: cell.cellIndex
+  };
+  const lastIndex = {
+    row: getLastRowIndex(table),
+    cell: getLastCellIndex(table)
+  };
+  const navigateTo = navigate(e, table, fromIndex, lastIndex);
+  if (navigateTo) {
+    newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
+    activateCell(newCellTarget, {
+      focus: true
+    });
+  }
+}
+function activateCell(element, options) {
+  var _toValue;
+  const api = element[tableCellApiSymbol];
+  const targetEl = (_toValue = toValue2(api?.tabstopEl)) !== null && _toValue !== void 0 ? _toValue : element;
+  targetEl.tabIndex = 0;
+  if (options?.focus) {
+    targetEl.focus();
+  }
+  return targetEl;
+}
+function stopEdit(element, reason) {
+  const td = getCell(element);
+  const tr = getTr(td);
+  const table = getTable(tr);
+  const rowIndex = tr.rowIndex;
+  const cellIndex = td.cellIndex;
+  const lastRowIndex = getLastRowIndex(table);
+  const lastCellIndex = getLastCellIndex(table);
+  let newCellTarget = td;
+  switch (reason) {
+    case "enter": {
+      const nextRowIndex = rowIndex + 1;
+      const hasFooter = Boolean(table.tFoot);
+      const isLastRow = rowIndex === lastRowIndex;
+      const footerNext = hasFooter && nextRowIndex === lastRowIndex;
+      if (!isLastRow && !footerNext) {
+        newCellTarget = getCellTarget(table, nextRowIndex, cellIndex);
+        activateCell(newCellTarget, {
+          focus: true
+        });
+      } else {
+        activateCell(newCellTarget, {
+          focus: true
+        });
+      }
+      return newCellTarget;
+    }
+    case "escape": {
+      activateCell(newCellTarget, {
+        focus: true
+      });
+      return newCellTarget;
+    }
+    case "tab": {
+      if (cellIndex === lastCellIndex && rowIndex === lastRowIndex) {
+        activateCell(newCellTarget, {
+          focus: true
+        });
+      } else if (cellIndex === lastCellIndex) {
+        newCellTarget = getCellTarget(table, rowIndex + 1, 0);
+        activateCell(newCellTarget, {
+          focus: true
+        });
+      } else {
+        newCellTarget = getCellTarget(table, rowIndex, cellIndex + 1);
+        activateCell(newCellTarget, {
+          focus: true
+        });
+      }
+      return newCellTarget;
+    }
+    case "shift-tab": {
+      if (cellIndex === 0 && rowIndex === 1) {
+        activateCell(newCellTarget, {
+          focus: true
+        });
+      } else if (cellIndex === 0) {
+        newCellTarget = getCellTarget(table, rowIndex - 1, 0);
+        activateCell(newCellTarget, {
+          focus: true
+        });
+      } else {
+        newCellTarget = getCellTarget(table, rowIndex, cellIndex - 1);
+        activateCell(newCellTarget, {
+          focus: true
+        });
+      }
+      return newCellTarget;
+    }
+    case "blur": {
+      return newCellTarget;
+    }
+  }
+}
 function walk(array, childKey, visit, level = 1) {
   for (const item of array) {
     const visitChildren = visit(item, level);
@@ -5214,27 +5263,6 @@ function requireGetBuiltInPrototypeMethod() {
     return Prototype && Prototype[METHOD];
   };
   return getBuiltInPrototypeMethod;
-}
-var addToUnscopables;
-var hasRequiredAddToUnscopables;
-function requireAddToUnscopables() {
-  if (hasRequiredAddToUnscopables) return addToUnscopables;
-  hasRequiredAddToUnscopables = 1;
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var create = requireObjectCreate();
-  var defineProperty = requireObjectDefineProperty().f;
-  var UNSCOPABLES = wellKnownSymbol2("unscopables");
-  var ArrayPrototype = Array.prototype;
-  if (ArrayPrototype[UNSCOPABLES] === void 0) {
-    defineProperty(ArrayPrototype, UNSCOPABLES, {
-      configurable: true,
-      value: create(null)
-    });
-  }
-  addToUnscopables = function(key) {
-    ArrayPrototype[UNSCOPABLES][key] = true;
-  };
-  return addToUnscopables;
 }
 var hasRequiredEs_array_toSorted;
 function requireEs_array_toSorted() {

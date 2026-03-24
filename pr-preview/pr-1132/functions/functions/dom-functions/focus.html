@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>focus - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-db3a0b.css"
+            href="../../../assets/docs-a6b221.css"
             crossorigin
-            integrity="sha384-FP5ih7hDAMhUCOhrgGoYMtK8cl5SMp4Mld9tPf1JI06lZtFB3r/xPuwayiWZ4tee"
+            integrity="sha384-VP76ELOCZFyMcElroASEx+NkyFbSvd4TSSbwadVMqh27vqeaO3RZmhrLmzaIZ0bn"
             
         />
         <link
@@ -24,17 +24,17 @@
   "imports": {
     "vue": "../../../assets/vendor-vue-dd241e.js",
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-dd52a5.js",
-    "@fkui/logic": "../../../assets/vendor-fkui-logic-98de52.js",
+    "@fkui/logic": "../../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-5eac52.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-d7c46d.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-dd241e.js": "sha384-3bp3RphA5Fue/POFOIMqyfDfPU6ARe/NNr5xPPAVr1ycHv2556I1esecXtk1Wt0s",
     "../../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
-    "../../../assets/vendor-fkui-logic-98de52.js": "sha384-Ptnc7xByl78++N85l8MGYnpfAGrdohEpKKt9UuQaOU7Avr3TV3rmyjKzInUKGEe5",
+    "../../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../../assets/vendor-fkui-vue-5eac52.js": "sha384-7+eCJPpE8nZlLM8VAhYdTPzry/LA9Ls4M2SI4i9XkaqkYZLKKIrVcAbrZyAMPP7u",
+    "../../../assets/vendor-fkui-vue-d7c46d.js": "sha384-omrxaz0gQfET8dXrkRdFEoJZYEiaZsdkHbROce3okSvXZYVqcp9ZSq7x0sKKZHD7",
     "../../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-fe2cde.json"
+            href="../../../search-data-05bf33.json"
             as="fetch"
             crossorigin
-            integrity="sha384-n2MFVJp2JLxuR911K5DLM8qxo2TP20LmxcV7rgJA3T+nMPVAxViN6M6Oqng+3G+s"
+            integrity="sha384-MY8WncT0U19N2w/d8jjyNlLqg0Hp+ECwdUJ/sEsaWwuB4IOtZ1J/9v4TOHbp3dyy"
             id="search-data"
         />
     </head>
@@ -112,18 +112,18 @@
 <div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
-    <p>
-        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
-        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
-    </p>
+    <p>Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />Vi använder också kakor för webbanalys för att göra webbplatsen bättre.</p>
     <p>Godkänner du att vi också använder kakor för webbanalys?</p>
 
-    <div class="button-group">
-        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+    <div class="cookie-warning__button-group">
+        <button id="consent-all-button" class="cookie-warning__button cookie-warning__button--primary" type="button">
             Ja, jag godkänner alla kakor
         </button>
-
-        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+        <button
+            id="consent-functional-button"
+            class="cookie-warning__button cookie-warning__button--secondary"
+            type="button"
+        >
             Nej, jag godkänner bara nödvändiga kakor
         </button>
     </div>
@@ -1764,13 +1764,13 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">focus</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">focus</h1>
 
                     
 
                     <div id="content"><p class="docs-paragraph">Programatically set focus on an element in the DOM.
 There is also support for focusing Vue components and <code>$refs</code> in Vue components.</p>
-<h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
+<h2 id="api" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#api">API</a></h2>
                 <div
                     id="example-761175"
                     class="code-preview code-preview--default"
@@ -1829,7 +1829,7 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
 <li><code>options</code> - Focus options. If you pass boolean <code>true</code> or <code>false</code> it sets the <code>force</code> option.</li>
 </ul>
 <p class="docs-paragraph">Returns <code>true</code> if successfully found an HTMLElement to focus. Otherwise, <code>false</code>.</p>
-<h2 id="usage"><a class="header-anchor" href="#usage">Usage</a></h2><p class="docs-paragraph">If not in a Vue context, use the variant from <code>@fkui/logic</code>.</p>
+<h2 id="usage" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#usage">Usage</a></h2><p class="docs-paragraph">If not in a Vue context, use the variant from <code>@fkui/logic</code>.</p>
 
                 <div
                     id="example-055423"
@@ -1857,7 +1857,7 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
 <span class="hljs-title function_">focus</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#header&quot;</span>), <span class="hljs-literal">true</span>);
 </code></pre>
                 </div>
-            <h3 id="when_in_vue_context"><a class="header-anchor" href="#when_in_vue_context">When in Vue Context</a></h3><p class="docs-paragraph">When using Vue, it is better to import the variant from <code>@fkui/vue</code>.</p>
+            <h3 id="when_in_vue_context" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#when_in_vue_context">When in Vue Context</a></h3><p class="docs-paragraph">When using Vue, it is better to import the variant from <code>@fkui/vue</code>.</p>
 
                 <div
                     id="example-7f0784"
@@ -1885,7 +1885,7 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
 </code></pre>
                 </div>
             <p class="docs-paragraph">If <code>$refs</code> returns an array, the first element will get focused.</p>
-<h4 id="using_focustarget"><a class="header-anchor" href="#using_focustarget">Using <code>focusTarget</code></a></h4><p class="docs-paragraph">The example below will recursively search for a focus target and eventually focus the button inside the <code>MyButton</code> component.</p>
+<h4 id="using_focustarget" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#using_focustarget">Using <code>focusTarget</code></a></h4><p class="docs-paragraph">The example below will recursively search for a focus target and eventually focus the button inside the <code>MyButton</code> component.</p>
 
                 <div
                     id="example-a9bf8b"
@@ -1956,9 +1956,9 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/definitionlist (<a href="https://github.com/Forsakringskassan/designsystem/commits/781cb9e702f24581f744c4a2fa1df5015809e44a">781cb9e</a>)<br />
+<div class="footer__right"><div class="version">feature/definitionlist (<a href="https://github.com/Forsakringskassan/designsystem/commits/47d71bfbf37e76e4fa0c0067f6a99634f36d5054">47d71bf</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1132">PR 1132</a><br />
-        2026-03-20 14:57
+        2026-03-24 08:22
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1966,28 +1966,7 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
             <span id="version-info" class="anchor"> Byt version </span>
         </button>
     </form>
-
-    <dialog id="version-dialog">
-        <div id="version-dialog-head">
-            <h1>Välj version</h1>
-            <button type="button" class="button button--tertiary button--tertiary--black">
-                <span>Stäng</span>
-                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use href="#f-icon-close"></use>
-                </svg>
-            </button>
-        </div>
-        <div id="version-list">
-            <p>Var god vänta, laddar versionsdata...</p>
-        </div>
-    </dialog>
 </div>
-
-<template id="version-list-item">
-    <li class="list__item">
-        <a class="list__item__itempane">template</a>
-    </li>
-</template>
 
 
     <ul>
@@ -2051,31 +2030,61 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
             />
         </symbol>
     </svg>
-</div><dialog id="search-dialog">
+</div><dialog class="docs-modal" id="search-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title" id="search-dialog-title">Sök</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
-    <form id="search-form">
-        <div class="text-field">
-            <label for="search-field" class="label">Sök</label>
-            <div class="text-field__input-wrapper">
-                <div class="text-field__icon-wrapper">
-                    <input
-                        autofocus
-                        autocomplete="off"
-                        autocapitalize="off"
-                        autocorrect="off"
-                        id="search-field"
-                        type="text"
-                        class="text-field__input"
-                        maxlength="50"
-                        placeholder="Skriv för att börja söka"
-                    />
-                </div>
-            </div>
-        </div>
-        <div id="search-results"></div>
+    <form class="docs-modal__body" id="search-form">
+        <input
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            id="search-field"
+            type="search"
+            class="docs-search-dialog__input"
+            maxlength="50"
+            placeholder="Skriv för att börja söka"
+            aria-labelledby="search-dialog-title"
+        />
+        <ul class="docs-search-result__list" id="search-results"></ul>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog>
+
+<template id="search-result-item">
+    <li class="docs-search-result__item">
+        <a class="docs-search-result__link"></a>
+    </li>
+</template>
+<dialog class="docs-modal" id="version-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title">Välj version</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="docs-modal__body" id="version-list">
+        <p>Var god vänta, laddar versionsdata...</p>
+    </div>
+</dialog>
+
+<template id="version-list-item">
+    <li class="docs-selectable-version__item">
+        <a class="docs-selectable-version__link"></a>
+    </li>
+</template>
 <div id="teleport-target" class="user-theme"></div><script
             src="../../../assets/processors/motd/index-cda4cc.js"
             type="module"
@@ -2083,16 +2092,16 @@ There is also support for focusing Vue components and <code>$refs</code> in Vue 
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-1fa30d.js"
+            src="../../../assets/processors/selectable-version/select-version-92a936.js"
             type="module"
             crossorigin
-            integrity="sha384-S7axHBuhVkx1OrFTW9/nE0lj9cTNqqBRTYRZa+mq6Ts4zb0T3k2yYpqQId3enxkl"
+            integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../../../assets/main-968011.js"
+            src="../../../assets/main-f68cda.js"
             type="module"
             crossorigin
-            integrity="sha384-lLuOt0gDwe+q44Yr+DdMJo2Et5XCAV1RJVsQ9cweqokZN21pHe5qfR5ozaFAe62h"
+            integrity="sha384-ARuCalqVPs3IlLA12rdhvH79lFkpQ7/wgXP1YgdXqst0Cg3amLJRe5AuuxkU5xgz"
             
         ></script>
     </body>
