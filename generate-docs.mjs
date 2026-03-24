@@ -103,9 +103,6 @@ function sandboxProcessor(folder) {
                 "sandboxLink",
                 `https://play.vuejs.org/#${hash}`,
             );
-            context.addTemplateBlock("toolbar", "sandbox-toolbar", {
-                filename: "partials/sandbox.html",
-            });
         },
     };
 }
