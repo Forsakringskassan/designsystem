@@ -147,6 +147,7 @@ functions/functions/dom-functions/ref-is-element.html
 functions/functions/dom-functions/ref-is-html-element-array.html
 functions/functions/dom-functions/ref-is-vue-array.html
 functions/functions/dom-functions/ref-is-vue.html
+functions/functions/get-dataset-metadata.html
 functions/functions/handle-keyboard-focus-navigation.html
 functions/functions/include-item.html
 functions/functions/item-equals.html

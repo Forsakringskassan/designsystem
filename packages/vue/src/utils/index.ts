@@ -44,4 +44,10 @@ export {
     setItemIdentifier,
     setItemIdentifiers,
 } from "./item-identifier";
-export { type Dataset, useDatasetRef } from "./dataset";
+export {
+    type Dataset,
+    type DatasetArrayMetadata,
+    type DatasetElementMetadata,
+    getDatasetMetadata,
+    useDatasetRef,
+} from "./dataset";
