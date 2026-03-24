@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Formaterare och parsers - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-00f090.css"
+            href="../../assets/docs-251cc7.css"
             crossorigin
-            integrity="sha384-uxQZmLY7hSB6x9grQDZrVW3iJGuMgYRIYd1Si+C2iXnUp6bdEgf0ny306Haa0+mZ"
+            integrity="sha384-NmFD7JUiEMEEz7T4bTswwrgDMeZwxeLpXFfqp78mP4j/pJ+tu60VSP1eGPZz1zwU"
             
         />
         <link
@@ -24,17 +24,17 @@
   "imports": {
     "vue": "../../assets/vendor-vue-dd241e.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-98de52.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-2c7abf.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-8fd070.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
     "../../assets/vendor-vue-dd241e.js": "sha384-3bp3RphA5Fue/POFOIMqyfDfPU6ARe/NNr5xPPAVr1ycHv2556I1esecXtk1Wt0s",
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
-    "../../assets/vendor-fkui-logic-98de52.js": "sha384-Ptnc7xByl78++N85l8MGYnpfAGrdohEpKKt9UuQaOU7Avr3TV3rmyjKzInUKGEe5",
+    "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-2c7abf.js": "sha384-YoKS0bXDCaVp5S0CBGMd+TVVFQh0w+uEKsIKkQlKRr91w8mAX2xNqEfWL5aJVIZe",
+    "../../assets/vendor-fkui-vue-8fd070.js": "sha384-tR8tI5pGIO8nLkgp6pnv69bOJ9xt0XovCcQHGZA2si1fFZsPI8FDDVJ4CtbjpO4o",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-889287.json"
+            href="../../search-data-208470.json"
             as="fetch"
             crossorigin
-            integrity="sha384-/Tx9G9TpGGXRF6MhFh+IYSGejFqKXHGwm32YyJGL+GB2PN/SiHcuSp2URe/bJO2G"
+            integrity="sha384-hx7gZe13um6kOYZln0USLwuPwRKvdi9dmE01BXzCzAEMBY3jOc922STN8OV1bFVD"
             id="search-data"
         />
     </head>
@@ -112,18 +112,18 @@
 <div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
-    <p>
-        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
-        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
-    </p>
+    <p>Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />Vi använder också kakor för webbanalys för att göra webbplatsen bättre.</p>
     <p>Godkänner du att vi också använder kakor för webbanalys?</p>
 
-    <div class="button-group">
-        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+    <div class="cookie-warning__button-group">
+        <button id="consent-all-button" class="cookie-warning__button cookie-warning__button--primary" type="button">
             Ja, jag godkänner alla kakor
         </button>
-
-        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+        <button
+            id="consent-functional-button"
+            class="cookie-warning__button cookie-warning__button--secondary"
+            type="button"
+        >
             Nej, jag godkänner bara nödvändiga kakor
         </button>
     </div>
@@ -1098,7 +1098,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Formaterare och parsers</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Formaterare och parsers</h1>
 
                     
                     <div id="aside"><dl>
@@ -1155,29 +1155,29 @@
                     
 
                     <div id="content"><p class="docs-paragraph">Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält. Parsning används för att ändra på det som faktiskt hanteras och skickas in. Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag. Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.</p>
-<h2 id="bankgiro_parser"><a class="header-anchor" href="#bankgiro_parser">Bankgiro (parser)</a></h2><p class="docs-paragraph"><code>parseBankgiro</code></p>
+<h2 id="bankgiro_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#bankgiro_parser">Bankgiro (parser)</a></h2><p class="docs-paragraph"><code>parseBankgiro</code></p>
 <p class="docs-paragraph">Parsern för bankgiro tolkar vy-värdet genom att ändra så att modell-värdet blir</p>
 <ul>
 <li>NNN-NNNN om längden är sju tecken</li>
 <li>NNNN-NNNN om längden är åtta tecken.</li>
 </ul>
-<h2 id="clearingnummer_formaterare"><a class="header-anchor" href="#clearingnummer_formaterare">Clearingnummer (formaterare)</a></h2><p class="docs-paragraph"><code>formatClearingNumberForBackend</code></p>
+<h2 id="clearingnummer_formaterare" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#clearingnummer_formaterare">Clearingnummer (formaterare)</a></h2><p class="docs-paragraph"><code>formatClearingNumberForBackend</code></p>
 <p class="docs-paragraph">Formateraren för clearingnummer tar bort sista siffran om clearingnumret innehåller fem siffror.</p>
-<h2 id="clearingnummer_parser"><a class="header-anchor" href="#clearingnummer_parser">Clearingnummer (parser)</a></h2><p class="docs-paragraph"><code>parseClearingNumber</code></p>
+<h2 id="clearingnummer_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#clearingnummer_parser">Clearingnummer (parser)</a></h2><p class="docs-paragraph"><code>parseClearingNumber</code></p>
 <p class="docs-paragraph">Parsern för clearingnummer tolkar vy-värdet genom att ändra så att modell-värdet blir</p>
 <ul>
 <li>NNNN om antalet siffror är fyra</li>
 <li>NNNN-N om antalet siffror är fem.</li>
 </ul>
-<h2 id="datum_parser"><a class="header-anchor" href="#datum_parser">Datum (parser)</a></h2><p class="docs-paragraph"><code>parseDate</code></p>
+<h2 id="datum_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#datum_parser">Datum (parser)</a></h2><p class="docs-paragraph"><code>parseDate</code></p>
 <p class="docs-paragraph">Parsern för datum tolkar vy-värdet genom att ändra så att modell-värdet får formatet ÅÅÅÅ-MM-DD.</p>
 <p class="docs-paragraph">Exempel</p>
 <ul>
 <li>20211220 -&gt; 2021-12-20</li>
 </ul>
-<h2 id="kontonummer_parser"><a class="header-anchor" href="#kontonummer_parser">Kontonummer (parser)</a></h2><p class="docs-paragraph"><code>parseBankAccountNumber</code></p>
+<h2 id="kontonummer_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kontonummer_parser">Kontonummer (parser)</a></h2><p class="docs-paragraph"><code>parseBankAccountNumber</code></p>
 <p class="docs-paragraph">Parsern för kontonummer tar bort bindestreck, mellanslag, punkt och komma. Den behåller inledande nollor.</p>
-<h2 id="nummer_formaterare"><a class="header-anchor" href="#nummer_formaterare">Nummer (formaterare)</a></h2><p class="docs-paragraph"><code>formatNumber</code></p>
+<h2 id="nummer_formaterare" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#nummer_formaterare">Nummer (formaterare)</a></h2><p class="docs-paragraph"><code>formatNumber</code></p>
 <p class="docs-paragraph">Formateraren för nummer formaterar inmatat värde genom att den</p>
 <ul>
 <li>tar bort inledande nollor</li>
@@ -1190,19 +1190,19 @@
 <li>001000 -&gt; 1 000</li>
 <li>002.20003 -&gt; 2,2003</li>
 </ul>
-<h2 id="nummer_parser"><a class="header-anchor" href="#nummer_parser">Nummer (parser)</a></h2><p class="docs-paragraph"><code>parseNumber</code></p>
+<h2 id="nummer_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#nummer_parser">Nummer (parser)</a></h2><p class="docs-paragraph"><code>parseNumber</code></p>
 <p class="docs-paragraph">Parsern för nummer tolkar vy-värdet så att modell-värdet blir numerisk typ genom att den</p>
 <ul>
 <li>gör om sträng till numeriskt värde</li>
 <li>konverterar komma till punkt.</li>
 </ul>
-<h2 id="organisationsnummer_parser"><a class="header-anchor" href="#organisationsnummer_parser">Organisationsnummer (parser)</a></h2><p class="docs-paragraph"><code>parseOrganisationsnummer</code></p>
+<h2 id="organisationsnummer_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#organisationsnummer_parser">Organisationsnummer (parser)</a></h2><p class="docs-paragraph"><code>parseOrganisationsnummer</code></p>
 <p class="docs-paragraph">Parsern för organisationsnummer tolkar vy-värdet så att modell-värdet får formatet NNNNNN-NNNN.</p>
 <p class="docs-paragraph">Exempel</p>
 <ul>
 <li>0123456789 -&gt; 012345-6789</li>
 </ul>
-<h2 id="personnummer_formaterare"><a class="header-anchor" href="#personnummer_formaterare">Personnummer (formaterare)</a></h2><p class="docs-paragraph"><code>formatPersonnummer</code></p>
+<h2 id="personnummer_formaterare" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#personnummer_formaterare">Personnummer (formaterare)</a></h2><p class="docs-paragraph"><code>formatPersonnummer</code></p>
 <p class="docs-paragraph">Visar personnummer med 10 siffror enligt <a href="https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html">Skatteverkets regler</a> genom att den</p>
 <ul>
 <li>tar bort sekelsiffror</li>
@@ -1213,7 +1213,7 @@
 <li>19980101-0000 -&gt; 980101-0000</li>
 <li>18980101-0000 -&gt; 980101+0000</li>
 </ul>
-<h2 id="personnummer_parser"><a class="header-anchor" href="#personnummer_parser">Personnummer (parser)</a></h2><p class="docs-paragraph"><code>parsePersonnummer</code></p>
+<h2 id="personnummer_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#personnummer_parser">Personnummer (parser)</a></h2><p class="docs-paragraph"><code>parsePersonnummer</code></p>
 <p class="docs-paragraph">Parsern för personnummer tolkar vy-värdet så att modell-värdet får formatet ååååmmdd-nnnn.</p>
 <p class="docs-paragraph">Exempel</p>
 <ul>
@@ -1221,7 +1221,7 @@
 <li>980101+0000 -&gt; 18980101-0000</li>
 <li>9801010000 -&gt; 19980101-0000</li>
 </ul>
-<h2 id="plusgiro_parser"><a class="header-anchor" href="#plusgiro_parser">Plusgiro (parser)</a></h2><p class="docs-paragraph"><code>parsePlusgiro</code></p>
+<h2 id="plusgiro_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#plusgiro_parser">Plusgiro (parser)</a></h2><p class="docs-paragraph"><code>parsePlusgiro</code></p>
 <p class="docs-paragraph">Parsern för plusgiro tolkar vy-värdet så att modell-värdet får</p>
 <ul>
 <li>bindestreck mellan näst sista och sista siffran</li>
@@ -1236,17 +1236,17 @@
 <li>NN NN-N</li>
 <li>N NN NN-N</li>
 </ul>
-<h2 id="postnummer_parser"><a class="header-anchor" href="#postnummer_parser">Postnummer (parser)</a></h2><p class="docs-paragraph"><code>parsePostalCode</code></p>
+<h2 id="postnummer_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#postnummer_parser">Postnummer (parser)</a></h2><p class="docs-paragraph"><code>parsePostalCode</code></p>
 <p class="docs-paragraph">Formaterar inmatat värde till NNN NN.</p>
 <p class="docs-paragraph">Exempel</p>
 <ul>
 <li>12345 -&gt; 123 45</li>
 </ul>
-<h2 id="procent_formaterare"><a class="header-anchor" href="#procent_formaterare">Procent (formaterare)</a></h2><p class="docs-paragraph"><code>formatPercent</code></p>
+<h2 id="procent_formaterare" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#procent_formaterare">Procent (formaterare)</a></h2><p class="docs-paragraph"><code>formatPercent</code></p>
 <p class="docs-paragraph">Formateraren för procent baseras på nummer-formateraren, för beskrivning se <a href="#nummer_formaterare">nummer-formaterare</a>.</p>
-<h2 id="procent_parser"><a class="header-anchor" href="#procent_parser">Procent (parser)</a></h2><p class="docs-paragraph"><code>parserPercent</code></p>
+<h2 id="procent_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#procent_parser">Procent (parser)</a></h2><p class="docs-paragraph"><code>parserPercent</code></p>
 <p class="docs-paragraph">Parsern för procent baseras på nummer-parsern, för beskrivning se <a href="#nummer_parser">nummer-parser</a>.</p>
-<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../../guides/formatting-and-parsing/formatter-parser.html">Formatering och parsning</a></p>
+<h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../../guides/formatting-and-parsing/formatter-parser.html">Formatering och parsning</a></p>
 <p class="docs-paragraph"><a href="../../guides/formatting-and-parsing/custom-formatter-parser.html">Formaterare och parser - anpassad</a></p>
 
 
@@ -1272,9 +1272,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">test/SFKUI-7558-testing-table (<a href="https://github.com/Forsakringskassan/designsystem/commits/7941e4739a59813cdcc96509acf36ca08e146dfb">7941e47</a>)<br />
+<div class="footer__right"><div class="version">test/SFKUI-7558-testing-table (<a href="https://github.com/Forsakringskassan/designsystem/commits/9cdb659e949120b99307818c2888f5f7fafaf582">9cdb659</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1139">PR 1139</a><br />
-        2026-03-20 12:29
+        2026-03-24 12:05
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1282,28 +1282,7 @@
             <span id="version-info" class="anchor"> Byt version </span>
         </button>
     </form>
-
-    <dialog id="version-dialog">
-        <div id="version-dialog-head">
-            <h1>Välj version</h1>
-            <button type="button" class="button button--tertiary button--tertiary--black">
-                <span>Stäng</span>
-                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use href="#f-icon-close"></use>
-                </svg>
-            </button>
-        </div>
-        <div id="version-list">
-            <p>Var god vänta, laddar versionsdata...</p>
-        </div>
-    </dialog>
 </div>
-
-<template id="version-list-item">
-    <li class="list__item">
-        <a class="list__item__itempane">template</a>
-    </li>
-</template>
 
 
     <ul>
@@ -1367,31 +1346,61 @@
             />
         </symbol>
     </svg>
-</div><dialog id="search-dialog">
+</div><dialog class="docs-modal" id="search-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title" id="search-dialog-title">Sök</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
-    <form id="search-form">
-        <div class="text-field">
-            <label for="search-field" class="label">Sök</label>
-            <div class="text-field__input-wrapper">
-                <div class="text-field__icon-wrapper">
-                    <input
-                        autofocus
-                        autocomplete="off"
-                        autocapitalize="off"
-                        autocorrect="off"
-                        id="search-field"
-                        type="text"
-                        class="text-field__input"
-                        maxlength="50"
-                        placeholder="Skriv för att börja söka"
-                    />
-                </div>
-            </div>
-        </div>
-        <div id="search-results"></div>
+    <form class="docs-modal__body" id="search-form">
+        <input
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            id="search-field"
+            type="search"
+            class="docs-search-dialog__input"
+            maxlength="50"
+            placeholder="Skriv för att börja söka"
+            aria-labelledby="search-dialog-title"
+        />
+        <ul class="docs-search-result__list" id="search-results"></ul>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog>
+
+<template id="search-result-item">
+    <li class="docs-search-result__item">
+        <a class="docs-search-result__link"></a>
+    </li>
+</template>
+<dialog class="docs-modal" id="version-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title">Välj version</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="docs-modal__body" id="version-list">
+        <p>Var god vänta, laddar versionsdata...</p>
+    </div>
+</dialog>
+
+<template id="version-list-item">
+    <li class="docs-selectable-version__item">
+        <a class="docs-selectable-version__link"></a>
+    </li>
+</template>
 <div id="teleport-target" class="user-theme"></div><script
             src="../../assets/processors/motd/index-cda4cc.js"
             type="module"
@@ -1399,16 +1408,16 @@
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-1fa30d.js"
+            src="../../assets/processors/selectable-version/select-version-92a936.js"
             type="module"
             crossorigin
-            integrity="sha384-S7axHBuhVkx1OrFTW9/nE0lj9cTNqqBRTYRZa+mq6Ts4zb0T3k2yYpqQId3enxkl"
+            integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../../assets/main-968011.js"
+            src="../../assets/main-f68cda.js"
             type="module"
             crossorigin
-            integrity="sha384-lLuOt0gDwe+q44Yr+DdMJo2Et5XCAV1RJVsQ9cweqokZN21pHe5qfR5ozaFAe62h"
+            integrity="sha384-ARuCalqVPs3IlLA12rdhvH79lFkpQ7/wgXP1YgdXqst0Cg3amLJRe5AuuxkU5xgz"
             
         ></script>
     </body>
