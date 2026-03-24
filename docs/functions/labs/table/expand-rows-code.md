@@ -6,35 +6,87 @@ search:
         - tabell
 ---
 
-Expanderbara rader kan presenteras på två sätt:
-
-- rader som följer existerande kolumner
-- rader med valfritt innehåll.
-
-För båda varianterna sätter du propen `expandable-attribute` till den egenskap i objektet som innehåller rader med expanderat innehåll.
-
-Givet följande struktur sätter du expandable-attribute till `myExpandableRow`:
-
-// plats för kodexempel
+Expanderbara rader aktiveras med propen `expandable-attribute` som pekar på den egenskap i radobjektet som innehåller en array med nästlade rader.
 
 ## Följa existerande kolumner
 
-För att skapa expanderbart innehåll som följer existerande kolumner måste du sätta `expandable-attribute` och du får inte använda slot `expandable`.
-Innehållet följer då samma datastruktur som ordinarie rader.
+När `expandable-attribute` sätts utan sloten `expandable` visas de nästlade raderna med samma kolumnkonfiguration som förälderraden.
+De nästlade raderna måste följa samma datastruktur som övriga rader.
 
-Se nedan exempel av data som du kan använda för att generera en expanderbar rad som innehåller två tabellrader.
+```ts
+import { defineTableColumns } from "@fkui/vue-labs";
 
-// plats för kodexempel
+interface Row {
+    id: string;
+    name: string;
+    children?: Row[];
+}
 
-// plats för kodexempel
+const columns = defineTableColumns<Row>([
+    { type: "text", header: "Namn", key: "name" },
+]);
+```
 
-// plats för kodexempel
+```html
+<f-table
+    :rows
+    :columns
+    key-attribute="id"
+    expandable-attribute="children"
+></f-table>
+```
 
 ## Valfritt innehåll
 
-För att själv ta kontroll över hur raden presenteras använder du sloten `expandable`.
-Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som ligger i datastrukturen behöver inte följa ordinarie rader.
+Med sloten `expandable` tar du full kontroll över hur den expanderade raden presenteras.
+Innehållet placeras i en cell som sträcker sig över hela raden.
+Du behöver fortfarande sätta `expandable-attribute` till den egenskap som håller det expanderade innehållet.
 
-Skapa inte ett för komplext expanderat innehåll som till exempel att placera ytterligare expanderbara tabeller inuti.
+```ts
+interface Detail {
+    id: string;
+    note: string;
+}
 
-// plats för kodexempel
+interface Row {
+    id: string;
+    name: string;
+    details?: Detail[];
+}
+```
+
+```html
+<f-table
+    :rows
+    :columns
+    key-attribute="id"
+    expandable-attribute="details"
+>
+    <template #expandable="{ row }">
+        <p>{{ row.note }}</p>
+    </template>
+</f-table>
+```
+
+## Bra att veta
+
+- Om du inte använder sloten `expandable` delar de nästlade raderna exakt samma kolumnkonfiguration som förälderraden.
+- Rader utan nästlade rader (tom array eller `undefined`) får ingen expanderknapp.
+- Skapa inte ett för komplext expanderat innehåll, till exempel ytterligare expanderbara tabeller inuti.
+
+## Parametrar
+
+**`expandable-attribute:`** `keyof T` {@optional}
+: Anger vilken egenskap i radobjektet som innehåller nästlade rader.
+  Om egenskapen saknas eller är en tom array för en rad visas ingen expanderknapp.
+
+### Slot `expandable`
+
+**`row:`** `ExpandedContent`
+: Nästlad rad från `expandable-attribute` för den expanderade raden.
+
+## Relaterat
+
+{@link expand-rows Expandera rader}
+
+{@link code Kod för tabell}
