@@ -1,6 +1,16 @@
 import { getDatasetMetadata } from "./get-dataset-metadata";
 import { toDataset } from "./to-dataset";
+import { rowindex, treeSnapshot } from "./tree-snapshot";
 import { useDatasetRef } from "./use-dataset-ref";
+
+expect.addSnapshotSerializer({
+    test(value) {
+        return typeof value === "string";
+    },
+    serialize(value) {
+        return String(value);
+    },
+});
 
 describe("getDatasetMetadata()", () => {
     it("when called with only dataset parameter should return metadata about array", () => {
@@ -39,25 +49,23 @@ describe("getDatasetMetadata()", () => {
     });
 
     it("should be persistent after filtering dataset", () => {
-        expect.assertions(3);
+        expect.assertions(2);
         const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
         const dataset = toDataset(items);
         const filtered = toDataset(dataset.filter((item) => item.id !== 2));
-        expect(filtered).toHaveLength(2);
-        expect(getDatasetMetadata(filtered[0])).toEqual({
-            rowIndex: 0,
-            ariaRowIndex: 1,
-            ariaLevel: 1,
-            ariaSetSize: 3,
-            ariaPosInSet: 1,
-        });
-        expect(getDatasetMetadata(filtered[1])).toEqual({
-            rowIndex: 2,
-            ariaRowIndex: 3,
-            ariaLevel: 1,
-            ariaSetSize: 3,
-            ariaPosInSet: 3,
-        });
+        const before = treeSnapshot(dataset, rowindex);
+        const after = treeSnapshot(filtered, rowindex);
+        expect(before).toMatchInlineSnapshot(`
+            length=3 size=3
+            ├─ id:1 row-index=0
+            ├─ id:2 row-index=1
+            └─ id:3 row-index=2
+        `);
+        expect(after).toMatchInlineSnapshot(`
+            length=2 size=2
+            ├─ id:1 row-index=0
+            └─ id:3 row-index=2
+        `);
     });
 
     it("should throw when element is not in the dataset", () => {
