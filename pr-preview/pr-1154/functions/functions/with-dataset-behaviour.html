@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-139859.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-5f6364.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
     "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-139859.js": "sha384-/MsN1rA2//1m8skvaHZqzTViilzJBEVcRHmW45HH+8GSR5BZSb95+NC6DVmsxMI6",
+    "../../assets/vendor-fkui-vue-5f6364.js": "sha384-B/jICymbLaurrxizy5wM8QbnoHRZJcSbG8yaIh2eQu+FyZdJ9jI752tLJZ9r/Kzk",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-c3432d.json"
+            href="../../search-data-d4b6ec.json"
             as="fetch"
             crossorigin
-            integrity="sha384-wD7yzWkvh7qs1UigUXdJ1Un/6FIrrfZFnYB/72WDfSsYUn852ti9Y5Lalvq5NuXz"
+            integrity="sha384-8uVpveCa28Ek8bltLkMcRq7xEFOCH9C1e26gNAo1uzFnwVH5u01rKGjUaxpUDhmc"
             id="search-data"
         />
     </head>
@@ -1818,14 +1818,16 @@
 <p class="docs-paragraph">Beteendet återställs till det föregående värdet när callback-funktionen returnerar.</p>
 <h2 id="syntax" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-4a0bc1"
+                    id="example-949a7b"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> withDatasetBehaviour&lt;T&gt;(<span class="hljs-attr">mode</span>: <span class="hljs-title class_">DatasetUpdateMode</span>, <span class="hljs-attr">callback</span>: <span class="hljs-function">() =&gt;</span> T): T;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DatasetUpdateMode</span> = <span class="hljs-string">&quot;preserve&quot;</span> | <span class="hljs-string">&quot;reindex&quot;</span>;
+
+<span class="hljs-keyword">function</span> withDatasetBehaviour&lt;T&gt;(<span class="hljs-attr">mode</span>: <span class="hljs-title class_">DatasetUpdateMode</span>, <span class="hljs-attr">callback</span>: <span class="hljs-function">() =&gt;</span> T): T;
 <span class="hljs-keyword">function</span> withDatasetBehaviour&lt;T&gt;(
     <span class="hljs-attr">mode</span>: <span class="hljs-title class_">DatasetUpdateMode</span>,
     <span class="hljs-attr">callback</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Promise</span>&lt;T&gt;,
@@ -1846,11 +1848,11 @@
 <p class="docs-paragraph">Funktion som körs med det angivna beteendet aktivt. Returvärdet vidarebefordras till anroparen.</p>
 </dd>
 </dl>
-<h3 id="returvarde" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#returvarde">Returvärde</a></h3><p class="docs-paragraph">Returerar det värde som <code>callback</code> returnerar.</p>
+<h3 id="returvarde" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#returvarde">Returvärde</a></h3><p class="docs-paragraph">Returnerar det värde som <code>callback</code> returnerar.</p>
 <h2 id="exempel" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#exempel">Exempel</a></h2><p class="docs-paragraph">Givet att vi har en datamängd:</p>
 
                 <div
-                    id="example-0b3fc9"
+                    id="example-479e0b"
                     class="code-preview code-preview--default"
                     
                     
@@ -1875,7 +1877,7 @@
             <p class="docs-paragraph">Med <code>&quot;preserve&quot;</code> kommer metadata behållas på existerande element:</p>
 
                 <div
-                    id="example-066d60"
+                    id="example-9d25d5"
                     class="code-preview code-preview--default"
                     
                     
@@ -1898,7 +1900,7 @@
             <p class="docs-paragraph">Med <code>&quot;reindex&quot;</code> kommer metadata genereras om:</p>
 
                 <div
-                    id="example-bf6133"
+                    id="example-12308f"
                     class="code-preview code-preview--default"
                     
                     
@@ -1946,9 +1948,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/with-dataset-behaviour (<a href="https://github.com/Forsakringskassan/designsystem/commits/7fb166c5fe39f436518af5e8dd3625c3ab8f3b2d">7fb166c</a>)<br />
+<div class="footer__right"><div class="version">feature/with-dataset-behaviour (<a href="https://github.com/Forsakringskassan/designsystem/commits/b4427d473eb7c47032b85d43b45375172db2036f">b4427d4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1154">PR 1154</a><br />
-        2026-03-25 11:45
+        2026-03-25 12:33
 </div>
 <div class="toolbar__item">
     <form id="version">
