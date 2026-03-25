@@ -5593,6 +5593,10 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     expandableAttribute: {
       default: () => void 0
     },
+    rowClass: {
+      type: Function,
+      default: void 0
+    },
     striped: {
       type: Boolean
     },
@@ -5675,6 +5679,9 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       stopEdit(element, reason);
     }
     provide2(stopEditKey, stopEditHandler);
+    function getRowClass(row) {
+      return typeof __props.rowClass === "function" ? __props.rowClass(row) : void 0;
+    }
     function onToggleExpanded(key) {
       if (expandedKeys.value.has(key)) {
         expandedKeys.value.delete(key);
@@ -5856,7 +5863,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       }) => {
         return openBlock(), createElementBlock("tr", {
           key,
-          class: "table-ng__row",
+          class: normalizeClass(["table-ng__row", getRowClass(row)]),
           "aria-level": level,
           "aria-rowindex": rowIndex,
           "aria-setsize": setsize,
@@ -5907,7 +5914,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
             key: 1,
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
-        }), 128))], 64))], 8, _hoisted_9);
+        }), 128))], 64))], 10, _hoisted_9);
       }), 128))])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_10, [createElementVNode("tr", {
         class: "table-ng__row",
         "aria-rowindex": ariaRowcount.value
