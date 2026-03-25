@@ -5292,6 +5292,10 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
     rows: {},
     keyAttribute: { default: () => void 0 },
     expandableAttribute: { default: () => void 0 },
+    rowClass: {
+      type: Function,
+      default: void 0
+    },
     striped: { type: Boolean },
     disableDividers: { type: Boolean },
     selectable: { default: () => void 0 }
@@ -5350,6 +5354,9 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
       stopEdit(element, reason);
     }
     provide2(stopEditKey, stopEditHandler);
+    function getRowClass(row) {
+      return typeof __props.rowClass === "function" ? __props.rowClass(row) : void 0;
+    }
     function onToggleExpanded(key) {
       if (expandedKeys.value.has(key)) expandedKeys.value.delete(key);
       else expandedKeys.value.add(key);
@@ -5480,7 +5487,7 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
         }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_8)])) : (openBlock(true), createElementBlock(Fragment2, { key: 1 }, renderList(metaRows.value, ({ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded }) => {
           return openBlock(), createElementBlock("tr", {
             key,
-            class: "table-ng__row",
+            class: normalizeClass(["table-ng__row", getRowClass(row)]),
             "aria-level": level,
             "aria-rowindex": rowIndex,
             "aria-setsize": setsize,
@@ -5547,7 +5554,7 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
                 }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
               }), 128))
             ], 64))
-          ], 8, _hoisted_9);
+          ], 10, _hoisted_9);
         }), 128))])) : createCommentVNode("", true),
         _cache[6] || (_cache[6] = createTextVNode()),
         hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_10, [createElementVNode("tr", {
