@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Inmatningsfält - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-f7b9b6.css"
+            href="../../assets/docs-87407c.css"
             crossorigin
-            integrity="sha384-NLYEiC1jQR4XJHPNqilU+J963jCv3naP1w6hW+bNGl3ngIqv36I/9xvsQNPBINtr"
+            integrity="sha384-51rXgViX0Hm8FXlNLvlQZ9dYhC+S4G4DSQ/Ke1dS+o4vCCMQJy8UCXKH6N8oIk1g"
             
         />
         <link
@@ -24,17 +24,17 @@
   "imports": {
     "vue": "../../assets/vendor-vue-dd241e.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-98de52.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-d96e48.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-7838c3.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
     "../../assets/vendor-vue-dd241e.js": "sha384-3bp3RphA5Fue/POFOIMqyfDfPU6ARe/NNr5xPPAVr1ycHv2556I1esecXtk1Wt0s",
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
-    "../../assets/vendor-fkui-logic-98de52.js": "sha384-Ptnc7xByl78++N85l8MGYnpfAGrdohEpKKt9UuQaOU7Avr3TV3rmyjKzInUKGEe5",
+    "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-d96e48.js": "sha384-Iv2giqqszdSU7GsNrW4zeG+lYrMpkFqgT8jXD9NNkGqyCuGdqpU5IGI5OYvUtydc",
+    "../../assets/vendor-fkui-vue-7838c3.js": "sha384-jFPrMs9k2rKjDMM2i5gVRs2qT99izgd0hrg6kNM4pXnUFqgI5Y57lU5tuy3TABlt",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-4cf9ef.json"
+            href="../../search-data-9ff0dc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-62KEC6XCKQVG6qdjYt30idnr1FIHa4VPdWNrrLcdx57ROd6hOsnSfOCarfMQT/9X"
+            integrity="sha384-csty0tR61qv8JP8vzczGiL0x9eWvduO+FgdxAF044j3GPLa7QFUklXM+rIadLCA3"
             id="search-data"
         />
     </head>
@@ -112,18 +112,18 @@
 <div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
-    <p>
-        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
-        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
-    </p>
+    <p>Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />Vi använder också kakor för webbanalys för att göra webbplatsen bättre.</p>
     <p>Godkänner du att vi också använder kakor för webbanalys?</p>
 
-    <div class="button-group">
-        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+    <div class="cookie-warning__button-group">
+        <button id="consent-all-button" class="cookie-warning__button cookie-warning__button--primary" type="button">
             Ja, jag godkänner alla kakor
         </button>
-
-        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+        <button
+            id="consent-functional-button"
+            class="cookie-warning__button cookie-warning__button--secondary"
+            type="button"
+        >
             Nej, jag godkänner bara nödvändiga kakor
         </button>
     </div>
@@ -1098,7 +1098,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Inmatningsfält</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Inmatningsfält</h1>
 
                     
                     <div id="aside"><dl>
@@ -1108,7 +1108,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/782e75ffc594d6d1ef6b2de6d55d31183370ff67/packages/vue/src/components/FTextField/FTextField.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/12d176b85c2cc7cb75c43e84b04ba272f4cf73f6/packages/vue/src/components/FTextField/FTextField.vue">
                 FTextField
             </a>
             
@@ -1166,13 +1166,13 @@
                     data-language="vue"
                 >
                     
-        <div id="example-ea54ed"></div>
+        <div id="example-1a3ce7"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTextFieldLiveExample-ea54ed.js"></script>
+        <script type="module" src="./FTextFieldLiveExample-1a3ce7.js"></script>
     
                 </div>
             <p class="docs-paragraph">Ett inmatningsfält har alltid en <a href="../flabel.html">etikett</a> som beskriver vad användaren ska fylla i. Etiketten kan också visa ett felmeddelande, en formatbeskrivning och en hjälptext.</p>
@@ -1183,15 +1183,15 @@
 <li>Du behöver troligtvis hindra att användaren matar in otillåtna tecken genom att använda <a href="../validation/validators.html">validatorn för otillåtna tecken</a>.</li>
 </ul>
 <p class="docs-paragraph">Använd inte inaktiva komponenter, bland annat då de är svåra att uppfatta för användare med skärmläsare.</p>
-<h2 id="validering"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Ett inmatningsfält kan visas med två statusar: neutral och fel. Innehållet i ett inmatningsfält valideras när användaren lämnar fältet. Information om felaktig inmatning visas med etikettens feltext. Ett inmatningsfält kan ha en eller flera validatorer.</p>
+<h2 id="validering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Ett inmatningsfält kan visas med två statusar: neutral och fel. Innehållet i ett inmatningsfält valideras när användaren lämnar fältet. Information om felaktig inmatning visas med etikettens feltext. Ett inmatningsfält kan ha en eller flera validatorer.</p>
 <p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/validation.html">Läs mer om validering</a></p>
-<h2 id="formatering_och_parsning"><a class="header-anchor" href="#formatering_och_parsning">Formatering och parsning</a></h2><p class="docs-paragraph">Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält. Parsning används för att ändra på det som faktiskt hanteras och skickas in. Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag. Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.</p>
+<h2 id="formatering_och_parsning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#formatering_och_parsning">Formatering och parsning</a></h2><p class="docs-paragraph">Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält. Parsning används för att ändra på det som faktiskt hanteras och skickas in. Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag. Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.</p>
 <p class="docs-paragraph"><a href="../../guides/formatting-and-parsing/formatter-parser.html">Läs mer om formatering och parsning</a></p>
-<h2 id="typer_av_inmatningsfalt"><a class="header-anchor" href="#typer_av_inmatningsfalt">Typer av inmatningsfält</a></h2><p class="docs-paragraph">Utöver ett generellt inmatningsfält för text finns det flera färdigbyggda specialiserade inmatningsfält. Det är till exempel mejladress och personnummer. Ett sådant inmatningsfält har redan alla nödvändiga validatorer, ett tak för antal tecken, input mode för att rätt tangentbord ska visas på en mobil samt regler för formatering och parsning.</p>
+<h2 id="typer_av_inmatningsfalt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#typer_av_inmatningsfalt">Typer av inmatningsfält</a></h2><p class="docs-paragraph">Utöver ett generellt inmatningsfält för text finns det flera färdigbyggda specialiserade inmatningsfält. Det är till exempel mejladress och personnummer. Ett sådant inmatningsfält har redan alla nödvändiga validatorer, ett tak för antal tecken, input mode för att rätt tangentbord ska visas på en mobil samt regler för formatering och parsning.</p>
 <p class="docs-paragraph">Om användaren ska ange ett datum där det måste finnas en möjlighet att välja en dag i en kalender ska du använda komponenten <a href="./fdatepickerfield.html">datumväljare</a>.</p>
 <p class="docs-paragraph"><a href="./textfield-specialized.html">Läs mer om specialiserade inmatningsfält</a></p>
-<h2 id="inline"><a class="header-anchor" href="#inline">Inline</a></h2><p class="docs-paragraph">Etiketten och inmatningsfältet ska bara placeras på samma rad (inline) om fältet inte har någon validering och om det inte behövs någon hjälptext, formatbeskrivning eller felmeddelande. Inline passar till exempel bra för sök och fritextfilter.</p>
-<h2 id="responsiva_bredder"><a class="header-anchor" href="#responsiva_bredder">Responsiva bredder</a></h2><p class="docs-paragraph">Etiketten och inmatningsfältet kan ha olika bredd. När etikettens text radbryts behöver alltså inte vara kopplat till hur brett inmatningsfältet i sig är.</p>
+<h2 id="inline" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#inline">Inline</a></h2><p class="docs-paragraph">Etiketten och inmatningsfältet ska bara placeras på samma rad (inline) om fältet inte har någon validering och om det inte behövs någon hjälptext, formatbeskrivning eller felmeddelande. Inline passar till exempel bra för sök och fritextfilter.</p>
+<h2 id="responsiva_bredder" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#responsiva_bredder">Responsiva bredder</a></h2><p class="docs-paragraph">Etiketten och inmatningsfältet kan ha olika bredd. När etikettens text radbryts behöver alltså inte vara kopplat till hur brett inmatningsfältet i sig är.</p>
 <p class="docs-paragraph">Bredden för respektive del anges med antal kolumner vid olika skärmbredder (brytpunkter).</p>
 
             <div
@@ -1204,23 +1204,25 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-e91a99"></div>
+        <div id="example-3d94cf"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTextFieldGrid-e91a99.js"></script>
+        <script type="module" src="./FTextFieldGrid-3d94cf.js"></script>
     
                 </div>
                 <div>
             <button
                 type="button"
-                class="button button--discrete code-preview__toggle-markup"
+                class="code-preview__button code-preview__toggle-markup"
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <i class="icon icon--code"></i>
+                <svg focusable="false" class="icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
                 Visa kod
             </button>
          </div>
@@ -1256,8 +1258,8 @@
 </code></pre>
                 </div>
             </div>
-        <h2 id="api"><a class="header-anchor" href="#api">API</a></h2>
-        <h3 id="ftextfield-models">
+        <h2 id="api" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#api">API</a></h2>
+        <h3 class="docs-heading docs-heading--h3" id="ftextfield-models">
             <a class="header-anchor" href="#ftextfield-models">Models</a>
         </h3>
         <dl class="docs-api docs-api--models">
@@ -1284,7 +1286,7 @@ or null then the default value will be used.</p>
                     
         </dl>
     
-        <h3 id="ftextfield-props">
+        <h3 class="docs-heading docs-heading--h3" id="ftextfield-props">
             <a class="header-anchor" href="#ftextfield-props">Props</a>
         </h3>
         <dl class="docs-api docs-api--slots">
@@ -1506,7 +1508,7 @@ If the prop is not set text will be used.</p>
                     
         </dl>
     
-        <h3 id="ftextfield-events">
+        <h3 class="docs-heading docs-heading--h3" id="ftextfield-events">
             <a class="header-anchor" href="#ftextfield-events">Events</a>
         </h3>
         <dl class="docs-api docs-api--events">
@@ -1549,7 +1551,7 @@ If the prop is not set text will be used.</p>
                     
         </dl>
     
-        <h3 id="ftextfield-slots">
+        <h3 class="docs-heading docs-heading--h3" id="ftextfield-slots">
             <a class="header-anchor" href="#ftextfield-slots">Slots</a>
         </h3>
         <dl class="docs-api docs-api--slots">
@@ -1688,7 +1690,7 @@ If the prop is not set text will be used.</p>
                         </dd>
                     
         </dl>
-    <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../flabel.html">Etikett</a></p>
+    <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../flabel.html">Etikett</a></p>
 <p class="docs-paragraph"><a href="../../guides/formatting-and-parsing/formatter-parser.html">Formatering och parsning</a></p>
 <p class="docs-paragraph"><a href="./textfield-specialized.html">Specialiserade inmatningsfält</a></p>
 <p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/validation.html">Validering och felhantering</a></p>
@@ -1716,9 +1718,9 @@ If the prop is not set text will be used.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">buggfix/filpresentator (<a href="https://github.com/Forsakringskassan/designsystem/commits/782e75ffc594d6d1ef6b2de6d55d31183370ff67">782e75f</a>)<br />
+<div class="footer__right"><div class="version">buggfix/filpresentator (<a href="https://github.com/Forsakringskassan/designsystem/commits/12d176b85c2cc7cb75c43e84b04ba272f4cf73f6">12d176b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1126">PR 1126</a><br />
-        2026-03-19 14:32
+        2026-03-25 09:36
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1726,28 +1728,7 @@ If the prop is not set text will be used.</p>
             <span id="version-info" class="anchor"> Byt version </span>
         </button>
     </form>
-
-    <dialog id="version-dialog">
-        <div id="version-dialog-head">
-            <h1>Välj version</h1>
-            <button type="button" class="button button--tertiary button--tertiary--black">
-                <span>Stäng</span>
-                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use href="#f-icon-close"></use>
-                </svg>
-            </button>
-        </div>
-        <div id="version-list">
-            <p>Var god vänta, laddar versionsdata...</p>
-        </div>
-    </dialog>
 </div>
-
-<template id="version-list-item">
-    <li class="list__item">
-        <a class="list__item__itempane">template</a>
-    </li>
-</template>
 
 
     <ul>
@@ -1797,32 +1778,75 @@ If the prop is not set text will be used.</p>
                 class="i"
             ></path>
         </symbol>
+        <symbol id="docs-icon-code" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M200 354L102 256L200 158L171 128L43 256L171 384L200 354ZM312 354L410 256L312 158L341 128L469 256L341 384L312 354Z"
+            />
+        </symbol>
+        <!--!Font Awesome Free 6.4.2 -->
+        <symbol id="docs-icon-fullscreen" viewBox="0 0 448 512">
+            <path
+                fill="currentColor"
+                d="M160 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V64zM32 320c-17.7 0-32 14.3-32 32s14.3 32 32 32H96v64c0 17.7 14.3 32 32 32s32-14.3 32-32V352c0-17.7-14.3-32-32-32H32zM352 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H352V64zM320 320c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32V384h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320z"
+            />
+        </symbol>
     </svg>
-</div><dialog id="search-dialog">
+</div><dialog class="docs-modal" id="search-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title" id="search-dialog-title">Sök</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
-    <form id="search-form">
-        <div class="text-field">
-            <label for="search-field" class="label">Sök</label>
-            <div class="text-field__input-wrapper">
-                <div class="text-field__icon-wrapper">
-                    <input
-                        autofocus
-                        autocomplete="off"
-                        autocapitalize="off"
-                        autocorrect="off"
-                        id="search-field"
-                        type="text"
-                        class="text-field__input"
-                        maxlength="50"
-                        placeholder="Skriv för att börja söka"
-                    />
-                </div>
-            </div>
-        </div>
-        <div id="search-results"></div>
+    <form class="docs-modal__body" id="search-form">
+        <input
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            id="search-field"
+            type="search"
+            class="docs-search-dialog__input"
+            maxlength="50"
+            placeholder="Skriv för att börja söka"
+            aria-labelledby="search-dialog-title"
+        />
+        <ul class="docs-search-result__list" id="search-results"></ul>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog>
+
+<template id="search-result-item">
+    <li class="docs-search-result__item">
+        <a class="docs-search-result__link"></a>
+    </li>
+</template>
+<dialog class="docs-modal" id="version-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title">Välj version</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="docs-modal__body" id="version-list">
+        <p>Var god vänta, laddar versionsdata...</p>
+    </div>
+</dialog>
+
+<template id="version-list-item">
+    <li class="docs-selectable-version__item">
+        <a class="docs-selectable-version__link"></a>
+    </li>
+</template>
 <div id="teleport-target" class="user-theme"></div><script
             src="../../assets/processors/motd/index-cda4cc.js"
             type="module"
@@ -1830,16 +1854,16 @@ If the prop is not set text will be used.</p>
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-1fa30d.js"
+            src="../../assets/processors/selectable-version/select-version-92a936.js"
             type="module"
             crossorigin
-            integrity="sha384-S7axHBuhVkx1OrFTW9/nE0lj9cTNqqBRTYRZa+mq6Ts4zb0T3k2yYpqQId3enxkl"
+            integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../../assets/main-219bfc.js"
+            src="../../assets/main-f68cda.js"
             type="module"
             crossorigin
-            integrity="sha384-UNW7fFulrX7o/Mb39/sqIwjWf9njgm2zaOvZddGSmM8mmpQ3QfYjzvvt1E3RfE2T"
+            integrity="sha384-ARuCalqVPs3IlLA12rdhvH79lFkpQ7/wgXP1YgdXqst0Cg3amLJRe5AuuxkU5xgz"
             
         ></script>
     </body>

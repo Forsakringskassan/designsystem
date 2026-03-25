@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Specialiserade inmatningsfält - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-f7b9b6.css"
+            href="../../assets/docs-87407c.css"
             crossorigin
-            integrity="sha384-NLYEiC1jQR4XJHPNqilU+J963jCv3naP1w6hW+bNGl3ngIqv36I/9xvsQNPBINtr"
+            integrity="sha384-51rXgViX0Hm8FXlNLvlQZ9dYhC+S4G4DSQ/Ke1dS+o4vCCMQJy8UCXKH6N8oIk1g"
             
         />
         <link
@@ -24,17 +24,17 @@
   "imports": {
     "vue": "../../assets/vendor-vue-dd241e.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-98de52.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-d96e48.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-7838c3.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
     "../../assets/vendor-vue-dd241e.js": "sha384-3bp3RphA5Fue/POFOIMqyfDfPU6ARe/NNr5xPPAVr1ycHv2556I1esecXtk1Wt0s",
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
-    "../../assets/vendor-fkui-logic-98de52.js": "sha384-Ptnc7xByl78++N85l8MGYnpfAGrdohEpKKt9UuQaOU7Avr3TV3rmyjKzInUKGEe5",
+    "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-d96e48.js": "sha384-Iv2giqqszdSU7GsNrW4zeG+lYrMpkFqgT8jXD9NNkGqyCuGdqpU5IGI5OYvUtydc",
+    "../../assets/vendor-fkui-vue-7838c3.js": "sha384-jFPrMs9k2rKjDMM2i5gVRs2qT99izgd0hrg6kNM4pXnUFqgI5Y57lU5tuy3TABlt",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-4cf9ef.json"
+            href="../../search-data-9ff0dc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-62KEC6XCKQVG6qdjYt30idnr1FIHa4VPdWNrrLcdx57ROd6hOsnSfOCarfMQT/9X"
+            integrity="sha384-csty0tR61qv8JP8vzczGiL0x9eWvduO+FgdxAF044j3GPLa7QFUklXM+rIadLCA3"
             id="search-data"
         />
     </head>
@@ -112,18 +112,18 @@
 <div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
-    <p>
-        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
-        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
-    </p>
+    <p>Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />Vi använder också kakor för webbanalys för att göra webbplatsen bättre.</p>
     <p>Godkänner du att vi också använder kakor för webbanalys?</p>
 
-    <div class="button-group">
-        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+    <div class="cookie-warning__button-group">
+        <button id="consent-all-button" class="cookie-warning__button cookie-warning__button--primary" type="button">
             Ja, jag godkänner alla kakor
         </button>
-
-        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+        <button
+            id="consent-functional-button"
+            class="cookie-warning__button cookie-warning__button--secondary"
+            type="button"
+        >
             Nej, jag godkänner bara nödvändiga kakor
         </button>
     </div>
@@ -1098,7 +1098,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Specialiserade inmatningsfält</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Specialiserade inmatningsfält</h1>
 
                     
                     <div id="aside"><dl>
@@ -1165,8 +1165,8 @@
 <p class="docs-paragraph"><a href="../../guides/formatting-and-parsing/formatter-parser.html">Läs mer om formatering och parsning</a></p>
 <p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/validation.html">Läs mer om validering</a></p>
 <p class="docs-paragraph">Exempel för de specialiserade inmatningsfälten finner du på <a href="./ftextfield.html">inmatningsfält</a></p>
-<h2 id="bankgiro"><a class="header-anchor" href="#bankgiro">Bankgiro</a></h2><p class="docs-paragraph"><code>FBankgiroTextField</code></p>
-<h3 id="etikett"><a class="header-anchor" href="#etikett">Etikett</a></h3><table class="table">
+<h2 id="bankgiro" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#bankgiro">Bankgiro</a></h2><p class="docs-paragraph"><code>FBankgiroTextField</code></p>
+<h3 id="etikett" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#etikett">Etikett</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1182,7 +1182,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="format"><a class="header-anchor" href="#format">Format</a></h3><table class="table">
+<h3 id="format" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1208,12 +1208,12 @@
 </tr>
 </tbody>
 </table>
-<h3 id="validering"><a class="header-anchor" href="#validering">Validering</a></h3><p class="docs-paragraph"><code>maxLength.bankgiro=&quot;{ maxLength: { length: 9 }&quot;</code></p>
-<h4 id="validatorer"><a class="header-anchor" href="#validatorer">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#maxlangd">Maxlängd</a> och <a href="../validation/validators.html#bankgiro">format för bankgiro</a>.</p>
-<h4 id="attribut_for_maxlangd"><a class="header-anchor" href="#attribut_for_maxlangd">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=40</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
-<h3 id="api"><a class="header-anchor" href="#api">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
-<h2 id="clearingnummer"><a class="header-anchor" href="#clearingnummer">Clearingnummer</a></h2><p class="docs-paragraph"><code>FClearingnumberTextField</code></p>
-<h3 id="etikett--1"><a class="header-anchor" href="#etikett--1">Etikett</a></h3><table class="table">
+<h3 id="validering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering">Validering</a></h3><p class="docs-paragraph"><code>maxLength.bankgiro=&quot;{ maxLength: { length: 9 }&quot;</code></p>
+<h4 id="validatorer" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#maxlangd">Maxlängd</a> och <a href="../validation/validators.html#bankgiro">format för bankgiro</a>.</p>
+<h4 id="attribut_for_maxlangd" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=40</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="api" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
+<h2 id="clearingnummer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#clearingnummer">Clearingnummer</a></h2><p class="docs-paragraph"><code>FClearingnumberTextField</code></p>
+<h3 id="etikett--1" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#etikett--1">Etikett</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1229,7 +1229,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="format--2"><a class="header-anchor" href="#format--2">Format</a></h3><table class="table">
+<h3 id="format--2" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format--2">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1261,12 +1261,12 @@
 </tbody>
 </table>
 <p class="docs-paragraph">För clearingnummer kan värdet behöva omvandlas ytterligare innan det skickas till backend. Importera <code>formatClearingNumberForBackend</code>-metod från logik-paketet för att ta bort eventuell femte siffra.</p>
-<h3 id="validering--3"><a class="header-anchor" href="#validering--3">Validering</a></h3><p class="docs-paragraph"><code>clearingNumber</code></p>
-<h4 id="validatorer--4"><a class="header-anchor" href="#validatorer--4">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#clearingnummer">Format för clearingnummer</a></p>
-<h4 id="attribut_for_maxlangd--5"><a class="header-anchor" href="#attribut_for_maxlangd--5">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=16</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
-<h3 id="api--6"><a class="header-anchor" href="#api--6">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
-<h2 id="kontonummer"><a class="header-anchor" href="#kontonummer">Kontonummer</a></h2><p class="docs-paragraph"><code>FBankAccountNumberTextField</code></p>
-<h3 id="etikett--7"><a class="header-anchor" href="#etikett--7">Etikett</a></h3><table class="table">
+<h3 id="validering--3" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--3">Validering</a></h3><p class="docs-paragraph"><code>clearingNumber</code></p>
+<h4 id="validatorer--4" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--4">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#clearingnummer">Format för clearingnummer</a></p>
+<h4 id="attribut_for_maxlangd--5" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--5">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=16</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="api--6" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api--6">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
+<h2 id="kontonummer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kontonummer">Kontonummer</a></h2><p class="docs-paragraph"><code>FBankAccountNumberTextField</code></p>
+<h3 id="etikett--7" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#etikett--7">Etikett</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1282,7 +1282,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="format--8"><a class="header-anchor" href="#format--8">Format</a></h3><table class="table">
+<h3 id="format--8" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format--8">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1308,13 +1308,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="validering--9"><a class="header-anchor" href="#validering--9">Validering</a></h3><p class="docs-paragraph"><code>bankAccountNumber</code></p>
-<h4 id="validatorer--10"><a class="header-anchor" href="#validatorer--10">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#kontonummer">Format för kontonummer</a>.</p>
-<h4 id="attribut_for_maxlangd--11"><a class="header-anchor" href="#attribut_for_maxlangd--11">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=40</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
-<h3 id="api--12"><a class="header-anchor" href="#api--12">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
-<h2 id="mejladress"><a class="header-anchor" href="#mejladress">Mejladress</a></h2><p class="docs-paragraph"><code>FEmailTextField</code></p>
+<h3 id="validering--9" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--9">Validering</a></h3><p class="docs-paragraph"><code>bankAccountNumber</code></p>
+<h4 id="validatorer--10" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--10">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#kontonummer">Format för kontonummer</a>.</p>
+<h4 id="attribut_for_maxlangd--11" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--11">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=40</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="api--12" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api--12">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
+<h2 id="mejladress" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#mejladress">Mejladress</a></h2><p class="docs-paragraph"><code>FEmailTextField</code></p>
 <p class="docs-paragraph">Inmatningsfält för mejladress finns med enkel validering som beskrivs nedan och med <a href="#mejladress_utokad">utökad validering</a>. Vid utökad validering ska användaren bekräfta mejladressen genom att skriva in den en gång till.</p>
-<h3 id="etikett--13"><a class="header-anchor" href="#etikett--13">Etikett</a></h3><table class="table">
+<h3 id="etikett--13" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#etikett--13">Etikett</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1330,9 +1330,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="validering--14"><a class="header-anchor" href="#validering--14">Validering</a></h3><p class="docs-paragraph"><code>email</code></p>
-<h4 id="validatorer--15"><a class="header-anchor" href="#validatorer--15">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#mejladress">Format för mejladress</a>.</p>
-<h4 id="attribut_for_maxlangd--16"><a class="header-anchor" href="#attribut_for_maxlangd--16">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="validering--14" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--14">Validering</a></h3><p class="docs-paragraph"><code>email</code></p>
+<h4 id="validatorer--15" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--15">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#mejladress">Format för mejladress</a>.</p>
+<h4 id="attribut_for_maxlangd--16" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--16">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 
             <div
                 id="example-dd2066"
@@ -1344,23 +1344,25 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-2f676e"></div>
+        <div id="example-e36d52"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FEmailTextFieldSimple-2f676e.js"></script>
+        <script type="module" src="./FEmailTextFieldSimple-e36d52.js"></script>
     
                 </div>
                 <div>
             <button
                 type="button"
-                class="button button--discrete code-preview__toggle-markup"
+                class="code-preview__button code-preview__toggle-markup"
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <i class="icon icon--code"></i>
+                <svg focusable="false" class="icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
                 Visa kod
             </button>
          </div>
@@ -1393,9 +1395,9 @@
 </code></pre>
                 </div>
             </div>
-        <h2 id="mejladress_utokad"><a class="header-anchor" href="#mejladress_utokad">Mejladress - utökad</a></h2><p class="docs-paragraph"><code>FEmailTextField</code></p>
+        <h2 id="mejladress_utokad" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#mejladress_utokad">Mejladress - utökad</a></h2><p class="docs-paragraph"><code>FEmailTextField</code></p>
 <p class="docs-paragraph">Inmatningsfält för mejladress finns med <a href="#mejladress">enkel validering</a> och med utökad validering som beskrivs nedan. Vid utökad validering ska användaren bekräfta mejladressen genom att skriva in det en gång till.</p>
-<h3 id="etikett--17"><a class="header-anchor" href="#etikett--17">Etikett</a></h3><table class="table">
+<h3 id="etikett--17" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#etikett--17">Etikett</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1411,9 +1413,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="validering--18"><a class="header-anchor" href="#validering--18">Validering</a></h3><p class="docs-paragraph"><code>email.matches</code></p>
-<h4 id="validatorer--19"><a class="header-anchor" href="#validatorer--19">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#mejladress">Format för mejladress</a> och <a href="../validation/validators.html#identisk">identisk</a>.</p>
-<h4 id="attribut_for_maxlangd--20"><a class="header-anchor" href="#attribut_for_maxlangd--20">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="validering--18" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--18">Validering</a></h3><p class="docs-paragraph"><code>email.matches</code></p>
+<h4 id="validatorer--19" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--19">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#mejladress">Format för mejladress</a> och <a href="../validation/validators.html#identisk">identisk</a>.</p>
+<h4 id="attribut_for_maxlangd--20" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--20">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 
             <div
                 id="example-8cddf8"
@@ -1425,23 +1427,25 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-1a8c8a"></div>
+        <div id="example-99c689"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FEmailTextFieldExtended-1a8c8a.js"></script>
+        <script type="module" src="./FEmailTextFieldExtended-99c689.js"></script>
     
                 </div>
                 <div>
             <button
                 type="button"
-                class="button button--discrete code-preview__toggle-markup"
+                class="code-preview__button code-preview__toggle-markup"
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <i class="icon icon--code"></i>
+                <svg focusable="false" class="icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
                 Visa kod
             </button>
          </div>
@@ -1476,8 +1480,8 @@
 </code></pre>
                 </div>
             </div>
-        <h3 id="api--21"><a class="header-anchor" href="#api--21">API</a></h3>
-        <h4 id="femailtextfield-models">
+        <h3 id="api--21" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api--21">API</a></h3>
+        <h4 class="docs-heading docs-heading--h4" id="femailtextfield-models">
             <a class="header-anchor" href="#femailtextfield-models">Models</a>
         </h4>
         <dl class="docs-api docs-api--models">
@@ -1503,7 +1507,7 @@ If the prop is not set undefined will be used.</p>
                     
         </dl>
     
-        <h4 id="femailtextfield-props">
+        <h4 class="docs-heading docs-heading--h4" id="femailtextfield-props">
             <a class="header-anchor" href="#femailtextfield-props">Props</a>
         </h4>
         <dl class="docs-api docs-api--slots">
@@ -1586,7 +1590,7 @@ If the prop is not set the default text &quot;Du kan inte kopiera mejladressen. 
                     
         </dl>
     
-        <h4 id="femailtextfield-events">
+        <h4 class="docs-heading docs-heading--h4" id="femailtextfield-events">
             <a class="header-anchor" href="#femailtextfield-events">Events</a>
         </h4>
         <dl class="docs-api docs-api--events">
@@ -1629,7 +1633,7 @@ If the prop is not set the default text &quot;Du kan inte kopiera mejladressen. 
                     
         </dl>
     
-        <h4 id="femailtextfield-slots">
+        <h4 class="docs-heading docs-heading--h4" id="femailtextfield-slots">
             <a class="header-anchor" href="#femailtextfield-slots">Slots</a>
         </h4>
         <dl class="docs-api docs-api--slots">
@@ -1673,9 +1677,9 @@ If the prop is not set the default text &quot;Du kan inte kopiera mejladressen. 
                         </dd>
                     
         </dl>
-    <h2 id="numeriskt"><a class="header-anchor" href="#numeriskt">Numeriskt</a></h2><p class="docs-paragraph"><code>FNumericTextField</code></p>
+    <h2 id="numeriskt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#numeriskt">Numeriskt</a></h2><p class="docs-paragraph"><code>FNumericTextField</code></p>
 <p class="docs-paragraph">Inmatningsfält används när användaren ska fylla i ett tal. Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskiljare och kommatecken som decimalpunkt. Utvecklaren behöver själv lägga till lämpliga numeriska validatorer som till exempel <code>_v-validation.required.decimal.maxValue.minValue=&quot; ... &quot;</code>.</p>
-<h3 id="format--22"><a class="header-anchor" href="#format--22">Format</a></h3><table class="table">
+<h3 id="format--22" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format--22">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1706,12 +1710,12 @@ If the prop is not set the default text &quot;Du kan inte kopiera mejladressen. 
 </tr>
 </tbody>
 </table>
-<h3 id="validering--23"><a class="header-anchor" href="#validering--23">Validering</a></h3><p class="docs-paragraph"><code>decimals</code></p>
-<h4 id="validatorer--24"><a class="header-anchor" href="#validatorer--24">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#decimaltal">Decimaltal</a> (om propertyn är angiven).</p>
-<h4 id="attribut_for_maxlangd--25"><a class="header-anchor" href="#attribut_for_maxlangd--25">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=20</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
-<h3 id="api--26"><a class="header-anchor" href="#api--26">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
-<h2 id="organisationsnummer"><a class="header-anchor" href="#organisationsnummer">Organisationsnummer</a></h2><p class="docs-paragraph"><code>FOrganisationsnummerTextField</code></p>
-<h3 id="etikett--27"><a class="header-anchor" href="#etikett--27">Etikett</a></h3><table class="table">
+<h3 id="validering--23" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--23">Validering</a></h3><p class="docs-paragraph"><code>decimals</code></p>
+<h4 id="validatorer--24" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--24">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#decimaltal">Decimaltal</a> (om propertyn är angiven).</p>
+<h4 id="attribut_for_maxlangd--25" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--25">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=20</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="api--26" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api--26">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
+<h2 id="organisationsnummer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#organisationsnummer">Organisationsnummer</a></h2><p class="docs-paragraph"><code>FOrganisationsnummerTextField</code></p>
+<h3 id="etikett--27" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#etikett--27">Etikett</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1737,7 +1741,7 @@ If the prop is not set the default text &quot;Du kan inte kopiera mejladressen. 
 </tr>
 </tbody>
 </table>
-<h3 id="format--28"><a class="header-anchor" href="#format--28">Format</a></h3><table class="table">
+<h3 id="format--28" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format--28">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1763,17 +1767,17 @@ If the prop is not set the default text &quot;Du kan inte kopiera mejladressen. 
 </tr>
 </tbody>
 </table>
-<h3 id="validering--29"><a class="header-anchor" href="#validering--29">Validering</a></h3><p class="docs-paragraph"><code>maxLength.organisationsnummer=&quot;{ maxLength:{ length: 11 }}&quot;</code></p>
-<h4 id="validatorer--30"><a class="header-anchor" href="#validatorer--30">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#maxlangd">Maxlängd</a> och <a href="../validation/validators.html#organisationsnummer">format för organisationsnummer</a>.</p>
-<h4 id="attribut_for_maxlangd--31"><a class="header-anchor" href="#attribut_for_maxlangd--31">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=20</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
-<h3 id="api--32"><a class="header-anchor" href="#api--32">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
-<h2 id="personnummer"><a class="header-anchor" href="#personnummer">Personnummer</a></h2><p class="docs-paragraph"><code>FPersonnummerTextField</code></p>
+<h3 id="validering--29" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--29">Validering</a></h3><p class="docs-paragraph"><code>maxLength.organisationsnummer=&quot;{ maxLength:{ length: 11 }}&quot;</code></p>
+<h4 id="validatorer--30" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--30">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#maxlangd">Maxlängd</a> och <a href="../validation/validators.html#organisationsnummer">format för organisationsnummer</a>.</p>
+<h4 id="attribut_for_maxlangd--31" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--31">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=20</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="api--32" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api--32">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
+<h2 id="personnummer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#personnummer">Personnummer</a></h2><p class="docs-paragraph"><code>FPersonnummerTextField</code></p>
 <p class="docs-paragraph">Inmatningsfältet för personnummer har förlåtande inmatning,
 så att användaren kan skriva in personnummer med både 10 eller 12 siffror.
 Det inmatade värdet kommer efter godkänd validering att formateras enligt <a href="https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html"><u>Skatteverkets regler</u></a> för personnummer.
 Från och med det år personen fyller 100 år ska personnumret skrivas med plustecken istället för bindestreck.
 Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
-<h3 id="etikett--33"><a class="header-anchor" href="#etikett--33">Etikett</a></h3><table class="table">
+<h3 id="etikett--33" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#etikett--33">Etikett</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1799,7 +1803,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="format--34"><a class="header-anchor" href="#format--34">Format</a></h3><table class="table">
+<h3 id="format--34" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format--34">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1830,12 +1834,12 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="validering--35"><a class="header-anchor" href="#validering--35">Validering</a></h3><p class="docs-paragraph"><code>maxLength.personnummerFormat.personnummerLuhn= &quot;{ maxLength:{ length: 20 }}&quot;</code></p>
-<h4 id="validatorer--36"><a class="header-anchor" href="#validatorer--36">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#maxlangd">Maxlängd</a>, <a href="../validation/validators.html#personnummer_format">format för personnummer</a> och <a href="../validation/validators.html#personnummer_checksumma">kontrollsiffra för personnummer</a>.</p>
-<h4 id="attribut_for_maxlangd--37"><a class="header-anchor" href="#attribut_for_maxlangd--37">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=23</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
-<h3 id="api--38"><a class="header-anchor" href="#api--38">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
-<h2 id="plusgiro"><a class="header-anchor" href="#plusgiro">Plusgiro</a></h2><p class="docs-paragraph"><code>FPlusgiroTextField</code></p>
-<h3 id="etikett--39"><a class="header-anchor" href="#etikett--39">Etikett</a></h3><table class="table">
+<h3 id="validering--35" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--35">Validering</a></h3><p class="docs-paragraph"><code>maxLength.personnummerFormat.personnummerLuhn= &quot;{ maxLength:{ length: 20 }}&quot;</code></p>
+<h4 id="validatorer--36" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--36">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#maxlangd">Maxlängd</a>, <a href="../validation/validators.html#personnummer_format">format för personnummer</a> och <a href="../validation/validators.html#personnummer_checksumma">kontrollsiffra för personnummer</a>.</p>
+<h4 id="attribut_for_maxlangd--37" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--37">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=23</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="api--38" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api--38">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
+<h2 id="plusgiro" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#plusgiro">Plusgiro</a></h2><p class="docs-paragraph"><code>FPlusgiroTextField</code></p>
+<h3 id="etikett--39" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#etikett--39">Etikett</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1851,7 +1855,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="format--40"><a class="header-anchor" href="#format--40">Format</a></h3><table class="table">
+<h3 id="format--40" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format--40">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1877,12 +1881,12 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="validering--41"><a class="header-anchor" href="#validering--41">Validering</a></h3><p class="docs-paragraph"><code>maxLength.plusgiro= &quot;{ maxLength:{ length: 9 }}&quot;</code></p>
-<h4 id="validatorer--42"><a class="header-anchor" href="#validatorer--42">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#maxlangd">Maxlängd</a> och <a href="../validation/validators.html#plusgiro">format för plusgiro</a>.</p>
-<h4 id="attribut_for_maxlangd--43"><a class="header-anchor" href="#attribut_for_maxlangd--43">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=15</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
-<h3 id="api--44"><a class="header-anchor" href="#api--44">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
-<h2 id="postnummer"><a class="header-anchor" href="#postnummer">Postnummer</a></h2><p class="docs-paragraph"><code>FPostalCodeTextField</code></p>
-<h3 id="etikett--45"><a class="header-anchor" href="#etikett--45">Etikett</a></h3><table class="table">
+<h3 id="validering--41" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--41">Validering</a></h3><p class="docs-paragraph"><code>maxLength.plusgiro= &quot;{ maxLength:{ length: 9 }}&quot;</code></p>
+<h4 id="validatorer--42" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--42">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#maxlangd">Maxlängd</a> och <a href="../validation/validators.html#plusgiro">format för plusgiro</a>.</p>
+<h4 id="attribut_for_maxlangd--43" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--43">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=15</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="api--44" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api--44">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
+<h2 id="postnummer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#postnummer">Postnummer</a></h2><p class="docs-paragraph"><code>FPostalCodeTextField</code></p>
+<h3 id="etikett--45" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#etikett--45">Etikett</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1908,7 +1912,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="format--46"><a class="header-anchor" href="#format--46">Format</a></h3><table class="table">
+<h3 id="format--46" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format--46">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1934,12 +1938,12 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="validering--47"><a class="header-anchor" href="#validering--47">Validering</a></h3><p class="docs-paragraph"><code>maxLength.postalCode=&quot;{ maxLength:´{ length: 13 }}&quot;</code></p>
-<h4 id="validatorer--48"><a class="header-anchor" href="#validatorer--48">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#maxlangd">Maxlängd</a> och <a href="../validation/validators.html#postnummer">format för postnummer</a>.</p>
-<h4 id="attribut_for_maxlangd--49"><a class="header-anchor" href="#attribut_for_maxlangd--49">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=15</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
-<h3 id="api--50"><a class="header-anchor" href="#api--50">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
-<h2 id="procent"><a class="header-anchor" href="#procent">Procent</a></h2><p class="docs-paragraph"><code>FPercentTextField</code></p>
-<h3 id="format--51"><a class="header-anchor" href="#format--51">Format</a></h3><table class="table">
+<h3 id="validering--47" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--47">Validering</a></h3><p class="docs-paragraph"><code>maxLength.postalCode=&quot;{ maxLength:´{ length: 13 }}&quot;</code></p>
+<h4 id="validatorer--48" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--48">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#maxlangd">Maxlängd</a> och <a href="../validation/validators.html#postnummer">format för postnummer</a>.</p>
+<h4 id="attribut_for_maxlangd--49" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--49">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=15</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="api--50" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api--50">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
+<h2 id="procent" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#procent">Procent</a></h2><p class="docs-paragraph"><code>FPercentTextField</code></p>
+<h3 id="format--51" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format--51">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -1970,13 +1974,13 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="validering--52"><a class="header-anchor" href="#validering--52">Validering</a></h3><p class="docs-paragraph"><code>percent.minValue.maxValue= &quot;{ minValue: { minValue: 0 }, maxValue: { maxValue: 999 } }&quot;</code></p>
-<h4 id="validatorer--53"><a class="header-anchor" href="#validatorer--53">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#procent">Format för procent</a>, <a href="../validation/validators.html#minvarde">minvärde</a> och <a href="../validation/validators.html#maxvarde">maxvärde</a>.</p>
-<h4 id="attribut_for_maxlangd--54"><a class="header-anchor" href="#attribut_for_maxlangd--54">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=10</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
-<h3 id="api--55"><a class="header-anchor" href="#api--55">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
-<h2 id="sokfalt"><a class="header-anchor" href="#sokfalt">Sökfält</a></h2><p class="docs-paragraph"><code>FSearchTextField</code></p>
+<h3 id="validering--52" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--52">Validering</a></h3><p class="docs-paragraph"><code>percent.minValue.maxValue= &quot;{ minValue: { minValue: 0 }, maxValue: { maxValue: 999 } }&quot;</code></p>
+<h4 id="validatorer--53" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--53">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#procent">Format för procent</a>, <a href="../validation/validators.html#minvarde">minvärde</a> och <a href="../validation/validators.html#maxvarde">maxvärde</a>.</p>
+<h4 id="attribut_for_maxlangd--54" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--54">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=10</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="api--55" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api--55">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
+<h2 id="sokfalt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sokfalt">Sökfält</a></h2><p class="docs-paragraph"><code>FSearchTextField</code></p>
 <p class="docs-paragraph">Används för sökningar där användaren skriver in sin söktext i ett inmatningsfält.</p>
-<h3 id="etikett--56"><a class="header-anchor" href="#etikett--56">Etikett</a></h3><table class="table">
+<h3 id="etikett--56" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#etikett--56">Etikett</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -2002,7 +2006,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="format--57"><a class="header-anchor" href="#format--57">Format</a></h3><table class="table">
+<h3 id="format--57" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format--57">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -2018,11 +2022,11 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="valiering"><a class="header-anchor" href="#valiering">Valiering</a></h3><h4 id="attribut_for_maxlangd--58"><a class="header-anchor" href="#attribut_for_maxlangd--58">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
-<h3 id="api--59"><a class="header-anchor" href="#api--59">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
-<h2 id="telefonnummer"><a class="header-anchor" href="#telefonnummer">Telefonnummer</a></h2><p class="docs-paragraph"><code>FPhoneTextField</code></p>
+<h3 id="valiering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#valiering">Valiering</a></h3><h4 id="attribut_for_maxlangd--58" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--58">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="api--59" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api--59">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
+<h2 id="telefonnummer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#telefonnummer">Telefonnummer</a></h2><p class="docs-paragraph"><code>FPhoneTextField</code></p>
 <p class="docs-paragraph">Inmatningsfält för telefonnummer finns med enkel validering som beskrivs nedan och med <a href="#telefonnummer_utokad">utökad validering</a>. Vid utökad validering ska användaren bekräfta telefonnummer genom att skriva in det en gång till.</p>
-<h3 id="etikett--60"><a class="header-anchor" href="#etikett--60">Etikett</a></h3><table class="table">
+<h3 id="etikett--60" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#etikett--60">Etikett</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -2038,7 +2042,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="format--61"><a class="header-anchor" href="#format--61">Format</a></h3><table class="table">
+<h3 id="format--61" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format--61">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -2054,9 +2058,9 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="validering--62"><a class="header-anchor" href="#validering--62">Validering</a></h3><p class="docs-paragraph"><code>phoneNumber</code></p>
-<h4 id="validatorer--63"><a class="header-anchor" href="#validatorer--63">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#telefonnummer">Format för telefonnummer</a>.</p>
-<h4 id="attribut_for_maxlangd--64"><a class="header-anchor" href="#attribut_for_maxlangd--64">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="validering--62" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--62">Validering</a></h3><p class="docs-paragraph"><code>phoneNumber</code></p>
+<h4 id="validatorer--63" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--63">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#telefonnummer">Format för telefonnummer</a>.</p>
+<h4 id="attribut_for_maxlangd--64" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--64">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 
             <div
                 id="example-a9e28f"
@@ -2068,23 +2072,25 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-8b441c"></div>
+        <div id="example-d5e0e0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FPhoneTextFieldSimple-8b441c.js"></script>
+        <script type="module" src="./FPhoneTextFieldSimple-d5e0e0.js"></script>
     
                 </div>
                 <div>
             <button
                 type="button"
-                class="button button--discrete code-preview__toggle-markup"
+                class="code-preview__button code-preview__toggle-markup"
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <i class="icon icon--code"></i>
+                <svg focusable="false" class="icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
                 Visa kod
             </button>
          </div>
@@ -2112,9 +2118,9 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </code></pre>
                 </div>
             </div>
-        <h2 id="telefonnummer_utokad"><a class="header-anchor" href="#telefonnummer_utokad">Telefonnummer - utökad</a></h2><p class="docs-paragraph"><code>FPhoneTextField</code></p>
+        <h2 id="telefonnummer_utokad" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#telefonnummer_utokad">Telefonnummer - utökad</a></h2><p class="docs-paragraph"><code>FPhoneTextField</code></p>
 <p class="docs-paragraph">Inmatningsfält för telefonnummer finns med <a href="#telefonnummer">enkel validering</a> och med utökad validering som beskrivs nedan. Vid utökad validering ska användaren bekräfta telefonnummer genom att skriva in det en gång till.</p>
-<h3 id="etikett--65"><a class="header-anchor" href="#etikett--65">Etikett</a></h3><table class="table">
+<h3 id="etikett--65" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#etikett--65">Etikett</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -2130,7 +2136,7 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="format--66"><a class="header-anchor" href="#format--66">Format</a></h3><table class="table">
+<h3 id="format--66" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format--66">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -2146,9 +2152,9 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="validering--67"><a class="header-anchor" href="#validering--67">Validering</a></h3><p class="docs-paragraph"><code>phoneNumber.matches</code></p>
-<h4 id="validatorer--68"><a class="header-anchor" href="#validatorer--68">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#telefonnummer">Format för telefonnummer</a> och <a href="../validation/validators.html#identisk">identisk</a>.</p>
-<h4 id="attribut_for_maxlangd--69"><a class="header-anchor" href="#attribut_for_maxlangd--69">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="validering--67" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--67">Validering</a></h3><p class="docs-paragraph"><code>phoneNumber.matches</code></p>
+<h4 id="validatorer--68" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--68">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#telefonnummer">Format för telefonnummer</a> och <a href="../validation/validators.html#identisk">identisk</a>.</p>
+<h4 id="attribut_for_maxlangd--69" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--69">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=80</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
 
             <div
                 id="example-f34116"
@@ -2160,23 +2166,25 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-f097fa"></div>
+        <div id="example-1ba4c0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FPhoneTextFieldExtended-f097fa.js"></script>
+        <script type="module" src="./FPhoneTextFieldExtended-1ba4c0.js"></script>
     
                 </div>
                 <div>
             <button
                 type="button"
-                class="button button--discrete code-preview__toggle-markup"
+                class="code-preview__button code-preview__toggle-markup"
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <i class="icon icon--code"></i>
+                <svg focusable="false" class="icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
                 Visa kod
             </button>
          </div>
@@ -2206,8 +2214,8 @@ Inskick till backend innehåller 12 siffror, <code>ååååmmdd-nnnn</code>.</p>
 </code></pre>
                 </div>
             </div>
-        <h3 id="api--70"><a class="header-anchor" href="#api--70">API</a></h3>
-        <h4 id="fphonetextfield-models">
+        <h3 id="api--70" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api--70">API</a></h3>
+        <h4 class="docs-heading docs-heading--h4" id="fphonetextfield-models">
             <a class="header-anchor" href="#fphonetextfield-models">Models</a>
         </h4>
         <dl class="docs-api docs-api--models">
@@ -2234,7 +2242,7 @@ or null then the default value will be used.</p>
                     
         </dl>
     
-        <h4 id="fphonetextfield-props">
+        <h4 class="docs-heading docs-heading--h4" id="fphonetextfield-props">
             <a class="header-anchor" href="#fphonetextfield-props">Props</a>
         </h4>
         <dl class="docs-api docs-api--slots">
@@ -2295,7 +2303,7 @@ If the prop is not set a random value will be generated.</p>
                     
         </dl>
     
-        <h4 id="fphonetextfield-events">
+        <h4 class="docs-heading docs-heading--h4" id="fphonetextfield-events">
             <a class="header-anchor" href="#fphonetextfield-events">Events</a>
         </h4>
         <dl class="docs-api docs-api--events">
@@ -2338,7 +2346,7 @@ If the prop is not set a random value will be generated.</p>
                     
         </dl>
     
-        <h4 id="fphonetextfield-slots">
+        <h4 class="docs-heading docs-heading--h4" id="fphonetextfield-slots">
             <a class="header-anchor" href="#fphonetextfield-slots">Slots</a>
         </h4>
         <dl class="docs-api docs-api--slots">
@@ -2380,10 +2388,10 @@ If the prop is not set a random value will be generated.</p>
                         </dd>
                     
         </dl>
-    <h2 id="valuta"><a class="header-anchor" href="#valuta">Valuta</a></h2><p class="docs-paragraph"><code>FCurrencyTextField</code></p>
+    <h2 id="valuta" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#valuta">Valuta</a></h2><p class="docs-paragraph"><code>FCurrencyTextField</code></p>
 <p class="docs-paragraph">Inmatningsfält för valuta används när modellen (<code>v-model</code>) är av typen <code>number</code>.
 Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskiljare och kommatecken som decimalpunkt. Utvecklaren behöver själv lägga till ytterligare lämpliga numeriska validatorer som till exempel <code>_v-validation.required.maxValue=&quot; ... &quot;</code>.</p>
-<h3 id="format--71"><a class="header-anchor" href="#format--71">Format</a></h3><table class="table">
+<h3 id="format--71" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#format--71">Format</a></h3><table class="table">
 <thead>
 <tr class="table__row">
 <th class="table__column table__column--text" scope="col">Egenskap</th>
@@ -2414,11 +2422,11 @@ Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskilja
 </tr>
 </tbody>
 </table>
-<h3 id="validering--72"><a class="header-anchor" href="#validering--72">Validering</a></h3><p class="docs-paragraph"><code>currency.integer</code></p>
-<h4 id="validatorer--73"><a class="header-anchor" href="#validatorer--73">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#valutabelopp">Valutabelopp</a> och <a href="../validation/validators.html#heltal">heltal</a>.</p>
-<h4 id="attribut_for_maxlangd--74"><a class="header-anchor" href="#attribut_for_maxlangd--74">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=20</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
-<h3 id="api--75"><a class="header-anchor" href="#api--75">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
-<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./ftextfield.html">Inmatningsfält</a></p>
+<h3 id="validering--72" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering--72">Validering</a></h3><p class="docs-paragraph"><code>currency.integer</code></p>
+<h4 id="validatorer--73" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#validatorer--73">Validatorer</a></h4><p class="docs-paragraph"><a href="../validation/validators.html#valutabelopp">Valutabelopp</a> och <a href="../validation/validators.html#heltal">heltal</a>.</p>
+<h4 id="attribut_for_maxlangd--74" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#attribut_for_maxlangd--74">Attribut för maxlängd</a></h4><p class="docs-paragraph"><code>maxlength=20</code> <a href="../../guides/validation-and-error-handling/length-validation.html">Läs mer om längdvalidering</a></p>
+<h3 id="api--75" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#api--75">API</a></h3><p class="docs-paragraph">Se <a href="./ftextfield.html#api">Inmatningsfält</a> för API.</p>
+<h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./ftextfield.html">Inmatningsfält</a></p>
 <p class="docs-paragraph"><a href="../../guides/formatting-and-parsing/formatter-parser.html">Formatering och parsning</a></p>
 <p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/validation.html">Validering</a></p>
 
@@ -2445,9 +2453,9 @@ Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskilja
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">buggfix/filpresentator (<a href="https://github.com/Forsakringskassan/designsystem/commits/782e75ffc594d6d1ef6b2de6d55d31183370ff67">782e75f</a>)<br />
+<div class="footer__right"><div class="version">buggfix/filpresentator (<a href="https://github.com/Forsakringskassan/designsystem/commits/12d176b85c2cc7cb75c43e84b04ba272f4cf73f6">12d176b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1126">PR 1126</a><br />
-        2026-03-19 14:32
+        2026-03-25 09:36
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2455,28 +2463,7 @@ Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskilja
             <span id="version-info" class="anchor"> Byt version </span>
         </button>
     </form>
-
-    <dialog id="version-dialog">
-        <div id="version-dialog-head">
-            <h1>Välj version</h1>
-            <button type="button" class="button button--tertiary button--tertiary--black">
-                <span>Stäng</span>
-                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use href="#f-icon-close"></use>
-                </svg>
-            </button>
-        </div>
-        <div id="version-list">
-            <p>Var god vänta, laddar versionsdata...</p>
-        </div>
-    </dialog>
 </div>
-
-<template id="version-list-item">
-    <li class="list__item">
-        <a class="list__item__itempane">template</a>
-    </li>
-</template>
 
 
     <ul>
@@ -2526,32 +2513,75 @@ Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskilja
                 class="i"
             ></path>
         </symbol>
+        <symbol id="docs-icon-code" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M200 354L102 256L200 158L171 128L43 256L171 384L200 354ZM312 354L410 256L312 158L341 128L469 256L341 384L312 354Z"
+            />
+        </symbol>
+        <!--!Font Awesome Free 6.4.2 -->
+        <symbol id="docs-icon-fullscreen" viewBox="0 0 448 512">
+            <path
+                fill="currentColor"
+                d="M160 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V64zM32 320c-17.7 0-32 14.3-32 32s14.3 32 32 32H96v64c0 17.7 14.3 32 32 32s32-14.3 32-32V352c0-17.7-14.3-32-32-32H32zM352 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H352V64zM320 320c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32V384h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320z"
+            />
+        </symbol>
     </svg>
-</div><dialog id="search-dialog">
+</div><dialog class="docs-modal" id="search-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title" id="search-dialog-title">Sök</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
-    <form id="search-form">
-        <div class="text-field">
-            <label for="search-field" class="label">Sök</label>
-            <div class="text-field__input-wrapper">
-                <div class="text-field__icon-wrapper">
-                    <input
-                        autofocus
-                        autocomplete="off"
-                        autocapitalize="off"
-                        autocorrect="off"
-                        id="search-field"
-                        type="text"
-                        class="text-field__input"
-                        maxlength="50"
-                        placeholder="Skriv för att börja söka"
-                    />
-                </div>
-            </div>
-        </div>
-        <div id="search-results"></div>
+    <form class="docs-modal__body" id="search-form">
+        <input
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            id="search-field"
+            type="search"
+            class="docs-search-dialog__input"
+            maxlength="50"
+            placeholder="Skriv för att börja söka"
+            aria-labelledby="search-dialog-title"
+        />
+        <ul class="docs-search-result__list" id="search-results"></ul>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog>
+
+<template id="search-result-item">
+    <li class="docs-search-result__item">
+        <a class="docs-search-result__link"></a>
+    </li>
+</template>
+<dialog class="docs-modal" id="version-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title">Välj version</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="docs-modal__body" id="version-list">
+        <p>Var god vänta, laddar versionsdata...</p>
+    </div>
+</dialog>
+
+<template id="version-list-item">
+    <li class="docs-selectable-version__item">
+        <a class="docs-selectable-version__link"></a>
+    </li>
+</template>
 <div id="teleport-target" class="user-theme"></div><script
             src="../../assets/processors/motd/index-cda4cc.js"
             type="module"
@@ -2559,16 +2589,16 @@ Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskilja
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-1fa30d.js"
+            src="../../assets/processors/selectable-version/select-version-92a936.js"
             type="module"
             crossorigin
-            integrity="sha384-S7axHBuhVkx1OrFTW9/nE0lj9cTNqqBRTYRZa+mq6Ts4zb0T3k2yYpqQId3enxkl"
+            integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../../assets/main-219bfc.js"
+            src="../../assets/main-f68cda.js"
             type="module"
             crossorigin
-            integrity="sha384-UNW7fFulrX7o/Mb39/sqIwjWf9njgm2zaOvZddGSmM8mmpQ3QfYjzvvt1E3RfE2T"
+            integrity="sha384-ARuCalqVPs3IlLA12rdhvH79lFkpQ7/wgXP1YgdXqst0Cg3amLJRe5AuuxkU5xgz"
             
         ></script>
     </body>
