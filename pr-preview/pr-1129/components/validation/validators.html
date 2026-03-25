@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Validatorer - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-e6d6e1.css"
+            href="../../assets/docs-3038e4.css"
             crossorigin
-            integrity="sha384-5q1+dDu0JYZisROZHGQB5JuTT5CQmIWkeyEspBSjm7zJCgNH/A7Y2xN+mhJqmHe1"
+            integrity="sha384-8a77vuTuhT+hGfN5QwjFX/rhT1+/kw1tQ5QzFI7fEp6hkY7cDOwf6+Zev+WWRiNc"
             
         />
         <link
@@ -24,17 +24,17 @@
   "imports": {
     "vue": "../../assets/vendor-vue-dd241e.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-98de52.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-2c7abf.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-7838c3.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
     "../../assets/vendor-vue-dd241e.js": "sha384-3bp3RphA5Fue/POFOIMqyfDfPU6ARe/NNr5xPPAVr1ycHv2556I1esecXtk1Wt0s",
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
-    "../../assets/vendor-fkui-logic-98de52.js": "sha384-Ptnc7xByl78++N85l8MGYnpfAGrdohEpKKt9UuQaOU7Avr3TV3rmyjKzInUKGEe5",
+    "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-2c7abf.js": "sha384-YoKS0bXDCaVp5S0CBGMd+TVVFQh0w+uEKsIKkQlKRr91w8mAX2xNqEfWL5aJVIZe",
+    "../../assets/vendor-fkui-vue-7838c3.js": "sha384-jFPrMs9k2rKjDMM2i5gVRs2qT99izgd0hrg6kNM4pXnUFqgI5Y57lU5tuy3TABlt",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,21 +84,21 @@
 
         <link
             rel="preload"
-            href="../../search-data-b8f89d.json"
+            href="../../search-data-d9fbd1.json"
             as="fetch"
             crossorigin
-            integrity="sha384-+oL7b82AgS3zw2+aTFyAEcsN80mARObxDvWaeieZI8fLGaoTcWMN9NdbLyinCz3s"
+            integrity="sha384-J8sYoAVpBUDHLD8+8ol7ec+Rh8G1xMKpH7PL07E5QzYeH+CYalm+z0Puj3b5zIvV"
             id="search-data"
         />
     </head>
     <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="icon-stack icon-stack--info">
-            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+        <span class="docs-icon-stack docs-icon-stack--info">
+            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-circle"></use>
             </svg>
-            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-i"></use>
             </svg>
         </span>
@@ -112,18 +112,18 @@
 <div class="cookie-warning">
     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
     <h1>Kakor på webbplatsen</h1>
-    <p>
-        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
-        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
-    </p>
+    <p>Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />Vi använder också kakor för webbanalys för att göra webbplatsen bättre.</p>
     <p>Godkänner du att vi också använder kakor för webbanalys?</p>
 
-    <div class="button-group">
-        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+    <div class="cookie-warning__button-group">
+        <button id="consent-all-button" class="cookie-warning__button cookie-warning__button--primary" type="button">
             Ja, jag godkänner alla kakor
         </button>
-
-        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+        <button
+            id="consent-functional-button"
+            class="cookie-warning__button cookie-warning__button--secondary"
+            type="button"
+        >
             Nej, jag godkänner bara nödvändiga kakor
         </button>
     </div>
@@ -172,7 +172,7 @@
         <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
             <button type="button" class="docs-topnav__anchor" aria-expanded="false">
                 <span>Mer</span>
-                <svg class="icon" focusable="false" aria-hidden="true">
+                <svg class="docs-icon" focusable="false" aria-hidden="true">
                     <use xlink:href="#docs-icon-arrow-down"></use>
                 </svg>
             </button>
@@ -284,7 +284,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Expanderbara ytor <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Expanderbara ytor <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -326,7 +326,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Filuppladdning <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Filuppladdning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -357,7 +357,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Gruppera <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Gruppera <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -399,7 +399,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Inmatning <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Inmatning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -540,7 +540,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Ladda innehåll <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Ladda innehåll <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -582,7 +582,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Länkar <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Länkar <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -624,7 +624,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Modal <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Modal <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -688,7 +688,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Presentationsfält <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Presentationsfält <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -719,7 +719,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Ramverkskomponenter <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Ramverkskomponenter <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -849,7 +849,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Sidlayout <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Sidlayout <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -957,7 +957,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Tabell och lista <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Tabell och lista <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1032,7 +1032,7 @@
         </a>
     </li><li class="expandable active">
         <details open>
-            <summary>Validering <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Validering <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1098,7 +1098,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Validatorer</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Validatorer</h1>
 
                     
                     <div id="aside"><dl>
@@ -1112,7 +1112,7 @@
                         <details id="outline">
                             <summary class="outline__heading">
                                 Innehåll
-                                <svg focusable="false" class="icon" aria-hidden="true">
+                                <svg focusable="false" class="docs-icon" aria-hidden="true">
                                     <use href="#docs-icon-arrow-down"></use>
                                 </svg>
                             </summary>
@@ -1138,7 +1138,7 @@
                     </div>
                     
 
-                    <div id="content"><h2 id="generella_validatorer"><a class="header-anchor" href="#generella_validatorer">Generella validatorer</a></h2><h3 id="identisk"><a class="header-anchor" href="#identisk">Identisk</a></h3><p class="docs-paragraph"><code>matches</code></p>
+                    <div id="content"><h2 id="generella_validatorer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#generella_validatorer">Generella validatorer</a></h2><h3 id="identisk" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#identisk">Identisk</a></h3><p class="docs-paragraph"><code>matches</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det värde som användaren har fyllt i är identiskt med värdet i ett annat inmatningsfält (referensvärde).</p>
 
                 <div
@@ -1151,13 +1151,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-384a49"></div>
+        <div id="example-31f7f7"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MatchesExample-384a49.js"></script>
+        <script type="module" src="./MatchesExample-31f7f7.js"></script>
     
                     </div>
                 </div>
@@ -1198,7 +1198,7 @@
 <li>Validatorn ger alltid ett felmeddelande om <code>id</code> refererar till ett element som inte är ett inmatningsfält.</li>
 <li>Validatorn fungerar inte om referensvärdet uppdateras. Du behöver hantera det manuellt, se <a href="../../guides/validation-and-error-handling/cross-validation.html">korsvalidering</a>.</li>
 </ul>
-<h3 id="maxlangd"><a class="header-anchor" href="#maxlangd">Maxlängd</a></h3><p class="docs-paragraph"><code>maxLength</code></p>
+<h3 id="maxlangd" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#maxlangd">Maxlängd</a></h3><p class="docs-paragraph"><code>maxLength</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att antalet tecken som fylls i inte överstiger det angivna gränsvärdet.</p>
 
                 <div
@@ -1211,13 +1211,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-b8e5d3"></div>
+        <div id="example-6eceb6"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MaxLengthExample-b8e5d3.js"></script>
+        <script type="module" src="./MaxLengthExample-6eceb6.js"></script>
     
                     </div>
                 </div>
@@ -1245,7 +1245,7 @@
 <li>plusgiro <code>plusgiro</code>: Fyll i plusgironumret.</li>
 <li>postnummer <code>postalCode</code>: Fyll i ett postnummer.</li>
 </ul>
-<h3 id="minlangd"><a class="header-anchor" href="#minlangd">Minlängd</a></h3><p class="docs-paragraph"><code>minLength</code></p>
+<h3 id="minlangd" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#minlangd">Minlängd</a></h3><p class="docs-paragraph"><code>minLength</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att antalet tecken som fylls i inte understiger det angivna gränsvärdet.</p>
 
                 <div
@@ -1258,13 +1258,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-eab06c"></div>
+        <div id="example-66724c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MinLengthExample-eab06c.js"></script>
+        <script type="module" src="./MinLengthExample-66724c.js"></script>
     
                     </div>
                 </div>
@@ -1284,7 +1284,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Du behöver ändra felmeddelandet till användaren när valideringen inte är godkänd så att det passar sammanhanget. Om du inte ändrar kommer det stå MINLENGTH.</p>
-<h3 id="obligatoriskt"><a class="header-anchor" href="#obligatoriskt">Obligatoriskt</a></h3><p class="docs-paragraph"><code>required</code></p>
+<h3 id="obligatoriskt" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#obligatoriskt">Obligatoriskt</a></h3><p class="docs-paragraph"><code>required</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att inmatningskomponenten har ett värde.</p>
 <p class="docs-paragraph">Valideringskriterier för inmatningsfält är:</p>
 <ul>
@@ -1307,13 +1307,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-f55f53"></div>
+        <div id="example-645a6b"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./RequiredExample-f55f53.js"></script>
+        <script type="module" src="./RequiredExample-645a6b.js"></script>
     
                     </div>
                 </div>
@@ -1354,7 +1354,7 @@
 <li>telefonnummer <code>phoneNumber</code>: Kolla att telefonnumret stämmer.</li>
 <li>valutabelopp <code>currency</code>: Fyll i ett belopp.</li>
 </ul>
-<h3 id="tillatna_tecken"><a class="header-anchor" href="#tillatna_tecken">Tillåtna tecken</a></h3><p class="docs-paragraph"><code>whitelist</code></p>
+<h3 id="tillatna_tecken" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tillatna_tecken">Tillåtna tecken</a></h3><p class="docs-paragraph"><code>whitelist</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att de tecken som användaren har fyllt i är tillåtna tecken.</p>
 <p class="docs-paragraph">Tillåtna tecken är:  a-z A-Z 0-9 . , - ( ) ? + = ! : @ * À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß à á â ã ä å æ ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ</p>
 <p class="docs-paragraph">Valideringen sker direkt efter användaren har fyllt i ett otillåtet tecken. Direktvalideringen är inbyggd i validatorn.</p>
@@ -1369,13 +1369,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-3d8ac8"></div>
+        <div id="example-d6ba9d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./WhitelistExample-3d8ac8.js"></script>
+        <script type="module" src="./WhitelistExample-d6ba9d.js"></script>
     
                     </div>
                 </div>
@@ -1398,7 +1398,7 @@
 <ul>
 <li>Fältet innehåller otillåtna tecken. Exempel på ogiltiga tecken är /, % och &quot;.</li>
 </ul>
-<h3 id="val_fran_lista"><a class="header-anchor" href="#val_fran_lista">Val från lista</a></h3><p class="docs-paragraph"><code>allowList</code></p>
+<h3 id="val_fran_lista" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#val_fran_lista">Val från lista</a></h3><p class="docs-paragraph"><code>allowList</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att värdet som användaren angivit exakt matchar något av valen i listan.</p>
 <p class="docs-paragraph">Om det finns behov av att dynamiskt ändra på listans innehåll, så behöver den befintliga listan ersättas med en ny lista för att en omvalidering ska ske.</p>
 
@@ -1412,13 +1412,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-33628e"></div>
+        <div id="example-6de28c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./AllowListExample-33628e.js"></script>
+        <script type="module" src="./AllowListExample-6de28c.js"></script>
     
                     </div>
                 </div>
@@ -1441,7 +1441,7 @@
 <ul>
 <li>Välj ett av alternativen i listan.</li>
 </ul>
-<h2 id="datum"><a class="header-anchor" href="#datum">Datum</a></h2><h3 id="datum--1"><a class="header-anchor" href="#datum--1">Datum</a></h3><p class="docs-paragraph"><code>date</code></p>
+<h2 id="datum" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#datum">Datum</a></h2><h3 id="datum--1" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#datum--1">Datum</a></h3><p class="docs-paragraph"><code>date</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet är ett giltigt datum.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -1463,13 +1463,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-fc0ab7"></div>
+        <div id="example-5e330f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./DateExample-fc0ab7.js"></script>
+        <script type="module" src="./DateExample-5e330f.js"></script>
     
                     </div>
                 </div>
@@ -1490,7 +1490,7 @@
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i ett felaktigt datum.</p>
 <p class="docs-paragraph">Felmeddelandet när validatorn för datum <code>date</code> är kombinerad med validatorn för obligatoriskt fält <code>required</code> är:<br> Välj ett datum.</p>
-<h3 id="datumformat"><a class="header-anchor" href="#datumformat">Datumformat</a></h3><p class="docs-paragraph"><code>dateFormat</code></p>
+<h3 id="datumformat" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#datumformat">Datumformat</a></h3><p class="docs-paragraph"><code>dateFormat</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värde stämmer överens mot de här valideringskriterierna:</p>
 <ul>
 <li>Tillåtna tecken är siffror, bindestreck eller snedstreck.</li>
@@ -1509,13 +1509,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-6dfe99"></div>
+        <div id="example-7898a2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./DateFormatExample-6dfe99.js"></script>
+        <script type="module" src="./DateFormatExample-7898a2.js"></script>
     
                     </div>
                 </div>
@@ -1535,7 +1535,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i datumet med åtta siffror.</p>
-<h3 id="inte_valbara_datum"><a class="header-anchor" href="#inte_valbara_datum">Inte valbara datum</a></h3><p class="docs-paragraph"><code>invalidDates</code></p>
+<h3 id="inte_valbara_datum" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#inte_valbara_datum">Inte valbara datum</a></h3><p class="docs-paragraph"><code>invalidDates</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det datum som användaren har valt är ett valbart datum.</p>
 
                 <div
@@ -1548,13 +1548,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-9b88b9"></div>
+        <div id="example-495e86"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./InvalidDatesExample-9b88b9.js"></script>
+        <script type="module" src="./InvalidDatesExample-495e86.js"></script>
     
                     </div>
                 </div>
@@ -1574,7 +1574,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du kan inte välja det här datumet.</p>
-<h3 id="inte_valbara_veckodagar"><a class="header-anchor" href="#inte_valbara_veckodagar">Inte valbara veckodagar</a></h3><p class="docs-paragraph"><code>invalidWeekdays</code></p>
+<h3 id="inte_valbara_veckodagar" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#inte_valbara_veckodagar">Inte valbara veckodagar</a></h3><p class="docs-paragraph"><code>invalidWeekdays</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det datum som användaren har valt är en valbar veckodag.</p>
 
                 <div
@@ -1587,13 +1587,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-3a8834"></div>
+        <div id="example-2c52f2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./InvalidWeekdaysExample-3a8834.js"></script>
+        <script type="module" src="./InvalidWeekdaysExample-2c52f2.js"></script>
     
                     </div>
                 </div>
@@ -1613,7 +1613,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringern inte är godkänd är:<br> Du kan inte välja det här datumet.</p>
-<h3 id="maxdatum"><a class="header-anchor" href="#maxdatum">Maxdatum</a></h3><p class="docs-paragraph"><code>maxDate</code></p>
+<h3 id="maxdatum" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#maxdatum">Maxdatum</a></h3><p class="docs-paragraph"><code>maxDate</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det datum som användaren har fyllt i <strong>inte</strong> ligger längre fram än angivet datum. Använd maxdatum-validatorn tillsammans med datum-validatorn.</p>
 <p class="docs-paragraph">Valideringskriterie:</p>
 <ul>
@@ -1630,13 +1630,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-ef0946"></div>
+        <div id="example-4bb306"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MaxDateExample-ef0946.js"></script>
+        <script type="module" src="./MaxDateExample-4bb306.js"></script>
     
                     </div>
                 </div>
@@ -1656,7 +1656,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Datumet ligger för långt fram i tiden.</p>
-<h3 id="mindatum"><a class="header-anchor" href="#mindatum">Mindatum</a></h3><p class="docs-paragraph"><code>minDate</code></p>
+<h3 id="mindatum" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#mindatum">Mindatum</a></h3><p class="docs-paragraph"><code>minDate</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det datum som användaren har fyllt i <strong>inte</strong> ligger tidigare än angivet datum. Använd mindatum-validatorn tillsammans med datum-validatorn.</p>
 <p class="docs-paragraph">Valideringskriterie:</p>
 <ul>
@@ -1673,13 +1673,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-a59867"></div>
+        <div id="example-47aa5e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MinDateExample-a59867.js"></script>
+        <script type="module" src="./MinDateExample-47aa5e.js"></script>
     
                     </div>
                 </div>
@@ -1699,7 +1699,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Datumet ligger för långt bak i tiden.</p>
-<h2 id="tal_och_valutabelopp"><a class="header-anchor" href="#tal_och_valutabelopp">Tal och valutabelopp</a></h2><h3 id="nummer"><a class="header-anchor" href="#nummer">Nummer</a></h3><p class="docs-paragraph"><code>number</code></p>
+<h2 id="tal_och_valutabelopp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tal_och_valutabelopp">Tal och valutabelopp</a></h2><h3 id="nummer" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#nummer">Nummer</a></h3><p class="docs-paragraph"><code>number</code></p>
 <p class="docs-paragraph">Validatorn kontrollerat att det ifyllda värdet stämmer överens med valideringskriterierna:</p>
 <ul>
 <li>Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt och minustecken.</li>
@@ -1721,13 +1721,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-ecb2ef"></div>
+        <div id="example-d0ceb7"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./NumberExample-ecb2ef.js"></script>
+        <script type="module" src="./NumberExample-d0ceb7.js"></script>
     
                     </div>
                 </div>
@@ -1753,7 +1753,7 @@
 <li>maxvärde <code>maxValue</code>: Du har fyllt i en för hög siffra.</li>
 <li>minvärde <code>minValue</code>: Fyll i en högre siffra.</li>
 </ul>
-<h3 id="heltal"><a class="header-anchor" href="#heltal">Heltal</a></h3><p class="docs-paragraph"><code>integer</code></p>
+<h3 id="heltal" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#heltal">Heltal</a></h3><p class="docs-paragraph"><code>integer</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet är ett heltal.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -1772,13 +1772,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-748556"></div>
+        <div id="example-b59581"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IntegerExample-748556.js"></script>
+        <script type="module" src="./IntegerExample-b59581.js"></script>
     
                     </div>
                 </div>
@@ -1803,7 +1803,7 @@
 <li>obligatorisk <code>required</code>: Fyll i en siffra.</li>
 <li>procent <code>percent</code>: Fyll i procent utan decimal.</li>
 </ul>
-<h3 id="decimaltal"><a class="header-anchor" href="#decimaltal">Decimaltal</a></h3><p class="docs-paragraph"><code>decimal</code></p>
+<h3 id="decimaltal" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#decimaltal">Decimaltal</a></h3><p class="docs-paragraph"><code>decimal</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet är ett decimaltal.</p>
 <p class="docs-paragraph">Max antal decimaler och minsta antal decimaler är konfigurerbart. Utgångsvärden för max antal decimaler är två. Utgångsvärdet för minsta antal decimaler är ett.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
@@ -1828,13 +1828,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-e39ee0"></div>
+        <div id="example-9dd28d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./DecimalExample-e39ee0.js"></script>
+        <script type="module" src="./DecimalExample-9dd28d.js"></script>
     
                     </div>
                 </div>
@@ -1854,7 +1854,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i ett värde med rätt antal decimaler.</p>
-<h3 id="maxvarde"><a class="header-anchor" href="#maxvarde">Maxvärde</a></h3><p class="docs-paragraph"><code>maxValue</code></p>
+<h3 id="maxvarde" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#maxvarde">Maxvärde</a></h3><p class="docs-paragraph"><code>maxValue</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet inte överstiger det angivna gränsvärdet.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -1878,13 +1878,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-680c7c"></div>
+        <div id="example-879619"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MaxValueExample-680c7c.js"></script>
+        <script type="module" src="./MaxValueExample-879619.js"></script>
     
                     </div>
                 </div>
@@ -1910,7 +1910,7 @@
 <li>procent <code>percent</code>: Fyll i en lägre siffra.</li>
 <li>valutabelopp <code>currency</code>: Fyll i ett belopp.</li>
 </ul>
-<h3 id="minvarde"><a class="header-anchor" href="#minvarde">Minvärde</a></h3><p class="docs-paragraph"><code>minValue</code></p>
+<h3 id="minvarde" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#minvarde">Minvärde</a></h3><p class="docs-paragraph"><code>minValue</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet inte understiger det angivna gränsvärdet.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -1934,13 +1934,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-cecaeb"></div>
+        <div id="example-8ff3f2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./MinValueExample-cecaeb.js"></script>
+        <script type="module" src="./MinValueExample-8ff3f2.js"></script>
     
                     </div>
                 </div>
@@ -1966,7 +1966,7 @@
 <li>procent <code>percent</code>: Fyll i en högre siffra.</li>
 <li>valutabelopp <code>currency</code>: Fyll i ett belopp.</li>
 </ul>
-<h3 id="mindre_an"><a class="header-anchor" href="#mindre_an">Mindre än</a></h3><p class="docs-paragraph"><code>lessThan</code></p>
+<h3 id="mindre_an" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#mindre_an">Mindre än</a></h3><p class="docs-paragraph"><code>lessThan</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet är mindre än det angivna gränsvärdet.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -1990,13 +1990,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-07572e"></div>
+        <div id="example-3e9a2c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./LessThanExample-07572e.js"></script>
+        <script type="module" src="./LessThanExample-3e9a2c.js"></script>
     
                     </div>
                 </div>
@@ -2016,7 +2016,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i en för hög siffra.</p>
-<h3 id="storre_an"><a class="header-anchor" href="#storre_an">Större än</a></h3><p class="docs-paragraph"><code>greaterThan</code></p>
+<h3 id="storre_an" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#storre_an">Större än</a></h3><p class="docs-paragraph"><code>greaterThan</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet är större än det angivna gränsvärdet.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -2040,13 +2040,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-757f6d"></div>
+        <div id="example-4c0041"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./GreaterThanExample-757f6d.js"></script>
+        <script type="module" src="./GreaterThanExample-4c0041.js"></script>
     
                     </div>
                 </div>
@@ -2066,7 +2066,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i en högre siffra.</p>
-<h3 id="procent"><a class="header-anchor" href="#procent">Procent</a></h3><p class="docs-paragraph"><code>percent</code></p>
+<h3 id="procent" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#procent">Procent</a></h3><p class="docs-paragraph"><code>percent</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med valideringskriterierna:</p>
 <ul>
 <li>Tillåtna tecken är siffror, mellanslag, decimalkomma, decimalpunkt, och minustecken.</li>
@@ -2087,13 +2087,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-870608"></div>
+        <div id="example-a8af60"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PercentExample-870608.js"></script>
+        <script type="module" src="./PercentExample-a8af60.js"></script>
     
                     </div>
                 </div>
@@ -2120,7 +2120,7 @@
 <li>minvärde <code>minValue</code>: Fyll i en högre siffra.</li>
 <li>obligatorisk <code>required</code>: Fyll i en siffra.</li>
 </ul>
-<h3 id="valutabelopp"><a class="header-anchor" href="#valutabelopp">Valutabelopp</a></h3><p class="docs-paragraph"><code>currency</code></p>
+<h3 id="valutabelopp" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#valutabelopp">Valutabelopp</a></h3><p class="docs-paragraph"><code>currency</code></p>
 <p class="docs-paragraph">Validatorn baseras på <a href="#nummer-number">nummer-validatorn</a>.</p>
 
                 <div
@@ -2133,13 +2133,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-a2d72b"></div>
+        <div id="example-f03250"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./CurrencyExample-a2d72b.js"></script>
+        <script type="module" src="./CurrencyExample-f03250.js"></script>
     
                     </div>
                 </div>
@@ -2165,7 +2165,7 @@
 <li>maxvärde <code>maxValue</code>: Fyll i ett belopp.</li>
 <li>minvärde <code>minValue</code>: Fyll i ett belopp.</li>
 </ul>
-<h2 id="identifiering"><a class="header-anchor" href="#identifiering">Identifiering</a></h2><h3 id="organisationsnummer"><a class="header-anchor" href="#organisationsnummer">Organisationsnummer</a></h3><p class="docs-paragraph"><code>organisationsnummer</code></p>
+<h2 id="identifiering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#identifiering">Identifiering</a></h2><h3 id="organisationsnummer" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#organisationsnummer">Organisationsnummer</a></h3><p class="docs-paragraph"><code>organisationsnummer</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för organisationsnummer och att checksumman stämmer.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -2186,13 +2186,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-8ad89c"></div>
+        <div id="example-e7519d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./OrganisationsnummerExample-8ad89c.js"></script>
+        <script type="module" src="./OrganisationsnummerExample-e7519d.js"></script>
     
                     </div>
                 </div>
@@ -2221,7 +2221,7 @@
 <p class="docs-paragraph">maxlängd <code>maxLength</code>: Organisationsnumret kan inte ha mer än 11 tecken.</p>
 </li>
 </ul>
-<h3 id="personnummer_format"><a class="header-anchor" href="#personnummer_format">Personnummer - format</a></h3><p class="docs-paragraph"><code>personnummerFormat</code></p>
+<h3 id="personnummer_format" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#personnummer_format">Personnummer - format</a></h3><p class="docs-paragraph"><code>personnummerFormat</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för personnummer.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -2246,13 +2246,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-89b149"></div>
+        <div id="example-9459f0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PersonnummerFormatExample-89b149.js"></script>
+        <script type="module" src="./PersonnummerFormatExample-9459f0.js"></script>
     
                     </div>
                 </div>
@@ -2277,7 +2277,7 @@
 <li>obligatorisk <code>required</code>: Fyll i personnumret med 10 siffror.</li>
 <li>maxlängd <code>maxLength</code>: Fyll i personnumret med 10 siffror.</li>
 </ul>
-<h3 id="personnummer_checksumma"><a class="header-anchor" href="#personnummer_checksumma">Personnummer - checksumma</a></h3><p class="docs-paragraph"><code>personnummerLuhn</code></p>
+<h3 id="personnummer_checksumma" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#personnummer_checksumma">Personnummer - checksumma</a></h3><p class="docs-paragraph"><code>personnummerLuhn</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med checksumman för personnummer.</p>
 <p class="docs-paragraph">Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (personnummerFormat). Validatorn för format ska stå före validatorn för checksumma.</p>
 
@@ -2291,13 +2291,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-0d73a9"></div>
+        <div id="example-2281f3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PersonnummerLuhnExample-0d73a9.js"></script>
+        <script type="module" src="./PersonnummerLuhnExample-2281f3.js"></script>
     
                     </div>
                 </div>
@@ -2317,7 +2317,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kolla att personnumret stämmer.</p>
-<h3 id="personnummer_inte_samma"><a class="header-anchor" href="#personnummer_inte_samma">Personnummer - inte samma</a></h3><p class="docs-paragraph"><code>personnummerNotSame</code></p>
+<h3 id="personnummer_inte_samma" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#personnummer_inte_samma">Personnummer - inte samma</a></h3><p class="docs-paragraph"><code>personnummerNotSame</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda personnumret inte är samma som personnumret i annat fält.</p>
 <p class="docs-paragraph">Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (<code>personnummerFormat</code>). Validatorn för format ska stå före validatorn för <code>personnummerNotSame</code>.</p>
 
@@ -2331,13 +2331,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-101681"></div>
+        <div id="example-d0fe70"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PersonnummerNotSameExample-101681.js"></script>
+        <script type="module" src="./PersonnummerNotSameExample-d0fe70.js"></script>
     
                     </div>
                 </div>
@@ -2357,7 +2357,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.</p>
-<h3 id="personnummer_aldre"><a class="header-anchor" href="#personnummer_aldre">Personnummer - äldre</a></h3><p class="docs-paragraph"><code>personnummerOlder</code></p>
+<h3 id="personnummer_aldre" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#personnummer_aldre">Personnummer - äldre</a></h3><p class="docs-paragraph"><code>personnummerOlder</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda personnumret är äldre än eller är i samma ålder som personnumret i annat fält.</p>
 <p class="docs-paragraph">Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (<code>personnummerFormat</code>). Validatorn för format ska stå före validatorn för <code>personnummerOlder</code>.</p>
 
@@ -2371,13 +2371,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-2810d0"></div>
+        <div id="example-b59272"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PersonnummerOlderExample-2810d0.js"></script>
+        <script type="module" src="./PersonnummerOlderExample-b59272.js"></script>
     
                     </div>
                 </div>
@@ -2397,7 +2397,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.</p>
-<h3 id="personnummer_yngre"><a class="header-anchor" href="#personnummer_yngre">Personnummer - yngre</a></h3><p class="docs-paragraph"><code>personnummerYounger</code></p>
+<h3 id="personnummer_yngre" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#personnummer_yngre">Personnummer - yngre</a></h3><p class="docs-paragraph"><code>personnummerYounger</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda personnumret är yngre än eller är i samma ålder som personnumret i annat fält.</p>
 <p class="docs-paragraph">Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (<code>personnummerFormat</code>). Validatorn för format ska stå före validatorn för <code>personnummerYounger</code>.</p>
 
@@ -2411,13 +2411,13 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-07b259"></div>
+        <div id="example-f43937"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PersonnummerYoungerExample-07b259.js"></script>
+        <script type="module" src="./PersonnummerYoungerExample-f43937.js"></script>
     
                     </div>
                 </div>
@@ -2437,7 +2437,7 @@
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd måste skapas av konsumenten.</p>
-<h2 id="adress_och_kontaktuppgifter"><a class="header-anchor" href="#adress_och_kontaktuppgifter">Adress och kontaktuppgifter</a></h2><h3 id="mejladress"><a class="header-anchor" href="#mejladress">Mejladress</a></h3><p class="docs-paragraph"><code>email</code></p>
+<h2 id="adress_och_kontaktuppgifter" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#adress_och_kontaktuppgifter">Adress och kontaktuppgifter</a></h2><h3 id="mejladress" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#mejladress">Mejladress</a></h3><p class="docs-paragraph"><code>email</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med giltigt format för mejladress.
 Max antal tecken är konfigurerbart.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
@@ -2461,13 +2461,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-4c57db"></div>
+        <div id="example-0bed64"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./EmailExample-4c57db.js"></script>
+        <script type="module" src="./EmailExample-0bed64.js"></script>
     
                     </div>
                 </div>
@@ -2487,7 +2487,7 @@ Max antal tecken är konfigurerbart.</p>
 </code></pre>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Mejladressen är inte rätt ifylld.</p>
-<h3 id="postnummer"><a class="header-anchor" href="#postnummer">Postnummer</a></h3><p class="docs-paragraph"><code>postalCode</code></p>
+<h3 id="postnummer" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#postnummer">Postnummer</a></h3><p class="docs-paragraph"><code>postalCode</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för postnummer.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -2509,13 +2509,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-1ac8dc"></div>
+        <div id="example-a50ed9"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PostalCodeExample-1ac8dc.js"></script>
+        <script type="module" src="./PostalCodeExample-a50ed9.js"></script>
     
                     </div>
                 </div>
@@ -2540,7 +2540,7 @@ Max antal tecken är konfigurerbart.</p>
 <li>obligatorisk <code>required</code>: Fyll i ett postnummer.</li>
 <li>maxLängd <code>maxLength</code>: Postnumret kan inte ha mer än 13 tecken.</li>
 </ul>
-<h3 id="telefonnummer"><a class="header-anchor" href="#telefonnummer">Telefonnummer</a></h3><p class="docs-paragraph"><code>phoneNumber</code></p>
+<h3 id="telefonnummer" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#telefonnummer">Telefonnummer</a></h3><p class="docs-paragraph"><code>phoneNumber</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för telefonnummer.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -2562,13 +2562,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-6246ac"></div>
+        <div id="example-d8e314"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PhoneNumberExample-6246ac.js"></script>
+        <script type="module" src="./PhoneNumberExample-d8e314.js"></script>
     
                     </div>
                 </div>
@@ -2589,7 +2589,7 @@ Max antal tecken är konfigurerbart.</p>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Telefonnumret är inte rätt ifyllt.</p>
 <p class="docs-paragraph">Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk <code>required</code> är:<br> Kolla att telefonnumret stämmer.</p>
-<h2 id="bank"><a class="header-anchor" href="#bank">Bank</a></h2><h3 id="bankgiro"><a class="header-anchor" href="#bankgiro">Bankgiro</a></h3><p class="docs-paragraph"><code>bankgiro</code></p>
+<h2 id="bank" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#bank">Bank</a></h2><h3 id="bankgiro" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#bankgiro">Bankgiro</a></h3><p class="docs-paragraph"><code>bankgiro</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för bankgiro.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -2611,13 +2611,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-8aee6b"></div>
+        <div id="example-6b3d9b"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./BankgiroExample-8aee6b.js"></script>
+        <script type="module" src="./BankgiroExample-6b3d9b.js"></script>
     
                     </div>
                 </div>
@@ -2642,7 +2642,7 @@ Max antal tecken är konfigurerbart.</p>
 <li>obligatorisk <code>required</code>: Fyll i bankgironumret.</li>
 <li>maxlängd <code>maxLength</code>: Bankgironumret kan ha mer än 9 tecken.</li>
 </ul>
-<h3 id="clearingnummer"><a class="header-anchor" href="#clearingnummer">Clearingnummer</a></h3><p class="docs-paragraph"><code>clearingNumber</code></p>
+<h3 id="clearingnummer" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#clearingnummer">Clearingnummer</a></h3><p class="docs-paragraph"><code>clearingNumber</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för clearingnummer.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -2664,13 +2664,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-57f3ec"></div>
+        <div id="example-381c55"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./ClearingNumberExample-57f3ec.js"></script>
+        <script type="module" src="./ClearingNumberExample-381c55.js"></script>
     
                     </div>
                 </div>
@@ -2691,7 +2691,7 @@ Max antal tecken är konfigurerbart.</p>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Clearingnumret är inte rätt ifyllt. Kolla att det stämmer.</p>
 <p class="docs-paragraph">Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk <code>required</code> är:<br> Fyll i ett clearingnummer.</p>
-<h3 id="kontonummer"><a class="header-anchor" href="#kontonummer">Kontonummer</a></h3><p class="docs-paragraph"><code>bankAccountNumber</code></p>
+<h3 id="kontonummer" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#kontonummer">Kontonummer</a></h3><p class="docs-paragraph"><code>bankAccountNumber</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för kontonummer.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -2711,13 +2711,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-382f42"></div>
+        <div id="example-85d86f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./BankAccountNumberExample-382f42.js"></script>
+        <script type="module" src="./BankAccountNumberExample-85d86f.js"></script>
     
                     </div>
                 </div>
@@ -2738,7 +2738,7 @@ Max antal tecken är konfigurerbart.</p>
                 </div>
             <p class="docs-paragraph">Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kontonumret är inte rätt ifyllt. Kolla att det stämmer.</p>
 <p class="docs-paragraph">Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk <code>required</code> är:<br> Fyll i ett kontonummer.</p>
-<h3 id="plusgiro"><a class="header-anchor" href="#plusgiro">Plusgiro</a></h3><p class="docs-paragraph"><code>plusgiro</code></p>
+<h3 id="plusgiro" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#plusgiro">Plusgiro</a></h3><p class="docs-paragraph"><code>plusgiro</code></p>
 <p class="docs-paragraph">Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för plusgiro.</p>
 <p class="docs-paragraph">Valideringskriterier:</p>
 <ul>
@@ -2759,13 +2759,13 @@ Max antal tecken är konfigurerbart.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-471c27"></div>
+        <div id="example-99ccfd"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./PlusgiroExample-471c27.js"></script>
+        <script type="module" src="./PlusgiroExample-99ccfd.js"></script>
     
                     </div>
                 </div>
@@ -2790,7 +2790,7 @@ Max antal tecken är konfigurerbart.</p>
 <li>obligatorisk <code>required</code>: Fyll i plusgironumret.</li>
 <li>maxlängd <code>maxLength</code>: Plusgironumret kan inte ha mer än 11 tecken.</li>
 </ul>
-<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/validation.html">Validering och felhantering</a></p>
+<h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/validation.html">Validering och felhantering</a></p>
 <p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/custom-validator.html">Validator anpassad</a></p>
 <p class="docs-paragraph"><a href="../../functions/plugins/validationplugin.html">ValidationPlugin</a></p>
 <p class="docs-paragraph"><a href="../input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
@@ -2818,9 +2818,9 @@ Max antal tecken är konfigurerbart.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">refactor/space-select-no-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/0b70b4c55abbb6806c813f191a1098c8d5cb29ac">0b70b4c</a>)<br />
+<div class="footer__right"><div class="version">refactor/space-select-no-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/c53c00297133baf8eeace970ee5ceb5e79d20e62">c53c002</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1129">PR 1129</a><br />
-        2026-03-20 06:12
+        2026-03-25 12:28
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2828,28 +2828,7 @@ Max antal tecken är konfigurerbart.</p>
             <span id="version-info" class="anchor"> Byt version </span>
         </button>
     </form>
-
-    <dialog id="version-dialog">
-        <div id="version-dialog-head">
-            <h1>Välj version</h1>
-            <button type="button" class="button button--tertiary button--tertiary--black">
-                <span>Stäng</span>
-                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
-                    <use href="#f-icon-close"></use>
-                </svg>
-            </button>
-        </div>
-        <div id="version-list">
-            <p>Var god vänta, laddar versionsdata...</p>
-        </div>
-    </dialog>
 </div>
-
-<template id="version-list-item">
-    <li class="list__item">
-        <a class="list__item__itempane">template</a>
-    </li>
-</template>
 
 
     <ul>
@@ -2899,32 +2878,75 @@ Max antal tecken är konfigurerbart.</p>
                 class="i"
             ></path>
         </symbol>
+        <symbol id="docs-icon-code" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M200 354L102 256L200 158L171 128L43 256L171 384L200 354ZM312 354L410 256L312 158L341 128L469 256L341 384L312 354Z"
+            />
+        </symbol>
+        <!--!Font Awesome Free 6.4.2 -->
+        <symbol id="docs-icon-fullscreen" viewBox="0 0 448 512">
+            <path
+                fill="currentColor"
+                d="M160 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V64zM32 320c-17.7 0-32 14.3-32 32s14.3 32 32 32H96v64c0 17.7 14.3 32 32 32s32-14.3 32-32V352c0-17.7-14.3-32-32-32H32zM352 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H352V64zM320 320c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32V384h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320z"
+            />
+        </symbol>
     </svg>
-</div><dialog id="search-dialog">
+</div><dialog class="docs-modal" id="search-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title" id="search-dialog-title">Sök</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+
     <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
-    <form id="search-form">
-        <div class="text-field">
-            <label for="search-field" class="label">Sök</label>
-            <div class="text-field__input-wrapper">
-                <div class="text-field__icon-wrapper">
-                    <input
-                        autofocus
-                        autocomplete="off"
-                        autocapitalize="off"
-                        autocorrect="off"
-                        id="search-field"
-                        type="text"
-                        class="text-field__input"
-                        maxlength="50"
-                        placeholder="Skriv för att börja söka"
-                    />
-                </div>
-            </div>
-        </div>
-        <div id="search-results"></div>
+    <form class="docs-modal__body" id="search-form">
+        <input
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            id="search-field"
+            type="search"
+            class="docs-search-dialog__input"
+            maxlength="50"
+            placeholder="Skriv för att börja söka"
+            aria-labelledby="search-dialog-title"
+        />
+        <ul class="docs-search-result__list" id="search-results"></ul>
         <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
     </form>
 </dialog>
+
+<template id="search-result-item">
+    <li class="docs-search-result__item">
+        <a class="docs-search-result__link"></a>
+    </li>
+</template>
+<dialog class="docs-modal" id="version-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title">Välj version</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="docs-modal__body" id="version-list">
+        <p>Var god vänta, laddar versionsdata...</p>
+    </div>
+</dialog>
+
+<template id="version-list-item">
+    <li class="docs-selectable-version__item">
+        <a class="docs-selectable-version__link"></a>
+    </li>
+</template>
 <div id="teleport-target" class="user-theme"></div><script
             src="../../assets/processors/motd/index-cda4cc.js"
             type="module"
@@ -2932,16 +2954,16 @@ Max antal tecken är konfigurerbart.</p>
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-1fa30d.js"
+            src="../../assets/processors/selectable-version/select-version-92a936.js"
             type="module"
             crossorigin
-            integrity="sha384-S7axHBuhVkx1OrFTW9/nE0lj9cTNqqBRTYRZa+mq6Ts4zb0T3k2yYpqQId3enxkl"
+            integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../../assets/main-219bfc.js"
+            src="../../assets/main-f68cda.js"
             type="module"
             crossorigin
-            integrity="sha384-UNW7fFulrX7o/Mb39/sqIwjWf9njgm2zaOvZddGSmM8mmpQ3QfYjzvvt1E3RfE2T"
+            integrity="sha384-ARuCalqVPs3IlLA12rdhvH79lFkpQ7/wgXP1YgdXqst0Cg3amLJRe5AuuxkU5xgz"
             
         ></script>
     </body>

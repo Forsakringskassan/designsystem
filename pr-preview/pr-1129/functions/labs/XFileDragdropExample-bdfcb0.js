@@ -32,7 +32,7 @@ function setup(options) {
 import { defineComponent as _defineComponent } from "vue";
 
 // packages/vue-labs/dist/esm/index.esm.js
-import { nextTick, toValue, defineComponent, useTemplateRef, computed, openBlock, createElementBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref, inject, withDirectives, vShow, onMounted, watchEffect, mergeProps, vModelText, withKeys, toRef, watch, onUpdated, useModel, useSlots, provide, Fragment, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
+import { defineComponent, useTemplateRef, computed, openBlock, createElementBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, withKeys, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref, nextTick, toValue, inject, withDirectives, vShow, onMounted, watchEffect, mergeProps, vModelText, toRef, watch, onUpdated, useModel, useSlots, provide, Fragment, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
 import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 var es_iterator_forEach = {};
@@ -2627,6 +2627,55 @@ function requireEs_set_union_v2() {
   return es_set_union_v2;
 }
 requireEs_set_union_v2();
+var es_array_includes = {};
+var addToUnscopables;
+var hasRequiredAddToUnscopables;
+function requireAddToUnscopables() {
+  if (hasRequiredAddToUnscopables) return addToUnscopables;
+  hasRequiredAddToUnscopables = 1;
+  var wellKnownSymbol2 = requireWellKnownSymbol();
+  var create = requireObjectCreate();
+  var defineProperty = requireObjectDefineProperty().f;
+  var UNSCOPABLES = wellKnownSymbol2("unscopables");
+  var ArrayPrototype = Array.prototype;
+  if (ArrayPrototype[UNSCOPABLES] === void 0) {
+    defineProperty(ArrayPrototype, UNSCOPABLES, {
+      configurable: true,
+      value: create(null)
+    });
+  }
+  addToUnscopables = function(key) {
+    ArrayPrototype[UNSCOPABLES][key] = true;
+  };
+  return addToUnscopables;
+}
+var hasRequiredEs_array_includes;
+function requireEs_array_includes() {
+  if (hasRequiredEs_array_includes) return es_array_includes;
+  hasRequiredEs_array_includes = 1;
+  var $ = require_export();
+  var $includes = requireArrayIncludes().includes;
+  var fails2 = requireFails();
+  var addToUnscopables2 = requireAddToUnscopables();
+  var BROKEN_ON_SPARSE = fails2(function() {
+    return !Array(1).includes();
+  });
+  var BROKEN_ON_SPARSE_WITH_FROM_INDEX = fails2(function() {
+    return [, 1].includes(void 0, 1);
+  });
+  $({
+    target: "Array",
+    proto: true,
+    forced: BROKEN_ON_SPARSE || BROKEN_ON_SPARSE_WITH_FROM_INDEX
+  }, {
+    includes: function includes(el) {
+      return $includes(this, el, arguments.length > 1 ? arguments[1] : void 0);
+    }
+  });
+  addToUnscopables2("includes");
+  return es_array_includes;
+}
+requireEs_array_includes();
 var es_array_push = {};
 var isArray;
 var hasRequiredIsArray;
@@ -2846,27 +2895,6 @@ function requireGetBuiltInPrototypeMethod() {
     return Prototype && Prototype[METHOD];
   };
   return getBuiltInPrototypeMethod;
-}
-var addToUnscopables;
-var hasRequiredAddToUnscopables;
-function requireAddToUnscopables() {
-  if (hasRequiredAddToUnscopables) return addToUnscopables;
-  hasRequiredAddToUnscopables = 1;
-  var wellKnownSymbol2 = requireWellKnownSymbol();
-  var create = requireObjectCreate();
-  var defineProperty = requireObjectDefineProperty().f;
-  var UNSCOPABLES = wellKnownSymbol2("unscopables");
-  var ArrayPrototype = Array.prototype;
-  if (ArrayPrototype[UNSCOPABLES] === void 0) {
-    defineProperty(ArrayPrototype, UNSCOPABLES, {
-      configurable: true,
-      value: create(null)
-    });
-  }
-  addToUnscopables = function(key) {
-    ArrayPrototype[UNSCOPABLES][key] = true;
-  };
-  return addToUnscopables;
 }
 var hasRequiredEs_array_toSorted;
 function requireEs_array_toSorted() {
