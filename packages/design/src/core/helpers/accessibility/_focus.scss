@@ -1,6 +1,6 @@
 @use "../../mixins/focus";
 
-button:focus,
+button:focus-visible,
 a:focus,
 a.button:focus,
 img:focus,
