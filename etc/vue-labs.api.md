@@ -11,6 +11,7 @@ import { ComponentProvideOptions } from 'vue';
 import { DefineComponent } from 'vue';
 import { ExtractPropTypes } from 'vue';
 import { FormatFunction } from '@fkui/vue';
+import { HTMLAttributes } from 'vue';
 import { IPopupErrorData } from '@fkui/vue';
 import { MaybeRef } from 'vue';
 import { ParseFunction } from '@fkui/vue';
