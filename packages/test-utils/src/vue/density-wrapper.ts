@@ -2,7 +2,7 @@ import { defineComponent, h } from "vue";
 
 const aspectRatio = 16 / 9;
 /** Padding to fit vertical scroll bar */
-const cypressPadding = 24;
+const cypressPadding = 30;
 
 const densities = [
     {

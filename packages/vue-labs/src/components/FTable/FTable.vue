@@ -5,6 +5,7 @@
 >
 import {
     type ComponentPublicInstance,
+    type HTMLAttributes,
     type Ref,
     computed,
     onMounted,
@@ -49,6 +50,7 @@ const {
     rows,
     keyAttribute = undefined,
     expandableAttribute = undefined,
+    rowClass = undefined,
     striped,
     disableDividers,
     selectable = undefined,
@@ -57,6 +59,10 @@ const {
     rows: T[];
     keyAttribute?: KeyAttribute;
     expandableAttribute?: ExpandableAttribute;
+    /**
+     * Optional callback for setting classes on table rows (`<tr>` element).
+     */
+    rowClass?: (row: T) => HTMLAttributes["class"];
     striped?: boolean;
     disableDividers?: boolean;
     selectable?: "single" | "multi";
@@ -171,6 +177,10 @@ async function stopEditHandler(
 }
 
 provide(stopEditKey, stopEditHandler);
+
+function getRowClass(row: T): HTMLAttributes["class"] {
+    return typeof rowClass === "function" ? rowClass(row) : undefined;
+}
 
 function onToggleExpanded(key: ItemIdentifier): void {
     if (expandedKeys.value.has(key)) {
@@ -373,6 +383,7 @@ onMounted(() => {
                 v-else
                 :key
                 class="table-ng__row"
+                :class="getRowClass(row)"
                 :aria-level="level"
                 :aria-rowindex="rowIndex"
                 :aria-setsize="setsize"

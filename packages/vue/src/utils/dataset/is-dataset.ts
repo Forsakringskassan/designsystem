@@ -12,6 +12,5 @@ export function isDataset<T extends object>(
     if (!Array.isArray(dataset)) {
         return false;
     }
-    const descriptor = Object.getOwnPropertyDescriptor(dataset, datasetSymbol);
-    return descriptor?.value === true;
+    return Boolean(Object.getOwnPropertyDescriptor(dataset, datasetSymbol));
 }
