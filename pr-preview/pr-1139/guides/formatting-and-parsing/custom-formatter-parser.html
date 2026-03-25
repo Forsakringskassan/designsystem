@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Formaterare och parser - anpassad - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-251cc7.css"
+            href="../../assets/docs-3038e4.css"
             crossorigin
-            integrity="sha384-NmFD7JUiEMEEz7T4bTswwrgDMeZwxeLpXFfqp78mP4j/pJ+tu60VSP1eGPZz1zwU"
+            integrity="sha384-8a77vuTuhT+hGfN5QwjFX/rhT1+/kw1tQ5QzFI7fEp6hkY7cDOwf6+Zev+WWRiNc"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-8fd070.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-7838c3.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
     "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-8fd070.js": "sha384-tR8tI5pGIO8nLkgp6pnv69bOJ9xt0XovCcQHGZA2si1fFZsPI8FDDVJ4CtbjpO4o",
+    "../../assets/vendor-fkui-vue-7838c3.js": "sha384-jFPrMs9k2rKjDMM2i5gVRs2qT99izgd0hrg6kNM4pXnUFqgI5Y57lU5tuy3TABlt",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,21 +84,21 @@
 
         <link
             rel="preload"
-            href="../../search-data-208470.json"
+            href="../../search-data-731424.json"
             as="fetch"
             crossorigin
-            integrity="sha384-hx7gZe13um6kOYZln0USLwuPwRKvdi9dmE01BXzCzAEMBY3jOc922STN8OV1bFVD"
+            integrity="sha384-MikJgLQ+VKxrq7Oulm0tK9PzG/5orIneMk7nslivhah4aXlwOe57nxh3AjDs73eu"
             id="search-data"
         />
     </head>
     <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="icon-stack icon-stack--info">
-            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+        <span class="docs-icon-stack docs-icon-stack--info">
+            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-circle"></use>
             </svg>
-            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-i"></use>
             </svg>
         </span>
@@ -172,7 +172,7 @@
         <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
             <button type="button" class="docs-topnav__anchor" aria-expanded="false">
                 <span>Mer</span>
-                <svg class="icon" focusable="false" aria-hidden="true">
+                <svg class="docs-icon" focusable="false" aria-hidden="true">
                     <use xlink:href="#docs-icon-arrow-down"></use>
                 </svg>
             </button>
@@ -240,7 +240,7 @@
 <nav class="navigation" aria-label="Sekundär">
 <ol><li class="expandable active">
         <details open>
-            <summary>Formatering och parsning <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Formatering och parsning <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -271,7 +271,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Validering och felhantering <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Validering och felhantering <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -347,7 +347,7 @@
                         <details id="outline">
                             <summary class="outline__heading">
                                 Innehåll
-                                <svg focusable="false" class="icon" aria-hidden="true">
+                                <svg focusable="false" class="docs-icon" aria-hidden="true">
                                     <use href="#docs-icon-arrow-down"></use>
                                 </svg>
                             </summary>
@@ -603,9 +603,9 @@ Misslyckas parsning eller formatering på vägen så sätts vy-värdet till mode
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">test/SFKUI-7558-testing-table (<a href="https://github.com/Forsakringskassan/designsystem/commits/9cdb659e949120b99307818c2888f5f7fafaf582">9cdb659</a>)<br />
+<div class="footer__right"><div class="version">test/SFKUI-7558-testing-table (<a href="https://github.com/Forsakringskassan/designsystem/commits/a97fa7e806a71159dcad569ae3898293d730ebdf">a97fa7e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1139">PR 1139</a><br />
-        2026-03-24 12:05
+        2026-03-25 12:40
 </div>
 <div class="toolbar__item">
     <form id="version">
