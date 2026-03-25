@@ -2148,8 +2148,9 @@ describe("editable cell", () => {
         {
             type: "text",
             header: "Text",
-            key: "text",
             editable: true,
+            key: "text",
+            label: () => "text",
         },
     ]);
     const rows: Row[] = [{ text: "Foo" }, { text: "Bar" }];
