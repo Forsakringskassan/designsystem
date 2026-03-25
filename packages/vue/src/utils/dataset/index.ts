@@ -5,3 +5,7 @@ export { getDatasetMetadata } from "./get-dataset-metadata";
 export { isDataset } from "./is-dataset";
 export { toDataset } from "./to-dataset";
 export { useDatasetRef } from "./use-dataset-ref";
+export {
+    type DatasetUpdateMode,
+    withDatasetBehaviour,
+} from "./with-dataset-behaviour";

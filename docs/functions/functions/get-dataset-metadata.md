@@ -98,3 +98,4 @@ console.log(getDatasetMetadata(dataset.value[1]).ariaRowIndex); // 2
 ## Relaterat
 
 - {@link useDatasetRef useDatasetRef()} composable
+- {@link withDatasetBehaviour withDatasetBehaviour()} function

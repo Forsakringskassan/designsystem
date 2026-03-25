@@ -158,6 +158,9 @@ export interface DatasetElementMetadata {
     readonly rowIndex: number;
 }
 
+// @public
+export type DatasetUpdateMode = "preserve" | "reindex";
+
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_68" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
@@ -1460,7 +1463,7 @@ export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | nul
 };
 
 // @public
-export function useDatasetRef<T extends object>(initial?: T[]): Ref<Dataset<T>>;
+export function useDatasetRef<T extends object>(initial?: T[]): Ref<Dataset<T>, T[] | Dataset<T>>;
 
 // @public (undocumented)
 export interface UseDetailsPanel<T = unknown> {
@@ -1538,6 +1541,12 @@ export interface VueLike {
     // (undocumented)
     focusTarget?: VueLike | Element | Array<VueLike | Element> | null;
 }
+
+// @public
+export function withDatasetBehaviour<T>(mode: DatasetUpdateMode, callback: () => T): T;
+
+// @public
+export function withDatasetBehaviour<T>(mode: DatasetUpdateMode, callback: () => Promise<T>): Promise<T>;
 
 // @public (undocumented)
 export type WithoutInstance<F> = F extends (vm: any, ...rest: infer R) => infer T ? (...args: R) => T : never;

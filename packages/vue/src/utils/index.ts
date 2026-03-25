@@ -48,6 +48,8 @@ export {
     type Dataset,
     type DatasetArrayMetadata,
     type DatasetElementMetadata,
+    type DatasetUpdateMode,
     getDatasetMetadata,
     useDatasetRef,
+    withDatasetBehaviour,
 } from "./dataset";

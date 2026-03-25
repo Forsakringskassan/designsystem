@@ -168,6 +168,7 @@ functions/functions/ValidationErrorMessageBuilder/build.html
 functions/functions/ValidationErrorMessageBuilder/create.html
 functions/functions/ValidationErrorMessageBuilder/map-combined.html
 functions/functions/ValidationErrorMessageBuilder/map.html
+functions/functions/with-dataset-behaviour.html
 functions/helpers/accessibility.html
 functions/helpers/densify.html -> functions/sass/densify.html
 functions/helpers/index.html
