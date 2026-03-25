@@ -5580,7 +5580,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     expandableAttribute: {
       default: () => void 0
     },
-    rowClassFn: {
+    rowClass: {
       type: Function,
       default: void 0
     },
@@ -5667,7 +5667,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     }
     provide2(stopEditKey, stopEditHandler);
     function getRowClass(row) {
-      return typeof __props.rowClassFn === "function" ? __props.rowClassFn(row) : void 0;
+      return typeof __props.rowClass === "function" ? __props.rowClass(row) : void 0;
     }
     function onToggleExpanded(key) {
       if (expandedKeys.value.has(key)) {

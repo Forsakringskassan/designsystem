@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Validator - anpassad - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-4a1ec2.css"
+            href="../../assets/docs-0f9161.css"
             crossorigin
-            integrity="sha384-OhQsJQSlNnBRUFqrx4ldNCQd55mGTiPOfcZbL7nR+DJIeI+3QMXTkrm8lzo/vyxM"
+            integrity="sha384-e/24PFCwQXQZb87LrCwatoP057hoNkQmWFHg4YEo9t9ik3IDs5xzdQEV5tirlotF"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-4b3ba3.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-691fca.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
     "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-4b3ba3.js": "sha384-oRDXZ9Jbst2/4Kumj5PDOcpPhKCFRzoo48IDTsGx1eNBL+XM6Q1vLvIuTilLy2DB",
+    "../../assets/vendor-fkui-vue-691fca.js": "sha384-xC4FH+yGhJtqQdsCv/NpdV0K78EJ/zMToaoj+ZbexrJ1aq96Uo0E5J3W3G0JUQO1",
     "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-895a64.json"
+            href="../../search-data-ec7008.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Xf+KkTwaLZVpWDjHyIf03pqI68wgVr3d2X/sjO9SyDQ1JZVSqgqC1SF/AZTwtDXR"
+            integrity="sha384-iPafhdMT6rqFrKmjFA6hmQdyQTVeEpelKkWllhrNBIyz1DegLzyjBsEN6MTVYTSb"
             id="search-data"
         />
     </head>
@@ -337,7 +337,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Validator - anpassad</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Validator - anpassad</h1>
 
                     
                     <div id="aside"><dl></dl>
@@ -376,7 +376,7 @@
                     <div id="content"><p class="docs-paragraph">Om ingen av de fördefinerade validatorerna passar dina behov så går det bra att skapa en egen validator i din applikation.</p>
 <p class="docs-paragraph">Låt oss utgå från att du vill ha en validator som verifierar att texten i ett input-fält börjar med ett konfigurerbart värde.
 Du vill även att validatorn ska ha ett fördefinierad felmeddelande som visas när valideringen inte är rätt.</p>
-<h2 id="validatorn"><a class="header-anchor" href="#validatorn">Validatorn</a></h2><p class="docs-paragraph">En validator implementeras genom att skapa ett objekt som uppfyller interfacet <code>Validator</code>:</p>
+<h2 id="validatorn" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#validatorn">Validatorn</a></h2><p class="docs-paragraph">En validator implementeras genom att skapa ett objekt som uppfyller interfacet <code>Validator</code>:</p>
 
                 <div
                     id="example-b38e9a"
@@ -464,7 +464,7 @@ export const startsWithValidator: Validator = {
 };
 </code></pre>
                 </div>
-            <h2 id="konfiguration"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">För att få en mer flexibel validator kan du göra det möjligt att välja start-sträng.
+            <h2 id="konfiguration" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#konfiguration">Konfiguration</a></h2><p class="docs-paragraph">För att få en mer flexibel validator kan du göra det möjligt att välja start-sträng.
 Det gör du genom att ge den stöd för att ta emot en konfiguration från konsumenten.
 Om konsumenten inte förser validatorn med konfiguration så sätter du även ett standardvärde &quot;demo&quot;.</p>
 
@@ -530,7 +530,7 @@ Om konsumenten inte förser validatorn med konfiguration så sätter du även et
 };
 </code></pre>
                 </div>
-            <h2 id="registrering"><a class="header-anchor" href="#registrering">Registrering</a></h2><p class="docs-paragraph">För att göra validatorn tillgänglig för användning i din applikation så behöver den registreras.
+            <h2 id="registrering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#registrering">Registrering</a></h2><p class="docs-paragraph">För att göra validatorn tillgänglig för användning i din applikation så behöver den registreras.
 Tänk på att bara registrera validatorn en gång, förslagsvis görs det globalt tillsammans med registrering av plugins m.m. i t.ex. <code>main.ts</code>. Gör det inte i en komponents lifecycle-hooks så som <code>created</code>, <code>mounted</code> m.fl.</p>
 
                 <div
@@ -545,7 +545,7 @@ Tänk på att bara registrera validatorn en gång, förslagsvis görs det global
 </code></pre>
                 </div>
             <p class="docs-paragraph">Nu när validatorn är klar så passar det bra att skriva komponenttester för att verifiera att validatorn är rätt registrerad och att den går att använda tillsammans med sin konfiguration.</p>
-<h2 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Aktivera validatorn på ditt inputfält genom att lägga till direktivet <code>v-validation.startsWith</code> och förse den med en konfiguration.
+<h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Aktivera validatorn på ditt inputfält genom att lägga till direktivet <code>v-validation.startsWith</code> och förse den med en konfiguration.
 I exemplet nedan så anger du värdet <code>test</code> till konfigurationens attribut <code>startString</code>. Nu kommer validatorn validera att input-fältets värde börjar med &quot;test&quot;.</p>
 
                 <div
@@ -566,7 +566,7 @@ I exemplet nedan så anger du värdet <code>test</code> till konfigurationens at
 &lt;/f-text-field&gt;
 </code></pre>
                 </div>
-            <h2 id="felmeddelanden"><a class="header-anchor" href="#felmeddelanden">Felmeddelanden</a></h2><p class="docs-paragraph">Om input-fältets värde inte börjar med &quot;test&quot;, kommer fältet att markeras som felaktigt och felmeddelandet &quot;STARTSWITH&quot; kommer att visas vid ettiketten.
+            <h2 id="felmeddelanden" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#felmeddelanden">Felmeddelanden</a></h2><p class="docs-paragraph">Om input-fältets värde inte börjar med &quot;test&quot;, kommer fältet att markeras som felaktigt och felmeddelandet &quot;STARTSWITH&quot; kommer att visas vid ettiketten.
 För att få ett mer förklarande felmeddelande så uppdaterar du exemplet med en bättre text.
 Här finns det två vägar att gå.
 Antigen sätter man en global standardtext (rekomenderat) eller så sätter man en specifik text för varje input-fält som använder validatorn.</p>
@@ -615,7 +615,7 @@ Då behöver <code>errorMessage</code> användas och felmeddelande blir samma p�
 
 </code></pre>
                 </div>
-            <h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2><p class="docs-paragraph">Här nedan visas ett komplett exempel med tre input-fält.</p>
+            <h2 id="exempel" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#exempel">Exempel</a></h2><p class="docs-paragraph">Här nedan visas ett komplett exempel med tre input-fält.</p>
 
             <div
                 id="example-a79a4d"
@@ -627,13 +627,13 @@ Då behöver <code>errorMessage</code> användas och felmeddelande blir samma p�
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-631507"></div>
+        <div id="example-cce8fc"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./CustomValidatorExample-631507.js"></script>
+        <script type="module" src="./CustomValidatorExample-cce8fc.js"></script>
     
                 </div>
                 <div>
@@ -752,7 +752,7 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
 </code></pre>
                 </div>
             </div>
-        <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./validation.html">Validering och felhantering</a></p>
+        <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./validation.html">Validering och felhantering</a></p>
 <p class="docs-paragraph"><a href="../../components/validation/validators.html">Validatorer</a></p>
 <p class="docs-paragraph"><a href="../../functions/plugins/validationplugin.html">ValidationPlugin</a></p>
 <p class="docs-paragraph"><a href="../../components/input/textfield-specialized.html">Specialiserade inmatningsfält</a></p>
@@ -780,9 +780,9 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">refactor/ftable-row-class (<a href="https://github.com/Forsakringskassan/designsystem/commits/fdfab0f30254f23efb53c5e495d5d4519c967e53">fdfab0f</a>)<br />
+<div class="footer__right"><div class="version">refactor/ftable-row-class (<a href="https://github.com/Forsakringskassan/designsystem/commits/c524b19aed8300570569192652112b2abe642630">c524b19</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1145">PR 1145</a><br />
-        2026-03-23 14:10
+        2026-03-25 09:52
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -922,10 +922,10 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
             integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../../assets/main-eec4a8.js"
+            src="../../assets/main-f68cda.js"
             type="module"
             crossorigin
-            integrity="sha384-AfiKoQqtiIhDv98BWTJGG0XcnF303VsiWCaAPo3a5kbSxZtSOORJkz0Qmk8FfAU5"
+            integrity="sha384-ARuCalqVPs3IlLA12rdhvH79lFkpQ7/wgXP1YgdXqst0Cg3amLJRe5AuuxkU5xgz"
             
         ></script>
     </body>
