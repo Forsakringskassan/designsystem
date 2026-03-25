@@ -135,26 +135,26 @@ const hasIcon = computed((): boolean => {
 });
 
 const buttonClass = computed((): string[] => {
-    const classes = ["button", `button--${props.variant}`, `button--${props.size}`];
+    const classes = ["new-button", `new-button--${props.variant}`, `new-button--${props.size}`];
 
     if (props.variant === "tertiary" && props.alignText) {
-        classes.push(`button--align-text`);
+        classes.push(`new-button--align-text`);
     }
 
     if (props.variant === "tertiary") {
-        classes.push(`button--tertiary--${props.tertiaryStyle}`);
+        classes.push(`new-button--tertiary--${props.tertiaryStyle}`);
     }
 
     if (props.variant === "tertiary" && !hasIcon.value) {
-        classes.push(`button--tertiary--underline`);
+        classes.push(`new-button--tertiary--underline`);
     }
 
     if (props.mobileFullWidth && props.size !== "large") {
-        classes.push(`button--full-width`);
+        classes.push(`new-button--full-width`);
     }
 
     if (inflight.value) {
-        classes.push(`button__inflight`);
+        classes.push(`new-button__inflight`);
     }
 
     return classes;
@@ -164,17 +164,17 @@ const buttonClass = computed((): string[] => {
 <template>
     <button :type :class="buttonClass" :aria-disabled="disabled" v-bind="attrs">
         <template v-if="hasIconLeft">
-            <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
+            <f-icon v-if="inflight" name="circle-notch-solid" class="new-button__icon new-button__spinner"></f-icon>
             <f-icon
                 v-else-if="props.iconLeft"
-                class="button__icon"
+                class="new-button__icon"
                 :name="props.iconLeft"
                 :library="props.iconLibrary"
             ></f-icon>
         </template>
         <template v-if="!hasIcon">
             <span class="spinner--before">
-                <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
+                <f-icon v-if="inflight" name="circle-notch-solid" class="new-button__icon new-button__spinner"></f-icon>
             </span>
         </template>
         <!--
@@ -183,10 +183,10 @@ const buttonClass = computed((): string[] => {
         <span><slot name="default"></slot></span>
 
         <template v-if="hasIconRight">
-            <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
+            <f-icon v-if="inflight" name="circle-notch-solid" class="new-button__icon new-button__spinner"></f-icon>
             <f-icon
                 v-else-if="props.iconRight"
-                class="button__icon"
+                class="new-button__icon"
                 :name="props.iconRight"
                 :library="props.iconLibrary"
             ></f-icon>

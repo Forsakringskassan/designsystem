@@ -1,17 +1,29 @@
 // PRIMARY
-$button-primary-color-background-default: var(--fkds-color-action-background-primary-default) !default;
-$button-primary-color-background-hover: var(--fkds-color-action-background-primary-hover) !default;
+$button-primary-color-background-default: #245db7 !default;
+$button-primary-color-background-hover: #1d4d9a !default;
+$button-primary-color-background-active: #14336c !default;
+$button-primary-color-background-disabled: transparent !default;
+$button-primary-color-border-disabled: var(--fkds-color-text-disabled) !default;
 $button-primary-color-text-default: var(--fkds-color-action-text-inverted-default) !default;
+$button-primary-color-text-disabled: var(--fkds-color-text-disabled) !default;
 
 // SECONDARY
-$button-secondary-color-background-default: var(--fkds-color-action-background-secondary-default) !default;
-$button-secondary-color-border-default: var(--fkds-color-action-border-primary-default) !default;
-$button-secondary-color-text-default: var(--fkds-color-action-text-primary-default) !default;
-$button-secondary-color-background-hover: var(--fkds-color-action-background-secondary-hover) !default;
+$button-secondary-color-background-default: #ffffff !default;
+$button-secondary-color-background-hover: #e2ecf8 !default;
+$button-secondary-color-background-active: #b4ceee !default;
+$button-secondary-color-background-disabled: transparent !default;
+$button-secondary-color-border-default: #245db7 !default;
+$button-secondary-color-border-hover: #3875d6 !default;
+$button-secondary-color-border-active: #3875d6 !default;
+$button-secondary-color-border-disabled: var(--fkds-color-text-disabled) !default;
+$button-secondary-color-text-default: #245db7 !default;
+$button-secondary-color-text-disabled: var(--fkds-color-text-disabled) !default;
 
 // TERTIARY
-$button-tertiary-color-text-default: var(--fkds-color-action-text-primary-default) !default;
+$button-tertiary-color-text-default: #245db7 !default;
 $button-tertiary-color-background-default: transparent !default;
+$button-tertiary-color-background-hover: #e2ecf8 !default;
+$button-tertiary-color-background-active: #b4ceee !default;
 $button-tertiary-color-background-disabled: transparent !default;
 $button-tertiary-color-border-disabled: transparent !default;
 $button-tertiary-color-text-disabled: var(--fkds-color-text-disabled) !default;
