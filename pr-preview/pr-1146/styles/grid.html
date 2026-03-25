@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Grid - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-19e841.css"
+            href="../assets/docs-cb07f6.css"
             crossorigin
-            integrity="sha384-M2LK+B+/5FZis1FsBN/K+AbNMmDdtZWdc3/9k53cY9ZzIibDJHWllBPo6x7xYfoB"
+            integrity="sha384-EWRhRI0opiBIr1qVHZrhPvBr3Cfw/BnCfIm0wJSLUzDsDLVC/QBMDwCmgaX6Smsq"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../assets/vendor-fkui-vue-selectors-dd52a5.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-b24baa.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-c65450.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
     "../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../assets/vendor-fkui-vue-b24baa.js": "sha384-VbRtSWGlh6k41N8YJRErJOgIAuAKNT+anmeaZKsCyNOTX9T0P0lMP2TN5PDXSDK8",
+    "../assets/vendor-fkui-vue-c65450.js": "sha384-yOGNkFhIp0cs+iIU4vycYs7bd1oFiHOC9ABEFXvc9+TXhafuFH32xhYt1AqG0W3N",
     "../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
   }
 }
@@ -84,21 +84,21 @@
 
         <link
             rel="preload"
-            href="../search-data-82e4dd.json"
+            href="../search-data-1853cf.json"
             as="fetch"
             crossorigin
-            integrity="sha384-q/sQy9eBruMg4Ymq1mQnrtT9nr31W5/sVE28RvreFGI0UN75B2ViWvejkYQnlTWz"
+            integrity="sha384-iryNHU/5seBuYAIIC09ttihB39LqbOrKuDpmhQgAnlkPKSHUsvjbAPuxawpl6v5U"
             id="search-data"
         />
     </head>
     <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="icon-stack icon-stack--info">
-            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+        <span class="docs-icon-stack docs-icon-stack--info">
+            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-circle"></use>
             </svg>
-            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-i"></use>
             </svg>
         </span>
@@ -172,7 +172,7 @@
         <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
             <button type="button" class="docs-topnav__anchor" aria-expanded="false">
                 <span>Mer</span>
-                <svg class="icon" focusable="false" aria-hidden="true">
+                <svg class="docs-icon" focusable="false" aria-hidden="true">
                     <use xlink:href="#docs-icon-arrow-down"></use>
                 </svg>
             </button>
@@ -319,7 +319,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Grid</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Grid</h1>
 
                     
                     <div id="aside"><dl></dl>
@@ -329,7 +329,7 @@
                         <details id="outline">
                             <summary class="outline__heading">
                                 Innehåll
-                                <svg focusable="false" class="icon" aria-hidden="true">
+                                <svg focusable="false" class="docs-icon" aria-hidden="true">
                                     <use href="#docs-icon-arrow-down"></use>
                                 </svg>
                             </summary>
@@ -366,7 +366,7 @@
 }
 </style>
 <p class="docs-paragraph">Grid används för att skapa responsiva gränssnitt som anpassar sig till olika skärm- och fönsterstorlekar. Det definierar den yta som komponenter kan placeras på och styr hur stor del av ytans bredd som komponenterna får uppta vid olika brytpunkter för skärmbredden.</p>
-<h2 id="containers"><a class="header-anchor" href="#containers">Containers</a></h2><p class="docs-paragraph">Containern styr den maximala bredden som innehållet får ta och sätter marginal i vänster- och högerkant. Containerns fulla bredd motsvarar 12 kolumner.
+<h2 id="containers" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#containers">Containers</a></h2><p class="docs-paragraph">Containern styr den maximala bredden som innehållet får ta och sätter marginal i vänster- och högerkant. Containerns fulla bredd motsvarar 12 kolumner.
 Det finns två typer av containers:</p>
 <ul>
 <li><strong>Container</strong> – centrerar innehållet på skärmen i en maxbredd som varierar beroende av skärmens bredd</li>
@@ -376,10 +376,10 @@ Det finns två typer av containers:</p>
 <li><strong>Container-fluid</strong> - tar 100% av den tillgängliga ytan. Om en maxbredd sätts kommer ytan vänsterjusteras</li>
 </ul>
 <p class="docs-paragraph"><img src="../assets/images/f853a97a3830a984cefcbcf6c1a190fb.png" alt="Container-fluid"></p>
-<h2 id="marginaler_och_mellanrum"><a class="header-anchor" href="#marginaler_och_mellanrum">Marginaler och mellanrum</a></h2><p class="docs-paragraph">Containers har inbyggda marginaler motsvarande 1 rem till höger och vänster. Gutter är mellanrummet mellan kolumnerna och motsvarar 2 rem.</p>
+<h2 id="marginaler_och_mellanrum" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#marginaler_och_mellanrum">Marginaler och mellanrum</a></h2><p class="docs-paragraph">Containers har inbyggda marginaler motsvarande 1 rem till höger och vänster. Gutter är mellanrummet mellan kolumnerna och motsvarar 2 rem.</p>
 <p class="docs-paragraph"><img src="../assets/images/4219a542a81abe0c86ca27f90ac52cd0.png" alt="Gutter"></p>
-<h2 id="rader_och_kolumner"><a class="header-anchor" href="#rader_och_kolumner">Rader och kolumner</a></h2><p class="docs-paragraph">Innehåll i ett gridlayout placeras i kolumner (<code>col</code>) och kolumnerna ska i sig alltid ligga i en rad (<code>row</code>). Varje rad har 12 möjliga kolumner, vilket motsvarar hela bredden som raden placeras i. Bredden på en kolumn anges i hur många av radens 12 möjliga kolumner som den får uppta. Komponenter som placeras i kolumnen tar sedan hela kolumnens bredd.</p>
-<h3 id="exempel_kolumner"><a class="header-anchor" href="#exempel_kolumner">Exempel kolumner</a></h3>
+<h2 id="rader_och_kolumner" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#rader_och_kolumner">Rader och kolumner</a></h2><p class="docs-paragraph">Innehåll i ett gridlayout placeras i kolumner (<code>col</code>) och kolumnerna ska i sig alltid ligga i en rad (<code>row</code>). Varje rad har 12 möjliga kolumner, vilket motsvarar hela bredden som raden placeras i. Bredden på en kolumn anges i hur många av radens 12 möjliga kolumner som den får uppta. Komponenter som placeras i kolumnen tar sedan hela kolumnens bredd.</p>
+<h3 id="exempel_kolumner" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#exempel_kolumner">Exempel kolumner</a></h3>
                 <div
                     id="example-d1710c"
                     class="code-preview code-preview--default"
@@ -401,7 +401,7 @@ Det finns två typer av containers:</p>
 <li>I en rad med tre lika stora kolumner får vardera ta upp 4 av radens 12 möjliga kolumner.</li>
 <li>Kolumnerna i en rad kan vara olika stora – så länge summan av kolumnernas bredd inte överstiger 12 kommer de lägga sig bredvid varandra.</li>
 </ul>
-<h4 id="exempel_med_olika_komponentstorlekar"><a class="header-anchor" href="#exempel_med_olika_komponentstorlekar">Exempel med olika komponentstorlekar</a></h4><p class="docs-paragraph">Komponenternas bredd styrs av bredden på den kolumn de placeras i.</p>
+<h4 id="exempel_med_olika_komponentstorlekar" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#exempel_med_olika_komponentstorlekar">Exempel med olika komponentstorlekar</a></h4><p class="docs-paragraph">Komponenternas bredd styrs av bredden på den kolumn de placeras i.</p>
 
                 <div
                     id="example-a1e651"
@@ -495,7 +495,7 @@ Det finns två typer av containers:</p>
 
                     </div>
                 </div>
-            <h2 id="brytpunkter"><a class="header-anchor" href="#brytpunkter">Brytpunkter</a></h2><p class="docs-paragraph">Genom att använda fördefinierade brytpunkter kan du anpassa hur en layout ska se ut vid olika skärmstorlekar. Det finns fyra brytpunkter som kan konfigureras. Varje brytpunkt har ett standardvärde för vilken skärmbredd den kommer att bryta på:</p>
+            <h2 id="brytpunkter" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#brytpunkter">Brytpunkter</a></h2><p class="docs-paragraph">Genom att använda fördefinierade brytpunkter kan du anpassa hur en layout ska se ut vid olika skärmstorlekar. Det finns fyra brytpunkter som kan konfigureras. Varje brytpunkt har ett standardvärde för vilken skärmbredd den kommer att bryta på:</p>
 <ul>
 <li>sm - skärmbredd mellan 0 och 639 pixlar</li>
 <li>md - skärmbredd mellan 640 och 1023 pixlar</li>
@@ -503,9 +503,9 @@ Det finns två typer av containers:</p>
 <li>xl - skärmbredd från 1280 pixlar och uppåt</li>
 </ul>
 <p class="docs-paragraph">Du sätter bredden på en kolumn för olika skärmstorlekar genom att ange i klassen för vilken brytpunkt bredden gäller.</p>
-<h3 id="storlek_pa_kolumner_i_olika_scenarion"><a class="header-anchor" href="#storlek_pa_kolumner_i_olika_scenarion">Storlek på kolumner i olika scenarion</a></h3><p class="docs-paragraph">För att aktivera de olika brytpunkterna så kan du minska bredden på webbläsarens fönster.</p>
+<h3 id="storlek_pa_kolumner_i_olika_scenarion" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#storlek_pa_kolumner_i_olika_scenarion">Storlek på kolumner i olika scenarion</a></h3><p class="docs-paragraph">För att aktivera de olika brytpunkterna så kan du minska bredden på webbläsarens fönster.</p>
 <p class="docs-paragraph">I de angivna exempel nedan finns det två olika scenarion. Ett där föräldern tar upp hela bredden på 12 kolumner och ett exempel där föräldern tar 8 kolumner medan dess barn tar hela bredden på 12 kolumner inuti dess förälder.</p>
-<h4 id="foralder_med_12_kolumner"><a class="header-anchor" href="#foralder_med_12_kolumner">Förälder med 12 kolumner</a></h4>
+<h4 id="foralder_med_12_kolumner" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#foralder_med_12_kolumner">Förälder med 12 kolumner</a></h4>
             <div
                 id="example-873c24"
                 class="code-preview code-preview--default"
@@ -564,7 +564,7 @@ Det finns två typer av containers:</p>
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <svg focusable="false" class="icon" aria-hidden="true">
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
                     <use href="#docs-icon-code"></use>
                 </svg>
                 Visa kod
@@ -618,7 +618,7 @@ Det finns två typer av containers:</p>
 </code></pre>
                 </div>
             </div>
-        <h4 id="foralder_med_8_kolumner"><a class="header-anchor" href="#foralder_med_8_kolumner">Förälder med 8 kolumner</a></h4><p class="docs-paragraph">I detta exempel nästlar vi en grid i en förälder med 8 kolumner.
+        <h4 id="foralder_med_8_kolumner" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#foralder_med_8_kolumner">Förälder med 8 kolumner</a></h4><p class="docs-paragraph">I detta exempel nästlar vi en grid i en förälder med 8 kolumner.
 Det innebär att kolumernas storlek kommer motsvara tolftedelar utav förälderns 8 kolumner och inte längre skärmstorleken.</p>
 
                 <div
@@ -679,8 +679,8 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
 
                     </div>
                 </div>
-            <h2 id="placering"><a class="header-anchor" href="#placering">Placering</a></h2><p class="docs-paragraph">Grid stödjer dynamisk placering av kolumner både horisontellt och vertikalt.</p>
-<h3 id="horisontellt"><a class="header-anchor" href="#horisontellt">Horisontellt</a></h3>
+            <h2 id="placering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#placering">Placering</a></h2><p class="docs-paragraph">Grid stödjer dynamisk placering av kolumner både horisontellt och vertikalt.</p>
+<h3 id="horisontellt" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#horisontellt">Horisontellt</a></h3>
             <div
                 id="example-909e56"
                 class="code-preview code-preview--default"
@@ -741,7 +741,7 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <svg focusable="false" class="icon" aria-hidden="true">
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
                     <use href="#docs-icon-code"></use>
                 </svg>
                 Visa kod
@@ -797,7 +797,7 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
 </code></pre>
                 </div>
             </div>
-        <h3 id="vertikalt"><a class="header-anchor" href="#vertikalt">Vertikalt</a></h3>
+        <h3 id="vertikalt" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#vertikalt">Vertikalt</a></h3>
             <div
                 id="example-439fe1"
                 class="code-preview code-preview--default"
@@ -854,7 +854,7 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <svg focusable="false" class="icon" aria-hidden="true">
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
                     <use href="#docs-icon-code"></use>
                 </svg>
                 Visa kod
@@ -906,7 +906,7 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
 </code></pre>
                 </div>
             </div>
-        <h4 id="vertikal_placering_av_kolumner"><a class="header-anchor" href="#vertikal_placering_av_kolumner">Vertikal placering av kolumner</a></h4>
+        <h4 id="vertikal_placering_av_kolumner" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#vertikal_placering_av_kolumner">Vertikal placering av kolumner</a></h4>
             <div
                 id="example-ca1add"
                 class="code-preview code-preview--default"
@@ -945,7 +945,7 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <svg focusable="false" class="icon" aria-hidden="true">
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
                     <use href="#docs-icon-code"></use>
                 </svg>
                 Visa kod
@@ -979,8 +979,8 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
 </code></pre>
                 </div>
             </div>
-        <h3 id="ordning_av_kolumner"><a class="header-anchor" href="#ordning_av_kolumner">Ordning av kolumner</a></h3><p class="docs-paragraph">Tänk på att om du via styling ändrar ordning på kolumner så kommer det inte påverka hur de läses upp av skärmläsare.</p>
-<h4 id="hjalpklasser_for_dynamisk_ordning"><a class="header-anchor" href="#hjalpklasser_for_dynamisk_ordning">Hjälpklasser för dynamisk ordning</a></h4><p class="docs-paragraph">Grid inkluderar flera hjälpklasser för dynamisk ordning, <code>col--order-$ORDNING</code> och <code>col--$BRYTPUNKT-order-$ORDNING</code> så att det är lättare att byta ordning på kolumner dynamiskt mellan olika brytpunkter.</p>
+        <h3 id="ordning_av_kolumner" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ordning_av_kolumner">Ordning av kolumner</a></h3><p class="docs-paragraph">Tänk på att om du via styling ändrar ordning på kolumner så kommer det inte påverka hur de läses upp av skärmläsare.</p>
+<h4 id="hjalpklasser_for_dynamisk_ordning" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#hjalpklasser_for_dynamisk_ordning">Hjälpklasser för dynamisk ordning</a></h4><p class="docs-paragraph">Grid inkluderar flera hjälpklasser för dynamisk ordning, <code>col--order-$ORDNING</code> och <code>col--$BRYTPUNKT-order-$ORDNING</code> så att det är lättare att byta ordning på kolumner dynamiskt mellan olika brytpunkter.</p>
 
             <div
                 id="example-eea729"
@@ -1010,7 +1010,7 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
                 aria-expanded="false"
                 onclick="toggleMarkup(this)"
             >
-                <svg focusable="false" class="icon" aria-hidden="true">
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
                     <use href="#docs-icon-code"></use>
                 </svg>
                 Visa kod
@@ -1058,9 +1058,9 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">enter-validation-and-whitespace (<a href="https://github.com/Forsakringskassan/designsystem/commits/682490a896c550a984a654ab803053b0b566df4f">682490a</a>)<br />
+<div class="footer__right"><div class="version">enter-validation-and-whitespace (<a href="https://github.com/Forsakringskassan/designsystem/commits/dc1f8e99141a154e22ece265d647601b299eb014">dc1f8e9</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1146">PR 1146</a><br />
-        2026-03-23 14:23
+        2026-03-25 13:51
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1200,10 +1200,10 @@ Det innebär att kolumernas storlek kommer motsvara tolftedelar utav föräldern
             integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
             
         ></script><script
-            src="../assets/main-eec4a8.js"
+            src="../assets/main-f68cda.js"
             type="module"
             crossorigin
-            integrity="sha384-AfiKoQqtiIhDv98BWTJGG0XcnF303VsiWCaAPo3a5kbSxZtSOORJkz0Qmk8FfAU5"
+            integrity="sha384-ARuCalqVPs3IlLA12rdhvH79lFkpQ7/wgXP1YgdXqst0Cg3amLJRe5AuuxkU5xgz"
             
         ></script>
     </body>
