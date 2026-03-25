@@ -123,6 +123,7 @@ const configAttributes = computed(() => {
 
 const tdElement = useTemplateRef("td");
 const inputElement = useTemplateRef("input");
+const arrowAnchorElement = useTemplateRef("arrowAnchor");
 const { stopEdit } = useStartStopEdit();
 const isHovered = useElementHover(tdElement, { delayEnter: 200 });
 const { focused } = useFocusWithin(tdElement);
@@ -192,7 +193,7 @@ watchEffect(() => {
     if (hasError.value) {
         emit("onError", {
             anchor: tdElement.value ?? undefined,
-            arrowAnchor: inputElement.value ?? undefined,
+            arrowAnchor: arrowAnchorElement.value ?? undefined,
             message: validity.value.validationMessage,
             hasFocus: focused.value,
             hasHover: isHovered.value,
@@ -201,7 +202,7 @@ watchEffect(() => {
     } else {
         emit("closeError", {
             anchor: tdElement.value ?? undefined,
-            arrowAnchor: inputElement.value ?? undefined,
+            arrowAnchor: arrowAnchorElement.value ?? undefined,
             message: validity.value.validationMessage,
             hasFocus: focused.value,
             hasHover: isHovered.value,
@@ -400,12 +401,13 @@ function onPendingValidity(): void {
                 @validity="onValidity"
                 @pending-validity="onPendingValidity"
             />
+            <span ref="arrowAnchor" aria-hidden="true" />
         </div>
         <i-popup-error
             :anchor="tdElement"
             :is-open="openPopupError"
             :error-message="validity.validationMessage"
-            :arrow-anchor="inputElement"
+            :arrow-anchor="arrowAnchorElement"
             layout="f-table"
         ></i-popup-error>
     </td>
