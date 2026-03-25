@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-content.vue:FMinimizablePanelPageObject-content-debbfb.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject-content.vue:FMinimizablePanelPageObject-content-b66d4f.js
 import { defineComponent as _defineComponent } from "vue";
 import { FMinimizablePanel, FPageLayout } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -72,7 +72,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-debbfb"
+  selector: "#example-b66d4f"
 });
 export {
   render

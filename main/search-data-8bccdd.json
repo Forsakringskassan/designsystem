@@ -169,6 +169,20 @@
     "Riktlinjer för kod",
     "Checklista vid publicering",
     "personuppgifter",
+    "På gång",
+    "pågående arbete",
+    "planerat arbete",
+    "framtid",
+    "Releaser",
+    "deprekering",
+    "borttagna komponenter",
+    "Releaseanteckningar",
+    "version",
+    "Designsystemet",
+    "status",
+    "produktionsklar",
+    "beta",
+    "experimentell",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -189,43 +203,6 @@
     "scss",
     "css",
     "ikonbibliotek",
-    "På gång",
-    "pågående arbete",
-    "planerat arbete",
-    "framtid",
-    "Releaser",
-    "deprekering",
-    "borttagna komponenter",
-    "Releaseanteckningar",
-    "version",
-    "Designsystemet",
-    "status",
-    "produktionsklar",
-    "beta",
-    "experimentell",
-    "Vue.js",
-    "testverktyg",
-    "cypress",
-    "DensityWrapper",
-    "Om testverktyg",
-    "automatiska testfall",
-    "Jest",
-    "Cypress",
-    "Generella funktioner",
-    "automatiska testfall",
-    "testverktyg",
-    "Jest",
-    "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
-    "focus-indicator() mixin",
-    "fokus",
-    "fokusindikator",
-    "sass",
-    "densify() function",
-    "densitet",
-    "sass",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -321,6 +298,29 @@
     "assertRef() function",
     "clamp() function",
     "datum",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
+    "EventBus",
+    "EventBus",
+    "services",
+    "Vue.js",
+    "testverktyg",
+    "cypress",
+    "DensityWrapper",
+    "Om testverktyg",
+    "automatiska testfall",
+    "Jest",
+    "Cypress",
+    "Generella funktioner",
+    "automatiska testfall",
+    "testverktyg",
+    "Jest",
+    "testverktyg",
     "Tabell",
     "FDataTable",
     "FInteractiveTable",
@@ -642,17 +642,17 @@
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
     "FProgressbarPageObject: el() method",
-    "FLabelPageObject: FLabelPageObject() constructor",
-    "FLabelPageObject: formatDescription() method",
-    "FLabelPageObject: errorMessage() method",
-    "FLabelPageObject: errorIcon() method",
-    "FLabelPageObject: description() method",
     "FMinimizablePanelPageObject: constructor",
     "FMinimizablePanelPageObject: toggleButton() method",
     "FMinimizablePanelPageObject: header() method",
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
+    "FLabelPageObject: FLabelPageObject() constructor",
+    "FLabelPageObject: formatDescription() method",
+    "FLabelPageObject: errorMessage() method",
+    "FLabelPageObject: errorIcon() method",
+    "FLabelPageObject: description() method",
     "FInteractiveTablePageObject: header() method",
     "FInteractiveTablePageObject: checkbox() method",
     "FInteractiveTablePageObject: cell() method",
@@ -1059,6 +1059,40 @@
       ]
     },
     {
+      "url": "gettingstarted/about/roadmap.html",
+      "title": "På gång",
+      "terms": [
+        "pågående arbete",
+        "planerat arbete",
+        "framtid"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/releases.html",
+      "title": "Releaser",
+      "terms": [
+        "deprekering",
+        "borttagna komponenter"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/release-notes.html",
+      "title": "Releaseanteckningar",
+      "terms": [
+        "version"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/index.html",
+      "title": "Designsystemet",
+      "terms": [
+        "status",
+        "produktionsklar",
+        "beta",
+        "experimentell"
+      ]
+    },
+    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -1096,98 +1130,6 @@
         "scss",
         "css",
         "ikonbibliotek"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/roadmap.html",
-      "title": "På gång",
-      "terms": [
-        "pågående arbete",
-        "planerat arbete",
-        "framtid"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/releases.html",
-      "title": "Releaser",
-      "terms": [
-        "deprekering",
-        "borttagna komponenter"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/release-notes.html",
-      "title": "Releaseanteckningar",
-      "terms": [
-        "version"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/index.html",
-      "title": "Designsystemet",
-      "terms": [
-        "status",
-        "produktionsklar",
-        "beta",
-        "experimentell"
-      ]
-    },
-    {
-      "url": "functions/test-utils/vue.html",
-      "title": "Vue.js",
-      "terms": [
-        "testverktyg",
-        "cypress",
-        "DensityWrapper"
-      ]
-    },
-    {
-      "url": "functions/test-utils/index.html",
-      "title": "Om testverktyg",
-      "terms": [
-        "automatiska testfall",
-        "Jest",
-        "Cypress"
-      ]
-    },
-    {
-      "url": "functions/test-utils/lib.html",
-      "title": "Generella funktioner",
-      "terms": [
-        "automatiska testfall",
-        "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/test-utils/jest.html",
-      "title": "Jest",
-      "terms": [
-        "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": [
-        "fokus",
-        "fokusindikator",
-        "sass"
-      ]
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": [
-        "densitet",
-        "sass"
       ]
     },
     {
@@ -1439,6 +1381,64 @@
       "title": "clamp() function",
       "terms": [
         "datum"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": [
+        "fokus",
+        "fokusindikator",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": [
+        "densitet",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
+      "url": "functions/test-utils/vue.html",
+      "title": "Vue.js",
+      "terms": [
+        "testverktyg",
+        "cypress",
+        "DensityWrapper"
+      ]
+    },
+    {
+      "url": "functions/test-utils/index.html",
+      "title": "Om testverktyg",
+      "terms": [
+        "automatiska testfall",
+        "Jest",
+        "Cypress"
+      ]
+    },
+    {
+      "url": "functions/test-utils/lib.html",
+      "title": "Generella funktioner",
+      "terms": [
+        "automatiska testfall",
+        "testverktyg"
+      ]
+    },
+    {
+      "url": "functions/test-utils/jest.html",
+      "title": "Jest",
+      "terms": [
+        "testverktyg"
       ]
     },
     {
@@ -2261,31 +2261,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
-      "title": "FLabelPageObject: FLabelPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
-      "title": "FLabelPageObject: formatDescription() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
-      "title": "FLabelPageObject: errorMessage() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
-      "title": "FLabelPageObject: errorIcon() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
-      "title": "FLabelPageObject: description() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
       "title": "FMinimizablePanelPageObject: constructor",
       "terms": []
@@ -2313,6 +2288,31 @@
     {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
       "title": "FMinimizablePanelPageObject: content() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
+      "title": "FLabelPageObject: FLabelPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
+      "title": "FLabelPageObject: formatDescription() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
+      "title": "FLabelPageObject: errorMessage() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
+      "title": "FLabelPageObject: errorIcon() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
+      "title": "FLabelPageObject: description() method",
       "terms": []
     },
     {
@@ -2580,31 +2580,31 @@
     "170": 45,
     "171": 45,
     "172": 45,
-    "173": 45,
-    "174": 45,
-    "175": 45,
-    "176": 46,
-    "177": 46,
-    "178": 46,
-    "179": 47,
-    "180": 47,
-    "181": 47,
-    "182": 47,
-    "183": 48,
-    "184": 48,
-    "185": 48,
-    "186": 48,
-    "187": 48,
-    "188": 48,
+    "173": 46,
+    "174": 46,
+    "175": 46,
+    "176": 47,
+    "177": 47,
+    "178": 48,
+    "179": 48,
+    "180": 48,
+    "181": 48,
+    "182": 48,
+    "183": 49,
+    "184": 49,
+    "185": 49,
+    "186": 49,
+    "187": 49,
+    "188": 49,
     "189": 49,
-    "190": 49,
-    "191": 49,
-    "192": 49,
-    "193": 50,
-    "194": 50,
-    "195": 50,
+    "190": 50,
+    "191": 50,
+    "192": 50,
+    "193": 51,
+    "194": 51,
+    "195": 51,
     "196": 51,
-    "197": 51,
+    "197": 52,
     "198": 52,
     "199": 52,
     "200": 52,
@@ -2614,117 +2614,117 @@
     "204": 53,
     "205": 53,
     "206": 53,
-    "207": 54,
-    "208": 54,
-    "209": 54,
-    "210": 54,
-    "211": 55,
-    "212": 55,
-    "213": 55,
-    "214": 56,
-    "215": 56,
-    "216": 57,
-    "217": 57,
-    "218": 57,
-    "219": 58,
-    "220": 58,
-    "221": 58,
-    "222": 58,
-    "223": 59,
-    "224": 59,
-    "225": 59,
-    "226": 60,
-    "227": 60,
-    "228": 60,
-    "229": 60,
-    "230": 60,
-    "231": 60,
-    "232": 60,
-    "233": 60,
-    "234": 60,
-    "235": 61,
-    "236": 61,
-    "237": 61,
-    "238": 62,
-    "239": 62,
-    "240": 62,
-    "241": 62,
-    "242": 62,
-    "243": 63,
-    "244": 63,
-    "245": 63,
-    "246": 63,
-    "247": 63,
-    "248": 63,
-    "249": 63,
-    "250": 63,
-    "251": 63,
-    "252": 63,
-    "253": 63,
+    "207": 53,
+    "208": 53,
+    "209": 53,
+    "210": 53,
+    "211": 53,
+    "212": 54,
+    "213": 54,
+    "214": 54,
+    "215": 55,
+    "216": 55,
+    "217": 55,
+    "218": 55,
+    "219": 55,
+    "220": 56,
+    "221": 56,
+    "222": 56,
+    "223": 56,
+    "224": 56,
+    "225": 56,
+    "226": 56,
+    "227": 56,
+    "228": 56,
+    "229": 56,
+    "230": 56,
+    "231": 56,
+    "232": 57,
+    "233": 57,
+    "234": 57,
+    "235": 57,
+    "236": 57,
+    "237": 57,
+    "238": 57,
+    "239": 57,
+    "240": 58,
+    "241": 59,
+    "242": 59,
+    "243": 59,
+    "244": 59,
+    "245": 59,
+    "246": 59,
+    "247": 59,
+    "248": 60,
+    "249": 60,
+    "250": 61,
+    "251": 61,
+    "252": 62,
+    "253": 62,
     "254": 63,
     "255": 64,
     "256": 64,
-    "257": 64,
-    "258": 64,
-    "259": 64,
-    "260": 64,
-    "261": 64,
-    "262": 64,
-    "263": 65,
-    "264": 66,
-    "265": 66,
-    "266": 66,
-    "267": 66,
-    "268": 66,
-    "269": 66,
-    "270": 66,
-    "271": 67,
-    "272": 67,
-    "273": 68,
-    "274": 68,
-    "275": 69,
-    "276": 69,
-    "277": 70,
-    "278": 71,
-    "279": 71,
-    "280": 72,
-    "281": 72,
-    "282": 73,
-    "283": 73,
-    "284": 74,
-    "285": 74,
-    "286": 74,
-    "287": 74,
-    "288": 74,
-    "289": 75,
-    "290": 75,
-    "291": 76,
-    "292": 76,
-    "293": 77,
-    "294": 77,
-    "295": 77,
-    "296": 77,
-    "297": 77,
-    "298": 78,
-    "299": 78,
-    "300": 79,
-    "301": 79,
-    "302": 79,
-    "303": 80,
-    "304": 81,
-    "305": 82,
-    "306": 83,
-    "307": 84,
-    "308": 85,
-    "309": 86,
-    "310": 87,
-    "311": 88,
-    "312": 89,
-    "313": 89,
-    "314": 89,
-    "315": 89,
-    "316": 90,
-    "317": 91,
+    "257": 65,
+    "258": 65,
+    "259": 66,
+    "260": 66,
+    "261": 67,
+    "262": 67,
+    "263": 67,
+    "264": 67,
+    "265": 67,
+    "266": 68,
+    "267": 68,
+    "268": 69,
+    "269": 69,
+    "270": 70,
+    "271": 70,
+    "272": 70,
+    "273": 70,
+    "274": 70,
+    "275": 71,
+    "276": 71,
+    "277": 72,
+    "278": 72,
+    "279": 72,
+    "280": 73,
+    "281": 74,
+    "282": 75,
+    "283": 76,
+    "284": 77,
+    "285": 78,
+    "286": 79,
+    "287": 80,
+    "288": 81,
+    "289": 82,
+    "290": 82,
+    "291": 82,
+    "292": 82,
+    "293": 83,
+    "294": 84,
+    "295": 85,
+    "296": 86,
+    "297": 86,
+    "298": 87,
+    "299": 87,
+    "300": 87,
+    "301": 87,
+    "302": 88,
+    "303": 88,
+    "304": 88,
+    "305": 89,
+    "306": 89,
+    "307": 89,
+    "308": 90,
+    "309": 90,
+    "310": 90,
+    "311": 90,
+    "312": 91,
+    "313": 91,
+    "314": 91,
+    "315": 91,
+    "316": 92,
+    "317": 92,
     "318": 92,
     "319": 93,
     "320": 93,
