@@ -139,10 +139,24 @@ export interface ContextMenuTextItem {
 }
 
 // @public
-export type Dataset<T> = T[] & {
+export type Dataset<T extends object> = T[] & {
     readonly [datasetSymbol]: true;
     readonly __type: T;
 };
+
+// @public
+export interface DatasetArrayMetadata {
+    readonly size: number;
+}
+
+// @public
+export interface DatasetElementMetadata {
+    readonly ariaLevel: number;
+    readonly ariaPosInSet: number;
+    readonly ariaRowIndex: number;
+    readonly ariaSetSize: number;
+    readonly rowIndex: number;
+}
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_68" needs to be exported by the entry point index.d.ts
 //
@@ -975,6 +989,12 @@ export function getAbsolutePosition(src: HTMLElement): Rect;
 export function getAbsolutePosition(src?: HTMLElement): Rect | undefined;
 
 // @public
+export function getDatasetMetadata<T extends object>(dataset: Dataset<T>): DatasetArrayMetadata;
+
+// @public
+export function getDatasetMetadata(element: object): DatasetElementMetadata;
+
+// @public
 export function getDayEndOffset(days: FDate[]): number;
 
 // @public
@@ -1440,7 +1460,7 @@ export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | nul
 };
 
 // @public
-export function useDatasetRef<T>(initial?: T[]): Ref<Dataset<T>>;
+export function useDatasetRef<T extends object>(initial?: T[]): Ref<Dataset<T>>;
 
 // @public (undocumented)
 export interface UseDetailsPanel<T = unknown> {
