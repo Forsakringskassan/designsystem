@@ -2139,6 +2139,35 @@ describe("select cell", () => {
     });
 });
 
+describe("editable cell", () => {
+    interface Row {
+        text: string;
+    }
+
+    const columns = defineTableColumns<Row>([
+        {
+            type: "text",
+            header: "Text",
+            key: "text",
+            editable: true,
+        },
+    ]);
+    const rows: Row[] = [{ text: "Foo" }, { text: "Bar" }];
+
+    it("should move to next row on Enter after space + backspace", () => {
+        cy.mount(FTable<Row>, {
+            props: { rows, columns },
+        });
+
+        table.cell({ row: 1, col: 1 }).focus().should("have.focus");
+        cy.focused().press(Cypress.Keyboard.Keys.SPACE);
+        cy.focused().press(Cypress.Keyboard.Keys.BACKSPACE);
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+
+        table.cell({ row: 2, col: 1 }).should("have.focus");
+    });
+});
+
 describe("13 Cell interaction states", () => {
     interface Row {
         plain: string;
