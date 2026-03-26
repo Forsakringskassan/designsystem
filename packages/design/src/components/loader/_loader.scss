@@ -55,6 +55,10 @@
         height: size.$padding-100;
         position: absolute;
         width: size.$padding-100;
+
+        @media (forced-colors: active) {
+            background-color: CanvasText;
+        }
     }
 
     &__wait-text {
@@ -85,6 +89,10 @@
 
         .loader__circle {
             background-color: $loader-circle-inverted-color-background;
+
+            @media (forced-colors: active) {
+                background-color: CanvasText;
+            }
         }
     }
 
