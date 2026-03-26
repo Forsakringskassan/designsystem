@@ -15,6 +15,7 @@ export { FDetailsPanelPageObject } from "./FDetailsPanel.pageobject";
 export { FDefinitionListPageObject } from "./FDefinitionList.pageobject";
 export { FErrorListPageObject } from "./FErrorList.pageobject";
 export { FExpandablePanelPageObject } from "./FExpandablePanel.pageobject";
+export { FExpandableParagraphPageObject } from "./FExpandableParagraph.pageobject";
 export { FFieldsetPageObject } from "./FFieldset.pageobject";
 export { FFileItemPageObject } from "./FFileItem.pageobject";
 export { FFileSelectorPageObject } from "./FFileSelector.pageobject";
