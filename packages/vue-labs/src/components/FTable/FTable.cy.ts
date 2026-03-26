@@ -2144,33 +2144,61 @@ describe("editable cell", () => {
         text: string;
     }
 
-    const columns = defineTableColumns<Row>([
-        {
-            type: "text",
-            header: "Text",
-            editable: true,
-            key: "text",
-            label: () => "text",
-            validation: {
-                required: {},
-                maxLength: { length: 5 },
-            },
-        },
-    ]);
     const rows: Row[] = [{ text: "Foo" }, { text: "Bar" }];
 
-    it("should move to next row on Enter after space + backspace", () => {
+    it("should move to next row on Enter after clearing a directly typed value with validation", () => {
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Text",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    required: {},
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
         cy.mount(FTable<Row>, {
             props: { rows, columns },
         });
 
         table.cell({ row: 1, col: 1 }).focus().should("have.focus");
 
-        cy.focused().press(Cypress.Keyboard.Keys.SPACE);
+        cy.focused().type("Baz");
 
         table.cell({ row: 1, col: 1 }).find("input").should("have.focus");
 
-        cy.focused().press(Cypress.Keyboard.Keys.BACKSPACE);
+        cy.focused().clear();
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+
+        table.cell({ row: 2, col: 1 }).should("have.focus");
+    });
+
+    it("should move to next row on Enter after clearing a directly typed value without validation", () => {
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Text",
+                editable: true,
+                key: "text",
+                label: () => "text",
+            },
+        ]);
+
+        cy.mount(FTable<Row>, {
+            props: { rows, columns },
+        });
+
+        table.cell({ row: 1, col: 1 }).focus().should("have.focus");
+
+        cy.focused().type("Baz");
+
+        table.cell({ row: 1, col: 1 }).find("input").should("have.focus");
+
+        cy.focused().clear();
         cy.focused().press(Cypress.Keyboard.Keys.ENTER);
 
         table.cell({ row: 2, col: 1 }).should("have.focus");

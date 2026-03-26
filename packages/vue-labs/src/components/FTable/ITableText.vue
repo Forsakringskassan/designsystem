@@ -149,24 +149,43 @@ function setUpValidation(el: HTMLInputElement): void {
 
 function setUpFakeValidation(el: HTMLInputElement): void {
     assertRef(inputElement);
+    const input = inputElement.value;
+
+    function emitFakeValidity(nativeEvent: ValidityNativeEvent): void {
+        const fakeEvent = new CustomEvent<ValidityEvent>("validity", {
+            detail: {
+                isValid: true,
+                nativeEvent,
+                validityMode: "INITIAL",
+                validationMessage: "",
+                target: input,
+                elementId: String(input.id),
+            },
+        });
+
+        onValidity(fakeEvent);
+    }
+
     const nativeEvents: ValidityNativeEvent[] = ["change", "blur"];
 
     for (const nativeEvent of nativeEvents) {
         useEventListener(el, nativeEvent, () => {
-            const fakeEvent = new CustomEvent<ValidityEvent>("validity", {
-                detail: {
-                    isValid: true,
-                    nativeEvent,
-                    validityMode: "INITIAL",
-                    validationMessage: "",
-                    target: inputElement.value,
-                    elementId: String(inputElement.value.id),
-                },
-            });
-
-            onValidity(fakeEvent);
+            emitFakeValidity(nativeEvent);
         });
     }
+
+    validationFacade = {
+        validateElement: () => {
+            emitFakeValidity("validate");
+            return Promise.resolve({
+                isValid: true,
+                error: "",
+                isSubmitted: false,
+                isTouched: false,
+            });
+        },
+        dispatchComponentValidityEvent: () => undefined,
+    };
 
     useEventListener(el, "input", onPendingValidity);
     useEventListener(el, "component-validity", (e) => {
