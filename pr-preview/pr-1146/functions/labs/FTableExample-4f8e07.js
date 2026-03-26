@@ -4688,22 +4688,38 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     }
     function setUpFakeValidation(el) {
       assertRef(inputElement);
+      const input = inputElement.value;
+      function emitFakeValidity(nativeEvent) {
+        const fakeEvent = new CustomEvent("validity", {
+          detail: {
+            isValid: true,
+            nativeEvent,
+            validityMode: "INITIAL",
+            validationMessage: "",
+            target: input,
+            elementId: String(input.id)
+          }
+        });
+        onValidity(fakeEvent);
+      }
       const nativeEvents = ["change", "blur"];
       for (const nativeEvent of nativeEvents) {
         useEventListener(el, nativeEvent, () => {
-          const fakeEvent = new CustomEvent("validity", {
-            detail: {
-              isValid: true,
-              nativeEvent,
-              validityMode: "INITIAL",
-              validationMessage: "",
-              target: inputElement.value,
-              elementId: String(inputElement.value.id)
-            }
-          });
-          onValidity(fakeEvent);
+          emitFakeValidity(nativeEvent);
         });
       }
+      validationFacade = {
+        validateElement: () => {
+          emitFakeValidity("validate");
+          return Promise.resolve({
+            isValid: true,
+            error: "",
+            isSubmitted: false,
+            isTouched: false
+          });
+        },
+        dispatchComponentValidityEvent: () => void 0
+      };
       useEventListener(el, "input", onPendingValidity);
       useEventListener(el, "component-validity", (e) => {
         e.stopPropagation();
