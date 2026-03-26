@@ -149,6 +149,11 @@
     "scss",
     "css",
     "ikonbibliotek",
+    "Version 5 migreringsguide",
+    "Vue 3",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Testverktyg",
     "testfall",
     "jest",
@@ -198,11 +203,6 @@
     "produktionsklar",
     "beta",
     "experimentell",
-    "Version 5 migreringsguide",
-    "Vue 3",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -216,9 +216,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -226,6 +223,9 @@
     "densify() function",
     "densitet",
     "sass",
+    "EventBus",
+    "EventBus",
+    "services",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -284,6 +284,13 @@
     "TranslationService",
     "I18nextProvider",
     "TranslationService",
+    "Hjälpklasser",
+    "helpers",
+    "h-no-margin",
+    "h-root-size",
+    "h-display-flex",
+    "Skärmläsare",
+    "NVDA",
     "useResize() composable",
     "justerbar yta",
     "useModal() composable",
@@ -314,13 +321,6 @@
     "assertRef() function",
     "clamp() function",
     "datum",
-    "Hjälpklasser",
-    "helpers",
-    "h-no-margin",
-    "h-root-size",
-    "h-display-flex",
-    "Skärmläsare",
-    "NVDA",
     "Validatorer",
     "identisk",
     "matches",
@@ -638,16 +638,16 @@
     "FYear: next() method",
     "FPaginatorPageObject",
     "FDefinitionListPageObject",
-    "FProgressbarPageObject: FProgressbarPageObject() constructor",
-    "FProgressbarPageObject: value() method",
-    "FProgressbarPageObject: progressStatus() method",
-    "FProgressbarPageObject: el() method",
     "FMinimizablePanelPageObject: constructor",
     "FMinimizablePanelPageObject: toggleButton() method",
     "FMinimizablePanelPageObject: header() method",
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
+    "FProgressbarPageObject: FProgressbarPageObject() constructor",
+    "FProgressbarPageObject: value() method",
+    "FProgressbarPageObject: progressStatus() method",
+    "FProgressbarPageObject: el() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
@@ -1017,6 +1017,25 @@
       ]
     },
     {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": [
+        "Vue 3"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
+    },
+    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": [
@@ -1114,25 +1133,6 @@
       ]
     },
     {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": [
-        "Vue 3"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
-      ]
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1166,14 +1166,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1188,6 +1180,14 @@
       "terms": [
         "densitet",
         "sass"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -1317,6 +1317,23 @@
       ]
     },
     {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": [
+        "helpers",
+        "h-no-margin",
+        "h-root-size",
+        "h-display-flex"
+      ]
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
+      "terms": [
+        "NVDA"
+      ]
+    },
+    {
       "url": "functions/functions/use-resize.html",
       "title": "useResize() composable",
       "terms": [
@@ -1422,23 +1439,6 @@
       "title": "clamp() function",
       "terms": [
         "datum"
-      ]
-    },
-    {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": [
-        "helpers",
-        "h-no-margin",
-        "h-root-size",
-        "h-display-flex"
-      ]
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
-      "terms": [
-        "NVDA"
       ]
     },
     {
@@ -2241,26 +2241,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
-      "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/value.html",
-      "title": "FProgressbarPageObject: value() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html",
-      "title": "FProgressbarPageObject: progressStatus() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/el.html",
-      "title": "FProgressbarPageObject: el() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
       "title": "FMinimizablePanelPageObject: constructor",
       "terms": []
@@ -2288,6 +2268,26 @@
     {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
       "title": "FMinimizablePanelPageObject: content() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
+      "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/value.html",
+      "title": "FProgressbarPageObject: value() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html",
+      "title": "FProgressbarPageObject: progressStatus() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/el.html",
+      "title": "FProgressbarPageObject: el() method",
       "terms": []
     },
     {
@@ -2558,56 +2558,56 @@
     "148": 39,
     "149": 40,
     "150": 40,
-    "151": 40,
-    "152": 40,
-    "153": 40,
-    "154": 40,
-    "155": 40,
-    "156": 40,
-    "157": 40,
-    "158": 40,
-    "159": 40,
-    "160": 40,
-    "161": 40,
-    "162": 40,
-    "163": 41,
-    "164": 41,
-    "165": 41,
-    "166": 41,
-    "167": 41,
-    "168": 41,
-    "169": 41,
-    "170": 41,
-    "171": 41,
-    "172": 42,
-    "173": 42,
-    "174": 42,
-    "175": 42,
-    "176": 42,
-    "177": 42,
-    "178": 42,
-    "179": 42,
-    "180": 43,
-    "181": 44,
+    "151": 41,
+    "152": 42,
+    "153": 42,
+    "154": 43,
+    "155": 43,
+    "156": 43,
+    "157": 43,
+    "158": 43,
+    "159": 43,
+    "160": 43,
+    "161": 43,
+    "162": 43,
+    "163": 43,
+    "164": 43,
+    "165": 43,
+    "166": 43,
+    "167": 43,
+    "168": 44,
+    "169": 44,
+    "170": 44,
+    "171": 44,
+    "172": 44,
+    "173": 44,
+    "174": 44,
+    "175": 44,
+    "176": 44,
+    "177": 45,
+    "178": 45,
+    "179": 45,
+    "180": 45,
+    "181": 45,
     "182": 45,
     "183": 45,
-    "184": 46,
+    "184": 45,
     "185": 46,
-    "186": 46,
-    "187": 46,
-    "188": 47,
-    "189": 47,
-    "190": 47,
-    "191": 48,
-    "192": 48,
-    "193": 49,
-    "194": 49,
-    "195": 49,
-    "196": 49,
-    "197": 49,
-    "198": 50,
-    "199": 50,
-    "200": 51,
+    "186": 47,
+    "187": 48,
+    "188": 48,
+    "189": 49,
+    "190": 49,
+    "191": 49,
+    "192": 49,
+    "193": 50,
+    "194": 50,
+    "195": 50,
+    "196": 51,
+    "197": 51,
+    "198": 52,
+    "199": 52,
+    "200": 52,
     "201": 52,
     "202": 52,
     "203": 53,
@@ -2626,7 +2626,7 @@
     "216": 57,
     "217": 57,
     "218": 57,
-    "219": 58,
+    "219": 57,
     "220": 58,
     "221": 58,
     "222": 58,
@@ -2693,9 +2693,9 @@
     "283": 73,
     "284": 74,
     "285": 74,
-    "286": 75,
-    "287": 75,
-    "288": 75,
+    "286": 74,
+    "287": 74,
+    "288": 74,
     "289": 75,
     "290": 75,
     "291": 76,
@@ -2703,28 +2703,28 @@
     "293": 77,
     "294": 77,
     "295": 77,
-    "296": 78,
-    "297": 79,
-    "298": 80,
-    "299": 81,
-    "300": 82,
-    "301": 83,
-    "302": 84,
-    "303": 85,
-    "304": 86,
-    "305": 87,
-    "306": 87,
-    "307": 87,
-    "308": 87,
-    "309": 88,
-    "310": 89,
-    "311": 90,
-    "312": 91,
-    "313": 91,
-    "314": 92,
-    "315": 92,
-    "316": 92,
-    "317": 92,
+    "296": 77,
+    "297": 77,
+    "298": 78,
+    "299": 78,
+    "300": 79,
+    "301": 79,
+    "302": 79,
+    "303": 80,
+    "304": 81,
+    "305": 82,
+    "306": 83,
+    "307": 84,
+    "308": 85,
+    "309": 86,
+    "310": 87,
+    "311": 88,
+    "312": 89,
+    "313": 89,
+    "314": 89,
+    "315": 89,
+    "316": 90,
+    "317": 91,
     "318": 92,
     "319": 93,
     "320": 93,
