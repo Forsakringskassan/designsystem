@@ -2151,6 +2151,10 @@ describe("editable cell", () => {
             editable: true,
             key: "text",
             label: () => "text",
+            validation: {
+                required: {},
+                maxLength: { length: 5 },
+            },
         },
     ]);
     const rows: Row[] = [{ text: "Foo" }, { text: "Bar" }];
@@ -2161,7 +2165,11 @@ describe("editable cell", () => {
         });
 
         table.cell({ row: 1, col: 1 }).focus().should("have.focus");
+
         cy.focused().press(Cypress.Keyboard.Keys.SPACE);
+
+        table.cell({ row: 1, col: 1 }).find("input").should("have.focus");
+
         cy.focused().press(Cypress.Keyboard.Keys.BACKSPACE);
         cy.focused().press(Cypress.Keyboard.Keys.ENTER);
 
