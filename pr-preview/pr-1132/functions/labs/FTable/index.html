@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Tabell - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-45351b.css"
+            href="../../../assets/docs-358915.css"
             crossorigin
-            integrity="sha384-vBlhg2UHYNnrPZHLtgzBa58Xs3NFC98d266D+KqcajW7c9YmSFY6GuvXFf800DgM"
+            integrity="sha384-RiPnPfvV0nyAYmpnVMzSYofKXhqumTgpV/smE3BpxcOPd4GbU20aSGorSuli/HkE"
             
         />
         <link
@@ -27,7 +27,7 @@
     "@fkui/logic": "../../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-6cefc4.js",
     "@fkui/vue": "../../../assets/vendor-fkui-vue-ea5719.js",
-    "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
+    "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-f3f4a6.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-dd241e.js": "sha384-3bp3RphA5Fue/POFOIMqyfDfPU6ARe/NNr5xPPAVr1ycHv2556I1esecXtk1Wt0s",
@@ -35,7 +35,7 @@
     "../../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
     "../../../assets/vendor-fkui-vue-ea5719.js": "sha384-HZXr+enLAz9ocJyzVXsqxCKjHQuMeeJy7qLp2mMmxWDv2iR/Ss1w65BtiSIJeD7t",
-    "../../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
+    "../../../assets/vendor-forsakringskassan-docs-live-example-f3f4a6.js": "sha384-MhsoP4nH99Ys2eSrk2TK2J61MU/MjXjTIhqrsMiJeFXodLrCMcatsB3zxJnG0fR0"
   }
 }
         </script><script
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-61e8f4.json"
+            href="../../../search-data-94a417.json"
             as="fetch"
             crossorigin
-            integrity="sha384-4xWyf/g+8JMWFXl/DmszOwQewDKlkAXAMd9SRk7yU0MPWbM/vn9BHMIaDTlidUns"
+            integrity="sha384-yw2D0YetualQMyqY52HOK+uSsIcRrLo1L2prBMT1YvBJqdmyjd5d5j2+PWWXcwL0"
             id="search-data"
         />
     </head>
@@ -1785,7 +1785,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/d68b393dc7296b198b281834da4828bf63bc38d6/packages/vue-labs/src/components/FTable/FTable.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/5852b5fc9542d01bdf67aa5cbf2049aae1c402b6/packages/vue-labs/src/components/FTable/FTable.vue">
                 FTable
             </a>
             
@@ -1903,6 +1903,9 @@ Gör tabellen zebrarandig för att enklare visuellt skanna av tabellen och följ
 <p class="docs-paragraph">Hur ska tabellen se ut när den är tom?
 Bestäm vilken information användaren ska få.</p>
 <p class="docs-paragraph">Om inte användaren behöver all information direkt kan expanderbara rader vara ett sätt att visa mer information vid behov.</p>
+<p class="docs-paragraph">Det går även att sätta egna klasser på rader med propen <code>rowClass</code>.
+Funktionen tar emot raden och kan returnera <code>string</code>, <code>string[]</code> eller ett objekt med klassnamn.
+Klasserna appliceras på radens <code>&lt;tr&gt;</code>-element.</p>
 <p class="docs-paragraph">Exempel med hur du kan anpassa/bygga kolumner.</p>
 <h4 id="interagerbara_objekt" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#interagerbara_objekt">Interagerbara objekt</a></h4><p class="docs-paragraph">Tänk på att en cell i tabellen bara ska innehålla ett interagerbart objekt.
 När användaren navigerar med piltangenter till en cell (eller tabbar in till första cellen) som innehåller ett interagerbart objekt kommer det interagerbara objektet i cellen få fokus.</p>
@@ -1993,9 +1996,9 @@ Du väljer den kolumn som är mest trolig att användaren vill sortera på och s
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/definitionlist (<a href="https://github.com/Forsakringskassan/designsystem/commits/d68b393dc7296b198b281834da4828bf63bc38d6">d68b393</a>)<br />
+<div class="footer__right"><div class="version">feature/definitionlist (<a href="https://github.com/Forsakringskassan/designsystem/commits/5852b5fc9542d01bdf67aa5cbf2049aae1c402b6">5852b5f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1132">PR 1132</a><br />
-        2026-03-25 11:59
+        2026-03-26 13:46
 </div>
 <div class="toolbar__item">
     <form id="version">
