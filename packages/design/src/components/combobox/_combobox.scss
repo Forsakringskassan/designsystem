@@ -1,5 +1,6 @@
 @use "variables" as *;
 @use "../../core/mixins/forcedcolors";
+@use "../../core/size";
 
 .popup .popup__wrapper.combobox__listbox {
     background-color: $combobox-color-background;
@@ -9,6 +10,7 @@
     margin-top: 4px;
     margin-bottom: 4px;
     padding: 2px;
+    scrollbar-gutter: stable;
 }
 
 %combobox__listbox__list {
@@ -24,13 +26,20 @@
     color: $combobox-color-text;
     cursor: pointer;
     list-style-type: none;
-    padding: 0.75rem;
+    padding: size.$padding-075;
     white-space: nowrap;
+    box-sizing: border-box;
+    margin-right: size.$margin-050;
 
+    // .is-hover only for screenshot selector
+    &.is-hover,
     &:hover:not(&--highlight) {
         background-color: $combobox-color-background-hover;
         color: $combobox-color-text-hover;
-
+        @media (forced-colors: active) {
+            outline-offset: -2px;
+            margin-right: size.$margin-150;
+        }
         @include forcedcolors.hover-indicator(outline, 2px);
     }
 
