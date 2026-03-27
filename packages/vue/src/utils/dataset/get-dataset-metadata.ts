@@ -24,7 +24,7 @@ function getElementMetadata(
  * Returns metadata about a dataset.
  *
  * @public
- * @since %version%
+ * @since v6.40.0
  */
 export function getDatasetMetadata<T extends object>(
     dataset: Dataset<T>,
@@ -34,7 +34,7 @@ export function getDatasetMetadata<T extends object>(
  * Returns metadata about an element within a dataset.
  *
  * @public
- * @since %version%
+ * @since v6.40.0
  */
 export function getDatasetMetadata(element: object): DatasetElementMetadata;
 
