@@ -2943,7 +2943,7 @@ var _hoisted_1$e = {
   class: "table-ng__cell table-ng__cell--expand"
 };
 var _hoisted_2$9 = ["aria-label", "aria-expanded"];
-var _hoisted_3$5 = {
+var _hoisted_3$4 = {
   key: 1,
   ref: "expandable",
   tabindex: "-1",
@@ -2989,7 +2989,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent2({
       }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$9)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$9)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
     };
   }
 });
@@ -4098,12 +4098,8 @@ function requireEs_iterator_map() {
   return es_iterator_map;
 }
 requireEs_iterator_map();
-var _hoisted_1$7 = {
-  key: 0,
-  class: "table-ng__cell table-ng__cell--anchor"
-};
-var _hoisted_2$5 = ["href"];
-var _hoisted_3$4 = {
+var _hoisted_1$7 = ["href"];
+var _hoisted_2$5 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
@@ -4124,13 +4120,18 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return __props.column.text(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$7, [createElementVNode("a", {
+      return __props.column.text(__props.row) ? (openBlock(), createElementBlock("td", {
+        key: 0,
+        class: "table-ng__cell table-ng__cell--anchor",
+        onKeydown: _cache[0] || (_cache[0] = withKeys(withModifiers(() => {
+        }, ["prevent"]), ["space"]))
+      }, [createElementVNode("a", {
         ref: "target",
         class: "anchor anchor--block",
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$5)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
+      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_1$7)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$5, null, 512));
     };
   }
 });
