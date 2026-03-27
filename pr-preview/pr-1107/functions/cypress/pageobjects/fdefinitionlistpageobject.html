@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FDefinitionListPageObject - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-8aaff6.css"
+            href="../../../assets/docs-358915.css"
             crossorigin
-            integrity="sha384-kyxoEnG5Hvrqd748s0qgLyWndEza089EeOXZWWY+eU41ImtMLs0j3BWnnWTggYvB"
+            integrity="sha384-RiPnPfvV0nyAYmpnVMzSYofKXhqumTgpV/smE3BpxcOPd4GbU20aSGorSuli/HkE"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-dd52a5.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-260868.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-927f0d.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-f3f4a6.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
     "../../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../../assets/vendor-fkui-vue-260868.js": "sha384-GTw9fT3/IO7wib4teCvhoDD5DDZEgmrfDFnQcSBhtOowVt3VVxSqrR0Uw4pZmK2a",
+    "../../../assets/vendor-fkui-vue-927f0d.js": "sha384-KN0JAFFHQxXQoIy4Sx2NvQ6yq8/CF8GdbwXdrhtuByJlKR6WfhtHiwE/oPrzQs4T",
     "../../../assets/vendor-forsakringskassan-docs-live-example-f3f4a6.js": "sha384-MhsoP4nH99Ys2eSrk2TK2J61MU/MjXjTIhqrsMiJeFXodLrCMcatsB3zxJnG0fR0"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-2deb87.json"
+            href="../../../search-data-c9ea5f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-22k438BLr6MXPrCMHEI+6g3ii1rgEMfISsaummi6gBxC4C+TawaQI8oy6JEqJW/b"
+            integrity="sha384-BRoXjFLASis+U7MGKUHfGtrelf2aAVjphfr1iwZHHRrYsC0ChPlkwQyY9qi+sN3k"
             id="search-data"
         />
     </head>
@@ -1793,7 +1793,7 @@
                                 
                                 <li><a href="#fdefinitionlistpageobject">FDefinitionListPageObject()</a></li>
                                 
-                                <li><a href="#description">description()</a></li>
+                                <li><a href="#definition">definition()</a></li>
                                 
                                 <li><a href="#numberofdefinitions">numberOfDefinitions()</a></li>
                                 
@@ -1805,7 +1805,7 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Använd <code>FDefinitionListPageObject</code> för att hämta information relaterat till <a href="../../../components/table-and-list/fdefinitionlist.html">definitionslista</a>.</p>
+                    <div id="content"><p class="docs-paragraph">Använd <code>FDefinitionListPageObject</code> för att hämta information relaterat till <a href="../../../components/fdefinitionlist.html">definitionslista</a>.</p>
 <p class="docs-paragraph">Samtliga exempel använder detta underlag:</p>
 
                 <div
@@ -1820,9 +1820,9 @@
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FDefinitionListItem</span>, <span class="hljs-title class_">FDefinitionList</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">const</span> <span class="hljs-attr">definitions</span>: <span class="hljs-title class_">FDefinitionListItem</span>[] = [
-    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Skulle ha jobbat&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;8 timmar&quot;</span> },
-    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Vabbade&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;8 timmar&quot;</span> },
-    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Omfattning&quot;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&quot;100 procent&quot;</span> },
+    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Skulle ha jobbat&quot;</span>, <span class="hljs-attr">definition</span>: <span class="hljs-string">&quot;8 timmar&quot;</span> },
+    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Vabbade&quot;</span>, <span class="hljs-attr">definition</span>: <span class="hljs-string">&quot;8 timmar&quot;</span> },
+    { <span class="hljs-attr">term</span>: <span class="hljs-string">&quot;Omfattning&quot;</span>, <span class="hljs-attr">definition</span>: <span class="hljs-string">&quot;100 procent&quot;</span> },
 ];
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
@@ -1862,17 +1862,17 @@
 );
 myDefinitionList.<span class="hljs-title function_">numberOfDefinitions</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;eq&quot;</span>, <span class="hljs-number">3</span>);</code></pre>
                 </div>
-            <h2 id="description" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#description">description()</a></h2><p class="docs-paragraph">Används för att komma åt beskrivningen för en definition i definitionslistan.</p>
+            <h2 id="definition" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#definition">definition()</a></h2><p class="docs-paragraph">Används för att komma åt beskrivningen för en definition i definitionslistan.</p>
 <h3 id="syntax--1" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#syntax--1">Syntax</a></h3>
                 <div
-                    id="example-dd72d3"
+                    id="example-7856be"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">description</span>(index);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">definition</span>(index);
 </code></pre>
                 </div>
             <h4 id="parametrar--2" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#parametrar--2">Parametrar</a></h4><dl>
@@ -1882,7 +1882,7 @@ myDefinitionList.<span class="hljs-title function_">numberOfDefinitions</span>()
 <h4 id="returvarde" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#returvarde">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> som innehåller definitionens beskrivning.</p>
 <h3 id="exempel--3" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#exempel--3">Exempel</a></h3>
                 <div
-                    id="example-bc1b17"
+                    id="example-5f9736"
                     class="code-preview code-preview--default"
                     
                     
@@ -1892,9 +1892,9 @@ myDefinitionList.<span class="hljs-title function_">numberOfDefinitions</span>()
                     <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> myDefinitionList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FDefinitionListPageObject</span>(
     <span class="hljs-string">&quot;[data-test=my-definition-list]&quot;</span>,
 );
-myDefinitionList.<span class="hljs-title function_">description</span>(<span class="hljs-number">0</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.text&quot;</span>, <span class="hljs-string">&quot;8 timmar&quot;</span>);
-myDefinitionList.<span class="hljs-title function_">description</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.text&quot;</span>, <span class="hljs-string">&quot;8 timmar&quot;</span>);
-myDefinitionList.<span class="hljs-title function_">description</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.text&quot;</span>, <span class="hljs-string">&quot;100 procent&quot;</span>);</code></pre>
+myDefinitionList.<span class="hljs-title function_">definition</span>(<span class="hljs-number">0</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.text&quot;</span>, <span class="hljs-string">&quot;8 timmar&quot;</span>);
+myDefinitionList.<span class="hljs-title function_">definition</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.text&quot;</span>, <span class="hljs-string">&quot;8 timmar&quot;</span>);
+myDefinitionList.<span class="hljs-title function_">definition</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.text&quot;</span>, <span class="hljs-string">&quot;100 procent&quot;</span>);</code></pre>
                 </div>
             <h2 id="numberofdefinitions" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#numberofdefinitions">numberOfDefinitions()</a></h2><p class="docs-paragraph">Används för att komma åt antalet definitioner i definitionslistan.</p>
 <h3 id="syntax--4" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#syntax--4">Syntax</a></h3>
@@ -2006,9 +2006,9 @@ myDefinitionList.<span class="hljs-title function_">term</span>(<span class="hlj
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/vite-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/24cef62c6b912c63d90f512ec5afd8320bdd73f3">24cef62</a>)<br />
+<div class="footer__right"><div class="version">renovate/vite-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/ed49fb49bc47ca7434ebe1b062cff157e6317304">ed49fb4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1107">PR 1107</a><br />
-        2026-03-27 07:30
+        2026-03-27 08:53
 </div>
 <div class="toolbar__item">
     <form id="version">
