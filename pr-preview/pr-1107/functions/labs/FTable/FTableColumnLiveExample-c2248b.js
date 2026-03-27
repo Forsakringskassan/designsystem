@@ -40,7 +40,7 @@ import {
 } from "@fkui/vue";
 
 // packages/vue-labs/dist/esm/index.esm.js
-import { Fragment as Fragment2, computed as computed3, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent as defineComponent2, guardReactiveProps, inject as inject3, mergeModels, mergeProps, nextTick as nextTick3, normalizeClass, normalizeProps, onMounted as onMounted3, onUpdated as onUpdated2, openBlock, provide as provide2, ref as ref3, renderList, renderSlot, resolveDirective, resolveDynamicComponent, toDisplayString, toRef as toRef2, toValue as toValue2, unref as unref3, useModel, useSlots, useTemplateRef, vModelText, vShow, watch as watch3, watchEffect as watchEffect3, withCtx, withDirectives, withModifiers } from "vue";
+import { Fragment as Fragment2, computed as computed3, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent as defineComponent2, guardReactiveProps, inject as inject3, mergeModels, mergeProps, nextTick as nextTick3, normalizeClass, normalizeProps, onMounted as onMounted3, onUpdated as onUpdated2, openBlock, provide as provide2, ref as ref3, renderList, renderSlot, resolveDirective, resolveDynamicComponent, toDisplayString, toRef as toRef2, toValue as toValue2, unref as unref3, useModel, useSlots, useTemplateRef, vModelText, vShow, watch as watch3, watchEffect as watchEffect3, withCtx, withDirectives, withKeys, withModifiers } from "vue";
 import { ElementIdService, TranslationService, ValidationService, alertScreenReader, assertRef, assertSet, debounce, formatNumber, formatPersonnummer, formatPostalCode, isEmpty, isSet, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parseDate, parseNumber, parseOrganisationsnummer, parsePersonnummer, parsePlusgiro, stripWhitespace } from "@fkui/logic";
 import { EventBus, FContextMenu, FFileItem, FFileSelector, FIcon, FSortFilterDatasetInjected, FTextField, IComboboxDropdown, IFlex, IFlexItem, IPopupError, TranslationMixin, dispatchComponentValidityEvent, findItemIdentifier, getItemIdentifier, setItemIdentifiers, useSlotUtils, useTextFieldSetup, useTranslate } from "@fkui/vue";
 
@@ -2936,7 +2936,7 @@ var _hoisted_1$14 = {
   class: "table-ng__cell table-ng__cell--expand"
 };
 var _hoisted_2$9 = ["aria-label", "aria-expanded"];
-var _hoisted_3$5 = {
+var _hoisted_3$4 = {
   key: 1,
   ref: "expandable",
   tabindex: "-1",
@@ -2972,7 +2972,7 @@ var ITableExpandButton_default = /* @__PURE__ */ defineComponent2({
       }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$9)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$9)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
     };
   }
 });
@@ -3287,7 +3287,7 @@ var inputFieldConfig = {
     }
   }
 };
-var _hoisted_1$12 = ["aria-sort"];
+var _hoisted_1$12 = ["aria-sort", "onKeydown"];
 var ITableHeader_default = /* @__PURE__ */ defineComponent2({
   __name: "ITableHeader",
   props: {
@@ -3342,19 +3342,13 @@ var ITableHeader_default = /* @__PURE__ */ defineComponent2({
       if (!__props.column.sortable || !__props.sortEnabled) return;
       emit("toggleSortOrder", String(__props.column.sortable));
     }
-    function onKeydownCell(e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        onClickCell();
-      }
-    }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("th", {
         ref: "th",
         "aria-sort": sortValue.value,
         class: normalizeClass(columnClasses.value),
         tabindex: "-1",
-        onKeydown: onKeydownCell,
+        onKeydown: withKeys(withModifiers(onClickCell, ["prevent"]), ["enter", "space"]),
         onClick: withModifiers(onClickCell, ["stop"])
       }, [
         createVNode(unref3(IFlex), {
@@ -3909,12 +3903,8 @@ function useStartStopEdit() {
     return new IteratorProxy(getIteratorDirect(this), { mapper });
   } });
 })))();
-var _hoisted_1$7 = {
-  key: 0,
-  class: "table-ng__cell table-ng__cell--anchor"
-};
-var _hoisted_2$5 = ["href"];
-var _hoisted_3$4 = {
+var _hoisted_1$7 = ["href"];
+var _hoisted_2$5 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
@@ -3929,13 +3919,18 @@ var ITableAnchor_default = /* @__PURE__ */ defineComponent2({
   setup(__props, { expose: __expose }) {
     __expose({ tabstopEl: useTemplateRef("target") });
     return (_ctx, _cache) => {
-      return __props.column.text(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$7, [createElementVNode("a", {
+      return __props.column.text(__props.row) ? (openBlock(), createElementBlock("td", {
+        key: 0,
+        class: "table-ng__cell table-ng__cell--anchor",
+        onKeydown: _cache[0] || (_cache[0] = withKeys(withModifiers(() => {
+        }, ["prevent"]), ["space"]))
+      }, [createElementVNode("a", {
         ref: "target",
         class: "anchor anchor--block",
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$5)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
+      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_1$7)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$5, null, 512));
     };
   }
 });
@@ -4252,7 +4247,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent2({
     const activeOptionId = ElementIdService.generateElementId();
     const activeOption = ref3(null);
     async function onCellKeyDown(e) {
-      if (e.code === "Enter" || e.code === "NumpadEnter") await startEditing(e);
+      if (e.code === "Enter" || e.code === "NumpadEnter" || e.code === "Space") await startEditing(e);
     }
     async function onCellClick(e) {
       if (editing.value) return;
@@ -4730,9 +4725,9 @@ var ITableText_default = /* @__PURE__ */ defineComponent2({
       }, [
         createElementVNode("div", { class: normalizeClass(divClasses.value) }, [
           createElementVNode("span", _hoisted_2$2, toDisplayString(fromColumnValue()), 1),
-          _cache[1] || (_cache[1] = createTextVNode()),
-          viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$2, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("", true),
           _cache[2] || (_cache[2] = createTextVNode()),
+          viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$2, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("", true),
+          _cache[3] || (_cache[3] = createTextVNode()),
           withDirectives(createElementVNode("input", mergeProps({
             id: unref3(inputId),
             ref: "input",
@@ -4751,7 +4746,7 @@ var ITableText_default = /* @__PURE__ */ defineComponent2({
             onPendingValidity
           }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]])
         ], 2),
-        _cache[3] || (_cache[3] = createTextVNode()),
+        _cache[4] || (_cache[4] = createTextVNode()),
         createVNode(unref3(IPopupError), {
           anchor: tdElement.value,
           "is-open": openPopupError.value,
@@ -4768,8 +4763,10 @@ var ITableText_default = /* @__PURE__ */ defineComponent2({
         key: 1,
         ref: "td",
         tabindex: "-1",
-        class: normalizeClass(staticClasses.value)
-      }, toDisplayString(fromColumnValue()), 3));
+        class: normalizeClass(staticClasses.value),
+        onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {
+        }, ["prevent"]), ["space"]))
+      }, toDisplayString(fromColumnValue()), 35));
     };
   }
 });
@@ -5455,10 +5452,10 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
         onKeydown
       }, [
         hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true),
-        _cache[4] || (_cache[4] = createTextVNode()),
+        _cache[6] || (_cache[6] = createTextVNode()),
         hasColumns.value ? (openBlock(), createElementBlock("thead", _hoisted_3$1, [createElementVNode("tr", _hoisted_4$1, [
           isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5$1)) : createCommentVNode("", true),
-          _cache[0] || (_cache[0] = createTextVNode()),
+          _cache[2] || (_cache[2] = createTextVNode()),
           __props.selectable ? (openBlock(), createBlock(ITableHeaderSelectable_default, {
             key: 1,
             ref: bindCellApiRef,
@@ -5470,7 +5467,7 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
             "selectable",
             "onToggle"
           ])) : createCommentVNode("", true),
-          _cache[1] || (_cache[1] = createTextVNode()),
+          _cache[3] || (_cache[3] = createTextVNode()),
           (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
             return openBlock(), createBlock(ITableHeader_default, {
               key: column.id,
@@ -5486,11 +5483,13 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
             ]);
           }), 128))
         ])])) : createCommentVNode("", true),
-        _cache[5] || (_cache[5] = createTextVNode()),
+        _cache[7] || (_cache[7] = createTextVNode()),
         hasColumns.value ? (openBlock(), createElementBlock("tbody", _hoisted_6$1, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_7$1, [createElementVNode("td", {
           colspan: fullColspan.value,
-          class: "table-ng__cell"
-        }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_8)])) : (openBlock(true), createElementBlock(Fragment2, { key: 1 }, renderList(metaRows.value, ({ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded }) => {
+          class: "table-ng__cell",
+          onKeydown: _cache[0] || (_cache[0] = withKeys(withModifiers(() => {
+          }, ["prevent"]), ["space"]))
+        }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 40, _hoisted_8)])) : (openBlock(true), createElementBlock(Fragment2, { key: 1 }, renderList(metaRows.value, ({ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded }) => {
           return openBlock(), createElementBlock("tr", {
             key,
             class: normalizeClass(["table-ng__row", getRowClass(row)]),
@@ -5513,7 +5512,7 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
               "is-expanded",
               "row-key"
             ])) : createCommentVNode("", true),
-            _cache[3] || (_cache[3] = createTextVNode()),
+            _cache[5] || (_cache[5] = createTextVNode()),
             level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(ITableExpandable_default, {
               key: 1,
               colspan: expandedColspan.value
@@ -5537,7 +5536,7 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
                 "row",
                 "onToggle"
               ])) : createCommentVNode("", true),
-              _cache[2] || (_cache[2] = createTextVNode()),
+              _cache[4] || (_cache[4] = createTextVNode()),
               (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
                 return openBlock(), createElementBlock(Fragment2, { key: column.id }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
                   key: 0,
@@ -5562,14 +5561,16 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
             ], 64))
           ], 10, _hoisted_9);
         }), 128))])) : createCommentVNode("", true),
-        _cache[6] || (_cache[6] = createTextVNode()),
+        _cache[8] || (_cache[8] = createTextVNode()),
         hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_10, [createElementVNode("tr", {
           class: "table-ng__row",
           "aria-rowindex": ariaRowcount.value
         }, [createElementVNode("td", {
           colspan: fullColspan.value,
-          class: "table-ng__cell--custom"
-        }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_12)], 8, _hoisted_11)])) : createCommentVNode("", true)
+          class: "table-ng__cell--custom",
+          onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {
+          }, ["prevent"]), ["space"]))
+        }, [renderSlot(_ctx.$slots, "footer")], 40, _hoisted_12)], 8, _hoisted_11)])) : createCommentVNode("", true)
       ], 42, _hoisted_1$2);
     };
   }
