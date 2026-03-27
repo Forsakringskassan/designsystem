@@ -1,0 +1,19 @@
+{
+    "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/vue"],
+    "compilerOptions": {
+        "composite": true,
+        "lib": ["es2023", "dom", "dom.iterable"],
+        "paths": {
+            "@fkui/vue-labs/cypress": ["./src/cypress/index.ts"],
+            "@fkui/vue-labs": ["./src/index.ts"]
+        }
+    },
+    "include": ["src/**/*.ts", "src/**/*.vue"],
+    "exclude": [
+        "src/@types/cypress.d.ts",
+        "src/cypress/**/*.ts",
+        "src/stub.d.ts",
+        "src/**/*.cy.ts",
+        "src/**/*.pageobject.ts"
+    ]
+}

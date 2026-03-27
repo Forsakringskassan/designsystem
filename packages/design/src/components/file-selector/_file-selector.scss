@@ -1,0 +1,27 @@
+@use "../../core/mixins/focus" as *;
+@use "../../core/mixins/sr-only" as *;
+
+.file-selector {
+    input[type="file"] {
+        @include sr-only;
+
+        &:focus + label {
+            @include focus-indicator;
+        }
+    }
+    label.button.button--tertiary {
+        @media (forced-colors: active) {
+            border-color: ButtonBorder;
+            color: ButtonText;
+        }
+
+        cursor: pointer;
+    }
+    input[aria-disabled="true"] + label.button.button--tertiary {
+        cursor: default;
+        @media (forced-colors: active) {
+            color: GrayText;
+            border-color: GrayText;
+        }
+    }
+}

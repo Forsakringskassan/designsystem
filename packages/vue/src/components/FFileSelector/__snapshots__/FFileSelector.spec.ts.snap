@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FFileselector should set text in slot 1`] = `
+<div
+  class="file-selector"
+>
+  <input
+    aria-labelledby="fkui-vue-element-0001_label"
+    id="fkui-vue-element-0001"
+    type="file"
+  />
+  <label
+    aria-hidden="true"
+    class="enabled button button--tertiary button--medium"
+    for="fkui-vue-element-0001"
+    id="fkui-vue-element-0001_label"
+    role="button"
+  >
+    <f-icon-stub
+      class="button__icon"
+      library="f"
+      name="paper-clip"
+    />
+    
+    Select file
+    
+  </label>
+</div>
+`;

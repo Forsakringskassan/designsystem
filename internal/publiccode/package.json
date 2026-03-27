@@ -1,0 +1,29 @@
+{
+  "name": "@fkui/semantic-release-publiccode",
+  "version": "6.39.0",
+  "private": true,
+  "description": "Sets version and date in publiccode.yml",
+  "homepage": "https://forsakringskassan.github.io/designsystem/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Forsakringskassan/designsystem.git",
+    "directory": "internal/publiccode"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test --experimental-test-module-mocks"
+  },
+  "devDependencies": {
+    "execa": "9.6.1",
+    "prettier": "3.8.1",
+    "yaml": "2.8.3"
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}

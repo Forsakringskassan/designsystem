@@ -1,0 +1,26 @@
+[
+    {
+        "filename": "assets/fk-logo-primary.svg",
+        "description": "Logotyp i färg med text.",
+        "width": 251,
+        "height": 33
+    },
+    {
+        "filename": "assets/fk-logo-small.svg",
+        "description": "Logotyp i färg utan text.",
+        "width": 31,
+        "height": 31
+    },
+    {
+        "filename": "assets/fk-logo-primary-large.svg",
+        "description": "Logotyp med vit förgrundsfärg och text.",
+        "width": 406.295,
+        "height": 53.267
+    },
+    {
+        "filename": "assets/fk-logo-primary-small.svg",
+        "description": "Logotyp med vit förgrundsfärg utan text.",
+        "width": 47.74,
+        "height": 53.27
+    }
+]

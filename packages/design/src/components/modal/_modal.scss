@@ -1,0 +1,177 @@
+@use "sass:map";
+@use "../../core/size";
+@use "../z-index";
+@use "../../core/mixins/breakpoints";
+@use "variables" as *;
+
+$modal-sizes: (
+    "small": var(--f-modal-size-small),
+    "medium": var(--f-modal-size-medium),
+    "large": var(--f-modal-size-large),
+    "fullwidth": var(--f-modal-size-fullwidth),
+) !default;
+$modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
+
+.modal {
+    &__backdrop {
+        background: var(--f-background-overlay);
+        display: flex;
+        height: 100%;
+        inset: 0;
+        position: fixed;
+        width: 100%;
+        z-index: z-index.$MODAL_BACKDROP_ZINDEX;
+    }
+
+    &__outer-container {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        overflow: auto;
+        width: 100%;
+    }
+
+    &__inner-container {
+        align-items: center;
+        justify-content: center;
+        max-height: 100%;
+        width: 100%;
+    }
+
+    &__shelf {
+        justify-content: flex-end;
+        display: flex;
+        background-color: $modal-shelf-color-background;
+        border-top-left-radius: var(--f-border-radius-medium);
+        border-top-right-radius: var(--f-border-radius-medium);
+        margin-bottom: size.$margin-100;
+    }
+
+    &__header {
+        display: flex;
+        margin-bottom: size.$margin-050;
+        width: 100%;
+
+        .modal__title {
+            font-size: var(--f-modal-title-font-size);
+            font-weight: var(--f-font-weight-bold);
+            margin-bottom: 0;
+            margin-top: 0;
+            color: $modal-text-color-default;
+        }
+    }
+
+    &__dialog-container {
+        background: transparent;
+        display: flex;
+        margin: auto;
+        width: $modal-width;
+
+        // desktop sizes
+        @include breakpoints.breakpoint-up(md) {
+            max-width: map.get($modal-sizes, "small");
+
+            @each $key, $size in $modal-sizes {
+                &--#{$key} {
+                    max-width: $size;
+                }
+            }
+        }
+
+        // mobile sizes
+        @include breakpoints.breakpoint-down(sm) {
+            &--fullscreen {
+                width: 100%;
+                max-width: none;
+
+                .modal__dialog {
+                    min-height: 100vh;
+                    min-height: 100dvh;
+                }
+
+                .modal__dialog-inner {
+                    flex: 1 1 auto;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .modal__content {
+                    flex: 1 1 auto;
+                }
+            }
+        }
+    }
+
+    &__dialog {
+        color: $modal-text-color-default;
+        background: $modal-color-background;
+        outline: 2px solid transparent; // forced-colors
+        border-radius: var(--f-border-radius-medium);
+        display: flex;
+        flex-direction: column-reverse;
+        height: auto;
+        margin: auto;
+        width: 100%;
+        position: relative;
+        z-index: z-index.$MODAL_ZINDEX;
+
+        .modal__dialog-inner {
+            height: auto;
+            margin: 0 size.$margin-150 size.$margin-150;
+
+            @include breakpoints.breakpoint-down(sm) {
+                margin: 0 size.$margin-100 size.$margin-100;
+            }
+        }
+
+        .modal__footer {
+            margin-top: size.$margin-200;
+
+            > .button-group {
+                margin-bottom: 0;
+
+                .button-group__item:last-child:not(.button--small, .button--medium) {
+                    margin-bottom: 0;
+                }
+
+                @include breakpoints.breakpoint-up(md) {
+                    .button-group__item {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        /// Upper close button-group
+        > .button-group {
+            margin: 0;
+
+            .button-group__item:last-child {
+                margin: var(--f-modal-close-button-margin);
+                padding: var(--f-modal-close-button-padding);
+            }
+        }
+    }
+
+    &--information .modal__shelf {
+        background-color: $modal-shelf-info-color-background;
+        .close-button {
+            color: $modal-color-closebutton-text-inverted;
+        }
+    }
+
+    &--warning .modal__shelf {
+        background-color: $modal-shelf-warning-color-background;
+        .close-button {
+            color: $modal-color-closebutton-text-warning;
+        }
+    }
+
+    &--error .modal__shelf {
+        background-color: $modal-shelf-error-color-background;
+        .close-button {
+            color: $modal-color-closebutton-text-inverted;
+        }
+    }
+}

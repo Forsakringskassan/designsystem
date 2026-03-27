@@ -1,0 +1,94 @@
+name: Build
+
+on: [push, pull_request]
+
+permissions:
+    contents: read
+    checks: write
+
+jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build packages
+              run: npm run build
+            - name: Build documentation
+              run: npm run build:docs
+            - name: Tests
+              uses: Forsakringskassan/jest-config@v30.1.2
+
+    cypress-e2e:
+        name: Cypress E2E Tests
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build
+              run: |
+                  npm run build
+                  npm run build:docs
+            - name: Cypress E2E tests
+              uses: cypress-io/github-action@v6
+              with:
+                  summary-title: "E2E tests"
+                  start: npm start
+                  build: npx cypress info
+                  browser: chrome
+                  wait-on: "http://127.0.0.1:8080"
+                  quiet: true
+            - uses: actions/upload-artifact@v7
+              if: always()
+              with:
+                  name: cypress-e2e-screenshots
+                  path: cypress/screenshots
+                  if-no-files-found: ignore
+
+    cypress-ct:
+        name: Cypress Component Tests
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                containers: [1, 2, 3, 4]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build (minimal)
+              run: npm exec lerna -- run --include-dependencies --scope=@fkui/vue --scope=@fkui/cypress-split build
+            - name: Cypress Component Testing
+              uses: cypress-io/github-action@v6
+              env:
+                  SPLIT: ${{ strategy.job-total }}
+                  SPLIT_INDEX: ${{ strategy.job-index }}
+              with:
+                  summary-title: "Component tests"
+                  browser: chrome
+                  component: true
+                  install: false
+                  quiet: true
+            - uses: actions/upload-artifact@v7
+              if: always()
+              with:
+                  name: cypress-screenshots
+                  path: cypress/screenshots
+                  if-no-files-found: ignore

@@ -1,0 +1,9 @@
+{
+    "extends": "@fkui/tsconfig/recommended",
+    "compilerOptions": {
+        "emitDeclarationOnly": true,
+        "types": ["node", "jest"],
+        "skipLibCheck": true
+    },
+    "include": ["src/**/*.ts"]
+}

@@ -1,0 +1,50 @@
+<div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="{{ '/gettingstarted/about/index.html' | relative(doc) }}">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center">
+    <h2 class="heading--h1">Länkar</h2>
+    <ul>
+        <li><a class="anchor" href="{{ 'accessibility.html' | relative(doc) }}">Tillgänglighetsredogörelse</a></li>
+        <li>
+            <a class="anchor anchor--block" target="_blank" href="https://github.com/Forsakringskassan/designsystem">
+                GitHub
+                <svg focusable="false" class="icon f-icon-new-window">
+                    <use href="#f-icon-new-window"></use>
+                </svg>
+                <span class="sr-only">öppnas i ny flik</span>
+            </a>
+        </li>
+        <li>
+            <a class="anchor anchor--block" target="_blank" href="https://www.figma.com/@fkds">
+                Figma
+                <svg focusable="false" class="icon f-icon-new-window">
+                    <use href="#f-icon-new-window"></use>
+                </svg>
+                <span class="sr-only">öppnas i ny flik</span>
+            </a>
+        </li>
+        <li>
+            <a class="anchor anchor--block" target="_blank" rel="external" href="{{ sandboxLink }}">
+                Sandlåda
+                <svg focusable="false" class="icon f-icon-new-window">
+                    <use href="#f-icon-new-window"></use>
+                </svg>
+                <span class="sr-only">öppnas i ny flik</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="footer__right">
+    <!-- prettier-ignore -->
+    {% container "footer:right" %}
+
+    <ul>
+        <li><a class="anchor" href="{{ 'changelog.html' | relative(doc) }}">Changelog</a></li>
+    </ul>
+</div>

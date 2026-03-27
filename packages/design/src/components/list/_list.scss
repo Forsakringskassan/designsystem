@@ -1,0 +1,104 @@
+@use "../../core";
+@use "../../core/config-variables";
+@use "../../core/size";
+@use "variables" as *;
+
+// list item specific variables
+$list-border: var(--f-border-width-medium) solid $list-row-color-border;
+$list-padding: size.$padding-075;
+$list-margin: 0 0 core.densify(var(--f-margin-component-bottom));
+$list-input-margin-top: 0.1rem;
+$list-input-min-width: size.$padding-175;
+$list-input-height: size.$padding-175;
+$list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
+
+%list-item {
+    display: flex;
+    border: $list-border;
+    background: $list-row-color-background-default;
+}
+
+%list-item-hover:not(.disabled) {
+    background: $list-row-color-background-hover;
+}
+
+%list-item-active {
+    background: $list-row-color-background-active;
+}
+
+.list {
+    margin: $list-margin;
+    padding-left: 0;
+
+    &__item:not(:last-child) {
+        border-bottom: none;
+    }
+
+    &__item {
+        @extend %list-item;
+
+        &--hover {
+            @extend %list-item-hover;
+        }
+
+        &--active {
+            @extend %list-item-active;
+        }
+
+        &__itempane {
+            width: 100%;
+            padding: core.densify(var(--f-list-item-itempane-padding)) var(--f-list-item-itempane-padding);
+            color: $list-row-color-text;
+
+            --f-margin-component-bottom: 0.5rem;
+
+            .button {
+                margin-bottom: 0;
+            }
+
+            ul {
+                list-style-type: disc;
+
+                ul {
+                    list-style-type: circle;
+                }
+            }
+        }
+
+        &__selectpane {
+            padding: core.densify($list-selectpane-padding) 0 core.densify($list-selectpane-padding) $list-selectpane-padding;
+
+            &__input {
+                margin-top: $list-input-margin-top;
+
+                .checkbox__label,
+                .radio-button__label {
+                    min-width: $list-input-min-width;
+                    height: $list-input-height;
+                    padding: 0;
+                }
+                .checkbox__label::after,
+                .checkbox__label::before,
+                .radio-button__label::after,
+                .radio-button__label::before {
+                    top: core.densify(0.2rem);
+                    left: 0.2rem;
+                }
+            }
+        }
+    }
+
+    &--hover {
+        .list__item:focus-within,
+        .list__item:hover {
+            cursor: pointer;
+            @extend %list-item-hover;
+
+            &.list__item {
+                &--active {
+                    @extend %list-item-active;
+                }
+            }
+        }
+    }
+}

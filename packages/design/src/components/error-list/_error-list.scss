@@ -1,0 +1,57 @@
+@use "../../core";
+@use "../../core/config-variables";
+@use "../../core/size";
+@use "variables" as *;
+
+.error-list {
+    color: $errorlist-color-text;
+    margin: 0 0 core.densify(var(--f-margin-component-bottom));
+
+    &--list-style-none {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    &--padding-left {
+        padding-left: size.$padding-100;
+    }
+
+    &__list {
+        margin: 0;
+        line-height: max(1.5, core.densify(2));
+    }
+
+    &__bullet::before {
+        color: $errorlist-color-text;
+        content: "•";
+        display: inline;
+        font-size: var(--f-font-size-h4);
+        line-height: 0;
+        margin-right: size.$margin-075;
+    }
+
+    &__link {
+        color: $errorlist-color-text;
+        list-style-position: inside;
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
+
+        a {
+            color: $errorlist-color-text;
+        }
+
+        &:hover {
+            text-decoration-thickness: 2px;
+        }
+    }
+
+    &__icon {
+        max-width: none;
+        position: relative;
+        top: 3px;
+    }
+
+    &--list-item {
+        display: list-item;
+    }
+}

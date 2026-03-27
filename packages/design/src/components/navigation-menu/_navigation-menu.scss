@@ -1,0 +1,146 @@
+@use "../../core/size";
+@use "../../core/mixins/breakpoints";
+@use "../../core/mixins/forcedcolors";
+@use "../../core/config-variables";
+@use "variables" as *;
+
+.imenu {
+    &__list {
+        background-color: $navigationmenu-color-background;
+        margin: 0;
+        padding: 0;
+
+        &__item {
+            cursor: pointer;
+            list-style-type: none;
+            white-space: nowrap;
+
+            a,
+            a:visited,
+            a:active {
+                color: $navigationmenu-menuitem-color-text-active;
+
+                @media (forced-colors: active) {
+                    color: LinkText;
+                }
+            }
+
+            a:hover {
+                color: $navigationmenu-menuitem-color-text-hover;
+
+                @media (forced-colors: active) {
+                    color: LinkText;
+                }
+            }
+        }
+    }
+
+    &__popup-item {
+        position: relative;
+        list-style-type: none;
+        white-space: nowrap;
+
+        &__wrapper {
+            display: inline-flex;
+            position: absolute;
+            left: 0;
+            padding-top: size.$padding-100;
+            padding-left: size.$padding-075;
+            padding-right: size.$padding-075;
+        }
+    }
+}
+
+.imenu--vertical {
+    .imenu__list {
+        display: block;
+
+        &__item {
+            padding: size.$padding-075;
+            display: block;
+
+            &:hover {
+                font-weight: var(--f-font-weight-normal);
+                background-color: $navigationmenu-vertical-color-background-hover;
+                @include forcedcolors.hover-indicator(outline, 2px);
+            }
+
+            &--highlight {
+                font-weight: var(--f-font-weight-medium);
+                background-color: $navigationmenu-vertical-color-background-selected;
+                @include forcedcolors.selected-indicator;
+
+                .imenu__list__anchor {
+                    color: $navigationmenu-vertical-menuitem-color-text-selected;
+
+                    @media (forced-colors: active) {
+                        color: HighlightText;
+                    }
+                }
+            }
+
+            &--highlight:hover {
+                background-color: $navigationmenu-vertical-color-background-selected;
+                font-weight: var(--f-font-weight-medium);
+                color: $navigationmenu-vertical-menuitem-color-text-selected;
+                @include forcedcolors.selected-indicator;
+            }
+        }
+    }
+}
+
+.imenu--horizontal {
+    overflow: hidden;
+
+    .imenu__list {
+        display: flex;
+
+        &__item {
+            display: inline-flex;
+            padding-top: size.$padding-100;
+            padding-left: size.$padding-075;
+            padding-right: size.$padding-075;
+
+            &--highlight {
+                font-weight: var(--f-font-weight-medium);
+
+                .imenu__list__anchor-container {
+                    border-bottom: 5px solid $navigationmenu-horizontal-color-border-selected;
+                    @include forcedcolors.hover-indicator(border-bottom, 5px);
+                }
+
+                .imenu__list__anchor:hover {
+                    font-weight: var(--f-font-weight-medium);
+                }
+            }
+
+            &--hidden {
+                visibility: hidden;
+            }
+        }
+
+        &__item:not(.imenu__list__item--highlight) .imenu__list__anchor-container:hover {
+            border-bottom: 5px solid $navigationmenu-horizontal-color-border-hover;
+            @include forcedcolors.hover-indicator(border-bottom, 5px);
+        }
+
+        &__anchor-container {
+            padding-bottom: size.$padding-050;
+            border-bottom: 5px solid transparent;
+
+            @media (forced-colors: active) {
+                border-bottom: none;
+            }
+        }
+
+        &__anchor {
+            display: inline-flex;
+
+            &-icon-right {
+                flex: 1 0 auto;
+                padding-top: size.$padding-025;
+                margin-left: size.$padding-025;
+            }
+        }
+    }
+}

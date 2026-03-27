@@ -1,0 +1,27 @@
+$anchor-svg-margin: 0.25rem;
+@use "../../core/mixins/anchor";
+@use "variables" as *;
+
+.anchor {
+    @include anchor.anchor;
+
+    &.anchor--block {
+        display: inline-flex;
+
+        & > svg,
+        & > .icon-stack {
+            flex-shrink: 0;
+            margin: calc((var(--f-line-height-large) * 1rem - var(--f-icon-size-small)) / 2) $anchor-svg-margin 0;
+        }
+    }
+
+    &.anchor--discrete {
+        color: $anchor-color-text-discrete-default;
+        text-decoration-color: $anchor-color-text-decoration-discrete-default;
+
+        &:hover {
+            color: $anchor-color-text-discrete-default;
+            text-decoration-color: $anchor-color-text-decoration-discrete-default;
+        }
+    }
+}

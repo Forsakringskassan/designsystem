@@ -1,0 +1,17 @@
+{
+    "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/vue"],
+    "compilerOptions": {
+        "composite": true,
+        "paths": {
+            "@fkui/vue": ["./src/index.ts"]
+        }
+    },
+    "include": ["src/**/*.ts", "src/**/*.vue"],
+    "exclude": [
+        "src/@types/cypress.d.ts",
+        "src/cypress/**/*.ts",
+        "src/stub.d.ts",
+        "src/**/*.cy.ts",
+        "src/**/*.pageobject.ts"
+    ]
+}

@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot with label, tooltip, output and for attribute 1`] = `
+<div
+  class="output-field"
+>
+  <div>
+    <div>
+      <label
+        class="label"
+        for="fkui-vue-element-0001"
+      >
+        
+        
+        Summa
+        
+        
+      </label>
+    </div>
+    
+    
+    TOOLTIP
+    
+    
+    <!--v-if-->
+  </div>
+  <output
+    class="output-field__output"
+    for="inputid"
+    id="fkui-vue-element-0001"
+  >
+    
+    1234
+    
+  </output>
+</div>
+`;
+
+exports[`snapshots should match snapshot with output and for attribute 1`] = `
+<div
+  class="output-field"
+>
+  <label
+    class="label"
+    for="fkui-vue-element-0001"
+  >
+    
+    
+    
+    
+    <!--v-if-->
+  </label>
+  <output
+    class="output-field__output"
+    for="inputid"
+    id="fkui-vue-element-0001"
+  >
+    
+    1234
+    
+  </output>
+</div>
+`;
+
+exports[`snapshots should match snapshot with output and two for attributes 1`] = `
+<div
+  class="output-field"
+>
+  <label
+    class="label"
+    for="fkui-vue-element-0001"
+  >
+    
+    
+    
+    
+    <!--v-if-->
+  </label>
+  <output
+    class="output-field__output"
+    for="inputid inputid2"
+    id="fkui-vue-element-0001"
+  >
+    
+    1234
+    
+  </output>
+</div>
+`;

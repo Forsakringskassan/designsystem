@@ -1,0 +1,69 @@
+@use "../anchor/anchor";
+@use "../../core/size";
+@use "variables" as *;
+
+.file-item-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.file-item {
+    .button--discrete {
+        padding: 0;
+        min-width: auto;
+        text-align: left;
+        margin-right: size.$margin-025;
+    }
+
+    &__row {
+        margin-bottom: size.$margin-125;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button,
+        a {
+            margin-bottom: 0;
+        }
+    }
+
+    &__file-open {
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+        @extend .anchor;
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+        @extend .anchor--block;
+
+        flex: 0 1 auto;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    &__file-remove {
+        flex: 0 0 auto;
+    }
+
+    &__file-abort {
+        flex: 0 0 auto;
+
+        svg {
+            color: $fileitem-color-icon-error;
+        }
+    }
+
+    &__change-info {
+        margin-top: calc(-1 * size.$margin-125);
+    }
+
+    &__file-name {
+        margin-left: size.$margin-025;
+        min-width: 0;
+        overflow-wrap: anywhere;
+        hyphens: auto;
+        white-space: normal;
+    }
+
+    &__separator {
+        margin-bottom: size.$margin-125;
+        border: var(--f-border-width-medium) solid $fileitem-color-separator;
+    }
+}

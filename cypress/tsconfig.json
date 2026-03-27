@@ -1,0 +1,25 @@
+{
+    "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/cypress"],
+    "compilerOptions": {
+        "types": [
+            "cypress",
+            "node",
+            "cy-mount",
+            "cypress-html-validate/commands",
+            "cypress-real-events",
+            "@forsakringskassan/cypress-visual-regression/commands",
+            "forced-colors"
+        ],
+        "typeRoots": ["../node_modules", "../node_modules/@types", "./types"],
+        "paths": {
+            "@fkui/date": ["./packages/date/src/index.ts"],
+            "@fkui/logic": ["./packages/logic/src/index.ts"],
+            "@fkui/vue": ["./packages/vue/src/index.ts"],
+            "@fkui/vue-labs/cypress": [
+                "./packages/vue-labs/src/cypress/index.ts"
+            ],
+            "@fkui/vue-labs": ["./packages/vue-labs/src/index.ts"]
+        }
+    },
+    "include": ["**/*.ts"]
+}

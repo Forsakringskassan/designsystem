@@ -1,0 +1,30 @@
+exports[`should compile global as default 1`] = `
+:root {
+  --f-logo-image-small: url("../assets/fk-logo-primary-small.svg");
+  --f-logo-image-large: url("../assets/fk-logo-primary-large.svg");
+  --f-logo-size-small: 0.6rem;
+  --f-logo-size-large: 0.6rem 4rem;
+}
+`;
+
+exports[`should not include any styling if global is disabled 1`] = `
+
+`;
+
+exports[`should support compile with custom asset path 1`] = `
+:root {
+  --f-logo-image-small: url("logos/fk-logo-primary-small.svg");
+  --f-logo-image-large: url("logos/fk-logo-primary-large.svg");
+  --f-logo-size-small: 0.6rem;
+  --f-logo-size-large: 0.6rem 4rem;
+}
+`;
+
+exports[`should support compile with custom selector 1`] = `
+.awesome-selector {
+  --f-logo-image-small: url("../assets/fk-logo-primary-small.svg");
+  --f-logo-image-large: url("../assets/fk-logo-primary-large.svg");
+  --f-logo-size-small: 0.6rem;
+  --f-logo-size-large: 0.6rem 4rem;
+}
+`;

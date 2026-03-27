@@ -1,0 +1,550 @@
+@use "../../core";
+@use "../../core/size";
+@use "variables" as *;
+
+@mixin button-group-margin($margin-bottom, $margin-right) {
+    margin-bottom: $margin-bottom;
+    margin-right: $margin-right;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+/// Button group and button list
+.button-group {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: core.densify(size.$margin-050);
+    margin-top: core.densify(size.$margin-025);
+
+    .button-group__item {
+        margin: 0;
+        margin-bottom: core.densify(size.$margin-100);
+
+        @include core.breakpoint-up(md) {
+            @include button-group-margin(core.densify(size.$margin-100), size.$margin-125);
+        }
+    }
+
+    > .button.button--discrete {
+        @include button-group-margin(core.densify(size.$margin-100), size.$margin-150);
+    }
+
+    > .button.button--small {
+        @include button-group-margin(core.densify(size.$margin-075), size.$margin-075);
+        &.button--full-width {
+            @include core.breakpoint-down(sm) {
+                margin-right: 0;
+            }
+        }
+    }
+
+    > .button.button--medium {
+        @include button-group-margin(core.densify(size.$margin-075), size.$margin-100);
+        &.button--full-width {
+            @include core.breakpoint-down(sm) {
+                margin-right: 0;
+            }
+        }
+    }
+
+    > .button.button--large {
+        @include core.breakpoint-up(md) {
+            @include button-group-margin(core.densify(size.$margin-100), size.$margin-125);
+        }
+    }
+
+    &--end {
+        justify-content: flex-end;
+    }
+}
+
+.button-list {
+    margin-bottom: core.densify(size.$margin-050);
+    margin-top: core.densify(size.$margin-025);
+    padding-left: 0;
+
+    > li button {
+        margin: 0;
+        margin-bottom: core.densify(size.$margin-100);
+
+        &.button.button--small,
+        &.button.button--medium {
+            margin-bottom: core.densify(size.$margin-075);
+        }
+
+        &.button.button--large {
+            margin-bottom: core.densify(size.$margin-100);
+        }
+    }
+}
+
+/// Primary button
+$button--primary: (
+    background-color: $button-primary-color-background-default,
+    background-color--hover: $button-primary-color-background-hover,
+    color: $button-primary-color-text-default,
+    shadow: var(--f-button-shadow),
+    shadow-hover: var(--f-button-shadow-hover),
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */ padding-top: core.densify(var(--f-button-primary-padding-top)),
+    padding-right: var(--f-button-primary-padding-right),
+    padding-bottom: core.densify(var(--f-button-primary-padding-bottom)),
+    padding-left: var(--f-button-primary-padding-left) /* stylelint-enable declaration-block-no-redundant-longhand-properties */,
+) !default;
+
+/// Secondary button
+$button--secondary: (
+    background-color--hover: $button-secondary-color-background-hover,
+    background-color: $button-secondary-color-background-default,
+    border-color: $button-secondary-color-border-default,
+    color: $button-secondary-color-text-default,
+    shadow: var(--f-button-shadow),
+    shadow-hover: var(--f-button-shadow-hover),
+    padding-top: core.densify(var(--f-button-secondary-padding-top)),
+    padding-right: var(--f-button-secondary-padding-right),
+    padding-bottom: core.densify(var(--f-button-secondary-padding-bottom)),
+    padding-left: var(--f-button-secondary-padding-left),
+) !default;
+
+/// Standard button
+$button--standard: (
+    background-color--hover: $button-secondary-color-background-hover,
+    background-color: $button-secondary-color-background-default,
+    border-color: $button-secondary-color-border-default,
+    color: $button-secondary-color-text-default,
+    shadow: var(--f-button-shadow),
+    shadow-hover: var(--f-button-shadow-hover),
+    padding-top: core.densify(var(--f-button-standard-padding-top)),
+    padding-right: var(--f-button-standard-padding-right),
+    padding-bottom: core.densify(var(--f-button-standard-padding-bottom)),
+    padding-left: var(--f-button-standard-padding-left),
+) !default;
+
+/// Discrete button
+$button--discrete: (
+    color: $button-tertiary-color-text-default,
+    color--hover: $button-discrete-color-text-hover,
+    color--disabled: $button-tertiary-color-text-disabled,
+    background-color--hover: none,
+    background-color: transparent,
+    background-color--disabled: transparent,
+    border-color--disabled: transparent,
+    border-width: 0,
+    shadow: none,
+    shadow-hover: var(--f-button-shadow-hover),
+    padding-top: core.densify(var(--f-button-discrete-padding-top)),
+    padding-right: var(--f-button-discrete-padding-right),
+    padding-bottom: core.densify(var(--f-button-discrete-padding-bottom)),
+    padding-left: var(--f-button-discrete-padding-left),
+) !default;
+
+/// Discrete inverted button
+$button--discrete-inverted: (
+    color: $button-tertiary-inverted-color-text-default,
+    color--hover: $button-discrete-inverted-color-text-hover,
+    color--disabled: $button-tertiary-inverted-color-text-disabled,
+    background-color: transparent,
+    background-color--disabled: transparent,
+    border-color--disabled: transparent,
+    border-width: 0,
+    shadow: none,
+    shadow-hover: var(--f-button-shadow-hover),
+    padding-top: core.densify(var(--f-button-discrete-padding-top)),
+    padding-right: var(--f-button-discrete-padding-right),
+    padding-bottom: core.densify(var(--f-button-discrete-padding-bottom)),
+    padding-left: var(--f-button-discrete-padding-left),
+) !default;
+
+/// Tertiary button
+$button--tertiary: (
+    color: $button-tertiary-color-text-default,
+    color--hover: $button-tertiary-color-text-hover,
+    color--disabled: $button-tertiary-color-text-disabled,
+    background-color--hover: $button-tertiary-color-background-hover,
+    background-color: $button-tertiary-color-background-default,
+    background-color--disabled: $button-tertiary-color-background-disabled,
+    border-color--disabled: $button-tertiary-color-border-disabled,
+    shadow: none,
+    shadow-hover: none,
+    padding-top: core.densify(var(--f-button-tertiary-padding-top)),
+    padding-right: var(--f-button-tertiary-padding-right),
+    padding-bottom: core.densify(var(--f-button-tertiary-padding-bottom)),
+    padding-left: var(--f-button-tertiary-padding-left),
+) !default;
+
+/// Button placeholders
+%button-template {
+    border-color: transparent;
+    border-radius: var(--f-border-radius-medium);
+    border-style: solid;
+    border-width: var(--f-border-width-medium);
+    cursor: pointer;
+    display: inline-block;
+    font-size: var(--f-font-size-standard);
+    font-weight: var(--f-font-weight-medium);
+    justify-content: center;
+    align-items: center;
+    letter-spacing: var(--f-button-letter-spacing);
+    line-height: var(--f-button-default-line-height);
+    margin-bottom: core.densify(size.$margin-150);
+    margin-top: core.densify(size.$margin-025);
+    min-width: var(--f-button-min-width);
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
+    padding-top: core.densify(var(--f-button-default-padding-top));
+    padding-right: var(--f-button-default-padding-right);
+    padding-bottom: core.densify(var(--f-button-default-padding-bottom));
+    padding-left: var(--f-button-default-padding-left);
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+    position: relative;
+    text-align: center;
+    transition: background-color var(--f-animation-duration-medium) ease-out;
+
+    @include core.breakpoint-down(sm) {
+        max-width: var(--f-width-full);
+        width: var(--f-width-full);
+    }
+}
+
+/// Deprecated: Will be removed in next major version (FKUI v4).
+.button--text {
+    /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+    @extend .button--discrete;
+
+    &--black {
+        /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+        @extend .button--discrete--black;
+
+        color: $button-tertiary-black-color-text-default;
+    }
+}
+
+.button {
+    display: inline-flex;
+    position: relative;
+
+    @extend %button-template;
+    @include core.make-button-variant(".button", $button--standard...);
+
+    &.button--primary {
+        @include core.make-button-variant(".button", $button--primary...);
+    }
+
+    &.button--secondary {
+        @include core.make-button-variant(".button", $button--secondary...);
+    }
+
+    &.button--discrete {
+        width: inherit;
+        min-width: 0;
+        font-weight: var(--f-font-weight-bold);
+        outline-offset: size.$padding-025;
+        line-height: calc(1.25 * var(--f-font-size-standard));
+        align-items: flex-start;
+
+        @include core.make-button-variant(".button", $button--discrete...);
+
+        @include core.breakpoint-down(sm) {
+            width: auto;
+        }
+
+        &--black {
+            /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
+            padding-top: core.densify(var(--f-button-discrete-black-padding-top));
+            padding-right: var(--f-button-discrete-black-padding-right);
+            padding-bottom: core.densify(var(--f-button-discrete-black-padding-bottom));
+            padding-left: var(--f-button-discrete-black-padding-left);
+            /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+            color: $button-tertiary-black-color-text-default;
+        }
+
+        &:hover {
+            box-shadow: none;
+            mix-blend-mode: multiply;
+        }
+        &,
+        &:focus,
+        &:active,
+        &:hover {
+            border-radius: var(--f-button-discrete-radius-hover);
+        }
+        & > .button__icon {
+            flex-shrink: 0;
+        }
+    }
+
+    &.button--discrete-inverted {
+        width: inherit;
+        min-width: 0;
+        font-weight: var(--f-font-weight-bold);
+        outline-offset: size.$padding-025;
+        /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
+        padding-top: core.densify(var(--f-button-discrete-padding-top));
+        padding-right: var(--f-button-discrete-padding-right);
+        padding-bottom: core.densify(var(--f-button-discrete-padding-bottom));
+        padding-left: var(--f-button-discrete-padding-left);
+        /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+        line-height: calc(1.25 * var(--f-font-size-standard));
+
+        @include core.make-button-variant(".button", $button--discrete-inverted...);
+
+        @include core.breakpoint-down(sm) {
+            width: auto;
+        }
+
+        &,
+        &:focus,
+        &:active,
+        &:hover {
+            border-radius: var(--f-button-discrete-radius-hover);
+        }
+    }
+
+    &.button--tertiary {
+        width: inherit;
+        min-width: 0;
+        font-weight: var(--f-font-weight-medium);
+        outline-offset: size.$padding-025;
+
+        @include core.make-button-variant(".button", $button--tertiary...);
+
+        @include core.breakpoint-down(sm) {
+            width: auto;
+        }
+
+        &--black {
+            color: $button-tertiary-black-color-text-default;
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: $button-tertiary-black-color-text-focus;
+            }
+        }
+
+        &:disabled,
+        &[aria-disabled="true"] {
+            border: none;
+        }
+
+        &--inverted {
+            color: $button-tertiary-inverted-color-text-default;
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: $button-tertiary-inverted-color-text-focus;
+                background-color: $button-tertiary-inverted-color-background-focus;
+            }
+
+            &:disabled,
+            &[aria-disabled="true"] {
+                color: $button-tertiary-inverted-color-text-disabled;
+                border: none;
+                border-width: 0;
+                background-color: $button-tertiary-inverted-color-background-disabled;
+            }
+        }
+
+        &--underline {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+
+            &:disabled,
+            &[aria-disabled="true"] {
+                text-decoration: none;
+            }
+        }
+
+        &.button--small {
+            min-width: 24px;
+            padding: core.densify(0.375rem) size.$padding-025;
+            text-underline-offset: 3.5px;
+            &.button--align-text {
+                margin-left: -(size.$margin-025);
+            }
+        }
+
+        &.button--medium {
+            min-width: 8rem;
+            /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
+            padding-top: core.densify(var(--f-button-tertiary-padding-top));
+            padding-right: var(--f-button-tertiary-padding-right);
+            padding-bottom: core.densify(var(--f-button-tertiary-padding-bottom));
+            padding-left: var(--f-button-tertiary-padding-left);
+            /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+            &.button--align-text {
+                margin-left: -(size.$margin-050);
+            }
+        }
+
+        &.button--large {
+            min-width: var(--f-button-min-width);
+            padding: core.densify(1.125rem) 0.75rem;
+            &.button--align-text {
+                margin-left: -(size.$margin-075);
+            }
+        }
+
+        &.button--align-text {
+            margin-left: -(size.$margin-050);
+            min-width: 0;
+        }
+
+        @include core.breakpoint-down(sm) {
+            &.button--full-width {
+                min-width: var(--f-width-full);
+            }
+        }
+    }
+
+    &.button--full-width {
+        min-width: var(--f-width-full);
+    }
+
+    &.button--margin-bottom-0 {
+        margin-bottom: 0;
+    }
+
+    &.button--small {
+        font-size: 14px;
+        line-height: 1.25rem;
+        min-width: 4rem;
+        padding: core.densify(size.$padding-025) size.$padding-075;
+
+        @include core.breakpoint-down(sm) {
+            &:not(.button--full-width) {
+                width: auto;
+            }
+        }
+
+        & > .button__icon {
+            height: 14px;
+            width: 14px;
+        }
+    }
+
+    &.button--medium {
+        line-height: 1.5rem;
+        min-width: 8rem;
+        padding: core.densify(0.625rem) size.$padding-125;
+
+        @include core.breakpoint-down(sm) {
+            &:not(.button--full-width) {
+                width: auto;
+            }
+        }
+    }
+
+    &.button--large {
+        line-height: 1.5rem;
+        min-width: 9.5rem;
+        padding: core.densify(1rem) size.$padding-150;
+
+        @include core.breakpoint-down(sm) {
+            max-width: var(--f-width-full);
+            width: var(--f-width-full);
+        }
+    }
+
+    & .button__icon {
+        margin-right: size.$margin-025;
+
+        &:not(:first-child) {
+            margin-left: size.$margin-025;
+            margin-right: 0;
+        }
+    }
+
+    & > .button__icon--end {
+        position: absolute;
+        right: size.$padding-125;
+    }
+
+    &.disabled,
+    &.disabled:hover,
+    &:disabled,
+    &:disabled:hover,
+    &[aria-disabled="true"],
+    &[aria-disabled="true"]:hover,
+    &.button--disabled {
+        border-width: var(--f-border-width-medium);
+        box-shadow: none;
+        cursor: default;
+    }
+
+    // Inflight animations
+    $button-spinner-animation: button-spinner-rotation $button-spinner-animation-duration linear infinite !default;
+    $button-text-animation: width $button-spinner-animation-delay ease-out;
+
+    @keyframes button-spinner-rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes button-spinner-delay {
+        0%,
+        99% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .button__spinner {
+        display: inline-block;
+        width: var(--f-icon-size-small);
+        height: var(--f-icon-size-small);
+        animation:
+            $button-spinner-animation,
+            button-spinner-delay $button-spinner-animation-delay linear;
+    }
+
+    &.button.button--small {
+        .button__spinner {
+            width: 14px;
+            height: 14px;
+        }
+        .spinner--before,
+        .spinner--after {
+            width: calc(7px + size.$padding-025 * 0.5);
+            height: 14px;
+        }
+    }
+
+    .spinner--before,
+    .spinner--after {
+        display: inline-flex;
+        width: calc(var(--f-icon-size-small) * 0.5 + size.$padding-025 * 0.5);
+        height: var(--f-icon-size-small);
+        align-self: center;
+        transition: $button-text-animation;
+    }
+
+    &.button__inflight {
+        &.button.button--small {
+            .spinner--after {
+                width: 0;
+            }
+            .spinner--before {
+                width: calc(14px + size.$padding-025);
+            }
+        }
+
+        .spinner--after {
+            width: 0;
+        }
+        .spinner--before {
+            width: calc(var(--f-icon-size-small) + size.$padding-025);
+        }
+    }
+}

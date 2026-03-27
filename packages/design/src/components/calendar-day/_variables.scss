@@ -1,0 +1,14 @@
+// SELECTED DAY
+$calendarday-color-text-selected: var(--fkds-color-text-inverted) !default;
+$calendarday-color-background-selected: var(--fkds-color-select-background-primary-default) !default;
+
+// HOVER
+$calendarday-color-background-hover: var(--fkds-color-select-background-primary-hover) !default;
+$calendarday-color-text-hover: var(--fkds-color-text-primary) !default;
+
+// TODAY
+$calendarday-highlight-color-border-default: var(--fkds-color-border-strong) !default;
+$calendarday-highlight-color-border-selected: var(--fkds-color-border-inverted) !default;
+
+// DEFAULT TEXT
+$calendarday-color-text-default: var(--fkds-color-text-primary) !default;

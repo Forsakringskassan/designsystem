@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+.background{fill:currentColor;}
+	.circle{fill-rule:evenodd;clip-rule:evenodd;}
+</style>
+<path class="background" d="M489.5,256c0,129-104.6,233.5-233.5,233.5C127,489.5,22.5,385,22.5,256S127,22.5,256,22.5S489.5,127,489.5,256z"/>
+<path class="circle" d="M512,256c0,141.4-114.6,256-256,256S0,397.4,0,256S114.6,0,256,0S512,114.6,512,256z M256,469.3
+	c117.8,0,213.3-95.5,213.3-213.3S373.8,42.7,256,42.7C138.2,42.7,42.7,138.2,42.7,256S138.2,469.3,256,469.3z"/>
+</svg>

@@ -1,0 +1,50 @@
+@use "@fkui/theme-default" as theme with (
+    $global: false
+);
+
+@use "@fkui/font-default" as font with (
+    $global: false,
+    $asset-path: "./fonts"
+);
+
+@use "@fkui/design/src/core/config-variables" with (
+    $asset-path-images: "./images"
+);
+
+$fk-logo-small-url: "#{config-variables.$asset-path-images}/fk-logo-primary-small.svg";
+$fk-logo-large-url: "#{config-variables.$asset-path-images}/fk-logo-primary-large.svg";
+
+@include font.font-face;
+
+@media (prefers-color-scheme: light) {
+    .code-preview__preview,
+    .live-example__example,
+    .user-theme {
+        @include theme.light;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .code-preview__preview,
+    .live-example__example,
+    .user-theme {
+        @include theme.dark;
+    }
+}
+
+:root {
+    @include font.font-family;
+}
+
+.code-preview__preview,
+.live-example__example,
+.user-theme {
+    @include font.font-family;
+
+    $solid-color: linear-gradient(var(--fkds-color-header-background-primary), var(--fkds-color-header-background-primary));
+
+    --f-logo-image-small: url("#{$fk-logo-small-url}"), #{$solid-color};
+    --f-logo-image-large: url("#{$fk-logo-large-url}"), #{$solid-color};
+
+    font-family: var(--f-font-family);
+}

@@ -1,0 +1,15 @@
+// stylelint-disable custom-property-empty-line-before -- technical debt, should just add a comment before each block
+
+@use "light/theme" as light;
+
+@mixin css-variables {
+    @include light.theme;
+}
+
+$global: true !default;
+
+@if $global {
+    :root {
+        @include css-variables;
+    }
+}

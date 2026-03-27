@@ -1,0 +1,115 @@
+import {
+    type App,
+    type Directive,
+    type DirectiveBinding,
+    type Plugin,
+} from "vue";
+import {
+    type ValidatableHTMLElement,
+    type ValidatorConfig,
+    type ValidatorConfigs,
+    type ValidatorName,
+    ValidationService,
+    availableValidators,
+    isValidatableHTMLElement,
+} from "@fkui/logic";
+import isEqual from "lodash/isEqual";
+import { type ComponentValidityEvent } from "../../types";
+
+import { dispatchComponentUnmountEvent } from "../../utils";
+
+function getValidatableElement(element: HTMLElement): ValidatableHTMLElement {
+    if (isValidatableHTMLElement(element)) {
+        return element;
+    }
+    const validatableInsideElement = element.querySelector(
+        "input, textarea, select",
+    );
+    if (validatableInsideElement) {
+        return validatableInsideElement as ValidatableHTMLElement;
+    } else {
+        throw new Error(`Couldn't find any validatable element`);
+    }
+}
+
+function triggerInitialValidation(el: HTMLElement): void {
+    const target = getValidatableElement(el);
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+    ValidationService.validateElement(target);
+}
+
+function registerValidators(
+    el: HTMLElement,
+    binding: DirectiveBinding<Record<string, ValidatorConfig>>,
+): void | never {
+    /* eslint-disable-next-line @typescript-eslint/no-useless-default-assignment -- false positive, both modifiers and value can be undefined */
+    const { modifiers: bindingModifiers = {}, value: bindingValue = {} } =
+        binding;
+    const target = getValidatableElement(el);
+
+    for (const validatorName of Object.keys(bindingValue)) {
+        if (!bindingModifiers[validatorName]) {
+            throw new Error(
+                `Have you forget to add '${validatorName}' to v-validation.${validatorName}?`,
+            );
+        }
+    }
+
+    const validatorConfigs: ValidatorConfigs = {};
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt */
+    for (const validatorName of Object.keys(
+        bindingModifiers,
+    ) as ValidatorName[]) {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+        validatorConfigs[validatorName] = bindingValue[validatorName] || {};
+    }
+
+    ValidationService.addValidatorsToElement(target, validatorConfigs);
+}
+
+const ValidationDirective: Directive<
+    HTMLElement,
+    Record<string, ValidatorConfig>
+> = {
+    beforeMount(el: HTMLElement, binding: DirectiveBinding): void {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
+        registerValidators(el, binding);
+    },
+    beforeUnmount(el: HTMLElement, _binding: DirectiveBinding): void {
+        const validatableElement = getValidatableElement(el);
+        dispatchComponentUnmountEvent(validatableElement);
+        ValidationService.removeValidatorsFromElement(validatableElement);
+    },
+    updated(el: HTMLElement, binding): void {
+        if (!isEqual(binding.value, binding.oldValue)) {
+            registerValidators(el, binding);
+        }
+    },
+    mounted(el: HTMLElement) {
+        triggerInitialValidation(el);
+    },
+};
+
+const ValidationPrefixDirective: Directive<HTMLElement, string> = {
+    beforeMount(el: HTMLElement, binding: DirectiveBinding) {
+        el.addEventListener("component-validity", (event) => {
+            const e = event as CustomEvent<ComponentValidityEvent>;
+            e.detail.errorMessage = `${String(binding.value)}${e.detail.errorMessage}`;
+        });
+    },
+};
+
+/**
+ * @public
+ */
+export const ValidationPlugin: Plugin = {
+    install(app: App) {
+        /* register all builtin validators */
+        for (const validator of availableValidators) {
+            ValidationService.registerValidator(validator);
+        }
+
+        app.directive("validation", ValidationDirective);
+        app.directive("validationPrefix", ValidationPrefixDirective);
+    },
+};

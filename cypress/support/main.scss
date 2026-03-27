@@ -1,0 +1,11 @@
+@use "@fkui/design/src/core/config-variables" with (
+    $asset-path: "@fkui/design"
+);
+
+@use "@fkui/design/src/fonts";
+@use "@fkui/design/src/fkui";
+
+:root {
+    --f-logo-image-small: hotpink;
+    --f-logo-image-large: hotpink;
+}

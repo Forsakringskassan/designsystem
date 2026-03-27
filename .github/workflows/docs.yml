@@ -1,0 +1,88 @@
+name: Deploy
+concurrency: deploy-${{ github.ref }}
+
+on:
+    workflow_dispatch:
+    workflow_call:
+
+permissions:
+    contents: write
+
+jobs:
+    docs:
+        name: Deploy
+        runs-on: ubuntu-latest
+        if: github.ref_protected == true
+        env:
+            DST_REMOTE: origin
+            DST_BRANCH: gh-pages
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+              with:
+                  ref: "${{ github.ref_name }}"
+            - name: Configure git
+              run: |
+                  git config --global user.email "${{ vars.DOCS_DEPLOY_EMAIL }}"
+                  git config --global user.name "${{ vars.DOCS_DEPLOY_NAME }}"
+            - name: Sanity check
+              run: |
+                  git log -n 1
+                  git status
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22.x
+            - name: Determine version
+              run: echo "VERSION=v$(npm pkg get version | jq -r)" | tee -a $GITHUB_ENV
+            - name: Install dependencies
+              run: npm ci
+            - name: Build documentation
+              if: github.event.action != 'closed'
+              uses: ./.github/actions/build-docs
+              with:
+                  example-apps: true
+                  sandbox: false
+            - name: Sanity check
+              run: git status && git diff
+            - name: Pull pages as subtree
+              run: git subtree add --prefix pages ${DST_REMOTE} ${DST_BRANCH}
+            - name: Prune latest
+              if: github.ref == 'refs/heads/main'
+              run: |
+                  if [[ -e pages/latest ]]; then
+                      git rm -rf pages/latest
+                  fi
+            - name: Prune tagged release
+              run: |
+                  if [[ -e pages/${VERSION} ]]; then
+                      git rm -rf pages/${VERSION}
+                  fi
+            - name: Create tagged release
+              run: |
+                  rsync -a public/ pages/${VERSION}
+                  git add -f pages/${VERSION}
+            - name: Create version metadata (latest)
+              if: github.ref == 'refs/heads/main'
+              run: |
+                  ls -d pages/v*.*.* | sed "s#pages/##g" | jq -Rn "{ \"versions\": [inputs], \"latest\": \"${VERSION}\" }" | tee pages/versions.json
+                  git add -f pages/versions.json
+            - name: Create version metadata (maintenance)
+              if: github.ref != 'refs/heads/main'
+              run: |
+                  export CURRENT=$(jq -r .latest < pages/versions.json)
+                  ls -d pages/v*.*.* | sed "s#pages/##g" | jq -Rn "{ \"versions\": [inputs], \"latest\": \"${CURRENT}\" }" | tee pages/versions.json
+                  git add -f pages/versions.json
+            - name: Symlink latest to tagged release
+              if: github.ref == 'refs/heads/main'
+              run: |
+                  ln -s ${VERSION} pages/latest
+                  git add -f pages/latest
+            - name: Commit changes
+              run: |
+                  git commit \
+                      --message "chore(release): [skip ci] deploy ${VERSION} documentation" \
+                      --no-verify \
+                      --allow-empty
+            - name: Push subtree
+              run: git subtree push --prefix pages ${DST_REMOTE} ${DST_BRANCH}

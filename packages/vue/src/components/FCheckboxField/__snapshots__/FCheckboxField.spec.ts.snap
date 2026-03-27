@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots should match snapshot with label and input 1`] = `
+<div
+  class="checkbox"
+>
+  <input
+    class="checkbox__input"
+    id="fkui-vue-element-0001"
+    type="checkbox"
+    value="Default value"
+  />
+  <label
+    class="checkbox__label"
+    for="fkui-vue-element-0001"
+  >
+    
+    Default label
+    
+    <!--v-if-->
+  </label>
+</div>
+`;

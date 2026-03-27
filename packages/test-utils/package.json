@@ -1,0 +1,88 @@
+{
+  "name": "@fkui/test-utils",
+  "version": "6.39.0",
+  "description": "FKUI test utils for Jest",
+  "keywords": [
+    "fkui",
+    "designsystem",
+    "test",
+    "jest",
+    "vue",
+    "cypress"
+  ],
+  "homepage": "https://designsystem.forsakringskassan.se/",
+  "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/designsystem.git",
+    "directory": "packages/test-utils"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "sideEffects": [
+    "./dist/cjs/jest.js",
+    "./dist/esm/jest.js",
+    "./src/matchers/augmentations.ts",
+    "./src/matchers/index.ts"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/lib.d.ts",
+      "import": "./dist/esm/lib.js",
+      "require": "./dist/cjs/lib.js"
+    },
+    "./jest": {
+      "types": "./dist/types/jest.d.ts",
+      "import": "./dist/esm/jest.js",
+      "require": "./dist/cjs/jest.js"
+    },
+    "./vue": {
+      "types": "./dist/types/vue.d.ts",
+      "import": "./dist/esm/vue.js",
+      "require": "./dist/cjs/vue.js"
+    }
+  },
+  "main": "dist/cjs/lib.js",
+  "types": "dist/types/lib.d.ts",
+  "files": [
+    "dist",
+    "jest.d.ts",
+    "vue.d.ts"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist temp && tsc",
+    "build": "node build.js",
+    "postbuild": "fk-api-extractor --patch-augmentations api-extractor.json api-extractor-*.json",
+    "clean": "rimraf .jest-cache dist temp test-results",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "@forsakringskassan/jest-config-vue"
+  },
+  "devDependencies": {
+    "@vue/server-renderer": "3.5.30",
+    "@vue/test-utils": "2.4.6",
+    "esbuild": "0.27.4",
+    "jest-environment-jsdom": "29.7.0",
+    "vue": "3.5.30"
+  },
+  "peerDependencies": {
+    "jest": "^26.0.0 || ^27.0.0 || ^28.0.0 || ^29.0.0 || ^30.0.0",
+    "vue": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "jest": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">= 20",
+    "npm": ">= 7"
+  }
+}

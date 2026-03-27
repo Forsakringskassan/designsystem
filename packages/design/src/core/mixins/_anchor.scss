@@ -1,0 +1,21 @@
+@use "variables" as *;
+
+$anchor-underline-width: 2px !default;
+
+@mixin anchor() {
+    $anchor-underline-offset: 0.25em;
+
+    color: $anchor-color-text-standard-default;
+    text-decoration: underline;
+    text-decoration-thickness: $anchor-underline-width;
+    text-underline-offset: $anchor-underline-offset;
+    text-decoration-color: $anchor-color-text-standard-default;
+    font-weight: var(--f-font-weight-medium);
+    line-height: var(--f-line-height-large);
+
+    &:hover {
+        text-decoration-thickness: 3px;
+        color: $anchor-color-text-standard-default;
+        text-decoration-color: $anchor-color-text-standard-default;
+    }
+}

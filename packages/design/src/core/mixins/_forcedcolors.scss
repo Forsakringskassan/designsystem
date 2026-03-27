@@ -1,0 +1,16 @@
+/* stylelint-disable no-invalid-position-declaration -- the selector is set when the mixin is included */
+
+@mixin selected-indicator() {
+    @media (forced-colors: active) {
+        background-color: highlight;
+        color: highlightText;
+        forced-color-adjust: none;
+    }
+}
+
+// @param {"outline" | "border"} $stroke-type - set a hover-effect for forcedcolors-mode using a border or outline with the system color highlight.
+@mixin hover-indicator($stroke-type, $stroke-width) {
+    @media (forced-colors: active) {
+        #{$stroke-type}: $stroke-width solid highlight;
+    }
+}

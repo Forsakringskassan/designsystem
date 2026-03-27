@@ -1,0 +1,15 @@
+{
+    "extends": "@fkui/tsconfig/recommended",
+    "compilerOptions": {
+        "composite": true,
+        "types": ["cypress"],
+        "emitDeclarationOnly": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "src/cypress/**/*.ts",
+        "src/selectors/**/*.ts",
+        "src/**/*.pageobject.ts"
+    ],
+    "exclude": ["src/**/*.cy.ts", "src/**/*.spec.ts"]
+}

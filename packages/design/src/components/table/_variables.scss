@@ -1,0 +1,14 @@
+// Caption
+$table-color-caption-background: transparent !default;
+$table-color-caption-text: var(--fkds-color-text-primary) !default;
+
+// Header
+$table-color-header-background: var(--fkds-color-background-secondary) !default;
+$table-color-header-text: var(--fkds-color-text-primary) !default;
+$table-header-border: 2px solid var(--fkds-color-border-primary) !default;
+
+// Rows
+$table-color-row-background: var(--fkds-color-background-primary) !default;
+$table-color-row-background-alt: var(--fkds-color-background-secondary) !default;
+$table-color-row-text: var(--fkds-color-text-primary) !default;
+$table-row-separator: 1px solid var(--fkds-color-border-primary) !default;

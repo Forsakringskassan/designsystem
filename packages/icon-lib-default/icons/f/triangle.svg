@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.background{fill:currentColor;}
+	.triangle{fill-rule:evenodd;clip-rule:evenodd;}
+</style>
+<path class="background" d="M215.1,75.68c18.17-31.5,63.63-31.5,81.8,0l177.95,308.45c18.16,31.48-4.56,70.82-40.9,70.82H78.05
+	c-36.34,0-59.06-39.34-40.9-70.82L215.1,75.68z"/>
+<path class="triangle" d="M331.89,66.64L496.99,352.8c33.7,58.41-8.46,131.4-75.89,131.4H90.91c-67.43,0-109.59-72.99-75.89-131.4
+	L180.11,66.64C213.83,8.2,298.17,8.2,331.89,66.64z M293.95,88.53c-16.86-29.22-59.03-29.22-75.89,0L52.96,374.7
+	c-16.85,29.2,4.23,65.7,37.95,65.7h330.19c33.72,0,54.79-36.49,37.95-65.7L293.95,88.53z"/>
+</svg>

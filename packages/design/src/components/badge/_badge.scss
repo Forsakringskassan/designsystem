@@ -1,0 +1,65 @@
+@use "../../core";
+@use "variables" as *;
+
+@mixin make-badge-variant($text-color, $background-color, $border-color: "") {
+    color: $text-color;
+    background-color: $background-color;
+
+    @if $border-color != "" {
+        border-color: $border-color;
+    } @else {
+        border-color: $background-color;
+    }
+}
+
+.badge {
+    border-radius: var(--f-border-radius-medium);
+    border-style: solid;
+    border-width: var(--f-border-width-small);
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: var(--f-font-size-standard);
+    line-height: core.densify(var(--f-line-height-large));
+    font-weight: var(--f-font-weight-normal);
+    padding: 0 0.5rem;
+
+    &--default {
+        @include make-badge-variant($badge-color-text-default, $badge-color-background-default);
+    }
+
+    &--default-inverted {
+        @include make-badge-variant($badge-color-text-default-inverted, $badge-color-background-default-inverted, $badge-color-border-default-inverted);
+    }
+
+    &--warning {
+        @include make-badge-variant($badge-color-text-warning, $badge-color-background-warning);
+    }
+
+    &--warning-inverted {
+        @include make-badge-variant($badge-color-text-warning-inverted, $badge-color-background-warning-inverted, $badge-color-border-warning-inverted);
+    }
+
+    &--error {
+        @include make-badge-variant($badge-color-text-error, $badge-color-background-error);
+    }
+
+    &--error-inverted {
+        @include make-badge-variant($badge-color-text-error-inverted, $badge-color-background-error-inverted, $badge-color-border-error-inverted);
+    }
+
+    &--success {
+        @include make-badge-variant($badge-color-text-success, $badge-color-background-success);
+    }
+
+    &--success-inverted {
+        @include make-badge-variant($badge-color-text-success-inverted, $badge-color-background-success-inverted, $badge-color-border-success-inverted);
+    }
+
+    &--info {
+        @include make-badge-variant($badge-color-text-info, $badge-color-background-info);
+    }
+
+    &--info-inverted {
+        @include make-badge-variant($badge-color-text-info-inverted, $badge-color-background-info-inverted, $badge-color-border-info-inverted);
+    }
+}

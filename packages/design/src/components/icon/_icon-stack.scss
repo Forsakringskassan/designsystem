@@ -1,0 +1,170 @@
+@use "./icon";
+@use "variables" as *;
+
+@at-root {
+    %icon-stack {
+        @extend %icon--base;
+
+        position: relative;
+
+        .icon {
+            position: absolute;
+        }
+    }
+}
+
+.icon-stack,
+.icon--stack {
+    @extend %icon-stack;
+
+    &--new-window {
+        // anchor icons to top-right and bottom-left
+        .icon {
+            &.f-icon-new-window {
+                width: 55%;
+                height: 55%;
+                top: 0;
+                right: 0;
+            }
+
+            &:not(.f-icon-new-window) {
+                width: 83%;
+                height: 83%;
+                bottom: 0;
+                left: 5%;
+            }
+        }
+    }
+
+    &--tooltip {
+        .f-icon-circle {
+            fill: $icon-tooltip-color-background;
+            color: $icon-tooltip-color-border;
+        }
+
+        .f-icon-i {
+            color: $icon-tooltip-color-content;
+        }
+    }
+
+    &--info {
+        .f-icon-circle {
+            color: $icon-info-color-background;
+            fill: $icon-info-color-border;
+        }
+
+        .f-icon-i {
+            color: $icon-info-color-content;
+        }
+    }
+
+    &--warning {
+        .f-icon-circle {
+            color: $icon-warning-color-background;
+            fill: $icon-warning-color-border;
+        }
+
+        .f-icon-alert {
+            color: $icon-warning-color-content;
+        }
+    }
+
+    &--error {
+        .f-icon-triangle {
+            color: $icon-error-color-background;
+            fill: $icon-error-color-border;
+        }
+
+        .f-icon-alert {
+            color: $icon-error-color-content;
+        }
+    }
+
+    &--success {
+        .f-icon-circle {
+            color: $icon-success-color-background;
+            fill: $icon-success-color-border;
+        }
+        .f-icon-success {
+            color: $icon-success-color-content;
+            transform: scale(0.6);
+        }
+    }
+
+    @media (forced-colors: active) {
+        &--info,
+        &--warning,
+        &--error,
+        &--success {
+            .f-icon-circle,
+            .f-icon-triangle {
+                color: Canvas;
+                fill: CanvasText;
+            }
+
+            .f-icon-alert,
+            .f-icon-i,
+            .f-icon-success {
+                color: CanvasText;
+            }
+        }
+
+        &--tooltip {
+            .f-icon-circle {
+                color: Canvas;
+                fill: ButtonBorder;
+            }
+
+            .f-icon-i {
+                color: ButtonText;
+            }
+        }
+    }
+
+    &--large {
+        width: 2.5rem;
+        height: 2.5rem;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &--circle,
+    &--circle-bottom {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 100%;
+        overflow: hidden;
+        .f-icon-circle {
+            color: var(--f-icon-color-success-background);
+            fill: var(--f-icon-color-success-background);
+            width: 100%;
+            height: 100%;
+        }
+        .icon:not(.f-icon-circle) {
+            color: var(--f-icon-color-success);
+            position: absolute;
+        }
+    }
+    &--circle {
+        .icon:not(.f-icon-circle) {
+            width: 100 * 0.7%;
+            height: 100 * 0.7%;
+            inset: 0;
+            margin: auto;
+        }
+    }
+
+    &--circle-bottom {
+        .icon:not(.f-icon-circle) {
+            width: 100 * 0.8%;
+            height: 100 * 0.8%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            bottom: 0%;
+        }
+    }
+}

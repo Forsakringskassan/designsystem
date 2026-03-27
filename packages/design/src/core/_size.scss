@@ -1,0 +1,23 @@
+// Variables that should be used for padding & margins.
+// If no suitable size is found, try to use a factor of the base size.
+$base-025: 0.25rem;
+
+// padding
+$padding-025: $base-025;
+$padding-050: calc(2 * $base-025);
+$padding-075: calc(3 * $base-025);
+$padding-100: calc(4 * $base-025);
+$padding-125: calc(5 * $base-025);
+$padding-150: calc(6 * $base-025);
+$padding-175: calc(7 * $base-025);
+$padding-200: calc(8 * $base-025);
+
+// margin
+$margin-025: $base-025 !default;
+$margin-050: calc(2 * $base-025);
+$margin-075: calc(3 * $base-025);
+$margin-100: calc(4 * $base-025);
+$margin-125: calc(5 * $base-025);
+$margin-150: calc(6 * $base-025);
+$margin-175: calc(7 * $base-025);
+$margin-200: calc(8 * $base-025);

@@ -1,0 +1,91 @@
+@use "../../core";
+@use "../icon/icon";
+@use "../../core/size";
+@use "../../core/utils/functions" as *;
+@use "variables" as *;
+
+.select-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 0 0 core.densify(var(--f-margin-component-bottom));
+    position: relative;
+    width: var(--f-width-full);
+
+    &--inline {
+        @include core.label-inline;
+    }
+
+    &--table {
+        margin-bottom: 0;
+    }
+
+    &--table-error {
+        .select-field__select {
+            padding-right: calc(var(--f-icon-size-large) + 2.25rem);
+        }
+    }
+
+    &__select {
+        appearance: none;
+        background-color: $selectfield-color-background-default;
+        box-shadow: var(--f-input-shadow-inset);
+        border-radius: var(--f-border-radius-medium);
+        border: var(--f-border-width-medium) solid $selectfield-color-border-default;
+        color: $selectfield-color-text-default;
+        cursor: pointer;
+        min-height: core.densify(var(--f-height-large));
+        padding: var(--padding-input-fields);
+        width: var(--f-width-full);
+
+        &:hover {
+            background-color: $selectfield-color-background-hover;
+        }
+
+        &:focus {
+            background-color: $selectfield-color-background-focus;
+        }
+
+        &:disabled {
+            border-color: $selectfield-color-border-disabled;
+            color: $selectfield-color-text-disabled;
+            background-color: $selectfield-color-background-disabled;
+            opacity: 1;
+        }
+
+        &:open + .select-field__icon {
+            transform: rotate(180deg);
+        }
+    }
+
+    &__select:disabled + &__icon {
+        color: $selectfield-icon-color-content-disabled;
+    }
+
+    &__icon-wrapper {
+        position: relative;
+    }
+
+    &__icon {
+        @extend %icon--inset-top-right;
+
+        color: $selectfield-f-icon-arrow-down-color-content-default;
+    }
+
+    &__error-popup-icon {
+        color: $selectfield-color-icon-error;
+        display: inline;
+        position: absolute;
+        right: calc(var(--f-icon-size-large) + 0.75rem);
+        top: size.$margin-050;
+        height: var(--f-icon-size-large);
+        width: var(--f-icon-size-large);
+        overflow: hidden;
+        text-align: center;
+    }
+    &--error {
+        .select-field__select {
+            border-color: $selectfield-color-border-error;
+        }
+    }
+}

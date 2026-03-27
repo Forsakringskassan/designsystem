@@ -1,0 +1,20 @@
+/* background color */
+$handle-background: var(--fkds-color-border-primary);
+
+/* highlight color */
+$handle-highlight: var(--fkds-color-action-border-primary-hover);
+
+/* the width of the visible handle */
+$handle-size: 2px;
+
+/* how much extra click/hover area the handle has */
+$handle-click-area: 4px;
+
+/* how much extra space the handle occupies when hovering (not counting the click area) */
+$handle-expand: 2px;
+
+/* how long before visually indicating the hover state */
+$transition-delay: 200ms;
+
+/* how long the animation for the visual indicator is */
+$transition-duration: 200ms;

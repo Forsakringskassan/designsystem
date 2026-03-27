@@ -1,0 +1,18 @@
+@use "../size";
+@use "../mixins/breakpoints";
+@use "../utils";
+
+@mixin label-inline() {
+    @include breakpoints.breakpoint-up(md) {
+        margin-bottom: utils.densify(size.$margin-075);
+        flex-direction: row;
+        justify-content: flex-start;
+        width: auto;
+
+        .label {
+            width: auto;
+            margin-right: size.$margin-100;
+            padding-top: utils.densify(size.$padding-050);
+        }
+    }
+}

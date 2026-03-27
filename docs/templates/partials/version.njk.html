@@ -1,0 +1,10 @@
+{% from "macro/scm-info.njk.html" import scmInfo -%}
+
+<div class="version">
+    <!-- prettier-ignore -->
+    {% if scm -%}
+    {{ scmInfo(build, scm) }}
+    {%- else -%}
+    <h2 class="heading--h1">FKDS version {{ pkg.version }}</h2>
+    {%- endif %}
+</div>

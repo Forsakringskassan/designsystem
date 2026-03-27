@@ -1,0 +1,17 @@
+{
+    "extends": "../cypress/tsconfig.json",
+    "compilerOptions": {
+        "composite": true,
+        "rootDir": ".",
+        "noEmit": true,
+        "strict": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "**/*.cy.ts",
+        "**/*.vue",
+        "components/pagination/examples/pagination-data.ts",
+        "components/table-and-list/examples/table-data.ts"
+    ],
+    "exclude": ["node_modules/**", "playground/**"]
+}
