@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { type ComponentPublicInstance, ref } from "vue";
 import { mount } from "@vue/test-utils";
 import ITableHeader from "./ITableHeader.vue";
 import { normalizeTableColumn } from "./table-column";
@@ -89,5 +89,49 @@ describe("9.1 sorting aria attributes", () => {
             props: { column, sortEnabled: false, sortOrder: "unsorted" },
         });
         expect(wrapper.find("th").attributes("aria-sort")).toBeUndefined();
+    });
+});
+
+describe("sorting keyboard interaction", () => {
+    interface TestRow {
+        name: string;
+    }
+
+    it("should emit toggleSortOrder when pressing Space", async () => {
+        expect.assertions(1);
+        const column = normalizeTableColumn<TestRow>({
+            header: "lorem ipsum",
+            sort: true,
+            key: "name",
+        });
+        const wrapper = mount(
+            ITableHeader as unknown as ComponentPublicInstance,
+            {
+                props: { column, sortEnabled: true, sortOrder: "unsorted" },
+            },
+        );
+
+        await wrapper.get("th").trigger("keydown", { code: "Space", key: " " });
+
+        expect(wrapper.emitted("toggleSortOrder")).toEqual([["name"]]);
+    });
+
+    it("should not emit toggleSortOrder when sorting is disabled", async () => {
+        expect.assertions(1);
+        const column = normalizeTableColumn<TestRow>({
+            header: "lorem ipsum",
+            sort: true,
+            key: "name",
+        });
+        const wrapper = mount(
+            ITableHeader as unknown as ComponentPublicInstance,
+            {
+                props: { column, sortEnabled: false, sortOrder: "unsorted" },
+            },
+        );
+
+        await wrapper.get("th").trigger("keydown", { code: "Space", key: " " });
+
+        expect(wrapper.emitted("toggleSortOrder")).toBeUndefined();
     });
 });

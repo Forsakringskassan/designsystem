@@ -373,7 +373,7 @@ onMounted(() => {
         <tbody v-if="hasColumns">
             <template v-if="isEmpty">
                 <tr class="table-ng__row--empty">
-                    <td :colspan="fullColspan" class="table-ng__cell">
+                    <td :colspan="fullColspan" class="table-ng__cell" @keydown.space.prevent>
                         <slot name="empty"> {{ $t("fkui.ftable.empty.text", "Tabellen är tom") }} </slot>
                     </td>
                 </tr>
@@ -433,7 +433,7 @@ onMounted(() => {
         </tbody>
         <tfoot v-if="hasFooter">
             <tr class="table-ng__row" :aria-rowindex="ariaRowcount">
-                <td :colspan="fullColspan" class="table-ng__cell--custom">
+                <td :colspan="fullColspan" class="table-ng__cell--custom" @keydown.space.prevent>
                     <slot name="footer"></slot>
                 </td>
             </tr>
