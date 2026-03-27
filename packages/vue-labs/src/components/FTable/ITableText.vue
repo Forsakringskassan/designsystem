@@ -409,7 +409,7 @@ function onPendingValidity(): void {
             layout="f-table"
         ></i-popup-error>
     </td>
-    <td v-else ref="td" tabindex="-1" :class="staticClasses">
+    <td v-else ref="td" tabindex="-1" :class="staticClasses" @keydown.space.prevent>
         {{ fromColumnValue() }}
     </td>
 </template>
