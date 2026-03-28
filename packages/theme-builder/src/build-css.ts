@@ -71,7 +71,7 @@ async function compileSass(
     `;
     const result = await sass.compileStringAsync(data, {
         style: "expanded",
-        importers: [moduleImporter, fsImporter({ cwd, fs })],
+        importers: [moduleImporter(), fsImporter({ cwd, fs })],
         loadPaths: ["."],
     });
 
