@@ -23,6 +23,6 @@
     "@fkui/logo-default": "6.40.0",
     "@forsakringskassan/docs-generator": "2.39.3",
     "cypress": "15.13.0",
-    "vue": "3.5.30"
+    "vue": "3.5.31"
   }
 }
