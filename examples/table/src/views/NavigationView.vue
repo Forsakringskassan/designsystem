@@ -3,7 +3,7 @@ import { computed, ref } from "vue";
 import { FSelectField } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
-const selectedValue = ref<string>("");
+const selectedValue = ref("");
 
 const expandableByOption = {
     content: "expandableContent" as const,

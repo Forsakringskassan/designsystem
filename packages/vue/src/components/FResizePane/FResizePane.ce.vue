@@ -7,7 +7,6 @@ import { aggregateCssValue } from "./aggregate-css-value";
 import { clamp } from "./clamp";
 import { computeCssValue } from "./compute-css-value";
 import { type Orientation } from "./orientation";
-import { type SizeState } from "./size-state";
 import { useKeyboardHandler } from "./use-keyboard-handler";
 import { usePointerHandler } from "./use-pointer-handler";
 import { useStorage } from "./use-storage";
@@ -80,7 +79,7 @@ const STEP_SIZE = 10;
 const root = useTemplateRef("root");
 const content = useTemplateRef("content");
 const separator = useTemplateRef("separator");
-const state = ref<SizeState>({ min: -1, max: -1, current: -1 });
+const state = ref({ min: -1, max: -1, current: -1 });
 const layoutSize = ref(0);
 const storageKey = computed(() => (area.value ? `layout/${area.value}/size` : null));
 

@@ -123,17 +123,17 @@ export default defineComponent({
         const defaultMaxDate = FDate.now().addYears(10);
 
         return {
-            textFieldValue: ref<string>(""),
-            textFieldTouched: ref<boolean>(false),
-            textFieldValidityRevealed: ref<boolean>(false),
+            textFieldValue: ref(""),
+            textFieldTouched: ref(false),
+            textFieldValidityRevealed: ref(false),
             textFieldTableMode: inject("textFieldTableMode", false) as boolean,
-            componentTouched: ref<boolean>(false),
-            calendarMonth: shallowRef<FDate>(getDisplayMonth(defaultMinDate, defaultMaxDate)),
+            componentTouched: ref(false),
+            calendarMonth: shallowRef(getDisplayMonth(defaultMinDate, defaultMaxDate)),
             calendarValue: shallowRef<FDate | undefined>(undefined),
-            isCalendarOpen: ref<boolean>(false),
+            isCalendarOpen: ref(false),
             validationConfig: ref<ValidatorConfigs>({}),
-            minDate: shallowRef<FDate>(defaultMinDate),
-            maxDate: shallowRef<FDate>(defaultMaxDate),
+            minDate: shallowRef(defaultMinDate),
+            maxDate: shallowRef(defaultMaxDate),
             calendarInputs: ref<HTMLElement | null>(null),
         };
     },

@@ -133,7 +133,7 @@ const rows = ref<Row[]>([
 // Hard coded sorting on key {attributeName: "Name for the key", ...}
 const sortableAttributes = { level: "Redigerbar text" };
 
-const mySelectedRows = ref<Row[]>([rows.value[0]]);
+const mySelectedRows = ref([rows.value[0]]);
 
 function onAddRow(): void {
     rows.value.push({
