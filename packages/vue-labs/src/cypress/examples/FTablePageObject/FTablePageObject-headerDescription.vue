@@ -26,7 +26,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = ref<Row[]>([
+const rows = ref([
     {
         id: "1",
         name: "Foo",

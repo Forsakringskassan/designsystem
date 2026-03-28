@@ -31,7 +31,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = ref<Row[]>([
+const rows = ref([
     { value1: "Text 1", value2: "Text 2", value3: "Text 3" },
     { value1: "Text 4", value2: "Text 5", value3: "Text 6" },
     { value1: "Text 7", value2: "Text 8", value3: "Text 9" },
