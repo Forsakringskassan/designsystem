@@ -9,7 +9,7 @@ import {
     removeStep,
 } from "./f-wizard-api";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FWizard",
     provide(): FWizardApi {
         const wizard = this; // eslint-disable-line @typescript-eslint/no-this-alias -- needed for provide to work

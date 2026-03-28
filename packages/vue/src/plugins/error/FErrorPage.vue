@@ -2,7 +2,7 @@
 import { type PropType, defineComponent } from "vue";
 import { type ErrorData } from "../../types";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FErrorPage",
     props: {
         /* eslint-disable-next-line vue/no-unused-properties -- simplifies extending this component, the consumer might display the error */

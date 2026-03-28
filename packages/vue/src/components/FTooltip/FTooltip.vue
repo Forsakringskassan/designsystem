@@ -19,7 +19,7 @@ import { tooltipAttachTo } from "./tooltip-attach-to";
 import { useAnimation } from "./use-animation";
 import { useHorizontalOffset } from "./use-horizontal-offset";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FTooltip",
     components: { FExpand, FIcon, IFlex, IFlexItem },
     inheritAttrs: false,

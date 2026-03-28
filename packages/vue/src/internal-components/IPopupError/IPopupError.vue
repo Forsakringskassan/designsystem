@@ -8,7 +8,7 @@ import { type IPopupErrorData } from "./ipopuperror-data";
 
 const POPUP_SPACING = 10;
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "IPopupError",
     components: { FIcon },
     inheritAttrs: false,

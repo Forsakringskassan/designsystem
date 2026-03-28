@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 import { TranslationMixin } from "../../plugins/translation";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "ISkipLink",
     mixins: [TranslationMixin],
     props: {

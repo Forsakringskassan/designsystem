@@ -4,7 +4,7 @@ import { hasSlot } from "../../utils";
 import { FIcon } from "../FIcon";
 import { tooltipAttachTo } from "../FTooltip";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FLabel",
     components: {
         FIcon,

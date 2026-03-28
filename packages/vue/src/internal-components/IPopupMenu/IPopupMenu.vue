@@ -8,7 +8,7 @@ import { doMenuAction } from "./ipopupmenu-logic";
 
 const preventKeys = new Set(["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"]);
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "IPopupMenu",
     components: { IPopup },
     props: {

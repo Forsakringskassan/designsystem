@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 import { FLOAT, GAP } from "./constants";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "IFlex",
     inheritAttrs: true,
 

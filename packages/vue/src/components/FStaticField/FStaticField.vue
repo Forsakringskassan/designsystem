@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 import { FLabel } from "../FLabel";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FStaticField",
     components: {
         FLabel,

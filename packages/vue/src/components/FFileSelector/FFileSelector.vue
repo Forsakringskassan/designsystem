@@ -3,7 +3,7 @@ import { type PropType, defineComponent } from "vue";
 import { ElementIdService } from "@fkui/logic";
 import FIcon from "../FIcon/FIcon.vue";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FFileSelector",
     components: {
         FIcon,

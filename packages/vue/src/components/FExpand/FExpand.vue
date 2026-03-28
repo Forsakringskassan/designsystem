@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 import { getHTMLElementFromVueRef } from "../../utils";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FExpand",
     data() {
         return {

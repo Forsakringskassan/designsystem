@@ -5,7 +5,7 @@ import { type FormatFunction, type ParseFunction, FTextField, TranslationMixin, 
 import { type HoursMinutesString, formatNumberToTime, parseTimeToNumber } from "./converters";
 import "./validators";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "XTimeTextField",
     extends: FTextField,
     mixins: [TranslationMixin],

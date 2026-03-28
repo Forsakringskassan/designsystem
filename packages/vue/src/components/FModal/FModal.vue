@@ -11,7 +11,7 @@ import { type FModalSize, sizeClass } from "./sizes";
 /**
  * Level: Ready
  */
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FModal",
     components: { FIcon },
     mixins: [TranslationMixin],

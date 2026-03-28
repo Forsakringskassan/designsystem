@@ -23,7 +23,7 @@ import { getDisplayMonth } from "./get-display-month";
 import { isDayEnabled } from "./is-day-enabled/is-day-enabled";
 import { updateCalendarValue } from "./update-calendar-value";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FDatepickerField",
     components: {
         FCalendar,

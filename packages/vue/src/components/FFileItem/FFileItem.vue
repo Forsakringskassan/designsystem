@@ -16,7 +16,7 @@ const iconMap: Record<string, IconName> = {
     "application/vnd.openxmlformats-officedocument.wordprocessingml.template": "doc",
 };
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FFileItem",
     components: { FIcon },
     inheritAttrs: false,

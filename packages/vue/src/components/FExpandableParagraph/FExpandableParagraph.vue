@@ -5,7 +5,7 @@ import { hasSlot } from "../../utils";
 import { FExpand } from "../FExpand";
 import { FIcon } from "../FIcon";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FExpandableParagraph",
     components: {
         FIcon,

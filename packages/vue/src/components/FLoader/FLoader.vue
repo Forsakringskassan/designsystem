@@ -5,7 +5,7 @@ import { config } from "../../config";
 import { TranslationMixin } from "../../plugins";
 import { focus } from "../../utils";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FLoader",
     mixins: [TranslationMixin],
     inheritAttrs: false,

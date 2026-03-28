@@ -10,7 +10,7 @@ function defaultFormatter(this: { decimals: number }, modelValue: number): strin
     return formatNumber(modelValue, this.decimals);
 }
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FNumericTextField",
     extends: FTextField,
     props: {

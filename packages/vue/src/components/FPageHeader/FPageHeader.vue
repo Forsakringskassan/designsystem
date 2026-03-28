@@ -2,7 +2,7 @@
 import { type PropType, defineComponent } from "vue";
 import { ISkipLink } from "../../internal-components/ISkipLink";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FPageHeader",
     components: { ISkipLink },
     inheritAttrs: true,

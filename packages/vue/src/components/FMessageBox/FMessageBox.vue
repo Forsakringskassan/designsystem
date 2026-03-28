@@ -31,7 +31,7 @@ const iconClasses = {
     },
 } as Record<string, Record<string, string>>;
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FMessageBox",
     components: {
         FIcon,

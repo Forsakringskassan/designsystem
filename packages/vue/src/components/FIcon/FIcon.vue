@@ -4,7 +4,7 @@ import { type PropType, defineComponent } from "vue";
 const Flip = new Set(["horizontal", "vertical"]);
 const Rotate = new Set(["90", "180", "270"]);
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FIcon",
     inheritAttrs: false,
     props: {

@@ -8,7 +8,7 @@ import { findHTMLElementFromVueRef } from "../../utils";
 import { useCalendarHeight } from "./use-calendar-height";
 import { useYearSelector } from "./use-year-selector";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FCalendar",
     components: {
         ICalendarNavbar,

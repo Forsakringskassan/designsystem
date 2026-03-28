@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 import { ALIGNMENT } from "./constants";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "IFlexItem",
     inheritAttrs: true,
 

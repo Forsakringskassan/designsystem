@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 import { ElementIdService } from "@fkui/logic";
 import { FLabel } from "../FLabel";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FOutputField",
     components: {
         FLabel,

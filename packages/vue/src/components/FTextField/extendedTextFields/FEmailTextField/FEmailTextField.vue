@@ -11,7 +11,7 @@ import { FTextField } from "../..";
 import { TranslationMixin } from "../../../../plugins";
 import { dispatchComponentValidityEvent, renderSlotText } from "../../../../utils";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FEmailTextField",
     components: { FTextField },
     mixins: [TranslationMixin],

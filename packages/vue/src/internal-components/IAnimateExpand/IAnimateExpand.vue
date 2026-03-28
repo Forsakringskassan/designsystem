@@ -12,7 +12,7 @@ function noop(): void {
     /* do nothing */
 }
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "IAnimateExpand",
     props: {
         /**

@@ -5,7 +5,7 @@ import { EventBus } from "../../utils";
 import FErrorPage from "./FErrorPage.vue";
 import { UNHANDLED_ERROR_EVENT } from "./error-plugin";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FErrorHandlingApp",
     props: {
         defaultComponent: {

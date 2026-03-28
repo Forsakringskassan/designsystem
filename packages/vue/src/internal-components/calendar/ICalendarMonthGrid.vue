@@ -4,7 +4,7 @@ import { type FDate, getWeekdayNamings, groupByWeek } from "@fkui/date";
 import { debounce } from "@fkui/logic";
 import { getDayEndOffset, getDayStartOffset } from "./get-day-offset";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "ICalendarMonthGrid",
     props: {
         /**

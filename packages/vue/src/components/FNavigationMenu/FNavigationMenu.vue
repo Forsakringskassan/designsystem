@@ -34,7 +34,7 @@ const preventKeys = new Set([
     ...verticalKeys,
 ]);
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FNavigationMenu",
     components: { FIcon, IPopupMenu },
     mixins: [TranslationMixin],

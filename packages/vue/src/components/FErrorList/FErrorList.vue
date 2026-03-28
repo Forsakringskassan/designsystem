@@ -11,7 +11,7 @@ const noop = (): void => {
     /* do nothing */
 };
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FErrorList",
     components: { FIcon, IFlex, IFlexItem },
     props: {

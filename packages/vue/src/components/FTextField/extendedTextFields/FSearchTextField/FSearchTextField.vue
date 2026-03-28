@@ -4,7 +4,7 @@ import { ElementIdService, TranslationService, alertScreenReader } from "@fkui/l
 import { FTextField } from "../..";
 import { FIcon } from "../../../FIcon";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FSearchTextField",
     components: { FTextField, FIcon },
     inheritAttrs: false,

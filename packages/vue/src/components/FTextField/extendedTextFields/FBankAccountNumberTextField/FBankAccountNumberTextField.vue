@@ -7,7 +7,7 @@ import FTextField from "../../FTextField.vue";
 import { type ParseFunction } from "../../index";
 import { useTextFieldSetup } from "../../use-text-field-setup";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FBankAccountNumberTextField",
     extends: FTextField,
     mixins: [TranslationMixin],

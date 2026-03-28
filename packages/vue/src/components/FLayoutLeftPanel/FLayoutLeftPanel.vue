@@ -5,7 +5,7 @@ import { getElementFromVueRef } from "../../utils";
 import { FIcon } from "../FIcon";
 import { useLayoutPanel } from "./f-layout-left-panel-mixin";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FLayoutLeftPanel",
     components: {
         FIcon,

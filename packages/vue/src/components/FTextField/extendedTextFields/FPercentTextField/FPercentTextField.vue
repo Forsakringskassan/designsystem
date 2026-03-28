@@ -11,7 +11,7 @@ function defaultFormatter(this: { decimals: number }, modelValue: number): strin
     return formatPercent(modelValue, this.decimals);
 }
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FPercentTextField",
     extends: FTextField,
     mixins: [TranslationMixin],

@@ -17,7 +17,7 @@ function isEqual<T>(a: T[], b: T[]): boolean {
     return a.every((_, i) => a[i] === b[i]);
 }
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FFieldset",
     components: {
         FIcon,

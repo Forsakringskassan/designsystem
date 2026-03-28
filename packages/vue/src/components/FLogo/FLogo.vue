@@ -21,7 +21,7 @@ const props = defineProps({
 
 <script lang="ts">
 /* technical debt: `cy.mount()` doesn't work with slots defined with composition API */
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     computed: {
         ariaLabel() {
             const content = renderSlotText(this.$slots.default);

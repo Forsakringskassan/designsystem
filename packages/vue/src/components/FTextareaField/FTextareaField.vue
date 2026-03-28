@@ -4,7 +4,7 @@ import { type ValidityEvent, ElementIdService, isSet } from "@fkui/logic";
 import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
 import { FLabel } from "../FLabel";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FTextareaField",
     components: {
         FLabel,

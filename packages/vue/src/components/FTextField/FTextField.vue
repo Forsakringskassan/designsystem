@@ -10,7 +10,7 @@ import { resolveWidthClass } from "./f-text-field.logic";
 import { useTextFieldSetup } from "./use-text-field-setup";
 import { type FormatFunction, type ParseFunction } from "./index";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FTextField",
     components: { FLabel, FIcon, IPopupError, IComboboxDropdown, IComboboxToggleButton },
     inheritAttrs: false,

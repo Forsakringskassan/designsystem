@@ -7,7 +7,7 @@ import FTextField from "../../FTextField.vue";
 import { type FormatFunction } from "../../index";
 import { useTextFieldSetup } from "../../use-text-field-setup";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FClearingnumberTextField",
     extends: FTextField,
     mixins: [TranslationMixin],

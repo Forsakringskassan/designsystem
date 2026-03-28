@@ -6,7 +6,7 @@ import { FIcon } from "../FIcon";
 
 const EVENTS = ["online", "offline"];
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FOffline",
     components: {
         FIcon,

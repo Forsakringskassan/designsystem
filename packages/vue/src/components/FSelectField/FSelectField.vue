@@ -6,7 +6,7 @@ import { FIcon } from "../FIcon";
 import { FLabel } from "../FLabel";
 import { resolveWidthClass } from "./f-select-field.logic";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FSelectField",
     components: { FIcon, FLabel },
     inheritAttrs: false,

@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 import { isSet } from "@fkui/logic";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FLayoutApplicationTemplate",
     computed: {
         showHeader(): boolean {

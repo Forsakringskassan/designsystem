@@ -4,7 +4,7 @@ import { type FDate } from "@fkui/date";
 import { TranslationMixin } from "../../plugins";
 import { getCalendarDaySrText } from "./get-calendar-day-sr-text";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FCalendarDay",
     mixins: [TranslationMixin],
     props: {

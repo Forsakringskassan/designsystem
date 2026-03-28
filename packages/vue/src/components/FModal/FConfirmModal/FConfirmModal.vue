@@ -13,7 +13,7 @@ const defaultButtons: FModalButtonDescriptor[] = [
 /**
  * Level: Ready
  */
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FConfirmModal",
     components: { FModal },
     inheritAttrs: true,

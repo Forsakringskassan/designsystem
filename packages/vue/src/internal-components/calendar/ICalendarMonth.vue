@@ -9,7 +9,7 @@ import { getDayStep, isDayStepKey } from "./get-day-step";
 import { getDayTabindex } from "./get-day-tabindex";
 import { getMessage } from "./get-message";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "ICalendarMonth",
     components: {
         ICalendarMonthGrid,

@@ -4,7 +4,7 @@ import { documentOrderComparator } from "@fkui/logic";
 import { type ComponentUnmountEvent, type ComponentValidityEvent, type GroupValidityEvent } from "../../types";
 import { cleanUpElements } from "./form-utils";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FValidationGroup",
     props: {
         /**

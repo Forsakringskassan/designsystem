@@ -10,7 +10,7 @@ import { CandidateOrder, Placement, fitInsideArea, getElement, getScrollToPopup 
 import { type IPopupData } from "./ipopup-data";
 import { isTeleportDisabled } from "./is-teleport-disabled";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "IPopup",
     inheritAttrs: false,
     props: {

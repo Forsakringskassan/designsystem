@@ -7,7 +7,7 @@ import { TranslationMixin } from "../../plugins";
 import { getMessage } from "./get-message";
 import { isInvalidMonth } from "./is-invalid-month";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "ICalendarNavbar",
     components: {
         FIcon,

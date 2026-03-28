@@ -23,7 +23,7 @@ const SCROLL_DURATION = 500;
  */
 let ongoingScrollPromise: undefined | Promise<void> = undefined;
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FWizardStep",
     components: { IAnimateExpand, IFlex, IFlexItem, FValidationForm, FIcon },
     mixins: [TranslationMixin],

@@ -7,7 +7,7 @@ import FModal from "../FModal.vue";
 import { type FModalButton, type FModalButtonDescriptor, prepareButtonList } from "../modal-button";
 import { type FModalSize } from "../sizes";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FFormModal",
     components: { FModal, FValidationForm },
     mixins: [TranslationMixin],

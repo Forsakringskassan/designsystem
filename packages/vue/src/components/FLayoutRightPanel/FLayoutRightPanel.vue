@@ -6,7 +6,7 @@ import { FIcon } from "../FIcon";
 import { useLayoutPanel } from "../FLayoutLeftPanel";
 import { FLayoutRightPanelService } from "./services";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FLayoutRightPanel",
     components: {
         FIcon,

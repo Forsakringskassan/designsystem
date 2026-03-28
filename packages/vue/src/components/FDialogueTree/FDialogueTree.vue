@@ -12,7 +12,7 @@ import {
     isDialogueTreeEndQuestion,
 } from "./f-dialogue-tree-model";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FDialogueTree",
     components: {
         FIcon,

@@ -10,7 +10,7 @@ function noop(): void {
     /* do nothing */
 }
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
     name: "FValidationForm",
     components: { FValidationGroup, FErrorList },
     inheritAttrs: false,
