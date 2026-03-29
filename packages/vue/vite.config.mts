@@ -1,5 +1,9 @@
 import path from "node:path";
-import { defineConfig } from "@forsakringskassan/vite-lib-config/vite";
+import {
+    defaultPlugins,
+    defineConfig,
+} from "@forsakringskassan/vite-lib-config/vite";
+import { PluginPure } from "rollup-plugin-pure";
 
 export default defineConfig({
     fk: {
@@ -11,4 +15,12 @@ export default defineConfig({
             "@fkui/vue": path.resolve("src/index.ts"),
         },
     },
+
+    plugins: [
+        ...defaultPlugins,
+        PluginPure({
+            functions: ["defineComponent"],
+            sourcemap: true,
+        }),
+    ],
 });
