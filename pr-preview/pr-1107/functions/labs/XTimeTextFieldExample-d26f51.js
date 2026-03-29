@@ -2593,7 +2593,7 @@ var require_set_union = /* @__PURE__ */ __commonJSMin(((exports, module) => {
     return result;
   };
 }));
-(/* @__PURE__ */ __commonJSMin((() => {
+var require_es_set_union_v2 = /* @__PURE__ */ __commonJSMin((() => {
   var $ = require_export();
   var union = require_set_union();
   var setMethodGetKeysBeforeCloning = require_set_method_get_keys_before_cloning_detection();
@@ -2603,15 +2603,16 @@ var require_set_union = /* @__PURE__ */ __commonJSMin(((exports, module) => {
     real: true,
     forced: !require_set_method_accept_set_like()("union") || !setMethodGetKeysBeforeCloning("union")
   }, { union });
-})))();
-require_es_set_symmetric_difference_v2();
-require_es_set_is_superset_of_v2();
-require_es_set_is_subset_of_v2();
-require_es_set_is_disjoint_from_v2();
-require_es_set_intersection_v2();
-require_es_set_difference_v2();
-require_es_iterator_filter();
+}));
 require_es_iterator_constructor();
+require_es_iterator_filter();
+require_es_set_difference_v2();
+require_es_set_intersection_v2();
+require_es_set_is_disjoint_from_v2();
+require_es_set_is_subset_of_v2();
+require_es_set_is_superset_of_v2();
+require_es_set_symmetric_difference_v2();
+require_es_set_union_v2();
 var require_add_to_unscopables = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var wellKnownSymbol = require_well_known_symbol();
   var create = require_object_create();
