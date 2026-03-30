@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## 6.40.0 (2026-03-27)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** new `FDefinitionList` component (refs SFKUI-7296) 056ff4d
+* **@fkui/vue:** add `getDatasetMetadata()` (refs SFKUI-7348) fdce652
+* **@fkui/vue:** restrict dataset to be array of objects (refs SFKUI-7348) 2da4034
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:**  close button align center (refs SFKUI-7739) 304072d
+* **@fkui/design, @fkui/vue:** `FileItem` does not break long file names (refs SFKUI-7552) f7a5e42
+* **@fkui/design, @fkui/vue:** fix `FSortFilterDataset` clear button alignment (fixes SFKUI-7538) c04952f
+* **@fkui/design, @fkui/vue:** restore focus for buttons on modal close (refs SFKUI-7549) b904c09
+* **@fkui/design:** `cursor` set to `pointer` only for label in dialogue tree list item (fixes SFKUI-7714) ebd1668
+* **@fkui/design:** `FFileSelector` ::not support `forced-colors` (refs SFKUI-7569) 79f1d7d
+* **@fkui/design:** wrong background color for active page in `FPaginator` (fixes SFKUI-7707) 7f5462b
+* **@fkui/vue:** recalculate `IPopup` horizontal position on scroll (refs SFKUI-7591) 80b4d17
+* **deps:** update dependency dayjs to v1.11.20 f81b734
+* **deps:** update dependency i18next to v25.10.3 83aafa9
+* **deps:** update dependency i18next to v25.10.4 1139833
+* **deps:** update dependency i18next to v25.10.5 4bdd7c3
+* **deps:** update dependency i18next to v25.8.17 a6787aa
+* **deps:** update dependency i18next to v25.8.18 d984cc4
+* **deps:** update dependency i18next to v25.8.19 2d7121c
+* **deps:** update dependency i18next to v25.8.20 731eb64
+* **deps:** update dependency i18next to v25.9.0 5306f5f
+* **deps:** update dependency sass to v1.98.0 7001b20
+* **deps:** update vue monorepo to v3.5.30 a2e81b0
+
 ## 6.39.0 (2026-03-12)
 
 ### Features

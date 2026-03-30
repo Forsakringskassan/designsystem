@@ -3,7 +3,7 @@ import "@fkui/test-utils/jest";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, flushPromises, mount } from "@vue/test-utils";
 import FLayoutRightPanel from "./FLayoutRightPanel.vue";
-import { FLayoutRightPanelService } from "./services/FLayoutRightPanelService";
+import { FLayoutRightPanelService } from "./services/f-layout-right-panel-service";
 
 let wrapper: VueWrapper;
 

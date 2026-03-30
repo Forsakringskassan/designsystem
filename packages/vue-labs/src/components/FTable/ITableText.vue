@@ -10,11 +10,11 @@ import {
 } from "@fkui/logic";
 import { type ComponentValidityEvent, IPopupError, dispatchComponentValidityEvent } from "@fkui/vue";
 import { useElementHover, useEventListener, useFocusWithin } from "@vueuse/core";
-import { type PopupError } from "./PopupEror";
 import { isColumnTypeNumber } from "./columns/helpers";
 import { inputFieldConfig } from "./input-fields-config";
 import { addInputValidators } from "./input-validators";
 import { isAlphanumeric } from "./is-alphanumeric";
+import { type PopupError } from "./popup-eror";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnNumber, type NormalizedTableColumnText } from "./table-column";
 
@@ -149,24 +149,43 @@ function setUpValidation(el: HTMLInputElement): void {
 
 function setUpFakeValidation(el: HTMLInputElement): void {
     assertRef(inputElement);
+    const input = inputElement.value;
+
+    function emitFakeValidity(nativeEvent: ValidityNativeEvent): void {
+        const fakeEvent = new CustomEvent<ValidityEvent>("validity", {
+            detail: {
+                isValid: true,
+                nativeEvent,
+                validityMode: "INITIAL",
+                validationMessage: "",
+                target: input,
+                elementId: String(input.id),
+            },
+        });
+
+        onValidity(fakeEvent);
+    }
+
     const nativeEvents: ValidityNativeEvent[] = ["change", "blur"];
 
     for (const nativeEvent of nativeEvents) {
         useEventListener(el, nativeEvent, () => {
-            const fakeEvent = new CustomEvent<ValidityEvent>("validity", {
-                detail: {
-                    isValid: true,
-                    nativeEvent,
-                    validityMode: "INITIAL",
-                    validationMessage: "",
-                    target: inputElement.value,
-                    elementId: String(inputElement.value.id),
-                },
-            });
-
-            onValidity(fakeEvent);
+            emitFakeValidity(nativeEvent);
         });
     }
+
+    validationFacade = {
+        validateElement: () => {
+            emitFakeValidity("validate");
+            return Promise.resolve({
+                isValid: true,
+                error: "",
+                isSubmitted: false,
+                isTouched: false,
+            });
+        },
+        dispatchComponentValidityEvent: () => undefined,
+    };
 
     useEventListener(el, "input", onPendingValidity);
     useEventListener(el, "component-validity", (e) => {
@@ -308,6 +327,7 @@ function onEditingKeydown(event: KeyboardEvent): void {
                 onStopEdit({ reason: "enter" });
             } else {
                 pendingStopEditReason = "enter";
+                void validationFacade.validateElement(inputElement.value);
             }
             break;
         }
@@ -413,7 +433,7 @@ function onPendingValidity(): void {
             layout="f-table"
         ></i-popup-error>
     </td>
-    <td v-else ref="td" tabindex="-1" :class="staticClasses">
+    <td v-else ref="td" tabindex="-1" :class="staticClasses" @keydown.space.prevent>
         {{ fromColumnValue() }}
     </td>
 </template>

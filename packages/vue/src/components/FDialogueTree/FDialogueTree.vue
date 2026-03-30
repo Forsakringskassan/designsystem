@@ -4,13 +4,13 @@ import { focus, focusFirst } from "@fkui/logic";
 
 import { getHTMLElementsFromVueRef } from "../../utils";
 import { FIcon } from "../FIcon";
-import { type FDialogueTreeData } from "./FDialogueTreeData";
+import { type FDialogueTreeData } from "./f-dialogue-tree-data";
 import {
     type FDialogueTreeOption,
     type FDialogueTreeQuestion,
     type FDialogueTreeUserProgress,
     isDialogueTreeEndQuestion,
-} from "./FDialogueTreeModel";
+} from "./f-dialogue-tree-model";
 
 export default defineComponent({
     name: "FDialogueTree",

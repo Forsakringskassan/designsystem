@@ -54,8 +54,8 @@ import {
     setVisibilityColumn,
     updateSortOrder,
 } from "../FTableColumn";
-import { onKeydown as onKeydown2 } from "./FTableKeybindings";
-import { useExpandableTable } from "./useExpandableTable";
+import { onKeydown as onKeydown2 } from "./f-table-keybindings";
+import { useExpandableTable } from "./use-expandable-table";
 
 const {
     rows,
@@ -448,8 +448,7 @@ function setSelectedRows(): void {
         return;
     }
     selectedRows.value = modelValue.filter((row: T) => {
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt */
-        return includeItem<T, KeyAttribute>(row, internalRows.value, internalKey as KeyAttribute);
+        return includeItem(row, internalRows.value, internalKey);
     });
 }
 

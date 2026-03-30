@@ -3,10 +3,10 @@ import { type PropType, defineComponent } from "vue";
 import { debounce, handleTab, popFocus, pushFocus } from "@fkui/logic";
 import { config } from "../../config";
 import { getHTMLElementFromVueRef } from "../../utils";
-import { CandidateOrder, Placement, fitInsideArea, getElement, getScrollToPopup } from "./IPopupUtils";
 import { MIN_DESKTOP_WIDTH, POPUP_SPACING } from "./constants";
 import { getContainer } from "./get-container";
 import { getFocusableElement } from "./get-focusable-element";
+import { CandidateOrder, Placement, fitInsideArea, getElement, getScrollToPopup } from "./i-popup-utils";
 import { type IPopupData } from "./ipopup-data";
 import { isTeleportDisabled } from "./is-teleport-disabled";
 

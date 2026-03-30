@@ -1,1 +1,1 @@
-export * from "./numberConverter";
+export * from "./number-converter";

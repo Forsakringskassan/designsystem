@@ -1,5 +1,5 @@
 import { type Ref, nextTick, ref } from "vue";
-import { type PopupError } from "./PopupEror";
+import { type PopupError } from "./popup-eror";
 
 export interface UsePopupError {
     onPopupError: (popupError: PopupError) => Promise<void>;

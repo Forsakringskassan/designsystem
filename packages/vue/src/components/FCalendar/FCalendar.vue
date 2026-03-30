@@ -6,7 +6,7 @@ import ICalendarMonth from "../../internal-components/calendar/ICalendarMonth.vu
 import ICalendarNavbar from "../../internal-components/calendar/ICalendarNavbar.vue";
 import { findHTMLElementFromVueRef } from "../../utils";
 import { useCalendarHeight } from "./use-calendar-height";
-import { useYearSelector } from "./useYearSelector";
+import { useYearSelector } from "./use-year-selector";
 
 export default defineComponent({
     name: "FCalendar",

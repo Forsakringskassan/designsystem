@@ -1,1 +1,1 @@
-export * from "./clearingnumberConverter";
+export * from "./clearingnumber-converter";

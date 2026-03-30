@@ -1,3 +1,3 @@
 export * from "./constants";
-export * from "./HoursMinutesNumberUtils";
-export * from "./HoursMinutesValidatorUtils";
+export * from "./hours-minutes-number-utils";
+export * from "./hours-minutes-validator-utils";

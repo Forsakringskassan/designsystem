@@ -1,1 +1,1 @@
-export * from "./dateConverter";
+export * from "./date-converter";

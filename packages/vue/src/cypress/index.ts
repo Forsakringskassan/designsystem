@@ -60,7 +60,7 @@ export { IPopupPageObject } from "./IPopup.pageobject";
 export { FValidationFormPageObject } from "./FValidationForm.pageobject";
 
 export { AlertScreenReaderPageObject } from "./AlertScreenReader.pageobject";
-export { Input } from "./Input";
+export { Input } from "./input";
 export { FDialogueTreePageObject } from "./FDialogueTree.pageobject";
 export { FDialogueTreeItemPageObject } from "./FDialogueTreeItem.pageobject";
 export { FPaginatorPageObject } from "./FPaginator.pageobject";

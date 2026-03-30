@@ -1,4 +1,4 @@
-export { TranslationService } from "./TranslationService";
+export { TranslationService } from "./translation-service";
 export {
     type BuildDepth,
     type CustomTranslationRegistry,
@@ -10,5 +10,5 @@ export {
     type TranslateFunction,
     type TranslationProviderInterface,
     type ValidKey,
-} from "./TranslationProviderInterface";
-export { type TranslationServiceInterface } from "./TranslationServiceInterface";
+} from "./translation-provider-interface";
+export { type TranslationServiceInterface } from "./translation-service-interface";

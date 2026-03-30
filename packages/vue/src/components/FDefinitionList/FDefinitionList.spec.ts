@@ -1,10 +1,10 @@
 import { VueWrapper, mount } from "@vue/test-utils";
 import FDefinitionList from "./FDefinitionList.vue";
-import { FDefinitionListItem } from "./FDefinitionListItem";
+import { FDefinitionListItem } from "./f-definition-list-item";
 
 const definitions = [
-    { term: "Term 1", description: "Description 1" },
-    { term: "Term 2", description: "Description 2" },
+    { term: "Term 1", definition: "Description 1" },
+    { term: "Term 2", definition: "Description 2" },
 ];
 
 function createWrapper(definitions: FDefinitionListItem[]): VueWrapper {
@@ -49,7 +49,7 @@ describe("expected DOM structures", () => {
             expect(ddElements).toHaveLength(expectedDdElements);
             for (const [index, ddElement] of ddElements.entries()) {
                 expect(ddElement.text()).toBe(
-                    `${definitions[index].description}`,
+                    `${definitions[index].definition}`,
                 );
             }
         },

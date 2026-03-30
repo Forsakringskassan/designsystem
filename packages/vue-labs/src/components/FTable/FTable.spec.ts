@@ -298,6 +298,26 @@ describe("1.8 when table is empty", () => {
         expect(wrapper.find("thead").exists()).toBeFalsy();
         expect(wrapper.find("tbody").exists()).toBeFalsy();
     });
+
+    it("should prevent default when Space is pressed on the empty cell", () => {
+        expect.assertions(1);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                rows,
+                columns,
+            },
+        });
+
+        const event = new KeyboardEvent("keydown", {
+            bubbles: true,
+            cancelable: true,
+            key: " ",
+            code: "Space",
+        });
+        wrapper.get("tbody td").element.dispatchEvent(event);
+
+        expect(event.defaultPrevented).toBe(true);
+    });
 });
 
 describe("1.12 aria-rowcount", () => {
@@ -790,6 +810,29 @@ describe("1.17 footer", () => {
             const footerCell = wrapper.get("tfoot td");
             expect(footerCell.attributes("colspan")).toBe("5");
         });
+
+        it("should prevent default when Space is pressed on the footer cell", () => {
+            expect.assertions(1);
+            const wrapper = mount(FTable<(typeof rows)[number]>, {
+                props: {
+                    rows,
+                    columns,
+                },
+                slots: {
+                    footer: "Footer",
+                },
+            });
+
+            const event = new KeyboardEvent("keydown", {
+                bubbles: true,
+                cancelable: true,
+                key: " ",
+                code: "Space",
+            });
+            wrapper.get("tfoot td").element.dispatchEvent(event);
+
+            expect(event.defaultPrevented).toBe(true);
+        });
     });
 });
 
@@ -1217,6 +1260,37 @@ describe("select cell", () => {
         await cell.trigger("click");
         expect(cellEditable[0].attributes("aria-expanded")).toBe("true");
         expect(cellEditable[1].attributes("aria-expanded")).toBe("false");
+    });
+
+    it("should open dropdown on space", async () => {
+        const rows = [{ option: "Foo" }, { option: "Bar" }];
+        const columns = defineTableColumns<(typeof rows)[number]>([
+            {
+                type: "select",
+                header: "A",
+                options: ["Foo", "Bar", "Baz"],
+                key: "option",
+                editable: true,
+                label: () => "Label",
+            },
+        ]);
+        const wrapper = mount(FTable<(typeof rows)[number]>, {
+            props: {
+                columns,
+                rows,
+            },
+            global: {
+                stubs: ["teleport"],
+            },
+        });
+
+        const cell = wrapper.get("tbody tr:nth-child(1) td");
+        await cell.trigger("keydown", { code: "Space" });
+
+        const cellEditable = wrapper.findAll(
+            ".table-ng__editable[aria-expanded]",
+        );
+        expect(cellEditable[0].attributes("aria-expanded")).toBe("true");
     });
 });
 

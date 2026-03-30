@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { CandidateOrder, Placement, clamp, fitInsideArea } from "../IPopupUtils";
+import { CandidateOrder, Placement, clamp, fitInsideArea } from "../i-popup-utils";
 
 const SPACING = 10;
 

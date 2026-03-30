@@ -1,12 +1,12 @@
 export {
     type ComponentUnmountEvent,
     type ComponentValidityEvent,
-} from "./ComponentValidityEvent";
-export { ErrorData } from "./ErrorData";
-export { ErrorViewData } from "./ErrorViewData";
+} from "./component-validity-event";
+export { ErrorData } from "./error-data";
+export { ErrorViewData } from "./error-view-data";
 export { type ErrorItem } from "./FErrorList";
-export { type GroupValidityEvent } from "./GroupValidityEvent";
-export { FormErrorList } from "./FormErrorList";
+export { type GroupValidityEvent } from "./group-validity-event";
+export { FormErrorList } from "./form-error-list";
 export { type ListArray, type ListItem, type UnknownItem } from "./FList";
 export { type InjectionKeyTable } from "./injection-key-table";
-export { MenuAction } from "./MenuAction";
+export { MenuAction } from "./menu-action";

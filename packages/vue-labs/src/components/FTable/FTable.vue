@@ -5,6 +5,7 @@
 >
 import {
     type ComponentPublicInstance,
+    type HTMLAttributes,
     type Ref,
     computed,
     onMounted,
@@ -22,16 +23,16 @@ import {
     useSlotUtils,
     useTranslate,
 } from "@fkui/vue";
-import { activateCell, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./FTable.logic";
 import ITableExpandButton from "./ITableExpandButton.vue";
 import ITableExpandable from "./ITableExpandable.vue";
 import ITableHeader from "./ITableHeader.vue";
 import ITableHeaderSelectable from "./ITableHeaderSelectable.vue";
 import ITableSelectable from "./ITableSelectable.vue";
-import { type MetaRow } from "./MetaRow";
 import { isFTableCellApi, tableCellApiSymbol } from "./f-table-api";
+import { activateCell, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./f-table.logic";
 import { getBodyRowCount } from "./get-body-row-count";
 import { getMetaRows } from "./get-meta-rows";
+import { type MetaRow } from "./meta-row";
 import { stopEditKey } from "./start-stop-edit";
 import { type NormalizedTableColumn, type TableColumn, normalizeTableColumns } from "./table-column";
 import { usePopupError } from "./use-popup-error";
@@ -49,6 +50,7 @@ const {
     rows,
     keyAttribute = undefined,
     expandableAttribute = undefined,
+    rowClass = undefined,
     striped,
     disableDividers,
     selectable = undefined,
@@ -57,11 +59,16 @@ const {
     rows: T[];
     keyAttribute?: KeyAttribute;
     expandableAttribute?: ExpandableAttribute;
+    /**
+     * Optional callback for setting classes on table rows (`<tr>` element).
+     */
+    rowClass?: (row: T) => HTMLAttributes["class"];
     striped?: boolean;
     disableDividers?: boolean;
     selectable?: "single" | "multi";
 }>();
 
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-arguments -- false positive, bug? */
 defineSlots<{
     /**
      * Slot for table caption
@@ -171,6 +178,10 @@ async function stopEditHandler(
 }
 
 provide(stopEditKey, stopEditHandler);
+
+function getRowClass(row: T): HTMLAttributes["class"] {
+    return typeof rowClass === "function" ? rowClass(row) : undefined;
+}
 
 function onToggleExpanded(key: ItemIdentifier): void {
     if (expandedKeys.value.has(key)) {
@@ -363,7 +374,7 @@ onMounted(() => {
         <tbody v-if="hasColumns">
             <template v-if="isEmpty">
                 <tr class="table-ng__row--empty">
-                    <td :colspan="fullColspan" class="table-ng__cell">
+                    <td :colspan="fullColspan" class="table-ng__cell" @keydown.space.prevent>
                         <slot name="empty"> {{ $t("fkui.ftable.empty.text", "Tabellen är tom") }} </slot>
                     </td>
                 </tr>
@@ -373,6 +384,7 @@ onMounted(() => {
                 v-else
                 :key
                 class="table-ng__row"
+                :class="getRowClass(row)"
                 :aria-level="level"
                 :aria-rowindex="rowIndex"
                 :aria-setsize="setsize"
@@ -422,7 +434,7 @@ onMounted(() => {
         </tbody>
         <tfoot v-if="hasFooter">
             <tr class="table-ng__row" :aria-rowindex="ariaRowcount">
-                <td :colspan="fullColspan" class="table-ng__cell--custom">
+                <td :colspan="fullColspan" class="table-ng__cell--custom" @keydown.space.prevent>
                     <slot name="footer"></slot>
                 </td>
             </tr>

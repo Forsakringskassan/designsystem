@@ -1,12 +1,12 @@
 import { type Ref, type ShallowRef, onUpdated, ref, watch } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
 import { getItemIdentifier } from "@fkui/vue";
+import { type FTableApi } from "./f-table-api";
 import {
     activateCell,
     getCellTarget,
     getVerticalNavIndex,
-} from "./FTable.logic";
-import { type FTableApi } from "./f-table-api";
+} from "./f-table.logic";
 
 function matching(needle: unknown): (item: unknown) => boolean {
     const id = getItemIdentifier(needle);

@@ -3,7 +3,7 @@ import { defineComponent, toRefs } from "vue";
 import { focus } from "@fkui/logic";
 import { getElementFromVueRef } from "../../utils";
 import { FIcon } from "../FIcon";
-import { useLayoutPanel } from "./FLayoutLeftPanelMixin";
+import { useLayoutPanel } from "./f-layout-left-panel-mixin";
 
 export default defineComponent({
     name: "FLayoutLeftPanel",

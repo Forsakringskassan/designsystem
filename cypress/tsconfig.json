@@ -8,7 +8,7 @@
             "cypress-html-validate/commands",
             "cypress-real-events",
             "@forsakringskassan/cypress-visual-regression/commands",
-            "forcedColors"
+            "forced-colors"
         ],
         "typeRoots": ["../node_modules", "../node_modules/@types", "./types"],
         "paths": {

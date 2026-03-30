@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import { TranslationPlugin } from "../../plugins";
 import { ListArray, UnknownItem } from "../../types";
-import * as ListUtils from "../../utils/ListUtils";
+import * as ListUtils from "../../utils/list-utils";
 import FList from "./FList.vue";
 
 const items = [

@@ -1,1 +1,1 @@
-export * from "./ValidationErrorMessageBuilder";
+export * from "./validation-error-message-builder";

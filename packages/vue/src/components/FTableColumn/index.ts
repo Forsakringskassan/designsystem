@@ -9,6 +9,6 @@ export {
     setSortableColumns,
     setVisibilityColumn,
     updateSortOrder,
-} from "./FTableColumnData";
-export * from "./FTableInterface";
+} from "./f-table-column-data";
+export * from "./f-table-interface";
 export { default as FTableColumn } from "./FTableColumn.vue";

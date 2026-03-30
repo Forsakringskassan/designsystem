@@ -1,5 +1,5 @@
 import { configLogic } from "@fkui/logic";
-import { type FKUIConfig, FKUIConfigButtonOrder } from "./FKUIConfig";
+import { type FKUIConfig, FKUIConfigButtonOrder } from "./fkui-config";
 
 let popupContainer: string | HTMLElement = document.body;
 let production = true;

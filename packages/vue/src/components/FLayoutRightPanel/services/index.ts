@@ -2,4 +2,4 @@ export {
     type FLayoutRightPanelContentEvent,
     type FLayoutRightPanelInteface,
     FLayoutRightPanelService,
-} from "./FLayoutRightPanelService";
+} from "./f-layout-right-panel-service";

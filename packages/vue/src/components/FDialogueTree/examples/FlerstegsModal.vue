@@ -42,7 +42,7 @@ const createInitialButtons = (): FModalButtonDescriptor[] => [
     },
 ];
 
-const buttons = ref<FModalButtonDescriptor[]>(createInitialButtons());
+const buttons = ref(createInitialButtons());
 
 function onCancel(): void {
     emit("cancel");

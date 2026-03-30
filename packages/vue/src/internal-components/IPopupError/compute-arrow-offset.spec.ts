@@ -1,4 +1,4 @@
-import { Placement } from "../IPopup/IPopupUtils";
+import { Placement } from "../IPopup/i-popup-utils";
 import { computeArrowOffset } from "./compute-arrow-offset";
 
 describe("computeArrowOffset", () => {
