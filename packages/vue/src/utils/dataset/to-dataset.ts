@@ -1,4 +1,8 @@
-import { type Dataset, datasetSymbol } from "./dataset";
+import {
+    type Dataset,
+    type DatasetNestedKeyOf,
+    datasetSymbol,
+} from "./dataset";
 import { type DatasetArrayMetadata } from "./dataset-array-metadata";
 import { type DatasetElementMetadata } from "./dataset-element-metadata";
 import { isDataset } from "./is-dataset";
@@ -18,7 +22,10 @@ import { isDataset } from "./is-dataset";
  * @internal
  * @since v6.39.0
  */
-export function toDataset<T extends object>(dataset: T[]): Dataset<T> {
+export function toDataset<T extends object>(
+    dataset: T[],
+    nestedAttribute: DatasetNestedKeyOf<T> | undefined,
+): Dataset<T> {
     if (isDataset(dataset)) {
         return dataset;
     }
@@ -41,8 +48,9 @@ export function toDataset<T extends object>(dataset: T[]): Dataset<T> {
         });
     }
 
-    const value: DatasetArrayMetadata = {
+    const value: DatasetArrayMetadata<T> = {
         size: dataset.length,
+        nestedAttribute,
     };
 
     /* The `Dataset<T>` interface declares branding with an opaque marker

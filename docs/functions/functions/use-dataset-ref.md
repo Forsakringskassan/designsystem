@@ -16,13 +16,16 @@ Datamängder är arrayer utökade med extra metadata för att hantera tillgängl
 ## Syntax
 
 ```ts nocompile
-function useDatasetRef<T>(initial?: T[]): Ref<Dataset<T>>;
+function useDatasetRef<T>(initial, nestedAttribute);
 ```
 
 ### Parametrar
 
-`initial` {@optional}
+`initial: T[]` {@optional}
 : Initialt värde. Default är en tom array.
+
+`nestedAttribute: DatasetNestedKeyOf<T>` {@optional}
+: Property i element som innehåller nästlade rader.
 
 ### Returvärde
 
@@ -57,6 +60,28 @@ const dataset = useDatasetRef([
 console.log(dataset.value.length); // 2
 console.log(dataset.value.at(0)); // { id: "1", name: "Äpple" }
 console.log(dataset.value.filter((it) => it.name.startsWith("B"))); // [{ id: "2", name: "Banan" }]
+```
+
+Om datamängden har nästlade/expanderade rader anger man den property som innehåller de nästlade raderna:
+
+```ts
+import { useDatasetRef } from "@fkui/vue";
+
+const rows = [
+    {
+        id: "1",
+        name: "Äpple",
+        nested: [
+            { id: "1.1", name: "Pink Lady" },
+            { id: "1.2", name: "Granny Smith" },
+        ],
+    },
+    {
+        id: "2",
+        name: "Banan",
+    },
+];
+const dataset = useDatasetRef(rows, "nested");
 ```
 
 ## Relaterat
