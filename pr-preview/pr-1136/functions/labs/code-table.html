@@ -6,36 +6,36 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Kod (tillhör nya tabellkomponenten) - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-4a1ec2.css"
+            href="../../assets/docs-ca6197.css"
             crossorigin
-            integrity="sha384-OhQsJQSlNnBRUFqrx4ldNCQd55mGTiPOfcZbL7nR+DJIeI+3QMXTkrm8lzo/vyxM"
+            integrity="sha384-JCLRt+xcbPk3X7oreOXdNWEAR92C2cw+in983IUh6M4X8A+LEg9hf5BIk9PzpCrc"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-47abfd.css"
+            href="../../assets/docs-fkui-5b0495.css"
             crossorigin
-            integrity="sha384-jbewKdyUlGiINg9GqAeIZdrBeZ0oAoNo2PpbMFjONywIaSJ8JHV06wTjSlnZIJd0"
+            integrity="sha384-Xt56TxOdeSOQMGgzrQlzrx8VKWN+QdDFqFvh8gTTkeSHn0iBp2WQHvJJlBJjv0td"
             
         />
 
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../assets/vendor-vue-dd241e.js",
+    "vue": "../../assets/vendor-vue-e1fd03.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-dd52a5.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-4b3ba3.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js"
+    "@fkui/vue": "../../assets/vendor-fkui-vue-a6dcb7.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-f3f4a6.js"
   },
   "integrity": {
-    "../../assets/vendor-vue-dd241e.js": "sha384-3bp3RphA5Fue/POFOIMqyfDfPU6ARe/NNr5xPPAVr1ycHv2556I1esecXtk1Wt0s",
+    "../../assets/vendor-vue-e1fd03.js": "sha384-FEAIjbCrqHsp7YTJ+ObPap4Wmkv9ApqZ68MSiM9Hnp8B0H2h0UueVu2gdfnfK8Fe",
     "../../assets/vendor-fkui-vue-selectors-dd52a5.js": "sha384-m27Lu53OLaLen7ASwujbnbVpRXC2zmCy45iu0vrnS6mjnoUT3/ld10vJilIF2em7",
     "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-4b3ba3.js": "sha384-oRDXZ9Jbst2/4Kumj5PDOcpPhKCFRzoo48IDTsGx1eNBL+XM6Q1vLvIuTilLy2DB",
-    "../../assets/vendor-forsakringskassan-docs-live-example-297e3b.js": "sha384-PUTSynHDD212n+s+dqThyOaj24OlZQJGsyjX8DCQB2pQg15TTuHNg699Kf5e6hwU"
+    "../../assets/vendor-fkui-vue-a6dcb7.js": "sha384-41G1El/PN2vmdDMUu5xbdpauqLftgCLj8r3GhP2V4j6B8p8T7OeLKxwfqLLS0Vd4",
+    "../../assets/vendor-forsakringskassan-docs-live-example-f3f4a6.js": "sha384-MhsoP4nH99Ys2eSrk2TK2J61MU/MjXjTIhqrsMiJeFXodLrCMcatsB3zxJnG0fR0"
   }
 }
         </script><script
@@ -84,21 +84,21 @@
 
         <link
             rel="preload"
-            href="../../search-data-f7eb17.json"
+            href="../../search-data-9c2522.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Vw51EpvrSinpE+8XtYiEUlhUdb52cd1aezBNvOW7XbNACTsc/z1+YYTlloEZ3R75"
+            integrity="sha384-OHjEjBMZbfxZeqAHOQIQ3Xxl1ALmxwF/SPAvtICDnpfK3d/5neJJgVSe89mbhFvL"
             id="search-data"
         />
     </head>
     <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
     <span class="docs-motd__icon">
-        <span class="icon-stack icon-stack--info">
-            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+        <span class="docs-icon-stack docs-icon-stack--info">
+            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-circle"></use>
             </svg>
-            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
                 <use xlink:href="#docs-icon-i"></use>
             </svg>
         </span>
@@ -172,7 +172,7 @@
         <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
             <button type="button" class="docs-topnav__anchor" aria-expanded="false">
                 <span>Mer</span>
-                <svg class="icon" focusable="false" aria-hidden="true">
+                <svg class="docs-icon" focusable="false" aria-hidden="true">
                     <use xlink:href="#docs-icon-arrow-down"></use>
                 </svg>
             </button>
@@ -240,17 +240,17 @@
 <nav class="navigation" aria-label="Sekundär">
 <ol><li class="expandable ">
         <details >
-            <summary>Cypress <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Cypress <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="expandable ">
         <details >
-            <summary>Pageobject <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Pageobject <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="expandable ">
         <details >
-            <summary>FBadgePageObject() <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>FBadgePageObject() <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -292,7 +292,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>FDetailsPanelPageObject() <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>FDetailsPanelPageObject() <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -367,7 +367,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>FFileItemPageObject() <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>FFileItemPageObject() <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -409,7 +409,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>FProgressbarPageObject <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>FProgressbarPageObject <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -473,7 +473,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>FInteractiveTablePageObject <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>FInteractiveTablePageObject <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -515,7 +515,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>FLabelPageObject <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>FLabelPageObject <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -579,7 +579,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>FMinimizablePanel <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>FMinimizablePanel <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -673,12 +673,12 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Datum <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Datum <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="expandable ">
         <details >
-            <summary>FYear <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>FYear <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -881,7 +881,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Funktioner <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Funktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -919,7 +919,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>DOM-funktioner <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>DOM-funktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1115,6 +1115,17 @@
         </details>
     </li><li class="link ">
         <a
+            href="../functions/get-dataset-metadata.html"
+            
+            
+            
+            data-path="functions/functions/get-dataset-metadata.html"
+            
+        >
+            getDatasetMetadata()
+        </a>
+    </li><li class="link ">
+        <a
             href="../functions/handle-keyboard-focus-navigation.html"
             
             
@@ -1159,7 +1170,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Modalfunktioner <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Modalfunktioner <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1300,7 +1311,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>ValidationErrorMessageBuilder <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>ValidationErrorMessageBuilder <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1357,7 +1368,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Helpers <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Helpers <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1388,7 +1399,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>i18next <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>i18next <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1441,7 +1452,7 @@
         </a>
     </li><li class="expandable active">
         <details open>
-            <summary>Labs <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Labs <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1457,7 +1468,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Tabell <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Tabell <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1572,7 +1583,7 @@
         </a>
     </li><li class="expandable ">
         <details >
-            <summary>Plugins <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Plugins <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1636,7 +1647,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Sass <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Sass <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1667,7 +1678,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Services <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Services <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1687,7 +1698,7 @@
         </details>
     </li><li class="expandable ">
         <details >
-            <summary>Testverktyg <svg focusable="false" class="icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Testverktyg <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
 <ol><li class="link ">
@@ -1764,7 +1775,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 id="title">Kod (tillhör nya tabellkomponenten)</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="title">Kod (tillhör nya tabellkomponenten)</h1>
 
                     
                     <div id="aside"><dl></dl>
@@ -1774,7 +1785,7 @@
                         <details id="outline">
                             <summary class="outline__heading">
                                 Innehåll
-                                <svg focusable="false" class="icon" aria-hidden="true">
+                                <svg focusable="false" class="docs-icon" aria-hidden="true">
                                     <use href="#docs-icon-arrow-down"></use>
                                 </svg>
                             </summary>
@@ -1816,12 +1827,12 @@
 
                     <div id="content"><p class="docs-paragraph">Sidan är under omarbetning för nya tabellkomponenten och kan innehålla felaktigheter.</p>
 <p class="docs-paragraph">Den här sidan innehåller information om hur du sätter upp komponenten tabell i din applikation.</p>
-<h2 id="navigering_plocka_bort_avsnitt_helt"><a class="header-anchor" href="#navigering_plocka_bort_avsnitt_helt">Navigering (plocka bort avsnitt helt?)</a></h2><p class="docs-paragraph">Navigering i en tabell styrs av vilken role som tabellen har.</p>
+<h2 id="navigering_plocka_bort_avsnitt_helt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#navigering_plocka_bort_avsnitt_helt">Navigering (plocka bort avsnitt helt?)</a></h2><p class="docs-paragraph">Navigering i en tabell styrs av vilken role som tabellen har.</p>
 <p class="docs-paragraph">Tabellen är som standard uppsatt med <code>role:grid</code>.</p>
 <p class="docs-paragraph">Om tabellen har expanderbara rader ska du sätta <code>role:treegrid</code> oavsett vilka andra funktioner som ingår i tabellen.</p>
 <p class="docs-paragraph">Vid <code>role:grid</code> eller <code>role:treegrid</code> navigerar användren till tabellen genom tabbning.
 När användaren tabbat sig till tabellen sker navigering inom tabellen med hjälp av piltangenterna.</p>
-<h2 id="tabellrubrik"><a class="header-anchor" href="#tabellrubrik">Tabellrubrik</a></h2><p class="docs-paragraph">En tabell ska alltid ha en rubrik, antingen med caption-elementet eller en associerad rubrik (heading).
+<h2 id="tabellrubrik" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabellrubrik">Tabellrubrik</a></h2><p class="docs-paragraph">En tabell ska alltid ha en rubrik, antingen med caption-elementet eller en associerad rubrik (heading).
 Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå tabellen.</p>
 <p class="docs-paragraph">Om tabellen har en rubrik (heading) i nära anslutning som också förklarar tabellens innebörd assoccierar du den med <code>aria-labelledby</code>:</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
@@ -1829,9 +1840,9 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla:</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="kolumner"><a class="header-anchor" href="#kolumner">Kolumner</a></h2><p class="docs-paragraph">Du konfigurerar kolumner i tabellen med funktionen <code>defineTableColumns</code>.</p>
+<h2 id="kolumner" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kolumner">Kolumner</a></h2><p class="docs-paragraph">Du konfigurerar kolumner i tabellen med funktionen <code>defineTableColumns</code>.</p>
 <p class="docs-paragraph">I funktionen definierar du upp kolumnerna i tabell genom att bland annat bestämma/sätta kolumnrubrik, vänster-/högerjustering av innehåll, formatering, validering, kolumntyp med mera.</p>
-<h3 id="kolumnrubrik"><a class="header-anchor" href="#kolumnrubrik">Kolumnrubrik</a></h3><p class="docs-paragraph">Bestäm hur tabellens kolumnrubriker ska vara placerade och hur data i kolumnerna ska presenteras.
+<h3 id="kolumnrubrik" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#kolumnrubrik">Kolumnrubrik</a></h3><p class="docs-paragraph">Bestäm hur tabellens kolumnrubriker ska vara placerade och hur data i kolumnerna ska presenteras.
 Kolumnrubriker är som standard vänsterjusterade, men om innehållet i kolumnen är numeriska tal ska du ändra till högerjusterad.
 Vid kolumnrubrik kan du också lägga till</p>
 <ul>
@@ -1843,14 +1854,14 @@ Vid kolumnrubrik kan du också lägga till</p>
 Tnum (tabular figures) är en funktion som ersätter siffror med motsvarande tecken som tar samma utrymme i bredd.
 Till exempel kommer talet 111 ta samma plats som 000.
 Vid numeriska tal ska innehållet i kolumnen däremot vara högerjusterat och med tnum.</p>
-<h3 id="kolumnbredder"><a class="header-anchor" href="#kolumnbredder">Kolumnbredder</a></h3><p class="docs-paragraph">Kolumnents bredd justeras generellt sett av cellernas innehåll men med proparna <code>expand</code> och <code>shrink</code> kan du indikera att en kolumn ska använda så mycket eller så lite utrymme som möjligt.</p>
+<h3 id="kolumnbredder" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#kolumnbredder">Kolumnbredder</a></h3><p class="docs-paragraph">Kolumnents bredd justeras generellt sett av cellernas innehåll men med proparna <code>expand</code> och <code>shrink</code> kan du indikera att en kolumn ska använda så mycket eller så lite utrymme som möjligt.</p>
 <p class="docs-paragraph">En kolumn med <code>expand</code> tar så mycket utrymme den kan.
 En kolumn med <code>shrink</code> tar så lite utrymme den kan.</p>
 <p class="docs-paragraph">Om flera kolumner har <code>expand</code> fördelas storleken godtycklingt efter webbläsarens preferens.</p>
 <p class="docs-paragraph">Om inget anges fungerar kolumnen som om <code>expand</code> är satt.
 Det är fel att sätta både <code>expand</code> och <code>shrink</code> samtidigt.</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h3 id="kolumntyper"><a class="header-anchor" href="#kolumntyper">Kolumntyper</a></h3><p class="docs-paragraph">Tabellen har nio olika kolumntyper som påverkar hur cellen presenteras:</p>
+<h3 id="kolumntyper" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#kolumntyper">Kolumntyper</a></h3><p class="docs-paragraph">Tabellen har nio olika kolumntyper som påverkar hur cellen presenteras:</p>
 <ul>
 <li>radrubrik: <code>rowheader</code> (länk till avsnitt ovan?)</li>
 <li>text: <code>text</code></li>
@@ -1883,11 +1894,11 @@ Utgångsvärdet för <code>type</code> är text.</p>
 Använd med fördel de specialiserade inmatningsfälten eftersom de exempelvis formaterar tal med tusenavskiljare.
 Läs mer om redigering i tabell. (länk)</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h3 id="vanster_och_hogerjustering"><a class="header-anchor" href="#vanster_och_hogerjustering">Vänster- och högerjustering</a></h3><p class="docs-paragraph">Använd <code>align</code> för att justera kolumner till höger eller vänster i tabellen.
+<h3 id="vanster_och_hogerjustering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#vanster_och_hogerjustering">Vänster- och högerjustering</a></h3><p class="docs-paragraph">Använd <code>align</code> för att justera kolumner till höger eller vänster i tabellen.
 Text ska vara vänsterjusterad medan tal ska vara högerjusterade.
 Kolumner av typ <code>text:currency</code>, <code>text:number</code> och <code>text:percent</code> blir automatiskt högerjusterade.
 Alla andra blir vänsterjusterade som standard.</p>
-<h3 id="tabular_figures"><a class="header-anchor" href="#tabular_figures">Tabular figures</a></h3><p class="docs-paragraph">Tnum (tabular figures) är en funktion som ersätter siffror med motsvarande tecken som tar samma utrymme i bredd.
+<h3 id="tabular_figures" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tabular_figures">Tabular figures</a></h3><p class="docs-paragraph">Tnum (tabular figures) är en funktion som ersätter siffror med motsvarande tecken som tar samma utrymme i bredd.
 Till exempel kommer talet 111 ta samma plats som 000.
 Vid numeriska värden ska innehållet i kolumn visas med <code>tnum</code>.
 Tnum sätts automatiskt på följande:</p>
@@ -1904,22 +1915,22 @@ Tnum sätts automatiskt på följande:</p>
 <li>text:plusgiro</li>
 <li>text:postalCode.</li>
 </ul>
-<h2 id="rader"><a class="header-anchor" href="#rader">Rader</a></h2><p class="docs-paragraph">Tabellen kan använda radrubriker utöver kolumnrubriker.
+<h2 id="rader" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#rader">Rader</a></h2><p class="docs-paragraph">Tabellen kan använda radrubriker utöver kolumnrubriker.
 En radrubrik underlättar för användare med skärmläsare genom att markera vilken eller vilka celler som utgör en rubrik och blir upplästa automatiskt när skärmläsaren navigerar i tabellen.</p>
 <p class="docs-paragraph">Använd radrubriker om det finns många kolumner och/eller en tydlig cell som identifierar rader från andra rader.
 För att definiera kolumnen som radrubrik, se avsnitt Kolumntyper (länk).</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h3 id="rad_id"><a class="header-anchor" href="#rad_id">Rad-id</a></h3><p class="docs-paragraph">För att identifiera olika rader med ett värde kan du ange namnet för en nyckel (key) med <code>keyAttribute</code>. Nyckeln finns i varje radobjekt.<br>
+<h3 id="rad_id" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#rad_id">Rad-id</a></h3><p class="docs-paragraph">För att identifiera olika rader med ett värde kan du ange namnet för en nyckel (key) med <code>keyAttribute</code>. Nyckeln finns i varje radobjekt.<br>
 Om du anger keyAttribute, måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.</p>
 <p class="docs-paragraph">Att använda keyAttribute är valfritt och det behövs inte om det finns ett naturligt id att ange för dina rader.
 Du måste använda keyAttribute om dina rader ska bibehålla aktuell status vid omladdning från REST-api eller liknande.</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h3 id="framhava_rader"><a class="header-anchor" href="#framhava_rader">Framhäva rader</a></h3><p class="docs-paragraph">Framhäv varannan rad när tabellen innehåller många rader och kolumner.
+<h3 id="framhava_rader" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#framhava_rader">Framhäva rader</a></h3><p class="docs-paragraph">Framhäv varannan rad när tabellen innehåller många rader och kolumner.
 Det underlättar för användaren att läsa innehållet i tabellen genom att hen lättare kan läsa samma rad över flera kolumner.
 Du gör tabellen zebrarandig genom att...</p>
-<h2 id="expanderbara_rader"><a class="header-anchor" href="#expanderbara_rader">Expanderbara rader</a></h2><p class="docs-paragraph">Med expanderbara rader går det att skapa ytterligare tabellrader som visas när användaren trycker på en expanderbar rad.</p>
+<h2 id="expanderbara_rader" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#expanderbara_rader">Expanderbara rader</a></h2><p class="docs-paragraph">Med expanderbara rader går det att skapa ytterligare tabellrader som visas när användaren trycker på en expanderbar rad.</p>
 <p class="docs-paragraph">Expanderbara rader kan presenteras på två sätt:</p>
 <ul>
 <li>rader som följer existerande kolumner</li>
@@ -1929,17 +1940,17 @@ Du gör tabellen zebrarandig genom att...</p>
 <p class="docs-paragraph">Du använder role: treegrid för exapanderbara rader.</p>
 <p class="docs-paragraph">Givet följande struktur sätter du expandable-attribute till <code>myExpandableRow</code>:</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h3 id="folja_existerande_kolumner"><a class="header-anchor" href="#folja_existerande_kolumner">Följa existerande kolumner</a></h3><p class="docs-paragraph">För att skapa expanderbart innehåll som följer existerande kolumner måste du sätta <code>expandable-attribute</code> och du får inte använda slot <code>expandable</code>.
+<h3 id="folja_existerande_kolumner" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#folja_existerande_kolumner">Följa existerande kolumner</a></h3><p class="docs-paragraph">För att skapa expanderbart innehåll som följer existerande kolumner måste du sätta <code>expandable-attribute</code> och du får inte använda slot <code>expandable</code>.
 Innehållet följer då samma datastruktur som ordinarie rader.</p>
 <p class="docs-paragraph">Se nedan exempel av data som du kan använda för att generera en expanderbar rad som innehåller två tabellrader.</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h3 id="valfritt_innehall"><a class="header-anchor" href="#valfritt_innehall">Valfritt innehåll</a></h3><p class="docs-paragraph">För att själv ta kontroll över hur raden presenteras använder du sloten <code>expandable</code>. Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som ligger i datastrukturen behöver inte följa ordinarie rader.</p>
+<h3 id="valfritt_innehall" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#valfritt_innehall">Valfritt innehåll</a></h3><p class="docs-paragraph">För att själv ta kontroll över hur raden presenteras använder du sloten <code>expandable</code>. Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som ligger i datastrukturen behöver inte följa ordinarie rader.</p>
 <p class="docs-paragraph">Skapa inte ett för komplext expanderat innehåll som till exempel att placera ytterligare expanderbara tabeller inuti.</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="atgardsknappar_och_lankar"><a class="header-anchor" href="#atgardsknappar_och_lankar">Åtgärdsknappar och länkar</a></h2><p class="docs-paragraph">Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig. Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis något som förklarar vilken rad som påverkas).
+<h2 id="atgardsknappar_och_lankar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#atgardsknappar_och_lankar">Åtgärdsknappar och länkar</a></h2><p class="docs-paragraph">Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig. Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis något som förklarar vilken rad som påverkas).
 Kolumnens typ ska sättas till <code>action</code>.</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
@@ -1949,19 +1960,19 @@ Kolumnens typ ska sättas till <code>action</code>.</p>
 <p class="docs-paragraph">Länkar i tabell använder <code>table__anchor</code>-klassen:</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="tomt_lage_i_tabell"><a class="header-anchor" href="#tomt_lage_i_tabell">Tomt läge i tabell</a></h2><p class="docs-paragraph">När tabellen är tom (finns inget innehåll att presentera) visas en text som informerar användaren om att tabellen är tom.
+<h2 id="tomt_lage_i_tabell" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tomt_lage_i_tabell">Tomt läge i tabell</a></h2><p class="docs-paragraph">När tabellen är tom (finns inget innehåll att presentera) visas en text som informerar användaren om att tabellen är tom.
 Du kan ändra texten för att bättre passa innehållet, till exempel &quot;Det finns inga betalningar&quot; eller &quot;Ingen anslutning finns&quot;.
 Texten sätts i slot <code>#empty</code>:</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="valja_rader"><a class="header-anchor" href="#valja_rader">Välja rader</a></h2><p class="docs-paragraph">Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
+<h2 id="valja_rader" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#valja_rader">Välja rader</a></h2><p class="docs-paragraph">Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
 Om du använder kryssruta (flerval) ingår även funktionen för bulkoperation (länk) i tabellen.
 För att definiera kolumnen som kryssruta, se avsnitt Kolumntyper (länk).</p>
-<h2 id="lagga_till_ta_bort_rader"><a class="header-anchor" href="#lagga_till_ta_bort_rader">Lägga till/ta bort rader</a></h2><p class="docs-paragraph">Tabellen har stöd för att lägga till och ta bort rader.</p>
+<h2 id="lagga_till_ta_bort_rader" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lagga_till_ta_bort_rader">Lägga till/ta bort rader</a></h2><p class="docs-paragraph">Tabellen har stöd för att lägga till och ta bort rader.</p>
 <p class="docs-paragraph">Exempel på tabell med knappar för ta bort/lägga till.</p>
-<h2 id="felhantering"><a class="header-anchor" href="#felhantering">Felhantering</a></h2><p class="docs-paragraph">Om ett fel uppstår vid hämtning av tabellens data kan du se till att ett felmeddelande visas med hjälp av <code>#empty</code>-sloten och en meddelanderuta (länk).</p>
+<h2 id="felhantering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#felhantering">Felhantering</a></h2><p class="docs-paragraph">Om ett fel uppstår vid hämtning av tabellens data kan du se till att ett felmeddelande visas med hjälp av <code>#empty</code>-sloten och en meddelanderuta (länk).</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
 <p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Läs mer om att (länk till translate-text, anpassa och översätta text).</p>
+<h2 id="textnycklar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Läs mer om att (länk till translate-text, anpassa och översätta text).</p>
 
         <dl class="docs-api docs-api--translation">
             
@@ -1983,8 +1994,8 @@ För att definiera kolumnen som kryssruta, se avsnitt Kolumntyper (länk).</p>
                         </dd>
                     
         </dl>
-    <h2 id="api"><a class="header-anchor" href="#api">API</a></h2><h2 id="ftable"><a class="header-anchor" href="#ftable">FTable</a></h2>
-        <h3 id="ftable-props">
+    <h2 id="api" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#api">API</a></h2><h2 id="ftable" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ftable">FTable</a></h2>
+        <h3 class="docs-heading docs-heading--h3" id="ftable-props">
             <a class="header-anchor" href="#ftable-props">Props</a>
         </h3>
         <dl class="docs-api docs-api--slots">
@@ -2058,6 +2069,24 @@ För att definiera kolumnen som kryssruta, se avsnitt Kolumntyper (länk).</p>
                         </dd>
                     
                         <dt>
+                            <code id="ftable-prop-rowclass"
+                                ><a class="docs-api__anchor" href="#ftable-prop-rowclass"
+                                    ><span class="docs-api__name"
+                                        >rowClass</span
+                                    >: TSFunctionType</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Optional callback for setting classes on table rows (<code>&lt;tr&gt;</code> element).</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
                             <code id="ftable-prop-striped"
                                 ><a class="docs-api__anchor" href="#ftable-prop-striped"
                                     ><span class="docs-api__name"
@@ -2110,7 +2139,7 @@ För att definiera kolumnen som kryssruta, se avsnitt Kolumntyper (länk).</p>
                     
         </dl>
     
-        <h3 id="ftable-slots">
+        <h3 class="docs-heading docs-heading--h3" id="ftable-slots">
             <a class="header-anchor" href="#ftable-slots">Slots</a>
         </h3>
         <dl class="docs-api docs-api--slots">
@@ -2192,7 +2221,7 @@ För att definiera kolumnen som kryssruta, se avsnitt Kolumntyper (länk).</p>
                         </dd>
                     
         </dl>
-    <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph">Datamängdsorteraren (länk som ska uppdateras)</p>
+    <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph">Datamängdsorteraren (länk som ska uppdateras)</p>
 <p class="docs-paragraph"><a href="FTable">Tabell</a></p>
 <p class="docs-paragraph"><a href="./test-table.html">Testning av tabell</a></p>
 
@@ -2213,15 +2242,39 @@ För att definiera kolumnen som kryssruta, se avsnitt Kolumntyper (länk).</p>
     <h2 class="heading--h1">Länkar</h2>
     <ul>
         <li><a class="anchor" href="../../accessibility.html">Tillgänglighetsredogörelse</a></li>
-        <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
-        <li><a class="anchor" href="https://www.figma.com/@fkds">Figma</a></li>
-        <li><a class="anchor" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVk1z2jAQ/SuqT2YG7EN7okDTpmQmmTbJNJmefHHsta0gy64+KBnKf+/KsvEHAQaGg7HePu170u6ydZSMCp7Q1HuVBXemzjbgBD+BExV5SRmIh1LRgsvAmZJ6za6HjBV/76r3SmgYd9eiDKLVkbVXuTHvA+dRgASxhsDpratQpKAsZPl0Dxt87gHyItYMo84AfoEsmDa5W+g3zWOUM8BWKm7zshCK8vRZLjcKuGwEm+QteldHBc5aw/UZa1oJH71PdXzA8euMHQlKl56SaDWttiVbot5KIF/LckwK/rPQXEFMdiQRRW73C5zPAd+jKX+FSD2VgiqQGYBqsVfJSlOf4olOGH2ZxJCEmik/plL5iX8Q2Of9HTIah0bRI9Mp5UPaJpGAw6YKSTSPDJxUmtywLKdGBflH0GpIKId4NCXrgsaNPTQh7gfEjbp+CYwWHIlrn+wDojwtwR1mNaoyMIi9V647IvNFlxINkIqoDHL4bj34QfmKzElcRDoHrrxIQKhgyRDBlRs4DNcDx5A3HMNoTwBDhsCR6o11/DuKzwQkZN4C7N3IlCrl1Pc1L1eph0XmW3er8ObErhgmh2dWHZxdYTTNMG2Jt62z6V5PBmHsoWfAY3eYSWtZ600Mkqb8clfauHN+dJDWiRPiLbZWfV5gS92XdnDB3Sb1nXmwBWjv+yQPy4OWZ5cO67lOErOzreSoDEQ0R4f154PMsehi2OBOg75jA1iR0ug0ZwW5iLSq01OUCOhdsJYRn46xXtBUTu09pOkl8i7b+wonLHypDuqkzAp1kVYMwq7jR4U4bmIH0+M+dio1XmahgPgcq0Ud4R3MEmy2HobhFZ7JSNBS2U5MWMjTOY4hjFh0GjzOpGstBFbTLbaAkEcwxuabnBg1N884XW8osM486g+DPdTuvEd5fvWiHhi259B6V2wFh6lUpWoHSYP7Yur9usAWv1Hm0Ra75cIZDwxngzZsKAKblW1UM99agcLxh4K8NFbiL+PcLJkYsklSSVpPKhZ0qmULHHy93s8cbHJ/NMUDWSwVXYFSM79L0dCWAhazCEkW2y25e3q496QS+H+CJm/utiXfjchuN8OLg8CZb4JMvp0cnd1/i98z8w==">Sandlåda</a></li>
+        <li>
+            <a class="anchor anchor--block" target="_blank" href="https://github.com/Forsakringskassan/designsystem">
+                GitHub
+                <svg focusable="false" class="icon f-icon-new-window">
+                    <use href="#f-icon-new-window"></use>
+                </svg>
+                <span class="sr-only">öppnas i ny flik</span>
+            </a>
+        </li>
+        <li>
+            <a class="anchor anchor--block" target="_blank" href="https://www.figma.com/@fkds">
+                Figma
+                <svg focusable="false" class="icon f-icon-new-window">
+                    <use href="#f-icon-new-window"></use>
+                </svg>
+                <span class="sr-only">öppnas i ny flik</span>
+            </a>
+        </li>
+        <li>
+            <a class="anchor anchor--block" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVk1z2jAQ/SuqT2YG7EN7okDTpmQmmTbJNJmefHHsta0gy64+KBnKf+/KsvEHAQaGg7HePu170u6ydZSMCp7Q1HuVBXemzjbgBD+BExV5SRmIh1LRgsvAmZJ6za6HjBV/76r3SmgYd9eiDKLVkbVXuTHvA+dRgASxhsDpratQpKAsZPl0Dxt87gHyItYMo84AfoEsmDa5W+g3zWOUM8BWKm7zshCK8vRZLjcKuGwEm+QteldHBc5aw/UZa1oJH71PdXzA8euMHQlKl56SaDWttiVbot5KIF/LckwK/rPQXEFMdiQRRW73C5zPAd+jKX+FSD2VgiqQGYBqsVfJSlOf4olOGH2ZxJCEmik/plL5iX8Q2Of9HTIah0bRI9Mp5UPaJpGAw6YKSTSPDJxUmtywLKdGBflH0GpIKId4NCXrgsaNPTQh7gfEjbp+CYwWHIlrn+wDojwtwR1mNaoyMIi9V647IvNFlxINkIqoDHL4bj34QfmKzElcRDoHrrxIQKhgyRDBlRs4DNcDx5A3HMNoTwBDhsCR6o11/DuKzwQkZN4C7N3IlCrl1Pc1L1eph0XmW3er8ObErhgmh2dWHZxdYTTNMG2Jt62z6V5PBmHsoWfAY3eYSWtZ600Mkqb8clfauHN+dJDWiRPiLbZWfV5gS92XdnDB3Sb1nXmwBWjv+yQPy4OWZ5cO67lOErOzreSoDEQ0R4f154PMsehi2OBOg75jA1iR0ug0ZwW5iLSq01OUCOhdsJYRn46xXtBUTu09pOkl8i7b+wonLHypDuqkzAp1kVYMwq7jR4U4bmIH0+M+dio1XmahgPgcq0Ud4R3MEmy2HobhFZ7JSNBS2U5MWMjTOY4hjFh0GjzOpGstBFbTLbaAkEcwxuabnBg1N884XW8osM486g+DPdTuvEd5fvWiHhi259B6V2wFh6lUpWoHSYP7Yur9usAWv1Hm0Ra75cIZDwxngzZsKAKblW1UM99agcLxh4K8NFbiL+PcLJkYsklSSVpPKhZ0qmULHHy93s8cbHJ/NMUDWSwVXYFSM79L0dCWAhazCEkW2y25e3q496QS+H+CJm/utiXfjchuN8OLg8CZb4JMvp0cnd1/i98z8w==">
+                Sandlåda
+                <svg focusable="false" class="icon f-icon-new-window">
+                    <use href="#f-icon-new-window"></use>
+                </svg>
+                <span class="sr-only">öppnas i ny flik</span>
+            </a>
+        </li>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">missing-tabstop-guard (<a href="https://github.com/Forsakringskassan/designsystem/commits/764dbb4ce411d367a5e07f29b5be287c0480b1d4">764dbb4</a>)<br />
+<div class="footer__right"><div class="version">missing-tabstop-guard (<a href="https://github.com/Forsakringskassan/designsystem/commits/25999329f9d387801256993cded9b4f83e68a8a0">2599932</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1136">PR 1136</a><br />
-        2026-03-23 11:08
+        2026-03-30 10:05
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2355,16 +2408,16 @@ För att definiera kolumnen som kryssruta, se avsnitt Kolumntyper (länk).</p>
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-92a936.js"
+            src="../../assets/processors/selectable-version/select-version-e70e1a.js"
             type="module"
             crossorigin
-            integrity="sha384-tKGkvryhTUyr0fJJ+lTeWZhxCCL9t4TuqtGUKA2MNJ1v6MbY6EybZ2ptUlAnu3ke"
+            integrity="sha384-pjV8TX7gfkvyiGkdK2HL0+HXPd0g4Ihp1fbcUSRBZMc7gHO3dl9Bde6sJft44pW6"
             
         ></script><script
-            src="../../assets/main-eec4a8.js"
+            src="../../assets/main-60f9c8.js"
             type="module"
             crossorigin
-            integrity="sha384-AfiKoQqtiIhDv98BWTJGG0XcnF303VsiWCaAPo3a5kbSxZtSOORJkz0Qmk8FfAU5"
+            integrity="sha384-ErWxD4xnAiRlHgnzRsmDu5f0WDsDmxFED6Xs27nWFiktFFV8XTuE/l6Owuiod7or"
             
         ></script>
     </body>
