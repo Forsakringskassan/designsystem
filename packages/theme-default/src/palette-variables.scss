@@ -1,5 +1,68 @@
-// Palette colors
+// New palette colors
 // Palette colors should follow the following palette-color-<name> convention.
+
+/// @group Neutral
+$palette-color-neutral-900: hsl(218, 13%, 12%) !default;
+$palette-color-neutral-800: hsl(218, 12%, 20%) !default;
+$palette-color-neutral-700: hsl(218, 11%, 32%) !default;
+$palette-color-neutral-600: hsl(218, 10%, 42%) !default;
+$palette-color-neutral-500: hsl(218, 9%, 51%) !default;
+$palette-color-neutral-400: hsl(218, 8%, 60%) !default;
+$palette-color-neutral-300: hsl(218, 8%, 71%) !default;
+$palette-color-neutral-200: hsl(218, 8%, 85%) !default;
+$palette-color-neutral-100: hsl(218, 8%, 93%) !default;
+$palette-color-neutral-50: hsl(218, 8%, 97%) !default;
+$palette-color-neutral-0: hsl(0, 0%, 100%) !default;
+
+/// @group Blue
+$palette-color-blue-900: hsl(219, 71%, 8%) !default;
+$palette-color-blue-800: hsl(219, 69%, 25%) !default;
+$palette-color-blue-700: hsl(217, 68%, 36%) !default;
+$palette-color-blue-600: hsl(217, 67%, 45%) !default;
+$palette-color-blue-500: hsl(217, 66%, 53%) !default;
+$palette-color-blue-400: hsl(215, 65%, 59%) !default;
+$palette-color-blue-300: hsl(213, 63%, 67%) !default;
+$palette-color-blue-200: hsl(213, 63%, 82%) !default;
+$palette-color-blue-100: hsl(213, 63%, 93%) !default;
+$palette-color-blue-50: hsl(213, 63%, 97%) !default;
+
+/// @group Green
+$palette-color-green-900: hsl(150, 75%, 6%) !default;
+$palette-color-green-800: hsl(150, 75%, 17%) !default;
+$palette-color-green-700: hsl(150, 72%, 24%) !default;
+$palette-color-green-600: hsl(150, 65%, 30%) !default;
+$palette-color-green-500: hsl(150, 60%, 35%) !default;
+$palette-color-green-400: hsl(150, 47%, 45%) !default;
+$palette-color-green-300: hsl(150, 38%, 55%) !default;
+$palette-color-green-200: hsl(150, 35%, 75%) !default;
+$palette-color-green-100: hsl(150, 33%, 89%) !default;
+$palette-color-green-50: hsl(150, 31%, 97%) !default;
+
+/// @group Yellow
+$palette-color-yellow-900: hsl(44, 94%, 5%) !default;
+$palette-color-yellow-800: hsl(44, 94%, 21%) !default;
+$palette-color-yellow-700: hsl(44, 94%, 33%) !default;
+$palette-color-yellow-600: hsl(44, 92%, 40%) !default;
+$palette-color-yellow-500: hsl(44, 92%, 47%) !default;
+$palette-color-yellow-400: hsl(44, 86%, 58%) !default;
+$palette-color-yellow-300: hsl(44, 78%, 70%) !default;
+$palette-color-yellow-200: hsl(44, 65%, 79%) !default;
+$palette-color-yellow-100: hsl(44, 50%, 91%) !default;
+$palette-color-yellow-50: hsl(44, 35%, 97%) !default;
+
+/// @group Red
+$palette-color-red-900: hsl(356, 70%, 6%) !default;
+$palette-color-red-800: hsl(356, 70%, 25%) !default;
+$palette-color-red-700: hsl(356, 68%, 37%) !default;
+$palette-color-red-600: hsl(356, 66%, 44%) !default;
+$palette-color-red-500: hsl(356, 64%, 53%) !default;
+$palette-color-red-400: hsl(356, 58%, 59%) !default;
+$palette-color-red-300: hsl(352, 55%, 68%) !default;
+$palette-color-red-200: hsl(349, 45%, 78%) !default;
+$palette-color-red-100: hsl(347, 35%, 89%) !default;
+$palette-color-red-50: hsl(345, 25%, 97%) !default;
+
+// Old palette colors
 
 /// @group FK-Black
 $palette-color-fk-black-100: #1b1e23 !default;
@@ -36,17 +99,13 @@ $palette-color-green-b-5: #f7faf8 !default;
 
 /// @group Yellow
 $palette-color-yellow-120: #cc980d !default;
-$palette-color-yellow-100: #ffbe10 !default;
 $palette-color-yellow-85: #ffc834 !default;
-$palette-color-yellow-50: #ffdf87 !default;
 $palette-color-yellow-15: #fff5db !default;
 $palette-color-yellow-5: #fffcf3 !default;
 
 /// @group Red
 $palette-color-red-120: #a21111 !default;
-$palette-color-red-100: #ca1515 !default;
 $palette-color-red-85: #d23838 !default;
-$palette-color-red-50: #e48a8a !default;
 $palette-color-red-15: #f7dcdc !default;
 $palette-color-red-5: #fcf3f3 !default;
 

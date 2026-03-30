@@ -1,9 +1,9 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import DefaultView from "./views/DefaultView.vue";
+import ComponentTestsView from "./views/ComponentTestsView.vue";
 
 const router = createRouter({
     history: createWebHashHistory(),
-    routes: [{ path: "/", name: "", component: DefaultView }],
+    routes: [{ path: "/", component: ComponentTestsView }],
 });
 
 export default router;
