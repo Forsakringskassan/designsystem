@@ -24,15 +24,27 @@ $calendar-width: calc(100vw - #{$popup-spacing});
             height: core.densify(var(--f-icon-size-x-large));
             width: core.densify(var(--f-icon-size-x-large));
             vertical-align: middle;
+
+            @media (forced-colors: active) {
+                color: ButtonBorder;
+            }
         }
 
         &:hover {
             .icon {
                 color: $datepickerfield-f-icon-calendar-color-content-hover;
+
+                @media (forced-colors: active) {
+                    color: LinkText;
+                }
             }
         }
         &:disabled .icon {
             color: $datepickerfield-f-icon-calendar-color-content-disabled;
+
+            @media (forced-colors: active) {
+                color: GrayText;
+            }
         }
     }
 
