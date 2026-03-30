@@ -30,11 +30,11 @@
         }
     }
 
-    > .button.button--discrete {
+    > .button--discrete {
         @include button-group-margin(core.densify(size.$margin-100), size.$margin-150);
     }
 
-    > .button.button--small {
+    > .button--small {
         @include button-group-margin(core.densify(size.$margin-075), size.$margin-075);
 
         &.button--full-width {
@@ -44,7 +44,7 @@
         }
     }
 
-    > .button.button--medium {
+    > .button--medium {
         @include button-group-margin(core.densify(size.$margin-075), size.$margin-100);
 
         &.button--full-width {
@@ -54,7 +54,7 @@
         }
     }
 
-    > .button.button--large {
+    > .button--large {
         @include core.breakpoint-up(md) {
             @include button-group-margin(core.densify(size.$margin-100), size.$margin-125);
         }
