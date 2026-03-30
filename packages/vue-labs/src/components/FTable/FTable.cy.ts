@@ -2139,6 +2139,72 @@ describe("select cell", () => {
     });
 });
 
+describe("editable cell", () => {
+    interface Row {
+        text: string;
+    }
+
+    const rows: Row[] = [{ text: "Foo" }, { text: "Bar" }];
+
+    it("should move to next row on Enter after clearing a directly typed value with validation", () => {
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Text",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    required: {},
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        cy.mount(FTable<Row>, {
+            props: { rows, columns },
+        });
+
+        table.cell({ row: 1, col: 1 }).focus().should("have.focus");
+
+        cy.focused().type("Baz");
+
+        table.cell({ row: 1, col: 1 }).find("input").should("have.focus");
+
+        cy.focused().clear();
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+
+        table.cell({ row: 2, col: 1 }).should("have.focus");
+    });
+
+    it("should move to next row on Enter after clearing a directly typed value without validation", () => {
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Text",
+                editable: true,
+                key: "text",
+                label: () => "text",
+            },
+        ]);
+
+        cy.mount(FTable<Row>, {
+            props: { rows, columns },
+        });
+
+        table.cell({ row: 1, col: 1 }).focus().should("have.focus");
+
+        cy.focused().type("Baz");
+
+        table.cell({ row: 1, col: 1 }).find("input").should("have.focus");
+
+        cy.focused().clear();
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+
+        table.cell({ row: 2, col: 1 }).should("have.focus");
+    });
+});
+
 describe("13 Cell interaction states", () => {
     interface Row {
         plain: string;
@@ -2208,7 +2274,7 @@ describe("13 Cell interaction states", () => {
                 },
             });
 
-            table.header(2).focus();
+            table.header(2).click();
             table.header(2).should("be.focused");
 
             table.el().toMatchScreenshot();
