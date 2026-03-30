@@ -669,6 +669,52 @@ describe("3.1 Feedback to user on invalid input components", () => {
             .should("have.class", "table-ng__cell--error");
     });
 
+    it("should render popup arrow correctly for wide invalid cells in edit mode (visual)", () => {
+        interface Row {
+            text: string;
+        }
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Lång redigerbar kolumn",
+                editable: true,
+                key: "text",
+                label: () => "text",
+                validation: {
+                    maxLength: { length: 5 },
+                },
+            },
+        ]);
+
+        const rows: Row[] = [
+            {
+                text: "012345678901234567890",
+            },
+            {
+                text: "01234",
+            },
+            {
+                text: "01234",
+            },
+        ];
+
+        cy.mount(FTable<Row>, {
+            props: { rows, columns },
+            slots: {
+                caption:
+                    "Verifierar att felpopupens pil positioneras korrekt i bred cell.",
+            },
+        });
+
+        table.cell({ row: 1, col: 1 }).click();
+        table.cell({ row: 1, col: 1 }).find("input").should("be.focused");
+
+        cy.get(".popup-error").should("be.visible");
+
+        table.el().toMatchScreenshot();
+    });
+
     describe("Visual", () => {
         afterEach(() => {
             cy.forcedColors("none");
