@@ -53,6 +53,9 @@ export interface FTableCellApi {
     tabstopEl: Readonly<ShallowRef<HTMLElement | null>>;
 }
 
+// @public
+export function getTableSortableAttributes(columns: MaybeSortableTableColumn[]): Record<PropertyKey, string | Readonly<Ref<string>>>;
+
 // @public (undocumented)
 export const HOURS_MINUTES_REGEXP: RegExp;
 
@@ -87,6 +90,16 @@ export type InputTypeText = (typeof textTypes)[number];
 
 // @public (undocumented)
 export function matchPropertyValue<T, K extends keyof T = keyof T>(property: K): (item: T, value: T[K] | null) => boolean;
+
+// @public (undocumented)
+export interface MaybeSortableTableColumn {
+    // (undocumented)
+    header: string | Readonly<Ref<string>>;
+    // (undocumented)
+    key?: PropertyKey;
+    // (undocumented)
+    sort?: boolean;
+}
 
 // @public
 export function minutesToHoursFloat(...values: Array<number | undefined>): number;

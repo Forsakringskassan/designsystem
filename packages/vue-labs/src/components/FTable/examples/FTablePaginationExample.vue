@@ -2,7 +2,13 @@
 import { ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { FButton, FPaginateDataset, FPaginator, FSortFilterDataset } from "@fkui/vue";
-import { type TableColumn, FTable, defineTableColumns, removeRow } from "@fkui/vue-labs";
+import {
+    type TableColumn,
+    FTable,
+    defineTableColumns,
+    getTableSortableAttributes,
+    removeRow,
+} from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
 
@@ -125,16 +131,7 @@ const rows = ref<Row[]>([
     },
 ]);
 
-function hasKey<T, K extends keyof T>(
-    column: TableColumn<T, K>,
-): column is TableColumn<T, K> & { key: K } {
-    return Boolean("key" in column && column.key);
-}
-
-const sortableAttributes = Object.fromEntries(
-    columns.filter(hasKey).map((column) => [column.key, column.header]),
-);
-
+const sortableAttributes = getTableSortableAttributes(columns);
 const selectedRows = ref<Row[]>([]);
 const itemsPerPage = ref(3);
 const nextId = ref(9);
