@@ -4625,6 +4625,7 @@ var ITableText_default = /* @__PURE__ */ defineComponent2({
       inputElement.value.tabIndex = -1;
       assertRef(tdElement);
       tdElement.value.style.removeProperty("width");
+      if (reason === "blur") tdElement.value.tabIndex = 0;
       stopEdit2(inputElement.value, reason);
     }
     function fromColumnValue() {
