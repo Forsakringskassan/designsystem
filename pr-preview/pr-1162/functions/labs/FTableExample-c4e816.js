@@ -5934,7 +5934,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
   }
 });
 function isSortable(column) {
-  return Boolean("key" in column && column.key !== void 0) && column.sort !== false;
+  return "key" in column && column.key !== void 0 && column.sort !== false;
 }
 function toEntry(column) {
   return [column.key, column.header];
