@@ -1,5 +1,5 @@
 import { type Ref, ref } from "vue";
-import { type Dataset } from "./dataset";
+import { type Dataset, type DatasetNestedKeyOf } from "./dataset";
 import { toDataset } from "./to-dataset";
 
 /**
@@ -10,6 +10,7 @@ import { toDataset } from "./to-dataset";
  */
 export function useDatasetRef<T extends object>(
     initial?: T[],
+    nestedAttribute?: DatasetNestedKeyOf<T>,
 ): Ref<Dataset<T>> {
-    return ref(toDataset(initial ?? [])) as Ref<Dataset<T>>;
+    return ref(toDataset(initial ?? [], nestedAttribute)) as Ref<Dataset<T>>;
 }

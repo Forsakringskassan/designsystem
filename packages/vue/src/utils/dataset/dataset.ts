@@ -1,3 +1,15 @@
+/**
+ * Extracts the keys of `T` whose value type is assignable to `T[]`.
+ * Used to constrain the `nestedAttribute` parameter to only keys that
+ * actually hold a nested array of the same type.
+ *
+ * @public
+ * @since %version%
+ */
+export type DatasetNestedKeyOf<T> = {
+    [K in keyof T]: NonNullable<T[K]> extends T[] ? K : never;
+}[keyof T];
+
 export const datasetSymbol: unique symbol = Symbol("dataset");
 
 /**
