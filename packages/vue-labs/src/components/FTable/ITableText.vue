@@ -257,6 +257,10 @@ function onStopEdit(options: { reason: "enter" | "escape" | "tab" | "shift-tab" 
     assertRef(tdElement);
     tdElement.value.style.removeProperty("width");
 
+    if (reason === "blur") {
+        tdElement.value.tabIndex = 0;
+    }
+
     void stopEdit(inputElement.value, reason);
 }
 
