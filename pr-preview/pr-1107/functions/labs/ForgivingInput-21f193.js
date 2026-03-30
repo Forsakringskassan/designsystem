@@ -3428,7 +3428,7 @@ var validators = [
   }
 ];
 for (const validator of validators) ValidationService.registerValidator(validator);
-var XTimeTextField_default = defineComponent({
+var XTimeTextField_default = /* @__PURE__ */ defineComponent({
   name: "XTimeTextField",
   extends: FTextField,
   mixins: [TranslationMixin],

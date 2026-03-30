@@ -5948,30 +5948,10 @@ function hoursMinutesStringToMinutes(valueString, extraForgiving = false) {
   const totalMinutes = hours * 60 + minutes;
   return !Number.isNaN(totalMinutes) ? totalMinutes : void 0;
 }
-function minutesToHoursMinutesString(value) {
-  let valueString = "";
-  const safeValue = value !== null && value !== void 0 ? value : NaN;
-  if (!Number.isNaN(safeValue)) {
-    const { hours, minutes } = minutesToObject(safeValue);
-    valueString = [hours, minutes].map((value2) => String(value2).padStart(2, "0")).join(":");
-  }
-  return stripWhitespace(valueString);
-}
 function splitHoursMinutes(valueString, extraForgiving = false) {
   const match = findMatch(extraForgiving ? [HOURS_MINUTES_WITHOUT_COLON_REGEXP, HOURS_MINUTES_REGEXP] : [HOURS_MINUTES_REGEXP], stripWhitespace(valueString));
   if (!match) return ["", ""];
   return [padInitialZeros(match?.groups?.hours), padInitialZeros(match?.groups?.minutes)];
-}
-function minutesToObject(...values) {
-  const minutes = values.filter((value) => isSet(value) && !Number.isNaN(value)).reduce((sum, value) => sum + value, 0);
-  return {
-    hours: Math.floor(minutes / 60),
-    minutes: minutes % 60
-  };
-}
-function formatNumberToTime(value) {
-  if (typeof value !== "number" || Number.isNaN(value)) return;
-  return minutesToHoursMinutesString(value);
 }
 function parseTimeToNumberUsingConfig(value, extraForgiving) {
   var _hoursMinutesStringTo;
@@ -6040,36 +6020,6 @@ var validators = [
   }
 ];
 for (const validator of validators) ValidationService.registerValidator(validator);
-var XTimeTextField_default = defineComponent2({
-  name: "XTimeTextField",
-  extends: FTextField,
-  mixins: [TranslationMixin],
-  props: {
-    formatter: {
-      type: Function,
-      required: false,
-      default: formatNumberToTime
-    },
-    parser: {
-      type: Function,
-      required: false,
-      default: parseTimeToNumber
-    }
-  },
-  setup(props) {
-    return useTextFieldSetup(props);
-  },
-  mounted() {
-    const inputElement = this.$el.querySelector("input");
-    if (!isSet(inputElement)) throw new Error(`Could not find input element in XTimeTextField with id ${String(this.$el.id)}`);
-    ValidationService.addValidatorsToElement(inputElement, {
-      maxLength: { length: 10 },
-      hoursMinutes: {}
-    }, true);
-    inputElement.setAttribute("inputmode", "numeric");
-    ValidationService.validateElement(inputElement);
-  }
-});
 
 // virtual-entry:virtual:packages/vue-labs/src/cypress/examples/FTablePageObject/FTablePageObject-expandButton.vue:FTablePageObject-expandButton-0f60ae.js
 import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
