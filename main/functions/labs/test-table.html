@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-e59712.json"
+            href="../../search-data-aa68de.json"
             as="fetch"
             crossorigin
-            integrity="sha384-2O1VliMppcLh2w1/scYsBJOpmJVpp9xHS4d2FVZyRbD6KVg+ON4Z+tpA4uVB5lZb"
+            integrity="sha384-w1G6lWzbop4jjpLEI/0GvBe3QfU6oVUlJwl/nGVJ1ol51udY1R4vlvMgAXIfCglx"
             id="search-data"
         />
     </head>
@@ -1813,7 +1813,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-9fdb84"></div>
+        <div id="example-c4e816"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1839,7 +1839,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-9fdb84.js"></script>
+        <script type="module" src="./FTableExample-c4e816.js"></script>
     
                 </div>
                 <div>
@@ -1864,7 +1864,13 @@ body {
 <span class="hljs-keyword">import</span> { h, ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { assertRef, formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">TableColumn</span>, <span class="hljs-title class_">FTable</span>, defineTableColumns, removeRow } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    type <span class="hljs-title class_">TableColumn</span>,
+    <span class="hljs-title class_">FTable</span>,
+    defineTableColumns,
+    getTableSortableAttributes,
+    removeRow,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
 
@@ -2075,16 +2081,7 @@ interface <span class="hljs-title class_">Row</span> {
     },
 ]);
 
-<span class="hljs-keyword">function</span> hasKey&lt;T, K <span class="hljs-keyword">extends</span> keyof T&gt;(
-    <span class="hljs-attr">column</span>: <span class="hljs-title class_">TableColumn</span>&lt;T, K&gt;,
-): column is <span class="hljs-title class_">TableColumn</span>&lt;T, K&gt; &amp; { <span class="hljs-attr">key</span>: K } {
-    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Boolean</span>(<span class="hljs-string">&quot;key&quot;</span> <span class="hljs-keyword">in</span> column &amp;&amp; column.<span class="hljs-property">key</span>);
-}
-
-<span class="hljs-keyword">const</span> sortableAttributes = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">fromEntries</span>(
-    columns.<span class="hljs-title function_">filter</span>(hasKey).<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> [it.<span class="hljs-property">key</span>, it.<span class="hljs-property">header</span>]),
-);
-
+<span class="hljs-keyword">const</span> sortableAttributes = <span class="hljs-title function_">getTableSortableAttributes</span>(columns);
 <span class="hljs-keyword">const</span> mySelectedRows = <span class="hljs-title function_">ref</span>([rows.<span class="hljs-property">value</span>[<span class="hljs-number">0</span>]]);
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">onAddRow</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
@@ -2499,9 +2496,9 @@ interface <span class="hljs-title class_">TableRow</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/9743da23f5eff2f3ed6f1f5bc611c143c21ab0ab">9743da2</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/e9e8b16775da59170ba21467170c82b822e72337">e9e8b16</a>)<br />
         
-        2026-03-30 22:04
+        2026-03-30 22:25
 </div>
 <div class="toolbar__item">
     <form id="version">
