@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-49bbfa.json"
+            href="../../search-data-2cabbc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-82TJBy9M6AhzjsEMVsw5GSFvDDrAVvJgYoKCOLY/KHHiUUejDh1FMeGGF6pWCneP"
+            integrity="sha384-/IeOom98GheIu4Y/6oICGjqxHGbIv58Fqx1yrAZfvlG+0pE8tgG4VRbZUbWTUOoI"
             id="search-data"
         />
     </head>
@@ -1813,7 +1813,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-9fdb84"></div>
+        <div id="example-ecc449"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1839,7 +1839,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-9fdb84.js"></script>
+        <script type="module" src="./FTableExample-ecc449.js"></script>
     
                 </div>
                 <div>
@@ -1864,7 +1864,13 @@ body {
 <span class="hljs-keyword">import</span> { h, ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { assertRef, formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">TableColumn</span>, <span class="hljs-title class_">FTable</span>, defineTableColumns, removeRow } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    type <span class="hljs-title class_">TableColumn</span>,
+    <span class="hljs-title class_">FTable</span>,
+    defineTableColumns,
+    getTableSortableAttributes,
+    removeRow,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
 
@@ -2075,16 +2081,7 @@ interface <span class="hljs-title class_">Row</span> {
     },
 ]);
 
-<span class="hljs-keyword">function</span> hasKey&lt;T, K <span class="hljs-keyword">extends</span> keyof T&gt;(
-    <span class="hljs-attr">column</span>: <span class="hljs-title class_">TableColumn</span>&lt;T, K&gt;,
-): column is <span class="hljs-title class_">TableColumn</span>&lt;T, K&gt; &amp; { <span class="hljs-attr">key</span>: K } {
-    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Boolean</span>(<span class="hljs-string">&quot;key&quot;</span> <span class="hljs-keyword">in</span> column &amp;&amp; column.<span class="hljs-property">key</span>);
-}
-
-<span class="hljs-keyword">const</span> sortableAttributes = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">fromEntries</span>(
-    columns.<span class="hljs-title function_">filter</span>(hasKey).<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">it</span>) =&gt;</span> [it.<span class="hljs-property">key</span>, it.<span class="hljs-property">header</span>]),
-);
-
+<span class="hljs-keyword">const</span> sortableAttributes = <span class="hljs-title function_">getTableSortableAttributes</span>(columns);
 <span class="hljs-keyword">const</span> mySelectedRows = <span class="hljs-title function_">ref</span>([rows.<span class="hljs-property">value</span>[<span class="hljs-number">0</span>]]);
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">onAddRow</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
@@ -2179,13 +2176,13 @@ interface <span class="hljs-title class_">Row</span> {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-61504d"></div>
+        <div id="example-69e980"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableInputFieldsExample-61504d.js"></script>
+        <script type="module" src="./FTableInputFieldsExample-69e980.js"></script>
     
                 </div>
                 <div>
@@ -2499,9 +2496,9 @@ interface <span class="hljs-title class_">TableRow</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/vite-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/dbbe3371c9ca23f8a0fd6bd16dbd36c3fa8a51dc">dbbe337</a>)<br />
+<div class="footer__right"><div class="version">renovate/vite-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/a65f697ee117577ee7dda07dab9db5b020637d6b">a65f697</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1107">PR 1107</a><br />
-        2026-03-30 22:10
+        2026-03-30 22:33
 </div>
 <div class="toolbar__item">
     <form id="version">
