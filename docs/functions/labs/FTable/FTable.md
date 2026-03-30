@@ -62,6 +62,10 @@ Bestäm vilken information användaren ska få.
 
 Om inte användaren behöver all information direkt kan expanderbara rader vara ett sätt att visa mer information vid behov.
 
+Det går även att sätta egna klasser på rader med propen `rowClass`.
+Funktionen tar emot raden och kan returnera `string`, `string[]` eller ett objekt med klassnamn.
+Klasserna appliceras på radens `<tr>`-element.
+
 Exempel med hur du kan anpassa/bygga kolumner.
 
 #### Interagerbara objekt

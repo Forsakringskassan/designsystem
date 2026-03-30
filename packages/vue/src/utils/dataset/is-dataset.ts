@@ -6,12 +6,11 @@ import { type Dataset, datasetSymbol } from "./dataset";
  * @internal
  * @since v6.39.0
  */
-export function isDataset<T>(
+export function isDataset<T extends object>(
     dataset: T[] | null | undefined,
 ): dataset is Dataset<T> {
     if (!Array.isArray(dataset)) {
         return false;
     }
-    const descriptor = Object.getOwnPropertyDescriptor(dataset, datasetSymbol);
-    return descriptor?.value === true;
+    return Boolean(Object.getOwnPropertyDescriptor(dataset, datasetSymbol));
 }

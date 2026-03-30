@@ -1,12 +1,11 @@
-<script setup lang="ts" generic="T, TArray extends Dataset<T> | T[] = Dataset<T> | T[]">
-import { type Ref, nextTick, onMounted, provide, useTemplateRef, watch } from "vue";
+<script setup lang="ts" generic="T extends object, TArray extends Dataset<T> | T[] = Dataset<T> | T[]">
+import { type Ref, computed, nextTick, onMounted, provide, watch } from "vue";
 import { TranslationService, alertScreenReader, debounce } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { useTranslate } from "../../plugins";
-import { type Dataset, getHTMLElementFromVueRef } from "../../utils";
-import { FIcon } from "../FIcon";
+import { type Dataset } from "../../utils";
 import { FSelectField } from "../FSelectField";
-import { FTextField } from "../FTextField";
+import { FSearchTextField } from "../FTextField";
 import {
     type FSortFilterDatasetMountCallback,
     type FSortFilterDatasetSortCallback,
@@ -37,8 +36,15 @@ export interface FSortFilterDatasetProps<TArray> {
      */
     showFilter?: boolean;
     /**
-     * Set placeholder text in filter input field.
+     * Label text for filter input field.
+     */
+    filterLabel?: string;
+    /**
+     * Previously set placeholder text in filter input field.
+     *
      * Default is textkey "fkui.sort-filter-dataset.placeholder.filter"
+     *
+     * @deprecated Use `filterLabel` instead. Deprecated since v6.40.0.
      */
     placeholderFilter?: string;
     /**
@@ -62,7 +68,9 @@ const {
     showSort = true,
     /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
     showFilter = true,
-    placeholderFilter = TranslationService.provider.translate("fkui.sort-filter-dataset.placeholder.filter", "Sök"),
+    filterLabel = undefined,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility
+    placeholderFilter = undefined,
     /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
     defaultSortAscending = true,
     filterAttributes = undefined,
@@ -85,12 +93,10 @@ const emit = defineEmits<{
 }>();
 
 const $t = useTranslate();
-const searchField = useTemplateRef("search-field");
 const {
     searchString,
     sortAttribute,
     sortFilterResult,
-    showClearButton,
     defaultSortValue,
     sortableKeys,
     sortOrders,
@@ -104,9 +110,17 @@ const {
     defaultSortAscending,
 );
 
-function filterResultset(): void {
-    searchString.value = searchField.value?.$el.querySelector("input").value;
+const clearableScreenReaderText = $t("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält");
 
+const translatedFilterLabel = computed(() => {
+    const label = filterLabel ?? placeholderFilter;
+    if (label) {
+        return label;
+    }
+    return TranslationService.provider.translate("fkui.sort-filter-dataset.filter.label", "Sök");
+});
+
+function filterResultset(): void {
     if (searchString.value === "") {
         alertScreenReader($t("fkui.sort-filter-dataset.aria-live.empty", "Sök redigera Sök tom"));
     } else {
@@ -153,15 +167,6 @@ function onSearchInput(): void {
     debouncedFilterResultset();
 }
 
-function onClickClearSearch(): void {
-    searchString.value = "";
-
-    const input = getHTMLElementFromVueRef(searchField.value).querySelector("input");
-    if (input) {
-        input.focus();
-    }
-}
-
 watch(sortAttribute, () => {
     emit("usedSortAttributes", sortAttribute.value);
 });
@@ -199,32 +204,16 @@ watch(
                 <i-flex collapse float="right">
                     <i-flex-item v-if="showFilter" shrink align="center">
                         <div class="sort-filter-dataset__search">
-                            <f-icon name="search" class="sort-filter-dataset__search__magnify-icon" />
-
-                            <f-text-field
-                                ref="search-field"
+                            <f-search-text-field
                                 v-model="searchString"
-                                inline
-                                :placeholder="placeholderFilter"
                                 maxlength="64"
+                                :clearable-screen-reader-text
+                                inline
+                                type="text"
                                 @input="onSearchInput"
                             >
-                                <span class="sr-only">{{ placeholderFilter }}</span>
-                            </f-text-field>
-
-                            <!-- [html-validate-disable-next fkui/class-deprecated -- technical debt] -->
-                            <button
-                                v-if="showClearButton"
-                                type="button"
-                                class="button button--discrete sort-filter-dataset__search__close-icon"
-                                :title="$t('fkui.sort-filter-dataset.clear.filter', 'Rensa sökfält')"
-                                @click="onClickClearSearch"
-                            >
-                                <f-icon name="close" />
-                                <span class="sr-only">{{
-                                    $t("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält")
-                                }}</span>
-                            </button>
+                                {{ translatedFilterLabel }}
+                            </f-search-text-field>
                         </div>
                     </i-flex-item>
 

@@ -590,7 +590,7 @@ describe("open calendar and press ESC", () => {
 
 describe("open calendar with width 320px", () => {
     it("should not show week numbers", () => {
-        cy.viewport(639, 639);
+        cy.viewport(339, 639);
 
         const template = /* HTML */ `
             <div style="display: flex">

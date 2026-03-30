@@ -9,6 +9,19 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version v6.40.0
+
+2026-03-26
+
+Releasen innehåller många fixar och buggrättningar. Här är några viktiga nyheter:
+
+- Vi introducerar Definitionslista (FDefinitionList), en ny komponent för kompaktare datapresentation.
+
+- Vi har gjort förändringar i sökfältet för Datamängdsorteraren (FSortFilterDataset).
+  Egenskapen `placeholderFilter` och textnyckeln `fkui.sort-filter-dataset.placeholder.filter` är nu deprekerade och ersätts av `filterLabel` och `fkui.sort-filter-dataset.filter.label`.
+
+Buggfixar finns listade i {@link changelog Changelog}
+
 ## Version 6.38.0
 
 2026-03-04

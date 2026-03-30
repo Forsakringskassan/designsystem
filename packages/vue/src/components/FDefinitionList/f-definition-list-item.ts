@@ -7,6 +7,6 @@ export interface FDefinitionListItem {
     /** Definition term shown on the left side of the list. */
     term: string;
 
-    /** Definition description shown on the right side of the list. */
-    description: string;
+    /** Definition value shown on the right side of the list. */
+    definition: string;
 }

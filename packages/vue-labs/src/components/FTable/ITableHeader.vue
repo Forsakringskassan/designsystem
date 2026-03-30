@@ -80,13 +80,6 @@ function onClickCell(): void {
 
     emit("toggleSortOrder", String(column.sortable));
 }
-
-function onKeydownCell(e: KeyboardEvent): void {
-    if (e.key === "Enter") {
-        e.preventDefault();
-        onClickCell();
-    }
-}
 </script>
 
 <template>
@@ -95,7 +88,7 @@ function onKeydownCell(e: KeyboardEvent): void {
         :aria-sort="sortValue"
         :class="columnClasses"
         tabindex="-1"
-        @keydown="onKeydownCell"
+        @keydown.enter.space.prevent="onClickCell"
         @click.stop="onClickCell"
     >
         <i-flex gap="1x" :float="alignment">

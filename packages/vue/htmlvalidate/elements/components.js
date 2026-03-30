@@ -576,6 +576,12 @@ module.exports = defineMetadata({
     "f-sort-filter-dataset": {
         flow: true,
         interactive: true,
+        attributes: {
+            "placeholder-filter": {
+                deprecated:
+                    "Prop is obsolete and should be removed. Use `filter-label` to set label instead. Deprecated since %version%",
+            },
+        },
         slots: ["default", "header"],
         requiredAttributes: ["data", "sortable-attributes"],
         requiredSlots: ["default"],
@@ -1495,10 +1501,6 @@ module.exports = defineMetadata({
         attributes: {
             definitions: {
                 required: true,
-            },
-            justified: {
-                boolean: true,
-                required: false,
             },
         },
         permittedContent: [],

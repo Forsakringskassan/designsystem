@@ -85,7 +85,7 @@ function normalizeFilterAttributes(
     return filterAttributes;
 }
 
-function sortFilterData<T, TArray extends Dataset<T> | T[]>(
+function sortFilterData<T extends object, TArray extends Dataset<T> | T[]>(
     data: TArray,
     filterAttributes: PropertyKey[],
     searchString: string,
@@ -99,7 +99,10 @@ function sortFilterData<T, TArray extends Dataset<T> | T[]>(
     }) as TArray;
 }
 
-export interface SortFilterDatasetState<T, TArray extends Dataset<T> | T[]> {
+export interface SortFilterDatasetState<
+    T extends object,
+    TArray extends Dataset<T> | T[],
+> {
     searchString: Ref<string>;
     sortAttribute: Ref<SortOrder>;
     sortFilterResult: Ref<TArray>;
@@ -115,7 +118,10 @@ export interface SortFilterDatasetState<T, TArray extends Dataset<T> | T[]> {
     ): void;
 }
 
-export function useSortFilterDataset<T, TArray extends Dataset<T> | T[]>(
+export function useSortFilterDataset<
+    T extends object,
+    TArray extends Dataset<T> | T[],
+>(
     data: MaybeRefOrGetter<TArray>,
     sortableAttributes: MaybeRefOrGetter<
         Record<PropertyKey, string | Readonly<Ref<string>>>
@@ -126,9 +132,7 @@ export function useSortFilterDataset<T, TArray extends Dataset<T> | T[]>(
 ): SortFilterDatasetState<T, TArray> {
     const searchString = ref("");
     const sortAttribute = ref<SortOrder>({ ...defaultSortValue });
-    const sortFilterResult = ref<TArray>(
-        [] as unknown as TArray,
-    ) as Ref<TArray>;
+    const sortFilterResult = ref([] as unknown as TArray) as Ref<TArray>;
     const useDefaultSortOrder = ref(true);
 
     /* all enumerable keys from sortableAttributes */

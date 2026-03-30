@@ -1,24 +1,23 @@
 @use "../../core/size";
+@use "variables" as *;
 
 .definition-list {
     margin: 0;
+    color: $definitionlist-text-color-default;
 
     &__term {
         float: left;
         clear: left;
         margin-right: size.$margin-025;
+        font-weight: var(--f-font-weight-medium);
     }
 
     &__term::after {
         content: ":";
     }
 
-    &__description {
+    &__definition {
         margin-left: 0;
-    }
-
-    &--justified {
-        display: grid;
-        grid-template-columns: max-content auto;
+        margin-bottom: 0.25rem;
     }
 }

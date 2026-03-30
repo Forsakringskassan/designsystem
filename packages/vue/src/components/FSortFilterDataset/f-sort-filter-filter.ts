@@ -24,7 +24,7 @@ function includesAllSearchTerms(
     return true;
 }
 
-export function filter<T, TArray extends Dataset<T> | T[]>(
+export function filter<T extends object, TArray extends Dataset<T> | T[]>(
     list: TArray,
     filterAttributes: PropertyKey[],
     searchString: string,

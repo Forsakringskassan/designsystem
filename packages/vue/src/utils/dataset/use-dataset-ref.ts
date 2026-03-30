@@ -8,6 +8,8 @@ import { toDataset } from "./to-dataset";
  * @public
  * @since v6.39.0
  */
-export function useDatasetRef<T>(initial?: T[]): Ref<Dataset<T>> {
+export function useDatasetRef<T extends object>(
+    initial?: T[],
+): Ref<Dataset<T>> {
     return ref(toDataset(initial ?? [])) as Ref<Dataset<T>>;
 }
