@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-e1654e.json"
+            href="../../search-data-8b5f53.json"
             as="fetch"
             crossorigin
-            integrity="sha384-E9xMrzDtJE/Xv+cQ076vr2WQOYwHQlfDhTLgZozse9SR5byrZ8o61arVYB+an++w"
+            integrity="sha384-LvE1O7rIigamaV5vHZIhpnsb22ndniZolzFDheBt92M3ySAzaSoZLBK4mnoJmqp1"
             id="search-data"
         />
     </head>
@@ -1807,19 +1807,21 @@
 <p class="docs-paragraph">Datamängder är arrayer utökade med extra metadata för att hantera tillgänglighet i tabeller och listor, specifikt när datamängden är ett urval av en större mängd, och används lämpligtvis av komponenter så som <a href="../../components/table-and-list/fsortfilterdataset.html">datamängdsorterare</a> (FSortFilterDataset) och <a href="../labs/FTable">tabell</a> (FTable).</p>
 <h2 id="syntax" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-e364f2"
+                    id="example-7173f7"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> useDatasetRef&lt;T&gt;(<span class="hljs-attr">initial</span>?: T[]): <span class="hljs-title class_">Ref</span>&lt;<span class="hljs-title class_">Dataset</span>&lt;T&gt;&gt;;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">function</span> useDatasetRef&lt;T&gt;(initial, nestedAttribute);
 </code></pre>
                 </div>
             <h3 id="parametrar" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#parametrar">Parametrar</a></h3><dl>
-<dt><code>initial</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dt><code>initial: T[]</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>Initialt värde. Default är en tom array.</dd>
+<dt><code>nestedAttribute: DatasetNestedKeyOf&lt;T&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>Property i element som innehåller nästlade rader.</dd>
 </dl>
 <h3 id="returvarde" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#returvarde">Returvärde</a></h3><dl>
 <dt><code>Ref&lt;Dataset&lt;T&gt;&gt;</code></dt>
@@ -1828,7 +1830,7 @@
 <h2 id="exempel" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#exempel">Exempel</a></h2><p class="docs-paragraph">Skapa en ny datamängd:</p>
 
                 <div
-                    id="example-a0fe02"
+                    id="example-066b8f"
                     class="code-preview code-preview--default"
                     
                     
@@ -1846,7 +1848,7 @@
             <p class="docs-paragraph">Datamängden hanterar alla vanliga operationer en array har:</p>
 
                 <div
-                    id="example-4dea83"
+                    id="example-c3d015"
                     class="code-preview code-preview--default"
                     
                     
@@ -1911,9 +1913,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/dataset-nested-key (<a href="https://github.com/Forsakringskassan/designsystem/commits/5f5dcecab7e5711d94903d3534ec8818b88e8c5c">5f5dcec</a>)<br />
+<div class="footer__right"><div class="version">feature/dataset-nested-key (<a href="https://github.com/Forsakringskassan/designsystem/commits/f26106e541fcd72439bba981e5bcbe3adda77bba">f26106e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1177">PR 1177</a><br />
-        2026-03-30 14:11
+        2026-03-30 14:18
 </div>
 <div class="toolbar__item">
     <form id="version">
