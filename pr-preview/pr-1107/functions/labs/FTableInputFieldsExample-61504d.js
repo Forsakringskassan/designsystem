@@ -4544,16 +4544,32 @@ var ITableText_default = /* @__PURE__ */ defineComponent2({
     }
     function setUpFakeValidation(el) {
       assertRef(inputElement);
-      for (const nativeEvent of ["change", "blur"]) useEventListener(el, nativeEvent, () => {
+      const input = inputElement.value;
+      function emitFakeValidity(nativeEvent) {
         onValidity(new CustomEvent("validity", { detail: {
           isValid: true,
           nativeEvent,
           validityMode: "INITIAL",
           validationMessage: "",
-          target: inputElement.value,
-          elementId: String(inputElement.value.id)
+          target: input,
+          elementId: String(input.id)
         } }));
+      }
+      for (const nativeEvent of ["change", "blur"]) useEventListener(el, nativeEvent, () => {
+        emitFakeValidity(nativeEvent);
       });
+      validationFacade = {
+        validateElement: () => {
+          emitFakeValidity("validate");
+          return Promise.resolve({
+            isValid: true,
+            error: "",
+            isSubmitted: false,
+            isTouched: false
+          });
+        },
+        dispatchComponentValidityEvent: () => void 0
+      };
       useEventListener(el, "input", onPendingValidity);
       useEventListener(el, "component-validity", (e) => {
         e.stopPropagation();
@@ -4656,7 +4672,10 @@ var ITableText_default = /* @__PURE__ */ defineComponent2({
           if (viewValue.value === initialViewValue) {
             validity.value = { ...initialValidity };
             onStopEdit({ reason: "enter" });
-          } else pendingStopEditReason = "enter";
+          } else {
+            pendingStopEditReason = "enter";
+            validationFacade.validateElement(inputElement.value);
+          }
           break;
         case "Escape":
           onStopEdit({ reason: "escape" });
