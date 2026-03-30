@@ -44,7 +44,7 @@ export interface FSortFilterDatasetProps<TArray> {
      *
      * Default is textkey "fkui.sort-filter-dataset.placeholder.filter"
      *
-     * @deprecated Use `filterLabel` instead. Deprecated since %version%.
+     * @deprecated Use `filterLabel` instead. Deprecated since v6.40.0.
      */
     placeholderFilter?: string;
     /**

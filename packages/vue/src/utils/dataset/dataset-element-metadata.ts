@@ -2,7 +2,7 @@
  * Metadata about a single element within a dataset.
  *
  * @public
- * @since %version%
+ * @since v6.40.0
  */
 export interface DatasetElementMetadata {
     /** Zero-based position of the element in the dataset. */

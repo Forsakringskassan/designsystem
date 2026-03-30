@@ -16,9 +16,9 @@ function createComponent(template: string): DefineComponent {
         data() {
             return {
                 definitions: [
-                    { term: "Skulle ha jobbat", description: "8 timmar" },
-                    { term: "Vabbade", description: "8 timmar" },
-                    { term: "Omfattning", description: "100 procent" },
+                    { term: "Skulle ha jobbat", definition: "8 timmar" },
+                    { term: "Vabbade", definition: "8 timmar" },
+                    { term: "Omfattning", definition: "100 procent" },
                 ],
             };
         },
@@ -43,8 +43,7 @@ describe("screenshots", () => {
         const template = /* HTML */ `
             <size-wrapper>
                 <h1>FDefinitionList</h1>
-                <h2>Justified layout</h2>
-                <f-definition-list :definitions="definitions" justified />
+                <f-definition-list :definitions="definitions" />
             </size-wrapper>
         `;
         cy.viewport(sizeWrapperWidth, sizeWrapperHeight);

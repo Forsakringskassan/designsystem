@@ -29,7 +29,7 @@ const activeOptionId = ElementIdService.generateElementId();
 const activeOption: Ref<string | null> = ref(null);
 
 async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
-    if (e.code === "Enter" || e.code === "NumpadEnter") {
+    if (e.code === "Enter" || e.code === "NumpadEnter" || e.code === "Space") {
         await startEditing(e);
     }
 }

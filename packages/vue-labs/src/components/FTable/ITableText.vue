@@ -150,24 +150,43 @@ function setUpValidation(el: HTMLInputElement): void {
 
 function setUpFakeValidation(el: HTMLInputElement): void {
     assertRef(inputElement);
+    const input = inputElement.value;
+
+    function emitFakeValidity(nativeEvent: ValidityNativeEvent): void {
+        const fakeEvent = new CustomEvent<ValidityEvent>("validity", {
+            detail: {
+                isValid: true,
+                nativeEvent,
+                validityMode: "INITIAL",
+                validationMessage: "",
+                target: input,
+                elementId: String(input.id),
+            },
+        });
+
+        onValidity(fakeEvent);
+    }
+
     const nativeEvents: ValidityNativeEvent[] = ["change", "blur"];
 
     for (const nativeEvent of nativeEvents) {
         useEventListener(el, nativeEvent, () => {
-            const fakeEvent = new CustomEvent<ValidityEvent>("validity", {
-                detail: {
-                    isValid: true,
-                    nativeEvent,
-                    validityMode: "INITIAL",
-                    validationMessage: "",
-                    target: inputElement.value,
-                    elementId: String(inputElement.value.id),
-                },
-            });
-
-            onValidity(fakeEvent);
+            emitFakeValidity(nativeEvent);
         });
     }
+
+    validationFacade = {
+        validateElement: () => {
+            emitFakeValidity("validate");
+            return Promise.resolve({
+                isValid: true,
+                error: "",
+                isSubmitted: false,
+                isTouched: false,
+            });
+        },
+        dispatchComponentValidityEvent: () => undefined,
+    };
 
     useEventListener(el, "input", onPendingValidity);
     useEventListener(el, "component-validity", (e) => {
@@ -239,6 +258,10 @@ function onStopEdit(options: { reason: "enter" | "escape" | "tab" | "shift-tab" 
     assertRef(tdElement);
     tdElement.value.style.removeProperty("width");
 
+    if (reason === "blur") {
+        tdElement.value.tabIndex = 0;
+    }
+
     void stopEdit(inputElement.value, reason);
 }
 
@@ -305,6 +328,7 @@ function onEditingKeydown(event: KeyboardEvent): void {
                 onStopEdit({ reason: "enter" });
             } else {
                 pendingStopEditReason = "enter";
+                void validationFacade.validateElement(inputElement.value);
             }
             break;
         }
@@ -411,7 +435,7 @@ function onPendingValidity(): void {
             layout="f-table"
         ></i-popup-error>
     </td>
-    <td v-else ref="td" tabindex="-1" :class="staticClasses">
+    <td v-else ref="td" tabindex="-1" :class="staticClasses" @keydown.space.prevent>
         {{ fromColumnValue() }}
     </td>
 </template>

@@ -1502,10 +1502,6 @@ module.exports = defineMetadata({
             definitions: {
                 required: true,
             },
-            justified: {
-                boolean: true,
-                required: false,
-            },
         },
         permittedContent: [],
         textContent: "none",

@@ -1,6 +1,6 @@
 {
   "name": "@fkui/vue-labs",
-  "version": "6.39.0",
+  "version": "6.40.0",
   "description": "Experimental and unstable FKUI components",
   "keywords": [
     "fkui",
@@ -65,26 +65,26 @@
     ]
   },
   "devDependencies": {
-    "@fkui/date": "6.39.0",
-    "@fkui/design": "6.39.0",
-    "@fkui/icon-lib-default": "6.39.0",
-    "@fkui/logic": "6.39.0",
-    "@fkui/test-utils": "6.39.0",
-    "@fkui/theme-default": "6.39.0",
-    "@fkui/vue": "6.39.0",
-    "@forsakringskassan/docs-generator": "2.39.1",
+    "@fkui/date": "6.40.0",
+    "@fkui/design": "6.40.0",
+    "@fkui/icon-lib-default": "6.40.0",
+    "@fkui/logic": "6.40.0",
+    "@fkui/test-utils": "6.40.0",
+    "@fkui/theme-default": "6.40.0",
+    "@fkui/vue": "6.40.0",
+    "@forsakringskassan/docs-generator": "2.39.3",
     "@forsakringskassan/vite-lib-config": "4.4.0",
     "@vue/test-utils": "2.4.6",
     "esbuild": "0.27.4",
     "vite": "7.3.1",
-    "vue": "3.5.30",
+    "vue": "3.5.31",
     "vue-router": "4.6.4"
   },
   "peerDependencies": {
-    "@fkui/date": "^6.39.0",
-    "@fkui/design": "^6.39.0",
-    "@fkui/logic": "^6.39.0",
-    "@fkui/vue": "^6.39.0",
+    "@fkui/date": "^6.40.0",
+    "@fkui/design": "^6.40.0",
+    "@fkui/logic": "^6.40.0",
+    "@fkui/vue": "^6.40.0",
     "html-validate": ">= 7.9.0",
     "vue": "^3.5.0"
   },

@@ -132,9 +132,7 @@ export function useSortFilterDataset<
 ): SortFilterDatasetState<T, TArray> {
     const searchString = ref("");
     const sortAttribute = ref<SortOrder>({ ...defaultSortValue });
-    const sortFilterResult = ref<TArray>(
-        [] as unknown as TArray,
-    ) as Ref<TArray>;
+    const sortFilterResult = ref([] as unknown as TArray) as Ref<TArray>;
     const useDefaultSortOrder = ref(true);
 
     /* all enumerable keys from sortableAttributes */

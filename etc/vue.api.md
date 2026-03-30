@@ -328,7 +328,7 @@ export const FDefinitionList: typeof __VLS_export_12;
 
 // @public
 export interface FDefinitionListItem {
-    description: string;
+    definition: string;
     term: string;
 }
 

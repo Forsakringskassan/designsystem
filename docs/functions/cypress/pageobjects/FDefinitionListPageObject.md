@@ -33,14 +33,14 @@ new FDefinitionListPageObject(selector);
 FDefinitionListPageObject.cy.ts
 ```
 
-## description()
+## definition()
 
 Används för att komma åt beskrivningen för en definition i definitionslistan.
 
 ### Syntax
 
 ```ts nocompile nolint
-description(index);
+definition(index);
 ```
 
 #### Parametrar
@@ -55,7 +55,7 @@ description(index);
 ### Exempel
 
 ```import
-FDefinitionListPageObject-description.cy.ts
+FDefinitionListPageObject-definition.cy.ts
 ```
 
 ## numberOfDefinitions()

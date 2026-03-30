@@ -224,7 +224,7 @@ const sortableAttributes = Object.fromEntries(
     columns.filter(hasKey).map((it) => [it.key, it.header]),
 );
 
-const mySelectedRows = ref<Row[]>([rows.value[0]]);
+const mySelectedRows = ref([rows.value[0]]);
 
 function onAddRow(): void {
     rows.value.push({

@@ -19,7 +19,7 @@ const props = withDefaults(
 );
 
 const filtered = ref(props.filter(props.data)) as unknown as Ref<T[]>;
-const result = ref<T[]>(props.data);
+const result = ref(props.data);
 const debouncedUpdate = debounce(update, 250);
 
 function update(): void {
