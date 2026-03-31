@@ -40,7 +40,7 @@ import {
 } from "@fkui/vue";
 
 // packages/vue-labs/dist/esm/index.esm.js
-import { defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, nextTick as nextTick3, toValue as toValue2, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, mergeProps, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
+import { defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, withKeys, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, nextTick as nextTick3, toValue as toValue2, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, mergeProps, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
 import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
@@ -2951,7 +2951,7 @@ var _hoisted_1$e = {
   class: "table-ng__cell table-ng__cell--expand"
 };
 var _hoisted_2$9 = ["aria-label", "aria-expanded"];
-var _hoisted_3$5 = {
+var _hoisted_3$4 = {
   key: 1,
   ref: "expandable",
   tabindex: "-1",
@@ -2997,7 +2997,7 @@ var _sfc_main$g = /* @__PURE__ */ defineComponent2({
       }, [createVNode(unref3(FIcon), {
         class: "button__icon",
         name: toggleIcon.value
-      }, null, 8, ["name"])], 8, _hoisted_2$9)])) : (openBlock(), createElementBlock("td", _hoisted_3$5, null, 512));
+      }, null, 8, ["name"])], 8, _hoisted_2$9)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
     };
   }
 });
@@ -3342,7 +3342,7 @@ var inputFieldConfig = {
     }
   }
 };
-var _hoisted_1$c = ["aria-sort"];
+var _hoisted_1$c = ["aria-sort", "onKeydown"];
 var _sfc_main$e = /* @__PURE__ */ defineComponent2({
   __name: "ITableHeader",
   props: {
@@ -3406,19 +3406,13 @@ var _sfc_main$e = /* @__PURE__ */ defineComponent2({
       }
       emit("toggleSortOrder", String(__props.column.sortable));
     }
-    function onKeydownCell(e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        onClickCell();
-      }
-    }
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("th", {
         ref: "th",
         "aria-sort": sortValue.value,
         class: normalizeClass(columnClasses.value),
         tabindex: "-1",
-        onKeydown: onKeydownCell,
+        onKeydown: withKeys(withModifiers(onClickCell, ["prevent"]), ["enter", "space"]),
         onClick: withModifiers(onClickCell, ["stop"])
       }, [createVNode(unref3(IFlex), {
         gap: "1x",
@@ -4112,12 +4106,8 @@ function requireEs_iterator_map() {
   return es_iterator_map;
 }
 requireEs_iterator_map();
-var _hoisted_1$7 = {
-  key: 0,
-  class: "table-ng__cell table-ng__cell--anchor"
-};
-var _hoisted_2$5 = ["href"];
-var _hoisted_3$4 = {
+var _hoisted_1$7 = ["href"];
+var _hoisted_2$5 = {
   key: 1,
   ref: "target",
   tabindex: "-1",
@@ -4138,13 +4128,18 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent2({
     };
     __expose(expose);
     return (_ctx, _cache) => {
-      return __props.column.text(__props.row) ? (openBlock(), createElementBlock("td", _hoisted_1$7, [createElementVNode("a", {
+      return __props.column.text(__props.row) ? (openBlock(), createElementBlock("td", {
+        key: 0,
+        class: "table-ng__cell table-ng__cell--anchor",
+        onKeydown: _cache[0] || (_cache[0] = withKeys(withModifiers(() => {
+        }, ["prevent"]), ["space"]))
+      }, [createElementVNode("a", {
         ref: "target",
         class: "anchor anchor--block",
         target: "_blank",
         href: __props.column.href,
         tabindex: "-1"
-      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_2$5)])) : (openBlock(), createElementBlock("td", _hoisted_3$4, null, 512));
+      }, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_1$7)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$5, null, 512));
     };
   }
 });
@@ -4365,7 +4360,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
     const activeOptionId = ElementIdService.generateElementId();
     const activeOption = ref3(null);
     async function onCellKeyDown(e) {
-      if (e.code === "Enter" || e.code === "NumpadEnter") {
+      if (e.code === "Enter" || e.code === "NumpadEnter" || e.code === "Space") {
         await startEditing(e);
       }
     }
@@ -4693,22 +4688,38 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     }
     function setUpFakeValidation(el) {
       assertRef(inputElement);
+      const input = inputElement.value;
+      function emitFakeValidity(nativeEvent) {
+        const fakeEvent = new CustomEvent("validity", {
+          detail: {
+            isValid: true,
+            nativeEvent,
+            validityMode: "INITIAL",
+            validationMessage: "",
+            target: input,
+            elementId: String(input.id)
+          }
+        });
+        onValidity(fakeEvent);
+      }
       const nativeEvents = ["change", "blur"];
       for (const nativeEvent of nativeEvents) {
         useEventListener(el, nativeEvent, () => {
-          const fakeEvent = new CustomEvent("validity", {
-            detail: {
-              isValid: true,
-              nativeEvent,
-              validityMode: "INITIAL",
-              validationMessage: "",
-              target: inputElement.value,
-              elementId: String(inputElement.value.id)
-            }
-          });
-          onValidity(fakeEvent);
+          emitFakeValidity(nativeEvent);
         });
       }
+      validationFacade = {
+        validateElement: () => {
+          emitFakeValidity("validate");
+          return Promise.resolve({
+            isValid: true,
+            error: "",
+            isSubmitted: false,
+            isTouched: false
+          });
+        },
+        dispatchComponentValidityEvent: () => void 0
+      };
       useEventListener(el, "input", onPendingValidity);
       useEventListener(el, "component-validity", (e) => {
         e.stopPropagation();
@@ -4776,6 +4787,9 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       inputElement.value.tabIndex = -1;
       assertRef(tdElement);
       tdElement.value.style.removeProperty("width");
+      if (reason === "blur") {
+        tdElement.value.tabIndex = 0;
+      }
       void stopEdit2(inputElement.value, reason);
     }
     function fromColumnValue() {
@@ -4832,6 +4846,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
             });
           } else {
             pendingStopEditReason = "enter";
+            void validationFacade.validateElement(inputElement.value);
           }
           break;
         }
@@ -4913,7 +4928,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         onKeydown
       }, [createElementVNode("div", {
         class: normalizeClass(divClasses.value)
-      }, [createElementVNode("span", _hoisted_2$2, toDisplayString(fromColumnValue()), 1), _cache[1] || (_cache[1] = createTextVNode()), viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$2, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), withDirectives(createElementVNode("input", mergeProps({
+      }, [createElementVNode("span", _hoisted_2$2, toDisplayString(fromColumnValue()), 1), _cache[2] || (_cache[2] = createTextVNode()), viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$2, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), withDirectives(createElementVNode("input", mergeProps({
         id: unref3(inputId),
         ref: "input",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => viewValue.value = $event),
@@ -4929,7 +4944,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         "aria-hidden": !inEdit.value,
         onValidity,
         onPendingValidity
-      }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]])], 2), _cache[3] || (_cache[3] = createTextVNode()), createVNode(unref3(IPopupError), {
+      }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]])], 2), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref3(IPopupError), {
         anchor: tdElement.value,
         "is-open": openPopupError.value,
         "error-message": validity.value.validationMessage,
@@ -4939,8 +4954,10 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         key: 1,
         ref: "td",
         tabindex: "-1",
-        class: normalizeClass(staticClasses.value)
-      }, toDisplayString(fromColumnValue()), 3));
+        class: normalizeClass(staticClasses.value),
+        onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {
+        }, ["prevent"]), ["space"]))
+      }, toDisplayString(fromColumnValue()), 35));
     };
   }
 });
@@ -5588,6 +5605,10 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     expandableAttribute: {
       default: () => void 0
     },
+    rowClass: {
+      type: Function,
+      default: void 0
+    },
     striped: {
       type: Boolean
     },
@@ -5670,6 +5691,9 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       stopEdit(element, reason);
     }
     provide2(stopEditKey, stopEditHandler);
+    function getRowClass(row) {
+      return typeof __props.rowClass === "function" ? __props.rowClass(row) : void 0;
+    }
     function onToggleExpanded(key) {
       if (expandedKeys.value.has(key)) {
         expandedKeys.value.delete(key);
@@ -5819,13 +5843,13 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         onFocusout: onTableFocusout,
         onClick,
         onKeydown
-      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), hasColumns.value ? (openBlock(), createElementBlock("thead", _hoisted_3$1, [createElementVNode("tr", _hoisted_4$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5$1)) : createCommentVNode("", true), _cache[0] || (_cache[0] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
+      }, [hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$1, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), hasColumns.value ? (openBlock(), createElementBlock("thead", _hoisted_3$1, [createElementVNode("tr", _hoisted_4$1, [isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5$1)) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), __props.selectable ? (openBlock(), createBlock(_sfc_main$d, {
         key: 1,
         ref: bindCellApiRef,
         state: unref3(selectableHeaderState)(),
         selectable: __props.selectable,
         onToggle: unref3(toggleSelectableHeader)
-      }, null, 8, ["state", "selectable", "onToggle"])) : createCommentVNode("", true), _cache[1] || (_cache[1] = createTextVNode()), (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
+      }, null, 8, ["state", "selectable", "onToggle"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
         return openBlock(), createBlock(_sfc_main$e, {
           key: column.id,
           column,
@@ -5834,10 +5858,12 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           scope: "col",
           onToggleSortOrder
         }, null, 8, ["column", "sort-enabled", "sort-order"]);
-      }), 128))])])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), hasColumns.value ? (openBlock(), createElementBlock("tbody", _hoisted_6$1, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_7$1, [createElementVNode("td", {
+      }), 128))])])) : createCommentVNode("", true), _cache[7] || (_cache[7] = createTextVNode()), hasColumns.value ? (openBlock(), createElementBlock("tbody", _hoisted_6$1, [isEmpty2.value ? (openBlock(), createElementBlock("tr", _hoisted_7$1, [createElementVNode("td", {
         colspan: fullColspan.value,
-        class: "table-ng__cell"
-      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 8, _hoisted_8)])) : (openBlock(true), createElementBlock(Fragment2, {
+        class: "table-ng__cell",
+        onKeydown: _cache[0] || (_cache[0] = withKeys(withModifiers(() => {
+        }, ["prevent"]), ["space"]))
+      }, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref3($t)("fkui.ftable.empty.text", "Tabellen \xE4r tom")), 1)])], 40, _hoisted_8)])) : (openBlock(true), createElementBlock(Fragment2, {
         key: 1
       }, renderList(metaRows.value, ({
         key,
@@ -5851,7 +5877,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       }) => {
         return openBlock(), createElementBlock("tr", {
           key,
-          class: "table-ng__row",
+          class: normalizeClass(["table-ng__row", getRowClass(row)]),
           "aria-level": level,
           "aria-rowindex": rowIndex,
           "aria-setsize": setsize,
@@ -5865,7 +5891,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           "is-expanded": isExpanded,
           "row-key": key,
           onToggle: onToggleExpanded
-        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[3] || (_cache[3] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$f, {
+        }, null, 8, ["is-expandable", "is-expanded", "row-key"])) : createCommentVNode("", true), _cache[5] || (_cache[5] = createTextVNode()), level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(_sfc_main$f, {
           key: 1,
           colspan: expandedColspan.value
         }, {
@@ -5886,7 +5912,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
           state: unref3(selectableRowState)(row),
           row,
           onToggle: unref3(toggleSelectableRow)
-        }, null, 8, ["level", "selectable", "state", "row", "onToggle"])) : createCommentVNode("", true), _cache[2] || (_cache[2] = createTextVNode()), (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
+        }, null, 8, ["level", "selectable", "state", "row", "onToggle"])) : createCommentVNode("", true), _cache[4] || (_cache[4] = createTextVNode()), (openBlock(true), createElementBlock(Fragment2, null, renderList(columns.value, (column) => {
           return openBlock(), createElementBlock(Fragment2, {
             key: column.id
           }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
@@ -5902,14 +5928,16 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
             key: 1,
             row
           }, null, 8, ["row"])) : createCommentVNode("", true)], 64);
-        }), 128))], 64))], 8, _hoisted_9);
-      }), 128))])) : createCommentVNode("", true), _cache[6] || (_cache[6] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_10, [createElementVNode("tr", {
+        }), 128))], 64))], 10, _hoisted_9);
+      }), 128))])) : createCommentVNode("", true), _cache[8] || (_cache[8] = createTextVNode()), hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_10, [createElementVNode("tr", {
         class: "table-ng__row",
         "aria-rowindex": ariaRowcount.value
       }, [createElementVNode("td", {
         colspan: fullColspan.value,
-        class: "table-ng__cell--custom"
-      }, [renderSlot(_ctx.$slots, "footer")], 8, _hoisted_12)], 8, _hoisted_11)])) : createCommentVNode("", true)], 42, _hoisted_1$2);
+        class: "table-ng__cell--custom",
+        onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {
+        }, ["prevent"]), ["space"]))
+      }, [renderSlot(_ctx.$slots, "footer")], 40, _hoisted_12)], 8, _hoisted_11)])) : createCommentVNode("", true)], 42, _hoisted_1$2);
     };
   }
 });
@@ -7395,18 +7423,6 @@ function hoursMinutesStringToMinutes(valueString, extraForgiving = false) {
   const totalMinutes = hours * 60 + minutes;
   return !Number.isNaN(totalMinutes) ? totalMinutes : void 0;
 }
-function minutesToHoursMinutesString(value) {
-  let valueString = "";
-  const safeValue = value !== null && value !== void 0 ? value : Number.NaN;
-  if (!Number.isNaN(safeValue)) {
-    const {
-      hours,
-      minutes
-    } = minutesToObject(safeValue);
-    valueString = [hours, minutes].map((value2) => String(value2).padStart(2, "0")).join(":");
-  }
-  return stripWhitespace(valueString);
-}
 function splitHoursMinutes(valueString, extraForgiving = false) {
   const regexps = extraForgiving ? [HOURS_MINUTES_WITHOUT_COLON_REGEXP, HOURS_MINUTES_REGEXP] : [HOURS_MINUTES_REGEXP];
   const match = findMatch(regexps, stripWhitespace(valueString));
@@ -7416,19 +7432,6 @@ function splitHoursMinutes(valueString, extraForgiving = false) {
   const hours = padInitialZeros(match?.groups?.hours);
   const minutes = padInitialZeros(match?.groups?.minutes);
   return [hours, minutes];
-}
-function minutesToObject(...values) {
-  const minutes = values.filter((value) => isSet(value) && !Number.isNaN(value)).reduce((sum, value) => sum + value, 0);
-  return {
-    hours: Math.floor(minutes / 60),
-    minutes: minutes % 60
-  };
-}
-function formatNumberToTime(value) {
-  if (typeof value !== "number" || Number.isNaN(value)) {
-    return void 0;
-  }
-  return minutesToHoursMinutesString(value);
 }
 function parseTimeToNumberUsingConfig(value, extraForgiving) {
   var _hoursMinutesStringTo;
@@ -7511,42 +7514,6 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main = defineComponent2({
-  name: "XTimeTextField",
-  extends: FTextField,
-  mixins: [TranslationMixin],
-  props: {
-    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
-    formatter: {
-      type: Function,
-      required: false,
-      default: formatNumberToTime
-    },
-    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
-    parser: {
-      type: Function,
-      required: false,
-      default: parseTimeToNumber
-    }
-  },
-  setup(props) {
-    return useTextFieldSetup(props);
-  },
-  mounted() {
-    const inputElement = this.$el.querySelector("input");
-    if (!isSet(inputElement)) {
-      throw new Error(`Could not find input element in XTimeTextField with id ${String(this.$el.id)}`);
-    }
-    ValidationService.addValidatorsToElement(inputElement, {
-      maxLength: {
-        length: 10
-      },
-      hoursMinutes: {}
-    }, true);
-    inputElement.setAttribute("inputmode", "numeric");
-    ValidationService.validateElement(inputElement);
-  }
-});
 
 // virtual-entry:virtual:packages/vue-labs/src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-c2248b.js
 import { LiveExample } from "@forsakringskassan/docs-live-example";
