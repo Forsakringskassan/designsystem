@@ -38,6 +38,10 @@
         padding: var(--padding-input-fields);
         width: var(--f-width-full);
 
+        @media (forced-colors: active) {
+            border-color: ButtonBorder;
+        }
+
         &:hover {
             background-color: $selectfield-color-background-hover;
         }
@@ -70,6 +74,10 @@
         @extend %icon--inset-top-right;
 
         color: $selectfield-f-icon-arrow-down-color-content-default;
+
+        @media (forced-colors: active) {
+            color: buttonText;
+        }
     }
 
     &__error-popup-icon {
