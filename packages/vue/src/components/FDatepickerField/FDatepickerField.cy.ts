@@ -11,6 +11,7 @@ import {
     FDatepickerFieldPageobject,
 } from "../../cypress";
 import FDatepickerField from "./FDatepickerField.vue";
+import FDatepickerFieldIconExample from "./examples/FDatepickerFieldIconExample.vue";
 
 const datepickerField = new FDatepickerFieldPageobject(".datepicker-field");
 const alertScreenReader = new AlertScreenReaderPageObject();
@@ -1329,4 +1330,17 @@ describe("density", () => {
         cy.mount(DensityComponent);
         cy.toMatchScreenshot();
     });
+});
+
+describe("Visual", () => {
+    const forcedColorModes = ["none", "dark", "light"] as const;
+
+    for (const mode of forcedColorModes) {
+        it(`should render correct styling for forced color mode '${mode}'`, () => {
+            cy.viewport(300, 200);
+            cy.forcedColors(mode);
+            cy.mount(FDatepickerFieldIconExample);
+            cy.toMatchScreenshot();
+        });
+    }
 });
