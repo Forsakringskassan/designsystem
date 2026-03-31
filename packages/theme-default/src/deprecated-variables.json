@@ -298,5 +298,9 @@
     "--f-button-standard-padding-top",
     "--f-button-standard-padding-right",
     "--f-button-standard-padding-bottom",
-    "--f-button-standard-padding-left"
+    "--f-button-standard-padding-left",
+    "--f-button-default-padding-top",
+    "--f-button-default-padding-right",
+    "--f-button-default-padding-bottom",
+    "--f-button-default-padding-left"
 ]
