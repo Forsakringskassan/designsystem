@@ -7,10 +7,13 @@ import {
     getCellTarget,
     getVerticalNavIndex,
 } from "./f-table.logic";
+import { type MetaRow } from "./meta-row";
 
-function matching(needle: unknown): (item: unknown) => boolean {
-    const id = getItemIdentifier(needle);
-    return (item) => getItemIdentifier(item) === id;
+function matching(
+    needle: MetaRow<unknown>,
+): (item: MetaRow<unknown>) => boolean {
+    const id = getItemIdentifier(needle.row);
+    return (item) => getItemIdentifier(item.row) === id;
 }
 
 /**
@@ -32,14 +35,14 @@ function matching(needle: unknown): (item: unknown) => boolean {
  */
 export function useTabstop(
     tableRef: Readonly<ShallowRef<HTMLTableElement | null>>,
-    metaRows: Readonly<Ref<unknown[]>>,
+    metaRows: Readonly<Ref<Array<MetaRow<unknown>>>>,
 ): FTableApi {
     let pendingRowRemoval = false;
     const renderOptions = ref({ fallbackToFirstCell: false, focus: false });
 
     function fallbackToFirstCell(
-        newRows: unknown[],
-        oldRows: unknown[],
+        newRows: Array<MetaRow<unknown>>,
+        oldRows: Array<MetaRow<unknown>>,
         focus: boolean,
     ): void {
         assertRef(tableRef);
