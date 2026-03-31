@@ -8,6 +8,7 @@ import {
 import { FSelectFieldPageObject } from "../../cypress";
 import FTooltip from "../FTooltip/FTooltip.vue";
 import FSelectField from "./FSelectField.vue";
+import FSelectFieldVisualExample from "./examples/FSelectFieldVisualExample.vue";
 
 describe("FSelectField", () => {
     it("should provide a page object that can access any necessary elements", () => {
@@ -120,5 +121,18 @@ describe("FSelectField", () => {
             cy.mount(DensityComponent);
             cy.toMatchScreenshot();
         });
+    });
+
+    describe("Visual", () => {
+        const forcedColorModes = ["none", "dark", "light"] as const;
+
+        for (const mode of forcedColorModes) {
+            it(`should render correct styling for forced color mode '${mode}'`, () => {
+                cy.viewport(300, 300);
+                cy.forcedColors(mode);
+                cy.mount(FSelectFieldVisualExample);
+                cy.toMatchScreenshot();
+            });
+        }
     });
 });
