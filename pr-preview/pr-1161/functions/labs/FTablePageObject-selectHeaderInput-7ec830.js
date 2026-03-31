@@ -4780,6 +4780,9 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
       inputElement.value.tabIndex = -1;
       assertRef(tdElement);
       tdElement.value.style.removeProperty("width");
+      if (reason === "blur") {
+        tdElement.value.tabIndex = 0;
+      }
       void stopEdit2(inputElement.value, reason);
     }
     function fromColumnValue() {
@@ -7413,18 +7416,6 @@ function hoursMinutesStringToMinutes(valueString, extraForgiving = false) {
   const totalMinutes = hours * 60 + minutes;
   return !Number.isNaN(totalMinutes) ? totalMinutes : void 0;
 }
-function minutesToHoursMinutesString(value) {
-  let valueString = "";
-  const safeValue = value !== null && value !== void 0 ? value : Number.NaN;
-  if (!Number.isNaN(safeValue)) {
-    const {
-      hours,
-      minutes
-    } = minutesToObject(safeValue);
-    valueString = [hours, minutes].map((value2) => String(value2).padStart(2, "0")).join(":");
-  }
-  return stripWhitespace(valueString);
-}
 function splitHoursMinutes(valueString, extraForgiving = false) {
   const regexps = extraForgiving ? [HOURS_MINUTES_WITHOUT_COLON_REGEXP, HOURS_MINUTES_REGEXP] : [HOURS_MINUTES_REGEXP];
   const match = findMatch(regexps, stripWhitespace(valueString));
@@ -7434,19 +7425,6 @@ function splitHoursMinutes(valueString, extraForgiving = false) {
   const hours = padInitialZeros(match?.groups?.hours);
   const minutes = padInitialZeros(match?.groups?.minutes);
   return [hours, minutes];
-}
-function minutesToObject(...values) {
-  const minutes = values.filter((value) => isSet(value) && !Number.isNaN(value)).reduce((sum, value) => sum + value, 0);
-  return {
-    hours: Math.floor(minutes / 60),
-    minutes: minutes % 60
-  };
-}
-function formatNumberToTime(value) {
-  if (typeof value !== "number" || Number.isNaN(value)) {
-    return void 0;
-  }
-  return minutesToHoursMinutesString(value);
 }
 function parseTimeToNumberUsingConfig(value, extraForgiving) {
   var _hoursMinutesStringTo;
@@ -7529,42 +7507,6 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main = defineComponent2({
-  name: "XTimeTextField",
-  extends: FTextField,
-  mixins: [TranslationMixin],
-  props: {
-    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
-    formatter: {
-      type: Function,
-      required: false,
-      default: formatNumberToTime
-    },
-    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
-    parser: {
-      type: Function,
-      required: false,
-      default: parseTimeToNumber
-    }
-  },
-  setup(props) {
-    return useTextFieldSetup(props);
-  },
-  mounted() {
-    const inputElement = this.$el.querySelector("input");
-    if (!isSet(inputElement)) {
-      throw new Error(`Could not find input element in XTimeTextField with id ${String(this.$el.id)}`);
-    }
-    ValidationService.addValidatorsToElement(inputElement, {
-      maxLength: {
-        length: 10
-      },
-      hoursMinutes: {}
-    }, true);
-    inputElement.setAttribute("inputmode", "numeric");
-    ValidationService.validateElement(inputElement);
-  }
-});
 
 // virtual-entry:virtual:packages/vue-labs/src/cypress/examples/FTablePageObject/FTablePageObject-selectHeaderInput.vue:FTablePageObject-selectHeaderInput-7ec830.js
 import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
