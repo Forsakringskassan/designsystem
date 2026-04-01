@@ -3768,7 +3768,7 @@ function getAbsolutePosition(src) {
 }
 
 // packages/vue/src/utils/dataset/use-dataset-ref.ts
-import { ref } from "vue";
+import { ref, toRaw, watch } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
 import { defineComponent as defineComponent12 } from "vue";
