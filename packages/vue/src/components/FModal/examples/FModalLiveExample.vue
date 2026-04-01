@@ -19,7 +19,7 @@ export default defineComponent({
     },
     computed: {
         components(): object {
-            return { FModal, FButton };
+            return { FButton, FModal };
         },
         livedata(): object {
             return {
