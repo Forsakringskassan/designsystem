@@ -8,163 +8,152 @@ search:
         - selected-rows
 ---
 
-Den här sidan riktar sig till utvecklare och beskriver API:t för bulkoperation i `FTable`.
+Den här sidan riktar sig till utvecklare och beskriver hur bulkoperation i `FTable` fungerar.
 
 Bulkoperation i tabell bygger på två delar:
 
-- val-läge med `selectable="single"` eller `selectable="multi"`
-- vald status via `v-model:selected-rows`
+- enkel eller flerval, `selectable="single"` eller `selectable="multi"`
+- valda rader via `v-model:selected-rows="selectedRows"`
 
-## Snabbstart
+<!-- prettier-ignore -->
+```html name=base hidden
+<f-table
+    :rows
+    :columns
+    key-attribute="id"
+>
+</f-table>
+```
 
-```vue
-<script setup lang="ts">
-import { ref } from "vue";
-import { FButton } from "@fkui/vue";
-import { FTable, defineTableColumns } from "@fkui/vue-labs";
+## Flerval
 
-interface Row {
-    id: string;
-    fruit: string;
-}
+För att aktivera flerval används `selectable="multi"`.
 
-const rows = ref<Row[]>([
-    { id: "1", fruit: "Apelsin" },
-    { id: "2", fruit: "Banan" },
-]);
+<!-- prettier-ignore -->
+```html compare=base context=4 name=multi
+<f-table
+    :rows
+    :columns
+    key-attribute="id"
+    selectable="multi"
+>
+</f-table>
+```
 
+```import nomarkup
+FTableBulkExampleMulti.vue
+```
+
+De valda raderna nås via `v-model:selected-rows="selectedRows"`.
+
+```html compare=multi context=5
+<f-table
+    :rows
+    :columns
+    key-attribute="id"
+    selectable="multi"
+    v-model:selected-rows="selectedRows"
+>
+</f-table>
+```
+
+`selected-row` är en array `Row[]`, där `Row` är typen för dina rad-object.
+
+```ts nocompile nolint
+interface Row {}
+/* --- cut above --- */
 const selectedRows = ref<Row[]>([]);
+```
 
-const columns = defineTableColumns<Row>([
-    {
-        type: "text",
-        header: "Frukt",
-        key: "fruit",
-        value(row) {
-            return row.fruit;
-        },
-    },
-]);
+Om `selectedRows` är tom så är inga rader valda, för att få förvalda rader så sätts `selectedRows` till de rad-objekt som ska vara valda.
 
+```ts nocompile nolint
+interface Row {}
+const rows = ref<Row[]>([]);
+declare function isSelected(): boolean;
+
+/* --- cut above --- */
+const selectedRows = ref(rows.filter(isSelected));
+```
+
+## Enkelval
+
+För att aktivera enkelval används `selectable="single"`.
+
+<!-- prettier-ignore -->
+```html compare=base name=single context=4
+<f-table
+    :rows
+    :columns
+    key-attribute="id"
+    selectable="single"
+>
+</f-table>
+```
+
+```import nomarkup
+FTableBulkExampleSingle.vue
+```
+
+Den valda raden nås via `v-model:selected-rows="selectedRows"`.
+
+```html compare=single context=5
+<f-table
+    :rows
+    :columns
+    key-attribute="id"
+    selectable="single"
+    v-model:selected-rows="selectedRows"
+>
+</f-table>
+```
+
+`selected-row` är en array `Row[]` trots att det är enkelval, men kan bara innehålla ett eller inga objekt, där `Row` är typen för dina rad-object.
+
+```ts nocompile nolint
+interface Row {}
+/* --- cut above --- */
+const selectedRows = ref<Row[]>([]);
+```
+
+Om `selectedRows` är tom så är ingen rad vald, för att få en förvald rad så sätt `selectedRows` till det rad-objekt som ska vara valt.
+
+```ts nocompile nolint
+interface Row {}
+declare function isSelected(): boolean;
+const rows = ref<Row[]>([]);
+/* --- cut above --- */
+const selectedRows = ref([rows[2]]);
+```
+
+## Implementationsexempel
+
+Om valda rader ska tömmas efter utförd bulkoperation så hanteras det genom att sätta `selectedRows` till en tom array.
+För att göra en bulkoperation på vald eller valda rader så anropa en funktion, exempelvis vid `@click` på en {@link button knapp}.
+Tänk på att borttag/ändring av rader ska göras i original-datan (ej filtrerad data), annars återkommer de borttagna/ändrade objekten om filtreringen ändras.
+Viktigt att även tömma `selectedRows` om raderna inte längre ska vara valda efter utförd bulkoperation.
+
+```ts nocompile nolint
 function onRemoveSelectedRows(): void {
     rows.value = rows.value.filter((row) => !selectedRows.value.includes(row));
     selectedRows.value = [];
 }
-</script>
-
-<template>
-    <f-button variant="secondary" @click="onRemoveSelectedRows"
-        >Ta bort markerade</f-button
-    >
-
-    <f-table
-        v-model:selected-rows="selectedRows"
-        :rows
-        :columns
-        key-attribute="id"
-        selectable="multi"
-    >
-        <template #caption>Frukter</template>
-    </f-table>
-</template>
 ```
 
-## API i detalj
-
-### `selectable`
-
-Styr hur rader kan väljas.
-
-- `"multi"`: flerval med kryssrutor
-- `"single"`: enradersval med radioknapp
-- utelämnad prop: inget radval
-
-```html static
-<f-table selectable="multi"> </f-table> <f-table selectable="single"> </f-table>
-```
-
-Beteende:
-
-- `multi` visar kryssruta i varje rad och en välj-alla-kryssruta i headern.
-- `single` visar radioknapp i varje rad och ingen välj-alla i headern.
-
-### `v-model:selected-rows`
-
-Innehåller de rader som är valda.
-
-```html static
-<f-table v-model:selected-rows="selectedRows"> </f-table>
-```
-
-Typ:
-
-- `selectedRows` är en array av samma radtyp som skickas in i `rows`.
-- även i `single`-läge används array (normalt 0 eller 1 element).
-
-### `rows`
-
-Källdatan för tabellen.
-
-```html static
-<f-table :rows="rows"> </f-table>
-```
-
-Viktigt för bulkoperation:
-
-- om uppsättningen rader ändras så att nycklar läggs till, tas bort eller byts ut rensas `selectedRows`.
-- detta förhindrar att gamla val lever kvar när datamängden inte längre matchar.
-
-### `key-attribute`
-
-Anger vilken egenskap som identifierar en rad.
-
-```vue static
-<f-table key-attribute="id"> </f-table>
-```
-
-Rekommendation:
-
-- använd alltid en stabil och unik nyckel per rad (till exempel `id`) vid bulkoperation.
-- det gör urvalet robust när tabellen renderas om.
-
-## Implementationsmönster
-
-### Ta bort markerade rader (multi)
-
-```ts
+```ts nocompile nolint
 interface Row {
     id: string;
 }
-
-function onRemoveSelectedRows(rows: Row[], selectedRows: Row[]): Row[] {
-    return rows.filter((row) => !selectedRows.includes(row));
-}
-```
-
-### Kör en åtgärd för en vald rad (single)
-
-```ts
-interface Row {
-    id: string;
-}
-
+/* --- cut above --- */
 function onRunSingleAction(selectedRows: Row[]): void {
     const row = selectedRows[0];
     if (!row) {
         return;
     }
-
+    selectedRows.value = [];
     // Kör åtgärd för vald rad
-    console.log("Vald rad", row.id);
 }
 ```
-
-## Vanliga fallgropar
-
-- Glömmer `v-model:selected-rows`: tabellen visar valkontroller men du kan inte läsa valen i din komponent.
-- Instabil eller saknad nyckel: val kan bli svårt att följa när rader uppdateras.
-- Förväntar scalar i `single`: API:t använder alltid array för `selectedRows`.
-- Behåller val efter destruktiv bulkåtgärd: rensa `selectedRows` efter att rader tagits bort.
 
 ## Relaterat
 
