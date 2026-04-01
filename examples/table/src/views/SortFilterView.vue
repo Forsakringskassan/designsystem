@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
-import { FSortFilterDataset } from "@fkui/vue";
+import { FSortFilterDataset, useDatasetRef } from "@fkui/vue";
 import { type TableColumn, FTable, defineTableColumns, removeRow } from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
@@ -71,64 +71,67 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = ref<Row[]>([
-    {
-        id: "1",
-        level: "Föräldrapenning",
-        antal: "90000",
-        expandableRows: [
-            {
-                id: "1a",
-                level: "Sjukpenningsnivå",
-                antal: "30000",
-            },
-            {
-                id: "1b",
-                level: "Lägstanivå",
-                antal: "20000",
-            },
-            {
-                id: "1c",
-                level: "Sjukpenningsnivå",
-                antal: "50000",
-            },
-        ],
-    },
-    {
-        id: "2",
-        level: "Tillfällig föräldrapenning",
-        antal: "30000",
-        expandableRows: [
-            {
-                id: "2a",
-                level: "Heldag",
-                antal: "30000",
-            },
-        ],
-    },
-    {
-        id: "3",
-        level: "Föräldrapenning",
-        antal: "11000",
-        expandableRows: [
-            {
-                id: "3a",
-                level: "Sjukpenningsnivå",
-                antal: "40000",
-            },
-            {
-                id: "3b",
-                level: "Lägstanivå",
-                antal: "20000",
-            },
-            {
-                id: "3c",
-                level: "Sjukpenningsnivå",
-                antal: "50000",
-            },
-        ],
-    },
-]);
+const rows = useDatasetRef<Row>(
+    [
+        {
+            id: "1",
+            level: "Föräldrapenning",
+            antal: "90000",
+            expandableRows: [
+                {
+                    id: "1a",
+                    level: "Sjukpenningsnivå",
+                    antal: "30000",
+                },
+                {
+                    id: "1b",
+                    level: "Lägstanivå",
+                    antal: "20000",
+                },
+                {
+                    id: "1c",
+                    level: "Sjukpenningsnivå",
+                    antal: "50000",
+                },
+            ],
+        },
+        {
+            id: "2",
+            level: "Tillfällig föräldrapenning",
+            antal: "30000",
+            expandableRows: [
+                {
+                    id: "2a",
+                    level: "Heldag",
+                    antal: "30000",
+                },
+            ],
+        },
+        {
+            id: "3",
+            level: "Föräldrapenning",
+            antal: "11000",
+            expandableRows: [
+                {
+                    id: "3a",
+                    level: "Sjukpenningsnivå",
+                    antal: "40000",
+                },
+                {
+                    id: "3b",
+                    level: "Lägstanivå",
+                    antal: "20000",
+                },
+                {
+                    id: "3c",
+                    level: "Sjukpenningsnivå",
+                    antal: "50000",
+                },
+            ],
+        },
+    ],
+    "expandableRows",
+);
 
 // Hard coded sorting on key {attributeName: "Name for the key", ...}
 const sortableAttributes = { level: "Redigerbar text" };

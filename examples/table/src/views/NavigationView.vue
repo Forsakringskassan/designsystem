@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { FSelectField } from "@fkui/vue";
+import { FSelectField, useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 const selectedValue = ref("");
@@ -30,7 +30,7 @@ type ExpandableTabstopRow = TabstopRow & {
     expandableContent?: ExpandableContent[];
 };
 
-const rows = ref([
+const sourceRows: ExpandableTabstopRow[] = [
     {
         id: "1",
         sum: "10000",
@@ -95,7 +95,24 @@ const rows = ref([
             },
         ],
     },
-]);
+];
+
+const withoutExpandableRows = useDatasetRef<ExpandableTabstopRow>(
+    sourceRows.map(({ expandableRows, ...attrs }) => ({
+        ...attrs,
+    })),
+);
+
+const withExpandableRows = useDatasetRef<ExpandableTabstopRow>(
+    sourceRows.map(({ expandableContent, ...attrs }) => ({
+        ...attrs,
+    })),
+    "expandableRows",
+);
+
+const rows = computed(() =>
+    expandableAttr.value === "expandableRows" ? withExpandableRows.value : withoutExpandableRows.value,
+);
 
 const columns = defineTableColumns<ExpandableTabstopRow>([
     {

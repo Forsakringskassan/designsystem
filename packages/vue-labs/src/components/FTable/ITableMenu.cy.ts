@@ -1,6 +1,13 @@
+import { h } from "vue";
+import { useDatasetRef } from "@fkui/vue";
 import { FTablePageObject } from "../../cypress";
 import FTable from "./FTable.vue";
 import { defineTableColumns } from "./table-column";
+
+interface Row {
+    id: number;
+    text: string;
+}
 
 const table = new FTablePageObject();
 
@@ -10,8 +17,8 @@ before(() => {
 
 describe("ITableMenu", () => {
     it("should open context menu when cell is activated", () => {
-        const rows = [{ id: 1, text: "Text" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
+        const rows: Row[] = [{ id: 1, text: "Text" }];
+        const columns = defineTableColumns<Row>([
             {
                 type: "text",
                 header: "Text",
@@ -27,9 +34,9 @@ describe("ITableMenu", () => {
             },
         ]);
 
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: { rows, columns },
-        });
+        cy.mount(() =>
+            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+        );
 
         table.contextmenu().should("not.exist");
         table.cell({ row: 1, col: 2 }).click();
@@ -40,8 +47,8 @@ describe("ITableMenu", () => {
     });
 
     it("should close context menu when pressing escape", () => {
-        const rows = [{ id: 1, text: "Text" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
+        const rows: Row[] = [{ id: 1, text: "Text" }];
+        const columns = defineTableColumns<Row>([
             { type: "text", header: "Text", key: "text" },
             {
                 type: "menu",
@@ -53,9 +60,9 @@ describe("ITableMenu", () => {
             },
         ]);
 
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: { rows, columns },
-        });
+        cy.mount(() =>
+            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+        );
 
         table.contextmenu().should("not.exist");
         table.cell({ row: 1, col: 2 }).click();
@@ -66,8 +73,8 @@ describe("ITableMenu", () => {
     });
 
     it("should close context menu when clicking outside", () => {
-        const rows = [{ id: 1, text: "Text" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
+        const rows: Row[] = [{ id: 1, text: "Text" }];
+        const columns = defineTableColumns<Row>([
             { type: "text", header: "Text", key: "text" },
             {
                 type: "menu",
@@ -79,9 +86,9 @@ describe("ITableMenu", () => {
             },
         ]);
 
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: { rows, columns },
-        });
+        cy.mount(() =>
+            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+        );
 
         table.contextmenu().should("not.exist");
         table.cell({ row: 1, col: 2 }).click();
@@ -92,8 +99,8 @@ describe("ITableMenu", () => {
     });
 
     it("should close context menu when tabbing", () => {
-        const rows = [{ id: 1, text: "Text" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
+        const rows: Row[] = [{ id: 1, text: "Text" }];
+        const columns = defineTableColumns<Row>([
             { type: "text", header: "Text", key: "text" },
             {
                 type: "menu",
@@ -105,9 +112,9 @@ describe("ITableMenu", () => {
             },
         ]);
 
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: { rows, columns },
-        });
+        cy.mount(() =>
+            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+        );
 
         table.cell({ row: 1, col: 2 }).click();
         table.contextmenu().should("exist");
@@ -117,8 +124,8 @@ describe("ITableMenu", () => {
     });
 
     it("should close context menu after selecting an item", () => {
-        const rows = [{ id: 1, text: "Text" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
+        const rows: Row[] = [{ id: 1, text: "Text" }];
+        const columns = defineTableColumns<Row>([
             { type: "text", header: "Text", key: "text" },
             {
                 type: "menu",
@@ -130,9 +137,9 @@ describe("ITableMenu", () => {
             },
         ]);
 
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: { rows, columns },
-        });
+        cy.mount(() =>
+            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+        );
 
         table.cell({ row: 1, col: 2 }).click();
         table.contextmenu().should("exist");
@@ -142,11 +149,11 @@ describe("ITableMenu", () => {
     });
 
     it("should close current context menu when opening another", () => {
-        const rows = [
+        const rows: Row[] = [
             { id: 1, text: "Text 1" },
             { id: 1, text: "Text 2" },
         ];
-        const columns = defineTableColumns<(typeof rows)[number]>([
+        const columns = defineTableColumns<Row>([
             { type: "text", header: "Text", key: "text" },
             {
                 type: "menu",
@@ -158,9 +165,9 @@ describe("ITableMenu", () => {
             },
         ]);
 
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: { rows, columns },
-        });
+        cy.mount(() =>
+            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+        );
 
         table.cell({ row: 2, col: 2 }).click();
         table.contextmenu().should("have.length", 1);
@@ -170,10 +177,10 @@ describe("ITableMenu", () => {
     });
 
     it("should call action when menu item is selected", () => {
-        const rows = [{ id: 1, text: "Text" }];
+        const rows: Row[] = [{ id: 1, text: "Text" }];
         const foo = cy.stub().as("fooClick");
         const bar = cy.stub().as("barClick");
-        const columns = defineTableColumns<(typeof rows)[number]>([
+        const columns = defineTableColumns<Row>([
             { type: "text", header: "Text", key: "text" },
             {
                 type: "menu",
@@ -188,9 +195,9 @@ describe("ITableMenu", () => {
             },
         ]);
 
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: { rows, columns },
-        });
+        cy.mount(() =>
+            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+        );
 
         table.cell({ row: 1, col: 2 }).click();
         table.contextmenuItems().first().click();
@@ -201,9 +208,9 @@ describe("ITableMenu", () => {
     });
 
     it("should handle actions without onClick handler", () => {
-        const rows = [{ id: 1, text: "Text" }];
+        const rows: Row[] = [{ id: 1, text: "Text" }];
         const foo = cy.stub().as("fooClick");
-        const columns = defineTableColumns<(typeof rows)[number]>([
+        const columns = defineTableColumns<Row>([
             { type: "text", header: "Text", key: "text" },
             {
                 type: "menu",
@@ -215,9 +222,9 @@ describe("ITableMenu", () => {
             },
         ]);
 
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: { rows, columns },
-        });
+        cy.mount(() =>
+            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+        );
 
         table.cell({ row: 1, col: 2 }).click();
         table.contextmenuItems().eq(1).click();
@@ -227,8 +234,8 @@ describe("ITableMenu", () => {
     });
 
     it("should focus the menu when context menu is opened", () => {
-        const rows = [{ id: 1, text: "Text" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
+        const rows: Row[] = [{ id: 1, text: "Text" }];
+        const columns = defineTableColumns<Row>([
             { type: "text", header: "Text", key: "text" },
             {
                 type: "menu",
@@ -240,9 +247,9 @@ describe("ITableMenu", () => {
             },
         ]);
 
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: { rows, columns },
-        });
+        cy.mount(() =>
+            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+        );
 
         table.cell({ row: 1, col: 2 }).click();
         table.contextmenu().should("exist");
@@ -250,10 +257,10 @@ describe("ITableMenu", () => {
     });
 
     it("should support keyboard navigation to open and navigate the context menu", () => {
-        const rows = [{ id: 1, text: "Text" }];
+        const rows: Row[] = [{ id: 1, text: "Text" }];
         const foo = cy.stub().as("fooClick");
         const bar = cy.stub().as("barClick");
-        const columns = defineTableColumns<(typeof rows)[number]>([
+        const columns = defineTableColumns<Row>([
             { type: "text", header: "Text", key: "text" },
             {
                 type: "menu",
@@ -268,9 +275,9 @@ describe("ITableMenu", () => {
             },
         ]);
 
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: { rows, columns },
-        });
+        cy.mount(() =>
+            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+        );
 
         table.cell({ row: 1, col: 2 }).find("button").focus();
         cy.focused().type("{enter}");
@@ -281,8 +288,8 @@ describe("ITableMenu", () => {
     });
 
     it("should match visual regression", () => {
-        const rows = [{ id: 1, text: "Text" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
+        const rows: Row[] = [{ id: 1, text: "Text" }];
+        const columns = defineTableColumns<Row>([
             { type: "text", header: "Text", key: "text" },
             {
                 type: "menu",
@@ -299,9 +306,9 @@ describe("ITableMenu", () => {
             },
         ]);
 
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: { rows, columns },
-        });
+        cy.mount(() =>
+            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+        );
 
         table.cell({ row: 1, col: 2 }).click();
         table.el().toMatchScreenshot();

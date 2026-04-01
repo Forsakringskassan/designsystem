@@ -1,3 +1,4 @@
+import { useDatasetRef } from "@fkui/vue";
 import { mount } from "@vue/test-utils";
 import FTable from "./FTable.vue";
 import { defineTableColumns } from "./table-column";
@@ -16,15 +17,18 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows: Row[] = [
+const rows = useDatasetRef<Row>([
     { text: "Foo", match: true },
     { text: "Bar", match: false },
-];
+]);
 
-const expandedRows: Row[] = [
-    { text: "A", nested: [{ text: "A1" }, { text: "A2" }] },
-    { text: "B", nested: [{ text: "B1" }, { text: "B2" }] },
-];
+const expandedRows = useDatasetRef<Row>(
+    [
+        { text: "A", nested: [{ text: "A1" }, { text: "A2" }] },
+        { text: "B", nested: [{ text: "B1" }, { text: "B2" }] },
+    ],
+    "nested",
+);
 
 describe("custom row class", () => {
     it("should apply custom class to body rows", () => {
@@ -32,7 +36,7 @@ describe("custom row class", () => {
 
         const wrapper = mount(FTable<Row>, {
             props: {
-                rows,
+                rows: rows.value,
                 columns,
                 rowClass(row: Row) {
                     return row.match ? "row-match" : undefined;
@@ -52,7 +56,7 @@ describe("custom row class", () => {
         const expandableAttribute = "nested";
         const wrapper = mount(FTable<Row>, {
             props: {
-                rows: expandedRows,
+                rows: expandedRows.value,
                 columns,
                 expandableAttribute,
                 rowClass(row: Row) {
@@ -80,7 +84,7 @@ describe("custom row class", () => {
 
         const wrapper = mount(FTable<Row>, {
             props: {
-                rows: [{ text: "Foo" }],
+                rows: useDatasetRef<Row>([{ text: "Foo" }]).value,
                 columns,
             },
         });
@@ -95,7 +99,7 @@ describe("custom row class", () => {
 
         const wrapper = mount(FTable<Row>, {
             props: {
-                rows,
+                rows: rows.value,
                 columns,
                 rowClass(row: Row) {
                     return row.match ? ["row-array", "row-extra"] : undefined;
@@ -114,7 +118,7 @@ describe("custom row class", () => {
 
         const wrapper = mount(FTable<Row>, {
             props: {
-                rows,
+                rows: rows.value,
                 columns,
                 rowClass(row: Row) {
                     return {

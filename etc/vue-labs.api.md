@@ -8,6 +8,7 @@ import { Component } from 'vue';
 import { ComponentOptions } from 'vue';
 import { ComponentOptionsMixin } from 'vue';
 import { ComponentProvideOptions } from 'vue';
+import { Dataset } from '@fkui/vue';
 import { DefineComponent } from 'vue';
 import { ExtractPropTypes } from 'vue';
 import { FormatFunction } from '@fkui/vue';
