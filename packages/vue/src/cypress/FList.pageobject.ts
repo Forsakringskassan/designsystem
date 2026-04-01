@@ -11,7 +11,7 @@ export class FListPageObject implements BasePageObject {
     /**
      * @param selector - the root of the list, usually `<li class="list">...</li>`.
      */
-    public constructor(selector: string) {
+    public constructor(selector: string = ".list") {
         this.selector = selector;
         this.el = () => cy.get(this.selector);
     }
