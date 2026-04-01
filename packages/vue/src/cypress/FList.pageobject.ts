@@ -9,7 +9,7 @@ export class FListPageObject implements BasePageObject {
     private _selectors: ReturnType<typeof FListSelectors>;
 
     /**
-     * @param selector - the root of the list, usually `<li class="list">...</li>`.
+     * @param selector - the root of the list, usually `<ul class="list">...</ul>`.
      */
     public constructor(selector: string = ".list") {
         this._selectors = FListSelectors(selector);

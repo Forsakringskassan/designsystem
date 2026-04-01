@@ -99,6 +99,7 @@ functions/cypress/pageobjects/FLabelPageObject/error-icon.html
 functions/cypress/pageobjects/FLabelPageObject/error-message.html
 functions/cypress/pageobjects/FLabelPageObject/format-description.html
 functions/cypress/pageobjects/FLabelPageObject/index.html
+functions/cypress/pageobjects/flistpageobject.html
 functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html
 functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html
 functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html
