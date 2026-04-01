@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
@@ -25,30 +26,33 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = ref<Row[]>([
-    {
-        id: "1",
-        name: "Foo",
-        nested: [
-            {
-                id: "1-a",
-                name: "Expanded 1",
-            },
-            {
-                id: "1-b",
-                name: "Expanded 2",
-            },
-        ],
-    },
-    {
-        id: "2",
-        name: "Bar",
-    },
-    {
-        id: "3",
-        name: "Baz",
-    },
-]);
+const rows = useDatasetRef<Row>(
+    [
+        {
+            id: "1",
+            name: "Foo",
+            nested: [
+                {
+                    id: "1-a",
+                    name: "Expanded 1",
+                },
+                {
+                    id: "1-b",
+                    name: "Expanded 2",
+                },
+            ],
+        },
+        {
+            id: "2",
+            name: "Bar",
+        },
+        {
+            id: "3",
+            name: "Baz",
+        },
+    ],
+    "nested",
+);
 </script>
 <!-- cut above -->
 <template>
