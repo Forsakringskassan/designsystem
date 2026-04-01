@@ -424,7 +424,7 @@ export class FListItemPageObject implements BasePageObject {
 
 // @public (undocumented)
 export class FListPageObject implements BasePageObject {
-    constructor(selector: string);
+    constructor(selector?: string);
     // (undocumented)
     el: () => DefaultCypressChainable;
     emptyMessage(): DefaultCypressChainable;
