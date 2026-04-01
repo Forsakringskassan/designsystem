@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-a3f36d.json"
+            href="../../../search-data-c68d05.json"
             as="fetch"
             crossorigin
-            integrity="sha384-+M+ebM+LTyp3J9GP+F+bFSy6Rmw3bffKev05KjCBiznM7ANuf9CeNq39xoNTC3WQ"
+            integrity="sha384-OooRqPn4ZkRwepzHVkWNGmaEyHe7KT/7F73cBlhsN7nwVUEqST9WN6yxxlUizgpS"
             id="search-data"
         />
     </head>
@@ -2267,7 +2267,7 @@
 <p class="docs-paragraph">Bulkoperation i tabell bygger på två delar:</p>
 <ul>
 <li>enkel eller flerval, <code>selectable=&quot;single&quot;</code> eller <code>selectable=&quot;multi&quot;</code></li>
-<li>valda rader via <code>v-model:selected-rows</code></li>
+<li>valda rader via <code>v-model:selected-rows=&quot;selectedRows&quot;</code></li>
 </ul><h2 id="flerval" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#flerval">Flerval</a></h2><p class="docs-paragraph">För att aktivera flerva används <code>selectable=&quot;multi&quot;</code>.</p><div
                     id="example-2594da"
                     class="code-preview code-preview--default"
@@ -2287,7 +2287,7 @@
                 </div>
             
                 <div
-                    id="example-e86b2d"
+                    id="example-868d72"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2296,20 +2296,20 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-af61c7"></div>
+        <div id="example-fafcbf"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./BulkExampleMulti-af61c7.js"></script>
+        <script type="module" src="./FTableBulkExampleMulti-fafcbf.js"></script>
     
                     </div>
                 </div>
-            <p class="docs-paragraph">De valda raderna nås via <code>v-model:selected-rows</code>.</p>
+            <p class="docs-paragraph">De valda raderna nås via <code>v-model:selected-rows=&quot;selectedRows&quot;</code>.</p>
 
                 <div
-                    id="example-0d335b"
+                    id="example-c5d837"
                     class="code-preview code-preview--default"
                     
                     data-tags="context=5"
@@ -2321,7 +2321,7 @@
      :columns
      key-attribute=&quot;id&quot;
      selectable=&quot;multi&quot;
-<span class="hljs-addition">+    v-model:selected-rows</span>
+<span class="hljs-addition">+    v-model:selected-rows=&quot;selectedRows&quot;</span>
  &gt;
  &lt;/f-table&gt;
 </code></pre>
@@ -2329,10 +2329,10 @@
             <p class="docs-paragraph"><code>selected-row</code> är en array <code>Row[]</code>, där <code>Row</code> är typen för dina rad-object.</p>
 
                 <div
-                    id="example-3abd08"
+                    id="example-543619"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
@@ -2342,10 +2342,10 @@
             <p class="docs-paragraph">Om <code>selectedRows</code> är tom så är inga rader valda, för att få förvalda rader så sätts <code>selectedRows</code> till de rad-objekt som ska vara valda.</p>
 
                 <div
-                    id="example-d5f8a9"
+                    id="example-fe1e42"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
@@ -2371,7 +2371,7 @@
                 </div>
             
                 <div
-                    id="example-02a619"
+                    id="example-902c02"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2380,20 +2380,20 @@
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-c2953b"></div>
+        <div id="example-8a4b6d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./BulkExampleSingle-c2953b.js"></script>
+        <script type="module" src="./FTableBulkExampleSingle-8a4b6d.js"></script>
     
                     </div>
                 </div>
-            <p class="docs-paragraph">Den valda raden nås via <code>v-model:selected-rows</code>.</p>
+            <p class="docs-paragraph">Den valda raden nås via <code>v-model:selected-rows=&quot;selectedRows&quot;</code>.</p>
 
                 <div
-                    id="example-869457"
+                    id="example-47e7d7"
                     class="code-preview code-preview--default"
                     
                     data-tags="context=5"
@@ -2405,7 +2405,7 @@
      :columns
      key-attribute=&quot;id&quot;
      selectable=&quot;single&quot;
-<span class="hljs-addition">+    v-model:selected-rows</span>
+<span class="hljs-addition">+    v-model:selected-rows=&quot;selectedRows&quot;</span>
  &gt;
  &lt;/f-table&gt;
 </code></pre>
@@ -2413,10 +2413,10 @@
             <p class="docs-paragraph"><code>selected-row</code> är en array <code>Row[]</code> trots att det är enkelval, men kan bara innehålla ett eller inga objekt, där <code>Row</code> är typen för dina rad-object.</p>
 
                 <div
-                    id="example-c8fea9"
+                    id="example-9dad04"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
@@ -2426,10 +2426,10 @@
             <p class="docs-paragraph">Om <code>selectedRows</code> är tom så är ingen rad vald, för att få en förvald rad så sätt <code>selectedRows</code> till det rad-objekt som ska vara valt.</p>
 
                 <div
-                    id="example-ea6c65"
+                    id="example-063947"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
@@ -2442,10 +2442,10 @@ Tänk på att borttag/ändring av rader ska göras i original-datan (ej filtrera
 Viktigt att även tömma <code>selectedRows</code> om raderna inte längre ska vara valda efter utförd bulkoperation.</p>
 
                 <div
-                    id="example-d19163"
+                    id="example-73aa7d"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
@@ -2457,10 +2457,10 @@ Viktigt att även tömma <code>selectedRows</code> om raderna inte längre ska v
                 </div>
             
                 <div
-                    id="example-5ca281"
+                    id="example-c768b1"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
@@ -2524,9 +2524,9 @@ Viktigt att även tömma <code>selectedRows</code> om raderna inte längre ska v
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs/table-update-bulk-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/9901cab189902df71a2f40de66812bffabcd41a2">9901cab</a>)<br />
+<div class="footer__right"><div class="version">docs/table-update-bulk-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/93f11bfb1cdeb5ce75ce79dbb2de196a38a7a93e">93f11bf</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1190">PR 1190</a><br />
-        2026-04-01 11:48
+        2026-04-01 13:49
 </div>
 <div class="toolbar__item">
     <form id="version">
