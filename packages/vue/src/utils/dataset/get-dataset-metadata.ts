@@ -2,20 +2,34 @@ import { type Dataset, datasetSymbol } from "./dataset";
 import { type DatasetArrayMetadata } from "./dataset-array-metadata";
 import { type DatasetElementMetadata } from "./dataset-element-metadata";
 
-function getArrayMetadata<T extends object>(
+/**
+ * @internal
+ */
+export function getArrayMetadata<T extends object>(
     dataset: Dataset<T>,
 ): DatasetArrayMetadata<T>;
-function getArrayMetadata<T extends object>(
+
+/**
+ * @internal
+ */
+export function getArrayMetadata<T extends object>(
     dataset: T[],
 ): DatasetArrayMetadata<T> | undefined;
-function getArrayMetadata<T extends object>(
+
+/**
+ * @internal
+ */
+export function getArrayMetadata<T extends object>(
     dataset: T[] | Dataset<T>,
 ): DatasetArrayMetadata<T> | undefined {
     const descriptor = Object.getOwnPropertyDescriptor(dataset, datasetSymbol);
     return descriptor?.value as DatasetArrayMetadata<T> | undefined;
 }
 
-function getElementMetadata(
+/**
+ * @internal
+ */
+export function getElementMetadata(
     dataset: object,
 ): DatasetElementMetadata | undefined {
     const descriptor = Object.getOwnPropertyDescriptor(dataset, datasetSymbol);

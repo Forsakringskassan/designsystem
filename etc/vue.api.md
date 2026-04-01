@@ -1426,6 +1426,12 @@ export interface TextFieldSetupProps {
     type: string;
 }
 
+// @internal
+export function toDataset<T extends object>(array: T[], nestedAttribute?: DatasetNestedKeyOf<T>): Dataset<T>;
+
+// @internal
+export function toDataset<T extends object>(dataset: T[], originalDataset: Dataset<T> | T[]): Dataset<T>;
+
 // @internal (undocumented)
 export const tooltipAttachTo: InjectionKey<Readonly<ShallowRef<HTMLElement | null>>>;
 
@@ -1466,7 +1472,7 @@ export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | nul
 };
 
 // @public
-export function useDatasetRef<T extends object>(initial?: T[], nestedAttribute?: DatasetNestedKeyOf<T>): Ref<Dataset<T>>;
+export function useDatasetRef<T extends object>(initial?: T[], nestedAttribute?: DatasetNestedKeyOf<T>): Ref<Dataset<T>, T[] | Dataset<T>>;
 
 // @public (undocumented)
 export interface UseDetailsPanel<T = unknown> {
