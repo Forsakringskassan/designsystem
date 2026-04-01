@@ -27,7 +27,7 @@ export class FListPageObject implements BasePageObject {
      * Hämta page object för specifikt list item.
      */
     public listItem(index: number): FListItemPageObject {
-        return new FListItemPageObject(`${this.selector} .list__item`, index);
+        return new FListItemPageObject(`${this.selector} > .list__item`, index);
     }
 
     /**

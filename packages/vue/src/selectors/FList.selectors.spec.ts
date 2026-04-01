@@ -79,8 +79,7 @@ it.skip("listItems() should handle empty list", () => {
     expect(elements).toHaveLength(0);
 });
 
-/* eslint-disable-next-line jest/no-disabled-tests -- technical debt, see #1187 */
-it.skip("listItems() should handle nested lists", () => {
+it("listItems() should handle nested lists", () => {
     expect.assertions(1);
     const items: Item[] = [
         { frukt: "Banan", nested: [{ id: 1 }] },
