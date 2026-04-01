@@ -36,8 +36,7 @@ describe("FListPageObject", () => {
         pageobject.listItems().eq(2).should("have.text", "Apelsin");
     });
 
-    /* eslint-disable-next-line mocha/no-pending-tests -- technical debt, see #1192 */
-    it.skip("listItems() should handle empty list", () => {
+    it("listItems() should handle empty list", () => {
         const items: Item[] = [];
         cy.mount(FList, {
             props: {
@@ -107,8 +106,7 @@ describe("FListPageObject", () => {
             .and("have.text", "lorem ipsum");
     });
 
-    /* eslint-disable-next-line mocha/no-pending-tests -- technical debt, see #1192 */
-    it.skip("emptyMessage() should not exist when list have items", () => {
+    it("emptyMessage() should not exist when list have items", () => {
         const items: Item[] = [
             { frukt: "Banan" },
             { frukt: "Äpple" },

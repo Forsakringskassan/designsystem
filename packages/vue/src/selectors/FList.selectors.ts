@@ -29,7 +29,7 @@ export function FListSelectors(selector: string = ".list") {
          * @returns A selector for all of the list items.
          */
         listItems(this: void): string {
-            return `${selector} > .list__item > .list__item__itempane`;
+            return `${selector} > .list__item:not(.list__item--empty) > .list__item__itempane`;
         },
 
         /**
@@ -41,7 +41,7 @@ export function FListSelectors(selector: string = ".list") {
          * @returns A selector for the list item with the given index.
          */
         listItemByIndex(this: void, index: number): string {
-            return `${selector} > .list__item:nth-child(${index + 1})`;
+            return `${selector} > .list__item:nth-child(${index + 1}):not(.list__item--empty)`;
         },
 
         /**
@@ -52,7 +52,7 @@ export function FListSelectors(selector: string = ".list") {
          * @returns A selector for the element with empty text.
          */
         emptyMessage(this: void): string {
-            return `${selector} > .list__item`;
+            return `${selector} > .list__item.list__item--empty`;
         },
     });
 }

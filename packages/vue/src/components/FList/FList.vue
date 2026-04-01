@@ -337,7 +337,7 @@ function isActive(item: T): boolean {
                 <slot v-bind="{ item }" />
             </div>
         </li>
-        <li v-if="isEmpty" class="list__item">
+        <li v-if="isEmpty" class="list__item list__item--empty">
             <div class="list__item__itempane">
                 <!--
                      @slot Slot for displaying a message when list is empty. Default text is 'Listan är tom' (key fkui.list.empty).
@@ -384,7 +384,7 @@ function isActive(item: T): boolean {
                 <slot v-bind="{ item }" />
             </component>
         </li>
-        <li v-if="isEmpty" class="list__item">
+        <li v-if="isEmpty" class="list__item list__item--empty">
             <div class="list__item__itempane">
                 <slot name="empty">
                     <em>{{ $t("fkui.list.empty", "Listan är tom") }}</em>
