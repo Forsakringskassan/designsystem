@@ -54,7 +54,7 @@ describe("getDatasetMetadata()", () => {
         const dataset = toDataset(items, undefined);
         const filtered = toDataset(
             dataset.filter((item) => item.id !== 2),
-            undefined,
+            dataset,
         );
         const before = treeSnapshot(dataset, rowindex);
         const after = treeSnapshot(filtered, rowindex);
@@ -65,7 +65,7 @@ describe("getDatasetMetadata()", () => {
             └─ id:3 row-index=2
         `);
         expect(after).toMatchInlineSnapshot(`
-            length=2 size=2
+            length=2 size=3
             ├─ id:1 row-index=0
             └─ id:3 row-index=2
         `);

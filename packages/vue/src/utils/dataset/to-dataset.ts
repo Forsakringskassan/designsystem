@@ -1,51 +1,23 @@
-import {
-    type Dataset,
-    type DatasetNestedKeyOf,
-    datasetSymbol,
-} from "./dataset";
-import { type DatasetArrayMetadata } from "./dataset-array-metadata";
-import { type DatasetElementMetadata } from "./dataset-element-metadata";
+import { type Dataset, type DatasetNestedKeyOf } from "./dataset";
+import { setArrayMetadata } from "./dataset-array-metadata";
 import { getDatasetMetadata } from "./get-dataset-metadata";
 import { isDataset } from "./is-dataset";
+import { preserveDataset } from "./preserve-dataset";
+import { reindexDataset } from "./reindex-dataset";
 
 function createDataset<T extends object>(
     array: T[],
     nestedAttribute: DatasetNestedKeyOf<T> | undefined,
 ): Dataset<T> {
-    for (const [index, element] of array.entries()) {
-        if (Object.getOwnPropertyDescriptor(element, datasetSymbol)) {
-            continue;
-        }
-        Object.defineProperty(element, datasetSymbol, {
-            value: {
-                rowIndex: index,
-                ariaRowIndex: index + 1,
-                ariaLevel: 1,
-                ariaSetSize: array.length,
-                ariaPosInSet: index + 1,
-            } satisfies DatasetElementMetadata,
-            enumerable: false,
-            configurable: true,
-            writable: true,
-        });
-    }
-
-    const value: DatasetArrayMetadata<T> = {
-        size: array.length,
+    setArrayMetadata(array, {
+        size: 0, // intermediate value, will be overwritten when reindexing
         nestedAttribute,
-    };
+    });
+    const dataset = array as Dataset<T>;
 
-    /* The `Dataset<T>` interface declares branding with an opaque marker
-     * `[datasetSymbol]: true`. The actual runtime value is an object which
-     * satisfies the truthy branding. Code should use `isDataset()` to test if
-     * an array is actually a `Dataset<T>` or `getDatasetMetadata()` to retrieve
-     * the metadata. */
-    return Object.defineProperty(array, datasetSymbol, {
-        value,
-        enumerable: false,
-        configurable: true,
-        writable: true,
-    }) as Dataset<T>;
+    reindexDataset(dataset, nestedAttribute);
+
+    return dataset;
 }
 
 function inheritDataset<T extends object>(
@@ -54,21 +26,18 @@ function inheritDataset<T extends object>(
 ): Dataset<T> {
     const metadata = getDatasetMetadata(originalDataset);
 
-    const value: DatasetArrayMetadata<T> = {
+    const result = setArrayMetadata(array, {
         get size() {
             return metadata.size;
         },
         get nestedAttribute() {
             return metadata.nestedAttribute;
         },
-    };
+    });
 
-    return Object.defineProperty(array, datasetSymbol, {
-        value,
-        enumerable: false,
-        configurable: false,
-        writable: false,
-    }) as Dataset<T>;
+    preserveDataset(result);
+
+    return result;
 }
 
 /**
@@ -94,19 +63,26 @@ export function toDataset<T extends object>(
 /**
  * Creates a dataset based on another existing dataset.
  *
+ * As a convenience, this function accepts a regular `T[]` but passing a
+ * non-dataset argument will create a new dataset without retaining any element
+ * metadata, i.e. behave as if no original dataset was passed.
+ *
+ * Note: the new dataset must be a subset of the original dataset, that is all
+ * the elements passed into the new array or dataset must exist in the original.
+ *
  * @internal
  * @since %version%
  */
 export function toDataset<T extends object>(
     dataset: T[],
-    originalDataset: Dataset<T>,
+    originalDataset: Dataset<T> | T[],
 ): Dataset<T>;
 
 export function toDataset<T extends object>(
     array: T[],
     ...args:
         | [nestedAttribute?: DatasetNestedKeyOf<T>]
-        | [originalDataset: Dataset<T>]
+        | [originalDataset: Dataset<T> | T[]]
 ): Dataset<T> {
     if (isDataset(array)) {
         return array;
@@ -114,7 +90,11 @@ export function toDataset<T extends object>(
 
     const [arg] = args;
     if (Array.isArray(arg)) {
-        return inheritDataset(array, arg);
+        if (isDataset(arg)) {
+            return inheritDataset(array, arg);
+        } else {
+            return createDataset(array, undefined);
+        }
     } else {
         return createDataset(array, arg);
     }

@@ -1,4 +1,8 @@
-import { type DatasetNestedKeyOf } from "./dataset";
+import {
+    type Dataset,
+    type DatasetNestedKeyOf,
+    datasetSymbol,
+} from "./dataset";
 
 /**
  * Metadata about a dataset (entire array).
@@ -15,4 +19,19 @@ export interface DatasetArrayMetadata<T> {
      * key used for looking up nested arrays
      */
     readonly nestedAttribute: DatasetNestedKeyOf<T> | undefined;
+}
+
+/**
+ * @internal
+ */
+export function setArrayMetadata<T extends object>(
+    array: T[],
+    value: DatasetArrayMetadata<T>,
+): Dataset<T> {
+    return Object.defineProperty(array, datasetSymbol, {
+        value,
+        enumerable: false,
+        configurable: true,
+        writable: true,
+    }) as Dataset<T>;
 }
