@@ -156,26 +156,113 @@ describe("Flist Selectable", () => {
 
 describe("FList Empty", () => {
     it("should have default empty message", () => {
-        const template = /* HTML */ `
-            <f-list :items="[]" key-attribute="id">
-                <template #default="{ item }"> {{ item }} </template>
-            </f-list>
-        `;
-        cy.mount(createComponent(template));
-        list.emptyMessage().should("contain.text", "Listan är tom");
+        cy.mount(FList, {
+            props: {
+                items: [],
+            },
+            slots: {
+                default({ item }) {
+                    return JSON.stringify(item);
+                },
+            },
+        });
+        list.emptyMessage()
+            .should("exist")
+            .and("contain.text", "Listan är tom");
+    });
+
+    it("should have default empty message (selectable)", () => {
+        cy.mount(FList, {
+            props: {
+                items: [],
+                selectable: true,
+            },
+            slots: {
+                default({ item }) {
+                    return JSON.stringify(item);
+                },
+                screenreader() {
+                    return "mock text";
+                },
+            },
+        });
+        list.emptyMessage()
+            .should("exist")
+            .and("contain.text", "Listan är tom");
     });
 
     it("should have custom empty message", () => {
-        const template = /* HTML */ `
-            <f-list :items="[]" key-attribute="id">
-                <template #default="{ item }"> {{ item }} </template>
-                <template #empty>
-                    <em> Det finns inga frukter. </em>
-                </template>
-            </f-list>
-        `;
-        cy.mount(createComponent(template));
-        list.emptyMessage().should("contain.text", "Det finns inga frukter.");
+        cy.mount(FList, {
+            props: {
+                items: [],
+            },
+            slots: {
+                default({ item }) {
+                    return JSON.stringify(item);
+                },
+                empty() {
+                    return "Det finns inga frukter.";
+                },
+            },
+        });
+        list.emptyMessage()
+            .should("exist")
+            .and("contain.text", "Det finns inga frukter.");
+    });
+
+    it("should have custom empty message (selectable)", () => {
+        cy.mount(FList, {
+            props: {
+                items: [],
+                selectable: true,
+            },
+            slots: {
+                default({ item }) {
+                    return JSON.stringify(item);
+                },
+                screenreader() {
+                    return "mock text";
+                },
+                empty() {
+                    return "Det finns inga frukter.";
+                },
+            },
+        });
+        list.emptyMessage()
+            .should("exist")
+            .and("contain.text", "Det finns inga frukter.");
+    });
+
+    it("should not be shown when there are list items", () => {
+        cy.mount(FList, {
+            props: {
+                items: [{ id: 1 }],
+            },
+            slots: {
+                default({ item }) {
+                    return JSON.stringify(item);
+                },
+            },
+        });
+        list.emptyMessage().should("not.exist");
+    });
+
+    it("should not be shown when there are list items (selectable)", () => {
+        cy.mount(FList, {
+            props: {
+                items: [{ id: 1 }],
+                selectable: true,
+            },
+            slots: {
+                default({ item }) {
+                    return JSON.stringify(item);
+                },
+                screenreader() {
+                    return "mock text";
+                },
+            },
+        });
+        list.emptyMessage().should("not.exist");
     });
 });
 

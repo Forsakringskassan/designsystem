@@ -60,8 +60,7 @@ it("listItems() should select each list item", () => {
     expect(elements[2].text()).toBe("Apelsin");
 });
 
-/* eslint-disable-next-line jest/no-disabled-tests -- technical debt, see #1192 */
-it.skip("listItems() should handle empty list", () => {
+it("listItems() should handle empty list", () => {
     expect.assertions(1);
     const items: Item[] = [];
     const wrapper = mount(FList<Item>, {
@@ -146,8 +145,7 @@ it("listItemByIndex() should select only the item with given index", () => {
     expect(fourth.exists()).toBeFalsy();
 });
 
-/* eslint-disable-next-line jest/no-disabled-tests -- technical debt, see #1192 */
-it.skip("listItemByIndex() should not return any element when list is empty", () => {
+it("listItemByIndex() should not return any element when list is empty", () => {
     expect.assertions(1);
     const items: Item[] = [];
     const wrapper = mount(FList<Item>, {
@@ -187,8 +185,7 @@ it("emptyMessage() should select message for empty lists", () => {
     expect(element.text()).toBe("lorem ipsum");
 });
 
-/* eslint-disable-next-line jest/no-disabled-tests -- technical debt, see #1192 */
-it.skip("emptyMessage() should not exist when list have items", () => {
+it("emptyMessage() should not exist when list have items", () => {
     expect.assertions(1);
     const items: Item[] = [
         { frukt: "Banan" },
