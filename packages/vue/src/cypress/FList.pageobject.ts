@@ -1,3 +1,4 @@
+import { FListSelectors } from "../selectors";
 import { FListItemPageObject } from "./FListItem.pageobject";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
@@ -5,15 +6,21 @@ import { type BasePageObject, type DefaultCypressChainable } from "./common";
  * @public
  */
 export class FListPageObject implements BasePageObject {
-    public selector: string;
-    public el: () => DefaultCypressChainable;
+    private _selectors: ReturnType<typeof FListSelectors>;
 
     /**
      * @param selector - the root of the list, usually `<li class="list">...</li>`.
      */
     public constructor(selector: string = ".list") {
-        this.selector = selector;
-        this.el = () => cy.get(this.selector);
+        this._selectors = FListSelectors(selector);
+    }
+
+    public get selector(): string {
+        return this._selectors.selector;
+    }
+
+    public el(): DefaultCypressChainable {
+        return cy.get(this._selectors.selector);
     }
 
     /**
@@ -27,13 +34,13 @@ export class FListPageObject implements BasePageObject {
      * Hämta alla list items.
      */
     public listItems(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .list__item .list__item__itempane`);
+        return cy.get(this._selectors.listItems());
     }
 
     /**
      * Felmeddelande
      */
     public emptyMessage(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .list__item`);
+        return cy.get(this._selectors.emptyMessage());
     }
 }

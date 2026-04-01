@@ -426,12 +426,12 @@ export class FListItemPageObject implements BasePageObject {
 export class FListPageObject implements BasePageObject {
     constructor(selector?: string);
     // (undocumented)
-    el: () => DefaultCypressChainable;
+    el(): DefaultCypressChainable;
     emptyMessage(): DefaultCypressChainable;
     listItem(index: number): FListItemPageObject;
     listItems(): DefaultCypressChainable;
     // (undocumented)
-    selector: string;
+    get selector(): string;
 }
 
 // @public (undocumented)

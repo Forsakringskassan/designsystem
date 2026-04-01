@@ -5,6 +5,14 @@
 ```ts
 
 // @public
+export function FListSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    listItems(this: void): string;
+    listItemByIndex(this: void, index: number): string;
+    emptyMessage(this: void): string;
+}>;
+
+// @public
 export function FPaginatorSelectors(selector?: string): Readonly<{
     readonly selector: string;
     currentPageButton(this: void): string;
