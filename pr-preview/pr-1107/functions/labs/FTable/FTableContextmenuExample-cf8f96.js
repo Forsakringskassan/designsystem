@@ -5180,8 +5180,8 @@ function useSelectable(options) {
   };
 }
 function matching(needle) {
-  const id = getItemIdentifier(needle);
-  return (item) => getItemIdentifier(item) === id;
+  const id = getItemIdentifier(needle.row);
+  return (item) => getItemIdentifier(item.row) === id;
 }
 function useTabstop(tableRef, metaRows) {
   let pendingRowRemoval = false;
@@ -5446,7 +5446,7 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
       selectedRows,
       rows: keyedRows
     });
-    __expose(useTabstop(tableRef, keyedRows));
+    __expose(useTabstop(tableRef, metaRows));
     onMounted3(() => {
       assertRef(tableRef);
       registerCallbackOnMount(callbackSortableColumns);
