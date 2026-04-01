@@ -52,8 +52,7 @@ describe("FListPageObject", () => {
         pageobject.listItems().should("have.length", 0);
     });
 
-    /* eslint-disable-next-line mocha/no-pending-tests -- technical debt, see #1187 */
-    it.skip("listItems() should handle nested lists", () => {
+    it("listItems() should handle nested lists", () => {
         const items: Item[] = [
             { frukt: "Banan", nested: [{ id: 1 }] },
             { frukt: "Äpple", nested: [{ id: 2 }, { id: 3 }] },
