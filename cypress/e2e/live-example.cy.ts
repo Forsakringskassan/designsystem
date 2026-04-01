@@ -32,7 +32,7 @@ describe("should visit all pages and ensure examples load properly", () => {
         const vuePreviewExamples = examples.filter(isVuePreviewExample);
 
         if (liveExamples.length === 0 && vuePreviewExamples.length === 0) {
-            return;
+            continue;
         }
 
         it(path, () => {
