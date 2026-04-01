@@ -71,7 +71,7 @@ export function toDataset<T extends object>(
  * the elements passed into the new array or dataset must exist in the original.
  *
  * @internal
- * @since %version%
+ * @since v6.41.0
  */
 export function toDataset<T extends object>(
     dataset: T[],

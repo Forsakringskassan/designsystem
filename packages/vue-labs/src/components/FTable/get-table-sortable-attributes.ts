@@ -2,7 +2,7 @@ import { type Ref } from "vue";
 
 /**
  * @public
- * @since %version%
+ * @since v6.41.0
  */
 export interface MaybeSortableTableColumn {
     key?: PropertyKey;
@@ -32,7 +32,7 @@ function toEntry(
  * Get sortable attributes for use with `FSortFilterDataset`.
  *
  * @public
- * @since %version%
+ * @since v6.41.0
  * @param columns - Table columns to get sortable attributes from.
  */
 export function getTableSortableAttributes(

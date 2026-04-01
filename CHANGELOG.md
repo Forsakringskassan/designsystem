@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 6.41.0 (2026-04-01)
+
+### Features
+
+* **@fkui/vue-labs:** new `getTableSortableAttributes()` helper for usage with `FSortFilterDataset` and `FTable` (refs SFKUI-6500) e9e8b16
+* **@fkui/vue:** handle nested rows in datasets (refs SFKUI-7348) a6c1556
+* **@fkui/vue:** store nested attribute in datasets (refs SFKUI-7763) 9743da2
+* **deps:** update dependency @forsakringskassan/sass-module-importer to v2 ac7590d
+* **deps:** update dependency i18next to v26 6c23fc5
+
+### Bug Fixes
+
+* **@fkui/design:** calender navbar not supporting `forced-colors` media feature (fixes SFKUI-7573) 72b695f
+* **@fkui/design:** datepicker field icon missing support for `forced-colors` media feature (fixes SFKUI-6981) ccf5d5b
+* **@fkui/design:** loader spinner not visible when `forced-colors: active` (fixes SFKUI-7571) 140a887
+* **@fkui/design:** select field missing support for `forced-colors` media feature (fixes SFKUI-7572) 00b114f
+* **deps:** update dependency i18next to v25.10.10 435fd94
+* **deps:** update dependency i18next to v25.10.9 7eb0453
+* **deps:** update vue monorepo to v3.5.31 41a8620
+
 ## 6.40.0 (2026-03-27)
 
 ### Features

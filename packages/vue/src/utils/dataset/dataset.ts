@@ -4,7 +4,7 @@
  * actually hold a nested array of the same type.
  *
  * @public
- * @since %version%
+ * @since v6.41.0
  */
 export type DatasetNestedKeyOf<T> = {
     [K in keyof T]: NonNullable<T[K]> extends T[] ? K : never;
