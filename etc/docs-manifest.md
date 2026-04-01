@@ -129,6 +129,7 @@ functions/date/f-year/value.html
 functions/font-default.html
 functions/functions/assert-ref.html
 functions/functions/assert-set.html
+functions/functions/dataset-iterator.html
 functions/functions/dispatch-component-validity-event.html
 functions/functions/dom-functions/find-element-from-vue-ref.html
 functions/functions/dom-functions/find-html-element-from-vue-ref.html

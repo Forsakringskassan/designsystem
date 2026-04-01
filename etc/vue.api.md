@@ -160,6 +160,14 @@ export interface DatasetElementMetadata {
 }
 
 // @public
+export function datasetIterator<T extends object>(dataset: Dataset<T>, options?: {
+    flat?: boolean;
+}): Generator<{
+    item: T;
+    metadata: DatasetElementMetadata;
+}>;
+
+// @public
 export type DatasetNestedKeyOf<T> = {
     [K in keyof T]: NonNullable<T[K]> extends T[] ? K : never;
 }[keyof T];
