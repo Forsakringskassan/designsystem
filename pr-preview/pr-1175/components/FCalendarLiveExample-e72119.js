@@ -3804,7 +3804,7 @@ function getAbsolutePosition(src) {
 }
 
 // packages/vue/src/utils/dataset/use-dataset-ref.ts
-import { ref } from "vue";
+import { ref, toRaw, watch } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=script
 import { defineComponent as defineComponent22, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef4 } from "vue";
@@ -4697,7 +4697,7 @@ IPopupError_default.__file = "packages/vue/src/internal-components/IPopupError/I
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
-import { computed, onUnmounted as onUnmounted2, useTemplateRef, watch, watchEffect } from "vue";
+import { computed, onUnmounted as onUnmounted2, useTemplateRef, watch as watch2, watchEffect } from "vue";
 import { debounce as debounce2 } from "@fkui/logic";
 
 // packages/vue/src/composables/use-event-listener.ts
@@ -4853,7 +4853,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
         removeListeners();
       }
     });
-    watch(
+    watch2(
       () => __props.numOfItems,
       (oldValue, newValue) => {
         if (oldValue !== newValue && __props.isOpen) {
@@ -6414,7 +6414,7 @@ var $t = useTranslate();
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxDropdown.vue?type=script
 import { defineComponent as _defineComponent2 } from "vue";
-import { nextTick as nextTick2, ref as ref3, useTemplateRef as useTemplateRef2, watch as watch2, watchEffect as watchEffect3 } from "vue";
+import { nextTick as nextTick2, ref as ref3, useTemplateRef as useTemplateRef2, watchEffect as watchEffect3 } from "vue";
 var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
   __name: "IComboboxDropdown",
   props: {
@@ -6431,14 +6431,6 @@ var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
     const emit = __emit;
     const listboxRef = useTemplateRef2("listbox");
     const activeElement = ref3();
-    function checkScroll() {
-      const container = document.querySelector(".combobox__listbox");
-      if (!container) {
-        return;
-      }
-      const hasScroll = container.scrollHeight > container.clientHeight;
-      container.classList.toggle("has-scrollbar", hasScroll);
-    }
     function isOptionActive(item) {
       return item === __props.activeOption;
     }
@@ -6448,15 +6440,6 @@ var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
     function onListboxClose() {
       emit("close");
     }
-    watch2(
-      () => __props.isOpen,
-      async (open) => {
-        if (open) {
-          await nextTick2();
-          checkScroll();
-        }
-      }
-    );
     watchEffect3(async () => {
       if (__props.activeOption !== null) {
         await nextTick2();
@@ -6464,7 +6447,7 @@ var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
         activeElement.value = activeOptionNode ?? void 0;
       }
     });
-    const __returned__ = { emit, listboxRef, activeElement, checkScroll, isOptionActive, onOptionClick, onListboxClose, get IPopupListbox() {
+    const __returned__ = { emit, listboxRef, activeElement, isOptionActive, onOptionClick, onListboxClose, get IPopupListbox() {
       return IPopupListbox_default2;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
