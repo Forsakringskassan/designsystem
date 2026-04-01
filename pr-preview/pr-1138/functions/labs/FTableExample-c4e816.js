@@ -5431,8 +5431,8 @@ function useSelectable(options) {
   };
 }
 function matching(needle) {
-  const id = getItemIdentifier(needle);
-  return (item) => getItemIdentifier(item) === id;
+  const id = getItemIdentifier(needle.row);
+  return (item) => getItemIdentifier(item.row) === id;
 }
 function useTabstop(tableRef, metaRows) {
   let pendingRowRemoval = false;
@@ -5820,7 +5820,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       selectedRows,
       rows: keyedRows
     });
-    const tableApi = useTabstop(tableRef, keyedRows);
+    const tableApi = useTabstop(tableRef, metaRows);
     __expose(tableApi);
     onMounted3(() => {
       assertRef(tableRef);
