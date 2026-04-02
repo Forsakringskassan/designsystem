@@ -1,8 +1,4 @@
-<script
-    setup
-    lang="ts"
-    generic="T extends object, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
->
+<script setup lang="ts" generic="T extends object, KeyAttribute extends keyof T = keyof T">
 import {
     type ComponentPublicInstance,
     type HTMLAttributes,
@@ -18,8 +14,10 @@ import {
 import { assertRef, assertSet } from "@fkui/logic";
 import {
     type Dataset,
+    type DatasetNestedKeyOf,
     type ItemIdentifier,
     FSortFilterDatasetInjected,
+    getDatasetMetadata,
     setItemIdentifiers,
     useSlotUtils,
     useTranslate,
@@ -40,8 +38,8 @@ import { usePopupError } from "./use-popup-error";
 import { useSelectable } from "./use-selectable";
 import { useTabstop } from "./use-tabstop";
 
-type ExpandedContent = Required<T>[ExpandableAttribute] extends unknown[]
-    ? Required<T>[ExpandableAttribute][number]
+type ExpandedContent = Required<T>[DatasetNestedKeyOf<T>] extends unknown[]
+    ? Required<T>[DatasetNestedKeyOf<T>][number]
     : never;
 
 const selectedRows = defineModel<T[]>("selectedRows", { default: [] });
@@ -50,7 +48,6 @@ const {
     columns: rawColumns,
     rows,
     keyAttribute = undefined,
-    expandableAttribute = undefined,
     rowClass = undefined,
     striped,
     disableDividers,
@@ -59,7 +56,6 @@ const {
     columns: Array<TableColumn<T, KeyAttribute>>;
     rows: Dataset<T>;
     keyAttribute?: KeyAttribute;
-    expandableAttribute?: ExpandableAttribute;
     /**
      * Optional callback for setting classes on table rows (`<tr>` element).
      */
@@ -88,7 +84,7 @@ defineSlots<{
      */
     expandable?(bindings: {
         /**
-         * The expanded row (from `expandableAttribute` of the parent row)
+         * The expanded row (from the dataset nested attribute of the parent row)
          */
         row: ExpandedContent;
     }): void;
@@ -98,11 +94,14 @@ const $t = useTranslate();
 const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
 const expandedKeys: Ref<Set<ItemIdentifier>> = ref(new Set());
-const keyedRows = computed(() => setItemIdentifiers(rows, keyAttribute, expandableAttribute));
+const expandableAttribute = computed(() => {
+    return getDatasetMetadata(rows).nestedAttribute;
+});
+const keyedRows = computed(() => setItemIdentifiers(rows, keyAttribute, expandableAttribute.value));
 const metaRows = computed(
-    (): Array<MetaRow<T>> => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute),
+    (): Array<MetaRow<T>> => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute.value),
 );
-const isTreegrid = computed(() => Boolean(expandableAttribute));
+const isTreegrid = computed(() => Boolean(expandableAttribute.value));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
 
 const hasCaption = computed(() => {
@@ -121,7 +120,7 @@ const ariaRowcount = computed((): number => {
     }
 
     const headerRow = 1;
-    const bodyRows = getBodyRowCount(keyedRows.value, expandableAttribute);
+    const bodyRows = getBodyRowCount(keyedRows.value, expandableAttribute.value);
     return bodyRows + headerRow + footerRow;
 });
 

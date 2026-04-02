@@ -71,7 +71,7 @@ describe("1. 3 Table test – right-aligned column", () => {
         cy.mount(() =>
             h(
                 FTable<Row>,
-                { rows: rows.value, columns, expandableAttribute },
+                { rows: rows.value, columns },
                 {
                     caption:
                         "Verifierar att kolumner kan vara höger- och vänsterjusterade",
@@ -215,7 +215,6 @@ describe("1.5 Separator", () => {
                 {
                     rows: rows.value,
                     columns,
-                    expandableAttribute,
                     striped: true,
                 },
                 {
@@ -907,9 +906,7 @@ describe("4.4 Home and End keyboard behavior", () => {
     ]);
 
     it("should handle Home, End, Ctrl+Home and Ctrl+End correctly", () => {
-        cy.mount(() =>
-            h(FTable<Row>, { rows: rows.value, columns, expandableAttribute }),
-        );
+        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
 
         table.expandButton(2).focus().click();
         table.expandButton(1).focus().click();
@@ -958,9 +955,7 @@ describe("6 Expandable table", () => {
     ]);
 
     it("6.1 should expand row when pressing Enter on expand cell", () => {
-        cy.mount(() =>
-            h(FTable<Row>, { rows: rows.value, columns, expandableAttribute }),
-        );
+        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
 
         table.expandButton(2).focus();
         table.expandButton(2).type("{enter}");
@@ -976,9 +971,7 @@ describe("6 Expandable table", () => {
     });
 
     it("6.1 should expand row when pressing Space on expand cell", () => {
-        cy.mount(() =>
-            h(FTable<Row>, { rows: rows.value, columns, expandableAttribute }),
-        );
+        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
 
         table.expandButton(2).focus();
         table.expandButton(2).press(Cypress.Keyboard.Keys.SPACE);
@@ -1028,7 +1021,6 @@ describe("6 Expandable table", () => {
                 h(FTable<NavigationRow>, {
                     rows: navRows.value,
                     columns: navColumns,
-                    expandableAttribute,
                 }),
             );
 
@@ -1072,7 +1064,6 @@ describe("6 Expandable table", () => {
                     {
                         rows: navRows.value,
                         columns: navColumns,
-                        expandableAttribute,
                     },
                     { expandable: "Foo" },
                 ),
@@ -1126,7 +1117,6 @@ describe("6 Expandable table", () => {
                 h(FTable<Row>, {
                     rows: rows.value,
                     columns,
-                    expandableAttribute,
                 }),
             );
 
@@ -1148,7 +1138,6 @@ describe("6 Expandable table", () => {
                 h(FTable<Row>, {
                     rows: rows.value,
                     columns,
-                    expandableAttribute,
                 }),
             );
 
@@ -1382,7 +1371,6 @@ describe("5 tabstop", () => {
                     {
                         rows: rows.value,
                         columns,
-                        expandableAttribute,
                         selectable: "multi",
                     },
                     slots,
@@ -2070,7 +2058,6 @@ describe("7 Bulk Operation ", () => {
                 h(FTable<Row>, {
                     rows: rows.value,
                     columns,
-                    expandableAttribute,
                     selectable: "multi",
                     selectedRows: selectedRows.value,
                     "onUpdate:selectedRows": (value) =>
@@ -2100,7 +2087,6 @@ describe("7 Bulk Operation ", () => {
                 h(FTable<Row>, {
                     rows: rows.value,
                     columns,
-                    expandableAttribute,
                     selectable: "multi",
                     selectedRows: selectedRows.value,
                     "onUpdate:selectedRows": (value) =>

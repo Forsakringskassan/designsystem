@@ -1,7 +1,14 @@
 <script lang="ts">
 import { defineComponent, h } from "vue";
 import { formatNumber } from "@fkui/logic";
-import { FCheckboxField, FFieldset, FRadioField, FSelectField } from "@fkui/vue";
+import {
+    type DatasetNestedKeyOf,
+    FCheckboxField,
+    FFieldset,
+    FRadioField,
+    FSelectField,
+    useDatasetRef,
+} from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
 
@@ -252,9 +259,18 @@ export default defineComponent({
     },
     computed: {
         livedata(): object {
+            let nestedAttribute: DatasetNestedKeyOf<Row> | undefined = undefined;
+            if (this.isExpandable) {
+                nestedAttribute = (
+                    this.hasCustomExpandContent ? "expandableContent" : "expandableRows"
+                ) as DatasetNestedKeyOf<Row>;
+            }
+
+            const rows = useDatasetRef<Row>(this.isEmpty ? [] : this.rows, nestedAttribute).value;
+
             return {
                 columns: this.hasRowHeader ? this.columnsWithHeader : this.columnsDefault,
-                rows: this.isEmpty ? [] : this.rows,
+                rows,
                 selectedRows: this.selectedRows,
             };
         },
@@ -267,13 +283,6 @@ export default defineComponent({
                     Tabell över exempel på kolumntyper
                 </span>
             </template>`;
-        },
-        expandableAttribute(): string | undefined {
-            if (!this.isExpandable) {
-                return;
-            }
-
-            return this.hasCustomExpandContent ? "expandableContent" : "expandableRows";
         },
         expandableSlotTemplate(): string {
             if (!this.isExpandable || !this.hasCustomExpandContent) {
@@ -293,7 +302,7 @@ export default defineComponent({
         },
 
         template(): string {
-            const { striped, divided, selectable, expandableAttribute } = this;
+            const { striped, divided, selectable } = this;
 
             return createElement(
                 "f-table",
@@ -305,7 +314,6 @@ export default defineComponent({
                     striped,
                     "disable-dividers": !divided,
                     selectable,
-                    expandableAttribute,
                 },
                 [this.captionSlotTemplate, this.expandableSlotTemplate, this.emptyTemplate],
             );

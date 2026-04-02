@@ -21,41 +21,46 @@ interface Row {
     nested?: Row[];
 }
 
-const rows = useDatasetRef<Row>(
-    [
-        {
-            rowheader: "A1",
-            text: "A2",
-            input: "A3",
-            button: "A4",
-            anchor: "A5",
-            nested: [
-                {
-                    rowheader: "A-A1",
-                    text: "A-A2",
-                    input: "A-A3",
-                    button: "A-A4",
-                    anchor: "A-A5",
-                },
-                {
-                    rowheader: "A-B1",
-                    text: "A-B2",
-                    input: "A-B3",
-                    button: "A-B4",
-                    anchor: "A-B5",
-                },
-            ],
-        },
-        {
-            rowheader: "B1",
-            text: "B2",
-            input: "B3",
-            button: "B4",
-            anchor: "B5",
-        },
-    ],
+const rows: Row[] = [
+    {
+        rowheader: "A1",
+        text: "A2",
+        input: "A3",
+        button: "A4",
+        anchor: "A5",
+        nested: [
+            {
+                rowheader: "A-A1",
+                text: "A-A2",
+                input: "A-A3",
+                button: "A-A4",
+                anchor: "A-A5",
+            },
+            {
+                rowheader: "A-B1",
+                text: "A-B2",
+                input: "A-B3",
+                button: "A-B4",
+                anchor: "A-B5",
+            },
+        ],
+    },
+    {
+        rowheader: "B1",
+        text: "B2",
+        input: "B3",
+        button: "B4",
+        anchor: "B5",
+    },
+];
+
+const dataset = useDatasetRef(
+    rows.map(({ nested, ...it }) => ({ ...it })),
+).value;
+const expandableDataset = useDatasetRef(
+    rows.map((it) => ({ ...it })),
     "nested",
-);
+).value;
 
 const columns = defineTableColumns<Row>([
     {
@@ -103,20 +108,18 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const expandableAttribute = "nested";
-
 beforeEach(() => {
     cy.viewport(1024, 768);
 });
 
 it("el() should get root element", () => {
-    cy.mount(() => h(FTable<Row>, { columns, rows: rows.value }));
+    cy.mount(() => h(FTable<Row>, { columns, rows: dataset }));
     table.el().should("have.prop", "tagName", "TABLE");
 });
 
 it("header()", () => {
     it("should get correct header", () => {
-        cy.mount(() => h(FTable<Row>, { columns, rows: rows.value }));
+        cy.mount(() => h(FTable<Row>, { columns, rows: dataset }));
         table.header(1).should("contain.text", "Rowheader");
         table.header(2).should("contain.text", "Text");
         table.header(3).should("contain.text", "Input");
@@ -128,8 +131,7 @@ it("header()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
-                expandableAttribute,
+                rows: expandableDataset,
             }),
         );
         table.header(1).should("have.class", TABLE_CLASS.HEADER_EXPAND);
@@ -139,7 +141,7 @@ it("header()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
+                rows: dataset,
                 selectable: "multi",
             }),
         );
@@ -152,7 +154,7 @@ it("headerTitle()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
+                rows: dataset,
             }),
         );
         table.headerTitle(1).should("contain.text", "Rowheader");
@@ -166,8 +168,7 @@ it("headerTitle()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
-                expandableAttribute,
+                rows: expandableDataset,
             }),
         );
         table.headerTitle(2).should("have.class", "Rowheader");
@@ -177,7 +178,7 @@ it("headerTitle()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
+                rows: dataset,
                 selectable: "multi",
             }),
         );
@@ -190,7 +191,7 @@ it("headerDescription()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
+                rows: dataset,
             }),
         );
         table.headerDescription(1).should("contain.text", "Column 1");
@@ -204,8 +205,7 @@ it("headerDescription()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
-                expandableAttribute,
+                rows: expandableDataset,
             }),
         );
         table.headerDescription(2).should("have.class", "Rowheader");
@@ -215,7 +215,7 @@ it("headerDescription()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
+                rows: dataset,
                 selectable: "multi",
             }),
         );
@@ -228,7 +228,7 @@ describe("cell()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
+                rows: dataset,
             }),
         );
 
@@ -249,8 +249,7 @@ describe("cell()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
-                expandableAttribute,
+                rows: expandableDataset,
             }),
         );
 
@@ -266,7 +265,7 @@ describe("cell()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
+                rows: dataset,
                 selectable: "multi",
             }),
         );
@@ -283,8 +282,7 @@ describe("cell()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
-                expandableAttribute,
+                rows: expandableDataset,
             }),
         );
 
@@ -314,8 +312,7 @@ describe("cell()", () => {
                 FTable<Row>,
                 {
                     columns,
-                    rows: rows.value,
-                    expandableAttribute,
+                    rows: expandableDataset,
                 },
                 {
                     expandable: (scope: { row: Row }) => scope.row.rowheader,
@@ -339,8 +336,7 @@ it("expandButton() should get expand button", () => {
     cy.mount(() =>
         h(FTable<Row>, {
             columns,
-            rows: rows.value,
-            expandableAttribute,
+            rows: expandableDataset,
         }),
     );
     table.expandButton(1).should("have.prop", "tagName", "BUTTON");
@@ -352,7 +348,7 @@ describe("selectInput()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
+                rows: dataset,
                 selectable: "multi",
             }),
         );
@@ -364,7 +360,7 @@ describe("selectInput()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
+                rows: dataset,
                 selectable: "single",
             }),
         );
@@ -377,7 +373,7 @@ it("selectHeaderInput() should get input when table is multiselect", () => {
     cy.mount(() =>
         h(FTable<Row>, {
             columns,
-            rows: rows.value,
+            rows: dataset,
             selectable: "multi",
         }),
     );
@@ -390,7 +386,7 @@ it("footer() should get table footer when footer slot is used", () => {
             FTable<Row>,
             {
                 columns,
-                rows: rows.value,
+                rows: dataset,
             },
             {
                 footer: "Footer",
@@ -406,7 +402,7 @@ describe("tabbableElement()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
+                rows: dataset,
             }),
         );
         table.tabbableElement().focus();
@@ -426,8 +422,7 @@ describe("tabbableElement()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
-                expandableAttribute,
+                rows: expandableDataset,
             }),
         );
         table.tabbableElement().focus();
@@ -438,7 +433,7 @@ describe("tabbableElement()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
+                rows: dataset,
                 selectable: "multi",
             }),
         );
@@ -452,7 +447,7 @@ describe("rows()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
+                rows: dataset,
             }),
         );
         table.rows().should("have.length", 2);
@@ -462,8 +457,7 @@ describe("rows()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: rows.value,
-                expandableAttribute,
+                rows: expandableDataset,
             }),
         );
         table.rows().should("have.length", 2);
