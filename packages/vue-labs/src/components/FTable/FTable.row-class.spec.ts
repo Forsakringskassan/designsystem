@@ -53,12 +53,10 @@ describe("custom row class", () => {
     it("should apply custom class to expanded rows", async () => {
         expect.assertions(7);
 
-        const expandableAttribute = "nested";
         const wrapper = mount(FTable<Row>, {
             props: {
                 rows: expandedRows.value,
                 columns,
-                expandableAttribute,
                 rowClass(row: Row) {
                     return row.text.endsWith("1") ? "row-match" : undefined;
                 },

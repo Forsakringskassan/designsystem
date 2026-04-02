@@ -2,11 +2,7 @@
 
 import { type PublicProps, type VNode } from "vue";
 
-declare function FTable<
-    T,
-    KeyAttribute extends keyof T = keyof T,
-    ExpandableAttribute extends keyof T = keyof T,
->(
+declare function FTable<T, KeyAttribute extends keyof T = keyof T>(
     props: PublicProps,
     ctx?: Pick<NonNullable<Awaited<typeof setup>>, "attrs" | "emit" | "slots">,
     expose?: NonNullable<Awaited<typeof setup>>["expose"],
