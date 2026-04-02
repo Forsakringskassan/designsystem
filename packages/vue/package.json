@@ -83,7 +83,7 @@
   },
   "dependencies": {
     "@vueuse/core": "12.8.2",
-    "lodash": "4.17.23"
+    "lodash": "4.18.1"
   },
   "devDependencies": {
     "@fkui/date": "6.41.0",
