@@ -135,6 +135,11 @@
     "modellvärde",
     "modell-värde",
     "modelValue",
+    "Version 5 migreringsguide",
+    "Vue 3",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -155,11 +160,6 @@
     "scss",
     "css",
     "ikonbibliotek",
-    "Version 5 migreringsguide",
-    "Vue 3",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Testverktyg",
     "testfall",
     "jest",
@@ -284,12 +284,6 @@
     "XFileDragdrop",
     "XFileDragdrop",
     "FTablePageObject",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -297,6 +291,12 @@
     "h-display-flex",
     "Skärmläsare",
     "NVDA",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "useResize() composable",
     "justerbar yta",
     "useModal() composable",
@@ -996,6 +996,25 @@
       ]
     },
     {
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
+      "terms": [
+        "Vue 3"
+      ]
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
+      "terms": [
+        "FCrudButton"
+      ]
+    },
+    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -1033,25 +1052,6 @@
         "scss",
         "css",
         "ikonbibliotek"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": [
-        "Vue 3"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
       ]
     },
     {
@@ -1315,6 +1315,23 @@
       "terms": []
     },
     {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": [
+        "helpers",
+        "h-no-margin",
+        "h-root-size",
+        "h-display-flex"
+      ]
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
+      "terms": [
+        "NVDA"
+      ]
+    },
+    {
       "url": "functions/i18next-translate/i18next.html",
       "title": "i18next",
       "terms": [
@@ -1333,23 +1350,6 @@
       "title": "I18nextProvider",
       "terms": [
         "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": [
-        "helpers",
-        "h-no-margin",
-        "h-root-size",
-        "h-display-flex"
-      ]
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
-      "terms": [
-        "NVDA"
       ]
     },
     {
@@ -2569,27 +2569,27 @@
     "134": 36,
     "135": 37,
     "136": 37,
-    "137": 37,
-    "138": 37,
-    "139": 37,
-    "140": 37,
-    "141": 37,
-    "142": 38,
-    "143": 38,
-    "144": 38,
-    "145": 39,
-    "146": 39,
-    "147": 39,
-    "148": 39,
-    "149": 40,
-    "150": 40,
-    "151": 40,
-    "152": 40,
-    "153": 40,
-    "154": 40,
-    "155": 41,
-    "156": 41,
-    "157": 42,
+    "137": 38,
+    "138": 39,
+    "139": 39,
+    "140": 40,
+    "141": 40,
+    "142": 40,
+    "143": 40,
+    "144": 40,
+    "145": 40,
+    "146": 40,
+    "147": 41,
+    "148": 41,
+    "149": 41,
+    "150": 42,
+    "151": 42,
+    "152": 42,
+    "153": 42,
+    "154": 43,
+    "155": 43,
+    "156": 43,
+    "157": 43,
     "158": 43,
     "159": 43,
     "160": 44,
@@ -2718,13 +2718,13 @@
     "283": 71,
     "284": 72,
     "285": 72,
-    "286": 73,
-    "287": 73,
-    "288": 74,
-    "289": 74,
-    "290": 75,
-    "291": 75,
-    "292": 75,
+    "286": 72,
+    "287": 72,
+    "288": 72,
+    "289": 73,
+    "290": 73,
+    "291": 74,
+    "292": 74,
     "293": 75,
     "294": 75,
     "295": 76,
