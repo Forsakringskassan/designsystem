@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-a2f980.json"
+            href="../../search-data-e73c5b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-iEi+jv8dlfS6K5shre3y5Nv/TuWZWjoW3n4b08rO0UzM6trmVhamlp6sw8XTkQbL"
+            integrity="sha384-cuM3qTuX1WQ//I6UzSGOiFWrrYWGRE7uDi59jYUbItw1BJvwzdZTXE+qjN7qnHuM"
             id="search-data"
         />
     </head>
@@ -1835,7 +1835,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-fbae4a"></div>
+        <div id="example-190d1c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1861,7 +1861,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-fbae4a.js"></script>
+        <script type="module" src="./FTableExample-190d1c.js"></script>
     
                 </div>
                 <div>
@@ -1885,7 +1885,7 @@ body {
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { h, ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { assertRef, formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FSortFilterDataset</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FSortFilterDataset</span>, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
     type <span class="hljs-title class_">TableColumn</span>,
     <span class="hljs-title class_">FTable</span>,
@@ -2000,108 +2000,111 @@ interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-comment">// },</span>
 ]);
 
-<span class="hljs-keyword">const</span> rows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([
-    {
-        <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
-        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Katt&quot;</span>,
-        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Föräldrapenning&quot;</span>,
-        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-04-11&quot;</span>,
-        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-04-20&quot;</span>,
-        <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;10000&quot;</span>,
-        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
-        <span class="hljs-attr">expandableRows</span>: [
-            {
-                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1a&quot;</span>,
-                <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Sjukpenningsnivå&quot;</span>,
-                <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-04-18&quot;</span>,
-                <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-04-20&quot;</span>,
-                <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;30000&quot;</span>,
-            },
-            {
-                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1b&quot;</span>,
-                <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Lägstanivå&quot;</span>,
-                <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-04-16&quot;</span>,
-                <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-04-17&quot;</span>,
-                <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;20000&quot;</span>,
-            },
-            {
-                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1c&quot;</span>,
-                <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Sjukpenningsnivå&quot;</span>,
-                <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-04-11&quot;</span>,
-                <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-04-15&quot;</span>,
-                <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;50000&quot;</span>,
-            },
-        ],
-        <span class="hljs-attr">expandableContent</span>: [
-            {
-                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1a&quot;</span>,
-                <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;Anledning: Tar hand om barnet&quot;</span>,
-            },
-        ],
-    },
-    {
-        <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2&quot;</span>,
-        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Spindel&quot;</span>,
-        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Tillfällig föräldrapenning&quot;</span>,
-        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-05-02&quot;</span>,
-        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-05-04&quot;</span>,
-        <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;30000&quot;</span>,
-        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
-        <span class="hljs-attr">expandableRows</span>: [
-            {
-                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2a&quot;</span>,
-                <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Heldag&quot;</span>,
-                <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-05-02&quot;</span>,
-                <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-05-04&quot;</span>,
-                <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;30000&quot;</span>,
-            },
-        ],
-        <span class="hljs-attr">expandableContent</span>: [
-            {
-                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2a&quot;</span>,
-                <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;Anledning: Tar hand om barnet&quot;</span>,
-            },
-        ],
-    },
-    {
-        <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3&quot;</span>,
-        <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Hamster&quot;</span>,
-        <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Föräldrapenning&quot;</span>,
-        <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-05-16&quot;</span>,
-        <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-05-27&quot;</span>,
-        <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;11000&quot;</span>,
-        <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-attr">expandableRows</span>: [
-            {
-                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3a&quot;</span>,
-                <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Sjukpenningsnivå&quot;</span>,
-                <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-05-23&quot;</span>,
-                <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-05-27&quot;</span>,
-                <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;40000&quot;</span>,
-            },
-            {
-                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3b&quot;</span>,
-                <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Lägstanivå&quot;</span>,
-                <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-05-21&quot;</span>,
-                <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-05-22&quot;</span>,
-                <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;20000&quot;</span>,
-            },
-            {
-                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3c&quot;</span>,
-                <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Sjukpenningsnivå&quot;</span>,
-                <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-05-16&quot;</span>,
-                <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-05-20&quot;</span>,
-                <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;50000&quot;</span>,
-            },
-        ],
-        <span class="hljs-attr">expandableContent</span>: [
-            {
-                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3a&quot;</span>,
-                <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;Anledning: Tar hand om barnet&quot;</span>,
-            },
-        ],
-    },
-]);
+<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;(
+    [
+        {
+            <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
+            <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Katt&quot;</span>,
+            <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Föräldrapenning&quot;</span>,
+            <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-04-11&quot;</span>,
+            <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-04-20&quot;</span>,
+            <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;10000&quot;</span>,
+            <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">expandableRows</span>: [
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1a&quot;</span>,
+                    <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Sjukpenningsnivå&quot;</span>,
+                    <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-04-18&quot;</span>,
+                    <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-04-20&quot;</span>,
+                    <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;30000&quot;</span>,
+                },
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1b&quot;</span>,
+                    <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Lägstanivå&quot;</span>,
+                    <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-04-16&quot;</span>,
+                    <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-04-17&quot;</span>,
+                    <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;20000&quot;</span>,
+                },
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1c&quot;</span>,
+                    <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Sjukpenningsnivå&quot;</span>,
+                    <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-04-11&quot;</span>,
+                    <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-04-15&quot;</span>,
+                    <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;50000&quot;</span>,
+                },
+            ],
+            <span class="hljs-attr">expandableContent</span>: [
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1a&quot;</span>,
+                    <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;Anledning: Tar hand om barnet&quot;</span>,
+                },
+            ],
+        },
+        {
+            <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2&quot;</span>,
+            <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Spindel&quot;</span>,
+            <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Tillfällig föräldrapenning&quot;</span>,
+            <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-05-02&quot;</span>,
+            <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-05-04&quot;</span>,
+            <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;30000&quot;</span>,
+            <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">expandableRows</span>: [
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2a&quot;</span>,
+                    <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Heldag&quot;</span>,
+                    <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-05-02&quot;</span>,
+                    <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-05-04&quot;</span>,
+                    <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;30000&quot;</span>,
+                },
+            ],
+            <span class="hljs-attr">expandableContent</span>: [
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2a&quot;</span>,
+                    <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;Anledning: Tar hand om barnet&quot;</span>,
+                },
+            ],
+        },
+        {
+            <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3&quot;</span>,
+            <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Hamster&quot;</span>,
+            <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Föräldrapenning&quot;</span>,
+            <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-05-16&quot;</span>,
+            <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-05-27&quot;</span>,
+            <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;11000&quot;</span>,
+            <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">expandableRows</span>: [
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3a&quot;</span>,
+                    <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Sjukpenningsnivå&quot;</span>,
+                    <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-05-23&quot;</span>,
+                    <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-05-27&quot;</span>,
+                    <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;40000&quot;</span>,
+                },
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3b&quot;</span>,
+                    <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Lägstanivå&quot;</span>,
+                    <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-05-21&quot;</span>,
+                    <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-05-22&quot;</span>,
+                    <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;20000&quot;</span>,
+                },
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3c&quot;</span>,
+                    <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Sjukpenningsnivå&quot;</span>,
+                    <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-05-16&quot;</span>,
+                    <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-05-20&quot;</span>,
+                    <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;50000&quot;</span>,
+                },
+            ],
+            <span class="hljs-attr">expandableContent</span>: [
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3a&quot;</span>,
+                    <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;Anledning: Tar hand om barnet&quot;</span>,
+                },
+            ],
+        },
+    ],
+    <span class="hljs-string">&quot;expandableRows&quot;</span>,
+);
 
 <span class="hljs-keyword">const</span> sortableAttributes = <span class="hljs-title function_">getTableSortableAttributes</span>(columns);
 <span class="hljs-keyword">const</span> mySelectedRows = <span class="hljs-title function_">ref</span>([rows.<span class="hljs-property">value</span>[<span class="hljs-number">0</span>]]);
@@ -2198,13 +2201,13 @@ interface <span class="hljs-title class_">Row</span> {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-dfd2f6"></div>
+        <div id="example-a53456"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableInputFieldsExample-dfd2f6.js"></script>
+        <script type="module" src="./FTableInputFieldsExample-a53456.js"></script>
     
                 </div>
                 <div>
@@ -2228,7 +2231,7 @@ interface <span class="hljs-title class_">Row</span> {
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { computed, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">ValidationService</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 interface <span class="hljs-title class_">TableRow</span> {
@@ -2386,7 +2389,7 @@ interface <span class="hljs-title class_">TableRow</span> {
     },
 ]);
 
-<span class="hljs-keyword">const</span> rows = ref&lt;<span class="hljs-title class_">TableRow</span>[]&gt;([
+<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">TableRow</span>&gt;([
     {
         <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
         <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;aaa&quot;</span>,
@@ -2518,9 +2521,9 @@ interface <span class="hljs-title class_">TableRow</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/vite-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/2f6a1fa2397b1c39787c4eea94f245497b53bda5">2f6a1fa</a>)<br />
+<div class="footer__right"><div class="version">renovate/vite-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/04fd7e7921c3a11ba50daa658a359929c6b71810">04fd7e7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1107">PR 1107</a><br />
-        2026-04-02 07:57
+        2026-04-02 09:34
 </div>
 <div class="toolbar__item">
     <form id="version">

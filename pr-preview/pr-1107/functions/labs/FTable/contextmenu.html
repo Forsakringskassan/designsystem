@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-a2f980.json"
+            href="../../../search-data-e73c5b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-iEi+jv8dlfS6K5shre3y5Nv/TuWZWjoW3n4b08rO0UzM6trmVhamlp6sw8XTkQbL"
+            integrity="sha384-cuM3qTuX1WQ//I6UzSGOiFWrrYWGRE7uDi59jYUbItw1BJvwzdZTXE+qjN7qnHuM"
             id="search-data"
         />
     </head>
@@ -1836,13 +1836,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-cf8f96"></div>
+        <div id="example-472c4e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableContextmenuExample-cf8f96.js"></script>
+        <script type="module" src="./FTableContextmenuExample-472c4e.js"></script>
     
                 </div>
                 <div>
@@ -1864,6 +1864,7 @@
                     hidden
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 interface <span class="hljs-title class_">Row</span> {
@@ -1926,7 +1927,7 @@ interface <span class="hljs-title class_">Row</span> {
     },
 ]);
 
-<span class="hljs-keyword">const</span> rows = [
+<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;([
     {
         <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
         <span class="hljs-attr">text1</span>: <span class="hljs-string">&quot;Text 1&quot;</span>,
@@ -1945,7 +1946,7 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">text2</span>: <span class="hljs-string">&quot;Text 8&quot;</span>,
         <span class="hljs-attr">text3</span>: <span class="hljs-string">&quot;Text 9&quot;</span>,
     },
-];
+]);
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
@@ -2040,9 +2041,9 @@ interface <span class="hljs-title class_">Row</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/vite-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/2f6a1fa2397b1c39787c4eea94f245497b53bda5">2f6a1fa</a>)<br />
+<div class="footer__right"><div class="version">renovate/vite-8.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/04fd7e7921c3a11ba50daa658a359929c6b71810">04fd7e7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1107">PR 1107</a><br />
-        2026-04-02 07:57
+        2026-04-02 09:34
 </div>
 <div class="toolbar__item">
     <form id="version">
