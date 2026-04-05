@@ -4,6 +4,7 @@
         "types": [
             "cypress",
             "node",
+            "vite/client",
             "cy-mount",
             "cypress-html-validate/commands",
             "cypress-real-events",
