@@ -3,15 +3,13 @@
     "compilerOptions": {
         "composite": true,
         "types": ["cypress"],
-        "target": "es2023",
         "emitDeclarationOnly": true,
-        "skipLibCheck": true,
-        "lib": ["es2023", "dom", "dom.iterable"],
-        "paths": {
-            "@fkui/vue-labs/cypress": ["./src/cypress/index.ts"],
-            "@fkui/vue-labs": ["./src/index.ts"]
-        }
+        "skipLibCheck": true
     },
-    "include": ["src/cypress/**/*.ts", "src/**/*.pageobject.ts"],
-    "exclude": ["src/cypress/**/*.cy.ts"]
+    "include": [
+        "src/cypress/**/*.ts",
+        "src/selectors/**/*.ts",
+        "src/**/*.pageobject.ts"
+    ],
+    "exclude": ["src/**/*.cy.ts", "src/**/*.spec.ts"]
 }
