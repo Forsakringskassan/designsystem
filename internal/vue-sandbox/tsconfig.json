@@ -1,7 +1,6 @@
 {
     "extends": ["@fkui/tsconfig/recommended", "@fkui/vue/tsconfig.json"],
     "compilerOptions": {
-        "allowJs": true,
         "noEmit": true,
         "skipLibCheck": true
     },
