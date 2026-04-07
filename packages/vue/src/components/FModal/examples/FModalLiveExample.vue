@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FCheckboxField, FModal, FSelectField } from "@fkui/vue";
+import { FButton, FCheckboxField, FModal, FSelectField } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 export default defineComponent({
@@ -19,7 +19,7 @@ export default defineComponent({
     },
     computed: {
         components(): object {
-            return { FModal };
+            return { FButton, FModal };
         },
         livedata(): object {
             return {

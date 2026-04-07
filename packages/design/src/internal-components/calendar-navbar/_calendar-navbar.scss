@@ -5,7 +5,11 @@
 
 $calendar-icon-padding: 5px;
 $calendar-icon-disabled-border-width: 1px;
+$calendar-icon-forced-colors-border-width: 2px;
 $calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-disabled-border-width);
+$calendar-icon-disabled-forced-colors-padding: calc($calendar-icon-padding - $calendar-icon-forced-colors-border-width);
+$calendar-icon-forced-colors-padding: calc($calendar-icon-padding - $calendar-icon-forced-colors-border-width);
+
 %calendar-title {
     font-size: 1.5rem;
     font-weight: bold;
@@ -71,12 +75,27 @@ $calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-di
         border-radius: 50%;
         box-shadow: var(--f-button-shadow);
 
+        @media (forced-colors: active) {
+            background-color: transparent;
+            border: $calendar-icon-forced-colors-border-width solid ButtonBorder;
+            color: ButtonText;
+            padding: $calendar-icon-forced-colors-padding;
+        }
+
         &--disabled {
             color: $calendarnavbar-f-icon-arrow-color-content-disabled;
             background-color: $calendarnavbar-button-color-background-disabled;
             padding: $calendar-icon-disabled-padding;
             border: $calendar-icon-disabled-border-width solid $calendarnavbar-button-color-border-disabled;
             box-shadow: none;
+
+            @media (forced-colors: active) {
+                background-color: transparent;
+                border-color: GrayText;
+                border-width: $calendar-icon-forced-colors-border-width;
+                color: GrayText;
+                padding: $calendar-icon-disabled-forced-colors-padding;
+            }
         }
     }
 
@@ -86,5 +105,9 @@ $calendar-icon-disabled-padding: calc($calendar-icon-padding - $calendar-icon-di
         border: none;
         background-color: transparent;
         cursor: pointer;
+
+        @media (forced-colors: active) {
+            border-color: ButtonBorder;
+        }
     }
 }

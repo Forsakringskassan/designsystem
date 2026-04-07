@@ -5,10 +5,9 @@
         "outDir": "temp",
         "rootDir": "src",
         "emitDeclarationOnly": true,
-        "allowSyntheticDefaultImports": true,
         "declarationDir": "temp/cypress",
-        "allowJs": true,
         "paths": {
+            "@fkui/vue/cypress": ["./src/cypress/index.ts"],
             "@fkui/vue": ["./src/index.ts"]
         },
         "skipLibCheck": true

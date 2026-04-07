@@ -37,6 +37,7 @@ function getDatasetMetadata(element: object): DatasetElementMetadata;
 : Metadata om datamängden som helhet:
 
     - `size` - totalt antal element i datamängden.
+    - `nestedAttribute` - egenskap för att slå upp nästlade rader i datamängden eller `undefined` om nästlade rader inte används.
 
 `DatasetElementMetadata`
 : Metadata om ett enskilt element:

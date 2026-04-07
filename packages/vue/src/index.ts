@@ -1,6 +1,3 @@
-/* include typescript declarations for vite static asset handling (e.g. `?raw`) */
-/// <reference types="vite/client" />
-
 export * from "./components";
 export {
     type UseSlotUtils,

@@ -2,9 +2,8 @@
     "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/vue"],
     "compilerOptions": {
         "composite": true,
-        "lib": ["es2023", "dom", "dom.iterable"],
+        "types": ["node", "jest", "vite/client"],
         "paths": {
-            "@fkui/vue-labs/cypress": ["./src/cypress/index.ts"],
             "@fkui/vue-labs": ["./src/index.ts"]
         }
     },

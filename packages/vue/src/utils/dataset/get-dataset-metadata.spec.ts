@@ -15,15 +15,15 @@ expect.addSnapshotSerializer({
 describe("getDatasetMetadata()", () => {
     it("when called with only dataset parameter should return metadata about array", () => {
         expect.assertions(1);
-        const dataset = toDataset([{ id: 1 }, { id: 2 }, { id: 3 }]);
+        const dataset = toDataset([{ id: 1 }, { id: 2 }, { id: 3 }], undefined);
         const metadata = getDatasetMetadata(dataset);
-        expect(metadata).toEqual({ size: 3 });
+        expect(metadata).toEqual({ size: 3, nestedAttribute: undefined });
     });
 
     it("when called with element parameter should return metadata about element", () => {
         expect.assertions(4);
         const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
-        const dataset = toDataset(items);
+        const dataset = toDataset(items, undefined);
         expect(dataset).toHaveLength(3);
         expect(getDatasetMetadata(dataset[0])).toEqual({
             rowIndex: 0,
@@ -51,8 +51,11 @@ describe("getDatasetMetadata()", () => {
     it("should be persistent after filtering dataset", () => {
         expect.assertions(2);
         const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
-        const dataset = toDataset(items);
-        const filtered = toDataset(dataset.filter((item) => item.id !== 2));
+        const dataset = toDataset(items, undefined);
+        const filtered = toDataset(
+            dataset.filter((item) => item.id !== 2),
+            dataset,
+        );
         const before = treeSnapshot(dataset, rowindex);
         const after = treeSnapshot(filtered, rowindex);
         expect(before).toMatchInlineSnapshot(`
@@ -62,10 +65,30 @@ describe("getDatasetMetadata()", () => {
             └─ id:3 row-index=2
         `);
         expect(after).toMatchInlineSnapshot(`
-            length=2 size=2
+            length=2 size=3
             ├─ id:1 row-index=0
             └─ id:3 row-index=2
         `);
+    });
+
+    it("should return undefined when used when creating the dataset without nested rows", () => {
+        expect.assertions(1);
+        const rows = [{ id: 1, nested: [] }];
+        const dataset = toDataset(rows, undefined);
+        const metadata = getDatasetMetadata(dataset);
+        expect(metadata).toEqual(
+            expect.objectContaining({ nestedAttribute: undefined }),
+        );
+    });
+
+    it("should return the nested attribute used when creating the dataset", () => {
+        expect.assertions(1);
+        const rows = [{ id: 1, nested: [] }];
+        const dataset = toDataset(rows, "nested");
+        const metadata = getDatasetMetadata(dataset);
+        expect(metadata).toEqual(
+            expect.objectContaining({ nestedAttribute: "nested" }),
+        );
     });
 
     it("should throw when element is not in the dataset", () => {

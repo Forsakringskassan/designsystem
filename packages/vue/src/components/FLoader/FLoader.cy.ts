@@ -127,4 +127,22 @@ describe("FLoader", () => {
             teleportedLoader.el().should("not.exist");
         });
     });
+
+    describe("Screenshots", () => {
+        const forcedColorModes = ["none", "dark", "light"] as const;
+
+        for (const mode of Object.values(forcedColorModes)) {
+            it(`should render correct styling for forced color mode '${mode}'`, () => {
+                cy.viewport(300, 300);
+                cy.forcedColors(mode);
+                cy.mount(FLoader, {
+                    props: {
+                        show: true,
+                        overlay: true,
+                    },
+                });
+                cy.toMatchScreenshot();
+            });
+        }
+    });
 });

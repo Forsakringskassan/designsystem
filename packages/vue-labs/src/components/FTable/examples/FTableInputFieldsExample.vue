@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { ValidationService } from "@fkui/logic";
-import { FButton } from "@fkui/vue";
+import { FButton, useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 interface TableRow {
@@ -159,7 +159,7 @@ const columns3 = defineTableColumns<TableRow, keyof TableRow>([
     },
 ]);
 
-const rows = ref<TableRow[]>([
+const rows = useDatasetRef<TableRow>([
     {
         id: "1",
         text: "aaa",

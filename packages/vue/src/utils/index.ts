@@ -48,6 +48,9 @@ export {
     type Dataset,
     type DatasetArrayMetadata,
     type DatasetElementMetadata,
+    type DatasetNestedKeyOf,
+    datasetIterator,
     getDatasetMetadata,
+    toDataset,
     useDatasetRef,
 } from "./dataset";

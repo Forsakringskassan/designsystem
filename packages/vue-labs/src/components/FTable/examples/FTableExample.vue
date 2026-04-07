@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { h, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
-import { FButton, FSortFilterDataset } from "@fkui/vue";
-import { type TableColumn, FTable, defineTableColumns, removeRow } from "@fkui/vue-labs";
+import { FButton, FSortFilterDataset, useDatasetRef } from "@fkui/vue";
+import {
+    type TableColumn,
+    FTable,
+    defineTableColumns,
+    getTableSortableAttributes,
+    removeRow,
+} from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
 
@@ -111,119 +117,113 @@ const columns = defineTableColumns<Row>([
     // },
 ]);
 
-const rows = ref<Row[]>([
-    {
-        id: "1",
-        animal: "Katt",
-        level: "Föräldrapenning",
-        start: "2022-04-11",
-        end: "2022-04-20",
-        antal: "10000",
-        aktiv: false,
-        expandableRows: [
-            {
-                id: "1a",
-                level: "Sjukpenningsnivå",
-                start: "2022-04-18",
-                end: "2022-04-20",
-                antal: "30000",
-            },
-            {
-                id: "1b",
-                level: "Lägstanivå",
-                start: "2022-04-16",
-                end: "2022-04-17",
-                antal: "20000",
-            },
-            {
-                id: "1c",
-                level: "Sjukpenningsnivå",
-                start: "2022-04-11",
-                end: "2022-04-15",
-                antal: "50000",
-            },
-        ],
-        expandableContent: [
-            {
-                id: "1a",
-                content: "Anledning: Tar hand om barnet",
-            },
-        ],
-    },
-    {
-        id: "2",
-        animal: "Spindel",
-        level: "Tillfällig föräldrapenning",
-        start: "2022-05-02",
-        end: "2022-05-04",
-        antal: "30000",
-        aktiv: false,
-        expandableRows: [
-            {
-                id: "2a",
-                level: "Heldag",
-                start: "2022-05-02",
-                end: "2022-05-04",
-                antal: "30000",
-            },
-        ],
-        expandableContent: [
-            {
-                id: "2a",
-                content: "Anledning: Tar hand om barnet",
-            },
-        ],
-    },
-    {
-        id: "3",
-        animal: "Hamster",
-        level: "Föräldrapenning",
-        start: "2022-05-16",
-        end: "2022-05-27",
-        antal: "11000",
-        aktiv: true,
-        expandableRows: [
-            {
-                id: "3a",
-                level: "Sjukpenningsnivå",
-                start: "2022-05-23",
-                end: "2022-05-27",
-                antal: "40000",
-            },
-            {
-                id: "3b",
-                level: "Lägstanivå",
-                start: "2022-05-21",
-                end: "2022-05-22",
-                antal: "20000",
-            },
-            {
-                id: "3c",
-                level: "Sjukpenningsnivå",
-                start: "2022-05-16",
-                end: "2022-05-20",
-                antal: "50000",
-            },
-        ],
-        expandableContent: [
-            {
-                id: "3a",
-                content: "Anledning: Tar hand om barnet",
-            },
-        ],
-    },
-]);
-
-function hasKey<T, K extends keyof T>(
-    column: TableColumn<T, K>,
-): column is TableColumn<T, K> & { key: K } {
-    return Boolean("key" in column && column.key);
-}
-
-const sortableAttributes = Object.fromEntries(
-    columns.filter(hasKey).map((it) => [it.key, it.header]),
+const rows = useDatasetRef<Row>(
+    [
+        {
+            id: "1",
+            animal: "Katt",
+            level: "Föräldrapenning",
+            start: "2022-04-11",
+            end: "2022-04-20",
+            antal: "10000",
+            aktiv: false,
+            expandableRows: [
+                {
+                    id: "1a",
+                    level: "Sjukpenningsnivå",
+                    start: "2022-04-18",
+                    end: "2022-04-20",
+                    antal: "30000",
+                },
+                {
+                    id: "1b",
+                    level: "Lägstanivå",
+                    start: "2022-04-16",
+                    end: "2022-04-17",
+                    antal: "20000",
+                },
+                {
+                    id: "1c",
+                    level: "Sjukpenningsnivå",
+                    start: "2022-04-11",
+                    end: "2022-04-15",
+                    antal: "50000",
+                },
+            ],
+            expandableContent: [
+                {
+                    id: "1a",
+                    content: "Anledning: Tar hand om barnet",
+                },
+            ],
+        },
+        {
+            id: "2",
+            animal: "Spindel",
+            level: "Tillfällig föräldrapenning",
+            start: "2022-05-02",
+            end: "2022-05-04",
+            antal: "30000",
+            aktiv: false,
+            expandableRows: [
+                {
+                    id: "2a",
+                    level: "Heldag",
+                    start: "2022-05-02",
+                    end: "2022-05-04",
+                    antal: "30000",
+                },
+            ],
+            expandableContent: [
+                {
+                    id: "2a",
+                    content: "Anledning: Tar hand om barnet",
+                },
+            ],
+        },
+        {
+            id: "3",
+            animal: "Hamster",
+            level: "Föräldrapenning",
+            start: "2022-05-16",
+            end: "2022-05-27",
+            antal: "11000",
+            aktiv: true,
+            expandableRows: [
+                {
+                    id: "3a",
+                    level: "Sjukpenningsnivå",
+                    start: "2022-05-23",
+                    end: "2022-05-27",
+                    antal: "40000",
+                },
+                {
+                    id: "3b",
+                    level: "Lägstanivå",
+                    start: "2022-05-21",
+                    end: "2022-05-22",
+                    antal: "20000",
+                },
+                {
+                    id: "3c",
+                    level: "Sjukpenningsnivå",
+                    start: "2022-05-16",
+                    end: "2022-05-20",
+                    antal: "50000",
+                },
+            ],
+            expandableContent: [
+                {
+                    id: "3a",
+                    content: "Anledning: Tar hand om barnet",
+                },
+            ],
+        },
+    ],
+    "expandableRows",
 );
 
+const sortableAttributes = getTableSortableAttributes(columns);
 const mySelectedRows = ref([rows.value[0]]);
 
 function onAddRow(): void {

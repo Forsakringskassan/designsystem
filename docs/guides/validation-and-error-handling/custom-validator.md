@@ -176,7 +176,7 @@ I exemplet nedan så anger du värdet `test` till konfigurationens attribut `sta
 
 ## Felmeddelanden
 
-Om input-fältets värde inte börjar med "test", kommer fältet att markeras som felaktigt och felmeddelandet "STARTSWITH" kommer att visas vid ettiketten.
+Om input-fältets värde inte börjar med "test", kommer fältet att markeras som felaktigt och felmeddelandet "STARTSWITH" kommer att visas vid etiketten.
 För att få ett mer förklarande felmeddelande så uppdaterar du exemplet med en bättre text.
 Här finns det två vägar att gå.
 Antigen sätter man en global standardtext (rekomenderat) eller så sätter man en specifik text för varje input-fält som använder validatorn.

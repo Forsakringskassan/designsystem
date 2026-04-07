@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
-import { FButton, FSortFilterDataset } from "@fkui/vue";
+import { FButton, FSortFilterDataset, useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
@@ -23,7 +23,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = ref<Row[]>([
+const rows = useDatasetRef<Row>([
     {
         id: "A",
         text: "Apelsin",

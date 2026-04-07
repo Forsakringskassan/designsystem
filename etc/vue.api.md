@@ -145,7 +145,8 @@ export type Dataset<T extends object> = T[] & {
 };
 
 // @public
-export interface DatasetArrayMetadata {
+export interface DatasetArrayMetadata<T> {
+    readonly nestedAttribute: DatasetNestedKeyOf<T> | undefined;
     readonly size: number;
 }
 
@@ -157,6 +158,19 @@ export interface DatasetElementMetadata {
     readonly ariaSetSize: number;
     readonly rowIndex: number;
 }
+
+// @public
+export function datasetIterator<T extends object>(dataset: Dataset<T>, options?: {
+    flat?: boolean;
+}): Generator<{
+    item: T;
+    metadata: DatasetElementMetadata;
+}>;
+
+// @public
+export type DatasetNestedKeyOf<T> = {
+    [K in keyof T]: NonNullable<T[K]> extends T[] ? K : never;
+}[keyof T];
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_68" needs to be exported by the entry point index.d.ts
 //
@@ -989,7 +1003,7 @@ export function getAbsolutePosition(src: HTMLElement): Rect;
 export function getAbsolutePosition(src?: HTMLElement): Rect | undefined;
 
 // @public
-export function getDatasetMetadata<T extends object>(dataset: Dataset<T>): DatasetArrayMetadata;
+export function getDatasetMetadata<T extends object>(dataset: Dataset<T>): DatasetArrayMetadata<T>;
 
 // @public
 export function getDatasetMetadata(element: object): DatasetElementMetadata;
@@ -1420,6 +1434,12 @@ export interface TextFieldSetupProps {
     type: string;
 }
 
+// @internal
+export function toDataset<T extends object>(array: T[], nestedAttribute?: DatasetNestedKeyOf<T>): Dataset<T>;
+
+// @internal
+export function toDataset<T extends object>(dataset: T[], originalDataset: Dataset<T> | T[]): Dataset<T>;
+
 // @internal (undocumented)
 export const tooltipAttachTo: InjectionKey<Readonly<ShallowRef<HTMLElement | null>>>;
 
@@ -1460,7 +1480,7 @@ export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | nul
 };
 
 // @public
-export function useDatasetRef<T extends object>(initial?: T[]): Ref<Dataset<T>>;
+export function useDatasetRef<T extends object>(initial?: T[], nestedAttribute?: DatasetNestedKeyOf<T>): Ref<Dataset<T>, T[] | Dataset<T>>;
 
 // @public (undocumented)
 export interface UseDetailsPanel<T = unknown> {

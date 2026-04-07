@@ -31,9 +31,8 @@ export function all<T extends { id: number }>(context: TreeContext<T>): string {
 export function treeSnapshot<T extends { id: number }>(
     items: Dataset<T>,
     callback: (context: TreeContext<T>) => string,
-    nestedAttribute?: keyof T,
 ): string {
-    const { size } = getDatasetMetadata(items);
+    const { size, nestedAttribute } = getDatasetMetadata(items);
 
     function renderItems(items: T[], prefix: string): string {
         return items

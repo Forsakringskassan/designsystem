@@ -1,3 +1,5 @@
+import { h } from "vue";
+import { useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "../components";
 import { FTablePageObject } from "./FTable.pageobject";
 
@@ -10,40 +12,52 @@ const TABLE_CLASS = {
     CELL_SELECT: "table-ng__cell--selectable",
 };
 
-const rows = [
-    {
-        rowheader: "A1",
-        text: "A2",
-        input: "A3",
-        button: "A4",
-        anchor: "A5",
-        nested: [
-            {
-                rowheader: "A-A1",
-                text: "A-A2",
-                input: "A-A3",
-                button: "A-A4",
-                anchor: "A-A5",
-            },
-            {
-                rowheader: "A-B1",
-                text: "A-B2",
-                input: "A-B3",
-                button: "A-B4",
-                anchor: "A-B5",
-            },
-        ],
-    },
-    {
-        rowheader: "B1",
-        text: "B2",
-        input: "B3",
-        button: "B4",
-        anchor: "B5",
-    },
-];
+interface Row {
+    rowheader: string;
+    text: string;
+    input: string;
+    button: string;
+    anchor: string;
+    nested?: Row[];
+}
 
-const columns = defineTableColumns<(typeof rows)[number]>([
+const rows = useDatasetRef<Row>(
+    [
+        {
+            rowheader: "A1",
+            text: "A2",
+            input: "A3",
+            button: "A4",
+            anchor: "A5",
+            nested: [
+                {
+                    rowheader: "A-A1",
+                    text: "A-A2",
+                    input: "A-A3",
+                    button: "A-A4",
+                    anchor: "A-A5",
+                },
+                {
+                    rowheader: "A-B1",
+                    text: "A-B2",
+                    input: "A-B3",
+                    button: "A-B4",
+                    anchor: "A-B5",
+                },
+            ],
+        },
+        {
+            rowheader: "B1",
+            text: "B2",
+            input: "B3",
+            button: "B4",
+            anchor: "B5",
+        },
+    ],
+    "nested",
+);
+
+const columns = defineTableColumns<Row>([
     {
         type: "rowheader",
         header: "Rowheader",
@@ -96,23 +110,13 @@ beforeEach(() => {
 });
 
 it("el() should get root element", () => {
-    cy.mount(FTable<(typeof rows)[number]>, {
-        props: {
-            columns,
-            rows,
-        },
-    });
+    cy.mount(() => h(FTable<Row>, { columns, rows: rows.value }));
     table.el().should("have.prop", "tagName", "TABLE");
 });
 
 it("header()", () => {
     it("should get correct header", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
-                columns,
-                rows,
-            },
-        });
+        cy.mount(() => h(FTable<Row>, { columns, rows: rows.value }));
         table.header(1).should("contain.text", "Rowheader");
         table.header(2).should("contain.text", "Text");
         table.header(3).should("contain.text", "Input");
@@ -121,36 +125,36 @@ it("header()", () => {
     });
 
     it("should include expand header in header()", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 expandableAttribute,
-            },
-        });
+            }),
+        );
         table.header(1).should("have.class", TABLE_CLASS.HEADER_EXPAND);
     });
 
     it("should include select header in header()", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 selectable: "multi",
-            },
-        });
+            }),
+        );
         table.header(1).should("have.class", TABLE_CLASS.HEADER_SELECT);
     });
 });
 
 it("headerTitle()", () => {
     it("should get correct header title", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
-            },
-        });
+                rows: rows.value,
+            }),
+        );
         table.headerTitle(1).should("contain.text", "Rowheader");
         table.headerTitle(2).should("contain.text", "Text");
         table.headerTitle(3).should("contain.text", "Input");
@@ -159,36 +163,36 @@ it("headerTitle()", () => {
     });
 
     it("should include expand header in headerTitle()", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 expandableAttribute,
-            },
-        });
+            }),
+        );
         table.headerTitle(2).should("have.class", "Rowheader");
     });
 
     it("should include select header in headerTitle()", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 selectable: "multi",
-            },
-        });
+            }),
+        );
         table.headerTitle(2).should("have.class", "Rowheader");
     });
 });
 
 it("headerDescription()", () => {
     it("should get correct header description", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
-            },
-        });
+                rows: rows.value,
+            }),
+        );
         table.headerDescription(1).should("contain.text", "Column 1");
         table.headerDescription(2).should("contain.text", "Column 2");
         table.headerDescription(3).should("contain.text", "Column 3");
@@ -197,36 +201,36 @@ it("headerDescription()", () => {
     });
 
     it("should include expand header in headerDescription()", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 expandableAttribute,
-            },
-        });
+            }),
+        );
         table.headerDescription(2).should("have.class", "Rowheader");
     });
 
     it("should include select header in headerDescription()", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 selectable: "multi",
-            },
-        });
+            }),
+        );
         table.headerDescription(2).should("have.class", "Rowheader");
     });
 });
 
 describe("cell()", () => {
     it("should get correct cell", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
-            },
-        });
+                rows: rows.value,
+            }),
+        );
 
         table.cell({ row: 1, col: 1 }).should("contain.text", "A1");
         table.cell({ row: 1, col: 2 }).should("contain.text", "A2");
@@ -242,13 +246,13 @@ describe("cell()", () => {
     });
 
     it("should include column with expand button", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 expandableAttribute,
-            },
-        });
+            }),
+        );
 
         table
             .cell({ row: 1, col: 1 })
@@ -259,13 +263,13 @@ describe("cell()", () => {
     });
 
     it("should include column with select checkbox", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 selectable: "multi",
-            },
-        });
+            }),
+        );
 
         table
             .cell({ row: 1, col: 1 })
@@ -276,13 +280,13 @@ describe("cell()", () => {
     });
 
     it("should get cells in expandable row when expanded", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 expandableAttribute,
-            },
-        });
+            }),
+        );
 
         table.cell({ row: 2, col: 2 }).should("contain.text", "B1");
         table.cell({ row: 2, col: 3 }).should("contain.text", "B2");
@@ -305,16 +309,19 @@ describe("cell()", () => {
     });
 
     it("should get custom expandable row when expanded", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
-                columns,
-                rows,
-                expandableAttribute,
-            },
-            slots: {
-                expandable: "{{ row.rowheader }}",
-            },
-        });
+        cy.mount(() =>
+            h(
+                FTable<Row>,
+                {
+                    columns,
+                    rows: rows.value,
+                    expandableAttribute,
+                },
+                {
+                    expandable: (scope: { row: Row }) => scope.row.rowheader,
+                },
+            ),
+        );
 
         table.cell({ row: 2, col: 2 }).should("contain.text", "B1");
         table.cell({ row: 2, col: 3 }).should("contain.text", "B2");
@@ -329,76 +336,79 @@ describe("cell()", () => {
 });
 
 it("expandButton() should get expand button", () => {
-    cy.mount(FTable<(typeof rows)[number]>, {
-        props: {
+    cy.mount(() =>
+        h(FTable<Row>, {
             columns,
-            rows,
+            rows: rows.value,
             expandableAttribute,
-        },
-    });
+        }),
+    );
     table.expandButton(1).should("have.prop", "tagName", "BUTTON");
     table.expandButton(2).should("not.exist");
 });
 
 describe("selectInput()", () => {
     it("should get multiselect input", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 selectable: "multi",
-            },
-        });
+            }),
+        );
         table.selectInput(1).should("have.prop", "tagName", "INPUT");
         table.selectInput(2).should("have.prop", "tagName", "INPUT");
     });
 
     it("should get single select input", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 selectable: "single",
-            },
-        });
+            }),
+        );
         table.selectInput(1).should("have.prop", "tagName", "INPUT");
         table.selectInput(2).should("have.prop", "tagName", "INPUT");
     });
 });
 
 it("selectHeaderInput() should get input when table is multiselect", () => {
-    cy.mount(FTable<(typeof rows)[number]>, {
-        props: {
+    cy.mount(() =>
+        h(FTable<Row>, {
             columns,
-            rows,
+            rows: rows.value,
             selectable: "multi",
-        },
-    });
+        }),
+    );
     table.selectHeaderInput().should("have.prop", "tagName", "INPUT");
 });
 
 it("footer() should get table footer when footer slot is used", () => {
-    cy.mount(FTable<(typeof rows)[number]>, {
-        props: {
-            columns,
-            rows,
-        },
-        slots: {
-            footer: "Footer",
-        },
-    });
+    cy.mount(() =>
+        h(
+            FTable<Row>,
+            {
+                columns,
+                rows: rows.value,
+            },
+            {
+                footer: "Footer",
+            },
+        ),
+    );
     table.footer().should("have.prop", "tagName", "TFOOT");
     table.footer().should("contain.text", "Footer");
 });
 
 describe("tabbableElement()", () => {
     it("should get current tabbable element", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
-            },
-        });
+                rows: rows.value,
+            }),
+        );
         table.tabbableElement().focus();
         table.cell({ row: 1, col: 1 }).should("be.focused");
 
@@ -413,25 +423,25 @@ describe("tabbableElement()", () => {
     });
 
     it("should get current tabbable element if table is expandable", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 expandableAttribute,
-            },
-        });
+            }),
+        );
         table.tabbableElement().focus();
         table.expandButton(1).should("be.focused");
     });
 
     it("should get current tabbable element if table is selectable", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 selectable: "multi",
-            },
-        });
+            }),
+        );
         table.tabbableElement().focus();
         table.selectInput(1).should("be.focused");
     });
@@ -439,23 +449,23 @@ describe("tabbableElement()", () => {
 
 describe("rows()", () => {
     it("should get all rows", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
-            },
-        });
+                rows: rows.value,
+            }),
+        );
         table.rows().should("have.length", 2);
     });
 
     it("should include expandable rows if expanded", () => {
-        cy.mount(FTable<(typeof rows)[number]>, {
-            props: {
+        cy.mount(() =>
+            h(FTable<Row>, {
                 columns,
-                rows,
+                rows: rows.value,
                 expandableAttribute,
-            },
-        });
+            }),
+        );
         table.rows().should("have.length", 2);
 
         table.expandButton(1).click();
@@ -464,8 +474,15 @@ describe("rows()", () => {
 });
 
 it("selectDropdown() should get dropdown when open", () => {
-    const selectRows = [{ option: "Foo" }, { option: "Bar" }];
-    const selectColumns = defineTableColumns<(typeof selectRows)[number]>([
+    interface SelectRow {
+        option: string;
+    }
+
+    const selectRows = useDatasetRef<SelectRow>([
+        { option: "Foo" },
+        { option: "Bar" },
+    ]);
+    const selectColumns = defineTableColumns<SelectRow>([
         {
             type: "select",
             header: "Header",
@@ -475,20 +492,27 @@ it("selectDropdown() should get dropdown when open", () => {
             label: () => "Label",
         },
     ]);
-    cy.mount(FTable<(typeof selectRows)[number]>, {
-        props: {
+    cy.mount(() =>
+        h(FTable<SelectRow>, {
             columns: selectColumns,
-            rows: selectRows,
-        },
-    });
+            rows: selectRows.value,
+        }),
+    );
     table.selectDropdown().should("not.exist");
     table.cell({ row: 1, col: 1 }).click();
     table.selectDropdown().should("exist");
 });
 
 it("selectDropdownOption() should get options when dropdown is open", () => {
-    const selectRows = [{ option: "Foo" }, { option: "Bar" }];
-    const selectColumns = defineTableColumns<(typeof selectRows)[number]>([
+    interface SelectRow {
+        option: string;
+    }
+
+    const selectRows = useDatasetRef<SelectRow>([
+        { option: "Foo" },
+        { option: "Bar" },
+    ]);
+    const selectColumns = defineTableColumns<SelectRow>([
         {
             type: "select",
             header: "Header",
@@ -498,12 +522,12 @@ it("selectDropdownOption() should get options when dropdown is open", () => {
             label: () => "Label",
         },
     ]);
-    cy.mount(FTable<(typeof selectRows)[number]>, {
-        props: {
+    cy.mount(() =>
+        h(FTable<SelectRow>, {
             columns: selectColumns,
-            rows: selectRows,
-        },
-    });
+            rows: selectRows.value,
+        }),
+    );
     table.selectDropdownOption(1).should("not.exist");
     table.cell({ row: 1, col: 1 }).click();
     table.selectDropdownOption(1).should("contain.text", "Foo");

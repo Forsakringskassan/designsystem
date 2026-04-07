@@ -1,7 +1,7 @@
 <script
     setup
     lang="ts"
-    generic="T, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
+    generic="T extends object, KeyAttribute extends keyof T = keyof T, ExpandableAttribute extends keyof T = keyof T"
 >
 import {
     type ComponentPublicInstance,
@@ -17,6 +17,7 @@ import {
 } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
 import {
+    type Dataset,
     type ItemIdentifier,
     FSortFilterDatasetInjected,
     setItemIdentifiers,
@@ -56,7 +57,7 @@ const {
     selectable = undefined,
 } = defineProps<{
     columns: Array<TableColumn<T, KeyAttribute>>;
-    rows: T[];
+    rows: Dataset<T>;
     keyAttribute?: KeyAttribute;
     expandableAttribute?: ExpandableAttribute;
     /**
@@ -322,7 +323,7 @@ const { selectableHeaderState, toggleSelectableHeader, selectableRowState, toggl
     rows: keyedRows,
 });
 
-const tableApi = useTabstop(tableRef, keyedRows);
+const tableApi = useTabstop(tableRef, metaRows);
 defineExpose(tableApi);
 
 onMounted(() => {

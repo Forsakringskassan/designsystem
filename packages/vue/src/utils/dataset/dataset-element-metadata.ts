@@ -1,3 +1,5 @@
+import { datasetSymbol } from "./dataset";
+
 /**
  * Metadata about a single element within a dataset.
  *
@@ -19,4 +21,19 @@ export interface DatasetElementMetadata {
 
     /** Position among siblings in a hierarchical dataset. */
     readonly ariaPosInSet: number;
+}
+
+/**
+ * @internal
+ */
+export function setElementMetadata(
+    item: object,
+    value: DatasetElementMetadata,
+): void {
+    Object.defineProperty(item, datasetSymbol, {
+        value,
+        enumerable: false,
+        configurable: true,
+        writable: true,
+    });
 }

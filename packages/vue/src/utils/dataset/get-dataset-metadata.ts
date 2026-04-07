@@ -2,18 +2,34 @@ import { type Dataset, datasetSymbol } from "./dataset";
 import { type DatasetArrayMetadata } from "./dataset-array-metadata";
 import { type DatasetElementMetadata } from "./dataset-element-metadata";
 
-function getArrayMetadata<T extends object>(
+/**
+ * @internal
+ */
+export function getArrayMetadata<T extends object>(
     dataset: Dataset<T>,
-): DatasetArrayMetadata;
-function getArrayMetadata(dataset: object[]): DatasetArrayMetadata | undefined;
-function getArrayMetadata<T extends object>(
+): DatasetArrayMetadata<T>;
+
+/**
+ * @internal
+ */
+export function getArrayMetadata<T extends object>(
+    dataset: T[],
+): DatasetArrayMetadata<T> | undefined;
+
+/**
+ * @internal
+ */
+export function getArrayMetadata<T extends object>(
     dataset: T[] | Dataset<T>,
-): DatasetArrayMetadata | undefined {
+): DatasetArrayMetadata<T> | undefined {
     const descriptor = Object.getOwnPropertyDescriptor(dataset, datasetSymbol);
-    return descriptor?.value as DatasetArrayMetadata | undefined;
+    return descriptor?.value as DatasetArrayMetadata<T> | undefined;
 }
 
-function getElementMetadata(
+/**
+ * @internal
+ */
+export function getElementMetadata(
     dataset: object,
 ): DatasetElementMetadata | undefined {
     const descriptor = Object.getOwnPropertyDescriptor(dataset, datasetSymbol);
@@ -28,7 +44,7 @@ function getElementMetadata(
  */
 export function getDatasetMetadata<T extends object>(
     dataset: Dataset<T>,
-): DatasetArrayMetadata;
+): DatasetArrayMetadata<T>;
 
 /**
  * Returns metadata about an element within a dataset.
@@ -40,23 +56,15 @@ export function getDatasetMetadata(element: object): DatasetElementMetadata;
 
 export function getDatasetMetadata<T extends object>(
     item: T | Dataset<T>,
-): DatasetArrayMetadata | DatasetElementMetadata {
+): DatasetArrayMetadata<T> | DatasetElementMetadata {
     if (Array.isArray(item)) {
         const metadata = getArrayMetadata(item);
-        return Object.freeze({
-            size: metadata.size,
-        });
+        return Object.freeze({ ...metadata });
     } else {
         const metadata = getElementMetadata(item);
         if (!metadata) {
             throw new Error("Element not found in dataset");
         }
-        return Object.freeze({
-            rowIndex: metadata.rowIndex,
-            ariaRowIndex: metadata.ariaRowIndex,
-            ariaLevel: metadata.ariaLevel,
-            ariaSetSize: metadata.ariaSetSize,
-            ariaPosInSet: metadata.ariaPosInSet,
-        });
+        return Object.freeze({ ...metadata });
     }
 }

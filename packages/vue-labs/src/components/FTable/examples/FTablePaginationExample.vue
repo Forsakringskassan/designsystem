@@ -1,8 +1,20 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
-import { FButton, FPaginateDataset, FPaginator, FSortFilterDataset } from "@fkui/vue";
-import { type TableColumn, FTable, defineTableColumns, removeRow } from "@fkui/vue-labs";
+import {
+    FButton,
+    FPaginateDataset,
+    FPaginator,
+    FSortFilterDataset,
+    useDatasetRef,
+} from "@fkui/vue";
+import {
+    type TableColumn,
+    FTable,
+    defineTableColumns,
+    getTableSortableAttributes,
+    removeRow,
+} from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
 
@@ -43,98 +55,92 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = ref<Row[]>([
-    {
-        id: "1",
-        name: "Sofia Lindgren",
-        receivedAt: "2023-11-12",
-        expandableRows: [
-            {
-                id: "1a",
-                name: "Detalj 1",
-                receivedAt: "2023-11-12",
-            },
-            {
-                id: "1b",
-                name: "Detalj 2",
-                receivedAt: "2023-11-13",
-            },
-        ],
-    },
-    {
-        id: "2",
-        name: "Filip Gustafsson",
-        receivedAt: "2024-02-20",
-        expandableRows: [
-            {
-                id: "2a",
-                name: "Detalj 1",
-                receivedAt: "2024-03-02",
-            },
-        ],
-    },
-    {
-        id: "3",
-        name: "Tina Jansson",
-        receivedAt: "2024-05-15",
-    },
-    {
-        id: "4",
-        name: "David Lindqvist",
-        receivedAt: "2024-08-30",
-        expandableRows: [
-            {
-                id: "4a",
-                name: "Detalj 1",
-                receivedAt: "2024-09-05",
-            },
-            {
-                id: "4b",
-                name: "Detalj 2",
-                receivedAt: "2024-09-10",
-            },
-        ],
-    },
-    {
-        id: "5",
-        name: "Elin Andersson",
-        receivedAt: "2024-11-12",
-    },
-    {
-        id: "6",
-        name: "Victor Nilsson",
-        receivedAt: "2025-02-20",
-        expandableRows: [],
-    },
-    {
-        id: "7",
-        name: "Sofia Lindström",
-        receivedAt: "2025-05-15",
-    },
-    {
-        id: "8",
-        name: "Olle Bergström",
-        receivedAt: "2025-08-30",
-        expandableRows: [
-            {
-                id: "8a",
-                name: "Detalj 1",
-                receivedAt: "2025-09-19",
-            },
-        ],
-    },
-]);
-
-function hasKey<T, K extends keyof T>(
-    column: TableColumn<T, K>,
-): column is TableColumn<T, K> & { key: K } {
-    return Boolean("key" in column && column.key);
-}
-
-const sortableAttributes = Object.fromEntries(
-    columns.filter(hasKey).map((column) => [column.key, column.header]),
+const rows = useDatasetRef<Row>(
+    [
+        {
+            id: "1",
+            name: "Sofia Lindgren",
+            receivedAt: "2023-11-12",
+            expandableRows: [
+                {
+                    id: "1a",
+                    name: "Detalj 1",
+                    receivedAt: "2023-11-12",
+                },
+                {
+                    id: "1b",
+                    name: "Detalj 2",
+                    receivedAt: "2023-11-13",
+                },
+            ],
+        },
+        {
+            id: "2",
+            name: "Filip Gustafsson",
+            receivedAt: "2024-02-20",
+            expandableRows: [
+                {
+                    id: "2a",
+                    name: "Detalj 1",
+                    receivedAt: "2024-03-02",
+                },
+            ],
+        },
+        {
+            id: "3",
+            name: "Tina Jansson",
+            receivedAt: "2024-05-15",
+        },
+        {
+            id: "4",
+            name: "David Lindqvist",
+            receivedAt: "2024-08-30",
+            expandableRows: [
+                {
+                    id: "4a",
+                    name: "Detalj 1",
+                    receivedAt: "2024-09-05",
+                },
+                {
+                    id: "4b",
+                    name: "Detalj 2",
+                    receivedAt: "2024-09-10",
+                },
+            ],
+        },
+        {
+            id: "5",
+            name: "Elin Andersson",
+            receivedAt: "2024-11-12",
+        },
+        {
+            id: "6",
+            name: "Victor Nilsson",
+            receivedAt: "2025-02-20",
+            expandableRows: [],
+        },
+        {
+            id: "7",
+            name: "Sofia Lindström",
+            receivedAt: "2025-05-15",
+        },
+        {
+            id: "8",
+            name: "Olle Bergström",
+            receivedAt: "2025-08-30",
+            expandableRows: [
+                {
+                    id: "8a",
+                    name: "Detalj 1",
+                    receivedAt: "2025-09-19",
+                },
+            ],
+        },
+    ],
+    "expandableRows",
 );
 
+const sortableAttributes = getTableSortableAttributes(columns);
 const selectedRows = ref<Row[]>([]);
 const itemsPerPage = ref(3);
 const nextId = ref(9);

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FTextField } from "@fkui/vue";
+import { FTextField, useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
@@ -31,7 +31,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = ref([
+const rows = useDatasetRef<Row>([
     { value1: "Text 1", value2: "Text 2", value3: "Text 3" },
     { value1: "Text 4", value2: "Text 5", value3: "Text 6" },
     { value1: "Text 7", value2: "Text 8", value3: "Text 9" },
