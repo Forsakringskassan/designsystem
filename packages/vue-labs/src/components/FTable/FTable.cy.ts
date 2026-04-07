@@ -99,77 +99,80 @@ describe("1.5 Separator", () => {
         nested?: Row[];
     }
 
-    const expandableAttribute = "nested";
+    const rawRows: Row[] = [
+        {
+            rowheader: "A1",
+            text: "A2",
+            input: "A3",
+            button: "A4",
+            anchor: "A5",
+            dropdown: "Foo",
+            checkbox: false,
+            radio: false,
 
+            nested: [
+                {
+                    rowheader: "A-A1",
+                    text: "A-A2",
+                    input: "A-A3",
+                    button: "A-A4",
+                    anchor: "A-A5",
+                    dropdown: "Foo",
+                    checkbox: false,
+                    radio: false,
+                },
+            ],
+        },
+        {
+            rowheader: "B1",
+            text: "B2",
+            input: "B3",
+            button: "B4",
+            anchor: "B5",
+            dropdown: "Foo",
+            checkbox: false,
+            radio: false,
+        },
+        {
+            rowheader: "C1",
+            text: "C2",
+            input: "C3",
+            button: "C4",
+            anchor: "C5",
+            dropdown: "Foo",
+            checkbox: false,
+            radio: false,
+
+            nested: [
+                {
+                    rowheader: "C-A1",
+                    text: "C-A2",
+                    input: "C-A3",
+                    button: "C-A4",
+                    anchor: "C-A5",
+                    dropdown: "Foo",
+                    checkbox: false,
+                    radio: false,
+                },
+                {
+                    rowheader: "C-B1",
+                    text: "C-B2",
+                    input: "C-B3",
+                    button: "C-B4",
+                    anchor: "C-B5",
+                    dropdown: "Foo",
+                    checkbox: false,
+                    radio: false,
+                },
+            ],
+        },
+    ];
     const rows = useDatasetRef<Row>(
-        [
-            {
-                rowheader: "A1",
-                text: "A2",
-                input: "A3",
-                button: "A4",
-                anchor: "A5",
-                dropdown: "Foo",
-                checkbox: false,
-                radio: false,
-
-                nested: [
-                    {
-                        rowheader: "A-A1",
-                        text: "A-A2",
-                        input: "A-A3",
-                        button: "A-A4",
-                        anchor: "A-A5",
-                        dropdown: "Foo",
-                        checkbox: false,
-                        radio: false,
-                    },
-                ],
-            },
-            {
-                rowheader: "B1",
-                text: "B2",
-                input: "B3",
-                button: "B4",
-                anchor: "B5",
-                dropdown: "Foo",
-                checkbox: false,
-                radio: false,
-            },
-            {
-                rowheader: "C1",
-                text: "C2",
-                input: "C3",
-                button: "C4",
-                anchor: "C5",
-                dropdown: "Foo",
-                checkbox: false,
-                radio: false,
-
-                nested: [
-                    {
-                        rowheader: "C-A1",
-                        text: "C-A2",
-                        input: "C-A3",
-                        button: "C-A4",
-                        anchor: "C-A5",
-                        dropdown: "Foo",
-                        checkbox: false,
-                        radio: false,
-                    },
-                    {
-                        rowheader: "C-B1",
-                        text: "C-B2",
-                        input: "C-B3",
-                        button: "C-B4",
-                        anchor: "C-B5",
-                        dropdown: "Foo",
-                        checkbox: false,
-                        radio: false,
-                    },
-                ],
-            },
-        ],
+        rawRows.map(({ nested, ...row }) => ({ ...row })),
+    );
+    const expandableAttribute = "nested";
+    const expandableRows = useDatasetRef<Row>(
+        rawRows.map((row) => ({ ...row })),
         expandableAttribute,
     );
     const columns = defineTableColumns<Row>([
@@ -212,7 +215,7 @@ describe("1.5 Separator", () => {
             h(
                 FTable<Row>,
                 {
-                    rows: rows.value,
+                    rows: expandableRows.value,
                     columns,
                     striped: true,
                 },
