@@ -79,30 +79,12 @@ export function useSelectable<T>(options: {
         );
     }
 
-    let oldKeys: ItemIdentifier[] | undefined = undefined;
-
     watch(
         () => toValue(rows),
         (newValue) => {
-            // eslint-disable-next-line sonarjs/no-alphabetical-sort -- only used to compare
-            const newKeys = newValue.map(rowKey).toSorted();
-            if (!oldKeys) {
-                oldKeys = newKeys;
-                return;
-            }
-
-            // not able to use `oldValue` directly since array
-            const compareKeys = oldKeys;
-            oldKeys = newKeys;
-
-            if (newKeys.length !== compareKeys.length) {
-                selectedRows.value = [];
-                return;
-            }
-
-            if (compareKeys.join(",") !== newKeys.join(",")) {
-                selectedRows.value = [];
-            }
+            selectedRows.value = selectedRows.value.filter((it) =>
+                newValue.includes(it),
+            );
         },
         { deep: 1, immediate: true },
     );

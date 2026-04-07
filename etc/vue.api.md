@@ -1343,6 +1343,9 @@ export interface Point {
     y: number;
 }
 
+// @internal
+export function provideSelectableRowSource(options: SelectableRowSourceProvider): void;
+
 // @internal (undocumented)
 export interface Rect extends Point {
     // (undocumented)
@@ -1377,6 +1380,20 @@ export interface RenderSlotOptions {
 
 // @public
 export function renderSlotText(render: Slot | undefined, props?: Record<string, unknown>, options?: Partial<RenderSlotOptions>): string | undefined;
+
+// @public
+export interface SelectableRowSource {
+    // (undocumented)
+    isProvided: Readonly<Ref<boolean>>;
+    // (undocumented)
+    rows: Readonly<Ref<unknown[]>>;
+}
+
+// @public
+export interface SelectableRowSourceProvider {
+    // (undocumented)
+    rows: Readonly<Ref<unknown[]>>;
+}
 
 // @public
 export function setItemIdentifier(item: unknown, value?: ItemIdentifier): void;
@@ -1530,6 +1547,9 @@ export interface UseResizeOptions {
     readonly overlay?: boolean | Readonly<Ref<boolean>>;
     readonly visible?: boolean | Readonly<Ref<boolean>>;
 }
+
+// @public
+export function useSelectableRowSource(): SelectableRowSource;
 
 // @public (undocumented)
 export interface UseSlotUtils {

@@ -6,6 +6,7 @@ import { useTranslate } from "../../plugins";
 import { type Dataset } from "../../utils";
 import { FSelectField } from "../FSelectField";
 import { FSearchTextField } from "../FTextField";
+import { provideSelectableRowSource, useSelectableRowSource } from "../selectable-row-source";
 import {
     type FSortFilterDatasetMountCallback,
     type FSortFilterDatasetSortCallback,
@@ -142,6 +143,7 @@ let tableCallbackOnSort: FSortFilterDatasetSortCallback = () => {
 let tableCallbackSortableColumns: FSortFilterDatasetMountCallback = () => {
     /* do nothing */
 };
+const { isProvided: hasSelectableRowsProvider } = useSelectableRowSource();
 
 provide("sort", (attribute: string, ascending: boolean) => {
     onApiChangeSortAttribute(attribute, ascending);
@@ -154,6 +156,12 @@ provide("registerCallbackOnSort", (callback: FSortFilterDatasetSortCallback) => 
 provide("registerCallbackOnMount", (callback: FSortFilterDatasetMountCallback) => {
     tableCallbackSortableColumns = callback;
 });
+
+if (!hasSelectableRowsProvider.value) {
+    provideSelectableRowSource({
+        rows: computed(() => sortFilterResult.value as unknown[]),
+    });
+}
 
 onMounted(() => {
     tableCallbackSortableColumns(sortableKeys.value);

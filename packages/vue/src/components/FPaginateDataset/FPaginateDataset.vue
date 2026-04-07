@@ -2,6 +2,7 @@
 import { type Ref, computed, onMounted, provide, ref, watch } from "vue";
 import { type Dataset, toDataset } from "../../utils";
 import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
+import { provideSelectableRowSource, useSelectableRowSource } from "../selectable-row-source";
 import { paginateDatasetKey } from "./provide";
 
 const currentPage = defineModel<number>({
@@ -80,6 +81,7 @@ const numberOfPages = computed(() => Math.max(1, Math.ceil(numberOfItems.value /
 
 // Computes number of items
 const numberOfItems = computed(() => (itemsLength > 0 ? itemsLength : items.length));
+const { isProvided: hasSelectableRowsProvider } = useSelectableRowSource();
 
 onMounted(() => {
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
@@ -90,6 +92,12 @@ provide(paginateDatasetKey, {
     currentPage,
     numberOfPages,
 });
+
+if (!hasSelectableRowsProvider.value) {
+    provideSelectableRowSource({
+        rows: computed(() => items as unknown[]),
+    });
+}
 
 watch(currentPage, (newPageValue) => {
     currentPage.value = Math.max(1, Math.min(newPageValue, numberOfPages.value));

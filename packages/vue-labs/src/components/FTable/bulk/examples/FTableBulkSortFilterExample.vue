@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, useTemplateRef } from "vue";
+import { ref } from "vue";
 import { FButton, FSortFilterDataset, useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns, removeDatasetRows } from "@fkui/vue-labs";
 
@@ -48,6 +48,24 @@ function onRemoveSelectedRows(): void {
 </script>
 
 <template>
+    <h2>Bulkval med filtrering och sortering</h2>
+    <p>
+        I detta exempel visas hur bulkval i tabellen fungerar tillsammans med
+        <code>f-sort-filter-dataset</code>.
+    </p>
+    <ul>
+        <li>När du väljer "Välj alla" markeras alla synliga rader.</li>
+        <li>När du filtrerar om datasetet rensas tidigare val.</li>
+        <li>När du sorterar behålls valda rader.</li>
+        <li>När du lägger till en rad uppdateras bulkstatus.</li>
+        <li>
+            Konsumenten ansvarar för att tömma valda rader efter en bulkoperation. Undantaget är då
+            konsumenten tar bort rader, då försvinner de även som valda rader.
+        </li>
+    </ul>
+
+    <p data-test="selected-count">Valda rader: {{ selectedRows.length }}</p>
+
     <f-button variant="secondary" @click="onRemoveSelectedRows"> Ta bort markerade rader </f-button>
     <f-sort-filter-dataset v-test="'filter'" :data="rows" :sortable-attributes>
         <template #default="{ sortFilterResult }">

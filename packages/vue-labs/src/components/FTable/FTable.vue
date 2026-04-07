@@ -19,6 +19,7 @@ import {
     FSortFilterDatasetInjected,
     getDatasetMetadata,
     setItemIdentifiers,
+    useSelectableRowSource,
     useSlotUtils,
     useTranslate,
 } from "@fkui/vue";
@@ -97,6 +98,16 @@ const expandableAttribute = computed(() => {
     return getDatasetMetadata(rows).nestedAttribute;
 });
 const keyedRows = computed(() => setItemIdentifiers(rows, keyAttribute, expandableAttribute.value));
+const { rows: selectableSourceRows, isProvided: isSelectableSourceProvided } = useSelectableRowSource();
+const selectableRows = computed(() => {
+    if (!isSelectableSourceProvided.value) {
+        return keyedRows.value;
+    }
+
+    const sourceRows = selectableSourceRows.value as Dataset<T>;
+    const nestedAttribute = getDatasetMetadata(sourceRows).nestedAttribute;
+    return setItemIdentifiers(sourceRows, keyAttribute, nestedAttribute);
+});
 const metaRows = computed(
     (): Array<MetaRow<T>> => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute.value),
 );
@@ -341,7 +352,7 @@ const { onPopupError, onClosePopupError, activeErrorAnchor } = usePopupError();
 const { selectableHeaderState, toggleSelectableHeader, selectableRowState, toggleSelectableRow } = useSelectable({
     selectable,
     selectedRows,
-    rows: keyedRows,
+    rows: selectableRows,
 });
 
 const tableApi = useTabstop(tableRef, metaRows);
