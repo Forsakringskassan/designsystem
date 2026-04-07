@@ -3691,7 +3691,7 @@ function getAbsolutePosition(src) {
 }
 
 // packages/vue/src/utils/dataset/use-dataset-ref.ts
-import { ref } from "vue";
+import { ref, toRaw, watch } from "vue";
 
 // packages/vue/src/internal-components/IPopup/i-popup-utils.ts
 function clamp(value, min, max) {
