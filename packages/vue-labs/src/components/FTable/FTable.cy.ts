@@ -1,10 +1,8 @@
 import { type VNode, ref } from "vue";
 import { h } from "vue";
 import { FValidationForm, useDatasetRef } from "@fkui/vue";
-import { FSortFilterDatasetPageObject } from "@fkui/vue/cypress";
 import { FTablePageObject } from "../../cypress";
 import FTable from "./FTable.vue";
-import FTableBulkTestExample from "./examples/FTableBulkTestExample.vue";
 import FTableTabstopExample from "./examples/FTableTabstopExample.vue";
 import { defineTableColumns } from "./table-column";
 
@@ -1932,73 +1930,6 @@ describe("7 Bulk Operation ", () => {
         });
     });
 
-    describe("7.3 Row Selection Behavior with Filtering and Sorting", () => {
-        it("should reset row selections when filtering is applied", () => {
-            const sorter = new FSortFilterDatasetPageObject(
-                ".sort-filter-dataset",
-            );
-            cy.mount(FTableBulkTestExample);
-            table.selectInput(1).focus().click();
-            table.selectInput(1).should("be.checked");
-
-            table
-                .selectHeaderInput()
-                .should("not.be.checked")
-                .and("have.prop", "indeterminate", true);
-
-            sorter.textField.input().type("Ape");
-
-            table.selectInput(1).should("not.be.checked");
-            table
-                .selectHeaderInput()
-                .should("not.be.checked")
-                .and("have.prop", "indeterminate", false);
-        });
-
-        it("should retains row selections when sorting is applied", () => {
-            const sorter = new FSortFilterDatasetPageObject(
-                '[data-test="filter"]',
-            );
-
-            cy.mount(FTableBulkTestExample);
-
-            table.selectInput(2).focus().click();
-            table.selectInput(2).should("be.checked");
-            table
-                .selectHeaderInput()
-                .should("not.be.checked")
-                .and("have.prop", "indeterminate", true);
-            //sort ascending
-            table.header(2).click();
-            table.selectInput(2).should("be.checked");
-            table
-                .selectHeaderInput()
-                .should("not.be.checked")
-                .and("have.prop", "indeterminate", true);
-            //sort descending
-            table.header(2).click();
-            table.selectInput(1).should("be.checked");
-            table
-                .selectHeaderInput()
-                .should("not.be.checked")
-                .and("have.prop", "indeterminate", true);
-            //sort ascending
-            sorter.selectField.dropdown().select("Text (stigande)");
-            table.selectInput(2).should("be.checked");
-            table
-                .selectHeaderInput()
-                .should("not.be.checked")
-                .and("have.prop", "indeterminate", true);
-            //sort descending
-            sorter.selectField.dropdown().select("Text (fallande)");
-            table.selectInput(1).should("be.checked");
-            table
-                .selectHeaderInput()
-                .should("not.be.checked")
-                .and("have.prop", "indeterminate", true);
-        });
-    });
-
     describe("7.4 Bulk selection in expandable", () => {
         interface Row {
             text: string;
@@ -2086,48 +2017,8 @@ describe("7 Bulk Operation ", () => {
             table.selectInput(4).should("not.be.checked");
             table.cell({ row: 5, col: 2 }).should("be.empty");
         });
-
-        describe("7.7 Dataset change resets selection ", () => {
-            it("should clear all selected rows when row is removed or added", () => {
-                cy.mount(FTableBulkTestExample);
-
-                table.selectHeaderInput().focus().click();
-
-                table
-                    .selectHeaderInput()
-                    .should("be.checked")
-                    .and("have.prop", "indeterminate", false);
-                table.selectInput(1).should("be.checked");
-                table.selectInput(2).should("be.checked");
-
-                cy.contains("button", "Lägg till rad").click();
-
-                table
-                    .selectHeaderInput()
-                    .should("not.be.checked")
-                    .and("have.prop", "indeterminate", false);
-                table.selectInput(1).should("not.be.checked");
-                table.selectInput(2).should("not.be.checked");
-                table.selectInput(3).should("not.be.checked");
-
-                table.selectInput(3).focus().click();
-
-                table
-                    .selectHeaderInput()
-                    .should("not.be.checked")
-                    .and("have.prop", "indeterminate", true);
-
-                cy.contains("button", "Ta bort markerade rader").click();
-
-                table
-                    .selectHeaderInput()
-                    .should("not.be.checked")
-                    .and("have.prop", "indeterminate", false);
-            });
-        });
     });
 });
-
 describe("select cell", () => {
     interface Row {
         option: string;

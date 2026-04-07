@@ -10,9 +10,9 @@ interface Row {
 
 describe("selectableRowState(row)", () => {
     it("should return `true` when selected row", () => {
-        const rows: Row[] = [{ id: 1 }, { id: 2 }];
-        setItemIdentifiers(rows);
-        const selectedRows = ref([rows[1]]);
+        const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
+        setItemIdentifiers(rows.value);
+        const selectedRows = ref([rows.value[1]]);
 
         const { selectableRowState } = useSelectable({
             selectable: "multi",
@@ -20,7 +20,7 @@ describe("selectableRowState(row)", () => {
             rows,
         });
 
-        expect(selectableRowState(rows[1])).toBeTruthy();
+        expect(selectableRowState(rows.value[1])).toBeTruthy();
     });
 
     it("should return `false` when not selected row", () => {
@@ -59,9 +59,9 @@ describe("12.1 single select", () => {
         });
 
         it("should select row and unselect previous selected row", () => {
-            const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setItemIdentifiers(rows);
-            const selectedRows = ref([rows[0]]);
+            const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
+            setItemIdentifiers(rows.value);
+            const selectedRows = ref([rows.value[0]]);
 
             const { toggleSelectableRow, selectableRowState } = useSelectable({
                 selectable: "single",
@@ -69,11 +69,11 @@ describe("12.1 single select", () => {
                 rows,
             });
 
-            expect(selectableRowState(rows[0])).toBeTruthy();
-            expect(selectableRowState(rows[1])).toBeFalsy();
-            toggleSelectableRow(rows[1]);
-            expect(selectableRowState(rows[0])).toBeFalsy();
-            expect(selectableRowState(rows[1])).toBeTruthy();
+            expect(selectableRowState(rows.value[0])).toBeTruthy();
+            expect(selectableRowState(rows.value[1])).toBeFalsy();
+            toggleSelectableRow(rows.value[1]);
+            expect(selectableRowState(rows.value[0])).toBeFalsy();
+            expect(selectableRowState(rows.value[1])).toBeTruthy();
         });
     });
 });
@@ -91,9 +91,9 @@ describe("12.1 multi select", () => {
         });
 
         it("should return `indeterminate` when some rows selected", () => {
-            const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setItemIdentifiers(rows);
-            const selectedRows = ref([rows[1]]);
+            const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
+            setItemIdentifiers(rows.value);
+            const selectedRows = ref([rows.value[1]]);
 
             const { selectableHeaderState } = useSelectable({
                 selectable: "multi",
@@ -105,9 +105,9 @@ describe("12.1 multi select", () => {
         });
 
         it("should return `true` when all rows selected", () => {
-            const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setItemIdentifiers(rows);
-            const selectedRows = ref([...rows]);
+            const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
+            setItemIdentifiers(rows.value);
+            const selectedRows = ref([...rows.value]);
 
             const { selectableHeaderState } = useSelectable({
                 selectable: "multi",
@@ -139,9 +139,9 @@ describe("12.1 multi select", () => {
         });
 
         it("should trigger checked state and select all rows when indeterminate state", () => {
-            const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setItemIdentifiers(rows);
-            const selectedRows = ref([rows[1]]);
+            const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
+            setItemIdentifiers(rows.value);
+            const selectedRows = ref([rows.value[1]]);
 
             const { selectableHeaderState, toggleSelectableHeader } =
                 useSelectable({
@@ -157,9 +157,9 @@ describe("12.1 multi select", () => {
         });
 
         it("should trigger unchecked state and unselect all rows when checked state", () => {
-            const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setItemIdentifiers(rows);
-            const selectedRows = ref([...rows]);
+            const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
+            setItemIdentifiers(rows.value);
+            const selectedRows = ref([...rows.value]);
 
             const { selectableHeaderState, toggleSelectableHeader } =
                 useSelectable({
@@ -219,9 +219,10 @@ describe("12.1 multi select", () => {
         });
 
         it("should get header state `indeterminate` and row unchecked when all selected", () => {
-            const rows: Row[] = [{ id: 1 }, { id: 2 }];
-            setItemIdentifiers(rows);
-            const selectedRows = ref([...rows]);
+            // const rows: Row[] = [{ id: 1 }, { id: 2 }];
+            const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
+            setItemIdentifiers(rows.value);
+            const selectedRows = ref([...rows.value]);
 
             const {
                 selectableHeaderState,
@@ -234,80 +235,68 @@ describe("12.1 multi select", () => {
             });
 
             expect(selectableHeaderState()).toBeTruthy();
-            toggleSelectableRow(rows[1]);
+            toggleSelectableRow(rows.value[1]);
             expect(selectableHeaderState()).toBe("indeterminate");
-            expect(selectableRowState(rows[0])).toBeTruthy();
-            expect(selectableRowState(rows[1])).toBeFalsy();
+            expect(selectableRowState(rows.value[0])).toBeTruthy();
+            expect(selectableRowState(rows.value[1])).toBeFalsy();
         });
     });
 });
 
-describe("7.7 Dataset change resets selection", () => {
-    it("should clear all selected rows and bulk checkbox when a row is added", async () => {
+describe("7.7 Dataset change updates selection", () => {
+    it("should update bulk checkbox state when all rows are selected and a new row is added", async () => {
         const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
         setItemIdentifiers(rows.value);
-        const selectedRows = ref([toValue(rows)[0]]);
+        const selectedRows = ref([...rows.value]);
 
-        const { selectableRowState, selectableHeaderState } = useSelectable({
+        const { selectableHeaderState } = useSelectable({
             selectable: "multi",
             selectedRows,
             rows,
         });
 
-        expect(selectableHeaderState()).toBe("indeterminate");
-        expect(selectableRowState(toValue(rows)[0])).toBeTruthy();
-
+        expect(selectableHeaderState()).toBeTruthy();
         rows.value.push({ id: 3 });
         setItemIdentifiers(rows.value);
         await flushPromises();
 
-        expect(selectedRows.value).toEqual([]);
-        expect(selectableRowState(toValue(rows)[0])).toBeFalsy();
-        expect(selectableHeaderState()).toBeFalsy();
+        expect(selectedRows.value).toMatchObject([{ id: 1 }, { id: 2 }]);
+        expect(selectableHeaderState()).toBe("indeterminate");
     });
 
-    it("should clear all selected rows and bulk checkbox when a row is removed", async () => {
+    it("should update selected rows when an included row is removed", async () => {
         const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
         setItemIdentifiers(rows.value);
-        const selectedRows = ref([toValue(rows)[0]]);
+        const selectedRows = ref([...rows.value]);
 
-        const { selectableRowState, selectableHeaderState } = useSelectable({
+        useSelectable({
             selectable: "multi",
             selectedRows,
             rows,
         });
 
-        expect(selectableHeaderState()).toBe("indeterminate");
-        expect(selectableRowState(toValue(rows)[0])).toBeTruthy();
-
-        rows.value.splice(1, 1);
+        rows.value.splice(0, 1);
         await flushPromises();
-
-        expect(selectedRows.value).toEqual([]);
-        expect(selectableRowState(toValue(rows)[0])).toBeFalsy();
-        expect(selectableHeaderState()).toBeFalsy();
+        expect(selectedRows.value).toMatchObject([{ id: 2 }]);
     });
 
     it("should clear all selected rows and bulk checkbox when rows are replaced", async () => {
         const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
         setItemIdentifiers(rows.value);
-        const selectedRows = ref([toValue(rows)[0]]);
+        const selectedRows = ref([...rows.value]);
 
-        const { selectableRowState, selectableHeaderState } = useSelectable({
+        const { selectableHeaderState } = useSelectable({
             selectable: "multi",
             selectedRows,
             rows,
         });
 
-        expect(selectableHeaderState()).toBe("indeterminate");
-        expect(selectableRowState(toValue(rows)[0])).toBeTruthy();
-
-        rows.value = [{ id: 2 }, { id: 3 }];
+        expect(selectableHeaderState()).toBeTruthy();
+        rows.value = [{ id: 3 }, { id: 4 }];
         setItemIdentifiers(rows.value);
         await flushPromises();
 
         expect(selectedRows.value).toEqual([]);
-        expect(selectableRowState(toValue(rows)[0])).toBeFalsy();
         expect(selectableHeaderState()).toBeFalsy();
     });
 
