@@ -1,12 +1,11 @@
 import { type VNode, ref } from "vue";
 import { h } from "vue";
-import { assertSet } from "@fkui/logic";
 import { FValidationForm, useDatasetRef } from "@fkui/vue";
 import { FSortFilterDatasetPageObject } from "@fkui/vue/cypress";
 import { FTablePageObject } from "../../cypress";
 import FTable from "./FTable.vue";
 import FTableBulkTestExample from "./examples/FTableBulkTestExample.vue";
-import { type FTableApi } from "./f-table-api";
+import FTableTabstopExample from "./examples/FTableTabstopExample.vue";
 import { defineTableColumns } from "./table-column";
 
 const table = new FTablePageObject();
@@ -1235,46 +1234,6 @@ describe("5 tabstop", () => {
         };
     }
 
-    function mountRowRemovalTestbed(): void {
-        let api: FTableApi | undefined = undefined;
-
-        const rows = useDatasetRef<TabstopRow>([
-            { foo: "1", bar: "alpha" },
-            { foo: "2", bar: "beta" },
-            { foo: "3", bar: "gamma" },
-        ]);
-
-        const columns = defineTableColumns<TabstopRow>([
-            {
-                type: "text",
-                header: "foo",
-                key: "foo",
-            },
-            {
-                type: "button",
-                header: "remove",
-                icon: "trashcan",
-                text(row) {
-                    return row.bar;
-                },
-                onClick(row) {
-                    assertSet(api);
-                    api.withTabstopBehaviour("row-removal", () => {
-                        rows.value.splice(rows.value.indexOf(row), 1);
-                    });
-                },
-            },
-        ]);
-
-        cy.mount(() =>
-            h(FTable<TabstopRow>, {
-                rows: rows.value,
-                columns,
-                ref: (exposed: unknown) => (api = exposed as FTableApi),
-            }),
-        );
-    }
-
     interface NavigationRow {
         staticText: string;
         editText: string;
@@ -1434,14 +1393,29 @@ describe("5 tabstop", () => {
         cy.focused().should("contain.text", "Tabellen är tom");
     });
 
-    it("5.5 should fallback according to sticky mode when current tabstop is removed", () => {
-        mountRowRemovalTestbed();
-        table.cell({ row: 2, col: 2 }).click();
+    it("5.5/5.6 should fallback according to sticky mode with priority when current tabstop is removed", () => {
+        cy.mount(FTableTabstopExample);
+
+        table.cell({ row: 2, col: 3 }).should("contain.text", "beta");
+        table.cell({ row: 2, col: 3 }).click();
         cy.focused().should("contain.text", "alpha");
         cy.focused().click();
         cy.focused().should("contain.text", "gamma");
         cy.focused().click();
         cy.focused().should("contain.text", "Tabellen är tom");
+    });
+
+    it("5.6 expanded row should fallback according to sticky mode with priority when current tabstop is removed", () => {
+        cy.mount(FTableTabstopExample);
+
+        table.cell({ row: 3, col: 1 }).click();
+        table.cell({ row: 5, col: 3 }).should("contain.text", "gamma_sub2");
+        table.cell({ row: 5, col: 3 }).click();
+        cy.focused().should("contain.text", "gamma_sub1");
+        cy.focused().click();
+        cy.focused().should("contain.text", "gamma");
+        cy.focused().click();
+        cy.focused().should("contain.text", "beta");
     });
 
     it("should not set focus when removing rows from outside table", () => {
