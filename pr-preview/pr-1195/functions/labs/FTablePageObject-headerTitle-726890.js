@@ -4326,7 +4326,7 @@ var _hoisted_3$3 = ["aria-expanded", "aria-controls", "aria-activedescendant", "
 var _hoisted_4$3 = {
   class: "table-ng__editable__text"
 };
-var _hoisted_5$2 = {
+var _hoisted_5$3 = {
   key: 1,
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--static"
@@ -4504,7 +4504,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
         "input-node": editRef.value,
         onSelect: selectDropdownOption,
         onClose: onDropdownClose
-      }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$2, toDisplayString(__props.column.selected(__props.row)), 1));
+      }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$3, toDisplayString(__props.column.selected(__props.row)), 1));
     };
   }
 });
@@ -4562,6 +4562,10 @@ var _hoisted_3$2 = {
   class: "sr-only"
 };
 var _hoisted_4$2 = ["id", "aria-label", "aria-hidden"];
+var _hoisted_5$2 = {
+  ref: "arrowAnchor",
+  "aria-hidden": "true"
+};
 var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
   __name: "ITableText",
   props: {
@@ -4654,6 +4658,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     });
     const tdElement = useTemplateRef("td");
     const inputElement = useTemplateRef("input");
+    const arrowAnchorElement = useTemplateRef("arrowAnchor");
     const {
       stopEdit: stopEdit2
     } = useStartStopEdit();
@@ -4731,20 +4736,20 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     });
     watchEffect3(() => {
       if (hasError.value) {
-        var _tdElement$value, _inputElement$value;
+        var _tdElement$value, _arrowAnchorElement$v;
         emit("onError", {
           anchor: (_tdElement$value = tdElement.value) !== null && _tdElement$value !== void 0 ? _tdElement$value : void 0,
-          arrowAnchor: (_inputElement$value = inputElement.value) !== null && _inputElement$value !== void 0 ? _inputElement$value : void 0,
+          arrowAnchor: (_arrowAnchorElement$v = arrowAnchorElement.value) !== null && _arrowAnchorElement$v !== void 0 ? _arrowAnchorElement$v : void 0,
           message: validity.value.validationMessage,
           hasFocus: focused.value,
           hasHover: isHovered.value,
           inEdit: inEdit.value
         });
       } else {
-        var _tdElement$value2, _inputElement$value2;
+        var _tdElement$value2, _arrowAnchorElement$v2;
         emit("closeError", {
           anchor: (_tdElement$value2 = tdElement.value) !== null && _tdElement$value2 !== void 0 ? _tdElement$value2 : void 0,
-          arrowAnchor: (_inputElement$value2 = inputElement.value) !== null && _inputElement$value2 !== void 0 ? _inputElement$value2 : void 0,
+          arrowAnchor: (_arrowAnchorElement$v2 = arrowAnchorElement.value) !== null && _arrowAnchorElement$v2 !== void 0 ? _arrowAnchorElement$v2 : void 0,
           message: validity.value.validationMessage,
           hasFocus: focused.value,
           hasHover: isHovered.value,
@@ -4937,11 +4942,11 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         "aria-hidden": !inEdit.value,
         onValidity,
         onPendingValidity
-      }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]])], 2), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref3(IPopupError), {
+      }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]]), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("span", _hoisted_5$2, null, 512)], 2), _cache[5] || (_cache[5] = createTextVNode()), createVNode(unref3(IPopupError), {
         anchor: tdElement.value,
         "is-open": openPopupError.value,
         "error-message": validity.value.validationMessage,
-        "arrow-anchor": inputElement.value,
+        "arrow-anchor": arrowAnchorElement.value,
         layout: "f-table"
       }, null, 8, ["anchor", "is-open", "error-message", "arrow-anchor"])], 42, _hoisted_1$3)) : (openBlock(), createElementBlock("td", {
         key: 1,
