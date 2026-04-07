@@ -37,7 +37,7 @@ import { FButton, FSortFilterDataset, useDatasetRef } from "@fkui/vue";
 // packages/vue-labs/dist/esm/index.esm.js
 import { defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, withKeys, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, nextTick as nextTick3, toValue as toValue2, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, mergeProps, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
-import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, getDatasetMetadata, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
 // node_modules/@vueuse/shared/index.mjs
 import { shallowRef, watchEffect, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject, provide, ref, isRef, unref, toValue as toValue$1, computed, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
@@ -5602,9 +5602,6 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     keyAttribute: {
       default: () => void 0
     },
-    expandableAttribute: {
-      default: () => void 0
-    },
     rowClass: {
       type: Function,
       default: void 0
@@ -5635,9 +5632,12 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     } = useSlotUtils();
     const tableRef = useTemplateRef("table");
     const expandedKeys = ref3(/* @__PURE__ */ new Set());
-    const keyedRows = computed3(() => setItemIdentifiers(__props.rows, __props.keyAttribute, __props.expandableAttribute));
-    const metaRows = computed3(() => getMetaRows(keyedRows.value, expandedKeys.value, __props.expandableAttribute));
-    const isTreegrid = computed3(() => Boolean(__props.expandableAttribute));
+    const expandableAttribute = computed3(() => {
+      return getDatasetMetadata(__props.rows).nestedAttribute;
+    });
+    const keyedRows = computed3(() => setItemIdentifiers(__props.rows, __props.keyAttribute, expandableAttribute.value));
+    const metaRows = computed3(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute.value));
+    const isTreegrid = computed3(() => Boolean(expandableAttribute.value));
     const role = computed3(() => isTreegrid.value ? "treegrid" : "grid");
     const hasCaption = computed3(() => {
       return hasSlot("caption", {}, {
@@ -5653,7 +5653,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         return footerRow;
       }
       const headerRow = 1;
-      const bodyRows = getBodyRowCount(keyedRows.value, __props.expandableAttribute);
+      const bodyRows = getBodyRowCount(keyedRows.value, expandableAttribute.value);
       return bodyRows + headerRow + footerRow;
     });
     const fullColspan = computed3(() => {
