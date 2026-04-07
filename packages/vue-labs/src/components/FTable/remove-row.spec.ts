@@ -1,3 +1,4 @@
+import { getItemIdentifier, setItemIdentifiers } from "@fkui/vue";
 import { removeRow } from "./remove-row";
 
 describe("removeRow", () => {
@@ -48,5 +49,20 @@ describe("removeRow", () => {
         const rowToRemove = rows[1].expandableRows![0];
         const updatedRows = removeRow(rows, rowToRemove);
         expect(updatedRows).toEqual(rows);
+    });
+
+    it("should preserve parent identifier for non-keyed expandable rows when removing a child row", () => {
+        expect.assertions(2);
+
+        setItemIdentifiers(rows, undefined, "expandableRows");
+
+        const originalParent = rows[1];
+        const originalIdentifier = getItemIdentifier(originalParent);
+
+        const rowToRemove = originalParent.expandableRows![0];
+        const updatedRows = removeRow(rows, rowToRemove, "expandableRows");
+
+        expect(getItemIdentifier(updatedRows[1])).toBe(originalIdentifier);
+        expect(updatedRows[1].expandableRows).toEqual([{ id: 22 }]);
     });
 });

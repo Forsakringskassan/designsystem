@@ -129,6 +129,28 @@ export function setItemIdentifiers<T>(
     return process(items);
 }
 
+/**
+ * Copy an existing identifier from one item to another.
+ *
+ * Used when cloning items (e.g. during immutable updates) to preserve
+ * their identity. Without this, a new identifier would be generated,
+ * which can break features relying on stable identifiers such as
+ * expansion state in tables.
+ *
+ * If the source item has no identifier, nothing happens.
+ * If the target item already has an identifier, it will not be overwritten.
+ *
+ * @public
+ * @param from - The item to copy identifier from.
+ * @param to - The item to copy identifier to.
+ */
+export function copyItemIdentifier<T extends object>(from: T, to: T): void {
+    const id = findItemIdentifier(from);
+    if (id !== undefined) {
+        setItemIdentifier(to, id);
+    }
+}
+
 function ensureUniqueKey(
     attribute: PropertyKey,
     value: unknown,
