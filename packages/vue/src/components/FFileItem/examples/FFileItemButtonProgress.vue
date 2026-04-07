@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FFileItem, FIcon, FProgressbar } from "@fkui/vue";
+import { FButton, FFileItem, FProgressbar } from "@fkui/vue";
 
 export default defineComponent({
     name: "FFileItemButtonProgress",
-    components: { FFileItem, FIcon, FProgressbar },
+    components: { FButton, FFileItem, FProgressbar },
     data() {
         return {
             fileName: "bar.pdf",
@@ -31,22 +31,22 @@ export default defineComponent({
 
         <f-file-item :file-name :mime-type>
             <template #row>
-                <button
+                <f-button
                     v-if="filteredProgress < 100"
-                    type="button"
-                    class="button button--tertiary button--medium file-item__file-remove file-item__abort"
+                    class="file-item__file-remove"
+                    icon-left="close"
+                    variant="tertiary"
                 >
-                    <f-icon name="close" class="button__icon"></f-icon>
-                    <span> Avbryt uppladdning </span>
-                </button>
-                <button
+                    Avbryt uppladdning
+                </f-button>
+                <f-button
                     v-else-if="filteredProgress === 100"
-                    type="button"
-                    class="button button--tertiary button--medium file-item__file-remove"
+                    class="file-item__file-remove"
+                    icon-left="trashcan"
+                    variant="tertiary"
                 >
-                    <f-icon name="trashcan" class="button__icon"></f-icon>
                     Ta bort
-                </button>
+                </f-button>
             </template>
 
             <f-progressbar
