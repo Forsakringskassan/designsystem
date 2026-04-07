@@ -38,18 +38,6 @@
         cursor: pointer;
     }
 
-    &__file-remove {
-        flex: 0 0 auto;
-    }
-
-    &__file-abort {
-        flex: 0 0 auto;
-
-        svg {
-            color: $fileitem-color-icon-error;
-        }
-    }
-
     &__change-info {
         margin-top: calc(-1 * size.$margin-125);
     }
