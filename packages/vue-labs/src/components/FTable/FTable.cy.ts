@@ -757,13 +757,16 @@ describe("3.1 Feedback to user on invalid input components", () => {
             },
         ];
 
-        cy.mount(FTable<Row>, {
-            props: { rows, columns },
-            slots: {
-                caption:
-                    "Verifierar att felpopupens pil positioneras korrekt i bred cell.",
-            },
-        });
+        cy.mount(() =>
+            h(
+                FTable<Row>,
+                { rows: useDatasetRef<Row>(rows).value, columns },
+                {
+                    caption:
+                        "Verifierar att felpopupens pil positioneras korrekt i bred cell.",
+                },
+            ),
+        );
 
         table.cell({ row: 1, col: 1 }).click();
         table.cell({ row: 1, col: 1 }).find("input").should("be.focused");
