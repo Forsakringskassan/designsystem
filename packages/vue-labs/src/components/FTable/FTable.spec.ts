@@ -48,7 +48,6 @@ describe("1.4 Rowheader", () => {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 columns,
-                expandableAttribute,
             },
         });
 
@@ -207,6 +206,7 @@ describe("1.8 when table is empty", () => {
         nested?: Row[];
     }
     const rows = useDatasetRef<Row>([]);
+    const expandableRows = useDatasetRef<Row>([], expandableAttribute);
     const columns = defineTableColumns<Row>([
         {
             type: "text",
@@ -262,9 +262,8 @@ describe("1.8 when table is empty", () => {
     it("should span all columns when expandable", () => {
         const wrapper = mount(FTable<Row>, {
             props: {
-                rows: rows.value,
+                rows: expandableRows.value,
                 columns,
-                expandableAttribute,
             },
         });
         const emptyCell = wrapper.get("tbody td");
@@ -286,9 +285,8 @@ describe("1.8 when table is empty", () => {
     it("should span all columns when selectable and expandable", () => {
         const wrapper = mount(FTable<Row>, {
             props: {
-                rows: rows.value,
+                rows: expandableRows.value,
                 columns,
-                expandableAttribute,
                 selectable: "multi",
             },
         });
@@ -387,7 +385,6 @@ describe("1.12 aria-rowcount", () => {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 columns,
-                expandableAttribute,
             },
         });
         const table = wrapper.get("table");
@@ -478,7 +475,6 @@ describe("1.12 aria-rowindex", () => {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 columns,
-                expandableAttribute,
             },
         });
 
@@ -541,7 +537,6 @@ describe("6 Expandable table", () => {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 columns,
-                expandableAttribute,
             },
         });
 
@@ -568,7 +563,6 @@ describe("6 Expandable table", () => {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 columns,
-                expandableAttribute,
             },
         });
 
@@ -593,7 +587,6 @@ describe("6 Expandable table", () => {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 columns,
-                expandableAttribute,
             },
         });
 
@@ -618,7 +611,6 @@ describe("6 Expandable table", () => {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 columns,
-                expandableAttribute,
             },
         });
 
@@ -657,7 +649,6 @@ describe("6 Expandable table", () => {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 columns: customColumns,
-                expandableAttribute,
             },
             slots: {
                 expandable: "Lorem ipsum",
@@ -700,7 +691,6 @@ describe("6 Expandable table", () => {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 columns: customColumns,
-                expandableAttribute,
                 selectable: "multi",
             },
             slots: {
@@ -756,6 +746,7 @@ describe("1.17 footer", () => {
             nested?: Row[];
         }
         const rows = useDatasetRef<Row>([]);
+        const expandableRows = useDatasetRef<Row>([], expandableAttribute);
         const columns = defineTableColumns<Row>([
             {
                 type: "text",
@@ -803,9 +794,8 @@ describe("1.17 footer", () => {
         it("should span all columns when expandable", () => {
             const wrapper = mount(FTable<Row>, {
                 props: {
-                    rows: rows.value,
+                    rows: expandableRows.value,
                     columns,
-                    expandableAttribute,
                 },
                 slots: {
                     footer: "Footer",
@@ -818,9 +808,8 @@ describe("1.17 footer", () => {
         it("should span all columns when selectable and expandable", () => {
             const wrapper = mount(FTable<Row>, {
                 props: {
-                    rows: rows.value,
+                    rows: expandableRows.value,
                     columns,
-                    expandableAttribute,
                     selectable: "multi",
                 },
                 slots: {
@@ -964,7 +953,6 @@ describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
                 selectable: "multi",
-                expandableAttribute,
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 columns,
             },
@@ -1071,7 +1059,6 @@ describe("7.4 Bulk selection in expandable", () => {
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
                 selectable: "multi",
-                expandableAttribute,
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 columns,
             },
@@ -1102,7 +1089,6 @@ describe("7.4 Bulk selection in expandable", () => {
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
                 selectable: "multi",
-                expandableAttribute,
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 columns,
             },
@@ -1183,7 +1169,6 @@ describe("7.6 aria-selected", () => {
                 rows: useDatasetRef(rows, expandableAttribute).value,
                 selectable: "multi",
                 keyAttribute: "text",
-                expandableAttribute,
                 selectedRows: [],
             },
         });

@@ -7,7 +7,7 @@ import {
     watch,
 } from "vue";
 import { useTranslate } from "../../plugins";
-import { type Dataset } from "../../utils";
+import { type Dataset, toDataset } from "../../utils";
 import { filter } from "./f-sort-filter-filter";
 import { sort } from "./f-sort-filter-sorter";
 import { type SortOrder } from "./sort-order";
@@ -93,10 +93,12 @@ function sortFilterData<T extends object, TArray extends Dataset<T> | T[]>(
 ): TArray {
     const filteredData = filter(data, filterAttributes, searchString);
 
-    return sort(filteredData, {
+    const sortedData = sort(filteredData, {
         attribute: sortAttribute.attribute as keyof T | "",
         ascending: sortAttribute.ascending,
     }) as TArray;
+
+    return toDataset(sortedData, data) as TArray;
 }
 
 export interface SortFilterDatasetState<

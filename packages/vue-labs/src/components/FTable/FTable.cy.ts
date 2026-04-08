@@ -1,12 +1,11 @@
 import { type VNode, ref } from "vue";
 import { h } from "vue";
-import { assertSet } from "@fkui/logic";
 import { FValidationForm, useDatasetRef } from "@fkui/vue";
 import { FSortFilterDatasetPageObject } from "@fkui/vue/cypress";
 import { FTablePageObject } from "../../cypress";
 import FTable from "./FTable.vue";
 import FTableBulkTestExample from "./examples/FTableBulkTestExample.vue";
-import { type FTableApi } from "./f-table-api";
+import FTableTabstopExample from "./examples/FTableTabstopExample.vue";
 import { defineTableColumns } from "./table-column";
 
 const table = new FTablePageObject();
@@ -71,7 +70,7 @@ describe("1. 3 Table test – right-aligned column", () => {
         cy.mount(() =>
             h(
                 FTable<Row>,
-                { rows: rows.value, columns, expandableAttribute },
+                { rows: rows.value, columns },
                 {
                     caption:
                         "Verifierar att kolumner kan vara höger- och vänsterjusterade",
@@ -100,77 +99,80 @@ describe("1.5 Separator", () => {
         nested?: Row[];
     }
 
-    const expandableAttribute = "nested";
+    const rawRows: Row[] = [
+        {
+            rowheader: "A1",
+            text: "A2",
+            input: "A3",
+            button: "A4",
+            anchor: "A5",
+            dropdown: "Foo",
+            checkbox: false,
+            radio: false,
 
+            nested: [
+                {
+                    rowheader: "A-A1",
+                    text: "A-A2",
+                    input: "A-A3",
+                    button: "A-A4",
+                    anchor: "A-A5",
+                    dropdown: "Foo",
+                    checkbox: false,
+                    radio: false,
+                },
+            ],
+        },
+        {
+            rowheader: "B1",
+            text: "B2",
+            input: "B3",
+            button: "B4",
+            anchor: "B5",
+            dropdown: "Foo",
+            checkbox: false,
+            radio: false,
+        },
+        {
+            rowheader: "C1",
+            text: "C2",
+            input: "C3",
+            button: "C4",
+            anchor: "C5",
+            dropdown: "Foo",
+            checkbox: false,
+            radio: false,
+
+            nested: [
+                {
+                    rowheader: "C-A1",
+                    text: "C-A2",
+                    input: "C-A3",
+                    button: "C-A4",
+                    anchor: "C-A5",
+                    dropdown: "Foo",
+                    checkbox: false,
+                    radio: false,
+                },
+                {
+                    rowheader: "C-B1",
+                    text: "C-B2",
+                    input: "C-B3",
+                    button: "C-B4",
+                    anchor: "C-B5",
+                    dropdown: "Foo",
+                    checkbox: false,
+                    radio: false,
+                },
+            ],
+        },
+    ];
     const rows = useDatasetRef<Row>(
-        [
-            {
-                rowheader: "A1",
-                text: "A2",
-                input: "A3",
-                button: "A4",
-                anchor: "A5",
-                dropdown: "Foo",
-                checkbox: false,
-                radio: false,
-
-                nested: [
-                    {
-                        rowheader: "A-A1",
-                        text: "A-A2",
-                        input: "A-A3",
-                        button: "A-A4",
-                        anchor: "A-A5",
-                        dropdown: "Foo",
-                        checkbox: false,
-                        radio: false,
-                    },
-                ],
-            },
-            {
-                rowheader: "B1",
-                text: "B2",
-                input: "B3",
-                button: "B4",
-                anchor: "B5",
-                dropdown: "Foo",
-                checkbox: false,
-                radio: false,
-            },
-            {
-                rowheader: "C1",
-                text: "C2",
-                input: "C3",
-                button: "C4",
-                anchor: "C5",
-                dropdown: "Foo",
-                checkbox: false,
-                radio: false,
-
-                nested: [
-                    {
-                        rowheader: "C-A1",
-                        text: "C-A2",
-                        input: "C-A3",
-                        button: "C-A4",
-                        anchor: "C-A5",
-                        dropdown: "Foo",
-                        checkbox: false,
-                        radio: false,
-                    },
-                    {
-                        rowheader: "C-B1",
-                        text: "C-B2",
-                        input: "C-B3",
-                        button: "C-B4",
-                        anchor: "C-B5",
-                        dropdown: "Foo",
-                        checkbox: false,
-                        radio: false,
-                    },
-                ],
-            },
-        ],
+        rawRows.map(({ nested, ...row }) => ({ ...row })),
+    );
+    const expandableAttribute = "nested";
+    const expandableRows = useDatasetRef<Row>(
+        rawRows.map((row) => ({ ...row })),
         expandableAttribute,
     );
     const columns = defineTableColumns<Row>([
@@ -213,9 +215,8 @@ describe("1.5 Separator", () => {
             h(
                 FTable<Row>,
                 {
-                    rows: rows.value,
+                    rows: expandableRows.value,
                     columns,
-                    expandableAttribute,
                     striped: true,
                 },
                 {
@@ -907,9 +908,7 @@ describe("4.4 Home and End keyboard behavior", () => {
     ]);
 
     it("should handle Home, End, Ctrl+Home and Ctrl+End correctly", () => {
-        cy.mount(() =>
-            h(FTable<Row>, { rows: rows.value, columns, expandableAttribute }),
-        );
+        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
 
         table.expandButton(2).focus().click();
         table.expandButton(1).focus().click();
@@ -958,9 +957,7 @@ describe("6 Expandable table", () => {
     ]);
 
     it("6.1 should expand row when pressing Enter on expand cell", () => {
-        cy.mount(() =>
-            h(FTable<Row>, { rows: rows.value, columns, expandableAttribute }),
-        );
+        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
 
         table.expandButton(2).focus();
         table.expandButton(2).type("{enter}");
@@ -976,9 +973,7 @@ describe("6 Expandable table", () => {
     });
 
     it("6.1 should expand row when pressing Space on expand cell", () => {
-        cy.mount(() =>
-            h(FTable<Row>, { rows: rows.value, columns, expandableAttribute }),
-        );
+        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
 
         table.expandButton(2).focus();
         table.expandButton(2).press(Cypress.Keyboard.Keys.SPACE);
@@ -1028,7 +1023,6 @@ describe("6 Expandable table", () => {
                 h(FTable<NavigationRow>, {
                     rows: navRows.value,
                     columns: navColumns,
-                    expandableAttribute,
                 }),
             );
 
@@ -1072,7 +1066,6 @@ describe("6 Expandable table", () => {
                     {
                         rows: navRows.value,
                         columns: navColumns,
-                        expandableAttribute,
                     },
                     { expandable: "Foo" },
                 ),
@@ -1126,7 +1119,6 @@ describe("6 Expandable table", () => {
                 h(FTable<Row>, {
                     rows: rows.value,
                     columns,
-                    expandableAttribute,
                 }),
             );
 
@@ -1148,7 +1140,6 @@ describe("6 Expandable table", () => {
                 h(FTable<Row>, {
                     rows: rows.value,
                     columns,
-                    expandableAttribute,
                 }),
             );
 
@@ -1244,46 +1235,6 @@ describe("5 tabstop", () => {
             buttonAddRow: getTestSelector(buttonAddRow),
             buttonRemoveRow: getTestSelector(buttonRemoveRow),
         };
-    }
-
-    function mountRowRemovalTestbed(): void {
-        let api: FTableApi | undefined = undefined;
-
-        const rows = useDatasetRef<TabstopRow>([
-            { foo: "1", bar: "alpha" },
-            { foo: "2", bar: "beta" },
-            { foo: "3", bar: "gamma" },
-        ]);
-
-        const columns = defineTableColumns<TabstopRow>([
-            {
-                type: "text",
-                header: "foo",
-                key: "foo",
-            },
-            {
-                type: "button",
-                header: "remove",
-                icon: "trashcan",
-                text(row) {
-                    return row.bar;
-                },
-                onClick(row) {
-                    assertSet(api);
-                    api.withTabstopBehaviour("row-removal", () => {
-                        rows.value.splice(rows.value.indexOf(row), 1);
-                    });
-                },
-            },
-        ]);
-
-        cy.mount(() =>
-            h(FTable<TabstopRow>, {
-                rows: rows.value,
-                columns,
-                ref: (exposed: unknown) => (api = exposed as FTableApi),
-            }),
-        );
     }
 
     interface NavigationRow {
@@ -1382,7 +1333,6 @@ describe("5 tabstop", () => {
                     {
                         rows: rows.value,
                         columns,
-                        expandableAttribute,
                         selectable: "multi",
                     },
                     slots,
@@ -1446,14 +1396,29 @@ describe("5 tabstop", () => {
         cy.focused().should("contain.text", "Tabellen är tom");
     });
 
-    it("5.5 should fallback according to sticky mode when current tabstop is removed", () => {
-        mountRowRemovalTestbed();
-        table.cell({ row: 2, col: 2 }).click();
+    it("5.5/5.6 should fallback according to sticky mode with priority when current tabstop is removed", () => {
+        cy.mount(FTableTabstopExample);
+
+        table.cell({ row: 2, col: 3 }).should("contain.text", "beta");
+        table.cell({ row: 2, col: 3 }).click();
         cy.focused().should("contain.text", "alpha");
         cy.focused().click();
         cy.focused().should("contain.text", "gamma");
         cy.focused().click();
         cy.focused().should("contain.text", "Tabellen är tom");
+    });
+
+    it("5.6 expanded row should fallback according to sticky mode with priority when current tabstop is removed", () => {
+        cy.mount(FTableTabstopExample);
+
+        table.cell({ row: 3, col: 1 }).click();
+        table.cell({ row: 5, col: 3 }).should("contain.text", "gamma_sub2");
+        table.cell({ row: 5, col: 3 }).click();
+        cy.focused().should("contain.text", "gamma_sub1");
+        cy.focused().click();
+        cy.focused().should("contain.text", "gamma");
+        cy.focused().click();
+        cy.focused().should("contain.text", "beta");
     });
 
     it("should not set focus when removing rows from outside table", () => {
@@ -2070,7 +2035,6 @@ describe("7 Bulk Operation ", () => {
                 h(FTable<Row>, {
                     rows: rows.value,
                     columns,
-                    expandableAttribute,
                     selectable: "multi",
                     selectedRows: selectedRows.value,
                     "onUpdate:selectedRows": (value) =>
@@ -2100,7 +2064,6 @@ describe("7 Bulk Operation ", () => {
                 h(FTable<Row>, {
                     rows: rows.value,
                     columns,
-                    expandableAttribute,
                     selectable: "multi",
                     selectedRows: selectedRows.value,
                     "onUpdate:selectedRows": (value) =>
