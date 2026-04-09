@@ -255,37 +255,9 @@ $button--tertiary: (
             }
         }
 
-        &.button--small {
-            min-width: 24px;
-            padding: core.densify(0.375rem) size.$padding-025;
-            text-underline-offset: 3.5px;
-            &.button--align-text {
-                margin-left: -(size.$margin-025);
-            }
-        }
-
-        &.button--medium {
-            min-width: 8rem;
-            /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
-            padding-top: core.densify(var(--f-button-tertiary-padding-top));
-            padding-right: var(--f-button-tertiary-padding-right);
-            padding-bottom: core.densify(var(--f-button-tertiary-padding-bottom));
-            padding-left: var(--f-button-tertiary-padding-left);
-            /* stylelint-enable declaration-block-no-redundant-longhand-properties */
-            &.button--align-text {
-                margin-left: -(size.$margin-050);
-            }
-        }
-
-        &.button--large {
-            min-width: var(--f-button-min-width);
-            padding: core.densify(1.125rem) 0.75rem;
-            &.button--align-text {
-                margin-left: -(size.$margin-075);
-            }
-        }
-
         &.button--align-text {
+            padding-left: size.$margin-050;
+            padding-right: size.$margin-050;
             margin-left: -(size.$margin-050);
             min-width: 0;
         }
