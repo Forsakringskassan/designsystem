@@ -42,7 +42,7 @@ import {
 // packages/vue-labs/dist/esm/index.esm.js
 import { Fragment as Fragment2, computed as computed3, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent as defineComponent2, guardReactiveProps, inject as inject3, mergeModels, mergeProps, nextTick as nextTick3, normalizeClass, normalizeProps, onMounted as onMounted3, onUpdated as onUpdated2, openBlock, provide as provide2, ref as ref3, renderList, renderSlot, resolveDirective, resolveDynamicComponent, toDisplayString, toRef as toRef2, toValue as toValue2, unref as unref3, useModel, useSlots, useTemplateRef, vModelText, vShow, watch as watch3, watchEffect as watchEffect3, withCtx, withDirectives, withKeys, withModifiers } from "vue";
 import { ElementIdService, TranslationService, ValidationService, alertScreenReader, assertRef, assertSet, debounce, formatNumber, formatPersonnummer, formatPostalCode, isEmpty, isSet, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parseDate, parseNumber, parseOrganisationsnummer, parsePersonnummer, parsePlusgiro, stripWhitespace } from "@fkui/logic";
-import { EventBus, FContextMenu, FFileItem, FFileSelector, FIcon, FSortFilterDatasetInjected, FTextField, IComboboxDropdown, IFlex, IFlexItem, IPopupError, TranslationMixin, dispatchComponentValidityEvent, findItemIdentifier, getItemIdentifier, setItemIdentifiers, useSlotUtils, useTextFieldSetup, useTranslate } from "@fkui/vue";
+import { EventBus, FContextMenu, FFileItem, FFileSelector, FIcon, FSortFilterDatasetInjected, FTextField, IComboboxDropdown, IFlex, IFlexItem, IPopupError, TranslationMixin, dispatchComponentValidityEvent, findItemIdentifier, getDatasetMetadata, getItemIdentifier, setItemIdentifiers, useSlotUtils, useTextFieldSetup, useTranslate } from "@fkui/vue";
 
 // node_modules/@vueuse/shared/index.mjs
 import { shallowRef, watchEffect, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject, provide, ref, isRef, unref, toValue as toValue$1, computed, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
@@ -4223,7 +4223,7 @@ var _hoisted_3$3 = [
   "aria-label"
 ];
 var _hoisted_4$3 = { class: "table-ng__editable__text" };
-var _hoisted_5$2 = {
+var _hoisted_5$3 = {
   key: 1,
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--static"
@@ -4394,7 +4394,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent2({
           "active-option-id",
           "input-node"
         ]), [[vShow, editing.value]])
-      ], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$2, toDisplayString(__props.column.selected(__props.row)), 1));
+      ], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$3, toDisplayString(__props.column.selected(__props.row)), 1));
     };
   }
 });
@@ -4455,6 +4455,10 @@ var _hoisted_4$2 = [
   "aria-label",
   "aria-hidden"
 ];
+var _hoisted_5$2 = {
+  ref: "arrowAnchor",
+  "aria-hidden": "true"
+};
 var ITableText_default = /* @__PURE__ */ defineComponent2({
   __name: "ITableText",
   props: {
@@ -4530,6 +4534,7 @@ var ITableText_default = /* @__PURE__ */ defineComponent2({
     });
     const tdElement = useTemplateRef("td");
     const inputElement = useTemplateRef("input");
+    const arrowAnchorElement = useTemplateRef("arrowAnchor");
     const { stopEdit: stopEdit2 } = useStartStopEdit();
     const isHovered = useElementHover(tdElement, { delayEnter: 200 });
     const { focused } = useFocusWithin(tdElement);
@@ -4590,20 +4595,20 @@ var ITableText_default = /* @__PURE__ */ defineComponent2({
     });
     watchEffect3(() => {
       if (hasError.value) {
-        var _tdElement$value, _inputElement$value;
+        var _tdElement$value, _arrowAnchorElement$v;
         emit("onError", {
           anchor: (_tdElement$value = tdElement.value) !== null && _tdElement$value !== void 0 ? _tdElement$value : void 0,
-          arrowAnchor: (_inputElement$value = inputElement.value) !== null && _inputElement$value !== void 0 ? _inputElement$value : void 0,
+          arrowAnchor: (_arrowAnchorElement$v = arrowAnchorElement.value) !== null && _arrowAnchorElement$v !== void 0 ? _arrowAnchorElement$v : void 0,
           message: validity.value.validationMessage,
           hasFocus: focused.value,
           hasHover: isHovered.value,
           inEdit: inEdit.value
         });
       } else {
-        var _tdElement$value2, _inputElement$value2;
+        var _tdElement$value2, _arrowAnchorElement$v2;
         emit("closeError", {
           anchor: (_tdElement$value2 = tdElement.value) !== null && _tdElement$value2 !== void 0 ? _tdElement$value2 : void 0,
-          arrowAnchor: (_inputElement$value2 = inputElement.value) !== null && _inputElement$value2 !== void 0 ? _inputElement$value2 : void 0,
+          arrowAnchor: (_arrowAnchorElement$v2 = arrowAnchorElement.value) !== null && _arrowAnchorElement$v2 !== void 0 ? _arrowAnchorElement$v2 : void 0,
           message: validity.value.validationMessage,
           hasFocus: focused.value,
           hasHover: isHovered.value,
@@ -4765,14 +4770,16 @@ var ITableText_default = /* @__PURE__ */ defineComponent2({
             "aria-hidden": !inEdit.value,
             onValidity,
             onPendingValidity
-          }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]])
+          }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]]),
+          _cache[4] || (_cache[4] = createTextVNode()),
+          createElementVNode("span", _hoisted_5$2, null, 512)
         ], 2),
-        _cache[4] || (_cache[4] = createTextVNode()),
+        _cache[5] || (_cache[5] = createTextVNode()),
         createVNode(unref3(IPopupError), {
           anchor: tdElement.value,
           "is-open": openPopupError.value,
           "error-message": validity.value.validationMessage,
-          "arrow-anchor": inputElement.value,
+          "arrow-anchor": arrowAnchorElement.value,
           layout: "f-table"
         }, null, 8, [
           "anchor",
@@ -5315,7 +5322,6 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
     columns: {},
     rows: {},
     keyAttribute: { default: () => void 0 },
-    expandableAttribute: { default: () => void 0 },
     rowClass: {
       type: Function,
       default: void 0
@@ -5334,9 +5340,12 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
     const { hasSlot } = useSlotUtils();
     const tableRef = useTemplateRef("table");
     const expandedKeys = ref3(/* @__PURE__ */ new Set());
-    const keyedRows = computed3(() => setItemIdentifiers(__props.rows, __props.keyAttribute, __props.expandableAttribute));
-    const metaRows = computed3(() => getMetaRows(keyedRows.value, expandedKeys.value, __props.expandableAttribute));
-    const isTreegrid = computed3(() => Boolean(__props.expandableAttribute));
+    const expandableAttribute = computed3(() => {
+      return getDatasetMetadata(__props.rows).nestedAttribute;
+    });
+    const keyedRows = computed3(() => setItemIdentifiers(__props.rows, __props.keyAttribute, expandableAttribute.value));
+    const metaRows = computed3(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute.value));
+    const isTreegrid = computed3(() => Boolean(expandableAttribute.value));
     const role = computed3(() => isTreegrid.value ? "treegrid" : "grid");
     const hasCaption = computed3(() => {
       return hasSlot("caption", {}, { stripClasses: [] });
@@ -5347,7 +5356,7 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
     const ariaRowcount = computed3(() => {
       const footerRow = hasFooter.value ? 1 : 0;
       if (!hasColumns.value) return footerRow;
-      return getBodyRowCount(keyedRows.value, __props.expandableAttribute) + 1 + footerRow;
+      return getBodyRowCount(keyedRows.value, expandableAttribute.value) + 1 + footerRow;
     });
     const fullColspan = computed3(() => {
       if (!hasColumns.value) return 0;
