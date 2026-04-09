@@ -615,18 +615,6 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -643,6 +631,18 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "FPaginatorPageObject",
     "FListPageObject",
     "FDefinitionListPageObject",
@@ -661,12 +661,12 @@
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
-    "FInteractiveTablePageObject: header() method",
-    "FInteractiveTablePageObject: checkbox() method",
-    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
+    "FInteractiveTablePageObject: header() method",
+    "FInteractiveTablePageObject: checkbox() method",
+    "FInteractiveTablePageObject: cell() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
@@ -2142,38 +2142,6 @@
       ]
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
       "url": "functions/date/f-year/index.html",
       "title": "FYear",
       "terms": [
@@ -2249,6 +2217,38 @@
       "url": "functions/date/f-year/f-date-next.html",
       "title": "FYear: next() method",
       "terms": []
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
     },
     {
       "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
@@ -2341,21 +2341,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
-      "title": "FInteractiveTablePageObject: header() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
-      "title": "FInteractiveTablePageObject: checkbox() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
       "title": "FFileItemPageObject: FFileItemPageObject() constructor",
       "terms": []
@@ -2368,6 +2353,21 @@
     {
       "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
       "title": "FFileItemPageObject: fileName() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
+      "title": "FInteractiveTablePageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
+      "title": "FInteractiveTablePageObject: checkbox() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
       "terms": []
     },
     {
@@ -3049,31 +3049,31 @@
     "614": 174,
     "615": 175,
     "616": 175,
-    "617": 175,
-    "618": 176,
-    "619": 176,
-    "620": 176,
-    "621": 177,
-    "622": 177,
-    "623": 177,
-    "624": 178,
-    "625": 178,
-    "626": 178,
-    "627": 179,
-    "628": 179,
-    "629": 180,
-    "630": 181,
-    "631": 182,
-    "632": 183,
-    "633": 184,
-    "634": 185,
-    "635": 186,
-    "636": 187,
-    "637": 188,
-    "638": 189,
-    "639": 190,
-    "640": 191,
-    "641": 192,
+    "617": 176,
+    "618": 177,
+    "619": 178,
+    "620": 179,
+    "621": 180,
+    "622": 181,
+    "623": 182,
+    "624": 183,
+    "625": 184,
+    "626": 185,
+    "627": 186,
+    "628": 187,
+    "629": 188,
+    "630": 189,
+    "631": 190,
+    "632": 190,
+    "633": 190,
+    "634": 191,
+    "635": 191,
+    "636": 191,
+    "637": 192,
+    "638": 192,
+    "639": 192,
+    "640": 193,
+    "641": 193,
     "642": 193,
     "643": 194,
     "644": 195,

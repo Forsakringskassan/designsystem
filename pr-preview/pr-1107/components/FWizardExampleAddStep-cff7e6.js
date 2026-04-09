@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FWizard/examples/FWizardExampleAddStep.vue:FWizardExampleAddStep-e4ee75.js
+// virtual-entry:virtual:packages/vue/src/components/FWizard/examples/FWizardExampleAddStep.vue:FWizardExampleAddStep-cff7e6.js
 import { defineComponent } from "vue";
 import { FButton, FCheckboxField, FFieldset, FTextField, FWizard, FWizardStep } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, resolveDirective as _resolveDirective, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, renderList as _renderList, Fragment as _Fragment, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString } from "vue";
@@ -268,7 +268,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       )),
       _createVNode(_component_f_button, {
-        type: "button",
         onClick: _cache[1] || (_cache[1] = ($event) => _ctx.current = "baz")
       }, {
         default: _withCtx(() => [..._cache[8] || (_cache[8] = [
@@ -294,7 +293,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e4ee75"
+  selector: "#example-cff7e6"
 });
 export {
   render

@@ -20253,7 +20253,6 @@ var XOverviewView_default = /* @__PURE__ */ defineComponent({
 				_cache[3] || (_cache[3] = createBaseVNode("h1", null, "Översikt", -1)),
 				_cache[4] || (_cache[4] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1)),
 				createVNode(unref(FButton_default), {
-					type: "button",
 					variant: "secondary",
 					onClick: openThing
 				}, {
