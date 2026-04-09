@@ -2,13 +2,13 @@
 import { defineComponent, toRefs } from "vue";
 import { focus } from "@fkui/logic";
 import { getElementFromVueRef } from "../../utils";
-import { FIcon } from "../FIcon";
+import { FButton } from "../FButton";
 import { useLayoutPanel } from "./f-layout-left-panel-mixin";
 
 export default defineComponent({
     name: "FLayoutLeftPanel",
     components: {
-        FIcon,
+        FButton,
     },
     props: {
         /**
@@ -96,15 +96,16 @@ export default defineComponent({
                     <div class="layout-navigation__navigation__inner__title" :style="contentStyle">
                         <!-- @slot Slot for heading -->
                         <slot name="heading"></slot>
-                        <button
+                        <f-button
                             ref="close-button"
-                            class="button button--tertiary button--small button--tertiary--black"
-                            type="button"
+                            icon-right="chevrons-left"
+                            size="small"
+                            tertiary-style="black"
+                            variant="tertiary"
                             @click="toggleSideNavigation"
                         >
                             <span class="sr-only">Stäng navigationspanelen</span>
-                            <f-icon class="button__icon" name="chevrons-left" />
-                        </button>
+                        </f-button>
                     </div>
                     <div>
                         <hr />
@@ -122,15 +123,15 @@ export default defineComponent({
                     </div>
                 </template>
                 <div v-if="!isOpen" class="layout-navigation__navigation__inner--minimized">
-                    <button
+                    <f-button
                         ref="open-button"
-                        class="button button--tertiary button--tertiary--black"
-                        type="button"
+                        icon-right="bars"
+                        tertiary-style="black"
+                        variant="tertiary"
                         @click="toggleSideNavigation"
                     >
                         <span class="sr-only">Öppna navigationspanelen</span>
-                        <f-icon class="button__icon" name="bars" />
-                    </button>
+                    </f-button>
                 </div>
             </div>
             <div v-if="isOpen" class="layout-navigation__navigation__border" @mousedown="onBorderMouseDown">
