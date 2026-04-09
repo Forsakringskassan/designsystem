@@ -113,8 +113,9 @@ export function useTabstop(
 
         if (oldTabstopTr.rowIndex === 1) {
             // removing first row
-            const needle = oldRows[1];
-            const hasRowBelowInNewRows = newRows.some(matching(needle));
+            const needle = oldRows.at(1);
+            const hasRowBelowInNewRows =
+                needle !== undefined && newRows.some(matching(needle));
 
             if (hasRowBelowInNewRows) {
                 const { cell } = getVerticalNavIndex(

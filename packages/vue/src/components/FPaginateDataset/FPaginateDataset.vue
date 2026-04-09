@@ -64,7 +64,7 @@ const currentPageItems = computed<TInfered>((): TInfered => {
 const currentPageItemLength = computed(() => currentPageItems.value.length);
 
 // Computes number of pages
-const numberOfPages = computed(() => Math.ceil(numberOfItems.value / itemsPerPage));
+const numberOfPages = computed(() => Math.max(1, Math.ceil(numberOfItems.value / itemsPerPage)));
 
 // Computes number of items
 const numberOfItems = computed(() => (itemsLength > 0 ? itemsLength : items.length));
@@ -83,6 +83,12 @@ watch(currentPage, (newPageValue) => {
     currentPage.value = Math.max(1, Math.min(newPageValue, numberOfPages.value));
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     refetchData();
+});
+
+watch(numberOfPages, (newNumberOfPages) => {
+    if (currentPage.value > newNumberOfPages) {
+        currentPage.value = newNumberOfPages;
+    }
 });
 
 async function refetchData(): Promise<void> {
