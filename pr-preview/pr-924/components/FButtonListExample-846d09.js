@@ -37,8 +37,8 @@ import { computed, useAttrs } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FIcon/FIcon.vue?type=script
 import { defineComponent } from "vue";
-var Flip = ["horizontal", "vertical"];
-var Rotate = ["90", "180", "270"];
+var Flip = /* @__PURE__ */ new Set(["horizontal", "vertical"]);
+var Rotate = /* @__PURE__ */ new Set(["90", "180", "270"]);
 var FIcon_default = defineComponent({
   name: "FIcon",
   inheritAttrs: false,
@@ -71,7 +71,7 @@ var FIcon_default = defineComponent({
       default: null,
       required: false,
       validator(value) {
-        return Flip.includes(value);
+        return Flip.has(value);
       }
     },
     /**
@@ -88,7 +88,7 @@ var FIcon_default = defineComponent({
       default: null,
       required: false,
       validator(value) {
-        return Rotate.includes(value);
+        return Rotate.has(value);
       }
     }
   },
@@ -152,13 +152,16 @@ var FIcon_default2 = FIcon_default;
 
 // packages/vue/src/components/FButton/use-inflight.ts
 import { ref } from "vue";
-function useInflight(fn) {
+function useInflight(fn, disabled) {
   const inflight = ref(false);
   if (!fn || typeof fn !== "function") {
     return { inflight, fn: void 0 };
   }
   const originalFn = fn;
   async function wrapper() {
+    if (disabled.value) {
+      return;
+    }
     try {
       inflight.value = true;
       await originalFn();
@@ -277,7 +280,10 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
     __expose();
     const props = __props;
     const originalAttrs = useAttrs();
-    const { inflight, fn: onClick } = useInflight(originalAttrs.onClick);
+    const disabled = computed(() => {
+      return props.disabled || inflight.value;
+    });
+    const { inflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
     const attrs = { ...originalAttrs, onClick };
     const hasIconLeft = computed(() => {
       return Boolean(props.iconLeft);
@@ -307,10 +313,7 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       }
       return classes;
     });
-    const disabled = computed(() => {
-      return props.disabled || inflight.value;
-    });
-    const __returned__ = { props, originalAttrs, inflight, onClick, attrs, hasIconLeft, hasIconRight, hasIcon, buttonClass, disabled, get FIcon() {
+    const __returned__ = { props, originalAttrs, disabled, inflight, onClick, attrs, hasIconLeft, hasIconRight, hasIcon, buttonClass, get FIcon() {
       return FIcon_default2;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -320,7 +323,7 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=template
 import { openBlock as _openBlock2, createBlock as _createBlock, createCommentVNode as _createCommentVNode2, Fragment as _Fragment2, createElementBlock as _createElementBlock2, renderSlot as _renderSlot2, createElementVNode as _createElementVNode2, mergeProps as _mergeProps2 } from "vue";
-var _hoisted_12 = ["type", "disabled"];
+var _hoisted_12 = ["type", "aria-disabled"];
 var _hoisted_22 = {
   key: 1,
   class: "spinner--before"
@@ -333,7 +336,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock2(), _createElementBlock2("button", _mergeProps2({
     type: $props.type,
     class: $setup.buttonClass,
-    disabled: $setup.disabled
+    "aria-disabled": $setup.disabled
   }, $setup.attrs), [
     $setup.hasIconLeft ? (_openBlock2(), _createElementBlock2(
       _Fragment2,
