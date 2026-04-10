@@ -217,17 +217,23 @@ export function useSortFilterDataset<T extends object>(
         const noLongerIncluded = newResult.filter(
             (it) => !newData.includes(it),
         );
-        noLongerIncluded.forEach((it) => {
+        for (const it of noLongerIncluded) {
             newResult.splice(newResult.indexOf(it), 1);
-        });
+        }
 
         const additions = newData
             .filter((it) => !dataSnapshot.includes(it))
             .filter((it) => !newResult.includes(it));
-        additions.forEach((it) => newResult.push(it));
+        for (const it of additions) {
+            newResult.push(it);
+        }
 
         sortAttribute.value = defaultSortValue;
-        sortFilterResult.value = newResult;
+        sortFilterResult.value.splice(
+            0,
+            sortFilterResult.value.length,
+            ...newResult,
+        );
     }
 
     /**
