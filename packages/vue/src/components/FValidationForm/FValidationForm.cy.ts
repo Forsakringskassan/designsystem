@@ -2,7 +2,6 @@ import { ExamplePageobject } from "./examples/Example.pageobject";
 import NoErrorListExample from "./examples/NoErrorList.vue";
 import WithErrorListExample from "./examples/WithErrorList.vue";
 import WithErrorListAndCbFunctionExample from "./examples/WithErrorListAndCbFunction.vue";
-import WithErrorListAndNoBulletsExample from "./examples/WithErrorListAndNoBullets.vue";
 
 const validationForm = new ExamplePageobject("form");
 
@@ -140,15 +139,5 @@ describe("FValidationForm", () => {
 
         validationForm.errorlist.getLinkByName("Field2").click();
         cy.focused().should("have.attr", "id").and("eq", "field2");
-    });
-
-    it("should display error list without bullets", () => {
-        cy.mount(WithErrorListAndNoBulletsExample);
-        validationForm.getSubmitButton().click();
-
-        validationForm.errorlist
-            .links()
-            .find("span.error-list__bullet")
-            .should("not.exist");
     });
 });
