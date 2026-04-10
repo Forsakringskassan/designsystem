@@ -71,7 +71,7 @@ $icon-size: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.25rem;
+        font-size: 1rem;
         font-weight: bold;
         text-align: center;
         color: $wizardstep-color-circle-content-open;
@@ -188,7 +188,7 @@ $icon-size: 30px;
         #{$success-selector} {
             display: block;
             color: $wizardstep-color-circle-content-done;
-            width: 20px;
+            width: 16px;
             height: auto;
         }
 
