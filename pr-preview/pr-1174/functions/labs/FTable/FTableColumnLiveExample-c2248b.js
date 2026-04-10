@@ -42,7 +42,7 @@ import {
 // packages/vue-labs/dist/esm/index.esm.js
 import { defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, withKeys, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, nextTick as nextTick3, toValue as toValue2, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, mergeProps, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
-import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, getDatasetMetadata, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
 // node_modules/@vueuse/shared/index.mjs
 import { shallowRef, watchEffect, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject, provide, ref, isRef, unref, toValue as toValue$1, computed, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
@@ -4333,7 +4333,7 @@ var _hoisted_3$3 = ["aria-expanded", "aria-controls", "aria-activedescendant", "
 var _hoisted_4$3 = {
   class: "table-ng__editable__text"
 };
-var _hoisted_5$2 = {
+var _hoisted_5$3 = {
   key: 1,
   tabindex: "-1",
   class: "table-ng__cell table-ng__cell--static"
@@ -4511,7 +4511,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent2({
         "input-node": editRef.value,
         onSelect: selectDropdownOption,
         onClose: onDropdownClose
-      }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$2, toDisplayString(__props.column.selected(__props.row)), 1));
+      }, null, 8, ["id", "is-open", "options", "active-option", "active-option-id", "input-node"]), [[vShow, editing.value]])], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$3, toDisplayString(__props.column.selected(__props.row)), 1));
     };
   }
 });
@@ -4569,6 +4569,10 @@ var _hoisted_3$2 = {
   class: "sr-only"
 };
 var _hoisted_4$2 = ["id", "aria-label", "aria-hidden"];
+var _hoisted_5$2 = {
+  ref: "arrowAnchor",
+  "aria-hidden": "true"
+};
 var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
   __name: "ITableText",
   props: {
@@ -4661,6 +4665,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     });
     const tdElement = useTemplateRef("td");
     const inputElement = useTemplateRef("input");
+    const arrowAnchorElement = useTemplateRef("arrowAnchor");
     const {
       stopEdit: stopEdit2
     } = useStartStopEdit();
@@ -4738,20 +4743,20 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     });
     watchEffect3(() => {
       if (hasError.value) {
-        var _tdElement$value, _inputElement$value;
+        var _tdElement$value, _arrowAnchorElement$v;
         emit("onError", {
           anchor: (_tdElement$value = tdElement.value) !== null && _tdElement$value !== void 0 ? _tdElement$value : void 0,
-          arrowAnchor: (_inputElement$value = inputElement.value) !== null && _inputElement$value !== void 0 ? _inputElement$value : void 0,
+          arrowAnchor: (_arrowAnchorElement$v = arrowAnchorElement.value) !== null && _arrowAnchorElement$v !== void 0 ? _arrowAnchorElement$v : void 0,
           message: validity.value.validationMessage,
           hasFocus: focused.value,
           hasHover: isHovered.value,
           inEdit: inEdit.value
         });
       } else {
-        var _tdElement$value2, _inputElement$value2;
+        var _tdElement$value2, _arrowAnchorElement$v2;
         emit("closeError", {
           anchor: (_tdElement$value2 = tdElement.value) !== null && _tdElement$value2 !== void 0 ? _tdElement$value2 : void 0,
-          arrowAnchor: (_inputElement$value2 = inputElement.value) !== null && _inputElement$value2 !== void 0 ? _inputElement$value2 : void 0,
+          arrowAnchor: (_arrowAnchorElement$v2 = arrowAnchorElement.value) !== null && _arrowAnchorElement$v2 !== void 0 ? _arrowAnchorElement$v2 : void 0,
           message: validity.value.validationMessage,
           hasFocus: focused.value,
           hasHover: isHovered.value,
@@ -4944,11 +4949,11 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
         "aria-hidden": !inEdit.value,
         onValidity,
         onPendingValidity
-      }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]])], 2), _cache[4] || (_cache[4] = createTextVNode()), createVNode(unref3(IPopupError), {
+      }), null, 16, _hoisted_4$2), [[vModelText, viewValue.value]]), _cache[4] || (_cache[4] = createTextVNode()), createElementVNode("span", _hoisted_5$2, null, 512)], 2), _cache[5] || (_cache[5] = createTextVNode()), createVNode(unref3(IPopupError), {
         anchor: tdElement.value,
         "is-open": openPopupError.value,
         "error-message": validity.value.validationMessage,
-        "arrow-anchor": inputElement.value,
+        "arrow-anchor": arrowAnchorElement.value,
         layout: "f-table"
       }, null, 8, ["anchor", "is-open", "error-message", "arrow-anchor"])], 42, _hoisted_1$3)) : (openBlock(), createElementBlock("td", {
         key: 1,
@@ -5436,8 +5441,8 @@ function useSelectable(options) {
   };
 }
 function matching(needle) {
-  const id = getItemIdentifier(needle);
-  return (item) => getItemIdentifier(item) === id;
+  const id = getItemIdentifier(needle.row);
+  return (item) => getItemIdentifier(item.row) === id;
 }
 function useTabstop(tableRef, metaRows) {
   let pendingRowRemoval = false;
@@ -5602,9 +5607,6 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     keyAttribute: {
       default: () => void 0
     },
-    expandableAttribute: {
-      default: () => void 0
-    },
     rowClass: {
       type: Function,
       default: void 0
@@ -5635,9 +5637,12 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
     } = useSlotUtils();
     const tableRef = useTemplateRef("table");
     const expandedKeys = ref3(/* @__PURE__ */ new Set());
-    const keyedRows = computed3(() => setItemIdentifiers(__props.rows, __props.keyAttribute, __props.expandableAttribute));
-    const metaRows = computed3(() => getMetaRows(keyedRows.value, expandedKeys.value, __props.expandableAttribute));
-    const isTreegrid = computed3(() => Boolean(__props.expandableAttribute));
+    const expandableAttribute = computed3(() => {
+      return getDatasetMetadata(__props.rows).nestedAttribute;
+    });
+    const keyedRows = computed3(() => setItemIdentifiers(__props.rows, __props.keyAttribute, expandableAttribute.value));
+    const metaRows = computed3(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute.value));
+    const isTreegrid = computed3(() => Boolean(expandableAttribute.value));
     const role = computed3(() => isTreegrid.value ? "treegrid" : "grid");
     const hasCaption = computed3(() => {
       return hasSlot("caption", {}, {
@@ -5653,7 +5658,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
         return footerRow;
       }
       const headerRow = 1;
-      const bodyRows = getBodyRowCount(keyedRows.value, __props.expandableAttribute);
+      const bodyRows = getBodyRowCount(keyedRows.value, expandableAttribute.value);
       return bodyRows + headerRow + footerRow;
     });
     const fullColspan = computed3(() => {
@@ -5825,7 +5830,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent2({
       selectedRows,
       rows: keyedRows
     });
-    const tableApi = useTabstop(tableRef, keyedRows);
+    const tableApi = useTabstop(tableRef, metaRows);
     __expose(tableApi);
     onMounted3(() => {
       assertRef(tableRef);
@@ -7423,18 +7428,6 @@ function hoursMinutesStringToMinutes(valueString, extraForgiving = false) {
   const totalMinutes = hours * 60 + minutes;
   return !Number.isNaN(totalMinutes) ? totalMinutes : void 0;
 }
-function minutesToHoursMinutesString(value) {
-  let valueString = "";
-  const safeValue = value !== null && value !== void 0 ? value : Number.NaN;
-  if (!Number.isNaN(safeValue)) {
-    const {
-      hours,
-      minutes
-    } = minutesToObject(safeValue);
-    valueString = [hours, minutes].map((value2) => String(value2).padStart(2, "0")).join(":");
-  }
-  return stripWhitespace(valueString);
-}
 function splitHoursMinutes(valueString, extraForgiving = false) {
   const regexps = extraForgiving ? [HOURS_MINUTES_WITHOUT_COLON_REGEXP, HOURS_MINUTES_REGEXP] : [HOURS_MINUTES_REGEXP];
   const match = findMatch(regexps, stripWhitespace(valueString));
@@ -7444,19 +7437,6 @@ function splitHoursMinutes(valueString, extraForgiving = false) {
   const hours = padInitialZeros(match?.groups?.hours);
   const minutes = padInitialZeros(match?.groups?.minutes);
   return [hours, minutes];
-}
-function minutesToObject(...values) {
-  const minutes = values.filter((value) => isSet(value) && !Number.isNaN(value)).reduce((sum, value) => sum + value, 0);
-  return {
-    hours: Math.floor(minutes / 60),
-    minutes: minutes % 60
-  };
-}
-function formatNumberToTime(value) {
-  if (typeof value !== "number" || Number.isNaN(value)) {
-    return void 0;
-  }
-  return minutesToHoursMinutesString(value);
 }
 function parseTimeToNumberUsingConfig(value, extraForgiving) {
   var _hoursMinutesStringTo;
@@ -7539,42 +7519,6 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main = defineComponent2({
-  name: "XTimeTextField",
-  extends: FTextField,
-  mixins: [TranslationMixin],
-  props: {
-    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
-    formatter: {
-      type: Function,
-      required: false,
-      default: formatNumberToTime
-    },
-    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
-    parser: {
-      type: Function,
-      required: false,
-      default: parseTimeToNumber
-    }
-  },
-  setup(props) {
-    return useTextFieldSetup(props);
-  },
-  mounted() {
-    const inputElement = this.$el.querySelector("input");
-    if (!isSet(inputElement)) {
-      throw new Error(`Could not find input element in XTimeTextField with id ${String(this.$el.id)}`);
-    }
-    ValidationService.addValidatorsToElement(inputElement, {
-      maxLength: {
-        length: 10
-      },
-      hoursMinutes: {}
-    }, true);
-    inputElement.setAttribute("inputmode", "numeric");
-    ValidationService.validateElement(inputElement);
-  }
-});
 
 // virtual-entry:virtual:packages/vue-labs/src/components/FTable/examples/FTableColumnLiveExample.vue:FTableColumnLiveExample-c2248b.js
 import { LiveExample } from "@forsakringskassan/docs-live-example";

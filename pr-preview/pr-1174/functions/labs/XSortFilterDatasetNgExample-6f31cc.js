@@ -42,7 +42,7 @@ import {
 // packages/vue-labs/dist/esm/index.esm.js
 import { defineComponent, useTemplateRef, computed, openBlock, createElementBlock, createElementVNode, createVNode, unref, renderSlot, withModifiers, withKeys, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref, nextTick, toValue, inject, withDirectives, vShow, onMounted, watchEffect, mergeProps, vModelText, toRef, watch, onUpdated, useModel, useSlots, provide, Fragment, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
-import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, getDatasetMetadata, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 var es_iterator_forEach = {};
 var globalThis_1;
 var hasRequiredGlobalThis;
@@ -4504,18 +4504,6 @@ function hoursMinutesStringToMinutes(valueString, extraForgiving = false) {
   const totalMinutes = hours * 60 + minutes;
   return !Number.isNaN(totalMinutes) ? totalMinutes : void 0;
 }
-function minutesToHoursMinutesString(value) {
-  let valueString = "";
-  const safeValue = value !== null && value !== void 0 ? value : Number.NaN;
-  if (!Number.isNaN(safeValue)) {
-    const {
-      hours,
-      minutes
-    } = minutesToObject(safeValue);
-    valueString = [hours, minutes].map((value2) => String(value2).padStart(2, "0")).join(":");
-  }
-  return stripWhitespace(valueString);
-}
 function splitHoursMinutes(valueString, extraForgiving = false) {
   const regexps = extraForgiving ? [HOURS_MINUTES_WITHOUT_COLON_REGEXP, HOURS_MINUTES_REGEXP] : [HOURS_MINUTES_REGEXP];
   const match = findMatch(regexps, stripWhitespace(valueString));
@@ -4525,19 +4513,6 @@ function splitHoursMinutes(valueString, extraForgiving = false) {
   const hours = padInitialZeros(match?.groups?.hours);
   const minutes = padInitialZeros(match?.groups?.minutes);
   return [hours, minutes];
-}
-function minutesToObject(...values) {
-  const minutes = values.filter((value) => isSet(value) && !Number.isNaN(value)).reduce((sum, value) => sum + value, 0);
-  return {
-    hours: Math.floor(minutes / 60),
-    minutes: minutes % 60
-  };
-}
-function formatNumberToTime(value) {
-  if (typeof value !== "number" || Number.isNaN(value)) {
-    return void 0;
-  }
-  return minutesToHoursMinutesString(value);
 }
 function parseTimeToNumberUsingConfig(value, extraForgiving) {
   var _hoursMinutesStringTo;
@@ -4620,42 +4595,6 @@ var validators = [hoursMinutesValidator, greaterThanTimeValidator, lessThanTimeV
 for (const validator of validators) {
   ValidationService.registerValidator(validator);
 }
-var _sfc_main = defineComponent({
-  name: "XTimeTextField",
-  extends: FTextField,
-  mixins: [TranslationMixin],
-  props: {
-    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
-    formatter: {
-      type: Function,
-      required: false,
-      default: formatNumberToTime
-    },
-    /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
-    parser: {
-      type: Function,
-      required: false,
-      default: parseTimeToNumber
-    }
-  },
-  setup(props) {
-    return useTextFieldSetup(props);
-  },
-  mounted() {
-    const inputElement = this.$el.querySelector("input");
-    if (!isSet(inputElement)) {
-      throw new Error(`Could not find input element in XTimeTextField with id ${String(this.$el.id)}`);
-    }
-    ValidationService.addValidatorsToElement(inputElement, {
-      maxLength: {
-        length: 10
-      },
-      hoursMinutes: {}
-    }, true);
-    inputElement.setAttribute("inputmode", "numeric");
-    ValidationService.validateElement(inputElement);
-  }
-});
 
 // packages/vue-labs/src/components/XSortFilterDatasetNg/examples/fruit-data.ts
 var fruits = [

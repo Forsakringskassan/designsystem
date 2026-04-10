@@ -38,67 +38,67 @@ var palette_default = [
     variables: [
       {
         name: "neutral-900",
-        value: "hsl(218deg, 13%, 12%)",
+        value: "#1b1e23",
         group: "Neutral",
         comment: ""
       },
       {
         name: "neutral-800",
-        value: "hsl(218deg, 12%, 20%)",
+        value: "#2d3139",
         group: "Neutral",
         comment: ""
       },
       {
         name: "neutral-700",
-        value: "hsl(218deg, 11%, 32%)",
+        value: "#494f5b",
         group: "Neutral",
         comment: ""
       },
       {
         name: "neutral-600",
-        value: "hsl(218deg, 10%, 42%)",
+        value: "#606876",
         group: "Neutral",
         comment: ""
       },
       {
         name: "neutral-500",
-        value: "hsl(218deg, 9%, 51%)",
+        value: "#777f8d",
         group: "Neutral",
         comment: ""
       },
       {
         name: "neutral-400",
-        value: "hsl(218deg, 8%, 60%)",
+        value: "#9197a1",
         group: "Neutral",
         comment: ""
       },
       {
         name: "neutral-300",
-        value: "hsl(218deg, 8%, 71%)",
+        value: "#afb3bb",
         group: "Neutral",
         comment: ""
       },
       {
         name: "neutral-200",
-        value: "hsl(218deg, 8%, 85%)",
+        value: "#d6d8dc",
         group: "Neutral",
         comment: ""
       },
       {
         name: "neutral-100",
-        value: "hsl(218deg, 8%, 93%)",
+        value: "#ecedef",
         group: "Neutral",
         comment: ""
       },
       {
         name: "neutral-50",
-        value: "hsl(218deg, 8%, 97%)",
+        value: "#f7f7f8",
         group: "Neutral",
         comment: ""
       },
       {
         name: "neutral-0",
-        value: "hsl(0deg, 0%, 100%)",
+        value: "#ffffff",
         group: "Neutral",
         comment: ""
       }
@@ -109,61 +109,61 @@ var palette_default = [
     variables: [
       {
         name: "blue-900",
-        value: "hsl(219deg, 71%, 8%)",
+        value: "#061023",
         group: "Blue",
         comment: ""
       },
       {
         name: "blue-800",
-        value: "hsl(219deg, 69%, 25%)",
+        value: "#14336c",
         group: "Blue",
         comment: ""
       },
       {
         name: "blue-700",
-        value: "hsl(217deg, 68%, 36%)",
+        value: "#1b478d",
         group: "Blue",
         comment: ""
       },
       {
         name: "blue-600",
-        value: "hsl(217deg, 67%, 45%)",
+        value: "#2358af",
         group: "Blue",
         comment: ""
       },
       {
         name: "blue-500",
-        value: "hsl(217deg, 66%, 53%)",
+        value: "#3472d5",
         group: "Blue",
         comment: ""
       },
       {
         name: "blue-400",
-        value: "hsl(215deg, 65%, 59%)",
+        value: "#528bda",
         group: "Blue",
         comment: ""
       },
       {
         name: "blue-300",
-        value: "hsl(213deg, 63%, 67%)",
+        value: "#76a6e0",
         group: "Blue",
         comment: ""
       },
       {
         name: "blue-200",
-        value: "hsl(213deg, 63%, 82%)",
+        value: "#b4ceee",
         group: "Blue",
         comment: ""
       },
       {
         name: "blue-100",
-        value: "hsl(213deg, 63%, 93%)",
+        value: "#e2ecf8",
         group: "Blue",
         comment: ""
       },
       {
         name: "blue-50",
-        value: "hsl(213deg, 63%, 97%)",
+        value: "#f3f7fc",
         group: "Blue",
         comment: ""
       }
@@ -174,61 +174,61 @@ var palette_default = [
     variables: [
       {
         name: "green-900",
-        value: "hsl(150deg, 75%, 6%)",
+        value: "#041f12",
         group: "Green",
         comment: ""
       },
       {
         name: "green-800",
-        value: "hsl(150deg, 75%, 17%)",
+        value: "#0b4c2b",
         group: "Green",
         comment: ""
       },
       {
         name: "green-700",
-        value: "hsl(150deg, 72%, 24%)",
+        value: "#116a3e",
         group: "Green",
         comment: ""
       },
       {
         name: "green-600",
-        value: "hsl(150deg, 65%, 30%)",
+        value: "#1b7e4d",
         group: "Green",
         comment: ""
       },
       {
         name: "green-500",
-        value: "hsl(150deg, 60%, 35%)",
+        value: "#248f59",
         group: "Green",
         comment: ""
       },
       {
         name: "green-400",
-        value: "hsl(150deg, 47%, 45%)",
+        value: "#3da973",
         group: "Green",
         comment: ""
       },
       {
         name: "green-300",
-        value: "hsl(150deg, 38%, 55%)",
+        value: "#5eba8c",
         group: "Green",
         comment: ""
       },
       {
         name: "green-200",
-        value: "hsl(150deg, 35%, 75%)",
+        value: "#a8d7bf",
         group: "Green",
         comment: ""
       },
       {
         name: "green-100",
-        value: "hsl(150deg, 33%, 89%)",
+        value: "#d9ede3",
         group: "Green",
         comment: ""
       },
       {
         name: "green-50",
-        value: "hsl(150deg, 31%, 97%)",
+        value: "#f5faf7",
         group: "Green",
         comment: ""
       }
@@ -239,61 +239,61 @@ var palette_default = [
     variables: [
       {
         name: "yellow-900",
-        value: "hsl(44deg, 94%, 5%)",
+        value: "#231c00",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-800",
-        value: "hsl(44deg, 94%, 21%)",
+        value: "#795b01",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-700",
-        value: "hsl(44deg, 94%, 33%)",
+        value: "#b18502",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-600",
-        value: "hsl(44deg, 92%, 40%)",
+        value: "#d6a103",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-500",
-        value: "hsl(44deg, 92%, 47%)",
+        value: "#f1b604",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-400",
-        value: "hsl(44deg, 86%, 58%)",
+        value: "#f2cc4d",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-300",
-        value: "hsl(44deg, 78%, 70%)",
+        value: "#f6db80",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-200",
-        value: "hsl(44deg, 65%, 79%)",
+        value: "#fae8ad",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-100",
-        value: "hsl(44deg, 50%, 91%)",
+        value: "#fef6d7",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-50",
-        value: "hsl(44deg, 35%, 97%)",
+        value: "#fffbf0",
         group: "Yellow",
         comment: ""
       },
@@ -328,61 +328,61 @@ var palette_default = [
     variables: [
       {
         name: "red-900",
-        value: "hsl(356deg, 70%, 6%)",
+        value: "#220506",
         group: "Red",
         comment: ""
       },
       {
         name: "red-800",
-        value: "hsl(356deg, 70%, 25%)",
+        value: "#6e1517",
         group: "Red",
         comment: ""
       },
       {
         name: "red-700",
-        value: "hsl(356deg, 68%, 37%)",
+        value: "#9f2024",
         group: "Red",
         comment: ""
       },
       {
         name: "red-600",
-        value: "hsl(356deg, 66%, 44%)",
+        value: "#bf272b",
         group: "Red",
         comment: ""
       },
       {
         name: "red-500",
-        value: "hsl(356deg, 64%, 53%)",
+        value: "#df3035",
         group: "Red",
         comment: ""
       },
       {
         name: "red-400",
-        value: "hsl(356deg, 58%, 59%)",
+        value: "#e85b60",
         group: "Red",
         comment: ""
       },
       {
         name: "red-300",
-        value: "hsl(352deg, 55%, 68%)",
+        value: "#ef8a8e",
         group: "Red",
         comment: ""
       },
       {
         name: "red-200",
-        value: "hsl(349deg, 45%, 78%)",
+        value: "#f6c0c3",
         group: "Red",
         comment: ""
       },
       {
         name: "red-100",
-        value: "hsl(347deg, 35%, 89%)",
+        value: "#fae5e5",
         group: "Red",
         comment: ""
       },
       {
         name: "red-50",
-        value: "hsl(345deg, 25%, 97%)",
+        value: "#fdf3f3",
         group: "Red",
         comment: ""
       },
