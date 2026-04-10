@@ -6,7 +6,7 @@ import FTableBulkTestExample from "./examples/FTableBulkTestExample.vue";
 const table = new FTablePageObject();
 
 describe("7.3 Row Selection Behavior with Filtering and Sorting", () => {
-    it("should retain row selections after applying a filter", () => {
+    it("should _not_ retain row selections after applying a filter", () => {
         const sorter = new FSortFilterDatasetPageObject(".sort-filter-dataset");
         cy.mount(FTableBulkTestExample);
         table.selectInput(1).focus().click();
@@ -19,11 +19,11 @@ describe("7.3 Row Selection Behavior with Filtering and Sorting", () => {
 
         sorter.textField.input().type("Ape");
 
-        table.selectInput(1).should("be.checked");
+        table.selectInput(1).should("not.be.checked");
         table
             .selectHeaderInput()
-            .should("be.checked")
-            .and("have.prop", "indeterminate", true);
+            .should("not.be.checked")
+            .and("have.prop", "indeterminate", false);
     });
 
     it("should retain row selections when sorting is applied", () => {

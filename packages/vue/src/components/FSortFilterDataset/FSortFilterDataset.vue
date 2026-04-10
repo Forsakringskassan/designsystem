@@ -164,6 +164,7 @@ function onSearchInput(): void {
 }
 
 watch(sortAttribute, () => {
+    tableCallbackOnSort(sortAttribute.value.attribute, sortAttribute.value.ascending);
     emit("usedSortAttributes", sortAttribute.value);
 });
 

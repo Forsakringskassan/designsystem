@@ -228,7 +228,7 @@ export function useSortFilterDataset<T extends object>(
             newResult.push(it);
         }
 
-        sortAttribute.value = defaultSortValue;
+        sortAttribute.value = { ...defaultSortValue };
         sortFilterResult.value.splice(
             0,
             sortFilterResult.value.length,
