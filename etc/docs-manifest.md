@@ -88,6 +88,7 @@ functions/cypress/pageobjects/FDetailsPanelPageObject/el.html
 functions/cypress/pageobjects/FDetailsPanelPageObject/footer.html
 functions/cypress/pageobjects/FDetailsPanelPageObject/header.html
 functions/cypress/pageobjects/FDetailsPanelPageObject/index.html
+functions/cypress/pageobjects/fexpandableparagraphpageobject.html
 functions/cypress/pageobjects/FFileItemPageObject/filename.html
 functions/cypress/pageobjects/FFileItemPageObject/index.html
 functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html
