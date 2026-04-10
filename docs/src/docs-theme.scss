@@ -6,6 +6,7 @@
 );
 @use "@fkui/design/src/core/mixins/breakpoints";
 @use "@fkui/design" as fkui;
+@use "@fkui/vue-labs/style.css" as fkui-labs;
 @use "@forsakringskassan/docs-generator/style";
 @use "@forsakringskassan/docs-generator/theme/fkui" as theme-fkui;
 @use "@forsakringskassan/docs-live-example";

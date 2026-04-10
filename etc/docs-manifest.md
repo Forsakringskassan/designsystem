@@ -185,6 +185,7 @@ functions/labs/ftablepageobject.html
 functions/labs/index.html
 functions/labs/test-table.html
 functions/labs/xfiledragdrop.html
+functions/labs/xrelativetime.html
 functions/labs/xsortfilterdatasetng.html
 functions/labs/xtimetextfield.html
 functions/logo-default.html
