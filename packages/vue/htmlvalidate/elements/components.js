@@ -1280,7 +1280,6 @@ module.exports = defineMetadata({
         flow: true,
         attributes: {
             items: ["/.*/"],
-            bullets: ["false", "true"],
             "before-navigate": ["/.*/"],
         },
         requiredAttributes: ["items"],

@@ -1,13 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshots should match snapshot when link and bullets 1`] = `
-<li
-  class=""
->
+exports[`snapshots should match snapshot when link 1`] = `
+<li>
   <a
     href="javascript:"
   >
-    
     <span
       aria-hidden="true"
       class="error-list__bullet"
@@ -15,53 +12,22 @@ exports[`snapshots should match snapshot when link and bullets 1`] = `
     <span
       class="error-list__link"
     >
-      Bullet proof
+      With link
     </span>
-    
   </a>
 </li>
 `;
 
-exports[`snapshots should match snapshot when link and no bullets (default) 1`] = `
-<li
-  class="error-list__link"
->
-  <a
-    href="javascript:"
-  >
-    
-    No bullets
-    
-  </a>
-</li>
-`;
-
-exports[`snapshots should match snapshot when no link and bullets 1`] = `
-<li
-  class=""
->
-  
+exports[`snapshots should match snapshot when no link 1`] = `
+<li>
   
   <span
     aria-hidden="true"
     class="error-list__bullet"
   />
   <span>
-    Bullet proof
+    With no link
   </span>
-  
-  
-</li>
-`;
-
-exports[`snapshots should match snapshot when no link and no bullets (default) 1`] = `
-<li
-  class=""
->
-  
-  
-  No bullets
-  
   
 </li>
 `;
