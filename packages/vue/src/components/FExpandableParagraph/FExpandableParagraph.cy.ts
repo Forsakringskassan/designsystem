@@ -108,11 +108,6 @@ describe("FExpandableParagraph", () => {
             <template #related> 2026-01-01 </template>
             <template #default>
                 <span> Innehåll </span>
-                <p>
-                    <a class="anchor" href="" target="_blank">
-                        Länk till annan sida
-                    </a>
-                </p>
             </template>
         </f-expandable-paragraph>
     `;
@@ -145,5 +140,12 @@ describe("FExpandableParagraph", () => {
         cy.mount(createComponent(defaultTemplate));
         const paragraph = new FExpandableParagraphPageObject();
         paragraph.header().should("have.trimmedText", "Titel");
+    });
+
+    it("The expandable paragraph body should be visible when expanded", () => {
+        cy.mount(createComponent(defaultTemplate));
+        const paragraph = new FExpandableParagraphPageObject();
+        paragraph.expandCollapseIcon().click();
+        paragraph.body().should("have.trimmedText", "Innehåll");
     });
 });

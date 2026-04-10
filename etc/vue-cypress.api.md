@@ -309,7 +309,7 @@ export class FExpandableParagraphPageObject implements BasePageObject {
     isOpen(): Cypress.Chainable<boolean>;
     relatedInfo(): DefaultCypressChainable;
     // (undocumented)
-    selector: string;
+    get selector(): string;
 }
 
 // @public (undocumented)

@@ -1,3 +1,4 @@
+import { FExpandableParagraphSelectors } from "../selectors";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
@@ -5,13 +6,17 @@ import { type BasePageObject, type DefaultCypressChainable } from "./common";
  * @since %version%
  */
 export class FExpandableParagraphPageObject implements BasePageObject {
-    public selector: string;
+    private _selectors: ReturnType<typeof FExpandableParagraphSelectors>;
 
     /**
      * @param selector - The root of the FExpandableParagraph component
      */
     public constructor(selector: string = ".expandable-paragraph") {
-        this.selector = selector;
+        this._selectors = FExpandableParagraphSelectors(selector);
+    }
+
+    public get selector(): string {
+        return this._selectors.selector;
     }
 
     /**
@@ -20,7 +25,7 @@ export class FExpandableParagraphPageObject implements BasePageObject {
      * @returns The element itself.
      */
     public el(): DefaultCypressChainable {
-        return cy.get(this.selector);
+        return cy.get(this._selectors.selector);
     }
 
     /**
@@ -29,7 +34,7 @@ export class FExpandableParagraphPageObject implements BasePageObject {
      * @returns The expand/collapse icon.
      */
     public expandCollapseIcon(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .expandable-paragraph__icon`);
+        return cy.get(this._selectors.expandCollapseIcon());
     }
 
     /**
@@ -38,9 +43,7 @@ export class FExpandableParagraphPageObject implements BasePageObject {
      * @returns The header.
      */
     public header(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .expandable-paragraph__heading .expandable-paragraph__button`,
-        );
+        return cy.get(this._selectors.header());
     }
 
     /**
@@ -49,7 +52,7 @@ export class FExpandableParagraphPageObject implements BasePageObject {
      * @returns The body.
      */
     public body(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .expandable-paragraph__content`);
+        return cy.get(this._selectors.body());
     }
 
     /**
@@ -58,9 +61,7 @@ export class FExpandableParagraphPageObject implements BasePageObject {
      * @returns The related info.
      */
     public relatedInfo(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .expandable-paragraph__related-information`,
-        );
+        return cy.get(this._selectors.relatedInfo());
     }
 
     /**
