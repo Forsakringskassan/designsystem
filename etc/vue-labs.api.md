@@ -330,12 +330,17 @@ export const XFileDragdrop: typeof __VLS_export_2;
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const XSortFilterDatasetNg: typeof __VLS_export_3;
+export const XRelativeTime: typeof __VLS_export_3;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const XTimeTextField: typeof __VLS_export_4;
+export const XSortFilterDatasetNg: typeof __VLS_export_4;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_5" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const XTimeTextField: typeof __VLS_export_5;
 
 // (No @packageDocumentation comment for this package)
 
