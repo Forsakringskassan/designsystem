@@ -101,7 +101,7 @@ it('should report error when type="text" and v-validation is used without valida
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: v-validation must have a maxlength-validator (fkui/required-max-length) at inline:4:14:
+        "error: v-validation must have a maxlength-validator (fkui/required-max-length)
           2 |         <div class="first">
           3 |             <span> First name </span>
         > 4 |             <input type="text" id="first-name" v-validation.required />
@@ -126,7 +126,7 @@ it("should report error when type isn`t set and v-validation is used without val
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: v-validation must have a maxlength-validator (fkui/required-max-length) at inline:3:14:
+        "error: v-validation must have a maxlength-validator (fkui/required-max-length)
           1 |
           2 |         <div class="first">
         > 3 |             <f-text-field
@@ -152,7 +152,7 @@ it('should report error when type="text", maxlength isn`t set and v-validation i
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: v-validation.maxLength must be used (fkui/required-max-length) at inline:3:14:
+        "error: v-validation.maxLength must be used (fkui/required-max-length)
           1 |
           2 |         <div class="last">
         > 3 |             <f-text-field

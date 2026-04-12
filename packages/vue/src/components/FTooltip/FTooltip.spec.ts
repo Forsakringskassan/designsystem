@@ -122,7 +122,7 @@ describe("html-validate", () => {
         `;
         const report = htmlvalidate.validateString(markup);
         expect(report).toMatchInlineCodeframe(`
-            "error: Attribute "close-button-text" is missing value (attribute-allowed-values) at inline:6:24:
+            "error: Attribute "close-button-text" is missing value (attribute-allowed-values)
               4 |
               5 |             <!-- should not allow omitted close-button-text value -->
             > 6 |             <f-tooltip close-button-text screen-reader-text="foo"></f-tooltip>
@@ -131,7 +131,7 @@ describe("html-validate", () => {
               8 |             <!-- should not allow empty close-button-text value -->
               9 |             <f-tooltip
             Selector: f-tooltip:nth-child(2)
-            error: Attribute "close-button-text" has invalid value "" (attribute-allowed-values) at inline:10:17:
+            error: Attribute "close-button-text" has invalid value "" (attribute-allowed-values)
                8 |             <!-- should not allow empty close-button-text value -->
                9 |             <f-tooltip
             > 10 |                 close-button-text=""
@@ -170,7 +170,7 @@ describe("html-validate", () => {
         `;
         const report = htmlvalidate.validateString(markup);
         expect(report).toMatchInlineCodeframe(`
-            "error: Attribute "header-tag" is missing value (attribute-allowed-values) at inline:6:24:
+            "error: Attribute "header-tag" is missing value (attribute-allowed-values)
               4 |
               5 |             <!-- omitted header-tag value -->
             > 6 |             <f-tooltip header-tag screen-reader-text="foo"></f-tooltip>
@@ -179,7 +179,7 @@ describe("html-validate", () => {
               8 |             <!-- empty header-tag -->
               9 |             <f-tooltip header-tag="" screen-reader-text="foo"></f-tooltip>
             Selector: f-tooltip:nth-child(2)
-            error: Attribute "header-tag" has invalid value "" (attribute-allowed-values) at inline:9:24:
+            error: Attribute "header-tag" has invalid value "" (attribute-allowed-values)
                7 |
                8 |             <!-- empty header-tag -->
             >  9 |             <f-tooltip header-tag="" screen-reader-text="foo"></f-tooltip>
@@ -188,7 +188,7 @@ describe("html-validate", () => {
               11 |             <!-- valid header-tag -->
               12 |             <f-tooltip header-tag="h1" screen-reader-text="foo"></f-tooltip>
             Selector: f-tooltip:nth-child(3)
-            error: Attribute "header-tag" has invalid value "foobar" (attribute-allowed-values) at inline:20:36:
+            error: Attribute "header-tag" has invalid value "foobar" (attribute-allowed-values)
               18 |
               19 |             <!-- invalid header-tag -->
             > 20 |             <f-tooltip header-tag="foobar" screen-reader-text="foo"></f-tooltip>
@@ -197,7 +197,7 @@ describe("html-validate", () => {
               22 |             <f-tooltip header-tag="span" screen-reader-text="foo"></f-tooltip>
               23 |
             Selector: f-tooltip:nth-child(10)
-            error: Attribute "header-tag" has invalid value "div" (attribute-allowed-values) at inline:21:36:
+            error: Attribute "header-tag" has invalid value "div" (attribute-allowed-values)
               19 |             <!-- invalid header-tag -->
               20 |             <f-tooltip header-tag="foobar" screen-reader-text="foo"></f-tooltip>
             > 21 |             <f-tooltip header-tag="div" screen-reader-text="foo"></f-tooltip>
@@ -205,7 +205,7 @@ describe("html-validate", () => {
               22 |             <f-tooltip header-tag="span" screen-reader-text="foo"></f-tooltip>
               23 |
             Selector: f-tooltip:nth-child(11)
-            error: Attribute "header-tag" has invalid value "span" (attribute-allowed-values) at inline:22:36:
+            error: Attribute "header-tag" has invalid value "span" (attribute-allowed-values)
               20 |             <f-tooltip header-tag="foobar" screen-reader-text="foo"></f-tooltip>
               21 |             <f-tooltip header-tag="div" screen-reader-text="foo"></f-tooltip>
             > 22 |             <f-tooltip header-tag="span" screen-reader-text="foo"></f-tooltip>
@@ -232,7 +232,7 @@ describe("html-validate", () => {
         `;
         const report = htmlvalidate.validateString(markup);
         expect(report).toMatchInlineCodeframe(`
-            "error: <f-tooltip> is missing required "screen-reader-text" attribute (element-required-attributes) at inline:3:14:
+            "error: <f-tooltip> is missing required "screen-reader-text" attribute (element-required-attributes)
               1 |
               2 |             <!-- should not allow missing screen-reader-text -->
             > 3 |             <f-tooltip></f-tooltip>
@@ -241,7 +241,7 @@ describe("html-validate", () => {
               5 |             <!-- should not allow omitted screen-reader-text value -->
               6 |             <f-tooltip screen-reader-text></f-tooltip>
             Selector: f-tooltip:nth-child(1)
-            error: Attribute "screen-reader-text" is missing value (attribute-allowed-values) at inline:6:24:
+            error: Attribute "screen-reader-text" is missing value (attribute-allowed-values)
               4 |
               5 |             <!-- should not allow omitted screen-reader-text value -->
             > 6 |             <f-tooltip screen-reader-text></f-tooltip>
@@ -250,7 +250,7 @@ describe("html-validate", () => {
               8 |             <!-- should not allow empty screen-reader-text value -->
               9 |             <f-tooltip screen-reader-text=""></f-tooltip>
             Selector: f-tooltip:nth-child(2)
-            error: Attribute "screen-reader-text" has invalid value "" (attribute-allowed-values) at inline:9:24:
+            error: Attribute "screen-reader-text" has invalid value "" (attribute-allowed-values)
                7 |
                8 |             <!-- should not allow empty screen-reader-text value -->
             >  9 |             <f-tooltip screen-reader-text=""></f-tooltip>

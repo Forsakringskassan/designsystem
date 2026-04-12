@@ -153,7 +153,7 @@ describe("html-validate", () => {
     it("should require routes attribute", () => {
         const markup = /* HTML */ ` <f-navigation-menu></f-navigation-menu> `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: <f-navigation-menu> is missing required "routes" attribute (element-required-attributes) at inline:1:3:
+            "error: <f-navigation-menu> is missing required "routes" attribute (element-required-attributes)
             > 1 |  <f-navigation-menu></f-navigation-menu>
                 |   ^^^^^^^^^^^^^^^^^
             Selector: f-navigation-menu"

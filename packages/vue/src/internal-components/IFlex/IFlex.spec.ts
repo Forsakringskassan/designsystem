@@ -169,7 +169,7 @@ describe("html-validate", () => {
             const markup = /* HTML */ ` <i-flex gap="invalid"></i-flex> `;
             const report = await htmlvalidate.validateString(markup);
             expect(report).toMatchInlineCodeframe(`
-                "error: Attribute "gap" has invalid value "invalid" (attribute-allowed-values) at inline:1:15:
+                "error: Attribute "gap" has invalid value "invalid" (attribute-allowed-values)
                 > 1 |  <i-flex gap="invalid"></i-flex>
                     |               ^^^^^^^
                 Selector: i-flex"

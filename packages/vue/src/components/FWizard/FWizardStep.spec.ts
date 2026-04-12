@@ -198,7 +198,7 @@ describe("html-validate", () => {
             </f-wizard>
         `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: <div> element is not permitted as content under slot "next-button-text" (<f-wizard-step>) (element-permitted-content) at inline:5:26:
+            "error: <div> element is not permitted as content under slot "next-button-text" (<f-wizard-step>) (element-permitted-content)
               3 |                 <f-wizard-step key="my-key" title="my-title">
               4 |                     <template #next-button-text>
             > 5 |                         <div></div>
@@ -222,7 +222,7 @@ describe("html-validate", () => {
             </f-wizard>
         `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: <button> element is not permitted as a descendant of slot "next-button-text" (<f-wizard-step>) (element-permitted-content) at inline:5:26:
+            "error: <button> element is not permitted as a descendant of slot "next-button-text" (<f-wizard-step>) (element-permitted-content)
               3 |                 <f-wizard-step key="my-key" title="my-title">
               4 |                     <template #next-button-text>
             > 5 |                         <button type="button">Button</button>
@@ -260,7 +260,7 @@ describe("html-validate", () => {
             </f-wizard>
         `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: <div> element is not permitted as content under slot "cancel-button-text" (<f-wizard-step>) (element-permitted-content) at inline:5:26:
+            "error: <div> element is not permitted as content under slot "cancel-button-text" (<f-wizard-step>) (element-permitted-content)
               3 |                 <f-wizard-step key="my-key" title="my-title">
               4 |                     <template #cancel-button-text>
             > 5 |                         <div></div>
@@ -284,7 +284,7 @@ describe("html-validate", () => {
             </f-wizard>
         `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: <button> element is not permitted as a descendant of slot "cancel-button-text" (<f-wizard-step>) (element-permitted-content) at inline:5:26:
+            "error: <button> element is not permitted as a descendant of slot "cancel-button-text" (<f-wizard-step>) (element-permitted-content)
               3 |                 <f-wizard-step key="my-key" title="my-title">
               4 |                     <template #cancel-button-text>
             > 5 |                         <button type="button">Button</button>
@@ -304,7 +304,7 @@ describe("html-validate", () => {
             </f-wizard>
         `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: <f-wizard-step> is missing required "key" attribute (element-required-attributes) at inline:3:18:
+            "error: <f-wizard-step> is missing required "key" attribute (element-required-attributes)
               1 |
               2 |             <f-wizard header-tag="h1">
             > 3 |                 <f-wizard-step title="my-title"></f-wizard-step>
@@ -323,7 +323,7 @@ describe("html-validate", () => {
             </f-wizard>
         `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: <f-wizard-step> is missing required "title" attribute (element-required-attributes) at inline:3:18:
+            "error: <f-wizard-step> is missing required "title" attribute (element-required-attributes)
               1 |
               2 |             <f-wizard header-tag="h1">
             > 3 |                 <f-wizard-step key="my-key"></f-wizard-step>
@@ -342,7 +342,7 @@ describe("html-validate", () => {
             </f-wizard>
         `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: Attribute "title" has invalid value "" (attribute-allowed-values) at inline:3:45:
+            "error: Attribute "title" has invalid value "" (attribute-allowed-values)
               1 |
               2 |             <f-wizard header-tag="h1">
             > 3 |                 <f-wizard-step key="my-key" title=""></f-wizard-step>

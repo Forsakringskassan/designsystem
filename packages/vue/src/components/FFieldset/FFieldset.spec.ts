@@ -414,7 +414,7 @@ describe("html-validate", () => {
                 </f-fieldset>
             `;
             expect(markup).toMatchInlineCodeframe(`
-                "error: Attribute "name" is missing value (attribute-allowed-values) at inline:2:29:
+                "error: Attribute "name" is missing value (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-fieldset name>
                     |                             ^^^^
@@ -422,7 +422,7 @@ describe("html-validate", () => {
                   4 |                 </f-fieldset>
                   5 |                 <f-fieldset name="">
                 Selector: f-fieldset:nth-child(1)
-                error: Attribute "name" has invalid value "" (attribute-allowed-values) at inline:5:29:
+                error: Attribute "name" has invalid value "" (attribute-allowed-values)
                   3 |                     <template #label> Label </template>
                   4 |                 </f-fieldset>
                 > 5 |                 <f-fieldset name="">
@@ -452,7 +452,7 @@ describe("html-validate", () => {
                 </f-fieldset>
             `;
             expect(markup).toMatchInlineCodeframe(`
-                "error: Attribute "content-class" has invalid value "foo bar" (attribute-allowed-values) at inline:2:44:
+                "error: Attribute "content-class" has invalid value "foo bar" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-fieldset content-class="foo bar">
                     |                                            ^^^^^^^
@@ -481,7 +481,7 @@ describe("html-validate", () => {
                 </f-fieldset>
             `;
             expect(markup).toMatchInlineCodeframe(`
-                "error: Attribute "label-class" has invalid value "foo bar" (attribute-allowed-values) at inline:2:42:
+                "error: Attribute "label-class" has invalid value "foo bar" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-fieldset label-class="foo bar">
                     |                                          ^^^^^^^
@@ -498,7 +498,7 @@ describe("html-validate", () => {
             expect.assertions(1);
             const markup = /* HTML */ ` <f-fieldset> </f-fieldset> `;
             expect(markup).toMatchInlineCodeframe(`
-                "error: <f-fieldset> component requires slot "label" to be implemented (vue/required-slots) at inline:1:3:
+                "error: <f-fieldset> component requires slot "label" to be implemented (vue/required-slots)
                 > 1 |  <f-fieldset> </f-fieldset>
                     |   ^^^^^^^^^^
                 Selector: f-fieldset"
@@ -539,7 +539,7 @@ describe("html-validate", () => {
                 </f-fieldset>
             `;
             expect(markup).toMatchInlineCodeframe(`
-                "error: <div> element is not permitted as content under slot "label" (<f-fieldset>) (element-permitted-content) at inline:4:26:
+                "error: <div> element is not permitted as content under slot "label" (<f-fieldset>) (element-permitted-content)
                   2 |                 <f-fieldset>
                   3 |                     <template #label>
                 > 4 |                         <div>Label</div>
@@ -575,7 +575,7 @@ describe("html-validate", () => {
                 </f-fieldset>
             `;
             expect(markup).toMatchInlineCodeframe(`
-                "error: <div> element is not permitted as content under slot "description" (<f-fieldset>) (element-permitted-content) at inline:5:26:
+                "error: <div> element is not permitted as content under slot "description" (<f-fieldset>) (element-permitted-content)
                   3 |                     <template #label> Label </template>
                   4 |                     <template #description>
                 > 5 |                         <div>Lorem ipsum</div>
@@ -614,7 +614,7 @@ describe("html-validate", () => {
                 </f-fieldset>
             `;
             expect(markup).toMatchInlineCodeframe(`
-                "error: <div> element is not permitted as content under slot "tooltip" (<f-fieldset>) (element-permitted-content) at inline:5:26:
+                "error: <div> element is not permitted as content under slot "tooltip" (<f-fieldset>) (element-permitted-content)
                   3 |                     <template #label> Label </template>
                   4 |                     <template #tooltip>
                 > 5 |                         <div>Lorem</div>
@@ -623,7 +623,7 @@ describe("html-validate", () => {
                   7 |                     </template>
                   8 |                 </f-fieldset>
                 Selector: f-fieldset > template:nth-child(2) > div
-                error: <span> element is not permitted as content under slot "tooltip" (<f-fieldset>) (element-permitted-content) at inline:6:26:
+                error: <span> element is not permitted as content under slot "tooltip" (<f-fieldset>) (element-permitted-content)
                   4 |                     <template #tooltip>
                   5 |                         <div>Lorem</div>
                 > 6 |                         <span>ipsum</span>

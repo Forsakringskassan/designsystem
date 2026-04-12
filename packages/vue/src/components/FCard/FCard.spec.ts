@@ -76,7 +76,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ ` <f-card></f-card> `;
         const report = await htmlvalidate.validateString(markup);
         expect(report).toMatchInlineCodeframe(`
-            "error: <f-card> component requires slot "default" to be implemented (vue/required-slots) at inline:1:3:
+            "error: <f-card> component requires slot "default" to be implemented (vue/required-slots)
             > 1 |  <f-card></f-card>
                 |   ^^^^^^
             Selector: f-card"

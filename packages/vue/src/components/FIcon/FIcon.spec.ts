@@ -136,7 +136,7 @@ describe("props", () => {
                 const report = await htmlvalidate.validateString(markup);
                 expect(report).toBeInvalid();
                 expect(report).toMatchInlineCodeframe(`
-                    "error: Attribute "rotate" has invalid value "42" (attribute-allowed-values) at inline:2:52:
+                    "error: Attribute "rotate" has invalid value "42" (attribute-allowed-values)
                       1 |
                     > 2 |                     <f-icon name="my-icon" rotate="42"></f-icon>
                         |                                                    ^^
@@ -153,7 +153,7 @@ describe("props", () => {
                 const report = await htmlvalidate.validateString(markup);
                 expect(report).toBeInvalid();
                 expect(report).toMatchInlineCodeframe(`
-                    "error: Attribute "rotate" has invalid value "foo" (attribute-allowed-values) at inline:2:52:
+                    "error: Attribute "rotate" has invalid value "foo" (attribute-allowed-values)
                       1 |
                     > 2 |                     <f-icon name="my-icon" rotate="foo"></f-icon>
                         |                                                    ^^^
