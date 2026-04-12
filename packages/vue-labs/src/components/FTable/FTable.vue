@@ -65,7 +65,6 @@ const {
     selectable?: "single" | "multi";
 }>();
 
-/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-arguments -- false positive, bug? */
 defineSlots<{
     /**
      * Slot for table caption
