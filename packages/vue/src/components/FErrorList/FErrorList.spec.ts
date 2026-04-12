@@ -262,7 +262,7 @@ describe("htmlvalidate", () => {
             const markup = /* HTML */ ` <f-error-list></f-error-list> `;
             const report = await htmlvalidate.validateString(markup);
             expect(report).toMatchInlineCodeframe(`
-                "error: <f-error-list> is missing required "items" attribute (element-required-attributes) at inline:1:3:
+                "error: <f-error-list> is missing required "items" attribute (element-required-attributes)
                 > 1 |  <f-error-list></f-error-list>
                     |   ^^^^^^^^^^^^
                 Selector: f-error-list"
@@ -291,7 +291,7 @@ describe("htmlvalidate", () => {
             `;
             const report = await htmlvalidate.validateString(markup);
             expect(report).toMatchInlineCodeframe(`
-                "error: Attribute "bullets" has invalid value "invalid" (attribute-allowed-values) at inline:2:51:
+                "error: Attribute "bullets" has invalid value "invalid" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-error-list items="[]" bullets="invalid"></f-error-list>
                     |                                                   ^^^^^^^

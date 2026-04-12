@@ -131,13 +131,13 @@ describe("html-validate", () => {
             `;
             expect(valid).toMatchInlineCodeframe(`""`);
             expect(invalid).toMatchInlineCodeframe(`
-                "error: Attribute "disabled" should omit value (attribute-boolean-style) at inline:2:37:
+                "error: Attribute "disabled" should omit value (attribute-boolean-style)
                   1 |
                 > 2 |                 <f-datepicker-field disabled="foobar"></f-datepicker-field>
                     |                                     ^^^^^^^^
                   3 |
                 Selector: f-datepicker-field
-                error: Attribute "disabled" has invalid value "foobar" (attribute-allowed-values) at inline:2:47:
+                error: Attribute "disabled" has invalid value "foobar" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-datepicker-field disabled="foobar"></f-datepicker-field>
                     |                                               ^^^^^^
@@ -172,14 +172,14 @@ describe("html-validate", () => {
             `;
             expect(valid).toMatchInlineCodeframe(`""`);
             expect(invalid).toMatchInlineCodeframe(`
-                "error: Attribute "highlight-today" should omit value (attribute-boolean-style) at inline:2:37:
+                "error: Attribute "highlight-today" should omit value (attribute-boolean-style)
                   1 |
                 > 2 |                 <f-datepicker-field highlight-today="foobar">
                     |                                     ^^^^^^^^^^^^^^^
                   3 |                 </f-datepicker-field>
                   4 |
                 Selector: f-datepicker-field
-                error: Attribute "highlight-today" has invalid value "foobar" (attribute-allowed-values) at inline:2:54:
+                error: Attribute "highlight-today" has invalid value "foobar" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-datepicker-field highlight-today="foobar">
                     |                                                      ^^^^^^
@@ -202,13 +202,13 @@ describe("html-validate", () => {
             `;
             expect(valid).toMatchInlineCodeframe(`""`);
             expect(invalid).toMatchInlineCodeframe(`
-                "error: Attribute "always-inline" should omit value (attribute-boolean-style) at inline:2:37:
+                "error: Attribute "always-inline" should omit value (attribute-boolean-style)
                   1 |
                 > 2 |                 <f-datepicker-field always-inline="foobar"></f-datepicker-field>
                     |                                     ^^^^^^^^^^^^^
                   3 |
                 Selector: f-datepicker-field
-                error: Attribute "always-inline" has invalid value "foobar" (attribute-allowed-values) at inline:2:52:
+                error: Attribute "always-inline" has invalid value "foobar" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-datepicker-field always-inline="foobar"></f-datepicker-field>
                     |                                                    ^^^^^^
@@ -241,7 +241,7 @@ describe("html-validate", () => {
                 </f-datepicker-field>
             `;
             expect(markup).toMatchInlineCodeframe(`
-                "error: <div> element is not permitted as content under slot "default" (<f-datepicker-field>) (element-permitted-content) at inline:4:26:
+                "error: <div> element is not permitted as content under slot "default" (<f-datepicker-field>) (element-permitted-content)
                   2 |                 <f-datepicker-field>
                   3 |                     <template #default>
                 > 4 |                         <div></div>
@@ -273,7 +273,7 @@ describe("html-validate", () => {
             `;
             expect(valid).toMatchInlineCodeframe(`""`);
             expect(invalid).toMatchInlineCodeframe(`
-                "error: <div> element is not permitted as content under slot "tooltip" (<f-datepicker-field>) (element-permitted-content) at inline:4:26:
+                "error: <div> element is not permitted as content under slot "tooltip" (<f-datepicker-field>) (element-permitted-content)
                   2 |                 <f-datepicker-field>
                   3 |                     <template #tooltip>
                 > 4 |                         <div>foo</div>
@@ -282,7 +282,7 @@ describe("html-validate", () => {
                   6 |                         <button type="button">baz</button>
                   7 |                     </template>
                 Selector: f-datepicker-field > template > div
-                error: <span> element is not permitted as content under slot "tooltip" (<f-datepicker-field>) (element-permitted-content) at inline:5:26:
+                error: <span> element is not permitted as content under slot "tooltip" (<f-datepicker-field>) (element-permitted-content)
                   3 |                     <template #tooltip>
                   4 |                         <div>foo</div>
                 > 5 |                         <span> bar </span>
@@ -291,7 +291,7 @@ describe("html-validate", () => {
                   7 |                     </template>
                   8 |                 </f-datepicker-field>
                 Selector: f-datepicker-field > template > span
-                error: <button> element is not permitted as content under slot "tooltip" (<f-datepicker-field>) (element-permitted-content) at inline:6:26:
+                error: <button> element is not permitted as content under slot "tooltip" (<f-datepicker-field>) (element-permitted-content)
                   4 |                         <div>foo</div>
                   5 |                         <span> bar </span>
                 > 6 |                         <button type="button">baz</button>
@@ -325,7 +325,7 @@ describe("html-validate", () => {
                 </f-datepicker-field>
             `;
             expect(markup).toMatchInlineCodeframe(`
-                "error: <div> element is not permitted as content under slot "error-message" (<f-datepicker-field>) (element-permitted-content) at inline:4:26:
+                "error: <div> element is not permitted as content under slot "error-message" (<f-datepicker-field>) (element-permitted-content)
                   2 |                 <f-datepicker-field>
                   3 |                     <template #error-message>
                 > 4 |                         <div>foo</div>
@@ -359,7 +359,7 @@ describe("html-validate", () => {
                 </f-datepicker-field>
             `;
             expect(markup).toMatchInlineCodeframe(`
-                "error: <div> element is not permitted as content under slot "description" (<f-datepicker-field>) (element-permitted-content) at inline:4:26:
+                "error: <div> element is not permitted as content under slot "description" (<f-datepicker-field>) (element-permitted-content)
                   2 |                 <f-datepicker-field>
                   3 |                     <template #description>
                 > 4 |                         <div>foo</div>

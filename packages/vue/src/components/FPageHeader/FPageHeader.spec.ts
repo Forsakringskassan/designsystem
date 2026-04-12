@@ -117,7 +117,7 @@ describe("html-validate", () => {
         `;
         expect(valid).toMatchInlineCodeframe(`""`);
         expect(invalid).toMatchInlineCodeframe(`
-            "error: Attribute "skip-link" is missing value (attribute-allowed-values) at inline:3:28:
+            "error: Attribute "skip-link" is missing value (attribute-allowed-values)
               1 |
               2 |             <!-- omitted value -->
             > 3 |             <f-page-header skip-link></f-page-header>
@@ -142,7 +142,7 @@ describe("html-validate", () => {
                 <f-page-header header-tag="h2"></f-page-header>
             `;
             expect(markup).toMatchInlineCodeframe(`
-                "error: Attribute "header-tag" has invalid value "h2" (attribute-allowed-values) at inline:2:44:
+                "error: Attribute "header-tag" has invalid value "h2" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-page-header header-tag="h2"></f-page-header>
                     |                                            ^^

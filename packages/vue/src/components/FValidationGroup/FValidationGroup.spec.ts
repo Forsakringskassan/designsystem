@@ -346,14 +346,14 @@ describe("html-validate", () => {
             `;
             const report = await htmlvalidate.validateString(markup);
             expect(report).toMatchInlineCodeframe(`
-                "error: <f-validation-group> is missing required "key" attribute (element-required-attributes) at inline:2:18:
+                "error: <f-validation-group> is missing required "key" attribute (element-required-attributes)
                   1 |
                 > 2 |                 <f-validation-group></f-validation-group>
                     |                  ^^^^^^^^^^^^^^^^^^
                   3 |                 <f-validation-group key=""></f-validation-group>
                   4 |
                 Selector: f-validation-group:nth-child(1)
-                error: Attribute "key" has invalid value "" (attribute-allowed-values) at inline:3:37:
+                error: Attribute "key" has invalid value "" (attribute-allowed-values)
                   1 |
                   2 |                 <f-validation-group></f-validation-group>
                 > 3 |                 <f-validation-group key=""></f-validation-group>
@@ -394,7 +394,7 @@ describe("html-validate", () => {
             `;
             const report = await htmlvalidate.validateString(markup);
             expect(report).toMatchInlineCodeframe(`
-                "error: Attribute "stop-propagation" has invalid value "invalid" (attribute-allowed-values) at inline:3:39:
+                "error: Attribute "stop-propagation" has invalid value "invalid" (attribute-allowed-values)
                   1 |
                   2 |                 <f-validation-group
                 > 3 |                     stop-propagation="invalid"

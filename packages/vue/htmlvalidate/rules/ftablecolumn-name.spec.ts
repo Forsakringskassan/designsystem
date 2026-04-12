@@ -25,7 +25,7 @@ describe("`FTableColumn` with `FSortFilterDataset`", () => {
         const report = await htmlvalidate.validateString(markup);
         expect(report).toBeInvalid();
         expect(report).toMatchInlineCodeframe(`
-            "error: <f-table-column> is missing required "name" attribute (fkui/ftablecolumn-name) at inline:7:30:
+            "error: <f-table-column> is missing required "name" attribute (fkui/ftablecolumn-name)
                5 |                         <template #caption> TestTable </template>
                6 |                         <template #default="{ row }">
             >  7 |                             <f-table-column title="foo"></f-table-column>
@@ -86,7 +86,7 @@ describe("`FTableColumn` with `FSortFilterDataset`", () => {
         const report = await htmlvalidate.validateString(markup);
         expect(report).toBeInvalid();
         expect(report).toMatchInlineCodeframe(`
-            "error: "foo" is not unique (fkui/ftablecolumn-name) at inline:16:39:
+            "error: "foo" is not unique (fkui/ftablecolumn-name)
               14 |                             ></f-table-column>
               15 |                             <f-table-column
             > 16 |                                 name="foo"

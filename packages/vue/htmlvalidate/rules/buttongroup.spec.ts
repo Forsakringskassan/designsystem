@@ -17,7 +17,7 @@ it('should report error when <button> is missing "button-group__item" if used in
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: A button that is a direct child to a button group must have the following classes: ['button-group__item'] (fkui/button-group) at inline:3:14:
+        "error: A button that is a direct child to a button group must have the following classes: ['button-group__item'] (fkui/button-group)
           1 |
           2 |         <div class="button-group">
         > 3 |             <button></button>

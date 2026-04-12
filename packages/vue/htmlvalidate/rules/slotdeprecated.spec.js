@@ -31,7 +31,7 @@ it("should report error when used", async () => {
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: slot "#checkbox-description" is deprecated and replaced with "selectable-description" (fkui/slot-deprecated) at inline:4:14:
+        "error: slot "#checkbox-description" is deprecated and replaced with "selectable-description" (fkui/slot-deprecated)
           2 |         <f-interactive-table selectable>
           3 |             <template #default="{ row }"></template>
         > 4 |             <template #checkbox-description> Select this row </template>
@@ -39,5 +39,5 @@ it("should report error when used", async () => {
           5 |         </f-interactive-table>
           6 |
         Selector: f-interactive-table"
-        `);
+    `);
 });

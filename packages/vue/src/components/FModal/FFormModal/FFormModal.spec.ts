@@ -376,7 +376,7 @@ describe("html-validate", () => {
                     <f-form-modal is-open=""></f-form-modal>
                 `;
                 expect(markup).toMatchInlineCodeframe(`
-                    "error: Attribute "is-open" should omit value (attribute-boolean-style) at inline:2:35:
+                    "error: Attribute "is-open" should omit value (attribute-boolean-style)
                       1 |
                     > 2 |                     <f-form-modal is-open=""></f-form-modal>
                         |                                   ^^^^^^^
@@ -391,13 +391,13 @@ describe("html-validate", () => {
                     <f-form-modal is-open="invalid"></f-form-modal>
                 `;
                 expect(markup).toMatchInlineCodeframe(`
-                    "error: Attribute "is-open" should omit value (attribute-boolean-style) at inline:2:35:
+                    "error: Attribute "is-open" should omit value (attribute-boolean-style)
                       1 |
                     > 2 |                     <f-form-modal is-open="invalid"></f-form-modal>
                         |                                   ^^^^^^^
                       3 |
                     Selector: f-form-modal
-                    error: Attribute "is-open" has invalid value "invalid" (attribute-allowed-values) at inline:2:44:
+                    error: Attribute "is-open" has invalid value "invalid" (attribute-allowed-values)
                       1 |
                     > 2 |                     <f-form-modal is-open="invalid"></f-form-modal>
                         |                                            ^^^^^^^
@@ -422,7 +422,7 @@ describe("html-validate", () => {
                     <f-form-modal size="fullscreen"></f-form-modal>
                 `;
                 expect(markup).toMatchInlineCodeframe(`
-                    "error: Attribute "size" has invalid value "fullscreen" (attribute-allowed-values) at inline:2:41:
+                    "error: Attribute "size" has invalid value "fullscreen" (attribute-allowed-values)
                       1 |
                     > 2 |                     <f-form-modal size="fullscreen"></f-form-modal>
                         |                                         ^^^^^^^^^^
@@ -437,7 +437,7 @@ describe("html-validate", () => {
                     <f-form-modal size="invalid"></f-form-modal>
                 `;
                 expect(markup).toMatchInlineCodeframe(`
-                    "error: Attribute "size" has invalid value "invalid" (attribute-allowed-values) at inline:2:41:
+                    "error: Attribute "size" has invalid value "invalid" (attribute-allowed-values)
                       1 |
                     > 2 |                     <f-form-modal size="invalid"></f-form-modal>
                         |                                         ^^^^^^^

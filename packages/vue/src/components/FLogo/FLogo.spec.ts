@@ -73,7 +73,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `<f-logo size="huge">foo</f-logo>`;
         const report = await htmlvalidate.validateString(markup);
         expect(report).toMatchInlineCodeframe(`
-            "error: Attribute "size" has invalid value "huge" (attribute-allowed-values) at inline:1:15:
+            "error: Attribute "size" has invalid value "huge" (attribute-allowed-values)
             > 1 | <f-logo size="huge">foo</f-logo>
                 |               ^^^^
             Selector: f-logo"
@@ -86,7 +86,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `<f-logo></f-logo>`;
         const report = await htmlvalidate.validateString(markup);
         expect(report).toMatchInlineCodeframe(`
-            "error: <f-logo> must have text content (text-content) at inline:1:2:
+            "error: <f-logo> must have text content (text-content)
             > 1 | <f-logo></f-logo>
                 |  ^^^^^^
             Selector: f-logo"
