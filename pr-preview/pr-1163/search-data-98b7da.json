@@ -49,7 +49,6 @@
     "production",
     "globala inställningar",
     "config",
-    "CHANGELOG v5",
     "Paginering",
     "FPaginateDataset",
     "FPaginator",
@@ -101,6 +100,7 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
+    "CHANGELOG v5",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -222,16 +222,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
-    "focus-indicator() mixin",
-    "fokus",
-    "fokusindikator",
-    "sass",
-    "densify() function",
-    "densitet",
-    "sass",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -269,6 +259,16 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
+    "EventBus",
+    "EventBus",
+    "services",
     "Om FKUI Vue Labs",
     "Kod (tillhör nya tabellkomponenten)",
     "visa data",
@@ -666,6 +666,10 @@
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
+    "FProgressbarPageObject: FProgressbarPageObject() constructor",
+    "FProgressbarPageObject: value() method",
+    "FProgressbarPageObject: progressStatus() method",
+    "FProgressbarPageObject: el() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
@@ -675,10 +679,6 @@
     "FBadgePageObject: FBadgePageObject() constructor",
     "FFileItemPageObject: status() method",
     "FFileItemPageObject: inverted() method",
-    "FProgressbarPageObject: FProgressbarPageObject() constructor",
-    "FProgressbarPageObject: value() method",
-    "FProgressbarPageObject: progressStatus() method",
-    "FProgressbarPageObject: el() method",
     "CHANGELOG",
     "Bidra till designsystemet",
     "Automatisk testning"
@@ -792,11 +792,6 @@
         "globala inställningar",
         "config"
       ]
-    },
-    {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
     },
     {
       "url": "components/pagination.html",
@@ -928,6 +923,11 @@
       "terms": [
         "FBadge"
       ]
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -1188,31 +1188,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": [
-        "fokus",
-        "fokusindikator",
-        "sass"
-      ]
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": [
-        "densitet",
-        "sass"
-      ]
-    },
-    {
       "url": "functions/plugins/validationplugin.html",
       "title": "Validation Plugin",
       "terms": [
@@ -1272,6 +1247,31 @@
         "errorHandler",
         "ErrorPlugin",
         "FErrorHandlingApp"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": [
+        "fokus",
+        "fokusindikator",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": [
+        "densitet",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -2366,6 +2366,26 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
+      "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/value.html",
+      "title": "FProgressbarPageObject: value() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html",
+      "title": "FProgressbarPageObject: progressStatus() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FProgressbarPageObject/el.html",
+      "title": "FProgressbarPageObject: el() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": []
@@ -2408,26 +2428,6 @@
     {
       "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
       "title": "FFileItemPageObject: inverted() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/index.html",
-      "title": "FProgressbarPageObject: FProgressbarPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/value.html",
-      "title": "FProgressbarPageObject: value() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html",
-      "title": "FProgressbarPageObject: progressStatus() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FProgressbarPageObject/el.html",
-      "title": "FProgressbarPageObject: el() method",
       "terms": []
     },
     {
@@ -2497,56 +2497,56 @@
     "47": 12,
     "48": 12,
     "49": 13,
-    "50": 14,
-    "51": 14,
+    "50": 13,
+    "51": 13,
     "52": 14,
-    "53": 15,
+    "53": 14,
     "54": 15,
-    "55": 16,
+    "55": 15,
     "56": 16,
-    "57": 17,
-    "58": 17,
-    "59": 17,
-    "60": 17,
+    "57": 16,
+    "58": 16,
+    "59": 16,
+    "60": 16,
     "61": 17,
-    "62": 18,
+    "62": 17,
     "63": 18,
-    "64": 19,
+    "64": 18,
     "65": 19,
-    "66": 20,
-    "67": 20,
-    "68": 20,
-    "69": 20,
-    "70": 20,
+    "66": 19,
+    "67": 19,
+    "68": 19,
+    "69": 19,
+    "70": 19,
     "71": 20,
-    "72": 21,
+    "72": 20,
     "73": 21,
-    "74": 22,
-    "75": 22,
+    "74": 21,
+    "75": 21,
     "76": 22,
-    "77": 23,
-    "78": 23,
+    "77": 22,
+    "78": 22,
     "79": 23,
-    "80": 24,
+    "80": 23,
     "81": 24,
-    "82": 25,
-    "83": 25,
-    "84": 25,
-    "85": 25,
-    "86": 25,
+    "82": 24,
+    "83": 24,
+    "84": 24,
+    "85": 24,
+    "86": 24,
     "87": 25,
-    "88": 26,
-    "89": 26,
+    "88": 25,
+    "89": 25,
     "90": 26,
-    "91": 27,
+    "91": 26,
     "92": 27,
-    "93": 28,
-    "94": 28,
-    "95": 28,
-    "96": 28,
-    "97": 28,
+    "93": 27,
+    "94": 27,
+    "95": 27,
+    "96": 27,
+    "97": 27,
     "98": 28,
-    "99": 29,
+    "99": 28,
     "100": 29,
     "101": 30,
     "102": 30,
@@ -2672,47 +2672,47 @@
     "222": 58,
     "223": 58,
     "224": 58,
-    "225": 59,
-    "226": 59,
-    "227": 59,
-    "228": 59,
-    "229": 60,
-    "230": 60,
-    "231": 60,
-    "232": 61,
-    "233": 61,
-    "234": 61,
-    "235": 61,
-    "236": 61,
-    "237": 61,
-    "238": 61,
+    "225": 58,
+    "226": 58,
+    "227": 58,
+    "228": 58,
+    "229": 58,
+    "230": 58,
+    "231": 59,
+    "232": 59,
+    "233": 59,
+    "234": 60,
+    "235": 60,
+    "236": 60,
+    "237": 60,
+    "238": 60,
     "239": 61,
     "240": 61,
-    "241": 62,
-    "242": 62,
-    "243": 62,
-    "244": 63,
-    "245": 63,
-    "246": 63,
-    "247": 63,
-    "248": 63,
-    "249": 64,
-    "250": 64,
-    "251": 64,
-    "252": 64,
-    "253": 64,
-    "254": 64,
-    "255": 64,
-    "256": 64,
-    "257": 64,
-    "258": 64,
-    "259": 64,
-    "260": 64,
-    "261": 65,
-    "262": 65,
-    "263": 65,
-    "264": 65,
-    "265": 65,
+    "241": 61,
+    "242": 61,
+    "243": 61,
+    "244": 61,
+    "245": 61,
+    "246": 61,
+    "247": 61,
+    "248": 61,
+    "249": 61,
+    "250": 61,
+    "251": 62,
+    "252": 62,
+    "253": 62,
+    "254": 62,
+    "255": 62,
+    "256": 62,
+    "257": 62,
+    "258": 62,
+    "259": 63,
+    "260": 63,
+    "261": 63,
+    "262": 63,
+    "263": 64,
+    "264": 64,
+    "265": 64,
     "266": 65,
     "267": 65,
     "268": 65,

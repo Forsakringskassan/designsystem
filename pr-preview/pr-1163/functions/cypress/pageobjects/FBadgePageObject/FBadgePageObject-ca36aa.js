@@ -28,16 +28,16 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FProgressbarPageObject/FProgressbarPageObject-el.vue:FProgressbarPageObject-el-750cc2.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FBadgePageObject/FBadgePageObject.vue:FBadgePageObject-ca36aa.js
 import { defineComponent as _defineComponent } from "vue";
-import { FProgressbar } from "@fkui/vue";
-import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { FBadge } from "@fkui/vue";
+import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FProgressbarPageObject-el",
+  __name: "FBadgePageObject",
   setup(__props, { expose: __expose }) {
     __expose();
-    const __returned__ = { get FProgressbar() {
-      return FProgressbar;
+    const __returned__ = { get FBadge() {
+      return FBadge;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
@@ -45,23 +45,24 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_test = _resolveDirective("test");
-  return _withDirectives((_openBlock(), _createBlock(
-    $setup["FProgressbar"],
-    {
-      value: 40,
-      "aria-label": "Progressbar"
-    },
-    null,
-    512
-    /* NEED_PATCH */
-  )), [
-    [_directive_test, "progressbar"]
+  return _withDirectives((_openBlock(), _createBlock($setup["FBadge"], null, {
+    default: _withCtx(() => [..._cache[0] || (_cache[0] = [
+      _createTextVNode(
+        " MyBadge ",
+        -1
+        /* CACHED */
+      )
+    ])]),
+    _: 1
+    /* STABLE */
+  })), [
+    [_directive_test, "my-badge"]
   ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-750cc2"
+  selector: "#example-ca36aa"
 });
 export {
   render

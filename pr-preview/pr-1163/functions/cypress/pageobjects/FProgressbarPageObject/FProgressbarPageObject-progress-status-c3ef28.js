@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FProgressbarPageObject/FProgressbarPageObject-progress-status.vue:FProgressbarPageObject-progress-status-60d5e7.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FProgressbarPageObject/FProgressbarPageObject-progress-status.vue:FProgressbarPageObject-progress-status-c3ef28.js
 import { defineComponent as _defineComponent } from "vue";
 import { FProgressbar } from "@fkui/vue";
 import { resolveDirective as _resolveDirective, withDirectives as _withDirectives, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -61,7 +61,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-60d5e7"
+  selector: "#example-c3ef28"
 });
 export {
   render
