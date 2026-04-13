@@ -1,10 +1,11 @@
+import { defineComponent } from "vue";
 import { FDialogueTreePageObject } from "../../cypress";
-import FDialogueTreeExample from "./examples/ExampleFDialogueTree.vue";
+import FDialogueTree from "./FDialogueTree.vue";
+import FDialogueTreeExample, {
+    dialogueTreeData,
+} from "./examples/ExampleFDialogueTree.vue";
 
-function mount(): FDialogueTreePageObject {
-    cy.mount(FDialogueTreeExample, {});
-    return new FDialogueTreePageObject("body");
-}
+const dialogueTree = new FDialogueTreePageObject("body");
 
 describe("Dialogue Tree", () => {
     describe("Snapshot tester", () => {
@@ -12,14 +13,46 @@ describe("Dialogue Tree", () => {
             cy.viewport(1024, 600);
         });
 
-        it("should have approved design", () => {
-            const dialogueTree = mount();
+        it("should have approved design visual", () => {
+            cy.mount(FDialogueTreeExample);
+
+            dialogueTree.el().toMatchScreenshot();
+        });
+
+        it("options should have right size on focus visual", () => {
+            const Template = `<div style="background-color:#fff;padding:2rem">
+             <f-dialogue-tree v-model="current" :dialogue-tree="tree"/>
+             </div>`;
+            const TestComponent = defineComponent({
+                template: Template,
+                components: { FDialogueTree },
+                data() {
+                    return {
+                        tree: dialogueTreeData(
+                            "Option 1 (in focus)",
+                            "Option 2 (hover)",
+                        ),
+                        current: [
+                            {
+                                label: "",
+                                lastStep: true,
+                                steps: [],
+                            },
+                        ],
+                    };
+                },
+            });
+            cy.viewport(800, 600);
+            cy.mount(TestComponent);
+
+            dialogueTree.option(0).button().focus();
+            dialogueTree.option(1).el().invoke("addClass", "is-hover");
             dialogueTree.el().toMatchScreenshot();
         });
     });
 
     it("should have two options at start", () => {
-        const dialogueTree = mount();
+        cy.mount(FDialogueTreeExample);
 
         dialogueTree.options().should("have.length", 2);
         dialogueTree.option(0).title().should("contain.text", "Option 1");
@@ -27,7 +60,7 @@ describe("Dialogue Tree", () => {
     });
 
     it("should be able to click through Dialogue Tree", () => {
-        const dialogueTree = mount();
+        cy.mount(FDialogueTreeExample);
 
         dialogueTree.option(0).select();
         dialogueTree.option(0).button().should("have.focus");
@@ -47,7 +80,7 @@ describe("Dialogue Tree", () => {
     });
 
     it("should be clickable and get a new view when choosing second button", () => {
-        const dialogueTree = mount();
+        cy.mount(FDialogueTreeExample);
 
         dialogueTree.option(1).select();
         dialogueTree.option(0).title().should("contain.text", "2.1");
