@@ -198,7 +198,11 @@ function onKeydown(e: KeyboardEvent): void {
         return;
     }
 
-    const cell = (e.target as HTMLElement).closest<HTMLElement>("td, th");
+    if (!(e.target instanceof Element)) {
+        return;
+    }
+
+    const cell = e.target.closest<HTMLElement>("td, th");
 
     if (!cell) {
         return;
@@ -208,7 +212,7 @@ function onKeydown(e: KeyboardEvent): void {
 
     // If keyboard focus is on the cell rather than the actual target,
     // forward activation to the target just like the click handler does
-    if (e.target instanceof Node && !targetEl.contains(e.target)) {
+    if (!targetEl.contains(e.target)) {
         e.preventDefault();
         targetEl.click();
     }
