@@ -152,6 +152,11 @@ export type Dataset<T extends object> = T[] & {
 };
 
 // @public
+export type DatasetArrayKeyOf<T> = {
+    [K in keyof T]: NonNullable<T[K]> extends any[] ? K : never;
+}[keyof T];
+
+// @public
 export interface DatasetArrayMetadata<T> {
     readonly nestedAttribute: DatasetNestedKeyOf<T> | undefined;
     readonly size: number;
