@@ -3,6 +3,7 @@
 import { defineComponent } from "vue";
 import {
     type FDialogueTreeOption,
+    type FDialogueTreeQuestion,
     type FDialogueTreeUserProgress,
     FDialogueTree,
     FTextField,
@@ -39,32 +40,37 @@ function generateOption(label: string): FDialogueTreeOption {
     };
 }
 
-const DIALOGUE_TREE_DATA = {
-    label: "First question",
-    options: [
-        {
-            label: "Option 1",
-            question: {
-                label: "Second question 1",
-                options: [generateOption("1.1"), generateOption("1.2")],
+export function dialogueTreeData(
+    labelOne: string = "Option 1",
+    labelTwo: string = "Option 2",
+): FDialogueTreeQuestion {
+    return {
+        label: "First question",
+        options: [
+            {
+                label: labelOne,
+                question: {
+                    label: "Second question 1",
+                    options: [generateOption("1.1"), generateOption("1.2")],
+                },
             },
-        },
-        {
-            label: "Option 2",
-            question: {
-                label: "Second question 2",
-                options: [generateOption("2.1"), generateOption("2.2")],
+            {
+                label: labelTwo,
+                question: {
+                    label: "Second question 2",
+                    options: [generateOption("2.1"), generateOption("2.2")],
+                },
             },
-        },
-    ],
-};
+        ],
+    };
+}
 
 export default defineComponent({
     name: "FDialogueTreeExample",
     components: { FDialogueTree, FTextField },
     data() {
         return {
-            tree: DIALOGUE_TREE_DATA,
+            tree: dialogueTreeData(),
             current: {
                 label: "",
                 lastStep: true,
