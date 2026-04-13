@@ -64,6 +64,8 @@ const currentPageItems = computed<TInfered>((): TInfered => {
 const currentPageItemLength = computed(() => currentPageItems.value.length);
 
 // Computes number of pages
+// Keeps page count at minimum 1 so currentPage never falls outside valid pagination state,
+// even when the dataset is empty
 const numberOfPages = computed(() => Math.max(1, Math.ceil(numberOfItems.value / itemsPerPage)));
 
 // Computes number of items
