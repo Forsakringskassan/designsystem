@@ -85,7 +85,7 @@
     "@forsakringskassan/eslint-config": "14.1.2",
     "@forsakringskassan/eslint-config-cli": "14.1.0",
     "@forsakringskassan/eslint-config-cypress": "14.1.8",
-    "@forsakringskassan/eslint-config-jest": "14.1.0",
+    "@forsakringskassan/eslint-config-jest": "14.1.9",
     "@forsakringskassan/eslint-config-typescript": "14.1.6",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "14.1.6",
     "@forsakringskassan/eslint-config-vue": "14.1.6",
