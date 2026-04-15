@@ -1,10 +1,10 @@
 <script lang="ts">
 import { type PropType, defineComponent, getCurrentInstance } from "vue";
-import { DomUtils } from "@fkui/logic";
+import { DomUtils, isSet } from "@fkui/logic";
 import { IAnimateExpand, IFlex, IFlexItem } from "../../internal-components";
 import { TranslationMixin } from "../../plugins";
 import { type GroupValidityEvent } from "../../types";
-import { getHTMLElementFromVueRef } from "../../utils";
+import { findHTMLElementFromVueRef, getHTMLElementFromVueRef } from "../../utils";
 import { FIcon } from "../FIcon";
 import { type FValidationFormResult, FValidationForm } from "../FValidationForm";
 import {
@@ -198,9 +198,9 @@ export default defineComponent({
                 }
             }
 
-            const headerElement = getHTMLElementFromVueRef(this.$refs.header);
+            const headerElement = findHTMLElementFromVueRef(this.$refs.header);
             await this.$nextTick();
-            if (!DomUtils.isVisibleInViewport(headerElement)) {
+            if (isSet(headerElement) && !DomUtils.isVisibleInViewport(headerElement)) {
                 await DomUtils.scrollTo(headerElement, { duration: SCROLL_DURATION, offset: 10 });
             }
             DomUtils.focus(headerElement);
