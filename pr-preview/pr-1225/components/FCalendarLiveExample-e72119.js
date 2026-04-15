@@ -6554,16 +6554,10 @@ IComboboxToggleButton_default.__file = "packages/vue/src/internal-components/com
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=script
 import { defineComponent as defineComponent20 } from "vue";
 
-// packages/vue/src/components/FExpand/after-enter.ts
+// packages/vue/src/components/FExpand/styles.ts
 var openedStyle = {
   height: "auto"
 };
-function afterEnterTransition(element) {
-  const htmlElement = getHTMLElementFromVueRef(element);
-  Object.assign(htmlElement.style, openedStyle);
-}
-
-// packages/vue/src/components/FExpand/enter.ts
 var initialStyle = {
   overflow: "hidden",
   transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
@@ -6580,6 +6574,14 @@ var visibleStyle = {
   height: "0px",
   color: "CanvasText"
 };
+
+// packages/vue/src/components/FExpand/after-enter.ts
+function afterEnterTransition(element) {
+  const htmlElement = getHTMLElementFromVueRef(element);
+  Object.assign(htmlElement.style, openedStyle);
+}
+
+// packages/vue/src/components/FExpand/enter.ts
 function enterTransition(element) {
   let newHeight = 0;
   const htmlElement = getHTMLElementFromVueRef(element);
@@ -6596,31 +6598,23 @@ function enterTransition(element) {
   return newHeight;
 }
 
+// packages/vue/src/components/FExpand/leave.ts
+function leaveTransition(element) {
+  const htmlElement = getHTMLElementFromVueRef(element);
+  const height = getComputedStyle(element).height;
+  htmlElement.style.height = height;
+  getComputedStyle(element).height;
+  setTimeout(() => {
+    Object.assign(htmlElement.style, visibleStyle);
+  });
+}
+
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=script
 var FExpand_default = defineComponent20({
   name: "FExpand",
   data() {
     return {
-      height: 0,
-      initialStyle: {
-        overflow: "hidden",
-        transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
-      },
-      hiddenStyle: {
-        height: "auto",
-        position: "absolute",
-        visibility: "hidden"
-      },
-      visibleStyle: {
-        width: "",
-        position: "",
-        visibility: "",
-        height: "0px",
-        color: "CanvasText"
-      },
-      openedStyle: {
-        height: "auto"
-      }
+      height: 0
     };
   },
   methods: {
@@ -6631,13 +6625,7 @@ var FExpand_default = defineComponent20({
       afterEnterTransition(element);
     },
     leave(element) {
-      const htmlElement = getHTMLElementFromVueRef(element);
-      const height = getComputedStyle(element).height;
-      htmlElement.style.height = height;
-      getComputedStyle(element).height;
-      setTimeout(() => {
-        Object.assign(htmlElement.style, this.visibleStyle);
-      });
+      leaveTransition(element);
     }
   }
 });
