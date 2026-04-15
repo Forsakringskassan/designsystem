@@ -68,7 +68,7 @@ var palette_default = [
       },
       {
         name: "neutral-400",
-        value: "#9197a1",
+        value: "#8e949f",
         group: "Neutral",
         comment: ""
       },
@@ -151,7 +151,7 @@ var palette_default = [
       },
       {
         name: "blue-200",
-        value: "#9fc1e9",
+        value: "#97bbe7",
         group: "Blue",
         comment: ""
       },
@@ -204,7 +204,7 @@ var palette_default = [
       },
       {
         name: "green-400",
-        value: "#3da973",
+        value: "#3eac75",
         group: "Green",
         comment: ""
       },
@@ -281,13 +281,13 @@ var palette_default = [
       },
       {
         name: "yellow-200",
-        value: "#fae8ad",
+        value: "#f9e49f",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-100",
-        value: "#f9e49f",
+        value: "#fef4cd",
         group: "Yellow",
         comment: ""
       },
