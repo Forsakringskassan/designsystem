@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 6.43.0 (2026-04-15)
+
+### Features
+
+* **@fkui/vue-labs:** new labs component `XRelativeTime` (refs SFKUI-6500) 272adee
+* **@fkui/vue:** add new `FExpandableParagraphPageObject` (refs SFKUI-6500) f250109
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** file item missing support for `forced-colors` media feature (fixes SFKUI-7568) 5cb1ce0
+* **@fkui/design, @fkui/vue:** hover on `IComboboxDropdown` when highlight active (refs SFKUI-7362) 8598637
+* **deps:** update dependency i18next to v26.0.4 3281630
+
 ## 6.42.0 (2026-04-08)
 
 ### Features

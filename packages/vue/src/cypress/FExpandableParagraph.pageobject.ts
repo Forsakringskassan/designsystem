@@ -3,7 +3,7 @@ import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public
- * @since %version%
+ * @since v6.43.0
  */
 export class FExpandableParagraphPageObject implements BasePageObject {
     private _selectors: ReturnType<typeof FExpandableParagraphSelectors>;
