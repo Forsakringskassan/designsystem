@@ -84,6 +84,7 @@ export default defineComponent({
         return {
             validityMode: "INITIAL" as string,
             validationMessage: "" as string,
+            lastValueBeforeUpdate: "" as unknown,
         };
     },
     computed: {
@@ -119,12 +120,17 @@ export default defineComponent({
                 return this.modelValue;
             },
             set(value: unknown) {
+                this.lastValueBeforeUpdate = this.modelValue;
                 this.$emit("update:modelValue", value);
                 this.$emit("change", value);
             },
         },
     },
     methods: {
+        onKeydownEsc(): void {
+            this.$emit("update:modelValue", this.lastValueBeforeUpdate);
+            this.$emit("change", this.lastValueBeforeUpdate);
+        },
         async onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void> {
             this.validationMessage = detail.validationMessage;
             this.validityMode = detail.validityMode;
@@ -182,7 +188,7 @@ export default defineComponent({
             </f-label>
         </div>
         <div class="select-field__icon-wrapper" :class="selectWrapperClass">
-            <select :id v-model="vModel" class="select-field__select" v-bind="attrs">
+            <select :id v-model="vModel" class="select-field__select" v-bind="attrs" @keyup.esc="onKeydownEsc">
                 <slot></slot>
             </select>
             <f-icon
