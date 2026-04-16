@@ -33,7 +33,7 @@ export default defineComponent({
             <template #row>
                 <f-button
                     v-if="filteredProgress < 100"
-                    class="file-item__file-remove"
+                    data-test="file-item__file-remove"
                     icon-left="close"
                     variant="tertiary"
                 >
@@ -41,7 +41,7 @@ export default defineComponent({
                 </f-button>
                 <f-button
                     v-else-if="filteredProgress === 100"
-                    class="file-item__file-remove"
+                    data-test="file-item__file-remove"
                     icon-left="trashcan"
                     variant="tertiary"
                 >

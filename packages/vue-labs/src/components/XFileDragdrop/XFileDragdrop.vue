@@ -250,7 +250,7 @@ EventBus.$on("RENSA_FIL_VALJARE", () => {
                         <span id="mylabel" class="sr-only"> {{ fileName }} {{ filstorlek }} kb </span>
                         <span class="filstorlek">{{ filstorlek }} KB</span>
                         <f-button
-                            class="file-item__file-remove"
+                            data-test="file-item__file-remove"
                             icon-left="trashcan"
                             variant="tertiary"
                             :aria-label="`Ta bort ${fileName}`"

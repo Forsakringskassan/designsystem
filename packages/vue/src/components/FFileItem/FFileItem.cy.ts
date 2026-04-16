@@ -19,6 +19,10 @@ function createComponent(template: string): DefineComponent {
     });
 }
 
+beforeEach(() => {
+    cy.forcedColors("none");
+});
+
 describe("FFileItem", () => {
     const fileItem = new FFileItemPageObject("[data-test=file-item]");
 
@@ -42,7 +46,7 @@ describe("FFileItem", () => {
                     <template #row>
                         <f-button
                             v-if="progress < 100"
-                            class="file-item__file-remove"
+                            data-test="file-item__file-remove"
                             icon-left="close"
                             variant="tertiary"
                         >
@@ -50,7 +54,7 @@ describe("FFileItem", () => {
                         </f-button>
                         <f-button
                             v-else-if="progress === 100"
-                            class="file-item__file-remove"
+                            data-test="file-item__file-remove"
                             icon-left="trashcan"
                             variant="tertiary"
                         >
@@ -127,7 +131,7 @@ describe("FFileItem", () => {
             components: { FButton },
             template: /* HTML */ `
                 <f-button
-                    class="file-item__file-remove"
+                    data-test="file-item__file-remove"
                     icon-left="trashcan"
                     variant="tertiary"
                 >
