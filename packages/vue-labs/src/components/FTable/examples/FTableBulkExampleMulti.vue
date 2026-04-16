@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
@@ -7,7 +8,7 @@ interface Row {
     fruit: string;
 }
 
-const rows = ref([
+const rows = useDatasetRef<Row>([
     { id: "1", fruit: "Apelsin" },
     { id: "2", fruit: "Banan" },
     { id: "3", fruit: "Päron" },

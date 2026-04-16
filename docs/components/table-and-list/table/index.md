@@ -1,5 +1,7 @@
 ---
-title: Om tabell
+title: Tabell
+short-title: Om tabell
+name: FTable
 status: Draft
 layout: component
 sortorder: 1
@@ -16,8 +18,6 @@ search:
         - radrubrik
         - kolumntyper
 ---
-
-Sidan är under omarbetning för nya tabellkomponenten och kan innehålla felaktigheter.
 
 ```import live-example
 FTableLiveExample.vue
@@ -59,7 +59,13 @@ Bestäm vilken information användaren ska få.
 
 Om inte användaren behöver all information direkt kan expanderbara rader vara ett sätt att visa mer information vid behov.
 
-Exempel med hur du kan anpassa/bygga kolumner.
+#### Kolumner och kolumntyper
+
+En kolumn i tabellen kan visa olika typer av innehåll.
+
+Tabellen stödjer flera kolumntyper (exempelvis textfält, dropplista, kryssruta med flera), men kan bara visa en typ av innehåll per kolumn.
+
+{@link column-types Läs mer om de olika kolumntyperna här.}
 
 #### Interagerbara objekt
 
@@ -72,6 +78,21 @@ Underlätta för användaren genom att formatera innehållet i tabellen så det 
 
 Undvik långa texter i tabellceller.
 Håll innehållet kort och koncist så att det blir lätt och överskådligt för användaren att hitta.
+
+### Funktioner
+
+Tabellen stödjer ett antal funktioner och kan låta användaren
+
+- {@link navigate navigera i tabell}
+- {@link sort-filter sortera och filtrera innehåll}
+- {@link expand-rows expandera rader}
+- {@link select-rows välja en eller flera rader}
+- {@link bulk-operation utföra bulkoperationer}
+- {@link table-paginate bläddra mellan sidor (paginering)}
+- {@link edit redigera innehåll}
+- {@link create-delete-rows lägga till och ta bort rader}
+- {@link action-button-link klicka på länkar}
+- {@link action-button-link utföra åtgärder genom knapp/kontextmeny}.
 
 ## Kod
 
@@ -90,6 +111,7 @@ Tabellen stödjer inte följande
 
 Följande förbättringar av tabell återstår:
 
+- radbrytning av text i kolumn
 - stöd för kolumntypen kombobox
 - laddning av data (spinner)
 - konsument ska kunna sätta kolumnbredd

@@ -22,7 +22,6 @@ const columns = defineTableColumns<Row>([
         type: "select",
         header: "Säsong",
         key: "season",
-        editable: true,
         options: ["Vår", "Sommar", "Höst", "Vinter"],
         label() {
             return "Välj säsong";
@@ -56,9 +55,6 @@ const columns = defineTableColumns<Row>([
 
 **`update:`** `(row: T, newValue: string, oldValue: string): void => {}` {@optional}
 : Anropas vid uppdaterat värde.
-
-**`editable:`** `boolean | ((row: T) => boolean)` {@optional}
-: Om cellen är redigerbar.
 
 **`label:`** `(row: T): string => {}` {@optional}
 : Skärmläsartext för dropplistan.

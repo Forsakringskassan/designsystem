@@ -16,3 +16,8 @@ Om användaren tar bort en rad ska fokus flyttas enligt prio nedan
 - till meddelande "Tabellen är tom" om att tabellen saknar rader.
 
 Exempel på tabell med knappar för ta bort/lägga till.
+
+## Lägga till rader och paginering
+
+När tabellen är paginerad och användaren kan lägga till rader bör tabellen ha sortering.
+Annars kan inte användaren sortera om tabellen när nya rader tillkommit.
