@@ -35,7 +35,7 @@ import { useDatasetRef } from "@fkui/vue";
 // packages/vue-labs/dist/esm/index.esm.js
 import { defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, withKeys, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, nextTick as nextTick3, toValue as toValue2, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, mergeProps, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, Fragment as Fragment2, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
-import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, getDatasetMetadata, setItemIdentifiers, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSlotUtils, getDatasetMetadata, setItemIdentifiers, FSortFilterDatasetInjected, copyItemIdentifier, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
 // node_modules/@vueuse/shared/index.mjs
 import { shallowRef, watchEffect, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject, provide, ref, isRef, unref, toValue as toValue$1, computed, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
@@ -5493,8 +5493,8 @@ function useTabstop(tableRef, metaRows) {
       return;
     }
     if (oldTabstopTr.rowIndex === 1) {
-      const needle2 = oldRows[1];
-      const hasRowBelowInNewRows = newRows.some(matching(needle2));
+      const needle2 = oldRows.at(1);
+      const hasRowBelowInNewRows = needle2 !== void 0 && newRows.some(matching(needle2));
       if (hasRowBelowInNewRows) {
         const {
           cell
@@ -5701,6 +5701,23 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     }
     function onKeydown(e) {
       maybeNavigateToCell(e);
+      if (e.defaultPrevented || e.key !== "Enter" && e.key !== " ") {
+        return;
+      }
+      if (!(e.target instanceof Element)) {
+        return;
+      }
+      const cell = e.target.closest("td, th");
+      if (!cell) {
+        return;
+      }
+      const targetEl = activateCell(cell, {
+        focus: true
+      });
+      if (!targetEl.contains(e.target)) {
+        e.preventDefault();
+        targetEl.click();
+      }
     }
     function onClick(e) {
       const cell = e.target.closest("td, th");
