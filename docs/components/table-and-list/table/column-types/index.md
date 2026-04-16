@@ -1,5 +1,5 @@
 ---
-title: Om kolumntyper i tabell
+title: Kolumntyper i tabell
 short-title: Om kolumntyper
 name: column-types
 layout: article
@@ -14,14 +14,14 @@ En kolumn i tabellen kan visa olika typer av innehåll.
 
 Tabellen stödjer kolumntyperna:
 
-- textfält (enbart visning av data eller redigerbar) samt motsvarande format som de specialiserade inmatningsfälten
-- radrubrik
-- knapp
-- länk
-- kryssruta
-- dropplista
-- kontextmeny
-- renderat innehåll (eget innehåll).
+- {@link column-type-text textfält} (enbart visning av data eller redigerbar) samt motsvarande format som de specialiserade inmatningsfälten
+- {@link column-type-rowheader radrubrik}
+- {@link column-type-button knapp}
+- {@link column-type-anchor länk}
+- {@link column-type-checkbox kryssruta}
+- {@link column-type-select dropplista}
+- {@link column-type-menu kontextmeny}
+- {@link column-type-render renderat innehåll} (eget innehåll).
 
 ```import live-example
 FTableColumnLiveExample.vue

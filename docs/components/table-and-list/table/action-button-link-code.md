@@ -10,9 +10,9 @@ search:
 ## Åtgärdsknappar
 
 Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig. Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis något som förklarar vilken rad som påverkas).
-Kolumnens typ ska sättas till `button`.
+Sätt kolumnens typ till `button`.
 
-Läs mer om hur du sätter upp kolumntyp {@link FSortFilterDataset `button`}.
+{@link column-type-button Läs här om hur du sätter upp kolumntyp `button`}.
 
 // plats för kodexempel
 
@@ -22,8 +22,14 @@ Om etiketten ska vara synlig använder du propen `label`. En `<span>` med sr-onl
 
 ## Länkar
 
-Länkar i tabell använder `table__anchor`-klassen:
+Sätt kolumnens typ till `anchor`.
 
-Kolumnens typ ska sättas till
+{@link column-type-anchor Läs här om hur du sätter upp kolumntyp `anchor`}.
 
 // plats för kodexempel
+
+## Kontextmeny
+
+Sätt kolumnens typs till `menu`
+
+{@link column-type-anchor Läs här om hur du sätter upp kolumntyp `menu`}.

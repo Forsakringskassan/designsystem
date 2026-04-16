@@ -1,5 +1,5 @@
 ---
-title: Kod (tillhör nya tabellkomponenten)
+title: Tabell (kod)
 layout: article
 sortorder: 2
 search:

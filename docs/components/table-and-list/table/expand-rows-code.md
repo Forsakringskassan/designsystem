@@ -1,5 +1,5 @@
 ---
-title: Expandera rader i tabell(kod)
+title: Expandera rader i tabell (kod)
 short-title: Expandera rader (kod)
 layout: article
 search:
