@@ -8,7 +8,9 @@ const { input, button, dropdown, options, activeOption } =
     setupComboboxSelectors();
 
 const defaultMountOptions = {
-    props: { options: ["foo", "bar", "baz"] },
+    props: {
+        options: ["foo", "bar", "baz"],
+    },
     slots: { default: "Etikett" },
     attrs: { maxlength: "100" },
 };
@@ -513,5 +515,43 @@ describe("Validation", () => {
             "have.text",
             "modelValue: foo",
         );
+    });
+    describe("`forced-colors` media feature", () => {
+        const defaultMountOptions = {
+            props: {
+                options: [
+                    "Abchazien",
+                    "Afghanistan",
+                    "Albanien",
+                    "Algeriet",
+                    "Amerikanska Samoa",
+                    "Amerikas förenta stater (USA)",
+                    "Andorra",
+                    "Angola",
+                ],
+            },
+            slots: { default: "Etikett" },
+            attrs: { maxlength: "100" },
+        };
+
+        it("should render correct styling for forced color mode dark with scrollbar visual", () => {
+            cy.forcedColors("dark");
+            cy.mount(FTextField, defaultMountOptions);
+            cy.get(input).click();
+            cy.get("li").eq(2).invoke("addClass", "is-hover");
+            cy.get(dropdown).toMatchScreenshot();
+        });
+        it("should render correct styling for forced color mode dark withouth scrollbar visual", () => {
+            defaultMountOptions.props.options = [
+                "Abchazien",
+                "Afghanistan",
+                "Albanien",
+            ];
+            cy.forcedColors("dark");
+            cy.mount(FTextField, defaultMountOptions);
+            cy.get(input).click();
+            cy.get("li").eq(2).invoke("addClass", "is-hover");
+            cy.get(dropdown).toMatchScreenshot();
+        });
     });
 });

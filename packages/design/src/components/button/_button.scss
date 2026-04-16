@@ -29,20 +29,6 @@ $button--secondary: (
     padding-left: var(--f-button-secondary-padding-left),
 ) !default;
 
-/// Standard button
-$button--standard: (
-    background-color--hover: $button-secondary-color-background-hover,
-    background-color: $button-secondary-color-background-default,
-    border-color: $button-secondary-color-border-default,
-    color: $button-secondary-color-text-default,
-    shadow: var(--f-button-shadow),
-    shadow-hover: var(--f-button-shadow-hover),
-    padding-top: core.densify(var(--f-button-standard-padding-top)),
-    padding-right: var(--f-button-standard-padding-right),
-    padding-bottom: core.densify(var(--f-button-standard-padding-bottom)),
-    padding-left: var(--f-button-standard-padding-left),
-) !default;
-
 /// Discrete button
 $button--discrete: (
     color: $button-tertiary-color-text-default,
@@ -95,39 +81,6 @@ $button--tertiary: (
     padding-left: var(--f-button-tertiary-padding-left),
 ) !default;
 
-/// Button placeholders
-%button-template {
-    border-color: transparent;
-    border-radius: var(--f-border-radius-medium);
-    border-style: solid;
-    border-width: var(--f-border-width-medium);
-    cursor: pointer;
-    display: inline-block;
-    font-size: var(--f-font-size-standard);
-    font-weight: var(--f-font-weight-medium);
-    justify-content: center;
-    align-items: center;
-    letter-spacing: var(--f-button-letter-spacing);
-    line-height: var(--f-button-default-line-height);
-    margin-bottom: core.densify(size.$margin-150);
-    margin-top: core.densify(size.$margin-025);
-    min-width: var(--f-button-min-width);
-    /* stylelint-disable declaration-block-no-redundant-longhand-properties -- readability */
-    padding-top: core.densify(var(--f-button-default-padding-top));
-    padding-right: var(--f-button-default-padding-right);
-    padding-bottom: core.densify(var(--f-button-default-padding-bottom));
-    padding-left: var(--f-button-default-padding-left);
-    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
-    position: relative;
-    text-align: center;
-    transition: background-color var(--f-animation-duration-medium) ease-out;
-
-    @include core.breakpoint-down(sm) {
-        max-width: var(--f-width-full);
-        width: var(--f-width-full);
-    }
-}
-
 /// Deprecated: Will be removed in next major version (FKUI v4).
 .button--text {
     /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
@@ -142,11 +95,34 @@ $button--tertiary: (
 }
 
 .button {
+    align-items: center;
+    border-radius: var(--f-border-radius-medium);
+    border-style: solid;
+    cursor: pointer;
     display: inline-flex;
+    font-size: var(--f-font-size-standard);
+    font-weight: var(--f-font-weight-medium);
+    justify-content: center;
+    letter-spacing: var(--f-button-letter-spacing);
+    line-height: var(--f-button-default-line-height);
+    margin-bottom: core.densify(size.$margin-150);
+    margin-top: core.densify(size.$margin-025);
+    min-width: var(--f-button-min-width);
     position: relative;
+    text-align: center;
+    transition: background-color var(--f-animation-duration-medium) ease-out;
 
-    @extend %button-template;
-    @include core.make-button-variant(".button", $button--standard...);
+    @include core.breakpoint-down(sm) {
+        max-width: var(--f-width-full);
+        width: var(--f-width-full);
+    }
+
+    // A default ".button" is a secondary type button.
+    @include core.make-button-variant(".button", $button--secondary...);
+
+    // A default ".button" is a large size button.
+    /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
+    @extend .button--large;
 
     &.button--primary {
         @include core.make-button-variant(".button", $button--primary...);

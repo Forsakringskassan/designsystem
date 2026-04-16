@@ -5,6 +5,15 @@
 ```ts
 
 // @public
+export function FExpandableParagraphSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    expandCollapseIcon(): string;
+    header(): string;
+    body(): string;
+    relatedInfo(): string;
+}>;
+
+// @public
 export function FListSelectors(selector?: string): Readonly<{
     readonly selector: string;
     listItems(this: void): string;

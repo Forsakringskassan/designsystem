@@ -85,29 +85,24 @@ function normalizeFilterAttributes(
     return filterAttributes;
 }
 
-function sortFilterData<T extends object, TArray extends Dataset<T> | T[]>(
-    data: TArray,
+function sortFilterData<T extends object>(
+    data: Dataset<T> | T[],
     filterAttributes: PropertyKey[],
     searchString: string,
     sortAttribute: SortableAttribute,
-): TArray {
+): Dataset<T> {
     const filteredData = filter(data, filterAttributes, searchString);
-
     const sortedData = sort(filteredData, {
         attribute: sortAttribute.attribute as keyof T | "",
         ascending: sortAttribute.ascending,
-    }) as TArray;
-
-    return toDataset(sortedData, data) as TArray;
+    });
+    return toDataset(sortedData, data);
 }
 
-export interface SortFilterDatasetState<
-    T extends object,
-    TArray extends Dataset<T> | T[],
-> {
+export interface SortFilterDatasetState<T extends object> {
     searchString: Ref<string>;
     sortAttribute: Ref<SortOrder>;
-    sortFilterResult: Ref<TArray>;
+    sortFilterResult: Ref<Dataset<T>>;
     showClearButton: Ref<boolean>;
     defaultSortValue: SortOrder;
     sortableKeys: Ref<Array<string | symbol>>;
@@ -120,21 +115,18 @@ export interface SortFilterDatasetState<
     ): void;
 }
 
-export function useSortFilterDataset<
-    T extends object,
-    TArray extends Dataset<T> | T[],
->(
-    data: MaybeRefOrGetter<TArray>,
+export function useSortFilterDataset<T extends object>(
+    data: MaybeRefOrGetter<Dataset<T> | T[]>,
     sortableAttributes: MaybeRefOrGetter<
         Record<PropertyKey, string | Readonly<Ref<string>>>
     >,
     filterAttributes: MaybeRefOrGetter<PropertyKey[] | undefined>,
     defaultSortAttribute: PropertyKey,
     defaultSortAscending: boolean,
-): SortFilterDatasetState<T, TArray> {
+): SortFilterDatasetState<T> {
     const searchString = ref("");
     const sortAttribute = ref<SortOrder>({ ...defaultSortValue });
-    const sortFilterResult = ref([] as unknown as TArray) as Ref<TArray>;
+    const sortFilterResult = ref(toDataset([])) as Ref<Dataset<T>>;
     const useDefaultSortOrder = ref(true);
 
     /* all enumerable keys from sortableAttributes */

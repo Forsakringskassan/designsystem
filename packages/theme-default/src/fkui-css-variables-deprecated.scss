@@ -428,6 +428,16 @@ $palette-color-hav-20: #dbe0ec !default;
     --f-border-color-separator-pageheader-primary: #{$palette-color-white-100};
     --f-border-color-separator: #{$palette-color-fk-black-15};
     --f-background-pageheader-primary: #{$palette-color-green-a-100};
+
+    // Deprecated since v6.43.0
+    --f-button-standard-padding-top: 1rem;
+    --f-button-standard-padding-right: 1.5rem;
+    --f-button-standard-padding-bottom: 1rem;
+    --f-button-standard-padding-left: 1.5rem;
+    --f-button-default-padding-top: 1rem;
+    --f-button-default-padding-right: 1.5rem;
+    --f-button-default-padding-bottom: 1rem;
+    --f-button-default-padding-left: 1.5rem;
 }
 
 @if $global {

@@ -100,7 +100,7 @@ describe("html-validate", () => {
             const report = await htmlvalidate.validateString(markup);
             expect(report).toBeInvalid();
             expect(report).toMatchInlineCodeframe(`
-                error: Attribute "type" has invalid value "invalid" (attribute-allowed-values) at inline:2:33:
+                error: Attribute "type" has invalid value "invalid" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-button type="invalid"> lorem ipsum </f-button>
                     |                                 ^^^^^^^
@@ -119,7 +119,7 @@ describe("html-validate", () => {
             const report = await htmlvalidate.validateString(markup);
             expect(report).toBeInvalid();
             expect(report).toMatchInlineCodeframe(`
-                error: <form> element must have a submit button (wcag/h32) at inline:2:18:
+                error: <form> element must have a submit button (wcag/h32)
                   1 |
                 > 2 |                 <form>
                     |                  ^^^^
@@ -162,7 +162,7 @@ describe("html-validate", () => {
             const report = await htmlvalidate.validateString(markup);
             expect(report).toBeInvalid();
             expect(report).toMatchInlineCodeframe(`
-                error: Attribute "variant" has invalid value "invalid" (attribute-allowed-values) at inline:2:36:
+                error: Attribute "variant" has invalid value "invalid" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-button variant="invalid"> lorem ipsum </f-button>
                     |                                    ^^^^^^^
@@ -192,7 +192,7 @@ describe("html-validate", () => {
             const report = await htmlvalidate.validateString(markup);
             expect(report).toBeInvalid();
             expect(report).toMatchInlineCodeframe(`
-                error: Attribute "size" has invalid value "invalid" (attribute-allowed-values) at inline:2:33:
+                error: Attribute "size" has invalid value "invalid" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-button size="invalid"> lorem ipsum </f-button>
                     |                                 ^^^^^^^
@@ -223,7 +223,7 @@ describe("html-validate", () => {
             const report = await htmlvalidate.validateString(markup);
             expect(report).toBeInvalid();
             expect(report).toMatchInlineCodeframe(`
-                error: "icon-left" attribute cannot be used on <f-button> in this context: cannot be used at the same time as "icon-right" (attribute-misuse) at inline:2:27:
+                error: "icon-left" attribute cannot be used on <f-button> in this context: cannot be used at the same time as "icon-right" (attribute-misuse)
                   1 |
                 > 2 |                 <f-button icon-left="icon" icon-right="icon">
                     |                           ^^^^^^^^^
@@ -231,7 +231,7 @@ describe("html-validate", () => {
                   4 |                 </f-button>
                   5 |
                 Selector: f-button
-                error: "icon-right" attribute cannot be used on <f-button> in this context: cannot be used at the same time as "icon-left" (attribute-misuse) at inline:2:44:
+                error: "icon-right" attribute cannot be used on <f-button> in this context: cannot be used at the same time as "icon-left" (attribute-misuse)
                   1 |
                 > 2 |                 <f-button icon-left="icon" icon-right="icon">
                     |                                            ^^^^^^^^^^
@@ -276,7 +276,7 @@ describe("html-validate", () => {
             const report = await htmlvalidate.validateString(markup);
             expect(report).toBeInvalid();
             expect(report).toMatchInlineCodeframe(`
-                error: "tertiary-style" attribute cannot be used on <f-button> in this context: "variant" attribute must be "tertiary" (attribute-misuse) at inline:2:27:
+                error: "tertiary-style" attribute cannot be used on <f-button> in this context: "variant" attribute must be "tertiary" (attribute-misuse)
                   1 |
                 > 2 |                 <f-button tertiary-style="black"> lorem ipsum </f-button>
                     |                           ^^^^^^^^^^^^^^
@@ -295,7 +295,7 @@ describe("html-validate", () => {
             const report = await htmlvalidate.validateString(markup);
             expect(report).toBeInvalid();
             expect(report).toMatchInlineCodeframe(`
-                error: Attribute "tertiary-style" has invalid value "invalid" (attribute-allowed-values) at inline:2:43:
+                error: Attribute "tertiary-style" has invalid value "invalid" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-button tertiary-style="invalid" variant="tertiary">
                     |                                           ^^^^^^^
@@ -314,7 +314,7 @@ describe("html-validate", () => {
             const report = await htmlvalidate.validateString(markup);
             expect(report).toBeInvalid();
             expect(report).toMatchInlineCodeframe(`
-                error: "align-text" attribute cannot be used on <f-button> in this context: "variant" attribute must be "tertiary" (attribute-misuse) at inline:2:27:
+                error: "align-text" attribute cannot be used on <f-button> in this context: "variant" attribute must be "tertiary" (attribute-misuse)
                   1 |
                 > 2 |                 <f-button align-text> lorem ipsum </f-button>
                     |                           ^^^^^^^^^^

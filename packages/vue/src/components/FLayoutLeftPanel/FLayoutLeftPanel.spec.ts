@@ -23,15 +23,15 @@ describe("html-validate", () => {
         expect.assertions(1);
         expect(`<f-layout-left-panel></f-layout-left-panel>`)
             .toMatchInlineCodeframe(`
-            "error: <f-layout-left-panel> component requires slot "heading" to be implemented (vue/required-slots) at inline:1:2:
+            "error: <f-layout-left-panel> component requires slot "heading" to be implemented (vue/required-slots)
             > 1 | <f-layout-left-panel></f-layout-left-panel>
                 |  ^^^^^^^^^^^^^^^^^^^
             Selector: f-layout-left-panel
-            error: <f-layout-left-panel> component requires slot "content" to be implemented (vue/required-slots) at inline:1:2:
+            error: <f-layout-left-panel> component requires slot "content" to be implemented (vue/required-slots)
             > 1 | <f-layout-left-panel></f-layout-left-panel>
                 |  ^^^^^^^^^^^^^^^^^^^
             Selector: f-layout-left-panel
-            error: <f-layout-left-panel> component requires slot "default" to be implemented (vue/required-slots) at inline:1:2:
+            error: <f-layout-left-panel> component requires slot "default" to be implemented (vue/required-slots)
             > 1 | <f-layout-left-panel></f-layout-left-panel>
                 |  ^^^^^^^^^^^^^^^^^^^
             Selector: f-layout-left-panel"

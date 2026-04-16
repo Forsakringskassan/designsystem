@@ -143,4 +143,22 @@ describe("FFileItem", () => {
         pageObject.fileName().should("have.trimmedText", fileName);
         cy.get(pageObject.selector).toMatchScreenshot();
     });
+
+    describe("Visual", () => {
+        const forcedColorModes = ["none", "dark", "light"] as const;
+
+        for (const mode of forcedColorModes) {
+            it(`should render correct styling for forced color mode '${mode}'`, () => {
+                cy.viewport(300, 100);
+                cy.forcedColors(mode);
+                cy.mount(FFileItem, {
+                    props: {
+                        fileName: "visualExample.pdf",
+                        mimeType: "application/pdf",
+                    },
+                });
+                cy.toMatchScreenshot();
+            });
+        }
+    });
 });

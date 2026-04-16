@@ -20,7 +20,7 @@ it("should report when `f-modal` is not root element", async () => {
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: f-modal must be root element (fkui/no-template-modal) at inline:3:14:
+        "error: f-modal must be root element (fkui/no-template-modal)
           1 |
           2 |         <div>
         > 3 |             <f-modal></f-modal>
@@ -29,7 +29,7 @@ it("should report when `f-modal` is not root element", async () => {
           5 |                 <f-modal></f-modal>
           6 |             </template>
         Selector: -
-        error: f-modal must be root element (fkui/no-template-modal) at inline:5:18:
+        error: f-modal must be root element (fkui/no-template-modal)
           3 |             <f-modal></f-modal>
           4 |             <template>
         > 5 |                 <f-modal></f-modal>
@@ -54,7 +54,7 @@ it("should report when `f-confirm-modal` is not root element", async () => {
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: f-confirm-modal must be root element (fkui/no-template-modal) at inline:3:14:
+        "error: f-confirm-modal must be root element (fkui/no-template-modal)
           1 |
           2 |         <div>
         > 3 |             <f-confirm-modal></f-confirm-modal>
@@ -63,7 +63,7 @@ it("should report when `f-confirm-modal` is not root element", async () => {
           5 |                 <f-confirm-modal></f-confirm-modal>
           6 |             </template>
         Selector: -
-        error: f-confirm-modal must be root element (fkui/no-template-modal) at inline:5:18:
+        error: f-confirm-modal must be root element (fkui/no-template-modal)
           3 |             <f-confirm-modal></f-confirm-modal>
           4 |             <template>
         > 5 |                 <f-confirm-modal></f-confirm-modal>
@@ -88,7 +88,7 @@ it("should report when `f-form-modal` is not root element", async () => {
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: f-form-modal must be root element (fkui/no-template-modal) at inline:3:14:
+        "error: f-form-modal must be root element (fkui/no-template-modal)
           1 |
           2 |         <div>
         > 3 |             <f-form-modal></f-form-modal>
@@ -97,7 +97,7 @@ it("should report when `f-form-modal` is not root element", async () => {
           5 |                 <f-form-modal></f-form-modal>
           6 |             </template>
         Selector: -
-        error: f-form-modal must be root element (fkui/no-template-modal) at inline:5:18:
+        error: f-form-modal must be root element (fkui/no-template-modal)
           3 |             <f-form-modal></f-form-modal>
           4 |             <template>
         > 5 |                 <f-form-modal></f-form-modal>

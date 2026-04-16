@@ -300,6 +300,19 @@ export class FExpandablePanelPageObject implements BasePageObject {
 }
 
 // @public (undocumented)
+export class FExpandableParagraphPageObject implements BasePageObject {
+    constructor(selector?: string);
+    body(): DefaultCypressChainable;
+    el(): DefaultCypressChainable;
+    expandCollapseIcon(): DefaultCypressChainable;
+    header(): DefaultCypressChainable;
+    isOpen(): Cypress.Chainable<boolean>;
+    relatedInfo(): DefaultCypressChainable;
+    // (undocumented)
+    get selector(): string;
+}
+
+// @public (undocumented)
 export class FFieldsetPageObject implements BasePageObject {
     constructor(selector: string);
     // (undocumented)

@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends object, TArray extends Dataset<T> | T[] = Dataset<T> | T[]">
+<script setup lang="ts" generic="T extends object">
 import { type Ref, computed, nextTick, onMounted, provide, watch } from "vue";
 import { TranslationService, alertScreenReader, debounce } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
@@ -13,11 +13,25 @@ import {
 import { type SortOrder } from "./sort-order";
 import { useSortFilterDataset } from "./use-sort-filter-dataset";
 
-export interface FSortFilterDatasetProps<TArray> {
+const {
+    data,
+    sortableAttributes,
+    defaultSortAttribute = "",
+    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
+    showSort = true,
+    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
+    showFilter = true,
+    filterLabel = undefined,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility
+    placeholderFilter = undefined,
+    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
+    defaultSortAscending = true,
+    filterAttributes = undefined,
+} = defineProps<{
     /**
      * The data that you wish to sort or filter.
      */
-    data: TArray;
+    data: Dataset<T> | T[];
     /**
      * All the attributes you want to enable sorting for and the corresponding name to display in the dropdown.
      * Structured as `{attributeName: "Name for dropdown", secondAttributeName: "Name for dropdown"}`
@@ -56,25 +70,7 @@ export interface FSortFilterDatasetProps<TArray> {
      * Default includes all attributes.
      */
     filterAttributes?: PropertyKey[];
-}
-
-type TInfered = TArray extends Dataset<infer U> ? Dataset<U> : TArray;
-
-const {
-    data,
-    sortableAttributes,
-    defaultSortAttribute = "",
-    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-    showSort = true,
-    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-    showFilter = true,
-    filterLabel = undefined,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility
-    placeholderFilter = undefined,
-    /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-    defaultSortAscending = true,
-    filterAttributes = undefined,
-} = defineProps<FSortFilterDatasetProps<TInfered>>();
+}>();
 
 const emit = defineEmits<{
     /**
@@ -82,7 +78,7 @@ const emit = defineEmits<{
      *
      * @arg items - The sorted data.
      */
-    datasetSorted: [items: TInfered];
+    datasetSorted: [items: Dataset<T>];
 
     /**
      * Emits the used sorting attributes.
@@ -102,7 +98,7 @@ const {
     sortOrders,
     onUserChangeSortAttribute,
     onApiChangeSortAttribute,
-} = useSortFilterDataset<T, TInfered>(
+} = useSortFilterDataset<T>(
     () => data,
     () => sortableAttributes,
     () => filterAttributes,

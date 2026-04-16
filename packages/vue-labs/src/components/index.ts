@@ -29,6 +29,7 @@ export {
     textTypes,
 } from "./FTable";
 export { XFileDragdrop } from "./XFileDragdrop";
+export { XRelativeTime } from "./XRelativeTime";
 export {
     XSortFilterDatasetNg,
     matchPropertyValue,
