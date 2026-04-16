@@ -192,6 +192,29 @@ function onToggleExpanded(key: ItemIdentifier): void {
 
 function onKeydown(e: KeyboardEvent): void {
     maybeNavigateToCell(e);
+
+    if (e.defaultPrevented || (e.key !== "Enter" && e.key !== " ")) {
+        return;
+    }
+
+    if (!(e.target instanceof Element)) {
+        return;
+    }
+
+    const cell = e.target.closest<HTMLElement>("td, th");
+
+    if (!cell) {
+        return;
+    }
+
+    const targetEl = activateCell(cell, { focus: true });
+
+    // If keyboard focus is on the cell rather than the actual target,
+    // forward activation to the target just like the click handler does
+    if (!targetEl.contains(e.target)) {
+        e.preventDefault();
+        targetEl.click();
+    }
 }
 
 function onClick(e: MouseEvent): void {
