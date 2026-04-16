@@ -10,8 +10,9 @@ import {
     type FSortFilterDatasetMountCallback,
     type FSortFilterDatasetSortCallback,
 } from "./f-sort-filter-dataset-interface";
+import { sortFilterDatasetEventsKey } from "./sort-filter-dataset-events";
 import { type SortOrder } from "./sort-order";
-import { useSortFilterDataset } from "./use-sort-filter-dataset";
+import { type SortFilterDatasetMode, useSortFilterDataset } from "./use-sort-filter-dataset";
 
 const {
     data,
@@ -27,6 +28,7 @@ const {
     /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
     defaultSortAscending = true,
     filterAttributes = undefined,
+    mode = "none",
 } = defineProps<{
     /**
      * The data that you wish to sort or filter.
@@ -70,6 +72,13 @@ const {
      * Default includes all attributes.
      */
     filterAttributes?: PropertyKey[];
+    /**
+     * Controls when sort/filter result should be recalculated.
+     *
+     * - "none": recalculates on all data updates.
+     * - "lazy": skips recalculation on edits and appends added rows last.
+     */
+    mode?: SortFilterDatasetMode;
 }>();
 
 const emit = defineEmits<{
@@ -88,6 +97,9 @@ const emit = defineEmits<{
     usedSortAttributes: [sortAttribute: SortOrder];
 }>();
 
+const refreshCallbacks = new Set<() => void>();
+const lazyRowsAddedCallbacks = new Set<() => void>();
+
 const $t = useTranslate();
 const {
     searchString,
@@ -98,12 +110,26 @@ const {
     sortOrders,
     onUserChangeSortAttribute,
     onApiChangeSortAttribute,
+    refresh,
 } = useSortFilterDataset<T>(
     () => data,
     () => sortableAttributes,
     () => filterAttributes,
     defaultSortAttribute,
     defaultSortAscending,
+    mode,
+    {
+        onRefresh: () => {
+            for (const callback of refreshCallbacks) {
+                callback();
+            }
+        },
+        onLazyRowsAdded: () => {
+            for (const callback of lazyRowsAddedCallbacks) {
+                callback();
+            }
+        },
+    },
 );
 
 const clearableScreenReaderText = $t("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält");
@@ -153,6 +179,19 @@ provide("registerCallbackOnSort", (callback: FSortFilterDatasetSortCallback) => 
 
 provide("registerCallbackOnMount", (callback: FSortFilterDatasetMountCallback) => {
     tableCallbackSortableColumns = callback;
+});
+
+provide(sortFilterDatasetEventsKey, {
+    onRefresh(callback: () => void): void {
+        refreshCallbacks.add(callback);
+    },
+    onLazyRowsAdded(callback: () => void): void {
+        lazyRowsAddedCallbacks.add(callback);
+    },
+});
+
+defineExpose({
+    refresh,
 });
 
 onMounted(() => {

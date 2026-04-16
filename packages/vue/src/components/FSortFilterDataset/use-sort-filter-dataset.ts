@@ -113,6 +113,14 @@ export interface SortFilterDatasetState<T extends object> {
         attribute: string,
         ascending: boolean,
     ): void;
+    refresh(this: void): void;
+}
+
+export type SortFilterDatasetMode = "none" | "lazy";
+
+export interface SortFilterDatasetCallbacks {
+    onRefresh?: () => void;
+    onLazyRowsAdded?: () => void;
 }
 
 export function useSortFilterDataset<T extends object>(
@@ -123,11 +131,14 @@ export function useSortFilterDataset<T extends object>(
     filterAttributes: MaybeRefOrGetter<PropertyKey[] | undefined>,
     defaultSortAttribute: PropertyKey,
     defaultSortAscending: boolean,
+    mode: SortFilterDatasetMode = "none",
+    callbacks: SortFilterDatasetCallbacks = {},
 ): SortFilterDatasetState<T> {
     const searchString = ref("");
     const sortAttribute = ref<SortOrder>({ ...defaultSortValue });
     const sortFilterResult = ref(toDataset([])) as Ref<Dataset<T>>;
     const useDefaultSortOrder = ref(true);
+    let initialized = false;
 
     /**
      * Data snapshot taken when new sortfilter is run.
@@ -166,7 +177,7 @@ export function useSortFilterDataset<T extends object>(
         return searchString.value.length > 0;
     });
 
-    function onUserChangeSortAttribute(): void {
+    function runSortFilterData(): void {
         dataSnapshot = [...toValue(data)];
         sortFilterResult.value = sortFilterData(
             dataSnapshot,
@@ -174,6 +185,15 @@ export function useSortFilterDataset<T extends object>(
             searchString.value,
             sortAttribute.value,
         );
+    }
+
+    function notifyRefresh(): void {
+        callbacks.onRefresh?.();
+    }
+
+    function onUserChangeSortAttribute(): void {
+        runSortFilterData();
+        notifyRefresh();
     }
 
     function onApiChangeSortAttribute(
@@ -186,31 +206,24 @@ export function useSortFilterDataset<T extends object>(
             sortOrders.value,
         );
 
-        dataSnapshot = [...toValue(data)];
-        sortFilterResult.value = sortFilterData(
-            dataSnapshot,
-            internalFilterAttributes.value,
-            searchString.value,
-            sortAttribute.value,
-        );
+        runSortFilterData();
+        notifyRefresh();
+    }
+
+    function refresh(): void {
+        runSortFilterData();
+        notifyRefresh();
     }
 
     watch(searchString, () => {
-        dataSnapshot = [...toValue(data)];
-        sortFilterResult.value = sortFilterData(
-            dataSnapshot,
-            internalFilterAttributes.value,
-            searchString.value,
-            sortAttribute.value,
-        );
+        runSortFilterData();
+        notifyRefresh();
     });
 
     /**
-     * Visually resets sort without resorting the current output data.
-     *
-     * This is intended when existing input data is mutated.
+     * Applies lazy-mode update semantics without full sort/filter recomputation.
      */
-    function handleDataChanged(): void {
+    function handleLazyModeUpdate(): void {
         const newData = toValue(data);
         const newResult = [...sortFilterResult.value];
 
@@ -234,14 +247,16 @@ export function useSortFilterDataset<T extends object>(
             sortFilterResult.value.length,
             ...newResult,
         );
+
+        if (additions.length > 0) {
+            callbacks.onLazyRowsAdded?.();
+        }
     }
 
     /**
-     * Runs a full sort replacing the current output data.
-     *
-     * This is intended when the input data is fully replaced.
+     * Runs a full sort/filter recomputation and replaces current output data.
      */
-    function handleDataReplaced(): void {
+    function handleFullRecompute(): void {
         if (defaultSortAttribute !== "" && useDefaultSortOrder.value) {
             const foundAttribute = sortOrders.value.find((item) => {
                 return (
@@ -258,22 +273,22 @@ export function useSortFilterDataset<T extends object>(
             useDefaultSortOrder.value = false;
         }
 
-        dataSnapshot = [...toValue(data)];
-        sortFilterResult.value = sortFilterData(
-            dataSnapshot,
-            internalFilterAttributes.value,
-            searchString.value,
-            sortAttribute.value,
-        );
+        runSortFilterData();
     }
 
     watch(
         () => toValue(data),
-        (newData, oldData) => {
-            if (newData === oldData) {
-                handleDataChanged();
+        () => {
+            if (!initialized) {
+                initialized = true;
+                handleFullRecompute();
+                return;
+            }
+
+            if (mode === "lazy") {
+                handleLazyModeUpdate();
             } else {
-                handleDataReplaced();
+                handleFullRecompute();
             }
         },
         { immediate: true, deep: true },
@@ -289,5 +304,6 @@ export function useSortFilterDataset<T extends object>(
         sortAttribute,
         onUserChangeSortAttribute,
         onApiChangeSortAttribute,
+        refresh,
     };
 }

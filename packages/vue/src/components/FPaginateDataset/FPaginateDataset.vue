@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T extends object, TArray extends Dataset<T> | T[] = Dataset<T> | T[]">
 import { type Ref, computed, onMounted, provide, ref, watch } from "vue";
 import { type Dataset, toDataset } from "../../utils";
+import { useSortFilterDatasetEvents } from "../FSortFilterDataset/sort-filter-dataset-events";
 import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
 import { paginateDatasetKey } from "./provide";
 
@@ -69,7 +70,12 @@ const numberOfPages = computed(() => Math.ceil(numberOfItems.value / itemsPerPag
 // Computes number of items
 const numberOfItems = computed(() => (itemsLength > 0 ? itemsLength : items.length));
 
+const sortFilterDatasetEvents = useSortFilterDatasetEvents();
+
 onMounted(() => {
+    sortFilterDatasetEvents.onRefresh(goToFirstPage);
+    sortFilterDatasetEvents.onLazyRowsAdded(goToLastPage);
+
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     refetchData();
 });

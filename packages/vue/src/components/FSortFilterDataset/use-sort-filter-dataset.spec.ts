@@ -25,7 +25,7 @@ it("should output filtered rows directly", async () => {
     ]);
 });
 
-describe("filtered data after mutation of input data", () => {
+describe("filtered data after editing of input data in lazy mode", () => {
     it("should have new rows at the end of array", async () => {
         const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
 
@@ -35,6 +35,7 @@ describe("filtered data after mutation of input data", () => {
             [],
             "foo",
             true,
+            "lazy",
         );
 
         data.value.push({ foo: "barbaz" });
@@ -86,6 +87,7 @@ describe("filtered data after mutation of input data", () => {
             [],
             "foo",
             true,
+            "lazy",
         );
 
         data.value.splice(0, 1);
@@ -119,6 +121,7 @@ describe("filtered data after mutation of input data", () => {
             [],
             "foo",
             true,
+            "lazy",
         );
 
         data.value[0].foo = "foobar";
@@ -146,6 +149,7 @@ describe("filtered data after mutation of input data", () => {
             [],
             "foo",
             true,
+            "lazy",
         );
 
         data.value[0].foo = "alpha";
@@ -173,6 +177,7 @@ describe("filtered data after mutation of input data", () => {
             ["foo"],
             "foo",
             true,
+            "lazy",
         );
 
         searchString.value = "b";
@@ -200,7 +205,103 @@ describe("filtered data after mutation of input data", () => {
             },
         ]);
     });
+
+    it("should not be resorted in lazy mode when data is replaced", async () => {
+        const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
+
+        const { sortFilterResult } = useSortFilterDataset(
+            data,
+            { foo: "foo" },
+            [],
+            "foo",
+            true,
+            "lazy",
+        );
+
+        data.value = [{ foo: "zzz" }, { foo: "aaa" }, { foo: "mmm" }];
+        await nextTick();
+
+        expect(sortFilterResult.value).toMatchObject([
+            {
+                foo: "zzz",
+            },
+            {
+                foo: "aaa",
+            },
+            {
+                foo: "mmm",
+            },
+        ]);
+    });
 });
+
+describe("lazy callbacks and refresh", () => {
+    it("should call onLazyRowsAdded when new rows are appended", async () => {
+        const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
+        const onLazyRowsAdded = jest.fn();
+
+        useSortFilterDataset(
+            data,
+            { foo: "foo" },
+            [],
+            "foo",
+            true,
+            "lazy",
+            { onLazyRowsAdded },
+        );
+
+        data.value.push({ foo: "added" });
+        await nextTick();
+
+        expect(onLazyRowsAdded).toHaveBeenCalledTimes(1);
+    });
+
+    it("should call onRefresh and rerun full sort when refresh is called", async () => {
+        const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
+        const onRefresh = jest.fn();
+
+        const { sortFilterResult, refresh } = useSortFilterDataset(
+            data,
+            { foo: "foo" },
+            [],
+            "foo",
+            true,
+            "lazy",
+            { onRefresh },
+        );
+
+        data.value[0].foo = "alpha";
+        await nextTick();
+
+        expect(sortFilterResult.value).toMatchObject([
+            {
+                foo: "bar",
+            },
+            {
+                foo: "baz",
+            },
+            {
+                foo: "alpha",
+            },
+        ]);
+
+        refresh();
+
+        expect(sortFilterResult.value).toMatchObject([
+            {
+                foo: "alpha",
+            },
+            {
+                foo: "bar",
+            },
+            {
+                foo: "baz",
+            },
+        ]);
+        expect(onRefresh).toHaveBeenCalledTimes(1);
+    });
+});
+
 
 describe("filtered data after replacement of input data", () => {
     it("should update filtered rows when data is replaced", async () => {

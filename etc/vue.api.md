@@ -51,6 +51,7 @@ import { PropType } from 'vue';
 import { PublicProps } from 'vue';
 import { Ref } from 'vue';
 import { ShallowRef } from 'vue';
+import { ShallowUnwrapRef } from 'vue';
 import { Slot } from 'vue';
 import { Slots } from 'vue';
 import { StackHandle } from '@fkui/logic';

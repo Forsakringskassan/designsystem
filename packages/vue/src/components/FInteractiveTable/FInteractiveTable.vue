@@ -44,6 +44,7 @@ import { ActivateItemInjected } from "../FCrudDataset";
 import { FIcon } from "../FIcon";
 import { FRadioField } from "../FRadioField";
 import { FSortFilterDatasetInjected } from "../FSortFilterDataset";
+import { useSortFilterDatasetEvents } from "../FSortFilterDataset/sort-filter-dataset-events";
 import {
     type FTableColumnData,
     FTableColumnSort,
@@ -203,6 +204,7 @@ const $t = useTranslate();
 const slots = useSlots();
 const { hasSlot } = useSlotUtils();
 const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
+const { onRefresh } = useSortFilterDatasetEvents();
 const { registerCallbackAfterItemAdd, registerCallbackBeforeItemDelete, setNestedKey } = ActivateItemInjected<T>();
 
 /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
@@ -372,6 +374,7 @@ onMounted(() => {
     }
     registerCallbackOnSort(callbackOnSort);
     registerCallbackOnMount(callbackSortableColumns);
+    onRefresh(callbackOnRefresh);
     registerCallbackAfterItemAdd(callbackAfterItemAdd);
     registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
 });
@@ -508,6 +511,11 @@ function callbackOnSort(columnName: PropertyKey, ascending: boolean): void {
 
 function callbackSortableColumns(columnNames: PropertyKey[]): void {
     setSortableColumns(columns.value, columnNames);
+}
+
+function callbackOnRefresh(): void {
+    selectedRows.value = [];
+    updateVModelWithSelectedRows();
 }
 
 function callbackAfterItemAdd(item: T): void {
