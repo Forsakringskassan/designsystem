@@ -37,20 +37,7 @@ describe("snapshots", () => {
                 items: [{ id: "foo", title: "No bullets" }],
             },
         });
-        /* eslint-disable-next-line jest/no-large-snapshots -- technical debt */
-        expect(wrapper.find("li").element).toMatchInlineSnapshot(`
-            <li
-              class="error-list__link"
-            >
-              <a
-                href="javascript:"
-              >
-                
-                No bullets
-                
-              </a>
-            </li>
-        `);
+        expect(wrapper.find("li").element).toMatchSnapshot();
     });
 
     it("should match snapshot when no link and no bullets (default)", () => {
@@ -59,17 +46,7 @@ describe("snapshots", () => {
                 items: [{ title: "No bullets" }],
             },
         });
-        expect(wrapper.find("li").element).toMatchInlineSnapshot(`
-            <li
-              class=""
-            >
-              
-              
-              No bullets
-              
-              
-            </li>
-        `);
+        expect(wrapper.find("li").element).toMatchSnapshot();
     });
 
     it("should match snapshot when link and bullets", () => {
@@ -79,29 +56,7 @@ describe("snapshots", () => {
                 bullets: true,
             },
         });
-        /* eslint-disable-next-line jest/no-large-snapshots -- technical debt,
-         * should add explicit tests for expected attributes or elements */
-        expect(wrapper.find("li").element).toMatchInlineSnapshot(`
-            <li
-              class=""
-            >
-              <a
-                href="javascript:"
-              >
-                
-                <span
-                  aria-hidden="true"
-                  class="error-list__bullet"
-                />
-                <span
-                  class="error-list__link"
-                >
-                  Bullet proof
-                </span>
-                
-              </a>
-            </li>
-        `);
+        expect(wrapper.find("li").element).toMatchSnapshot();
     });
 
     it("should match snapshot when no link and bullets", () => {
@@ -111,25 +66,7 @@ describe("snapshots", () => {
                 bullets: true,
             },
         });
-        /* eslint-disable-next-line jest/no-large-snapshots -- technical debt,
-         * should add explicit tests for expected attributes or elements */
-        expect(wrapper.find("li").element).toMatchInlineSnapshot(`
-            <li
-              class=""
-            >
-              
-              
-              <span
-                aria-hidden="true"
-                class="error-list__bullet"
-              />
-              <span>
-                Bullet proof
-              </span>
-              
-              
-            </li>
-        `);
+        expect(wrapper.find("li").element).toMatchSnapshot();
     });
 });
 
