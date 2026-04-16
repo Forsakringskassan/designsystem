@@ -5243,8 +5243,8 @@ function useTabstop(tableRef, metaRows) {
       return;
     }
     if (oldTabstopTr.rowIndex === 1) {
-      const needle2 = oldRows[1];
-      if (newRows.some(matching(needle2))) {
+      const needle2 = oldRows.at(1);
+      if (needle2 !== void 0 && newRows.some(matching(needle2))) {
         const { cell } = getVerticalNavIndex(tableRef.value, {
           row: 1,
           cell: oldTabstopTd.cellIndex
@@ -5396,6 +5396,15 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
     }
     function onKeydown(e) {
       maybeNavigateToCell(e);
+      if (e.defaultPrevented || e.key !== "Enter" && e.key !== " ") return;
+      if (!(e.target instanceof Element)) return;
+      const cell = e.target.closest("td, th");
+      if (!cell) return;
+      const targetEl = activateCell(cell, { focus: true });
+      if (!targetEl.contains(e.target)) {
+        e.preventDefault();
+        targetEl.click();
+      }
     }
     function onClick(e) {
       const cell = e.target.closest("td, th");
