@@ -1,4 +1,5 @@
 import {
+    copyItemIdentifier,
     findItemIdentifier,
     getItemIdentifier,
     resetGenerator,
@@ -175,5 +176,38 @@ describe("setItemIdentifiers()", () => {
         }).toThrowErrorMatchingInlineSnapshot(
             `"Key [id] is missing or has invalid value in item index 2"`,
         );
+    });
+});
+
+describe("copyItemIdentifier()", () => {
+    it("should copy identifier from source to target", () => {
+        const source = {};
+        const target = {};
+
+        setItemIdentifier(source, "row-1");
+        copyItemIdentifier(source, target);
+
+        expect(findItemIdentifier(target)).toBe("row-1");
+    });
+
+    it("should not do anything if source has no identifier", () => {
+        const source = {};
+        const target = {};
+
+        copyItemIdentifier(source, target);
+
+        expect(findItemIdentifier(target)).toBeUndefined();
+    });
+
+    it("should not overwrite existing identifier on target", () => {
+        const source = {};
+        const target = {};
+
+        setItemIdentifier(source, "source-id");
+        setItemIdentifier(target, "target-id");
+
+        copyItemIdentifier(source, target);
+
+        expect(getItemIdentifier(target)).toBe("target-id");
     });
 });

@@ -1,3 +1,5 @@
+import { copyItemIdentifier } from "@fkui/vue";
+
 /**
  * Removes given row from the array.
  * If `expandableAttribute` is set it can removes rows from nested rows.
@@ -30,12 +32,17 @@ function removeExpandableRowFromRows<T>(rows: T[], row: T, key: keyof T): T[] {
         if (Array.isArray(expandableRows)) {
             const index = expandableRows.indexOf(row);
             if (index !== -1) {
-                return {
+                const updatedRow = {
                     ...currentRow,
                     [key]: expandableRows.toSpliced(index, 1),
                 };
+
+                copyItemIdentifier(currentRow as object, updatedRow as object);
+
+                return updatedRow;
             }
         }
+
         return currentRow;
     });
 }

@@ -146,6 +146,9 @@ export interface ContextMenuTextItem {
 }
 
 // @public
+export function copyItemIdentifier<T extends object>(from: T, to: T): void;
+
+// @public
 export type Dataset<T extends object> = T[] & {
     readonly [datasetSymbol]: true;
     readonly __type: T;
