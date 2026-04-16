@@ -240,15 +240,9 @@ describe("lazy callbacks and refresh", () => {
         const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
         const onLazyRowsAdded = jest.fn();
 
-        useSortFilterDataset(
-            data,
-            { foo: "foo" },
-            [],
-            "foo",
-            true,
-            "lazy",
-            { onLazyRowsAdded },
-        );
+        useSortFilterDataset(data, { foo: "foo" }, [], "foo", true, "lazy", {
+            onLazyRowsAdded,
+        });
 
         data.value.push({ foo: "added" });
         await nextTick();
@@ -301,7 +295,6 @@ describe("lazy callbacks and refresh", () => {
         expect(onRefresh).toHaveBeenCalledTimes(1);
     });
 });
-
 
 describe("filtered data after replacement of input data", () => {
     it("should update filtered rows when data is replaced", async () => {

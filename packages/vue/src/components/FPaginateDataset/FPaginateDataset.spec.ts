@@ -1,17 +1,17 @@
 import { nextTick, provide } from "vue";
-import { mount } from "@vue/test-utils";
+import { VueWrapper, mount } from "@vue/test-utils";
 import {
     type SortFilterDatasetEventCallback,
     sortFilterDatasetEventsKey,
 } from "../FSortFilterDataset/sort-filter-dataset-events";
 import { FPaginateDataset } from "./index";
 
-let refreshCallback: SortFilterDatasetEventCallback = () => {};
-let lazyRowsAddedCallback: SortFilterDatasetEventCallback = () => {};
+let refreshCallback: SortFilterDatasetEventCallback = () => ({});
+let lazyRowsAddedCallback: SortFilterDatasetEventCallback = () => ({});
 
-function createWrapper() {
-    refreshCallback = () => {};
-    lazyRowsAddedCallback = () => {};
+function createWrapper(): VueWrapper {
+    refreshCallback = () => ({});
+    lazyRowsAddedCallback = () => ({});
 
     return mount({
         components: { FPaginateDataset },
@@ -43,7 +43,10 @@ function createWrapper() {
     });
 }
 
-function setPage(wrapper: ReturnType<typeof createWrapper>, page: number): void {
+function setPage(
+    wrapper: ReturnType<typeof createWrapper>,
+    page: number,
+): void {
     wrapper.findComponent(FPaginateDataset).element.dispatchEvent(
         new CustomEvent("paginateDataset:page", {
             bubbles: true,

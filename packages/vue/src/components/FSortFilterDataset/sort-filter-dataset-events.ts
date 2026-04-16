@@ -7,7 +7,8 @@ export interface SortFilterDatasetEvents {
     onLazyRowsAdded(this: void, callback: SortFilterDatasetEventCallback): void;
 }
 
-export const sortFilterDatasetEventsKey = Symbol() as InjectionKey<SortFilterDatasetEvents>;
+export const sortFilterDatasetEventsKey =
+    Symbol() as InjectionKey<SortFilterDatasetEvents>;
 
 export function useSortFilterDatasetEvents(): SortFilterDatasetEvents {
     const defaultEvents: SortFilterDatasetEvents = {

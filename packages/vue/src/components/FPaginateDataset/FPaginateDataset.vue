@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends object, TArray extends Dataset<T> | T[] = Dataset<T> | T[]">
 import { type Ref, computed, onMounted, provide, ref, watch } from "vue";
 import { type Dataset, toDataset } from "../../utils";
-import { useSortFilterDatasetEvents } from "../FSortFilterDataset/sort-filter-dataset-events";
 import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
+import { useSortFilterDatasetEvents } from "../FSortFilterDataset/sort-filter-dataset-events";
 import { paginateDatasetKey } from "./provide";
 
 // Defines component props

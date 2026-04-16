@@ -1,6 +1,7 @@
 # Kompletterande funktionalitet för datamängsredigeraren (`f-sort-filter-dataset`)
 
 f-sort-filter-dataset får en ny prop mode som kan sättas till lazy, vilket innebär:
+
 - ingen omsortering sker vid editering av data
 - nya rader läggs till på slutet, vid paginering så går till sista sidan
 - då användare sorterar eller filtrerar körs allting om på nytt, vid paginering så går till första sidan
@@ -47,4 +48,3 @@ Then går tabellen till första sidan vid paginering och eventuella markerade ra
 Given att användaren har redigerat en cell i kolumnen "prioritet" och raden ligger kvar på sin plats
 When användaren klickar på kolumnrubriken "prioritet" för att sortera
 Then sorteras hela datamängden om och tabellen går till första sidan vid paginering
-

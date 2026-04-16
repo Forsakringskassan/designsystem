@@ -1385,6 +1385,20 @@ export function setItemIdentifiers<T>(items: T[], attribute?: keyof T, expandabl
 // @public (undocumented)
 export function setRunningContext(app: App): void;
 
+// @public (undocumented)
+export type SortFilterDatasetEventCallback = () => void;
+
+// @public (undocumented)
+export interface SortFilterDatasetEvents {
+    // (undocumented)
+    onLazyRowsAdded(this: void, callback: SortFilterDatasetEventCallback): void;
+    // (undocumented)
+    onRefresh(this: void, callback: SortFilterDatasetEventCallback): void;
+}
+
+// @public (undocumented)
+export const sortFilterDatasetEventsKey: InjectionKey<SortFilterDatasetEvents>;
+
 // @public
 export interface SortOrder {
     // (undocumented)
@@ -1537,6 +1551,9 @@ export interface UseSlotUtils {
 
 // @public (undocumented)
 export function useSlotUtils(): UseSlotUtils;
+
+// @public (undocumented)
+export function useSortFilterDatasetEvents(): SortFilterDatasetEvents;
 
 // @public
 export function useTextFieldSetup(props: TextFieldSetupProps): {

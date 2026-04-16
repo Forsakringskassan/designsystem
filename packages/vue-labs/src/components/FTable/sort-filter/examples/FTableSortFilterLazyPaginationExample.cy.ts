@@ -35,11 +35,17 @@ describe("FTableSortFilterLazyPaginationExample", () => {
         cy.mount(Example);
 
         table.selectInput(1).click();
-        cy.get('[data-test="selected-count"]').should("contain.text", "Valda rader: 1");
+        cy.get('[data-test="selected-count"]').should(
+            "contain.text",
+            "Valda rader: 1",
+        );
 
         cy.get('[data-test="refresh"]').click();
 
-        cy.get('[data-test="selected-count"]').should("contain.text", "Valda rader: 0");
+        cy.get('[data-test="selected-count"]').should(
+            "contain.text",
+            "Valda rader: 0",
+        );
         table.selectInput(1).should("not.be.checked");
     });
 
