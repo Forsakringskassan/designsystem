@@ -2,7 +2,7 @@
  * Selectors for `FList`.
  *
  * @public
- * @since %version%
+ * @since v6.42.0
  * @param selector - The selector for the FList component.
  * @returns An object with selector methods for the FList component.
  */
@@ -14,7 +14,7 @@ export function FListSelectors(selector: string = ".list") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.42.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -25,7 +25,7 @@ export function FListSelectors(selector: string = ".list") {
          * Get all list items.
          *
          * @public
-         * @since %version%
+         * @since v6.42.0
          * @returns A selector for all of the list items.
          */
         listItems(this: void): string {
@@ -36,7 +36,7 @@ export function FListSelectors(selector: string = ".list") {
          * Get the list item with the given index.
          *
          * @public
-         * @since %version%
+         * @since v6.42.0
          * @param index - The index of the item (0-based).
          * @returns A selector for the list item with the given index.
          */
@@ -48,7 +48,7 @@ export function FListSelectors(selector: string = ".list") {
          * Get the element displaying the empty message when the list is empty.
          *
          * @public
-         * @since %version%
+         * @since v6.42.0
          * @returns A selector for the element with empty text.
          */
         emptyMessage(this: void): string {

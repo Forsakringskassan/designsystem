@@ -91,13 +91,6 @@ $scrollbar-secondary: #{$palette-color-fk-black-50};
                 min-width: 40%;
             }
 
-            &__close.button {
-                position: absolute;
-                top: 0;
-                right: 0;
-                margin-bottom: 0;
-            }
-
             &__content {
                 flex-grow: 1;
                 overflow-y: auto;

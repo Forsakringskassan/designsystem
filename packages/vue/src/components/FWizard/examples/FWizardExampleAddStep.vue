@@ -121,7 +121,7 @@ export default defineComponent({
         <!-- [html-validate-disable-next no-inline-style] -->
         <p style="margin-top: 30px">
             Ett steg kan öppnas programatiskt, t.ex. man klickar 'ändra' i ett granska-steg.
-            <f-button type="button" @click="current = 'baz'">Öppna sista steget</f-button>
+            <f-button @click="current = 'baz'">Öppna sista steget</f-button>
         </p>
         <pre>v-model: {{ current }}</pre>
     </div>

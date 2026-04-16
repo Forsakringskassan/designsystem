@@ -253,11 +253,11 @@ describe("html-validate", () => {
     it("should require is-open and items attributes", () => {
         const markup = /* HTML */ ` <f-context-menu></f-context-menu> `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: <f-context-menu> is missing required "is-open" attribute (element-required-attributes) at inline:1:3:
+            "error: <f-context-menu> is missing required "is-open" attribute (element-required-attributes)
             > 1 |  <f-context-menu></f-context-menu>
                 |   ^^^^^^^^^^^^^^
             Selector: f-context-menu
-            error: <f-context-menu> is missing required "items" attribute (element-required-attributes) at inline:1:3:
+            error: <f-context-menu> is missing required "items" attribute (element-required-attributes)
             > 1 |  <f-context-menu></f-context-menu>
                 |   ^^^^^^^^^^^^^^
             Selector: f-context-menu"

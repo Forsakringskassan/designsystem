@@ -111,7 +111,7 @@ it("should be invalid when FTextField uses v-validation.personnummer without :fo
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: v-validation.personnummer must be used with :formatter and/or :parser (fkui/ftextfield-formatter-validation) at inline:5:17:
+        "error: v-validation.personnummer must be used with :formatter and/or :parser (fkui/ftextfield-formatter-validation)
           3 |             <f-text-field
           4 |                 id="firstname"
         > 5 |                 v-validation.personnummer=""
@@ -139,7 +139,7 @@ it("should be invalid when FTextField uses v-validation.required.personnummer wi
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: v-validation.personnummer must be used with :formatter and/or :parser (fkui/ftextfield-formatter-validation) at inline:6:17:
+        "error: v-validation.personnummer must be used with :formatter and/or :parser (fkui/ftextfield-formatter-validation)
           4 |                 id="parser-formatter"
           5 |                 v-model="modelValue"
         > 6 |                 v-validation.required.personnummer

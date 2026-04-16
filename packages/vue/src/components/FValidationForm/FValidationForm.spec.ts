@@ -189,7 +189,7 @@ describe("html-validate", () => {
         `;
         const report = await htmlvalidate.validateString(markup, filename);
         expect(report).toMatchInlineCodeframe(`
-            "error: <div> element is not permitted as content under slot "error-message" (<f-validation-form>) (element-permitted-content) at FValidationForm.spec.ts:4:22:
+            "error: <div> element is not permitted as content under slot "error-message" (<f-validation-form>) (element-permitted-content)
               2 |             <f-validation-form>
               3 |                 <template #error-message>
             > 4 |                     <div></div>
@@ -239,7 +239,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ ` <f-validation-form> </f-validation-form> `;
         const report = await htmlvalidate.validateString(markup, filename);
         expect(report).toMatchInlineCodeframe(`
-            "error: <f-validation-form> element must have a submit button (wcag/h32) at FValidationForm.spec.ts:1:3:
+            "error: <f-validation-form> element must have a submit button (wcag/h32)
             > 1 |  <f-validation-form> </f-validation-form>
                 |   ^^^^^^^^^^^^^^^^^
             Selector: f-validation-form"

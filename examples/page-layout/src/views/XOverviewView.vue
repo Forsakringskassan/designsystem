@@ -25,7 +25,7 @@ function openThing(): void {
 <template>
     <h1>Översikt</h1>
     <p>Lorem ipsum dolor sit amet</p>
-    <f-button type="button" variant="secondary" @click="openThing">Öppna en helt annan detaljpanel</f-button>
+    <f-button variant="secondary" @click="openThing">Öppna en helt annan detaljpanel</f-button>
 
     <f-interactive-table
         :rows="ankeborgare"

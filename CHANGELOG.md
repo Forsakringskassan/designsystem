@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## 6.43.0 (2026-04-15)
+
+### Features
+
+* **@fkui/vue-labs:** new labs component `XRelativeTime` (refs SFKUI-6500) 272adee
+* **@fkui/vue:** add new `FExpandableParagraphPageObject` (refs SFKUI-6500) f250109
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** file item missing support for `forced-colors` media feature (fixes SFKUI-7568) 5cb1ce0
+* **@fkui/design, @fkui/vue:** hover on `IComboboxDropdown` when highlight active (refs SFKUI-7362) 8598637
+* **deps:** update dependency i18next to v26.0.4 3281630
+
+## 6.42.0 (2026-04-08)
+
+### Features
+
+* **@fkui/vue:** add `datasetIterator()` (refs SFKUI-7348) 99f143e
+* **@fkui/vue:** add `FListSelectors` (refs SFKUI-6500) 10b9ed6
+
+### Bug Fixes
+
+* **@fkui/tsconfig:** add `dom.iterable` to cypress config to make it consistent with recommended (refs SFKUI-6500) 1e9ce3e
+* **@fkui/vue:** fix false positives for `emptyMessage` in `FListPageObject` (refs SFKUI-6500) 7700081, closes #1192
+* **@fkui/vue:** handle nested `FList`s in `FListPageObject` (refs SFKUI-6500) 86a012d, closes #1187
+* **deps:** update dependency cssnano to v7.1.4 91b15f9
+* **deps:** update dependency i18next to v26.0.3 156debc
+* **deps:** update dependency lodash to v4.18.1 [security] 4a01640
+* **deps:** update dependency sass to v1.99.0 52e8b6f
+* **deps:** update vue monorepo to v3.5.32 f58406f
+
 ## 6.41.0 (2026-04-01)
 
 ### Features

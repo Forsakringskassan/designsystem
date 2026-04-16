@@ -17,5 +17,13 @@ $anchor-underline-width: 2px !default;
         text-decoration-thickness: 3px;
         color: $anchor-color-text-standard-default;
         text-decoration-color: $anchor-color-text-standard-default;
+
+        @media (forced-colors: active) {
+            color: LinkText;
+        }
+    }
+
+    @media (forced-colors: active) {
+        color: LinkText;
     }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@fkui/design",
-  "version": "6.41.0",
+  "version": "6.43.0",
   "description": "fkui design",
   "keywords": [
     "fkui",
@@ -39,19 +39,19 @@
     "unit:watch": "node --test --watch"
   },
   "devDependencies": {
-    "@fkui/icon-lib-default": "6.41.0",
-    "@fkui/theme-default": "6.41.0",
+    "@fkui/icon-lib-default": "6.43.0",
+    "@fkui/theme-default": "6.43.0",
     "autoprefixer": "10.4.27",
     "cssnano": "7.1.4",
     "glob": "13.0.6",
     "picocolors": "1.1.1",
-    "postcss": "8.5.8",
+    "postcss": "8.5.9",
     "postcss-url": "10.1.3",
     "postcss-var-func-fallback": "3.0.1",
     "svgo": "4.0.1"
   },
   "peerDependencies": {
-    "@fkui/theme-default": "^6.41.0",
+    "@fkui/theme-default": "^6.43.0",
     "sass": "^1.40.0",
     "stylelint": ">= 14"
   },

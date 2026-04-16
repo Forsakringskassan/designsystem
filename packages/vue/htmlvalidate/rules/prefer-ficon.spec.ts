@@ -37,7 +37,7 @@ it("should report error for svg with icon", async () => {
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: Prefer using <f-icon> instead of directly using <svg> (fkui/prefer-ficon) at inline:2:10:
+        "error: Prefer using <f-icon> instead of directly using <svg> (fkui/prefer-ficon)
           1 |
         > 2 |         <svg class="icon">
             |          ^^^

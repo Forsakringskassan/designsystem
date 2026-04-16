@@ -52,7 +52,7 @@ it("should report error when `.button--text` is used", async () => {
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: class "button--text" is deprecated and replaced with "button--tertiary" (fkui/class-deprecated) at inline:2:45:
+        "error: class "button--text" is deprecated and replaced with "button--tertiary" (fkui/class-deprecated)
           1 |
         > 2 |         <button type="button" class="button button--text"></button>
             |                                             ^^^^^^^^^^^^
@@ -74,7 +74,7 @@ it("should report error when `.button--discrete` is used", async () => {
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: class "button--discrete" is deprecated and replaced with "button--tertiary" (fkui/class-deprecated) at inline:2:45:
+        "error: class "button--discrete" is deprecated and replaced with "button--tertiary" (fkui/class-deprecated)
           1 |
         > 2 |         <button type="button" class="button button--discrete"></button>
             |                                             ^^^^^^^^^^^^^^^^
@@ -94,7 +94,7 @@ it("should report error when `.navbar` is used", async () => {
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: class "navbar" is deprecated (fkui/class-deprecated) at inline:1:28:
+        "error: class "navbar" is deprecated (fkui/class-deprecated)
         > 1 |  <div class="custom-navbar navbar"></div>
             |                            ^^^^^^
         Selector: div"
@@ -116,7 +116,7 @@ it("should report error when `.icon-stack--new-window` is used", async () => {
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
     expect(report).toMatchInlineCodeframe(`
-        "error: class "icon-stack--new-window" is deprecated (fkui/class-deprecated) at inline:2:45:
+        "error: class "icon-stack--new-window" is deprecated (fkui/class-deprecated)
           1 |
         > 2 |         <div class="icon-stack button__icon icon-stack--new-window" />
             |                                             ^^^^^^^^^^^^^^^^^^^^^^

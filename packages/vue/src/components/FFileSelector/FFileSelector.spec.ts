@@ -115,13 +115,13 @@ describe("html-validate", () => {
             `;
             expect(valid).toMatchInlineCodeframe(`""`);
             expect(invalid).toMatchInlineCodeframe(`
-                "error: Attribute "disabled" should omit value (attribute-boolean-style) at inline:2:34:
+                "error: Attribute "disabled" should omit value (attribute-boolean-style)
                   1 |
                 > 2 |                 <f-file-selector disabled="foobar">text</f-file-selector>
                     |                                  ^^^^^^^^
                   3 |
                 Selector: f-file-selector
-                error: Attribute "disabled" has invalid value "foobar" (attribute-allowed-values) at inline:2:44:
+                error: Attribute "disabled" has invalid value "foobar" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-file-selector disabled="foobar">text</f-file-selector>
                     |                                            ^^^^^^

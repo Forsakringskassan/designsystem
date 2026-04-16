@@ -1,6 +1,6 @@
 {
   "name": "@fkui/theme-builder",
-  "version": "6.41.0",
+  "version": "6.43.0",
   "description": "Build script for FKUI theme",
   "keywords": [
     "fkui",
@@ -46,7 +46,7 @@
     "dedent": "1.7.2",
     "esbuild": "0.28.0",
     "memfs": "4.57.1",
-    "postcss": "8.5.8",
+    "postcss": "8.5.9",
     "stream-buffers": "3.0.3",
     "typescript": "5.9.3"
   },

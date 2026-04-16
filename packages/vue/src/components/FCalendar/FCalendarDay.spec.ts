@@ -4,7 +4,7 @@ describe("html-validate", () => {
     it("should require day attribute", () => {
         const markup = /* HTML */ ` <i-calendar-day> </i-calendar-day> `;
         expect(markup).toMatchInlineCodeframe(`
-            "error: <i-calendar-day> is missing required "day" attribute (element-required-attributes) at inline:1:3:
+            "error: <i-calendar-day> is missing required "day" attribute (element-required-attributes)
             > 1 |  <i-calendar-day> </i-calendar-day>
                 |   ^^^^^^^^^^^^^^
             Selector: i-calendar-day"

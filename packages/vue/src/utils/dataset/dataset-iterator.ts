@@ -22,7 +22,7 @@ function* datasetGenerator<T extends object>(
  * together with its metadata.
  *
  * @public
- * @since %version%
+ * @since v6.42.0
  * @param dataset - The dataset to iterate over.
  * @param options - Options controlling iteration behaviour. Set `flat` to
  *   `true` to yield nested rows in depth-first pre-order after their parent.
