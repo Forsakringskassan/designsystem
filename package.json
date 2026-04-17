@@ -80,7 +80,7 @@
     "@forsakringskassan/commitlint-config": "3.3.11",
     "@forsakringskassan/cypress-axe": "4.0.4",
     "@forsakringskassan/cypress-visual-regression": "3.1.0",
-    "@forsakringskassan/docs-generator": "2.40.3",
+    "@forsakringskassan/docs-generator": "2.41.0",
     "@forsakringskassan/docs-live-example": "2.4.2",
     "@forsakringskassan/eslint-config": "14.1.11",
     "@forsakringskassan/eslint-config-cli": "14.1.11",
