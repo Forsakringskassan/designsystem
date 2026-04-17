@@ -1,42 +1,28 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FTextField } from "@fkui/vue";
+import { prototypes } from "../router";
 
 export default defineComponent({
-    components: { FTextField },
-    data() {
-        return {
-            awesomeModel: "",
-        };
+    setup() {
+        return { prototypes };
     },
 });
 </script>
 
 <template>
     <div class="sandbox-root">
-        <h1>FKUI Sandbox</h1>
-        <p>
-            Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga
-            FKUI-paket och innehåller enbart ett tomt exempel.
-        </p>
-        <p>
-            <strong>Ändra och labba gärna här men glöm inte återställa innan merge!</strong>
-        </p>
-        <hr />
-        <f-text-field
-            id="awesome-field"
-            v-model="awesomeModel"
-            v-validation.required.maxLength="{ maxLength: { length: 10 } }"
-        >
-            <template #default> Inmatningsfält. </template>
-            <template #description="{ descriptionClass }">
-                <span :class="descriptionClass"> Lorem ipsum dolor sit amet. </span>
-            </template>
-        </f-text-field>
+        <h1>Prototyper</h1>
+        <ul class="prototype-list">
+            <li v-for="proto in prototypes" :key="proto.path">
+                <router-link class="anchor" :to="proto.path">{{ proto.name }}</router-link>
+            </li>
+        </ul>
     </div>
 </template>
 
-<style>
+<style lang="scss">
+@use "@fkui/design/src/core/size";
+
 .sandbox-root {
     width: min(100% - 2rem, 80ch);
     margin: auto;
@@ -44,9 +30,11 @@ export default defineComponent({
 
 h1 {
     margin-top: 2rem;
+    margin-bottom: size.$margin-150;
 }
 
-hr {
-    margin-bottom: 2rem;
+.prototype-list {
+    list-style: none;
+    padding: 0;
 }
 </style>
