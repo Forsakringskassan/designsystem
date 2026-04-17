@@ -49,6 +49,7 @@ export default defineComponent({
             <f-text-field
                 :id="field.id"
                 v-model="field.value.value"
+                v-validation.maxLength="{ maxLength: { length: 10 } }"
                 inputmode="numeric"
                 @input="onInput(field, $event)"
             >
