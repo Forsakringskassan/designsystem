@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, nextTick, ref } from "vue";
 import { FButton, FTextField } from "@fkui/vue";
 
 interface Field {
@@ -33,6 +33,9 @@ export default defineComponent({
         function reset(field: Field): void {
             field.value.value = field.defaultValue;
             field.dirty.value = false;
+            void nextTick(() => {
+                document.querySelector<HTMLElement>(`#${field.id}`)?.focus();
+            });
         }
 
         return { fields, onInput, reset };
@@ -51,6 +54,7 @@ export default defineComponent({
                 v-model="field.value.value"
                 v-validation.maxLength="{ maxLength: { length: 10 } }"
                 inputmode="numeric"
+                input-width="md-6"
                 @input="onInput(field, $event)"
             >
                 {{ field.label }}
@@ -58,7 +62,7 @@ export default defineComponent({
             <f-button
                 v-if="field.dirty.value"
                 variant="tertiary"
-                icon-left="circle-notch-solid"
+                icon-left="arrows-rotate"
                 align-text
                 @click="reset(field)"
             >
@@ -83,5 +87,10 @@ h1 {
 
 .field-group {
     margin-bottom: size.$margin-150;
+
+    .button {
+        margin-top: -1rem;
+        margin-bottom: 0;
+    }
 }
 </style>
