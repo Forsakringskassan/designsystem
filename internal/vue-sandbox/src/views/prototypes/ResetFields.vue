@@ -1,24 +1,24 @@
 <script lang="ts">
 import { defineComponent, nextTick, ref } from "vue";
-import { FButton, FTextField } from "@fkui/vue";
+import { FButton, FNumericTextField } from "@fkui/vue";
 
 interface Field {
     id: string;
     label: string;
-    defaultValue: string;
-    value: ReturnType<typeof ref<string>>;
+    defaultValue: number;
+    value: ReturnType<typeof ref<number>>;
     dirty: ReturnType<typeof ref<boolean>>;
 }
 
 const FIELD_CONFIGS = [
-    { id: "field1", label: "Belopp 1", defaultValue: "1650" },
-    { id: "field2", label: "Belopp 2", defaultValue: "180" },
-    { id: "field3", label: "Belopp 3", defaultValue: "343" },
-    { id: "field4", label: "Belopp 4", defaultValue: "6478" },
+    { id: "field1", label: "Belopp 1", defaultValue: 1650 },
+    { id: "field2", label: "Belopp 2", defaultValue: 180 },
+    { id: "field3", label: "Belopp 3", defaultValue: 343 },
+    { id: "field4", label: "Belopp 4", defaultValue: 6478 },
 ];
 
 export default defineComponent({
-    components: { FTextField, FButton },
+    components: { FNumericTextField, FButton },
     setup() {
         const fields: Field[] = FIELD_CONFIGS.map((config) => ({
             ...config,
@@ -27,7 +27,8 @@ export default defineComponent({
         }));
 
         function onInput(field: Field, event: Event): void {
-            field.dirty.value = (event.target as HTMLInputElement).value !== field.defaultValue;
+            const raw = (event.target as HTMLInputElement).value.replaceAll(/\s/g, "");
+            field.dirty.value = Number(raw) !== field.defaultValue;
         }
 
         function reset(field: Field): void {
@@ -49,16 +50,14 @@ export default defineComponent({
         <h1>Återställ belopp</h1>
 
         <div v-for="field in fields" :key="field.id" class="field-group">
-            <f-text-field
+            <f-numeric-text-field
                 :id="field.id"
                 v-model="field.value.value"
-                v-validation.maxLength="{ maxLength: { length: 10 } }"
-                inputmode="numeric"
                 input-width="md-6"
                 @input="onInput(field, $event)"
             >
                 {{ field.label }}
-            </f-text-field>
+            </f-numeric-text-field>
             <f-button
                 v-if="field.dirty.value"
                 variant="tertiary"
