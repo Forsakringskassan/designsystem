@@ -1,11 +1,9 @@
-import { FListSelectors } from "../../../selectors";
 import FSortFilterDatasetMetadataExample from "./FSortFilterDatasetMetadataExample.vue";
 import {
     FListPageObject,
     FSortFilterDatasetPageObject,
 } from "@fkui/vue/cypress";
 
-const selectors = FListSelectors("#rows");
 const list = new FListPageObject("#rows");
 const sortFilter = new FSortFilterDatasetPageObject(".sort-filter-dataset");
 
