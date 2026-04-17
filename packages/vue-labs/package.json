@@ -64,6 +64,9 @@
       "./jest.setup.ts"
     ]
   },
+  "dependencies": {
+    "@vueuse/core": "12.8.2"
+  },
   "devDependencies": {
     "@fkui/date": "6.43.0",
     "@fkui/design": "6.43.0",
@@ -96,8 +99,5 @@
   "engines": {
     "node": ">= 20",
     "npm": ">= 7"
-  },
-  "dependencies": {
-    "@vueuse/core": "12.8.2"
   }
 }
