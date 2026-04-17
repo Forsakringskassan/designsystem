@@ -9,6 +9,7 @@ interface Field {
     value: ReturnType<typeof ref<number>>;
     dirty: ReturnType<typeof ref<boolean>>;
     focused: ReturnType<typeof ref<boolean>>;
+    pressing: ReturnType<typeof ref<boolean>>;
 }
 
 const FIELD_CONFIGS = [
@@ -26,6 +27,7 @@ export default defineComponent({
             value: ref(config.defaultValue),
             dirty: ref(false),
             focused: ref(false),
+            pressing: ref(false),
         }));
 
         function onInput(field: Field, event: Event): void {
@@ -39,7 +41,7 @@ export default defineComponent({
 
         function onFocusOut(field: Field, event: FocusEvent): void {
             const wrapper = event.currentTarget as HTMLElement;
-            if (!wrapper.contains(event.relatedTarget as Node)) {
+            if (!wrapper.contains(event.relatedTarget as Node) && !field.pressing.value) {
                 field.focused.value = false;
             }
         }
@@ -94,16 +96,16 @@ export default defineComponent({
                     {{ field.label }}
                 </f-numeric-text-field>
             </div>
-            <f-button
+            <div
                 v-if="field.dirty.value && field.focused.value"
-                variant="tertiary"
-                icon-left="arrows-rotate"
-                align-text
-                @pointerdown.prevent
-                @click="reset(field)"
+                @pointerdown="field.pressing.value = true"
+                @pointerup="field.pressing.value = false"
+                @pointercancel="field.pressing.value = false"
             >
-                Återställ förifyllt belopp
-            </f-button>
+                <f-button variant="tertiary" icon-left="arrows-rotate" align-text @click="reset(field)">
+                    Återställ förifyllt belopp
+                </f-button>
+            </div>
         </div>
     </div>
 </template>
