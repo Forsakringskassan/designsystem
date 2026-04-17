@@ -99,6 +99,7 @@ export default defineComponent({
                 variant="tertiary"
                 icon-left="arrows-rotate"
                 align-text
+                @pointerdown.prevent
                 @click="reset(field)"
             >
                 Återställ förifyllt belopp
