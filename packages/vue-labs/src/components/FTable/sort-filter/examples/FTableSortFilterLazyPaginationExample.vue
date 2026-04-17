@@ -50,38 +50,104 @@ function onRefresh(): void {
 </script>
 
 <template>
-    <h2>Sort-filter lazy med paginering</h2>
-    <p>
-        Exemplet visar lazy-beteende med paginering: nya rader hoppar till sista sidan och
-        <code>refresh()</code> hoppar till första sidan samt tömmer markerade rader.
-    </p>
+    <div class="row">
+        <div class="col col--sm-4">
+            <p data-test="selected-count">Valda rader: {{ selectedRows.length }}</p>
 
-    <p data-test="selected-count">Valda rader: {{ selectedRows.length }}</p>
+            <f-button data-test="add-row" variant="secondary" @click="onAddRow"
+                >Lägg till rad</f-button
+            >
+            <f-button data-test="refresh" variant="secondary" @click="onRefresh">Refresh</f-button>
 
-    <f-button data-test="add-row" variant="secondary" @click="onAddRow">Lägg till rad</f-button>
-    <f-button data-test="refresh" variant="secondary" @click="onRefresh">Refresh</f-button>
-
-    <f-sort-filter-dataset
-        ref="sortFilter"
-        v-test="'filter'"
-        mode="lazy"
-        :data="rows"
-        :sortable-attributes
-        default-sort-attribute="text"
-    >
-        <template #default="{ sortFilterResult }">
-            <f-paginate-dataset :items="sortFilterResult" :items-per-page>
-                <template #default="{ items: currentPageItems }">
-                    <f-table
-                        v-model:selected-rows="selectedRows"
-                        :rows="currentPageItems"
-                        :columns
-                        key-attribute="id"
-                        selectable="multi"
-                    />
-                    <f-paginator />
+            <f-sort-filter-dataset
+                ref="sortFilter"
+                v-test="'filter'"
+                mode="lazy"
+                :data="rows"
+                :sortable-attributes
+                default-sort-attribute="text"
+            >
+                <template #default="{ sortFilterResult }">
+                    <f-paginate-dataset :items="sortFilterResult" :items-per-page>
+                        <template #default="{ items: currentPageItems }">
+                            <f-table
+                                v-model:selected-rows="selectedRows"
+                                :rows="currentPageItems"
+                                :columns
+                                key-attribute="id"
+                                selectable="multi"
+                            />
+                            <f-paginator />
+                        </template>
+                    </f-paginate-dataset>
                 </template>
-            </f-paginate-dataset>
-        </template>
-    </f-sort-filter-dataset>
+            </f-sort-filter-dataset>
+        </div>
+        <div class="col col--sm-8">
+            <h2>Redigerbar tabell med sortering och filtrering (lazy), paginering, flerval.</h2>
+            <p>
+                Lazy-läge kör inte om sortering vid inline-editering och lägger till nya rader sist.
+                Ny sortering/filtrering körs först när användaren sorterar eller filtrerar.
+            </p>
+
+            <h3>Om man lägger till en eller flera rader</h3>
+            <pre>
+        - när ingen sortering eller filtrering är aktiv, så visas rad så som den blivit placerad i dataset, ingen sidnavigering sker
+        - när sortering eller filtrering är aktiv, så visas rad sist, sidnavigering till sista sidan
+        - val behålls. bulkruta status kan påverkas (från ikryssad till indeterminate).
+    </pre
+            >
+
+            <h3>Om man tar bort en eller flera rader</h3>
+            <pre>
+        - val behålls. bulkruta status kan påverkas (från indeterminate till ikryssad).
+        - sidnavigering sker till sista sidan om aktuell sida innan borttag inte längre finns kvar
+    </pre
+            >
+
+            <h3>Om man redigerar rader</h3>
+            <pre>
+        - när ingen sortering eller filtrering är aktiv: inget speciell hantering
+        - när filtrering eller sortering är aktiva:
+          - rad ska finnas kvar även om filtret ej längre matchar raden
+          - rad ska ligga kvar på samma position även om ändringen påverkar sorteringsordning.
+          - sortering ska sättas till ovald ("Välj")
+          - ingen sidnavigering sker
+    </pre
+            >
+
+            <h3>
+                Om man helt ersätter all data, inga rader kvar från föregående data (instansbaserat)
+            </h3>
+            <pre>
+        - när ingen sortering eller filtrering är aktiv: allt visas
+        - när filter eller sortering är aktiva: filter och sortering körs om
+        - val nollställs
+        - sidnavigering till första sidan
+    </pre
+            >
+            <h3>Om man filtrerar</h3>
+            <pre>
+        - filtrering och sortering körs om
+        - val nollställs
+        - sidnavigering till första sidan
+    </pre
+            >
+
+            <h3>Om man sorterar</h3>
+            <pre>
+        - filtrering och sortering körs om
+        - val behålls
+        - sidnavigering till första sidan
+    </pre
+            >
+
+            <h3>Om man kör refresh (`fSortFilterDataset.refresh()`)</h3>
+            <pre>
+        - filtrering och sortering körs om
+        - val behålls
+        - sidnavigering till första sidan
+            </pre>
+        </div>
+    </div>
 </template>
