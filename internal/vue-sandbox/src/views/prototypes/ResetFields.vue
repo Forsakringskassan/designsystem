@@ -8,6 +8,7 @@ interface Field {
     defaultValue: number;
     value: ReturnType<typeof ref<number>>;
     dirty: ReturnType<typeof ref<boolean>>;
+    focused: ReturnType<typeof ref<boolean>>;
 }
 
 const FIELD_CONFIGS = [
@@ -24,11 +25,30 @@ export default defineComponent({
             ...config,
             value: ref(config.defaultValue),
             dirty: ref(false),
+            focused: ref(false),
         }));
 
         function onInput(field: Field, event: Event): void {
             const raw = (event.target as HTMLInputElement).value.replaceAll(/\s/g, "");
             field.dirty.value = Number(raw) !== field.defaultValue;
+        }
+
+        function onFocusIn(field: Field): void {
+            field.focused.value = true;
+        }
+
+        function onFocusOut(field: Field, event: FocusEvent): void {
+            const wrapper = event.currentTarget as HTMLElement;
+            if (!wrapper.contains(event.relatedTarget as Node)) {
+                field.focused.value = false;
+            }
+        }
+
+        function onBlur(field: Field, value: number | string): void {
+            if (!value && value !== 0) {
+                field.value.value = 0;
+                field.dirty.value = field.defaultValue !== 0;
+            }
         }
 
         function reset(field: Field): void {
@@ -39,7 +59,7 @@ export default defineComponent({
             });
         }
 
-        return { fields, onInput, reset };
+        return { fields, onInput, onFocusIn, onFocusOut, onBlur, reset };
     },
 });
 </script>
@@ -49,17 +69,33 @@ export default defineComponent({
         <router-link class="anchor" to="/">← Tillbaka</router-link>
         <h1>Återställ belopp</h1>
 
-        <div v-for="field in fields" :key="field.id" class="field-group">
-            <f-numeric-text-field
-                :id="field.id"
-                v-model="field.value.value"
-                input-width="md-6"
-                @input="onInput(field, $event)"
-            >
-                {{ field.label }}
-            </f-numeric-text-field>
+        <ul class="intro-list">
+            <li>Om man ändrar ett förifyllt belopp visas knappen för återställning direkt.</li>
+            <li>Knappen visas så länge fältet har fokus och beloppet inte stämmer med det förifyllda.</li>
+            <li>Knappen försvinner om man klickar på den för att återställa beloppet.</li>
+            <li>Knappen visas igen på ett fält som inte längre har det förifyllda värdet och får fokus.</li>
+            <li>Om man rensar fältet visas "0" när man lämnar fältet.</li>
+        </ul>
+
+        <div
+            v-for="field in fields"
+            :key="field.id"
+            class="field-group"
+            @focusin="onFocusIn(field)"
+            @focusout="onFocusOut(field, $event)"
+        >
+            <div class="i-width-md-6">
+                <f-numeric-text-field
+                    :id="field.id"
+                    v-model="field.value.value"
+                    @input="onInput(field, $event)"
+                    @blur="onBlur(field, $event)"
+                >
+                    {{ field.label }}
+                </f-numeric-text-field>
+            </div>
             <f-button
-                v-if="field.dirty.value"
+                v-if="field.dirty.value && field.focused.value"
                 variant="tertiary"
                 icon-left="arrows-rotate"
                 align-text
@@ -82,6 +118,16 @@ export default defineComponent({
 h1 {
     margin-top: 3rem;
     margin-bottom: size.$margin-150;
+}
+
+.intro-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: size.$margin-200;
+
+    li::before {
+        content: "– ";
+    }
 }
 
 .field-group {
