@@ -37,5 +37,9 @@ h1 {
 .prototype-list {
     list-style: none;
     padding: 0;
+
+    li {
+        margin-bottom: size.$margin-100;
+    }
 }
 </style>
