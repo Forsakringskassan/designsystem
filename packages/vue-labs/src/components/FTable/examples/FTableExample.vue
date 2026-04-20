@@ -10,8 +10,8 @@ import {
 } from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
-
 const selectFieldOptions = ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"];
+let idCounter = 1;
 
 interface Row {
     id: string;
@@ -230,7 +230,7 @@ function onAddRow(): void {
     nextId.value += 1;
 
     rows.value.push({
-        id: String(id),
+        id: `ny-rad-${idCounter++}`,
         animal: "Katt",
         level: "Föräldrapenning",
         start: "2022-04-11",

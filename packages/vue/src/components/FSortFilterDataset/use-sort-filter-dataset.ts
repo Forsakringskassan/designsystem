@@ -99,6 +99,10 @@ function sortFilterData<T extends object>(
     return toDataset(sortedData, data);
 }
 
+function noop(): void {
+    /* do nothing */
+}
+
 export interface SortFilterDatasetState<T extends object> {
     searchString: Ref<string>;
     sortAttribute: Ref<SortOrder>;
@@ -113,8 +117,16 @@ export interface SortFilterDatasetState<T extends object> {
         attribute: string,
         ascending: boolean,
     ): void;
+    refresh(this: void): void;
 }
 
+export interface SortFilterDatasetCallbacks {
+    onFilter?: () => void;
+    onSort?: () => void;
+    onLazyRowsAdded?: () => void;
+}
+
+// eslint-disable-next-line @typescript-eslint/max-params -- placing in object may give effects
 export function useSortFilterDataset<T extends object>(
     data: MaybeRefOrGetter<Dataset<T> | T[]>,
     sortableAttributes: MaybeRefOrGetter<
@@ -123,11 +135,26 @@ export function useSortFilterDataset<T extends object>(
     filterAttributes: MaybeRefOrGetter<PropertyKey[] | undefined>,
     defaultSortAttribute: PropertyKey,
     defaultSortAscending: boolean,
+    callbacks: SortFilterDatasetCallbacks = {},
 ): SortFilterDatasetState<T> {
     const searchString = ref("");
     const sortAttribute = ref<SortOrder>({ ...defaultSortValue });
     const sortFilterResult = ref(toDataset([])) as Ref<Dataset<T>>;
     const useDefaultSortOrder = ref(true);
+
+    const {
+        onSort = noop,
+        onFilter = noop,
+        onLazyRowsAdded = noop,
+    } = callbacks;
+
+    /**
+     * Data snapshot taken when new sortfilter is run.
+     *
+     * This data snapshot is used to be compare with new input data in order to
+     * distinguish added and removed rows.
+     */
+    let dataSnapshot: T[] = [];
 
     /* all enumerable keys from sortableAttributes */
     const sortableKeys = computed(() => {
@@ -158,13 +185,19 @@ export function useSortFilterDataset<T extends object>(
         return searchString.value.length > 0;
     });
 
-    function onUserChangeSortAttribute(): void {
+    function runSortFilterData(): void {
+        dataSnapshot = [...toValue(data)];
         sortFilterResult.value = sortFilterData(
             toValue(data),
             internalFilterAttributes.value,
             searchString.value,
             sortAttribute.value,
         );
+    }
+
+    function onUserChangeSortAttribute(): void {
+        runSortFilterData();
+        onSort();
     }
 
     function onApiChangeSortAttribute(
@@ -177,48 +210,100 @@ export function useSortFilterDataset<T extends object>(
             sortOrders.value,
         );
 
-        sortFilterResult.value = sortFilterData(
-            toValue(data),
-            internalFilterAttributes.value,
-            searchString.value,
-            sortAttribute.value,
-        );
+        runSortFilterData();
+        onSort();
+    }
+
+    function refresh(): void {
+        runSortFilterData();
+        onSort();
     }
 
     watch(searchString, () => {
-        sortFilterResult.value = sortFilterData(
-            toValue(data),
-            internalFilterAttributes.value,
-            searchString.value,
-            sortAttribute.value,
-        );
+        runSortFilterData();
+        onFilter();
     });
+
+    /**
+     * Applies lazy-mode update semantics without full sort/filter recomputation.
+     */
+    function handleLazyModeUpdate(): void {
+        const newData = toValue(data);
+        const newResult = [...sortFilterResult.value];
+
+        const noLongerIncluded = newResult.filter(
+            (it) => !newData.includes(it),
+        );
+        for (const it of noLongerIncluded) {
+            newResult.splice(newResult.indexOf(it), 1);
+        }
+
+        const additions = newData
+            .filter((it) => !dataSnapshot.includes(it))
+            .filter((it) => !newResult.includes(it));
+        for (const it of additions) {
+            newResult.push(it);
+        }
+
+        sortAttribute.value = { ...defaultSortValue };
+        sortFilterResult.value.splice(
+            0,
+            sortFilterResult.value.length,
+            ...newResult,
+        );
+
+        if (additions.length > 0) {
+            onLazyRowsAdded();
+        }
+    }
+
+    /**
+     * Runs a full sort/filter recomputation and replaces current output data.
+     */
+    function handleFullRecompute(): void {
+        if (defaultSortAttribute !== "" && useDefaultSortOrder.value) {
+            const foundAttribute = sortOrders.value.find((item) => {
+                return (
+                    item.attribute === defaultSortAttribute &&
+                    item.ascending === defaultSortAscending
+                );
+            });
+            if (foundAttribute) {
+                sortAttribute.value = {
+                    ...foundAttribute,
+                    name: toValue(foundAttribute.name),
+                };
+            }
+            useDefaultSortOrder.value = false;
+        }
+
+        if (searchString.value) {
+            searchString.value = ""; // `searchString` watch will trigger new search
+        } else {
+            runSortFilterData();
+            onFilter();
+        }
+    }
+
+    let datasetReplaced = false;
+    watch(
+        () => toValue(data),
+        () => {
+            datasetReplaced = true;
+            handleFullRecompute();
+        },
+        { immediate: true, deep: false },
+    );
 
     watch(
         () => toValue(data),
         () => {
-            if (defaultSortAttribute !== "" && useDefaultSortOrder.value) {
-                const foundAttribute = sortOrders.value.find((item) => {
-                    return (
-                        item.attribute === defaultSortAttribute &&
-                        item.ascending === defaultSortAscending
-                    );
-                });
-                if (foundAttribute) {
-                    sortAttribute.value = {
-                        ...foundAttribute,
-                        name: toValue(foundAttribute.name),
-                    };
-                }
-                useDefaultSortOrder.value = false;
+            if (datasetReplaced) {
+                datasetReplaced = false;
+                return;
             }
 
-            sortFilterResult.value = sortFilterData(
-                toValue(data),
-                internalFilterAttributes.value,
-                searchString.value,
-                sortAttribute.value,
-            );
+            handleLazyModeUpdate();
         },
         { immediate: true, deep: true },
     );
@@ -233,5 +318,6 @@ export function useSortFilterDataset<T extends object>(
         sortAttribute,
         onUserChangeSortAttribute,
         onApiChangeSortAttribute,
+        refresh,
     };
 }

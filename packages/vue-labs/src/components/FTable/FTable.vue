@@ -4,6 +4,7 @@ import {
     type HTMLAttributes,
     type Ref,
     computed,
+    onBeforeUnmount,
     onMounted,
     provide,
     ref,
@@ -23,6 +24,7 @@ import {
     useSlotUtils,
     useTranslate,
 } from "@fkui/vue";
+import { useSortFilterDatasetEvents } from "@fkui/vue";
 import ITableExpandButton from "./ITableExpandButton.vue";
 import ITableExpandable from "./ITableExpandable.vue";
 import ITableHeader from "./ITableHeader.vue";
@@ -38,10 +40,6 @@ import { type NormalizedTableColumn, type TableColumn, normalizeTableColumns } f
 import { usePopupError } from "./use-popup-error";
 import { useSelectable } from "./use-selectable";
 import { useTabstop } from "./use-tabstop";
-
-type ExpandedContent = Required<T>[DatasetNestedKeyOf<T>] extends unknown[]
-    ? Required<T>[DatasetNestedKeyOf<T>][number]
-    : never;
 
 const selectedRows = defineModel<T[]>("selectedRows", { default: [] });
 
@@ -89,6 +87,12 @@ defineSlots<{
         row: ExpandedContent;
     }): void;
 }>();
+
+const sortFilterDatasetEvents = useSortFilterDatasetEvents();
+
+type ExpandedContent = Required<T>[DatasetNestedKeyOf<T>] extends unknown[]
+    ? Required<T>[DatasetNestedKeyOf<T>][number]
+    : never;
 
 const $t = useTranslate();
 const { hasSlot } = useSlotUtils();
@@ -362,8 +366,13 @@ onMounted(() => {
     assertRef(tableRef);
     registerCallbackOnMount(callbackSortableColumns);
     registerCallbackOnSort(callbackOnSort);
+    sortFilterDatasetEvents.onFilter(() => (selectedRows.value = []));
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     setDefaultCellTarget(tableRef.value);
+});
+
+onBeforeUnmount(() => {
+    selectedRows.value = [];
 });
 </script>
 

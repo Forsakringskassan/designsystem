@@ -120,7 +120,7 @@ describe("12.1 multi select", () => {
     });
 
     describe("toggleSelectableHeader()", () => {
-        it("should trigger checked state and select all rows when unchecked state", () => {
+        it("should trigger checked state and select all rows when unchecked state", async () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
             setItemIdentifiers(rows);
             const selectedRows = ref([]);
@@ -134,6 +134,7 @@ describe("12.1 multi select", () => {
 
             expect(selectableHeaderState()).toBeFalsy();
             toggleSelectableHeader();
+            await flushPromises();
             expect(selectableHeaderState()).toBeTruthy();
             expect(selectedRows.value).toHaveLength(2);
         });
@@ -156,7 +157,7 @@ describe("12.1 multi select", () => {
             expect(selectedRows.value).toHaveLength(2);
         });
 
-        it("should trigger unchecked state and unselect all rows when checked state", () => {
+        it("should trigger unchecked state and unselect all rows when checked state", async () => {
             const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
             setItemIdentifiers(rows.value);
             const selectedRows = ref([...rows.value]);
@@ -170,13 +171,14 @@ describe("12.1 multi select", () => {
 
             expect(selectableHeaderState()).toBeTruthy();
             toggleSelectableHeader();
+            await flushPromises();
             expect(selectableHeaderState()).toBeFalsy();
             expect(selectedRows.value).toHaveLength(0);
         });
     });
 
     describe("toggleSelectableRow(row)", () => {
-        it("should get header state `indeterminate` and row state `checked` when nothing selected", () => {
+        it("should get header state `indeterminate` and row state `checked` when nothing selected", async () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
             setItemIdentifiers(rows);
             const selectedRows = ref([]);
@@ -192,11 +194,12 @@ describe("12.1 multi select", () => {
             });
 
             toggleSelectableRow(rows[1]);
+            await flushPromises();
             expect(selectableHeaderState()).toBe("indeterminate");
             expect(selectableRowState(rows[1])).toBeTruthy();
         });
 
-        it("should get header state checked and all rows checked when selecting row by row", () => {
+        it("should get header state checked and all rows checked when selecting row by row", async () => {
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
             setItemIdentifiers(rows);
             const selectedRows = ref([]);
@@ -213,13 +216,13 @@ describe("12.1 multi select", () => {
 
             toggleSelectableRow(rows[0]);
             toggleSelectableRow(rows[1]);
+            await flushPromises();
             expect(selectableHeaderState()).toBeTruthy();
             expect(selectableRowState(rows[0])).toBeTruthy();
             expect(selectableRowState(rows[1])).toBeTruthy();
         });
 
-        it("should get header state `indeterminate` and row unchecked when all selected", () => {
-            // const rows: Row[] = [{ id: 1 }, { id: 2 }];
+        it("should get header state `indeterminate` and row unchecked when all selected", async () => {
             const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
             setItemIdentifiers(rows.value);
             const selectedRows = ref([...rows.value]);
@@ -236,6 +239,7 @@ describe("12.1 multi select", () => {
 
             expect(selectableHeaderState()).toBeTruthy();
             toggleSelectableRow(rows.value[1]);
+            await flushPromises();
             expect(selectableHeaderState()).toBe("indeterminate");
             expect(selectableRowState(rows.value[0])).toBeTruthy();
             expect(selectableRowState(rows.value[1])).toBeFalsy();
