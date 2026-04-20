@@ -23,7 +23,6 @@ const columns = defineTableColumns<Row>([
         header: "Alternativ",
         key: "option",
         options: selectFieldOptions,
-        editable: true,
         label: (row) => `Alternativ för rad ${row.id}`,
     },
 ]);
