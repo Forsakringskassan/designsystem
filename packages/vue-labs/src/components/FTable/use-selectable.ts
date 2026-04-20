@@ -1,4 +1,11 @@
-import { type MaybeRefOrGetter, type Ref, computed, toValue, watch } from "vue";
+import {
+    type MaybeRefOrGetter,
+    type Ref,
+    ref,
+    toValue,
+    watch,
+    watchEffect,
+} from "vue";
 import { assertRef } from "@fkui/logic";
 import { type ItemIdentifier, findItemIdentifier } from "@fkui/vue";
 
@@ -28,31 +35,38 @@ export function useSelectable<T>(options: {
         };
     }
 
-    const isIndeterminate = computed(() => {
-        return (
-            selectedRows.value.length > 0 &&
-            selectedRows.value.length < toValue(rows).length
-        );
-    });
-
-    const isAllRowsSelected = computed((): boolean => {
-        return (
-            selectedRows.value.length > 0 &&
-            selectedRows.value.length === toValue(rows).length
-        );
-    });
+    const headerState = ref<boolean | "indeterminate">(false);
 
     function selectableHeaderState(): boolean | "indeterminate" {
-        return isIndeterminate.value
-            ? "indeterminate"
-            : isAllRowsSelected.value;
+        return headerState.value;
     }
 
+    // `selectedRows` update resolves new `headerState`
+    watchEffect(() => {
+        switch (selectedRows.value.length) {
+            case 0:
+                headerState.value = false;
+                break;
+            case toValue(rows).length:
+                headerState.value = true;
+                break;
+            default:
+                headerState.value = "indeterminate";
+                break;
+        }
+    });
+
     function toggleSelectableHeader(): void {
-        if (isAllRowsSelected.value) {
-            selectedRows.value = [];
-        } else {
+        // if empty table, just toggle visual state (don't resolve from `selectedRows`)
+        if (toValue(rows).length === 0) {
+            headerState.value = headerState.value !== true;
+            return;
+        }
+
+        if (headerState.value !== true) {
             selectedRows.value = [...toValue(rows)];
+        } else {
+            selectedRows.value = [];
         }
     }
 

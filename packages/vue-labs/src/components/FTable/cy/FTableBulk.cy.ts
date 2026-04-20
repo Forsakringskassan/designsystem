@@ -1,9 +1,9 @@
-import { FTablePageObject } from "../../../../cypress";
-import Example from "./FTableBulkExample.vue";
+import { FTablePageObject } from "../../../cypress";
+import Example from "./examples/FTableBulkExample.vue";
 
 const table = new FTablePageObject();
 
-describe("FTableBulkPlainExample", () => {
+describe("FTableBulkExample", () => {
     it("selects all rows when header checkbox is checked", () => {
         cy.mount(Example);
 

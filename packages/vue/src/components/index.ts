@@ -114,9 +114,13 @@ export {
     type FSortFilterDatasetInterface,
     type FSortFilterDatasetMountCallback,
     type FSortFilterDatasetSortCallback,
+    type SortFilterDatasetEventCallback,
+    type SortFilterDatasetEvents,
     type SortOrder,
     FSortFilterDataset,
     FSortFilterDatasetInjected,
+    sortFilterDatasetEventsKey,
+    useSortFilterDatasetEvents,
 } from "./FSortFilterDataset";
 export { FStaticField } from "./FStaticField";
 export { FTableButton } from "./FTableButton";

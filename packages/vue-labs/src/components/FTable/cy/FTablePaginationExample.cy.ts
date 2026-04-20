@@ -1,6 +1,6 @@
 import { FPaginatorPageObject } from "@fkui/vue/cypress";
-import { FTablePageObject } from "../../../../cypress";
-import Example from "./FTableBulkPaginationExample.vue";
+import { FTablePageObject } from "../../../cypress";
+import Example from "./examples/FTablePaginationExample.vue";
 
 const table = new FTablePageObject();
 const paginator = new FPaginatorPageObject();

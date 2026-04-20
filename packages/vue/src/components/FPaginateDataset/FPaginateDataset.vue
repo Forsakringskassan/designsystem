@@ -2,6 +2,7 @@
 import { type Ref, computed, onMounted, provide, ref, watch } from "vue";
 import { type Dataset, toDataset } from "../../utils";
 import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
+import { useSortFilterDatasetEvents } from "../FSortFilterDataset";
 import { provideSelectableRowSource, useSelectableRowSource } from "../selectable-row-source";
 import { paginateDatasetKey } from "./provide";
 
@@ -83,7 +84,13 @@ const numberOfPages = computed(() => Math.max(1, Math.ceil(numberOfItems.value /
 const numberOfItems = computed(() => (itemsLength > 0 ? itemsLength : items.length));
 const { isProvided: hasSelectableRowsProvider } = useSelectableRowSource();
 
+const sortFilterDatasetEvents = useSortFilterDatasetEvents();
+
 onMounted(() => {
+    sortFilterDatasetEvents.onFilter(goToFirstPage);
+    sortFilterDatasetEvents.onSort(goToFirstPage);
+    sortFilterDatasetEvents.onLazyRowsAdded(goToLastPage);
+
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     refetchData();
 });
