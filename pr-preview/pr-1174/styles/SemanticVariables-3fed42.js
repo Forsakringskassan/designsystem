@@ -141,7 +141,7 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#d5e4f6",
+          "value": "#dee9f7",
           "palette": "blue-100"
         },
         "dark": {
@@ -327,8 +327,8 @@ var metadata_default = {
           "palette": "blue-800"
         },
         "dark": {
-          "value": "#76a6e0",
-          "palette": "blue-300"
+          "value": "#d6d8dc",
+          "palette": "neutral-200"
         }
       }
     },
@@ -355,8 +355,8 @@ var metadata_default = {
           "palette": "fk-black-100"
         },
         "dark": {
-          "value": "#8e949f",
-          "palette": "neutral-400"
+          "value": "#ecedef",
+          "palette": "neutral-100"
         }
       }
     },
@@ -369,8 +369,8 @@ var metadata_default = {
           "palette": "blue-700"
         },
         "dark": {
-          "value": "#76a6e0",
-          "palette": "blue-300"
+          "value": "#d6d8dc",
+          "palette": "neutral-200"
         }
       }
     },
@@ -925,7 +925,7 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#d5e4f6",
+          "value": "#dee9f7",
           "palette": "blue-100"
         },
         "dark": {
@@ -939,7 +939,7 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#d5e4f6",
+          "value": "#dee9f7",
           "palette": "blue-100"
         },
         "dark": {

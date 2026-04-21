@@ -157,7 +157,7 @@ var palette_default = [
       },
       {
         name: "blue-100",
-        value: "#d5e4f6",
+        value: "#dee9f7",
         group: "Blue",
         comment: ""
       },
