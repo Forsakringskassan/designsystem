@@ -2,14 +2,14 @@
 import { defineComponent, toRefs } from "vue";
 import { focus } from "@fkui/logic";
 import { getElementFromVueRef } from "../../utils";
-import { FButton } from "../FButton";
+import { FIcon } from "../FIcon";
 import { useLayoutPanel } from "../FLayoutLeftPanel";
 import { FLayoutRightPanelService } from "./services";
 
 export default defineComponent({
     name: "FLayoutRightPanel",
     components: {
-        FButton,
+        FIcon,
     },
     props: {
         /**
@@ -123,7 +123,7 @@ export default defineComponent({
             :style="primaryStyle"
         >
             <!--
-@slot Slot for displaying the primary content.
+            @slot Slot for displaying the primary content.
             -->
             <slot name="default"></slot>
         </div>
@@ -150,18 +150,17 @@ export default defineComponent({
                     :style="contentStyle"
                 >
                     <!--
-@slot Slot for displaying content in the secondary-panel
+                    @slot Slot for displaying content in the secondary-panel
                     -->
                     <slot name="content"></slot>
-                    <f-button
-                        icon-right="close"
-                        size="small"
-                        tertiary-style="black"
-                        variant="tertiary"
+                    <button
+                        class="button button--tertiary button--small button--tertiary--black layout-secondary__secondary__inner__close"
+                        type="button"
                         @click="onClickCloseSecondary"
                     >
                         <span class="sr-only">Stäng sekundärpanelen</span>
-                    </f-button>
+                        <f-icon class="button__icon" name="close" />
+                    </button>
                 </div>
             </div>
         </aside>
