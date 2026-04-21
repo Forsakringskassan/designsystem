@@ -1,5 +1,68 @@
-// Palette colors
+// New palette colors
 // Palette colors should follow the following palette-color-<name> convention.
+
+/// @group Neutral
+$palette-color-neutral-900: #1b1e23 !default;
+$palette-color-neutral-800: #2d3139 !default;
+$palette-color-neutral-700: #494f5b !default;
+$palette-color-neutral-600: #606876 !default;
+$palette-color-neutral-500: #777f8d !default;
+$palette-color-neutral-400: #8e949f !default;
+$palette-color-neutral-300: #afb3bb !default;
+$palette-color-neutral-200: #d6d8dc !default;
+$palette-color-neutral-100: #ecedef !default;
+$palette-color-neutral-50: #f7f7f8 !default;
+$palette-color-neutral-0: #ffffff !default;
+
+/// @group Blue
+$palette-color-blue-900: #061023 !default;
+$palette-color-blue-800: #14336c !default;
+$palette-color-blue-700: #1b478d !default;
+$palette-color-blue-600: #2358af !default;
+$palette-color-blue-500: #3472d5 !default;
+$palette-color-blue-400: #578edb !default;
+$palette-color-blue-300: #76a6e0 !default;
+$palette-color-blue-200: #97bbe7 !default;
+$palette-color-blue-100: #dee9f7 !default;
+$palette-color-blue-50: #f3f7fc !default;
+
+/// @group Green
+$palette-color-green-900: #041f12 !default;
+$palette-color-green-800: #0b4c2b !default;
+$palette-color-green-700: #116a3e !default;
+$palette-color-green-600: #1b7e4d !default;
+$palette-color-green-500: #248f59 !default;
+$palette-color-green-400: #3eac75 !default;
+$palette-color-green-300: #5eba8c !default;
+$palette-color-green-200: #96cfb2 !default;
+$palette-color-green-100: #d9ede3 !default;
+$palette-color-green-50: #f5faf7 !default;
+
+/// @group Yellow
+$palette-color-yellow-900: #231c00 !default;
+$palette-color-yellow-800: #795b01 !default;
+$palette-color-yellow-700: #b18502 !default;
+$palette-color-yellow-600: #d6a103 !default;
+$palette-color-yellow-500: #f1b604 !default;
+$palette-color-yellow-400: #f2cc4d !default;
+$palette-color-yellow-300: #f6db80 !default;
+$palette-color-yellow-200: #f9e49f !default;
+$palette-color-yellow-100: #fef4cd !default;
+$palette-color-yellow-50: #fffbf0 !default;
+
+/// @group Red
+$palette-color-red-900: #220506 !default;
+$palette-color-red-800: #6e1517 !default;
+$palette-color-red-700: #9f2024 !default;
+$palette-color-red-600: #bf272b !default;
+$palette-color-red-500: #df3035 !default;
+$palette-color-red-400: #e85b60 !default;
+$palette-color-red-300: #ef8a8e !default;
+$palette-color-red-200: #f4afb2 !default;
+$palette-color-red-100: #f9dcdc !default;
+$palette-color-red-50: #fdf3f3 !default;
+
+// Old palette colors
 
 /// @group FK-Black
 $palette-color-fk-black-100: #1b1e23 !default;
@@ -36,17 +99,13 @@ $palette-color-green-b-5: #f7faf8 !default;
 
 /// @group Yellow
 $palette-color-yellow-120: #cc980d !default;
-$palette-color-yellow-100: #ffbe10 !default;
 $palette-color-yellow-85: #ffc834 !default;
-$palette-color-yellow-50: #ffdf87 !default;
 $palette-color-yellow-15: #fff5db !default;
 $palette-color-yellow-5: #fffcf3 !default;
 
 /// @group Red
 $palette-color-red-120: #a21111 !default;
-$palette-color-red-100: #ca1515 !default;
 $palette-color-red-85: #d23838 !default;
-$palette-color-red-50: #e48a8a !default;
 $palette-color-red-15: #f7dcdc !default;
 $palette-color-red-5: #fcf3f3 !default;
 
