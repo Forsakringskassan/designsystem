@@ -52,7 +52,7 @@
   },
   "peerDependencies": {
     "@fkui/theme-default": "^6.43.1",
-    "sass": "^1.40.0",
+    "sass": "^1.92.0",
     "stylelint": ">= 14"
   },
   "peerDependenciesMeta": {
