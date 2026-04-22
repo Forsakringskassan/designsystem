@@ -42,7 +42,7 @@ jobs:
                   npm run build
                   npm run build:docs
             - name: Cypress E2E tests
-              uses: cypress-io/github-action@v6
+              uses: cypress-io/github-action@v7.1.9
               with:
                   summary-title: "E2E tests"
                   start: npm start
@@ -76,7 +76,7 @@ jobs:
             - name: Build (minimal)
               run: npm exec lerna -- run --include-dependencies --scope=@fkui/vue --scope=@fkui/cypress-split build
             - name: Cypress Component Testing
-              uses: cypress-io/github-action@v6
+              uses: cypress-io/github-action@v7.1.9
               env:
                   SPLIT: ${{ strategy.job-total }}
                   SPLIT_INDEX: ${{ strategy.job-index }}
