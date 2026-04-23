@@ -8,8 +8,6 @@ interface Field {
     defaultValue: number;
     value: ReturnType<typeof ref<number>>;
     dirty: ReturnType<typeof ref<boolean>>;
-    focused: ReturnType<typeof ref<boolean>>;
-    pressing: ReturnType<typeof ref<boolean>>;
 }
 
 const FIELD_CONFIGS = [
@@ -26,24 +24,11 @@ export default defineComponent({
             ...config,
             value: ref(config.defaultValue),
             dirty: ref(false),
-            focused: ref(false),
-            pressing: ref(false),
         }));
 
         function onInput(field: Field, event: Event): void {
             const raw = (event.target as HTMLInputElement).value.replaceAll(/\s/g, "");
             field.dirty.value = Number(raw) !== field.defaultValue;
-        }
-
-        function onFocusIn(field: Field): void {
-            field.focused.value = true;
-        }
-
-        function onFocusOut(field: Field, event: FocusEvent): void {
-            const wrapper = event.currentTarget as HTMLElement;
-            if (!wrapper.contains(event.relatedTarget as Node) && !field.pressing.value) {
-                field.focused.value = false;
-            }
         }
 
         function onBlur(field: Field, value: number | string): void {
@@ -61,7 +46,7 @@ export default defineComponent({
             });
         }
 
-        return { fields, onInput, onFocusIn, onFocusOut, onBlur, reset };
+        return { fields, onInput, onBlur, reset };
     },
 });
 </script>
@@ -73,19 +58,12 @@ export default defineComponent({
 
         <ul class="intro-list">
             <li>Om man ändrar ett förifyllt belopp visas knappen för återställning direkt.</li>
-            <li>Knappen visas så länge fältet har fokus och beloppet inte stämmer med det förifyllda.</li>
+            <li>Knappen visas så länge beloppet inte stämmer med det förifyllda.</li>
             <li>Knappen försvinner om man klickar på den för att återställa beloppet.</li>
-            <li>Knappen visas igen på ett fält som inte längre har det förifyllda värdet och får fokus.</li>
             <li>Om man rensar fältet visas "0" när man lämnar fältet.</li>
         </ul>
 
-        <div
-            v-for="field in fields"
-            :key="field.id"
-            class="field-group"
-            @focusin="onFocusIn(field)"
-            @focusout="onFocusOut(field, $event)"
-        >
+        <div v-for="field in fields" :key="field.id" class="field-group">
             <div class="i-width-md-6">
                 <f-numeric-text-field
                     :id="field.id"
@@ -96,16 +74,15 @@ export default defineComponent({
                     {{ field.label }}
                 </f-numeric-text-field>
             </div>
-            <div
-                v-if="field.dirty.value && field.focused.value"
-                @pointerdown="field.pressing.value = true"
-                @pointerup="field.pressing.value = false"
-                @pointercancel="field.pressing.value = false"
+            <f-button
+                v-if="field.dirty.value"
+                variant="tertiary"
+                icon-left="arrows-rotate"
+                align-text
+                @click="reset(field)"
             >
-                <f-button variant="tertiary" icon-left="arrows-rotate" align-text @click="reset(field)">
-                    Återställ förifyllt belopp
-                </f-button>
-            </div>
+                Återställ förifyllt belopp
+            </f-button>
         </div>
     </div>
 </template>
