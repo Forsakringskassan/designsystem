@@ -225,15 +225,19 @@ const rows = useDatasetRef<Row>(
 
 const sortableAttributes = getTableSortableAttributes(columns);
 const mySelectedRows = ref([rows.value[0]]);
+const nextId = ref(4);
 
 function onAddRow(): void {
+    const id: number = nextId.value;
+    nextId.value += 1;
+
     rows.value.push({
-        id: String(rows.value.length + 1),
+        id: String(id),
         animal: "Katt",
         level: "Föräldrapenning",
         start: "2022-04-11",
         end: "2022-04-20",
-        antal: "10000",
+        antal: String(10000 + id),
         aktiv: false,
     });
 }
