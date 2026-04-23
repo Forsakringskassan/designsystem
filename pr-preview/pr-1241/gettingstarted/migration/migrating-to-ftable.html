@@ -1,0 +1,1610 @@
+<!doctype html>
+<html lang="sv" class="layout--article" data-root-url="../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>FTable migreringsguide - FK Designsystem</title><link
+            rel="stylesheet"
+            href="../../assets/docs-484c4b.css"
+            crossorigin
+            integrity="sha384-CfrDAEgmJQmWuf0IOYP3/fbDQu3vbWViXTB7rOmwxUczLLliIplC/LR5N7uSCyid"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-fkui-6c9b93.css"
+            crossorigin
+            integrity="sha384-1vFkigbDJwiImIbSQ1LxDsrexKTimsQ04+VlNseXZvX0Qq8imAi8KnRNfBEHHAyv"
+            
+        />
+
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../../assets/vendor-vue-3c4216.js",
+    "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-ba48aa.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
+  },
+  "integrity": {
+    "../../assets/vendor-vue-3c4216.js": "sha384-TPOqyspDennXniRKCOf0FoIUcCBZjNAk3S6SXMQivQp3pF3oP0RCece+Pj/T3osp",
+    "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
+    "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
+    "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
+    "../../assets/vendor-fkui-vue-ba48aa.js": "sha384-BHrW+gS1VYCMd8qfpY4okrlIV6kWXHq2i38UiBp0tP1rmyeY4MWKUn/L+KgkbcqD",
+    "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
+  }
+}
+        </script><script
+            src="../../assets/bootstrap-cb5127.js"
+            
+            crossorigin
+            integrity="sha384-Gfzmg/37+WdxGA3iw2k2/GaeiotI8p9jeSL/GBxyG6mSiyqsRNfgEEroGYvJ3O9b"
+            
+        ></script><script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+
+        <link
+            rel="preload"
+            href="../../search-data-96d3db.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-kDp+rfOQNbtH9rWTjOwCl9anCpS3Knk4dNCGjL18igQTZhisRwAR0sCxfKy9Z50s"
+            id="search-data"
+        />
+    </head>
+    <body><template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="docs-icon-stack docs-icon-stack--info">
+            <svg class="docs-icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="docs-icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />Vi använder också kakor för webbanalys för att göra webbplatsen bättre.</p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="cookie-warning__button-group">
+        <button id="consent-all-button" class="cookie-warning__button cookie-warning__button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+        <button
+            id="consent-functional-button"
+            class="cookie-warning__button cookie-warning__button--secondary"
+            type="button"
+        >
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+
+        <div class="layout-wrapper">
+            <header><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../../index.html">
+            <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="../"> Kom igång </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../components/"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../guides/"> Guider </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../functions/"> Funktioner </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../styles/"> Visuellt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="docs-icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../"> Kom igång </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../components/"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../guides/"> Guider </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../functions/"> Funktioner </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../styles/"> Visuellt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button type="submit">
+            <svg focusable="false" class="search__icon">
+                <use xlink:href="#docs-icon-search"></use>
+            </svg>
+            Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+<div class="toolbar__item">
+    <a class="sandbox-link docs-topnav__anchor" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVk1z2jAQ/SuqT2YG7EN7okDTpmQmmTbJNJmefHHsta0gy64+KBnKf+/KsvEHAQaGg7HePu170u6ydZSMCp7Q1HuVBXemzjbgBD+BExV5SRmIh1LRgsvAmZJ6za6HjBV/76r3SmgYd9eiDKLVkbVXuTHvA+dRgASxhsDpratQpKAsZPl0Dxt87gHyItYMo84AfoEsmDa5W+g3zWOUM8BWKm7zshCK8vRZLjcKuGwEm+QteldHBc5aw/UZa1oJH71PdXzA8euMHQlKl56SaDWttiVbot5KIF/LckwK/rPQXEFMdiQRRW73C5zPAd+jKX+FSD2VgiqQGYBqsVfJSlOf4olOGH2ZxJCEmik/plL5iX8Q2Of9HTIah0bRI9Mp5UPaJpGAw6YKSTSPDJxUmtywLKdGBflH0GpIKId4NCXrgsaNPTQh7gfEjbp+CYwWHIlrn+wDojwtwR1mNaoyMIi9V647IvNFlxINkIqoDHL4bj34QfmKzElcRDoHrrxIQKhgyRDBlRs4DNcDx5A3HMNoTwBDhsCR6o11/DuKzwQkZN4C7N3IlCrl1Pc1L1eph0XmW3er8ObErhgmh2dWHZxdYTTNMG2Jt62z6V5PBmHsoWfAY3eYSWtZ600Mkqb8clfauHN+dJDWiRPiLbZWfV5gS92XdnDB3Sb1nXmwBWjv+yQPy4OWZ5cO67lOErOzreSoDEQ0R4f154PMsehi2OBOg75jA1iR0ug0ZwW5iLSq01OUCOhdsJYRn46xXtBUTu09pOkl8i7b+wonLHypDuqkzAp1kVYMwq7jR4U4bmIH0+M+dio1XmahgPgcq0Ud4R3MEmy2HobhFZ7JSNBS2U5MWMjTOY4hjFh0GjzOpGstBFbTLbaAkEcwxuabnBg1N884XW8osM486g+DPdTuvEd5fvWiHhi259B6V2wFh6lUpWoHSYP7Yur9usAWv1Hm0Ra75cIZDwxngzZsKAKblW1UM99agcLxh4K8NFbiL+PcLJkYsklSSVpPKhZ0qmULHHy93s8cbHJ/NMUDWSwVXYFSM79L0dCWAhazCEkW2y25e3q496QS+H+CJm/utiXfjchuN8OLg8CZb4JMvp0cnd1/i98z8w=="> Sandlåda </a>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary"><div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol><li class="expandable ">
+        <details >
+            <summary>Använda designsystemet <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../use-design-system/getting-started.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/getting-started.html"
+            
+        >
+            Kom igång
+        </a>
+    </li><li class="link ">
+        <a
+            href="../use-design-system/getting-started-application.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/getting-started-application.html"
+            
+        >
+            Ta fram applikation
+        </a>
+    </li><li class="link ">
+        <a
+            href="../use-design-system/translate-text.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/translate-text.html"
+            
+        >
+            Anpassa och översätt text
+        </a>
+    </li><li class="link ">
+        <a
+            href="../use-design-system/icon-library.html"
+            
+            
+            
+            data-path="gettingstarted/use-design-system/icon-library.html"
+            
+        >
+            Skapa eget ikonbibliotek
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Bidra till designsystemet <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../contribute-to-fkds/"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/"
+            
+        >
+            Bidra till designsystemet
+        </a>
+    </li><li class="link ">
+        <a
+            href="../contribute-to-fkds/contributing-developers.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/contributing-developers.html"
+            
+        >
+            För utvecklare
+        </a>
+    </li><li class="link ">
+        <a
+            href="../contribute-to-fkds/release.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/release.html"
+            
+        >
+            Releaseprocess
+        </a>
+    </li><li class="link ">
+        <a
+            href="../contribute-to-fkds/testing.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/testing.html"
+            
+        >
+            Automatisk testning
+        </a>
+    </li><li class="link ">
+        <a
+            href="../contribute-to-fkds/checklist-publication.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/checklist-publication.html"
+            
+        >
+            Checklista vid publicering
+        </a>
+    </li><li class="link ">
+        <a
+            href="../contribute-to-fkds/commits.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/commits.html"
+            
+        >
+            Commits och commitmeddelanden
+        </a>
+    </li><li class="link ">
+        <a
+            href="../contribute-to-fkds/code-guidelines.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/code-guidelines.html"
+            
+        >
+            Riktlinjer för kod
+        </a>
+    </li><li class="link ">
+        <a
+            href="../contribute-to-fkds/testverktyg.html"
+            
+            
+            
+            data-path="gettingstarted/contribute-to-fkds/testverktyg.html"
+            
+        >
+            Testverktyg
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Om designsystemet <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../about/"
+            
+            
+            
+            data-path="gettingstarted/about/"
+            
+        >
+            Designsystemet
+        </a>
+    </li><li class="link ">
+        <a
+            href="../about/roadmap.html"
+            
+            
+            
+            data-path="gettingstarted/about/roadmap.html"
+            
+        >
+            På gång
+        </a>
+    </li><li class="link ">
+        <a
+            href="../about/release-notes.html"
+            
+            
+            
+            data-path="gettingstarted/about/release-notes.html"
+            
+        >
+            Releaseanteckningar
+        </a>
+    </li><li class="link ">
+        <a
+            href="../about/releases.html"
+            
+            
+            
+            data-path="gettingstarted/about/releases.html"
+            
+        >
+            Releaser
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../help-and-support.html"
+            
+            
+            
+            data-path="gettingstarted/help-and-support.html"
+            
+        >
+            Hjälp och support
+        </a>
+    </li><li class="expandable active">
+        <details open>
+            <summary>Migreringsguider <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="./migrating-crud-button.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-crud-button.html"
+            
+        >
+            FCrudButton migreringsguide
+        </a>
+    </li><li class="link ">
+        <a
+            href="./migrating-to-fieldset.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-fieldset.html"
+            
+        >
+            Fieldset migreringsguide
+        </a>
+    </li><li class="link active">
+        <a
+            href="./migrating-to-ftable.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-ftable.html"
+            
+        >
+            FTable migreringsguide
+        </a>
+    </li><li class="link ">
+        <a
+            href="./migrating-to-v5.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v5.html"
+            
+        >
+            Version 5 migreringsguide
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Version 6 migreringsguide <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="./migrating-to-v6/overview.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/overview.html"
+            
+        >
+            Sammanfattning
+        </a>
+    </li><li class="link ">
+        <a
+            href="./migrating-to-v6/design.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/design.html"
+            
+        >
+            @fkui/design
+        </a>
+    </li><li class="link ">
+        <a
+            href="./migrating-to-v6/logic.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/logic.html"
+            
+        >
+            @fkui/logic
+        </a>
+    </li><li class="link ">
+        <a
+            href="./migrating-to-v6/vue.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/vue.html"
+            
+        >
+            @fkui/vue
+        </a>
+    </li><li class="link ">
+        <a
+            href="./migrating-to-v6/cypress-pageobjects.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html"
+            
+        >
+            Cypress Pageobjects
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li></ol>
+
+            
+        </details>
+    </li></ol>
+</nav>
+</div><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 class="docs-heading docs-heading--h1" id="title">FTable migreringsguide</h1>
+
+                    
+                    <div id="aside"><dl></dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">
+                                Innehåll
+                                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                                    <use href="#docs-icon-arrow-down"></use>
+                                </svg>
+                            </summary>
+                            <ul>
+                                
+                                <li><a href="#vad_som_ar_samma">Vad som är samma</a></li>
+                                
+                                <li><a href="#vad_som_forandras">Vad som förändras</a></li>
+                                
+                                <li><a href="#expanderbart_innehall">Expanderbart innehåll</a></li>
+                                
+                                <li><a href="#kolumntyper_i_ftable">Kolumntyper i FTable</a></li>
+                                
+                                <li><a href="#vanliga_migreringar">Vanliga migreringar</a></li>
+                                
+                                <li><a href="#editering_och_validering">Editering och validering</a></li>
+                                
+                                <li><a href="#selection">Selection</a></li>
+                                
+                                <li><a href="#slots">Slots</a></li>
+                                
+                                <li><a href="#konsumentagd_logik">Konsumentägd logik</a></li>
+                                
+                                <li><a href="#fall_som_kraver_extra_anpassning">Fall som kräver extra anpassning</a></li>
+                                
+                                <li><a href="#snabbguide">Snabbguide</a></li>
+                                
+                                <li><a href="#relevanta_delar_i_nya_api_t">Relevanta delar i nya API:t</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content"><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> är deprekerad och ersatt med <a href="../../functions/labs/FTable">Tabell</a></p>
+<h2 id="vad_som_ar_samma" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#vad_som_ar_samma">Vad som är samma</a></h2><ul>
+<li>Tabellen bygger fortfarande på rows</li>
+<li><code>key-attribute</code> används fortfarande för att identifiera rader</li>
+<li>Tabellen används fortfarande för tabulär data</li>
+<li>Expanderbara rader finns kvar som koncept</li>
+<li>Selection finns kvar som koncept</li>
+<li>Slots som <code>caption</code> och <code>empty</code> finns kvar</li>
+</ul>
+<h2 id="vad_som_forandras" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#vad_som_forandras">Vad som förändras</a></h2><h3 id="kolumner_flyttas_fran_template_till_konfiguration" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#kolumner_flyttas_fran_template_till_konfiguration">Kolumner flyttas från template till konfiguration</a></h3>
+                <div
+                    id="example-f803a2"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;name&quot;</span>,
+    },
+]);
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-fd76fd"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table :rows=&quot;rows&quot;&gt;</span>
+<span class="hljs-deletion">-    &lt;template #default=&quot;{ row }&quot;&gt;</span>
+<span class="hljs-deletion">-        &lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-            {{ row.name }}</span>
+<span class="hljs-deletion">-        &lt;/f-table-column&gt;</span>
+<span class="hljs-deletion">-    &lt;/template&gt;</span>
+<span class="hljs-deletion">-&lt;/f-interactive-table&gt;</span>
+<span class="hljs-addition">+&lt;f-table :rows :columns /&gt;</span>
+</code></pre>
+                </div>
+            <h3 id="formattering_flyttas_in_i_kolumntypen" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#formattering_flyttas_in_i_kolumntypen">Formattering flyttas in i kolumntypen</a></h3><ul>
+<li>Datum -&gt; <code>text:date</code></li>
+<li>Nummer -&gt; <code>text:number</code></li>
+<li>Valuta -&gt; <code>text:currency</code></li>
+<li>Procent -&gt; <code>text:percent</code></li>
+</ul>
+<p class="docs-paragraph">Andra formatterade texttyper som finns i <code>FTable</code>:</p>
+<ul>
+<li><code>text:email</code></li>
+<li><code>text:phoneNumber</code></li>
+<li><code>text:postalCode</code></li>
+<li><code>text:personnummer</code></li>
+<li><code>text:orgainsationsnummer</code></li>
+<li><code>text:bankAccountNumber</code></li>
+<li><code>text:bankgiro</code></li>
+<li><code>text:plusgiro</code></li>
+<li><code>text:clearingNumber</code></li>
+</ul>
+<h3 id="editering_och_validering_ligger_i_kolumnen" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#editering_och_validering_ligger_i_kolumnen">Editering och validering ligger i kolumnen</a></h3>
+                <div
+                    id="example-10a1c9"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;name&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">label</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Namn för rad <span class="hljs-subst">${row.id}</span>`</span>,
+        <span class="hljs-attr">validation</span>: {
+            <span class="hljs-attr">required</span>: {},
+            <span class="hljs-attr">minLength</span>: { <span class="hljs-attr">length</span>: <span class="hljs-number">3</span> },
+        },
+    },
+]);
+</code></pre>
+                </div>
+            <ul>
+<li><code>editable</code>, <code>label</code> och <code>validation</code> definieras i kolumnen</li>
+<li>valideringsregler dokumenteras separat</li>
+</ul>
+<h2 id="expanderbart_innehall" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#expanderbart_innehall">Expanderbart innehåll</a></h2><p class="docs-paragraph">I gamla <code>FInteractiveTable</code> användes <code>expandable-attribute</code> för att ange vilket attrubut som innehöll expanderbart innehåll.</p>
+<p class="docs-paragraph">I nya <code>FTable</code> används istället <code>useDatasetRef(...)</code> för att skapa ett dataset där det nästlade attributet anges.</p>
+<h3 id="expanderbara_tabeller" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#expanderbara_tabeller">Expanderbara tabeller</a></h3>
+                <div
+                    id="example-5865c3"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">expandableRows</span>?: <span class="hljs-title class_">Row</span>[];
+}
+
+<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;(
+    [
+        {
+            <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Rad 1&quot;</span>,
+            <span class="hljs-attr">expandableRows</span>: [],
+        },
+    ],
+    <span class="hljs-string">&quot;expandableRows&quot;</span>,
+);
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-112b53"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table</span>
+<span class="hljs-deletion">-    :rows</span>
+<span class="hljs-deletion">-    key-attribute=&quot;id&quot;</span>
+<span class="hljs-deletion">-    expandable-attribute=&quot;expandableRows&quot;</span>
+<span class="hljs-deletion">-&gt;</span>
+<span class="hljs-deletion">-    &lt;template #default=&quot;{ row }&quot;&gt;</span>
+<span class="hljs-deletion">-        &lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-            {{ row.name }}</span>
+<span class="hljs-deletion">-        &lt;/f-table-column&gt;</span>
+<span class="hljs-deletion">-    &lt;/template&gt;</span>
+<span class="hljs-deletion">-&lt;/f-interavtive-table&gt;</span>
+<span class="hljs-addition">+&lt;f-table :rows :columns key-attribute=&quot;id&quot; /&gt;</span>
+</code></pre>
+                </div>
+            <h3 id="eget_expanderat_innehall" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#eget_expanderat_innehall">Eget expanderat innehåll</a></h3>
+                <div
+                    id="example-879d2a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">content</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">expandableContent</span>?: <span class="hljs-title class_">Row</span>[];
+}
+
+<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;(
+    [
+        {
+            <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
+            <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;Rad 1&quot;</span>,
+            <span class="hljs-attr">expandableContent</span>: [
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1a&quot;</span>,
+                    <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;Extra information för rad 1&quot;</span>,
+                },
+            ],
+        },
+    ],
+    <span class="hljs-string">&quot;expandableContent&quot;</span>,
+);
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-baea5e"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table :rows expandable-attribute=&quot;expandableContent&quot;&gt;</span>
+<span class="hljs-deletion">-    &lt;template #default=&quot;{ row }&quot;&gt;</span>
+<span class="hljs-deletion">-        &lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-            {{ row.name }}</span>
+<span class="hljs-deletion">-        &lt;/f-table-column&gt;</span>
+<span class="hljs-deletion">-    &lt;/template&gt;</span>
+<span class="hljs-deletion">-</span>
+<span class="hljs-deletion">-    &lt;template #expandable=&quot;{ expandableRow }&quot;&gt;</span>
+<span class="hljs-deletion">-        {{ expandableRow.content }}</span>
+<span class="hljs-deletion">-    &lt;/template&gt;</span>
+<span class="hljs-deletion">-&lt;/f-interactive-table&gt;</span>
+<span class="hljs-addition">+&lt;f-table</span>
+<span class="hljs-addition">+    :rows</span>
+<span class="hljs-addition">+    :columns</span>
+<span class="hljs-addition">+    key-attributes=&quot;id&quot;</span>
+<span class="hljs-addition">+&gt;</span>
+<span class="hljs-addition">+    &lt;template #expandable=&quot;{ row }&quot;&gt;</span>
+<span class="hljs-addition">+        {{ row.content }}</span>
+<span class="hljs-addition">+&lt;/f-table&gt;</span>
+</code></pre>
+                </div>
+            <ul>
+<li><code>useDatasetRef(...)</code> används både för expanderbara rader och eget expanderat innehåll</li>
+<li>attributet du skickar in styr vilket nästlat innehåll tabellen använder</li>
+</ul>
+<h2 id="kolumntyper_i_ftable" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kolumntyper_i_ftable">Kolumntyper i <code>FTable</code></a></h2><ul>
+<li><code>text</code></li>
+<li><code>text:date</code></li>
+<li><code>text:number</code></li>
+<li><code>text:currency</code></li>
+<li><code>text:percent</code></li>
+<li><code>text:email</code></li>
+<li><code>text:phoneNumber</code></li>
+<li><code>text:postalCode</code></li>
+<li><code>text:personnummer</code></li>
+<li><code>text:organisationsnummer</code></li>
+<li><code>text:bankAccountNumber</code></li>
+<li><code>text:bankgiro</code></li>
+<li><code>text:plusgiro</code></li>
+<li><code>text:clearingNumber</code></li>
+</ul>
+<h3 id="ovriga" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ovriga">Övriga</a></h3><ul>
+<li><code>checkbox</code></li>
+<li><code>rowheader</code></li>
+<li><code>anchor</code></li>
+<li><code>button</code></li>
+<li><code>select</code></li>
+<li><code>menu</code></li>
+<li><code>render</code></li>
+</ul>
+<h2 id="vanliga_migreringar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#vanliga_migreringar">Vanliga migreringar</a></h2><h3 id="textkolumn" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#textkolumn">Textkolumn</a></h3>
+                <div
+                    id="example-47e252"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-    {{ row.name }}</span>
+<span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
+{
+    type: &quot;text&quot;,
+    header: &quot;Namn&quot;,
+    key: &quot;name&quot;,
+}
+</code></pre>
+                </div>
+            <h3 id="formatterade_textkolumner" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#formatterade_textkolumner">Formatterade textkolumner</a></h3>
+                <div
+                    id="example-b10fb0"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Skapad&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-   &lt;span v-format:date=&quot;row.createdAt&quot;&gt;&lt;/span&gt;</span>
+<span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
+{
+    type: &quot;text:date&quot;,
+    header: &quot;Skapad&quot;,
+    key: &quot;createdAt&quot;,
+}
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-7e8653"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Antal&quot; type=&quot;numeric&quot;&gt;</span>
+<span class="hljs-deletion">-   {{ row.amount }}</span>
+<span class="hljs-deletion">-&lt;f-table-column&gt;</span>
+{
+    type: &quot;text:number&quot;,
+    header: &quot;Antal&quot;
+    key: &quot;amount&quot;,
+}
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Andra vanliga formatterade texttyper:</p>
+<ul>
+<li><code>text:currency</code></li>
+<li><code>text:percent</code></li>
+<li><code>text:email</code></li>
+<li><code>text:phoneNumber</code></li>
+<li><code>text:postalCode</code></li>
+<li><code>text:personnummer</code></li>
+<li><code>text:organisationsnummer</code></li>
+<li><code>text:bankAccountNumber</code></li>
+<li><code>text:bankgiro</code></li>
+<li><code>text:plusgiro</code></li>
+<li><code>text:clearingNumber</code></li>
+</ul>
+<h3 id="checkbox_kolumn" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#checkbox_kolumn">Checkbox-kolumn</a></h3>
+                <div
+                    id="example-46a467"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Aktiv&quot;&gt;</span>
+<span class="hljs-deletion">-   &lt;f-checkbox-field</span>
+<span class="hljs-deletion">-       :model-value=&quot;row.active&quot;</span>
+<span class="hljs-deletion">-       @update:model-value=&quot;row.active = $event&quot;</span>
+<span class="hljs-deletion">-   &lt;/f-checkbox-field&gt;</span>
+<span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
+{
+    type: &quot;checkbox&quot;,
+    header: &quot;Aktiv&quot;,
+    key: &quot;active&quot;,
+    label: (row) =&gt; `Välj rad för ${row.id}`,
+}
+</code></pre>
+                </div>
+            <ul>
+<li><code>checkbox</code> är en vanlig kolumn i tabellen</li>
+<li>Det är inte samma sak som <code>selectable</code></li>
+</ul>
+<h3 id="rowheader" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#rowheader">Rowheader</a></h3>
+                <div
+                    id="example-26887d"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Namn&quot; :row-header=&quot;true&quot;&gt;</span>
+<span class="hljs-deletion">-   {{ row.name }}</span>
+<span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
+{
+    type: &quot;rowheader&quot;,
+    header: &quot;Namn&quot;,
+    text(row) {
+        return row.name;
+    },
+}
+</code></pre>
+                </div>
+            <ul>
+<li><code>rowheader</code> är en egen kolumntyp</li>
+<li>Den används när en kolumn ska vara radrubrik</li>
+<li>Detta motsvarar konceptet <code>row-header</code> i gamla tabellen, men uttrycks nu i kolumnkonfigurationen</li>
+</ul>
+<h3 id="anchor" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#anchor">Anchor</a></h3>
+                <div
+                    id="example-b1f73a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Länk&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-   &lt;a :href=&quot;row.href&quot;&gt;Öppna&lt;/a&gt;</span>
+<span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
+{
+    type: &quot;anchor&quot;,
+    header: &quot;Länk&quot;,
+    href: &quot;#&quot;,
+    text() {
+        return &quot;Öppna&quot;;
+    },
+}
+</code></pre>
+                </div>
+            <h3 id="button" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#button">Button</a></h3>
+                <div
+                    id="example-ca1bc3"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Åtgärd&quot; type=&quot;action&quot; shrink&gt;</span>
+<span class="hljs-deletion">-   &lt;f-table-button icon=&quot;trashcan&quot; @click=&quot;onRemoveRow(row)&quot;&gt;</span>
+<span class="hljs-deletion">-       Ta bort</span>
+<span class="hljs-deletion">-   &lt;/f-table-button&gt;</span>
+<span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
+{
+    type: &quot;button&quot;,
+    header: &quot;Åtgärd&quot;,
+    icon: &quot;trashcan&quot;,
+    text() {
+        return &quot;Ta bort&quot;,
+    },
+    onClick(row) {
+        onRemoveRow(row);
+    },
+}
+</code></pre>
+                </div>
+            <ul>
+<li>Knappen är inbyggd i kolumnen</li>
+<li>Logiken för vad som ska hända vid klick är fortfarande konsumentens ansvar</li>
+</ul>
+<h3 id="menu" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#menu">Menu</a></h3>
+                <div
+                    id="example-9064a2"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onEdit</span>(<span class="hljs-params"><span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span></span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Ändra&quot;</span>, row);
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onDelete</span>(<span class="hljs-params"><span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span></span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Ta bort&quot;</span>, row);
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;menu&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärder&quot;</span>,
+        <span class="hljs-title function_">text</span>(<span class="hljs-params">row</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">`Visa åtgärder för <span class="hljs-subst">${row.name}</span>`</span>;
+        },
+        <span class="hljs-attr">actions</span>: [
+            {
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ändra&quot;</span>,
+                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;pen&quot;</span>,
+                <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
+                    <span class="hljs-title function_">onEdit</span>(row);
+                },
+            },
+            {
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ta bort&quot;</span>,
+                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
+                <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
+                    <span class="hljs-title function_">onDelete</span>(row);
+                },
+            },
+        ],
+    },
+]);
+</code></pre>
+                </div>
+            <ul>
+<li><code>menu</code> används när flera actions ska grupperas i samma kolumn</li>
+<li>Varje action definieras i <code>actions</code></li>
+<li>Varje action kan ha <code>label</code>, <code>icon</code> och <code>onClick</code></li>
+</ul>
+<h3 id="select" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#select">Select</a></h3>
+                <div
+                    id="example-705661"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">item</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;select&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Val&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;item&quot;</span>,
+        <span class="hljs-attr">label</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Val för rad <span class="hljs-subst">${row.id}</span>`</span>,
+        <span class="hljs-attr">options</span>: [<span class="hljs-string">&quot;Item 1&quot;</span>, <span class="hljs-string">&quot;Item 2&quot;</span>, <span class="hljs-string">&quot;Item 3&quot;</span>],
+    },
+]);
+</code></pre>
+                </div>
+            <ul>
+<li><code>select</code> används när ett värde i raden ska väljas från en lista</li>
+<li>Använd <code>key</code> när värdet kan läsas och skrivas direkt på raden</li>
+<li><code>value</code> och <code>update</code> behövs när visning eller uppdatering kräver speciallogik</li>
+</ul>
+<p class="docs-paragraph">Om alternativen laddas asynkront kan <code>columns</code> behöva byggas med <code>computed(...)</code> så att <code>options</code> uppdateras när datat har laddat klart.</p>
+<h3 id="render" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#render">Render</a></h3>
+                <div
+                    id="example-1aa377"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { h } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Custom&quot;</span>,
+        <span class="hljs-title function_">render</span>(<span class="hljs-params">row</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_">h</span>(<span class="hljs-string">&quot;td&quot;</span>, { <span class="hljs-attr">id</span>: <span class="hljs-string">`item-<span class="hljs-subst">${row.id}</span>`</span> }, [<span class="hljs-string">&quot;Item&quot;</span>]);
+        },
+    },
+]);
+</code></pre>
+                </div>
+            <ul>
+<li><code>render</code> används när en inbyggd kolumntyp inte räcker</li>
+<li>Använd i första hand en inbyggd kolumntyp</li>
+</ul>
+<h2 id="editering_och_validering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#editering_och_validering">Editering och validering</a></h2><h3 id="key" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#key">Key</a></h3><p class="docs-paragraph">Använd <code>key</code> när kolumnen direkt läser och skriver till ett fält på raden.</p>
+
+                <div
+                    id="example-2c924a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;name&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">label</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Namn för rad <span class="hljs-subst">${row.id}</span>`</span>,
+    },
+]);
+</code></pre>
+                </div>
+            <ul>
+<li><code>key</code> räcker när värdet kan läsas och skrivas direkt på raden</li>
+<li>Det är det enklaste och vanligaste mönstret i <code>FTable</code></li>
+</ul>
+<h3 id="value_och_update" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#value_och_update">Value och Update</a></h3><p class="docs-paragraph">Använd <code>value</code> och <code>update</code> när visning eller uppdatering inte är en enkel 1:1 koppling mot ett fält.</p>
+
+                <div
+                    id="example-3b7426"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">item</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Val&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">label</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span></span>) =&gt;</span> <span class="hljs-string">`Val för rad <span class="hljs-subst">${row.id}</span>`</span>,
+        <span class="hljs-attr">value</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span></span>) =&gt;</span> {
+            <span class="hljs-keyword">return</span> row.<span class="hljs-property">item</span>;
+        },
+        <span class="hljs-title function_">update</span>(<span class="hljs-params"><span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span>, <span class="hljs-attr">newValue</span>: <span class="hljs-built_in">string</span></span>) {
+            row.<span class="hljs-property">item</span> = newValue;
+        },
+    },
+]);
+</code></pre>
+                </div>
+            <ul>
+<li>Använd <code>value</code> när visningen inte ska komma direkt från <code>key</code></li>
+<li>Använd <code>update</code> när du själv behöver styra hur värdet skrivs tillbaka</li>
+<li>Om <code>key</code> räcker behövs inte <code>value</code> och <code>update</code></li>
+</ul>
+<h3 id="validering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering">Validering</a></h3>
+                <div
+                    id="example-13a0ed"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;name&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">label</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Namn för rad <span class="hljs-subst">${row.id}</span>`</span>,
+        <span class="hljs-attr">validation</span>: {
+            <span class="hljs-attr">required</span>: {},
+            <span class="hljs-attr">maxLength</span>: { <span class="hljs-attr">length</span>: <span class="hljs-number">32</span> },
+        },
+    },
+]);
+</code></pre>
+                </div>
+            <ul>
+<li>Validering definieras i kolumnen</li>
+<li>Själva valideringsreglerna dokumenteras separat</li>
+</ul>
+<h2 id="selection" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#selection">Selection</a></h2><p class="docs-paragraph"><code>FInteractiveTable</code> hade selection via <code>selectable</code>.</p>
+<p class="docs-paragraph">I <code>FTable</code> finns selection kvar, men används via <code>selectable</code> tillsammans med <code>v-model:selected-rows</code>.</p>
+<h3 id="enkelval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#enkelval">Enkelval</a></h3>
+                <div
+                    id="example-b1779c"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table</span>
+<span class="hljs-deletion">-   v-model=&quot;selectedRows&quot;</span>
+<span class="hljs-deletion">-   :rows</span>
+<span class="hljs-deletion">-   selectable=&quot;single&quot;</span>
+<span class="hljs-deletion">-&gt;</span>
+<span class="hljs-deletion">-   &lt;template #default=&quot;{ row }&quot;&gt;</span>
+<span class="hljs-deletion">-       &lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-           {{ row.name }}</span>
+<span class="hljs-deletion">-       &lt;/f-table-column&gt;</span>
+<span class="hljs-deletion">-   &lt;/template&gt;</span>
+<span class="hljs-deletion">-&lt;/f-interactive-table&gt;</span>
+&lt;f-table
+    v-model:selected-rows=&quot;selectedRows&quot;
+    :columns
+    :rows
+    selectable=&quot;single&quot;
+/&gt;
+</code></pre>
+                </div>
+            <h3 id="flerval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#flerval">Flerval</a></h3>
+                <div
+                    id="example-0b952b"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table</span>
+<span class="hljs-deletion">-   v-model=&quot;selectedRows&quot;</span>
+<span class="hljs-deletion">-   :rows</span>
+<span class="hljs-deletion">-   selectable=&quot;multi&quot;</span>
+<span class="hljs-deletion">-&gt;</span>
+<span class="hljs-deletion">-   &lt;template #default=&quot;{ row }&quot;&gt;</span>
+<span class="hljs-deletion">-       &lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-           {{ row.name }}</span>
+<span class="hljs-deletion">-       &lt;/f-table-column&gt;</span>
+<span class="hljs-deletion">-   &lt;/template&gt;</span>
+<span class="hljs-deletion">-&lt;/f-interactive-table&gt;</span>
+&lt;f-table
+    v-model:selected-rows=&quot;selectedRows&quot;
+    :columns
+    :rows
+    selectable=&quot;multi&quot;
+/&gt;
+</code></pre>
+                </div>
+            <ul>
+<li><code>single</code> används för enkelval</li>
+<li><code>multi</code> används för flerval</li>
+<li><code>multi</code> ger också stöd för att välja alla rader via kolumnrubruken</li>
+<li><code>selectedRows</code> innehåller de valda raderna</li>
+</ul>
+<h3 id="selection_och_radaktivering_ar_separate_begrepp" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#selection_och_radaktivering_ar_separate_begrepp">Selection och radaktivering är separate begrepp</a></h3><p class="docs-paragraph"><code>FInteractiveTable</code> hade både:</p>
+<ul>
+<li>selection via <code>selectable</code></li>
+<li>Radaktivering / Aktiv rad via:
+<ul>
+<li><code>click</code></li>
+<li><code>change</code></li>
+<li><code>active</code></li>
+<li><code>update:active</code></li>
+<li><code>showActive</code></li>
+</ul>
+</li>
+</ul>
+<p class="docs-paragraph">Nya <code>FTable</code> har selection, men inte samma inbyggda stöd för aktiv rad eller radaktivering.</p>
+<p class="docs-paragraph">Det betyder att gammal funktionalitet där man klickade på en rad för att sätta aktiv rad, få ut hela objektet eller trigga annan lokig behöver lösas med ett nytt, mer explicit mönster utanför tabellens inbyggda radbeteende.</p>
+<h2 id="slots" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#slots">Slots</a></h2><ul>
+<li><code>caption</code></li>
+<li><code>empty</code></li>
+<li><code>footer</code></li>
+<li><code>expandable</code></li>
+</ul>
+<h2 id="konsumentagd_logik" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#konsumentagd_logik">Konsumentägd logik</a></h2><p class="docs-paragraph"><code>FTable</code> ansvarar för rendering, kolumner och interaktion i tabellen, men viss logik ligger fortfarande hos konsumenten.</p>
+<p class="docs-paragraph">Det gäller till exempel:</p>
+<ul>
+<li>Att lägga till rader</li>
+<li>Att ta bort rader</li>
+<li>Att spara ändringar</li>
+<li>Att hantera bulk actions</li>
+<li>Att koppla tabellen till API eller annan state-hantering</li>
+</ul>
+<h2 id="fall_som_kraver_extra_anpassning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fall_som_kraver_extra_anpassning">Fall som kräver extra anpassning</a></h2><ul>
+<li>Custom rendering</li>
+<li>Komplexa actions</li>
+<li>Gammal aktiv-rad-logik</li>
+<li>Radclick-beteenden</li>
+<li>Flera interaktiva komponenter i samma cell</li>
+</ul>
+<h2 id="snabbguide" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#snabbguide">Snabbguide</a></h2><ul>
+<li>text -&gt; <code>text</code> + <code>key</code></li>
+<li>datum -&gt; <code>text:date</code></li>
+<li>nummer -&gt; <code>text:number</code></li>
+<li>checkbox -&gt; <code>checkbox</code></li>
+<li>radrubrik <code>( row-header )</code> -&gt; <code>rowheader</code></li>
+<li>länk i cell -&gt; <code>anchor</code></li>
+<li>action -&gt; <code>button</code></li>
+<li>flera actions -&gt; <code>menu</code></li>
+<li>custom UI -&gt; <code>render</code></li>
+<li>expanderbara rader / eget expanderat innehåll -&gt; <code>useDatasetRef</code></li>
+<li>radclick / aktiv rad -&gt; ny lösning</li>
+</ul>
+<h2 id="relevanta_delar_i_nya_api_t" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relevanta_delar_i_nya_api_t">Relevanta delar i nya API:t</a></h2><ul>
+<li><code>defineTableColumns(...)</code></li>
+<li><code>useDatasetRef(...)</code></li>
+<li><code>v-model:selected-row</code></li>
+<li><code>key-attribute</code></li>
+<li><code>selectable</code></li>
+<li><code>value</code></li>
+<li><code>update</code></li>
+<li><code>label</code></li>
+<li><code>validation</code></li>
+<li><code>options</code></li>
+<li><code>caption</code></li>
+<li><code>empty</code></li>
+<li><code>expandable</code></li>
+</ul>
+
+
+                    </div>
+                </main>
+            </div>
+
+            <footer><div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="../about/index.html">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center">
+    <h2 class="heading--h1">Länkar</h2>
+    <ul>
+        <li><a class="anchor" href="../../accessibility.html">Tillgänglighetsredogörelse</a></li>
+        <li>
+            <a class="anchor anchor--block" target="_blank" href="https://github.com/Forsakringskassan/designsystem">
+                GitHub
+                <svg focusable="false" class="icon f-icon-new-window">
+                    <use href="#f-icon-new-window"></use>
+                </svg>
+                <span class="sr-only">öppnas i ny flik</span>
+            </a>
+        </li>
+        <li>
+            <a class="anchor anchor--block" target="_blank" href="https://www.figma.com/@fkds">
+                Figma
+                <svg focusable="false" class="icon f-icon-new-window">
+                    <use href="#f-icon-new-window"></use>
+                </svg>
+                <span class="sr-only">öppnas i ny flik</span>
+            </a>
+        </li>
+        <li>
+            <a class="anchor anchor--block" target="_blank" rel="external" href="https://play.vuejs.org/#eNqVVk1z2jAQ/SuqT2YG7EN7okDTpmQmmTbJNJmefHHsta0gy64+KBnKf+/KsvEHAQaGg7HePu170u6ydZSMCp7Q1HuVBXemzjbgBD+BExV5SRmIh1LRgsvAmZJ6za6HjBV/76r3SmgYd9eiDKLVkbVXuTHvA+dRgASxhsDpratQpKAsZPl0Dxt87gHyItYMo84AfoEsmDa5W+g3zWOUM8BWKm7zshCK8vRZLjcKuGwEm+QteldHBc5aw/UZa1oJH71PdXzA8euMHQlKl56SaDWttiVbot5KIF/LckwK/rPQXEFMdiQRRW73C5zPAd+jKX+FSD2VgiqQGYBqsVfJSlOf4olOGH2ZxJCEmik/plL5iX8Q2Of9HTIah0bRI9Mp5UPaJpGAw6YKSTSPDJxUmtywLKdGBflH0GpIKId4NCXrgsaNPTQh7gfEjbp+CYwWHIlrn+wDojwtwR1mNaoyMIi9V647IvNFlxINkIqoDHL4bj34QfmKzElcRDoHrrxIQKhgyRDBlRs4DNcDx5A3HMNoTwBDhsCR6o11/DuKzwQkZN4C7N3IlCrl1Pc1L1eph0XmW3er8ObErhgmh2dWHZxdYTTNMG2Jt62z6V5PBmHsoWfAY3eYSWtZ600Mkqb8clfauHN+dJDWiRPiLbZWfV5gS92XdnDB3Sb1nXmwBWjv+yQPy4OWZ5cO67lOErOzreSoDEQ0R4f154PMsehi2OBOg75jA1iR0ug0ZwW5iLSq01OUCOhdsJYRn46xXtBUTu09pOkl8i7b+wonLHypDuqkzAp1kVYMwq7jR4U4bmIH0+M+dio1XmahgPgcq0Ud4R3MEmy2HobhFZ7JSNBS2U5MWMjTOY4hjFh0GjzOpGstBFbTLbaAkEcwxuabnBg1N884XW8osM486g+DPdTuvEd5fvWiHhi259B6V2wFh6lUpWoHSYP7Yur9usAWv1Hm0Ra75cIZDwxngzZsKAKblW1UM99agcLxh4K8NFbiL+PcLJkYsklSSVpPKhZ0qmULHHy93s8cbHJ/NMUDWSwVXYFSM79L0dCWAhazCEkW2y25e3q496QS+H+CJm/utiXfjchuN8OLg8CZb4JMvp0cnd1/i98z8w==">
+                Sandlåda
+                <svg focusable="false" class="icon f-icon-new-window">
+                    <use href="#f-icon-new-window"></use>
+                </svg>
+                <span class="sr-only">öppnas i ny flik</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/05eaf3a1f0d6261a968f2b8462b281d2d3a8e857">05eaf3a</a>)<br />
+        <a href="https://github.com/Forsakringskassan/designsystem/pull/1241">PR 1241</a><br />
+        2026-04-23 09:39
+</div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+</div>
+
+
+    <ul>
+        <li><a class="anchor" href="../../changelog.html">Changelog</a></li>
+    </ul>
+</div>
+</footer>
+        </div><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-code" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M200 354L102 256L200 158L171 128L43 256L171 384L200 354ZM312 354L410 256L312 158L341 128L469 256L341 384L312 354Z"
+            />
+        </symbol>
+        <!--!Font Awesome Free 6.4.2 -->
+        <symbol id="docs-icon-fullscreen" viewBox="0 0 448 512">
+            <path
+                fill="currentColor"
+                d="M160 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V64zM32 320c-17.7 0-32 14.3-32 32s14.3 32 32 32H96v64c0 17.7 14.3 32 32 32s32-14.3 32-32V352c0-17.7-14.3-32-32-32H32zM352 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H352V64zM320 320c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32V384h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320z"
+            />
+        </symbol>
+    </svg>
+</div><dialog class="docs-modal" id="search-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title" id="search-dialog-title">Sök</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form class="docs-modal__body" id="search-form">
+        <input
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            id="search-field"
+            type="search"
+            class="docs-search-dialog__input"
+            maxlength="50"
+            placeholder="Skriv för att börja söka"
+            aria-labelledby="search-dialog-title"
+        />
+        <ul class="docs-search-result__list" id="search-results"></ul>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog>
+
+<template id="search-result-item">
+    <li class="docs-search-result__item">
+        <a class="docs-search-result__link"></a>
+    </li>
+</template>
+<dialog class="docs-modal" id="version-dialog">
+    <div class="docs-modal__header">
+        <h1 class="docs-modal__title">Välj version</h1>
+        <button type="button" class="docs-modal__close">
+            <span>Stäng</span>
+            <svg class="icon" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="docs-modal__body" id="version-list">
+        <p>Var god vänta, laddar versionsdata...</p>
+    </div>
+</dialog>
+
+<template id="version-list-item">
+    <li class="docs-selectable-version__item">
+        <a class="docs-selectable-version__link"></a>
+    </li>
+</template>
+<div id="teleport-target" class="user-theme"></div><script
+            src="../../assets/processors/motd/index-cda4cc.js"
+            type="module"
+            crossorigin
+            integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
+            
+        ></script><script
+            src="../../assets/processors/selectable-version/select-version-88d7b6.js"
+            type="module"
+            crossorigin
+            integrity="sha384-pYmAdE4CSF1M92UW8WSZr05fsZeF/6ugFr/EOeGm1dB37nNahZQR5/LCA2vD8hKQ"
+            
+        ></script><script
+            src="../../assets/main-9d79c4.js"
+            type="module"
+            crossorigin
+            integrity="sha384-PaV01Uuim4a5OR7Heenvlx307KhUvRdtbuEbArhUbjl/6KuV5PuPKLcABVuPf1Aq"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/gettingstarted/migration/migrating-to-ftable.md
+         Document ID: fs:docs/gettingstarted/migration/migrating-to-ftable.md
+         Document name: migrating-to-ftable
+         Document alias: 
+
+    -->
+</html>
