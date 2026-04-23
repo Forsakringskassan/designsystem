@@ -220,6 +220,7 @@ gettingstarted/help-and-support.html
 gettingstarted/index.html
 gettingstarted/migration/migrating-crud-button.html
 gettingstarted/migration/migrating-to-fieldset.html
+gettingstarted/migration/migrating-to-ftable.html
 gettingstarted/migration/migrating-to-v5.html
 gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html
 gettingstarted/migration/migrating-to-v6/design.html
