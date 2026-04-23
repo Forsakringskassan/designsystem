@@ -37,7 +37,7 @@ import { FButton, useDatasetRef } from "@fkui/vue";
 // packages/vue-labs/dist/esm/index.esm.js
 import { defineComponent as defineComponent2, useTemplateRef, computed as computed3, openBlock, createElementBlock, createElementVNode, createVNode, unref as unref3, renderSlot, withModifiers, withKeys, normalizeClass, withCtx, createTextVNode, toDisplayString, createBlock, createCommentVNode, ref as ref3, nextTick as nextTick3, toValue as toValue2, inject as inject3, withDirectives, vShow, onMounted as onMounted3, watchEffect as watchEffect3, mergeProps, vModelText, toRef as toRef2, watch as watch3, onUpdated as onUpdated2, useModel, useSlots, provide as provide2, onBeforeUnmount as onBeforeUnmount2, Fragment as Fragment2, renderList, resolveDynamicComponent, mergeModels, resolveDirective, normalizeProps, guardReactiveProps } from "vue";
 import { assertRef, formatPostalCode, parsePlusgiro, parseNumber, formatNumber, parseOrganisationsnummer, parseDate, parseClearingNumber, parseBankgiro, parseBankAccountNumber, parsePersonnummer, formatPersonnummer, ElementIdService, assertSet, ValidationService, alertScreenReader, debounce, isEmpty, stripWhitespace, isSet, TranslationService } from "@fkui/logic";
-import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSortFilterDatasetEvents, useSlotUtils, getDatasetMetadata, setItemIdentifiers, useSelectableRowSource, FSortFilterDatasetInjected, copyItemIdentifier, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
+import { FIcon, IFlex, IFlexItem, useTranslate, getItemIdentifier, FContextMenu, IComboboxDropdown, IPopupError, dispatchComponentValidityEvent, findItemIdentifier, useSortFilterDatasetEvents, useSlotUtils, getDatasetMetadata, setItemIdentifiers, useSelectableRowSource, FSortFilterDatasetInjected, EventBus, FFileSelector, FFileItem, TranslationMixin, FTextField, useTextFieldSetup } from "@fkui/vue";
 
 // node_modules/@vueuse/shared/index.mjs
 import { shallowRef, watchEffect, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject, provide, ref, isRef, unref, toValue as toValue$1, computed, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
@@ -5904,54 +5904,6 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent2({
     };
   }
 });
-var es_array_toSpliced = {};
-var hasRequiredEs_array_toSpliced;
-function requireEs_array_toSpliced() {
-  if (hasRequiredEs_array_toSpliced) return es_array_toSpliced;
-  hasRequiredEs_array_toSpliced = 1;
-  var $ = require_export();
-  var addToUnscopables2 = requireAddToUnscopables();
-  var doesNotExceedSafeInteger2 = requireDoesNotExceedSafeInteger();
-  var lengthOfArrayLike2 = requireLengthOfArrayLike();
-  var toAbsoluteIndex2 = requireToAbsoluteIndex();
-  var toIndexedObject2 = requireToIndexedObject();
-  var toIntegerOrInfinity2 = requireToIntegerOrInfinity();
-  var createProperty2 = requireCreateProperty();
-  var $Array = Array;
-  var max = Math.max;
-  var min = Math.min;
-  $({
-    target: "Array",
-    proto: true
-  }, {
-    toSpliced: function toSpliced(start, deleteCount) {
-      var O = toIndexedObject2(this);
-      var len = lengthOfArrayLike2(O);
-      var actualStart = toAbsoluteIndex2(start, len);
-      var argumentsLength = arguments.length;
-      var k = 0;
-      var insertCount, actualDeleteCount, newLen, A;
-      if (argumentsLength === 0) {
-        insertCount = actualDeleteCount = 0;
-      } else if (argumentsLength === 1) {
-        insertCount = 0;
-        actualDeleteCount = len - actualStart;
-      } else {
-        insertCount = argumentsLength - 2;
-        actualDeleteCount = min(max(toIntegerOrInfinity2(deleteCount), 0), len - actualStart);
-      }
-      newLen = doesNotExceedSafeInteger2(len + insertCount - actualDeleteCount);
-      A = $Array(newLen);
-      for (; k < actualStart; k++) createProperty2(A, k, O[k]);
-      for (; k < actualStart + insertCount; k++) createProperty2(A, k, arguments[k - actualStart + 2]);
-      for (; k < newLen; k++) createProperty2(A, k, O[k + actualDeleteCount - insertCount]);
-      return A;
-    }
-  });
-  addToUnscopables2("toSpliced");
-  return es_array_toSpliced;
-}
-requireEs_array_toSpliced();
 var es_arrayBuffer_detached = {};
 var arrayBufferBasicDetection;
 var hasRequiredArrayBufferBasicDetection;
