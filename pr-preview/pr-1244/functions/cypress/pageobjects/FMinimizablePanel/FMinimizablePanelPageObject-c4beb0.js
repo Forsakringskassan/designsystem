@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject.vue:FMinimizablePanelPageObject-e40c82.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FMinimizablePanel/FMinimizablePanelPageObject.vue:FMinimizablePanelPageObject-c4beb0.js
 import { defineComponent as _defineComponent } from "vue";
 import { FMinimizablePanel, FPageLayout } from "@fkui/vue";
 import { createVNode as _createVNode, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -59,7 +59,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e40c82"
+  selector: "#example-c4beb0"
 });
 export {
   render
