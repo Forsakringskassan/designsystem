@@ -2,7 +2,7 @@
 import { ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
 import { FSortFilterDataset, useDatasetRef } from "@fkui/vue";
-import { type TableColumn, FTable, defineTableColumns, removeRow } from "@fkui/vue-labs";
+import { FTable, defineTableColumns, removeDatasetRows } from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
 
@@ -113,12 +113,12 @@ function onRemoveRow(row: Row): void {
     assertRef(tableRef);
 
     tableRef.value.withTabstopBehaviour("row-removal", () => {
-        rows.value = removeRow(rows.value, row, "expandableRows");
+        removeDatasetRows(rows, row);
     });
 }
 
 function onRemoveSelectedRows(): void {
-    rows.value = rows.value.filter((row) => !mySelectedRows.value.includes(row));
+    removeDatasetRows(rows, mySelectedRows);
 }
 </script>
 

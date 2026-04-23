@@ -2,11 +2,9 @@
 import { useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { useDatasetRef } from "@fkui/vue";
-import { FTable, defineTableColumns, removeRow } from "@fkui/vue-labs";
+import { FTable, defineTableColumns, removeDatasetRows } from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
-
-const expandableAttribute = "expandableRows";
 const keyAttribute = "foo";
 
 interface Row {
@@ -69,7 +67,7 @@ function onRemoveRow(row: Row): void {
     assertRef(tableRef);
 
     tableRef.value.withTabstopBehaviour("row-removal", () => {
-        rows.value = removeRow(rows.value, row, "expandableRows");
+        removeDatasetRows(rows, row);
     });
 }
 </script>

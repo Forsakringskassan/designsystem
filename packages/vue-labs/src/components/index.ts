@@ -25,7 +25,7 @@ export {
     defineTableColumns,
     getTableSortableAttributes,
     numberTypes,
-    removeRow,
+    removeDatasetRows,
     textTypes,
 } from "./FTable";
 export { XFileDragdrop } from "./XFileDragdrop";
