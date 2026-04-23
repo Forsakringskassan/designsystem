@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-96d3db.json"
+            href="../../search-data-445db0.json"
             as="fetch"
             crossorigin
-            integrity="sha384-kDp+rfOQNbtH9rWTjOwCl9anCpS3Knk4dNCGjL18igQTZhisRwAR0sCxfKy9Z50s"
+            integrity="sha384-qdSDDMLbG5/PHFpV3/oZbT+D201ONFDCMAaK/qikEBIVeMANiyK8Z+XOoam7VhhI"
             id="search-data"
         />
     </head>
@@ -654,7 +654,7 @@
                 </div>
             
                 <div
-                    id="example-fd76fd"
+                    id="example-b7c508"
                     class="code-preview code-preview--default"
                     
                     
@@ -662,6 +662,8 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table :rows=&quot;rows&quot;&gt;</span>
+<span class="hljs-deletion">-    &lt;template #caption&gt; Tabellrubrik &lt;/template&gt;</span>
+<span class="hljs-deletion">-</span>
 <span class="hljs-deletion">-    &lt;template #default=&quot;{ row }&quot;&gt;</span>
 <span class="hljs-deletion">-        &lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
 <span class="hljs-deletion">-            {{ row.name }}</span>
@@ -691,7 +693,7 @@
 </ul>
 <h3 id="editering_och_validering_ligger_i_kolumnen" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#editering_och_validering_ligger_i_kolumnen">Editering och validering ligger i kolumnen</a></h3>
                 <div
-                    id="example-10a1c9"
+                    id="example-b7fd68"
                     class="code-preview code-preview--default"
                     
                     
@@ -728,7 +730,7 @@
 <p class="docs-paragraph">I nya <code>FTable</code> används istället <code>useDatasetRef(...)</code> för att skapa ett dataset där det nästlade attributet anges.</p>
 <h3 id="expanderbara_tabeller" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#expanderbara_tabeller">Expanderbara tabeller</a></h3>
                 <div
-                    id="example-5865c3"
+                    id="example-ee785f"
                     class="code-preview code-preview--default"
                     
                     
@@ -757,7 +759,7 @@
                 </div>
             
                 <div
-                    id="example-112b53"
+                    id="example-5cf11b"
                     class="code-preview code-preview--default"
                     
                     
@@ -769,18 +771,20 @@
 <span class="hljs-deletion">-    key-attribute=&quot;id&quot;</span>
 <span class="hljs-deletion">-    expandable-attribute=&quot;expandableRows&quot;</span>
 <span class="hljs-deletion">-&gt;</span>
+<span class="hljs-deletion">-    &lt;template #caption&gt; Tabellrubrik &lt;/template&gt;</span>
+<span class="hljs-deletion">-</span>
 <span class="hljs-deletion">-    &lt;template #default=&quot;{ row }&quot;&gt;</span>
 <span class="hljs-deletion">-        &lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
 <span class="hljs-deletion">-            {{ row.name }}</span>
 <span class="hljs-deletion">-        &lt;/f-table-column&gt;</span>
 <span class="hljs-deletion">-    &lt;/template&gt;</span>
-<span class="hljs-deletion">-&lt;/f-interavtive-table&gt;</span>
+<span class="hljs-deletion">-&lt;/f-interactive-table&gt;</span>
 <span class="hljs-addition">+&lt;f-table :rows :columns key-attribute=&quot;id&quot; /&gt;</span>
 </code></pre>
                 </div>
             <h3 id="eget_expanderat_innehall" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#eget_expanderat_innehall">Eget expanderat innehåll</a></h3>
                 <div
-                    id="example-879d2a"
+                    id="example-a91ed2"
                     class="code-preview code-preview--default"
                     
                     
@@ -812,9 +816,10 @@
 );
 </code></pre>
                 </div>
-            
+            <p class="docs-paragraph">// FIXME: Needs slot &quot;caption&quot;</p>
+
                 <div
-                    id="example-baea5e"
+                    id="example-2d3a5c"
                     class="code-preview code-preview--default"
                     
                     
@@ -822,6 +827,8 @@
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table :rows expandable-attribute=&quot;expandableContent&quot;&gt;</span>
+<span class="hljs-deletion">-    &lt;template #caption&gt; Tabellrubrik &lt;/template&gt;</span>
+<span class="hljs-deletion">-</span>
 <span class="hljs-deletion">-    &lt;template #default=&quot;{ row }&quot;&gt;</span>
 <span class="hljs-deletion">-        &lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
 <span class="hljs-deletion">-            {{ row.name }}</span>
@@ -832,13 +839,8 @@
 <span class="hljs-deletion">-        {{ expandableRow.content }}</span>
 <span class="hljs-deletion">-    &lt;/template&gt;</span>
 <span class="hljs-deletion">-&lt;/f-interactive-table&gt;</span>
-<span class="hljs-addition">+&lt;f-table</span>
-<span class="hljs-addition">+    :rows</span>
-<span class="hljs-addition">+    :columns</span>
-<span class="hljs-addition">+    key-attributes=&quot;id&quot;</span>
-<span class="hljs-addition">+&gt;</span>
-<span class="hljs-addition">+    &lt;template #expandable=&quot;{ row }&quot;&gt;</span>
-<span class="hljs-addition">+        {{ row.content }}</span>
+<span class="hljs-addition">+&lt;f-table :rows :columns key-attributes=&quot;id&quot;&gt;</span>
+<span class="hljs-addition">+    &lt;template #expandable=&quot;{ row }&quot;&gt; {{ row.content }} &lt;/template&gt;</span>
 <span class="hljs-addition">+&lt;/f-table&gt;</span>
 </code></pre>
                 </div>
@@ -873,7 +875,7 @@
 </ul>
 <h2 id="vanliga_migreringar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#vanliga_migreringar">Vanliga migreringar</a></h2><h3 id="textkolumn" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#textkolumn">Textkolumn</a></h3>
                 <div
-                    id="example-47e252"
+                    id="example-1423d4"
                     class="code-preview code-preview--default"
                     
                     
@@ -892,7 +894,7 @@
                 </div>
             <h3 id="formatterade_textkolumner" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#formatterade_textkolumner">Formatterade textkolumner</a></h3>
                 <div
-                    id="example-b10fb0"
+                    id="example-fd2cb7"
                     class="code-preview code-preview--default"
                     
                     
@@ -911,7 +913,7 @@
                 </div>
             
                 <div
-                    id="example-7e8653"
+                    id="example-4dbaba"
                     class="code-preview code-preview--default"
                     
                     
@@ -944,7 +946,7 @@
 </ul>
 <h3 id="checkbox_kolumn" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#checkbox_kolumn">Checkbox-kolumn</a></h3>
                 <div
-                    id="example-46a467"
+                    id="example-119a9a"
                     class="code-preview code-preview--default"
                     
                     
@@ -971,7 +973,7 @@
 </ul>
 <h3 id="rowheader" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#rowheader">Rowheader</a></h3>
                 <div
-                    id="example-26887d"
+                    id="example-f0fe3a"
                     class="code-preview code-preview--default"
                     
                     
@@ -997,7 +999,7 @@
 </ul>
 <h3 id="anchor" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#anchor">Anchor</a></h3>
                 <div
-                    id="example-b1f73a"
+                    id="example-8338d4"
                     class="code-preview code-preview--default"
                     
                     
@@ -1019,7 +1021,7 @@
                 </div>
             <h3 id="button" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#button">Button</a></h3>
                 <div
-                    id="example-ca1bc3"
+                    id="example-3c0520"
                     class="code-preview code-preview--default"
                     
                     
@@ -1050,7 +1052,7 @@
 </ul>
 <h3 id="menu" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#menu">Menu</a></h3>
                 <div
-                    id="example-9064a2"
+                    id="example-bcdbd1"
                     class="code-preview code-preview--default"
                     
                     
@@ -1106,7 +1108,7 @@
 </ul>
 <h3 id="select" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#select">Select</a></h3>
                 <div
-                    id="example-705661"
+                    id="example-3e964e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1139,7 +1141,7 @@
 <p class="docs-paragraph">Om alternativen laddas asynkront kan <code>columns</code> behöva byggas med <code>computed(...)</code> så att <code>options</code> uppdateras när datat har laddat klart.</p>
 <h3 id="render" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#render">Render</a></h3>
                 <div
-                    id="example-1aa377"
+                    id="example-f80c1d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1170,7 +1172,7 @@
 <h2 id="editering_och_validering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#editering_och_validering">Editering och validering</a></h2><h3 id="key" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#key">Key</a></h3><p class="docs-paragraph">Använd <code>key</code> när kolumnen direkt läser och skriver till ett fält på raden.</p>
 
                 <div
-                    id="example-2c924a"
+                    id="example-c256f0"
                     class="code-preview code-preview--default"
                     
                     
@@ -1202,7 +1204,7 @@
 <h3 id="value_och_update" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#value_och_update">Value och Update</a></h3><p class="docs-paragraph">Använd <code>value</code> och <code>update</code> när visning eller uppdatering inte är en enkel 1:1 koppling mot ett fält.</p>
 
                 <div
-                    id="example-3b7426"
+                    id="example-ad1189"
                     class="code-preview code-preview--default"
                     
                     
@@ -1239,7 +1241,7 @@
 </ul>
 <h3 id="validering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering">Validering</a></h3>
                 <div
-                    id="example-13a0ed"
+                    id="example-19ee35"
                     class="code-preview code-preview--default"
                     
                     
@@ -1276,7 +1278,7 @@
 <p class="docs-paragraph">I <code>FTable</code> finns selection kvar, men används via <code>selectable</code> tillsammans med <code>v-model:selected-rows</code>.</p>
 <h3 id="enkelval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#enkelval">Enkelval</a></h3>
                 <div
-                    id="example-b1779c"
+                    id="example-c376db"
                     class="code-preview code-preview--default"
                     
                     
@@ -1304,7 +1306,7 @@
                 </div>
             <h3 id="flerval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#flerval">Flerval</a></h3>
                 <div
-                    id="example-0b952b"
+                    id="example-346749"
                     class="code-preview code-preview--default"
                     
                     
@@ -1449,9 +1451,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/05eaf3a1f0d6261a968f2b8462b281d2d3a8e857">05eaf3a</a>)<br />
+<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/7893e2d3632f88a8286753e8a99c2f38e17eea5c">7893e2d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1241">PR 1241</a><br />
-        2026-04-23 09:39
+        2026-04-23 12:33
 </div>
 <div class="toolbar__item">
     <form id="version">
