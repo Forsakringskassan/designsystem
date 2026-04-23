@@ -354,7 +354,7 @@ var DEFAULT_UNITS = [
 ];
 
 // packages/vue-labs/dist/esm/index.esm.js
-var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var require_global_this = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var check = function(it) {
     return it && it.Math === Math && it;
