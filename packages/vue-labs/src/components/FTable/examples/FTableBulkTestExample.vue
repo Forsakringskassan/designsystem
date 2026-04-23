@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
-import { assertRef, formatNumber } from "@fkui/logic";
 import { FButton, FSortFilterDataset, useDatasetRef } from "@fkui/vue";
-import { FTable, defineTableColumns } from "@fkui/vue-labs";
-
-const tableRef = useTemplateRef("table");
+import { FTable, defineTableColumns, removeDatasetRows } from "@fkui/vue-labs";
 
 interface Row {
     id: string;
@@ -46,7 +43,7 @@ function onAddRow(): void {
 }
 
 function onRemoveSelectedRows(): void {
-    rows.value = rows.value.filter((row) => !selectedRows.value.includes(row));
+    removeDatasetRows(rows, selectedRows);
 }
 </script>
 

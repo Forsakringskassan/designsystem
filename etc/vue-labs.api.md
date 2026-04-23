@@ -125,7 +125,7 @@ export const numberTypes: readonly ["text:currency", "text:number", "text:percen
 export function parseTimeToNumber(value?: string | null): number | undefined;
 
 // @public
-export function removeRow<T>(rows: T[], row: T, expandableAttribute?: keyof T): T[];
+export function removeDatasetRows<T extends object>(dataset: MaybeRef<Dataset<T>>, rows: MaybeRef<T | T[]>): void;
 
 // @public (undocumented)
 export function splitHoursMinutes(valueString: string, extraForgiving?: boolean): string[];

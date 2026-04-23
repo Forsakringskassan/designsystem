@@ -9,11 +9,10 @@ import {
     useDatasetRef,
 } from "@fkui/vue";
 import {
-    type TableColumn,
     FTable,
     defineTableColumns,
     getTableSortableAttributes,
-    removeRow,
+    removeDatasetRows,
 } from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
@@ -167,12 +166,12 @@ function onRemoveRow(row: Row): void {
     assertRef(tableRef);
 
     tableRef.value.withTabstopBehaviour("row-removal", () => {
-        rows.value = removeRow(rows.value, row, "expandableRows");
+        removeDatasetRows(rows, row);
     });
 }
 
 function onRemoveSelectedRows(): void {
-    rows.value = rows.value.filter((row) => !selectedRows.value.includes(row));
+    removeDatasetRows(rows, selectedRows);
 }
 </script>
 
