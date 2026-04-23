@@ -36,6 +36,8 @@ const columns = defineTableColumns<Row>([
 
 ```html name=columns-from-template hidden
 <f-interactive-table :rows="rows">
+    <template #caption> Tabellrubrik </template>
+
     <template #default="{ row }">
         <f-table-column title="Namn" type="text">
             {{ row.name }}
@@ -130,12 +132,14 @@ const rows = useDatasetRef<Row>(
     key-attribute="id"
     expandable-attribute="expandableRows"
 >
+    <template #caption> Tabellrubrik </template>
+
     <template #default="{ row }">
         <f-table-column title="Namn" type="text">
             {{ row.name }}
         </f-table-column>
     </template>
-</f-interavtive-table>
+</f-interactive-table>
 ```
 
 ```html compare=expandable-table
@@ -170,8 +174,12 @@ const rows = useDatasetRef<Row>(
 );
 ```
 
+// FIXME: Needs slot "caption"
+
 ```html name=custom-expandable-content hidden
 <f-interactive-table :rows expandable-attribute="expandableContent">
+    <template #caption> Tabellrubrik </template>
+
     <template #default="{ row }">
         <f-table-column title="Namn" type="text">
             {{ row.name }}
@@ -185,13 +193,8 @@ const rows = useDatasetRef<Row>(
 ```
 
 ```html compare=custom-expandable-content
-<f-table
-    :rows
-    :columns
-    key-attributes="id"
->
-    <template #expandable="{ row }">
-        {{ row.content }}
+<f-table :rows :columns key-attributes="id">
+    <template #expandable="{ row }"> {{ row.content }} </template>
 </f-table>
 ```
 
