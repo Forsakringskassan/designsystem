@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-7d3143.json"
+            href="../../search-data-93b171.json"
             as="fetch"
             crossorigin
-            integrity="sha384-+BulF9nUdwwqfDvlpTkbjRz1ZSdZXEPvVAi+mXovd6katFdVzPgYkkYer9UC6YMN"
+            integrity="sha384-X+KEqcqRrPzKZ/KWOYpJMT743eiw+/JALNMuw2h5bUgXOf+rM8zdDdEcv0dv5q0d"
             id="search-data"
         />
     </head>
@@ -1857,7 +1857,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-8b4dc0"></div>
+        <div id="example-79fff8"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1883,7 +1883,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-8b4dc0.js"></script>
+        <script type="module" src="./FTableExample-79fff8.js"></script>
     
                 </div>
                 <div>
@@ -2130,15 +2130,19 @@ interface <span class="hljs-title class_">Row</span> {
 
 <span class="hljs-keyword">const</span> sortableAttributes = <span class="hljs-title function_">getTableSortableAttributes</span>(columns);
 <span class="hljs-keyword">const</span> mySelectedRows = <span class="hljs-title function_">ref</span>([rows.<span class="hljs-property">value</span>[<span class="hljs-number">0</span>]]);
+<span class="hljs-keyword">const</span> nextId = <span class="hljs-title function_">ref</span>(<span class="hljs-number">4</span>);
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">onAddRow</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">id</span>: number = nextId.<span class="hljs-property">value</span>;
+    nextId.<span class="hljs-property">value</span> += <span class="hljs-number">1</span>;
+
     rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">push</span>({
-        <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(rows.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> + <span class="hljs-number">1</span>),
+        <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(id),
         <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Katt&quot;</span>,
         <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Föräldrapenning&quot;</span>,
         <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-04-11&quot;</span>,
         <span class="hljs-attr">end</span>: <span class="hljs-string">&quot;2022-04-20&quot;</span>,
-        <span class="hljs-attr">antal</span>: <span class="hljs-string">&quot;10000&quot;</span>,
+        <span class="hljs-attr">antal</span>: <span class="hljs-title class_">String</span>(<span class="hljs-number">10000</span> + id),
         <span class="hljs-attr">aktiv</span>: <span class="hljs-literal">false</span>,
     });
 }
@@ -2223,13 +2227,13 @@ interface <span class="hljs-title class_">Row</span> {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-b0aebd"></div>
+        <div id="example-19ed30"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableInputFieldsExample-b0aebd.js"></script>
+        <script type="module" src="./FTableInputFieldsExample-19ed30.js"></script>
     
                 </div>
                 <div>
@@ -2543,9 +2547,9 @@ interface <span class="hljs-title class_">TableRow</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/3d18ccc109718d5504fe83f5ed5f018e6899c1f0">3d18ccc</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/331b67f0765d1341dac1fd3c4121bb333225d222">331b67f</a>)<br />
         
-        2026-04-23 11:14
+        2026-04-23 14:40
 </div>
 <div class="toolbar__item">
     <form id="version">
