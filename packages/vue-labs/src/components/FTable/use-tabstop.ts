@@ -70,6 +70,13 @@ export function useTabstop(
         assertRef(tableRef);
         const oldTabstopElement =
             tableRef.value.querySelector<HTMLElement>(`[tabindex="0"]`);
+
+        // if coming from a modal or outside of the table we need this guard
+        if (!oldTabstopElement) {
+            renderOptions.value.fallbackToFirstCell = true;
+            renderOptions.value.focus = false;
+            return;
+        }
         assertSet(oldTabstopElement);
         const oldTabstopFocused = oldTabstopElement === document.activeElement;
 
