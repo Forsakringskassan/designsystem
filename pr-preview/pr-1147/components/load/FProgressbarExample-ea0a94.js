@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FProgressbar/examples/FProgressbarExample.vue:FProgressbarExample-fe2aea.js
+// virtual-entry:virtual:packages/vue/src/components/FProgressbar/examples/FProgressbarExample.vue:FProgressbarExample-ea0a94.js
 import { defineComponent } from "vue";
 import { FButton, FProgressbar } from "@fkui/vue";
 import { resolveComponent as _resolveComponent, createVNode as _createVNode, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, withCtx as _withCtx, vModelText as _vModelText, withDirectives as _withDirectives, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -50,6 +50,7 @@ var exampleComponent = defineComponent({
   }
 });
 var _hoisted_1 = { class: "debug-data" };
+var _hoisted_2 = { class: "button-group" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_progressbar = _resolveComponent("f-progressbar");
   const _component_f_button = _resolveComponent("f-button");
@@ -74,56 +75,60 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
       )
     ]),
-    _createVNode(_component_f_button, {
-      "data-test": "increase",
-      onClick: _cache[0] || (_cache[0] = ($event) => _ctx.increase())
-    }, {
-      default: _withCtx(() => [..._cache[4] || (_cache[4] = [
-        _createTextVNode(
-          "Increase",
+    _createElementVNode("div", _hoisted_2, [
+      _createVNode(_component_f_button, {
+        class: "button-group__item",
+        "data-test": "increase",
+        onClick: _cache[0] || (_cache[0] = ($event) => _ctx.increase())
+      }, {
+        default: _withCtx(() => [..._cache[4] || (_cache[4] = [
+          _createTextVNode(
+            " Increase ",
+            -1
+            /* CACHED */
+          )
+        ])]),
+        _: 1
+        /* STABLE */
+      }),
+      _createVNode(_component_f_button, {
+        class: "button-group__item",
+        "data-test": "decrease",
+        onClick: _cache[1] || (_cache[1] = ($event) => _ctx.decrease())
+      }, {
+        default: _withCtx(() => [..._cache[5] || (_cache[5] = [
+          _createTextVNode(
+            " Decrease ",
+            -1
+            /* CACHED */
+          )
+        ])]),
+        _: 1
+        /* STABLE */
+      }),
+      _createElementVNode("label", null, [
+        _cache[6] || (_cache[6] = _createTextVNode(
+          " Progress: ",
           -1
           /* CACHED */
-        )
-      ])]),
-      _: 1
-      /* STABLE */
-    }),
-    _createVNode(_component_f_button, {
-      "data-test": "decrease",
-      onClick: _cache[1] || (_cache[1] = ($event) => _ctx.decrease())
-    }, {
-      default: _withCtx(() => [..._cache[5] || (_cache[5] = [
-        _createTextVNode(
-          "Decrease",
-          -1
-          /* CACHED */
-        )
-      ])]),
-      _: 1
-      /* STABLE */
-    }),
-    _createElementVNode("label", null, [
-      _cache[6] || (_cache[6] = _createTextVNode(
-        " Progress: ",
-        -1
-        /* CACHED */
-      )),
-      _withDirectives(_createElementVNode(
-        "input",
-        {
-          "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.currentProgress = $event),
-          type: "number"
-        },
-        null,
-        512
-        /* NEED_PATCH */
-      ), [
-        [
-          _vModelText,
-          _ctx.currentProgress,
-          void 0,
-          { number: true }
-        ]
+        )),
+        _withDirectives(_createElementVNode(
+          "input",
+          {
+            "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.currentProgress = $event),
+            type: "number"
+          },
+          null,
+          512
+          /* NEED_PATCH */
+        ), [
+          [
+            _vModelText,
+            _ctx.currentProgress,
+            void 0,
+            { number: true }
+          ]
+        ])
       ])
     ])
   ]);
@@ -131,7 +136,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-fe2aea"
+  selector: "#example-ea0a94"
 });
 export {
   render
