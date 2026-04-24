@@ -482,7 +482,6 @@ it("selectDropdown() should get dropdown when open", () => {
             header: "Header",
             options: ["Foo", "Bar", "Baz"],
             key: "option",
-            editable: true,
             label: () => "Label",
         },
     ]);
@@ -512,7 +511,6 @@ it("selectDropdownOption() should get options when dropdown is open", () => {
             header: "Header",
             options: ["Foo", "Bar", "Baz"],
             key: "option",
-            editable: true,
             label: () => "Label",
         },
     ]);

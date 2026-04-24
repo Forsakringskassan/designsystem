@@ -94,7 +94,6 @@ const columnsBase = defineTableColumns<Row>([
         key: "animal",
         label: (row) => `Djur för rad ${row.id}`,
         options: ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"],
-        editable: true,
     },
     {
         header: "Render function",
@@ -266,7 +265,7 @@ export default defineComponent({
                 ) as DatasetNestedKeyOf<Row>;
             }
 
-            const rows = useDatasetRef<Row>(this.isEmpty ? [] : this.rows, nestedAttribute).value;
+            const rows = useDatasetRef<Row>(this.isEmpty ? [] : [...this.rows], nestedAttribute);
 
             return {
                 columns: this.hasRowHeader ? this.columnsWithHeader : this.columnsDefault,

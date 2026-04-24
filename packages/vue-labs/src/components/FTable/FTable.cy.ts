@@ -1600,7 +1600,7 @@ describe("5 tabstop", () => {
         // {1, 5}: select
         table.cell({ row: 1, col: 5 }).click();
         cy.focused()
-            .should("have.prop", "tagName", "TD")
+            .should("have.prop", "tagName", "DIV")
             .should("contain.text", "awesome option")
             .should("have.attr", "tabindex", 0);
         // {1, 6}: checkbox
@@ -2140,7 +2140,6 @@ describe("select cell", () => {
             header: "Header",
             options: ["Foo", "Bar", "Baz"],
             key: "option",
-            editable: true,
             label: () => "Label",
         },
     ]);

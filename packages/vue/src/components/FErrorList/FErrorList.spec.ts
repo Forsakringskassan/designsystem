@@ -31,39 +31,19 @@ function createWrapper({
 }
 
 describe("snapshots", () => {
-    it("should match snapshot when link and no bullets (default)", () => {
+    it("should match snapshot when link", () => {
         const wrapper = createWrapper({
             props: {
-                items: [{ id: "foo", title: "No bullets" }],
+                items: [{ id: "foo", title: "With link" }],
             },
         });
         expect(wrapper.find("li").element).toMatchSnapshot();
     });
 
-    it("should match snapshot when no link and no bullets (default)", () => {
+    it("should match snapshot when no link", () => {
         const wrapper = createWrapper({
             props: {
-                items: [{ title: "No bullets" }],
-            },
-        });
-        expect(wrapper.find("li").element).toMatchSnapshot();
-    });
-
-    it("should match snapshot when link and bullets", () => {
-        const wrapper = createWrapper({
-            props: {
-                items: [{ id: "foo", title: "Bullet proof" }],
-                bullets: true,
-            },
-        });
-        expect(wrapper.find("li").element).toMatchSnapshot();
-    });
-
-    it("should match snapshot when no link and bullets", () => {
-        const wrapper = createWrapper({
-            props: {
-                items: [{ title: "Bullet proof" }],
-                bullets: true,
+                items: [{ title: "With no link" }],
             },
         });
         expect(wrapper.find("li").element).toMatchSnapshot();
@@ -202,37 +182,6 @@ describe("htmlvalidate", () => {
                 "error: <f-error-list> is missing required "items" attribute (element-required-attributes)
                 > 1 |  <f-error-list></f-error-list>
                     |   ^^^^^^^^^^^^
-                Selector: f-error-list"
-            `);
-        });
-    });
-
-    describe("bullets attribute", () => {
-        it.each`
-            bullets
-            ${"true"}
-            ${"false"}
-        `("valid when value is $bullets", async ({ bullets }) => {
-            expect.assertions(1);
-            const markup = /* HTML */ `
-                <f-error-list items="[]" bullets="${bullets}"></f-error-list>
-            `;
-            const report = await htmlvalidate.validateString(markup);
-            expect(report).toBeValid();
-        });
-
-        it("invalid", async () => {
-            expect.assertions(1);
-            const markup = /* HTML */ `
-                <f-error-list items="[]" bullets="invalid"></f-error-list>
-            `;
-            const report = await htmlvalidate.validateString(markup);
-            expect(report).toMatchInlineCodeframe(`
-                "error: Attribute "bullets" has invalid value "invalid" (attribute-allowed-values)
-                  1 |
-                > 2 |                 <f-error-list items="[]" bullets="invalid"></f-error-list>
-                    |                                                   ^^^^^^^
-                  3 |
                 Selector: f-error-list"
             `);
         });

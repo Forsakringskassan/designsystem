@@ -253,8 +253,6 @@ export interface TableColumnRowHeader<T, K extends keyof T> extends TableColumnB
 // @public (undocumented)
 export interface TableColumnSelect<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
-    editable?: boolean | ((this: void, row: T) => boolean);
-    // (undocumented)
     key?: K;
     // (undocumented)
     label?(this: void, row: T): string;

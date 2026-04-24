@@ -77,57 +77,16 @@ const rows = useDatasetRef<Row>(
             id: "1",
             level: "Föräldrapenning",
             antal: "90000",
-            expandableRows: [
-                {
-                    id: "1a",
-                    level: "Sjukpenningsnivå",
-                    antal: "30000",
-                },
-                {
-                    id: "1b",
-                    level: "Lägstanivå",
-                    antal: "20000",
-                },
-                {
-                    id: "1c",
-                    level: "Sjukpenningsnivå",
-                    antal: "50000",
-                },
-            ],
         },
         {
             id: "2",
             level: "Tillfällig föräldrapenning",
             antal: "30000",
-            expandableRows: [
-                {
-                    id: "2a",
-                    level: "Heldag",
-                    antal: "30000",
-                },
-            ],
         },
         {
             id: "3",
             level: "Föräldrapenning",
             antal: "11000",
-            expandableRows: [
-                {
-                    id: "3a",
-                    level: "Sjukpenningsnivå",
-                    antal: "40000",
-                },
-                {
-                    id: "3b",
-                    level: "Lägstanivå",
-                    antal: "20000",
-                },
-                {
-                    id: "3c",
-                    level: "Sjukpenningsnivå",
-                    antal: "50000",
-                },
-            ],
         },
     ],
     "expandableRows",
@@ -135,14 +94,17 @@ const rows = useDatasetRef<Row>(
 
 // Hard coded sorting on key {attributeName: "Name for the key", ...}
 const sortableAttributes = { level: "Redigerbar text" };
-
 const mySelectedRows = ref([rows.value[0]]);
+const nextId = ref(4);
 
 function onAddRow(): void {
+    const id: number = nextId.value;
+    nextId.value += 1;
+
     rows.value.push({
-        id: String(rows.value.length + 1),
+        id: String(id),
         level: "Föräldrapenning",
-        antal: "10000",
+        antal: String(10000 + id),
         aktiv: false,
     });
 }
