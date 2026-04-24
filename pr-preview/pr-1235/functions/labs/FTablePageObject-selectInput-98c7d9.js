@@ -348,7 +348,7 @@ var DEFAULT_UNITS = [
 ];
 
 // packages/vue-labs/dist/esm/index.esm.js
-var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var require_global_this = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var check = function(it) {
     return it && it.Math === Math && it;
@@ -3356,11 +3356,6 @@ var _hoisted_3$3 = [
   "aria-label"
 ];
 var _hoisted_4$3 = { class: "table-ng__editable__text" };
-var _hoisted_5$3 = {
-  key: 1,
-  tabindex: "-1",
-  class: "table-ng__cell table-ng__cell--static"
-};
 var ITableSelect_default = /* @__PURE__ */ defineComponent2({
   __name: "ITableSelect",
   props: {
@@ -3483,8 +3478,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent2({
       await stopEdit2(editRef.value, "blur");
     }
     return (_ctx, _cache) => {
-      return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
-        key: 0,
+      return openBlock(), createElementBlock("td", {
         class: "table-ng__cell table-ng__cell--select",
         tabindex: "-1",
         onKeydown: onCellKeyDown,
@@ -3527,7 +3521,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent2({
           "active-option-id",
           "input-node"
         ]), [[vShow, editing.value]])
-      ], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$3, toDisplayString(__props.column.selected(__props.row)), 1));
+      ], 32);
     };
   }
 });
@@ -4037,10 +4031,6 @@ function normalizeSelectColumn(column) {
     label: getLabelFn(column.label),
     selected: getValueFn(column.selected, column.key, String, ""),
     update: getUpdateFn(column.update, column.key),
-    editable: typeof column.editable === "function" ? column.editable : () => {
-      var _column$editable;
-      return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
-    },
     options: column.options
   };
 }
