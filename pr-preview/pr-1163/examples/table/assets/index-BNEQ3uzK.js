@@ -24140,6 +24140,11 @@ function useTabstop(tableRef, metaRows) {
 		pendingRowRemoval = false;
 		assertRef(tableRef);
 		const oldTabstopElement = tableRef.value.querySelector(`[tabindex="0"]`);
+		if (!oldTabstopElement) {
+			renderOptions.value.fallbackToFirstCell = true;
+			renderOptions.value.focus = false;
+			return;
+		}
 		assertSet(oldTabstopElement);
 		const oldTabstopFocused = oldTabstopElement === document.activeElement;
 		if (oldTabstopElement.closest("th")) return;
