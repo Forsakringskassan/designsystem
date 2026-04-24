@@ -43,7 +43,7 @@ import {
 import { Fragment, computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, guardReactiveProps, inject, mergeModels, mergeProps, nextTick, normalizeClass, normalizeProps, onMounted, onUpdated, openBlock, provide, ref, renderList, renderSlot, resolveDirective, resolveDynamicComponent, toDisplayString, toRef, toValue, unref, useModel, useSlots, useTemplateRef, vModelText, vShow, watch, watchEffect, withCtx, withDirectives, withKeys, withModifiers } from "vue";
 import { ElementIdService, TranslationService, ValidationService, alertScreenReader, assertRef, assertSet, debounce, formatNumber, formatPersonnummer, formatPostalCode, isEmpty, isSet, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parseDate, parseNumber, parseOrganisationsnummer, parsePersonnummer, parsePlusgiro, stripWhitespace } from "@fkui/logic";
 import { EventBus, FContextMenu, FFileItem, FFileSelector, FIcon, FSortFilterDatasetInjected, FTextField, IComboboxDropdown, IFlex, IFlexItem, IPopupError, TranslationMixin, copyItemIdentifier, dispatchComponentValidityEvent, findItemIdentifier, getDatasetMetadata, getItemIdentifier, setItemIdentifiers, useSlotUtils, useTextFieldSetup, useTranslate } from "@fkui/vue";
-var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var require_global_this = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var check = function(it) {
     return it && it.Math === Math && it;
