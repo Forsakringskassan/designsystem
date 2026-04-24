@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-b059fc.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-c80a3b.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-b059fc.js": "sha384-I3QaNIz+z3wTcDc6sWDO7fXV1nL2PwMwqfRm+GHX9N8zjHt7nYRaZ1GrO5EFwi7X",
+    "../../assets/vendor-fkui-vue-c80a3b.js": "sha384-6SYbIg7ZqqotVEmmPBSGDqlx7osZKZGIsvK+i0sqHpK2HOVX6Pm43nLFgO2wFjxe",
     "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-66e9dd.json"
+            href="../../search-data-9dc87f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-RqiFJMh8QKKI4btK93xqlMaFp7S2hxGKkFob+6kDkuvZ752lAm0etf3EmMreoH8B"
+            integrity="sha384-LzVQnzGxH0BFae+laUBDhRO42LUaVOS3LciZYwdNxVzBGsTYbOJ01ZfZqnl0d6jq"
             id="search-data"
         />
     </head>
@@ -1105,7 +1105,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/58d3231250172a1ce0eec25b61ff2d9ed676999d/packages/vue/src/components/FErrorList/FErrorList.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/6778842aff9a213c31afa288954634e179c3d2a7/packages/vue/src/components/FErrorList/FErrorList.vue">
                 FErrorList
             </a>
             
@@ -1133,8 +1133,6 @@
                             </summary>
                             <ul>
                                 
-                                <li><a href="#lista_utan_punkter">Lista utan punkter</a></li>
-                                
                                 <li><a href="#ingen_rubriktext">Ingen rubriktext</a></li>
                                 
                                 <li><a href="#lista_utan_lankar">Lista utan länkar</a></li>
@@ -1152,7 +1150,7 @@
                     <div id="content"><p class="docs-paragraph">Fellista används för att sammanställa inmatningsfel i stora formulär.</p>
 
             <div
-                id="example-f5318b"
+                id="example-633848"
                 class="code-preview code-preview--default"
                 
                 
@@ -1161,13 +1159,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-51552a"></div>
+        <div id="example-4201ba"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FErrorListBullets-51552a.js"></script>
+        <script type="module" src="./FErrorListDefault-4201ba.js"></script>
     
                 </div>
                 <div>
@@ -1193,89 +1191,13 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FErrorList</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FErrorListBullets&quot;</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FErrorListDefault&quot;</span>,
     <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FErrorList</span>, <span class="hljs-title class_">FTextField</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">items</span>: [
-                { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;fornamn-med-bullets&quot;</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Förnamn&quot;</span> },
-                { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;efternamn-med-bullets&quot;</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Efternamn&quot;</span> },
-            ],
-        };
-    },
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-error-list</span> <span class="hljs-attr">:items</span> <span class="hljs-attr">:bullets</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">title</span>&gt;</span> Kolla på felen nedan <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">f-error-list</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fornamn-med-bullets&quot;</span> <span class="hljs-attr">v-validation.maxLength</span>&gt;</span> Förnamn <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;efternamn-med-bullets&quot;</span> <span class="hljs-attr">v-validation.maxLength</span>&gt;</span> Efternamn <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <ul>
-<li>Fellistan ska visas och få fokus när användaren försöker att skicka in ett formulär med fel.</li>
-<li>Rubriken är valfri, men rekommenderas eftersom den visar en ikon som kompletterar varningsfärgen på texten.</li>
-<li>Punktlistan består av länkar till inmatningskomponenter som är felaktigt ifyllda och till obligatoriska fält som har lämnats tomma.</li>
-<li>Rubriken samt feltexterna bestäms av applikationen.</li>
-<li>Om en inmatningskomponent är placerad i en utfällbar yta (t.ex. en Expanderbar panel) kan den fällas ut automatiskt när användaren trycker på länken till felet.</li>
-</ul>
-<h2 id="lista_utan_punkter" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lista_utan_punkter">Lista utan punkter</a></h2>
-            <div
-                id="example-001a94"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview user-background">
-                    
-        <div id="example-b5712f"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FErrorListNoBullets-b5712f.js"></script>
-    
-                </div>
-                <div>
-            <button
-                type="button"
-                class="code-preview__button code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <svg focusable="false" class="docs-icon" aria-hidden="true">
-                    <use href="#docs-icon-code"></use>
-                </svg>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FErrorList</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FErrorListNoBullets&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FErrorList</span>, <span class="hljs-title class_">FTextField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">items</span>: [
-                { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;fornamn-utan-bullets&quot;</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Förnamn&quot;</span> },
-                { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;efternamn-utan-bullets&quot;</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Efternamn&quot;</span> },
+                { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;fornamn&quot;</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Förnamn&quot;</span> },
+                { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;efternamn&quot;</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;Efternamn&quot;</span> },
             ],
         };
     },
@@ -1288,17 +1210,24 @@
             <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">title</span>&gt;</span> Kolla på felen nedan <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-error-list</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fornamn-utan-bullets&quot;</span> <span class="hljs-attr">v-validation.maxLength</span>&gt;</span> Förnamn <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;efternamn-utan-bullets&quot;</span> <span class="hljs-attr">v-validation.maxLength</span>&gt;</span> Efternamn <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fornamn&quot;</span> <span class="hljs-attr">v-validation.maxLength</span>&gt;</span> Förnamn <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;efternamn&quot;</span> <span class="hljs-attr">v-validation.maxLength</span>&gt;</span> Efternamn <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
-        <h2 id="ingen_rubriktext" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ingen_rubriktext">Ingen rubriktext</a></h2><p class="docs-paragraph">Varken ikon eller text visas om du inte använder <code>title</code> -slotten.</p>
+        <ul>
+<li>Fellistan ska visas och få fokus när användaren försöker att skicka in ett formulär med fel.</li>
+<li>Rubriken är valfri, men rekommenderas eftersom den visar en ikon som kompletterar varningsfärgen på texten.</li>
+<li>Punktlistan består av länkar till inmatningskomponenter som är felaktigt ifyllda och till obligatoriska fält som har lämnats tomma.</li>
+<li>Rubriken samt feltexterna bestäms av applikationen.</li>
+<li>Om en inmatningskomponent är placerad i en utfällbar yta (t.ex. en Expanderbar panel) kan den fällas ut automatiskt när användaren trycker på länken till felet.</li>
+</ul>
+<h2 id="ingen_rubriktext" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ingen_rubriktext">Ingen rubriktext</a></h2><p class="docs-paragraph">Varken ikon eller text visas om du inte använder <code>title</code> -slotten.</p>
 
             <div
-                id="example-19cca4"
+                id="example-0a1a1b"
                 class="code-preview code-preview--default"
                 
                 
@@ -1307,13 +1236,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-3080b0"></div>
+        <div id="example-641374"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FErrorListNoTitle-3080b0.js"></script>
+        <script type="module" src="./FErrorListNoTitle-641374.js"></script>
     
                 </div>
                 <div>
@@ -1354,7 +1283,7 @@
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-error-list</span> <span class="hljs-attr">:items</span> <span class="hljs-attr">:bullets</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-error-list</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-error-list</span> <span class="hljs-attr">:items</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-error-list</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fornamn-utan-text&quot;</span> <span class="hljs-attr">v-validation.maxLength</span>&gt;</span> Förnamn <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;efternamn-utan-text&quot;</span> <span class="hljs-attr">v-validation.maxLength</span>&gt;</span> Efternamn <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
@@ -1365,7 +1294,7 @@
             </div>
         <h2 id="lista_utan_lankar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lista_utan_lankar">Lista utan länkar</a></h2>
             <div
-                id="example-efb4c6"
+                id="example-19ab1e"
                 class="code-preview code-preview--default"
                 
                 
@@ -1374,13 +1303,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-53590c"></div>
+        <div id="example-3e434e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FErrorListNoLinks-53590c.js"></script>
+        <script type="module" src="./FErrorListNoLinks-3e434e.js"></script>
     
                 </div>
                 <div>
@@ -1415,14 +1344,14 @@
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-error-list</span> <span class="hljs-attr">:items</span> <span class="hljs-attr">:bullets</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-error-list</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-error-list</span> <span class="hljs-attr">:items</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-error-list</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
         <h2 id="expandera_en_yta_vid_klick_pa_lank" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#expandera_en_yta_vid_klick_pa_lank">Expandera en yta vid klick på länk</a></h2>
             <div
-                id="example-efdc6a"
+                id="example-874fbb"
                 class="code-preview code-preview--default"
                 
                 
@@ -1431,13 +1360,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-b2585a"></div>
+        <div id="example-596ca2"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FErrorListBeforeNavigate-b2585a.js"></script>
+        <script type="module" src="./FErrorListBeforeNavigate-596ca2.js"></script>
     
                 </div>
                 <div>
@@ -1522,24 +1451,6 @@
                             <p>List of errors of type <code>ErrorItem</code>.
 If element id is unspecified, no link will be rendered.
 If element with id don't exist on navigation, an exception is thrown.</p>
-
-                            
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="ferrorlist-prop-bullets"
-                                ><a class="docs-api__anchor" href="#ferrorlist-prop-bullets"
-                                    ><span class="docs-api__name"
-                                        >bullets</span
-                                    >: boolean</a
-                                ></code
-                            >
-                            <span class="docs-tag docs-tag--default">Optional</span>
-                            
-                        </dt>
-                        <dd>
-                            <p>Display bullets in list.</p>
 
                             
                             
@@ -1640,9 +1551,9 @@ If element with id don't exist on navigation, an exception is thrown.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/58d3231250172a1ce0eec25b61ff2d9ed676999d">58d3231</a>)<br />
+<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/6778842aff9a213c31afa288954634e179c3d2a7">6778842</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1163">PR 1163</a><br />
-        2026-04-24 09:56
+        2026-04-24 10:51
 </div>
 <div class="toolbar__item">
     <form id="version">
