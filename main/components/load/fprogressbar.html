@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-224722.json"
+            href="../../search-data-9dc87f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-lbNla5bZs7WXwhu/4JwZwCW3h+AWTQTfdeuY7I3pydzombRRmxorPSqmDmDw3h57"
+            integrity="sha384-LzVQnzGxH0BFae+laUBDhRO42LUaVOS3LciZYwdNxVzBGsTYbOJ01ZfZqnl0d6jq"
             id="search-data"
         />
     </head>
@@ -1108,7 +1108,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/950bf07118af5386baae34c6a7a11ac2e058afeb/packages/vue/src/components/FProgressbar/FProgressbar.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/f7cfe92276b9b6b0876ed913005b0e55a71d4857/packages/vue/src/components/FProgressbar/FProgressbar.vue">
                 FProgressbar
             </a>
             
@@ -1158,13 +1158,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-cc757a"></div>
+        <div id="example-ea0a94"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FProgressbarExample-cc757a.js"></script>
+        <script type="module" src="./FProgressbarExample-ea0a94.js"></script>
     
                 </div>
                 <div>
@@ -1220,12 +1220,19 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>
             <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-data&quot;</span>
         &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Debug-data: <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>value: {{currentProgress}}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;increase&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;increase()&quot;</span>&gt;</span>Increase<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;decrease&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;decrease()&quot;</span>&gt;</span>Decrease<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
-            Progress:
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.number</span>=<span class="hljs-string">&quot;currentProgress&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;increase&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;increase()&quot;</span>&gt;</span>
+                Increase
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;decrease&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;decrease()&quot;</span>&gt;</span>
+                Decrease
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
+                Progress:
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model.number</span>=<span class="hljs-string">&quot;currentProgress&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
@@ -1347,9 +1354,9 @@ progressbar.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/950bf07118af5386baae34c6a7a11ac2e058afeb">950bf07</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/f7cfe92276b9b6b0876ed913005b0e55a71d4857">f7cfe92</a>)<br />
         
-        2026-04-24 06:31
+        2026-04-24 06:47
 </div>
 <div class="toolbar__item">
     <form id="version">
