@@ -18,7 +18,6 @@ export interface TableColumnSelect<
     label?(this: void, row: T): string;
     selected?(this: void, row: T): string;
     update?(this: void, row: T, newValue: string, oldValue: string): void;
-    editable?: boolean | ((this: void, row: T) => boolean);
     options: string[];
 }
 
@@ -38,7 +37,6 @@ export interface NormalizedTableColumnSelect<
     label(this: void, row: T): string;
     selected(this: void, row: T): string;
     update(this: void, row: T, newValue: string, oldValue: string): void;
-    editable(this: void, row: T): boolean;
 }
 
 /**
@@ -52,10 +50,6 @@ export function normalizeSelectColumn<T, K extends keyof T>(
         label: getLabelFn(column.label),
         selected: getValueFn(column.selected, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
-        editable:
-            typeof column.editable === "function"
-                ? column.editable
-                : () => Boolean(column.editable ?? false),
         options: column.options,
     };
 }

@@ -94,7 +94,6 @@ const columnsBase = defineTableColumns<Row>([
         key: "animal",
         label: (row) => `Djur för rad ${row.id}`,
         options: ["Hund", "Katt", "Hamster", "Papegoja", "Spindel", "Guldfisk"],
-        editable: true,
     },
     {
         header: "Render function",

@@ -16,11 +16,8 @@ exports[`snapshot should match snapshot 1`] = `
       <div>
         <hr aria-hidden="true">
       </div>
-      <div class="layout-secondary__secondary__inner__content scroll-target" style="max-width: 285px;">TOPNAVIGATION<button type="button" class="button button--tertiary button--small button--tertiary--black" aria-disabled="false">
-          <!--v-if-->
-          <!--v-if--><span><span class="sr-only">Stäng sekundärpanelen</span></span>
+      <div class="layout-secondary__secondary__inner__content scroll-target" style="max-width: 285px;">TOPNAVIGATION<button class="button button--tertiary button--small button--tertiary--black layout-secondary__secondary__inner__close" type="button"><span class="sr-only">Stäng sekundärpanelen</span>
           <f-icon-stub name="close" library="f" class="button__icon"></f-icon-stub>
-          <!--v-if-->
         </button></div>
     </div>
   </aside>

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.43.1 (2026-04-22)
+
+### Bug Fixes
+
+* **deps:** update dependency cssnano to v7.1.5 84d2a1f
+* **deps:** update dependency i18next to v26.0.5 4233761
+* **deps:** update dependency i18next to v26.0.6 f8b5367
+
 ## 6.43.0 (2026-04-15)
 
 ### Features

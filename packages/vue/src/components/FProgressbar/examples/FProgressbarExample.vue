@@ -33,11 +33,18 @@ export default defineComponent({
         <pre
             class="debug-data"
         ><span class="sr-only">Debug-data: </span>value: {{currentProgress}}</pre>
-        <f-button data-test="increase" @click="increase()">Increase</f-button>
-        <f-button data-test="decrease" @click="decrease()">Decrease</f-button>
-        <label>
-            Progress:
-            <input v-model.number="currentProgress" type="number" />
-        </label>
+
+        <div class="button-group">
+            <f-button class="button-group__item" data-test="increase" @click="increase()">
+                Increase
+            </f-button>
+            <f-button class="button-group__item" data-test="decrease" @click="decrease()">
+                Decrease
+            </f-button>
+            <label>
+                Progress:
+                <input v-model.number="currentProgress" type="number" />
+            </label>
+        </div>
     </div>
 </template>

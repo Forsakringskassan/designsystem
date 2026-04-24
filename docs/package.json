@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "6.43.0",
+  "version": "6.43.1",
   "private": true,
   "homepage": "https://designsystem.forsakringskassan.se/",
   "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
@@ -15,13 +15,13 @@
   },
   "dependencies": {
     "@fkui/icon-lib-default": "6.43.0",
-    "@fkui/theme-default": "6.43.0",
-    "@fkui/vue": "6.43.0"
+    "@fkui/theme-default": "6.43.1",
+    "@fkui/vue": "6.43.1"
   },
   "devDependencies": {
     "@fkui/font-default": "6.43.0",
     "@fkui/logo-default": "6.43.0",
-    "@forsakringskassan/docs-generator": "2.41.0",
+    "@forsakringskassan/docs-generator": "2.41.1",
     "cypress": "15.14.0",
     "vue": "3.5.32"
   }
