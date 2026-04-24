@@ -52,14 +52,14 @@ function getColumns(updateItem: CrudAction, deleteItem: CrudAction): Array<Table
                 {
                     label: "Ändra",
                     icon: "pen",
-                    onClick: (row) => {
+                    onClick(row) {
                         updateItem(row);
                     },
                 },
                 {
                     label: "Ta bort",
                     icon: "trashcan",
-                    onClick: (row) => {
+                    onClick(row) {
                         deleteItem(row);
                     },
                 },
@@ -89,7 +89,6 @@ function saveModel(row: Row): void {
     <f-crud-dataset
         v-model="rows"
         :before-create
-        data-test="f-crud-dataset-f-table-example"
         @created="saveModel"
         @updated="saveModel"
         @deleted="saveModel"

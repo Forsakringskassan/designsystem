@@ -2,9 +2,7 @@ import { FCrudDatasetPageObject } from "@fkui/vue/cypress";
 import FTableCrudDatasetExample from "./FTableCrudDatasetExample.vue";
 import { FTablePageObject } from "@fkui/vue-labs/cypress";
 
-const crudDataset = new FCrudDatasetPageObject(
-    '[data-test="f-crud-dataset-f-table-example"]',
-);
+const crudDataset = new FCrudDatasetPageObject();
 const table = new FTablePageObject();
 
 describe("FTableCrudDatasetExample", () => {
@@ -53,16 +51,16 @@ describe("FTableCrudDatasetExample", () => {
         table.contextmenuItems().eq(0).click();
 
         cy.get(".modal input").eq(0).clear();
-        cy.get(".modal input").eq(0).type("Exempel A uppdaterad");
+        cy.get(".modal input").eq(0).type("Ärende A uppdaterad");
 
         cy.get(".modal input").eq(1).clear();
-        cy.get("modal input").eq(1).type("Uppdaterad beskrivning");
+        cy.get(".modal input").eq(1).type("Uppdaterad beskrivning");
 
         crudDataset.confirmButton().click();
 
         table
             .cell({ row: 1, col: 1 })
-            .should("contain.text", "Exempel A uppdaterad");
+            .should("contain.text", "Ärende A uppdaterad");
         table
             .cell({ row: 1, col: 2 })
             .should("contain.text", "Uppdaterad beskrivning");
