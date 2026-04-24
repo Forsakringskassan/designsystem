@@ -5,18 +5,49 @@ layout: article
 
 `FDataTable` och `FInteractiveTable` är deprekerad och ersatt med {@link component:FTable}
 
-## Vad som är samma
+## Snabb överblick
 
-- Tabellen bygger fortfarande på rows
-- `key-attribute` används fortfarande för att identifiera rader
-- Tabellen används fortfarande för tabulär data
-- Expanderbara rader finns kvar som koncept
-- Selection finns kvar som koncept
-- Slots som `caption` och `empty` finns kvar
+Vid migrering till `FTable` är det här de viktigaste skillnaderna
 
-## Vad som förändras
+- `FTableColumn` i template ersätts av kolumndefinitioner i `defineTableColumns(...)`
+- Formattering i template ersätts av kolumntyper som till exempel `text:date` och `text:number`
+- `v-model` för valbara rader byter namn till `v-model:selected-rows`
+- Expanderbart innehåll sätts upp via `useDatasetRef(...)`
+- Aktiv rad och radklick migreras inte rakt av
 
-### Kolumner flyttas från template till konfiguration
+### Kontrollera detta först
+
+Om din tabell använder något av följande behöver du läsa vidare extra noggrant:
+
+- Aktiv rad
+- Radklick
+- Flera actions i samma cell
+- Komplext innehåll i celler
+- Eget expanderat innehåll
+
+### Snabbguide
+
+Det här är den vanligaste mappningen från gamla tabeller till `FTable`:
+
+- Enkel textkolumn -> `text + key`
+- Datumformattering -> `text:date`
+- Nummerformattering -> `text:number`
+- Checkbox i cell -> `checkbox`
+- Radrubrik (row-header) -> `rowheader`
+- Länk i cell -> `anchor`
+- En action i kolumn -> `button`
+- Flera actions i samma cell -> `menu`
+- Expanderbara rader -> `useDatasetRef(..., "expandableRows")`
+
+## Kolumner flyttas från template till konfiguration
+
+I `FInteractiveTable` definierades kolumner i template med `FTableColumn`.
+
+```html static
+<f-table-column title="Namn" type="text"> {{ row.name }} </f-table-column>
+```
+
+I `FTable` definieras kolumner istället i kod med `defineTableColumns(...)`.
 
 ```ts
 import { defineTableColumns } from "@fkui/vue-labs";
@@ -24,6 +55,8 @@ import { defineTableColumns } from "@fkui/vue-labs";
 interface Row {
     name: string;
 }
+
+/* --- cut above --- */
 
 const columns = defineTableColumns<Row>([
     {
@@ -34,8 +67,16 @@ const columns = defineTableColumns<Row>([
 ]);
 ```
 
-```html name=columns-from-template hidden
-<f-interactive-table :rows="rows">
+Det innebär i praktiken:
+
+- `title` på `FTableColumn` blir `header`
+- Kolumnen flyttas tfrån template till kolumnkonfigurationen
+- Hela kolumnuppsättningen skickas in via `:columns`
+
+Om tabellen tidigare såg ut så här:
+
+```html static
+<f-interactive-table :rows>
     <template #caption> Tabellrubrik </template>
 
     <template #default="{ row }">
@@ -46,30 +87,104 @@ const columns = defineTableColumns<Row>([
 </f-interactive-table>
 ```
 
-```html compare=columns-from-template
-<f-table :rows :columns />
+Så blir den i `FTable`:
+
+```html static
+<f-table :rows :columns>
+    <template #caption> Tabellrubrik </template>
+</f-table>
 ```
 
-### Formattering flyttas in i kolumntypen
+## Hur kolumner läser och skriver värden
 
-- Datum -> `text:date`
-- Nummer -> `text:number`
-- Valuta -> `text:currency`
-- Procent -> `text:percent`
+Det vanligaste är att använda `key`.
 
-Andra formatterade texttyper som finns i `FTable`:
+```ts
+import { defineTableColumns } from "@fkui/vue-labs";
 
-- `text:email`
-- `text:phoneNumber`
-- `text:postalCode`
-- `text:personnummer`
-- `text:orgainsationsnummer`
-- `text:bankAccountNumber`
-- `text:bankgiro`
-- `text:plusgiro`
-- `text:clearingNumber`
+interface Row {
+    name: string;
+}
 
-### Editering och validering ligger i kolumnen
+/* --- cut above --- */
+
+const columns = defineTableColumns<Row>([
+    {
+        type: "text",
+        header: "Namn",
+        key: "name",
+    },
+]);
+```
+
+Om kolumnen bara ska läsa och skriva direkt mot ett fält på raden räcker `key`.
+Till exempel innebär `key: "name"` att kolumnen läser från och skriver till `row.name`.
+`key` är alltså standardfallet. Om kolumnen bygger på ett fält i raden är `key` normalt det tydligaste valet, även när du senare behöver komplettera med annan logik.
+Om du behöver styra läsning eller skrivning själv kan du använda `value` och `update`.
+
+```ts
+import { defineTableColumns } from "@fkui/vue-labs";
+
+interface Row {
+    id: string;
+    item: string;
+}
+
+/* --- cut above --- */
+
+const columns = defineTableColumns<Row>([
+    {
+        type: "text",
+        header: "Val",
+        editable: true,
+        label(row) {
+            return `Val för rad ${row.id}`;
+        },
+        value(row) {
+            return row.item;
+        },
+        update(row, newValue: string) {
+            row.item = newValue;
+        },
+    },
+]);
+```
+
+Använd `value` och `update` när visning eller uppdatering inte är en enkel 1:1 koppling mot ett fält, till exempel vid mappning eller annan speciallogik.
+
+## Formattering flyttas in i kolumntypen
+
+Om du tidigare definierade datum i template:
+
+```diff
+-<f-table-column title="Skapad" type="text">
+-    <span v-format:date="row.createdAt"></span>
+-</f-table-column>
+{
+    type: "text:date",
+    header: "Skapad",
+    key: "createdAt",
+}
+```
+
+Om du tidigare använde en numerisk kolumn:
+
+```diff
+-<f-table-column title="Antal" type="numeric">
+-   {{ row.amount }}
+-</f-table-column>
+{
+    type: "text:number",
+    header: "Antal",
+    key: "amount",
+}
+```
+
+[Läs mer om formatterade textkolumner](#) <!-- TODO: ersätt med riktig docs-länk -->
+
+## Editering och validering ligger i kolumnen
+
+I `FTable` definieras redigering i kolumnkonfigurationen
 
 ```ts
 import { defineTableColumns } from "@fkui/vue-labs";
@@ -79,13 +194,17 @@ interface Row {
     name: string;
 }
 
+/* --- cut above --- */
+
 const columns = defineTableColumns<Row>([
     {
         type: "text",
         header: "Namn",
         key: "name",
         editable: true,
-        label: (row) => `Namn för rad ${row.id}`,
+        label(row) {
+            return `Namn för rad ${row.id}`;
+        },
         validation: {
             required: {},
             minLength: { length: 3 },
@@ -94,39 +213,20 @@ const columns = defineTableColumns<Row>([
 ]);
 ```
 
-- `editable`, `label` och `validation` definieras i kolumnen
-- valideringsregler dokumenteras separat
+Detta innebär i prektiken:
+
+- `editable` används för redigerbara textkolumner
+- Validering definireas i kolumnen med `validation`
+
+Objektet i `validation` är av samma objekt som skickas till `v-validation` direktivet.
+
+Läs mer om {@link validators validatorer}.
 
 ## Expanderbart innehåll
 
-I gamla `FInteractiveTable` användes `expandable-attribute` för att ange vilket attrubut som innehöll expanderbart innehåll.
+I `FInteractiveTable` användes `expandable-attribute` för att ange vilket attribut som innehöll expanderbart innehåll.
 
-I nya `FTable` används istället `useDatasetRef(...)` för att skapa ett dataset där det nästlade attributet anges.
-
-### Expanderbara tabeller
-
-```ts
-import { useDatasetRef } from "@fkui/vue";
-
-interface Row {
-    id: string;
-    name: string;
-    expandableRows?: Row[];
-}
-
-const rows = useDatasetRef<Row>(
-    [
-        {
-            id: "1",
-            name: "Rad 1",
-            expandableRows: [],
-        },
-    ],
-    "expandableRows",
-);
-```
-
-```html name=expandable-table hidden
+```html static
 <f-interactive-table
     :rows
     key-attribute="id"
@@ -142,91 +242,58 @@ const rows = useDatasetRef<Row>(
 </f-interactive-table>
 ```
 
-```html compare=expandable-table
-<f-table :rows :columns key-attribute="id" />
-```
-
-### Eget expanderat innehåll
+I `FTable` skapas motsvarande `rows` med `useDatasetRef(...)`, där det nästlade anges som andra parameter.
 
 ```ts
 import { useDatasetRef } from "@fkui/vue";
 
 interface Row {
     id: string;
-    content: string;
-    expandableContent?: Row[];
+    name: string;
+    expandableRows?: Row[];
 }
 
-const rows = useDatasetRef<Row>(
-    [
-        {
-            id: "1",
-            content: "Rad 1",
-            expandableContent: [
-                {
-                    id: "1a",
-                    content: "Extra information för rad 1",
-                },
-            ],
-        },
-    ],
-    "expandableContent",
-);
+/* --- cut above --- */
+
+const rawData: Row[] = [
+    {
+        id: "1",
+        name: "Rad 1",
+        expandableRows: [],
+    },
+];
+
+const rows = useDatasetRef(rawData, "expandableRows");
 ```
 
-// FIXME: Needs slot "caption"
+Det datasetet skickas sedan in som `rows` till `FTable`.
 
-```html name=custom-expandable-content hidden
-<f-interactive-table :rows expandable-attribute="expandableContent">
-    <template #caption> Tabellrubrik </template>
-
-    <template #default="{ row }">
-        <f-table-column title="Namn" type="text">
-            {{ row.name }}
-        </f-table-column>
-    </template>
-
-    <template #expandable="{ expandableRow }">
-        {{ expandableRow.content }}
-    </template>
-</f-interactive-table>
+```html static
+<f-table :rows :columns key-attribute="id"></f-table>
 ```
 
-```html compare=custom-expandable-content
-<f-table :rows :columns key-attributes="id">
-    <template #expandable="{ row }"> {{ row.content }} </template>
-</f-table>
+Läs mer om {@link useDatasetRef useDatasetRef}
+
+[Läs mer om expanderbara rader](#) <!-- TODO: ersätt med riktig docs-länk -->
+
+[Läs mer om valfritt expanderat innehåll](#) <!-- TODO: ersätt med riktig docs-länk -->
+
+### Eget expanderat innehåll
+
+`#expandable` används bara när det expanderade innehållet ska renderas som eget innehåll.
+
+Både `FInteractiveTable` och `FTable` använder slotten `expandable`, men söptåarametern byter namn vid migrering:
+
+```diff
+-<template #expandable="{ expandableRow }">
+-   {{ expandableRow.content }}
+-</template>
+<template #expandable="{ row }">
+    {{ row.content }}
+</template>
 ```
 
-- `useDatasetRef(...)` används både för expanderbara rader och eget expanderat innehåll
-- attributet du skickar in styr vilket nästlat innehåll tabellen använder
-
-## Kolumntyper i `FTable`
-
-- `text`
-- `text:date`
-- `text:number`
-- `text:currency`
-- `text:percent`
-- `text:email`
-- `text:phoneNumber`
-- `text:postalCode`
-- `text:personnummer`
-- `text:organisationsnummer`
-- `text:bankAccountNumber`
-- `text:bankgiro`
-- `text:plusgiro`
-- `text:clearingNumber`
-
-### Övriga
-
-- `checkbox`
-- `rowheader`
-- `anchor`
-- `button`
-- `select`
-- `menu`
-- `render`
+[Läs mer om valfritt expanderat innehåll](#) <!-- TODO: ersätt med riktig docs-länk -->
 
 ## Vanliga migreringar
 
@@ -242,6 +309,8 @@ const rows = useDatasetRef<Row>(
     key: "name",
 }
 ```
+
+[Läs mer om kolumntypen text](#) <!-- TODO: ersätt med riktig docs-länk -->
 
 ### Formatterade textkolumner
 
@@ -267,19 +336,7 @@ const rows = useDatasetRef<Row>(
 }
 ```
 
-Andra vanliga formatterade texttyper:
-
-- `text:currency`
-- `text:percent`
-- `text:email`
-- `text:phoneNumber`
-- `text:postalCode`
-- `text:personnummer`
-- `text:organisationsnummer`
-- `text:bankAccountNumber`
-- `text:bankgiro`
-- `text:plusgiro`
-- `text:clearingNumber`
+[Läs mer om formatterade textkolumner](#) <!-- TODO: ersätt med riktig docs-länk -->
 
 ### Checkbox-kolumn
 
@@ -298,8 +355,17 @@ Andra vanliga formatterade texttyper:
 }
 ```
 
-- `checkbox` är en vanlig kolumn i tabellen
-- Det är inte samma sak som `selectable`
+::: info Tänk på att
+
+`checkbox` är en vanlig kolumn i tabellen.
+
+Det är inte samma sak som valbara rader.
+
+:::
+
+[Läs mer om kolumntypen checkbox](#) <!-- TODO: ersätt med riktig docs-länk -->
+
+[Läs mer om valbara rader](#) <!-- TODO: ersätt med riktig docs-länk -->
 
 ### Rowheader
 
@@ -316,9 +382,7 @@ Andra vanliga formatterade texttyper:
 }
 ```
 
-- `rowheader` är en egen kolumntyp
-- Den används när en kolumn ska vara radrubrik
-- Detta motsvarar konceptet `row-header` i gamla tabellen, men uttrycks nu i kolumnkonfigurationen
+[Läs mer om kolumntypen rowheader](#) <!-- TODO: ersätt med riktig docs-länk -->
 
 ### Anchor
 
@@ -335,6 +399,8 @@ Andra vanliga formatterade texttyper:
     },
 }
 ```
+
+[Läs mer om kolumntypen anchor](#) <!-- TODO: ersätt med riktig docs-länk -->
 
 ### Button
 
@@ -357,8 +423,14 @@ Andra vanliga formatterade texttyper:
 }
 ```
 
-- Knappen är inbyggd i kolumnen
-- Logiken för vad som ska hända vid klick är fortfarande konsumentens ansvar
+I `FTable` går det inte längre att ha flera knappar i samma kolumn. Det är ett deisn och tillgänglighetsval.
+
+Om du tidigare hade flera avtions i samma kolumn behöver du istället:
+
+- lägga actions i olika kolumner, eller
+- använda `menu`
+
+[Läs mer om kolumntypen button](#) <!-- TODO: ersätt med riktig docs-länk -->
 
 ### Menu
 
@@ -405,9 +477,7 @@ const columns = defineTableColumns<Row>([
 ]);
 ```
 
-- `menu` används när flera actions ska grupperas i samma kolumn
-- Varje action definieras i `actions`
-- Varje action kan ha `label`, `icon` och `onClick`
+[Läs mer om kolumntypen menu](#) <!-- TODO: ersätt med riktig docs-länk -->
 
 ### Select
 
@@ -430,128 +500,31 @@ const columns = defineTableColumns<Row>([
 ]);
 ```
 
-- `select` används när ett värde i raden ska väljas från en lista
-- Använd `key` när värdet kan läsas och skrivas direkt på raden
-- `value` och `update` behövs när visning eller uppdatering kräver speciallogik
+Om alternativen laddas asynkront kan `columns` behöva byggas med `computed(...)` så att `options` uppdateras när datat har laddat klart. Annars kan selecten renderas innan alternativen finns tillgängliga, vilket gör att det valda värdet inte visas som förväntat.
 
-Om alternativen laddas asynkront kan `columns` behöva byggas med `computed(...)` så att `options` uppdateras när datat har laddat klart.
+[Läs mer om kolumntypen select](#) <!-- TODO: ersätt med riktig docs-länk -->
 
-### Render
+### Anpassade celler
 
-```ts
-import { h } from "vue";
-import { defineTableColumns } from "@fkui/vue-labs";
+Om tabellen innehåller mer komplext innehåll än vad de inbyggda kolumntyperna stödjer går det inte alltid att migrera rakt av.
 
-interface Row {
-    id: string;
-}
+Kontakt i första hand teamet för att reda ut om scenariot bör stödjas av `FTable` eller om det är ett rimligt specialfall.
 
-const columns = defineTableColumns<Row>([
-    {
-        header: "Custom",
-        render(row) {
-            return h("td", { id: `item-${row.id}` }, ["Item"]);
-        },
-    },
-]);
+[Läs mer om anpassade celler](#) <!-- TODO: ersätt med riktig docs-länk -->
+
+## Valbara rader
+
+Propen `selectable` fungerar som tidigare:
+
+- Använd `single` för enkelval
+- Använd `multi` för flerval
+
+Det som ändras är `v-model` för valbara rader.
+
+```diff
+-<f-interactive-table v-model="selectedRows">
+<f-table v-model:selected-rows="selectedRows">
 ```
-
-- `render` används när en inbyggd kolumntyp inte räcker
-- Använd i första hand en inbyggd kolumntyp
-
-## Editering och validering
-
-### Key
-
-Använd `key` när kolumnen direkt läser och skriver till ett fält på raden.
-
-```ts
-import { defineTableColumns } from "@fkui/vue-labs";
-
-interface Row {
-    id: string;
-    name: string;
-}
-
-const columns = defineTableColumns<Row>([
-    {
-        type: "text",
-        header: "Namn",
-        key: "name",
-        editable: true,
-        label: (row) => `Namn för rad ${row.id}`,
-    },
-]);
-```
-
-- `key` räcker när värdet kan läsas och skrivas direkt på raden
-- Det är det enklaste och vanligaste mönstret i `FTable`
-
-### Value och Update
-
-Använd `value` och `update` när visning eller uppdatering inte är en enkel 1:1 koppling mot ett fält.
-
-```ts
-import { defineTableColumns } from "@fkui/vue-labs";
-
-interface Row {
-    id: string;
-    item: string;
-}
-
-const columns = defineTableColumns<Row>([
-    {
-        type: "text",
-        header: "Val",
-        editable: true,
-        label: (row: Row) => `Val för rad ${row.id}`,
-        value: (row: Row) => {
-            return row.item;
-        },
-        update(row: Row, newValue: string) {
-            row.item = newValue;
-        },
-    },
-]);
-```
-
-- Använd `value` när visningen inte ska komma direkt från `key`
-- Använd `update` när du själv behöver styra hur värdet skrivs tillbaka
-- Om `key` räcker behövs inte `value` och `update`
-
-### Validering
-
-```ts
-import { defineTableColumns } from "@fkui/vue-labs";
-
-interface Row {
-    id: string;
-    name: string;
-}
-
-const columns = defineTableColumns<Row>([
-    {
-        type: "text",
-        header: "Namn",
-        key: "name",
-        editable: true,
-        label: (row) => `Namn för rad ${row.id}`,
-        validation: {
-            required: {},
-            maxLength: { length: 32 },
-        },
-    },
-]);
-```
-
-- Validering definieras i kolumnen
-- Själva valideringsreglerna dokumenteras separat
-
-## Selection
-
-`FInteractiveTable` hade selection via `selectable`.
-
-I `FTable` finns selection kvar, men används via `selectable` tillsammans med `v-model:selected-rows`.
 
 ### Enkelval
 
@@ -597,80 +570,5 @@ I `FTable` finns selection kvar, men används via `selectable` tillsammans med `
 />
 ```
 
-- `single` används för enkelval
-- `multi` används för flerval
 - `multi` ger också stöd för att välja alla rader via kolumnrubruken
 - `selectedRows` innehåller de valda raderna
-
-### Selection och radaktivering är separate begrepp
-
-`FInteractiveTable` hade både:
-
-- selection via `selectable`
-- Radaktivering / Aktiv rad via:
-    - `click`
-    - `change`
-    - `active`
-    - `update:active`
-    - `showActive`
-
-Nya `FTable` har selection, men inte samma inbyggda stöd för aktiv rad eller radaktivering.
-
-Det betyder att gammal funktionalitet där man klickade på en rad för att sätta aktiv rad, få ut hela objektet eller trigga annan lokig behöver lösas med ett nytt, mer explicit mönster utanför tabellens inbyggda radbeteende.
-
-## Slots
-
-- `caption`
-- `empty`
-- `footer`
-- `expandable`
-
-## Konsumentägd logik
-
-`FTable` ansvarar för rendering, kolumner och interaktion i tabellen, men viss logik ligger fortfarande hos konsumenten.
-
-Det gäller till exempel:
-
-- Att lägga till rader
-- Att ta bort rader
-- Att spara ändringar
-- Att hantera bulk actions
-- Att koppla tabellen till API eller annan state-hantering
-
-## Fall som kräver extra anpassning
-
-- Custom rendering
-- Komplexa actions
-- Gammal aktiv-rad-logik
-- Radclick-beteenden
-- Flera interaktiva komponenter i samma cell
-
-## Snabbguide
-
-- text -> `text` + `key`
-- datum -> `text:date`
-- nummer -> `text:number`
-- checkbox -> `checkbox`
-- radrubrik `( row-header )` -> `rowheader`
-- länk i cell -> `anchor`
-- action -> `button`
-- flera actions -> `menu`
-- custom UI -> `render`
-- expanderbara rader / eget expanderat innehåll -> `useDatasetRef`
-- radclick / aktiv rad -> ny lösning
-
-## Relevanta delar i nya API:t
-
-- `defineTableColumns(...)`
-- `useDatasetRef(...)`
-- `v-model:selected-row`
-- `key-attribute`
-- `selectable`
-- `value`
-- `update`
-- `label`
-- `validation`
-- `options`
-- `caption`
-- `empty`
-- `expandable`
