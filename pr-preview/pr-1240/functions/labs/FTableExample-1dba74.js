@@ -5318,20 +5318,32 @@ function useSelectable(options) {
       toggleSelectableRow: () => void 0
     };
   }
-  const isIndeterminate = computed3(() => {
-    return selectedRows.value.length > 0 && selectedRows.value.length < toValue2(rows).length;
-  });
-  const isAllRowsSelected = computed3(() => {
-    return selectedRows.value.length > 0 && selectedRows.value.length === toValue2(rows).length;
-  });
+  const headerState = ref3(false);
   function selectableHeaderState() {
-    return isIndeterminate.value ? "indeterminate" : isAllRowsSelected.value;
+    return headerState.value;
   }
+  watchEffect3(() => {
+    switch (selectedRows.value.length) {
+      case 0:
+        headerState.value = false;
+        break;
+      case toValue2(rows).length:
+        headerState.value = true;
+        break;
+      default:
+        headerState.value = "indeterminate";
+        break;
+    }
+  });
   function toggleSelectableHeader() {
-    if (isAllRowsSelected.value) {
-      selectedRows.value = [];
-    } else {
+    if (toValue2(rows).length === 0) {
+      headerState.value = headerState.value !== true;
+      return;
+    }
+    if (headerState.value !== true) {
       selectedRows.value = [...toValue2(rows)];
+    } else {
+      selectedRows.value = [];
     }
   }
   function toggleSelectableRow(row) {
