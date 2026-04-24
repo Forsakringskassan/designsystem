@@ -100,7 +100,6 @@ const columns = defineTableColumns<Row>([
         key: "animal",
         label: (row) => `Djur för rad ${row.id}`,
         options: selectFieldOptions,
-        editable: true,
     },
     {
         header: "Render function",

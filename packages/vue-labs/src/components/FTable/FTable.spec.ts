@@ -1203,7 +1203,6 @@ describe("select cell", () => {
                 header: "A",
                 options: ["Foo", "Bar", "Baz"],
                 key: "option",
-                editable: true,
                 label: () => "Label",
             },
         ]);
@@ -1241,7 +1240,6 @@ describe("select cell", () => {
                 header: "A",
                 options: ["Foo", "Bar", "Baz"],
                 key: "option",
-                editable: true,
                 label: () => "Label",
                 update: listener,
             },
@@ -1271,7 +1269,6 @@ describe("select cell", () => {
                 header: "A",
                 options: ["Foo", "Bar", "Baz"],
                 key: "option",
-                editable: true,
                 label: () => "Label",
             },
         ]);
@@ -1305,7 +1302,6 @@ describe("select cell", () => {
                 header: "A",
                 options: ["Foo", "Bar", "Baz"],
                 key: "option",
-                editable: true,
                 label: () => "Label",
             },
         ]);
