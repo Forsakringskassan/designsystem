@@ -9,7 +9,7 @@ export class FCrudDatasetPageObject implements BasePageObject {
     public el: () => DefaultCypressChainable;
     public form: FValidationFormPageObject;
 
-    public constructor(selector: string) {
+    public constructor(selector = ".crud-dataset") {
         this.selector = selector;
         this.el = () => cy.get(this.selector);
         this.form = new FValidationFormPageObject(`${this.selector} form`);

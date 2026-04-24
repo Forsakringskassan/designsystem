@@ -151,7 +151,7 @@ export class FContextMenuPageObject implements BasePageObject {
 
 // @public (undocumented)
 export class FCrudDatasetPageObject implements BasePageObject {
-    constructor(selector: string);
+    constructor(selector?: string);
     // (undocumented)
     addButton(): DefaultCypressChainable;
     // (undocumented)
