@@ -2856,13 +2856,6 @@ var FErrorList_default = defineComponent8({
       required: true
     },
     /**
-     * Display bullets in list.
-     */
-    bullets: {
-      type: Boolean,
-      required: false
-    },
-    /**
      * Optional callback for performing actions before navigation.
      */
     beforeNavigate: {
@@ -2879,13 +2872,6 @@ var FErrorList_default = defineComponent8({
     }
   },
   methods: {
-    liClasses(errorItem) {
-      const classes = [];
-      if (!this.bullets && errorItem.id) {
-        classes.push("error-list__link");
-      }
-      return classes;
-    },
     async onClickItem(item) {
       await this.beforeNavigate(item);
       focusError(item);
@@ -2894,7 +2880,7 @@ var FErrorList_default = defineComponent8({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=template
-import { resolveComponent as _resolveComponent3, createVNode as _createVNode2, withCtx as _withCtx2, openBlock as _openBlock8, createBlock as _createBlock3, createCommentVNode as _createCommentVNode7, createTextVNode as _createTextVNode2, renderSlot as _renderSlot7, createElementBlock as _createElementBlock8, renderList as _renderList2, Fragment as _Fragment3, createElementVNode as _createElementVNode5, toDisplayString as _toDisplayString3, withModifiers as _withModifiers, normalizeClass as _normalizeClass5 } from "vue";
+import { resolveComponent as _resolveComponent3, createVNode as _createVNode2, withCtx as _withCtx2, openBlock as _openBlock8, createBlock as _createBlock3, createCommentVNode as _createCommentVNode7, createTextVNode as _createTextVNode2, renderSlot as _renderSlot7, createElementBlock as _createElementBlock8, renderList as _renderList2, Fragment as _Fragment3, createElementVNode as _createElementVNode5, toDisplayString as _toDisplayString3, withModifiers as _withModifiers } from "vue";
 var _hoisted_15 = { class: "error-list" };
 var _hoisted_24 = { key: 0 };
 var _hoisted_33 = { class: "error-list__list error-list--list-style-none" };
@@ -2946,104 +2932,57 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                 _Fragment3,
                 null,
                 _renderList2(_ctx.items, (item) => {
-                  return _openBlock8(), _createElementBlock8(
-                    "li",
-                    {
-                      key: item.id,
-                      class: _normalizeClass5(_ctx.liClasses(item))
-                    },
-                    [
-                      item.id ? (_openBlock8(), _createElementBlock8("a", {
-                        key: 0,
-                        href: "javascript:",
-                        onClick: _withModifiers(($event) => _ctx.onClickItem(item), ["prevent"])
-                      }, [
-                        _ctx.bullets ? (_openBlock8(), _createElementBlock8(
-                          _Fragment3,
-                          { key: 0 },
-                          [
-                            _cache[1] || (_cache[1] = _createElementVNode5(
-                              "span",
-                              {
-                                class: "error-list__bullet",
-                                "aria-hidden": "true"
-                              },
-                              null,
-                              -1
-                              /* CACHED */
-                            )),
-                            _createElementVNode5(
-                              "span",
-                              _hoisted_52,
-                              _toDisplayString3(item.title),
-                              1
-                              /* TEXT */
-                            )
-                          ],
-                          64
-                          /* STABLE_FRAGMENT */
-                        )) : (_openBlock8(), _createElementBlock8(
-                          _Fragment3,
-                          { key: 1 },
-                          [
-                            _createTextVNode2(
-                              _toDisplayString3(item.title),
-                              1
-                              /* TEXT */
-                            )
-                          ],
-                          64
-                          /* STABLE_FRAGMENT */
-                        ))
-                      ], 8, _hoisted_42)) : (_openBlock8(), _createElementBlock8(
-                        _Fragment3,
-                        { key: 1 },
-                        [
-                          _ctx.bullets ? (_openBlock8(), _createElementBlock8(
-                            _Fragment3,
-                            { key: 0 },
-                            [
-                              _cache[2] || (_cache[2] = _createElementVNode5(
-                                "span",
-                                {
-                                  class: "error-list__bullet",
-                                  "aria-hidden": "true"
-                                },
-                                null,
-                                -1
-                                /* CACHED */
-                              )),
-                              _createElementVNode5(
-                                "span",
-                                null,
-                                _toDisplayString3(item.title),
-                                1
-                                /* TEXT */
-                              )
-                            ],
-                            64
-                            /* STABLE_FRAGMENT */
-                          )) : (_openBlock8(), _createElementBlock8(
-                            _Fragment3,
-                            { key: 1 },
-                            [
-                              _createTextVNode2(
-                                _toDisplayString3(item.title),
-                                1
-                                /* TEXT */
-                              )
-                            ],
-                            64
-                            /* STABLE_FRAGMENT */
-                          ))
-                        ],
-                        64
-                        /* STABLE_FRAGMENT */
-                      ))
-                    ],
-                    2
-                    /* CLASS */
-                  );
+                  return _openBlock8(), _createElementBlock8("li", {
+                    key: item.id
+                  }, [
+                    item.id ? (_openBlock8(), _createElementBlock8("a", {
+                      key: 0,
+                      href: "javascript:",
+                      onClick: _withModifiers(($event) => _ctx.onClickItem(item), ["prevent"])
+                    }, [
+                      _cache[1] || (_cache[1] = _createElementVNode5(
+                        "span",
+                        {
+                          class: "error-list__bullet",
+                          "aria-hidden": "true"
+                        },
+                        null,
+                        -1
+                        /* CACHED */
+                      )),
+                      _createElementVNode5(
+                        "span",
+                        _hoisted_52,
+                        _toDisplayString3(item.title),
+                        1
+                        /* TEXT */
+                      )
+                    ], 8, _hoisted_42)) : (_openBlock8(), _createElementBlock8(
+                      _Fragment3,
+                      { key: 1 },
+                      [
+                        _cache[2] || (_cache[2] = _createElementVNode5(
+                          "span",
+                          {
+                            class: "error-list__bullet",
+                            "aria-hidden": "true"
+                          },
+                          null,
+                          -1
+                          /* CACHED */
+                        )),
+                        _createElementVNode5(
+                          "span",
+                          null,
+                          _toDisplayString3(item.title),
+                          1
+                          /* TEXT */
+                        )
+                      ],
+                      64
+                      /* STABLE_FRAGMENT */
+                    ))
+                  ]);
                 }),
                 128
                 /* KEYED_FRAGMENT */
@@ -3234,15 +3173,6 @@ var FValidationForm_default = defineComponent10({
       default: true
     },
     /**
-     * Display bullets in the error list component.
-     */
-    errorListBullets: {
-      type: Boolean,
-      required: false,
-      /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-      default: true
-    },
-    /**
      *Optional callback function to the error list component for performing actions before navigation.
      */
     errorListBeforeNavigate: {
@@ -3350,7 +3280,6 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
           [
             _createVNode3(_component_f_error_list, {
               items: _ctx.errors,
-              bullets: _ctx.errorListBullets,
               "before-navigate": _ctx.errorListBeforeNavigate
             }, {
               title: _withCtx3(() => [
@@ -3359,7 +3288,7 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
               ]),
               _: 3
               /* FORWARDED */
-            }, 8, ["items", "bullets", "before-navigate"])
+            }, 8, ["items", "before-navigate"])
           ],
           512
           /* NEED_PATCH */
@@ -3553,7 +3482,7 @@ var FFormModal_default = defineComponent11({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=template
-import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, renderList as _renderList3, Fragment as _Fragment4, openBlock as _openBlock11, createElementBlock as _createElementBlock11, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass6, createBlock as _createBlock5 } from "vue";
+import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, renderList as _renderList3, Fragment as _Fragment4, openBlock as _openBlock11, createElementBlock as _createElementBlock11, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass5, createBlock as _createBlock5 } from "vue";
 var _hoisted_17 = { class: "button-group" };
 var _hoisted_26 = ["type", "form", "onClick"];
 var _hoisted_34 = {
@@ -3609,7 +3538,7 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
             return _openBlock11(), _createElementBlock11("button", {
               key: button.label,
               type: button.buttonType,
-              class: _normalizeClass6([button.classlist, "button-group__item"]),
+              class: _normalizeClass5([button.classlist, "button-group__item"]),
               form: button.buttonType === "submit" ? _ctx.formId : void 0,
               onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false
             }, [
@@ -4611,7 +4540,7 @@ var IPopupError_default = defineComponent13({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupError/IPopupError.vue?type=template
-import { createCommentVNode as _createCommentVNode11, resolveComponent as _resolveComponent6, openBlock as _openBlock13, createBlock as _createBlock7, toDisplayString as _toDisplayString5, createElementVNode as _createElementVNode9, createVNode as _createVNode5, createElementBlock as _createElementBlock12, normalizeClass as _normalizeClass7, normalizeStyle as _normalizeStyle, Teleport as _Teleport2 } from "vue";
+import { createCommentVNode as _createCommentVNode11, resolveComponent as _resolveComponent6, openBlock as _openBlock13, createBlock as _createBlock7, toDisplayString as _toDisplayString5, createElementVNode as _createElementVNode9, createVNode as _createVNode5, createElementBlock as _createElementBlock12, normalizeClass as _normalizeClass6, normalizeStyle as _normalizeStyle, Teleport as _Teleport2 } from "vue";
 var _hoisted_18 = {
   ref: "wrapper",
   class: "popup-error__wrapper"
@@ -4627,7 +4556,7 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
       "div",
       {
         ref: "popup",
-        class: _normalizeClass7(_ctx.popupClasses),
+        class: _normalizeClass6(_ctx.popupClasses),
         "aria-hidden": "true"
       },
       [
@@ -4639,7 +4568,7 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
             _createElementVNode9(
               "div",
               {
-                class: _normalizeClass7(_ctx.arrowClass),
+                class: _normalizeClass6(_ctx.arrowClass),
                 style: _normalizeStyle(_ctx.errorStyle)
               },
               [
@@ -4938,7 +4867,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue?type=template
-import { renderSlot as _renderSlot12, createElementVNode as _createElementVNode10, withModifiers as _withModifiers4, withKeys as _withKeys3, mergeProps as _mergeProps4, normalizeClass as _normalizeClass8, Teleport as _Teleport3, openBlock as _openBlock14, createBlock as _createBlock8, createCommentVNode as _createCommentVNode12 } from "vue";
+import { renderSlot as _renderSlot12, createElementVNode as _createElementVNode10, withModifiers as _withModifiers4, withKeys as _withKeys3, mergeProps as _mergeProps4, normalizeClass as _normalizeClass7, Teleport as _Teleport3, openBlock as _openBlock14, createBlock as _createBlock8, createCommentVNode as _createCommentVNode12 } from "vue";
 var _hoisted_19 = ["onKeyup"];
 var _hoisted_27 = { ref: "content" };
 function render14(_ctx, _cache, $props, $setup, $data, $options) {
@@ -4951,7 +4880,7 @@ function render14(_ctx, _cache, $props, $setup, $data, $options) {
       "div",
       {
         ref: "popup",
-        class: _normalizeClass8($setup.popupClasses)
+        class: _normalizeClass7($setup.popupClasses)
       },
       [
         _createElementVNode10("div", _mergeProps4({ ref: "wrapper" }, _ctx.$attrs, {
@@ -5277,7 +5206,7 @@ var IPopupMenu_default = defineComponent14({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=template
-import { renderList as _renderList4, Fragment as _Fragment5, openBlock as _openBlock15, createElementBlock as _createElementBlock13, toDisplayString as _toDisplayString6, createElementVNode as _createElementVNode11, createCommentVNode as _createCommentVNode13, createTextVNode as _createTextVNode3, normalizeClass as _normalizeClass9, resolveComponent as _resolveComponent7, withCtx as _withCtx5, createBlock as _createBlock9 } from "vue";
+import { renderList as _renderList4, Fragment as _Fragment5, openBlock as _openBlock15, createElementBlock as _createElementBlock13, toDisplayString as _toDisplayString6, createElementVNode as _createElementVNode11, createCommentVNode as _createCommentVNode13, createTextVNode as _createTextVNode3, normalizeClass as _normalizeClass8, resolveComponent as _resolveComponent7, withCtx as _withCtx5, createBlock as _createBlock9 } from "vue";
 var _hoisted_110 = ["aria-label"];
 var _hoisted_28 = {
   role: "menu",
@@ -5316,7 +5245,7 @@ function render15(_ctx, _cache, $props, $setup, $data, $options) {
                 ref: "items",
                 key: item.key,
                 role: "presentation",
-                class: _normalizeClass9(_ctx.itemClasses(item)),
+                class: _normalizeClass8(_ctx.itemClasses(item)),
                 onClick: (event) => _ctx.onClickItem(event, item)
               }, [
                 _createElementVNode11("a", {
@@ -5562,7 +5491,7 @@ var IAnimateExpand_default = defineComponent15({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue?type=template
-import { createCommentVNode as _createCommentVNode14, renderSlot as _renderSlot13, vShow as _vShow, withDirectives as _withDirectives, openBlock as _openBlock16, createElementBlock as _createElementBlock14, normalizeClass as _normalizeClass10, normalizeStyle as _normalizeStyle2, createElementVNode as _createElementVNode12, Fragment as _Fragment6 } from "vue";
+import { createCommentVNode as _createCommentVNode14, renderSlot as _renderSlot13, vShow as _vShow, withDirectives as _withDirectives, openBlock as _openBlock16, createElementBlock as _createElementBlock14, normalizeClass as _normalizeClass9, normalizeStyle as _normalizeStyle2, createElementVNode as _createElementVNode12, Fragment as _Fragment6 } from "vue";
 var _hoisted_111 = {
   key: 0,
   ref: "content",
@@ -5577,7 +5506,7 @@ function render16(_ctx, _cache, $props, $setup, $data, $options) {
       _createElementVNode12(
         "div",
         {
-          class: _normalizeClass10(_ctx.animationClasses),
+          class: _normalizeClass9(_ctx.animationClasses),
           style: _normalizeStyle2(_ctx.heightStyle)
         },
         [
@@ -6293,7 +6222,7 @@ var ICalendarNavbar_default = defineComponent19({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarNavbar.vue?type=template
-import { toDisplayString as _toDisplayString9, normalizeClass as _normalizeClass11, createElementVNode as _createElementVNode15, createCommentVNode as _createCommentVNode18, resolveComponent as _resolveComponent9, createVNode as _createVNode6, withModifiers as _withModifiers6, openBlock as _openBlock20, createElementBlock as _createElementBlock17 } from "vue";
+import { toDisplayString as _toDisplayString9, normalizeClass as _normalizeClass10, createElementVNode as _createElementVNode15, createCommentVNode as _createCommentVNode18, resolveComponent as _resolveComponent9, createVNode as _createVNode6, withModifiers as _withModifiers6, openBlock as _openBlock20, createElementBlock as _createElementBlock17 } from "vue";
 var _hoisted_116 = { class: "calendar-navbar" };
 var _hoisted_210 = { class: "calendar-navbar__month" };
 var _hoisted_37 = ["aria-live"];
@@ -6312,7 +6241,7 @@ function render20(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock20(), _createElementBlock17("div", _hoisted_116, [
     _createElementVNode15("div", _hoisted_210, [
       _createElementVNode15("span", {
-        class: _normalizeClass11([_ctx.monthTitleClass, "calendar-navbar__month--title"]),
+        class: _normalizeClass10([_ctx.monthTitleClass, "calendar-navbar__month--title"]),
         tabindex: "-1",
         "aria-live": _ctx.isFocused("yearSelectorButton") ? "polite" : "off"
       }, _toDisplayString9(_ctx.currentText), 11, _hoisted_37),
@@ -6342,7 +6271,7 @@ function render20(_ctx, _cache, $props, $setup, $data, $options) {
           /* TEXT */
         ),
         _createVNode6(_component_f_icon, {
-          class: _normalizeClass11(_ctx.yearSelectorOpen ? "calendar-navbar__arrow--up" : void 0),
+          class: _normalizeClass10(_ctx.yearSelectorOpen ? "calendar-navbar__arrow--up" : void 0),
           name: "arrow-down"
         }, null, 8, ["class"])
       ], 8, _hoisted_45)) : _createCommentVNode18("v-if", true)
@@ -6364,7 +6293,7 @@ function render20(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
       ),
       _createVNode6(_component_f_icon, {
-        class: _normalizeClass11(_ctx.previousIconClasses),
+        class: _normalizeClass10(_ctx.previousIconClasses),
         name: "arrow-right"
       }, null, 8, ["class"])
     ], 8, _hoisted_73)) : _createCommentVNode18("v-if", true),
@@ -6385,7 +6314,7 @@ function render20(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
       ),
       _createVNode6(_component_f_icon, {
-        class: _normalizeClass11(_ctx.nextIconClasses),
+        class: _normalizeClass10(_ctx.nextIconClasses),
         name: "arrow-right"
       }, null, 8, ["class"])
     ], 8, _hoisted_93)) : _createCommentVNode18("v-if", true)
@@ -6456,7 +6385,7 @@ var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxDropdown.vue?type=template
-import { createCommentVNode as _createCommentVNode19, renderList as _renderList6, Fragment as _Fragment8, openBlock as _openBlock21, createElementBlock as _createElementBlock18, toDisplayString as _toDisplayString10, withModifiers as _withModifiers7, normalizeClass as _normalizeClass12, createElementVNode as _createElementVNode16, withCtx as _withCtx7, createVNode as _createVNode7 } from "vue";
+import { createCommentVNode as _createCommentVNode19, renderList as _renderList6, Fragment as _Fragment8, openBlock as _openBlock21, createElementBlock as _createElementBlock18, toDisplayString as _toDisplayString10, withModifiers as _withModifiers7, normalizeClass as _normalizeClass11, createElementVNode as _createElementVNode16, withCtx as _withCtx7, createVNode as _createVNode7 } from "vue";
 var _hoisted_117 = { class: "combobox" };
 var _hoisted_211 = ["id"];
 var _hoisted_38 = ["id", "aria-selected", "onClick"];
@@ -6488,7 +6417,7 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
                 key: item,
                 role: "option",
                 "aria-selected": $setup.isOptionActive(item) ? "true" : void 0,
-                class: _normalizeClass12(["combobox__listbox__option", { "combobox__listbox__option--highlight": $setup.isOptionActive(item) }]),
+                class: _normalizeClass11(["combobox__listbox__option", { "combobox__listbox__option--highlight": $setup.isOptionActive(item) }]),
                 onClick: _withModifiers7(($event) => $setup.onOptionClick(item), ["stop", "prevent"])
               }, _toDisplayString10(item), 11, _hoisted_38);
             }),
@@ -7289,7 +7218,7 @@ var FFieldset_default = defineComponent22({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=template
-import { createCommentVNode as _createCommentVNode22, renderSlot as _renderSlot19, toDisplayString as _toDisplayString12, createElementVNode as _createElementVNode18, openBlock as _openBlock25, createElementBlock as _createElementBlock21, normalizeProps as _normalizeProps2, guardReactiveProps as _guardReactiveProps2, resolveComponent as _resolveComponent11, createVNode as _createVNode10, createTextVNode as _createTextVNode5, normalizeClass as _normalizeClass13, Fragment as _Fragment10 } from "vue";
+import { createCommentVNode as _createCommentVNode22, renderSlot as _renderSlot19, toDisplayString as _toDisplayString12, createElementVNode as _createElementVNode18, openBlock as _openBlock25, createElementBlock as _createElementBlock21, normalizeProps as _normalizeProps2, guardReactiveProps as _guardReactiveProps2, resolveComponent as _resolveComponent11, createVNode as _createVNode10, createTextVNode as _createTextVNode5, normalizeClass as _normalizeClass12, Fragment as _Fragment10 } from "vue";
 var _hoisted_120 = ["id"];
 var _hoisted_213 = {
   key: 0,
@@ -7316,14 +7245,14 @@ function render25(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent11("f-icon");
   return _openBlock25(), _createElementBlock21("fieldset", {
     id: _ctx.id,
-    class: _normalizeClass13(["fieldset", _ctx.classes]),
+    class: _normalizeClass12(["fieldset", _ctx.classes]),
     onValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
   }, [
     (_openBlock25(), _createElementBlock21(
       "legend",
       {
         key: _ctx.legendKey,
-        class: _normalizeClass13(["label", _ctx.legendClass])
+        class: _normalizeClass12(["label", _ctx.legendClass])
       },
       [
         _createCommentVNode22(" @slot Slot for label content. This slot is required. "),
@@ -7383,7 +7312,7 @@ function render25(_ctx, _cache, $props, $setup, $data, $options) {
           "div",
           {
             ref: "tooltipAttachTo",
-            class: _normalizeClass13(["label", _ctx.groupLabelClassTooltip])
+            class: _normalizeClass12(["label", _ctx.groupLabelClassTooltip])
           },
           [
             _createElementVNode18("span", _hoisted_74, [
@@ -7399,7 +7328,7 @@ function render25(_ctx, _cache, $props, $setup, $data, $options) {
           "div",
           {
             key: 0,
-            class: _normalizeClass13(["label", _ctx.groupLabelClass]),
+            class: _normalizeClass12(["label", _ctx.groupLabelClass]),
             "aria-hidden": "true"
           },
           [
@@ -7433,7 +7362,7 @@ function render25(_ctx, _cache, $props, $setup, $data, $options) {
     _createElementVNode18(
       "div",
       {
-        class: _normalizeClass13(_ctx.groupContentClass)
+        class: _normalizeClass12(_ctx.groupContentClass)
       },
       [
         _createCommentVNode22(" @slot Slot for fieldset content. "),
@@ -7645,7 +7574,7 @@ var FCheckboxField_default = defineComponent23({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FCheckboxField/FCheckboxField.vue?type=template
-import { withKeys as _withKeys4, mergeProps as _mergeProps6, createElementVNode as _createElementVNode19, createCommentVNode as _createCommentVNode23, renderSlot as _renderSlot20, openBlock as _openBlock26, createElementBlock as _createElementBlock22, Transition as _Transition2, withCtx as _withCtx10, createBlock as _createBlock13, Fragment as _Fragment11, normalizeClass as _normalizeClass14 } from "vue";
+import { withKeys as _withKeys4, mergeProps as _mergeProps6, createElementVNode as _createElementVNode19, createCommentVNode as _createCommentVNode23, renderSlot as _renderSlot20, openBlock as _openBlock26, createElementBlock as _createElementBlock22, Transition as _Transition2, withCtx as _withCtx10, createBlock as _createBlock13, Fragment as _Fragment11, normalizeClass as _normalizeClass13 } from "vue";
 var _hoisted_121 = ["id", "disabled"];
 var _hoisted_214 = ["for"];
 var _hoisted_311 = {
@@ -7660,7 +7589,7 @@ function render26(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock26(), _createElementBlock22(
     "div",
     {
-      class: _normalizeClass14(["checkbox", _ctx.disabledClass]),
+      class: _normalizeClass13(["checkbox", _ctx.disabledClass]),
       onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
     },
     [
@@ -7673,7 +7602,7 @@ function render26(_ctx, _cache, $props, $setup, $data, $options) {
         onChange: _cache[1] || (_cache[1] = ($event) => _ctx.updateExpandedFlag())
       }), null, 16, _hoisted_121),
       _createElementVNode19("label", {
-        class: _normalizeClass14(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"),
+        class: _normalizeClass13(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"),
         for: _ctx.id
       }, [
         _createCommentVNode23(" @slot Slot for label content. "),
