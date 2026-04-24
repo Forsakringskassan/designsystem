@@ -265,7 +265,7 @@ export default defineComponent({
                 ) as DatasetNestedKeyOf<Row>;
             }
 
-            const rows = useDatasetRef<Row>(this.isEmpty ? [] : this.rows, nestedAttribute).value;
+            const rows = useDatasetRef<Row>(this.isEmpty ? [] : [...this.rows], nestedAttribute);
 
             return {
                 columns: this.hasRowHeader ? this.columnsWithHeader : this.columnsDefault,
