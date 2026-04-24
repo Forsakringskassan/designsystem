@@ -141,7 +141,7 @@ export function setItemIdentifiers<T>(
  * If the target item already has an identifier, it will not be overwritten.
  *
  * @public
- * @since %version%
+ * @since v6.43.1
  * @param from - The item to copy identifier from.
  * @param to - The item to copy identifier to.
  */

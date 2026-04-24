@@ -1,6 +1,6 @@
 {
   "name": "@fkui/fkui-monorepo",
-  "version": "6.43.0",
+  "version": "6.43.1",
   "private": true,
   "description": "fkui monorepo",
   "homepage": "https://designsystem.forsakringskassan.se/",
@@ -80,7 +80,7 @@
     "@forsakringskassan/commitlint-config": "3.3.11",
     "@forsakringskassan/cypress-axe": "4.0.4",
     "@forsakringskassan/cypress-visual-regression": "3.1.0",
-    "@forsakringskassan/docs-generator": "2.41.0",
+    "@forsakringskassan/docs-generator": "2.41.1",
     "@forsakringskassan/docs-live-example": "2.4.2",
     "@forsakringskassan/eslint-config": "14.1.14",
     "@forsakringskassan/eslint-config-cli": "14.1.11",
@@ -94,7 +94,7 @@
     "@forsakringskassan/prettier-config": "3.3.9",
     "@forsakringskassan/sass-module-importer": "2.0.0",
     "@forsakringskassan/stylelint-config": "3.3.9",
-    "@forsakringskassan/vite-lib-config": "4.6.4",
+    "@forsakringskassan/vite-lib-config": "4.6.8",
     "@html-validate/release-scripts": "7.1.19",
     "@types/estree": "1.0.8",
     "@types/jest": "29.5.14",
@@ -128,9 +128,9 @@
     "sass": "1.99.0",
     "typedoc": "0.28.19",
     "typescript": "5.9.3",
-    "vite": "7.3.2",
+    "vite": "8.0.9",
     "vue": "3.5.32",
-    "vue-tsc": "3.2.6"
+    "vue-tsc": "3.2.7"
   },
   "engines": {
     "node": ">= 20.19",

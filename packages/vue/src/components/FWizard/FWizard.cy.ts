@@ -328,3 +328,19 @@ describe("dynamic steps", () => {
             .should("trimmedText", "Steg 3 av 3 TITLE_3 Inaktivt");
     });
 });
+
+describe("Visual", () => {
+    const forcedColorModes = ["none", "dark", "light"] as const;
+
+    for (const mode of forcedColorModes) {
+        it(`should render correct styling for forced color mode '${mode}'`, () => {
+            cy.viewport(600, 600);
+            cy.forcedColors(mode);
+            const { step2 } = mountAndGetPageObjects({
+                openStep: "STEP2",
+            });
+            step2.waitOnOpen();
+            cy.get("#wizard").toMatchScreenshot();
+        });
+    }
+});
