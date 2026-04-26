@@ -98,7 +98,7 @@
     "esbuild": "0.28.0",
     "flush-promises": "1.0.2",
     "glob": "13.0.6",
-    "vite": "8.0.9",
+    "vite": "8.0.10",
     "vue": "3.5.33",
     "vue-router": "4.6.4"
   },
