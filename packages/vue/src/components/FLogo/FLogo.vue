@@ -19,6 +19,7 @@ const props = defineProps({
 });
 </script>
 
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 /* technical debt: `cy.mount()` doesn't work with slots defined with composition API */
 export default defineComponent({

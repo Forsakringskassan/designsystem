@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { type Component, type PropType, defineComponent } from "vue";
 import { ErrorViewData } from "../../types";

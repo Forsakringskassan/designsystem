@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- this is needed to ensure any array is allowed, not only an array of literal unknown */
 type IsArray<T, U> = T extends any[] | undefined ? U : never;
