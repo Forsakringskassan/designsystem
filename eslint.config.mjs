@@ -89,6 +89,10 @@ export default [
         name: "local/stricter-rules/vue",
         files: ["**/*.vue"],
         rules: {
+            "vue/component-api-style": [
+                "error",
+                ["script-setup", "composition"], // "script-setup", "composition", "composition-vue2", or "options"
+            ],
             "vue/no-unsupported-features": [
                 "error",
                 {
