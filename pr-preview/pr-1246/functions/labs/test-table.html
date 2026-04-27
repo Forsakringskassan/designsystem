@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-3a70ec.json"
+            href="../../search-data-7fef2a.json"
             as="fetch"
             crossorigin
-            integrity="sha384-rjrRfuXg9dCSMJWjjp4xdBEFl2efLYClphNR9keRfOtgUqOVbFH6xR0Dx6URIpSK"
+            integrity="sha384-j/qXh/KZU+PCFH4JjwZonxn7xzDTgvN5SfeRDCRKBmqJWAZAM02q+aMn+X3fGOEP"
             id="search-data"
         />
     </head>
@@ -1496,48 +1496,6 @@
         >
             Om FKUI Vue Labs
         </a>
-    </li><li class="expandable ">
-        <details >
-            <summary>Tabell <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
-            
-            
-<ol><li class="link ">
-        <a
-            href="./FTable/"
-            
-            
-            
-            data-path="functions/labs/FTable/"
-            
-        >
-            Tabell
-        </a>
-    </li><li class="link ">
-        <a
-            href="./FTable/contextmenu.html"
-            
-            
-            
-            data-path="functions/labs/FTable/contextmenu.html"
-            
-        >
-            Kontextmeny
-        </a>
-    </li></ol>
-
-            
-        </details>
-    </li><li class="link ">
-        <a
-            href="./code-table.html"
-            
-            
-            
-            data-path="functions/labs/code-table.html"
-            
-        >
-            Kod (tillhör nya tabellkomponenten)
-        </a>
     </li><li class="link ">
         <a
             href="./ftablepageobject.html"
@@ -1854,7 +1812,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-296b78"></div>
+        <div id="example-0ada21"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1880,7 +1838,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-296b78.js"></script>
+        <script type="module" src="./FTableExample-0ada21.js"></script>
     
                 </div>
                 <div>
@@ -1909,8 +1867,7 @@ body {
     <span class="hljs-title class_">FTable</span>,
     defineTableColumns,
     getTableSortableAttributes,
-    removeRow,
-    removeRows,
+    removeDatasetRows,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
@@ -2147,12 +2104,12 @@ interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-title function_">assertRef</span>(tableRef);
 
     tableRef.<span class="hljs-property">value</span>.<span class="hljs-title function_">withTabstopBehaviour</span>(<span class="hljs-string">&quot;row-removal&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-title function_">removeRow</span>(rows.<span class="hljs-property">value</span>, row, <span class="hljs-string">&quot;expandableRows&quot;</span>);
+        <span class="hljs-title function_">removeDatasetRows</span>(rows, row);
     });
 }
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveSelectedRows</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
-    <span class="hljs-title function_">removeRows</span>(rows.<span class="hljs-property">value</span>, mySelectedRows.<span class="hljs-property">value</span>);
+    <span class="hljs-title function_">removeDatasetRows</span>(rows, mySelectedRows);
 }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
@@ -2543,9 +2500,9 @@ interface <span class="hljs-title class_">TableRow</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">remove-row-mutates (<a href="https://github.com/Forsakringskassan/designsystem/commits/b87cec524624dea8f479a6b996802b773932cfb9">b87cec5</a>)<br />
+<div class="footer__right"><div class="version">remove-row-mutates (<a href="https://github.com/Forsakringskassan/designsystem/commits/6988ba67772d51c02076843519de20b08e666c94">6988ba6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1246">PR 1246</a><br />
-        2026-04-27 10:29
+        2026-04-27 12:50
 </div>
 <div class="toolbar__item">
     <form id="version">
