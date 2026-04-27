@@ -3,11 +3,9 @@ title: FTable migreringsguide
 layout: article
 ---
 
-`FDataTable` och `FInteractiveTable` är deprekerade och ersatt med {@link component:FTable}
+`FDataTable` och `FInteractiveTable` är deprekerade och ersätts med {@link component:FTable}
 
-## Snabb överblick
-
-Vid migrering till `FTable` är det här de viktigaste skillnaderna
+**Vid migrering till `FTable` är det här de viktigaste skillnaderna:**
 
 - `FTableColumn` i template ersätts av kolumndefinitioner i `defineTableColumns(...)`
 - Formattering i template ersätts av kolumntyper som till exempel `text:date` och `text:number`
@@ -15,9 +13,9 @@ Vid migrering till `FTable` är det här de viktigaste skillnaderna
 - Expanderbart innehåll sätts upp via `useDatasetRef(...)`
 - Aktiv rad och radklick har ingen direkt motsvarighet i `FTable`
 
-### Kontrollera detta först
+**Om din tabell använder något av följande behöver du läsa vidare extra noggrant:**
 
-Om din tabell använder något av följande behöver du läsa vidare extra noggrant:
+Det här kräver en annan lösning i `FTable`:
 
 - Aktiv rad
 - Radklick
@@ -25,18 +23,15 @@ Om din tabell använder något av följande behöver du läsa vidare extra noggr
 - Komplext innehåll i celler
 - Eget expanderat innehåll
 
-### Snabbguide
+Aktiv rad och radklick har ingen direkt motsvarighet i `FTable`.
 
-- Enkel textkolumn -> `text + key`
-- Datum / nummer -> `formatterade textkolumner`
-- Checkbox i cell -> `checkbox`
-- Radrubrik (row-header) -> `rowheader`
-- Länk i cell -> `anchor`
-- En action i kolumn -> `button`
-- Flera actions i samma cell -> `menu`
-- Expanderbara rader -> `useDatasetRef(..., "expandableRows")`
+Flera actions i samma cell behöver vanligtvis lösas på ett annat sätt, till exempel med `åtgärdsknappar`.
 
-Se respektive avsnitt nedan för exempel.
+Läs mer i dokumentationen om {@link action-button-link åtgärdsknappar och länkar}.
+
+Om tabellen innehåller mer komplext innehåll än vad de inbyggda kolumntyperna stödjer går det inte alltid att migrera rakt av.
+
+Kontakta i första hand teamet för att reda ut om scenariot bör stödjas av `FTable` eller om det är ett rimligt specialfall.
 
 ## Kolumner flyttas från template till konfiguration
 
@@ -93,6 +88,8 @@ Så blir den i `FTable`:
     <template #caption> Tabellrubrik </template>
 </f-table>
 ```
+
+Läs mer i dokumentationen om {@link column-types kolumntyper}.
 
 ## Hur kolumner läser och skriver värden
 
@@ -179,11 +176,11 @@ Om du tidigare använde en numerisk kolumn:
 +}
 ```
 
-[Läs mer om formatterade textkolumner](#) <!-- TODO: ersätt med riktig docs-länk -->
+Läs mer i dokumentationen om {@link column-types kolumntyper}.
 
 ## Editering och validering ligger i kolumnen
 
-I `FTable` definieras redigering och validering i kolumnkonfigurationen
+I `FTable` definieras redigering och validering i kolumnkonfigurationen.
 
 ```ts
 import { defineTableColumns } from "@fkui/vue-labs";
@@ -217,9 +214,11 @@ Det innebär i praktiken:
 - `editable` används för redigerbara textkolumner
 - Validering definieras i kolumnen med `validation`
 
-Objektet i `validation` är av samma typ av objekt som skickas till `v-validation` direktivet.
+Objektet i `validation` är samma typ av objekt som skickas till `v-validation` direktivet.
 
-Läs mer om {@link validators validatorer}.
+Läs mer i dokumentationen om {@link edit att redigera innehåll}.
+
+Läs mer i dokumentationen om {@link validators validatorer}.
 
 ## Expanderbart innehåll
 
@@ -271,13 +270,11 @@ Det datasetet skickas sedan in som `rows` till `FTable`.
 <f-table :rows :columns key-attribute="id"></f-table>
 ```
 
-För vanliga expanderbara rader behövs ingen `#expandable-slot` i `FTable`.
+För vanliga expanderbara rader behövs ingen `#expandable-slot`.
 
-Läs mer om {@link useDatasetRef useDatasetRef}
+Läs mer i dokumentationen om {@link useDatasetRef useDatasetRef}.
 
-[Läs mer om expanderbara rader](#) <!-- TODO: ersätt med riktig docs-länk -->
-
-[Läs mer om valfritt expanderat innehåll](#) <!-- TODO: ersätt med riktig docs-länk -->
+Läs mer i dokumentationen om {@link expand-rows expanderbara rader}.
 
 ### Eget expanderat innehåll
 
@@ -294,7 +291,9 @@ Både `FInteractiveTable` och `FTable` använder slotten `#expandable`, men slot
 +</template>
 ```
 
-[Läs mer om valfritt expanderat innehåll](#) <!-- TODO: ersätt med riktig docs-länk -->
+Läs mer i dokumentationen om {@link useDatasetRef useDatasetRef}.
+
+Läs mer i dokumentationen om {@link expand-rows expanderbara rader}.
 
 ## Valbara rader
 
@@ -357,7 +356,47 @@ Det som ändras är `v-model` för valbara rader.
 - `multi` ger också stöd för att välja alla rader via kolumnrubriken
 - `selectedRows` innehåller de valda raderna
 
-## Textkolumn
+Läs mer i dokumentationen om {@link select-rows valbara rader}.
+
+## Button
+
+```diff
+-<f-table-column title="Åtgärd" type="action" shrink>
+-   <f-table-button icon="trashcan" @click="onRemoveRow(row)">
+-       Ta bort
+-   </f-table-button>
+-</f-table-column>
++{
++    type: "button",
++    header: "Åtgärd",
++    icon: "trashcan",
++    text() {
++        return "Ta bort",
++    },
++    onClick(row) {
++        onRemoveRow(row);
++    },
++}
+```
+
+I `FTable` går det inte längre att ha flera knappar i samma kolumn. Det är ett design och tillgänglighetsval.
+
+Om du tidigare hade flera actions i samma kolumn behöver du istället:
+
+- lägga actions i olika kolumner, eller
+- använda `menu`
+
+Läs mer i dokumentationen om {@link action-button-link åtgärdsknappar och länkar}.
+
+---
+
+::: warning OBS!
+Nedanstående ska bort men ligger kvar som referens för eventuell dokumentations uppdatering.
+:::
+
+<!-- TODO: allt under flyttas eventuellt som exempel till dokumentationen -->
+
+**Textkolumn**
 
 ```diff
 -<f-table-column title="Namn" type="text">
@@ -372,7 +411,7 @@ Det som ändras är `v-model` för valbara rader.
 
 [Läs mer om kolumntypen text](#) <!-- TODO: ersätt med riktig docs-länk -->
 
-## Formatterade textkolumner
+**Formatterade textkolumner**
 
 ```diff
 -<f-table-column title="Skapad" type="text">
@@ -398,7 +437,7 @@ Det som ändras är `v-model` för valbara rader.
 
 [Läs mer om formatterade textkolumner](#) <!-- TODO: ersätt med riktig docs-länk -->
 
-## Checkbox-kolumn
+**Checkbox-kolumn**
 
 ```diff
 -<f-table-column title="Aktiv">
@@ -429,7 +468,7 @@ Det är inte samma sak som valbara rader.
 
 [Läs mer om valbara rader](#) <!-- TODO: ersätt med riktig docs-länk -->
 
-## Rowheader
+**Rowheader**
 
 ```diff
 -<f-table-column title="Namn" :row-header="true">
@@ -446,7 +485,7 @@ Det är inte samma sak som valbara rader.
 
 [Läs mer om kolumntypen rowheader](#) <!-- TODO: ersätt med riktig docs-länk -->
 
-## Anchor
+**Anchor**
 
 ```diff
 -<f-table-column title="Länk" type="text">
@@ -464,37 +503,7 @@ Det är inte samma sak som valbara rader.
 
 [Läs mer om kolumntypen anchor](#) <!-- TODO: ersätt med riktig docs-länk -->
 
-## Button
-
-```diff
--<f-table-column title="Åtgärd" type="action" shrink>
--   <f-table-button icon="trashcan" @click="onRemoveRow(row)">
--       Ta bort
--   </f-table-button>
--</f-table-column>
-+{
-+    type: "button",
-+    header: "Åtgärd",
-+    icon: "trashcan",
-+    text() {
-+        return "Ta bort",
-+    },
-+    onClick(row) {
-+        onRemoveRow(row);
-+    },
-+}
-```
-
-I `FTable` går det inte längre att ha flera knappar i samma kolumn. Det är ett design och tillgänglighetsval.
-
-Om du tidigare hade flera actions i samma kolumn behöver du istället:
-
-- lägga actions i olika kolumner, eller
-- använda `menu`
-
-[Läs mer om kolumntypen button](#) <!-- TODO: ersätt med riktig docs-länk -->
-
-## Menu
+**Menu**
 
 ```ts
 import { defineTableColumns } from "@fkui/vue-labs";
@@ -541,7 +550,7 @@ const columns = defineTableColumns<Row>([
 
 [Läs mer om kolumntypen menu](#) <!-- TODO: ersätt med riktig docs-länk -->
 
-## Select
+**Select**
 
 ```ts
 import { defineTableColumns } from "@fkui/vue-labs";
@@ -564,11 +573,13 @@ const columns = defineTableColumns<Row>([
 ]);
 ```
 
+::: info Tänk på att
 Om alternativen laddas asynkront kan `columns` behöva byggas med `computed(...)` så att `options` uppdateras när datat har laddat klart. Annars kan selecten renderas innan alternativen finns tillgängliga, vilket gör att det valda värdet inte visas som förväntat.
+:::
 
 [Läs mer om kolumntypen select](#) <!-- TODO: ersätt med riktig docs-länk -->
 
-## Anpassade celler
+**Anpassade celler**
 
 Om tabellen innehåller mer komplext innehåll än vad de inbyggda kolumntyperna stödjer går det inte alltid att migrera rakt av.
 
