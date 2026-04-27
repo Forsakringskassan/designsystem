@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-63a24d.json"
+            href="../../search-data-5c384d.json"
             as="fetch"
             crossorigin
-            integrity="sha384-AVINhlNBBRJbhXbqAn7HLW0p3SabPnp524NhBqvcDuXUGV2RkWIL0QJlRnHRZ5I5"
+            integrity="sha384-JcwNTjhCvHsvW2zjQHwbDxobbkdbJPJgcyg0Xf3n688VGA5JgObs2x25TFJIC466"
             id="search-data"
         />
     </head>
@@ -780,7 +780,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <h2 id="formattering_flyttas_in_i_kolumntypen" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#formattering_flyttas_in_i_kolumntypen">Formattering flyttas in i kolumntypen</a></h2><p class="docs-paragraph">Om du tidigare definierade datum i template:</p>
 
                 <div
-                    id="example-b7db35"
+                    id="example-36c6fd"
                     class="code-preview code-preview--default"
                     
                     
@@ -790,17 +790,17 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Skapad&quot; type=&quot;text&quot;&gt;</span>
 <span class="hljs-deletion">-    &lt;span v-format:date=&quot;row.createdAt&quot;&gt;&lt;/span&gt;</span>
 <span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-{
-    type: &quot;text:date&quot;,
-    header: &quot;Skapad&quot;,
-    key: &quot;createdAt&quot;,
-}
+<span class="hljs-addition">+{</span>
+<span class="hljs-addition">+    type: &quot;text:date&quot;,</span>
+<span class="hljs-addition">+    header: &quot;Skapad&quot;,</span>
+<span class="hljs-addition">+    key: &quot;createdAt&quot;,</span>
+<span class="hljs-addition">+}</span>
 </code></pre>
                 </div>
             <p class="docs-paragraph">Om du tidigare använde en numerisk kolumn:</p>
 
                 <div
-                    id="example-397090"
+                    id="example-d8fac8"
                     class="code-preview code-preview--default"
                     
                     
@@ -810,11 +810,11 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Antal&quot; type=&quot;numeric&quot;&gt;</span>
 <span class="hljs-deletion">-   {{ row.amount }}</span>
 <span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-{
-    type: &quot;text:number&quot;,
-    header: &quot;Antal&quot;,
-    key: &quot;amount&quot;,
-}
+<span class="hljs-addition">+{</span>
+<span class="hljs-addition">+    type: &quot;text:number&quot;,</span>
+<span class="hljs-addition">+    header: &quot;Antal&quot;,</span>
+<span class="hljs-addition">+    key: &quot;amount&quot;,</span>
+<span class="hljs-addition">+}</span>
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om formatterade textkolumner</a> <!-- TODO: ersätt med riktig docs-länk --></p>
@@ -919,7 +919,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <p class="docs-paragraph">Både <code>FInteractiveTable</code> och <code>FTable</code> använder slotten <code>#expandable</code>, men slot-parametern byter namn vid migrering:</p>
 
                 <div
-                    id="example-088352"
+                    id="example-0e2fb2"
                     class="code-preview code-preview--default"
                     
                     
@@ -929,9 +929,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;template #expandable=&quot;{ expandableRow }&quot;&gt;</span>
 <span class="hljs-deletion">-   {{ expandableRow.content }}</span>
 <span class="hljs-deletion">-&lt;/template&gt;</span>
-&lt;template #expandable=&quot;{ row }&quot;&gt;
-    {{ row.content }}
-&lt;/template&gt;
+<span class="hljs-addition">+&lt;template #expandable=&quot;{ row }&quot;&gt;</span>
+<span class="hljs-addition">+    {{ row.content }}</span>
+<span class="hljs-addition">+&lt;/template&gt;</span>
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om valfritt expanderat innehåll</a> <!-- TODO: ersätt med riktig docs-länk --></p>
@@ -943,7 +943,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <p class="docs-paragraph">Det som ändras är <code>v-model</code> för valbara rader.</p>
 
                 <div
-                    id="example-c6e1ef"
+                    id="example-a37faa"
                     class="code-preview code-preview--default"
                     
                     
@@ -951,12 +951,12 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table v-model=&quot;selectedRows&quot;&gt;</span>
-&lt;f-table v-model:selected-rows=&quot;selectedRows&quot;&gt;
+<span class="hljs-addition">+&lt;f-table v-model:selected-rows=&quot;selectedRows&quot;&gt;</span>
 </code></pre>
                 </div>
             <h3 id="enkelval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#enkelval">Enkelval</a></h3>
                 <div
-                    id="example-9fcbfd"
+                    id="example-32cce9"
                     class="code-preview code-preview--default"
                     
                     
@@ -974,17 +974,17 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <span class="hljs-deletion">-       &lt;/f-table-column&gt;</span>
 <span class="hljs-deletion">-   &lt;/template&gt;</span>
 <span class="hljs-deletion">-&lt;/f-interactive-table&gt;</span>
-&lt;f-table
-    v-model:selected-rows=&quot;selectedRows&quot;
-    :columns
-    :rows
-    selectable=&quot;single&quot;
-/&gt;
+<span class="hljs-addition">+&lt;f-table</span>
+<span class="hljs-addition">+    v-model:selected-rows=&quot;selectedRows&quot;</span>
+<span class="hljs-addition">+    :columns</span>
+<span class="hljs-addition">+    :rows</span>
+<span class="hljs-addition">+    selectable=&quot;single&quot;</span>
+<span class="hljs-addition">+/&gt;</span>
 </code></pre>
                 </div>
             <h3 id="flerval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#flerval">Flerval</a></h3>
                 <div
-                    id="example-1c334d"
+                    id="example-facd78"
                     class="code-preview code-preview--default"
                     
                     
@@ -1002,12 +1002,12 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <span class="hljs-deletion">-       &lt;/f-table-column&gt;</span>
 <span class="hljs-deletion">-   &lt;/template&gt;</span>
 <span class="hljs-deletion">-&lt;/f-interactive-table&gt;</span>
-&lt;f-table
-    v-model:selected-rows=&quot;selectedRows&quot;
-    :columns
-    :rows
-    selectable=&quot;multi&quot;
-/&gt;
+<span class="hljs-addition">+&lt;f-table</span>
+<span class="hljs-addition">+    v-model:selected-rows=&quot;selectedRows&quot;</span>
+<span class="hljs-addition">+    :columns</span>
+<span class="hljs-addition">+    :rows</span>
+<span class="hljs-addition">+    selectable=&quot;multi&quot;</span>
+<span class="hljs-addition">+/&gt;</span>
 </code></pre>
                 </div>
             <ul>
@@ -1016,7 +1016,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 </ul>
 <h2 id="textkolumn" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#textkolumn">Textkolumn</a></h2>
                 <div
-                    id="example-83e868"
+                    id="example-33bf41"
                     class="code-preview code-preview--default"
                     
                     
@@ -1026,17 +1026,17 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
 <span class="hljs-deletion">-    {{ row.name }}</span>
 <span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-{
-    type: &quot;text&quot;,
-    header: &quot;Namn&quot;,
-    key: &quot;name&quot;,
-}
+<span class="hljs-addition">+{</span>
+<span class="hljs-addition">+    type: &quot;text&quot;,</span>
+<span class="hljs-addition">+    header: &quot;Namn&quot;,</span>
+<span class="hljs-addition">+    key: &quot;name&quot;,</span>
+<span class="hljs-addition">+}</span>
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen text</a> <!-- TODO: ersätt med riktig docs-länk --></p>
 <h2 id="formatterade_textkolumner" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#formatterade_textkolumner">Formatterade textkolumner</a></h2>
                 <div
-                    id="example-84681d"
+                    id="example-fdca53"
                     class="code-preview code-preview--default"
                     
                     
@@ -1046,16 +1046,16 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Skapad&quot; type=&quot;text&quot;&gt;</span>
 <span class="hljs-deletion">-   &lt;span v-format:date=&quot;row.createdAt&quot;&gt;&lt;/span&gt;</span>
 <span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-{
-    type: &quot;text:date&quot;,
-    header: &quot;Skapad&quot;,
-    key: &quot;createdAt&quot;,
-}
+<span class="hljs-addition">+{</span>
+<span class="hljs-addition">+    type: &quot;text:date&quot;,</span>
+<span class="hljs-addition">+    header: &quot;Skapad&quot;,</span>
+<span class="hljs-addition">+    key: &quot;createdAt&quot;,</span>
+<span class="hljs-addition">+}</span>
 </code></pre>
                 </div>
             
                 <div
-                    id="example-b2335f"
+                    id="example-617ec2"
                     class="code-preview code-preview--default"
                     
                     
@@ -1065,17 +1065,17 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Antal&quot; type=&quot;numeric&quot;&gt;</span>
 <span class="hljs-deletion">-   {{ row.amount }}</span>
 <span class="hljs-deletion">-&lt;f-table-column&gt;</span>
-{
-    type: &quot;text:number&quot;,
-    header: &quot;Antal&quot;
-    key: &quot;amount&quot;,
-}
+<span class="hljs-addition">+{</span>
+<span class="hljs-addition">+    type: &quot;text:number&quot;,</span>
+<span class="hljs-addition">+    header: &quot;Antal&quot;</span>
+<span class="hljs-addition">+    key: &quot;amount&quot;,</span>
+<span class="hljs-addition">+}</span>
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om formatterade textkolumner</a> <!-- TODO: ersätt med riktig docs-länk --></p>
 <h2 id="checkbox_kolumn" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#checkbox_kolumn">Checkbox-kolumn</a></h2>
                 <div
-                    id="example-63e09f"
+                    id="example-e15b3e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1088,14 +1088,14 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <span class="hljs-deletion">-       @update:model-value=&quot;row.active = $event&quot;</span>
 <span class="hljs-deletion">-   &lt;/f-checkbox-field&gt;</span>
 <span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-{
-    type: &quot;checkbox&quot;,
-    header: &quot;Aktiv&quot;,
-    key: &quot;active&quot;,
-    label(row) {
-            return `Val för rad ${row.id}`;
-        },
-}
+<span class="hljs-addition">+{</span>
+<span class="hljs-addition">+    type: &quot;checkbox&quot;,</span>
+<span class="hljs-addition">+    header: &quot;Aktiv&quot;,</span>
+<span class="hljs-addition">+    key: &quot;active&quot;,</span>
+<span class="hljs-addition">+    label(row) {</span>
+<span class="hljs-addition">+            return `Val för rad ${row.id}`;</span>
+<span class="hljs-addition">+        },</span>
+<span class="hljs-addition">+}</span>
 </code></pre>
                 </div>
             
@@ -1109,7 +1109,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <p class="docs-paragraph"><a href="#">Läs mer om valbara rader</a> <!-- TODO: ersätt med riktig docs-länk --></p>
 <h2 id="rowheader" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#rowheader">Rowheader</a></h2>
                 <div
-                    id="example-7acaa5"
+                    id="example-cd6a66"
                     class="code-preview code-preview--default"
                     
                     
@@ -1119,19 +1119,19 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Namn&quot; :row-header=&quot;true&quot;&gt;</span>
 <span class="hljs-deletion">-   {{ row.name }}</span>
 <span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-{
-    type: &quot;rowheader&quot;,
-    header: &quot;Namn&quot;,
-    text(row) {
-        return row.name;
-    },
-}
+<span class="hljs-addition">+{</span>
+<span class="hljs-addition">+    type: &quot;rowheader&quot;,</span>
+<span class="hljs-addition">+    header: &quot;Namn&quot;,</span>
+<span class="hljs-addition">+    text(row) {</span>
+<span class="hljs-addition">+        return row.name;</span>
+<span class="hljs-addition">+    },</span>
+<span class="hljs-addition">+}</span>
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen rowheader</a> <!-- TODO: ersätt med riktig docs-länk --></p>
 <h2 id="anchor" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anchor">Anchor</a></h2>
                 <div
-                    id="example-10bf1c"
+                    id="example-b6f8c7"
                     class="code-preview code-preview--default"
                     
                     
@@ -1141,20 +1141,20 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Länk&quot; type=&quot;text&quot;&gt;</span>
 <span class="hljs-deletion">-   &lt;a :href=&quot;row.href&quot;&gt;Öppna&lt;/a&gt;</span>
 <span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-{
-    type: &quot;anchor&quot;,
-    header: &quot;Länk&quot;,
-    href: &quot;#&quot;,
-    text() {
-        return &quot;Öppna&quot;;
-    },
-}
+<span class="hljs-addition">+{</span>
+<span class="hljs-addition">+    type: &quot;anchor&quot;,</span>
+<span class="hljs-addition">+    header: &quot;Länk&quot;,</span>
+<span class="hljs-addition">+    href: &quot;#&quot;,</span>
+<span class="hljs-addition">+    text() {</span>
+<span class="hljs-addition">+        return &quot;Öppna&quot;;</span>
+<span class="hljs-addition">+    },</span>
+<span class="hljs-addition">+}</span>
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen anchor</a> <!-- TODO: ersätt med riktig docs-länk --></p>
 <h2 id="button" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#button">Button</a></h2>
                 <div
-                    id="example-4f8b2e"
+                    id="example-b527f6"
                     class="code-preview code-preview--default"
                     
                     
@@ -1166,17 +1166,17 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <span class="hljs-deletion">-       Ta bort</span>
 <span class="hljs-deletion">-   &lt;/f-table-button&gt;</span>
 <span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-{
-    type: &quot;button&quot;,
-    header: &quot;Åtgärd&quot;,
-    icon: &quot;trashcan&quot;,
-    text() {
-        return &quot;Ta bort&quot;,
-    },
-    onClick(row) {
-        onRemoveRow(row);
-    },
-}
+<span class="hljs-addition">+{</span>
+<span class="hljs-addition">+    type: &quot;button&quot;,</span>
+<span class="hljs-addition">+    header: &quot;Åtgärd&quot;,</span>
+<span class="hljs-addition">+    icon: &quot;trashcan&quot;,</span>
+<span class="hljs-addition">+    text() {</span>
+<span class="hljs-addition">+        return &quot;Ta bort&quot;,</span>
+<span class="hljs-addition">+    },</span>
+<span class="hljs-addition">+    onClick(row) {</span>
+<span class="hljs-addition">+        onRemoveRow(row);</span>
+<span class="hljs-addition">+    },</span>
+<span class="hljs-addition">+}</span>
 </code></pre>
                 </div>
             <p class="docs-paragraph">I <code>FTable</code> går det inte längre att ha flera knappar i samma kolumn. Det är ett design och tillgänglighetsval.</p>
@@ -1320,9 +1320,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/e6fcd5ee4dd950788d354e460510218ed2030954">e6fcd5e</a>)<br />
+<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/8329d504fb13a8489298037e617b4dd5eeed3f69">8329d50</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1241">PR 1241</a><br />
-        2026-04-27 08:35
+        2026-04-27 08:45
 </div>
 <div class="toolbar__item">
     <form id="version">
