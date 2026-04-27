@@ -93,7 +93,7 @@
     "@fkui/test-utils": "6.43.0",
     "@fkui/theme-default": "6.43.1",
     "@forsakringskassan/vite-lib-config": "4.6.9",
-    "@vue/test-utils": "2.4.6",
+    "@vue/test-utils": "2.4.8",
     "cypress": "15.14.1",
     "esbuild": "0.28.0",
     "flush-promises": "1.0.2",
