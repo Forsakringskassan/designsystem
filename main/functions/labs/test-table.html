@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-dc1862.json"
+            href="../../search-data-5354ac.json"
             as="fetch"
             crossorigin
-            integrity="sha384-8Hb4I7vQEIz3jp3jojGsbgisqtN5mCt5MAjPrvMh/KNQZ+bRJxccGhcmQmz/352L"
+            integrity="sha384-yGCr6/s+pwFQApmiLXi+RkyegTr71TJk4izjqQww1YVPBJfZFXM1DFWT5K4kFKpg"
             id="search-data"
         />
     </head>
@@ -1812,7 +1812,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-103e46"></div>
+        <div id="example-0ada21"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1838,7 +1838,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-103e46.js"></script>
+        <script type="module" src="./FTableExample-0ada21.js"></script>
     
                 </div>
                 <div>
@@ -1864,11 +1864,10 @@ body {
 <span class="hljs-keyword">import</span> { assertRef, formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FSortFilterDataset</span>, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
-    type <span class="hljs-title class_">TableColumn</span>,
     <span class="hljs-title class_">FTable</span>,
     defineTableColumns,
     getTableSortableAttributes,
-    removeRow,
+    removeDatasetRows,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
@@ -2105,12 +2104,12 @@ interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-title function_">assertRef</span>(tableRef);
 
     tableRef.<span class="hljs-property">value</span>.<span class="hljs-title function_">withTabstopBehaviour</span>(<span class="hljs-string">&quot;row-removal&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-        rows.<span class="hljs-property">value</span> = <span class="hljs-title function_">removeRow</span>(rows.<span class="hljs-property">value</span>, row, <span class="hljs-string">&quot;expandableRows&quot;</span>);
+        <span class="hljs-title function_">removeDatasetRows</span>(rows, row);
     });
 }
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveSelectedRows</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
-    rows.<span class="hljs-property">value</span> = rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> !mySelectedRows.<span class="hljs-property">value</span>.<span class="hljs-title function_">includes</span>(row));
+    <span class="hljs-title function_">removeDatasetRows</span>(rows, mySelectedRows);
 }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
@@ -2181,13 +2180,13 @@ interface <span class="hljs-title class_">Row</span> {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-19ed30"></div>
+        <div id="example-a53456"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableInputFieldsExample-19ed30.js"></script>
+        <script type="module" src="./FTableInputFieldsExample-a53456.js"></script>
     
                 </div>
                 <div>
@@ -2501,9 +2500,9 @@ interface <span class="hljs-title class_">TableRow</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/99153666ec12de30b618b108282d1817606f91c0">9915366</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/1c6e95f95e99f5f7e4949dc56ad0ec51cb509b60">1c6e95f</a>)<br />
         
-        2026-04-27 12:19
+        2026-04-27 13:07
 </div>
 <div class="toolbar__item">
     <form id="version">
