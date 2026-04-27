@@ -4,6 +4,10 @@ import { type Dataset, toDataset } from "../../utils";
 import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
 import { paginateDatasetKey } from "./provide";
 
+const currentPage = defineModel<number>({
+    default: 1,
+});
+
 // Defines component props
 const {
     items = [] as unknown as TInfered,
@@ -11,6 +15,11 @@ const {
     itemsLength = 0,
     fetchData = () => null,
 } = defineProps<{
+    /**
+     * Current visible page (1-indexed)
+     */
+    /* eslint-disable-next-line vue/require-default-prop -- technical debt, this is only present to appease docs-generator which does not yet recognize `defineModel()` */
+    modelValue?: number;
     /**
      * The items to be used. The items will be used in the given array order.
      */
@@ -37,6 +46,10 @@ const {
     fetchData?(firstItemIndex: number, lastItemIndex: number): TInfered | Promise<TInfered>;
 }>();
 
+defineEmits<{
+    "update:modelValue": [page: number];
+}>();
+
 type TInfered = TArray extends Dataset<infer U> ? Dataset<U> : TArray;
 
 // References fetched data
@@ -44,9 +57,6 @@ const fetchedData = ref(null as TInfered | null) as Ref<TInfered | null>;
 
 // References status of ongoing data fetching
 const dataFetchingInProgress = ref(false);
-
-// References index of page currently showing
-const currentPage = ref(1);
 
 // Computes index for first and last item on current page
 const firstItemIndex = computed(() => Math.max(0, itemsPerPage * (currentPage.value - 1)));
