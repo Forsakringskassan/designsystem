@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FErrorList } from "@fkui/vue";
@@ -12,5 +13,5 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-error-list :items :bullets="true"></f-error-list>
+    <f-error-list :items></f-error-list>
 </template>

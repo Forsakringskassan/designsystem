@@ -44,7 +44,7 @@ const rows: Row[] = [
                     <f-table-column title="C"> {{ row.c }} </f-table-column>
                 </template>
             </f-interactive-table>
-            <f-paginator v-test="'myPaginator'" :current-page :number-of-pages />
+            <f-paginator :current-page :number-of-pages />
         </template>
     </f-paginate-dataset>
     <!-- cut below -->

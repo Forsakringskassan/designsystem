@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent, h } from "vue";
 import { FDate } from "@fkui/date";
@@ -328,7 +329,7 @@ export default defineComponent({
             return ["anchor", "button"].includes(this.columnType);
         },
         editableSupport(): boolean {
-            return ["select", "text"].includes(this.columnType);
+            return this.columnType === "text";
         },
         normalizedKey(): TableColumnType {
             return this.columnType === "text" ? this.textType : this.columnType;

@@ -22,12 +22,7 @@ async function fetchData(first: number, last: number) {
                     </f-table-column>
                 </template>
             </f-data-table>
-            <f-paginator
-                v-test="'myPaginator'"
-                :current-page
-                :number-of-pages
-                :number-of-pages-to-show="9"
-            />
+            <f-paginator :current-page :number-of-pages :number-of-pages-to-show="9" />
         </template>
     </f-paginate-dataset>
 </template>

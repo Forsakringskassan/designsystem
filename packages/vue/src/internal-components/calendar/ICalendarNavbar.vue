@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { type PropType, capitalize, defineComponent } from "vue";
 import { type FDate } from "@fkui/date";

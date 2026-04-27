@@ -26,12 +26,12 @@
     "@fkui/theme-default": "6.43.1",
     "@fkui/vue": "6.43.1",
     "@fkui/vue-labs": "6.43.1",
-    "vue": "3.5.32",
+    "vue": "3.5.33",
     "vue-router": "4.6.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "6.0.6",
-    "vite": "8.0.8"
+    "vite": "8.0.10"
   },
   "engines": {
     "node": ">= 20",

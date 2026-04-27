@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { FSelectField, useDatasetRef } from "@fkui/vue";
+import { type DatasetNestedKeyOf, FSelectField, useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 const selectedValue = ref("");
@@ -26,8 +26,8 @@ interface ExpandableContent {
 }
 
 type ExpandableTabstopRow = TabstopRow & {
-    expandableRows?: TabstopRow[];
     expandableContent?: ExpandableContent[];
+    expandableRows?: TabstopRow[];
 };
 
 const sourceRows: ExpandableTabstopRow[] = [
@@ -98,7 +98,7 @@ const sourceRows: ExpandableTabstopRow[] = [
 ];
 
 const withoutExpandableRows = useDatasetRef<ExpandableTabstopRow>(
-    sourceRows.map(({ expandableRows, ...attrs }) => ({
+    sourceRows.map(({ expandableRows, expandableContent, ...attrs }) => ({
         ...attrs,
     })),
 );
@@ -110,9 +110,22 @@ const withExpandableRows = useDatasetRef<ExpandableTabstopRow>(
     "expandableRows",
 );
 
-const rows = computed(() =>
-    expandableAttr.value === "expandableRows" ? withExpandableRows.value : withoutExpandableRows.value,
+const withExpandableContent = useDatasetRef<ExpandableTabstopRow>(
+    sourceRows.map(({ expandableRows, ...attrs }) => ({
+        ...attrs,
+    })),
+    "expandableContent" as DatasetNestedKeyOf<ExpandableTabstopRow>,
 );
+
+const rows = computed(() => {
+    if (expandableAttr.value === "expandableRows") {
+        return withExpandableRows.value;
+    }
+    if (expandableAttr.value === "expandableContent") {
+        return withExpandableContent.value;
+    }
+    return withoutExpandableRows.value;
+});
 
 const columns = defineTableColumns<ExpandableTabstopRow>([
     {
@@ -136,16 +149,7 @@ const columns = defineTableColumns<ExpandableTabstopRow>([
         <option value="table">Tabellrad</option>
     </f-select-field>
 
-    <f-table
-        ref="table"
-        :key="expandableAttr"
-        :rows
-        :columns
-        key-attribute="id"
-        striped
-        selectable="multi"
-        :expandable-attribute="expandableAttr"
-    >
+    <f-table ref="table" :key="expandableAttr" :rows :columns key-attribute="id" striped selectable="multi">
         <template #caption>Tabell</template>
         <template v-if="selectedValue === 'content'" #expandable="{ row }">{{ (row as any).content }}</template>
         <template #footer>Footer</template>

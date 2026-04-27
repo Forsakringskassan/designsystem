@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
 import { ElementIdService, ValidationService, focus } from "@fkui/logic";
@@ -58,15 +59,6 @@ export default defineComponent({
          * Include the error list component.
          */
         useErrorList: {
-            type: Boolean,
-            required: false,
-            /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
-            default: true,
-        },
-        /**
-         * Display bullets in the error list component.
-         */
-        errorListBullets: {
             type: Boolean,
             required: false,
             /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
@@ -165,7 +157,7 @@ export default defineComponent({
         <!-- [html-validate-disable-next wcag/h32 -- submit button is slotted] -->
         <form :id v-bind="$attrs" novalidate autocomplete="off" @submit.prevent="onSubmit">
             <nav v-if="displayErrors" ref="errors" tabindex="-1" role="group">
-                <f-error-list :items="errors" :bullets="errorListBullets" :before-navigate="errorListBeforeNavigate">
+                <f-error-list :items="errors" :before-navigate="errorListBeforeNavigate">
                     <template #title>
                         <!--
                             @slot **optional** Slot for displaying error description.

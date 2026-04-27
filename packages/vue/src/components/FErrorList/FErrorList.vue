@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
@@ -25,13 +26,6 @@ export default defineComponent({
             required: true,
         },
         /**
-         * Display bullets in list.
-         */
-        bullets: {
-            type: Boolean,
-            required: false,
-        },
-        /**
          * Optional callback for performing actions before navigation.
          */
         beforeNavigate: {
@@ -48,14 +42,6 @@ export default defineComponent({
         },
     },
     methods: {
-        liClasses(errorItem: ErrorItem): string[] {
-            const classes = [];
-            if (!this.bullets && errorItem.id) {
-                classes.push("error-list__link");
-            }
-
-            return classes;
-        },
         async onClickItem(item: ErrorItem) {
             await this.beforeNavigate(item);
             focusError(item);
@@ -78,20 +64,14 @@ export default defineComponent({
                     <slot name="title"></slot>
                 </div>
                 <ul class="error-list__list error-list--list-style-none">
-                    <li v-for="item in items" :key="item.id" :class="liClasses(item)">
+                    <li v-for="item in items" :key="item.id">
                         <a v-if="item.id" href="javascript:" @click.prevent="onClickItem(item)">
-                            <template v-if="bullets">
-                                <span class="error-list__bullet" aria-hidden="true"></span>
-                                <span class="error-list__link">{{ item.title }}</span>
-                            </template>
-                            <template v-else>{{ item.title }}</template>
+                            <span class="error-list__bullet" aria-hidden="true"></span>
+                            <span class="error-list__link">{{ item.title }}</span>
                         </a>
                         <template v-else>
-                            <template v-if="bullets">
-                                <span class="error-list__bullet" aria-hidden="true"></span>
-                                <span>{{ item.title }}</span>
-                            </template>
-                            <template v-else>{{ item.title }}</template>
+                            <span class="error-list__bullet" aria-hidden="true"></span>
+                            <span>{{ item.title }}</span>
                         </template>
                     </li>
                 </ul>

@@ -3,11 +3,10 @@ import { h, ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
 import { FButton, FSortFilterDataset, useDatasetRef } from "@fkui/vue";
 import {
-    type TableColumn,
     FTable,
     defineTableColumns,
     getTableSortableAttributes,
-    removeRow,
+    removeDatasetRows,
 } from "@fkui/vue-labs";
 
 const tableRef = useTemplateRef("table");
@@ -100,7 +99,6 @@ const columns = defineTableColumns<Row>([
         key: "animal",
         label: (row) => `Djur för rad ${row.id}`,
         options: selectFieldOptions,
-        editable: true,
     },
     {
         header: "Render function",
@@ -225,15 +223,19 @@ const rows = useDatasetRef<Row>(
 
 const sortableAttributes = getTableSortableAttributes(columns);
 const mySelectedRows = ref([rows.value[0]]);
+const nextId = ref(4);
 
 function onAddRow(): void {
+    const id: number = nextId.value;
+    nextId.value += 1;
+
     rows.value.push({
-        id: String(rows.value.length + 1),
+        id: String(id),
         animal: "Katt",
         level: "Föräldrapenning",
         start: "2022-04-11",
         end: "2022-04-20",
-        antal: "10000",
+        antal: String(10000 + id),
         aktiv: false,
     });
 }
@@ -242,12 +244,12 @@ function onRemoveRow(row: Row): void {
     assertRef(tableRef);
 
     tableRef.value.withTabstopBehaviour("row-removal", () => {
-        rows.value = removeRow(rows.value, row, "expandableRows");
+        removeDatasetRows(rows, row);
     });
 }
 
 function onRemoveSelectedRows(): void {
-    rows.value = rows.value.filter((row) => !mySelectedRows.value.includes(row));
+    removeDatasetRows(rows, mySelectedRows);
 }
 </script>
 

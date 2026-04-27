@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FButton, FProgressbar } from "@fkui/vue";
@@ -33,11 +34,18 @@ export default defineComponent({
         <pre
             class="debug-data"
         ><span class="sr-only">Debug-data: </span>value: {{currentProgress}}</pre>
-        <f-button data-test="increase" @click="increase()">Increase</f-button>
-        <f-button data-test="decrease" @click="decrease()">Decrease</f-button>
-        <label>
-            Progress:
-            <input v-model.number="currentProgress" type="number" />
-        </label>
+
+        <div class="button-group">
+            <f-button class="button-group__item" data-test="increase" @click="increase()">
+                Increase
+            </f-button>
+            <f-button class="button-group__item" data-test="decrease" @click="decrease()">
+                Decrease
+            </f-button>
+            <label>
+                Progress:
+                <input v-model.number="currentProgress" type="number" />
+            </label>
+        </div>
     </div>
 </template>
