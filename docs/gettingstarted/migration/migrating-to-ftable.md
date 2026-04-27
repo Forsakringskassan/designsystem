@@ -159,11 +159,11 @@ Om du tidigare definierade datum i template:
 -<f-table-column title="Skapad" type="text">
 -    <span v-format:date="row.createdAt"></span>
 -</f-table-column>
-{
-    type: "text:date",
-    header: "Skapad",
-    key: "createdAt",
-}
++{
++    type: "text:date",
++    header: "Skapad",
++    key: "createdAt",
++}
 ```
 
 Om du tidigare använde en numerisk kolumn:
@@ -172,11 +172,11 @@ Om du tidigare använde en numerisk kolumn:
 -<f-table-column title="Antal" type="numeric">
 -   {{ row.amount }}
 -</f-table-column>
-{
-    type: "text:number",
-    header: "Antal",
-    key: "amount",
-}
++{
++    type: "text:number",
++    header: "Antal",
++    key: "amount",
++}
 ```
 
 [Läs mer om formatterade textkolumner](#) <!-- TODO: ersätt med riktig docs-länk -->
@@ -289,9 +289,9 @@ Både `FInteractiveTable` och `FTable` använder slotten `#expandable`, men slot
 -<template #expandable="{ expandableRow }">
 -   {{ expandableRow.content }}
 -</template>
-<template #expandable="{ row }">
-    {{ row.content }}
-</template>
++<template #expandable="{ row }">
++    {{ row.content }}
++</template>
 ```
 
 [Läs mer om valfritt expanderat innehåll](#) <!-- TODO: ersätt med riktig docs-länk -->
@@ -307,7 +307,7 @@ Det som ändras är `v-model` för valbara rader.
 
 ```diff
 -<f-interactive-table v-model="selectedRows">
-<f-table v-model:selected-rows="selectedRows">
++<f-table v-model:selected-rows="selectedRows">
 ```
 
 ### Enkelval
@@ -324,12 +324,12 @@ Det som ändras är `v-model` för valbara rader.
 -       </f-table-column>
 -   </template>
 -</f-interactive-table>
-<f-table
-    v-model:selected-rows="selectedRows"
-    :columns
-    :rows
-    selectable="single"
-/>
++<f-table
++    v-model:selected-rows="selectedRows"
++    :columns
++    :rows
++    selectable="single"
++/>
 ```
 
 ### Flerval
@@ -346,12 +346,12 @@ Det som ändras är `v-model` för valbara rader.
 -       </f-table-column>
 -   </template>
 -</f-interactive-table>
-<f-table
-    v-model:selected-rows="selectedRows"
-    :columns
-    :rows
-    selectable="multi"
-/>
++<f-table
++    v-model:selected-rows="selectedRows"
++    :columns
++    :rows
++    selectable="multi"
++/>
 ```
 
 - `multi` ger också stöd för att välja alla rader via kolumnrubriken
@@ -363,11 +363,11 @@ Det som ändras är `v-model` för valbara rader.
 -<f-table-column title="Namn" type="text">
 -    {{ row.name }}
 -</f-table-column>
-{
-    type: "text",
-    header: "Namn",
-    key: "name",
-}
++{
++    type: "text",
++    header: "Namn",
++    key: "name",
++}
 ```
 
 [Läs mer om kolumntypen text](#) <!-- TODO: ersätt med riktig docs-länk -->
@@ -378,22 +378,22 @@ Det som ändras är `v-model` för valbara rader.
 -<f-table-column title="Skapad" type="text">
 -   <span v-format:date="row.createdAt"></span>
 -</f-table-column>
-{
-    type: "text:date",
-    header: "Skapad",
-    key: "createdAt",
-}
++{
++    type: "text:date",
++    header: "Skapad",
++    key: "createdAt",
++}
 ```
 
 ```diff
 -<f-table-column title="Antal" type="numeric">
 -   {{ row.amount }}
 -<f-table-column>
-{
-    type: "text:number",
-    header: "Antal"
-    key: "amount",
-}
++{
++    type: "text:number",
++    header: "Antal"
++    key: "amount",
++}
 ```
 
 [Läs mer om formatterade textkolumner](#) <!-- TODO: ersätt med riktig docs-länk -->
@@ -407,14 +407,14 @@ Det som ändras är `v-model` för valbara rader.
 -       @update:model-value="row.active = $event"
 -   </f-checkbox-field>
 -</f-table-column>
-{
-    type: "checkbox",
-    header: "Aktiv",
-    key: "active",
-    label(row) {
-            return `Val för rad ${row.id}`;
-        },
-}
++{
++    type: "checkbox",
++    header: "Aktiv",
++    key: "active",
++    label(row) {
++            return `Val för rad ${row.id}`;
++        },
++}
 ```
 
 ::: info Tänk på att
@@ -435,13 +435,13 @@ Det är inte samma sak som valbara rader.
 -<f-table-column title="Namn" :row-header="true">
 -   {{ row.name }}
 -</f-table-column>
-{
-    type: "rowheader",
-    header: "Namn",
-    text(row) {
-        return row.name;
-    },
-}
++{
++    type: "rowheader",
++    header: "Namn",
++    text(row) {
++        return row.name;
++    },
++}
 ```
 
 [Läs mer om kolumntypen rowheader](#) <!-- TODO: ersätt med riktig docs-länk -->
@@ -452,14 +452,14 @@ Det är inte samma sak som valbara rader.
 -<f-table-column title="Länk" type="text">
 -   <a :href="row.href">Öppna</a>
 -</f-table-column>
-{
-    type: "anchor",
-    header: "Länk",
-    href: "#",
-    text() {
-        return "Öppna";
-    },
-}
++{
++    type: "anchor",
++    header: "Länk",
++    href: "#",
++    text() {
++        return "Öppna";
++    },
++}
 ```
 
 [Läs mer om kolumntypen anchor](#) <!-- TODO: ersätt med riktig docs-länk -->
@@ -472,17 +472,17 @@ Det är inte samma sak som valbara rader.
 -       Ta bort
 -   </f-table-button>
 -</f-table-column>
-{
-    type: "button",
-    header: "Åtgärd",
-    icon: "trashcan",
-    text() {
-        return "Ta bort",
-    },
-    onClick(row) {
-        onRemoveRow(row);
-    },
-}
++{
++    type: "button",
++    header: "Åtgärd",
++    icon: "trashcan",
++    text() {
++        return "Ta bort",
++    },
++    onClick(row) {
++        onRemoveRow(row);
++    },
++}
 ```
 
 I `FTable` går det inte längre att ha flera knappar i samma kolumn. Det är ett design och tillgänglighetsval.
