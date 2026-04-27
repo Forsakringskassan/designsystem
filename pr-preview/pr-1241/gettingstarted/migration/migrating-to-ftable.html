@@ -22,19 +22,19 @@
         <script type="importmap">
             {
   "imports": {
-    "vue": "../../assets/vendor-vue-3c4216.js",
+    "vue": "../../assets/vendor-vue-8977ef.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-c80a3b.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-9dc89e.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
-    "../../assets/vendor-vue-3c4216.js": "sha384-TPOqyspDennXniRKCOf0FoIUcCBZjNAk3S6SXMQivQp3pF3oP0RCece+Pj/T3osp",
+    "../../assets/vendor-vue-8977ef.js": "sha384-ZFPq1uoIzDDp4kXAAwFjNrxqfYHV0OeI5inRqo7c0o4egVFdEFBRnROTVpm5bKYA",
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-c80a3b.js": "sha384-6SYbIg7ZqqotVEmmPBSGDqlx7osZKZGIsvK+i0sqHpK2HOVX6Pm43nLFgO2wFjxe",
+    "../../assets/vendor-fkui-vue-9dc89e.js": "sha384-3hfFzCn+99sIEYM74s+13ro9MePPGZXXe68Eibp1p37nk97ZobHGuXeejHtieqGh",
     "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-0ab64a.json"
+            href="../../search-data-63a24d.json"
             as="fetch"
             crossorigin
-            integrity="sha384-mKMgwcrZD1ryrZFyeCUnu0B4RgKfbRwwYMPmz733KlZ9ln1A71fv8xLlmDAF7plO"
+            integrity="sha384-AVINhlNBBRJbhXbqAn7HLW0p3SabPnp524NhBqvcDuXUGV2RkWIL0QJlRnHRZ5I5"
             id="search-data"
         />
     </head>
@@ -598,9 +598,25 @@
                                 
                                 <li><a href="#expanderbart_innehall">Expanderbart innehåll</a></li>
                                 
-                                <li><a href="#vanliga_migreringar">Vanliga migreringar</a></li>
-                                
                                 <li><a href="#valbara_rader">Valbara rader</a></li>
+                                
+                                <li><a href="#textkolumn">Textkolumn</a></li>
+                                
+                                <li><a href="#formatterade_textkolumner">Formatterade textkolumner</a></li>
+                                
+                                <li><a href="#checkbox_kolumn">Checkbox-kolumn</a></li>
+                                
+                                <li><a href="#rowheader">Rowheader</a></li>
+                                
+                                <li><a href="#anchor">Anchor</a></li>
+                                
+                                <li><a href="#button">Button</a></li>
+                                
+                                <li><a href="#menu">Menu</a></li>
+                                
+                                <li><a href="#select">Select</a></li>
+                                
+                                <li><a href="#anpassade_celler">Anpassade celler</a></li>
                                 
                             </ul>
                         </details>
@@ -608,14 +624,14 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> är deprekerad och ersatt med <a href="../../functions/labs/FTable">Tabell</a></p>
+                    <div id="content"><p class="docs-paragraph"><code>FDataTable</code> och <code>FInteractiveTable</code> är deprekerade och ersatt med <a href="../../functions/labs/FTable">Tabell</a></p>
 <h2 id="snabb_overblick" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#snabb_overblick">Snabb överblick</a></h2><p class="docs-paragraph">Vid migrering till <code>FTable</code> är det här de viktigaste skillnaderna</p>
 <ul>
 <li><code>FTableColumn</code> i template ersätts av kolumndefinitioner i <code>defineTableColumns(...)</code></li>
 <li>Formattering i template ersätts av kolumntyper som till exempel <code>text:date</code> och <code>text:number</code></li>
 <li><code>v-model</code> för valbara rader byter namn till <code>v-model:selected-rows</code></li>
 <li>Expanderbart innehåll sätts upp via <code>useDatasetRef(...)</code></li>
-<li>Aktiv rad och radklick migreras inte rakt av</li>
+<li>Aktiv rad och radklick har ingen direkt motsvarighet i <code>FTable</code></li>
 </ul>
 <h3 id="kontrollera_detta_forst" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#kontrollera_detta_forst">Kontrollera detta först</a></h3><p class="docs-paragraph">Om din tabell använder något av följande behöver du läsa vidare extra noggrant:</p>
 <ul>
@@ -625,11 +641,9 @@
 <li>Komplext innehåll i celler</li>
 <li>Eget expanderat innehåll</li>
 </ul>
-<h3 id="snabbguide" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#snabbguide">Snabbguide</a></h3><p class="docs-paragraph">Det här är den vanligaste mappningen från gamla tabeller till <code>FTable</code>:</p>
-<ul>
+<h3 id="snabbguide" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#snabbguide">Snabbguide</a></h3><ul>
 <li>Enkel textkolumn -&gt; <code>text + key</code></li>
-<li>Datumformattering -&gt; <code>text:date</code></li>
-<li>Nummerformattering -&gt; <code>text:number</code></li>
+<li>Datum / nummer -&gt; <code>formatterade textkolumner</code></li>
 <li>Checkbox i cell -&gt; <code>checkbox</code></li>
 <li>Radrubrik (row-header) -&gt; <code>rowheader</code></li>
 <li>Länk i cell -&gt; <code>anchor</code></li>
@@ -637,10 +651,11 @@
 <li>Flera actions i samma cell -&gt; <code>menu</code></li>
 <li>Expanderbara rader -&gt; <code>useDatasetRef(..., &quot;expandableRows&quot;)</code></li>
 </ul>
+<p class="docs-paragraph">Se respektive avsnitt nedan för exempel.</p>
 <h2 id="kolumner_flyttas_fran_template_till_konfiguration" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kolumner_flyttas_fran_template_till_konfiguration">Kolumner flyttas från template till konfiguration</a></h2><p class="docs-paragraph">I <code>FInteractiveTable</code> definierades kolumner i template med <code>FTableColumn</code>.</p>
 
                 <div
-                    id="example-0d0d7c"
+                    id="example-b894a9"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -653,7 +668,7 @@
             <p class="docs-paragraph">I <code>FTable</code> definieras kolumner istället i kod med <code>defineTableColumns(...)</code>.</p>
 
                 <div
-                    id="example-d1a1a1"
+                    id="example-08c546"
                     class="code-preview code-preview--default"
                     
                     
@@ -672,13 +687,13 @@
             <p class="docs-paragraph">Det innebär i praktiken:</p>
 <ul>
 <li><code>title</code> på <code>FTableColumn</code> blir <code>header</code></li>
-<li>Kolumnen flyttas tfrån template till kolumnkonfigurationen</li>
+<li>Kolumnen flyttas från template till kolumnkonfigurationen</li>
 <li>Hela kolumnuppsättningen skickas in via <code>:columns</code></li>
 </ul>
 <p class="docs-paragraph">Om tabellen tidigare såg ut så här:</p>
 
                 <div
-                    id="example-06ac20"
+                    id="example-7fefc2"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -699,7 +714,7 @@
             <p class="docs-paragraph">Så blir den i <code>FTable</code>:</p>
 
                 <div
-                    id="example-92f8b2"
+                    id="example-3c0d22"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -714,7 +729,7 @@
             <h2 id="hur_kolumner_laser_och_skriver_varden" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#hur_kolumner_laser_och_skriver_varden">Hur kolumner läser och skriver värden</a></h2><p class="docs-paragraph">Det vanligaste är att använda <code>key</code>.</p>
 
                 <div
-                    id="example-b221e6"
+                    id="example-567859"
                     class="code-preview code-preview--default"
                     
                     
@@ -732,11 +747,11 @@
                 </div>
             <p class="docs-paragraph">Om kolumnen bara ska läsa och skriva direkt mot ett fält på raden räcker <code>key</code>.
 Till exempel innebär <code>key: &quot;name&quot;</code> att kolumnen läser från och skriver till <code>row.name</code>.
-<code>key</code> är alltså standardfallet. Om kolumnen bygger på ett fält i raden är <code>key</code> normalt det tydligaste valet, även när du senare behöver komplettera med annan logik.
+<code>key</code> är standardfallet. Om kolumnen bygger på ett fält i raden är <code>key</code> normalt det tydligaste valet, även när du senare behöver komplettera med annan logik.
 Om du behöver styra läsning eller skrivning själv kan du använda <code>value</code> och <code>update</code>.</p>
 
                 <div
-                    id="example-e2e5f7"
+                    id="example-896a83"
                     class="code-preview code-preview--default"
                     
                     
@@ -765,7 +780,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <h2 id="formattering_flyttas_in_i_kolumntypen" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#formattering_flyttas_in_i_kolumntypen">Formattering flyttas in i kolumntypen</a></h2><p class="docs-paragraph">Om du tidigare definierade datum i template:</p>
 
                 <div
-                    id="example-1e0639"
+                    id="example-b7db35"
                     class="code-preview code-preview--default"
                     
                     
@@ -785,7 +800,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
             <p class="docs-paragraph">Om du tidigare använde en numerisk kolumn:</p>
 
                 <div
-                    id="example-9abf8e"
+                    id="example-397090"
                     class="code-preview code-preview--default"
                     
                     
@@ -803,10 +818,10 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om formatterade textkolumner</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<h2 id="editering_och_validering_ligger_i_kolumnen" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#editering_och_validering_ligger_i_kolumnen">Editering och validering ligger i kolumnen</a></h2><p class="docs-paragraph">I <code>FTable</code> definieras redigering i kolumnkonfigurationen</p>
+<h2 id="editering_och_validering_ligger_i_kolumnen" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#editering_och_validering_ligger_i_kolumnen">Editering och validering ligger i kolumnen</a></h2><p class="docs-paragraph">I <code>FTable</code> definieras redigering och validering i kolumnkonfigurationen</p>
 
                 <div
-                    id="example-b41fe4"
+                    id="example-e4be1e"
                     class="code-preview code-preview--default"
                     
                     
@@ -830,17 +845,17 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 ]);
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Detta innebär i prektiken:</p>
+            <p class="docs-paragraph">Det innebär i praktiken:</p>
 <ul>
 <li><code>editable</code> används för redigerbara textkolumner</li>
-<li>Validering definireas i kolumnen med <code>validation</code></li>
+<li>Validering definieras i kolumnen med <code>validation</code></li>
 </ul>
-<p class="docs-paragraph">Objektet i <code>validation</code> är av samma objekt som skickas till <code>v-validation</code> direktivet.</p>
+<p class="docs-paragraph">Objektet i <code>validation</code> är av samma typ av objekt som skickas till <code>v-validation</code> direktivet.</p>
 <p class="docs-paragraph">Läs mer om <a href="../../components/validation/validators.html">validatorer</a>.</p>
 <h2 id="expanderbart_innehall" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#expanderbart_innehall">Expanderbart innehåll</a></h2><p class="docs-paragraph">I <code>FInteractiveTable</code> användes <code>expandable-attribute</code> för att ange vilket attribut som innehöll expanderbart innehåll.</p>
 
                 <div
-                    id="example-b76972"
+                    id="example-96eb5c"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -862,10 +877,10 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">I <code>FTable</code> skapas motsvarande <code>rows</code> med <code>useDatasetRef(...)</code>, där det nästlade anges som andra parameter.</p>
+            <p class="docs-paragraph">I <code>FTable</code> skapas motsvarande <code>rows</code> med <code>useDatasetRef(...)</code>, där det nästlade attributet anges som andra parameter.</p>
 
                 <div
-                    id="example-b7a2ab"
+                    id="example-38d482"
                     class="code-preview code-preview--default"
                     
                     
@@ -886,7 +901,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
             <p class="docs-paragraph">Det datasetet skickas sedan in som <code>rows</code> till <code>FTable</code>.</p>
 
                 <div
-                    id="example-9b7686"
+                    id="example-bb86d2"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -896,14 +911,15 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Läs mer om <a href="../../functions/functions/use-dataset-ref.html">useDatasetRef</a></p>
+            <p class="docs-paragraph">För vanliga expanderbara rader behövs ingen <code>#expandable-slot</code> i <code>FTable</code>.</p>
+<p class="docs-paragraph">Läs mer om <a href="../../functions/functions/use-dataset-ref.html">useDatasetRef</a></p>
 <p class="docs-paragraph"><a href="#">Läs mer om expanderbara rader</a> <!-- TODO: ersätt med riktig docs-länk --></p>
 <p class="docs-paragraph"><a href="#">Läs mer om valfritt expanderat innehåll</a> <!-- TODO: ersätt med riktig docs-länk --></p>
 <h3 id="eget_expanderat_innehall" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#eget_expanderat_innehall">Eget expanderat innehåll</a></h3><p class="docs-paragraph"><code>#expandable</code> används bara när det expanderade innehållet ska renderas som eget innehåll.</p>
-<p class="docs-paragraph">Både <code>FInteractiveTable</code> och <code>FTable</code> använder slotten <code>expandable</code>, men söptåarametern byter namn vid migrering:</p>
+<p class="docs-paragraph">Både <code>FInteractiveTable</code> och <code>FTable</code> använder slotten <code>#expandable</code>, men slot-parametern byter namn vid migrering:</p>
 
                 <div
-                    id="example-384c0b"
+                    id="example-088352"
                     class="code-preview code-preview--default"
                     
                     
@@ -919,9 +935,88 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om valfritt expanderat innehåll</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<h2 id="vanliga_migreringar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#vanliga_migreringar">Vanliga migreringar</a></h2><h3 id="textkolumn" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#textkolumn">Textkolumn</a></h3>
+<h2 id="valbara_rader" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#valbara_rader">Valbara rader</a></h2><p class="docs-paragraph">Propen <code>selectable</code> fungerar som tidigare:</p>
+<ul>
+<li>Använd <code>single</code> för enkelval</li>
+<li>Använd <code>multi</code> för flerval</li>
+</ul>
+<p class="docs-paragraph">Det som ändras är <code>v-model</code> för valbara rader.</p>
+
                 <div
-                    id="example-005c63"
+                    id="example-c6e1ef"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table v-model=&quot;selectedRows&quot;&gt;</span>
+&lt;f-table v-model:selected-rows=&quot;selectedRows&quot;&gt;
+</code></pre>
+                </div>
+            <h3 id="enkelval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#enkelval">Enkelval</a></h3>
+                <div
+                    id="example-9fcbfd"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table</span>
+<span class="hljs-deletion">-   v-model=&quot;selectedRows&quot;</span>
+<span class="hljs-deletion">-   :rows</span>
+<span class="hljs-deletion">-   selectable=&quot;single&quot;</span>
+<span class="hljs-deletion">-&gt;</span>
+<span class="hljs-deletion">-   &lt;template #default=&quot;{ row }&quot;&gt;</span>
+<span class="hljs-deletion">-       &lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-           {{ row.name }}</span>
+<span class="hljs-deletion">-       &lt;/f-table-column&gt;</span>
+<span class="hljs-deletion">-   &lt;/template&gt;</span>
+<span class="hljs-deletion">-&lt;/f-interactive-table&gt;</span>
+&lt;f-table
+    v-model:selected-rows=&quot;selectedRows&quot;
+    :columns
+    :rows
+    selectable=&quot;single&quot;
+/&gt;
+</code></pre>
+                </div>
+            <h3 id="flerval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#flerval">Flerval</a></h3>
+                <div
+                    id="example-1c334d"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table</span>
+<span class="hljs-deletion">-   v-model=&quot;selectedRows&quot;</span>
+<span class="hljs-deletion">-   :rows</span>
+<span class="hljs-deletion">-   selectable=&quot;multi&quot;</span>
+<span class="hljs-deletion">-&gt;</span>
+<span class="hljs-deletion">-   &lt;template #default=&quot;{ row }&quot;&gt;</span>
+<span class="hljs-deletion">-       &lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-           {{ row.name }}</span>
+<span class="hljs-deletion">-       &lt;/f-table-column&gt;</span>
+<span class="hljs-deletion">-   &lt;/template&gt;</span>
+<span class="hljs-deletion">-&lt;/f-interactive-table&gt;</span>
+&lt;f-table
+    v-model:selected-rows=&quot;selectedRows&quot;
+    :columns
+    :rows
+    selectable=&quot;multi&quot;
+/&gt;
+</code></pre>
+                </div>
+            <ul>
+<li><code>multi</code> ger också stöd för att välja alla rader via kolumnrubriken</li>
+<li><code>selectedRows</code> innehåller de valda raderna</li>
+</ul>
+<h2 id="textkolumn" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#textkolumn">Textkolumn</a></h2>
+                <div
+                    id="example-83e868"
                     class="code-preview code-preview--default"
                     
                     
@@ -939,9 +1034,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen text</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<h3 id="formatterade_textkolumner" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#formatterade_textkolumner">Formatterade textkolumner</a></h3>
+<h2 id="formatterade_textkolumner" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#formatterade_textkolumner">Formatterade textkolumner</a></h2>
                 <div
-                    id="example-1383e3"
+                    id="example-84681d"
                     class="code-preview code-preview--default"
                     
                     
@@ -960,7 +1055,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                 </div>
             
                 <div
-                    id="example-d63499"
+                    id="example-b2335f"
                     class="code-preview code-preview--default"
                     
                     
@@ -978,9 +1073,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om formatterade textkolumner</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<h3 id="checkbox_kolumn" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#checkbox_kolumn">Checkbox-kolumn</a></h3>
+<h2 id="checkbox_kolumn" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#checkbox_kolumn">Checkbox-kolumn</a></h2>
                 <div
-                    id="example-5040ae"
+                    id="example-63e09f"
                     class="code-preview code-preview--default"
                     
                     
@@ -997,7 +1092,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
     type: &quot;checkbox&quot;,
     header: &quot;Aktiv&quot;,
     key: &quot;active&quot;,
-    label: (row) =&gt; `Välj rad för ${row.id}`,
+    label(row) {
+            return `Val för rad ${row.id}`;
+        },
 }
 </code></pre>
                 </div>
@@ -1010,9 +1107,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
             </div>
         <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen checkbox</a> <!-- TODO: ersätt med riktig docs-länk --></p>
 <p class="docs-paragraph"><a href="#">Läs mer om valbara rader</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<h3 id="rowheader" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#rowheader">Rowheader</a></h3>
+<h2 id="rowheader" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#rowheader">Rowheader</a></h2>
                 <div
-                    id="example-4cf5e1"
+                    id="example-7acaa5"
                     class="code-preview code-preview--default"
                     
                     
@@ -1032,9 +1129,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen rowheader</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<h3 id="anchor" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#anchor">Anchor</a></h3>
+<h2 id="anchor" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anchor">Anchor</a></h2>
                 <div
-                    id="example-8425f4"
+                    id="example-10bf1c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1055,9 +1152,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen anchor</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<h3 id="button" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#button">Button</a></h3>
+<h2 id="button" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#button">Button</a></h2>
                 <div
-                    id="example-6c1cee"
+                    id="example-4f8b2e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1082,16 +1179,16 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">I <code>FTable</code> går det inte längre att ha flera knappar i samma kolumn. Det är ett deisn och tillgänglighetsval.</p>
-<p class="docs-paragraph">Om du tidigare hade flera avtions i samma kolumn behöver du istället:</p>
+            <p class="docs-paragraph">I <code>FTable</code> går det inte längre att ha flera knappar i samma kolumn. Det är ett design och tillgänglighetsval.</p>
+<p class="docs-paragraph">Om du tidigare hade flera actions i samma kolumn behöver du istället:</p>
 <ul>
 <li>lägga actions i olika kolumner, eller</li>
 <li>använda <code>menu</code></li>
 </ul>
 <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen button</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<h3 id="menu" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#menu">Menu</a></h3>
+<h2 id="menu" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#menu">Menu</a></h2>
                 <div
-                    id="example-4f40d4"
+                    id="example-bf2596"
                     class="code-preview code-preview--default"
                     
                     
@@ -1141,9 +1238,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 </code></pre>
                 </div>
             <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen menu</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<h3 id="select" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#select">Select</a></h3>
+<h2 id="select" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#select">Select</a></h2>
                 <div
-                    id="example-aa1bfb"
+                    id="example-16433d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1162,7 +1259,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;select&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Val&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;item&quot;</span>,
-        <span class="hljs-attr">label</span>: <span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> <span class="hljs-string">`Val för rad <span class="hljs-subst">${row.id}</span>`</span>,
+        <span class="hljs-title function_">label</span>(<span class="hljs-params">row</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">`Val för rad <span class="hljs-subst">${row.id}</span>`</span>;
+        },
         <span class="hljs-attr">options</span>: [<span class="hljs-string">&quot;Item 1&quot;</span>, <span class="hljs-string">&quot;Item 2&quot;</span>, <span class="hljs-string">&quot;Item 3&quot;</span>],
     },
 ]);
@@ -1170,88 +1269,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                 </div>
             <p class="docs-paragraph">Om alternativen laddas asynkront kan <code>columns</code> behöva byggas med <code>computed(...)</code> så att <code>options</code> uppdateras när datat har laddat klart. Annars kan selecten renderas innan alternativen finns tillgängliga, vilket gör att det valda värdet inte visas som förväntat.</p>
 <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen select</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<h3 id="anpassade_celler" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#anpassade_celler">Anpassade celler</a></h3><p class="docs-paragraph">Om tabellen innehåller mer komplext innehåll än vad de inbyggda kolumntyperna stödjer går det inte alltid att migrera rakt av.</p>
-<p class="docs-paragraph">Kontakt i första hand teamet för att reda ut om scenariot bör stödjas av <code>FTable</code> eller om det är ett rimligt specialfall.</p>
+<h2 id="anpassade_celler" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anpassade_celler">Anpassade celler</a></h2><p class="docs-paragraph">Om tabellen innehåller mer komplext innehåll än vad de inbyggda kolumntyperna stödjer går det inte alltid att migrera rakt av.</p>
+<p class="docs-paragraph">Kontakta i första hand teamet för att reda ut om scenariot bör stödjas av <code>FTable</code> eller om det är ett rimligt specialfall.</p>
 <p class="docs-paragraph"><a href="#">Läs mer om anpassade celler</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<h2 id="valbara_rader" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#valbara_rader">Valbara rader</a></h2><p class="docs-paragraph">Propen <code>selectable</code> fungerar som tidigare:</p>
-<ul>
-<li>Använd <code>single</code> för enkelval</li>
-<li>Använd <code>multi</code> för flerval</li>
-</ul>
-<p class="docs-paragraph">Det som ändras är <code>v-model</code> för valbara rader.</p>
-
-                <div
-                    id="example-971518"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table v-model=&quot;selectedRows&quot;&gt;</span>
-&lt;f-table v-model:selected-rows=&quot;selectedRows&quot;&gt;
-</code></pre>
-                </div>
-            <h3 id="enkelval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#enkelval">Enkelval</a></h3>
-                <div
-                    id="example-67b127"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table</span>
-<span class="hljs-deletion">-   v-model=&quot;selectedRows&quot;</span>
-<span class="hljs-deletion">-   :rows</span>
-<span class="hljs-deletion">-   selectable=&quot;single&quot;</span>
-<span class="hljs-deletion">-&gt;</span>
-<span class="hljs-deletion">-   &lt;template #default=&quot;{ row }&quot;&gt;</span>
-<span class="hljs-deletion">-       &lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
-<span class="hljs-deletion">-           {{ row.name }}</span>
-<span class="hljs-deletion">-       &lt;/f-table-column&gt;</span>
-<span class="hljs-deletion">-   &lt;/template&gt;</span>
-<span class="hljs-deletion">-&lt;/f-interactive-table&gt;</span>
-&lt;f-table
-    v-model:selected-rows=&quot;selectedRows&quot;
-    :columns
-    :rows
-    selectable=&quot;single&quot;
-/&gt;
-</code></pre>
-                </div>
-            <h3 id="flerval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#flerval">Flerval</a></h3>
-                <div
-                    id="example-687c04"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table</span>
-<span class="hljs-deletion">-   v-model=&quot;selectedRows&quot;</span>
-<span class="hljs-deletion">-   :rows</span>
-<span class="hljs-deletion">-   selectable=&quot;multi&quot;</span>
-<span class="hljs-deletion">-&gt;</span>
-<span class="hljs-deletion">-   &lt;template #default=&quot;{ row }&quot;&gt;</span>
-<span class="hljs-deletion">-       &lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
-<span class="hljs-deletion">-           {{ row.name }}</span>
-<span class="hljs-deletion">-       &lt;/f-table-column&gt;</span>
-<span class="hljs-deletion">-   &lt;/template&gt;</span>
-<span class="hljs-deletion">-&lt;/f-interactive-table&gt;</span>
-&lt;f-table
-    v-model:selected-rows=&quot;selectedRows&quot;
-    :columns
-    :rows
-    selectable=&quot;multi&quot;
-/&gt;
-</code></pre>
-                </div>
-            <ul>
-<li><code>multi</code> ger också stöd för att välja alla rader via kolumnrubruken</li>
-<li><code>selectedRows</code> innehåller de valda raderna</li>
-</ul>
 
 
                     </div>
@@ -1300,9 +1320,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/27ed9918da5c437f42f7c945c92a16f319bc2614">27ed991</a>)<br />
+<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/e6fcd5ee4dd950788d354e460510218ed2030954">e6fcd5e</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1241">PR 1241</a><br />
-        2026-04-24 13:09
+        2026-04-27 08:35
 </div>
 <div class="toolbar__item">
     <form id="version">
