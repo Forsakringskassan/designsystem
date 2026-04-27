@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-2903d6.json"
+            href="../../search-data-6a5fe3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-oxudmmvdazPk2HVh91KZC3Emcnc+W04f6fVynp3AWNHhEWRsWYpFw0bLOIKznZuj"
+            integrity="sha384-SPI19pUQ5RiC3a5hx2JG3w8M66jWHbRLtKRFZ5sGSbA/PbzSbi3xieBUvKXO3OLT"
             id="search-data"
         />
     </head>
@@ -1857,7 +1857,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-1dba74"></div>
+        <div id="example-dd7740"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1883,7 +1883,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-1dba74.js"></script>
+        <script type="module" src="./FTableExample-dd7740.js"></script>
     
                 </div>
                 <div>
@@ -1917,8 +1917,8 @@ body {
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
-
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
+<span class="hljs-keyword">let</span> idCounter = <span class="hljs-number">1</span>;
 
 interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-attr">id</span>: string;
@@ -2133,7 +2133,7 @@ interface <span class="hljs-title class_">Row</span> {
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">onAddRow</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
     rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">push</span>({
-        <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(rows.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> + <span class="hljs-number">1</span>),
+        <span class="hljs-attr">id</span>: <span class="hljs-string">`ny-rad-<span class="hljs-subst">${idCounter++}</span>`</span>,
         <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Katt&quot;</span>,
         <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Föräldrapenning&quot;</span>,
         <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-04-11&quot;</span>,
@@ -2543,9 +2543,9 @@ interface <span class="hljs-title class_">TableRow</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">f-table-bulk-et-al (<a href="https://github.com/Forsakringskassan/designsystem/commits/1c7a964731ba9864bdcf8530daf0493d69b44203">1c7a964</a>)<br />
+<div class="footer__right"><div class="version">f-table-bulk-et-al (<a href="https://github.com/Forsakringskassan/designsystem/commits/209e2410e8f07c71b4772e706771552936364355">209e241</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1240">PR 1240</a><br />
-        2026-04-24 13:55
+        2026-04-27 08:27
 </div>
 <div class="toolbar__item">
     <form id="version">
