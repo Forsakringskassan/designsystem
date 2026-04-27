@@ -1,5 +1,7 @@
+import { nextTick } from "vue";
 import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
 import { FPaginatorSelectors } from "../../selectors";
+import FPaginateDataset from "../FPaginateDataset/FPaginateDataset.vue";
 import FPaginator from "./FPaginator.vue";
 
 const paginator = FPaginatorSelectors();
@@ -188,4 +190,56 @@ describe("events", () => {
     it.todo(
         "should emit event 'paginateDataset:page' when clicking on a page button",
     );
+});
+
+describe("v-model", () => {
+    const items = Array.from({ length: 30 }, (_, index) => ({ index }));
+
+    it("should handle initial value", async () => {
+        const wrapper = mount(FPaginateDataset, {
+            props: {
+                modelValue: 2,
+                items,
+            },
+            slots: {
+                default: FPaginator,
+            },
+        });
+        await nextTick();
+        expect(wrapper.get(paginator.currentPageButton()).text()).toBe("2");
+    });
+
+    it("should handle setting value programmatically", async () => {
+        const wrapper = mount(FPaginateDataset, {
+            props: {
+                modelValue: 2,
+                items,
+            },
+            slots: {
+                default: FPaginator,
+            },
+        });
+        await wrapper.setProps({ modelValue: 1 });
+        expect(wrapper.get(paginator.currentPageButton()).text()).toBe("1");
+        await wrapper.setProps({ modelValue: 3 });
+        expect(wrapper.get(paginator.currentPageButton()).text()).toBe("3");
+    });
+
+    it("should be updated when model is changed internally", async () => {
+        const wrapper = mount(FPaginateDataset, {
+            props: {
+                modelValue: 2,
+                items,
+            },
+            slots: {
+                default: FPaginator,
+            },
+        });
+        await nextTick();
+        expect(wrapper.get(paginator.currentPageButton()).text()).toBe("2");
+        wrapper.get(paginator.nextPageButton()).trigger("click");
+        await nextTick();
+        expect(wrapper.get(paginator.currentPageButton()).text()).toBe("3");
+        expect(wrapper.emitted("update:modelValue")).toEqual([[3]]);
+    });
 });
