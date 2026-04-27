@@ -1,13 +1,13 @@
 import { type DefineComponent, defineComponent } from "vue";
 import { FFileItemPageObject } from "../../cypress";
-import { FIcon } from "../FIcon";
+import { FButton } from "../FButton";
 import { FProgressbar } from "../FProgressbar";
 import FFileItem from "./FFileItem.vue";
 
 function createComponent(template: string): DefineComponent {
     return defineComponent({
         template,
-        components: { FFileItem, FIcon, FProgressbar },
+        components: { FButton, FFileItem, FProgressbar },
         data() {
             return {
                 fileName: "bar.pdf",
@@ -18,6 +18,10 @@ function createComponent(template: string): DefineComponent {
         },
     });
 }
+
+beforeEach(() => {
+    cy.forcedColors("none");
+});
 
 describe("FFileItem", () => {
     const fileItem = new FFileItemPageObject("[data-test=file-item]");
@@ -40,25 +44,22 @@ describe("FFileItem", () => {
                     :mime-type="mimeType"
                 >
                     <template #row>
-                        <button
+                        <f-button
                             v-if="progress < 100"
-                            type="button"
-                            class="button button--tertiary file-item__file-remove file-item__abort"
+                            data-test="file-item__file-remove"
+                            icon-left="close"
+                            variant="tertiary"
                         >
-                            <f-icon name="close" class="button__icon"></f-icon>
-                            <span> Avbryt uppladdning </span>
-                        </button>
-                        <button
+                            Avbryt uppladdning
+                        </f-button>
+                        <f-button
                             v-else-if="progress === 100"
-                            type="button"
-                            class="button button--tertiary file-item__file-remove"
+                            data-test="file-item__file-remove"
+                            icon-left="trashcan"
+                            variant="tertiary"
                         >
-                            <f-icon
-                                name="trashcan"
-                                class="button__icon"
-                            ></f-icon>
                             Ta bort
-                        </button>
+                        </f-button>
                     </template>
                     <f-progressbar
                         v-if="progress < 100"
@@ -127,15 +128,15 @@ describe("FFileItem", () => {
         const fileName =
             "lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit.pdf";
         const row = defineComponent({
-            components: { FIcon },
+            components: { FButton },
             template: /* HTML */ `
-                <button
-                    type="button"
-                    class="button button--tertiary button--medium file-item__file-remove"
+                <f-button
+                    data-test="file-item__file-remove"
+                    icon-left="trashcan"
+                    variant="tertiary"
                 >
-                    <f-icon name="trashcan" class="button__icon"></f-icon>
                     Ta bort
-                </button>
+                </f-button>
             `,
         });
         cy.mount(FFileItem, { props: { fileName }, slots: { row } });

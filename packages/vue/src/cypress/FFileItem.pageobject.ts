@@ -26,14 +26,16 @@ export class FFileItemPageObject implements BasePageObject {
      * @internal
      */
     public _cancelDeleteButton(): Cypress.Chainable<JQuery> {
-        return cy.get(`${this.selector} .file-item__file-remove`);
+        return cy.get(`${this.selector} [data-test=file-item__file-remove]`);
     }
 
     /**
      * @internal
      */
     public _cancelDeleteButtonIcon(): Cypress.Chainable<JQuery> {
-        return cy.get(`${this.selector} .file-item__file-remove .icon`);
+        return cy.get(
+            `${this.selector} [data-test=file-item__file-remove] .icon`,
+        );
     }
 
     /**

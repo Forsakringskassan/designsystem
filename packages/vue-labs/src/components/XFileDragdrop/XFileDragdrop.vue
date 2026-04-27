@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { alertScreenReader } from "@fkui/logic";
-import { EventBus, FFileItem, FFileSelector, FIcon } from "@fkui/vue";
+import { EventBus, FButton, FFileItem, FFileSelector, FIcon } from "@fkui/vue";
 
 const STATUS_HAR_INTE_VALT_FIL = 0,
     STATUS_HAR_VALT_FIL = 1,
@@ -249,16 +249,15 @@ EventBus.$on("RENSA_FIL_VALJARE", () => {
                     <span aria-live="off" class="fill">
                         <span id="mylabel" class="sr-only"> {{ fileName }} {{ filstorlek }} kb </span>
                         <span class="filstorlek">{{ filstorlek }} KB</span>
-                        <!-- [html-validate-disable-next fkui/class-deprecated -- technical debt]-->
-                        <button
-                            type="button"
-                            class="button button--discrete file-item__file-remove"
+                        <f-button
+                            data-test="file-item__file-remove"
+                            icon-left="trashcan"
+                            variant="tertiary"
                             :aria-label="`Ta bort ${fileName}`"
                             @click="taBortFil"
                         >
-                            <f-icon name="trashcan" class="button__icon"></f-icon>
                             Ta bort
-                        </button>
+                        </f-button>
                     </span>
                 </template>
             </f-file-item>
