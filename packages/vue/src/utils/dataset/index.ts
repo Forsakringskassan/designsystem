@@ -1,4 +1,8 @@
-export { type Dataset, type DatasetNestedKeyOf } from "./dataset";
+export {
+    type Dataset,
+    type DatasetArrayKeyOf,
+    type DatasetNestedKeyOf,
+} from "./dataset";
 export { type DatasetArrayMetadata } from "./dataset-array-metadata";
 export { datasetIterator } from "./dataset-iterator";
 export { type DatasetElementMetadata } from "./dataset-element-metadata";
