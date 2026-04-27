@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-d0dbc1.json"
+            href="../../search-data-1a58d3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-jPpg5yq/pMFhT5Fle8ZaAH+ZcGxFwKIbYmDjhgf9Vq3gkjVDZb0Ga1qq3xZDnCvM"
+            integrity="sha384-378Bt/1himSC+XjJFv9y0LTB5G0a7AdBtHcsHK8/EPuvfyQb9DFdwQXo7hkE6nr0"
             id="search-data"
         />
     </head>
@@ -1812,7 +1812,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-26a1bb"></div>
+        <div id="example-0ada21"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1838,7 +1838,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-26a1bb.js"></script>
+        <script type="module" src="./FTableExample-0ada21.js"></script>
     
                 </div>
                 <div>
@@ -1864,11 +1864,10 @@ body {
 <span class="hljs-keyword">import</span> { assertRef, formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FSortFilterDataset</span>, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
-    type <span class="hljs-title class_">TableColumn</span>,
     <span class="hljs-title class_">FTable</span>,
     defineTableColumns,
     getTableSortableAttributes,
-    removeRow,
+    removeDatasetRows,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
@@ -2105,12 +2104,12 @@ interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-title function_">assertRef</span>(tableRef);
 
     tableRef.<span class="hljs-property">value</span>.<span class="hljs-title function_">withTabstopBehaviour</span>(<span class="hljs-string">&quot;row-removal&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-        rows.<span class="hljs-property">value</span> = <span class="hljs-title function_">removeRow</span>(rows.<span class="hljs-property">value</span>, row, <span class="hljs-string">&quot;expandableRows&quot;</span>);
+        <span class="hljs-title function_">removeDatasetRows</span>(rows, row);
     });
 }
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveSelectedRows</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
-    rows.<span class="hljs-property">value</span> = rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> !mySelectedRows.<span class="hljs-property">value</span>.<span class="hljs-title function_">includes</span>(row));
+    <span class="hljs-title function_">removeDatasetRows</span>(rows, mySelectedRows);
 }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
@@ -2501,9 +2500,9 @@ interface <span class="hljs-title class_">TableRow</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/eslint-config-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/fdf61486e9d888e727e6c4f2120cf55ac6c8c573">fdf6148</a>)<br />
+<div class="footer__right"><div class="version">renovate/eslint-config-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/805b742c122cc3b6b34c3c037cd3275700974a1d">805b742</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1245">PR 1245</a><br />
-        2026-04-27 12:21
+        2026-04-27 13:09
 </div>
 <div class="toolbar__item">
     <form id="version">

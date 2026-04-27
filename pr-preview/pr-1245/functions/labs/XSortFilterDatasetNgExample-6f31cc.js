@@ -42,7 +42,7 @@ import {
 // packages/vue-labs/dist/esm/index.esm.js
 import { Fragment, computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, guardReactiveProps, inject, mergeModels, mergeProps, nextTick, normalizeClass, normalizeProps, onMounted, onUpdated, openBlock, provide, ref, renderList, renderSlot, resolveDirective, resolveDynamicComponent, toDisplayString, toRef, toValue, unref, useModel, useSlots, useTemplateRef, vModelText, vShow, watch, watchEffect, withCtx, withDirectives, withKeys, withModifiers } from "vue";
 import { ElementIdService, TranslationService, ValidationService, alertScreenReader, assertRef, assertSet, debounce, formatNumber, formatPersonnummer, formatPostalCode, isEmpty, isSet, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parseDate, parseNumber, parseOrganisationsnummer, parsePersonnummer, parsePlusgiro, stripWhitespace } from "@fkui/logic";
-import { EventBus, FContextMenu, FFileItem, FFileSelector, FIcon, FSortFilterDatasetInjected, FTextField, IComboboxDropdown, IFlex, IFlexItem, IPopupError, TranslationMixin, copyItemIdentifier, dispatchComponentValidityEvent, findItemIdentifier, getDatasetMetadata, getItemIdentifier, setItemIdentifiers, useSlotUtils, useTextFieldSetup, useTranslate } from "@fkui/vue";
+import { EventBus, FContextMenu, FFileItem, FFileSelector, FIcon, FSortFilterDatasetInjected, FTextField, IComboboxDropdown, IFlex, IFlexItem, IPopupError, TranslationMixin, dispatchComponentValidityEvent, findItemIdentifier, getDatasetMetadata, getItemIdentifier, setItemIdentifiers, useSlotUtils, useTextFieldSetup, useTranslate } from "@fkui/vue";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var require_global_this = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var check = function(it) {
@@ -2121,45 +2121,6 @@ var require_es_iterator_some = /* @__PURE__ */ __commonJSMin((() => {
 }));
 require_es_array_to_sorted();
 require_es_iterator_some();
-(/* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var addToUnscopables = require_add_to_unscopables();
-  var doesNotExceedSafeInteger = require_does_not_exceed_safe_integer();
-  var lengthOfArrayLike = require_length_of_array_like();
-  var toAbsoluteIndex = require_to_absolute_index();
-  var toIndexedObject = require_to_indexed_object();
-  var toIntegerOrInfinity = require_to_integer_or_infinity();
-  var createProperty = require_create_property();
-  var $Array = Array;
-  var max = Math.max;
-  var min = Math.min;
-  $({
-    target: "Array",
-    proto: true
-  }, { toSpliced: function toSpliced(start, deleteCount) {
-    var O = toIndexedObject(this);
-    var len = lengthOfArrayLike(O);
-    var actualStart = toAbsoluteIndex(start, len);
-    var argumentsLength = arguments.length;
-    var k = 0;
-    var insertCount, actualDeleteCount, newLen, A;
-    if (argumentsLength === 0) insertCount = actualDeleteCount = 0;
-    else if (argumentsLength === 1) {
-      insertCount = 0;
-      actualDeleteCount = len - actualStart;
-    } else {
-      insertCount = argumentsLength - 2;
-      actualDeleteCount = min(max(toIntegerOrInfinity(deleteCount), 0), len - actualStart);
-    }
-    newLen = doesNotExceedSafeInteger(len + insertCount - actualDeleteCount);
-    A = $Array(newLen);
-    for (; k < actualStart; k++) createProperty(A, k, O[k]);
-    for (; k < actualStart + insertCount; k++) createProperty(A, k, arguments[k - actualStart + 2]);
-    for (; k < newLen; k++) createProperty(A, k, O[k + actualDeleteCount - insertCount]);
-    return A;
-  } });
-  addToUnscopables("toSpliced");
-})))();
 var require_array_buffer_basic_detection = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   module.exports = typeof ArrayBuffer != "undefined" && typeof DataView != "undefined";
 }));
