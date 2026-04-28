@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
     id: string;
-    name: string;
+    option: string;
 }
+
+const selectFieldOptions = ["Foo", "Bar", "Baz"];
 
 const columns = defineTableColumns<Row>([
     {
@@ -17,30 +18,30 @@ const columns = defineTableColumns<Row>([
         },
     },
     {
-        type: "text",
-        header: "Name",
-        value(row) {
-            return row.name;
-        },
+        type: "select",
+        header: "Alternativ",
+        key: "option",
+        options: selectFieldOptions,
+        label: (row) => `Alternativ för rad ${row.id}`,
     },
 ]);
 
 const rows = useDatasetRef([
     {
         id: "1",
-        name: "Foo",
+        option: "Foo",
     },
     {
         id: "2",
-        name: "Bar",
+        option: "Bar",
     },
     {
         id: "3",
-        name: "Baz",
+        option: "Baz",
     },
 ]);
 </script>
 <!-- cut above -->
 <template>
-    <f-table v-test="'table'" :columns :rows></f-table>
+    <f-table v-test="'table'" :columns :rows key-attribute="id"></f-table>
 </template>

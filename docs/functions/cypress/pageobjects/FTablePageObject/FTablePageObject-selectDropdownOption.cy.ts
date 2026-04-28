@@ -1,5 +1,5 @@
-import Example from "./FTablePageObject-selectDropdownOption.vue";
 import { FTablePageObject } from "@fkui/vue-labs/cypress";
+import Example from "./FTablePageObject-selectDropdownOption.vue";
 
 it("selectDropdownOption() should should get correct text.", () => {
     cy.mount(Example);

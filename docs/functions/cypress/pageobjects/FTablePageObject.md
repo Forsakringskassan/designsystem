@@ -1,6 +1,8 @@
 ---
 title: FTablePageObject
 layout: api.class
+redirect_from:
+	- functions/labs/ftablepageobject.html
 ---
 
 Använd `FTablePageObject` för att hämta information relaterat till `FTable` komponenten.

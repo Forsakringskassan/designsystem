@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
@@ -42,5 +41,7 @@ const rows = useDatasetRef([
 </script>
 <!-- cut above -->
 <template>
-    <f-table v-test="'table'" :columns :rows></f-table>
+    <f-table v-test="'table'" :columns :rows>
+        <template #caption> My awesome caption </template>
+    </f-table>
 </template>

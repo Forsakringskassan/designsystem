@@ -1,11 +1,11 @@
-import Example from "./FTablePageObject-footer.vue";
 import { FTablePageObject } from "@fkui/vue-labs/cypress";
+import Example from "./FTablePageObject-el.vue";
 
-it("footer() should get correct text from table footer.", () => {
+it("`FTablePageObject.el()` should get correct element", () => {
     cy.mount(Example);
 
     /* --- cut above --- */
     const table = new FTablePageObject("[data-test=table]");
-    table.footer().should("contain.text", "My awesome footer");
+    table.el().should("exist");
     /* --- cut below --- */
 });

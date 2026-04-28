@@ -153,6 +153,7 @@ functions/cypress/pageobjects/FProgressbarPageObject/el.html
 functions/cypress/pageobjects/FProgressbarPageObject/index.html
 functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html
 functions/cypress/pageobjects/FProgressbarPageObject/value.html
+functions/cypress/pageobjects/ftablepageobject.html
 functions/date/clamp.html
 functions/date/f-year/add-years.html
 functions/date/f-year/compare.html
@@ -219,7 +220,7 @@ functions/i18next-translate/i18next-provider-interface.html
 functions/i18next-translate/i18next-provider.html
 functions/i18next-translate/i18next.html
 functions/index.html
-functions/labs/ftablepageobject.html
+functions/labs/ftablepageobject.html -> functions/cypress/pageobjects/ftablepageobject.html
 functions/labs/index.html
 functions/labs/test-table.html
 functions/labs/xfiledragdrop.html

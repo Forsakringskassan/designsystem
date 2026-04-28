@@ -1,11 +1,11 @@
-import Example from "./FTablePageObject-el.vue";
 import { FTablePageObject } from "@fkui/vue-labs/cypress";
+import Example from "./FTablePageObject-caption.vue";
 
-it("`FTablePageObject.el()` should get correct element", () => {
+it("caption() should get correct text from table caption.", () => {
     cy.mount(Example);
 
     /* --- cut above --- */
     const table = new FTablePageObject("[data-test=table]");
-    table.el().should("exist");
+    table.caption().should("contain.text", "My awesome caption");
     /* --- cut below --- */
 });
