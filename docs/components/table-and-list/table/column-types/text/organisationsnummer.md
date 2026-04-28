@@ -12,7 +12,7 @@ Använd organisationsnummer (`text:organisationsnummer`) för inmatning och visn
 Organisationsnummer följer samma validering, formatering och parsning som det {@link textfield-specialized#organisationsnummer specialiserade inmatningsfältet organisationsnummer}.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const columns = defineTableColumns<Record<string, string>>([
     {

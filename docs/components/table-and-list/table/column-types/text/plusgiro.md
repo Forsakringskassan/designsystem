@@ -12,7 +12,7 @@ Använd plusgiro (`text:plusgiro`) för inmatning och visning av plusgiro i en t
 Plusgiro följer samma validering, formatering och parsning som det {@link textfield-specialized#plusgiro specialiserade inmatningsfältet plusgiro}.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const columns = defineTableColumns<Record<string, string>>([
     {

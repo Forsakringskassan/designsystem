@@ -702,6 +702,35 @@ export class FTableColumnPageObject implements BasePageObject {
 }
 
 // @public (undocumented)
+export class FTablePageObject implements BasePageObject {
+    constructor(selector?: string);
+    caption(): Cypress.Chainable<JQuery<HTMLTableSectionElement>>;
+    cell(descriptor: {
+        row: number;
+        col: number;
+    }): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
+    // @internal
+    contextmenu(): Cypress.Chainable<JQuery<HTMLDivElement>>;
+    contextmenuItems(): Cypress.Chainable<JQuery<HTMLButtonElement>>;
+    el(): DefaultCypressChainable;
+    expandButton(row: number): Cypress.Chainable<JQuery<HTMLButtonElement>>;
+    footer(): Cypress.Chainable<JQuery<HTMLTableSectionElement>>;
+    header(col: number): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
+    headerDescription(col: number): DefaultCypressChainable;
+    headerTitle(col: number): DefaultCypressChainable;
+    rows(): Cypress.Chainable<JQuery<HTMLTableRowElement>>;
+    // @internal
+    selectDropdown(): DefaultCypressChainable;
+    selectDropdownOption(option: number): DefaultCypressChainable;
+    selectHeaderInput(): Cypress.Chainable<JQuery<HTMLInputElement>>;
+    selectInput(row: number): Cypress.Chainable<JQuery<HTMLInputElement>>;
+    // (undocumented)
+    selector: string;
+    // @internal
+    tabbableElement(): DefaultCypressChainable;
+}
+
+// @public (undocumented)
 export class FTextareaFieldPageObject extends Input implements BasePageObject {
     constructor(selector: string);
     // (undocumented)

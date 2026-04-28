@@ -14,7 +14,7 @@ Använd kolumntypen länk (`anchor`) när en cell ska navigera vidare till mer i
 Varje rad visar en länktext och en `href`.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     id: string;

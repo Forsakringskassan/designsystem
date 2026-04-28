@@ -14,7 +14,7 @@ Använd kolumntypen radrubrik (`rowheader`) när en cell ska identifiera raden o
 Det förbättrar tabellens tillgänglighet.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     fruit: string;

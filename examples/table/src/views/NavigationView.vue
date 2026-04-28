@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { type DatasetNestedKeyOf, FSelectField, useDatasetRef } from "@fkui/vue";
-import { FTable, defineTableColumns } from "@fkui/vue-labs";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 const selectedValue = ref("");
 

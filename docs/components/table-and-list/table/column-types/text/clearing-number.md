@@ -12,7 +12,7 @@ Använd clearingnummer (`text:clearingNumber`) för inmatning och visning av cle
 Clearingnummer följer samma validering, formatering och parsning som det {@link textfield-specialized#clearingnummer specialiserade inmatningsfältet clearingnummer}.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const columns = defineTableColumns<Record<string, string>>([
     {

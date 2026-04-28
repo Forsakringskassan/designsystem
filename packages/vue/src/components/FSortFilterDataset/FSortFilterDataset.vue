@@ -5,8 +5,8 @@ import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { useTranslate } from "../../plugins";
 import { type Dataset } from "../../utils";
 import { FSelectField } from "../FSelectField";
+import { provideSelectableRowSource, useSelectableRowSource } from "../FTable";
 import { FSearchTextField } from "../FTextField";
-import { provideSelectableRowSource, useSelectableRowSource } from "../selectable-row-source";
 import {
     type FSortFilterDatasetMountCallback,
     type FSortFilterDatasetSortCallback,

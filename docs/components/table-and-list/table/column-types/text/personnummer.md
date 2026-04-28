@@ -12,7 +12,7 @@ Använd personnummer (`text:personnummer`) för inmatning och visning av personn
 Personnummer följer samma validering, formatering och parsning som det {@link textfield-specialized#personnummer specialiserade inmatningsfältet personnummer}.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const columns = defineTableColumns<Record<string, string>>([
     {

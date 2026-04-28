@@ -12,7 +12,7 @@ Använd telefonnummer (`text:phoneNumber`) för inmatning och visning av telefon
 Telefonnummer följer samma validering som det {@link textfield-specialized#telefonnummer specialiserade inmatningsfältet telefonnummer}.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const columns = defineTableColumns<Record<string, string>>([
     {

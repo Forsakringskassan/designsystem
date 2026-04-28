@@ -65,3 +65,4 @@ export { Input } from "./input";
 export { FDialogueTreePageObject } from "./FDialogueTree.pageobject";
 export { FDialogueTreeItemPageObject } from "./FDialogueTreeItem.pageobject";
 export { FPaginatorPageObject } from "./FPaginator.pageobject";
+export { FTablePageObject } from "./FTable.pageobject";
