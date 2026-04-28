@@ -2,6 +2,7 @@
 title: Datamängdsorterare
 status: Produktionsklar
 layout: component
+sortorder: 4
 component: FSortFilterDataset
 search:
     terms:

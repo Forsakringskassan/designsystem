@@ -3,6 +3,7 @@ title: Kolumntyp länk i tabell
 short-title: Länk
 name: column-type-anchor
 layout: article
+sortorder: 3
 search:
     terms:
         - tabell

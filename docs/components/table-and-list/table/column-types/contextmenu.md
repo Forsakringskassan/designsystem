@@ -3,6 +3,7 @@ title: Kolumntyp kontextmeny i tabell
 short-title: Kontextmeny
 name: column-type-menu
 layout: article
+sortorder: 3
 search:
     terms:
         - menu

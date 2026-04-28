@@ -13,10 +13,10 @@ Det går också att placera länkar i tabellen.
 Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis som förklarar vilken rad som påverkas).
 Om du behöver förtydliga sammanhanget för användare med skärmläsare kan du använda en sr-only för etiketten.
 
-Exempel
-
 ## Kontextmeny
 
 Kontextmeny används för att visa åtgärder för en tabellrad och används istället för att lägga in flera knappar på raden.
 
-Exempel
+## Kod
+
+{@link action-button-link-code Läs om hur du sätter upp åtgärdsknappar och länkar i tabell.}

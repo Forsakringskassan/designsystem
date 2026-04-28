@@ -3,6 +3,7 @@ title: Anpassa egen kolumntyp i tabell
 short-title: Anpassa egen kolumntyp
 name: column-type-render
 layout: article
+sortorder: 4
 search:
     terms:
         - tabell

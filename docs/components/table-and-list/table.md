@@ -1,8 +1,8 @@
 ---
-title: Tabell
+title: Datatabell och interaktiv tabell
 status: Produktionsklar
 layout: component
-sortorder: 1
+sortorder: 5
 component:
     - FDataTable
     - FInteractiveTable
@@ -11,6 +11,10 @@ component:
 ---
 
 Använd en tabell när användaren behöver analysera och jämföra information strukturerad i rader och kolumner. Tabeller kan antingen vara enkla datatabeller för presentation, eller vara mer avancerade interaktiva tabeller.
+
+Använd i första hand den nya tabellkomponenten som på sikt kommer ersätta datatabell och interkativ tabell.
+
+{@link FTable Läs mer om nya tabellkomponenten.}
 
 I en tabell har varje rad samma grupper av information som visas kolumnvis, till exempel namn, datum, belopp och diarienummer.
 

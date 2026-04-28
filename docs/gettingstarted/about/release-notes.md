@@ -9,15 +9,39 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
-## Version v6.40.0
+## Verion 6.44.0
+
+2026-04-29
+
+### Ny tabellkomponent
+
+Den nya tabellen har tagits fram för att underlätta navigering för användaren och har ett lugnare intryck jämfört med dagens tabellkomponenter.
+Den har också en annan konfigurering vilket ger en bättre översikt och underlättar när du tar fram en tabell för din applikation.
+
+Tabellen har bland annat stöd för att användaren kan
+
+- utföra bulkoperationer
+- expandera rader
+- redigera innehåll inline
+- bläddra mellan sidor (paginera).
+
+De befintliga tabellkomponenterna datatabell och interaktiv tabell kommer deprekeras inom kort.
+Deprekering är en förvarning om att komponenter på sikt kommer tas bort.
+Vanligtvis sker detta tidigast ett år efter deprekering.
+
+{@link FTable Läs mer om nya tabellkomponenten.}
+
+{@link releases Läs om releaser och deprekering.}
+
+## Version 6.40.0
 
 2026-03-26
 
 Releasen innehåller många fixar och buggrättningar. Här är några viktiga nyheter:
 
-- Vi introducerar Definitionslista (FDefinitionList), en ny komponent för kompaktare datapresentation.
+- Vi introducerar definitionslista (FDefinitionList), en ny komponent för kompaktare datapresentation.
 
-- Vi har gjort förändringar i sökfältet för Datamängdsorteraren (FSortFilterDataset).
+- Vi har gjort förändringar i sökfältet för datamängdsorteraren (FSortFilterDataset).
   Egenskapen `placeholderFilter` och textnyckeln `fkui.sort-filter-dataset.placeholder.filter` är nu deprekerade och ersätts av `filterLabel` och `fkui.sort-filter-dataset.filter.label`.
 
 Buggfixar finns listade i {@link changelog Changelog}

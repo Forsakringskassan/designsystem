@@ -3,6 +3,7 @@ title: Kolumntyp kryssruta i tabell
 short-title: Kryssruta
 name: column-type-checkbox
 layout: article
+sortorder: 3
 search:
     terms:
         - tabell
