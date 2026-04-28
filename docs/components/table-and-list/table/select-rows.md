@@ -21,3 +21,7 @@ FTableBulkExampleMulti.vue
 ```import nomarkup
 FTableBulkExampleSingle.vue
 ```
+
+## Kod
+
+{@link select-rows-code Läs om hur du sätter upp att välja rader i tabell.}

@@ -12,7 +12,7 @@ search:
 Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig. Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis något som förklarar vilken rad som påverkas).
 Sätt kolumnens typ till `button`.
 
-{@link column-type-button Läs här om hur du sätter upp kolumntyp `button`}.
+{@link column-type-button Läs mer om hur du sätter upp kolumntyp `button`}.
 
 // plats för kodexempel
 
@@ -24,7 +24,7 @@ Om etiketten ska vara synlig använder du propen `label`. En `<span>` med sr-onl
 
 Sätt kolumnens typ till `anchor`.
 
-{@link column-type-anchor Läs här om hur du sätter upp kolumntyp `anchor`}.
+{@link column-type-anchor Läs mer om hur du sätter upp kolumntyp `anchor`}.
 
 // plats för kodexempel
 
@@ -32,4 +32,10 @@ Sätt kolumnens typ till `anchor`.
 
 Sätt kolumnens typs till `menu`
 
-{@link column-type-anchor Läs här om hur du sätter upp kolumntyp `menu`}.
+{@link column-type-anchor Läs mer om hur du sätter upp kolumntyp `menu`}.
+
+## Relaterat
+
+{@link code Kod för tabell}
+
+{@link action-button-link Åtgärdsknappar och länkar i tabell}

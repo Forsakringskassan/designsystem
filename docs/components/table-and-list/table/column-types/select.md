@@ -3,6 +3,7 @@ title: Kolumntyp dropplista i tabell
 short-title: Dropplista
 name: column-type-select
 layout: article
+sortorder: 3
 search:
     terms:
         - select

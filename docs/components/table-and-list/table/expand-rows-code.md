@@ -27,10 +27,6 @@ Se nedan exempel av data som du kan använda för att generera en expanderbar ra
 
 // plats för kodexempel
 
-// plats för kodexempel
-
-// plats för kodexempel
-
 ## Valfritt innehåll
 
 För att själv ta kontroll över hur raden presenteras använder du sloten `expandable`.
@@ -38,4 +34,8 @@ Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som
 
 Skapa inte ett för komplext expanderat innehåll som till exempel att placera ytterligare expanderbara tabeller inuti.
 
-// plats för kodexempel
+## Relaterat
+
+{@link expand-rows Expandera rader i tabell}
+
+{@link code Kod för tabell}

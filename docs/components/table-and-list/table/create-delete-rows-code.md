@@ -6,3 +6,11 @@ search:
     terms:
         - tabell
 ---
+
+Sidan kommer uppdateras.
+
+## Relaterat
+
+{@link code Kod för tabell}
+
+{@link create-delete-rows Lägga till och ta bort rader i tabell}

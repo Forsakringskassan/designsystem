@@ -3,6 +3,7 @@ title: Kolumntyp radrubrik i tabell
 short-title: Radrubrik
 name: column-type-rowheader
 layout: article
+sortorder: 3
 search:
     terms:
         - tabell

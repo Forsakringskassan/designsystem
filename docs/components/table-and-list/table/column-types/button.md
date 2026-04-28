@@ -3,6 +3,7 @@ title: Kolumntyp knapp i tabell
 short-title: Knapp
 name: column-type-button
 layout: api
+sortorder: 3
 search:
     terms:
         - tabell

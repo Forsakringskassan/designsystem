@@ -106,7 +106,6 @@ components/table-and-list/table/edit.html
 components/table-and-list/table/expand-rows-code.html
 components/table-and-list/table/expand-rows.html
 components/table-and-list/table/index.html
-components/table-and-list/table/migrating-table.html
 components/table-and-list/table/navigate.html
 components/table-and-list/table/paginate-code.html
 components/table-and-list/table/paginate.html

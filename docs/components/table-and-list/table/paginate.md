@@ -17,3 +17,7 @@ Tänk på att paginering tillsammans med andra funktioner som bulkoperation, sor
 
 När tabellen är paginerad och har bulkoperation ska användaren alltid få en bekräftelse innan åtgärd utförs.
 Visa en bekräftelsemodal som informerar hur många rader som är valda av totalt antal rader så att användaren kan bekräfta åtgärden.
+
+## Kod
+
+{@link table-paginate-code Läs om hur du sätter upp paginering i tabell.}

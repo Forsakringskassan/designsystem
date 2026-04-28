@@ -177,7 +177,7 @@ För vissa vanliga datatyper finns färdiga varianter av `text` med inbyggd form
 - {@link column-type-bank-account-number kontonummer}
 - {@link column-type-bankgiro bankgiro}
 - {@link column-type-clearing-number clearingnummer}
-- {@link column-type-date batum}
+- {@link column-type-date datum}
 - {@link column-type-email mejladress}
 - {@link column-type-number numeriskt}
 - {@link column-type-organisationsnummer organisationsnummer}
