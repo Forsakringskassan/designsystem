@@ -14,7 +14,7 @@ search:
 Använd kolumntypen kryssruta (`checkbox`) när användaren ska kunna utföra en radbunden åtgärd.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     selected: boolean;

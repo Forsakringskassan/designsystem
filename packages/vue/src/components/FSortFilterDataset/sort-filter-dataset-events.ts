@@ -1,17 +1,13 @@
 import { type InjectionKey, inject } from "vue";
 
 /**
- * Temporary public export for `f-table` component while in vue-labs.
- *
- * @public
+ * @internal
  * @since %version%
  */
 export type SortFilterDatasetEventCallback = () => void;
 
 /**
- * Temporary public export for `f-table` component while in vue-labs.
- *
- * @public
+ * @internal
  * @since %version%
  */
 export interface SortFilterDatasetEvents {
@@ -21,9 +17,7 @@ export interface SortFilterDatasetEvents {
 }
 
 /**
- * Temporary public export for `f-table` component while in vue-labs.
- *
- * @public
+ * @internal
  * @since %version%
  */
 export const sortFilterDatasetEventsKey =
@@ -31,9 +25,8 @@ export const sortFilterDatasetEventsKey =
 
 /**
  * Injects `SortFilterDatasetEvents`.
- * Temporary public export for `f-table` component while in `vue-labs`.
  *
- * @public
+ * @internal
  * @since %version%
  */
 export function useSortFilterDatasetEvents(): SortFilterDatasetEvents {

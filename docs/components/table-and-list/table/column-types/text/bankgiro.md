@@ -12,7 +12,7 @@ Använd bankgiro (`text:bankgiro`) för inmatning och visning av bankgiro i en t
 Bankgiro följer samma validering och parsning som det {@link textfield-specialized#bankgiro specialiserade inmatningsfältet bankgiro}.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const columns = defineTableColumns<Record<string, string>>([
     {

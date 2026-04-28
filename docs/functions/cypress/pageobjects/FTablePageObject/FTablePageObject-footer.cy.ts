@@ -1,4 +1,4 @@
-import { FTablePageObject } from "@fkui/vue-labs/cypress";
+import { FTablePageObject } from "@fkui/vue/cypress";
 import Example from "./FTablePageObject-footer.vue";
 
 it("footer() should get correct text from table footer.", () => {

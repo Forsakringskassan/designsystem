@@ -15,7 +15,7 @@ Använd kolumntypen renderat innehåll (`render`) när du behöver presentera n�
 
 ```ts
 import { h } from "vue";
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     status: string;

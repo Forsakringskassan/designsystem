@@ -12,7 +12,7 @@ Använd numeriskt textfält (`text:number`) för inmatning och visning av numeri
 Numeriskt textfält följer samma validering, formatering och parsning som det {@link textfield-specialized#numeriskt specialiserade inmatningsfältet numeriskt}.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const columns = defineTableColumns<Record<string, string>>([
     {

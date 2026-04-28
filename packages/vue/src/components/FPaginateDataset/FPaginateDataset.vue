@@ -3,7 +3,7 @@ import { type Ref, computed, onMounted, provide, ref, watch } from "vue";
 import { type Dataset, toDataset } from "../../utils";
 import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
 import { useSortFilterDatasetEvents } from "../FSortFilterDataset";
-import { provideSelectableRowSource, useSelectableRowSource } from "../selectable-row-source";
+import { provideSelectableRowSource, useSelectableRowSource } from "../FTable";
 import { paginateDatasetKey } from "./provide";
 
 const currentPage = defineModel<number>({
