@@ -400,72 +400,153 @@ const rows = useDatasetRef<Row>([
 
 ## Radrubrik
 
-TODO Hänvisa till kolumntypen radrubrik
-För att definiera kolumnen som radrubrik, se avsnitt Kolumntyper (länk).
+Det finns en egen kolumntyp för radrubrik.
+
+{@link column-type-rowheader Läs mer om kolumntyp radrubrik och hur den används.}
 
 ## Framhäva rader
 
-TODO plus zebra
+För att få zebrarandig tabell använd propen `striped`.
 
-Det går även att sätta egna klasser på rader med propen `rowClass`.
+```html static
+<f-table :columns :rows striped></f-table>
+```
+
+```vue nomarkup
+<script setup lang="ts">
+import { defineTableColumns, useDatasetRef, FTable } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+}
+
+const columns = defineTableColumns<Row>([
+    {
+        header: "Namn",
+        align: "left",
+    },
+    {
+        header: "Land",
+        align: "right",
+    },
+]);
+
+const rows = useDatasetRef<Row>([
+    {
+        namn: "Apelsin",
+        land: "Spanien",
+    },
+    {
+        namn: "Banan",
+        land: "Colombia",
+    },
+    {
+        namn: "Äpple",
+        land: "Sverige",
+    },
+]);
+</script>
+
+<template>
+    <f-table :columns :rows striped></f-table>
+</template>
+```
+
+Det går även att sätta egna css-klasser på rader med propen `rowClass`.
 Funktionen tar emot raden och kan returnera `string`, `string[]` eller ett objekt med klassnamn.
+
+```ts
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+}
+
+/* --- cut above --- */
+const columns = defineTableColumns<Row>([
+    {
+        header: "Namn",
+        key: "namn",
+        rowClass(row: Row) {
+            return row.name === "Banan" ? "banana" : undefined;
+        },
+    },
+]);
+```
 
 ## Radid
 
-TODO när behöver jag använda radid? Är det kopplat till `f-sort-filter-dataset`?
+Tabellen behöver kunna särskilja olika rader, och om inte nyckelattribut (`keyAttribute`) anges så hanterar tabellen det själv.
 
-För att identifiera olika rader med ett värde kan du ange namnet för en nyckel (key) med `keyAttribute`. Nyckeln finns i varje radobjekt.  
-Om du anger keyAttribute, måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.
+Om du anger `keyAttribute`, måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.
+En fördel med att ange attributet är att tabellen känner igen raden även om dess instans ersätts.
+Detta är oftast aktuellt i samband med redigering av data.
 
-Att använda keyAttribute är valfritt och det behövs inte om det finns ett naturligt id att ange för dina rader.
-Du måste använda keyAttribute om dina rader ska bibehålla aktuell status vid omladdning från REST-api eller liknande.
+```html static
+<f-table :columns :rows key-attribute="id"></f-table>
+```
 
-// plats för kodexempel
-
-// plats för kodexempel
+TODO här refererar vi till expanderbara rader och redigering av data utan att ha nämnt det tidigare.
 
 ## Tom tabell
 
-TODO korta ner text
-När tabellen är tom (finns inget innehåll att presentera) visas en text som informerar användaren om att tabellen är tom.
-Du kan ändra texten för att bättre passa innehållet, till exempel "Det finns inga betalningar" eller "Ingen anslutning finns".
-Texten sätts i slot `#empty`:
+Använd sloten `#empty` för att styra vad som visas när tabellen är tom.
+Som standard visas textnyckeln `fkui.ftable.empty.text`, se [Textnycklar](#textnycklar).
 
-// plats för kodexempel
+```html static
+<f-table :columns :rows>
+    <template #empty> Eget innehåll </template>
+</f-table>
+```
 
 ## Tabellrubrik
 
-TODO: även här kodexempel, inte formulera om så mycket. Långt ner?
-En tabell ska alltid ha en rubrik, antingen med caption-elementet eller en associerad rubrik (heading).
+En tabell ska alltid ha en rubrik, antingen med `caption`-elementet eller en associerad rubrik (heading).
 Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå tabellen.
 
-Om tabellen har en rubrik (heading) i nära anslutning som också förklarar tabellens innebörd assoccierar du den med `aria-labelledby`:
+Om tabellen har en rubrik (heading) i nära anslutning som också förklarar tabellens innebörd assoccierar du den med `aria-labelledby`.
 
-// plats för kodexempel
+```html static
+<h2 id="rubrik">Rubrik</h2>
+<f-table :columns :rows aria-labelledby="rubrik"></f-table>
+```
 
-Använd caption om tabellen inte har en naturlig rubrik:
+Använd caption om tabellen inte har en naturlig rubrik.
 
-// plats för kodexempel
+```html static
+<f-table :columns :rows>
+    <template #caption> Rubrik </template>
+</f-table>
+```
 
-I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla:
+I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla.
 
-// plats för kodexempel
+```html static
+<f-table :columns :rows>
+    <template #caption
+        ><span class="sr-only">Dold skärmläsartext</span>
+    </template>
+</f-table>
+```
 
 ## Felhantering
 
-Om ett fel uppstår vid hämtning av tabellens data kan du se till att ett felmeddelande visas med hjälp av `#empty`-sloten och en meddelanderuta (länk).
+Om ett fel uppstår vid hämtning av tabellens data kan du se till att ett felmeddelande visas med hjälp av `#empty`-sloten.
 
-// plats för kodexempel
-
-// plats för kodexempel
+```html static
+<f-table :columns :rows>
+    <template #empty> Felmeddelande </template>
+</f-table>
+```
 
 ## Textnycklar
-
-Läs mer om att (länk till translate-text, anpassa och översätta text).
 
 :::api
 translation:FTable
 :::
+
+{@link translate-text Läs mer om textnycklar.}
 
 ## API
 
