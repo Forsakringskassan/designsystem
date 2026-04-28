@@ -7,7 +7,7 @@ interface Row {
     option: string;
 }
 
-const selectFieldOptions = ["Foo", "Bar", "Baz"];
+const options = ["Foo", "Bar", "Baz"];
 
 const columns = defineTableColumns<Row>([
     {
@@ -21,8 +21,10 @@ const columns = defineTableColumns<Row>([
         type: "select",
         header: "Alternativ",
         key: "option",
-        options: selectFieldOptions,
-        label: (row) => `Alternativ för rad ${row.id}`,
+        options,
+        label(row) {
+            return `Alternativ för rad ${row.id}`;
+        },
     },
 ]);
 
@@ -41,7 +43,8 @@ const rows = useDatasetRef([
     },
 ]);
 </script>
-<!-- cut above -->
 <template>
-    <f-table v-test="'table'" :columns :rows key-attribute="id"></f-table>
+    <!-- cut above -->
+    <f-table v-test="'table'" :columns :rows></f-table>
+    <!-- cut below -->
 </template>

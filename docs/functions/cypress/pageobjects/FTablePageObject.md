@@ -30,6 +30,10 @@ new FTablePageObject(selector);
 FTablePageObject.vue
 ```
 
+```import nomarkup
+FTablePageObject.vue
+```
+
 ```import
 FTablePageObject.cy.ts
 ```
@@ -70,7 +74,11 @@ cell(descriptor);
 ### Exempel
 
 ```import static
-FTablePageObject-cell.vue
+FTablePageObject.vue
+```
+
+```import nomarkup
+FTablePageObject.vue
 ```
 
 ```import static
@@ -94,7 +102,11 @@ el();
 ### Exempel
 
 ```import static
-FTablePageObject-el.vue
+FTablePageObject.vue
+```
+
+```import nomarkup
+FTablePageObject.vue
 ```
 
 ```import
@@ -129,6 +141,10 @@ expandButton(row);
 FTablePageObject-expandButton.vue
 ```
 
+```import nomarkup
+FTablePageObject-expandButton.vue
+```
+
 ```import static
 FTablePageObject-expandButton.cy.ts
 ```
@@ -150,6 +166,10 @@ footer();
 ### Exempel
 
 ```import static
+FTablePageObject-footer.vue
+```
+
+```import nomarkup
 FTablePageObject-footer.vue
 ```
 
@@ -181,7 +201,11 @@ header(col);
 ### Exempel
 
 ```import static
-FTablePageObject-header.vue
+FTablePageObject.vue
+```
+
+```import nomarkup
+FTablePageObject.vue
 ```
 
 ```import static
@@ -197,7 +221,7 @@ Kolumnumreringen är 1-indexerad och inkluderar kolumnen för expanderingsknappa
 ### Syntax
 
 ```ts nocompile nolint
-header(col);
+headerDescription(col);
 ```
 
 #### Parametrar
@@ -212,11 +236,15 @@ header(col);
 ### Exempel
 
 ```import static
-FTablePageObject-headerTitle.vue
+FTablePageObject-headerDescription.vue
+```
+
+```import nomarkup
+FTablePageObject-headerDescription.vue
 ```
 
 ```import static
-FTablePageObject-headerTitle.cy.ts
+FTablePageObject-headerDescription.cy.ts
 ```
 
 ## headerTitle()
@@ -228,7 +256,7 @@ Kolumnumreringen är 1-indexerad och inkluderar kolumnen för expanderingsknappa
 ### Syntax
 
 ```ts nocompile nolint
-header(col);
+headerTitle(col);
 ```
 
 #### Parametrar
@@ -243,7 +271,11 @@ header(col);
 ### Exempel
 
 ```import static
-FTablePageObject-headerTitle.vue
+FTablePageObject.vue
+```
+
+```import nomarkup
+FTablePageObject.vue
 ```
 
 ```import static
@@ -269,11 +301,53 @@ rows();
 ### Exempel
 
 ```import static
-FTablePageObject-rows.vue
+FTablePageObject.vue
+```
+
+```import nomarkup
+FTablePageObject.vue
 ```
 
 ```import static
 FTablePageObject-rows.cy.ts
+```
+
+## selectDropdownOption()
+
+Hämtar ett alternativ från en cell med en öppen dropplista.
+
+Alternativnumreringen är 1-indexerad.
+
+Dropplistans element teleporteras och använder därav inte `selector`.
+Se därför till att inte flera dropplistor är öppna samtidigt vid test.
+
+### Syntax
+
+```ts nocompile nolint
+selectDropdownOption(option);
+```
+
+#### Parametrar
+
+`option: number`
+: Alternativnummer (1-indexerat).
+
+#### Returvärde
+
+`HTMLElement` med ett alternativ för dropplistan.
+
+### Exempel
+
+```import static
+FTablePageObject-selectDropdownOption.vue
+```
+
+```import nomarkup
+FTablePageObject-selectDropdownOption.vue
+```
+
+```import static
+FTablePageObject-selectDropdownOption.cy.ts
 ```
 
 ## selectHeaderInput()
@@ -295,6 +369,10 @@ selectHeaderInput();
 ### Exempel
 
 ```import static
+FTablePageObject-selectHeaderInput.vue
+```
+
+```import nomarkup
 FTablePageObject-selectHeaderInput.vue
 ```
 
@@ -331,40 +409,10 @@ selectInput(row);
 FTablePageObject-selectInput.vue
 ```
 
+```import nomarkup
+FTablePageObject-selectInput.vue
+```
+
 ```import static
 FTablePageObject-selectInput.cy.ts
-```
-
-## selectDropdownOption()
-
-Hämtar ett alternativ från en cell med en öppen dropplista.
-
-Alternativnumreringen är 1-indexerad.
-
-Dropplistans element teleporteras och använder därav inte `selector`.
-Se därför till att inte flera dropplistor är öppna samtidigt vid test.
-
-### Syntax
-
-```ts nocompile nolint
-selectDropdownOption(option);
-```
-
-#### Parametrar
-
-`option: number`
-: Alternativnummer (1-indexerat).
-
-#### Returvärde
-
-`HTMLElement` med ett alternativ för dropplistan.
-
-### Exempel
-
-```import static
-FTablePageObject-selectDropdownOption.vue
-```
-
-```import static
-FTablePageObject-selectDropdownOption.cy.ts
 ```

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
@@ -39,17 +38,9 @@ const rows = useDatasetRef([
         name: "Baz",
     },
 ]);
-
-const selectedRows = ref<Row[]>([]);
 </script>
-<!-- cut above -->
 <template>
-    <f-table
-        v-model:selected-rows="selectedRows"
-        v-test="'table'"
-        :columns
-        :rows
-        selectable="multi"
-        key-attribute="id"
-    ></f-table>
+    <!-- cut above -->
+    <f-table v-test="'table'" :columns :rows selectable="multi"></f-table>
+    <!-- cut below -->
 </template>

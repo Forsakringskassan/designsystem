@@ -41,7 +41,8 @@ const rows = useDatasetRef([
     },
 ]);
 </script>
-<!-- cut above -->
 <template>
+    <!-- cut above -->
     <f-table v-test="'table'" :columns :rows></f-table>
+    <!-- cut below -->
 </template>
