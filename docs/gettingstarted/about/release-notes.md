@@ -9,7 +9,7 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
-## Verion 6.44.0
+## Version 6.44.0
 
 2026-04-29
 
