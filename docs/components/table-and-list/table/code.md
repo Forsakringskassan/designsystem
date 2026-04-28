@@ -12,12 +12,430 @@ search:
         - kolumntyper
 ---
 
-Sidan är under omarbetning för nya tabellkomponenten och kan innehålla felaktigheter.
-
 Den här sidan innehåller information om hur du sätter upp komponenten tabell i din applikation.
+
+Du sätter upp din tabell genom att definiera kolumner och rader som ska ingå.
+
+```ts
+import { defineTableColumns, useDatasetRef } from "@fkui/vue";
+
+interface Row {
+    // definiera data
+}
+
+const columns = defineTableColumns<Row>([
+    // definiera kolumner
+]);
+
+const rows = useDatasetRef<Row>([
+    // definiera rader
+]);
+```
+
+```html static
+<f-table :columns :rows></f-table>
+```
+
+## Kolumner
+
+Du konfigurerar kolumner i tabellen med funktionen `defineTableColumns`.
+
+I funktionen definierar du upp kolumnerna i tabellen genom att bland annat bestämma/sätta kolumnrubrik, vänster-/högerjustering av innehåll, formatering, kolumntyp med mera.
+
+```ts
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+}
+
+/* --- cut above --- */
+const columns = defineTableColumns<Row>([
+    {
+        type: "text",
+        header: "Namn",
+        key: "namn",
+    },
+    {
+        type: "text",
+        header: "Land",
+        key: "land",
+    },
+]);
+```
+
+`type` anger typen av kolumn.
+Det finns flera olika typer av kolumner.
+{@link column-types Läs mer om olika kolumntyper}.
+
+`header` anger kolumnens rubrik och kan antingen sättas till en statisk text eller en `ref`.
+[Läs mer om kolumnrubriker](#kolumnrubrik).
+
+`key` anger vilken egenskap i radobjektet som tabellcellen visar.
+[Läs mer om att mappa data till kolumner](#mappa-data-till-kolumner).
+
+Utöver ovan har olika kolumntyper ofta egna konfigurationsmöjligheter.
+
+## Mappa data till kolumner
+
+```ts
+interface Row {
+    namn: string;
+    land: string;
+}
+```
+
+När du definierar kolumnen kan du ange `key`, där `key` måste vara en av de kända egenskaperna i radobjektet.
+
+```ts
+const columns = defineTableColumns<Row>([
+    {
+        key: "namn",
+    },
+]);
+```
+
+I det här fallet kommer tabellen att presentera värdet från namn-fältet i ditt radobjekt.
+
+Är du i behov av att ha mer kontroll över värde som presenteras eller skrivs kan du använda dig av funktionerna `value` och `update`.
+
+```ts
+const columns = defineTableColumns<Row>([
+    {
+        value(row) {
+            return row.namn;
+        },
+        update(row, value) {
+            row.namn = value;
+        },
+    },
+]);
+```
+
+TODO: Formatering (vad är skillnaden mellan `format` och `value` - när använder jag vilken? Vem vinner om man specar både formatter och har egen `update`-metod?)
+
+## Kolumnrubrik
+
+För att sätta kolumnrubrik använder du `header`.
+
+```ts
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+}
+
+/* --- cut above --- */
+const columns = defineTableColumns<Row>([
+    {
+        header: "Namn",
+    },
+]);
+```
+
+I det här fallet kommer kolumnens rubrik att sättas till "Namn".
+
+```ts
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+}
+
+/* --- cut above --- */
+const columns = defineTableColumns<Row>([
+    {
+        header: computed(() => `Namn ${index.value}`),
+    },
+]);
+```
+
+Om du behöver ha dynamiskt namn på din kolumn kan du använda `ref` (`computed`).
+
+Utöver `header` kan du också använda `description` för att sätta hjälptext.
+
+```ts
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+}
+
+/* --- cut above --- */
+const columns = defineTableColumns<Row>([
+    {
+        header: "Namn",
+        description: "Hjälptext",
+    },
+]);
+```
+
+TODO exemplet fungerar inte
+
+```vue nomarkup
+<script setup lang="ts">
+import { defineTableColumns, useDatasetRef, FTable } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+}
+
+const columns = defineTableColumns<Row>([
+    {
+        header: "Namn",
+        description: "Hjälptext",
+        key: "namn",
+    },
+]);
+
+const rows = useDatasetRef<Row>([]);
+</script>
+
+<template>
+    <f-table :columns :rows></f-table>
+</template>
+```
+
+## Kolumnbredder
+
+Kolumnens storlek sätts med egenskapen `size`.
+
+- `shrink` - kolumnen ta så lite plats den kan
+- `expand` - kolumnen tar så mycket plats den kan.
+
+```ts
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+}
+
+/* --- cut above --- */
+const columns = defineTableColumns<Row>([
+    {
+        header: "Namn",
+        size: "shrink",
+    },
+    {
+        header: "Land",
+        size: "expand",
+    },
+]);
+```
+
+```vue nomarkup
+<script setup lang="ts">
+import { defineTableColumns, useDatasetRef, FTable } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+}
+
+const columns = defineTableColumns<Row>([
+    {
+        header: "Namn",
+        size: "shrink",
+    },
+    {
+        header: "Land",
+        size: "expand",
+    },
+]);
+
+const rows = useDatasetRef<Row>([
+    {
+        namn: "Apelsin",
+        land: "Spanien",
+    },
+    {
+        namn: "Banan",
+        land: "Colombia",
+    },
+    {
+        namn: "Äpple",
+        land: "Sverige",
+    },
+]);
+</script>
+
+<template>
+    <f-table :columns :rows></f-table>
+</template>
+```
+
+## Vänster- och högerjustering
+
+Kolumnen kan höger- eller vänsterjusteras med egenskapen `align`.
+
+- `left` - kolumnens innehåll vänsterjusteras (standard)
+- `right` - kolumnens innehåll högerjusteras.
+
+```ts
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+}
+
+/* --- cut above --- */
+const columns = defineTableColumns<Row>([
+    {
+        header: "Namn",
+        align: "left",
+    },
+    {
+        header: "Land",
+        align: "right",
+    },
+]);
+```
+
+```vue nomarkup
+<script setup lang="ts">
+import { defineTableColumns, useDatasetRef, FTable } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+}
+
+const columns = defineTableColumns<Row>([
+    {
+        header: "Namn",
+        align: "left",
+    },
+    {
+        header: "Land",
+        align: "right",
+    },
+]);
+
+const rows = useDatasetRef<Row>([
+    {
+        namn: "Apelsin",
+        land: "Spanien",
+    },
+    {
+        namn: "Banan",
+        land: "Colombia",
+    },
+    {
+        namn: "Äpple",
+        land: "Sverige",
+    },
+]);
+</script>
+
+<template>
+    <f-table :columns :rows></f-table>
+</template>
+```
+
+## Tabulära nummer
+
+Om kolumnen presenterar numerisk data, bör egenskapen `tnum` sättas till `true` för att aktivera tabulära nummer.
+
+```ts
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    value: number;
+}
+
+/* --- cut above --- */
+const columns = defineTableColumns<Row>([
+    {
+        header: "Värde",
+        tnum: true,
+    },
+]);
+```
+
+```vue nomarkup
+<script setup lang="ts">
+import { defineTableColumns, useDatasetRef, FTable } from "@fkui/vue";
+
+interface Row {
+    value: number;
+}
+
+const columns = defineTableColumns<Row>([
+    {
+        header: "Med tnum",
+        tnum: true,
+        key: "value",
+    },
+    {
+        header: "Utan tnum",
+        tnum: false,
+        key: "value",
+    },
+]);
+
+const rows = useDatasetRef<Row>([
+    {
+        value: 111,
+    },
+    {
+        value: 888,
+    },
+    {
+        value: 181,
+    },
+]);
+</script>
+
+<template>
+    <f-table :columns :rows></f-table>
+</template>
+```
+
+## Radrubrik
+
+TODO Hänvisa till kolumntypen radrubrik
+För att definiera kolumnen som radrubrik, se avsnitt Kolumntyper (länk).
+
+## Framhäva rader
+
+TODO plus zebra
+
+Det går även att sätta egna klasser på rader med propen `rowClass`.
+Funktionen tar emot raden och kan returnera `string`, `string[]` eller ett objekt med klassnamn.
+
+## Radid
+
+TODO när behöver jag använda radid? Är det kopplat till `f-sort-filter-dataset`?
+
+För att identifiera olika rader med ett värde kan du ange namnet för en nyckel (key) med `keyAttribute`. Nyckeln finns i varje radobjekt.  
+Om du anger keyAttribute, måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.
+
+Att använda keyAttribute är valfritt och det behövs inte om det finns ett naturligt id att ange för dina rader.
+Du måste använda keyAttribute om dina rader ska bibehålla aktuell status vid omladdning från REST-api eller liknande.
+
+// plats för kodexempel
+
+// plats för kodexempel
+
+## Tom tabell
+
+TODO korta ner text
+När tabellen är tom (finns inget innehåll att presentera) visas en text som informerar användaren om att tabellen är tom.
+Du kan ändra texten för att bättre passa innehållet, till exempel "Det finns inga betalningar" eller "Ingen anslutning finns".
+Texten sätts i slot `#empty`:
+
+// plats för kodexempel
 
 ## Tabellrubrik
 
+TODO: även här kodexempel, inte formulera om så mycket. Långt ner?
 En tabell ska alltid ha en rubrik, antingen med caption-elementet eller en associerad rubrik (heading).
 Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå tabellen.
 
@@ -32,154 +450,6 @@ Använd caption om tabellen inte har en naturlig rubrik:
 I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla:
 
 // plats för kodexempel
-
-## Kolumner
-
-Du konfigurerar kolumner i tabellen med funktionen `defineTableColumns`.
-
-I funktionen definierar du upp kolumnerna i tabell genom att bland annat bestämma/sätta kolumnrubrik, vänster-/högerjustering av innehåll, formatering, validering, kolumntyp med mera.
-
-### Kolumnrubrik
-
-Bestäm hur tabellens kolumnrubriker ska vara placerade och hur data i kolumnerna ska presenteras.
-Kolumnrubriker är som standard vänsterjusterade, men om innehållet i kolumnen är numeriska tal ska du ändra till högerjusterad.
-Vid kolumnrubrik kan du också lägga till
-
-- beskrivning
-- hjälpformat.
-
-Du kan lägga till text för skärmläsare på kolumnrubriken.
-
-Om innehållet i kolumnens celler är text ska den vara vänsterjusterad och utan tnum.
-Tnum (tabular figures) är en funktion som ersätter siffror med motsvarande tecken som tar samma utrymme i bredd.
-Till exempel kommer talet 111 ta samma plats som 000.
-Vid numeriska tal ska innehållet i kolumnen däremot vara högerjusterat och med tnum.
-
-### Kolumnbredder
-
-Kolumnents bredd justeras generellt sett av cellernas innehåll men med proparna `expand` och `shrink` kan du indikera att en kolumn ska använda så mycket eller så lite utrymme som möjligt.
-
-En kolumn med `expand` tar så mycket utrymme den kan.
-En kolumn med `shrink` tar så lite utrymme den kan.
-
-Om flera kolumner har `expand` fördelas storleken godtycklingt efter webbläsarens preferens.
-
-Om inget anges fungerar kolumnen som om `expand` är satt.
-Det är fel att sätta både `expand` och `shrink` samtidigt.
-
-// plats för kodexempel
-
-### Kolumntyper
-
-Tabellen har nio olika kolumntyper som påverkar hur cellen presenteras:
-
-- radrubrik: `rowheader` (länk till avsnitt ovan?)
-- text: `text`
-- kryssruta: `checkbox` (länk till avsnitt?)
-- knapp: `button`
-- länk: `anchor`
-- dropplista: `select`
-- kontextmeny: `contextmenu`
-- specialiserade inmatningsfält: `text:namn på specialiserat inmatningsfält `
-- eget innehåll: `render`
-
-Specialiserade inmatningsfält som tabellen stödjer:
-
-- text:bankAccountNumber
-- text:bankgiro
-- txt:clearingNumber
-- text:currency
-- text:email
-- text:number
-- text:organisationsnummer
-- text:percent
-- text:personnummer
-- text:phoneNumber
-- text:plusgiro
-- text:postalCode.
-
-Du anger kolumntypen genom att sätta propen `type`.
-Utgångsvärdet för `type` är text.
-
-Kolumntypen text innebär att cellen kan presentera data i olika format och den kan även vara redigerbar.
-Använd med fördel de specialiserade inmatningsfälten eftersom de exempelvis formaterar tal med tusenavskiljare.
-Läs mer om redigering i tabell. (länk)
-
-// plats för kodexempel
-
-### Vänster- och högerjustering
-
-Använd `align` för att justera kolumner till höger eller vänster i tabellen.
-Text ska vara vänsterjusterad medan tal ska vara högerjusterade.
-Kolumner av typ `text:currency`, `text:number` och `text:percent` blir automatiskt högerjusterade.
-Alla andra blir vänsterjusterade som standard.
-
-### Tabular figures
-
-Tnum (tabular figures) är en funktion som ersätter siffror med motsvarande tecken som tar samma utrymme i bredd.
-Till exempel kommer talet 111 ta samma plats som 000.
-Vid numeriska värden ska innehållet i kolumn visas med `tnum`.
-Tnum sätts automatiskt på följande:
-
-- text:bankAccountNumber
-- text:bankgiro
-- txt:clearingNumber
-- text:currency
-- text:number
-- text:organisationsnummer
-- text:percent
-- text:personnummer
-- text:phoneNumber
-- text:plusgiro
-- text:postalCode.
-
-## Rader
-
-Tabellen kan använda radrubriker utöver kolumnrubriker.
-En radrubrik underlättar för användare med skärmläsare genom att markera vilken eller vilka celler som utgör en rubrik och blir upplästa automatiskt när skärmläsaren navigerar i tabellen.
-
-Använd radrubriker om det finns många kolumner och/eller en tydlig cell som identifierar rader från andra rader.
-För att definiera kolumnen som radrubrik, se avsnitt Kolumntyper (länk).
-
-// plats för kodexempel
-
-// plats för kodexempel
-
-Det går även att sätta egna klasser på rader med propen `rowClass`.
-Funktionen tar emot raden och kan returnera `string`, `string[]` eller ett objekt med klassnamn.
-Klasserna appliceras på radens `<tr>`-element.
-
-### Rad-id
-
-För att identifiera olika rader med ett värde kan du ange namnet för en nyckel (key) med `keyAttribute`. Nyckeln finns i varje radobjekt.  
-Om du anger keyAttribute, måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.
-
-Att använda keyAttribute är valfritt och det behövs inte om det finns ett naturligt id att ange för dina rader.
-Du måste använda keyAttribute om dina rader ska bibehålla aktuell status vid omladdning från REST-api eller liknande.
-
-// plats för kodexempel
-
-// plats för kodexempel
-
-### Framhäva rader
-
-Framhäv varannan rad när tabellen innehåller många rader och kolumner.
-Det underlättar för användaren att läsa innehållet i tabellen genom att hen lättare kan läsa samma rad över flera kolumner.
-Du gör tabellen zebrarandig genom att...
-
-## Tomt läge i tabell
-
-När tabellen är tom (finns inget innehåll att presentera) visas en text som informerar användaren om att tabellen är tom.
-Du kan ändra texten för att bättre passa innehållet, till exempel "Det finns inga betalningar" eller "Ingen anslutning finns".
-Texten sätts i slot `#empty`:
-
-// plats för kodexempel
-
-## Välja rader
-
-Användaren kan välja en eller flera rader i tabellen genom komponenterna kryssruta (länk) och radioknapp (länk).
-Om du använder kryssruta (flerval) ingår även funktionen för bulkoperation (länk) i tabellen.
-För att definiera kolumnen som kryssruta, se avsnitt Kolumntyper (länk).
 
 ## Felhantering
 
@@ -199,24 +469,10 @@ translation:FTable
 
 ## API
 
-## FTable
-
 :::api
 vue:FTable
 :::
 
-## Begränsningar i komponent
-
-(länk till andra sidan)
-
-## Återstående förbättringar i komponent
-
-(länk till andra sidan)
-
 ## Relaterat
 
-Datamängdsorteraren (länk som ska uppdateras)
-
 {@link FTable Tabell}
-
-{@link test-table Testning av tabell}
