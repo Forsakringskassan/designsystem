@@ -40,9 +40,9 @@ import {
 } from "@fkui/vue";
 
 // packages/vue-labs/dist/esm/index.esm.js
-import { Fragment as Fragment2, computed as computed3, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent as defineComponent2, guardReactiveProps, inject as inject3, mergeModels, mergeProps, nextTick as nextTick3, normalizeClass, normalizeProps, onMounted as onMounted3, onUpdated as onUpdated2, openBlock, provide as provide2, ref as ref3, renderList, renderSlot, resolveDirective, resolveDynamicComponent, toDisplayString, toRef as toRef2, toValue as toValue2, unref as unref3, useModel, useSlots, useTemplateRef, vModelText, vShow, watch as watch3, watchEffect as watchEffect3, withCtx, withDirectives, withKeys, withModifiers } from "vue";
+import { Fragment as Fragment2, computed as computed3, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent as defineComponent2, guardReactiveProps, inject as inject3, mergeModels, mergeProps, nextTick as nextTick3, normalizeClass, normalizeProps, onBeforeUnmount as onBeforeUnmount2, onMounted as onMounted3, onUpdated as onUpdated2, openBlock, provide as provide2, ref as ref3, renderList, renderSlot, resolveDirective, resolveDynamicComponent, toDisplayString, toRef as toRef2, toValue as toValue2, unref as unref3, useModel, useSlots, useTemplateRef, vModelText, vShow, watch as watch3, watchEffect as watchEffect3, withCtx, withDirectives, withKeys, withModifiers } from "vue";
 import { ElementIdService, TranslationService, ValidationService, alertScreenReader, assertRef, assertSet, debounce, formatNumber, formatPersonnummer, formatPostalCode, isEmpty, isSet, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parseDate, parseNumber, parseOrganisationsnummer, parsePersonnummer, parsePlusgiro, stripWhitespace } from "@fkui/logic";
-import { EventBus, FContextMenu, FFileItem, FFileSelector, FIcon, FSortFilterDatasetInjected, FTextField, IComboboxDropdown, IFlex, IFlexItem, IPopupError, TranslationMixin, dispatchComponentValidityEvent, findItemIdentifier, getDatasetMetadata, getItemIdentifier, setItemIdentifiers, useSelectableRowSource, useSlotUtils, useTextFieldSetup, useTranslate } from "@fkui/vue";
+import { EventBus, FContextMenu, FFileItem, FFileSelector, FIcon, FSortFilterDatasetInjected, FTextField, IComboboxDropdown, IFlex, IFlexItem, IPopupError, TranslationMixin, dispatchComponentValidityEvent, findItemIdentifier, getDatasetMetadata, getItemIdentifier, setItemIdentifiers, useSelectableRowSource, useSlotUtils, useSortFilterDatasetEvents, useTextFieldSetup, useTranslate } from "@fkui/vue";
 
 // node_modules/@vueuse/shared/index.mjs
 import { shallowRef, watchEffect, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject, provide, ref, isRef, unref, toValue as toValue$1, computed, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
@@ -4243,18 +4243,30 @@ function useSelectable(options) {
     selectableRowState: () => false,
     toggleSelectableRow: () => void 0
   };
-  const isIndeterminate = computed3(() => {
-    return selectedRows.value.length > 0 && selectedRows.value.length < toValue2(rows2).length;
-  });
-  const isAllRowsSelected = computed3(() => {
-    return selectedRows.value.length > 0 && selectedRows.value.length === toValue2(rows2).length;
-  });
+  const headerState = ref3(false);
   function selectableHeaderState() {
-    return isIndeterminate.value ? "indeterminate" : isAllRowsSelected.value;
+    return headerState.value;
   }
+  watchEffect3(() => {
+    switch (selectedRows.value.length) {
+      case 0:
+        headerState.value = false;
+        break;
+      case toValue2(rows2).length:
+        headerState.value = true;
+        break;
+      default:
+        headerState.value = "indeterminate";
+        break;
+    }
+  });
   function toggleSelectableHeader() {
-    if (isAllRowsSelected.value) selectedRows.value = [];
-    else selectedRows.value = [...toValue2(rows2)];
+    if (toValue2(rows2).length === 0) {
+      headerState.value = headerState.value !== true;
+      return;
+    }
+    if (headerState.value !== true) selectedRows.value = [...toValue2(rows2)];
+    else selectedRows.value = [];
   }
   function toggleSelectableRow(row) {
     assertRef(selectedRows);
@@ -4429,6 +4441,7 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
   emits: ["update:selectedRows"],
   setup(__props, { expose: __expose }) {
     const selectedRows = useModel(__props, "selectedRows");
+    const sortFilterDatasetEvents = useSortFilterDatasetEvents();
     const $t = useTranslate();
     const { hasSlot } = useSlotUtils();
     const tableRef = useTemplateRef("table");
@@ -4577,7 +4590,11 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
       assertRef(tableRef);
       registerCallbackOnMount(callbackSortableColumns);
       registerCallbackOnSort(callbackOnSort);
+      sortFilterDatasetEvents.onFilter(() => selectedRows.value = []);
       setDefaultCellTarget(tableRef.value);
+    });
+    onBeforeUnmount2(() => {
+      selectedRows.value = [];
     });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("table", {
