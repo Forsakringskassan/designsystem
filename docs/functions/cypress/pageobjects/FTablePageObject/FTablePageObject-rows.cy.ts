@@ -1,5 +1,5 @@
 import { FTablePageObject } from "@fkui/vue-labs/cypress";
-import Example from "./FTablePageObject-rows.vue";
+import Example from "./FTablePageObject.vue";
 
 it("rows() should get correct number of rows.", () => {
     cy.mount(Example);

@@ -17,7 +17,7 @@ const columns = defineTableColumns<Row>([
     },
     {
         type: "text",
-        header: "Name",
+        header: "Namn",
         value(row) {
             return row.name;
         },
@@ -39,7 +39,8 @@ const rows = useDatasetRef([
     },
 ]);
 </script>
-<!-- cut above -->
 <template>
+    <!-- cut above -->
     <f-table v-test="'table'" :columns :rows></f-table>
+    <!-- cut below -->
 </template>

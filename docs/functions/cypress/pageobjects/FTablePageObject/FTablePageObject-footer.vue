@@ -39,9 +39,10 @@ const rows = useDatasetRef([
     },
 ]);
 </script>
-<!-- cut above -->
 <template>
+    <!-- cut above -->
     <f-table v-test="'table'" :columns :rows>
         <template #footer> My awesome footer </template>
     </f-table>
+    <!-- cut below -->
 </template>

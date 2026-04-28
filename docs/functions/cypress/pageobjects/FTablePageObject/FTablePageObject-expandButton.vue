@@ -33,27 +33,48 @@ const rows = useDatasetRef<Row>(
             nested: [
                 {
                     id: "1-a",
-                    name: "Expanded 1",
+                    name: "Expanded 1-1",
                 },
                 {
                     id: "1-b",
-                    name: "Expanded 2",
+                    name: "Expanded 1-2",
                 },
             ],
         },
         {
             id: "2",
             name: "Bar",
+            nested: [
+                {
+                    id: "2-a",
+                    name: "Expanded 2-1",
+                },
+                {
+                    id: "2-b",
+                    name: "Expanded 2-2",
+                },
+            ],
         },
         {
             id: "3",
             name: "Baz",
+            nested: [
+                {
+                    id: "3-a",
+                    name: "Expanded 3-1",
+                },
+                {
+                    id: "3-b",
+                    name: "Expanded -32",
+                },
+            ],
         },
     ],
     "nested",
 );
 </script>
-<!-- cut above -->
 <template>
-    <f-table v-test="'table'" :columns :rows expandable-attribute="nested"></f-table>
+    <!-- cut above -->
+    <f-table v-test="'table'" :columns :rows></f-table>
+    <!-- cut below -->
 </template>
