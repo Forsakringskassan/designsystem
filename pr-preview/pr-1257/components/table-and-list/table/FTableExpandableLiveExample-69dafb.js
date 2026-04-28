@@ -28,14 +28,10 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue-labs/src/components/FTable/examples/FTableExpandableLiveExample.vue:FTableExpandableLiveExample-6c886c.js
+// virtual-entry:virtual:packages/vue-labs/src/components/FTable/examples/FTableExpandableLiveExample.vue:FTableExpandableLiveExample-69dafb.js
 import { defineComponent as _defineComponent } from "vue";
 import { computed as computed4, ref as ref4 } from "vue";
-import {
-  FCheckboxField,
-  FFieldset,
-  useDatasetRef
-} from "@fkui/vue";
+import { FCheckboxField, useDatasetRef } from "@fkui/vue";
 
 // packages/vue-labs/dist/esm/index.esm.js
 import { Fragment as Fragment2, computed as computed3, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent as defineComponent2, guardReactiveProps, inject as inject3, mergeModels, mergeProps, nextTick as nextTick3, normalizeClass, normalizeProps, onBeforeUnmount as onBeforeUnmount2, onMounted as onMounted3, onUpdated as onUpdated2, openBlock, provide as provide2, ref as ref3, renderList, renderSlot, resolveDirective, resolveDynamicComponent, toDisplayString, toRef as toRef2, toValue as toValue2, unref as unref3, useModel, useSlots, useTemplateRef, vModelText, vShow, watch as watch3, watchEffect as watchEffect3, withCtx, withDirectives, withKeys, withModifiers } from "vue";
@@ -5983,7 +5979,7 @@ var validators = [
 ];
 for (const validator of validators) ValidationService.registerValidator(validator);
 
-// virtual-entry:virtual:packages/vue-labs/src/components/FTable/examples/FTableExpandableLiveExample.vue:FTableExpandableLiveExample-6c886c.js
+// virtual-entry:virtual:packages/vue-labs/src/components/FTable/examples/FTableExpandableLiveExample.vue:FTableExpandableLiveExample-69dafb.js
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
 import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
@@ -6052,8 +6048,6 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
     });
     const __returned__ = { data, columns, rows, useCustom, components, livedata, customSlot, template, get FCheckboxField() {
       return FCheckboxField;
-    }, get FFieldset() {
-      return FFieldset;
     }, get LiveExample() {
       return LiveExample;
     } };
@@ -6068,27 +6062,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     livedata: $setup.livedata
   }, {
     default: _withCtx(() => [
-      _createVNode($setup["FFieldset"], { name: "content" }, {
-        default: _withCtx(() => [
-          _createVNode($setup["FCheckboxField"], {
-            modelValue: $setup.useCustom,
-            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.useCustom = $event),
-            value: true
-          }, {
-            default: _withCtx(() => [..._cache[1] || (_cache[1] = [
-              _createTextVNode(
-                " Valfritt inneh\xE5ll ",
-                -1
-                /* CACHED */
-              )
-            ])]),
-            _: 1
-            /* STABLE */
-          }, 8, ["modelValue"])
-        ]),
+      _createVNode($setup["FCheckboxField"], {
+        modelValue: $setup.useCustom,
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.useCustom = $event),
+        value: true
+      }, {
+        default: _withCtx(() => [..._cache[1] || (_cache[1] = [
+          _createTextVNode(
+            " Valfritt inneh\xE5ll ",
+            -1
+            /* CACHED */
+          )
+        ])]),
         _: 1
         /* STABLE */
-      })
+      }, 8, ["modelValue"])
     ]),
     _: 1
     /* STABLE */
@@ -6097,7 +6085,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-6c886c"
+  selector: "#example-69dafb"
 });
 export {
   render
