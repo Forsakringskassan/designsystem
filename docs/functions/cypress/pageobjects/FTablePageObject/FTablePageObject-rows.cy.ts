@@ -1,11 +1,11 @@
-import Example from "./FTablePageObject-caption.vue";
 import { FTablePageObject } from "@fkui/vue-labs/cypress";
+import Example from "./FTablePageObject-rows.vue";
 
-it("caption() should get correct text from table caption.", () => {
+it("rows() should get correct number of rows.", () => {
     cy.mount(Example);
 
     /* --- cut above --- */
     const table = new FTablePageObject("[data-test=table]");
-    table.caption().should("contain.text", "My awesome caption");
+    table.rows().should("have.length", 3);
     /* --- cut below --- */
 });

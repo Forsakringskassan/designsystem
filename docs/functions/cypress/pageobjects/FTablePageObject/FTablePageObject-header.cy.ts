@@ -1,5 +1,5 @@
-import Example from "./FTablePageObject-header.vue";
 import { FTablePageObject } from "@fkui/vue-labs/cypress";
+import Example from "./FTablePageObject-header.vue";
 
 it("header() should get correct element.", () => {
     cy.mount(Example);

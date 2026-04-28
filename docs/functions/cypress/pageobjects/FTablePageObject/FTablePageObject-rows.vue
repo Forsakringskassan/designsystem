@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue-labs";
 
@@ -12,7 +11,6 @@ const columns = defineTableColumns<Row>([
     {
         type: "text",
         header: "ID",
-        description: "Description 1",
         value(row) {
             return row.id;
         },
@@ -20,7 +18,6 @@ const columns = defineTableColumns<Row>([
     {
         type: "text",
         header: "Namn",
-        description: "Description 2",
         value(row) {
             return row.name;
         },

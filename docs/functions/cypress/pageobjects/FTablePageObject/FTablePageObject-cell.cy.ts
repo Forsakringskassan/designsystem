@@ -1,5 +1,5 @@
-import Example from "./FTablePageObject-cell.vue";
 import { FTablePageObject } from "@fkui/vue-labs/cypress";
+import Example from "./FTablePageObject-cell.vue";
 
 it("cell() should get correct element.", () => {
     cy.mount(Example);

@@ -1,11 +1,11 @@
-import Example from "./FTablePageObject-rows.vue";
 import { FTablePageObject } from "@fkui/vue-labs/cypress";
+import Example from "./FTablePageObject-footer.vue";
 
-it("rows() should get correct number of rows.", () => {
+it("footer() should get correct text from table footer.", () => {
     cy.mount(Example);
 
     /* --- cut above --- */
     const table = new FTablePageObject("[data-test=table]");
-    table.rows().should("have.length", 3);
+    table.footer().should("contain.text", "My awesome footer");
     /* --- cut below --- */
 });
