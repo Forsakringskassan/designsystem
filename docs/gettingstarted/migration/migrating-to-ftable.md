@@ -25,9 +25,9 @@ Det här kräver en annan lösning i `FTable`:
 
 Aktiv rad och radklick har ingen direkt motsvarighet i `FTable`.
 
-Flera actions i samma cell behöver vanligtvis lösas på ett annat sätt, till exempel med `åtgärdsknappar`.
+Flera actions i samma cell behöver vanligtvis lösas på ett annat sätt, till exempel med `kontextmeny`.
 
-Läs mer i dokumentationen om {@link action-button-link åtgärdsknappar och länkar}.
+Läs mer i dokumentationen om {@link column-type-menu kontextmeny}.
 
 Om tabellen innehåller mer komplext innehåll än vad de inbyggda kolumntyperna stödjer går det inte alltid att migrera rakt av.
 
@@ -386,7 +386,7 @@ Om du tidigare hade flera actions i samma kolumn behöver du istället:
 - lägga actions i olika kolumner, eller
 - använda `menu`
 
-Läs mer i dokumentationen om {@link action-button-link åtgärdsknappar och länkar}.
+Läs mer i dokumentationen om {@link column-type-menu kontextmeny}.
 
 ---
 
