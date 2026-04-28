@@ -17,18 +17,27 @@ Den här sidan innehåller information om hur du sätter upp komponenten tabell 
 Du sätter upp din tabell genom att definiera kolumner och rader som ska ingå.
 
 ```ts
-import { defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { useDatasetRef } from "@fkui/vue";
+import { defineTableColumns } from "@fkui/vue-labs";
 
+// definiera data
 interface Row {
-    // definiera data
+    namn: string;
 }
 
+// definiera kolumner
 const columns = defineTableColumns<Row>([
-    // definiera kolumner
+    {
+        type: "text",
+        header: "Namn",
+    },
 ]);
 
+// definiera rader
 const rows = useDatasetRef<Row>([
-    // definiera rader
+    {
+        namn: "Banan",
+    },
 ]);
 ```
 
@@ -43,7 +52,7 @@ Du konfigurerar kolumner i tabellen med funktionen `defineTableColumns`.
 I funktionen definierar du upp kolumnerna i tabellen genom att bland annat bestämma/sätta kolumnrubrik, vänster-/högerjustering av innehåll, formatering, kolumntyp med mera.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue";
+import { defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
     namn: string;
@@ -89,8 +98,16 @@ interface Row {
 När du definierar kolumnen kan du ange `key`, där `key` måste vara en av de kända egenskaperna i radobjektet.
 
 ```ts
+import { defineTableColumns } from "@fkui/vue-labs";
+
+interface Row {
+    namn: string;
+}
+
 const columns = defineTableColumns<Row>([
     {
+        type: "text",
+        header: "Namn",
         key: "namn",
     },
 ]);
@@ -101,12 +118,23 @@ I det här fallet kommer tabellen att presentera värdet från namn-fältet i di
 Är du i behov av att ha mer kontroll över värde som presenteras eller skrivs kan du använda dig av funktionerna `value` och `update`.
 
 ```ts
+import { defineTableColumns } from "@fkui/vue-labs";
+
+interface Row {
+    namn: string;
+    land: string;
+}
+
+/* --- cut above --- */
+
 const columns = defineTableColumns<Row>([
     {
+        type: "text",
+        header: "Namn",
         value(row) {
             return row.namn;
         },
-        update(row, value) {
+        update(row, value: string) {
             row.namn = value;
         },
     },
@@ -120,7 +148,7 @@ TODO: Formatering (vad är skillnaden mellan `format` och `value` - när använd
 För att sätta kolumnrubrik använder du `header`.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue";
+import { defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
     namn: string;
@@ -138,12 +166,15 @@ const columns = defineTableColumns<Row>([
 I det här fallet kommer kolumnens rubrik att sättas till "Namn".
 
 ```ts
-import { defineTableColumns } from "@fkui/vue";
+import { computed, ref } from "vue";
+import { defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
     namn: string;
     land: string;
 }
+
+const index = ref(1);
 
 /* --- cut above --- */
 const columns = defineTableColumns<Row>([
@@ -158,7 +189,7 @@ Om du behöver ha dynamiskt namn på din kolumn kan du använda `ref` (`computed
 Utöver `header` kan du också använda `description` för att sätta hjälptext.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue";
+import { defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
     namn: string;
@@ -178,7 +209,8 @@ TODO exemplet fungerar inte
 
 ```vue nomarkup
 <script setup lang="ts">
-import { defineTableColumns, useDatasetRef, FTable } from "@fkui/vue";
+import { useDatasetRef } from "@fkui/vue";
+import { defineTableColumns, FTable } from "@fkui/vue-labs";
 
 interface Row {
     namn: string;
@@ -206,10 +238,10 @@ const rows = useDatasetRef<Row>([]);
 Kolumnens storlek sätts med egenskapen `size`.
 
 - `shrink` - kolumnen ta så lite plats den kan
-- `expand` - kolumnen tar så mycket plats den kan.
+- `grow` - kolumnen tar så mycket plats den kan.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue";
+import { defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
     namn: string;
@@ -224,14 +256,15 @@ const columns = defineTableColumns<Row>([
     },
     {
         header: "Land",
-        size: "expand",
+        size: "grow",
     },
 ]);
 ```
 
 ```vue nomarkup
 <script setup lang="ts">
-import { defineTableColumns, useDatasetRef, FTable } from "@fkui/vue";
+import { useDatasetRef } from "@fkui/vue";
+import { defineTableColumns, FTable } from "@fkui/vue-labs";
 
 interface Row {
     namn: string;
@@ -245,7 +278,7 @@ const columns = defineTableColumns<Row>([
     },
     {
         header: "Land",
-        size: "expand",
+        size: "grow",
     },
 ]);
 
@@ -278,7 +311,7 @@ Kolumnen kan höger- eller vänsterjusteras med egenskapen `align`.
 - `right` - kolumnens innehåll högerjusteras.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue";
+import { defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
     namn: string;
@@ -300,7 +333,8 @@ const columns = defineTableColumns<Row>([
 
 ```vue nomarkup
 <script setup lang="ts">
-import { defineTableColumns, useDatasetRef, FTable } from "@fkui/vue";
+import { useDatasetRef } from "@fkui/vue";
+import { defineTableColumns, FTable } from "@fkui/vue-labs";
 
 interface Row {
     namn: string;
@@ -344,7 +378,7 @@ const rows = useDatasetRef<Row>([
 Om kolumnen presenterar numerisk data, bör egenskapen `tnum` sättas till `true` för att aktivera tabulära nummer.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue";
+import { defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
     value: number;
@@ -361,7 +395,8 @@ const columns = defineTableColumns<Row>([
 
 ```vue nomarkup
 <script setup lang="ts">
-import { defineTableColumns, useDatasetRef, FTable } from "@fkui/vue";
+import { useDatasetRef } from "@fkui/vue";
+import { defineTableColumns, FTable } from "@fkui/vue-labs";
 
 interface Row {
     value: number;
@@ -414,7 +449,8 @@ För att få zebrarandig tabell använd propen `striped`.
 
 ```vue nomarkup
 <script setup lang="ts">
-import { defineTableColumns, useDatasetRef, FTable } from "@fkui/vue";
+import { useDatasetRef } from "@fkui/vue";
+import { defineTableColumns, FTable } from "@fkui/vue-labs";
 
 interface Row {
     namn: string;
@@ -457,22 +493,22 @@ Det går även att sätta egna css-klasser på rader med propen `rowClass`.
 Funktionen tar emot raden och kan returnera `string`, `string[]` eller ett objekt med klassnamn.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue";
+import { defineTableColumns } from "@fkui/vue-labs";
 
 interface Row {
+    id: string;
     namn: string;
 }
 
 /* --- cut above --- */
-const columns = defineTableColumns<Row>([
-    {
-        header: "Namn",
-        key: "namn",
-        rowClass(row: Row) {
-            return row.name === "Banan" ? "banana" : undefined;
-        },
-    },
-]);
+
+function bananaRowClass(row: Row): string | undefined {
+    return row.namn === "Banan" ? "banana" : undefined;
+}
+```
+
+```html static
+<f-table :columns :rows :rowClass="bananaRowClass" key-attribute="id"></f-table>
 ```
 
 ## Radid
