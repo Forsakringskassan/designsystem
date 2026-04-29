@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-ef794d.json"
+            href="../../../search-data-a2efe5.json"
             as="fetch"
             crossorigin
-            integrity="sha384-a/TpLGS0Sjv7VQ8ocWYSSOpZWKR6xIv+d7/P0hcG7esziJ2OBeExUvuZcbtEXyAJ"
+            integrity="sha384-I/m74hYbnIfpTsn4CgYD5oawRGQflTZGY/O5kid5sWDuW4LzgtBBrheP6+lcyKXc"
             id="search-data"
         />
     </head>
@@ -1597,8 +1597,25 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Sidan kommer uppdateras.</p>
-<h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell</a></p>
+                    <div id="content"><p class="docs-paragraph">Tabellen kan kombineras med <a href="../../pagination.html">paginering</a>.</p>
+
+                <div
+                    id="example-25c78a"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-paginate-dataset</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems }&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span> <span class="hljs-attr">:columns</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-paginator</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-paginate-dataset</span>&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell</a></p>
 <p class="docs-paragraph"><a href="./paginate.html">Paginera i tabell</a></p>
 
 
@@ -1648,9 +1665,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/4f0b3a4d61709c31786370751c8faa57e575a87b">4f0b3a4</a>)<br />
+<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/db3ead41bd835b0c46a21f4c75d88aa9594a2974">db3ead4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1163">PR 1163</a><br />
-        2026-04-29 10:11
+        2026-04-29 11:31
 </div>
 <div class="toolbar__item">
     <form id="version">
