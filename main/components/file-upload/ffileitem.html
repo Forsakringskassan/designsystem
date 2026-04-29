@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-7b44d4.json"
+            href="../../search-data-d7bede.json"
             as="fetch"
             crossorigin
-            integrity="sha384-OCrTXpkA27LRtYlGCBngbj/D+Kmi2+PH6k2Obbj144Ge8skVrbwqRFCUkGLzabf4"
+            integrity="sha384-JvCWZr9tDuAitTq1wqE+qg+tKyGCiROuZ9k/weAeu7u0l2dVYL1vkuq06l35/bs1"
             id="search-data"
         />
     </head>
@@ -1583,7 +1583,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3678763852f7b83768f6c100a7409cc9d9dc21d7/packages/vue/src/components/FFileItem/FFileItem.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/58b5aca491d7e4a415d5fcc5124e884a73ea5b92/packages/vue/src/components/FFileItem/FFileItem.vue">
                 FFileItem
             </a>
             
@@ -1637,13 +1637,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-4ecd90"></div>
+        <div id="example-abff5a"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFileItemDefault-4ecd90.js"></script>
+        <script type="module" src="./FFileItemDefault-abff5a.js"></script>
     
                 </div>
                 <div>
@@ -1696,13 +1696,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-fd781e"></div>
+        <div id="example-a26241"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFileItemButtonProgress-fd781e.js"></script>
+        <script type="module" src="./FFileItemButtonProgress-a26241.js"></script>
     
                 </div>
                 <div>
@@ -1731,11 +1731,16 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFileItemButtonProgress&quot;</span>,
     <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FFileItem</span>, <span class="hljs-title class_">FIcon</span>, <span class="hljs-title class_">FProgressbar</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-title function_">data</span>(): {
+        <span class="hljs-attr">fileName</span>: string;
+        <span class="hljs-attr">mimeType</span>: string;
+        <span class="hljs-attr">progress</span>: number | <span class="hljs-string">&quot;&quot;</span>;
+        <span class="hljs-attr">filteredProgress</span>: number;
+    } {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">fileName</span>: <span class="hljs-string">&quot;bar.pdf&quot;</span>,
             <span class="hljs-attr">mimeType</span>: <span class="hljs-string">&quot;application/pdf&quot;</span>,
-            <span class="hljs-attr">progress</span>: <span class="hljs-number">30</span> <span class="hljs-keyword">as</span> number | <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">progress</span>: <span class="hljs-number">30</span>,
             <span class="hljs-attr">filteredProgress</span>: <span class="hljs-number">30</span>,
         };
     },
@@ -1803,13 +1808,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-4d2b1c"></div>
+        <div id="example-eed494"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FFileItemIcons-4d2b1c.js"></script>
+        <script type="module" src="./FFileItemIcons-eed494.js"></script>
     
                 </div>
                 <div>
@@ -2061,9 +2066,9 @@ If the prop is not set a random value will be generated.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/3678763852f7b83768f6c100a7409cc9d9dc21d7">3678763</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/58b5aca491d7e4a415d5fcc5124e884a73ea5b92">58b5aca</a>)<br />
         
-        2026-04-29 12:56
+        2026-04-29 13:27
 </div>
 <div class="toolbar__item">
     <form id="version">
