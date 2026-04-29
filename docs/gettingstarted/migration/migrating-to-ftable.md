@@ -3,7 +3,9 @@ title: FTable migreringsguide
 layout: article
 ---
 
-`FDataTable` och `FInteractiveTable` är deprekerade och ersätts med {@link component:FTable}
+Den här guiden beskriver hur du migrerar från `FDataTable` och `FInteractiveTable` till {@link component:FTable}.
+
+Om du tidigare importerade `FTable` från `@fkui/vue-labs` behöver du nu uppdatera importen till `@fkui/vue`.
 
 **Vid migrering till `FTable` är det här de viktigaste skillnaderna:**
 
@@ -44,7 +46,7 @@ I `FInteractiveTable` definierades kolumner i template med `FTableColumn`.
 I `FTable` definieras kolumner istället i kod med `defineTableColumns(...)`.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     name: string;
@@ -96,7 +98,7 @@ Läs mer i dokumentationen om {@link column-types kolumntyper}.
 Det vanligaste är att använda `key`.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     name: string;
@@ -119,7 +121,7 @@ Till exempel innebär `key: "name"` att kolumnen läser från och skriver till `
 Om du behöver styra läsning eller skrivning själv kan du använda `value` och `update`.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     id: string;
@@ -183,7 +185,7 @@ Läs mer i dokumentationen om {@link column-types kolumntyper}.
 I `FTable` definieras redigering och validering i kolumnkonfigurationen.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     id: string;
