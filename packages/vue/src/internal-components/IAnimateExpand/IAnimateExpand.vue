@@ -67,10 +67,16 @@ export default defineComponent({
             },
         },
     },
-    data() {
+    data(): {
+        internalExpanded: boolean;
+        height: number | string;
+        isAnimating: boolean;
+        cssClasses: string;
+        timerList: Array<ReturnType<typeof setTimeout>>;
+    } {
         return {
             internalExpanded: Boolean(this.expanded),
-            height: 0 as number | string,
+            height: 0,
             isAnimating: false,
             cssClasses: "",
             /**
@@ -95,7 +101,7 @@ export default defineComponent({
              * |                      |
              * ```
              */
-            timerList: [] as Array<ReturnType<typeof setTimeout>>,
+            timerList: [],
         };
     },
     computed: {
