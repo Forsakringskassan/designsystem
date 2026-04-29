@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-dd9333.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-391bd8.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-dd9333.js": "sha384-hJfZrM4joLGtaQv9d3S72beFjHg0YOMFy4/NG/HE1jCjoN1zNFalDjfKKwQtVPPI",
+    "../../assets/vendor-fkui-vue-391bd8.js": "sha384-ocfNTZPWp0hmg6B8jR0a7t26G8vIgZ0/zutDhMUfVLx3OnR/yWIHqMrGaTSCEIRF",
     "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-2206e3.json"
+            href="../../search-data-40e972.json"
             as="fetch"
             crossorigin
-            integrity="sha384-WYzAYux4whphe0fKhH3jvpbxUczPJKCyknj9rs4YiTzIqOUuZZUKyAS2VoNnlfeQ"
+            integrity="sha384-jnSFFz6qOTmemNWySUGMnZfAzgdtUIBm/OGrKTbe3AZv7g9Uaz2qiECOEHEz/wF3"
             id="search-data"
         />
     </head>
@@ -1028,251 +1028,6 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <li>använda <code>menu</code></li>
 </ul>
 <p class="docs-paragraph">Läs mer i dokumentationen om <a href="../../components/table-and-list/table/column-types/contextmenu.html">kontextmeny</a>.</p>
-<hr>
-
-            <div class="docs-messagebox docs-messagebox--warning">
-                <p class="docs-messagebox__title">OBS!</p>
-                <p class="docs-paragraph">Nedanstående ska bort men ligger kvar som referens för eventuell dokumentations uppdatering.</p>
-
-            </div>
-        <!-- TODO: allt under flyttas eventuellt som exempel till dokumentationen -->
-<p class="docs-paragraph"><strong>Textkolumn</strong></p>
-
-                <div
-                    id="example-43fecd"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Namn&quot; type=&quot;text&quot;&gt;</span>
-<span class="hljs-deletion">-    {{ row.name }}</span>
-<span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-<span class="hljs-addition">+{</span>
-<span class="hljs-addition">+    type: &quot;text&quot;,</span>
-<span class="hljs-addition">+    header: &quot;Namn&quot;,</span>
-<span class="hljs-addition">+    key: &quot;name&quot;,</span>
-<span class="hljs-addition">+}</span>
-</code></pre>
-                </div>
-            <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen text</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<p class="docs-paragraph"><strong>Formatterade textkolumner</strong></p>
-
-                <div
-                    id="example-addd4b"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Skapad&quot; type=&quot;text&quot;&gt;</span>
-<span class="hljs-deletion">-   &lt;span v-format:date=&quot;row.createdAt&quot;&gt;&lt;/span&gt;</span>
-<span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-<span class="hljs-addition">+{</span>
-<span class="hljs-addition">+    type: &quot;text:date&quot;,</span>
-<span class="hljs-addition">+    header: &quot;Skapad&quot;,</span>
-<span class="hljs-addition">+    key: &quot;createdAt&quot;,</span>
-<span class="hljs-addition">+}</span>
-</code></pre>
-                </div>
-            
-                <div
-                    id="example-5c5ff9"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Antal&quot; type=&quot;numeric&quot;&gt;</span>
-<span class="hljs-deletion">-   {{ row.amount }}</span>
-<span class="hljs-deletion">-&lt;f-table-column&gt;</span>
-<span class="hljs-addition">+{</span>
-<span class="hljs-addition">+    type: &quot;text:number&quot;,</span>
-<span class="hljs-addition">+    header: &quot;Antal&quot;</span>
-<span class="hljs-addition">+    key: &quot;amount&quot;,</span>
-<span class="hljs-addition">+}</span>
-</code></pre>
-                </div>
-            <p class="docs-paragraph"><a href="#">Läs mer om formatterade textkolumner</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<p class="docs-paragraph"><strong>Checkbox-kolumn</strong></p>
-
-                <div
-                    id="example-048172"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Aktiv&quot;&gt;</span>
-<span class="hljs-deletion">-   &lt;f-checkbox-field</span>
-<span class="hljs-deletion">-       :model-value=&quot;row.active&quot;</span>
-<span class="hljs-deletion">-       @update:model-value=&quot;row.active = $event&quot;</span>
-<span class="hljs-deletion">-   &lt;/f-checkbox-field&gt;</span>
-<span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-<span class="hljs-addition">+{</span>
-<span class="hljs-addition">+    type: &quot;checkbox&quot;,</span>
-<span class="hljs-addition">+    header: &quot;Aktiv&quot;,</span>
-<span class="hljs-addition">+    key: &quot;active&quot;,</span>
-<span class="hljs-addition">+    label(row) {</span>
-<span class="hljs-addition">+            return `Val för rad ${row.id}`;</span>
-<span class="hljs-addition">+        },</span>
-<span class="hljs-addition">+}</span>
-</code></pre>
-                </div>
-            
-            <div class="docs-messagebox docs-messagebox--info">
-                <p class="docs-messagebox__title">Tänk på att</p>
-                <p class="docs-paragraph"><code>checkbox</code> är en vanlig kolumn i tabellen.</p>
-<p class="docs-paragraph">Det är inte samma sak som valbara rader.</p>
-
-            </div>
-        <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen checkbox</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<p class="docs-paragraph"><a href="#">Läs mer om valbara rader</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<p class="docs-paragraph"><strong>Rowheader</strong></p>
-
-                <div
-                    id="example-12e088"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Namn&quot; :row-header=&quot;true&quot;&gt;</span>
-<span class="hljs-deletion">-   {{ row.name }}</span>
-<span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-<span class="hljs-addition">+{</span>
-<span class="hljs-addition">+    type: &quot;rowheader&quot;,</span>
-<span class="hljs-addition">+    header: &quot;Namn&quot;,</span>
-<span class="hljs-addition">+    text(row) {</span>
-<span class="hljs-addition">+        return row.name;</span>
-<span class="hljs-addition">+    },</span>
-<span class="hljs-addition">+}</span>
-</code></pre>
-                </div>
-            <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen rowheader</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<p class="docs-paragraph"><strong>Anchor</strong></p>
-
-                <div
-                    id="example-e0fc12"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Länk&quot; type=&quot;text&quot;&gt;</span>
-<span class="hljs-deletion">-   &lt;a :href=&quot;row.href&quot;&gt;Öppna&lt;/a&gt;</span>
-<span class="hljs-deletion">-&lt;/f-table-column&gt;</span>
-<span class="hljs-addition">+{</span>
-<span class="hljs-addition">+    type: &quot;anchor&quot;,</span>
-<span class="hljs-addition">+    header: &quot;Länk&quot;,</span>
-<span class="hljs-addition">+    href: &quot;#&quot;,</span>
-<span class="hljs-addition">+    text() {</span>
-<span class="hljs-addition">+        return &quot;Öppna&quot;;</span>
-<span class="hljs-addition">+    },</span>
-<span class="hljs-addition">+}</span>
-</code></pre>
-                </div>
-            <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen anchor</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<p class="docs-paragraph"><strong>Menu</strong></p>
-
-                <div
-                    id="example-c9512f"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="typescript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-
-<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
-    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
-}
-
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">onEdit</span>(<span class="hljs-params"><span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span></span>): <span class="hljs-built_in">void</span> {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Ändra&quot;</span>, row);
-}
-
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">onDelete</span>(<span class="hljs-params"><span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span></span>): <span class="hljs-built_in">void</span> {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Ta bort&quot;</span>, row);
-}
-
-<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
-    {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;menu&quot;</span>,
-        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärder&quot;</span>,
-        <span class="hljs-title function_">text</span>(<span class="hljs-params">row</span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">`Visa åtgärder för <span class="hljs-subst">${row.name}</span>`</span>;
-        },
-        <span class="hljs-attr">actions</span>: [
-            {
-                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ändra&quot;</span>,
-                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;pen&quot;</span>,
-                <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
-                    <span class="hljs-title function_">onEdit</span>(row);
-                },
-            },
-            {
-                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ta bort&quot;</span>,
-                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
-                <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
-                    <span class="hljs-title function_">onDelete</span>(row);
-                },
-            },
-        ],
-    },
-]);
-</code></pre>
-                </div>
-            <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen menu</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<p class="docs-paragraph"><strong>Select</strong></p>
-
-                <div
-                    id="example-1497c8"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="typescript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
-
-<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
-    <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
-    <span class="hljs-attr">item</span>: <span class="hljs-built_in">string</span>;
-}
-
-<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
-    {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;select&quot;</span>,
-        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Val&quot;</span>,
-        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;item&quot;</span>,
-        <span class="hljs-title function_">label</span>(<span class="hljs-params">row</span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">`Val för rad <span class="hljs-subst">${row.id}</span>`</span>;
-        },
-        <span class="hljs-attr">options</span>: [<span class="hljs-string">&quot;Item 1&quot;</span>, <span class="hljs-string">&quot;Item 2&quot;</span>, <span class="hljs-string">&quot;Item 3&quot;</span>],
-    },
-]);
-</code></pre>
-                </div>
-            
-            <div class="docs-messagebox docs-messagebox--info">
-                <p class="docs-messagebox__title">Tänk på att</p>
-                <p class="docs-paragraph">Om alternativen laddas asynkront kan <code>columns</code> behöva byggas med <code>computed(...)</code> så att <code>options</code> uppdateras när datat har laddat klart. Annars kan selecten renderas innan alternativen finns tillgängliga, vilket gör att det valda värdet inte visas som förväntat.</p>
-
-            </div>
-        <p class="docs-paragraph"><a href="#">Läs mer om kolumntypen select</a> <!-- TODO: ersätt med riktig docs-länk --></p>
-<p class="docs-paragraph"><strong>Anpassade celler</strong></p>
-<p class="docs-paragraph">Om tabellen innehåller mer komplext innehåll än vad de inbyggda kolumntyperna stödjer går det inte alltid att migrera rakt av.</p>
-<p class="docs-paragraph">Kontakta i första hand teamet för att reda ut om scenariot bör stödjas av <code>FTable</code> eller om det är ett rimligt specialfall.</p>
-<p class="docs-paragraph"><a href="#">Läs mer om anpassade celler</a> <!-- TODO: ersätt med riktig docs-länk --></p>
 
 
                     </div>
@@ -1321,9 +1076,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/dd7c338f9da991e4fbf4765ed78f288099e0b2dd">dd7c338</a>)<br />
+<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/1bc34b4fb09e0c4d78c237a8b5a15bce870d8cf3">1bc34b4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1241">PR 1241</a><br />
-        2026-04-28 06:30
+        2026-04-29 08:24
 </div>
 <div class="toolbar__item">
     <form id="version">

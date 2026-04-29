@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-dd9333.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-391bd8.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-dd9333.js": "sha384-hJfZrM4joLGtaQv9d3S72beFjHg0YOMFy4/NG/HE1jCjoN1zNFalDjfKKwQtVPPI",
+    "../../assets/vendor-fkui-vue-391bd8.js": "sha384-ocfNTZPWp0hmg6B8jR0a7t26G8vIgZ0/zutDhMUfVLx3OnR/yWIHqMrGaTSCEIRF",
     "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-2206e3.json"
+            href="../../search-data-40e972.json"
             as="fetch"
             crossorigin
-            integrity="sha384-WYzAYux4whphe0fKhH3jvpbxUczPJKCyknj9rs4YiTzIqOUuZZUKyAS2VoNnlfeQ"
+            integrity="sha384-jnSFFz6qOTmemNWySUGMnZfAzgdtUIBm/OGrKTbe3AZv7g9Uaz2qiECOEHEz/wF3"
             id="search-data"
         />
     </head>
@@ -586,7 +586,9 @@
                             </summary>
                             <ul>
                                 
-                                <li><a href="#version_v6_40_0">Version v6.40.0</a></li>
+                                <li><a href="#version_6_44_0">Version 6.44.0</a></li>
+                                
+                                <li><a href="#version_6_40_0">Version 6.40.0</a></li>
                                 
                                 <li><a href="#version_6_38_0">Version 6.38.0</a></li>
                                 
@@ -662,14 +664,29 @@
                     </div>
                     
 
-                    <div id="content"><h2 id="version_v6_40_0" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#version_v6_40_0">Version v6.40.0</a></h2><p class="docs-paragraph">2026-03-26</p>
+                    <div id="content"><h2 id="version_6_44_0" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#version_6_44_0">Version 6.44.0</a></h2><p class="docs-paragraph">2026-04-29</p>
+<h3 id="ny_tabellkomponent" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ny_tabellkomponent">Ny tabellkomponent</a></h3><p class="docs-paragraph">Den nya tabellen har tagits fram för att underlätta navigering för användaren och har ett lugnare intryck jämfört med dagens tabellkomponenter.
+Den har också en annan konfigurering vilket ger en bättre översikt och underlättar när du tar fram en tabell för din applikation.</p>
+<p class="docs-paragraph">Tabellen har bland annat stöd för att användaren kan</p>
+<ul>
+<li>utföra bulkoperationer</li>
+<li>expandera rader</li>
+<li>redigera innehåll inline</li>
+<li>bläddra mellan sidor (paginera).</li>
+</ul>
+<p class="docs-paragraph">De befintliga tabellkomponenterna datatabell och interaktiv tabell kommer deprekeras inom kort.
+Deprekering är en förvarning om att komponenter på sikt kommer tas bort.
+Vanligtvis sker detta tidigast ett år efter deprekering.</p>
+<p class="docs-paragraph"><a href="../../components/table-and-list/table">Läs mer om nya tabellkomponenten.</a></p>
+<p class="docs-paragraph"><a href="./releases.html">Läs om releaser och deprekering.</a></p>
+<h2 id="version_6_40_0" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#version_6_40_0">Version 6.40.0</a></h2><p class="docs-paragraph">2026-03-26</p>
 <p class="docs-paragraph">Releasen innehåller många fixar och buggrättningar. Här är några viktiga nyheter:</p>
 <ul>
 <li>
-<p class="docs-paragraph">Vi introducerar Definitionslista (FDefinitionList), en ny komponent för kompaktare datapresentation.</p>
+<p class="docs-paragraph">Vi introducerar definitionslista (FDefinitionList), en ny komponent för kompaktare datapresentation.</p>
 </li>
 <li>
-<p class="docs-paragraph">Vi har gjort förändringar i sökfältet för Datamängdsorteraren (FSortFilterDataset).
+<p class="docs-paragraph">Vi har gjort förändringar i sökfältet för datamängdsorteraren (FSortFilterDataset).
 Egenskapen <code>placeholderFilter</code> och textnyckeln <code>fkui.sort-filter-dataset.placeholder.filter</code> är nu deprekerade och ersätts av <code>filterLabel</code> och <code>fkui.sort-filter-dataset.filter.label</code>.</p>
 </li>
 </ul>
@@ -914,9 +931,9 @@ blev ifyllt (t.ex. ett fält för att ange ett namn).</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/dd7c338f9da991e4fbf4765ed78f288099e0b2dd">dd7c338</a>)<br />
+<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/1bc34b4fb09e0c4d78c237a8b5a15bce870d8cf3">1bc34b4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1241">PR 1241</a><br />
-        2026-04-28 06:30
+        2026-04-29 08:24
 </div>
 <div class="toolbar__item">
     <form id="version">
