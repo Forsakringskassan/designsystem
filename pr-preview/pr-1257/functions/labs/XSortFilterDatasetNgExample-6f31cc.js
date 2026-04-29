@@ -30,7 +30,7 @@ function setup(options) {
 
 // virtual-entry:virtual:packages/vue-labs/src/components/XSortFilterDatasetNg/examples/XSortFilterDatasetNgExample.vue:XSortFilterDatasetNgExample-6f31cc.js
 import { defineComponent as _defineComponent } from "vue";
-import { computed as computed2, ref as ref2, useTemplateRef as useTemplateRef2 } from "vue";
+import { computed as computed2, ref as ref2, useTemplateRef } from "vue";
 import {
   FCheckboxField,
   FFieldset,
@@ -40,9 +40,9 @@ import {
 } from "@fkui/vue";
 
 // packages/vue-labs/dist/esm/index.esm.js
-import { Fragment, computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, guardReactiveProps, inject, mergeModels, mergeProps, nextTick, normalizeClass, normalizeProps, onBeforeUnmount, onMounted, onUpdated, openBlock, provide, ref, renderList, renderSlot, resolveDirective, resolveDynamicComponent, toDisplayString, toRef, toValue, unref, useModel, useSlots, useTemplateRef, vModelText, vShow, watch, watchEffect, withCtx, withDirectives, withKeys, withModifiers } from "vue";
-import { ElementIdService, TranslationService, ValidationService, alertScreenReader, assertRef, assertSet, debounce, formatNumber, formatPersonnummer, formatPostalCode, isEmpty, isSet, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parseDate, parseNumber, parseOrganisationsnummer, parsePersonnummer, parsePlusgiro, stripWhitespace } from "@fkui/logic";
-import { EventBus, FContextMenu, FFileItem, FFileSelector, FIcon, FSortFilterDatasetInjected, FTextField, IComboboxDropdown, IFlex, IFlexItem, IPopupError, TranslationMixin, dispatchComponentValidityEvent, findItemIdentifier, getDatasetMetadata, getItemIdentifier, setItemIdentifiers, useSelectableRowSource, useSlotUtils, useSortFilterDatasetEvents, useTextFieldSetup, useTranslate } from "@fkui/vue";
+import { computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, guardReactiveProps, normalizeClass, normalizeProps, openBlock, ref, renderSlot, resolveDirective, toDisplayString, unref, withCtx, withDirectives } from "vue";
+import { TranslationService, ValidationService, alertScreenReader, debounce, isEmpty, isSet, stripWhitespace } from "@fkui/logic";
+import { EventBus, FFileItem, FFileSelector, FIcon, FTextField, TranslationMixin, useTextFieldSetup, useTranslate } from "@fkui/vue";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var require_global_this = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var check = function(it) {
@@ -843,57 +843,6 @@ var require_export = /* @__PURE__ */ __commonJSMin(((exports, module) => {
     }
   };
 }));
-var require_an_instance = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var isPrototypeOf = require_object_is_prototype_of();
-  var $TypeError = TypeError;
-  module.exports = function(it, Prototype) {
-    if (isPrototypeOf(Prototype, it)) return it;
-    throw new $TypeError("Incorrect invocation");
-  };
-}));
-var require_correct_prototype_getter = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  module.exports = !require_fails()(function() {
-    function F() {
-    }
-    F.prototype.constructor = null;
-    return Object.getPrototypeOf(new F()) !== F.prototype;
-  });
-}));
-var require_object_get_prototype_of = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var hasOwn = require_has_own_property();
-  var isCallable = require_is_callable();
-  var toObject = require_to_object();
-  var sharedKey = require_shared_key();
-  var CORRECT_PROTOTYPE_GETTER = require_correct_prototype_getter();
-  var IE_PROTO = sharedKey("IE_PROTO");
-  var $Object = Object;
-  var ObjectPrototype = $Object.prototype;
-  module.exports = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function(O) {
-    var object = toObject(O);
-    if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];
-    var constructor = object.constructor;
-    if (isCallable(constructor) && object instanceof constructor) return constructor.prototype;
-    return object instanceof $Object ? ObjectPrototype : null;
-  };
-}));
-var require_define_built_in_accessor = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var makeBuiltIn = require_make_built_in();
-  var defineProperty = require_object_define_property();
-  module.exports = function(target, name, descriptor) {
-    if (descriptor.get) makeBuiltIn(descriptor.get, name, { getter: true });
-    if (descriptor.set) makeBuiltIn(descriptor.set, name, { setter: true });
-    return defineProperty.f(target, name, descriptor);
-  };
-}));
-var require_create_property = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var DESCRIPTORS = require_descriptors();
-  var definePropertyModule = require_object_define_property();
-  var createPropertyDescriptor = require_create_property_descriptor();
-  module.exports = function(object, key, value) {
-    if (DESCRIPTORS) definePropertyModule.f(object, key, createPropertyDescriptor(0, value));
-    else object[key] = value;
-  };
-}));
 var require_object_keys = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var internalObjectKeys = require_object_keys_internal();
   var enumBugKeys = require_enum_bug_keys();
@@ -983,757 +932,6 @@ var require_object_create = /* @__PURE__ */ __commonJSMin(((exports, module) => 
     return Properties === void 0 ? result : definePropertiesModule.f(result, Properties);
   };
 }));
-var require_iterators_core = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var fails = require_fails();
-  var isCallable = require_is_callable();
-  var isObject = require_is_object();
-  var create = require_object_create();
-  var getPrototypeOf = require_object_get_prototype_of();
-  var defineBuiltIn = require_define_built_in();
-  var wellKnownSymbol = require_well_known_symbol();
-  var IS_PURE = require_is_pure();
-  var ITERATOR = wellKnownSymbol("iterator");
-  var BUGGY_SAFARI_ITERATORS = false;
-  var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
-  if ([].keys) {
-    arrayIterator = [].keys();
-    if (!("next" in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
-    else {
-      PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
-      if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
-    }
-  }
-  if (!isObject(IteratorPrototype) || fails(function() {
-    var test = {};
-    return IteratorPrototype[ITERATOR].call(test) !== test;
-  })) IteratorPrototype = {};
-  else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
-  if (!isCallable(IteratorPrototype[ITERATOR])) defineBuiltIn(IteratorPrototype, ITERATOR, function() {
-    return this;
-  });
-  module.exports = {
-    IteratorPrototype,
-    BUGGY_SAFARI_ITERATORS
-  };
-}));
-var require_es_iterator_constructor = /* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var globalThis2 = require_global_this();
-  var anInstance = require_an_instance();
-  var anObject = require_an_object();
-  var isCallable = require_is_callable();
-  var getPrototypeOf = require_object_get_prototype_of();
-  var defineBuiltInAccessor = require_define_built_in_accessor();
-  var createProperty = require_create_property();
-  var fails = require_fails();
-  var hasOwn = require_has_own_property();
-  var wellKnownSymbol = require_well_known_symbol();
-  var IteratorPrototype = require_iterators_core().IteratorPrototype;
-  var DESCRIPTORS = require_descriptors();
-  var IS_PURE = require_is_pure();
-  var CONSTRUCTOR = "constructor";
-  var ITERATOR = "Iterator";
-  var TO_STRING_TAG = wellKnownSymbol("toStringTag");
-  var $TypeError = TypeError;
-  var NativeIterator = globalThis2[ITERATOR];
-  var FORCED = IS_PURE || !isCallable(NativeIterator) || NativeIterator.prototype !== IteratorPrototype || !fails(function() {
-    NativeIterator({});
-  });
-  var IteratorConstructor = function Iterator2() {
-    anInstance(this, IteratorPrototype);
-    if (getPrototypeOf(this) === IteratorPrototype) throw new $TypeError("Abstract class Iterator not directly constructable");
-  };
-  var defineIteratorPrototypeAccessor = function(key, value) {
-    if (DESCRIPTORS) defineBuiltInAccessor(IteratorPrototype, key, {
-      configurable: true,
-      get: function() {
-        return value;
-      },
-      set: function(replacement) {
-        anObject(this);
-        if (this === IteratorPrototype) throw new $TypeError("You can't redefine this property");
-        if (hasOwn(this, key)) this[key] = replacement;
-        else createProperty(this, key, replacement);
-      }
-    });
-    else IteratorPrototype[key] = value;
-  };
-  if (!hasOwn(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
-  if (FORCED || !hasOwn(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) defineIteratorPrototypeAccessor(CONSTRUCTOR, IteratorConstructor);
-  IteratorConstructor.prototype = IteratorPrototype;
-  $({
-    global: true,
-    constructor: true,
-    forced: FORCED
-  }, { Iterator: IteratorConstructor });
-}));
-var require_get_iterator_direct = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  module.exports = function(obj) {
-    return {
-      iterator: obj,
-      next: obj.next,
-      done: false
-    };
-  };
-}));
-var require_define_built_ins = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var defineBuiltIn = require_define_built_in();
-  module.exports = function(target, src, options) {
-    for (var key in src) defineBuiltIn(target, key, src[key], options);
-    return target;
-  };
-}));
-var require_create_iter_result_object = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  module.exports = function(value, done) {
-    return {
-      value,
-      done
-    };
-  };
-}));
-var require_iterator_close = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var call = require_function_call();
-  var anObject = require_an_object();
-  var getMethod = require_get_method();
-  module.exports = function(iterator, kind, value) {
-    var innerResult, innerError;
-    anObject(iterator);
-    try {
-      innerResult = getMethod(iterator, "return");
-      if (!innerResult) {
-        if (kind === "throw") throw value;
-        return value;
-      }
-      innerResult = call(innerResult, iterator);
-    } catch (error) {
-      innerError = true;
-      innerResult = error;
-    }
-    if (kind === "throw") throw value;
-    if (innerError) throw innerResult;
-    anObject(innerResult);
-    return value;
-  };
-}));
-var require_iterator_close_all = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var iteratorClose = require_iterator_close();
-  module.exports = function(iters, kind, value) {
-    for (var i = iters.length - 1; i >= 0; i--) {
-      if (iters[i] === void 0) continue;
-      try {
-        value = iteratorClose(iters[i].iterator, kind, value);
-      } catch (error) {
-        kind = "throw";
-        value = error;
-      }
-    }
-    if (kind === "throw") throw value;
-    return value;
-  };
-}));
-var require_iterator_create_proxy = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var call = require_function_call();
-  var create = require_object_create();
-  var createNonEnumerableProperty = require_create_non_enumerable_property();
-  var defineBuiltIns = require_define_built_ins();
-  var wellKnownSymbol = require_well_known_symbol();
-  var InternalStateModule = require_internal_state();
-  var getMethod = require_get_method();
-  var IteratorPrototype = require_iterators_core().IteratorPrototype;
-  var createIterResultObject = require_create_iter_result_object();
-  var iteratorClose = require_iterator_close();
-  var iteratorCloseAll = require_iterator_close_all();
-  var TO_STRING_TAG = wellKnownSymbol("toStringTag");
-  var ITERATOR_HELPER = "IteratorHelper";
-  var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
-  var NORMAL = "normal";
-  var THROW = "throw";
-  var setInternalState = InternalStateModule.set;
-  var createIteratorProxyPrototype = function(IS_ITERATOR) {
-    var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
-    return defineBuiltIns(create(IteratorPrototype), {
-      next: function next() {
-        var state = getInternalState(this);
-        if (IS_ITERATOR) return state.nextHandler();
-        if (state.done) return createIterResultObject(void 0, true);
-        try {
-          var result = state.nextHandler();
-          return state.returnHandlerResult ? result : createIterResultObject(result, state.done);
-        } catch (error) {
-          state.done = true;
-          throw error;
-        }
-      },
-      "return": function() {
-        var state = getInternalState(this);
-        var iterator = state.iterator;
-        var done = state.done;
-        state.done = true;
-        if (IS_ITERATOR) {
-          var returnMethod = getMethod(iterator, "return");
-          return returnMethod ? call(returnMethod, iterator) : createIterResultObject(void 0, true);
-        }
-        if (done) return createIterResultObject(void 0, true);
-        if (state.inner) try {
-          iteratorClose(state.inner.iterator, NORMAL);
-        } catch (error) {
-          return iteratorClose(iterator, THROW, error);
-        }
-        if (state.openIters) try {
-          iteratorCloseAll(state.openIters, NORMAL);
-        } catch (error) {
-          if (iterator) return iteratorClose(iterator, THROW, error);
-          throw error;
-        }
-        if (iterator) iteratorClose(iterator, NORMAL);
-        return createIterResultObject(void 0, true);
-      }
-    });
-  };
-  var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
-  var IteratorHelperPrototype = createIteratorProxyPrototype(false);
-  createNonEnumerableProperty(IteratorHelperPrototype, TO_STRING_TAG, "Iterator Helper");
-  module.exports = function(nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
-    var IteratorProxy = function Iterator2(record, state) {
-      if (state) {
-        state.iterator = record.iterator;
-        state.next = record.next;
-      } else state = record;
-      state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
-      state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
-      state.nextHandler = nextHandler;
-      state.counter = 0;
-      state.done = false;
-      setInternalState(this, state);
-    };
-    IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
-    return IteratorProxy;
-  };
-}));
-var require_call_with_safe_iteration_closing = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var anObject = require_an_object();
-  var iteratorClose = require_iterator_close();
-  module.exports = function(iterator, fn, value, ENTRIES) {
-    try {
-      return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
-    } catch (error) {
-      iteratorClose(iterator, "throw", error);
-    }
-  };
-}));
-var require_iterator_helper_throws_on_invalid_iterator = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  module.exports = function(methodName, argument) {
-    var method = typeof Iterator == "function" && Iterator.prototype[methodName];
-    if (method) try {
-      method.call({ next: null }, argument).next();
-    } catch (error) {
-      return true;
-    }
-  };
-}));
-var require_iterator_helper_without_closing_on_early_error = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var globalThis2 = require_global_this();
-  module.exports = function(METHOD_NAME, ExpectedError) {
-    var Iterator2 = globalThis2.Iterator;
-    var IteratorPrototype = Iterator2 && Iterator2.prototype;
-    var method = IteratorPrototype && IteratorPrototype[METHOD_NAME];
-    var CLOSED = false;
-    if (method) try {
-      method.call({
-        next: function() {
-          return { done: true };
-        },
-        "return": function() {
-          CLOSED = true;
-        }
-      }, -1);
-    } catch (error) {
-      if (!(error instanceof ExpectedError)) CLOSED = false;
-    }
-    if (!CLOSED) return method;
-  };
-}));
-var require_es_iterator_filter = /* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var call = require_function_call();
-  var aCallable = require_a_callable();
-  var anObject = require_an_object();
-  var getIteratorDirect = require_get_iterator_direct();
-  var createIteratorProxy = require_iterator_create_proxy();
-  var callWithSafeIterationClosing = require_call_with_safe_iteration_closing();
-  var IS_PURE = require_is_pure();
-  var iteratorClose = require_iterator_close();
-  var iteratorHelperThrowsOnInvalidIterator = require_iterator_helper_throws_on_invalid_iterator();
-  var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-  var FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator("filter", function() {
-  });
-  var filterWithoutClosingOnEarlyError = !IS_PURE && !FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError("filter", TypeError);
-  var FORCED = IS_PURE || FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR || filterWithoutClosingOnEarlyError;
-  var IteratorProxy = createIteratorProxy(function() {
-    var iterator = this.iterator;
-    var predicate = this.predicate;
-    var next = this.next;
-    var result, done, value;
-    while (true) {
-      result = anObject(call(next, iterator));
-      done = this.done = !!result.done;
-      if (done) return;
-      value = result.value;
-      if (callWithSafeIterationClosing(iterator, predicate, [value, this.counter++], true)) return value;
-    }
-  });
-  $({
-    target: "Iterator",
-    proto: true,
-    real: true,
-    forced: FORCED
-  }, { filter: function filter(predicate) {
-    anObject(this);
-    try {
-      aCallable(predicate);
-    } catch (error) {
-      iteratorClose(this, "throw", error);
-    }
-    if (filterWithoutClosingOnEarlyError) return call(filterWithoutClosingOnEarlyError, this, predicate);
-    return new IteratorProxy(getIteratorDirect(this), { predicate });
-  } });
-}));
-var require_set_helpers = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var uncurryThis = require_function_uncurry_this();
-  var SetPrototype = Set.prototype;
-  module.exports = {
-    Set,
-    add: uncurryThis(SetPrototype.add),
-    has: uncurryThis(SetPrototype.has),
-    remove: uncurryThis(SetPrototype["delete"]),
-    proto: SetPrototype
-  };
-}));
-var require_a_set = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var has = require_set_helpers().has;
-  module.exports = function(it) {
-    has(it);
-    return it;
-  };
-}));
-var require_iterate_simple = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var call = require_function_call();
-  module.exports = function(record, fn, ITERATOR_INSTEAD_OF_RECORD) {
-    var iterator = ITERATOR_INSTEAD_OF_RECORD ? record : record.iterator;
-    var next = record.next;
-    var step, result;
-    while (!(step = call(next, iterator)).done) {
-      result = fn(step.value);
-      if (result !== void 0) return result;
-    }
-  };
-}));
-var require_set_iterate = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var uncurryThis = require_function_uncurry_this();
-  var iterateSimple = require_iterate_simple();
-  var SetHelpers = require_set_helpers();
-  var Set2 = SetHelpers.Set;
-  var SetPrototype = SetHelpers.proto;
-  var forEach = uncurryThis(SetPrototype.forEach);
-  var keys = uncurryThis(SetPrototype.keys);
-  var next = keys(new Set2()).next;
-  module.exports = function(set, fn, interruptible) {
-    return interruptible ? iterateSimple({
-      iterator: keys(set),
-      next
-    }, fn) : forEach(set, fn);
-  };
-}));
-var require_set_clone = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var SetHelpers = require_set_helpers();
-  var iterate = require_set_iterate();
-  var Set2 = SetHelpers.Set;
-  var add = SetHelpers.add;
-  module.exports = function(set) {
-    var result = new Set2();
-    iterate(set, function(it) {
-      add(result, it);
-    });
-    return result;
-  };
-}));
-var require_function_uncurry_this_accessor = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var uncurryThis = require_function_uncurry_this();
-  var aCallable = require_a_callable();
-  module.exports = function(object, key, method) {
-    try {
-      return uncurryThis(aCallable(Object.getOwnPropertyDescriptor(object, key)[method]));
-    } catch (error) {
-    }
-  };
-}));
-var require_set_size = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  module.exports = require_function_uncurry_this_accessor()(require_set_helpers().proto, "size", "get") || function(set) {
-    return set.size;
-  };
-}));
-var require_get_set_record = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var aCallable = require_a_callable();
-  var anObject = require_an_object();
-  var call = require_function_call();
-  var toIntegerOrInfinity = require_to_integer_or_infinity();
-  var getIteratorDirect = require_get_iterator_direct();
-  var INVALID_SIZE = "Invalid size";
-  var $RangeError = RangeError;
-  var $TypeError = TypeError;
-  var max = Math.max;
-  var SetRecord = function(set, intSize) {
-    this.set = set;
-    this.size = max(intSize, 0);
-    this.has = aCallable(set.has);
-    this.keys = aCallable(set.keys);
-  };
-  SetRecord.prototype = {
-    getIterator: function() {
-      return getIteratorDirect(anObject(call(this.keys, this.set)));
-    },
-    includes: function(it) {
-      return call(this.has, this.set, it);
-    }
-  };
-  module.exports = function(obj) {
-    anObject(obj);
-    var numSize = +obj.size;
-    if (numSize !== numSize) throw new $TypeError(INVALID_SIZE);
-    var intSize = toIntegerOrInfinity(numSize);
-    if (intSize < 0) throw new $RangeError(INVALID_SIZE);
-    return new SetRecord(obj, intSize);
-  };
-}));
-var require_set_difference = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var aSet = require_a_set();
-  var SetHelpers = require_set_helpers();
-  var clone = require_set_clone();
-  var size = require_set_size();
-  var getSetRecord = require_get_set_record();
-  var iterateSet = require_set_iterate();
-  var iterateSimple = require_iterate_simple();
-  var has = SetHelpers.has;
-  var remove = SetHelpers.remove;
-  module.exports = function difference(other) {
-    var O = aSet(this);
-    var otherRec = getSetRecord(other);
-    var result = clone(O);
-    if (size(result) <= otherRec.size) iterateSet(result, function(e) {
-      if (otherRec.includes(e)) remove(result, e);
-    });
-    else iterateSimple(otherRec.getIterator(), function(e) {
-      if (has(result, e)) remove(result, e);
-    });
-    return result;
-  };
-}));
-var require_set_method_accept_set_like = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var getBuiltIn = require_get_built_in();
-  var createSetLike = function(size) {
-    return {
-      size,
-      has: function() {
-        return false;
-      },
-      keys: function() {
-        return { next: function() {
-          return { done: true };
-        } };
-      }
-    };
-  };
-  var createSetLikeWithInfinitySize = function(size) {
-    return {
-      size,
-      has: function() {
-        return true;
-      },
-      keys: function() {
-        throw new Error("e");
-      }
-    };
-  };
-  module.exports = function(name, callback) {
-    var Set2 = getBuiltIn("Set");
-    try {
-      new Set2()[name](createSetLike(0));
-      try {
-        new Set2()[name](createSetLike(-1));
-        return false;
-      } catch (error2) {
-        if (!callback) return true;
-        try {
-          new Set2()[name](createSetLikeWithInfinitySize(-Infinity));
-          return false;
-        } catch (error) {
-          return callback(new Set2([1, 2])[name](createSetLikeWithInfinitySize(Infinity)));
-        }
-      }
-    } catch (error) {
-      return false;
-    }
-  };
-}));
-var require_es_set_difference_v2 = /* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var difference = require_set_difference();
-  var fails = require_fails();
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: !require_set_method_accept_set_like()("difference", function(result) {
-      return result.size === 0;
-    }) || fails(function() {
-      var setLike = {
-        size: 1,
-        has: function() {
-          return true;
-        },
-        keys: function() {
-          var index = 0;
-          return { next: function() {
-            var done = index++ > 1;
-            if (baseSet.has(1)) baseSet.clear();
-            return {
-              done,
-              value: 2
-            };
-          } };
-        }
-      };
-      var baseSet = /* @__PURE__ */ new Set([
-        1,
-        2,
-        3,
-        4
-      ]);
-      return baseSet.difference(setLike).size !== 3;
-    })
-  }, { difference });
-}));
-var require_set_intersection = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var aSet = require_a_set();
-  var SetHelpers = require_set_helpers();
-  var size = require_set_size();
-  var getSetRecord = require_get_set_record();
-  var iterateSet = require_set_iterate();
-  var iterateSimple = require_iterate_simple();
-  var Set2 = SetHelpers.Set;
-  var add = SetHelpers.add;
-  var has = SetHelpers.has;
-  module.exports = function intersection(other) {
-    var O = aSet(this);
-    var otherRec = getSetRecord(other);
-    var result = new Set2();
-    if (size(O) > otherRec.size) iterateSimple(otherRec.getIterator(), function(e) {
-      if (has(O, e)) add(result, e);
-    });
-    else iterateSet(O, function(e) {
-      if (otherRec.includes(e)) add(result, e);
-    });
-    return result;
-  };
-}));
-var require_es_set_intersection_v2 = /* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var fails = require_fails();
-  var intersection = require_set_intersection();
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: !require_set_method_accept_set_like()("intersection", function(result) {
-      return result.size === 2 && result.has(1) && result.has(2);
-    }) || fails(function() {
-      return String(Array.from((/* @__PURE__ */ new Set([
-        1,
-        2,
-        3
-      ])).intersection(/* @__PURE__ */ new Set([3, 2])))) !== "3,2";
-    })
-  }, { intersection });
-}));
-var require_set_is_disjoint_from = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var aSet = require_a_set();
-  var has = require_set_helpers().has;
-  var size = require_set_size();
-  var getSetRecord = require_get_set_record();
-  var iterateSet = require_set_iterate();
-  var iterateSimple = require_iterate_simple();
-  var iteratorClose = require_iterator_close();
-  module.exports = function isDisjointFrom(other) {
-    var O = aSet(this);
-    var otherRec = getSetRecord(other);
-    if (size(O) <= otherRec.size) return iterateSet(O, function(e) {
-      if (otherRec.includes(e)) return false;
-    }, true) !== false;
-    var iterator = otherRec.getIterator();
-    return iterateSimple(iterator, function(e) {
-      if (has(O, e)) return iteratorClose(iterator.iterator, "normal", false);
-    }) !== false;
-  };
-}));
-var require_es_set_is_disjoint_from_v2 = /* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var isDisjointFrom = require_set_is_disjoint_from();
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: !require_set_method_accept_set_like()("isDisjointFrom", function(result) {
-      return !result;
-    })
-  }, { isDisjointFrom });
-}));
-var require_set_is_subset_of = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var aSet = require_a_set();
-  var size = require_set_size();
-  var iterate = require_set_iterate();
-  var getSetRecord = require_get_set_record();
-  module.exports = function isSubsetOf(other) {
-    var O = aSet(this);
-    var otherRec = getSetRecord(other);
-    if (size(O) > otherRec.size) return false;
-    return iterate(O, function(e) {
-      if (!otherRec.includes(e)) return false;
-    }, true) !== false;
-  };
-}));
-var require_es_set_is_subset_of_v2 = /* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var isSubsetOf = require_set_is_subset_of();
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: !require_set_method_accept_set_like()("isSubsetOf", function(result) {
-      return result;
-    })
-  }, { isSubsetOf });
-}));
-var require_set_is_superset_of = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var aSet = require_a_set();
-  var has = require_set_helpers().has;
-  var size = require_set_size();
-  var getSetRecord = require_get_set_record();
-  var iterateSimple = require_iterate_simple();
-  var iteratorClose = require_iterator_close();
-  module.exports = function isSupersetOf(other) {
-    var O = aSet(this);
-    var otherRec = getSetRecord(other);
-    if (size(O) < otherRec.size) return false;
-    var iterator = otherRec.getIterator();
-    return iterateSimple(iterator, function(e) {
-      if (!has(O, e)) return iteratorClose(iterator.iterator, "normal", false);
-    }) !== false;
-  };
-}));
-var require_es_set_is_superset_of_v2 = /* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var isSupersetOf = require_set_is_superset_of();
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: !require_set_method_accept_set_like()("isSupersetOf", function(result) {
-      return !result;
-    })
-  }, { isSupersetOf });
-}));
-var require_set_symmetric_difference = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var aSet = require_a_set();
-  var SetHelpers = require_set_helpers();
-  var clone = require_set_clone();
-  var getSetRecord = require_get_set_record();
-  var iterateSimple = require_iterate_simple();
-  var add = SetHelpers.add;
-  var has = SetHelpers.has;
-  var remove = SetHelpers.remove;
-  module.exports = function symmetricDifference(other) {
-    var O = aSet(this);
-    var keysIter = getSetRecord(other).getIterator();
-    var result = clone(O);
-    iterateSimple(keysIter, function(e) {
-      if (has(O, e)) remove(result, e);
-      else add(result, e);
-    });
-    return result;
-  };
-}));
-var require_set_method_get_keys_before_cloning_detection = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  module.exports = function(METHOD_NAME) {
-    try {
-      var baseSet = /* @__PURE__ */ new Set();
-      var result = baseSet[METHOD_NAME]({
-        size: 0,
-        has: function() {
-          return true;
-        },
-        keys: function() {
-          return Object.defineProperty({}, "next", { get: function() {
-            baseSet.clear();
-            baseSet.add(4);
-            return function() {
-              return { done: true };
-            };
-          } });
-        }
-      });
-      return result.size === 1 && result.values().next().value === 4;
-    } catch (error) {
-      return false;
-    }
-  };
-}));
-var require_es_set_symmetric_difference_v2 = /* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var symmetricDifference = require_set_symmetric_difference();
-  var setMethodGetKeysBeforeCloning = require_set_method_get_keys_before_cloning_detection();
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: !require_set_method_accept_set_like()("symmetricDifference") || !setMethodGetKeysBeforeCloning("symmetricDifference")
-  }, { symmetricDifference });
-}));
-var require_set_union = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var aSet = require_a_set();
-  var add = require_set_helpers().add;
-  var clone = require_set_clone();
-  var getSetRecord = require_get_set_record();
-  var iterateSimple = require_iterate_simple();
-  module.exports = function union(other) {
-    var O = aSet(this);
-    var keysIter = getSetRecord(other).getIterator();
-    var result = clone(O);
-    iterateSimple(keysIter, function(it) {
-      add(result, it);
-    });
-    return result;
-  };
-}));
-var require_es_set_union_v2 = /* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var union = require_set_union();
-  var setMethodGetKeysBeforeCloning = require_set_method_get_keys_before_cloning_detection();
-  $({
-    target: "Set",
-    proto: true,
-    real: true,
-    forced: !require_set_method_accept_set_like()("union") || !setMethodGetKeysBeforeCloning("union")
-  }, { union });
-}));
-require_es_iterator_constructor();
-require_es_iterator_filter();
-require_es_set_difference_v2();
-require_es_set_intersection_v2();
-require_es_set_is_disjoint_from_v2();
-require_es_set_is_subset_of_v2();
-require_es_set_is_superset_of_v2();
-require_es_set_symmetric_difference_v2();
-require_es_set_union_v2();
 var require_add_to_unscopables = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var wellKnownSymbol = require_well_known_symbol();
   var create = require_object_create();
@@ -1748,7 +946,7 @@ var require_add_to_unscopables = /* @__PURE__ */ __commonJSMin(((exports, module
     ArrayPrototype[UNSCOPABLES][key] = true;
   };
 }));
-(/* @__PURE__ */ __commonJSMin((() => {
+var require_es_array_includes = /* @__PURE__ */ __commonJSMin((() => {
   var $ = require_export();
   var $includes = require_array_includes().includes;
   var fails = require_fails();
@@ -1767,323 +965,28 @@ var require_add_to_unscopables = /* @__PURE__ */ __commonJSMin(((exports, module
     return $includes(this, el, arguments.length > 1 ? arguments[1] : void 0);
   } });
   addToUnscopables("includes");
-})))();
-var require_is_array = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var classof = require_classof_raw();
-  module.exports = Array.isArray || function isArray(argument) {
-    return classof(argument) === "Array";
+}));
+var require_define_built_in_accessor = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var makeBuiltIn = require_make_built_in();
+  var defineProperty = require_object_define_property();
+  module.exports = function(target, name, descriptor) {
+    if (descriptor.get) makeBuiltIn(descriptor.get, name, { getter: true });
+    if (descriptor.set) makeBuiltIn(descriptor.set, name, { setter: true });
+    return defineProperty.f(target, name, descriptor);
   };
 }));
-var require_array_set_length = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var DESCRIPTORS = require_descriptors();
-  var isArray = require_is_array();
-  var $TypeError = TypeError;
-  var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-  module.exports = DESCRIPTORS && !(function() {
-    if (this !== void 0) return true;
-    try {
-      Object.defineProperty([], "length", { writable: false }).length = 1;
-    } catch (error) {
-      return error instanceof TypeError;
-    }
-  })() ? function(O, length) {
-    if (isArray(O) && !getOwnPropertyDescriptor(O, "length").writable) throw new $TypeError("Cannot set read only .length");
-    return O.length = length;
-  } : function(O, length) {
-    return O.length = length;
-  };
-}));
-var require_does_not_exceed_safe_integer = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var $TypeError = TypeError;
-  var MAX_SAFE_INTEGER = 9007199254740991;
-  module.exports = function(it) {
-    if (it > MAX_SAFE_INTEGER) throw new $TypeError("Maximum allowed index exceeded");
-    return it;
-  };
-}));
-(/* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var toObject = require_to_object();
-  var lengthOfArrayLike = require_length_of_array_like();
-  var setArrayLength = require_array_set_length();
-  var doesNotExceedSafeInteger = require_does_not_exceed_safe_integer();
-  var INCORRECT_TO_LENGTH = require_fails()(function() {
-    return [].push.call({ length: 4294967296 }, 1) !== 4294967297;
-  });
-  var properErrorOnNonWritableLength = function() {
-    try {
-      Object.defineProperty([], "length", { writable: false }).push();
-    } catch (error) {
-      return error instanceof TypeError;
-    }
-  };
-  $({
-    target: "Array",
-    proto: true,
-    arity: 1,
-    forced: INCORRECT_TO_LENGTH || !properErrorOnNonWritableLength()
-  }, { push: function push(item) {
-    var O = toObject(this);
-    var len = lengthOfArrayLike(O);
-    var argCount = arguments.length;
-    doesNotExceedSafeInteger(len + argCount);
-    for (var i = 0; i < argCount; i++) {
-      O[len] = arguments[i];
-      len++;
-    }
-    setArrayLength(O, len);
-    return len;
-  } });
-})))();
-(/* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var call = require_function_call();
-  var aCallable = require_a_callable();
-  var anObject = require_an_object();
-  var getIteratorDirect = require_get_iterator_direct();
-  var createIteratorProxy = require_iterator_create_proxy();
-  var callWithSafeIterationClosing = require_call_with_safe_iteration_closing();
-  var iteratorClose = require_iterator_close();
-  var iteratorHelperThrowsOnInvalidIterator = require_iterator_helper_throws_on_invalid_iterator();
-  var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-  var IS_PURE = require_is_pure();
-  var MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator("map", function() {
-  });
-  var mapWithoutClosingOnEarlyError = !IS_PURE && !MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError("map", TypeError);
-  var FORCED = IS_PURE || MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR || mapWithoutClosingOnEarlyError;
-  var IteratorProxy = createIteratorProxy(function() {
-    var iterator = this.iterator;
-    var result = anObject(call(this.next, iterator));
-    if (!(this.done = !!result.done)) return callWithSafeIterationClosing(iterator, this.mapper, [result.value, this.counter++], true);
-  });
-  $({
-    target: "Iterator",
-    proto: true,
-    real: true,
-    forced: FORCED
-  }, { map: function map(mapper) {
-    anObject(this);
-    try {
-      aCallable(mapper);
-    } catch (error) {
-      iteratorClose(this, "throw", error);
-    }
-    if (mapWithoutClosingOnEarlyError) return call(mapWithoutClosingOnEarlyError, this, mapper);
-    return new IteratorProxy(getIteratorDirect(this), { mapper });
-  } });
-})))();
-var require_function_uncurry_this_clause = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var classofRaw = require_classof_raw();
-  var uncurryThis = require_function_uncurry_this();
-  module.exports = function(fn) {
-    if (classofRaw(fn) === "Function") return uncurryThis(fn);
-  };
-}));
-var require_function_bind_context = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var uncurryThis = require_function_uncurry_this_clause();
-  var aCallable = require_a_callable();
-  var NATIVE_BIND = require_function_bind_native();
-  var bind = uncurryThis(uncurryThis.bind);
-  module.exports = function(fn, that) {
-    aCallable(fn);
-    return that === void 0 ? fn : NATIVE_BIND ? bind(fn, that) : function() {
-      return fn.apply(that, arguments);
-    };
-  };
-}));
-var require_iterators = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  module.exports = {};
-}));
-var require_is_array_iterator_method = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var wellKnownSymbol = require_well_known_symbol();
-  var Iterators = require_iterators();
-  var ITERATOR = wellKnownSymbol("iterator");
-  var ArrayPrototype = Array.prototype;
-  module.exports = function(it) {
-    return it !== void 0 && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
-  };
-}));
-var require_to_string_tag_support = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var TO_STRING_TAG = require_well_known_symbol()("toStringTag");
-  var test = {};
-  test[TO_STRING_TAG] = "z";
-  module.exports = String(test) === "[object z]";
-}));
-var require_classof = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var TO_STRING_TAG_SUPPORT = require_to_string_tag_support();
-  var isCallable = require_is_callable();
-  var classofRaw = require_classof_raw();
-  var TO_STRING_TAG = require_well_known_symbol()("toStringTag");
-  var $Object = Object;
-  var CORRECT_ARGUMENTS = classofRaw(/* @__PURE__ */ (function() {
-    return arguments;
-  })()) === "Arguments";
-  var tryGet = function(it, key) {
-    try {
-      return it[key];
-    } catch (error) {
-    }
-  };
-  module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function(it) {
-    var O, tag, result;
-    return it === void 0 ? "Undefined" : it === null ? "Null" : typeof (tag = tryGet(O = $Object(it), TO_STRING_TAG)) == "string" ? tag : CORRECT_ARGUMENTS ? classofRaw(O) : (result = classofRaw(O)) === "Object" && isCallable(O.callee) ? "Arguments" : result;
-  };
-}));
-var require_get_iterator_method = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var classof = require_classof();
-  var getMethod = require_get_method();
-  var isNullOrUndefined = require_is_null_or_undefined();
-  var Iterators = require_iterators();
-  var ITERATOR = require_well_known_symbol()("iterator");
-  module.exports = function(it) {
-    if (!isNullOrUndefined(it)) return getMethod(it, ITERATOR) || getMethod(it, "@@iterator") || Iterators[classof(it)];
-  };
-}));
-var require_get_iterator = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var call = require_function_call();
-  var aCallable = require_a_callable();
-  var anObject = require_an_object();
-  var tryToString = require_try_to_string();
-  var getIteratorMethod = require_get_iterator_method();
-  var $TypeError = TypeError;
-  module.exports = function(argument, usingIterator) {
-    var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;
-    if (aCallable(iteratorMethod)) return anObject(call(iteratorMethod, argument));
-    throw new $TypeError(tryToString(argument) + " is not iterable");
-  };
-}));
-var require_iterate = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var bind = require_function_bind_context();
-  var call = require_function_call();
-  var anObject = require_an_object();
-  var tryToString = require_try_to_string();
-  var isArrayIteratorMethod = require_is_array_iterator_method();
-  var lengthOfArrayLike = require_length_of_array_like();
-  var isPrototypeOf = require_object_is_prototype_of();
-  var getIterator = require_get_iterator();
-  var getIteratorMethod = require_get_iterator_method();
-  var iteratorClose = require_iterator_close();
-  var $TypeError = TypeError;
-  var Result = function(stopped, result) {
-    this.stopped = stopped;
-    this.result = result;
-  };
-  var ResultPrototype = Result.prototype;
-  module.exports = function(iterable, unboundFunction, options) {
-    var that = options && options.that;
-    var AS_ENTRIES = !!(options && options.AS_ENTRIES);
-    var IS_RECORD = !!(options && options.IS_RECORD);
-    var IS_ITERATOR = !!(options && options.IS_ITERATOR);
-    var INTERRUPTED = !!(options && options.INTERRUPTED);
-    var fn = bind(unboundFunction, that);
-    var iterator, iterFn, index, length, result, next, step;
-    var stop = function(condition) {
-      var $iterator = iterator;
-      iterator = void 0;
-      if ($iterator) iteratorClose($iterator, "normal");
-      return new Result(true, condition);
-    };
-    var callFn = function(value2) {
-      if (AS_ENTRIES) {
-        anObject(value2);
-        return INTERRUPTED ? fn(value2[0], value2[1], stop) : fn(value2[0], value2[1]);
-      }
-      return INTERRUPTED ? fn(value2, stop) : fn(value2);
-    };
-    if (IS_RECORD) iterator = iterable.iterator;
-    else if (IS_ITERATOR) iterator = iterable;
-    else {
-      iterFn = getIteratorMethod(iterable);
-      if (!iterFn) throw new $TypeError(tryToString(iterable) + " is not iterable");
-      if (isArrayIteratorMethod(iterFn)) {
-        for (index = 0, length = lengthOfArrayLike(iterable); length > index; index++) {
-          result = callFn(iterable[index]);
-          if (result && isPrototypeOf(ResultPrototype, result)) return result;
-        }
-        return new Result(false);
-      }
-      iterator = getIterator(iterable, iterFn);
-    }
-    next = IS_RECORD ? iterable.next : iterator.next;
-    while (!(step = call(next, iterator)).done) {
-      var value = step.value;
-      try {
-        result = callFn(value);
-      } catch (error) {
-        if (iterator) iteratorClose(iterator, "throw", error);
-        else throw error;
-      }
-      if (typeof result == "object" && result && isPrototypeOf(ResultPrototype, result)) return result;
-    }
-    return new Result(false);
-  };
-}));
-(/* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var call = require_function_call();
-  var iterate = require_iterate();
-  var aCallable = require_a_callable();
-  var anObject = require_an_object();
-  var getIteratorDirect = require_get_iterator_direct();
-  var iteratorClose = require_iterator_close();
-  var findWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error()("find", TypeError);
-  $({
-    target: "Iterator",
-    proto: true,
-    real: true,
-    forced: findWithoutClosingOnEarlyError
-  }, { find: function find(predicate) {
-    anObject(this);
-    try {
-      aCallable(predicate);
-    } catch (error) {
-      iteratorClose(this, "throw", error);
-    }
-    if (findWithoutClosingOnEarlyError) return call(findWithoutClosingOnEarlyError, this, predicate);
-    var record = getIteratorDirect(this);
-    var counter = 0;
-    return iterate(record, function(value, stop) {
-      if (predicate(value, counter++)) return stop(value);
-    }, {
-      IS_RECORD: true,
-      INTERRUPTED: true
-    }).result;
-  } });
-})))();
-(/* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var call = require_function_call();
-  var iterate = require_iterate();
-  var aCallable = require_a_callable();
-  var anObject = require_an_object();
-  var getIteratorDirect = require_get_iterator_direct();
-  var iteratorClose = require_iterator_close();
-  var someWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error()("some", TypeError);
-  $({
-    target: "Iterator",
-    proto: true,
-    real: true,
-    forced: someWithoutClosingOnEarlyError
-  }, { some: function some(predicate) {
-    anObject(this);
-    try {
-      aCallable(predicate);
-    } catch (error) {
-      iteratorClose(this, "throw", error);
-    }
-    if (someWithoutClosingOnEarlyError) return call(someWithoutClosingOnEarlyError, this, predicate);
-    var record = getIteratorDirect(this);
-    var counter = 0;
-    return iterate(record, function(value, stop) {
-      if (predicate(value, counter++)) return stop();
-    }, {
-      IS_RECORD: true,
-      INTERRUPTED: true
-    }).stopped;
-  } });
-})))();
 var require_array_buffer_basic_detection = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   module.exports = typeof ArrayBuffer != "undefined" && typeof DataView != "undefined";
+}));
+var require_function_uncurry_this_accessor = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var uncurryThis = require_function_uncurry_this();
+  var aCallable = require_a_callable();
+  module.exports = function(object, key, method) {
+    try {
+      return uncurryThis(aCallable(Object.getOwnPropertyDescriptor(object, key)[method]));
+    } catch (error) {
+    }
+  };
 }));
 var require_array_buffer_byte_length = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var globalThis2 = require_global_this();
@@ -2288,6 +1191,333 @@ var require_es_array_buffer_transfer_to_fixed_length = /* @__PURE__ */ __commonJ
   }, { transferToFixedLength: function transferToFixedLength() {
     return $transfer(this, arguments.length ? arguments[0] : void 0, false);
   } });
+}));
+var require_an_instance = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var isPrototypeOf = require_object_is_prototype_of();
+  var $TypeError = TypeError;
+  module.exports = function(it, Prototype) {
+    if (isPrototypeOf(Prototype, it)) return it;
+    throw new $TypeError("Incorrect invocation");
+  };
+}));
+var require_correct_prototype_getter = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  module.exports = !require_fails()(function() {
+    function F() {
+    }
+    F.prototype.constructor = null;
+    return Object.getPrototypeOf(new F()) !== F.prototype;
+  });
+}));
+var require_object_get_prototype_of = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var hasOwn = require_has_own_property();
+  var isCallable = require_is_callable();
+  var toObject = require_to_object();
+  var sharedKey = require_shared_key();
+  var CORRECT_PROTOTYPE_GETTER = require_correct_prototype_getter();
+  var IE_PROTO = sharedKey("IE_PROTO");
+  var $Object = Object;
+  var ObjectPrototype = $Object.prototype;
+  module.exports = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function(O) {
+    var object = toObject(O);
+    if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];
+    var constructor = object.constructor;
+    if (isCallable(constructor) && object instanceof constructor) return constructor.prototype;
+    return object instanceof $Object ? ObjectPrototype : null;
+  };
+}));
+var require_create_property = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var DESCRIPTORS = require_descriptors();
+  var definePropertyModule = require_object_define_property();
+  var createPropertyDescriptor = require_create_property_descriptor();
+  module.exports = function(object, key, value) {
+    if (DESCRIPTORS) definePropertyModule.f(object, key, createPropertyDescriptor(0, value));
+    else object[key] = value;
+  };
+}));
+var require_iterators_core = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var fails = require_fails();
+  var isCallable = require_is_callable();
+  var isObject = require_is_object();
+  var create = require_object_create();
+  var getPrototypeOf = require_object_get_prototype_of();
+  var defineBuiltIn = require_define_built_in();
+  var wellKnownSymbol = require_well_known_symbol();
+  var IS_PURE = require_is_pure();
+  var ITERATOR = wellKnownSymbol("iterator");
+  var BUGGY_SAFARI_ITERATORS = false;
+  var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
+  if ([].keys) {
+    arrayIterator = [].keys();
+    if (!("next" in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
+    else {
+      PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
+      if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
+    }
+  }
+  if (!isObject(IteratorPrototype) || fails(function() {
+    var test = {};
+    return IteratorPrototype[ITERATOR].call(test) !== test;
+  })) IteratorPrototype = {};
+  else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
+  if (!isCallable(IteratorPrototype[ITERATOR])) defineBuiltIn(IteratorPrototype, ITERATOR, function() {
+    return this;
+  });
+  module.exports = {
+    IteratorPrototype,
+    BUGGY_SAFARI_ITERATORS
+  };
+}));
+var require_es_iterator_constructor = /* @__PURE__ */ __commonJSMin((() => {
+  var $ = require_export();
+  var globalThis2 = require_global_this();
+  var anInstance = require_an_instance();
+  var anObject = require_an_object();
+  var isCallable = require_is_callable();
+  var getPrototypeOf = require_object_get_prototype_of();
+  var defineBuiltInAccessor = require_define_built_in_accessor();
+  var createProperty = require_create_property();
+  var fails = require_fails();
+  var hasOwn = require_has_own_property();
+  var wellKnownSymbol = require_well_known_symbol();
+  var IteratorPrototype = require_iterators_core().IteratorPrototype;
+  var DESCRIPTORS = require_descriptors();
+  var IS_PURE = require_is_pure();
+  var CONSTRUCTOR = "constructor";
+  var ITERATOR = "Iterator";
+  var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+  var $TypeError = TypeError;
+  var NativeIterator = globalThis2[ITERATOR];
+  var FORCED = IS_PURE || !isCallable(NativeIterator) || NativeIterator.prototype !== IteratorPrototype || !fails(function() {
+    NativeIterator({});
+  });
+  var IteratorConstructor = function Iterator2() {
+    anInstance(this, IteratorPrototype);
+    if (getPrototypeOf(this) === IteratorPrototype) throw new $TypeError("Abstract class Iterator not directly constructable");
+  };
+  var defineIteratorPrototypeAccessor = function(key, value) {
+    if (DESCRIPTORS) defineBuiltInAccessor(IteratorPrototype, key, {
+      configurable: true,
+      get: function() {
+        return value;
+      },
+      set: function(replacement) {
+        anObject(this);
+        if (this === IteratorPrototype) throw new $TypeError("You can't redefine this property");
+        if (hasOwn(this, key)) this[key] = replacement;
+        else createProperty(this, key, replacement);
+      }
+    });
+    else IteratorPrototype[key] = value;
+  };
+  if (!hasOwn(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
+  if (FORCED || !hasOwn(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) defineIteratorPrototypeAccessor(CONSTRUCTOR, IteratorConstructor);
+  IteratorConstructor.prototype = IteratorPrototype;
+  $({
+    global: true,
+    constructor: true,
+    forced: FORCED
+  }, { Iterator: IteratorConstructor });
+}));
+var require_function_uncurry_this_clause = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var classofRaw = require_classof_raw();
+  var uncurryThis = require_function_uncurry_this();
+  module.exports = function(fn) {
+    if (classofRaw(fn) === "Function") return uncurryThis(fn);
+  };
+}));
+var require_function_bind_context = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var uncurryThis = require_function_uncurry_this_clause();
+  var aCallable = require_a_callable();
+  var NATIVE_BIND = require_function_bind_native();
+  var bind = uncurryThis(uncurryThis.bind);
+  module.exports = function(fn, that) {
+    aCallable(fn);
+    return that === void 0 ? fn : NATIVE_BIND ? bind(fn, that) : function() {
+      return fn.apply(that, arguments);
+    };
+  };
+}));
+var require_iterators = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  module.exports = {};
+}));
+var require_is_array_iterator_method = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var wellKnownSymbol = require_well_known_symbol();
+  var Iterators = require_iterators();
+  var ITERATOR = wellKnownSymbol("iterator");
+  var ArrayPrototype = Array.prototype;
+  module.exports = function(it) {
+    return it !== void 0 && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
+  };
+}));
+var require_to_string_tag_support = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var TO_STRING_TAG = require_well_known_symbol()("toStringTag");
+  var test = {};
+  test[TO_STRING_TAG] = "z";
+  module.exports = String(test) === "[object z]";
+}));
+var require_classof = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var TO_STRING_TAG_SUPPORT = require_to_string_tag_support();
+  var isCallable = require_is_callable();
+  var classofRaw = require_classof_raw();
+  var TO_STRING_TAG = require_well_known_symbol()("toStringTag");
+  var $Object = Object;
+  var CORRECT_ARGUMENTS = classofRaw(/* @__PURE__ */ (function() {
+    return arguments;
+  })()) === "Arguments";
+  var tryGet = function(it, key) {
+    try {
+      return it[key];
+    } catch (error) {
+    }
+  };
+  module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function(it) {
+    var O, tag, result;
+    return it === void 0 ? "Undefined" : it === null ? "Null" : typeof (tag = tryGet(O = $Object(it), TO_STRING_TAG)) == "string" ? tag : CORRECT_ARGUMENTS ? classofRaw(O) : (result = classofRaw(O)) === "Object" && isCallable(O.callee) ? "Arguments" : result;
+  };
+}));
+var require_get_iterator_method = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var classof = require_classof();
+  var getMethod = require_get_method();
+  var isNullOrUndefined = require_is_null_or_undefined();
+  var Iterators = require_iterators();
+  var ITERATOR = require_well_known_symbol()("iterator");
+  module.exports = function(it) {
+    if (!isNullOrUndefined(it)) return getMethod(it, ITERATOR) || getMethod(it, "@@iterator") || Iterators[classof(it)];
+  };
+}));
+var require_get_iterator = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var call = require_function_call();
+  var aCallable = require_a_callable();
+  var anObject = require_an_object();
+  var tryToString = require_try_to_string();
+  var getIteratorMethod = require_get_iterator_method();
+  var $TypeError = TypeError;
+  module.exports = function(argument, usingIterator) {
+    var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;
+    if (aCallable(iteratorMethod)) return anObject(call(iteratorMethod, argument));
+    throw new $TypeError(tryToString(argument) + " is not iterable");
+  };
+}));
+var require_iterator_close = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var call = require_function_call();
+  var anObject = require_an_object();
+  var getMethod = require_get_method();
+  module.exports = function(iterator, kind, value) {
+    var innerResult, innerError;
+    anObject(iterator);
+    try {
+      innerResult = getMethod(iterator, "return");
+      if (!innerResult) {
+        if (kind === "throw") throw value;
+        return value;
+      }
+      innerResult = call(innerResult, iterator);
+    } catch (error) {
+      innerError = true;
+      innerResult = error;
+    }
+    if (kind === "throw") throw value;
+    if (innerError) throw innerResult;
+    anObject(innerResult);
+    return value;
+  };
+}));
+var require_iterate = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var bind = require_function_bind_context();
+  var call = require_function_call();
+  var anObject = require_an_object();
+  var tryToString = require_try_to_string();
+  var isArrayIteratorMethod = require_is_array_iterator_method();
+  var lengthOfArrayLike = require_length_of_array_like();
+  var isPrototypeOf = require_object_is_prototype_of();
+  var getIterator = require_get_iterator();
+  var getIteratorMethod = require_get_iterator_method();
+  var iteratorClose = require_iterator_close();
+  var $TypeError = TypeError;
+  var Result = function(stopped, result) {
+    this.stopped = stopped;
+    this.result = result;
+  };
+  var ResultPrototype = Result.prototype;
+  module.exports = function(iterable, unboundFunction, options) {
+    var that = options && options.that;
+    var AS_ENTRIES = !!(options && options.AS_ENTRIES);
+    var IS_RECORD = !!(options && options.IS_RECORD);
+    var IS_ITERATOR = !!(options && options.IS_ITERATOR);
+    var INTERRUPTED = !!(options && options.INTERRUPTED);
+    var fn = bind(unboundFunction, that);
+    var iterator, iterFn, index, length, result, next, step;
+    var stop = function(condition) {
+      var $iterator = iterator;
+      iterator = void 0;
+      if ($iterator) iteratorClose($iterator, "normal");
+      return new Result(true, condition);
+    };
+    var callFn = function(value2) {
+      if (AS_ENTRIES) {
+        anObject(value2);
+        return INTERRUPTED ? fn(value2[0], value2[1], stop) : fn(value2[0], value2[1]);
+      }
+      return INTERRUPTED ? fn(value2, stop) : fn(value2);
+    };
+    if (IS_RECORD) iterator = iterable.iterator;
+    else if (IS_ITERATOR) iterator = iterable;
+    else {
+      iterFn = getIteratorMethod(iterable);
+      if (!iterFn) throw new $TypeError(tryToString(iterable) + " is not iterable");
+      if (isArrayIteratorMethod(iterFn)) {
+        for (index = 0, length = lengthOfArrayLike(iterable); length > index; index++) {
+          result = callFn(iterable[index]);
+          if (result && isPrototypeOf(ResultPrototype, result)) return result;
+        }
+        return new Result(false);
+      }
+      iterator = getIterator(iterable, iterFn);
+    }
+    next = IS_RECORD ? iterable.next : iterator.next;
+    while (!(step = call(next, iterator)).done) {
+      var value = step.value;
+      try {
+        result = callFn(value);
+      } catch (error) {
+        if (iterator) iteratorClose(iterator, "throw", error);
+        else throw error;
+      }
+      if (typeof result == "object" && result && isPrototypeOf(ResultPrototype, result)) return result;
+    }
+    return new Result(false);
+  };
+}));
+var require_get_iterator_direct = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  module.exports = function(obj) {
+    return {
+      iterator: obj,
+      next: obj.next,
+      done: false
+    };
+  };
+}));
+var require_iterator_helper_without_closing_on_early_error = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var globalThis2 = require_global_this();
+  module.exports = function(METHOD_NAME, ExpectedError) {
+    var Iterator2 = globalThis2.Iterator;
+    var IteratorPrototype = Iterator2 && Iterator2.prototype;
+    var method = IteratorPrototype && IteratorPrototype[METHOD_NAME];
+    var CLOSED = false;
+    if (method) try {
+      method.call({
+        next: function() {
+          return { done: true };
+        },
+        "return": function() {
+          CLOSED = true;
+        }
+      }, -1);
+    } catch (error) {
+      if (!(error instanceof ExpectedError)) CLOSED = false;
+    }
+    if (!CLOSED) return method;
+  };
 }));
 var require_es_iterator_for_each = /* @__PURE__ */ __commonJSMin((() => {
   var $ = require_export();
@@ -3179,9 +2409,11 @@ var require_web_dom_exception_stack = /* @__PURE__ */ __commonJSMin((() => {
     }
   }
 }));
+require_es_array_includes();
 require_es_array_buffer_detached();
 require_es_array_buffer_transfer();
 require_es_array_buffer_transfer_to_fixed_length();
+require_es_iterator_constructor();
 require_es_iterator_for_each();
 require_es_typed_array_to_reversed();
 require_es_typed_array_to_sorted();
@@ -3196,12 +2428,650 @@ function matchPropertyValue(property) {
     return value === null || item[property] === value;
   };
 }
+var require_define_built_ins = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var defineBuiltIn = require_define_built_in();
+  module.exports = function(target, src, options) {
+    for (var key in src) defineBuiltIn(target, key, src[key], options);
+    return target;
+  };
+}));
+var require_create_iter_result_object = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  module.exports = function(value, done) {
+    return {
+      value,
+      done
+    };
+  };
+}));
+var require_iterator_close_all = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var iteratorClose = require_iterator_close();
+  module.exports = function(iters, kind, value) {
+    for (var i = iters.length - 1; i >= 0; i--) {
+      if (iters[i] === void 0) continue;
+      try {
+        value = iteratorClose(iters[i].iterator, kind, value);
+      } catch (error) {
+        kind = "throw";
+        value = error;
+      }
+    }
+    if (kind === "throw") throw value;
+    return value;
+  };
+}));
+var require_iterator_create_proxy = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var call = require_function_call();
+  var create = require_object_create();
+  var createNonEnumerableProperty = require_create_non_enumerable_property();
+  var defineBuiltIns = require_define_built_ins();
+  var wellKnownSymbol = require_well_known_symbol();
+  var InternalStateModule = require_internal_state();
+  var getMethod = require_get_method();
+  var IteratorPrototype = require_iterators_core().IteratorPrototype;
+  var createIterResultObject = require_create_iter_result_object();
+  var iteratorClose = require_iterator_close();
+  var iteratorCloseAll = require_iterator_close_all();
+  var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+  var ITERATOR_HELPER = "IteratorHelper";
+  var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
+  var NORMAL = "normal";
+  var THROW = "throw";
+  var setInternalState = InternalStateModule.set;
+  var createIteratorProxyPrototype = function(IS_ITERATOR) {
+    var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
+    return defineBuiltIns(create(IteratorPrototype), {
+      next: function next() {
+        var state = getInternalState(this);
+        if (IS_ITERATOR) return state.nextHandler();
+        if (state.done) return createIterResultObject(void 0, true);
+        try {
+          var result = state.nextHandler();
+          return state.returnHandlerResult ? result : createIterResultObject(result, state.done);
+        } catch (error) {
+          state.done = true;
+          throw error;
+        }
+      },
+      "return": function() {
+        var state = getInternalState(this);
+        var iterator = state.iterator;
+        var done = state.done;
+        state.done = true;
+        if (IS_ITERATOR) {
+          var returnMethod = getMethod(iterator, "return");
+          return returnMethod ? call(returnMethod, iterator) : createIterResultObject(void 0, true);
+        }
+        if (done) return createIterResultObject(void 0, true);
+        if (state.inner) try {
+          iteratorClose(state.inner.iterator, NORMAL);
+        } catch (error) {
+          return iteratorClose(iterator, THROW, error);
+        }
+        if (state.openIters) try {
+          iteratorCloseAll(state.openIters, NORMAL);
+        } catch (error) {
+          if (iterator) return iteratorClose(iterator, THROW, error);
+          throw error;
+        }
+        if (iterator) iteratorClose(iterator, NORMAL);
+        return createIterResultObject(void 0, true);
+      }
+    });
+  };
+  var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
+  var IteratorHelperPrototype = createIteratorProxyPrototype(false);
+  createNonEnumerableProperty(IteratorHelperPrototype, TO_STRING_TAG, "Iterator Helper");
+  module.exports = function(nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
+    var IteratorProxy = function Iterator2(record, state) {
+      if (state) {
+        state.iterator = record.iterator;
+        state.next = record.next;
+      } else state = record;
+      state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
+      state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
+      state.nextHandler = nextHandler;
+      state.counter = 0;
+      state.done = false;
+      setInternalState(this, state);
+    };
+    IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
+    return IteratorProxy;
+  };
+}));
+var require_call_with_safe_iteration_closing = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var anObject = require_an_object();
+  var iteratorClose = require_iterator_close();
+  module.exports = function(iterator, fn, value, ENTRIES) {
+    try {
+      return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
+    } catch (error) {
+      iteratorClose(iterator, "throw", error);
+    }
+  };
+}));
+var require_iterator_helper_throws_on_invalid_iterator = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  module.exports = function(methodName, argument) {
+    var method = typeof Iterator == "function" && Iterator.prototype[methodName];
+    if (method) try {
+      method.call({ next: null }, argument).next();
+    } catch (error) {
+      return true;
+    }
+  };
+}));
+var require_es_iterator_map = /* @__PURE__ */ __commonJSMin((() => {
+  var $ = require_export();
+  var call = require_function_call();
+  var aCallable = require_a_callable();
+  var anObject = require_an_object();
+  var getIteratorDirect = require_get_iterator_direct();
+  var createIteratorProxy = require_iterator_create_proxy();
+  var callWithSafeIterationClosing = require_call_with_safe_iteration_closing();
+  var iteratorClose = require_iterator_close();
+  var iteratorHelperThrowsOnInvalidIterator = require_iterator_helper_throws_on_invalid_iterator();
+  var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
+  var IS_PURE = require_is_pure();
+  var MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator("map", function() {
+  });
+  var mapWithoutClosingOnEarlyError = !IS_PURE && !MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError("map", TypeError);
+  var FORCED = IS_PURE || MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR || mapWithoutClosingOnEarlyError;
+  var IteratorProxy = createIteratorProxy(function() {
+    var iterator = this.iterator;
+    var result = anObject(call(this.next, iterator));
+    if (!(this.done = !!result.done)) return callWithSafeIterationClosing(iterator, this.mapper, [result.value, this.counter++], true);
+  });
+  $({
+    target: "Iterator",
+    proto: true,
+    real: true,
+    forced: FORCED
+  }, { map: function map(mapper) {
+    anObject(this);
+    try {
+      aCallable(mapper);
+    } catch (error) {
+      iteratorClose(this, "throw", error);
+    }
+    if (mapWithoutClosingOnEarlyError) return call(mapWithoutClosingOnEarlyError, this, mapper);
+    return new IteratorProxy(getIteratorDirect(this), { mapper });
+  } });
+}));
+var require_set_helpers = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var uncurryThis = require_function_uncurry_this();
+  var SetPrototype = Set.prototype;
+  module.exports = {
+    Set,
+    add: uncurryThis(SetPrototype.add),
+    has: uncurryThis(SetPrototype.has),
+    remove: uncurryThis(SetPrototype["delete"]),
+    proto: SetPrototype
+  };
+}));
+var require_a_set = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var has = require_set_helpers().has;
+  module.exports = function(it) {
+    has(it);
+    return it;
+  };
+}));
+var require_iterate_simple = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var call = require_function_call();
+  module.exports = function(record, fn, ITERATOR_INSTEAD_OF_RECORD) {
+    var iterator = ITERATOR_INSTEAD_OF_RECORD ? record : record.iterator;
+    var next = record.next;
+    var step, result;
+    while (!(step = call(next, iterator)).done) {
+      result = fn(step.value);
+      if (result !== void 0) return result;
+    }
+  };
+}));
+var require_set_iterate = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var uncurryThis = require_function_uncurry_this();
+  var iterateSimple = require_iterate_simple();
+  var SetHelpers = require_set_helpers();
+  var Set2 = SetHelpers.Set;
+  var SetPrototype = SetHelpers.proto;
+  var forEach = uncurryThis(SetPrototype.forEach);
+  var keys = uncurryThis(SetPrototype.keys);
+  var next = keys(new Set2()).next;
+  module.exports = function(set, fn, interruptible) {
+    return interruptible ? iterateSimple({
+      iterator: keys(set),
+      next
+    }, fn) : forEach(set, fn);
+  };
+}));
+var require_set_clone = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var SetHelpers = require_set_helpers();
+  var iterate = require_set_iterate();
+  var Set2 = SetHelpers.Set;
+  var add = SetHelpers.add;
+  module.exports = function(set) {
+    var result = new Set2();
+    iterate(set, function(it) {
+      add(result, it);
+    });
+    return result;
+  };
+}));
+var require_set_size = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  module.exports = require_function_uncurry_this_accessor()(require_set_helpers().proto, "size", "get") || function(set) {
+    return set.size;
+  };
+}));
+var require_get_set_record = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var aCallable = require_a_callable();
+  var anObject = require_an_object();
+  var call = require_function_call();
+  var toIntegerOrInfinity = require_to_integer_or_infinity();
+  var getIteratorDirect = require_get_iterator_direct();
+  var INVALID_SIZE = "Invalid size";
+  var $RangeError = RangeError;
+  var $TypeError = TypeError;
+  var max = Math.max;
+  var SetRecord = function(set, intSize) {
+    this.set = set;
+    this.size = max(intSize, 0);
+    this.has = aCallable(set.has);
+    this.keys = aCallable(set.keys);
+  };
+  SetRecord.prototype = {
+    getIterator: function() {
+      return getIteratorDirect(anObject(call(this.keys, this.set)));
+    },
+    includes: function(it) {
+      return call(this.has, this.set, it);
+    }
+  };
+  module.exports = function(obj) {
+    anObject(obj);
+    var numSize = +obj.size;
+    if (numSize !== numSize) throw new $TypeError(INVALID_SIZE);
+    var intSize = toIntegerOrInfinity(numSize);
+    if (intSize < 0) throw new $RangeError(INVALID_SIZE);
+    return new SetRecord(obj, intSize);
+  };
+}));
+var require_set_difference = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var aSet = require_a_set();
+  var SetHelpers = require_set_helpers();
+  var clone = require_set_clone();
+  var size = require_set_size();
+  var getSetRecord = require_get_set_record();
+  var iterateSet = require_set_iterate();
+  var iterateSimple = require_iterate_simple();
+  var has = SetHelpers.has;
+  var remove = SetHelpers.remove;
+  module.exports = function difference(other) {
+    var O = aSet(this);
+    var otherRec = getSetRecord(other);
+    var result = clone(O);
+    if (size(result) <= otherRec.size) iterateSet(result, function(e) {
+      if (otherRec.includes(e)) remove(result, e);
+    });
+    else iterateSimple(otherRec.getIterator(), function(e) {
+      if (has(result, e)) remove(result, e);
+    });
+    return result;
+  };
+}));
+var require_set_method_accept_set_like = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var getBuiltIn = require_get_built_in();
+  var createSetLike = function(size) {
+    return {
+      size,
+      has: function() {
+        return false;
+      },
+      keys: function() {
+        return { next: function() {
+          return { done: true };
+        } };
+      }
+    };
+  };
+  var createSetLikeWithInfinitySize = function(size) {
+    return {
+      size,
+      has: function() {
+        return true;
+      },
+      keys: function() {
+        throw new Error("e");
+      }
+    };
+  };
+  module.exports = function(name, callback) {
+    var Set2 = getBuiltIn("Set");
+    try {
+      new Set2()[name](createSetLike(0));
+      try {
+        new Set2()[name](createSetLike(-1));
+        return false;
+      } catch (error2) {
+        if (!callback) return true;
+        try {
+          new Set2()[name](createSetLikeWithInfinitySize(-Infinity));
+          return false;
+        } catch (error) {
+          return callback(new Set2([1, 2])[name](createSetLikeWithInfinitySize(Infinity)));
+        }
+      }
+    } catch (error) {
+      return false;
+    }
+  };
+}));
+var require_es_set_difference_v2 = /* @__PURE__ */ __commonJSMin((() => {
+  var $ = require_export();
+  var difference = require_set_difference();
+  var fails = require_fails();
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: !require_set_method_accept_set_like()("difference", function(result) {
+      return result.size === 0;
+    }) || fails(function() {
+      var setLike = {
+        size: 1,
+        has: function() {
+          return true;
+        },
+        keys: function() {
+          var index = 0;
+          return { next: function() {
+            var done = index++ > 1;
+            if (baseSet.has(1)) baseSet.clear();
+            return {
+              done,
+              value: 2
+            };
+          } };
+        }
+      };
+      var baseSet = /* @__PURE__ */ new Set([
+        1,
+        2,
+        3,
+        4
+      ]);
+      return baseSet.difference(setLike).size !== 3;
+    })
+  }, { difference });
+}));
+var require_set_intersection = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var aSet = require_a_set();
+  var SetHelpers = require_set_helpers();
+  var size = require_set_size();
+  var getSetRecord = require_get_set_record();
+  var iterateSet = require_set_iterate();
+  var iterateSimple = require_iterate_simple();
+  var Set2 = SetHelpers.Set;
+  var add = SetHelpers.add;
+  var has = SetHelpers.has;
+  module.exports = function intersection(other) {
+    var O = aSet(this);
+    var otherRec = getSetRecord(other);
+    var result = new Set2();
+    if (size(O) > otherRec.size) iterateSimple(otherRec.getIterator(), function(e) {
+      if (has(O, e)) add(result, e);
+    });
+    else iterateSet(O, function(e) {
+      if (otherRec.includes(e)) add(result, e);
+    });
+    return result;
+  };
+}));
+var require_es_set_intersection_v2 = /* @__PURE__ */ __commonJSMin((() => {
+  var $ = require_export();
+  var fails = require_fails();
+  var intersection = require_set_intersection();
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: !require_set_method_accept_set_like()("intersection", function(result) {
+      return result.size === 2 && result.has(1) && result.has(2);
+    }) || fails(function() {
+      return String(Array.from((/* @__PURE__ */ new Set([
+        1,
+        2,
+        3
+      ])).intersection(/* @__PURE__ */ new Set([3, 2])))) !== "3,2";
+    })
+  }, { intersection });
+}));
+var require_set_is_disjoint_from = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var aSet = require_a_set();
+  var has = require_set_helpers().has;
+  var size = require_set_size();
+  var getSetRecord = require_get_set_record();
+  var iterateSet = require_set_iterate();
+  var iterateSimple = require_iterate_simple();
+  var iteratorClose = require_iterator_close();
+  module.exports = function isDisjointFrom(other) {
+    var O = aSet(this);
+    var otherRec = getSetRecord(other);
+    if (size(O) <= otherRec.size) return iterateSet(O, function(e) {
+      if (otherRec.includes(e)) return false;
+    }, true) !== false;
+    var iterator = otherRec.getIterator();
+    return iterateSimple(iterator, function(e) {
+      if (has(O, e)) return iteratorClose(iterator.iterator, "normal", false);
+    }) !== false;
+  };
+}));
+var require_es_set_is_disjoint_from_v2 = /* @__PURE__ */ __commonJSMin((() => {
+  var $ = require_export();
+  var isDisjointFrom = require_set_is_disjoint_from();
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: !require_set_method_accept_set_like()("isDisjointFrom", function(result) {
+      return !result;
+    })
+  }, { isDisjointFrom });
+}));
+var require_set_is_subset_of = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var aSet = require_a_set();
+  var size = require_set_size();
+  var iterate = require_set_iterate();
+  var getSetRecord = require_get_set_record();
+  module.exports = function isSubsetOf(other) {
+    var O = aSet(this);
+    var otherRec = getSetRecord(other);
+    if (size(O) > otherRec.size) return false;
+    return iterate(O, function(e) {
+      if (!otherRec.includes(e)) return false;
+    }, true) !== false;
+  };
+}));
+var require_es_set_is_subset_of_v2 = /* @__PURE__ */ __commonJSMin((() => {
+  var $ = require_export();
+  var isSubsetOf = require_set_is_subset_of();
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: !require_set_method_accept_set_like()("isSubsetOf", function(result) {
+      return result;
+    })
+  }, { isSubsetOf });
+}));
+var require_set_is_superset_of = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var aSet = require_a_set();
+  var has = require_set_helpers().has;
+  var size = require_set_size();
+  var getSetRecord = require_get_set_record();
+  var iterateSimple = require_iterate_simple();
+  var iteratorClose = require_iterator_close();
+  module.exports = function isSupersetOf(other) {
+    var O = aSet(this);
+    var otherRec = getSetRecord(other);
+    if (size(O) < otherRec.size) return false;
+    var iterator = otherRec.getIterator();
+    return iterateSimple(iterator, function(e) {
+      if (!has(O, e)) return iteratorClose(iterator.iterator, "normal", false);
+    }) !== false;
+  };
+}));
+var require_es_set_is_superset_of_v2 = /* @__PURE__ */ __commonJSMin((() => {
+  var $ = require_export();
+  var isSupersetOf = require_set_is_superset_of();
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: !require_set_method_accept_set_like()("isSupersetOf", function(result) {
+      return !result;
+    })
+  }, { isSupersetOf });
+}));
+var require_set_symmetric_difference = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var aSet = require_a_set();
+  var SetHelpers = require_set_helpers();
+  var clone = require_set_clone();
+  var getSetRecord = require_get_set_record();
+  var iterateSimple = require_iterate_simple();
+  var add = SetHelpers.add;
+  var has = SetHelpers.has;
+  var remove = SetHelpers.remove;
+  module.exports = function symmetricDifference(other) {
+    var O = aSet(this);
+    var keysIter = getSetRecord(other).getIterator();
+    var result = clone(O);
+    iterateSimple(keysIter, function(e) {
+      if (has(O, e)) remove(result, e);
+      else add(result, e);
+    });
+    return result;
+  };
+}));
+var require_set_method_get_keys_before_cloning_detection = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  module.exports = function(METHOD_NAME) {
+    try {
+      var baseSet = /* @__PURE__ */ new Set();
+      var result = baseSet[METHOD_NAME]({
+        size: 0,
+        has: function() {
+          return true;
+        },
+        keys: function() {
+          return Object.defineProperty({}, "next", { get: function() {
+            baseSet.clear();
+            baseSet.add(4);
+            return function() {
+              return { done: true };
+            };
+          } });
+        }
+      });
+      return result.size === 1 && result.values().next().value === 4;
+    } catch (error) {
+      return false;
+    }
+  };
+}));
+var require_es_set_symmetric_difference_v2 = /* @__PURE__ */ __commonJSMin((() => {
+  var $ = require_export();
+  var symmetricDifference = require_set_symmetric_difference();
+  var setMethodGetKeysBeforeCloning = require_set_method_get_keys_before_cloning_detection();
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: !require_set_method_accept_set_like()("symmetricDifference") || !setMethodGetKeysBeforeCloning("symmetricDifference")
+  }, { symmetricDifference });
+}));
+var require_set_union = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var aSet = require_a_set();
+  var add = require_set_helpers().add;
+  var clone = require_set_clone();
+  var getSetRecord = require_get_set_record();
+  var iterateSimple = require_iterate_simple();
+  module.exports = function union(other) {
+    var O = aSet(this);
+    var keysIter = getSetRecord(other).getIterator();
+    var result = clone(O);
+    iterateSimple(keysIter, function(it) {
+      add(result, it);
+    });
+    return result;
+  };
+}));
+var require_es_set_union_v2 = /* @__PURE__ */ __commonJSMin((() => {
+  var $ = require_export();
+  var union = require_set_union();
+  var setMethodGetKeysBeforeCloning = require_set_method_get_keys_before_cloning_detection();
+  $({
+    target: "Set",
+    proto: true,
+    real: true,
+    forced: !require_set_method_accept_set_like()("union") || !setMethodGetKeysBeforeCloning("union")
+  }, { union });
+}));
+require_es_iterator_map();
+require_es_set_difference_v2();
+require_es_set_intersection_v2();
+require_es_set_is_disjoint_from_v2();
+require_es_set_is_subset_of_v2();
+require_es_set_is_superset_of_v2();
+require_es_set_symmetric_difference_v2();
+require_es_set_union_v2();
 function uniqueValues(items, property) {
   const values = items.map((it) => it[property]);
   const unique = Array.from(new Set(values));
   unique.sort();
   return unique;
 }
+(/* @__PURE__ */ __commonJSMin((() => {
+  var $ = require_export();
+  var call = require_function_call();
+  var aCallable = require_a_callable();
+  var anObject = require_an_object();
+  var getIteratorDirect = require_get_iterator_direct();
+  var createIteratorProxy = require_iterator_create_proxy();
+  var callWithSafeIterationClosing = require_call_with_safe_iteration_closing();
+  var IS_PURE = require_is_pure();
+  var iteratorClose = require_iterator_close();
+  var iteratorHelperThrowsOnInvalidIterator = require_iterator_helper_throws_on_invalid_iterator();
+  var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
+  var FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator("filter", function() {
+  });
+  var filterWithoutClosingOnEarlyError = !IS_PURE && !FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError("filter", TypeError);
+  var FORCED = IS_PURE || FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR || filterWithoutClosingOnEarlyError;
+  var IteratorProxy = createIteratorProxy(function() {
+    var iterator = this.iterator;
+    var predicate = this.predicate;
+    var next = this.next;
+    var result, done, value;
+    while (true) {
+      result = anObject(call(next, iterator));
+      done = this.done = !!result.done;
+      if (done) return;
+      value = result.value;
+      if (callWithSafeIterationClosing(iterator, predicate, [value, this.counter++], true)) return value;
+    }
+  });
+  $({
+    target: "Iterator",
+    proto: true,
+    real: true,
+    forced: FORCED
+  }, { filter: function filter(predicate) {
+    anObject(this);
+    try {
+      aCallable(predicate);
+    } catch (error) {
+      iteratorClose(this, "throw", error);
+    }
+    if (filterWithoutClosingOnEarlyError) return call(filterWithoutClosingOnEarlyError, this, predicate);
+    return new IteratorProxy(getIteratorDirect(this), { predicate });
+  } });
+})))();
 var _hoisted_1 = { class: "sort-filter-dataset-ng" };
 var XSortFilterDatasetNg_default = /* @__PURE__ */ defineComponent({
   __name: "XSortFilterDatasetNg",
@@ -3423,7 +3293,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "XSortFilterDatasetNgExample",
   setup(__props, { expose: __expose }) {
     __expose();
-    const searchRef = useTemplateRef2("search");
+    const searchRef = useTemplateRef("search");
     const actualElement = computed2(() => {
       const searchEl = findHTMLElementFromVueRef(searchRef);
       return searchEl ? searchEl.querySelector("input") : null;
