@@ -2,6 +2,8 @@
 import { type Ref, computed, onMounted, provide, ref, watch } from "vue";
 import { type Dataset, toDataset } from "../../utils";
 import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
+import { useSortFilterDatasetEvents } from "../FSortFilterDataset";
+import { provideSelectableRowSource, useSelectableRowSource } from "../FTable";
 import { paginateDatasetKey } from "./provide";
 
 const currentPage = defineModel<number>({
@@ -80,8 +82,15 @@ const numberOfPages = computed(() => Math.max(1, Math.ceil(numberOfItems.value /
 
 // Computes number of items
 const numberOfItems = computed(() => (itemsLength > 0 ? itemsLength : items.length));
+const { isProvided: hasSelectableRowsProvider } = useSelectableRowSource();
+
+const sortFilterDatasetEvents = useSortFilterDatasetEvents();
 
 onMounted(() => {
+    sortFilterDatasetEvents.onFilter(goToFirstPage);
+    sortFilterDatasetEvents.onSort(goToFirstPage);
+    sortFilterDatasetEvents.onLazyRowsAdded(goToLastPage);
+
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     refetchData();
 });
@@ -90,6 +99,12 @@ provide(paginateDatasetKey, {
     currentPage,
     numberOfPages,
 });
+
+if (!hasSelectableRowsProvider.value) {
+    provideSelectableRowSource({
+        rows: computed(() => items as unknown[]),
+    });
+}
 
 watch(currentPage, (newPageValue) => {
     currentPage.value = Math.max(1, Math.min(newPageValue, numberOfPages.value));

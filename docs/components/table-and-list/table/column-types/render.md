@@ -3,6 +3,7 @@ title: Anpassa egen kolumntyp i tabell
 short-title: Anpassa egen kolumntyp
 name: column-type-render
 layout: article
+sortorder: 4
 search:
     terms:
         - tabell
@@ -14,7 +15,7 @@ Använd kolumntypen renderat innehåll (`render`) när du behöver presentera n�
 
 ```ts
 import { h } from "vue";
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     status: string;

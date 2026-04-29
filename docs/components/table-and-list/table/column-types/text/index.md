@@ -16,7 +16,7 @@ Det är den mest flexibla kolumntypen och den fungerar både för enkel fritext 
 I det enklaste fallet kopplar du kolumnen till en egenskap i raden med `key`.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     fruit: string;
@@ -34,7 +34,7 @@ const columns = defineTableColumns<Row>([
 Om cellen ska vara redigerbar sätter du `editable: true` och uppdaterar raden via `key` eller `update()`.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     fruit: string;
@@ -55,7 +55,7 @@ const columns = defineTableColumns<Row>([
 Använd `value(row)` när värdet ska räknas fram från flera fält eller när du inte vill läsa direkt från `key`.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     firstName: string;
@@ -78,7 +78,7 @@ const columns = defineTableColumns<Row>([
 Använd `formatter(value)` när du vill ändra hur värdet visas i tabellen utan att ändra datan i raden.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     fruit: string;
@@ -101,7 +101,7 @@ const columns = defineTableColumns<Row>([
 Om kolumnen är redigerbar kan du använda `parser(value)` för att normalisera användarens inmatning innan den skrivs tillbaka.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     fruit: string;
@@ -125,7 +125,7 @@ const columns = defineTableColumns<Row>([
 Använd `update(row, newValue, oldValue)` när du behöver full kontroll över hur raden ska ändras.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     fruit: string;
@@ -150,7 +150,7 @@ Textfält kan valideras med `validation`.
 Det är användbart när cellen är redigerbar och du vill styra vilka värden som är tillåtna.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     fruit: string;
@@ -177,7 +177,7 @@ För vissa vanliga datatyper finns färdiga varianter av `text` med inbyggd form
 - {@link column-type-bank-account-number kontonummer}
 - {@link column-type-bankgiro bankgiro}
 - {@link column-type-clearing-number clearingnummer}
-- {@link column-type-date batum}
+- {@link column-type-date datum}
 - {@link column-type-email mejladress}
 - {@link column-type-number numeriskt}
 - {@link column-type-organisationsnummer organisationsnummer}

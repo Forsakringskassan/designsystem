@@ -3,6 +3,7 @@ title: Kolumntyp knapp i tabell
 short-title: Knapp
 name: column-type-button
 layout: api
+sortorder: 3
 search:
     terms:
         - tabell
@@ -12,7 +13,7 @@ search:
 Använd kolumntypen knapp (`button`) när användaren ska kunna utföra en radbunden åtgärd.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     id: string;

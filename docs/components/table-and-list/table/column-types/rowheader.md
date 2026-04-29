@@ -3,6 +3,7 @@ title: Kolumntyp radrubrik i tabell
 short-title: Radrubrik
 name: column-type-rowheader
 layout: article
+sortorder: 3
 search:
     terms:
         - tabell
@@ -13,7 +14,7 @@ Använd kolumntypen radrubrik (`rowheader`) när en cell ska identifiera raden o
 Det förbättrar tabellens tillgänglighet.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     fruit: string;

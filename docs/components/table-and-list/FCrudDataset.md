@@ -2,6 +2,7 @@
 title: Datamängdredigerare
 status: Produktionsklar
 layout: component
+sortorder: 3
 component: FCrudDataset
 search:
     terms:

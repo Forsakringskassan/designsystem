@@ -31,8 +31,10 @@ import { formatPostalCode } from '@fkui/logic';
 import { FYear } from '@fkui/date';
 import { GlobalComponents } from 'vue';
 import { GlobalDirectives } from 'vue';
+import { HTMLAttributes } from 'vue';
 import { IfAny } from '@vue/shared';
 import { InjectionKey } from 'vue';
+import { MaybeRef } from 'vue';
 import { OrganisationsnummerString } from '@fkui/logic';
 import { parseBankAccountNumber } from '@fkui/logic';
 import { parseBankgiro } from '@fkui/logic';
@@ -51,6 +53,7 @@ import { PropType } from 'vue';
 import { PublicProps } from 'vue';
 import { Ref } from 'vue';
 import { ShallowRef } from 'vue';
+import { ShallowUnwrapRef } from 'vue';
 import { Slot } from 'vue';
 import { Slots } from 'vue';
 import { StackHandle } from '@fkui/logic';
@@ -88,6 +91,9 @@ export type AnimationCallback = (expand: boolean) => void | Promise<void>;
 
 // @public (undocumented)
 export type AsyncModalResult<T> = Promise<ModalResult<T>>;
+
+// @public (undocumented)
+export const baseTypes: readonly ["anchor", "button", "checkbox", "render", "rowheader", "select"];
 
 // @public (undocumented)
 export type BeforeNavigate = (item: ErrorItem) => void | Promise<void>;
@@ -188,6 +194,9 @@ export type DatasetNestedKeyOf<T> = {
 const _default: typeof __VLS_export_68;
 export { _default as FValidationForm }
 export { _default as IValidationForm }
+
+// @public (undocumented)
+export function defineTableColumns<T, K extends keyof T = keyof T>(columns: Array<TableColumn<T, K>>): Array<TableColumn<T, K>>;
 
 // @public (undocumented)
 export type DetailsPanelCloseCallback<T> = (data: {
@@ -416,10 +425,10 @@ export interface FDialogueTreeUserProgress {
 // @public (undocumented)
 export const FEmailTextField: typeof __VLS_export_57;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_export_85" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_86" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FErrorHandlingApp: typeof __VLS_export_85;
+export const FErrorHandlingApp: typeof __VLS_export_86;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_15" needs to be exported by the entry point index.d.ts
 //
@@ -839,10 +848,25 @@ export type FSortFilterDatasetSortCallback<TKeys = PropertyKey> = (attribute: TK
 // @public (undocumented)
 export const FStaticField: typeof __VLS_export_49;
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_72" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FTable: typeof __VLS_export_72;
+
+// @public
+export interface FTableApi {
+    withTabstopBehaviour(behaviour: "default" | "row-removal", action: () => void | Promise<void>): Promise<void>;
+}
+
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_50" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
 export const FTableButton: typeof __VLS_export_50;
+
+// @public
+export interface FTableCellApi {
+    tabstopEl: Readonly<ShallowRef<HTMLElement | null>>;
+}
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_51" needs to be exported by the entry point index.d.ts
 //
@@ -1053,6 +1077,9 @@ export function getParentByName(vm: ComponentPublicInstance | undefined | null, 
 // @public
 export function getSortedHTMLElementsFromVueRef(ref: unknown): HTMLElement[];
 
+// @public
+export function getTableSortableAttributes(columns: MaybeSortableTableColumn[]): Record<PropertyKey, string | Readonly<Ref<string>>>;
+
 // @public (undocumented)
 export interface GroupValidityEvent {
     // (undocumented)
@@ -1074,53 +1101,65 @@ export function hasSlot(vm: {
     $slots: Slots;
 }, name: string, props?: Record<string, unknown>, options?: Partial<Pick<RenderSlotOptions, "stripClasses">>): boolean;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_export_78" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_79" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IAnimateExpand: typeof __VLS_export_78;
-
-// Warning: (ae-forgotten-export) The symbol "__VLS_export_80" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export const ICalendarMonth: typeof __VLS_export_80;
+export const IAnimateExpand: typeof __VLS_export_79;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_81" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const ICalendarMonthGrid: typeof __VLS_export_81;
+export const ICalendarMonth: typeof __VLS_export_81;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_82" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const ICalendarNavbar: typeof __VLS_export_82;
+export const ICalendarMonthGrid: typeof __VLS_export_82;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_83" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IComboboxDropdown: typeof __VLS_export_83;
+export const ICalendarNavbar: typeof __VLS_export_83;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_84" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IComboboxToggleButton: typeof __VLS_export_84;
+export const IComboboxDropdown: typeof __VLS_export_84;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_export_72" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_85" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IFlex: typeof __VLS_export_72;
+export const IComboboxToggleButton: typeof __VLS_export_85;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_73" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IFlexItem: typeof __VLS_export_73;
-
-// @public (undocumented)
-export function includeItem<T extends object, K extends keyof T>(item: T | undefined, itemList: T[] | undefined, compareAttribute: K): boolean;
+export const IFlex: typeof __VLS_export_73;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_74" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopup: typeof __VLS_export_74;
+export const IFlexItem: typeof __VLS_export_74;
+
+// @public (undocumented)
+export function includeItem<T extends object, K extends keyof T>(item: T | undefined, itemList: T[] | undefined, compareAttribute: K): boolean;
+
+// @public (undocumented)
+export type InputType = InputTypeBase | InputTypeNumber | InputTypeText;
+
+// @public (undocumented)
+export type InputTypeBase = (typeof baseTypes)[number];
+
+// @public (undocumented)
+export type InputTypeNumber = (typeof numberTypes)[number];
+
+// @public (undocumented)
+export type InputTypeText = (typeof textTypes)[number];
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_75" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const IPopup: typeof __VLS_export_75;
 
 // @public (undocumented)
 export interface IPopupData {
@@ -1132,10 +1171,10 @@ export interface IPopupData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_export_75" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_76" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupError: typeof __VLS_export_75;
+export const IPopupError: typeof __VLS_export_76;
 
 // @public (undocumented)
 export interface IPopupErrorData {
@@ -1149,15 +1188,15 @@ export interface IPopupErrorData {
     teleportDisabled: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_export_76" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export const IPopupListbox: typeof __VLS_export_76;
-
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_77" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const IPopupMenu: typeof __VLS_export_77;
+export const IPopupListbox: typeof __VLS_export_77;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_78" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const IPopupMenu: typeof __VLS_export_78;
 
 // @public (undocumented)
 export function isContextMenuSeparatorItem(value: ContextMenuItem & {
@@ -1172,10 +1211,10 @@ export function isContextMenuTextItem(value: ContextMenuItem & {
 // @public
 export function isDialogueTreeEndQuestion(value: Partial<FDialogueTreeEndQuestion>): value is FDialogueTreeEndQuestion;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_export_79" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_80" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const ISkipLink: typeof __VLS_export_79;
+export const ISkipLink: typeof __VLS_export_80;
 
 // @public (undocumented)
 export function itemEquals<T extends object, K extends keyof T>(item1: T | undefined, item2: T | undefined, compareAttribute: K): boolean;
@@ -1212,6 +1251,16 @@ export type ListItem<T extends object = UnknownItem> = T;
 
 // @public (undocumented)
 export type MaybeComponent = Component | undefined;
+
+// @public (undocumented)
+export interface MaybeSortableTableColumn {
+    // (undocumented)
+    header: string | Readonly<Ref<string>>;
+    // (undocumented)
+    key?: PropertyKey;
+    // (undocumented)
+    sort?: boolean;
+}
 
 // @public (undocumented)
 export interface MaybeWithFKUIContext {
@@ -1272,6 +1321,9 @@ export interface NavigationMenuItem {
     route: string;
     target?: string;
 }
+
+// @public (undocumented)
+export const numberTypes: readonly ["text:currency", "text:number", "text:percent"];
 
 // @public
 export function openModal<T = void>(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, text: string): AsyncModalResult<T>;
@@ -1369,6 +1421,9 @@ export function refIsVueArray(value: unknown): value is ComponentPublicInstance[
 // @public
 export function registerLayout<T extends LayoutDefinition>(definition: T): void;
 
+// @public
+export function removeDatasetRows<T extends object>(dataset: MaybeRef<Dataset<T>>, rows: MaybeRef<T | T[]>): void;
+
 // @public (undocumented)
 export interface RenderSlotOptions {
     componentPlaceholder: boolean;
@@ -1387,6 +1442,22 @@ export function setItemIdentifiers<T>(items: T[], attribute?: keyof T, expandabl
 // @public (undocumented)
 export function setRunningContext(app: App): void;
 
+// @internal (undocumented)
+export type SortFilterDatasetEventCallback = () => void;
+
+// @internal (undocumented)
+export interface SortFilterDatasetEvents {
+    // (undocumented)
+    onFilter(this: void, callback: SortFilterDatasetEventCallback): void;
+    // (undocumented)
+    onLazyRowsAdded(this: void, callback: SortFilterDatasetEventCallback): void;
+    // (undocumented)
+    onSort(this: void, callback: SortFilterDatasetEventCallback): void;
+}
+
+// @internal (undocumented)
+export const sortFilterDatasetEventsKey: InjectionKey<SortFilterDatasetEvents>;
+
 // @public
 export interface SortOrder {
     // (undocumented)
@@ -1403,6 +1474,190 @@ export interface SortOrder {
 
 // @public (undocumented)
 export type StepNumber = number;
+
+// @public (undocumented)
+export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K> | TableColumnCheckbox<T, K> | TableColumnRowHeader<T, K> | TableColumnText<T, K> | TableColumnNumber<T, K> | TableColumnAnchor<T, K> | TableColumnButton<T, K> | TableColumnRender<T, K> | TableColumnSelect<T, K> | TableColumnMenu<T>;
+
+// @public (undocumented)
+export interface TableColumnAnchor<T, K extends keyof T> extends TableColumnBase {
+    // (undocumented)
+    href: string;
+    // (undocumented)
+    key?: K;
+    // (undocumented)
+    text(this: void, row: T): string | null;
+    // (undocumented)
+    type: "anchor";
+}
+
+// @public
+export interface TableColumnBase {
+    // (undocumented)
+    description?: string | Readonly<Ref<string | null>>;
+    // (undocumented)
+    enabled?: MaybeRef<boolean>;
+    // (undocumented)
+    header: string | Readonly<Ref<string>>;
+    // (undocumented)
+    size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
+    // (undocumented)
+    sort?: boolean;
+}
+
+// @public (undocumented)
+export interface TableColumnButton<T, K extends keyof T> extends TableColumnBase {
+    // (undocumented)
+    icon?: string;
+    iconLibrary?: string;
+    // (undocumented)
+    key?: K;
+    // (undocumented)
+    onClick?(this: void, row: T): void;
+    // (undocumented)
+    text(this: void, row: T): string | null;
+    // (undocumented)
+    type: "button";
+}
+
+// @public (undocumented)
+export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBase {
+    // (undocumented)
+    checked?(this: void, row: T): boolean;
+    // (undocumented)
+    key?: K;
+    // (undocumented)
+    label?(this: void, row: T): string;
+    // (undocumented)
+    type: "checkbox";
+    // (undocumented)
+    update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
+}
+
+// @public (undocumented)
+export interface TableColumnMenu<T> extends TableColumnBase {
+    // (undocumented)
+    actions?: Array<{
+        label: string;
+        icon?: string;
+        onClick?(this: void, row: T): void;
+    }>;
+    // (undocumented)
+    text(this: void, row: T): string | null;
+    // (undocumented)
+    type: "menu";
+}
+
+// @public (undocumented)
+export interface TableColumnNumber<T, K extends keyof T> extends TableColumnBase {
+    // (undocumented)
+    align?: "left" | "right";
+    // (undocumented)
+    attributes?: Record<string, string | number | boolean | undefined> | ((this: void, row: T) => Record<string, string | number | boolean | undefined>);
+    // (undocumented)
+    decimals?: number;
+    // (undocumented)
+    editable?: boolean | ((this: void, row: T) => boolean);
+    // (undocumented)
+    formatter?(this: void, value: number | string): string | undefined;
+    // (undocumented)
+    key?: K;
+    // (undocumented)
+    label?(this: void, row: T): string;
+    // (undocumented)
+    parser?(this: void, value: string): number | string | undefined;
+    // (undocumented)
+    tnum?: boolean;
+    // (undocumented)
+    type: InputTypeNumber;
+    // (undocumented)
+    update?(this: void, row: T, newValue: number | string, oldValue: number | string): void;
+    // (undocumented)
+    validation?: ValidatorConfigs;
+    // (undocumented)
+    value?(this: void, row: T): string | number;
+}
+
+// @public (undocumented)
+export interface TableColumnRender<T, K extends keyof T = keyof T> extends TableColumnBase {
+    // (undocumented)
+    key?: K;
+    // (undocumented)
+    render(this: void, row: T): VNode | Component;
+}
+
+// @public (undocumented)
+export interface TableColumnRowHeader<T, K extends keyof T> extends TableColumnBase {
+    // (undocumented)
+    key?: K;
+    // (undocumented)
+    text?(this: void, row: T): string;
+    // (undocumented)
+    type: "rowheader";
+}
+
+// @public (undocumented)
+export interface TableColumnSelect<T, K extends keyof T> extends TableColumnBase {
+    // (undocumented)
+    key?: K;
+    // (undocumented)
+    label?(this: void, row: T): string;
+    // (undocumented)
+    options: string[];
+    // (undocumented)
+    selected?(this: void, row: T): string;
+    // (undocumented)
+    type: "select";
+    // (undocumented)
+    update?(this: void, row: T, newValue: string, oldValue: string): void;
+}
+
+// @public (undocumented)
+export interface TableColumnSimple<T, K extends keyof T> extends TableColumnBase {
+    // (undocumented)
+    key?: K;
+    // (undocumented)
+    label?(this: void, row: T): string;
+    // (undocumented)
+    type?: undefined;
+    // (undocumented)
+    value?(this: void, row: T): string;
+}
+
+// @public (undocumented)
+export type TableColumnSize = "grow" | "shrink";
+
+// @public (undocumented)
+export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
+    // (undocumented)
+    align?: "left" | "right";
+    // (undocumented)
+    attributes?: Record<string, string | number | boolean | undefined> | ((this: void, row: T) => Record<string, string | number | boolean | undefined>);
+    // (undocumented)
+    editable?: boolean | ((this: void, row: T) => boolean);
+    // (undocumented)
+    formatter?(this: void, value: string): string | undefined;
+    // (undocumented)
+    key?: K;
+    // (undocumented)
+    label?(this: void, row: T): string;
+    // (undocumented)
+    parser?(this: void, value: string): string | undefined;
+    // (undocumented)
+    tnum?: boolean;
+    // (undocumented)
+    type: InputTypeText;
+    // (undocumented)
+    update?(this: void, row: T, newValue: string, oldValue: string): void;
+    // (undocumented)
+    validation?: ValidatorConfigs;
+    // (undocumented)
+    value?(this: void, row: T): string;
+}
+
+// @internal
+export type TableColumnType = TableColumn<unknown, never> extends infer U ? U extends {
+    type: infer T;
+} ? T extends undefined ? never : T : never : never;
 
 // @public (undocumented)
 export enum TableScroll {
@@ -1443,6 +1698,9 @@ export interface TextFieldSetupProps {
     // (undocumented)
     type: string;
 }
+
+// @public (undocumented)
+export const textTypes: readonly ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:date", "text:email", "text:organisationsnummer", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode", "text"];
 
 // @internal
 export function toDataset<T extends object>(array: T[], nestedAttribute?: DatasetNestedKeyOf<T>): Dataset<T>;
@@ -1539,6 +1797,9 @@ export interface UseSlotUtils {
 
 // @public (undocumented)
 export function useSlotUtils(): UseSlotUtils;
+
+// @internal
+export function useSortFilterDatasetEvents(): SortFilterDatasetEvents;
 
 // @public
 export function useTextFieldSetup(props: TextFieldSetupProps): {

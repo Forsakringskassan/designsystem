@@ -3,6 +3,7 @@ title: Kolumntyp dropplista i tabell
 short-title: Dropplista
 name: column-type-select
 layout: article
+sortorder: 3
 search:
     terms:
         - select
@@ -11,7 +12,7 @@ search:
 Använd kolumntypen dropplista (`select`) när användaren ska kunna välja ett värde från en fördefinierad lista direkt i cellen.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     season: string;

@@ -15,7 +15,13 @@ Raderna kan presenteras på två sätt:
 
 Länk till kodexempel
 
+## Felhantering och validering av nästlade rader
+
 Tabellen stödjer inte felhantering och validering av nästlade rader.
 Det är bara förälder som valideras.
 
 Om tabellen har validering på nästlade rader måste applikationen se till att användaren får information om felet genom att till exempel expandera raden eller informera användaren genom text.
+
+## Kod
+
+{@link expand-rows-code Läs om hur du sätter upp att expandera rader i tabell.}

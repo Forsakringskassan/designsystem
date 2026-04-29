@@ -2,7 +2,7 @@
 import { ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
 import { FSortFilterDataset, useDatasetRef } from "@fkui/vue";
-import { FTable, defineTableColumns, removeDatasetRows } from "@fkui/vue-labs";
+import { FTable, defineTableColumns, removeDatasetRows } from "@fkui/vue";
 
 const tableRef = useTemplateRef("table");
 
@@ -30,7 +30,7 @@ const columns = defineTableColumns<Row>([
     {
         type: "text",
         header: "Formatterad text",
-        label(row) {
+        label(row: Row) {
             return `Text för rad ${row.id}`;
         },
         value(row) {
@@ -43,7 +43,7 @@ const columns = defineTableColumns<Row>([
         header: "Redigerbar text",
         editable: true,
         key: "level",
-        label(row) {
+        label(row: Row) {
             return `Text för rad ${row.id}`;
         },
         value(row) {
@@ -62,7 +62,7 @@ const columns = defineTableColumns<Row>([
         header: "Knapp",
         icon: "trashcan",
         size: "shrink",
-        text(row) {
+        text(row: Row) {
             return `Ta bort ${row.id}`;
         },
         onClick: (row) => {

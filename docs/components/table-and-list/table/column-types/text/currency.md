@@ -12,7 +12,7 @@ Använd valuta (`text:currency`) för inmatning och visning av valuta i en tabel
 Valuta följer samma validering, formatering och parsning som det {@link textfield-specialized#valuta specialiserade inmatningsfältet valuta}.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const columns = defineTableColumns<Record<string, string>>([
     {

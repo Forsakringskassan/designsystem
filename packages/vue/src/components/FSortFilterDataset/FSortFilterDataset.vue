@@ -1,15 +1,17 @@
 <script setup lang="ts" generic="T extends object">
-import { type Ref, computed, nextTick, onMounted, provide, watch } from "vue";
+import { type Ref, computed, nextTick, onMounted, onUnmounted, provide, watch } from "vue";
 import { TranslationService, alertScreenReader, debounce } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components/IFlex";
 import { useTranslate } from "../../plugins";
 import { type Dataset } from "../../utils";
 import { FSelectField } from "../FSelectField";
+import { provideSelectableRowSource, useSelectableRowSource } from "../FTable";
 import { FSearchTextField } from "../FTextField";
 import {
     type FSortFilterDatasetMountCallback,
     type FSortFilterDatasetSortCallback,
 } from "./f-sort-filter-dataset-interface";
+import { sortFilterDatasetEventsKey } from "./sort-filter-dataset-events";
 import { type SortOrder } from "./sort-order";
 import { useSortFilterDataset } from "./use-sort-filter-dataset";
 
@@ -88,6 +90,10 @@ const emit = defineEmits<{
     usedSortAttributes: [sortAttribute: SortOrder];
 }>();
 
+const filterCallbacks = new Set<() => void>();
+const sortCallbacks = new Set<() => void>();
+const lazyRowsAddedCallbacks = new Set<() => void>();
+
 const $t = useTranslate();
 const {
     searchString,
@@ -104,6 +110,23 @@ const {
     () => filterAttributes,
     defaultSortAttribute,
     defaultSortAscending,
+    {
+        onFilter: () => {
+            for (const callback of filterCallbacks) {
+                callback();
+            }
+        },
+        onSort: () => {
+            for (const callback of sortCallbacks) {
+                callback();
+            }
+        },
+        onLazyRowsAdded: () => {
+            for (const callback of lazyRowsAddedCallbacks) {
+                callback();
+            }
+        },
+    },
 );
 
 const clearableScreenReaderText = $t("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält");
@@ -142,6 +165,7 @@ let tableCallbackOnSort: FSortFilterDatasetSortCallback = () => {
 let tableCallbackSortableColumns: FSortFilterDatasetMountCallback = () => {
     /* do nothing */
 };
+const { isProvided: hasSelectableRowsProvider } = useSelectableRowSource();
 
 provide("sort", (attribute: string, ascending: boolean) => {
     onApiChangeSortAttribute(attribute, ascending);
@@ -155,8 +179,32 @@ provide("registerCallbackOnMount", (callback: FSortFilterDatasetMountCallback) =
     tableCallbackSortableColumns = callback;
 });
 
+if (!hasSelectableRowsProvider.value) {
+    provideSelectableRowSource({
+        rows: computed(() => sortFilterResult.value as unknown[]),
+    });
+}
+
+provide(sortFilterDatasetEventsKey, {
+    onFilter(callback: () => void): void {
+        filterCallbacks.add(callback);
+    },
+    onSort(callback: () => void): void {
+        sortCallbacks.add(callback);
+    },
+    onLazyRowsAdded(callback: () => void): void {
+        lazyRowsAddedCallbacks.add(callback);
+    },
+});
+
 onMounted(() => {
     tableCallbackSortableColumns(sortableKeys.value);
+});
+
+onUnmounted(() => {
+    filterCallbacks.clear();
+    sortCallbacks.clear();
+    lazyRowsAddedCallbacks.clear();
 });
 
 function onSearchInput(): void {
@@ -164,6 +212,7 @@ function onSearchInput(): void {
 }
 
 watch(sortAttribute, () => {
+    tableCallbackOnSort(sortAttribute.value.attribute, sortAttribute.value.ascending);
     emit("usedSortAttributes", sortAttribute.value);
 });
 

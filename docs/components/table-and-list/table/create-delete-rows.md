@@ -21,3 +21,7 @@ Exempel på tabell med knappar för ta bort/lägga till.
 
 När tabellen är paginerad och användaren kan lägga till rader bör tabellen ha sortering.
 Annars kan inte användaren sortera om tabellen när nya rader tillkommit.
+
+## Kod
+
+{@link create-delete-rows-code Läs om hur du sätter upp att lägga till och ta bort rader i tabell.}

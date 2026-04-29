@@ -1,33 +1,3 @@
-export {
-    type FTableApi,
-    type FTableCellApi,
-    type InputType,
-    type InputTypeBase,
-    type InputTypeNumber,
-    type InputTypeText,
-    type MaybeSortableTableColumn,
-    type TableColumn,
-    type TableColumnAnchor,
-    type TableColumnBase,
-    type TableColumnButton,
-    type TableColumnCheckbox,
-    type TableColumnMenu,
-    type TableColumnNumber,
-    type TableColumnRender,
-    type TableColumnRowHeader,
-    type TableColumnSelect,
-    type TableColumnSimple,
-    type TableColumnSize,
-    type TableColumnText,
-    type TableColumnType,
-    FTable,
-    baseTypes,
-    defineTableColumns,
-    getTableSortableAttributes,
-    numberTypes,
-    removeDatasetRows,
-    textTypes,
-} from "./FTable";
 export { XFileDragdrop } from "./XFileDragdrop";
 export { XRelativeTime } from "./XRelativeTime";
 export {

@@ -1,5 +1,9 @@
-import { nextTick } from "vue";
-import { mount } from "@vue/test-utils";
+import { nextTick, provide } from "vue";
+import { VueWrapper, mount } from "@vue/test-utils";
+import {
+    type SortFilterDatasetEventCallback,
+    sortFilterDatasetEventsKey,
+} from "../FSortFilterDataset";
 import FPaginateDataset from "./FPaginateDataset.vue";
 
 function createItems(count: number): Array<{ id: string }> {
@@ -59,5 +63,105 @@ describe("FPaginateDataset", () => {
         await nextTick();
 
         expect(wrapper.text()).toBe("2-2");
+    });
+});
+
+let filterCallback: SortFilterDatasetEventCallback = () => ({});
+let sortCallback: SortFilterDatasetEventCallback = () => ({});
+let lazyRowsAddedCallback: SortFilterDatasetEventCallback = () => ({});
+
+function createWrapper(): VueWrapper {
+    filterCallback = () => ({});
+    sortCallback = () => ({});
+    lazyRowsAddedCallback = () => ({});
+
+    return mount({
+        components: { FPaginateDataset },
+        setup() {
+            provide(sortFilterDatasetEventsKey, {
+                onFilter(callback) {
+                    filterCallback = callback;
+                },
+                onSort(callback) {
+                    sortCallback = callback;
+                },
+                onLazyRowsAdded(callback) {
+                    lazyRowsAddedCallback = callback;
+                },
+            });
+        },
+        data() {
+            return {
+                items: Array.from({ length: 11 }, (_, index) => ({
+                    id: index + 1,
+                    name: `Namn ${index + 1}`,
+                })),
+            };
+        },
+        template: /* HTML */ `
+            <f-paginate-dataset :items="items" :items-per-page="5">
+                <template #default="{ currentPage }">
+                    <div id="current-page">{{ currentPage }}</div>
+                </template>
+            </f-paginate-dataset>
+        `,
+    });
+}
+
+function setPage(
+    wrapper: ReturnType<typeof createWrapper>,
+    page: number,
+): void {
+    wrapper.findComponent(FPaginateDataset).element.dispatchEvent(
+        new CustomEvent("paginateDataset:page", {
+            bubbles: true,
+            detail: {
+                page,
+            },
+        }),
+    );
+}
+
+describe("integration with sortFilterDatasetEvents", () => {
+    it("should jump to last page on lazy rows added", async () => {
+        const wrapper = createWrapper();
+        await nextTick();
+
+        setPage(wrapper, 1);
+        await nextTick();
+        expect(wrapper.get("#current-page").text()).toBe("1");
+
+        lazyRowsAddedCallback();
+        await nextTick();
+
+        expect(wrapper.get("#current-page").text()).toBe("3");
+    });
+
+    it("should jump to first page on filter", async () => {
+        const wrapper = createWrapper();
+        await nextTick();
+
+        setPage(wrapper, 2);
+        await nextTick();
+        expect(wrapper.get("#current-page").text()).toBe("2");
+
+        filterCallback();
+        await nextTick();
+
+        expect(wrapper.get("#current-page").text()).toBe("1");
+    });
+
+    it("should jump to first page on sort", async () => {
+        const wrapper = createWrapper();
+        await nextTick();
+
+        setPage(wrapper, 2);
+        await nextTick();
+        expect(wrapper.get("#current-page").text()).toBe("2");
+
+        sortCallback();
+        await nextTick();
+
+        expect(wrapper.get("#current-page").text()).toBe("1");
     });
 });

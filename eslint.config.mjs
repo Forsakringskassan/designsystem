@@ -142,10 +142,7 @@ export default [
 
     {
         name: "technical-debt/docs",
-        files: [
-            "docs/**/*",
-            "packages/vue-labs/src/cypress/examples/FTablePageObject/**/*",
-        ],
+        files: ["docs/**/*"],
         rules: {
             "unicorn/filename-case": "off",
         },
