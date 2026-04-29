@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Testning av tabell - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-ee401c.css"
+            href="../../assets/docs-8033e2.css"
             crossorigin
-            integrity="sha384-PtVMKdvC2qm0bwk5VAB0T40I2CJuJa1oD+I6BfQrIpdSM+Z9NXYtK0w4Ia61CRT3"
+            integrity="sha384-mPvJSrDQLNuizkPjLwDVzAxACNdwEyVH3XEkkEfGrA7OPEgUfzKlaWVbLpz1HqaE"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-3863fb.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-2b9832.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-3863fb.js": "sha384-UWaco0zFnYKPa4eOV850eTRvALF0gPn1XmPob5s/5S8SaViE1RtElVlw093C0MJr",
+    "../../assets/vendor-fkui-vue-2b9832.js": "sha384-DMWRQ1yTCTSDfuusIIjH8t0qJ5QTcVWelGTQjnQl1sktssAvqH1fX/vlLCXX2VVh",
     "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-b2fceb.json"
+            href="../../search-data-eb7801.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Bepoi2xhVZkivdZ9b84HH1T5nsaaEU5MNkw0zeE0/kUTUDZBCQo4dxI0OTowWyZH"
+            integrity="sha384-WOHEamxjM32Nnb6yMkV+GNfkZ5pdHEsCxKUVr/TcxSN5OeVDtwhbuOoFl4kDDRu9"
             id="search-data"
         />
     </head>
@@ -1496,48 +1496,6 @@
         >
             Om FKUI Vue Labs
         </a>
-    </li><li class="expandable ">
-        <details >
-            <summary>Tabell <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
-            
-            
-<ol><li class="link ">
-        <a
-            href="./FTable/"
-            
-            
-            
-            data-path="functions/labs/FTable/"
-            
-        >
-            Tabell
-        </a>
-    </li><li class="link ">
-        <a
-            href="./FTable/contextmenu.html"
-            
-            
-            
-            data-path="functions/labs/FTable/contextmenu.html"
-            
-        >
-            Kontextmeny
-        </a>
-    </li></ol>
-
-            
-        </details>
-    </li><li class="link ">
-        <a
-            href="./code-table.html"
-            
-            
-            
-            data-path="functions/labs/code-table.html"
-            
-        >
-            Kod (tillhör nya tabellkomponenten)
-        </a>
     </li><li class="link ">
         <a
             href="./ftablepageobject.html"
@@ -1854,7 +1812,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-26a1bb"></div>
+        <div id="example-f659bb"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1880,7 +1838,7 @@ body {
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-26a1bb.js"></script>
+        <script type="module" src="./FTableExample-f659bb.js"></script>
     
                 </div>
                 <div>
@@ -1906,16 +1864,15 @@ body {
 <span class="hljs-keyword">import</span> { assertRef, formatNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FSortFilterDataset</span>, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
-    type <span class="hljs-title class_">TableColumn</span>,
     <span class="hljs-title class_">FTable</span>,
     defineTableColumns,
     getTableSortableAttributes,
-    removeRow,
+    removeDatasetRows,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
-
 <span class="hljs-keyword">const</span> selectFieldOptions = [<span class="hljs-string">&quot;Hund&quot;</span>, <span class="hljs-string">&quot;Katt&quot;</span>, <span class="hljs-string">&quot;Hamster&quot;</span>, <span class="hljs-string">&quot;Papegoja&quot;</span>, <span class="hljs-string">&quot;Spindel&quot;</span>, <span class="hljs-string">&quot;Guldfisk&quot;</span>];
+<span class="hljs-keyword">let</span> idCounter = <span class="hljs-number">1</span>;
 
 interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-attr">id</span>: string;
@@ -2133,7 +2090,7 @@ interface <span class="hljs-title class_">Row</span> {
     nextId.<span class="hljs-property">value</span> += <span class="hljs-number">1</span>;
 
     rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">push</span>({
-        <span class="hljs-attr">id</span>: <span class="hljs-title class_">String</span>(id),
+        <span class="hljs-attr">id</span>: <span class="hljs-string">`ny-rad-<span class="hljs-subst">${idCounter++}</span>`</span>,
         <span class="hljs-attr">animal</span>: <span class="hljs-string">&quot;Katt&quot;</span>,
         <span class="hljs-attr">level</span>: <span class="hljs-string">&quot;Föräldrapenning&quot;</span>,
         <span class="hljs-attr">start</span>: <span class="hljs-string">&quot;2022-04-11&quot;</span>,
@@ -2147,12 +2104,12 @@ interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-title function_">assertRef</span>(tableRef);
 
     tableRef.<span class="hljs-property">value</span>.<span class="hljs-title function_">withTabstopBehaviour</span>(<span class="hljs-string">&quot;row-removal&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-        rows.<span class="hljs-property">value</span> = <span class="hljs-title function_">removeRow</span>(rows.<span class="hljs-property">value</span>, row, <span class="hljs-string">&quot;expandableRows&quot;</span>);
+        <span class="hljs-title function_">removeDatasetRows</span>(rows, row);
     });
 }
 
 <span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveSelectedRows</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
-    rows.<span class="hljs-property">value</span> = rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> !mySelectedRows.<span class="hljs-property">value</span>.<span class="hljs-title function_">includes</span>(row));
+    <span class="hljs-title function_">removeDatasetRows</span>(rows, mySelectedRows);
 }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
@@ -2543,9 +2500,9 @@ interface <span class="hljs-title class_">TableRow</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">buggfix/hover-focus-dialogue-tree (<a href="https://github.com/Forsakringskassan/designsystem/commits/0bd2d2ddbcec402c74e872335ef22a5b07fb6986">0bd2d2d</a>)<br />
+<div class="footer__right"><div class="version">buggfix/hover-focus-dialogue-tree (<a href="https://github.com/Forsakringskassan/designsystem/commits/b6fd9ab013a3d9d9c16538acbe2f8a3e997dccc0">b6fd9ab</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1222">PR 1222</a><br />
-        2026-04-27 06:24
+        2026-04-29 07:21
 </div>
 <div class="toolbar__item">
     <form id="version">

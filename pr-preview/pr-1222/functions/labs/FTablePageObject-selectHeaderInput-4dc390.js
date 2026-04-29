@@ -34,9 +34,9 @@ import { ref as ref4 } from "vue";
 import { useDatasetRef } from "@fkui/vue";
 
 // packages/vue-labs/dist/esm/index.esm.js
-import { Fragment as Fragment2, computed as computed3, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent as defineComponent2, guardReactiveProps, inject as inject3, mergeModels, mergeProps, nextTick as nextTick3, normalizeClass, normalizeProps, onMounted as onMounted3, onUpdated as onUpdated2, openBlock, provide as provide2, ref as ref3, renderList, renderSlot, resolveDirective, resolveDynamicComponent, toDisplayString, toRef as toRef2, toValue as toValue2, unref as unref3, useModel, useSlots, useTemplateRef, vModelText, vShow, watch as watch3, watchEffect as watchEffect3, withCtx, withDirectives, withKeys, withModifiers } from "vue";
+import { Fragment as Fragment2, computed as computed3, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent as defineComponent2, guardReactiveProps, inject as inject3, mergeModels, mergeProps, nextTick as nextTick3, normalizeClass, normalizeProps, onBeforeUnmount as onBeforeUnmount2, onMounted as onMounted3, onUpdated as onUpdated2, openBlock, provide as provide2, ref as ref3, renderList, renderSlot, resolveDirective, resolveDynamicComponent, toDisplayString, toRef as toRef2, toValue as toValue2, unref as unref3, useModel, useSlots, useTemplateRef, vModelText, vShow, watch as watch3, watchEffect as watchEffect3, withCtx, withDirectives, withKeys, withModifiers } from "vue";
 import { ElementIdService, TranslationService, ValidationService, alertScreenReader, assertRef, assertSet, debounce, formatNumber, formatPersonnummer, formatPostalCode, isEmpty, isSet, parseBankAccountNumber, parseBankgiro, parseClearingNumber, parseDate, parseNumber, parseOrganisationsnummer, parsePersonnummer, parsePlusgiro, stripWhitespace } from "@fkui/logic";
-import { EventBus, FContextMenu, FFileItem, FFileSelector, FIcon, FSortFilterDatasetInjected, FTextField, IComboboxDropdown, IFlex, IFlexItem, IPopupError, TranslationMixin, copyItemIdentifier, dispatchComponentValidityEvent, findItemIdentifier, getDatasetMetadata, getItemIdentifier, setItemIdentifiers, useSlotUtils, useTextFieldSetup, useTranslate } from "@fkui/vue";
+import { EventBus, FContextMenu, FFileItem, FFileSelector, FIcon, FSortFilterDatasetInjected, FTextField, IComboboxDropdown, IFlex, IFlexItem, IPopupError, TranslationMixin, dispatchComponentValidityEvent, findItemIdentifier, getDatasetMetadata, getItemIdentifier, setItemIdentifiers, useSelectableRowSource, useSlotUtils, useSortFilterDatasetEvents, useTextFieldSetup, useTranslate } from "@fkui/vue";
 
 // node_modules/@vueuse/shared/index.mjs
 import { shallowRef, watchEffect, readonly, watch, customRef, getCurrentScope, onScopeDispose, effectScope, getCurrentInstance, hasInjectionContext, inject, provide, ref, isRef, unref, toValue as toValue$1, computed, reactive, toRefs as toRefs$1, toRef as toRef$1, onBeforeMount, nextTick, onBeforeUnmount, onMounted, onUnmounted, isReactive } from "vue";
@@ -4193,44 +4193,7 @@ function usePopupError() {
     activeErrorAnchor
   };
 }
-var require_array_from_constructor_and_list = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var lengthOfArrayLike = require_length_of_array_like();
-  module.exports = function(Constructor, list, $length) {
-    var index = 0;
-    var length = arguments.length > 2 ? $length : lengthOfArrayLike(list);
-    var result = new Constructor(length);
-    while (length > index) result[index] = list[index++];
-    return result;
-  };
-}));
-var require_get_built_in_prototype_method = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var globalThis2 = require_global_this();
-  module.exports = function(CONSTRUCTOR, METHOD) {
-    var Constructor = globalThis2[CONSTRUCTOR];
-    var Prototype = Constructor && Constructor.prototype;
-    return Prototype && Prototype[METHOD];
-  };
-}));
-var require_es_array_to_sorted = /* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var uncurryThis = require_function_uncurry_this();
-  var aCallable = require_a_callable();
-  var toIndexedObject = require_to_indexed_object();
-  var arrayFromConstructorAndList = require_array_from_constructor_and_list();
-  var getBuiltInPrototypeMethod = require_get_built_in_prototype_method();
-  var addToUnscopables = require_add_to_unscopables();
-  var $Array = Array;
-  var sort = uncurryThis(getBuiltInPrototypeMethod("Array", "sort"));
-  $({
-    target: "Array",
-    proto: true
-  }, { toSorted: function toSorted(compareFn) {
-    if (compareFn !== void 0) aCallable(compareFn);
-    return sort(arrayFromConstructorAndList($Array, toIndexedObject(this)), compareFn);
-  } });
-  addToUnscopables("toSorted");
-}));
-var require_es_iterator_some = /* @__PURE__ */ __commonJSMin((() => {
+(/* @__PURE__ */ __commonJSMin((() => {
   var $ = require_export();
   var call = require_function_call();
   var iterate = require_iterate();
@@ -4261,9 +4224,7 @@ var require_es_iterator_some = /* @__PURE__ */ __commonJSMin((() => {
       INTERRUPTED: true
     }).stopped;
   } });
-}));
-require_es_array_to_sorted();
-require_es_iterator_some();
+})))();
 function rowKey(row) {
   var _findItemIdentifier;
   return (_findItemIdentifier = findItemIdentifier(row)) !== null && _findItemIdentifier !== void 0 ? _findItemIdentifier : "";
@@ -4276,18 +4237,30 @@ function useSelectable(options) {
     selectableRowState: () => false,
     toggleSelectableRow: () => void 0
   };
-  const isIndeterminate = computed3(() => {
-    return selectedRows.value.length > 0 && selectedRows.value.length < toValue2(rows).length;
-  });
-  const isAllRowsSelected = computed3(() => {
-    return selectedRows.value.length > 0 && selectedRows.value.length === toValue2(rows).length;
-  });
+  const headerState = ref3(false);
   function selectableHeaderState() {
-    return isIndeterminate.value ? "indeterminate" : isAllRowsSelected.value;
+    return headerState.value;
   }
+  watchEffect3(() => {
+    switch (selectedRows.value.length) {
+      case 0:
+        headerState.value = false;
+        break;
+      case toValue2(rows).length:
+        headerState.value = true;
+        break;
+      default:
+        headerState.value = "indeterminate";
+        break;
+    }
+  });
   function toggleSelectableHeader() {
-    if (isAllRowsSelected.value) selectedRows.value = [];
-    else selectedRows.value = [...toValue2(rows)];
+    if (toValue2(rows).length === 0) {
+      headerState.value = headerState.value !== true;
+      return;
+    }
+    if (headerState.value !== true) selectedRows.value = [...toValue2(rows)];
+    else selectedRows.value = [];
   }
   function toggleSelectableRow(row) {
     assertRef(selectedRows);
@@ -4302,20 +4275,8 @@ function useSelectable(options) {
     const key = rowKey(row);
     return selectedRows.value.some((selectedRow) => rowKey(selectedRow) === key);
   }
-  let oldKeys = void 0;
   watch3(() => toValue2(rows), (newValue) => {
-    const newKeys = newValue.map(rowKey).toSorted();
-    if (!oldKeys) {
-      oldKeys = newKeys;
-      return;
-    }
-    const compareKeys = oldKeys;
-    oldKeys = newKeys;
-    if (newKeys.length !== compareKeys.length) {
-      selectedRows.value = [];
-      return;
-    }
-    if (compareKeys.join(",") !== newKeys.join(",")) selectedRows.value = [];
+    selectedRows.value = selectedRows.value.filter((it) => newValue.includes(it));
   }, {
     deep: 1,
     immediate: true
@@ -4474,6 +4435,7 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
   emits: ["update:selectedRows"],
   setup(__props, { expose: __expose }) {
     const selectedRows = useModel(__props, "selectedRows");
+    const sortFilterDatasetEvents = useSortFilterDatasetEvents();
     const $t = useTranslate();
     const { hasSlot } = useSlotUtils();
     const tableRef = useTemplateRef("table");
@@ -4482,6 +4444,13 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
       return getDatasetMetadata(__props.rows).nestedAttribute;
     });
     const keyedRows = computed3(() => setItemIdentifiers(__props.rows, __props.keyAttribute, expandableAttribute.value));
+    const { rows: selectableSourceRows, isProvided: isSelectableSourceProvided } = useSelectableRowSource();
+    const selectableRows = computed3(() => {
+      if (!isSelectableSourceProvided.value) return keyedRows.value;
+      const sourceRows = selectableSourceRows.value;
+      const nestedAttribute = getDatasetMetadata(sourceRows).nestedAttribute;
+      return setItemIdentifiers(sourceRows, __props.keyAttribute, nestedAttribute);
+    });
     const metaRows = computed3(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute.value));
     const isTreegrid = computed3(() => Boolean(expandableAttribute.value));
     const role = computed3(() => isTreegrid.value ? "treegrid" : "grid");
@@ -4608,14 +4577,18 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
     const { selectableHeaderState, toggleSelectableHeader, selectableRowState, toggleSelectableRow } = useSelectable({
       selectable: __props.selectable,
       selectedRows,
-      rows: keyedRows
+      rows: selectableRows
     });
     __expose(useTabstop(tableRef, metaRows));
     onMounted3(() => {
       assertRef(tableRef);
       registerCallbackOnMount(callbackSortableColumns);
       registerCallbackOnSort(callbackOnSort);
+      sortFilterDatasetEvents.onFilter(() => selectedRows.value = []);
       setDefaultCellTarget(tableRef.value);
+    });
+    onBeforeUnmount2(() => {
+      selectedRows.value = [];
     });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("table", {
@@ -4752,45 +4725,6 @@ var FTable_default = /* @__PURE__ */ defineComponent2({
     };
   }
 });
-(/* @__PURE__ */ __commonJSMin((() => {
-  var $ = require_export();
-  var addToUnscopables = require_add_to_unscopables();
-  var doesNotExceedSafeInteger = require_does_not_exceed_safe_integer();
-  var lengthOfArrayLike = require_length_of_array_like();
-  var toAbsoluteIndex = require_to_absolute_index();
-  var toIndexedObject = require_to_indexed_object();
-  var toIntegerOrInfinity = require_to_integer_or_infinity();
-  var createProperty = require_create_property();
-  var $Array = Array;
-  var max = Math.max;
-  var min = Math.min;
-  $({
-    target: "Array",
-    proto: true
-  }, { toSpliced: function toSpliced(start, deleteCount) {
-    var O = toIndexedObject(this);
-    var len = lengthOfArrayLike(O);
-    var actualStart = toAbsoluteIndex(start, len);
-    var argumentsLength = arguments.length;
-    var k = 0;
-    var insertCount, actualDeleteCount, newLen, A;
-    if (argumentsLength === 0) insertCount = actualDeleteCount = 0;
-    else if (argumentsLength === 1) {
-      insertCount = 0;
-      actualDeleteCount = len - actualStart;
-    } else {
-      insertCount = argumentsLength - 2;
-      actualDeleteCount = min(max(toIntegerOrInfinity(deleteCount), 0), len - actualStart);
-    }
-    newLen = doesNotExceedSafeInteger(len + insertCount - actualDeleteCount);
-    A = $Array(newLen);
-    for (; k < actualStart; k++) createProperty(A, k, O[k]);
-    for (; k < actualStart + insertCount; k++) createProperty(A, k, arguments[k - actualStart + 2]);
-    for (; k < newLen; k++) createProperty(A, k, O[k + actualDeleteCount - insertCount]);
-    return A;
-  } });
-  addToUnscopables("toSpliced");
-})))();
 var require_array_buffer_basic_detection = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   module.exports = typeof ArrayBuffer != "undefined" && typeof DataView != "undefined";
 }));
@@ -5241,6 +5175,16 @@ var require_es_typed_array_to_reversed = /* @__PURE__ */ __commonJSMin((() => {
     for (; k < len; k++) A[k] = O[len - k - 1];
     return A;
   });
+}));
+var require_array_from_constructor_and_list = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var lengthOfArrayLike = require_length_of_array_like();
+  module.exports = function(Constructor, list, $length) {
+    var index = 0;
+    var length = arguments.length > 2 ? $length : lengthOfArrayLike(list);
+    var result = new Constructor(length);
+    while (length > index) result[index] = list[index++];
+    return result;
+  };
 }));
 var require_es_typed_array_to_sorted = /* @__PURE__ */ __commonJSMin((() => {
   var ArrayBufferViewCore = require_array_buffer_view_core();
