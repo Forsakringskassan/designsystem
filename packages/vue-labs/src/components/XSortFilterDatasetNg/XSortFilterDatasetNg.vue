@@ -18,6 +18,7 @@ const props = withDefaults(
     },
 );
 
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
 const filtered = ref(props.filter(props.data)) as unknown as Ref<T[]>;
 const result = ref(props.data);
 const debouncedUpdate = debounce(update, 250);

@@ -46,9 +46,9 @@ export default defineComponent({
          */
         "update:modelValue",
     ],
-    data() {
+    data(): { components: Record<string, ComponentValidityEvent> } {
         return {
-            components: {} as unknown as Record<string, ComponentValidityEvent>,
+            components: {},
         };
     },
     methods: {

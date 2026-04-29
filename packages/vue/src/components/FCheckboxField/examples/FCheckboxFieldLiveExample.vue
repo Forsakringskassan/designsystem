@@ -14,7 +14,7 @@ export default defineComponent({
             isDisabled: false,
             isRequired: false,
             isBorder: false,
-            showDetails: "never" as "never" | "always" | "when-selected",
+            showDetails: "never",
         };
     },
     computed: {

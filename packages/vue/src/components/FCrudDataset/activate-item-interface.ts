@@ -31,13 +31,11 @@ export function ActivateItemInjected<T>(): ActivateItemInterface<T> {
         registerCallbackAfterItemAdd: inject(
             "registerCallbackAfterItemAdd",
             () => undefined,
-        ) as (callback: ActivateItemCallback<T>) => void,
+        ),
         registerCallbackBeforeItemDelete: inject(
             "registerCallbackBeforeItemDelete",
             () => undefined,
-        ) as (callback: ActivateItemCallback<T>) => void,
-        setNestedKey: inject("setNestedKey", () => undefined) as (
-            key: keyof T,
-        ) => void,
+        ),
+        setNestedKey: inject("setNestedKey", () => undefined),
     };
 }

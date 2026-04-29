@@ -58,17 +58,14 @@ export function FSortFilterDatasetInjected<
     TKeys = PropertyKey,
 >(): FSortFilterDatasetInterface<TKeys> {
     return {
-        sort: inject("sort", () => undefined) as (
-            attribute: TKeys,
-            ascending: boolean,
-        ) => void,
+        sort: inject("sort", () => undefined),
         registerCallbackOnSort: inject(
             "registerCallbackOnSort",
             () => undefined,
-        ) as (callback: FSortFilterDatasetSortCallback<TKeys>) => void,
+        ),
         registerCallbackOnMount: inject(
             "registerCallbackOnMount",
             () => undefined,
-        ) as (callback: FSortFilterDatasetMountCallback<TKeys>) => void,
+        ),
     };
 }

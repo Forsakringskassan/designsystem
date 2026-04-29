@@ -57,7 +57,7 @@ export default defineComponent({
     ],
     data() {
         return {
-            validityMode: "INITIAL" as string,
+            validityMode: "INITIAL",
             secondPhone: "",
             defaultText: this.$t("fkui.phone-text-field.label", "Telefonnummer"),
         };

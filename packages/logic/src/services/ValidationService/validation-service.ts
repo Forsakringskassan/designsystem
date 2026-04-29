@@ -108,7 +108,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         validator: Validator<TConfig>,
     ): void {
         const { name } = validator;
-        registry[name] = validator as Validator<unknown>;
+        registry[name] = validator;
     }
 
     private hasExistingReference(
@@ -664,9 +664,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         if (element instanceof HTMLFieldSetElement) {
             return Array.from(element.querySelectorAll("input")).some(
                 (fieldsetInputElement) => {
-                    return this.hasValue(
-                        fieldsetInputElement as ValidatableHTMLElement,
-                    );
+                    return this.hasValue(fieldsetInputElement);
                 },
             );
         }

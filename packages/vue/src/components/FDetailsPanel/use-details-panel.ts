@@ -84,9 +84,7 @@ export function createDetailsPanel<T>(
 }
 
 function findPanelByName<T>(name: string): UseDetailsPanel<T> | undefined {
-    return panels.find((it) => it.name.value === name) as
-        | UseDetailsPanel<T>
-        | undefined;
+    return panels.find((it) => it.name.value === name);
 }
 
 /**

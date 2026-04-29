@@ -8,5 +8,5 @@ import { type TranslateFunction } from "./translate-function";
 export function useTranslate(): TranslateFunction {
     // TypeScript infers TranslateFunction<ResolveTranslationKey>
     // because we changed the default type in the interface above.
-    return translate as unknown as TranslateFunction;
+    return translate;
 }

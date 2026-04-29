@@ -302,7 +302,8 @@ function updateColumnValue(): void {
 function onClickCell(event: MouseEvent): void {
     assertRef(tdElement);
 
-    if (tdElement.value.contains(event.target as Node)) {
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
+    if (event.target && tdElement.value.contains(event.target as Node)) {
         onStartEdit(fromColumnValue());
     }
 }

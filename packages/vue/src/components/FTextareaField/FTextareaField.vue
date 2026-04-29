@@ -87,8 +87,8 @@ export default defineComponent({
     ],
     data() {
         return {
-            validityMode: "INITIAL" as string,
-            validationMessage: "" as string,
+            validityMode: "INITIAL",
+            validationMessage: "",
         };
     },
     computed: {
