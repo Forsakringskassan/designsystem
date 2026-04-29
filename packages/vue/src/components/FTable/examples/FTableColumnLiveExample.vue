@@ -271,13 +271,21 @@ function getRows(options: { columnType: TableColumnType }): Row[] {
 export default defineComponent({
     name: "FTableColumnLiveExample",
     components: { LiveExample, FSelectField, FFieldset, FCheckboxField, FRadioField },
-    data() {
+    data(): {
+        columnType: TableColumnType;
+        textType: TableColumnType;
+        descriptionChecked: boolean;
+        tnum: boolean;
+        align: "left" | "right";
+        editableChecked: boolean;
+        enabledChecked: boolean;
+    } {
         return {
-            columnType: "text" as TableColumnType,
-            textType: "text" as TableColumnType,
+            columnType: "text",
+            textType: "text",
             descriptionChecked: false,
             tnum: false,
-            align: "left" as "left" | "right",
+            align: "left",
             editableChecked: true,
             enabledChecked: true,
         };

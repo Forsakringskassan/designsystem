@@ -173,12 +173,24 @@ export default defineComponent({
             closeDropdown,
         };
     },
-    data() {
+    data(): {
+        showErrorPopup: boolean;
+        lastModelValue: unknown;
+        validationMessage: string;
+        validityMode: string;
+        isAfterInitialRender: boolean;
+        defaultText: string;
+        descriptionText: string;
+        descriptionScreenReaderText: string;
+        discreteDescriptionText: string;
+        discreteDescriptionScreenReaderText: string;
+        dropdownOpenedWithoutVisibleError: boolean;
+    } {
         return {
             showErrorPopup: false,
-            lastModelValue: "" as unknown,
-            validationMessage: "" as string,
-            validityMode: "INITIAL" as string,
+            lastModelValue: "",
+            validationMessage: "",
+            validityMode: "INITIAL",
             isAfterInitialRender: false,
 
             // internal default texts possible to override when extending component

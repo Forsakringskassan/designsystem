@@ -6,11 +6,16 @@ import { FFileItem, FIcon, FProgressbar } from "@fkui/vue";
 export default defineComponent({
     name: "FFileItemButtonProgress",
     components: { FFileItem, FIcon, FProgressbar },
-    data() {
+    data(): {
+        fileName: string;
+        mimeType: string;
+        progress: number | "";
+        filteredProgress: number;
+    } {
         return {
             fileName: "bar.pdf",
             mimeType: "application/pdf",
-            progress: 30 as number | "",
+            progress: 30,
             filteredProgress: 30,
         };
     },
