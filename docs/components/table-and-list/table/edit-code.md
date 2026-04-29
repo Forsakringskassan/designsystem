@@ -6,3 +6,11 @@ search:
     terms:
         - tabell
 ---
+
+Sidan kommer uppdateras.
+
+## Relaterat
+
+{@link code Kod för tabell}
+
+{@link edit Redigera innehåll i tabell}

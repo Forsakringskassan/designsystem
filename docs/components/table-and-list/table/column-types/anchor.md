@@ -3,6 +3,7 @@ title: Kolumntyp länk i tabell
 short-title: Länk
 name: column-type-anchor
 layout: article
+sortorder: 3
 search:
     terms:
         - tabell
@@ -13,7 +14,7 @@ Använd kolumntypen länk (`anchor`) när en cell ska navigera vidare till mer i
 Varje rad visar en länktext och en `href`.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 interface Row {
     id: string;

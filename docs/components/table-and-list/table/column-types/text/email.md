@@ -13,7 +13,7 @@ Använd mejladress (`text:email`) för inmatning och visning av mejladress i en 
 Mejladress följer samma validering som det {@link textfield-specialized#mejladress specialiserade inmatningsfältet mejladress}.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const columns = defineTableColumns<Record<string, string>>([
     {

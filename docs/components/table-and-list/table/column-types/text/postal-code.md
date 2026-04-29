@@ -13,7 +13,7 @@ Använd postnummer (`text:postalCode`) för inmatning och visning av postnummer 
 Postnummer följer samma validering, formatering och parsning som det {@link textfield-specialized#postnummer specialiserade inmatningsfältet postnummer}.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const columns = defineTableColumns<Record<string, string>>([
     {

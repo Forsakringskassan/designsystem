@@ -12,7 +12,7 @@ Använd procent (`text:percent`) för inmatning och visning av procentvärden i 
 Procent följer samma validering, formatering och parsning som det {@link textfield-specialized#procent specialiserade inmatningsfältet procent}.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const columns = defineTableColumns<Record<string, string>>([
     {

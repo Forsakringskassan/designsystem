@@ -3,6 +3,7 @@ title: Kolumntyp kontextmeny i tabell
 short-title: Kontextmeny
 name: column-type-menu
 layout: article
+sortorder: 3
 search:
     terms:
         - menu
@@ -22,7 +23,7 @@ Använd kolumntypen `menu` och sätt `actions` till en lista med åtgärder.
 Knappens skärmläsartext sätts med `text()` metoden och du behöver förtydliga vilken rad åtgärderna gäller för.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const row = { id: 1 };
 

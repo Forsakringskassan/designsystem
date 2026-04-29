@@ -52,20 +52,39 @@ Sätt vilka kolumner som ska ta maximal bredd och vilka som får ta minsta möjl
 Bestäm också vilka celler som ska radbryta och vilka som inte ska göra det.
 
 Innehåller tabellen många kolumner eller är det svårt att följa en och samma rad genom flera kolumner?
-Gör tabellen zebrarandig för att enklare visuellt skanna av tabellen och följa rader.
+Tabellen har avskiljare mellan rader som standard.
+För att ytterligare framhäva rader och göra det enklare för användaren att visuellt skanna av tabellen kan du göra tabellen zebrarandig.
 
 Hur ska tabellen se ut när den är tom?
 Bestäm vilken information användaren ska få.
 
 Om inte användaren behöver all information direkt kan expanderbara rader vara ett sätt att visa mer information vid behov.
 
-#### Kolumner och kolumntyper
+#### Kolumntyper
 
 En kolumn i tabellen kan visa olika typer av innehåll.
 
 Tabellen stödjer flera kolumntyper (exempelvis textfält, dropplista, kryssruta med flera), men kan bara visa en typ av innehåll per kolumn.
 
-{@link column-types Läs mer om de olika kolumntyperna här.}
+{@link column-types Läs mer om de olika kolumntyperna.}
+
+#### Kolumnrubrik
+
+Bestäm hur tabellens kolumnrubriker ska vara placerade och hur data i kolumnerna ska presenteras.
+Kolumnrubriker är som standard vänsterjusterade, men om innehållet i kolumnen är numeriska tal ska den vara högerjusterad.
+Vid kolumnrubrik kan du också lägga till
+
+- beskrivning
+- hjälpformat.
+
+Om innehållet i kolumnens celler är text ska den vara vänsterjusterad och utan tnum.
+Tnum (tabular figures) är en funktion som ersätter siffror med motsvarande tecken som tar samma utrymme i bredd.
+Till exempel kommer talet 111 ta samma plats som 000.
+Vid numeriska tal ska innehållet i kolumnen däremot vara högerjusterat och med tnum.
+
+#### Radrubrik
+
+En radrubrik underlättar för användare med skärmläsare genom att markera vilken eller vilka celler som utgör en rubrik och blir upplästa automatiskt när skärmläsaren navigerar på den raden i tabellen.
 
 #### Interagerbara objekt
 
@@ -98,45 +117,20 @@ Tabellen stödjer ett antal funktioner och kan låta användaren
 
 {@link code Läs om hur du sätter upp/kodar en tabell för din applikation.}
 
-## Bra att veta om komponenten
+## Bra att veta
 
 Tabellen stödjer inte följande
 
-- redigerbar tabell i mobila enheter/surfplattor
-- redigerbar tabell och skärmläsarverktyg voiceover och talkback
-- felhantering och validering av nästlade rader
-- tangentbordsnavigering och skroll i tabell.
+- {@link edit#mobila_enheter_och_redigerbar_tabell redigerbar tabell i mobila enheter/surfplattor}
+- {@link edit#mobila_enheter_och_redigerbar_tabell redigerbar tabell och skärmläsarverktyg voiceover och talkback}
+- {@link expand-rows#felhantering_och_validering_av_nastlade_rader felhantering och validering av nästlade rader}.
 
-## Återstående förbättringar i komponenten
+## Återstående förbättringar
 
 Följande förbättringar av tabell återstår:
 
-- radbrytning av text i kolumn
+- radbrytning av text i cell
 - stöd för kolumntypen kombobox
 - laddning av data (spinner)
 - konsument ska kunna sätta kolumnbredd
 - användare ska kunna ändra kolumnbredd dynamiskt.
-
-## Relaterat
-
-{@link action-button-link Åtgärdsknappar och länkar}
-
-{@link bulk-operation Bulkoperation}
-
-{@link column-types Kolumntyper}
-
-{@link create-delete-rows Lägga till och ta bort rader}
-
-{@link edit Redigera innehåll}
-
-{@link expand-rows Expandera rader}
-
-{@link navigate Navigera}
-
-{@link table-paginate Paginera}
-
-{@link select-rows Välja rader}
-
-{@link sort-filter Sortera och filtrera}
-
-{@link test-table Testning av tabell}

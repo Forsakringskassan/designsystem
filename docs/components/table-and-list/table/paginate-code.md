@@ -7,3 +7,11 @@ search:
     terms:
         - tabell
 ---
+
+Sidan kommer uppdateras.
+
+## Relaterat
+
+{@link code Kod för tabell}
+
+{@link table-paginate Paginera i tabell}

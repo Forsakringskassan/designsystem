@@ -12,7 +12,7 @@ Använd kontonummer (`text:bankAccountNumber`) för inmatning och visning av ban
 Kontonummer följer samma validering och parsning som det {@link textfield-specialized#kontonummer specialiserade inmatningsfältet kontonummer}.
 
 ```ts
-import { defineTableColumns } from "@fkui/vue-labs";
+import { defineTableColumns } from "@fkui/vue";
 
 const columns = defineTableColumns<Record<string, string>>([
     {
