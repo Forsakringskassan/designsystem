@@ -13,7 +13,9 @@ Raderna kan presenteras på två sätt:
 - raden följer existerande kolumner
 - raden är utsträckt över alla kolumner och med valfritt innehåll.
 
-Länk till kodexempel
+```import live-example
+FTableExpandableLiveExample.vue
+```
 
 ## Felhantering och validering av nästlade rader
 
