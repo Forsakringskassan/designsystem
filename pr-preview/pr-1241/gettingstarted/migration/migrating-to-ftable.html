@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-f88cdc.json"
+            href="../../search-data-2ff4ef.json"
             as="fetch"
             crossorigin
-            integrity="sha384-xvzlqUzh7EnCCz13yz/NJq6M3N/OTNRkZerxvgtB5DMOjCv1hDhRb1o91VW71ATx"
+            integrity="sha384-RkYhda9VhfGGEx2g5EwK4QWqBqcEzrWnEAEUemzxfNjt0xQsSUyVBHgl2Eaf7swq"
             id="search-data"
         />
     </head>
@@ -625,15 +625,14 @@
 <li>Komplext innehåll i celler</li>
 <li>Eget expanderat innehåll</li>
 </ul>
-<p class="docs-paragraph">Aktiv rad och radklick har ingen direkt motsvarighet i <code>FTable</code>.</p>
 <p class="docs-paragraph">Flera actions i samma cell behöver vanligtvis lösas på ett annat sätt, till exempel med <code>kontextmeny</code>.</p>
 <p class="docs-paragraph">Läs mer i dokumentationen om <a href="../../components/table-and-list/table/column-types/contextmenu.html">kontextmeny</a>.</p>
 <p class="docs-paragraph">Om tabellen innehåller mer komplext innehåll än vad de inbyggda kolumntyperna stödjer går det inte alltid att migrera rakt av.</p>
-<p class="docs-paragraph">Kontakta i första hand teamet för att reda ut om scenariot bör stödjas av <code>FTable</code> eller om det är ett rimligt specialfall.</p>
+<p class="docs-paragraph">Kontakta i första hand teamet för att reda ut om scenariot bör stödjas av <code>FTable</code> eller om det är ett rimligt specialfall. Vi nås på <a href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a>.</p>
 <h2 id="kolumner_flyttas_fran_template_till_konfiguration" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kolumner_flyttas_fran_template_till_konfiguration">Kolumner flyttas från template till konfiguration</a></h2><p class="docs-paragraph">I <code>FInteractiveTable</code> definierades kolumner i template med <code>FTableColumn</code>.</p>
 
                 <div
-                    id="example-61df84"
+                    id="example-61c13d"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -646,7 +645,7 @@
             <p class="docs-paragraph">I <code>FTable</code> definieras kolumner istället i kod med <code>defineTableColumns(...)</code>.</p>
 
                 <div
-                    id="example-c63419"
+                    id="example-3d219e"
                     class="code-preview code-preview--default"
                     
                     
@@ -671,7 +670,7 @@
 <p class="docs-paragraph">Om tabellen tidigare såg ut så här:</p>
 
                 <div
-                    id="example-a2293a"
+                    id="example-519958"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -692,7 +691,7 @@
             <p class="docs-paragraph">Så blir den i <code>FTable</code>:</p>
 
                 <div
-                    id="example-25e247"
+                    id="example-1a9a19"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -708,7 +707,7 @@
 <h2 id="hur_kolumner_laser_och_skriver_varden" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#hur_kolumner_laser_och_skriver_varden">Hur kolumner läser och skriver värden</a></h2><p class="docs-paragraph">Det vanligaste är att använda <code>key</code>.</p>
 
                 <div
-                    id="example-005126"
+                    id="example-6e075f"
                     class="code-preview code-preview--default"
                     
                     
@@ -730,7 +729,7 @@ Till exempel innebär <code>key: &quot;name&quot;</code> att kolumnen läser fr�
 Om du behöver styra läsning eller skrivning själv kan du använda <code>value</code> och <code>update</code>.</p>
 
                 <div
-                    id="example-fa0899"
+                    id="example-f14865"
                     class="code-preview code-preview--default"
                     
                     
@@ -759,7 +758,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <h2 id="formattering_flyttas_in_i_kolumntypen" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#formattering_flyttas_in_i_kolumntypen">Formattering flyttas in i kolumntypen</a></h2><p class="docs-paragraph">Om du tidigare definierade datum i template:</p>
 
                 <div
-                    id="example-962dcd"
+                    id="example-70040b"
                     class="code-preview code-preview--default"
                     
                     
@@ -779,7 +778,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
             <p class="docs-paragraph">Om du tidigare använde en numerisk kolumn:</p>
 
                 <div
-                    id="example-fffb0f"
+                    id="example-a91ee2"
                     class="code-preview code-preview--default"
                     
                     
@@ -800,7 +799,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <h2 id="editering_och_validering_ligger_i_kolumnen" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#editering_och_validering_ligger_i_kolumnen">Editering och validering ligger i kolumnen</a></h2><p class="docs-paragraph">I <code>FTable</code> definieras redigering och validering i kolumnkonfigurationen.</p>
 
                 <div
-                    id="example-951ad5"
+                    id="example-dc29d5"
                     class="code-preview code-preview--default"
                     
                     
@@ -835,7 +834,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <h2 id="expanderbart_innehall" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#expanderbart_innehall">Expanderbart innehåll</a></h2><p class="docs-paragraph">I <code>FInteractiveTable</code> användes <code>expandable-attribute</code> för att ange vilket attribut som innehöll expanderbart innehåll.</p>
 
                 <div
-                    id="example-b76972"
+                    id="example-5caa87"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -860,7 +859,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
             <p class="docs-paragraph">I <code>FTable</code> skapas motsvarande <code>rows</code> med <code>useDatasetRef(...)</code>, där det nästlade attributet anges som andra parameter.</p>
 
                 <div
-                    id="example-b7a2ab"
+                    id="example-bcdb20"
                     class="code-preview code-preview--default"
                     
                     
@@ -881,7 +880,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
             <p class="docs-paragraph">Det datasetet skickas sedan in som <code>rows</code> till <code>FTable</code>.</p>
 
                 <div
-                    id="example-9b7686"
+                    id="example-460d92"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -898,7 +897,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <p class="docs-paragraph">Både <code>FInteractiveTable</code> och <code>FTable</code> använder slotten <code>#expandable</code>, men slot-parametern byter namn vid migrering:</p>
 
                 <div
-                    id="example-40aaa4"
+                    id="example-08958e"
                     class="code-preview code-preview--default"
                     
                     
@@ -923,7 +922,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <p class="docs-paragraph">Det som ändras är <code>v-model</code> för valbara rader.</p>
 
                 <div
-                    id="example-d202d2"
+                    id="example-6f653a"
                     class="code-preview code-preview--default"
                     
                     
@@ -936,7 +935,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                 </div>
             <h3 id="enkelval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#enkelval">Enkelval</a></h3>
                 <div
-                    id="example-b2483f"
+                    id="example-2af70a"
                     class="code-preview code-preview--default"
                     
                     
@@ -964,7 +963,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                 </div>
             <h3 id="flerval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#flerval">Flerval</a></h3>
                 <div
-                    id="example-323dbd"
+                    id="example-594f32"
                     class="code-preview code-preview--default"
                     
                     
@@ -997,7 +996,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <p class="docs-paragraph">Läs mer i dokumentationen om <a href="../../components/table-and-list/table/select-rows.html">valbara rader</a>.</p>
 <h2 id="button" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#button">Button</a></h2>
                 <div
-                    id="example-b53580"
+                    id="example-7af217"
                     class="code-preview code-preview--default"
                     
                     
@@ -1077,9 +1076,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/35e3130152fe333e5137625e83a1746106414f3f">35e3130</a>)<br />
+<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/add6dcf45a170dac451a40d2a714ee011221ec61">add6dcf</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1241">PR 1241</a><br />
-        2026-04-29 10:37
+        2026-04-29 11:00
 </div>
 <div class="toolbar__item">
     <form id="version">
