@@ -25,15 +25,13 @@ Det här kräver en annan lösning i `FTable`:
 - Komplext innehåll i celler
 - Eget expanderat innehåll
 
-Aktiv rad och radklick har ingen direkt motsvarighet i `FTable`.
-
 Flera actions i samma cell behöver vanligtvis lösas på ett annat sätt, till exempel med `kontextmeny`.
 
 Läs mer i dokumentationen om {@link column-type-menu kontextmeny}.
 
 Om tabellen innehåller mer komplext innehåll än vad de inbyggda kolumntyperna stödjer går det inte alltid att migrera rakt av.
 
-Kontakta i första hand teamet för att reda ut om scenariot bör stödjas av `FTable` eller om det är ett rimligt specialfall.
+Kontakta i första hand teamet för att reda ut om scenariot bör stödjas av `FTable` eller om det är ett rimligt specialfall. Vi nås på <designsystem@forsakringskassan.se>.
 
 ## Kolumner flyttas från template till konfiguration
 
