@@ -1572,6 +1572,8 @@ module.exports = defineMetadata({
                 allowed: allowedIfAttributeIsPresent("selectable"),
                 required: false,
             },
+            "aria-label": {},
+            "aria-labelledby": {},
         },
         slots: ["caption", "empty", "expandable", "footer"],
     },
