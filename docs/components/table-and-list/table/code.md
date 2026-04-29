@@ -141,7 +141,7 @@ const columns = defineTableColumns<Row>([
 ]);
 ```
 
-TODO: Formatering (vad är skillnaden mellan `format` och `value` - när använder jag vilken? Vem vinner om man specar både formatter och har egen `update`-metod?)
+<!-- TODO: Formatering (vad är skillnaden mellan `format` och `value` - när använder jag vilken? Vem vinner om man specar både formatter och har egen `update`-metod?) -->
 
 ## Kolumnrubrik
 
@@ -542,7 +542,7 @@ Detta är oftast aktuellt i samband med redigering av data.
 <f-table :columns :rows key-attribute="id"></f-table>
 ```
 
-TODO här refererar vi till expanderbara rader och redigering av data utan att ha nämnt det tidigare.
+<!-- TODO: här refererar vi till expanderbara rader och redigering av data utan att ha nämnt det tidigare. -->
 
 ## Tom tabell
 
