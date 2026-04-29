@@ -2,12 +2,11 @@ import {
     type ValidatableHTMLElement,
     type Validator,
     type ValidatorConfig,
-    type ValidatorName,
 } from "@fkui/logic";
 import { HoursMinutesValidatorUtils } from "../utils";
 
 export const lessThanTimeValidator: Validator = {
-    name: "lessThanTime" as ValidatorName,
+    name: "lessThanTime",
     validation(
         value: string,
         _element: ValidatableHTMLElement,

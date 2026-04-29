@@ -262,7 +262,7 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
             return Weekday.SUNDAY;
         }
 
-        return result as Weekday;
+        return result;
     }
 
     /**

@@ -4,7 +4,6 @@ import { type PropType, defineComponent, getCurrentInstance } from "vue";
 import { DomUtils, isSet } from "@fkui/logic";
 import { IAnimateExpand, IFlex, IFlexItem } from "../../internal-components";
 import { TranslationMixin } from "../../plugins";
-import { type GroupValidityEvent } from "../../types";
 import { findHTMLElementFromVueRef, getHTMLElementFromVueRef } from "../../utils";
 import { FIcon } from "../FIcon";
 import { type FValidationFormResult, FValidationForm } from "../FValidationForm";
@@ -85,7 +84,7 @@ export default defineComponent({
     data() {
         return {
             step: {} as FWizardStepDefinition,
-            validity: { isValid: true, componentsWithError: [], componentCount: 0 } as GroupValidityEvent,
+            validity: { isValid: true, componentsWithError: [], componentCount: 0 },
             isOpenedFirstTime: true,
             ignoreClick: false,
         };

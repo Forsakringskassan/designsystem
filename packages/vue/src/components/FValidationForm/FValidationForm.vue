@@ -81,9 +81,9 @@ export default defineComponent({
          */
         "submit",
     ],
-    data() {
+    data(): { validity: GroupValidityEvent; submitted: boolean } {
         return {
-            validity: { isValid: true, componentsWithError: [], componentCount: 0 } as GroupValidityEvent,
+            validity: { isValid: true, componentsWithError: [], componentCount: 0 },
             submitted: false,
         };
     },

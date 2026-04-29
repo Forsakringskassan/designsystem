@@ -34,7 +34,7 @@ export function getLegacyInternalKey<T>(): keyof T {
  */
 export function findItemIdentifier(item: unknown): ItemIdentifier | undefined {
     if (isObject(item) && Object.prototype.hasOwnProperty.call(item, sym)) {
-        return item[sym as keyof typeof item] as ItemIdentifier;
+        return item[sym as keyof typeof item];
     } else {
         return undefined;
     }

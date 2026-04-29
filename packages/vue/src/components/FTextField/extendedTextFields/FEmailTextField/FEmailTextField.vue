@@ -75,7 +75,7 @@ export default defineComponent({
     ],
     data() {
         return {
-            validityMode: "INITIAL" as string,
+            validityMode: "INITIAL",
             secondEmail: "",
             showPasteErrorMessage: false,
             defaultText: this.$t("fkui.email-text-field.label", "Mejladress"),

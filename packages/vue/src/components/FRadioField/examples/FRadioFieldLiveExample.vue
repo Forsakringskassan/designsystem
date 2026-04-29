@@ -19,7 +19,7 @@ export default defineComponent({
             isRequired: false,
             tooltipVisible: false,
             descriptionVisible: false,
-            showDetails: "never" as "never" | "always" | "when-selected",
+            showDetails: "never",
         };
     },
     computed: {

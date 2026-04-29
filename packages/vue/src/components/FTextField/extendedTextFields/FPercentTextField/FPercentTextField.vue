@@ -29,7 +29,7 @@ export default defineComponent({
         formatter: {
             type: Function as PropType<FormatFunction<number>>,
             required: false,
-            default: defaultFormatter as FormatFunction<number>,
+            default: defaultFormatter,
         },
         /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */
         parser: {

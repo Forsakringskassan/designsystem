@@ -69,7 +69,7 @@ function onChange(event: FDialogueTreeUserProgress): void {
                 screenreader: "lägg till knapp",
                 event: "submit",
                 submitButton: true,
-            } as FModalButtonDescriptor & { submitButton?: boolean });
+            });
         }
     } else {
         buttons.value = buttons.value.filter((b) => !b.submitButton);

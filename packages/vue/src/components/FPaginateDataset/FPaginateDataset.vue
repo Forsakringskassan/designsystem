@@ -12,7 +12,7 @@ const currentPage = defineModel<number>({
 
 // Defines component props
 const {
-    items = [] as unknown as TInfered,
+    items = [],
     itemsPerPage = 10,
     itemsLength = 0,
     fetchData = () => null,
@@ -69,6 +69,7 @@ const currentPageItems = computed<TInfered>((): TInfered => {
     if (fetchedData.value) {
         return fetchedData.value;
     }
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
     return toDataset(items.slice(firstItemIndex.value, lastItemIndex.value), items) as TInfered;
 });
 
