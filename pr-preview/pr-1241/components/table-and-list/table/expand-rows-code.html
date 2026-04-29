@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-2ff4ef.json"
+            href="../../../search-data-efe1dc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-RkYhda9VhfGGEx2g5EwK4QWqBqcEzrWnEAEUemzxfNjt0xQsSUyVBHgl2Eaf7swq"
+            integrity="sha384-Eq6qPrhzIKQIqyDGikIaFqvJyH17Zgsam/IpEZZiI/weiRDIqapbsE4SzpTbE30h"
             id="search-data"
         />
     </head>
@@ -1601,21 +1601,103 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Expanderbara rader kan presenteras på två sätt:</p>
-<ul>
-<li>rader som följer existerande kolumner</li>
-<li>rader med valfritt innehåll.</li>
-</ul>
-<p class="docs-paragraph">För båda varianterna sätter du propen <code>expandable-attribute</code> till den egenskap i objektet som innehåller rader med expanderat innehåll.</p>
-<p class="docs-paragraph">Givet följande struktur sätter du expandable-attribute till <code>myExpandableRow</code>:</p>
-<p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="folja_existerande_kolumner" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#folja_existerande_kolumner">Följa existerande kolumner</a></h2><p class="docs-paragraph">För att skapa expanderbart innehåll som följer existerande kolumner måste du sätta <code>expandable-attribute</code> och du får inte använda slot <code>expandable</code>.
-Innehållet följer då samma datastruktur som ordinarie rader.</p>
-<p class="docs-paragraph">Se nedan exempel av data som du kan använda för att generera en expanderbar rad som innehåller två tabellrader.</p>
-<p class="docs-paragraph">// plats för kodexempel</p>
-<h2 id="valfritt_innehall" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#valfritt_innehall">Valfritt innehåll</a></h2><p class="docs-paragraph">För att själv ta kontroll över hur raden presenteras använder du sloten <code>expandable</code>.
+                    <div id="content"><p class="docs-paragraph">Givet att vi har en datakälla med nästlade rader:</p>
+
+                <div
+                    id="example-f64436"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">namn</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">land</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">nested</span>?: <span class="hljs-title class_">Row</span>[];
+}
+</code></pre>
+                </div>
+            <p class="docs-paragraph">För att använda expanderade rader i tabellen anger du egenskapens namn när du skapar datamängden:</p>
+
+                <div
+                    id="example-c0e873"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> import { useDatasetRef } from &quot;@fkui/vue&quot;;
+ 
+<span class="hljs-deletion">-const rows = useDatasetRef(data);</span>
+<span class="hljs-addition">+const rows = useDatasetRef(data, &quot;nested&quot;);</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Tabellen känner av om datamängden har skapats med nästlad data automatiskt.</p>
+<h2 id="folja_existerande_kolumner" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#folja_existerande_kolumner">Följa existerande kolumner</a></h2><p class="docs-paragraph">Tabellen presenterar rader med nästlad data som expanderade rader.
+Som standard följer expanderade rader samma kolumnstruktur som överordnade rader.</p>
+
+                <div
+                    id="example-bd2ebd"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nomarkup"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview user-background">
+                        
+        <div id="example-f6631a"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./expand-rows-code-f6631a.js"></script>
+    
+                    </div>
+                </div>
+            <h2 id="valfritt_innehall" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#valfritt_innehall">Valfritt innehåll</a></h2><p class="docs-paragraph">Valfritt innehåll kan presenteras istället för att följa tabellens kolumner genom att använda slotten <code>#expandable</code>.
 Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som ligger i datastrukturen behöver inte följa ordinarie rader.</p>
-<p class="docs-paragraph">Skapa inte ett för komplext expanderat innehåll som till exempel att placera ytterligare expanderbara tabeller inuti.</p>
+
+                <div
+                    id="example-3e1d5b"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">expandable</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{{ row }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-8feaa4"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nomarkup"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview user-background">
+                        
+        <div id="example-1ff4f4"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./expand-rows-code-1ff4f4.js"></script>
+    
+                    </div>
+                </div>
+            <p class="docs-paragraph">Skapa inte ett för komplext expanderat innehåll som till exempel att placera ytterligare expanderbara tabeller inuti.</p>
 <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./expand-rows.html">Expandera rader i tabell</a></p>
 <p class="docs-paragraph"><a href="./code.html">Kod för tabell</a></p>
 
@@ -1666,9 +1748,9 @@ Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/add6dcf45a170dac451a40d2a714ee011221ec61">add6dcf</a>)<br />
+<div class="footer__right"><div class="version">ftable-migration-guide (<a href="https://github.com/Forsakringskassan/designsystem/commits/fdc85beb5954421e23c0312d5165fba8db3d884e">fdc85be</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1241">PR 1241</a><br />
-        2026-04-29 11:00
+        2026-04-29 11:35
 </div>
 <div class="toolbar__item">
     <form id="version">
