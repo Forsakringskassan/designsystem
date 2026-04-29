@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-391bd8.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-99675f.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../../assets/vendor-fkui-vue-391bd8.js": "sha384-ocfNTZPWp0hmg6B8jR0a7t26G8vIgZ0/zutDhMUfVLx3OnR/yWIHqMrGaTSCEIRF",
+    "../../../assets/vendor-fkui-vue-99675f.js": "sha384-DIXMRWEIYsH6sBQAK7EkLyQ1uxaNIYu4cfUfDx4K4t2fNhRriQ86VVNt5XsaGfxM",
     "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-72e328.json"
+            href="../../../search-data-ecae24.json"
             as="fetch"
             crossorigin
-            integrity="sha384-NFrgrxrwbrqW8th0FreW4NPCf0VJuYT9Bs1/aeocfWonWOe0Wp3xpWfxBt/sMI5z"
+            integrity="sha384-O3k5WBRwZC+4nOtwZXmT0RwLnzTAYwaXEtRheVO06VsHQgJf67l2bKOBkcBJCZtP"
             id="search-data"
         />
     </head>
@@ -1629,15 +1629,14 @@
 <p class="docs-paragraph">Du sätter upp din tabell genom att definiera kolumner och rader som ska ingå.</p>
 
                 <div
-                    id="example-785241"
+                    id="example-013e11"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-comment">// definiera data</span>
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
@@ -1662,7 +1661,7 @@
                 </div>
             
                 <div
-                    id="example-64b8da"
+                    id="example-d301f8"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1676,7 +1675,7 @@
 <p class="docs-paragraph">I funktionen definierar du upp kolumnerna i tabellen genom att bland annat bestämma/sätta kolumnrubrik, vänster-/högerjustering av innehåll, formatering, kolumntyp med mera.</p>
 
                 <div
-                    id="example-28a936"
+                    id="example-af8327"
                     class="code-preview code-preview--default"
                     
                     
@@ -1707,7 +1706,7 @@ Det finns flera olika typer av kolumner.
 <p class="docs-paragraph">Utöver ovan har olika kolumntyper ofta egna konfigurationsmöjligheter.</p>
 <h2 id="mappa_data_till_kolumner" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#mappa_data_till_kolumner">Mappa data till kolumner</a></h2>
                 <div
-                    id="example-303f82"
+                    id="example-da172d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1723,14 +1722,14 @@ Det finns flera olika typer av kolumner.
             <p class="docs-paragraph">När du definierar kolumnen kan du ange <code>key</code>, där <code>key</code> måste vara en av de kända egenskaperna i radobjektet.</p>
 
                 <div
-                    id="example-bfb5fa"
+                    id="example-1328b2"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue-labs&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
     <span class="hljs-attr">namn</span>: <span class="hljs-built_in">string</span>;
@@ -1749,7 +1748,7 @@ Det finns flera olika typer av kolumner.
 <p class="docs-paragraph">Är du i behov av att ha mer kontroll över värde som presenteras eller skrivs kan du använda dig av funktionerna <code>value</code> och <code>update</code>.</p>
 
                 <div
-                    id="example-29ef1d"
+                    id="example-4e649b"
                     class="code-preview code-preview--default"
                     
                     
@@ -1774,7 +1773,7 @@ Det finns flera olika typer av kolumner.
 <h2 id="kolumnrubrik" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kolumnrubrik">Kolumnrubrik</a></h2><p class="docs-paragraph">För att sätta kolumnrubrik använder du <code>header</code>.</p>
 
                 <div
-                    id="example-59d5a1"
+                    id="example-155c06"
                     class="code-preview code-preview--default"
                     
                     
@@ -1791,7 +1790,7 @@ Det finns flera olika typer av kolumner.
             <p class="docs-paragraph">I det här fallet kommer kolumnens rubrik att sättas till &quot;Namn&quot;.</p>
 
                 <div
-                    id="example-55ad99"
+                    id="example-aa0c09"
                     class="code-preview code-preview--default"
                     
                     
@@ -1809,7 +1808,7 @@ Det finns flera olika typer av kolumner.
 <p class="docs-paragraph">Utöver <code>header</code> kan du också använda <code>description</code> för att sätta hjälptext.</p>
 
                 <div
-                    id="example-fcca5e"
+                    id="example-e88689"
                     class="code-preview code-preview--default"
                     
                     
@@ -1826,7 +1825,7 @@ Det finns flera olika typer av kolumner.
                 </div>
             
                 <div
-                    id="example-1d81fc"
+                    id="example-7dd173"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1835,13 +1834,13 @@ Det finns flera olika typer av kolumner.
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-1ac728"></div>
+        <div id="example-4b199a"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./code-1ac728.js"></script>
+        <script type="module" src="./code-4b199a.js"></script>
     
                     </div>
                 </div>
@@ -1852,7 +1851,7 @@ Det finns flera olika typer av kolumner.
 </ul>
 
                 <div
-                    id="example-8077ce"
+                    id="example-2e0fa9"
                     class="code-preview code-preview--default"
                     
                     
@@ -1873,7 +1872,7 @@ Det finns flera olika typer av kolumner.
                 </div>
             
                 <div
-                    id="example-542a76"
+                    id="example-22bb1c"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1882,13 +1881,13 @@ Det finns flera olika typer av kolumner.
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-99cfa8"></div>
+        <div id="example-735cad"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./code-99cfa8.js"></script>
+        <script type="module" src="./code-735cad.js"></script>
     
                     </div>
                 </div>
@@ -1899,7 +1898,7 @@ Det finns flera olika typer av kolumner.
 </ul>
 
                 <div
-                    id="example-6808b8"
+                    id="example-1af8de"
                     class="code-preview code-preview--default"
                     
                     
@@ -1920,7 +1919,7 @@ Det finns flera olika typer av kolumner.
                 </div>
             
                 <div
-                    id="example-b4c48b"
+                    id="example-d5d422"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1929,20 +1928,20 @@ Det finns flera olika typer av kolumner.
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-6918b4"></div>
+        <div id="example-913080"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./code-6918b4.js"></script>
+        <script type="module" src="./code-913080.js"></script>
     
                     </div>
                 </div>
             <h2 id="tabulara_nummer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabulara_nummer">Tabulära nummer</a></h2><p class="docs-paragraph">Om kolumnen presenterar numerisk data, bör egenskapen <code>tnum</code> sättas till <code>true</code> för att aktivera tabulära nummer.</p>
 
                 <div
-                    id="example-3e6b85"
+                    id="example-cd3b90"
                     class="code-preview code-preview--default"
                     
                     
@@ -1959,7 +1958,7 @@ Det finns flera olika typer av kolumner.
                 </div>
             
                 <div
-                    id="example-1d93e6"
+                    id="example-27714b"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1968,13 +1967,13 @@ Det finns flera olika typer av kolumner.
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-555066"></div>
+        <div id="example-790af0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./code-555066.js"></script>
+        <script type="module" src="./code-790af0.js"></script>
     
                     </div>
                 </div>
@@ -1983,7 +1982,7 @@ Det finns flera olika typer av kolumner.
 <h2 id="framhava_rader" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#framhava_rader">Framhäva rader</a></h2><p class="docs-paragraph">För att få zebrarandig tabell använd propen <code>striped</code>.</p>
 
                 <div
-                    id="example-bda162"
+                    id="example-84a80e"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1995,7 +1994,7 @@ Det finns flera olika typer av kolumner.
                 </div>
             
                 <div
-                    id="example-5fd5ad"
+                    id="example-fc1d79"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2004,13 +2003,13 @@ Det finns flera olika typer av kolumner.
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-0febe9"></div>
+        <div id="example-b1f1f3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./code-0febe9.js"></script>
+        <script type="module" src="./code-b1f1f3.js"></script>
     
                     </div>
                 </div>
@@ -2018,7 +2017,7 @@ Det finns flera olika typer av kolumner.
 Funktionen tar emot raden och kan returnera <code>string</code>, <code>string[]</code> eller ett objekt med klassnamn.</p>
 
                 <div
-                    id="example-61135d"
+                    id="example-12e9a3"
                     class="code-preview code-preview--default"
                     
                     
@@ -2032,7 +2031,7 @@ Funktionen tar emot raden och kan returnera <code>string</code>, <code>string[]<
                 </div>
             
                 <div
-                    id="example-341741"
+                    id="example-da66f3"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2048,7 +2047,7 @@ En fördel med att ange attributet är att tabellen känner igen raden även om 
 Detta är oftast aktuellt i samband med redigering av data.</p>
 
                 <div
-                    id="example-7c7980"
+                    id="example-5dedc5"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2063,7 +2062,7 @@ Detta är oftast aktuellt i samband med redigering av data.</p>
 Som standard visas textnyckeln <code>fkui.ftable.empty.text</code>, se <a href="#textnycklar">Textnycklar</a>.</p>
 
                 <div
-                    id="example-b5f052"
+                    id="example-b968d8"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2080,7 +2079,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
 <p class="docs-paragraph">Om tabellen har en rubrik (heading) i nära anslutning som också förklarar tabellens innebörd assoccierar du den med <code>aria-labelledby</code>.</p>
 
                 <div
-                    id="example-93dc84"
+                    id="example-486ee5"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2094,7 +2093,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             <p class="docs-paragraph">Använd caption om tabellen inte har en naturlig rubrik.</p>
 
                 <div
-                    id="example-ae834c"
+                    id="example-f68902"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2109,7 +2108,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             <p class="docs-paragraph">I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla.</p>
 
                 <div
-                    id="example-cefca4"
+                    id="example-843975"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2126,7 +2125,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             <h2 id="felhantering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#felhantering">Felhantering</a></h2><p class="docs-paragraph">Om ett fel uppstår vid hämtning av tabellens data kan du se till att ett felmeddelande visas med hjälp av <code>#empty</code>-sloten.</p>
 
                 <div
-                    id="example-491dc5"
+                    id="example-8568eb"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2419,9 +2418,9 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs-f-table-code-update (<a href="https://github.com/Forsakringskassan/designsystem/commits/02ee0c0380cdcf676332216621e1b98f0c469b48">02ee0c0</a>)<br />
+<div class="footer__right"><div class="version">docs-f-table-code-update (<a href="https://github.com/Forsakringskassan/designsystem/commits/756eb629dc8eef7b7a4e2a34bafb0bfdc9e92b40">756eb62</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1255">PR 1255</a><br />
-        2026-04-29 08:11
+        2026-04-29 11:18
 </div>
 <div class="toolbar__item">
     <form id="version">
