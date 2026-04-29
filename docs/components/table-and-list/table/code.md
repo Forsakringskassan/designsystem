@@ -205,8 +205,6 @@ const columns = defineTableColumns<Row>([
 ]);
 ```
 
-TODO exemplet fungerar inte
-
 ```vue nomarkup
 <script setup lang="ts">
 import { useDatasetRef } from "@fkui/vue";
@@ -225,7 +223,20 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>([]);
+const rows = useDatasetRef<Row>([
+    {
+        namn: "Apelsin",
+        land: "Spanien",
+    },
+    {
+        namn: "Banan",
+        land: "Colombia",
+    },
+    {
+        namn: "Äpple",
+        land: "Sverige",
+    },
+]);
 </script>
 
 <template>
@@ -274,10 +285,12 @@ interface Row {
 const columns = defineTableColumns<Row>([
     {
         header: "Namn",
+        key: "namn",
         size: "shrink",
     },
     {
         header: "Land",
+        key: "land",
         size: "grow",
     },
 ]);
@@ -344,10 +357,12 @@ interface Row {
 const columns = defineTableColumns<Row>([
     {
         header: "Namn",
+        key: "namn",
         align: "left",
     },
     {
         header: "Land",
+        key: "land",
         align: "right",
     },
 ]);
@@ -404,11 +419,13 @@ interface Row {
 
 const columns = defineTableColumns<Row>([
     {
+        type: "text",
         header: "Med tnum",
         tnum: true,
         key: "value",
     },
     {
+        type: "text",
         header: "Utan tnum",
         tnum: false,
         key: "value",
@@ -460,10 +477,12 @@ interface Row {
 const columns = defineTableColumns<Row>([
     {
         header: "Namn",
+        key: "namn",
         align: "left",
     },
     {
         header: "Land",
+        key: "land",
         align: "right",
     },
 ]);
