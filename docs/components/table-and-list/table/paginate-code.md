@@ -8,7 +8,16 @@ search:
         - tabell
 ---
 
-Sidan kommer uppdateras.
+Tabellen kan kombineras med {@link component:FPaginateDataset paginering}.
+
+```html static
+<f-paginate-dataset :items="rows">
+    <template #default="{ items: currentPageItems }">
+        <f-table :rows="currentPageItems" :columns></f-table>
+        <f-paginator></f-paginator>
+    </template>
+</f-paginate-dataset>
+```
 
 ## Relaterat
 
