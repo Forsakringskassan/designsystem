@@ -20,7 +20,7 @@ search:
 ---
 
 ```import live-example
-FTableLiveExample.vue
+FTableExample.vue
 ```
 
 ## När används komponenten?

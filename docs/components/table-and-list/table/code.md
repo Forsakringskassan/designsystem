@@ -14,6 +14,10 @@ search:
 
 Den här sidan innehåller information om hur du sätter upp komponenten tabell i din applikation.
 
+```import live-example
+FTableExample.vue
+```
+
 Du sätter upp din tabell genom att definiera kolumner och rader som ska ingå.
 
 ```ts
