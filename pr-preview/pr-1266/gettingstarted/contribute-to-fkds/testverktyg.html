@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-9213bb.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-1f4131.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-9213bb.js": "sha384-dAM98c4JxTpG1dm64zOK3BNVquCCAPKEvdGeTxwK7jUvJN84Oz1x8tzTEH6kW17H",
+    "../../assets/vendor-fkui-vue-1f4131.js": "sha384-337tHJaeM0qlM8+yvwIpIuZyiHfhPRuZZM5IJIg4C4OiVOfMMBQFAqlvsFBhZDiU",
     "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-90b06f.json"
+            href="../../search-data-40efc7.json"
             as="fetch"
             crossorigin
-            integrity="sha384-7Z5EiUvCpc+H4VeVC6UOvC/xQhv/0US9FgIZTN/elvHiDr1fgkX1M34SukVpjXWI"
+            integrity="sha384-MX2Nx0S20uXGmgI3rIqtEm93t0hLRsaxcc3QBgP7JVk8bp3kbydjS0S06GYqICOm"
             id="search-data"
         />
     </head>
@@ -602,8 +602,7 @@
 <li>Cypress för komponenttester och E2E-tester</li>
 </ul>
 <p class="docs-paragraph">Som en tumregel använder vi enhetstester för att testa logik, komponenttester för att testa interaktion och i undantagsfall E2E-tester för att testa integration.</p>
-<p class="docs-paragraph">Samtliga tester körs från CI-miljö vid branch-byggen.
-PR-byggen kör inte komponenttester eller E2E-tester.</p>
+<p class="docs-paragraph">Samtliga tester skall köras från CI-miljö vid branch-byggen.</p>
 <p class="docs-paragraph">Läs mer om <a href="./testing.html">att skriva automatiska testfall</a>.</p>
 <h3 id="jest" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#jest">Jest</a></h3><p class="docs-paragraph">Paket utan ramverksspecifika komponenter samt logik för Vue-komponenter testas med Jest.
 Vi testar inte interaktion med komponenter med Jest.</p>
@@ -638,7 +637,7 @@ CI-miljö läser in filen.</p>
 <p class="docs-paragraph"><code>tsconfig.json</code> i respektive paket med Cypress komponenttester pekar ut en separat <code>tsconfig.cypress.json</code> med specifik typescript-konfiguration för Cypress:</p>
 
                 <div
-                    id="example-6ba396"
+                    id="example-d5f772"
                     class="code-preview code-preview--default"
                     
                     
@@ -665,7 +664,7 @@ E2E-tester kör mot den genererade dokumentationen och kräver att den byggts oc
 <p class="docs-paragraph">För att bygga och starta dokumentation:</p>
 
                 <div
-                    id="example-b71e62"
+                    id="example-b17142"
                     class="code-preview code-preview--default"
                     
                     
@@ -680,7 +679,7 @@ npm start
             <p class="docs-paragraph">Därefter kan du starta E2E-tester i en annan terminal:</p>
 
                 <div
-                    id="example-d15a26"
+                    id="example-6d51d8"
                     class="code-preview code-preview--default"
                     
                     
@@ -801,9 +800,9 @@ Endast personnummer från återfinns i <a href="https://www7.skatteverket.se/por
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs/SFKUI-7762-testinformation (<a href="https://github.com/Forsakringskassan/designsystem/commits/467719c8412a819ca0983652470cf1d4a0664256">467719c</a>)<br />
+<div class="footer__right"><div class="version">docs/SFKUI-7762-testinformation (<a href="https://github.com/Forsakringskassan/designsystem/commits/667dc7b7734793860d6357d6e173546cc3d7f49c">667dc7b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1266">PR 1266</a><br />
-        2026-04-30 10:00
+        2026-04-30 11:33
 </div>
 <div class="toolbar__item">
     <form id="version">
