@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-fcb57f.json"
+            href="../../../search-data-cd7e0b.json"
             as="fetch"
             crossorigin
-            integrity="sha384-JlZnhkslmN813K+gb4XYmI7IzEMjq0YojTRrnuYYkW4CW5UlEdHdkqbO1OLPGAQL"
+            integrity="sha384-hg/JlOHp0iHSaAkPeuf/UCCQg+atND7L+kLUEZuU0/J55jtFnYNPnLRPcTu1r2d/"
             id="search-data"
         />
     </head>
@@ -1605,8 +1605,6 @@
                                 
                                 <li><a href="#framhava_rader">Framhäva rader</a></li>
                                 
-                                <li><a href="#radid">Radid</a></li>
-                                
                                 <li><a href="#tom_tabell">Tom tabell</a></li>
                                 
                                 <li><a href="#tabellrubrik">Tabellrubrik</a></li>
@@ -2041,28 +2039,12 @@ Funktionen tar emot raden och kan returnera <code>string</code>, <code>string[]<
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:rowClass</span>=<span class="hljs-string">&quot;bananaRowClass&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
 </code></pre>
                 </div>
-            <h2 id="radid" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#radid">Radid</a></h2><p class="docs-paragraph">Tabellen behöver kunna särskilja olika rader, och om inte nyckelattribut (<code>keyAttribute</code>) anges så hanterar tabellen det själv.</p>
-<p class="docs-paragraph">Om du anger <code>keyAttribute</code>, måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.
-En fördel med att ange attributet är att tabellen känner igen raden även om dess instans ersätts.
-Detta är oftast aktuellt i samband med redigering av data.</p>
-
-                <div
-                    id="example-5dedc5"
-                    class="code-preview code-preview--default"
-                    
-                    data-tags="static"
-                    data-language="html"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
-</code></pre>
-                </div>
-            <!-- TODO: här refererar vi till expanderbara rader och redigering av data utan att ha nämnt det tidigare. -->
+            <!-- TODO: Radid stycke som förklarar när det behövs. Prestanda, behålla valideringsstate. -->
 <h2 id="tom_tabell" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tom_tabell">Tom tabell</a></h2><p class="docs-paragraph">Använd sloten <code>#empty</code> för att styra vad som visas när tabellen är tom.
 Som standard visas textnyckeln <code>fkui.ftable.empty.text</code>, se <a href="#textnycklar">Textnycklar</a>.</p>
 
                 <div
-                    id="example-b968d8"
+                    id="example-f8dfba"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2079,7 +2061,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
 <p class="docs-paragraph">Om tabellen har en rubrik (heading) i nära anslutning som också förklarar tabellens innebörd assoccierar du den med <code>aria-labelledby</code>.</p>
 
                 <div
-                    id="example-486ee5"
+                    id="example-1b23ba"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2093,7 +2075,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             <p class="docs-paragraph">Använd caption om tabellen inte har en naturlig rubrik.</p>
 
                 <div
-                    id="example-f68902"
+                    id="example-8112b9"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2108,7 +2090,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             <p class="docs-paragraph">I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla.</p>
 
                 <div
-                    id="example-843975"
+                    id="example-1392c3"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2125,7 +2107,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             <h2 id="felhantering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#felhantering">Felhantering</a></h2><p class="docs-paragraph">Om ett fel uppstår vid hämtning av tabellens data kan du se till att ett felmeddelande visas med hjälp av <code>#empty</code>-sloten.</p>
 
                 <div
-                    id="example-8568eb"
+                    id="example-59e010"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2418,9 +2400,9 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">update-ftable-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/cfe285cbc2ec585f7adb3cdd498ed015e3e0fd23">cfe285c</a>)<br />
+<div class="footer__right"><div class="version">update-ftable-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/31641be0e0ee1a20f259dcf1450c8142a1a11045">31641be</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1263">PR 1263</a><br />
-        2026-04-30 07:27
+        2026-04-30 07:58
 </div>
 <div class="toolbar__item">
     <form id="version">
