@@ -6,7 +6,7 @@ import "cypress-html-validate/dist/commands";
 import "../assertions/trimmed-text";
 import "./commands/forced-colors";
 
-if (Cypress.env("DISABLE_VISUAL_REGRESSION")) {
+if (Cypress.expose("DISABLE_VISUAL_REGRESSION")) {
     Cypress.Commands.overwrite("toMatchScreenshot", () => {
         Cypress.log({
             message: "Visual regression disabled, ignoring assertion",
