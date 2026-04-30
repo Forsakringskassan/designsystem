@@ -537,6 +537,36 @@ Som standard visas textnyckeln `fkui.ftable.empty.text`, se [Textnycklar](#textn
 </f-table>
 ```
 
+```vue nomarkup
+<script setup lang="ts">
+import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+
+interface Row {
+    namn: string;
+    land: string;
+}
+
+const columns = defineTableColumns<Row>([
+    {
+        header: "Namn",
+        key: "namn",
+    },
+    {
+        header: "Land",
+        key: "land",
+    },
+]);
+
+const rows = useDatasetRef<Row>([]);
+</script>
+
+<template>
+    <f-table :columns :rows>
+        <template #empty> Eget innehåll </template>
+    </f-table>
+</template>
+```
+
 ## Tabellrubrik
 
 En tabell ska alltid ha en rubrik, antingen med `caption`-elementet eller en associerad rubrik (heading).
