@@ -40,6 +40,7 @@ export {
     type ValidatorConfig,
     type ValidatorConfigs,
     type ValidatorName,
+    type ValidatorObjectType,
     type ValidatorOptions,
     type ValidityEvent,
     type ValidityMode,

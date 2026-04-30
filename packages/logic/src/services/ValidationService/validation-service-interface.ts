@@ -11,13 +11,21 @@ export type ValidatableHTMLElement =
     | HTMLFieldSetElement;
 
 /**
+ * Describes a shallow object for using objects as validator config values,
+ * e.g YearMonth objects such as `{ year: 2025, month: 8 }`
+ *
+ * @public
+ */
+export type ValidatorObjectType = Record<string, string | number | boolean>;
+
+/**
  * Describes the configuration of a validator.
  *
  * @public
  */
 export type ValidatorConfig = Record<
     string,
-    string | number | boolean | string[] | unknown[]
+    string | number | boolean | string[] | unknown[] | ValidatorObjectType
 > &
     ValidatorOptions;
 

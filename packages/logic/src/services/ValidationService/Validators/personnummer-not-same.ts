@@ -9,6 +9,7 @@ export const personnummerNotSame: Validator = {
         if (!valuePnr) {
             return true;
         }
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string -- Config may contain objects
         const otherFieldPnr = parsePersonnummer(String(config.otherField));
         if (!otherFieldPnr) {
             return true;
