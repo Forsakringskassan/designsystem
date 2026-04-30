@@ -87,7 +87,7 @@ Du kör igång hela test-sviten mot alla paket genom att skriva:
 npm test
 ```
 
-För att köra cypress-tester behöver du först starta servern med `npm start` och därefter köra:
+För att köra e2e cypress-tester behöver du först starta servern med `npm start` och därefter köra:
 
 ```bash
 npm exec cypress -- open

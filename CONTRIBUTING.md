@@ -103,6 +103,7 @@ Komponenttester med cypress-tester
 
 - enskilda komponenter
 - interaktion med komponenten.
+- exempel i dokumentation.
 
 E2E-tester med cypress-tester
 
@@ -113,7 +114,7 @@ Undvik större mängder av mockning för enkelhetens skull och test av implement
 Testa till exempel hellre att en komponent inte är synlig än att funktionen `hideComponent` används.
 På så sätt undviker vi "false negatives" om vi skulle ändra namnet på funktionen eller "false positives" om funktionen går sönder och inte döljer komponenten.
 
-Försäkra dig om att testfallen och regressionstesterna går igenom. Kom ihåg att lägga till uppdaterade skärmdumpar (screenshots).
+Försäkra dig om att testfallen och regressionstesterna går igenom. Kom ihåg att lägga till uppdaterade skärmdumpar (screenshot test).
 Eftersom FKUI stödjer responsivitet uppmuntrar vi till test av varierande skärmstorlekar på olika enheter och webbläsare.
 
 Du hittar åtgärder som du kan göra i GitBash och tillhörande kommando i tabellen nedan.

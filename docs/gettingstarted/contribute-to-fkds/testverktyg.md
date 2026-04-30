@@ -27,8 +27,7 @@ Testfall i FKUI implementeras med två verktyg:
 
 Som en tumregel använder vi enhetstester för att testa logik, komponenttester för att testa interaktion och i undantagsfall E2E-tester för att testa integration.
 
-Samtliga tester körs från CI-miljö vid branch-byggen.
-PR-byggen kör inte komponenttester eller E2E-tester.
+Samtliga tester skall köras från CI-miljö vid branch-byggen.
 
 Läs mer om {@link testing att skriva automatiska testfall}.
 
@@ -61,10 +60,13 @@ För paket med Vue-komponenter testar vi interaktion och utseende av komponenten
 
 Komponenttester placeras i samma katalog som komponenten för komponenten och använder `${component}.cy.ts` som filnamn.
 
-Varje komponent bör ha minst ett komponenttest som testar det visuella utseendet i form av ett screenshot sk "screenshottester"
+Varje komponent bör ha minst ett komponenttest som testar det visuella utseendet i form av ett screenshot test.
 Vi använder oss av `@forsakringskassan/cypress-visual-regression` för att skriva tester med skärmdumpar: visuell regressionstest.
+Testet skall tydligt beskriva att det är ett visuellt test genom testbeskrivningen enligt `it("test description... (visual)")`
 
-Läs mer om [screenshottester][testning].
+- [`@forsakringskassan/cypress-visual-regression`][cypress-visual-regression]: för mer information kring visuell testning.
+
+[cypress-visual-regression]: https://github.com/Forsakringskassan/cypress-visual-regression
 
 Cypress är konfigurerat i rootens `cypress.config.ts` och anropas direkt från root med `npm exec cypress open` (headed) alternativt `npm exec cypress run` (headless).
 
@@ -94,8 +96,6 @@ CI-miljö läser in filen.
     "exclude": ["src/**/*.spec.ts"]
 }
 ```
-
-Läs mer om [tsconfig.json](#tsconfig-json).
 
 ### E2E (Cypress)
 
