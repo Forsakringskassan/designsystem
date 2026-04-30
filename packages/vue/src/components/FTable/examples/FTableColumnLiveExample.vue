@@ -1,16 +1,19 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
-import { defineComponent, h } from "vue";
+import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
 import {
+    type TableColumn,
     FCheckboxField,
     FFieldset,
     FRadioField,
     FSelectField,
+    FTable,
+    defineTableColumns as defineTableColumnsFunc,
     getHTMLElementFromVueRef,
+    useDatasetRef,
 } from "@fkui/vue";
-import { type TableColumn, FTable, defineTableColumns as defineTableColumnsFunc } from "@fkui/vue";
-import { LiveExample } from "@forsakringskassan/docs-live-example";
+import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
 import { defaultTnumValue } from "../columns/helpers";
 import { type InputType } from "../input-fields-config";
 import { isEditableColumn } from "../is-editable-column";
@@ -262,12 +265,6 @@ function getColumn(options: {
     return column;
 }
 
-function getRows(options: { columnType: TableColumnType }): Row[] {
-    const { columnType } = options;
-
-    return rowData[columnType].map((it, index) => ({ id: index + 1, value: it }));
-}
-
 export default defineComponent({
     name: "FTableColumnLiveExample",
     components: { LiveExample, FSelectField, FFieldset, FCheckboxField, FRadioField },
@@ -291,6 +288,15 @@ export default defineComponent({
         };
     },
     computed: {
+        livedata(): object {
+            const rows = useDatasetRef(
+                rowData[this.columnType].map((it, index) => ({ id: index + 1, value: it })),
+            );
+
+            return {
+                rows,
+            };
+        },
         livemethods(): object {
             return {
                 defineTableColumns: defineTableColumnsFunc,
@@ -351,16 +357,9 @@ export default defineComponent({
 
             return `defineTableColumns([${stringifyObject(column as unknown as Record<string, unknown>)}])`;
         },
-        rows(): string {
-            const rows = getRows({ columnType: this.normalizedKey });
-            const stringified = rows
-                .map((it) => stringifyObject(it as unknown as Record<string, unknown>))
-                .join(", ");
 
-            return `[${stringified}]`;
-        },
         template(): string {
-            return `<f-table :columns="${this.columns}" :rows="${this.rows}"></f-table>`;
+            return createElement("f-table", { ":columns": this.columns, ":rows": "rows" });
         },
     },
     mounted() {
@@ -387,7 +386,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <live-example :components :template :livemethods>
+    <live-example :components :template :livemethods :livedata>
         <f-select-field v-model="columnType">
             <template #label> Kolumntyp </template>
             <option value="text">Text</option>
