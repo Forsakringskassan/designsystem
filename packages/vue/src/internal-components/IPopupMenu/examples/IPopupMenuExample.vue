@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent } from "vue";
+import { FButton } from "@fkui/vue";
 import { IPopupMenu } from "..";
 
 const exampleItems = [
@@ -23,7 +24,7 @@ const preventKeys = new Set(["Tab", ...verticalKeys]);
 
 export default defineComponent({
     name: "IPopupMenuExample",
-    components: { IPopupMenu },
+    components: { FButton, IPopupMenu },
     data() {
         return {
             items: exampleItems,
@@ -75,17 +76,16 @@ export default defineComponent({
 
 <template>
     <div>
-        <button
+        <f-button
             id="popup-menu-open-button"
             ref="popup-anchor"
-            type="button"
-            class="button button--secondary"
+            variant="secondary"
             @click="onClick"
             @keyup="onKeyUp"
             @keydown="onKeyDown"
         >
             Öppna popupmeny
-        </button>
+        </f-button>
 
         <i-popup-menu
             id="popup-menu"
