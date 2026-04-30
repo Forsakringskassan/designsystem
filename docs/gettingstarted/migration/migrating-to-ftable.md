@@ -1,5 +1,6 @@
 ---
 title: FTable migreringsguide
+short-title: Ftable
 layout: article
 ---
 
@@ -113,10 +114,12 @@ const columns = defineTableColumns<Row>([
 ]);
 ```
 
+TODO: Ta bort update från hela, länka till FTable (code) rubriken: Mappa data till kolumner
+
 Om kolumnen bara ska läsa och skriva direkt mot ett fält på raden räcker `key`.
 Till exempel innebär `key: "name"` att kolumnen läser från och skriver till `row.name`.
 `key` är standardfallet. Om kolumnen bygger på ett fält i raden är `key` normalt det tydligaste valet, även när du senare behöver komplettera med annan logik.
-Om du behöver styra läsning eller skrivning själv kan du använda `value` och `update`.
+Om du behöver styra läsning eller skrivning själv kan du använda `value`.
 
 ```ts
 import { defineTableColumns } from "@fkui/vue";
@@ -139,14 +142,11 @@ const columns = defineTableColumns<Row>([
         value(row) {
             return row.item;
         },
-        update(row, newValue: string) {
-            row.item = newValue;
-        },
     },
 ]);
 ```
 
-Använd `value` och `update` när visning eller uppdatering inte är en enkel 1:1 koppling mot ett fält, till exempel vid mappning eller annan speciallogik.
+Använd `value` när visning eller uppdatering inte är en enkel 1:1 koppling mot ett fält, till exempel vid mappning eller annan speciallogik.
 
 ## Formattering flyttas in i kolumntypen
 
@@ -178,7 +178,7 @@ Om du tidigare använde en numerisk kolumn:
 
 Läs mer i dokumentationen om {@link column-types kolumntyper}.
 
-## Editering och validering ligger i kolumnen
+## Redigering och validering ligger i kolumnen
 
 I `FTable` definieras redigering och validering i kolumnkonfigurationen.
 
