@@ -20,7 +20,9 @@ FTableBulkExampleMulti.vue
 
 Bulkoperation innebär att användaren kan välja ett antal rader och utföra åtgärd/operation för alla valda rader samtidigt.
 
-<!-- TODO: lägg till liveexempel för bulkoperation-->
+```import
+FTableBulkLiveExample.vue
+```
 
 ### Ta bort rader vid bulkoperation
 
