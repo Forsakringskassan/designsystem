@@ -606,7 +606,7 @@ describe("6 Expandable table", () => {
         expect(expandButtons[1].attributes("aria-expanded")).toBe("false");
     });
 
-    it("6.4 should set correct aria-level on rows", async () => {
+    it("6.4 should set correct aria-level, aria-setsize, aria-posinset on rows", async () => {
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
@@ -619,12 +619,39 @@ describe("6 Expandable table", () => {
         await expandButtons[1].trigger("click");
 
         const bodyRows = wrapper.findAll("tbody tr");
-        expect(bodyRows[0].attributes("aria-level")).toBe("1");
-        expect(bodyRows[1].attributes("aria-level")).toBe("2");
-        expect(bodyRows[2].attributes("aria-level")).toBe("2");
-        expect(bodyRows[3].attributes("aria-level")).toBe("1");
-        expect(bodyRows[4].attributes("aria-level")).toBe("2");
-        expect(bodyRows[5].attributes("aria-level")).toBe("2");
+
+        expect(bodyRows.map((it) => it.attributes())).toMatchObject([
+            {
+                "aria-level": "1",
+                "aria-posinset": "1",
+                "aria-setsize": "2",
+            },
+            {
+                "aria-level": "2",
+                "aria-posinset": "1",
+                "aria-setsize": "2",
+            },
+            {
+                "aria-level": "2",
+                "aria-posinset": "2",
+                "aria-setsize": "2",
+            },
+            {
+                "aria-level": "1",
+                "aria-posinset": "2",
+                "aria-setsize": "2",
+            },
+            {
+                "aria-level": "2",
+                "aria-posinset": "1",
+                "aria-setsize": "2",
+            },
+            {
+                "aria-level": "2",
+                "aria-posinset": "2",
+                "aria-setsize": "2",
+            },
+        ]);
     });
 
     it("6.6 should render custom expanded row with colspan spanning all columns", async () => {
@@ -1181,7 +1208,9 @@ describe("7.6 aria-selected", () => {
         expect(
             trs.map(
                 (tr, index) =>
-                    `Row ${index + 1} aria-selected: ${tr.attributes("aria-selected")}`,
+                    `Row ${index + 1} aria-selected: ${tr.attributes(
+                        "aria-selected",
+                    )}`,
             ),
         ).toMatchObject([
             "Row 1 aria-selected: true",

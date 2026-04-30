@@ -1,52 +1,52 @@
-import { type ItemIdentifier, getItemIdentifier } from "../../utils";
+import {
+    type ItemIdentifier,
+    getDatasetMetadata,
+    getItemIdentifier,
+} from "../../utils";
 import { type MetaRow } from "./meta-row";
 import { walk } from "./walk";
-
-function getRowIndexes<T>(
-    rows: T[],
-    expandableAttribute: keyof T | undefined,
-): ItemIdentifier[] {
-    const array: ItemIdentifier[] = [];
-
-    walk(rows, expandableAttribute, (row) => {
-        array.push(getItemIdentifier(row));
-        return true;
-    });
-
-    return array;
-}
 
 /**
  * @internal
  */
-export function getMetaRows<T>(
+export function getMetaRows<T extends object>(
     keyedRows: T[],
     expandedKeys: Set<ItemIdentifier>,
     expandableAttribute?: keyof T,
 ): Array<MetaRow<T>> {
-    const rowIndexes = getRowIndexes(keyedRows, expandableAttribute);
     const array: Array<MetaRow<T>> = [];
 
-    walk(keyedRows, expandableAttribute, (row, level) => {
+    walk(keyedRows, expandableAttribute, (row) => {
         const key = getItemIdentifier(row);
         const isExpandable = Boolean(
             expandableAttribute &&
             Array.isArray(row[expandableAttribute]) &&
             row[expandableAttribute].length > 0,
         );
+
+        const { ariaLevel, ariaPosInSet, ariaRowIndex, ariaSetSize } =
+            getDatasetMetadata(row);
+        const rowIndex = ariaRowIndex + 1; // +1 to include header row
         const isExpanded = isExpandable && expandedKeys.has(key);
 
-        // +2 since header row has rowindex 1.
-        const rowIndex = rowIndexes.indexOf(key) + 2;
-
-        array.push({
+        let metarow: MetaRow<T> = {
             key,
             row,
             rowIndex,
-            level: expandableAttribute ? level : undefined,
             isExpandable,
             isExpanded,
-        });
+        };
+
+        if (expandableAttribute) {
+            metarow = {
+                level: ariaLevel,
+                posinset: ariaPosInSet,
+                setsize: ariaSetSize,
+                ...metarow,
+            };
+        }
+
+        array.push(metarow);
 
         return isExpanded;
     });
