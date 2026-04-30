@@ -29,9 +29,11 @@ Med komponenttester testar vi:
 
 - enskilda komponenter
 - interaktion med komponenten.
+- visuella tester (screenshot test)
 
 Komponenttester körs i Chrome med Cypress och där testar vi komponenter i isolation.
 Vi interagerar med komponenten på samma sätt som en konsument implementerat ett use-case och på ett sätt som en slutkund interagerat med.
+För komponenter använder vi oss av samma pageobject som konsumenter, vid behov kompletterar vi med interna pageobject.
 Styrkan i komponenttester ligger i att en riktig browser kör testfallen och att Cypress är bra på att hantera att vänta på cykler från exempelvis Vue.js.
 Svagheten ligger i att det är svårare att mocka omvärlden och lockande att skriva tester som är beroende av många andra komponenter (ej isolerade tester).
 
@@ -304,7 +306,8 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 - [ ] Enhetstest för propar?
 - [ ] Enhetstest för event?
 - [ ] Enhetstest för HTML-Validate?
-- [ ] Component tests för interaktion med komponent?
+- [ ] Komponenttest för interaktion med komponent?
+- [ ] Visuellt test genom komponenttest (screenshot test)?
 - [ ] Cypresstest för exempel i dokumentation?
 - [ ] Pageobject?
 
@@ -486,15 +489,11 @@ it("noisy test", () => {
 Undvik `console.log = jest.fn()` då det gör det svårare att återställa mellan testfall.
 Är du inte försiktig när du mockar `console.log` försvårar du för andra som försöker använda `console.log` och du kan dölja riktiga fel som skrivs ut i console.
 
-### Följ best practice för jest
+## Test av exempel
 
-Länk
+### Vi skriver Cypress test för varje körbart exempel
 
-## Komponenttester
-
-## E2E tester
-
-### Vi skriver ett E2E cypress test för varje körbart exempel
+Vi implementerar ett E2E‑test för varje exempel för att säkerställa att det laddas korrekt. Dessutom skall enkla komponenttester implementeras för att validera de grundläggande funktionerna.
 
 Motivering: då exempel är en del av det vi levererar till konsumenter vill vi att de alltid ska vara i ett fungerande skick och inte utdaterade.
 
