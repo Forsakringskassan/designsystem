@@ -1,4 +1,3 @@
-import { isSet } from "@fkui/logic";
 import { type Dataset } from "../../utils";
 
 function includesAllSearchTerms(
@@ -9,8 +8,8 @@ function includesAllSearchTerms(
     const values = filterAttributes
         .map((it) => {
             const value = item[it];
-            return isSet(value)
-                ? value.toString().toLocaleLowerCase()
+            return typeof value === "string" || typeof value === "number"
+                ? String(value).toLocaleLowerCase()
                 : undefined;
         })
         .filter(Boolean);

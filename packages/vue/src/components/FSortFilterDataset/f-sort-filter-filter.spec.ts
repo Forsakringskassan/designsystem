@@ -26,3 +26,29 @@ it.each`
     const result = filter(data, ["text", "year"], searchString);
     expect(toString(result)).toEqual(expected);
 });
+
+it("should ignore object values when filtering", () => {
+    const nestedData = [
+        {
+            text: "Äpple",
+            nested: [
+                {
+                    text: "En god frukt",
+                },
+            ],
+        },
+        {
+            text: "Citron",
+            nested: [],
+        },
+    ];
+
+    const result = filter(nestedData, ["text", "nested"], "c");
+
+    expect(result).toEqual([
+        {
+            text: "Citron",
+            nested: [],
+        },
+    ]);
+});
