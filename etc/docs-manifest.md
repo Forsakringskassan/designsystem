@@ -72,10 +72,7 @@ components/table-and-list/fcruddataset.html
 components/table-and-list/flist.html
 components/table-and-list/fsortfilterdataset.html
 components/table-and-list/table.html
-components/table-and-list/table/action-button-link-code.html
 components/table-and-list/table/action-button-link.html
-components/table-and-list/table/bulk-operation-code.html
-components/table-and-list/table/bulk-operation.html
 components/table-and-list/table/code.html
 components/table-and-list/table/column-types/anchor.html
 components/table-and-list/table/column-types/button.html

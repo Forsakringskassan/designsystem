@@ -2,7 +2,7 @@
 title: Tabell
 short-title: Om tabell
 name: FTable
-status: Draft
+status: Produktionsklar
 layout: component
 sortorder: 1
 component:
@@ -106,7 +106,6 @@ Tabellen stödjer ett antal funktioner och kan låta användaren
 - {@link sort-filter sortera och filtrera innehåll}
 - {@link expand-rows expandera rader}
 - {@link select-rows välja en eller flera rader}
-- {@link bulk-operation utföra bulkoperationer}
 - {@link table-paginate bläddra mellan sidor (paginering)}
 - {@link edit redigera innehåll}
 - {@link create-delete-rows lägga till och ta bort rader}

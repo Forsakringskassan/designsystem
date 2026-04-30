@@ -9,9 +9,6 @@ search:
 
 Tabellen kan ha åtgärdsknappar för att utföra en operation på en rad som till exempel ta bort, ändra eller visa mer information.
 Det går också att placera länkar i tabellen.
-Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig.
-Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis som förklarar vilken rad som påverkas).
-Om du behöver förtydliga sammanhanget för användare med skärmläsare kan du använda en sr-only för etiketten.
 
 ## Kontextmeny
 
@@ -19,4 +16,8 @@ Kontextmeny används för att visa åtgärder för en tabellrad och används ist
 
 ## Kod
 
-{@link action-button-link-code Läs om hur du sätter upp åtgärdsknappar och länkar i tabell.}
+{@link column-type-button Läs mer om hur du sätter upp kolumntyp knapp `button`}.
+
+{@link column-type-anchor Läs mer om hur du sätter upp kolumntyp länk `anchor`}.
+
+{@link column-type-anchor Läs mer om hur du sätter upp kolumntyp kontextmeny `menu`}.

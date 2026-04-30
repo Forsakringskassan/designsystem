@@ -11,7 +11,7 @@ redirect_from:
 
 ## Version 6.44.0
 
-2026-04-29
+2026-04-30
 
 ### Ny tabellkomponent
 
@@ -32,6 +32,13 @@ Vanligtvis sker detta tidigast ett år efter deprekering.
 {@link FTable Läs mer om nya tabellkomponenten.}
 
 {@link releases Läs om releaser och deprekering.}
+
+### Datamängdsorteraren
+
+Vi har ändrat beteendet för datamängdsorteraren från aktiv till lat.
+Om innehållet i en sorterad lista/tabell redigeras (exempelvis att användaren redigerar en rad) uppdateras inte sorteringsordningen i listan/tabellen.
+Användaren behöver aktivt sortera om listan/tabellen.
+Nya rader läggs till sist oavsett sorteringsordning. Användaren behöver även här aktivt sortera om listan/tabellen.
 
 ## Version 6.40.0
 
