@@ -48,7 +48,7 @@
     "memfs": "4.57.2",
     "postcss": "8.5.12",
     "stream-buffers": "3.0.3",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   },
   "peerDependencies": {
     "postcss": "^8.0.0"
