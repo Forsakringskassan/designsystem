@@ -2,13 +2,13 @@ import { type InjectionKey, inject } from "vue";
 
 /**
  * @internal
- * @since %version%
+ * @since v6.44.0
  */
 export type SortFilterDatasetEventCallback = () => void;
 
 /**
  * @internal
- * @since %version%
+ * @since v6.44.0
  */
 export interface SortFilterDatasetEvents {
     onFilter(this: void, callback: SortFilterDatasetEventCallback): void;
@@ -18,7 +18,7 @@ export interface SortFilterDatasetEvents {
 
 /**
  * @internal
- * @since %version%
+ * @since v6.44.0
  */
 export const sortFilterDatasetEventsKey =
     Symbol() as InjectionKey<SortFilterDatasetEvents>;
@@ -27,7 +27,7 @@ export const sortFilterDatasetEventsKey =
  * Injects `SortFilterDatasetEvents`.
  *
  * @internal
- * @since %version%
+ * @since v6.44.0
  */
 export function useSortFilterDatasetEvents(): SortFilterDatasetEvents {
     const defaultEvents: SortFilterDatasetEvents = {

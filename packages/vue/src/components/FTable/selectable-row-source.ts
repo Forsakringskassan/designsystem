@@ -2,7 +2,7 @@ import { type InjectionKey, type Ref, inject, provide, ref } from "vue";
 
 /**
  * @internal
- * @since %version%
+ * @since v6.44.0
  */
 export interface SelectableRowSource {
     rows: Readonly<Ref<unknown[]>>;
@@ -11,7 +11,7 @@ export interface SelectableRowSource {
 
 /**
  * @internal
- * @since %version%
+ * @since v6.44.0
  */
 export interface SelectableRowSourceProvider {
     rows: Readonly<Ref<unknown[]>>;
@@ -28,7 +28,7 @@ const selectableRowsProvidedKey = Symbol(
  * Injects `SelectableRowSource`.
  *
  * @internal
- * @since %version%
+ * @since v6.44.0
  */
 export function useSelectableRowSource(): SelectableRowSource {
     const rows = inject(selectableRowsKey, ref([]));

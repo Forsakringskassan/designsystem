@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 6.44.0 (2026-04-30)
+
+### Features
+
+* **@fkui/vue-labs, @fkui/vue:** add f-table component to fkui-vue (refs SFKUI-6500) 77a632a
+* **@fkui/vue:** add `v-model` for `FPaginateDataset` (refs SFKUI-6500) 2079b35
+* **@fkui/vue:** remove `bullets` prop from `FErrorList` (refs SFKUI-7294) 0a12a8e
+* **@fkui/vue:** remove `errorListBullets` prop from `FValidationForm` (refs SFKUI-7294) 47dddb8
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** wrong position for close button in `FLayoutRightPanel` (fixes SFKUI-7839) b24dff4
+* **@fkui/design:** wizard step new font size  (refs SFKUI-7817) 3beb9cb
+* **@fkui/vue:** ignore object values in sort filter dataset (fixes SFKUI-7863) ff93697
+* **@fkui/vue:** run transition functions in `FExpandablePanel`  mounted (refs SFKUI-7689) 893813e
+* **deps:** raised the allowed version of sass to 1.92 (refs SFKUI-7836) 3d18ccc
+* **deps:** update dependency cssnano to v7.1.7 27e7023
+* **deps:** update dependency i18next to v26.0.7 22205c3
+* **deps:** update dependency i18next to v26.0.8 bb5dfcb
+* **deps:** update vue monorepo to v3.5.33 9b5d464
+
 ## 6.43.1 (2026-04-22)
 
 ### Bug Fixes

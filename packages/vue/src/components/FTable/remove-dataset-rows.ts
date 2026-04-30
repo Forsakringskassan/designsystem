@@ -11,7 +11,7 @@ import {
  * Note: The array is mutated.
  *
  * @public
- * @since %version%
+ * @since v6.44.0
  * @param dataset - The row array
  * @param rows - The row(s) to remove (expected to exist in the dataset)
  */
