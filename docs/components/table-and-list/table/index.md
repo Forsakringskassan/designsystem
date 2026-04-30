@@ -19,7 +19,7 @@ search:
         - kolumntyper
 ---
 
-```import live-example
+```import
 FTableExample.vue
 ```
 

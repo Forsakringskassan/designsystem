@@ -14,7 +14,7 @@ search:
 
 Den här sidan innehåller information om hur du sätter upp komponenten tabell i din applikation.
 
-```import live-example
+```import
 FTableExample.vue
 ```
 
