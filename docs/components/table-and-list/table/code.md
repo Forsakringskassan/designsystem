@@ -524,19 +524,7 @@ function bananaRowClass(row: Row): string | undefined {
 <f-table :columns :rows :rowClass="bananaRowClass" key-attribute="id"></f-table>
 ```
 
-## Radid
-
-Tabellen behöver kunna särskilja olika rader, och om inte nyckelattribut (`keyAttribute`) anges så hanterar tabellen det själv.
-
-Om du anger `keyAttribute`, måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.
-En fördel med att ange attributet är att tabellen känner igen raden även om dess instans ersätts.
-Detta är oftast aktuellt i samband med redigering av data.
-
-```html static
-<f-table :columns :rows key-attribute="id"></f-table>
-```
-
-<!-- TODO: här refererar vi till expanderbara rader och redigering av data utan att ha nämnt det tidigare. -->
+<!-- TODO: Radid stycke som förklarar när det behövs. Prestanda, behålla valideringsstate. -->
 
 ## Tom tabell
 
