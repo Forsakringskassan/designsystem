@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-a4a212.json"
+            href="../../search-data-fe3eca.json"
             as="fetch"
             crossorigin
-            integrity="sha384-ZO1naBgIPdxBJ4SGr0OCPT4zvE5GnxULPRoNSu63ggsQWOESqSVvAHu/cHXFR9AX"
+            integrity="sha384-M1nA19lygNvjsuciHnV9OG/tYw2KYm62nA5LAb7qfA7In7Cv0QoavTUX3Q0Mh+q8"
             id="search-data"
         />
     </head>
@@ -485,7 +485,7 @@
             data-path="gettingstarted/migration/migrating-to-ftable.html"
             
         >
-            FTable migreringsguide
+            Ftable
         </a>
     </li><li class="link ">
         <a
@@ -592,7 +592,7 @@
                                 
                                 <li><a href="#formattering_flyttas_in_i_kolumntypen">Formattering flyttas in i kolumntypen</a></li>
                                 
-                                <li><a href="#editering_och_validering_ligger_i_kolumnen">Editering och validering ligger i kolumnen</a></li>
+                                <li><a href="#redigering_och_validering_ligger_i_kolumnen">Redigering och validering ligger i kolumnen</a></li>
                                 
                                 <li><a href="#expanderbart_innehall">Expanderbart innehåll</a></li>
                                 
@@ -726,39 +726,12 @@
             <p class="docs-paragraph">Om kolumnen bara ska läsa och skriva direkt mot ett fält på raden räcker <code>key</code>.
 Till exempel innebär <code>key: &quot;name&quot;</code> att kolumnen läser från och skriver till <code>row.name</code>.
 <code>key</code> är standardfallet. Om kolumnen bygger på ett fält i raden är <code>key</code> normalt det tydligaste valet, även när du senare behöver komplettera med annan logik.
-Om du behöver styra läsning eller skrivning själv kan du använda <code>value</code> och <code>update</code>.</p>
-
-                <div
-                    id="example-f14865"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="typescript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
-    {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Val&quot;</span>,
-        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-title function_">label</span>(<span class="hljs-params">row</span>) {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">`Val för rad <span class="hljs-subst">${row.id}</span>`</span>;
-        },
-        <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
-            <span class="hljs-keyword">return</span> row.<span class="hljs-property">item</span>;
-        },
-        <span class="hljs-title function_">update</span>(<span class="hljs-params">row, <span class="hljs-attr">newValue</span>: <span class="hljs-built_in">string</span></span>) {
-            row.<span class="hljs-property">item</span> = newValue;
-        },
-    },
-]);
-</code></pre>
-                </div>
-            <p class="docs-paragraph">Använd <code>value</code> och <code>update</code> när visning eller uppdatering inte är en enkel 1:1 koppling mot ett fält, till exempel vid mappning eller annan speciallogik.</p>
+Om du behöver styra läsning eller skrivning på ett annat sätt finns det stöd för det i <code>FTable</code>.</p>
+<p class="docs-paragraph">Läs mer i dokumentationen om <a href="../../components/table-and-list/table/code.html#mappa_data_till_kolumner">Mappa data till kolumner</a>.</p>
 <h2 id="formattering_flyttas_in_i_kolumntypen" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#formattering_flyttas_in_i_kolumntypen">Formattering flyttas in i kolumntypen</a></h2><p class="docs-paragraph">Om du tidigare definierade datum i template:</p>
 
                 <div
-                    id="example-70040b"
+                    id="example-214dbf"
                     class="code-preview code-preview--default"
                     
                     
@@ -778,7 +751,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
             <p class="docs-paragraph">Om du tidigare använde en numerisk kolumn:</p>
 
                 <div
-                    id="example-a91ee2"
+                    id="example-85cba4"
                     class="code-preview code-preview--default"
                     
                     
@@ -796,10 +769,10 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 </code></pre>
                 </div>
             <p class="docs-paragraph">Läs mer i dokumentationen om <a href="../../components/table-and-list/table/column-types">kolumntyper</a>.</p>
-<h2 id="editering_och_validering_ligger_i_kolumnen" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#editering_och_validering_ligger_i_kolumnen">Editering och validering ligger i kolumnen</a></h2><p class="docs-paragraph">I <code>FTable</code> definieras redigering och validering i kolumnkonfigurationen.</p>
+<h2 id="redigering_och_validering_ligger_i_kolumnen" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#redigering_och_validering_ligger_i_kolumnen">Redigering och validering ligger i kolumnen</a></h2><p class="docs-paragraph">I <code>FTable</code> definieras redigering och validering i kolumnkonfigurationen.</p>
 
                 <div
-                    id="example-dc29d5"
+                    id="example-84751c"
                     class="code-preview code-preview--default"
                     
                     
@@ -834,7 +807,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <h2 id="expanderbart_innehall" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#expanderbart_innehall">Expanderbart innehåll</a></h2><p class="docs-paragraph">I <code>FInteractiveTable</code> användes <code>expandable-attribute</code> för att ange vilket attribut som innehöll expanderbart innehåll.</p>
 
                 <div
-                    id="example-5caa87"
+                    id="example-9c0ae0"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -859,7 +832,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
             <p class="docs-paragraph">I <code>FTable</code> skapas motsvarande <code>rows</code> med <code>useDatasetRef(...)</code>, där det nästlade attributet anges som andra parameter.</p>
 
                 <div
-                    id="example-bcdb20"
+                    id="example-03ae82"
                     class="code-preview code-preview--default"
                     
                     
@@ -880,7 +853,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
             <p class="docs-paragraph">Det datasetet skickas sedan in som <code>rows</code> till <code>FTable</code>.</p>
 
                 <div
-                    id="example-460d92"
+                    id="example-81bc63"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -897,7 +870,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <p class="docs-paragraph">Både <code>FInteractiveTable</code> och <code>FTable</code> använder slotten <code>#expandable</code>, men slot-parametern byter namn vid migrering:</p>
 
                 <div
-                    id="example-08958e"
+                    id="example-f515dd"
                     class="code-preview code-preview--default"
                     
                     
@@ -922,7 +895,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <p class="docs-paragraph">Det som ändras är <code>v-model</code> för valbara rader.</p>
 
                 <div
-                    id="example-6f653a"
+                    id="example-b687fd"
                     class="code-preview code-preview--default"
                     
                     
@@ -935,7 +908,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                 </div>
             <h3 id="enkelval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#enkelval">Enkelval</a></h3>
                 <div
-                    id="example-2af70a"
+                    id="example-97dfd2"
                     class="code-preview code-preview--default"
                     
                     
@@ -963,7 +936,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
                 </div>
             <h3 id="flerval" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#flerval">Flerval</a></h3>
                 <div
-                    id="example-594f32"
+                    id="example-cfb29e"
                     class="code-preview code-preview--default"
                     
                     
@@ -996,7 +969,7 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
 <p class="docs-paragraph">Läs mer i dokumentationen om <a href="../../components/table-and-list/table/select-rows.html">valbara rader</a>.</p>
 <h2 id="button" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#button">Button</a></h2>
                 <div
-                    id="example-7af217"
+                    id="example-6b158d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1076,9 +1049,9 @@ Om du behöver styra läsning eller skrivning själv kan du använda <code>value
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/ff93697d2e8010566db4a15e2616d26a1766b6dc">ff93697</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/51cd191dee75056d305c8075115b91bfefb139d3">51cd191</a>)<br />
         
-        2026-04-30 10:40
+        2026-04-30 12:32
 </div>
 <div class="toolbar__item">
     <form id="version">
