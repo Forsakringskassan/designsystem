@@ -565,6 +565,18 @@
     "modalfunktion",
     "bekräftelsemodal",
     "options API",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -600,18 +612,6 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -2091,6 +2091,38 @@
       ]
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -2208,38 +2240,6 @@
       "title": "findElementFromVueRef",
       "terms": [
         "DOM-funktion"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
       ]
     },
     {
@@ -3389,49 +3389,49 @@
     "564": 155,
     "565": 156,
     "566": 156,
-    "567": 157,
+    "567": 156,
     "568": 157,
-    "569": 158,
-    "570": 158,
-    "571": 159,
-    "572": 159,
-    "573": 160,
-    "574": 160,
-    "575": 161,
-    "576": 161,
-    "577": 162,
-    "578": 162,
-    "579": 163,
-    "580": 163,
-    "581": 164,
-    "582": 164,
-    "583": 165,
-    "584": 165,
-    "585": 166,
-    "586": 166,
-    "587": 167,
-    "588": 167,
-    "589": 168,
-    "590": 168,
-    "591": 169,
-    "592": 169,
-    "593": 169,
-    "594": 170,
-    "595": 170,
-    "596": 171,
-    "597": 171,
-    "598": 172,
-    "599": 172,
-    "600": 173,
-    "601": 173,
-    "602": 173,
-    "603": 174,
-    "604": 174,
-    "605": 174,
-    "606": 175,
-    "607": 175,
+    "569": 157,
+    "570": 157,
+    "571": 158,
+    "572": 158,
+    "573": 158,
+    "574": 159,
+    "575": 159,
+    "576": 159,
+    "577": 160,
+    "578": 160,
+    "579": 161,
+    "580": 161,
+    "581": 162,
+    "582": 162,
+    "583": 163,
+    "584": 163,
+    "585": 164,
+    "586": 164,
+    "587": 165,
+    "588": 165,
+    "589": 166,
+    "590": 166,
+    "591": 167,
+    "592": 167,
+    "593": 168,
+    "594": 168,
+    "595": 169,
+    "596": 169,
+    "597": 170,
+    "598": 170,
+    "599": 171,
+    "600": 171,
+    "601": 172,
+    "602": 172,
+    "603": 173,
+    "604": 173,
+    "605": 173,
+    "606": 174,
+    "607": 174,
     "608": 175,
-    "609": 176,
+    "609": 175,
     "610": 176,
     "611": 176,
     "612": 177,
