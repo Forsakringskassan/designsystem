@@ -161,6 +161,20 @@
     "Fieldset migreringsguide",
     "FCrudButton migreringsguide",
     "FCrudButton",
+    "På gång",
+    "pågående arbete",
+    "planerat arbete",
+    "framtid",
+    "Releaser",
+    "deprekering",
+    "borttagna komponenter",
+    "Releaseanteckningar",
+    "version",
+    "Designsystemet",
+    "status",
+    "produktionsklar",
+    "beta",
+    "experimentell",
     "Testverktyg",
     "testfall",
     "jest",
@@ -196,20 +210,16 @@
     "Riktlinjer för kod",
     "Checklista vid publicering",
     "personuppgifter",
-    "På gång",
-    "pågående arbete",
-    "planerat arbete",
-    "framtid",
-    "Releaser",
-    "deprekering",
-    "borttagna komponenter",
-    "Releaseanteckningar",
-    "version",
-    "Designsystemet",
-    "status",
-    "produktionsklar",
-    "beta",
-    "experimentell",
+    "EventBus",
+    "EventBus",
+    "services",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -223,16 +233,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
-    "focus-indicator() mixin",
-    "fokus",
-    "fokusindikator",
-    "sass",
-    "densify() function",
-    "densitet",
-    "sass",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -279,12 +279,6 @@
     "XRelativeTime",
     "XFileDragdrop",
     "XFileDragdrop",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -292,6 +286,12 @@
     "h-display-flex",
     "Skärmläsare",
     "NVDA",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "useResize() composable",
     "justerbar yta",
     "useModal() composable",
@@ -565,6 +565,18 @@
     "modalfunktion",
     "bekräftelsemodal",
     "options API",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -600,18 +612,6 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -689,17 +689,17 @@
     "FProgressbarPageObject: value() method",
     "FProgressbarPageObject: progressStatus() method",
     "FProgressbarPageObject: el() method",
+    "FLabelPageObject: FLabelPageObject() constructor",
+    "FLabelPageObject: formatDescription() method",
+    "FLabelPageObject: errorMessage() method",
+    "FLabelPageObject: errorIcon() method",
+    "FLabelPageObject: description() method",
     "FMinimizablePanelPageObject: constructor",
     "FMinimizablePanelPageObject: toggleButton() method",
     "FMinimizablePanelPageObject: header() method",
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
-    "FLabelPageObject: FLabelPageObject() constructor",
-    "FLabelPageObject: formatDescription() method",
-    "FLabelPageObject: errorMessage() method",
-    "FLabelPageObject: errorIcon() method",
-    "FLabelPageObject: description() method",
     "FInteractiveTablePageObject: header() method",
     "FInteractiveTablePageObject: checkbox() method",
     "FInteractiveTablePageObject: cell() method",
@@ -1153,6 +1153,40 @@
       ]
     },
     {
+      "url": "gettingstarted/about/roadmap.html",
+      "title": "På gång",
+      "terms": [
+        "pågående arbete",
+        "planerat arbete",
+        "framtid"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/releases.html",
+      "title": "Releaser",
+      "terms": [
+        "deprekering",
+        "borttagna komponenter"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/release-notes.html",
+      "title": "Releaseanteckningar",
+      "terms": [
+        "version"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/index.html",
+      "title": "Designsystemet",
+      "terms": [
+        "status",
+        "produktionsklar",
+        "beta",
+        "experimentell"
+      ]
+    },
+    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": [
@@ -1216,37 +1250,28 @@
       ]
     },
     {
-      "url": "gettingstarted/about/roadmap.html",
-      "title": "På gång",
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
       "terms": [
-        "pågående arbete",
-        "planerat arbete",
-        "framtid"
+        "services",
+        "EventBus"
       ]
     },
     {
-      "url": "gettingstarted/about/releases.html",
-      "title": "Releaser",
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
       "terms": [
-        "deprekering",
-        "borttagna komponenter"
+        "fokus",
+        "fokusindikator",
+        "sass"
       ]
     },
     {
-      "url": "gettingstarted/about/release-notes.html",
-      "title": "Releaseanteckningar",
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
       "terms": [
-        "version"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/index.html",
-      "title": "Designsystemet",
-      "terms": [
-        "status",
-        "produktionsklar",
-        "beta",
-        "experimentell"
+        "densitet",
+        "sass"
       ]
     },
     {
@@ -1280,31 +1305,6 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": [
-        "fokus",
-        "fokusindikator",
-        "sass"
-      ]
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": [
-        "densitet",
-        "sass"
       ]
     },
     {
@@ -1403,6 +1403,23 @@
       ]
     },
     {
+      "url": "functions/helpers/index.html",
+      "title": "Hjälpklasser",
+      "terms": [
+        "helpers",
+        "h-no-margin",
+        "h-root-size",
+        "h-display-flex"
+      ]
+    },
+    {
+      "url": "functions/helpers/accessibility.html",
+      "title": "Skärmläsare",
+      "terms": [
+        "NVDA"
+      ]
+    },
+    {
       "url": "functions/i18next-translate/i18next.html",
       "title": "i18next",
       "terms": [
@@ -1421,23 +1438,6 @@
       "title": "I18nextProvider",
       "terms": [
         "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/helpers/index.html",
-      "title": "Hjälpklasser",
-      "terms": [
-        "helpers",
-        "h-no-margin",
-        "h-root-size",
-        "h-display-flex"
-      ]
-    },
-    {
-      "url": "functions/helpers/accessibility.html",
-      "title": "Skärmläsare",
-      "terms": [
-        "NVDA"
       ]
     },
     {
@@ -2091,6 +2091,38 @@
       ]
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -2208,38 +2240,6 @@
       "title": "findElementFromVueRef",
       "terms": [
         "DOM-funktion"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
       ]
     },
     {
@@ -2512,6 +2512,31 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
+      "title": "FLabelPageObject: FLabelPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
+      "title": "FLabelPageObject: formatDescription() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
+      "title": "FLabelPageObject: errorMessage() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
+      "title": "FLabelPageObject: errorIcon() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
+      "title": "FLabelPageObject: description() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html",
       "title": "FMinimizablePanelPageObject: constructor",
       "terms": []
@@ -2539,31 +2564,6 @@
     {
       "url": "functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html",
       "title": "FMinimizablePanelPageObject: content() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
-      "title": "FLabelPageObject: FLabelPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/format-description.html",
-      "title": "FLabelPageObject: formatDescription() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/error-message.html",
-      "title": "FLabelPageObject: errorMessage() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/error-icon.html",
-      "title": "FLabelPageObject: errorIcon() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
-      "title": "FLabelPageObject: description() method",
       "terms": []
     },
     {
@@ -2987,72 +2987,72 @@
     "162": 45,
     "163": 45,
     "164": 45,
-    "165": 45,
-    "166": 45,
-    "167": 45,
-    "168": 45,
-    "169": 45,
-    "170": 45,
-    "171": 45,
-    "172": 45,
-    "173": 45,
-    "174": 45,
-    "175": 46,
-    "176": 46,
-    "177": 46,
-    "178": 46,
-    "179": 46,
-    "180": 46,
-    "181": 46,
-    "182": 46,
-    "183": 46,
-    "184": 47,
-    "185": 47,
-    "186": 47,
-    "187": 47,
-    "188": 47,
-    "189": 47,
-    "190": 47,
-    "191": 47,
-    "192": 48,
-    "193": 49,
+    "165": 46,
+    "166": 46,
+    "167": 46,
+    "168": 47,
+    "169": 47,
+    "170": 48,
+    "171": 48,
+    "172": 48,
+    "173": 48,
+    "174": 48,
+    "175": 49,
+    "176": 49,
+    "177": 49,
+    "178": 49,
+    "179": 49,
+    "180": 49,
+    "181": 49,
+    "182": 49,
+    "183": 49,
+    "184": 49,
+    "185": 49,
+    "186": 49,
+    "187": 49,
+    "188": 49,
+    "189": 50,
+    "190": 50,
+    "191": 50,
+    "192": 50,
+    "193": 50,
     "194": 50,
     "195": 50,
-    "196": 51,
-    "197": 51,
+    "196": 50,
+    "197": 50,
     "198": 51,
     "199": 51,
-    "200": 52,
-    "201": 52,
-    "202": 52,
-    "203": 53,
-    "204": 53,
-    "205": 54,
-    "206": 54,
-    "207": 54,
+    "200": 51,
+    "201": 51,
+    "202": 51,
+    "203": 51,
+    "204": 51,
+    "205": 51,
+    "206": 52,
+    "207": 53,
     "208": 54,
     "209": 54,
     "210": 55,
     "211": 55,
     "212": 55,
-    "213": 55,
+    "213": 56,
     "214": 56,
     "215": 56,
     "216": 56,
-    "217": 56,
+    "217": 57,
     "218": 57,
     "219": 57,
-    "220": 57,
+    "220": 58,
     "221": 58,
     "222": 58,
-    "223": 59,
+    "223": 58,
     "224": 59,
     "225": 59,
-    "226": 60,
-    "227": 60,
+    "226": 59,
+    "227": 59,
     "228": 60,
     "229": 60,
-    "230": 61,
+    "230": 60,
     "231": 61,
     "232": 61,
     "233": 62,
@@ -3103,13 +3103,13 @@
     "278": 71,
     "279": 72,
     "280": 72,
-    "281": 73,
-    "282": 73,
-    "283": 74,
-    "284": 74,
-    "285": 75,
-    "286": 75,
-    "287": 75,
+    "281": 72,
+    "282": 72,
+    "283": 72,
+    "284": 73,
+    "285": 73,
+    "286": 74,
+    "287": 74,
     "288": 75,
     "289": 75,
     "290": 76,
@@ -3389,49 +3389,49 @@
     "564": 155,
     "565": 156,
     "566": 156,
-    "567": 157,
+    "567": 156,
     "568": 157,
-    "569": 158,
-    "570": 158,
-    "571": 159,
-    "572": 159,
-    "573": 160,
-    "574": 160,
-    "575": 161,
-    "576": 161,
-    "577": 162,
-    "578": 162,
-    "579": 163,
-    "580": 163,
-    "581": 164,
-    "582": 164,
-    "583": 165,
-    "584": 165,
-    "585": 166,
-    "586": 166,
-    "587": 167,
-    "588": 167,
-    "589": 168,
-    "590": 168,
-    "591": 169,
-    "592": 169,
-    "593": 169,
-    "594": 170,
-    "595": 170,
-    "596": 171,
-    "597": 171,
-    "598": 172,
-    "599": 172,
-    "600": 173,
-    "601": 173,
-    "602": 173,
-    "603": 174,
-    "604": 174,
-    "605": 174,
-    "606": 175,
-    "607": 175,
+    "569": 157,
+    "570": 157,
+    "571": 158,
+    "572": 158,
+    "573": 158,
+    "574": 159,
+    "575": 159,
+    "576": 159,
+    "577": 160,
+    "578": 160,
+    "579": 161,
+    "580": 161,
+    "581": 162,
+    "582": 162,
+    "583": 163,
+    "584": 163,
+    "585": 164,
+    "586": 164,
+    "587": 165,
+    "588": 165,
+    "589": 166,
+    "590": 166,
+    "591": 167,
+    "592": 167,
+    "593": 168,
+    "594": 168,
+    "595": 169,
+    "596": 169,
+    "597": 170,
+    "598": 170,
+    "599": 171,
+    "600": 171,
+    "601": 172,
+    "602": 172,
+    "603": 173,
+    "604": 173,
+    "605": 173,
+    "606": 174,
+    "607": 174,
     "608": 175,
-    "609": 176,
+    "609": 175,
     "610": 176,
     "611": 176,
     "612": 177,
