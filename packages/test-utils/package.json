@@ -64,7 +64,7 @@
   },
   "devDependencies": {
     "@vue/server-renderer": "3.5.33",
-    "@vue/test-utils": "2.4.9",
+    "@vue/test-utils": "2.4.10",
     "esbuild": "0.28.0",
     "jest-environment-jsdom": "29.7.0",
     "vue": "3.5.33"
