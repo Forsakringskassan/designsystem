@@ -56,26 +56,9 @@ const columns = defineTableColumns<typeof row>([
 
 ## Parametrar
 
-**`type:`** `"menu"`
-: Kolumnens typ.
-
-**`header:`** `string | Readonly<Ref<string>>`
-: Kolumnrubrik som visas i thead.
-
-**`text:`** `(row: T): string | null => {}`
-: Skärmläsartext för menyknappen.
-
-**`actions:`** `Array<{ label: string, icon?: string, onClick?(row: T): void }>` {@optional}
-: Lista med menyval.
-
-**`description:`** `string | Readonly<Ref<string | null>>` {@optional}
-: Formatbeskrivning.
-
-**`size:`** `TableColumnSize | Readonly<Ref<TableColumnSize | null>>` {@optional}
-: Hur kolumnens bredd skalas.
-
-**`enabled:`** `boolean | Readonly<Ref<boolean>>` {@optional}
-: Om kolumnen är aktiv.
+::: api properties
+interface:TableColumnMenu
+:::
 
 ## Relaterat
 

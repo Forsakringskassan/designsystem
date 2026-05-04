@@ -13,8 +13,10 @@ export interface TableColumnCheckbox<
     T,
     K extends keyof T,
 > extends TableColumnBase {
+    /** Column type */
     type: "checkbox";
     key?: K;
+    /** Screenreader text */
     label?(this: void, row: T): string;
     checked?(this: void, row: T): boolean;
     update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
