@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../../../search-data-0e5416.json"
+            href="../../../../../search-data-aa55af.json"
             as="fetch"
             crossorigin
-            integrity="sha384-oW2deEois/pkG7WGfr6XLZaw3Evv+2ZhetgqiGukJyTVIALYSxxJNOyHPHB5G4WN"
+            integrity="sha384-rej3xoLa5NXi9mb0svbqevqDTwjH58rrLtRCfk53zv3tCF+MO5FTg4A2ffxnchhb"
             id="search-data"
         />
     </head>
@@ -1587,23 +1587,82 @@ Kontonummer följer samma validering och parsning som det <a href="../../../../i
 ]);
 </code></pre>
                 </div>
-            <h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2><dl>
-<dt><strong><code>type:</code></strong> <code>&quot;text:bankAccountNumber&quot;</code></dt>
-<dd>Kolumnens typ.</dd>
-<dt><strong><code>header:</code></strong> <code>string | Readonly&lt;Ref&lt;string&gt;&gt;</code></dt>
-<dd>Kolumnrubrik.</dd>
-<dt><strong><code>key:</code></strong> <code>K</code></dt>
-<dd>Fält i raden med kontonummer.</dd>
-<dt><strong><code>editable:</code></strong> <code>boolean | ((row: T) =&gt; boolean)</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Om cellen är redigerbar.</dd>
-<dt><strong><code>description:</code></strong> <code>string | Readonly&lt;Ref&lt;string | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Formatbeskrivning.</dd>
-<dt><strong><code>size:</code></strong> <code>TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Hur kolumnens bredd skalas.</dd>
-<dt><strong><code>enabled:</code></strong> <code>boolean | Readonly&lt;Ref&lt;boolean&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Om kolumnen är aktiv.</dd>
+            <h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2> <div><dl>
+<dt><code>description?: string | Readonly&lt;Ref&lt;string | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Format description (shown in header)</p>
+</dd>
+<dt><code>enabled?: MaybeRef&lt;boolean&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">When enabled, the column is rendered. Set to <code>false</code> to hide the column and its cells. Default: <code>true</code>.</p>
+</dd>
+<dt><code>header: string | Readonly&lt;Ref&lt;string&gt;&gt;;</code></dt>
+<dd>
+<p class="docs-paragraph">Column header</p>
+</dd>
+<dt><code>size?: TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Column size, can be one of:</p>
+<ul>
+<li><code>&quot;grow&quot;</code>: the column occupies as much space as it can.</li>
+<li><code>&quot;shrink&quot;</code>: the column occupies as little space as it can.</li>
+</ul>
+<p class="docs-paragraph">Default: <code>&quot;grow&quot;</code>.</p>
+</dd>
+<dt><code>sort?: boolean;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">‐</p>
+</dd>
+<dt><code>align?: &quot;left&quot; | &quot;right&quot;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Set the alignment of the cells. Default: <code>&quot;left&quot;</code></p>
+</dd>
+<dt><code>attributes?: Record&lt;string, string | number | boolean | undefined&gt; | ((this: void, row: T) =&gt; Record&lt;string, string | number | boolean | undefined&gt;);</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Arbitrary attributes passed to input field</p>
+</dd>
+<dt><code>editable?: boolean | ((this: void, row: T) =&gt; boolean);</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">When enabled, the cells are editable. Default: <code>false</code></p>
+</dd>
+<dt><code>formatter?(this: void, value: string): string | undefined;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">‐</p>
+</dd>
+<dt><code>key?: K;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">‐</p>
+</dd>
+<dt><code>label?(this: void, row: T): string;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Screenreader text for input field</p>
+</dd>
+<dt><code>parser?(this: void, value: string): string | undefined;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">‐</p>
+</dd>
+<dt><code>tnum?: boolean;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">When enabled, the cells are rendered with tabular numbers</p>
+</dd>
+<dt><code>type: InputTypeText;</code></dt>
+<dd>
+<p class="docs-paragraph">Column type (<code>text</code> or a specialized field such as <code>text:date</code> or <code>text:number</code>)</p>
+</dd>
+<dt><code>update?(this: void, row: T, newValue: string, oldValue: string): void;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">‐</p>
+</dd>
+<dt><code>validation?: ValidatorConfigs;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">‐</p>
+</dd>
+<dt><code>value?(this: void, row: T): string;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">‐</p>
+</dd>
 </dl>
-
+</div> 
 
                     </div>
                 </main>
@@ -1651,9 +1710,9 @@ Kontonummer följer samma validering och parsning som det <a href="../../../../i
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/18970235a3a6e46434525bdf9004fe794bbbdf6d">1897023</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/7cf0cb9e887b510edc5b47585db78d39ee8f11d6">7cf0cb9</a>)<br />
         
-        2026-05-04 14:19
+        2026-05-04 14:45
 </div>
 <div class="toolbar__item">
     <form id="version">
