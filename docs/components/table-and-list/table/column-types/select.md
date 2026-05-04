@@ -39,32 +39,6 @@ const columns = defineTableColumns<Row>([
 
 ## Parametrar
 
-**`type:`** `"select"`
-: Kolumnens typ.
-
-**`header:`** `string | Readonly<Ref<string>>`
-: Kolumnrubrik som visas i thead.
-
-**`options:`** `string[]`
-: Lista med valbara alternativ.
-
-**`key:`** `K` {@optional}
-: Kopplar cellens värde till värde i `T`.
-
-**`selected:`** `(row: T): string => {}` {@optional}
-: Returnerar valt värde för raden.
-
-**`update:`** `(row: T, newValue: string, oldValue: string): void => {}` {@optional}
-: Anropas vid uppdaterat värde.
-
-**`label:`** `(row: T): string => {}` {@optional}
-: Skärmläsartext för dropplistan.
-
-**`description:`** `string | Readonly<Ref<string | null>>` {@optional}
-: Formatbeskrivning.
-
-**`size:`** `TableColumnSize | Readonly<Ref<TableColumnSize | null>>` {@optional}
-: Hur kolumnens bredd skalas.
-
-**`enabled:`** `boolean | Readonly<Ref<boolean>>` {@optional}
-: Om kolumnen är aktiv.
+::: api properties
+interface:TableColumnSelect
+:::

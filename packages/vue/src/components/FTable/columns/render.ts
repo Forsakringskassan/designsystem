@@ -9,6 +9,12 @@ export interface TableColumnRender<
     K extends keyof T = keyof T,
 > extends TableColumnBase {
     key?: K;
+    /**
+     * Render function to render cell contents.
+     *
+     * See [Render Functions](https://vuejs.org/guide/extras/render-function) in
+     * the Vue documentation for details.
+     */
     render(this: void, row: T): VNode | Component;
 }
 

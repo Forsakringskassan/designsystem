@@ -259,50 +259,6 @@ flowchart TD
 
 ## Parametrar
 
-**`type:`** `InputTypeText` eller `InputTypeNumber`
-: Kolumnens typ, till exempel `text`, `text:date`, `text:number`.
-
-**`header:`** `string | Readonly<Ref<string>>`
-: Kolumnrubrik som visas i thead.
-
-**`key:`** `K` {@optional}
-: Kopplar cellens värde till värde i `T`.
-
-**`label:`** `(row: T): string => {}` {@optional}
-: Skärmläsartext för redigerbar cell.
-
-**`value:`** `(row: T): string => {}` {@optional}
-: Läser eller beräknar visningsvärde.
-
-**`formatter:`** `(value: string): string | undefined => {}` {@optional}
-: Formaterar visningsvärde.
-
-**`parser:`** `(value: string): string | undefined => {}` {@optional}
-: Parsar redigerat värde före uppdatering.
-
-**`update:`** `(row: T, newValue: string, oldValue: string): void => {}` {@optional}
-: Egen uppdateringslogik.
-
-**`editable:`** `boolean | ((row: T) => boolean)` {@optional}
-: Om cellen är redigerbar.
-
-**`validation:`** `ValidatorConfigs` {@optional}
-: Konfiguration för validering.
-
-**`align:`** `"left" | "right"` {@optional}
-: Vänster- eller högerjustering.
-
-**`tnum:`** `boolean` {@optional}
-: Tabular figures.
-
-**`attributes:`** `Record<string, string | number | boolean | undefined> | ((row: T) => Record<string, string | number | boolean | undefined>)` {@optional}
-: Attribut för inmatningsfält.
-
-**`description:`** `string | Readonly<Ref<string | null>>` {@optional}
-: Formatbeskrivning.
-
-**`size:`** `TableColumnSize | Readonly<Ref<TableColumnSize | null>>` {@optional}
-: Hur kolumnens bredd skalas.
-
-**`enabled:`** `boolean | Readonly<Ref<boolean>>` {@optional}
-: Om kolumnen är aktiv.
+::: api properties
+interface:TableColumnText
+:::

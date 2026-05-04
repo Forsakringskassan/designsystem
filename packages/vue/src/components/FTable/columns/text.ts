@@ -17,11 +17,19 @@ import {
  * @public
  */
 export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
+    /**
+     * Column type (`text` or a specialized field such as `text:date` or
+     * `text:number`)
+     */
     type: InputTypeText;
     key?: K;
+    /** Screenreader text for input field */
     label?(this: void, row: T): string;
+    /** When enabled, the cells are rendered with tabular numbers */
     tnum?: boolean;
+    /** Set the alignment of the cells. Default: `"left"` */
     align?: "left" | "right";
+    /** Arbitrary attributes passed to input field */
     attributes?:
         | Record<string, string | number | boolean | undefined>
         | ((
@@ -30,6 +38,7 @@ export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
           ) => Record<string, string | number | boolean | undefined>);
     value?(this: void, row: T): string;
     update?(this: void, row: T, newValue: string, oldValue: string): void;
+    /** When enabled, the cells are editable. Default: `false` */
     editable?: boolean | ((this: void, row: T) => boolean);
     validation?: ValidatorConfigs;
     parser?(this: void, value: string): string | undefined;

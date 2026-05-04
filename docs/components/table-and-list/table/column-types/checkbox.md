@@ -40,29 +40,6 @@ const columns = defineTableColumns<Row>([
 
 ## Parametrar
 
-**`type:`** `"checkbox"`
-: Kolumnens typ.
-
-**`header:`** `string | Readonly<Ref<string>>`
-: Kolumnrubrik som visas i thead.
-
-**`key:`** `K` {@optional}
-: Kopplar cellens värde till värde i `T`.
-
-**`checked:`** `(row: T): boolean => {}` {@optional}
-: Funktion som avgör om kryssrutan är markerad.
-
-**`update:`** `(row: T, newValue: boolean, oldValue: boolean): void => {}` {@optional}
-: Anropas vid uppdaterat värde.
-
-**`label:`** `(row: T): string => {}` {@optional}
-: Skärmläsartext för kryssruta.
-
-**`description:`** `string | Readonly<Ref<string | null>>` {@optional}
-: Formatbeskrivning.
-
-**`size:`** `TableColumnSize | Readonly<Ref<TableColumnSize | null>>` {@optional}
-: Hur kolumnens bredd skalas.
-
-**`enabled:`** `boolean | Readonly<Ref<boolean>>` {@optional}
-: Om kolumnen är aktiv.
+::: api properties
+interface:TableColumnCheckbox
+:::

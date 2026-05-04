@@ -43,6 +43,7 @@ module.exports = {
                         "^https://www.i18next.com/",
                         "^https://support.atlassian.com/",
                         "^https://typedoc.org/",
+                        "^https://vuejs.org/",
                         "^https://www.conventionalcommits.org/en/v1.0.0/",
                         "^https://www.digg.se/",
                         "^https://www.figma.com/",

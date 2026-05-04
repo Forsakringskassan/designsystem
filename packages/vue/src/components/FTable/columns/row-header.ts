@@ -13,8 +13,10 @@ export interface TableColumnRowHeader<
     T,
     K extends keyof T,
 > extends TableColumnBase {
+    /** Column type */
     type: "rowheader";
     key?: K;
+    /** Header text */
     text?(this: void, row: T): string;
 }
 

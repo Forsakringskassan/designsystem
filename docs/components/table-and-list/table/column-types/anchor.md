@@ -41,26 +41,6 @@ const columns = defineTableColumns<Row>([
 
 ## Parametrar
 
-**`type:`** `"anchor"`
-: Kolumnens typ.
-
-**`header:`** `string | Readonly<Ref<string>>`
-: Kolumnrubrik som visas i thead.
-
-**`text:`** `(row: T): string | null => {}`
-: Funktion som returnerar texten i länken.
-
-**`href:`** `string`
-: Länkens mål.
-
-**`key:`** `K` {@optional}
-: Kopplar cellens värde till värde i `T`.
-
-**`description:`** `string | Readonly<Ref<string | null>>` {@optional}
-: Formatbeskrivning.
-
-**`size:`** `TableColumnSize | Readonly<Ref<TableColumnSize | null>>` {@optional}
-: Hur kolumnens bredd skalas.
-
-**`enabled:`** `boolean | Readonly<Ref<boolean>>` {@optional}
-: Om kolumnen är aktiv.
+::: api properties
+interface:TableColumnAnchor
+:::

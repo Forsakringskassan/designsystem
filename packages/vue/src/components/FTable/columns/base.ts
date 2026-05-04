@@ -12,10 +12,24 @@ export type TableColumnSize = "grow" | "shrink";
  * @public
  */
 export interface TableColumnBase {
+    /** Column header */
     header: string | Readonly<Ref<string>>;
+    /** Format description (shown in header) */
     description?: string | Readonly<Ref<string | null>>;
+    /**
+     * Column size, can be one of:
+     *
+     * - `"grow"`: the column occupies as much space as it can.
+     * - `"shrink"`: the column occupies as little space as it can.
+     *
+     * Default: `"grow"`.
+     **/
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     sort?: boolean;
+    /**
+     * When enabled, the column is rendered. Set to `false` to hide the column
+     * and its cells. Default: `true`.
+     */
     enabled?: MaybeRef<boolean>;
 }
 

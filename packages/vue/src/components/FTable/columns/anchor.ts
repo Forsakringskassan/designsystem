@@ -13,9 +13,12 @@ export interface TableColumnAnchor<
     T,
     K extends keyof T,
 > extends TableColumnBase {
+    /** Column type */
     type: "anchor";
     key?: K;
+    /** Link text */
     text(this: void, row: T): string | null;
+    /** Link destination */
     href: string;
 }
 
