@@ -5,6 +5,7 @@ import module from "node:module";
 import path from "node:path";
 import {
     Generator,
+    apiExtractorProcessor,
     cookieProcessor,
     extractExamplesProcessor,
     htmlRedirectProcessor,
@@ -157,6 +158,12 @@ const docs = new Generator(import.meta.url, {
         "@forsakringskassan/docs-live-example",
     ],
     processors: [
+        apiExtractorProcessor({
+            apiModel: [
+                "packages/vue/temp/vue.api.json",
+                "packages/vue/temp/vue-labs.api.json",
+            ],
+        }),
         extractExamplesProcessor({
             outputFolder: "docs/examples/files",
         }),
