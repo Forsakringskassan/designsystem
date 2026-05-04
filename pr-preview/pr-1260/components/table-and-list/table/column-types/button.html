@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../../search-data-1273ef.json"
+            href="../../../../search-data-65941f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-PsP+oqH/XIsMML9h8ByZ41R6mWWhe5XdTEN342wSMY7+4+PVRnsC53ovzRdJwvjR"
+            integrity="sha384-44Yv1l+61Dmq7z7npOv/E9KYgqaxzh9RIZRkhtIsrS+ceIOWlpkDeF0gl/fxh9Pr"
             id="search-data"
         />
     </head>
@@ -1602,29 +1602,58 @@
 <li><code>onClick(row)</code> kör åtgärden för raden.</li>
 <li><code>icon</code> och <code>iconLibrary</code> är valfria.</li>
 </ul>
-<h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2><dl>
-<dt><strong><code>description:</code></strong> <code>string | Readonly&lt;Ref&lt;string | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Formatbeskrivning</dd>
-<dt><strong><code>enabled:</code></strong> <code>boolean | ((row: T): boolean =&gt; {})</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Om knappen ska visas.
-Default <code>true</code>.</dd>
-<dt><strong><code>header:</code></strong> <code>string | Readonly&lt;Ref&lt;string&gt;&gt;</code></dt>
-<dd>Kolumnrubrik som visas i thead.</dd>
-<dt><strong><code>icon</code></strong> <code>string</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Namn på den ikon som ska visas på knappen, se FIcon.</dd>
-<dt><strong><code>key:</code></strong> <code>K</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Kopplar cellens värde till värde i <code>T</code>.</dd>
-<dt><strong><code>onClick:</code></strong> <code>(row: T):void =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Funktion som anropas vid klick på knapp.</dd>
-<dt><strong><code>size:</code></strong> <code>TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Hur kolumnens bredd skalas. <code>&quot;grow&quot;</code> ger största möjliga bredd och <code>&quot;shrink&quot;</code> minsta möjliga bredd.
-Default: <code>grow</code>.</dd>
-<dt><strong><code>text:</code></strong> <code>(row: T): string | null =&gt; {}</code></dt>
-<dd>Funktion som retunerar knappens text.</dd>
-<dt><strong><code>type:</code></strong> <code>InputTypeText</code></dt>
-<dd>Kolumnens typ, sätts till <code>button</code>.</dd>
+<h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2> <div><dl>
+<dt><code>description?: string | Readonly&lt;Ref&lt;string | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Format description (shown in header)</p>
+</dd>
+<dt><code>enabled?: MaybeRef&lt;boolean&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">When enabled, the column is rendered. Set to <code>false</code> to hide the column and its cells. Default: <code>true</code>.</p>
+</dd>
+<dt><code>header: string | Readonly&lt;Ref&lt;string&gt;&gt;;</code></dt>
+<dd>
+<p class="docs-paragraph">Column header</p>
+</dd>
+<dt><code>size?: TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Column size, can be one of:</p>
+<ul>
+<li><code>&quot;grow&quot;</code>: the column occupies as much space as it can.</li>
+<li><code>&quot;shrink&quot;</code>: the column occupies as little space as it can.</li>
+</ul>
+<p class="docs-paragraph">Default: <code>&quot;grow&quot;</code>.</p>
+</dd>
+<dt><code>sort?: boolean;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">‐</p>
+</dd>
+<dt><code>icon?: string;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Name of icon to show on the button, see <a href="../../../ficon.html"><code>FIcon</code></a> for list of icons.</p>
+</dd>
+<dt><code>iconLibrary?: string;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">The icon library to use when rendering an icon. If not set, the default icon library will be used.</p>
+</dd>
+<dt><code>key?: K;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">‐</p>
+</dd>
+<dt><code>onClick?(this: void, row: T): void;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Callback when button is clicked</p>
+</dd>
+<dt><code>text(this: void, row: T): string | null;</code></dt>
+<dd>
+<p class="docs-paragraph">Button text</p>
+</dd>
+<dt><code>type: &quot;button&quot;;</code></dt>
+<dd>
+<p class="docs-paragraph">Column type</p>
+</dd>
 </dl>
-
+</div> 
 
                     </div>
                 </main>
@@ -1672,9 +1701,9 @@ Default: <code>grow</code>.</dd>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">layoutleftpanel-rollback (<a href="https://github.com/Forsakringskassan/designsystem/commits/feae6ad50db5dbf43ef1963bf3eebde86bf3ba29">feae6ad</a>)<br />
+<div class="footer__right"><div class="version">layoutleftpanel-rollback (<a href="https://github.com/Forsakringskassan/designsystem/commits/99188fac52890146f2af940be8943ce25bcedaad">99188fa</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1260">PR 1260</a><br />
-        2026-05-04 13:25
+        2026-05-04 15:19
 </div>
 <div class="toolbar__item">
     <form id="version">
