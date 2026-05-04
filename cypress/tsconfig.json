@@ -1,6 +1,7 @@
 {
     "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/cypress"],
     "compilerOptions": {
+        "rootDir": "..",
         "types": [
             "cypress",
             "node",
