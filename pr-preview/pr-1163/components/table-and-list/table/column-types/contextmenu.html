@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../../search-data-7bcf95.json"
+            href="../../../../search-data-8d6903.json"
             as="fetch"
             crossorigin
-            integrity="sha384-VbX1YNLc2Q2t7yUnhm1Dz1m3XxWa24ehIWMrvyHXpck1dQO8nrXmJS/JWFY9AnF7"
+            integrity="sha384-mSYfoTbfYUltJonR2uSgL5zHHn2DreU2VHwCcAqafG8Bz109xNrackjnz69XR/g/"
             id="search-data"
         />
     </head>
@@ -1733,23 +1733,46 @@ interface <span class="hljs-title class_">Row</span> {
 <li><code>icon</code> är valfri och sätts till namnet på en <a href="https://designsystem.forsakringskassan.se/latest/styles/icons.html">ikon</a>.</li>
 <li><code>onClick</code> anropas med raden som kontextmenyn tillhör som parameter.</li>
 </ul>
-<h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2><dl>
-<dt><strong><code>type:</code></strong> <code>&quot;menu&quot;</code></dt>
-<dd>Kolumnens typ.</dd>
-<dt><strong><code>header:</code></strong> <code>string | Readonly&lt;Ref&lt;string&gt;&gt;</code></dt>
-<dd>Kolumnrubrik som visas i thead.</dd>
-<dt><strong><code>text:</code></strong> <code>(row: T): string | null =&gt; {}</code></dt>
-<dd>Skärmläsartext för menyknappen.</dd>
-<dt><strong><code>actions:</code></strong> <code>Array&lt;{ label: string, icon?: string, onClick?(row: T): void }&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Lista med menyval.</dd>
-<dt><strong><code>description:</code></strong> <code>string | Readonly&lt;Ref&lt;string | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Formatbeskrivning.</dd>
-<dt><strong><code>size:</code></strong> <code>TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Hur kolumnens bredd skalas.</dd>
-<dt><strong><code>enabled:</code></strong> <code>boolean | Readonly&lt;Ref&lt;boolean&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Om kolumnen är aktiv.</dd>
+<h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2> <div><dl>
+<dt><code>description?: string | Readonly&lt;Ref&lt;string | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Format description (shown in header)</p>
+</dd>
+<dt><code>enabled?: MaybeRef&lt;boolean&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">When enabled, the column is rendered. Set to <code>false</code> to hide the column and its cells. Default: <code>true</code>.</p>
+</dd>
+<dt><code>header: string | Readonly&lt;Ref&lt;string&gt;&gt;;</code></dt>
+<dd>
+<p class="docs-paragraph">Column header</p>
+</dd>
+<dt><code>size?: TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Column size, can be one of:</p>
+<ul>
+<li><code>&quot;grow&quot;</code>: the column occupies as much space as it can.</li>
+<li><code>&quot;shrink&quot;</code>: the column occupies as little space as it can.</li>
+</ul>
+<p class="docs-paragraph">Default: <code>&quot;grow&quot;</code>.</p>
+</dd>
+<dt><code>sort?: boolean;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">‐</p>
+</dd>
 </dl>
-<h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
+<p class="docs-paragraph"><code>actions?: Array&lt;{         label: string;         icon?: string;         onClick?(this: void, row: T): void;     }&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span>
+: List of menu actions. Each entry consists of:</p>
+<pre><code>- `label`: the text show on the action.
+- `icon`: an optional icon.
+- `onClick`: a callback when the action is clicked.
+</code></pre>
+<dl>
+<dt><code>text(this: void, row: T): string | null;</code></dt>
+<dd>Screenreader text</dd>
+<dt><code>type: &quot;menu&quot;;</code></dt>
+<dd>Column type</dd>
+</dl>
+</div> <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
 <li>FContextMenu</li>
 <li>FIcon</li>
 </ul>
@@ -1801,9 +1824,9 @@ interface <span class="hljs-title class_">Row</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/67b928af7412baa618b24efff3629adaf31bc97e">67b928a</a>)<br />
+<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/f0adfbf48a24d14399a212786c3e52dea73e47fc">f0adfbf</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1163">PR 1163</a><br />
-        2026-05-04 14:25
+        2026-05-04 14:47
 </div>
 <div class="toolbar__item">
     <form id="version">
