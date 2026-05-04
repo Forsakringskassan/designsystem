@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-073fb4.json"
+            href="../../search-data-1af2a6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-j16KEG1gyXoIWqSW2QR428TRBbHskcZ/UbyE96Ke6pcZXAj476sl3HJ+GVmROZvd"
+            integrity="sha384-vP67YfMIEu3icpipBFr5SlXpjlk5Ay0ccc10Kga0cjze2170DfrB/FKheRZpbmzx"
             id="search-data"
         />
     </head>
@@ -1550,7 +1550,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/d7ef70c8826174803e37687002d525d4193432fc/packages/vue/src/internal-components/IPopup/IPopup.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/5d30c0886596f160b7204497cf5fd5280941b753/packages/vue/src/internal-components/IPopup/IPopup.vue">
                 IPopup
             </a>
             
@@ -1605,7 +1605,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-8ad062"></div>
+        <div id="example-41f653"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1613,10 +1613,6 @@
     border: 1px dashed lightgray;
     padding: 2rem;
     background: white;
-.button {
-        margin-bottom: 0px;
-        width: auto;
-}
 }
 .popup--overlay .my-awesome-popup {
     width: 25rem;
@@ -1627,7 +1623,7 @@
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IPopupExample-8ad062.js"></script>
+        <script type="module" src="./IPopupExample-41f653.js"></script>
     
                 </div>
                 <div>
@@ -1651,11 +1647,11 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">IPopup</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IPopup</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;IPopupExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">IPopup</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IPopup</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">isOpen</span>: <span class="hljs-literal">false</span>,
@@ -1677,14 +1673,9 @@
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;popupAnchor&quot;</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
-            @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClickOpen&quot;</span>
-        &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;popupAnchor&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClickOpen&quot;</span>&gt;</span>
             Öppna popup
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">i-popup</span> <span class="hljs-attr">:is-open</span> <span class="hljs-attr">:anchor</span>=<span class="hljs-string">&quot;$refs.popupAnchor as HTMLElement&quot;</span> @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;my-awesome-popup&quot;</span>&gt;</span>
@@ -1695,9 +1686,7 @@
                     formbräden och regaler tillverkas och försäljas Kaster som äro dåligt hopkomna
                     och af otillräckligt.
                 <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--tertiary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClickClose&quot;</span>&gt;</span>
-                    Stäng popup
-                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;tertiary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClickClose&quot;</span>&gt;</span>Stäng popup<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">i-popup</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1708,11 +1697,6 @@
     <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> dashed lightgray;
     <span class="hljs-attribute">padding</span>: <span class="hljs-number">2rem</span>;
     <span class="hljs-attribute">background</span>: white;
-
-    <span class="hljs-selector-class">.button</span> {
-        <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0px</span>;
-        <span class="hljs-attribute">width</span>: auto;
-    }
 }
 
 <span class="hljs-selector-class">.popup--overlay</span> <span class="hljs-selector-class">.my-awesome-popup</span> {
@@ -1831,7 +1815,7 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-80a85e"></div>
+        <div id="example-0d7144"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1880,7 +1864,7 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IPopupPositioning-80a85e.js"></script>
+        <script type="module" src="./IPopupPositioning-0d7144.js"></script>
     
                 </div>
                 <div>
@@ -2385,9 +2369,9 @@ Om popup inte hittar en förälder med <code>scroll-target</code> så kommer den
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">refactor/tertiary-button-size (<a href="https://github.com/Forsakringskassan/designsystem/commits/d7ef70c8826174803e37687002d525d4193432fc">d7ef70c</a>)<br />
+<div class="footer__right"><div class="version">refactor/tertiary-button-size (<a href="https://github.com/Forsakringskassan/designsystem/commits/5d30c0886596f160b7204497cf5fd5280941b753">5d30c08</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1216">PR 1216</a><br />
-        2026-05-04 06:35
+        2026-05-04 19:54
 </div>
 <div class="toolbar__item">
     <form id="version">

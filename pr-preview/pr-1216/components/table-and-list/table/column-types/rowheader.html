@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../../search-data-073fb4.json"
+            href="../../../../search-data-1af2a6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-j16KEG1gyXoIWqSW2QR428TRBbHskcZ/UbyE96Ke6pcZXAj476sl3HJ+GVmROZvd"
+            integrity="sha384-vP67YfMIEu3icpipBFr5SlXpjlk5Ay0ccc10Kga0cjze2170DfrB/FKheRZpbmzx"
             id="search-data"
         />
     </head>
@@ -1595,23 +1595,46 @@ Det förbättrar tabellens tillgänglighet.</p>
             <h2 id="bra_att_veta" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#bra_att_veta">Bra att veta</a></h2><ul>
 <li>Använd <code>key</code> eller <code>text(row)</code> för innehållet.</li>
 </ul>
-<h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2><dl>
-<dt><strong><code>type:</code></strong> <code>&quot;rowheader&quot;</code></dt>
-<dd>Kolumnens typ.</dd>
-<dt><strong><code>header:</code></strong> <code>string | Readonly&lt;Ref&lt;string&gt;&gt;</code></dt>
-<dd>Kolumnrubrik som visas i thead.</dd>
-<dt><strong><code>key:</code></strong> <code>K</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Kopplar cellens värde till värde i <code>T</code>.</dd>
-<dt><strong><code>text:</code></strong> <code>(row: T): string =&gt; {}</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Radens rubriktext.</dd>
-<dt><strong><code>description:</code></strong> <code>string | Readonly&lt;Ref&lt;string | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Formatbeskrivning.</dd>
-<dt><strong><code>size:</code></strong> <code>TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Hur kolumnens bredd skalas.</dd>
-<dt><strong><code>enabled:</code></strong> <code>boolean | Readonly&lt;Ref&lt;boolean&gt;&gt;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>Om kolumnen är aktiv.</dd>
+<h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2> <div><dl>
+<dt><code>description?: string | Readonly&lt;Ref&lt;string | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Format description (shown in header)</p>
+</dd>
+<dt><code>enabled?: MaybeRef&lt;boolean&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">When enabled, the column is rendered. Set to <code>false</code> to hide the column and its cells. Default: <code>true</code>.</p>
+</dd>
+<dt><code>header: string | Readonly&lt;Ref&lt;string&gt;&gt;;</code></dt>
+<dd>
+<p class="docs-paragraph">Column header</p>
+</dd>
+<dt><code>size?: TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Column size, can be one of:</p>
+<ul>
+<li><code>&quot;grow&quot;</code>: the column occupies as much space as it can.</li>
+<li><code>&quot;shrink&quot;</code>: the column occupies as little space as it can.</li>
+</ul>
+<p class="docs-paragraph">Default: <code>&quot;grow&quot;</code>.</p>
+</dd>
+<dt><code>sort?: boolean;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">‐</p>
+</dd>
+<dt><code>key?: K;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">‐</p>
+</dd>
+<dt><code>text?(this: void, row: T): string;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">Header text</p>
+</dd>
+<dt><code>type: &quot;rowheader&quot;;</code></dt>
+<dd>
+<p class="docs-paragraph">Column type</p>
+</dd>
 </dl>
-
+</div> 
 
                     </div>
                 </main>
@@ -1659,9 +1682,9 @@ Det förbättrar tabellens tillgänglighet.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">refactor/tertiary-button-size (<a href="https://github.com/Forsakringskassan/designsystem/commits/d7ef70c8826174803e37687002d525d4193432fc">d7ef70c</a>)<br />
+<div class="footer__right"><div class="version">refactor/tertiary-button-size (<a href="https://github.com/Forsakringskassan/designsystem/commits/5d30c0886596f160b7204497cf5fd5280941b753">5d30c08</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1216">PR 1216</a><br />
-        2026-05-04 06:35
+        2026-05-04 19:54
 </div>
 <div class="toolbar__item">
     <form id="version">
