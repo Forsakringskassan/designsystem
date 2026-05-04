@@ -223,6 +223,10 @@ function onKeydown(e: KeyboardEvent): void {
 
     const targetEl = activateCell(cell, { focus: true });
 
+    if (e.key === " " && e.target === cell) {
+        e.preventDefault();
+    }
+
     // If keyboard focus is on the cell rather than the actual target,
     // forward activation to the target just like the click handler does
     if (!targetEl.contains(e.target)) {
