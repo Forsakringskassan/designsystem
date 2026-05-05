@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FValidationForm/examples/FValidationFormDefault.vue:FValidationFormDefault-f2512c.js
+// virtual-entry:virtual:packages/vue/src/components/FValidationForm/examples/FValidationFormDefault.vue:FValidationFormDefault-5dade2.js
 import { defineComponent } from "vue";
 import {
   FButton,
@@ -266,7 +266,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-f2512c"
+  selector: "#example-5dade2"
 });
 export {
   render
