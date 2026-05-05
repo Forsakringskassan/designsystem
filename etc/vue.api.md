@@ -1480,25 +1480,18 @@ export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K
 
 // @public (undocumented)
 export interface TableColumnAnchor<T, K extends keyof T> extends TableColumnBase {
-    // (undocumented)
     href: string;
     // (undocumented)
     key?: K;
-    // (undocumented)
     text(this: void, row: T): string | null;
-    // (undocumented)
     type: "anchor";
 }
 
 // @public
 export interface TableColumnBase {
-    // (undocumented)
     description?: string | Readonly<Ref<string | null>>;
-    // (undocumented)
     enabled?: MaybeRef<boolean>;
-    // (undocumented)
     header: string | Readonly<Ref<string>>;
-    // (undocumented)
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     // (undocumented)
     sort?: boolean;
@@ -1506,16 +1499,12 @@ export interface TableColumnBase {
 
 // @public (undocumented)
 export interface TableColumnButton<T, K extends keyof T> extends TableColumnBase {
-    // (undocumented)
     icon?: string;
     iconLibrary?: string;
     // (undocumented)
     key?: K;
-    // (undocumented)
     onClick?(this: void, row: T): void;
-    // (undocumented)
     text(this: void, row: T): string | null;
-    // (undocumented)
     type: "button";
 }
 
@@ -1525,9 +1514,7 @@ export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBa
     checked?(this: void, row: T): boolean;
     // (undocumented)
     key?: K;
-    // (undocumented)
     label?(this: void, row: T): string;
-    // (undocumented)
     type: "checkbox";
     // (undocumented)
     update?(this: void, row: T, newValue: boolean, oldValue: boolean): void;
@@ -1535,15 +1522,12 @@ export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBa
 
 // @public (undocumented)
 export interface TableColumnMenu<T> extends TableColumnBase {
-    // (undocumented)
     actions?: Array<{
         label: string;
         icon?: string;
         onClick?(this: void, row: T): void;
     }>;
-    // (undocumented)
     text(this: void, row: T): string | null;
-    // (undocumented)
     type: "menu";
 }
 
@@ -1581,7 +1565,6 @@ export interface TableColumnNumber<T, K extends keyof T> extends TableColumnBase
 export interface TableColumnRender<T, K extends keyof T = keyof T> extends TableColumnBase {
     // (undocumented)
     key?: K;
-    // (undocumented)
     render(this: void, row: T): VNode | Component;
 }
 
@@ -1589,9 +1572,7 @@ export interface TableColumnRender<T, K extends keyof T = keyof T> extends Table
 export interface TableColumnRowHeader<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
     key?: K;
-    // (undocumented)
     text?(this: void, row: T): string;
-    // (undocumented)
     type: "rowheader";
 }
 
@@ -1599,13 +1580,10 @@ export interface TableColumnRowHeader<T, K extends keyof T> extends TableColumnB
 export interface TableColumnSelect<T, K extends keyof T> extends TableColumnBase {
     // (undocumented)
     key?: K;
-    // (undocumented)
     label?(this: void, row: T): string;
-    // (undocumented)
     options: string[];
     // (undocumented)
     selected?(this: void, row: T): string;
-    // (undocumented)
     type: "select";
     // (undocumented)
     update?(this: void, row: T, newValue: string, oldValue: string): void;
@@ -1628,23 +1606,17 @@ export type TableColumnSize = "grow" | "shrink";
 
 // @public (undocumented)
 export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
-    // (undocumented)
     align?: "left" | "right";
-    // (undocumented)
     attributes?: Record<string, string | number | boolean | undefined> | ((this: void, row: T) => Record<string, string | number | boolean | undefined>);
-    // (undocumented)
     editable?: boolean | ((this: void, row: T) => boolean);
     // (undocumented)
     formatter?(this: void, value: string): string | undefined;
     // (undocumented)
     key?: K;
-    // (undocumented)
     label?(this: void, row: T): string;
     // (undocumented)
     parser?(this: void, value: string): string | undefined;
-    // (undocumented)
     tnum?: boolean;
-    // (undocumented)
     type: InputTypeText;
     // (undocumented)
     update?(this: void, row: T, newValue: string, oldValue: string): void;

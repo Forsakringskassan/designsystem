@@ -13,10 +13,14 @@ export interface TableColumnButton<
     T,
     K extends keyof T,
 > extends TableColumnBase {
+    /** Column type */
     type: "button";
     key?: K;
+    /** Button text */
     text(this: void, row: T): string | null;
+    /** Callback when button is clicked */
     onClick?(this: void, row: T): void;
+    /** Name of icon to show on the button, see {@link FIcon} for list of icons. */
     icon?: string;
     /**
      * The icon library to use when rendering an icon. If not set, the default icon library will be used.

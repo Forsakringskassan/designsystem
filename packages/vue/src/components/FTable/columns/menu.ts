@@ -10,8 +10,17 @@ import { getValueFn } from "./helpers";
  * @public
  */
 export interface TableColumnMenu<T> extends TableColumnBase {
+    /** Column type */
     type: "menu";
+    /** Screenreader text */
     text(this: void, row: T): string | null;
+    /**
+     * List of menu actions. Each entry consists of:
+     *
+     * - `label`: the text show on the action.
+     * - `icon`: an optional icon.
+     * - `onClick`: a callback when the action is clicked.
+     */
     actions?: Array<{
         label: string;
         icon?: string;

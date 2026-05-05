@@ -13,11 +13,14 @@ export interface TableColumnSelect<
     T,
     K extends keyof T,
 > extends TableColumnBase {
+    /** Column type */
     type: "select";
     key?: K;
+    /** Screenreader text */
     label?(this: void, row: T): string;
     selected?(this: void, row: T): string;
     update?(this: void, row: T, newValue: string, oldValue: string): void;
+    /** List of options */
     options: string[];
 }
 

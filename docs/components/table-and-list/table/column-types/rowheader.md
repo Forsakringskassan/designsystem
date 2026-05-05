@@ -35,23 +35,6 @@ const columns = defineTableColumns<Row>([
 
 ## Parametrar
 
-**`type:`** `"rowheader"`
-: Kolumnens typ.
-
-**`header:`** `string | Readonly<Ref<string>>`
-: Kolumnrubrik som visas i thead.
-
-**`key:`** `K` {@optional}
-: Kopplar cellens värde till värde i `T`.
-
-**`text:`** `(row: T): string => {}` {@optional}
-: Radens rubriktext.
-
-**`description:`** `string | Readonly<Ref<string | null>>` {@optional}
-: Formatbeskrivning.
-
-**`size:`** `TableColumnSize | Readonly<Ref<TableColumnSize | null>>` {@optional}
-: Hur kolumnens bredd skalas.
-
-**`enabled:`** `boolean | Readonly<Ref<boolean>>` {@optional}
-: Om kolumnen är aktiv.
+::: api properties
+interface:TableColumnRowHeader
+:::
