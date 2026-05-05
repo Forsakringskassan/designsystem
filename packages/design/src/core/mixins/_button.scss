@@ -38,7 +38,7 @@
     }
 
     &:active,
-    &:focus {
+    &:focus-visible {
         @include focus.focus-indicator;
 
         background-color: $background-color--focus;
