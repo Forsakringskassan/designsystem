@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-8a2e08.json"
+            href="../../search-data-97236e.json"
             as="fetch"
             crossorigin
-            integrity="sha384-IgauHgSVIRi0I8ASbixxQbLJve6TLNXiH0Yx560mXkEbTYabHnSvkJas9ckX3P4q"
+            integrity="sha384-m4psgPliZ4e6xu0yf59uEcqpo2ADZGx6zGo+z65ThwYsYtP8zHiD9EKy5rSaGX1N"
             id="search-data"
         />
     </head>
@@ -602,8 +602,7 @@
 <li>Cypress för komponenttester och E2E-tester</li>
 </ul>
 <p class="docs-paragraph">Som en tumregel använder vi enhetstester för att testa logik, komponenttester för att testa interaktion och i undantagsfall E2E-tester för att testa integration.</p>
-<p class="docs-paragraph">Samtliga tester körs från CI-miljö vid branch-byggen.
-PR-byggen kör inte komponenttester eller E2E-tester.</p>
+<p class="docs-paragraph">Samtliga tester skall köras från CI-miljö vid branch-byggen.</p>
 <p class="docs-paragraph">Läs mer om <a href="./testing.html">att skriva automatiska testfall</a>.</p>
 <h3 id="jest" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#jest">Jest</a></h3><p class="docs-paragraph">Paket utan ramverksspecifika komponenter samt logik för Vue-komponenter testas med Jest.
 Vi testar inte interaktion med komponenter med Jest.</p>
@@ -620,9 +619,12 @@ CI-miljö läser in samtliga filer.</p>
 <p class="docs-paragraph">Extra hjälpfunktioner finns i ett stödpaket <a href="../../functions/test-utils">Om testverktyg</a> och kan nyttjas både av en applikationsutvecklare och den som bidrar till FKUI.</p>
 <h3 id="komponenttester_cypress" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#komponenttester_cypress">Komponenttester (Cypress)</a></h3><p class="docs-paragraph">För paket med Vue-komponenter testar vi interaktion och utseende av komponenten med Cypress Komponenttest.</p>
 <p class="docs-paragraph">Komponenttester placeras i samma katalog som komponenten för komponenten och använder <code>${component}.cy.ts</code> som filnamn.</p>
-<p class="docs-paragraph">Varje komponent bör ha minst ett komponenttest som testar det visuella utseendet i form av ett screenshot sk &quot;screenshottester&quot;
-Vi använder oss av <code>@forsakringskassan/cypress-visual-regression</code> för att skriva tester med skärmdumpar: visuell regressionstest.</p>
-<p class="docs-paragraph">Läs mer om [screenshottester][testning].</p>
+<p class="docs-paragraph">Varje komponent bör ha minst ett komponenttest som testar det visuella utseendet i form av ett screenshot test.
+Vi använder oss av <code>@forsakringskassan/cypress-visual-regression</code> för att skriva tester med skärmdumpar: visuell regressionstest.
+Testet skall tydligt beskriva att det är ett visuellt test genom testbeskrivningen enligt <code>it(&quot;test description... (visual)&quot;)</code></p>
+<ul>
+<li><a href="https://github.com/Forsakringskassan/cypress-visual-regression"><code>@forsakringskassan/cypress-visual-regression</code></a>: för mer information kring visuell testning.</li>
+</ul>
 <p class="docs-paragraph">Cypress är konfigurerat i rootens <code>cypress.config.ts</code> och anropas direkt från root med <code>npm exec cypress open</code> (headed) alternativt <code>npm exec cypress run</code> (headless).</p>
 <p class="docs-paragraph">Cypress är konfigurerat med följande plugins:</p>
 <ul>
@@ -635,7 +637,7 @@ CI-miljö läser in filen.</p>
 <p class="docs-paragraph"><code>tsconfig.json</code> i respektive paket med Cypress komponenttester pekar ut en separat <code>tsconfig.cypress.json</code> med specifik typescript-konfiguration för Cypress:</p>
 
                 <div
-                    id="example-3f39b1"
+                    id="example-d5f772"
                     class="code-preview code-preview--default"
                     
                     
@@ -657,8 +659,7 @@ CI-miljö läser in filen.</p>
 <span class="hljs-punctuation">}</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Läs mer om <a href="#tsconfig-json">tsconfig.json</a>.</p>
-<h3 id="e2e_cypress" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#e2e_cypress">E2E (Cypress)</a></h3><p class="docs-paragraph">I undantagsfall kan du använda E2E-tester om ett större sammanhang ska testas.
+            <h3 id="e2e_cypress" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#e2e_cypress">E2E (Cypress)</a></h3><p class="docs-paragraph">I undantagsfall kan du använda E2E-tester om ett större sammanhang ska testas.
 E2E-tester kör mot den genererade dokumentationen och kräver att den byggts och startats som en separat process.</p>
 <p class="docs-paragraph">För att bygga och starta dokumentation:</p>
 
@@ -799,9 +800,9 @@ Endast personnummer från återfinns i <a href="https://www7.skatteverket.se/por
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/aa08cbd2ca24a937ef1cc84fd422401ea6c44b4c">aa08cbd</a>)<br />
+<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/d26697befb59fccf5a56207456e9ad0cd26550e8">d26697b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1163">PR 1163</a><br />
-        2026-05-05 05:58
+        2026-05-05 07:23
 </div>
 <div class="toolbar__item">
     <form id="version">
