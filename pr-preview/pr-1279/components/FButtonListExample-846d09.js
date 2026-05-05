@@ -150,10 +150,17 @@ FIcon_default.render = render;
 FIcon_default.__file = "packages/vue/src/components/FIcon/FIcon.vue";
 var FIcon_default2 = FIcon_default;
 
+// packages/vue/src/components/FValidationForm/use-validation-form.ts
+import { inject, ref } from "vue";
+var formPendingKey = /* @__PURE__ */ Symbol("formPending");
+function useValidationForm() {
+  return inject(formPendingKey, ref(false));
+}
+
 // packages/vue/src/components/FButton/use-inflight.ts
-import { ref } from "vue";
+import { ref as ref2 } from "vue";
 function useInflight(fn, disabled) {
-  const inflight = ref(false);
+  const inflight = ref2(false);
   if (!fn || typeof fn !== "function") {
     return { inflight, fn: void 0 };
   }
@@ -170,13 +177,6 @@ function useInflight(fn, disabled) {
     }
   }
   return { inflight, fn: wrapper };
-}
-
-// packages/vue/src/components/FValidationForm/use-validation-form.ts
-import { inject, ref as ref2 } from "vue";
-var formPendingKey = /* @__PURE__ */ Symbol("formPending");
-function useValidationForm() {
-  return inject(formPendingKey, ref2(false));
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=script

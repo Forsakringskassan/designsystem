@@ -3127,14 +3127,17 @@ async function invokeHandlers(handler, event) {
   if (typeof handler === "function") {
     await handler(event);
   } else if (Array.isArray(handler)) {
-    await Promise.all(
-      handler.map((fn2) => fn2(event))
-    );
+    await Promise.all(handler.map((fn2) => fn2(event)));
   }
 }
 var FValidationForm_default = defineComponent10({
   name: "FValidationForm",
   components: { FValidationGroup: FValidationGroup_default2, FErrorList: FErrorList_default2 },
+  provide() {
+    return {
+      [formPendingKey]: toRef(this, "pending")
+    };
+  },
   inheritAttrs: false,
   props: {
     /**
@@ -3196,11 +3199,6 @@ var FValidationForm_default = defineComponent10({
       }
     }
   },
-  provide() {
-    return {
-      [formPendingKey]: toRef(this, "pending")
-    };
-  },
   data() {
     return {
       validity: { isValid: true, componentsWithError: [], componentCount: 0 },
@@ -3228,7 +3226,7 @@ var FValidationForm_default = defineComponent10({
      * method below via `$attrs` to support awaiting async submit handlers.
      */
     formAttrs() {
-      const { onSubmit: _omittedOnSubmit, ...rest } = this.$attrs;
+      const { onSubmit: _onSubmit, ...rest } = this.$attrs;
       return rest;
     }
   },
@@ -3268,10 +3266,7 @@ var FValidationForm_default = defineComponent10({
         if (await this.hasFormErrors()) {
           return;
         }
-        await invokeHandlers(
-          this.$attrs["onSubmit"],
-          event
-        );
+        await invokeHandlers(this.$attrs.onSubmit, event);
       } finally {
         this.pending = false;
       }
