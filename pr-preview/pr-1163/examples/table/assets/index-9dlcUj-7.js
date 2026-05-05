@@ -19179,6 +19179,7 @@ var FTable_default = /* @__PURE__ */ defineComponent({
 			const cell = e.target.closest("td, th");
 			if (!cell) return;
 			const targetEl = activateCell(cell, { focus: true });
+			if (e.key === " " && e.target === cell) e.preventDefault();
 			if (!targetEl.contains(e.target)) {
 				e.preventDefault();
 				targetEl.click();
