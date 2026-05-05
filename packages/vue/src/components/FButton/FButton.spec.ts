@@ -36,6 +36,24 @@ describe("props", () => {
             const button = wrapper.get("button");
             expect(button.attributes("aria-disabled")).toBe("false");
         });
+
+        it("should set `disabled` on the button element when true", () => {
+            expect.assertions(1);
+            const wrapper = shallowMount(FButton, {
+                props: {
+                    disabled: true,
+                },
+            });
+            const button = wrapper.get("button");
+            expect(button.element.disabled).toBe(true);
+        });
+
+        it("should not set `disabled` on the button as default", () => {
+            expect.assertions(1);
+            const wrapper = shallowMount(FButton);
+            const button = wrapper.get("button");
+            expect(button.element.disabled).toBe(false);
+        });
     });
 
     it("type prop should set type attribute on button element", () => {

@@ -162,7 +162,7 @@ const buttonClass = computed((): string[] => {
 </script>
 
 <template>
-    <button :type :class="buttonClass" :aria-disabled="disabled" v-bind="attrs">
+    <button :type :class="buttonClass" :aria-disabled="disabled" :disabled v-bind="attrs">
         <template v-if="hasIconLeft">
             <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
             <f-icon
