@@ -1,4 +1,5 @@
 import { defineComponent } from "vue";
+import FValidationForm from "../FValidationForm/FValidationForm.vue";
 import FButton from "./FButton.vue";
 
 const VIEWPORT = {
@@ -438,5 +439,39 @@ describe("Promises", () => {
         cy.get("#sync-operation").click();
         cy.get("#sync-operation .button__spinner").should("not.exist");
         cy.get("#sync-operation").should("contain.text", "OK");
+    });
+});
+
+describe("FButton as submit button in FValidationForm", () => {
+    it("should show spinner during async @submit handler when used as submit button", () => {
+        let resolve: () => void;
+        const pending = new Promise<void>((r) => {
+            resolve = r;
+        });
+
+        const TestComponent = defineComponent({
+            components: { FButton, FValidationForm },
+            template: /* HTML */ `
+                <f-validation-form @submit="onSubmit">
+                    <f-button id="submit-btn" type="submit">Spara</f-button>
+                </f-validation-form>
+            `,
+            methods: {
+                onSubmit(): Promise<void> {
+                    return pending;
+                },
+            },
+        });
+
+        cy.mount(TestComponent);
+
+        cy.get("#submit-btn .button__spinner").should("not.exist");
+        cy.get("#submit-btn").click();
+        cy.get("#submit-btn .button__spinner")
+            .should("be.visible")
+            .then(() => {
+                resolve();
+            });
+        cy.get("#submit-btn .button__spinner").should("not.exist");
     });
 });

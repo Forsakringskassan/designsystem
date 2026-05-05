@@ -1,19 +1,39 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
-import { type PropType, defineComponent } from "vue";
+import { type PropType, defineComponent, toRef } from "vue";
 import { ElementIdService, ValidationService, focus } from "@fkui/logic";
 import { type ComponentValidityEvent, type ErrorItem, type GroupValidityEvent } from "../../types";
 import { type BeforeNavigate, FErrorList } from "../FErrorList";
 import { FValidationGroup } from "../FValidationGroup";
 import { type FValidationFormCallback, FValidationFormAction } from "./types";
+import { formPendingKey } from "./use-validation-form";
 
 function noop(): void {
     /* do nothing */
 }
 
+/**
+ * Invoke one or more event handler(s) and await the result.
+ * Vue may provide either a single function or an array of functions when multiple
+ * listeners are attached to the same event.
+ * If `handler` is neither a function nor an array (e.g. `undefined`), this is a no-op.
+ */
+async function invokeHandlers(handler: unknown, event: Event): Promise<void> {
+    if (typeof handler === "function") {
+        await (handler as (e: Event) => unknown)(event);
+    } else if (Array.isArray(handler)) {
+        await Promise.all((handler as Array<(e: Event) => unknown>).map((fn) => fn(event)));
+    }
+}
+
 export default defineComponent({
     name: "FValidationForm",
     components: { FValidationGroup, FErrorList },
+    provide() {
+        return {
+            [formPendingKey as symbol]: toRef(this, "pending"),
+        };
+    },
     inheritAttrs: false,
     props: {
         /**
@@ -75,16 +95,11 @@ export default defineComponent({
             },
         },
     },
-    emits: [
-        /**
-         * Emitted when form is successfully submitted.
-         */
-        "submit",
-    ],
-    data(): { validity: GroupValidityEvent; submitted: boolean } {
+    data(): { validity: GroupValidityEvent; submitted: boolean; pending: boolean } {
         return {
             validity: { isValid: true, componentsWithError: [], componentCount: 0 },
             submitted: false,
+            pending: false,
         };
     },
     computed: {
@@ -100,6 +115,15 @@ export default defineComponent({
         },
         displayErrors(): boolean {
             return this.useErrorList && this.submitted && this.errors.length > 0;
+        },
+        /**
+         * Attrs bound to the native `<form>` element.
+         * The `onSubmit` listener is excluded since it is handled by the `onSubmit`
+         * method below via `$attrs` to support awaiting async submit handlers.
+         */
+        formAttrs(): Record<string, unknown> {
+            const { onSubmit: _onSubmit, ...rest } = this.$attrs as Record<string, unknown>;
+            return rest;
         },
     },
     methods: {
@@ -125,28 +149,39 @@ export default defineComponent({
         },
         async onSubmit(event: Event): Promise<void> {
             this.submitted = true;
+            this.pending = true;
 
-            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-            const beforeValidation = this.beforeValidation ? await this.beforeValidation() : undefined;
-            if (beforeValidation === FValidationFormAction.CANCEL) {
-                return;
+            try {
+                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+                const beforeValidation = this.beforeValidation ? await this.beforeValidation() : undefined;
+                if (beforeValidation === FValidationFormAction.CANCEL) {
+                    return;
+                }
+
+                if (await this.hasFormErrors()) {
+                    return;
+                }
+
+                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+                const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : undefined;
+                if (beforeAction === FValidationFormAction.CANCEL) {
+                    return;
+                }
+
+                if (await this.hasFormErrors()) {
+                    return;
+                }
+
+                /* Call the @submit handler from $attrs and await it.
+                 * Using $attrs (instead of $emit) allows the handler's returned Promise
+                 * to be awaited, so FButton can show a spinner for the full duration of
+                 * async submit handlers via the injected formPendingKey.
+                 * Any error thrown by the handler propagates out of this method; the
+                 * finally block below ensures `pending` is always reset. */
+                await invokeHandlers((this.$attrs as Record<string, unknown>).onSubmit, event);
+            } finally {
+                this.pending = false;
             }
-
-            if (await this.hasFormErrors()) {
-                return;
-            }
-
-            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-            const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : undefined;
-            if (beforeAction === FValidationFormAction.CANCEL) {
-                return;
-            }
-
-            if (await this.hasFormErrors()) {
-                return;
-            }
-
-            this.$emit("submit", event);
         },
     },
 });
@@ -155,7 +190,7 @@ export default defineComponent({
 <template>
     <f-validation-group :key="groupKey" v-model="validity" :stop-propagation="true">
         <!-- [html-validate-disable-next wcag/h32 -- submit button is slotted] -->
-        <form :id v-bind="$attrs" novalidate autocomplete="off" @submit.prevent="onSubmit">
+        <form :id v-bind="formAttrs" novalidate autocomplete="off" @submit.prevent="onSubmit">
             <nav v-if="displayErrors" ref="errors" tabindex="-1" role="group">
                 <f-error-list :items="errors" :before-navigate="errorListBeforeNavigate">
                     <template #title>
