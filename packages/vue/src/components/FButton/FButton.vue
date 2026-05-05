@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { type PropType, computed, useAttrs } from "vue";
 import { FIcon } from "../FIcon";
-import { useValidationForm } from "../FValidationForm/use-validation-form";
 import { useInflight } from "./use-inflight";
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */
@@ -111,21 +110,29 @@ const props = defineProps({
         type: Boolean,
         required: false,
     },
+
+    /**
+     * Show a spinner on the button to indicate a pending operation.
+     * Use this to reflect an ongoing async action triggered by this button.
+     */
+    pending: {
+        type: Boolean,
+        required: false,
+    },
 });
 defineOptions({
     inheritAttrs: false,
 });
 const originalAttrs = useAttrs();
-const formPending = useValidationForm();
 
 const disabled = computed((): boolean => {
     return props.disabled || inflight.value;
 });
-const { inflight: buttonInflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
+const { inflight: clickInflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
 const attrs = { ...originalAttrs, onClick };
 
 const inflight = computed((): boolean => {
-    return buttonInflight.value || (props.type === "submit" && formPending.value);
+    return clickInflight.value || Boolean(props.pending);
 });
 
 const hasIconLeft = computed((): boolean => {
