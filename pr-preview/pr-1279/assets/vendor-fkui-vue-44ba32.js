@@ -1616,10 +1616,6 @@ function _sfc_render$51(_ctx, _cache, $props, $setup, $data, $options) {
   ], 16, _hoisted_1$80);
 }
 var FIcon_default = /* @__PURE__ */ _plugin_vue_export_helper_default(FIcon_vue_vue_type_script_lang_default, [["render", _sfc_render$51]]);
-var formPendingKey = /* @__PURE__ */ Symbol("formPending");
-function useValidationForm() {
-  return inject(formPendingKey, ref(false));
-}
 function useInflight(fn2, disabled) {
   const inflight = ref(false);
   if (!fn2 || typeof fn2 !== "function") return {
@@ -1761,22 +1757,29 @@ var FButton_default = /* @__PURE__ */ defineComponent({
     disabled: {
       type: Boolean,
       required: false
+    },
+    /**
+    * Show a spinner on the button to indicate a pending operation.
+    * Use this to reflect an ongoing async action triggered by this button.
+    */
+    pending: {
+      type: Boolean,
+      required: false
     }
   },
   setup(__props) {
     const props = __props;
     const originalAttrs = useAttrs();
-    const formPending = useValidationForm();
     const disabled = computed(() => {
       return props.disabled || inflight.value;
     });
-    const { inflight: buttonInflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
+    const { inflight: clickInflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
     const attrs = {
       ...originalAttrs,
       onClick
     };
     const inflight = computed(() => {
-      return buttonInflight.value || props.type === "submit" && formPending.value;
+      return clickInflight.value || Boolean(props.pending);
     });
     const hasIconLeft = computed(() => {
       return Boolean(props.iconLeft);
@@ -4690,18 +4693,11 @@ var FValidationFormAction = /* @__PURE__ */ (function(FValidationFormAction2) {
 })({});
 function noop$5() {
 }
-async function invokeHandlers(handler, event) {
-  if (typeof handler === "function") await handler(event);
-  else if (Array.isArray(handler)) await Promise.all(handler.map((fn2) => fn2(event)));
-}
 var FValidationForm_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
   name: "FValidationForm",
   components: {
     FValidationGroup: FValidationGroup_default,
     FErrorList: FErrorList_default
-  },
-  provide() {
-    return { [formPendingKey]: toRef(this, "pending") };
   },
   inheritAttrs: false,
   props: {
@@ -4763,6 +4759,7 @@ var FValidationForm_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCom
       }
     }
   },
+  emits: ["submit"],
   data() {
     return {
       validity: {
@@ -4770,8 +4767,7 @@ var FValidationForm_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCom
         componentsWithError: [],
         componentCount: 0
       },
-      submitted: false,
-      pending: false
+      submitted: false
     };
   },
   computed: {
@@ -4787,15 +4783,6 @@ var FValidationForm_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCom
     },
     displayErrors() {
       return this.useErrorList && this.submitted && this.errors.length > 0;
-    },
-    /**
-    * Attrs bound to the native `<form>` element.
-    * The `onSubmit` listener is excluded since it is handled by the `onSubmit`
-    * method below via `$attrs` to support awaiting async submit handlers.
-    */
-    formAttrs() {
-      const { onSubmit: _onSubmit, ...rest } = this.$attrs;
-      return rest;
     }
   },
   methods: {
@@ -4814,16 +4801,11 @@ var FValidationForm_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCom
     },
     async onSubmit(event) {
       this.submitted = true;
-      this.pending = true;
-      try {
-        if ((this.beforeValidation ? await this.beforeValidation() : void 0) === FValidationFormAction.CANCEL) return;
-        if (await this.hasFormErrors()) return;
-        if ((this.beforeSubmit ? await this.beforeSubmit() : void 0) === FValidationFormAction.CANCEL) return;
-        if (await this.hasFormErrors()) return;
-        await invokeHandlers(this.$attrs.onSubmit, event);
-      } finally {
-        this.pending = false;
-      }
+      if ((this.beforeValidation ? await this.beforeValidation() : void 0) === FValidationFormAction.CANCEL) return;
+      if (await this.hasFormErrors()) return;
+      if ((this.beforeSubmit ? await this.beforeSubmit() : void 0) === FValidationFormAction.CANCEL) return;
+      if (await this.hasFormErrors()) return;
+      this.$emit("submit", event);
     }
   }
 });
@@ -4843,7 +4825,7 @@ function _sfc_render$44(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.validity = $event),
     "stop-propagation": true
   }, {
-    default: withCtx(() => [createElementVNode("form", mergeProps({ id: _ctx.id }, _ctx.formAttrs, {
+    default: withCtx(() => [createElementVNode("form", mergeProps({ id: _ctx.id }, _ctx.$attrs, {
       novalidate: "",
       autocomplete: "off",
       onSubmit: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.onSubmit && _ctx.onSubmit(...args), ["prevent"]))

@@ -1680,8 +1680,8 @@ function refIsVue(value) {
 function refIsVueArray(value) {
   return Array.isArray(value) && value.length > 0 && refIsVue(value[0]);
 }
-function getSortedHTMLElementsFromVueRef(ref3) {
-  const htmlElements = getHTMLElementsFromVueRef(ref3);
+function getSortedHTMLElementsFromVueRef(ref2) {
+  const htmlElements = getHTMLElementsFromVueRef(ref2);
   htmlElements.sort((lhs, rhs) => {
     const lhsIndex = parseIntOrDefault(lhs.dataset.refIndex, -Infinity);
     const rhsIndex = parseIntOrDefault(rhs.dataset.refIndex, -Infinity);
@@ -1698,38 +1698,38 @@ function parseIntOrDefault(value, defaultValue) {
   }
   return defaultValue;
 }
-function getHTMLElementsFromVueRef(ref3) {
+function getHTMLElementsFromVueRef(ref2) {
   let result = [];
-  if (isEmptyArray(ref3)) {
+  if (isEmptyArray(ref2)) {
     result = [];
-  } else if (refIsVueArray(ref3)) {
-    result = ref3.map((vueRef) => vueRef.$el);
-  } else if (refIsHTMLElementArray(ref3)) {
-    result = [...ref3];
-  } else if (isSet2(ref3)) {
-    result = [getHTMLElementFromVueRef(ref3)];
+  } else if (refIsVueArray(ref2)) {
+    result = ref2.map((vueRef) => vueRef.$el);
+  } else if (refIsHTMLElementArray(ref2)) {
+    result = [...ref2];
+  } else if (isSet2(ref2)) {
+    result = [getHTMLElementFromVueRef(ref2)];
   }
   return result;
 }
 function isEmptyArray(value) {
   return Array.isArray(value) && value.length === 0;
 }
-function findElementFromVueRef(ref3) {
-  if (refIsElement(ref3)) {
-    return ref3;
-  } else if (refIsVue(ref3)) {
-    return ref3.$el;
+function findElementFromVueRef(ref2) {
+  if (refIsElement(ref2)) {
+    return ref2;
+  } else if (refIsVue(ref2)) {
+    return ref2.$el;
   }
 }
-function getHTMLElementFromVueRef(ref3) {
-  const element = findElementFromVueRef(ref3);
+function getHTMLElementFromVueRef(ref2) {
+  const element = findElementFromVueRef(ref2);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref3)}.`);
+    throw new Error(`Unable to find element from ${String(ref2)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${String(ref3)}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref2)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -2625,7 +2625,7 @@ import { defineComponent as defineComponent11 } from "vue";
 import { ElementIdService as ElementIdService3, TranslationService as TranslationService2, ValidationService as ValidationService3 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
-import { defineComponent as defineComponent10, toRef } from "vue";
+import { defineComponent as defineComponent10 } from "vue";
 import { ElementIdService as ElementIdService2, ValidationService as ValidationService2, focus as focus4 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
@@ -3097,28 +3097,12 @@ FValidationGroup_default.render = render9;
 FValidationGroup_default.__file = "packages/vue/src/components/FValidationGroup/FValidationGroup.vue";
 var FValidationGroup_default2 = FValidationGroup_default;
 
-// packages/vue/src/components/FValidationForm/use-validation-form.ts
-import { inject, ref } from "vue";
-var formPendingKey = /* @__PURE__ */ Symbol("formPending");
-
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
 function noop2() {
-}
-async function invokeHandlers(handler, event) {
-  if (typeof handler === "function") {
-    await handler(event);
-  } else if (Array.isArray(handler)) {
-    await Promise.all(handler.map((fn2) => fn2(event)));
-  }
 }
 var FValidationForm_default = defineComponent10({
   name: "FValidationForm",
   components: { FValidationGroup: FValidationGroup_default2, FErrorList: FErrorList_default2 },
-  provide() {
-    return {
-      [formPendingKey]: toRef(this, "pending")
-    };
-  },
   inheritAttrs: false,
   props: {
     /**
@@ -3180,11 +3164,16 @@ var FValidationForm_default = defineComponent10({
       }
     }
   },
+  emits: [
+    /**
+     * Emitted when form is successfully submitted.
+     */
+    "submit"
+  ],
   data() {
     return {
       validity: { isValid: true, componentsWithError: [], componentCount: 0 },
-      submitted: false,
-      pending: false
+      submitted: false
     };
   },
   computed: {
@@ -3200,15 +3189,6 @@ var FValidationForm_default = defineComponent10({
     },
     displayErrors() {
       return this.useErrorList && this.submitted && this.errors.length > 0;
-    },
-    /**
-     * Attrs bound to the native `<form>` element.
-     * The `onSubmit` listener is excluded since it is handled by the `onSubmit`
-     * method below via `$attrs` to support awaiting async submit handlers.
-     */
-    formAttrs() {
-      const { onSubmit: _onSubmit, ...rest } = this.$attrs;
-      return rest;
     }
   },
   methods: {
@@ -3231,26 +3211,21 @@ var FValidationForm_default = defineComponent10({
     },
     async onSubmit(event) {
       this.submitted = true;
-      this.pending = true;
-      try {
-        const beforeValidation = this.beforeValidation ? await this.beforeValidation() : void 0;
-        if (beforeValidation === 1 /* CANCEL */) {
-          return;
-        }
-        if (await this.hasFormErrors()) {
-          return;
-        }
-        const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : void 0;
-        if (beforeAction === 1 /* CANCEL */) {
-          return;
-        }
-        if (await this.hasFormErrors()) {
-          return;
-        }
-        await invokeHandlers(this.$attrs.onSubmit, event);
-      } finally {
-        this.pending = false;
+      const beforeValidation = this.beforeValidation ? await this.beforeValidation() : void 0;
+      if (beforeValidation === 1 /* CANCEL */) {
+        return;
       }
+      if (await this.hasFormErrors()) {
+        return;
+      }
+      const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : void 0;
+      if (beforeAction === 1 /* CANCEL */) {
+        return;
+      }
+      if (await this.hasFormErrors()) {
+        return;
+      }
+      this.$emit("submit", event);
     }
   }
 });
@@ -3275,7 +3250,7 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     default: _withCtx3(() => [
       _createCommentVNode8(" [html-validate-disable-next wcag/h32 -- submit button is slotted] "),
-      _createElementVNode6("form", _mergeProps2({ id: _ctx.id }, _ctx.formAttrs, {
+      _createElementVNode6("form", _mergeProps2({ id: _ctx.id }, _ctx.$attrs, {
         novalidate: "",
         autocomplete: "off",
         onSubmit: _cache[0] || (_cache[0] = _withModifiers2((...args) => _ctx.onSubmit && _ctx.onSubmit(...args), ["prevent"]))
@@ -3722,7 +3697,7 @@ function getAbsolutePosition(src) {
 }
 
 // packages/vue/src/utils/dataset/use-dataset-ref.ts
-import { ref as ref2, toRaw, watch } from "vue";
+import { ref, toRaw, watch } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopup/IPopup.vue?type=script
 import { defineComponent as defineComponent12 } from "vue";

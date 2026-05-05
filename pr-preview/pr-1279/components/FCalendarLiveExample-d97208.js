@@ -1694,8 +1694,8 @@ function refIsVue(value) {
 function refIsVueArray(value) {
   return Array.isArray(value) && value.length > 0 && refIsVue(value[0]);
 }
-function getSortedHTMLElementsFromVueRef(ref8) {
-  const htmlElements = getHTMLElementsFromVueRef(ref8);
+function getSortedHTMLElementsFromVueRef(ref7) {
+  const htmlElements = getHTMLElementsFromVueRef(ref7);
   htmlElements.sort((lhs, rhs) => {
     const lhsIndex = parseIntOrDefault(lhs.dataset.refIndex, -Infinity);
     const rhsIndex = parseIntOrDefault(rhs.dataset.refIndex, -Infinity);
@@ -1712,38 +1712,38 @@ function parseIntOrDefault(value, defaultValue) {
   }
   return defaultValue;
 }
-function getHTMLElementsFromVueRef(ref8) {
+function getHTMLElementsFromVueRef(ref7) {
   let result = [];
-  if (isEmptyArray(ref8)) {
+  if (isEmptyArray(ref7)) {
     result = [];
-  } else if (refIsVueArray(ref8)) {
-    result = ref8.map((vueRef) => vueRef.$el);
-  } else if (refIsHTMLElementArray(ref8)) {
-    result = [...ref8];
-  } else if (isSet2(ref8)) {
-    result = [getHTMLElementFromVueRef(ref8)];
+  } else if (refIsVueArray(ref7)) {
+    result = ref7.map((vueRef) => vueRef.$el);
+  } else if (refIsHTMLElementArray(ref7)) {
+    result = [...ref7];
+  } else if (isSet2(ref7)) {
+    result = [getHTMLElementFromVueRef(ref7)];
   }
   return result;
 }
 function isEmptyArray(value) {
   return Array.isArray(value) && value.length === 0;
 }
-function findElementFromVueRef(ref8) {
-  if (refIsElement(ref8)) {
-    return ref8;
-  } else if (refIsVue(ref8)) {
-    return ref8.$el;
+function findElementFromVueRef(ref7) {
+  if (refIsElement(ref7)) {
+    return ref7;
+  } else if (refIsVue(ref7)) {
+    return ref7.$el;
   }
 }
-function getHTMLElementFromVueRef(ref8) {
-  const element = findElementFromVueRef(ref8);
+function getHTMLElementFromVueRef(ref7) {
+  const element = findElementFromVueRef(ref7);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref8)}.`);
+    throw new Error(`Unable to find element from ${String(ref7)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${String(ref8)}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref7)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -2644,7 +2644,7 @@ import { defineComponent as defineComponent11 } from "vue";
 import { ElementIdService as ElementIdService3, TranslationService as TranslationService2, ValidationService as ValidationService3 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
-import { defineComponent as defineComponent10, toRef } from "vue";
+import { defineComponent as defineComponent10 } from "vue";
 import { ElementIdService as ElementIdService2, ValidationService as ValidationService2, focus as focus4 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
@@ -3116,28 +3116,12 @@ FValidationGroup_default.render = render9;
 FValidationGroup_default.__file = "packages/vue/src/components/FValidationGroup/FValidationGroup.vue";
 var FValidationGroup_default2 = FValidationGroup_default;
 
-// packages/vue/src/components/FValidationForm/use-validation-form.ts
-import { inject, ref } from "vue";
-var formPendingKey = /* @__PURE__ */ Symbol("formPending");
-
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
 function noop2() {
-}
-async function invokeHandlers(handler, event) {
-  if (typeof handler === "function") {
-    await handler(event);
-  } else if (Array.isArray(handler)) {
-    await Promise.all(handler.map((fn2) => fn2(event)));
-  }
 }
 var FValidationForm_default = defineComponent10({
   name: "FValidationForm",
   components: { FValidationGroup: FValidationGroup_default2, FErrorList: FErrorList_default2 },
-  provide() {
-    return {
-      [formPendingKey]: toRef(this, "pending")
-    };
-  },
   inheritAttrs: false,
   props: {
     /**
@@ -3199,11 +3183,16 @@ var FValidationForm_default = defineComponent10({
       }
     }
   },
+  emits: [
+    /**
+     * Emitted when form is successfully submitted.
+     */
+    "submit"
+  ],
   data() {
     return {
       validity: { isValid: true, componentsWithError: [], componentCount: 0 },
-      submitted: false,
-      pending: false
+      submitted: false
     };
   },
   computed: {
@@ -3219,15 +3208,6 @@ var FValidationForm_default = defineComponent10({
     },
     displayErrors() {
       return this.useErrorList && this.submitted && this.errors.length > 0;
-    },
-    /**
-     * Attrs bound to the native `<form>` element.
-     * The `onSubmit` listener is excluded since it is handled by the `onSubmit`
-     * method below via `$attrs` to support awaiting async submit handlers.
-     */
-    formAttrs() {
-      const { onSubmit: _onSubmit, ...rest } = this.$attrs;
-      return rest;
     }
   },
   methods: {
@@ -3250,26 +3230,21 @@ var FValidationForm_default = defineComponent10({
     },
     async onSubmit(event) {
       this.submitted = true;
-      this.pending = true;
-      try {
-        const beforeValidation = this.beforeValidation ? await this.beforeValidation() : void 0;
-        if (beforeValidation === 1 /* CANCEL */) {
-          return;
-        }
-        if (await this.hasFormErrors()) {
-          return;
-        }
-        const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : void 0;
-        if (beforeAction === 1 /* CANCEL */) {
-          return;
-        }
-        if (await this.hasFormErrors()) {
-          return;
-        }
-        await invokeHandlers(this.$attrs.onSubmit, event);
-      } finally {
-        this.pending = false;
+      const beforeValidation = this.beforeValidation ? await this.beforeValidation() : void 0;
+      if (beforeValidation === 1 /* CANCEL */) {
+        return;
       }
+      if (await this.hasFormErrors()) {
+        return;
+      }
+      const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : void 0;
+      if (beforeAction === 1 /* CANCEL */) {
+        return;
+      }
+      if (await this.hasFormErrors()) {
+        return;
+      }
+      this.$emit("submit", event);
     }
   }
 });
@@ -3294,7 +3269,7 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     default: _withCtx3(() => [
       _createCommentVNode8(" [html-validate-disable-next wcag/h32 -- submit button is slotted] "),
-      _createElementVNode6("form", _mergeProps2({ id: _ctx.id }, _ctx.formAttrs, {
+      _createElementVNode6("form", _mergeProps2({ id: _ctx.id }, _ctx.$attrs, {
         novalidate: "",
         autocomplete: "off",
         onSubmit: _cache[0] || (_cache[0] = _withModifiers2((...args) => _ctx.onSubmit && _ctx.onSubmit(...args), ["prevent"]))
@@ -3758,7 +3733,7 @@ function getAbsolutePosition(src) {
 }
 
 // packages/vue/src/utils/dataset/use-dataset-ref.ts
-import { ref as ref2, toRaw, watch } from "vue";
+import { ref, toRaw, watch } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=script
 import { defineComponent as defineComponent22, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef4 } from "vue";
@@ -3768,9 +3743,9 @@ import { ElementIdService as ElementIdService6, debounce as debounce4 } from "@f
 import {
   computed as computed4,
   defineComponent as defineComponent21,
-  inject as inject2,
-  ref as ref7,
-  toRef as toRef2,
+  inject,
+  ref as ref6,
+  toRef,
   useSlots as useSlots2,
   useTemplateRef as useTemplateRef3,
   watchEffect as watchEffect5
@@ -5907,9 +5882,9 @@ function isSameMonth(a, b) {
   return a.startOfMonth().equals(b.startOfMonth());
 }
 function getDayTabindex(date, active, entry) {
-  const ref8 = active ?? entry;
-  if (ref8 && isSameMonth(ref8, date)) {
-    return date.equals(ref8) ? 0 : -1;
+  const ref7 = active ?? entry;
+  if (ref7 && isSameMonth(ref7, date)) {
+    return date.equals(ref7) ? 0 : -1;
   } else {
     return date.day === 1 ? 0 : -1;
   }
@@ -6240,8 +6215,8 @@ var ICalendarNavbar_default = defineComponent19({
     getDateText(value) {
       return `${capitalize(value.monthName)} ${String(value.year)}`;
     },
-    isFocused(ref8) {
-      return document.activeElement === this.$refs[ref8];
+    isFocused(ref7) {
+      return document.activeElement === this.$refs[ref7];
     }
   }
 });
@@ -6355,7 +6330,7 @@ import {
   computed as computed2,
   nextTick,
   onMounted as onMounted2,
-  ref as ref3,
+  ref as ref2,
   watchEffect as watchEffect2
 } from "vue";
 import { ElementIdService as ElementIdService5, isEmpty as isEmpty2 } from "@fkui/logic";
@@ -6368,7 +6343,7 @@ var $t = useTranslate();
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxDropdown.vue?type=script
 import { defineComponent as _defineComponent2 } from "vue";
-import { nextTick as nextTick2, ref as ref4, useTemplateRef as useTemplateRef2, watchEffect as watchEffect3 } from "vue";
+import { nextTick as nextTick2, ref as ref3, useTemplateRef as useTemplateRef2, watchEffect as watchEffect3 } from "vue";
 var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
   __name: "IComboboxDropdown",
   props: {
@@ -6384,7 +6359,7 @@ var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
     __expose();
     const emit = __emit;
     const listboxRef = useTemplateRef2("listbox");
-    const activeElement = ref4();
+    const activeElement = ref3();
     function isOptionActive(item) {
       return item === __props.activeOption;
     }
@@ -6609,9 +6584,9 @@ var FExpand_default2 = FExpand_default;
 var tooltipAttachTo = /* @__PURE__ */ Symbol("tooltipAttachTo");
 
 // packages/vue/src/components/FTooltip/use-animation.ts
-import { computed as computed3, onMounted as onMounted3, ref as ref5, watchEffect as watchEffect4 } from "vue";
+import { computed as computed3, onMounted as onMounted3, ref as ref4, watchEffect as watchEffect4 } from "vue";
 var initialized = false;
-var reducedMotion = ref5(false);
+var reducedMotion = ref4(false);
 function useAnimation(options) {
   const { duration = 250, easing = "ease-in", element: elementRef } = options;
   let current = "collapse";
@@ -6680,10 +6655,10 @@ function useAnimation(options) {
 }
 
 // packages/vue/src/components/FTooltip/use-horizontal-offset.ts
-import { onMounted as onMounted4, onUnmounted as onUnmounted3, readonly, ref as ref6, watch as watch3 } from "vue";
+import { onMounted as onMounted4, onUnmounted as onUnmounted3, readonly, ref as ref5, watch as watch3 } from "vue";
 function useHorizontalOffset(options) {
   const { element: elementRef, parent: parentRef } = options;
-  const offset2 = ref6(16);
+  const offset2 = ref5(16);
   watch3(() => elementRef.value, updateOffset);
   watch3(() => parentRef, updateOffset);
   onMounted4(() => {
@@ -6782,9 +6757,9 @@ var FTooltip_default = defineComponent21({
     "toggle"
   ],
   setup(props) {
-    const provided = inject2(tooltipAttachTo, null);
-    const attachTo = toRef2(props, "attachTo");
-    const ready = ref7(false);
+    const provided = inject(tooltipAttachTo, null);
+    const attachTo = toRef(props, "attachTo");
+    const ready = ref6(false);
     const iconTarget = computed4(() => {
       if (provided?.value) {
         return provided.value;
@@ -6983,7 +6958,7 @@ function* labelClasses(options) {
 }
 
 // packages/vue/src/components/FFieldset/use-fieldset.ts
-import { inject as inject3 } from "vue";
+import { inject as inject2 } from "vue";
 var injectionKeys = {
   sharedName: /* @__PURE__ */ Symbol("sharedName"),
   showDetails: /* @__PURE__ */ Symbol("showDetails"),
@@ -6991,9 +6966,9 @@ var injectionKeys = {
 };
 function useFieldset() {
   return {
-    sharedName: inject3(injectionKeys.sharedName, void 0),
-    showDetails: inject3(injectionKeys.showDetails, "never"),
-    getFieldsetLabelText: inject3(
+    sharedName: inject2(injectionKeys.sharedName, void 0),
+    showDetails: inject2(injectionKeys.showDetails, "never"),
+    getFieldsetLabelText: inject2(
       injectionKeys.getFieldsetLabelText,
       () => void 0
     )

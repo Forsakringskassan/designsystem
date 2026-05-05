@@ -9727,23 +9727,6 @@ function _sfc_render$51(_ctx, _cache, $props, $setup, $data, $options) {
 	], 16, _hoisted_1$80);
 }
 var FIcon_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FIcon_vue_vue_type_script_lang_default, [["render", _sfc_render$51]]);
-/**
-* @internal
-*/
-var formPendingKey = Symbol("formPending");
-/**
-* Inject the pending (inflight) state from the closest {@link FValidationForm}.
-*
-* Returns a `Ref<boolean>` that is `true` while the form is processing a
-* submission (validation, callbacks and the submit handler).
-*
-* Defaults to `ref(false)` when there is no ancestor `FValidationForm`.
-*
-* @internal
-*/
-function useValidationForm() {
-	return inject(formPendingKey, /* @__PURE__ */ ref(false));
-}
 function useInflight(fn, disabled) {
 	const inflight = /* @__PURE__ */ ref(false);
 	if (!fn || typeof fn !== "function") return {
@@ -9885,22 +9868,29 @@ var FButton_default = /* @__PURE__ */ defineComponent({
 		disabled: {
 			type: Boolean,
 			required: false
+		},
+		/**
+		* Show a spinner on the button to indicate a pending operation.
+		* Use this to reflect an ongoing async action triggered by this button.
+		*/
+		pending: {
+			type: Boolean,
+			required: false
 		}
 	},
 	setup(__props) {
 		const props = __props;
 		const originalAttrs = useAttrs();
-		const formPending = useValidationForm();
 		const disabled = computed(() => {
 			return props.disabled || inflight.value;
 		});
-		const { inflight: buttonInflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
+		const { inflight: clickInflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
 		const attrs = {
 			...originalAttrs,
 			onClick
 		};
 		const inflight = computed(() => {
-			return buttonInflight.value || props.type === "submit" && formPending.value;
+			return clickInflight.value || Boolean(props.pending);
 		});
 		const hasIconLeft = computed(() => {
 			return Boolean(props.iconLeft);

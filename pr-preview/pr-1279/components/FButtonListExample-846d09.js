@@ -150,17 +150,10 @@ FIcon_default.render = render;
 FIcon_default.__file = "packages/vue/src/components/FIcon/FIcon.vue";
 var FIcon_default2 = FIcon_default;
 
-// packages/vue/src/components/FValidationForm/use-validation-form.ts
-import { inject, ref } from "vue";
-var formPendingKey = /* @__PURE__ */ Symbol("formPending");
-function useValidationForm() {
-  return inject(formPendingKey, ref(false));
-}
-
 // packages/vue/src/components/FButton/use-inflight.ts
-import { ref as ref2 } from "vue";
+import { ref } from "vue";
 function useInflight(fn, disabled) {
-  const inflight = ref2(false);
+  const inflight = ref(false);
   if (!fn || typeof fn !== "function") {
     return { inflight, fn: void 0 };
   }
@@ -281,20 +274,27 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
     disabled: {
       type: Boolean,
       required: false
+    },
+    /**
+     * Show a spinner on the button to indicate a pending operation.
+     * Use this to reflect an ongoing async action triggered by this button.
+     */
+    pending: {
+      type: Boolean,
+      required: false
     }
   },
   setup(__props, { expose: __expose }) {
     __expose();
     const props = __props;
     const originalAttrs = useAttrs();
-    const formPending = useValidationForm();
     const disabled = computed(() => {
       return props.disabled || inflight.value;
     });
-    const { inflight: buttonInflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
+    const { inflight: clickInflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
     const attrs = { ...originalAttrs, onClick };
     const inflight = computed(() => {
-      return buttonInflight.value || props.type === "submit" && formPending.value;
+      return clickInflight.value || Boolean(props.pending);
     });
     const hasIconLeft = computed(() => {
       return Boolean(props.iconLeft);
@@ -324,7 +324,7 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       }
       return classes;
     });
-    const __returned__ = { props, originalAttrs, formPending, disabled, buttonInflight, onClick, attrs, inflight, hasIconLeft, hasIconRight, hasIcon, buttonClass, get FIcon() {
+    const __returned__ = { props, originalAttrs, disabled, clickInflight, onClick, attrs, inflight, hasIconLeft, hasIconRight, hasIcon, buttonClass, get FIcon() {
       return FIcon_default2;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
