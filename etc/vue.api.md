@@ -1523,10 +1523,13 @@ export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBa
 // @public (undocumented)
 export interface TableColumnMenu<T> extends TableColumnBase {
     actions?: Array<{
-        label: string;
+        label: string | ((this: void, row: T) => string);
         icon?: string;
         onClick?(this: void, row: T): void;
-    }>;
+    }> | ((this: void, row: T) => Array<{
+        label: string | ((this: void, row: T) => string);
+        onClick?(this: void, row: T): void;
+    }>);
     text(this: void, row: T): string | null;
     type: "menu";
 }

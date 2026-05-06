@@ -21,12 +21,59 @@ export interface TableColumnMenu<T> extends TableColumnBase {
      * - `icon`: an optional icon.
      * - `onClick`: a callback when the action is clicked.
      */
-    actions?: Array<{
-        label: string;
-        icon?: string;
-        onClick?(this: void, row: T): void;
-    }>;
+    actions?:
+        | Array<{
+              label: string | ((this: void, row: T) => string);
+              icon?: string;
+              onClick?(this: void, row: T): void;
+          }>
+        | ((
+              this: void,
+              row: T,
+          ) => Array<{
+              label: string | ((this: void, row: T) => string);
+              onClick?(this: void, row: T): void;
+          }>);
 }
+
+/**
+ * @internal
+ */
+export type TableColumnMenuActionLabel<T> =
+    | string
+    | ((this: void, row: T) => string);
+
+/**
+ * @internal
+ */
+export interface TableColumnMenuAction<T> {
+    label: TableColumnMenuActionLabel<T>;
+    icon?: string;
+    onClick?(this: void, row: T): void;
+}
+
+/**
+ * @internal
+ */
+export type TableColumnMenuActions<T> =
+    | Array<TableColumnMenuAction<T>>
+    | ((this: void, row: T) => Array<TableColumnMenuAction<T>>);
+
+/**
+ * @internal
+ */
+export interface NormalizedTableColumnMenuAction<T> {
+    readonly label: TableColumnMenuActionLabel<T>;
+    readonly icon: string | null;
+    onClick(this: void, row: T): void;
+}
+
+/**
+ * @internal
+ */
+export type NormalizedTableColumnMenuActions<T> =
+    | Array<NormalizedTableColumnMenuAction<T>>
+    | ((this: void, row: T) => Array<NormalizedTableColumnMenuAction<T>>);
 
 /**
  * @internal
@@ -35,11 +82,7 @@ export interface NormalizedTableColumnMenu<
     T,
 > extends NormalizedTableColumnBase<never> {
     readonly type: "menu";
-    readonly actions: Array<{
-        readonly label: string;
-        readonly icon: string | null;
-        onClick(this: void, row: T): void;
-    }>;
+    readonly actions: NormalizedTableColumnMenuActions<T>;
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnMenu<T>;
@@ -54,18 +97,30 @@ function noop(): void {
 /**
  * @internal
  */
+function normalizeMenuAction<T>(
+    action: TableColumnMenuAction<T>,
+): NormalizedTableColumnMenuAction<T> {
+    return {
+        label: action.label,
+        icon: action.icon ?? null,
+        onClick: action.onClick ?? noop,
+    };
+}
+
+/**
+ * @internal
+ */
 export function normalizeMenuColumn<T>(
     column: TableColumnMenu<T>,
 ): Omit<NormalizedTableColumnMenu<T>, OmittedNormalizedColumnProperties> {
+    const actions = column.actions ?? [];
+
     return {
         type: "menu",
         text: getValueFn(column.text, undefined, String, ""),
-        actions: (column.actions ?? []).map((it) => {
-            return {
-                label: it.label,
-                icon: it.icon ?? null,
-                onClick: it.onClick ?? noop,
-            };
-        }),
+        actions:
+            typeof actions === "function"
+                ? (row: T) => actions(row).map(normalizeMenuAction)
+                : actions.map(normalizeMenuAction),
     };
 }
