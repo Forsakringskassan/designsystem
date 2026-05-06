@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 6.45.0 (2026-05-06)
+
+### Features
+
+* **@fkui/vue:** set f-table nested aria attributes (refs SFKUI-7436) 1214a1a
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** tertiary button size change to same as other button sizes (fixes SFKUI-7526) b917355
+* **@fkui/vue:** prevent page scroll on space in empty table cells (fixes SFKUI-7812) 1103e34
+* **deps:** update dependency cssnano to v7.1.8 f983768
+
 ## 6.44.0 (2026-04-30)
 
 ### Features
