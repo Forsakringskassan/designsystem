@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Automatisk testning - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-df51cd.css"
+            href="../../assets/docs-ef8005.css"
             crossorigin
-            integrity="sha384-2Y3K0SnvI72DPBN8T8xIrep2vsDH5cJoFRoKseb/8NzloY9W7wXL8mL4LpRQc9os"
+            integrity="sha384-jJjb0mwT4yY3AJVbYjxCHyCeeSvpTtp1lC7leAeA8yWz1nqnu4TDT1DBV1JV8y6H"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-6c9b93.css"
+            href="../../assets/docs-fkui-8bf291.css"
             crossorigin
-            integrity="sha384-1vFkigbDJwiImIbSQ1LxDsrexKTimsQ04+VlNseXZvX0Qq8imAi8KnRNfBEHHAyv"
+            integrity="sha384-rTChEuVmK0a1yKPaoJUPCrb7cFyxgdmLu5fk1esVLv8egJliuHIfidQp9vsGlTCQ"
             
         />
 
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-907e93.js",
     "@fkui/date": "../../assets/vendor-fkui-date-6cefc4.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-391bd8.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-ef7adc.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../assets/vendor-fkui-logic-907e93.js": "sha384-4TeiJAmFYySCGdBwAd/6BruO6Gq21Zk16k0vfgF/ZwvVH1Ze+8Y8ZNkAFJkEg0LX",
     "../../assets/vendor-fkui-date-6cefc4.js": "sha384-9srvwBR/8E3tvhOCMv4zfTdALZq6lxNa1BhGi7k1N8IIkIucgvs4UnUisqLKGYPY",
-    "../../assets/vendor-fkui-vue-391bd8.js": "sha384-ocfNTZPWp0hmg6B8jR0a7t26G8vIgZ0/zutDhMUfVLx3OnR/yWIHqMrGaTSCEIRF",
+    "../../assets/vendor-fkui-vue-ef7adc.js": "sha384-7Em0CDQvF8TngsuvV2B9ZtARcDf/eZVDsaulK7a5fMp1M+HOCYUuqDr1srvTSjlS",
     "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-130a15.json"
+            href="../../search-data-d7fefc.json"
             as="fetch"
             crossorigin
-            integrity="sha384-fAT8IdYG+Na8HXYvPlIrfPA2JbMXDhu1uFywgifLvfPuREaN4np8TNtMZ+j95Jyg"
+            integrity="sha384-zZ68LE/dK65UTTWbhP4jc/KhTO0DVjSisczRa0cwXqpdql72nDB8ydOYrAvrPBmI"
             id="search-data"
         />
     </head>
@@ -478,6 +478,17 @@
         </a>
     </li><li class="link ">
         <a
+            href="../migration/migrating-to-ftable.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-ftable.html"
+            
+        >
+            Ftable
+        </a>
+    </li><li class="link ">
+        <a
             href="../migration/migrating-to-v5.html"
             
             
@@ -581,9 +592,7 @@
                                 
                                 <li><a href="#jest">Jest</a></li>
                                 
-                                <li><a href="#komponenttester">Komponenttester</a></li>
-                                
-                                <li><a href="#e2e_tester">E2E tester</a></li>
+                                <li><a href="#test_av_exempel">Test av exempel</a></li>
                                 
                                 <li><a href="#pageobject_for_cypress">Pageobject för Cypress</a></li>
                                 
@@ -624,9 +633,11 @@ Svagheten ligger i att det är svårt att vänta ut cykler från exempelvis Vue.
 <ul>
 <li>enskilda komponenter</li>
 <li>interaktion med komponenten.</li>
+<li>visuella tester (screenshot test)</li>
 </ul>
 <p class="docs-paragraph">Komponenttester körs i Chrome med Cypress och där testar vi komponenter i isolation.
 Vi interagerar med komponenten på samma sätt som en konsument implementerat ett use-case och på ett sätt som en slutkund interagerat med.
+För komponenter använder vi oss av samma pageobject som konsumenter, vid behov kompletterar vi med interna pageobject.
 Styrkan i komponenttester ligger i att en riktig browser kör testfallen och att Cypress är bra på att hantera att vänta på cykler från exempelvis Vue.js.
 Svagheten ligger i att det är svårare att mocka omvärlden och lockande att skriva tester som är beroende av många andra komponenter (ej isolerade tester).</p>
 <h3 id="e2e_med_cypress" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#e2e_med_cypress">E2E med <code>cypress</code></a></h3><p class="docs-paragraph">Med E2E-tester testar vi:</p>
@@ -640,7 +651,7 @@ Styrkan i E2E-tester ligger i att det är enkelt att testa hur flera komponenter
 Svagheten ligger i att testerna är dyra resursmässigt (framförallt långsamma).</p>
 <h3 id="filnamn_och_katalogstruktur" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#filnamn_och_katalogstruktur">Filnamn och katalogstruktur</a></h3>
                 <div
-                    id="example-7a373c"
+                    id="example-014a8f"
                     class="code-preview code-preview--default"
                     
                     
@@ -669,7 +680,7 @@ Svagheten ligger i att testerna är dyra resursmässigt (framförallt långsamma
             <h3 id="testdata" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#testdata">Testdata</a></h3><h4 id="minimera_innehallet_i_testdata" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#minimera_innehallet_i_testdata">Minimera innehållet i testdata</a></h4><p class="docs-paragraph">Håll nere innehållet i din testdata, inkludera bara det som är relevant för just det specifika testfallet.</p>
 
                 <div
-                    id="example-29eb6d"
+                    id="example-ddd87b"
                     class="code-preview code-preview--default"
                     
                     
@@ -696,7 +707,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
 <p class="docs-paragraph">Ibland kan detta orsaka konflikt med datatyper i Typescript:</p>
 
                 <div
-                    id="example-c3b7d8"
+                    id="example-b20028"
                     class="code-preview code-preview--default"
                     
                     
@@ -713,7 +724,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
             <p class="docs-paragraph">Överväg att ändra prototypen så den inte kräver mer än nödvändigt:</p>
 
                 <div
-                    id="example-8854e5"
+                    id="example-e478b3"
                     class="code-preview code-preview--default"
                     
                     
@@ -727,7 +738,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
             <p class="docs-paragraph">alternativt:</p>
 
                 <div
-                    id="example-afc6ef"
+                    id="example-065c81"
                     class="code-preview code-preview--default"
                     
                     
@@ -746,7 +757,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
             <p class="docs-paragraph">Ytterligare ett alternativ är att skapa en funktion för att skapa upp objektet:</p>
 
                 <div
-                    id="example-b339a3"
+                    id="example-9c0a5a"
                     class="code-preview code-preview--default"
                     
                     
@@ -784,7 +795,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
             <h4 id="foredra_testdata_i_direkt_anslutning_till_testfallet" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#foredra_testdata_i_direkt_anslutning_till_testfallet">Föredra testdata i direkt anslutning till testfallet</a></h4><p class="docs-paragraph">Testdata lägger vi i första hand i direkt anslutning till testfallet.</p>
 
                 <div
-                    id="example-7ed848"
+                    id="example-bc4810"
                     class="code-preview code-preview--default"
                     
                     
@@ -810,7 +821,7 @@ Genom att lägga testdata i anslutning till testet är det lätt att utläsa var
 <h4 id="bryt_ut_stor_och_repetitiv_testdata" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#bryt_ut_stor_och_repetitiv_testdata">Bryt ut stor och repetitiv testdata</a></h4><p class="docs-paragraph">Om det inte går att minimera storleken på testdata eller den används frekvent bryt ut den till en separat fil.</p>
 
                 <div
-                    id="example-e723db"
+                    id="example-f141dc"
                     class="code-preview code-preview--default"
                     
                     
@@ -837,7 +848,7 @@ Genom att lägga testdata i anslutning till testet är det lätt att utläsa var
             <p class="docs-paragraph">Filerna läggs med fördel i <code>__fixtures__</code>:</p>
 
                 <div
-                    id="example-17f520"
+                    id="example-bb8659"
                     class="code-preview code-preview--default"
                     
                     
@@ -861,7 +872,7 @@ Stora mängder testdata distraherar från själva testfallet.</p>
 </ol>
 
                 <div
-                    id="example-fe2615"
+                    id="example-18950b"
                     class="code-preview code-preview--default"
                     data-test="given-when-then"
                     
@@ -891,7 +902,7 @@ Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p>
 <p class="docs-paragraph">Dåligt:</p>
 
                 <div
-                    id="example-3d7d9b"
+                    id="example-04e79d"
                     class="code-preview code-preview--default"
                     
                     
@@ -907,7 +918,7 @@ Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p>
 <p class="docs-paragraph">Bra:</p>
 
                 <div
-                    id="example-1def56"
+                    id="example-f53613"
                     class="code-preview code-preview--default"
                     
                     
@@ -935,7 +946,8 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <li>[ ] Enhetstest för propar?</li>
 <li>[ ] Enhetstest för event?</li>
 <li>[ ] Enhetstest för HTML-Validate?</li>
-<li>[ ] Component tests för interaktion med komponent?</li>
+<li>[ ] Komponenttest för interaktion med komponent?</li>
+<li>[ ] Visuellt test genom komponenttest (screenshot test)?</li>
 <li>[ ] Cypresstest för exempel i dokumentation?</li>
 <li>[ ] Pageobject?</li>
 </ul>
@@ -950,7 +962,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <li>Systemet under test (SUT) (exempelvis klassen, funktionen, komponenten som testas).</li>
 </ol>
 <p class="docs-paragraph">Typescript funktion, klass osv:</p><div
-                    id="example-f4cf3f"
+                    id="example-fa0e16"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -969,7 +981,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
             <p class="docs-paragraph">För en VueJS komponent, importera komponenten sist direkt från <code>.vue</code> filen:</p>
 
                 <div
-                    id="example-56eeda"
+                    id="example-bf803d"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -982,7 +994,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
             <p class="docs-paragraph">Motivering: ordningen av imports gör det mer överskådligt och snabbare att greppa.</p>
 <h3 id="props" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#props">Props</a></h3>
                 <div
-                    id="example-27d665"
+                    id="example-c5256e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1015,7 +1027,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <p class="docs-paragraph">Motivering: genom att inte attacha till <code>body</code> så behöver vi inte lika mycket uppstädning mellan testfall</p>
 <h3 id="foredra_jest_spyon_over_jest_fn" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#foredra_jest_spyon_over_jest_fn">Föredra <code>jest.spyOn</code> över <code>jest.fn()</code></a></h3>
                 <div
-                    id="example-bcd50b"
+                    id="example-f3d66e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1030,7 +1042,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <h3 id="foredra_lokalt_scopad_wrapper_over_global" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#foredra_lokalt_scopad_wrapper_over_global">Föredra lokalt scopad wrapper över global</a></h3><p class="docs-paragraph">istället för:</p>
 
                 <div
-                    id="example-b6de64"
+                    id="example-b77729"
                     class="code-preview code-preview--default"
                     
                     
@@ -1047,7 +1059,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
             <p class="docs-paragraph">kör:</p>
 
                 <div
-                    id="example-9e31dd"
+                    id="example-cc4d6a"
                     class="code-preview code-preview--default"
                     
                     
@@ -1076,7 +1088,7 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
 <p class="docs-paragraph">För att korrekt mocka och verifiera <code>console.log</code> använder du <code>jest.spyOn(..)</code>:</p>
 
                 <div
-                    id="example-1e98fc"
+                    id="example-b1f7bb"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -1110,12 +1122,12 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
                 </div>
             <p class="docs-paragraph">Undvik <code>console.log = jest.fn()</code> då det gör det svårare att återställa mellan testfall.
 Är du inte försiktig när du mockar <code>console.log</code> försvårar du för andra som försöker använda <code>console.log</code> och du kan dölja riktiga fel som skrivs ut i console.</p>
-<h3 id="folj_best_practice_for_jest" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#folj_best_practice_for_jest">Följ best practice för jest</a></h3><p class="docs-paragraph">Länk</p>
-<h2 id="komponenttester" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#komponenttester">Komponenttester</a></h2><h2 id="e2e_tester" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#e2e_tester">E2E tester</a></h2><h3 id="vi_skriver_ett_e2e_cypress_test_for_varje_korbart_exempel" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#vi_skriver_ett_e2e_cypress_test_for_varje_korbart_exempel">Vi skriver ett E2E cypress test för varje körbart exempel</a></h3><p class="docs-paragraph">Motivering: då exempel är en del av det vi levererar till konsumenter vill vi att de alltid ska vara i ett fungerande skick och inte utdaterade.</p>
+<h2 id="test_av_exempel" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#test_av_exempel">Test av exempel</a></h2><h3 id="vi_skriver_cypress_test_for_varje_korbart_exempel" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#vi_skriver_cypress_test_for_varje_korbart_exempel">Vi skriver Cypress test för varje körbart exempel</a></h3><p class="docs-paragraph">Vi implementerar ett E2E‑test för varje exempel för att säkerställa att det laddas korrekt. Dessutom skall enkla komponenttester implementeras för att validera de grundläggande funktionerna.</p>
+<p class="docs-paragraph">Motivering: då exempel är en del av det vi levererar till konsumenter vill vi att de alltid ska vara i ett fungerande skick och inte utdaterade.</p>
 <h2 id="pageobject_for_cypress" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#pageobject_for_cypress">Pageobject för Cypress</a></h2><p class="docs-paragraph">Vi skriver och levererar pageobject för alla publika komponenter och moduler.</p>
 <h3 id="mall" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#mall">Mall</a></h3>
                 <div
-                    id="example-7a5fdc"
+                    id="example-65c08c"
                     class="code-preview code-preview--default"
                     
                     
@@ -1156,7 +1168,7 @@ Undvik arrow-funktion-som-property mönster:</p>
 <p class="docs-paragraph">Istället för:</p>
 
                 <div
-                    id="example-4d0667"
+                    id="example-024049"
                     class="code-preview code-preview--default"
                     
                     
@@ -1181,7 +1193,7 @@ Undvik arrow-funktion-som-property mönster:</p>
             <p class="docs-paragraph">Använd vanliga klassmetoder:</p>
 
                 <div
-                    id="example-1b792c"
+                    id="example-76bb1d"
                     class="code-preview code-preview--default"
                     
                     
@@ -1209,7 +1221,7 @@ Undvik arrow-funktion-som-property mönster:</p>
 Skriv istället ihop selectorn med en template literal:</p>
 
                 <div
-                    id="example-c5c5a9"
+                    id="example-59b14e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1269,9 +1281,9 @@ Skriv istället ihop selectorn med en template literal:</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/update-validation-config-type (<a href="https://github.com/Forsakringskassan/designsystem/commits/441d3324bdc39098ea99b3215e1bcdcb332a72ce">441d332</a>)<br />
+<div class="footer__right"><div class="version">feature/update-validation-config-type (<a href="https://github.com/Forsakringskassan/designsystem/commits/e0eb3b76e2073adcf9933eab02a27faad435175a">e0eb3b7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1253">PR 1253</a><br />
-        2026-04-28 12:10
+        2026-05-06 07:44
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1405,10 +1417,10 @@ Skriv istället ihop selectorn med en template literal:</p>
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-88d7b6.js"
+            src="../../assets/processors/selectable-version/select-version-19655c.js"
             type="module"
             crossorigin
-            integrity="sha384-pYmAdE4CSF1M92UW8WSZr05fsZeF/6ugFr/EOeGm1dB37nNahZQR5/LCA2vD8hKQ"
+            integrity="sha384-tw6L+jj4H9K6Jo/Oi6CqrYe2PUYGLPwhDjJsEZSew833+Fcrek2OhH5IyDgooJTG"
             
         ></script><script
             src="../../assets/main-d3aa2b.js"
