@@ -6,6 +6,7 @@ export const personnummerYounger: Validator = {
     name: "personnummerYounger",
     validation(value, _element, config) {
         const valueAsDate = formatPersonnummerToDate(value);
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string -- Config may contain objects
         const otherAsDate = formatPersonnummerToDate(String(config.otherField));
         if (!valueAsDate || !otherAsDate) {
             return true;

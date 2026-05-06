@@ -605,13 +605,16 @@ export interface Validator<TConfig = ValidatorConfig> {
 }
 
 // @public
-export type ValidatorConfig = Record<string, string | number | boolean | string[] | unknown[]> & ValidatorOptions;
+export type ValidatorConfig = Record<string, string | number | boolean | string[] | unknown[] | ValidatorObjectType> & ValidatorOptions;
 
 // @public
 export type ValidatorConfigs = Record<ValidatorName | string, ValidatorConfig | undefined>;
 
 // @public
 export type ValidatorName = string;
+
+// @public
+export type ValidatorObjectType = Record<string, string | number | boolean>;
 
 // @public (undocumented)
 export interface ValidatorOptions {
