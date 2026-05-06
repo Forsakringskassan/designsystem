@@ -24,6 +24,7 @@ export class HoursMinutesValidatorUtils {
 
         const parseFunction =
             HoursMinutesValidatorUtils.getParserFromConfig(config);
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string -- Config may contain objects
         const limitAsNumber = parseFunction(String(config[name]));
         if (!isSet(limitAsNumber)) {
             throw new Error(`config.${name} must be a number`);

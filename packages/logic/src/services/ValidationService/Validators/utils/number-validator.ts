@@ -21,6 +21,7 @@ export function numberValidator<K extends keyof T, T extends ValidatorConfig>(
         return false;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string -- Config may contain objects
     const limitAsNumber = parseNumber(String(config[name]));
     if (limitAsNumber === undefined) {
         throw new Error(`config.${String(name)} must be a number`);

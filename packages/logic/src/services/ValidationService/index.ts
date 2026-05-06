@@ -15,6 +15,7 @@ export {
     type ValidationState,
     type ValidatorConfig,
     type ValidatorConfigs,
+    type ValidatorObjectType,
     type ValidatorOptions,
     type ValidityEvent,
     type ValidityMode,
