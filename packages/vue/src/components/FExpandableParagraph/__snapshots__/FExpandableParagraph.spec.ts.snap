@@ -39,7 +39,9 @@ exports[`snapshots should match snapshot when collapsed 1`] = `
     </span>
     <!--v-if-->
   </div>
-  <f-expand-stub />
+  <f-expand-stub
+    expanded="false"
+  />
 </div>
 `;
 
@@ -82,7 +84,9 @@ exports[`snapshots should match snapshot when expanded 1`] = `
     </span>
     <!--v-if-->
   </div>
-  <f-expand-stub />
+  <f-expand-stub
+    expanded="true"
+  />
 </div>
 `;
 
@@ -125,7 +129,9 @@ exports[`snapshots should match snapshot with custom heading level 1`] = `
     </h3>
     <!--v-if-->
   </div>
-  <f-expand-stub />
+  <f-expand-stub
+    expanded="false"
+  />
 </div>
 `;
 
@@ -168,7 +174,9 @@ exports[`snapshots should match snapshot with list styling 1`] = `
     </h3>
     <!--v-if-->
   </div>
-  <f-expand-stub />
+  <f-expand-stub
+    expanded="false"
+  />
 </div>
 `;
 
@@ -217,6 +225,8 @@ exports[`snapshots should match snapshot with related information 1`] = `
       
     </div>
   </div>
-  <f-expand-stub />
+  <f-expand-stub
+    expanded="false"
+  />
 </div>
 `;

@@ -121,7 +121,7 @@ export default defineComponent({
                 <slot name="related"></slot>
             </div>
         </div>
-        <f-expand>
+        <f-expand :expanded>
             <div v-show="expanded" :id class="expandable-paragraph__container">
                 <div class="expandable-paragraph__content">
                     <!-- @slot Slot used for content shown when expanded -->

@@ -1,23 +1,32 @@
-import { getHTMLElementFromVueRef } from "../../utils";
-import { hiddenStyle, initialStyle, visibleStyle } from "./styles";
+import { transitionStyle } from "./styles";
 
 /**
+ * Animates the element from `height: 0px` to its natural height.
+ *
+ * Uses two nested `requestAnimationFrame` calls to ensure the browser
+ * measures the natural height before starting the animation:
+ * - First frame: measures natural height, then sets `height: 0px`
+ * - Second frame: sets the measured height to trigger the CSS transition
+ *
+ * Calls `done` when the CSS transition completes to notify Vue that the
+ * enter transition has finished, which triggers `onAfterEnter`.
+ *
+ * @param element - The element to transition.
+ * @param done - Vue's callback to signal that the transition has completed.
  * @internal
  */
-export function enterTransition(element: Element): number {
-    let newHeight = 0;
-    const htmlElement = getHTMLElementFromVueRef(element);
-    Object.assign(htmlElement.style, initialStyle);
-    Object.assign(htmlElement.style, hiddenStyle);
-    htmlElement.style.width = getComputedStyle(element).width;
-    const height = getComputedStyle(element).height;
-    Object.assign(htmlElement.style, visibleStyle);
-    // Force redraw
-    /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, there should be a better way */
-    getComputedStyle(element).height;
-    setTimeout(() => {
-        newHeight = Number.parseInt(height, 10);
-        htmlElement.style.height = height;
+export function enterTransition(element: Element, done: () => void): void {
+    const htmlElement = element as HTMLElement;
+    Object.assign(htmlElement.style, transitionStyle);
+
+    requestAnimationFrame(() => {
+        const height = getComputedStyle(htmlElement).height;
+        htmlElement.style.height = "0px";
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions -- "force reflow"-trick
+        getComputedStyle(htmlElement).height;
+        requestAnimationFrame(() => {
+            htmlElement.style.height = height;
+            htmlElement.addEventListener("transitionend", done, { once: true });
+        });
     });
-    return newHeight;
 }
