@@ -2,7 +2,7 @@
 title: Komponenter
 name: components
 layout: content-with-menu
-visible: false
+visible: true
 ---
 
 Komponenterna är grunden i designsystemet. De kan användas i många olika sammanhang.
