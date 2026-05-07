@@ -34,9 +34,7 @@ exports[`snapshots should match snapshot when collapsed 1`] = `
       </span>
     </button>
   </h2>
-  <f-expand-stub
-    expanded="false"
-  />
+  <f-expand-stub />
 </div>
 `;
 
@@ -74,9 +72,7 @@ exports[`snapshots should match snapshot when expanded 1`] = `
       </span>
     </button>
   </h2>
-  <f-expand-stub
-    expanded="true"
-  />
+  <f-expand-stub />
 </div>
 `;
 
@@ -85,7 +81,7 @@ exports[`snapshots should match snapshot with "outside" slot 1`] = `
   <h2 class="expandable-panel__heading"><button type="button" aria-expanded="false" aria-controls="my-id"><span class="expandable-panel__title"><span class="expandable-panel__title__text">My panel title</span>
       <!--v-if--></span><span class="expandable-panel__icon"><f-icon-stub name="arrow-down" library="f"></f-icon-stub></span>
     </button></h2>
-  <f-expand-stub expanded="false"></f-expand-stub>
+  <f-expand-stub></f-expand-stub>
 </div>
 `;
 
@@ -94,7 +90,7 @@ exports[`snapshots should match snapshot with custom heading level 1`] = `
   <h3 class="expandable-panel__heading"><button type="button" aria-expanded="false" aria-controls="my-id"><span class="expandable-panel__title"><span class="expandable-panel__title__text">My panel title</span>
       <!--v-if--></span><span class="expandable-panel__icon"><f-icon-stub name="arrow-down" library="f"></f-icon-stub></span>
     </button></h3>
-  <f-expand-stub expanded="false"></f-expand-stub>
+  <f-expand-stub></f-expand-stub>
 </div>
 `;
 
@@ -103,7 +99,7 @@ exports[`snapshots should match snapshot with generated id 1`] = `
   <h2 class="expandable-panel__heading"><button type="button" aria-expanded="false" aria-controls="fkui-vue-element-0001"><span class="expandable-panel__title"><span class="expandable-panel__title__text">My panel title</span>
       <!--v-if--></span><span class="expandable-panel__icon"><f-icon-stub name="arrow-down" library="f"></f-icon-stub></span>
     </button></h2>
-  <f-expand-stub expanded="false"></f-expand-stub>
+  <f-expand-stub></f-expand-stub>
 </div>
 `;
 
@@ -154,8 +150,6 @@ exports[`snapshots should match snapshot with notification 1`] = `
       </span>
     </button>
   </h2>
-  <f-expand-stub
-    expanded="false"
-  />
+  <f-expand-stub />
 </div>
 `;

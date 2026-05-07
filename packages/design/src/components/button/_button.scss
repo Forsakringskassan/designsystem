@@ -219,11 +219,6 @@ $button--tertiary: (
             }
         }
 
-        &:disabled,
-        &[aria-disabled="true"] {
-            border: none;
-        }
-
         &--inverted {
             color: $button-tertiary-inverted-color-text-default;
 
@@ -237,8 +232,6 @@ $button--tertiary: (
             &:disabled,
             &[aria-disabled="true"] {
                 color: $button-tertiary-inverted-color-text-disabled;
-                border: none;
-                border-width: 0;
                 background-color: $button-tertiary-inverted-color-background-disabled;
             }
         }

@@ -128,7 +128,7 @@ export default defineComponent({
             </button>
         </component>
 
-        <f-expand :expanded>
+        <f-expand>
             <div v-show="expanded" :id class="expandable-panel__content">
                 <div class="expandable-panel__body">
                     <!-- @slot Slot used for content shown when panel is expanded -->
