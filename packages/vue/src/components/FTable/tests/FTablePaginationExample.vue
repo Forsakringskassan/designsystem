@@ -34,10 +34,7 @@ const itemsPerPage = ref(3);
         <code>f-paginate-dataset</code> och <code>f-paginator</code>.
     </p>
     <ul>
-        <li>
-            När du väljer "Välj alla" markeras alla rader i hela datasetet, inte bara den aktuella
-            sidan.
-        </li>
+        <li>När du väljer "Välj alla" markeras alla rader i hela datasetet, inte bara den aktuella sidan.</li>
         <li>Bläddrande mellan sidor bevarar valda rader.</li>
     </ul>
 

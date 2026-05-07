@@ -36,11 +36,5 @@ const selectedRows = ref<Row[]>([]);
     </ul>
 
     <p data-test="selected-count">Valda rader: {{ selectedRows.length }}</p>
-    <f-table
-        v-model:selected-rows="selectedRows"
-        :rows
-        :columns
-        key-attribute="id"
-        selectable="multi"
-    />
+    <f-table v-model:selected-rows="selectedRows" :rows :columns key-attribute="id" selectable="multi" />
 </template>
