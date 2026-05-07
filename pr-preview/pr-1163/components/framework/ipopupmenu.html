@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-bd0b3d.json"
+            href="../../search-data-ce4b99.json"
             as="fetch"
             crossorigin
-            integrity="sha384-fgN92DuDehTozfAQfLDerru7bc2dqe5o3BrLPWq0CnGgUwh0c0Kbmx+jTT5CIfSh"
+            integrity="sha384-tkQbrP9NSHNlO8GNIuQsXny1adF6e4lt7MPY++8sOlb4Ie6II8PFeTiw0teRiC9V"
             id="search-data"
         />
     </head>
@@ -1550,7 +1550,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/7315363f3962b08b964d1759baaee4a89424e181/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/30257248c6ffe41bb634320ceca8ded8c232bfdf/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">
                 IPopupMenu
             </a>
             
@@ -1597,13 +1597,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-a4a079"></div>
+        <div id="example-f3bc2f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IPopupMenuExample-a4a079.js"></script>
+        <script type="module" src="./IPopupMenuExample-f3bc2f.js"></script>
     
                 </div>
                 <div>
@@ -1627,6 +1627,7 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">IPopupMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;..&quot;</span>;
 
 <span class="hljs-keyword">const</span> exampleItems = [
@@ -1649,7 +1650,7 @@
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;IPopupMenuExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">IPopupMenu</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IPopupMenu</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">items</span>: exampleItems,
@@ -1701,17 +1702,16 @@
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
             <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;popup-menu-open-button&quot;</span>
             <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;popup-anchor&quot;</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button--secondary&quot;</span>
+            <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span>
             @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>
             @<span class="hljs-attr">keyup</span>=<span class="hljs-string">&quot;onKeyUp&quot;</span>
             @<span class="hljs-attr">keydown</span>=<span class="hljs-string">&quot;onKeyDown&quot;</span>
         &gt;</span>
             Öppna popupmeny
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">i-popup-menu</span>
             <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;popup-menu&quot;</span>
@@ -1988,9 +1988,9 @@ Sets focus on matching item element when value changes.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/7315363f3962b08b964d1759baaee4a89424e181">7315363</a>)<br />
+<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/30257248c6ffe41bb634320ceca8ded8c232bfdf">3025724</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1163">PR 1163</a><br />
-        2026-05-07 04:33
+        2026-05-07 09:41
 </div>
 <div class="toolbar__item">
     <form id="version">
