@@ -43,14 +43,8 @@ const validation = {
 </script>
 
 <template>
-    <f-text-field v-model="column1" v-test="'input-1'" v-validation.maxLength="validation">
-        Column 1
-    </f-text-field>
-    <f-text-field v-model="column2" v-test="'input-2'" v-validation.maxLength="validation">
-        Column 2
-    </f-text-field>
-    <f-text-field v-model="column3" v-test="'input-3'" v-validation.maxLength="validation">
-        Column 3
-    </f-text-field>
+    <f-text-field v-model="column1" v-test="'input-1'" v-validation.maxLength="validation"> Column 1 </f-text-field>
+    <f-text-field v-model="column2" v-test="'input-2'" v-validation.maxLength="validation"> Column 2 </f-text-field>
+    <f-text-field v-model="column3" v-test="'input-3'" v-validation.maxLength="validation"> Column 3 </f-text-field>
     <f-table :rows :columns> </f-table>
 </template>

@@ -1,5 +1,5 @@
 import { FTablePageObject } from "../../../cypress";
-import Example from "./examples/FTablePaginationExample.vue";
+import Example from "./FTablePaginationExample.vue";
 import { FPaginatorPageObject } from "@fkui/vue/cypress";
 
 const table = new FTablePageObject();

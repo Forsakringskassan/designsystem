@@ -86,13 +86,7 @@ function saveModel(row: Row): void {
 </script>
 
 <template>
-    <f-crud-dataset
-        v-model="rows"
-        :before-create
-        @created="saveModel"
-        @updated="saveModel"
-        @deleted="saveModel"
-    >
+    <f-crud-dataset v-model="rows" :before-create @created="saveModel" @updated="saveModel" @deleted="saveModel">
         <template #default="{ updateItem, deleteItem }">
             <f-table :rows :columns="getColumns(updateItem, deleteItem)" key-attribute="id">
                 <template #caption> Exempeldata </template>
@@ -100,11 +94,7 @@ function saveModel(row: Row): void {
         </template>
 
         <template #modify="{ item }">
-            <f-text-field
-                v-model="item.name"
-                v-validation.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
+            <f-text-field v-model="item.name" v-validation.maxLength="{ maxLength: { length: 32 } }" type="text">
                 Namn
             </f-text-field>
 
@@ -120,11 +110,7 @@ function saveModel(row: Row): void {
         </template>
 
         <template #add="{ item }">
-            <f-text-field
-                v-model="item.name"
-                v-validation.maxLength="{ maxLength: { length: 32 } }"
-                type="text"
-            >
+            <f-text-field v-model="item.name" v-validation.maxLength="{ maxLength: { length: 32 } }" type="text">
                 Namn
             </f-text-field>
 
@@ -137,8 +123,6 @@ function saveModel(row: Row): void {
             </f-text-field>
         </template>
 
-        <template #delete="{ item }">
-            Vill du verkligen ta bort "{{ item.name }}" med ID {{ item.id }}?
-        </template>
+        <template #delete="{ item }"> Vill du verkligen ta bort "{{ item.name }}" med ID {{ item.id }}? </template>
     </f-crud-dataset>
 </template>

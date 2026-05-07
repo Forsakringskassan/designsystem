@@ -84,16 +84,16 @@ function onChangeDataset(): void {
         <li>När du lägger till eller tar bort rader uppdateras bulkstatus.</li>
         <li>När du lägger till rader placeras de sist.</li>
         <li>
-            Konsumenten ansvarar för att tömma valda rader efter en bulkoperation. Ett undantag är
-            när rader tags bort, då försvinner de även från valda rader.
+            Konsumenten ansvarar för att tömma valda rader efter en bulkoperation. Ett undantag är när rader tags bort,
+            då försvinner de även från valda rader.
         </li>
         <li>
-            När du filtrerar rensas tidigare val och filtrering, sortering körs om. Rader som inte
-            längre matchar filtreras bort och nya rader hamnar enligt sortering.
+            När du filtrerar rensas tidigare val och filtrering, sortering körs om. Rader som inte längre matchar
+            filtreras bort och nya rader hamnar enligt sortering.
         </li>
         <li>
-            När du sorterar behålls valda rader och filtrering, filtrering körs om (om det fanns nya
-            rader tillagda sist så sorteras de nu om).
+            När du sorterar behålls valda rader och filtrering, filtrering körs om (om det fanns nya rader tillagda sist
+            så sorteras de nu om).
         </li>
         <li>Vid redigering filtreras inte tabellen om, även om nya värdet ej matchar filter.</li>
         <li>Vid redigering sorteras inte tabellen om, sortingval sätts till ovald ("Välj").</li>
@@ -104,9 +104,7 @@ function onChangeDataset(): void {
 
     <f-button variant="secondary" @click="onAddRow">Lägg till rad</f-button>
     <f-button variant="secondary" @click="onRemoveSelectedRows"> Ta bort markerade rader </f-button>
-    <f-button data-test="change-dataset" variant="secondary" @click="onChangeDataset"
-        >Ändra dataset</f-button
-    >
+    <f-button data-test="change-dataset" variant="secondary" @click="onChangeDataset">Ändra dataset</f-button>
     <f-sort-filter-dataset v-test="'filter'" :data="rows" :sortable-attributes>
         <template #default="{ sortFilterResult }">
             <f-table

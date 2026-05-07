@@ -219,7 +219,6 @@ functions/i18next-translate/i18next.html
 functions/index.html
 functions/labs/ftablepageobject.html -> functions/cypress/pageobjects/ftablepageobject.html
 functions/labs/index.html
-functions/labs/test-table.html
 functions/labs/xfiledragdrop.html
 functions/labs/xrelativetime.html
 functions/labs/xsortfilterdatasetng.html

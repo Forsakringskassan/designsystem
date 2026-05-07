@@ -1,5 +1,5 @@
 import { FTablePageObject } from "../../../cypress";
-import Example from "./examples/FTableSortFilterExample.vue";
+import Example from "./FTableSortFilterExample.vue";
 import { FSortFilterDatasetPageObject } from "@fkui/vue/cypress";
 
 const table = new FTablePageObject();

@@ -1,13 +1,7 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
-import {
-    FButton,
-    FPaginateDataset,
-    FPaginator,
-    FSortFilterDataset,
-    useDatasetRef,
-} from "@fkui/vue";
+import { FButton, FPaginateDataset, FPaginator, FSortFilterDataset, useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns, removeDatasetRows } from "@fkui/vue";
 
 interface Row {
@@ -93,30 +87,25 @@ function onChangeDataset(): void {
         <li>När du lägger till eller tar bort rader uppdateras bulkstatus.</li>
         <li>När du lägger till rader placeras de sist och navigering sker till sista sidan.</li>
         <li>
-            När du tar bort rader sker sidnavigering till sista sidan om aktuell sida innan borttag
-            inte längre finns kvar
+            När du tar bort rader sker sidnavigering till sista sidan om aktuell sida innan borttag inte längre finns
+            kvar
         </li>
         <li>
-            Konsumenten ansvarar för att tömma valda rader efter en bulkoperation. Ett undantag är
-            när rader tags bort, då försvinner de även från valda rader.
+            Konsumenten ansvarar för att tömma valda rader efter en bulkoperation. Ett undantag är när rader tags bort,
+            då försvinner de även från valda rader.
         </li>
         <li>
-            När du filtrerar rensas tidigare val och filtrering, sortering körs om. Rader som inte
-            längre matchar filtreras bort och nya rader hamnar enligt sortering. Sidnavigering till
-            första sidan.
+            När du filtrerar rensas tidigare val och filtrering, sortering körs om. Rader som inte längre matchar
+            filtreras bort och nya rader hamnar enligt sortering. Sidnavigering till första sidan.
         </li>
         <li>
-            När du sorterar behålls valda rader och filtrering, filtrering körs om (om det fanns nya
-            rader tillagda sist så sorteras de nu om). Sidnavigering till första sidan.
+            När du sorterar behålls valda rader och filtrering, filtrering körs om (om det fanns nya rader tillagda sist
+            så sorteras de nu om). Sidnavigering till första sidan.
         </li>
-        <li>
-            Vid redigering filtreras inte tabellen om, även om nya värdet ej matchar filter. Ingen
-            sidnavigering.
-        </li>
+        <li>Vid redigering filtreras inte tabellen om, även om nya värdet ej matchar filter. Ingen sidnavigering.</li>
         <li>Vid redigering sorteras inte tabellen om, sortingval sätts till ovald ("Välj").</li>
         <li>
-            När man helt ersätter dataset, så nollställs filter och val nollställs, sidnavigering
-            till första sidan.
+            När man helt ersätter dataset, så nollställs filter och val nollställs, sidnavigering till första sidan.
         </li>
     </ul>
 
@@ -124,9 +113,7 @@ function onChangeDataset(): void {
 
     <f-button data-test="add-row" variant="secondary" @click="onAddRow">Lägg till rad</f-button>
     <f-button variant="secondary" @click="onRemoveSelectedRows"> Ta bort markerade rader </f-button>
-    <f-button data-test="change-dataset" variant="secondary" @click="onChangeDataset"
-        >Ändra dataset</f-button
-    >
+    <f-button data-test="change-dataset" variant="secondary" @click="onChangeDataset">Ändra dataset</f-button>
 
     <f-sort-filter-dataset
         ref="sortFilter"
