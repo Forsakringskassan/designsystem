@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../../search-data-14297c.json"
+            href="../../../../search-data-59ae68.json"
             as="fetch"
             crossorigin
-            integrity="sha384-MZDVrBFBIw2WeYimntJUedBL9SBgLCA0DsEg0h5fMLiNj8p5CzGCs3VWDyzR+xQU"
+            integrity="sha384-oBYP9aQg47omYJgLDAmla2JoXiGmu5s2t9LoJlv0McFdQs6YxG9oIQ0DC94vBCD6"
             id="search-data"
         />
     </head>
@@ -1759,18 +1759,24 @@ interface <span class="hljs-title class_">Row</span> {
 <dd>
 <p class="docs-paragraph">‐</p>
 </dd>
-</dl>
-<p class="docs-paragraph"><code>actions?: Array&lt;{         label: string | ((this: void, row: T) =&gt; string);         icon?: string;         onClick?(this: void, row: T): void;     }&gt; | ((this: void, row: T) =&gt; Array&lt;{         label: string | ((this: void, row: T) =&gt; string);         onClick?(this: void, row: T): void;     }&gt;);</code> <span class="docs-tag docs-tag--default">Optional</span>
-: List of menu actions. Each entry consists of:</p>
-<pre><code>- `label`: the text show on the action.
-- `icon`: an optional icon.
-- `onClick`: a callback when the action is clicked.
-</code></pre>
-<dl>
+<dt><code>actions?: TableColumnMenuActions&lt;T&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
+<dd>
+<p class="docs-paragraph">List of menu actions, or a callback returning actions for a row.</p>
+<p class="docs-paragraph">Each entry consists of:</p>
+<ul>
+<li><code>label</code>: the text show on the action, or a callback returning the text.</li>
+<li><code>icon</code>: an optional icon.</li>
+<li><code>onClick</code>: a callback when the action is clicked.</li>
+</ul>
+</dd>
 <dt><code>text(this: void, row: T): string | null;</code></dt>
-<dd>Screenreader text</dd>
+<dd>
+<p class="docs-paragraph">Screenreader text</p>
+</dd>
 <dt><code>type: &quot;menu&quot;;</code></dt>
-<dd>Column type</dd>
+<dd>
+<p class="docs-paragraph">Column type</p>
+</dd>
 </dl>
 </div> <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
 <li>FContextMenu</li>
@@ -1824,9 +1830,9 @@ interface <span class="hljs-title class_">Row</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">ftable-dynamic-menu (<a href="https://github.com/Forsakringskassan/designsystem/commits/8ab590cd343c67f1ff74ef352094f8ff4ceb810e">8ab590c</a>)<br />
+<div class="footer__right"><div class="version">ftable-dynamic-menu (<a href="https://github.com/Forsakringskassan/designsystem/commits/20d77187064b65917b5228598dff50f9124116b3">20d7718</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1282">PR 1282</a><br />
-        2026-05-08 07:44
+        2026-05-08 09:18
 </div>
 <div class="toolbar__item">
     <form id="version">
