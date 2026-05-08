@@ -5,6 +5,13 @@
 ```ts
 
 // @public
+export function FContextMenuSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    items(): string;
+    itemLink(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
@@ -22,6 +29,24 @@ export function FListSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FNavigationMenuSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    items(): string;
+    overflowItems(): string;
+    selectedItem(): string;
+    popupItem(): string;
+}>;
+
+// @public
+export function FPageHeaderSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    skipLink(): string;
+    logo(): string;
+    appName(): string;
+    right(): string;
+}>;
+
+// @public
 export function FPaginatorSelectors(selector?: string): Readonly<{
     readonly selector: string;
     currentPageButton(this: void): string;
@@ -33,6 +58,15 @@ export function FPaginatorSelectors(selector?: string): Readonly<{
     pageButtons(this: void): string;
     pageCounter(this: void): string;
     previousPageButton(this: void): string;
+}>;
+
+// @public
+export function FWizardSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    steps(): string;
+    stepContinueButton(): string;
+    stepCancelButton(): string;
+    stepBody(): string;
 }>;
 
 // (No @packageDocumentation comment for this package)
