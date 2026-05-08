@@ -5,6 +5,23 @@
 ```ts
 
 // @public
+export function FBadgeSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+}>;
+
+// @public
+export function FButtonSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+}>;
+
+// @public
+export function FDefinitionListSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    terms(): string;
+    definitions(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
@@ -14,11 +31,35 @@ export function FExpandableParagraphSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FIconSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    use(): string;
+}>;
+
+// @public
 export function FListSelectors(selector?: string): Readonly<{
     readonly selector: string;
     listItems(this: void): string;
     listItemByIndex(this: void, index: number): string;
     emptyMessage(this: void): string;
+}>;
+
+// @public
+export function FLoaderSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    wrapper(): string;
+    waitText(): string;
+}>;
+
+// @public
+export function FLogoSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+}>;
+
+// @public
+export function FOfflineSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    offlineMessage(): string;
 }>;
 
 // @public
@@ -33,6 +74,22 @@ export function FPaginatorSelectors(selector?: string): Readonly<{
     pageButtons(this: void): string;
     pageCounter(this: void): string;
     previousPageButton(this: void): string;
+}>;
+
+// @public
+export function FProgressbarSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    meter(): string;
+}>;
+
+// @public
+export function FTooltipSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    toggleButton(): string;
+    bubble(): string;
+    header(): string;
+    body(): string;
+    closeButton(): string;
 }>;
 
 // (No @packageDocumentation comment for this package)
