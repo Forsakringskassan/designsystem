@@ -5,6 +5,21 @@
 ```ts
 
 // @public
+export function FCrudDatasetSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    addButton(): string;
+    cancelButton(): string;
+    confirmButton(): string;
+}>;
+
+// @public
+export function FDialogueTreeSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    items(): string;
+    itemButton(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
@@ -33,6 +48,14 @@ export function FPaginatorSelectors(selector?: string): Readonly<{
     pageButtons(this: void): string;
     pageCounter(this: void): string;
     previousPageButton(this: void): string;
+}>;
+
+// @public
+export function FSortFilterDatasetSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    searchField(): string;
+    sortField(): string;
+    header(): string;
 }>;
 
 // (No @packageDocumentation comment for this package)
