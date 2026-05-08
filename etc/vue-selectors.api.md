@@ -5,6 +5,33 @@
 ```ts
 
 // @public
+export function FCardSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    content(): string;
+    footer(): string;
+    errorMessage(): string;
+}>;
+
+// @public
+export function FDetailsPanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    content(): string;
+    footer(): string;
+}>;
+
+// @public
+export function FExpandablePanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    toggleButton(): string;
+    expandCollapseIcon(): string;
+    body(): string;
+    notification(): string;
+    relatedInfo(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
@@ -19,6 +46,14 @@ export function FListSelectors(selector?: string): Readonly<{
     listItems(this: void): string;
     listItemByIndex(this: void, index: number): string;
     emptyMessage(this: void): string;
+}>;
+
+// @public
+export function FMinimizablePanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    content(): string;
+    footer(): string;
 }>;
 
 // @public
