@@ -145,6 +145,16 @@
     --f-button-tertiary-padding-bottom: #{$_f-button-default-padding-bottom};
     --f-button-tertiary-padding-left: #{$_f-button-default-padding-left};
 
+    --f-button-standard-padding-top: 1rem;
+    --f-button-standard-padding-right: 1.5rem;
+    --f-button-standard-padding-bottom: 1rem;
+    --f-button-standard-padding-left: 1.5rem;
+
+    --f-button-default-padding-top: 1rem;
+    --f-button-default-padding-right: 1.5rem;
+    --f-button-default-padding-bottom: 1rem;
+    --f-button-default-padding-left: 1.5rem;
+
     $_f-button-discrete-padding-top: initial;
     $_f-button-discrete-padding-right: initial;
     $_f-button-discrete-padding-bottom: initial;
