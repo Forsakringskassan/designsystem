@@ -5,12 +5,37 @@
 ```ts
 
 // @public
+export function FDataTableSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    rows(): string;
+    header(col: number): string;
+    cell(descriptor: {
+        row: number;
+        col: number;
+    }): string;
+    caption(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
     header(): string;
     body(): string;
     relatedInfo(): string;
+}>;
+
+// @public
+export function FInteractiveTableSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    rows(): string;
+    selectedRows(): string;
+    header(col: number): string;
+    cell(descriptor: {
+        row: number;
+        col: number;
+    }): string;
+    caption(): string;
 }>;
 
 // @public
@@ -33,6 +58,25 @@ export function FPaginatorSelectors(selector?: string): Readonly<{
     pageButtons(this: void): string;
     pageCounter(this: void): string;
     previousPageButton(this: void): string;
+}>;
+
+// @public
+export function FTableButtonSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+}>;
+
+// @public
+export function FTableSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    rows(): string;
+    emptyRow(): string;
+    header(col: number): string;
+    cell(descriptor: {
+        row: number;
+        col: number;
+    }): string;
+    caption(): string;
+    footer(): string;
 }>;
 
 // (No @packageDocumentation comment for this package)
