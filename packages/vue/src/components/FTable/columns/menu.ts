@@ -15,45 +15,38 @@ export interface TableColumnMenu<T> extends TableColumnBase {
     /** Screenreader text */
     text(this: void, row: T): string | null;
     /**
-     * List of menu actions. Each entry consists of:
+     * List of menu actions, or a callback returning actions for a row.
      *
-     * - `label`: the text show on the action.
+     * Each entry consists of:
+     *
+     * - `label`: the text show on the action, or a callback returning the text.
      * - `icon`: an optional icon.
      * - `onClick`: a callback when the action is clicked.
      */
-    actions?:
-        | Array<{
-              label: string | ((this: void, row: T) => string);
-              icon?: string;
-              onClick?(this: void, row: T): void;
-          }>
-        | ((
-              this: void,
-              row: T,
-          ) => Array<{
-              label: string | ((this: void, row: T) => string);
-              onClick?(this: void, row: T): void;
-          }>);
+    actions?: TableColumnMenuActions<T>;
 }
 
 /**
- * @internal
+ * @public
  */
 export type TableColumnMenuActionLabel<T> =
     | string
     | ((this: void, row: T) => string);
 
 /**
- * @internal
+ * @public
  */
 export interface TableColumnMenuAction<T> {
+    /** Action label */
     label: TableColumnMenuActionLabel<T>;
+    /** Optional icon */
     icon?: string;
+    /** Callback when the action is clicked */
     onClick?(this: void, row: T): void;
 }
 
 /**
- * @internal
+ * @public
  */
 export type TableColumnMenuActions<T> =
     | Array<TableColumnMenuAction<T>>
@@ -113,7 +106,7 @@ function normalizeMenuAction<T>(
 export function normalizeMenuColumn<T>(
     column: TableColumnMenu<T>,
 ): Omit<NormalizedTableColumnMenu<T>, OmittedNormalizedColumnProperties> {
-    const actions = column.actions ?? [];
+    const actions: TableColumnMenuActions<T> = column.actions ?? [];
 
     return {
         type: "menu",
