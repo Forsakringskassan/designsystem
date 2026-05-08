@@ -5,6 +5,13 @@
 ```ts
 
 // @public
+export function FErrorListSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    items(): string;
+    listItems(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
@@ -14,11 +21,29 @@ export function FExpandableParagraphSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FFieldsetSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    legend(): string;
+    content(): string;
+    errorMessage(): string;
+    radioButtons(): string;
+    checkboxes(): string;
+}>;
+
+// @public
 export function FListSelectors(selector?: string): Readonly<{
     readonly selector: string;
     listItems(this: void): string;
     listItemByIndex(this: void, index: number): string;
     emptyMessage(this: void): string;
+}>;
+
+// @public
+export function FMessageBoxSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    content(): string;
+    heading(): string;
+    icon(): string;
 }>;
 
 // @public
@@ -33,6 +58,13 @@ export function FPaginatorSelectors(selector?: string): Readonly<{
     pageButtons(this: void): string;
     pageCounter(this: void): string;
     previousPageButton(this: void): string;
+}>;
+
+// @public
+export function FValidationFormSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    errorList(): string;
+    errorListItems(): string;
 }>;
 
 // (No @packageDocumentation comment for this package)
