@@ -319,11 +319,6 @@ $button--tertiary: (
         }
     }
 
-    & > .button__icon--end {
-        position: absolute;
-        right: size.$padding-125;
-    }
-
     &.disabled,
     &.disabled:hover,
     &:disabled,

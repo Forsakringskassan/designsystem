@@ -32,6 +32,11 @@ const deprecatedClasses = [
         url: "/components/button.html",
     },
     {
+        name: "button__icon--end",
+        additionalMessage: "The class does nothing and has no replacement.",
+        url: "/components/button.html",
+    },
+    {
         name: "icon-stack--new-window",
         additionalMessage:
             "Stacked icons are no longer used for file item links.",
