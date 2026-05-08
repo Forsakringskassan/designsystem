@@ -5,6 +5,14 @@
 ```ts
 
 // @public
+export function FCheckboxFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    input(): string;
+    label(): string;
+    details(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
@@ -14,11 +22,27 @@ export function FExpandableParagraphSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FLabelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    description(): string;
+    formatDescription(): string;
+    errorMessage(): string;
+    errorIcon(): string;
+}>;
+
+// @public
 export function FListSelectors(selector?: string): Readonly<{
     readonly selector: string;
     listItems(this: void): string;
     listItemByIndex(this: void, index: number): string;
     emptyMessage(this: void): string;
+}>;
+
+// @public
+export function FOutputFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    output(): string;
+    label(): string;
 }>;
 
 // @public
@@ -33,6 +57,49 @@ export function FPaginatorSelectors(selector?: string): Readonly<{
     pageButtons(this: void): string;
     pageCounter(this: void): string;
     previousPageButton(this: void): string;
+}>;
+
+// @public
+export function FRadioFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    input(): string;
+    label(): string;
+    details(): string;
+}>;
+
+// @public
+export function FSelectFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    select(): string;
+    errorMessage(): string;
+    label(): string;
+    selectedOption(): string;
+    arrowIcon(): string;
+}>;
+
+// @public
+export function FStaticFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    label(): string;
+    output(): string;
+}>;
+
+// @public
+export function FTextareaFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    textarea(): string;
+    errorMessage(): string;
+    label(): string;
+    errorIcon(): string;
+}>;
+
+// @public
+export function FTextFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    input(): string;
+    errorMessage(): string;
+    label(): string;
+    errorIcon(): string;
 }>;
 
 // (No @packageDocumentation comment for this package)
