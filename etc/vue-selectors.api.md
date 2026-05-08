@@ -5,6 +5,30 @@
 ```ts
 
 // @public
+export function FCalendarSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    navCaption(): string;
+    navPrevButton(): string;
+    navNextButton(): string;
+    navYearSelectorButton(): string;
+    dayButton(date: string): string;
+    selectedDay(): string;
+    todayDay(): string;
+    yearSelector(): string;
+}>;
+
+// @public
+export function FDatepickerFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    label(): string;
+    errorMessage(): string;
+    input(): string;
+    calendarButton(): string;
+    calendarPopup(): string;
+    calendar(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
