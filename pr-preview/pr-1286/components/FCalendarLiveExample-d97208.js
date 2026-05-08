@@ -1657,14 +1657,14 @@ function setup(options) {
 }
 
 // virtual-entry:virtual:packages/vue/src/components/FCalendar/examples/FCalendarLiveExample.vue:FCalendarLiveExample-d97208.js
-import { defineComponent as defineComponent23 } from "vue";
+import { defineComponent as defineComponent24 } from "vue";
 import { FDate as FDate4 } from "@fkui/date";
 import { FCalendar, FCalendarDay } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FCheckboxField/FCheckboxField.vue?type=script
 var import_isEqual2 = __toESM(require_isEqual());
-import { defineComponent as defineComponent22, toValue as toValue2 } from "vue";
+import { defineComponent as defineComponent23, toValue as toValue2 } from "vue";
 import { ElementIdService as ElementIdService7 } from "@fkui/logic";
 
 // packages/vue/src/utils/list-utils.ts
@@ -1694,8 +1694,8 @@ function refIsVue(value) {
 function refIsVueArray(value) {
   return Array.isArray(value) && value.length > 0 && refIsVue(value[0]);
 }
-function getSortedHTMLElementsFromVueRef(ref8) {
-  const htmlElements = getHTMLElementsFromVueRef(ref8);
+function getSortedHTMLElementsFromVueRef(ref7) {
+  const htmlElements = getHTMLElementsFromVueRef(ref7);
   htmlElements.sort((lhs, rhs) => {
     const lhsIndex = parseIntOrDefault(lhs.dataset.refIndex, -Infinity);
     const rhsIndex = parseIntOrDefault(rhs.dataset.refIndex, -Infinity);
@@ -1712,38 +1712,38 @@ function parseIntOrDefault(value, defaultValue) {
   }
   return defaultValue;
 }
-function getHTMLElementsFromVueRef(ref8) {
+function getHTMLElementsFromVueRef(ref7) {
   let result = [];
-  if (isEmptyArray(ref8)) {
+  if (isEmptyArray(ref7)) {
     result = [];
-  } else if (refIsVueArray(ref8)) {
-    result = ref8.map((vueRef) => vueRef.$el);
-  } else if (refIsHTMLElementArray(ref8)) {
-    result = [...ref8];
-  } else if (isSet2(ref8)) {
-    result = [getHTMLElementFromVueRef(ref8)];
+  } else if (refIsVueArray(ref7)) {
+    result = ref7.map((vueRef) => vueRef.$el);
+  } else if (refIsHTMLElementArray(ref7)) {
+    result = [...ref7];
+  } else if (isSet2(ref7)) {
+    result = [getHTMLElementFromVueRef(ref7)];
   }
   return result;
 }
 function isEmptyArray(value) {
   return Array.isArray(value) && value.length === 0;
 }
-function findElementFromVueRef(ref8) {
-  if (refIsElement(ref8)) {
-    return ref8;
-  } else if (refIsVue(ref8)) {
-    return ref8.$el;
+function findElementFromVueRef(ref7) {
+  if (refIsElement(ref7)) {
+    return ref7;
+  } else if (refIsVue(ref7)) {
+    return ref7.$el;
   }
 }
-function getHTMLElementFromVueRef(ref8) {
-  const element = findElementFromVueRef(ref8);
+function getHTMLElementFromVueRef(ref7) {
+  const element = findElementFromVueRef(ref7);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref8)}.`);
+    throw new Error(`Unable to find element from ${String(ref7)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${String(ref8)}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref7)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -3736,15 +3736,15 @@ function getAbsolutePosition(src) {
 import { ref, toRaw, watch } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=script
-import { defineComponent as defineComponent21, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef4 } from "vue";
+import { defineComponent as defineComponent22, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef4 } from "vue";
 import { ElementIdService as ElementIdService6, debounce as debounce4 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FTooltip/FTooltip.vue?type=script
 import {
   computed as computed4,
-  defineComponent as defineComponent20,
+  defineComponent as defineComponent21,
   inject,
-  ref as ref7,
+  ref as ref6,
   toRef,
   useSlots as useSlots2,
   useTemplateRef as useTemplateRef3,
@@ -5882,9 +5882,9 @@ function isSameMonth(a, b) {
   return a.startOfMonth().equals(b.startOfMonth());
 }
 function getDayTabindex(date, active, entry) {
-  const ref8 = active ?? entry;
-  if (ref8 && isSameMonth(ref8, date)) {
-    return date.equals(ref8) ? 0 : -1;
+  const ref7 = active ?? entry;
+  if (ref7 && isSameMonth(ref7, date)) {
+    return date.equals(ref7) ? 0 : -1;
   } else {
     return date.day === 1 ? 0 : -1;
   }
@@ -6215,8 +6215,8 @@ var ICalendarNavbar_default = defineComponent19({
     getDateText(value) {
       return `${capitalize(value.monthName)} ${String(value.year)}`;
     },
-    isFocused(ref8) {
-      return document.activeElement === this.$refs[ref8];
+    isFocused(ref7) {
+      return document.activeElement === this.$refs[ref7];
     }
   }
 });
@@ -6481,8 +6481,7 @@ IComboboxToggleButton_default.render = render22;
 IComboboxToggleButton_default.__file = "packages/vue/src/internal-components/combobox/IComboboxToggleButton.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=script
-import { defineComponent as _defineComponent4 } from "vue";
-import { ref as ref4 } from "vue";
+import { defineComponent as defineComponent20 } from "vue";
 
 // packages/vue/src/components/FExpand/styles.ts
 var openedStyle = {
@@ -6502,7 +6501,8 @@ function afterEnterTransition(element) {
 }
 
 // packages/vue/src/components/FExpand/before-enter.ts
-function beforeEnterTransition(element, skipTransition) {
+function beforeEnterTransition(element) {
+  const skipTransition = getComputedStyle(element).display !== "none";
   const htmlElement = element;
   Object.assign(htmlElement.style, transitionStyle);
   if (skipTransition) {
@@ -6546,31 +6546,24 @@ function leaveTransition(element, done) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=script
-var FExpand_default = /* @__PURE__ */ _defineComponent4({
-  __name: "FExpand",
-  setup(__props, { expose: __expose }) {
-    __expose();
-    const skipTransition = ref4(false);
-    function onBeforeEnter(element) {
-      skipTransition.value = getComputedStyle(element).display !== "none";
-      beforeEnterTransition(element, skipTransition.value);
-      skipTransition.value = false;
-    }
-    function onEnter(element, done) {
+var FExpand_default = defineComponent20({
+  name: "FExpand",
+  methods: {
+    onBeforeEnter(element) {
+      beforeEnterTransition(element);
+    },
+    onEnter(element, done) {
       enterTransition(element, done);
-    }
-    function onAfterEnter(element) {
+    },
+    onAfterEnter(element) {
       afterEnterTransition(element);
-    }
-    function onBeforeLeave(element) {
+    },
+    onBeforeLeave(element) {
       beforeLeaveTransition(element);
-    }
-    function onLeave(element, done) {
+    },
+    onLeave(element, done) {
       leaveTransition(element, done);
     }
-    const __returned__ = { skipTransition, onBeforeEnter, onEnter, onAfterEnter, onBeforeLeave, onLeave };
-    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
-    return __returned__;
   }
 });
 
@@ -6579,18 +6572,18 @@ import { renderSlot as _renderSlot17, Transition as _Transition, withCtx as _wit
 function render23(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock23(), _createBlock11(_Transition, {
     appear: "",
-    onBeforeEnter: $setup.onBeforeEnter,
-    onEnter: $setup.onEnter,
-    onAfterEnter: $setup.onAfterEnter,
-    onBeforeLeave: $setup.onBeforeLeave,
-    onLeave: $setup.onLeave
+    onBeforeEnter: _ctx.onBeforeEnter,
+    onEnter: _ctx.onEnter,
+    onAfterEnter: _ctx.onAfterEnter,
+    onBeforeLeave: _ctx.onBeforeLeave,
+    onLeave: _ctx.onLeave
   }, {
     default: _withCtx8(() => [
       _renderSlot17(_ctx.$slots, "default")
     ]),
     _: 3
     /* FORWARDED */
-  });
+  }, 8, ["onBeforeEnter", "onEnter", "onAfterEnter", "onBeforeLeave", "onLeave"]);
 }
 
 // packages/vue/src/components/FExpand/FExpand.vue
@@ -6602,9 +6595,9 @@ var FExpand_default2 = FExpand_default;
 var tooltipAttachTo = /* @__PURE__ */ Symbol("tooltipAttachTo");
 
 // packages/vue/src/components/FTooltip/use-animation.ts
-import { computed as computed3, onMounted as onMounted3, ref as ref5, watchEffect as watchEffect4 } from "vue";
+import { computed as computed3, onMounted as onMounted3, ref as ref4, watchEffect as watchEffect4 } from "vue";
 var initialized = false;
-var reducedMotion = ref5(false);
+var reducedMotion = ref4(false);
 function useAnimation(options) {
   const { duration = 250, easing = "ease-in", element: elementRef } = options;
   let current = "collapse";
@@ -6673,10 +6666,10 @@ function useAnimation(options) {
 }
 
 // packages/vue/src/components/FTooltip/use-horizontal-offset.ts
-import { onMounted as onMounted4, onUnmounted as onUnmounted3, readonly, ref as ref6, watch as watch3 } from "vue";
+import { onMounted as onMounted4, onUnmounted as onUnmounted3, readonly, ref as ref5, watch as watch3 } from "vue";
 function useHorizontalOffset(options) {
   const { element: elementRef, parent: parentRef } = options;
-  const offset2 = ref6(16);
+  const offset2 = ref5(16);
   watch3(() => elementRef.value, updateOffset);
   watch3(() => parentRef, updateOffset);
   onMounted4(() => {
@@ -6702,7 +6695,7 @@ function useHorizontalOffset(options) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FTooltip/FTooltip.vue?type=script
-var FTooltip_default = defineComponent20({
+var FTooltip_default = defineComponent21({
   name: "FTooltip",
   components: { FExpand: FExpand_default2, FIcon: FIcon_default2, IFlex: IFlex_default2, IFlexItem: IFlexItem_default2 },
   inheritAttrs: false,
@@ -6777,7 +6770,7 @@ var FTooltip_default = defineComponent20({
   setup(props) {
     const provided = inject(tooltipAttachTo, null);
     const attachTo = toRef(props, "attachTo");
-    const ready = ref7(false);
+    const ready = ref6(false);
     const iconTarget = computed4(() => {
       if (provided?.value) {
         return provided.value;
@@ -7000,7 +6993,7 @@ function isEqual2(a, b) {
   }
   return a.every((_, i) => a[i] === b[i]);
 }
-var FFieldset_default = defineComponent21({
+var FFieldset_default = defineComponent22({
   name: "FFieldset",
   components: {
     FIcon: FIcon_default2
@@ -7398,7 +7391,7 @@ FFieldset_default.__file = "packages/vue/src/components/FFieldset/FFieldset.vue"
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FCheckboxField/FCheckboxField.vue?type=script
 var anyType = [String, Object, Array, Number, Date, Boolean];
-var FCheckboxField_default = defineComponent22({
+var FCheckboxField_default = defineComponent23({
   name: "FCheckboxField",
   inheritAttrs: false,
   props: {
@@ -7666,7 +7659,7 @@ var FCheckboxField_default2 = FCheckboxField_default;
 
 // virtual-entry:virtual:packages/vue/src/components/FCalendar/examples/FCalendarLiveExample.vue:FCalendarLiveExample-d97208.js
 import { createTextVNode as _createTextVNode6, resolveComponent as _resolveComponent12, withCtx as _withCtx11, createVNode as _createVNode11, openBlock as _openBlock27, createBlock as _createBlock14 } from "vue";
-var exampleComponent = defineComponent23({
+var exampleComponent = defineComponent24({
   name: "FCalendarLiveExample",
   components: {
     LiveExample,
