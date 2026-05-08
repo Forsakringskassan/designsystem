@@ -14,6 +14,28 @@ export function FExpandableParagraphSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FLayoutApplicationTemplateSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    main(): string;
+    footer(): string;
+}>;
+
+// @public
+export function FLayoutLeftPanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    navigation(): string;
+    primary(): string;
+}>;
+
+// @public
+export function FLayoutRightPanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    primary(): string;
+    secondary(): string;
+}>;
+
+// @public
 export function FListSelectors(selector?: string): Readonly<{
     readonly selector: string;
     listItems(this: void): string;
