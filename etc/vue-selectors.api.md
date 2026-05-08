@@ -14,6 +14,21 @@ export function FExpandableParagraphSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FFileItemSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    fileName(): string;
+    openLink(): string;
+    deleteButton(): string;
+}>;
+
+// @public
+export function FFileSelectorSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    fileInput(): string;
+    icon(): string;
+}>;
+
+// @public
 export function FListSelectors(selector?: string): Readonly<{
     readonly selector: string;
     listItems(this: void): string;
