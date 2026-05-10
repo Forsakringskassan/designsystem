@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FInteractiveTablePageObject/FInteractiveTablePageObject-header.vue:FInteractiveTablePageObject-header-46b511.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FInteractiveTablePageObject/FInteractiveTablePageObject-header.vue:FInteractiveTablePageObject-header-5f7e5f.js
 import { defineComponent as _defineComponent } from "vue";
 import { FInteractiveTable, FTableColumn } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -119,7 +119,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-46b511"
+  selector: "#example-5f7e5f"
 });
 export {
   render

@@ -6443,18 +6443,6 @@ var toString = Object.prototype.toString;
 var isObject = (val) => toString.call(val) === "[object Object]";
 var noop$4 = () => {
 };
-function cacheStringFunction(fn2) {
-  const cache = /* @__PURE__ */ Object.create(null);
-  return (str) => {
-    return cache[str] || (cache[str] = fn2(str));
-  };
-}
-var hyphenateRE = /\B([A-Z])/g;
-cacheStringFunction((str) => str.replace(hyphenateRE, "-$1").toLowerCase());
-var camelizeRE = /-(\w)/g;
-cacheStringFunction((str) => {
-  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
-});
 function pxValue(px) {
   return px.endsWith("rem") ? Number.parseFloat(px) * 16 : Number.parseFloat(px);
 }

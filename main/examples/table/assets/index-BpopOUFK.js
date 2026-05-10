@@ -73,22 +73,22 @@ var toRawType = (value) => {
 var isPlainObject = (val) => toTypeString(val) === "[object Object]";
 var isIntegerKey = (key) => isString$1(key) && key !== "NaN" && key[0] !== "-" && "" + parseInt(key, 10) === key;
 var isReservedProp = /* @__PURE__ */ makeMap(",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted");
-var cacheStringFunction$1 = (fn) => {
+var cacheStringFunction = (fn) => {
 	const cache = /* @__PURE__ */ Object.create(null);
 	return ((str) => {
 		return cache[str] || (cache[str] = fn(str));
 	});
 };
-var camelizeRE$1 = /-\w/g;
-var camelize = cacheStringFunction$1((str) => {
-	return str.replace(camelizeRE$1, (c) => c.slice(1).toUpperCase());
+var camelizeRE = /-\w/g;
+var camelize = cacheStringFunction((str) => {
+	return str.replace(camelizeRE, (c) => c.slice(1).toUpperCase());
 });
-var hyphenateRE$1 = /\B([A-Z])/g;
-var hyphenate = cacheStringFunction$1((str) => str.replace(hyphenateRE$1, "-$1").toLowerCase());
-var capitalize = cacheStringFunction$1((str) => {
+var hyphenateRE = /\B([A-Z])/g;
+var hyphenate = cacheStringFunction((str) => str.replace(hyphenateRE, "-$1").toLowerCase());
+var capitalize = cacheStringFunction((str) => {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 });
-var toHandlerKey = cacheStringFunction$1((str) => {
+var toHandlerKey = cacheStringFunction((str) => {
 	return str ? `on${capitalize(str)}` : ``;
 });
 var hasChanged = (value, oldValue) => !Object.is(value, oldValue);
@@ -3346,13 +3346,11 @@ var updateSlots = (instance, children, optimized) => {
 		for (const key in slots) if (!isInternalKey(key) && deletionComparisonTarget[key] == null) delete slots[key];
 	}
 };
-function initFeatureFlags() {}
 var queuePostRenderEffect = queueEffectWithSuspense;
 function createRenderer(options) {
 	return baseCreateRenderer(options);
 }
 function baseCreateRenderer(options, createHydrationFns) {
-	initFeatureFlags();
 	const target = getGlobalThis();
 	target.__VUE__ = true;
 	const { insert: hostInsert, remove: hostRemove, patchProp: hostPatchProp, createElement: hostCreateElement, createText: hostCreateText, createComment: hostCreateComment, setText: hostSetText, setElementText: hostSetElementText, parentNode: hostParentNode, nextSibling: hostNextSibling, setScopeId: hostSetScopeId = NOOP, insertStaticContent: hostInsertStaticContent } = options;
@@ -13967,11 +13965,6 @@ var require_es_map_get_or_insert_computed = /* @__PURE__ */ __commonJSMin((() =>
 }));
 require_es_map_get_or_insert();
 require_es_map_get_or_insert_computed();
-function lazyLoad(fn) {
-	let cache;
-	return () => cache !== null && cache !== void 0 ? cache : cache = fn();
-}
-lazyLoad(() => new EventTarget());
 /**
 * @public
 */
@@ -14805,18 +14798,6 @@ var notNullish = (val) => val != null;
 var toString = Object.prototype.toString;
 var isObject = (val) => toString.call(val) === "[object Object]";
 var noop$4 = () => {};
-function cacheStringFunction(fn) {
-	const cache = /* @__PURE__ */ Object.create(null);
-	return (str) => {
-		return cache[str] || (cache[str] = fn(str));
-	};
-}
-var hyphenateRE = /\B([A-Z])/g;
-cacheStringFunction((str) => str.replace(hyphenateRE, "-$1").toLowerCase());
-var camelizeRE = /-(\w)/g;
-cacheStringFunction((str) => {
-	return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
-});
 function toArray(value) {
 	return Array.isArray(value) ? value : [value];
 }
