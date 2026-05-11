@@ -42,7 +42,7 @@
     "@fkui/icon-lib-default": "6.45.0",
     "@fkui/theme-default": "6.45.0",
     "autoprefixer": "10.5.0",
-    "cssnano": "8.0.0",
+    "cssnano": "8.0.1",
     "glob": "13.0.6",
     "picocolors": "1.1.1",
     "postcss": "8.5.14",
