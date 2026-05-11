@@ -5,6 +5,18 @@
 ```ts
 
 // @public
+export function FConfirmModalSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    title(): string;
+    content(): string;
+    footer(): string;
+    closeButton(): string;
+    confirmButton(): string;
+    dismissButton(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
@@ -14,11 +26,35 @@ export function FExpandableParagraphSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FFormModalSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    title(): string;
+    content(): string;
+    footer(): string;
+    closeButton(): string;
+    submitButton(): string;
+    cancelButton(): string;
+}>;
+
+// @public
 export function FListSelectors(selector?: string): Readonly<{
     readonly selector: string;
     listItems(this: void): string;
     listItemByIndex(this: void, index: number): string;
     emptyMessage(this: void): string;
+}>;
+
+// @public
+export function FModalSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    title(): string;
+    content(): string;
+    footer(): string;
+    primaryButton(): string;
+    secondaryButton(): string;
+    closeButton(): string;
 }>;
 
 // @public
