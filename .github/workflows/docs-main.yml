@@ -1,5 +1,7 @@
 name: Docs (main)
-concurrency: docs-${{ github.ref }}
+concurrency:
+    group: deploy-gh-pages
+    cancel-in-progress: false
 
 on:
     push:

@@ -1,5 +1,7 @@
 name: Deploy
-concurrency: deploy-${{ github.ref }}
+concurrency:
+    group: deploy-gh-pages
+    cancel-in-progress: false
 
 on:
     workflow_dispatch:

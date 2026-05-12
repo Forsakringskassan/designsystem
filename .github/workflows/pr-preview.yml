@@ -1,6 +1,8 @@
 name: Deploy PR previews
 
-concurrency: preview-${{ github.ref }}
+concurrency:
+    group: deploy-gh-pages
+    cancel-in-progress: false
 
 on:
     pull_request:
