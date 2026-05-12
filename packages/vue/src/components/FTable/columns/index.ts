@@ -22,6 +22,9 @@ export {
 export {
     type NormalizedTableColumnMenu,
     type TableColumnMenu,
+    type TableColumnMenuAction,
+    type TableColumnMenuActionLabel,
+    type TableColumnMenuActions,
     normalizeMenuColumn,
 } from "./menu";
 export {

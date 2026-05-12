@@ -102,4 +102,66 @@ describe("ITableMenu", () => {
         const contextMenu = wrapper.getComponent({ name: "FContextMenu" });
         expect(contextMenu.props("isOpen")).toBeTruthy();
     });
+
+    it("should render context menu with dynamic row actions", () => {
+        expect.assertions(2);
+
+        const row = { status: "draft" };
+        const column = normalizeTableColumn<typeof row>({
+            type: "menu",
+            header: "Actions",
+            text: () => "Actions",
+            actions(row) {
+                return row.status === "draft"
+                    ? [{ label: "Edit draft" }]
+                    : [{ label: "View decision" }];
+            },
+        });
+
+        const wrapper = mount(ITableMenu<typeof row>, {
+            props: { column, row },
+        });
+
+        const contextMenu = wrapper.getComponent({ name: "FContextMenu" });
+        const items = contextMenu.props("items");
+
+        expect(items).toHaveLength(1);
+        expect(items[0]).toMatchObject({
+            label: "Edit draft",
+            key: "item-1",
+        });
+    });
+
+    it("should render context menu with dynamic action labels", () => {
+        expect.assertions(2);
+
+        const row = { status: "draft" };
+        const column = normalizeTableColumn<typeof row>({
+            type: "menu",
+            header: "Actions",
+            text: () => "Actions",
+            actions: [
+                {
+                    label(row) {
+                        return row.status === "draft"
+                            ? "Edit draft"
+                            : "View decision";
+                    },
+                },
+            ],
+        });
+
+        const wrapper = mount(ITableMenu<typeof row>, {
+            props: { column, row },
+        });
+
+        const contextMenu = wrapper.getComponent({ name: "FContextMenu" });
+        const items = contextMenu.props("items");
+
+        expect(items).toHaveLength(1);
+        expect(items[0]).toMatchObject({
+            label: "Edit draft",
+            key: "item-1",
+        });
+    });
 });

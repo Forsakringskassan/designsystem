@@ -15,18 +15,58 @@ export interface TableColumnMenu<T> extends TableColumnBase {
     /** Screenreader text */
     text(this: void, row: T): string | null;
     /**
-     * List of menu actions. Each entry consists of:
+     * List of menu actions, or a callback returning actions for a row.
      *
-     * - `label`: the text show on the action.
+     * Each entry consists of:
+     *
+     * - `label`: the text show on the action, or a callback returning the text.
      * - `icon`: an optional icon.
      * - `onClick`: a callback when the action is clicked.
      */
-    actions?: Array<{
-        label: string;
-        icon?: string;
-        onClick?(this: void, row: T): void;
-    }>;
+    actions?: TableColumnMenuActions<T>;
 }
+
+/**
+ * @public
+ */
+export type TableColumnMenuActionLabel<T> =
+    | string
+    | ((this: void, row: T) => string);
+
+/**
+ * @public
+ */
+export interface TableColumnMenuAction<T> {
+    /** Action label */
+    label: TableColumnMenuActionLabel<T>;
+    /** Optional icon */
+    icon?: string;
+    /** Callback when the action is clicked */
+    onClick?(this: void, row: T): void;
+}
+
+/**
+ * @public
+ */
+export type TableColumnMenuActions<T> =
+    | Array<TableColumnMenuAction<T>>
+    | ((this: void, row: T) => Array<TableColumnMenuAction<T>>);
+
+/**
+ * @internal
+ */
+export interface NormalizedTableColumnMenuAction<T> {
+    readonly label: TableColumnMenuActionLabel<T>;
+    readonly icon: string | null;
+    onClick(this: void, row: T): void;
+}
+
+/**
+ * @internal
+ */
+export type NormalizedTableColumnMenuActions<T> =
+    | Array<NormalizedTableColumnMenuAction<T>>
+    | ((this: void, row: T) => Array<NormalizedTableColumnMenuAction<T>>);
 
 /**
  * @internal
@@ -35,11 +75,7 @@ export interface NormalizedTableColumnMenu<
     T,
 > extends NormalizedTableColumnBase<never> {
     readonly type: "menu";
-    readonly actions: Array<{
-        readonly label: string;
-        readonly icon: string | null;
-        onClick(this: void, row: T): void;
-    }>;
+    readonly actions: NormalizedTableColumnMenuActions<T>;
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnMenu<T>;
@@ -54,18 +90,30 @@ function noop(): void {
 /**
  * @internal
  */
+function normalizeMenuAction<T>(
+    action: TableColumnMenuAction<T>,
+): NormalizedTableColumnMenuAction<T> {
+    return {
+        label: action.label,
+        icon: action.icon ?? null,
+        onClick: action.onClick ?? noop,
+    };
+}
+
+/**
+ * @internal
+ */
 export function normalizeMenuColumn<T>(
     column: TableColumnMenu<T>,
 ): Omit<NormalizedTableColumnMenu<T>, OmittedNormalizedColumnProperties> {
+    const actions: TableColumnMenuActions<T> = column.actions ?? [];
+
     return {
         type: "menu",
         text: getValueFn(column.text, undefined, String, ""),
-        actions: (column.actions ?? []).map((it) => {
-            return {
-                label: it.label,
-                icon: it.icon ?? null,
-                onClick: it.onClick ?? noop,
-            };
-        }),
+        actions:
+            typeof actions === "function"
+                ? (row: T) => actions(row).map(normalizeMenuAction)
+                : actions.map(normalizeMenuAction),
     };
 }

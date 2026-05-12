@@ -2,6 +2,7 @@
 import { computed, ref, useTemplateRef } from "vue";
 import { type ContextMenuItem, FContextMenu } from "../FContextMenu";
 import { FIcon } from "../FIcon";
+import { type TableColumnMenuActionLabel } from "./columns/menu";
 import { type FTableCellApi } from "./f-table-api";
 import { type NormalizedTableColumnMenu } from "./table-column";
 
@@ -14,10 +15,16 @@ const buttonRef = useTemplateRef("button");
 const expose: FTableCellApi = { tabstopEl: buttonRef };
 const isOpen = ref(false);
 
+function resolveLabel(label: TableColumnMenuActionLabel<T>, row: T): string {
+    return typeof label === "function" ? label(row) : label;
+}
+
 /* augment actions with a unique key */
 const actions = computed(() => {
-    return column.actions.map((it, index) => {
-        return { ...it, key: `item-${String(index + 1)}` };
+    const resolvedActions = typeof column.actions === "function" ? column.actions(row) : column.actions;
+
+    return resolvedActions.map((it, index) => {
+        return { ...it, label: resolveLabel(it.label, row), key: `item-${String(index + 1)}` };
     });
 });
 

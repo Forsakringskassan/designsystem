@@ -313,4 +313,103 @@ describe("ITableMenu", () => {
         table.cell({ row: 1, col: 2 }).click();
         table.el().toMatchScreenshot();
     });
+
+    it("should support dynamic actions per row", () => {
+        interface DynamicRow {
+            id: number;
+            text: string;
+            status: "draft" | "approved";
+        }
+
+        const rows: DynamicRow[] = [
+            { id: 1, text: "Text 1", status: "draft" },
+            { id: 2, text: "Text 2", status: "approved" },
+        ];
+
+        const columns = defineTableColumns<DynamicRow>([
+            { type: "text", header: "Text", key: "text" },
+            {
+                type: "menu",
+                header: "Actions",
+                text() {
+                    return "Actions";
+                },
+                actions(row) {
+                    return row.status === "draft"
+                        ? [{ label: "Edit draft" }, { label: "Submit" }]
+                        : [{ label: "View decision" }];
+                },
+            },
+        ]);
+
+        cy.mount(() =>
+            h(FTable<DynamicRow>, {
+                rows: useDatasetRef<DynamicRow>(rows).value,
+                columns,
+            }),
+        );
+
+        table.cell({ row: 1, col: 2 }).click();
+        table.contextmenuItems().should("have.length", 2);
+        table.contextmenuItems().eq(0).should("contain.text", "Edit draft");
+        table.contextmenuItems().eq(1).should("contain.text", "Submit");
+
+        cy.focused().type("{esc}");
+        table.contextmenu().should("not.exist");
+
+        table.cell({ row: 2, col: 2 }).click();
+        table.contextmenuItems().should("have.length", 1);
+        table.contextmenuItems().eq(0).should("contain.text", "View decision");
+    });
+
+    it("should support dynamic action labels per row", () => {
+        interface DynamicRow {
+            id: number;
+            text: string;
+            status: "draft" | "approved";
+        }
+
+        const rows: DynamicRow[] = [
+            { id: 1, text: "Text 1", status: "draft" },
+            { id: 2, text: "Text 2", status: "approved" },
+        ];
+
+        const columns = defineTableColumns<DynamicRow>([
+            { type: "text", header: "Text", key: "text" },
+            {
+                type: "menu",
+                header: "Actions",
+                text() {
+                    return "Actions";
+                },
+                actions: [
+                    {
+                        label(row) {
+                            return row.status === "draft"
+                                ? "Edit draft"
+                                : "View decision";
+                        },
+                    },
+                ],
+            },
+        ]);
+
+        cy.mount(() =>
+            h(FTable<DynamicRow>, {
+                rows: useDatasetRef<DynamicRow>(rows).value,
+                columns,
+            }),
+        );
+
+        table.cell({ row: 1, col: 2 }).click();
+        table.contextmenuItems().should("have.length", 1);
+        table.contextmenuItems().eq(0).should("contain.text", "Edit draft");
+
+        cy.focused().type("{esc}");
+        table.contextmenu().should("not.exist");
+
+        table.cell({ row: 2, col: 2 }).click();
+        table.contextmenuItems().should("have.length", 1);
+        table.contextmenuItems().eq(0).should("contain.text", "View decision");
+    });
 });
