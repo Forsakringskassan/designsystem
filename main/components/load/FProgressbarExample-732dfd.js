@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FProgressbar/examples/FProgressbarExample.vue:FProgressbarExample-2b8417.js
+// virtual-entry:virtual:packages/vue/src/components/FProgressbar/examples/FProgressbarExample.vue:FProgressbarExample-732dfd.js
 import { defineComponent } from "vue";
 import { FButton, FProgressbar } from "@fkui/vue";
 import { resolveComponent as _resolveComponent, createVNode as _createVNode, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, withCtx as _withCtx, vModelText as _vModelText, withDirectives as _withDirectives, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
@@ -136,7 +136,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-2b8417"
+  selector: "#example-732dfd"
 });
 export {
   render

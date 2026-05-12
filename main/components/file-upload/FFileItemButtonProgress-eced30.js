@@ -28,13 +28,13 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FFileItem/examples/FFileItemButtonProgress.vue:FFileItemButtonProgress-438c86.js
+// virtual-entry:virtual:packages/vue/src/components/FFileItem/examples/FFileItemButtonProgress.vue:FFileItemButtonProgress-eced30.js
 import { defineComponent } from "vue";
-import { FFileItem, FIcon, FProgressbar } from "@fkui/vue";
-import { vModelText as _vModelText, createElementVNode as _createElementVNode, withDirectives as _withDirectives, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, createBlock as _createBlock, withCtx as _withCtx } from "vue";
+import { FButton, FFileItem, FProgressbar } from "@fkui/vue";
+import { vModelText as _vModelText, createElementVNode as _createElementVNode, withDirectives as _withDirectives, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, createVNode as _createVNode, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = defineComponent({
   name: "FFileItemButtonProgress",
-  components: { FFileItem, FIcon, FProgressbar },
+  components: { FButton, FFileItem, FProgressbar },
   data() {
     return {
       fileName: "bar.pdf",
@@ -44,18 +44,8 @@ var exampleComponent = defineComponent({
     };
   }
 });
-var _hoisted_1 = {
-  key: 0,
-  type: "button",
-  class: "button button--tertiary button--medium file-item__file-remove file-item__abort"
-};
-var _hoisted_2 = {
-  key: 1,
-  type: "button",
-  class: "button button--tertiary button--medium file-item__file-remove"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_icon = _resolveComponent("f-icon");
+  const _component_f_button = _resolveComponent("f-button");
   const _component_f_progressbar = _resolveComponent("f-progressbar");
   const _component_f_file_item = _resolveComponent("f-file-item");
   return _openBlock(), _createElementBlock("div", null, [
@@ -91,29 +81,37 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "mime-type": _ctx.mimeType
     }, {
       row: _withCtx(() => [
-        _ctx.filteredProgress < 100 ? (_openBlock(), _createElementBlock("button", _hoisted_1, [
-          _createVNode(_component_f_icon, {
-            name: "close",
-            class: "button__icon"
-          }),
-          _cache[3] || (_cache[3] = _createElementVNode(
-            "span",
-            null,
-            " Avbryt uppladdning ",
-            -1
-            /* CACHED */
-          ))
-        ])) : _ctx.filteredProgress === 100 ? (_openBlock(), _createElementBlock("button", _hoisted_2, [
-          _createVNode(_component_f_icon, {
-            name: "trashcan",
-            class: "button__icon"
-          }),
-          _cache[4] || (_cache[4] = _createTextVNode(
-            " Ta bort ",
-            -1
-            /* CACHED */
-          ))
-        ])) : _createCommentVNode("v-if", true)
+        _ctx.filteredProgress < 100 ? (_openBlock(), _createBlock(_component_f_button, {
+          key: 0,
+          "data-test": "file-item__file-remove",
+          "icon-left": "close",
+          variant: "tertiary"
+        }, {
+          default: _withCtx(() => [..._cache[3] || (_cache[3] = [
+            _createTextVNode(
+              " Avbryt uppladdning ",
+              -1
+              /* CACHED */
+            )
+          ])]),
+          _: 1
+          /* STABLE */
+        })) : _ctx.filteredProgress === 100 ? (_openBlock(), _createBlock(_component_f_button, {
+          key: 1,
+          "data-test": "file-item__file-remove",
+          "icon-left": "trashcan",
+          variant: "tertiary"
+        }, {
+          default: _withCtx(() => [..._cache[4] || (_cache[4] = [
+            _createTextVNode(
+              " Ta bort ",
+              -1
+              /* CACHED */
+            )
+          ])]),
+          _: 1
+          /* STABLE */
+        })) : _createCommentVNode("v-if", true)
       ]),
       default: _withCtx(() => [
         _ctx.filteredProgress < 100 ? (_openBlock(), _createBlock(_component_f_progressbar, {
@@ -130,7 +128,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-438c86"
+  selector: "#example-eced30"
 });
 export {
   render

@@ -34,7 +34,7 @@ import { defineComponent as _defineComponent } from "vue";
 // packages/vue-labs/dist/esm/index.esm.js
 import { computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, guardReactiveProps, normalizeClass, normalizeProps, openBlock, ref, renderSlot, resolveDirective, toDisplayString, unref, withCtx, withDirectives } from "vue";
 import { TranslationService, ValidationService, alertScreenReader, debounce, isEmpty, isSet, stripWhitespace } from "@fkui/logic";
-import { EventBus, FFileItem, FFileSelector, FIcon, FTextField, TranslationMixin, useTextFieldSetup, useTranslate } from "@fkui/vue";
+import { EventBus, FButton, FFileItem, FFileSelector, FIcon, FTextField, TranslationMixin, useTextFieldSetup, useTranslate } from "@fkui/vue";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var require_global_this = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var check = function(it) {
@@ -2430,7 +2430,6 @@ var _hoisted_5 = {
   class: "sr-only"
 };
 var _hoisted_6 = { class: "filstorlek" };
-var _hoisted_7 = ["aria-label"];
 var STATUS_HAR_INTE_VALT_FIL = 0;
 var STATUS_HAR_VALT_FIL = 1;
 var STATUS_MISSLYCKATS = 2;
@@ -2629,15 +2628,16 @@ var XFileDragdrop_default = /* @__PURE__ */ defineComponent({
               _cache[2] || (_cache[2] = createTextVNode()),
               createElementVNode("span", _hoisted_6, toDisplayString(filstorlek.value) + " KB", 1),
               _cache[3] || (_cache[3] = createTextVNode()),
-              createElementVNode("button", {
-                type: "button",
-                class: "button button--discrete file-item__file-remove",
+              createVNode(unref(FButton), {
+                "data-test": "file-item__file-remove",
+                "icon-left": "trashcan",
+                variant: "tertiary",
                 "aria-label": `Ta bort ${fileName.value}`,
                 onClick: taBortFil
-              }, [createVNode(unref(FIcon), {
-                name: "trashcan",
-                class: "button__icon"
-              }), _cache[1] || (_cache[1] = createTextVNode("\n                            Ta bort\n                        ", -1))], 8, _hoisted_7)
+              }, {
+                default: withCtx(() => [..._cache[1] || (_cache[1] = [createTextVNode("\n                            Ta bort\n                        ", -1)])]),
+                _: 1
+              }, 8, ["aria-label"])
             ])]),
             _: 1
           }, 8, [
