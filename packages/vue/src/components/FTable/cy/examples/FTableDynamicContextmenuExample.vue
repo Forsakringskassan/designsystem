@@ -151,7 +151,7 @@ function isAllowed(action: ActionConfig): boolean {
         <li>Samma menykolumn kan därför visa olika alternativ för olika saker.</li>
     </ul>
 
-    <f-table :rows :columns key-attribute="id" />
+    <f-table :rows :columns />
 
     <f-select-field v-model="permission">
         <template #label>Behörighet</template>
