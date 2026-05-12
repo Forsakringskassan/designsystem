@@ -49,7 +49,6 @@
     "production",
     "globala inställningar",
     "config",
-    "CHANGELOG v5",
     "Paginering",
     "FPaginateDataset",
     "FPaginator",
@@ -101,6 +100,7 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
+    "CHANGELOG v5",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -161,20 +161,6 @@
     "Fieldset migreringsguide",
     "FCrudButton migreringsguide",
     "FCrudButton",
-    "På gång",
-    "pågående arbete",
-    "planerat arbete",
-    "framtid",
-    "Releaser",
-    "deprekering",
-    "borttagna komponenter",
-    "Releaseanteckningar",
-    "version",
-    "Designsystemet",
-    "status",
-    "produktionsklar",
-    "beta",
-    "experimentell",
     "Testverktyg",
     "testfall",
     "jest",
@@ -210,6 +196,20 @@
     "Riktlinjer för kod",
     "Checklista vid publicering",
     "personuppgifter",
+    "På gång",
+    "pågående arbete",
+    "planerat arbete",
+    "framtid",
+    "Releaser",
+    "deprekering",
+    "borttagna komponenter",
+    "Releaseanteckningar",
+    "version",
+    "Designsystemet",
+    "status",
+    "produktionsklar",
+    "beta",
+    "experimentell",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -223,6 +223,9 @@
     "testverktyg",
     "Jest",
     "testverktyg",
+    "EventBus",
+    "EventBus",
+    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -230,9 +233,6 @@
     "densify() function",
     "densitet",
     "sass",
-    "EventBus",
-    "EventBus",
-    "services",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -270,12 +270,6 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Om FKUI Vue Labs",
     "Tidsinmatning",
     "XTimeTextField",
@@ -285,6 +279,12 @@
     "XRelativeTime",
     "XFileDragdrop",
     "XFileDragdrop",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -452,14 +452,6 @@
     "FFixedPane",
     "Detaljpanel",
     "FDetailsPanel",
-    "Modal dialogruta",
-    "FModal",
-    "FModalSize",
-    "modalSizes",
-    "Formulärsmodal",
-    "FFormModal",
-    "Bekräftelsemodal",
-    "FConfirmModal",
     "Förloppsindikator",
     "FProgressbar",
     "ladda",
@@ -468,6 +460,14 @@
     "FLoader",
     "ladda",
     "laddning",
+    "Modal dialogruta",
+    "FModal",
+    "FModalSize",
+    "modalSizes",
+    "Formulärsmodal",
+    "FFormModal",
+    "Bekräftelsemodal",
+    "FConfirmModal",
     "Startpunkt",
     "entrypoint",
     "länk",
@@ -554,6 +554,11 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
+    "FTablePageObject",
+    "FPaginatorPageObject",
+    "FListPageObject",
+    "FExpandableParagraphPageObject",
+    "FDefinitionListPageObject",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -570,11 +575,6 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
-    "FTablePageObject",
-    "FPaginatorPageObject",
-    "FListPageObject",
-    "FExpandableParagraphPageObject",
-    "FDefinitionListPageObject",
     "openModal",
     "modalfunktion",
     "options API",
@@ -877,11 +877,6 @@
       ]
     },
     {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
-    },
-    {
       "url": "components/pagination.html",
       "title": "Paginering",
       "terms": [
@@ -1011,6 +1006,11 @@
       "terms": [
         "FBadge"
       ]
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -1146,40 +1146,6 @@
       ]
     },
     {
-      "url": "gettingstarted/about/roadmap.html",
-      "title": "På gång",
-      "terms": [
-        "pågående arbete",
-        "planerat arbete",
-        "framtid"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/releases.html",
-      "title": "Releaser",
-      "terms": [
-        "deprekering",
-        "borttagna komponenter"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/release-notes.html",
-      "title": "Releaseanteckningar",
-      "terms": [
-        "version"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/index.html",
-      "title": "Designsystemet",
-      "terms": [
-        "status",
-        "produktionsklar",
-        "beta",
-        "experimentell"
-      ]
-    },
-    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": [
@@ -1243,6 +1209,40 @@
       ]
     },
     {
+      "url": "gettingstarted/about/roadmap.html",
+      "title": "På gång",
+      "terms": [
+        "pågående arbete",
+        "planerat arbete",
+        "framtid"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/releases.html",
+      "title": "Releaser",
+      "terms": [
+        "deprekering",
+        "borttagna komponenter"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/release-notes.html",
+      "title": "Releaseanteckningar",
+      "terms": [
+        "version"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/index.html",
+      "title": "Designsystemet",
+      "terms": [
+        "status",
+        "produktionsklar",
+        "beta",
+        "experimentell"
+      ]
+    },
+    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1276,6 +1276,14 @@
       ]
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1290,14 +1298,6 @@
       "terms": [
         "densitet",
         "sass"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
       ]
     },
     {
@@ -1363,27 +1363,6 @@
       ]
     },
     {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
       "url": "functions/labs/index.html",
       "title": "Om FKUI Vue Labs",
       "terms": []
@@ -1414,6 +1393,27 @@
       "title": "XFileDragdrop",
       "terms": [
         "XFileDragdrop"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
       ]
     },
     {
@@ -1772,6 +1772,24 @@
       ]
     },
     {
+      "url": "components/load/fprogressbar.html",
+      "title": "Förloppsindikator",
+      "terms": [
+        "ladda",
+        "laddning",
+        "FProgressbar"
+      ]
+    },
+    {
+      "url": "components/load/floader.html",
+      "title": "Laddningsindikator",
+      "terms": [
+        "ladda",
+        "laddning",
+        "FLoader"
+      ]
+    },
+    {
       "url": "components/modal/fmodal.html",
       "title": "Modal dialogruta",
       "terms": [
@@ -1792,24 +1810,6 @@
       "title": "Bekräftelsemodal",
       "terms": [
         "FConfirmModal"
-      ]
-    },
-    {
-      "url": "components/load/fprogressbar.html",
-      "title": "Förloppsindikator",
-      "terms": [
-        "ladda",
-        "laddning",
-        "FProgressbar"
-      ]
-    },
-    {
-      "url": "components/load/floader.html",
-      "title": "Laddningsindikator",
-      "terms": [
-        "ladda",
-        "laddning",
-        "FLoader"
       ]
     },
     {
@@ -2058,6 +2058,31 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/ftablepageobject.html",
+      "title": "FTablePageObject",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
+      "title": "FPaginatorPageObject",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/flistpageobject.html",
+      "title": "FListPageObject",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
+      "title": "FExpandableParagraphPageObject",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
+      "title": "FDefinitionListPageObject",
+      "terms": []
+    },
+    {
       "url": "functions/date/f-year/index.html",
       "title": "FYear",
       "terms": [
@@ -2132,31 +2157,6 @@
     {
       "url": "functions/date/f-year/f-date-next.html",
       "title": "FYear: next() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/ftablepageobject.html",
-      "title": "FTablePageObject",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
-      "title": "FPaginatorPageObject",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/flistpageobject.html",
-      "title": "FListPageObject",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
-      "title": "FExpandableParagraphPageObject",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
-      "title": "FDefinitionListPageObject",
       "terms": []
     },
     {
@@ -2843,56 +2843,56 @@
     "47": 12,
     "48": 12,
     "49": 13,
-    "50": 14,
-    "51": 14,
+    "50": 13,
+    "51": 13,
     "52": 14,
-    "53": 15,
+    "53": 14,
     "54": 15,
-    "55": 16,
+    "55": 15,
     "56": 16,
-    "57": 17,
-    "58": 17,
-    "59": 17,
-    "60": 17,
+    "57": 16,
+    "58": 16,
+    "59": 16,
+    "60": 16,
     "61": 17,
-    "62": 18,
+    "62": 17,
     "63": 18,
-    "64": 19,
+    "64": 18,
     "65": 19,
-    "66": 20,
-    "67": 20,
-    "68": 20,
-    "69": 20,
-    "70": 20,
+    "66": 19,
+    "67": 19,
+    "68": 19,
+    "69": 19,
+    "70": 19,
     "71": 20,
-    "72": 21,
+    "72": 20,
     "73": 21,
-    "74": 22,
-    "75": 22,
+    "74": 21,
+    "75": 21,
     "76": 22,
-    "77": 23,
-    "78": 23,
+    "77": 22,
+    "78": 22,
     "79": 23,
-    "80": 24,
+    "80": 23,
     "81": 24,
-    "82": 25,
-    "83": 25,
-    "84": 25,
-    "85": 25,
-    "86": 25,
+    "82": 24,
+    "83": 24,
+    "84": 24,
+    "85": 24,
+    "86": 24,
     "87": 25,
-    "88": 26,
-    "89": 26,
+    "88": 25,
+    "89": 25,
     "90": 26,
-    "91": 27,
+    "91": 26,
     "92": 27,
-    "93": 28,
-    "94": 28,
-    "95": 28,
-    "96": 28,
-    "97": 28,
+    "93": 27,
+    "94": 27,
+    "95": 27,
+    "96": 27,
+    "97": 27,
     "98": 28,
-    "99": 29,
+    "99": 28,
     "100": 29,
     "101": 30,
     "102": 30,
@@ -2958,49 +2958,49 @@
     "162": 45,
     "163": 45,
     "164": 45,
-    "165": 46,
-    "166": 46,
-    "167": 46,
-    "168": 47,
-    "169": 47,
-    "170": 48,
-    "171": 48,
-    "172": 48,
-    "173": 48,
-    "174": 48,
-    "175": 49,
-    "176": 49,
-    "177": 49,
-    "178": 49,
-    "179": 49,
-    "180": 49,
-    "181": 49,
-    "182": 49,
-    "183": 49,
-    "184": 49,
-    "185": 49,
-    "186": 49,
-    "187": 49,
-    "188": 49,
-    "189": 50,
-    "190": 50,
-    "191": 50,
-    "192": 50,
-    "193": 50,
+    "165": 45,
+    "166": 45,
+    "167": 45,
+    "168": 45,
+    "169": 45,
+    "170": 45,
+    "171": 45,
+    "172": 45,
+    "173": 45,
+    "174": 45,
+    "175": 46,
+    "176": 46,
+    "177": 46,
+    "178": 46,
+    "179": 46,
+    "180": 46,
+    "181": 46,
+    "182": 46,
+    "183": 46,
+    "184": 47,
+    "185": 47,
+    "186": 47,
+    "187": 47,
+    "188": 47,
+    "189": 47,
+    "190": 47,
+    "191": 47,
+    "192": 48,
+    "193": 49,
     "194": 50,
     "195": 50,
-    "196": 50,
-    "197": 50,
+    "196": 51,
+    "197": 51,
     "198": 51,
     "199": 51,
-    "200": 51,
-    "201": 51,
-    "202": 51,
-    "203": 51,
-    "204": 51,
-    "205": 51,
-    "206": 52,
-    "207": 53,
+    "200": 52,
+    "201": 52,
+    "202": 52,
+    "203": 53,
+    "204": 53,
+    "205": 54,
+    "206": 54,
+    "207": 54,
     "208": 54,
     "209": 54,
     "210": 55,
@@ -3019,7 +3019,7 @@
     "223": 59,
     "224": 59,
     "225": 59,
-    "226": 59,
+    "226": 60,
     "227": 60,
     "228": 60,
     "229": 60,
@@ -3064,11 +3064,11 @@
     "268": 66,
     "269": 66,
     "270": 67,
-    "271": 67,
+    "271": 68,
     "272": 68,
-    "273": 68,
+    "273": 69,
     "274": 69,
-    "275": 69,
+    "275": 70,
     "276": 70,
     "277": 71,
     "278": 71,
@@ -3251,14 +3251,14 @@
     "455": 115,
     "456": 116,
     "457": 116,
-    "458": 117,
-    "459": 117,
-    "460": 118,
-    "461": 118,
-    "462": 118,
-    "463": 118,
-    "464": 119,
-    "465": 119,
+    "458": 116,
+    "459": 116,
+    "460": 117,
+    "461": 117,
+    "462": 117,
+    "463": 117,
+    "464": 118,
+    "465": 118,
     "466": 119,
     "467": 119,
     "468": 120,
@@ -3348,11 +3348,11 @@
     "552": 151,
     "553": 152,
     "554": 153,
-    "555": 153,
-    "556": 154,
-    "557": 155,
-    "558": 156,
-    "559": 157,
+    "555": 154,
+    "556": 155,
+    "557": 156,
+    "558": 157,
+    "559": 158,
     "560": 158,
     "561": 159,
     "562": 160,
