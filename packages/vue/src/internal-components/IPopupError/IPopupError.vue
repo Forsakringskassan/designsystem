@@ -88,6 +88,8 @@ export default defineComponent({
                     anchor.addEventListener("keyup", this.onKeyEsc);
                     /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                     window.addEventListener("resize", this.onResize);
+                    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+                    window.addEventListener("scroll", this.onScroll, { capture: true });
                 }
             },
         },
@@ -103,9 +105,20 @@ export default defineComponent({
         this.anchor?.removeEventListener("keyup", this.onKeyEsc);
         /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         window.removeEventListener("resize", this.onResize);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+        window.removeEventListener("scroll", this.onScroll, { capture: true });
     },
     methods: {
         onResize() {
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+            this.toggleIsOpen(this.isOpen);
+        },
+        onScroll(event: Event) {
+            const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup-error"));
+            if (isPopupTarget) {
+                return;
+            }
+
             /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             this.toggleIsOpen(this.isOpen);
         },
