@@ -33,7 +33,7 @@
   "dependencies": {
     "@adobe/css-tools": "4.4.4",
     "@forsakringskassan/sass-module-importer": "2.0.0",
-    "cssnano": "7.1.9",
+    "cssnano": "8.0.1",
     "get-css-variables": "1.1.1",
     "postcss-scss": "4.0.9",
     "sass": "1.99.0",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@html-validate/release-scripts": "7.1.20",
-    "@types/node": "22.19.17",
+    "@types/node": "22.19.18",
     "@types/yargs": "17.0.35",
     "dedent": "1.7.2",
     "esbuild": "0.28.0",
