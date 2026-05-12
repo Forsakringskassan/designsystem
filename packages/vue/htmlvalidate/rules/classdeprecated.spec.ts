@@ -88,6 +88,34 @@ it("should report error when `.button--discrete` is used", async () => {
     );
 });
 
+it("should report error when `.button__icon--end` is used", async () => {
+    expect.assertions(3);
+    const markup = /* HTML */ `
+        <button type="button" class="button button--primary button--large">
+            <f-icon name="pen" class="button__icon button__icon--end"></f-icon>
+        </button>
+    `;
+    const report = await htmlvalidate.validateString(markup);
+    expect(report).toBeInvalid();
+    expect(report).toMatchInlineCodeframe(`
+        "error: class "button__icon--end" is deprecated (fkui/class-deprecated)
+          1 |
+          2 |         <button type="button" class="button button--primary button--large">
+        > 3 |             <f-icon name="pen" class="button__icon button__icon--end"></f-icon>
+            |                                                    ^^^^^^^^^^^^^^^^^
+          4 |         </button>
+          5 |
+        Selector: button > f-icon"
+    `);
+    const error = report.results[0].messages[0];
+    const docs = await htmlvalidate.getContextualDocumentation(error);
+    expect(docs?.description).toMatchInlineSnapshot(`
+        "Class \`button__icon--end\` is deprecated.
+
+        The class does nothing and has no replacement."
+    `);
+});
+
 it("should report error when `.navbar` is used", async () => {
     expect.assertions(3);
     const markup = /* HTML */ ` <div class="custom-navbar navbar"></div> `;
