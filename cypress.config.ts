@@ -77,7 +77,8 @@ export default defineConfig({
     e2e: {
         baseUrl: "http://localhost:8080",
         async setupNodeEvents(on, config) {
-            config.env.pages = await getDocsPages();
+            const pages = await getDocsPages();
+            config.expose = { pages };
 
             getToMatchScreenshotsPlugin(on, config);
             return install(on, config);
@@ -92,7 +93,9 @@ export default defineConfig({
                     ? styleText("red", "disabled")
                     : styleText("green", "enabled"),
             );
-            config.env.DISABLE_VISUAL_REGRESSION = disableVisualRegression;
+            config.expose = {
+                DISABLE_VISUAL_REGRESSION: disableVisualRegression,
+            };
             getToMatchScreenshotsPlugin(on, config);
             config = install(on, config);
             config = cypressSplit(on, config);
