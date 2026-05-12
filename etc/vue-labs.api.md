@@ -10,7 +10,6 @@ import { ComponentProvideOptions } from 'vue';
 import { DefineComponent } from 'vue';
 import { ExtractPropTypes } from 'vue';
 import { FormatFunction } from '@fkui/vue';
-import { IPopupErrorData } from '@fkui/vue';
 import { ParseFunction } from '@fkui/vue';
 import { PropType } from 'vue';
 import { PublicProps } from 'vue';
