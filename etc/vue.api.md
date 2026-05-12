@@ -1176,18 +1176,6 @@ export interface IPopupData {
 // @public (undocumented)
 export const IPopupError: typeof __VLS_export_76;
 
-// @public (undocumented)
-export interface IPopupErrorData {
-    // (undocumented)
-    arrowOffset: number;
-    // (undocumented)
-    arrowPosition: string;
-    // (undocumented)
-    placement: Placement;
-    // (undocumented)
-    teleportDisabled: boolean;
-}
-
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_77" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
