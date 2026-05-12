@@ -3,7 +3,16 @@
     "compilerOptions": {
         "noEmit": true,
         "types": ["vite/client"],
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "rootDir": "../../",
+        "paths": {
+            "@fkui/table-tests-examples/*": [
+                "../../packages/vue/src/components/FTable/tests/*.vue"
+            ],
+            "@fkui/table-docs-examples/*": [
+                "../../packages/vue/src/components/FTable/docs/*.vue"
+            ]
+        }
     },
     "include": ["src/**/*.ts", "src/**/*.vue"]
 }

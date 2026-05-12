@@ -16,6 +16,10 @@ const columns = defineTableColumns<Row>([
         header: "Text",
         key: "text",
         editable: true,
+        validation: {
+            required: {},
+            maxLength: { length: 5 },
+        },
     },
     {
         type: "button",
