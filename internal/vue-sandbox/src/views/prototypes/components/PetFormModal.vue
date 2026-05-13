@@ -38,8 +38,8 @@ export default defineComponent({
         function onSubmit(event: { data: unknown }): void {
             emit("submit", event);
         }
-        function onCancel(event: unknown): void {
-            emit("cancel", event);
+        function onCancel(): void {
+            emit("cancel");
         }
         function onClose(event: { reason: string; data?: unknown }): void {
             emit("close", event);
