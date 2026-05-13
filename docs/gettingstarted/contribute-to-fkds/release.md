@@ -250,6 +250,10 @@ Texten ska innehålla en kortfattad beskrivning av ändringen.
 Release byggs från CI-miljö för att säkerställa att vi har reproducerbara byggen och transparens i hur releasen är gjord.
 Bygg inte release från lokal utvecklingsmiljö.
 
+Deploy av dokumentation och PR-förhandsgranskningar till `gh-pages` hanteras av en intern deploy-kö (`deploy-queue`).
+Workflows enqueue:ar deploy-begäran och en dedikerad worker kör sedan en deploy i taget för att undvika samtidiga writes till `gh-pages`.
+Om du felsöker en deploy, kontrollera därför både workflow som skapade begäran och workflowet `gh-pages deploy worker`.
+
 Checklista innan release:
 
 - Prata med FKDS-teamet om releasen ska invänta andra pull requests som måste mergas först.

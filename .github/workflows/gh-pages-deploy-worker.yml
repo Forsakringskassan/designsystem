@@ -1,0 +1,379 @@
+name: gh-pages deploy worker
+
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: "*/5 * * * *"
+
+permissions:
+    contents: write
+    pull-requests: write
+    actions: write
+
+concurrency:
+    group: deploy-gh-pages-worker
+    cancel-in-progress: false
+
+jobs:
+    dequeue:
+        name: Dequeue next deployment
+        runs-on: ubuntu-latest
+        outputs:
+            has_item: ${{ steps.dequeue.outputs.has_item }}
+            queue_file: ${{ steps.dequeue.outputs.queue_file }}
+            queue_id: ${{ steps.dequeue.outputs.queue_id }}
+            kind: ${{ steps.dequeue.outputs.kind }}
+            source_ref: ${{ steps.dequeue.outputs.source_ref }}
+            source_sha: ${{ steps.dequeue.outputs.source_sha }}
+            pr_number: ${{ steps.dequeue.outputs.pr_number }}
+            pr_action: ${{ steps.dequeue.outputs.pr_action }}
+        steps:
+            - name: Dequeue item
+              id: dequeue
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  set -euo pipefail
+
+                  queue_branch="deploy-queue"
+                  queue_repo_url="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+                  workdir="$(mktemp -d)"
+                  trap 'rm -rf "${workdir}"' EXIT
+
+                  git -C "${workdir}" init
+                  git -C "${workdir}" remote add origin "${queue_repo_url}"
+
+                  if ! git -C "${workdir}" ls-remote --exit-code --heads origin "${queue_branch}" >/dev/null 2>&1; then
+                      echo "has_item=false" >> "${GITHUB_OUTPUT}"
+                      exit 0
+                  fi
+
+                  git -C "${workdir}" fetch --depth=1 origin "${queue_branch}"
+                  git -C "${workdir}" checkout -B "${queue_branch}" FETCH_HEAD
+
+                  queue_file="$(find "${workdir}/queue/pending" -type f -name '*.json' 2>/dev/null | sort | head -n 1 || true)"
+                  if [[ -z "${queue_file}" ]]; then
+                      echo "has_item=false" >> "${GITHUB_OUTPUT}"
+                      exit 0
+                  fi
+
+                  payload="$(cat "${queue_file}")"
+                  kind="$(echo "${payload}" | jq -r '.kind')"
+                  if [[ "${kind}" != "docs-main" && "${kind}" != "docs-version" && "${kind}" != "pr-preview" ]]; then
+                      echo "Unsupported queue item kind: ${kind}" >&2
+                      exit 1
+                  fi
+
+                  echo "has_item=true" >> "${GITHUB_OUTPUT}"
+                  echo "queue_file=${queue_file#${workdir}/}" >> "${GITHUB_OUTPUT}"
+                  echo "queue_id=$(echo "${payload}" | jq -r '.id')" >> "${GITHUB_OUTPUT}"
+                  echo "kind=${kind}" >> "${GITHUB_OUTPUT}"
+                  echo "source_ref=$(echo "${payload}" | jq -r '.source_ref')" >> "${GITHUB_OUTPUT}"
+                  echo "source_sha=$(echo "${payload}" | jq -r '.source_sha')" >> "${GITHUB_OUTPUT}"
+                  echo "pr_number=$(echo "${payload}" | jq -r '.pr_number // empty')" >> "${GITHUB_OUTPUT}"
+                  echo "pr_action=$(echo "${payload}" | jq -r '.pr_action // empty')" >> "${GITHUB_OUTPUT}"
+
+    deploy-docs-main:
+        name: Deploy docs (main)
+        needs: [dequeue]
+        if: needs.dequeue.outputs.has_item == 'true' && needs.dequeue.outputs.kind == 'docs-main'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout source
+              uses: actions/checkout@v6
+              with:
+                  ref: ${{ needs.dequeue.outputs.source_sha }}
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build documentation
+              uses: ./.github/actions/build-docs
+              with:
+                  example-apps: true
+                  sandbox: false
+            - name: Checkout gh-pages
+              uses: actions/checkout@v6
+              with:
+                  ref: gh-pages
+                  path: gh-pages
+            - name: Publish main docs
+              env:
+                  DOCS_DEPLOY_EMAIL: ${{ vars.DOCS_DEPLOY_EMAIL }}
+                  DOCS_DEPLOY_NAME: ${{ vars.DOCS_DEPLOY_NAME }}
+              run: |
+                  set -euo pipefail
+                  rsync -a --delete public/ gh-pages/main/
+
+                  git -C gh-pages config user.email "${DOCS_DEPLOY_EMAIL}"
+                  git -C gh-pages config user.name "${DOCS_DEPLOY_NAME}"
+                  git -C gh-pages add -A main
+
+                  if git -C gh-pages diff --cached --quiet; then
+                      echo "No main docs changes to publish"
+                      exit 0
+                  fi
+
+                  git -C gh-pages commit -m "chore(release): [skip ci] deploy documentation from main branch"
+                  git -C gh-pages push origin HEAD:gh-pages
+
+    deploy-docs-version:
+        name: Deploy docs (versioned)
+        needs: [dequeue]
+        if: needs.dequeue.outputs.has_item == 'true' && needs.dequeue.outputs.kind == 'docs-version'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout source
+              uses: actions/checkout@v6
+              with:
+                  ref: ${{ needs.dequeue.outputs.source_sha }}
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22.x
+            - name: Determine version
+              run: echo "VERSION=v$(npm pkg get version | jq -r)" | tee -a "${GITHUB_ENV}"
+            - name: Install dependencies
+              run: npm ci
+            - name: Build documentation
+              uses: ./.github/actions/build-docs
+              with:
+                  example-apps: true
+                  sandbox: false
+            - name: Checkout gh-pages
+              uses: actions/checkout@v6
+              with:
+                  ref: gh-pages
+                  path: gh-pages
+            - name: Publish versioned docs
+              env:
+                  DOCS_DEPLOY_EMAIL: ${{ vars.DOCS_DEPLOY_EMAIL }}
+                  DOCS_DEPLOY_NAME: ${{ vars.DOCS_DEPLOY_NAME }}
+                  SOURCE_REF: ${{ needs.dequeue.outputs.source_ref }}
+              run: |
+                  set -euo pipefail
+
+                  rm -rf "gh-pages/${VERSION}"
+                  mkdir -p "gh-pages/${VERSION}"
+                  rsync -a public/ "gh-pages/${VERSION}/"
+
+                  if [[ "${SOURCE_REF}" == "refs/heads/main" ]]; then
+                      rm -rf gh-pages/latest
+                  fi
+
+                  versions="$(find gh-pages -maxdepth 1 -mindepth 1 -type d -name 'v*.*.*' -printf '%f\n' | sort -V)"
+                  if [[ "${SOURCE_REF}" == "refs/heads/main" ]]; then
+                      printf '%s\n' "${versions}" \
+                          | jq -Rn --arg latest "${VERSION}" '{versions: [inputs], latest: $latest}' \
+                          > gh-pages/versions.json
+                      ln -s "${VERSION}" gh-pages/latest
+                  else
+                      current_latest="$(jq -r '.latest // empty' gh-pages/versions.json 2>/dev/null || true)"
+                      if [[ -z "${current_latest}" ]]; then
+                          current_latest="${VERSION}"
+                      fi
+                      printf '%s\n' "${versions}" \
+                          | jq -Rn --arg latest "${current_latest}" '{versions: [inputs], latest: $latest}' \
+                          > gh-pages/versions.json
+                  fi
+
+                  git -C gh-pages config user.email "${DOCS_DEPLOY_EMAIL}"
+                  git -C gh-pages config user.name "${DOCS_DEPLOY_NAME}"
+                  git -C gh-pages add -A .
+
+                  if git -C gh-pages diff --cached --quiet; then
+                      echo "No versioned docs changes to publish"
+                      exit 0
+                  fi
+
+                  git -C gh-pages commit -m "chore(release): [skip ci] deploy ${VERSION} documentation"
+                  git -C gh-pages push origin HEAD:gh-pages
+
+    deploy-pr-preview:
+        name: Deploy PR preview
+        needs: [dequeue]
+        if: needs.dequeue.outputs.has_item == 'true' && needs.dequeue.outputs.kind == 'pr-preview'
+        runs-on: ubuntu-latest
+        outputs:
+            preview_url: ${{ steps.preview.outputs.preview_url }}
+        steps:
+            - name: Checkout source
+              if: needs.dequeue.outputs.pr_action != 'closed'
+              uses: actions/checkout@v6
+              with:
+                  ref: ${{ needs.dequeue.outputs.source_sha }}
+            - name: Use Node.js 22.x
+              if: needs.dequeue.outputs.pr_action != 'closed'
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              if: needs.dequeue.outputs.pr_action != 'closed'
+              run: npm ci
+            - name: Build documentation
+              if: needs.dequeue.outputs.pr_action != 'closed'
+              uses: ./.github/actions/build-docs
+              with:
+                  example-apps: true
+                  sandbox: true
+            - name: Checkout gh-pages
+              uses: actions/checkout@v6
+              with:
+                  ref: gh-pages
+                  path: gh-pages
+            - name: Publish PR preview
+              id: preview
+              env:
+                  DOCS_DEPLOY_EMAIL: ${{ vars.DOCS_DEPLOY_EMAIL }}
+                  DOCS_DEPLOY_NAME: ${{ vars.DOCS_DEPLOY_NAME }}
+                  PR_NUMBER: ${{ needs.dequeue.outputs.pr_number }}
+                  PR_ACTION: ${{ needs.dequeue.outputs.pr_action }}
+              run: |
+                  set -euo pipefail
+
+                  if [[ -z "${PR_NUMBER}" ]]; then
+                      echo "Missing PR number for preview deployment" >&2
+                      exit 1
+                  fi
+
+                  target_dir="gh-pages/pr-preview/pr-${PR_NUMBER}"
+                  if [[ "${PR_ACTION}" == "closed" ]]; then
+                      rm -rf "${target_dir}"
+                  else
+                      mkdir -p "${target_dir}"
+                      rsync -a --delete public/ "${target_dir}/"
+                      echo "preview_url=https://forsakringskassan.github.io/designsystem/pr-preview/pr-${PR_NUMBER}/" >> "${GITHUB_OUTPUT}"
+                  fi
+
+                  git -C gh-pages config user.email "${DOCS_DEPLOY_EMAIL}"
+                  git -C gh-pages config user.name "${DOCS_DEPLOY_NAME}"
+                  git -C gh-pages add -A .
+
+                  if git -C gh-pages diff --cached --quiet; then
+                      echo "No PR preview changes to publish"
+                      exit 0
+                  fi
+
+                  if [[ "${PR_ACTION}" == "closed" ]]; then
+                      git -C gh-pages commit -m "chore(release): [skip ci] remove PR #${PR_NUMBER} preview"
+                  else
+                      git -C gh-pages commit -m "chore(release): [skip ci] deploy PR #${PR_NUMBER} preview"
+                  fi
+                  git -C gh-pages push origin HEAD:gh-pages
+
+            - name: Leave a comment after deployment
+              if: needs.dequeue.outputs.pr_action != 'closed'
+              uses: marocchino/sticky-pull-request-comment@v3
+              with:
+                  number: ${{ needs.dequeue.outputs.pr_number }}
+                  header: pr-preview
+                  message: |
+                      ##  Förhandsgranskning :bug: :mag:
+
+                      Dokumentation och exampel applikationer finns att förhandsgranska på:
+
+                      | Sida | URL |
+                      |-|-
+                      | Dokumentation | ${{ steps.preview.outputs.preview_url }} |
+                      | Vue Sandbox | ${{ steps.preview.outputs.preview_url }}vue-sandbox |
+                      | Applikationsmall | ${{ steps.preview.outputs.preview_url }}examples/page-layout |
+
+                      Exempel för testning:
+
+                      | Sida | URL |
+                      |-|-
+                      | Tabell | ${{ steps.preview.outputs.preview_url }}examples/table |
+
+                      ---
+
+                      ###### Senast uppdaterad i [gh-pages](${{ github.server_url }}/${{ github.repository }}/tree/gh-pages).
+
+            - name: Leave a comment after cleanup
+              if: needs.dequeue.outputs.pr_action == 'closed'
+              uses: marocchino/sticky-pull-request-comment@v3
+              with:
+                  number: ${{ needs.dequeue.outputs.pr_number }}
+                  header: pr-preview
+                  message: |
+                      ##  Förhandsgranskning :bug: :mag:
+
+                      Förhandsgranskning borttagen då pull request är stängd.
+
+    finalize:
+        name: Finalize queue item
+        needs:
+            - dequeue
+            - deploy-docs-main
+            - deploy-docs-version
+            - deploy-pr-preview
+        if: needs.dequeue.outputs.has_item == 'true' && !cancelled() && !failure()
+        runs-on: ubuntu-latest
+        outputs:
+            has_more: ${{ steps.finalize.outputs.has_more }}
+        steps:
+            - name: Remove processed queue item
+              id: finalize
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  QUEUE_FILE: ${{ needs.dequeue.outputs.queue_file }}
+              run: |
+                  set -euo pipefail
+
+                  queue_branch="deploy-queue"
+                  queue_repo_url="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+                  workdir="$(mktemp -d)"
+                  trap 'rm -rf "${workdir}"' EXIT
+
+                  git -C "${workdir}" init
+                  git -C "${workdir}" remote add origin "${queue_repo_url}"
+                  git -C "${workdir}" config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+                  git -C "${workdir}" config user.name "${GITHUB_ACTOR}"
+                  git -C "${workdir}" fetch --depth=1 origin "${queue_branch}"
+                  git -C "${workdir}" checkout -B "${queue_branch}" FETCH_HEAD
+
+                  if [[ ! -f "${workdir}/${QUEUE_FILE}" ]]; then
+                      echo "Queue item already removed: ${QUEUE_FILE}"
+                  else
+                      rm -f "${workdir}/${QUEUE_FILE}"
+                      git -C "${workdir}" add "${QUEUE_FILE}"
+                      git -C "${workdir}" commit -m "chore(ci): dequeue ${QUEUE_FILE} [skip ci]" || true
+
+                      if git -C "${workdir}" rev-parse --verify HEAD >/dev/null 2>&1; then
+                          for attempt in 1 2 3 4 5; do
+                              if git -C "${workdir}" push origin "HEAD:${queue_branch}"; then
+                                  break
+                              fi
+                              if [[ "${attempt}" -eq 5 ]]; then
+                                  echo "Failed to remove queue item after ${attempt} attempts" >&2
+                                  exit 1
+                              fi
+                              git -C "${workdir}" fetch origin "${queue_branch}"
+                              git -C "${workdir}" rebase FETCH_HEAD
+                          done
+                      fi
+                  fi
+
+                  if find "${workdir}/queue/pending" -type f -name '*.json' 2>/dev/null | grep -q .; then
+                      echo "has_more=true" >> "${GITHUB_OUTPUT}"
+                  else
+                      echo "has_more=false" >> "${GITHUB_OUTPUT}"
+                  fi
+
+    continue:
+        name: Continue queue processing
+        needs: [finalize]
+        if: needs.finalize.outputs.has_more == 'true'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Trigger queue worker
+              uses: actions/github-script@v8
+              with:
+                  script: |
+                      await github.rest.actions.createWorkflowDispatch({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          workflow_id: "gh-pages-deploy-worker.yml",
+                          ref: "main",
+                      });
