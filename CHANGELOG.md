@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 6.46.0 (2026-05-13)
+
+### Features
+
+* **@fkui/logic, @fkui/vue-labs:** updated the type ValidatorConfig to allow objects as values (refs KDK-58279) 710dc57
+* **@fkui/tsconfig:** add resolveJsonModule to @fkui/tsconfig/recommended (refs SFKUI-6500) 3004215
+* **deps:** update dependency cssnano to v8 3be6532
+* **FTable:** support dynamic menu actions (refs SFKUI-7870) ([#1282](undefined/Forsakringskassan/designsystem/issues/1282)) 8893b2f
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** disabled tertiary button keep same size (fixes SFKUI-7864) eeee718
+* **@fkui/design, @fkui/vue:** move box-shadow to li element (refs SFKUI-7523) 4498a7b
+* **deps:** update dependency cssnano to v7.1.9 26116ab
+* **deps:** update dependency cssnano to v8.0.1 dacdb43
+* **deps:** update dependency i18next to v26.0.10 f0ecbed
+* **deps:** update dependency i18next to v26.0.9 f6d94b2
+* **deps:** update html-validate minimum required version to v10.10.0 (refs SFKUI-6500) 484d7ef
+* **deps:** update vue monorepo to v3.5.34 244286b
+
 ## 6.45.0 (2026-05-06)
 
 ### Features
