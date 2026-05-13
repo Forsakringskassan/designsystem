@@ -134,6 +134,14 @@ function onResize(): void {
     void toggleIsOpen(isOpen);
 }
 
+function onScroll(event: Event): void {
+    const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup-error"));
+    if (isPopupTarget) {
+        return;
+    }
+    void toggleIsOpen(isOpen);
+}
+
 watch(
     () => anchor,
     (anchorElement, _, onCleanup) => {
@@ -143,9 +151,11 @@ watch(
 
         anchorElement.addEventListener("keyup", onKeyEsc);
         window.addEventListener("resize", onResize);
+        window.addEventListener("scroll", onScroll, { capture: true });
         onCleanup(() => {
             anchorElement.removeEventListener("keyup", onKeyEsc);
             window.removeEventListener("resize", onResize);
+            window.removeEventListener("scroll", onScroll, { capture: true });
         });
     },
     { immediate: true },
