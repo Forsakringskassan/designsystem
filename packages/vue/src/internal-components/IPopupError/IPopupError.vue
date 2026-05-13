@@ -1,188 +1,172 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { type PropType, defineComponent } from "vue";
+<script setup lang="ts">
+import { computed, nextTick, ref, useTemplateRef, watch } from "vue";
 import { FIcon } from "../../components/FIcon";
 import { config } from "../../config";
 import { CandidateOrder, Placement, fitInsideArea } from "../IPopup/i-popup-utils";
 import { computeArrowOffset } from "./compute-arrow-offset";
-import { type IPopupErrorData } from "./ipopuperror-data";
+
+const {
+    isOpen,
+    errorMessage = "Error",
+    anchor = undefined,
+    arrowAnchor = undefined,
+    layout,
+} = defineProps<{
+    /**
+     * Toggle open/closed error popup.
+     */
+    isOpen: boolean;
+    /**
+     * Message to display.
+     */
+    errorMessage?: string;
+    /**
+     * DOM element to position error popup at.
+     */
+    anchor?: HTMLElement | null;
+    /**
+     * DOM element to align arrow with.
+     */
+    arrowAnchor?: HTMLElement | null;
+    /**
+     * - `f-table`: error icon left of text without close button.
+     * - `f-interactive-table`: close button right of text without error icon.
+     */
+    layout: "f-interactive-table" | "f-table";
+}>();
+
+const emit = defineEmits<(event: "close") => void>();
 
 const POPUP_SPACING = 10;
+const wrapperRef = useTemplateRef("wrapper");
+const teleportDisabled = ref(false);
+const placement = ref(Placement.NotCalculated);
+const arrowPosition = ref("top");
+const arrowOffset = ref(24);
 
-export default defineComponent({
-    name: "IPopupError",
-    components: { FIcon },
-    inheritAttrs: false,
-    props: {
-        /**
-         * Toggle open/closed error popup.
-         */
-        isOpen: {
-            type: Boolean,
-            required: true,
-        },
-        /**
-         * Message to display
-         */
-        errorMessage: {
-            type: String,
-            required: false,
-            default: "Error",
-        },
-        /**
-         * DOM element to position error popup at.
-         */
-        anchor: {
-            type: HTMLElement as PropType<HTMLElement | null | undefined>,
-            required: false,
-            default: undefined,
-        },
-        /**
-         * DOM element to align arrow with.
-         */
-        arrowAnchor: {
-            type: HTMLElement as PropType<HTMLElement | null | undefined>,
-            required: false,
-            default: undefined,
-        },
-        /**
-         * - `f-table`: error icon left of text without close button.
-         * - `f-interactive-table`: close button right of text without error icon.
-         */
-        layout: {
-            type: String as PropType<"f-interactive-table" | "f-table">,
-            required: true,
-        },
-    },
-    emits: ["close"],
-    data(): IPopupErrorData {
-        return {
-            teleportDisabled: false,
-            placement: Placement.NotCalculated,
-            arrowPosition: "top",
-            arrowOffset: 24,
-        };
-    },
-    computed: {
-        popupClasses(): string[] {
-            const forceInline = this.teleportDisabled || this.placement === Placement.Fallback;
-            const popupState = forceInline ? ["popup-error--inline"] : ["popup-error--overlay"];
-            return ["popup-error", ...popupState];
-        },
-        arrowClass(): string {
-            return `popup-error popup-error--arrow popup-error--${this.arrowPosition}`;
-        },
-        errorStyle(): string {
-            return `--i-popup-error-offset: ${String(this.arrowOffset)}px`;
-        },
-        teleportTarget() {
-            return config.teleportTarget;
-        },
-    },
-    watch: {
-        anchor: {
-            immediate: true,
-            handler(anchor: HTMLElement | null | undefined): void {
-                if (anchor) {
-                    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                    anchor.addEventListener("keyup", this.onKeyEsc);
-                    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                    window.addEventListener("resize", this.onResize);
-                }
-            },
-        },
-        isOpen: {
-            immediate: true,
-            async handler(value: boolean): Promise<void> {
-                await this.toggleIsOpen(value);
-            },
-        },
-    },
-    unmounted() {
-        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-        this.anchor?.removeEventListener("keyup", this.onKeyEsc);
-        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-        window.removeEventListener("resize", this.onResize);
-    },
-    methods: {
-        onResize() {
-            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-            this.toggleIsOpen(this.isOpen);
-        },
-        onKeyEsc(event: KeyboardEvent): void {
-            if (event.key === "Escape") {
-                this.$emit("close");
-            }
-        },
-        onClose() {
-            this.$emit("close");
-        },
-        setArrowOffset() {
-            const wrapper = this.$refs.wrapper as HTMLElement;
-            const arrowAnchor = this.arrowAnchor ?? this.anchor?.nextElementSibling;
-
-            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-            if (!arrowAnchor || !wrapper) {
-                return;
-            }
-            const arrowAnchorRect = arrowAnchor.getBoundingClientRect();
-            const wrapperRect = wrapper.getBoundingClientRect();
-            const arrow = computeArrowOffset(this.placement, arrowAnchorRect, wrapperRect);
-            this.arrowOffset = arrow.offset;
-            this.arrowPosition = arrow.position;
-        },
-        async toggleIsOpen(isOpen: boolean): Promise<void> {
-            /* popup is closing */
-            if (!isOpen) {
-                this.placement = Placement.NotCalculated;
-                return;
-            }
-
-            /* popup is opening */
-            // Wait for popup to show up
-            await this.$nextTick();
-            const wrapper = this.$refs.wrapper as HTMLElement;
-
-            if (!this.anchor) {
-                throw new Error("No anchor element found");
-            }
-
-            // Check candidates for overlay position.
-            const area = document.body;
-            const viewport = document.documentElement;
-            const result = fitInsideArea({
-                area,
-                anchor: this.anchor,
-                target: wrapper,
-                viewport,
-                spacing: POPUP_SPACING,
-                candidateOrder: CandidateOrder.IPopupError,
-            });
-
-            this.placement = result.placement;
-            if (result.placement !== Placement.Fallback) {
-                this.teleportDisabled = false;
-                wrapper.style.left = `${String(result.x)}px`;
-                wrapper.style.top = `${String(result.y)}px`;
-                this.setArrowOffset();
-                return;
-            }
-            this.setArrowOffset();
-            this.teleportDisabled = true;
-            wrapper.style.removeProperty("left");
-            wrapper.style.removeProperty("top");
-        },
-    },
+const popupClasses = computed(() => {
+    const forceInline = teleportDisabled.value || placement.value === Placement.Fallback;
+    const popupState = forceInline ? ["popup-error--inline"] : ["popup-error--overlay"];
+    return ["popup-error", ...popupState];
 });
+
+const arrowClass = computed(() => {
+    return `popup-error popup-error--arrow popup-error--${arrowPosition.value}`;
+});
+
+const errorStyle = computed(() => {
+    return `--i-popup-error-offset: ${String(arrowOffset.value)}px`;
+});
+
+const teleportTarget = computed(() => config.teleportTarget);
+
+function onKeyEsc(event: KeyboardEvent): void {
+    if (event.key === "Escape") {
+        emit("close");
+    }
+}
+
+function onClose(): void {
+    emit("close");
+}
+
+function setArrowOffset(): void {
+    const targetArrowAnchor = arrowAnchor ?? anchor?.nextElementSibling;
+
+    if (!targetArrowAnchor || !wrapperRef.value) {
+        return;
+    }
+
+    const arrowAnchorRect = targetArrowAnchor.getBoundingClientRect();
+    const wrapperRect = wrapperRef.value.getBoundingClientRect();
+    const arrow = computeArrowOffset(placement.value, arrowAnchorRect, wrapperRect);
+    arrowOffset.value = arrow.offset;
+    arrowPosition.value = arrow.position;
+}
+
+async function toggleIsOpen(isOpen: boolean): Promise<void> {
+    /* popup is closing */
+    if (!isOpen) {
+        placement.value = Placement.NotCalculated;
+        return;
+    }
+
+    /* popup is opening */
+    // Wait for popup to show up
+    await nextTick();
+
+    if (!wrapperRef.value) {
+        return;
+    }
+
+    if (!anchor) {
+        throw new Error("No anchor element found");
+    }
+
+    // Check candidates for overlay position.
+    const area = document.body;
+    const viewport = document.documentElement;
+    const result = fitInsideArea({
+        area,
+        anchor,
+        target: wrapperRef.value,
+        viewport,
+        spacing: POPUP_SPACING,
+        candidateOrder: CandidateOrder.IPopupError,
+    });
+
+    placement.value = result.placement;
+    if (result.placement !== Placement.Fallback) {
+        teleportDisabled.value = false;
+        wrapperRef.value.style.left = `${String(result.x)}px`;
+        wrapperRef.value.style.top = `${String(result.y)}px`;
+        setArrowOffset();
+        return;
+    }
+
+    setArrowOffset();
+    teleportDisabled.value = true;
+    wrapperRef.value.style.removeProperty("left");
+    wrapperRef.value.style.removeProperty("top");
+}
+
+function onResize(): void {
+    void toggleIsOpen(isOpen);
+}
+
+watch(
+    () => anchor,
+    (anchorElement, _, onCleanup) => {
+        if (!anchorElement) {
+            return;
+        }
+
+        anchorElement.addEventListener("keyup", onKeyEsc);
+        window.addEventListener("resize", onResize);
+        onCleanup(() => {
+            anchorElement.removeEventListener("keyup", onKeyEsc);
+            window.removeEventListener("resize", onResize);
+        });
+    },
+    { immediate: true },
+);
+
+watch(
+    () => isOpen,
+    (value) => {
+        void toggleIsOpen(value);
+    },
+    { immediate: true },
+);
 </script>
 
 <template>
     <teleport v-if="isOpen" :to="teleportTarget" :disabled="teleportDisabled">
-        <div ref="popup" :class="popupClasses" aria-hidden="true">
+        <div :class="popupClasses" aria-hidden="true">
             <div ref="wrapper" class="popup-error__wrapper">
                 <!-- [html-validate-disable-next no-inline-style] -->
                 <div :class="arrowClass" :style="errorStyle">
-                    <f-icon v-if="layout === 'f-table'" ref="icon" class="popup-error__icon" name="error"></f-icon>
+                    <f-icon v-if="layout === 'f-table'" class="popup-error__icon" name="error"></f-icon>
                     <span>{{ errorMessage }}</span>
 
                     <!-- `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.

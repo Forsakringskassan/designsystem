@@ -1,5 +1,6 @@
 name: Deploy
-concurrency: deploy-${{ github.ref }}
+
+concurrency: docs-${{ github.ref }}
 
 on:
     workflow_dispatch:

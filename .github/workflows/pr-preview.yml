@@ -1,6 +1,6 @@
 name: Deploy PR previews
 
-concurrency: preview-${{ github.ref }}
+concurrency: docs-${{ github.ref }}
 
 on:
     pull_request:
