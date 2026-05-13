@@ -1420,6 +1420,15 @@ describe("5 tabstop", () => {
         cy.focused().should("contain.text", "beta");
     });
 
+    it("5.6 expanded child row should fallback to row above with the same column when current tabstop is removed", () => {
+        cy.mount(FTableTabstopExample);
+
+        table.cell({ row: 1, col: 1 }).click();
+        table.cell({ row: 2, col: 3 }).should("contain.text", "alpha_sub1");
+        table.cell({ row: 2, col: 3 }).click();
+        cy.focused().should("contain.text", "alpha");
+    });
+
     it("should not set focus when removing rows from outside table", () => {
         const { buttonRemoveRow } = mountTabstopTestbed();
         cy.get(buttonRemoveRow).focus();
