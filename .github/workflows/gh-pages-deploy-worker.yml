@@ -293,7 +293,7 @@ jobs:
 
                       ---
 
-                      ###### Senast uppdaterad i [gh-pages](${{ github.server_url }}/${{ github.repository }}/tree/gh-pages).
+                      ###### Senast uppdaterad i [workflow-körning](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) och [gh-pages](${{ github.server_url }}/${{ github.repository }}/tree/gh-pages).
 
             - name: Leave a comment after cleanup
               if: needs.dequeue.outputs.pr_action == 'closed'

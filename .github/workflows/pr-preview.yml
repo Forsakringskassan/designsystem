@@ -10,7 +10,7 @@ on:
 
 permissions:
     contents: write
-    # Required to dispatch gh-pages-deploy-worker after enqueue.
+    # Required to dispatch gh-pages deploy worker after enqueue.
     actions: write
 
 jobs:
