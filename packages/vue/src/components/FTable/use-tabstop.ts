@@ -2,11 +2,7 @@ import { type Ref, type ShallowRef, onUpdated, ref, watch } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
 import { getItemIdentifier } from "../../utils";
 import { type FTableApi } from "./f-table-api";
-import {
-    activateCell,
-    getCellTarget,
-    getVerticalNavIndex,
-} from "./f-table.logic";
+import { activateCell, getCellTarget } from "./f-table.logic";
 import { type MetaRow } from "./meta-row";
 
 function matching(
@@ -14,6 +10,30 @@ function matching(
 ): (item: MetaRow<unknown>) => boolean {
     const id = getItemIdentifier(needle.row);
     return (item) => getItemIdentifier(item.row) === id;
+}
+
+function findClosestRemainingRowIndex(
+    oldRows: Array<MetaRow<unknown>>,
+    newRows: Array<MetaRow<unknown>>,
+    oldIndex: number,
+    direction: "above" | "below",
+): number | undefined {
+    const isMatchingRow = (
+        candidate: MetaRow<unknown>,
+        index: number,
+    ): boolean => {
+        const isInDirection =
+            direction === "above" ? index < oldIndex : index > oldIndex;
+
+        return isInDirection && newRows.some(matching(candidate));
+    };
+
+    const index =
+        direction === "above"
+            ? oldRows.findLastIndex(isMatchingRow)
+            : oldRows.findIndex(isMatchingRow);
+
+    return index === -1 ? undefined : index;
 }
 
 /**
@@ -118,45 +138,34 @@ export function useTabstop(
             return;
         }
 
-        if (oldTabstopTr.rowIndex === 1) {
-            // removing first row
-            const needle = oldRows.at(1);
-            const hasRowBelowInNewRows =
-                needle !== undefined && newRows.some(matching(needle));
+        const oldIndex = oldTabstopTr.rowIndex - 1;
+        const oldCellIndex = oldTabstopTd.cellIndex;
 
-            if (hasRowBelowInNewRows) {
-                const { cell } = getVerticalNavIndex(
-                    tableRef.value,
-                    { row: 1, cell: oldTabstopTd.cellIndex },
-                    { row: 2, cell: oldTabstopTd.cellIndex },
-                );
-                const fallback = getCellTarget(tableRef.value, 2, cell);
-                activateCell(fallback, { focus: true });
-            } else {
-                fallbackToFirstCell(newRows, oldRows, true);
-            }
+        const rowAboveIndex = findClosestRemainingRowIndex(
+            oldRows,
+            newRows,
+            oldIndex,
+            "above",
+        );
+
+        const rowBelowIndex = findClosestRemainingRowIndex(
+            oldRows,
+            newRows,
+            oldIndex,
+            "below",
+        );
+
+        const targetRowIndex = rowAboveIndex ?? rowBelowIndex;
+
+        if (targetRowIndex !== undefined) {
+            const target = getCellTarget(
+                tableRef.value,
+                targetRowIndex + 1,
+                oldCellIndex,
+            );
+            activateCell(target, { focus: oldTabstopFocused });
         } else {
-            // removing later row
-            const needle = oldRows[oldTabstopTr.rowIndex - 2];
-            const hasRowAboveInNewRows = newRows.some(matching(needle));
-
-            if (hasRowAboveInNewRows) {
-                const { row, cell } = getVerticalNavIndex(
-                    tableRef.value,
-                    {
-                        row: oldTabstopTr.rowIndex,
-                        cell: oldTabstopTd.cellIndex,
-                    },
-                    {
-                        row: oldTabstopTr.rowIndex - 1,
-                        cell: oldTabstopTd.cellIndex,
-                    },
-                );
-                const fallback = getCellTarget(tableRef.value, row, cell);
-                activateCell(fallback, { focus: true });
-            } else {
-                fallbackToFirstCell(newRows, oldRows, true);
-            }
+            fallbackToFirstCell(newRows, oldRows, oldTabstopFocused);
         }
     });
 
