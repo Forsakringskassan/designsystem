@@ -59,7 +59,7 @@ else
     git -C "${WORKDIR}" rm -rf . >/dev/null 2>&1 || true
 fi
 
-mkdir -p "${WORKDIR}/queue/pending" "${WORKDIR}/queue/processing"
+mkdir -p "${WORKDIR}/queue/pending"
 cat > "${WORKDIR}/${QUEUE_FILE}" <<EOF
 {
   "id": "${QUEUE_ID}",
