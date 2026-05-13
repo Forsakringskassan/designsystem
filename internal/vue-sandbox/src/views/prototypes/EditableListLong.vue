@@ -67,6 +67,12 @@ export default defineComponent({
             }
         }
 
+        const submitted = ref(false);
+
+        function onCompleted(): void {
+            submitted.value = true;
+        }
+
         return {
             currentStep,
             firstName,
@@ -74,6 +80,8 @@ export default defineComponent({
             showMinCardsError,
             beforeNextStep2,
             onCancel,
+            onCompleted,
+            submitted,
             capitalize,
             formatAge,
             formatGuardianship,
@@ -87,7 +95,15 @@ export default defineComponent({
         <router-link class="anchor" to="/paneler-vs-kort">← Tillbaka</router-link>
         <h1>Husdjursbidrag</h1>
 
-        <f-wizard v-model="currentStep" header-tag="h2" disable-initial-focus @cancel="onCancel">
+        <p v-if="submitted">Tack för din ansökan!</p>
+        <f-wizard
+            v-else
+            v-model="currentStep"
+            header-tag="h2"
+            disable-initial-focus
+            @cancel="onCancel"
+            @completed="onCompleted"
+        >
             <f-wizard-step key="step1" :use-error-list="false" title="Dina uppgifter">
                 <div class="i-width-md-6">
                     <f-text-field v-model="firstName" v-validation.required>Ditt förnamn</f-text-field>
@@ -147,7 +163,7 @@ export default defineComponent({
                         >Ändra Husdjur</f-button
                     >
                 </div>
-                <template #next-button-text>Klar</template>
+                <template #next-button-text>Skicka in</template>
             </f-wizard-step>
         </f-wizard>
     </div>
