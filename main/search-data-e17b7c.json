@@ -554,17 +554,6 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
-    "openModal",
-    "modalfunktion",
-    "options API",
-    "formModal() function",
-    "modalfunktion",
-    "formulärsmodal",
-    "options API",
-    "confirmModal() function",
-    "modalfunktion",
-    "bekräftelsemodal",
-    "options API",
     "ValidationErrorMessageBuilder: map() method",
     "feltext",
     "validator",
@@ -612,6 +601,17 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
+    "openModal",
+    "modalfunktion",
+    "options API",
+    "formModal() function",
+    "modalfunktion",
+    "formulärsmodal",
+    "options API",
+    "confirmModal() function",
+    "modalfunktion",
+    "bekräftelsemodal",
+    "options API",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -696,15 +696,15 @@
     "FInteractiveTablePageObject: header() method",
     "FInteractiveTablePageObject: checkbox() method",
     "FInteractiveTablePageObject: cell() method",
-    "FFileItemPageObject: FFileItemPageObject() constructor",
-    "FFileItemPageObject: typeOfFile() method",
-    "FFileItemPageObject: fileName() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
+    "FFileItemPageObject: FFileItemPageObject() constructor",
+    "FFileItemPageObject: typeOfFile() method",
+    "FFileItemPageObject: fileName() method",
     "FBadgePageObject: FBadgePageObject() constructor",
     "FFileItemPageObject: status() method",
     "FFileItemPageObject: inverted() method",
@@ -2058,32 +2058,6 @@
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
-      "terms": [
-        "modalfunktion",
-        "options API"
-      ]
-    },
-    {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
-      "terms": [
-        "modalfunktion",
-        "formulärsmodal",
-        "options API"
-      ]
-    },
-    {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
-      "terms": [
-        "modalfunktion",
-        "bekräftelsemodal",
-        "options API"
-      ]
-    },
-    {
       "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
       "title": "ValidationErrorMessageBuilder: map() method",
       "terms": [
@@ -2233,6 +2207,32 @@
       "title": "findElementFromVueRef",
       "terms": [
         "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
+      "terms": [
+        "modalfunktion",
+        "options API"
+      ]
+    },
+    {
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
+      "terms": [
+        "modalfunktion",
+        "formulärsmodal",
+        "options API"
+      ]
+    },
+    {
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
+      "terms": [
+        "modalfunktion",
+        "bekräftelsemodal",
+        "options API"
       ]
     },
     {
@@ -2553,21 +2553,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
-      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
-      "title": "FFileItemPageObject: typeOfFile() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
-      "title": "FFileItemPageObject: fileName() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": []
@@ -2595,6 +2580,21 @@
     {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
       "title": "FDetailsPanelPageObject: closeButton() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
+      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
+      "title": "FFileItemPageObject: typeOfFile() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
+      "title": "FFileItemPageObject: fileName() method",
       "terms": []
     },
     {
@@ -3353,56 +3353,56 @@
     "557": 154,
     "558": 154,
     "559": 154,
-    "560": 154,
+    "560": 155,
     "561": 155,
     "562": 155,
-    "563": 155,
-    "564": 155,
+    "563": 156,
+    "564": 156,
     "565": 156,
-    "566": 156,
-    "567": 156,
-    "568": 157,
-    "569": 157,
-    "570": 157,
-    "571": 158,
-    "572": 158,
-    "573": 158,
-    "574": 159,
-    "575": 159,
-    "576": 159,
-    "577": 160,
-    "578": 160,
-    "579": 161,
-    "580": 161,
-    "581": 162,
-    "582": 162,
-    "583": 163,
-    "584": 163,
-    "585": 164,
-    "586": 164,
-    "587": 165,
-    "588": 165,
-    "589": 166,
-    "590": 166,
-    "591": 167,
-    "592": 167,
-    "593": 168,
-    "594": 168,
-    "595": 169,
-    "596": 169,
-    "597": 170,
-    "598": 170,
-    "599": 171,
-    "600": 171,
-    "601": 172,
-    "602": 172,
-    "603": 173,
-    "604": 173,
-    "605": 173,
-    "606": 174,
-    "607": 174,
-    "608": 175,
-    "609": 175,
+    "566": 157,
+    "567": 157,
+    "568": 158,
+    "569": 158,
+    "570": 159,
+    "571": 159,
+    "572": 160,
+    "573": 160,
+    "574": 161,
+    "575": 161,
+    "576": 162,
+    "577": 162,
+    "578": 163,
+    "579": 163,
+    "580": 164,
+    "581": 164,
+    "582": 165,
+    "583": 165,
+    "584": 166,
+    "585": 166,
+    "586": 167,
+    "587": 167,
+    "588": 168,
+    "589": 168,
+    "590": 169,
+    "591": 169,
+    "592": 170,
+    "593": 170,
+    "594": 170,
+    "595": 171,
+    "596": 171,
+    "597": 172,
+    "598": 172,
+    "599": 173,
+    "600": 173,
+    "601": 174,
+    "602": 174,
+    "603": 174,
+    "604": 175,
+    "605": 175,
+    "606": 175,
+    "607": 175,
+    "608": 176,
+    "609": 176,
     "610": 176,
     "611": 176,
     "612": 177,
