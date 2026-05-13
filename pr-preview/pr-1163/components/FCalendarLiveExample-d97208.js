@@ -1657,14 +1657,14 @@ function setup(options) {
 }
 
 // virtual-entry:virtual:packages/vue/src/components/FCalendar/examples/FCalendarLiveExample.vue:FCalendarLiveExample-d97208.js
-import { defineComponent as defineComponent24 } from "vue";
+import { defineComponent as defineComponent23 } from "vue";
 import { FDate as FDate4 } from "@fkui/date";
 import { FCalendar, FCalendarDay } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FCheckboxField/FCheckboxField.vue?type=script
 var import_isEqual2 = __toESM(require_isEqual());
-import { defineComponent as defineComponent23, toValue as toValue2 } from "vue";
+import { defineComponent as defineComponent22, toValue as toValue2 } from "vue";
 import { ElementIdService as ElementIdService7 } from "@fkui/logic";
 
 // packages/vue/src/utils/list-utils.ts
@@ -1694,8 +1694,8 @@ function refIsVue(value) {
 function refIsVueArray(value) {
   return Array.isArray(value) && value.length > 0 && refIsVue(value[0]);
 }
-function getSortedHTMLElementsFromVueRef(ref7) {
-  const htmlElements = getHTMLElementsFromVueRef(ref7);
+function getSortedHTMLElementsFromVueRef(ref8) {
+  const htmlElements = getHTMLElementsFromVueRef(ref8);
   htmlElements.sort((lhs, rhs) => {
     const lhsIndex = parseIntOrDefault(lhs.dataset.refIndex, -Infinity);
     const rhsIndex = parseIntOrDefault(rhs.dataset.refIndex, -Infinity);
@@ -1712,38 +1712,38 @@ function parseIntOrDefault(value, defaultValue) {
   }
   return defaultValue;
 }
-function getHTMLElementsFromVueRef(ref7) {
+function getHTMLElementsFromVueRef(ref8) {
   let result = [];
-  if (isEmptyArray(ref7)) {
+  if (isEmptyArray(ref8)) {
     result = [];
-  } else if (refIsVueArray(ref7)) {
-    result = ref7.map((vueRef) => vueRef.$el);
-  } else if (refIsHTMLElementArray(ref7)) {
-    result = [...ref7];
-  } else if (isSet2(ref7)) {
-    result = [getHTMLElementFromVueRef(ref7)];
+  } else if (refIsVueArray(ref8)) {
+    result = ref8.map((vueRef) => vueRef.$el);
+  } else if (refIsHTMLElementArray(ref8)) {
+    result = [...ref8];
+  } else if (isSet2(ref8)) {
+    result = [getHTMLElementFromVueRef(ref8)];
   }
   return result;
 }
 function isEmptyArray(value) {
   return Array.isArray(value) && value.length === 0;
 }
-function findElementFromVueRef(ref7) {
-  if (refIsElement(ref7)) {
-    return ref7;
-  } else if (refIsVue(ref7)) {
-    return ref7.$el;
+function findElementFromVueRef(ref8) {
+  if (refIsElement(ref8)) {
+    return ref8;
+  } else if (refIsVue(ref8)) {
+    return ref8.$el;
   }
 }
-function getHTMLElementFromVueRef(ref7) {
-  const element = findElementFromVueRef(ref7);
+function getHTMLElementFromVueRef(ref8) {
+  const element = findElementFromVueRef(ref8);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref7)}.`);
+    throw new Error(`Unable to find element from ${String(ref8)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${String(ref7)}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref8)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -3736,18 +3736,18 @@ function getAbsolutePosition(src) {
 import { ref, toRaw, watch } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=script
-import { defineComponent as defineComponent22, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef4 } from "vue";
+import { defineComponent as defineComponent21, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef5 } from "vue";
 import { ElementIdService as ElementIdService6, debounce as debounce4 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FTooltip/FTooltip.vue?type=script
 import {
-  computed as computed4,
-  defineComponent as defineComponent21,
+  computed as computed5,
+  defineComponent as defineComponent20,
   inject,
-  ref as ref6,
+  ref as ref7,
   toRef,
   useSlots as useSlots2,
-  useTemplateRef as useTemplateRef3,
+  useTemplateRef as useTemplateRef4,
   watchEffect as watchEffect5
 } from "vue";
 import { TranslationService as TranslationService3 } from "@fkui/logic";
@@ -4341,7 +4341,8 @@ IPopup_default.__file = "packages/vue/src/internal-components/IPopup/IPopup.vue"
 var IPopup_default2 = IPopup_default;
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupError/IPopupError.vue?type=script
-import { defineComponent as defineComponent13 } from "vue";
+import { defineComponent as _defineComponent } from "vue";
+import { computed, nextTick, ref as ref2, useTemplateRef, watch as watch2 } from "vue";
 
 // packages/vue/src/internal-components/IPopupError/compute-arrow-offset.ts
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
@@ -4388,175 +4389,139 @@ function computeArrowOffset(placement, inputIconRect, wrapperRect) {
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupError/IPopupError.vue?type=script
 var POPUP_SPACING2 = 10;
-var IPopupError_default = defineComponent13({
-  name: "IPopupError",
-  components: { FIcon: FIcon_default2 },
-  inheritAttrs: false,
+var IPopupError_default = /* @__PURE__ */ _defineComponent({
+  __name: "IPopupError",
   props: {
-    /**
-     * Toggle open/closed error popup.
-     */
-    isOpen: {
-      type: Boolean,
-      required: true
-    },
-    /**
-     * Message to display
-     */
-    errorMessage: {
-      type: String,
-      required: false,
-      default: "Error"
-    },
-    /**
-     * DOM element to position error popup at.
-     */
-    anchor: {
-      type: HTMLElement,
-      required: false,
-      default: void 0
-    },
-    /**
-     * DOM element to align arrow with.
-     */
-    arrowAnchor: {
-      type: HTMLElement,
-      required: false,
-      default: void 0
-    },
-    /**
-     * - `f-table`: error icon left of text without close button.
-     * - `f-interactive-table`: close button right of text without error icon.
-     */
-    layout: {
-      type: String,
-      required: true
-    }
+    isOpen: { type: Boolean, required: true },
+    errorMessage: { type: String, required: false, default: "Error" },
+    anchor: { type: null, required: false, default: () => void 0 },
+    arrowAnchor: { type: null, required: false, default: () => void 0 },
+    layout: { type: String, required: true }
   },
   emits: ["close"],
-  data() {
-    return {
-      teleportDisabled: false,
-      placement: "NotCalculated" /* NotCalculated */,
-      arrowPosition: "top",
-      arrowOffset: 24
-    };
-  },
-  computed: {
-    popupClasses() {
-      const forceInline = this.teleportDisabled || this.placement === "Fallback" /* Fallback */;
+  setup(__props, { expose: __expose, emit: __emit }) {
+    __expose();
+    const emit = __emit;
+    const wrapperRef = useTemplateRef("wrapper");
+    const teleportDisabled2 = ref2(false);
+    const placement = ref2("NotCalculated" /* NotCalculated */);
+    const arrowPosition = ref2("top");
+    const arrowOffset = ref2(24);
+    const popupClasses = computed(() => {
+      const forceInline = teleportDisabled2.value || placement.value === "Fallback" /* Fallback */;
       const popupState = forceInline ? ["popup-error--inline"] : ["popup-error--overlay"];
       return ["popup-error", ...popupState];
-    },
-    arrowClass() {
-      return `popup-error popup-error--arrow popup-error--${this.arrowPosition}`;
-    },
-    errorStyle() {
-      return `--i-popup-error-offset: ${String(this.arrowOffset)}px`;
-    },
-    teleportTarget() {
-      return config.teleportTarget;
-    }
-  },
-  watch: {
-    anchor: {
-      immediate: true,
-      handler(anchor) {
-        if (anchor) {
-          anchor.addEventListener("keyup", this.onKeyEsc);
-          window.addEventListener("resize", this.onResize);
-        }
-      }
-    },
-    isOpen: {
-      immediate: true,
-      async handler(value) {
-        await this.toggleIsOpen(value);
-      }
-    }
-  },
-  unmounted() {
-    this.anchor?.removeEventListener("keyup", this.onKeyEsc);
-    window.removeEventListener("resize", this.onResize);
-  },
-  methods: {
-    onResize() {
-      this.toggleIsOpen(this.isOpen);
-    },
-    onKeyEsc(event) {
+    });
+    const arrowClass = computed(() => {
+      return `popup-error popup-error--arrow popup-error--${arrowPosition.value}`;
+    });
+    const errorStyle = computed(() => {
+      return `--i-popup-error-offset: ${String(arrowOffset.value)}px`;
+    });
+    const teleportTarget = computed(() => config.teleportTarget);
+    function onKeyEsc(event) {
       if (event.key === "Escape") {
-        this.$emit("close");
+        emit("close");
       }
-    },
-    onClose() {
-      this.$emit("close");
-    },
-    setArrowOffset() {
-      const wrapper = this.$refs.wrapper;
-      const arrowAnchor = this.arrowAnchor ?? this.anchor?.nextElementSibling;
-      if (!arrowAnchor || !wrapper) {
+    }
+    function onClose() {
+      emit("close");
+    }
+    function setArrowOffset() {
+      const targetArrowAnchor = __props.arrowAnchor ?? __props.anchor?.nextElementSibling;
+      if (!targetArrowAnchor || !wrapperRef.value) {
         return;
       }
-      const arrowAnchorRect = arrowAnchor.getBoundingClientRect();
-      const wrapperRect = wrapper.getBoundingClientRect();
-      const arrow = computeArrowOffset(this.placement, arrowAnchorRect, wrapperRect);
-      this.arrowOffset = arrow.offset;
-      this.arrowPosition = arrow.position;
-    },
-    async toggleIsOpen(isOpen) {
+      const arrowAnchorRect = targetArrowAnchor.getBoundingClientRect();
+      const wrapperRect = wrapperRef.value.getBoundingClientRect();
+      const arrow = computeArrowOffset(placement.value, arrowAnchorRect, wrapperRect);
+      arrowOffset.value = arrow.offset;
+      arrowPosition.value = arrow.position;
+    }
+    async function toggleIsOpen(isOpen) {
       if (!isOpen) {
-        this.placement = "NotCalculated" /* NotCalculated */;
+        placement.value = "NotCalculated" /* NotCalculated */;
         return;
       }
-      await this.$nextTick();
-      const wrapper = this.$refs.wrapper;
-      if (!this.anchor) {
+      await nextTick();
+      if (!wrapperRef.value) {
+        return;
+      }
+      if (!__props.anchor) {
         throw new Error("No anchor element found");
       }
       const area = document.body;
       const viewport = document.documentElement;
       const result = fitInsideArea({
         area,
-        anchor: this.anchor,
-        target: wrapper,
+        anchor: __props.anchor,
+        target: wrapperRef.value,
         viewport,
         spacing: POPUP_SPACING2,
         candidateOrder: "IPopupError" /* IPopupError */
       });
-      this.placement = result.placement;
+      placement.value = result.placement;
       if (result.placement !== "Fallback" /* Fallback */) {
-        this.teleportDisabled = false;
-        wrapper.style.left = `${String(result.x)}px`;
-        wrapper.style.top = `${String(result.y)}px`;
-        this.setArrowOffset();
+        teleportDisabled2.value = false;
+        wrapperRef.value.style.left = `${String(result.x)}px`;
+        wrapperRef.value.style.top = `${String(result.y)}px`;
+        setArrowOffset();
         return;
       }
-      this.setArrowOffset();
-      this.teleportDisabled = true;
-      wrapper.style.removeProperty("left");
-      wrapper.style.removeProperty("top");
+      setArrowOffset();
+      teleportDisabled2.value = true;
+      wrapperRef.value.style.removeProperty("left");
+      wrapperRef.value.style.removeProperty("top");
     }
+    function onResize() {
+      void toggleIsOpen(__props.isOpen);
+    }
+    watch2(
+      () => __props.anchor,
+      (anchorElement, _, onCleanup) => {
+        if (!anchorElement) {
+          return;
+        }
+        anchorElement.addEventListener("keyup", onKeyEsc);
+        window.addEventListener("resize", onResize);
+        onCleanup(() => {
+          anchorElement.removeEventListener("keyup", onKeyEsc);
+          window.removeEventListener("resize", onResize);
+        });
+      },
+      { immediate: true }
+    );
+    watch2(
+      () => __props.isOpen,
+      (value) => {
+        void toggleIsOpen(value);
+      },
+      { immediate: true }
+    );
+    const __returned__ = { emit, POPUP_SPACING: POPUP_SPACING2, wrapperRef, teleportDisabled: teleportDisabled2, placement, arrowPosition, arrowOffset, popupClasses, arrowClass, errorStyle, teleportTarget, onKeyEsc, onClose, setArrowOffset, toggleIsOpen, onResize, get FIcon() {
+      return FIcon_default2;
+    } };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
   }
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupError/IPopupError.vue?type=template
-import { createCommentVNode as _createCommentVNode11, resolveComponent as _resolveComponent6, openBlock as _openBlock13, createBlock as _createBlock7, toDisplayString as _toDisplayString5, createElementVNode as _createElementVNode9, createVNode as _createVNode5, createElementBlock as _createElementBlock12, normalizeClass as _normalizeClass6, normalizeStyle as _normalizeStyle, Teleport as _Teleport2 } from "vue";
+import { createCommentVNode as _createCommentVNode11, openBlock as _openBlock13, createBlock as _createBlock7, toDisplayString as _toDisplayString5, createElementVNode as _createElementVNode9, createVNode as _createVNode5, createElementBlock as _createElementBlock12, normalizeClass as _normalizeClass6, normalizeStyle as _normalizeStyle, Teleport as _Teleport2 } from "vue";
 var _hoisted_18 = {
   ref: "wrapper",
   class: "popup-error__wrapper"
 };
 function render13(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_icon = _resolveComponent6("f-icon");
-  return _ctx.isOpen ? (_openBlock13(), _createBlock7(_Teleport2, {
+  return $props.isOpen ? (_openBlock13(), _createBlock7(_Teleport2, {
     key: 0,
-    to: _ctx.teleportTarget,
-    disabled: _ctx.teleportDisabled
+    to: $setup.teleportTarget,
+    disabled: $setup.teleportDisabled
   }, [
     _createElementVNode9(
       "div",
       {
-        ref: "popup",
-        class: _normalizeClass6(_ctx.popupClasses),
+        class: _normalizeClass6($setup.popupClasses),
         "aria-hidden": "true"
       },
       [
@@ -4568,39 +4533,32 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
             _createElementVNode9(
               "div",
               {
-                class: _normalizeClass6(_ctx.arrowClass),
-                style: _normalizeStyle(_ctx.errorStyle)
+                class: _normalizeClass6($setup.arrowClass),
+                style: _normalizeStyle($setup.errorStyle)
               },
               [
-                _ctx.layout === "f-table" ? (_openBlock13(), _createBlock7(
-                  _component_f_icon,
-                  {
-                    key: 0,
-                    ref: "icon",
-                    class: "popup-error__icon",
-                    name: "error"
-                  },
-                  null,
-                  512
-                  /* NEED_PATCH */
-                )) : _createCommentVNode11("v-if", true),
+                $props.layout === "f-table" ? (_openBlock13(), _createBlock7($setup["FIcon"], {
+                  key: 0,
+                  class: "popup-error__icon",
+                  name: "error"
+                })) : _createCommentVNode11("v-if", true),
                 _createElementVNode9(
                   "span",
                   null,
-                  _toDisplayString5(_ctx.errorMessage),
+                  _toDisplayString5($props.errorMessage),
                   1
                   /* TEXT */
                 ),
                 _createCommentVNode11(' `tabindex="-1" is set since `IPopupError` has `aria-hidden`, wich cannot be used on focusable elements.\n                        `IPopupError` will be closed on input-field `blur`, so the button is never focusable anyway .\n                    '),
-                _ctx.layout === "f-interactive-table" ? (_openBlock13(), _createElementBlock12("button", {
+                $props.layout === "f-interactive-table" ? (_openBlock13(), _createElementBlock12("button", {
                   key: 1,
                   tabindex: "-1",
                   type: "button",
                   class: "popup-error__button",
                   "aria-label": "St\xE4ng",
-                  onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onClose && _ctx.onClose(...args))
+                  onClick: $setup.onClose
                 }, [
-                  _createVNode5(_component_f_icon, {
+                  _createVNode5($setup["FIcon"], {
                     name: "close",
                     class: "button__icon"
                   })
@@ -4625,8 +4583,8 @@ IPopupError_default.render = render13;
 IPopupError_default.__file = "packages/vue/src/internal-components/IPopupError/IPopupError.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue?type=script
-import { defineComponent as _defineComponent } from "vue";
-import { computed, onUnmounted as onUnmounted2, useTemplateRef, watch as watch2, watchEffect } from "vue";
+import { defineComponent as _defineComponent2 } from "vue";
+import { computed as computed2, onUnmounted as onUnmounted2, useTemplateRef as useTemplateRef2, watch as watch3, watchEffect } from "vue";
 import { debounce as debounce2 } from "@fkui/logic";
 
 // packages/vue/src/composables/use-event-listener.ts
@@ -4720,7 +4678,7 @@ function computeListboxRect(anchor, options, root = document.documentElement, { 
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue?type=script
 var teleportDisabled = false;
-var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
+var IPopupListbox_default = /* @__PURE__ */ _defineComponent2({
   __name: "IPopupListbox",
   props: {
     isOpen: { type: Boolean, required: true },
@@ -4733,10 +4691,10 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
   setup(__props, { expose: __expose, emit: __emit }) {
     __expose();
     const emit = __emit;
-    const wrapperRef = useTemplateRef("wrapper");
-    const contentRef = useTemplateRef("content");
+    const wrapperRef = useTemplateRef2("wrapper");
+    const contentRef = useTemplateRef2("content");
     const popupClasses = ["popup", "popup--overlay"];
-    const teleportTarget = computed(() => config.teleportTarget);
+    const teleportTarget = computed2(() => config.teleportTarget);
     const debouncedOnResize = debounce2(onResize, 100);
     const debouncedOnScroll = debounce2(onScroll, 100);
     let guessedItemHeight = void 0;
@@ -4782,7 +4740,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent({
         removeListeners();
       }
     });
-    watch2(
+    watch3(
       () => __props.numOfItems,
       (oldValue, newValue) => {
         if (oldValue !== newValue && __props.isOpen) {
@@ -4913,7 +4871,7 @@ IPopupListbox_default.__file = "packages/vue/src/internal-components/IPopupListb
 var IPopupListbox_default2 = IPopupListbox_default;
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=script
-import { defineComponent as defineComponent14 } from "vue";
+import { defineComponent as defineComponent13 } from "vue";
 import { focus as focus6 } from "@fkui/logic";
 
 // packages/vue/src/internal-components/IPopupMenu/ipopupmenu-logic.ts
@@ -4963,7 +4921,7 @@ async function doMenuAction(action, target) {
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=script
 var preventKeys = /* @__PURE__ */ new Set(["Tab", "Up", "Down", "ArrowUp", "ArrowDown", "Home", "End", " ", "Spacebar", "Enter"]);
-var IPopupMenu_default = defineComponent14({
+var IPopupMenu_default = defineComponent13({
   name: "IPopupMenu",
   components: { IPopup: IPopup_default2 },
   props: {
@@ -5206,7 +5164,7 @@ var IPopupMenu_default = defineComponent14({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=template
-import { renderList as _renderList4, Fragment as _Fragment5, openBlock as _openBlock15, createElementBlock as _createElementBlock13, toDisplayString as _toDisplayString6, createElementVNode as _createElementVNode11, createCommentVNode as _createCommentVNode13, createTextVNode as _createTextVNode3, normalizeClass as _normalizeClass8, resolveComponent as _resolveComponent7, withCtx as _withCtx5, createBlock as _createBlock9 } from "vue";
+import { renderList as _renderList4, Fragment as _Fragment5, openBlock as _openBlock15, createElementBlock as _createElementBlock13, toDisplayString as _toDisplayString6, createElementVNode as _createElementVNode11, createCommentVNode as _createCommentVNode13, createTextVNode as _createTextVNode3, normalizeClass as _normalizeClass8, resolveComponent as _resolveComponent6, withCtx as _withCtx5, createBlock as _createBlock9 } from "vue";
 var _hoisted_110 = ["aria-label"];
 var _hoisted_28 = {
   role: "menu",
@@ -5219,7 +5177,7 @@ var _hoisted_53 = {
   class: "sr-only"
 };
 function render15(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_i_popup = _resolveComponent7("i-popup");
+  const _component_i_popup = _resolveComponent6("i-popup");
   return _openBlock15(), _createBlock9(_component_i_popup, {
     class: "ipopupmenu",
     "is-open": _ctx.isOpen,
@@ -5290,7 +5248,7 @@ IPopupMenu_default.render = render15;
 IPopupMenu_default.__file = "packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue?type=script
-import { defineComponent as defineComponent15 } from "vue";
+import { defineComponent as defineComponent14 } from "vue";
 var ANIMATION_DURATION = 500;
 var NO_CSS_CLASSES = "";
 var CLOSED_CSS_CLASS_OPACITY = "animate-expand animate-expand--opacity";
@@ -5298,7 +5256,7 @@ var CLOSED_CSS_CLASS = "animate-expand";
 var ANIMATION_CSS_CLASSES = "animate-expand animate-expand--expanded";
 function noop3() {
 }
-var IAnimateExpand_default = defineComponent15({
+var IAnimateExpand_default = defineComponent14({
   name: "IAnimateExpand",
   props: {
     /**
@@ -5537,8 +5495,8 @@ IAnimateExpand_default.render = render16;
 IAnimateExpand_default.__file = "packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/ISkipLink/ISkipLink.vue?type=script
-import { defineComponent as defineComponent16 } from "vue";
-var ISkipLink_default = defineComponent16({
+import { defineComponent as defineComponent15 } from "vue";
+var ISkipLink_default = defineComponent15({
   name: "ISkipLink",
   mixins: [TranslationMixin],
   props: {
@@ -5577,12 +5535,12 @@ ISkipLink_default.render = render17;
 ISkipLink_default.__file = "packages/vue/src/internal-components/ISkipLink/ISkipLink.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonth.vue?type=script
-import { defineComponent as defineComponent18 } from "vue";
+import { defineComponent as defineComponent17 } from "vue";
 import { FDate as FDate3 } from "@fkui/date";
 import { alertScreenReader, focus as focus7 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonthGrid.vue?type=script
-import { defineComponent as defineComponent17 } from "vue";
+import { defineComponent as defineComponent16 } from "vue";
 import { getWeekdayNamings, groupByWeek } from "@fkui/date";
 import { debounce as debounce3 } from "@fkui/logic";
 
@@ -5595,7 +5553,7 @@ function getDayEndOffset(days) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonthGrid.vue?type=script
-var ICalendarMonthGrid_default = defineComponent17({
+var ICalendarMonthGrid_default = defineComponent16({
   name: "ICalendarMonthGrid",
   props: {
     /**
@@ -5882,9 +5840,9 @@ function isSameMonth(a, b) {
   return a.startOfMonth().equals(b.startOfMonth());
 }
 function getDayTabindex(date, active, entry) {
-  const ref7 = active ?? entry;
-  if (ref7 && isSameMonth(ref7, date)) {
-    return date.equals(ref7) ? 0 : -1;
+  const ref8 = active ?? entry;
+  if (ref8 && isSameMonth(ref8, date)) {
+    return date.equals(ref8) ? 0 : -1;
   } else {
     return date.day === 1 ? 0 : -1;
   }
@@ -5927,7 +5885,7 @@ function getMessage($t2, date, minDate, maxDate) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonth.vue?type=script
-var ICalendarMonth_default = defineComponent18({
+var ICalendarMonth_default = defineComponent17({
   name: "ICalendarMonth",
   components: {
     ICalendarMonthGrid: ICalendarMonthGrid_default2
@@ -6027,10 +5985,10 @@ var ICalendarMonth_default = defineComponent18({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonth.vue?type=template
-import { createCommentVNode as _createCommentVNode17, renderSlot as _renderSlot16, withModifiers as _withModifiers5, createElementVNode as _createElementVNode14, resolveComponent as _resolveComponent8, withCtx as _withCtx6, openBlock as _openBlock19, createBlock as _createBlock10 } from "vue";
+import { createCommentVNode as _createCommentVNode17, renderSlot as _renderSlot16, withModifiers as _withModifiers5, createElementVNode as _createElementVNode14, resolveComponent as _resolveComponent7, withCtx as _withCtx6, openBlock as _openBlock19, createBlock as _createBlock10 } from "vue";
 var _hoisted_115 = ["data-date", "tabindex", "onClick", "onKeydown"];
 function render19(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_i_calendar_month_grid = _resolveComponent8("i-calendar-month-grid");
+  const _component_i_calendar_month_grid = _resolveComponent7("i-calendar-month-grid");
   return _openBlock19(), _createBlock10(_component_i_calendar_month_grid, { value: _ctx.modelValue }, {
     default: _withCtx6(({ date }) => [
       _createElementVNode14("div", {
@@ -6060,9 +6018,9 @@ ICalendarMonth_default.render = render19;
 ICalendarMonth_default.__file = "packages/vue/src/internal-components/calendar/ICalendarMonth.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarNavbar.vue?type=script
-import { capitalize, defineComponent as defineComponent19 } from "vue";
+import { capitalize, defineComponent as defineComponent18 } from "vue";
 import { ElementIdService as ElementIdService4, alertScreenReader as alertScreenReader2 } from "@fkui/logic";
-var ICalendarNavbar_default = defineComponent19({
+var ICalendarNavbar_default = defineComponent18({
   name: "ICalendarNavbar",
   components: {
     FIcon: FIcon_default2
@@ -6215,14 +6173,14 @@ var ICalendarNavbar_default = defineComponent19({
     getDateText(value) {
       return `${capitalize(value.monthName)} ${String(value.year)}`;
     },
-    isFocused(ref7) {
-      return document.activeElement === this.$refs[ref7];
+    isFocused(ref8) {
+      return document.activeElement === this.$refs[ref8];
     }
   }
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarNavbar.vue?type=template
-import { toDisplayString as _toDisplayString9, normalizeClass as _normalizeClass10, createElementVNode as _createElementVNode15, createCommentVNode as _createCommentVNode18, resolveComponent as _resolveComponent9, createVNode as _createVNode6, withModifiers as _withModifiers6, openBlock as _openBlock20, createElementBlock as _createElementBlock17 } from "vue";
+import { toDisplayString as _toDisplayString9, normalizeClass as _normalizeClass10, createElementVNode as _createElementVNode15, createCommentVNode as _createCommentVNode18, resolveComponent as _resolveComponent8, createVNode as _createVNode6, withModifiers as _withModifiers6, openBlock as _openBlock20, createElementBlock as _createElementBlock17 } from "vue";
 var _hoisted_116 = { class: "calendar-navbar" };
 var _hoisted_210 = { class: "calendar-navbar__month" };
 var _hoisted_37 = ["aria-live"];
@@ -6237,7 +6195,7 @@ var _hoisted_83 = { class: "sr-only" };
 var _hoisted_93 = ["aria-disabled", "aria-live"];
 var _hoisted_103 = { class: "sr-only" };
 function render20(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_icon = _resolveComponent9("f-icon");
+  const _component_f_icon = _resolveComponent8("f-icon");
   return _openBlock20(), _createElementBlock17("div", _hoisted_116, [
     _createElementVNode15("div", _hoisted_210, [
       _createElementVNode15("span", {
@@ -6327,10 +6285,10 @@ ICalendarNavbar_default.__file = "packages/vue/src/internal-components/calendar/
 
 // packages/vue/src/internal-components/combobox/use-combobox.ts
 import {
-  computed as computed2,
-  nextTick,
+  computed as computed3,
+  nextTick as nextTick2,
   onMounted as onMounted2,
-  ref as ref2,
+  ref as ref3,
   watchEffect as watchEffect2
 } from "vue";
 import { ElementIdService as ElementIdService5, isEmpty as isEmpty2 } from "@fkui/logic";
@@ -6342,9 +6300,9 @@ import { isEmpty } from "@fkui/logic";
 var $t = useTranslate();
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxDropdown.vue?type=script
-import { defineComponent as _defineComponent2 } from "vue";
-import { nextTick as nextTick2, ref as ref3, useTemplateRef as useTemplateRef2, watchEffect as watchEffect3 } from "vue";
-var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
+import { defineComponent as _defineComponent3 } from "vue";
+import { nextTick as nextTick3, ref as ref4, useTemplateRef as useTemplateRef3, watchEffect as watchEffect3 } from "vue";
+var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent3({
   __name: "IComboboxDropdown",
   props: {
     id: { type: String, required: true },
@@ -6358,8 +6316,8 @@ var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
   setup(__props, { expose: __expose, emit: __emit }) {
     __expose();
     const emit = __emit;
-    const listboxRef = useTemplateRef2("listbox");
-    const activeElement = ref3();
+    const listboxRef = useTemplateRef3("listbox");
+    const activeElement = ref4();
     function isOptionActive(item) {
       return item === __props.activeOption;
     }
@@ -6371,7 +6329,7 @@ var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent2({
     }
     watchEffect3(async () => {
       if (__props.activeOption !== null) {
-        await nextTick2();
+        await nextTick3();
         const activeOptionNode = listboxRef.value?.querySelector(`#${__props.activeOptionId}`);
         activeElement.value = activeOptionNode ?? void 0;
       }
@@ -6437,8 +6395,8 @@ IComboboxDropdown_default.render = render21;
 IComboboxDropdown_default.__file = "packages/vue/src/internal-components/combobox/IComboboxDropdown.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxToggleButton.vue?type=script
-import { defineComponent as _defineComponent3 } from "vue";
-var IComboboxToggleButton_default = /* @__PURE__ */ _defineComponent3({
+import { defineComponent as _defineComponent4 } from "vue";
+var IComboboxToggleButton_default = /* @__PURE__ */ _defineComponent4({
   __name: "IComboboxToggleButton",
   props: {
     isOpen: { type: Boolean, required: true }
@@ -6481,7 +6439,7 @@ IComboboxToggleButton_default.render = render22;
 IComboboxToggleButton_default.__file = "packages/vue/src/internal-components/combobox/IComboboxToggleButton.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=script
-import { defineComponent as defineComponent20 } from "vue";
+import { defineComponent as defineComponent19 } from "vue";
 
 // packages/vue/src/components/FExpand/styles.ts
 var openedStyle = {
@@ -6539,7 +6497,7 @@ function leaveTransition(element) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=script
-var FExpand_default = defineComponent20({
+var FExpand_default = defineComponent19({
   name: "FExpand",
   data() {
     return {
@@ -6584,9 +6542,9 @@ var FExpand_default2 = FExpand_default;
 var tooltipAttachTo = /* @__PURE__ */ Symbol("tooltipAttachTo");
 
 // packages/vue/src/components/FTooltip/use-animation.ts
-import { computed as computed3, onMounted as onMounted3, ref as ref4, watchEffect as watchEffect4 } from "vue";
+import { computed as computed4, onMounted as onMounted3, ref as ref5, watchEffect as watchEffect4 } from "vue";
 var initialized = false;
-var reducedMotion = ref4(false);
+var reducedMotion = ref5(false);
 function useAnimation(options) {
   const { duration = 250, easing = "ease-in", element: elementRef } = options;
   let current = "collapse";
@@ -6614,7 +6572,7 @@ function useAnimation(options) {
     }
   });
   return {
-    enabled: computed3(() => reducedMotion.value === false),
+    enabled: computed4(() => reducedMotion.value === false),
     animate(state) {
       current = state;
       const element = elementRef.value;
@@ -6655,12 +6613,12 @@ function useAnimation(options) {
 }
 
 // packages/vue/src/components/FTooltip/use-horizontal-offset.ts
-import { onMounted as onMounted4, onUnmounted as onUnmounted3, readonly, ref as ref5, watch as watch3 } from "vue";
+import { onMounted as onMounted4, onUnmounted as onUnmounted3, readonly, ref as ref6, watch as watch4 } from "vue";
 function useHorizontalOffset(options) {
   const { element: elementRef, parent: parentRef } = options;
-  const offset2 = ref5(16);
-  watch3(() => elementRef.value, updateOffset);
-  watch3(() => parentRef, updateOffset);
+  const offset2 = ref6(16);
+  watch4(() => elementRef.value, updateOffset);
+  watch4(() => parentRef, updateOffset);
   onMounted4(() => {
     window.addEventListener("resize", updateOffset);
   });
@@ -6684,7 +6642,7 @@ function useHorizontalOffset(options) {
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FTooltip/FTooltip.vue?type=script
-var FTooltip_default = defineComponent21({
+var FTooltip_default = defineComponent20({
   name: "FTooltip",
   components: { FExpand: FExpand_default2, FIcon: FIcon_default2, IFlex: IFlex_default2, IFlexItem: IFlexItem_default2 },
   inheritAttrs: false,
@@ -6759,8 +6717,8 @@ var FTooltip_default = defineComponent21({
   setup(props) {
     const provided = inject(tooltipAttachTo, null);
     const attachTo = toRef(props, "attachTo");
-    const ready = ref6(false);
-    const iconTarget = computed4(() => {
+    const ready = ref7(false);
+    const iconTarget = computed5(() => {
       if (provided?.value) {
         return provided.value;
       }
@@ -6769,8 +6727,8 @@ var FTooltip_default = defineComponent21({
       }
       return null;
     });
-    const wrapper = useTemplateRef3("wrapper");
-    const button = useTemplateRef3("button");
+    const wrapper = useTemplateRef4("wrapper");
+    const button = useTemplateRef4("button");
     const { animate } = useAnimation({
       duration: 250,
       easing: "ease-in",
@@ -6778,7 +6736,7 @@ var FTooltip_default = defineComponent21({
     });
     const offset2 = useHorizontalOffset({
       element: button,
-      parent: computed4(() => iconTarget.value?.parentElement ?? null)
+      parent: computed5(() => iconTarget.value?.parentElement ?? null)
     });
     watchEffect5(() => {
       iconTarget.value?.classList.add("tooltip__container");
@@ -6838,7 +6796,7 @@ var FTooltip_default = defineComponent21({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FTooltip/FTooltip.vue?type=template
-import { createCommentVNode as _createCommentVNode21, resolveComponent as _resolveComponent10, createVNode as _createVNode9, toDisplayString as _toDisplayString11, createElementVNode as _createElementVNode17, Teleport as _Teleport4, openBlock as _openBlock24, createBlock as _createBlock12, renderSlot as _renderSlot18, resolveDynamicComponent as _resolveDynamicComponent2, withCtx as _withCtx9, createElementBlock as _createElementBlock20, mergeProps as _mergeProps5, Fragment as _Fragment9 } from "vue";
+import { createCommentVNode as _createCommentVNode21, resolveComponent as _resolveComponent9, createVNode as _createVNode9, toDisplayString as _toDisplayString11, createElementVNode as _createElementVNode17, Teleport as _Teleport4, openBlock as _openBlock24, createBlock as _createBlock12, renderSlot as _renderSlot18, resolveDynamicComponent as _resolveDynamicComponent2, withCtx as _withCtx9, createElementBlock as _createElementBlock20, mergeProps as _mergeProps5, Fragment as _Fragment9 } from "vue";
 var _hoisted_119 = ["aria-expanded"];
 var _hoisted_212 = { class: "icon-stack icon-stack--tooltip" };
 var _hoisted_39 = { class: "sr-only" };
@@ -6850,7 +6808,7 @@ var _hoisted_46 = {
 var _hoisted_56 = { class: "tooltip__body" };
 var _hoisted_64 = { class: "tooltip__footer" };
 function render24(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_icon = _resolveComponent10("f-icon");
+  const _component_f_icon = _resolveComponent9("f-icon");
   return _openBlock24(), _createElementBlock20(
     _Fragment9,
     null,
@@ -6982,7 +6940,7 @@ function isEqual2(a, b) {
   }
   return a.every((_, i) => a[i] === b[i]);
 }
-var FFieldset_default = defineComponent22({
+var FFieldset_default = defineComponent21({
   name: "FFieldset",
   components: {
     FIcon: FIcon_default2
@@ -7070,7 +7028,7 @@ var FFieldset_default = defineComponent22({
     provide(injectionKeys.getFieldsetLabelText, () => {
       return renderSlotText(slots.label);
     });
-    provide(tooltipAttachTo, useTemplateRef4("tooltipAttachTo"));
+    provide(tooltipAttachTo, useTemplateRef5("tooltipAttachTo"));
   },
   data() {
     return {
@@ -7218,7 +7176,7 @@ var FFieldset_default = defineComponent22({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=template
-import { createCommentVNode as _createCommentVNode22, renderSlot as _renderSlot19, toDisplayString as _toDisplayString12, createElementVNode as _createElementVNode18, openBlock as _openBlock25, createElementBlock as _createElementBlock21, normalizeProps as _normalizeProps2, guardReactiveProps as _guardReactiveProps2, resolveComponent as _resolveComponent11, createVNode as _createVNode10, createTextVNode as _createTextVNode5, normalizeClass as _normalizeClass12, Fragment as _Fragment10 } from "vue";
+import { createCommentVNode as _createCommentVNode22, renderSlot as _renderSlot19, toDisplayString as _toDisplayString12, createElementVNode as _createElementVNode18, openBlock as _openBlock25, createElementBlock as _createElementBlock21, normalizeProps as _normalizeProps2, guardReactiveProps as _guardReactiveProps2, resolveComponent as _resolveComponent10, createVNode as _createVNode10, createTextVNode as _createTextVNode5, normalizeClass as _normalizeClass12, Fragment as _Fragment10 } from "vue";
 var _hoisted_120 = ["id"];
 var _hoisted_213 = {
   key: 0,
@@ -7242,7 +7200,7 @@ var _hoisted_84 = {
   class: "label__message label__message--error"
 };
 function render25(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_icon = _resolveComponent11("f-icon");
+  const _component_f_icon = _resolveComponent10("f-icon");
   return _openBlock25(), _createElementBlock21("fieldset", {
     id: _ctx.id,
     class: _normalizeClass12(["fieldset", _ctx.classes]),
@@ -7380,7 +7338,7 @@ FFieldset_default.__file = "packages/vue/src/components/FFieldset/FFieldset.vue"
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FCheckboxField/FCheckboxField.vue?type=script
 var anyType = [String, Object, Array, Number, Date, Boolean];
-var FCheckboxField_default = defineComponent23({
+var FCheckboxField_default = defineComponent22({
   name: "FCheckboxField",
   inheritAttrs: false,
   props: {
@@ -7647,8 +7605,8 @@ FCheckboxField_default.__file = "packages/vue/src/components/FCheckboxField/FChe
 var FCheckboxField_default2 = FCheckboxField_default;
 
 // virtual-entry:virtual:packages/vue/src/components/FCalendar/examples/FCalendarLiveExample.vue:FCalendarLiveExample-d97208.js
-import { createTextVNode as _createTextVNode6, resolveComponent as _resolveComponent12, withCtx as _withCtx11, createVNode as _createVNode11, openBlock as _openBlock27, createBlock as _createBlock14 } from "vue";
-var exampleComponent = defineComponent24({
+import { createTextVNode as _createTextVNode6, resolveComponent as _resolveComponent11, withCtx as _withCtx11, createVNode as _createVNode11, openBlock as _openBlock27, createBlock as _createBlock14 } from "vue";
+var exampleComponent = defineComponent23({
   name: "FCalendarLiveExample",
   components: {
     LiveExample,
@@ -7691,8 +7649,8 @@ var exampleComponent = defineComponent24({
   }
 });
 function render27(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_checkbox_field = _resolveComponent12("f-checkbox-field");
-  const _component_live_example = _resolveComponent12("live-example");
+  const _component_f_checkbox_field = _resolveComponent11("f-checkbox-field");
+  const _component_live_example = _resolveComponent11("live-example");
   return _openBlock27(), _createBlock14(_component_live_example, {
     components: _ctx.components,
     template: _ctx.template,
