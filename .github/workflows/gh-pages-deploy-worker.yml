@@ -60,7 +60,7 @@ jobs:
                   payload="$(cat "${queue_file}")"
                   kind="$(echo "${payload}" | jq -r '.kind')"
                   if [[ "${kind}" != "docs-main" && "${kind}" != "docs-version" && "${kind}" != "pr-preview" ]]; then
-                      echo "Unsupported queue item kind: ${kind}" >&2
+                      echo "Unsupported queue item kind: ${kind}. Supported kinds are: docs-main, docs-version, pr-preview" >&2
                       exit 1
                   fi
 
@@ -277,7 +277,7 @@ jobs:
                   message: |
                       ##  Förhandsgranskning :bug: :mag:
 
-                      Dokumentation och exampel applikationer finns att förhandsgranska på:
+                      Dokumentation och exempel applikationer finns att förhandsgranska på:
 
                       | Sida | URL |
                       |-|-
