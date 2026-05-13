@@ -100,7 +100,9 @@ export default defineComponent({
         >
             <f-wizard-step key="step1" :use-error-list="false" title="Dina uppgifter">
                 <div class="i-width-md-6">
-                    <f-text-field v-model="firstName" v-validation.required>Ditt förnamn</f-text-field>
+                    <f-text-field v-model="firstName" v-validation.required.maxLength="{ maxLength: { length: 100 } }"
+                        >Ditt förnamn</f-text-field
+                    >
                 </div>
             </f-wizard-step>
 
@@ -131,14 +133,16 @@ export default defineComponent({
                             <template #header="{ headingSlotClass }">
                                 <h3 :class="headingSlotClass">{{ card.name || `Husdjur ${index + 1}` }}</h3>
                             </template>
-                            <p>
-                                <label class="label">Typ av husdjur</label>
-                                <span>{{ capitalize(card.animalType) }}</span>
-                            </p>
-                            <p>
-                                <label class="label">Är det bara du som bor med husdjuret?</label>
-                                <span>{{ formatGuardianship(card.soleGuardianship) }}</span>
-                            </p>
+                            <template #default>
+                                <p>
+                                    <label class="label">Typ av husdjur</label>
+                                    <span>{{ capitalize(card.animalType) }}</span>
+                                </p>
+                                <p>
+                                    <label class="label">Är det bara du som bor med husdjuret?</label>
+                                    <span>{{ formatGuardianship(card.soleGuardianship) }}</span>
+                                </p>
+                            </template>
                         </f-card>
                     </div>
                     <f-button variant="tertiary" icon-left="pen" align-text @click="currentStep = 'step2'"

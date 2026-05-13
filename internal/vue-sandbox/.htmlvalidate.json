@@ -11,7 +11,14 @@
         "@fkui/vue:recommended",
         "@fkui/vue-labs:recommended"
     ],
-    "elements": ["html5"],
+    "elements": [
+        "html5",
+        {
+            "editable-card-list": { "flow": true },
+            "expandable-panel-list": { "flow": true },
+            "pet-form-fields": { "flow": true }
+        }
+    ],
     "transform": {
         "^.*\\.vue$": "html-validate-vue"
     }

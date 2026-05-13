@@ -140,36 +140,38 @@ export default defineComponent({
             @toggle="togglePanel(panel)"
         >
             <template #title>{{ panelTitle(panel, index) }}</template>
-            <div :id="`panel-content-${panel.id}`">
-                <pet-form-fields
-                    :model-value="panel"
-                    :variant
-                    :group-id="`panel-${panel.id}`"
-                    @update:model-value="Object.assign(panel, $event)"
-                />
-            </div>
-            <div class="panel-actions button-group">
-                <f-button
-                    class="button-group__item"
-                    variant="tertiary"
-                    size="medium"
-                    icon-left="success"
-                    align-text
-                    @click="savePanel(panel)"
-                >
-                    Spara
-                </f-button>
-                <f-button
-                    class="button-group__item"
-                    variant="tertiary"
-                    size="medium"
-                    icon-left="trashcan"
-                    align-text
-                    @click="deletePanel(panel)"
-                >
-                    Ta bort
-                </f-button>
-            </div>
+            <template #default>
+                <div :id="`panel-content-${panel.id}`">
+                    <pet-form-fields
+                        :model-value="panel"
+                        :variant
+                        :group-id="`panel-${panel.id}`"
+                        @update:model-value="Object.assign(panel, $event)"
+                    />
+                </div>
+                <div class="panel-actions button-group">
+                    <f-button
+                        class="button-group__item"
+                        variant="tertiary"
+                        size="medium"
+                        icon-left="success"
+                        align-text
+                        @click="savePanel(panel)"
+                    >
+                        Spara
+                    </f-button>
+                    <f-button
+                        class="button-group__item"
+                        variant="tertiary"
+                        size="medium"
+                        icon-left="trashcan"
+                        align-text
+                        @click="deletePanel(panel)"
+                    >
+                        Ta bort
+                    </f-button>
+                </div>
+            </template>
         </f-expandable-panel>
 
         <f-button variant="secondary" size="medium" icon-left="plus" @click="addPanel"> Lägg till </f-button>

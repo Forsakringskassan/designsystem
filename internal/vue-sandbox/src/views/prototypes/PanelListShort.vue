@@ -118,7 +118,9 @@ export default defineComponent({
         >
             <f-wizard-step key="step1" :use-error-list="false" title="Dina uppgifter">
                 <div class="i-width-md-6">
-                    <f-text-field v-model="firstName" v-validation.required>Ditt förnamn</f-text-field>
+                    <f-text-field v-model="firstName" v-validation.required.maxLength="{ maxLength: { length: 100 } }"
+                        >Ditt förnamn</f-text-field
+                    >
                 </div>
             </f-wizard-step>
 
@@ -152,14 +154,16 @@ export default defineComponent({
                             @toggle="summaryExpanded[panel.id] = !summaryExpanded[panel.id]"
                         >
                             <template #title>{{ panel.name || `Husdjur ${index + 1}` }}</template>
-                            <p>
-                                <label class="label">Typ av husdjur</label>
-                                <span>{{ capitalize(panel.animalType) }}</span>
-                            </p>
-                            <p>
-                                <label class="label">Är det bara du som bor med husdjuret?</label>
-                                <span>{{ formatGuardianship(panel.soleGuardianship) }}</span>
-                            </p>
+                            <template #default>
+                                <p>
+                                    <label class="label">Typ av husdjur</label>
+                                    <span>{{ capitalize(panel.animalType) }}</span>
+                                </p>
+                                <p>
+                                    <label class="label">Är det bara du som bor med husdjuret?</label>
+                                    <span>{{ formatGuardianship(panel.soleGuardianship) }}</span>
+                                </p>
+                            </template>
                         </f-expandable-panel>
                     </div>
                     <f-button variant="tertiary" icon-left="pen" align-text @click="currentStep = 'step2'"
