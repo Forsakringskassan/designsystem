@@ -155,16 +155,21 @@ jobs:
               run: |
                   set -euo pipefail
 
+                  is_main_ref=false
+                  if [[ "${SOURCE_REF}" == "refs/heads/main" ]]; then
+                      is_main_ref=true
+                  fi
+
                   rm -rf "gh-pages/${VERSION}"
                   mkdir -p "gh-pages/${VERSION}"
                   rsync -a public/ "gh-pages/${VERSION}/"
 
-                  if [[ "${SOURCE_REF}" == "refs/heads/main" ]]; then
+                  if [[ "${is_main_ref}" == "true" ]]; then
                       rm -rf gh-pages/latest
                   fi
 
                   versions="$(find gh-pages -maxdepth 1 -mindepth 1 -type d -name 'v*.*.*' -printf '%f\n' | sort -V)"
-                  if [[ "${SOURCE_REF}" == "refs/heads/main" ]]; then
+                  if [[ "${is_main_ref}" == "true" ]]; then
                       printf '%s\n' "${versions}" \
                           | jq -Rn --arg latest "${VERSION}" '{versions: [inputs], latest: $latest}' \
                           > gh-pages/versions.json
@@ -308,7 +313,12 @@ jobs:
             - deploy-docs-main
             - deploy-docs-version
             - deploy-pr-preview
-        if: needs.dequeue.outputs.has_item == 'true' && !cancelled() && !failure()
+        if: |
+            needs.dequeue.outputs.has_item == 'true' && (
+                (needs.dequeue.outputs.kind == 'docs-main' && needs.deploy-docs-main.result == 'success') ||
+                (needs.dequeue.outputs.kind == 'docs-version' && needs.deploy-docs-version.result == 'success') ||
+                (needs.dequeue.outputs.kind == 'pr-preview' && needs.deploy-pr-preview.result == 'success')
+            )
         runs-on: ubuntu-latest
         outputs:
             has_more: ${{ steps.finalize.outputs.has_more }}
