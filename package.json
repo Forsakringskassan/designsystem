@@ -97,7 +97,7 @@
     "@forsakringskassan/vite-lib-config": "4.8.1",
     "@html-validate/release-scripts": "7.2.0",
     "@types/estree": "1.0.9",
-    "@types/jest": "29.5.14",
+    "@types/jest": "30.0.0",
     "@types/lodash": "4.17.24",
     "@types/node": "20.19.40",
     "@vue/server-renderer": "3.5.34",
