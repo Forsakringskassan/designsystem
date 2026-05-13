@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, useTemplateRef, watch } from "vue";
+import { debounce } from "@fkui/logic";
 import { FIcon } from "../../components/FIcon";
 import { config } from "../../config";
 import { CandidateOrder, Placement, fitInsideArea } from "../IPopup/i-popup-utils";
@@ -142,6 +143,9 @@ function onScroll(event: Event): void {
     void toggleIsOpen(isOpen);
 }
 
+const debouncedOnResize = debounce(onResize, 100);
+const debouncedOnScroll = debounce(onScroll, 100);
+
 watch(
     () => anchor,
     (anchorElement, _, onCleanup) => {
@@ -150,12 +154,12 @@ watch(
         }
 
         anchorElement.addEventListener("keyup", onKeyEsc);
-        window.addEventListener("resize", onResize);
-        window.addEventListener("scroll", onScroll, { capture: true });
+        window.addEventListener("resize", debouncedOnResize);
+        window.addEventListener("scroll", debouncedOnScroll, { capture: true });
         onCleanup(() => {
             anchorElement.removeEventListener("keyup", onKeyEsc);
-            window.removeEventListener("resize", onResize);
-            window.removeEventListener("scroll", onScroll, { capture: true });
+            window.removeEventListener("resize", debouncedOnResize);
+            window.removeEventListener("scroll", debouncedOnScroll, { capture: true });
         });
     },
     { immediate: true },
