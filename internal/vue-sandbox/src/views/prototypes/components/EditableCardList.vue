@@ -1,11 +1,15 @@
 <script lang="ts">
-import { type PropType, defineComponent, getCurrentInstance, ref } from "vue";
+import { type PropType, defineComponent, getCurrentInstance } from "vue";
 import { FButton, FCard, confirmModal, formModal } from "@fkui/vue";
 import { type PetFormData } from "./PetFormFields.vue";
 import PetFormModal from "./PetFormModal.vue";
 
-interface Card extends PetFormData {
+export interface Card extends PetFormData {
     id: number;
+}
+
+function capitalize(s: string): string {
+    return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
 function formatAge(age: string): string {
@@ -27,24 +31,30 @@ function formatGuardianship(value: string): string {
     return value;
 }
 
+function cardTitle(card: Card, index: number): string {
+    return card.name ?? `Husdjur ${index + 1}`;
+}
+
 export default defineComponent({
     components: { FCard, FButton },
     props: {
+        cards: {
+            type: Array as PropType<Card[]>,
+            required: true,
+        },
         variant: {
             type: String as PropType<"long" | "short">,
             default: "long",
         },
     },
-    setup(props) {
+    emits: ["interact"],
+    setup(props, { emit }) {
+        const { cards } = props;
         let nextId = 1;
         const instance = getCurrentInstance();
-        const cards = ref<Card[]>([]);
-
-        function cardTitle(card: Card, index: number): string {
-            return card.name ?? `Husdjur ${index + 1}`;
-        }
 
         async function addCard(): Promise<void> {
+            emit("interact");
             const proxy = instance?.proxy;
             if (!proxy) {
                 return;
@@ -53,7 +63,7 @@ export default defineComponent({
                 const data = await formModal<PetFormData>(proxy, PetFormModal, {
                     props: { variant: props.variant },
                 });
-                cards.value.push({ id: nextId++, ...data });
+                cards.push({ id: nextId++, ...data });
             } catch {
                 /* cancelled */
             }
@@ -86,12 +96,12 @@ export default defineComponent({
                 dismiss: "Avbryt",
             });
             if (confirmed) {
-                const idx = cards.value.findIndex((c) => c.id === card.id);
-                cards.value.splice(idx, 1);
+                const idx = cards.findIndex((c) => c.id === card.id);
+                cards.splice(idx, 1);
             }
         }
 
-        return { cards, cardTitle, formatAge, formatGuardianship, addCard, editCard, deleteCard };
+        return { cardTitle, capitalize, formatAge, formatGuardianship, addCard, editCard, deleteCard };
     },
 });
 </script>
@@ -106,7 +116,7 @@ export default defineComponent({
             <template #default>
                 <p>
                     <label class="label">Typ av husdjur</label>
-                    <span>{{ card.animalType }}</span>
+                    <span>{{ capitalize(card.animalType) }}</span>
                 </p>
                 <template v-if="variant === 'long'">
                     <p>

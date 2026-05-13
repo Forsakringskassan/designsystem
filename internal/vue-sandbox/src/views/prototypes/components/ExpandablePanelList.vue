@@ -1,10 +1,10 @@
 <script lang="ts">
-import { type PropType, defineComponent, getCurrentInstance, ref } from "vue";
+import { type PropType, defineComponent, getCurrentInstance } from "vue";
 import { ValidationService } from "@fkui/logic";
 import { FButton, FExpandablePanel, confirmModal } from "@fkui/vue";
 import PetFormFields, { type PetFormData } from "./PetFormFields.vue";
 
-interface Panel extends PetFormData {
+export interface Panel extends PetFormData {
     id: number;
     savedName: string;
     savedAnimalType: string;
@@ -15,46 +15,56 @@ function capitalize(s: string): string {
     return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
+function updateSavedTitle(panel: Panel): void {
+    panel.savedName = panel.name;
+    panel.savedAnimalType = panel.animalType;
+}
+
+function panelTitle(panel: Panel, index: number): string {
+    const parts = [panel.savedName, panel.savedAnimalType ? capitalize(panel.savedAnimalType) : ""].filter(Boolean);
+    return parts.length > 0 ? parts.join(", ") : `Husdjur ${index + 1}`;
+}
+
+async function savePanel(panel: Panel): Promise<void> {
+    const containerId = `panel-content-${panel.id}`;
+    ValidationService.setSubmitted(containerId);
+    await ValidationService.validateAllElements(containerId);
+    const container = document.querySelector(`#${containerId}`);
+    if (container?.querySelector("[aria-invalid='true']")) {
+        return;
+    }
+    updateSavedTitle(panel);
+    panel.expanded = false;
+}
+
 export default defineComponent({
     components: { FExpandablePanel, FButton, PetFormFields },
     props: {
+        panels: {
+            type: Array as PropType<Panel[]>,
+            required: true,
+        },
         variant: {
             type: String as PropType<"long" | "short">,
             default: "long",
         },
     },
-    setup() {
-        let nextId = 1;
+    emits: ["interact"],
+    setup(props, { emit }) {
+        const { panels } = props;
+        let nextId = Math.max(0, ...panels.map((p) => p.id)) + 1;
         const instance = getCurrentInstance();
-        const panels = ref<Panel[]>([
-            {
-                id: nextId++,
-                savedName: "",
-                savedAnimalType: "",
-                animalType: "",
-                name: "",
-                age: "",
-                legs: undefined,
-                weight: undefined,
-                soleGuardianship: "",
-                expanded: true,
-            },
-        ]);
-
-        function updateSavedTitle(panel: Panel): void {
-            panel.savedName = panel.name;
-            panel.savedAnimalType = panel.animalType;
-        }
 
         function closeAll(): void {
-            for (const p of panels.value) {
+            for (const p of panels) {
                 updateSavedTitle(p);
                 p.expanded = false;
             }
         }
 
         async function addPanel(): Promise<void> {
-            const openPanel = panels.value.find((p) => p.expanded);
+            emit("interact");
+            const openPanel = panels.find((p) => p.expanded);
             if (openPanel) {
                 const containerId = `panel-content-${openPanel.id}`;
                 ValidationService.setSubmitted(containerId);
@@ -66,7 +76,7 @@ export default defineComponent({
             }
             closeAll();
             await new Promise((resolve) => setTimeout(resolve, 350));
-            panels.value.push({
+            panels.push({
                 id: nextId++,
                 savedName: "",
                 savedAnimalType: "",
@@ -98,18 +108,6 @@ export default defineComponent({
             panel.expanded = opening;
         }
 
-        async function savePanel(panel: Panel): Promise<void> {
-            const containerId = `panel-content-${panel.id}`;
-            ValidationService.setSubmitted(containerId);
-            await ValidationService.validateAllElements(containerId);
-            const container = document.querySelector(`#${containerId}`);
-            if (container?.querySelector("[aria-invalid='true']")) {
-                return;
-            }
-            updateSavedTitle(panel);
-            panel.expanded = false;
-        }
-
         async function deletePanel(panel: Panel): Promise<void> {
             const proxy = instance?.proxy;
             if (!proxy) {
@@ -122,19 +120,12 @@ export default defineComponent({
                 dismiss: "Avbryt",
             });
             if (confirmed) {
-                const idx = panels.value.findIndex((p) => p.id === panel.id);
-                panels.value.splice(idx, 1);
+                const idx = panels.findIndex((p) => p.id === panel.id);
+                panels.splice(idx, 1);
             }
         }
 
-        function panelTitle(panel: Panel, index: number): string {
-            const parts = [panel.savedName, panel.savedAnimalType ? capitalize(panel.savedAnimalType) : ""].filter(
-                Boolean,
-            );
-            return parts.length > 0 ? parts.join(", ") : `Husdjur ${index + 1}`;
-        }
-
-        return { panels, addPanel, togglePanel, savePanel, deletePanel, panelTitle };
+        return { addPanel, togglePanel, savePanel, deletePanel, panelTitle };
     },
 });
 </script>

@@ -1,18 +1,49 @@
 <script lang="ts">
-import { defineComponent, ref, useTemplateRef } from "vue";
-import { FMessageBox, FTextField, FValidationFormAction, FWizard, FWizardStep } from "@fkui/vue";
-import EditableCardList from "./components/EditableCardList.vue";
+import { defineComponent, getCurrentInstance, reactive, ref } from "vue";
+import {
+    FButton,
+    FCard,
+    FMessageBox,
+    FTextField,
+    FValidationFormAction,
+    FWizard,
+    FWizardStep,
+    confirmModal,
+} from "@fkui/vue";
+import { useRouter } from "vue-router";
+import EditableCardList, { type Card } from "./components/EditableCardList.vue";
+
+function capitalize(s: string): string {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+function formatAge(age: string): string {
+    const map: Record<string, string> = { "0-3": "0 till 3 år", "4-7": "4 till 7 år", "over-8": "8 år eller mer" };
+    return map[age] ?? age;
+}
+
+function formatGuardianship(value: string): string {
+    if (value === "yes") {
+        return "Ja";
+    }
+    if (value === "no") {
+        return "Nej";
+    }
+    return value;
+}
 
 export default defineComponent({
-    components: { FWizard, FWizardStep, FTextField, FMessageBox, EditableCardList },
+    components: { FWizard, FWizardStep, FTextField, FMessageBox, FButton, FCard, EditableCardList },
     setup() {
+        const instance = getCurrentInstance();
+        const router = useRouter();
         const currentStep = ref<string | undefined>(undefined);
         const firstName = ref("");
-        const cardList = useTemplateRef<InstanceType<typeof EditableCardList>>("cardList");
         const showMinCardsError = ref(false);
+        const cards = reactive<Card[]>([]);
 
         function beforeNextStep2(): FValidationFormAction | undefined {
-            if ((cardList.value?.cards?.length ?? 0) < 3) {
+            if (cards.length < 3) {
                 showMinCardsError.value = true;
                 return FValidationFormAction.CANCEL;
             }
@@ -20,7 +51,33 @@ export default defineComponent({
             return undefined;
         }
 
-        return { currentStep, firstName, showMinCardsError, beforeNextStep2 };
+        async function onCancel(): Promise<void> {
+            const proxy = instance?.proxy;
+            if (!proxy) {
+                return;
+            }
+            const confirmed = await confirmModal(proxy, {
+                heading: "",
+                content: "Vill du verkligen avbryta?",
+                confirm: "Ja, avbryt",
+                dismiss: "Nej, gå tillbaka",
+            });
+            if (confirmed) {
+                await router.push("/paneler-vs-kort");
+            }
+        }
+
+        return {
+            currentStep,
+            firstName,
+            cards,
+            showMinCardsError,
+            beforeNextStep2,
+            onCancel,
+            capitalize,
+            formatAge,
+            formatGuardianship,
+        };
     },
 });
 </script>
@@ -30,7 +87,7 @@ export default defineComponent({
         <router-link class="anchor" to="/paneler-vs-kort">← Tillbaka</router-link>
         <h1>Husdjursbidrag</h1>
 
-        <f-wizard v-model="currentStep" header-tag="h2" disable-initial-focus>
+        <f-wizard v-model="currentStep" header-tag="h2" disable-initial-focus @cancel="onCancel">
             <f-wizard-step key="step1" :use-error-list="false" title="Dina uppgifter">
                 <div class="i-width-md-6">
                     <f-text-field v-model="firstName" v-validation.required>Ditt förnamn</f-text-field>
@@ -39,7 +96,7 @@ export default defineComponent({
 
             <f-wizard-step key="step2" :use-error-list="false" title="Husdjur" :before-next="beforeNextStep2">
                 <div class="i-width-md-9">
-                    <editable-card-list ref="cardList" />
+                    <editable-card-list :cards @interact="showMinCardsError = false" />
                 </div>
                 <f-message-box v-if="showMinCardsError" type="error" layout="short" class="i-width-md-9">
                     Du måste lägga till minst tre husdjur innan du kan gå vidare.
@@ -47,7 +104,49 @@ export default defineComponent({
             </f-wizard-step>
 
             <f-wizard-step key="step3" :use-error-list="false" title="Granska">
-                <p>Tack</p>
+                <div class="summary-group">
+                    <h3>Dina uppgifter</h3>
+                    <p>
+                        <label class="label">Förnamn</label>
+                        <span>{{ firstName }}</span>
+                    </p>
+                    <f-button variant="tertiary" icon-left="pen" align-text @click="currentStep = 'step1'"
+                        >Ändra Dina uppgifter</f-button
+                    >
+                </div>
+                <div class="summary-group">
+                    <h3>Husdjur</h3>
+                    <div class="i-width-md-9">
+                        <f-card v-for="(card, index) in cards" :key="card.id">
+                            <template #header="{ headingSlotClass }">
+                                <h3 :class="headingSlotClass">{{ card.name || `Husdjur ${index + 1}` }}</h3>
+                            </template>
+                            <p>
+                                <label class="label">Typ av husdjur</label>
+                                <span>{{ capitalize(card.animalType) }}</span>
+                            </p>
+                            <p>
+                                <label class="label">Hur gammalt är husdjuret?</label>
+                                <span>{{ formatAge(card.age) }}</span>
+                            </p>
+                            <p>
+                                <label class="label">Antal ben</label>
+                                <span>{{ card.legs }}</span>
+                            </p>
+                            <p>
+                                <label class="label">Hur mycket väger husdjuret?</label>
+                                <span>{{ card.weight }}</span>
+                            </p>
+                            <p>
+                                <label class="label">Är det bara du som bor med husdjuret?</label>
+                                <span>{{ formatGuardianship(card.soleGuardianship) }}</span>
+                            </p>
+                        </f-card>
+                    </div>
+                    <f-button variant="tertiary" icon-left="pen" align-text @click="currentStep = 'step2'"
+                        >Ändra Husdjur</f-button
+                    >
+                </div>
                 <template #next-button-text>Klar</template>
             </f-wizard-step>
         </f-wizard>
@@ -65,5 +164,13 @@ export default defineComponent({
 h1 {
     margin-top: 2rem;
     margin-bottom: size.$margin-150;
+}
+
+.summary-group {
+    margin-bottom: size.$margin-100;
+
+    h3 {
+        margin-bottom: size.$margin-100;
+    }
 }
 </style>
