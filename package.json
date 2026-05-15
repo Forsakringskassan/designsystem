@@ -115,7 +115,7 @@
     "fs-extra": "11.3.5",
     "glob": "13.0.6",
     "html-validate": "11.1.0",
-    "html-validate-markdown": "5.2.0",
+    "html-validate-markdown": "6.0.0",
     "html-validate-vue": "9.1.0",
     "is-ci": "4.1.0",
     "lerna": "9.0.7",
