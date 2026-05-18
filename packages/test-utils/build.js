@@ -17,7 +17,7 @@ async function build() {
             bundle: true,
             platform: "node",
             format,
-            target: "node20",
+            target: "node22",
             outdir,
         };
         await esbuild.build({

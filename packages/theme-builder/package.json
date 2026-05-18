@@ -54,7 +54,7 @@
     "postcss": "^8.0.0"
   },
   "engines": {
-    "node": ">= 22.12",
+    "node": "^22.16 || >= 24",
     "npm": ">= 7"
   },
   "externalDependencies": [

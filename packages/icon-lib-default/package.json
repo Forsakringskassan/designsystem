@@ -29,7 +29,7 @@
     "@fkui/icon-lib-builder": "6.46.0"
   },
   "engines": {
-    "node": ">= 20",
+    "node": "^22.16 || >= 24",
     "npm": ">= 7"
   }
 }
