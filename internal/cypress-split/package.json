@@ -27,5 +27,8 @@
   "devDependencies": {
     "esbuild": "0.28.0",
     "globby": "16.2.0"
+  },
+  "engines": {
+    "node": "^22.16 || >= 24"
   }
 }
