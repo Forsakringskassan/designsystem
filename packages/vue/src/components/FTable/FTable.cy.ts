@@ -1095,7 +1095,7 @@ describe("6 Expandable table", () => {
             table.cell({ row: 3, col: 3 }).should("have.focus");
         });
 
-        it("should scroll the navigated cell into view when it is outside the viewport", () => {
+        it("should scroll the target cell when it is clipped by a scroll container", () => {
             interface Row {
                 text: string;
             }
@@ -1107,7 +1107,46 @@ describe("6 Expandable table", () => {
                 { type: "text", header: "B", key: "text" },
             ]);
 
-            cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
+            cy.mount(() =>
+                h(
+                    "div",
+                    {
+                        style: {
+                            overflowX: "auto",
+                            width: "100px",
+                        },
+                    },
+                    [h(FTable<Row>, { rows: rows.value, columns })],
+                ),
+            );
+
+            cy.get("table")
+                .parent()
+                .then(($container) => {
+                    const container = $container[0] as HTMLElement;
+
+                    cy.stub(container, "getBoundingClientRect").returns({
+                        left: 0,
+                        right: 100,
+                        top: 0,
+                        bottom: 20,
+                        width: 100,
+                        height: 20,
+                        x: 0,
+                        y: 0,
+                        toJson: () => undefined,
+                    });
+
+                    Object.defineProperty(container, "clientWidth", {
+                        value: 100,
+                        configurable: true,
+                    });
+
+                    Object.defineProperty(container, "scrollWidth", {
+                        value: 200,
+                        configurable: true,
+                    });
+                });
 
             cy.get("table").then(($table) => {
                 const { rows } = $table[0] as HTMLTableElement;
@@ -1115,13 +1154,13 @@ describe("6 Expandable table", () => {
                 const secondCell = rows[1].cells[1];
 
                 cy.stub(secondCell, "getBoundingClientRect").returns({
-                    left: window.innerWidth + 10,
-                    right: window.innerWidth + 100,
+                    left: 80,
+                    right: 180,
                     top: 0,
                     bottom: 20,
-                    width: 90,
+                    width: 100,
                     height: 20,
-                    x: window.innerWidth + 20,
+                    x: 80,
                     y: 0,
                     json: () => undefined,
                 });
@@ -1152,7 +1191,36 @@ describe("6 Expandable table", () => {
                 { type: "text", header: "B", key: "text" },
             ]);
 
-            cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
+            cy.mount(() =>
+                h(
+                    "div",
+                    {
+                        style: {
+                            overflowX: "auto",
+                            width: "100px",
+                        },
+                    },
+                    [h(FTable<Row>, { rows: rows.value, columns })],
+                ),
+            );
+
+            cy.get("table")
+                .parent()
+                .then(($container) => {
+                    const container = $container[0] as HTMLElement;
+
+                    cy.stub(container, "getBoundingClientRect").returns({
+                        left: 0,
+                        right: 100,
+                        top: 0,
+                        bottom: 20,
+                        width: 100,
+                        height: 20,
+                        x: 0,
+                        y: 0,
+                        toJson: () => undefined,
+                    });
+                });
 
             cy.get("table").then(($table) => {
                 const { rows } = $table[0] as HTMLTableElement;
@@ -1161,12 +1229,12 @@ describe("6 Expandable table", () => {
 
                 cy.stub(secondCell, "getBoundingClientRect").returns({
                     left: 10,
-                    right: window.innerWidth - 10,
+                    right: 90,
                     top: 0,
                     bottom: 20,
-                    width: 90,
+                    width: 100,
                     height: 20,
-                    x: 10,
+                    x: 0,
                     y: 0,
                     json: () => undefined,
                 });
