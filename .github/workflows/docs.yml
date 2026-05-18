@@ -85,5 +85,20 @@ jobs:
                       --message "chore(release): [skip ci] deploy ${VERSION} documentation" \
                       --no-verify \
                       --allow-empty
-            - name: Push subtree
-              run: git subtree push --prefix pages ${DST_REMOTE} ${DST_BRANCH}
+            - name: Refresh and push subtree (retry)
+              run: |
+                  for attempt in 1 2 3; do
+                      echo "Attempt ${attempt}/3: refresh and push subtree"
+                      if git subtree pull --prefix pages ${DST_REMOTE} ${DST_BRANCH} && git subtree push --prefix pages ${DST_REMOTE} ${DST_BRANCH}; then
+                          echo "Subtree push succeeded"
+                          exit 0
+                      fi
+
+                      if [[ ${attempt} -lt 3 ]]; then
+                          echo "Subtree push failed, retrying in 5 sec"
+                          sleep 5
+                      fi
+                  done
+
+                  echo "Subtree push failed after 3 attempts"
+                  exit 1
