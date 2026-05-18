@@ -324,4 +324,64 @@ describe("FRadioField", () => {
             cy.toMatchScreenshot();
         });
     });
+
+    describe("Visual forcedColor", () => {
+        const forcedColorModes = ["none", "dark", "light"] as const;
+        afterEach(() => {
+            cy.forcedColors("none");
+        });
+        for (const mode of Object.values(forcedColorModes)) {
+            it(`should render correct styling for forced color mode, ${mode} (visual)`, () => {
+                cy.forcedColors(mode);
+
+                const TestComponent = defineComponent({
+                    components: { FFieldset, FRadioField },
+                    data() {
+                        return {
+                            radioModel: true,
+                        };
+                    },
+                    template: /* HTML */ `
+                        <f-fieldset
+                            name="radio-name"
+                            border
+                            show-details="always"
+                        >
+                            <template #label>
+                                Radioknappar med forcedColorMode "${mode}"
+                            </template>
+                            <template #description="{ descriptionClass }">
+                                <span :class="descriptionClass">
+                                    Beskrivningstext
+                                </span>
+                            </template>
+                            <template #default>
+                                <f-radio-field
+                                    v-model="radioModel"
+                                    :value="true"
+                                >
+                                    <template #default> Yes </template>
+                                    <template #details>
+                                        Value true - Details is always visible
+                                    </template>
+                                </f-radio-field>
+                                <f-radio-field
+                                    v-model="radioModel"
+                                    :value="false"
+                                >
+                                    <template #default> No </template>
+                                    <template #details>
+                                        Value false - Details is always visible
+                                    </template>
+                                </f-radio-field>
+                            </template>
+                        </f-fieldset>
+                    `,
+                });
+                cy.mount(TestComponent);
+
+                cy.get("fieldset").toMatchScreenshot({ baseDelay: 500 });
+            });
+        }
+    });
 });
