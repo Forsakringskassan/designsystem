@@ -187,6 +187,25 @@ export async function setDefaultCellTarget(
     return target;
 }
 
+// Only scroll when the cell is outside the viewport.
+// This mimics scrollIntoViewIfNeeded() without using a non-standard API.
+function isHorizontallyVisibleWithinViewport(element: HTMLElement): boolean {
+    const rect = element.getBoundingClientRect();
+
+    return rect.left >= 0 && rect.right <= window.innerWidth;
+}
+
+function ensureCellsVisible(cell: HTMLElement): void {
+    if (isHorizontallyVisibleWithinViewport(cell)) {
+        return;
+    }
+
+    cell.scrollIntoView({
+        block: "nearest",
+        inline: "nearest",
+    });
+}
+
 /** @internal */
 export function maybeNavigateToCell(e: KeyboardEvent): void {
     let newCellTarget: HTMLElement = e.target as HTMLElement;
@@ -207,6 +226,7 @@ export function maybeNavigateToCell(e: KeyboardEvent): void {
     if (navigateTo) {
         newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
         activateCell(newCellTarget, { focus: true });
+        ensureCellsVisible(newCellTarget);
     }
 }
 
