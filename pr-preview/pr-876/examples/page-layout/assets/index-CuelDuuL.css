@@ -1,4 +1,48 @@
 @charset "UTF-8";
+.contextbar[data-v-f3c4fc0f] {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 0.75rem;
+}
+.contextbar__forman[data-v-f3c4fc0f] {
+    font-weight: bold;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+[data-v-7fd1e637]::part(grid awesome-layout) {
+    grid-template:
+        "header header header" min-content
+        "left contextbar contextbar" min-content
+        "left toolbar toolbar" min-content
+        "left content right" 1fr
+        / min-content 1fr;
+}
+[data-v-7fd1e637]::part(area header) {
+    --f-page-layout-background: var(--fkds-color-header-background-primary);
+    --f-page-layout-color: var(--fkds-color-text-inverted);
+}
+[data-v-7fd1e637]::part(area contextbar) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+[data-v-7fd1e637]::part(area toolbar) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+[data-v-7fd1e637]::part(area left) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+[data-v-7fd1e637]::part(area right) {
+    --f-page-layout-background: var(--fkds-color-background-secondary);
+    --f-page-layout-color: var(--fkds-color-text-primary);
+}
+
 :root {
   --f-text-color-heading-1: inherit;
   --f-text-color-heading-2: inherit;
@@ -5859,6 +5903,12 @@ input[type=search]:focus,
   color: var(--fkds-color-text-secondary);
 }
 
+@media (forced-colors: active) {
+  .table-ng__column__sort-icon,
+  .table-ng__column__sort-icon--discrete {
+    color: CanvasText;
+  }
+}
 .text-field {
   display: flex;
   flex-direction: column;
@@ -6832,22 +6882,4 @@ body {
 
 main {
   padding: 1rem;
-}
-.top-nav[data-v-ee3d4a9a] {
-    display: flex;
-    gap: 1rem;
-    background: var(--fkds-color-header-background-primary);
-    padding: 1rem;
-}
-.top-nav a[data-v-ee3d4a9a] {
-    color: var(--fkds-color-text-inverted);
-}
-.test-label[data-v-ee3d4a9a] {
-    margin-left: auto;
-    color: var(--fkds-color-text-inverted);
-}
-
-#app[data-v-fed30f33] {
-    display: flex;
-    flex-direction: column;
 }
