@@ -237,6 +237,11 @@ $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-lar
     }
 }
 
+.table-ng__editable__text {
+    display: block;
+    white-space: pre;
+}
+
 .table-ng__editable {
     padding: $vertical-padding $horizontal-padding;
     display: flex;

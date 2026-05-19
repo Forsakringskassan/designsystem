@@ -50,18 +50,34 @@ describe("1. 3 Table test – right-aligned column", () => {
     const columns = defineTableColumns<Row>([
         {
             type: "text",
-            header: "Höger 1",
+            header: "Höger Redigerbar",
             key: "text",
-            description: "Högerjusterat ",
+            description: "Högerjusterad redigerbar text",
             align: "right",
             editable: true,
             label: () => "Input label",
         },
         {
             type: "text",
-            header: "Vänster 2 ",
+            header: "Höger Statisk",
             key: "text",
-            description: "Vänsterjusterat ",
+            description: "Högerjusterad statisk text",
+            align: "right",
+        },
+        {
+            type: "text",
+            header: "Vänster Redigerbar ",
+            key: "text",
+            description: "Vänsterjusterad redigernar text",
+            align: "left",
+            editable: true,
+            label: () => "Input label",
+        },
+        {
+            type: "text",
+            header: "Vänster Statisk",
+            key: "text",
+            description: "Vänsterjusterad statisk text",
             align: "left",
         },
     ]);
