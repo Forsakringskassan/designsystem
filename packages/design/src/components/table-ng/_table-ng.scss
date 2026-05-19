@@ -60,6 +60,7 @@ $table-ng-description-font-weight: var(--f-font-weight-normal) !default;
             color: $table-ng-row-foreground;
 
             &--empty {
+                background: $table-ng-row-background;
                 text-align: center;
             }
         }
