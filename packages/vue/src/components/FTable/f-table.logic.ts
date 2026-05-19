@@ -187,7 +187,8 @@ export async function setDefaultCellTarget(
     return target;
 }
 
-function getHorizontalScrollParent(element: HTMLElement): HTMLElement | null {
+function getHorizontalScrollParents(element: HTMLElement): HTMLElement[] {
+    const scrollParents: HTMLElement[] = [];
     let parent = element.parentElement;
 
     while (parent) {
@@ -197,13 +198,20 @@ function getHorizontalScrollParent(element: HTMLElement): HTMLElement | null {
             style.overflowX === "auto" || style.overflowX === "scroll";
 
         if (canScrollHorizontally && parent.scrollWidth > parent.clientWidth) {
-            return parent;
+            scrollParents.push(parent);
         }
 
         parent = parent.parentElement;
     }
 
-    return null;
+    return scrollParents;
+}
+
+function scrollCellIntoView(cell: HTMLElement): void {
+    cell.scrollIntoView({
+        block: "nearest",
+        inline: "nearest",
+    });
 }
 
 function isHorizontallyVisibleWithinContainer(
@@ -228,20 +236,19 @@ function isHorizontallyVisibleWithinViewport(element: HTMLElement): boolean {
 // Only scroll when the cell is clipped horizontally.
 // Checks the nearest scroll container when one exists, otherwise the viewport.
 function ensureCellVisible(cell: HTMLElement): void {
-    const scrollParent = getHorizontalScrollParent(cell);
+    const isVisibleInScrollContainers = getHorizontalScrollParents(cell).every(
+        (scrollParent) =>
+            isHorizontallyVisibleWithinContainer(cell, scrollParent),
+    );
 
-    if (scrollParent) {
-        if (isHorizontallyVisibleWithinContainer(cell, scrollParent)) {
-            return;
-        }
-    } else if (isHorizontallyVisibleWithinViewport(cell)) {
+    if (
+        isVisibleInScrollContainers &&
+        isHorizontallyVisibleWithinViewport(cell)
+    ) {
         return;
     }
 
-    cell.scrollIntoView({
-        block: "nearest",
-        inline: "nearest",
-    });
+    scrollCellIntoView(cell);
 }
 
 /** @internal */
