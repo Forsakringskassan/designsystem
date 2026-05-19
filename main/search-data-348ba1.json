@@ -270,6 +270,12 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Om FKUI Vue Labs",
     "Tidsinmatning",
     "XTimeTextField",
@@ -279,12 +285,6 @@
     "XRelativeTime",
     "XFileDragdrop",
     "XFileDragdrop",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -554,17 +554,18 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
-    "openModal",
-    "modalfunktion",
-    "options API",
-    "formModal() function",
-    "modalfunktion",
-    "formulärsmodal",
-    "options API",
-    "confirmModal() function",
-    "modalfunktion",
-    "bekräftelsemodal",
-    "options API",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -600,18 +601,17 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
+    "openModal",
+    "modalfunktion",
+    "options API",
+    "formModal() function",
+    "modalfunktion",
+    "formulärsmodal",
+    "options API",
+    "confirmModal() function",
+    "modalfunktion",
+    "bekräftelsemodal",
+    "options API",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -1363,6 +1363,27 @@
       ]
     },
     {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
       "url": "functions/labs/index.html",
       "title": "Om FKUI Vue Labs",
       "terms": []
@@ -1393,27 +1414,6 @@
       "title": "XFileDragdrop",
       "terms": [
         "XFileDragdrop"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": [
-        "TranslationService"
       ]
     },
     {
@@ -2058,29 +2058,35 @@
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
       "terms": [
-        "modalfunktion",
-        "options API"
+        "feltext",
+        "validator"
       ]
     },
     {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
       "terms": [
-        "modalfunktion",
-        "formulärsmodal",
-        "options API"
+        "feltext",
+        "validator"
       ]
     },
     {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
       "terms": [
-        "modalfunktion",
-        "bekräftelsemodal",
-        "options API"
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
       ]
     },
     {
@@ -2204,35 +2210,29 @@
       ]
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
       "terms": [
-        "feltext",
-        "validator"
+        "modalfunktion",
+        "options API"
       ]
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
       "terms": [
-        "feltext",
-        "validator"
+        "modalfunktion",
+        "formulärsmodal",
+        "options API"
       ]
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
       "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
+        "modalfunktion",
+        "bekräftelsemodal",
+        "options API"
       ]
     },
     {
@@ -3064,11 +3064,11 @@
     "268": 66,
     "269": 66,
     "270": 67,
-    "271": 68,
+    "271": 67,
     "272": 68,
-    "273": 69,
+    "273": 68,
     "274": 69,
-    "275": 70,
+    "275": 69,
     "276": 70,
     "277": 71,
     "278": 71,
@@ -3353,55 +3353,55 @@
     "557": 154,
     "558": 154,
     "559": 154,
-    "560": 154,
+    "560": 155,
     "561": 155,
     "562": 155,
-    "563": 155,
-    "564": 155,
+    "563": 156,
+    "564": 156,
     "565": 156,
-    "566": 156,
+    "566": 157,
     "567": 157,
-    "568": 157,
+    "568": 158,
     "569": 158,
-    "570": 158,
+    "570": 159,
     "571": 159,
-    "572": 159,
+    "572": 160,
     "573": 160,
-    "574": 160,
+    "574": 161,
     "575": 161,
-    "576": 161,
+    "576": 162,
     "577": 162,
-    "578": 162,
+    "578": 163,
     "579": 163,
-    "580": 163,
+    "580": 164,
     "581": 164,
-    "582": 164,
+    "582": 165,
     "583": 165,
-    "584": 165,
+    "584": 166,
     "585": 166,
-    "586": 166,
+    "586": 167,
     "587": 167,
-    "588": 167,
+    "588": 168,
     "589": 168,
-    "590": 168,
+    "590": 169,
     "591": 169,
-    "592": 169,
-    "593": 169,
+    "592": 170,
+    "593": 170,
     "594": 170,
-    "595": 170,
+    "595": 171,
     "596": 171,
-    "597": 171,
+    "597": 172,
     "598": 172,
-    "599": 172,
+    "599": 173,
     "600": 173,
-    "601": 173,
-    "602": 173,
+    "601": 174,
+    "602": 174,
     "603": 174,
-    "604": 174,
-    "605": 174,
+    "604": 175,
+    "605": 175,
     "606": 175,
     "607": 175,
-    "608": 175,
+    "608": 176,
     "609": 176,
     "610": 176,
     "611": 176,
