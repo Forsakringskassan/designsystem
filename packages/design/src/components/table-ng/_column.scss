@@ -55,3 +55,10 @@ $horizontal-padding: size.$padding-050;
         }
     }
 }
+
+@media (forced-colors: active) {
+    .table-ng__column__sort-icon,
+    .table-ng__column__sort-icon--discrete {
+        color: CanvasText;
+    }
+}
