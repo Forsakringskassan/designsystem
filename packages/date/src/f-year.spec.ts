@@ -1,12 +1,13 @@
+import { describe, expect, it, vi } from "vitest";
 import { FDate } from "./f-date";
 import { FYear } from "./f-year";
 
-jest.useFakeTimers();
+vi.useFakeTimers();
 
 describe("now()", () => {
     it("should construct FYear using current time", () => {
         expect.assertions(1);
-        jest.setSystemTime(new Date(1999, 11, 31));
+        vi.setSystemTime(new Date(1999, 11, 31));
         const year = FYear.now();
         expect(year.value).toBe(1999);
     });
