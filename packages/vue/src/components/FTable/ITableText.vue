@@ -439,6 +439,6 @@ function onPendingValidity(): void {
         ></i-popup-error>
     </td>
     <td v-else ref="td" tabindex="-1" :class="staticClasses" @keydown.space.prevent>
-        <span class="table-ng__static__text">{{ fromColumnValue() }}</span>
+        <span>{{ fromColumnValue() }}</span>
     </td>
 </template>
