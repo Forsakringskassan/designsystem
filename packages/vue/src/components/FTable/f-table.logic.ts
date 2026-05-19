@@ -234,7 +234,7 @@ function isHorizontallyVisibleWithinViewport(element: HTMLElement): boolean {
 }
 
 // Only scroll when the cell is clipped horizontally.
-// Checks the nearest scroll container when one exists, otherwise the viewport.
+// Checks the nearest scroll container and the viewport.
 function ensureCellVisible(cell: HTMLElement): void {
     const isVisibleInScrollContainers = getHorizontalScrollParents(cell).every(
         (scrollParent) =>
