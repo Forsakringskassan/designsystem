@@ -68,7 +68,7 @@ describe("1. 3 Table test – right-aligned column", () => {
             type: "text",
             header: "Vänster Redigerbar ",
             key: "text",
-            description: "Vänsterjusterad redigernar text",
+            description: "Vänsterjusterad redigerbar text",
             align: "left",
             editable: true,
             label: () => "Input label",
