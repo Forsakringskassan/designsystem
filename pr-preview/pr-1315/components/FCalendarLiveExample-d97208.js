@@ -3737,7 +3737,7 @@ import { ref, toRaw, watch } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=script
 import { defineComponent as defineComponent21, provide, useSlots as useSlots3, useTemplateRef as useTemplateRef5 } from "vue";
-import { ElementIdService as ElementIdService6, debounce as debounce4 } from "@fkui/logic";
+import { ElementIdService as ElementIdService6, debounce as debounce5 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FTooltip/FTooltip.vue?type=script
 import {
@@ -4343,6 +4343,7 @@ var IPopup_default2 = IPopup_default;
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupError/IPopupError.vue?type=script
 import { defineComponent as _defineComponent } from "vue";
 import { computed, nextTick, ref as ref2, useTemplateRef, watch as watch2 } from "vue";
+import { debounce as debounce2 } from "@fkui/logic";
 
 // packages/vue/src/internal-components/IPopupError/compute-arrow-offset.ts
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
@@ -4476,6 +4477,15 @@ var IPopupError_default = /* @__PURE__ */ _defineComponent({
     function onResize() {
       void toggleIsOpen(__props.isOpen);
     }
+    function onScroll(event) {
+      const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup-error"));
+      if (isPopupTarget) {
+        return;
+      }
+      void toggleIsOpen(__props.isOpen);
+    }
+    const debouncedOnResize = debounce2(onResize, 100);
+    const debouncedOnScroll = debounce2(onScroll, 100);
     watch2(
       () => __props.anchor,
       (anchorElement, _, onCleanup) => {
@@ -4483,10 +4493,12 @@ var IPopupError_default = /* @__PURE__ */ _defineComponent({
           return;
         }
         anchorElement.addEventListener("keyup", onKeyEsc);
-        window.addEventListener("resize", onResize);
+        window.addEventListener("resize", debouncedOnResize);
+        window.addEventListener("scroll", debouncedOnScroll, { capture: true });
         onCleanup(() => {
           anchorElement.removeEventListener("keyup", onKeyEsc);
-          window.removeEventListener("resize", onResize);
+          window.removeEventListener("resize", debouncedOnResize);
+          window.removeEventListener("scroll", debouncedOnScroll, { capture: true });
         });
       },
       { immediate: true }
@@ -4498,7 +4510,7 @@ var IPopupError_default = /* @__PURE__ */ _defineComponent({
       },
       { immediate: true }
     );
-    const __returned__ = { emit, POPUP_SPACING: POPUP_SPACING2, wrapperRef, teleportDisabled: teleportDisabled2, placement, arrowPosition, arrowOffset, popupClasses, arrowClass, errorStyle, teleportTarget, onKeyEsc, onClose, setArrowOffset, toggleIsOpen, onResize, get FIcon() {
+    const __returned__ = { emit, POPUP_SPACING: POPUP_SPACING2, wrapperRef, teleportDisabled: teleportDisabled2, placement, arrowPosition, arrowOffset, popupClasses, arrowClass, errorStyle, teleportTarget, onKeyEsc, onClose, setArrowOffset, toggleIsOpen, onResize, onScroll, debouncedOnResize, debouncedOnScroll, get FIcon() {
       return FIcon_default2;
     } };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
@@ -4585,7 +4597,7 @@ IPopupError_default.__file = "packages/vue/src/internal-components/IPopupError/I
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue?type=script
 import { defineComponent as _defineComponent2 } from "vue";
 import { computed as computed2, onUnmounted as onUnmounted2, useTemplateRef as useTemplateRef2, watch as watch3, watchEffect } from "vue";
-import { debounce as debounce2 } from "@fkui/logic";
+import { debounce as debounce3 } from "@fkui/logic";
 
 // packages/vue/src/composables/use-event-listener.ts
 import { onMounted, onUnmounted, toValue } from "vue";
@@ -4695,8 +4707,8 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent2({
     const contentRef = useTemplateRef2("content");
     const popupClasses = ["popup", "popup--overlay"];
     const teleportTarget = computed2(() => config.teleportTarget);
-    const debouncedOnResize = debounce2(onResize, 100);
-    const debouncedOnScroll = debounce2(onScroll, 100);
+    const debouncedOnResize = debounce3(onResize, 100);
+    const debouncedOnScroll = debounce3(onScroll, 100);
     let guessedItemHeight = void 0;
     let verticalSpacing = void 0;
     useEventListener(__props.anchor, "keyup", onKeyEsc);
@@ -5542,7 +5554,7 @@ import { alertScreenReader, focus as focus7 } from "@fkui/logic";
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarMonthGrid.vue?type=script
 import { defineComponent as defineComponent16 } from "vue";
 import { getWeekdayNamings, groupByWeek } from "@fkui/date";
-import { debounce as debounce3 } from "@fkui/logic";
+import { debounce as debounce4 } from "@fkui/logic";
 
 // packages/vue/src/internal-components/calendar/get-day-offset.ts
 function getDayStartOffset(days) {
@@ -5592,7 +5604,7 @@ var ICalendarMonthGrid_default = defineComponent16({
     }
   },
   mounted() {
-    this.resizeObserver = new ResizeObserver(debounce3(this.onResize, 100));
+    this.resizeObserver = new ResizeObserver(debounce4(this.onResize, 100));
     this.resizeObserver.observe(this.$el);
     this.onResize();
   },
@@ -7094,7 +7106,7 @@ var FFieldset_default = defineComponent21({
       return this.children.filter((child) => child.checked);
     },
     debouncedUpdateChildren() {
-      return debounce4(this.updateCheckboxChildren.bind(this), 150);
+      return debounce5(this.updateCheckboxChildren.bind(this), 150);
     },
     checkboxCheckedScreenReaderText() {
       return this.checkedChildren.length === 1 ? this.$t("fkui.checkbox-group.checkbox.checked", "Kryssruta kryssad") : this.$t("fkui.checkbox-group.checkbox.not.checked", "Kryssruta ej kryssad");
