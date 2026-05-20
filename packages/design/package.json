@@ -43,11 +43,9 @@
     "@fkui/theme-default": "6.47.0",
     "autoprefixer": "10.5.0",
     "cssnano": "8.0.1",
-    "glob": "13.0.6",
     "picocolors": "1.1.1",
     "postcss": "8.5.14",
-    "postcss-var-func-fallback": "3.0.1",
-    "svgo": "4.0.1"
+    "postcss-var-func-fallback": "3.0.1"
   },
   "peerDependencies": {
     "@fkui/theme-default": "^6.47.0",

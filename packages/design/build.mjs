@@ -3,52 +3,16 @@ import path from "node:path/posix";
 import fkuiTheme from "@fkui/theme-default/dist/theme-light.js";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
-import { glob } from "glob";
 import picocolors from "picocolors";
 import postcss from "postcss";
 
 /* postcss plugins */
 import varFuncFallback from "postcss-var-func-fallback";
 import * as sass from "sass";
-import { optimize } from "svgo";
 
 const themes = {
     fkui: fkuiTheme,
 };
-
-async function optimzeAssets(src, dst) {
-    const files = await glob("**/*.svg", { cwd: src, posix: true });
-    await fs.rm(dst, { recursive: true, force: true });
-    for (const filename of files) {
-        const srcPath = path.join(src, filename);
-        const dstPath = path.join(dst, filename);
-        const original = await fs.readFile(srcPath, "utf8");
-        const result = optimize(original, {
-            path: srcPath,
-            plugins: [
-                {
-                    name: "preset-default",
-                },
-                {
-                    name: "removeAttrs",
-                    params: {
-                        attrs: "(id)",
-                    },
-                },
-                {
-                    name: "removeDimensions",
-                },
-            ],
-        });
-        await fs.mkdir(path.dirname(dstPath), { recursive: true });
-        await fs.writeFile(dstPath, result.data, "utf8");
-        console.log(
-            picocolors.cyan(path.join("assets", filename)),
-            "optimized  ",
-            picocolors.bold(prettySize(result.data.length)),
-        );
-    }
-}
 
 async function postprocess(css, from, to, { theme, minify, sourceMap }) {
     /** @type {import("cssnano").Options} */
@@ -140,7 +104,6 @@ await fs.rm("lib", { recursive: true, force: true });
 await fs.mkdir("lib", { recursive: true });
 
 console.group();
-await optimzeAssets("src/assets", "temp/assets");
 try {
     await compileSass("src/fkui.scss", "lib/fkui.css", {
         theme: "fkui",
