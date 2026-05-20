@@ -335,10 +335,12 @@ interface Row {
 /* --- cut above --- */
 const columns = defineTableColumns<Row>([
     {
+        type: "text",
         header: "Namn",
         align: "left",
     },
     {
+        type: "text",
         header: "Land",
         align: "right",
     },
@@ -356,11 +358,13 @@ interface Row {
 
 const columns = defineTableColumns<Row>([
     {
+        type: "text",
         header: "Namn",
         key: "namn",
         align: "left",
     },
     {
+        type: "text",
         header: "Land",
         key: "land",
         align: "right",
