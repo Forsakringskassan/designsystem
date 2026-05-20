@@ -3,6 +3,7 @@ import DefaultView from "./views/DefaultView.vue";
 import EditableListLong from "./views/prototypes/EditableListLong.vue";
 import EditableListShort from "./views/prototypes/EditableListShort.vue";
 import ExamplePrototype from "./views/prototypes/ExamplePrototype.vue";
+import ExpandableTextareaPrototype from "./views/prototypes/ExpandableTextareaPrototype.vue";
 import PanelListLong from "./views/prototypes/PanelListLong.vue";
 import PanelListShort from "./views/prototypes/PanelListShort.vue";
 import PanelerVsKort from "./views/prototypes/PanelerVsKort.vue";
@@ -23,6 +24,11 @@ export const prototypes = [
         path: "/paneler-vs-kort",
         name: "Paneler vs Kort",
         component: PanelerVsKort,
+    },
+    {
+        path: "/expanderande-textarea",
+        name: "Expanderande textarea",
+        component: ExpandableTextareaPrototype,
     },
 ];
 

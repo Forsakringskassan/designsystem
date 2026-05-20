@@ -1,3 +1,4 @@
+export { FExpandableTextareaField } from "./FExpandableTextareaField";
 export { XFileDragdrop } from "./XFileDragdrop";
 export { XRelativeTime } from "./XRelativeTime";
 export {

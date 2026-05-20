@@ -20,6 +20,11 @@ import { ValidatorConfig } from '@fkui/logic';
 import { ValidityEvent } from '@fkui/logic';
 import { VNode } from 'vue';
 
+// Warning: (ae-forgotten-export) The symbol "__VLS_export" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const FExpandableTextareaField: typeof __VLS_export;
+
 // @public (undocumented)
 export function forgivingParseTimeToNumber(value?: string | null): number | undefined;
 
@@ -73,25 +78,25 @@ export function splitHoursMinutes(valueString: string, extraForgiving?: boolean)
 // @public (undocumented)
 export function uniqueValues<T, K extends keyof T = keyof T>(items: T[], property: K): Array<T[K]>;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_export" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export const XFileDragdrop: typeof __VLS_export;
-
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_2" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const XRelativeTime: typeof __VLS_export_2;
+export const XFileDragdrop: typeof __VLS_export_2;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_3" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const XSortFilterDatasetNg: typeof __VLS_export_3;
+export const XRelativeTime: typeof __VLS_export_3;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_4" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const XTimeTextField: typeof __VLS_export_4;
+export const XSortFilterDatasetNg: typeof __VLS_export_4;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_5" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const XTimeTextField: typeof __VLS_export_5;
 
 // (No @packageDocumentation comment for this package)
 
