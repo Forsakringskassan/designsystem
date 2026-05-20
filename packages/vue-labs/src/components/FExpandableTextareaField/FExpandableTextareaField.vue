@@ -6,6 +6,16 @@ import { FTextareaField } from "@fkui/vue";
 export default defineComponent({
     name: "FExpandableTextareaField",
     extends: FTextareaField,
+    props: {
+        /**
+         * Maximum number of rows before the textarea scrolls internally.
+         */
+        maxRows: {
+            type: Number,
+            required: false,
+            default: undefined,
+        },
+    },
     emits: ["input", "update:modelValue"],
     data(): {
         animationFrameId: number | undefined;
@@ -85,10 +95,47 @@ export default defineComponent({
             const style = window.getComputedStyle(textarea);
             const borderHeight =
                 (Number.parseFloat(style.borderTopWidth) || 0) + (Number.parseFloat(style.borderBottomWidth) || 0);
+            const maxHeight = this.getMaxHeight(style, borderHeight);
 
             textarea.style.height = "auto";
-            textarea.style.overflowY = "hidden";
-            textarea.style.height = `${textarea.scrollHeight + borderHeight}px`;
+            const scrollHeight = textarea.scrollHeight + borderHeight;
+            textarea.style.overflowY = maxHeight && scrollHeight > maxHeight ? "auto" : "hidden";
+            textarea.style.height = `${maxHeight ? Math.min(scrollHeight, maxHeight) : scrollHeight}px`;
+        },
+        getMaxHeight(style: CSSStyleDeclaration, borderHeight: number): number | undefined {
+            if (!this.maxRows) {
+                return undefined;
+            }
+
+            const lineHeight = this.getLineHeight(style);
+
+            if (!lineHeight) {
+                return undefined;
+            }
+
+            const paddingHeight =
+                (Number.parseFloat(style.paddingTop) || 0) + (Number.parseFloat(style.paddingBottom) || 0);
+
+            return lineHeight * this.maxRows + paddingHeight + borderHeight;
+        },
+        getLineHeight(style: CSSStyleDeclaration): number | undefined {
+            const lineHeight = Number.parseFloat(style.lineHeight);
+
+            if (style.lineHeight.endsWith("px")) {
+                return lineHeight;
+            }
+
+            const fontSize = Number.parseFloat(style.fontSize);
+
+            if (!fontSize) {
+                return undefined;
+            }
+
+            if (!lineHeight) {
+                return fontSize * 1.2;
+            }
+
+            return lineHeight * fontSize;
         },
         observeTextareaResize(): void {
             const textarea = this.$el.querySelector("textarea") as HTMLTextAreaElement | null;

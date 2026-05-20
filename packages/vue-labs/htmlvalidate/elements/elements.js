@@ -3,6 +3,9 @@ const { defineMetadata } = require("html-validate");
 module.exports = defineMetadata({
     "f-expandable-textarea-field": {
         inherit: "f-textarea-field",
+        attributes: {
+            "max-rows": ["/^\\d+$/"],
+        },
     },
 
     "f-expandable-textarea-field#default": {

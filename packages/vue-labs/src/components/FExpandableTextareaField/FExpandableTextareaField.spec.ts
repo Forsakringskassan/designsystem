@@ -126,6 +126,29 @@ describe("FExpandableTextareaField", () => {
         expect(element.style.height).toBe("90px");
     });
 
+    it("should cap height at maxRows and enable internal scrolling", async () => {
+        const wrapper = createWrapper({
+            props: { maxRows: 6 },
+            attrs: { rows: 3 },
+        });
+        const textarea = wrapper.get("textarea");
+        const element = textarea.element as HTMLTextAreaElement;
+
+        element.style.fontSize = "16px";
+        element.style.lineHeight = "1.5";
+        element.style.paddingTop = "4px";
+        element.style.paddingBottom = "4px";
+        element.style.borderTopWidth = "1px";
+        element.style.borderBottomWidth = "1px";
+
+        setScrollHeight(element, 180);
+        await textarea.setValue("A text long enough to exceed max rows");
+        await flushAnimationFrame();
+
+        expect(element.style.height).toBe("154px");
+        expect(element.style.overflowY).toBe("auto");
+    });
+
     it("should not schedule resize from resize observer when only height changes", () => {
         let observerCallback: ResizeObserverCallback | undefined;
         global.ResizeObserver = jest.fn((callback: ResizeObserverCallback) => {

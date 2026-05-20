@@ -12,13 +12,19 @@ export default defineComponent({
         FWizardStep,
     },
     setup() {
+        const limitedMessage = ref("");
+        const maxLength = 200;
         const message = ref("");
+        const softLimit = 20;
         const testMode = ref("standalone");
         const wizardHasContent = ref("");
         const wizardMessage = ref("");
 
         return {
+            limitedMessage,
+            maxLength,
             message,
+            softLimit,
             testMode,
             wizardHasContent,
             wizardMessage,
@@ -47,10 +53,32 @@ export default defineComponent({
         <section v-if="testMode === 'standalone'" class="prototype-section">
             <div class="row">
                 <div class="col col--md-6">
-                    <f-expandable-textarea-field id="expandable-message" v-model="message" :maxlength="500">
-                        Expanderande inmatningsfält
+                    <f-expandable-textarea-field
+                        id="expandable-limited-message"
+                        v-model="limitedMessage"
+                        :rows="3"
+                        :max-rows="6"
+                    >
+                        Expanderande inmatningsfält med max-rows
                         <template #description="{ descriptionClass }">
-                            <span :class="descriptionClass">Bygger på FTextareaField med autoResize.</span>
+                            <span :class="descriptionClass">rows=3 och max-rows=6. Ingen teckenbegränsning.</span>
+                        </template>
+                    </f-expandable-textarea-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col--md-6">
+                    <f-expandable-textarea-field
+                        id="expandable-message"
+                        v-model="message"
+                        :maxlength="maxLength"
+                        :soft-limit
+                    >
+                        Expanderande inmatningsfält med max-length
+                        <template #description="{ descriptionClass }">
+                            <span :class="descriptionClass">
+                                rows=1 utan max-rows. maxlength={{ maxLength }} och soft-limit={{ softLimit }}.
+                            </span>
                         </template>
                     </f-expandable-textarea-field>
                 </div>
@@ -66,11 +94,14 @@ export default defineComponent({
                             <f-expandable-textarea-field
                                 id="expandable-wizard-message"
                                 v-model="wizardMessage"
-                                :maxlength="500"
+                                :maxlength="maxLength"
+                                :soft-limit
                             >
                                 Expanderande inmatningsfält
                                 <template #description="{ descriptionClass }">
-                                    <span :class="descriptionClass">Bygger på FTextareaField med autoResize.</span>
+                                    <span :class="descriptionClass">
+                                        rows=1 utan max-rows. maxlength={{ maxLength }} och soft-limit={{ softLimit }}.
+                                    </span>
                                 </template>
                             </f-expandable-textarea-field>
                         </div>
