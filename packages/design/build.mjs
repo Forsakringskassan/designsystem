@@ -8,7 +8,6 @@ import picocolors from "picocolors";
 import postcss from "postcss";
 
 /* postcss plugins */
-import postcssUrl from "postcss-url";
 import varFuncFallback from "postcss-var-func-fallback";
 import * as sass from "sass";
 import { optimize } from "svgo";
@@ -61,12 +60,6 @@ async function postprocess(css, from, to, { theme, minify, sourceMap }) {
     };
     const plugins = [
         autoprefixer,
-        postcssUrl({
-            basePath: "../temp",
-            url: "inline",
-            encodeType: "base64",
-            optimizeSvgEncode: true,
-        }),
         theme ? varFuncFallback(fallbackOptions) : false,
         minify ? cssnano(cssnanoOptions) : false,
     ].filter(Boolean);
