@@ -64,7 +64,7 @@
     }
   },
   "engines": {
-    "node": ">= 20",
+    "node": "^22.16 || >= 24",
     "npm": ">= 7"
   },
   "sass": "./src/fkui.scss"

@@ -6,7 +6,7 @@
         "target": "es2023",
         "module": "esnext",
         "moduleResolution": "bundler",
-        "lib": ["es2023", "dom", "dom.iterable"],
+        "lib": ["es2024", "dom", "dom.iterable"],
 
         "rootDir": "${configDir}/src",
         "outDir": "${configDir}/dist",
