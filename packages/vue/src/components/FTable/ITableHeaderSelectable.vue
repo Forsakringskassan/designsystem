@@ -29,7 +29,7 @@ defineExpose(expose);
 </script>
 
 <template>
-    <th scope="col" class="table-ng__column table-ng__column--selectable">
+    <th scope="col" class="table-ng__column table-ng__column--selectable table-ng__column--shrink">
         <input
             v-if="selectable === 'multi'"
             ref="input"
