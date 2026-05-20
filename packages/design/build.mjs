@@ -1,9 +1,9 @@
 import fs from "node:fs/promises";
 import path from "node:path/posix";
+import { styleText } from "node:util";
 import fkuiTheme from "@fkui/theme-default/dist/theme-light.js";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
-import picocolors from "picocolors";
 import postcss from "postcss";
 
 /* postcss plugins */
@@ -92,9 +92,9 @@ async function compileSass(src, dst, { theme } = {}) {
         "utf8",
     );
     console.log(
-        picocolors.cyan(dst),
+        styleText("cyan", dst),
         "written  ",
-        picocolors.bold(prettySize(development.css.length)),
+        styleText("bold", prettySize(development.css.length)),
         "| min:",
         prettySize(production.css.length),
     );
