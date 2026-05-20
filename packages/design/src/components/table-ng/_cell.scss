@@ -50,6 +50,10 @@ $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-lar
         }
     }
 
+    &--numeric {
+        font-feature-settings: "tnum" 1;
+    }
+
     &--select,
     &--text {
         padding: 0;

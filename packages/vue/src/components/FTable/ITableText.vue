@@ -87,6 +87,7 @@ const staticClasses = computed(() => {
         "table-ng__cell--static": true,
         "table-ng__cell--align-left": column.align === "left",
         "table-ng__cell--align-right": column.align === "right",
+        "table-ng__cell--numeric": column.tnum,
     };
 });
 

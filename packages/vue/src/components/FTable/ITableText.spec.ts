@@ -110,4 +110,92 @@ describe("ITableText", () => {
         expect(input.element.tabIndex).toBe(-1);
         expect(td.element.tabIndex).toBe(0);
     });
+
+    it("should not set numeric class when tnum is disabled in editable cell", () => {
+        expect.assertions(1);
+        const row: Row = { foo: "Foo" };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "text",
+            header: "Header",
+            key: "foo",
+            editable: true,
+            tnum: false,
+        });
+        const wrapper = mount(
+            ITableText as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.get("td > div").classes()).not.toContain(
+            "table-ng__editable__numeric",
+        );
+    });
+
+    it("should set numeric class when tnum is enabled in editable cell", () => {
+        expect.assertions(1);
+        const row: Row = { foo: "Foo" };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "text",
+            header: "Header",
+            key: "foo",
+            editable: true,
+            tnum: true,
+        });
+        const wrapper = mount(
+            ITableText as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.get("td > div").classes()).toContain(
+            "table-ng__editable__numeric",
+        );
+    });
+
+    it("should not set numeric class when tnum is disabled in static cell", () => {
+        expect.assertions(1);
+        const row: Row = { foo: "Foo" };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "text",
+            header: "Header",
+            key: "foo",
+            editable: false,
+            tnum: false,
+        });
+        const wrapper = mount(
+            ITableText as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.get("td").classes()).not.toContain(
+            "table-ng__cell--numeric",
+        );
+    });
+
+    it("should set numeric class when tnum is enabled in static cell", () => {
+        expect.assertions(1);
+        const row: Row = { foo: "Foo" };
+        const column = normalizeTableColumn<Row, keyof Row>({
+            type: "text",
+            header: "Header",
+            key: "foo",
+            editable: false,
+            tnum: true,
+        });
+        const wrapper = mount(
+            ITableText as unknown as ComponentPublicInstance,
+            {
+                props: { column, row },
+            },
+        );
+
+        expect(wrapper.get("td").classes()).toContain(
+            "table-ng__cell--numeric",
+        );
+    });
 });
