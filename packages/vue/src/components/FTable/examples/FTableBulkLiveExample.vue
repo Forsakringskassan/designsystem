@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
+import { LiveExample } from "@forsakringskassan/docs-live-example";
 import {
     FButton,
     FCheckboxField,
@@ -12,8 +13,6 @@ import {
     useDatasetRef,
     useModal,
 } from "@fkui/vue";
-
-import { LiveExample } from "@forsakringskassan/docs-live-example";
 
 interface Row {
     namn: string;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { FCheckboxField, FFileSelector, FSelectField } from "@fkui/vue";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
+import { FCheckboxField, FFileSelector, FSelectField } from "@fkui/vue";
 
 const buttonSize = ref<string | undefined>();
 const isDisabled = ref(false);

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { FBadge, FCheckboxField, FSelectField } from "@fkui/vue";
-import { XRelativeTime } from "@fkui/vue-labs";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
+import { XRelativeTime } from "@fkui/vue-labs";
 
 const sekunder = 1_000;
 const minuter = 60_000;

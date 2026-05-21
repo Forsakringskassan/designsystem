@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { FButton, useModal } from "@fkui/vue";
 import MyAwesomeModal from "./MyAwesomeModal.vue";
+import { FButton, useModal } from "@fkui/vue";
 
 const { openModal } = useModal();
 

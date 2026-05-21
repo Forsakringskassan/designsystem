@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { type FruitData, fruits } from "./fruit-data";
 import {
     type FDefinitionListItem,
     FDefinitionList,
@@ -7,7 +8,6 @@ import {
     getDatasetMetadata,
     useDatasetRef,
 } from "@fkui/vue";
-import { type FruitData, fruits } from "./fruit-data";
 
 const items = useDatasetRef<FruitData>(fruits);
 

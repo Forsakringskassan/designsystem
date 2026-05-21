@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FButton, FCheckboxField, FLoader } from "@fkui/vue";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
+import { FButton, FCheckboxField, FLoader } from "@fkui/vue";
 
 export default defineComponent({
     name: "FLoaderLiveExample",

@@ -7,8 +7,8 @@ import {
     FTextField,
     findHTMLElementFromVueRef,
 } from "@fkui/vue";
-import { XSortFilterDatasetNg, matchPropertyValue, uniqueValues } from "@fkui/vue-labs";
 import { type FruitData, fruits } from "./fruit-data";
+import { XSortFilterDatasetNg, matchPropertyValue, uniqueValues } from "@fkui/vue-labs";
 
 const searchRef = useTemplateRef("search");
 const actualElement = computed<HTMLInputElement | null>(() => {
