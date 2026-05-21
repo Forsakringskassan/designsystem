@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
 import { assertRef, formatNumber } from "@fkui/logic";
-import { FButton, FSortFilterDataset, FTable, defineTableColumns, removeDatasetRows, useDatasetRef } from "@fkui/vue";
+import {
+    FButton,
+    FSortFilterDataset,
+    FTable,
+    defineTableColumns,
+    removeDatasetRows,
+    useDatasetRef,
+} from "@fkui/vue";
 
 const tableRef = useTemplateRef("table");
 
