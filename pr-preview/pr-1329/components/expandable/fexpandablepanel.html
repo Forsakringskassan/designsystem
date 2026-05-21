@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-25196b.json"
+            href="../../search-data-3b7df9.json"
             as="fetch"
             crossorigin
-            integrity="sha384-Zd4BUOVinIvffpw6hEFEtWgPwwEckqprh8IFTx5wYM7Th4W3JI/7azZkpW0AOXLB"
+            integrity="sha384-VU8y9GtF1297ad0kSK1+HPdogAUHGA0SbeflrVf5cUXsOqCcYqm7QesTqHF2FLlU"
             id="search-data"
         />
     </head>
@@ -1550,7 +1550,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/4f8fa57f43a44b14134aa94e2e8025972db23c74/packages/vue/src/components/FExpandablePanel/FExpandablePanel.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/edb2d92abf72f3b3b68a6b625dc5e9d4972d3ad5/packages/vue/src/components/FExpandablePanel/FExpandablePanel.vue">
                 FExpandablePanel
             </a>
             
@@ -1600,13 +1600,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-cf102a"></div>
+        <div id="example-7b93dd"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FExpandablePanelExample-cf102a.js"></script>
+        <script type="module" src="./FExpandablePanelExample-7b93dd.js"></script>
     
                 </div>
                 <div>
@@ -1631,18 +1631,22 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FExpandablePanel</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">FLayoutApplicationTemplate</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../FLayoutApplicationTemplate/FLayoutApplicationTemplate.vue&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">FLayoutRightPanel</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../FLayoutRightPanel/FLayoutRightPanel.vue&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">FTextareaField</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../FTextareaField/FTextareaField.vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FExpandablePanelExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FExpandablePanel</span> },
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FExpandablePanel</span>, <span class="hljs-title class_">FLayoutApplicationTemplate</span>, <span class="hljs-title class_">FLayoutRightPanel</span>, <span class="hljs-title class_">FTextareaField</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
             <span class="hljs-attr">expanded</span>: <span class="hljs-literal">false</span>,
             <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span>,
+            <span class="hljs-attr">about</span>: <span class="hljs-string">&quot;&quot;</span>,
         };
     },
     <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">onToggle</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-title function_">togglePanelOne</span>(<span class="hljs-params"></span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">expanded</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">expanded</span>;
         },
     },
@@ -1650,15 +1654,31 @@
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-expandable-panel</span> <span class="hljs-attr">:expanded</span> @<span class="hljs-attr">toggle</span>=<span class="hljs-string">&quot;onToggle&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">title</span>&gt;</span> Titel <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-layout-application-template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            Innehåll
-            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;anchor&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span>&gt;</span> Länk till annan sida <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-layout-right-panel</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container-fluid&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-expandable-panel</span> <span class="hljs-attr">:expanded</span> @<span class="hljs-attr">toggle</span>=<span class="hljs-string">&quot;togglePanelOne&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">title</span>&gt;</span> Berätta om dig själv <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-textarea-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;about&quot;</span> <span class="hljs-attr">:maxlength</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">:soft-limit</span>=<span class="hljs-string">&quot;20&quot;</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ formatDescriptionClass }&quot;</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Test<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;formatDescriptionClass&quot;</span>&gt;</span>
+                                            (max 100 tecken)
+                                        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-textarea-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-expandable-panel</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-layout-right-panel</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">f-expandable-panel</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-layout-application-template</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
@@ -2082,9 +2102,9 @@ Use <code>%VALUE%</code> as a placeholder for the number of notifications.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">buggfix/FExpandblePanel-transition (<a href="https://github.com/Forsakringskassan/designsystem/commits/4f8fa57f43a44b14134aa94e2e8025972db23c74">4f8fa57</a>)<br />
+<div class="footer__right"><div class="version">buggfix/FExpandblePanel-transition (<a href="https://github.com/Forsakringskassan/designsystem/commits/edb2d92abf72f3b3b68a6b625dc5e9d4972d3ad5">edb2d92</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1329">PR 1329</a><br />
-        2026-05-21 05:21
+        2026-05-21 05:38
 </div>
 <div class="toolbar__item">
     <form id="version">
