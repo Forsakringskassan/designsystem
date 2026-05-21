@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { FLogo, FSelectField } from "@fkui/vue";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
+import { FLogo, FSelectField } from "@fkui/vue";
 
 const logoSize = ref("responsive");
 

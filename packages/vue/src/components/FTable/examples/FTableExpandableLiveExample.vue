@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { FCheckboxField, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
+import { FCheckboxField, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
 interface Row {
     namn: string;

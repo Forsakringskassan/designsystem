@@ -2,6 +2,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
+import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
+import { defaultTnumValue } from "../columns/helpers";
+import { type InputType } from "../input-fields-config";
+import { isEditableColumn } from "../is-editable-column";
+import { isEnableColumn } from "../is-enable-column";
+import { isTextColumn } from "../is-text-column";
+import { type TableColumnType } from "../table-column";
+import { stringifyObject } from "./stringify-object";
 import {
     type TableColumn,
     FCheckboxField,
@@ -13,14 +21,6 @@ import {
     getHTMLElementFromVueRef,
     useDatasetRef,
 } from "@fkui/vue";
-import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
-import { defaultTnumValue } from "../columns/helpers";
-import { type InputType } from "../input-fields-config";
-import { isEditableColumn } from "../is-editable-column";
-import { isEnableColumn } from "../is-enable-column";
-import { isTextColumn } from "../is-text-column";
-import { type TableColumnType } from "../table-column";
-import { stringifyObject } from "./stringify-object";
 
 interface Row {
     id?: number;

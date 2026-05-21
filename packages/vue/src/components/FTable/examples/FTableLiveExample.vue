@@ -2,6 +2,7 @@
 <script lang="ts">
 import { defineComponent, h } from "vue";
 import { formatNumber } from "@fkui/logic";
+import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
 import {
     type DatasetNestedKeyOf,
     FCheckboxField,
@@ -11,7 +12,6 @@ import {
     useDatasetRef,
 } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue";
-import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
 
 interface Row {
     id: string;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, defineComponent, h, ref } from "vue";
-import { FCheckboxField, FPageLayout, FResizePane, useResize } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
+import { FCheckboxField, FPageLayout, FResizePane, useResize } from "@fkui/vue";
 
 const enabled = ref(true);
 const visible = ref(true);

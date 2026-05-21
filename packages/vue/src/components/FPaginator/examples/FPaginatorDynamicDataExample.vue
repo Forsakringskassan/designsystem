@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { FDataTable, FPaginateDataset, FPaginator, FTableColumn } from "@fkui/vue";
-
 import { persons } from "./pagination-data";
+import { FDataTable, FPaginateDataset, FPaginator, FTableColumn } from "@fkui/vue";
 
 async function fetchData(first: number, last: number) {
     await new Promise((resolve) => setTimeout(resolve, 0));

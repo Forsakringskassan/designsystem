@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
+import { exampleDialogTree } from "./example-dialog-tree";
 import {
     type FDialogueTreeUserProgress,
     type FModalButtonDescriptor,
@@ -7,7 +8,6 @@ import {
     FFormModal,
     FOrganisationsnummerTextField,
 } from "@fkui/vue";
-import { exampleDialogTree } from "./example-dialog-tree";
 
 const props = defineProps<{ isOpen?: boolean }>();
 

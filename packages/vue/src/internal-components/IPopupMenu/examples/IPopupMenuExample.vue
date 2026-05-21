@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FButton } from "@fkui/vue";
 import { IPopupMenu } from "..";
+import { FButton } from "@fkui/vue";
 
 const exampleItems = [
     { label: "Länk 1", key: "MENU_1" },

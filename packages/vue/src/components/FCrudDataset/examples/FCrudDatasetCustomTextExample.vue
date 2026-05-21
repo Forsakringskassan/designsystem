@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FButton, FCrudDataset, FList, FStaticField, FTextField, FTextareaField } from "@fkui/vue";
 import { type FruitData, fruits } from "./fruit-data";
+import { FButton, FCrudDataset, FList, FStaticField, FTextField, FTextareaField } from "@fkui/vue";
 
 export default defineComponent({
     name: "ExampleApp",

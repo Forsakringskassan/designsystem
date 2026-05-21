@@ -2,8 +2,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { DateFormat, FDate, Weekday } from "@fkui/date";
-import { FCheckboxField, FDatepickerField, FFieldset, FSelectField, FTooltip } from "@fkui/vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
+import { FCheckboxField, FDatepickerField, FFieldset, FSelectField, FTooltip } from "@fkui/vue";
 
 export default defineComponent({
     name: "FDatepickerFieldLiveExample",

@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { routes } from "./router";
 import { FNavigationMenu } from "@fkui/vue";
 // `routes` is an array of `NavigationMenuItem`.
-import { routes } from "./router";
 </script>
 
 <template>
