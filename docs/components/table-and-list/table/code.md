@@ -10,6 +10,8 @@ search:
         - kolumnrubrik
         - radrubrik
         - kolumntyper
+        - tnum
+        - tabulära nummer
 ---
 
 Den här sidan innehåller information om hur du sätter upp komponenten tabell i din applikation.
@@ -395,6 +397,22 @@ const rows = useDatasetRef<Row>([
 ## Tabulära nummer
 
 Om kolumnen presenterar numerisk data, bör egenskapen `tnum` sättas till `true` för att aktivera tabulära nummer.
+
+Med `tnum` blir det lättare att jämföra siffervärden i en kolumn.
+Som standard används `tnum` för texttyperna:
+
+- `text:bankAccountNumber`
+- `text:bankgiro`
+- `text:clearingNumber`
+- `text:currency`
+- `text:date`
+- `text:number`
+- `text:organisationsnummer`
+- `text:percent`
+- `text:personnummer`
+- `text:phoneNumber`
+- `text:plusgiro`
+- `text:postalCode`
 
 ```ts
 import { defineTableColumns } from "@fkui/vue";

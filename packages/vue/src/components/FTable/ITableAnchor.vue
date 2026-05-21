@@ -16,7 +16,7 @@ defineExpose(expose);
 
 <template>
     <td v-if="column.text(row)" class="table-ng__cell table-ng__cell--anchor" @keydown.space.prevent>
-        <a ref="target" class="anchor anchor--block" target="_blank" :href="column.href" tabindex="-1">
+        <a ref="target" class="anchor anchor--block" target="_blank" :href="column.href(row)" tabindex="-1">
             {{ column.text(row) }}
         </a>
     </td>

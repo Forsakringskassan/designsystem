@@ -1095,6 +1095,161 @@ describe("6 Expandable table", () => {
             cy.focused().press(Cypress.Keyboard.Keys.DOWN);
             table.cell({ row: 3, col: 3 }).should("have.focus");
         });
+
+        it("should scroll the target cell when it is clipped by a scroll container", () => {
+            interface Row {
+                text: string;
+            }
+
+            const rows = useDatasetRef<Row>([{ text: "A1" }]);
+
+            const columns = defineTableColumns<Row>([
+                { type: "text", header: "A", key: "text" },
+                { type: "text", header: "B", key: "text" },
+            ]);
+
+            cy.mount(() =>
+                h(
+                    "div",
+                    {
+                        style: {
+                            overflowX: "auto",
+                            width: "100px",
+                        },
+                    },
+                    [h(FTable<Row>, { rows: rows.value, columns })],
+                ),
+            );
+
+            cy.get("table")
+                .parent()
+                .then(($container) => {
+                    const container = $container[0] as HTMLElement;
+
+                    cy.stub(container, "getBoundingClientRect").returns({
+                        left: 0,
+                        right: 100,
+                        top: 0,
+                        bottom: 20,
+                        width: 100,
+                        height: 20,
+                        x: 0,
+                        y: 0,
+                        toJson: () => undefined,
+                    });
+
+                    Object.defineProperty(container, "clientWidth", {
+                        value: 100,
+                        configurable: true,
+                    });
+
+                    Object.defineProperty(container, "scrollWidth", {
+                        value: 200,
+                        configurable: true,
+                    });
+                });
+
+            cy.get("table").then(($table) => {
+                const { rows } = $table[0] as HTMLTableElement;
+                const firstCell = rows[1].cells[0];
+                const secondCell = rows[1].cells[1];
+
+                cy.stub(secondCell, "getBoundingClientRect").returns({
+                    left: 80,
+                    right: 180,
+                    top: 0,
+                    bottom: 20,
+                    width: 100,
+                    height: 20,
+                    x: 80,
+                    y: 0,
+                    json: () => undefined,
+                });
+
+                cy.stub(secondCell, "scrollIntoView").as("scrollIntoView");
+
+                cy.wrap(firstCell).focus();
+                cy.wrap(firstCell).should("have.focus");
+            });
+
+            cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+
+            cy.get("@scrollIntoView").should("have.been.calledWith", {
+                block: "nearest",
+                inline: "nearest",
+            });
+        });
+
+        it("should not scroll the target cell when it is already visible", () => {
+            interface Row {
+                text: string;
+            }
+
+            const rows = useDatasetRef<Row>([{ text: "A1" }]);
+
+            const columns = defineTableColumns<Row>([
+                { type: "text", header: "A", key: "text" },
+                { type: "text", header: "B", key: "text" },
+            ]);
+
+            cy.mount(() =>
+                h(
+                    "div",
+                    {
+                        style: {
+                            overflowX: "auto",
+                            width: "100px",
+                        },
+                    },
+                    [h(FTable<Row>, { rows: rows.value, columns })],
+                ),
+            );
+
+            cy.get("table")
+                .parent()
+                .then(($container) => {
+                    const container = $container[0] as HTMLElement;
+
+                    cy.stub(container, "getBoundingClientRect").returns({
+                        left: 0,
+                        right: 100,
+                        top: 0,
+                        bottom: 20,
+                        width: 100,
+                        height: 20,
+                        x: 0,
+                        y: 0,
+                        toJson: () => undefined,
+                    });
+                });
+
+            cy.get("table").then(($table) => {
+                const { rows } = $table[0] as HTMLTableElement;
+                const firstCell = rows[1].cells[0];
+                const secondCell = rows[1].cells[1];
+
+                cy.stub(secondCell, "getBoundingClientRect").returns({
+                    left: 10,
+                    right: 90,
+                    top: 0,
+                    bottom: 20,
+                    width: 100,
+                    height: 20,
+                    x: 0,
+                    y: 0,
+                    json: () => undefined,
+                });
+
+                cy.stub(secondCell, "scrollIntoView").as("scrollIntoView");
+
+                cy.wrap(firstCell).focus();
+                cy.wrap(firstCell).should("have.focus");
+            });
+
+            cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+
+            cy.get("@scrollIntoView").should("not.have.been.called");
+        });
     });
 
     describe("6.3 Collapse expanded row", () => {

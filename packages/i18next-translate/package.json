@@ -1,6 +1,6 @@
 {
   "name": "@fkui/i18next-translate",
-  "version": "6.46.0",
+  "version": "6.47.0",
   "description": "i18next translation provider for FKUI TranslationService",
   "keywords": [
     "fkui",
@@ -33,30 +33,29 @@
     "prebuild": "tsc",
     "build": "rollup --config",
     "postbuild": "fk-api-extractor",
-    "clean": "rimraf .jest-cache coverage dist temp test-results",
+    "clean": "rimraf coverage dist temp test-results",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
-    "test": "jest --coverage",
-    "unit": "jest",
-    "unit:watch": "jest --watch",
+    "test": "vitest run --coverage",
+    "unit": "vitest run",
+    "unit:watch": "vitest",
     "watch": "rollup --config --watch"
-  },
-  "jest": {
-    "preset": "@forsakringskassan/jest-config"
   },
   "dependencies": {
     "i18next": "26.2.0"
   },
   "devDependencies": {
-    "@fkui/logic": "6.46.0",
+    "@fkui/logic": "6.47.0",
+    "@forsakringskassan/vitest-config": "2.2.8",
     "@rollup/plugin-commonjs": "29.0.2",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
-    "rollup": "4.60.4"
+    "rollup": "4.60.4",
+    "vitest": "4.1.7"
   },
   "peerDependencies": {
-    "@fkui/logic": "^6.46.0"
+    "@fkui/logic": "^6.47.0"
   },
   "engines": {
     "node": "^22.16 || >= 24",

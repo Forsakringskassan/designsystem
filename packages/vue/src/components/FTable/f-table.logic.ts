@@ -187,6 +187,70 @@ export async function setDefaultCellTarget(
     return target;
 }
 
+function getHorizontalScrollParents(element: HTMLElement): HTMLElement[] {
+    const scrollParents: HTMLElement[] = [];
+    let parent = element.parentElement;
+
+    while (parent) {
+        const style = window.getComputedStyle(parent);
+
+        const canScrollHorizontally =
+            style.overflowX === "auto" || style.overflowX === "scroll";
+
+        if (canScrollHorizontally && parent.scrollWidth > parent.clientWidth) {
+            scrollParents.push(parent);
+        }
+
+        parent = parent.parentElement;
+    }
+
+    return scrollParents;
+}
+
+function scrollCellIntoView(cell: HTMLElement): void {
+    cell.scrollIntoView({
+        block: "nearest",
+        inline: "nearest",
+    });
+}
+
+function isHorizontallyVisibleWithinContainer(
+    element: HTMLElement,
+    container: HTMLElement,
+): boolean {
+    const elementRect = element.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+
+    return (
+        elementRect.left >= containerRect.left &&
+        elementRect.right <= containerRect.right
+    );
+}
+
+function isHorizontallyVisibleWithinViewport(element: HTMLElement): boolean {
+    const rect = element.getBoundingClientRect();
+
+    return rect.left >= 0 && rect.right <= window.innerWidth;
+}
+
+// Only scroll when the cell is clipped horizontally.
+// Checks the nearest scroll container and the viewport.
+function ensureCellVisible(cell: HTMLElement): void {
+    const isVisibleInScrollContainers = getHorizontalScrollParents(cell).every(
+        (scrollParent) =>
+            isHorizontallyVisibleWithinContainer(cell, scrollParent),
+    );
+
+    if (
+        isVisibleInScrollContainers &&
+        isHorizontallyVisibleWithinViewport(cell)
+    ) {
+        return;
+    }
+
+    scrollCellIntoView(cell);
+}
+
 /** @internal */
 export function maybeNavigateToCell(e: KeyboardEvent): void {
     let newCellTarget: HTMLElement = e.target as HTMLElement;
@@ -207,6 +271,7 @@ export function maybeNavigateToCell(e: KeyboardEvent): void {
     if (navigateTo) {
         newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
         activateCell(newCellTarget, { focus: true });
+        ensureCellVisible(newCellTarget);
     }
 }
 
