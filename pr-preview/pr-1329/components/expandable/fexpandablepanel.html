@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-3b7df9.json"
+            href="../../search-data-840fb6.json"
             as="fetch"
             crossorigin
-            integrity="sha384-VU8y9GtF1297ad0kSK1+HPdogAUHGA0SbeflrVf5cUXsOqCcYqm7QesTqHF2FLlU"
+            integrity="sha384-WJDitIFxAlU/7B57hCa6z8vXfGs23KqCvz41Y2nbEKXNJstPYvo2RucixVqrz3Fn"
             id="search-data"
         />
     </head>
@@ -1550,7 +1550,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/edb2d92abf72f3b3b68a6b625dc5e9d4972d3ad5/packages/vue/src/components/FExpandablePanel/FExpandablePanel.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/9d1251105f3d8e109824a9c12cbb439f94da831b/packages/vue/src/components/FExpandablePanel/FExpandablePanel.vue">
                 FExpandablePanel
             </a>
             
@@ -1588,10 +1588,10 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Använd en expanderbar panel för att gruppera information och formulärskomponenter. Med en expanderbar panel kan mängden information som visas vid en första anblick minskas.</p>
+                    <div id="content"><p class="docs-paragraph">Test för panel initialt öppen</p>
 
             <div
-                id="example-e60579"
+                id="example-46be05"
                 class="code-preview code-preview--default"
                 data-test="example"
                 
@@ -1600,13 +1600,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-7b93dd"></div>
+        <div id="example-c93f4d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FExpandablePanelExample-7b93dd.js"></script>
+        <script type="module" src="./FExpandablePanelOpenExample-c93f4d.js"></script>
     
                 </div>
                 <div>
@@ -1630,17 +1630,19 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FExpandablePanel</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> <span class="hljs-title class_">FLayoutApplicationTemplate</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../FLayoutApplicationTemplate/FLayoutApplicationTemplate.vue&quot;</span>;
-<span class="hljs-keyword">import</span> <span class="hljs-title class_">FLayoutRightPanel</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../FLayoutRightPanel/FLayoutRightPanel.vue&quot;</span>;
-<span class="hljs-keyword">import</span> <span class="hljs-title class_">FTextareaField</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../FTextareaField/FTextareaField.vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FExpandablePanel</span>,
+    <span class="hljs-title class_">FLayoutApplicationTemplate</span>,
+    <span class="hljs-title class_">FLayoutRightPanel</span>,
+    <span class="hljs-title class_">FTextareaField</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FExpandablePanelExample&quot;</span>,
     <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FExpandablePanel</span>, <span class="hljs-title class_">FLayoutApplicationTemplate</span>, <span class="hljs-title class_">FLayoutRightPanel</span>, <span class="hljs-title class_">FTextareaField</span> },
     <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
         <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">expanded</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">expanded</span>: <span class="hljs-literal">true</span>,
             <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span>,
             <span class="hljs-attr">about</span>: <span class="hljs-string">&quot;&quot;</span>,
         };
@@ -1683,6 +1685,81 @@
 </code></pre>
                 </div>
             </div>
+        <p class="docs-paragraph">Använd en expanderbar panel för att gruppera information och formulärskomponenter. Med en expanderbar panel kan mängden information som visas vid en första anblick minskas.</p>
+
+            <div
+                id="example-b909ac"
+                class="code-preview code-preview--default"
+                data-test="example"
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-098e06"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FExpandablePanelExample-098e06.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="code-preview__button code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FExpandablePanel</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FExpandablePanelExample&quot;</span>,
+    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FExpandablePanel</span> },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">expanded</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span>,
+        };
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">onToggle</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">expanded</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">expanded</span>;
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-expandable-panel</span> <span class="hljs-attr">:expanded</span> @<span class="hljs-attr">toggle</span>=<span class="hljs-string">&quot;onToggle&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">title</span>&gt;</span> Titel <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+            Innehåll
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;anchor&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span>&gt;</span> Länk till annan sida <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-expandable-panel</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
         <p class="docs-paragraph">En expanderbar panel består av 3 ytor (slots):</p>
 <ul>
 <li>Title: panelens rubrik.</li>
@@ -1692,7 +1769,7 @@
 <p class="docs-paragraph">En expanderbar panel ger möjlighet att uppmärksamma användare på förändringar eller händelser.</p>
 
             <div
-                id="example-e49b57"
+                id="example-a33e40"
                 class="code-preview code-preview--default"
                 data-test="notification-example"
                 
@@ -1701,13 +1778,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-ef840a"></div>
+        <div id="example-09fa94"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FExpandablePanelNotificationExample-ef840a.js"></script>
+        <script type="module" src="./FExpandablePanelNotificationExample-09fa94.js"></script>
     
                 </div>
                 <div>
@@ -1772,7 +1849,7 @@
         <p class="docs-paragraph">En expanderbar panel kan visa relaterat innehåll under den panelen när den är öppen.</p>
 
             <div
-                id="example-1d6680"
+                id="example-b04277"
                 class="code-preview code-preview--default"
                 data-test="related-example"
                 
@@ -1781,13 +1858,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-39e5d5"></div>
+        <div id="example-47ea1f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FExpandablePanelRelatedExample-39e5d5.js"></script>
+        <script type="module" src="./FExpandablePanelRelatedExample-47ea1f.js"></script>
     
                 </div>
                 <div>
@@ -2102,9 +2179,9 @@ Use <code>%VALUE%</code> as a placeholder for the number of notifications.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">buggfix/FExpandblePanel-transition (<a href="https://github.com/Forsakringskassan/designsystem/commits/edb2d92abf72f3b3b68a6b625dc5e9d4972d3ad5">edb2d92</a>)<br />
+<div class="footer__right"><div class="version">buggfix/FExpandblePanel-transition (<a href="https://github.com/Forsakringskassan/designsystem/commits/9d1251105f3d8e109824a9c12cbb439f94da831b">9d12511</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1329">PR 1329</a><br />
-        2026-05-21 05:38
+        2026-05-21 06:06
 </div>
 <div class="toolbar__item">
     <form id="version">
