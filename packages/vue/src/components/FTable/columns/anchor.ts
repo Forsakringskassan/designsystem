@@ -19,7 +19,7 @@ export interface TableColumnAnchor<
     /** Link text */
     text(this: void, row: T): string | null;
     /** Link destination */
-    href: string;
+    href: string | ((this: void, row: T) => string);
 }
 
 /**
@@ -30,12 +30,12 @@ export interface NormalizedTableColumnAnchor<
     K,
 > extends NormalizedTableColumnBase<K> {
     readonly type: "anchor";
-    readonly href: string;
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnAnchor<T, K>;
     }>;
     text(this: void, row: T): string | null;
+    href(this: void, row: T): string;
 }
 
 /**
@@ -47,6 +47,9 @@ export function normalizeAnchorColumn<T, K extends keyof T>(
     return {
         type: "anchor",
         text: getValueFn(column.text, column.key, String, ""),
-        href: column.href,
+        href:
+            typeof column.href === "function"
+                ? column.href
+                : () => String(column.href),
     };
 }
