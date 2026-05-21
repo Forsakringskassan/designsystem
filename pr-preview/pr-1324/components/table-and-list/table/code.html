@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-1c91f8.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-2e85fe.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-e940ad.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-65a3bc.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../../assets/vendor-fkui-logic-1c91f8.js": "sha384-mp6SG2Ww/cIPEYqg6jTjq3eURsh8UQxZGJRozRrFoQ1j2wT8ROPkhVKXVxnzIFmM",
     "../../../assets/vendor-fkui-date-2e85fe.js": "sha384-xrA9fPmAfTE2H1Zd/5Wd5Z6B+FXD2kEosKe6kfxFdmxr3cznPQZ6Ie3/tSlITmyJ",
-    "../../../assets/vendor-fkui-vue-e940ad.js": "sha384-AVTzkDkYSxkdOKxADe8jMRbEcAWM4IozR0LTcziYpZeQ01LQxNDONOYe5kW5xKib",
+    "../../../assets/vendor-fkui-vue-65a3bc.js": "sha384-MtWU/yzp7uOIZoUwWiixvUQkY0LwVcIGt3CMNnx36dtvRybIigCc8lgn+YWH0oMM",
     "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-2717a5.json"
+            href="../../../search-data-0028c8.json"
             as="fetch"
             crossorigin
-            integrity="sha384-UnqPf6DhCNOtxvISyeRc1pAfAfMfwaE6vhnzt5WwBJBwpu8eClENrZaqVHUdqQuC"
+            integrity="sha384-hC9pv5TkiKTcY8xsEmp1wb38grYI1XK1lyt4+zQ+ltwwLTctgOhRlC2OruLMkz7U"
             id="search-data"
         />
     </head>
@@ -2092,9 +2092,25 @@ Det finns flera olika typer av kolumner.
                     </div>
                 </div>
             <h2 id="tabulara_nummer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabulara_nummer">Tabulära nummer</a></h2><p class="docs-paragraph">Om kolumnen presenterar numerisk data, bör egenskapen <code>tnum</code> sättas till <code>true</code> för att aktivera tabulära nummer.</p>
+<p class="docs-paragraph">Med <code>tnum</code> blir det lättare att jämföra siffervärden i en kolumn.
+Som standard används <code>tnum</code> för texttyperna:</p>
+<ul>
+<li><code>text:bankAccountNumber</code></li>
+<li><code>text:bankgiro</code></li>
+<li><code>text:clearingNumber</code></li>
+<li><code>text:currency</code></li>
+<li><code>text:date</code></li>
+<li><code>text:number</code></li>
+<li><code>text:organisationsnummer</code></li>
+<li><code>text:percent</code></li>
+<li><code>text:personnummer</code></li>
+<li><code>text:phoneNumber</code></li>
+<li><code>text:plusgiro</code></li>
+<li><code>text:postalCode</code></li>
+</ul>
 
                 <div
-                    id="example-ff056c"
+                    id="example-d26a3b"
                     class="code-preview code-preview--default"
                     
                     
@@ -2111,7 +2127,7 @@ Det finns flera olika typer av kolumner.
                 </div>
             
                 <div
-                    id="example-b74620"
+                    id="example-8fa6d6"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2135,7 +2151,7 @@ Det finns flera olika typer av kolumner.
 <h2 id="framhava_rader" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#framhava_rader">Framhäva rader</a></h2><p class="docs-paragraph">För att få zebrarandig tabell använd propen <code>striped</code>.</p>
 
                 <div
-                    id="example-50b0b9"
+                    id="example-1947c9"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2147,7 +2163,7 @@ Det finns flera olika typer av kolumner.
                 </div>
             
                 <div
-                    id="example-989c9e"
+                    id="example-52180c"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2170,7 +2186,7 @@ Det finns flera olika typer av kolumner.
 Funktionen tar emot raden och kan returnera <code>string</code>, <code>string[]</code> eller ett objekt med klassnamn.</p>
 
                 <div
-                    id="example-1deb1e"
+                    id="example-45506a"
                     class="code-preview code-preview--default"
                     
                     
@@ -2184,7 +2200,7 @@ Funktionen tar emot raden och kan returnera <code>string</code>, <code>string[]<
                 </div>
             
                 <div
-                    id="example-32fa3d"
+                    id="example-64058c"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2199,7 +2215,7 @@ Funktionen tar emot raden och kan returnera <code>string</code>, <code>string[]<
 Som standard visas textnyckeln <code>fkui.ftable.empty.text</code>, se <a href="#textnycklar">Textnycklar</a>.</p>
 
                 <div
-                    id="example-2208dd"
+                    id="example-003dc2"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2213,7 +2229,7 @@ Som standard visas textnyckeln <code>fkui.ftable.empty.text</code>, se <a href="
                 </div>
             
                 <div
-                    id="example-57fce0"
+                    id="example-4f53ad"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2237,7 +2253,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
 <p class="docs-paragraph">Om tabellen har en rubrik (heading) i nära anslutning som också förklarar tabellens innebörd assoccierar du den med <code>aria-labelledby</code>.</p>
 
                 <div
-                    id="example-8c122e"
+                    id="example-92e329"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2251,7 +2267,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             <p class="docs-paragraph">Använd caption om tabellen inte har en naturlig rubrik.</p>
 
                 <div
-                    id="example-2aed2f"
+                    id="example-fa2a9a"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2266,7 +2282,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             <p class="docs-paragraph">I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla.</p>
 
                 <div
-                    id="example-f3977a"
+                    id="example-c1e68b"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2283,7 +2299,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             <h2 id="felhantering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#felhantering">Felhantering</a></h2><p class="docs-paragraph">Om ett fel uppstår vid hämtning av tabellens data kan du se till att ett felmeddelande visas med hjälp av <code>#empty</code>-sloten.</p>
 
                 <div
-                    id="example-d00252"
+                    id="example-d995a0"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2576,9 +2592,9 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">SFKUI-7860-tnum-readonly-fix (<a href="https://github.com/Forsakringskassan/designsystem/commits/4ffb4c1793ff6a364ddba2e319c1824d4e248b14">4ffb4c1</a>)<br />
+<div class="footer__right"><div class="version">SFKUI-7860-tnum-readonly-fix (<a href="https://github.com/Forsakringskassan/designsystem/commits/b5bb91fb7ee021901689eec999b628661e2cb6b5">b5bb91f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1324">PR 1324</a><br />
-        2026-05-20 10:57
+        2026-05-21 08:04
 </div>
 <div class="toolbar__item">
     <form id="version">
