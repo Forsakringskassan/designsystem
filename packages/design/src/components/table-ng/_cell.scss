@@ -42,6 +42,11 @@ $cell-border-width: 1px;
         input {
             text-align: left;
         }
+
+        .table-ng__cell--static__text {
+            justify-content: flex-start;
+            text-align: left;
+        }
     }
 
     &--align-right {
@@ -49,6 +54,11 @@ $cell-border-width: 1px;
 
         span,
         input {
+            text-align: right;
+        }
+
+        .table-ng__cell--static__text {
+            justify-content: flex-end;
             text-align: right;
         }
     }
