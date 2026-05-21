@@ -1,6 +1,6 @@
 {
   "name": "@fkui/theme-builder",
-  "version": "6.46.0",
+  "version": "6.47.0",
   "description": "Build script for FKUI theme",
   "keywords": [
     "fkui",
@@ -54,7 +54,7 @@
     "postcss": "^8.0.0"
   },
   "engines": {
-    "node": ">= 22.12",
+    "node": "^22.16 || >= 24",
     "npm": ">= 7"
   },
   "externalDependencies": [

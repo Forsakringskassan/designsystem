@@ -1,6 +1,6 @@
 {
   "name": "@fkui/date",
-  "version": "6.46.0",
+  "version": "6.47.0",
   "description": "Date",
   "keywords": [
     "fkui",
@@ -34,33 +34,29 @@
     "build": "rollup --config",
     "postbuild": "fk-api-extractor",
     "build:docs": "typedoc",
-    "clean": "rimraf .jest-cache coverage lib temp test-results typedoc",
+    "clean": "rimraf coverage lib temp test-results typedoc",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
     "start": "npm run build:docs && fkui-serve typedoc",
-    "test": "jest --coverage",
-    "unit": "jest",
-    "unit:watch": "jest --watch",
+    "test": "vitest run --coverage",
+    "unit": "vitest run",
+    "unit:watch": "vitest",
     "watch": "rollup --config --watch"
-  },
-  "jest": {
-    "preset": "@forsakringskassan/jest-config",
-    "setupFiles": [
-      "<rootDir>/src/dayjs-setup.ts"
-    ]
   },
   "dependencies": {
     "dayjs": "1.11.20"
   },
   "devDependencies": {
+    "@forsakringskassan/vitest-config": "2.2.8",
     "@rollup/plugin-commonjs": "29.0.2",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
-    "rollup": "4.60.4"
+    "rollup": "4.60.4",
+    "vitest": "4.1.7"
   },
   "engines": {
-    "node": ">= 20",
+    "node": "^22.16 || >= 24",
     "npm": ">= 7"
   }
 }

@@ -1,4 +1,4 @@
-import { type DefineComponent, defineComponent, provide } from "vue";
+import { type DefineComponent, defineComponent, h, provide } from "vue";
 import { ValidationService } from "@fkui/logic";
 import { FTextField } from "../../components";
 import { FTextFieldPageObject } from "../../cypress";
@@ -162,5 +162,31 @@ describe("PopupError", () => {
         cy.get(".popup-error").should("be.visible");
         textfield.input().blur();
         cy.get(".popup-error").should("not.exist");
+    });
+
+    it("should have correct position after scrolling container horizontally when open", () => {
+        const component = h(
+            "div",
+            {
+                id: "scroll-box",
+                style: "width: 300px; overflow: scroll",
+            },
+            h(
+                createComponent({
+                    caption: "PopupError below the input field",
+                    styleDiv: "height: 380px; width: 500px;",
+                    styleTh1: "width: 25%",
+                    styleTh2: "width: 50%",
+                    styleTh3: "width: 25%",
+                }),
+            ),
+        );
+
+        cy.mount(() => component);
+        triggerPopupError(textfield);
+        cy.get("#scroll-box").scrollTo(200);
+
+        // Wait until debounce finished.
+        cy.toMatchScreenshot({ baseDelay: 3000 });
     });
 });

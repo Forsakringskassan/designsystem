@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from "vitest";
 import {
     type I18nextProvider,
     type NestedStringRecord,
@@ -22,7 +23,7 @@ describe("currentLanguage", () => {
 describe("changeLanguage()", () => {
     it("should call user provided callback", async () => {
         expect.assertions(3);
-        const spy = jest.fn().mockReturnValue({});
+        const spy = vi.fn().mockReturnValue({});
         const provider = await i18nextProvider({
             defaultLanguage: "en",
             loadLanguage: spy,

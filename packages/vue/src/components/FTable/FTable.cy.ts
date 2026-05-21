@@ -4,6 +4,7 @@ import { FTablePageObject } from "../../cypress";
 import { useDatasetRef } from "../../utils";
 import { FValidationForm } from "../FValidationForm";
 import FTable from "./FTable.vue";
+import FTableSortFilterExample from "./cy/examples/FTableSortFilterExample.vue";
 import FTableTabstopExample from "./examples/FTableTabstopExample.vue";
 import { defineTableColumns } from "./table-column";
 
@@ -2574,5 +2575,21 @@ describe("columns", () => {
         table.header(1).should("contain.text", "bar");
         cy.get("button").click();
         table.header(1).should("contain.text", "foo");
+    });
+
+    describe("Sorting icon forced colors", () => {
+        afterEach(() => {
+            cy.forcedColors("none");
+        });
+
+        for (const mode of Object.values(forcedColorModes)) {
+            it(`should show active sort icon in forced colors mode ${mode} (visual)`, () => {
+                cy.forcedColors(mode);
+
+                cy.mount(FTableSortFilterExample);
+
+                cy.get("table thead th").eq(1).toMatchScreenshot();
+            });
+        }
     });
 });

@@ -1,6 +1,6 @@
 {
   "name": "@fkui/icon-lib-builder",
-  "version": "6.46.0",
+  "version": "6.47.0",
   "description": "Icon library builder",
   "keywords": [
     "fkui",
@@ -38,7 +38,7 @@
     "svgo": "4.0.1"
   },
   "engines": {
-    "node": ">= 20.11",
+    "node": "^22.16 || >= 24",
     "npm": ">= 7"
   }
 }

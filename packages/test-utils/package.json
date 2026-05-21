@@ -1,6 +1,6 @@
 {
   "name": "@fkui/test-utils",
-  "version": "6.46.0",
+  "version": "6.47.0",
   "description": "FKUI test utils for Jest",
   "keywords": [
     "fkui",
@@ -82,7 +82,7 @@
     }
   },
   "engines": {
-    "node": ">= 20",
+    "node": "^22.16 || >= 24",
     "npm": ">= 7"
   }
 }

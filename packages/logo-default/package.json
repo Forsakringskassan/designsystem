@@ -1,6 +1,6 @@
 {
   "name": "@fkui/logo-default",
-  "version": "6.46.0",
+  "version": "6.47.0",
   "description": "Försäkringskassan logotyper",
   "keywords": [
     "fkui",
@@ -36,7 +36,7 @@
     "sass": "1.99.0"
   },
   "engines": {
-    "node": ">= 20",
+    "node": "^22.16 || >= 24",
     "npm": ">= 7"
   },
   "sass": "./src/f-logo.scss"

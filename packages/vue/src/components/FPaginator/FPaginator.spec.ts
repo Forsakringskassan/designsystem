@@ -16,7 +16,7 @@ describe("page counter", () => {
         "should display correct texts for page $currentPage of $numberOfPages",
         ({ currentPage, numberOfPages, expectedText, expectedAriaText }) => {
             const wrapper = mount(FPaginator, {
-                attrs: {
+                props: {
                     currentPage,
                     numberOfPages,
                 },
@@ -48,7 +48,7 @@ describe("aria-current", () => {
         'should have value "$expectedValue" for page button $page when current page is page $currentPage',
         ({ page, currentPage, expectedValue }) => {
             const wrapper = mount(FPaginator, {
-                attrs: {
+                props: {
                     currentPage,
                     numberOfPages: 3,
                 },
@@ -66,7 +66,7 @@ describe("previous button", () => {
 
     beforeAll(() => {
         const wrapper = mount(FPaginator, {
-            attrs: {
+            props: {
                 currentPage: 1,
                 numberOfPages: 10,
             },
@@ -88,7 +88,7 @@ describe("next button", () => {
 
     beforeAll(() => {
         const wrapper = mount(FPaginator, {
-            attrs: {
+            props: {
                 currentPage: 1,
                 numberOfPages: 10,
             },
@@ -111,7 +111,7 @@ describe("page buttons", () => {
 
     beforeAll(() => {
         wrapper = mount(FPaginator, {
-            attrs: {
+            props: {
                 currentPage: 1,
                 numberOfPages,
             },
@@ -138,7 +138,7 @@ describe("page buttons", () => {
 describe("number of pages to show", () => {
     it("should show 9 pages as default", () => {
         const wrapper = mount(FPaginator, {
-            attrs: {
+            props: {
                 currentPage: 10,
                 numberOfPages: 20,
             },
@@ -151,7 +151,7 @@ describe("number of pages to show", () => {
 describe("pages and gaps", () => {
     it("should show the correct pages and gaps", () => {
         const wrapper = mount(FPaginator, {
-            attrs: {
+            props: {
                 currentPage: 10,
                 numberOfPages: 20,
             },
@@ -179,17 +179,54 @@ describe("pages and gaps", () => {
 });
 
 describe("events", () => {
-    it.todo(
-        "should emit event 'paginateDataset:previous' when clicking on 'Previous' button",
-    );
+    it("should emit event 'paginateDataset:previous' when clicking on 'Previous' button", async () => {
+        const listener = jest.fn();
+        const wrapper = mount(FPaginator, {
+            props: {
+                currentPage: 2,
+                numberOfPages: 5,
+            },
+        });
+        wrapper.element.addEventListener("paginateDataset:previous", listener);
 
-    it.todo(
-        "should emit event 'paginateDataset:next' when clicking on 'Next' button",
-    );
+        await wrapper.get(paginator.previousPageButton()).trigger("click");
 
-    it.todo(
-        "should emit event 'paginateDataset:page' when clicking on a page button",
-    );
+        expect(listener).toHaveBeenCalledTimes(1);
+    });
+
+    it("should emit event 'paginateDataset:next' when clicking on 'Next' button", async () => {
+        const listener = jest.fn();
+        const wrapper = mount(FPaginator, {
+            props: {
+                currentPage: 2,
+                numberOfPages: 5,
+            },
+        });
+        wrapper.element.addEventListener("paginateDataset:next", listener);
+
+        await wrapper.get(paginator.nextPageButton()).trigger("click");
+
+        expect(listener).toHaveBeenCalledTimes(1);
+    });
+
+    it("should emit event 'paginateDataset:page' when clicking on a page button", async () => {
+        const listener = jest.fn();
+        const wrapper = mount(FPaginator, {
+            props: {
+                currentPage: 2,
+                numberOfPages: 5,
+            },
+        });
+        wrapper.element.addEventListener("paginateDataset:page", listener);
+
+        await wrapper.get(paginator.pageButtonByText(3)).trigger("click");
+
+        expect(listener).toHaveBeenCalledTimes(1);
+        const event = listener.mock.calls[0][0] as CustomEvent<{
+            page: number;
+        }>;
+        expect(event.detail).toEqual({ page: 3 });
+    });
 });
 
 describe("v-model", () => {

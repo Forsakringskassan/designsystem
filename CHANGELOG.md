@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 6.47.0 (2026-05-20)
+
+### Features
+
+* **deps:** require nodejs v22 or later (refs SFKUI-6500) fa880ae
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** show table sort icons in forced colors mode (fixes SFKUI-7801) 65955c4
+* **@fkui/design:** add background color for empty table (fixes SFKUI-7859) e6dbebc
+* **@fkui/vue:** preserve tabstop column after row removal (fixes SFKUI-7799) ([#1298](undefined/Forsakringskassan/designsystem/issues/1298)) 6323910
+* **@fkui/vue:** reposition popup error at scroll (refs SFKUI-7609) 9301d98
+* **deps:** update dependency i18next to v26.1.0 7317450
+* **deps:** update dependency i18next to v26.2.0 587b25b
+
 ## 6.46.0 (2026-05-13)
 
 ### Features

@@ -7,7 +7,7 @@ const result = await esbuild.build({
     bundle: true,
     format: "esm",
     platform: "node",
-    target: "node20",
+    target: "node22",
     sourcemap: false,
     logLevel: "info",
     metafile: true,
