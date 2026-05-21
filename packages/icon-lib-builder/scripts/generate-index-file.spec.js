@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { generateIndexFile } from "./generate-index-file";
 
 it("should generate index.js file", () => {
