@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-c3f9e0.json"
+            href="../../search-data-043f95.json"
             as="fetch"
             crossorigin
-            integrity="sha384-7Tn03k1pQtCi353iDs4azoDo9c6hsNCTjYdEFV/hugDBGhY0zk4AKfHS/MXAUKjq"
+            integrity="sha384-9J8uxKU3ik4tBxCULncDfvAE24XIp1DwNvLYgfTQtsUct2J4tldj2aU340GHLaqK"
             id="search-data"
         />
     </head>
@@ -1550,7 +1550,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/18d3011b3b18096e12668270ae4d0cb8018dc1b4/packages/vue/src/components/FExpandablePanel/FExpandablePanel.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/7fb6e95f5b3c82d724cbdbdde693d9db723c8914/packages/vue/src/components/FExpandablePanel/FExpandablePanel.vue">
                 FExpandablePanel
             </a>
             
@@ -1600,13 +1600,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-a027a8"></div>
+        <div id="example-b47fb1"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FExpandablePanelOpenExample-a027a8.js"></script>
+        <script type="module" src="./FExpandablePanelOpenExample-b47fb1.js"></script>
     
                 </div>
                 <div>
@@ -1628,7 +1628,7 @@
                     hidden
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent, ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">FExpandablePanel</span>,
@@ -1637,28 +1637,13 @@
     <span class="hljs-title class_">FTextareaField</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FExpandablePanelExample&quot;</span>,
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FExpandablePanel</span>, <span class="hljs-title class_">FLayoutApplicationTemplate</span>, <span class="hljs-title class_">FLayoutRightPanel</span>, <span class="hljs-title class_">FTextareaField</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">expanded</span>: <span class="hljs-title function_">ref</span>(<span class="hljs-literal">true</span>),
-            <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span>,
-            <span class="hljs-attr">about</span>: <span class="hljs-string">&quot;&quot;</span>,
-            <span class="hljs-attr">isReady</span>: <span class="hljs-title function_">ref</span>(<span class="hljs-literal">false</span>),
-        };
-    },
-    <span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">isReady</span> = <span class="hljs-literal">true</span>;
-        }, <span class="hljs-number">3000</span>);
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">togglePanelOne</span>(<span class="hljs-params"></span>) {
-            <span class="hljs-variable language_">this</span>.<span class="hljs-property">expanded</span> = !<span class="hljs-variable language_">this</span>.<span class="hljs-property">expanded</span>;
-        },
-    },
-});
+<span class="hljs-keyword">const</span> expanded = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">true</span>);
+<span class="hljs-keyword">const</span> about = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&quot;&quot;</span>);
+<span class="hljs-keyword">const</span> isReady = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">false</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">togglePanelOne</span>(<span class="hljs-params"></span>) {
+    expanded.<span class="hljs-property">value</span> = !expanded.<span class="hljs-property">value</span>;
+}
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
@@ -1703,13 +1688,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-fd532c"></div>
+        <div id="example-098e06"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FExpandablePanelExample-fd532c.js"></script>
+        <script type="module" src="./FExpandablePanelExample-098e06.js"></script>
     
                 </div>
                 <div>
@@ -1784,13 +1769,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-bce96f"></div>
+        <div id="example-09fa94"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FExpandablePanelNotificationExample-bce96f.js"></script>
+        <script type="module" src="./FExpandablePanelNotificationExample-09fa94.js"></script>
     
                 </div>
                 <div>
@@ -1864,13 +1849,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-caad24"></div>
+        <div id="example-47ea1f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FExpandablePanelRelatedExample-caad24.js"></script>
+        <script type="module" src="./FExpandablePanelRelatedExample-47ea1f.js"></script>
     
                 </div>
                 <div>
@@ -2185,9 +2170,9 @@ Use <code>%VALUE%</code> as a placeholder for the number of notifications.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">buggfix/FExpandblePanel-transition (<a href="https://github.com/Forsakringskassan/designsystem/commits/18d3011b3b18096e12668270ae4d0cb8018dc1b4">18d3011</a>)<br />
+<div class="footer__right"><div class="version">buggfix/FExpandblePanel-transition (<a href="https://github.com/Forsakringskassan/designsystem/commits/7fb6e95f5b3c82d724cbdbdde693d9db723c8914">7fb6e95</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1329">PR 1329</a><br />
-        2026-05-21 07:18
+        2026-05-21 07:32
 </div>
 <div class="toolbar__item">
     <form id="version">
