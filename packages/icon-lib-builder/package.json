@@ -27,15 +27,16 @@
     "!scripts/**/*.spec.js"
   ],
   "scripts": {
-    "test": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js"
-  },
-  "jest": {
-    "preset": "@forsakringskassan/jest-config"
+    "test": "vitest run --coverage"
   },
   "dependencies": {
     "glob": "13.0.6",
     "sass": "1.99.0",
     "svgo": "4.0.1"
+  },
+  "devDependencies": {
+    "@forsakringskassan/vitest-config": "2.2.8",
+    "vitest": "4.1.7"
   },
   "engines": {
     "node": "^22.16 || >= 24",
