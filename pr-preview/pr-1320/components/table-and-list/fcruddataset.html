@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../search-data-87eda5.json"
+            href="../../search-data-b7def4.json"
             as="fetch"
             crossorigin
-            integrity="sha384-eplqmL7UCBCeBCVFEJdLDDZ2NdTibemcemI2NuUi8x9PIklJH6V/hFFnllMIm/gS"
+            integrity="sha384-Eio0la0j6ZQZAIqOeg+6GftL0GtEusGvk+X7aSBTNm7DobMM0m14dXqW5fSYTW8H"
             id="search-data"
         />
     </head>
@@ -1550,7 +1550,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/2de92cdf5a198a0d6f02d10029b06d2e00bdbe88/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8e7efef73b1cef5929311d309afe68377f2beda1/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
@@ -1626,13 +1626,13 @@ som tydligör vad som läggs till.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-f98409"></div>
+        <div id="example-0e6d6c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableExample-f98409.js"></script>
+        <script type="module" src="./FCrudDatasetTableExample-0e6d6c.js"></script>
     
                 </div>
                 <div>
@@ -1656,6 +1656,7 @@ som tydligör vad som läggs till.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">FCrudDataset</span>,
     <span class="hljs-title class_">FInteractiveTable</span>,
@@ -1664,7 +1665,6 @@ som tydligör vad som läggs till.</p>
     <span class="hljs-title class_">FTextField</span>,
     <span class="hljs-title class_">FTextareaField</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">components</span>: {
@@ -1858,13 +1858,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-d0bf3b"></div>
+        <div id="example-f45e51"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableCreateExample-d0bf3b.js"></script>
+        <script type="module" src="./FCrudDatasetTableCreateExample-f45e51.js"></script>
     
                 </div>
                 <div>
@@ -1888,8 +1888,8 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FDataTable</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FTextareaField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FDataTable</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FTextareaField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">components</span>: {
@@ -1972,13 +1972,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-a4e792"></div>
+        <div id="example-aa2f77"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableUpdateExample-a4e792.js"></script>
+        <script type="module" src="./FCrudDatasetTableUpdateExample-aa2f77.js"></script>
     
                 </div>
                 <div>
@@ -2002,8 +2002,8 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableButton</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableButton</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ExampleApp&quot;</span>,
@@ -2075,13 +2075,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-2d6d76"></div>
+        <div id="example-1a3e24"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetListExample-2d6d76.js"></script>
+        <script type="module" src="./FCrudDatasetListExample-1a3e24.js"></script>
     
                 </div>
                 <div>
@@ -2105,8 +2105,8 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FList</span>, <span class="hljs-title class_">FStaticField</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FTextareaField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FList</span>, <span class="hljs-title class_">FStaticField</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FTextareaField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">components</span>: {
@@ -2253,13 +2253,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-8628d2"></div>
+        <div id="example-651e62"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetSortListExample-8628d2.js"></script>
+        <script type="module" src="./FCrudDatasetSortListExample-651e62.js"></script>
     
                 </div>
                 <div>
@@ -2283,6 +2283,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">FButton</span>,
     <span class="hljs-title class_">FCrudDataset</span>,
@@ -2292,7 +2293,6 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
     <span class="hljs-title class_">FTextField</span>,
     <span class="hljs-title class_">FTextareaField</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">components</span>: {
@@ -2449,13 +2449,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-d7d9d0"></div>
+        <div id="example-43ae90"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetCustomTextExample-d7d9d0.js"></script>
+        <script type="module" src="./FCrudDatasetCustomTextExample-43ae90.js"></script>
     
                 </div>
                 <div>
@@ -2479,8 +2479,8 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FList</span>, <span class="hljs-title class_">FStaticField</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FTextareaField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FList</span>, <span class="hljs-title class_">FStaticField</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FTextareaField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ExampleApp&quot;</span>,
@@ -3336,9 +3336,9 @@ Läs mer om att <a href="../../gettingstarted/migration/migrating-crud-button.ht
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/eslint-config-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/2de92cdf5a198a0d6f02d10029b06d2e00bdbe88">2de92cd</a>)<br />
+<div class="footer__right"><div class="version">renovate/eslint-config-monorepo (<a href="https://github.com/Forsakringskassan/designsystem/commits/8e7efef73b1cef5929311d309afe68377f2beda1">8e7efef</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1320">PR 1320</a><br />
-        2026-05-21 10:54
+        2026-05-21 11:41
 </div>
 <div class="toolbar__item">
     <form id="version">
