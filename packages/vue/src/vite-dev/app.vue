@@ -2,7 +2,17 @@
 import { ref } from "vue";
 import { FTextField } from "../components";
 
-const namn = ref("World");
+const modelValue = ref("");
+
+const value = ref("");
+
+const opts: string[] = ["Godzilla Hårddisksson", "Chris de Kök", "Tord Yvel", "Festis Saftsson"];
+
+function doSomething(): void {
+    if (modelValue.value !== "") {
+        value.value = `klickat på värde ${modelValue.value}!`;
+    }
+}
 </script>
 
 <template>
@@ -31,7 +41,23 @@ const namn = ref("World");
 
         <h2>Sandbox</h2>
 
-        <f-text-field v-model="namn" v-validation.required maxlength="100"> Namn </f-text-field>
-        <pre>Hello {{ namn }}!</pre>
+        <!-- <f-text-field
+            v-model="namn"
+            v-validation.required
+            maxlength="100"
+            :options="opts"
+            :select-option="doSomething()"
+        >
+            Namn
+        </f-text-field> -->
+        <f-text-field
+            v-model="modelValue"
+            class="inputs"
+            maxlength="100"
+            :options="opts"
+            :select-option="doSomething()"
+        >
+        </f-text-field>
+        <pre><code>{{ JSON.stringify({value}) }}</code></pre>
     </div>
 </template>

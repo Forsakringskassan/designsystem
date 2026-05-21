@@ -21,3 +21,26 @@ export function enterTransition(element: Element): number {
     });
     return newHeight;
 }
+
+// export function enterTransition(element: Element): Promise<number> {
+//     return new Promise((resolve) => {
+//         const htmlElement = getHTMLElementFromVueRef(element);
+//         Object.assign(htmlElement.style, initialStyle);
+//         Object.assign(htmlElement.style, hiddenStyle);
+//         htmlElement.style.width = getComputedStyle(element).width;
+//         const height = getComputedStyle(element).height;
+//         Object.assign(htmlElement.style, visibleStyle);
+
+//         // Force redraw
+//         /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, there should be a better way */
+//         getComputedStyle(element).height;
+
+//         setTimeout(() => {
+//             const newHeight = Number.parseInt(height, 10);
+//             htmlElement.style.height = height;
+
+//             // Skicka tillbaka värdet via resolve
+//             resolve(newHeight);
+//         });
+//     });
+// }
