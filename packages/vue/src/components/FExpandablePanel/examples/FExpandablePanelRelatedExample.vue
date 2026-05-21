@@ -9,7 +9,6 @@ export default defineComponent({
     data() {
         return {
             expanded: false,
-            type: Boolean,
         };
     },
     methods: {

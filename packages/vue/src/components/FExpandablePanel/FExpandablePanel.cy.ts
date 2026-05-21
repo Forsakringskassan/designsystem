@@ -14,7 +14,6 @@ function createComponent(template: string): DefineComponent {
         data() {
             return {
                 expanded: false,
-                type: Boolean,
             };
         },
         methods: {
@@ -26,6 +25,7 @@ function createComponent(template: string): DefineComponent {
 }
 
 describe("FExpandablePanel", () => {
+    const panel = new FExpandablePanelPageObject(".expandable-panel__body");
     const panelWithNotification = new FExpandablePanelPageObject(
         "[data-test=notification-example]",
     );
@@ -126,5 +126,73 @@ describe("FExpandablePanel", () => {
             cy.mount(DensityComponent);
             cy.toMatchScreenshot();
         });
+    });
+
+    it("should handle initial collapsed", () => {
+        const TestComponent = defineComponent({
+            components: { FExpandablePanel },
+            data() {
+                return { expanded: false };
+            },
+            methods: {
+                onToggle() {
+                    this.expanded = !this.expanded;
+                },
+            },
+            template: /* HTML */ `
+                <f-expandable-panel :expanded @toggle="onToggle">
+                    <template #title> Rubrik </template>
+                    <template #default>
+                        <div style="min-height: 500px">Innehåll</div>
+                    </template>
+                </f-expandable-panel>
+            `,
+        });
+        cy.mount(TestComponent);
+
+        /* initially collapsed -> should not occupy height */
+        panel.body().should((el) => expect(el.height()).lte(0));
+
+        /* expanded -> should occupy height */
+        panel.expandCollapseIcon().click();
+        panel.body().should((el) => expect(el.height()).gte(500));
+
+        /* collapsed -> should not occupy height again */
+        panel.expandCollapseIcon().click();
+        panel.body().should((el) => expect(el.height()).lte(0));
+    });
+
+    it("should handle initial expanded", () => {
+        const TestComponent = defineComponent({
+            components: { FExpandablePanel },
+            data() {
+                return { expanded: true };
+            },
+            methods: {
+                onToggle() {
+                    this.expanded = !this.expanded;
+                },
+            },
+            template: /* HTML */ `
+                <f-expandable-panel :expanded @toggle="onToggle">
+                    <template #title> Rubrik </template>
+                    <template #default>
+                        <div style="min-height: 500px">Innehåll</div>
+                    </template>
+                </f-expandable-panel>
+            `,
+        });
+        cy.mount(TestComponent);
+
+        /* initially expanded -> should occupy height */
+        panel.body().should((el) => expect(el.height()).gte(500));
+
+        /* collapsed -> should not occupy height */
+        panel.expandCollapseIcon().click();
+        panel.body().should((el) => expect(el.height()).lte(0));
+
+        /* expanded -> should occupy height again */
+        panel.expandCollapseIcon().click();
+        panel.body().should((el) => expect(el.height()).gte(500));
     });
 });
