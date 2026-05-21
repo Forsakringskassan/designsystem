@@ -17284,7 +17284,7 @@ var ITableHeader_default = /* @__PURE__ */ defineComponent({
 });
 var _hoisted_1$48 = {
 	scope: "col",
-	class: "table-ng__column table-ng__column--selectable"
+	class: "table-ng__column table-ng__column--selectable table-ng__column--shrink"
 };
 var _hoisted_2$37 = [
 	"checked",
