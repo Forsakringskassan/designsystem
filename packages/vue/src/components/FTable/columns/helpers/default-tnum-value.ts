@@ -9,6 +9,7 @@ export function defaultTnumValue(type: InputType): boolean {
         "text:bankgiro",
         "text:clearingNumber",
         "text:currency",
+        "text:date",
         "text:number",
         "text:organisationsnummer",
         "text:percent",

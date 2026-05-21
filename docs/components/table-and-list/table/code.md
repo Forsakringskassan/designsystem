@@ -405,6 +405,7 @@ Som standard används `tnum` för texttyperna:
 - `text:bankgiro`
 - `text:clearingNumber`
 - `text:currency`
+- `text:date`
 - `text:number`
 - `text:organisationsnummer`
 - `text:percent`
