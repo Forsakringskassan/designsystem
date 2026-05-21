@@ -1,7 +1,7 @@
 {
   "name": "@fkui/test-utils",
   "version": "6.47.0",
-  "description": "FKUI test utils for Jest",
+  "description": "FKUI test utils for Jest och Vitest",
   "keywords": [
     "fkui",
     "designsystem",
@@ -22,6 +22,8 @@
   "sideEffects": [
     "./dist/cjs/jest.js",
     "./dist/esm/jest.js",
+    "./dist/cjs/vitest.js",
+    "./dist/esm/vitest.js",
     "./src/matchers/augmentations.ts",
     "./src/matchers/index.ts"
   ],
@@ -35,6 +37,11 @@
       "types": "./dist/types/jest.d.ts",
       "import": "./dist/esm/jest.js",
       "require": "./dist/cjs/jest.js"
+    },
+    "./vitest": {
+      "types": "./dist/types/vitest.d.ts",
+      "import": "./dist/esm/vitest.js",
+      "require": "./dist/cjs/vitest.js"
     },
     "./vue": {
       "types": "./dist/types/vue.d.ts",
@@ -57,24 +64,30 @@
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
-    "test": "jest"
-  },
-  "jest": {
-    "preset": "@forsakringskassan/jest-config-vue"
+    "test": "npm run test:jest && npm run test:vitest",
+    "test:jest": "jest",
+    "test:vitest": "vitest run"
   },
   "devDependencies": {
+    "@forsakringskassan/vitest-config-jsdom": "2.2.9",
     "@vue/server-renderer": "3.5.34",
     "@vue/test-utils": "2.4.10",
     "esbuild": "0.28.0",
+    "expect": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
+    "vitest": "4.1.7",
     "vue": "3.5.34"
   },
   "peerDependencies": {
     "jest": "^26.0.0 || ^27.0.0 || ^28.0.0 || ^29.0.0 || ^30.0.0",
+    "vitest": "^4.0.0",
     "vue": "^3.0.0"
   },
   "peerDependenciesMeta": {
     "jest": {
+      "optional": true
+    },
+    "vitest": {
       "optional": true
     },
     "vue": {
