@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { FMinimizablePanel } from "@fkui/vue";
 
-const sourceUrl = "https://github.com/Forsakringskassan/designsystem/blob/main/examples/page-layout/src/App.vue";
+const sourceUrl =
+    "https://github.com/Forsakringskassan/designsystem/blob/main/examples/page-layout/src/App.vue";
 </script>
 
 <template>
