@@ -50,18 +50,34 @@ describe("1. 3 Table test – right-aligned column", () => {
     const columns = defineTableColumns<Row>([
         {
             type: "text",
-            header: "Höger 1",
+            header: "Höger Redigerbar",
             key: "text",
-            description: "Högerjusterat ",
+            description: "Högerjusterad redigerbar text",
             align: "right",
             editable: true,
             label: () => "Input label",
         },
         {
             type: "text",
-            header: "Vänster 2 ",
+            header: "Höger Statisk",
             key: "text",
-            description: "Vänsterjusterat ",
+            description: "Högerjusterad statisk text",
+            align: "right",
+        },
+        {
+            type: "text",
+            header: "Vänster Redigerbar ",
+            key: "text",
+            description: "Vänsterjusterad redigerbar text",
+            align: "left",
+            editable: true,
+            label: () => "Input label",
+        },
+        {
+            type: "text",
+            header: "Vänster Statisk",
+            key: "text",
+            description: "Vänsterjusterad statisk text",
             align: "left",
         },
     ]);
@@ -2415,6 +2431,102 @@ describe("editable cell", () => {
         cy.focused().press(Cypress.Keyboard.Keys.ENTER);
 
         table.cell({ row: 2, col: 1 }).should("have.focus");
+    });
+
+    it("should render static and editable text cells with the same height", () => {
+        interface Row {
+            staticText: string;
+            editableText: string;
+        }
+
+        const rows = useDatasetRef<Row>([
+            { staticText: "Static", editableText: "Editable" },
+        ]);
+
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Static",
+                key: "staticText",
+            },
+            {
+                type: "text",
+                header: "Editable",
+                editable: true,
+                key: "editableText",
+                label: () => "Editable text",
+            },
+        ]);
+
+        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
+
+        table.cell({ row: 1, col: 1 }).then(($staticCell) => {
+            table.cell({ row: 1, col: 2 }).then(($editableCell) => {
+                expect($staticCell[0].getBoundingClientRect().height).to.equal(
+                    $editableCell[0].getBoundingClientRect().height,
+                );
+            });
+        });
+    });
+
+    it("should render static-only and editable text rows with the same height", () => {
+        interface Row {
+            text: string;
+        }
+
+        const staticRows = useDatasetRef<Row>([{ text: "Text" }]);
+        const editableRows = useDatasetRef<Row>([{ text: "Text" }]);
+
+        const staticColumns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Static",
+                key: "text",
+            },
+        ]);
+
+        const editableColumns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Editable",
+                editable: true,
+                key: "text",
+                label: () => "Editable text",
+            },
+        ]);
+
+        cy.mount(() =>
+            h("div", [
+                h(FTable<Row>, {
+                    rows: staticRows.value,
+                    columns: staticColumns,
+                }),
+                h(FTable<Row>, {
+                    rows: editableRows.value,
+                    columns: editableColumns,
+                }),
+            ]),
+        );
+
+        cy.get(".table-ng").should("have.length", 2);
+
+        cy.get(".table-ng")
+            .eq(0)
+            .find("tbody tr")
+            .first()
+            .then(($staticRow) => {
+                cy.get(".table-ng")
+                    .eq(1)
+                    .find("tbody tr")
+                    .first()
+                    .then(($editableRow) => {
+                        expect(
+                            $staticRow[0].getBoundingClientRect().height,
+                        ).to.equal(
+                            $editableRow[0].getBoundingClientRect().height,
+                        );
+                    });
+            });
     });
 });
 

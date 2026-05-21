@@ -6,11 +6,14 @@ $vertical-padding: core.densify(size.$padding-025);
 $horizontal-padding: size.$padding-050;
 $underline-thickness: 3px;
 $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-large) + ($vertical-padding * 2) + ($table-ng-selection-outline * 2));
+$editable-margin-block: 2px;
+$editable-border-width: 3px;
+$cell-border-width: 1px;
 
 .table-ng__cell {
     padding: $vertical-padding $horizontal-padding;
     text-wrap: nowrap;
-    border: 1px solid transparent;
+    border: $cell-border-width solid transparent;
 
     &:focus,
     &:focus-within {
@@ -39,6 +42,11 @@ $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-lar
         input {
             text-align: left;
         }
+
+        .table-ng__cell--static__text {
+            justify-content: flex-start;
+            text-align: left;
+        }
     }
 
     &--align-right {
@@ -46,6 +54,11 @@ $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-lar
 
         span,
         input {
+            text-align: right;
+        }
+
+        .table-ng__cell--static__text {
+            justify-content: flex-end;
             text-align: right;
         }
     }
@@ -87,7 +100,7 @@ $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-lar
 
     &--select {
         .table-ng__editable {
-            border: 3px solid transparent;
+            border: $editable-border-width solid transparent;
             box-sizing: border-box;
         }
     }
@@ -119,7 +132,7 @@ $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-lar
         }
 
         .table-ng__editable {
-            border: 3px solid transparent;
+            border: $editable-border-width solid transparent;
             box-sizing: border-box;
             position: relative;
 
@@ -204,9 +217,18 @@ $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-lar
         text-align: left;
     }
 
+    &--static {
+        .table-ng__cell--static__text {
+            display: flex;
+            align-items: center;
+            min-block-size: calc($editable-min-height - ($editable-margin-block * 2));
+            border: $editable-border-width solid transparent;
+        }
+    }
+
     &--custom {
         padding: $vertical-padding $horizontal-padding;
-        border: 1px solid transparent;
+        border: $cell-border-width solid transparent;
 
         &:focus {
             box-shadow: none;
@@ -245,7 +267,7 @@ $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-lar
     padding: $vertical-padding $horizontal-padding;
     display: flex;
     align-items: center;
-    margin-block: 2px;
+    margin-block: $editable-margin-block;
 
     &__text {
         flex: 1 1 auto;
@@ -262,6 +284,11 @@ $editable-min-height: calc(var(--f-font-size-standard) * var(--f-line-height-lar
 
 @media (forced-colors: active) {
     .table-ng__editable {
+        forced-color-adjust: none;
+        color: CanvasText;
+    }
+
+    .table-ng__cell--static__text {
         forced-color-adjust: none;
         color: CanvasText;
     }
