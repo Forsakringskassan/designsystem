@@ -34,7 +34,7 @@ import { defineComponent as defineComponent2 } from "vue";
 // packages/vue-labs/dist/esm/index.esm.js
 import { computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, guardReactiveProps, normalizeClass, normalizeProps, openBlock, ref, renderSlot, resolveDirective, toDisplayString, unref, withCtx, withDirectives } from "vue";
 import { TranslationService, ValidationService, alertScreenReader, debounce, isEmpty, isSet, stripWhitespace } from "@fkui/logic";
-import { EventBus, FFileItem, FFileSelector, FIcon, FTextField, TranslationMixin, useTextFieldSetup, useTranslate } from "@fkui/vue";
+import { EventBus, FButton, FFileItem, FFileSelector, FIcon, FTextField, TranslationMixin, useTextFieldSetup, useTranslate } from "@fkui/vue";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var require_global_this = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var check = function(it) {
