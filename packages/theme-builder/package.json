@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@adobe/css-tools": "4.4.4",
-    "@forsakringskassan/sass-module-importer": "2.0.0",
+    "@forsakringskassan/sass-module-importer": "3.0.0",
     "cssnano": "8.0.1",
     "get-css-variables": "1.1.1",
     "postcss-scss": "4.0.9",
