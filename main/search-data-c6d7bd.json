@@ -270,6 +270,12 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Om FKUI Vue Labs",
     "Tidsinmatning",
     "XTimeTextField",
@@ -279,12 +285,6 @@
     "XRelativeTime",
     "XFileDragdrop",
     "XFileDragdrop",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -612,11 +612,6 @@
     "ValidationErrorMessageBuilder: build() method",
     "feltext",
     "validator",
-    "FTablePageObject",
-    "FPaginatorPageObject",
-    "FListPageObject",
-    "FExpandableParagraphPageObject",
-    "FDefinitionListPageObject",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -633,6 +628,11 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
+    "FTablePageObject",
+    "FPaginatorPageObject",
+    "FListPageObject",
+    "FExpandableParagraphPageObject",
+    "FDefinitionListPageObject",
     "Sortera och filtrera i tabell",
     "tabell",
     "Sortera och filtrera i tabell (kod)",
@@ -701,15 +701,15 @@
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
+    "FBadgePageObject: FBadgePageObject() constructor",
+    "FFileItemPageObject: status() method",
+    "FFileItemPageObject: inverted() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
-    "FBadgePageObject: FBadgePageObject() constructor",
-    "FFileItemPageObject: status() method",
-    "FFileItemPageObject: inverted() method",
     "Kolumntyp dropplista i tabell",
     "select",
     "Kolumntyp radrubrik i tabell",
@@ -1365,6 +1365,27 @@
       ]
     },
     {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
       "url": "functions/labs/index.html",
       "title": "Om FKUI Vue Labs",
       "terms": []
@@ -1395,27 +1416,6 @@
       "title": "XFileDragdrop",
       "terms": [
         "XFileDragdrop"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": [
-        "TranslationService"
       ]
     },
     {
@@ -2238,31 +2238,6 @@
       ]
     },
     {
-      "url": "functions/cypress/pageobjects/ftablepageobject.html",
-      "title": "FTablePageObject",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
-      "title": "FPaginatorPageObject",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/flistpageobject.html",
-      "title": "FListPageObject",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
-      "title": "FExpandableParagraphPageObject",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
-      "title": "FDefinitionListPageObject",
-      "terms": []
-    },
-    {
       "url": "functions/date/f-year/index.html",
       "title": "FYear",
       "terms": [
@@ -2337,6 +2312,31 @@
     {
       "url": "functions/date/f-year/f-date-next.html",
       "title": "FYear: next() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/ftablepageobject.html",
+      "title": "FTablePageObject",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
+      "title": "FPaginatorPageObject",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/flistpageobject.html",
+      "title": "FListPageObject",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
+      "title": "FExpandableParagraphPageObject",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
+      "title": "FDefinitionListPageObject",
       "terms": []
     },
     {
@@ -2572,6 +2572,21 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
+      "title": "FBadgePageObject: FBadgePageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
+      "title": "FFileItemPageObject: status() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
+      "title": "FFileItemPageObject: inverted() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": []
@@ -2599,21 +2614,6 @@
     {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
       "title": "FDetailsPanelPageObject: closeButton() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/index.html",
-      "title": "FBadgePageObject: FBadgePageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/status.html",
-      "title": "FFileItemPageObject: status() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
-      "title": "FFileItemPageObject: inverted() method",
       "terms": []
     },
     {
@@ -3068,11 +3068,11 @@
     "268": 66,
     "269": 66,
     "270": 67,
-    "271": 68,
+    "271": 67,
     "272": 68,
-    "273": 69,
+    "273": 68,
     "274": 69,
-    "275": 70,
+    "275": 69,
     "276": 70,
     "277": 71,
     "278": 71,
@@ -3410,11 +3410,11 @@
     "610": 176,
     "611": 176,
     "612": 177,
-    "613": 178,
-    "614": 179,
-    "615": 180,
-    "616": 181,
-    "617": 182,
+    "613": 177,
+    "614": 178,
+    "615": 179,
+    "616": 180,
+    "617": 181,
     "618": 182,
     "619": 183,
     "620": 184,
