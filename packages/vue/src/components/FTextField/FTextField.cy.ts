@@ -240,6 +240,51 @@ describe("density", () => {
     });
 });
 
+describe("Visual forcedColor", () => {
+    const forcedColorModes = ["none", "dark", "light"] as const;
+    afterEach(() => {
+        cy.forcedColors("none");
+    });
+    for (const mode of Object.values(forcedColorModes)) {
+        it(`should render correct styling for forced color mode, ${mode} (visual)`, () => {
+            cy.forcedColors(mode);
+
+            const textField = new FTextFieldPageObject(
+                `[data-test="textField"]`,
+            );
+
+            const TestComponent = defineComponent({
+                template: /* HTML */ `
+                    <f-text-field
+                        v-if="show"
+                        v-model="value"
+                        v-test="'textField'"
+                        v-validation.required.minLength.maxLength="{
+                minLength: { length: 3 },
+                maxLength: { length: 5 }
+            }"
+                    >
+                        Inmatningsfält med forcedColorMode "${mode}"
+                    </f-text-field>
+                `,
+                components: { FTextField },
+                data() {
+                    return {
+                        show: true,
+                        value: "",
+                    };
+                },
+            });
+
+            cy.mount(TestComponent);
+
+            textField.enter("Too many characters");
+            textField.el().click();
+
+            cy.toMatchScreenshot();
+        });
+    }
+});
 describe("toggle existence", () => {
     it("should retain correct error message", () => {
         // Given
