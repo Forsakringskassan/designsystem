@@ -7,15 +7,19 @@ search:
         - tabell
 ---
 
-Om användaren ska kunna lägga till eller ta bort rader i tabellen behöver du se till att tabellen följer mönstret nedan.
-När användaren lägger till en rad ska den alltid läggas sist i tabellen och fokus ska flyttas till raden som har lagts till.
-Om användaren tar bort en rad ska fokus flyttas enligt prio nedan
+```import
+FTableAddRemoveExample.vue
+```
 
-- cell i raden ovanför
-- cell i raden nedanför
-- till meddelande "Tabellen är tom" om att tabellen saknar rader.
+När användaren lägger till en rad ska den alltid läggas sist i tabellen. Fokus ska vara kvar på Lägg till-knappen.
 
-Exempel på tabell med knappar för ta bort/lägga till.
+När användaren tar bort en rad ska fokus flyttas enligt prio:
+
+1. cell i raden ovanför
+2. cell i raden nedanför
+3. till meddelande "Tabellen är tom" om att tabellen saknar rader.
+
+Använd alltid en {@link FConfirmModal bekräftelsemodal} vid borttag av rader.
 
 ## Lägga till rader och paginering
 
@@ -24,4 +28,4 @@ Annars kan inte användaren sortera om tabellen när nya rader tillkommit.
 
 ## Kod
 
-{@link create-delete-rows-code Läs om hur du sätter upp att lägga till och ta bort rader i tabell.}
+{@link create-delete-rows-code Läs mer om hur du kodmässigt lägger till och tar bort rader i en tabell.}
