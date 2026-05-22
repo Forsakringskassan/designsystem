@@ -6,13 +6,11 @@ import {
     FPaginateDataset,
     FPaginator,
     FSortFilterDataset,
-    useDatasetRef,
-} from "@fkui/vue";
-import {
     FTable,
     defineTableColumns,
     getTableSortableAttributes,
     removeDatasetRows,
+    useDatasetRef,
 } from "@fkui/vue";
 
 const tableRef = useTemplateRef("table");

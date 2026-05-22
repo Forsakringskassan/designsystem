@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import {
-    type TableColumn,
-    FSelectField,
-    FTable,
-    defineTableColumns,
-    useDatasetRef,
-} from "@fkui/vue";
+import { type TableColumn, FSelectField, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
 type Status = "Utkast" | "Godkänd";
 type Permission = "Läs" | "Redigera" | "Admin";
@@ -37,10 +31,7 @@ const actionConfig: ActionConfig[] = [
         statuses: ["Utkast", "Godkänd"],
         permissions: ["Läs", "Redigera", "Admin"],
         onClick(row) {
-            const message =
-                row.status === "Utkast"
-                    ? `Visa utkast för ${row.name}`
-                    : `Visa beslut för ${row.name}`;
+            const message = row.status === "Utkast" ? `Visa utkast för ${row.name}` : `Visa beslut för ${row.name}`;
             window.alert(message);
         },
     },
@@ -140,10 +131,7 @@ function isAllowed(action: ActionConfig): boolean {
 
 <template>
     <h2>Dynamisk kontextmeny</h2>
-    <p>
-        I detta exempel visas hur åtgärder i en kontextmeny kan anpassas per rad beroende på status
-        och behörighet.
-    </p>
+    <p>I detta exempel visas hur åtgärder i en kontextmeny kan anpassas per rad beroende på status och behörighet.</p>
     <ul>
         <li>Ändra status i tabellen för att se hur tillgängliga åtgärder uppdateras.</li>
         <li>Byt behörighet under tabellen för att visa eller dölja olika åtgärder.</li>

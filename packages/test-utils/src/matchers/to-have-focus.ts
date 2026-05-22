@@ -1,9 +1,11 @@
+import type { MatcherState, SyncExpectationResult } from "@vitest/expect";
+import type { MatcherContext } from "expect";
 import { generateSelector } from "../utils";
 
 export function toHaveFocus(
-    this: jest.MatcherUtils,
+    this: MatcherState | MatcherContext,
     element: Element,
-): jest.CustomMatcherResult {
+): SyncExpectationResult {
     if (!(element instanceof Element)) {
         throw new TypeError(
             `Expected value must be Element instance but got "${typeof element}" instead`,
@@ -12,7 +14,7 @@ export function toHaveFocus(
 
     const { matcherHint, printExpected, printReceived } = this.utils;
     const currentFocus = document.activeElement;
-    const isFocused = element.isSameNode(currentFocus);
+    const isFocused = currentFocus !== null && element.isSameNode(currentFocus);
     if (isFocused) {
         return {
             pass: true,

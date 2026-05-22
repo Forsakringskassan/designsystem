@@ -416,12 +416,12 @@ export default defineComponent({
             <option value="text:date">Datum</option>
         </f-select-field>
 
-        <f-checkbox-field v-if="editableSupport" v-model="editableChecked" :value="true"
-            >Redigerbar</f-checkbox-field
-        >
-        <f-checkbox-field v-if="enabledSupport" v-model="enabledChecked" :value="true"
-            >Enabled</f-checkbox-field
-        >
+        <f-checkbox-field v-if="editableSupport" v-model="editableChecked" :value="true">
+            Redigerbar
+        </f-checkbox-field>
+        <f-checkbox-field v-if="enabledSupport" v-model="enabledChecked" :value="true">
+            Enabled
+        </f-checkbox-field>
 
         <f-fieldset v-if="alignSupport" name="align">
             <template #label> Justering </template>

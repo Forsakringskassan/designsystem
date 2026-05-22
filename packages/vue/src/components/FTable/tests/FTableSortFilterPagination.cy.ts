@@ -1,5 +1,5 @@
 import { FTablePageObject } from "../../../cypress";
-import Example from "./examples/FTableSortFilterPaginationExample.vue";
+import Example from "./FTableSortFilterPaginationExample.vue";
 import {
     FPaginatorPageObject,
     FSortFilterDatasetPageObject,
@@ -501,7 +501,12 @@ describe("Removing Rows - Pagination Behavior", () => {
         // Page 2 currently shows Druva, Fikon, Granatapple
         table.cell({ row: 1, col: 2 }).should("contain.text", "Druva");
 
-        // Verify we can see page 2
-        cy.get('[data-test="selected-count"]').should("exist");
+        // Remove all on page 2
+        table.cell({ row: 1, col: 3 }).click();
+        table.cell({ row: 1, col: 3 }).click();
+        table.cell({ row: 1, col: 3 }).click();
+
+        // Verify navigated to page 1
+        paginator.currentPageButton().should("contain.text", "1");
     });
 });

@@ -1,4 +1,4 @@
-import Example from "./examples/FTableDynamicContextmenuExample.vue";
+import Example from "./FTableDynamicContextmenuExample.vue";
 import { FSelectFieldPageObject, FTablePageObject } from "@fkui/vue/cypress";
 
 const table = new FTablePageObject();

@@ -22,7 +22,7 @@ async function build() {
         };
         await esbuild.build({
             ...common,
-            entryPoints: ["src/lib.ts", "src/jest.ts"],
+            entryPoints: ["src/lib.ts", "src/jest.ts", "src/vitest.ts"],
         });
         await esbuild.build({
             ...common,

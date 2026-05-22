@@ -1,5 +1,5 @@
 import { FTablePageObject } from "../../../cypress";
-import Example from "./examples/FTableBulkExample.vue";
+import Example from "./FTableBulkExample.vue";
 
 const table = new FTablePageObject();
 
