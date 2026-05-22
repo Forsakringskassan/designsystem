@@ -11,12 +11,18 @@ search:
 Paginering kan användas för att dela upp innehållet i en tabell i flera delvyer/sidor.
 Tänk på att paginering tillsammans med andra funktioner som bulkoperation, sortering och filtrering gör det svårare för användaren att förstå resultatet.
 
-{@link select-rows#bulkoperation Läs mer om bulkoperation.}
+```import
+FTableBasicPagination.vue
+```
+
+{@link pagination Läs mer om pagineringskomponenten.}
 
 ## Paginering och bulkoperation
 
 När tabellen är paginerad och har bulkoperation ska användaren alltid få en bekräftelse innan åtgärd utförs.
 Visa en bekräftelsemodal som informerar hur många rader som är valda av totalt antal rader så att användaren kan bekräfta åtgärden.
+
+{@link select-rows#bulkoperation Läs mer om bulkoperation.}
 
 ## Kod
 
