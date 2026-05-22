@@ -3,7 +3,7 @@
 exports[`snapshots should match snapshot with default slot content 1`] = `
 <transition-stub
   appear="false"
-  css="true"
+  css="false"
   persisted="false"
 >
   

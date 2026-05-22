@@ -1,23 +1,35 @@
-import { getHTMLElementFromVueRef } from "../../utils";
-import { hiddenStyle, initialStyle, visibleStyle } from "./styles";
+import { transitionStyle } from "./styles";
 
 /**
+ * Animates the element from `height: 0px` to its `desiredHeight`.
+ *
+ * Measures `desiredHeight` by temporarily setting `height: auto` before animating.
+ * Resets to `height: auto` after completion so the element grows naturally with its content.
+ *
+ * @param element - The element to transition.
+ * @param done - Vue's callback to signal that the transition has completed.
  * @internal
  */
-export function enterTransition(element: Element): number {
-    let newHeight = 0;
-    const htmlElement = getHTMLElementFromVueRef(element);
-    Object.assign(htmlElement.style, initialStyle);
-    Object.assign(htmlElement.style, hiddenStyle);
-    htmlElement.style.width = getComputedStyle(element).width;
-    const height = getComputedStyle(element).height;
-    Object.assign(htmlElement.style, visibleStyle);
+export function enterTransition(element: Element, done: () => void): void {
+    if (!(element instanceof HTMLElement)) {
+        return;
+    }
+    element.style.height = "auto";
+    const desiredHeight = getComputedStyle(element).height;
+    element.style.height = "0px";
+    Object.assign(element.style, transitionStyle);
     // Force redraw
     /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, there should be a better way */
     getComputedStyle(element).height;
     setTimeout(() => {
-        newHeight = Number.parseInt(height, 10);
-        htmlElement.style.height = height;
+        element.style.height = desiredHeight;
+        element.addEventListener(
+            "transitionend",
+            () => {
+                element.style.height = "auto";
+                done();
+            },
+            { once: true },
+        );
     });
-    return newHeight;
 }
