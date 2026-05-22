@@ -1,18 +1,31 @@
-import { getHTMLElementFromVueRef } from "../../utils";
-import { visibleStyle } from "./styles";
+import { transitionStyle } from "./styles";
 
 /**
+ * Animates the element from its current height to `height: 0px`.
+ *
+ * Measures the current height by temporarily setting `height: auto` before animating.
+ * Resets to `height: auto` after completion to restore the element for the next enter transition.
+ *
+ * @param element - The element to transition.
+ * @param done - Vue's callback to signal that the transition has completed.
  * @internal
  */
-export function leaveTransition(element: Element): void {
-    const htmlElement = getHTMLElementFromVueRef(element);
-    const height = getComputedStyle(element).height;
-    htmlElement.style.height = height;
-
-    // Force redraw
-    /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, there should be a better way */
-    getComputedStyle(element).height;
+export function leaveTransition(element: Element, done: () => void): void {
+    if (!(element instanceof HTMLElement)) {
+        return;
+    }
+    element.style.height = "auto";
+    element.style.height = getComputedStyle(element).height;
+    Object.assign(element.style, transitionStyle);
     setTimeout(() => {
-        Object.assign(htmlElement.style, visibleStyle);
+        element.style.height = "0px";
+        element.addEventListener(
+            "transitionend",
+            () => {
+                element.style.height = "auto";
+                done();
+            },
+            { once: true },
+        );
     });
 }
