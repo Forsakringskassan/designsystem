@@ -6,7 +6,17 @@
         "module": "esnext",
         "moduleResolution": "bundler",
         "emitDeclarationOnly": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "types": [
+            /* Consumers use process.env to pass environmental variables into the compiled source */
+            "node",
+
+            /*
+            To handle importing static assets, raw/encoded urls, working with Vite, and other common patterns in Vue projects
+            https://vite.dev/guide/assets
+             */
+            "vite/client"
+        ]
     },
 
     "vueCompilerOptions": {
