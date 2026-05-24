@@ -199,7 +199,6 @@ describe("html-validate", () => {
             <f-table-column title="column title">
                 <!-- valid -->
                 <f-table-button label>lorem ipsum</f-table-button>
-                <f-table-button :label="true">lorem ipsum</f-table-button>
                 <f-table-button :label="false">lorem ipsum</f-table-button>
 
                 <!-- invalid -->
@@ -208,21 +207,21 @@ describe("html-validate", () => {
         `;
         expect(markup).toMatchInlineCodeframe(`
             "error: Attribute "label" should omit value (attribute-boolean-style)
-               7 |
-               8 |                 <!-- invalid -->
-            >  9 |                 <f-table-button label="foo">lorem ipsum</f-table-button>
+               6 |
+               7 |                 <!-- invalid -->
+            >  8 |                 <f-table-button label="foo">lorem ipsum</f-table-button>
                  |                                 ^^^^^
-              10 |             </f-table-column>
-              11 |
-            Selector: f-table-column > f-table-button:nth-child(4)
+               9 |             </f-table-column>
+              10 |
+            Selector: f-table-column > f-table-button:nth-child(3)
             error: Attribute "label" has invalid value "foo" (attribute-allowed-values)
-               7 |
-               8 |                 <!-- invalid -->
-            >  9 |                 <f-table-button label="foo">lorem ipsum</f-table-button>
+               6 |
+               7 |                 <!-- invalid -->
+            >  8 |                 <f-table-button label="foo">lorem ipsum</f-table-button>
                  |                                        ^^^
-              10 |             </f-table-column>
-              11 |
-            Selector: f-table-column > f-table-button:nth-child(4)"
+               9 |             </f-table-column>
+              10 |
+            Selector: f-table-column > f-table-button:nth-child(3)"
         `);
     });
 });

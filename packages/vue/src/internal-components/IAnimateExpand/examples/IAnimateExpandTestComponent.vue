@@ -18,7 +18,7 @@ export default defineComponent({
 <template>
     <div>
         <f-button @click="isExpanded = !isExpanded">Öppna/stäng animering</f-button>
-        <i-animate-expand :expanded="isExpanded" :opacity="true">
+        <i-animate-expand :expanded="isExpanded" opacity>
             <!-- [html-validate-disable-next no-inline-style] -->
             <div :style></div>
         </i-animate-expand>

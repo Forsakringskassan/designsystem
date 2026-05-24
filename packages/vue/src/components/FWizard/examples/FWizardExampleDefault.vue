@@ -42,7 +42,7 @@ export default defineComponent({
                 <f-select-field v-model="options" v-validation.required>
                     <template #label> Etikett-rubrik </template>
 
-                    <option :disabled="true" value="">Välj</option>
+                    <option disabled value="">Välj</option>
                     <option value="ALTERNATIV1">Alternativ 1</option>
                     <option value="ALTERNATIV2">Alternativ 2</option>
                 </f-select-field>
