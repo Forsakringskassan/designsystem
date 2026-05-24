@@ -108,7 +108,6 @@ describe("html-validate", () => {
                 <f-file-selector>text</f-file-selector>
                 <f-file-selector disabled>text</f-file-selector>
                 <f-file-selector :disabled="false">text</f-file-selector>
-                <f-file-selector :disabled="true">text</f-file-selector>
             `;
             const invalid = /* HTML */ `
                 <f-file-selector disabled="foobar">text</f-file-selector>

@@ -364,7 +364,6 @@ describe("html-validate", () => {
                 expect.assertions(1);
                 const markup = /* HTML */ `
                     <f-form-modal is-open></f-form-modal>
-                    <f-form-modal :is-open="true"></f-form-modal>
                     <f-form-modal :is-open="false"></f-form-modal>
                 `;
                 expect(markup).toHTMLValidate();
