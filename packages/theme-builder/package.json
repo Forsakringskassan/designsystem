@@ -31,7 +31,7 @@
     "test": "node --test --experimental-strip-types"
   },
   "dependencies": {
-    "@adobe/css-tools": "4.4.4",
+    "@adobe/css-tools": "4.5.0",
     "@forsakringskassan/sass-module-importer": "3.0.0",
     "cssnano": "8.0.1",
     "get-css-variables": "1.1.1",
