@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "glob": "13.0.6",
-    "sass": "1.99.0",
+    "sass": "1.100.0",
     "svgo": "4.0.1"
   },
   "devDependencies": {
