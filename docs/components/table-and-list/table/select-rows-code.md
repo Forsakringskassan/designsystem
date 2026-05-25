@@ -7,7 +7,19 @@ search:
         - tabell
 ---
 
-Sidan kommer uppdateras.
+## Flerval
+
+- basic exempel skriva ut antal valda frukter som konsument
+- jobba med v-model:selected-rows
+
+### Bulkoperation
+
+- länka till Lägga till ta bort rader
+- bekräftelsemodal fortsatt i exempel
+
+## Enkelval
+
+- basic kod. Skriv ut vald rad.
 
 ## Relaterat
 
