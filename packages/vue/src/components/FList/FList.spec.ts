@@ -251,12 +251,15 @@ describe("active element", () => {
     });
 
     it("should reset active item", async () => {
-        let activeItem: UnknownItem | undefined;
         const TestComponent = defineComponent({
             name: "TestComponent",
             components: { FList },
             data() {
-                return { items, activeItem, selectedItems: [] };
+                return {
+                    items,
+                    activeItem: undefined as UnknownItem | undefined,
+                    selectedItems: [],
+                };
             },
             template: /* HTML */ `
                 <f-list
