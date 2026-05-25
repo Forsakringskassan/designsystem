@@ -4,7 +4,6 @@ $focus-box-shadow:
     0 0 0 6px var(--fkds-focus-indicator-color-background) !default;
 
 @mixin focus-indicator() {
-    border-radius: 0;
     box-shadow: $focus-box-shadow;
     outline: 3px solid transparent; // Windows high contrast
 }
