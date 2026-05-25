@@ -72,8 +72,8 @@ export default [
              * development environment but we dont want eslint to yield errors
              * for it as they will be installed in the CI pipeline using this
              * file */
-            "import/no-extraneous-dependencies": "off",
-            "import/no-unresolved": "off",
+            "import-x/no-extraneous-dependencies": "off",
+            "import-x/no-unresolved": "off",
         },
     },
 
@@ -81,7 +81,7 @@ export default [
         name: "local/native-esm",
         files: ["packages/icon-lib-builder/**/*.js"],
         rules: {
-            "import/extensions": "off",
+            "import-x/extensions": "off",
         },
     },
 
@@ -136,7 +136,7 @@ export default [
         files: ["packages/vue/test-bundles/*.mjs"],
         rules: {
             /* we want to import @fkui/* packages without them explicitly being listed as dependencies */
-            "import/no-extraneous-dependencies": "off",
+            "import-x/no-extraneous-dependencies": "off",
         },
     },
 

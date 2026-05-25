@@ -1,7 +1,6 @@
 import { pathToFileURL } from "node:url";
 import { styleText } from "node:util";
 import { defineConfig } from "cypress";
-import cypressSplit from "@fkui/cypress-split";
 import { init as installAxe } from "@forsakringskassan/cypress-axe/plugins";
 import getToMatchScreenshotsPlugin from "@forsakringskassan/cypress-visual-regression/plugin";
 import { type Manifest, Generator } from "@forsakringskassan/docs-generator";
@@ -11,6 +10,7 @@ import htmlvalidate, {
 import { type ConfigData } from "html-validate";
 import config from "./docs.config";
 import exclude from "./packages/vue/htmlvalidate/cypress";
+import cypressSplit from "@fkui/cypress-split";
 
 async function getDocsPages(): Promise<Manifest["pages"]> {
     const importMetaUrl = pathToFileURL(__filename);

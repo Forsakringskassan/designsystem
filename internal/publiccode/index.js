@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import prettier from "prettier";
 import { parse, stringify } from "yaml";
-// eslint-disable-next-line import/extensions -- esm needs extensions
+// eslint-disable-next-line import-x/extensions -- esm needs extensions
 import { gitAdd } from "./git-add.js";
 
 let verified = false;
