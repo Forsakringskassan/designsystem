@@ -1,8 +1,9 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
-import { type PropType, defineComponent } from "vue";
+import { type PropType, computed, defineComponent } from "vue";
 import { ElementIdService, ValidationService, focus } from "@fkui/logic";
 import { type ComponentValidityEvent, type ErrorItem, type GroupValidityEvent } from "../../types";
+import { buttonInflightInjectionKey } from "../FButton";
 import { type BeforeNavigate, FErrorList } from "../FErrorList";
 import { FValidationGroup } from "../FValidationGroup";
 import { type FValidationFormCallback, FValidationFormAction } from "./types";
@@ -14,8 +15,30 @@ function noop(): void {
 export default defineComponent({
     name: "FValidationForm",
     components: { FValidationGroup, FErrorList },
+    provide() {
+        return {
+            [buttonInflightInjectionKey]: computed(() => this.isInflight),
+        };
+    },
     inheritAttrs: false,
     props: {
+        /**
+         * Callback function triggered when the form is submitted.
+         *
+         * Since this component declares `emits: ["submit"]`, Vue automatically
+         * intercepts the `@submit` event listener. By declaring this `onSubmit`
+         * prop, the component can intercept, await, and monitor the lifecycle
+         * of the parent's asynchronous submit handler before the event is emitted.
+         *
+         * @ignore
+         */
+        onSubmit: {
+            type: Function as PropType<FValidationFormCallback>,
+            required: false,
+            default() {
+                return noop;
+            },
+        },
         /**
          * If given, this function is called before the `submit` event is emitted.
          *
@@ -81,10 +104,11 @@ export default defineComponent({
          */
         "submit",
     ],
-    data(): { validity: GroupValidityEvent; submitted: boolean } {
+    data(): { validity: GroupValidityEvent; submitted: boolean; isInflight: boolean } {
         return {
             validity: { isValid: true, componentsWithError: [], componentCount: 0 },
             submitted: false,
+            isInflight: false,
         };
     },
     computed: {
@@ -123,30 +147,45 @@ export default defineComponent({
 
             return true;
         },
-        async onSubmit(event: Event): Promise<void> {
+        async submit(event: Event): Promise<void> {
             this.submitted = true;
+            this.isInflight = true;
 
-            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-            const beforeValidation = this.beforeValidation ? await this.beforeValidation() : undefined;
-            if (beforeValidation === FValidationFormAction.CANCEL) {
-                return;
+            try {
+                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+                const beforeValidation = this.beforeValidation ? await this.beforeValidation() : undefined;
+                if (beforeValidation === FValidationFormAction.CANCEL) {
+                    this.isInflight = false;
+                    return;
+                }
+
+                if (await this.hasFormErrors()) {
+                    this.isInflight = false;
+                    return;
+                }
+
+                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+                const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : undefined;
+                if (beforeAction === FValidationFormAction.CANCEL) {
+                    this.isInflight = false;
+                    return;
+                }
+
+                if (await this.hasFormErrors()) {
+                    this.isInflight = false;
+                    return;
+                }
+
+                const parentSubmitHandler = this.$props.onSubmit;
+
+                if (typeof parentSubmitHandler === "function") {
+                    await parentSubmitHandler(event);
+                } else {
+                    this.$emit("submit", event);
+                }
+            } finally {
+                this.isInflight = false;
             }
-
-            if (await this.hasFormErrors()) {
-                return;
-            }
-
-            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-            const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : undefined;
-            if (beforeAction === FValidationFormAction.CANCEL) {
-                return;
-            }
-
-            if (await this.hasFormErrors()) {
-                return;
-            }
-
-            this.$emit("submit", event);
         },
     },
 });
@@ -155,7 +194,7 @@ export default defineComponent({
 <template>
     <f-validation-group :key="groupKey" v-model="validity" :stop-propagation="true">
         <!-- [html-validate-disable-next wcag/h32 -- submit button is slotted] -->
-        <form :id v-bind="$attrs" novalidate autocomplete="off" @submit.prevent="onSubmit">
+        <form :id v-bind="$attrs" novalidate autocomplete="off" @submit.prevent="submit">
             <nav v-if="displayErrors" ref="errors" tabindex="-1" role="group">
                 <f-error-list :items="errors" :before-navigate="errorListBeforeNavigate">
                     <template #title>
