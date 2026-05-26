@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { type PropType, computed, useAttrs } from "vue";
+import { type PropType, computed, inject, useAttrs } from "vue";
 import { FIcon } from "../FIcon";
+import { buttonInflightInjectionKey } from "./button-inflight-injection-key";
 import { useInflight } from "./use-inflight";
 
 /* eslint-disable-next-line vue/define-props-declaration -- technical debt */
@@ -117,7 +118,7 @@ defineOptions({
 const originalAttrs = useAttrs();
 
 const disabled = computed((): boolean => {
-    return props.disabled || inflight.value;
+    return props.disabled || inflight.value || hasSubmitInflight.value;
 });
 const { inflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
 const attrs = { ...originalAttrs, onClick };
@@ -133,6 +134,10 @@ const hasIconRight = computed((): boolean => {
 const hasIcon = computed((): boolean => {
     return hasIconLeft.value || hasIconRight.value;
 });
+
+const hasIconInflight = computed((): boolean => inflight.value || hasSubmitInflight.value);
+
+const hasSubmitInflight = computed((): boolean => props.type === "submit" && isParentInflight.value);
 
 const buttonClass = computed((): string[] => {
     const classes = ["button", `button--${props.variant}`, `button--${props.size}`];
@@ -153,18 +158,22 @@ const buttonClass = computed((): string[] => {
         classes.push(`button--full-width`);
     }
 
-    if (inflight.value) {
+    if (inflight.value || hasSubmitInflight.value) {
         classes.push(`button__inflight`);
     }
 
     return classes;
 });
+const isParentInflight = inject(
+    buttonInflightInjectionKey,
+    computed(() => false),
+);
 </script>
 
 <template>
     <button :type :class="buttonClass" :aria-disabled="disabled" v-bind="attrs">
         <template v-if="hasIconLeft">
-            <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
+            <f-icon v-if="hasIconInflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
             <f-icon
                 v-else-if="props.iconLeft"
                 class="button__icon"
@@ -174,16 +183,15 @@ const buttonClass = computed((): string[] => {
         </template>
         <template v-if="!hasIcon">
             <span class="spinner--before">
-                <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
+                <f-icon v-if="hasIconInflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
             </span>
         </template>
         <!--
         @slot Slot for text to display in the button.
         -->
         <span><slot name="default"></slot></span>
-
         <template v-if="hasIconRight">
-            <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
+            <f-icon v-if="hasIconInflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
             <f-icon
                 v-else-if="props.iconRight"
                 class="button__icon"

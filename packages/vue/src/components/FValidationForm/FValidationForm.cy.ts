@@ -1,7 +1,7 @@
-import { ExamplePageobject } from "./examples/Example.pageobject";
-import NoErrorListExample from "./examples/NoErrorList.vue";
-import WithErrorListExample from "./examples/WithErrorList.vue";
-import WithErrorListAndCbFunctionExample from "./examples/WithErrorListAndCbFunction.vue";
+import { ExamplePageobject } from "./docs/Example.pageobject";
+import NoErrorListExample from "./docs/NoErrorList.vue";
+import WithErrorListExample from "./docs/WithErrorList.vue";
+import WithErrorListAndCbFunctionExample from "./docs/WithErrorListAndCbFunction.vue";
 
 const validationForm = new ExamplePageobject("form");
 
