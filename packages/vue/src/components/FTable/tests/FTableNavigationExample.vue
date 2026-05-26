@@ -173,9 +173,7 @@ function onRemoveRow(row: ExpandableTabstopRow): void {
 
     <f-table ref="table" :key="expandableAttr" :rows :columns key-attribute="id" striped selectable="multi">
         <template #caption>Tabell</template>
-        <template v-if="selectedValue === 'content'" #expandable="{ row }">
-            {{ (row as any).content }}
-        </template>
+        <template v-if="selectedValue === 'content'" #expandable="{ row }">{{ (row as any).content }}</template>
         <template #footer>Footer</template>
     </f-table>
 </template>

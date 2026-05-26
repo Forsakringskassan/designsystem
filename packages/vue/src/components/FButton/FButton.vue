@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type PropType, computed, useAttrs } from "vue";
+import { type PropType, computed, getCurrentInstance, onMounted, ref, useAttrs } from "vue";
 import { FIcon } from "../FIcon";
 import { useInflight } from "./use-inflight";
 
@@ -110,14 +110,24 @@ const props = defineProps({
         type: Boolean,
         required: false,
     },
+    /**
+     * Set button to inFlight
+     */
+    isInFlight: {
+        type: Boolean,
+        required: false,
+    },
 });
 defineOptions({
     inheritAttrs: false,
 });
 const originalAttrs = useAttrs();
 
+const hasInFlightParent = ref(false);
+let observer = null;
+
 const disabled = computed((): boolean => {
-    return props.disabled || inflight.value;
+    return props.disabled || inflight.value || props.isInFlight || hasInFlightParent.value;
 });
 const { inflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
 const attrs = { ...originalAttrs, onClick };
@@ -153,18 +163,48 @@ const buttonClass = computed((): string[] => {
         classes.push(`button--full-width`);
     }
 
-    if (inflight.value) {
+    if (inflight.value || props.isInFlight || hasInFlightParent.value) {
         classes.push(`button__inflight`);
     }
 
     return classes;
 });
+
+onMounted(() => {
+    const instance = getCurrentInstance();
+
+    const vueParent = instance?.parent;
+    if (vueParent) {
+        const parentHtmlElement = vueParent.proxy?.$el;
+
+        if (parentHtmlElement?.nodeType === 1) {
+            hasInFlightParent.value = parentHtmlElement.classList.contains("is-inflight");
+
+            observer = new MutationObserver((mutations) => {
+                for (const mutation of mutations) {
+                    if (mutation.type === "attributes" && mutation.attributeName === "class") {
+                        hasInFlightParent.value = parentHtmlElement.classList.contains("is-inflight");
+                    }
+                }
+            });
+
+            observer.observe(parentHtmlElement, {
+                attributes: true,
+                attributeFilter: ["class"],
+            });
+        }
+    }
+});
 </script>
 
 <template>
-    <button :type :class="buttonClass" :aria-disabled="disabled" v-bind="attrs">
+    <button v-bind="attrs" ref="childRef" :type :class="buttonClass" :aria-disabled="disabled">
         <template v-if="hasIconLeft">
-            <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
+            <f-icon
+                v-if="inflight || isInFlight || hasInFlightParent"
+                name="circle-notch-solid"
+                class="button__icon button__spinner"
+            ></f-icon>
             <f-icon
                 v-else-if="props.iconLeft"
                 class="button__icon"
@@ -174,16 +214,23 @@ const buttonClass = computed((): string[] => {
         </template>
         <template v-if="!hasIcon">
             <span class="spinner--before">
-                <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
+                <f-icon
+                    v-if="inflight || isInFlight || hasInFlightParent"
+                    name="circle-notch-solid"
+                    class="button__icon button__spinner"
+                ></f-icon>
             </span>
         </template>
         <!--
         @slot Slot for text to display in the button.
         -->
         <span><slot name="default"></slot></span>
-
         <template v-if="hasIconRight">
-            <f-icon v-if="inflight" name="circle-notch-solid" class="button__icon button__spinner"></f-icon>
+            <f-icon
+                v-if="inflight || isInFlight || hasInFlightParent"
+                name="circle-notch-solid"
+                class="button__icon button__spinner"
+            ></f-icon>
             <f-icon
                 v-else-if="props.iconRight"
                 class="button__icon"

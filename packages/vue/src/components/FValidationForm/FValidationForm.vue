@@ -81,10 +81,11 @@ export default defineComponent({
          */
         "submit",
     ],
-    data(): { validity: GroupValidityEvent; submitted: boolean } {
+    data(): { validity: GroupValidityEvent; submitted: boolean; isInflight: boolean } {
         return {
             validity: { isValid: true, componentsWithError: [], componentCount: 0 },
             submitted: false,
+            isInflight: false,
         };
     },
     computed: {
@@ -145,15 +146,37 @@ export default defineComponent({
             if (await this.hasFormErrors()) {
                 return;
             }
+            // 1. Sätt igång din laddningsstatus
+            this.isInflight = true;
 
-            this.$emit("submit", event);
+            try {
+                // 2. Hämta funktionen direkt från VNodes props eftersom 'emits' rensar bort den från $attrs
+                const parentSubmitHandler = this.$.vnode.props?.onSubmit;
+
+                if (typeof parentSubmitHandler === "function") {
+                    // 3. Vi väntar på din async onSubmit i parent (de 3 sekunderna)
+                    await parentSubmitHandler(event);
+                } else {
+                    this.$emit("submit", event);
+                }
+            } catch (error) {
+                console.error("Något gick fel i parent-funktionen:", error);
+            } finally {
+                // 4. Hit kommer vi när parent-funktionen är helt klar!
+                this.isInflight = false;
+            }
         },
     },
 });
 </script>
 
 <template>
-    <f-validation-group :key="groupKey" v-model="validity" :stop-propagation="true">
+    <f-validation-group
+        :key="groupKey"
+        v-model="validity"
+        :stop-propagation="true"
+        :class="{ 'is-inflight': isInflight }"
+    >
         <!-- [html-validate-disable-next wcag/h32 -- submit button is slotted] -->
         <form :id v-bind="$attrs" novalidate autocomplete="off" @submit.prevent="onSubmit">
             <nav v-if="displayErrors" ref="errors" tabindex="-1" role="group">
