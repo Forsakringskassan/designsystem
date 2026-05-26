@@ -1,7 +1,7 @@
 import "html-validate/vitest";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { type VueWrapper, mount } from "@vue/test-utils";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import { FTextField } from "../FTextField";
 import FValidationForm from "./FValidationForm.vue";
@@ -11,6 +11,7 @@ const WrapperComp = {
     template: /* HTML */ `
         <f-validation-form
             :beforeSubmit="beforeSubmit"
+            :beforeValidation="beforeValidation"
             @submit="$emit('submit')"
         >
             <template #default>
@@ -33,12 +34,12 @@ const WrapperComp = {
             </template>
         </f-validation-form>
     `,
-    inheritAttrs: true,
+    inheritAttrs: false,
     components: {
         FValidationForm,
         FTextField,
     },
-    props: ["beforeSubmit"],
+    props: ["beforeSubmit", "beforeValidation"],
     data() {
         return {
             field1: "",
@@ -58,11 +59,14 @@ const defaultMountingOptions = {
 describe("events", () => {
     it("should emit submit event when valid form submit", async () => {
         expect.assertions(1);
-        const wrapper = await new Promise<VueWrapper>((resolve) => {
+        const onSubmitSpy = vi.fn();
+
+        await new Promise<VueWrapper>((resolve) => {
             const wrapper = mount(WrapperComp, {
                 ...defaultMountingOptions,
-                attrs: {
+                props: {
                     onSubmit() {
+                        onSubmitSpy();
                         resolve(wrapper);
                     },
                 },
@@ -71,18 +75,18 @@ describe("events", () => {
             void wrapper.find("#field2").setValue("bar");
             void wrapper.find("button").trigger("click");
         });
-        const component = wrapper.findComponent(FValidationForm);
-        const emitted = component.emitted("submit");
-        expect(emitted).toHaveLength(1);
+        expect(onSubmitSpy).toHaveBeenCalled();
     });
 
     it("should emit submit event when continued by beforeSubmit callback", async () => {
         expect.assertions(1);
-        const wrapper = await new Promise<VueWrapper>((resolve) => {
+        const onSubmitSpy = vi.fn();
+        await new Promise<VueWrapper>((resolve) => {
             const wrapper = mount(WrapperComp, {
                 ...defaultMountingOptions,
                 attrs: {
                     onSubmit() {
+                        onSubmitSpy();
                         resolve(wrapper);
                     },
                 },
@@ -96,36 +100,55 @@ describe("events", () => {
             void wrapper.find("#field2").setValue("bar");
             void wrapper.find("button").trigger("click");
         });
-        const component = wrapper.findComponent(FValidationForm);
-        const emitted = component.emitted("submit");
-        expect(emitted).toHaveLength(1);
+        expect(onSubmitSpy).toHaveBeenCalled();
     });
 
     it("should not emit submit event when invalid form submit", async () => {
         expect.assertions(1);
-        const wrapper = mount(WrapperComp, defaultMountingOptions);
-        await wrapper.find("button").trigger("click");
-        const component = wrapper.findComponent(FValidationForm);
-        const emitted = component.emitted("submit");
-        expect(emitted).toBeUndefined();
+        const onSubmitSpy = vi.fn();
+        await new Promise<VueWrapper>((resolve) => {
+            const wrapper = mount(WrapperComp, {
+                ...defaultMountingOptions,
+                attrs: {
+                    onSubmit() {
+                        onSubmitSpy();
+                    },
+                },
+                props: {
+                    beforeValidation() {
+                        resolve(wrapper);
+                        return Promise.resolve(FValidationFormAction.CONTINUE);
+                    },
+                },
+            });
+            void wrapper.find("button").trigger("click");
+        });
+
+        expect(onSubmitSpy).not.toHaveBeenCalled();
     });
 
     it("should not emit submit event when cancelled by beforeSubmit callback", async () => {
         expect.assertions(1);
-        const wrapper = mount(WrapperComp, {
-            ...defaultMountingOptions,
-            props: {
-                beforeSubmit() {
-                    return Promise.resolve(FValidationFormAction.CANCEL);
+        const onSubmitSpy = vi.fn();
+        await new Promise<VueWrapper>((resolve) => {
+            expect.assertions(1);
+            const wrapper = mount(WrapperComp, {
+                ...defaultMountingOptions,
+                props: {
+                    beforeSubmit() {
+                        resolve(wrapper);
+                        return Promise.resolve(FValidationFormAction.CANCEL);
+                    },
+                    onSubmit() {
+                        onSubmitSpy();
+                    },
                 },
-            },
+            });
+            void wrapper.find("#field1").setValue("foo");
+            void wrapper.find("#field2").setValue("bar");
+            void wrapper.find("button").trigger("click");
         });
-        await wrapper.find("#field1").setValue("foo");
-        await wrapper.find("#field2").setValue("bar");
-        await wrapper.find("button").trigger("click");
-        const component = wrapper.findComponent(FValidationForm);
-        const emitted = component.emitted("submit");
-        expect(emitted).toBeUndefined();
+        expect(onSubmitSpy).not.toHaveBeenCalled();
     });
 });
 
