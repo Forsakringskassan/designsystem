@@ -1475,6 +1475,7 @@ module.exports = defineMetadata({
 
     "f-badge": {
         flow: true,
+        phrasing: true,
         permittedContent: ["@phrasing"],
         attributes: {
             status: {

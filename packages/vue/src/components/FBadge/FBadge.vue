@@ -28,8 +28,8 @@ const badgeClass = computed(() => {
 </script>
 
 <template>
-    <div class="badge" :class="badgeClass">
+    <span class="badge" :class="badgeClass">
         <!-- @slot Slot for text to display in the badge. -->
         <slot name="default"></slot>
-    </div>
+    </span>
 </template>
