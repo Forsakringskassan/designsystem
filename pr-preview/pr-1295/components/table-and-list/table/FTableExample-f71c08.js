@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/examples/FTableExample.vue:FTableExample-f71c08.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableExample.vue:FTableExample-f71c08.js
 import { defineComponent as _defineComponent } from "vue";
 import { ref } from "vue";
 import { FButton, FSortFilterDataset, useDatasetRef, useModal } from "@fkui/vue";

@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Tabell (kod) - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-73a6c1.css"
+            href="../../../assets/docs-ce4d54.css"
             crossorigin
-            integrity="sha384-KyndbRxrwKHmupPm5Kcco64adAKTt6FMMvjfLuLLn55JVWdnzmXLpJ0ZZT9RB6g5"
+            integrity="sha384-2old3h5Q4A3Lb11o5J/ucfL6N3sh+e88KTkuGLjZTqvX5yIVltFG98SoAnPqe3PO"
             
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-fkui-8bf291.css"
+            href="../../../assets/docs-fkui-892a83.css"
             crossorigin
-            integrity="sha384-rTChEuVmK0a1yKPaoJUPCrb7cFyxgdmLu5fk1esVLv8egJliuHIfidQp9vsGlTCQ"
+            integrity="sha384-U4kQJ4BT9gXdFpq/dShsTKKqvnwz39L3vO/Olnrj0K0q2vJl0vsx/ZagJbIq/+3P"
             
         />
 
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-1c91f8.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-2e85fe.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-7d6206.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-c6eb9f.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../../assets/vendor-fkui-logic-1c91f8.js": "sha384-mp6SG2Ww/cIPEYqg6jTjq3eURsh8UQxZGJRozRrFoQ1j2wT8ROPkhVKXVxnzIFmM",
     "../../../assets/vendor-fkui-date-2e85fe.js": "sha384-xrA9fPmAfTE2H1Zd/5Wd5Z6B+FXD2kEosKe6kfxFdmxr3cznPQZ6Ie3/tSlITmyJ",
-    "../../../assets/vendor-fkui-vue-7d6206.js": "sha384-lHcJsWkawmdztVk+UvcK6EbuSY13McnEb+rFox8OXBg7mCnxlQpqlD+Xxgdwk5Iv",
+    "../../../assets/vendor-fkui-vue-c6eb9f.js": "sha384-a6J8pvKG4NV7ZZNwCK9s2Fd3WAIlYxciguMen/f1c7CgQBaubqTxMLjmvx+IVEtO",
     "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-8948b4.json"
+            href="../../../search-data-4b54c5.json"
             as="fetch"
             crossorigin
-            integrity="sha384-/L6ntxwFukHmhqQSLMj5zGoQP+XRSxG3IzycD2+heNcBv4PhkSDNi378P3q7CtG3"
+            integrity="sha384-nY2Nm5YXQXn0DSZ6Z2RhBlIMBTr4/bq4jPu8KufXJpJ2Gz95/OZ8SMjXI/2NPME4"
             id="search-data"
         />
     </head>
@@ -2049,7 +2049,7 @@ Det finns flera olika typer av kolumner.
 </ul>
 
                 <div
-                    id="example-3e75db"
+                    id="example-8dec27"
                     class="code-preview code-preview--default"
                     
                     
@@ -2058,10 +2058,12 @@ Det finns flera olika typer av kolumner.
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
     {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>,
         <span class="hljs-attr">align</span>: <span class="hljs-string">&quot;left&quot;</span>,
     },
     {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
         <span class="hljs-attr">align</span>: <span class="hljs-string">&quot;right&quot;</span>,
     },
@@ -2070,7 +2072,7 @@ Det finns flera olika typer av kolumner.
                 </div>
             
                 <div
-                    id="example-6985c1"
+                    id="example-5a37ab"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2079,20 +2081,36 @@ Det finns flera olika typer av kolumner.
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-86a286"></div>
+        <div id="example-b43b97"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./code-86a286.js"></script>
+        <script type="module" src="./code-b43b97.js"></script>
     
                     </div>
                 </div>
             <h2 id="tabulara_nummer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabulara_nummer">Tabulära nummer</a></h2><p class="docs-paragraph">Om kolumnen presenterar numerisk data, bör egenskapen <code>tnum</code> sättas till <code>true</code> för att aktivera tabulära nummer.</p>
+<p class="docs-paragraph">Med <code>tnum</code> blir det lättare att jämföra siffervärden i en kolumn.
+Som standard används <code>tnum</code> för texttyperna:</p>
+<ul>
+<li><code>text:bankAccountNumber</code></li>
+<li><code>text:bankgiro</code></li>
+<li><code>text:clearingNumber</code></li>
+<li><code>text:currency</code></li>
+<li><code>text:date</code></li>
+<li><code>text:number</code></li>
+<li><code>text:organisationsnummer</code></li>
+<li><code>text:percent</code></li>
+<li><code>text:personnummer</code></li>
+<li><code>text:phoneNumber</code></li>
+<li><code>text:plusgiro</code></li>
+<li><code>text:postalCode</code></li>
+</ul>
 
                 <div
-                    id="example-704b56"
+                    id="example-d26a3b"
                     class="code-preview code-preview--default"
                     
                     
@@ -2109,7 +2127,7 @@ Det finns flera olika typer av kolumner.
                 </div>
             
                 <div
-                    id="example-5e82f6"
+                    id="example-8fa6d6"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2133,7 +2151,7 @@ Det finns flera olika typer av kolumner.
 <h2 id="framhava_rader" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#framhava_rader">Framhäva rader</a></h2><p class="docs-paragraph">För att få zebrarandig tabell använd propen <code>striped</code>.</p>
 
                 <div
-                    id="example-e594c3"
+                    id="example-1947c9"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2145,7 +2163,7 @@ Det finns flera olika typer av kolumner.
                 </div>
             
                 <div
-                    id="example-e62053"
+                    id="example-52180c"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2168,7 +2186,7 @@ Det finns flera olika typer av kolumner.
 Funktionen tar emot raden och kan returnera <code>string</code>, <code>string[]</code> eller ett objekt med klassnamn.</p>
 
                 <div
-                    id="example-5d6a43"
+                    id="example-45506a"
                     class="code-preview code-preview--default"
                     
                     
@@ -2182,7 +2200,7 @@ Funktionen tar emot raden och kan returnera <code>string</code>, <code>string[]<
                 </div>
             
                 <div
-                    id="example-cd5744"
+                    id="example-64058c"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2197,7 +2215,7 @@ Funktionen tar emot raden och kan returnera <code>string</code>, <code>string[]<
 Som standard visas textnyckeln <code>fkui.ftable.empty.text</code>, se <a href="#textnycklar">Textnycklar</a>.</p>
 
                 <div
-                    id="example-5252b9"
+                    id="example-003dc2"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2211,7 +2229,7 @@ Som standard visas textnyckeln <code>fkui.ftable.empty.text</code>, se <a href="
                 </div>
             
                 <div
-                    id="example-ad1411"
+                    id="example-4f53ad"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2235,7 +2253,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
 <p class="docs-paragraph">Om tabellen har en rubrik (heading) i nära anslutning som också förklarar tabellens innebörd assoccierar du den med <code>aria-labelledby</code>.</p>
 
                 <div
-                    id="example-a48226"
+                    id="example-92e329"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2249,7 +2267,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             <p class="docs-paragraph">Använd caption om tabellen inte har en naturlig rubrik.</p>
 
                 <div
-                    id="example-3c9d6f"
+                    id="example-fa2a9a"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2264,7 +2282,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             <p class="docs-paragraph">I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla.</p>
 
                 <div
-                    id="example-a2c586"
+                    id="example-c1e68b"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2281,7 +2299,7 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             <h2 id="felhantering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#felhantering">Felhantering</a></h2><p class="docs-paragraph">Om ett fel uppstår vid hämtning av tabellens data kan du se till att ett felmeddelande visas med hjälp av <code>#empty</code>-sloten.</p>
 
                 <div
-                    id="example-74c559"
+                    id="example-d995a0"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2574,9 +2592,9 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">test/table-example-dep (<a href="https://github.com/Forsakringskassan/designsystem/commits/064d8d3811ed33a198c39c0ab7151a6910c99a76">064d8d3</a>)<br />
+<div class="footer__right"><div class="version">test/table-example-dep (<a href="https://github.com/Forsakringskassan/designsystem/commits/937f7e246a5bb66e2910972961dd2838c5109a28">937f7e2</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1295">PR 1295</a><br />
-        2026-05-12 13:24
+        2026-05-28 13:20
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2710,16 +2728,16 @@ Tabellrubriken ska hjälpa användaren att hitta till, navigera i och förstå t
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-19655c.js"
+            src="../../../assets/processors/selectable-version/select-version-b1f760.js"
             type="module"
             crossorigin
-            integrity="sha384-tw6L+jj4H9K6Jo/Oi6CqrYe2PUYGLPwhDjJsEZSew833+Fcrek2OhH5IyDgooJTG"
+            integrity="sha384-PDgTCfARpnil/aPHXqLe9au4e1KxI8M7eVeSBw2PyWWRU81/Ud+z/yBWm3uqwtJL"
             
         ></script><script
-            src="../../../assets/main-d3aa2b.js"
+            src="../../../assets/main-f34209.js"
             type="module"
             crossorigin
-            integrity="sha384-zCQEokYSwZMBsPtkul6eVoEgjw+ZaCuOZsfzW07nNv2bpzDnGlVuM933JM8fsWGN"
+            integrity="sha384-iPbtGbOp6NU0AaXCUogu7WZzjB8PrFmGXU+MHbvNFemWAnaOgh+Qu8UWtMUlGfiM"
             
         ></script>
     </body>

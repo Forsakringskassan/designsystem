@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/examples/FTableContextmenuExample.vue:FTableContextmenuExample-3a0b3d.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableContextmenuExample.vue:FTableContextmenuExample-3a0b3d.js
 import { defineComponent as _defineComponent } from "vue";
 import { useDatasetRef } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue";
