@@ -44,11 +44,11 @@ Knapptexten är understruken om en tertiär knapp används utan en ikon.
 +<f-button variant="tertiary"> Knapptext </f-button>
 ```
 
-Svart tertiär knapp används för funktioner som inte har att göra med det huvudsakliga flödet eller innehållet på en sida, tex Skriv ut.
+Nedtonad tertiär knapp används för funktioner som inte har att göra med det huvudsakliga flödet eller innehållet på en sida, till exempel "Skriv ut".
 
 ```diff
 -<f-button variant="tertiary"> Knapptext </f-button>
-+<f-button variant="tertiary" tertiary-style="black"> Knapptext </f-button>
++<f-button variant="tertiary" tertiary-style="muted"> Knapptext </f-button>
 ```
 
 Inverterad tertiär knapp används för att få en bättre kontrast mot en mörk bakgrund.
