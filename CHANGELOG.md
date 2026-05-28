@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 6.48.0 (2026-05-28)
+
+### Features
+
+* **@fkui/test-utils:** add support for Vitest in @fkui/test-utils (refs SFKUI-7787) 41d8021
+* **@fkui/tsconfig:** add node & vite/client to types field for @fkui/tsconfig/vue  (refs SB-4982) 5ef4a50
+* **@fkui/vue:** f-table anchor dynamic href support (refs SFKUI-6500) 596973b
+* **@fkui/vue:** f-table tnum default for text:date (refs SFKUI-6500) 861f76e
+* **deps:** update dependency @forsakringskassan/sass-module-importer to v3 4e0c94c
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** align static and editable table text cell sizing (fixes SFKUI-7862) b04f80d
+* **@fkui/design, @fkui/vue:** f-table readonly text cell styling when using tnum (fixes SFKUI-7860) fa677c3
+* **@fkui/vue:** ensure table cells are visible during keyboard navigation (fixes SFKUI-7483) 51d76eb
+* **@fkui/vue:** f-table selectable column should be shrinked (fixes SFKUI-7895) 78bd6a3
+* **deps:** update dependency @adobe/css-tools to v4.5.0 02d4376
+* **deps:** update dependency sass to v1.100.0 6dc1de1
+
 ## 6.47.0 (2026-05-20)
 
 ### Features
