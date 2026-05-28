@@ -5,6 +5,135 @@
 ```ts
 
 // @public
+export function FBadgeSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+}>;
+
+// @public
+export function FButtonSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+}>;
+
+// @public
+export function FCalendarSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    navCaption(): string;
+    navPrevButton(): string;
+    navNextButton(): string;
+    navYearSelectorButton(): string;
+    dayButton(date: string): string;
+    selectedDay(): string;
+    todayDay(): string;
+    yearSelector(): string;
+}>;
+
+// @public
+export function FCardSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    content(): string;
+    footer(): string;
+    errorMessage(): string;
+}>;
+
+// @public
+export function FCheckboxFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    input(): string;
+    label(): string;
+    details(): string;
+}>;
+
+// @public
+export function FConfirmModalSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    title(): string;
+    content(): string;
+    footer(): string;
+    closeButton(): string;
+    confirmButton(): string;
+    dismissButton(): string;
+}>;
+
+// @public
+export function FContextMenuSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    items(): string;
+    itemLink(): string;
+}>;
+
+// @public
+export function FCrudDatasetSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    addButton(): string;
+    cancelButton(): string;
+    confirmButton(): string;
+}>;
+
+// @public
+export function FDataTableSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    rows(): string;
+    header(col: number): string;
+    cell(descriptor: {
+        row: number;
+        col: number;
+    }): string;
+    caption(): string;
+}>;
+
+// @public
+export function FDatepickerFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    label(): string;
+    errorMessage(): string;
+    input(): string;
+    calendarButton(): string;
+    calendarPopup(): string;
+    calendar(): string;
+}>;
+
+// @public
+export function FDefinitionListSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    terms(): string;
+    definitions(): string;
+}>;
+
+// @public
+export function FDetailsPanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    content(): string;
+    footer(): string;
+}>;
+
+// @public
+export function FDialogueTreeSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    items(): string;
+    itemButton(): string;
+}>;
+
+// @public
+export function FErrorListSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    items(): string;
+    listItems(): string;
+}>;
+
+// @public
+export function FExpandablePanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    toggleButton(): string;
+    expandCollapseIcon(): string;
+    body(): string;
+    notification(): string;
+    relatedInfo(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
@@ -14,11 +143,169 @@ export function FExpandableParagraphSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FFieldsetSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    legend(): string;
+    content(): string;
+    errorMessage(): string;
+    radioButtons(): string;
+    checkboxes(): string;
+}>;
+
+// @public
+export function FFileItemSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    fileName(): string;
+    openLink(): string;
+    deleteButton(): string;
+}>;
+
+// @public
+export function FFileSelectorSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    fileInput(): string;
+    icon(): string;
+}>;
+
+// @public
+export function FFormModalSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    title(): string;
+    content(): string;
+    footer(): string;
+    closeButton(): string;
+    submitButton(): string;
+    cancelButton(): string;
+}>;
+
+// @public
+export function FIconSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    use(): string;
+}>;
+
+// @public
+export function FInteractiveTableSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    rows(): string;
+    selectedRows(): string;
+    header(col: number): string;
+    cell(descriptor: {
+        row: number;
+        col: number;
+    }): string;
+    caption(): string;
+}>;
+
+// @public
+export function FLabelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    description(): string;
+    formatDescription(): string;
+    errorMessage(): string;
+    errorIcon(): string;
+}>;
+
+// @public
+export function FLayoutApplicationTemplateSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    main(): string;
+    footer(): string;
+}>;
+
+// @public
+export function FLayoutLeftPanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    navigation(): string;
+    primary(): string;
+}>;
+
+// @public
+export function FLayoutRightPanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    primary(): string;
+    secondary(): string;
+}>;
+
+// @public
 export function FListSelectors(selector?: string): Readonly<{
     readonly selector: string;
     listItems(this: void): string;
     listItemByIndex(this: void, index: number): string;
     emptyMessage(this: void): string;
+}>;
+
+// @public
+export function FLoaderSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    wrapper(): string;
+    waitText(): string;
+}>;
+
+// @public
+export function FLogoSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+}>;
+
+// @public
+export function FMessageBoxSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    content(): string;
+    heading(): string;
+    icon(): string;
+}>;
+
+// @public
+export function FMinimizablePanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    content(): string;
+    footer(): string;
+}>;
+
+// @public
+export function FModalSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    title(): string;
+    content(): string;
+    footer(): string;
+    primaryButton(): string;
+    secondaryButton(): string;
+    closeButton(): string;
+}>;
+
+// @public
+export function FNavigationMenuSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    items(): string;
+    overflowItems(): string;
+    selectedItem(): string;
+    popupItem(): string;
+}>;
+
+// @public
+export function FOfflineSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    offlineMessage(): string;
+}>;
+
+// @public
+export function FOutputFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    output(): string;
+    label(): string;
+}>;
+
+// @public
+export function FPageHeaderSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    skipLink(): string;
+    logo(): string;
+    appName(): string;
+    right(): string;
 }>;
 
 // @public
@@ -33,6 +320,108 @@ export function FPaginatorSelectors(selector?: string): Readonly<{
     pageButtons(this: void): string;
     pageCounter(this: void): string;
     previousPageButton(this: void): string;
+}>;
+
+// @public
+export function FProgressbarSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    meter(): string;
+}>;
+
+// @public
+export function FRadioFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    input(): string;
+    label(): string;
+    details(): string;
+}>;
+
+// @public
+export function FSelectFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    select(): string;
+    errorMessage(): string;
+    label(): string;
+    selectedOption(): string;
+    arrowIcon(): string;
+}>;
+
+// @public
+export function FSortFilterDatasetSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    searchField(): string;
+    sortField(): string;
+    header(): string;
+}>;
+
+// @public
+export function FStaticFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    label(): string;
+    output(): string;
+}>;
+
+// @public
+export function FTableButtonSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+}>;
+
+// @public
+export function FTableSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    rows(): string;
+    emptyRow(): string;
+    header(col: number): string;
+    cell(descriptor: {
+        row: number;
+        col: number;
+    }): string;
+    caption(): string;
+    footer(): string;
+}>;
+
+// @public
+export function FTextareaFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    textarea(): string;
+    errorMessage(): string;
+    label(): string;
+    errorIcon(): string;
+}>;
+
+// @public
+export function FTextFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    input(): string;
+    errorMessage(): string;
+    label(): string;
+    errorIcon(): string;
+}>;
+
+// @public
+export function FTooltipSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    toggleButton(): string;
+    bubble(): string;
+    header(): string;
+    body(): string;
+    closeButton(): string;
+}>;
+
+// @public
+export function FValidationFormSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    errorList(): string;
+    errorListItems(): string;
+}>;
+
+// @public
+export function FWizardSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    steps(): string;
+    stepContinueButton(): string;
+    stepCancelButton(): string;
+    stepBody(): string;
 }>;
 
 // (No @packageDocumentation comment for this package)
