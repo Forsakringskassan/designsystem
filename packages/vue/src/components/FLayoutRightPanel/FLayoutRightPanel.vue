@@ -155,7 +155,7 @@ export default defineComponent({
                     -->
                     <slot name="content"></slot>
                     <button
-                        class="button button--tertiary button--small button--tertiary--black layout-secondary__secondary__inner__close"
+                        class="button button--tertiary button--small button--tertiary--muted layout-secondary__secondary__inner__close"
                         type="button"
                         @click="onClickCloseSecondary"
                     >
