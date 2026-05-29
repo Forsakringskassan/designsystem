@@ -6935,7 +6935,7 @@ function requireDayjs_min$1() {
 		(function(t, e) {
 			module.exports = e();
 		})(dayjs_min$2, (function() {
-			var t = 1e3, e = 6e4, n = 36e5, r = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", c = "month", f = "quarter", h = "year", d = "date", l = "Invalid Date", $ = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = {
+			var t = 1e3, e = 6e4, n = 36e5, r = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", c = "month", f = "quarter", h = "year", d = "date", l = "Invalid Date", $ = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|YYYY|YY|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = {
 				name: "en",
 				weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),
 				months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"),
@@ -7205,8 +7205,8 @@ function requireDayjs_min$1() {
 				}, m.toString = function() {
 					return this.$d.toUTCString();
 				}, M;
-			}(), k = _.prototype;
-			return O.prototype = k, [
+			}(), Y = _.prototype;
+			return O.prototype = Y, [
 				["$ms", r],
 				["$s", i],
 				["$m", s],
@@ -7216,7 +7216,7 @@ function requireDayjs_min$1() {
 				["$y", h],
 				["$D", d]
 			].forEach((function(t) {
-				k[t[1]] = function(e) {
+				Y[t[1]] = function(e) {
 					return this.$g(e, t[0], t[1]);
 				};
 			})), O.extend = function(t, e) {
@@ -7718,7 +7718,7 @@ function requireDayjs_min() {
 		(function(t, e) {
 			module.exports = e();
 		})(dayjs_min, (function() {
-			var t = 1e3, e = 6e4, n = 36e5, r = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", c = "month", f = "quarter", h = "year", d = "date", l = "Invalid Date", $ = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = {
+			var t = 1e3, e = 6e4, n = 36e5, r = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", c = "month", f = "quarter", h = "year", d = "date", l = "Invalid Date", $ = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|YYYY|YY|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = {
 				name: "en",
 				weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),
 				months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"),
@@ -7988,8 +7988,8 @@ function requireDayjs_min() {
 				}, m.toString = function() {
 					return this.$d.toUTCString();
 				}, M;
-			}(), k = _.prototype;
-			return O.prototype = k, [
+			}(), Y = _.prototype;
+			return O.prototype = Y, [
 				["$ms", r],
 				["$s", i],
 				["$m", s],
@@ -7999,7 +7999,7 @@ function requireDayjs_min() {
 				["$y", h],
 				["$D", d]
 			].forEach((function(t) {
-				k[t[1]] = function(e) {
+				Y[t[1]] = function(e) {
 					return this.$g(e, t[0], t[1]);
 				};
 			})), O.extend = function(t, e) {

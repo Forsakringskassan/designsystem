@@ -61,9 +61,9 @@ var isDate = (val) => toTypeString(val) === "[object Date]";
 var isFunction = (val) => typeof val === "function";
 var isString$1 = (val) => typeof val === "string";
 var isSymbol = (val) => typeof val === "symbol";
-var isObject$2 = (val) => val !== null && typeof val === "object";
+var isObject = (val) => val !== null && typeof val === "object";
 var isPromise = (val) => {
-	return (isObject$2(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
+	return (isObject(val) || isFunction(val)) && isFunction(val.then) && isFunction(val.catch);
 };
 var objectToString = Object.prototype.toString;
 var toTypeString = (value) => objectToString.call(value);
@@ -120,7 +120,7 @@ function normalizeStyle(value) {
 			if (normalized) for (const key in normalized) res[key] = normalized[key];
 		}
 		return res;
-	} else if (isString$1(value) || isObject$2(value)) return value;
+	} else if (isString$1(value) || isObject(value)) return value;
 }
 var listDelimiterRE = /;(?![^(]*\))/g;
 var propertyDelimiterRE = /:([^]+)/;
@@ -142,7 +142,7 @@ function normalizeClass(value) {
 		const normalized = normalizeClass(value[i]);
 		if (normalized) res += normalized + " ";
 	}
-	else if (isObject$2(value)) {
+	else if (isObject(value)) {
 		for (const name in value) if (value[name]) res += name + " ";
 	}
 	return res.trim();
@@ -177,8 +177,8 @@ function looseEqual(a, b) {
 	aValidType = isArray$1(a);
 	bValidType = isArray$1(b);
 	if (aValidType || bValidType) return aValidType && bValidType ? looseCompareArrays(a, b) : false;
-	aValidType = isObject$2(a);
-	bValidType = isObject$2(b);
+	aValidType = isObject(a);
+	bValidType = isObject(b);
 	if (aValidType || bValidType) {
 		if (!aValidType || !bValidType) return false;
 		if (Object.keys(a).length !== Object.keys(b).length) return false;
@@ -197,7 +197,7 @@ var isRef$1 = (val) => {
 	return !!(val && val["__v_isRef"] === true);
 };
 var toDisplayString = (val) => {
-	return isString$1(val) ? val : val == null ? "" : isArray$1(val) || isObject$2(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
+	return isString$1(val) ? val : val == null ? "" : isArray$1(val) || isObject(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef$1(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
 };
 var replacer = (_key, val) => {
 	if (isRef$1(val)) return replacer(_key, val.value);
@@ -207,7 +207,7 @@ var replacer = (_key, val) => {
 	}, {}) };
 	else if (isSet$1(val)) return { [`Set(${val.size})`]: [...val.values()].map((v) => stringifySymbol(v)) };
 	else if (isSymbol(val)) return stringifySymbol(val);
-	else if (isObject$2(val) && !isArray$1(val) && !isPlainObject(val)) return String(val);
+	else if (isObject(val) && !isArray$1(val) && !isPlainObject(val)) return String(val);
 	return val;
 };
 var stringifySymbol = (v, i = "") => {
@@ -342,9 +342,6 @@ var EffectScope = class {
 };
 function getCurrentScope() {
 	return activeEffectScope;
-}
-function onScopeDispose(fn, failSilently = false) {
-	if (activeEffectScope) activeEffectScope.cleanups.push(fn);
 }
 var activeSub;
 var pausedQueueEffects = /* @__PURE__ */ new WeakSet();
@@ -961,9 +958,9 @@ var BaseReactiveHandler = class {
 		if (isShallow2) return res;
 		if (/* @__PURE__ */ isRef(res)) {
 			const value = targetIsArray && isIntegerKey(key) ? res : res.value;
-			return isReadonly2 && isObject$2(value) ? /* @__PURE__ */ readonly(value) : value;
+			return isReadonly2 && isObject(value) ? /* @__PURE__ */ readonly(value) : value;
 		}
-		if (isObject$2(res)) return isReadonly2 ? /* @__PURE__ */ readonly(res) : /* @__PURE__ */ reactive(res);
+		if (isObject(res)) return isReadonly2 ? /* @__PURE__ */ readonly(res) : /* @__PURE__ */ reactive(res);
 		return res;
 	}
 };
@@ -1204,7 +1201,7 @@ function readonly(target) {
 	return createReactiveObject(target, true, readonlyHandlers, readonlyCollectionHandlers, readonlyMap);
 }
 function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandlers, proxyMap) {
-	if (!isObject$2(target)) return target;
+	if (!isObject(target)) return target;
 	if (target["__v_raw"] && !(isReadonly2 && target["__v_isReactive"])) return target;
 	const targetType = getTargetType(target);
 	if (targetType === 0) return target;
@@ -1240,8 +1237,8 @@ function markRaw(value) {
 	if (!hasOwn(value, "__v_skip") && Object.isExtensible(value)) def(value, "__v_skip", true);
 	return value;
 }
-var toReactive = (value) => isObject$2(value) ? /* @__PURE__ */ reactive(value) : value;
-var toReadonly = (value) => isObject$2(value) ? /* @__PURE__ */ readonly(value) : value;
+var toReactive = (value) => isObject(value) ? /* @__PURE__ */ reactive(value) : value;
+var toReadonly = (value) => isObject(value) ? /* @__PURE__ */ readonly(value) : value;
 /* @__NO_SIDE_EFFECTS__ */
 function isRef(r) {
 	return r ? r["__v_isRef"] === true : false;
@@ -1301,25 +1298,6 @@ var shallowUnwrapHandlers = {
 function proxyRefs(objectWithRefs) {
 	return /* @__PURE__ */ isReactive(objectWithRefs) ? objectWithRefs : new Proxy(objectWithRefs, shallowUnwrapHandlers);
 }
-var CustomRefImpl = class {
-	constructor(factory) {
-		this["__v_isRef"] = true;
-		this._value = void 0;
-		const dep = this.dep = new Dep();
-		const { get, set } = factory(dep.track.bind(dep), dep.trigger.bind(dep));
-		this._get = get;
-		this._set = set;
-	}
-	get value() {
-		return this._value = this._get();
-	}
-	set value(newVal) {
-		this._set(newVal);
-	}
-};
-function customRef(factory) {
-	return new CustomRefImpl(factory);
-}
 var ObjectRefImpl = class {
 	constructor(_object, key, _defaultValue) {
 		this._object = _object;
@@ -1369,7 +1347,7 @@ var GetterRefImpl = class {
 function toRef(source, key, defaultValue) {
 	if (/* @__PURE__ */ isRef(source)) return source;
 	else if (isFunction(source)) return new GetterRefImpl(source);
-	else if (isObject$2(source) && arguments.length > 1) return propertyToRef(source, key, defaultValue);
+	else if (isObject(source) && arguments.length > 1) return propertyToRef(source, key, defaultValue);
 	else return /* @__PURE__ */ ref(source);
 }
 function propertyToRef(source, key, defaultValue) {
@@ -1564,7 +1542,7 @@ function watch$1(source, cb, options = EMPTY_OBJ) {
 	return watchHandle;
 }
 function traverse(value, depth = Infinity, seen) {
-	if (depth <= 0 || !isObject$2(value) || value["__v_skip"]) return value;
+	if (depth <= 0 || !isObject(value) || value["__v_skip"]) return value;
 	seen = seen || /* @__PURE__ */ new Map();
 	if ((seen.get(value) || 0) >= depth) return value;
 	seen.set(value, depth);
@@ -1838,9 +1816,6 @@ var useSSRContext = () => {
 function watchEffect(effect, options) {
 	return doWatch(effect, null, options);
 }
-function watchSyncEffect(effect, options) {
-	return doWatch(effect, null, { flush: "sync" });
-}
 function watch(source, cb, options) {
 	return doWatch(source, cb, options);
 }
@@ -1916,7 +1891,7 @@ function createPathGetter(ctx, path) {
 var pendingMounts = /* @__PURE__ */ new WeakMap();
 var TeleportEndKey = /* @__PURE__ */ Symbol("_vte");
 var isTeleport = (type) => type.__isTeleport;
-var isTeleportDisabled$1 = (props) => props && (props.disabled || props.disabled === "");
+var isTeleportDisabled = (props) => props && (props.disabled || props.disabled === "");
 var isTeleportDeferred = (props) => props && (props.defer || props.defer === "");
 var isTargetSVG = (target) => typeof SVGElement !== "undefined" && target instanceof SVGElement;
 var isTargetMathML = (target) => typeof MathMLElement === "function" && target instanceof MathMLElement;
@@ -1931,13 +1906,13 @@ var TeleportImpl = {
 	__isTeleport: true,
 	process(n1, n2, container, anchor, parentComponent, parentSuspense, namespace, slotScopeIds, optimized, internals) {
 		const { mc: mountChildren, pc: patchChildren, pbc: patchBlockChildren, o: { insert, querySelector, createText, createComment, parentNode } } = internals;
-		const disabled = isTeleportDisabled$1(n2.props);
+		const disabled = isTeleportDisabled(n2.props);
 		let { dynamicChildren } = n2;
 		const mount = (vnode, container2, anchor2) => {
 			if (vnode.shapeFlag & 16) mountChildren(vnode.children, container2, anchor2, parentComponent, parentSuspense, namespace, slotScopeIds, optimized);
 		};
 		const mountToTarget = (vnode = n2) => {
-			const disabled2 = isTeleportDisabled$1(vnode.props);
+			const disabled2 = isTeleportDisabled(vnode.props);
 			const target = vnode.target = resolveTarget(vnode.props, querySelector);
 			const targetAnchor = prepareAnchor(target, vnode, createText, insert);
 			if (target) {
@@ -1954,7 +1929,7 @@ var TeleportImpl = {
 			const mountJob = () => {
 				if (pendingMounts.get(vnode) !== mountJob) return;
 				pendingMounts.delete(vnode);
-				if (isTeleportDisabled$1(vnode.props)) {
+				if (isTeleportDisabled(vnode.props)) {
 					mount(vnode, parentNode(vnode.el) || container, vnode.anchor);
 					updateCssVars(vnode, true);
 				}
@@ -1990,7 +1965,7 @@ var TeleportImpl = {
 			n2.targetStart = n1.targetStart;
 			const target = n2.target = n1.target;
 			const targetAnchor = n2.targetAnchor = n1.targetAnchor;
-			const wasDisabled = isTeleportDisabled$1(n1.props);
+			const wasDisabled = isTeleportDisabled(n1.props);
 			const currentContainer = wasDisabled ? container : target;
 			const currentAnchor = wasDisabled ? mainAnchor : targetAnchor;
 			if (namespace === "svg" || isTargetSVG(target)) namespace = "svg";
@@ -2011,7 +1986,7 @@ var TeleportImpl = {
 	},
 	remove(vnode, parentComponent, parentSuspense, { um: unmount, o: { remove: hostRemove } }, doRemove) {
 		const { shapeFlag, children, anchor, targetStart, targetAnchor, target, props } = vnode;
-		let shouldRemove = doRemove || !isTeleportDisabled$1(props);
+		let shouldRemove = doRemove || !isTeleportDisabled(props);
 		const pendingMount = pendingMounts.get(vnode);
 		if (pendingMount) {
 			pendingMount.flags |= 8;
@@ -2036,7 +2011,7 @@ function moveTeleport(vnode, container, parentAnchor, { o: { insert }, m: move }
 	const { el, anchor, shapeFlag, children, props } = vnode;
 	const isReorder = moveType === 2;
 	if (isReorder) insert(el, container, parentAnchor);
-	if (!pendingMounts.has(vnode) && (!isReorder || isTeleportDisabled$1(props))) {
+	if (!pendingMounts.has(vnode) && (!isReorder || isTeleportDisabled(props))) {
 		if (shapeFlag & 16) for (let i = 0; i < children.length; i++) move(children[i], container, parentAnchor, 2);
 	}
 	if (isReorder) insert(anchor, container, parentAnchor);
@@ -2060,7 +2035,7 @@ function hydrateTeleport(node, vnode, parentComponent, parentSuspense, slotScope
 		vnode2.anchor = hydrateChildren(nextSibling(node2), vnode2, parentNode(node2), parentComponent, parentSuspense, slotScopeIds, optimized);
 	}
 	const target = vnode.target = resolveTarget(vnode.props, querySelector);
-	const disabled = isTeleportDisabled$1(vnode.props);
+	const disabled = isTeleportDisabled(vnode.props);
 	if (target) {
 		const targetNode = target._lpa || target.firstChild;
 		if (vnode.shapeFlag & 16) if (disabled) {
@@ -2405,13 +2380,13 @@ function onErrorCaptured(hook, target = currentInstance) {
 	injectHook("ec", hook, target);
 }
 var COMPONENTS = "components";
+var DIRECTIVES = "directives";
 function resolveComponent(name, maybeSelfReference) {
 	return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name;
 }
 var NULL_DYNAMIC_COMPONENT = /* @__PURE__ */ Symbol.for("v-ndc");
-function resolveDynamicComponent(component) {
-	if (isString$1(component)) return resolveAsset(COMPONENTS, component, false) || component;
-	else return component || NULL_DYNAMIC_COMPONENT;
+function resolveDirective(name) {
+	return resolveAsset(DIRECTIVES, name);
 }
 function resolveAsset(type, name, warnMissing = true, maybeSelfReference = false) {
 	const instance = currentRenderingInstance || currentInstance;
@@ -2447,7 +2422,7 @@ function renderList(source, renderItem, cache, index) {
 	} else if (typeof source === "number") {
 		ret = new Array(source);
 		for (let i = 0; i < source; i++) ret[i] = renderItem(i + 1, i, void 0, cached && cached[i]);
-	} else if (isObject$2(source)) if (source[Symbol.iterator]) ret = Array.from(source, (item, i) => renderItem(item, i, void 0, cached && cached[i]));
+	} else if (isObject(source)) if (source[Symbol.iterator]) ret = Array.from(source, (item, i) => renderItem(item, i, void 0, cached && cached[i]));
 	else {
 		const keys = Object.keys(source);
 		ret = new Array(keys.length);
@@ -2581,23 +2556,8 @@ var PublicInstanceProxyHandlers = {
 		return Reflect.defineProperty(target, key, descriptor);
 	}
 };
-function useSlots() {
-	return getContext("useSlots").slots;
-}
-function useAttrs() {
-	return getContext("useAttrs").attrs;
-}
-function getContext(calledFunctionName) {
-	const i = getCurrentInstance();
-	return i.setupContext || (i.setupContext = createSetupContext(i));
-}
 function normalizePropsOrEmits(props) {
 	return isArray$1(props) ? props.reduce((normalized, p) => (normalized[p] = null, normalized), {}) : props;
-}
-function mergeModels(a, b) {
-	if (!a || !b) return a || b;
-	if (isArray$1(a) && isArray$1(b)) return a.concat(b);
-	return extend({}, normalizePropsOrEmits(a), normalizePropsOrEmits(b));
 }
 var shouldCacheAccess = true;
 function applyOptions(instance) {
@@ -2615,7 +2575,7 @@ function applyOptions(instance) {
 	}
 	if (dataOptions) {
 		const data = dataOptions.call(publicThis, publicThis);
-		if (!isObject$2(data)) {} else instance.data = /* @__PURE__ */ reactive(data);
+		if (!isObject(data)) {} else instance.data = /* @__PURE__ */ reactive(data);
 	}
 	shouldCacheAccess = true;
 	if (computedOptions) for (const key in computedOptions) {
@@ -2678,7 +2638,7 @@ function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP) 
 	for (const key in injectOptions) {
 		const opt = injectOptions[key];
 		let injected;
-		if (isObject$2(opt)) if ("default" in opt) injected = inject(opt.from || key, opt.default, true);
+		if (isObject(opt)) if ("default" in opt) injected = inject(opt.from || key, opt.default, true);
 		else injected = inject(opt.from || key);
 		else injected = inject(opt);
 		if (/* @__PURE__ */ isRef(injected)) Object.defineProperty(ctx, key, {
@@ -2699,7 +2659,7 @@ function createWatcher(raw, ctx, publicThis, key) {
 		const handler = ctx[raw];
 		if (isFunction(handler)) watch(getter, handler);
 	} else if (isFunction(raw)) watch(getter, raw.bind(publicThis));
-	else if (isObject$2(raw)) if (isArray$1(raw)) raw.forEach((r) => createWatcher(r, ctx, publicThis, key));
+	else if (isObject(raw)) if (isArray$1(raw)) raw.forEach((r) => createWatcher(r, ctx, publicThis, key));
 	else {
 		const handler = isFunction(raw.handler) ? raw.handler.bind(publicThis) : ctx[raw.handler];
 		if (isFunction(handler)) watch(getter, handler, raw);
@@ -2718,7 +2678,7 @@ function resolveMergedOptions(instance) {
 		if (globalMixins.length) globalMixins.forEach((m) => mergeOptions$1(resolved, m, optionMergeStrategies, true));
 		mergeOptions$1(resolved, base, optionMergeStrategies);
 	}
-	if (isObject$2(base)) cache.set(base, resolved);
+	if (isObject(base)) cache.set(base, resolved);
 	return resolved;
 }
 function mergeOptions$1(to, from, strats, asMixin = false) {
@@ -2819,7 +2779,7 @@ var uid$1 = 0;
 function createAppAPI(render, hydrate) {
 	return function createApp(rootComponent, rootProps = null) {
 		if (!isFunction(rootComponent)) rootComponent = extend({}, rootComponent);
-		if (rootProps != null && !isObject$2(rootProps)) rootProps = null;
+		if (rootProps != null && !isObject(rootProps)) rootProps = null;
 		const context = createAppContext();
 		const installedPlugins = /* @__PURE__ */ new WeakSet();
 		const pluginCleanupFns = [];
@@ -2902,54 +2862,6 @@ function createAppAPI(render, hydrate) {
 	};
 }
 var currentApp = null;
-function useModel(props, name, options = EMPTY_OBJ) {
-	const i = getCurrentInstance();
-	const camelizedName = camelize(name);
-	const hyphenatedName = hyphenate(name);
-	const modifiers = getModelModifiers(props, camelizedName);
-	const res = customRef((track, trigger) => {
-		let localValue;
-		let prevSetValue = EMPTY_OBJ;
-		let prevEmittedValue;
-		watchSyncEffect(() => {
-			const propValue = props[camelizedName];
-			if (hasChanged(localValue, propValue)) {
-				localValue = propValue;
-				trigger();
-			}
-		});
-		return {
-			get() {
-				track();
-				return options.get ? options.get(localValue) : localValue;
-			},
-			set(value) {
-				const emittedValue = options.set ? options.set(value) : value;
-				if (!hasChanged(emittedValue, localValue) && !(prevSetValue !== EMPTY_OBJ && hasChanged(value, prevSetValue))) return;
-				const rawProps = i.vnode.props;
-				if (!(rawProps && (name in rawProps || camelizedName in rawProps || hyphenatedName in rawProps) && (`onUpdate:${name}` in rawProps || `onUpdate:${camelizedName}` in rawProps || `onUpdate:${hyphenatedName}` in rawProps))) {
-					localValue = value;
-					trigger();
-				}
-				i.emit(`update:${name}`, emittedValue);
-				if (hasChanged(value, emittedValue) && hasChanged(value, prevSetValue) && !hasChanged(emittedValue, prevEmittedValue)) trigger();
-				prevSetValue = value;
-				prevEmittedValue = emittedValue;
-			}
-		};
-	});
-	res[Symbol.iterator] = () => {
-		let i2 = 0;
-		return { next() {
-			if (i2 < 2) return {
-				value: i2++ ? modifiers || EMPTY_OBJ : res,
-				done: false
-			};
-			else return { done: true };
-		} };
-	};
-	return res;
-}
 var getModelModifiers = (props, modelName) => {
 	return modelName === "modelValue" || modelName === "model-value" ? props.modelModifiers : props[`${modelName}Modifiers`] || props[`${camelize(modelName)}Modifiers`] || props[`${hyphenate(modelName)}Modifiers`];
 };
@@ -2996,12 +2908,12 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
 		if (comp.mixins) comp.mixins.forEach(extendEmits);
 	}
 	if (!raw && !hasExtends) {
-		if (isObject$2(comp)) cache.set(comp, null);
+		if (isObject(comp)) cache.set(comp, null);
 		return null;
 	}
 	if (isArray$1(raw)) raw.forEach((key) => normalized[key] = null);
 	else extend(normalized, raw);
-	if (isObject$2(comp)) cache.set(comp, normalized);
+	if (isObject(comp)) cache.set(comp, normalized);
 	return normalized;
 }
 function isEmitListener(options, key) {
@@ -3104,7 +3016,7 @@ function hasPropsChanged(prevProps, nextProps, emitsOptions) {
 function hasPropValueChanged(nextProps, prevProps, key) {
 	const nextProp = nextProps[key];
 	const prevProp = prevProps[key];
-	if (key === "style" && isObject$2(nextProp) && isObject$2(prevProp)) return !looseEqual(nextProp, prevProp);
+	if (key === "style" && isObject(nextProp) && isObject(prevProp)) return !looseEqual(nextProp, prevProp);
 	return nextProp !== prevProp;
 }
 function updateHOCHostEl({ vnode, parent, suspense }, el) {
@@ -3249,7 +3161,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
 		if (comp.mixins) comp.mixins.forEach(extendProps);
 	}
 	if (!raw && !hasExtends) {
-		if (isObject$2(comp)) cache.set(comp, EMPTY_ARR);
+		if (isObject(comp)) cache.set(comp, EMPTY_ARR);
 		return EMPTY_ARR;
 	}
 	if (isArray$1(raw)) for (let i = 0; i < raw.length; i++) {
@@ -3279,7 +3191,7 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
 		}
 	}
 	const res = [normalized, needCastKeys];
-	if (isObject$2(comp)) cache.set(comp, res);
+	if (isObject(comp)) cache.set(comp, res);
 	return res;
 }
 function validatePropName(key) {
@@ -4156,12 +4068,12 @@ function _createVNode(type, props = null, children = null, patchFlag = 0, dynami
 		props = guardReactiveProps(props);
 		let { class: klass, style } = props;
 		if (klass && !isString$1(klass)) props.class = normalizeClass(klass);
-		if (isObject$2(style)) {
+		if (isObject(style)) {
 			if (/* @__PURE__ */ isProxy(style) && !isArray$1(style)) style = extend({}, style);
 			props.style = normalizeStyle(style);
 		}
 	}
-	const shapeFlag = isString$1(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject$2(type) ? 4 : isFunction(type) ? 2 : 0;
+	const shapeFlag = isString$1(type) ? 1 : isSuspense(type) ? 128 : isTeleport(type) ? 64 : isObject(type) ? 4 : isFunction(type) ? 2 : 0;
 	return createBaseVNode(type, props, children, patchFlag, dynamicProps, shapeFlag, isBlockNode, true);
 }
 function guardReactiveProps(props) {
@@ -4426,7 +4338,7 @@ function setupStatefulComponent(instance, isSSR) {
 function handleSetupResult(instance, setupResult, isSSR) {
 	if (isFunction(setupResult)) if (instance.type.__ssrInlineRender) instance.ssrRender = setupResult;
 	else instance.render = setupResult;
-	else if (isObject$2(setupResult)) instance.setupState = proxyRefs(setupResult);
+	else if (isObject(setupResult)) instance.setupState = proxyRefs(setupResult);
 	finishComponentSetup(instance, isSSR);
 }
 var compile;
@@ -4499,7 +4411,7 @@ function h(type, propsOrChildren, children) {
 	try {
 		setBlockTracking(-1);
 		const l = arguments.length;
-		if (l === 2) if (isObject$2(propsOrChildren) && !isArray$1(propsOrChildren)) {
+		if (l === 2) if (isObject(propsOrChildren) && !isArray$1(propsOrChildren)) {
 			if (isVNode(propsOrChildren)) return createVNode(type, null, [propsOrChildren]);
 			return createVNode(type, propsOrChildren);
 		} else return createVNode(type, null, propsOrChildren);
@@ -4586,35 +4498,6 @@ function patchClass(el, value, isSVG) {
 }
 var vShowOriginalDisplay = /* @__PURE__ */ Symbol("_vod");
 var vShowHidden = /* @__PURE__ */ Symbol("_vsh");
-var vShow = {
-	name: "show",
-	beforeMount(el, { value }, { transition }) {
-		el[vShowOriginalDisplay] = el.style.display === "none" ? "" : el.style.display;
-		if (transition && value) transition.beforeEnter(el);
-		else setDisplay(el, value);
-	},
-	mounted(el, { value }, { transition }) {
-		if (transition && value) transition.enter(el);
-	},
-	updated(el, { value, oldValue }, { transition }) {
-		if (!value === !oldValue) return;
-		if (transition) if (value) {
-			transition.beforeEnter(el);
-			setDisplay(el, true);
-			transition.enter(el);
-		} else transition.leave(el, () => {
-			setDisplay(el, false);
-		});
-		else setDisplay(el, value);
-	},
-	beforeUnmount(el, { value }) {
-		setDisplay(el, value);
-	}
-};
-function setDisplay(el, value) {
-	el.style.display = value ? el[vShowOriginalDisplay] : "none";
-	el[vShowHidden] = !value;
-}
 var CSS_VAR_TEXT = /* @__PURE__ */ Symbol("");
 var displayRE = /(?:^|;)\s*display\s*:/;
 function patchStyle(el, prev, next) {
@@ -5134,76 +5017,6 @@ function isSet(value) {
 */
 function isString(value) {
 	return typeof value === "string" || value instanceof String;
-}
-/**
-* An error indicating that a mandatory value is not set.
-*
-* @public
-*/
-var MissingValueError = class MissingValueError extends Error {
-	constructor(message) {
-		super(message);
-		this.name = "MissingValueError";
-		Object.setPrototypeOf(this, MissingValueError.prototype);
-	}
-};
-/**
-* [Assertion function][ts-handbook] to assert that a nullable Vue ref holds a
-* non-null value. Typically used with template refs but any nullable ref can be
-* used.
-*
-* Throws {@link MissingValueError} if the ref holds `null` or `undefined`, or
-* the ref itself is `null` or `undefined`.
-*
-* [ts-handbook]: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#assertion-functions
-*
-*  @example
-*
-* ```ts
-* const element = useTemplateRef("my-template-ref");
-* //    ^?   Readonly<ShallowRef<HTMLElement | null>>
-*
-* assertRef(element);
-*
-* // element is now guaranteed to be a HTMLElement ref
-* ```
-*
-* @public
-* @since v6.15.0
-* @param ref - the value asserted to be a ref.
-* @param message - an optional exception message to use if the check fails.
-* @throws {@link MissingValueError} if value is not set.
-*/
-function assertRef(ref, message = "Expected ref to have a non-null value, but it did not") {
-	if (!isSet(ref?.value)) throw new MissingValueError(message);
-}
-/**
-* [Assertion function][ts-handbook] to assert that a value is set.
-* Any value that is not null or undefined is considered set including falsy values such as 0 or "".
-*
-* Throws {@link MissingValueError} if value is not set.
-*
-* [ts-handbook]: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#assertion-functions
-*
-*  @example
-*
-* ```ts
-* const value = getValue();
-* //    ^?   string | null
-*
-* assertSet(value);
-*
-* // value is now guaranteed to be non-null
-* ```
-*
-* @public
-* @since v6.15.0
-* @param value - the value asserted to be set.
-* @param message - an optional exception message to use if the check fails.
-* @throws {@link MissingValueError} if value is not set.
-*/
-function assertSet(value, message = "Expected value to be set, but it was not") {
-	if (!isSet(value)) throw new MissingValueError(message);
 }
 /**
 * @public
@@ -6770,7 +6583,7 @@ function requireDayjs_min$1() {
 		(function(t, e) {
 			module.exports = e();
 		})(dayjs_min$2, (function() {
-			var t = 1e3, e = 6e4, n = 36e5, r = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", c = "month", f = "quarter", h = "year", d = "date", l = "Invalid Date", $ = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = {
+			var t = 1e3, e = 6e4, n = 36e5, r = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", c = "month", f = "quarter", h = "year", d = "date", l = "Invalid Date", $ = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|YYYY|YY|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = {
 				name: "en",
 				weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),
 				months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"),
@@ -7040,8 +6853,8 @@ function requireDayjs_min$1() {
 				}, m.toString = function() {
 					return this.$d.toUTCString();
 				}, M;
-			}(), k = _.prototype;
-			return O.prototype = k, [
+			}(), Y = _.prototype;
+			return O.prototype = Y, [
 				["$ms", r],
 				["$s", i],
 				["$m", s],
@@ -7051,7 +6864,7 @@ function requireDayjs_min$1() {
 				["$y", h],
 				["$D", d]
 			].forEach((function(t) {
-				k[t[1]] = function(e) {
+				Y[t[1]] = function(e) {
 					return this.$g(e, t[0], t[1]);
 				};
 			})), O.extend = function(t, e) {
@@ -7633,23 +7446,6 @@ function replaceCommaWithDot(str) {
 function replaceMinusSignWithDash(str) {
 	return str.replace("−", "-");
 }
-function replaceDotWithComma(str) {
-	return str.replace(".", ",");
-}
-function formatSwedishNotation(value, decimals) {
-	if (decimals !== void 0) value = Number(value.toFixed(decimals));
-	return replaceDotWithComma(value.toLocaleString("sv-SE", { minimumFractionDigits: decimals }));
-}
-/**
-* Format number with thousand separator and use comma as decimal separator.
-*
-* @public
-*/
-function formatNumber(value, decimals) {
-	if (typeof value === "string") value = parseNumber(value) ?? "";
-	if (typeof value !== "number" || Number.isNaN(value)) return;
-	return formatSwedishNotation(value, decimals);
-}
 /**
 * @public
 */
@@ -7736,16 +7532,6 @@ function parsePersonnummerLuhn(value) {
 	if (!parsed) return;
 	if (!validChecksum(parsed)) return;
 	return parsed;
-}
-/**
-* Formats personnummer to a 10-digit string.
-*
-* @public
-*/
-function formatPersonnummer(value) {
-	if (!isSet(value)) return;
-	if (FDate.now().year - Number(value.slice(0, 4)) >= 100) return value.slice(2).replace("-", "+");
-	return value.slice(2);
 }
 /**
 * Formats personnummer to a 8-digit date.
@@ -7873,9 +7659,6 @@ function scrollToSlow(element, duration, offset = 0) {
 		}, interval);
 	});
 }
-var sym$1 = /* @__PURE__ */ Symbol("focus-stack");
-var _stackHandleCounter = 0;
-var _focusElementStack = [];
 var TABBABLE_ELEMENT_SELECTOR = /* @__PURE__ */ [
 	"a[href]",
 	"area[href]",
@@ -7954,78 +7737,6 @@ function isTabbable(element) {
 	const tabindexAttr = element instanceof HTMLElement ? element.tabIndex : 0;
 	const visible = element instanceof HTMLElement ? isVisible(element) : false;
 	return !isDisabled(element) && tabindexAttr !== -1 && visible && element.matches(TABBABLE_ELEMENT_SELECTOR);
-}
-/**
-* Find all visible and tabbable elements.
-*
-* @public
-* @param root - Element or document to find tabbable elements in.
-* @returns List of matching elements
-*/
-function findTabbableElements(root) {
-	const selector = TABBABLE_ELEMENT_SELECTOR;
-	const nodes = root.querySelectorAll(selector);
-	return Array.from(nodes).filter(isTabbable);
-}
-/**
-* Save current active element focus on the stack and set focus on element
-*
-* @public
-* @param element - The element to set focus on
-*/
-function pushFocus(element) {
-	const stackFrame = {
-		id: _stackHandleCounter++,
-		element: document.activeElement
-	};
-	_focusElementStack.push(stackFrame);
-	focus$1(element);
-	return { [sym$1]: stackFrame.id };
-}
-/**
-* Restore the focus on the last element from the stack
-*
-* @public
-* @param handle - The stack handle returned from the corresponding `pushFocus` call.
-* @param options - Options for `popFocus`.
-* @throws Error when pop is called on an empty focus stack
-* @throws Error when pop is called without a valid StackHandle
-*/
-function popFocus(handle, options = {}) {
-	const { restoreFocus = true } = options;
-	if (_focusElementStack.length === 0) {
-		const emptyStackErrorMsg = "Can not call pop on an empty focus stack";
-		if (configLogic.production) {
-			console.error(emptyStackErrorMsg);
-			return;
-		} else throw new Error(emptyStackErrorMsg);
-	}
-	const top = _focusElementStack.pop();
-	if (top?.id !== handle[sym$1]) {
-		const outOfOrderErrorMsg = `push/pop called out-of-order. Expected stack handle id: ${String(top?.id)} but got ${String(handle[sym$1])}`;
-		if (configLogic.production) {
-			console.error(outOfOrderErrorMsg);
-			return;
-		} else throw new Error(outOfOrderErrorMsg);
-	}
-	if (restoreFocus) focus$1(top?.element);
-}
-/**
-* Handle tab focus between given containers focusable elements
-*
-* @public
-* @param event - tab KeyboardEvent
-* @param container - containing focusable elements
-*/
-function handleTab(event, container) {
-	const elements = findTabbableElements(container);
-	let targetIndex = elements.indexOf(event.target);
-	if (event.shiftKey) targetIndex--;
-	else targetIndex++;
-	if (targetIndex < 0) targetIndex = elements.length - 1;
-	else if (targetIndex >= elements.length) targetIndex = 0;
-	focus$1(elements[targetIndex]);
-	event.preventDefault();
 }
 /**
 * Check if element is of type radiobutton or checkbox
@@ -8676,7 +8387,7 @@ var bankgiroValidator = {
 		return isEmpty(value) || isSet(parseBankgiro(value));
 	}
 };
-function toArray$1(value) {
+function toArray(value) {
 	if (Array.isArray(value)) return value;
 	else return [value];
 }
@@ -8684,7 +8395,7 @@ var blacklistValidator = {
 	name: "blacklist",
 	validation(value, _element, config) {
 		if (!config.values) throw new Error("config.exclude must have values");
-		return !toArray$1(config.values).some((it) => String(it) === value);
+		return !toArray(config.values).some((it) => String(it) === value);
 	}
 };
 var clearingNumberValidator = {
@@ -9015,59 +8726,7 @@ var availableValidators = [
 		}
 	}
 ];
-/**
-* Defer execution of passed function to allow screen reader to update.
-* Used if screen reader has not been updated with changed or added
-* aria attributes before interaction.
-*
-* See issue:
-* https://github.com/nvaccess/nvda/issues/12738
-*
-* @public
-*/
-function waitForScreenReader(callback, delay = 100) {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			try {
-				resolve(callback());
-			} catch (err) {
-				reject(err);
-			}
-		}, delay);
-	});
-}
-/**
-* Delay before {@link alertScreenReader} text is removed.
-*
-* @internal
-*/
-var REMOVE_TEXT_DELAY = 2e3;
-var defaultOptions$2 = { assertive: false };
 var wrapper;
-/**
-* Trigger screen reader to read the passed text.
-*
-* @public
-* @param text - text to be read by screen reader.
-* @param options - options for wrapper element attributes.
-*/
-function alertScreenReader(text, options) {
-	const mergedOptions = {
-		...defaultOptions$2,
-		...options
-	};
-	const wrapper = getWrapper();
-	updateProperties(mergedOptions);
-	const msg = document.createElement("p");
-	msg.textContent = text;
-	waitForScreenReader(() => {
-		while (wrapper.firstChild) wrapper.firstChild.remove();
-		wrapper.append(msg);
-		setTimeout(() => {
-			if (msg.parentElement === wrapper) msg.remove();
-		}, REMOVE_TEXT_DELAY);
-	});
-}
 /**
 * Create an element for adding text to be read by a screen reader.
 *
@@ -9118,7 +8777,7 @@ function requireDayjs_min() {
 		(function(t, e) {
 			module.exports = e();
 		})(dayjs_min, (function() {
-			var t = 1e3, e = 6e4, n = 36e5, r = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", c = "month", f = "quarter", h = "year", d = "date", l = "Invalid Date", $ = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = {
+			var t = 1e3, e = 6e4, n = 36e5, r = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", c = "month", f = "quarter", h = "year", d = "date", l = "Invalid Date", $ = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|YYYY|YY|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = {
 				name: "en",
 				weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),
 				months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"),
@@ -9388,8 +9047,8 @@ function requireDayjs_min() {
 				}, m.toString = function() {
 					return this.$d.toUTCString();
 				}, M;
-			}(), k = _.prototype;
-			return O.prototype = k, [
+			}(), Y = _.prototype;
+			return O.prototype = Y, [
 				["$ms", r],
 				["$s", i],
 				["$m", s],
@@ -9399,7 +9058,7 @@ function requireDayjs_min() {
 				["$y", h],
 				["$D", d]
 			].forEach((function(t) {
-				k[t[1]] = function(e) {
+				Y[t[1]] = function(e) {
 					return this.$g(e, t[0], t[1]);
 				};
 			})), O.extend = function(t, e) {
@@ -11132,223 +10791,26 @@ function _sfc_render$50(_ctx, _cache, $props, $setup, $data, $options) {
 	], 16, _hoisted_1$80);
 }
 var FIcon_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FIcon_vue_vue_type_script_lang_default, [["render", _sfc_render$50]]);
-function useInflight(fn, disabled) {
-	const inflight = /* @__PURE__ */ ref(false);
-	if (!fn || typeof fn !== "function") return {
-		inflight,
-		fn: void 0
-	};
-	const originalFn = fn;
-	async function wrapper() {
-		if (disabled.value) return;
-		try {
-			inflight.value = true;
-			await originalFn();
-		} finally {
-			inflight.value = false;
-		}
-	}
-	return {
-		inflight,
-		fn: wrapper
-	};
+var DATA_TEST_ATTRIBUTE_NAME = "data-test";
+function throwErrorIfEmpty(value) {
+	if (!value) throw new Error(`Did you forgot to add a value to v-test?`);
 }
-var _hoisted_1$79 = ["type", "aria-disabled"];
-var _hoisted_2$58 = {
-	key: 1,
-	class: "spinner--before"
-};
-var _hoisted_3$43 = {
-	key: 3,
-	class: "spinner--after"
-};
-var FButton_default = /* @__PURE__ */ defineComponent({
-	inheritAttrs: false,
-	__name: "FButton",
-	props: {
-		/**
-		* Type of button, can be one of:
-		* - `primary`
-		* - `secondary`
-		* - `tertiary`
-		*/
-		variant: {
-			type: String,
-			default: "primary",
-			validator(value) {
-				return [
-					"primary",
-					"secondary",
-					"tertiary"
-				].includes(value);
-			}
-		},
-		/**
-		* Button size, can be one of:
-		* - `small`
-		* - `medium`
-		* - `large`
-		*/
-		size: {
-			type: String,
-			default: "medium",
-			validator(value) {
-				return [
-					"small",
-					"medium",
-					"large"
-				].includes(value);
-			}
-		},
-		/**
-		* Name of an icon to display on the left side of the button.
-		*/
-		iconLeft: {
-			type: String,
-			default: void 0
-		},
-		/**
-		* Name of an icon to display on the right side of the button.
-		*/
-		iconRight: {
-			type: String,
-			default: void 0
-		},
-		/**
-		* Icon library to use.
-		*/
-		iconLibrary: {
-			type: String,
-			required: false,
-			default: "f"
-		},
-		/**
-		* Tertiary button style, used in conjunction with button variant `tertiary`.
-		* Can be one of:
-		* - `standard`
-		* - `black`
-		* - `inverted`
-		*/
-		tertiaryStyle: {
-			type: String,
-			default: "standard",
-			validator(value) {
-				return [
-					"standard",
-					"black",
-					"inverted"
-				].includes(value);
-			}
-		},
-		/**
-		* Align button text and icon with content above or below.
-		* Used in conjunction with button variant `tertiary`.
-		*/
-		alignText: { type: Boolean },
-		/**
-		*
-		* Enable full width on mobile for sizes `small` and `medium`, always active for button size `large`.
-		*/
-		mobileFullWidth: { type: Boolean },
-		/**
-		* The default behavior of the button. Possible values are:
-		* - `submit`
-		* - `reset`
-		* - `button`
-		*/
-		type: {
-			type: String,
-			default: "button",
-			validator(value) {
-				return [
-					"submit",
-					"reset",
-					"button"
-				].includes(value);
-			}
-		},
-		/**
-		* Disable the button.
-		*/
-		disabled: {
-			type: Boolean,
-			required: false
-		}
+var TestDirective = {
+	mounted(el, { value }) {
+		throwErrorIfEmpty(value);
+		el.setAttribute(DATA_TEST_ATTRIBUTE_NAME, value);
 	},
-	setup(__props) {
-		const props = __props;
-		const originalAttrs = useAttrs();
-		const disabled = computed(() => {
-			return props.disabled || inflight.value;
-		});
-		const { inflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
-		const attrs = {
-			...originalAttrs,
-			onClick
-		};
-		const hasIconLeft = computed(() => {
-			return Boolean(props.iconLeft);
-		});
-		const hasIconRight = computed(() => {
-			return Boolean(props.iconRight);
-		});
-		const hasIcon = computed(() => {
-			return hasIconLeft.value || hasIconRight.value;
-		});
-		const buttonClass = computed(() => {
-			const classes = [
-				"button",
-				`button--${props.variant}`,
-				`button--${props.size}`
-			];
-			if (props.variant === "tertiary" && props.alignText) classes.push(`button--align-text`);
-			if (props.variant === "tertiary") classes.push(`button--tertiary--${props.tertiaryStyle}`);
-			if (props.variant === "tertiary" && !hasIcon.value) classes.push(`button--tertiary--underline`);
-			if (props.mobileFullWidth && props.size !== "large") classes.push(`button--full-width`);
-			if (inflight.value) classes.push(`button__inflight`);
-			return classes;
-		});
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("button", mergeProps({
-				type: __props.type,
-				class: buttonClass.value,
-				"aria-disabled": disabled.value
-			}, attrs), [
-				hasIconLeft.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [unref(inflight) ? (openBlock(), createBlock(unref(FIcon_default), {
-					key: 0,
-					name: "circle-notch-solid",
-					class: "button__icon button__spinner"
-				})) : props.iconLeft ? (openBlock(), createBlock(unref(FIcon_default), {
-					key: 1,
-					class: "button__icon",
-					name: props.iconLeft,
-					library: props.iconLibrary
-				}, null, 8, ["name", "library"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true),
-				_cache[0] || (_cache[0] = createTextVNode()),
-				!hasIcon.value ? (openBlock(), createElementBlock("span", _hoisted_2$58, [unref(inflight) ? (openBlock(), createBlock(unref(FIcon_default), {
-					key: 0,
-					name: "circle-notch-solid",
-					class: "button__icon button__spinner"
-				})) : createCommentVNode("", true)])) : createCommentVNode("", true),
-				_cache[1] || (_cache[1] = createTextVNode()),
-				createBaseVNode("span", null, [renderSlot(_ctx.$slots, "default")]),
-				_cache[2] || (_cache[2] = createTextVNode()),
-				hasIconRight.value ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [unref(inflight) ? (openBlock(), createBlock(unref(FIcon_default), {
-					key: 0,
-					name: "circle-notch-solid",
-					class: "button__icon button__spinner"
-				})) : props.iconRight ? (openBlock(), createBlock(unref(FIcon_default), {
-					key: 1,
-					class: "button__icon",
-					name: props.iconRight,
-					library: props.iconLibrary
-				}, null, 8, ["name", "library"])) : createCommentVNode("", true)], 64)) : createCommentVNode("", true),
-				_cache[3] || (_cache[3] = createTextVNode()),
-				!hasIcon.value ? (openBlock(), createElementBlock("span", _hoisted_3$43)) : createCommentVNode("", true)
-			], 16, _hoisted_1$79);
-		};
+	updated(el, { value }) {
+		throwErrorIfEmpty(value);
+		el.setAttribute(DATA_TEST_ATTRIBUTE_NAME, value);
 	}
-});
+};
+/**
+* @public
+*/
+var TestPlugin = { install(app) {
+	app.directive("test", TestDirective);
+} };
 /**
 * @internal
 */
@@ -13864,51 +13326,6 @@ function dispatchComponentUnmountEvent(element) {
 	element.dispatchEvent(event);
 }
 require_es_iterator_map();
-/**
-* Verifies that a ref is a single `Element` and nothing else.
-*
-* @public
-* @param value - The value to type check.
-* @returns `true` if the ref is an `Element`, otherwise false.
-*/
-function refIsElement(value) {
-	return value instanceof Element;
-}
-/**
-* Verifies that a ref is a single Vue component and nothing else.
-*
-* @public
-* @param value - The value to type check.
-* @returns `true` if the ref is a `Vue` (component), otherwise false.
-*/
-function refIsVue(value) {
-	return value?.$el !== void 0;
-}
-/**
-* Find an `Element` from a ref, provided it is defined and not an array.
-*
-* @public
-* @param ref - The ref to extract the `Element` from.
-* @returns An `Element` if ref is `Vue` or `Element`. Otherwise `undefined`.
-*/
-function findElementFromVueRef(ref) {
-	if (refIsElement(ref)) return ref;
-	else if (refIsVue(ref)) return ref.$el;
-}
-/**
-* Gets an `HTMLElement` a ref, provided it is defined and not an array.
-*
-* @public
-* @param ref - The ref to extract the `HTMLElement` from.
-* @returns An `HTMLElement` if ref is `Vue` or `Element`.
-* @throws An error if an `HTMLElement` could not be found.
-*/
-function getHTMLElementFromVueRef(ref) {
-	const element = findElementFromVueRef(ref);
-	if (!isSet(element)) throw new Error(`Unable to find element from ${String(ref)}.`);
-	if (element instanceof HTMLElement) return element;
-	throw new Error(`Not instance of HTMLELement ${String(ref)}.`);
-}
 var require_map_helpers = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var uncurryThis = require_function_uncurry_this();
 	var MapPrototype = Map.prototype;
@@ -13998,6 +13415,14 @@ var config = {
 		return production;
 	}
 };
+/**
+* @public
+* @param app - Running app
+*/
+function setRunningContext(app) {
+	const fkuiContext = { appContext: app._context };
+	app.config.globalProperties.$fkui = fkuiContext;
+}
 (/* @__PURE__ */ __commonJSMin((() => {
 	var $ = require_export();
 	var lengthOfArrayLike = require_length_of_array_like();
@@ -14030,129 +13455,6 @@ var config = {
 	var _it$event;
 	return (_it$event = it.event) !== null && _it$event !== void 0 ? _it$event : "";
 })];
-var GAP = [
-	"1x",
-	"2x",
-	"3x",
-	"4x",
-	"5x",
-	"6x",
-	"7x",
-	"8x"
-];
-var ALIGNMENT = [
-	"top",
-	"center",
-	"bottom"
-];
-var FLOAT = [
-	"left",
-	"center",
-	"right"
-];
-var IFlex_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
-	name: "IFlex",
-	inheritAttrs: true,
-	props: {
-		/**
-		* Set gap (gutter) between items.
-		*
-		* Must be one of:
-		*
-		* - `"1x"`
-		* - `"2x"`
-		* - `"3x"`
-		* - ...
-		* - `"8x"`
-		*
-		* Example: a value of `"3x"` corresponds to a gap of `3 * 0.25 = 0.75rem`.
-		*/
-		gap: {
-			type: String,
-			default: "",
-			validator(val) {
-				return val === "" || GAP.includes(val);
-			}
-		},
-		/**
-		* If set the IFlexItems will be fullwidth and
-		* stacked on top of each other when breakpoint is small (aka mobile).
-		*/
-		collapse: { type: Boolean },
-		/**
-		* If set the IFlexItems will wrap when out of space
-		*/
-		wrap: { type: Boolean },
-		/**
-		* Set how IFlexItems should float.
-		*
-		* Must be one of:
-		*
-		* - `"left"`
-		* - `"center"`
-		* - `"right"`
-		*/
-		float: {
-			type: String,
-			default: "",
-			validator(val) {
-				return val === "" || FLOAT.includes(val);
-			}
-		}
-	},
-	computed: { classList() {
-		const classes = [];
-		if (this.collapse) classes.push("iflex--collapse");
-		if (this.gap) classes.push(`iflex--gap-${this.gap}`);
-		if (this.wrap) classes.push(`iflex--wrap`);
-		if (this.float) classes.push(`iflex--float-${this.float}`);
-		return classes;
-	} }
-});
-function _sfc_render$47(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", { class: normalizeClass(["iflex", _ctx.classList]) }, [renderSlot(_ctx.$slots, "default")], 2);
-}
-var IFlex_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(IFlex_vue_vue_type_script_lang_default, [["render", _sfc_render$47]]);
-var IFlexItem_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
-	name: "IFlexItem",
-	inheritAttrs: true,
-	props: {
-		/**
-		* If set this item will grow to its largest possible size.
-		*/
-		grow: { type: Boolean },
-		/**
-		* If set this item will shrink to its smallest possible size.
-		*/
-		shrink: { type: Boolean },
-		/**
-		* Vertical positioning of content.
-		*
-		* Must be one of:
-		*
-		* - `"top"`
-		* - `"center"`
-		* - `"bottom"`
-		*/
-		align: {
-			type: String,
-			default: "top",
-			validator(val) {
-				return ALIGNMENT.includes(val);
-			}
-		}
-	},
-	computed: { classList() {
-		const classList = [`iflex--align-${this.align}`];
-		if (this.grow) classList.push("iflex--grow");
-		else if (this.shrink) classList.push("iflex--shrink");
-		return classList;
-	} }
-});
-function _sfc_render$46(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", { class: normalizeClass(["iflex__item", _ctx.classList]) }, [renderSlot(_ctx.$slots, "default")], 2);
-}
-var IFlexItem_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(IFlexItem_vue_vue_type_script_lang_default, [["render", _sfc_render$46]]);
 var require_es_iterator_every = /* @__PURE__ */ __commonJSMin((() => {
 	var $ = require_export();
 	var call = require_function_call();
@@ -14351,41 +13653,6 @@ function hasSlot(vm, name, props = {}, options = {}) {
 	return Boolean(renderSlotText(slot, props, effectiveOptions));
 }
 require_es_iterator_for_each();
-/**
-* @public
-*/
-var MenuAction = /* @__PURE__ */ function(MenuAction) {
-	MenuAction[MenuAction["MOVE_NEXT"] = 0] = "MOVE_NEXT";
-	MenuAction[MenuAction["MOVE_PREV"] = 1] = "MOVE_PREV";
-	MenuAction[MenuAction["MOVE_FIRST"] = 2] = "MOVE_FIRST";
-	MenuAction[MenuAction["MOVE_LAST"] = 3] = "MOVE_LAST";
-	MenuAction[MenuAction["ACTIVATE"] = 4] = "ACTIVATE";
-	return MenuAction;
-}({});
-/**
-* @internal
-*/
-function actionFromKeyboardEvent(event) {
-	switch (event.key) {
-		case "End": return MenuAction.MOVE_LAST;
-		case "Home": return MenuAction.MOVE_FIRST;
-		case "Up":
-		case "ArrowUp": return MenuAction.MOVE_PREV;
-		case "Down":
-		case "ArrowDown": return MenuAction.MOVE_NEXT;
-		case "Left":
-		case "ArrowLeft": return MenuAction.MOVE_PREV;
-		case "Right":
-		case "ArrowRight": return MenuAction.MOVE_NEXT;
-		case "Tab":
-			if (event.shiftKey) return MenuAction.MOVE_PREV;
-			return MenuAction.MOVE_NEXT;
-		case " ":
-		case "Spacebar":
-		case "Enter": return MenuAction.ACTIVATE;
-		default: return null;
-	}
-}
 function getAbsolutePosition(src) {
 	if (!src) return;
 	if (src.isSameNode(document.documentElement)) return {
@@ -14401,190 +13668,6 @@ function getAbsolutePosition(src) {
 		width: Math.floor(rect.width),
 		height: Math.floor(rect.height)
 	};
-}
-var sym = Symbol("item-identifier");
-var internalIndex = 0;
-function isObject$1(value) {
-	return Boolean(value && typeof value === "object");
-}
-/**
-* Get an identifier previously set by a call to `setItemIdentifier()` or `undefined`
-* if no identifier was set.
-*
-* @public
-* @since v6.34.0
-* @param item - An item to get identifier from.
-*/
-function findItemIdentifier(item) {
-	if (isObject$1(item) && Object.prototype.hasOwnProperty.call(item, sym)) return item[sym];
-	else return;
-}
-/**
-* Get an identifier previously set by a call to `setItemIdentifier()` or throws an error
-* if no identifier was set.
-*
-* @public
-* @since v6.34.0
-* @param item - An item to get key from.
-*/
-function getItemIdentifier(item) {
-	const identifier = findItemIdentifier(item);
-	if (identifier !== void 0) return identifier;
-	else throw new TypeError("Expected item to have an internal key but no key was set");
-}
-/**
-* Set or generate an identifier for given item. The identifier should be unique
-* within your set of data.
-*
-* If an identifier already exists it will *not* be overwritten.
-*
-* @public
-* @since v6.34.0
-* @param item - An item to set the identifier on.
-* @param value - Specific identifier to use instead of generated one.
-*/
-function setItemIdentifier(item, value) {
-	if (findItemIdentifier(item) !== void 0) return;
-	Object.defineProperty(item, sym, {
-		value: value !== null && value !== void 0 ? value : internalIndex++,
-		enumerable: false,
-		writable: true
-	});
-}
-/**
-* Recursively assigns identifiers to items (and optionally to nested items).
-*
-* @public
-* @param items - The array of items to process. Items are mutated in place.
-* @param attribute - Optional property on each item whose value should be used as the identifier. If omitted, an identifier is generated.
-* @param expandableAttribute - Optional property key on each item whose value is expected to be an array of nested items to process recursively.
-*
-* @throws Error If an item is missing or has an invalid value for `attribute` when `attribute` is provided.
-* @throws Error If a duplicate `attribute` value is encountered when `attribute` is provided.
-* @returns The same `items` array (with items mutated to include identifiers).
-*/
-function setItemIdentifiers(items, attribute, expandableAttribute) {
-	const seenValues = /* @__PURE__ */ new Set();
-	const process = (items) => {
-		return items.map((item, index) => {
-			const value = attribute ? item[attribute] : void 0;
-			if (attribute) ensureUniqueKey(attribute, value, index, seenValues);
-			setItemIdentifier(item, value);
-			if (expandableAttribute !== void 0) {
-				const nestedItem = item[expandableAttribute];
-				if (Array.isArray(nestedItem)) process(nestedItem);
-			}
-			return item;
-		});
-	};
-	return process(items);
-}
-function ensureUniqueKey(attribute, value, index, seenValues) {
-	const keyString = String(attribute);
-	if (value === void 0 || value === null || String(value).length === 0) throw new Error(`Key [${keyString}] is missing or has invalid value in item index ${String(index)}`);
-	if (seenValues.has(value)) throw new Error(`Expected each item to have identifier [${keyString}] with unique value but encountered duplicate of "${String(value)}" in item index ${String(index)}.`);
-	seenValues.add(value);
-}
-var datasetSymbol = Symbol("dataset");
-/**
-* @internal
-*/
-function getArrayMetadata(dataset) {
-	return Object.getOwnPropertyDescriptor(dataset, datasetSymbol)?.value;
-}
-/**
-* @internal
-*/
-function getElementMetadata(dataset) {
-	return Object.getOwnPropertyDescriptor(dataset, datasetSymbol)?.value;
-}
-function getDatasetMetadata(item) {
-	if (Array.isArray(item)) {
-		const metadata = getArrayMetadata(item);
-		return Object.freeze({ ...metadata });
-	} else {
-		const metadata = getElementMetadata(item);
-		if (!metadata) throw new Error("Element not found in dataset");
-		return Object.freeze({ ...metadata });
-	}
-}
-/**
-* Check if a dataset is a dataset.
-*
-* @internal
-* @since v6.39.0
-*/
-function isDataset(dataset) {
-	if (!Array.isArray(dataset)) return false;
-	return Boolean(Object.getOwnPropertyDescriptor(dataset, datasetSymbol));
-}
-/**
-* @internal
-*/
-function setArrayMetadata(array, value) {
-	return Object.defineProperty(array, datasetSymbol, {
-		value,
-		enumerable: false,
-		configurable: true,
-		writable: true
-	});
-}
-/**
-* @internal
-*/
-function setElementMetadata(item, value) {
-	Object.defineProperty(item, datasetSymbol, {
-		value,
-		enumerable: false,
-		configurable: true,
-		writable: true
-	});
-}
-function assignElementMetadata(options) {
-	const { element, index, ariaRowIndex, totalSize, ariaLevel } = options;
-	setElementMetadata(element, {
-		rowIndex: index,
-		ariaRowIndex,
-		ariaLevel,
-		ariaSetSize: totalSize,
-		ariaPosInSet: index + 1
-	});
-}
-function applyElementMetadata(array, nestedAttribute, options) {
-	const { depth, rowCounter } = options;
-	for (let i = 0; i < array.length; i++) {
-		const element = array[i];
-		if (!getElementMetadata(element)) {
-			rowCounter.value++;
-			assignElementMetadata({
-				element,
-				index: i,
-				ariaRowIndex: rowCounter.value,
-				totalSize: array.length,
-				ariaLevel: depth
-			});
-		}
-		if (nestedAttribute) {
-			const nested = element[nestedAttribute];
-			if (Array.isArray(nested) && nested.length > 0) applyElementMetadata(nested, nestedAttribute, {
-				depth: depth + 1,
-				rowCounter
-			});
-		}
-	}
-}
-/**
-* Applies metadata to new elements only. All elements with existing metadata is
-* preserved.
-*
-* @internal
-*/
-function preserveDataset(dataset) {
-	const { size, nestedAttribute } = getArrayMetadata(dataset);
-	applyElementMetadata(dataset, nestedAttribute, {
-		depth: 1,
-		rowCounter: { value: size }
-	});
 }
 var require_function_apply = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var NATIVE_BIND = require_function_bind_native();
@@ -14638,104 +13721,6 @@ var require_function_apply = /* @__PURE__ */ __commonJSMin(((exports, module) =>
 		return accumulator;
 	} });
 })))();
-/**
-* @internal
-*/
-function getSize(array, nestedAttribute) {
-	if (!Array.isArray(array)) return 0;
-	if (nestedAttribute === void 0) return array.length;
-	return array.reduce((sum, item) => {
-		const nested = item[nestedAttribute];
-		return sum + getSize(nested, nestedAttribute);
-	}, array.length);
-}
-function reindex$1(array, nestedAttribute, options) {
-	const { depth, rowCounter } = options;
-	for (let i = 0; i < array.length; i++) {
-		const element = array[i];
-		setElementMetadata(element, {
-			rowIndex: rowCounter.value,
-			ariaRowIndex: rowCounter.value + 1,
-			ariaLevel: depth + 1,
-			ariaSetSize: array.length,
-			ariaPosInSet: i + 1
-		});
-		rowCounter.value++;
-		if (nestedAttribute) {
-			const nested = element[nestedAttribute];
-			if (Array.isArray(nested)) reindex$1(nested, nestedAttribute, {
-				depth: depth + 1,
-				rowCounter
-			});
-		}
-	}
-}
-/**
-* @internal
-*/
-function reindexDataset(dataset, nestedAttribute) {
-	setArrayMetadata(dataset, {
-		size: getSize(dataset, nestedAttribute),
-		nestedAttribute
-	});
-	reindex$1(dataset, nestedAttribute, {
-		depth: 0,
-		rowCounter: { value: 0 }
-	});
-}
-function createDataset(array, nestedAttribute) {
-	setArrayMetadata(array, {
-		size: 0,
-		nestedAttribute
-	});
-	const dataset = array;
-	reindexDataset(dataset, nestedAttribute);
-	return dataset;
-}
-function inheritDataset(array, originalDataset) {
-	const metadata = getDatasetMetadata(originalDataset);
-	const result = setArrayMetadata(array, {
-		get size() {
-			return metadata.size;
-		},
-		get nestedAttribute() {
-			return metadata.nestedAttribute;
-		}
-	});
-	preserveDataset(result);
-	return result;
-}
-function toDataset(array, ...args) {
-	if (isDataset(array)) return array;
-	const [arg] = args;
-	if (Array.isArray(arg)) if (isDataset(arg)) return inheritDataset(array, arg);
-	else return createDataset(array, void 0);
-	else return createDataset(array, arg);
-}
-/**
-* Creates a dataset as a Vue ref.
-*
-* @public
-* @since v6.39.0
-*/
-function useDatasetRef(initial, nestedAttribute) {
-	const inner = /* @__PURE__ */ ref(toDataset(initial !== null && initial !== void 0 ? initial : [], nestedAttribute));
-	function* collect(array) {
-		yield array;
-		yield array.length;
-		if (nestedAttribute) for (const item of array) {
-			const nested = item[nestedAttribute];
-			if (Array.isArray(nested)) yield* collect(nested);
-		}
-	}
-	watch(() => Array.from(collect(inner.value)), () => {
-		reindexDataset(/* @__PURE__ */ toRaw(inner.value), nestedAttribute);
-	}, {
-		deep: 1,
-		flush: "sync"
-	});
-	return inner;
-}
 function getValidatableElement(element) {
 	if (isValidatableHTMLElement(element)) return element;
 	const validatableInsideElement = element.querySelector("input, textarea, select");
@@ -14784,219 +13769,11 @@ var ValidationPlugin = { install(app) {
 	app.directive("validation", ValidationDirective);
 	app.directive("validationPrefix", ValidationPrefixDirective);
 } };
-function tryOnScopeDispose(fn) {
-	if (getCurrentScope()) {
-		onScopeDispose(fn);
-		return true;
-	}
-	return false;
-}
 var isClient = typeof window !== "undefined" && typeof document !== "undefined";
 typeof WorkerGlobalScope !== "undefined" && globalThis instanceof WorkerGlobalScope;
-var notNullish = (val) => val != null;
-var toString = Object.prototype.toString;
-var isObject = (val) => toString.call(val) === "[object Object]";
-var noop$4 = () => {};
-function toArray(value) {
-	return Array.isArray(value) ? value : [value];
-}
-function watchImmediate(source, cb, options) {
-	return watch(source, cb, {
-		...options,
-		immediate: true
-	});
-}
-var defaultWindow = isClient ? window : void 0;
 isClient && window.document;
 isClient && window.navigator;
 isClient && window.location;
-function unrefElement(elRef) {
-	var _a;
-	const plain = toValue(elRef);
-	return (_a = plain == null ? void 0 : plain.$el) != null ? _a : plain;
-}
-function useEventListener$1(...args) {
-	const cleanups = [];
-	const cleanup = () => {
-		cleanups.forEach((fn) => fn());
-		cleanups.length = 0;
-	};
-	const register = (el, event, listener, options) => {
-		el.addEventListener(event, listener, options);
-		return () => el.removeEventListener(event, listener, options);
-	};
-	const firstParamTargets = computed(() => {
-		const test = toArray(toValue(args[0])).filter((e) => e != null);
-		return test.every((e) => typeof e !== "string") ? test : void 0;
-	});
-	const stopWatch = watchImmediate(() => {
-		var _a, _b;
-		return [
-			(_b = (_a = firstParamTargets.value) == null ? void 0 : _a.map((e) => unrefElement(e))) != null ? _b : [defaultWindow].filter((e) => e != null),
-			toArray(toValue(firstParamTargets.value ? args[1] : args[0])),
-			toArray(unref(firstParamTargets.value ? args[2] : args[1])),
-			toValue(firstParamTargets.value ? args[3] : args[2])
-		];
-	}, ([raw_targets, raw_events, raw_listeners, raw_options]) => {
-		cleanup();
-		if (!(raw_targets == null ? void 0 : raw_targets.length) || !(raw_events == null ? void 0 : raw_events.length) || !(raw_listeners == null ? void 0 : raw_listeners.length)) return;
-		const optionsClone = isObject(raw_options) ? { ...raw_options } : raw_options;
-		cleanups.push(...raw_targets.flatMap((el) => raw_events.flatMap((event) => raw_listeners.map((listener) => register(el, event, listener, optionsClone)))));
-	}, { flush: "post" });
-	const stop = () => {
-		stopWatch();
-		cleanup();
-	};
-	tryOnScopeDispose(cleanup);
-	return stop;
-}
-function useMounted() {
-	const isMounted = /* @__PURE__ */ shallowRef(false);
-	const instance = getCurrentInstance();
-	if (instance) onMounted(() => {
-		isMounted.value = true;
-	}, instance);
-	return isMounted;
-}
-function useSupported(callback) {
-	const isMounted = useMounted();
-	return computed(() => {
-		isMounted.value;
-		return Boolean(callback());
-	});
-}
-function useMutationObserver(target, callback, options = {}) {
-	const { window = defaultWindow, ...mutationOptions } = options;
-	let observer;
-	const isSupported = useSupported(() => window && "MutationObserver" in window);
-	const cleanup = () => {
-		if (observer) {
-			observer.disconnect();
-			observer = void 0;
-		}
-	};
-	const targets = computed(() => {
-		const items = toArray(toValue(target)).map(unrefElement).filter(notNullish);
-		return new Set(items);
-	});
-	const stopWatch = watch(() => targets.value, (targets2) => {
-		cleanup();
-		if (isSupported.value && targets2.size) {
-			observer = new MutationObserver(callback);
-			targets2.forEach((el) => observer.observe(el, mutationOptions));
-		}
-	}, {
-		immediate: true,
-		flush: "post"
-	});
-	const takeRecords = () => {
-		return observer == null ? void 0 : observer.takeRecords();
-	};
-	const stop = () => {
-		stopWatch();
-		cleanup();
-	};
-	tryOnScopeDispose(stop);
-	return {
-		isSupported,
-		stop,
-		takeRecords
-	};
-}
-function onElementRemoval(target, callback, options = {}) {
-	const { window = defaultWindow, document = window == null ? void 0 : window.document, flush = "sync" } = options;
-	if (!window || !document) return noop$4;
-	let stopFn;
-	const cleanupAndUpdate = (fn) => {
-		stopFn?.();
-		stopFn = fn;
-	};
-	const stopWatch = watchEffect(() => {
-		const el = unrefElement(target);
-		if (el) {
-			const { stop } = useMutationObserver(document, (mutationsList) => {
-				if (mutationsList.map((mutation) => [...mutation.removedNodes]).flat().some((node) => node === el || node.contains(el))) callback(mutationsList);
-			}, {
-				window,
-				childList: true,
-				subtree: true
-			});
-			cleanupAndUpdate(stop);
-		}
-	}, { flush });
-	const stopHandle = () => {
-		stopWatch();
-		cleanupAndUpdate();
-	};
-	tryOnScopeDispose(stopHandle);
-	return stopHandle;
-}
-function useActiveElement(options = {}) {
-	var _a;
-	const { window = defaultWindow, deep = true, triggerOnRemoval = false } = options;
-	const document = (_a = options.document) != null ? _a : window == null ? void 0 : window.document;
-	const getDeepActiveElement = () => {
-		var _a2;
-		let element = document == null ? void 0 : document.activeElement;
-		if (deep) while (element == null ? void 0 : element.shadowRoot) element = (_a2 = element == null ? void 0 : element.shadowRoot) == null ? void 0 : _a2.activeElement;
-		return element;
-	};
-	const activeElement = /* @__PURE__ */ shallowRef();
-	const trigger = () => {
-		activeElement.value = getDeepActiveElement();
-	};
-	if (window) {
-		const listenerOptions = {
-			capture: true,
-			passive: true
-		};
-		useEventListener$1(window, "blur", (event) => {
-			if (event.relatedTarget !== null) return;
-			trigger();
-		}, listenerOptions);
-		useEventListener$1(window, "focus", trigger, listenerOptions);
-	}
-	if (triggerOnRemoval) onElementRemoval(activeElement, trigger, { document });
-	trigger();
-	return activeElement;
-}
-function useElementHover(el, options = {}) {
-	const { delayEnter = 0, delayLeave = 0, triggerOnRemoval = false, window = defaultWindow } = options;
-	const isHovered = /* @__PURE__ */ shallowRef(false);
-	let timer;
-	const toggle = (entering) => {
-		const delay = entering ? delayEnter : delayLeave;
-		if (timer) {
-			clearTimeout(timer);
-			timer = void 0;
-		}
-		if (delay) timer = setTimeout(() => isHovered.value = entering, delay);
-		else isHovered.value = entering;
-	};
-	if (!window) return isHovered;
-	useEventListener$1(el, "mouseenter", () => toggle(true), { passive: true });
-	useEventListener$1(el, "mouseleave", () => toggle(false), { passive: true });
-	if (triggerOnRemoval) onElementRemoval(computed(() => unrefElement(el)), () => toggle(false));
-	return isHovered;
-}
-var EVENT_FOCUS_IN = "focusin";
-var EVENT_FOCUS_OUT = "focusout";
-var PSEUDO_CLASS_FOCUS_WITHIN = ":focus-within";
-function useFocusWithin(target, options = {}) {
-	const { window = defaultWindow } = options;
-	const targetElement = computed(() => unrefElement(target));
-	const _focused = /* @__PURE__ */ shallowRef(false);
-	const focused = computed(() => _focused.value);
-	const activeElement = useActiveElement(options);
-	if (!window || !activeElement.value) return { focused };
-	const listenerOptions = { passive: true };
-	useEventListener$1(targetElement, EVENT_FOCUS_IN, () => _focused.value = true, listenerOptions);
-	useEventListener$1(targetElement, EVENT_FOCUS_OUT, () => {
-		var _a, _b, _c;
-		return _focused.value = (_c = (_b = (_a = targetElement.value) == null ? void 0 : _a.matches) == null ? void 0 : _b.call(_a, PSEUDO_CLASS_FOCUS_WITHIN)) != null ? _c : false;
-	}, listenerOptions);
-	return { focused };
-}
 Number.POSITIVE_INFINITY;
 /**
 * Uses event listener while the underlying component is mounted.
@@ -15011,15 +13788,6 @@ function useEventListener(target, event, callback) {
 	onUnmounted(() => {
 		toValue(target)?.removeEventListener(event, callback);
 	});
-}
-/**
-* @public
-*/
-function useSlotUtils() {
-	const $slots = useSlots();
-	return { hasSlot(...args) {
-		return hasSlot({ $slots }, ...args);
-	} };
 }
 (/* @__PURE__ */ __commonJSMin((() => {
 	var $ = require_export();
@@ -15053,36 +13821,6 @@ function useSlotUtils() {
 		}).stopped;
 	} });
 })))();
-/**
-* Get container element from one of the following sources (in order):
-*
-* 1. An explicit element given by the container prop.
-* 2. A parent marked as a popup container.
-* 3. Default configured popup container element (e.g. `<body>`).
-*/
-function getContainer(element, prop) {
-	if (prop) return prop;
-	const parent = element.closest(".popup__container");
-	if (parent) return parent;
-	return config.popupContainer;
-}
-function getFocusableElement(rootElement, callback) {
-	var _elements$;
-	if (callback) return callback();
-	return (_elements$ = findTabbableElements(getHTMLElementFromVueRef(rootElement))[0]) !== null && _elements$ !== void 0 ? _elements$ : null;
-}
-function offset(page, el) {
-	const rect = el.getBoundingClientRect();
-	return {
-		top: rect.top + page.pageYOffset,
-		left: rect.left + page.pageXOffset
-	};
-}
-function getElement(anchor) {
-	if (!anchor) return null;
-	if (typeof anchor === "string") return document.querySelector(`#${anchor}`);
-	else return anchor;
-}
 /**
 * @public
 */
@@ -15335,21 +14073,6 @@ function fitInsideArea(options) {
 	};
 }
 /**
-* When opening poupup inline this metod
-* calculates the need scroll to get the
-* popup within the viewport.
-*/
-function getScrollToPopup(param) {
-	const popupOffset = offset({
-		pageXOffset: 0,
-		pageYOffset: param.scrollTop
-	}, param.popup);
-	const popupHeight = param.popup.offsetHeight;
-	const neededScroll = popupOffset.top - param.windowInnerHeight + popupHeight + param.spacing;
-	if (neededScroll > param.scrollTop) return neededScroll;
-	else return param.scrollTop;
-}
-/**
 * Get the fallback position coordinates
 * try to align with anchor.x if there is room for the target
 * if target is outside the clippedArea, use no horizontal alignment
@@ -15368,289 +14091,6 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
 		y
 	};
 }
-/**
-* @internal
-*/
-function isTeleportDisabled(options) {
-	const { window, placement, forceInline, forceOverlay } = options;
-	const isMobileSize = window.innerWidth < 640;
-	let disableTeleport = isMobileSize || placement === Placement.Fallback;
-	if (forceInline) disableTeleport = true;
-	else if (forceOverlay) disableTeleport = false;
-	else if (placement === Placement.NotCalculated && !isMobileSize) disableTeleport = false;
-	return disableTeleport;
-}
-var IPopup_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
-	name: "IPopup",
-	inheritAttrs: false,
-	props: {
-		/**
-		* Toggle open/closed popup.
-		*/
-		isOpen: {
-			type: Boolean,
-			required: true
-		},
-		/**
-		* DOM element to position popup at.
-		*/
-		anchor: {
-			type: HTMLElement,
-			required: false,
-			default: void 0
-		},
-		/**
-		* Type of inline behaviour.
-		* - `"auto"` changes between overlay or inline depending on window size.
-		* - `"always"` forces the popup to always be inline.
-		* - `"never"` forces the popup to never be inline.
-		*/
-		inline: {
-			type: String,
-			required: false,
-			validator(value) {
-				return [
-					"always",
-					"never",
-					"auto"
-				].includes(value);
-			},
-			default: "auto"
-		},
-		/**
-		* Which element to use as container.
-		*/
-		container: {
-			type: HTMLElement,
-			required: false,
-			default: void 0
-		},
-		/**
-		* Which element to use as viewport.
-		*/
-		viewport: {
-			type: HTMLElement,
-			required: false,
-			default() {
-				return document.documentElement;
-			}
-		},
-		/**
-		* Prevents tabbing outside of component.
-		*/
-		keyboardTrap: {
-			type: Boolean,
-			required: false,
-			default: true
-		},
-		/**
-		* Function that returns the element that will receive focus
-		*/
-		focusElement: {
-			type: Function,
-			required: false,
-			default: null
-		},
-		/**
-		* Set focus on first tabbable element (or element in the `focusElement` prop if provided) when opened.
-		*/
-		setFocus: {
-			type: Boolean,
-			required: false,
-			default: true
-		}
-	},
-	emits: ["open", "close"],
-	data() {
-		return {
-			teleportDisabled: false,
-			placement: Placement.NotCalculated,
-			focus: null
-		};
-	},
-	computed: {
-		popupClasses() {
-			return ["popup", ...this.isInline ? ["popup--inline"] : ["popup--overlay"]];
-		},
-		isInline() {
-			let isInline = this.teleportDisabled || this.placement === Placement.Fallback;
-			if (this.forceInline) isInline = true;
-			else if (this.forceOverlay) isInline = false;
-			else if (this.placement === Placement.NotCalculated && !this.isMobileSize()) isInline = false;
-			return isInline;
-		},
-		forceInline() {
-			return this.inline === "always";
-		},
-		forceOverlay() {
-			return this.inline === "never";
-		},
-		teleportTarget() {
-			return config.teleportTarget;
-		}
-	},
-	watch: { isOpen: {
-		immediate: true,
-		handler(value) {
-			this.toggleIsOpen(value);
-			if (value) {
-				const { placement, forceInline, forceOverlay } = this;
-				this.teleportDisabled = isTeleportDisabled({
-					window,
-					placement,
-					forceInline,
-					forceOverlay
-				});
-				setTimeout(() => {
-					if (this.isOpen) {
-						document.addEventListener("click", this.onDocumentClickHandler);
-						window.addEventListener("resize", this.onWindowResizeDebounced);
-						window.addEventListener("scroll", this.onScrollDebounced, { capture: true });
-					}
-				}, 0);
-			} else {
-				document.removeEventListener("click", this.onDocumentClickHandler);
-				window.removeEventListener("resize", this.onWindowResizeDebounced);
-				window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
-			}
-		}
-	} },
-	created() {
-		this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
-		this.onScrollDebounced = debounce(this.onScroll, 100).bind(this);
-	},
-	unmounted() {
-		document.removeEventListener("click", this.onDocumentClickHandler);
-		window.removeEventListener("resize", this.onWindowResizeDebounced);
-		window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
-	},
-	methods: {
-		async toggleIsOpen(isOpen) {
-			if (!isOpen) {
-				this.placement = Placement.NotCalculated;
-				if (this.focus) {
-					popFocus(this.focus);
-					this.focus = null;
-				}
-				return;
-			}
-			await this.$nextTick();
-			await this.calculatePlacement();
-			this.applyFocus();
-			this.$emit("open");
-		},
-		async calculatePlacement(options) {
-			const popup = getHTMLElementFromVueRef(this.$refs.popup);
-			const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
-			const anchor = getElement(this.anchor);
-			if (!anchor) throw new Error("No anchor element found");
-			if (this.forceOverlay || !(this.isMobileSize() || this.forceInline)) {
-				const area = getContainer(popup, this.container);
-				const viewport = this.viewport;
-				const result = fitInsideArea({
-					area,
-					anchor,
-					target: wrapper,
-					viewport,
-					spacing: 20,
-					candidateOrder: CandidateOrder.Default
-				});
-				this.placement = result.placement;
-				if (this.forceOverlay || result.placement !== Placement.Fallback) {
-					wrapper.style.left = `${String(result.x)}px`;
-					if (options?.horizontalOnly) return;
-					wrapper.style.top = `${String(result.y)}px`;
-					return;
-				}
-			}
-			this.teleportDisabled = true;
-			wrapper.style.removeProperty("left");
-			wrapper.style.removeProperty("top");
-			await new Promise((resolve) => setTimeout(resolve, 200));
-			const scrollTarget = popup.closest(".scroll-target");
-			const hasScrollTarget = scrollTarget !== null;
-			const scrollOptions = {
-				top: getScrollToPopup({
-					popup: wrapper,
-					windowInnerHeight: window.innerHeight,
-					scrollTop: hasScrollTarget ? scrollTarget.scrollTop : window.scrollY,
-					spacing: 20
-				}),
-				behavior: "smooth"
-			};
-			if (hasScrollTarget) scrollTarget.scrollTo(scrollOptions);
-			else window.scrollTo(scrollOptions);
-		},
-		applyFocus() {
-			if (!this.setFocus) return;
-			const wrapper = this.$refs.wrapper;
-			if (!wrapper) return;
-			const focusableElement = getFocusableElement(wrapper, this.focusElement);
-			this.focus = pushFocus(focusableElement);
-		},
-		isMobileSize() {
-			return window.innerWidth < 640;
-		},
-		onDocumentClickHandler() {
-			this.$emit("close", "click-outside");
-		},
-		onWindowResizeDebounced() {},
-		onScrollDebounced(event) {},
-		async onWindowResize() {
-			await this.recalculatePlacement();
-		},
-		async onScroll(event) {
-			if (this.isInline) return;
-			if (event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"))) return;
-			await this.recalculatePlacement({ horizontalOnly: true });
-		},
-		async recalculatePlacement(options) {
-			if (!this.isOpen) return;
-			if (this.forceInline) return;
-			if (this.isInline && this.isMobileSize()) return;
-			if (this.isInline) {
-				this.placement = Placement.NotCalculated;
-				this.teleportDisabled = false;
-				await this.$nextTick();
-			}
-			await this.calculatePlacement(options);
-			const { placement, forceInline, forceOverlay } = this;
-			this.teleportDisabled = isTeleportDisabled({
-				window,
-				placement,
-				forceInline,
-				forceOverlay
-			});
-		},
-		onPopupClickHandler(event) {
-			event.stopPropagation();
-		},
-		onKeyEsc() {
-			this.$emit("close", "escape");
-		},
-		onKeyTab(event) {
-			if (this.keyboardTrap) handleTab(event, getHTMLElementFromVueRef(this.$refs.wrapper));
-		}
-	}
-});
-function _sfc_render$34(_ctx, _cache, $props, $setup, $data, $options) {
-	return _ctx.isOpen ? (openBlock(), createBlock(Teleport, {
-		key: 0,
-		to: _ctx.teleportTarget,
-		disabled: _ctx.teleportDisabled
-	}, [createBaseVNode("div", mergeProps({ ref: "popup" }, _ctx.$attrs, { class: _ctx.popupClasses }), [createBaseVNode("div", {
-		ref: "wrapper",
-		role: "presentation",
-		class: "popup__wrapper",
-		onClick: _cache[0] || (_cache[0] = (...args) => _ctx.onPopupClickHandler && _ctx.onPopupClickHandler(...args)),
-		onKeyup: _cache[1] || (_cache[1] = withKeys(withModifiers((...args) => _ctx.onKeyEsc && _ctx.onKeyEsc(...args), ["stop"]), ["esc"])),
-		onKeydown: _cache[2] || (_cache[2] = withKeys((...args) => _ctx.onKeyTab && _ctx.onKeyTab(...args), ["tab"]))
-	}, [renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({
-		toggleIsOpen: _ctx.toggleIsOpen,
-		placement: _ctx.placement
-	})))], 544)], 16)], 8, ["to", "disabled"])) : createCommentVNode("", true);
-}
-var IPopup_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(IPopup_vue_vue_type_script_lang_default, [["render", _sfc_render$34]]);
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
 	switch (placement) {
 		case Placement.A: return {
@@ -16298,267 +14738,7 @@ var IComboboxToggleButton_default = /* @__PURE__ */ defineComponent({
 */
 var tooltipAttachTo = Symbol("tooltipAttachTo");
 TranslationService.provider.translate("fkui.tooltip.close", "Stäng");
-/**
-* @internal
-*/
-function getNewItemIndexFromMenuAction$1(action, index, n) {
-	let newIndex;
-	if (n <= 0) return 0;
-	switch (action) {
-		case MenuAction.MOVE_NEXT:
-			newIndex = (index + 1) % n;
-			break;
-		case MenuAction.MOVE_PREV:
-			newIndex = (index - 1 + n) % n;
-			break;
-		case MenuAction.MOVE_FIRST:
-			newIndex = 0;
-			break;
-		case MenuAction.MOVE_LAST:
-			newIndex = Math.max(n - 1, 0);
-			break;
-		default: newIndex = index;
-	}
-	return newIndex;
-}
-/**
-* @internal
-*/
-function useMenuAction(options) {
-	const { currentFocusedItemIndex, popupItems, setFocusOnItem, activateItem } = options;
-	return { async doMenuAction(action) {
-		const itemsLength = toValue(popupItems).length;
-		const newFocusedItemIndex = getNewItemIndexFromMenuAction$1(action, toValue(currentFocusedItemIndex), itemsLength);
-		switch (action) {
-			case MenuAction.MOVE_NEXT:
-			case MenuAction.MOVE_PREV:
-			case MenuAction.MOVE_FIRST:
-			case MenuAction.MOVE_LAST:
-				await setFocusOnItem(newFocusedItemIndex);
-				break;
-			case MenuAction.ACTIVATE:
-				await activateItem(newFocusedItemIndex);
-				break;
-		}
-	} };
-}
-/**
-* @public
-*/
-function isContextMenuTextItem(value) {
-	return typeof value.key === "string";
-}
-/**
-* @public
-*/
-function isContextMenuSeparatorItem(value) {
-	return typeof value.separator === "boolean" && value.separator;
-}
-var _hoisted_1$56 = ["aria-label"];
-var _hoisted_2$41 = {
-	ref: "contextmenu",
-	role: "menu",
-	tabindex: "-1",
-	class: "contextmenu__list"
-};
-var _hoisted_3$29 = ["onClick"];
-var _hoisted_4$23 = ["tabindex"];
-var _hoisted_5$18 = {
-	key: 0,
-	class: "contextmenu__separator"
-};
-var FContextMenu_default = /* @__PURE__ */ defineComponent({
-	__name: "FContextMenu",
-	props: {
-		isOpen: { type: Boolean },
-		anchor: { default: () => void 0 },
-		items: {},
-		ariaLabel: { default: () => void 0 }
-	},
-	emits: ["close", "select"],
-	setup(__props, { emit: __emit }) {
-		const emit = __emit;
-		const $t = useTranslate();
-		const preventKeys = new Set([
-			"Tab",
-			"Up",
-			"Down",
-			"ArrowUp",
-			"ArrowDown",
-			"Home",
-			"End",
-			" ",
-			"Spacebar",
-			"Enter",
-			"Escape"
-		]);
-		const keyUp = new Set(["ArrowUp", "Up"]);
-		const contextmenuRef = useTemplateRef("contextmenu");
-		const itemElementsRef = useTemplateRef("items");
-		const selectedItem = /* @__PURE__ */ ref("");
-		const currentFocusedItemIndex = /* @__PURE__ */ ref(-1);
-		const popupItems = computed(() => __props.items.filter(isContextMenuTextItem));
-		const hasIcons = computed(() => __props.items.some((it) => isContextMenuTextItem(it) && it.icon));
-		let focusHandle = null;
-		const ariaLabel = computed(() => {
-			if (__props.ariaLabel) return __props.ariaLabel;
-			/** Skärmläsartext för `<nav>` elementet. Används bara när `ariaLabel`-propen inte är satt. */
-			return $t("fkui.contextmenu.aria-label", "Kontextmeny");
-		});
-		const separatorPositions = computed(() => {
-			const res = [];
-			if (__props.items.length > 1) __props.items.forEach((it, i) => {
-				if (isContextMenuSeparatorItem(it)) {
-					const pos = i - 1 - res.length;
-					if (pos >= 0 && pos < __props.items.length - 1) res.push(pos);
-				}
-			});
-			return res;
-		});
-		const { doMenuAction } = useMenuAction({
-			currentFocusedItemIndex,
-			popupItems,
-			setFocusOnItem,
-			activateItem
-		});
-		watch(() => __props.isOpen, (isOpen) => {
-			if (isOpen) {
-				currentFocusedItemIndex.value = -1;
-				selectedItem.value = "";
-			} else if (focusHandle) {
-				popFocus(focusHandle, { restoreFocus: true });
-				focusHandle = null;
-			}
-		}, { immediate: true });
-		function onPopupOpen() {
-			if (!contextmenuRef.value) return;
-			focusHandle = pushFocus(contextmenuRef.value);
-		}
-		function hasSeparatorAfterItemAt(index) {
-			return separatorPositions.value.includes(index);
-		}
-		function closePopup(reason) {
-			if (focusHandle) {
-				switch (reason) {
-					case "click-outside":
-						popFocus(focusHandle, { restoreFocus: false });
-						break;
-					default:
-						popFocus(focusHandle, { restoreFocus: true });
-						break;
-				}
-				focusHandle = null;
-			}
-			emit("close");
-		}
-		function onClickItem(item) {
-			if (isContextMenuTextItem(item) && item.key) {
-				selectedItem.value = item.key;
-				emit("select", selectedItem.value);
-				closePopup("select");
-			}
-		}
-		function tabIndex(index) {
-			return index === currentFocusedItemIndex.value ? 0 : -1;
-		}
-		function onKeyUp(event) {
-			if (preventKeys.has(event.key)) event.preventDefault();
-		}
-		async function onKeyDown(event) {
-			if (!preventKeys.has(event.key)) return;
-			if (event.key === "Escape") {
-				closePopup("escape");
-				return;
-			}
-			if (event.key === "Tab") {
-				event.preventDefault();
-				closePopup("tab");
-				return;
-			}
-			const action = actionFromKeyboardEvent(event);
-			if (action === null) return;
-			if (keyUp.has(event.key) && currentFocusedItemIndex.value === -1) currentFocusedItemIndex.value = popupItems.value.length > 0 ? popupItems.value.length : 1;
-			event.preventDefault();
-			await doMenuAction(action);
-		}
-		async function setFocusOnItem(index) {
-			var _itemElementsRef$valu;
-			if (index < 0 || index >= popupItems.value.length) return;
-			currentFocusedItemIndex.value = index;
-			await nextTick();
-			if (!__props.isOpen) return;
-			const items = (_itemElementsRef$valu = itemElementsRef.value) !== null && _itemElementsRef$valu !== void 0 ? _itemElementsRef$valu : [];
-			if (items.length > 0) {
-				const popupMenuItem = items[index];
-				focus$1(popupMenuItem, { preventScroll: true });
-			}
-		}
-		async function activateItem(index) {
-			if (index < 0 || index >= popupItems.value.length) return;
-			if (index !== currentFocusedItemIndex.value) await setFocusOnItem(index);
-			onClickItem(popupItems.value[currentFocusedItemIndex.value]);
-		}
-		return (_ctx, _cache) => {
-			return openBlock(), createBlock(unref(IPopup_default), {
-				"is-open": __props.isOpen,
-				"keyboard-trap": false,
-				anchor: __props.anchor,
-				"set-focus": false,
-				inline: "never",
-				onClose: _cache[0] || (_cache[0] = ($event) => closePopup($event)),
-				onOpen: onPopupOpen
-			}, {
-				default: withCtx(() => [createBaseVNode("nav", {
-					class: "contextmenu",
-					"aria-label": ariaLabel.value,
-					onKeyup: onKeyUp,
-					onKeydown: onKeyDown
-				}, [createBaseVNode("ul", _hoisted_2$41, [(openBlock(true), createElementBlock(Fragment, null, renderList(popupItems.value, (item, index) => {
-					return openBlock(), createElementBlock("li", {
-						key: item.key,
-						role: "menuitem",
-						onClick: ($event) => onClickItem(item)
-					}, [
-						createBaseVNode("div", {
-							ref_for: true,
-							ref: "items",
-							tabindex: tabIndex(index),
-							class: "contextmenu__list__item"
-						}, [
-							hasIcons.value ? (openBlock(), createBlock(unref(FIcon_default), {
-								key: 0,
-								class: "contextmenu__lefticon",
-								name: item.icon ? item.icon : "",
-								library: item.iconLibrary ? item.iconLibrary : "f"
-							}, null, 8, ["name", "library"])) : createCommentVNode("", true),
-							_cache[1] || (_cache[1] = createTextVNode()),
-							createBaseVNode("a", {
-								ref_for: true,
-								ref: "anchors"
-							}, toDisplayString(item.label), 513)
-						], 8, _hoisted_4$23),
-						_cache[2] || (_cache[2] = createTextVNode()),
-						hasSeparatorAfterItemAt(index) ? (openBlock(), createElementBlock("hr", _hoisted_5$18)) : createCommentVNode("", true)
-					], 8, _hoisted_3$29);
-				}), 128))], 512)], 40, _hoisted_1$56)]),
-				_: 1
-			}, 8, ["is-open", "anchor"]);
-		};
-	}
-});
 TranslationService.provider.translate("fkui.crud-dataset.modal.header.add", "Lägg till rad"), TranslationService.provider.translate("fkui.crud-dataset.modal.header.modify", "Ändra rad"), TranslationService.provider.translate("fkui.crud-dataset.modal.header.delete", "Är du säker på att du vill ta bort raden?");
-/**
-* Empty dummy methods to be used when no FSortFilterDataset is used
-*
-* @public
-*/
-function FSortFilterDatasetInjected() {
-	return {
-		sort: inject("sort", () => void 0),
-		registerCallbackOnSort: inject("registerCallbackOnSort", () => void 0),
-		registerCallbackOnMount: inject("registerCallbackOnMount", () => void 0)
-	};
-}
 var FLabel_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
 	name: "FLabel",
 	components: { FIcon: FIcon_default },
@@ -16663,2726 +14843,6 @@ function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
 	], 8, _hoisted_6$14));
 }
 var FLabel_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FLabel_vue_vue_type_script_lang_default, [["render", _sfc_render$26]]);
-function resolveWidthClass$1(words, inline) {
-	return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
-}
-var FSelectField_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
-	name: "FSelectField",
-	components: {
-		FIcon: FIcon_default,
-		FLabel: FLabel_default
-	},
-	inheritAttrs: false,
-	props: {
-		/**
-		* The id for the select id attribute.
-		* The id for the label for attribute.
-		* If the prop is not set a random value will be generated.
-		*/
-		id: {
-			type: String,
-			required: false,
-			default: () => ElementIdService.generateElementId()
-		},
-		/**
-		* Show the component inline.
-		*/
-		inline: {
-			type: Boolean,
-			required: false
-		},
-		/**
-		* The value for the input.
-		* If the prop is not set undefined will be used.
-		*/
-		modelValue: {
-			type: [
-				String,
-				Number,
-				Object,
-				Array,
-				Boolean,
-				null
-			],
-			required: false,
-			default: void 0
-		},
-		/**
-		* Set responsive width for label section.
-		*
-		* ```
-		* label-width="md-9 lg-6"
-		* ```
-		*/
-		labelWidth: {
-			type: String,
-			required: false,
-			default: "sm-12"
-		},
-		/**
-		* Set responsive width for select section that wraps select element and icons.
-		*
-		* ```
-		* select-width="md-6 lg-3"
-		* ```
-		*/
-		selectWidth: {
-			type: String,
-			required: false,
-			default: "sm-12"
-		}
-	},
-	emits: ["change", "update:modelValue"],
-	setup() {
-		return { textFieldTableMode: inject("textFieldTableMode", false) };
-	},
-	data() {
-		return {
-			validityMode: "INITIAL",
-			validationMessage: ""
-		};
-	},
-	computed: {
-		attrs() {
-			return {
-				...this.$attrs,
-				onChange: () => void 0
-			};
-		},
-		hasError() {
-			return this.validityMode === "ERROR";
-		},
-		rootClass() {
-			return {
-				["select-field--error"]: this.hasError,
-				["select-field--inline"]: this.inline,
-				["text-field--table"]: this.textFieldTableMode,
-				["select-field--table-error"]: this.textFieldTableMode && this.hasError
-			};
-		},
-		labelClass() {
-			return this.textFieldTableMode ? "sr-only" : "";
-		},
-		labelWrapperClass() {
-			return resolveWidthClass$1(this.labelWidth, this.inline);
-		},
-		selectWrapperClass() {
-			return resolveWidthClass$1(this.selectWidth, this.inline);
-		},
-		vModel: {
-			get() {
-				return this.modelValue;
-			},
-			set(value) {
-				this.$emit("update:modelValue", value);
-				this.$emit("change", value);
-			}
-		}
-	},
-	methods: { async onValidity({ detail }) {
-		var _renderSlotText;
-		this.validationMessage = detail.validationMessage;
-		this.validityMode = detail.validityMode;
-		await this.$nextTick();
-		const errorMessage = (_renderSlotText = renderSlotText(this.$slots.label)) !== null && _renderSlotText !== void 0 ? _renderSlotText : "";
-		const element = this.$el.querySelector(`#${detail.elementId}`);
-		if (element) dispatchComponentValidityEvent(element, {
-			...detail,
-			errorMessage,
-			focusElementId: detail.elementId
-		});
-	} }
-});
-var _hoisted_1$52 = ["id"];
-function _sfc_render$25(_ctx, _cache, $props, $setup, $data, $options) {
-	const _component_f_label = resolveComponent("f-label");
-	const _component_f_icon = resolveComponent("f-icon");
-	return openBlock(), createElementBlock("div", {
-		class: normalizeClass(["select-field", _ctx.rootClass]),
-		onValidity: _cache[1] || (_cache[1] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
-	}, [
-		createBaseVNode("div", { class: normalizeClass(_ctx.labelWrapperClass) }, [createVNode(_component_f_label, {
-			for: _ctx.id,
-			class: normalizeClass(_ctx.labelClass)
-		}, createSlots({
-			default: withCtx(() => [renderSlot(_ctx.$slots, "label")]),
-			description: withCtx(({ descriptionClass, formatDescriptionClass }) => [renderSlot(_ctx.$slots, "description", {
-				descriptionClass,
-				formatDescriptionClass
-			})]),
-			"error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
-				hasError: _ctx.hasError,
-				validationMessage: _ctx.validationMessage
-			})), () => [_ctx.hasError ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [createTextVNode(toDisplayString(_ctx.validationMessage), 1)], 64)) : createCommentVNode("", true)])]),
-			_: 2
-		}, [_ctx.$slots.tooltip ? {
-			name: "tooltip",
-			fn: withCtx(() => [renderSlot(_ctx.$slots, "tooltip")]),
-			key: "0"
-		} : void 0]), 1032, ["for", "class"])], 2),
-		_cache[7] || (_cache[7] = createTextVNode()),
-		createBaseVNode("div", { class: normalizeClass(["select-field__icon-wrapper", _ctx.selectWrapperClass]) }, [
-			withDirectives(createBaseVNode("select", mergeProps({
-				id: _ctx.id,
-				"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.vModel = $event),
-				class: "select-field__select"
-			}, _ctx.attrs), [renderSlot(_ctx.$slots, "default")], 16, _hoisted_1$52), [[vModelSelect, _ctx.vModel]]),
-			_cache[5] || (_cache[5] = createTextVNode()),
-			_ctx.hasError && _ctx.textFieldTableMode ? (openBlock(), createBlock(_component_f_icon, {
-				key: 0,
-				ref: "icon",
-				class: "text-field__icon input-icon select-field__error-popup-icon",
-				name: "error"
-			}, null, 512)) : createCommentVNode("", true),
-			_cache[6] || (_cache[6] = createTextVNode()),
-			createVNode(_component_f_icon, {
-				class: "select-field__icon",
-				name: "arrow-down"
-			})
-		], 2)
-	], 34);
-}
-var FSelectField_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FSelectField_vue_vue_type_script_lang_default, [["render", _sfc_render$25]]);
-var _hoisted_1$51 = {
-	key: 0,
-	class: "table-ng__cell table-ng__cell--expand"
-};
-var _hoisted_2$38 = ["aria-label", "aria-expanded"];
-var _hoisted_3$27 = {
-	key: 1,
-	ref: "expandable",
-	tabindex: "-1",
-	class: "table-ng__cell table-ng__cell--expand"
-};
-var ITableExpandButton_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableExpandButton",
-	props: {
-		isExpandable: { type: Boolean },
-		isExpanded: { type: Boolean },
-		rowKey: {}
-	},
-	emits: ["toggle"],
-	setup(__props, { expose: __expose, emit: __emit }) {
-		const emit = __emit;
-		const expandableRef = useTemplateRef("expandable");
-		const toggleIcon = computed(() => __props.isExpanded ? "arrow-down" : "arrow-right");
-		const expandLabel = computed(() => __props.isExpanded ? "Stäng rad" : "Expandera rad");
-		function onClick() {
-			assertRef(expandableRef);
-			expandableRef.value.tabIndex = 0;
-			emit("toggle", __props.rowKey);
-		}
-		__expose({ tabstopEl: expandableRef });
-		return (_ctx, _cache) => {
-			return __props.isExpandable ? (openBlock(), createElementBlock("td", _hoisted_1$51, [createBaseVNode("button", {
-				ref: "expandable",
-				tabindex: "-1",
-				"aria-label": expandLabel.value,
-				"aria-expanded": __props.isExpanded,
-				type: "button",
-				onClick
-			}, [createVNode(unref(FIcon_default), {
-				class: "button__icon",
-				name: toggleIcon.value
-			}, null, 8, ["name"])], 8, _hoisted_2$38)])) : (openBlock(), createElementBlock("td", _hoisted_3$27, null, 512));
-		};
-	}
-});
-var _hoisted_1$50 = ["colspan"];
-var ITableExpandable_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableExpandable",
-	props: { colspan: {} },
-	setup(__props) {
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", {
-				class: "table-ng__cell--custom",
-				colspan: __props.colspan,
-				tabindex: "-1"
-			}, [renderSlot(_ctx.$slots, "default")], 8, _hoisted_1$50);
-		};
-	}
-});
-/**
-* @public
-*/
-var textTypes = [
-	"text:bankAccountNumber",
-	"text:bankgiro",
-	"text:clearingNumber",
-	"text:date",
-	"text:email",
-	"text:organisationsnummer",
-	"text:personnummer",
-	"text:phoneNumber",
-	"text:plusgiro",
-	"text:postalCode",
-	"text"
-];
-/**
-* @public
-*/
-var numberTypes = [
-	"text:currency",
-	"text:number",
-	"text:percent"
-];
-/**
-* @internal
-*/
-function isInputTypeNumber(value) {
-	return numberTypes.includes(value);
-}
-/**
-* @internal
-*/
-function isInputTypeText(value) {
-	return textTypes.includes(value);
-}
-/**
-* @internal
-*/
-var inputFieldConfig = {
-	"text:personnummer": {
-		formatter(value) {
-			return formatPersonnummer(parsePersonnummer(value));
-		},
-		parser(value) {
-			return parsePersonnummer(value);
-		},
-		validationConfig: {
-			maxLength: { length: 20 },
-			personnummerFormat: {},
-			personnummerLuhn: {}
-		},
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "23"
-			};
-		}
-	},
-	"text:bankAccountNumber": {
-		formatter(value) {
-			return value;
-		},
-		parser(value) {
-			return parseBankAccountNumber(value);
-		},
-		validationConfig: { bankAccountNumber: {} },
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "40"
-			};
-		}
-	},
-	"text:bankgiro": {
-		formatter(value) {
-			return parseBankgiro(value);
-		},
-		parser(value) {
-			return parseBankgiro(value);
-		},
-		validationConfig: {
-			maxLength: { length: 9 },
-			bankgiro: {}
-		},
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "40"
-			};
-		}
-	},
-	"text:clearingNumber": {
-		formatter(value) {
-			return parseClearingNumber(value.trim());
-		},
-		parser(value) {
-			return parseClearingNumber(value.trim());
-		},
-		validationConfig: { clearingNumber: {} },
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "16"
-			};
-		}
-	},
-	"text:currency": {
-		formatter(value) {
-			return formatNumber(value);
-		},
-		parser(value) {
-			return parseNumber(value);
-		},
-		validationConfig: {
-			currency: {},
-			integer: {}
-		},
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "20"
-			};
-		}
-	},
-	"text:date": {
-		formatter(value) {
-			return parseDate(value);
-		},
-		parser(value) {
-			return parseDate(value);
-		},
-		validationConfig: { date: {} },
-		attributes: () => {
-			return { type: "text" };
-		}
-	},
-	"text:email": {
-		formatter(value) {
-			return value;
-		},
-		parser(value) {
-			return value;
-		},
-		validationConfig: {
-			email: {},
-			maxLength: { length: 80 }
-		},
-		attributes: () => {
-			return {
-				type: "email",
-				maxlength: "80"
-			};
-		}
-	},
-	"text:number": {
-		formatter(value) {
-			var _this$decimals;
-			return formatNumber(value, (_this$decimals = this.decimals) !== null && _this$decimals !== void 0 ? _this$decimals : 2);
-		},
-		parser(value) {
-			var _this$decimals2;
-			return parseNumber(value, (_this$decimals2 = this.decimals) !== null && _this$decimals2 !== void 0 ? _this$decimals2 : 2);
-		},
-		validationConfig: { number: {} },
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "20"
-			};
-		}
-	},
-	"text:organisationsnummer": {
-		formatter(value) {
-			return parseOrganisationsnummer(value);
-		},
-		parser(value) {
-			return parseOrganisationsnummer(value);
-		},
-		validationConfig: {
-			maxLength: { length: 11 },
-			organisationsnummer: {}
-		},
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "20"
-			};
-		}
-	},
-	"text:percent": {
-		formatter(value) {
-			var _this$decimals3;
-			return formatNumber(value, (_this$decimals3 = this.decimals) !== null && _this$decimals3 !== void 0 ? _this$decimals3 : 2);
-		},
-		parser(value) {
-			var _this$decimals4;
-			return parseNumber(value, (_this$decimals4 = this.decimals) !== null && _this$decimals4 !== void 0 ? _this$decimals4 : 2);
-		},
-		validationConfig: {
-			percent: {},
-			minValue: { minValue: 0 },
-			maxValue: { maxValue: 999 }
-		},
-		attributes: (options) => {
-			return {
-				inputmode: options?.decimals ? "decimal" : "numeric",
-				maxlength: "10"
-			};
-		}
-	},
-	"text:phoneNumber": {
-		formatter(value) {
-			return value;
-		},
-		parser(value) {
-			return value;
-		},
-		validationConfig: {
-			maxLength: { length: 80 },
-			phoneNumber: {}
-		},
-		attributes: () => {
-			return {
-				maxlength: "80",
-				type: "tel"
-			};
-		}
-	},
-	"text:plusgiro": {
-		formatter(value) {
-			return parsePlusgiro(value);
-		},
-		parser(value) {
-			return parsePlusgiro(value);
-		},
-		validationConfig: {
-			maxLength: { length: 11 },
-			plusgiro: {}
-		},
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "16"
-			};
-		}
-	},
-	"text:postalCode": {
-		formatter(value) {
-			return formatPostalCode(value.trim());
-		},
-		parser(value) {
-			return formatPostalCode(value.trim());
-		},
-		validationConfig: {
-			maxLength: { length: 13 },
-			postalCode: {}
-		},
-		attributes: () => {
-			return {
-				inputmode: "numeric",
-				maxlength: "15"
-			};
-		}
-	},
-	text: {
-		formatter(value) {
-			return value;
-		},
-		parser(value) {
-			return value;
-		},
-		validationConfig: {},
-		attributes: () => {
-			return {};
-		}
-	}
-};
-var _hoisted_1$49 = ["aria-sort", "onKeydown"];
-var ITableHeader_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableHeader",
-	props: {
-		column: {},
-		sortEnabled: { type: Boolean },
-		sortOrder: {}
-	},
-	emits: ["toggleSortOrder"],
-	setup(__props, { emit: __emit }) {
-		const emit = __emit;
-		const thElement = useTemplateRef("th");
-		const columnClasses = computed(() => {
-			return ["table-ng__column", __props.column.size.value === "shrink" ? "table-ng__column--shrink" : "table-ng__column--grow"];
-		});
-		const sortIconClass = computed(() => {
-			return {
-				"table-ng__column__sort-icon": true,
-				"table-ng__column__sort-icon--discrete": __props.sortOrder === "unsorted"
-			};
-		});
-		const sortIcon = computed(() => {
-			switch (__props.sortOrder) {
-				case "unsorted": return "sort";
-				case "ascending": return "caret-up";
-				case "descending": return "caret-down";
-				default: return "";
-			}
-		});
-		const sortValue = computed(() => {
-			switch (__props.sortOrder) {
-				case "ascending":
-				case "descending": return __props.sortOrder;
-				default: return;
-			}
-		});
-		function isAlignableColumn(column) {
-			if (column.type === void 0) return false;
-			return isInputTypeText(column.type) || isInputTypeNumber(column.type);
-		}
-		const alignment = computed(() => {
-			return isAlignableColumn(__props.column) ? __props.column.align : "left";
-		});
-		function onClickCell() {
-			assertRef(thElement);
-			thElement.value.tabIndex = 0;
-			if (!__props.column.sortable || !__props.sortEnabled) return;
-			emit("toggleSortOrder", String(__props.column.sortable));
-		}
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("th", {
-				ref: "th",
-				"aria-sort": sortValue.value,
-				class: normalizeClass(columnClasses.value),
-				tabindex: "-1",
-				onKeydown: withKeys(withModifiers(onClickCell, ["prevent"]), ["enter", "space"]),
-				onClick: withModifiers(onClickCell, ["stop"])
-			}, [
-				createVNode(unref(IFlex_default), {
-					gap: "1x",
-					float: alignment.value
-				}, {
-					default: withCtx(() => [
-						createVNode(unref(IFlexItem_default), {
-							shrink: "",
-							class: "table-ng__column__title"
-						}, {
-							default: withCtx(() => [createTextVNode(toDisplayString(__props.column.header), 1)]),
-							_: 1
-						}),
-						_cache[0] || (_cache[0] = createTextVNode()),
-						__props.sortEnabled ? (openBlock(), createBlock(unref(IFlexItem_default), {
-							key: 0,
-							shrink: "",
-							align: "center"
-						}, {
-							default: withCtx(() => [createVNode(unref(FIcon_default), {
-								name: sortIcon.value,
-								class: normalizeClass(sortIconClass.value)
-							}, null, 8, ["name", "class"])]),
-							_: 1
-						})) : createCommentVNode("", true)
-					]),
-					_: 1
-				}, 8, ["float"]),
-				_cache[1] || (_cache[1] = createTextVNode()),
-				__props.column.description.value ? (openBlock(), createBlock(unref(IFlex_default), {
-					key: 0,
-					gap: "1x",
-					float: alignment.value,
-					class: "table-ng__column__description"
-				}, {
-					default: withCtx(() => [createVNode(unref(IFlexItem_default), { shrink: "" }, {
-						default: withCtx(() => [createTextVNode(toDisplayString(__props.column.description), 1)]),
-						_: 1
-					})]),
-					_: 1
-				}, 8, ["float"])) : createCommentVNode("", true)
-			], 42, _hoisted_1$49);
-		};
-	}
-});
-var _hoisted_1$48 = {
-	scope: "col",
-	class: "table-ng__column table-ng__column--selectable table-ng__column--shrink"
-};
-var _hoisted_2$37 = [
-	"checked",
-	"indeterminate",
-	"aria-label"
-];
-var ITableHeaderSelectable_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableHeaderSelectable",
-	props: {
-		selectable: {},
-		state: { type: [Boolean, String] }
-	},
-	emits: ["toggle"],
-	setup(__props, { expose: __expose, emit: __emit }) {
-		const emit = __emit;
-		const $t = useTranslate();
-		const indeterminate = computed(() => __props.state === "indeterminate");
-		const checked = computed(() => __props.state === "indeterminate" ? false : __props.state);
-		const expose = {};
-		const ariaLabel = computed(() => {
-			return !checked.value || indeterminate.value ? $t("fkui.ftable.select-all.aria-label", "Välj alla rader") : $t("fkui.ftable.unselect-all.aria-label", "Avmarkera alla rader");
-		});
-		if (__props.selectable === "multi") expose.tabstopEl = useTemplateRef("input");
-		__expose(expose);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("th", _hoisted_1$48, [__props.selectable === "multi" ? (openBlock(), createElementBlock("input", {
-				key: 0,
-				ref: "input",
-				checked: checked.value,
-				indeterminate: indeterminate.value,
-				type: "checkbox",
-				"aria-label": ariaLabel.value,
-				tabindex: "-1",
-				onChange: _cache[0] || (_cache[0] = ($event) => emit("toggle"))
-			}, null, 40, _hoisted_2$37)) : createCommentVNode("", true)]);
-		};
-	}
-});
-var _hoisted_1$47 = { class: "table-ng__cell table-ng__cell--checkbox" };
-var _hoisted_2$36 = ["checked", "aria-label"];
-var ITableCheckbox_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableCheckbox",
-	props: {
-		column: {},
-		row: {}
-	},
-	setup(__props, { expose: __expose }) {
-		const targetElement = useTemplateRef("target");
-		const ariaLabel = computed(() => {
-			const value = __props.column.label(__props.row);
-			return value.length > 0 ? value : void 0;
-		});
-		function onChange(e) {
-			const checked = e.target.checked;
-			__props.column.update(__props.row, checked, !checked);
-		}
-		__expose({ tabstopEl: targetElement });
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", _hoisted_1$47, [createBaseVNode("input", {
-				ref: "target",
-				checked: Boolean(__props.column.checked(__props.row)),
-				type: "checkbox",
-				"aria-label": ariaLabel.value,
-				tabindex: "-1",
-				onChange
-			}, null, 40, _hoisted_2$36)]);
-		};
-	}
-});
-var _hoisted_1$46 = { class: "table-ng__cell table-ng__cell--radio" };
-var _hoisted_2$35 = ["checked", "aria-label"];
-var ITableRadio_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableRadio",
-	props: {
-		column: {},
-		row: {}
-	},
-	setup(__props, { expose: __expose }) {
-		const inputElement = useTemplateRef("input");
-		const ariaLabel = computed(() => {
-			const value = __props.column.label(__props.row);
-			return value.length > 0 ? value : void 0;
-		});
-		function onChange(_e) {
-			assertRef(inputElement);
-			__props.column.update(__props.row, inputElement.value.checked, !inputElement.value.checked);
-		}
-		__expose({ tabstopEl: inputElement });
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", _hoisted_1$46, [createBaseVNode("input", {
-				ref: "input",
-				type: "radio",
-				checked: Boolean(__props.column.checked(__props.row)),
-				"aria-label": ariaLabel.value,
-				tabindex: "-1",
-				onChange
-			}, null, 40, _hoisted_2$35)]);
-		};
-	}
-});
-var _hoisted_1$45 = {
-	key: 0,
-	tabindex: "-1",
-	class: "table-ng__cell"
-};
-var ITableSelectable_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableSelectable",
-	props: {
-		selectable: {},
-		row: {},
-		state: { type: Boolean },
-		level: { default: 1 }
-	},
-	emits: ["toggle"],
-	setup(__props, { expose: __expose, emit: __emit }) {
-		const emit = __emit;
-		const expose = {};
-		if (__props.level === 1) {
-			const childRef = useTemplateRef("child");
-			expose.tabstopEl = computed(() => {
-				var _childRef$value$tabst;
-				return (_childRef$value$tabst = childRef.value?.tabstopEl) !== null && _childRef$value$tabst !== void 0 ? _childRef$value$tabst : null;
-			});
-		}
-		__expose(expose);
-		const $t = useTranslate();
-		const multiSelectColumn = {
-			type: "checkbox",
-			id: Symbol("multi-select"),
-			header: /* @__PURE__ */ ref("selectable"),
-			description: /* @__PURE__ */ ref(null),
-			sortable: null,
-			size: /* @__PURE__ */ ref(null),
-			component: ITableCheckbox_default,
-			label() {
-				/** Screen reader text for checkbox in multi select table row. */
-				return $t("fkui.table.selectable.checkbox", "Välj rad");
-			},
-			checked() {
-				return __props.state;
-			},
-			update() {
-				emit("toggle", __props.row);
-			},
-			enabled: true
-		};
-		const singleSelectColumn = {
-			type: "radio",
-			id: Symbol("single-select"),
-			header: /* @__PURE__ */ ref("Välj en rad"),
-			description: /* @__PURE__ */ ref(null),
-			sortable: null,
-			size: /* @__PURE__ */ ref(null),
-			component: ITableRadio_default,
-			label() {
-				/** Screen reader text for radio button in single select table row. */
-				return $t("fkui.table.selectable.radio", "Välj rad");
-			},
-			checked() {
-				return __props.state;
-			},
-			update() {
-				emit("toggle", __props.row);
-			},
-			enabled: true
-		};
-		return (_ctx, _cache) => {
-			return __props.level > 1 ? (openBlock(), createElementBlock("td", _hoisted_1$45)) : __props.selectable === "multi" ? (openBlock(), createBlock(ITableCheckbox_default, {
-				key: 1,
-				ref: "child",
-				row: __props.row,
-				column: multiSelectColumn,
-				class: "table-ng__cell--selectable"
-			}, null, 8, ["row"])) : __props.selectable === "single" ? (openBlock(), createBlock(ITableRadio_default, {
-				key: 2,
-				ref: "child",
-				row: __props.row,
-				column: singleSelectColumn,
-				class: "table-ng__cell--selectable"
-			}, null, 8, ["row"])) : createCommentVNode("", true);
-		};
-	}
-});
-/**
-* @internal
-*/
-function isFTableCellApi(value) {
-	return value !== null && typeof value === "object" && Boolean(value.tabstopEl);
-}
-/**
-* Key used on HTMLElement to store table cell api.
-*
-* @internal
-*/
-var tableCellApiSymbol = Symbol("table:cell-api");
-var navKeys = new Set([
-	"ArrowLeft",
-	"ArrowRight",
-	"ArrowUp",
-	"ArrowDown",
-	"Home",
-	"End"
-]);
-var prevCellIndex = void 0;
-/** @internal */
-function getCellTarget(tableElement, rowIndex, cellIndex) {
-	return tableElement.rows[rowIndex].cells[cellIndex];
-}
-function getTr(td) {
-	return td.parentElement;
-}
-function getTable(tr) {
-	return tr.closest("table");
-}
-function getLastRowIndex(tableElement) {
-	return tableElement.rows.length - 1;
-}
-function getLastCellIndex(tableElement) {
-	return tableElement.rows[0].cells.length - 1;
-}
-/** @internal */
-function getVerticalNavIndex(table, from, to) {
-	const target = { ...to };
-	const currentMax = table.rows[from.row].cells.length - 1;
-	const targetMax = table.rows[to.row].cells.length - 1;
-	if (prevCellIndex && currentMax < targetMax) {
-		target.cell = prevCellIndex;
-		prevCellIndex = void 0;
-	} else target.cell = Math.min(targetMax, from.cell);
-	if (targetMax < from.cell) prevCellIndex = from.cell;
-	return target;
-}
-function isDefined(value) {
-	return value.row !== void 0 && value.cell !== void 0;
-}
-function navigate(e, table, from, last) {
-	if (!isDefined(from) || !isDefined(last)) return;
-	if (!navKeys.has(e.code)) return;
-	e.preventDefault();
-	if (e.code === "ArrowLeft") {
-		if (from.cell === 0) return;
-		prevCellIndex = void 0;
-		return {
-			row: from.row,
-			cell: from.cell - 1
-		};
-	}
-	if (e.code === "ArrowRight") {
-		if (from.cell === last.cell) return;
-		if (table.rows[from.row].cells.length - 1 <= from.cell) return;
-		prevCellIndex = void 0;
-		return {
-			row: from.row,
-			cell: from.cell + 1
-		};
-	}
-	if (e.code === "ArrowUp") {
-		if (from.row === 0) return;
-		return getVerticalNavIndex(table, from, {
-			row: from.row - 1,
-			cell: from.cell
-		});
-	}
-	if (e.code === "ArrowDown") {
-		if (from.row === last.row) return;
-		return getVerticalNavIndex(table, from, {
-			row: from.row + 1,
-			cell: from.cell
-		});
-	}
-	if (e.code === "Home") if (e.ctrlKey) return {
-		row: 1,
-		cell: 0
-	};
-	else return {
-		row: from.row,
-		cell: 0
-	};
-	if (e.code === "End") if (e.ctrlKey) return {
-		row: last.row,
-		cell: table.rows[last.row].cells.length - 1
-	};
-	else return {
-		row: from.row,
-		cell: table.rows[from.row].cells.length - 1
-	};
-}
-function getCell(element) {
-	const closest = element.closest("td, th");
-	if (!closest) throw new Error("expected th or td parent");
-	return closest;
-}
-/** @internal */
-async function setDefaultCellTarget(table) {
-	await nextTick();
-	if (!table.tHead) return null;
-	const target = getCellTarget(table, 1, 0);
-	activateCell(target, { focus: false });
-	return target;
-}
-function getHorizontalScrollParents(element) {
-	const scrollParents = [];
-	let parent = element.parentElement;
-	while (parent) {
-		const style = window.getComputedStyle(parent);
-		if ((style.overflowX === "auto" || style.overflowX === "scroll") && parent.scrollWidth > parent.clientWidth) scrollParents.push(parent);
-		parent = parent.parentElement;
-	}
-	return scrollParents;
-}
-function scrollCellIntoView(cell) {
-	cell.scrollIntoView({
-		block: "nearest",
-		inline: "nearest"
-	});
-}
-function isHorizontallyVisibleWithinContainer(element, container) {
-	const elementRect = element.getBoundingClientRect();
-	const containerRect = container.getBoundingClientRect();
-	return elementRect.left >= containerRect.left && elementRect.right <= containerRect.right;
-}
-function isHorizontallyVisibleWithinViewport(element) {
-	const rect = element.getBoundingClientRect();
-	return rect.left >= 0 && rect.right <= window.innerWidth;
-}
-function ensureCellVisible(cell) {
-	if (getHorizontalScrollParents(cell).every((scrollParent) => isHorizontallyVisibleWithinContainer(cell, scrollParent)) && isHorizontallyVisibleWithinViewport(cell)) return;
-	scrollCellIntoView(cell);
-}
-/** @internal */
-function maybeNavigateToCell(e) {
-	const cell = getCell(e.target);
-	const tr = getTr(cell);
-	const table = getTable(tr);
-	const navigateTo = navigate(e, table, {
-		row: tr.rowIndex,
-		cell: cell.cellIndex
-	}, {
-		row: getLastRowIndex(table),
-		cell: getLastCellIndex(table)
-	});
-	if (navigateTo) {
-		const newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
-		activateCell(newCellTarget, { focus: true });
-		ensureCellVisible(newCellTarget);
-	}
-}
-/** @internal */
-function activateCell(element, options) {
-	var _toValue;
-	const api = element[tableCellApiSymbol];
-	const targetEl = (_toValue = toValue(api?.tabstopEl)) !== null && _toValue !== void 0 ? _toValue : element;
-	targetEl.tabIndex = 0;
-	if (options?.focus) targetEl.focus();
-	return targetEl;
-}
-/** @internal */
-function stopEdit(element, reason) {
-	const td = getCell(element);
-	const tr = getTr(td);
-	const table = getTable(tr);
-	const rowIndex = tr.rowIndex;
-	const cellIndex = td.cellIndex;
-	const lastRowIndex = getLastRowIndex(table);
-	const lastCellIndex = getLastCellIndex(table);
-	let newCellTarget = td;
-	switch (reason) {
-		case "enter": {
-			const nextRowIndex = rowIndex + 1;
-			const hasFooter = Boolean(table.tFoot);
-			if (!(rowIndex === lastRowIndex) && !(hasFooter && nextRowIndex === lastRowIndex)) {
-				newCellTarget = getCellTarget(table, nextRowIndex, cellIndex);
-				activateCell(newCellTarget, { focus: true });
-			} else activateCell(newCellTarget, { focus: true });
-			return newCellTarget;
-		}
-		case "escape":
-			activateCell(newCellTarget, { focus: true });
-			return newCellTarget;
-		case "tab":
-			if (cellIndex === lastCellIndex && rowIndex === lastRowIndex) activateCell(newCellTarget, { focus: true });
-			else if (cellIndex === lastCellIndex) {
-				newCellTarget = getCellTarget(table, rowIndex + 1, 0);
-				activateCell(newCellTarget, { focus: true });
-			} else {
-				newCellTarget = getCellTarget(table, rowIndex, cellIndex + 1);
-				activateCell(newCellTarget, { focus: true });
-			}
-			return newCellTarget;
-		case "shift-tab":
-			if (cellIndex === 0 && rowIndex === 1) activateCell(newCellTarget, { focus: true });
-			else if (cellIndex === 0) {
-				newCellTarget = getCellTarget(table, rowIndex - 1, 0);
-				activateCell(newCellTarget, { focus: true });
-			} else {
-				newCellTarget = getCellTarget(table, rowIndex, cellIndex - 1);
-				activateCell(newCellTarget, { focus: true });
-			}
-			return newCellTarget;
-		case "blur": return newCellTarget;
-	}
-}
-/**
-* Visits each item in an array and executes given callback.
-*
-* @internal
-* @param array - Array of items.
-* @param childKey - Key to check for nested items.
-* @param visit - Callback to execute on each item.
-* @param level - Nested level of current item (1 for root level).
-*/
-function walk(array, childKey, visit, level = 1) {
-	for (const item of array) if (visit(item, level) && childKey && item[childKey]) walk(item[childKey], childKey, visit, level + 1);
-}
-/**
-* Return number of rows from array used to generate the rows in table body.
-*
-* @internal
-* @param rows - Array of rows to count.
-* @param childKey - Key to check for nested rows.
-* @returns Number of rows.
-*/
-function getBodyRowCount(rows, childKey) {
-	let count = 0;
-	walk(rows, childKey, () => {
-		count++;
-		return true;
-	});
-	return count;
-}
-/**
-* @internal
-*/
-function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
-	const array = [];
-	walk(keyedRows, expandableAttribute, (row) => {
-		const key = getItemIdentifier(row);
-		const isExpandable = Boolean(expandableAttribute && Array.isArray(row[expandableAttribute]) && row[expandableAttribute].length > 0);
-		const { ariaLevel, ariaPosInSet, ariaRowIndex, ariaSetSize } = getDatasetMetadata(row);
-		const rowIndex = ariaRowIndex + 1;
-		const isExpanded = isExpandable && expandedKeys.has(key);
-		let metarow = {
-			key,
-			row,
-			rowIndex,
-			isExpandable,
-			isExpanded
-		};
-		if (expandableAttribute) metarow = {
-			level: ariaLevel,
-			posinset: ariaPosInSet,
-			setsize: ariaSetSize,
-			...metarow
-		};
-		array.push(metarow);
-		return isExpanded;
-	});
-	return array;
-}
-var selectableRowsKey = Symbol("fTableSelectableRows");
-var selectableRowsProvidedKey = Symbol("fTableSelectableRowsProvided");
-/**
-* Injects `SelectableRowSource`.
-*
-* @internal
-* @since v6.44.0
-*/
-function useSelectableRowSource() {
-	return {
-		rows: inject(selectableRowsKey, /* @__PURE__ */ ref([])),
-		isProvided: inject(selectableRowsProvidedKey, /* @__PURE__ */ ref(false))
-	};
-}
-/**
-* Provides `SelectableRowSource`.
-*
-* Contains information about selectable rows, injected by `f-table` in order to properly
-* handle selection state (checked, indeterminate, not checked) and selected rows cleanup.
-*
-* @internal
-*/
-function provideSelectableRowSource(options) {
-	provide(selectableRowsKey, options.rows);
-	provide(selectableRowsProvidedKey, /* @__PURE__ */ ref(true));
-}
-/**
-* @internal
-*/
-var stopEditKey = Symbol();
-/**
-* @internal
-*/
-function useStartStopEdit() {
-	return { stopEdit: inject(stopEditKey, () => Promise.resolve()) };
-}
-var _hoisted_1$44 = ["href"];
-var _hoisted_2$34 = {
-	key: 1,
-	ref: "target",
-	tabindex: "-1",
-	class: "table-ng__cell"
-};
-var ITableAnchor_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableAnchor",
-	props: {
-		column: {},
-		row: {}
-	},
-	setup(__props, { expose: __expose }) {
-		__expose({ tabstopEl: useTemplateRef("target") });
-		return (_ctx, _cache) => {
-			return __props.column.text(__props.row) ? (openBlock(), createElementBlock("td", {
-				key: 0,
-				class: "table-ng__cell table-ng__cell--anchor",
-				onKeydown: _cache[0] || (_cache[0] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
-			}, [createBaseVNode("a", {
-				ref: "target",
-				class: "anchor anchor--block",
-				target: "_blank",
-				href: __props.column.href(__props.row),
-				tabindex: "-1"
-			}, toDisplayString(__props.column.text(__props.row)), 9, _hoisted_1$44)], 32)) : (openBlock(), createElementBlock("td", _hoisted_2$34, null, 512));
-		};
-	}
-});
-var _hoisted_1$43 = { class: "table-ng__cell table-ng__cell--button" };
-var _hoisted_2$33 = { class: "sr-only" };
-var ITableButton_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableButton",
-	props: {
-		column: {},
-		row: {}
-	},
-	setup(__props, { expose: __expose }) {
-		const buttonElement = useTemplateRef("button");
-		function onClickButton() {
-			assertRef(buttonElement);
-			buttonElement.value.tabIndex = 0;
-			if (__props.column.onClick) __props.column.onClick(__props.row);
-		}
-		__expose({ tabstopEl: buttonElement });
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", _hoisted_1$43, [createBaseVNode("button", {
-				ref: "button",
-				class: "icon-button",
-				type: "button",
-				tabindex: "-1",
-				onClick: onClickButton
-			}, [
-				__props.column.icon ? (openBlock(), createBlock(unref(FIcon_default), {
-					key: 0,
-					library: __props.column.iconLibrary,
-					name: __props.column.icon
-				}, null, 8, ["library", "name"])) : createCommentVNode("", true),
-				_cache[0] || (_cache[0] = createTextVNode()),
-				createBaseVNode("span", _hoisted_2$33, toDisplayString(__props.column.text(__props.row)), 1)
-			], 512)]);
-		};
-	}
-});
-var _hoisted_1$42 = { class: "sr-only" };
-var ITableMenu_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableMenu",
-	props: {
-		column: {},
-		row: {}
-	},
-	setup(__props, { expose: __expose }) {
-		const buttonRef = useTemplateRef("button");
-		const expose = { tabstopEl: buttonRef };
-		const isOpen = /* @__PURE__ */ ref(false);
-		function resolveLabel(label, row) {
-			return typeof label === "function" ? label(row) : label;
-		}
-		const actions = computed(() => {
-			return (typeof __props.column.actions === "function" ? __props.column.actions(__props.row) : __props.column.actions).map((it, index) => {
-				return {
-					...it,
-					label: resolveLabel(it.label, __props.row),
-					key: `item-${String(index + 1)}`
-				};
-			});
-		});
-		const menuitems = computed(() => {
-			return actions.value.map((it) => {
-				var _it$icon;
-				return {
-					label: it.label,
-					icon: (_it$icon = it.icon) !== null && _it$icon !== void 0 ? _it$icon : void 0,
-					key: it.key
-				};
-			});
-		});
-		function onOpen(event) {
-			event.stopPropagation();
-			isOpen.value = true;
-		}
-		function onClose() {
-			isOpen.value = false;
-		}
-		function onFocusout(event) {
-			if (event.relatedTarget && event.relatedTarget instanceof HTMLElement && Boolean(event.relatedTarget.closest(".popup"))) return;
-			isOpen.value = false;
-		}
-		function onSelect(key) {
-			actions.value.find((it) => it.key === key)?.onClick(__props.row);
-		}
-		__expose(expose);
-		return (_ctx, _cache) => {
-			var _buttonRef$value;
-			return openBlock(), createElementBlock("td", { class: normalizeClass(["table-ng__cell table-ng__cell--button", { "table-ng__cell--menu-open": isOpen.value }]) }, [
-				createBaseVNode("button", {
-					ref: "button",
-					class: "icon-button",
-					type: "button",
-					tabindex: "-1",
-					"aria-haspopup": "menu",
-					onClick: onOpen
-				}, [
-					createVNode(unref(FIcon_default), { name: "bars" }),
-					_cache[0] || (_cache[0] = createTextVNode()),
-					createBaseVNode("span", _hoisted_1$42, toDisplayString(__props.column.text(__props.row)), 1)
-				], 512),
-				_cache[1] || (_cache[1] = createTextVNode()),
-				createVNode(unref(FContextMenu_default), {
-					"is-open": isOpen.value,
-					items: menuitems.value,
-					anchor: (_buttonRef$value = buttonRef.value) !== null && _buttonRef$value !== void 0 ? _buttonRef$value : void 0,
-					onClose,
-					onSelect,
-					onFocusout
-				}, null, 8, [
-					"is-open",
-					"items",
-					"anchor"
-				])
-			], 2);
-		};
-	}
-});
-var ITableRowheader_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableRowheader",
-	props: {
-		row: {},
-		column: {}
-	},
-	setup(__props) {
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("th", {
-				ref: "th",
-				class: "table-ng__cell table-ng__cell--rowheader",
-				scope: "row"
-			}, toDisplayString(__props.column.text(__props.row)), 513);
-		};
-	}
-});
-var _hoisted_1$41 = { class: "table-ng__editable" };
-var _hoisted_2$32 = { class: "table-ng__editable__text" };
-var _hoisted_3$26 = [
-	"aria-expanded",
-	"aria-controls",
-	"aria-activedescendant",
-	"aria-label"
-];
-var _hoisted_4$21 = { class: "table-ng__editable__text" };
-var ITableSelect_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableSelect",
-	props: {
-		row: {},
-		column: {}
-	},
-	setup(__props) {
-		const editing = /* @__PURE__ */ ref(false);
-		const editRef = useTemplateRef("edit");
-		const { stopEdit } = useStartStopEdit();
-		const viewValue = /* @__PURE__ */ ref(__props.column.selected(__props.row));
-		const ariaLabel = computed(() => {
-			const value = __props.column.label(__props.row);
-			return value.length > 0 ? value : void 0;
-		});
-		const dropdownId = ElementIdService.generateElementId();
-		const dropdownIsOpen = /* @__PURE__ */ ref(false);
-		const activeOptionId = ElementIdService.generateElementId();
-		const activeOption = /* @__PURE__ */ ref(null);
-		async function onCellKeyDown(e) {
-			if (e.code === "Enter" || e.code === "NumpadEnter" || e.code === "Space") await startEditing(e);
-		}
-		async function onCellClick(e) {
-			if (editing.value) return;
-			await startEditing(e);
-		}
-		async function startEditing(e) {
-			assertRef(editRef);
-			e.preventDefault();
-			editing.value = true;
-			await nextTick();
-			editRef.value.tabIndex = 0;
-			editRef.value.focus();
-			await openDropdown();
-		}
-		async function selectDropdownOption(value) {
-			assertRef(editRef);
-			assertSet(stopEdit);
-			const oldValue = viewValue.value;
-			viewValue.value = value;
-			__props.column.update(__props.row, value, oldValue);
-			closeDropdown();
-			await stopEdit(editRef.value, "enter");
-		}
-		async function onDropdownClose() {
-			assertSet(stopEdit);
-			assertRef(editRef);
-			closeDropdown();
-			await stopEdit(editRef.value, "blur");
-		}
-		async function openDropdown() {
-			dropdownIsOpen.value = true;
-			await nextTick();
-			if (viewValue.value) activeOption.value = viewValue.value;
-			else activeOption.value = null;
-			assertRef(editRef);
-			editRef.value.focus();
-		}
-		function closeDropdown() {
-			dropdownIsOpen.value = false;
-			editing.value = false;
-			activeOption.value = null;
-		}
-		function setNextOption() {
-			if (activeOption.value) {
-				const index = __props.column.options.indexOf(activeOption.value);
-				if (index === __props.column.options.length - 1) activeOption.value = __props.column.options[0];
-				else activeOption.value = __props.column.options[index + 1];
-			} else activeOption.value = __props.column.options[0];
-		}
-		function setPreviousOption() {
-			if (activeOption.value) {
-				const index = __props.column.options.indexOf(activeOption.value);
-				if (index === 0) activeOption.value = __props.column.options.at(-1);
-				else activeOption.value = __props.column.options[index - 1];
-			} else activeOption.value = __props.column.options.at(-1);
-		}
-		async function onEditKeyDown(e) {
-			var _activeOption$value;
-			assertRef(editRef);
-			assertSet(stopEdit);
-			switch (e.code) {
-				case "Escape":
-					e.preventDefault();
-					closeDropdown();
-					await stopEdit(editRef.value, "escape");
-					break;
-				case "Enter":
-				case "NumpadEnter":
-					e.preventDefault();
-					await selectDropdownOption((_activeOption$value = activeOption.value) !== null && _activeOption$value !== void 0 ? _activeOption$value : viewValue.value);
-					await stopEdit(editRef.value, "enter");
-					break;
-				case "Tab":
-					e.preventDefault();
-					closeDropdown();
-					await stopEdit(editRef.value, e.shiftKey ? "shift-tab" : "tab");
-					break;
-				case "ArrowDown":
-					e.preventDefault();
-					setNextOption();
-					break;
-				case "ArrowUp":
-					e.preventDefault();
-					setPreviousOption();
-					break;
-				case "Space":
-					e.preventDefault();
-					break;
-				default: break;
-			}
-		}
-		async function onEditBlur(event) {
-			if (event.relatedTarget && event.relatedTarget instanceof HTMLElement && event.relatedTarget.closest(".combobox__listbox")) return;
-			assertSet(stopEdit);
-			assertRef(editRef);
-			closeDropdown();
-			await nextTick();
-			await stopEdit(editRef.value, "blur");
-		}
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("td", {
-				class: "table-ng__cell table-ng__cell--select",
-				tabindex: "-1",
-				onKeydown: onCellKeyDown,
-				onClick: withModifiers(onCellClick, ["stop"])
-			}, [
-				withDirectives(createBaseVNode("div", _hoisted_1$41, [createBaseVNode("span", _hoisted_2$32, toDisplayString(viewValue.value), 1)], 512), [[vShow, !editing.value]]),
-				_cache[3] || (_cache[3] = createTextVNode()),
-				withDirectives(createBaseVNode("div", {
-					ref: "edit",
-					role: "combobox",
-					tabindex: "-1",
-					"aria-expanded": dropdownIsOpen.value,
-					"aria-controls": dropdownIsOpen.value ? unref(dropdownId) : void 0,
-					"aria-activedescendant": dropdownIsOpen.value ? unref(activeOptionId) : void 0,
-					"aria-autocomplete": "list",
-					class: "table-ng__editable",
-					"aria-label": ariaLabel.value,
-					onClick: _cache[0] || (_cache[0] = withModifiers(() => {}, ["stop"])),
-					onDblclick: _cache[1] || (_cache[1] = withModifiers(() => {}, ["prevent"])),
-					onKeydown: withModifiers(onEditKeyDown, ["stop"]),
-					onFocusout: _cache[2] || (_cache[2] = (e) => onEditBlur(e))
-				}, [createBaseVNode("span", _hoisted_4$21, toDisplayString(viewValue.value), 1)], 40, _hoisted_3$26), [[vShow, editing.value]]),
-				_cache[4] || (_cache[4] = createTextVNode()),
-				withDirectives(createVNode(unref(IComboboxDropdown_default), {
-					id: unref(dropdownId),
-					"is-open": dropdownIsOpen.value,
-					options: __props.column.options,
-					"active-option": activeOption.value,
-					"active-option-id": unref(activeOptionId),
-					"input-node": editRef.value,
-					onSelect: selectDropdownOption,
-					onClose: onDropdownClose
-				}, null, 8, [
-					"id",
-					"is-open",
-					"options",
-					"active-option",
-					"active-option-id",
-					"input-node"
-				]), [[vShow, editing.value]])
-			], 32);
-		};
-	}
-});
-/**
-* @internal
-*/
-function defaultTnumValue(type) {
-	return [
-		"text:bankAccountNumber",
-		"text:bankgiro",
-		"text:clearingNumber",
-		"text:currency",
-		"text:date",
-		"text:number",
-		"text:organisationsnummer",
-		"text:percent",
-		"text:personnummer",
-		"text:phoneNumber",
-		"text:plusgiro",
-		"text:postalCode"
-	].includes(type);
-}
-var defaultLabelFn = () => "";
-/**
-* @internal
-*/
-function getLabelFn(fn) {
-	if (fn) return fn;
-	return defaultLabelFn;
-}
-var defaultUpdateFn = () => void 0;
-/**
-* @internal
-*/
-function getUpdateFn(fn, key) {
-	if (fn) return fn;
-	if (key) return (row, value) => {
-		row[key] = value;
-	};
-	return defaultUpdateFn;
-}
-/**
-*  @internal
-*/
-function getValueFn(fn, key, coerce, defaultValue) {
-	if (fn) return fn;
-	if (key) return (row) => {
-		var _row$key;
-		return coerce((_row$key = row[key]) !== null && _row$key !== void 0 ? _row$key : defaultValue);
-	};
-	return () => defaultValue;
-}
-/**
-*  @internal
-*/
-function isColumnTypeNumber(column) {
-	const type = column.type;
-	return numberTypes.includes(type);
-}
-/** @internal */
-function addInputValidators(inputElement, type) {
-	ValidationService.addValidatorsToElement(inputElement, inputFieldConfig[type].validationConfig, true);
-}
-/**
-* @internal
-*/
-function isAlphanumeric(e) {
-	return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
-}
-var _hoisted_1$40 = ["id", "aria-invalid"];
-var _hoisted_2$31 = { class: "table-ng__editable__text" };
-var _hoisted_3$25 = {
-	key: 0,
-	class: "sr-only"
-};
-var _hoisted_4$20 = [
-	"id",
-	"aria-label",
-	"aria-hidden"
-];
-var _hoisted_5$16 = {
-	ref: "arrowAnchor",
-	"aria-hidden": "true"
-};
-var _hoisted_6$13 = { class: "table-ng__cell--static__text" };
-var ITableText_default = /* @__PURE__ */ defineComponent({
-	__name: "ITableText",
-	props: {
-		row: {},
-		column: {},
-		activeErrorAnchor: { default: () => void 0 }
-	},
-	emits: ["onError", "closeError"],
-	setup(__props, { emit: __emit }) {
-		const emit = __emit;
-		const viewValue = /* @__PURE__ */ ref("");
-		const inEdit = /* @__PURE__ */ ref(false);
-		const cellId = ElementIdService.generateElementId();
-		const inputId = ElementIdService.generateElementId();
-		const validity = /* @__PURE__ */ ref({
-			isValid: true,
-			validationMessage: "",
-			validityMode: "INITIAL"
-		});
-		let validationFacade = {
-			validateElement: () => Promise.resolve({
-				isValid: true,
-				error: "",
-				isSubmitted: false,
-				isTouched: false
-			}),
-			dispatchComponentValidityEvent: () => void 0
-		};
-		const hasError = computed(() => validity.value.validityMode === "ERROR");
-		const viewModeAriaInvalid = computed(() => !inEdit.value && hasError.value ? true : void 0);
-		const viewModeErrorMessage = computed(() => !inEdit.value && hasError.value ? validity.value.validationMessage : void 0);
-		let initialValidity = { ...validity.value };
-		const divClasses = computed(() => {
-			return {
-				"table-ng__editable": true,
-				"table-ng__editable__numeric": __props.column.tnum
-			};
-		});
-		const wrapperClasses = computed(() => {
-			return {
-				"table-ng__cell": true,
-				"table-ng__cell--text": true,
-				"table-ng__cell--valid": !hasError.value,
-				"table-ng__cell--error": hasError.value,
-				"table-ng__cell--align-left": __props.column.align === "left",
-				"table-ng__cell--align-right": __props.column.align === "right"
-			};
-		});
-		const staticClasses = computed(() => {
-			return {
-				"table-ng__cell": true,
-				"table-ng__cell--static": true,
-				"table-ng__cell--align-left": __props.column.align === "left",
-				"table-ng__cell--align-right": __props.column.align === "right",
-				"table-ng__cell--numeric": __props.column.tnum
-			};
-		});
-		const inputClasses = computed(() => {
-			return { "table-ng__textedit": true };
-		});
-		const ariaLabel = computed(() => {
-			let value = __props.column.label(__props.row);
-			if (hasError.value) value = `${value} ${validity.value.validationMessage}`;
-			return value.length > 0 ? value : void 0;
-		});
-		const columnAttributes = computed(() => {
-			if (__props.column.attributes && typeof __props.column.attributes === "function") return __props.column.attributes(__props.row);
-			else return __props.column.attributes;
-		});
-		const configAttributes = computed(() => {
-			let decimals = void 0;
-			if (isColumnTypeNumber(__props.column)) decimals = __props.column.decimals;
-			return inputFieldConfig[__props.column.type].attributes({ decimals });
-		});
-		const tdElement = useTemplateRef("td");
-		const inputElement = useTemplateRef("input");
-		const arrowAnchorElement = useTemplateRef("arrowAnchor");
-		const { stopEdit } = useStartStopEdit();
-		const isHovered = useElementHover(tdElement, { delayEnter: 200 });
-		const { focused } = useFocusWithin(tdElement);
-		const openPopupError = computed(() => {
-			if (!tdElement.value) return false;
-			return tdElement.value === __props.activeErrorAnchor;
-		});
-		let initialViewValue = "";
-		let pendingStopEditReason = null;
-		function setUpValidation(el) {
-			addInputValidators(el, __props.column.type);
-			ValidationService.addValidatorsToElement(el, __props.column.validation);
-			validationFacade = {
-				validateElement: (el) => ValidationService.validateElement(el),
-				dispatchComponentValidityEvent
-			};
-		}
-		function setUpFakeValidation(el) {
-			assertRef(inputElement);
-			const input = inputElement.value;
-			function emitFakeValidity(nativeEvent) {
-				onValidity(new CustomEvent("validity", { detail: {
-					isValid: true,
-					nativeEvent,
-					validityMode: "INITIAL",
-					validationMessage: "",
-					target: input,
-					elementId: String(input.id)
-				} }));
-			}
-			for (const nativeEvent of ["change", "blur"]) useEventListener$1(el, nativeEvent, () => {
-				emitFakeValidity(nativeEvent);
-			});
-			validationFacade = {
-				validateElement: () => {
-					emitFakeValidity("validate");
-					return Promise.resolve({
-						isValid: true,
-						error: "",
-						isSubmitted: false,
-						isTouched: false
-					});
-				},
-				dispatchComponentValidityEvent: () => void 0
-			};
-			useEventListener$1(el, "input", onPendingValidity);
-			useEventListener$1(el, "component-validity", (e) => {
-				e.stopPropagation();
-			});
-		}
-		onMounted(() => {
-			if (inputElement.value) {
-				viewValue.value = fromColumnValue();
-				if (__props.column.hasValidation) setUpValidation(inputElement.value);
-				else setUpFakeValidation(inputElement.value);
-				nextTick().then(() => validationFacade.validateElement(inputElement.value));
-			}
-		});
-		watchEffect(() => {
-			if (hasError.value) {
-				var _tdElement$value, _arrowAnchorElement$v;
-				emit("onError", {
-					anchor: (_tdElement$value = tdElement.value) !== null && _tdElement$value !== void 0 ? _tdElement$value : void 0,
-					arrowAnchor: (_arrowAnchorElement$v = arrowAnchorElement.value) !== null && _arrowAnchorElement$v !== void 0 ? _arrowAnchorElement$v : void 0,
-					message: validity.value.validationMessage,
-					hasFocus: focused.value,
-					hasHover: isHovered.value,
-					inEdit: inEdit.value
-				});
-			} else {
-				var _tdElement$value2, _arrowAnchorElement$v2;
-				emit("closeError", {
-					anchor: (_tdElement$value2 = tdElement.value) !== null && _tdElement$value2 !== void 0 ? _tdElement$value2 : void 0,
-					arrowAnchor: (_arrowAnchorElement$v2 = arrowAnchorElement.value) !== null && _arrowAnchorElement$v2 !== void 0 ? _arrowAnchorElement$v2 : void 0,
-					message: validity.value.validationMessage,
-					hasFocus: focused.value,
-					hasHover: isHovered.value,
-					inEdit: inEdit.value
-				});
-			}
-		});
-		function onStartEdit(value) {
-			if (inEdit.value) return;
-			inEdit.value = true;
-			assertRef(tdElement);
-			assertRef(inputElement);
-			const { width } = tdElement.value.getBoundingClientRect();
-			initialViewValue = viewValue.value;
-			initialValidity = { ...validity.value };
-			viewValue.value = value;
-			tdElement.value.style.setProperty("width", `${String(width)}px`);
-			inputElement.value.tabIndex = 0;
-			inputElement.value.focus();
-		}
-		function onStopEdit(options) {
-			const { reason } = options;
-			inEdit.value = false;
-			assertRef(inputElement);
-			inputElement.value.tabIndex = -1;
-			assertRef(tdElement);
-			tdElement.value.style.removeProperty("width");
-			if (reason === "blur") tdElement.value.tabIndex = 0;
-			stopEdit(inputElement.value, reason);
-		}
-		function fromColumnValue() {
-			assertRef(validity);
-			const value = __props.column.value(__props.row);
-			if (validity.value.isValid) {
-				var _props$column$format;
-				return (_props$column$format = __props.column.formatter(value)) !== null && _props$column$format !== void 0 ? _props$column$format : value.toString();
-			}
-			return value.toString();
-		}
-		function toColumnValue(value) {
-			assertRef(validity);
-			if (validity.value.isValid) {
-				var _props$column$parser;
-				return (_props$column$parser = __props.column.parser(value)) !== null && _props$column$parser !== void 0 ? _props$column$parser : value;
-			}
-			return value;
-		}
-		function updateColumnValue() {
-			const oldValue = __props.column.value(__props.row);
-			const newValue = toColumnValue(viewValue.value);
-			if (oldValue !== newValue) __props.column.update(__props.row, newValue, oldValue);
-		}
-		function onClickCell(event) {
-			assertRef(tdElement);
-			if (event.target && tdElement.value.contains(event.target)) onStartEdit(fromColumnValue());
-		}
-		function onViewingKeydown(event) {
-			if (isAlphanumeric(event)) {
-				event.stopPropagation();
-				onStartEdit("");
-			}
-			if (event.key === "Enter") {
-				event.stopPropagation();
-				onStartEdit(fromColumnValue());
-			}
-		}
-		function onEditingKeydown(event) {
-			assertRef(inputElement);
-			event.stopPropagation();
-			switch (event.key) {
-				case "Enter":
-					if (viewValue.value === initialViewValue) {
-						validity.value = { ...initialValidity };
-						onStopEdit({ reason: "enter" });
-					} else {
-						pendingStopEditReason = "enter";
-						validationFacade.validateElement(inputElement.value);
-					}
-					break;
-				case "Escape":
-					onStopEdit({ reason: "escape" });
-					viewValue.value = initialViewValue;
-					inputElement.value.value = initialViewValue;
-					validationFacade.validateElement(inputElement.value);
-					break;
-				case "Tab":
-					pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
-					break;
-			}
-		}
-		function onKeydown(event) {
-			if (document.activeElement === inputElement.value) onEditingKeydown(event);
-			else onViewingKeydown(event);
-		}
-		function updateValidity(eventDetail) {
-			const { isValid, validationMessage, validityMode } = eventDetail;
-			validity.value = {
-				isValid,
-				validationMessage,
-				validityMode
-			};
-			assertRef(inputElement);
-			validationFacade.dispatchComponentValidityEvent(inputElement.value, {
-				...eventDetail,
-				errorMessage: validationMessage,
-				focusElementId: cellId
-			});
-		}
-		function onValidity(event) {
-			const nativeEvent = event.detail.nativeEvent;
-			const reason = pendingStopEditReason !== null && pendingStopEditReason !== void 0 ? pendingStopEditReason : nativeEvent === "blur" ? "blur" : null;
-			pendingStopEditReason = null;
-			if (inEdit.value && reason) {
-				onStopEdit({ reason });
-				updateValidity(event.detail);
-				updateColumnValue();
-				return;
-			}
-			if (nativeEvent === "input") {
-				updateValidity(event.detail);
-				updateColumnValue();
-				return;
-			}
-			if (nativeEvent === "validate") updateValidity(event.detail);
-		}
-		function onPendingValidity() {
-			assertRef(validity);
-			validity.value.validityMode = "INITIAL";
-		}
-		return (_ctx, _cache) => {
-			return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
-				key: 0,
-				id: unref(cellId),
-				ref: "td",
-				tabindex: "-1",
-				class: normalizeClass(wrapperClasses.value),
-				"aria-invalid": viewModeAriaInvalid.value,
-				onClick: withModifiers(onClickCell, ["stop"]),
-				onKeydown
-			}, [
-				createBaseVNode("div", { class: normalizeClass(divClasses.value) }, [
-					createBaseVNode("span", _hoisted_2$31, toDisplayString(fromColumnValue()), 1),
-					_cache[2] || (_cache[2] = createTextVNode()),
-					viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$25, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("", true),
-					_cache[3] || (_cache[3] = createTextVNode()),
-					withDirectives(createBaseVNode("input", mergeProps({
-						id: unref(inputId),
-						ref: "input",
-						"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => viewValue.value = $event),
-						class: inputClasses.value,
-						type: "text",
-						maxlength: "40",
-						tabindex: "-1",
-						"aria-label": ariaLabel.value
-					}, {
-						...configAttributes.value,
-						...columnAttributes.value
-					}, {
-						"aria-hidden": !inEdit.value,
-						onValidity,
-						onPendingValidity
-					}), null, 16, _hoisted_4$20), [[vModelText, viewValue.value]]),
-					_cache[4] || (_cache[4] = createTextVNode()),
-					createBaseVNode("span", _hoisted_5$16, null, 512)
-				], 2),
-				_cache[5] || (_cache[5] = createTextVNode()),
-				createVNode(unref(IPopupError_default), {
-					anchor: tdElement.value,
-					"is-open": openPopupError.value,
-					"error-message": validity.value.validationMessage,
-					"arrow-anchor": arrowAnchorElement.value,
-					layout: "f-table"
-				}, null, 8, [
-					"anchor",
-					"is-open",
-					"error-message",
-					"arrow-anchor"
-				])
-			], 42, _hoisted_1$40)) : (openBlock(), createElementBlock("td", {
-				key: 1,
-				ref: "td",
-				tabindex: "-1",
-				class: normalizeClass(staticClasses.value),
-				onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
-			}, [createBaseVNode("div", _hoisted_6$13, toDisplayString(fromColumnValue()), 1)], 34));
-		};
-	}
-});
-/**
-* @internal
-*/
-function normalizeAnchorColumn(column) {
-	return {
-		type: "anchor",
-		text: getValueFn(column.text, column.key, String, ""),
-		href: typeof column.href === "function" ? column.href : () => String(column.href)
-	};
-}
-/**
-* Determines the sortable value for a table column based on the sort property and key.
-*
-* @param column - An object with sort and key properties
-* @returns The key if sorting should be enabled, null otherwise
-*
-* @internal
-*/
-function getSortable(column) {
-	var _column$sort, _column$key;
-	return ((_column$sort = column.sort) !== null && _column$sort !== void 0 ? _column$sort : !!column.key) ? (_column$key = column.key) !== null && _column$key !== void 0 ? _column$key : null : null;
-}
-/**
-* @internal
-*/
-function normalizeBaseColumn(column) {
-	var _column$enabled;
-	const id = Symbol();
-	const header = /* @__PURE__ */ toRef(column.header);
-	const description = column.description !== void 0 ? /* @__PURE__ */ toRef(column.description) : /* @__PURE__ */ ref("");
-	const size = column.size !== void 0 ? /* @__PURE__ */ toRef(column.size) : /* @__PURE__ */ ref("grow");
-	return {
-		id,
-		header,
-		description,
-		sortable: getSortable(column),
-		size,
-		enabled: (_column$enabled = column.enabled) !== null && _column$enabled !== void 0 ? _column$enabled : true
-	};
-}
-/**
-* @internal
-*/
-function normalizeButtonColumn(column) {
-	var _column$icon;
-	return {
-		type: "button",
-		text: getValueFn(column.text, column.key, String, ""),
-		onClick: column.onClick,
-		icon: (_column$icon = column.icon) !== null && _column$icon !== void 0 ? _column$icon : null,
-		iconLibrary: column.iconLibrary
-	};
-}
-/**
-* @internal
-*/
-function normalizeCheckboxColumn(column) {
-	return {
-		type: "checkbox",
-		label: getLabelFn(column.label),
-		checked: getValueFn(column.checked, column.key, Boolean, false),
-		update: getUpdateFn(column.update, column.key)
-	};
-}
-function noop$2() {}
-/**
-* @internal
-*/
-function normalizeMenuAction(action) {
-	var _action$icon, _action$onClick;
-	return {
-		label: action.label,
-		icon: (_action$icon = action.icon) !== null && _action$icon !== void 0 ? _action$icon : null,
-		onClick: (_action$onClick = action.onClick) !== null && _action$onClick !== void 0 ? _action$onClick : noop$2
-	};
-}
-/**
-* @internal
-*/
-function normalizeMenuColumn(column) {
-	var _column$actions;
-	const actions = (_column$actions = column.actions) !== null && _column$actions !== void 0 ? _column$actions : [];
-	return {
-		type: "menu",
-		text: getValueFn(column.text, void 0, String, ""),
-		actions: typeof actions === "function" ? (row) => actions(row).map(normalizeMenuAction) : actions.map(normalizeMenuAction)
-	};
-}
-/**
-* @internal
-*/
-function normalizeNumberColumn(column) {
-	var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation;
-	const type = column.type;
-	const config = inputFieldConfig[type];
-	const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser.bind(column);
-	const formatter = (_column$formatter = column.formatter) !== null && _column$formatter !== void 0 ? _column$formatter : config.formatter.bind(column);
-	const decimals = type === "text:currency" ? 0 : column.decimals;
-	return {
-		type,
-		label: getLabelFn(column.label),
-		decimals,
-		tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
-		align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "right",
-		attributes: column.attributes,
-		value: getValueFn(column.value, column.key, String, ""),
-		update: getUpdateFn(column.update, column.key),
-		editable: typeof column.editable === "function" ? column.editable : () => {
-			var _column$editable;
-			return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
-		},
-		validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
-		hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
-		formatter,
-		parser
-	};
-}
-/**
-* @internal
-*/
-function normalizeRenderColumn(column) {
-	return {
-		type: void 0,
-		render: column.render,
-		sortable: null
-	};
-}
-/**
-* @internal
-*/
-function normalizeRowHeaderColumn(column) {
-	return {
-		type: "rowheader",
-		text: getValueFn(column.text, column.key, String, "")
-	};
-}
-/**
-* @internal
-*/
-function normalizeSelectColumn(column) {
-	return {
-		type: "select",
-		label: getLabelFn(column.label),
-		selected: getValueFn(column.selected, column.key, String, ""),
-		update: getUpdateFn(column.update, column.key),
-		options: column.options
-	};
-}
-/**
-* @internal
-*/
-function normalizeSimpleColumn(column) {
-	return {
-		type: "text",
-		label: () => "",
-		tnum: false,
-		align: "left",
-		value: getValueFn(column.value, column.key, String, ""),
-		update() {},
-		editable: () => false,
-		validation: {},
-		hasValidation: false,
-		formatter: (value) => value,
-		parser: (value) => value
-	};
-}
-/**
-* @internal
-*/
-function normalizeTextColumn(column) {
-	var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation;
-	const type = column.type;
-	const config = inputFieldConfig[type];
-	const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser;
-	const formatter = (_column$formatter = column.formatter) !== null && _column$formatter !== void 0 ? _column$formatter : config.formatter;
-	return {
-		type,
-		tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue(type),
-		align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "left",
-		attributes: column.attributes,
-		label: getLabelFn(column.label),
-		value: getValueFn(column.value, column.key, String, ""),
-		update: getUpdateFn(column.update, column.key),
-		editable: typeof column.editable === "function" ? column.editable : () => {
-			var _column$editable;
-			return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : false);
-		},
-		validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
-		hasValidation: column.type.startsWith("text:") || Boolean(column.validation),
-		formatter,
-		parser
-	};
-}
-function normalizeTableColumn(column) {
-	const base = normalizeBaseColumn(column);
-	if ("render" in column) return Object.freeze({
-		...normalizeRenderColumn(column),
-		...base
-	});
-	switch (column.type) {
-		case "checkbox": return Object.freeze({
-			...normalizeCheckboxColumn(column),
-			...base,
-			component: ITableCheckbox_default
-		});
-		case "text:currency":
-		case "text:number":
-		case "text:percent": return Object.freeze({
-			...normalizeNumberColumn(column),
-			...base,
-			component: ITableText_default
-		});
-		case "text":
-		case "text:bankAccountNumber":
-		case "text:bankgiro":
-		case "text:clearingNumber":
-		case "text:date":
-		case "text:email":
-		case "text:organisationsnummer":
-		case "text:personnummer":
-		case "text:phoneNumber":
-		case "text:plusgiro":
-		case "text:postalCode": return Object.freeze({
-			...normalizeTextColumn(column),
-			...base,
-			component: ITableText_default
-		});
-		case "rowheader": return Object.freeze({
-			...normalizeRowHeaderColumn(column),
-			...base,
-			component: ITableRowheader_default
-		});
-		case "anchor": return Object.freeze({
-			...normalizeAnchorColumn(column),
-			...base,
-			component: ITableAnchor_default
-		});
-		case "button": return Object.freeze({
-			...normalizeButtonColumn(column),
-			...base,
-			component: ITableButton_default
-		});
-		case "select": return Object.freeze({
-			...normalizeSelectColumn(column),
-			...base,
-			component: ITableSelect_default
-		});
-		case "menu": return Object.freeze({
-			...normalizeMenuColumn(column),
-			...base,
-			component: ITableMenu_default
-		});
-		case void 0: return Object.freeze({
-			...normalizeSimpleColumn(column),
-			...base,
-			component: ITableText_default
-		});
-	}
-}
-/**
-* @public
-*/
-function defineTableColumns(columns) {
-	return columns;
-}
-/**
-* @internal
-*/
-function normalizeTableColumns(columns) {
-	return columns.map((column) => {
-		return normalizeTableColumn(column);
-	});
-}
-function usePopupError() {
-	const errorAnchor = /* @__PURE__ */ ref(void 0);
-	const errorArrowAnchor = /* @__PURE__ */ ref(void 0);
-	const errorMessage = /* @__PURE__ */ ref(void 0);
-	const activeErrorAnchor = /* @__PURE__ */ ref(void 0);
-	async function onPopupError(popupError) {
-		const { anchor, arrowAnchor, hasFocus, hasHover } = popupError;
-		if (!anchor || !arrowAnchor) return;
-		if (hasFocus || hasHover) await open(popupError);
-		else onClosePopupError(popupError);
-	}
-	async function open(popupError) {
-		const { message, anchor, arrowAnchor } = popupError;
-		if (!anchor || !arrowAnchor) return;
-		activeErrorAnchor.value = void 0;
-		errorMessage.value = message;
-		errorAnchor.value = anchor;
-		errorArrowAnchor.value = arrowAnchor;
-		await nextTick();
-		activeErrorAnchor.value = anchor;
-	}
-	function onClosePopupError(popupError) {
-		var _errorAnchor$value;
-		if (!popupError) return;
-		const { anchor } = popupError;
-		if (anchor?.isSameNode((_errorAnchor$value = errorAnchor.value) !== null && _errorAnchor$value !== void 0 ? _errorAnchor$value : null)) activeErrorAnchor.value = void 0;
-	}
-	return {
-		onPopupError,
-		onClosePopupError,
-		errorAnchor,
-		errorArrowAnchor,
-		errorMessage,
-		activeErrorAnchor
-	};
-}
-function rowKey(row) {
-	var _findItemIdentifier;
-	return (_findItemIdentifier = findItemIdentifier(row)) !== null && _findItemIdentifier !== void 0 ? _findItemIdentifier : "";
-}
-/** @internal */
-function useSelectable(options) {
-	const { selectable, selectedRows, rows } = options;
-	if (!selectable) return {
-		selectableHeaderState: () => false,
-		toggleSelectableHeader: () => void 0,
-		selectableRowState: () => false,
-		toggleSelectableRow: () => void 0
-	};
-	const headerState = /* @__PURE__ */ ref(false);
-	function selectableHeaderState() {
-		return headerState.value;
-	}
-	watchEffect(() => {
-		switch (selectedRows.value.length) {
-			case 0:
-				headerState.value = false;
-				break;
-			case toValue(rows).length:
-				headerState.value = true;
-				break;
-			default:
-				headerState.value = "indeterminate";
-				break;
-		}
-	});
-	function toggleSelectableHeader() {
-		if (toValue(rows).length === 0) {
-			headerState.value = headerState.value !== true;
-			return;
-		}
-		if (headerState.value !== true) selectedRows.value = [...toValue(rows)];
-		else selectedRows.value = [];
-	}
-	function toggleSelectableRow(row) {
-		assertRef(selectedRows);
-		if (selectable === "single") selectedRows.value = [row];
-		else {
-			const index = selectedRows.value.indexOf(row);
-			if (index === -1) selectedRows.value.push(row);
-			else selectedRows.value.splice(index, 1);
-		}
-	}
-	function selectableRowState(row) {
-		const key = rowKey(row);
-		return selectedRows.value.some((selectedRow) => rowKey(selectedRow) === key);
-	}
-	watch(() => toValue(rows), (newValue) => {
-		selectedRows.value = selectedRows.value.filter((it) => newValue.includes(it));
-	}, {
-		deep: 1,
-		immediate: true
-	});
-	return {
-		toggleSelectableHeader,
-		toggleSelectableRow,
-		selectableHeaderState,
-		selectableRowState
-	};
-}
-function matching(needle) {
-	const id = getItemIdentifier(needle.row);
-	return (item) => getItemIdentifier(item.row) === id;
-}
-function findClosestRemainingRowIndex(oldRows, newRows, oldIndex, direction) {
-	const isMatchingRow = (candidate, index) => {
-		return (direction === "above" ? index < oldIndex : index > oldIndex) && newRows.some(matching(candidate));
-	};
-	const index = direction === "above" ? oldRows.findLastIndex(isMatchingRow) : oldRows.findIndex(isMatchingRow);
-	return index === -1 ? void 0 : index;
-}
-/**
-* A table composable responsible for setting new tabstop and focus when a table row
-* with tabstop is removed.
-*
-* Since a row removal can occur because of multiple reasons, the default behavior
-* is to fallback to the first data cell.
-*
-* During a known row removal operation it is possible to alter this behavior by using
-* the function `withTabstopBehaviour` provided from this composable.
-*
-* ```
-* const { withTabstopBehaviour } = useTemplateRef("table");
-* withTabstopBehaviour("row-removal", removeRowLogic);
-* ```
-*
-* @internal
-*/
-function useTabstop(tableRef, metaRows) {
-	let pendingRowRemoval = false;
-	const renderOptions = /* @__PURE__ */ ref({
-		fallbackToFirstCell: false,
-		focus: false
-	});
-	function fallbackToFirstCell(newRows, oldRows, focus) {
-		assertRef(tableRef);
-		const needle = newRows[0];
-		const newFirstRowOldIndex = oldRows.findIndex(matching(needle));
-		if (newFirstRowOldIndex !== -1) activateCell(getCellTarget(tableRef.value, newFirstRowOldIndex + 1, 0), { focus });
-		else {
-			renderOptions.value.focus = focus;
-			renderOptions.value.fallbackToFirstCell = true;
-		}
-	}
-	watch(metaRows, (newRows, oldRows) => {
-		const tabFallback = pendingRowRemoval ? "sticky" : "first-cell";
-		pendingRowRemoval = false;
-		assertRef(tableRef);
-		const oldTabstopElement = tableRef.value.querySelector(`[tabindex="0"]`);
-		if (!oldTabstopElement) {
-			renderOptions.value.fallbackToFirstCell = true;
-			renderOptions.value.focus = false;
-			return;
-		}
-		assertSet(oldTabstopElement);
-		const oldTabstopFocused = oldTabstopElement === document.activeElement;
-		if (oldTabstopElement.closest("th")) return;
-		if (oldRows.length === 0 || newRows.length === 0) {
-			renderOptions.value.fallbackToFirstCell = true;
-			renderOptions.value.focus = oldTabstopFocused;
-			return;
-		}
-		const oldTabstopTd = oldTabstopElement.closest("td");
-		assertSet(oldTabstopTd);
-		const oldTabstopTr = oldTabstopTd.parentElement;
-		const needle = oldRows[oldTabstopTr.rowIndex - 1];
-		const isBeingRemoved = !newRows.some(matching(needle));
-		if (oldTabstopFocused && !isBeingRemoved) return;
-		if (!isBeingRemoved) if (oldTabstopFocused) return;
-		else {
-			fallbackToFirstCell(newRows, oldRows, false);
-			return;
-		}
-		if (tabFallback === "first-cell") {
-			fallbackToFirstCell(newRows, oldRows, oldTabstopFocused);
-			return;
-		}
-		const oldIndex = oldTabstopTr.rowIndex - 1;
-		const oldCellIndex = oldTabstopTd.cellIndex;
-		const rowAboveIndex = findClosestRemainingRowIndex(oldRows, newRows, oldIndex, "above");
-		const rowBelowIndex = findClosestRemainingRowIndex(oldRows, newRows, oldIndex, "below");
-		const targetRowIndex = rowAboveIndex !== null && rowAboveIndex !== void 0 ? rowAboveIndex : rowBelowIndex;
-		if (targetRowIndex !== void 0) activateCell(getCellTarget(tableRef.value, targetRowIndex + 1, oldCellIndex), { focus: oldTabstopFocused });
-		else fallbackToFirstCell(newRows, oldRows, oldTabstopFocused);
-	});
-	onUpdated(() => {
-		if (!renderOptions.value.fallbackToFirstCell) return;
-		assertRef(tableRef);
-		activateCell(getCellTarget(tableRef.value, 1, 0), { focus: renderOptions.value.focus });
-		renderOptions.value.fallbackToFirstCell = false;
-	});
-	async function withTabstopBehaviour(behaviour, action) {
-		if (behaviour === "row-removal") pendingRowRemoval = true;
-		try {
-			await action();
-		} finally {
-			pendingRowRemoval = false;
-		}
-	}
-	return { withTabstopBehaviour };
-}
-var _hoisted_1$39 = ["role", "aria-rowcount"];
-var _hoisted_2$30 = {
-	key: 0,
-	"data-test": "caption"
-};
-var _hoisted_3$24 = { key: 1 };
-var _hoisted_4$19 = {
-	class: "table-ng__row",
-	"aria-rowindex": "1"
-};
-var _hoisted_5$15 = {
-	key: 0,
-	scope: "col",
-	tabindex: "-1",
-	class: "table-ng__column"
-};
-var _hoisted_6$12 = { key: 2 };
-var _hoisted_7$9 = {
-	key: 0,
-	class: "table-ng__row--empty"
-};
-var _hoisted_8$6 = ["colspan"];
-var _hoisted_9$5 = [
-	"aria-level",
-	"aria-rowindex",
-	"aria-setsize",
-	"aria-posinset",
-	"aria-selected"
-];
-var _hoisted_10$2 = { key: 3 };
-var _hoisted_11$2 = ["aria-rowindex"];
-var _hoisted_12$2 = ["colspan"];
-var FTable_default = /* @__PURE__ */ defineComponent({
-	__name: "FTable",
-	props: /* @__PURE__ */ mergeModels({
-		columns: {},
-		rows: {},
-		keyAttribute: { default: () => void 0 },
-		rowClass: {
-			type: Function,
-			default: void 0
-		},
-		striped: { type: Boolean },
-		disableDividers: { type: Boolean },
-		selectable: { default: () => void 0 }
-	}, {
-		"selectedRows": { default: [] },
-		"selectedRowsModifiers": {}
-	}),
-	emits: ["update:selectedRows"],
-	setup(__props, { expose: __expose }) {
-		const selectedRows = useModel(__props, "selectedRows");
-		const sortFilterDatasetEvents = useSortFilterDatasetEvents();
-		const $t = useTranslate();
-		const { hasSlot } = useSlotUtils();
-		const tableRef = useTemplateRef("table");
-		const expandedKeys = /* @__PURE__ */ ref(/* @__PURE__ */ new Set());
-		const expandableAttribute = computed(() => {
-			return getDatasetMetadata(__props.rows).nestedAttribute;
-		});
-		const keyedRows = computed(() => setItemIdentifiers(__props.rows, __props.keyAttribute, expandableAttribute.value));
-		const { rows: selectableSourceRows, isProvided: isSelectableSourceProvided } = useSelectableRowSource();
-		const selectableRows = computed(() => {
-			if (!isSelectableSourceProvided.value) return keyedRows.value;
-			const sourceRows = selectableSourceRows.value;
-			const nestedAttribute = getDatasetMetadata(sourceRows).nestedAttribute;
-			return setItemIdentifiers(sourceRows, __props.keyAttribute, nestedAttribute);
-		});
-		const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute.value));
-		const isTreegrid = computed(() => Boolean(expandableAttribute.value));
-		const role = computed(() => isTreegrid.value ? "treegrid" : "grid");
-		const hasCaption = computed(() => {
-			return hasSlot("caption", {}, { stripClasses: [] });
-		});
-		const isEmpty = computed(() => {
-			return metaRows.value.length === 0;
-		});
-		const ariaRowcount = computed(() => {
-			const footerRow = hasFooter.value ? 1 : 0;
-			if (!hasColumns.value) return footerRow;
-			return getBodyRowCount(keyedRows.value, expandableAttribute.value) + 1 + footerRow;
-		});
-		const fullColspan = computed(() => {
-			if (!hasColumns.value) return 0;
-			let count = columns.value.length;
-			if (isTreegrid.value) count += 1;
-			if (__props.selectable) count += 1;
-			return count;
-		});
-		const expandedColspan = computed(() => {
-			return fullColspan.value - 1;
-		});
-		const hasFooter = computed(() => {
-			return hasSlot("footer");
-		});
-		const columns = computed(() => normalizeTableColumns(__props.columns).filter((col) => toValue(col.enabled)));
-		const hasColumns = computed(() => columns.value.length > 0);
-		const tableClasses = computed(() => {
-			return ["table-ng", {
-				"table-ng--striped": __props.striped,
-				"table-ng--divided": !__props.disableDividers
-			}];
-		});
-		const slots = useSlots();
-		const hasExpandableSlot = computed(() => {
-			return Boolean(slots.expandable);
-		});
-		async function stopEditHandler(element, reason) {
-			stopEdit(element, reason);
-		}
-		provide(stopEditKey, stopEditHandler);
-		function getRowClass(row) {
-			return typeof __props.rowClass === "function" ? __props.rowClass(row) : void 0;
-		}
-		function onToggleExpanded(key) {
-			if (expandedKeys.value.has(key)) expandedKeys.value.delete(key);
-			else expandedKeys.value.add(key);
-		}
-		function onKeydown(e) {
-			maybeNavigateToCell(e);
-			if (e.defaultPrevented || e.key !== "Enter" && e.key !== " ") return;
-			if (!(e.target instanceof Element)) return;
-			const cell = e.target.closest("td, th");
-			if (!cell) return;
-			const targetEl = activateCell(cell, { focus: true });
-			if (e.key === " " && e.target === cell) e.preventDefault();
-			if (!targetEl.contains(e.target)) {
-				e.preventDefault();
-				targetEl.click();
-			}
-		}
-		function onClick(e) {
-			const cell = e.target.closest("td, th");
-			if (cell) {
-				const targetEl = activateCell(cell, { focus: true });
-				if (e.target instanceof Node && !targetEl.contains(e.target)) targetEl.click();
-			}
-		}
-		function onTableFocusin(e) {
-			assertRef(tableRef);
-			for (const it of tableRef.value.querySelectorAll(`[tabindex="0"]`)) if (it !== e.target) it.setAttribute("tabindex", "-1");
-		}
-		function isInExpandable(el) {
-			if (!el.parentElement) return false;
-			return Boolean(el.parentElement.closest(".table-ng__custom-expandable"));
-		}
-		function onTableFocusout(e) {
-			const { target, relatedTarget } = e;
-			if (!(target instanceof HTMLElement && relatedTarget instanceof HTMLElement)) return;
-			if (isInExpandable(target)) return;
-			if (!tableRef.value) return;
-			if (!tableRef.value.contains(relatedTarget)) {
-				const cell = target.closest("td, th");
-				if (cell) activateCell(cell, { focus: false });
-			} else target.tabIndex = -1;
-		}
-		const { sort, registerCallbackOnSort, registerCallbackOnMount } = FSortFilterDatasetInjected();
-		const sortableColumns = /* @__PURE__ */ ref([]);
-		const sortedColumn = /* @__PURE__ */ ref("");
-		const sortedAscending = /* @__PURE__ */ ref(false);
-		function callbackSortableColumns(columnNames) {
-			sortableColumns.value = columnNames;
-		}
-		function callbackOnSort(columnName, ascending) {
-			sortedColumn.value = columnName;
-			sortedAscending.value = ascending;
-		}
-		function isSortEnabled(column) {
-			if (!column.sortable) return false;
-			return sortableColumns.value.indexOf(String(column.sortable)) > -1;
-		}
-		function getSortOrder(column) {
-			if (sortedColumn.value !== column.sortable) return "unsorted";
-			else return sortedAscending.value ? "ascending" : "descending";
-		}
-		function onToggleSortOrder(sortable) {
-			if (sortable === sortedColumn.value) if (sortedAscending.value) sort(sortable, false);
-			else sort("", true);
-			else sort(sortable, true);
-		}
-		function bindCellApiRef(ref) {
-			if (!isFTableCellApi(ref)) return;
-			const apiEl = toValue(ref.tabstopEl);
-			if (!apiEl) return;
-			const cell = apiEl.closest("td, th");
-			assertSet(cell);
-			cell[tableCellApiSymbol] = ref;
-		}
-		function isAriaSelected(level = 1, row) {
-			return level < 2 && selectableRowState(row);
-		}
-		const { onPopupError, onClosePopupError, activeErrorAnchor } = usePopupError();
-		const { selectableHeaderState, toggleSelectableHeader, selectableRowState, toggleSelectableRow } = useSelectable({
-			selectable: __props.selectable,
-			selectedRows,
-			rows: selectableRows
-		});
-		__expose(useTabstop(tableRef, metaRows));
-		onMounted(() => {
-			assertRef(tableRef);
-			registerCallbackOnMount(callbackSortableColumns);
-			registerCallbackOnSort(callbackOnSort);
-			sortFilterDatasetEvents.onFilter(() => selectedRows.value = []);
-			setDefaultCellTarget(tableRef.value);
-		});
-		onBeforeUnmount(() => {
-			selectedRows.value = [];
-		});
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("table", {
-				ref: "table",
-				role: role.value,
-				class: normalizeClass(tableClasses.value),
-				"aria-rowcount": ariaRowcount.value,
-				onFocusin: onTableFocusin,
-				onFocusout: onTableFocusout,
-				onClick,
-				onKeydown
-			}, [
-				hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$30, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("", true),
-				_cache[6] || (_cache[6] = createTextVNode()),
-				hasColumns.value ? (openBlock(), createElementBlock("thead", _hoisted_3$24, [createBaseVNode("tr", _hoisted_4$19, [
-					isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5$15)) : createCommentVNode("", true),
-					_cache[2] || (_cache[2] = createTextVNode()),
-					__props.selectable ? (openBlock(), createBlock(ITableHeaderSelectable_default, {
-						key: 1,
-						ref: bindCellApiRef,
-						state: unref(selectableHeaderState)(),
-						selectable: __props.selectable,
-						onToggle: unref(toggleSelectableHeader)
-					}, null, 8, [
-						"state",
-						"selectable",
-						"onToggle"
-					])) : createCommentVNode("", true),
-					_cache[3] || (_cache[3] = createTextVNode()),
-					(openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
-						return openBlock(), createBlock(ITableHeader_default, {
-							key: column.id,
-							column,
-							"sort-enabled": isSortEnabled(column),
-							"sort-order": getSortOrder(column),
-							scope: "col",
-							onToggleSortOrder
-						}, null, 8, [
-							"column",
-							"sort-enabled",
-							"sort-order"
-						]);
-					}), 128))
-				])])) : createCommentVNode("", true),
-				_cache[7] || (_cache[7] = createTextVNode()),
-				hasColumns.value ? (openBlock(), createElementBlock("tbody", _hoisted_6$12, [isEmpty.value ? (openBlock(), createElementBlock("tr", _hoisted_7$9, [createBaseVNode("td", {
-					colspan: fullColspan.value,
-					class: "table-ng__cell",
-					onKeydown: _cache[0] || (_cache[0] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
-				}, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t)("fkui.ftable.empty.text", "Tabellen är tom")), 1)])], 40, _hoisted_8$6)])) : (openBlock(true), createElementBlock(Fragment, { key: 1 }, renderList(metaRows.value, ({ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded }) => {
-					return openBlock(), createElementBlock("tr", {
-						key,
-						class: normalizeClass(["table-ng__row", getRowClass(row)]),
-						"aria-level": level,
-						"aria-rowindex": rowIndex,
-						"aria-setsize": setsize,
-						"aria-posinset": posinset,
-						"aria-selected": isAriaSelected(level, row)
-					}, [
-						isTreegrid.value ? (openBlock(), createBlock(ITableExpandButton_default, {
-							key: 0,
-							ref_for: true,
-							ref: bindCellApiRef,
-							"is-expandable": isExpandable,
-							"is-expanded": isExpanded,
-							"row-key": key,
-							onToggle: onToggleExpanded
-						}, null, 8, [
-							"is-expandable",
-							"is-expanded",
-							"row-key"
-						])) : createCommentVNode("", true),
-						_cache[5] || (_cache[5] = createTextVNode()),
-						level > 1 && hasExpandableSlot.value ? (openBlock(), createBlock(ITableExpandable_default, {
-							key: 1,
-							colspan: expandedColspan.value
-						}, {
-							default: withCtx(() => [renderSlot(_ctx.$slots, "expandable", mergeProps({ ref_for: true }, { row }))]),
-							_: 2
-						}, 1032, ["colspan"])) : (openBlock(), createElementBlock(Fragment, { key: 2 }, [
-							__props.selectable ? (openBlock(), createBlock(ITableSelectable_default, {
-								key: 0,
-								ref_for: true,
-								ref: bindCellApiRef,
-								level,
-								selectable: __props.selectable,
-								state: unref(selectableRowState)(row),
-								row,
-								onToggle: unref(toggleSelectableRow)
-							}, null, 8, [
-								"level",
-								"selectable",
-								"state",
-								"row",
-								"onToggle"
-							])) : createCommentVNode("", true),
-							_cache[4] || (_cache[4] = createTextVNode()),
-							(openBlock(true), createElementBlock(Fragment, null, renderList(columns.value, (column) => {
-								return openBlock(), createElementBlock(Fragment, { key: column.id }, ["component" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.component), {
-									key: 0,
-									ref_for: true,
-									ref: bindCellApiRef,
-									row,
-									column,
-									"active-error-anchor": unref(activeErrorAnchor),
-									onCloseError: unref(onClosePopupError),
-									onOnError: unref(onPopupError)
-								}, null, 40, [
-									"row",
-									"column",
-									"active-error-anchor",
-									"onCloseError",
-									"onOnError"
-								])) : "render" in column ? (openBlock(), createBlock(resolveDynamicComponent(column.render(row)), {
-									key: 1,
-									row
-								}, null, 8, ["row"])) : createCommentVNode("", true)], 64);
-							}), 128))
-						], 64))
-					], 10, _hoisted_9$5);
-				}), 128))])) : createCommentVNode("", true),
-				_cache[8] || (_cache[8] = createTextVNode()),
-				hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_10$2, [createBaseVNode("tr", {
-					class: "table-ng__row",
-					"aria-rowindex": ariaRowcount.value
-				}, [createBaseVNode("td", {
-					colspan: fullColspan.value,
-					class: "table-ng__cell--custom",
-					onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
-				}, [renderSlot(_ctx.$slots, "footer")], 40, _hoisted_12$2)], 8, _hoisted_11$2)])) : createCommentVNode("", true)
-			], 42, _hoisted_1$39);
-		};
-	}
-});
-/**
-* Removes given row(s) from existing dataset.
-*
-* Note: The array is mutated.
-*
-* @public
-* @since v6.44.0
-* @param dataset - The row array
-* @param rows - The row(s) to remove (expected to exist in the dataset)
-*/
-function removeDatasetRows(dataset, rows) {
-	const datasetValue = toValue(dataset);
-	const rowsValue = toValue(rows);
-	const nestedAttribute = getDatasetMetadata(datasetValue).nestedAttribute;
-	const normalizedRows = Array.isArray(rowsValue) ? rowsValue : [rowsValue];
-	for (const row of normalizedRows) removeRow(datasetValue, row, nestedAttribute);
-}
-function removeRow(dataset, row, nestedAttribute) {
-	const rowIndex = dataset.indexOf(row);
-	if (rowIndex !== -1) dataset.splice(rowIndex, 1);
-	else if (nestedAttribute) removeNestedRows(dataset, row, nestedAttribute);
-}
-function removeNestedRows(dataset, row, nestedAttribute) {
-	for (const currentRow of dataset) {
-		const nestedRows = currentRow[nestedAttribute];
-		if (Array.isArray(nestedRows)) {
-			const index = nestedRows.indexOf(row);
-			if (index !== -1) nestedRows.splice(index, 1);
-		}
-	}
-}
 function resolveWidthClass(words, inline) {
 	return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
@@ -19891,163 +15351,7 @@ function _sfc_render$24(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var FTextField_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FTextField_vue_vue_type_script_lang_default, [["render", _sfc_render$24]]);
 TranslationService.provider.translate("fkui.email-text-field.error.pasting", "Du kan inte kopiera mejladressen. Du måste skriva in den igen.");
-var FSearchTextField_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
-	name: "FSearchTextField",
-	components: {
-		FTextField: FTextField_default,
-		FIcon: FIcon_default
-	},
-	inheritAttrs: false,
-	props: {
-		id: {
-			type: String,
-			required: false,
-			default: () => ElementIdService.generateElementId()
-		},
-		modelValue: {
-			type: [String, null],
-			required: false,
-			default: ""
-		},
-		clearableScreenReaderText: {
-			type: String,
-			required: false,
-			default: TranslationService.provider.translate("fkui.search-text-field.search-screen-reader", "Töm inmatningsfält")
-		},
-		maxLength: {
-			type: Number,
-			default: 80
-		}
-	},
-	emits: [
-		"blur",
-		"change",
-		"update:modelValue"
-	],
-	data() {
-		return { defaultText: TranslationService.provider.translate("fkui.search-text-field.label", "Sök") };
-	},
-	computed: { canClear() {
-		return !(this.modelValue === void 0 || this.modelValue === null || this.modelValue === "");
-	} },
-	methods: {
-		clear() {
-			alertScreenReader(TranslationService.provider.translate("fkui.search-text-field.aria-live.clear", "Inmatningsfältet har tömts"), { assertive: true });
-			this.$emit("update:modelValue", "");
-			this.$el.querySelector("input").focus();
-		},
-		onInput(event) {
-			this.$emit("update:modelValue", event.target.value);
-		},
-		onChange(event) {
-			this.$emit("change", event);
-		},
-		onBlur(event) {
-			this.$emit("blur", event);
-		},
-		onUpdate(event) {
-			this.$emit("update:modelValue", event);
-		}
-	}
-});
-var _hoisted_1$36 = { class: "sr-only" };
-function _sfc_render$21(_ctx, _cache, $props, $setup, $data, $options) {
-	const _component_f_icon = resolveComponent("f-icon");
-	const _component_f_text_field = resolveComponent("f-text-field");
-	return openBlock(), createElementBlock("div", null, [createVNode(_component_f_text_field, mergeProps({
-		id: _ctx.id,
-		maxlength: _ctx.maxLength,
-		"model-value": _ctx.modelValue,
-		type: "search",
-		class: "text-field--search"
-	}, _ctx.$attrs, {
-		onChange: _ctx.onChange,
-		onInput: _ctx.onInput,
-		onBlur: _ctx.onBlur,
-		onUpdate: _ctx.onUpdate
-	}), createSlots({
-		"input-right": withCtx(() => [renderSlot(_ctx.$slots, "input-right")]),
-		"input-left": withCtx(() => [renderSlot(_ctx.$slots, "input-left")]),
-		"error-message": withCtx(({ hasError, validationMessage }) => [renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
-			hasError,
-			validationMessage
-		})))]),
-		description: withCtx(({ descriptionClass, formatDescriptionClass }) => [renderSlot(_ctx.$slots, "description", {
-			descriptionClass,
-			formatDescriptionClass
-		})]),
-		default: withCtx(() => [
-			renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.defaultText), 1)]),
-			_cache[2] || (_cache[2] = createTextVNode()),
-			_cache[3] || (_cache[3] = createTextVNode()),
-			_cache[4] || (_cache[4] = createTextVNode()),
-			_cache[5] || (_cache[5] = createTextVNode()),
-			_cache[6] || (_cache[6] = createTextVNode()),
-			_cache[7] || (_cache[7] = createTextVNode())
-		]),
-		_: 2
-	}, [_ctx.$slots.tooltip ? {
-		name: "tooltip",
-		fn: withCtx(() => [renderSlot(_ctx.$slots, "tooltip")]),
-		key: "0"
-	} : void 0, _ctx.canClear ? {
-		name: "append-inner",
-		fn: withCtx(() => [createBaseVNode("button", {
-			class: "text-field__icon clear-button",
-			type: "button",
-			onClick: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.clear && _ctx.clear(...args), ["self"]))
-		}, [
-			createVNode(_component_f_icon, {
-				name: "cross",
-				class: "clear-button__icon"
-			}),
-			_cache[1] || (_cache[1] = createTextVNode()),
-			createBaseVNode("span", _hoisted_1$36, toDisplayString(_ctx.clearableScreenReaderText), 1)
-		])]),
-		key: "1"
-	} : void 0]), 1040, [
-		"id",
-		"maxlength",
-		"model-value",
-		"onChange",
-		"onInput",
-		"onBlur",
-		"onUpdate"
-	])]);
-}
-var FSearchTextField_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FSearchTextField_vue_vue_type_script_lang_default, [["render", _sfc_render$21]]);
-/**
-* @internal
-* @since v6.44.0
-*/
-var sortFilterDatasetEventsKey = Symbol();
-/**
-* Injects `SortFilterDatasetEvents`.
-*
-* @internal
-* @since v6.44.0
-*/
-function useSortFilterDatasetEvents() {
-	return inject(sortFilterDatasetEventsKey, {
-		onFilter: () => void 0,
-		onSort: () => void 0,
-		onLazyRowsAdded: () => void 0
-	});
-}
-function includesAllSearchTerms(item, filterAttributes, searchTerms) {
-	const values = filterAttributes.map((it) => {
-		const value = item[it];
-		return typeof value === "string" || typeof value === "number" ? String(value).toLocaleLowerCase() : void 0;
-	}).filter(Boolean);
-	for (const searchTerm of searchTerms) if (!values.find((it) => it?.includes(searchTerm))) return false;
-	return true;
-}
-function filter(list, filterAttributes, searchString) {
-	searchString = searchString.trim();
-	if (searchString.trim() === "") return list;
-	const searchTerms = searchString.split(/\s+/).map((word) => word.toLocaleLowerCase());
-	return list.filter((item) => includesAllSearchTerms(item, filterAttributes, searchTerms));
-}
+TranslationService.provider.translate("fkui.search-text-field.search-screen-reader", "Töm inmatningsfält");
 var require_array_from_constructor_and_list = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var lengthOfArrayLike = require_length_of_array_like();
 	module.exports = function(Constructor, list, $length) {
@@ -20085,406 +15389,6 @@ var require_get_built_in_prototype_method = /* @__PURE__ */ __commonJSMin(((expo
 	} });
 	addToUnscopables("toSorted");
 })))();
-/**
-* @internal
-*/
-function sort(list, options) {
-	const { attribute, ascending } = options;
-	const shallowCopy = [...list];
-	if (attribute === "") return shallowCopy;
-	return shallowCopy.toSorted((item1, item2) => compare(item1, item2, attribute, ascending));
-}
-function compare(item1, item2, attribute, ascending) {
-	const value1 = item1[attribute];
-	const value2 = item2[attribute];
-	if (!isSet(value1) || !isSet(value2)) return nullCompare(value1, value2);
-	if (!isSupportedType(value1) || !isSupportedType(value2)) throw new Error(`Sorting is only supported for types number, string and boolean.
-            Attribute '${attribute.toString()}' comparsion of types '${typeof value1}' and '${typeof value2}' is not supported.`);
-	if (typeof value1 === "string" && typeof value2 === "string") return fixOrder(value1.localeCompare(value2), ascending);
-	if (typeof value1 === "number" && typeof value2 === "number") return fixOrder(numberCompare(value1, value2), ascending);
-	if (typeof value1 === "boolean" && typeof value2 === "boolean") return fixOrder(booleanCompare(value1, value2), ascending);
-	if (typeof value1 === "string") return -1;
-	else return 1;
-}
-function isSupportedType(value) {
-	return [
-		"string",
-		"number",
-		"boolean"
-	].includes(typeof value);
-}
-function fixOrder(order, ascending) {
-	return ascending ? order : order - order * 2;
-}
-function booleanCompare(value1, value2) {
-	if (value1 === value2) return 0;
-	else if (value1 > value2) return 1;
-	return -1;
-}
-function numberCompare(value1, value2) {
-	return value1 - value2;
-}
-function nullCompare(value1, value2) {
-	if (!isSet(value1) && !isSet(value2)) return 0;
-	else if (!isSet(value1)) return 1;
-	return -1;
-}
-var $t = useTranslate();
-var defaultSortValue = {
-	attribute: "",
-	name: "",
-	ascendingName: "",
-	ascending: false,
-	id: 0
-};
-function updateSortOrders(sortableKeys, sortableAttributes) {
-	const arr = [];
-	let id = 0;
-	for (const key of sortableKeys) {
-		arr.push({
-			attribute: key,
-			name: sortableAttributes[key],
-			ascendingName: $t("fkui.sort-filter-dataset.label.ascending", "stigande"),
-			ascending: true,
-			id: id++
-		});
-		arr.push({
-			attribute: key,
-			name: sortableAttributes[key],
-			ascendingName: $t("fkui.sort-filter-dataset.label.descending", "fallande"),
-			ascending: false,
-			id: id++
-		});
-	}
-	return arr;
-}
-function findSortAttribute(attribute, ascending, sortOrders) {
-	const foundAttribute = sortOrders.find((item) => {
-		return item.attribute === attribute && item.ascending === ascending;
-	});
-	if (foundAttribute) return {
-		...foundAttribute,
-		name: toValue(foundAttribute.name)
-	};
-	else return { ...defaultSortValue };
-}
-function normalizeFilterAttributes(data, filterAttributes) {
-	if (!filterAttributes) {
-		var _data$;
-		return Object.keys((_data$ = data[0]) !== null && _data$ !== void 0 ? _data$ : {});
-	}
-	return filterAttributes;
-}
-function sortFilterData(data, filterAttributes, searchString, sortAttribute) {
-	return toDataset(sort(filter(data, filterAttributes, searchString), {
-		attribute: sortAttribute.attribute,
-		ascending: sortAttribute.ascending
-	}), data);
-}
-function noop$1() {}
-function useSortFilterDataset(data, sortableAttributes, filterAttributes, defaultSortAttribute, defaultSortAscending, callbacks = {}) {
-	const searchString = /* @__PURE__ */ ref("");
-	const sortAttribute = /* @__PURE__ */ ref({ ...defaultSortValue });
-	const sortFilterResult = /* @__PURE__ */ ref(toDataset([]));
-	const useDefaultSortOrder = /* @__PURE__ */ ref(true);
-	const { onSort = noop$1, onFilter = noop$1, onLazyRowsAdded = noop$1 } = callbacks;
-	/**
-	* Data snapshot taken when new sortfilter is run.
-	*
-	* This data snapshot is used to be compare with new input data in order to
-	* distinguish added and removed rows.
-	*/
-	let dataSnapshot = [];
-	const sortableKeys = computed(() => {
-		return Reflect.ownKeys(toValue(sortableAttributes)).filter((key) => {
-			var _descriptor$enumerabl;
-			return (_descriptor$enumerabl = Object.getOwnPropertyDescriptor(toValue(sortableAttributes), key)?.enumerable) !== null && _descriptor$enumerabl !== void 0 ? _descriptor$enumerabl : false;
-		});
-	});
-	const sortOrders = computed(() => {
-		return updateSortOrders(sortableKeys.value, toValue(sortableAttributes));
-	});
-	const internalFilterAttributes = computed(() => {
-		return normalizeFilterAttributes(toValue(data), toValue(filterAttributes));
-	});
-	const showClearButton = computed(() => {
-		return searchString.value.length > 0;
-	});
-	function runSortFilterData() {
-		dataSnapshot = [...toValue(data)];
-		sortFilterResult.value = sortFilterData(toValue(data), internalFilterAttributes.value, searchString.value, sortAttribute.value);
-	}
-	function onUserChangeSortAttribute() {
-		runSortFilterData();
-		onSort();
-	}
-	function onApiChangeSortAttribute(attribute, ascending) {
-		sortAttribute.value = findSortAttribute(attribute, ascending, sortOrders.value);
-		runSortFilterData();
-		onSort();
-	}
-	function refresh() {
-		runSortFilterData();
-		onSort();
-	}
-	watch(searchString, () => {
-		runSortFilterData();
-		onFilter();
-	});
-	/**
-	* Applies lazy-mode update semantics without full sort/filter recomputation.
-	*/
-	function handleLazyModeUpdate() {
-		const newData = toValue(data);
-		const newResult = [...sortFilterResult.value];
-		const noLongerIncluded = newResult.filter((it) => !newData.includes(it));
-		for (const it of noLongerIncluded) newResult.splice(newResult.indexOf(it), 1);
-		const additions = newData.filter((it) => !dataSnapshot.includes(it)).filter((it) => !newResult.includes(it));
-		for (const it of additions) newResult.push(it);
-		sortAttribute.value = { ...defaultSortValue };
-		sortFilterResult.value.splice(0, sortFilterResult.value.length, ...newResult);
-		if (additions.length > 0) onLazyRowsAdded();
-	}
-	/**
-	* Runs a full sort/filter recomputation and replaces current output data.
-	*/
-	function handleFullRecompute() {
-		if (defaultSortAttribute !== "" && useDefaultSortOrder.value) {
-			const foundAttribute = sortOrders.value.find((item) => {
-				return item.attribute === defaultSortAttribute && item.ascending === defaultSortAscending;
-			});
-			if (foundAttribute) sortAttribute.value = {
-				...foundAttribute,
-				name: toValue(foundAttribute.name)
-			};
-			useDefaultSortOrder.value = false;
-		}
-		if (searchString.value) searchString.value = "";
-		else {
-			runSortFilterData();
-			onFilter();
-		}
-	}
-	let datasetReplaced = false;
-	watch(() => toValue(data), () => {
-		datasetReplaced = true;
-		handleFullRecompute();
-	}, {
-		immediate: true,
-		deep: false
-	});
-	watch(() => toValue(data), () => {
-		if (datasetReplaced) {
-			datasetReplaced = false;
-			return;
-		}
-		handleLazyModeUpdate();
-	}, {
-		immediate: true,
-		deep: true
-	});
-	return {
-		sortFilterResult,
-		defaultSortValue,
-		searchString,
-		showClearButton,
-		sortableKeys,
-		sortOrders,
-		sortAttribute,
-		onUserChangeSortAttribute,
-		onApiChangeSortAttribute,
-		refresh
-	};
-}
-var _hoisted_1$35 = { class: "sort-filter-dataset" };
-var _hoisted_2$28 = { class: "sort-filter-dataset__search" };
-var _hoisted_3$22 = ["value"];
-var _hoisted_4$17 = ["value"];
-var FSortFilterDataset_default = /* @__PURE__ */ defineComponent({
-	__name: "FSortFilterDataset",
-	props: {
-		data: {},
-		sortableAttributes: {},
-		defaultSortAttribute: { default: "" },
-		showSort: {
-			type: Boolean,
-			default: true
-		},
-		showFilter: {
-			type: Boolean,
-			default: true
-		},
-		filterLabel: { default: () => void 0 },
-		placeholderFilter: { default: () => void 0 },
-		defaultSortAscending: {
-			type: Boolean,
-			default: true
-		},
-		filterAttributes: { default: () => void 0 }
-	},
-	emits: ["datasetSorted", "usedSortAttributes"],
-	setup(__props, { emit: __emit }) {
-		const emit = __emit;
-		const filterCallbacks = /* @__PURE__ */ new Set();
-		const sortCallbacks = /* @__PURE__ */ new Set();
-		const lazyRowsAddedCallbacks = /* @__PURE__ */ new Set();
-		const $t = useTranslate();
-		const { searchString, sortAttribute, sortFilterResult, defaultSortValue, sortableKeys, sortOrders, onUserChangeSortAttribute, onApiChangeSortAttribute } = useSortFilterDataset(() => __props.data, () => __props.sortableAttributes, () => __props.filterAttributes, __props.defaultSortAttribute, __props.defaultSortAscending, {
-			onFilter: () => {
-				for (const callback of filterCallbacks) callback();
-			},
-			onSort: () => {
-				for (const callback of sortCallbacks) callback();
-			},
-			onLazyRowsAdded: () => {
-				for (const callback of lazyRowsAddedCallbacks) callback();
-			}
-		});
-		const clearableScreenReaderText = $t("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält");
-		const translatedFilterLabel = computed(() => {
-			var _props$filterLabel;
-			const label = (_props$filterLabel = __props.filterLabel) !== null && _props$filterLabel !== void 0 ? _props$filterLabel : __props.placeholderFilter;
-			if (label) return label;
-			return TranslationService.provider.translate("fkui.sort-filter-dataset.filter.label", "Sök");
-		});
-		function filterResultset() {
-			if (searchString.value === "") alertScreenReader($t("fkui.sort-filter-dataset.aria-live.empty", "Sök redigera Sök tom"));
-			else alertScreenReader($t("fkui.sort-filter-dataset.aria-live.search", `Din sökning på "{{ search }}" gav {{ result }} träffar.`, {
-				result: sortFilterResult.value.length,
-				search: searchString.value
-			}));
-		}
-		const debouncedFilterResultset = debounce(filterResultset, 250);
-		let tableCallbackOnSort = () => {};
-		let tableCallbackSortableColumns = () => {};
-		const { isProvided: hasSelectableRowsProvider } = useSelectableRowSource();
-		provide("sort", (attribute, ascending) => {
-			onApiChangeSortAttribute(attribute, ascending);
-		});
-		provide("registerCallbackOnSort", (callback) => {
-			tableCallbackOnSort = callback;
-		});
-		provide("registerCallbackOnMount", (callback) => {
-			tableCallbackSortableColumns = callback;
-		});
-		if (!hasSelectableRowsProvider.value) provideSelectableRowSource({ rows: computed(() => sortFilterResult.value) });
-		provide(sortFilterDatasetEventsKey, {
-			onFilter(callback) {
-				filterCallbacks.add(callback);
-			},
-			onSort(callback) {
-				sortCallbacks.add(callback);
-			},
-			onLazyRowsAdded(callback) {
-				lazyRowsAddedCallbacks.add(callback);
-			}
-		});
-		onMounted(() => {
-			tableCallbackSortableColumns(sortableKeys.value);
-		});
-		onUnmounted(() => {
-			filterCallbacks.clear();
-			sortCallbacks.clear();
-			lazyRowsAddedCallbacks.clear();
-		});
-		function onSearchInput() {
-			debouncedFilterResultset();
-		}
-		watch(sortAttribute, () => {
-			tableCallbackOnSort(sortAttribute.value.attribute, sortAttribute.value.ascending);
-			emit("usedSortAttributes", sortAttribute.value);
-		});
-		watch(sortFilterResult, (newValue, oldValue) => {
-			if (newValue === oldValue) return;
-			nextTick(() => {
-				tableCallbackOnSort(sortAttribute.value.attribute, sortAttribute.value.ascending);
-			});
-			emit("datasetSorted", sortFilterResult.value);
-		}, { immediate: true });
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$35, [
-				createVNode(unref(IFlex_default), {
-					collapse: "",
-					gap: "3x",
-					wrap: ""
-				}, {
-					default: withCtx(() => [
-						createVNode(unref(IFlexItem_default), {
-							shrink: "",
-							align: "center"
-						}, {
-							default: withCtx(() => [renderSlot(_ctx.$slots, "header", normalizeProps(guardReactiveProps({ slotClass: "sort-filter-dataset__toolbar__header" })))]),
-							_: 3
-						}),
-						_cache[5] || (_cache[5] = createTextVNode()),
-						createVNode(unref(IFlexItem_default), { grow: "" }, {
-							default: withCtx(() => [createVNode(unref(IFlex_default), {
-								collapse: "",
-								float: "right"
-							}, {
-								default: withCtx(() => [
-									__props.showFilter ? (openBlock(), createBlock(unref(IFlexItem_default), {
-										key: 0,
-										shrink: "",
-										align: "center"
-									}, {
-										default: withCtx(() => [createBaseVNode("div", _hoisted_2$28, [createVNode(unref(FSearchTextField_default), {
-											modelValue: unref(searchString),
-											"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => /* @__PURE__ */ isRef(searchString) ? searchString.value = $event : null),
-											maxlength: "64",
-											"clearable-screen-reader-text": unref(clearableScreenReaderText),
-											inline: "",
-											type: "text",
-											onInput: onSearchInput
-										}, {
-											default: withCtx(() => [createTextVNode(toDisplayString(translatedFilterLabel.value), 1)]),
-											_: 1
-										}, 8, ["modelValue", "clearable-screen-reader-text"])])]),
-										_: 1
-									})) : createCommentVNode("", true),
-									_cache[4] || (_cache[4] = createTextVNode()),
-									__props.showSort ? (openBlock(), createBlock(unref(IFlexItem_default), {
-										key: 1,
-										shrink: "",
-										align: "center"
-									}, {
-										default: withCtx(() => [createVNode(unref(FSelectField_default), {
-											modelValue: unref(sortAttribute),
-											"onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => /* @__PURE__ */ isRef(sortAttribute) ? sortAttribute.value = $event : null),
-											class: "sort-filter-dataset__sort",
-											inline: "",
-											onChange: unref(onUserChangeSortAttribute)
-										}, {
-											label: withCtx(() => [createTextVNode(toDisplayString(unref($t)("fkui.sort-filter-dataset.label.sort", "Sortera\xA0på")), 1)]),
-											default: withCtx(() => [
-												_cache[2] || (_cache[2] = createTextVNode()),
-												createBaseVNode("option", { value: unref(defaultSortValue) }, toDisplayString(unref($t)("fkui.sort-filter-dataset.label.unsorted", "Välj")), 9, _hoisted_3$22),
-												_cache[3] || (_cache[3] = createTextVNode()),
-												(openBlock(true), createElementBlock(Fragment, null, renderList(unref(sortOrders), (sortOrder) => {
-													return openBlock(), createElementBlock("option", {
-														key: sortOrder.id,
-														value: sortOrder
-													}, toDisplayString(sortOrder.name) + " (" + toDisplayString(sortOrder.ascendingName) + ")\n                            ", 9, _hoisted_4$17);
-												}), 128))
-											]),
-											_: 1
-										}, 8, ["modelValue", "onChange"])]),
-										_: 1
-									})) : createCommentVNode("", true)
-								]),
-								_: 1
-							})]),
-							_: 1
-						})
-					]),
-					_: 3
-				}),
-				_cache[6] || (_cache[6] = createTextVNode()),
-				renderSlot(_ctx.$slots, "default", normalizeProps(guardReactiveProps({ sortFilterResult: unref(sortFilterResult) })))
-			]);
-		};
-	}
-});
 (/* @__PURE__ */ (function(FTableColumnType) {
 	FTableColumnType["TEXT"] = "text";
 	FTableColumnType["DATE"] = "date";
@@ -21057,6 +15961,21 @@ new Set([
 	"Enter",
 	...verticalKeys
 ]);
+//#endregion
+//#region \0plugin-vue:export-helper
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+//#endregion
+//#region src/App.vue
+var _sfc_main = {};
+function _sfc_render$1(_ctx, _cache) {
+	const _component_router_view = resolveComponent("router-view");
+	return openBlock(), createBlock(_component_router_view);
+}
+var App_default = /* @__PURE__ */ _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render$1]]);
 //#endregion
 //#region ../../node_modules/vue-router/dist/devtools-EWN81iOl.mjs
 /*!
@@ -22960,327 +17879,63 @@ function createRouter(options) {
 	}
 	return router;
 }
-/**
-* Returns the current route location. Equivalent to using `$route` inside
-* templates.
-*/
-function useRoute(_name) {
-	return inject(routeLocationKey);
-}
 //#endregion
-//#region \0plugin-vue:export-helper
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
+//#region src/views/DefaultView.vue?vue&type=script&lang.ts
+var DefaultView_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+	components: { FTextField: FTextField_default },
+	data() {
+		return { awesomeModel: "" };
+	}
+});
 //#endregion
-//#region src/components/TopNavigation.vue
-var _sfc_main = {};
-var _hoisted_1$1 = { class: "top-nav" };
-function _sfc_render(_ctx, _cache) {
-	const _component_RouterLink = resolveComponent("RouterLink");
-	return openBlock(), createElementBlock("nav", _hoisted_1$1, [
-		createVNode(_component_RouterLink, { to: "/" }, {
-			default: withCtx(() => [..._cache[0] || (_cache[0] = [createTextVNode("Navigation", -1)])]),
+//#region src/views/DefaultView.vue
+var _hoisted_1 = { class: "sandbox-root" };
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	const _component_f_text_field = resolveComponent("f-text-field");
+	const _directive_validation = resolveDirective("validation");
+	return openBlock(), createElementBlock("div", _hoisted_1, [
+		_cache[2] || (_cache[2] = createBaseVNode("h1", null, "FKUI Sandbox", -1)),
+		_cache[3] || (_cache[3] = createBaseVNode("p", null, " Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga FKUI-paket och innehåller enbart ett tomt exempel. ", -1)),
+		_cache[4] || (_cache[4] = createBaseVNode("p", null, [createBaseVNode("strong", null, "Ändra och labba gärna här men glöm inte återställa innan merge!")], -1)),
+		_cache[5] || (_cache[5] = createBaseVNode("hr", null, null, -1)),
+		withDirectives((openBlock(), createBlock(_component_f_text_field, {
+			id: "awesome-field",
+			modelValue: _ctx.awesomeModel,
+			"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.awesomeModel = $event)
+		}, {
+			default: withCtx(() => [..._cache[1] || (_cache[1] = [createTextVNode(" Inmatningsfält. ", -1)])]),
+			description: withCtx(({ descriptionClass }) => [createBaseVNode("span", { class: normalizeClass(descriptionClass) }, " Lorem ipsum dolor sit amet. ", 2)]),
 			_: 1
-		}),
-		createVNode(_component_RouterLink, { to: "/sort" }, {
-			default: withCtx(() => [..._cache[1] || (_cache[1] = [createTextVNode("SortFilter", -1)])]),
-			_: 1
-		}),
-		_cache[2] || (_cache[2] = createBaseVNode("span", { class: "test-label" }, " | Endast för testning", -1))
+		}, 8, ["modelValue"])), [[
+			_directive_validation,
+			{ maxLength: { length: 10 } },
+			void 0,
+			{
+				required: true,
+				maxLength: true
+			}
+		]])
 	]);
 }
-var TopNavigation_default = /* @__PURE__ */ _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-ee3d4a9a"]]);
-//#endregion
-//#region src/App.vue?vue&type=script&setup=true&lang.ts
-var _hoisted_1 = { id: "app" };
-//#endregion
-//#region src/App.vue
-var App_default = /* @__PURE__ */ _plugin_vue_export_helper_default(/* @__PURE__ */ defineComponent({
-	__name: "App",
-	setup(__props) {
-		const route = useRoute();
-		return (_ctx, _cache) => {
-			const _component_RouterView = resolveComponent("RouterView");
-			return openBlock(), createElementBlock("div", _hoisted_1, [createVNode(TopNavigation_default), (openBlock(), createBlock(_component_RouterView, { key: unref(route).fullPath }))]);
-		};
-	}
-}), [["__scopeId", "data-v-fed30f33"]]);
-//#endregion
-//#region src/views/NavigationView.vue
-var NavigationView_default = /* @__PURE__ */ defineComponent({
-	__name: "NavigationView",
-	setup(__props) {
-		const selectedValue = /* @__PURE__ */ ref("");
-		const expandableByOption = {
-			content: "expandableContent",
-			table: "expandableRows"
-		};
-		const expandableAttr = computed(() => {
-			return expandableByOption[selectedValue.value];
-		});
-		const sourceRows = [
-			{
-				id: "1",
-				sum: "10000",
-				animal: "Katt",
-				expandableRows: [{
-					id: "1a",
-					sum: "11000",
-					animal: "Huskatt"
-				}, {
-					id: "1b",
-					sum: "12000",
-					animal: "Bengal"
-				}],
-				expandableContent: [{
-					id: "1a",
-					content: "Anledning: Köpa kattmat"
-				}]
-			},
-			{
-				id: "2",
-				sum: "20000",
-				animal: "Hund",
-				expandableRows: [{
-					id: "2a",
-					sum: "21000",
-					animal: "Labrador"
-				}],
-				expandableContent: [{
-					id: "2a",
-					content: "Anledning: Gå ut och gå med hundarna"
-				}]
-			},
-			{
-				id: "3",
-				sum: "30000",
-				animal: "Fågel",
-				expandableRows: [{
-					id: "3a",
-					sum: "31000",
-					animal: "Duva"
-				}, {
-					id: "3b",
-					sum: "32000",
-					animal: "Koltrast"
-				}],
-				expandableContent: [{
-					id: "3a",
-					content: "Anledning: Behöver mata fåglarna"
-				}]
-			}
-		];
-		const withoutExpandableRows = useDatasetRef(sourceRows.map(({ expandableRows, expandableContent, ...attrs }) => ({ ...attrs })));
-		const withExpandableRows = useDatasetRef(sourceRows.map(({ expandableContent, ...attrs }) => ({ ...attrs })), "expandableRows");
-		const withExpandableContent = useDatasetRef(sourceRows.map(({ expandableRows, ...attrs }) => ({ ...attrs })), "expandableContent");
-		const rows = computed(() => {
-			if (expandableAttr.value === "expandableRows") return withExpandableRows.value;
-			if (expandableAttr.value === "expandableContent") return withExpandableContent.value;
-			return withoutExpandableRows.value;
-		});
-		const columns = defineTableColumns([{
-			type: "text",
-			header: "Summa",
-			key: "sum"
-		}, {
-			type: "text",
-			header: "animal",
-			key: "animal"
-		}]);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock(Fragment, null, [createVNode(unref(FSelectField_default), {
-				modelValue: selectedValue.value,
-				"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => selectedValue.value = $event)
-			}, {
-				label: withCtx(() => [..._cache[1] || (_cache[1] = [createTextVNode(" Expanderbara rader ", -1)])]),
-				default: withCtx(() => [
-					_cache[2] || (_cache[2] = createBaseVNode("option", { value: "" }, "Nej", -1)),
-					_cache[3] || (_cache[3] = createBaseVNode("option", { value: "content" }, "Valbart innehåll", -1)),
-					_cache[4] || (_cache[4] = createBaseVNode("option", { value: "table" }, "Tabellrad", -1))
-				]),
-				_: 1
-			}, 8, ["modelValue"]), (openBlock(), createBlock(unref(FTable_default), {
-				ref: "table",
-				key: expandableAttr.value,
-				rows: rows.value,
-				columns: unref(columns),
-				"key-attribute": "id",
-				striped: "",
-				selectable: "multi"
-			}, createSlots({
-				caption: withCtx(() => [_cache[5] || (_cache[5] = createTextVNode("Tabell", -1))]),
-				footer: withCtx(() => [_cache[6] || (_cache[6] = createTextVNode("Footer", -1))]),
-				_: 2
-			}, [selectedValue.value === "content" ? {
-				name: "expandable",
-				fn: withCtx(({ row }) => [createTextVNode(toDisplayString(row.content), 1)]),
-				key: "0"
-			} : void 0]), 1032, ["rows", "columns"]))], 64);
-		};
-	}
-});
-//#endregion
-//#region src/views/SortFilterView.vue
-var SortFilterView_default = /* @__PURE__ */ defineComponent({
-	__name: "SortFilterView",
-	setup(__props) {
-		const tableRef = useTemplateRef("table");
-		const columns = defineTableColumns([
-			{
-				type: "text",
-				header: "Oformaterad text",
-				value(row) {
-					return row.antal;
-				}
-			},
-			{
-				type: "text",
-				header: "Formatterad text",
-				label(row) {
-					return `Text för rad ${row.id}`;
-				},
-				value(row) {
-					return formatNumber(row.antal) ?? "";
-				},
-				editable: true
-			},
-			{
-				type: "text",
-				header: "Redigerbar text",
-				editable: true,
-				key: "level",
-				label(row) {
-					return `Text för rad ${row.id}`;
-				},
-				value(row) {
-					return row.level;
-				},
-				update(row, newValue) {
-					row.level = newValue;
-				},
-				validation: {
-					required: {},
-					maxLength: { length: 5 }
-				}
-			},
-			{
-				type: "button",
-				header: "Knapp",
-				icon: "trashcan",
-				size: "shrink",
-				text(row) {
-					return `Ta bort ${row.id}`;
-				},
-				onClick: (row) => {
-					onRemoveRow(row);
-				}
-			}
-		]);
-		const rows = useDatasetRef([
-			{
-				id: "1",
-				level: "Föräldrapenning",
-				antal: "90000"
-			},
-			{
-				id: "2",
-				level: "Tillfällig föräldrapenning",
-				antal: "30000"
-			},
-			{
-				id: "3",
-				level: "Föräldrapenning",
-				antal: "11000"
-			}
-		], "expandableRows");
-		const sortableAttributes = { level: "Redigerbar text" };
-		const mySelectedRows = /* @__PURE__ */ ref([rows.value[0]]);
-		const nextId = /* @__PURE__ */ ref(4);
-		function onAddRow() {
-			const id = nextId.value;
-			nextId.value += 1;
-			rows.value.push({
-				id: String(id),
-				level: "Föräldrapenning",
-				antal: String(1e4 + id),
-				aktiv: false
-			});
-		}
-		function onRemoveRow(row) {
-			assertRef(tableRef);
-			tableRef.value.withTabstopBehaviour("row-removal", () => {
-				removeDatasetRows(rows, row);
-			});
-		}
-		function onRemoveSelectedRows() {
-			removeDatasetRows(rows, mySelectedRows);
-		}
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock(Fragment, null, [
-				createVNode(unref(FButton_default), {
-					variant: "secondary",
-					onClick: onRemoveSelectedRows
-				}, {
-					default: withCtx(() => [..._cache[1] || (_cache[1] = [createTextVNode("Ta bort markerade rader", -1)])]),
-					_: 1
-				}),
-				createVNode(unref(FSortFilterDataset_default), {
-					data: unref(rows),
-					"sortable-attributes": sortableAttributes
-				}, {
-					default: withCtx(({ sortFilterResult }) => [createVNode(unref(FTable_default), {
-						ref: "table",
-						"selected-rows": mySelectedRows.value,
-						"onUpdate:selectedRows": _cache[0] || (_cache[0] = ($event) => mySelectedRows.value = $event),
-						rows: sortFilterResult,
-						columns: unref(columns),
-						"key-attribute": "id",
-						striped: "",
-						selectable: "multi",
-						"expandable-attribute": "expandableRows"
-					}, {
-						caption: withCtx(() => [..._cache[2] || (_cache[2] = [createTextVNode("Tabell", -1)])]),
-						footer: withCtx(() => [..._cache[3] || (_cache[3] = [createTextVNode("Footer", -1)])]),
-						_: 1
-					}, 8, [
-						"selected-rows",
-						"rows",
-						"columns"
-					])]),
-					_: 1
-				}, 8, ["data"]),
-				createVNode(unref(FButton_default), {
-					variant: "secondary",
-					onClick: onAddRow
-				}, {
-					default: withCtx(() => [..._cache[4] || (_cache[4] = [createTextVNode("Lägg till rad", -1)])]),
-					_: 1
-				})
-			], 64);
-		};
-	}
-});
+var DefaultView_default = /* @__PURE__ */ _plugin_vue_export_helper_default(DefaultView_vue_vue_type_script_lang_default, [["render", _sfc_render]]);
 //#endregion
 //#region src/router.ts
 var router = createRouter({
 	history: createWebHashHistory(),
 	routes: [{
 		path: "/",
-		name: "default",
-		component: NavigationView_default
-	}, {
-		path: "/sort",
-		name: "sort",
-		component: SortFilterView_default
+		name: "",
+		component: DefaultView_default
 	}]
 });
 //#endregion
 //#region src/main.ts
+config.production = false;
+config.popupContainer = "#app";
 var app = createApp(App_default);
 app.use(router);
 app.use(ValidationPlugin);
+app.use(TestPlugin);
 app.mount("#app");
+setRunningContext(app);
 //#endregion
