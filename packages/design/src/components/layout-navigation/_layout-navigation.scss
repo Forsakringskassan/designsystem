@@ -1,4 +1,5 @@
 @use "../z-index";
+@use "variables" as *;
 
 $ZINDEX: z-index.$MODAL_ZINDEX - 1 !default;
 
@@ -9,15 +10,6 @@ $layout-navigation-inner-margin: 20px !default;
 $layout-navigation-content-padding: 4px !default;
 $layout-navigation-dot-diameter: 4px !default;
 $layout-navigation-dot-spacing: 4px !default;
-
-// Colors
-$palette-color-fk-black-5: #f4f4f4 !default;
-$palette-color-fk-black-50: #8d8e91 !default;
-$palette-color-bluebell-15: #e5e5f5 !default;
-$background-navigation: #{$palette-color-fk-black-5};
-$border-hover-navigation: #{$palette-color-bluebell-15};
-$border-dots-navigation: #{$palette-color-fk-black-50};
-$scrollbar-navigation: #{$palette-color-fk-black-50};
 
 .layout-navigation {
     min-height: 100%;
@@ -36,7 +28,7 @@ $scrollbar-navigation: #{$palette-color-fk-black-50};
     }
 
     &__navigation {
-        background-color: #{$background-navigation};
+        background-color: $layout-navigation-color-background;
         display: flex;
         position: fixed;
         z-index: $ZINDEX;
@@ -45,12 +37,12 @@ $scrollbar-navigation: #{$palette-color-fk-black-50};
     }
 
     &__navigation .button.button--tertiary:hover {
-        background-color: var(--f-background-sidepanel-button-tertiary-hover);
+        background-color: $layout-navigation-button-tertiary-color-background-hover;
     }
 
     &__navigation__border {
         width: #{$layout-navigation-border-width};
-        background-color: #{$background-navigation};
+        background-color: $layout-navigation-resize-handle-color-background-default;
         cursor: w-resize;
         flex-shrink: 0;
         display: flex;
@@ -59,7 +51,7 @@ $scrollbar-navigation: #{$palette-color-fk-black-50};
         flex-direction: column;
 
         &__dot {
-            background-color: #{$border-dots-navigation};
+            background-color: $layout-navigation-resize-handle-dot-color-background;
             width: #{$layout-navigation-dot-diameter};
             height: #{$layout-navigation-dot-diameter};
             border-radius: 2px;
@@ -68,7 +60,7 @@ $scrollbar-navigation: #{$palette-color-fk-black-50};
     }
 
     &__navigation__border:hover {
-        background-color: #{$border-hover-navigation};
+        background-color: $layout-navigation-resize-handle-color-background-hover;
     }
 
     &__navigation__inner {
@@ -107,8 +99,8 @@ $scrollbar-navigation: #{$palette-color-fk-black-50};
             }
 
             &::-webkit-scrollbar-thumb {
-                background: #{$scrollbar-navigation};
-                border: 1px solid #{$scrollbar-navigation};
+                background: $layout-navigation-scrollbar-thumb-color-background;
+                border: 1px solid $layout-navigation-scrollbar-thumb-color-background;
                 box-sizing: border-box;
                 border-radius: 33px;
             }
