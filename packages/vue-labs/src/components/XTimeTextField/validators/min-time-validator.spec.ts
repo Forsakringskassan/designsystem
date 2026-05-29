@@ -1,3 +1,4 @@
+import { beforeAll, describe, expect, it, vi } from "vitest";
 import { minTimeValidator } from "./min-time-validator";
 
 const element = document.createElement("input");
@@ -12,7 +13,7 @@ describe("validation", () => {
          * and console is not restored so it leaks to other tests, should use
          * jest.spyOn(..) at least and for tests expected to log should have
          * explicit tests for this */
-        console.error = jest.fn();
+        console.error = vi.fn();
     });
 
     it.each`
@@ -49,7 +50,7 @@ describe("validation", () => {
         expect(() =>
             minTimeValidator.validation("2", element, { minTime: "five" }),
         ).toThrowErrorMatchingInlineSnapshot(
-            `"config.minTime must be a number"`,
+            `[Error: config.minTime must be a number]`,
         );
     });
 });

@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from "vitest";
 import { HoursMinutesValidatorUtils } from "./hours-minutes-validator-utils";
 
 describe("validate", () => {
@@ -12,7 +13,7 @@ describe("validate", () => {
     `(
         'should be called with "$expected" for "$value" because of "$description"',
         ({ value, expected }) => {
-            const compareFunction = jest.fn();
+            const compareFunction = vi.fn();
             const testConfig = { limit: "01:30" };
             HoursMinutesValidatorUtils.validate(
                 value,
