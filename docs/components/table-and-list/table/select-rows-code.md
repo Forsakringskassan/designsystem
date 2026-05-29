@@ -7,21 +7,53 @@ search:
         - tabell
 ---
 
+```vue
+<script setup lang="ts">
+import { ref } from "vue";
+import { useDatasetRef } from "@fkui/vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    id: string;
+    fruit: string;
+}
+
+const rows = useDatasetRef<Row>([
+    { id: "1", fruit: "Apelsin" },
+    { id: "2", fruit: "Banan" },
+    { id: "3", fruit: "Päron" },
+]);
+
+const columns = defineTableColumns<Row>([
+    {
+        type: "text",
+        header: "Frukt",
+        key: "fruit",
+    },
+]);
+
+const selectedRows = ref<Row[]>([]);
+</script>
+
+<template>
+    <f-table
+        v-model:selected-rows="selectedRows"
+        :rows
+        :columns
+        key-attribute="id"
+        selectable="multi"
+    >
+    </f-table>
+</template>
+```
+
 ## Flerval
 
 Använd `selectable="multi"` för att låta användaren välja flera rader i tabellen.
 
 Valda rader exponeras genom `v-model:selected-rows`.
 
-```ts
-import { ref } from "vue";
-
-interface Row {
-    frukt: string;
-}
-
-/* --- cut above --- */
-
+```ts nocompile
 const selectedRows = ref<Row[]>([]);
 ```
 
@@ -63,13 +95,17 @@ const selectedRows = ref<Row[]>([]);
 const { confirmModal } = useModal();
 
 async function removeSelected(): Promise<void> {
+    const selectedCount = selectedRows.value.length;
+    const selectedFruitText =
+        selectedCount === 1 ? "vald frukt" : "valda frukter";
+
     if (selectedRows.value.length === 0) {
         return;
     }
 
     const confirmed = await confirmModal({
         heading: "Ta bort frukt(er)",
-        content: "Är du säker att du vill ta bort valda frukt(er)?",
+        content: `Är du säker att du vill ta bort ${selectedCount} ${selectedFruitText}?`,
         confirm: "Ja, ta bort",
         dismiss: "Nej, behåll",
     });
@@ -81,9 +117,7 @@ async function removeSelected(): Promise<void> {
 ```
 
 ```html static
-<f-button :disabled="selectedRows.length === 0" @click="removeSelected">
-    Ta bort valda
-</f-button>
+<f-button @click="removeSelected"> Ta bort valda </f-button>
 
 <f-table
     v-model:selected-rows="selectedRows"
@@ -93,7 +127,14 @@ async function removeSelected(): Promise<void> {
 ></f-table>
 ```
 
-{@link create-delete-rows-code Lägga till och ta bort rader}.
+::: info Tips
+När texten innehåller antal kan du använda `fkui/i18n-translate` och skicka med antal som parameter, till exempel `count`.
+Det gör det enklare att hantera forumuleringar för singular och plural i översatta texter.
+
+{@link translate-text Läs mer om att anpassa och översätta text.}
+:::
+
+{@link create-delete-rows-code Läs mer om att lägga till och ta bort rader.}
 
 ## Enkelval
 
@@ -101,15 +142,7 @@ Använd `selectable="single"` för att låta användaren välja en rad i taget.
 
 Vid enkelval innehåller `selectedRows` högst en rad.
 
-```ts
-import { ref } from "vue";
-
-interface Row {
-    frukt: string;
-}
-
-/* --- cut above --- */
-
+```ts nocompile
 const selectedRows = ref<Row[]>([]);
 ```
 
