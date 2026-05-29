@@ -40,7 +40,7 @@ const selectedRows = ref<Row[]>([]);
 
 Vid flerval kan du utföra bulkoperationer på de valda raderna.
 
-Om använderen kan ta bort innehåll från tabellen bör du låta användaren bekräfta åtgärden innan den genomförs.
+Om användaren kan ta bort innehåll från tabellen bör du låta användaren bekräfta åtgärden innan den genomförs.
 
 ```ts
 import { ref } from "vue";
