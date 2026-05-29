@@ -45,7 +45,7 @@
     "watch": "rollup --config --watch"
   },
   "dependencies": {
-    "dayjs": "1.11.20"
+    "dayjs": "1.11.21"
   },
   "devDependencies": {
     "@forsakringskassan/vitest-config": "2.2.8",

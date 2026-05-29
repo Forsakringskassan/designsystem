@@ -108,7 +108,7 @@
     "cypress": "15.15.0",
     "cypress-html-validate": "9.0.0",
     "cypress-real-events": "1.15.0",
-    "dayjs": "1.11.20",
+    "dayjs": "1.11.21",
     "esbuild": "0.28.0",
     "fflate": "0.8.3",
     "flush-promises": "1.0.2",
