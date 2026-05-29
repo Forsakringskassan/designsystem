@@ -1,4 +1,5 @@
 @use "../../components/z-index";
+@use "../../core/mixins/focus";
 @use "variables" as *;
 
 $days: 7;
@@ -66,7 +67,7 @@ $day-width: calc((100% - $week-width) / $days);
             z-index: z-index.$CALENDAR_MONTH;
 
             &[tabindex="-1"] {
-                box-shadow: var(--f-focus-box-shadow);
+                box-shadow: focus.$focus-box-shadow;
             }
         }
     }
