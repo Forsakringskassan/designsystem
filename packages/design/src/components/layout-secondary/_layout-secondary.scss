@@ -1,4 +1,5 @@
 @use "../z-index";
+@use "variables" as *;
 
 $ZINDEX: z-index.$MODAL_ZINDEX - 1 !default;
 
@@ -9,15 +10,6 @@ $layout-secondary-inner-margin: 20px !default;
 $layout-secondary-content-padding: 4px !default;
 $layout-secondary-dot-diameter: 4px !default;
 $layout-secondary-dot-spacing: 4px !default;
-
-// Colors
-$palette-color-fk-black-5: #f4f4f4 !default;
-$palette-color-fk-black-50: #8d8e91 !default;
-$palette-color-bluebell-15: #e5e5f5 !default;
-$background-secondary: #{$palette-color-fk-black-5};
-$border-hover-secondary: #{$palette-color-bluebell-15};
-$border-dots-secondary: #{$palette-color-fk-black-50};
-$scrollbar-secondary: #{$palette-color-fk-black-50};
 
 .layout-secondary {
     width: 100%;
@@ -36,7 +28,7 @@ $scrollbar-secondary: #{$palette-color-fk-black-50};
     }
 
     &__secondary {
-        background-color: #{$background-secondary};
+        background-color: $layout-secondary-color-background;
         position: fixed;
         display: flex;
         right: 0;
@@ -44,12 +36,12 @@ $scrollbar-secondary: #{$palette-color-fk-black-50};
         z-index: $ZINDEX;
 
         .button.button--tertiary:hover {
-            background-color: var(--f-background-sidepanel-button-tertiary-hover);
+            background-color: $layout-secondary-button-tertiary-color-background-hover;
         }
 
         &__border {
             width: #{$layout-secondary-border-width};
-            background-color: #{$background-secondary};
+            background-color: $layout-secondary-resize-handle-color-background-default;
             cursor: w-resize;
             flex-shrink: 0;
             display: flex;
@@ -58,7 +50,7 @@ $scrollbar-secondary: #{$palette-color-fk-black-50};
             flex-direction: column;
 
             &__dot {
-                background-color: #{$border-dots-secondary};
+                background-color: $layout-secondary-resize-handle-dot-color-background;
                 width: #{$layout-secondary-dot-diameter};
                 height: #{$layout-secondary-dot-diameter};
                 border-radius: 2px;
@@ -67,7 +59,7 @@ $scrollbar-secondary: #{$palette-color-fk-black-50};
         }
 
         &__border:hover {
-            background-color: #{$border-hover-secondary};
+            background-color: $layout-secondary-resize-handle-color-background-hover;
         }
 
         &__inner {
@@ -108,8 +100,8 @@ $scrollbar-secondary: #{$palette-color-fk-black-50};
                 }
 
                 &::-webkit-scrollbar-thumb {
-                    background: #{$scrollbar-secondary};
-                    border: 1px solid #{$scrollbar-secondary};
+                    background: $layout-secondary-scrollbar-thumb-color-background;
+                    border: 1px solid $layout-secondary-scrollbar-thumb-color-background;
                     box-sizing: border-box;
                     border-radius: 33px;
                 }

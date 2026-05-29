@@ -1,1 +1,6 @@
-// stylelint-disable no-empty-source -- placeholder file
+$layout-secondary-color-background: var(--fkds-color-background-secondary) !default;
+$layout-secondary-resize-handle-color-background-default: var(--fkds-color-background-secondary) !default;
+$layout-secondary-resize-handle-color-background-hover: var(--fkds-color-action-background-secondary-hover) !default;
+$layout-secondary-resize-handle-dot-color-background: var(--fkds-color-action-text-secondary-default) !default;
+$layout-secondary-scrollbar-thumb-color-background: var(--fkds-color-border-primary) !default;
+$layout-secondary-button-tertiary-color-background-hover: var(--fkds-color-action-background-secondary-hover) !default;

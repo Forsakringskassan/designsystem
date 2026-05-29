@@ -24,7 +24,7 @@
     // BACKGROUND COLORS
     // *****************
     --f-background-overlay: rgba(0, 0, 0, 0.75); // modal, loader
-    --f-background-sidepanel-button-tertiary-hover: #{$palette-color-bluebell-15}; //  FLeftPanel and FRightPanel
+    --f-background-sidepanel-button-tertiary-hover: var(--fkds-color-action-background-secondary-hover); //  FLeftPanel and FRightPanel
 
     // *******************
     // COLOR VARIABLES END
