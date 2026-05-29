@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-1c91f8.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-2e85fe.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-c6eb9f.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-a2df32.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../../assets/vendor-fkui-logic-1c91f8.js": "sha384-mp6SG2Ww/cIPEYqg6jTjq3eURsh8UQxZGJRozRrFoQ1j2wT8ROPkhVKXVxnzIFmM",
     "../../../assets/vendor-fkui-date-2e85fe.js": "sha384-xrA9fPmAfTE2H1Zd/5Wd5Z6B+FXD2kEosKe6kfxFdmxr3cznPQZ6Ie3/tSlITmyJ",
-    "../../../assets/vendor-fkui-vue-c6eb9f.js": "sha384-a6J8pvKG4NV7ZZNwCK9s2Fd3WAIlYxciguMen/f1c7CgQBaubqTxMLjmvx+IVEtO",
+    "../../../assets/vendor-fkui-vue-a2df32.js": "sha384-5N/92+baUMaChwcPf4QiHs1mFvn7kWQ4LX4nGXA/KauIIy4fa4jUKhboYRX1bfkV",
     "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-79fe17.json"
+            href="../../../search-data-747564.json"
             as="fetch"
             crossorigin
-            integrity="sha384-vxFSxJwqokeYcLoC7ES2eRmSiM39VbhYmxdKRXAXmEdxUZ3zGXj25MJ3Qudn//qT"
+            integrity="sha384-HMyJB1AVRnmugd8W00NrAM8j5Sy4SIvRj7hSiBaByFzd0F0pMnnYbKdu765nThS8"
             id="search-data"
         />
     </head>
@@ -1581,244 +1581,36 @@ Om tabellen har kryssruta (flerval) ingår även funktionen för bulkoperation (
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-a58320"></div>
+        <div id="example-d1df8e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableBulkExampleMulti-a58320.js"></script>
+        <script type="module" src="./FTableBulkExampleMulti-d1df8e.js"></script>
     
                     </div>
                 </div>
             <h3 id="bulkoperation" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#bulkoperation">Bulkoperation</a></h3><p class="docs-paragraph">Bulkoperation innebär att användaren kan välja ett antal rader och utföra åtgärd/operation för alla valda rader samtidigt.</p>
 
-            <div
-                id="example-8a6cf4"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview user-background">
+                <div
+                    id="example-3f69a4"
+                    class="code-preview code-preview--borderless"
                     
-        <div id="example-5405bc"></div>
+                    data-tags="live-example"
+                    data-language="vue"
+                >
+                    
+        <div id="example-57162d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableBulkLiveExample-5405bc.js"></script>
+        <script type="module" src="./FTableBulkLiveExample-57162d.js"></script>
     
                 </div>
-                <div>
-            <button
-                type="button"
-                class="code-preview__button code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <svg focusable="false" class="docs-icon" aria-hidden="true">
-                    <use href="#docs-icon-code"></use>
-                </svg>
-                Visa kod
-            </button>
-         </div>
-                <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
-                >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { computed, ref, watch } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">LiveExample</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/docs-live-example&quot;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FButton</span>,
-    <span class="hljs-title class_">FCheckboxField</span>,
-    <span class="hljs-title class_">FPaginateDataset</span>,
-    <span class="hljs-title class_">FPaginator</span>,
-    <span class="hljs-title class_">FSortFilterDataset</span>,
-    <span class="hljs-title class_">FTable</span>,
-    defineTableColumns,
-    removeDatasetRows,
-    useDatasetRef,
-    useModal,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-interface <span class="hljs-title class_">Row</span> {
-    <span class="hljs-attr">namn</span>: string;
-    <span class="hljs-attr">land</span>: string;
-}
-
-<span class="hljs-keyword">const</span> <span class="hljs-attr">data</span>: <span class="hljs-title class_">Row</span>[] = [
-    {
-        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>,
-        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>,
-    },
-    {
-        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Banan&quot;</span>,
-        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Columbia&quot;</span>,
-    },
-    {
-        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpple&quot;</span>,
-        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>,
-    },
-    {
-        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Päron&quot;</span>,
-        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Italien&quot;</span>,
-    },
-];
-
-<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
-    {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
-        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;namn&quot;</span>,
-    },
-    {
-        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
-        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
-    },
-]);
-
-<span class="hljs-keyword">const</span> sortableAttributes = { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Frukt&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Land&quot;</span> };
-<span class="hljs-keyword">const</span> itemsPerPage = <span class="hljs-title function_">ref</span>(<span class="hljs-number">3</span>);
-<span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">useDatasetRef</span>([...data]);
-<span class="hljs-keyword">const</span> selectedRows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([]);
-
-<span class="hljs-keyword">const</span> useSortFilter = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">false</span>);
-<span class="hljs-keyword">const</span> usePagination = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">false</span>);
-
-<span class="hljs-keyword">const</span> components = {
-    <span class="hljs-title class_">FTable</span>,
-    <span class="hljs-title class_">FSortFilterDataset</span>,
-    <span class="hljs-title class_">FPaginateDataset</span>,
-    <span class="hljs-title class_">FPaginator</span>,
-    <span class="hljs-title class_">FButton</span>,
-};
-
-<span class="hljs-keyword">const</span> livedata = {
-    rows,
-    columns,
-    sortableAttributes,
-    itemsPerPage,
-    selectedRows,
-};
-
-<span class="hljs-keyword">const</span> { confirmModal } = <span class="hljs-title function_">useModal</span>();
-
-<span class="hljs-keyword">const</span> livemethods = {
-    <span class="hljs-keyword">async</span> <span class="hljs-title function_">onRemoveSelectedRows</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-keyword">void</span>&gt; {
-        <span class="hljs-keyword">if</span> (selectedRows.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) {
-            <span class="hljs-keyword">return</span>;
-        }
-
-        <span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>({
-            <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort frukt(er)&quot;</span>,
-            <span class="hljs-attr">content</span>: <span class="hljs-string">&quot;Är du säker att du vill ta bort valda frukt(er)?&quot;</span>,
-            <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
-            <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, behåll&quot;</span>,
-        });
-
-        <span class="hljs-keyword">if</span> (confirmed) {
-            <span class="hljs-title function_">removeDatasetRows</span>(rows, selectedRows);
-        }
-    },
-    <span class="hljs-title function_">onRestoreRows</span>(<span class="hljs-params"></span>) {
-        rows.<span class="hljs-property">value</span> = [...data];
-    },
-};
-
-<span class="hljs-keyword">const</span> actionsTemplate = <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">`
-    &lt;div class=&quot;button-group&quot;&gt;
-        &lt;f-button variant=&quot;secondary&quot; @click=&quot;onRemoveSelectedRows&quot;&gt;
-            Ta bort valda frukt(er)
-        &lt;/f-button&gt;
-        &lt;f-button variant=&quot;secondary&quot; @click=&quot;onRestoreRows&quot;&gt; Återställ &lt;/f-button&gt;
-    &lt;/div&gt;
-`</span>;
-
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">tableTemplate</span>(<span class="hljs-params">rowsRef?: string</span>) {
-    <span class="hljs-keyword">const</span> rowsTemplate = rowsRef ? <span class="hljs-string">`:rows=&quot;<span class="hljs-subst">${rowsRef}</span>&quot;`</span> : <span class="hljs-string">`:rows`</span>;
-
-    <span class="hljs-keyword">return</span> <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">`&lt;f-table
-        <span class="hljs-subst">${rowsTemplate}</span>
-        :columns
-        selectable=&quot;multi&quot;
-        v-model:selected-rows=&quot;selectedRows&quot;
-    &gt;&lt;/f-table&gt;`</span>;
-}
-
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">sortFilterTemplate</span>(<span class="hljs-params"></span>): string {
-    <span class="hljs-keyword">return</span> <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">`
-        &lt;f-sort-filter-dataset :data=&quot;rows&quot; :sortable-attributes&gt;
-            &lt;template #default=&quot;{ sortFilterResult }&quot;&gt;
-                <span class="hljs-subst">${tableTemplate(<span class="hljs-string">&quot;sortFilterResult&quot;</span>)}</span>
-            &lt;/template&gt;
-        &lt;/f-sort-filter-dataset&gt;
-    `</span>;
-}
-
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">paginationTemplate</span>(<span class="hljs-params">itemsRef?: string</span>): string {
-    <span class="hljs-keyword">const</span> itemsTemplate = itemsRef ? <span class="hljs-string">`:items=&quot;<span class="hljs-subst">${itemsRef}</span>&quot;`</span> : <span class="hljs-string">`:items=&quot;rows&quot;`</span>;
-
-    <span class="hljs-keyword">return</span> <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">`
-        &lt;f-paginate-dataset <span class="hljs-subst">${itemsTemplate}</span> :items-per-page&gt;
-            &lt;template #default=&quot;{ items: currentPageItems }&quot;&gt;
-                <span class="hljs-subst">${tableTemplate(<span class="hljs-string">&quot;currentPageItems&quot;</span>)}</span>
-                &lt;f-paginator /&gt;
-            &lt;/template&gt;
-        &lt;/f-paginate-dataset&gt;
-    `</span>;
-}
-
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">sortFilterPaginationTemplate</span>(<span class="hljs-params"></span>): string {
-    <span class="hljs-keyword">return</span> <span class="hljs-comment">/* HTML */</span> <span class="hljs-string">`
-        &lt;f-sort-filter-dataset :data=&quot;rows&quot; :sortable-attributes&gt;
-            &lt;template #default=&quot;{ sortFilterResult }&quot;&gt;
-                <span class="hljs-subst">${paginationTemplate(<span class="hljs-string">&quot;sortFilterResult&quot;</span>)}</span>
-            &lt;/template&gt;
-        &lt;/f-sort-filter-dataset&gt;
-    `</span>;
-}
-
-<span class="hljs-keyword">const</span> template = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-keyword">let</span> <span class="hljs-attr">resolvedTemplate</span>: string;
-
-    <span class="hljs-keyword">if</span> (useSortFilter.<span class="hljs-property">value</span>) {
-        <span class="hljs-keyword">if</span> (usePagination.<span class="hljs-property">value</span>) {
-            resolvedTemplate = <span class="hljs-title function_">sortFilterPaginationTemplate</span>();
-        } <span class="hljs-keyword">else</span> {
-            resolvedTemplate = <span class="hljs-title function_">sortFilterTemplate</span>();
-        }
-    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (usePagination.<span class="hljs-property">value</span>) {
-        resolvedTemplate = <span class="hljs-title function_">paginationTemplate</span>();
-    } <span class="hljs-keyword">else</span> {
-        resolvedTemplate = <span class="hljs-title function_">tableTemplate</span>();
-    }
-
-    <span class="hljs-keyword">return</span> [resolvedTemplate, actionsTemplate].<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;\n&quot;</span>);
-});
-
-<span class="hljs-title function_">watch</span>(template, <span class="hljs-function">() =&gt;</span> {
-    rows.<span class="hljs-property">value</span> = [...data];
-});
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">live-example</span> <span class="hljs-attr">:components</span> <span class="hljs-attr">:template</span> <span class="hljs-attr">:livedata</span> <span class="hljs-attr">:livemethods</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-checkbox-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;useSortFilter&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
-            Datamängdsortering
-        <span class="hljs-tag">&lt;/<span class="hljs-name">f-checkbox-field</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-checkbox-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;usePagination&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span> Paginering <span class="hljs-tag">&lt;/<span class="hljs-name">f-checkbox-field</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">live-example</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-</code></pre>
-                </div>
-            </div>
-        <h3 id="ta_bort_rader_vid_bulkoperation" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ta_bort_rader_vid_bulkoperation">Ta bort rader vid bulkoperation</a></h3><p class="docs-paragraph">Om användaren kan ta bort rader eller innehåll i tabellen genom bulkoperation behöver du se till att användaren får bekräfta före borttagande.</p>
+            <h3 id="ta_bort_rader_vid_bulkoperation" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ta_bort_rader_vid_bulkoperation">Ta bort rader vid bulkoperation</a></h3><p class="docs-paragraph">Om användaren kan ta bort rader eller innehåll i tabellen genom bulkoperation behöver du se till att användaren får bekräfta före borttagande.</p>
 <h2 id="enkelval" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#enkelval">Enkelval</a></h2>
                 <div
                     id="example-fea6f6"
@@ -1830,13 +1622,13 @@ interface <span class="hljs-title class_">Row</span> {
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-bef68d"></div>
+        <div id="example-e4c801"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableBulkExampleSingle-bef68d.js"></script>
+        <script type="module" src="./FTableBulkExampleSingle-e4c801.js"></script>
     
                     </div>
                 </div>
@@ -1889,9 +1681,9 @@ interface <span class="hljs-title class_">Row</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">SFKUI-7886-select-rows-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/2dfa5c33c3c33a8f88a4e8b30f6b6322dd933df0">2dfa5c3</a>)<br />
+<div class="footer__right"><div class="version">SFKUI-7886-select-rows-code (<a href="https://github.com/Forsakringskassan/designsystem/commits/06685c0b635f5eb6f3767c1b0ae6d306f7828322">06685c0</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1349">PR 1349</a><br />
-        2026-05-29 06:11
+        2026-05-29 10:33
 </div>
 <div class="toolbar__item">
     <form id="version">
