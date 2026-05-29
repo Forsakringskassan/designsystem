@@ -4,7 +4,7 @@ import { styleText } from "node:util";
 import fkuiTheme from "@fkui/theme-default/dist/theme-light.js";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
-import postcss from "postcss";
+import postcss, { CssSyntaxError } from "postcss";
 
 /* postcss plugins */
 import varFuncFallback from "postcss-var-func-fallback";
@@ -111,7 +111,7 @@ try {
     await compileSass("src/fonts.scss", "lib/fonts.css");
 } catch (err) {
     console.log();
-    if (err instanceof postcss.CssSyntaxError) {
+    if (err instanceof CssSyntaxError) {
         console.error(`${err.file}:${err.line}:${err.column}: ${err.reason}`);
         console.log(err.showSourceCode());
         process.exitCode = 1;
