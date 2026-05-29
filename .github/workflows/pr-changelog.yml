@@ -15,11 +15,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-              uses: actions/checkout@v6
+              uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
               with:
                   ref: "${{ github.head_ref }}"
             - name: Setup Node.js
-              uses: actions/setup-node@v6
+              uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
               with:
                   node-version: 22.x
             - name: Install dependencies
@@ -29,7 +29,7 @@ jobs:
                       @forsakringskassan/semantic-release-common@3 \
                       conventional-changelog-conventionalcommits@8
             - name: Pull Requst Changelog
-              uses: ext/pull-request-changelog@v1
+              uses: ext/pull-request-changelog@94f2a58932d3699c19f6c7756e1a06f98aefc670 # v1
               with:
                   config: .github/pull-request-changelog/config.mjs
                   template-dir: .github/pull-request-changelog

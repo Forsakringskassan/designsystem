@@ -15,11 +15,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-              uses: actions/checkout@v6
+              uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
               with:
                   ref: "${{ github.ref_name }}"
             - name: Use Node.js 22.x
-              uses: actions/setup-node@v6
+              uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
               with:
                   node-version: 22.x
             - name: Install dependencies
@@ -30,7 +30,7 @@ jobs:
                   example-apps: true
                   sandbox: false
             - name: Deploy documentation
-              uses: JamesIves/github-pages-deploy-action@v4
+              uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4
               with:
                   folder: public
                   target-folder: main
