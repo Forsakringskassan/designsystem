@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-1c91f8.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-2e85fe.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-c6eb9f.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-a2df32.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../../assets/vendor-fkui-logic-1c91f8.js": "sha384-mp6SG2Ww/cIPEYqg6jTjq3eURsh8UQxZGJRozRrFoQ1j2wT8ROPkhVKXVxnzIFmM",
     "../../../assets/vendor-fkui-date-2e85fe.js": "sha384-xrA9fPmAfTE2H1Zd/5Wd5Z6B+FXD2kEosKe6kfxFdmxr3cznPQZ6Ie3/tSlITmyJ",
-    "../../../assets/vendor-fkui-vue-c6eb9f.js": "sha384-a6J8pvKG4NV7ZZNwCK9s2Fd3WAIlYxciguMen/f1c7CgQBaubqTxMLjmvx+IVEtO",
+    "../../../assets/vendor-fkui-vue-a2df32.js": "sha384-5N/92+baUMaChwcPf4QiHs1mFvn7kWQ4LX4nGXA/KauIIy4fa4jUKhboYRX1bfkV",
     "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-ac1239.json"
+            href="../../../search-data-c1d3bd.json"
             as="fetch"
             crossorigin
-            integrity="sha384-lqLs/aD+kbroQl9ScEgHRSOBnrL0EczHTQ9Gfs1FuLi/PXyXI+EOtYjRY0SwcdDD"
+            integrity="sha384-kSwXEzgDCLSmDPtDKuAwCvW3z8rnWMyoPkgoq5WkhppC+D0LQvM+kY9XgQSGMfoL"
             id="search-data"
         />
     </head>
@@ -1705,71 +1705,32 @@ interface <span class="hljs-title class_">Row</span> {
 </code></pre>
                 </div>
             </div>
-        <h2 id="lagga_till_en_rad" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lagga_till_en_rad">Lägga till en rad</a></h2><p class="docs-paragraph">Använd <code>push</code> eller motsvarande för att lägga till en ny rad i ditt befintliga dataset.</p>
-<h2 id="ta_bort_en_rad" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ta_bort_en_rad">Ta bort en rad</a></h2><p class="docs-paragraph">Använd metoden <code>withTabstopBehaviour</code> som tabellkomponenten exponerar för att fokus ska landa på prioriterad cell efter borttag.</p>
+        <h2 id="lagga_till_en_rad" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lagga_till_en_rad">Lägga till en rad</a></h2><p class="docs-paragraph">Använd <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push"><code>Array.push()</code></a> eller motsvarande för att lägga till en ny rad i ditt befintliga dataset.</p>
+
+                <div
+                    id="example-a3fecc"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0">dataset.<span class="hljs-title function_">push</span>(newRow);
+</code></pre>
+                </div>
+            <h2 id="ta_bort_en_rad" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ta_bort_en_rad">Ta bort en rad</a></h2><p class="docs-paragraph">Använd metoden <code>withTabstopBehaviour</code> som tabellkomponenten exponerar för att fokus ska landa på prioriterad cell efter borttag.</p>
 <p class="docs-paragraph">Använd metoden <code>removeDatasetRows</code> för att smidigt ta bort en eller flera rader i din datamängd.
 Metoden muterar ditt befintliga dataset.</p>
 
-            <div
-                id="example-2600f6"
-                class="code-preview code-preview--default"
-                
-                
-                data-language="vue"
-            >
-                
-                <div class="code-preview__preview user-background">
-                    
-        <div id="example-9e3afc"></div>
-        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
-        <style>
-            
-        </style>
-        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./create-delete-rows-code-9e3afc.js"></script>
-    
-                </div>
-                <div>
-            <button
-                type="button"
-                class="code-preview__button code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <svg focusable="false" class="docs-icon" aria-hidden="true">
-                    <use href="#docs-icon-code"></use>
-                </svg>
-                Visa kod
-            </button>
-         </div>
                 <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
+                    id="example-aaa798"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { assertRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
-<span class="hljs-keyword">import</span> {
-    <span class="hljs-title class_">FButton</span>,
-    <span class="hljs-title class_">FTable</span>,
-    defineTableColumns,
-    removeDatasetRows,
-    useDatasetRef,
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-
-interface <span class="hljs-title class_">Row</span> {
-    <span class="hljs-attr">namn</span>: string;
-}
-
-<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;([
-    {
-        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>,
-    },
-]);
-
-<span class="hljs-comment">// cut above</span>
-<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
@@ -1788,22 +1749,31 @@ interface <span class="hljs-title class_">Row</span> {
 
 <span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
 
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveRow</span>(<span class="hljs-params">row: Row</span>): <span class="hljs-keyword">void</span> {
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveRow</span>(<span class="hljs-params"><span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span></span>): <span class="hljs-built_in">void</span> {
     <span class="hljs-title function_">assertRef</span>(tableRef);
 
     tableRef.<span class="hljs-property">value</span>.<span class="hljs-title function_">withTabstopBehaviour</span>(<span class="hljs-string">&quot;row-removal&quot;</span>, <span class="hljs-function">() =&gt;</span> {
         <span class="hljs-title function_">removeDatasetRows</span>(rows, row);
     });
 }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+&lt;/script&gt;
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-7356e3"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
-            </div>
-        <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell</a></p>
+            <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell</a></p>
 <p class="docs-paragraph"><a href="./create-delete-rows.html">Lägga till och ta bort rader i tabell</a></p>
 
 
@@ -1853,9 +1823,9 @@ interface <span class="hljs-title class_">Row</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">SFKUI-7883-docs-add-remove (<a href="https://github.com/Forsakringskassan/designsystem/commits/e8420c20783acd971b3f2ab84cc3463467fb3700">e8420c2</a>)<br />
+<div class="footer__right"><div class="version">SFKUI-7883-docs-add-remove (<a href="https://github.com/Forsakringskassan/designsystem/commits/119c3f46705412be050d9afd642dd7eff1e318d4">119c3f4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1348">PR 1348</a><br />
-        2026-05-28 13:23
+        2026-05-29 11:51
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1989,16 +1959,16 @@ interface <span class="hljs-title class_">Row</span> {
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-b1f760.js"
+            src="../../../assets/processors/selectable-version/select-version-32ccda.js"
             type="module"
             crossorigin
-            integrity="sha384-PDgTCfARpnil/aPHXqLe9au4e1KxI8M7eVeSBw2PyWWRU81/Ud+z/yBWm3uqwtJL"
+            integrity="sha384-BNOMboV1SUmlbdOCe0WvnQ8fR51s0++L+IyVMXpXHYbjFAKN8AO0bvDyP7cAEQ4J"
             
         ></script><script
-            src="../../../assets/main-f34209.js"
+            src="../../../assets/main-efe747.js"
             type="module"
             crossorigin
-            integrity="sha384-iPbtGbOp6NU0AaXCUogu7WZzjB8PrFmGXU+MHbvNFemWAnaOgh+Qu8UWtMUlGfiM"
+            integrity="sha384-Wb0l7XANnCf3hX/9KAI8Adc7vOc7zY0ltLu7y1sCOqPnBQ3JtFJGModvfijQxzHR"
             
         ></script>
     </body>
