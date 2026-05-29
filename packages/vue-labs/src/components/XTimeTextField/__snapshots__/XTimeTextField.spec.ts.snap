@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots should match snapshot with label and input 1`] = `
+exports[`snapshots > should match snapshot with label and input 1`] = `
 <div
   class="text-field"
 >

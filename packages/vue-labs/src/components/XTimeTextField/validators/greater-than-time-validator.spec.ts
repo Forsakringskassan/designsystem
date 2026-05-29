@@ -1,3 +1,4 @@
+import { beforeAll, describe, expect, it, vi } from "vitest";
 import { greaterThanTimeValidator } from "./greater-than-time-validator";
 
 const element = document.createElement("input");
@@ -12,7 +13,7 @@ describe("validation", () => {
          * and console is not restored so it leaks to other tests, should use
          * jest.spyOn(..) at least and for tests expected to log should have
          * explicit tests for this */
-        console.error = jest.fn();
+        console.error = vi.fn();
     });
 
     it.each`
@@ -55,7 +56,7 @@ describe("validation", () => {
                 limit: "five",
             });
         }).toThrowErrorMatchingInlineSnapshot(
-            `"config.limit must be a number"`,
+            `[Error: config.limit must be a number]`,
         );
     });
 });
