@@ -1,6 +1,6 @@
 {
   "name": "@fkui/example-page-layout",
-  "version": "6.47.0",
+  "version": "6.48.0",
   "private": true,
   "description": "An example and testbed for application layout components",
   "homepage": "https://designsystem.forsakringskassan.se/",
@@ -19,16 +19,16 @@
     "start": "vite --"
   },
   "dependencies": {
-    "@fkui/design": "6.47.0",
-    "@fkui/icon-lib-default": "6.47.0",
-    "@fkui/theme-default": "6.47.0",
-    "@fkui/vue": "6.47.0",
+    "@fkui/design": "6.48.0",
+    "@fkui/icon-lib-default": "6.48.0",
+    "@fkui/theme-default": "6.48.0",
+    "@fkui/vue": "6.48.0",
     "vue": "3.5.34",
     "vue-router": "4.6.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "6.0.7",
-    "vite": "8.0.13"
+    "vite": "8.0.14"
   },
   "engines": {
     "node": "^22.16 || >= 24",

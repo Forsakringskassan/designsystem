@@ -1,6 +1,6 @@
 {
   "name": "@fkui/theme-builder",
-  "version": "6.47.0",
+  "version": "6.48.0",
   "description": "Build script for FKUI theme",
   "keywords": [
     "fkui",
@@ -31,22 +31,22 @@
     "test": "node --test --experimental-strip-types"
   },
   "dependencies": {
-    "@adobe/css-tools": "4.4.4",
+    "@adobe/css-tools": "4.5.0",
     "@forsakringskassan/sass-module-importer": "3.0.0",
     "cssnano": "8.0.1",
     "get-css-variables": "1.1.1",
     "postcss-scss": "4.0.9",
-    "sass": "1.99.0",
+    "sass": "1.100.0",
     "yargs": "18.0.0"
   },
   "devDependencies": {
-    "@html-validate/release-scripts": "7.2.2",
+    "@html-validate/release-scripts": "7.2.3",
     "@types/node": "22.19.19",
     "@types/yargs": "17.0.35",
     "dedent": "1.7.2",
     "esbuild": "0.28.0",
     "memfs": "4.57.2",
-    "postcss": "8.5.14",
+    "postcss": "8.5.15",
     "stream-buffers": "3.0.3",
     "typescript": "5.9.3"
   },

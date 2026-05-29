@@ -1,5 +1,5 @@
 <script setup lang="ts">
-/* eslint-disable-next-line import/extensions -- does not work without
+/* eslint-disable-next-line import-x/extensions -- does not work without
  * extension unless we add exports field to theme package :( (but that would
  * be breaking) */
 import theme from "@fkui/theme-default/dist/metadata.mjs";

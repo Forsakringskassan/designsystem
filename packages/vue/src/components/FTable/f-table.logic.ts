@@ -253,8 +253,6 @@ function ensureCellVisible(cell: HTMLElement): void {
 
 /** @internal */
 export function maybeNavigateToCell(e: KeyboardEvent): void {
-    let newCellTarget: HTMLElement = e.target as HTMLElement;
-
     const cell = getCell(e.target as HTMLElement);
     const tr = getTr(cell);
     const table = getTable(tr);
@@ -269,7 +267,11 @@ export function maybeNavigateToCell(e: KeyboardEvent): void {
 
     const navigateTo = navigate(e, table, fromIndex, lastIndex);
     if (navigateTo) {
-        newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
+        const newCellTarget = getCellTarget(
+            table,
+            navigateTo.row,
+            navigateTo.cell,
+        );
         activateCell(newCellTarget, { focus: true });
         ensureCellVisible(newCellTarget);
     }

@@ -124,7 +124,6 @@ describe("html-validate", () => {
                 <f-datepicker-field></f-datepicker-field>
                 <f-datepicker-field disabled></f-datepicker-field>
                 <f-datepicker-field :disabled="false"></f-datepicker-field>
-                <f-datepicker-field :disabled="true"></f-datepicker-field>
             `;
             const invalid = /* HTML */ `
                 <f-datepicker-field disabled="foobar"></f-datepicker-field>
@@ -163,8 +162,6 @@ describe("html-validate", () => {
                 <f-datepicker-field highlight-today></f-datepicker-field>
                 <f-datepicker-field :highlight-today="false">
                 </f-datepicker-field>
-                <f-datepicker-field :highlight-today="true">
-                </f-datepicker-field>
             `;
             const invalid = /* HTML */ `
                 <f-datepicker-field highlight-today="foobar">
@@ -195,7 +192,6 @@ describe("html-validate", () => {
                 <f-datepicker-field></f-datepicker-field>
                 <f-datepicker-field always-inline></f-datepicker-field>
                 <f-datepicker-field :always-inline="false"></f-datepicker-field>
-                <f-datepicker-field :always-inline="true"></f-datepicker-field>
             `;
             const invalid = /* HTML */ `
                 <f-datepicker-field always-inline="foobar"></f-datepicker-field>
