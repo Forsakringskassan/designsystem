@@ -1,10 +1,157 @@
 @use "../shared" as shared;
 @use "variables" as light;
 @use "../version" as *;
+@use "../palette-variables" as *;
 
 @mixin theme {
     @include shared.variables;
     @include light.variables;
 
     --fkui-theme-default-version: "#{$version}";
+
+    // ***********
+    // TEXT COLORS
+    // ***********
+
+    --f-text-color-heading-1: #{$palette-color-green-a-100};
+    --f-text-color-heading-2: #{$palette-color-green-a-85};
+    --f-text-color-heading-3: var(--fkds-color-text-primary);
+    --f-text-color-heading-4: var(--fkds-color-text-primary);
+    --f-text-color-heading-5: var(--fkds-color-text-primary);
+    --f-text-color-heading-6: var(--fkds-color-text-primary);
+
+    --f-text-color-heading-expandable-panel: var(--fkds-color-text-primary);
+
+    // *****************
+    // GENERAL VARIABLES
+    // *****************
+    $_font-size-h2: 1.35rem;
+    --f-font-family: "IntFont", "NeueHass", "Arial", "Helvetica Neue", "Helvetica", "Roboto", sans-serif;
+    --f-font-size-default-rem: 14px;
+    --f-font-size-default-large-up-rem: 14px;
+    --f-font-size-h1: 1.65rem;
+    --f-font-size-h2: #{$_font-size-h2};
+    --f-font-size-xxx-large: 1.2rem;
+    --f-font-size-h3: 1.2rem;
+    --f-font-size-h4: 1rem;
+    --f-font-size-large: 1rem;
+
+    $f-color-focus: #ffcc00;
+    --f-color-focus: #{$f-color-focus};
+    --f-focus-box-shadow: 0 0 0 2px #{$palette-color-white-100}, 0 0 0 4px #{$f-color-focus};
+
+    --f-height-large: 2.3rem;
+    --f-icon-size-small: 1.143rem;
+    --f-input-shadow-inset: none;
+    --f-border-width-medium: 1px;
+
+    // ****************************
+    // COMPONENT SPECIFIC VARIABLES
+    // ****************************
+    $_f-button-default-padding-top: 0.75rem;
+    $_f-button-default-padding-right: 1rem;
+    $_f-button-default-padding-bottom: 0.75rem;
+    $_f-button-default-padding-left: 1rem;
+    --f-button-shadow: none;
+    --f-button-shadow-hover: 0 1px 4px rgb(0, 0, 0, 0.4);
+    --f-button-min-width: 80px;
+    --f-button-letter-spacing: normal;
+    --f-button-default-line-height: calc(1.25 * 1rem);
+    --f-button-discrete-radius-hover: 3rem;
+    --f-button-discrete-table-column-action-margin: 0 0 0 0.9rem;
+    --f-button-discrete-table-column-action-border-radius: 0.4rem;
+    --f-button-default-padding-top: #{$_f-button-default-padding-top};
+    --f-button-default-padding-right: #{$_f-button-default-padding-right};
+    --f-button-default-padding-bottom: #{$_f-button-default-padding-bottom};
+    --f-button-default-padding-left: #{$_f-button-default-padding-left};
+    --f-button-primary-padding-top: #{$_f-button-default-padding-top};
+    --f-button-primary-padding-right: #{$_f-button-default-padding-right};
+    --f-button-primary-padding-bottom: #{$_f-button-default-padding-bottom};
+    --f-button-primary-padding-left: #{$_f-button-default-padding-left};
+    --f-button-secondary-padding-top: #{$_f-button-default-padding-top};
+    --f-button-secondary-padding-right: #{$_f-button-default-padding-right};
+    --f-button-secondary-padding-bottom: #{$_f-button-default-padding-bottom};
+    --f-button-secondary-padding-left: #{$_f-button-default-padding-left};
+    --f-button-standard-padding-top: #{$_f-button-default-padding-top};
+    --f-button-standard-padding-right: #{$_f-button-default-padding-right};
+    --f-button-standard-padding-bottom: #{$_f-button-default-padding-bottom};
+    --f-button-standard-padding-left: #{$_f-button-default-padding-left};
+    --f-button-discrete-padding-top: 0.6rem;
+    --f-button-discrete-padding-right: 1rem;
+    --f-button-discrete-padding-bottom: 0.6rem;
+    --f-button-discrete-padding-left: 1rem;
+    --f-button-discrete-black-padding-top: 0.4rem;
+    --f-button-discrete-black-padding-right: 0.4rem;
+    --f-button-discrete-black-padding-bottom: 0.4rem;
+    --f-button-discrete-black-padding-left: 0.4rem;
+    --f-button-discrete-table-column-action-padding-top: 0.2rem;
+    --f-button-discrete-table-column-action-padding-right: 0.2rem;
+    --f-button-discrete-table-column-action-padding-bottom: 0.2rem;
+    --f-button-discrete-table-column-action-padding-left: 0.2rem;
+
+    --f-expandable-panel-heading-border-close: 1px solid var(--fkds-color-border-primary);
+    --f-expandable-panel-heading-border-open: 1px solid var(--fkds-color-border-primary);
+    --f-expandable-panel-heading-border-radius: none;
+
+    --f-label-message-margin-top: initial;
+
+    --f-list-item-itempane-padding: 0.8rem;
+
+    --f-modal-close-button-margin: 2px;
+    --f-modal-close-button-padding: 0.5rem;
+    --f-modal-title-font-size: #{$_font-size-h2};
+
+    --f-static-panel-heading-border: 1px solid var(--fkds-color-border-primary);
+
+    --f-table-body-row-padding: 0.4rem;
+
+    --f-tooltip-border-width: var(--f-border-width-small);
+
+    --i-popup-error-offset: 16px;
+
+    --f-logo-image-small: url("assets/images/fk-logo-primary-small.svg");
+    --f-logo-image-large: url("assets/images/fk-logo-primary-large.svg");
+    --f-logo-size-small: 0.6rem;
+    --f-logo-size-large: 0.6rem 4rem;
+
+    // stylelint-disable custom-property-empty-line-before -- technical debt, should just add a comment before each block
+
+    // ACTION - TEXT
+    --fkds-color-action-text-primary-default: #{$palette-color-green-a-100};
+    --fkds-color-action-text-primary-hover: #{$palette-color-green-a-120};
+    --fkds-color-action-text-primary-active: #{$palette-color-green-a-120};
+    --fkds-color-action-text-primary-focus: #{$palette-color-green-a-120};
+    --fkds-color-action-text-secondary-hover: #{$palette-color-green-a-120};
+    --fkds-color-action-text-secondary-active: #{$palette-color-green-a-120};
+    --fkds-color-action-text-secondary-focus: #{$palette-color-green-a-120};
+
+    // ACTION - BACKGROUND
+    --fkds-color-action-background-primary-default: #{$palette-color-green-a-100};
+    --fkds-color-action-background-primary-hover: #{$palette-color-green-a-120};
+    --fkds-color-action-background-primary-active: #{$palette-color-green-a-120};
+    --fkds-color-action-background-primary-focus: #{$palette-color-green-a-120};
+    --fkds-color-action-background-secondary-default: #{$palette-color-green-a-5};
+    --fkds-color-action-background-secondary-hover: #{$palette-color-green-a-15};
+    --fkds-color-action-background-secondary-active: #{$palette-color-green-a-15};
+    --fkds-color-action-background-secondary-focus: #{$palette-color-green-a-15};
+
+    // ACTION - BORDER
+    --fkds-color-action-border-primary-default: #{$palette-color-fk-black-50};
+    --fkds-color-action-border-primary-hover: #{$palette-color-fk-black-50};
+    --fkds-color-action-border-primary-active: #{$palette-color-fk-black-50};
+    --fkds-color-action-border-primary-focus: #{$palette-color-fk-black-50};
+
+    // SELECT - BACKGROUND
+    --fkds-color-select-background-primary-default: #{$palette-color-green-a-100};
+    --fkds-color-select-background-primary-hover: #{$palette-color-green-a-15};
+    --fkds-color-select-background-primary-active: #{$palette-color-green-a-15};
+    --fkds-color-select-background-primary-focus: #{$palette-color-green-a-15};
+    --fkds-color-select-background-secondary-default: #{$palette-color-green-a-120};
+
+    .icon-stack--tooltip {
+        .f-icon-circle {
+            --fkds-color-action-border-primary-default: var(--fkds-color-feedback-border-info);
+            --fkds-color-action-background-primary-default: var(--fkds-color-feedback-background-info-strong);
+        }
+    }
 }
