@@ -71,7 +71,7 @@ $cell-border-width: 1px;
     &--text {
         padding: 0;
 
-        &:hover {
+        &:hover:not(:focus-within) {
             background: $table-ng-cell-color-hover-background;
         }
 
@@ -92,7 +92,7 @@ $cell-border-width: 1px;
             border-radius: 0;
         }
 
-        &:hover {
+        &:hover:not(:focus-within) {
             box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
             border-radius: 0;
         }
