@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-6b8c9b.json"
+            href="../../../search-data-e215c5.json"
             as="fetch"
             crossorigin
-            integrity="sha384-yImOaJTL36mDmrLdcvuFWySP8or1r6R4GC2k+4jNvLBlMeOqLcZxtsmb+Ymmr+5j"
+            integrity="sha384-Yljn1Ju20aEJrX3SQxfQHVqlVy+gFgV8jNRq6+sIOWBqeDIyXCf13J+3IrpVi8Ph"
             id="search-data"
         />
     </head>
@@ -1556,6 +1556,10 @@
                             </summary>
                             <ul>
                                 
+                                <li><a href="#lagga_till_en_rad">Lägga till en rad</a></li>
+                                
+                                <li><a href="#ta_bort_en_rad">Ta bort en rad</a></li>
+                                
                                 <li><a href="#relaterat">Relaterat</a></li>
                                 
                             </ul>
@@ -1564,8 +1568,211 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Sidan kommer uppdateras.</p>
-<h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell</a></p>
+                    <div id="content"><div
+                id="example-7ed41d"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-6a78f6"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableAddRemoveExample-6a78f6.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="code-preview__button code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref, useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { assertRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/logic&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FButton</span>,
+    <span class="hljs-title class_">FTable</span>,
+    defineTableColumns,
+    removeDatasetRows,
+    useDatasetRef,
+    useModal,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> tableRef = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
+<span class="hljs-keyword">const</span> { confirmModal } = <span class="hljs-title function_">useModal</span>();
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">namn</span>: string;
+    <span class="hljs-attr">land</span>: string;
+}
+
+<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Banan&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Columbia&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpple&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Päron&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Italien&quot;</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;namn&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;button&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärd&quot;</span>,
+        <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
+        <span class="hljs-title function_">text</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Ta bort&quot;</span>;
+        },
+        <span class="hljs-attr">onClick</span>: onRemoveRow,
+    },
+]);
+
+<span class="hljs-keyword">const</span> nextFruit = <span class="hljs-title function_">ref</span>(<span class="hljs-number">5</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onAddRow</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
+    rows.<span class="hljs-property">value</span>.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">`Frukt <span class="hljs-subst">${nextFruit.value++}</span>`</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Okänt&quot;</span>,
+    });
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveRow</span>(<span class="hljs-params">row: Row</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-keyword">void</span>&gt; {
+    <span class="hljs-title function_">assertRef</span>(tableRef);
+
+    <span class="hljs-keyword">const</span> confirmed = <span class="hljs-keyword">await</span> <span class="hljs-title function_">confirmModal</span>({
+        <span class="hljs-attr">heading</span>: <span class="hljs-string">&quot;Ta bort frukt&quot;</span>,
+        <span class="hljs-attr">content</span>: <span class="hljs-string">`Är du säker att du vill ta bort <span class="hljs-subst">${row.namn}</span>?`</span>,
+        <span class="hljs-attr">confirm</span>: <span class="hljs-string">&quot;Ja, ta bort&quot;</span>,
+        <span class="hljs-attr">dismiss</span>: <span class="hljs-string">&quot;Nej, behåll&quot;</span>,
+    });
+
+    <span class="hljs-keyword">if</span> (confirmed) {
+        tableRef.<span class="hljs-property">value</span>.<span class="hljs-title function_">withTabstopBehaviour</span>(<span class="hljs-string">&quot;row-removal&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-title function_">removeDatasetRows</span>(rows, row);
+        });
+    }
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span>Lägg till och ta bort rad i tabell<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> <span class="hljs-attr">data-test</span>=<span class="hljs-string">&quot;add-row-button&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onAddRow&quot;</span>&gt;</span>
+        Lägg till rad
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="lagga_till_en_rad" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lagga_till_en_rad">Lägga till en rad</a></h2><p class="docs-paragraph">Använd <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push"><code>Array.push()</code></a> eller motsvarande för att lägga till en ny rad i ditt befintliga dataset.</p>
+
+                <div
+                    id="example-a3fecc"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0">dataset.<span class="hljs-title function_">push</span>(newRow);
+</code></pre>
+                </div>
+            <h2 id="ta_bort_en_rad" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ta_bort_en_rad">Ta bort en rad</a></h2><p class="docs-paragraph">Använd metoden <code>withTabstopBehaviour</code> som tabellkomponenten exponerar för att fokus ska landa på prioriterad cell efter borttag.</p>
+<p class="docs-paragraph">Använd metoden <code>removeDatasetRows</code> för att smidigt ta bort en eller flera rader i din datamängd.
+Metoden muterar ditt befintliga dataset.</p>
+
+                <div
+                    id="example-ad5cf7"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;namn&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;button&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärd&quot;</span>,
+        <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
+        <span class="hljs-title function_">text</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Ta bort&quot;</span>;
+        },
+        <span class="hljs-attr">onClick</span>: onRemoveRow,
+    },
+]);
+
+<span class="hljs-keyword">const</span> tableRef = useTemplateRef&lt;<span class="hljs-title class_">FTableApi</span>&gt;(<span class="hljs-string">&quot;table&quot;</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveRow</span>(<span class="hljs-params"><span class="hljs-attr">row</span>: <span class="hljs-title class_">Row</span></span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-title function_">assertRef</span>(tableRef);
+
+    tableRef.<span class="hljs-property">value</span>.<span class="hljs-title function_">withTabstopBehaviour</span>(<span class="hljs-string">&quot;row-removal&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-title function_">removeDatasetRows</span>(rows, row);
+    });
+}
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-f3fa5f"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell</a></p>
 <p class="docs-paragraph"><a href="./create-delete-rows.html">Lägga till och ta bort rader i tabell</a></p>
 
 
@@ -1615,9 +1822,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/b658a8595533c6e96138701d4a25aab1b06a0ecb">b658a85</a>)<br />
+<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/dea3e4663ce41d05369984e663289e2903675fcf">dea3e46</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1163">PR 1163</a><br />
-        2026-06-01 09:38
+        2026-06-01 09:50
 </div>
 <div class="toolbar__item">
     <form id="version">
