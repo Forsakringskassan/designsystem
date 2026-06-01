@@ -1,12 +1,12 @@
 import { type VNode, ref } from "vue";
 import { h } from "vue";
-import { FTablePageObject } from "../../../cypress";
-import { useDatasetRef } from "../../../utils";
-import { FValidationForm } from "../../FValidationForm";
-import FTable from "../FTable.vue";
-import { defineTableColumns } from "../table-column";
-import FTableSortFilterExample from "./FTableSortFilterExample.vue";
-import FTableTabstopExample from "./FTableTabstopExample.vue";
+import { FTablePageObject } from "../../cypress";
+import { useDatasetRef } from "../../utils";
+import { FValidationForm } from "../FValidationForm";
+import FTable from "./FTable.vue";
+import { defineTableColumns } from "./table-column";
+import FTableSortFilterExample from "./tests/FTableSortFilterExample.vue";
+import FTableTabstopExample from "./tests/FTableTabstopExample.vue";
 
 const table = new FTablePageObject();
 
