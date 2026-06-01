@@ -21,7 +21,7 @@ export default defineComponent({
     <div class="row">
         <div class="col col--md-9">
             <f-text-field
-                id="combined-formatter-parser"
+                id="combined-formatter-example"
                 v-model="modelValue"
                 v-validation.maxLength="{ maxLength: { length: 20 } }"
                 :formatter="formatNumber"
