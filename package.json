@@ -95,7 +95,7 @@
     "@forsakringskassan/sass-module-importer": "3.0.0",
     "@forsakringskassan/stylelint-config": "3.4.2",
     "@forsakringskassan/vite-lib-config": "5.0.1",
-    "@html-validate/release-scripts": "7.2.3",
+    "@html-validate/release-scripts": "7.2.4",
     "@types/estree": "1.0.9",
     "@types/jest": "29.5.14",
     "@types/lodash": "4.17.24",
