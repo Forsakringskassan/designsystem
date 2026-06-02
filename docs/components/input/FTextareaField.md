@@ -19,11 +19,11 @@ Etikettens formatbeskrivning ska visa antalet tecken som användaren kan skriva 
 När antalet tecken begränsas ska det även sättas en gräns för när användaren ska få information om att max antal tecken snart är uppnått.
 Informationen visas genom att texten "Antal tecken kvar: nn" visas som en del av etiketten.
 Förslagsvis visas varningen när 80% av max antal tecken är uppnått.
-Skärmläsaranvändare får information om antal återstående uppläst för sig ('aria-live="polite"').
+Skärmläsaranvändare får information om antal återstående uppläst för sig med `aria-live="polite"`.
 
 När max antal tecken är uppnått går det inte att skriva in mer text.
 
-Använd attributen _maxlength_ som är den hårda gränsen och _soft-limit_ som är tröskelvärdet för när varningen ska visas.
+Använd attributen `maxlength` som är den hårda gränsen och `soft-limit` som är tröskelvärdet för när varningen ska visas.
 
 ```diff
  <f-textarea-field
@@ -32,7 +32,7 @@ Använd attributen _maxlength_ som är den hårda gränsen och _soft-limit_ som 
  >
 ```
 
-Du kan använda attributet _characters-left-warning_ för att använda en annan text i varningen.
+Du kan använda attributet `characters-left-warning` för att använda en annan text i varningen.
 För att interpolera in antalet tecken kvar i texten behöver strängen innehålla teckenföljden `%charactersLeft%` som kommer att ersättas med värdet.
 
 ```diff
@@ -43,13 +43,14 @@ För att interpolera in antalet tecken kvar i texten behöver strängen innehål
 
 ## Fältets höjd
 
-Tänk på att inmatningsfältets höjd, som anges i antal rader, påverkar användarens uppfattning om hur mycket text hen förväntas skriva.
+Inmatningsfältets höjd påverkar användarens uppfattning om hur mycket text hen förväntas skriva.
+Höjden kan vara fast, justerbar av användaren eller automatisk.
 
-Anpassa antalet rader som visas i inmatningsfältet utifrån bredden på fältet och antal tecken som användaren kan tänkas skriva.
-Det är sällan lämpligt att sätta antalet rader utifrån maximalt antal tillåtna tecken. Om inmatningsfältet visar många rader
-får användaren dålig överblick om inmatningsfältet är placerat i ett formulär eller tillsammans med annat innehåll.
+Fast höjd är standard. Anpassa antalet rader som visas i inmatningsfältet utifrån bredden på fältet och hur mycket text användaren kan tänkas skriva.
+Det är sällan lämpligt att sätta antalet rader utifrån maximalt antal tillåtna tecken. Om inmatningsfältet visar många rader får användaren dålig överblick om inmatningsfältet är placerat i ett formulär eller tillsammans med annat innehåll.
 
 Antalet rader sätts med attributet [`rows`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#rows).
+Fyra rader visas som standard om inget anges.
 
 ```diff
  <f-textarea-field
@@ -57,7 +58,46 @@ Antalet rader sätts med attributet [`rows`](https://developer.mozilla.org/en-US
  >
 ```
 
-Fyra rader visas som standard om inget anges.
+Använd `resizable` om användaren själv ska kunna ändra fältets höjd.
+
+```diff
+ <f-textarea-field
++    resizable
+ >
+```
+
+### Automatisk höjd
+
+Använd automatisk höjd när mängden text kan variera och fältet ska anpassa sig efter innehållet medan användaren skriver. Fältet utgår från antalet rader som visas från början och visar fler rader när innehållet behöver mer plats.
+
+Automatisk höjd aktiveras med attributet `auto-resize`.
+
+```diff
+ <f-textarea-field
++    auto-resize
+ >
+```
+
+Med `auto-resize` visas fyra rader som standard, precis som vid fast höjd. Använd `rows` för att ange ett annat minsta antal rader.
+
+```diff
+ <f-textarea-field
++    auto-resize
++    rows="3"
+ >
+```
+
+Använd `max-rows` för att begränsa hur många rader fältet får visa. När innehållet inte längre får plats inom maxgränsen får fältet intern scroll.
+`rows` anger alltid minsta antal rader, även om `max-rows` skulle vara lägre.
+
+```diff
+ <f-textarea-field
++    auto-resize
++    :max-rows="6"
+ >
+```
+
+Kombinera inte `auto-resize` och `resizable`. Om båda anges används automatisk höjd.
 
 ## API
 
