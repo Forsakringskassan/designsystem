@@ -2651,7 +2651,7 @@ describe("13 Cell interaction states", () => {
         });
     }
 
-    it("should not render hover background on editable cell whilte editing (visual)", () => {
+    it("should not render hover background on editable cell while editing (visual)", () => {
         cy.forcedColors("none");
 
         cy.mount(() =>
@@ -2660,7 +2660,7 @@ describe("13 Cell interaction states", () => {
                 { rows: rows.value, columns },
                 {
                     caption:
-                        "Verifierar att redigerbar cell inte visar hoverbakgrund i redigerinsläge",
+                        "Verifierar att redigerbar cell inte visar hoverbakgrund i redigeringsläge",
                 },
             ),
         );

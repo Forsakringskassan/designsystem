@@ -71,7 +71,7 @@ $cell-border-width: 1px;
     &--text {
         padding: 0;
 
-        &:hover:not(:focus-within) {
+        &:hover {
             background: $table-ng-cell-color-hover-background;
         }
 
@@ -84,12 +84,17 @@ $cell-border-width: 1px;
         }
     }
 
+    &--text:hover:has(.table-ng__textedit:focus) {
+        background: transparent;
+    }
+
     .table-ng__editable {
         min-block-size: $editable-min-height;
 
         &:focus-within {
             box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
             border-radius: 0;
+            background: transparent;
         }
 
         &:hover:not(:focus-within) {
@@ -248,6 +253,10 @@ $cell-border-width: 1px;
         .table-ng__editable:hover {
             background: transparent;
         }
+    }
+
+    &--select:hover:has([role="combobox"][aria-expanded="true"]) {
+        background: transparent;
     }
 }
 
