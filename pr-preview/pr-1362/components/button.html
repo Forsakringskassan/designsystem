@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Knapp - FK Designsystem</title><link
             rel="stylesheet"
-            href="../assets/docs-674fd8.css"
+            href="../assets/docs-c51642.css"
             crossorigin
-            integrity="sha384-2VKMHscMKp818dvpyHNOQDT2UnrnfypQaLdGr2KwriGvwLC3+yTOas67/D+D8MET"
+            integrity="sha384-6z/feAWai/MU7uOPo8e8pEHRm/YocesgUfe5Q2xOhgJHzhrpBMIIcXaJnIviCHZl"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../assets/vendor-fkui-logic-ba1b7a.js",
     "@fkui/date": "../assets/vendor-fkui-date-692a76.js",
-    "@fkui/vue": "../assets/vendor-fkui-vue-1f128b.js",
+    "@fkui/vue": "../assets/vendor-fkui-vue-0ffb9a.js",
     "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../assets/vendor-fkui-logic-ba1b7a.js": "sha384-vzXbs4dDmB5nxB2+/l+eL2n8Ju06KOu7bG1nKtIrQdfxi9EWMrLsxjKsSwK0PauJ",
     "../assets/vendor-fkui-date-692a76.js": "sha384-MwbLPk6deCTFOhc1JjO7SwACbk5fiURa0P++wkNh8qT5ckXSJVAIS1wp08u5D8AS",
-    "../assets/vendor-fkui-vue-1f128b.js": "sha384-pZUdEMf/E5QlcDhNomBAWzOVN/UBfbuh9wtsScFxOwmPiSKTxj1VTl2u94/awpy3",
+    "../assets/vendor-fkui-vue-0ffb9a.js": "sha384-II8KkESSw6PbXLD0WcEanyfNfY4JBg8M96UB6RwXBQNdb3vwJjHBoEyFvGyKBeWJ",
     "../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../search-data-9d357e.json"
+            href="../search-data-353d5f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-FzacU1Ku5dEGGvga9YhiV2RJ8WQR+M3hIXjrgw9L+9hENR5itJej2mUS/mJZft8p"
+            integrity="sha384-5bXzYc9HWgaqLD3SPDnBng4C9P0+E+aRtu4d2YiE5+/IHCJ1eouf6vimtnRHkDWz"
             id="search-data"
         />
     </head>
@@ -1550,7 +1550,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/a198e3418617172c997885fed9b7f3f8d766253d/packages/vue/src/components/FButton/FButton.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ca020298fd105eb6329a6cdd2e5490b8036030dd/packages/vue/src/components/FButton/FButton.vue">
                 FButton
             </a>
             
@@ -1623,13 +1623,13 @@ En knapp har en text och kan kompletteras med en ikon.</p>
                     data-language="vue"
                 >
                     
-        <div id="example-cdd7b5"></div>
+        <div id="example-0c824d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FButtonLiveExample-cdd7b5.js"></script>
+        <script type="module" src="./FButtonLiveExample-0c824d.js"></script>
     
                 </div>
             <h2 id="primar_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#primar_knapp">Primär knapp</a></h2><p class="docs-paragraph">Använd primär knapp för det primära och det mest troliga alternativet för användaren.
@@ -1668,10 +1668,10 @@ Knapptexten är understruken om en tertiär knapp används utan en ikon.</p>
 <span class="hljs-addition">+&lt;f-button variant=&quot;tertiary&quot;&gt; Knapptext &lt;/f-button&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Svart tertiär knapp används för funktioner som inte har att göra med det huvudsakliga flödet eller innehållet på en sida, tex Skriv ut.</p>
+            <p class="docs-paragraph">Nedtonad tertiär knapp används för funktioner som inte har att göra med det huvudsakliga flödet eller innehållet på en sida, till exempel &quot;Skriv ut&quot;.</p>
 
                 <div
-                    id="example-8be1a5"
+                    id="example-ab24a2"
                     class="code-preview code-preview--default"
                     
                     
@@ -1679,7 +1679,7 @@ Knapptexten är understruken om en tertiär knapp används utan en ikon.</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-button variant=&quot;tertiary&quot;&gt; Knapptext &lt;/f-button&gt;</span>
-<span class="hljs-addition">+&lt;f-button variant=&quot;tertiary&quot; tertiary-style=&quot;black&quot;&gt; Knapptext &lt;/f-button&gt;</span>
+<span class="hljs-addition">+&lt;f-button variant=&quot;tertiary&quot; tertiary-style=&quot;muted&quot;&gt; Knapptext &lt;/f-button&gt;</span>
 </code></pre>
                 </div>
             <p class="docs-paragraph">Inverterad tertiär knapp används för att få en bättre kontrast mot en mörk bakgrund.</p>
@@ -2183,7 +2183,7 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
                                 ><a class="docs-api__anchor" href="#fbutton-prop-tertiarystyle"
                                     ><span class="docs-api__name"
                                         >tertiaryStyle</span
-                                    >: &quot;standard&quot; | &quot;black&quot; | &quot;inverted&quot;</a
+                                    >: &quot;standard&quot; | &quot;muted&quot; | &quot;black&quot; | &quot;inverted&quot;</a
                                 ></code
                             >
                             <span class="docs-tag docs-tag--default">Optional</span>
@@ -2194,7 +2194,7 @@ Men när vi uppdaterar en applikation ska följande ändringar göras:</p>
 Can be one of:</p>
 <ul>
 <li><code>standard</code></li>
-<li><code>black</code></li>
+<li><code>muted</code></li>
 <li><code>inverted</code></li>
 </ul>
 
@@ -2357,9 +2357,9 @@ Used in conjunction with button variant <code>tertiary</code>.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs/SFKUI-7885-sort-filter-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/a198e3418617172c997885fed9b7f3f8d766253d">a198e34</a>)<br />
+<div class="footer__right"><div class="version">docs/SFKUI-7885-sort-filter-docs (<a href="https://github.com/Forsakringskassan/designsystem/commits/ca020298fd105eb6329a6cdd2e5490b8036030dd">ca02029</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1362">PR 1362</a><br />
-        2026-06-02 07:37
+        2026-06-02 07:59
 </div>
 <div class="toolbar__item">
     <form id="version">
