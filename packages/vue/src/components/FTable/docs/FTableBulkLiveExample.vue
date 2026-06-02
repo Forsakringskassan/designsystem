@@ -17,24 +17,24 @@ import {
 interface Row {
     namn: string;
     land: string;
+    pris: string;
 }
 
 const data: Row[] = [
     {
         namn: "Apelsin",
         land: "Spanien",
+        pris: "30",
     },
     {
         namn: "Banan",
-        land: "Columbia",
+        land: "Ecuador",
+        pris: "15",
     },
     {
         namn: "Äpple",
         land: "Sverige",
-    },
-    {
-        namn: "Päron",
-        land: "Italien",
+        pris: "22",
     },
 ];
 
@@ -48,6 +48,11 @@ const columns = defineTableColumns<Row>([
         type: "text",
         header: "Land",
         key: "land",
+    },
+    {
+        type: "text:currency",
+        header: "Pris per kilo",
+        key: "pris",
     },
 ]);
 
