@@ -4,6 +4,8 @@ import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     frukt: string;
+    land: string;
+    pris: string;
 }
 
 const columns = defineTableColumns<Row>([
@@ -12,15 +14,22 @@ const columns = defineTableColumns<Row>([
         header: "Frukt",
         key: "frukt",
     },
+    {
+        type: "text",
+        header: "Land",
+        key: "land",
+    },
+    {
+        type: "text:currency",
+        header: "Pris per kilo",
+        key: "pris",
+    },
 ]);
 
 const rows = useDatasetRef<Row>([
-    { frukt: "Druva" },
-    { frukt: "Banan" },
-    { frukt: "Granatapple" },
-    { frukt: "Citron" },
-    { frukt: "Apelsin" },
-    { frukt: "Fikon" },
+    { frukt: "Apelsin", land: "Spanien", pris: "30" },
+    { frukt: "Banan", land: "Ecuador", pris: "15" },
+    { frukt: "Äpple", land: "Sverige", pris: "22" },
 ]);
 
 const sortableAttributes = { frukt: "Text" };
