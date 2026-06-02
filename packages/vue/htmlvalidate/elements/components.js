@@ -143,7 +143,7 @@ module.exports = defineMetadata({
                 allowed: allowedIfAttributeHasValue("variant", ["tertiary"], {
                     defaultValue: "primary",
                 }),
-                enum: ["standard", "black", "inverted"],
+                enum: ["standard", "muted", "black", "inverted"],
             },
             "align-text": {
                 boolean: true,

@@ -101,7 +101,7 @@ export default defineComponent({
                             ref="close-button"
                             icon-right="chevrons-left"
                             size="small"
-                            tertiary-style="black"
+                            tertiary-style="muted"
                             variant="tertiary"
                             @click="toggleSideNavigation"
                         >
@@ -127,7 +127,7 @@ export default defineComponent({
                     <f-button
                         ref="open-button"
                         icon-right="bars"
-                        tertiary-style="black"
+                        tertiary-style="muted"
                         variant="tertiary"
                         @click="toggleSideNavigation"
                     >
