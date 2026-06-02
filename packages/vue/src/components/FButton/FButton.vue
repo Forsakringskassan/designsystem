@@ -62,14 +62,14 @@ const props = defineProps({
      * Tertiary button style, used in conjunction with button variant `tertiary`.
      * Can be one of:
      * - `standard`
-     * - `black`
+     * - `muted`
      * - `inverted`
      */
     tertiaryStyle: {
-        type: String as PropType<"standard" | "black" | "inverted">,
+        type: String as PropType<"standard" | "muted" | "black" | "inverted">,
         default: "standard",
         validator(value: string) {
-            return ["standard", "black", "inverted"].includes(value);
+            return ["standard", "muted", "black", "inverted"].includes(value);
         },
     },
 

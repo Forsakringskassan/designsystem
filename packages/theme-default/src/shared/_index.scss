@@ -24,7 +24,7 @@
     // BACKGROUND COLORS
     // *****************
     --f-background-overlay: rgba(0, 0, 0, 0.75); // modal, loader
-    --f-background-sidepanel-button-tertiary-hover: #{$palette-color-bluebell-15}; //  FLeftPanel and FRightPanel
+    --f-background-sidepanel-button-tertiary-hover: var(--fkds-color-action-background-secondary-hover); //  FLeftPanel and FRightPanel
 
     // *******************
     // COLOR VARIABLES END
@@ -95,9 +95,10 @@
     --padding-input-fields: 0 2.25rem 0 0.75rem;
 
     /// Focus related
-    $_f-color-focus: $palette-color-fk-black-100;
-    --f-color-focus: #{$_f-color-focus};
-    --f-focus-box-shadow: 0 0 0 2px #{$palette-color-white-100}, 0 0 0 4px #{$_f-color-focus}, 0 0 0 6px #{$palette-color-white-100};
+    --f-color-focus: var(--fkds-focus-indicator-color);
+    --f-focus-box-shadow:
+        0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color),
+        0 0 0 6px var(--fkds-focus-indicator-color-background);
 
     // Effect related variables
     --f-animation-duration-short: 150ms;

@@ -107,7 +107,7 @@ export default defineComponent({
         <f-select-field v-if="isTertiary" v-model="tertiaryStyle">
             <template #label> Färg </template>
             <option :value="undefined">Standard</option>
-            <option value="black">Svart</option>
+            <option value="muted">Nedtonad</option>
             <option value="inverted">Inverterad</option>
         </f-select-field>
         <f-checkbox-field v-model="disabled" :value="true"> Inaktiv </f-checkbox-field>

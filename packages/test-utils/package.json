@@ -70,13 +70,13 @@
   },
   "devDependencies": {
     "@forsakringskassan/vitest-config-jsdom": "2.2.9",
-    "@vue/server-renderer": "3.5.34",
+    "@vue/server-renderer": "3.5.35",
     "@vue/test-utils": "2.4.10",
     "esbuild": "0.28.0",
     "expect": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "vitest": "4.1.7",
-    "vue": "3.5.34"
+    "vue": "3.5.35"
   },
   "peerDependencies": {
     "jest": "^26.0.0 || ^27.0.0 || ^28.0.0 || ^29.0.0 || ^30.0.0",

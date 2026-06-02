@@ -1,5 +1,6 @@
 const buttongroup = require("./buttongroup.rule");
 const classdeprecated = require("./classdeprecated.rule");
+const FButtonTertiaryBlackDeprecated = require("./fbutton-tertiary-black-deprecated.rule");
 const FInteractiveTableSelectableDescription = require("./finteractivetable-selectable-description.rule");
 const FTableColumnName = require("./ftablecolumn-name.rule");
 const ftextfieldFormatterValidation = require("./ftextfield-formatter-validation.rule");
@@ -19,4 +20,5 @@ module.exports = {
     "fkui/no-template-modal": NoTemplateModal,
     "fkui/ftablecolumn-name": FTableColumnName,
     "fkui/slot-deprecated": slotdeprecated,
+    "fkui/fbutton-tertiary-black-deprecated": FButtonTertiaryBlackDeprecated,
 };

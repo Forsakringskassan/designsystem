@@ -103,4 +103,8 @@
 
     // HEADER - TEXT
     --fkds-color-header-text-primary: #{$palette-color-white-100};
+
+    // FOCUS INDICATOR
+    --fkds-focus-indicator-color: #{$palette-color-white-100};
+    --fkds-focus-indicator-color-background: #{$palette-color-fk-black-100};
 }
