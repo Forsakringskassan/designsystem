@@ -13,26 +13,30 @@ const data: Row[] = [
     {
         namn: "Apelsin",
         land: "Spanien",
+        nested: [
+            {
+                namn: "Apelsiner importeras främst från Medelhavsområdet",
+                land: "",
+            },
+        ],
     },
     {
         namn: "Banan",
-        land: "Columbia",
+        land: "Equador",
+        nested: [
+            {
+                namn: "Bananer importeras främst från tropiska länder i Latinamerika, Afrika och Asien",
+                land: "",
+            },
+        ],
     },
     {
         namn: "Äpple",
-        land: "",
+        land: "Sverige",
         nested: [
             {
-                namn: "Aroma",
-                land: "Sverige",
-            },
-            {
-                namn: "Ingrid Marie",
-                land: "Sverige",
-            },
-            {
-                namn: "Pink Lady",
-                land: "Italien",
+                namn: "Äpplen odlas i stor skala i tempererade klimat, bland annat i Sverige, Polen och Kina",
+                land: "",
             },
         ],
     },

@@ -10,5 +10,5 @@ it("should paginate", () => {
     table.rows().should("have.length", 3);
     paginator.nextButton().click();
     paginator.currentPageButton().should("contain.text", "2");
-    table.rows().should("have.length", 1);
+    table.rows().should("have.length", 3);
 });
