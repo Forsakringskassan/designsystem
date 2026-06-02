@@ -93,11 +93,91 @@ describe("FTextareaField", () => {
         berattelseTextareaField.tooltip.iButton().click();
     });
 
+    describe("autoResize", () => {
+        it("should grow and shrink with content in the browser", () => {
+            const template = /* HTML */ `
+                <f-textarea-field
+                    id="auto-resize"
+                    v-model="about"
+                    auto-resize
+                    rows="1"
+                >
+                    Berätta om dig själv
+                </f-textarea-field>
+            `;
+            let initialHeight = 0;
+            let expandedHeight = 0;
+
+            cy.mount(createComponent(template));
+            cy.get("textarea")
+                .should("have.attr", "rows", "1")
+                .should(($textarea) => {
+                    const textarea = $textarea[0] as HTMLTextAreaElement;
+                    initialHeight = textarea.getBoundingClientRect().height;
+
+                    expect(initialHeight).to.be.greaterThan(0);
+                });
+            cy.get("textarea").type(
+                ["Rad 1", "Rad 2", "Rad 3", "Rad 4"].join("{enter}"),
+            );
+            cy.get("textarea").should(($textarea) => {
+                const textarea = $textarea[0] as HTMLTextAreaElement;
+                expandedHeight = textarea.getBoundingClientRect().height;
+
+                expect(expandedHeight).to.be.greaterThan(initialHeight + 20);
+                expect(
+                    getComputedStyle(textarea).getPropertyValue("field-sizing"),
+                ).to.equal("content");
+            });
+            cy.get("textarea").should("have.focus");
+            cy.get("textarea").clear();
+            cy.get("textarea").should(($textarea) => {
+                const textarea = $textarea[0] as HTMLTextAreaElement;
+
+                expect(textarea.getBoundingClientRect().height).to.be.lessThan(
+                    expandedHeight,
+                );
+            });
+        });
+
+        it("should limit height when maxRows is used", () => {
+            const template = /* HTML */ `
+                <f-textarea-field
+                    id="auto-resize-max-rows"
+                    v-model="about"
+                    auto-resize
+                    rows="1"
+                    :max-rows="3"
+                >
+                    Berätta om dig själv
+                </f-textarea-field>
+            `;
+
+            cy.mount(createComponent(template));
+            cy.get("textarea").type(
+                ["Rad 1", "Rad 2", "Rad 3", "Rad 4", "Rad 5"].join("{enter}"),
+            );
+            cy.get("textarea").should(($textarea) => {
+                const textarea = $textarea[0] as HTMLTextAreaElement;
+                const style = getComputedStyle(textarea);
+                const height = textarea.getBoundingClientRect().height;
+                const maxHeight = Number.parseFloat(style.maxHeight);
+
+                expect(style.getPropertyValue("field-sizing")).to.equal(
+                    "content",
+                );
+                expect(style.overflowY).to.equal("auto");
+                expect(maxHeight).to.be.greaterThan(0);
+                expect(height).to.be.at.most(maxHeight + 1);
+            });
+        });
+    });
+
     describe("density", () => {
         const DensityComponent = defineComponent({
             template: /* HTML */ `
                 <density-wrapper>
-                    <f-textarea-field v-model="textAreaField" maxlength="100">
+                    <f-textarea-field v-model="textAreaField" :maxlength="100">
                         Flerradigt inmatningsfält
                     </f-textarea-field>
                 </density-wrapper>
