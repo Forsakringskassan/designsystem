@@ -3,7 +3,13 @@
 @use "../../core/utils/functions" as *;
 @use "variables" as *;
 
+$textarea-padding-y: core.densify(size.$padding-050);
+$textarea-content-box-offset-y: calc((2 * #{$textarea-padding-y}) + (2 * var(--f-border-width-medium)));
+
 .textarea-field {
+    --i-textarea-field-min-height: 4lh;
+    --i-textarea-field-max-height: 4lh;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -25,7 +31,7 @@
         box-sizing: border-box;
         font-size: var(--f-font-size-standard);
         min-height: core.densify(var(--f-height-large));
-        padding: core.densify(size.$padding-050) size.$padding-075;
+        padding: $textarea-padding-y size.$padding-075;
         width: var(--f-width-full);
     }
 
@@ -47,6 +53,23 @@
 
     &__resize--none {
         resize: none;
+    }
+
+    &__resize--auto {
+        min-height: calc(var(--i-textarea-field-min-height) + #{$textarea-content-box-offset-y});
+        resize: vertical;
+    }
+
+    @supports (field-sizing: content) {
+        &__resize--auto {
+            field-sizing: content;
+            resize: none;
+        }
+    }
+
+    &__resize--max-rows {
+        max-height: calc(var(--i-textarea-field-max-height) + #{$textarea-content-box-offset-y});
+        overflow-y: auto;
     }
 
     &__resize--vertical {
