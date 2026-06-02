@@ -983,6 +983,13 @@ module.exports = defineMetadata({
             "soft-limit": ["/^\\d+$/"],
             maxlength: ["/^\\d+$/"],
             "characters-left-warning": ["/.*/"],
+            "auto-resize": {
+                boolean: true,
+            },
+            "max-rows": ["/^[1-9]\\d*$/"],
+            resizable: {
+                boolean: true,
+            },
             disabled: {
                 boolean: true,
                 required: false,
