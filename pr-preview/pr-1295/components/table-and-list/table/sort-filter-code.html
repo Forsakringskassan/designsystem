@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Sortera och filtrera i tabell (kod) - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-ce4d54.css"
+            href="../../../assets/docs-aada16.css"
             crossorigin
-            integrity="sha384-2old3h5Q4A3Lb11o5J/ucfL6N3sh+e88KTkuGLjZTqvX5yIVltFG98SoAnPqe3PO"
+            integrity="sha384-rCJHsruAn+gCbFADFR2DqM3nG6k1r4Jkhz7fMOTrRm4Ln6o3KnwsJdCNLeU/YM0c"
             
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-fkui-892a83.css"
+            href="../../../assets/docs-fkui-23d9a9.css"
             crossorigin
-            integrity="sha384-U4kQJ4BT9gXdFpq/dShsTKKqvnwz39L3vO/Olnrj0K0q2vJl0vsx/ZagJbIq/+3P"
+            integrity="sha384-hIYtj13fnRdMeAXPqUKRv9JgLb2xWFfiBOPM/Sw7KnCxkZgjAQ/G+ksfvG9m6BIX"
             
         />
 
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-ba1b7a.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-692a76.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-a2df32.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-c92c5f.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../../assets/vendor-fkui-logic-ba1b7a.js": "sha384-vzXbs4dDmB5nxB2+/l+eL2n8Ju06KOu7bG1nKtIrQdfxi9EWMrLsxjKsSwK0PauJ",
     "../../../assets/vendor-fkui-date-692a76.js": "sha384-MwbLPk6deCTFOhc1JjO7SwACbk5fiURa0P++wkNh8qT5ckXSJVAIS1wp08u5D8AS",
-    "../../../assets/vendor-fkui-vue-a2df32.js": "sha384-5N/92+baUMaChwcPf4QiHs1mFvn7kWQ4LX4nGXA/KauIIy4fa4jUKhboYRX1bfkV",
+    "../../../assets/vendor-fkui-vue-c92c5f.js": "sha384-bJwLroZ0M9Py01lmjbnjpWzGc1tRUAkLQyt5/qlKWY4RP4v6iaJ1SIR1g6+amxVX",
     "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-2e16fa.json"
+            href="../../../search-data-340479.json"
             as="fetch"
             crossorigin
-            integrity="sha384-mjR66yfGNKS00psQO4m94ant9BFU30b9EhZdYGgyjlXyddnPjnm2LC92S/vHTt8O"
+            integrity="sha384-cTKrHro52YrvAkoiZoTpU5vfVmRkwZ2ApC5cb+DHdblKojQXUlMzZ8NSbGoKxIpr"
             id="search-data"
         />
     </head>
@@ -1556,6 +1556,8 @@
                             </summary>
                             <ul>
                                 
+                                <li><a href="#sortering_och_filtrering">Sortering och filtrering</a></li>
+                                
                                 <li><a href="#relaterat">Relaterat</a></li>
                                 
                             </ul>
@@ -1564,9 +1566,125 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Sidan kommer uppdateras.</p>
-<h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell</a></p>
-<p class="docs-paragraph"><a href="./sort-filter-code.html">Sortera och filtrera i tabell</a></p>
+                    <div id="content"><div
+                id="example-9820d3"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-5f9d0c"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableBasicSortFilterExample-5f9d0c.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="code-preview__button code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span>, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">frukt</span>: string;
+    <span class="hljs-attr">land</span>: string;
+    <span class="hljs-attr">pris</span>: string;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;frukt&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;([
+    { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;30&quot;</span> },
+    { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Banan&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Ecuador&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;15&quot;</span> },
+    { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Äpple&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;22&quot;</span> },
+]);
+
+<span class="hljs-keyword">const</span> sortableAttributes = { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Text&quot;</span> };
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:sortable-attributes</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span> <span class="hljs-attr">:columns</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="sortering_och_filtrering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sortering_och_filtrering">Sortering och filtrering</a></h2><p class="docs-paragraph">När tabellen används tillsammans med <code>FSortFilterDataset</code> skickar du resultatet från sortering och filtrering vidare till tabellen.</p>
+
+                <div
+                    id="example-5b1bc9"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> sortableAttributes = {
+    <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Text&quot;</span>,
+};
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-ef52a7"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:sortable-attributes</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span> <span class="hljs-attr">:columns</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph"><code>sortFilterResult</code> innehåller de rader som ska visas efter sortering och filtrering.</p>
+<h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell.</a></p>
+<p class="docs-paragraph"><a href="./sort-filter.html">Sortera och filtrera i tabell.</a></p>
+<p class="docs-paragraph"><a href="../fsortfilterdataset.html">Läs mer om datamängdsorteraren.</a></p>
 
 
                     </div>
@@ -1615,9 +1733,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">test/table-example-dep (<a href="https://github.com/Forsakringskassan/designsystem/commits/43685c8d378a1bd1be092ced330c6a96c1534508">43685c8</a>)<br />
+<div class="footer__right"><div class="version">test/table-example-dep (<a href="https://github.com/Forsakringskassan/designsystem/commits/f3cedeb7291ee0e3adaf27866af5e98fa2450318">f3cedeb</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1295">PR 1295</a><br />
-        2026-06-01 08:28
+        2026-06-02 09:36
 </div>
 <div class="toolbar__item">
     <form id="version">
