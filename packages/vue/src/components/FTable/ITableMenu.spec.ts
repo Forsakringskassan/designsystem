@@ -1,4 +1,5 @@
 import { mount, shallowMount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import ITableMenu from "./ITableMenu.vue";
 import { normalizeTableColumn } from "./table-column";
 

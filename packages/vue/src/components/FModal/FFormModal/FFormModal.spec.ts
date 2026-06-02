@@ -1,8 +1,9 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../../plugins";
 import { FTextField } from "../../FTextField";
 import FModal from "../FModal.vue";
@@ -68,13 +69,21 @@ async function doTriggerSubmit(wrapper: VueWrapper): Promise<void> {
     await formElement.trigger("submit");
     await wrapper.vm.$nextTick();
     await flushPromises();
-    await wrapper.vm.$nextTick();
+    vi.runAllTimers();
     await flushPromises();
-    await wrapper.vm.$nextTick();
+    vi.runAllTimers();
     await flushPromises();
 }
 
 describe("events", () => {
+    beforeEach(() => {
+        vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+        vi.useRealTimers();
+    });
+
     it('should send "cancel" and "close" event on close button clicked', async () => {
         const wrapper = mount(FFormModal, {
             props: {
@@ -112,7 +121,7 @@ describe("events", () => {
     });
 
     it('should call "beforeSubmit" when it is provided and submit button clicked', async () => {
-        const beforeSubmit = jest.fn();
+        const beforeSubmit = vi.fn();
         const wrapper = mount(FFormModal, {
             props: {
                 isOpen: true,
@@ -328,7 +337,7 @@ describe("props", () => {
 
         const button = wrapper.get(".button--secondary");
         const nbsp = "\u00a0";
-        expect(button.text()).toBe(`Lorem ipsum${nbsp}with screenreader text`);
+        expect(button.text()).toBe(`Lorem ipsum ${nbsp}with screenreader text`);
     });
 
     it("should not append extra space if no screenreader text is given", () => {

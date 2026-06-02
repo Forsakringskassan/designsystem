@@ -1,7 +1,8 @@
 import { VueWrapper, mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import FBadge from "./FBadge.vue";
 import { statuses } from "./statuses";
-import "html-validate/jest";
+import "html-validate/vitest";
 
 function createWrapper({ props = {}, attrs = {} } = {}): VueWrapper {
     return mount(FBadge, {

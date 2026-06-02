@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from "vitest";
 import { MenuAction } from "../../types";
 import { type MenuItem } from "./menu-item";
 import {
@@ -54,8 +55,8 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
     it("should move focus to first item", async () => {
         const target: MenuActionTarget = {
             items: testItems,
-            setFocusOnItem: jest.fn().mockResolvedValue(undefined),
-            activateItem: jest.fn().mockResolvedValue(undefined),
+            setFocusOnItem: vi.fn().mockResolvedValue(undefined),
+            activateItem: vi.fn().mockResolvedValue(undefined),
         };
         // move to first item
         await doMenuAction(MenuAction.MOVE_FIRST, target, 1, 2);
@@ -65,8 +66,8 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
     it("should activate the current item", async () => {
         const target: MenuActionTarget = {
             items: testItems,
-            setFocusOnItem: jest.fn().mockResolvedValue(undefined),
-            activateItem: jest.fn().mockResolvedValue(undefined),
+            setFocusOnItem: vi.fn().mockResolvedValue(undefined),
+            activateItem: vi.fn().mockResolvedValue(undefined),
         };
         // activate current item
         await doMenuAction(MenuAction.ACTIVATE, target, 1, 2);

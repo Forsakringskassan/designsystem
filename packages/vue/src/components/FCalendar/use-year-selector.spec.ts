@@ -1,13 +1,14 @@
 import { shallowRef } from "vue";
 import { FDate, FYear } from "@fkui/date";
+import { describe, expect, it, vi } from "vitest";
 import { onKeyDown, useYearSelector } from "./use-year-selector";
 
 describe("keyboard navigation", () => {
     it("arrow down should move to next year", async () => {
         expect.assertions(3);
-        const focus = jest.fn();
-        const close = jest.fn();
-        const select = jest.fn();
+        const focus = vi.fn();
+        const close = vi.fn();
+        const select = vi.fn();
 
         /* given: current active year is 2024 and the available years are 2022-2026 */
         const activeYear = shallowRef(FYear.fromYear(2024));
@@ -16,7 +17,7 @@ describe("keyboard navigation", () => {
 
         /* when: down arrow is pressed */
         const event = new KeyboardEvent("keydown", { key: "ArrowDown" });
-        const preventDefault = jest.spyOn(event, "preventDefault");
+        const preventDefault = vi.spyOn(event, "preventDefault");
         onKeyDown(event, {
             activeYear,
             firstYear,
@@ -35,9 +36,9 @@ describe("keyboard navigation", () => {
 
     it("arrow down should move to first year when last year is active", async () => {
         expect.assertions(3);
-        const focus = jest.fn();
-        const close = jest.fn();
-        const select = jest.fn();
+        const focus = vi.fn();
+        const close = vi.fn();
+        const select = vi.fn();
 
         /* given: current active year is 2026 and the available years are 2022-2026 */
         const activeYear = shallowRef(FYear.fromYear(2026));
@@ -46,7 +47,7 @@ describe("keyboard navigation", () => {
 
         /* when: down arrow is pressed */
         const event = new KeyboardEvent("keydown", { key: "ArrowDown" });
-        const preventDefault = jest.spyOn(event, "preventDefault");
+        const preventDefault = vi.spyOn(event, "preventDefault");
         onKeyDown(event, {
             activeYear,
             firstYear,
@@ -65,9 +66,9 @@ describe("keyboard navigation", () => {
 
     it("arrow up should move to previous year", async () => {
         expect.assertions(3);
-        const focus = jest.fn();
-        const close = jest.fn();
-        const select = jest.fn();
+        const focus = vi.fn();
+        const close = vi.fn();
+        const select = vi.fn();
 
         /* given: current active year is 2024 and the available years are 2022-2026 */
         const activeYear = shallowRef(FYear.fromYear(2024));
@@ -76,7 +77,7 @@ describe("keyboard navigation", () => {
 
         /* when: up arrow is pressed */
         const event = new KeyboardEvent("keydown", { key: "ArrowUp" });
-        const preventDefault = jest.spyOn(event, "preventDefault");
+        const preventDefault = vi.spyOn(event, "preventDefault");
         onKeyDown(event, {
             activeYear,
             firstYear,
@@ -95,9 +96,9 @@ describe("keyboard navigation", () => {
 
     it("arrow up should move to last year when first year is active", async () => {
         expect.assertions(3);
-        const focus = jest.fn();
-        const close = jest.fn();
-        const select = jest.fn();
+        const focus = vi.fn();
+        const close = vi.fn();
+        const select = vi.fn();
 
         /* given: current active year is 2022 and the available years are 2022-2026 */
         const activeYear = shallowRef(FYear.fromYear(2022));
@@ -106,7 +107,7 @@ describe("keyboard navigation", () => {
 
         /* when: down arrow is pressed */
         const event = new KeyboardEvent("keydown", { key: "ArrowUp" });
-        const preventDefault = jest.spyOn(event, "preventDefault");
+        const preventDefault = vi.spyOn(event, "preventDefault");
         onKeyDown(event, {
             activeYear,
             firstYear,
@@ -125,9 +126,9 @@ describe("keyboard navigation", () => {
 
     it("enter should select current year and close year selector", async () => {
         expect.assertions(4);
-        const focus = jest.fn();
-        const close = jest.fn();
-        const select = jest.fn();
+        const focus = vi.fn();
+        const close = vi.fn();
+        const select = vi.fn();
 
         /* given: current active year is 2024 and the available years are 2022-2026 */
         const activeYear = shallowRef(FYear.fromYear(2024));
@@ -136,7 +137,7 @@ describe("keyboard navigation", () => {
 
         /* when: enter key is pressed */
         const event = new KeyboardEvent("keydown", { key: "Enter" });
-        const preventDefault = jest.spyOn(event, "preventDefault");
+        const preventDefault = vi.spyOn(event, "preventDefault");
         onKeyDown(event, {
             activeYear,
             firstYear,
@@ -156,9 +157,9 @@ describe("keyboard navigation", () => {
 
     it("should ignore keys when ctrl key is used", async () => {
         expect.assertions(5);
-        const focus = jest.fn();
-        const close = jest.fn();
-        const select = jest.fn();
+        const focus = vi.fn();
+        const close = vi.fn();
+        const select = vi.fn();
 
         /* given: current active year is 2026 and the available years are 2022-2026 */
         const activeYear = shallowRef(FYear.fromYear(2024));
@@ -170,7 +171,7 @@ describe("keyboard navigation", () => {
             ctrlKey: true,
             key: "ArrowDown",
         });
-        const preventDefault = jest.spyOn(event, "preventDefault");
+        const preventDefault = vi.spyOn(event, "preventDefault");
         onKeyDown(event, {
             activeYear,
             firstYear,
@@ -191,9 +192,9 @@ describe("keyboard navigation", () => {
 
     it("should ignore other keys", async () => {
         expect.assertions(5);
-        const focus = jest.fn();
-        const close = jest.fn();
-        const select = jest.fn();
+        const focus = vi.fn();
+        const close = vi.fn();
+        const select = vi.fn();
 
         /* given: current active year is 2026 and the available years are 2022-2026 */
         const activeYear = shallowRef(FYear.fromYear(2024));
@@ -202,7 +203,7 @@ describe("keyboard navigation", () => {
 
         /* when: arrow key is pressed while holding ctrl */
         const event = new KeyboardEvent("keydown", { key: "ArrowLeft" });
-        const preventDefault = jest.spyOn(event, "preventDefault");
+        const preventDefault = vi.spyOn(event, "preventDefault");
         onKeyDown(event, {
             activeYear,
             firstYear,

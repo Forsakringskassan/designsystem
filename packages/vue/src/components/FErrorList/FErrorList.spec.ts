@@ -1,5 +1,5 @@
-import "html-validate/jest";
-import "@fkui/test-utils/jest";
+import "html-validate/vitest";
+import "@fkui/test-utils/vitest";
 import { defineComponent } from "vue";
 import logic from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
@@ -10,6 +10,7 @@ import {
     HtmlValidate,
     cjsResolver,
 } from "html-validate/node";
+import { describe, expect, it, vi } from "vitest";
 import { IFlexItem } from "../../internal-components/IFlex";
 import { ErrorItem } from "../../types";
 import { FIcon } from "../FIcon";
@@ -110,8 +111,8 @@ describe("navigation", () => {
     }
 
     it("should scroll to and focus on id element when focus element is missing", async () => {
-        window.scrollTo = jest.fn();
-        const logicScrollToMock = jest.spyOn(logic, "scrollTo");
+        window.scrollTo = vi.fn();
+        const logicScrollToMock = vi.spyOn(logic, "scrollTo");
 
         const wrapper = createWrapperWithErrorListAndInputs([
             {
@@ -135,8 +136,8 @@ describe("navigation", () => {
     });
 
     it("should scroll to id element and focus on focus element when both elements exists", async () => {
-        window.scrollTo = jest.fn();
-        const logicScrollToMock = jest.spyOn(logic, "scrollTo");
+        window.scrollTo = vi.fn();
+        const logicScrollToMock = vi.spyOn(logic, "scrollTo");
 
         const wrapper = createWrapperWithErrorListAndInputs([
             {

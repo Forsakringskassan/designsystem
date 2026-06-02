@@ -4,7 +4,8 @@ import {
     HtmlValidate,
     cjsResolver,
 } from "html-validate/node";
-import "html-validate/jest";
+import { describe, expect, it } from "vitest";
+import "html-validate/vitest";
 import FTooltip from "./FTooltip.vue";
 
 const tooltipButtonClass = ".tooltip__button";
@@ -75,7 +76,7 @@ describe("slots", () => {
                 },
             });
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Tooltip with header must define headerTag"`,
+            `[Error: Tooltip with header must define headerTag]`,
         );
     });
 

@@ -1,7 +1,8 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import IPopupMenu from "./IPopupMenu.vue";
 
 const testItems = [
@@ -61,7 +62,7 @@ async function openPopup(wrapper: VueWrapper): Promise<void> {
 }
 
 afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
 });
 
 describe("props", () => {
@@ -71,7 +72,7 @@ describe("props", () => {
     });
 
     it("should have same number of items as in props items when isOpen is true", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = await mountPopup();
         await openPopup(wrapper);
@@ -85,7 +86,7 @@ describe("props", () => {
 
 describe("events", () => {
     it("should set gotCloseEvent to true on click item", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = await mountPopup();
         await openPopup(wrapper);
@@ -139,7 +140,7 @@ describe("v-model", () => {
     });
 
     it("should test that focus is set on first item and not on previously highlighted item", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = await mountPopup();
         await openPopup(wrapper);

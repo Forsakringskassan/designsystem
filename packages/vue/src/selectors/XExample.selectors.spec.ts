@@ -1,5 +1,6 @@
 import { type PropType, defineComponent } from "vue";
 import { mount } from "@vue/test-utils";
+import { expect, it } from "vitest";
 import { XExampleSelectors } from "./XExample.selectors";
 
 /* Fictive XExample component for testing purposes */

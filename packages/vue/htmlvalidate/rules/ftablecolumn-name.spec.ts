@@ -1,5 +1,6 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
+import { describe, expect, it } from "vitest";
 import plugin from "../index";
 
 const htmlvalidate = new HtmlValidate({

@@ -3,7 +3,7 @@
 {
     "extends": "@forsakringskassan/vite-lib-config/tsconfig.lib.json",
     "compilerOptions": {
-        "types": ["node", "jest", "vite/client"],
+        "types": ["node", "vite/client"],
         "paths": {
             "@fkui/vue/cypress": ["./src/cypress/index.ts"],
             "@fkui/vue/selectors": ["./src/selectors/index.ts"],

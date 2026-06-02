@@ -7,7 +7,7 @@
         "@fkui/tsconfig/vue"
     ],
     "compilerOptions": {
-        "declarationDir": "temp/jest",
+        "declarationDir": "temp/vitest",
         "paths": {
             "@fkui/vue": ["./src/index.ts"]
         }

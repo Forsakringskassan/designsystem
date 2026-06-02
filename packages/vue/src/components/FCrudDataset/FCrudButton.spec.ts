@@ -1,5 +1,6 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import FCrudButton from "./FCrudButton.vue";
 
 function createWrapper({
@@ -34,35 +35,35 @@ describe("snapshot", () => {
         const wrapper = createWrapper({
             props: { action: "modify" },
         });
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot when action = delete", () => {
         const wrapper = createWrapper({
             props: { action: "delete" },
         });
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot when only icon is used", () => {
         const wrapper = createWrapper({
             props: { action: "modify", icon: true },
         });
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot when only label is used", () => {
         const wrapper = createWrapper({
             props: { action: "modify", label: true },
         });
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot when both label and icon is used", () => {
         const wrapper = createWrapper({
             props: { action: "modify", label: true, icon: true },
         });
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.element).toMatchSnapshot();
     });
 });
 

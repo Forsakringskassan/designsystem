@@ -12,7 +12,7 @@ const namn = ref("World");
         <p>A few common commands to keep track of:</p>
         <dl>
             <dt><code>npm run vue unit</code></dt>
-            <dd>Run Jest unit tests</dd>
+            <dd>Run Vitest unit tests</dd>
             <dt><code>npm run vue unit -- Foobar</code></dt>
             <dd>Run unit tests matching "Foobar"</dd>
             <dt><code>npm run vue unit -- -u</code></dt>

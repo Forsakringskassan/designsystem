@@ -1,10 +1,11 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { shallowMount } from "@vue/test-utils";
 import {
     FileSystemConfigLoader,
     HtmlValidate,
     cjsResolver,
 } from "html-validate";
+import { describe, expect, it } from "vitest";
 import { FIcon } from "../FIcon";
 import FButton from "./FButton.vue";
 

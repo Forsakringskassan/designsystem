@@ -4,8 +4,9 @@ import {
     HtmlValidate,
     cjsResolver,
 } from "html-validate/node";
+import { describe, expect, it } from "vitest";
 import FIcon from "./FIcon.vue";
-import "html-validate/jest";
+import "html-validate/vitest";
 
 const loader = new FileSystemConfigLoader([cjsResolver()], {
     extends: [

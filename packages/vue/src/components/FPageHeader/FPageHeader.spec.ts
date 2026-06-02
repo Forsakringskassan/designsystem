@@ -1,5 +1,6 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import FPageHeader from "./FPageHeader.vue";
 
 describe("slots", () => {

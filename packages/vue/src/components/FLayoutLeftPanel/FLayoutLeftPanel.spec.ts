@@ -1,5 +1,6 @@
-import "html-validate/jest";
-import "@fkui/test-utils/jest";
+import { describe, expect, it } from "vitest";
+import "html-validate/vitest";
+import "@fkui/test-utils/vitest";
 
 const defaultSlots = {
     default: "DEFAULT",

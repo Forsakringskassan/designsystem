@@ -1,9 +1,10 @@
 import { defineComponent } from "vue";
-import "html-validate/jest";
-import "@fkui/test-utils/jest";
+import "html-validate/vitest";
+import "@fkui/test-utils/vitest";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { config } from "../../config";
 import FContextMenu from "./FContextMenu.vue";
 import { type ContextMenuItem, isContextMenuTextItem } from "./contextmenuitem";
@@ -75,7 +76,7 @@ async function openPopup(): Promise<void> {
 }
 
 afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
 });
 
 describe("props", () => {
@@ -86,7 +87,7 @@ describe("props", () => {
     });
 
     it("should have same number of items that are passed in with props", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         await mountPopup(testItems1);
         await openPopup();
@@ -97,7 +98,7 @@ describe("props", () => {
     });
 
     it("should contain 2 separators at correct positions", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         /**
          * 3 text items and 2 separators at the expected position
@@ -124,7 +125,7 @@ describe("props", () => {
 
 describe("events", () => {
     it("should emit close after select on item click", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         await mountPopup(testItems1);
         await openPopup();
@@ -142,7 +143,7 @@ describe("events", () => {
     });
 
     it("should emit select for given item on item click", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         await mountPopup(testItems1);
         await openPopup();
@@ -162,7 +163,7 @@ describe("events", () => {
     });
 
     it("should test that focus is not set on any item after being mounted", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         await mountPopup(testItems1);
         await openPopup();
@@ -188,7 +189,7 @@ describe("events", () => {
 
 describe("keyboard navigation", () => {
     it("should close popup after tab is pressed when popup is open", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         // Given
         await mountPopup(testItems1);
@@ -208,7 +209,7 @@ describe("keyboard navigation", () => {
     });
 
     it("should close popup after escape is pressed when popup is open", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         // Given
         await mountPopup(testItems1);
@@ -228,7 +229,7 @@ describe("keyboard navigation", () => {
     });
 
     it("should wrap focus on arrow up when on first element", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         // Given
         await mountPopup(testItems1);

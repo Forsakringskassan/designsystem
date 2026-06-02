@@ -53,6 +53,7 @@ export default [
             "**/*.cy.ts",
             "**/*.spec.ts",
             "**/jest.setup.ts",
+            "**/vitest.setup.ts",
             "**/vite.config.ts",
             "**/docs/**",
         ],

@@ -1,5 +1,5 @@
 import path from "node:path";
-import "html-validate/jest";
+import "html-validate/vitest";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import {
@@ -7,6 +7,7 @@ import {
     HtmlValidate,
     cjsResolver,
 } from "html-validate/node";
+import { describe, expect, it } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import { FTextField } from "../FTextField";
 import FValidationForm from "./FValidationForm.vue";

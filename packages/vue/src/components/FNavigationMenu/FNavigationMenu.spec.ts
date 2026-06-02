@@ -1,15 +1,18 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import FNavigationMenu from "./FNavigationMenu.vue";
 import { NavigationMenuItem } from "./navigation-menu-item";
 
-const resizeObserverMock = jest.fn().mockImplementation(() => ({
-    observe: jest.fn(),
-    unobserve: jest.fn(),
-    disconnect: jest.fn(),
-}));
-global.ResizeObserver = resizeObserverMock;
+class ResizeObserverMock {
+    public observe = vi.fn();
+    public unobserve = vi.fn();
+    public disconnect = vi.fn();
+}
+
+//const resizeObserverMock = vi.fn(() => new ResizeObserverMock());
+global.ResizeObserver = ResizeObserverMock as unknown as typeof ResizeObserver;
 
 const testItems: NavigationMenuItem[] = [
     { label: "label1", route: "ROUTE_1" },
@@ -19,7 +22,7 @@ const testItems: NavigationMenuItem[] = [
 ];
 
 beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 });
 
 describe("props", () => {

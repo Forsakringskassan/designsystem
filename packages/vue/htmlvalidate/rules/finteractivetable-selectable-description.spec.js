@@ -1,4 +1,4 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
 import plugin from "../index";
 

@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { MaybeWithFKUIContext, getRunningContext } from "./context";
 
 it("should throw error if calling instance is without FKUI context", () => {

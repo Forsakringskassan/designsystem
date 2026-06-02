@@ -1,13 +1,14 @@
 import logic from "@fkui/logic";
+import { beforeAll, expect, it, vi } from "vitest";
 import { ErrorItem } from "../../types";
 import { focusError } from "./focus-error";
 
-jest.mock("@fkui/logic");
+vi.mock("@fkui/logic");
 
 const mockElement = document.createElement("a");
 const mockInput = document.createElement("input");
-const scrollTo = jest.spyOn(logic, "scrollTo");
-const focus = jest.spyOn(logic, "focus");
+const scrollTo = vi.spyOn(logic, "scrollTo");
+const focus = vi.spyOn(logic, "focus");
 
 beforeAll(() => {
     mockElement.id = "foo";
@@ -30,7 +31,7 @@ it("should scroll and move focus to element (by id)", () => {
 
 it("should prefer to focus on focusElementId if given", () => {
     expect.assertions(2);
-    const scrollTo = jest.spyOn(logic, "scrollTo");
+    const scrollTo = vi.spyOn(logic, "scrollTo");
     const error: ErrorItem = {
         title: "Mock error",
         id: mockElement.id,

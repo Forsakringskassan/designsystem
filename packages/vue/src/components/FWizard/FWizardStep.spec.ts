@@ -1,14 +1,15 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import FWizard from "./FWizard.vue";
 import FWizardStep from "./FWizardStep.vue";
 
 afterEach(() => {
-    jest.restoreAllMocks();
-    jest.clearAllTimers();
+    vi.restoreAllMocks();
+    vi.clearAllTimers();
 });
 
 it("should use header tag provided from FWizard", async () => {
@@ -45,7 +46,7 @@ it("should use header tag provided from FWizard", async () => {
 
 it("should call beforeNext with data including key, totalSteps and stepNumber", async () => {
     expect.assertions(1);
-    const beforeNextMock = jest.fn();
+    const beforeNextMock = vi.fn();
     const TestComponent = defineComponent({
         components: {
             FWizard,
@@ -82,7 +83,7 @@ it("should call beforeNext with data including key, totalSteps and stepNumber", 
 
 it("should call beforeValidation with data including key, totalSteps and stepNumber", async () => {
     expect.assertions(1);
-    const beforeValidationMock = jest.fn();
+    const beforeValidationMock = vi.fn();
     const TestComponent = defineComponent({
         components: {
             FWizard,

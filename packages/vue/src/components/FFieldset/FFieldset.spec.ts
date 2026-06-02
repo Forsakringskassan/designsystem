@@ -1,4 +1,4 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent } from "vue";
 import {
     type ValidatableHTMLElement,
@@ -7,6 +7,7 @@ import {
 } from "@fkui/logic";
 import { VueWrapper, mount, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { describe, expect, it, vi } from "vitest";
 import { ComponentValidityEvent } from "../../types";
 import { FIcon } from "../FIcon";
 import FFieldset from "./FFieldset.vue";
@@ -60,7 +61,7 @@ function dispatchValidityEvent(
 describe("snapshots", () => {
     it("should match snapshot with generated id attribute", () => {
         const wrapper = createWrapper({ props: { id: undefined } });
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label and content", () => {
@@ -205,7 +206,7 @@ describe("should display error icon when error is present", () => {
 
 describe("events", () => {
     it("should pass listeners", async () => {
-        const foobar = jest.fn();
+        const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
         });
@@ -221,7 +222,7 @@ describe("onValidity should only handle events from itself", () => {
             slots: { label: "Label" },
             attrs: { id: "elementId" },
         });
-        const onComponentValidityListener = jest.fn();
+        const onComponentValidityListener = vi.fn();
         wrapper.element.addEventListener(
             "component-validity",
             onComponentValidityListener,
@@ -254,7 +255,7 @@ describe("onValidity should only handle events from itself", () => {
                 slots: { label: "Label" },
                 attrs: { id: "elementId" },
             });
-            const onComponentValidityListener = jest.fn();
+            const onComponentValidityListener = vi.fn();
             wrapper.element.addEventListener(
                 "component-validity",
                 onComponentValidityListener,
@@ -280,7 +281,7 @@ describe("onValidity should only handle events from itself", () => {
                 slots: { label: "Label" },
                 attrs: { id: "elementId" },
             });
-            const onComponentValidityListener = jest.fn();
+            const onComponentValidityListener = vi.fn();
             wrapper.element.addEventListener(
                 "component-validity",
                 onComponentValidityListener,
@@ -307,7 +308,7 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
             slots: { label: "Label" },
             props: { id: "elementId" },
         });
-        const onComponentValidityListener = jest.fn();
+        const onComponentValidityListener = vi.fn();
         wrapper.element.addEventListener(
             "component-validity",
             onComponentValidityListener,
@@ -334,7 +335,7 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
             slots: { label: "Label" },
             props: { id: "elementId" },
         });
-        const onComponentValidityListener = jest.fn();
+        const onComponentValidityListener = vi.fn();
         wrapper.element.addEventListener(
             "component-validity",
             onComponentValidityListener,

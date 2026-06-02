@@ -1,4 +1,4 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { type ValidatableHTMLElement } from "@fkui/logic";
 import { VueWrapper, mount } from "@vue/test-utils";
@@ -8,6 +8,7 @@ import {
     HtmlValidate,
     cjsResolver,
 } from "html-validate/node";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
     type ComponentUnmountEvent,
     type ComponentValidityEvent,
@@ -37,7 +38,12 @@ function createWrapper({ props = {}, stubs = [] as string[] }): VueWrapper {
 }
 
 afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
+    vi.useRealTimers();
+});
+
+beforeEach(() => {
+    vi.useFakeTimers();
 });
 
 function triggerComponentValidityEvent(
@@ -80,13 +86,13 @@ describe("events", () => {
         const wrapper = createWrapper({});
         const input = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input.element);
+        vi.runAllTimers();
         await flushPromises();
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.emitted("group-validity")).toHaveLength(1);
     });
 
-    /* eslint-disable-next-line jest/no-disabled-tests -- technical debt: flaky test */
     it.skip.each`
         stopPropagation | expectedEvent
         ${true}         | ${false}
@@ -144,6 +150,7 @@ describe("events", () => {
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         triggerComponentValidityEvent(input2.element, { isValid: true });
 
+        vi.runAllTimers();
         await flushPromises();
 
         const event =
@@ -164,6 +171,7 @@ describe("events", () => {
         triggerComponentValidityEvent(input1.element, { isValid: true });
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         triggerComponentValidityEvent(input2.element, { isValid: true });
+        vi.runAllTimers();
         await flushPromises();
         wrapper.vm.$forceUpdate();
         expect(
@@ -178,6 +186,7 @@ describe("events", () => {
         triggerComponentValidityEvent(input1.element, { isValid: true });
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         triggerComponentValidityEvent(input2.element, { isValid: false });
+        vi.runAllTimers();
         await flushPromises();
         wrapper.vm.$forceUpdate();
 
@@ -207,6 +216,7 @@ describe("events", () => {
             isValid: false,
             validityMode: "ERROR",
         });
+        vi.runAllTimers();
         await flushPromises();
         wrapper.vm.$forceUpdate();
 
@@ -228,6 +238,7 @@ describe("events", () => {
             isValid: false,
             validityMode: "ERROR",
         });
+        vi.runAllTimers();
         await flushPromises();
         wrapper.vm.$forceUpdate();
 
@@ -248,12 +259,18 @@ describe("events", () => {
 
         input1.element.remove();
 
+        // Process first event's timer before dispatching second event,
+        // so cleanUpElements for event 2 sees the updated components state
+        vi.runAllTimers();
+        await flushPromises();
+
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         triggerComponentValidityEvent(input2.element, {
             isValid: false,
             validityMode: "ERROR",
         });
 
+        vi.runAllTimers();
         await flushPromises();
         wrapper.vm.$forceUpdate();
 
@@ -279,6 +296,7 @@ describe("events", () => {
             isValid: false,
             validityMode: "INITIAL",
         });
+        vi.runAllTimers();
         await flushPromises();
         wrapper.vm.$forceUpdate();
 
@@ -319,6 +337,7 @@ describe("v-model", () => {
         const input = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input.element);
 
+        vi.runAllTimers();
         await flushPromises();
         wrapper.vm.$forceUpdate();
 

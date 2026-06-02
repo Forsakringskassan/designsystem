@@ -1,5 +1,6 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { shallowMount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import FTableButton from "./FTableButton.vue";
 
 it("label should be visually hidden by default", () => {
@@ -9,10 +10,21 @@ it("label should be visually hidden by default", () => {
     });
     expect(wrapper.text()).toBe("lorem ipsum");
     expect(wrapper.get(".sr-only").text()).toBe("lorem ipsum");
-    expect(wrapper).toMatchInlineSnapshot(`
-        <button type="button" class="button table__button">
-          <!--v-if--><span class="sr-only">lorem ipsum</span>
-        </button>
+    expect(wrapper.element).toMatchInlineSnapshot(`
+      <button
+        class="button table__button"
+        type="button"
+      >
+        <!--v-if-->
+
+        <span
+          class="sr-only"
+        >
+
+          lorem ipsum
+
+        </span>
+      </button>
     `);
 });
 
@@ -24,10 +36,17 @@ it("label should be visually rendered when label prop is set", () => {
     });
     expect(wrapper.text()).toBe("lorem ipsum");
     expect(wrapper.find(".sr-only").exists()).toBeFalsy();
-    expect(wrapper).toMatchInlineSnapshot(`
-        <button type="button" class="button table__button">
-          <!--v-if-->lorem ipsum
-        </button>
+    expect(wrapper.element).toMatchInlineSnapshot(`
+      <button
+        class="button table__button"
+        type="button"
+      >
+        <!--v-if-->
+
+
+        lorem ipsum
+
+      </button>
     `);
 });
 

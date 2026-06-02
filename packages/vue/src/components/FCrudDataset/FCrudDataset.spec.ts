@@ -1,9 +1,10 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { type PropType, defineComponent, h } from "vue";
 import logic from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import { ListItem } from "../../types";
 import {
@@ -17,11 +18,15 @@ import { type FValidationFormCallback } from "../FValidationForm";
 import FCrudButton from "./FCrudButton.vue";
 import FCrudDataset from "./FCrudDataset.vue";
 
-jest.useFakeTimers();
+vi.useFakeTimers();
+
+afterAll(() => {
+    vi.useRealTimers();
+});
 
 afterEach(() => {
-    jest.clearAllTimers();
-    jest.clearAllMocks();
+    vi.clearAllTimers();
+    vi.clearAllMocks();
 });
 
 const ADD_TEMPLATE = /* HTML */ `
@@ -199,12 +204,12 @@ async function submitForm(wrapper: VueWrapper): Promise<void> {
     // hasFormErrors in FValidationForm
     await flushPromises(); // ValidationService.validateAllElements
     await wrapper.vm.$nextTick(); // FValidationForm.hasFormErrors.$nextTick
-    await jest.runAllTimers(); // FValidationForm.hasFormErrors.setTimeout
+    await vi.runAllTimers(); // FValidationForm.hasFormErrors.setTimeout
 
     // hasFormErrors is called twice
     await flushPromises();
     await wrapper.vm.$nextTick();
-    await jest.runAllTimers();
+    await vi.runAllTimers();
 
     await wrapper.vm.$nextTick(); // Remove modal from DOM
 }
@@ -214,7 +219,7 @@ describe("snapshot", () => {
         const wrapper = createWrapper([ADD_TEMPLATE], {
             stubs: ["FFormModal", "FConfirmModal"],
         });
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.element).toMatchSnapshot();
     });
 });
 
@@ -316,7 +321,7 @@ it("should show delete modal when the delete button is pressed", async () => {
 });
 
 it("should add item", async () => {
-    const alertScreenReader = jest.spyOn(logic, "alertScreenReader");
+    const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
 
     const wrapper = createWrapper(
         [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
@@ -338,7 +343,7 @@ it("should add item", async () => {
 });
 
 it("should modify items", async () => {
-    const alertScreenReader = jest.spyOn(logic, "alertScreenReader");
+    const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
 
     const wrapper = createWrapper(
         [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
@@ -373,7 +378,7 @@ it("should not modify original item on cancel", async () => {
     await wrapper.find("#child-name-input").setValue("test child");
 
     wrapper.find(".button-group .button--secondary").trigger("click");
-    await jest.runAllTimers();
+    await vi.runAllTimers();
     await flushPromises();
 
     const updatedItem = wrapper.vm.$data.items[0];
@@ -424,7 +429,7 @@ it("should call :onCancel after cancel", async () => {
     await wrapper.find(".crud-dataset__add-button").trigger("click");
 
     wrapper.find(".button-group .button--secondary").trigger("click");
-    await jest.runAllTimers();
+    await vi.runAllTimers();
     await flushPromises();
 
     expect(wrapper.find("#cancelMessage").text()).toBe("Modalen har stängts");
@@ -432,7 +437,7 @@ it("should call :onCancel after cancel", async () => {
 
 describe("beforeSubmit", () => {
     it('should call "beforeSubmit" when it is provided and submit button clicked', async () => {
-        const beforeSubmit = jest.fn();
+        const beforeSubmit = vi.fn();
         const wrapper = createWrapper(
             [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
             {
@@ -554,7 +559,7 @@ describe("beforeSubmit", () => {
 });
 
 it("should call before validation", async () => {
-    const beforeValidation = jest.fn();
+    const beforeValidation = vi.fn();
     const wrapper = createWrapper(
         [ADD_TEMPLATE_REQUIRED, MODIFY_TEMPLATE, DELETE_TEMPLATE],
         {
@@ -581,7 +586,7 @@ it("should call before validation", async () => {
 
 describe("onCancel", () => {
     it("should be called on cancel-event emitted", async () => {
-        const onCancel = jest.fn();
+        const onCancel = vi.fn();
         const wrapper = createWrapper(
             [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
             {
@@ -605,7 +610,7 @@ describe("onCancel", () => {
     });
 
     it("should be called on close-button clicked", async () => {
-        const onCancel = jest.fn();
+        const onCancel = vi.fn();
         const wrapper = createWrapper(
             [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
             {
@@ -626,7 +631,7 @@ describe("onCancel", () => {
     });
 
     it("should be called on cancel-button clicked", async () => {
-        const onCancel = jest.fn();
+        const onCancel = vi.fn();
         const wrapper = createWrapper(
             [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
             {
@@ -703,7 +708,9 @@ describe("formModalSize", () => {
         ${"fullscreen"}
         ${"fullwidth"}
     `("should accept valid size '$size'", ({ size }) => {
-        const consoleSpy = jest.spyOn(console, "warn").mockImplementation();
+        const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {
+            // Intentionally empty
+        });
 
         createWrapper([ADD_TEMPLATE], {
             stubs: ["FConfirmModal"],

@@ -1,16 +1,19 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { FDate } from "@fkui/date";
 import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import FDatepickerField from "./FDatepickerField.vue";
 
 beforeEach(() => {
-    global.ResizeObserver = jest.fn().mockImplementation(() => ({
-        observe: jest.fn(),
-        unobserve: jest.fn(),
-        disconnect: jest.fn(),
-    }));
+    class ResizeObserverMock {
+        public observe = vi.fn();
+        public unobserve = vi.fn();
+        public disconnect = vi.fn();
+    }
+    global.ResizeObserver =
+        ResizeObserverMock as unknown as typeof ResizeObserver;
 });
 
 describe("transparency", () => {
@@ -29,7 +32,7 @@ describe("transparency", () => {
 
     it("should pass listeners to textfield", async () => {
         expect.assertions(1);
-        const keyup = jest.fn();
+        const keyup = vi.fn();
         const wrapper = mount(FDatepickerField, {
             attrs: { onKeyup: keyup },
         });
@@ -92,7 +95,7 @@ describe("calendar", () => {
     it("should emit v-model and change event when selecting day", async () => {
         expect.assertions(2);
 
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = mount(FDatepickerField, {
             global: {
