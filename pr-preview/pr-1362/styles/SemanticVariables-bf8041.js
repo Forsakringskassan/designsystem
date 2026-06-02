@@ -1059,6 +1059,34 @@ var metadata_default = {
           "palette": "fk-black-30"
         }
       }
+    },
+    {
+      "name": "--fkds-focus-indicator-color",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#1b1e23",
+          "palette": "fk-black-100"
+        },
+        "dark": {
+          "value": "#fff",
+          "palette": null
+        }
+      }
+    },
+    {
+      "name": "--fkds-focus-indicator-color-background",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#fff",
+          "palette": null
+        },
+        "dark": {
+          "value": "#1b1e23",
+          "palette": "fk-black-100"
+        }
+      }
     }
   ]
 };
