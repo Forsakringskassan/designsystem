@@ -495,7 +495,7 @@ input[type=tel]:focus,
 input[type=image]:focus,
 input[type=search]:focus,
 [tabindex]:focus {
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
   outline: 3px solid transparent;
 }
 
@@ -1469,7 +1469,7 @@ input[type=search]:focus,
   box-shadow: var(--f-button-shadow-hover);
 }
 .button:active, .calendar-navbar__year-selector-button:active, .button:focus, .calendar-navbar__year-selector-button:focus {
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
   outline: 3px solid transparent;
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: var(--fkds-color-action-border-primary-default);
@@ -1508,7 +1508,7 @@ input[type=search]:focus,
   box-shadow: var(--f-button-shadow-hover);
 }
 .button.button--primary:active, .button--primary.calendar-navbar__year-selector-button:active, .button.button--primary:focus, .button--primary.calendar-navbar__year-selector-button:focus {
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
   outline: 3px solid transparent;
   background-color: var(--fkds-color-action-background-primary-hover);
   border-color: transparent;
@@ -1544,7 +1544,7 @@ input[type=search]:focus,
   box-shadow: var(--f-button-shadow-hover);
 }
 .button.button--secondary:active, .button--secondary.calendar-navbar__year-selector-button:active, .button.button--secondary:focus, .button--secondary.calendar-navbar__year-selector-button:focus {
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
   outline: 3px solid transparent;
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: var(--fkds-color-action-border-primary-default);
@@ -1586,7 +1586,7 @@ input[type=search]:focus,
   box-shadow: var(--f-button-shadow-hover);
 }
 .button.button--discrete:active, .button--discrete.calendar-navbar__year-selector-button:active, .button.button--text:active, .button--text.calendar-navbar__year-selector-button:active, .button.button--discrete:focus, .button--discrete.calendar-navbar__year-selector-button:focus, .button.button--text:focus, .button--text.calendar-navbar__year-selector-button:focus {
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
   outline: 3px solid transparent;
   background-color: none;
   border-color: transparent;
@@ -1657,7 +1657,7 @@ input[type=search]:focus,
   box-shadow: var(--f-button-shadow-hover);
 }
 .button.button--discrete-inverted:active, .button--discrete-inverted.calendar-navbar__year-selector-button:active, .button.button--discrete-inverted:focus, .button--discrete-inverted.calendar-navbar__year-selector-button:focus {
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
   outline: 3px solid transparent;
   background-color: transparent;
   border-color: transparent;
@@ -1704,7 +1704,7 @@ input[type=search]:focus,
   box-shadow: none;
 }
 .button.button--tertiary:active, .calendar-navbar__year-selector-button:active, .button.button--tertiary:focus, .calendar-navbar__year-selector-button:focus {
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
   outline: 3px solid transparent;
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: transparent;
@@ -2312,7 +2312,7 @@ input[type=search]:focus,
   opacity: 1;
 }
 .checkbox input[type=checkbox]:focus + .checkbox__label {
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
   outline: 3px solid transparent;
 }
 
@@ -2723,7 +2723,7 @@ input[type=search]:focus,
 }
 .dialogue-tree__list-item:focus-within {
   z-index: 2;
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
   outline: 3px solid transparent;
 }
 .dialogue-tree__list-item:focus-within:not(:first-child) {
@@ -3131,7 +3131,7 @@ input[type=search]:focus,
   border: 0;
 }
 .file-selector input[type=file]:focus + label {
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
   outline: 3px solid transparent;
 }
 @media (forced-colors: active) {
@@ -5161,7 +5161,7 @@ input[type=search]:focus,
   opacity: 1;
 }
 .radio-button input[type=radio]:focus + label {
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
   outline: 3px solid transparent;
 }
 
@@ -5553,7 +5553,7 @@ input[type=search]:focus,
   box-shadow: none;
 }
 .table__button:active, .table__button:focus {
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
   outline: 3px solid transparent;
   background-color: var(--fkds-color-action-background-secondary-hover);
   border-color: transparent;
@@ -6422,7 +6422,7 @@ input[type=search]:focus,
   z-index: 9997;
 }
 .calendar-month__button:focus[tabindex="-1"] {
-  box-shadow: 0 0 0 2px var(--fkds-focus-indicator-color-background), 0 0 0 4px var(--fkds-focus-indicator-color), 0 0 0 6px var(--fkds-focus-indicator-color-background);
+  box-shadow: var(--f-focus-box-shadow);
 }
 
 .calendar-navbar__year-selector-button--title, .calendar-navbar__month--title {

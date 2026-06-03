@@ -28,10 +28,10 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FExpandablePanel/examples/FExpandablePanelExample.vue:FExpandablePanelExample-e6bc61.js
+// virtual-entry:virtual:packages/vue/src/components/FExpandablePanel/examples/FExpandablePanelRelatedExample.vue:FExpandablePanelRelatedExample-0a593a.js
 import { defineComponent } from "vue";
 import { FExpandablePanel } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
   name: "FExpandablePanelExample",
   components: { FExpandablePanel },
@@ -64,17 +64,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         " Inneh\xE5ll ",
         -1
         /* CACHED */
-      ),
-      _createElementVNode(
-        "p",
-        null,
-        [
-          _createElementVNode("a", {
-            class: "anchor",
-            href: "",
-            target: "_blank"
-          }, " L\xE4nk till annan sida ")
-        ],
+      )
+    ])]),
+    outside: _withCtx(() => [..._cache[2] || (_cache[2] = [
+      _createTextVNode(
+        " Relaterat inneh\xE5ll som visas n\xE4r panelen \xE4r expanderad men utanf\xF6r body ",
         -1
         /* CACHED */
       )
@@ -86,7 +80,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e6bc61"
+  selector: "#example-0a593a"
 });
 export {
   render

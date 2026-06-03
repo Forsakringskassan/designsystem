@@ -161,6 +161,20 @@
     "Fieldset migreringsguide",
     "FCrudButton migreringsguide",
     "FCrudButton",
+    "På gång",
+    "pågående arbete",
+    "planerat arbete",
+    "framtid",
+    "Releaser",
+    "deprekering",
+    "borttagna komponenter",
+    "Releaseanteckningar",
+    "version",
+    "Designsystemet",
+    "status",
+    "produktionsklar",
+    "beta",
+    "experimentell",
     "Testverktyg",
     "testfall",
     "jest",
@@ -196,20 +210,6 @@
     "Riktlinjer för kod",
     "Checklista vid publicering",
     "personuppgifter",
-    "På gång",
-    "pågående arbete",
-    "planerat arbete",
-    "framtid",
-    "Releaser",
-    "deprekering",
-    "borttagna komponenter",
-    "Releaseanteckningar",
-    "version",
-    "Designsystemet",
-    "status",
-    "produktionsklar",
-    "beta",
-    "experimentell",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -223,9 +223,6 @@
     "testverktyg",
     "Jest",
     "testverktyg",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -270,6 +267,9 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "EventBus",
+    "EventBus",
+    "services",
     "Om FKUI Vue Labs",
     "Tidsinmatning",
     "XTimeTextField",
@@ -539,16 +539,16 @@
     "ICalendarMonth",
     "Animerad expandering",
     "IAnimateExpand",
-    "Filväljare",
-    "FFileSelector",
-    "Filpresentatör",
-    "FFileItem",
     "Expanderbart stycke",
     "FExpandableParagraph",
     "Expanderbar panel",
     "FExpandablePanel",
     "Expanderbart innehåll",
     "FExpand",
+    "Filväljare",
+    "FFileSelector",
+    "Filpresentatör",
+    "FFileItem",
     "Version 6 migreringsguide: @fkui/vue",
     "Version 6 migreringsguide",
     "Version 6 migreringsguide: @fkui/logic",
@@ -1148,6 +1148,40 @@
       ]
     },
     {
+      "url": "gettingstarted/about/roadmap.html",
+      "title": "På gång",
+      "terms": [
+        "pågående arbete",
+        "planerat arbete",
+        "framtid"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/releases.html",
+      "title": "Releaser",
+      "terms": [
+        "deprekering",
+        "borttagna komponenter"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/release-notes.html",
+      "title": "Releaseanteckningar",
+      "terms": [
+        "version"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/index.html",
+      "title": "Designsystemet",
+      "terms": [
+        "status",
+        "produktionsklar",
+        "beta",
+        "experimentell"
+      ]
+    },
+    {
       "url": "gettingstarted/contribute-to-fkds/testverktyg.html",
       "title": "Testverktyg",
       "terms": [
@@ -1211,40 +1245,6 @@
       ]
     },
     {
-      "url": "gettingstarted/about/roadmap.html",
-      "title": "På gång",
-      "terms": [
-        "pågående arbete",
-        "planerat arbete",
-        "framtid"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/releases.html",
-      "title": "Releaser",
-      "terms": [
-        "deprekering",
-        "borttagna komponenter"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/release-notes.html",
-      "title": "Releaseanteckningar",
-      "terms": [
-        "version"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/index.html",
-      "title": "Designsystemet",
-      "terms": [
-        "status",
-        "produktionsklar",
-        "beta",
-        "experimentell"
-      ]
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1275,14 +1275,6 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
       ]
     },
     {
@@ -1362,6 +1354,14 @@
         "errorHandler",
         "ErrorPlugin",
         "FErrorHandlingApp"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -2000,20 +2000,6 @@
       ]
     },
     {
-      "url": "components/file-upload/ffileselector.html",
-      "title": "Filväljare",
-      "terms": [
-        "FFileSelector"
-      ]
-    },
-    {
-      "url": "components/file-upload/ffileitem.html",
-      "title": "Filpresentatör",
-      "terms": [
-        "FFileItem"
-      ]
-    },
-    {
       "url": "components/expandable/fexpandableparagraph.html",
       "title": "Expanderbart stycke",
       "terms": [
@@ -2032,6 +2018,20 @@
       "title": "Expanderbart innehåll",
       "terms": [
         "FExpand"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileselector.html",
+      "title": "Filväljare",
+      "terms": [
+        "FFileSelector"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileitem.html",
+      "title": "Filpresentatör",
+      "terms": [
+        "FFileItem"
       ]
     },
     {
@@ -2962,49 +2962,49 @@
     "162": 45,
     "163": 45,
     "164": 45,
-    "165": 45,
-    "166": 45,
-    "167": 45,
-    "168": 45,
-    "169": 45,
-    "170": 45,
-    "171": 45,
-    "172": 45,
-    "173": 45,
-    "174": 45,
-    "175": 46,
-    "176": 46,
-    "177": 46,
-    "178": 46,
-    "179": 46,
-    "180": 46,
-    "181": 46,
-    "182": 46,
-    "183": 46,
-    "184": 47,
-    "185": 47,
-    "186": 47,
-    "187": 47,
-    "188": 47,
-    "189": 47,
-    "190": 47,
-    "191": 47,
-    "192": 48,
-    "193": 49,
+    "165": 46,
+    "166": 46,
+    "167": 46,
+    "168": 47,
+    "169": 47,
+    "170": 48,
+    "171": 48,
+    "172": 48,
+    "173": 48,
+    "174": 48,
+    "175": 49,
+    "176": 49,
+    "177": 49,
+    "178": 49,
+    "179": 49,
+    "180": 49,
+    "181": 49,
+    "182": 49,
+    "183": 49,
+    "184": 49,
+    "185": 49,
+    "186": 49,
+    "187": 49,
+    "188": 49,
+    "189": 50,
+    "190": 50,
+    "191": 50,
+    "192": 50,
+    "193": 50,
     "194": 50,
     "195": 50,
-    "196": 51,
-    "197": 51,
+    "196": 50,
+    "197": 50,
     "198": 51,
     "199": 51,
-    "200": 52,
-    "201": 52,
-    "202": 52,
-    "203": 53,
-    "204": 53,
-    "205": 54,
-    "206": 54,
-    "207": 54,
+    "200": 51,
+    "201": 51,
+    "202": 51,
+    "203": 51,
+    "204": 51,
+    "205": 51,
+    "206": 52,
+    "207": 53,
     "208": 54,
     "209": 54,
     "210": 55,
@@ -3023,47 +3023,47 @@
     "223": 59,
     "224": 59,
     "225": 59,
-    "226": 60,
+    "226": 59,
     "227": 60,
     "228": 60,
     "229": 60,
     "230": 61,
     "231": 61,
     "232": 61,
-    "233": 62,
-    "234": 62,
-    "235": 62,
-    "236": 62,
-    "237": 62,
-    "238": 62,
+    "233": 61,
+    "234": 61,
+    "235": 61,
+    "236": 61,
+    "237": 61,
+    "238": 61,
     "239": 62,
     "240": 62,
     "241": 62,
     "242": 63,
     "243": 63,
     "244": 63,
-    "245": 64,
-    "246": 64,
+    "245": 63,
+    "246": 63,
     "247": 64,
     "248": 64,
     "249": 64,
-    "250": 65,
-    "251": 65,
-    "252": 65,
-    "253": 65,
-    "254": 65,
-    "255": 65,
-    "256": 65,
-    "257": 65,
-    "258": 65,
+    "250": 64,
+    "251": 64,
+    "252": 64,
+    "253": 64,
+    "254": 64,
+    "255": 64,
+    "256": 64,
+    "257": 64,
+    "258": 64,
     "259": 65,
     "260": 65,
     "261": 65,
-    "262": 66,
-    "263": 66,
-    "264": 66,
-    "265": 66,
-    "266": 66,
+    "262": 65,
+    "263": 65,
+    "264": 65,
+    "265": 65,
+    "266": 65,
     "267": 66,
     "268": 66,
     "269": 66,

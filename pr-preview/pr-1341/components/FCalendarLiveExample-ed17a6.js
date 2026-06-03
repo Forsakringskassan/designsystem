@@ -6452,12 +6452,6 @@ IComboboxToggleButton_default.__file = "packages/vue/src/internal-components/com
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=script
 import { defineComponent as defineComponent19 } from "vue";
 
-// packages/vue/src/components/FExpand/styles.ts
-var transitionStyle = {
-  overflow: "hidden",
-  transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
-};
-
 // packages/vue/src/components/FExpand/enter.ts
 function enterTransition(element, done) {
   if (!(element instanceof HTMLElement)) {
@@ -6466,7 +6460,6 @@ function enterTransition(element, done) {
   element.style.height = "auto";
   const desiredHeight = getComputedStyle(element).height;
   element.style.height = "0px";
-  Object.assign(element.style, transitionStyle);
   getComputedStyle(element).height;
   setTimeout(() => {
     element.style.height = desiredHeight;
@@ -6488,7 +6481,6 @@ function leaveTransition(element, done) {
   }
   element.style.height = "auto";
   element.style.height = getComputedStyle(element).height;
-  Object.assign(element.style, transitionStyle);
   setTimeout(() => {
     element.style.height = "0px";
     element.addEventListener(
@@ -6519,6 +6511,7 @@ var FExpand_default = defineComponent19({
 import { renderSlot as _renderSlot17, Transition as _Transition, withCtx as _withCtx8, openBlock as _openBlock23, createBlock as _createBlock11 } from "vue";
 function render23(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock23(), _createBlock11(_Transition, {
+    css: false,
     onEnter: _ctx.enter,
     onLeave: _ctx.leave
   }, {
