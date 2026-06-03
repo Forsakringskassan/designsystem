@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Sortera och filtrera i tabell (kod) - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-aada16.css"
+            href="../../../assets/docs-d1a061.css"
             crossorigin
-            integrity="sha384-rCJHsruAn+gCbFADFR2DqM3nG6k1r4Jkhz7fMOTrRm4Ln6o3KnwsJdCNLeU/YM0c"
+            integrity="sha384-JNJmWhldtvLfPd8545JgdsBECUoy7/G00vMoRnqe8UaUMtP9p+LyCXT+det4BsUJ"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-ba1b7a.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-692a76.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-c92c5f.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-a147de.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../../assets/vendor-fkui-logic-ba1b7a.js": "sha384-vzXbs4dDmB5nxB2+/l+eL2n8Ju06KOu7bG1nKtIrQdfxi9EWMrLsxjKsSwK0PauJ",
     "../../../assets/vendor-fkui-date-692a76.js": "sha384-MwbLPk6deCTFOhc1JjO7SwACbk5fiURa0P++wkNh8qT5ckXSJVAIS1wp08u5D8AS",
-    "../../../assets/vendor-fkui-vue-c92c5f.js": "sha384-bJwLroZ0M9Py01lmjbnjpWzGc1tRUAkLQyt5/qlKWY4RP4v6iaJ1SIR1g6+amxVX",
+    "../../../assets/vendor-fkui-vue-a147de.js": "sha384-x8QsghecJR4TW9fi2tsCJLfSZ7bwu2tqOt5nk0XzMXPToxIGuZ5bNCFO24WU3qlI",
     "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-195afb.json"
+            href="../../../search-data-8358f3.json"
             as="fetch"
             crossorigin
-            integrity="sha384-0HbruWWrLXKzLOjVKD3n7mfHf8cS5GpCt1VI7YV4900FfTkTRinGJPh9fbv2+HEy"
+            integrity="sha384-cnDtJSvpI2t16lEOXh7EAavKt1ZS/IlsYMfPJbeV6Hrw9HuvjHlnU6L8GIX9xf77"
             id="search-data"
         />
     </head>
@@ -1558,6 +1558,8 @@
                                 
                                 <li><a href="#sortering_och_filtrering">Sortering och filtrering</a></li>
                                 
+                                <li><a href="#sortera_och_filtera_pa_varden_fran_value">Sortera och filtera på värden från value()</a></li>
+                                
                                 <li><a href="#relaterat">Relaterat</a></li>
                                 
                             </ul>
@@ -1682,7 +1684,113 @@ interface <span class="hljs-title class_">Row</span> {
 </code></pre>
                 </div>
             <p class="docs-paragraph"><code>sortFilterResult</code> innehåller de rader som ska visas efter sortering och filtrering.</p>
-<h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell.</a></p>
+<h2 id="sortera_och_filtera_pa_varden_fran_value" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sortera_och_filtera_pa_varden_fran_value">Sortera och filtera på värden från <code>value()</code></a></h2><p class="docs-paragraph"><code>FTable</code> kan visa värden med hjälp av <code>value()</code>, till exempel om värdet är nästlat i objektet. <code>FSortFilterDataset</code> använder däremot inte <code>value()</code> när datan sorteras eller filtreras. Sortering och filtrering sker på attribut i datamängden.</p>
+<p class="docs-paragraph">Om en tabellkolumn visar ett beräknat eller nästlat värde med <code>value()</code>, behöver samma värde även finnas som ett attribut i datamängden. Använd sedan det attributet i både <code>sortableAttributes</code> och tabellens <code>key</code>.</p>
+<p class="docs-paragraph">I exemplet nedan visar tabellen <code>row.ursprung.land</code> med <code>value()</code>. Däremot fungerar inte sortering och filtrering på <code>land</code>, eftersom <code>row.land</code> inte finns.</p>
+
+                <div
+                    id="example-5e0e60"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
+            <span class="hljs-keyword">return</span> row.<span class="hljs-property">ursprung</span>.<span class="hljs-property">land</span>;
+        },
+    },
+]);
+
+<span class="hljs-keyword">const</span> sortableAttributes = {
+    <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+    <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Land&quot;</span>, <span class="hljs-comment">// Fungerar inte eftersom row.land inte finns.</span>
+};
+</code></pre>
+                </div>
+            <p class="docs-paragraph">För att sortering och filtrering ska ske på samma värde som visas i tabellen behöver värdet mappas ut till ett attribut i datamängden.</p>
+
+                <div
+                    id="example-55a155"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Fruit</span> {
+    <span class="hljs-attr">frukt</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">ursprung</span>: {
+        <span class="hljs-attr">land</span>: <span class="hljs-built_in">string</span>;
+    };
+    <span class="hljs-attr">pris</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">frukt</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">land</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">pris</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">fruits</span>: <span class="hljs-title class_">Fruit</span>[] = [
+    { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>, <span class="hljs-attr">ursprung</span>: { <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span> }, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;30&quot;</span> },
+    { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Banan&quot;</span>, <span class="hljs-attr">ursprung</span>: { <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Ecuador&quot;</span> }, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;15&quot;</span> },
+    { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Äpple&quot;</span>, <span class="hljs-attr">ursprung</span>: { <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span> }, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;22&quot;</span> },
+];
+
+<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;(
+    fruits.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">fruit</span>) =&gt;</span> ({
+        <span class="hljs-attr">frukt</span>: fruit.<span class="hljs-property">frukt</span>,
+        <span class="hljs-attr">land</span>: fruit.<span class="hljs-property">ursprung</span>.<span class="hljs-property">land</span>,
+        <span class="hljs-attr">pris</span>: fruit.<span class="hljs-property">pris</span>,
+    })),
+);
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;frukt&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> sortableAttributes = {
+    <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+    <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+};
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-de9cae"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:sortable-attributes</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span> <span class="hljs-attr">:columns</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell.</a></p>
 <p class="docs-paragraph"><a href="./sort-filter.html">Sortera och filtrera i tabell.</a></p>
 <p class="docs-paragraph"><a href="../fsortfilterdataset.html">Läs mer om datamängdsorteraren.</a></p>
 
@@ -1733,9 +1841,9 @@ interface <span class="hljs-title class_">Row</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs/SFKUI-7887-update-f-table-examples (<a href="https://github.com/Forsakringskassan/designsystem/commits/427255391c1e5874c6cb27943fb3b6d7023a104a">4272553</a>)<br />
+<div class="footer__right"><div class="version">docs/SFKUI-7887-update-f-table-examples (<a href="https://github.com/Forsakringskassan/designsystem/commits/ea289d436b3ca4d2b5bdef1fde47596115c7035d">ea289d4</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1374">PR 1374</a><br />
-        2026-06-02 13:40
+        2026-06-03 08:50
 </div>
 <div class="toolbar__item">
     <form id="version">
