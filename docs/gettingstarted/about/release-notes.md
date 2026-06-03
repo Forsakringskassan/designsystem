@@ -9,6 +9,14 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version %version%
+
+2026-06-03
+
+Vi har ändrat fokusindikatorn så att den inte tvingar det fokuserade elementet att vara fyrkantigt.
+Fokusindikatorns avrundning matchar istället den yttre delen på det synliga elementet som fokuseras.
+Det finns vissa element som fortfarande kommer ha fyrkantig fokusram som till exempel knapparna för att välja månad i kalendern.
+
 ## Version 6.44.0
 
 2026-04-30
