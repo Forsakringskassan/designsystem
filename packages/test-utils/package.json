@@ -25,6 +25,7 @@
     "./dist/cjs/vitest.js",
     "./dist/esm/vitest.js",
     "./src/matchers/augmentations.ts",
+    "./src/matchers/vitest-augmentations.ts",
     "./src/matchers/index.ts"
   ],
   "exports": {

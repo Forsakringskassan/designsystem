@@ -1,5 +1,6 @@
 import "html-validate/vitest";
 import { shallowMount } from "@vue/test-utils";
+import { FileSystemConfigLoader, HtmlValidate } from "html-validate";
 import { describe, expect, it } from "vitest";
 import FTableButton from "./FTableButton.vue";
 
@@ -10,21 +11,10 @@ it("label should be visually hidden by default", () => {
     });
     expect(wrapper.text()).toBe("lorem ipsum");
     expect(wrapper.get(".sr-only").text()).toBe("lorem ipsum");
-    expect(wrapper.element).toMatchInlineSnapshot(`
-      <button
-        class="button table__button"
-        type="button"
-      >
-        <!--v-if-->
-
-        <span
-          class="sr-only"
-        >
-
-          lorem ipsum
-
-        </span>
-      </button>
+    expect(wrapper.html()).toMatchInlineSnapshot(`
+      "<button type="button" class="button table__button">
+        <!--v-if--> <span class="sr-only">lorem ipsum</span>
+      </button>"
     `);
 });
 
@@ -36,17 +26,10 @@ it("label should be visually rendered when label prop is set", () => {
     });
     expect(wrapper.text()).toBe("lorem ipsum");
     expect(wrapper.find(".sr-only").exists()).toBeFalsy();
-    expect(wrapper.element).toMatchInlineSnapshot(`
-      <button
-        class="button table__button"
-        type="button"
-      >
-        <!--v-if-->
-
-
-        lorem ipsum
-
-      </button>
+    expect(wrapper.html()).toMatchInlineSnapshot(`
+      "<button type="button" class="button table__button">
+        <!--v-if--> lorem ipsum
+      </button>"
     `);
 });
 
@@ -81,8 +64,10 @@ it("icon library should be set when iconLibrary prop is used", () => {
     expect(icon.attributes("library")).toBe("bar");
 });
 
-describe("html-validate", () => {
-    it("should require text content", () => {
+describe("html-validate", async () => {
+    it("should require text content", async () => {
+        const loader = new FileSystemConfigLoader();
+        const htmlvalidate = new HtmlValidate(loader);
         const markup = /* HTML */ `
             <f-table-column title="column title">
                 <!-- valid -->
@@ -97,7 +82,12 @@ describe("html-validate", () => {
                 <f-table-button> </f-table-button>
             </f-table-column>
         `;
-        expect(markup).toMatchInlineCodeframe(`
+        // technical debt html-validate issue, should not need filname?
+        const result = await htmlvalidate.validateString(
+            markup,
+            "FtableButton.spec.ts",
+        );
+        expect(result).toMatchInlineCodeframe(`
             "error: <f-table-button> must have accessible text (text-content)
                9 |
               10 |                 <!-- invalid -->
@@ -118,7 +108,7 @@ describe("html-validate", () => {
         `);
     });
 
-    it("should not allow interactive descendants", () => {
+    it("should not allow interactive descendants", async () => {
         const markup = /* HTML */ `
             <f-table-column title="column title">
                 <f-table-button>
@@ -127,7 +117,7 @@ describe("html-validate", () => {
                 </f-table-button>
             </f-table-column>
         `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <button> element is not permitted as content under <f-table-button> (element-permitted-content)
               2 |             <f-table-column title="column title">
               3 |                 <f-table-button>
@@ -158,11 +148,11 @@ describe("html-validate", () => {
         expect(markup).toMatchInlineCodeframe(`""`);
     });
 
-    it("should require FTableColumn ancestor", () => {
+    it("should require FTableColumn ancestor", async () => {
         const markup = /* HTML */ `
             <f-table-button>lorem ipsum</f-table-button>
         `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <f-table-button> element requires a <f-table-column> ancestor (element-required-ancestor)
               1 |
             > 2 |             <f-table-button>lorem ipsum</f-table-button>
@@ -181,7 +171,7 @@ describe("html-validate", () => {
         expect(markup).toMatchInlineCodeframe(`""`);
     });
 
-    it("should not allow empty icon prop", () => {
+    it("should not allow empty icon prop", async () => {
         const markup = /* HTML */ `
             <f-table-column title="column title">
                 <!-- valid -->
@@ -192,7 +182,7 @@ describe("html-validate", () => {
                 <f-table-button icon="">lorem ipsum</f-table-button>
             </f-table-column>
         `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: Attribute "icon" is missing value (attribute-allowed-values)
                5 |
                6 |                 <!-- invalid -->
@@ -213,7 +203,7 @@ describe("html-validate", () => {
         `);
     });
 
-    it("should not allow non-boolean label prop", () => {
+    it("should not allow non-boolean label prop", async () => {
         const markup = /* HTML */ `
             <f-table-column title="column title">
                 <!-- valid -->
@@ -224,7 +214,7 @@ describe("html-validate", () => {
                 <f-table-button label="foo">lorem ipsum</f-table-button>
             </f-table-column>
         `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: Attribute "label" should omit value (attribute-boolean-style)
                6 |
                7 |                 <!-- invalid -->
