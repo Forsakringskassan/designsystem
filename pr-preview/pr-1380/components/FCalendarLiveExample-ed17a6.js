@@ -6453,77 +6453,64 @@ IComboboxToggleButton_default.__file = "packages/vue/src/internal-components/com
 import { defineComponent as defineComponent19 } from "vue";
 
 // packages/vue/src/components/FExpand/styles.ts
-var openedStyle = {
-  height: "auto"
-};
-var initialStyle = {
+var transitionStyle = {
   overflow: "hidden",
   transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
 };
-var hiddenStyle = {
-  height: "auto",
-  position: "absolute",
-  visibility: "hidden"
-};
-var visibleStyle = {
-  width: "",
-  position: "",
-  visibility: "",
-  height: "0px",
-  color: "CanvasText"
-};
-
-// packages/vue/src/components/FExpand/after-enter.ts
-function afterEnterTransition(element) {
-  const htmlElement = getHTMLElementFromVueRef(element);
-  Object.assign(htmlElement.style, openedStyle);
-}
 
 // packages/vue/src/components/FExpand/enter.ts
-function enterTransition(element) {
-  let newHeight = 0;
-  const htmlElement = getHTMLElementFromVueRef(element);
-  Object.assign(htmlElement.style, initialStyle);
-  Object.assign(htmlElement.style, hiddenStyle);
-  htmlElement.style.width = getComputedStyle(element).width;
-  const height = getComputedStyle(element).height;
-  Object.assign(htmlElement.style, visibleStyle);
+function enterTransition(element, done) {
+  if (!(element instanceof HTMLElement)) {
+    return;
+  }
+  element.style.height = "auto";
+  const desiredHeight = getComputedStyle(element).height;
+  element.style.height = "0px";
+  Object.assign(element.style, transitionStyle);
   getComputedStyle(element).height;
   setTimeout(() => {
-    newHeight = Number.parseInt(height, 10);
-    htmlElement.style.height = height;
+    element.style.height = desiredHeight;
+    element.addEventListener(
+      "transitionend",
+      () => {
+        element.style.height = "auto";
+        done();
+      },
+      { once: true }
+    );
   });
-  return newHeight;
 }
 
 // packages/vue/src/components/FExpand/leave.ts
-function leaveTransition(element) {
-  const htmlElement = getHTMLElementFromVueRef(element);
-  const height = getComputedStyle(element).height;
-  htmlElement.style.height = height;
-  getComputedStyle(element).height;
+function leaveTransition(element, done) {
+  if (!(element instanceof HTMLElement)) {
+    return;
+  }
+  element.style.height = "auto";
+  element.style.height = getComputedStyle(element).height;
+  Object.assign(element.style, transitionStyle);
   setTimeout(() => {
-    Object.assign(htmlElement.style, visibleStyle);
+    element.style.height = "0px";
+    element.addEventListener(
+      "transitionend",
+      () => {
+        element.style.height = "auto";
+        done();
+      },
+      { once: true }
+    );
   });
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=script
 var FExpand_default = defineComponent19({
   name: "FExpand",
-  data() {
-    return {
-      height: 0
-    };
-  },
   methods: {
-    enter(element) {
-      this.height = enterTransition(element);
+    enter(element, done) {
+      enterTransition(element, done);
     },
-    afterEnter(element) {
-      afterEnterTransition(element);
-    },
-    leave(element) {
-      leaveTransition(element);
+    leave(element, done) {
+      leaveTransition(element, done);
     }
   }
 });
@@ -6532,16 +6519,16 @@ var FExpand_default = defineComponent19({
 import { renderSlot as _renderSlot17, Transition as _Transition, withCtx as _withCtx8, openBlock as _openBlock23, createBlock as _createBlock11 } from "vue";
 function render23(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock23(), _createBlock11(_Transition, {
+    css: false,
     onEnter: _ctx.enter,
-    onAfterEnter: _ctx.afterEnter,
     onLeave: _ctx.leave
   }, {
     default: _withCtx8(() => [
-      _renderSlot17(_ctx.$slots, "default", { height: _ctx.height })
+      _renderSlot17(_ctx.$slots, "default")
     ]),
     _: 3
     /* FORWARDED */
-  }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
+  }, 8, ["onEnter", "onLeave"]);
 }
 
 // packages/vue/src/components/FExpand/FExpand.vue
