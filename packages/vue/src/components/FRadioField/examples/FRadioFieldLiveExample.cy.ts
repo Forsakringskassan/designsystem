@@ -30,7 +30,7 @@ describe("FRadioFieldLiveExample", () => {
                 .isSelected()
                 .should("equal", false);
             fieldset
-                .radioButton(barnover18.Ja)
+                .radioButton(barnover18.Nej)
                 .isSelected()
                 .should("equal", false);
 
