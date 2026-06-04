@@ -35,7 +35,7 @@
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function makeMap(str) {
 	const map = /* @__PURE__ */ Object.create(null);
 	for (const key of str.split(",")) map[key] = 1;
@@ -1191,16 +1191,16 @@ function targetTypeMap(rawType) {
 		default: return 0;
 	}
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function reactive(target) {
 	if (/* @__PURE__ */ isReadonly(target)) return target;
 	return createReactiveObject(target, false, mutableHandlers, mutableCollectionHandlers, reactiveMap);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function shallowReactive(target) {
 	return createReactiveObject(target, false, shallowReactiveHandlers, shallowCollectionHandlers, shallowReactiveMap);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function readonly(target) {
 	return createReactiveObject(target, true, readonlyHandlers, readonlyCollectionHandlers, readonlyMap);
 }
@@ -1216,24 +1216,24 @@ function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandl
 	proxyMap.set(target, proxy);
 	return proxy;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isReactive(value) {
 	if (/* @__PURE__ */ isReadonly(value)) return /* @__PURE__ */ isReactive(value["__v_raw"]);
 	return !!(value && value["__v_isReactive"]);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isReadonly(value) {
 	return !!(value && value["__v_isReadonly"]);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isShallow(value) {
 	return !!(value && value["__v_isShallow"]);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isProxy(value) {
 	return value ? !!value["__v_raw"] : false;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function toRaw(observed) {
 	const raw = observed && observed["__v_raw"];
 	return raw ? /* @__PURE__ */ toRaw(raw) : observed;
@@ -1244,15 +1244,15 @@ function markRaw(value) {
 }
 var toReactive = (value) => isObject$2(value) ? /* @__PURE__ */ reactive(value) : value;
 var toReadonly = (value) => isObject$2(value) ? /* @__PURE__ */ readonly(value) : value;
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isRef(r) {
 	return r ? r["__v_isRef"] === true : false;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function ref(value) {
 	return createRef(value, false);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function shallowRef(value) {
 	return createRef(value, true);
 }
@@ -1348,7 +1348,7 @@ var GetterRefImpl = class {
 		return this._value = this._getter();
 	}
 };
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function toRef(source, key, defaultValue) {
 	if (/* @__PURE__ */ isRef(source)) return source;
 	else if (isFunction(source)) return new GetterRefImpl(source);
@@ -1418,7 +1418,7 @@ var ComputedRefImpl = class {
 		if (this.setter) this.setter(newValue);
 	}
 };
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function computed$1(getterOrOptions, debugOptions, isSSR = false) {
 	let getter;
 	let setter;
@@ -2299,7 +2299,7 @@ function getTransitionRawChildren(children, keepComment = false, parentKey) {
 	if (keyedFragmentCount > 1) for (let i = 0; i < ret.length; i++) ret[i].patchFlag = -2;
 	return ret;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function defineComponent(options, extraOptions) {
 	return isFunction(options) ? /* @__PURE__ */ (() => extend({ name: options.name }, extraOptions, { setup: options }))() : options;
 }
@@ -5026,7 +5026,7 @@ function shouldSetAsPropForVueCE(el, key) {
 	return Array.isArray(props) ? props.some((prop) => camelize(prop) === camelKey) : Object.keys(props).some((prop) => camelize(prop) === camelKey);
 }
 var REMOVAL = {};
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function defineCustomElement(options, extraOptions, _createApp) {
 	let Comp = /* @__PURE__ */ defineComponent(options, extraOptions);
 	if (isPlainObject(Comp)) Comp = extend({}, Comp, extraOptions);
@@ -7233,7 +7233,7 @@ function requireDayjs_min$1() {
 	})(dayjs_min$1$1);
 	return dayjs_min$1$1.exports;
 }
-var dayjs$1 = /* @__PURE__ */ getDefaultExportFromCjs$2(requireDayjs_min$1());
+var dayjs$1 = /*@__PURE__*/ getDefaultExportFromCjs$2(requireDayjs_min$1());
 var sv$1$1 = { exports: {} };
 var sv$2 = sv$1$1.exports;
 var hasRequiredSv$1;
@@ -7322,7 +7322,7 @@ function requireWeekOfYear$1() {
 	})(weekOfYear$2$1);
 	return weekOfYear$2$1.exports;
 }
-var weekOfYear$3 = /* @__PURE__ */ getDefaultExportFromCjs$2(requireWeekOfYear$1());
+var weekOfYear$3 = /*@__PURE__*/ getDefaultExportFromCjs$2(requireWeekOfYear$1());
 dayjs$1.extend(weekOfYear$3);
 /**
 * What format to use when formatting dates.
@@ -8016,7 +8016,7 @@ function requireDayjs_min() {
 	})(dayjs_min$1);
 	return dayjs_min$1.exports;
 }
-var dayjs = /* @__PURE__ */ getDefaultExportFromCjs(requireDayjs_min());
+var dayjs = /*@__PURE__*/ getDefaultExportFromCjs(requireDayjs_min());
 var sv$1 = { exports: {} };
 var sv = sv$1.exports;
 var hasRequiredSv;
@@ -8105,7 +8105,7 @@ function requireWeekOfYear() {
 	})(weekOfYear$2);
 	return weekOfYear$2.exports;
 }
-var weekOfYear = /* @__PURE__ */ getDefaultExportFromCjs(requireWeekOfYear());
+var weekOfYear = /*@__PURE__*/ getDefaultExportFromCjs(requireWeekOfYear());
 dayjs.extend(weekOfYear);
 /**
 * What format to use when formatting dates.
@@ -9642,7 +9642,7 @@ var Rotate = new Set([
 	"180",
 	"270"
 ]);
-var FIcon_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FIcon_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FIcon",
 	inheritAttrs: false,
 	props: {
@@ -9736,7 +9736,7 @@ function _sfc_render$50(_ctx, _cache, $props, $setup, $data, $options) {
 		createBaseVNode("use", { href: _ctx.spriteId }, null, 8, _hoisted_2$59)
 	], 16, _hoisted_1$80);
 }
-var FIcon_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FIcon_vue_vue_type_script_lang_default, [["render", _sfc_render$50]]);
+var FIcon_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FIcon_vue_vue_type_script_lang_default, [["render", _sfc_render$50]]);
 function useInflight(fn, disabled) {
 	const inflight = /* @__PURE__ */ ref(false);
 	if (!fn || typeof fn !== "function") return {
@@ -13660,7 +13660,7 @@ function isTeleportDisabled(options) {
 	else if (placement === Placement.NotCalculated && !isMobileSize) disableTeleport = false;
 	return disableTeleport;
 }
-var IPopup_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "IPopup",
 	inheritAttrs: false,
 	props: {
@@ -13930,7 +13930,7 @@ function _sfc_render$34(_ctx, _cache, $props, $setup, $data, $options) {
 		placement: _ctx.placement
 	})))], 544)], 16)], 8, ["to", "disabled"])) : createCommentVNode("", true);
 }
-var IPopup_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(IPopup_vue_vue_type_script_lang_default, [["render", _sfc_render$34]]);
+var IPopup_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(IPopup_vue_vue_type_script_lang_default, [["render", _sfc_render$34]]);
 function getNewItemIndexFromMenuAction$2(action, index, n) {
 	let newIndex;
 	if (n <= 0) return 0;
@@ -13979,7 +13979,7 @@ var preventKeys$1 = new Set([
 	"Spacebar",
 	"Enter"
 ]);
-var IPopupMenu_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var IPopupMenu_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "IPopupMenu",
 	components: { IPopup: IPopup_default },
 	props: {
@@ -14216,8 +14216,8 @@ function _sfc_render$33(_ctx, _cache, $props, $setup, $data, $options) {
 		"onKeydown"
 	]);
 }
-var IPopupMenu_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(IPopupMenu_vue_vue_type_script_lang_default, [["render", _sfc_render$33]]);
-var ISkipLink_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var IPopupMenu_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(IPopupMenu_vue_vue_type_script_lang_default, [["render", _sfc_render$33]]);
+var ISkipLink_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "ISkipLink",
 	mixins: [TranslationMixin],
 	props: { 
@@ -14237,7 +14237,7 @@ function _sfc_render$31(_ctx, _cache, $props, $setup, $data, $options) {
 		href: _ctx.href
 	}, [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(_ctx.$t("fkui.skip-link.text", "Gå direkt till innehåll")), 1)])], 8, _hoisted_1$62);
 }
-var ISkipLink_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(ISkipLink_vue_vue_type_script_lang_default, [["render", _sfc_render$31]]);
+var ISkipLink_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(ISkipLink_vue_vue_type_script_lang_default, [["render", _sfc_render$31]]);
 TranslationService.provider.translate("fkui.tooltip.close", "Stäng");
 /**
 * @internal
@@ -14269,7 +14269,7 @@ var anyType$1 = [
 	Date,
 	Boolean
 ];
-var FCheckboxField_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FCheckboxField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FCheckboxField",
 	inheritAttrs: false,
 	props: {
@@ -14473,7 +14473,7 @@ function _sfc_render$27(_ctx, _cache, $props, $setup, $data, $options) {
 		], 10, _hoisted_2$42)
 	], 34);
 }
-var FCheckboxField_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FCheckboxField_vue_vue_type_script_lang_default, [["render", _sfc_render$27]]);
+var FCheckboxField_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FCheckboxField_vue_vue_type_script_lang_default, [["render", _sfc_render$27]]);
 TranslationService.provider.translate("fkui.crud-dataset.modal.header.add", "Lägg till rad"), TranslationService.provider.translate("fkui.crud-dataset.modal.header.modify", "Ändra rad"), TranslationService.provider.translate("fkui.crud-dataset.modal.header.delete", "Är du säker på att du vill ta bort raden?");
 /**
 * @public
@@ -15002,7 +15002,7 @@ registerLayout({
 });
 var _hoisted_1$30 = ["part"];
 var _hoisted_2$24 = ["part", "data-direction"];
-var FPageLayout_ce_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(/* @__PURE__ */ defineComponent({
+var FPageLayout_ce_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(/* @__PURE__ */ defineComponent({
 	__name: "FPageLayout.ce",
 	props: { layout: { type: String } },
 	emits: ["update"],
@@ -15737,7 +15737,7 @@ var _hoisted_1$29 = {
 var _hoisted_2$23 = ["aria-orientation"];
 var _hoisted_3$18 = ["aria-orientation"];
 var STEP_SIZE = 10;
-var FResizePane_ce_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(/* @__PURE__ */ defineComponent({
+var FResizePane_ce_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(/* @__PURE__ */ defineComponent({
 	inheritAttrs: false,
 	__name: "FResizePane.ce",
 	props: {
@@ -16041,7 +16041,7 @@ var _hoisted_5$12 = {
 	class: "panel__footer",
 	part: "footer"
 };
-var FDetailsPanel_ce_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(/* @__PURE__ */ defineComponent({
+var FDetailsPanel_ce_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(/* @__PURE__ */ defineComponent({
 	__name: "FDetailsPanel.ce",
 	emits: ["closed"],
 	setup(__props, { emit: __emit }) {
@@ -16141,7 +16141,7 @@ var anyType = [
 	null,
 	Boolean
 ];
-var FRadioField_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FRadioField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FRadioField",
 	inheritAttrs: false,
 	props: {
@@ -16326,7 +16326,7 @@ function _sfc_render$13(_ctx, _cache, $props, $setup, $data, $options) {
 		], 10, _hoisted_2$16)
 	], 34);
 }
-var FRadioField_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FRadioField_vue_vue_type_script_lang_default, [["render", _sfc_render$13]]);
+var FRadioField_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FRadioField_vue_vue_type_script_lang_default, [["render", _sfc_render$13]]);
 var keybindings = {
 	Up: focusTrAbove,
 	Down: focusTrBelow,
@@ -16990,7 +16990,7 @@ var _hoisted_3$6 = {
 var _hoisted_4$5 = ["aria-expanded", "aria-label"];
 var _hoisted_5$5 = { class: "panel__content" };
 var _hoisted_6$4 = { class: "panel__footer" };
-var FMinimizablePanel_ce_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(/* @__PURE__ */ defineComponent({
+var FMinimizablePanel_ce_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(/* @__PURE__ */ defineComponent({
 	__name: "FMinimizablePanel.ce",
 	props: {
 		openPrefix: {
@@ -17201,7 +17201,7 @@ var preventKeys = new Set([
 	"Enter",
 	...verticalKeys
 ]);
-var FNavigationMenu_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FNavigationMenu_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FNavigationMenu",
 	components: {
 		FIcon: FIcon_default,
@@ -17585,8 +17585,8 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
 		])
 	], 10, _hoisted_1$9);
 }
-var FNavigationMenu_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FNavigationMenu_vue_vue_type_script_lang_default, [["render", _sfc_render$7]]);
-var FPageHeader_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FNavigationMenu_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FNavigationMenu_vue_vue_type_script_lang_default, [["render", _sfc_render$7]]);
+var FPageHeader_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FPageHeader",
 	components: { ISkipLink: ISkipLink_default },
 	inheritAttrs: true,
@@ -17658,7 +17658,7 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
 		], 512)
 	]);
 }
-var FPageHeader_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FPageHeader_vue_vue_type_script_lang_default, [["render", _sfc_render$4]]);
+var FPageHeader_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FPageHeader_vue_vue_type_script_lang_default, [["render", _sfc_render$4]]);
 //#endregion
 //#region \0plugin-vue:export-helper
 var _plugin_vue_export_helper_default = (sfc, props) => {
@@ -17677,7 +17677,7 @@ function _sfc_render$2(_ctx, _cache) {
 		createBaseVNode("div", { clas: "contextbar__name" }, "Test Testorsson", -1)
 	])]);
 }
-var XContextBar_default = /* @__PURE__ */ _plugin_vue_export_helper_default(_sfc_main$2, [["render", _sfc_render$2], ["__scopeId", "data-v-f3c4fc0f"]]);
+var XContextBar_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main$2, [["render", _sfc_render$2], ["__scopeId", "data-v-f3c4fc0f"]]);
 //#endregion
 //#region src/components/XExpensePanel.vue?vue&type=script&setup=true&lang.ts
 var _hoisted_1$4 = ["slot"];
@@ -19738,7 +19738,7 @@ var _hoisted_1 = ["slot"];
 var _hoisted_2 = ["slot"];
 //#endregion
 //#region src/App.vue
-var App_default = /* @__PURE__ */ _plugin_vue_export_helper_default(/* @__PURE__ */ defineComponent({
+var App_default = /*#__PURE__*/ _plugin_vue_export_helper_default(/* @__PURE__ */ defineComponent({
 	__name: "App",
 	setup(__props) {
 		registerLayout({
@@ -19827,14 +19827,14 @@ var _sfc_main$1 = {};
 function _sfc_render$1(_ctx, _cache) {
 	return openBlock(), createElementBlock(Fragment, null, [_cache[0] || (_cache[0] = createBaseVNode("h1", null, "Dokument", -1)), _cache[1] || (_cache[1] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1))], 64);
 }
-var XDocumentView_default = /* @__PURE__ */ _plugin_vue_export_helper_default(_sfc_main$1, [["render", _sfc_render$1]]);
+var XDocumentView_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main$1, [["render", _sfc_render$1]]);
 //#endregion
 //#region src/views/XJournalView.vue
 var _sfc_main = {};
 function _sfc_render(_ctx, _cache) {
 	return openBlock(), createElementBlock(Fragment, null, [_cache[0] || (_cache[0] = createBaseVNode("h1", null, "Journal", -1)), _cache[1] || (_cache[1] = createBaseVNode("p", null, "Lorem ipsum dolor sit amet", -1))], 64);
 }
-var XJournalView_default = /* @__PURE__ */ _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render]]);
+var XJournalView_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render]]);
 //#endregion
 //#region src/views/XOverviewView.vue
 var XOverviewView_default = /* @__PURE__ */ defineComponent({

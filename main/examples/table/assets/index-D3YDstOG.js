@@ -47,7 +47,7 @@ var __exportAll = (all, no_symbols) => {
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function makeMap(str) {
 	const map = /* @__PURE__ */ Object.create(null);
 	for (const key of str.split(",")) map[key] = 1;
@@ -1245,20 +1245,20 @@ function targetTypeMap(rawType) {
 		default: return 0;
 	}
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function reactive(target) {
 	if (/* @__PURE__ */ isReadonly(target)) return target;
 	return createReactiveObject(target, false, mutableHandlers, mutableCollectionHandlers, reactiveMap);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function shallowReactive(target) {
 	return createReactiveObject(target, false, shallowReactiveHandlers, shallowCollectionHandlers, shallowReactiveMap);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function readonly(target) {
 	return createReactiveObject(target, true, readonlyHandlers, readonlyCollectionHandlers, readonlyMap);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function shallowReadonly(target) {
 	return createReactiveObject(target, true, shallowReadonlyHandlers, shallowReadonlyCollectionHandlers, shallowReadonlyMap);
 }
@@ -1274,24 +1274,24 @@ function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandl
 	proxyMap.set(target, proxy);
 	return proxy;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isReactive(value) {
 	if (/* @__PURE__ */ isReadonly(value)) return /* @__PURE__ */ isReactive(value["__v_raw"]);
 	return !!(value && value["__v_isReactive"]);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isReadonly(value) {
 	return !!(value && value["__v_isReadonly"]);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isShallow(value) {
 	return !!(value && value["__v_isShallow"]);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isProxy(value) {
 	return value ? !!value["__v_raw"] : false;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function toRaw(observed) {
 	const raw = observed && observed["__v_raw"];
 	return raw ? /* @__PURE__ */ toRaw(raw) : observed;
@@ -1302,15 +1302,15 @@ function markRaw(value) {
 }
 var toReactive = (value) => isObject$2(value) ? /* @__PURE__ */ reactive(value) : value;
 var toReadonly = (value) => isObject$2(value) ? /* @__PURE__ */ readonly(value) : value;
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isRef(r) {
 	return r ? r["__v_isRef"] === true : false;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function ref(value) {
 	return createRef(value, false);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function shallowRef(value) {
 	return createRef(value, true);
 }
@@ -1383,7 +1383,7 @@ var CustomRefImpl = class {
 function customRef(factory) {
 	return new CustomRefImpl(factory);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function toRefs(object) {
 	const ret = isArray$1(object) ? new Array(object.length) : {};
 	for (const key in object) ret[key] = propertyToRef(object, key);
@@ -1434,7 +1434,7 @@ var GetterRefImpl = class {
 		return this._value = this._getter();
 	}
 };
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function toRef(source, key, defaultValue) {
 	if (/* @__PURE__ */ isRef(source)) return source;
 	else if (isFunction(source)) return new GetterRefImpl(source);
@@ -1504,7 +1504,7 @@ var ComputedRefImpl = class {
 		if (this.setter) this.setter(newValue);
 	}
 };
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function computed$1(getterOrOptions, debugOptions, isSSR = false) {
 	let getter;
 	let setter;
@@ -2528,7 +2528,7 @@ function getTransitionRawChildren(children, keepComment = false, parentKey) {
 	if (keyedFragmentCount > 1) for (let i = 0; i < ret.length; i++) ret[i].patchFlag = -2;
 	return ret;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function defineComponent(options, extraOptions) {
 	return isFunction(options) ? /* @__PURE__ */ (() => extend({ name: options.name }, extraOptions, { setup: options }))() : options;
 }
@@ -2987,7 +2987,7 @@ function forEachElement(node, cb) {
 	} else cb(node);
 }
 var isAsyncWrapper = (i) => !!i.type.__asyncLoader;
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function defineAsyncComponent(source) {
 	if (isFunction(source)) source = { loader: source };
 	const { loader, loadingComponent, errorComponent, delay = 200, hydrate: hydrateStrategy, timeout, suspensible = true, onError: userOnError } = source;
@@ -6611,7 +6611,7 @@ function shouldSetAsPropForVueCE(el, key) {
 	return Array.isArray(props) ? props.some((prop) => camelize(prop) === camelKey) : Object.keys(props).some((prop) => camelize(prop) === camelKey);
 }
 var REMOVAL = {};
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function defineCustomElement(options, extraOptions, _createApp) {
 	let Comp = /* @__PURE__ */ defineComponent(options, extraOptions);
 	if (isPlainObject(Comp)) Comp = extend({}, Comp, extraOptions);
@@ -12682,7 +12682,7 @@ function requireLodash_clonedeep() {
 	})(lodash_clonedeep, lodash_clonedeep.exports);
 	return lodash_clonedeep.exports;
 }
-var cloneDeep = /* @__PURE__ */ getDefaultExportFromCjs$1(requireLodash_clonedeep());
+var cloneDeep = /*@__PURE__*/ getDefaultExportFromCjs$1(requireLodash_clonedeep());
 /**
 * Perform a deep clone of the given value.
 *
@@ -13093,7 +13093,7 @@ function requireDayjs_min$1() {
 	})(dayjs_min$1$1);
 	return dayjs_min$1$1.exports;
 }
-var dayjs$1 = /* @__PURE__ */ getDefaultExportFromCjs$2(requireDayjs_min$1());
+var dayjs$1 = /*@__PURE__*/ getDefaultExportFromCjs$2(requireDayjs_min$1());
 var sv$1$1 = { exports: {} };
 var sv$2 = sv$1$1.exports;
 var hasRequiredSv$1;
@@ -13182,7 +13182,7 @@ function requireWeekOfYear$1() {
 	})(weekOfYear$2$1);
 	return weekOfYear$2$1.exports;
 }
-var weekOfYear$3 = /* @__PURE__ */ getDefaultExportFromCjs$2(requireWeekOfYear$1());
+var weekOfYear$3 = /*@__PURE__*/ getDefaultExportFromCjs$2(requireWeekOfYear$1());
 dayjs$1.extend(weekOfYear$3);
 /**
 * What format to use when formatting dates.
@@ -15461,7 +15461,7 @@ function requireDayjs_min() {
 	})(dayjs_min$1);
 	return dayjs_min$1.exports;
 }
-var dayjs = /* @__PURE__ */ getDefaultExportFromCjs(requireDayjs_min());
+var dayjs = /*@__PURE__*/ getDefaultExportFromCjs(requireDayjs_min());
 var sv$1 = { exports: {} };
 var sv = sv$1.exports;
 var hasRequiredSv;
@@ -15550,7 +15550,7 @@ function requireWeekOfYear() {
 	})(weekOfYear$2);
 	return weekOfYear$2.exports;
 }
-var weekOfYear = /* @__PURE__ */ getDefaultExportFromCjs(requireWeekOfYear());
+var weekOfYear = /*@__PURE__*/ getDefaultExportFromCjs(requireWeekOfYear());
 dayjs.extend(weekOfYear);
 /**
 * What format to use when formatting dates.
@@ -17478,7 +17478,7 @@ var Rotate = new Set([
 	"180",
 	"270"
 ]);
-var FIcon_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FIcon_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FIcon",
 	inheritAttrs: false,
 	props: {
@@ -17572,7 +17572,7 @@ function _sfc_render$50(_ctx, _cache, $props, $setup, $data, $options) {
 		createBaseVNode("use", { href: _ctx.spriteId }, null, 8, _hoisted_2$59)
 	], 16, _hoisted_1$80);
 }
-var FIcon_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FIcon_vue_vue_type_script_lang_default, [["render", _sfc_render$50]]);
+var FIcon_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FIcon_vue_vue_type_script_lang_default, [["render", _sfc_render$50]]);
 function useInflight(fn, disabled) {
 	const inflight = /* @__PURE__ */ ref(false);
 	if (!fn || typeof fn !== "function") return {
@@ -20495,7 +20495,7 @@ function sizeClass(size) {
 /**
 * Level: Ready
 */
-var FModal_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FModal",
 	components: { FIcon: FIcon_default },
 	mixins: [TranslationMixin],
@@ -20733,7 +20733,7 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 		])
 	])], 2)])], 32)])], 10, _hoisted_1$78)) : createCommentVNode("", true);
 }
-var FModal_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FModal_vue_vue_type_script_lang_default, [["render", _sfc_render$49]]);
+var FModal_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FModal_vue_vue_type_script_lang_default, [["render", _sfc_render$49]]);
 (/* @__PURE__ */ __commonJSMin((() => {
 	var $ = require_export();
 	var lengthOfArrayLike = require_length_of_array_like();
@@ -20782,7 +20782,7 @@ var defaultButtons = [{
 /**
 * Level: Ready
 */
-var FConfirmModal_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FConfirmModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FConfirmModal",
 	components: { FModal: FModal_default },
 	inheritAttrs: true,
@@ -20924,7 +20924,7 @@ function _sfc_render$48(_ctx, _cache, $props, $setup, $data, $options) {
 		"onClose"
 	]);
 }
-var FConfirmModal_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FConfirmModal_vue_vue_type_script_lang_default, [["render", _sfc_render$48]]);
+var FConfirmModal_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FConfirmModal_vue_vue_type_script_lang_default, [["render", _sfc_render$48]]);
 var GAP = [
 	"1x",
 	"2x",
@@ -20945,7 +20945,7 @@ var FLOAT = [
 	"center",
 	"right"
 ];
-var IFlex_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var IFlex_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "IFlex",
 	inheritAttrs: true,
 	props: {
@@ -21007,8 +21007,8 @@ var IFlex_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
 function _sfc_render$47(_ctx, _cache, $props, $setup, $data, $options) {
 	return openBlock(), createElementBlock("div", { class: normalizeClass(["iflex", _ctx.classList]) }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-var IFlex_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(IFlex_vue_vue_type_script_lang_default, [["render", _sfc_render$47]]);
-var IFlexItem_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var IFlex_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(IFlex_vue_vue_type_script_lang_default, [["render", _sfc_render$47]]);
+var IFlexItem_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "IFlexItem",
 	inheritAttrs: true,
 	props: {
@@ -21047,7 +21047,7 @@ var IFlexItem_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent
 function _sfc_render$46(_ctx, _cache, $props, $setup, $data, $options) {
 	return openBlock(), createElementBlock("div", { class: normalizeClass(["iflex__item", _ctx.classList]) }, [renderSlot(_ctx.$slots, "default")], 2);
 }
-var IFlexItem_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(IFlexItem_vue_vue_type_script_lang_default, [["render", _sfc_render$46]]);
+var IFlexItem_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(IFlexItem_vue_vue_type_script_lang_default, [["render", _sfc_render$46]]);
 function focusError(item) {
 	const element = document.querySelector(`#${String(item.id)}`);
 	if (!element) throw new Error(`Can not find element with id "${String(item.id)}"`);
@@ -21056,7 +21056,7 @@ function focusError(item) {
 	focus$1(focusElement !== null && focusElement !== void 0 ? focusElement : element);
 }
 var noop$6 = () => {};
-var FErrorList_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FErrorList_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FErrorList",
 	components: {
 		FIcon: FIcon_default,
@@ -21154,7 +21154,7 @@ function _sfc_render$45(_ctx, _cache, $props, $setup, $data, $options) {
 		_: 3
 	})]);
 }
-var FErrorList_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FErrorList_vue_vue_type_script_lang_default, [["render", _sfc_render$45]]);
+var FErrorList_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FErrorList_vue_vue_type_script_lang_default, [["render", _sfc_render$45]]);
 var require_es_iterator_every = /* @__PURE__ */ __commonJSMin((() => {
 	var $ = require_export();
 	var call = require_function_call();
@@ -21251,7 +21251,7 @@ function cleanUpElements(vm) {
 		}, 0);
 	});
 }
-var FValidationGroup_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FValidationGroup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FValidationGroup",
 	props: {
 		/**
@@ -21321,7 +21321,7 @@ function _sfc_render$44(_ctx, _cache, $props, $setup, $data, $options) {
 		onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
 	}, [renderSlot(_ctx.$slots, "default")], 32);
 }
-var FValidationGroup_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FValidationGroup_vue_vue_type_script_lang_default, [["render", _sfc_render$44]]);
+var FValidationGroup_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FValidationGroup_vue_vue_type_script_lang_default, [["render", _sfc_render$44]]);
 /**
 * @public
 */
@@ -21331,7 +21331,7 @@ var FValidationFormAction = /* @__PURE__ */ function(FValidationFormAction) {
 	return FValidationFormAction;
 }({});
 function noop$5() {}
-var FValidationForm_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FValidationForm_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FValidationForm",
 	components: {
 		FValidationGroup: FValidationGroup_default,
@@ -21481,7 +21481,7 @@ function _sfc_render$43(_ctx, _cache, $props, $setup, $data, $options) {
 		_: 3
 	}, 8, ["modelValue"]);
 }
-var FFormModal_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FFormModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FFormModal",
 	components: {
 		FModal: FModal_default,
@@ -21715,7 +21715,7 @@ function _sfc_render$42(_ctx, _cache, $props, $setup, $data, $options) {
 		"onClose"
 	]);
 }
-var FFormModal_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FFormModal_vue_vue_type_script_lang_default, [["render", _sfc_render$42]]);
+var FFormModal_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FFormModal_vue_vue_type_script_lang_default, [["render", _sfc_render$42]]);
 function isVueComponent(element) {
 	return Boolean(element && typeof element === "object" && "$el" in element);
 }
@@ -22865,7 +22865,7 @@ function isTeleportDisabled(options) {
 	else if (placement === Placement.NotCalculated && !isMobileSize) disableTeleport = false;
 	return disableTeleport;
 }
-var IPopup_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "IPopup",
 	inheritAttrs: false,
 	props: {
@@ -23135,7 +23135,7 @@ function _sfc_render$34(_ctx, _cache, $props, $setup, $data, $options) {
 		placement: _ctx.placement
 	})))], 544)], 16)], 8, ["to", "disabled"])) : createCommentVNode("", true);
 }
-var IPopup_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(IPopup_vue_vue_type_script_lang_default, [["render", _sfc_render$34]]);
+var IPopup_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(IPopup_vue_vue_type_script_lang_default, [["render", _sfc_render$34]]);
 function computeArrowOffset(placement, inputIconRect, wrapperRect) {
 	switch (placement) {
 		case Placement.A: return {
@@ -23827,7 +23827,7 @@ function isEqual$1(a, b) {
 	if (a.length !== b.length) return false;
 	return a.every((_, i) => a[i] === b[i]);
 }
-var FFieldset_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FFieldset_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FFieldset",
 	components: { FIcon: FIcon_default },
 	mixins: [TranslationMixin],
@@ -24122,7 +24122,7 @@ function _sfc_render$28(_ctx, _cache, $props, $setup, $data, $options) {
 		createBaseVNode("div", { class: normalizeClass(_ctx.groupContentClass) }, [renderSlot(_ctx.$slots, "default")], 2)
 	], 42, _hoisted_1$58);
 }
-var FFieldset_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FFieldset_vue_vue_type_script_lang_default, [["render", _sfc_render$28]]);
+var FFieldset_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FFieldset_vue_vue_type_script_lang_default, [["render", _sfc_render$28]]);
 var anyType$1 = [
 	String,
 	Object,
@@ -24131,7 +24131,7 @@ var anyType$1 = [
 	Date,
 	Boolean
 ];
-var FCheckboxField_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FCheckboxField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FCheckboxField",
 	inheritAttrs: false,
 	props: {
@@ -24335,7 +24335,7 @@ function _sfc_render$27(_ctx, _cache, $props, $setup, $data, $options) {
 		], 10, _hoisted_2$42)
 	], 34);
 }
-var FCheckboxField_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FCheckboxField_vue_vue_type_script_lang_default, [["render", _sfc_render$27]]);
+var FCheckboxField_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FCheckboxField_vue_vue_type_script_lang_default, [["render", _sfc_render$27]]);
 /**
 * @internal
 */
@@ -24913,7 +24913,7 @@ function FSortFilterDatasetInjected() {
 		registerCallbackOnMount: inject("registerCallbackOnMount", () => void 0)
 	};
 }
-var FLabel_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FLabel_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FLabel",
 	components: { FIcon: FIcon_default },
 	props: { 
@@ -25016,11 +25016,11 @@ function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
 		])) : createCommentVNode("", true)
 	], 8, _hoisted_6$14));
 }
-var FLabel_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FLabel_vue_vue_type_script_lang_default, [["render", _sfc_render$26]]);
+var FLabel_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FLabel_vue_vue_type_script_lang_default, [["render", _sfc_render$26]]);
 function resolveWidthClass$1(words, inline) {
 	return inline ? void 0 : words.split(" ").map((word) => `i-width-${word}`).join(" ");
 }
-var FSelectField_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FSelectField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FSelectField",
 	components: {
 		FIcon: FIcon_default,
@@ -25196,7 +25196,7 @@ function _sfc_render$25(_ctx, _cache, $props, $setup, $data, $options) {
 		], 2)
 	], 34);
 }
-var FSelectField_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FSelectField_vue_vue_type_script_lang_default, [["render", _sfc_render$25]]);
+var FSelectField_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FSelectField_vue_vue_type_script_lang_default, [["render", _sfc_render$25]]);
 var _hoisted_1$51 = {
 	key: 0,
 	class: "table-ng__cell table-ng__cell--expand"
@@ -27399,7 +27399,7 @@ var _hoisted_11$2 = ["aria-rowindex"];
 var _hoisted_12$2 = ["colspan"];
 var FTable_default = /* @__PURE__ */ defineComponent({
 	__name: "FTable",
-	props: /* @__PURE__ */ mergeModels({
+	props: /*@__PURE__*/ mergeModels({
 		columns: {},
 		rows: {},
 		keyAttribute: { default: () => void 0 },
@@ -27776,7 +27776,7 @@ function useTextFieldSetup(props) {
 		closeDropdown
 	};
 }
-var FTextField_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FTextField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FTextField",
 	components: {
 		FLabel: FLabel_default,
@@ -28243,9 +28243,9 @@ function _sfc_render$24(_ctx, _cache, $props, $setup, $data, $options) {
 		])) : createCommentVNode("", true)
 	], 2);
 }
-var FTextField_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FTextField_vue_vue_type_script_lang_default, [["render", _sfc_render$24]]);
+var FTextField_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FTextField_vue_vue_type_script_lang_default, [["render", _sfc_render$24]]);
 TranslationService.provider.translate("fkui.email-text-field.error.pasting", "Du kan inte kopiera mejladressen. Du måste skriva in den igen.");
-var FSearchTextField_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FSearchTextField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FSearchTextField",
 	components: {
 		FTextField: FTextField_default,
@@ -28369,7 +28369,7 @@ function _sfc_render$21(_ctx, _cache, $props, $setup, $data, $options) {
 		"onUpdate"
 	])]);
 }
-var FSearchTextField_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FSearchTextField_vue_vue_type_script_lang_default, [["render", _sfc_render$21]]);
+var FSearchTextField_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FSearchTextField_vue_vue_type_script_lang_default, [["render", _sfc_render$21]]);
 /**
 * @internal
 * @since v6.44.0
@@ -29399,7 +29399,7 @@ var anyType = [
 	null,
 	Boolean
 ];
-var FRadioField_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
+var FRadioField_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FRadioField",
 	inheritAttrs: false,
 	props: {
@@ -29584,7 +29584,7 @@ function _sfc_render$13(_ctx, _cache, $props, $setup, $data, $options) {
 		], 10, _hoisted_2$16)
 	], 34);
 }
-var FRadioField_default = /* @__PURE__ */ _plugin_vue_export_helper_default$1(FRadioField_vue_vue_type_script_lang_default, [["render", _sfc_render$13]]);
+var FRadioField_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FRadioField_vue_vue_type_script_lang_default, [["render", _sfc_render$13]]);
 ({ .../* @__PURE__ */ defineComponent({ computed: { ariaLabel() {
 	const content = renderSlotText(this.$slots.default);
 	if (!content) throw new Error("`f-logo` requires text content.");
@@ -29612,7 +29612,7 @@ new Set([
 var paginateDatasetKey = Symbol("paginateDataset");
 var FPaginateDataset_default = /* @__PURE__ */ defineComponent({
 	__name: "FPaginateDataset",
-	props: /* @__PURE__ */ mergeModels({
+	props: /*@__PURE__*/ mergeModels({
 		modelValue: {},
 		items: { default: () => [] },
 		itemsPerPage: { default: 10 },
@@ -29625,7 +29625,7 @@ var FPaginateDataset_default = /* @__PURE__ */ defineComponent({
 		"modelValue": { default: 1 },
 		"modelModifiers": {}
 	}),
-	emits: /* @__PURE__ */ mergeModels(["update:modelValue"], ["update:modelValue"]),
+	emits: /*@__PURE__*/ mergeModels(["update:modelValue"], ["update:modelValue"]),
 	setup(__props) {
 		const currentPage = useModel(__props, "modelValue");
 		const fetchedData = /* @__PURE__ */ ref(null);
@@ -31877,13 +31877,13 @@ function _sfc_render$1(_ctx, _cache) {
 		})
 	])]);
 }
-var TopNavigation_default = /* @__PURE__ */ _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render$1], ["__scopeId", "data-v-4a70eede"]]);
+var TopNavigation_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render$1], ["__scopeId", "data-v-4a70eede"]]);
 //#endregion
 //#region src/App.vue?vue&type=script&setup=true&lang.ts
 var _hoisted_1$4 = { id: "app" };
 //#endregion
 //#region src/App.vue
-var App_default = /* @__PURE__ */ _plugin_vue_export_helper_default(/* @__PURE__ */ defineComponent({
+var App_default = /*#__PURE__*/ _plugin_vue_export_helper_default(/* @__PURE__ */ defineComponent({
 	__name: "App",
 	setup(__props) {
 		const route = useRoute();
@@ -45173,7 +45173,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 		"livedata"
 	]);
 }
-var FTableColumnLiveExample_default = /* @__PURE__ */ _plugin_vue_export_helper_default(FTableColumnLiveExample_vue_vue_type_script_lang_default, [["render", _sfc_render]]);
+var FTableColumnLiveExample_default = /*#__PURE__*/ _plugin_vue_export_helper_default(FTableColumnLiveExample_vue_vue_type_script_lang_default, [["render", _sfc_render]]);
 //#endregion
 //#region ../../packages/vue/src/components/FTable/tests/FTableCrudDatasetExample.vue
 var FTableCrudDatasetExample_default = /* @__PURE__ */ defineComponent({
