@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots should match snapshot when collapsed 1`] = `
+exports[`snapshots > should match snapshot when collapsed 1`] = `
 <div
   class="expandable-paragraph expandable-paragraph--closed"
 >
@@ -26,24 +26,28 @@ exports[`snapshots should match snapshot when collapsed 1`] = `
               library="f"
               name="dash"
             />
+             
             <f-icon-stub
               library="f"
               name="dash"
             />
           </span>
         </span>
+         
         
         My expandable component
         
       </button>
     </span>
+     
     <!--v-if-->
   </div>
+   
   <f-expand-stub />
 </div>
 `;
 
-exports[`snapshots should match snapshot when expanded 1`] = `
+exports[`snapshots > should match snapshot when expanded 1`] = `
 <div
   class="expandable-paragraph expandable-paragraph--open"
 >
@@ -69,24 +73,28 @@ exports[`snapshots should match snapshot when expanded 1`] = `
               library="f"
               name="dash"
             />
+             
             <f-icon-stub
               library="f"
               name="dash"
             />
           </span>
         </span>
+         
         
         My expandable component
         
       </button>
     </span>
+     
     <!--v-if-->
   </div>
+   
   <f-expand-stub />
 </div>
 `;
 
-exports[`snapshots should match snapshot with custom heading level 1`] = `
+exports[`snapshots > should match snapshot with custom heading level 1`] = `
 <div
   class="expandable-paragraph expandable-paragraph--closed"
 >
@@ -112,24 +120,28 @@ exports[`snapshots should match snapshot with custom heading level 1`] = `
               library="f"
               name="dash"
             />
+             
             <f-icon-stub
               library="f"
               name="dash"
             />
           </span>
         </span>
+         
         
         My expandable component
         
       </button>
     </h3>
+     
     <!--v-if-->
   </div>
+   
   <f-expand-stub />
 </div>
 `;
 
-exports[`snapshots should match snapshot with list styling 1`] = `
+exports[`snapshots > should match snapshot with list styling 1`] = `
 <div
   class="expandable-paragraph expandable-paragraph--closed expandable-paragraph--list"
 >
@@ -155,24 +167,28 @@ exports[`snapshots should match snapshot with list styling 1`] = `
               library="f"
               name="dash"
             />
+             
             <f-icon-stub
               library="f"
               name="dash"
             />
           </span>
         </span>
+         
         
         My expandable component
         
       </button>
     </h3>
+     
     <!--v-if-->
   </div>
+   
   <f-expand-stub />
 </div>
 `;
 
-exports[`snapshots should match snapshot with related information 1`] = `
+exports[`snapshots > should match snapshot with related information 1`] = `
 <div
   class="expandable-paragraph expandable-paragraph--closed"
 >
@@ -198,17 +214,20 @@ exports[`snapshots should match snapshot with related information 1`] = `
               library="f"
               name="dash"
             />
+             
             <f-icon-stub
               library="f"
               name="dash"
             />
           </span>
         </span>
+         
         
         My expandable component
         
       </button>
     </h3>
+     
     <div
       class="expandable-paragraph__related-information"
     >
@@ -217,6 +236,7 @@ exports[`snapshots should match snapshot with related information 1`] = `
       
     </div>
   </div>
+   
   <f-expand-stub />
 </div>
 `;

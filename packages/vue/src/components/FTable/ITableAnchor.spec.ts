@@ -1,5 +1,6 @@
 import { type ComponentPublicInstance } from "vue";
 import { mount, shallowMount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import ITableAnchor from "./ITableAnchor.vue";
 import { normalizeTableColumn } from "./table-column";
 

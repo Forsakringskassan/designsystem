@@ -1,4 +1,5 @@
-import "html-validate/jest";
+import { describe, expect, it } from "vitest";
+import "html-validate/vitest";
 import { sort } from "./f-sort-filter-sorter";
 
 describe("FSortFilterSorter", () => {

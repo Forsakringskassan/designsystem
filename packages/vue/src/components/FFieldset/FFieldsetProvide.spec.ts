@@ -1,5 +1,6 @@
 import { defineComponent } from "vue";
 import { mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import FFieldset from "./FFieldset.vue";
 import { useFieldset } from "./use-fieldset";
 

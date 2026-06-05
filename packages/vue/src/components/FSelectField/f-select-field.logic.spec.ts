@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { resolveWidthClass } from "./f-select-field.logic";
 
 describe("resolveWidthClass", () => {

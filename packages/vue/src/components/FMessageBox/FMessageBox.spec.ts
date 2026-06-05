@@ -1,6 +1,7 @@
 import { VueWrapper, mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import FMessageBox from "./FMessageBox.vue";
-import "html-validate/jest";
+import "html-validate/vitest";
 
 function createWrapper({
     props = {},

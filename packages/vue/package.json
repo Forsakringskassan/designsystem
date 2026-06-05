@@ -56,30 +56,14 @@
     "build:lib": "fk-build-vue-lib",
     "build:selectors": "fk-build-selectors",
     "build:test-bundles": "node build-test-bundles.mjs",
-    "clean": "rimraf -g .jest-cache coverage dist public temp test-results",
+    "clean": "rimraf -g coverage dist public temp test-results",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
     "start": "vite --",
-    "test": "jest --coverage",
-    "unit": "jest",
-    "unit:watch": "jest --watch"
-  },
-  "jest": {
-    "globals": {
-      "vue-jest": {
-        "compilerOptions": {
-          "comments": false
-        }
-      }
-    },
-    "moduleNameMapper": {
-      "^(.+\\.css)\\?raw$": "$1"
-    },
-    "preset": "@forsakringskassan/jest-config-vue",
-    "setupFilesAfterEnv": [
-      "./jest.setup.ts"
-    ]
+    "test": "vitest run --coverage",
+    "unit": "vitest run",
+    "unit:watch": "vitest"
   },
   "dependencies": {
     "@vueuse/core": "12.8.2",
@@ -93,12 +77,14 @@
     "@fkui/test-utils": "6.49.0",
     "@fkui/theme-default": "6.49.0",
     "@forsakringskassan/vite-lib-config": "5.0.2",
+    "@forsakringskassan/vitest-config-jsdom": "2.2.9",
     "@vue/test-utils": "2.4.11",
     "cypress": "15.16.0",
     "esbuild": "0.28.0",
     "flush-promises": "1.0.2",
     "glob": "13.0.6",
     "vite": "8.0.16",
+    "vitest": "4.1.8",
     "vue": "3.5.35",
     "vue-router": "4.6.4"
   },

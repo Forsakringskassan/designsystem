@@ -1,3 +1,4 @@
+import { expect, it, vi } from "vitest";
 import { EventBus } from "./event-bus";
 
 declare module "./event-bus" {
@@ -8,7 +9,7 @@ declare module "./event-bus" {
 
 it("should listen to events", () => {
     expect.assertions(1);
-    const spy = jest.fn();
+    const spy = vi.fn();
     EventBus.$on("my-event", spy);
     EventBus.$emit("my-event", "foo", 42);
     expect(spy).toHaveBeenCalledWith("foo", 42);
@@ -16,7 +17,7 @@ it("should listen to events", () => {
 
 it("should remove listeners", () => {
     expect.assertions(1);
-    const spy = jest.fn();
+    const spy = vi.fn();
     EventBus.$on("my-event", spy);
     EventBus.$off("my-event", spy);
     EventBus.$emit("my-event", "foo", 42);

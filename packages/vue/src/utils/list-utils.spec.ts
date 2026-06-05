@@ -1,3 +1,4 @@
+import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { UnknownItem } from "../types";
 import {
     handleKeyboardFocusNavigation,
@@ -6,7 +7,7 @@ import {
 } from "./list-utils";
 
 afterAll(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
 });
 
 describe("itemEquals()", () => {
@@ -64,9 +65,9 @@ describe("handleKeyboardFocusNavigation()", () => {
 
     beforeEach(() => {
         list = [
-            { id: 0, focus: jest.fn() } as unknown as HTMLElement,
-            { id: 1, focus: jest.fn() } as unknown as HTMLElement,
-            { id: 2, focus: jest.fn() } as unknown as HTMLElement,
+            { id: 0, focus: vi.fn() } as unknown as HTMLElement,
+            { id: 1, focus: vi.fn() } as unknown as HTMLElement,
+            { id: 2, focus: vi.fn() } as unknown as HTMLElement,
         ];
     });
 

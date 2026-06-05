@@ -1,5 +1,6 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { describe, expect, it, vi } from "vitest";
 import FFileSelector from "./FFileSelector.vue";
 
 function createWrapper({
@@ -38,7 +39,7 @@ describe("FFileselector", () => {
     });
 
     it("should pass listeners", async () => {
-        const foobar = jest.fn();
+        const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
         });
@@ -102,7 +103,7 @@ describe("FFileselector", () => {
 
 describe("html-validate", () => {
     describe("attributes", () => {
-        it("disabled", () => {
+        it("disabled", async () => {
             expect.assertions(2);
             const valid = /* HTML */ `
                 <f-file-selector>text</f-file-selector>
@@ -112,8 +113,8 @@ describe("html-validate", () => {
             const invalid = /* HTML */ `
                 <f-file-selector disabled="foobar">text</f-file-selector>
             `;
-            expect(valid).toMatchInlineCodeframe(`""`);
-            expect(invalid).toMatchInlineCodeframe(`
+            await expect(valid).toMatchInlineCodeframe(`""`);
+            await expect(invalid).toMatchInlineCodeframe(`
                 "error: Attribute "disabled" should omit value (attribute-boolean-style)
                   1 |
                 > 2 |                 <f-file-selector disabled="foobar">text</f-file-selector>

@@ -4,7 +4,8 @@ import {
     HtmlValidate,
     cjsResolver,
 } from "html-validate/node";
-import "html-validate/jest";
+import { describe, expect, it } from "vitest";
+import "html-validate/vitest";
 import FLogo from "./FLogo.vue";
 
 describe("size prop", () => {
@@ -55,7 +56,7 @@ describe("html-validate", () => {
             "html-validate-vue:recommended",
             "@fkui/vue:recommended",
         ],
-        plugins: ["<rootDir>/htmlvalidate", "html-validate-vue"],
+        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
     });
     const htmlvalidate = new HtmlValidate(loader);
 
@@ -72,7 +73,7 @@ describe("html-validate", () => {
         expect.assertions(1);
         const markup = /* HTML */ `<f-logo size="huge">foo</f-logo>`;
         const report = await htmlvalidate.validateString(markup);
-        expect(report).toMatchInlineCodeframe(`
+        await expect(report).toMatchInlineCodeframe(`
             "error: Attribute "size" has invalid value "huge" (attribute-allowed-values)
             > 1 | <f-logo size="huge">foo</f-logo>
                 |               ^^^^
@@ -85,7 +86,7 @@ describe("html-validate", () => {
         expect(/* HTML */ `<f-logo>foo</f-logo>`).toHTMLValidate();
         const markup = /* HTML */ `<f-logo></f-logo>`;
         const report = await htmlvalidate.validateString(markup);
-        expect(report).toMatchInlineCodeframe(`
+        await expect(report).toMatchInlineCodeframe(`
             "error: <f-logo> must have text content (text-content)
             > 1 | <f-logo></f-logo>
                 |  ^^^^^^

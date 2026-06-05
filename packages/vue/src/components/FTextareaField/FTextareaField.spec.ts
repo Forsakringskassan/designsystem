@@ -1,4 +1,4 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import {
     type PendingValidityEvent,
     type ValidatableHTMLElement,
@@ -7,6 +7,7 @@ import {
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { describe, expect, it, vi } from "vitest";
 import FTextareaField from "./FTextareaField.vue";
 
 function createWrapper({ props = {}, slots = {}, attrs = {} } = {}): VueWrapper<
@@ -136,8 +137,8 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
-        const focus = jest.fn();
-        const blur = jest.fn();
+        const focus = vi.fn();
+        const blur = vi.fn();
 
         const wrapper = createWrapper({
             attrs: {
@@ -199,10 +200,10 @@ it("should warn the user that the maximum string length limit is near", async ()
     await wrapper.setProps({
         modelValue: "12345",
     });
-    expect(wrapper.get('[aria-live="polite"]')).toMatchInlineSnapshot(`
-        <label class="label" for="textarea-field" aria-live="polite"><span class="label__description">Kvar: 5</span>
-          <!--v-if-->
-        </label>
+    expect(wrapper.get('[aria-live="polite"]').html()).toMatchInlineSnapshot(`
+      "<label class="label" for="textarea-field" aria-live="polite"> <span class="label__description">Kvar: 5</span>
+        <!--v-if-->
+      </label>"
     `);
 });
 

@@ -1,5 +1,6 @@
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { describe, expect, it, vi } from "vitest";
 import FCheckboxField from "./FCheckboxField.vue";
 
 function createWrapper({
@@ -234,8 +235,8 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
-        const focus = jest.fn();
-        const blur = jest.fn();
+        const focus = vi.fn();
+        const blur = vi.fn();
 
         const wrapper = createWrapper({
             attrs: {
@@ -252,7 +253,7 @@ describe("events", () => {
     });
 
     it("should pass click listener and trigger focus on click", async () => {
-        const click = jest.fn();
+        const click = vi.fn();
 
         const wrapper = createWrapper({
             attrs: { onClick: click },
@@ -260,7 +261,7 @@ describe("events", () => {
 
         const input = wrapper.get("input");
         const htmlInput = input.element;
-        htmlInput.focus = jest.fn();
+        htmlInput.focus = vi.fn();
 
         await input.trigger("click");
         expect(click).toHaveBeenCalled();

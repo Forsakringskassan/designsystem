@@ -1,13 +1,14 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { mount } from "@vue/test-utils";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { TranslationPlugin } from "../../plugins";
 import { FSortFilterDatasetMountCallback } from "../FSortFilterDataset";
 import { FTableColumn } from "../FTableColumn";
 import FDataTable from "./FDataTable.vue";
 
 afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
 });
 
 describe("should match snapshot", () => {
@@ -42,14 +43,14 @@ describe("should match snapshot", () => {
         expect.assertions(1);
         const wrapper = mount(TestComponent);
         await wrapper.vm.$nextTick();
-        expect(wrapper.find("thead")).toMatchSnapshot();
+        expect(wrapper.find("thead").html()).toMatchSnapshot();
     });
 
     it("tbody", async () => {
         expect.assertions(1);
         const wrapper = mount(TestComponent);
         await wrapper.vm.$nextTick();
-        expect(wrapper.find("tbody")).toMatchSnapshot();
+        expect(wrapper.find("tbody").html()).toMatchSnapshot();
     });
 
     it("should match snapshot with no items in rows and default text", async () => {
@@ -150,7 +151,7 @@ it("should throw error if `FTableColumn.name` is duplicated", async () => {
     expect(() => {
         mount(TestComponent);
     }).toThrowErrorMatchingInlineSnapshot(
-        `"Expected FTableColumn to have a unique name but encountered duplicate of "a""`,
+        `[Error: Expected FTableColumn to have a unique name but encountered duplicate of "a"]`,
     );
 });
 
@@ -194,7 +195,7 @@ it("should throw exception when action is set on column", async () => {
             };
         },
     };
-    const spy = jest.spyOn(console, "error").mockReturnValue(undefined);
+    const spy = vi.spyOn(console, "error").mockReturnValue(undefined);
     expect(() => mount(TestComponent)).toThrow(
         "Cannot use action column in FDataTable component",
     );
@@ -357,7 +358,7 @@ it("should handle nested row objects no rows are present", async () => {
 });
 
 it("should call provided sort method when clicking columnheader that is registrated as sortable", async () => {
-    const mockedProvedSort = jest.fn();
+    const mockedProvedSort = vi.fn();
     let registerSortableColumnsCallback: FSortFilterDatasetMountCallback;
     const TestComponent = {
         components: { FDataTable, FTableColumn },
@@ -432,7 +433,7 @@ describe("`keyAttribute`", () => {
                 },
             });
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Expected each item to have identifier [id] with unique value but encountered duplicate of "b" in item index 2."`,
+            `[Error: Expected each item to have identifier [id] with unique value but encountered duplicate of "b" in item index 2.]`,
         );
     });
 

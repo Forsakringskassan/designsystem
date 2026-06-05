@@ -1,4 +1,5 @@
 import { defineComponent, h } from "vue";
+import { beforeEach, expect, it } from "vitest";
 import { MaybeWithFKUIContext } from "../../config";
 import { mountComponent } from "./mount-component";
 
@@ -27,11 +28,9 @@ it("should mount component to container element", () => {
     const app = mountComponent(callingInstance, MockComponent, {
         attachTo: container,
     });
-    expect(container.outerHTML).toMatchInlineSnapshot(`
-        <div id="foo">
-          <div data-v-app=""><em>My fancy component</em></div>
-        </div>
-    `);
+    expect(container.outerHTML).toMatchInlineSnapshot(
+        `"<div id="foo"><div data-v-app=""><em>My fancy component</em></div></div>"`,
+    );
     app.unmount();
 });
 
@@ -43,13 +42,9 @@ it("should mount component to container selector", () => {
     const app = mountComponent(callingInstance, MockComponent, {
         attachTo: "#foo",
     });
-    expect(document.body.outerHTML).toMatchInlineSnapshot(`
-        <body>
-          <div id="foo">
-            <div data-v-app=""><em>My fancy component</em></div>
-          </div>
-        </body>
-    `);
+    expect(document.body.outerHTML).toMatchInlineSnapshot(
+        `"<body><div id="foo"><div data-v-app=""><em>My fancy component</em></div></div></body>"`,
+    );
     app.unmount();
     container.remove();
 });
@@ -80,11 +75,9 @@ it("should attach last when attachFirst is false", () => {
     const app = mountComponent(callingInstance, MockComponent, {
         attachFirst: false,
     });
-    expect(document.body.innerHTML).toMatchInlineSnapshot(`
-        <p>lorem ipsum</p>
-        <p>dolor sit amet</p>
-        <div data-v-app=""><em>My fancy component</em></div>
-    `);
+    expect(document.body.innerHTML).toMatchInlineSnapshot(
+        `"<p>lorem ipsum</p><p>dolor sit amet</p><div data-v-app=""><em>My fancy component</em></div>"`,
+    );
     app.unmount();
 });
 
@@ -95,10 +88,8 @@ it("should attach first when attachFirst is true", () => {
     const app = mountComponent(callingInstance, MockComponent, {
         attachFirst: true,
     });
-    expect(document.body.innerHTML).toMatchInlineSnapshot(`
-        <div data-v-app=""><em>My fancy component</em></div>
-        <p>lorem ipsum</p>
-        <p>dolor sit amet</p>
-    `);
+    expect(document.body.innerHTML).toMatchInlineSnapshot(
+        `"<div data-v-app=""><em>My fancy component</em></div><p>lorem ipsum</p><p>dolor sit amet</p>"`,
+    );
     app.unmount();
 });

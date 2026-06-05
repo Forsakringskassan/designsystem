@@ -4,7 +4,8 @@ import {
     HtmlValidate,
     cjsResolver,
 } from "html-validate/node";
-import "html-validate/jest";
+import { describe, expect, it } from "vitest";
+import "html-validate/vitest";
 import FTooltip from "./FTooltip.vue";
 
 const tooltipButtonClass = ".tooltip__button";
@@ -75,7 +76,7 @@ describe("slots", () => {
                 },
             });
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Tooltip with header must define headerTag"`,
+            `[Error: Tooltip with header must define headerTag]`,
         );
     });
 
@@ -95,11 +96,11 @@ describe("html-validate", () => {
             "html-validate-vue:recommended",
             "@fkui/vue:recommended",
         ],
-        plugins: ["<rootDir>/htmlvalidate", "html-validate-vue"],
+        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
     });
     const htmlvalidate = new HtmlValidate(loader);
 
-    it("close-button-text", () => {
+    it("close-button-text", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <!-- should allow missing close-button-text -->
@@ -121,7 +122,7 @@ describe("html-validate", () => {
             ></f-tooltip>
         `;
         const report = htmlvalidate.validateString(markup);
-        expect(report).toMatchInlineCodeframe(`
+        await expect(report).toMatchInlineCodeframe(`
             "error: Attribute "close-button-text" is missing value (attribute-allowed-values)
               4 |
               5 |             <!-- should not allow omitted close-button-text value -->
@@ -143,7 +144,7 @@ describe("html-validate", () => {
         `);
     });
 
-    it("header-tag", () => {
+    it("header-tag", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <!-- should allow missing header-tag -->
@@ -169,7 +170,7 @@ describe("html-validate", () => {
             <f-tooltip header-tag="span" screen-reader-text="foo"></f-tooltip>
         `;
         const report = htmlvalidate.validateString(markup);
-        expect(report).toMatchInlineCodeframe(`
+        await expect(report).toMatchInlineCodeframe(`
             "error: Attribute "header-tag" is missing value (attribute-allowed-values)
               4 |
               5 |             <!-- omitted header-tag value -->
@@ -215,7 +216,7 @@ describe("html-validate", () => {
         `);
     });
 
-    it("screen-reader-text", () => {
+    it("screen-reader-text", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <!-- should not allow missing screen-reader-text -->
@@ -231,7 +232,7 @@ describe("html-validate", () => {
             <f-tooltip screen-reader-text="lorem ipsum"></f-tooltip>
         `;
         const report = htmlvalidate.validateString(markup);
-        expect(report).toMatchInlineCodeframe(`
+        await expect(report).toMatchInlineCodeframe(`
             "error: <f-tooltip> is missing required "screen-reader-text" attribute (element-required-attributes)
               1 |
               2 |             <!-- should not allow missing screen-reader-text -->

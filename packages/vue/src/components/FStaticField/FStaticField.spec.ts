@@ -1,4 +1,5 @@
 import { VueWrapper, mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import FStaticField from "./FStaticField.vue";
 
 function createWrapper({ slots = {} } = {}): VueWrapper {

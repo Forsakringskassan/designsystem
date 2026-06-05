@@ -1,14 +1,15 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import FWizard from "./FWizard.vue";
 import FWizardStep from "./FWizardStep.vue";
 
 afterEach(() => {
-    jest.restoreAllMocks();
-    jest.clearAllTimers();
+    vi.restoreAllMocks();
+    vi.clearAllTimers();
 });
 
 it("should use header tag provided from FWizard", async () => {
@@ -45,7 +46,7 @@ it("should use header tag provided from FWizard", async () => {
 
 it("should call beforeNext with data including key, totalSteps and stepNumber", async () => {
     expect.assertions(1);
-    const beforeNextMock = jest.fn();
+    const beforeNextMock = vi.fn();
     const TestComponent = defineComponent({
         components: {
             FWizard,
@@ -82,7 +83,7 @@ it("should call beforeNext with data including key, totalSteps and stepNumber", 
 
 it("should call beforeValidation with data including key, totalSteps and stepNumber", async () => {
     expect.assertions(1);
-    const beforeValidationMock = jest.fn();
+    const beforeValidationMock = vi.fn();
     const TestComponent = defineComponent({
         components: {
             FWizard,
@@ -118,7 +119,7 @@ it("should call beforeValidation with data including key, totalSteps and stepNum
 });
 
 describe("html-validate", () => {
-    it("should allow flow content", () => {
+    it("should allow flow content", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
@@ -127,10 +128,10 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toMatchInlineCodeframe(`""`);
     });
 
-    it("should allow flow content in default slot", () => {
+    it("should allow flow content in default slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
@@ -141,10 +142,10 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toMatchInlineCodeframe(`""`);
     });
 
-    it("should allow flow content in step-of slot", () => {
+    it("should allow flow content in step-of slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
@@ -155,10 +156,10 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toMatchInlineCodeframe(`""`);
     });
 
-    it("should allow flow content in error-message slot", () => {
+    it("should allow flow content in error-message slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
@@ -169,10 +170,10 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toMatchInlineCodeframe(`""`);
     });
 
-    it("should allow phrasing content in next-button-text slot", () => {
+    it("should allow phrasing content in next-button-text slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
@@ -183,10 +184,10 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toMatchInlineCodeframe(`""`);
     });
 
-    it("should not allow flow content in next-button-text slot", () => {
+    it("should not allow flow content in next-button-text slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
@@ -197,7 +198,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <div> element is not permitted as content under slot "next-button-text" (<f-wizard-step>) (element-permitted-content)
               3 |                 <f-wizard-step key="my-key" title="my-title">
               4 |                     <template #next-button-text>
@@ -210,7 +211,7 @@ describe("html-validate", () => {
         `);
     });
 
-    it("should not allow interactive content in next-button-text slot", () => {
+    it("should not allow interactive content in next-button-text slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
@@ -221,7 +222,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <button> element is not permitted as a descendant of slot "next-button-text" (<f-wizard-step>) (element-permitted-content)
               3 |                 <f-wizard-step key="my-key" title="my-title">
               4 |                     <template #next-button-text>
@@ -234,7 +235,7 @@ describe("html-validate", () => {
         `);
     });
 
-    it("should allow phrasing content in cancel-button-text slot", () => {
+    it("should allow phrasing content in cancel-button-text slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
@@ -245,10 +246,10 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toMatchInlineCodeframe(`""`);
     });
 
-    it("should not allow flow content in cancel-button-text slot", () => {
+    it("should not allow flow content in cancel-button-text slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
@@ -259,7 +260,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <div> element is not permitted as content under slot "cancel-button-text" (<f-wizard-step>) (element-permitted-content)
               3 |                 <f-wizard-step key="my-key" title="my-title">
               4 |                     <template #cancel-button-text>
@@ -272,7 +273,7 @@ describe("html-validate", () => {
         `);
     });
 
-    it("should not allow interactive content in cancel-button-text slot", () => {
+    it("should not allow interactive content in cancel-button-text slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
@@ -283,7 +284,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <button> element is not permitted as a descendant of slot "cancel-button-text" (<f-wizard-step>) (element-permitted-content)
               3 |                 <f-wizard-step key="my-key" title="my-title">
               4 |                     <template #cancel-button-text>
@@ -296,14 +297,14 @@ describe("html-validate", () => {
         `);
     });
 
-    it("should require key attribute", () => {
+    it("should require key attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
                 <f-wizard-step title="my-title"></f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <f-wizard-step> is missing required "key" attribute (element-required-attributes)
               1 |
               2 |             <f-wizard header-tag="h1">
@@ -315,14 +316,14 @@ describe("html-validate", () => {
         `);
     });
 
-    it("should require title attribute", () => {
+    it("should require title attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
                 <f-wizard-step key="my-key"></f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <f-wizard-step> is missing required "title" attribute (element-required-attributes)
               1 |
               2 |             <f-wizard header-tag="h1">
@@ -334,14 +335,14 @@ describe("html-validate", () => {
         `);
     });
 
-    it("should require non-empty title attribute", () => {
+    it("should require non-empty title attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
                 <f-wizard-step key="my-key" title=""></f-wizard-step>
             </f-wizard>
         `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: Attribute "title" has invalid value "" (attribute-allowed-values)
               1 |
               2 |             <f-wizard header-tag="h1">

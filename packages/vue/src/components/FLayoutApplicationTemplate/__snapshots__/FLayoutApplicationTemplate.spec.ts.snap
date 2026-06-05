@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots should match snapshot with all slots used 1`] = `
+exports[`snapshots > should match snapshot with all slots used 1`] = `
 <div
   class="layout-application-template"
 >
@@ -10,18 +10,21 @@ exports[`snapshots should match snapshot with all slots used 1`] = `
     
     HEADER
     
+     
     <nav>
       
       TOPNAVIGATION
       
     </nav>
   </header>
+   
   <main
     class="layout-application-template__main"
   >
     
     DEFAULT
     
+     
     <footer
       class="layout-application-template__footer"
     >
@@ -33,7 +36,7 @@ exports[`snapshots should match snapshot with all slots used 1`] = `
 </div>
 `;
 
-exports[`snapshots should render snapshot with no header and footer if running under another application 1`] = `
+exports[`snapshots > should render snapshot with no header and footer if running under another application 1`] = `
 <div
   class="layout-application-template"
 >
@@ -41,18 +44,21 @@ exports[`snapshots should render snapshot with no header and footer if running u
     class="layout-application-template__header"
   >
     <!--v-if-->
+     
     <nav>
       
       TOPNAVIGATION
       
     </nav>
   </header>
+   
   <main
     class="layout-application-template__main"
   >
     
     DEFAULT
     
+     
     <!--v-if-->
   </main>
 </div>

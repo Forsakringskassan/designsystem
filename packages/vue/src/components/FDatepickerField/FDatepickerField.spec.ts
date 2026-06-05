@@ -1,16 +1,19 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { FDate } from "@fkui/date";
 import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import FDatepickerField from "./FDatepickerField.vue";
 
 beforeEach(() => {
-    global.ResizeObserver = jest.fn().mockImplementation(() => ({
-        observe: jest.fn(),
-        unobserve: jest.fn(),
-        disconnect: jest.fn(),
-    }));
+    class ResizeObserverMock {
+        public observe = vi.fn();
+        public unobserve = vi.fn();
+        public disconnect = vi.fn();
+    }
+    global.ResizeObserver =
+        ResizeObserverMock as unknown as typeof ResizeObserver;
 });
 
 describe("transparency", () => {
@@ -29,7 +32,7 @@ describe("transparency", () => {
 
     it("should pass listeners to textfield", async () => {
         expect.assertions(1);
-        const keyup = jest.fn();
+        const keyup = vi.fn();
         const wrapper = mount(FDatepickerField, {
             attrs: { onKeyup: keyup },
         });
@@ -92,7 +95,7 @@ describe("calendar", () => {
     it("should emit v-model and change event when selecting day", async () => {
         expect.assertions(2);
 
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = mount(FDatepickerField, {
             global: {
@@ -227,7 +230,7 @@ describe("html-validate", () => {
             expect(markup).toHTMLValidate();
         });
 
-        it("should not allow block content in #default slot", () => {
+        it("should not allow block content in #default slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-datepicker-field>
@@ -236,7 +239,7 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-            expect(markup).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: <div> element is not permitted as content under slot "default" (<f-datepicker-field>) (element-permitted-content)
                   2 |                 <f-datepicker-field>
                   3 |                     <template #default>
@@ -249,7 +252,7 @@ describe("html-validate", () => {
             `);
         });
 
-        it("should only allow <f-tooltip> in #tooltip slot", () => {
+        it("should only allow <f-tooltip> in #tooltip slot", async () => {
             expect.assertions(2);
             const valid = /* HTML */ `
                 <f-datepicker-field>
@@ -267,8 +270,8 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-            expect(valid).toMatchInlineCodeframe(`""`);
-            expect(invalid).toMatchInlineCodeframe(`
+            await expect(valid).toMatchInlineCodeframe(`""`);
+            await expect(invalid).toMatchInlineCodeframe(`
                 "error: <div> element is not permitted as content under slot "tooltip" (<f-datepicker-field>) (element-permitted-content)
                   2 |                 <f-datepicker-field>
                   3 |                     <template #tooltip>
@@ -299,7 +302,7 @@ describe("html-validate", () => {
             `);
         });
 
-        it("should allow phrasing content in #error-message slot", () => {
+        it("should allow phrasing content in #error-message slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-datepicker-field>
@@ -308,10 +311,10 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-            expect(markup).toHTMLValidate();
+            await expect(markup).toHTMLValidate();
         });
 
-        it("should not allow block content in #error-message slot", () => {
+        it("should not allow block content in #error-message slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-datepicker-field>
@@ -320,7 +323,8 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-            expect(markup).toMatchInlineCodeframe(`
+
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: <div> element is not permitted as content under slot "error-message" (<f-datepicker-field>) (element-permitted-content)
                   2 |                 <f-datepicker-field>
                   3 |                     <template #error-message>
@@ -333,7 +337,7 @@ describe("html-validate", () => {
             `);
         });
 
-        it("should allow phrasing content in #description slot", () => {
+        it("should allow phrasing content in #description slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-datepicker-field>
@@ -342,10 +346,10 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-            expect(markup).toHTMLValidate();
+            await expect(markup).toHTMLValidate();
         });
 
-        it("should not allow block content in #description slot", () => {
+        it("should not allow block content in #description slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-datepicker-field>
@@ -354,7 +358,8 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-            expect(markup).toMatchInlineCodeframe(`
+
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: <div> element is not permitted as content under slot "description" (<f-datepicker-field>) (element-permitted-content)
                   2 |                 <f-datepicker-field>
                   3 |                     <template #description>

@@ -1,24 +1,24 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`html-validate <f-select-field><template #label>label</template><div></div></f-select-field> should be invalid 1`] = `
-[Error: Expected HTML to be valid but had the following errors:
-
-  <div> element is not permitted as content under <f-select-field> [element-permitted-content]]
-`;
-
-exports[`html-validate <f-select-field><template #label>label</template><template #default><div></div></template><option>Apple</option></f-select-field> should be invalid 1`] = `
+exports[`html-validate > '<f-select-field><template #label>labe…' should be invalid 1`] = `
 [Error: Expected HTML to be valid but had the following errors:
 
   <div> element is not permitted as content under slot "default" (<f-select-field>) [element-permitted-content]]
 `;
 
-exports[`html-validate <f-select-field><template #tooltip><div /></template><template #label>label</template></f-select-field> should be invalid 1`] = `
+exports[`html-validate > '<f-select-field><template #label>labe…' should be invalid 2`] = `
+[Error: Expected HTML to be valid but had the following errors:
+
+  <div> element is not permitted as content under <f-select-field> [element-permitted-content]]
+`;
+
+exports[`html-validate > '<f-select-field><template #tooltip><d…' should be invalid 1`] = `
 [Error: Expected HTML to be valid but had the following errors:
 
   <div> element is not permitted as content under slot "tooltip" (<f-select-field>) [element-permitted-content]]
 `;
 
-exports[`snapshots should match snapshot when validityMode is ERROR and isValid is false 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'ERROR' and isValid is false 1`] = `
 <div
   class="select-field select-field--error"
 >
@@ -34,8 +34,10 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
       Fruit
       
       
+       
       
       
+       
       <span
         class="label__message label__message--error"
       >
@@ -44,6 +46,7 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
           library="f"
           name="error"
         />
+         
         
         
         
@@ -54,6 +57,7 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
       </span>
     </label>
   </div>
+   
   <div
     class="select-field__icon-wrapper i-width-sm-12"
   >
@@ -70,7 +74,9 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
       </option>
       
     </select>
+     
     <!--v-if-->
+     
     <f-icon-stub
       class="select-field__icon"
       library="f"
@@ -80,7 +86,7 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
 </div>
 `;
 
-exports[`snapshots should match snapshot when validityMode is INITIAL and isValid is false 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'INITIAL' and isValid is false 1`] = `
 <div
   class="select-field"
 >
@@ -96,11 +102,14 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
       Fruit
       
       
+       
       
       
+       
       <!--v-if-->
     </label>
   </div>
+   
   <div
     class="select-field__icon-wrapper i-width-sm-12"
   >
@@ -117,7 +126,9 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
       </option>
       
     </select>
+     
     <!--v-if-->
+     
     <f-icon-stub
       class="select-field__icon"
       library="f"
@@ -127,7 +138,7 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
 </div>
 `;
 
-exports[`snapshots should match snapshot when validityMode is INTIAL and isValid is true 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'INTIAL' and isValid is true 1`] = `
 <div
   class="select-field"
 >
@@ -143,11 +154,14 @@ exports[`snapshots should match snapshot when validityMode is INTIAL and isValid
       Fruit
       
       
+       
       
       
+       
       <!--v-if-->
     </label>
   </div>
+   
   <div
     class="select-field__icon-wrapper i-width-sm-12"
   >
@@ -164,7 +178,9 @@ exports[`snapshots should match snapshot when validityMode is INTIAL and isValid
       </option>
       
     </select>
+     
     <!--v-if-->
+     
     <f-icon-stub
       class="select-field__icon"
       library="f"
@@ -174,7 +190,7 @@ exports[`snapshots should match snapshot when validityMode is INTIAL and isValid
 </div>
 `;
 
-exports[`snapshots should match snapshot when validityMode is VALID and isValid is true 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'VALID' and isValid is true 1`] = `
 <div
   class="select-field"
 >
@@ -190,11 +206,14 @@ exports[`snapshots should match snapshot when validityMode is VALID and isValid 
       Fruit
       
       
+       
       
       
+       
       <!--v-if-->
     </label>
   </div>
+   
   <div
     class="select-field__icon-wrapper i-width-sm-12"
   >
@@ -211,7 +230,9 @@ exports[`snapshots should match snapshot when validityMode is VALID and isValid 
       </option>
       
     </select>
+     
     <!--v-if-->
+     
     <f-icon-stub
       class="select-field__icon"
       library="f"
@@ -221,7 +242,7 @@ exports[`snapshots should match snapshot when validityMode is VALID and isValid 
 </div>
 `;
 
-exports[`snapshots should match snapshot with label and select 1`] = `
+exports[`snapshots > should match snapshot with label and select 1`] = `
 <div
   class="select-field"
 >
@@ -237,11 +258,14 @@ exports[`snapshots should match snapshot with label and select 1`] = `
       Fruit
       
       
+       
       
       
+       
       <!--v-if-->
     </label>
   </div>
+   
   <div
     class="select-field__icon-wrapper i-width-sm-12"
   >
@@ -258,7 +282,9 @@ exports[`snapshots should match snapshot with label and select 1`] = `
       </option>
       
     </select>
+     
     <!--v-if-->
+     
     <f-icon-stub
       class="select-field__icon"
       library="f"
@@ -268,7 +294,7 @@ exports[`snapshots should match snapshot with label and select 1`] = `
 </div>
 `;
 
-exports[`snapshots should match snapshot with label, select and error message 1`] = `
+exports[`snapshots > should match snapshot with label, select and error message 1`] = `
 <div
   class="select-field"
 >
@@ -284,8 +310,10 @@ exports[`snapshots should match snapshot with label, select and error message 1`
       Fruit
       
       
+       
       
       
+       
       <span
         class="label__message label__message--error"
       >
@@ -294,6 +322,7 @@ exports[`snapshots should match snapshot with label, select and error message 1`
           library="f"
           name="error"
         />
+         
         
         
         ERROR_MESSAGE
@@ -302,6 +331,7 @@ exports[`snapshots should match snapshot with label, select and error message 1`
       </span>
     </label>
   </div>
+   
   <div
     class="select-field__icon-wrapper i-width-sm-12"
   >
@@ -319,7 +349,9 @@ exports[`snapshots should match snapshot with label, select and error message 1`
       </option>
       
     </select>
+     
     <!--v-if-->
+     
     <f-icon-stub
       class="select-field__icon"
       library="f"
@@ -329,7 +361,7 @@ exports[`snapshots should match snapshot with label, select and error message 1`
 </div>
 `;
 
-exports[`snapshots should match snapshot with label, tooltip, description, error message and select 1`] = `
+exports[`snapshots > should match snapshot with label, tooltip, description, error message and select 1`] = `
 <div
   class="select-field"
 >
@@ -351,11 +383,13 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
           
         </label>
       </div>
+       
       
       
       TOOLTIP
       
       
+       
       <label
         class="label sr-separator"
         for="select-field"
@@ -365,6 +399,7 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
         DESCRIPTION
         
         
+         
         <span
           class="label__message label__message--error"
         >
@@ -373,6 +408,7 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
             library="f"
             name="error"
           />
+           
           
           
           ERROR_MESSAGE
@@ -382,6 +418,7 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
       </label>
     </div>
   </div>
+   
   <div
     class="select-field__icon-wrapper i-width-sm-12"
   >
@@ -398,7 +435,9 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
       </option>
       
     </select>
+     
     <!--v-if-->
+     
     <f-icon-stub
       class="select-field__icon"
       library="f"

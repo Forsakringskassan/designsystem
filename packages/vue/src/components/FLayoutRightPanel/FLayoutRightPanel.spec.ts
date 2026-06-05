@@ -1,7 +1,8 @@
-import "html-validate/jest";
-import "@fkui/test-utils/jest";
+import "html-validate/vitest";
+import "@fkui/test-utils/vitest";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, flushPromises, mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import FLayoutRightPanel from "./FLayoutRightPanel.vue";
 import { FLayoutRightPanelService } from "./services/f-layout-right-panel-service";
 
@@ -33,7 +34,7 @@ async function createWrapper(): Promise<VueWrapper> {
 describe("snapshot", () => {
     it("should match snapshot", async () => {
         wrapper = await createWrapper();
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.element).toMatchSnapshot();
     });
 });
 

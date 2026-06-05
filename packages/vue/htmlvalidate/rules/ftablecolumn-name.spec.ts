@@ -1,6 +1,8 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
-import plugin from "../index";
+import { describe, expect, it } from "vitest";
+// eslint-disable-next-line import-x/extensions -- Vite migration
+import plugin from "../index.cjs";
 
 const htmlvalidate = new HtmlValidate({
     plugins: [plugin],
@@ -24,7 +26,7 @@ describe("`FTableColumn` with `FSortFilterDataset`", () => {
         `;
         const report = await htmlvalidate.validateString(markup);
         expect(report).toBeInvalid();
-        expect(report).toMatchInlineCodeframe(`
+        await expect(report).toMatchInlineCodeframe(`
             "error: <f-table-column> is missing required "name" attribute (fkui/ftablecolumn-name)
                5 |                         <template #caption> TestTable </template>
                6 |                         <template #default="{ row }">
@@ -85,7 +87,7 @@ describe("`FTableColumn` with `FSortFilterDataset`", () => {
         `;
         const report = await htmlvalidate.validateString(markup);
         expect(report).toBeInvalid();
-        expect(report).toMatchInlineCodeframe(`
+        await expect(report).toMatchInlineCodeframe(`
             "error: "foo" is not unique (fkui/ftablecolumn-name)
               14 |                             ></f-table-column>
               15 |                             <f-table-column

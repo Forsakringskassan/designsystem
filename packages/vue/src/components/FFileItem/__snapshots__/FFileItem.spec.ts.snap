@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`FileItem should match snapshot with slots 1`] = `
+exports[`FileItem > should match snapshot with slots 1`] = `
 <div
   class="file-item"
 >
@@ -15,32 +15,38 @@ exports[`FileItem should match snapshot with slots 1`] = `
         library="f"
         name="pdf"
       />
+       
       <span
         class="file-item__file-name"
       >
         foo.bar
       </span>
+       
       <span
         class="sr-only"
       >
          öppnas i nytt fönster
       </span>
     </a>
+     
     
     file item goes here
     
   </div>
+   
   
   progress is 80%
   
+   
   <!--v-if-->
+   
   <hr
     class="file-item__separator"
   />
 </div>
 `;
 
-exports[`FileItem should match snapshots without slots 1`] = `
+exports[`FileItem > should match snapshots without slots 1`] = `
 <div
   class="file-item"
 >
@@ -55,30 +61,36 @@ exports[`FileItem should match snapshots without slots 1`] = `
         library="f"
         name="pdf"
       />
+       
       <span
         class="file-item__file-name"
       >
         foo.bar
       </span>
+       
       <span
         class="sr-only"
       >
          öppnas i nytt fönster
       </span>
     </a>
+     
     
     
   </div>
+   
   
   
+   
   <!--v-if-->
+   
   <hr
     class="file-item__separator"
   />
 </div>
 `;
 
-exports[`FileItem should pass attributes 1`] = `
+exports[`FileItem > should pass attributes 1`] = `
 <div
   class="file-item"
 >
@@ -94,23 +106,29 @@ exports[`FileItem should pass attributes 1`] = `
         library="f"
         name="pdf"
       />
+       
       <span
         class="file-item__file-name"
       >
         foo.bar
       </span>
+       
       <span
         class="sr-only"
       >
          öppnas i nytt fönster
       </span>
     </a>
+     
     
     
   </div>
+   
   
   
+   
   <!--v-if-->
+   
   <hr
     class="file-item__separator"
   />

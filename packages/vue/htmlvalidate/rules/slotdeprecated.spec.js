@@ -1,6 +1,8 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
-import plugin from "../index";
+import { expect, it } from "vitest";
+// eslint-disable-next-line import-x/extensions -- Vite migration
+import plugin from "../index.cjs";
 
 const htmlvalidate = new HtmlValidate({
     plugins: [plugin],
@@ -17,7 +19,7 @@ it("should not report error when not used", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should report error when used", async () => {
@@ -30,7 +32,7 @@ it("should report error when used", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: slot "#checkbox-description" is deprecated and replaced with "selectable-description" (fkui/slot-deprecated)
           2 |         <f-interactive-table selectable>
           3 |             <template #default="{ row }"></template>
