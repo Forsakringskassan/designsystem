@@ -3,21 +3,24 @@
 
 @mixin make-button-variant(
     $name,
-    $shadow,
-    $shadow-hover,
     $background-color,
-    $color,
-    $color--hover: $color,
-    $color--focus: $color--hover,
-    $color--disabled: $button-color-text-disabled,
     $background-color--hover: $background-color,
-    $background-color--focus: $background-color--hover,
+    $background-color--active: $background-color--hover,
+    $background-color--focus: $background-color,
     $background-color--disabled: $button-color-background-disabled,
     $border-color: $button-color-border-default,
     $border-color--hover: $border-color,
-    $border-color--focus: $border-color--hover,
+    $border-color--active: $border-color--hover,
+    $border-color--focus: $border-color,
     $border-color--disabled: $button-color-border-disabled,
     $border-width: var(--f-border-width-medium),
+    $color,
+    $color--hover: $color,
+    $color--active: $color--hover,
+    $color--focus: $color,
+    $color--disabled: $button-color-text-disabled,
+    $shadow,
+    $shadow--hover: $shadow,
     $padding-top,
     $padding-right,
     $padding-bottom,
@@ -30,20 +33,27 @@
     color: $color;
     padding: $padding-top $padding-right $padding-bottom $padding-left;
 
+    &:focus {
+        background-color: $background-color--focus;
+        border-color: $border-color--focus;
+        color: $color--focus;
+    }
+
     &:hover {
         background-color: $background-color--hover;
         border-color: $border-color--hover;
         color: $color--hover;
-        box-shadow: $shadow-hover;
+        box-shadow: $shadow--hover;
     }
 
-    &:active,
+    &:active {
+        background-color: $background-color--active;
+        border-color: $border-color--active;
+        color: $color--active;
+    }
+
     &:focus {
         @include focus.focus-indicator;
-
-        background-color: $background-color--focus;
-        border-color: $border-color--focus;
-        color: $color--focus;
     }
 
     &.disabled,
