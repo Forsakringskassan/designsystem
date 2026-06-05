@@ -7,6 +7,10 @@ search:
         - tabell
 ---
 
+```import
+FTableBasicSortFilterExample.vue
+```
+
 När tabellerna är stora och innehåller många rader behöver användaren kunna sortera och/eller filtrera innehållet.
 Med {@link FSortFilterDataset datamängdsorteraren} (FSortFilterDataset) kan du lägga till funktionalitet för att sortera och filtrera i tabell.
 
@@ -15,6 +19,8 @@ Du väljer den kolumn som är mest trolig att användaren vill sortera på och s
 
 Läs mer om hur du använder komponent {@link FSortFilterDataset datamängdsorteraren}.
 
-## Kod
+## Relaterat
 
 {@link sort-filter-code Läs om hur du sätter upp att sortera och filtrera i tabell.}
+
+{@link FSortFilterDataset Läs mer om datamängdsorteraren.}

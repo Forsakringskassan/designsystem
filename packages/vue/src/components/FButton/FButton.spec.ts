@@ -259,7 +259,7 @@ describe("html-validate", () => {
         it("should allow tertiary-style and align-text when variant is tertiary", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
-                <f-button variant="tertiary" tertiary-style="black">
+                <f-button variant="tertiary" tertiary-style="muted">
                     lorem ipsum
                 </f-button>
                 <f-button variant="tertiary" align-text> lorem ipsum </f-button>
@@ -271,14 +271,14 @@ describe("html-validate", () => {
         it("should not allow tertiary-style without variant tertiary", async () => {
             expect.assertions(2);
             const markup = /* HTML */ `
-                <f-button tertiary-style="black"> lorem ipsum </f-button>
+                <f-button tertiary-style="muted"> lorem ipsum </f-button>
             `;
             const report = await htmlvalidate.validateString(markup);
             expect(report).toBeInvalid();
             expect(report).toMatchInlineCodeframe(`
                 error: "tertiary-style" attribute cannot be used on <f-button> in this context: "variant" attribute must be "tertiary" (attribute-misuse)
                   1 |
-                > 2 |                 <f-button tertiary-style="black"> lorem ipsum </f-button>
+                > 2 |                 <f-button tertiary-style="muted"> lorem ipsum </f-button>
                     |                           ^^^^^^^^^^^^^^
                   3 |
                 Selector: f-button

@@ -1,6 +1,6 @@
 {
   "name": "@fkui/icon-lib-builder",
-  "version": "6.48.0",
+  "version": "6.49.0",
   "description": "Icon library builder",
   "keywords": [
     "fkui",
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@forsakringskassan/vitest-config": "2.2.8",
-    "vitest": "4.1.7"
+    "vitest": "4.1.8"
   },
   "engines": {
     "node": "^22.16 || >= 24",

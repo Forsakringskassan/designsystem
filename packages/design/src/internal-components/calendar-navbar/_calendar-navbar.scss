@@ -47,7 +47,7 @@ $calendar-icon-forced-colors-padding: calc($calendar-icon-padding - $calendar-ic
     &__year-selector-button {
         /* stylelint-disable scss/at-extend-no-missing-placeholder -- technical debt */
         @extend .button--margin-bottom-0;
-        @extend .button--tertiary--black;
+        @extend .button--tertiary--muted;
         @extend .button--tertiary;
         @extend .button;
 

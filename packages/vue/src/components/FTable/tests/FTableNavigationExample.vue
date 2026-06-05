@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { useTemplateRef } from "vue";
 import { computed, ref } from "vue";
+import { assertRef } from "@fkui/logic";
 import { type DatasetNestedKeyOf, FSelectField, useDatasetRef } from "@fkui/vue";
-import { FTable, defineTableColumns } from "@fkui/vue";
+import { FTable, defineTableColumns, removeDatasetRows } from "@fkui/vue";
 
+const tableRef = useTemplateRef("table");
 const selectedValue = ref("");
 
 const expandableByOption = {
@@ -138,7 +141,26 @@ const columns = defineTableColumns<ExpandableTabstopRow>([
         header: "animal",
         key: "animal",
     },
+    {
+        type: "button",
+        text() {
+            return "Ta bort";
+        },
+        header: "remove",
+        icon: "trashcan",
+        onClick(row: ExpandableTabstopRow) {
+            onRemoveRow(row);
+        },
+    },
 ]);
+
+function onRemoveRow(row: ExpandableTabstopRow): void {
+    assertRef(tableRef);
+
+    tableRef.value.withTabstopBehaviour("row-removal", () => {
+        removeDatasetRows(rows, row);
+    });
+}
 </script>
 
 <template>
@@ -149,15 +171,7 @@ const columns = defineTableColumns<ExpandableTabstopRow>([
         <option value="table">Tabellrad</option>
     </f-select-field>
 
-    <f-table
-        ref="table"
-        :key="expandableAttr"
-        :rows
-        :columns
-        key-attribute="id"
-        striped
-        selectable="multi"
-    >
+    <f-table ref="table" :key="expandableAttr" :rows :columns key-attribute="id" striped selectable="multi">
         <template #caption>Tabell</template>
         <template v-if="selectedValue === 'content'" #expandable="{ row }">
             {{ (row as any).content }}

@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 6.49.0 (2026-06-03)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** `FButton` `tertiary-style` `black` renamed to `muted` (refs SFKUI-7907) 18b5d03
+* **@fkui/design, @fkui/vue:** focus indicator keep element border radius (refs SFKUI-7931) 04fcd27
+* **@fkui/vue:** change FBadge content category to phrasing (fixes SFKUI-7908) f6dad05
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/theme-default:** use semantic tokens for focus indicator (refs SFKUI-6500) acaace9
+* **@fkui/design, @fkui/theme-default:** use semantic tokens for layout panels (refs SFKUI-6500) 7863256
+* **@fkui/design, @fkui/vue:** restore height auto after transition (refs SFKUI-7689) 7120ef0
+* **@fkui/design:** respect focus box shadow theme override (refs SFKUI-6500) f62d5b1
+* **deps:** update dependency dayjs to v1.11.21 3d80bd9
+* **deps:** update dependency i18next to v26.3.0 3a3932b
+* **deps:** update vue monorepo to v3.5.35 c65b513
+
 ## 6.48.0 (2026-05-28)
 
 ### Features

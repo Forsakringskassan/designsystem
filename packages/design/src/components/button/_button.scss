@@ -90,7 +90,7 @@ $button--tertiary: (
         /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
         @extend .button--discrete--black;
 
-        color: $button-tertiary-black-color-text-default;
+        color: $button-tertiary-muted-color-text-default;
     }
 }
 
@@ -153,7 +153,7 @@ $button--tertiary: (
             padding-bottom: core.densify(var(--f-button-discrete-black-padding-bottom));
             padding-left: var(--f-button-discrete-black-padding-left);
             /* stylelint-enable declaration-block-no-redundant-longhand-properties */
-            color: $button-tertiary-black-color-text-default;
+            color: $button-tertiary-muted-color-text-default;
         }
 
         &:hover {
@@ -209,13 +209,15 @@ $button--tertiary: (
             width: auto;
         }
 
+        &--muted,
+        // Deprecated since v6.49.0, replaced by `muted`.
         &--black {
-            color: $button-tertiary-black-color-text-default;
+            color: $button-tertiary-muted-color-text-default;
 
             &:hover,
             &:active,
             &:focus {
-                color: $button-tertiary-black-color-text-focus;
+                color: $button-tertiary-muted-color-text-focus;
             }
         }
 

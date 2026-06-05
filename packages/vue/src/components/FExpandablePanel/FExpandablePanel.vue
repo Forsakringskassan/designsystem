@@ -3,10 +3,8 @@
 import { defineComponent } from "vue";
 import { ElementIdService } from "@fkui/logic";
 import { TranslationMixin } from "../../plugins";
-import { getHTMLElementFromVueRef, hasSlot } from "../../utils";
+import { hasSlot } from "../../utils";
 import { FExpand } from "../FExpand";
-import { afterEnterTransition } from "../FExpand/after-enter";
-import { enterTransition } from "../FExpand/enter";
 import { FIcon } from "../FIcon";
 
 export default defineComponent({
@@ -99,13 +97,6 @@ export default defineComponent({
             });
         },
     },
-    mounted() {
-        if (this.expanded) {
-            const expandElement = getHTMLElementFromVueRef(this.$refs.fexpand);
-            this.height = enterTransition(expandElement);
-            afterEnterTransition(expandElement);
-        }
-    },
     methods: {
         onClickHeadingButton(event: MouseEvent): void {
             this.$emit("toggle", event);
@@ -142,7 +133,7 @@ export default defineComponent({
             </button>
         </component>
 
-        <f-expand ref="fexpand" :height>
+        <f-expand>
             <div v-show="expanded" :id class="expandable-panel__content">
                 <div class="expandable-panel__body">
                     <!-- @slot Slot used for content shown when panel is expanded -->

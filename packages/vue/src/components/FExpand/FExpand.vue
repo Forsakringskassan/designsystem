@@ -1,34 +1,25 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent } from "vue";
-import { afterEnterTransition } from "./after-enter";
 import { enterTransition } from "./enter";
 import { leaveTransition } from "./leave";
 
 export default defineComponent({
     name: "FExpand",
-    data() {
-        return {
-            height: 0,
-        };
-    },
     methods: {
-        enter(element: Element): void {
-            this.height = enterTransition(element);
+        enter(element: Element, done: () => void): void {
+            enterTransition(element, done);
         },
-        afterEnter(element: Element): void {
-            afterEnterTransition(element);
-        },
-        leave(element: Element): void {
-            leaveTransition(element);
+        leave(element: Element, done: () => void): void {
+            leaveTransition(element, done);
         },
     },
 });
 </script>
 
 <template>
-    <transition @enter="enter" @after-enter="afterEnter" @leave="leave">
+    <transition :css="false" @enter="enter" @leave="leave">
         <!-- @slot Content to expand -->
-        <slot :height></slot>
+        <slot></slot>
     </transition>
 </template>

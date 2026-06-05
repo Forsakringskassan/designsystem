@@ -116,6 +116,33 @@ it("should report error when `.button__icon--end` is used", async () => {
     `);
 });
 
+it("should report error when `.button--tertiary--black` is used", async () => {
+    expect.assertions(3);
+    const markup = /* HTML */ `
+        <button
+            type="button"
+            class="button button--tertiary button--tertiary--black"
+        ></button>
+    `;
+    const report = await htmlvalidate.validateString(markup);
+    expect(report).toBeInvalid();
+    expect(report).toMatchInlineCodeframe(`
+        "error: class "button--tertiary--black" is deprecated and replaced with "button--tertiary--muted" (fkui/class-deprecated)
+          2 |         <button
+          3 |             type="button"
+        > 4 |             class="button button--tertiary button--tertiary--black"
+            |                                            ^^^^^^^^^^^^^^^^^^^^^^^
+          5 |         ></button>
+          6 |
+        Selector: button"
+    `);
+    const error = report.results[0].messages[0];
+    const docs = await htmlvalidate.getContextualDocumentation(error);
+    expect(docs?.description).toMatchInlineSnapshot(
+        `"Class \`button--tertiary--black\` is deprecated and should be replaced with \`button--tertiary--muted\`"`,
+    );
+});
+
 it("should report error when `.navbar` is used", async () => {
     expect.assertions(3);
     const markup = /* HTML */ ` <div class="custom-navbar navbar"></div> `;
