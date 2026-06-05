@@ -1,5 +1,9 @@
-/* imported for side-effects only */
 import "./matchers/vitest-augmentations";
-import "./matchers";
+import { expect } from "vitest";
+import { toHaveFocus } from "./matchers";
 
 export * from "./lib";
+
+expect.extend({
+    toHaveFocus,
+});
