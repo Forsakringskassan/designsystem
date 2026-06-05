@@ -14,6 +14,6 @@ Du kan sätta det visuella utseendet för din applikation på flera olika sätt.
 FKUI leverereras med ett standardtema `@fkui/theme-default` (mobile first)
 och ett tema för desktop-applikationer `@fkui/theme-desktop` (desktop first).
 
-Du kan skapa ditt ett eget tema genom att utgå från ett av FKUI's teman och anpassa det efter dina behov.
+Vi rekommenderar att du inte använder ett FKUI tema oförändrat. Utgå i stället från ett av de och skapa ett eget tema som du anpassar efter dina behov.
 
 {@link getting-started-application Läs mer här om hur du sätter det visuella utseendet på din applikation}
