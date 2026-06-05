@@ -84,15 +84,20 @@ $cell-border-width: 1px;
         }
     }
 
+    &--text:hover:has(.table-ng__textedit:focus) {
+        background: transparent;
+    }
+
     .table-ng__editable {
         min-block-size: $editable-min-height;
 
         &:focus-within {
             box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
             border-radius: 0;
+            background: transparent;
         }
 
-        &:hover {
+        &:hover:not(:focus-within) {
             box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
             border-radius: 0;
         }
@@ -251,6 +256,19 @@ $cell-border-width: 1px;
     }
 }
 
+.table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) {
+    background: transparent;
+
+    .table-ng__editable,
+    .table-ng__editable:hover,
+    .table-ng__editable:hover:not(:focus-within),
+    .table-ng__editable:focus,
+    .table-ng__editable:focus-within {
+        box-shadow: none;
+        border-radius: 0;
+    }
+}
+
 .table-ng__textedit {
     flex: 0 1 0;
     width: 0;
@@ -298,6 +316,15 @@ $cell-border-width: 1px;
     .table-ng__cell--text:focus-within .table-ng__editable,
     .table-ng__cell--select:focus-within .table-ng__editable {
         box-shadow: inset 0 (-$underline-thickness) 0 0 Highlight;
+        border-radius: 0;
+    }
+
+    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable,
+    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:hover,
+    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:hover:not(:focus-within),
+    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:focus,
+    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:focus-within {
+        box-shadow: none;
         border-radius: 0;
     }
 

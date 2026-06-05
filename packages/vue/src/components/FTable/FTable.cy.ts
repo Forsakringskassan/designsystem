@@ -2650,6 +2650,28 @@ describe("13 Cell interaction states", () => {
             table.el().toMatchScreenshot();
         });
     }
+
+    it("should not render hover background on editable cell while editing (visual)", () => {
+        cy.forcedColors("none");
+
+        cy.mount(() =>
+            h(
+                FTable<Row>,
+                { rows: rows.value, columns },
+                {
+                    caption:
+                        "Verifierar att redigerbar cell inte visar hoverbakgrund i redigeringsläge",
+                },
+            ),
+        );
+
+        table.cell({ row: 1, col: 2 }).click();
+        table.cell({ row: 1, col: 2 }).find("input").should("be.focused");
+
+        table.cell({ row: 1, col: 2 }).realHover();
+
+        table.el().toMatchScreenshot();
+    });
 });
 
 describe("columns", () => {
