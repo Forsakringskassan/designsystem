@@ -5659,14 +5659,18 @@ input[type=search]:focus,
   box-shadow: inset 0 -3px 0 0 var(--fkds-color-border-strong);
   border-radius: 0;
 }
+.table-ng__cell--text:hover:has(.table-ng__textedit:focus) {
+  background: transparent;
+}
 .table-ng__cell .table-ng__editable {
   min-block-size: calc(var(--f-font-size-standard) * var(--f-line-height-large) + 0.25rem * var(--f-density-factor) * 2 + 6px);
 }
 .table-ng__cell .table-ng__editable:focus-within {
   box-shadow: inset 0 -3px 0 0 var(--fkds-color-border-strong);
   border-radius: 0;
+  background: transparent;
 }
-.table-ng__cell .table-ng__editable:hover {
+.table-ng__cell .table-ng__editable:hover:not(:focus-within) {
   box-shadow: inset 0 -3px 0 0 var(--fkds-color-border-strong);
   border-radius: 0;
 }
@@ -5781,6 +5785,18 @@ input[type=search]:focus,
   background: transparent;
 }
 
+.table-ng__cell--select:has([role=combobox][aria-expanded=true]) {
+  background: transparent;
+}
+.table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable,
+.table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:hover,
+.table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:hover:not(:focus-within),
+.table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:focus,
+.table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:focus-within {
+  box-shadow: none;
+  border-radius: 0;
+}
+
 .table-ng__textedit {
   flex: 0 1 0;
   width: 0;
@@ -5821,6 +5837,14 @@ input[type=search]:focus,
   .table-ng__cell--text:focus-within .table-ng__editable,
   .table-ng__cell--select:focus-within .table-ng__editable {
     box-shadow: inset 0 -3px 0 0 Highlight;
+    border-radius: 0;
+  }
+  .table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable,
+  .table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:hover,
+  .table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:hover:not(:focus-within),
+  .table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:focus,
+  .table-ng__cell--select:has([role=combobox][aria-expanded=true]) .table-ng__editable:focus-within {
+    box-shadow: none;
     border-radius: 0;
   }
   .table-ng [tabindex="0"]:focus,
