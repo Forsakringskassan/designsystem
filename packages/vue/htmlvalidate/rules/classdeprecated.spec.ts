@@ -1,6 +1,8 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
-import plugin from "../index";
+import { expect, it } from "vitest";
+// eslint-disable-next-line import-x/extensions -- Vite migration
+import plugin from "../index.cjs";
 
 const htmlvalidate = new HtmlValidate({
     plugins: [plugin],
@@ -51,7 +53,7 @@ it("should report error when `.button--text` is used", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: class "button--text" is deprecated and replaced with "button--tertiary" (fkui/class-deprecated)
           1 |
         > 2 |         <button type="button" class="button button--text"></button>
@@ -73,7 +75,7 @@ it("should report error when `.button--discrete` is used", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: class "button--discrete" is deprecated and replaced with "button--tertiary" (fkui/class-deprecated)
           1 |
         > 2 |         <button type="button" class="button button--discrete"></button>
@@ -97,7 +99,7 @@ it("should report error when `.button__icon--end` is used", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: class "button__icon--end" is deprecated (fkui/class-deprecated)
           1 |
           2 |         <button type="button" class="button button--primary button--large">
@@ -148,7 +150,7 @@ it("should report error when `.navbar` is used", async () => {
     const markup = /* HTML */ ` <div class="custom-navbar navbar"></div> `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: class "navbar" is deprecated (fkui/class-deprecated)
         > 1 |  <div class="custom-navbar navbar"></div>
             |                            ^^^^^^
@@ -170,7 +172,7 @@ it("should report error when `.icon-stack--new-window` is used", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: class "icon-stack--new-window" is deprecated (fkui/class-deprecated)
           1 |
         > 2 |         <div class="icon-stack button__icon icon-stack--new-window" />

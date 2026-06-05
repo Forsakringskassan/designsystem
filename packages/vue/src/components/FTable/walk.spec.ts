@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { walk } from "./walk";
 
 interface NewTestItem {

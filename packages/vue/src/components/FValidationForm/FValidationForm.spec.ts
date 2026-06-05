@@ -1,5 +1,5 @@
 import path from "node:path";
-import "html-validate/jest";
+import "html-validate/vitest";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import {
@@ -7,6 +7,7 @@ import {
     HtmlValidate,
     cjsResolver,
 } from "html-validate/node";
+import { describe, expect, it } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import { FTextField } from "../FTextField";
 import FValidationForm from "./FValidationForm.vue";
@@ -139,7 +140,7 @@ describe("html-validate", () => {
             "html-validate-vue:recommended",
             "@fkui/vue:recommended",
         ],
-        plugins: ["<rootDir>/htmlvalidate", "html-validate-vue"],
+        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
         transform: {
             ".*": "html-validate-vue:html",
         },
@@ -156,7 +157,7 @@ describe("html-validate", () => {
             </f-validation-form>
         `;
         const report = await htmlvalidate.validateString(markup, filename);
-        expect(report).toMatchInlineCodeframe(`""`);
+        await expect(report).toMatchInlineCodeframe(`""`);
         expect(report).toBeValid();
     });
 
@@ -171,7 +172,7 @@ describe("html-validate", () => {
             </f-validation-form>
         `;
         const report = await htmlvalidate.validateString(markup, filename);
-        expect(report).toMatchInlineCodeframe(`""`);
+        await expect(report).toMatchInlineCodeframe(`""`);
         expect(report).toBeValid();
     });
 
@@ -188,7 +189,7 @@ describe("html-validate", () => {
             </f-validation-form>
         `;
         const report = await htmlvalidate.validateString(markup, filename);
-        expect(report).toMatchInlineCodeframe(`
+        await expect(report).toMatchInlineCodeframe(`
             "error: <div> element is not permitted as content under slot "error-message" (<f-validation-form>) (element-permitted-content)
               2 |             <f-validation-form>
               3 |                 <template #error-message>
@@ -216,7 +217,7 @@ describe("html-validate", () => {
             </f-validation-form>
         `;
         const report = await htmlvalidate.validateString(markup, filename);
-        expect(report).toMatchInlineCodeframe(`""`);
+        await expect(report).toMatchInlineCodeframe(`""`);
         expect(report).toBeValid();
     });
 
@@ -230,7 +231,7 @@ describe("html-validate", () => {
             </f-validation-form>
         `;
         const report = await htmlvalidate.validateString(markup, filename);
-        expect(report).toMatchInlineCodeframe(`""`);
+        await expect(report).toMatchInlineCodeframe(`""`);
         expect(report).toBeValid();
     });
 
@@ -238,7 +239,7 @@ describe("html-validate", () => {
         expect.assertions(2);
         const markup = /* HTML */ ` <f-validation-form> </f-validation-form> `;
         const report = await htmlvalidate.validateString(markup, filename);
-        expect(report).toMatchInlineCodeframe(`
+        await expect(report).toMatchInlineCodeframe(`
             "error: <f-validation-form> element must have a submit button (wcag/h32)
             > 1 |  <f-validation-form> </f-validation-form>
                 |   ^^^^^^^^^^^^^^^^^

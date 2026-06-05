@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { computePages } from "./compute-pages";
 
 describe("compute pages", () => {

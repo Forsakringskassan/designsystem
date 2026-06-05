@@ -1,9 +1,10 @@
-import "html-validate/jest";
+import { describe, expect, it } from "vitest";
+import "html-validate/vitest";
 
 describe("html-validate", () => {
-    it("should require day attribute", () => {
+    it("should require day attribute", async () => {
         const markup = /* HTML */ ` <i-calendar-day> </i-calendar-day> `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <i-calendar-day> is missing required "day" attribute (element-required-attributes)
             > 1 |  <i-calendar-day> </i-calendar-day>
                 |   ^^^^^^^^^^^^^^
@@ -11,7 +12,7 @@ describe("html-validate", () => {
         `);
     });
 
-    it("should allow setting boolean attributes", () => {
+    it("should allow setting boolean attributes", async () => {
         const markup = /* HTML */ `
             <i-calendar-day
                 day="2022-07-05"
@@ -23,15 +24,15 @@ describe("html-validate", () => {
             </i-calendar-day>
         `;
 
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
-    it("should allow child elements", () => {
+    it("should allow child elements", async () => {
         const markup = /* HTML */ `
             <i-calendar-day day="2022-07-05">
                 <span></span>
             </i-calendar-day>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 });

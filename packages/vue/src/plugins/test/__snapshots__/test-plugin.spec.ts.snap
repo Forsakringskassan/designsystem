@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should add data-test attribute to the FTextField 1`] = `
 <div
@@ -17,16 +17,25 @@ exports[`should add data-test attribute to the FTextField 1`] = `
       Testing v-test directive
       
       
+       
       
       
       <!--v-if-->
+       
+      <!--v-if-->
+      
+      
+       
+      <!--v-if-->
     </label>
   </div>
+   
   <div
     class="text-field__input-wrapper i-width-sm-12"
   >
     
     
+     
     <div
       class="text-field__icon-wrapper"
     >
@@ -36,14 +45,20 @@ exports[`should add data-test attribute to the FTextField 1`] = `
         maxlength="100"
         type="text"
       />
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
     </div>
+     
     
     
   </div>
+   
   <!--v-if-->
 </div>
 `;

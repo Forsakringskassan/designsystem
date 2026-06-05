@@ -1,15 +1,15 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should match snapshot tbody 1`] = `
-<tbody>
+exports[`should match snapshot > tbody 1`] = `
+"<tbody>
   <tr class="table__row" tabindex="0">
     <!--v-if-->
     <!--v-if-->
     <td class="table__column table__column--text">
-      <div class="table__column__wrapper">1<span class="sr-only">&nbsp;</span></div>
+      <div class="table__column__wrapper">1 <span class="sr-only">&nbsp;</span></div>
     </td>
     <td class="table__column table__column--numeric">
-      <div class="table__column__wrapper">2<span class="sr-only">&nbsp;</span></div>
+      <div class="table__column__wrapper">2 <span class="sr-only">&nbsp;</span></div>
     </td>
   </tr>
   <!--v-if-->
@@ -17,20 +17,20 @@ exports[`should match snapshot tbody 1`] = `
     <!--v-if-->
     <!--v-if-->
     <td class="table__column table__column--text">
-      <div class="table__column__wrapper">3<span class="sr-only">&nbsp;</span></div>
+      <div class="table__column__wrapper">3 <span class="sr-only">&nbsp;</span></div>
     </td>
     <td class="table__column table__column--numeric">
-      <div class="table__column__wrapper">4<span class="sr-only">&nbsp;</span></div>
+      <div class="table__column__wrapper">4 <span class="sr-only">&nbsp;</span></div>
     </td>
   </tr>
   <!--v-if-->
   <!--v-if-->
   <!--v-if-->
-</tbody>
+</tbody>"
 `;
 
-exports[`should match snapshot thead 1`] = `
-<thead>
+exports[`should match snapshot > thead 1`] = `
+"<thead>
   <tr class="table__row">
     <!--v-if-->
     <!--v-if-->
@@ -45,5 +45,5 @@ exports[`should match snapshot thead 1`] = `
       <!--v-if-->
     </th>
   </tr>
-</thead>
+</thead>"
 `;

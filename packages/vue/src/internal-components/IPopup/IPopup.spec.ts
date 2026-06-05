@@ -1,12 +1,16 @@
-import "html-validate/jest";
-import "@fkui/test-utils/jest";
+import "html-validate/vitest";
+import "@fkui/test-utils/vitest";
 import { defineComponent } from "vue";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 import IPopup from "./IPopup.vue";
 
-jest.useFakeTimers();
+vi.useFakeTimers();
+afterAll(() => {
+    vi.useRealTimers();
+});
 
 function createWrapper(
     template: string,
@@ -40,7 +44,7 @@ async function mountPopup(
 
 async function openPopup(wrapper: VueWrapper): Promise<void> {
     await wrapper.get("#launch-popup").trigger("click");
-    await jest.runAllTimers();
+    await vi.runAllTimers();
     await flushPromises();
 }
 
@@ -59,12 +63,12 @@ const defaultTemplate = /* HTML */ `
 `;
 
 beforeEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
 });
 
 describe("snapshots", () => {
     it("should match snapshot when open", async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
         const wrapper = await mountPopup();
         await openPopup(wrapper);
         expect(wrapper.element).toMatchSnapshot();
@@ -78,7 +82,7 @@ describe("snapshots", () => {
 
 describe("events", () => {
     it('should emit "open" event after popup has opened', async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = await mountPopup();
         await openPopup(wrapper);
@@ -87,7 +91,7 @@ describe("events", () => {
     });
 
     it('should emit "close" event on escape key pressed', async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = await mountPopup();
         await openPopup(wrapper);
@@ -101,7 +105,7 @@ describe("events", () => {
     });
 
     it('should emit "close" event when clicked outside an open popup', async () => {
-        jest.spyOn(window, "scrollTo").mockReturnValue();
+        vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = await mountPopup();
         await openPopup(wrapper);

@@ -1,6 +1,7 @@
 import { defineComponent, h, markRaw } from "vue";
 import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { describe, expect, it } from "vitest";
 import { createRouter, createWebHashHistory } from "vue-router";
 import { EventBus } from "../../utils";
 import FErrorHandlingApp from "./FErrorHandlingApp.vue";
@@ -53,13 +54,13 @@ describe("FErrorHandlingApp", () => {
 
         // Then
         expect(component.element).toMatchInlineSnapshot(`
-            <div>
-              
-              <p>
-                Slotted content
-              </p>
-              
-            </div>
+          <div>
+            
+            <p>
+              Slotted content
+            </p>
+            
+          </div>
         `);
     });
 

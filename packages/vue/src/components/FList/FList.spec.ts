@@ -1,6 +1,7 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { TranslationPlugin } from "../../plugins";
 import { ListArray, UnknownItem } from "../../types";
 import * as ListUtils from "../../utils/list-utils";
@@ -45,7 +46,7 @@ function createWrapper({
 }
 
 afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
 });
 
 describe("snapshots", () => {
@@ -518,7 +519,7 @@ describe("`keyAttribute`", () => {
                 },
             });
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Expected each item to have identifier [id] with unique value but encountered duplicate of "b" in item index 2."`,
+            `[Error: Expected each item to have identifier [id] with unique value but encountered duplicate of "b" in item index 2.]`,
         );
     });
 
@@ -539,7 +540,7 @@ describe("keyboard navigation", () => {
     it.each(["Up", "Down", "ArrowUp", "ArrowDown"])(
         "should pass key '%s' to handleKeyboardFocusNavigation method",
         async (key: string) => {
-            const methodSpy = jest.spyOn(
+            const methodSpy = vi.spyOn(
                 ListUtils,
                 "handleKeyboardFocusNavigation",
             );
@@ -570,7 +571,7 @@ describe("keyboard navigation", () => {
     `(
         "should emit 'paginateDataset:$action' event on '$key' key press",
         async ({ key, action }) => {
-            const listener = jest.fn();
+            const listener = vi.fn();
             const wrapper = mount(FList, {
                 props: {
                     items: oneItem,
@@ -599,7 +600,7 @@ describe("keyboard navigation", () => {
 describe("screenreader slot", () => {
     /* eslint-disable-next-line no-console -- technical debt, bad practice and
      * the mock is not restored so leaking to other tests */
-    console.error = jest.fn();
+    console.error = vi.fn();
     const modelValue: ListArray = [];
 
     it("should throw exception if missing screenreader slot and selectable option", async () => {
@@ -613,7 +614,7 @@ describe("screenreader slot", () => {
                 screenReaderSlot: false,
             });
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Slot "screenreader" is required when having "selectable" & "checkbox" option."`,
+            `[Error: Slot "screenreader" is required when having "selectable" & "checkbox" option.]`,
         );
     });
 });

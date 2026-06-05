@@ -1,4 +1,5 @@
 import { mount } from "@vue/test-utils";
+import { expect, it } from "vitest";
 import { FPaginator } from "../components";
 import { FPaginatorSelectors } from "./FPaginator.selectors";
 

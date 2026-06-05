@@ -1,5 +1,6 @@
 import { defineComponent, h, resolveDirective, withDirectives } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { expect, it, vi } from "vitest";
 import { FTextField } from "../../components/FTextField";
 import { TestPlugin } from "./test-plugin";
 
@@ -44,10 +45,10 @@ it("should add data-test attribute to the FTextField", () => {
 
 it("should throw an exception if no value is provided for the v-test directive", async () => {
     /* eslint-disable-next-line no-console -- prevent vue from polluting output */
-    console.error = jest.fn();
+    console.error = vi.fn();
     expect.assertions(1);
     expect(() => createWrapper("")).toThrowErrorMatchingInlineSnapshot(
-        `"Did you forgot to add a value to v-test?"`,
+        `[Error: Did you forgot to add a value to v-test?]`,
     );
 });
 

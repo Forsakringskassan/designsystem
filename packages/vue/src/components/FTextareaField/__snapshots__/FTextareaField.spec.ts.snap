@@ -1,19 +1,19 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`html-validate <f-textarea-field maxlength="100 000" soft-limit="30 000">Label</f-textarea-field> should be invalid 1`] = `
+exports[`html-validate > '<f-textarea-field maxlength="100 000"…' should be invalid 1`] = `
 [Error: Expected HTML to be valid but had the following errors:
 
   Attribute "maxlength" has invalid value "100 000" [attribute-allowed-values]
   Attribute "soft-limit" has invalid value "30 000" [attribute-allowed-values]]
 `;
 
-exports[`html-validate <f-textarea-field>Label<template #tooltip><div /></template></f-textarea-field> should be invalid 1`] = `
+exports[`html-validate > '<f-textarea-field>Label<template #too…' should be invalid 1`] = `
 [Error: Expected HTML to be valid but had the following errors:
 
   <div> element is not permitted as content under slot "tooltip" (<f-textarea-field>) [element-permitted-content]]
 `;
 
-exports[`snapshots should match snapshot when validityMode is ERROR and isValid is false 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'ERROR' and isValid is false 1`] = `
 <div
   class="textarea-field textarea-field--error"
 >
@@ -26,8 +26,10 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
     Label
     
     
+     
     
     
+     
     <span
       class="label__message label__message--error"
     >
@@ -36,6 +38,7 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
         library="f"
         name="error"
       />
+       
       
       
       
@@ -45,7 +48,9 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
       
     </span>
   </label>
+   
   <!--v-if-->
+   
   <textarea
     class="textarea-field__textarea textarea-field__resize--none"
     id="textarea-field"
@@ -54,7 +59,7 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
 </div>
 `;
 
-exports[`snapshots should match snapshot when validityMode is INITIAL and isValid is false 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'INITIAL' and isValid is false 1`] = `
 <div
   class="textarea-field"
 >
@@ -67,11 +72,15 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
     Label
     
     
+     
     
     
+     
     <!--v-if-->
   </label>
+   
   <!--v-if-->
+   
   <textarea
     class="textarea-field__textarea textarea-field__resize--none"
     id="textarea-field"
@@ -80,7 +89,7 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
 </div>
 `;
 
-exports[`snapshots should match snapshot when validityMode is INITIAL and isValid is true 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'INITIAL' and isValid is true 1`] = `
 <div
   class="textarea-field"
 >
@@ -93,11 +102,15 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
     Label
     
     
+     
     
     
+     
     <!--v-if-->
   </label>
+   
   <!--v-if-->
+   
   <textarea
     class="textarea-field__textarea textarea-field__resize--none"
     id="textarea-field"
@@ -106,7 +119,7 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
 </div>
 `;
 
-exports[`snapshots should match snapshot when validityMode is VALID and isValid is true 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'VALID' and isValid is true 1`] = `
 <div
   class="textarea-field"
 >
@@ -119,11 +132,15 @@ exports[`snapshots should match snapshot when validityMode is VALID and isValid 
     Label
     
     
+     
     
     
+     
     <!--v-if-->
   </label>
+   
   <!--v-if-->
+   
   <textarea
     class="textarea-field__textarea textarea-field__resize--none"
     id="textarea-field"
@@ -132,7 +149,7 @@ exports[`snapshots should match snapshot when validityMode is VALID and isValid 
 </div>
 `;
 
-exports[`snapshots should match snapshot with label and textarea 1`] = `
+exports[`snapshots > should match snapshot with label and textarea 1`] = `
 <div
   class="textarea-field"
 >
@@ -145,11 +162,15 @@ exports[`snapshots should match snapshot with label and textarea 1`] = `
     Label
     
     
+     
     
     
+     
     <!--v-if-->
   </label>
+   
   <!--v-if-->
+   
   <textarea
     class="textarea-field__textarea textarea-field__resize--none"
     id="textarea-field"
@@ -158,7 +179,7 @@ exports[`snapshots should match snapshot with label and textarea 1`] = `
 </div>
 `;
 
-exports[`snapshots should match snapshot with label, error message and textarea 1`] = `
+exports[`snapshots > should match snapshot with label, error message and textarea 1`] = `
 <div
   class="textarea-field"
 >
@@ -171,8 +192,10 @@ exports[`snapshots should match snapshot with label, error message and textarea 
     Label
     
     
+     
     
     
+     
     <span
       class="label__message label__message--error"
     >
@@ -181,6 +204,7 @@ exports[`snapshots should match snapshot with label, error message and textarea 
         library="f"
         name="error"
       />
+       
       
       
       ERRROR_MESSAGE
@@ -188,7 +212,9 @@ exports[`snapshots should match snapshot with label, error message and textarea 
       
     </span>
   </label>
+   
   <!--v-if-->
+   
   <textarea
     class="textarea-field__textarea textarea-field__resize--none"
     id="textarea-field"
@@ -197,7 +223,7 @@ exports[`snapshots should match snapshot with label, error message and textarea 
 </div>
 `;
 
-exports[`snapshots should match snapshot with label, tooltip, description, error message and textarea 1`] = `
+exports[`snapshots > should match snapshot with label, tooltip, description, error message and textarea 1`] = `
 <div
   class="textarea-field"
 >
@@ -214,11 +240,13 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
         
       </label>
     </div>
+     
     
     
     TOOLTIP
     
     
+     
     <label
       class="label sr-separator"
       for="textarea-field"
@@ -228,6 +256,7 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
       DESCRIPTION
       
       
+       
       <span
         class="label__message label__message--error"
       >
@@ -236,6 +265,7 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
           library="f"
           name="error"
         />
+         
         
         
         ERROR_MESSAGE
@@ -244,7 +274,9 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
       </span>
     </label>
   </div>
+   
   <!--v-if-->
+   
   <textarea
     class="textarea-field__textarea textarea-field__resize--none"
     id="textarea-field"
@@ -253,7 +285,7 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
 </div>
 `;
 
-exports[`snapshots should match snapshot with resize vertical 1`] = `
+exports[`snapshots > should match snapshot with resize vertical 1`] = `
 <div
   class="textarea-field"
 >
@@ -266,11 +298,15 @@ exports[`snapshots should match snapshot with resize vertical 1`] = `
     Label
     
     
+     
     
     
+     
     <!--v-if-->
   </label>
+   
   <!--v-if-->
+   
   <textarea
     class="textarea-field__textarea textarea-field__resize--vertical"
     id="textarea-field"

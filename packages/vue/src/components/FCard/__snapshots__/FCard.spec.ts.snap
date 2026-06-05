@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots should match snapshot 1`] = `
+exports[`snapshots > should match snapshot 1`] = `
 <div
   class="card card--default"
   id="fkui-vue-element-0001"
@@ -12,9 +12,11 @@ exports[`snapshots should match snapshot 1`] = `
     Header slot
     
   </div>
+   
   
   <!--v-if-->
   
+   
   <div
     class="card__content"
   >
@@ -22,6 +24,7 @@ exports[`snapshots should match snapshot 1`] = `
     Content slot
     
   </div>
+   
   <div
     class="card__footer"
   >

@@ -1,4 +1,5 @@
 import { FDate } from "@fkui/date";
+import { expect, it } from "vitest";
 import { getDayTabindex } from "./get-day-tabindex";
 
 const dates = [
