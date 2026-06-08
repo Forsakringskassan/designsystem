@@ -210,7 +210,7 @@ $button--tertiary: (
         }
 
         &--muted,
-        // Deprecated since %version%, replaced by `muted`.
+        // Deprecated since v6.49.0, replaced by `muted`.
         &--black {
             color: $button-tertiary-muted-color-text-default;
 

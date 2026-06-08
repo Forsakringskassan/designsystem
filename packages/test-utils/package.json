@@ -1,6 +1,6 @@
 {
   "name": "@fkui/test-utils",
-  "version": "6.48.0",
+  "version": "6.49.0",
   "description": "FKUI test utils for Jest och Vitest",
   "keywords": [
     "fkui",
@@ -71,11 +71,11 @@
   "devDependencies": {
     "@forsakringskassan/vitest-config-jsdom": "2.2.9",
     "@vue/server-renderer": "3.5.35",
-    "@vue/test-utils": "2.4.10",
+    "@vue/test-utils": "2.4.11",
     "esbuild": "0.28.0",
     "expect": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
-    "vitest": "4.1.7",
+    "vitest": "4.1.8",
     "vue": "3.5.35"
   },
   "peerDependencies": {

@@ -99,9 +99,8 @@
     }
 
     &__content {
-        height: 0;
         overflow: hidden;
-        transition: height var(--f-animation-duration-medium) ease-in;
+        transition: height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96);
     }
 
     &__body {

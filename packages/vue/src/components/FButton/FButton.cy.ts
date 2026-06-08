@@ -163,7 +163,7 @@ describe("Tertiary", () => {
         cy.get("#background").toMatchScreenshot();
     });
 
-    // `tertiary-style="black"` is deprecated since %version%, replaced by `muted`.
+    // `tertiary-style="black"` is deprecated since v6.49.0, replaced by `muted`.
     it("black", () => {
         cy.mount(
             createComponent({ variant: "tertiary", tertiaryStyle: "black" }),

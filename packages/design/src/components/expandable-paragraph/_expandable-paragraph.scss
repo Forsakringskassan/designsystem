@@ -84,6 +84,8 @@ $EXPANDABLE_PARAGRAPH_LINE_HEIGHT: var(--f-line-height-medium);
     &__content {
         margin-top: core.densify(size.$margin-075);
         margin-bottom: core.densify(size.$margin-100);
+        overflow: hidden;
+        transition: height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96);
     }
 
     &__separator {
