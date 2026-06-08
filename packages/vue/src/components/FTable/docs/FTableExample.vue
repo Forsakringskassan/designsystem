@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useDatasetRef } from "@fkui/vue";
-import { FTable, defineTableColumns } from "@fkui/vue";
+import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -10,47 +9,44 @@ interface Row {
     nested?: Row[];
 }
 
-const rows = useDatasetRef<Row>(
-    [
-        {
-            namn: "Apelsin",
-            land: "Spanien",
-            pris: "30",
-            nested: [
-                {
-                    namn: "Apelsiner importeras främst från Medelhavsområdet",
-                    land: "",
-                    pris: "",
-                },
-            ],
-        },
-        {
-            namn: "Banan",
-            land: "Equador",
-            pris: "15",
-            nested: [
-                {
-                    namn: "Bananer importeras främst från tropiska länder i Latinamerika, Afrika och Asien",
-                    land: "",
-                    pris: "",
-                },
-            ],
-        },
-        {
-            namn: "Äpple",
-            land: "Sverige",
-            pris: "22",
-            nested: [
-                {
-                    namn: "Äpplen odlas i stor skala i tempererade klimat, bland annat i Sverige, Polen och Kina",
-                    land: "",
-                    pris: "",
-                },
-            ],
-        },
-    ],
-    "nested",
-);
+const data: Row[] = [
+    {
+        namn: "Apelsin",
+        land: "Spanien",
+        pris: "30",
+        nested: [
+            {
+                namn: "Apelsiner importeras främst från Medelhavsområdet",
+                land: "",
+                pris: "",
+            },
+        ],
+    },
+    {
+        namn: "Banan",
+        land: "Equador",
+        pris: "15",
+        nested: [
+            {
+                namn: "Bananer importeras främst från tropiska länder i Latinamerika, Afrika och Asien",
+                land: "",
+                pris: "",
+            },
+        ],
+    },
+    {
+        namn: "Äpple",
+        land: "Sverige",
+        pris: "22",
+        nested: [
+            {
+                namn: "Äpplen odlas i stor skala i tempererade klimat, bland annat i Sverige, Polen och Kina",
+                land: "",
+                pris: "",
+            },
+        ],
+    },
+];
 
 const selectedRows = ref<Row[]>([]);
 
@@ -71,8 +67,13 @@ const columns = defineTableColumns<Row>([
         key: "pris",
     },
 ]);
-</script>
 
+const rows = useDatasetRef(data, "nested");
+</script>
 <template>
-    <f-table v-model:selected-rows="selectedRows" :rows :columns selectable="multi"> </f-table>
+    <f-table v-model:selected-rows="selectedRows" :rows :columns selectable="multi">
+        <template #expandable="{ row }: { row: Row }">
+            {{ row.namn }}
+        </template>
+    </f-table>
 </template>
