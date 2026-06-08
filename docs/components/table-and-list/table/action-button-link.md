@@ -7,6 +7,10 @@ search:
         - tabell
 ---
 
+```import
+FTableActionButtonLinkExample.vue
+```
+
 Tabellen kan ha åtgärdsknappar för att utföra en operation på en rad som till exempel ta bort, ändra eller visa mer information.
 Det går också att placera länkar i tabellen.
 
