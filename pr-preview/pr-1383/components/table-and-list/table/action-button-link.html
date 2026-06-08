@@ -44,7 +44,15 @@
             crossorigin
             integrity="sha384-Gfzmg/37+WdxGA3iw2k2/GaeiotI8p9jeSL/GBxyG6mSiyqsRNfgEEroGYvJ3O9b"
             
-        ></script><script>
+        ></script><link
+    rel="preload"
+    href="../../../search-data-1749ca.json"
+    as="fetch"
+    crossorigin
+    integrity="sha384-l26chDHbm2b4zs7u9z+HNw9PsfvGIz4fQ0NqmKSsf4tGcE9cgSHJQ/C4s8b/SzFq"
+    id="search-data"
+/>
+<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -81,15 +89,6 @@
     })();
 </script>
 
-
-        <link
-            rel="preload"
-            href="../../../search-data-1d6709.json"
-            as="fetch"
-            crossorigin
-            integrity="sha384-z5i0l1W1m4fMe/HGMZPbhhOqVEm9Dm6Nd2JzvmBOMEZKM4vMkSXGXqQ3J8a0mnBW"
-            id="search-data"
-        />
     </head>
     <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
@@ -1566,7 +1565,129 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Tabellen kan ha åtgärdsknappar för att utföra en operation på en rad som till exempel ta bort, ändra eller visa mer information.
+                    <div id="content"><div
+                id="example-41d418"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-d86b56"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableActionButtonLinkExample-d86b56.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="code-preview__button code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { removeDatasetRows, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">frukt</span>: string;
+    <span class="hljs-attr">land</span>: string;
+    <span class="hljs-attr">pris</span>: string;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;frukt&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;anchor&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Länk&quot;</span>,
+        <span class="hljs-title function_">text</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Mer information&quot;</span>;
+        },
+        <span class="hljs-attr">href</span>: <span class="hljs-string">&quot;#&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;button&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;&quot;</span>,
+        <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
+        <span class="hljs-title function_">text</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Ta bort&quot;</span>;
+        },
+        <span class="hljs-attr">onClick</span>: onRemoveRow,
+    },
+    {
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;&quot;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;menu&quot;</span>,
+        <span class="hljs-title function_">text</span>(<span class="hljs-params">row</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">`Åtgärder för &quot;<span class="hljs-subst">${row.frukt}</span>&quot;`</span>;
+        },
+        <span class="hljs-attr">actions</span>: [
+            {
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Visa&quot;</span>,
+                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;search&quot;</span>,
+                <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
+                    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">alert</span>(<span class="hljs-string">`Visa detaljer för &quot;<span class="hljs-subst">${row.frukt}</span>&quot;`</span>);
+                },
+            },
+            {
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Redigera&quot;</span>,
+                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;pen&quot;</span>,
+                <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
+                    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">alert</span>(<span class="hljs-string">`Redigera &quot;<span class="hljs-subst">${row.frukt}</span>&quot;`</span>);
+                },
+            },
+        ],
+    },
+]);
+
+<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;([
+    { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;30&quot;</span> },
+    { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Banan&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Ecuador&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;15&quot;</span> },
+    { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Äpple&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;22&quot;</span> },
+]);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onRemoveRow</span>(<span class="hljs-params">row: Row</span>): <span class="hljs-keyword">void</span> {
+    <span class="hljs-title function_">removeDatasetRows</span>(rows, row);
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">striped</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <p class="docs-paragraph">Tabellen kan ha åtgärdsknappar för att utföra en operation på en rad som till exempel ta bort, ändra eller visa mer information.
 Det går också att placera länkar i tabellen.</p>
 <h2 id="kontextmeny" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kontextmeny">Kontextmeny</a></h2><p class="docs-paragraph">Kontextmeny används för att visa åtgärder för en tabellrad och används istället för att lägga in flera knappar på raden.</p>
 <h2 id="kod" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kod">Kod</a></h2><p class="docs-paragraph"><a href="column-types/button.html">Läs mer om hur du sätter upp kolumntyp knapp <code>button</code></a>.</p>
@@ -1620,9 +1741,9 @@ Det går också att placera länkar i tabellen.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs/theme (<a href="https://github.com/Forsakringskassan/designsystem/commits/43c5e42e816111bf06a260917eb8527e613a0a94">43c5e42</a>)<br />
+<div class="footer__right"><div class="version">docs/theme (<a href="https://github.com/Forsakringskassan/designsystem/commits/73a991f310803dec681ade8ad6861d4e9e3400fa">73a991f</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1383">PR 1383</a><br />
-        2026-06-08 06:02
+        2026-06-08 14:25
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1756,16 +1877,16 @@ Det går också att placera länkar i tabellen.</p>
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-303def.js"
+            src="../../../assets/processors/selectable-version/select-version-660c48.js"
             type="module"
             crossorigin
-            integrity="sha384-UfkDaWIFVLv9zUQw2nXA63GTgYLUjYro+WSpZN21kMGtPbBN6bFpPgBxtG34q+ak"
+            integrity="sha384-UWVK08UJm6xLd1Oul1iNZKMHzvhrGMCCGTGMWStwBfD984A7N8iuFmiesbsExCZI"
             
         ></script><script
-            src="../../../assets/main-efe747.js"
+            src="../../../assets/main-b625cc.js"
             type="module"
             crossorigin
-            integrity="sha384-Wb0l7XANnCf3hX/9KAI8Adc7vOc7zY0ltLu7y1sCOqPnBQ3JtFJGModvfijQxzHR"
+            integrity="sha384-ur78J9I/JDvcsSD6sbiagVXtbkvr/WzrZqyW1a5jv9zuLpMwcPMoQR+qNJfoj2DP"
             
         ></script>
     </body>
