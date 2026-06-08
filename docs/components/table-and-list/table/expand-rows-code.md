@@ -7,6 +7,10 @@ search:
         - tabell
 ---
 
+```import live-example
+FTableExpandableLiveExample.vue
+```
+
 Givet att vi har en datakälla med nästlade rader:
 
 ```ts
@@ -72,26 +76,30 @@ const data: Row[] = [
     {
         namn: "Apelsin",
         land: "Spanien",
+        nested: [
+            {
+                namn: "Äpplen odlas i stor skala i tempererade klimat, bland annat i Sverige, Polen och Kina",
+                land: "",
+            },
+        ],
     },
     {
         namn: "Banan",
-        land: "Columbia",
+        land: "Ecuador",
+        nested: [
+            {
+                namn: "Bananer importeras främst från tropiska länder i Latinamerika, Afrika och Asien",
+                land: "",
+            },
+        ],
     },
     {
         namn: "Äpple",
-        land: "",
+        land: "Sverige",
         nested: [
             {
-                namn: "Aroma",
-                land: "Sverige",
-            },
-            {
-                namn: "Ingrid Marie",
-                land: "Sverige",
-            },
-            {
-                namn: "Pink Lady",
-                land: "Italien",
+                namn: "Apelsiner importeras främst från Medelhavsområdet",
+                land: "",
             },
         ],
     },
@@ -142,26 +150,30 @@ const data: Row[] = [
     {
         namn: "Apelsin",
         land: "Spanien",
+        nested: [
+            {
+                namn: "Äpplen odlas i stor skala i tempererade klimat, bland annat i Sverige, Polen och Kina",
+                land: "",
+            },
+        ],
     },
     {
         namn: "Banan",
-        land: "Columbia",
+        land: "Ecuador",
+        nested: [
+            {
+                namn: "Bananer importeras främst från tropiska länder i Latinamerika, Afrika och Asien",
+                land: "",
+            },
+        ],
     },
     {
         namn: "Äpple",
-        land: "",
+        land: "Sverige",
         nested: [
             {
-                namn: "Aroma",
-                land: "Sverige",
-            },
-            {
-                namn: "Ingrid Marie",
-                land: "Sverige",
-            },
-            {
-                namn: "Pink Lady",
-                land: "Italien",
+                namn: "Apelsiner importeras främst från Medelhavsområdet",
+                land: "",
             },
         ],
     },

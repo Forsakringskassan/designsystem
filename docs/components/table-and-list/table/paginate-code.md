@@ -8,6 +8,10 @@ search:
         - tabell
 ---
 
+```import
+FTableBasicPagination.vue
+```
+
 Tabellen kan kombineras med {@link component:FPaginateDataset paginering}.
 
 ```html static
