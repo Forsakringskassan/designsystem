@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Tabell - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-626278.css"
+            href="../../../assets/docs-054447.css"
             crossorigin
-            integrity="sha384-9nIbVG6uGb56WQpN6EDnm177cRsULYM+vfq0tlI5S40IOcuIy7TyE9d/G8rDe+TB"
+            integrity="sha384-FUj7+GZ3+XAdWr/zPb9c6e4Vx7exVfNrHHdM4in2rLVmTN5jnxr1FNr2lDSRHUlb"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-2e0001.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-ba1b7a.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-692a76.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-b9c6d3.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-f5de4c.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
     "../../../assets/vendor-fkui-logic-ba1b7a.js": "sha384-vzXbs4dDmB5nxB2+/l+eL2n8Ju06KOu7bG1nKtIrQdfxi9EWMrLsxjKsSwK0PauJ",
     "../../../assets/vendor-fkui-date-692a76.js": "sha384-MwbLPk6deCTFOhc1JjO7SwACbk5fiURa0P++wkNh8qT5ckXSJVAIS1wp08u5D8AS",
-    "../../../assets/vendor-fkui-vue-b9c6d3.js": "sha384-53BexlGp99tjHzs4LoQW0/jo2DQPK0Dr0DwSnA/l0y9BFpuZ9qh9qgQbgIuQZ8e9",
+    "../../../assets/vendor-fkui-vue-f5de4c.js": "sha384-XDFnyC0fVXJ6eEM6cn25+zldz3y66SwD4HkEL7ZlcypruESB2a6lm0uC0Rtag7oR",
     "../../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
   }
 }
@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-4b54c5.json"
+            href="../../../search-data-8182af.json"
             as="fetch"
             crossorigin
-            integrity="sha384-nY2Nm5YXQXn0DSZ6Z2RhBlIMBTr4/bq4jPu8KufXJpJ2Gz95/OZ8SMjXI/2NPME4"
+            integrity="sha384-6UHBCQ/aEkKr7OFq3DsJpxHB+geWYnnf8Zc6PZ1RZ+zWrhHXTPuZFT2BR3B3qTnA"
             id="search-data"
         />
     </head>
@@ -1550,7 +1550,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/0b12d3a9aa20ebb919cda14891043374276a7a53/packages/vue/src/components/FTable/FTable.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/c89f19001f226835e665c3e1c44ab538dc26ded3/packages/vue/src/components/FTable/FTable.vue">
                 FTable
             </a>
             
@@ -1604,13 +1604,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-a31719"></div>
+        <div id="example-e4b5ff"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExample-a31719.js"></script>
+        <script type="module" src="./FTableExample-e4b5ff.js"></script>
     
                 </div>
                 <div>
@@ -1633,8 +1633,7 @@
                 >
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-attr">namn</span>: string;
@@ -1643,47 +1642,44 @@ interface <span class="hljs-title class_">Row</span> {
     nested?: <span class="hljs-title class_">Row</span>[];
 }
 
-<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;(
-    [
-        {
-            <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>,
-            <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>,
-            <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;30&quot;</span>,
-            <span class="hljs-attr">nested</span>: [
-                {
-                    <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsiner importeras främst från Medelhavsområdet&quot;</span>,
-                    <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;&quot;</span>,
-                    <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;&quot;</span>,
-                },
-            ],
-        },
-        {
-            <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Banan&quot;</span>,
-            <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Equador&quot;</span>,
-            <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;15&quot;</span>,
-            <span class="hljs-attr">nested</span>: [
-                {
-                    <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Bananer importeras främst från tropiska länder i Latinamerika, Afrika och Asien&quot;</span>,
-                    <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;&quot;</span>,
-                    <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;&quot;</span>,
-                },
-            ],
-        },
-        {
-            <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpple&quot;</span>,
-            <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>,
-            <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;22&quot;</span>,
-            <span class="hljs-attr">nested</span>: [
-                {
-                    <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpplen odlas i stor skala i tempererade klimat, bland annat i Sverige, Polen och Kina&quot;</span>,
-                    <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;&quot;</span>,
-                    <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;&quot;</span>,
-                },
-            ],
-        },
-    ],
-    <span class="hljs-string">&quot;nested&quot;</span>,
-);
+<span class="hljs-keyword">const</span> <span class="hljs-attr">data</span>: <span class="hljs-title class_">Row</span>[] = [
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;30&quot;</span>,
+        <span class="hljs-attr">nested</span>: [
+            {
+                <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsiner importeras främst från Medelhavsområdet&quot;</span>,
+                <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;&quot;</span>,
+            },
+        ],
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Banan&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Equador&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;15&quot;</span>,
+        <span class="hljs-attr">nested</span>: [
+            {
+                <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Bananer importeras främst från tropiska länder i Latinamerika, Afrika och Asien&quot;</span>,
+                <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;&quot;</span>,
+            },
+        ],
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpple&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;22&quot;</span>,
+        <span class="hljs-attr">nested</span>: [
+            {
+                <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpplen odlas i stor skala i tempererade klimat, bland annat i Sverige, Polen och Kina&quot;</span>,
+                <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;&quot;</span>,
+            },
+        ],
+    },
+];
 
 <span class="hljs-keyword">const</span> selectedRows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([]);
 
@@ -1704,10 +1700,15 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
     },
 ]);
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
+<span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">useDatasetRef</span>(data, <span class="hljs-string">&quot;nested&quot;</span>);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-model:selected-rows</span>=<span class="hljs-string">&quot;selectedRows&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;multi&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">v-model:selected-rows</span>=<span class="hljs-string">&quot;selectedRows&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;multi&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">expandable</span>=<span class="hljs-string">&quot;{ row }: { row: Row }&quot;</span>&gt;</span>
+            {{ row.namn }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
@@ -1829,9 +1830,9 @@ Håll innehållet kort och koncist så att det blir lätt och överskådligt fö
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs/SFKUI-7887-update-f-table-examples (<a href="https://github.com/Forsakringskassan/designsystem/commits/0b12d3a9aa20ebb919cda14891043374276a7a53">0b12d3a</a>)<br />
+<div class="footer__right"><div class="version">docs/SFKUI-7887-update-f-table-examples (<a href="https://github.com/Forsakringskassan/designsystem/commits/c89f19001f226835e665c3e1c44ab538dc26ded3">c89f190</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1374">PR 1374</a><br />
-        2026-06-05 05:40
+        2026-06-08 07:43
 </div>
 <div class="toolbar__item">
     <form id="version">
