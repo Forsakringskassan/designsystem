@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-441508.json"
+            href="../../../search-data-bc812f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-W6KSVGAPeEh82ZeW0g6HuK2zkYZ2vAamh0PFaG29PV6E5EbXPFG413u8ci8K/Sda"
+            integrity="sha384-JuN2iAfueMO8UmQc5xNxSF6tMU+quMP2OY3PQF+4g2NeoON1ehxtRp8OgQ/4PhnW"
             id="search-data"
         />
     </head>
@@ -1569,7 +1569,7 @@
                     
 
                     <div id="content"><div
-                id="example-f52217"
+                id="example-253edb"
                 class="code-preview code-preview--default"
                 
                 
@@ -1578,13 +1578,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-1b6340"></div>
+        <div id="example-a4e92d"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./select-rows-code-1b6340.js"></script>
+        <script type="module" src="./FTableBulkExampleMulti-a4e92d.js"></script>
     
                 </div>
                 <div>
@@ -1613,13 +1613,17 @@
 interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-attr">id</span>: string;
     <span class="hljs-attr">fruit</span>: string;
+    <span class="hljs-attr">land</span>: string;
+    <span class="hljs-attr">pris</span>: string;
 }
 
 <span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;([
-    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;Apelsin&quot;</span> },
-    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;Banan&quot;</span> },
-    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;Päron&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;30&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;Banan&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Ecuador&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;15&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;Äpple&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;22&quot;</span> },
 ]);
+
+<span class="hljs-keyword">const</span> selectedRows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([]);
 
 <span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
     {
@@ -1627,9 +1631,17 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;fruit&quot;</span>,
     },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
+    },
 ]);
-
-<span class="hljs-keyword">const</span> selectedRows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([]);
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
@@ -1649,7 +1661,7 @@ interface <span class="hljs-title class_">Row</span> {
 <p class="docs-paragraph">Valda rader exponeras genom <code>v-model:selected-rows</code>.</p>
 
                 <div
-                    id="example-48d8f3"
+                    id="example-d16abc"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1661,7 +1673,7 @@ interface <span class="hljs-title class_">Row</span> {
                 </div>
             
                 <div
-                    id="example-416436"
+                    id="example-d5ae6a"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1681,7 +1693,7 @@ interface <span class="hljs-title class_">Row</span> {
 <p class="docs-paragraph">Om användaren kan ta bort innehåll från tabellen bör du låta användaren bekräfta åtgärden innan den genomförs.</p>
 
                 <div
-                    id="example-492c32"
+                    id="example-63e365"
                     class="code-preview code-preview--default"
                     
                     
@@ -1716,7 +1728,7 @@ interface <span class="hljs-title class_">Row</span> {
                 </div>
             
                 <div
-                    id="example-fd410b"
+                    id="example-d17f4b"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1746,7 +1758,7 @@ Det gör det enklare att hantera forumuleringar för singular och plural i över
 <p class="docs-paragraph">Vid enkelval innehåller <code>selectedRows</code> högst en rad.</p>
 
                 <div
-                    id="example-97e7d9"
+                    id="example-7a9220"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1758,7 +1770,7 @@ Det gör det enklare att hantera forumuleringar för singular och plural i över
                 </div>
             
                 <div
-                    id="example-49114c"
+                    id="example-803fa2"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1823,9 +1835,9 @@ Det gör det enklare att hantera forumuleringar för singular och plural i över
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/fe559c8e9c2b108f4302ade740a1fbb8a47337c5">fe559c8</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/7da1758637095296f112bb7d47a5f5a6249741f0">7da1758</a>)<br />
         
-        2026-06-08 08:18
+        2026-06-08 12:55
 </div>
 <div class="toolbar__item">
     <form id="version">

@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-441508.json"
+            href="../../../search-data-bc812f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-W6KSVGAPeEh82ZeW0g6HuK2zkYZ2vAamh0PFaG29PV6E5EbXPFG413u8ci8K/Sda"
+            integrity="sha384-JuN2iAfueMO8UmQc5xNxSF6tMU+quMP2OY3PQF+4g2NeoON1ehxtRp8OgQ/4PhnW"
             id="search-data"
         />
     </head>
@@ -1558,6 +1558,8 @@
                                 
                                 <li><a href="#sortering_och_filtrering">Sortering och filtrering</a></li>
                                 
+                                <li><a href="#sortera_och_filtera_pa_varden_fran_value">Sortera och filtera på värden från value()</a></li>
+                                
                                 <li><a href="#relaterat">Relaterat</a></li>
                                 
                             </ul>
@@ -1576,13 +1578,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-5f9d0c"></div>
+        <div id="example-b81285"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableBasicSortFilterExample-5f9d0c.js"></script>
+        <script type="module" src="./FTableBasicSortFilterExample-b81285.js"></script>
     
                 </div>
                 <div>
@@ -1682,7 +1684,113 @@ interface <span class="hljs-title class_">Row</span> {
 </code></pre>
                 </div>
             <p class="docs-paragraph"><code>sortFilterResult</code> innehåller de rader som ska visas efter sortering och filtrering.</p>
-<h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell.</a></p>
+<h2 id="sortera_och_filtera_pa_varden_fran_value" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sortera_och_filtera_pa_varden_fran_value">Sortera och filtera på värden från <code>value()</code></a></h2><p class="docs-paragraph"><code>FTable</code> kan visa värden med hjälp av <code>value()</code>, till exempel om värdet är nästlat i objektet. <code>FSortFilterDataset</code> använder däremot inte <code>value()</code> när datan sorteras eller filtreras. Sortering och filtrering sker på attribut i datamängden.</p>
+<p class="docs-paragraph">Om en tabellkolumn visar ett beräknat eller nästlat värde med <code>value()</code>, behöver samma värde även finnas som ett attribut i datamängden. Använd sedan det attributet i både <code>sortableAttributes</code> och tabellens <code>key</code>.</p>
+<p class="docs-paragraph">I exemplet nedan visar tabellen <code>row.ursprung.land</code> med <code>value()</code>. Däremot fungerar inte sortering och filtrering på <code>land</code>, eftersom <code>row.land</code> inte finns.</p>
+
+                <div
+                    id="example-5e0e60"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
+            <span class="hljs-keyword">return</span> row.<span class="hljs-property">ursprung</span>.<span class="hljs-property">land</span>;
+        },
+    },
+]);
+
+<span class="hljs-keyword">const</span> sortableAttributes = {
+    <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+    <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Land&quot;</span>, <span class="hljs-comment">// Fungerar inte eftersom row.land inte finns.</span>
+};
+</code></pre>
+                </div>
+            <p class="docs-paragraph">För att sortering och filtrering ska ske på samma värde som visas i tabellen behöver värdet mappas ut till ett attribut i datamängden.</p>
+
+                <div
+                    id="example-55a155"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Fruit</span> {
+    <span class="hljs-attr">frukt</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">ursprung</span>: {
+        <span class="hljs-attr">land</span>: <span class="hljs-built_in">string</span>;
+    };
+    <span class="hljs-attr">pris</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">frukt</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">land</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">pris</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">fruits</span>: <span class="hljs-title class_">Fruit</span>[] = [
+    { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>, <span class="hljs-attr">ursprung</span>: { <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span> }, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;30&quot;</span> },
+    { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Banan&quot;</span>, <span class="hljs-attr">ursprung</span>: { <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Ecuador&quot;</span> }, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;15&quot;</span> },
+    { <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Äpple&quot;</span>, <span class="hljs-attr">ursprung</span>: { <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span> }, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;22&quot;</span> },
+];
+
+<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;(
+    fruits.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">fruit</span>) =&gt;</span> ({
+        <span class="hljs-attr">frukt</span>: fruit.<span class="hljs-property">frukt</span>,
+        <span class="hljs-attr">land</span>: fruit.<span class="hljs-property">ursprung</span>.<span class="hljs-property">land</span>,
+        <span class="hljs-attr">pris</span>: fruit.<span class="hljs-property">pris</span>,
+    })),
+);
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;frukt&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> sortableAttributes = {
+    <span class="hljs-attr">frukt</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+    <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+};
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-de9cae"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:sortable-attributes</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span> <span class="hljs-attr">:columns</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell.</a></p>
 <p class="docs-paragraph"><a href="./sort-filter.html">Sortera och filtrera i tabell.</a></p>
 <p class="docs-paragraph"><a href="../fsortfilterdataset.html">Läs mer om datamängdsorteraren.</a></p>
 
@@ -1733,9 +1841,9 @@ interface <span class="hljs-title class_">Row</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/fe559c8e9c2b108f4302ade740a1fbb8a47337c5">fe559c8</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/7da1758637095296f112bb7d47a5f5a6249741f0">7da1758</a>)<br />
         
-        2026-06-08 08:18
+        2026-06-08 12:55
 </div>
 <div class="toolbar__item">
     <form id="version">
