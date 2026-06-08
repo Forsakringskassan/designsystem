@@ -1,7 +1,12 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent } from "vue";
-import { prototypes } from "../router";
+
+const prototypes = [
+    { path: "/paneler-vs-kort/panellista-lang", name: "Panellista längre" },
+    { path: "/paneler-vs-kort/panellista-kortare", name: "Panellista kortare" },
+    { path: "/paneler-vs-kort/redigerbar-lista-lang", name: "Redigerbar lista längre" },
+    { path: "/paneler-vs-kort/redigerbar-lista-kortare", name: "Redigerbar lista kortare" },
+];
 
 export default defineComponent({
     setup() {
@@ -11,8 +16,9 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="sandbox-root">
-        <h1>Prototyper</h1>
+    <div class="prototype-root">
+        <router-link class="anchor" to="/">← Tillbaka</router-link>
+        <h1>Paneler vs Kort</h1>
         <ul class="prototype-list">
             <li v-for="proto in prototypes" :key="proto.path">
                 <router-link class="anchor" :to="proto.path">{{ proto.name }}</router-link>
@@ -24,7 +30,7 @@ export default defineComponent({
 <style lang="scss">
 @use "@fkui/design/src/core/size";
 
-.sandbox-root {
+.prototype-root {
     width: min(100% - 2rem, 80ch);
     margin: auto;
 }
