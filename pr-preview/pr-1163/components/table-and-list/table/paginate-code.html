@@ -84,10 +84,10 @@
 
         <link
             rel="preload"
-            href="../../../search-data-53ccf9.json"
+            href="../../../search-data-326e9f.json"
             as="fetch"
             crossorigin
-            integrity="sha384-L0cwrfmYaezdiWG10TvhcU5UJtMBXUlJBUOSyW/wn8Vey/LKVOTTpUQM4TvuQTlS"
+            integrity="sha384-gtLr5Yc3czsskTTcoWho0xhV3NIiMDT9onTifDGIiir8Li1db++sHbsXIk+/YCvu"
             id="search-data"
         />
     </head>
@@ -1564,10 +1564,174 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Tabellen kan kombineras med <a href="../../pagination.html">paginering</a>.</p>
+                    <div id="content"><div
+                id="example-dab0b2"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-51abc6"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableBasicPagination-51abc6.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="code-preview__button code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FPaginateDataset</span>, <span class="hljs-title class_">FPaginator</span>, <span class="hljs-title class_">FTable</span>, defineTableColumns, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">namn</span>: string;
+    <span class="hljs-attr">land</span>: string;
+    <span class="hljs-attr">pris</span>: string;
+}
+
+<span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">useDatasetRef</span>([
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;30&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Banan&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Ecuador&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;15&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpple&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;22&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Päron&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Nederländerna&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;35&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Citron&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;40&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Lime&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Mexiko&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;70&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Vindruvor&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Italien&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;60&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Kiwi&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Grekland&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;50&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Mango&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Peru&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;80&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Ananas&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Costa Rica&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;45&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Melon&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;35&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Jordgubbar&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;130&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Blåbär&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Polen&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;190&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Hallon&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Portugal&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;250&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Körsbär&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Turkiet&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;150&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Plommon&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;65&quot;</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;namn&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
+        <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-title class_">String</span>(row.<span class="hljs-property">pris</span>);
+        },
+    },
+]);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-paginate-dataset</span> <span class="hljs-attr">:items</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:items-per-page</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ items: currentPageItems }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;currentPageItems&quot;</span> <span class="hljs-attr">:columns</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span>Tabell med paginering<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-paginator</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-paginate-dataset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <p class="docs-paragraph">Tabellen kan kombineras med <a href="../../pagination.html">paginering</a>.</p>
 
                 <div
-                    id="example-25c78a"
+                    id="example-9bcee1"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1632,9 +1796,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/4245342e558a3f341a0480ca51984af176d829a5">4245342</a>)<br />
+<div class="footer__right"><div class="version">renovate/typescript-6.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/90a9d60b483a12322dca860cf012d6bb4cb67ee9">90a9d60</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1163">PR 1163</a><br />
-        2026-06-08 08:20
+        2026-06-08 13:05
 </div>
 <div class="toolbar__item">
     <form id="version">
