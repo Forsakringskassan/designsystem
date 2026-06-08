@@ -44,7 +44,15 @@
             crossorigin
             integrity="sha384-Gfzmg/37+WdxGA3iw2k2/GaeiotI8p9jeSL/GBxyG6mSiyqsRNfgEEroGYvJ3O9b"
             
-        ></script><script>
+        ></script><link
+    rel="preload"
+    href="../../../search-data-2ca01e.json"
+    as="fetch"
+    crossorigin
+    integrity="sha384-9pKY+ZxVs20tZCiBZdpvSRN3WMDForRKBLeM1p8aLzoGTqA2ZkW4spmDRTtiWplR"
+    id="search-data"
+/>
+<script>
     (() => {
         withCookieConsent(() =>  {
             const allowedHostnames = [
@@ -81,15 +89,6 @@
     })();
 </script>
 
-
-        <link
-            rel="preload"
-            href="../../../search-data-dda375.json"
-            as="fetch"
-            crossorigin
-            integrity="sha384-3KeLDvnVhEoD5wr/vjaXjlD+KXCNBlZZ/fAQ1R+A0S6NnioHlxS805n1RKYUN/Q/"
-            id="search-data"
-        />
     </head>
     <body><template id="motd-message">
 <div class="docs-motd docs-motd--info">
@@ -1569,7 +1568,7 @@
                     
 
                     <div id="content"><div
-                id="example-f52217"
+                id="example-253edb"
                 class="code-preview code-preview--default"
                 
                 
@@ -1578,13 +1577,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-1b6340"></div>
+        <div id="example-d530dd"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./select-rows-code-1b6340.js"></script>
+        <script type="module" src="./FTableBulkExampleMulti-d530dd.js"></script>
     
                 </div>
                 <div>
@@ -1613,13 +1612,17 @@
 interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-attr">id</span>: string;
     <span class="hljs-attr">fruit</span>: string;
+    <span class="hljs-attr">land</span>: string;
+    <span class="hljs-attr">pris</span>: string;
 }
 
 <span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;([
-    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;Apelsin&quot;</span> },
-    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;Banan&quot;</span> },
-    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;Päron&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;30&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;Banan&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Ecuador&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;15&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-attr">fruit</span>: <span class="hljs-string">&quot;Äpple&quot;</span>, <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>, <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;22&quot;</span> },
 ]);
+
+<span class="hljs-keyword">const</span> selectedRows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([]);
 
 <span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
     {
@@ -1627,9 +1630,17 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;fruit&quot;</span>,
     },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
+    },
 ]);
-
-<span class="hljs-keyword">const</span> selectedRows = ref&lt;<span class="hljs-title class_">Row</span>[]&gt;([]);
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
@@ -1649,7 +1660,7 @@ interface <span class="hljs-title class_">Row</span> {
 <p class="docs-paragraph">Valda rader exponeras genom <code>v-model:selected-rows</code>.</p>
 
                 <div
-                    id="example-48d8f3"
+                    id="example-d16abc"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1661,7 +1672,7 @@ interface <span class="hljs-title class_">Row</span> {
                 </div>
             
                 <div
-                    id="example-416436"
+                    id="example-d5ae6a"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1681,7 +1692,7 @@ interface <span class="hljs-title class_">Row</span> {
 <p class="docs-paragraph">Om användaren kan ta bort innehåll från tabellen bör du låta användaren bekräfta åtgärden innan den genomförs.</p>
 
                 <div
-                    id="example-492c32"
+                    id="example-63e365"
                     class="code-preview code-preview--default"
                     
                     
@@ -1716,7 +1727,7 @@ interface <span class="hljs-title class_">Row</span> {
                 </div>
             
                 <div
-                    id="example-fd410b"
+                    id="example-d17f4b"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1746,7 +1757,7 @@ Det gör det enklare att hantera forumuleringar för singular och plural i över
 <p class="docs-paragraph">Vid enkelval innehåller <code>selectedRows</code> högst en rad.</p>
 
                 <div
-                    id="example-97e7d9"
+                    id="example-7a9220"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -1758,7 +1769,7 @@ Det gör det enklare att hantera forumuleringar för singular och plural i över
                 </div>
             
                 <div
-                    id="example-49114c"
+                    id="example-803fa2"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1823,9 +1834,9 @@ Det gör det enklare att hantera forumuleringar för singular och plural i över
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">test/migrate-vue-vitest (<a href="https://github.com/Forsakringskassan/designsystem/commits/007e40c6597aefb46c0576fd4422f63f12a5bc08">007e40c</a>)<br />
+<div class="footer__right"><div class="version">test/migrate-vue-vitest (<a href="https://github.com/Forsakringskassan/designsystem/commits/3d6e94c61238166d15a58e8e088b48d5a7c4bff5">3d6e94c</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1382">PR 1382</a><br />
-        2026-06-05 11:55
+        2026-06-08 13:19
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1959,16 +1970,16 @@ Det gör det enklare att hantera forumuleringar för singular och plural i över
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-303def.js"
+            src="../../../assets/processors/selectable-version/select-version-660c48.js"
             type="module"
             crossorigin
-            integrity="sha384-UfkDaWIFVLv9zUQw2nXA63GTgYLUjYro+WSpZN21kMGtPbBN6bFpPgBxtG34q+ak"
+            integrity="sha384-UWVK08UJm6xLd1Oul1iNZKMHzvhrGMCCGTGMWStwBfD984A7N8iuFmiesbsExCZI"
             
         ></script><script
-            src="../../../assets/main-efe747.js"
+            src="../../../assets/main-b625cc.js"
             type="module"
             crossorigin
-            integrity="sha384-Wb0l7XANnCf3hX/9KAI8Adc7vOc7zY0ltLu7y1sCOqPnBQ3JtFJGModvfijQxzHR"
+            integrity="sha384-ur78J9I/JDvcsSD6sbiagVXtbkvr/WzrZqyW1a5jv9zuLpMwcPMoQR+qNJfoj2DP"
             
         ></script>
     </body>
