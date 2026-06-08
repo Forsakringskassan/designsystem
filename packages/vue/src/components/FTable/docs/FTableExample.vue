@@ -24,7 +24,7 @@ const data: Row[] = [
     },
     {
         namn: "Banan",
-        land: "Equador",
+        land: "Ecuador",
         pris: "15",
         nested: [
             {

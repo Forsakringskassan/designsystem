@@ -22,7 +22,7 @@ const data: Row[] = [
     },
     {
         namn: "Banan",
-        land: "Equador",
+        land: "Ecuador",
         nested: [
             {
                 namn: "Bananer importeras främst från tropiska länder i Latinamerika, Afrika och Asien",
