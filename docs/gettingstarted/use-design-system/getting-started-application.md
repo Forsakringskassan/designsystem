@@ -20,7 +20,7 @@ För att sätta det visuella utseendet på din applikation behöver du
 
 ## Välj tema
 
-Välj ett av de fördefinierade temana som finns i FKUI eller ta fram ett eget tema.
+Vi rekommenderar att du tar fram ett eget tema genom att utgå från ett befintligt FKUI-tema.
 
 {@link theme Läs mer om visuellt utseende och de fördefinierade teman som finns i FKUI}
 
