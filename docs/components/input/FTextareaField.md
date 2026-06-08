@@ -70,6 +70,8 @@ Använd `resizable` om användaren själv ska kunna ändra fältets höjd.
 
 Använd automatisk höjd när mängden text kan variera och fältet ska anpassa sig efter innehållet medan användaren skriver. Fältet utgår från antalet rader som visas från början och visar fler rader när innehållet behöver mer plats.
 
+När automatisk höjd används bör fältet ha en rimlig begränsning så att det inte kan växa utan kontroll. Begränsa den synliga höjden med `max-rows` eller mängden text med `maxlength`.
+
 Automatisk höjd aktiveras med attributet `auto-resize`.
 
 ```diff
