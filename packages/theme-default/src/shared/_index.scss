@@ -1,7 +1,5 @@
 // stylelint-disable custom-property-empty-line-before -- technical debt, should just add a comment before each block
 
-@use "../palette-variables" as *;
-
 @mixin variables {
     // ***********
     // TEXT COLORS
@@ -17,9 +15,6 @@
     // ***********
     // ICON COLORS
     // ***********
-    --f-icon-color-success: #{$palette-color-green-a-85}; // message-box, text-field, form-step
-    --f-icon-color-success-background: #{$palette-color-green-a-15};
-
     // *****************
     // BACKGROUND COLORS
     // *****************
@@ -170,7 +165,6 @@
     --f-modal-title-font-size: #{$_f-font-size-h4};
 
     --f-tooltip-close-button-margin: 0.375rem 0.375rem 0.625rem 0.625rem;
-    --f-tooltip-border-color: #{$palette-color-fk-black-50};
     --f-tooltip-border-width: var(--f-border-width-medium);
 
     --f-loader-size: 4rem;

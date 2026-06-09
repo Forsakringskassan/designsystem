@@ -302,5 +302,8 @@
     "--f-button-default-padding-top",
     "--f-button-default-padding-right",
     "--f-button-default-padding-bottom",
-    "--f-button-default-padding-left"
+    "--f-button-default-padding-left",
+    "--f-icon-color-success",
+    "--f-icon-color-success-background",
+    "--f-tooltip-border-color"
 ]
