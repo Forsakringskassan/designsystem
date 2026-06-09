@@ -5,6 +5,8 @@
 
 $textarea-padding-y: core.densify(size.$padding-050);
 $textarea-content-box-offset-y: calc((2 * #{$textarea-padding-y}) + (2 * var(--f-border-width-medium)));
+$textarea-auto-resize-fallback-min-height: 4lh;
+$textarea-auto-resize-fallback-height: max(var(--i-textarea-field-min-height), #{$textarea-auto-resize-fallback-min-height});
 
 .textarea-field {
     --i-textarea-field-min-height: 4lh;
@@ -56,20 +58,23 @@ $textarea-content-box-offset-y: calc((2 * #{$textarea-padding-y}) + (2 * var(--f
     }
 
     &__resize--auto {
-        min-height: calc(var(--i-textarea-field-min-height) + #{$textarea-content-box-offset-y});
+        min-height: calc(#{$textarea-auto-resize-fallback-height} + #{$textarea-content-box-offset-y});
         resize: vertical;
+    }
+
+    &__resize--max-rows {
+        min-height: calc(min(#{$textarea-auto-resize-fallback-height}, var(--i-textarea-field-max-height)) + #{$textarea-content-box-offset-y});
+        max-height: calc(var(--i-textarea-field-max-height) + #{$textarea-content-box-offset-y});
+        overflow-y: auto;
+        resize: none;
     }
 
     @supports (field-sizing: content) {
         &__resize--auto {
             field-sizing: content;
+            min-height: calc(var(--i-textarea-field-min-height) + #{$textarea-content-box-offset-y});
             resize: none;
         }
-    }
-
-    &__resize--max-rows {
-        max-height: calc(var(--i-textarea-field-max-height) + #{$textarea-content-box-offset-y});
-        overflow-y: auto;
     }
 
     &__resize--vertical {

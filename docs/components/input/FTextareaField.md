@@ -80,6 +80,8 @@ Automatisk höjd aktiveras med attributet `auto-resize`.
  >
 ```
 
+Automatisk höjd bygger på webbläsarstöd för `field-sizing`. I webbläsare utan stöd växer fältet inte automatiskt. Då visas fältet med minst fyra rader. `rows` kan ge en högre fallbackhöjd och `max-rows` kan begränsa den. På desktop kan användaren ändra höjden manuellt när `max-rows` inte används, men på mobila enheter kan fältet upplevas som fast.
+
 Med `auto-resize` visas fyra rader som standard, precis som vid fast höjd. Använd `rows` för att ange ett annat minsta antal rader.
 
 ```diff
