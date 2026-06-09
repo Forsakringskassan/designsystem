@@ -43,6 +43,18 @@ Använd inte tabell för att
 - organisera innehåll på en sida
 - visa enkel information utan kolumnrubriker.
 
+### Mobila enheter och tabell
+
+Undvika tabeller på mobila enheter.
+Utforska andra alternativ innan du bestämmer dig för att använda en tabell.
+
+Ett alternativ är komponenten {@link FList lista.}
+
+Om du ändå använder tabeller på mobila enheter finns det några saker att tänka på:
+
+- Anpassa tabellens bredden och antal kolumner efter enhetens skärmstorlek. Undvik horisontell scrollning så långt det är möjligt.
+- Använd inte redigerbara på mobila enheter.{@link edit Läs mer om redigerbara tabeller.}
+
 ### Anpassa tabell
 
 Anpassa bredden på tabellen till innehållet, gör den inte bredare än den behöver vara.
