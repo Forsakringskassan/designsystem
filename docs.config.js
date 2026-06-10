@@ -61,6 +61,7 @@ module.exports = {
         {
             include: "docs/**/*.md",
             exclude: [
+                "docs/dist/**",
                 "docs/node_modules/**",
                 "docs/examples/**",
                 "docs/playground/**",
@@ -87,6 +88,7 @@ module.exports = {
                 "docs/node_modules/**",
                 "docs/examples/**",
                 "docs/playground/**",
+                "docs/temp/**",
             ],
             basePath: "docs",
             fileReader: navigationFileReader,

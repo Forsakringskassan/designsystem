@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "@fkui/docs",
   "version": "6.49.0",
   "private": true,
   "homepage": "https://designsystem.forsakringskassan.se/",
@@ -9,6 +9,9 @@
     "url": "git+https://github.com/Forsakringskassan/designsystem.git",
     "directory": "docs"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "vue-tsc -b",
     "clean": "rimraf -g *.tsbuildinfo"

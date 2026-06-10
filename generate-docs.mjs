@@ -22,8 +22,13 @@ import { strFromU8, strToU8, zlibSync } from "fflate";
 import fse from "fs-extra";
 import { glob } from "glob";
 import isCI from "is-ci";
+import { readJsonFile } from "./docs/src/utils/index.mts";
 import config from "./docs.config.js";
 import { fontDir } from "./packages/font-default/metadata.mjs";
+
+/**
+ * @typedef {import("@forsakringskassan/docs-generator").Manifest} Manifest
+ */
 
 const require = module.createRequire(import.meta.url);
 
@@ -123,6 +128,43 @@ function themeProcessor() {
     };
 }
 
+/**
+ * @param {string} src
+ * @param {string} dst
+ * @returns {Promise<void>}
+ */
+async function copyFile(src, dst) {
+    await fs.mkdir(path.dirname(dst), { recursive: true });
+    await fs.cp(src, dst);
+}
+
+/**
+ * @param {import("@forsakringskassan/docs-generator").Manifest["pages"][number]} page
+ * @returns {Promise<void>}
+ */
+async function copyPageResources(page) {
+    if (page.redirect) {
+        return;
+    }
+    /* workaround: until we can distinguish "real" files from non-real */
+    if (page.src.startsWith("virtual:")) {
+        return;
+    }
+    await copyFile(page.src, path.join("docs/dist", page.src));
+    for (const example of page.examples) {
+        /* inline examples do not have a source file */
+        if (!example.src) {
+            continue;
+        }
+        await copyFile(example.src, path.join("docs/dist", example.src));
+    }
+}
+
+await fs.rm("docs/dist", { recursive: true, force: true });
+
+/* workaround: manifestProcessor does not create the folder */
+await fs.mkdir("docs/temp", { recursive: true });
+
 const docs = new Generator(import.meta.url, {
     site: {
         name: "FK Designsystem",
@@ -178,6 +220,7 @@ const docs = new Generator(import.meta.url, {
         }),
         manifestProcessor({
             markdown: "etc/docs-manifest.md",
+            json: "docs/temp/docs-manifest.json",
             verify: isCI,
         }),
         motdProcessor(),
@@ -217,6 +260,27 @@ docs.copyResource("fonts", fontDir);
 
 try {
     await docs.build(config.sourceFiles);
+
+    await fs.rm("docs/dist", { recursive: true, force: true });
+    await fs.mkdir("docs/dist");
+    const manifest = /** @type {Manifest} */ (
+        await readJsonFile("docs/temp/docs-manifest.json")
+    );
+    for (const page of manifest.pages) {
+        await copyPageResources(page);
+    }
+    await fs.writeFile(
+        "docs/dist/index.mjs",
+        [
+            `import path from "node:path";`,
+            `import { frontMatterFileReader } from "@forsakringskassan/docs-generator";`,
+            ``,
+            `export const sourceFiles = [`,
+            `    { include: path.join(import.meta.dirname, "**/*.md"), basename: import.meta.dirname, fileReader: frontMatterFileReader  }`,
+            `];`,
+        ].join("\n"),
+        "utf8",
+    );
 
     const latest = `v${pkg.version}`;
     const versions = JSON.stringify(
