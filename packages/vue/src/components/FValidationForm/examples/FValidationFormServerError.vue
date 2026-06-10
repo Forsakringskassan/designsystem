@@ -54,7 +54,9 @@ export default defineComponent({
                 Ett annat inmatningsfält
             </f-text-field>
             <div class="button-group">
-                <f-button class="button-group__item" size="large" type="submit"> Spara </f-button>
+                <f-button class="button-group__item" size="large" variant="primary" type="submit">
+                    Spara
+                </f-button>
                 <f-button
                     class="button-group__item"
                     size="large"

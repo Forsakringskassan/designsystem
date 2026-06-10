@@ -19,7 +19,7 @@ export default defineComponent({
         <f-expand>
             <div v-if="expanded">Expanded content</div>
         </f-expand>
-        <f-button @click="expanded = !expanded">
+        <f-button size="medium" variant="primary" @click="expanded = !expanded">
             {{ expanded ? `Close` : `Open` }}
         </f-button>
     </div>

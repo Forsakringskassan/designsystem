@@ -252,6 +252,7 @@ EventBus.$on("RENSA_FIL_VALJARE", () => {
                         <f-button
                             data-test="file-item__file-remove"
                             icon-left="trashcan"
+                            size="medium"
                             variant="tertiary"
                             :aria-label="`Ta bort ${fileName}`"
                             @click="taBortFil"

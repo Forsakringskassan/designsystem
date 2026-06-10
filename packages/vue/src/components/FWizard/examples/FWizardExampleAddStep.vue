@@ -73,7 +73,7 @@ export default defineComponent({
         >
             <f-wizard-step key="fruktkorg-antal" v-test="'myOrderStep'" title="Min beställning">
                 <h3>Fruktkorg</h3>
-                <f-button icon-left="plus" variant="tertiary" @click="addBasket">
+                <f-button icon-left="plus" size="medium" variant="tertiary" @click="addBasket">
                     Lägg till fruktkorg
                 </f-button>
             </f-wizard-step>
@@ -104,7 +104,12 @@ export default defineComponent({
                     </f-checkbox-field>
                 </f-fieldset>
 
-                <f-button icon-left="trashcan" variant="tertiary" @click="removeBasket(item)">
+                <f-button
+                    icon-left="trashcan"
+                    size="medium"
+                    variant="tertiary"
+                    @click="removeBasket(item)"
+                >
                     Ta bort fruktkorg
                 </f-button>
             </f-wizard-step>
@@ -122,7 +127,9 @@ export default defineComponent({
         <!-- [html-validate-disable-next no-inline-style] -->
         <p style="margin-top: 30px">
             Ett steg kan öppnas programatiskt, t.ex. man klickar 'ändra' i ett granska-steg.
-            <f-button @click="current = 'baz'">Öppna sista steget</f-button>
+            <f-button size="medium" variant="primary" @click="current = 'baz'">
+                Öppna sista steget
+            </f-button>
         </p>
         <pre>v-model: {{ current }}</pre>
     </div>

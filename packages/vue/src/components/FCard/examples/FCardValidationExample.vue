@@ -45,6 +45,7 @@ function setValid(): void {
                         class="button-group__item"
                         align-text
                         icon-left="pen"
+                        size="medium"
                         variant="tertiary"
                     >
                         <span>
@@ -59,6 +60,7 @@ function setValid(): void {
                         class="button-group__item"
                         align-text
                         icon-left="trashcan"
+                        size="medium"
                         variant="tertiary"
                     >
                         <span> Ta bort </span>

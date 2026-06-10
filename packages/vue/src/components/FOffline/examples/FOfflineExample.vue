@@ -30,6 +30,6 @@ export default defineComponent({
 <template>
     <div v-test="'offlineExample'">
         <f-offline> {{ offlineMessage }} </f-offline>
-        <f-button @click="toggle">Visa/Dölj komponent</f-button>
+        <f-button size="medium" variant="primary" @click="toggle">Visa/Dölj komponent</f-button>
     </div>
 </template>

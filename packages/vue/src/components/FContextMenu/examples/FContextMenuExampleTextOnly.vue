@@ -50,6 +50,8 @@ export default defineComponent({
             ref="popupAnchor"
             data-test="open-example-contextmenu-button"
             aria-haspopup="menu"
+            size="medium"
+            variant="primary"
             @click="onClick"
         >
             Öppna

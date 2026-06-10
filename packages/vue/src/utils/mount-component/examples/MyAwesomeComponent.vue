@@ -24,6 +24,6 @@ export default defineComponent({
 <template>
     <div>
         <p>Hej {{ name }}!</p>
-        <f-button size="small" @click="onClick"> Svara </f-button>
+        <f-button size="small" variant="primary" @click="onClick"> Svara </f-button>
     </div>
 </template>

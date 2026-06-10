@@ -22,5 +22,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-button @click="validateAllFieldsOnPage()"> Validera alla fält på sidan </f-button>
+    <f-button size="medium" variant="primary" @click="validateAllFieldsOnPage()">
+        Validera alla fält på sidan
+    </f-button>
 </template>
