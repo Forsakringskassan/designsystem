@@ -138,13 +138,13 @@
         border-radius: 100%;
         overflow: hidden;
         .f-icon-circle {
-            color: var(--f-icon-color-success-background);
-            fill: var(--f-icon-color-success-background);
+            color: $icon-stack-circle-color-background;
+            fill: $icon-stack-circle-color-background;
             width: 100%;
             height: 100%;
         }
         .icon:not(.f-icon-circle) {
-            color: var(--f-icon-color-success);
+            color: $icon-stack-circle-color-content;
             position: absolute;
         }
     }
