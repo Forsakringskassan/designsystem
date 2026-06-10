@@ -11,6 +11,6 @@ async function onClick(): Promise<void> {
 
 <template>
     <div>
-        <f-button variant="secondary" @click="onClick">Open</f-button>
+        <f-button size="medium" variant="secondary" @click="onClick">Open</f-button>
     </div>
 </template>

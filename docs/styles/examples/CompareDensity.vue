@@ -196,6 +196,7 @@ export default defineComponent({
                                 class="button-group__item"
                                 align-text
                                 icon-left="pen"
+                                size="medium"
                                 variant="tertiary"
                             >
                                 <span> Ändra </span>
@@ -204,6 +205,7 @@ export default defineComponent({
                                 class="button-group__item"
                                 align-text
                                 icon-left="trashcan"
+                                size="medium"
                                 variant="tertiary"
                             >
                                 <span> Ta bort </span>
@@ -213,12 +215,17 @@ export default defineComponent({
                 </f-card>
 
                 <div class="button-group">
-                    <f-button class="button-group__item"> Medium </f-button>
-                    <f-button class="button-group__item" variant="secondary"> Medium </f-button>
+                    <f-button class="button-group__item" size="medium" variant="primary">
+                        Medium
+                    </f-button>
+                    <f-button class="button-group__item" size="medium" variant="secondary">
+                        Medium
+                    </f-button>
                     <f-button
                         class="button-group__item"
                         align-text
                         icon-left="paper-clip"
+                        size="medium"
                         variant="tertiary"
                     >
                         Medium
@@ -226,7 +233,9 @@ export default defineComponent({
                 </div>
 
                 <div class="button-group">
-                    <f-button class="button-group__item" size="large"> Large </f-button>
+                    <f-button class="button-group__item" size="large" variant="primary">
+                        Large
+                    </f-button>
                     <f-button class="button-group__item" size="large" variant="secondary">
                         Large
                     </f-button>

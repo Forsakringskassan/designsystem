@@ -9,8 +9,8 @@ export default defineComponent({
     components: { LiveExample, FCheckboxField, FFieldset, FRadioField, FSelectField },
     data() {
         return {
-            variant: undefined as undefined | string,
-            size: undefined as undefined | string,
+            variant: "primary",
+            size: "medium",
             disabled: false,
             tertiaryStyle: undefined as undefined | string,
             hasIcon: false,
@@ -85,7 +85,7 @@ export default defineComponent({
     <live-example :components :template :livemethods="livemethods()">
         <f-select-field v-model="variant">
             <template #label> Typ </template>
-            <option :value="undefined">Primär</option>
+            <option value="primary">Primär</option>
             <option value="secondary">Sekundär</option>
             <option value="tertiary">Tertiär</option>
         </f-select-field>

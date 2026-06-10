@@ -230,7 +230,7 @@ function validataAll(): void {
 </script>
 
 <template>
-    <f-button variant="secondary" @click="validataAll"> Interagerbart element före </f-button>
+    <f-button size="medium" variant="secondary" @click="validataAll"> Interagerbart element före </f-button>
     <div id="all">
         Testpersonnummer från Skatteverket
         <f-table :rows :columns="columns1" key-attribute="id" striped> </f-table>
@@ -240,5 +240,5 @@ function validataAll(): void {
     <pre>Summa: {{ { sum } }}</pre>
     <h3>Rows ({{ rows.length }} items):</h3>
     <pre>{{ rows }}</pre>
-    <f-button variant="secondary" @click="validataAll"> Interagerbart element efter </f-button>
+    <f-button size="medium" variant="secondary" @click="validataAll"> Interagerbart element efter </f-button>
 </template>

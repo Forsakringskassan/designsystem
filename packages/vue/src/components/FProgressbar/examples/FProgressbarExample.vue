@@ -36,10 +36,22 @@ export default defineComponent({
         ><span class="sr-only">Debug-data: </span>value: {{currentProgress}}</pre>
 
         <div class="button-group">
-            <f-button class="button-group__item" data-test="increase" @click="increase()">
+            <f-button
+                class="button-group__item"
+                data-test="increase"
+                size="medium"
+                variant="primary"
+                @click="increase()"
+            >
                 Increase
             </f-button>
-            <f-button class="button-group__item" data-test="decrease" @click="decrease()">
+            <f-button
+                class="button-group__item"
+                data-test="decrease"
+                size="medium"
+                variant="primary"
+                @click="decrease()"
+            >
                 Decrease
             </f-button>
             <label>

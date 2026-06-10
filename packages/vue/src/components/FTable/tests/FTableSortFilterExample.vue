@@ -102,9 +102,11 @@ function onChangeDataset(): void {
 
     <p data-test="selected-count">Valda rader: {{ selectedRows.length }}</p>
 
-    <f-button variant="secondary" @click="onAddRow">Lägg till rad</f-button>
-    <f-button variant="secondary" @click="onRemoveSelectedRows"> Ta bort markerade rader </f-button>
-    <f-button data-test="change-dataset" variant="secondary" @click="onChangeDataset">Ändra dataset</f-button>
+    <f-button size="medium" variant="secondary" @click="onAddRow">Lägg till rad</f-button>
+    <f-button size="medium" variant="secondary" @click="onRemoveSelectedRows"> Ta bort markerade rader </f-button>
+    <f-button data-test="change-dataset" size="medium" variant="secondary" @click="onChangeDataset">
+        Ändra dataset
+    </f-button>
     <f-sort-filter-dataset v-test="'filter'" :data="rows" :sortable-attributes>
         <template #default="{ sortFilterResult }">
             <f-table

@@ -19,7 +19,12 @@ export default defineComponent({
     <div style="background-color: beige; padding: 20px">
         <!-- [html-validate-disable-next no-inline-style] -->
         <div class="button-group" style="border: 1px black dotted">
-            <f-button class="button-group__item" :mobile-full-width="useFullWidth" size="small">
+            <f-button
+                class="button-group__item"
+                :mobile-full-width="useFullWidth"
+                size="small"
+                variant="primary"
+            >
                 Primary
             </f-button>
             <f-button
@@ -42,12 +47,18 @@ export default defineComponent({
         </div>
         <!-- [html-validate-disable-next no-inline-style] -->
         <div class="button-group" style="border: 1px black dotted">
-            <f-button class="button-group__item" :mobile-full-width="useFullWidth">
+            <f-button
+                class="button-group__item"
+                :mobile-full-width="useFullWidth"
+                size="medium"
+                variant="primary"
+            >
                 Primary
             </f-button>
             <f-button
                 class="button-group__item"
                 :mobile-full-width="useFullWidth"
+                size="medium"
                 variant="secondary"
             >
                 Secondary
@@ -56,6 +67,7 @@ export default defineComponent({
                 class="button-group__item"
                 icon-left="paper-clip"
                 :mobile-full-width="useFullWidth"
+                size="medium"
                 variant="tertiary"
             >
                 Tertiary
@@ -63,7 +75,12 @@ export default defineComponent({
         </div>
         <!-- [html-validate-disable-next no-inline-style] -->
         <div class="button-group" style="border: 1px black dotted">
-            <f-button class="button-group__item" :mobile-full-width="useFullWidth" size="large">
+            <f-button
+                class="button-group__item"
+                :mobile-full-width="useFullWidth"
+                size="large"
+                variant="primary"
+            >
                 Primary
             </f-button>
             <f-button
@@ -86,12 +103,18 @@ export default defineComponent({
         </div>
         <!-- [html-validate-disable-next no-inline-style] -->
         <div class="button-group" style="border: 1px black dotted">
-            <f-button class="button-group__item" :mobile-full-width="useFullWidth">
+            <f-button
+                class="button-group__item"
+                :mobile-full-width="useFullWidth"
+                size="medium"
+                variant="primary"
+            >
                 Primary
             </f-button>
             <f-button
                 class="button-group__item"
                 :mobile-full-width="useFullWidth"
+                size="medium"
                 variant="secondary"
             >
                 Secondary
@@ -100,6 +123,7 @@ export default defineComponent({
                 class="button-group__item"
                 icon-left="paper-clip"
                 :mobile-full-width="useFullWidth"
+                size="medium"
                 variant="tertiary"
             >
                 Tertiary
@@ -107,6 +131,7 @@ export default defineComponent({
             <f-button
                 class="button-group__item"
                 :mobile-full-width="useFullWidth"
+                size="medium"
                 variant="tertiary"
             >
                 Discrete
@@ -114,6 +139,7 @@ export default defineComponent({
             <f-button
                 class="button-group__item"
                 :mobile-full-width="useFullWidth"
+                size="medium"
                 tertiary-style="inverted"
                 variant="tertiary"
             >
@@ -122,6 +148,7 @@ export default defineComponent({
             <f-button
                 class="button-group__item"
                 :mobile-full-width="useFullWidth"
+                size="medium"
                 variant="secondary"
             >
                 Standard

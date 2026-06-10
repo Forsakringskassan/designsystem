@@ -27,7 +27,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <f-button ref="popupAnchor" variant="secondary" @click="onClickOpen">
+        <f-button ref="popupAnchor" size="medium" variant="secondary" @click="onClickOpen">
             Öppna popup
         </f-button>
 
@@ -40,7 +40,9 @@ export default defineComponent({
                     formbräden och regaler tillverkas och försäljas Kaster som äro dåligt hopkomna
                     och af otillräckligt.
                 </p>
-                <f-button variant="tertiary" @click="onClickClose">Stäng popup</f-button>
+                <f-button size="medium" variant="tertiary" @click="onClickClose">
+                    Stäng popup
+                </f-button>
             </div>
         </i-popup>
     </div>

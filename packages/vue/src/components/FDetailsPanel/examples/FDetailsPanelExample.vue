@@ -29,7 +29,14 @@ function openPanel(): void {
                     </example-panel>
                 </f-resize-pane>
 
-                <f-button :slot="layoutScope.content" @click="openPanel"> Öppna </f-button>
+                <f-button
+                    :slot="layoutScope.content"
+                    size="medium"
+                    variant="primary"
+                    @click="openPanel"
+                >
+                    Öppna
+                </f-button>
             </template>
         </f-page-layout>
     </div>

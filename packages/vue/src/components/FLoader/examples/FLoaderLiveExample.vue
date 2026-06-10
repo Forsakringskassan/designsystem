@@ -90,7 +90,7 @@ export default defineComponent({
         <f-checkbox-field v-if="overlay" v-model="focusOnOverlay" :value="true">
             Fokusera på meddelande
         </f-checkbox-field>
-        <f-button @click="toggleLoader()"> Visa </f-button>
+        <f-button size="medium" variant="primary" @click="toggleLoader()"> Visa </f-button>
         <p>Laddningsindikatorn visas i {{ loaderTime }} sekunder.</p>
     </live-example>
 </template>

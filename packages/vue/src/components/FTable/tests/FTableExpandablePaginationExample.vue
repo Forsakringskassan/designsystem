@@ -174,7 +174,7 @@ function onRemoveSelectedRows(): void {
 </script>
 
 <template>
-    <f-button variant="secondary" @click="onRemoveSelectedRows"> Ta bort markerade rader </f-button>
+    <f-button size="medium" variant="secondary" @click="onRemoveSelectedRows"> Ta bort markerade rader </f-button>
 
     <f-sort-filter-dataset :data="rows" :sortable-attributes>
         <template #default="{ sortFilterResult }">
@@ -197,5 +197,5 @@ function onRemoveSelectedRows(): void {
         </template>
     </f-sort-filter-dataset>
 
-    <f-button variant="secondary" @click="onAddRow">Lägg till rad</f-button>
+    <f-button size="medium" variant="secondary" @click="onAddRow">Lägg till rad</f-button>
 </template>

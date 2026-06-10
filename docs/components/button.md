@@ -21,13 +21,16 @@ Använd primär knapp för det primära och det mest troliga alternativet för a
 Generellt ska endast en primär knapp finnas på en sida.
 I fallet när en sida består av flera olika delar kan varje del ha en primär knapp.
 
+```html static
+<f-button size="medium" variant="primary"> Knapptext </f-button>
+```
+
 ## Sekundär knapp
 
 Använd sekundär knapp fristående eller tillsammans med en primär knapp.
 
-```diff
--<f-button> Knapptext </f-button>
-+<f-button variant="secondary"> Knapptext </f-button>
+```html static
+<f-button size="medium" variant="secondary"> Knapptext </f-button>
 ```
 
 ## Tertiär knapp
@@ -39,23 +42,22 @@ Den kan användas som en tredje knapp tillsammans med en primär och en sekundä
 Tertiär knapp ska alltid ha ikon, förutom när den används i en grupp tillsammans med en primär eller sekundär knapp.
 Knapptexten är understruken om en tertiär knapp används utan en ikon.
 
-```diff
--<f-button> Knapptext </f-button>
-+<f-button variant="tertiary"> Knapptext </f-button>
+```html static
+<f-button size="medium" variant="tertiary"> Knapptext </f-button>
 ```
 
 Nedtonad tertiär knapp används för funktioner som inte har att göra med det huvudsakliga flödet eller innehållet på en sida, till exempel "Skriv ut".
 
 ```diff
--<f-button variant="tertiary"> Knapptext </f-button>
-+<f-button variant="tertiary" tertiary-style="muted"> Knapptext </f-button>
+-<f-button size="medium" variant="tertiary"> Knapptext </f-button>
++<f-button size="medium" variant="tertiary" tertiary-style="muted"> Knapptext </f-button>
 ```
 
 Inverterad tertiär knapp används för att få en bättre kontrast mot en mörk bakgrund.
 
 ```diff
--<f-button> Knapptext </f-button>
-+<f-button variant="tertiary" tertiary-style="inverted"> Knapptext </f-button>
+-<f-button size="medium" variant="tertiary"> Knapptext </f-button>
++<f-button size="medium" variant="tertiary" tertiary-style="inverted"> Knapptext </f-button>
 ```
 
 ### Linjera tertiär knapp med innehåll
@@ -80,11 +82,6 @@ Knapparnas storlekar kan användas för att förstärka den visuella hierarkin m
 Knappens bredd bestäms av längden på knapptexten.
 För varje knappstorlek finns en minsta bredd.
 
-```diff
--<f-button> text </f-button>
-+<f-button size="large"> text </f-button>
-```
-
 ## Fullbredd
 
 Fullbreddsknappar är främst avsedda att användas på ytor upp till 639 pixlars bredd.
@@ -95,8 +92,8 @@ Knappar som har storleken Large sätts automatiskt till fullbredd när skärmbre
 Knappar (small & medium) är som standard inte fullbredd i mobil men kan aktiveras med prop `mobile-full-width`.
 
 ```diff
--<f-button> text </f-button>
-+<f-button mobile-full-width> text </f-button>
+-<f-button size="medium" variant="primary"> text </f-button>
++<f-button size="medium" variant="primary" mobile-full-width> text </f-button>
 ```
 
 ## Ikon
@@ -105,8 +102,8 @@ Alla typer av knappar kan ha en ikon som placeras till höger eller vänster om 
 Använd ikoner för att förtydliga knappens funktion och skapa snabbare igenkänning.
 
 ```diff
--<f-button> text </f-button>
-+<f-button icon-left="pen"> text </f-button>
+-<f-button size="medium" variant="primary"> text </f-button>
++<f-button size="medium" variant="primary" icon-left="pen"> text </f-button>
 ```
 
 ## Hantering av asynkrona åtgärder
@@ -130,8 +127,8 @@ Om funktionen som körs vid knapptryck är synkron (ej asynkron, returnerar inge
 +   }
 </script>
 <template>
--   <f-button> text </f-button>
-+   <f-button @click="syncOperation"> text </f-button>
+-   <f-button size="medium" variant="primary"> text </f-button>
++   <f-button size="medium" variant="primary" @click="syncOperation"> text </f-button>
 </template>
 ```
 
@@ -152,8 +149,8 @@ Om funktionen returnerar en `Promise` (till exempel vid användning av `async/aw
 +}
 </script>
 <template>
--   <f-button> text </f-button>
-+   <f-button @click="asyncOperation"> text </f-button>
+-   <f-button size="medium" variant="primary"> text </f-button>
++   <f-button size="medium" variant="primary" @click="asyncOperation"> text </f-button>
 </template>
 ```
 
@@ -178,8 +175,8 @@ Om åtgärden är asynkron men inte returnerar en `Promise` (till exempel `fetch
 +   });
 </script>
 <template>
--   <f-button> text </f-button>
-+   <f-button @click="backgroundJob"> text </f-button>
+-   <f-button size="medium" variant="primary"> text </f-button>
++   <f-button size="medium" variant="primary" @click="backgroundJob"> text </f-button>
 </template>
 ```
 

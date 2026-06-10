@@ -92,7 +92,9 @@ const data = ref();
                 </template>
             </f-fieldset>
 
-            <f-button id="button" type="submit"> Validate </f-button>
+            <f-button id="button" type="submit" size="medium" variant="primary">
+                Validate
+            </f-button>
         </template>
     </f-validation-form>
 </template>
