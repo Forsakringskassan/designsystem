@@ -67,7 +67,7 @@ export default defineComponent({
 
                 <template #content>
                     <p>{{ selectedText }}</p>
-                    <f-button @click="closePanel()">Stäng</f-button>
+                    <f-button size="medium" variant="primary" @click="closePanel()">Stäng</f-button>
                 </template>
                 <template #default>
                     <div class="container-fluid">

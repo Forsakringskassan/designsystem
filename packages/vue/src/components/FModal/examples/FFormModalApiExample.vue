@@ -32,7 +32,12 @@ export default defineComponent({
 
 <template>
     <div class="f-form-modal-example">
-        <f-button data-test="form-modal-api-example-button" variant="secondary" @click="onClick">
+        <f-button
+            data-test="form-modal-api-example-button"
+            size="medium"
+            variant="secondary"
+            @click="onClick"
+        >
             Öppna Modal
         </f-button>
         <div v-if="result">

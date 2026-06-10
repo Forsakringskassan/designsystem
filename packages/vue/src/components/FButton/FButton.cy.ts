@@ -13,8 +13,10 @@ function createComponent(options?: {
     tertiaryStyle?: string;
     variant?: string;
 }): DefineComponent {
-    const { iconLeft, iconRight, mobileFullWidth, tertiaryStyle, variant } =
+    const { iconLeft, iconRight, mobileFullWidth, tertiaryStyle } =
         options ?? {};
+
+    const variant = options?.variant ?? "primary";
 
     const testName = Cypress.currentTest.titlePath.join(" ");
     return defineComponent({
@@ -36,6 +38,7 @@ function createComponent(options?: {
                 <p style="border: 1px dashed hotpink">
                     <f-button
                         :variant="variant"
+                        size="medium"
                         :icon-left="iconLeft"
                         :icon-right="iconRight"
                         :mobile-full-width="mobileFullWidth"

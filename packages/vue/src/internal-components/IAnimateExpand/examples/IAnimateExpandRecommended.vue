@@ -36,7 +36,9 @@ export default defineComponent({
 
 <template>
     <div>
-        <f-button @click="isExpanded = !isExpanded">Öppna/stäng animering</f-button>
+        <f-button size="medium" variant="primary" @click="isExpanded = !isExpanded">
+            Öppna/stäng animering
+        </f-button>
         <label><input v-model="isAnimated" type="checkbox" /> Animera</label>
         <label><input v-model="hasOpacity" type="checkbox" /> Opacitet</label>
         <label><input v-model="useVShow" type="checkbox" /> Use v-show instead of v-if</label>

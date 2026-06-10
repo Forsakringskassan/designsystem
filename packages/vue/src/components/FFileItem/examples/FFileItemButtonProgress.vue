@@ -41,6 +41,7 @@ export default defineComponent({
                     v-if="filteredProgress < 100"
                     data-test="file-item__file-remove"
                     icon-left="close"
+                    size="medium"
                     variant="tertiary"
                 >
                     Avbryt uppladdning
@@ -49,6 +50,7 @@ export default defineComponent({
                     v-else-if="filteredProgress === 100"
                     data-test="file-item__file-remove"
                     icon-left="trashcan"
+                    size="medium"
                     variant="tertiary"
                 >
                     Ta bort

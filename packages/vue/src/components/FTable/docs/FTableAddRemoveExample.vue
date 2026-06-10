@@ -91,7 +91,7 @@ async function onRemoveRow(row: Row): Promise<void> {
         <template #caption>Lägg till och ta bort rad i tabell</template>
     </f-table>
 
-    <f-button variant="secondary" data-test="add-row-button" @click="onAddRow">
+    <f-button size="medium" variant="secondary" data-test="add-row-button" @click="onAddRow">
         Lägg till rad
     </f-button>
 </template>

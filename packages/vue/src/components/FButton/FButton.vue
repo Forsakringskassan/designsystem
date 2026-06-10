@@ -13,7 +13,7 @@ const props = defineProps({
      */
     variant: {
         type: String as PropType<"primary" | "secondary" | "tertiary">,
-        default: "primary",
+        required: true,
         validator(value: string) {
             return ["primary", "secondary", "tertiary"].includes(value);
         },
@@ -27,7 +27,7 @@ const props = defineProps({
      */
     size: {
         type: String as PropType<"small" | "medium" | "large">,
-        default: "medium",
+        required: true,
         validator(value: string) {
             return ["small", "medium", "large"].includes(value);
         },

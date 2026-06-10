@@ -17,8 +17,10 @@ function createComponent(options?: {
     resolve(): void;
     reject(): void;
 } {
-    const { iconLeft, iconRight, mobileFullWidth, tertiaryStyle, variant } =
+    const { iconLeft, iconRight, mobileFullWidth, tertiaryStyle } =
         options ?? {};
+
+    const variant = options?.variant ?? "primary";
 
     const testName = Cypress.currentTest.titlePath.join(" ");
     let resolve: () => void, reject: () => void;
@@ -64,6 +66,7 @@ function createComponent(options?: {
                 <p style="border: 1px dashed hotpink">
                     <f-button
                         :variant="variant"
+                        size="medium"
                         :icon-left="iconLeft"
                         :icon-right="iconRight"
                         :mobile-full-width="mobileFullWidth"
@@ -77,6 +80,7 @@ function createComponent(options?: {
                     <f-button
                         id="button2"
                         :variant="variant"
+                        size="medium"
                         :icon-left="iconLeft"
                         :icon-right="iconRight"
                         :mobile-full-width="mobileFullWidth"

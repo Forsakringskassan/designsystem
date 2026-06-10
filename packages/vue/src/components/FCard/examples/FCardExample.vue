@@ -28,10 +28,17 @@ export default defineComponent({
         </template>
         <template #footer>
             <div class="button-group">
-                <f-button variant="tertiary" align-text class="button-group__item" icon-left="pen">
+                <f-button
+                    size="medium"
+                    variant="tertiary"
+                    align-text
+                    class="button-group__item"
+                    icon-left="pen"
+                >
                     Ändra
                 </f-button>
                 <f-button
+                    size="medium"
                     variant="tertiary"
                     align-text
                     class="button-group__item"

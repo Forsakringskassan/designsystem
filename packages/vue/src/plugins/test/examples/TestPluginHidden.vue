@@ -22,7 +22,7 @@ export default defineComponent({
             Barnets namn
         </f-text-field>
 
-        <f-button @click="isVisible = !isVisible">
+        <f-button size="medium" variant="primary" @click="isVisible = !isVisible">
             {{ isVisible ? "Göm inmatningsfält" : "Visa inmatningsfält" }}
         </f-button>
     </div>

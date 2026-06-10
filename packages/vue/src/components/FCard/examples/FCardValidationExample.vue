@@ -45,6 +45,7 @@ function setValid(): void {
                         class="button-group__item"
                         align-text
                         icon-left="pen"
+                        size="medium"
                         variant="tertiary"
                     >
                         <span>
@@ -59,6 +60,7 @@ function setValid(): void {
                         class="button-group__item"
                         align-text
                         icon-left="trashcan"
+                        size="medium"
                         variant="tertiary"
                     >
                         <span> Ta bort </span>
@@ -67,7 +69,9 @@ function setValid(): void {
             </template>
         </f-card>
 
-        <f-button type="submit">Simulera inskick av formulär</f-button>
+        <f-button type="submit" size="medium" variant="primary">
+            Simulera inskick av formulär
+        </f-button>
     </f-validation-form>
 
     <f-button

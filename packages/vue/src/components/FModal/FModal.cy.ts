@@ -100,6 +100,7 @@ function generateModalMarkup(focusStrategy = "on"): string {
                         </f-button>
                         <f-button
                             size="large"
+                            variant="primary"
                             class="button-group__item"
                             @click="onClickCloseModal"
                         >

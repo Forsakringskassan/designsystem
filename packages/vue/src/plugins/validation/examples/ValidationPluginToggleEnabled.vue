@@ -28,7 +28,12 @@ export default defineComponent({
         >
             Max tio tecken
         </f-text-field>
-        <f-button data-test="validator-enabled-button" @click="toggleEnabled = !toggleEnabled">
+        <f-button
+            data-test="validator-enabled-button"
+            size="medium"
+            variant="primary"
+            @click="toggleEnabled = !toggleEnabled"
+        >
             Aktivera/Inaktivera
         </f-button>
     </div>

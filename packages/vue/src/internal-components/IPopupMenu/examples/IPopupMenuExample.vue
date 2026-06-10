@@ -78,6 +78,7 @@ export default defineComponent({
         <f-button
             id="popup-menu-open-button"
             ref="popup-anchor"
+            size="medium"
             variant="secondary"
             @click="onClick"
             @keyup="onKeyUp"

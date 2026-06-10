@@ -45,6 +45,7 @@ export default defineComponent({
                     class="button-group__item"
                     data-test="submit-button"
                     size="large"
+                    variant="primary"
                     type="submit"
                 >
                     Spara

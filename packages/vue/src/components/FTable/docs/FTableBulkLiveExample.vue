@@ -109,10 +109,10 @@ const livemethods = {
 
 const actionsTemplate = /* HTML */ `
     <div class="button-group">
-        <f-button variant="secondary" @click="onRemoveSelectedRows">
+        <f-button size="medium" variant="secondary" @click="onRemoveSelectedRows">
             Ta bort valda frukt(er)
         </f-button>
-        <f-button variant="secondary" @click="onRestoreRows"> Återställ </f-button>
+        <f-button size="medium" variant="secondary" @click="onRestoreRows"> Återställ </f-button>
     </div>
 `;
 

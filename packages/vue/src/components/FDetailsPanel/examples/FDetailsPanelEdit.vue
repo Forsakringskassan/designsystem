@@ -86,6 +86,7 @@ function openPanel(row: Row): void {
                                     <f-button
                                         class="button-group__item"
                                         size="small"
+                                        variant="primary"
                                         @click="exampleScope.close('save')"
                                     >
                                         Spara
