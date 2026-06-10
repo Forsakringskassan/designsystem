@@ -35,12 +35,11 @@ const menuitems = computed((): ContextMenuItem[] => {
     });
 });
 
-function onOpen(event: MouseEvent): void {
+function onToggle(event: MouseEvent): void {
     /* prevent FTable from activating the cell (which moves the focus back to
      * the cell instead of the context menu) */
     event.stopPropagation();
-
-    isOpen.value = true;
+    isOpen.value = !isOpen.value;
 }
 
 function onClose(): void {
@@ -48,9 +47,11 @@ function onClose(): void {
 }
 
 function onFocusout(event: FocusEvent): void {
+    const relatedTarget = event.relatedTarget;
     const validTarget = event.relatedTarget && event.relatedTarget instanceof HTMLElement;
     const inPopup = validTarget && Boolean(event.relatedTarget.closest(".popup"));
-    if (inPopup) {
+    const isOwnButton = relatedTarget === buttonRef.value;
+    if (inPopup || isOwnButton) {
         return;
     }
     isOpen.value = false;
@@ -66,7 +67,7 @@ defineExpose(expose);
 
 <template>
     <td class="table-ng__cell table-ng__cell--button" :class="{ 'table-ng__cell--menu-open': isOpen }">
-        <button ref="button" class="icon-button" type="button" tabindex="-1" aria-haspopup="menu" @click="onOpen">
+        <button ref="button" class="icon-button" type="button" tabindex="-1" aria-haspopup="menu" @click="onToggle">
             <f-icon name="bars"></f-icon>
             <span class="sr-only">{{ column.text(row) }}</span>
         </button>

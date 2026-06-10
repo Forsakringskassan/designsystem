@@ -412,4 +412,34 @@ describe("ITableMenu", () => {
         table.contextmenuItems().should("have.length", 1);
         table.contextmenuItems().eq(0).should("contain.text", "View decision");
     });
+
+    it("should toggle context menu when clicking cell repeatedly", () => {
+        const rows: Row[] = [{ id: 1, text: "Text" }];
+        const columns = defineTableColumns<Row>([
+            { type: "text", header: "Text", key: "text" },
+            {
+                type: "menu",
+                header: "Actions",
+                text() {
+                    return "Actions";
+                },
+                actions: [{ label: "foo" }, { label: "bar" }],
+            },
+        ]);
+
+        cy.mount(() =>
+            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+        );
+
+        table.contextmenu().should("not.exist");
+
+        table.cell({ row: 1, col: 2 }).click();
+        table.contextmenu().should("exist");
+
+        table.cell({ row: 1, col: 2 }).click();
+        table.contextmenu().should("not.exist");
+
+        table.cell({ row: 1, col: 2 }).click();
+        table.contextmenu().should("exist");
+    });
 });
