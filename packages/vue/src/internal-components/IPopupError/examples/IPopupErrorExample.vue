@@ -2,6 +2,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {
+    FButton,
     FEmailTextField,
     FInteractiveTable,
     FPostalCodeTextField,
@@ -12,6 +13,7 @@ import {
 export default defineComponent({
     name: "TestApp",
     components: {
+        FButton,
         FInteractiveTable,
         FTableColumn,
         FValidationForm,
@@ -62,6 +64,6 @@ export default defineComponent({
                 </f-table-column>
             </template>
         </f-interactive-table>
-        <button class="button button--primary" type="submit">Submit</button>
+        <f-button size="large" variant="primary" type="submit">Submit</f-button>
     </f-validation-form>
 </template>
