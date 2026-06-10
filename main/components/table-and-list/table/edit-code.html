@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-238268.json"
+    href="../../../search-data-4c5a3a.json"
     as="fetch"
     crossorigin
-    integrity="sha384-BTCdoRiEgNtQd/tYDgpYaz1+zDyUIzvV5txXrGwxBWqYMmG2X3MSuEfZ+EabaCVe"
+    integrity="sha384-BA8RMtoIA1kRbh3ZO5hwLk8bmURUWyVY2mk5oRqYMn4LtlBDHWzz6Qy515KSmf5d"
     id="search-data"
 />
 <script>
@@ -1555,6 +1555,10 @@
                             </summary>
                             <ul>
                                 
+                                <li><a href="#inline_redigering">Inline-redigering</a></li>
+                                
+                                <li><a href="#redigering_via_modaler">Redigering via modaler</a></li>
+                                
                                 <li><a href="#relaterat">Relaterat</a></li>
                                 
                             </ul>
@@ -1563,7 +1567,341 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Sidan kommer uppdateras.</p>
+                    <div id="content"><div
+                id="example-905f42"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-a4d299"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableInlineEdit-a4d299.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="code-preview__button code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span>, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">namn</span>: string;
+    <span class="hljs-attr">land</span>: string;
+    pris?: number;
+}
+
+<span class="hljs-keyword">const</span> lander = [
+    <span class="hljs-string">&quot;&quot;</span>,
+    <span class="hljs-string">&quot;Colombia&quot;</span>,
+    <span class="hljs-string">&quot;Costa Rica&quot;</span>,
+    <span class="hljs-string">&quot;Dominikanska republiken&quot;</span>,
+    <span class="hljs-string">&quot;Ecuador&quot;</span>,
+    <span class="hljs-string">&quot;Frankrike&quot;</span>,
+    <span class="hljs-string">&quot;Italien&quot;</span>,
+    <span class="hljs-string">&quot;Spanien&quot;</span>,
+    <span class="hljs-string">&quot;Sverige&quot;</span>,
+    <span class="hljs-string">&quot;Sydafrika&quot;</span>,
+];
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;namn&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;select&quot;</span>,
+        <span class="hljs-attr">options</span>: lander,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">label</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-number">30</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Banan&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Equador&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-number">15</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpple&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-number">22</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> sortableAttributes = { <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Frukt&quot;</span> };
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span> <span class="hljs-attr">:sortable-attributes</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">striped</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Redigera innehåll-exempel<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="inline_redigering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#inline_redigering">Inline-redigering</a></h2><p class="docs-paragraph">För kolumntypen <a href="column-types/text">Text</a> sätt <code>editable: true</code>.</p>
+
+                <div
+                    id="example-cbed72"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
+    },
+]);
+</code></pre>
+                </div>
+            <p class="docs-paragraph">För kolumntypen <a href="column-types/select.html">Dropplista</a> är redigering påslaget by default.</p>
+
+                <div
+                    id="example-9a7004"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;select&quot;</span>,
+        <span class="hljs-attr">options</span>: lander,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">label</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+    },
+]);
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Det finns möjlighet att agera när värdet i en cell redigerats genom att specifiera <code>update()</code>-metoden.</p>
+
+                <div
+                    id="example-2c8a09"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+        <span class="hljs-attr">editable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-title function_">value</span>(<span class="hljs-params">row</span>) {
+            <span class="hljs-keyword">return</span> row.<span class="hljs-property">pris</span>;
+        },
+        <span class="hljs-title function_">update</span>(<span class="hljs-params">row, value</span>) {
+            <span class="hljs-comment">// möjlighet att agera på redigerat värde</span>
+        },
+    },
+]);
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Läs mer om validering i respektive kolumntyp.</p>
+<h2 id="redigering_via_modaler" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#redigering_via_modaler">Redigering via modaler</a></h2>
+            <div
+                id="example-0c84a8"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-8ec996"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableCrudEdit-8ec996.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="code-preview__button code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> {
+    type <span class="hljs-title class_">TableColumn</span>,
+    <span class="hljs-title class_">FCrudDataset</span>,
+    <span class="hljs-title class_">FCurrencyTextField</span>,
+    <span class="hljs-title class_">FSelectField</span>,
+    <span class="hljs-title class_">FTable</span>,
+    <span class="hljs-title class_">FTextField</span>,
+    defineTableColumns,
+    useDatasetRef,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">namn</span>: string;
+    <span class="hljs-attr">land</span>: string;
+    pris?: number;
+}
+
+<span class="hljs-keyword">const</span> lander = [
+    <span class="hljs-string">&quot;&quot;</span>,
+    <span class="hljs-string">&quot;Colombia&quot;</span>,
+    <span class="hljs-string">&quot;Costa Rica&quot;</span>,
+    <span class="hljs-string">&quot;Dominikanska republiken&quot;</span>,
+    <span class="hljs-string">&quot;Ecuador&quot;</span>,
+    <span class="hljs-string">&quot;Frankrike&quot;</span>,
+    <span class="hljs-string">&quot;Italien&quot;</span>,
+    <span class="hljs-string">&quot;Spanien&quot;</span>,
+    <span class="hljs-string">&quot;Sverige&quot;</span>,
+    <span class="hljs-string">&quot;Sydafrika&quot;</span>,
+];
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">getColumns</span>(<span class="hljs-params">
+    updateItem: (item: Row) =&gt; <span class="hljs-keyword">void</span>,
+    deleteItem: (item: Row) =&gt; <span class="hljs-keyword">void</span>,
+</span>): <span class="hljs-title class_">Array</span>&lt;<span class="hljs-title class_">TableColumn</span>&lt;<span class="hljs-title class_">Row</span>&gt;&gt; {
+    <span class="hljs-keyword">return</span> defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+        {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+            <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+            <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;namn&quot;</span>,
+        },
+        {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+            <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+            <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+        },
+        {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+            <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+            <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
+        },
+        {
+            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;menu&quot;</span>,
+            <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärder&quot;</span>,
+            <span class="hljs-title function_">text</span>(<span class="hljs-params">row</span>) {
+                <span class="hljs-keyword">return</span> <span class="hljs-string">`Visa åtgärder för <span class="hljs-subst">${row.namn}</span>`</span>;
+            },
+            <span class="hljs-attr">actions</span>: [
+                {
+                    <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ändra&quot;</span>,
+                    <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;pen&quot;</span>,
+                    <span class="hljs-attr">onClick</span>: updateItem,
+                },
+                {
+                    <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ta bort&quot;</span>,
+                    <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
+                    <span class="hljs-attr">onClick</span>: deleteItem,
+                },
+            ],
+        },
+    ]);
+}
+
+<span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-number">30</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Banan&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Equador&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-number">15</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpple&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-number">22</span>,
+    },
+]);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;rows&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ updateItem, deleteItem }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;table&quot;</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>=<span class="hljs-string">&quot;getColumns(updateItem, deleteItem)&quot;</span> <span class="hljs-attr">striped</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>Redigera innehåll-exempel<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">modify</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-select-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.land&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span>Land<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">hidden</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Välj..<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;land in lander&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;land&quot;</span>&gt;</span>{{ land }}<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-select-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-currency-text-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.pris&quot;</span>&gt;</span> Pris <span class="hljs-tag">&lt;/<span class="hljs-name">f-currency-text-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">delete</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span> Vill du verkligen ta bort &quot;{{ item.namn }}&quot;? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-crud-dataset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <p class="docs-paragraph">Med <a href="../fcruddataset.html">Datamängdredigeraren</a> kan du lägga till funktionalitet för att skapa, ändra och ta bort rader i tabellen via modaler.</p>
 <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p class="docs-paragraph"><a href="./code.html">Kod för tabell</a></p>
 <p class="docs-paragraph"><a href="./edit.html">Redigera innehåll i tabell</a></p>
 
@@ -1614,9 +1952,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/5302494252b84e35310c61d1b51fdb0ecd44148d">5302494</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/23c62e2c74865b0904e54917c94c5fb399ea31cd">23c62e2</a>)<br />
         
-        2026-06-10 07:06
+        2026-06-10 11:27
 </div>
 <div class="toolbar__item">
     <form id="version">
