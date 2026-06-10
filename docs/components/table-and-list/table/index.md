@@ -45,15 +45,17 @@ Använd inte tabell för att
 
 ### Mobila enheter och tabell
 
-Undvika tabeller på mobila enheter.
+Undvik tabeller på mobila enheter.
 Utforska andra alternativ innan du bestämmer dig för att använda en tabell.
 
 Ett alternativ är komponenten {@link FList lista.}
 
 Om du ändå använder tabeller på mobila enheter finns det några saker att tänka på:
 
-- Anpassa tabellens bredden och antal kolumner efter enhetens skärmstorlek. Undvik horisontell scrollning så långt det är möjligt.
-- Använd inte redigerbara på mobila enheter.{@link edit Läs mer om redigerbara tabeller.}
+- Gör en innehållsanalys, går det att minska ner informationen som användaren ser?
+- Anpassa tabellens bredd och antal kolumner efter enhetens skärmstorlek. Undvik horisontell scrollning så långt det är möjligt.
+- Undvik för många rader i tabellen.
+- Använd inte redigerbar tabell på mobila enheter. {@link edit Läs mer om redigerbar tabell.}
 
 ### Anpassa tabell
 
