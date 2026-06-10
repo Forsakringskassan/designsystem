@@ -1,6 +1,9 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
-import plugin from "../index";
+import { expect, it } from "vitest";
+
+// eslint-disable-next-line import-x/extensions -- Vite migration
+import plugin from "../index.cjs";
 
 const htmlvalidate = new HtmlValidate({
     plugins: [plugin],
@@ -17,7 +20,7 @@ it("should not report error when selectable is used with non-empty selectable de
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should report error when selectable is used without selectable description", async () => {
@@ -29,7 +32,7 @@ it("should report error when selectable is used without selectable description",
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: #selectable-description slot must be implemented when selectable is enabled (fkui/finteractivetable-selectable-description)
           1 |
         > 2 |         <f-interactive-table selectable>
@@ -51,7 +54,7 @@ it("should report error when selectable is used with empty selectable descriptio
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: #selectable-description cannot be empty when selectable is enabled (fkui/finteractivetable-selectable-description)
           2 |         <f-interactive-table selectable>
           3 |             <template #default="{ row }"></template>
@@ -70,7 +73,7 @@ it("should handle when no slots are implemented", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: #selectable-description slot must be implemented when selectable is enabled (fkui/finteractivetable-selectable-description)
           1 |
         > 2 |         <f-interactive-table selectable></f-interactive-table>
@@ -89,7 +92,7 @@ it("should handle when non-slot template element is used", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: #selectable-description slot must be implemented when selectable is enabled (fkui/finteractivetable-selectable-description)
           1 |
         > 2 |         <f-interactive-table selectable>

@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { getBodyRowCount } from "./get-body-row-count";
 
 const rows = [

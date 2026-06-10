@@ -1,6 +1,8 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
-import plugin from "../index";
+import { expect, it } from "vitest";
+// eslint-disable-next-line import-x/extensions -- Vite migration
+import plugin from "../index.cjs";
 
 const htmlvalidate = new HtmlValidate({
     plugins: [plugin],
@@ -20,7 +22,7 @@ it("should be valid when v-validation.maxLength is used", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should be valid when a formatting validator is used", async () => {
@@ -35,7 +37,7 @@ it("should be valid when a formatting validator is used", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it('should be valid when element input with type="checkbox"', async () => {
@@ -48,7 +50,7 @@ it('should be valid when element input with type="checkbox"', async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it('should be valid when element input with type="radio"', async () => {
@@ -61,7 +63,7 @@ it('should be valid when element input with type="radio"', async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should be valid when maxlength is set", async () => {
@@ -71,7 +73,7 @@ it("should be valid when maxlength is set", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it('should be valid when type="number"', async () => {
@@ -79,7 +81,7 @@ it('should be valid when type="number"', async () => {
     const markup = /* HTML */ ` <input type="number" v-validation.number /> `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should be valid when element is not input", async () => {
@@ -87,7 +89,7 @@ it("should be valid when element is not input", async () => {
     const markup = /* HTML */ ` <div id="foo"></div> `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it('should report error when type="text" and v-validation is used without validation-formatters', async () => {
@@ -100,7 +102,7 @@ it('should report error when type="text" and v-validation is used without valida
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: v-validation must have a maxlength-validator (fkui/required-max-length)
           2 |         <div class="first">
           3 |             <span> First name </span>
@@ -125,7 +127,7 @@ it("should report error when type isn`t set and v-validation is used without val
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: v-validation must have a maxlength-validator (fkui/required-max-length)
           1 |
           2 |         <div class="first">
@@ -151,7 +153,7 @@ it('should report error when type="text", maxlength isn`t set and v-validation i
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: v-validation.maxLength must be used (fkui/required-max-length)
           1 |
           2 |         <div class="last">

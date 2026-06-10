@@ -1,4 +1,5 @@
 import { mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import ITableHeaderSelectable from "./ITableHeaderSelectable.vue";
 
 const selector = ".table-ng__column--selectable input";

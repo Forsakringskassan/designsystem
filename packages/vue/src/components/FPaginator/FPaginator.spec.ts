@@ -1,5 +1,6 @@
 import { nextTick } from "vue";
 import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 import { FPaginatorSelectors } from "../../selectors";
 import FPaginateDataset from "../FPaginateDataset/FPaginateDataset.vue";
 import FPaginator from "./FPaginator.vue";
@@ -180,7 +181,7 @@ describe("pages and gaps", () => {
 
 describe("events", () => {
     it("should emit event 'paginateDataset:previous' when clicking on 'Previous' button", async () => {
-        const listener = jest.fn();
+        const listener = vi.fn();
         const wrapper = mount(FPaginator, {
             props: {
                 currentPage: 2,
@@ -195,7 +196,7 @@ describe("events", () => {
     });
 
     it("should emit event 'paginateDataset:next' when clicking on 'Next' button", async () => {
-        const listener = jest.fn();
+        const listener = vi.fn();
         const wrapper = mount(FPaginator, {
             props: {
                 currentPage: 2,
@@ -210,7 +211,7 @@ describe("events", () => {
     });
 
     it("should emit event 'paginateDataset:page' when clicking on a page button", async () => {
-        const listener = jest.fn();
+        const listener = vi.fn();
         const wrapper = mount(FPaginator, {
             props: {
                 currentPage: 2,

@@ -1,13 +1,10 @@
 // Augmentation for Vitest's expect (which uses @vitest/expect)
-declare global {
-    // eslint-disable-next-line @typescript-eslint/no-namespace -- needed for Vitest
-    namespace Vi {
-        interface Assertion<R> {
-            toHaveFocus(): R;
-        }
-        interface AsymmetricMatchersContaining {
-            toHaveFocus(): void;
-        }
+import "vitest";
+
+declare module "vitest" {
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- to match upstream */
+    interface Matchers<T = any> {
+        toHaveFocus: () => T;
     }
 }
 export {};

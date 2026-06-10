@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots should match snapshot when closed 1`] = `
+exports[`snapshots > should match snapshot when closed 1`] = `
 <div
   id="outside"
 >
@@ -11,7 +11,7 @@ exports[`snapshots should match snapshot when closed 1`] = `
 </div>
 `;
 
-exports[`snapshots should match snapshot when open 1`] = `
+exports[`snapshots > should match snapshot when open 1`] = `
 <div
   id="outside"
 >

@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { isDataset } from "./is-dataset";
 import { toDataset } from "./to-dataset";
 

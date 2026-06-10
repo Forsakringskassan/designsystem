@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from "vitest";
 import { getValueFn } from "./get-value-fn";
 
 interface TableRow {
@@ -7,7 +8,7 @@ interface TableRow {
 
 describe("getValueFn()", () => {
     it("should return and call provided value-function", () => {
-        const valueFnMock = jest.fn((_row: TableRow): string => {
+        const valueFnMock = vi.fn((_row: TableRow): string => {
             return "myValue";
         });
 

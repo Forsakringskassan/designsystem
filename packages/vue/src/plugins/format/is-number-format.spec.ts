@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { isNumberFormat } from "./is-number-format";
 
 it.each`

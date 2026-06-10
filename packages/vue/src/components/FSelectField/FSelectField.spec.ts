@@ -1,8 +1,9 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent, h } from "vue";
 import { type ValidatableHTMLElement, type ValidityEvent } from "@fkui/logic";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { describe, expect, it, vi } from "vitest";
 import FSelectField from "./FSelectField.vue";
 
 function createTestComponentWithOptions(
@@ -137,7 +138,7 @@ describe("inline", () => {
 
 describe("events", () => {
     it("should pass listeners", async () => {
-        const foobar = jest.fn();
+        const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
         });

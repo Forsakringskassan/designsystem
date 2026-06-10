@@ -1,7 +1,8 @@
 import { VueWrapper, mount, shallowMount } from "@vue/test-utils";
 import { type ConfigData } from "html-validate";
+import { describe, expect, it, vi } from "vitest";
 import FExpandableParagraph from "./FExpandableParagraph.vue";
-import "html-validate/jest";
+import "html-validate/vitest";
 
 const config: ConfigData = {
     root: true,
@@ -98,7 +99,7 @@ describe("header-visual-tag", () => {
 describe("events", () => {
     it("should emit toggle event", async () => {
         expect.assertions(1);
-        const toggle = jest.fn();
+        const toggle = vi.fn();
 
         const wrapper = createWrapper({
             attrs: { onToggle: toggle },
@@ -110,7 +111,7 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
-        const foobar = jest.fn();
+        const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
         });

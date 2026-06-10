@@ -1,4 +1,5 @@
 import { nextTick, ref } from "vue";
+import { describe, expect, it, vi } from "vitest";
 import { useSortFilterDataset } from "./use-sort-filter-dataset";
 
 it("should output filtered rows directly", async () => {
@@ -236,7 +237,7 @@ describe("filtered data after editing of input data", () => {
 describe("lazy callbacks", () => {
     it("should call onLazyRowsAdded when new rows are appended", async () => {
         const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
-        const onLazyRowsAdded = jest.fn();
+        const onLazyRowsAdded = vi.fn();
 
         useSortFilterDataset(data, { foo: "foo" }, [], "foo", true, {
             onLazyRowsAdded,
@@ -250,7 +251,7 @@ describe("lazy callbacks", () => {
 
     it("should call onFilter and rerun full sort when refresh is called", async () => {
         const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
-        const onFilter = jest.fn();
+        const onFilter = vi.fn();
 
         const { sortFilterResult, refresh } = useSortFilterDataset(
             data,

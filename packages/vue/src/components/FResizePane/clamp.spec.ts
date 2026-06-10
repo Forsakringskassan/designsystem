@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { clamp } from "./clamp";
 
 const min = 20;

@@ -1,8 +1,9 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../../plugins";
 import { FTextField } from "../../FTextField";
 import FModal from "../FModal.vue";
@@ -68,13 +69,21 @@ async function doTriggerSubmit(wrapper: VueWrapper): Promise<void> {
     await formElement.trigger("submit");
     await wrapper.vm.$nextTick();
     await flushPromises();
-    await wrapper.vm.$nextTick();
+    vi.runAllTimers();
     await flushPromises();
-    await wrapper.vm.$nextTick();
+    vi.runAllTimers();
     await flushPromises();
 }
 
 describe("events", () => {
+    beforeEach(() => {
+        vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+        vi.useRealTimers();
+    });
+
     it('should send "cancel" and "close" event on close button clicked', async () => {
         const wrapper = mount(FFormModal, {
             props: {
@@ -112,7 +121,7 @@ describe("events", () => {
     });
 
     it('should call "beforeSubmit" when it is provided and submit button clicked', async () => {
-        const beforeSubmit = jest.fn();
+        const beforeSubmit = vi.fn();
         const wrapper = mount(FFormModal, {
             props: {
                 isOpen: true,
@@ -328,7 +337,7 @@ describe("props", () => {
 
         const button = wrapper.get(".button--secondary");
         const nbsp = "\u00a0";
-        expect(button.text()).toBe(`Lorem ipsum${nbsp}with screenreader text`);
+        expect(button.text()).toBe(`Lorem ipsum ${nbsp}with screenreader text`);
     });
 
     it("should not append extra space if no screenreader text is given", () => {
@@ -345,12 +354,14 @@ describe("props", () => {
 });
 
 describe("html-validate", () => {
-    it("should allow usage without attributes, no attributes required", () => {
-        expect("<f-form-modal></f-form-modal>").toHTMLValidate();
+    it("should allow usage without attributes, no attributes required", async () => {
+        await expect("<f-form-modal></f-form-modal>").toHTMLValidate();
     });
 
-    it("should not allow an invalid form-id attribute", () => {
-        expect('<f-form-modal form-id="1"></f-form-modal>').not.toHTMLValidate({
+    it("should not allow an invalid form-id attribute", async () => {
+        await expect(
+            '<f-form-modal form-id="1"></f-form-modal>',
+        ).not.toHTMLValidate({
             ruleId: "attribute-allowed-values",
             message: 'Attribute "form-id" has invalid value "1"',
         });
@@ -360,21 +371,21 @@ describe("html-validate", () => {
         const validSizes = ["small", "large", "fullwidth"];
 
         describe("is-open", () => {
-            it("should allow boolean value", () => {
+            it("should allow boolean value", async () => {
                 expect.assertions(1);
                 const markup = /* HTML */ `
                     <f-form-modal is-open></f-form-modal>
                     <f-form-modal :is-open="false"></f-form-modal>
                 `;
-                expect(markup).toHTMLValidate();
+                await expect(markup).toHTMLValidate();
             });
 
-            it("should not allow empty string", () => {
+            it("should not allow empty string", async () => {
                 expect.assertions(1);
                 const markup = /* HTML */ `
                     <f-form-modal is-open=""></f-form-modal>
                 `;
-                expect(markup).toMatchInlineCodeframe(`
+                await expect(markup).toMatchInlineCodeframe(`
                     "error: Attribute "is-open" should omit value (attribute-boolean-style)
                       1 |
                     > 2 |                     <f-form-modal is-open=""></f-form-modal>
@@ -384,12 +395,12 @@ describe("html-validate", () => {
                 `);
             });
 
-            it("should not allow invalid values", () => {
+            it("should not allow invalid values", async () => {
                 expect.assertions(1);
                 const markup = /* HTML */ `
                     <f-form-modal is-open="invalid"></f-form-modal>
                 `;
-                expect(markup).toMatchInlineCodeframe(`
+                await expect(markup).toMatchInlineCodeframe(`
                     "error: Attribute "is-open" should omit value (attribute-boolean-style)
                       1 |
                     > 2 |                     <f-form-modal is-open="invalid"></f-form-modal>
@@ -407,20 +418,20 @@ describe("html-validate", () => {
         });
 
         describe("size", () => {
-            it.each(validSizes)("%s", (size: string) => {
+            it.each(validSizes)("%s", async (size: string) => {
                 expect.assertions(1);
                 const markup = /* HTML */ `
                     <f-form-modal size="${size}"></f-form-modal>
                 `;
-                expect(markup).toHTMLValidate();
+                await expect(markup).toHTMLValidate();
             });
 
-            it("fullscreen", () => {
+            it("fullscreen", async () => {
                 expect.assertions(1);
                 const markup = /* HTML */ `
                     <f-form-modal size="fullscreen"></f-form-modal>
                 `;
-                expect(markup).toMatchInlineCodeframe(`
+                await expect(markup).toMatchInlineCodeframe(`
                     "error: Attribute "size" has invalid value "fullscreen" (attribute-allowed-values)
                       1 |
                     > 2 |                     <f-form-modal size="fullscreen"></f-form-modal>
@@ -430,12 +441,12 @@ describe("html-validate", () => {
                 `);
             });
 
-            it("invalid", () => {
+            it("invalid", async () => {
                 expect.assertions(1);
                 const markup = /* HTML */ `
                     <f-form-modal size="invalid"></f-form-modal>
                 `;
-                expect(markup).toMatchInlineCodeframe(`
+                await expect(markup).toMatchInlineCodeframe(`
                     "error: Attribute "size" has invalid value "invalid" (attribute-allowed-values)
                       1 |
                     > 2 |                     <f-form-modal size="invalid"></f-form-modal>
@@ -452,9 +463,9 @@ describe("html-validate", () => {
         ${"header"}            | ${"<f-form-modal><template #header>Header</template></f-form-modal>"}
         ${"error-message"}     | ${"<f-form-modal><template #error-message>Error</template></f-form-modal>"}
         ${"input-text-fields"} | ${"<f-form-modal><template #input-text-fields></template></f-form-modal>"}
-    `("should allow $slotName slot", ({ html }) => {
+    `("should allow $slotName slot", async ({ html }) => {
         expect.assertions(1);
 
-        expect(html).toHTMLValidate();
+        await expect(html).toHTMLValidate();
     });
 });

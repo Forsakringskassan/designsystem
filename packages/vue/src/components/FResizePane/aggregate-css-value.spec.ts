@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { aggregateCssValue } from "./aggregate-css-value";
 
 it("should select single value from list", () => {

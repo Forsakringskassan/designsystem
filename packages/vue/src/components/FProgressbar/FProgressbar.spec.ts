@@ -1,10 +1,11 @@
 import { shallowMount } from "@vue/test-utils";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import FProgressbar from "./FProgressbar.vue";
 
 const ariaLabel = "My progressbar";
 
 afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
 });
 
 describe("FProgressbar", () => {
@@ -64,7 +65,7 @@ describe("FProgressbar", () => {
 
     it("should not go below 0%", () => {
         // prevent vue error logging due to value validator
-        jest.spyOn(console, "error").mockImplementation(jest.fn());
+        vi.spyOn(console, "error").mockImplementation(vi.fn());
         const wrapper = shallowMount(FProgressbar, {
             props: { value: -5, "aria-label": ariaLabel },
             global: {

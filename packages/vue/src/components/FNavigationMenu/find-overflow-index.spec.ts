@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { findOverflowIndex } from "./find-overflow-index";
 
 const testElements = [

@@ -1,52 +1,189 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshot should match snapshot 1`] = `
-<div class="crud-dataset">
-  <div id="cancelMessage">Modalen har stängts</div>
+exports[`snapshot > should match snapshot 1`] = `
+<div
+  class="crud-dataset"
+>
+  
+  <div
+    id="cancelMessage"
+  >
+    Modalen har stängts
+  </div>
   <table>
     <thead>
       <tr>
-        <th>id</th>
-        <th>name</th>
+        <th>
+          id
+        </th>
+        <th>
+          name
+        </th>
       </tr>
     </thead>
     <tbody>
+      
       <tr>
-        <td>1</td>
-        <td>a</td>
-        <td><button type="button" class="button table__button" id="modifyButton">
-            <!--v-if-->Ändra
-          </button></td>
-        <td><button type="button" class="button table__button" id="deleteButton">
-            <!--v-if-->Ta bort
-          </button></td>
+        <td>
+          1
+        </td>
+        <td>
+          a
+        </td>
+        <td>
+          <button
+            class="button table__button"
+            id="modifyButton"
+            type="button"
+          >
+            <!--v-if-->
+             
+            
+            
+            Ändra
+            
+            
+          </button>
+        </td>
+        <td>
+          <button
+            class="button table__button"
+            id="deleteButton"
+            type="button"
+          >
+            <!--v-if-->
+             
+            
+            
+            Ta bort
+            
+            
+          </button>
+        </td>
       </tr>
       <tr>
-        <td>2</td>
-        <td>b</td>
-        <td><button type="button" class="button table__button" id="modifyButton">
-            <!--v-if-->Ändra
-          </button></td>
-        <td><button type="button" class="button table__button" id="deleteButton">
-            <!--v-if-->Ta bort
-          </button></td>
+        <td>
+          2
+        </td>
+        <td>
+          b
+        </td>
+        <td>
+          <button
+            class="button table__button"
+            id="modifyButton"
+            type="button"
+          >
+            <!--v-if-->
+             
+            
+            
+            Ändra
+            
+            
+          </button>
+        </td>
+        <td>
+          <button
+            class="button table__button"
+            id="deleteButton"
+            type="button"
+          >
+            <!--v-if-->
+             
+            
+            
+            Ta bort
+            
+            
+          </button>
+        </td>
       </tr>
       <tr>
-        <td>3</td>
-        <td>c</td>
-        <td><button type="button" class="button table__button" id="modifyButton">
-            <!--v-if-->Ändra
-          </button></td>
-        <td><button type="button" class="button table__button" id="deleteButton">
-            <!--v-if-->Ta bort
-          </button></td>
+        <td>
+          3
+        </td>
+        <td>
+          c
+        </td>
+        <td>
+          <button
+            class="button table__button"
+            id="modifyButton"
+            type="button"
+          >
+            <!--v-if-->
+             
+            
+            
+            Ändra
+            
+            
+          </button>
+        </td>
+        <td>
+          <button
+            class="button table__button"
+            id="deleteButton"
+            type="button"
+          >
+            <!--v-if-->
+             
+            
+            
+            Ta bort
+            
+            
+          </button>
+        </td>
       </tr>
+      
     </tbody>
   </table>
-  <div><button type="button" class="button button--tertiary crud-dataset__add-button">
-      <f-icon-stub name="plus" library="f" class="button__icon"></f-icon-stub>Lägg till ny
-    </button></div>
-  <f-form-modal-stub fullscreen="true" isopen="false" size="small" datatest="" useerrorlist="false" formid="fkui-vue-element-0001" ariaclosetext="Stäng" beforesubmit="[Function]" beforevalidation="[Function]" buttons="[object Object],[object Object]" value="[object Object]"></f-form-modal-stub>
-  <f-confirm-modal-stub fullscreen="false" isopen="false" content="Brödtext" heading="Rubrik" size="" buttons="[object Object],[object Object]"></f-confirm-modal-stub>
+  
+   
+  <div>
+    <button
+      class="button button--tertiary crud-dataset__add-button"
+      data-test="f-crud-dataset-add-button"
+      type="button"
+    >
+      <f-icon-stub
+        class="button__icon"
+        library="f"
+        name="plus"
+      />
+       
+      
+      Lägg till ny
+      
+    </button>
+     
+    
+    
+  </div>
+   
+  <f-form-modal-stub
+    ariaclosetext="Stäng"
+    beforesubmit="[Function]"
+    beforevalidation="[Function]"
+    buttons="[object Object],[object Object]"
+    datatest=""
+    formid="fkui-vue-element-0001"
+    fullscreen="true"
+    isopen="false"
+    size="small"
+    useerrorlist="false"
+    value="[object Object]"
+  />
+   
+  <f-confirm-modal-stub
+    buttons="[object Object],[object Object]"
+    content="Brödtext"
+    fullscreen="false"
+    heading="Rubrik"
+    isopen="false"
+    size=""
+  />
 </div>
 `;

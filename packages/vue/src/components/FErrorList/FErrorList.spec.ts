@@ -1,7 +1,7 @@
-import "html-validate/jest";
-import "@fkui/test-utils/jest";
+import "html-validate/vitest";
+import "@fkui/test-utils/vitest";
 import { defineComponent } from "vue";
-import logic from "@fkui/logic";
+import * as logic from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
@@ -10,6 +10,7 @@ import {
     HtmlValidate,
     cjsResolver,
 } from "html-validate/node";
+import { describe, expect, it, vi } from "vitest";
 import { IFlexItem } from "../../internal-components/IFlex";
 import { ErrorItem } from "../../types";
 import { FIcon } from "../FIcon";
@@ -110,8 +111,8 @@ describe("navigation", () => {
     }
 
     it("should scroll to and focus on id element when focus element is missing", async () => {
-        window.scrollTo = jest.fn();
-        const logicScrollToMock = jest.spyOn(logic, "scrollTo");
+        window.scrollTo = vi.fn();
+        const logicScrollToMock = vi.spyOn(logic, "scrollTo");
 
         const wrapper = createWrapperWithErrorListAndInputs([
             {
@@ -135,8 +136,8 @@ describe("navigation", () => {
     });
 
     it("should scroll to id element and focus on focus element when both elements exists", async () => {
-        window.scrollTo = jest.fn();
-        const logicScrollToMock = jest.spyOn(logic, "scrollTo");
+        window.scrollTo = vi.fn();
+        const logicScrollToMock = vi.spyOn(logic, "scrollTo");
 
         const wrapper = createWrapperWithErrorListAndInputs([
             {
@@ -169,7 +170,7 @@ describe("htmlvalidate", () => {
             "html-validate-vue:recommended",
             "@fkui/vue:recommended",
         ],
-        plugins: ["<rootDir>/htmlvalidate", "html-validate-vue"],
+        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
     });
     const htmlvalidate = new HtmlValidate(loader);
 
@@ -178,7 +179,7 @@ describe("htmlvalidate", () => {
             expect.assertions(1);
             const markup = /* HTML */ ` <f-error-list></f-error-list> `;
             const report = await htmlvalidate.validateString(markup);
-            expect(report).toMatchInlineCodeframe(`
+            await expect(report).toMatchInlineCodeframe(`
                 "error: <f-error-list> is missing required "items" attribute (element-required-attributes)
                 > 1 |  <f-error-list></f-error-list>
                     |   ^^^^^^^^^^^^

@@ -1,6 +1,8 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
-import plugin from "../index";
+import { expect, it } from "vitest";
+// eslint-disable-next-line import-x/extensions -- Vite migration
+import plugin from "../index.cjs";
 
 const htmlvalidate = new HtmlValidate({
     plugins: [plugin],
@@ -36,7 +38,7 @@ it("should report error for svg with icon", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: Prefer using <f-icon> instead of directly using <svg> (fkui/prefer-ficon)
           1 |
         > 2 |         <svg class="icon">

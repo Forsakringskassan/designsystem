@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots should match snapshot when link 1`] = `
+exports[`snapshots > should match snapshot when link 1`] = `
 <li>
   <a
     href="javascript:"
@@ -9,6 +9,7 @@ exports[`snapshots should match snapshot when link 1`] = `
       aria-hidden="true"
       class="error-list__bullet"
     />
+     
     <span
       class="error-list__link"
     >
@@ -18,13 +19,14 @@ exports[`snapshots should match snapshot when link 1`] = `
 </li>
 `;
 
-exports[`snapshots should match snapshot when no link 1`] = `
+exports[`snapshots > should match snapshot when no link 1`] = `
 <li>
   
   <span
     aria-hidden="true"
     class="error-list__bullet"
   />
+   
   <span>
     With no link
   </span>

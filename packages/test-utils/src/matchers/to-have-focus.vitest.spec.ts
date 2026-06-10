@@ -1,7 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { toHaveFocus } from "./to-have-focus";
-
-expect.extend({ toHaveFocus });
+import "@fkui/test-utils/vitest";
 
 describe("toHaveFocus (vitest)", () => {
     let element: HTMLElement;

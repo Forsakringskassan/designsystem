@@ -1,5 +1,6 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import FPageHeader from "./FPageHeader.vue";
 
 describe("slots", () => {
@@ -90,8 +91,8 @@ describe("props", () => {
 });
 
 describe("html-validate", () => {
-    it("should allow usage without attributes, no attributes required", () => {
-        expect("<f-page-header></f-page-header>").toHTMLValidate();
+    it("should allow usage without attributes, no attributes required", async () => {
+        await expect("<f-page-header></f-page-header>").toHTMLValidate();
     });
 
     it.each`
@@ -100,13 +101,13 @@ describe("html-validate", () => {
         ${"logo"}           | ${"<f-page-header><template #logo></template></f-page-header>"}
         ${"default"}        | ${"<f-page-header><template #default></template></f-page-header>"}
         ${"right"}          | ${"<f-page-header><template #right></template></f-page-header>"}
-    `("should allow $slotName slot", ({ html }) => {
+    `("should allow $slotName slot", async ({ html }) => {
         expect.assertions(1);
 
-        expect(html).toHTMLValidate();
+        await expect(html).toHTMLValidate();
     });
 
-    it("skip-link", () => {
+    it("skip-link", async () => {
         expect.assertions(2);
         const valid = /* HTML */ `
             <f-page-header skip-link="foo"></f-page-header>
@@ -115,8 +116,8 @@ describe("html-validate", () => {
             <!-- omitted value -->
             <f-page-header skip-link></f-page-header>
         `;
-        expect(valid).toMatchInlineCodeframe(`""`);
-        expect(invalid).toMatchInlineCodeframe(`
+        await expect(valid).toMatchInlineCodeframe(`""`);
+        await expect(invalid).toMatchInlineCodeframe(`
             "error: Attribute "skip-link" is missing value (attribute-allowed-values)
               1 |
               2 |             <!-- omitted value -->
@@ -128,20 +129,20 @@ describe("html-validate", () => {
     });
 
     describe("header-tag", () => {
-        it.each(["span", "h1"])("%s", (headerTag) => {
+        it.each(["span", "h1"])("%s", async (headerTag) => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-page-header header-tag="${headerTag}"></f-page-header>
             `;
-            expect(markup).toHTMLValidate();
+            await expect(markup).toHTMLValidate();
         });
 
-        it("h2", () => {
+        it("h2", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-page-header header-tag="h2"></f-page-header>
             `;
-            expect(markup).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: Attribute "header-tag" has invalid value "h2" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-page-header header-tag="h2"></f-page-header>

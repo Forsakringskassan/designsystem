@@ -4,8 +4,9 @@ import {
     HtmlValidate,
     cjsResolver,
 } from "html-validate/node";
+import { describe, expect, it } from "vitest";
 import FIcon from "./FIcon.vue";
-import "html-validate/jest";
+import "html-validate/vitest";
 
 const loader = new FileSystemConfigLoader([cjsResolver()], {
     extends: [
@@ -13,7 +14,7 @@ const loader = new FileSystemConfigLoader([cjsResolver()], {
         "html-validate-vue:recommended",
         "@fkui/vue:recommended",
     ],
-    plugins: ["<rootDir>/htmlvalidate", "html-validate-vue"],
+    plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
 });
 const htmlvalidate = new HtmlValidate(loader);
 
@@ -135,7 +136,7 @@ describe("props", () => {
                 `;
                 const report = await htmlvalidate.validateString(markup);
                 expect(report).toBeInvalid();
-                expect(report).toMatchInlineCodeframe(`
+                await expect(report).toMatchInlineCodeframe(`
                     "error: Attribute "rotate" has invalid value "42" (attribute-allowed-values)
                       1 |
                     > 2 |                     <f-icon name="my-icon" rotate="42"></f-icon>
@@ -152,7 +153,7 @@ describe("props", () => {
                 `;
                 const report = await htmlvalidate.validateString(markup);
                 expect(report).toBeInvalid();
-                expect(report).toMatchInlineCodeframe(`
+                await expect(report).toMatchInlineCodeframe(`
                     "error: Attribute "rotate" has invalid value "foo" (attribute-allowed-values)
                       1 |
                     > 2 |                     <f-icon name="my-icon" rotate="foo"></f-icon>

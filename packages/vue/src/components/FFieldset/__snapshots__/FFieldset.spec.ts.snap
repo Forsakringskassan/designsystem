@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots should match snapshot when validityMode is ERROR 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'ERROR' 1`] = `
 <fieldset
   class="fieldset"
   id="someId"
@@ -11,9 +11,12 @@ exports[`snapshots should match snapshot when validityMode is ERROR 1`] = `
     
     Label
     
+     
     <!--v-if-->
+     
     
     
+     
     
     <span
       class="label__message label__message--error"
@@ -27,8 +30,11 @@ exports[`snapshots should match snapshot when validityMode is ERROR 1`] = `
     </span>
     
   </legend>
+   
   <!--v-if-->
+   
   <!--v-if-->
+   
   <div
     class="fieldset__content"
   >
@@ -38,7 +44,7 @@ exports[`snapshots should match snapshot when validityMode is ERROR 1`] = `
 </fieldset>
 `;
 
-exports[`snapshots should match snapshot when validityMode is INITIAL 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'INITIAL' 1`] = `
 <fieldset
   class="fieldset"
   id="someId"
@@ -49,15 +55,21 @@ exports[`snapshots should match snapshot when validityMode is INITIAL 1`] = `
     
     Label
     
+     
     <!--v-if-->
+     
     
     
+     
     
     <!--v-if-->
     
   </legend>
+   
   <!--v-if-->
+   
   <!--v-if-->
+   
   <div
     class="fieldset__content"
   >
@@ -67,7 +79,7 @@ exports[`snapshots should match snapshot when validityMode is INITIAL 1`] = `
 </fieldset>
 `;
 
-exports[`snapshots should match snapshot when validityMode is INITIAL 2`] = `
+exports[`snapshots > should match snapshot when validityMode is 'INITIAL' 2`] = `
 <fieldset
   class="fieldset"
   id="someId"
@@ -78,15 +90,21 @@ exports[`snapshots should match snapshot when validityMode is INITIAL 2`] = `
     
     Label
     
+     
     <!--v-if-->
+     
     
     
+     
     
     <!--v-if-->
     
   </legend>
+   
   <!--v-if-->
+   
   <!--v-if-->
+   
   <div
     class="fieldset__content"
   >
@@ -96,7 +114,7 @@ exports[`snapshots should match snapshot when validityMode is INITIAL 2`] = `
 </fieldset>
 `;
 
-exports[`snapshots should match snapshot when validityMode is VALID 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'VALID' 1`] = `
 <fieldset
   class="fieldset"
   id="someId"
@@ -107,15 +125,21 @@ exports[`snapshots should match snapshot when validityMode is VALID 1`] = `
     
     Label
     
+     
     <!--v-if-->
+     
     
     
+     
     
     <!--v-if-->
     
   </legend>
+   
   <!--v-if-->
+   
   <!--v-if-->
+   
   <div
     class="fieldset__content"
   >
@@ -125,19 +149,41 @@ exports[`snapshots should match snapshot when validityMode is VALID 1`] = `
 </fieldset>
 `;
 
-exports[`snapshots should match snapshot with generated id attribute 1`] = `
-<fieldset id="fkui-vue-element-0001" class="fieldset">
-  <legend class="label fieldset__label">
+exports[`snapshots > should match snapshot with generated id attribute 1`] = `
+<fieldset
+  class="fieldset"
+  id="fkui-vue-element-0001"
+>
+  <legend
+    class="label fieldset__label"
+  >
+    
+    
+     
     <!--v-if-->
+     
+    
+    
+     
+    
     <!--v-if-->
+    
   </legend>
+   
   <!--v-if-->
+   
   <!--v-if-->
-  <div class="fieldset__content"></div>
+   
+  <div
+    class="fieldset__content"
+  >
+    
+    
+  </div>
 </fieldset>
 `;
 
-exports[`snapshots should match snapshot with label and content 1`] = `
+exports[`snapshots > should match snapshot with label and content 1`] = `
 <fieldset
   class="fieldset"
   id="someId"
@@ -148,15 +194,21 @@ exports[`snapshots should match snapshot with label and content 1`] = `
     
     Label
     
+     
     <!--v-if-->
+     
     
     
+     
     
     <!--v-if-->
     
   </legend>
+   
   <!--v-if-->
+   
   <!--v-if-->
+   
   <div
     class="fieldset__content"
   >
@@ -167,7 +219,7 @@ exports[`snapshots should match snapshot with label and content 1`] = `
 </fieldset>
 `;
 
-exports[`snapshots should match snapshot with label, content and error message 1`] = `
+exports[`snapshots > should match snapshot with label, content and error message 1`] = `
 <fieldset
   class="fieldset"
   id="someId"
@@ -178,15 +230,21 @@ exports[`snapshots should match snapshot with label, content and error message 1
     
     Label
     
+     
     <!--v-if-->
+     
     
     
+     
     
     Something went wrong.
     
   </legend>
+   
   <!--v-if-->
+   
   <!--v-if-->
+   
   <div
     class="fieldset__content"
   >
@@ -197,7 +255,7 @@ exports[`snapshots should match snapshot with label, content and error message 1
 </fieldset>
 `;
 
-exports[`snapshots should match snapshot with label, content and tooltip 1`] = `
+exports[`snapshots > should match snapshot with label, content and tooltip 1`] = `
 <fieldset
   class="fieldset"
   id="someId"
@@ -208,14 +266,19 @@ exports[`snapshots should match snapshot with label, content and tooltip 1`] = `
     
     Label
     
+     
     <!--v-if-->
+     
     
     
+     
     
     <!--v-if-->
     
   </legend>
+   
   <!--v-if-->
+   
   
   <div
     class="label fieldset__label"
@@ -228,11 +291,14 @@ exports[`snapshots should match snapshot with label, content and tooltip 1`] = `
       
     </span>
   </div>
+   
   
   Tooltip
   
+   
   <!--v-if-->
   
+   
   <div
     class="fieldset__content"
   >

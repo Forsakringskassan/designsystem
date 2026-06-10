@@ -1,4 +1,5 @@
-import "@fkui/test-utils/jest";
+import { describe, expect, it } from "vitest";
+import "@fkui/test-utils/vitest";
 import { focusElement } from "./focus-element";
 
 describe("focusElement", () => {
