@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { personnummerYounger } from "./personnummer-younger";
 
 const element = document.createElement("input");

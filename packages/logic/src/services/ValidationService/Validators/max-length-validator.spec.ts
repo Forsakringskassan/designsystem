@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { maxLengthValidator } from "./max-length-validator";
 
 const element = document.createElement("input");

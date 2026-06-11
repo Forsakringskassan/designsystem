@@ -27,7 +27,7 @@ function formatSwedishNotation(
     // Workaround, replace dot with comma. Node doesn't have swedish locale
     // installed as default. By having this workaround the applications
     // doesn't need to install full-icu & cross-env to get correct
-    // formatting in jest tests.
+    // formatting in tests.
     return replaceDotWithComma(
         value.toLocaleString("sv-SE", {
             minimumFractionDigits: decimals,

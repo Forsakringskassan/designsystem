@@ -1,9 +1,10 @@
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
     SCREEN_READER_DELAY,
     waitForScreenReader,
 } from "./wait-for-screen-reader";
 
-jest.useFakeTimers();
+vi.useFakeTimers();
 
 let element: HTMLParagraphElement;
 
@@ -19,10 +20,10 @@ describe("waitForScreenReader", () => {
             element.textContent = text;
         });
 
-        jest.advanceTimersByTime(SCREEN_READER_DELAY - 1);
+        vi.advanceTimersByTime(SCREEN_READER_DELAY - 1);
         expect(element.textContent).toBe("");
 
-        jest.advanceTimersByTime(1);
+        vi.advanceTimersByTime(1);
         expect(element.textContent).toBe(text);
     });
 
@@ -34,10 +35,10 @@ describe("waitForScreenReader", () => {
             element.textContent = text;
         }, NEW_DELAY);
 
-        jest.advanceTimersByTime(NEW_DELAY - 1);
+        vi.advanceTimersByTime(NEW_DELAY - 1);
         expect(element.textContent).toBe("");
 
-        jest.advanceTimersByTime(1);
+        vi.advanceTimersByTime(1);
         expect(element.textContent).toBe(text);
     });
 });

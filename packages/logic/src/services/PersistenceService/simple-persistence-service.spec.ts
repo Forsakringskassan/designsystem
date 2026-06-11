@@ -1,17 +1,9 @@
+import { beforeEach, describe, expect, it } from "vitest";
 import { SimplePersistenceService } from "./simple-persistence-service";
 
 let sut: SimplePersistenceService<string>;
 
 beforeEach(() => {
-    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical
-     * debt, should replace with jest.spyOn */
-    (global as any).window = {
-        sessionStorage: {
-            setItem: jest.fn(),
-            getItem: jest.fn(),
-        },
-    };
-
     sut = new SimplePersistenceService<string>("the-storage-key");
 });
 
