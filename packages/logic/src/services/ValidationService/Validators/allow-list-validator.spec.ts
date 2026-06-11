@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { allowListValidator as validator } from "./allow-list-validator";
 
 const element = document.createElement("input");

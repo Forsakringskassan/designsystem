@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { ElementIdService } from "./element-id-service";
 
 describe("generateElementId", () => {

@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { assertSet } from "./assert-set";
 
 it("should handle numbers", () => {

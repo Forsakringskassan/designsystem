@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { personnummerNotSame } from "./personnummer-not-same";
 
 const element = document.createElement("input");

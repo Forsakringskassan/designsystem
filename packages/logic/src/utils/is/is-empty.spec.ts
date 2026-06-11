@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { isEmpty } from "./is-empty";
 
 it("should return true for undefined", () => {

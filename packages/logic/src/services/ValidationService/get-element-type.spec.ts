@@ -1,3 +1,4 @@
+import { beforeEach, expect, it } from "vitest";
 import { getElementType } from "./get-element-type";
 
 function addInputElement(

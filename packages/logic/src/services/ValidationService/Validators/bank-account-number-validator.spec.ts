@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { bankAccountNumberValidator } from "./bank-account-number-validator";
 
 //The bankaccount numbers we use is for testpurpose only.

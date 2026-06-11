@@ -1,3 +1,4 @@
+import { expect, it, vi } from "vitest";
 import { isVisibleInViewport } from "./is-visible-in-viewport";
 
 const screenWidth = 1280;
@@ -18,7 +19,7 @@ it.each`
     'should return "$expected" when element bounds are $elementBounds because $description',
     ({ elementBounds, expected }) => {
         const element = document.createElement("input");
-        const mock = jest.fn();
+        const mock = vi.fn();
         mock.mockReturnValue(elementBounds);
         element.getBoundingClientRect = mock;
 

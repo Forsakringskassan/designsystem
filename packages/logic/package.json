@@ -49,23 +49,16 @@
     "build": "rollup --config",
     "postbuild": "fk-api-extractor",
     "build:docs": "typedoc",
-    "clean": "rimraf .jest-cache coverage lib/cjs lib/esm lib/types temp test-results typedoc",
+    "clean": "rimraf coverage lib/cjs lib/esm lib/types temp test-results typedoc",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
     "start": "npm run build:docs && fkui-serve typedoc",
-    "test": "jest --coverage",
+    "test": "vitest run --coverage",
     "posttest": "node scripts/domless.js",
-    "unit": "jest",
-    "unit:watch": "jest --watch",
+    "unit": "vitest run",
+    "unit:watch": "vitest",
     "watch": "rollup --config --watch"
-  },
-  "jest": {
-    "preset": "@forsakringskassan/jest-config",
-    "setupFiles": [
-      "<rootDir>/setupFiles/mocks.js"
-    ],
-    "testEnvironment": "jsdom"
   },
   "dependencies": {
     "lodash.clonedeep": "4.5.0"
@@ -73,14 +66,15 @@
   "devDependencies": {
     "@fkui/date": "6.49.0",
     "@fkui/test-utils": "6.49.0",
+    "@forsakringskassan/vitest-config-jsdom": "2.2.9",
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
     "@types/lodash.clonedeep": "4.5.9",
     "flush-promises": "1.0.2",
-    "jest-environment-jsdom": "29.7.0",
     "rollup": "4.61.1",
-    "rollup-plugin-dts": "6.4.1"
+    "rollup-plugin-dts": "6.4.1",
+    "vitest": "4.1.8"
   },
   "peerDependencies": {
     "@fkui/date": "^6.49.0"

@@ -1,3 +1,12 @@
+import {
+    type Mock,
+    afterEach,
+    beforeEach,
+    describe,
+    expect,
+    it,
+    vi,
+} from "vitest";
 import { requiredValidator } from "./Validators/required-validator";
 import { ValidationService } from "./validation-service";
 import { type ValidatableHTMLElement } from "./validation-service-interface";
@@ -52,12 +61,12 @@ beforeEach(() => {
 afterEach(() => {
     document.body.innerHTML = "";
     ValidationService.clearAllStates();
-    jest.resetAllMocks();
-    jest.clearAllMocks();
+    vi.resetAllMocks();
+    vi.clearAllMocks();
 });
 
 it("On init - adds required attribute to child input elements, focusin- and validate event listener", () => {
-    const addEventListener = jest.fn();
+    const addEventListener = vi.fn();
     fieldset.addEventListener = addEventListener;
     ValidationService.addValidatorsToElement(fieldset, { required: {} });
     expect(fieldset).toMatchSnapshot();
@@ -76,20 +85,20 @@ it("On init - adds required attribute to child input elements, focusin- and vali
 });
 
 describe("Document listeners", () => {
-    let validityMock: jest.Mock;
+    let validityMock: Mock;
     beforeEach(() => {
-        validityMock = jest.fn();
+        validityMock = vi.fn();
         fieldset.addEventListener("validity", validityMock);
         ValidationService.addValidatorsToElement(fieldset, { required: {} });
     });
 
     afterEach(() => {
         dispatchEvent("click", fieldset, inputOutsideFieldset); // Reset document event listener added by FieldsetValidatorHandler
-        jest.restoreAllMocks();
+        vi.restoreAllMocks();
     });
 
     it("should add listener when user clicks onfocusable element", () => {
-        const listenerSpy = jest.spyOn(document, "addEventListener");
+        const listenerSpy = vi.spyOn(document, "addEventListener");
         dispatchEvent("focusin", fieldset, input1InFieldset);
         expect(listenerSpy).toHaveBeenCalledTimes(2);
         expect(listenerSpy).toHaveBeenCalledWith(
@@ -100,7 +109,7 @@ describe("Document listeners", () => {
     });
 
     it("should NOT add listener when user clicks on non focusable element", () => {
-        const listenerSpy = jest.spyOn(document, "addEventListener");
+        const listenerSpy = vi.spyOn(document, "addEventListener");
 
         const legend = document.querySelector("#legend") as HTMLLegendElement;
         dispatchEvent("focusin", fieldset, legend);
@@ -110,9 +119,9 @@ describe("Document listeners", () => {
 });
 
 describe("Fieldset group", () => {
-    let validityMock: jest.Mock;
+    let validityMock: Mock;
     beforeEach(() => {
-        validityMock = jest.fn();
+        validityMock = vi.fn();
         fieldset.addEventListener("validity", validityMock);
         ValidationService.addValidatorsToElement(fieldset, { required: {} });
         dispatchEvent("focusin", fieldset, input1InFieldset); // Init fieldset validation

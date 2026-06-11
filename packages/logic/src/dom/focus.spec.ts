@@ -1,4 +1,5 @@
-import "@fkui/test-utils/jest";
+import "@fkui/test-utils/vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { configLogic } from "../config";
 import {
     findTabbableElements,
@@ -15,8 +16,8 @@ import {
 } from "./focus";
 import { scrollTo } from "./scroll-to";
 
-jest.mock("./scroll-to", () => ({
-    scrollTo: jest.fn(),
+vi.mock("./scroll-to", () => ({
+    scrollTo: vi.fn(),
 }));
 
 describe("focus", () => {
@@ -76,7 +77,7 @@ describe("focus", () => {
         it("should pass option to native focus method", () => {
             expect.assertions(2);
             const element = document.createElement("input");
-            const spy = jest.spyOn(element, "focus");
+            const spy = vi.spyOn(element, "focus");
             focus(element, { preventScroll: true });
             expect(spy).toHaveBeenCalledWith({ preventScroll: true });
             spy.mockClear();
@@ -87,7 +88,7 @@ describe("focus", () => {
         it("should not pass option unless explicitly set", () => {
             expect.assertions(1);
             const element = document.createElement("input");
-            const spy = jest.spyOn(element, "focus");
+            const spy = vi.spyOn(element, "focus");
             focus(element);
             expect(spy).toHaveBeenCalledWith({});
         });
@@ -95,7 +96,7 @@ describe("focus", () => {
         it("should not pass force option", () => {
             expect.assertions(3);
             const element = document.createElement("input");
-            const spy = jest.spyOn(element, "focus");
+            const spy = vi.spyOn(element, "focus");
             focus(element, { force: true });
             expect(spy).toHaveBeenCalledWith({});
             spy.mockClear();
@@ -111,7 +112,7 @@ describe("focus", () => {
         it("should use the scrollTo function when activated", () => {
             expect.assertions(2);
             const element = document.createElement("input");
-            const spy = jest.spyOn(element, "focus");
+            const spy = vi.spyOn(element, "focus");
             focus(element, { scrollToTop: true });
             expect(scrollTo).toHaveBeenCalled();
             expect(spy).toHaveBeenCalledWith({ preventScroll: true });
@@ -120,7 +121,7 @@ describe("focus", () => {
         it("should not call the scrollTo function when not activated", () => {
             expect.assertions(4);
             const element = document.createElement("input");
-            const spy = jest.spyOn(element, "focus");
+            const spy = vi.spyOn(element, "focus");
             focus(element, { scrollToTop: false });
             expect(scrollTo).toHaveBeenCalledTimes(1);
             expect(spy).toHaveBeenCalledWith({});
@@ -155,7 +156,7 @@ describe("focus", () => {
             "http://www.w3.org/2000/svg",
             "svg",
         );
-        const spy = jest.spyOn(svg, "focus");
+        const spy = vi.spyOn(svg, "focus");
         expect(() => focus(svg, true)).not.toThrow();
         expect(spy).not.toHaveBeenCalled();
         expect(document.body).toHaveFocus();
@@ -363,7 +364,7 @@ describe("focus stack", () => {
         });
 
         afterEach(() => {
-            jest.restoreAllMocks();
+            vi.restoreAllMocks();
         });
 
         it("should restore focus to element before pushFocus()", () => {
@@ -447,7 +448,7 @@ describe("focus stack", () => {
 
         it("should write an error to the console when focus stack is empty in prod", () => {
             expect.assertions(2);
-            jest.spyOn(console, "error").mockReturnValue(undefined);
+            vi.spyOn(console, "error").mockReturnValue(undefined);
 
             // Given
             configLogic.production = true;
@@ -480,7 +481,7 @@ describe("focus stack", () => {
 
         it("should write an error to the console when popFocus called without valid StackHandle in prod", () => {
             expect.assertions(2);
-            jest.spyOn(console, "error").mockReturnValue(undefined);
+            vi.spyOn(console, "error").mockReturnValue(undefined);
 
             // Given
             configLogic.production = true;

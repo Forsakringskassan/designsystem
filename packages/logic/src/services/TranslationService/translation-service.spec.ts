@@ -1,9 +1,10 @@
+import { describe, expect, it, vi } from "vitest";
 import { TranslationService } from "./translation-service";
 
 /* eslint-disable-next-line no-console -- technical debt, bad practice and
- * console is not restored so it leaks to other tests, should use jest.spyOn(..)
+ * console is not restored so it leaks to other tests, should use vi.spyOn(..)
  * at least and for tests expected to log should have explicit tests for this */
-console.log = jest.fn();
+console.log = vi.fn();
 
 describe("translate", () => {
     it("should throw error if translate function is unset and no proper default value is passed", () => {
@@ -11,7 +12,7 @@ describe("translate", () => {
         expect(() =>
             TranslationService.provider.translate("someKey"),
         ).toThrowErrorMatchingInlineSnapshot(
-            `"Translation failed: No default value specified (key translation is not supported by the default provider)"`,
+            `[Error: Translation failed: No default value specified (key translation is not supported by the default provider)]`,
         );
     });
 

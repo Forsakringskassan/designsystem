@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { percentValidator } from "./percent-validator";
 
 const element = document.createElement("input");

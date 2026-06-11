@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { assertRef } from "./assert-ref";
 
 it("should pass when ref has a value set", () => {

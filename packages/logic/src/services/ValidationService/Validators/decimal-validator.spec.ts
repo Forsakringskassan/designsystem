@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { decimalValidator } from "./decimal-validator";
 
 const element = document.createElement("input");
@@ -59,14 +60,14 @@ describe("validation", () => {
         expect(() =>
             decimalValidator.validation("1", element, config1),
         ).toThrowErrorMatchingInlineSnapshot(
-            `"config.maxDecimals must be a number"`,
+            `[Error: config.maxDecimals must be a number]`,
         );
 
         const config2 = { minDecimals: "five" as unknown as number };
         expect(() =>
             decimalValidator.validation("1", element, config2),
         ).toThrowErrorMatchingInlineSnapshot(
-            `"config.minDecimals must be a number"`,
+            `[Error: config.minDecimals must be a number]`,
         );
     });
 });

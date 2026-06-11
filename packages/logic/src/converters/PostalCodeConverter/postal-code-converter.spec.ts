@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { formatPostalCode } from "./postal-code-converter";
 
 //The test data is randomly selected.

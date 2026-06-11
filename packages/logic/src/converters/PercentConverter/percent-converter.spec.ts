@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { formatPercent, parsePercent } from "./percent-converter";
 
 describe("formatting", () => {

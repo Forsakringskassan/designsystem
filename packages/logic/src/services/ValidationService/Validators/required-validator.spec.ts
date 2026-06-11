@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { type ValidatableHTMLElement } from "../validation-service-interface";
 import { requiredValidator } from "./required-validator";
 

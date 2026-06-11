@@ -1,3 +1,12 @@
+import {
+    type Mock,
+    afterEach,
+    beforeEach,
+    describe,
+    expect,
+    it,
+    vi,
+} from "vitest";
 import { addFocusListener } from "./add-listener";
 import { removeFocusListener } from "./remove-listener";
 
@@ -14,9 +23,9 @@ afterEach(() => {
 });
 
 describe("removeFocusListener", () => {
-    let mockEventListener: jest.Mock;
+    let mockEventListener: Mock;
     beforeEach(() => {
-        mockEventListener = jest.fn();
+        mockEventListener = vi.fn();
     });
 
     it("should be able to remove focusListener", () => {
@@ -24,14 +33,14 @@ describe("removeFocusListener", () => {
         elements[0].removeEventListener = mockEventListener;
         elements[1].removeEventListener = mockEventListener;
 
-        removeFocusListener(elements, jest.fn());
+        removeFocusListener(elements, vi.fn());
         expect(mockEventListener).toHaveBeenCalledTimes(2);
     });
 });
 
 describe("combination removeFocusListener and addFocusListener", () => {
     it("should not call callback function after listener is removed", () => {
-        const mockEventCallback = jest.fn();
+        const mockEventCallback = vi.fn();
         const elements = setupDomElements();
 
         addFocusListener(elements, mockEventCallback);

@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { testLuhnChecksum } from "./test-luhn-checksum";
 
 it("should throw exception when attempted on letter strings", () => {

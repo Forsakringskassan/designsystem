@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { dateFormatValidator } from "./date-validator";
 
 const element = document.createElement("input");

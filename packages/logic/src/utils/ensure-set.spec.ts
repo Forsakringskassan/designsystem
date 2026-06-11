@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { MissingValueError, ensureSet } from "./ensure-set";
 
 it("should return value if it is defined", () => {
@@ -48,5 +49,7 @@ it("should throw an error, with message, if value is not set and message given",
     };
 
     // Then
-    expect(assurance).toThrowErrorMatchingInlineSnapshot(`"the message"`);
+    expect(assurance).toThrowErrorMatchingInlineSnapshot(
+        `[MissingValueError: the message]`,
+    );
 });

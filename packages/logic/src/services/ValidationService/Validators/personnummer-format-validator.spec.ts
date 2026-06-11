@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { personnummerFormatValidator } from "./personnummer-format-validator";
 
 //The test social security numbers(personnummer) used is approved by Skatteverket.

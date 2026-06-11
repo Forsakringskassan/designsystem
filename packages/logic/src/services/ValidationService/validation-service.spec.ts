@@ -1,3 +1,4 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { dateValidator } from "./Validators/date-validator";
 import { emailValidator } from "./Validators/email-validator";
 import { maxLengthValidator } from "./Validators/max-length-validator";
@@ -119,7 +120,7 @@ function triggerValidityEvent(
 ): ValidityEvent | undefined {
     const element = mountInputElementAndAddValidators(type, validityConfigs);
     ValidationService.setState("test-element", initialState);
-    const listener = jest.fn<undefined, [CustomEvent<ValidityEvent>]>();
+    const listener = vi.fn();
     element.addEventListener("validity", listener);
 
     if (type === "radio" && typeof inputValue === "boolean") {
@@ -143,8 +144,8 @@ afterEach(() => {
      * debt, should not access private variables, rather expose an @internal
      * method to clear up the states */
     (ValidationService as any).validationStates = {};
-    jest.resetAllMocks();
-    jest.restoreAllMocks();
+    vi.resetAllMocks();
+    vi.restoreAllMocks();
 });
 
 describe("setState", () => {
@@ -183,7 +184,7 @@ describe("setState", () => {
 
 it("setSubmitted() should flag that element is submitted", () => {
     expect.assertions(1);
-    const setState = jest.spyOn(ValidationService, "setState");
+    const setState = vi.spyOn(ValidationService, "setState");
     const element = document.createElement("input");
     element.id = "mock-id";
     ValidationService.setSubmitted(element);
@@ -192,7 +193,7 @@ it("setSubmitted() should flag that element is submitted", () => {
 
 it("setTouched() should flag that element is touched", () => {
     expect.assertions(1);
-    const setState = jest.spyOn(ValidationService, "setState");
+    const setState = vi.spyOn(ValidationService, "setState");
     const element = document.createElement("input");
     element.id = "mock-id";
     ValidationService.setTouched(element);
@@ -201,7 +202,7 @@ it("setTouched() should flag that element is touched", () => {
 
 it("setError() should set validation error on element", () => {
     expect.assertions(1);
-    const setState = jest.spyOn(ValidationService, "setState");
+    const setState = vi.spyOn(ValidationService, "setState");
     const element = document.createElement("input");
     element.id = "mock-id";
     ValidationService.setError(element, "server error");
@@ -336,7 +337,7 @@ describe("validateElement", () => {
 
     it("should dispatch ValidityEvent to element by reference", async () => {
         expect.assertions(1);
-        const validateEventHandler = jest.fn();
+        const validateEventHandler = vi.fn();
         inputElement.addEventListener("validate", validateEventHandler);
         await ValidationService.validateElement(inputElement);
         expect(validateEventHandler).toHaveBeenCalled();
@@ -345,7 +346,7 @@ describe("validateElement", () => {
     it("should dispatch ValidityEvent to element by id", async () => {
         expect.assertions(1);
         document.body.append(inputElement);
-        const validateEventHandler = jest.fn();
+        const validateEventHandler = vi.fn();
         inputElement.addEventListener("validate", validateEventHandler);
         await ValidationService.validateElement(inputElement.id);
         expect(validateEventHandler).toHaveBeenCalled();
@@ -356,7 +357,7 @@ describe("validateElement", () => {
         await expect(() => {
             return ValidationService.validateElement("non-existing-id");
         }).rejects.toThrowErrorMatchingInlineSnapshot(
-            `"Element with id "non-existing-id" not found when calling validateElement(..)"`,
+            `[Error: Element with id "non-existing-id" not found when calling validateElement(..)]`,
         );
     });
 
@@ -367,7 +368,7 @@ describe("validateElement", () => {
         await expect(
             ValidationService.validateElement(element),
         ).rejects.toThrowErrorMatchingInlineSnapshot(
-            `"Element "div#not-supported-element" is not a validatable element"`,
+            `[Error: Element "div#not-supported-element" is not a validatable element]`,
         );
     });
 });
@@ -396,8 +397,8 @@ describe("validateAllElements", () => {
             </div>
         `);
 
-        const validateEventHandler = jest.fn();
-        const notSupportedEventHandler = jest.fn();
+        const validateEventHandler = vi.fn();
+        const notSupportedEventHandler = vi.fn();
 
         addValidateEventHandler("top-element", notSupportedEventHandler);
         addValidateEventHandler("form-element", notSupportedEventHandler);
@@ -420,7 +421,7 @@ describe("ValidatorOption.enabled", () => {
             "text",
             enabledValidatorConfig(undefined),
         );
-        const requiredSpy = jest.spyOn(registry.required, "validation");
+        const requiredSpy = vi.spyOn(registry.required, "validation");
         dispatchEvent("input", element);
         dispatchEvent("blur", element);
         expect(requiredSpy).toHaveBeenCalledTimes(1);
@@ -431,7 +432,7 @@ describe("ValidatorOption.enabled", () => {
             "text",
             enabledValidatorConfig(true),
         );
-        const requiredSpy = jest.spyOn(registry.required, "validation");
+        const requiredSpy = vi.spyOn(registry.required, "validation");
         dispatchEvent("input", element);
         dispatchEvent("blur", element);
         expect(requiredSpy).toHaveBeenCalledTimes(1);
@@ -442,7 +443,7 @@ describe("ValidatorOption.enabled", () => {
             "text",
             enabledValidatorConfig(false),
         );
-        const requiredSpy = jest.spyOn(registry.required, "validation");
+        const requiredSpy = vi.spyOn(registry.required, "validation");
         dispatchEvent("input", element);
         dispatchEvent("blur", element);
         expect(requiredSpy).not.toHaveBeenCalled();
@@ -457,7 +458,7 @@ describe("addValidatorsToElement", () => {
             </div>
         `;
         const element = document.querySelector("input")!;
-        const addEventListener = jest.fn();
+        const addEventListener = vi.fn();
         element.addEventListener = addEventListener;
 
         ValidationService.addValidatorsToElement(element, lazyValidatorConfigs);
@@ -495,7 +496,7 @@ describe("addValidatorsToElement", () => {
                 "text",
                 validatorConfigs,
             );
-            const listener = jest.fn();
+            const listener = vi.fn();
             element.addEventListener("validity", listener);
             element.value = "x";
             dispatchEvent("input", element);
@@ -511,7 +512,7 @@ describe("addValidatorsToElement", () => {
             </div>
         `;
         const element = document.querySelector("input")!;
-        const listener = jest.fn();
+        const listener = vi.fn();
         element.addEventListener("validity", listener);
 
         ValidationService.addValidatorsToElement(element, { date: {} });
@@ -548,7 +549,7 @@ describe("addValidatorsToElement", () => {
             <textarea id="test-element"></textarea>
         `;
         const textarea = document.querySelector("textarea")!;
-        const listener = jest.fn();
+        const listener = vi.fn();
         textarea.addEventListener("validity", listener);
         ValidationService.addValidatorsToElement(textarea, { required: {} });
 
@@ -844,7 +845,7 @@ describe("addValidatorsToElement", () => {
         `;
         const element = document.querySelector("input")!;
 
-        const listener = jest.fn();
+        const listener = vi.fn();
         element.addEventListener("validation-config-update", listener);
 
         ValidationService.addValidatorsToElement(element, lazyValidatorConfigs);
@@ -865,7 +866,7 @@ describe("addValidatorsToElement", () => {
 describe("ValidityEvents", () => {
     it("should dispatch a validity event on change with required validation message", () => {
         const element = mountInputElementAndAddValidators("text");
-        const listener = jest.fn();
+        const listener = vi.fn();
 
         element.addEventListener("validity", listener);
         dispatchEvent("change", element);
@@ -878,7 +879,7 @@ describe("ValidityEvents", () => {
 
     it("should not validate field continuously during input when instant is false and never touched", () => {
         const element = mountInputElementAndAddValidators("text");
-        const listener = jest.fn();
+        const listener = vi.fn();
         element.addEventListener("validity", listener);
 
         element.value = "x";
@@ -893,10 +894,6 @@ describe("ValidityEvents", () => {
         const element = mountFieldsetAndAddValidators();
         dispatchEvent("blur", element);
 
-        /* eslint-disable-next-line jest/no-large-snapshots -- technical debt,
-         * i'm not even sure what this is teseting, if it is just about testing
-         * the presence of :invalid on the elements the test should be rewritten
-         * to explicitly test if that pseudoclass is present */
         expect(element.querySelectorAll(":invalid")).toMatchInlineSnapshot(`
             NodeList [
               <input
@@ -913,8 +910,8 @@ describe("ValidityEvents", () => {
 
     it('should dispatch "pending-validation" events but no "validation" events during input when instant is false', () => {
         const element = mountInputElementAndAddValidators("text");
-        const validity = jest.fn();
-        const pending = jest.fn();
+        const validity = vi.fn();
+        const pending = vi.fn();
         element.addEventListener("validity", validity);
         element.addEventListener("pending-validity", pending);
 
@@ -927,7 +924,6 @@ describe("ValidityEvents", () => {
         expect(validity.mock.calls).toHaveLength(0);
         expect(pending.mock.calls[0][0].bubbles).toBe(false);
 
-        /* eslint-disable-next-line jest/no-large-snapshots -- this isn't really testing anything but not sure what it should do */
         expect(pending.mock.calls).toMatchInlineSnapshot(`
             [
               [
@@ -949,7 +945,7 @@ describe("ValidityEvents", () => {
             "text",
             instantValidatorConfigs,
         );
-        const listener = jest.fn();
+        const listener = vi.fn();
         element.addEventListener("validity", listener);
 
         element.value = "x";
@@ -971,7 +967,7 @@ describe("ValidityEvents", () => {
             "text",
             instantValidatorConfigs,
         );
-        const listener = jest.fn();
+        const listener = vi.fn();
         element.addEventListener("validity", listener);
 
         element.value = "x";
@@ -1275,7 +1271,7 @@ describe("initial state", () => {
 describe("clearAllStates", () => {
     it("should clear all validation states", () => {
         const input = mountInputElementAndAddValidators("text");
-        const validityMock = jest.fn();
+        const validityMock = vi.fn();
         input.addEventListener("validity", validityMock);
 
         ValidationService.setState("test-element", {
@@ -1350,7 +1346,7 @@ describe("getValidatorByName", () => {
         const validatorName: ValidatorName = "myValidator";
         const validator: Validator = {
             name: validatorName,
-            validation: jest.fn(),
+            validation: vi.fn(),
         };
         ValidationService.registerValidator(validator);
 

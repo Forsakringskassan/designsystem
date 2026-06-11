@@ -1,3 +1,4 @@
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { SCREEN_READER_DELAY } from "../wait-for-screen-reader";
 import {
     REMOVE_TEXT_DELAY,
@@ -5,7 +6,7 @@ import {
     createScreenReaderWrapper,
 } from "./alert-screen-reader";
 
-jest.useFakeTimers();
+vi.useFakeTimers();
 createScreenReaderWrapper({ assertive: false });
 
 function getWrapper(): HTMLDivElement {
@@ -15,7 +16,7 @@ function getWrapper(): HTMLDivElement {
 }
 
 afterEach(() => {
-    jest.advanceTimersByTime(SCREEN_READER_DELAY + REMOVE_TEXT_DELAY);
+    vi.advanceTimersByTime(SCREEN_READER_DELAY + REMOVE_TEXT_DELAY);
 });
 
 describe("alertScreenReader", () => {
@@ -38,21 +39,21 @@ describe("alertScreenReader", () => {
         alertScreenReader("Screen reader text");
         expect(getWrapper().textContent).toBe("");
 
-        jest.advanceTimersByTime(SCREEN_READER_DELAY);
+        vi.advanceTimersByTime(SCREEN_READER_DELAY);
         expect(getWrapper().textContent).toBe("Screen reader text");
 
-        jest.advanceTimersByTime(REMOVE_TEXT_DELAY);
+        vi.advanceTimersByTime(REMOVE_TEXT_DELAY);
         expect(getWrapper().textContent).toBe("");
     });
 
     it("should remove previous text when new text is added", () => {
         alertScreenReader("Screen reader text");
-        jest.advanceTimersByTime(SCREEN_READER_DELAY);
+        vi.advanceTimersByTime(SCREEN_READER_DELAY);
         expect(getWrapper().textContent).toBe("Screen reader text");
 
         alertScreenReader("May I disturb you for a moment?");
         alertScreenReader("This is a very important message!");
-        jest.advanceTimersByTime(SCREEN_READER_DELAY);
+        vi.advanceTimersByTime(SCREEN_READER_DELAY);
         expect(getWrapper().textContent).toBe(
             "This is a very important message!",
         );

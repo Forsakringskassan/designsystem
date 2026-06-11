@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { stripWhitespace } from "./strip-whitespace";
 
 it("should remove space", () => {

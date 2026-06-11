@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { organisationsnummerValidator } from "./organisationsnummer-validator";
 
 const element = document.createElement("input");
