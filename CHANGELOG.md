@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 6.49.1 (2026-06-11)
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** prevent hover background while editing table cells (fixes SFKUI-7930) 4abef06
+* **@fkui/test-utils:** don't bundle Vitest in @fkui/test-utils (refs SFKUI-7787) 9cdb03e
+* **deps:** update dependency i18next to v26.3.1 1bd0b31
+* **FTable:** toggle context menu on repeated activation (fixes SFKUI-7929) 5302494
+
 ## 6.49.0 (2026-06-03)
 
 ### Features
