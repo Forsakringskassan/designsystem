@@ -7,7 +7,7 @@ component:
     - FCheckboxField
 ---
 
-Använd kryssrutor när det ska vara möjligt att välja ett valfritt antal alternativ i en lista. En ensam kryssruta användas när användaren ska välja om något ska vara på eller av.
+Använd kryssrutor när det ska vara möjligt att välja ett valfritt antal alternativ i en lista. En ensam kryssruta används när användaren ska välja om något ska vara på eller av.
 
 ```import live-example test-id=live
 FCheckboxFieldLiveExample.vue
