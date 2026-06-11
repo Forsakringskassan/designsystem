@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { minLengthValidator } from "./min-length-validator";
 
 const element = document.createElement("input");

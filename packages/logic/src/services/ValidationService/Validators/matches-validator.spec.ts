@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { type ValidatableHTMLElement } from "../validation-service-interface";
 import { matchesValidator } from "./matches-validator";
 

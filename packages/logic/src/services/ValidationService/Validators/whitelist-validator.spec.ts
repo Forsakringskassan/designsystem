@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { whitelistValidator } from "./whitelist-validator";
 
 const element = document.createElement("input");

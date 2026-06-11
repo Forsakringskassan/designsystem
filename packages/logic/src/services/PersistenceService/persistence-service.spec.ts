@@ -1,14 +1,22 @@
 /* eslint-disable sonarjs/no-element-overwrite -- testcases related to overwriting keys */
+import {
+    type MockInstance,
+    beforeEach,
+    describe,
+    expect,
+    it,
+    vi,
+} from "vitest";
 import { PersistenceService } from "./persistence-service";
 
 let sut: PersistenceService<string>;
-let isSessionPresent: jest.SpyInstance<boolean, []>;
+let isSessionPresent: MockInstance<() => boolean>;
 
 beforeEach(() => {
     window.sessionStorage.clear();
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
     sut = new PersistenceService();
-    isSessionPresent = jest
+    isSessionPresent = vi
         .spyOn(sut, "isSessionPresent", "get")
         .mockReturnValue(false);
 });
@@ -111,7 +119,7 @@ describe("objects", () => {
 
     it("should not merge objects (with sessionstorage)", () => {
         const sut = new PersistenceService<MockInterface>();
-        jest.spyOn(sut, "isSessionPresent", "get").mockReturnValue(true);
+        vi.spyOn(sut, "isSessionPresent", "get").mockReturnValue(true);
         sut.set("my-key", {
             foo: "spam",
         });
@@ -125,7 +133,7 @@ describe("objects", () => {
 
     it("should not merge objects (without sessionstorage)", () => {
         const sut = new PersistenceService<MockInterface>();
-        jest.spyOn(sut, "isSessionPresent", "get").mockReturnValue(false);
+        vi.spyOn(sut, "isSessionPresent", "get").mockReturnValue(false);
         sut.set("my-key", {
             foo: "spam",
         });

@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { emailValidator } from "./email-validator";
 
 const element = document.createElement("input");

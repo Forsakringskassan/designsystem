@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { isValidatableFormElement } from "./is-validatable-form-element";
 
 it("should return true for inputs", () => {
