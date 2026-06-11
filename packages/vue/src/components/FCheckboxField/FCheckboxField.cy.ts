@@ -32,6 +32,15 @@ function createComponent(template: string): DefineComponent {
 const defaultTemplate = /* HTML */ `
     <f-fieldset id="checkbox-group" name="checkbox-name" v-validation.required>
         <template #label> Label text </template>
+        <template #tooltip>
+            <f-tooltip
+                screen-reader-text="Tooltip screen reader"
+                header-tag="h1"
+            >
+                <template #header> Tooltip header text </template>
+                <template #body> Tooltip body text </template>
+            </f-tooltip>
+        </template>
         <template #description="{ descriptionClass }">
             <span :class="descriptionClass"> Description text </span>
         </template>
@@ -63,7 +72,7 @@ describe("FCheckboxField", () => {
         checkboxSecond.el().should("contain.text", "Bar");
     });
 
-    it("should be able to select and deselect fields, expanded should not exist", () => {
+    it("should be able to select and deselect, details should not exist", () => {
         cy.mount(createComponent(defaultTemplate));
 
         const checkboxFirst = fieldset.checkBox(checkboxField.first);
@@ -82,7 +91,7 @@ describe("FCheckboxField", () => {
         checkboxSecond.details().should("not.exist");
     });
 
-    it("should not be able to select disabled fields", () => {
+    it("should not be able to select a disabled checkbox", () => {
         const template = /* HTML */ `
             <f-fieldset name="checkbox-name" v-validation.required>
                 <template #label> Label text </template>
@@ -136,6 +145,10 @@ describe("FCheckboxField", () => {
     it("should show error message when required and submitted", () => {
         cy.mount(createComponent(defaultTemplate));
 
+        const checkboxFirst = fieldset.checkBox(checkboxField.first);
+        checkboxFirst.checkbox().focus().blur();
+        fieldset.el().click();
+
         fieldset.label.errorMessage().should("exist");
         fieldset.label
             .errorMessage()
@@ -165,7 +178,7 @@ describe("FCheckboxField", () => {
         fieldset.tooltip.iButton().should("exist");
     });
 
-    it("should always show details regardless of whether foo or bar is checked when show-details is always", () => {
+    it("should always show details regardless of whether foo or bar is checked when show-details is always (visual)", () => {
         const template = /* HTML */ `
             <f-fieldset border show-details="always">
                 <template #label> Label text </template>
@@ -197,7 +210,7 @@ describe("FCheckboxField", () => {
         cy.get("fieldset").toMatchScreenshot({ baseDelay: 500 });
     });
 
-    it("should display details when checkbox is checked and show-details is when-selected", () => {
+    it("should display details when checkbox is checked and show-details is when-selected (visual)", () => {
         const template = /* HTML */ `
             <f-fieldset border show-details="when-selected">
                 <template #label> Label text </template>
@@ -229,8 +242,8 @@ describe("FCheckboxField", () => {
         checkbox2.select();
         checkbox1.details().should("not.exist");
         checkbox2.details().should("be.visible");
-        cy.get("fieldset").should("exist");
-        cy.get("fieldset").toMatchScreenshot({ baseDelay: 500 });
+        fieldset.el().should("exist");
+        fieldset.el().toMatchScreenshot({ baseDelay: 500 });
     });
 
     describe("density", () => {
@@ -275,10 +288,30 @@ describe("FCheckboxField", () => {
             },
         });
 
-        it(`should be densified`, () => {
+        it(`should be densified (visual)`, () => {
             cy.viewport(densityWrapperWidth, densityWrapperHeight);
             cy.mount(DensityComponent);
             cy.toMatchScreenshot();
         });
+    });
+
+    describe("Visual forcedColor", () => {
+        const forcedColorModes = ["none", "dark", "light"] as const;
+        afterEach(() => {
+            cy.forcedColors("none");
+        });
+        for (const mode of Object.values(forcedColorModes)) {
+            it(`should render correct styling for mode, ${mode} (visual)`, () => {
+                cy.forcedColors(mode);
+
+                cy.mount(createComponent(defaultTemplate));
+
+                fieldset.tooltip.iButton().should("exist");
+                fieldset.tooltip.iButton().click();
+                fieldset.checkBox(checkboxField.first).select();
+
+                fieldset.el().toMatchScreenshot({ baseDelay: 500 });
+            });
+        }
     });
 });
