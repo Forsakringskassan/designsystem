@@ -1,6 +1,6 @@
 {
   "name": "@fkui/fkui-monorepo",
-  "version": "6.49.0",
+  "version": "6.49.1",
   "private": true,
   "description": "fkui monorepo",
   "homepage": "https://designsystem.forsakringskassan.se/",
@@ -94,7 +94,7 @@
     "@forsakringskassan/prettier-config": "3.7.0",
     "@forsakringskassan/sass-module-importer": "3.0.0",
     "@forsakringskassan/stylelint-config": "3.4.3",
-    "@forsakringskassan/vite-lib-config": "5.0.2",
+    "@forsakringskassan/vite-lib-config": "5.1.0",
     "@html-validate/release-scripts": "7.2.4",
     "@types/estree": "1.0.9",
     "@types/jest": "29.5.14",
