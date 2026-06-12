@@ -165,6 +165,60 @@ describe("props", () => {
         });
     });
 });
+describe("stacking", () => {
+    it("should render multiple stacked FIcon components", () => {
+        expect.assertions(2);
+        const TestComponent = {
+            components: { FIcon },
+            template: /* HTML */ `
+                <div class="icon-stack">
+                    <f-icon name="pdf"></f-icon>
+                    <f-icon name="success"></f-icon>
+                </div>
+            `,
+        };
+        const wrapper = mount(TestComponent);
+        const icons = wrapper.findAll(".icon");
+
+        expect(icons.length).toBe(2);
+        expect(icons[0].classes()).toContain("f-icon-pdf");
+    });
+
+    it("should apply icon-stack class and verify icon positioning", () => {
+        expect.assertions(1);
+        const TestComponent = {
+            components: { FIcon },
+            template: /* HTML */ `
+                <div class="icon-stack">
+                    <f-icon name="pdf"></f-icon>
+                    <f-icon name="success"></f-icon>
+                </div>
+            `,
+        };
+        const wrapper = mount(TestComponent);
+        const stackContainer = wrapper.get(".icon-stack");
+
+        expect(stackContainer.element.children.length).toBe(2);
+    });
+
+    it("should maintain aria-hidden on all stacked icons", () => {
+        expect.assertions(2);
+        const TestComponent = {
+            components: { FIcon },
+            template: /* HTML */ `
+                <div class="icon-stack">
+                    <f-icon name="pdf"></f-icon>
+                    <f-icon name="success"></f-icon>
+                </div>
+            `,
+        };
+        const wrapper = mount(TestComponent);
+        const icons = wrapper.findAll(".icon");
+
+        expect(icons[0].attributes("aria-hidden")).toBe("true");
+        expect(icons[1].attributes("aria-hidden")).toBe("true");
+    });
+});
 
 describe("aria-hidden", () => {
     it("should be true by default", () => {
