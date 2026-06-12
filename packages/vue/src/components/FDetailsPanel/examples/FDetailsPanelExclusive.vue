@@ -63,12 +63,20 @@ function openPanel4(): void {
 
             <div :slot="content" class="content">
                 <div>
-                    <f-button @click="openPanel1"> Öppna panel 1 </f-button>
-                    <f-button @click="openPanel2"> Öppna panel 2 </f-button>
+                    <f-button size="medium" variant="primary" @click="openPanel1">
+                        Öppna panel 1
+                    </f-button>
+                    <f-button size="medium" variant="primary" @click="openPanel2">
+                        Öppna panel 2
+                    </f-button>
                 </div>
                 <div>
-                    <f-button @click="openPanel3"> Öppna panel 3 </f-button>
-                    <f-button @click="openPanel4"> Öppna panel 4 </f-button>
+                    <f-button size="medium" variant="primary" @click="openPanel3">
+                        Öppna panel 3
+                    </f-button>
+                    <f-button size="medium" variant="primary" @click="openPanel4">
+                        Öppna panel 4
+                    </f-button>
                 </div>
 
                 <p>

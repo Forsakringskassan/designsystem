@@ -38,14 +38,21 @@ export default defineComponent({
         },
         button(): string {
             return /* HTML */ `
-                <f-button variant="secondary" @click="isOpen = !isOpen"> Öppna modal </f-button>
+                <f-button size="medium" variant="secondary" @click="isOpen = !isOpen">
+                    Öppna modal
+                </f-button>
             `;
         },
         footer(): string {
             return /* HTML */ `
                 <template #footer>
                     <div class="button-group">
-                        <f-button class="button-group__item" size="large" @click="isOpen = false">
+                        <f-button
+                            class="button-group__item"
+                            size="large"
+                            variant="primary"
+                            @click="isOpen = false"
+                        >
                             Stäng
                         </f-button>
                     </div>

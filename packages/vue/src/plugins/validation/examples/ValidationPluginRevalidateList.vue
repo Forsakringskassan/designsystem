@@ -25,7 +25,11 @@ function onReplaceList(): void {
             </template>
         </f-text-field>
 
-        <f-button id="add-item" @click="onAddItem">Add item</f-button>
-        <f-button id="replace-list" @click="onReplaceList">Replace list</f-button>
+        <f-button id="add-item" size="medium" variant="primary" @click="onAddItem">
+            Add item
+        </f-button>
+        <f-button id="replace-list" size="medium" variant="primary" @click="onReplaceList">
+            Replace list
+        </f-button>
     </div>
 </template>

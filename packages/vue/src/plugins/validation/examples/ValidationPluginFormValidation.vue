@@ -37,6 +37,6 @@ export default defineComponent({
             </f-text-field>
         </div>
 
-        <f-button type="submit">Trigga fel</f-button>
+        <f-button type="submit" size="medium" variant="primary">Trigga fel</f-button>
     </f-validation-form>
 </template>

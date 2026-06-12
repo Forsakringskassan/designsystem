@@ -71,7 +71,9 @@ export default defineComponent({
             </div>
         </f-validation-group>
 
-        <f-button :disabled="!favoritGrupp.isValid"> Lägg till något nytt </f-button>
+        <f-button size="medium" variant="primary" :disabled="!favoritGrupp.isValid">
+            Lägg till något nytt
+        </f-button>
 
         <p>isValid:</p>
         <pre data-test="favorit-grupp-is-valid">{{ favoritGrupp.isValid }}</pre>

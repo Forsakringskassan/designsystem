@@ -128,6 +128,7 @@ export default defineComponent({
                         ref="open-button"
                         icon-right="bars"
                         tertiary-style="muted"
+                        size="medium"
                         variant="tertiary"
                         @click="toggleSideNavigation"
                     >

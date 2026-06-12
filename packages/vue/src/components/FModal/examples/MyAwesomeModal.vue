@@ -10,7 +10,12 @@ const emit = defineEmits<{ close: [] }>();
         <template #content> My awesome content </template>
         <template #footer>
             <div class="button-group">
-                <f-button class="button-group__item" size="large" @click="emit('close')">
+                <f-button
+                    class="button-group__item"
+                    size="large"
+                    variant="primary"
+                    @click="emit('close')"
+                >
                     Close
                 </f-button>
             </div>

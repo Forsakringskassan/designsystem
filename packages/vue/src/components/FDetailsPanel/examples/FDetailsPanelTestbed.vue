@@ -42,7 +42,7 @@ function openPanel(): void {
         </component>
 
         <div slot="content" class="content">
-            <f-button @click="openPanel"> Öppna panel </f-button>
+            <f-button size="medium" variant="primary" @click="openPanel"> Öppna panel </f-button>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt ipsum
                 tortor. Aliquam erat eros, maximus rhoncus quam ut, dignissim ullamcorper nunc.

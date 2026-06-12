@@ -64,6 +64,6 @@ export default defineComponent({
             </div>
         </div>
 
-        <f-button type="submit">Signera</f-button>
+        <f-button type="submit" size="medium" variant="primary">Signera</f-button>
     </f-validation-form>
 </template>

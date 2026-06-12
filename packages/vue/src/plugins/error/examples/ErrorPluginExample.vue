@@ -28,10 +28,20 @@ export default defineComponent({
 
 <template>
     <div>
-        <f-button v-test="'generate-error'" variant="secondary" @click="generateError()">
+        <f-button
+            v-test="'generate-error'"
+            size="medium"
+            variant="secondary"
+            @click="generateError()"
+        >
             Fel
         </f-button>
-        <f-button v-test="'generate-warning'" variant="secondary" @click="generateWarning()">
+        <f-button
+            v-test="'generate-warning'"
+            size="medium"
+            variant="secondary"
+            @click="generateWarning()"
+        >
             Varning
         </f-button>
     </div>

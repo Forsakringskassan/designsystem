@@ -17,7 +17,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <f-button @click="toggle = !toggle">Toggle</f-button>
+        <f-button size="medium" variant="primary" @click="toggle = !toggle">Toggle</f-button>
         <label><input v-model="opacity" type="checkbox" /> Toning</label>
 
         <i-animate-expand :opacity :expanded="toggle">

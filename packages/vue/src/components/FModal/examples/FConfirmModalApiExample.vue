@@ -37,6 +37,6 @@ export default defineComponent({
 
 <template>
     <div>
-        <f-button variant="secondary" @click="onClick">Ta bort</f-button>
+        <f-button size="medium" variant="secondary" @click="onClick">Ta bort</f-button>
     </div>
 </template>
