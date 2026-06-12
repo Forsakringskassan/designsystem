@@ -71,12 +71,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#3b4292",
-          "palette": "bluebell-120"
+          "value": "#4a52b6",
+          "palette": "bluebell-100"
         },
         "dark": {
-          "value": "#e5e5f5",
-          "palette": "bluebell-15"
+          "value": "#a4a8db",
+          "palette": "bluebell-50"
         }
       }
     },
@@ -127,12 +127,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#e5e5f5",
-          "palette": "bluebell-15"
+          "value": "#f5f6fa",
+          "palette": "bluebell-5"
         },
         "dark": {
-          "value": "#5f6165",
-          "palette": "fk-black-70"
+          "value": "#1b1e23",
+          "palette": "fk-black-100"
         }
       }
     },
@@ -183,12 +183,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#3b4292",
-          "palette": "bluebell-120"
+          "value": "#4a52b6",
+          "palette": "bluebell-100"
         },
         "dark": {
-          "value": "#e5e5f5",
-          "palette": "bluebell-15"
+          "value": "#a4a8db",
+          "palette": "bluebell-50"
         }
       }
     },
@@ -295,12 +295,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#3b4292",
-          "palette": "bluebell-120"
+          "value": "#4a52b6",
+          "palette": "bluebell-100"
         },
         "dark": {
-          "value": "#e5e5f5",
-          "palette": "bluebell-15"
+          "value": "#a4a8db",
+          "palette": "bluebell-50"
         }
       }
     },
@@ -351,12 +351,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#3b4292",
-          "palette": "bluebell-120"
+          "value": "#4a52b6",
+          "palette": "bluebell-100"
         },
         "dark": {
-          "value": "#f5f6fa",
-          "palette": "bluebell-5"
+          "value": "#e5e5f5",
+          "palette": "bluebell-15"
         }
       }
     },
@@ -1057,6 +1057,34 @@ var metadata_default = {
         "dark": {
           "value": "#bbbbbd",
           "palette": "fk-black-30"
+        }
+      }
+    },
+    {
+      "name": "--fkds-focus-indicator-color",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#1b1e23",
+          "palette": "fk-black-100"
+        },
+        "dark": {
+          "value": "#fff",
+          "palette": null
+        }
+      }
+    },
+    {
+      "name": "--fkds-focus-indicator-color-background",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#fff",
+          "palette": null
+        },
+        "dark": {
+          "value": "#1b1e23",
+          "palette": "fk-black-100"
         }
       }
     }

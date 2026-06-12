@@ -3191,7 +3191,8 @@ var FValidationForm_default = defineComponent10({
   data() {
     return {
       validity: { isValid: true, componentsWithError: [], componentCount: 0 },
-      submitted: false
+      submitted: false,
+      isInflight: false
     };
   },
   computed: {
@@ -3243,13 +3244,25 @@ var FValidationForm_default = defineComponent10({
       if (await this.hasFormErrors()) {
         return;
       }
-      this.$emit("submit", event);
+      this.isInflight = true;
+      try {
+        const parentSubmitHandler = this.$.vnode.props?.onSubmit;
+        if (typeof parentSubmitHandler === "function") {
+          await parentSubmitHandler(event);
+        } else {
+          this.$emit("submit", event);
+        }
+      } catch (error) {
+        console.error("N\xE5got gick fel i parent-funktionen:", error);
+      } finally {
+        this.isInflight = false;
+      }
     }
   }
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=template
-import { createCommentVNode as _createCommentVNode8, renderSlot as _renderSlot9, resolveComponent as _resolveComponent4, withCtx as _withCtx3, createVNode as _createVNode3, openBlock as _openBlock10, createElementBlock as _createElementBlock10, withModifiers as _withModifiers2, mergeProps as _mergeProps2, createElementVNode as _createElementVNode6, createBlock as _createBlock4 } from "vue";
+import { createCommentVNode as _createCommentVNode8, renderSlot as _renderSlot9, resolveComponent as _resolveComponent4, withCtx as _withCtx3, createVNode as _createVNode3, openBlock as _openBlock10, createElementBlock as _createElementBlock10, withModifiers as _withModifiers2, mergeProps as _mergeProps2, createElementVNode as _createElementVNode6, normalizeClass as _normalizeClass5, createBlock as _createBlock4 } from "vue";
 var _hoisted_16 = ["id"];
 var _hoisted_25 = {
   key: 0,
@@ -3264,7 +3277,8 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
     key: _ctx.groupKey,
     modelValue: _ctx.validity,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.validity = $event),
-    "stop-propagation": true
+    "stop-propagation": true,
+    class: _normalizeClass5({ "is-inflight": _ctx.isInflight })
   }, {
     default: _withCtx3(() => [
       _createCommentVNode8(" [html-validate-disable-next wcag/h32 -- submit button is slotted] "),
@@ -3298,7 +3312,7 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     _: 3
     /* FORWARDED */
-  }, 8, ["modelValue"]);
+  }, 8, ["modelValue", "class"]);
 }
 
 // packages/vue/src/components/FValidationForm/FValidationForm.vue
@@ -3481,7 +3495,7 @@ var FFormModal_default = defineComponent11({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=template
-import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, renderList as _renderList3, Fragment as _Fragment4, openBlock as _openBlock11, createElementBlock as _createElementBlock11, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass5, createBlock as _createBlock5 } from "vue";
+import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, renderList as _renderList3, Fragment as _Fragment4, openBlock as _openBlock11, createElementBlock as _createElementBlock11, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass6, createBlock as _createBlock5 } from "vue";
 var _hoisted_17 = { class: "button-group" };
 var _hoisted_26 = ["type", "form", "onClick"];
 var _hoisted_34 = {
@@ -3537,7 +3551,7 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
             return _openBlock11(), _createElementBlock11("button", {
               key: button.label,
               type: button.buttonType,
-              class: _normalizeClass5([button.classlist, "button-group__item"]),
+              class: _normalizeClass6([button.classlist, "button-group__item"]),
               form: button.buttonType === "submit" ? _ctx.formId : void 0,
               onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false
             }, [
@@ -4518,7 +4532,7 @@ var IPopupError_default = /* @__PURE__ */ _defineComponent({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupError/IPopupError.vue?type=template
-import { createCommentVNode as _createCommentVNode11, openBlock as _openBlock13, createBlock as _createBlock7, toDisplayString as _toDisplayString5, createElementVNode as _createElementVNode9, createVNode as _createVNode5, createElementBlock as _createElementBlock12, normalizeClass as _normalizeClass6, normalizeStyle as _normalizeStyle, Teleport as _Teleport2 } from "vue";
+import { createCommentVNode as _createCommentVNode11, openBlock as _openBlock13, createBlock as _createBlock7, toDisplayString as _toDisplayString5, createElementVNode as _createElementVNode9, createVNode as _createVNode5, createElementBlock as _createElementBlock12, normalizeClass as _normalizeClass7, normalizeStyle as _normalizeStyle, Teleport as _Teleport2 } from "vue";
 var _hoisted_18 = {
   ref: "wrapper",
   class: "popup-error__wrapper"
@@ -4532,7 +4546,7 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
     _createElementVNode9(
       "div",
       {
-        class: _normalizeClass6($setup.popupClasses),
+        class: _normalizeClass7($setup.popupClasses),
         "aria-hidden": "true"
       },
       [
@@ -4544,7 +4558,7 @@ function render13(_ctx, _cache, $props, $setup, $data, $options) {
             _createElementVNode9(
               "div",
               {
-                class: _normalizeClass6($setup.arrowClass),
+                class: _normalizeClass7($setup.arrowClass),
                 style: _normalizeStyle($setup.errorStyle)
               },
               [
@@ -4836,7 +4850,7 @@ var IPopupListbox_default = /* @__PURE__ */ _defineComponent2({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupListbox/IPopupListbox.vue?type=template
-import { renderSlot as _renderSlot12, createElementVNode as _createElementVNode10, withModifiers as _withModifiers4, withKeys as _withKeys3, mergeProps as _mergeProps4, normalizeClass as _normalizeClass7, Teleport as _Teleport3, openBlock as _openBlock14, createBlock as _createBlock8, createCommentVNode as _createCommentVNode12 } from "vue";
+import { renderSlot as _renderSlot12, createElementVNode as _createElementVNode10, withModifiers as _withModifiers4, withKeys as _withKeys3, mergeProps as _mergeProps4, normalizeClass as _normalizeClass8, Teleport as _Teleport3, openBlock as _openBlock14, createBlock as _createBlock8, createCommentVNode as _createCommentVNode12 } from "vue";
 var _hoisted_19 = ["onKeyup"];
 var _hoisted_27 = { ref: "content" };
 function render14(_ctx, _cache, $props, $setup, $data, $options) {
@@ -4849,7 +4863,7 @@ function render14(_ctx, _cache, $props, $setup, $data, $options) {
       "div",
       {
         ref: "popup",
-        class: _normalizeClass7($setup.popupClasses)
+        class: _normalizeClass8($setup.popupClasses)
       },
       [
         _createElementVNode10("div", _mergeProps4({ ref: "wrapper" }, _ctx.$attrs, {
@@ -5175,7 +5189,7 @@ var IPopupMenu_default = defineComponent13({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue?type=template
-import { renderList as _renderList4, Fragment as _Fragment5, openBlock as _openBlock15, createElementBlock as _createElementBlock13, toDisplayString as _toDisplayString6, createElementVNode as _createElementVNode11, createCommentVNode as _createCommentVNode13, createTextVNode as _createTextVNode3, normalizeClass as _normalizeClass8, resolveComponent as _resolveComponent6, withCtx as _withCtx5, createBlock as _createBlock9 } from "vue";
+import { renderList as _renderList4, Fragment as _Fragment5, openBlock as _openBlock15, createElementBlock as _createElementBlock13, toDisplayString as _toDisplayString6, createElementVNode as _createElementVNode11, createCommentVNode as _createCommentVNode13, createTextVNode as _createTextVNode3, normalizeClass as _normalizeClass9, resolveComponent as _resolveComponent6, withCtx as _withCtx5, createBlock as _createBlock9 } from "vue";
 var _hoisted_110 = ["aria-label"];
 var _hoisted_28 = {
   role: "menu",
@@ -5214,7 +5228,7 @@ function render15(_ctx, _cache, $props, $setup, $data, $options) {
                 ref: "items",
                 key: item.key,
                 role: "presentation",
-                class: _normalizeClass8(_ctx.itemClasses(item)),
+                class: _normalizeClass9(_ctx.itemClasses(item)),
                 onClick: (event) => _ctx.onClickItem(event, item)
               }, [
                 _createElementVNode11("a", {
@@ -5460,7 +5474,7 @@ var IAnimateExpand_default = defineComponent14({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IAnimateExpand/IAnimateExpand.vue?type=template
-import { createCommentVNode as _createCommentVNode14, renderSlot as _renderSlot13, vShow as _vShow, withDirectives as _withDirectives, openBlock as _openBlock16, createElementBlock as _createElementBlock14, normalizeClass as _normalizeClass9, normalizeStyle as _normalizeStyle2, createElementVNode as _createElementVNode12, Fragment as _Fragment6 } from "vue";
+import { createCommentVNode as _createCommentVNode14, renderSlot as _renderSlot13, vShow as _vShow, withDirectives as _withDirectives, openBlock as _openBlock16, createElementBlock as _createElementBlock14, normalizeClass as _normalizeClass10, normalizeStyle as _normalizeStyle2, createElementVNode as _createElementVNode12, Fragment as _Fragment6 } from "vue";
 var _hoisted_111 = {
   key: 0,
   ref: "content",
@@ -5475,7 +5489,7 @@ function render16(_ctx, _cache, $props, $setup, $data, $options) {
       _createElementVNode12(
         "div",
         {
-          class: _normalizeClass9(_ctx.animationClasses),
+          class: _normalizeClass10(_ctx.animationClasses),
           style: _normalizeStyle2(_ctx.heightStyle)
         },
         [
@@ -6191,7 +6205,7 @@ var ICalendarNavbar_default = defineComponent18({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/calendar/ICalendarNavbar.vue?type=template
-import { toDisplayString as _toDisplayString9, normalizeClass as _normalizeClass10, createElementVNode as _createElementVNode15, createCommentVNode as _createCommentVNode18, resolveComponent as _resolveComponent8, createVNode as _createVNode6, withModifiers as _withModifiers6, openBlock as _openBlock20, createElementBlock as _createElementBlock17 } from "vue";
+import { toDisplayString as _toDisplayString9, normalizeClass as _normalizeClass11, createElementVNode as _createElementVNode15, createCommentVNode as _createCommentVNode18, resolveComponent as _resolveComponent8, createVNode as _createVNode6, withModifiers as _withModifiers6, openBlock as _openBlock20, createElementBlock as _createElementBlock17 } from "vue";
 var _hoisted_116 = { class: "calendar-navbar" };
 var _hoisted_210 = { class: "calendar-navbar__month" };
 var _hoisted_37 = ["aria-live"];
@@ -6210,7 +6224,7 @@ function render20(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock20(), _createElementBlock17("div", _hoisted_116, [
     _createElementVNode15("div", _hoisted_210, [
       _createElementVNode15("span", {
-        class: _normalizeClass10([_ctx.monthTitleClass, "calendar-navbar__month--title"]),
+        class: _normalizeClass11([_ctx.monthTitleClass, "calendar-navbar__month--title"]),
         tabindex: "-1",
         "aria-live": _ctx.isFocused("yearSelectorButton") ? "polite" : "off"
       }, _toDisplayString9(_ctx.currentText), 11, _hoisted_37),
@@ -6240,7 +6254,7 @@ function render20(_ctx, _cache, $props, $setup, $data, $options) {
           /* TEXT */
         ),
         _createVNode6(_component_f_icon, {
-          class: _normalizeClass10(_ctx.yearSelectorOpen ? "calendar-navbar__arrow--up" : void 0),
+          class: _normalizeClass11(_ctx.yearSelectorOpen ? "calendar-navbar__arrow--up" : void 0),
           name: "arrow-down"
         }, null, 8, ["class"])
       ], 8, _hoisted_45)) : _createCommentVNode18("v-if", true)
@@ -6262,7 +6276,7 @@ function render20(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
       ),
       _createVNode6(_component_f_icon, {
-        class: _normalizeClass10(_ctx.previousIconClasses),
+        class: _normalizeClass11(_ctx.previousIconClasses),
         name: "arrow-right"
       }, null, 8, ["class"])
     ], 8, _hoisted_73)) : _createCommentVNode18("v-if", true),
@@ -6283,7 +6297,7 @@ function render20(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
       ),
       _createVNode6(_component_f_icon, {
-        class: _normalizeClass10(_ctx.nextIconClasses),
+        class: _normalizeClass11(_ctx.nextIconClasses),
         name: "arrow-right"
       }, null, 8, ["class"])
     ], 8, _hoisted_93)) : _createCommentVNode18("v-if", true)
@@ -6354,7 +6368,7 @@ var IComboboxDropdown_default = /* @__PURE__ */ _defineComponent3({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/combobox/IComboboxDropdown.vue?type=template
-import { createCommentVNode as _createCommentVNode19, renderList as _renderList6, Fragment as _Fragment8, openBlock as _openBlock21, createElementBlock as _createElementBlock18, toDisplayString as _toDisplayString10, withModifiers as _withModifiers7, normalizeClass as _normalizeClass11, createElementVNode as _createElementVNode16, withCtx as _withCtx7, createVNode as _createVNode7 } from "vue";
+import { createCommentVNode as _createCommentVNode19, renderList as _renderList6, Fragment as _Fragment8, openBlock as _openBlock21, createElementBlock as _createElementBlock18, toDisplayString as _toDisplayString10, withModifiers as _withModifiers7, normalizeClass as _normalizeClass12, createElementVNode as _createElementVNode16, withCtx as _withCtx7, createVNode as _createVNode7 } from "vue";
 var _hoisted_117 = { class: "combobox" };
 var _hoisted_211 = ["id"];
 var _hoisted_38 = ["id", "aria-selected", "onClick"];
@@ -6386,7 +6400,7 @@ function render21(_ctx, _cache, $props, $setup, $data, $options) {
                 key: item,
                 role: "option",
                 "aria-selected": $setup.isOptionActive(item) ? "true" : void 0,
-                class: _normalizeClass11(["combobox__listbox__option", { "combobox__listbox__option--highlight": $setup.isOptionActive(item) }]),
+                class: _normalizeClass12(["combobox__listbox__option", { "combobox__listbox__option--highlight": $setup.isOptionActive(item) }]),
                 onClick: _withModifiers7(($event) => $setup.onOptionClick(item), ["stop", "prevent"])
               }, _toDisplayString10(item), 11, _hoisted_38);
             }),
@@ -6453,77 +6467,64 @@ IComboboxToggleButton_default.__file = "packages/vue/src/internal-components/com
 import { defineComponent as defineComponent19 } from "vue";
 
 // packages/vue/src/components/FExpand/styles.ts
-var openedStyle = {
-  height: "auto"
-};
-var initialStyle = {
+var transitionStyle = {
   overflow: "hidden",
   transition: "height 400ms cubic-bezier(0.46, 0.03, 0.52, 0.96)"
 };
-var hiddenStyle = {
-  height: "auto",
-  position: "absolute",
-  visibility: "hidden"
-};
-var visibleStyle = {
-  width: "",
-  position: "",
-  visibility: "",
-  height: "0px",
-  color: "CanvasText"
-};
-
-// packages/vue/src/components/FExpand/after-enter.ts
-function afterEnterTransition(element) {
-  const htmlElement = getHTMLElementFromVueRef(element);
-  Object.assign(htmlElement.style, openedStyle);
-}
 
 // packages/vue/src/components/FExpand/enter.ts
-function enterTransition(element) {
-  let newHeight = 0;
-  const htmlElement = getHTMLElementFromVueRef(element);
-  Object.assign(htmlElement.style, initialStyle);
-  Object.assign(htmlElement.style, hiddenStyle);
-  htmlElement.style.width = getComputedStyle(element).width;
-  const height = getComputedStyle(element).height;
-  Object.assign(htmlElement.style, visibleStyle);
+function enterTransition(element, done) {
+  if (!(element instanceof HTMLElement)) {
+    return;
+  }
+  element.style.height = "auto";
+  const desiredHeight = getComputedStyle(element).height;
+  element.style.height = "0px";
+  Object.assign(element.style, transitionStyle);
   getComputedStyle(element).height;
   setTimeout(() => {
-    newHeight = Number.parseInt(height, 10);
-    htmlElement.style.height = height;
+    element.style.height = desiredHeight;
+    element.addEventListener(
+      "transitionend",
+      () => {
+        element.style.height = "auto";
+        done();
+      },
+      { once: true }
+    );
   });
-  return newHeight;
 }
 
 // packages/vue/src/components/FExpand/leave.ts
-function leaveTransition(element) {
-  const htmlElement = getHTMLElementFromVueRef(element);
-  const height = getComputedStyle(element).height;
-  htmlElement.style.height = height;
-  getComputedStyle(element).height;
+function leaveTransition(element, done) {
+  if (!(element instanceof HTMLElement)) {
+    return;
+  }
+  element.style.height = "auto";
+  element.style.height = getComputedStyle(element).height;
+  Object.assign(element.style, transitionStyle);
   setTimeout(() => {
-    Object.assign(htmlElement.style, visibleStyle);
+    element.style.height = "0px";
+    element.addEventListener(
+      "transitionend",
+      () => {
+        element.style.height = "auto";
+        done();
+      },
+      { once: true }
+    );
   });
 }
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FExpand/FExpand.vue?type=script
 var FExpand_default = defineComponent19({
   name: "FExpand",
-  data() {
-    return {
-      height: 0
-    };
-  },
   methods: {
-    enter(element) {
-      this.height = enterTransition(element);
+    enter(element, done) {
+      enterTransition(element, done);
     },
-    afterEnter(element) {
-      afterEnterTransition(element);
-    },
-    leave(element) {
-      leaveTransition(element);
+    leave(element, done) {
+      leaveTransition(element, done);
     }
   }
 });
@@ -6532,16 +6533,16 @@ var FExpand_default = defineComponent19({
 import { renderSlot as _renderSlot17, Transition as _Transition, withCtx as _withCtx8, openBlock as _openBlock23, createBlock as _createBlock11 } from "vue";
 function render23(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock23(), _createBlock11(_Transition, {
+    css: false,
     onEnter: _ctx.enter,
-    onAfterEnter: _ctx.afterEnter,
     onLeave: _ctx.leave
   }, {
     default: _withCtx8(() => [
-      _renderSlot17(_ctx.$slots, "default", { height: _ctx.height })
+      _renderSlot17(_ctx.$slots, "default")
     ]),
     _: 3
     /* FORWARDED */
-  }, 8, ["onEnter", "onAfterEnter", "onLeave"]);
+  }, 8, ["onEnter", "onLeave"]);
 }
 
 // packages/vue/src/components/FExpand/FExpand.vue
@@ -7187,7 +7188,7 @@ var FFieldset_default = defineComponent21({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FFieldset/FFieldset.vue?type=template
-import { createCommentVNode as _createCommentVNode22, renderSlot as _renderSlot19, toDisplayString as _toDisplayString12, createElementVNode as _createElementVNode18, openBlock as _openBlock25, createElementBlock as _createElementBlock21, normalizeProps as _normalizeProps2, guardReactiveProps as _guardReactiveProps2, resolveComponent as _resolveComponent10, createVNode as _createVNode10, createTextVNode as _createTextVNode5, normalizeClass as _normalizeClass12, Fragment as _Fragment10 } from "vue";
+import { createCommentVNode as _createCommentVNode22, renderSlot as _renderSlot19, toDisplayString as _toDisplayString12, createElementVNode as _createElementVNode18, openBlock as _openBlock25, createElementBlock as _createElementBlock21, normalizeProps as _normalizeProps2, guardReactiveProps as _guardReactiveProps2, resolveComponent as _resolveComponent10, createVNode as _createVNode10, createTextVNode as _createTextVNode5, normalizeClass as _normalizeClass13, Fragment as _Fragment10 } from "vue";
 var _hoisted_120 = ["id"];
 var _hoisted_213 = {
   key: 0,
@@ -7214,14 +7215,14 @@ function render25(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent10("f-icon");
   return _openBlock25(), _createElementBlock21("fieldset", {
     id: _ctx.id,
-    class: _normalizeClass12(["fieldset", _ctx.classes]),
+    class: _normalizeClass13(["fieldset", _ctx.classes]),
     onValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
   }, [
     (_openBlock25(), _createElementBlock21(
       "legend",
       {
         key: _ctx.legendKey,
-        class: _normalizeClass12(["label", _ctx.legendClass])
+        class: _normalizeClass13(["label", _ctx.legendClass])
       },
       [
         _createCommentVNode22(" @slot Slot for label content. This slot is required. "),
@@ -7281,7 +7282,7 @@ function render25(_ctx, _cache, $props, $setup, $data, $options) {
           "div",
           {
             ref: "tooltipAttachTo",
-            class: _normalizeClass12(["label", _ctx.groupLabelClassTooltip])
+            class: _normalizeClass13(["label", _ctx.groupLabelClassTooltip])
           },
           [
             _createElementVNode18("span", _hoisted_74, [
@@ -7297,7 +7298,7 @@ function render25(_ctx, _cache, $props, $setup, $data, $options) {
           "div",
           {
             key: 0,
-            class: _normalizeClass12(["label", _ctx.groupLabelClass]),
+            class: _normalizeClass13(["label", _ctx.groupLabelClass]),
             "aria-hidden": "true"
           },
           [
@@ -7331,7 +7332,7 @@ function render25(_ctx, _cache, $props, $setup, $data, $options) {
     _createElementVNode18(
       "div",
       {
-        class: _normalizeClass12(_ctx.groupContentClass)
+        class: _normalizeClass13(_ctx.groupContentClass)
       },
       [
         _createCommentVNode22(" @slot Slot for fieldset content. "),
@@ -7543,7 +7544,7 @@ var FCheckboxField_default = defineComponent22({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FCheckboxField/FCheckboxField.vue?type=template
-import { withKeys as _withKeys4, mergeProps as _mergeProps6, createElementVNode as _createElementVNode19, createCommentVNode as _createCommentVNode23, renderSlot as _renderSlot20, openBlock as _openBlock26, createElementBlock as _createElementBlock22, Transition as _Transition2, withCtx as _withCtx10, createBlock as _createBlock13, Fragment as _Fragment11, normalizeClass as _normalizeClass13 } from "vue";
+import { withKeys as _withKeys4, mergeProps as _mergeProps6, createElementVNode as _createElementVNode19, createCommentVNode as _createCommentVNode23, renderSlot as _renderSlot20, openBlock as _openBlock26, createElementBlock as _createElementBlock22, Transition as _Transition2, withCtx as _withCtx10, createBlock as _createBlock13, Fragment as _Fragment11, normalizeClass as _normalizeClass14 } from "vue";
 var _hoisted_121 = ["id", "disabled"];
 var _hoisted_214 = ["for"];
 var _hoisted_311 = {
@@ -7558,7 +7559,7 @@ function render26(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock26(), _createElementBlock22(
     "div",
     {
-      class: _normalizeClass13(["checkbox", _ctx.disabledClass]),
+      class: _normalizeClass14(["checkbox", _ctx.disabledClass]),
       onValidity: _cache[2] || (_cache[2] = (...args) => _ctx.onValidity && _ctx.onValidity(...args))
     },
     [
@@ -7571,7 +7572,7 @@ function render26(_ctx, _cache, $props, $setup, $data, $options) {
         onChange: _cache[1] || (_cache[1] = ($event) => _ctx.updateExpandedFlag())
       }), null, 16, _hoisted_121),
       _createElementVNode19("label", {
-        class: _normalizeClass13(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"),
+        class: _normalizeClass14(_ctx.$slots.details ? "checkbox__label checkbox__width" : "checkbox__label"),
         for: _ctx.id
       }, [
         _createCommentVNode23(" @slot Slot for label content. "),
