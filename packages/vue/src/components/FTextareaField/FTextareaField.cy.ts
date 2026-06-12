@@ -101,7 +101,6 @@ describe("FTextareaField", () => {
                     v-model="about"
                     auto-resize
                     rows="1"
-                    :max-rows="3"
                 >
                     <template #default> Berätta om dig själv </template>
                 </f-textarea-field>
