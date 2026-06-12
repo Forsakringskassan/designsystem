@@ -211,7 +211,7 @@ describe("autoResize", () => {
         ).toBe("6lh");
     });
 
-    it("should use default rows as max rows when maxRows is lower than default rows", () => {
+    it("should use default rows as max rows when maxRows is lower than default rows and rows are missing", () => {
         const wrapper = createWrapper({
             props: {
                 autoResize: true,
