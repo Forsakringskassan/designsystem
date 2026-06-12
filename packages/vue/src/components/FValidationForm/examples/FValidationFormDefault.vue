@@ -33,7 +33,8 @@ export default defineComponent({
         };
     },
     methods: {
-        onSubmit() {
+        async onSubmit() {
+            await new Promise((resolve) => setTimeout(resolve, 3000));
             alert("Spara");
         },
         onCancel() {
