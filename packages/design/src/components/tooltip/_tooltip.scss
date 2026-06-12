@@ -149,6 +149,11 @@ $inner-border:
             border-width: 0 #{list.nth($outer-border, 1)}px #{list.nth($outer-border, 2)}px #{list.nth($outer-border, 1)}px;
             border-color: transparent transparent $tooltip-color-border;
             translate: -50% -100%;
+
+            @media (forced-colors: active) {
+                border-color: transparent transparent CanvasText;
+                forced-color-adjust: none;
+            }
         }
 
         &::after {
@@ -160,6 +165,11 @@ $inner-border:
             border-width: 0 #{list.nth($inner-border, 1)}px #{list.nth($inner-border, 2)}px #{list.nth($inner-border, 1)}px;
             border-color: transparent transparent $tooltip-color-background;
             translate: -50% -100%;
+
+            @media (forced-colors: active) {
+                border-color: transparent transparent Canvas;
+                forced-color-adjust: none;
+            }
         }
     }
 }
