@@ -73,6 +73,8 @@ En redigerbar tabell ska inte användas i de fall användaren har mobila enheter
 Den redigerbara tabellen har begränsningar som gör det omöjligt för en användare att kunna redigera och få översikt.
 Samma sak gäller även för redigerbar tabell och användare med skärmläsarverktyg som voiceover och talkback.
 
+{@link index Läs mer om mobila enheter och tabell.}
+
 ## Kod
 
 {@link edit-code Läs om hur du sätter upp att redigera innehåll i tabell.}
