@@ -27,7 +27,7 @@
     "@fkui/logic": "../../assets/vendor-fkui-logic-ba1b7a.js",
     "@fkui/date": "../../assets/vendor-fkui-date-692a76.js",
     "@fkui/vue": "../../assets/vendor-fkui-vue-2d2936.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js"
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-e77205.js"
   },
   "integrity": {
     "../../assets/vendor-vue-22cd18.js": "sha384-GbDTRv7PzQgfVK05ck7dMQ0YzQSGacIFjIQ+EbiP4ZLYkzAJrpNMPyjiuVUOQ67+",
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-logic-ba1b7a.js": "sha384-vzXbs4dDmB5nxB2+/l+eL2n8Ju06KOu7bG1nKtIrQdfxi9EWMrLsxjKsSwK0PauJ",
     "../../assets/vendor-fkui-date-692a76.js": "sha384-MwbLPk6deCTFOhc1JjO7SwACbk5fiURa0P++wkNh8qT5ckXSJVAIS1wp08u5D8AS",
     "../../assets/vendor-fkui-vue-2d2936.js": "sha384-pw8DrXuSLBnaWPOt0yncmigM6IJHHtoc3sA2lEA3Ep8yQ/e/BA8gabFpUvBsqSMV",
-    "../../assets/vendor-forsakringskassan-docs-live-example-a9d4e0.js": "sha384-d21VgyliBY8Zvt/srv0hr2Qu+6gTgMV0E+98Pvb5ftvVH4IAms43bj1He1vzrD+J"
+    "../../assets/vendor-forsakringskassan-docs-live-example-e77205.js": "sha384-DsovFPooLKpiiaZiNa3CqNblTphlEp/J+pqN41M1kxsCiie+UVPgLJD/7vEfv84K"
   }
 }
         </script><script
@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-cca086.json"
+    href="../../search-data-ab5156.json"
     as="fetch"
     crossorigin
-    integrity="sha384-1vXbUAhD+j19TCHyVtW1zi9P1oPhJp/0gFF1qU7mko8Ziojeblev0HkPfc35hcv8"
+    integrity="sha384-BjkmpjqDQlUZwMXXKMoPMeGE/OutdAqUxt8reRRt78in2WTHH2/TCDR5PRNMH8bK"
     id="search-data"
 />
 <script>
@@ -1549,7 +1549,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/777849083500d274e998bea37ac073ec83c53bec/packages/vue/src/components/FTextareaField/FTextareaField.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/181cb63d9b29fe1b26453f0b9d2ebe2197efec45/packages/vue/src/components/FTextareaField/FTextareaField.vue">
                 FTextareaField
             </a>
             
@@ -1647,15 +1647,20 @@ För att interpolera in antalet tecken kvar i texten behöver strängen innehål
  &gt;
 </code></pre>
                 </div>
-            <h2 id="faltets_hojd" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#faltets_hojd">Fältets höjd</a></h2><p class="docs-paragraph">Inmatningsfältets höjd påverkar användarens uppfattning om hur mycket text hen förväntas skriva.
-Höjden kan vara fast, justerbar av användaren eller automatisk.</p>
-<p class="docs-paragraph">Fast höjd är standard. Anpassa antalet rader som visas i inmatningsfältet utifrån bredden på fältet och hur mycket text användaren kan tänkas skriva.
+            <h2 id="faltets_hojd" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#faltets_hojd">Fältets höjd</a></h2><p class="docs-paragraph">Inmatningsfältets höjd påverkar användarens uppfattning om hur mycket text hen förväntas skriva.</p>
+<p class="docs-paragraph">Du kan styra höjden på tre sätt:</p>
+<ul>
+<li>Fast höjd: fältet visar ett bestämt antal rader.</li>
+<li>Justerbar höjd: användaren kan själv ändra fältets höjd.</li>
+<li>Automatisk höjd: fältet anpassar antalet synliga rader efter innehållet.</li>
+</ul>
+<p class="docs-paragraph">Fast höjd är standard. Anpassa antalet rader utifrån fältets bredd och hur mycket text användaren kan tänkas skriva.
 Det är sällan lämpligt att sätta antalet rader utifrån maximalt antal tillåtna tecken. Om inmatningsfältet visar många rader får användaren dålig överblick om inmatningsfältet är placerat i ett formulär eller tillsammans med annat innehåll.</p>
-<p class="docs-paragraph">Antalet rader sätts med attributet <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#rows"><code>rows</code></a>.
-Fyra rader visas som standard om inget anges.</p>
+<p class="docs-paragraph">Du anger antalet rader med attributet <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#rows"><code>rows</code></a>.
+Fyra rader visas som standard om du inte anger något annat.</p>
 
                 <div
-                    id="example-cb5f14"
+                    id="example-884e88"
                     class="code-preview code-preview--default"
                     
                     
@@ -1667,10 +1672,12 @@ Fyra rader visas som standard om inget anges.</p>
  &gt;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Använd <code>resizable</code> om användaren själv ska kunna ändra fältets höjd.</p>
+            <p class="docs-paragraph">Använd <code>resizable</code> om användaren själv ska kunna ändra fältets höjd.
+Funktionen bygger på webbläsarens eget stöd och fungerar olika i olika webbläsare.
+På mobila enheter visas oftast inget reglage för att ändra höjden.</p>
 
                 <div
-                    id="example-7f4134"
+                    id="example-75b4d2"
                     class="code-preview code-preview--default"
                     
                     
@@ -1682,12 +1689,15 @@ Fyra rader visas som standard om inget anges.</p>
  &gt;
 </code></pre>
                 </div>
-            <h3 id="automatisk_hojd" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#automatisk_hojd">Automatisk höjd</a></h3><p class="docs-paragraph">Använd automatisk höjd när mängden text kan variera och fältet ska anpassa sig efter innehållet medan användaren skriver. Fältet utgår från antalet rader som visas från början och visar fler rader när innehållet behöver mer plats.</p>
-<p class="docs-paragraph">När automatisk höjd används bör fältet ha en rimlig begränsning så att det inte kan växa utan kontroll. Begränsa den synliga höjden med <code>max-rows</code> eller mängden text med <code>maxlength</code>.</p>
-<p class="docs-paragraph">Automatisk höjd aktiveras med attributet <code>auto-resize</code>.</p>
+            <h3 id="automatisk_hojd" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#automatisk_hojd">Automatisk höjd</a></h3><p class="docs-paragraph">Använd automatisk höjd när mängden text kan variera och fältet ska anpassa sig efter innehållet medan användaren skriver.
+Fältet börjar med det antal rader du anger och visar fler rader när innehållet behöver mer plats.</p>
+<p class="docs-paragraph">När du använder automatisk höjd bör du begränsa fältet så att det inte kan växa utan kontroll.
+Ange max antal rader med <code>max-rows</code> för att begränsa fältets höjd.
+Använd <code>maxlength</code> när du också behöver begränsa mängden text.</p>
+<p class="docs-paragraph">Du aktiverar automatisk höjd med attributet <code>auto-resize</code>.</p>
 
                 <div
-                    id="example-9e12b1"
+                    id="example-d84ab3"
                     class="code-preview code-preview--default"
                     
                     
@@ -1699,11 +1709,17 @@ Fyra rader visas som standard om inget anges.</p>
  &gt;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Automatisk höjd bygger på webbläsarstöd för <code>field-sizing</code>. I webbläsare utan stöd växer fältet inte automatiskt. Då visas fältet med minst fyra rader. <code>rows</code> kan ge en högre fallbackhöjd och <code>max-rows</code> kan begränsa den. På desktop kan användaren ändra höjden manuellt när <code>max-rows</code> inte används, men på mobila enheter kan fältet upplevas som fast.</p>
+            <p class="docs-paragraph">Automatisk höjd bygger på webbläsarstöd för <code>field-sizing</code>.
+I webbläsare utan stöd växer fältet inte automatiskt när användaren skriver.
+Då visar komponenten minst fyra rader, så att fältet inte blir för litet.
+Om du anger fler än fyra rader visar komponenten det antalet rader i stället.
+Om du anger max antal rader kan det begränsa hur stort fältet visas i äldre webbläsare.
+På desktop kan användaren ändra höjden manuellt när max antal rader inte används.
+På mobila enheter kan fältet i stället upplevas som fast.</p>
 <p class="docs-paragraph">Med <code>auto-resize</code> visas fyra rader som standard, precis som vid fast höjd. Använd <code>rows</code> för att ange ett annat minsta antal rader.</p>
 
                 <div
-                    id="example-6db8c8"
+                    id="example-ca97f4"
                     class="code-preview code-preview--default"
                     
                     
@@ -1716,11 +1732,12 @@ Fyra rader visas som standard om inget anges.</p>
  &gt;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Använd <code>max-rows</code> för att begränsa hur många rader fältet får visa. När innehållet inte längre får plats inom maxgränsen får fältet intern scroll.
-<code>rows</code> anger alltid minsta antal rader, även om <code>max-rows</code> skulle vara lägre.</p>
+            <p class="docs-paragraph">Använd <code>max-rows</code> för att ange max antal rader som fältet får visa.
+När texten inte ryms inom max antal rader kan användaren skrolla i fältet.
+Attributet <code>rows</code> anger alltid minsta antal rader. Om <code>max-rows</code> är lägre än <code>rows</code> visar komponenten ändå antalet rader från <code>rows</code>.</p>
 
                 <div
-                    id="example-4aecb0"
+                    id="example-ed2967"
                     class="code-preview code-preview--default"
                     
                     
@@ -1733,7 +1750,7 @@ Fyra rader visas som standard om inget anges.</p>
  &gt;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Kombinera inte <code>auto-resize</code> och <code>resizable</code>. Om båda anges används automatisk höjd.</p>
+            <p class="docs-paragraph">Kombinera inte <code>auto-resize</code> och <code>resizable</code>. Om du ändå anger båda använder komponenten automatisk höjd.</p>
 <h2 id="api" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#api">API</a></h2>
         <h3 class="docs-heading docs-heading--h3" id="ftextareafield-models">
             <a class="header-anchor" href="#ftextareafield-models">Models</a>
@@ -2076,9 +2093,9 @@ When the content exceeds this height the textarea will scroll.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/autoresize-textarea (<a href="https://github.com/Forsakringskassan/designsystem/commits/777849083500d274e998bea37ac073ec83c53bec">7778490</a>)<br />
+<div class="footer__right"><div class="version">feature/autoresize-textarea (<a href="https://github.com/Forsakringskassan/designsystem/commits/181cb63d9b29fe1b26453f0b9d2ebe2197efec45">181cb63</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1356">PR 1356</a><br />
-        2026-06-12 10:13
+        2026-06-13 19:42
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2218,10 +2235,10 @@ When the content exceeds this height the textarea will scroll.</p>
             integrity="sha384-JmC9y0zYgEOvu/IRaJBGQ2eA6WLIR9YRy1Qr339b8M52v8zlG39XG1V2QwxRjO3h"
             
         ></script><script
-            src="../../assets/main-b625cc.js"
+            src="../../assets/main-6d67f0.js"
             type="module"
             crossorigin
-            integrity="sha384-ur78J9I/JDvcsSD6sbiagVXtbkvr/WzrZqyW1a5jv9zuLpMwcPMoQR+qNJfoj2DP"
+            integrity="sha384-E0nsXsNowxrFVcTd6Gw4g+EAvZXBtAn0HQbKZhQ0lYH9WAvOn33lgehdcPrB+jr4"
             
         ></script>
     </body>
