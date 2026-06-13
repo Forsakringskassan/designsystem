@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="sv" class="layout--example" data-root-url="../../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Expandera rader i tabell (kod) - FK Designsystem</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../../../assets/docs-ee0781.css"
+            crossorigin
+            integrity="sha384-pmo7lbbD/dl9HbGIWl4YzXYyUJR29gIPoIpbKSCHcWLIMTCd6Aof0Jo2JmHrO5Dg"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../../assets/docs-fkui-c3953f.css"
+            crossorigin
+            integrity="sha384-DnKpc+pi0OK/0zzVyKdaXT4zylXbc84jiqqHx2aCFM9NgOM4EwUSh7qB/uDODIo+"
+            
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../../assets/bootstrap-cb5127.js"
+            crossorigin
+            integrity="sha384-Gfzmg/37+WdxGA3iw2k2/GaeiotI8p9jeSL/GBxyG6mSiyqsRNfgEEroGYvJ3O9b"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <link
+    rel="preload"
+    href="../../../search-data-4c5a3a.json"
+    as="fetch"
+    crossorigin
+    integrity="sha384-BA8RMtoIA1kRbh3ZO5hwLk8bmURUWyVY2mk5oRqYMn4LtlBDHWzz6Qy515KSmf5d"
+    id="search-data"
+/>
+<script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        <script src="../../../assets/vendor-vue-22cd18.js"></script>
+        <script src="../../../assets/vendor-fkui-vue-selectors-2e0001.js"></script>
+        <script src="../../../assets/vendor-fkui-logic-ba1b7a.js"></script>
+        <script src="../../../assets/vendor-fkui-date-692a76.js"></script>
+        <script src="../../../assets/vendor-fkui-vue-0a0917.js"></script>
+        <script src="../../../assets/vendor-forsakringskassan-docs-live-example-e77205.js"></script>
+
+        <!-- prettier-ignore --><!-- prettier-ignore -->
+        <script
+            src="../../../assets/processors/motd/index-cda4cc.js"
+            crossorigin
+            integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
+            
+        ></script>
+        <script
+            src="../../../assets/processors/selectable-version/select-version-9ff114.js"
+            crossorigin
+            integrity="sha384-JmC9y0zYgEOvu/IRaJBGQ2eA6WLIR9YRy1Qr339b8M52v8zlG39XG1V2QwxRjO3h"
+            
+        ></script>
+        <script
+            src="../../../assets/main-6d67f0.js"
+            crossorigin
+            integrity="sha384-E0nsXsNowxrFVcTd6Gw4g+EAvZXBtAn0HQbKZhQ0lYH9WAvOn33lgehdcPrB+jr4"
+            
+        ></script> <f-table :rows :columns>
+    <template #expandable="{ row }">
+        <pre>{{ row }}</pre>
+    </template>
+</f-table>
+
+    </body>
+</html>
