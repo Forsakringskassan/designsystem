@@ -80,7 +80,7 @@
     "@forsakringskassan/vitest-config-jsdom": "2.2.9",
     "@vue/test-utils": "2.4.11",
     "cypress": "15.17.0",
-    "esbuild": "0.28.0",
+    "esbuild": "0.28.1",
     "flush-promises": "1.0.2",
     "glob": "13.0.6",
     "vite": "8.0.16",
