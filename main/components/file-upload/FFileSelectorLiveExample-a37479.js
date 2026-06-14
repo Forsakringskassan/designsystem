@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FFileSelector/examples/FFileSelectorLiveExample.vue:FFileSelectorLiveExample-5602ee.js
+// virtual-entry:virtual:packages/vue/src/components/FFileSelector/examples/FFileSelectorLiveExample.vue:FFileSelectorLiveExample-a37479.js
 import { defineComponent as _defineComponent } from "vue";
 import { computed, ref } from "vue";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
@@ -129,7 +129,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-5602ee"
+  selector: "#example-a37479"
 });
 export {
   render

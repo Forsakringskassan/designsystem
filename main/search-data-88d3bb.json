@@ -49,6 +49,7 @@
     "production",
     "globala inställningar",
     "config",
+    "CHANGELOG v5",
     "Paginering",
     "FPaginateDataset",
     "FPaginator",
@@ -100,7 +101,6 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
-    "CHANGELOG v5",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -226,13 +226,6 @@
     "EventBus",
     "EventBus",
     "services",
-    "focus-indicator() mixin",
-    "fokus",
-    "fokusindikator",
-    "sass",
-    "densify() function",
-    "densitet",
-    "sass",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -270,6 +263,13 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
     "Om FKUI Vue Labs",
     "Tidsinmatning",
     "XTimeTextField",
@@ -539,16 +539,16 @@
     "ICalendarMonth",
     "Animerad expandering",
     "IAnimateExpand",
-    "Filväljare",
-    "FFileSelector",
-    "Filpresentatör",
-    "FFileItem",
     "Expanderbart stycke",
     "FExpandableParagraph",
     "Expanderbar panel",
     "FExpandablePanel",
     "Expanderbart innehåll",
     "FExpand",
+    "Filväljare",
+    "FFileSelector",
+    "Filpresentatör",
+    "FFileItem",
     "Version 6 migreringsguide: @fkui/vue",
     "Version 6 migreringsguide",
     "Version 6 migreringsguide: @fkui/logic",
@@ -565,6 +565,18 @@
     "modalfunktion",
     "bekräftelsemodal",
     "options API",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -600,18 +612,11 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
+    "FTablePageObject",
+    "FPaginatorPageObject",
+    "FListPageObject",
+    "FExpandableParagraphPageObject",
+    "FDefinitionListPageObject",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -628,11 +633,6 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
-    "FTablePageObject",
-    "FPaginatorPageObject",
-    "FListPageObject",
-    "FExpandableParagraphPageObject",
-    "FDefinitionListPageObject",
     "Sortera och filtrera i tabell",
     "tabell",
     "Sortera och filtrera i tabell (kod)",
@@ -879,6 +879,11 @@
       ]
     },
     {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
+    },
+    {
       "url": "components/pagination.html",
       "title": "Paginering",
       "terms": [
@@ -1008,11 +1013,6 @@
       "terms": [
         "FBadge"
       ]
-    },
-    {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -1286,23 +1286,6 @@
       ]
     },
     {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": [
-        "fokus",
-        "fokusindikator",
-        "sass"
-      ]
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": [
-        "densitet",
-        "sass"
-      ]
-    },
-    {
       "url": "functions/plugins/validationplugin.html",
       "title": "Validation Plugin",
       "terms": [
@@ -1362,6 +1345,23 @@
         "errorHandler",
         "ErrorPlugin",
         "FErrorHandlingApp"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": [
+        "fokus",
+        "fokusindikator",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": [
+        "densitet",
+        "sass"
       ]
     },
     {
@@ -2000,20 +2000,6 @@
       ]
     },
     {
-      "url": "components/file-upload/ffileselector.html",
-      "title": "Filväljare",
-      "terms": [
-        "FFileSelector"
-      ]
-    },
-    {
-      "url": "components/file-upload/ffileitem.html",
-      "title": "Filpresentatör",
-      "terms": [
-        "FFileItem"
-      ]
-    },
-    {
       "url": "components/expandable/fexpandableparagraph.html",
       "title": "Expanderbart stycke",
       "terms": [
@@ -2032,6 +2018,20 @@
       "title": "Expanderbart innehåll",
       "terms": [
         "FExpand"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileselector.html",
+      "title": "Filväljare",
+      "terms": [
+        "FFileSelector"
+      ]
+    },
+    {
+      "url": "components/file-upload/ffileitem.html",
+      "title": "Filpresentatör",
+      "terms": [
+        "FFileItem"
       ]
     },
     {
@@ -2083,6 +2083,38 @@
         "modalfunktion",
         "bekräftelsemodal",
         "options API"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
       ]
     },
     {
@@ -2206,36 +2238,29 @@
       ]
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
+      "url": "functions/cypress/pageobjects/ftablepageobject.html",
+      "title": "FTablePageObject",
+      "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
+      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
+      "title": "FPaginatorPageObject",
+      "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
+      "url": "functions/cypress/pageobjects/flistpageobject.html",
+      "title": "FListPageObject",
+      "terms": []
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
+      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
+      "title": "FExpandableParagraphPageObject",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
+      "title": "FDefinitionListPageObject",
+      "terms": []
     },
     {
       "url": "functions/date/f-year/index.html",
@@ -2312,31 +2337,6 @@
     {
       "url": "functions/date/f-year/f-date-next.html",
       "title": "FYear: next() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/ftablepageobject.html",
-      "title": "FTablePageObject",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
-      "title": "FPaginatorPageObject",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/flistpageobject.html",
-      "title": "FListPageObject",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
-      "title": "FExpandableParagraphPageObject",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
-      "title": "FDefinitionListPageObject",
       "terms": []
     },
     {
@@ -2847,56 +2847,56 @@
     "47": 12,
     "48": 12,
     "49": 13,
-    "50": 13,
-    "51": 13,
+    "50": 14,
+    "51": 14,
     "52": 14,
-    "53": 14,
+    "53": 15,
     "54": 15,
-    "55": 15,
+    "55": 16,
     "56": 16,
-    "57": 16,
-    "58": 16,
-    "59": 16,
-    "60": 16,
+    "57": 17,
+    "58": 17,
+    "59": 17,
+    "60": 17,
     "61": 17,
-    "62": 17,
+    "62": 18,
     "63": 18,
-    "64": 18,
+    "64": 19,
     "65": 19,
-    "66": 19,
-    "67": 19,
-    "68": 19,
-    "69": 19,
-    "70": 19,
+    "66": 20,
+    "67": 20,
+    "68": 20,
+    "69": 20,
+    "70": 20,
     "71": 20,
-    "72": 20,
+    "72": 21,
     "73": 21,
-    "74": 21,
-    "75": 21,
+    "74": 22,
+    "75": 22,
     "76": 22,
-    "77": 22,
-    "78": 22,
+    "77": 23,
+    "78": 23,
     "79": 23,
-    "80": 23,
+    "80": 24,
     "81": 24,
-    "82": 24,
-    "83": 24,
-    "84": 24,
-    "85": 24,
-    "86": 24,
+    "82": 25,
+    "83": 25,
+    "84": 25,
+    "85": 25,
+    "86": 25,
     "87": 25,
-    "88": 25,
-    "89": 25,
+    "88": 26,
+    "89": 26,
     "90": 26,
-    "91": 26,
+    "91": 27,
     "92": 27,
-    "93": 27,
-    "94": 27,
-    "95": 27,
-    "96": 27,
-    "97": 27,
+    "93": 28,
+    "94": 28,
+    "95": 28,
+    "96": 28,
+    "97": 28,
     "98": 28,
-    "99": 28,
+    "99": 29,
     "100": 29,
     "101": 30,
     "102": 30,
@@ -3027,43 +3027,43 @@
     "227": 60,
     "228": 60,
     "229": 60,
-    "230": 61,
-    "231": 61,
-    "232": 61,
-    "233": 62,
-    "234": 62,
-    "235": 62,
-    "236": 62,
-    "237": 62,
+    "230": 60,
+    "231": 60,
+    "232": 60,
+    "233": 60,
+    "234": 60,
+    "235": 61,
+    "236": 61,
+    "237": 61,
     "238": 62,
     "239": 62,
     "240": 62,
     "241": 62,
-    "242": 63,
+    "242": 62,
     "243": 63,
     "244": 63,
-    "245": 64,
-    "246": 64,
-    "247": 64,
-    "248": 64,
-    "249": 64,
-    "250": 65,
-    "251": 65,
-    "252": 65,
-    "253": 65,
-    "254": 65,
-    "255": 65,
-    "256": 65,
-    "257": 65,
-    "258": 65,
-    "259": 65,
-    "260": 65,
-    "261": 65,
-    "262": 66,
-    "263": 66,
-    "264": 66,
-    "265": 66,
-    "266": 66,
+    "245": 63,
+    "246": 63,
+    "247": 63,
+    "248": 63,
+    "249": 63,
+    "250": 63,
+    "251": 63,
+    "252": 63,
+    "253": 63,
+    "254": 63,
+    "255": 64,
+    "256": 64,
+    "257": 64,
+    "258": 64,
+    "259": 64,
+    "260": 64,
+    "261": 64,
+    "262": 64,
+    "263": 65,
+    "264": 65,
+    "265": 65,
+    "266": 65,
     "267": 66,
     "268": 66,
     "269": 66,
@@ -3364,57 +3364,57 @@
     "564": 155,
     "565": 156,
     "566": 156,
-    "567": 157,
+    "567": 156,
     "568": 157,
-    "569": 158,
-    "570": 158,
-    "571": 159,
-    "572": 159,
-    "573": 160,
-    "574": 160,
-    "575": 161,
-    "576": 161,
-    "577": 162,
-    "578": 162,
-    "579": 163,
-    "580": 163,
-    "581": 164,
-    "582": 164,
-    "583": 165,
-    "584": 165,
-    "585": 166,
-    "586": 166,
-    "587": 167,
-    "588": 167,
-    "589": 168,
-    "590": 168,
-    "591": 169,
-    "592": 169,
-    "593": 169,
-    "594": 170,
-    "595": 170,
-    "596": 171,
-    "597": 171,
-    "598": 172,
-    "599": 172,
-    "600": 173,
-    "601": 173,
-    "602": 173,
-    "603": 174,
-    "604": 174,
-    "605": 174,
-    "606": 175,
-    "607": 175,
+    "569": 157,
+    "570": 157,
+    "571": 158,
+    "572": 158,
+    "573": 158,
+    "574": 159,
+    "575": 159,
+    "576": 159,
+    "577": 160,
+    "578": 160,
+    "579": 161,
+    "580": 161,
+    "581": 162,
+    "582": 162,
+    "583": 163,
+    "584": 163,
+    "585": 164,
+    "586": 164,
+    "587": 165,
+    "588": 165,
+    "589": 166,
+    "590": 166,
+    "591": 167,
+    "592": 167,
+    "593": 168,
+    "594": 168,
+    "595": 169,
+    "596": 169,
+    "597": 170,
+    "598": 170,
+    "599": 171,
+    "600": 171,
+    "601": 172,
+    "602": 172,
+    "603": 173,
+    "604": 173,
+    "605": 173,
+    "606": 174,
+    "607": 174,
     "608": 175,
-    "609": 176,
+    "609": 175,
     "610": 176,
     "611": 176,
     "612": 177,
-    "613": 177,
-    "614": 178,
-    "615": 179,
-    "616": 180,
-    "617": 181,
+    "613": 178,
+    "614": 179,
+    "615": 180,
+    "616": 181,
+    "617": 182,
     "618": 182,
     "619": 183,
     "620": 184,
