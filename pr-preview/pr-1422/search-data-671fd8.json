@@ -226,13 +226,6 @@
     "EventBus",
     "EventBus",
     "services",
-    "focus-indicator() mixin",
-    "fokus",
-    "fokusindikator",
-    "sass",
-    "densify() function",
-    "densitet",
-    "sass",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -270,6 +263,13 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
     "Om FKUI Vue Labs",
     "Tidsinmatning",
     "XTimeTextField",
@@ -690,14 +690,14 @@
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
-    "FInteractiveTablePageObject: header() method",
-    "FInteractiveTablePageObject: checkbox() method",
-    "FInteractiveTablePageObject: cell() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
+    "FInteractiveTablePageObject: header() method",
+    "FInteractiveTablePageObject: checkbox() method",
+    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
@@ -1286,23 +1286,6 @@
       ]
     },
     {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": [
-        "fokus",
-        "fokusindikator",
-        "sass"
-      ]
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": [
-        "densitet",
-        "sass"
-      ]
-    },
-    {
       "url": "functions/plugins/validationplugin.html",
       "title": "Validation Plugin",
       "terms": [
@@ -1362,6 +1345,23 @@
         "errorHandler",
         "ErrorPlugin",
         "FErrorHandlingApp"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": [
+        "fokus",
+        "fokusindikator",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": [
+        "densitet",
+        "sass"
       ]
     },
     {
@@ -2517,21 +2517,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
-      "title": "FInteractiveTablePageObject: header() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
-      "title": "FInteractiveTablePageObject: checkbox() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
       "title": "FLabelPageObject: FLabelPageObject() constructor",
       "terms": []
@@ -2554,6 +2539,21 @@
     {
       "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
       "title": "FLabelPageObject: description() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
+      "title": "FInteractiveTablePageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
+      "title": "FInteractiveTablePageObject: checkbox() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
       "terms": []
     },
     {
@@ -3027,43 +3027,43 @@
     "227": 60,
     "228": 60,
     "229": 60,
-    "230": 61,
-    "231": 61,
-    "232": 61,
-    "233": 62,
-    "234": 62,
-    "235": 62,
-    "236": 62,
-    "237": 62,
+    "230": 60,
+    "231": 60,
+    "232": 60,
+    "233": 60,
+    "234": 60,
+    "235": 61,
+    "236": 61,
+    "237": 61,
     "238": 62,
     "239": 62,
     "240": 62,
     "241": 62,
-    "242": 63,
+    "242": 62,
     "243": 63,
     "244": 63,
-    "245": 64,
-    "246": 64,
-    "247": 64,
-    "248": 64,
-    "249": 64,
-    "250": 65,
-    "251": 65,
-    "252": 65,
-    "253": 65,
-    "254": 65,
-    "255": 65,
-    "256": 65,
-    "257": 65,
-    "258": 65,
-    "259": 65,
-    "260": 65,
-    "261": 65,
-    "262": 66,
-    "263": 66,
-    "264": 66,
-    "265": 66,
-    "266": 66,
+    "245": 63,
+    "246": 63,
+    "247": 63,
+    "248": 63,
+    "249": 63,
+    "250": 63,
+    "251": 63,
+    "252": 63,
+    "253": 63,
+    "254": 63,
+    "255": 64,
+    "256": 64,
+    "257": 64,
+    "258": 64,
+    "259": 64,
+    "260": 64,
+    "261": 64,
+    "262": 64,
+    "263": 65,
+    "264": 65,
+    "265": 65,
+    "266": 65,
     "267": 66,
     "268": 66,
     "269": 66,
