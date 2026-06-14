@@ -26,7 +26,7 @@
     "@fkui/theme-default": "6.49.1",
     "@fkui/vue": "6.49.1",
     "@fkui/vue-labs": "6.49.1",
-    "vue": "3.5.35",
+    "vue": "3.5.38",
     "vue-router": "4.6.4"
   },
   "devDependencies": {
