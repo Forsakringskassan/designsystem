@@ -204,13 +204,13 @@ var palette_default = [
       },
       {
         name: "green-400",
-        value: "#3eac75",
+        value: "#41aa75",
         group: "Green",
         comment: ""
       },
       {
         name: "green-300",
-        value: "#5eba8c",
+        value: "#70bd96",
         group: "Green",
         comment: ""
       },

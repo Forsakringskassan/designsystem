@@ -607,7 +607,7 @@ var metadata_default = {
           "palette": "green-600"
         },
         "dark": {
-          "value": "#3eac75",
+          "value": "#41aa75",
           "palette": "green-400"
         }
       }
@@ -691,7 +691,7 @@ var metadata_default = {
           "palette": "green-500"
         },
         "dark": {
-          "value": "#3eac75",
+          "value": "#41aa75",
           "palette": "green-400"
         }
       }
@@ -747,7 +747,7 @@ var metadata_default = {
           "palette": "green-600"
         },
         "dark": {
-          "value": "#3eac75",
+          "value": "#41aa75",
           "palette": "green-400"
         }
       }
@@ -761,7 +761,7 @@ var metadata_default = {
           "palette": "green-600"
         },
         "dark": {
-          "value": "#3eac75",
+          "value": "#41aa75",
           "palette": "green-400"
         }
       }
@@ -971,7 +971,7 @@ var metadata_default = {
           "palette": "green-600"
         },
         "dark": {
-          "value": "#5eba8c",
+          "value": "#70bd96",
           "palette": "green-300"
         }
       }
