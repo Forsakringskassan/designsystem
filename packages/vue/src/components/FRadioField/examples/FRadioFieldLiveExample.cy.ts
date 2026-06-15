@@ -1,9 +1,4 @@
-import {
-    FCheckboxFieldPageObject,
-    FFieldsetPageObject,
-    FRadioGroupPageObject,
-} from "../../../cypress";
-import FRadioField from "../FRadioField.vue";
+import { FRadioGroupPageObject } from "../../../cypress";
 import Example from "./FRadioFieldLiveExample.vue";
 
 describe("FRadioFieldLiveExample", () => {
