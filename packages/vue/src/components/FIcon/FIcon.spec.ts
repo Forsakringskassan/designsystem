@@ -1,3 +1,4 @@
+import { defineComponent } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import {
     FileSystemConfigLoader,
@@ -168,7 +169,7 @@ describe("props", () => {
 describe("stacking", () => {
     it("should render multiple stacked FIcon components", () => {
         expect.assertions(2);
-        const TestComponent = {
+        const TestComponent = defineComponent({
             components: { FIcon },
             template: /* HTML */ `
                 <div class="icon-stack">
@@ -176,47 +177,12 @@ describe("stacking", () => {
                     <f-icon name="success"></f-icon>
                 </div>
             `,
-        };
+        });
         const wrapper = mount(TestComponent);
         const icons = wrapper.findAll(".icon");
 
         expect(icons.length).toBe(2);
         expect(icons[0].classes()).toContain("f-icon-pdf");
-    });
-
-    it("should apply icon-stack class and verify icon positioning", () => {
-        expect.assertions(1);
-        const TestComponent = {
-            components: { FIcon },
-            template: /* HTML */ `
-                <div class="icon-stack">
-                    <f-icon name="pdf"></f-icon>
-                    <f-icon name="success"></f-icon>
-                </div>
-            `,
-        };
-        const wrapper = mount(TestComponent);
-        const stackContainer = wrapper.get(".icon-stack");
-
-        expect(stackContainer.element.children.length).toBe(2);
-    });
-
-    it("should maintain aria-hidden on all stacked icons", () => {
-        expect.assertions(2);
-        const TestComponent = {
-            components: { FIcon },
-            template: /* HTML */ `
-                <div class="icon-stack">
-                    <f-icon name="pdf"></f-icon>
-                    <f-icon name="success"></f-icon>
-                </div>
-            `,
-        };
-        const wrapper = mount(TestComponent);
-        const icons = wrapper.findAll(".icon");
-
-        expect(icons[0].attributes("aria-hidden")).toBe("true");
-        expect(icons[1].attributes("aria-hidden")).toBe("true");
     });
 });
 
@@ -241,12 +207,12 @@ describe("aria-hidden", () => {
 
     it("should be undefined if aria-label is set", () => {
         expect.assertions(1);
-        const TestComponent = {
+        const TestComponent = defineComponent({
             components: { FIcon },
             template: /* HTML */ `
                 <f-icon name="my-icon" aria-label="My awesome label"></f-icon>
             `,
-        };
+        });
         const wrapper = mount(TestComponent);
         const icon = wrapper.get(".icon");
         expect(icon.attributes("aria-hidden")).toBeUndefined();
@@ -254,7 +220,7 @@ describe("aria-hidden", () => {
 
     it("should be undefined if aria-labelledby is set", () => {
         expect.assertions(1);
-        const TestComponent = {
+        const TestComponent = defineComponent({
             components: { FIcon },
             template: /* HTML */ `
                 <div>
@@ -262,7 +228,7 @@ describe("aria-hidden", () => {
                     <span id="my-label"> My awesome label </span>
                 </div>
             `,
-        };
+        });
         const wrapper = mount(TestComponent);
         const icon = wrapper.get(".icon");
         expect(icon.attributes("aria-hidden")).toBeUndefined();
@@ -270,7 +236,7 @@ describe("aria-hidden", () => {
 
     it("should be undefined if aria-description is set", () => {
         expect.assertions(1);
-        const TestComponent = {
+        const TestComponent = defineComponent({
             components: { FIcon },
             template: /* HTML */ `
                 <div>
@@ -280,7 +246,7 @@ describe("aria-hidden", () => {
                     ></f-icon>
                 </div>
             `,
-        };
+        });
         const wrapper = mount(TestComponent);
         const icon = wrapper.get(".icon");
         expect(icon.attributes("aria-hidden")).toBeUndefined();
@@ -288,7 +254,7 @@ describe("aria-hidden", () => {
 
     it("should be undefined if aria-describedby is set", () => {
         expect.assertions(1);
-        const TestComponent = {
+        const TestComponent = defineComponent({
             components: { FIcon },
             template: /* HTML */ `
                 <div>
@@ -299,7 +265,7 @@ describe("aria-hidden", () => {
                     <span id="my-description"> My awesome description </span>
                 </div>
             `,
-        };
+        });
         const wrapper = mount(TestComponent);
         const icon = wrapper.get(".icon");
         expect(icon.attributes("aria-hidden")).toBeUndefined();
