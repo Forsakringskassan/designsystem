@@ -118,7 +118,7 @@ var metadata_default = {
         },
         "dark": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         }
       }
     },
@@ -132,7 +132,7 @@ var metadata_default = {
         },
         "dark": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         }
       }
     },
@@ -216,7 +216,7 @@ var metadata_default = {
         },
         "dark": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         }
       }
     },
@@ -230,7 +230,7 @@ var metadata_default = {
         },
         "dark": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         }
       }
     },
@@ -244,7 +244,7 @@ var metadata_default = {
         },
         "dark": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         }
       }
     },
@@ -258,7 +258,7 @@ var metadata_default = {
         },
         "dark": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         }
       }
     },
@@ -338,7 +338,7 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         },
         "dark": {
           "value": "#ecedef",
@@ -352,7 +352,7 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         },
         "dark": {
           "value": "#ecedef",
@@ -398,7 +398,7 @@ var metadata_default = {
         },
         "dark": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         }
       }
     },
@@ -454,7 +454,7 @@ var metadata_default = {
         },
         "dark": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         }
       }
     },
@@ -730,11 +730,11 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         },
         "dark": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         }
       }
     },
@@ -930,7 +930,7 @@ var metadata_default = {
         },
         "dark": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         }
       }
     },
@@ -986,7 +986,7 @@ var metadata_default = {
         },
         "dark": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         }
       }
     },
@@ -1028,7 +1028,7 @@ var metadata_default = {
         },
         "dark": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         }
       }
     },
@@ -1038,7 +1038,7 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#1b1e23",
-          "palette": "fk-black-100"
+          "palette": "neutral-900"
         },
         "dark": {
           "value": "#ecedef",
@@ -1057,6 +1057,34 @@ var metadata_default = {
         "dark": {
           "value": "#afb3bb",
           "palette": "neutral-300"
+        }
+      }
+    },
+    {
+      "name": "--fkds-focus-indicator-color",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#1b1e23",
+          "palette": "neutral-900"
+        },
+        "dark": {
+          "value": "#fff",
+          "palette": null
+        }
+      }
+    },
+    {
+      "name": "--fkds-focus-indicator-color-background",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#fff",
+          "palette": null
+        },
+        "dark": {
+          "value": "#1b1e23",
+          "palette": "neutral-900"
         }
       }
     }
