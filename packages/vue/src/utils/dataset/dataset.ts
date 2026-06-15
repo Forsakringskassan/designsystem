@@ -10,6 +10,17 @@ export type DatasetNestedKeyOf<T> = {
     [K in keyof T]: NonNullable<T[K]> extends T[] ? K : never;
 }[keyof T];
 
+/**
+ * Extracts the keys of `T` whose value type is an arbitrary array.
+ *
+ * @public
+ * @since %version%
+ */
+export type DatasetArrayKeyOf<T> = {
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- must use any as it must be assignable to any array */
+    [K in keyof T]: NonNullable<T[K]> extends any[] ? K : never;
+}[keyof T];
+
 export const datasetSymbol: unique symbol = Symbol("dataset");
 
 /**
