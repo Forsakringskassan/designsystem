@@ -367,12 +367,11 @@ var _hoisted_3 = {
   class: "spinner--after"
 };
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock2(), _createElementBlock2("button", _mergeProps2($setup.attrs, {
-    ref: "childRef",
+  return _openBlock2(), _createElementBlock2("button", _mergeProps2({
     type: $props.type,
     class: $setup.buttonClass,
     "aria-disabled": $setup.disabled
-  }), [
+  }, $setup.attrs), [
     $setup.hasIconLeft ? (_openBlock2(), _createElementBlock2(
       _Fragment2,
       { key: 0 },
