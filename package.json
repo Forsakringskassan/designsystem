@@ -135,5 +135,16 @@
   "engines": {
     "node": "^22.16 || >= 24",
     "npm": ">= 7"
+  },
+  "allowScripts": {
+    "@forsakringskassan/commitlint-config": true,
+    "@parcel/watcher": false,
+    "core-js": false,
+    "cypress": true,
+    "esbuild": true,
+    "fsevents": false,
+    "nx": false,
+    "simple-git-hooks": true,
+    "unrs-resolver": true
   }
 }
