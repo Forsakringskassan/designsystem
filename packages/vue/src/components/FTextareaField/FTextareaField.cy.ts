@@ -228,6 +228,8 @@ describe("FTextareaField", () => {
 
                 textField.tooltip.iButton().should("be.visible");
                 textField.tooltip.iButton().click();
+                textField.tooltip.el().should("have.class", "expanded");
+                textField.tooltip.el().should("not.have.class", "animating");
 
                 textField.el().toMatchScreenshot();
             });
