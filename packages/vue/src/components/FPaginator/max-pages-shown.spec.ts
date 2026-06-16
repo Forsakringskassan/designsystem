@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { maxPagesShown } from "./max-pages-shown";
 
 describe("maxPagesShown", () => {

@@ -1,5 +1,6 @@
 import { nextTick, ref } from "vue";
 import { flushPromises, mount } from "@vue/test-utils";
+import { describe, expect, it, vi } from "vitest";
 import { useDatasetRef } from "../../utils";
 import FTable from "./FTable.vue";
 import { defineTableColumns } from "./table-column";
@@ -953,9 +954,9 @@ describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
             },
         });
         expect(
-            wrapper.get("thead tr:first-child :first-child"),
+            wrapper.get("thead tr:first-child :first-child").html(),
         ).toMatchInlineSnapshot(
-            `<i-table-header-selectable-stub selectable="multi" state="false"></i-table-header-selectable-stub>`,
+            `"<i-table-header-selectable-stub selectable="multi" state="false"></i-table-header-selectable-stub>"`,
         );
     });
 
@@ -988,9 +989,9 @@ describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
             },
         });
         expect(
-            wrapper.get("thead tr:first-child :nth-child(2)"),
+            wrapper.get("thead tr:first-child :nth-child(2)").html(),
         ).toMatchInlineSnapshot(
-            `<i-table-header-selectable-stub selectable="multi" state="false"></i-table-header-selectable-stub>`,
+            `"<i-table-header-selectable-stub selectable="multi" state="false"></i-table-header-selectable-stub>"`,
         );
     });
 
@@ -1128,14 +1129,14 @@ describe("7.4 Bulk selection in expandable", () => {
         await flushPromises();
 
         expect(
-            wrapper.get("tbody tr:nth-child(1) :nth-child(2)"),
+            wrapper.get("tbody tr:nth-child(1) :nth-child(2)").html(),
         ).toMatchInlineSnapshot(
-            `<i-table-selectable-stub selectable="multi" row="[object Object]" state="false" level="1"></i-table-selectable-stub>`,
+            `"<i-table-selectable-stub selectable="multi" row="[object Object]" state="false" level="1"></i-table-selectable-stub>"`,
         );
         expect(
-            wrapper.get("tbody tr:nth-child(2) :nth-child(2)"),
+            wrapper.get("tbody tr:nth-child(2) :nth-child(2)").html(),
         ).toMatchInlineSnapshot(
-            `<i-table-selectable-stub selectable="multi" row="[object Object]" state="false" level="2"></i-table-selectable-stub>`,
+            `"<i-table-selectable-stub selectable="multi" row="[object Object]" state="false" level="2"></i-table-selectable-stub>"`,
         );
     });
 });
@@ -1222,7 +1223,7 @@ describe("7.6 aria-selected", () => {
 });
 
 describe("select cell", () => {
-    Element.prototype.scrollTo = jest.fn();
+    Element.prototype.scrollTo = vi.fn();
 
     it("should set value when selecting option with click", async () => {
         const rows = [{ option: "Foo" }, { option: "Bar" }];
@@ -1261,7 +1262,7 @@ describe("select cell", () => {
     });
 
     it("should call update on selecting option with click", async () => {
-        const listener = jest.fn();
+        const listener = vi.fn();
         const rows = [{ option: "Foo" }, { option: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -1399,7 +1400,7 @@ describe("Clickable cells", () => {
             { text: "text 2" },
             { text: "text 3" },
         ];
-        const onClickSpy = jest.fn();
+        const onClickSpy = vi.fn();
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
                 type: "button",

@@ -1,6 +1,8 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
-import plugin from "../index";
+import { expect, it } from "vitest";
+// eslint-disable-next-line import-x/extensions -- Vite migration
+import plugin from "../index.cjs";
 
 const htmlvalidate = new HtmlValidate({
     plugins: [plugin],
@@ -19,7 +21,7 @@ it("should report when `f-modal` is not root element", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: f-modal must be root element (fkui/no-template-modal)
           1 |
           2 |         <div>
@@ -53,7 +55,7 @@ it("should report when `f-confirm-modal` is not root element", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: f-confirm-modal must be root element (fkui/no-template-modal)
           1 |
           2 |         <div>
@@ -87,7 +89,7 @@ it("should report when `f-form-modal` is not root element", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: f-form-modal must be root element (fkui/no-template-modal)
           1 |
           2 |         <div>
@@ -119,7 +121,7 @@ it("should not report when `f-modal` is root element", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should not report when `f-confirm-modal` is root element", async () => {
@@ -132,7 +134,7 @@ it("should not report when `f-confirm-modal` is root element", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should not report when `f-form-modal` is root element", async () => {
@@ -145,5 +147,5 @@ it("should not report when `f-form-modal` is root element", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });

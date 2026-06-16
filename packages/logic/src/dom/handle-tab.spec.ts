@@ -1,3 +1,4 @@
+import { expect, it, vi } from "vitest";
 import { handleTab } from "./handle-tab";
 
 function mountDocument(): void {
@@ -21,7 +22,7 @@ function getTabKeyboardEvent(target: string, shiftKey: boolean): KeyboardEvent {
     return {
         shiftKey,
         target: getElement(target),
-        preventDefault: jest.fn(),
+        preventDefault: vi.fn(),
     } as unknown as KeyboardEvent;
 }
 

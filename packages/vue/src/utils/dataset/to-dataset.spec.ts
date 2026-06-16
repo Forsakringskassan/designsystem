@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { DatasetElementMetadata } from "./dataset-element-metadata";
 import { getDatasetMetadata } from "./get-dataset-metadata";
 import { isDataset } from "./is-dataset";

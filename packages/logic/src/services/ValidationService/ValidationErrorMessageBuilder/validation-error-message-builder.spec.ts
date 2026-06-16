@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { type ValidatorName } from "../validator";
 import { ValidationErrorMessageBuilder } from "./validation-error-message-builder";
 

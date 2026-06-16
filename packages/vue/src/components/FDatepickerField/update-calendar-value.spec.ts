@@ -1,4 +1,5 @@
 import { FDate } from "@fkui/date";
+import { expect, it, vi } from "vitest";
 import { updateCalendarValue } from "./update-calendar-value";
 
 type Context = Parameters<typeof updateCalendarValue>[0];
@@ -28,7 +29,7 @@ it("should not update reference if the value is the same", () => {
         minDate: undefined,
         maxDate: undefined,
     };
-    const setter = jest.spyOn(context, "calendarValue", "set");
+    const setter = vi.spyOn(context, "calendarValue", "set");
     updateCalendarValue(context, "2022-12-24");
     expect(setter).not.toHaveBeenCalled();
 });

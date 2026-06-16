@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots should match snapshot with a dropdown with attributes 1`] = `
+exports[`snapshots > should match snapshot with a dropdown with attributes 1`] = `
 <div
   class="sort-filter-dataset"
 >
@@ -14,6 +14,7 @@ exports[`snapshots should match snapshot with a dropdown with attributes 1`] = `
       
       
     </div>
+     
     <div
       class="iflex__item iflex--align-top iflex--grow"
     >
@@ -45,6 +46,7 @@ exports[`snapshots should match snapshot with a dropdown with attributes 1`] = `
           </div>
           
         </div>
+         
         <div
           class="iflex__item iflex--align-center iflex--shrink"
         >
@@ -64,11 +66,14 @@ exports[`snapshots should match snapshot with a dropdown with attributes 1`] = `
                 Sortera på
                 
                 
+                 
                 
                 
+                 
                 <!--v-if-->
               </label>
             </div>
+             
             <div
               class="select-field__icon-wrapper"
             >
@@ -77,36 +82,44 @@ exports[`snapshots should match snapshot with a dropdown with attributes 1`] = `
                 id="fkui-vue-element-0002"
               >
                 
+                 
                 <option
                   value="[object Object]"
                 >
                   Välj
                 </option>
+                 
                 
                 <option
                   value="[object Object]"
                 >
-                  Column A (stigande) 
+                  Column A (stigande)
+                            
                 </option>
                 <option
                   value="[object Object]"
                 >
-                  Column A (fallande) 
+                  Column A (fallande)
+                            
                 </option>
                 <option
                   value="[object Object]"
                 >
-                  Column B (stigande) 
+                  Column B (stigande)
+                            
                 </option>
                 <option
                   value="[object Object]"
                 >
-                  Column B (fallande) 
+                  Column B (fallande)
+                            
                 </option>
                 
                 
               </select>
+               
               <!--v-if-->
+               
               <f-icon-stub
                 class="select-field__icon"
                 library="f"
@@ -122,6 +135,7 @@ exports[`snapshots should match snapshot with a dropdown with attributes 1`] = `
     </div>
     
   </div>
+   
   
   
 </div>

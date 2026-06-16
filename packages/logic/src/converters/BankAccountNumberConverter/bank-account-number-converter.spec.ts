@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { parseBankAccountNumber } from "./bank-account-number-converter";
 
 //We use randomly generated test data.

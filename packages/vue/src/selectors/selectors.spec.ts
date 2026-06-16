@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { XExampleSelectors } from "./XExample.selectors";
 
 describe("with destructuring", () => {

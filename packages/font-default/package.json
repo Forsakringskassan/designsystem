@@ -48,7 +48,7 @@
     "inter-ui": "4.1.1"
   },
   "devDependencies": {
-    "sass": "1.100.0"
+    "sass": "1.101.0"
   },
   "engines": {
     "node": "^22.16 || >= 24",

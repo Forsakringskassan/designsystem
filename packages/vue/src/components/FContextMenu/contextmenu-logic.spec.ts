@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from "vitest";
 import { MenuAction } from "../../types";
 import {
     getNewItemIndexFromMenuAction,
@@ -50,8 +51,8 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
     ];
 
     it("should move focus to first item", async () => {
-        const setFocusOnItem = jest.fn();
-        const activateItem = jest.fn();
+        const setFocusOnItem = vi.fn();
+        const activateItem = vi.fn();
         const { doMenuAction } = useMenuAction({
             currentFocusedItemIndex: 1, // second item index
             popupItems,
@@ -64,8 +65,8 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
     });
 
     it("should activate the current item", async () => {
-        const setFocusOnItem = jest.fn();
-        const activateItem = jest.fn();
+        const setFocusOnItem = vi.fn();
+        const activateItem = vi.fn();
         const { doMenuAction } = useMenuAction({
             currentFocusedItemIndex: 1, // second item index
             popupItems,

@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { MIN_DESKTOP_WIDTH } from "./constants";
 import { Placement } from "./i-popup-utils";
 import { isTeleportDisabled } from "./is-teleport-disabled";

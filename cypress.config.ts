@@ -62,6 +62,7 @@ const disableVisualRegression = (() => {
 })();
 
 export default defineConfig({
+    allowCypressEnv: false,
     // Cypress may sometimes restart tests when it detects a changed file in the __screenshot__ folder.
     watchForFileChanges: false,
     /* disable video recording, it is to slow both on remote machines and on

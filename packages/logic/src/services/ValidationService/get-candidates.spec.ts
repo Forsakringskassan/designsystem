@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { getCandidates } from "./get-candidates";
 
 it("should return validator when no combined validators or type", () => {

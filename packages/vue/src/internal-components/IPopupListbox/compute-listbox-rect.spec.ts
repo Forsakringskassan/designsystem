@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { numItems, tryAbove, tryBelow } from "./compute-listbox-rect";
 
 describe("When not enough space above anchor", () => {

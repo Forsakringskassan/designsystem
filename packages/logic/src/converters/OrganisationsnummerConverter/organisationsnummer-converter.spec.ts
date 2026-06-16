@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { parseOrganisationsnummer } from "./organisationsnummer-converter";
 
 //These fake company numbers are as of this writing 2024-05-27 verified as non-existing,

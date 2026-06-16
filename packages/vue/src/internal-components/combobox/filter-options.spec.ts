@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { filterOptions } from "./filter-options";
 
 it("should not filter options when select mode is true", () => {

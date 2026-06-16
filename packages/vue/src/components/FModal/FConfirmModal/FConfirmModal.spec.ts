@@ -1,4 +1,5 @@
 import { mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import { FKUIConfigButtonOrder, config } from "../../../config";
 import FConfirmModal from "./FConfirmModal.vue";
 
@@ -115,8 +116,9 @@ describe("props", () => {
         });
 
         const button = wrapper.get(".button--secondary");
-        const nbsp = "\u00a0";
-        expect(button.text()).toBe(`Lorem ipsum${nbsp}with screenreader text`);
+        expect(button.html()).toMatchInlineSnapshot(
+            `"<button type="button" class="button button--secondary button-group__item"><span>Lorem ipsum</span> <span class="sr-only">&nbsp;with screenreader text</span></button>"`,
+        );
     });
 
     it("should not append extra space if no screenreader text is given", () => {

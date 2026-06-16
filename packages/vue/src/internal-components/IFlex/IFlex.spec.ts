@@ -4,7 +4,8 @@ import {
     HtmlValidate,
     cjsResolver,
 } from "html-validate/node";
-import "html-validate/jest";
+import { describe, expect, it } from "vitest";
+import "html-validate/vitest";
 import IFlex from "./IFlex.vue";
 import { GAP } from "./constants";
 
@@ -117,7 +118,7 @@ describe("html-validate", () => {
             "html-validate-vue:recommended",
             "@fkui/vue:recommended",
         ],
-        plugins: ["<rootDir>/htmlvalidate", "html-validate-vue"],
+        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
     });
     const htmlvalidate = new HtmlValidate(loader);
 
@@ -168,7 +169,7 @@ describe("html-validate", () => {
             expect.assertions(1);
             const markup = /* HTML */ ` <i-flex gap="invalid"></i-flex> `;
             const report = await htmlvalidate.validateString(markup);
-            expect(report).toMatchInlineCodeframe(`
+            await expect(report).toMatchInlineCodeframe(`
                 "error: Attribute "gap" has invalid value "invalid" (attribute-allowed-values)
                 > 1 |  <i-flex gap="invalid"></i-flex>
                     |               ^^^^^^^

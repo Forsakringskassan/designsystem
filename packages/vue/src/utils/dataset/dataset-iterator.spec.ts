@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { type DatasetElementMetadata } from "./dataset-element-metadata";
 import { datasetIterator } from "./dataset-iterator";
 import { toDataset } from "./to-dataset";

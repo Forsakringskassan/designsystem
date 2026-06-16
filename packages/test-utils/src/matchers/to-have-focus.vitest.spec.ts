@@ -1,7 +1,9 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { toHaveFocus } from "./to-have-focus";
 
-expect.extend({ toHaveFocus });
+expect.extend({
+    toHaveFocus,
+});
 
 describe("toHaveFocus (vitest)", () => {
     let element: HTMLElement;

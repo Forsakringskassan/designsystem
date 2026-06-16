@@ -1,6 +1,7 @@
 /* eslint-disable no-console -- many tests related to console logging triggers this */
 import { type ComponentPublicInstance } from "vue";
 import flushPromises from "flush-promises";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { EventBus } from "../../utils";
 import {
     UNHANDLED_ERROR_EVENT,
@@ -13,8 +14,8 @@ const fakeVm: ComponentPublicInstance = {
 } as unknown as ComponentPublicInstance;
 
 beforeEach(() => {
-    console.error = jest.fn();
-    console.warn = jest.fn();
+    console.error = vi.fn();
+    console.warn = vi.fn();
 });
 
 describe("errorHandler", () => {
@@ -24,7 +25,7 @@ describe("errorHandler", () => {
         // Given
         const error = new Error("My error");
         const info = "unittest";
-        EventBus.$emit = jest.fn();
+        EventBus.$emit = vi.fn();
         await flushPromises();
 
         // When
@@ -44,7 +45,7 @@ describe("errorHandler", () => {
         // Given
         const error = new Error("My error");
         const info = "unittest";
-        EventBus.$emit = jest.fn();
+        EventBus.$emit = vi.fn();
         await flushPromises();
 
         // When
@@ -66,7 +67,7 @@ describe("errorHandler", () => {
         // Given
         const error = new Error("My error");
         const info = "unittest";
-        EventBus.$emit = jest.fn();
+        EventBus.$emit = vi.fn();
         await flushPromises();
 
         // When
@@ -85,7 +86,7 @@ describe("warnHandler", () => {
         // Given
         const message = "A warning";
         const stack = "stacktrace";
-        EventBus.$emit = jest.fn();
+        EventBus.$emit = vi.fn();
         await flushPromises();
 
         // When
@@ -109,7 +110,7 @@ describe("warnHandler", () => {
         // Given
         const message = "A warning";
         const stack = "stacktrace";
-        EventBus.$emit = jest.fn();
+        EventBus.$emit = vi.fn();
         await flushPromises();
 
         // When
@@ -127,7 +128,7 @@ describe("warnHandler", () => {
         // Given
         const message = "A warning";
         const stack = "stacktrace";
-        EventBus.$emit = jest.fn();
+        EventBus.$emit = vi.fn();
         await flushPromises();
 
         // When

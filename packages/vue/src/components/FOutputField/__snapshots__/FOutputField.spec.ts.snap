@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots should match snapshot with label, tooltip, output and for attribute 1`] = `
+exports[`snapshots > should match snapshot with label, tooltip, output and for attribute 1`] = `
 <div
   class="output-field"
 >
@@ -17,13 +17,16 @@ exports[`snapshots should match snapshot with label, tooltip, output and for att
         
       </label>
     </div>
+     
     
     
     TOOLTIP
     
     
+     
     <!--v-if-->
   </div>
+   
   <output
     class="output-field__output"
     for="inputid"
@@ -36,7 +39,7 @@ exports[`snapshots should match snapshot with label, tooltip, output and for att
 </div>
 `;
 
-exports[`snapshots should match snapshot with output and for attribute 1`] = `
+exports[`snapshots > should match snapshot with output and for attribute 1`] = `
 <div
   class="output-field"
 >
@@ -46,10 +49,13 @@ exports[`snapshots should match snapshot with output and for attribute 1`] = `
   >
     
     
+     
     
     
+     
     <!--v-if-->
   </label>
+   
   <output
     class="output-field__output"
     for="inputid"
@@ -62,7 +68,7 @@ exports[`snapshots should match snapshot with output and for attribute 1`] = `
 </div>
 `;
 
-exports[`snapshots should match snapshot with output and two for attributes 1`] = `
+exports[`snapshots > should match snapshot with output and two for attributes 1`] = `
 <div
   class="output-field"
 >
@@ -72,10 +78,13 @@ exports[`snapshots should match snapshot with output and two for attributes 1`] 
   >
     
     
+     
     
     
+     
     <!--v-if-->
   </label>
+   
   <output
     class="output-field__output"
     for="inputid inputid2"

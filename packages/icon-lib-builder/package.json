@@ -1,6 +1,6 @@
 {
   "name": "@fkui/icon-lib-builder",
-  "version": "6.49.0",
+  "version": "6.49.1",
   "description": "Icon library builder",
   "keywords": [
     "fkui",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "glob": "13.0.6",
-    "sass": "1.100.0",
+    "sass": "1.101.0",
     "svgo": "4.0.1"
   },
   "devDependencies": {

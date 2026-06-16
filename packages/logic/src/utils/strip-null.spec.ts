@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { stripNull } from "./strip-null";
 
 interface MockInterface {

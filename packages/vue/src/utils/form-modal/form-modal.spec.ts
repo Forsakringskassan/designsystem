@@ -1,3 +1,4 @@
+import { expect, it, vi } from "vitest";
 import { MaybeWithFKUIContext } from "../../config";
 import { type MaybeComponent } from "../maybe-component";
 import * as openModalModule from "../open-modal/open-modal";
@@ -7,7 +8,7 @@ const callingInstance = { $fkui: {} } as MaybeWithFKUIContext;
 
 it("should return data without reason on submit", async () => {
     expect.assertions(1);
-    jest.spyOn(openModalModule, "openModal").mockResolvedValue({
+    vi.spyOn(openModalModule, "openModal").mockResolvedValue({
         reason: "submit",
         data: { field1: "" },
     });
@@ -17,7 +18,7 @@ it("should return data without reason on submit", async () => {
 
 it("should not return reason on cancel or close and reject the promise", async () => {
     expect.assertions(1);
-    jest.spyOn(openModalModule, "openModal").mockResolvedValue({
+    vi.spyOn(openModalModule, "openModal").mockResolvedValue({
         reason: "cancel",
         data: { field1: "" },
     });
@@ -28,12 +29,10 @@ it("should not return reason on cancel or close and reject the promise", async (
 it("should set size prop when size option is used", async () => {
     expect.assertions(1);
 
-    const openModal = jest
-        .spyOn(openModalModule, "openModal")
-        .mockResolvedValue({
-            reason: "submit",
-            data: { field1: "" },
-        });
+    const openModal = vi.spyOn(openModalModule, "openModal").mockResolvedValue({
+        reason: "submit",
+        data: { field1: "" },
+    });
     await formModal(callingInstance, {} as MaybeComponent, { size: "large" });
 
     expect(openModal).toHaveBeenCalledWith(
@@ -50,12 +49,10 @@ it("should set size prop when size option is used", async () => {
 it("should set custom prop when prop option is used", async () => {
     expect.assertions(1);
 
-    const openModal = jest
-        .spyOn(openModalModule, "openModal")
-        .mockResolvedValue({
-            reason: "submit",
-            data: { field1: "" },
-        });
+    const openModal = vi.spyOn(openModalModule, "openModal").mockResolvedValue({
+        reason: "submit",
+        data: { field1: "" },
+    });
     await formModal(callingInstance, {} as MaybeComponent, {
         props: {
             myStringProp: "myProp",

@@ -1,5 +1,6 @@
 import { ref, toValue } from "vue";
 import { flushPromises } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import { setItemIdentifiers } from "../../utils";
 import { useSelectable } from "./use-selectable";
 

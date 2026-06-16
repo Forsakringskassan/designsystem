@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { MenuAction } from "../types";
 import { actionFromKeyboardEvent } from "./action-from-keyboard-event";
 

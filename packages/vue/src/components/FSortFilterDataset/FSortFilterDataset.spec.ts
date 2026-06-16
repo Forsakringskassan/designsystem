@@ -1,6 +1,7 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent, nextTick } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { describe, expect, it, vi } from "vitest";
 import FSortFilterDataset from "./FSortFilterDataset.vue";
 import {
     FSortFilterDatasetInjected,
@@ -148,7 +149,7 @@ const tableTestComponentWithOutput = {
     },
     methods: {
         usedSortAttributes(_sortAttributes: SortOrder) {
-            /* intentionally empty, used for jest.spyOn */
+            /* intentionally empty, used for vi.spyOn */
         },
     },
 };
@@ -177,7 +178,7 @@ it("should sort by default values", async () => {
 });
 
 it("should emit event with used attributes when sorting using table heading", async () => {
-    const spyGetUsedSortAttributes = jest.spyOn(
+    const spyGetUsedSortAttributes = vi.spyOn(
         tableTestComponentWithOutput.methods,
         "usedSortAttributes",
     );
@@ -412,8 +413,8 @@ it("should throw error when sorting objects", () => {
         });
     };
     expect(mountInvalidSort).toThrowErrorMatchingInlineSnapshot(`
-        "Sorting is only supported for types number, string and boolean.
-                    Attribute 'd' comparsion of types 'object' and 'object' is not supported."
+      [Error: Sorting is only supported for types number, string and boolean.
+                  Attribute 'd' comparsion of types 'object' and 'object' is not supported.]
     `);
 });
 
@@ -422,49 +423,85 @@ it("should sort strings independent of case", async () => {
     const options = wrapper.find("select").findAll("option");
     // Sort by Column A (Stigande)
     await options[1].setValue();
-    /* eslint-disable-next-line jest/no-large-snapshots -- easier to test with snapshot */
-    expect(wrapper.get("table")).toMatchInlineSnapshot(`
-        <table>
-          <tr>
-            <td>aa</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>AA</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>ab</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>Ab</td>
-            <td>1</td>
-          </tr>
-        </table>
+
+    expect(wrapper.get("table").element).toMatchInlineSnapshot(`
+      <table>
+        
+        <tr>
+          <td>
+            aa
+          </td>
+          <td>
+            1
+          </td>
+        </tr>
+        <tr>
+          <td>
+            AA
+          </td>
+          <td>
+            1
+          </td>
+        </tr>
+        <tr>
+          <td>
+            ab
+          </td>
+          <td>
+            1
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Ab
+          </td>
+          <td>
+            1
+          </td>
+        </tr>
+        
+      </table>
     `);
     // Sort by Column A (Fallande)
     await options[2].setValue();
-    /* eslint-disable-next-line jest/no-large-snapshots -- easier to test with snapshot  */
-    expect(wrapper.get("table")).toMatchInlineSnapshot(`
-        <table>
-          <tr>
-            <td>Ab</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>ab</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>AA</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>aa</td>
-            <td>1</td>
-          </tr>
-        </table>
+
+    expect(wrapper.get("table").element).toMatchInlineSnapshot(`
+      <table>
+        
+        <tr>
+          <td>
+            Ab
+          </td>
+          <td>
+            1
+          </td>
+        </tr>
+        <tr>
+          <td>
+            ab
+          </td>
+          <td>
+            1
+          </td>
+        </tr>
+        <tr>
+          <td>
+            AA
+          </td>
+          <td>
+            1
+          </td>
+        </tr>
+        <tr>
+          <td>
+            aa
+          </td>
+          <td>
+            1
+          </td>
+        </tr>
+        
+      </table>
     `);
 });
 

@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { integerValidator } from "./integer-validator";
 
 const element = document.createElement("input");

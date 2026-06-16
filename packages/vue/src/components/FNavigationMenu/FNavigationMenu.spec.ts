@@ -1,15 +1,17 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import FNavigationMenu from "./FNavigationMenu.vue";
 import { NavigationMenuItem } from "./navigation-menu-item";
 
-const resizeObserverMock = jest.fn().mockImplementation(() => ({
-    observe: jest.fn(),
-    unobserve: jest.fn(),
-    disconnect: jest.fn(),
-}));
-global.ResizeObserver = resizeObserverMock;
+class ResizeObserverMock {
+    public observe = vi.fn();
+    public unobserve = vi.fn();
+    public disconnect = vi.fn();
+}
+
+global.ResizeObserver = ResizeObserverMock as unknown as typeof ResizeObserver;
 
 const testItems: NavigationMenuItem[] = [
     { label: "label1", route: "ROUTE_1" },
@@ -19,7 +21,7 @@ const testItems: NavigationMenuItem[] = [
 ];
 
 beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 });
 
 describe("props", () => {
@@ -150,9 +152,9 @@ describe("events", () => {
 });
 
 describe("html-validate", () => {
-    it("should require routes attribute", () => {
+    it("should require routes attribute", async () => {
         const markup = /* HTML */ ` <f-navigation-menu></f-navigation-menu> `;
-        expect(markup).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <f-navigation-menu> is missing required "routes" attribute (element-required-attributes)
             > 1 |  <f-navigation-menu></f-navigation-menu>
                 |   ^^^^^^^^^^^^^^^^^
@@ -160,67 +162,67 @@ describe("html-validate", () => {
         `);
     });
 
-    it("should allow setting vertical boolean attribute", () => {
+    it("should allow setting vertical boolean attribute", async () => {
         const markup = /* HTML */ `
             <f-navigation-menu routes="" vertical></f-navigation-menu>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
-    it("should not allow setting vertical value", () => {
+    it("should not allow setting vertical value", async () => {
         const markup = /* HTML */ `
             <f-navigation-menu routes="" vertical=""></f-navigation-menu>
         `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "attribute-boolean-style",
             message: 'Attribute "vertical" should omit value',
         });
     });
 
-    it("should not be allowed in interactive components", () => {
+    it("should not be allowed in interactive components", async () => {
         const markup = /* HTML */ `
             <button type="button">
                 <f-navigation-menu routes=""></f-navigation-menu>
             </button>
         `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
                 "<f-navigation-menu> element is not permitted as content under <button>",
         });
     });
 
-    it("should not allow interactive children", () => {
+    it("should not allow interactive children", async () => {
         const markup = /* HTML */ `
             <f-navigation-menu routes="">
                 <button type="button"></button>
             </f-navigation-menu>
         `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
                 "<button> element is not permitted as content under <f-navigation-menu>",
         });
     });
 
-    it("should not allow child elements", () => {
+    it("should not allow child elements", async () => {
         const markup = /* HTML */ `
             <f-navigation-menu routes="">
                 <em></em>
             </f-navigation-menu>
         `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
                 "<em> element is not permitted as content under <f-navigation-menu>",
         });
     });
 
-    it("should not allow text", () => {
+    it("should not allow text", async () => {
         const markup = /* HTML */ `
             <f-navigation-menu routes=""> mjukglass </f-navigation-menu>
         `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "text-content",
             message: "<f-navigation-menu> must not have text content",
         });

@@ -1,3 +1,4 @@
+import { expect, it, vi } from "vitest";
 import { numberValidator } from "./number-validator";
 
 it.each`
@@ -13,7 +14,7 @@ it.each`
 `(
     'should be called with "$expected" for "$value" because of $description',
     ({ value, expected }) => {
-        const compareFunction = jest.fn();
+        const compareFunction = vi.fn();
         const testConfig = { limit: "1" };
         numberValidator(value, testConfig, "limit", compareFunction);
         expect(compareFunction).toHaveBeenCalledWith(expected, 1);
@@ -34,7 +35,7 @@ it.each`
 `(
     'should be called with "$expected" for "$config" because of $description',
     ({ config, expected }) => {
-        const compareFunction = jest.fn();
+        const compareFunction = vi.fn();
         numberValidator("1", config, "limit", compareFunction);
         expect(compareFunction).toHaveBeenCalledWith(1, expected);
     },
@@ -63,16 +64,18 @@ it.each`
 );
 
 it("should throw error if not a number in config", () => {
-    const compareFunction = jest.fn();
+    const compareFunction = vi.fn();
     /* eslint-disable-next-line no-console -- technical debt, bad practice
      * and console is not restored so it leaks to other tests, should use
-     * jest.spyOn(..) at least and for tests expected to log should have
+     * vi.spyOn(..) at least and for tests expected to log should have
      * explicit tests for this */
-    console.log = jest.fn();
+    console.log = vi.fn();
 
     expect.assertions(1);
 
     expect(() =>
         numberValidator("1", { limit: "a" }, "limit", compareFunction),
-    ).toThrowErrorMatchingInlineSnapshot(`"config.limit must be a number"`);
+    ).toThrowErrorMatchingInlineSnapshot(
+        `[Error: config.limit must be a number]`,
+    );
 });

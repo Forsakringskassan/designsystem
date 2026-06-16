@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { filterItem } from "./filter-item";
 
 interface TestItem {

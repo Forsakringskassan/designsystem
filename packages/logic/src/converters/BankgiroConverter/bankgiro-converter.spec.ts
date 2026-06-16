@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { parseBankgiro } from "./bankgiro-converter";
 
 //These fake bankgiro values are as of this writing 2024-05-28 verified as non-existing,

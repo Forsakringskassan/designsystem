@@ -1,4 +1,4 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent } from "vue";
 import {
     type PendingValidityEvent,
@@ -10,6 +10,7 @@ import {
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../../../plugins";
 import FPhoneTextField from "./FPhoneTextField.vue";
 
@@ -159,8 +160,8 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
-        const focus = jest.fn();
-        const blur = jest.fn();
+        const focus = vi.fn();
+        const blur = vi.fn();
 
         const wrapper = createWrapper({
             attrs: {

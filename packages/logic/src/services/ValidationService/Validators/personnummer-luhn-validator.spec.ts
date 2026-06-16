@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { personnummerLuhnValidator } from "./personnummer-luhn-validator";
 
 //The test social security numbers(personnummer) used is approved by Skatteverket.

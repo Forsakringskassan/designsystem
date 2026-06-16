@@ -1,5 +1,6 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { shallowMount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import { config } from "../../config";
 import FLoader from "./FLoader.vue";
 

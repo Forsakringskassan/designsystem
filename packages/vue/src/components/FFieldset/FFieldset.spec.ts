@@ -1,4 +1,4 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { defineComponent } from "vue";
 import {
     type ValidatableHTMLElement,
@@ -7,6 +7,7 @@ import {
 } from "@fkui/logic";
 import { VueWrapper, mount, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { describe, expect, it, vi } from "vitest";
 import { ComponentValidityEvent } from "../../types";
 import { FIcon } from "../FIcon";
 import FFieldset from "./FFieldset.vue";
@@ -60,7 +61,7 @@ function dispatchValidityEvent(
 describe("snapshots", () => {
     it("should match snapshot with generated id attribute", () => {
         const wrapper = createWrapper({ props: { id: undefined } });
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label and content", () => {
@@ -205,7 +206,7 @@ describe("should display error icon when error is present", () => {
 
 describe("events", () => {
     it("should pass listeners", async () => {
-        const foobar = jest.fn();
+        const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
         });
@@ -221,7 +222,7 @@ describe("onValidity should only handle events from itself", () => {
             slots: { label: "Label" },
             attrs: { id: "elementId" },
         });
-        const onComponentValidityListener = jest.fn();
+        const onComponentValidityListener = vi.fn();
         wrapper.element.addEventListener(
             "component-validity",
             onComponentValidityListener,
@@ -254,7 +255,7 @@ describe("onValidity should only handle events from itself", () => {
                 slots: { label: "Label" },
                 attrs: { id: "elementId" },
             });
-            const onComponentValidityListener = jest.fn();
+            const onComponentValidityListener = vi.fn();
             wrapper.element.addEventListener(
                 "component-validity",
                 onComponentValidityListener,
@@ -280,7 +281,7 @@ describe("onValidity should only handle events from itself", () => {
                 slots: { label: "Label" },
                 attrs: { id: "elementId" },
             });
-            const onComponentValidityListener = jest.fn();
+            const onComponentValidityListener = vi.fn();
             wrapper.element.addEventListener(
                 "component-validity",
                 onComponentValidityListener,
@@ -307,7 +308,7 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
             slots: { label: "Label" },
             props: { id: "elementId" },
         });
-        const onComponentValidityListener = jest.fn();
+        const onComponentValidityListener = vi.fn();
         wrapper.element.addEventListener(
             "component-validity",
             onComponentValidityListener,
@@ -334,7 +335,7 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
             slots: { label: "Label" },
             props: { id: "elementId" },
         });
-        const onComponentValidityListener = jest.fn();
+        const onComponentValidityListener = vi.fn();
         wrapper.element.addEventListener(
             "component-validity",
             onComponentValidityListener,
@@ -367,7 +368,7 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
 
 describe("html-validate", () => {
     describe("content model", () => {
-        it("should be allowed where flow is expected", () => {
+        it("should be allowed where flow is expected", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <div>
@@ -376,10 +377,10 @@ describe("html-validate", () => {
                     </f-fieldset>
                 </div>
             `;
-            expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toMatchInlineCodeframe(`""`);
         });
 
-        it("should not be allowed where phrasing is expected", () => {
+        it("should not be allowed where phrasing is expected", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <span>
@@ -388,22 +389,22 @@ describe("html-validate", () => {
                     </f-fieldset>
                 </span>
             `;
-            expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toMatchInlineCodeframe(`""`);
         });
     });
 
     describe("props", () => {
-        it("should allow non-empty name", () => {
+        it("should allow non-empty name", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset name="foo">
                     <template #label> Label </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toMatchInlineCodeframe(`""`);
         });
 
-        it("should not allow empty name", () => {
+        it("should not allow empty name", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset name>
@@ -413,7 +414,7 @@ describe("html-validate", () => {
                     <template #label> Label </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: Attribute "name" is missing value (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-fieldset name>
@@ -434,24 +435,24 @@ describe("html-validate", () => {
             `);
         });
 
-        it("should allow content class", () => {
+        it("should allow content class", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset content-class="foo">
                     <template #label> Label </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toMatchInlineCodeframe(`""`);
         });
 
-        it("should not allow multiple content classes", () => {
+        it("should not allow multiple content classes", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset content-class="foo bar">
                     <template #label> Label </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: Attribute "content-class" has invalid value "foo bar" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-fieldset content-class="foo bar">
@@ -463,24 +464,24 @@ describe("html-validate", () => {
             `);
         });
 
-        it("should allow label class", () => {
+        it("should allow label class", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset label-class="foo">
                     <template #label> Label </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toMatchInlineCodeframe(`""`);
         });
 
-        it("should not allow multiple label classes", () => {
+        it("should not allow multiple label classes", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset label-class="foo bar">
                     <template #label> Label </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: Attribute "label-class" has invalid value "foo bar" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-fieldset label-class="foo bar">
@@ -494,10 +495,10 @@ describe("html-validate", () => {
     });
 
     describe("slots", () => {
-        it("should require label slot", () => {
+        it("should require label slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ ` <f-fieldset> </f-fieldset> `;
-            expect(markup).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: <f-fieldset> component requires slot "label" to be implemented (vue/required-slots)
                 > 1 |  <f-fieldset> </f-fieldset>
                     |   ^^^^^^^^^^
@@ -505,7 +506,7 @@ describe("html-validate", () => {
             `);
         });
 
-        it("should allow phrasing in label slot", () => {
+        it("should allow phrasing in label slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset>
@@ -514,10 +515,10 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toMatchInlineCodeframe(`""`);
         });
 
-        it("should allow headings in label slot", () => {
+        it("should allow headings in label slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset>
@@ -526,10 +527,11 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`""`);
+
+            await expect(markup).toMatchInlineCodeframe(`""`);
         });
 
-        it("should not allow block elements in label slot", () => {
+        it("should not allow block elements in label slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset>
@@ -538,7 +540,7 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: <div> element is not permitted as content under slot "label" (<f-fieldset>) (element-permitted-content)
                   2 |                 <f-fieldset>
                   3 |                     <template #label>
@@ -551,7 +553,7 @@ describe("html-validate", () => {
             `);
         });
 
-        it("should allow phrasing in description slot", () => {
+        it("should allow phrasing in description slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset>
@@ -561,10 +563,10 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toMatchInlineCodeframe(`""`);
         });
 
-        it("should not allow block elements in description slot", () => {
+        it("should not allow block elements in description slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset>
@@ -574,7 +576,7 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: <div> element is not permitted as content under slot "description" (<f-fieldset>) (element-permitted-content)
                   3 |                     <template #label> Label </template>
                   4 |                     <template #description>
@@ -587,7 +589,7 @@ describe("html-validate", () => {
             `);
         });
 
-        it("should allow f-tooltip in tooltip slot", () => {
+        it("should allow f-tooltip in tooltip slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset>
@@ -599,10 +601,10 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toMatchInlineCodeframe(`""`);
         });
 
-        it("should not allow arbitrary elements in tooltip slot", () => {
+        it("should not allow arbitrary elements in tooltip slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-fieldset>
@@ -613,7 +615,7 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            expect(markup).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: <div> element is not permitted as content under slot "tooltip" (<f-fieldset>) (element-permitted-content)
                   3 |                     <template #label> Label </template>
                   4 |                     <template #tooltip>

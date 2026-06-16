@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots should match snapshot and use prop name to set icon 1`] = `
+exports[`snapshots > should match snapshot and use prop name to set icon 1`] = `
 <svg
   aria-hidden="true"
   class="icon f-icon-my-icon"
@@ -8,13 +8,14 @@ exports[`snapshots should match snapshot and use prop name to set icon 1`] = `
 >
   
   
+   
   <use
     href="#f-icon-my-icon"
   />
 </svg>
 `;
 
-exports[`snapshots should match snapshot when passing content to default slot 1`] = `
+exports[`snapshots > should match snapshot when passing content to default slot 1`] = `
 <svg
   class="icon f-icon-my-icon"
   focusable="false"
@@ -24,6 +25,7 @@ exports[`snapshots should match snapshot when passing content to default slot 1`
     FIcon test information
   </title>
   
+   
   <use
     href="#f-icon-my-icon"
   />

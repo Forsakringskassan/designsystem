@@ -1,6 +1,7 @@
 import { defineCustomElement, ref } from "vue";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { mount } from "@vue/test-utils";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
     type UseAreaData,
     LayoutAreaAttachPanel,
@@ -16,7 +17,7 @@ const mockAreaData: Mutable<UseAreaData> = {
     direction: ref("column"),
 };
 
-jest.mock("../FPageLayout/use-area-data", () => ({
+vi.mock("../FPageLayout/use-area-data", () => ({
     useAreaData() {
         return mockAreaData;
     },

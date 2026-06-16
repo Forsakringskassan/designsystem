@@ -1,5 +1,6 @@
 import { FDate } from "@fkui/date";
 import { type TranslateFunction } from "@fkui/logic";
+import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { getCalendarDaySrText } from "./get-calendar-day-sr-text";
 
 const t: TranslateFunction = (
@@ -13,11 +14,14 @@ const t: TranslateFunction = (
     return defaultValueOrArgs;
 };
 
-jest.useFakeTimers();
+vi.useFakeTimers();
+afterAll(() => {
+    vi.useRealTimers();
+});
 
 describe("yesterday, today, tomorrow", () => {
     beforeEach(() => {
-        jest.setSystemTime(new Date("2022-12-24"));
+        vi.setSystemTime(new Date("2022-12-24"));
     });
 
     it("should return today text when date is today", () => {
@@ -77,7 +81,7 @@ describe("enabled", () => {
 
 describe("mixed today, selected, enabled", () => {
     it("should return text in correct order when date is today, selected and enabled", () => {
-        jest.setSystemTime(new Date("2022-08-08"));
+        vi.setSystemTime(new Date("2022-08-08"));
 
         expect(
             getCalendarDaySrText(FDate.fromIso("2022-08-08"), true, true, t),
