@@ -1,5 +1,6 @@
 import { h } from "vue";
 import { mount } from "@vue/test-utils";
+import { expect, it } from "vitest";
 import { FList } from "../components";
 import { FListSelectors } from "./FList.selectors";
 

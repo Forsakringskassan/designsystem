@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from "vitest";
 import { getUpdateFn } from "./get-update-fn";
 
 interface TableRow {
@@ -7,7 +8,7 @@ interface TableRow {
 
 describe("getUpdateFn()", () => {
     it("should return and call provided update-function", () => {
-        const fnMock = jest.fn(
+        const fnMock = vi.fn(
             (_row: TableRow, _newValue: string, _oldValue: string) => {
                 /* empty */
             },

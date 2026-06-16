@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { setItemIdentifiers, useDatasetRef } from "../../utils";
 import { getMetaRows } from "./get-meta-rows";
 

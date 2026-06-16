@@ -22,3 +22,8 @@ $icon-success-color-content: var(--fkds-color-text-primary) !default;
 $icon-tooltip-color-background: var(--fkds-color-action-background-primary-default);
 $icon-tooltip-color-border: var(--fkds-color-action-border-primary-default);
 $icon-tooltip-color-content: var(--fkds-color-text-inverted);
+
+// STACK CIRCLE
+// Legacy colors used until icon-stack--circle is deprecated.
+$icon-stack-circle-color-background: #dbe9e2 !default;
+$icon-stack-circle-color-content: #35805b !default;

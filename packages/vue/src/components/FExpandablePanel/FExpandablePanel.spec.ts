@@ -1,7 +1,8 @@
 import { VueWrapper, mount } from "@vue/test-utils";
 import { type ConfigData } from "html-validate";
+import { describe, expect, it, vi } from "vitest";
 import FExpandablePanel from "./FExpandablePanel.vue";
-import "html-validate/jest";
+import "html-validate/vitest";
 
 const config: ConfigData = {
     root: true,
@@ -50,21 +51,21 @@ describe("snapshots", () => {
     it("should match snapshot with generated id", () => {
         expect.assertions(2);
         const wrapper = createWrapper({ props: { id: undefined } });
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.element).toMatchSnapshot();
         expect(wrapper.element).toHTMLValidate(config);
     });
 
     it("should match snapshot with custom heading level", () => {
         expect.assertions(2);
         const wrapper = createWrapper({ props: { headerTag: "h3" } });
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.element).toMatchSnapshot();
         expect(wrapper.element).toHTMLValidate(config);
     });
 
     it('should match snapshot with "outside" slot', () => {
         expect.assertions(2);
         const wrapper = createWrapper({ slots: { outside: "dolor sit amet" } });
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.element).toMatchSnapshot();
         expect(wrapper.element).toHTMLValidate(config);
     });
 });
@@ -86,7 +87,7 @@ describe("attributes", () => {
 describe("events", () => {
     it("should emit toggle event", async () => {
         expect.assertions(1);
-        const toggle = jest.fn();
+        const toggle = vi.fn();
 
         const wrapper = createWrapper({
             attrs: { onToggle: toggle },
@@ -97,7 +98,7 @@ describe("events", () => {
         expect(toggle).toHaveBeenCalled();
     });
     it("should pass listeners", async () => {
-        const foobar = jest.fn();
+        const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
         });

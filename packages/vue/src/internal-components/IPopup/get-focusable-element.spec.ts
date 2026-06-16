@@ -1,15 +1,16 @@
-import logic from "@fkui/logic";
+import * as logic from "@fkui/logic";
+import { beforeEach, expect, it, vi } from "vitest";
 import { getFocusableElement } from "./get-focusable-element";
 
 beforeEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
 });
 
 it("should return first tabbable element by default", () => {
     const root = document.createElement("div");
     const button = document.createElement("button");
     const input = document.createElement("input");
-    jest.spyOn(logic, "findTabbableElements").mockReturnValue([button, input]);
+    vi.spyOn(logic, "findTabbableElements").mockReturnValue([button, input]);
 
     const result = getFocusableElement(root);
 
@@ -18,7 +19,7 @@ it("should return first tabbable element by default", () => {
 
 it("should return null if no tabbable elements are available", () => {
     const root = document.createElement("div");
-    jest.spyOn(logic, "findTabbableElements").mockReturnValue([]);
+    vi.spyOn(logic, "findTabbableElements").mockReturnValue([]);
 
     const result = getFocusableElement(root);
 
@@ -29,10 +30,10 @@ it("should call the user callback if callback optional param is provided", () =>
     expect.assertions(2);
     const root = document.createElement("div");
     const button = document.createElement("button");
-    const findTabbableElements = jest
+    const findTabbableElements = vi
         .spyOn(logic, "findTabbableElements")
         .mockReturnValue([button]);
-    const myCallback = jest.fn();
+    const myCallback = vi.fn();
     myCallback.mockReturnValue(button);
 
     const result = getFocusableElement(root, myCallback);

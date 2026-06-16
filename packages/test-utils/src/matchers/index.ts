@@ -1,6 +1,1 @@
-import "./augmentations";
-import { toHaveFocus } from "./to-have-focus";
-
-expect.extend({
-    toHaveFocus,
-});
+export { toHaveFocus } from "./to-have-focus";

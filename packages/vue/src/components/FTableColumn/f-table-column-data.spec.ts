@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import {
     FTableColumnData,
     FTableColumnSize,
@@ -100,7 +101,7 @@ describe("addColumn()", () => {
                 sort: FTableColumnSort.UNSORTED,
             });
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Expected FTableColumn to have a unique name but encountered duplicate of "1""`,
+            `[Error: Expected FTableColumn to have a unique name but encountered duplicate of "1"]`,
         );
     });
 });

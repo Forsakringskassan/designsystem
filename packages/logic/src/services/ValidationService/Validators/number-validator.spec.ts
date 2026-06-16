@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { numberValidator } from "./number-validator";
 
 const element = document.createElement("input");

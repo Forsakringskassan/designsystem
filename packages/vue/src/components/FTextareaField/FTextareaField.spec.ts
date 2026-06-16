@@ -1,4 +1,4 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import {
     type PendingValidityEvent,
     type ValidatableHTMLElement,
@@ -7,6 +7,7 @@ import {
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { describe, expect, it, vi } from "vitest";
 import FTextareaField from "./FTextareaField.vue";
 
 function createWrapper({ props = {}, slots = {}, attrs = {} } = {}): VueWrapper<
@@ -118,6 +119,114 @@ describe("attributes", () => {
     });
 });
 
+describe("autoResize", () => {
+    it("should use four rows by default", () => {
+        const wrapper = createWrapper({
+            props: {
+                autoResize: true,
+            },
+        });
+
+        const element = wrapper.get("textarea").element as HTMLTextAreaElement;
+
+        expect(wrapper.get("textarea").attributes("rows")).toBe("4");
+        expect(
+            element.style.getPropertyValue("--i-textarea-field-min-height"),
+        ).toBe("4lh");
+    });
+
+    it("should let rows override the autoResize default", () => {
+        const wrapper = createWrapper({
+            attrs: {
+                rows: 3,
+            },
+            props: {
+                autoResize: true,
+            },
+        });
+
+        const element = wrapper.get("textarea").element as HTMLTextAreaElement;
+
+        expect(wrapper.get("textarea").attributes("rows")).toBe("3");
+        expect(
+            element.style.getPropertyValue("--i-textarea-field-min-height"),
+        ).toBe("3lh");
+    });
+
+    it("should use auto resize class when autoResize is used with resizable", () => {
+        const wrapper = createWrapper({
+            props: {
+                autoResize: true,
+                resizable: true,
+            },
+        });
+
+        const textarea = wrapper.get("textarea");
+        expect(textarea.classes()).toContain("textarea-field__resize--auto");
+        expect(textarea.classes()).not.toContain(
+            "textarea-field__resize--none",
+        );
+        expect(textarea.classes()).not.toContain(
+            "textarea-field__resize--vertical",
+        );
+    });
+
+    it("should set max rows style when maxRows is used", () => {
+        const wrapper = createWrapper({
+            attrs: {
+                rows: 1,
+            },
+            props: {
+                autoResize: true,
+                maxRows: 3,
+            },
+        });
+
+        const textarea = wrapper.get("textarea");
+        const element = textarea.element as HTMLTextAreaElement;
+
+        expect(textarea.classes()).toContain(
+            "textarea-field__resize--max-rows",
+        );
+        expect(
+            element.style.getPropertyValue("--i-textarea-field-max-height"),
+        ).toBe("3lh");
+    });
+
+    it("should use rows as max rows when maxRows is lower", () => {
+        const wrapper = createWrapper({
+            attrs: {
+                rows: 6,
+            },
+            props: {
+                autoResize: true,
+                maxRows: 3,
+            },
+        });
+
+        const element = wrapper.get("textarea").element as HTMLTextAreaElement;
+
+        expect(
+            element.style.getPropertyValue("--i-textarea-field-max-height"),
+        ).toBe("6lh");
+    });
+
+    it("should use default rows as max rows when maxRows is lower than default rows and rows are missing", () => {
+        const wrapper = createWrapper({
+            props: {
+                autoResize: true,
+                maxRows: 2,
+            },
+        });
+
+        const element = wrapper.get("textarea").element as HTMLTextAreaElement;
+
+        expect(
+            element.style.getPropertyValue("--i-textarea-field-max-height"),
+        ).toBe("4lh");
+    });
+});
+
 describe("events", () => {
     it("should support v-model by emitting input event with value", () => {
         const wrapper = createWrapper({
@@ -136,8 +245,8 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
-        const focus = jest.fn();
-        const blur = jest.fn();
+        const focus = vi.fn();
+        const blur = vi.fn();
 
         const wrapper = createWrapper({
             attrs: {
@@ -199,10 +308,10 @@ it("should warn the user that the maximum string length limit is near", async ()
     await wrapper.setProps({
         modelValue: "12345",
     });
-    expect(wrapper.get('[aria-live="polite"]')).toMatchInlineSnapshot(`
-        <label class="label" for="textarea-field" aria-live="polite"><span class="label__description">Kvar: 5</span>
-          <!--v-if-->
-        </label>
+    expect(wrapper.get('[aria-live="polite"]').html()).toMatchInlineSnapshot(`
+      "<label class="label" for="textarea-field" aria-live="polite"> <span class="label__description">Kvar: 5</span>
+        <!--v-if-->
+      </label>"
     `);
 });
 
@@ -228,6 +337,7 @@ describe("html-validate", () => {
     it.each`
         html
         ${'<f-textarea-field maxlength="10" soft-limit="3">Label</f-textarea-field>'}
+        ${'<f-textarea-field auto-resize max-rows="6" resizable>Label</f-textarea-field>'}
     `("$html should be valid", ({ html }) => {
         expect.assertions(1);
         expect(html).toHTMLValidate();

@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { getGridClasses } from "./get-grid-classes";
 
 function toClassList(obj: Record<string, boolean>): string[] {

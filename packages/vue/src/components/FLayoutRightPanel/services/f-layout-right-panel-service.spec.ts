@@ -1,21 +1,22 @@
+import { expect, it, vi } from "vitest";
 import { FLayoutRightPanelService } from "./f-layout-right-panel-service";
 
 it("should emit open event", () => {
-    const listener = jest.fn();
+    const listener = vi.fn();
     FLayoutRightPanelService.on("open", listener);
     FLayoutRightPanelService.open();
     expect(listener).toHaveBeenCalled();
 });
 
 it("should emit openDialog event with title as argument", () => {
-    const listener = jest.fn();
+    const listener = vi.fn();
     FLayoutRightPanelService.on("open-dialog", listener);
     FLayoutRightPanelService.openDialog("some title");
     expect(listener.mock.calls[0][0]).toMatchInlineSnapshot(`"some title"`);
 });
 
 it("should emit close event", () => {
-    const listener = jest.fn();
+    const listener = vi.fn();
     FLayoutRightPanelService.on("close", listener);
     FLayoutRightPanelService.close();
     expect(listener).toHaveBeenCalled();

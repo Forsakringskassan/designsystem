@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { parseClearingNumber } from "./clearingnumber-converter";
 
 //The clearingnumbers we use is for testpurpose only.

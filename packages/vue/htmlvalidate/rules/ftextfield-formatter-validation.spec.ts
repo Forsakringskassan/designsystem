@@ -1,6 +1,8 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
-import plugin from "../index";
+import { expect, it } from "vitest";
+// eslint-disable-next-line import-x/extensions -- Vite migration
+import plugin from "../index.cjs";
 
 const htmlvalidate = new HtmlValidate({
     plugins: [plugin],
@@ -16,7 +18,7 @@ it("should be valid when FTextField doesn't use v-validation", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should be valid when FTextField uses v-validation.personnummer and :formatter", async () => {
@@ -32,7 +34,7 @@ it("should be valid when FTextField uses v-validation.personnummer and :formatte
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should be valid when FTextField uses v-validation.personnummer and :parser", async () => {
@@ -48,7 +50,7 @@ it("should be valid when FTextField uses v-validation.personnummer and :parser",
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should be valid when FTextField uses v-validation.required.personnummer and :parser", async () => {
@@ -64,7 +66,7 @@ it("should be valid when FTextField uses v-validation.required.personnummer and 
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should be valid when FTextField uses v-validation.personnummer.max-length and :parser", async () => {
@@ -80,7 +82,7 @@ it("should be valid when FTextField uses v-validation.personnummer.max-length an
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should be valid when FTextField uses v-validation.required and no :formatter or :parser", async () => {
@@ -95,7 +97,7 @@ it("should be valid when FTextField uses v-validation.required and no :formatter
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });
 
 it("should be invalid when FTextField uses v-validation.personnummer without :formatter or :parser", async () => {
@@ -110,7 +112,7 @@ it("should be invalid when FTextField uses v-validation.personnummer without :fo
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: v-validation.personnummer must be used with :formatter and/or :parser (fkui/ftextfield-formatter-validation)
           3 |             <f-text-field
           4 |                 id="firstname"
@@ -138,7 +140,7 @@ it("should be invalid when FTextField uses v-validation.required.personnummer wi
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toMatchInlineCodeframe(`
         "error: v-validation.personnummer must be used with :formatter and/or :parser (fkui/ftextfield-formatter-validation)
           4 |                 id="parser-formatter"
           5 |                 v-model="modelValue"
@@ -158,5 +160,5 @@ it("should not report error when phoneNumber is used", async () => {
     `;
     const report = await htmlvalidate.validateString(markup);
     expect(report).toBeValid();
-    expect(report).toMatchInlineCodeframe(`""`);
+    await expect(report).toMatchInlineCodeframe(`""`);
 });

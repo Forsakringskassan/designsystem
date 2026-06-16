@@ -1,7 +1,12 @@
 import { FDate } from "@fkui/date";
+import { afterAll, describe, expect, it, vi } from "vitest";
 import { getDisplayMonth } from "./get-display-month";
 
-jest.useFakeTimers({ now: new Date(2023, 11, 24) });
+vi.useFakeTimers({ now: new Date(2023, 11, 24) });
+
+afterAll(() => {
+    vi.useRealTimers();
+});
 
 const lateMinDate = FDate.fromIso("2024-02-15");
 const lateMaxDate = FDate.fromIso("2024-09-15");

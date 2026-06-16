@@ -1,11 +1,12 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import IAnimateExpand from "./IAnimateExpand.vue";
 
 // Mock slot content height
 Object.assign(Element.prototype, {
-    getBoundingClientRect: jest.fn(() => ({
+    getBoundingClientRect: vi.fn(() => ({
         height: 200,
     })),
 });
@@ -22,11 +23,12 @@ function createWrapper({ props = {} } = {}): VueWrapper {
 }
 
 beforeEach(() => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
 });
 
 afterEach(() => {
-    jest.clearAllTimers();
+    vi.clearAllTimers();
+    vi.useRealTimers();
 });
 
 describe("props", () => {
@@ -38,7 +40,7 @@ describe("props", () => {
                 },
             });
 
-            jest.runAllTimers();
+            vi.runAllTimers();
             await wrapper.vm.$nextTick();
 
             expect(wrapper.element).toMatchInlineSnapshot(`
@@ -53,23 +55,22 @@ describe("props", () => {
 
         it("should match snapshot containing the default slot and be expanded (no css or style) when expanded prop defaults to true", async () => {
             const wrapper = createWrapper({});
-            jest.runAllTimers();
+            vi.runAllTimers();
             await wrapper.vm.$nextTick();
 
-            /* eslint-disable-next-line jest/no-large-snapshots -- technical debt */
             expect(wrapper.element).toMatchInlineSnapshot(`
+              <div
+                class=""
+                style=""
+              >
                 <div
-                  class=""
-                  style=""
+                  data-test="animation-content"
                 >
-                  <div
-                    data-test="animation-content"
-                  >
-                    
-                    EXPANDED_CONTENT
-                    
-                  </div>
+                  
+                  EXPANDED_CONTENT
+                  
                 </div>
+              </div>
             `);
         });
     });
@@ -92,7 +93,7 @@ describe("props", () => {
             );
             expect(wrapperElement.style.height).toMatch("200px");
 
-            jest.advanceTimersByTime(ANIMATION_DURATION);
+            vi.advanceTimersByTime(ANIMATION_DURATION);
             await wrapper.vm.$nextTick();
 
             expect(wrapperElement.classList).not.toContain("animate-expand");
@@ -120,7 +121,7 @@ describe("props", () => {
             );
             expect(wrapperElement.style.height).toMatch("200px");
 
-            jest.advanceTimersByTime(ANIMATION_DURATION);
+            vi.advanceTimersByTime(ANIMATION_DURATION);
             await wrapper.vm.$nextTick();
 
             expect(wrapper.element.classList).not.toContain(
@@ -139,8 +140,8 @@ describe("props", () => {
                 },
             });
 
-            jest.advanceTimersByTime(ANIMATION_DURATION);
-            jest.runAllTimers();
+            vi.advanceTimersByTime(ANIMATION_DURATION);
+            vi.runAllTimers();
             await wrapper.vm.$nextTick();
 
             expect(wrapper.element.classList).toContain(
@@ -156,7 +157,7 @@ describe("props", () => {
                 },
             });
 
-            jest.runAllTimers();
+            vi.runAllTimers();
             await wrapper.vm.$nextTick();
 
             expect(wrapper.element.classList).not.toContain(
@@ -173,7 +174,7 @@ describe("props", () => {
                 },
             });
 
-            jest.runAllTimers();
+            vi.runAllTimers();
             await wrapper.vm.$nextTick();
             expect(wrapper.element.innerHTML).not.toContain("EXPANDED_CONTENT");
         });
@@ -186,7 +187,7 @@ describe("props", () => {
                 },
             });
 
-            jest.runAllTimers();
+            vi.runAllTimers();
             await wrapper.vm.$nextTick();
             expect(wrapper.element.innerHTML).toContain("EXPANDED_CONTENT");
         });
@@ -203,8 +204,8 @@ describe("callbacks", () => {
     `(
         "should call beforeAnimate($open) immeditately and afterAnimate($open) $description",
         async ({ open, animation, expected }) => {
-            const beforeAnimateCallback = jest.fn();
-            const afterAnimateCallback = jest.fn();
+            const beforeAnimateCallback = vi.fn();
+            const afterAnimateCallback = vi.fn();
 
             const wrapper = createWrapper({
                 props: {
@@ -231,7 +232,7 @@ describe("callbacks", () => {
             // Wait for component to be expanded in DOM
             await wrapper.vm.$nextTick();
             if (animation) {
-                jest.advanceTimersByTime(500);
+                vi.advanceTimersByTime(500);
             }
             expect(afterAnimateCallback).toHaveBeenCalledWith(expected);
         },
@@ -295,8 +296,8 @@ describe("html-validate", () => {
 });
 
 it("should only call afterAnimation once when cancel animation", async () => {
-    const beforeAnimateCallback = jest.fn();
-    const afterAnimateCallback = jest.fn();
+    const beforeAnimateCallback = vi.fn();
+    const afterAnimateCallback = vi.fn();
 
     const wrapper = createWrapper({
         props: {
@@ -329,6 +330,6 @@ it("should only call afterAnimation once when cancel animation", async () => {
     expect(beforeAnimateCallback).toHaveBeenCalledTimes(2);
     // Wait for component to complete animation
     await wrapper.vm.$nextTick();
-    jest.advanceTimersByTime(500);
+    vi.advanceTimersByTime(500);
     expect(afterAnimateCallback).toHaveBeenCalledTimes(1);
 });

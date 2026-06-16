@@ -1,8 +1,9 @@
-import "@fkui/test-utils/jest";
+import "@fkui/test-utils/vitest";
 import { defineComponent } from "vue";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { mount, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { describe, expect, it } from "vitest";
 import FModal from "./FModal.vue";
 
 const offsetFn = {

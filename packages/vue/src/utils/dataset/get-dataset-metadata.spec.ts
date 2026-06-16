@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { getDatasetMetadata } from "./get-dataset-metadata";
 import { toDataset } from "./to-dataset";
 import { rowindex, treeSnapshot } from "./tree-snapshot";

@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should match snapshot should match snapshot with no items in rows and default text 1`] = `
-<div class="">
+exports[`should match snapshot > should match snapshot with no items in rows and default text 1`] = `
+"<div class="">
   <table class="table">
     <!--v-if-->
     <colgroup>
@@ -29,11 +29,11 @@ exports[`should match snapshot should match snapshot with no items in rows and d
       </tr>
     </tbody>
   </table>
-</div>
+</div>"
 `;
 
-exports[`should match snapshot should match snapshot with no rows in table and custom text 1`] = `
-<div class="">
+exports[`should match snapshot > should match snapshot with no rows in table and custom text 1`] = `
+"<div class="">
   <table class="table">
     <!--v-if-->
     <colgroup>
@@ -61,34 +61,34 @@ exports[`should match snapshot should match snapshot with no rows in table and c
       </tr>
     </tbody>
   </table>
-</div>
+</div>"
 `;
 
-exports[`should match snapshot tbody 1`] = `
-<tbody>
+exports[`should match snapshot > tbody 1`] = `
+"<tbody>
   <!--v-if-->
   <!--v-if-->
   <tr class="table__row">
     <td class="table__column table__column--text">
-      <div class="table__column__wrapper">1<span class="sr-only">&nbsp;</span></div>
+      <div class="table__column__wrapper">1 <span class="sr-only">&nbsp;</span></div>
     </td>
     <td class="table__column table__column--numeric">
-      <div class="table__column__wrapper">2<span class="sr-only">&nbsp;</span></div>
+      <div class="table__column__wrapper">2 <span class="sr-only">&nbsp;</span></div>
     </td>
   </tr>
   <tr class="table__row">
     <td class="table__column table__column--text">
-      <div class="table__column__wrapper">3<span class="sr-only">&nbsp;</span></div>
+      <div class="table__column__wrapper">3 <span class="sr-only">&nbsp;</span></div>
     </td>
     <td class="table__column table__column--numeric">
-      <div class="table__column__wrapper">4<span class="sr-only">&nbsp;</span></div>
+      <div class="table__column__wrapper">4 <span class="sr-only">&nbsp;</span></div>
     </td>
   </tr>
-</tbody>
+</tbody>"
 `;
 
-exports[`should match snapshot thead 1`] = `
-<thead>
+exports[`should match snapshot > thead 1`] = `
+"<thead>
   <tr class="table__row">
     <!--v-if-->
     <!--v-if-->
@@ -101,5 +101,5 @@ exports[`should match snapshot thead 1`] = `
       <!--v-if-->
     </th>
   </tr>
-</thead>
+</thead>"
 `;

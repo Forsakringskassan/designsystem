@@ -1,7 +1,8 @@
 import { provide, ref } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import FTableColumn from "./FTableColumn.vue";
-import "html-validate/jest";
+import "html-validate/vitest";
 import { FTableColumnSize, FTableColumnSort } from "./f-table-column-data";
 
 function createWrapper({
@@ -21,8 +22,8 @@ function createWrapper({
         slots: { ...slots },
         global: {
             provide: {
-                addColumn: jest.fn(),
-                setVisibilityColumn: jest.fn(),
+                addColumn: vi.fn(),
+                setVisibilityColumn: vi.fn(),
                 renderColumns: ref(true),
                 ...provide,
             },
@@ -104,7 +105,7 @@ it("should not render any content unless renderColumns is enabled", async () => 
 
 describe("when in `<thead>`", () => {
     afterEach(() => {
-        jest.restoreAllMocks();
+        vi.restoreAllMocks();
     });
 
     it("should only render element on mount", async () => {
@@ -123,8 +124,8 @@ describe("when in `<thead>`", () => {
                 </table>
             `,
             setup() {
-                provide("addColumn", jest.fn());
-                provide("setVisibilityColumn", jest.fn());
+                provide("addColumn", vi.fn());
+                provide("setVisibilityColumn", vi.fn());
                 provide("renderColumns", true);
             },
         };
@@ -165,8 +166,8 @@ describe("when in `<thead>`", () => {
                 </table>
             `,
             setup() {
-                provide("addColumn", jest.fn());
-                provide("setVisibilityColumn", jest.fn());
+                provide("addColumn", vi.fn());
+                provide("setVisibilityColumn", vi.fn());
                 provide("renderColumns", true);
             },
             data() {
@@ -182,7 +183,7 @@ describe("when in `<thead>`", () => {
 
     it("should register when mounted", async () => {
         expect.assertions(1);
-        const addColumn = jest.fn();
+        const addColumn = vi.fn();
         const TestComponent = {
             components: { FTableColumn },
             template: /* HTML */ `
@@ -202,7 +203,7 @@ describe("when in `<thead>`", () => {
             `,
             setup() {
                 provide("addColumn", addColumn);
-                provide("setVisibilityColumn", jest.fn());
+                provide("setVisibilityColumn", vi.fn());
             },
         };
         const wrapper = mount(TestComponent);
@@ -223,7 +224,7 @@ describe("when in `<thead>`", () => {
 
     it("should default to size expanded", async () => {
         expect.assertions(1);
-        const addColumn = jest.fn();
+        const addColumn = vi.fn();
         const TestComponent = {
             components: { FTableColumn },
             template: /* HTML */ `
@@ -239,7 +240,7 @@ describe("when in `<thead>`", () => {
             `,
             setup() {
                 provide("addColumn", addColumn);
-                provide("setVisibilityColumn", jest.fn());
+                provide("setVisibilityColumn", vi.fn());
             },
         };
         const wrapper = mount(TestComponent);
@@ -254,7 +255,7 @@ describe("when in `<thead>`", () => {
 
     it("should set size to expanded when expand is enabled", async () => {
         expect.assertions(1);
-        const addColumn = jest.fn();
+        const addColumn = vi.fn();
         const TestComponent = {
             components: { FTableColumn },
             template: /* HTML */ `
@@ -271,7 +272,7 @@ describe("when in `<thead>`", () => {
             `,
             setup() {
                 provide("addColumn", addColumn);
-                provide("setVisibilityColumn", jest.fn());
+                provide("setVisibilityColumn", vi.fn());
             },
         };
         const wrapper = mount(TestComponent);
@@ -286,7 +287,7 @@ describe("when in `<thead>`", () => {
 
     it("should set size to shrink when shrink is enabled", async () => {
         expect.assertions(1);
-        const addColumn = jest.fn();
+        const addColumn = vi.fn();
         const TestComponent = {
             components: { FTableColumn },
             template: /* HTML */ `
@@ -303,7 +304,7 @@ describe("when in `<thead>`", () => {
             `,
             setup() {
                 provide("addColumn", addColumn);
-                provide("setVisibilityColumn", jest.fn());
+                provide("setVisibilityColumn", vi.fn());
             },
         };
         const wrapper = mount(TestComponent);
@@ -319,7 +320,7 @@ describe("when in `<thead>`", () => {
     it("should throw error if both shrink and expand is enabled at the same time", async () => {
         expect.assertions(1);
         /* prevent vue from dumping the error on stdout */
-        jest.spyOn(console, "error").mockImplementation(() => undefined);
+        vi.spyOn(console, "error").mockImplementation(() => undefined);
         const TestComponent = {
             components: { FTableColumn },
             template: /* HTML */ `
@@ -336,14 +337,14 @@ describe("when in `<thead>`", () => {
                 </table>
             `,
             setup() {
-                provide("addColumn", jest.fn());
-                provide("setVisibilityColumn", jest.fn());
+                provide("addColumn", vi.fn());
+                provide("setVisibilityColumn", vi.fn());
             },
         };
         expect(() => {
             mount(TestComponent);
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Table cannot have both shrink and expand enabled at the same time"`,
+            `[Error: Table cannot have both shrink and expand enabled at the same time]`,
         );
     });
 });

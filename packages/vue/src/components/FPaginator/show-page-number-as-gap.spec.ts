@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { showPageNumberAsGap } from "./show-page-number-as-gap";
 
 describe("show page number as gap", () => {

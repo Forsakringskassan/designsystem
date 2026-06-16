@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { computeCssValue } from "./compute-css-value";
 
 it("should handle literal 0", () => {

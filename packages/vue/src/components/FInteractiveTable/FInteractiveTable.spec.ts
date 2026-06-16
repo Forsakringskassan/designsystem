@@ -1,6 +1,7 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { type ComponentOptions, defineComponent } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { FSortFilterDatasetMountCallback } from "../FSortFilterDataset";
 import { FTableColumn } from "../FTableColumn";
 import FInteractiveTable from "./FInteractiveTable.vue";
@@ -17,8 +18,8 @@ function createWrapper(
         slots: { ...slots },
         global: {
             provide: {
-                addColumn: jest.fn(),
-                setVisibilityColumn: jest.fn(),
+                addColumn: vi.fn(),
+                setVisibilityColumn: vi.fn(),
                 ...provide,
             },
         },
@@ -27,7 +28,7 @@ function createWrapper(
 }
 
 afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
 });
 
 describe("should match snapshot", () => {
@@ -59,14 +60,14 @@ describe("should match snapshot", () => {
         expect.assertions(1);
         const wrapper = createWrapper(TestComponent);
         await wrapper.vm.$nextTick();
-        expect(wrapper.find("thead")).toMatchSnapshot();
+        expect(wrapper.find("thead").html()).toMatchSnapshot();
     });
 
     it("tbody", async () => {
         expect.assertions(1);
         const wrapper = createWrapper(TestComponent);
         await wrapper.vm.$nextTick();
-        expect(wrapper.find("tbody")).toMatchSnapshot();
+        expect(wrapper.find("tbody").html()).toMatchSnapshot();
     });
 });
 
@@ -127,7 +128,7 @@ it("should throw error if `FTableColumn.name` is duplicated", async () => {
     expect(() => {
         mount(TestComponent);
     }).toThrowErrorMatchingInlineSnapshot(
-        `"Expected FTableColumn to have a unique name but encountered duplicate of "a""`,
+        `[Error: Expected FTableColumn to have a unique name but encountered duplicate of "a"]`,
     );
 });
 
@@ -416,16 +417,39 @@ it("should add an extra column when selectable is enabled", async () => {
     expect(col).toHaveLength(2);
     expect(th).toHaveLength(2);
     expect(td).toHaveLength(2);
-    expect(col[0]).toMatchInlineSnapshot(`<col class="table__column--shrink">`);
-    expect(th[0]).toMatchInlineSnapshot(
-        `<th scope="col"><span class="sr-only">Markera</span></th>`,
+    expect(col[0].element).toMatchInlineSnapshot(`
+      <col
+        class="table__column--shrink"
+      />
+    `);
+    expect(th[0].element).toMatchInlineSnapshot(
+        `
+      <th
+        scope="col"
+      >
+        <span
+          class="sr-only"
+        >
+          Markera
+        </span>
+      </th>
+    `,
     );
-    expect(td[0]).toMatchInlineSnapshot(`
-        <td class="table__column--selectable">
-          <div class="table__input">
-            <f-checkbox-field-stub disabled="false" id="fkui-vue-element-0001" modelvalue="false" value="true"></f-checkbox-field-stub>
-          </div>
-        </td>
+    expect(td[0].element).toMatchInlineSnapshot(`
+      <td
+        class="table__column--selectable"
+      >
+        <div
+          class="table__input"
+        >
+          <f-checkbox-field-stub
+            disabled="false"
+            id="fkui-vue-element-0001"
+            modelvalue="false"
+            value="true"
+          />
+        </div>
+      </td>
     `);
 });
 
@@ -679,7 +703,7 @@ it("should handle nestled row objects when no rows are present", async () => {
 });
 
 it("should call provided sort method when clicking columnheader that is registrated as sortable", async () => {
-    const mockedProvedSort = jest.fn();
+    const mockedProvedSort = vi.fn();
     let registerSortableColumnsCallback: FSortFilterDatasetMountCallback;
     const TestComponent = {
         components: { FInteractiveTable, FTableColumn },
@@ -799,7 +823,7 @@ describe("`keyAttribute`", () => {
                 },
             });
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Expected each item to have identifier [id] with unique value but encountered duplicate of "b" in item index 2."`,
+            `[Error: Expected each item to have identifier [id] with unique value but encountered duplicate of "b" in item index 2.]`,
         );
     });
 

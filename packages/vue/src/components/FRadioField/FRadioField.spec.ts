@@ -1,5 +1,6 @@
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { describe, expect, it, vi } from "vitest";
 import { injectionKeys as fieldsetInjectionKeys } from "../FFieldset/use-fieldset";
 import FRadioField from "./FRadioField.vue";
 
@@ -150,7 +151,7 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
-        const foobar = jest.fn();
+        const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
         });
@@ -160,7 +161,7 @@ describe("events", () => {
     });
 
     it("should pass click listener and trigger focus on click", async () => {
-        const click = jest.fn();
+        const click = vi.fn();
 
         const wrapper = createWrapper({
             attrs: { onClick: click },
@@ -168,7 +169,7 @@ describe("events", () => {
 
         const input = wrapper.get("input");
         const htmlInput = input.element;
-        htmlInput.focus = jest.fn();
+        htmlInput.focus = vi.fn();
 
         await input.trigger("click");
         expect(click).toHaveBeenCalled();

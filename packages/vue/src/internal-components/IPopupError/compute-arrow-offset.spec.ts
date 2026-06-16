@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { Placement } from "../IPopup/i-popup-utils";
 import { computeArrowOffset } from "./compute-arrow-offset";
 

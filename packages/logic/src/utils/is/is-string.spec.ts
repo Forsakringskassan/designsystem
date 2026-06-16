@@ -1,4 +1,5 @@
 /* eslint-disable sonarjs/no-primitive-wrappers, unicorn/new-for-builtins -- to ensure it works */
+import { expect, it } from "vitest";
 
 import { isString } from "./is-string";
 

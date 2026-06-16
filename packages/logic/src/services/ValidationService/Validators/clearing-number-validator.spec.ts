@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { clearingNumberValidator } from "./clearing-number-validator";
 
 const element = document.createElement("input");

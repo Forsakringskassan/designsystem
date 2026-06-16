@@ -1,4 +1,4 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import {
     type PendingValidityEvent,
     type ValidatableHTMLElement,
@@ -9,6 +9,7 @@ import {
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import FTextField from "./FTextField.vue";
 
@@ -198,9 +199,9 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
-        const focus = jest.fn();
-        const change = jest.fn();
-        const blur = jest.fn();
+        const focus = vi.fn();
+        const change = vi.fn();
+        const blur = vi.fn();
 
         const wrapper = createWrapper({
             attrs: {
@@ -325,13 +326,11 @@ describe("formatting and parsing combined with validation", () => {
             await flushPromises();
             wrapper.vm.$forceUpdate();
 
-            /* eslint-disable jest/no-conditional-expect -- technical debt */
             if (expected === "trigger") {
                 expect(wrapper.emitted()["update:modelValue"]).toBeTruthy();
             } else {
                 expect(wrapper.emitted()["update:modelValue"]).toBeFalsy();
             }
-            /* eslint-enable jest/no-conditional-expect */
         },
     );
 

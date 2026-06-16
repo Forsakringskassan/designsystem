@@ -3,6 +3,7 @@
 
 import { ElementIdService } from "@fkui/logic";
 import { enableAutoUnmount } from "@vue/test-utils";
+import { afterEach } from "vitest";
 
 enableAutoUnmount(afterEach);
 

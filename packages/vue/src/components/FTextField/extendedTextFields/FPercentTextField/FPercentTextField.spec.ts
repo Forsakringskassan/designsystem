@@ -1,5 +1,6 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import { ValidationPlugin } from "../../../../plugins";
 import FPercentTextField from "./FPercentTextField.vue";
 

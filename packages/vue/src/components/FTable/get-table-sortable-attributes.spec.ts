@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { getTableSortableAttributes } from "./get-table-sortable-attributes";
 import { defineTableColumns } from "./table-column";
 

@@ -1,11 +1,16 @@
+import {
+    type MatcherResult,
+    type MatcherState,
+    beforeEach,
+    expect,
+    it,
+} from "vitest";
 import { documentOrderComparator } from "./document-order-comparator";
 
-declare global {
-    /* eslint-disable-next-line @typescript-eslint/no-namespace -- module augmentation */
-    namespace jest {
-        interface Matchers<R> {
-            toBeSameElement(node: Element): R;
-        }
+declare module "vitest" {
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- to match upstream */
+    interface Matchers<T = any> {
+        toBeSameElement(node: Element): T;
     }
 }
 
@@ -72,10 +77,10 @@ it("should handle null by sorting them last", () => {
 
 expect.extend({
     toBeSameElement(
-        this: jest.MatcherUtils,
+        this: MatcherState,
         received: Element | null | undefined,
         actual: Element,
-    ): jest.CustomMatcherResult {
+    ): MatcherResult {
         const pass = received ? received.isSameNode(actual) : false;
         const message = (): string => {
             const hint = this.utils.matcherHint(".toBeSameElement");

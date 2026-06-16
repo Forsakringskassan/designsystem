@@ -1,5 +1,6 @@
 import { defineComponent } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ComponentValidityEvent, FormErrorList } from "../../types";
 import { cleanUpElements } from "./form-utils";
 
@@ -15,7 +16,13 @@ interface Special {
 const components = { myId: {} } as unknown as ComponentReference;
 const componentsNotInDOM = { anotherId: {} } as unknown as ComponentReference;
 
-jest.useFakeTimers();
+beforeEach(() => {
+    vi.useFakeTimers();
+});
+
+afterEach(() => {
+    vi.useRealTimers();
+});
 
 function createWrapper(
     components: ComponentReference,
@@ -39,7 +46,7 @@ describe("cleanUp", () => {
         cleanUpElements(wrapper.vm as unknown as Special);
 
         // Execute all setTimeout functions
-        jest.runAllTimers();
+        vi.runAllTimers();
         // Let vue update everything
         await wrapper.vm.$nextTick();
 
@@ -56,7 +63,7 @@ describe("cleanUp", () => {
         cleanUpElements(wrapper.vm as unknown as Special);
 
         // Execute all setTimeout functions
-        jest.runAllTimers();
+        vi.runAllTimers();
         // Let vue update everything
         await wrapper.vm.$nextTick();
 

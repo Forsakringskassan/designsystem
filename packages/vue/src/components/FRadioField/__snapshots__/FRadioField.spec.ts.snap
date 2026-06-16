@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots should match snapshot with label and input 1`] = `
+exports[`snapshots > should match snapshot with label and input 1`] = `
 <div
   class="radio-button"
 >
@@ -11,6 +11,7 @@ exports[`snapshots should match snapshot with label and input 1`] = `
     type="radio"
     value="Default value"
   />
+   
   <label
     class="radio-button__label"
     for="fkui-vue-element-0001"
@@ -18,6 +19,7 @@ exports[`snapshots should match snapshot with label and input 1`] = `
     
     Default label
     
+     
     <!--v-if-->
   </label>
 </div>

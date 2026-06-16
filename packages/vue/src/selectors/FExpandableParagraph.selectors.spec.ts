@@ -1,5 +1,6 @@
 import { defineComponent } from "vue";
 import { mount } from "@vue/test-utils";
+import { expect, it } from "vitest";
 import { FExpandableParagraph } from "../components";
 import { FExpandableParagraphSelectors } from "./FExpandableParagraph.selectors";
 

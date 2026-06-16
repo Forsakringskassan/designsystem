@@ -1,4 +1,5 @@
 import { VueWrapper, shallowMount } from "@vue/test-utils";
+import { describe, expect, it, vi } from "vitest";
 import { TranslationPlugin } from "../../plugins";
 import FFileItem from "./FFileItem.vue";
 
@@ -42,7 +43,7 @@ describe("FileItem", () => {
     });
 
     it("should pass listeners", async () => {
-        const foobar = jest.fn();
+        const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
         });

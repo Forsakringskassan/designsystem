@@ -1,5 +1,6 @@
-import "html-validate/jest";
+import "html-validate/vitest";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import FLabel from "./FLabel.vue";
 
 function createWrapper({ slots = {} } = {}): VueWrapper {

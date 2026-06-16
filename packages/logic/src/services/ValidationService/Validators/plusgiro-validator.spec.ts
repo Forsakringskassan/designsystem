@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { plusgiroValidator } from "./plusgiro-validator";
 
 const element = document.createElement("input");

@@ -1,5 +1,6 @@
-import "html-validate/jest";
 import { VueWrapper, shallowMount } from "@vue/test-utils";
+import { expect, it } from "vitest";
+import "html-validate/vitest";
 import { FLabel } from "../components/FLabel";
 import { FTextField } from "../components/FTextField";
 import { getInputElement } from "./get-input-element";

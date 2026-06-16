@@ -1,5 +1,6 @@
 import { type ComponentPublicInstance, ref } from "vue";
 import { mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import ITableHeader from "./ITableHeader.vue";
 import { normalizeTableColumn } from "./table-column";
 

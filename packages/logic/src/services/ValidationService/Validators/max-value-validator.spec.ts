@@ -1,3 +1,4 @@
+import { beforeAll, describe, expect, it, vi } from "vitest";
 import { maxValueValidator } from "./max-value-validator";
 
 const element = document.createElement("input");
@@ -10,9 +11,9 @@ describe("validation", () => {
     beforeAll(() => {
         /* eslint-disable-next-line no-console -- technical debt, bad practice
          * and console is not restored so it leaks to other tests, should use
-         * jest.spyOn(..) at least and for tests expected to log should have
+         * vi.spyOn(..) at least and for tests expected to log should have
          * explicit tests for this */
-        console.error = jest.fn();
+        console.error = vi.fn();
     });
 
     it.each`
@@ -50,7 +51,7 @@ describe("validation", () => {
         expect(() =>
             maxValueValidator.validation!("2", element, { maxValue: "five" }),
         ).toThrowErrorMatchingInlineSnapshot(
-            `"config.maxValue must be a number"`,
+            `[Error: config.maxValue must be a number]`,
         );
     });
 });

@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { hoursMinutesValidator } from "./hours-minutes-validator";
 
 const element = document.createElement("input");

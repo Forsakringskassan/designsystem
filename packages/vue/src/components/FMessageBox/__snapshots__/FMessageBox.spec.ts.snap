@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`FMessageBox should match snapshot with content 1`] = `
+exports[`FMessageBox > should match snapshot with content 1`] = `
 <div
   class="message-box message-box--success"
 >
@@ -9,11 +9,13 @@ exports[`FMessageBox should match snapshot with content 1`] = `
   >
     Meddelande
   </span>
+   
   <div
     class="iflex iflex--gap-2x"
   >
     
     <!--v-if-->
+     
     <div
       class="iflex__item iflex--align-center iflex--grow message-box__content"
     >
@@ -30,7 +32,7 @@ exports[`FMessageBox should match snapshot with content 1`] = `
 </div>
 `;
 
-exports[`FMessageBox should match snapshot with correct type 1`] = `
+exports[`FMessageBox > should match snapshot with correct type 1`] = `
 <div
   class="message-box message-box--info"
 >
@@ -39,11 +41,13 @@ exports[`FMessageBox should match snapshot with correct type 1`] = `
   >
     Informationsmeddelande
   </span>
+   
   <div
     class="iflex iflex--gap-2x"
   >
     
     <!--v-if-->
+     
     <div
       class="iflex__item iflex--align-center iflex--grow message-box__content"
     >
@@ -55,7 +59,7 @@ exports[`FMessageBox should match snapshot with correct type 1`] = `
 </div>
 `;
 
-exports[`FMessageBox should match snapshot with correct type 2`] = `
+exports[`FMessageBox > should match snapshot with correct type 2`] = `
 <div
   class="message-box message-box--error"
 >
@@ -64,11 +68,13 @@ exports[`FMessageBox should match snapshot with correct type 2`] = `
   >
     Felmeddelande
   </span>
+   
   <div
     class="iflex iflex--gap-2x"
   >
     
     <!--v-if-->
+     
     <div
       class="iflex__item iflex--align-center iflex--grow message-box__content"
     >
@@ -80,7 +86,7 @@ exports[`FMessageBox should match snapshot with correct type 2`] = `
 </div>
 `;
 
-exports[`FMessageBox should match snapshot with correct type 3`] = `
+exports[`FMessageBox > should match snapshot with correct type 3`] = `
 <div
   class="message-box message-box--warning"
 >
@@ -89,11 +95,13 @@ exports[`FMessageBox should match snapshot with correct type 3`] = `
   >
     Varningsmeddelande
   </span>
+   
   <div
     class="iflex iflex--gap-2x"
   >
     
     <!--v-if-->
+     
     <div
       class="iflex__item iflex--align-center iflex--grow message-box__content"
     >
@@ -105,7 +113,7 @@ exports[`FMessageBox should match snapshot with correct type 3`] = `
 </div>
 `;
 
-exports[`FMessageBox should match snapshot with correct type 4`] = `
+exports[`FMessageBox > should match snapshot with correct type 4`] = `
 <div
   class="message-box message-box--success"
 >
@@ -114,11 +122,13 @@ exports[`FMessageBox should match snapshot with correct type 4`] = `
   >
     Meddelande
   </span>
+   
   <div
     class="iflex iflex--gap-2x"
   >
     
     <!--v-if-->
+     
     <div
       class="iflex__item iflex--align-center iflex--grow message-box__content"
     >

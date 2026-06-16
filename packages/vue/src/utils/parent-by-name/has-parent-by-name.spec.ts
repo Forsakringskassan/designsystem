@@ -1,5 +1,6 @@
 import { type ComponentPublicInstance, defineComponent } from "vue";
 import { VueWrapper, mount } from "@vue/test-utils";
+import { beforeEach, describe, expect, it } from "vitest";
 import { hasParentByName } from "./has-parent-by-name";
 
 const TEMPLATE_WITH_GRANDCHILD = /* HTML */ `

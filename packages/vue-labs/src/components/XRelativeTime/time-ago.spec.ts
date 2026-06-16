@@ -1,16 +1,17 @@
 import { useTranslate } from "@fkui/vue";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { timeAgo } from "./time-ago";
 
 const $t = useTranslate();
 const now = new Date("1999-12-31T13:37:00Z").getTime();
 
 beforeEach(() => {
-    jest.useFakeTimers();
-    jest.setSystemTime(now);
+    vi.useFakeTimers();
+    vi.setSystemTime(now);
 });
 
 afterEach(() => {
-    jest.useRealTimers();
+    vi.useRealTimers();
 });
 
 describe("timeAgo", () => {

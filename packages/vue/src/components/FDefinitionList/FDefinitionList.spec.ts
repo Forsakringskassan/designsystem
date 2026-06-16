@@ -1,4 +1,5 @@
 import { VueWrapper, mount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
 import FDefinitionList from "./FDefinitionList.vue";
 import { FDefinitionListItem } from "./f-definition-list-item";
 

@@ -1,4 +1,5 @@
-import "html-validate/jest";
+import { describe, expect, it } from "vitest";
+import "html-validate/vitest";
 
 describe("html-validate", () => {
     it("should allow flow content", () => {

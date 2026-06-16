@@ -4,7 +4,8 @@ import {
     HtmlValidate,
     cjsResolver,
 } from "html-validate/node";
-import "html-validate/jest";
+import { describe, expect, it } from "vitest";
+import "html-validate/vitest";
 import IFlexItem from "./IFlexItem.vue";
 import { ALIGNMENT } from "./constants";
 
@@ -73,7 +74,7 @@ describe("html-validate", () => {
             "html-validate-vue:recommended",
             "@fkui/vue:recommended",
         ],
-        plugins: ["<rootDir>/htmlvalidate", "html-validate-vue"],
+        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
     });
     const htmlvalidate = new HtmlValidate(loader);
 
@@ -97,7 +98,7 @@ describe("html-validate", () => {
         `;
         const report = await htmlvalidate.validateString(markup);
         expect(report).toBeInvalid();
-        expect(report).toMatchInlineCodeframe(`
+        await expect(report).toMatchInlineCodeframe(`
             "error: <i-flex-item> element requires a "i-flex > i-flex-item" ancestor (element-required-ancestor)
               1 |
               2 |             <div>
@@ -129,7 +130,7 @@ describe("html-validate", () => {
             `;
             const report = await htmlvalidate.validateString(markup);
             expect(report).toBeInvalid();
-            expect(report).toMatchInlineCodeframe(`
+            await expect(report).toMatchInlineCodeframe(`
                 "error: Attribute "align" has invalid value "invalid" (attribute-allowed-values)
                   1 |
                   2 |                 <i-flex>

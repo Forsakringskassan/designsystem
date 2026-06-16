@@ -1,5 +1,6 @@
 import { type ComponentPublicInstance } from "vue";
 import { flushPromises, mount } from "@vue/test-utils";
+import { describe, expect, it, vi } from "vitest";
 import ITableText from "./ITableText.vue";
 import { normalizeTableColumn } from "./table-column";
 
@@ -7,9 +8,9 @@ interface Row {
     foo: string;
 }
 
-jest.mock("./start-stop-edit", () => ({
+vi.mock("./start-stop-edit", () => ({
     useStartStopEdit: () => ({
-        stopEdit: jest.fn(),
+        stopEdit: vi.fn(),
     }),
 }));
 

@@ -1,7 +1,8 @@
 import flushPromises from "flush-promises";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { scrollTo } from "./scroll-to";
 
-const spyScrollTo = jest.fn();
+const spyScrollTo = vi.fn();
 
 describe("scrollTo with offset signature", () => {
     beforeEach(() => {
@@ -36,7 +37,7 @@ describe("scrollTo with options signature", () => {
     const frameDuration = 1000 / 60;
 
     beforeEach(() => {
-        jest.spyOn(
+        vi.spyOn(
             document.documentElement,
             "clientTop",
             "get",
@@ -44,12 +45,12 @@ describe("scrollTo with options signature", () => {
         Object.assign(global.window, { pageYOffset: windowScrollPosition });
         Object.defineProperty(window, "scrollTo", { value: spyScrollTo });
         spyScrollTo.mockClear();
-        jest.useFakeTimers();
+        vi.useFakeTimers();
     });
 
     function mockElement(): Element {
         const element = document.createElement("input");
-        const mock = jest.fn();
+        const mock = vi.fn();
         mock.mockReturnValue({ top: elementPositionAboveScreen });
         element.getBoundingClientRect = mock;
 
@@ -61,7 +62,7 @@ describe("scrollTo with options signature", () => {
 
         scrollTo(element, { duration: 1000 });
 
-        jest.advanceTimersByTime(frameDuration * 60);
+        vi.advanceTimersByTime(frameDuration * 60);
         expect(spyScrollTo).toHaveBeenCalledTimes(60);
     });
 
@@ -73,11 +74,11 @@ describe("scrollTo with options signature", () => {
             resolved = true;
         });
 
-        jest.advanceTimersByTime(frameDuration * 59);
+        vi.advanceTimersByTime(frameDuration * 59);
         await flushPromises();
         expect(resolved).toBeFalsy();
 
-        jest.advanceTimersByTime(frameDuration * 1);
+        vi.advanceTimersByTime(frameDuration * 1);
         await flushPromises();
         expect(resolved).toBeTruthy();
     });
@@ -87,7 +88,7 @@ describe("scrollTo with options signature", () => {
 
         scrollTo(element, { duration: 500 }); //30 frames
 
-        jest.advanceTimersByTime(frameDuration * 30);
+        vi.advanceTimersByTime(frameDuration * 30);
 
         expect(spyScrollTo).toHaveBeenCalledTimes(30);
 
@@ -110,7 +111,7 @@ describe("scrollTo with options signature", () => {
 
         scrollTo(element, { duration: 500, offset: 50 });
 
-        jest.advanceTimersByTime(frameDuration * 30);
+        vi.advanceTimersByTime(frameDuration * 30);
 
         expect(spyScrollTo).toHaveBeenCalledTimes(30);
         expect(spyScrollTo.mock.calls[0][0].top).toMatchInlineSnapshot(

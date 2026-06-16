@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots should match snapshot when label and description slots are not specified 1`] = `
+exports[`snapshots > should match snapshot when label and description slots are 'not specified' 1`] = `
 <div
   class="text-field"
 >
@@ -18,6 +18,7 @@ exports[`snapshots should match snapshot when label and description slots are no
       </span>
       
       
+       
       
       
       <span
@@ -28,10 +29,12 @@ exports[`snapshots should match snapshot when label and description slots are no
         >
           My descriptionScreenReaderText
         </span>
+         
         <span>
           My descriptionText
         </span>
       </span>
+       
       <span
         class="label__description label__description--format"
       >
@@ -40,20 +43,24 @@ exports[`snapshots should match snapshot when label and description slots are no
         >
           My discreteDescriptionScreenReaderText
         </span>
+         
         <span>
           My discreteDescriptionText
         </span>
       </span>
       
       
+       
       <!--v-if-->
     </label>
   </div>
+   
   <div
     class="text-field__input-wrapper i-width-sm-12"
   >
     
     
+     
     <div
       class="text-field__icon-wrapper"
     >
@@ -62,19 +69,25 @@ exports[`snapshots should match snapshot when label and description slots are no
         id="fkui-vue-element-0001"
         type="text"
       />
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
     </div>
+     
     
     
   </div>
+   
   <!--v-if-->
 </div>
 `;
 
-exports[`snapshots should match snapshot when label and description slots are specified 1`] = `
+exports[`snapshots > should match snapshot when label and description slots are 'specified' 1`] = `
 <div
   class="text-field"
 >
@@ -90,19 +103,23 @@ exports[`snapshots should match snapshot when label and description slots are sp
       Custom default slot
       
       
+       
       
       
       Custom description slot
       
       
+       
       <!--v-if-->
     </label>
   </div>
+   
   <div
     class="text-field__input-wrapper i-width-sm-12"
   >
     
     
+     
     <div
       class="text-field__icon-wrapper"
     >
@@ -111,19 +128,25 @@ exports[`snapshots should match snapshot when label and description slots are sp
         id="fkui-vue-element-0001"
         type="text"
       />
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
     </div>
+     
     
     
   </div>
+   
   <!--v-if-->
 </div>
 `;
 
-exports[`snapshots should match snapshot when validityMode is ERROR and isValid is false 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'ERROR' and isValid is false 1`] = `
 <div
   class="text-field text-field--error"
 >
@@ -139,8 +162,15 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
       Label
       
       
+       
       
       
+      <!--v-if-->
+       
+      <!--v-if-->
+      
+      
+       
       <span
         class="label__message label__message--error"
       >
@@ -149,6 +179,7 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
           library="f"
           name="error"
         />
+         
         
         
         
@@ -159,11 +190,13 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
       </span>
     </label>
   </div>
+   
   <div
     class="text-field__input-wrapper i-width-sm-12"
   >
     
     
+     
     <div
       class="text-field__icon-wrapper"
     >
@@ -172,19 +205,25 @@ exports[`snapshots should match snapshot when validityMode is ERROR and isValid 
         id="elementId"
         type="text"
       />
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
     </div>
+     
     
     
   </div>
+   
   <!--v-if-->
 </div>
 `;
 
-exports[`snapshots should match snapshot when validityMode is INITIAL and isValid is false 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'INITIAL' and isValid is false 1`] = `
 <div
   class="text-field"
 >
@@ -200,16 +239,25 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
       Label
       
       
+       
       
       
       <!--v-if-->
+       
+      <!--v-if-->
+      
+      
+       
+      <!--v-if-->
     </label>
   </div>
+   
   <div
     class="text-field__input-wrapper i-width-sm-12"
   >
     
     
+     
     <div
       class="text-field__icon-wrapper"
     >
@@ -218,19 +266,25 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
         id="elementId"
         type="text"
       />
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
     </div>
+     
     
     
   </div>
+   
   <!--v-if-->
 </div>
 `;
 
-exports[`snapshots should match snapshot when validityMode is INITIAL and isValid is true 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'INITIAL' and isValid is true 1`] = `
 <div
   class="text-field"
 >
@@ -246,16 +300,25 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
       Label
       
       
+       
       
       
       <!--v-if-->
+       
+      <!--v-if-->
+      
+      
+       
+      <!--v-if-->
     </label>
   </div>
+   
   <div
     class="text-field__input-wrapper i-width-sm-12"
   >
     
     
+     
     <div
       class="text-field__icon-wrapper"
     >
@@ -264,19 +327,25 @@ exports[`snapshots should match snapshot when validityMode is INITIAL and isVali
         id="elementId"
         type="text"
       />
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
     </div>
+     
     
     
   </div>
+   
   <!--v-if-->
 </div>
 `;
 
-exports[`snapshots should match snapshot when validityMode is VALID and isValid is true 1`] = `
+exports[`snapshots > should match snapshot when validityMode is 'VALID' and isValid is true 1`] = `
 <div
   class="text-field"
 >
@@ -292,16 +361,25 @@ exports[`snapshots should match snapshot when validityMode is VALID and isValid 
       Label
       
       
+       
       
       
       <!--v-if-->
+       
+      <!--v-if-->
+      
+      
+       
+      <!--v-if-->
     </label>
   </div>
+   
   <div
     class="text-field__input-wrapper i-width-sm-12"
   >
     
     
+     
     <div
       class="text-field__icon-wrapper"
     >
@@ -310,19 +388,25 @@ exports[`snapshots should match snapshot when validityMode is VALID and isValid 
         id="elementId"
         type="text"
       />
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
     </div>
+     
     
     
   </div>
+   
   <!--v-if-->
 </div>
 `;
 
-exports[`snapshots should match snapshot with label and input 1`] = `
+exports[`snapshots > should match snapshot with label and input 1`] = `
 <div
   class="text-field"
 >
@@ -338,16 +422,25 @@ exports[`snapshots should match snapshot with label and input 1`] = `
       Label
       
       
+       
       
       
       <!--v-if-->
+       
+      <!--v-if-->
+      
+      
+       
+      <!--v-if-->
     </label>
   </div>
+   
   <div
     class="text-field__input-wrapper i-width-sm-12"
   >
     
     
+     
     <div
       class="text-field__icon-wrapper"
     >
@@ -356,19 +449,25 @@ exports[`snapshots should match snapshot with label and input 1`] = `
         id="fkui-vue-element-0001"
         type="text"
       />
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
     </div>
+     
     
     
   </div>
+   
   <!--v-if-->
 </div>
 `;
 
-exports[`snapshots should match snapshot with label, error message and input 1`] = `
+exports[`snapshots > should match snapshot with label, error message and input 1`] = `
 <div
   class="text-field"
 >
@@ -384,8 +483,15 @@ exports[`snapshots should match snapshot with label, error message and input 1`]
       Label
       
       
+       
       
       
+      <!--v-if-->
+       
+      <!--v-if-->
+      
+      
+       
       <span
         class="label__message label__message--error"
       >
@@ -394,6 +500,7 @@ exports[`snapshots should match snapshot with label, error message and input 1`]
           library="f"
           name="error"
         />
+         
         
         
         ERROR_MESSAGE
@@ -402,11 +509,13 @@ exports[`snapshots should match snapshot with label, error message and input 1`]
       </span>
     </label>
   </div>
+   
   <div
     class="text-field__input-wrapper i-width-sm-12"
   >
     
     
+     
     <div
       class="text-field__icon-wrapper"
     >
@@ -415,19 +524,25 @@ exports[`snapshots should match snapshot with label, error message and input 1`]
         id="fkui-vue-element-0001"
         type="text"
       />
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
     </div>
+     
     
     
   </div>
+   
   <!--v-if-->
 </div>
 `;
 
-exports[`snapshots should match snapshot with label, tooltip, description, error message and input 1`] = `
+exports[`snapshots > should match snapshot with label, tooltip, description, error message and input 1`] = `
 <div
   class="text-field"
 >
@@ -449,11 +564,13 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
           
         </label>
       </div>
+       
       
       
       TOOLTIP
       
       
+       
       <label
         class="label sr-separator"
         for="fkui-vue-element-0001"
@@ -463,6 +580,7 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
         DESCRIPTION
         
         
+         
         <span
           class="label__message label__message--error"
         >
@@ -471,6 +589,7 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
             library="f"
             name="error"
           />
+           
           
           
           ERROR_MESSAGE
@@ -480,11 +599,13 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
       </label>
     </div>
   </div>
+   
   <div
     class="text-field__input-wrapper i-width-sm-12"
   >
     
     
+     
     <div
       class="text-field__icon-wrapper"
     >
@@ -493,14 +614,20 @@ exports[`snapshots should match snapshot with label, tooltip, description, error
         id="fkui-vue-element-0001"
         type="text"
       />
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
+       
       <!--v-if-->
     </div>
+     
     
     
   </div>
+   
   <!--v-if-->
 </div>
 `;

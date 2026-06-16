@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { sizeClass } from "./sizes";
 
 describe("should return correct class for", () => {

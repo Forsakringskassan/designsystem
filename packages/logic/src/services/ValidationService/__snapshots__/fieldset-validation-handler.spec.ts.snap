@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Fieldset group should send validity event when checking radio/checkbox input 1`] = `
+exports[`Fieldset group > should send validity event when checking radio/checkbox input 1`] = `
 {
   "elementId": "fieldset-element",
   "isValid": true,
@@ -41,7 +41,7 @@ exports[`Fieldset group should send validity event when checking radio/checkbox 
 }
 `;
 
-exports[`Fieldset group should send validity event when checking radio/checkbox input 2`] = `
+exports[`Fieldset group > should send validity event when checking radio/checkbox input 2`] = `
 {
   "elementId": "fieldset-element",
   "isValid": true,
@@ -82,7 +82,7 @@ exports[`Fieldset group should send validity event when checking radio/checkbox 
 }
 `;
 
-exports[`Fieldset group should send validity event when clicking outside fieldset group 1`] = `
+exports[`Fieldset group > should send validity event when clicking outside fieldset group 1`] = `
 {
   "elementId": "fieldset-element",
   "isValid": false,
@@ -123,7 +123,7 @@ exports[`Fieldset group should send validity event when clicking outside fieldse
 }
 `;
 
-exports[`Fieldset group should send validity event when leaving fieldset group (focusin-event on element outside fieldset) 1`] = `
+exports[`Fieldset group > should send validity event when leaving fieldset group (focusin-event on element outside fieldset) 1`] = `
 {
   "elementId": "fieldset-element",
   "isValid": false,

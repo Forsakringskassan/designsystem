@@ -6,27 +6,28 @@ import {
 } from "@fkui/logic";
 import { VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { FCheckboxField, FFieldset, FTextField } from "../../components";
 import { ComponentValidityEvent } from "../../types";
 import { dispatchComponentValidityEvent } from "../../utils";
 import { ValidationPlugin } from "./validation-plugin";
 
-const addValidatorsToElement = jest.spyOn(
+const addValidatorsToElement = vi.spyOn(
     ValidationService,
     "addValidatorsToElement",
 );
 
-const removeValidatorsFromElement = jest.spyOn(
+const removeValidatorsFromElement = vi.spyOn(
     ValidationService,
     "removeValidatorsFromElement",
 );
 
-const validateElement = jest.spyOn(ValidationService, "validateElement");
+const validateElement = vi.spyOn(ValidationService, "validateElement");
 
 ValidationService.setErrorMessages({ required: "REQUIRED" });
 
-afterEach(() => {
-    jest.clearAllMocks();
+afterEach(async () => {
+    vi.clearAllMocks();
 });
 
 const BaseComponent = defineComponent({
@@ -68,7 +69,7 @@ it("should pass input element, validators and configurations to ValidationServic
     expect.assertions(2);
     const markup = /* HTML */ `
         <f-text-field
-            id="val-id"
+            id="val-id-2"
             v-validation.required.maxLength="{ maxLength: { length: 10 } }"
         >
             some label
@@ -95,14 +96,14 @@ it("should throw exeception when applying a non supported validator", async () =
         </f-text-field>
     `;
     expect(() => createWrapper(markup)).toThrowErrorMatchingInlineSnapshot(
-        `"Validator 'notSupportedValidatorName' does not exist or is not registered, see ValidatorService.registerValidator."`,
+        `[Error: Validator 'notSupportedValidatorName' does not exist or is not registered, see ValidatorService.registerValidator.]`,
     );
     /* technical debt: this is a hack to workaround the watchdog timer that
      * kicks in if validation occurs when no validators are present. This is
      * mostly to prevent regressions as the watchdog shouldn't fire no matter
      * what in this case. Optimally this flow should be rewritten so we could
      * properly and reliably await for stuff to happen but in the meantime this
-     * could use `jest.useFakeTimers()` if it weren't for the fact that the
+     * could use `vi.useFakeTimers()` if it weren't for the fact that the
      * current implementation heaviliy uses timers defer execution so the tests
      * would need to be sprinkled with various timer advancements. */
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -117,7 +118,7 @@ it("should throw exeception when applying configuration that do not match valida
         </f-text-field>
     `;
     expect(() => createWrapper(markup)).toThrowErrorMatchingInlineSnapshot(
-        `"Have you forget to add 'maxLengthWrongName' to v-validation.maxLengthWrongName?"`,
+        `[Error: Have you forget to add 'maxLengthWrongName' to v-validation.maxLengthWrongName?]`,
     );
 });
 
@@ -129,7 +130,7 @@ it("should throw exeception when applying directive to a tag without input eleme
         </div>
     `;
     expect(() => createWrapper(markup)).toThrowErrorMatchingInlineSnapshot(
-        `"Couldn't find any validatable element"`,
+        `[Error: Couldn't find any validatable element]`,
     );
 });
 
@@ -263,8 +264,7 @@ it("should call ValidationService.removeValidatorsFromElement and emit 'componen
     wrapper.vm.$data.exists = false;
     await flushPromises();
 
-    expect(removeValidatorsFromElement).toHaveBeenNthCalledWith(
-        1,
+    expect(removeValidatorsFromElement).toHaveBeenCalledWith(
         validatableElement,
     );
     expect(wrapper.vm.$data.componentUnmountCalled).toBeTruthy();

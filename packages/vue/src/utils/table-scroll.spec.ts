@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { TableScroll, tableScrollClasses } from "./table-scroll";
 
 it("should generate no classes for NONE", () => {

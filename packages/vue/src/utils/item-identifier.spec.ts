@@ -1,3 +1,4 @@
+import { beforeEach, describe, expect, it } from "vitest";
 import {
     copyItemIdentifier,
     findItemIdentifier,
@@ -42,7 +43,7 @@ describe("getItemIdentifier()", () => {
         expect(() => {
             getItemIdentifier(item);
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Expected item to have an internal key but no key was set"`,
+            `[TypeError: Expected item to have an internal key but no key was set]`,
         );
     });
 });
@@ -148,7 +149,7 @@ describe("setItemIdentifiers()", () => {
         expect(() => {
             setItemIdentifiers(items, "id");
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Expected each item to have identifier [id] with unique value but encountered duplicate of "b" in item index 2."`,
+            `[Error: Expected each item to have identifier [id] with unique value but encountered duplicate of "b" in item index 2.]`,
         );
     });
 
@@ -158,7 +159,7 @@ describe("setItemIdentifiers()", () => {
         expect(() => {
             setItemIdentifiers(items, "id");
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Key [id] is missing or has invalid value in item index 2"`,
+            `[Error: Key [id] is missing or has invalid value in item index 2]`,
         );
     });
 
@@ -169,12 +170,12 @@ describe("setItemIdentifiers()", () => {
         expect(() => {
             setItemIdentifiers(itemsEmpty, "id");
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Key [id] is missing or has invalid value in item index 2"`,
+            `[Error: Key [id] is missing or has invalid value in item index 2]`,
         );
         expect(() => {
             setItemIdentifiers(itemsNull, "id");
         }).toThrowErrorMatchingInlineSnapshot(
-            `"Key [id] is missing or has invalid value in item index 2"`,
+            `[Error: Key [id] is missing or has invalid value in item index 2]`,
         );
     });
 });
