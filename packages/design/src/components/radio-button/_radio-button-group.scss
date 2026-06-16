@@ -4,15 +4,19 @@
 @use "./radio-button";
 
 .radio-button-group {
+    margin: 0;
     &__content {
-        display: flex;
-        flex-direction: column;
+        gap: 1rem;
+
+        .radio-button {
+            margin-bottom: 0;
+        }
     }
 
     &--horizontal {
         .radio-button-group__content {
             flex-direction: row;
-
+            gap: 1rem;
             .radio-button {
                 margin-bottom: 0;
             }
@@ -21,7 +25,7 @@
                 flex-direction: column;
 
                 .radio-button {
-                    margin-bottom: size.$margin-100;
+                    margin-bottom: 0;
                 }
             }
         }

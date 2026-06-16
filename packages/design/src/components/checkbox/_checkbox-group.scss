@@ -1,11 +1,19 @@
 @use "../../core/size";
 @use ".././selectable-item/selectable-item";
 
+.checkbox-group.fieldset {
+    margin: 0;
+}
 .checkbox-group {
+    margin: 0;
     &__content {
-        display: flex;
-        flex-direction: column;
+        gap: 1rem !important;
+
+        .checkbox {
+            margin-bottom: 0;
+        }
     }
+
     &--border {
         .checkbox-group__content {
             .checkbox {

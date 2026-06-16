@@ -4,10 +4,13 @@
 
 .fieldset {
     border: 0;
-    margin: 0 0 core.densify(var(--f-margin-component-bottom));
     min-width: 0;
     padding: 0;
     width: var(--f-width-full);
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
 
     &__label {
         // make this selector more specific than .label
@@ -20,5 +23,8 @@
     &__content {
         display: flex;
         flex-direction: column;
+        gap: 1.5rem;
+
+        --f-margin-component-bottom: 0;
     }
 }
