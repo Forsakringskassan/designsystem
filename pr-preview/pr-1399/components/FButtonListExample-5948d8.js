@@ -187,7 +187,7 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
      */
     variant: {
       type: String,
-      default: "primary",
+      required: true,
       validator(value) {
         return ["primary", "secondary", "tertiary"].includes(value);
       }
@@ -200,7 +200,7 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
      */
     size: {
       type: String,
-      default: "medium",
+      required: true,
       validator(value) {
         return ["small", "medium", "large"].includes(value);
       }
