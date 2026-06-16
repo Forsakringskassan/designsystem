@@ -270,6 +270,12 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Om FKUI Vue Labs",
     "Tidsinmatning",
     "XTimeTextField",
@@ -279,12 +285,6 @@
     "XRelativeTime",
     "XFileDragdrop",
     "XFileDragdrop",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -565,18 +565,6 @@
     "modalfunktion",
     "bekräftelsemodal",
     "options API",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -612,6 +600,18 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -695,12 +695,12 @@
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
-    "FInteractiveTablePageObject: header() method",
-    "FInteractiveTablePageObject: checkbox() method",
-    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: fileName() method",
+    "FInteractiveTablePageObject: header() method",
+    "FInteractiveTablePageObject: checkbox() method",
+    "FInteractiveTablePageObject: cell() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
@@ -1365,6 +1365,27 @@
       ]
     },
     {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
       "url": "functions/labs/index.html",
       "title": "Om FKUI Vue Labs",
       "terms": []
@@ -1395,27 +1416,6 @@
       "title": "XFileDragdrop",
       "terms": [
         "XFileDragdrop"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": [
-        "TranslationService"
       ]
     },
     {
@@ -2086,38 +2086,6 @@
       ]
     },
     {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -2235,6 +2203,38 @@
       "title": "findElementFromVueRef",
       "terms": [
         "DOM-funktion"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
       ]
     },
     {
@@ -2542,21 +2542,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
-      "title": "FInteractiveTablePageObject: header() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
-      "title": "FInteractiveTablePageObject: checkbox() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
       "title": "FFileItemPageObject: FFileItemPageObject() constructor",
       "terms": []
@@ -2569,6 +2554,21 @@
     {
       "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
       "title": "FFileItemPageObject: fileName() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
+      "title": "FInteractiveTablePageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
+      "title": "FInteractiveTablePageObject: checkbox() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
       "terms": []
     },
     {
@@ -3068,11 +3068,11 @@
     "268": 66,
     "269": 66,
     "270": 67,
-    "271": 68,
+    "271": 67,
     "272": 68,
-    "273": 69,
+    "273": 68,
     "274": 69,
-    "275": 70,
+    "275": 69,
     "276": 70,
     "277": 71,
     "278": 71,
@@ -3364,49 +3364,49 @@
     "564": 155,
     "565": 156,
     "566": 156,
-    "567": 156,
+    "567": 157,
     "568": 157,
-    "569": 157,
-    "570": 157,
-    "571": 158,
-    "572": 158,
-    "573": 158,
-    "574": 159,
-    "575": 159,
-    "576": 159,
-    "577": 160,
-    "578": 160,
-    "579": 161,
-    "580": 161,
-    "581": 162,
-    "582": 162,
-    "583": 163,
-    "584": 163,
-    "585": 164,
-    "586": 164,
-    "587": 165,
-    "588": 165,
-    "589": 166,
-    "590": 166,
-    "591": 167,
-    "592": 167,
-    "593": 168,
-    "594": 168,
-    "595": 169,
-    "596": 169,
-    "597": 170,
-    "598": 170,
-    "599": 171,
-    "600": 171,
-    "601": 172,
-    "602": 172,
-    "603": 173,
-    "604": 173,
-    "605": 173,
-    "606": 174,
-    "607": 174,
+    "569": 158,
+    "570": 158,
+    "571": 159,
+    "572": 159,
+    "573": 160,
+    "574": 160,
+    "575": 161,
+    "576": 161,
+    "577": 162,
+    "578": 162,
+    "579": 163,
+    "580": 163,
+    "581": 164,
+    "582": 164,
+    "583": 165,
+    "584": 165,
+    "585": 166,
+    "586": 166,
+    "587": 167,
+    "588": 167,
+    "589": 168,
+    "590": 168,
+    "591": 169,
+    "592": 169,
+    "593": 169,
+    "594": 170,
+    "595": 170,
+    "596": 171,
+    "597": 171,
+    "598": 172,
+    "599": 172,
+    "600": 173,
+    "601": 173,
+    "602": 173,
+    "603": 174,
+    "604": 174,
+    "605": 174,
+    "606": 175,
+    "607": 175,
     "608": 175,
-    "609": 175,
+    "609": 176,
     "610": 176,
     "611": 176,
     "612": 177,
