@@ -150,6 +150,9 @@ FIcon_default.render = render;
 FIcon_default.__file = "packages/vue/src/components/FIcon/FIcon.vue";
 var FIcon_default2 = FIcon_default;
 
+// packages/vue/src/components/FButton/button-inflight-injection-key.ts
+var buttonInflightInjectionKey = /* @__PURE__ */ Symbol();
+
 // packages/vue/src/components/FButton/use-inflight.ts
 import { ref } from "vue";
 function useInflight(fn, disabled) {
@@ -274,13 +277,6 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
     disabled: {
       type: Boolean,
       required: false
-    },
-    /**
-     * Set button to inFlight
-     */
-    isInFlight: {
-      type: Boolean,
-      required: false
     }
   },
   setup(__props, { expose: __expose }) {
@@ -288,7 +284,7 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
     const props = __props;
     const originalAttrs = useAttrs();
     const disabled = computed(() => {
-      return props.disabled || inflight.value || props.isInFlight || isParentInflight.value;
+      return props.disabled || inflight.value || isParentInflight.value;
     });
     const { inflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
     const attrs = { ...originalAttrs, onClick };
@@ -315,13 +311,13 @@ var FButton_default = /* @__PURE__ */ _defineComponent({
       if (props.mobileFullWidth && props.size !== "large") {
         classes.push(`button--full-width`);
       }
-      if (inflight.value || props.isInFlight || isParentInflight.value) {
+      if (inflight.value || isParentInflight.value) {
         classes.push(`button__inflight`);
       }
       return classes;
     });
     const isParentInflight = inject(
-      "isParentInflight",
+      buttonInflightInjectionKey,
       computed(() => false)
     );
     const __returned__ = { props, originalAttrs, disabled, inflight, onClick, attrs, hasIconLeft, hasIconRight, hasIcon, buttonClass, isParentInflight, get FIcon() {
@@ -353,7 +349,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
       _Fragment2,
       { key: 0 },
       [
-        $setup.inflight || $props.isInFlight || $setup.isParentInflight ? (_openBlock2(), _createBlock($setup["FIcon"], {
+        $setup.inflight || $setup.isParentInflight ? (_openBlock2(), _createBlock($setup["FIcon"], {
           key: 0,
           name: "circle-notch-solid",
           class: "button__icon button__spinner"
@@ -368,7 +364,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
       /* STABLE_FRAGMENT */
     )) : _createCommentVNode2("v-if", true),
     !$setup.hasIcon ? (_openBlock2(), _createElementBlock2("span", _hoisted_22, [
-      $setup.inflight || $props.isInFlight || $setup.isParentInflight ? (_openBlock2(), _createBlock($setup["FIcon"], {
+      $setup.inflight || $setup.isParentInflight ? (_openBlock2(), _createBlock($setup["FIcon"], {
         key: 0,
         name: "circle-notch-solid",
         class: "button__icon button__spinner"
@@ -382,7 +378,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
       _Fragment2,
       { key: 2 },
       [
-        $setup.inflight || $props.isInFlight || $setup.isParentInflight ? (_openBlock2(), _createBlock($setup["FIcon"], {
+        $setup.inflight || $setup.isParentInflight ? (_openBlock2(), _createBlock($setup["FIcon"], {
           key: 0,
           name: "circle-notch-solid",
           class: "button__icon button__spinner"

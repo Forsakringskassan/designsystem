@@ -2650,6 +2650,9 @@ import { ElementIdService as ElementIdService3, TranslationService as Translatio
 import { computed, defineComponent as defineComponent10 } from "vue";
 import { ElementIdService as ElementIdService2, ValidationService as ValidationService2, focus as focus4 } from "@fkui/logic";
 
+// packages/vue/src/components/FButton/button-inflight-injection-key.ts
+var buttonInflightInjectionKey = /* @__PURE__ */ Symbol();
+
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
 import { defineComponent as defineComponent8 } from "vue";
 
@@ -3127,11 +3130,27 @@ var FValidationForm_default = defineComponent10({
   components: { FValidationGroup: FValidationGroup_default2, FErrorList: FErrorList_default2 },
   provide() {
     return {
-      isParentInflight: computed(() => this.isInflight)
+      [buttonInflightInjectionKey]: computed(() => this.isInflight)
     };
   },
   inheritAttrs: false,
   props: {
+    /**
+     * Callback function triggered when the form is submitted.
+     *
+     * Since this component declares `emits: ["submit"]`, Vue automatically
+     * intercepts the `@submit` event listener. By declaring this `onSubmit`
+     * prop, the component can intercept, await, and monitor the lifecycle
+     * of the parent's asynchronous submit handler before the event is emitted.
+     *
+     */
+    onSubmit: {
+      type: Function,
+      required: false,
+      default() {
+        return noop2;
+      }
+    },
     /**
      * If given, this function is called before the `submit` event is emitted.
      *
@@ -3237,7 +3256,7 @@ var FValidationForm_default = defineComponent10({
       }
       return true;
     },
-    async onSubmit(event) {
+    async submit(event) {
       this.submitted = true;
       const beforeValidation = this.beforeValidation ? await this.beforeValidation() : void 0;
       if (beforeValidation === 1 /* CANCEL */) {
@@ -3255,7 +3274,7 @@ var FValidationForm_default = defineComponent10({
       }
       this.isInflight = true;
       try {
-        const parentSubmitHandler = this.$.vnode.props?.onSubmit;
+        const parentSubmitHandler = this.$props.onSubmit;
         if (typeof parentSubmitHandler === "function") {
           await parentSubmitHandler(event);
         } else {
@@ -3291,7 +3310,7 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
       _createElementVNode6("form", _mergeProps2({ id: _ctx.id }, _ctx.$attrs, {
         novalidate: "",
         autocomplete: "off",
-        onSubmit: _cache[0] || (_cache[0] = _withModifiers2((...args) => _ctx.onSubmit && _ctx.onSubmit(...args), ["prevent"]))
+        onSubmit: _cache[0] || (_cache[0] = _withModifiers2((...args) => _ctx.submit && _ctx.submit(...args), ["prevent"]))
       }), [
         _ctx.displayErrors ? (_openBlock10(), _createElementBlock10(
           "nav",
