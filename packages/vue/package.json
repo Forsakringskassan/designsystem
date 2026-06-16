@@ -66,7 +66,7 @@
     "unit:watch": "vitest"
   },
   "dependencies": {
-    "@vueuse/core": "12.8.2",
+    "@vueuse/core": "14.3.0",
     "lodash": "4.18.1"
   },
   "devDependencies": {
