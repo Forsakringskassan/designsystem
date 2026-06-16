@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { isRadiobuttonOrCheckbox } from "./is-radiobutton-or-checkbox";
 
 it("should return false for arbitrary elements", () => {

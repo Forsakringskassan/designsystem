@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { flatten } from "./flatten";
 
 it.each`

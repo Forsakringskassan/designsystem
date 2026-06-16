@@ -73,6 +73,24 @@ export default defineComponent({
         resizable: {
             type: Boolean,
         },
+        /**
+         * Automatically adjust the textarea height to fit its content.
+         */
+        autoResize: {
+            type: Boolean,
+        },
+        /**
+         * Maximum number of visible rows when `autoResize` is enabled.
+         * When the content exceeds this height the textarea will scroll.
+         */
+        maxRows: {
+            type: Number,
+            required: false,
+            default: undefined,
+            validator(value: number | undefined): boolean {
+                return value === undefined || (Number.isInteger(value) && value >= 1);
+            },
+        },
     },
     emits: [
         /**
@@ -134,7 +152,13 @@ export default defineComponent({
         textareaClass(): string[] {
             const classes = ["textarea-field__textarea"];
 
-            if (this.resizable) {
+            if (this.autoResize) {
+                classes.push("textarea-field__resize--auto");
+
+                if (this.normalizedMaxRows) {
+                    classes.push("textarea-field__resize--max-rows");
+                }
+            } else if (this.resizable) {
                 classes.push("textarea-field__resize--vertical");
             } else {
                 classes.push("textarea-field__resize--none");
@@ -142,13 +166,53 @@ export default defineComponent({
 
             return classes;
         },
+        textareaRows(): number {
+            const rows = Number(this.attrs.rows);
+
+            return Number.isFinite(rows) && rows > 0 ? rows : 4;
+        },
+        normalizedMaxRows(): number | undefined {
+            const { maxRows } = this;
+
+            if (typeof maxRows !== "number" || !Number.isInteger(maxRows) || maxRows < 1) {
+                return undefined;
+            }
+
+            return Math.max(maxRows, this.textareaRows);
+        },
     },
     mounted() {
         if (isSet(this.softLimit) && !isSet(this.maxlength)) {
             throw new Error("You must pass a maxlength");
         }
+
+        this.updateTextareaHeightVariables();
+    },
+    updated() {
+        this.updateTextareaHeightVariables();
     },
     methods: {
+        updateTextareaHeightVariables(): void {
+            const textarea = this.$refs.textarea as HTMLTextAreaElement | undefined;
+
+            if (!textarea) {
+                return;
+            }
+
+            if (!this.autoResize) {
+                textarea.style.removeProperty("--i-textarea-field-min-height");
+                textarea.style.removeProperty("--i-textarea-field-max-height");
+                return;
+            }
+
+            textarea.style.setProperty("--i-textarea-field-min-height", `${this.textareaRows}lh`);
+
+            if (this.normalizedMaxRows) {
+                textarea.style.setProperty("--i-textarea-field-max-height", `${this.normalizedMaxRows}lh`);
+            } else {
+                textarea.style.removeProperty("--i-textarea-field-max-height");
+            }
+        },
         onInput(event: Event): void {
             if (event.target instanceof HTMLTextAreaElement) {
                 this.$emit("update:modelValue", event.target.value);
@@ -218,6 +282,7 @@ export default defineComponent({
         </f-label>
         <textarea
             :id
+            ref="textarea"
             :class="textareaClass"
             v-bind="attrs"
             :disabled

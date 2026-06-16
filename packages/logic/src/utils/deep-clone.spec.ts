@@ -1,4 +1,5 @@
 /* eslint-disable sonarjs/no-primitive-wrappers, unicorn/new-for-builtins -- for this we need actual copies */
+import { expect, it } from "vitest";
 
 import { deepClone } from "./deep-clone";
 
