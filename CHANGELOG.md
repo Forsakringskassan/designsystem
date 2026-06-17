@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 6.50.0 (2026-06-17)
+
+### Features
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** add textarea auto resize support (refs SFKUI-7920) 5183183
+* **deps:** update vueuse monorepo to v14 4f2cdbe
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/theme-default, @fkui/vue:** button focus should not change style (refs SFKUI-7949) eef6228
+* **@fkui/design:** show tooltip arrow in forced colors (fixes SFKUI-7985) 6b2eed1
+* **deps:** update dependency cssnano to v8.0.2 ([#1424](undefined/Forsakringskassan/designsystem/issues/1424)) a3b783c
+* **deps:** update dependency sass to v1.101.0 ([#1426](undefined/Forsakringskassan/designsystem/issues/1426)) af82a51
+* **deps:** update vue monorepo to v3.5.38 ([#1425](undefined/Forsakringskassan/designsystem/issues/1425)) 1099d7c
+* disable Cypress env to suppress message (refs SFKUI-6500) 06d5bad
+
 ## 6.49.1 (2026-06-11)
 
 ### Bug Fixes
