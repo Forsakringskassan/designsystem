@@ -56,7 +56,8 @@
     "test:ct": "cypress run-ct --headless",
     "version": "scripts/version",
     "postversion": "npm run build",
-    "vue": "npm run --workspace packages/vue --"
+    "vue": "npm run --workspace packages/vue --",
+    "prepare": "commitlint-config"
   },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config"
@@ -77,7 +78,7 @@
     "@babel/core": "7.29.7",
     "@babel/preset-env": "7.29.7",
     "@fkui/cypress-split": "*",
-    "@forsakringskassan/commitlint-config": "3.6.9",
+    "@forsakringskassan/commitlint-config": "4.0.0",
     "@forsakringskassan/cypress-axe": "5.1.3",
     "@forsakringskassan/cypress-visual-regression": "5.0.0",
     "@forsakringskassan/docs-generator": "3.1.1",
@@ -137,14 +138,12 @@
     "npm": ">= 7"
   },
   "allowScripts": {
-    "@forsakringskassan/commitlint-config": true,
     "@parcel/watcher": false,
     "core-js": false,
     "cypress": true,
     "esbuild": true,
     "fsevents": false,
     "nx": false,
-    "simple-git-hooks": true,
     "unrs-resolver": true
   }
 }
