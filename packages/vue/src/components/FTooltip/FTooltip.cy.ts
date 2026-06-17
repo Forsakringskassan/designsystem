@@ -199,3 +199,35 @@ describe("FTooltip", () => {
         });
     });
 });
+
+describe("Visual forcedColor", () => {
+    const forcedColorModes = ["none", "dark", "light"] as const;
+
+    beforeEach(() => {
+        cy.viewport(320, 220);
+    });
+
+    afterEach(() => {
+        cy.forcedColors("none");
+    });
+
+    for (const mode of Object.values(forcedColorModes)) {
+        it(`should render correct styling for mode, ${mode} (visual)`, () => {
+            cy.forcedColors(mode);
+
+            cy.mount(FTooltip, {
+                slots: {
+                    header: `Rubrik`,
+                    body: /* HTML */ ` <p>Lorem ipsum</p> `,
+                },
+                props: {
+                    screenReaderText: "Screen reader text",
+                    headerTag: "h3",
+                    modelValue: true,
+                },
+            });
+
+            cy.toMatchScreenshot({ errorThreshold: 0.001, baseDelay: 500 });
+        });
+    }
+});
