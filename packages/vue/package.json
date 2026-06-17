@@ -86,7 +86,7 @@
     "vite": "8.0.16",
     "vitest": "4.1.8",
     "vue": "3.5.38",
-    "vue-router": "4.6.4"
+    "vue-router": "5.1.0"
   },
   "peerDependencies": {
     "@fkui/date": "^6.50.0",
@@ -94,7 +94,7 @@
     "@fkui/logic": "^6.50.0",
     "fk-icons": "^4.30.1",
     "html-validate": ">= 10.10.0",
-    "vue": "^3.5.0"
+    "vue": "^3.5.34"
   },
   "peerDependenciesMeta": {
     "fk-icons": {
