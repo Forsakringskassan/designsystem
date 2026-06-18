@@ -76,7 +76,7 @@
     "esbuild": "0.28.1",
     "expect": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
-    "vitest": "4.1.8",
+    "vitest": "4.1.9",
     "vue": "3.5.38"
   },
   "peerDependencies": {
