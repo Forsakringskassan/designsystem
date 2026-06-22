@@ -90,7 +90,7 @@
     "@forsakringskassan/eslint-config-typescript": "15.0.19",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "15.0.19",
     "@forsakringskassan/eslint-config-vue": "15.0.19",
-    "@forsakringskassan/jest-config": "29.12.0",
+    "@forsakringskassan/jest-config": "30.3.2",
     "@forsakringskassan/jest-config-vue": "29.12.0",
     "@forsakringskassan/prettier-config": "3.7.2",
     "@forsakringskassan/sass-module-importer": "3.0.0",
