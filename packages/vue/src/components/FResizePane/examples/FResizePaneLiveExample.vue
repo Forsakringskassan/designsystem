@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, defineComponent, ref } from "vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
-import { type LayoutAreaAttachPanel } from "../../FPageLayout";
 import {
+    type LayoutAreaAttachPanel,
     FCheckboxField,
     FFieldset,
     FPageLayout,

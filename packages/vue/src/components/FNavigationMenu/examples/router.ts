@@ -1,4 +1,4 @@
-import { type NavigationMenuItem } from "../navigation-menu-item";
+import { type NavigationMenuItem } from "@fkui/vue";
 
 function generateExampleLabelsAndRoutes(
     nbRoutes: number,
