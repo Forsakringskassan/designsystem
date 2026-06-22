@@ -22,8 +22,13 @@ import { strFromU8, strToU8, zlibSync } from "fflate";
 import fse from "fs-extra";
 import { glob } from "glob";
 import isCI from "is-ci";
+import { readJsonFile } from "./docs/src/utils/index.mts";
 import config from "./docs.config.js";
 import { fontDir } from "./packages/font-default/metadata.mjs";
+
+/**
+ * @typedef {import("@forsakringskassan/docs-generator").Manifest} Manifest
+ */
 
 const require = module.createRequire(import.meta.url);
 
@@ -111,6 +116,30 @@ function sandboxProcessor(folder) {
 /**
  * @returns {import("@forsakringskassan/docs-generator").Processor}
  */
+function partialProcessor() {
+    return {
+        after: "render",
+        name: "fkui:foo-processor",
+        async handler(context) {
+            const {docs} = context;
+            const partials = docs.filter(it => it.kind === 'partial').filter(it => {
+                if (it.name.startsWith("translation:")) {
+                    return true;
+                }
+                if (it.name.startsWith("vue:")) {
+                    return true;
+                }
+                return false;
+            });
+            const json = JSON.stringify(partials, null, 2);
+            await fs.writeFile("docs/dist/partials.json", json, "utf8");
+        },
+    };
+}
+
+/**
+ * @returns {import("@forsakringskassan/docs-generator").Processor}
+ */
 function themeProcessor() {
     return {
         after: "generate-docs",
@@ -122,6 +151,43 @@ function themeProcessor() {
         },
     };
 }
+
+/**
+ * @param {string} src
+ * @param {string} dst
+ * @returns {Promise<void>}
+ */
+async function copyFile(src, dst) {
+    await fs.mkdir(path.dirname(dst), { recursive: true });
+    await fs.cp(src, dst);
+}
+
+/**
+ * @param {import("@forsakringskassan/docs-generator").Manifest["pages"][number]} page
+ * @returns {Promise<void>}
+ */
+async function copyPageResources(page) {
+    if (page.redirect) {
+        return;
+    }
+    /* workaround: until we can distinguish "real" files from non-real */
+    if (page.src.startsWith("virtual:")) {
+        return;
+    }
+    await copyFile(page.src, path.join("docs/dist", page.src));
+    for (const example of page.examples) {
+        /* inline examples do not have a source file */
+        if (!example.src) {
+            continue;
+        }
+        await copyFile(example.src, path.join("docs/dist", example.src));
+    }
+}
+
+await fs.rm("docs/dist", { recursive: true, force: true });
+
+/* workaround: manifestProcessor does not create the folder */
+await fs.mkdir("docs/temp", { recursive: true });
 
 const docs = new Generator(import.meta.url, {
     site: {
@@ -155,13 +221,14 @@ const docs = new Generator(import.meta.url, {
         "@fkui/logic",
         "@fkui/date",
         "@fkui/vue",
+        "@fkui/vue-labs",
         "@forsakringskassan/docs-live-example",
     ],
     processors: [
         apiExtractorProcessor({
             apiModel: [
                 "packages/vue/temp/vue.api.json",
-                "packages/vue/temp/vue-labs.api.json",
+                "packages/vue-labs/temp/vue-labs.api.json",
             ],
         }),
         extractExamplesProcessor({
@@ -178,6 +245,7 @@ const docs = new Generator(import.meta.url, {
         }),
         manifestProcessor({
             markdown: "etc/docs-manifest.md",
+            json: "docs/temp/docs-manifest.json",
             verify: isCI,
         }),
         motdProcessor(),
@@ -196,6 +264,7 @@ const docs = new Generator(import.meta.url, {
         cookieProcessor(),
         htmlRedirectProcessor(),
         sandboxProcessor("docs/playground"),
+        partialProcessor(),
     ],
     setupPath: path.resolve("docs/src/setup.ts"),
 });
@@ -216,7 +285,31 @@ docs.copyResource("images", "docs/src/assets/images");
 docs.copyResource("fonts", fontDir);
 
 try {
+    await fs.rm("docs/dist", { recursive: true, force: true });
+    await fs.mkdir("docs/dist");
+
     await docs.build(config.sourceFiles);
+
+    const manifest = /** @type {Manifest} */ (
+        await readJsonFile("docs/temp/docs-manifest.json")
+    );
+    for (const page of manifest.pages) {
+        await copyPageResources(page);
+    }
+    await fs.writeFile(
+        "docs/dist/index.mjs",
+        [
+            `export const basename = import.meta.dirname;`,
+        ].join("\n"),
+        "utf8",
+    );
+    await fs.writeFile(
+        "docs/dist/index.d.ts",
+        [
+            `export declare const basename: string;`,
+        ].join("\n"),
+        "utf8",
+    );
 
     const latest = `v${pkg.version}`;
     const versions = JSON.stringify(
