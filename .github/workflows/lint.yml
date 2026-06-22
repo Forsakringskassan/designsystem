@@ -10,7 +10,7 @@ jobs:
         name: Lint
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
             - name: Use Node.js 22.x
               uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
               with:
@@ -20,10 +20,10 @@ jobs:
             - name: Minimal build
               run: npm exec lerna -- run --include-dependencies --scope=@fkui/theme-default --scope=@fkui/vue --scope=@fkui/vue-labs --scope=@fkui/cypress-split build
             - name: Prettier
-              uses: Forsakringskassan/prettier-config@4d7e1f6522f59d92979a1fc2b0c0c5c5c26a6a4b # v3.7.1
+              uses: Forsakringskassan/prettier-config@05bb48dc9e26125d791adc3ea94c91205579aabb # v3.7.2
             - name: ESLint
               if: success() || failure()
-              uses: Forsakringskassan/eslint-config@c44dc47223ba5c8dbddab2bb310745de0a5cae9e # v15.0.17
+              uses: Forsakringskassan/eslint-config@cfd0c9677e8223018ad6f946530a1d2a11dba6ae # v15.0.19
             - name: HTML Validate
               if: success() || failure()
               run: npm run html-validate -- --max-warnings 0 || false
@@ -41,7 +41,7 @@ jobs:
     npm-pkg-lint:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
             - name: Use Node.js 22.x
               uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
               with:
