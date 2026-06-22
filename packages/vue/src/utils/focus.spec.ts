@@ -6,8 +6,8 @@ import { expect, it } from "vitest";
 import { focus } from "./focus";
 
 it("should focus Vue component", () => {
-    // Given
     expect.assertions(1);
+    // Given
     const TestComponent = defineComponent({
         template: /* HTML */ ` <p></p> `,
     });
@@ -23,8 +23,8 @@ it("should focus Vue component", () => {
 });
 
 it("should focus $ref", () => {
-    // Given
     expect.assertions(1);
+    // Given
     const TestComponent = defineComponent({
         template: /* HTML */ `
             <div>
@@ -50,8 +50,8 @@ it("should focus $ref", () => {
 });
 
 it("should focus nested targetElement", () => {
-    // Given
     expect.assertions(1);
+    // Given
     const DeepComponent = defineComponent({
         template: /* HTML */ ` <p data-test="expectedElement"></p> `,
     });

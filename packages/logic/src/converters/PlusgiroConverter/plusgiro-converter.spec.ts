@@ -22,6 +22,7 @@ describe("parse", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(parsePlusgiro(value)).toEqual(expected);
         },
     );

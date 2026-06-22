@@ -16,10 +16,13 @@ function createWrapper({ props = {}, attrs = {} } = {}): VueWrapper {
 
 describe("should match correct class", () => {
     it.each(statuses)("%s", (status) => {
+        expect.assertions(1);
         const wrapper = createWrapper({ props: { status } });
         expect(wrapper.classes()).toContain(`badge--${status}`);
     });
+
     it.each(statuses)("%s (inverted)", (status) => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: { status, inverted: true },
         });
@@ -29,6 +32,7 @@ describe("should match correct class", () => {
 
 describe("html-validate", () => {
     it("should not report error when used correctly", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-badge status="info">
                 <template #default> Badge text </template>
@@ -38,6 +42,7 @@ describe("html-validate", () => {
     });
 
     it("should report error when status is invalid", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-badge status="conflict">
                 <template #default> Badge text </template>

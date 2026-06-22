@@ -16,6 +16,7 @@ function createWrapper({
 
 describe("snapshots", () => {
     it("should match snapshot with output and for attribute", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 for: "inputid",
@@ -26,6 +27,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with output and two for attributes", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 for: "inputid inputid2",
@@ -36,6 +38,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with label, tooltip, output and for attribute", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: { label: "Summa", tooltip: "TOOLTIP" },
             props: {
@@ -121,6 +124,7 @@ describe("props", () => {
 
 describe("attributes", () => {
     it("should pass attributes", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             attrs: {
                 for: "my-awesome-id",

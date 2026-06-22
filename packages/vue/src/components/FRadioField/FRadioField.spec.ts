@@ -60,6 +60,7 @@ it.each`
 `(
     'should handle v-model value "$vModel" where checked should be "$expected" when radio value is "$value"',
     ({ vModel, value, expected }) => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 value,
@@ -73,6 +74,7 @@ it.each`
 
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
         expect(wrapper.element).toMatchSnapshot();
     });
@@ -80,6 +82,7 @@ describe("snapshots", () => {
 
 describe("attributes", () => {
     it("should pass attributes", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: {
                 disabled: true,
@@ -102,6 +105,7 @@ describe("disabled", () => {
     `(
         "should $description disabled when disabled prop is $disabledAttribute",
         async ({ disabled, expectedResult }) => {
+            expect.assertions(2);
             const wrapper = createWrapper({
                 props: {
                     disabled,
@@ -116,6 +120,7 @@ describe("disabled", () => {
 
 describe("events", () => {
     it("should support v-model by emitting update:modelValue event with value", async () => {
+        expect.assertions(3);
         const wrapper = createWrapper({
             props: { value: "Some value", modelValue: "Some value" },
         });
@@ -136,6 +141,7 @@ describe("events", () => {
     });
 
     it("should emit change event when input value changes", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: { value: true, modelValue: false },
         });
@@ -151,6 +157,7 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
+        expect.assertions(1);
         const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
@@ -161,6 +168,7 @@ describe("events", () => {
     });
 
     it("should pass click listener and trigger focus on click", async () => {
+        expect.assertions(2);
         const click = vi.fn();
 
         const wrapper = createWrapper({
@@ -169,7 +177,7 @@ describe("events", () => {
 
         const input = wrapper.get("input");
         const htmlInput = input.element;
-        htmlInput.focus = vi.fn();
+        vi.spyOn(htmlInput, "focus");
 
         await input.trigger("click");
         expect(click).toHaveBeenCalled();

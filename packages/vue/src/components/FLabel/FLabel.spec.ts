@@ -15,6 +15,7 @@ function createWrapper({ slots = {} } = {}): VueWrapper {
 
 describe("snapshots", () => {
     it("should match snapshot with one label element containing the default slot", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 default: "LABEL_TEXT",
@@ -25,6 +26,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with one label element containing the default, description and error-message slots", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 default: "LABEL_TEXT",
@@ -37,6 +39,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with the tooltip slot rendered outside the label element", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 default: "LABEL_TEXT",
@@ -48,6 +51,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with a second label element containing the error-message slot", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 default: "LABEL_TEXT",
@@ -60,6 +64,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with a second label element containing the description and error-message slots", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 default: "LABEL_TEXT",

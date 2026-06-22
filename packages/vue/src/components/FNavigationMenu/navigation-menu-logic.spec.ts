@@ -19,6 +19,7 @@ describe("getNewItemIndexFromMenuAction", () => {
     `(
         "should return correct new index ($index => $newIndex) on menu action $desc",
         ({ index, menuAction, newIndex }) => {
+            expect.assertions(1);
             const result = getNewItemIndexFromMenuAction(
                 menuAction,
                 index,
@@ -35,6 +36,7 @@ describe("getNewItemIndexFromMenuAction", () => {
     `(
         "should wrap around new index ($index => $newIndex) on menu action $desc",
         ({ index, menuAction, newIndex }) => {
+            expect.assertions(1);
             const result = getNewItemIndexFromMenuAction(
                 menuAction,
                 index,
@@ -53,6 +55,7 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
     ];
 
     it("should move focus to first item", async () => {
+        expect.assertions(1);
         const target: MenuActionTarget = {
             items: testItems,
             setFocusOnItem: vi.fn().mockResolvedValue(undefined),
@@ -64,6 +67,7 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
     });
 
     it("should activate the current item", async () => {
+        expect.assertions(1);
         const target: MenuActionTarget = {
             items: testItems,
             setFocusOnItem: vi.fn().mockResolvedValue(undefined),

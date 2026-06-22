@@ -45,12 +45,14 @@ function createWrapper({
 
 describe("snapshots", () => {
     it("should match snapshot with label and select", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
 
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, select and error message", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             attrs: { "aria-invalid": true },
             slots: { "error-message": "ERROR_MESSAGE" },
@@ -60,6 +62,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with label, tooltip, description, error message and select", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 description: "DESCRIPTION",
@@ -80,6 +83,7 @@ describe("snapshots", () => {
     `(
         "should match snapshot when validityMode is $validityMode and isValid is $isValid",
         async ({ validityMode, isValid }) => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 attrs: { id: "elementId" },
             });
@@ -106,6 +110,7 @@ describe("snapshots", () => {
 
 describe("attributes", () => {
     it("should pass attributes", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: {
                 disabled: true,
@@ -121,11 +126,13 @@ describe("attributes", () => {
 
 describe("inline", () => {
     it("should not set class by default", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
         expect(wrapper.classes()).not.toContain("select-field--inline");
     });
 
     it("should set class when enabled", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 inline: true,
@@ -138,6 +145,7 @@ describe("inline", () => {
 
 describe("events", () => {
     it("should pass listeners", async () => {
+        expect.assertions(1);
         const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
@@ -148,6 +156,7 @@ describe("events", () => {
     });
 
     it("should support v-model by emitting update:modelValue event with string", () => {
+        expect.assertions(3);
         const wrapper = mount(
             createTestComponentWithOptions([
                 { text: "Banana", value: "banana" },
@@ -169,6 +178,7 @@ describe("events", () => {
     });
 
     it("should support v-model by emitting update:modelValue event with object", async () => {
+        expect.assertions(1);
         const wrapper = mount(
             createTestComponentWithOptions([
                 { text: "BananaObject", value: { id: 1, fruit: "banana" } },
@@ -185,6 +195,7 @@ describe("events", () => {
     });
 
     it("should support v-model by emitting update:modelValue event with null", async () => {
+        expect.assertions(1);
         const wrapper = mount(
             createTestComponentWithOptions([
                 { text: "BananaObject", value: { id: 1, fruit: "banana" } },
@@ -201,6 +212,7 @@ describe("events", () => {
     });
 
     it("should emit change event with when value changes", () => {
+        expect.assertions(1);
         const wrapper = mount(
             createTestComponentWithOptions([
                 { text: "Banana", value: "banana" },

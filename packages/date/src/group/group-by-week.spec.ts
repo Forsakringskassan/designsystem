@@ -12,8 +12,10 @@ function serialize(
         };
     });
 }
+
 describe("groupByWeek()", () => {
     it("should group correctly when having full weeks", () => {
+        expect.assertions(1);
         const monday = FDate.fromIso("2022-08-01");
         const result = groupByWeek(monday, monday.addDays(13));
         expect(serialize(result)).toEqual([
@@ -45,6 +47,7 @@ describe("groupByWeek()", () => {
     });
 
     it("should group correctly when having partial weeks", () => {
+        expect.assertions(1);
         const wednesday = FDate.fromIso("2022-06-01");
         const result = groupByWeek(wednesday, wednesday.addDays(13));
         expect(serialize(result)).toEqual([

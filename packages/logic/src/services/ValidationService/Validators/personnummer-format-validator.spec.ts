@@ -21,6 +21,7 @@ it.each`
 `(
     'should return $expected with value "$value" because of $description',
     ({ value, expected }) => {
+        expect.assertions(1);
         const result = personnummerFormatValidator.validation(
             value,
             element,

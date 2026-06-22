@@ -12,6 +12,7 @@ describe("formatPostalCode()", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(formatPostalCode(value)).toEqual(expected);
         },
     );

@@ -14,6 +14,7 @@ beforeEach(() => {
 
 describe("waitForScreenReader", () => {
     it("should run passed function with default delay", () => {
+        expect.assertions(2);
         const text = "I waited!";
 
         waitForScreenReader(() => {
@@ -28,6 +29,7 @@ describe("waitForScreenReader", () => {
     });
 
     it("should be able to change delay", () => {
+        expect.assertions(2);
         const NEW_DELAY = 500;
         const text = "I waited longer!";
 

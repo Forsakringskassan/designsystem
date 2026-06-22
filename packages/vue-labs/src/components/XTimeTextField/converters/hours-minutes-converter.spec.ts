@@ -22,6 +22,7 @@ describe("parsing", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(parseTimeToNumber(value)).toEqual(expected);
         },
     );
@@ -44,6 +45,7 @@ describe("formatting", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(formatNumberToTime(value)).toEqual(expected);
         },
     );
@@ -65,6 +67,7 @@ describe("forgiving parsing", () => {
     `(
         'should return "$expected" for "$value" when `extraForgiving` is true because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(forgivingParseTimeToNumber(value)).toEqual(expected);
         },
     );

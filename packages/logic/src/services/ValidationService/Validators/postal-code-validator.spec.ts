@@ -24,6 +24,7 @@ describe("validation", () => {
     `(
         'should return $expected with value "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(
                 postalCodeValidator.validation(
                     value,

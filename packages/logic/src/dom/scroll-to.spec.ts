@@ -11,6 +11,7 @@ describe("scrollTo with offset signature", () => {
     });
 
     it("calls window.scrollTo with default top 0px when no top is specified", () => {
+        expect.assertions(1);
         const element = document.createElement("input");
 
         scrollTo(element);
@@ -21,6 +22,7 @@ describe("scrollTo with offset signature", () => {
     });
 
     it("calls window.scrollTo with top 50px", () => {
+        expect.assertions(1);
         const element = document.createElement("input");
 
         scrollTo(element, 50);
@@ -58,6 +60,7 @@ describe("scrollTo with options signature", () => {
     }
 
     it("should call scrollTo 60 times when duration is 1000 ms (60FPS)", () => {
+        expect.assertions(1);
         const element = mockElement();
 
         scrollTo(element, { duration: 1000 });
@@ -67,6 +70,7 @@ describe("scrollTo with options signature", () => {
     });
 
     it("should resolve promise when scroll is finished", async () => {
+        expect.assertions(2);
         const element = mockElement();
 
         let resolved = false;
@@ -84,6 +88,7 @@ describe("scrollTo with options signature", () => {
     });
 
     it("should call scrollTo 30 times and scroll from 1000 to 700 so element (-300) will be in viewport", () => {
+        expect.assertions(2);
         const element = mockElement();
 
         scrollTo(element, { duration: 500 }); //30 frames
@@ -107,6 +112,7 @@ describe("scrollTo with options signature", () => {
     });
 
     it("should call scrollTo 30 times and scroll from 1000 to 650 when adding offset 50", () => {
+        expect.assertions(3);
         const element = mockElement();
 
         scrollTo(element, { duration: 500, offset: 50 });

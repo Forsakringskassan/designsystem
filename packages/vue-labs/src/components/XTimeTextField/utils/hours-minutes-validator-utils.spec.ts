@@ -13,6 +13,7 @@ describe("validate", () => {
     `(
         'should be called with "$expected" for "$value" because of "$description"',
         ({ value, expected }) => {
+            expect.assertions(1);
             const compareFunction = vi.fn();
             const testConfig = { limit: "01:30" };
             HoursMinutesValidatorUtils.validate(
@@ -38,6 +39,7 @@ describe("validate", () => {
     `(
         "should return $expected because of $description",
         ({ value, config, expected }) => {
+            expect.assertions(1);
             function compareFunction(): boolean {
                 return true;
             }

@@ -89,6 +89,7 @@
     "@forsakringskassan/eslint-config-jest": "15.1.0",
     "@forsakringskassan/eslint-config-typescript": "15.1.0",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "15.1.0",
+    "@forsakringskassan/eslint-config-vitest": "15.0.15",
     "@forsakringskassan/eslint-config-vue": "15.1.0",
     "@forsakringskassan/jest-config": "29.12.0",
     "@forsakringskassan/jest-config-vue": "29.12.0",

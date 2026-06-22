@@ -25,6 +25,7 @@ function getDayTabindexResults(
 }
 
 it("Active day should have tabindex 0 when active is within current month", () => {
+    expect.assertions(1);
     const active = FDate.fromIso("2022-08-04");
     const entry = undefined;
     expect(getDayTabindexResults(dates, active, entry)).toMatchInlineSnapshot(`
@@ -39,7 +40,9 @@ it("Active day should have tabindex 0 when active is within current month", () =
             }
         `);
 });
+
 it("First day should have tabindex 0 when active is outside current month", () => {
+    expect.assertions(1);
     const active = FDate.fromIso("2022-07-04");
     const entry = undefined;
     expect(getDayTabindexResults(dates, active, entry)).toMatchInlineSnapshot(`
@@ -54,7 +57,9 @@ it("First day should have tabindex 0 when active is outside current month", () =
             }
         `);
 });
+
 it("Entry day should have tabindex 0 when entry is within current month", () => {
+    expect.assertions(1);
     const active = undefined;
     const entry = FDate.fromIso("2022-08-02");
     expect(getDayTabindexResults(dates, active, entry)).toMatchInlineSnapshot(`
@@ -69,7 +74,9 @@ it("Entry day should have tabindex 0 when entry is within current month", () => 
             }
         `);
 });
+
 it("First day should have tabindex 0 when entry is outside current month", () => {
+    expect.assertions(1);
     const active = undefined;
     const entry = FDate.fromIso("2022-07-02");
     expect(getDayTabindexResults(dates, active, entry)).toMatchInlineSnapshot(`
@@ -84,7 +91,9 @@ it("First day should have tabindex 0 when entry is outside current month", () =>
             }
         `);
 });
+
 it("Active day should have priority over entry day", () => {
+    expect.assertions(1);
     const active = FDate.fromIso("2022-08-04");
     const entry = FDate.fromIso("2022-08-02");
     expect(getDayTabindexResults(dates, active, entry)).toMatchInlineSnapshot(`
@@ -99,7 +108,9 @@ it("Active day should have priority over entry day", () => {
             }
         `);
 });
+
 it("First day should have tabindex 0 when no active or entry day", () => {
+    expect.assertions(1);
     const active = undefined;
     const entry = undefined;
     expect(getDayTabindexResults(dates, active, entry)).toMatchInlineSnapshot(`

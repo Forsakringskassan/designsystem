@@ -4,11 +4,13 @@ import { usePopupError } from "./use-popup-error";
 
 describe("usePopupError", () => {
     it("should not have active error element by default", () => {
+        expect.assertions(1);
         const { activeErrorAnchor } = usePopupError();
         expect(activeErrorAnchor.value).toBeUndefined();
     });
 
     it("should set active error element on focus", async () => {
+        expect.assertions(1);
         const { activeErrorAnchor, onPopupError } = usePopupError();
         const anchor = document.createElement("div");
         const arrowAnchor = document.createElement("div");
@@ -25,6 +27,7 @@ describe("usePopupError", () => {
     });
 
     it("should set active error element on hover", async () => {
+        expect.assertions(1);
         const { activeErrorAnchor, onPopupError } = usePopupError();
         const anchor = document.createElement("div");
         const arrowAnchor = document.createElement("div");
@@ -41,6 +44,7 @@ describe("usePopupError", () => {
     });
 
     it("should switch active error element", async () => {
+        expect.assertions(2);
         const { activeErrorAnchor, onPopupError } = usePopupError();
         const anchor1 = document.createElement("div");
         const anchor2 = document.createElement("div");

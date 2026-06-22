@@ -5,6 +5,7 @@ import FConfirmModal from "./FConfirmModal.vue";
 
 describe("events", () => {
     it('should send "close" event on close button clicked', async () => {
+        expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
@@ -17,6 +18,7 @@ describe("events", () => {
     });
 
     it('should send "confirm" event on confirm button clicked', async () => {
+        expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
@@ -29,6 +31,7 @@ describe("events", () => {
     });
 
     it('should send custom event "unsure" event on maybe button clicked', async () => {
+        expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
@@ -52,6 +55,7 @@ describe("events", () => {
 
 describe("button order", () => {
     it("should display buttons left to right", () => {
+        expect.assertions(1);
         config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
         const wrapper = mount(FConfirmModal, {
             props: {
@@ -64,6 +68,7 @@ describe("button order", () => {
     });
 
     it("should display buttons right to left", () => {
+        expect.assertions(1);
         config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
         const wrapper = mount(FConfirmModal, {
             props: {
@@ -78,6 +83,7 @@ describe("button order", () => {
 
 describe("props", () => {
     it("should change heading text via headring prop", () => {
+        expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
@@ -90,6 +96,7 @@ describe("props", () => {
     });
 
     it("should change content text via content prop", () => {
+        expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
@@ -102,6 +109,7 @@ describe("props", () => {
     });
 
     it("should append screenreader text if given", () => {
+        expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
@@ -122,6 +130,7 @@ describe("props", () => {
     });
 
     it("should not append extra space if no screenreader text is given", () => {
+        expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
@@ -136,6 +145,7 @@ describe("props", () => {
 
 describe("slots", () => {
     it("should change heading via slot", () => {
+        expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
@@ -150,6 +160,7 @@ describe("slots", () => {
     });
 
     it("should change content via slot", () => {
+        expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
@@ -164,6 +175,7 @@ describe("slots", () => {
     });
 
     it("should use slot over prop in heading", () => {
+        expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,
@@ -178,6 +190,7 @@ describe("slots", () => {
     });
 
     it("should use content slot over prop", () => {
+        expect.assertions(1);
         const wrapper = mount(FConfirmModal, {
             props: {
                 isOpen: true,

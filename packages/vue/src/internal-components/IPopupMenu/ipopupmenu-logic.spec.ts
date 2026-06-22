@@ -9,6 +9,7 @@ import {
 
 describe("getNewItemIndexFromMenuAction", () => {
     const items = ["A", "B", "C"];
+
     it.each`
         index | menuAction               | newIndex | desc
         ${0}  | ${MenuAction.MOVE_NEXT}  | ${1}     | ${"MOVE_NEXT"}
@@ -18,6 +19,7 @@ describe("getNewItemIndexFromMenuAction", () => {
     `(
         "should return correct new index ($index => $newIndex) on menu action $desc",
         ({ index, menuAction, newIndex }) => {
+            expect.assertions(1);
             const result = getNewItemIndexFromMenuAction(
                 menuAction,
                 index,
@@ -34,6 +36,7 @@ describe("getNewItemIndexFromMenuAction", () => {
     `(
         "should wrap around new index ($index => $newIndex) on menu action $desc",
         ({ index, menuAction, newIndex }) => {
+            expect.assertions(1);
             const result = getNewItemIndexFromMenuAction(
                 menuAction,
                 index,
@@ -50,7 +53,9 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
         { label: "label2", key: "MENU_2", href: "#href-2" },
         { label: "label3", key: "MENU_3", href: "#href-3" },
     ];
+
     it("should move focus to first item", async () => {
+        expect.assertions(1);
         const target: MenuActionTarget = {
             currentFocusedItemIndex: 1, // second item index
             items: testItems,
@@ -61,7 +66,9 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
         await doMenuAction(MenuAction.MOVE_FIRST, target);
         expect(target.setFocusOnItem).toHaveBeenCalledWith(0); // first item index
     });
+
     it("should activate the current item", async () => {
+        expect.assertions(1);
         const target: MenuActionTarget = {
             currentFocusedItemIndex: 1, // second item index
             items: testItems,

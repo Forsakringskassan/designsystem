@@ -12,6 +12,7 @@ it.each`
 `(
     'should return $expected with value "$value" because of $description',
     ({ value, expected }) => {
+        expect.assertions(1);
         const options = { length: 7 };
         const result = maxLengthValidator.validation(value, element, options);
         expect(result).toEqual(expected);

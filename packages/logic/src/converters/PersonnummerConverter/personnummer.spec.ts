@@ -129,6 +129,7 @@ describe("formatPersonnummerToDate", () => {
     `(
         "should return FDate $expectedDate for $description",
         ({ personnummer, expectedDate }) => {
+            expect.assertions(1);
             const result = formatPersonnummerToDate(personnummer);
             expect(result?.toString()).toEqual(expectedDate);
         },
@@ -140,11 +141,13 @@ describe("formatPersonnummerToDate", () => {
         ${"123456789012"}  | ${"personnummer string with incorrect date"}
         ${""}              | ${"empty personnummer string"}
     `("should return undefined for $description", ({ personnummer }) => {
+        expect.assertions(1);
         const result = formatPersonnummerToDate(personnummer);
         expect(result).toBeUndefined();
     });
 
     it("should return undefined for undefined input", () => {
+        expect.assertions(1);
         const result = formatPersonnummerToDate(undefined);
         expect(result).toBeUndefined();
     });

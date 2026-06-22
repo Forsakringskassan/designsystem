@@ -35,6 +35,7 @@ it.each`
 `(
     "should focus $expectFocus when $havingFocus having focus and pressing tab key and shift is $shift",
     ({ expectFocus, havingFocus, shift }) => {
+        expect.assertions(1);
         mountDocument();
         getElement(havingFocus).focus();
 

@@ -35,6 +35,7 @@ it.each`
 `(
     'should handle v-model value "$vModel" where checked should be "$expected" when checkbox value is "$value"',
     ({ vModel, value, expected }) => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 value,
@@ -48,6 +49,7 @@ it.each`
 
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
         expect(wrapper.element).toMatchSnapshot();
     });
@@ -55,6 +57,7 @@ describe("snapshots", () => {
 
 describe("attributes", () => {
     it("should pass attributes", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: {
                 disabled: true,
@@ -77,6 +80,7 @@ describe("disabled", () => {
     `(
         "should $description disabled when disabled prop is $disabledAttribute",
         async ({ disabled, expectedResult }) => {
+            expect.assertions(2);
             const wrapper = createWrapper({
                 props: {
                     disabled,
@@ -91,6 +95,7 @@ describe("disabled", () => {
 
 describe("events", () => {
     it("should support v-model by emitting update:modelValue event with value", async () => {
+        expect.assertions(3);
         const wrapper = createWrapper({
             props: { value: "Some value", modelValue: "Some value" },
         });
@@ -109,6 +114,7 @@ describe("events", () => {
     });
 
     it("should emit change event when input value changes", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: { value: true, modelValue: false },
         });
@@ -125,6 +131,7 @@ describe("events", () => {
 
     describe("should support v-model as array", () => {
         it("should add value to array", async () => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     value: "This checkbox",
@@ -143,6 +150,7 @@ describe("events", () => {
         });
 
         it("should remove value from array", async () => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     value: "This checkbox",
@@ -160,6 +168,7 @@ describe("events", () => {
         });
 
         it("should add nested array", async () => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     value: ["This checkbox"],
@@ -180,6 +189,7 @@ describe("events", () => {
         });
 
         it("should remove nested array", async () => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     value: ["This checkbox"],
@@ -197,6 +207,7 @@ describe("events", () => {
         });
 
         it("should add nested object", async () => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     value: { foo: true },
@@ -217,6 +228,7 @@ describe("events", () => {
         });
 
         it("should remove nested object", async () => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     value: { foo: true },
@@ -235,6 +247,7 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
+        expect.assertions(2);
         const focus = vi.fn();
         const blur = vi.fn();
 
@@ -253,6 +266,7 @@ describe("events", () => {
     });
 
     it("should pass click listener and trigger focus on click", async () => {
+        expect.assertions(2);
         const click = vi.fn();
 
         const wrapper = createWrapper({
@@ -261,7 +275,7 @@ describe("events", () => {
 
         const input = wrapper.get("input");
         const htmlInput = input.element;
-        htmlInput.focus = vi.fn();
+        vi.spyOn(htmlInput, "focus");
 
         await input.trigger("click");
         expect(click).toHaveBeenCalled();

@@ -10,6 +10,7 @@ beforeEach(() => {
 });
 
 it(`should set cookie and read it`, () => {
+    expect.assertions(3);
     setCookie({
         name: `the-name`,
         value: `the-value`,
@@ -23,11 +24,13 @@ it(`should set cookie and read it`, () => {
 });
 
 it(`should not care if deleted cookie exists or not`, () => {
+    expect.assertions(2);
     expect(findCookie(`the-name`)).toBeUndefined();
     expect(() => deleteCookie(`the-name`)).not.toThrow();
 });
 
 it(`should keep existing cookie`, () => {
+    expect.assertions(1);
     setCookie({
         name: `the-name`,
         value: `the-value-1`,
@@ -43,6 +46,7 @@ it(`should keep existing cookie`, () => {
 });
 
 it(`should overwrite existing cookie`, () => {
+    expect.assertions(1);
     setCookie({
         name: `the-name`,
         value: `the-value-1`,

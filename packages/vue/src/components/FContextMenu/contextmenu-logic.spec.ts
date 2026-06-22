@@ -8,6 +8,7 @@ import { type ContextMenuItem } from "./contextmenuitem";
 
 describe("getNewItemIndexFromMenuAction", () => {
     const items = ["A", "B", "C"];
+
     it.each`
         index | menuAction               | newIndex | desc
         ${0}  | ${MenuAction.MOVE_NEXT}  | ${1}     | ${"MOVE_NEXT"}
@@ -17,6 +18,7 @@ describe("getNewItemIndexFromMenuAction", () => {
     `(
         "should return correct new index ($index => $newIndex) on menu action $desc",
         ({ index, menuAction, newIndex }) => {
+            expect.assertions(1);
             const result = getNewItemIndexFromMenuAction(
                 menuAction,
                 index,
@@ -33,6 +35,7 @@ describe("getNewItemIndexFromMenuAction", () => {
     `(
         "should wrap around new index ($index => $newIndex) on menu action $desc",
         ({ index, menuAction, newIndex }) => {
+            expect.assertions(1);
             const result = getNewItemIndexFromMenuAction(
                 menuAction,
                 index,
@@ -51,6 +54,7 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
     ];
 
     it("should move focus to first item", async () => {
+        expect.assertions(1);
         const setFocusOnItem = vi.fn();
         const activateItem = vi.fn();
         const { doMenuAction } = useMenuAction({
@@ -65,6 +69,7 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
     });
 
     it("should activate the current item", async () => {
+        expect.assertions(1);
         const setFocusOnItem = vi.fn();
         const activateItem = vi.fn();
         const { doMenuAction } = useMenuAction({

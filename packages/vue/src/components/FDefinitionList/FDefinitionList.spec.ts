@@ -30,6 +30,7 @@ describe("expected DOM structures", () => {
             expectedDtElements,
             expectedDdElements,
         }) => {
+            expect.hasAssertions();
             // Create wrapper
             const wrapper = createWrapper(
                 definitions.slice(0, numberOfDefinitions),

@@ -33,12 +33,14 @@ async function createWrapper(): Promise<VueWrapper> {
 
 describe("snapshot", () => {
     it("should match snapshot", async () => {
+        expect.assertions(1);
         wrapper = await createWrapper();
         expect(wrapper.element).toMatchSnapshot();
     });
 });
 
 it("should be closable", async () => {
+    expect.assertions(1);
     wrapper = await createWrapper();
     await wrapper.get("button").trigger("click");
     await flushPromises();
@@ -46,6 +48,7 @@ it("should be closable", async () => {
 });
 
 it("should focus title on open", async () => {
+    expect.assertions(1);
     wrapper = await createWrapper();
     const heading = wrapper.get("h3");
     expect(heading.element).toHaveFocus();

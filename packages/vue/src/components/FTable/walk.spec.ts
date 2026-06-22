@@ -13,6 +13,7 @@ const items = [
 ];
 
 it("should run callback on each item", () => {
+    expect.assertions(1);
     const newItems: NewTestItem[] = [];
     walk(items, undefined, (item, level) => {
         const newItem = {
@@ -30,6 +31,7 @@ it("should run callback on each item", () => {
 });
 
 it("should run callback on each nested item when `childKey` is provided", () => {
+    expect.assertions(1);
     const newItems: NewTestItem[] = [];
     walk(items, "nested", (item, level) => {
         const newItem = {

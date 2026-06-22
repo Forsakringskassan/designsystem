@@ -34,6 +34,7 @@ describe("validation", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             const config = {};
             expect(emailValidator.validation(value, element, config)).toEqual(
                 expected,
@@ -44,6 +45,7 @@ describe("validation", () => {
 
 describe("validation configuration", () => {
     it("should not be possible to supply more than 64 characters for localpart", () => {
+        expect.assertions(1);
         const config = {};
         const value =
             "01234567890123456789012345678901234567890123456789012345678901234@example.net";
@@ -51,18 +53,21 @@ describe("validation configuration", () => {
     });
 
     it("should be possible to supply 254 characters maxlength by default", () => {
+        expect.assertions(1);
         const config = {};
         const value = "test.testorsson@example.net".padEnd(254, ".example.net");
         expect(emailValidator.validation(value, element, config)).toBe(true);
     });
 
     it("should not be possible to supply more than 254 characters maxlength by default", () => {
+        expect.assertions(1);
         const config = {};
         const value = "test.testorsson@example.net".padEnd(255, ".example.net");
         expect(emailValidator.validation(value, element, config)).toBe(false);
     });
 
     it("should be possible to configure maxlength to more than 254 characters", () => {
+        expect.assertions(1);
         const config = { maxLength: 255 };
         const value = "test.testorsson@example.net".padEnd(255, ".example.net");
         expect(emailValidator.validation(value, element, config)).toBe(true);

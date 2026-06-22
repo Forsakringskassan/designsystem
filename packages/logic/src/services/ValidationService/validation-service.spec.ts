@@ -150,6 +150,7 @@ afterEach(() => {
 
 describe("setState", () => {
     it("should update state on all child elements", () => {
+        expect.assertions(1);
         setBodyInnerHTML(/* HTML */ `
             <div id="top-element">
                 <form id="form-element">
@@ -384,6 +385,7 @@ describe("validateAllElements", () => {
     }
 
     it("should dispatch ValidityEvent to all nestled input, select & textarea elements", async () => {
+        expect.assertions(2);
         setBodyInnerHTML(/* HTML */ `
             <div id="top-element">
                 <form id="form-element">
@@ -417,6 +419,7 @@ describe("validateAllElements", () => {
 
 describe("ValidatorOption.enabled", () => {
     it("should call validation on validator if ValidatorOption.enabled === undefined", () => {
+        expect.assertions(1);
         const element = mountInputElementAndAddValidators(
             "text",
             enabledValidatorConfig(undefined),
@@ -428,6 +431,7 @@ describe("ValidatorOption.enabled", () => {
     });
 
     it("should call validation on validator if ValidatorOption.enabled === true", () => {
+        expect.assertions(1);
         const element = mountInputElementAndAddValidators(
             "text",
             enabledValidatorConfig(true),
@@ -439,6 +443,7 @@ describe("ValidatorOption.enabled", () => {
     });
 
     it("should not validate validator if ValidatorOption.enabled === false", () => {
+        expect.assertions(1);
         const element = mountInputElementAndAddValidators(
             "text",
             enabledValidatorConfig(false),
@@ -452,6 +457,7 @@ describe("ValidatorOption.enabled", () => {
 
 describe("addValidatorsToElement", () => {
     it("should add event handlers for change, blur, input and validate events to element", () => {
+        expect.assertions(4);
         document.body.innerHTML = /* HTML */ `
             <div id="wrapping-div">
                 <input id="test-element" type="textfield" />
@@ -492,6 +498,7 @@ describe("addValidatorsToElement", () => {
     `(
         `should dispatch event instantly: $expected when $description`,
         ({ validatorConfigs, expected }) => {
+            expect.assertions(1);
             const element = mountInputElementAndAddValidators(
                 "text",
                 validatorConfigs,
@@ -506,6 +513,7 @@ describe("addValidatorsToElement", () => {
     );
 
     it("should update existing eventHandlers when applying new validators", () => {
+        expect.assertions(2);
         document.body.innerHTML = /* HTML */ `
             <div id="wrapping-div">
                 <input id="test-element" type="textfield" />
@@ -539,6 +547,7 @@ describe("addValidatorsToElement", () => {
     });
 
     it("should silently handle removing of event handlers belonging to another element but with same id", () => {
+        expect.assertions(2);
         document.body.innerHTML = /* HTML */ `
             <input id="test-element" type="textfield" />
         `;
@@ -570,6 +579,7 @@ describe("addValidatorsToElement", () => {
     });
 
     it("should not add required attribute when no required validator config exists", () => {
+        expect.assertions(2);
         const element = mountInputElementAndAddValidators("text", {
             whitelist: {},
         });
@@ -578,6 +588,7 @@ describe("addValidatorsToElement", () => {
     });
 
     it("should add required attribute when required validator config exists and enabled option is undefined", () => {
+        expect.assertions(2);
         const element = mountInputElementAndAddValidators("text", {
             required: {},
         });
@@ -586,6 +597,7 @@ describe("addValidatorsToElement", () => {
     });
 
     it("should add required attribute when required validator config exists and enabled option is true", () => {
+        expect.assertions(2);
         const element = mountInputElementAndAddValidators(
             "text",
             enabledValidatorConfig(true),
@@ -595,6 +607,7 @@ describe("addValidatorsToElement", () => {
     });
 
     it("should not add required attribute when required validator config exists and enabled option is false", () => {
+        expect.assertions(2);
         const element = mountInputElementAndAddValidators(
             "text",
             enabledValidatorConfig(false),
@@ -604,6 +617,7 @@ describe("addValidatorsToElement", () => {
     });
 
     it("should only add data-required attribute for fieldset when required validator config exists and enabled option is true", () => {
+        expect.assertions(2);
         document.body.innerHTML = /* HTML */ `
             <fieldset id="fieldset-element">
                 <input id="test-element" type="radio" />
@@ -621,6 +635,7 @@ describe("addValidatorsToElement", () => {
     });
 
     it("should remove data-required attribute for fieldset when required validator config exists and enabled option toggles from true to false", () => {
+        expect.assertions(4);
         document.body.innerHTML = /* HTML */ `
             <fieldset id="fieldset-element">
                 <input id="test-element" type="radio" />
@@ -645,6 +660,7 @@ describe("addValidatorsToElement", () => {
     });
 
     it("should place required validator first then keep base config order and add new validators last", () => {
+        expect.assertions(2);
         const baseConfig = { integer: {}, minLength: { length: 10 } };
 
         const newConfig = {
@@ -679,6 +695,7 @@ describe("addValidatorsToElement", () => {
     });
 
     it("should be possible to append validator to element with existing baseConfig", () => {
+        expect.assertions(2);
         document.body.innerHTML = /* HTML */ `
             <div id="wrapping-div">
                 <input id="email-test-element" type="textfield" />
@@ -758,6 +775,7 @@ describe("addValidatorsToElement", () => {
     });
 
     it("should be possible to append validator to element", () => {
+        expect.assertions(2);
         document.body.innerHTML = /* HTML */ `
             <div id="wrapping-div">
                 <input id="email-test-element" type="textfield" />
@@ -838,6 +856,7 @@ describe("addValidatorsToElement", () => {
     });
 
     it("should emit `validation-config-update` event", () => {
+        expect.assertions(1);
         document.body.innerHTML = /* HTML */ `
             <div id="wrapping-div">
                 <input id="test-element" type="text" />
@@ -865,6 +884,7 @@ describe("addValidatorsToElement", () => {
 
 describe("ValidityEvents", () => {
     it("should dispatch a validity event on change with required validation message", () => {
+        expect.assertions(2);
         const element = mountInputElementAndAddValidators("text");
         const listener = vi.fn();
 
@@ -878,6 +898,7 @@ describe("ValidityEvents", () => {
     });
 
     it("should not validate field continuously during input when instant is false and never touched", () => {
+        expect.assertions(1);
         const element = mountInputElementAndAddValidators("text");
         const listener = vi.fn();
         element.addEventListener("validity", listener);
@@ -891,6 +912,7 @@ describe("ValidityEvents", () => {
     });
 
     it("should apply custom validity to inputs in fieldset", () => {
+        expect.assertions(1);
         const element = mountFieldsetAndAddValidators();
         dispatchEvent("blur", element);
 
@@ -909,6 +931,7 @@ describe("ValidityEvents", () => {
     });
 
     it('should dispatch "pending-validation" events but no "validation" events during input when instant is false', () => {
+        expect.assertions(3);
         const element = mountInputElementAndAddValidators("text");
         const validity = vi.fn();
         const pending = vi.fn();
@@ -941,6 +964,7 @@ describe("ValidityEvents", () => {
     });
 
     it("should dispatch a validity event during input that is invalid with ERROR validityMode when instant is true", () => {
+        expect.assertions(1);
         const element = mountInputElementAndAddValidators(
             "text",
             instantValidatorConfigs,
@@ -963,6 +987,7 @@ describe("ValidityEvents", () => {
     });
 
     it("should validate field continuously during input when instant is true", () => {
+        expect.assertions(2);
         const element = mountInputElementAndAddValidators(
             "text",
             instantValidatorConfigs,
@@ -996,11 +1021,13 @@ describe("ValidityEvents", () => {
 
 describe("Error message", () => {
     it("should fallback to the validator name if no translations are defined", () => {
+        expect.assertions(1);
         const validityEvent = triggerValidityEvent("change", "");
         expect(validityEvent?.validationMessage).toBe("Fyll i text.");
     });
 
     it("should use message defined in validation error messages", () => {
+        expect.assertions(1);
         ValidationService.validationErrorMessages = {
             required: "The field is required",
         };
@@ -1009,6 +1036,7 @@ describe("Error message", () => {
     });
 
     it("should use type-specific message defined in validation error messages", () => {
+        expect.assertions(2);
         ValidationService.validationErrorMessages = {
             required: "The field is required",
             "required.text": "My required textfield",
@@ -1027,6 +1055,7 @@ describe("Error message", () => {
     });
 
     it("should use errorMessage in validatorconfig", () => {
+        expect.assertions(1);
         const validityEvent = triggerValidityEvent("change", "x");
         expect(validityEvent?.validationMessage).toBe(
             "An overridden message in minLength validator",
@@ -1034,6 +1063,7 @@ describe("Error message", () => {
     });
 
     it("should merge translations if already set", () => {
+        expect.assertions(1);
         ValidationService.validationErrorMessages = {
             required: "REQUIRED",
             percent: "PERCENT",
@@ -1063,6 +1093,7 @@ describe("ValidityMode", () => {
     `(
         `should be $expected when required is $required and leaving field with "$value" value`,
         ({ value, required, expected }) => {
+            expect.assertions(1);
             const validatorConfigs: ValidatorConfigs = {
                 required: { enabled: required },
                 minLength: {
@@ -1083,11 +1114,13 @@ describe("ValidityMode", () => {
     );
 
     it("should not trigger event on first input when instant is false", () => {
+        expect.assertions(1);
         const validityEvent = triggerValidityEvent("input", "x");
         expect(validityEvent).toBeUndefined();
     });
 
     it("should be ERROR on first input when instant is true", () => {
+        expect.assertions(1);
         const validityEvent = triggerValidityEvent(
             "input",
             "x",
@@ -1118,6 +1151,7 @@ describe("ValidityMode", () => {
         `(
             `should return $validityMode for input with value "$value", touched=$touched and submitted=$submitted`,
             ({ value, touched, submitted, validityMode }) => {
+                expect.assertions(1);
                 const element = document.createElement("input");
                 element.value = value;
                 expect(
@@ -1134,6 +1168,7 @@ describe("ValidityMode", () => {
 
 describe("initial state", () => {
     it("should have validityMode VALID if input of type radio is checked and untouched", () => {
+        expect.assertions(1);
         ValidationService.setState("test-element", {
             submitted: false,
             touched: false,
@@ -1150,6 +1185,7 @@ describe("initial state", () => {
     });
 
     it("should have validityMode INITIAL if input of type radio is not checked and untouched", () => {
+        expect.assertions(1);
         ValidationService.validationErrorMessages = { required: "REQUIRED" };
         ValidationService.setState("test-element", {
             submitted: false,
@@ -1167,6 +1203,7 @@ describe("initial state", () => {
     });
 
     it("should have validityMode INITIAL if input of type radio is touched, not checked and event has been sent (Simulates leaving the radio-group)", () => {
+        expect.assertions(1);
         const validityEvent = triggerValidityEvent(
             "validate",
             false,
@@ -1188,6 +1225,7 @@ describe("initial state", () => {
     });
 
     it("should invalidate field and use server error from state when triggering validate", () => {
+        expect.assertions(2);
         const validityEvent = triggerValidityEvent(
             "validate",
             "text",
@@ -1210,6 +1248,7 @@ describe("initial state", () => {
         `(
             `should have validityMode $validityMode if state is $state and input value is $inputValue`,
             ({ state, inputValue, validityMode }) => {
+                expect.assertions(1);
                 ValidationService.setState("test-element", state);
                 const validityEvent = triggerValidityEvent(
                     "validate",
@@ -1221,6 +1260,7 @@ describe("initial state", () => {
     });
 
     it("should not trigger validity event on first input when instant is false", () => {
+        expect.assertions(1);
         ValidationService.setState("test-element", {
             serverError: "Some backend error",
         });
@@ -1229,6 +1269,7 @@ describe("initial state", () => {
     });
 
     it("should invalidate field and use validation error on input when instant is true", () => {
+        expect.assertions(1);
         const validityEvent = triggerValidityEvent(
             "input",
             "X",
@@ -1247,6 +1288,7 @@ describe("initial state", () => {
     });
 
     it("should have validityMode ERROR if textfield has value but is untouched when instant is true", () => {
+        expect.assertions(1);
         const validityEvent = triggerValidityEvent(
             "validate",
             "X",
@@ -1270,6 +1312,7 @@ describe("initial state", () => {
 
 describe("clearAllStates", () => {
     it("should clear all validation states", () => {
+        expect.assertions(2);
         const input = mountInputElementAndAddValidators("text");
         const validityMock = vi.fn();
         input.addEventListener("validity", validityMock);
@@ -1310,6 +1353,7 @@ describe("isAnyTouched", () => {
     }
 
     it("should be false if no element is touched", () => {
+        expect.assertions(1);
         setupTwoInputFields();
 
         ValidationService.setState("test-element", {
@@ -1325,6 +1369,7 @@ describe("isAnyTouched", () => {
     });
 
     it("should find if any one field is touched", () => {
+        expect.assertions(1);
         setupTwoInputFields();
 
         ValidationService.setState("test-element", {
@@ -1342,6 +1387,7 @@ describe("isAnyTouched", () => {
 
 describe("getValidatorByName", () => {
     it("should return the validator by that name if it has been registered", () => {
+        expect.assertions(1);
         // Given
         const validatorName: ValidatorName = "myValidator";
         const validator: Validator = {
@@ -1358,6 +1404,7 @@ describe("getValidatorByName", () => {
     });
 
     it("should throw an error if no validator has been registered with that name", () => {
+        expect.assertions(1);
         // When
         const getValidatorCall = (): Validator =>
             ValidationService.getValidatorByName("nonExistentValidator");

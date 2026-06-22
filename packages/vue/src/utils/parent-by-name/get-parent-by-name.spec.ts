@@ -41,21 +41,25 @@ describe("getParentByName()", () => {
     });
 
     it("should return given component if it has the given name", () => {
+        expect.assertions(1);
         const result = getParentByName(child, "ChildComponent");
         expect(result.$options.name).toBe("ChildComponent");
     });
 
     it("should throw error when given parent is missing", () => {
+        expect.assertions(1);
         expect(() =>
             getParentByName(grandchild, "NowhereToBeFoundComponent"),
         ).toThrow();
     });
 
     it("should throw error when given component is a root component", () => {
+        expect.assertions(1);
         expect(() => getParentByName(wrapper.vm, "Grandparent")).toThrow();
     });
 
     it("should return parent when found at last", () => {
+        expect.assertions(1);
         const result = getParentByName(grandchild, "ParentComponent");
         expect(result.$options.name).toBe("ParentComponent");
     });

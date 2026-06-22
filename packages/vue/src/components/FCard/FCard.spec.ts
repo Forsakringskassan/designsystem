@@ -37,6 +37,7 @@ function createWrapper({
 
 describe("snapshots", () => {
     it("should match snapshot", () => {
+        expect.assertions(3);
         const wrapper = createWrapper();
         expect(wrapper.element).toMatchSnapshot();
 
@@ -45,11 +46,13 @@ describe("snapshots", () => {
     });
 
     it("should not render header class when heading slot is omitted", () => {
+        expect.assertions(1);
         const wrapper = mount(FCard);
         expect(wrapper.find(".card__header").exists()).toBeFalsy();
     });
 
     it("should not render footer class when footer slot is omitted", () => {
+        expect.assertions(1);
         const wrapper = mount(FCard);
         expect(wrapper.find(".card__footer").exists()).toBeFalsy();
     });

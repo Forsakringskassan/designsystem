@@ -41,6 +41,7 @@ describe("validation", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected, config }) => {
+            expect.assertions(1);
             expect(numberValidator.validation(value, element, config)).toEqual(
                 expected,
             );

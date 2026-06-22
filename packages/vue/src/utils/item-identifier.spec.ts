@@ -182,6 +182,7 @@ describe("setItemIdentifiers()", () => {
 
 describe("copyItemIdentifier()", () => {
     it("should copy identifier from source to target", () => {
+        expect.assertions(1);
         const source = {};
         const target = {};
 
@@ -192,6 +193,7 @@ describe("copyItemIdentifier()", () => {
     });
 
     it("should not do anything if source has no identifier", () => {
+        expect.assertions(1);
         const source = {};
         const target = {};
 
@@ -201,6 +203,7 @@ describe("copyItemIdentifier()", () => {
     });
 
     it("should not overwrite existing identifier on target", () => {
+        expect.assertions(1);
         const source = {};
         const target = {};
 

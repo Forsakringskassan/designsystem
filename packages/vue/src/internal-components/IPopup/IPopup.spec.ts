@@ -8,6 +8,7 @@ import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 import IPopup from "./IPopup.vue";
 
 vi.useFakeTimers();
+
 afterAll(() => {
     vi.useRealTimers();
 });
@@ -68,6 +69,7 @@ beforeEach(() => {
 
 describe("snapshots", () => {
     it("should match snapshot when open", async () => {
+        expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
         const wrapper = await mountPopup();
         await openPopup(wrapper);
@@ -75,6 +77,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot when closed", async () => {
+        expect.assertions(1);
         const wrapper = await mountPopup();
         expect(wrapper.element).toMatchSnapshot();
     });
@@ -82,6 +85,7 @@ describe("snapshots", () => {
 
 describe("events", () => {
     it('should emit "open" event after popup has opened', async () => {
+        expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = await mountPopup();
@@ -91,6 +95,7 @@ describe("events", () => {
     });
 
     it('should emit "close" event on escape key pressed', async () => {
+        expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = await mountPopup();
@@ -105,6 +110,7 @@ describe("events", () => {
     });
 
     it('should emit "close" event when clicked outside an open popup', async () => {
+        expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = await mountPopup();
@@ -118,6 +124,7 @@ describe("events", () => {
     });
 
     it('should not emit "close" event when clicked outside a closed popup', async () => {
+        expect.assertions(1);
         const wrapper = await mountPopup();
 
         await wrapper.get("#outside").trigger("click");
@@ -128,6 +135,7 @@ describe("events", () => {
 
 describe("html-validate", () => {
     it("should require is-open attribute", () => {
+        expect.assertions(1);
         expect("<i-popup></i-popup>").not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup> is missing required "is-open" attribute',
@@ -135,6 +143,7 @@ describe("html-validate", () => {
     });
 
     it("should require anchor attribute", () => {
+        expect.assertions(1);
         expect("<i-popup></i-popup>").not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup> is missing required "anchor" attribute',
@@ -142,6 +151,7 @@ describe("html-validate", () => {
     });
 
     it("should only allow setting valid `inline` values", () => {
+        expect.assertions(4);
         expect(/* HTML */ `
             <i-popup anchor="anchorref" is-open inline="always"></i-popup>
         `).toHTMLValidate();
@@ -160,6 +170,7 @@ describe("html-validate", () => {
     });
 
     it("should allow setting viewport value", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup
                 anchor="anchorref"
@@ -171,6 +182,7 @@ describe("html-validate", () => {
     });
 
     it("should allow setting focus-element value", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup
                 anchor="anchorref"

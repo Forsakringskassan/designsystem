@@ -6,6 +6,7 @@ import FLoader from "./FLoader.vue";
 
 describe("FLoader", () => {
     it("should not have overlay by default", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FLoader, {
             props: { overlay: false, show: false },
             global: {
@@ -16,6 +17,7 @@ describe("FLoader", () => {
     });
 
     it("should show overlay", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FLoader, {
             props: { overlay: true, show: false },
             global: {
@@ -26,6 +28,7 @@ describe("FLoader", () => {
     });
 
     it("should have text by default", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FLoader, {
             props: { overlay: true, show: false },
             global: {
@@ -36,6 +39,7 @@ describe("FLoader", () => {
     });
 
     it("should be able to specify text", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FLoader, {
             props: { show: false },
             slots: { default: `Loading...` },
@@ -47,6 +51,7 @@ describe("FLoader", () => {
     });
 
     it("should show the specified text", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FLoader, {
             props: { show: true },
             slots: { default: `Loading...` },
@@ -58,6 +63,7 @@ describe("FLoader", () => {
     });
 
     it("should show loading text in english", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FLoader, {
             props: { show: true, language: "en" },
             global: {

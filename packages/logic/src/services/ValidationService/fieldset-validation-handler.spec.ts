@@ -66,6 +66,7 @@ afterEach(() => {
 });
 
 it("On init - adds required attribute to child input elements, focusin- and validate event listener", () => {
+    expect.assertions(4);
     const addEventListener = vi.fn();
     fieldset.addEventListener = addEventListener;
     ValidationService.addValidatorsToElement(fieldset, { required: {} });
@@ -86,6 +87,7 @@ it("On init - adds required attribute to child input elements, focusin- and vali
 
 describe("Document listeners", () => {
     let validityMock: Mock;
+
     beforeEach(() => {
         validityMock = vi.fn();
         fieldset.addEventListener("validity", validityMock);
@@ -98,6 +100,7 @@ describe("Document listeners", () => {
     });
 
     it("should add listener when user clicks onfocusable element", () => {
+        expect.assertions(3);
         const listenerSpy = vi.spyOn(document, "addEventListener");
         dispatchEvent("focusin", fieldset, input1InFieldset);
         expect(listenerSpy).toHaveBeenCalledTimes(2);
@@ -109,6 +112,7 @@ describe("Document listeners", () => {
     });
 
     it("should NOT add listener when user clicks on non focusable element", () => {
+        expect.assertions(1);
         const listenerSpy = vi.spyOn(document, "addEventListener");
 
         const legend = document.querySelector("#legend") as HTMLLegendElement;
@@ -120,6 +124,7 @@ describe("Document listeners", () => {
 
 describe("Fieldset group", () => {
     let validityMock: Mock;
+
     beforeEach(() => {
         validityMock = vi.fn();
         fieldset.addEventListener("validity", validityMock);
@@ -132,6 +137,7 @@ describe("Fieldset group", () => {
     });
 
     it("should send validity event when checking radio/checkbox input", () => {
+        expect.assertions(2);
         input1InFieldset.checked = true;
         dispatchEvent("focusin", fieldset, input1InFieldset);
         expect(validityMock.mock.calls[0][0].detail).toMatchSnapshot();
@@ -141,12 +147,14 @@ describe("Fieldset group", () => {
     });
 
     it("should send validity event when radio/checkbox input emit change event", () => {
+        expect.assertions(1);
         input1InFieldset.checked = true;
         dispatchEvent("change", fieldset, input1InFieldset);
         expect(validityMock.mock.calls[0][0].detail.validityMode).toBe("VALID");
     });
 
     it("should not send validity event when unchecking radio/checkbox input", () => {
+        expect.assertions(3);
         input1InFieldset.checked = true;
         dispatchEvent("focusin", fieldset, input1InFieldset);
         expect(validityMock.mock.calls).toHaveLength(1);
@@ -160,6 +168,7 @@ describe("Fieldset group", () => {
     });
 
     it("should send validity event when leaving fieldset group (focusin-event on element outside fieldset)", () => {
+        expect.assertions(4);
         input1InFieldset.checked = false;
         dispatchEvent("focusin", fieldset, input1InFieldset);
         expect(validityMock.mock.calls).toHaveLength(0);
@@ -177,6 +186,7 @@ describe("Fieldset group", () => {
     });
 
     it("should send validity event when clicking outside fieldset group", () => {
+        expect.assertions(3);
         dispatchEvent("focusin", fieldset, input1InFieldset);
 
         expect(validityMock.mock.calls).toHaveLength(0);
@@ -189,6 +199,7 @@ describe("Fieldset group", () => {
     });
 
     it("should send validity events for fieldset and required radio/checkbox input when leaving fieldset group", () => {
+        expect.assertions(3);
         input1InFieldset.required = true;
         ValidationService.addValidatorsToElement(input1InFieldset, {
             required: {},
@@ -218,6 +229,7 @@ describe("Fieldset group", () => {
     });
 
     it("should send validity events for fieldset and required radio/checkbox input when checking non-required radio/checkbox input in fieldset", () => {
+        expect.assertions(3);
         input1InFieldset.required = true;
         ValidationService.addValidatorsToElement(input1InFieldset, {
             required: {},

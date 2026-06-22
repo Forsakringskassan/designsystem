@@ -21,6 +21,7 @@ const rows = [
 ];
 
 it("should not add nested metadata when not expandable", () => {
+    expect.assertions(4);
     const dataset = useDatasetRef(rows);
     const keyedRows = setItemIdentifiers(dataset.value, "name");
     const result = getMetaRows(keyedRows, new Set());
@@ -32,6 +33,7 @@ it("should not add nested metadata when not expandable", () => {
 });
 
 it("should add nested metadata when expandable", () => {
+    expect.assertions(4);
     const dataset = useDatasetRef(rows, "expandable");
     const keyedRows = setItemIdentifiers(dataset.value, "name", "expandable");
     const result = getMetaRows(keyedRows, new Set(), "expandable");
@@ -43,6 +45,7 @@ it("should add nested metadata when expandable", () => {
 });
 
 it("should only mark rows with non-empty children as expandable", () => {
+    expect.assertions(4);
     const keyedRows = setItemIdentifiers(rows, "name", "expandable");
     const result = getMetaRows(keyedRows, new Set(), "expandable");
 

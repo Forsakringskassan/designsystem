@@ -19,6 +19,7 @@ it.each`
 `(
     'should return $expected with input value "$value" compared to "$config.otherField" because of $description',
     ({ value, config, expected }) => {
+        expect.assertions(1);
         expect(personnummerNotSame.validation(value, element, config)).toEqual(
             expected,
         );

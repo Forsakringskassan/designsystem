@@ -18,6 +18,7 @@ it.each`
     expect.assertions(1);
 
     let event: KeyboardEvent;
+    // eslint-disable-next-line vitest/no-conditional-in-test -- Vitest migration
     if (key === "Shift+Tab") {
         key = "Tab";
         event = new KeyboardEvent(KEY_EVENT, {

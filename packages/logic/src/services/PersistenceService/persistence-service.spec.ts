@@ -23,27 +23,32 @@ beforeEach(() => {
 
 describe("find - searching for value that may not exist", () => {
     it("should return undefined when no data is present", () => {
+        expect.assertions(1);
         const actual = sut.find("my-key");
         expect(actual).toBeUndefined();
     });
 
     it("should return stored value", () => {
+        expect.assertions(1);
         sut.set("my-key", "stored value");
         expect(sut.find("my-key")).toBe("stored value");
     });
 
     it("should overwrite stored value", () => {
+        expect.assertions(1);
         sut.set("my-key", "stored value");
         sut.set("my-key", "overwritten value");
         expect(sut.find("my-key")).toBe("overwritten value");
     });
 
     it("should return undefined for other keys", () => {
+        expect.assertions(1);
         sut.set("my-key", "stored value");
         expect(sut.find("other-key")).toBeUndefined();
     });
 
     it("should return undefined after key is removed", () => {
+        expect.assertions(1);
         sut.set("my-key", "stored value");
         sut.remove("my-key");
         expect(sut.find("my-key")).toBeUndefined();
@@ -52,23 +57,27 @@ describe("find - searching for value that may not exist", () => {
 
 describe("get - retrieving a value that should exist, or else it is an error", () => {
     it("should throw error when no data is present", () => {
+        expect.assertions(1);
         expect(() => sut.get("my-key")).toThrow(
             `PersistenceService cannot find entry with key "my-key"`,
         );
     });
 
     it("should return stored value", () => {
+        expect.assertions(1);
         sut.set("my-key", "stored value");
         expect(sut.get("my-key")).toBe("stored value");
     });
 
     it("should overwrite stored value", () => {
+        expect.assertions(1);
         sut.set("my-key", "stored value");
         sut.set("my-key", "overwritten value");
         expect(sut.get("my-key")).toBe("overwritten value");
     });
 
     it("should return undefined for other keys", () => {
+        expect.assertions(1);
         sut.set("my-key", "stored value");
         expect(() => sut.get("other-key")).toThrow(
             `PersistenceService cannot find entry with key "other-key"`,
@@ -76,6 +85,7 @@ describe("get - retrieving a value that should exist, or else it is an error", (
     });
 
     it("should return undefined after key is removed", () => {
+        expect.assertions(1);
         sut.set("my-key", "stored value");
         sut.remove("my-key");
         expect(() => sut.get("my-key")).toThrow(
@@ -86,6 +96,7 @@ describe("get - retrieving a value that should exist, or else it is an error", (
 
 describe("session storage", () => {
     it("should be backed by sessionstorage if present", () => {
+        expect.assertions(2);
         isSessionPresent.mockReturnValue(true);
         window.sessionStorage.setItem(
             "my-key",
@@ -96,6 +107,7 @@ describe("session storage", () => {
     });
 
     it("should store in sessionstorage if present", () => {
+        expect.assertions(1);
         isSessionPresent.mockReturnValue(true);
         sut.set("my-key", "stored value");
         const actual = window.sessionStorage.getItem("my-key") ?? "{}";
@@ -103,6 +115,7 @@ describe("session storage", () => {
     });
 
     it("should overwrite in sessionstorage if present", () => {
+        expect.assertions(1);
         isSessionPresent.mockReturnValue(true);
         sut.set("my-key", "stored value");
         sut.set("my-key", "overwritten value");
@@ -118,6 +131,7 @@ describe("objects", () => {
     }
 
     it("should not merge objects (with sessionstorage)", () => {
+        expect.assertions(1);
         const sut = new PersistenceService<MockInterface>();
         vi.spyOn(sut, "isSessionPresent", "get").mockReturnValue(true);
         sut.set("my-key", {
@@ -132,6 +146,7 @@ describe("objects", () => {
     });
 
     it("should not merge objects (without sessionstorage)", () => {
+        expect.assertions(1);
         const sut = new PersistenceService<MockInterface>();
         vi.spyOn(sut, "isSessionPresent", "get").mockReturnValue(false);
         sut.set("my-key", {

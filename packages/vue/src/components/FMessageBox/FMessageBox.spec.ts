@@ -26,11 +26,13 @@ describe("FMessageBox", () => {
         ${"warning"}
         ${"success"}
     `("should match snapshot with correct type", ({ type }) => {
+        expect.assertions(1);
         const wrapper = createWrapper({ props: { type } });
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with content", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: { type: "success" },
             slots: { default: ` <p>content</p> ` },
@@ -41,6 +43,7 @@ describe("FMessageBox", () => {
 
 describe("html-validate", () => {
     it("should not report error when used correctly", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-message-box type="warning">
                 <template v-slot="{ headingClass }">
@@ -53,6 +56,7 @@ describe("html-validate", () => {
     });
 
     it("should report error when obsolete heading slot is used", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-message-box type="warning">
                 <template v-slot:heading></template>
@@ -62,11 +66,13 @@ describe("html-validate", () => {
     });
 
     it("should report error when type is missing", () => {
+        expect.assertions(1);
         const markup = /* HTML */ ` <f-message-box></f-message-box> `;
         expect(markup).not.toHTMLValidate();
     });
 
     it("should report error when type is invalid", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-message-box type="foobar"></f-message-box>
         `;

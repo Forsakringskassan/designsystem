@@ -8,11 +8,13 @@ interface Row {
 }
 
 it("should return empty object when no columns are defined", () => {
+    expect.assertions(1);
     const columns = defineTableColumns<Row>([]);
     expect(getTableSortableAttributes(columns)).toEqual({});
 });
 
 it("should return mapping for all columns that have a key", () => {
+    expect.assertions(1);
     const columns = defineTableColumns<Row>([
         { type: "text", header: "Name", key: "name" },
         { type: "text", header: "Age", key: "age" },
@@ -24,6 +26,7 @@ it("should return mapping for all columns that have a key", () => {
 });
 
 it("should only include columns that have a key when mixed", () => {
+    expect.assertions(1);
     const columns = defineTableColumns<Row>([
         { type: "text", header: "Name", key: "name" },
         { type: "text", header: "Age" },
@@ -34,6 +37,7 @@ it("should only include columns that have a key when mixed", () => {
 });
 
 it("should include column with sort: true", () => {
+    expect.assertions(1);
     const columns = defineTableColumns<Row>([
         { type: "text", header: "Name", key: "name", sort: true },
     ]);
@@ -41,6 +45,7 @@ it("should include column with sort: true", () => {
 });
 
 it("should exclude column with sort: false", () => {
+    expect.assertions(1);
     const columns = defineTableColumns<Row>([
         { type: "text", header: "Name", key: "name", sort: false },
     ]);
@@ -48,6 +53,7 @@ it("should exclude column with sort: false", () => {
 });
 
 it("should handle empty string", () => {
+    expect.assertions(1);
     const columns = defineTableColumns<{ "": string }>([
         { type: "text", header: "Empty string", key: "" },
     ]);
@@ -57,6 +63,7 @@ it("should handle empty string", () => {
 });
 
 it("should handle numeric keys", () => {
+    expect.assertions(1);
     const columns = defineTableColumns<{ [0]: string }>([
         { type: "text", header: "Numeric", key: 0 },
     ]);
@@ -66,6 +73,7 @@ it("should handle numeric keys", () => {
 });
 
 it("should handle symbols as keys", () => {
+    expect.assertions(1);
     const sym = Symbol("mock-symbol");
     const columns = defineTableColumns<{ [sym]: string }>([
         { type: "text", header: "Symbol", key: sym },

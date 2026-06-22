@@ -1,5 +1,6 @@
-/* eslint-disable jest/no-conditional-expect -- for testing exceptions */
+/* eslint-disable vitest/no-conditional-expect -- for testing exceptions*/
 
+import { beforeEach, describe, expect, it } from "vitest";
 import { toHaveFocus } from "./to-have-focus";
 
 expect.addSnapshotSerializer({
@@ -16,7 +17,7 @@ expect.extend({
     toHaveFocus,
 });
 
-describe("toHaveFocus (jest)", () => {
+describe("toHaveFocus (vitest)", () => {
     let element: HTMLElement;
     let detached: HTMLElement;
 
@@ -83,7 +84,7 @@ describe("toHaveFocus (jest)", () => {
         expect(() => {
             expect(element).not.toHaveFocus();
         }).toThrowErrorMatchingInlineSnapshot(
-            `Expected element not to have focus`,
+            `[Error: Expected element not to have focus]`,
         );
     });
 
@@ -111,12 +112,12 @@ describe("toHaveFocus (jest)", () => {
     });
 
     it("should throw error if expected value is not Element", () => {
-        expect.assertions(1);
+        expect.assertions(2);
         element.focus();
         expect(() => {
             expect("foobar").toHaveFocus();
         }).toThrowErrorMatchingInlineSnapshot(
-            `Expected value must be Element instance but got "string" instead`,
+            `[TypeError: Expected value must be Element instance but got "string" instead]`,
         );
     });
 });

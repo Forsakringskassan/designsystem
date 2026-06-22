@@ -22,6 +22,7 @@ function createWrapper({ slots = {}, attrs = {}, props = {} }): VueWrapper {
 
 describe("FileItem", () => {
     it("should match snapshot with slots", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 row: "file item goes here",
@@ -32,6 +33,7 @@ describe("FileItem", () => {
     });
 
     it("should pass attributes", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: {
                 disabled: "disabled",
@@ -43,6 +45,7 @@ describe("FileItem", () => {
     });
 
     it("should pass listeners", async () => {
+        expect.assertions(1);
         const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
@@ -74,6 +77,7 @@ describe("FileItem", () => {
     });
 
     it("should match snapshots without slots", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({});
         expect(wrapper.element).toMatchSnapshot();
     });
@@ -98,6 +102,7 @@ it.each`
     ${undefined}                                                                 | ${"file"}
     ${null}                                                                      | ${"file"}
 `("should have correct icon for $mimeType", ({ mimeType, expected }) => {
+    expect.assertions(1);
     const wrapper = createWrapper({
         props: {
             mimeType,

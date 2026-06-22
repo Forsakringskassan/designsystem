@@ -17,6 +17,7 @@ describe("parseClearingNumber", () => {
     `(
         'should return "$expected" from "$value" because "$description"',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(parseClearingNumber(value)).toEqual(expected);
         },
     );

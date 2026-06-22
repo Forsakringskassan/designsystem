@@ -218,6 +218,7 @@ describe("setSortableColumns()", () => {
 
 describe("getSortableIconName()", () => {
     it("should get sortable icon name", () => {
+        expect.assertions(3);
         const column: FTableColumnData = {
             id: "column-test-id-1",
             name: "1",
@@ -238,6 +239,7 @@ describe("getSortableIconName()", () => {
 
 describe("getSortableIconClasses()", () => {
     it("should get sortable icon classes", () => {
+        expect.assertions(3);
         const column: FTableColumnData = {
             id: "column-test-id-1",
             name: "1",
