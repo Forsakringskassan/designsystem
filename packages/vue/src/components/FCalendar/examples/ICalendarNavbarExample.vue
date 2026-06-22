@@ -2,7 +2,7 @@
 <script lang="ts">
 import { defineComponent, shallowRef } from "vue";
 import { FDate } from "@fkui/date";
-import { ICalendarNavbar } from "../../../internal-components";
+import { ICalendarNavbar } from "@fkui/vue";
 
 export default defineComponent({
     components: {

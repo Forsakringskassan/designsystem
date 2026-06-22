@@ -1,10 +1,11 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
-import type { FModalSize, modalSizes } from "../sizes";
 import {
     type FModalButtonDescriptor,
+    type FModalSize,
     type FValidationFormCallback,
+    type modalSizes,
     FFormModal,
     FTextField,
 } from "@fkui/vue";

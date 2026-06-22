@@ -1,8 +1,13 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
-import { FWizard, FWizardStep } from "..";
-import { type FValidationFormCallback, FCheckboxField, FFieldset } from "../..";
+import {
+    type FValidationFormCallback,
+    FCheckboxField,
+    FFieldset,
+    FWizard,
+    FWizardStep,
+} from "@fkui/vue";
 
 export default defineComponent({
     components: { FWizard, FWizardStep, FFieldset, FCheckboxField },

@@ -3,8 +3,7 @@
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
-import FCheckboxField from "../../FCheckboxField/FCheckboxField.vue";
-import { FCalendar, FCalendarDay } from "@fkui/vue";
+import { FCalendar, FCalendarDay, FCheckboxField } from "@fkui/vue";
 
 export default defineComponent({
     name: "FCalendarLiveExample",
