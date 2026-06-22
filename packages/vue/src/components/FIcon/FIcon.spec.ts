@@ -33,12 +33,14 @@ function createWrapper({
 
 describe("snapshots", () => {
     it("should match snapshot and use prop name to set icon", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
 
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot when passing content to default slot", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 default: /* HTML */ ` <title>FIcon test information</title> `,
@@ -64,6 +66,7 @@ describe("props", () => {
                 ${"horizontal"} | ${"icon--flip-horizontal"}
                 ${"vertical"}   | ${"icon--flip-vertical"}
             `("$value", ({ value, expected }) => {
+                expect.assertions(1);
                 const wrapper = createWrapper({
                     props: {
                         flip: value,
@@ -108,6 +111,7 @@ describe("props", () => {
                 ${"180"} | ${"icon--rotate-180"}
                 ${"270"} | ${"icon--rotate-270"}
             `("$value", ({ value, expected }) => {
+                expect.assertions(1);
                 const wrapper = createWrapper({
                     props: {
                         rotate: value,
@@ -166,6 +170,7 @@ describe("props", () => {
         });
     });
 });
+
 describe("stacking", () => {
     it("should render multiple stacked FIcon components", () => {
         expect.assertions(2);
@@ -181,7 +186,7 @@ describe("stacking", () => {
         const wrapper = mount(TestComponent);
         const icons = wrapper.findAll(".icon");
 
-        expect(icons.length).toBe(2);
+        expect(icons).toHaveLength(2);
         expect(icons[0].classes()).toContain("f-icon-pdf");
     });
 });

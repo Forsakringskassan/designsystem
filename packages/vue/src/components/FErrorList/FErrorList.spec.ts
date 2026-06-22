@@ -33,6 +33,7 @@ function createWrapper({
 
 describe("snapshots", () => {
     it("should match snapshot when link", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 items: [{ id: "foo", title: "With link" }],
@@ -42,6 +43,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot when no link", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 items: [{ title: "With no link" }],
@@ -111,7 +113,10 @@ describe("navigation", () => {
     }
 
     it("should scroll to and focus on id element when focus element is missing", async () => {
-        window.scrollTo = vi.fn();
+        expect.assertions(2);
+        vi.spyOn(window, "scrollTo").mockImplementation(() => {
+            //Empty
+        });
         const logicScrollToMock = vi.spyOn(logic, "scrollTo");
 
         const wrapper = createWrapperWithErrorListAndInputs([
@@ -136,7 +141,10 @@ describe("navigation", () => {
     });
 
     it("should scroll to id element and focus on focus element when both elements exists", async () => {
-        window.scrollTo = vi.fn();
+        expect.assertions(2);
+        vi.spyOn(window, "scrollTo").mockImplementation(() => {
+            //Empty
+        });
         const logicScrollToMock = vi.spyOn(logic, "scrollTo");
 
         const wrapper = createWrapperWithErrorListAndInputs([

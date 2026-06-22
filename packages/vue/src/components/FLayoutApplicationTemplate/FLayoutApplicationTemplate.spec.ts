@@ -38,11 +38,13 @@ function createWrapper(slots: IApplicationTemplateSlots): VueWrapper {
 
 describe("snapshots", () => {
     it("should match snapshot with all slots used", () => {
+        expect.assertions(1);
         wrapper = createWrapper(defaultSlots);
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should render snapshot with no header and footer if running under another application", () => {
+        expect.assertions(1);
         const withoutOptsSlots: IApplicationTemplateSlots = {
             "top-navigation": "TOPNAVIGATION",
             default: "DEFAULT",
@@ -94,6 +96,7 @@ describe("<header>", () => {
 });
 
 it("should apply css class 'layout-application-template__body' to body-element", () => {
+    expect.assertions(1);
     wrapper = createWrapper(defaultSlots);
     expect(window.document.body.classList).toContain(
         "layout-application-template__body",

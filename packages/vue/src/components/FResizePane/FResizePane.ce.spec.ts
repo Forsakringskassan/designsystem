@@ -17,7 +17,7 @@ const mockAreaData: Mutable<UseAreaData> = {
     direction: ref("column"),
 };
 
-vi.mock("../FPageLayout/use-area-data", () => ({
+vi.mock(import("../FPageLayout/use-area-data"), () => ({
     useAreaData() {
         return mockAreaData;
     },
@@ -60,6 +60,7 @@ describe("should set attachment class", () => {
     ];
 
     it.each(attachPanel)("%s", async (attachPanel) => {
+        expect.assertions(1);
         setAreaData({ attachPanel });
         const template = /* HTML */ ` <ce-resize-pane> </ce-resize-pane> `;
         const attachTo = createPlaceholderInDocument();
@@ -75,6 +76,7 @@ describe("should set direction class", () => {
     const direction: LayoutAreaDirection[] = ["column", "row"];
 
     it.each(direction)("%s", async (direction) => {
+        expect.assertions(1);
         setAreaData({ direction });
         const template = /* HTML */ ` <ce-resize-pane> </ce-resize-pane> `;
         const attachTo = createPlaceholderInDocument();
@@ -101,6 +103,7 @@ describe("should set aria-orientation to", () => {
     it.each(oracle)(
         '"$orientation" when attaching to "$attachPanel"',
         async (entry) => {
+            expect.assertions(1);
             setAreaData({ attachPanel: entry.attachPanel });
             const template = /* HTML */ ` <ce-resize-pane> </ce-resize-pane> `;
             const attachTo = createPlaceholderInDocument();
@@ -117,6 +120,7 @@ describe("should set aria-orientation to", () => {
 });
 
 it("should have tabindex when not disabled", async () => {
+    expect.assertions(1);
     const template = /* HTML */ ` <ce-resize-pane> </ce-resize-pane> `;
     const attachTo = createPlaceholderInDocument();
     const wrapper = mount({ template }, { attachTo });
@@ -127,6 +131,7 @@ it("should have tabindex when not disabled", async () => {
 });
 
 it("should not have tabindex when disabled", async () => {
+    expect.assertions(1);
     const template = /* HTML */ ` <ce-resize-pane disabled> </ce-resize-pane> `;
     const attachTo = createPlaceholderInDocument();
     const wrapper = mount({ template }, { attachTo });

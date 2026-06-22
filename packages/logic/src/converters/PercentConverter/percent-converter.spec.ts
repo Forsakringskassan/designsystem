@@ -18,6 +18,7 @@ describe("formatting", () => {
     `(
         'should format "$value" ($type) as "$expected"',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(formatPercent(value)).toBe(expected);
         },
     );
@@ -54,6 +55,7 @@ describe("formatting decimals", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(formatPercent(value, 2)).toEqual(expected);
         },
     );
@@ -77,6 +79,7 @@ describe("parse", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(parsePercent(value)).toEqual(expected);
         },
     );

@@ -447,12 +447,14 @@ describe("isBefore()", () => {
         const b = FDate.fromIso("2004-10-12");
         expect(a.isBefore(b)).toBeTruthy();
     });
+
     it("should return false if the dates are the same", () => {
         expect.assertions(1);
         const a = FDate.fromIso("2004-10-11");
         const b = FDate.fromIso("2004-10-11");
         expect(a.isBefore(b)).toBeFalsy();
     });
+
     it("should return false if the first date is after the other", () => {
         expect.assertions(1);
         const a = FDate.fromIso("2004-10-12");
@@ -468,12 +470,14 @@ describe("isAfter()", () => {
         const b = FDate.fromIso("2004-10-11");
         expect(a.isAfter(b)).toBeTruthy();
     });
+
     it("should return false if the dates are the same", () => {
         expect.assertions(1);
         const a = FDate.fromIso("2004-10-11");
         const b = FDate.fromIso("2004-10-11");
         expect(a.isAfter(b)).toBeFalsy();
     });
+
     it("should return false if the first date is before the other", () => {
         expect.assertions(1);
         const a = FDate.fromIso("2004-10-11");

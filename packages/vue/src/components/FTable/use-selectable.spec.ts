@@ -11,6 +11,7 @@ interface Row {
 
 describe("selectableRowState(row)", () => {
     it("should return `true` when selected row", () => {
+        expect.assertions(1);
         const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
         setItemIdentifiers(rows.value);
         const selectedRows = ref([rows.value[1]]);
@@ -25,6 +26,7 @@ describe("selectableRowState(row)", () => {
     });
 
     it("should return `false` when not selected row", () => {
+        expect.assertions(1);
         const rows: Row[] = [{ id: 1 }, { id: 2 }];
         setItemIdentifiers(rows);
         const selectedRows = ref([rows[0]]);
@@ -42,6 +44,7 @@ describe("selectableRowState(row)", () => {
 describe("12.1 single select", () => {
     describe("toggleSelectableRow(row", () => {
         it("should select row when nothing selected", () => {
+            expect.assertions(4);
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
             setItemIdentifiers(rows);
             const selectedRows = ref([]);
@@ -60,6 +63,7 @@ describe("12.1 single select", () => {
         });
 
         it("should select row and unselect previous selected row", () => {
+            expect.assertions(4);
             const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
             setItemIdentifiers(rows.value);
             const selectedRows = ref([rows.value[0]]);
@@ -82,6 +86,7 @@ describe("12.1 single select", () => {
 describe("12.1 multi select", () => {
     describe("selectableHeaderState", () => {
         it("should return `false` when no rows selected", () => {
+            expect.assertions(1);
             const { selectableHeaderState } = useSelectable({
                 selectable: "multi",
                 selectedRows: ref([]),
@@ -92,6 +97,7 @@ describe("12.1 multi select", () => {
         });
 
         it("should return `indeterminate` when some rows selected", () => {
+            expect.assertions(1);
             const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
             setItemIdentifiers(rows.value);
             const selectedRows = ref([rows.value[1]]);
@@ -106,6 +112,7 @@ describe("12.1 multi select", () => {
         });
 
         it("should return `true` when all rows selected", () => {
+            expect.assertions(1);
             const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
             setItemIdentifiers(rows.value);
             const selectedRows = ref([...rows.value]);
@@ -122,6 +129,7 @@ describe("12.1 multi select", () => {
 
     describe("toggleSelectableHeader()", () => {
         it("should trigger checked state and select all rows when unchecked state", async () => {
+            expect.assertions(3);
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
             setItemIdentifiers(rows);
             const selectedRows = ref([]);
@@ -141,6 +149,7 @@ describe("12.1 multi select", () => {
         });
 
         it("should trigger checked state and select all rows when indeterminate state", () => {
+            expect.assertions(3);
             const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
             setItemIdentifiers(rows.value);
             const selectedRows = ref([rows.value[1]]);
@@ -159,6 +168,7 @@ describe("12.1 multi select", () => {
         });
 
         it("should trigger unchecked state and unselect all rows when checked state", async () => {
+            expect.assertions(3);
             const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
             setItemIdentifiers(rows.value);
             const selectedRows = ref([...rows.value]);
@@ -180,6 +190,7 @@ describe("12.1 multi select", () => {
 
     describe("toggleSelectableRow(row)", () => {
         it("should get header state `indeterminate` and row state `checked` when nothing selected", async () => {
+            expect.assertions(2);
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
             setItemIdentifiers(rows);
             const selectedRows = ref([]);
@@ -201,6 +212,7 @@ describe("12.1 multi select", () => {
         });
 
         it("should get header state checked and all rows checked when selecting row by row", async () => {
+            expect.assertions(3);
             const rows: Row[] = [{ id: 1 }, { id: 2 }];
             setItemIdentifiers(rows);
             const selectedRows = ref([]);
@@ -224,6 +236,7 @@ describe("12.1 multi select", () => {
         });
 
         it("should get header state `indeterminate` and row unchecked when all selected", async () => {
+            expect.assertions(4);
             const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
             setItemIdentifiers(rows.value);
             const selectedRows = ref([...rows.value]);
@@ -250,6 +263,7 @@ describe("12.1 multi select", () => {
 
 describe("7.7 Dataset change updates selection", () => {
     it("should update bulk checkbox state when all rows are selected and a new row is added", async () => {
+        expect.assertions(3);
         const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
         setItemIdentifiers(rows.value);
         const selectedRows = ref([...rows.value]);
@@ -270,6 +284,7 @@ describe("7.7 Dataset change updates selection", () => {
     });
 
     it("should update selected rows when an included row is removed", async () => {
+        expect.assertions(1);
         const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
         setItemIdentifiers(rows.value);
         const selectedRows = ref([...rows.value]);
@@ -286,6 +301,7 @@ describe("7.7 Dataset change updates selection", () => {
     });
 
     it("should clear all selected rows and bulk checkbox when rows are replaced", async () => {
+        expect.assertions(3);
         const rows = ref<Row[]>([{ id: 1 }, { id: 2 }]);
         setItemIdentifiers(rows.value);
         const selectedRows = ref([...rows.value]);
@@ -306,6 +322,7 @@ describe("7.7 Dataset change updates selection", () => {
     });
 
     it("should not clear selected rows when row details are updated", async () => {
+        expect.assertions(4);
         const rows = ref<Row[]>([
             { id: 1, value: "foo" },
             { id: 2, value: "baz" },
@@ -329,6 +346,7 @@ describe("7.7 Dataset change updates selection", () => {
     });
 
     it("should not clear selected rows when rows are sorted", async () => {
+        expect.assertions(6);
         const rows = ref<Row[]>([
             { id: 1, value: "foo" },
             { id: 2, value: "baz" },

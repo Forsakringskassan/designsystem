@@ -29,6 +29,7 @@ describe("validation", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected, config }) => {
+            expect.assertions(1);
             const result = percentValidator.validation(value, element, config);
             expect(result).toEqual(expected);
         },

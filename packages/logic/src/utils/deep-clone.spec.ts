@@ -4,6 +4,7 @@ import { expect, it } from "vitest";
 import { deepClone } from "./deep-clone";
 
 it("should return a deep clone", () => {
+    expect.assertions(4);
     const original = { value: new String("parent"), child: { value: "child" } };
     const clone = deepClone(original);
 
@@ -21,6 +22,7 @@ it.each`
     ${null}      | ${"null"}
     ${undefined} | ${"undefined"}
 `("should copy primitive $description ($value)", ({ value }) => {
+    expect.assertions(1);
     const clone = deepClone(value);
     expect(value === clone).toBeTruthy();
 });
@@ -56,10 +58,11 @@ it.each`
     ${new Number(0)}                     | ${"number object"}
     ${new String("a")}                   | ${"string object"}
 `("should clone $description ($value)", ({ value }) => {
+    expect.assertions(3);
     const clone = deepClone(value);
     expect(value === clone).toBeFalsy();
     expect(clone).toEqual(value);
-    expect(typeof clone).toBe(typeof value);
+    expect(clone).toBeTypeOf(typeof value);
 });
 
 it("should clone regular expression", () => {
@@ -81,7 +84,7 @@ it("should clone class instance", () => {
     expect(clone).not.toBe(value);
     expect(clone).toEqual(value);
     expect(clone.constructor.name).toBe(value.constructor.name);
-    expect(typeof value).toBe(typeof clone);
+    expect(value).toBeTypeOf(typeof clone);
     expect(clone.getGreeting("Kvack kvack")).toBe("Kvack kvack Kalle Anka");
 });
 

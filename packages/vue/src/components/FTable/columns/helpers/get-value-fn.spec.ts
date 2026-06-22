@@ -8,6 +8,7 @@ interface TableRow {
 
 describe("getValueFn()", () => {
     it("should return and call provided value-function", () => {
+        expect.assertions(2);
         const valueFnMock = vi.fn((_row: TableRow): string => {
             return "myValue";
         });
@@ -37,6 +38,7 @@ describe("getValueFn()", () => {
     });
 
     it("should create and call created value-function", () => {
+        expect.assertions(1);
         const rows: TableRow[] = [
             {
                 id: "1",
@@ -58,6 +60,7 @@ describe("getValueFn()", () => {
     });
 
     it("should return a function that returns the default value, when fn and key is undefined", () => {
+        expect.assertions(1);
         const rows: TableRow[] = [
             {
                 id: "1",

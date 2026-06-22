@@ -162,12 +162,14 @@ function getUnderlyingComponent(
 
 describe("snapshots", () => {
     it("should match snapshot with a dropdown with attributes", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
         expect(wrapper.element).toMatchSnapshot();
     });
 });
 
 it("should sort by default values", async () => {
+    expect.assertions(3);
     const wrapper = createTableWrapper();
     await wrapper.vm.$nextTick();
     const rows = wrapper.findAll("tr");
@@ -178,6 +180,7 @@ it("should sort by default values", async () => {
 });
 
 it("should emit event with used attributes when sorting using table heading", async () => {
+    expect.assertions(6);
     const spyGetUsedSortAttributes = vi.spyOn(
         tableTestComponentWithOutput.methods,
         "usedSortAttributes",
@@ -225,6 +228,7 @@ it("should emit event with used attributes when sorting using table heading", as
 });
 
 it("should sort by default values even when data changes", async () => {
+    expect.assertions(3);
     const wrapper = createTableWrapper();
 
     const newData = [
@@ -242,6 +246,7 @@ it("should sort by default values even when data changes", async () => {
 });
 
 it("should give an underlying component access to sort", async () => {
+    expect.assertions(3);
     const wrapper = createTableWrapper();
 
     getUnderlyingComponent(wrapper).testSort();
@@ -254,6 +259,7 @@ it("should give an underlying component access to sort", async () => {
 });
 
 it("should call the underlying component with available sortable atributes", () => {
+    expect.assertions(1);
     const wrapper = createTableWrapper();
     const sortableAttributes =
         getUnderlyingComponent(wrapper).sortableAttributes;
@@ -261,6 +267,7 @@ it("should call the underlying component with available sortable atributes", () 
 });
 
 it("should call the underlying component when sorting changes", async () => {
+    expect.assertions(2);
     const wrapper = createTableWrapper();
 
     getUnderlyingComponent(wrapper).testSort();
@@ -274,6 +281,7 @@ it("should call the underlying component when sorting changes", async () => {
 });
 
 it("should sort data when dropdown is changed", async () => {
+    expect.assertions(6);
     const wrapper = createTableWrapper();
     const options = wrapper.find("select").findAll("option");
 
@@ -294,6 +302,7 @@ it("should sort data when dropdown is changed", async () => {
 
 describe("should keep sort on data change", () => {
     it("when sort was selected using dropdown", async () => {
+        expect.assertions(7);
         const wrapper = createTableWrapper();
         const options = wrapper.find("select").findAll("option");
 
@@ -316,6 +325,7 @@ describe("should keep sort on data change", () => {
     });
 
     it("when sort was selected using inject method", async () => {
+        expect.assertions(7);
         const wrapper = createTableWrapper();
 
         // Sort by Column B (Stigande)
@@ -340,6 +350,7 @@ describe("should keep sort on data change", () => {
 });
 
 it("should emit event when dataset is sorted", async () => {
+    expect.assertions(3);
     const wrapper = createWrapper();
     await wrapper.vm.$nextTick();
 
@@ -362,6 +373,7 @@ it("should emit event when dataset is sorted", async () => {
 });
 
 it("should emit event with used attributes when sorting using dropdown", async () => {
+    expect.assertions(3);
     const wrapper = createWrapper();
     await wrapper.vm.$nextTick();
 
@@ -401,6 +413,7 @@ it("should emit event with used attributes when sorting using dropdown", async (
 });
 
 it("should throw error when sorting objects", () => {
+    expect.assertions(1);
     const mountInvalidSort = (): void => {
         mount(FSortFilterDataset, {
             props: {
@@ -419,6 +432,7 @@ it("should throw error when sorting objects", () => {
 });
 
 it("should sort strings independent of case", async () => {
+    expect.assertions(2);
     const wrapper = createTableWrapper(CASE_SENSITIVE_DATA);
     const options = wrapper.find("select").findAll("option");
     // Sort by Column A (Stigande)
@@ -507,6 +521,7 @@ it("should sort strings independent of case", async () => {
 
 describe("html-validate", () => {
     it("should require data attribute", () => {
+        expect.assertions(1);
         expect(
             "<f-sort-filter-dataset></f-sort-filter-dataset>",
         ).not.toHTMLValidate({
@@ -516,6 +531,7 @@ describe("html-validate", () => {
     });
 
     it("should require sortable-attributes attribute", () => {
+        expect.assertions(1);
         expect(
             "<f-sort-filter-dataset></f-sort-filter-dataset>",
         ).not.toHTMLValidate({
@@ -525,6 +541,7 @@ describe("html-validate", () => {
     });
 
     it("should require default slot", () => {
+        expect.assertions(1);
         expect(
             "<f-sort-filter-dataset></f-sort-filter-dataset>",
         ).not.toHTMLValidate({
@@ -534,6 +551,7 @@ describe("html-validate", () => {
     });
 
     it("html should be valid", () => {
+        expect.assertions(1);
         expect(
             '<f-sort-filter-dataset data="test" sortable-attributes="test igen"><template #default></template></f-sort-filter-dataset>',
         ).toHTMLValidate();

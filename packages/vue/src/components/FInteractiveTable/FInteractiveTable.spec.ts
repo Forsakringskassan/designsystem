@@ -350,6 +350,7 @@ describe("showActive flag", () => {
     };
 
     it("should add table__row--active class when showActive is true and row is clicked", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(TestComponent);
         wrapper.setProps({ showActive: true });
         await wrapper.vm.$nextTick();
@@ -367,6 +368,7 @@ describe("showActive flag", () => {
     });
 
     it("should not have table__row--active class when showActive is false and row is clicked", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(TestComponent);
         wrapper.setProps({ showActive: false });
         await wrapper.vm.$nextTick();
@@ -614,6 +616,7 @@ describe("events", () => {
     });
 
     it("should emit click event when row is clicked", async () => {
+        expect.assertions(1);
         const wrapper = mount(TestComponent);
         const table = wrapper.getComponent(
             FInteractiveTable as ReturnType<typeof defineComponent>,
@@ -627,6 +630,7 @@ describe("events", () => {
     it.each([" ", "Spacebar"])(
         "should activate row and emit click event when item getting space key (%s) down event",
         async (key: string) => {
+            expect.assertions(1);
             const wrapper = mount(TestComponent);
             const table = wrapper.getComponent(
                 FInteractiveTable as ReturnType<typeof defineComponent>,
@@ -639,6 +643,7 @@ describe("events", () => {
 
     describe("active row", () => {
         it("should emit click event when clicking on active item", async () => {
+            expect.assertions(1);
             const wrapper = mount(TestComponent);
             const table = wrapper.getComponent(
                 FInteractiveTable as ReturnType<typeof defineComponent>,
@@ -651,6 +656,7 @@ describe("events", () => {
         });
 
         it("should update active row when clicking on item", async () => {
+            expect.assertions(2);
             const wrapper = mount(TestComponent);
             const table = wrapper.getComponent(
                 FInteractiveTable as ReturnType<typeof defineComponent>,
@@ -667,6 +673,7 @@ describe("events", () => {
         it.each([" ", "Spacebar"])(
             "should emit click event when active item getting space key (%s) down event",
             async (key: string) => {
+                expect.assertions(1);
                 const wrapper = mount(TestComponent);
                 const table = wrapper.getComponent(
                     FInteractiveTable as ReturnType<typeof defineComponent>,
@@ -703,6 +710,7 @@ it("should handle nestled row objects when no rows are present", async () => {
 });
 
 it("should call provided sort method when clicking columnheader that is registrated as sortable", async () => {
+    expect.assertions(2);
     const mockedProvedSort = vi.fn();
     let registerSortableColumnsCallback: FSortFilterDatasetMountCallback;
     const TestComponent = {

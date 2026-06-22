@@ -2,6 +2,7 @@ import { expect, it, vi } from "vitest";
 import { FLayoutRightPanelService } from "./f-layout-right-panel-service";
 
 it("should emit open event", () => {
+    expect.assertions(1);
     const listener = vi.fn();
     FLayoutRightPanelService.on("open", listener);
     FLayoutRightPanelService.open();
@@ -9,6 +10,7 @@ it("should emit open event", () => {
 });
 
 it("should emit openDialog event with title as argument", () => {
+    expect.assertions(1);
     const listener = vi.fn();
     FLayoutRightPanelService.on("open-dialog", listener);
     FLayoutRightPanelService.openDialog("some title");
@@ -16,6 +18,7 @@ it("should emit openDialog event with title as argument", () => {
 });
 
 it("should emit close event", () => {
+    expect.assertions(1);
     const listener = vi.fn();
     FLayoutRightPanelService.on("close", listener);
     FLayoutRightPanelService.close();
@@ -23,6 +26,7 @@ it("should emit close event", () => {
 });
 
 it("should restore focus when calling close", () => {
+    expect.assertions(3);
     window.document.body.innerHTML = /* HTML */ `
         <button id="button1"></button>
         <button id="button2"></button>

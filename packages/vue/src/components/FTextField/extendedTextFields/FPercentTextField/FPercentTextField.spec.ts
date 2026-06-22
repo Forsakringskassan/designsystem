@@ -15,11 +15,13 @@ function createWrapper(props = {}): VueWrapper {
 
 describe("inputmode", () => {
     it("should have numeric as inputmode", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
         expect(wrapper.get("input").attributes("inputmode")).toBe("numeric");
     });
 
     it("should have decimal as inputmode", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({ decimals: 2 });
         expect(wrapper.get("input").attributes("inputmode")).toBe("decimal");
     });

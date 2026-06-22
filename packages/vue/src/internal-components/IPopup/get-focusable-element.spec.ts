@@ -7,6 +7,7 @@ beforeEach(() => {
 });
 
 it("should return first tabbable element by default", () => {
+    expect.assertions(1);
     const root = document.createElement("div");
     const button = document.createElement("button");
     const input = document.createElement("input");
@@ -18,6 +19,7 @@ it("should return first tabbable element by default", () => {
 });
 
 it("should return null if no tabbable elements are available", () => {
+    expect.assertions(1);
     const root = document.createElement("div");
     vi.spyOn(logic, "findTabbableElements").mockReturnValue([]);
 

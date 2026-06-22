@@ -3,6 +3,7 @@ import { type ValidatorName } from "../validator";
 import { ValidationErrorMessageBuilder } from "./validation-error-message-builder";
 
 it("should create a map with translations for validators", () => {
+    expect.assertions(1);
     const validatorMessageMap = ValidationErrorMessageBuilder.create()
         .map("required", "Field is required")
         .map("maxLength", "Text is too long")
@@ -19,6 +20,7 @@ it("should create a map with translations for validators", () => {
 });
 
 it("should create a map with translations for combined validators", () => {
+    expect.assertions(1);
     const validatorMessageMap = ValidationErrorMessageBuilder.create()
         .mapCombined(
             "required",
@@ -35,6 +37,7 @@ it("should create a map with translations for combined validators", () => {
 });
 
 it("should create a map with translations for a customer validator", () => {
+    expect.assertions(1);
     const validatorMessageMap = ValidationErrorMessageBuilder.create()
         .map(
             "my-app-specific-validator" as ValidatorName,

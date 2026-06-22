@@ -10,6 +10,7 @@ beforeEach(() => {
 });
 
 it("should call function after delay-period", () => {
+    expect.assertions(3);
     vi.useFakeTimers();
 
     debouncedFunction();
@@ -23,6 +24,7 @@ it("should call function after delay-period", () => {
 });
 
 it("should only call function once and delayed if debouncedFunction is called during delay-period", () => {
+    expect.assertions(4);
     vi.useFakeTimers();
 
     debouncedFunction();
@@ -41,6 +43,7 @@ it("should only call function once and delayed if debouncedFunction is called du
 });
 
 it("should call function before timeout with immediate set to true", () => {
+    expect.assertions(4);
     vi.useFakeTimers();
 
     debouncedFunction = debounce(func, 100, true);

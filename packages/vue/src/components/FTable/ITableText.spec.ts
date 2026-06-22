@@ -8,7 +8,7 @@ interface Row {
     foo: string;
 }
 
-vi.mock("./start-stop-edit", () => ({
+vi.mock(import("./start-stop-edit"), () => ({
     useStartStopEdit: () => ({
         stopEdit: vi.fn(),
     }),
@@ -72,6 +72,7 @@ describe("ITableText", () => {
     });
 
     it("should restore td tabstop on blur when exiting edit mode", async () => {
+        expect.assertions(5);
         const row = { text: "Foo" };
         const column = normalizeTableColumn<typeof row>({
             type: "text",

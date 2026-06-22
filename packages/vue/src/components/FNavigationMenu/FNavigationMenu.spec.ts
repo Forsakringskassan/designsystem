@@ -27,6 +27,7 @@ beforeEach(() => {
 describe("props", () => {
     describe("routes", () => {
         it("should have same number of items as in props routes", () => {
+            expect.assertions(1);
             const wrapper = mount(FNavigationMenu, {
                 props: {
                     route: "",
@@ -39,6 +40,7 @@ describe("props", () => {
         });
 
         it("should add href attribute to item element if used in route", () => {
+            expect.assertions(1);
             const wrapper = mount(FNavigationMenu, {
                 props: {
                     route: "",
@@ -51,6 +53,7 @@ describe("props", () => {
         });
 
         it("should add target attribute to item element if used in route", () => {
+            expect.assertions(1);
             const wrapper = mount(FNavigationMenu, {
                 props: {
                     route: "",
@@ -65,6 +68,7 @@ describe("props", () => {
 
     describe("vertical", () => {
         it("should set horizontal class when `vertical` is not used (default)", async () => {
+            expect.assertions(1);
             const wrapper = mount(FNavigationMenu, {
                 props: {
                     route: "",
@@ -78,6 +82,7 @@ describe("props", () => {
         });
 
         it("should set vertical class when `vertical` is used", async () => {
+            expect.assertions(1);
             const wrapper = mount(FNavigationMenu, {
                 props: {
                     route: "",
@@ -95,6 +100,7 @@ describe("props", () => {
 
 describe("events", () => {
     it("should emit selectedRoute on select", async () => {
+        expect.assertions(1);
         const wrapper = mount(FNavigationMenu, {
             props: {
                 route: "",
@@ -111,6 +117,7 @@ describe("events", () => {
     });
 
     it("should select the current route passed with props directly after mount", async () => {
+        expect.assertions(1);
         // Given
         const wrapper = mount(FNavigationMenu, {
             propsData: {
@@ -128,6 +135,7 @@ describe("events", () => {
     });
 
     it("should set imenu__list__item--highlight class on selected item", async () => {
+        expect.assertions(1);
         // given
         const wrapper = mount(FNavigationMenu, {
             props: {
@@ -153,6 +161,7 @@ describe("events", () => {
 
 describe("html-validate", () => {
     it("should require routes attribute", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ ` <f-navigation-menu></f-navigation-menu> `;
         await expect(markup).toMatchInlineCodeframe(`
             "error: <f-navigation-menu> is missing required "routes" attribute (element-required-attributes)
@@ -163,6 +172,7 @@ describe("html-validate", () => {
     });
 
     it("should allow setting vertical boolean attribute", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-navigation-menu routes="" vertical></f-navigation-menu>
         `;
@@ -170,6 +180,7 @@ describe("html-validate", () => {
     });
 
     it("should not allow setting vertical value", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-navigation-menu routes="" vertical=""></f-navigation-menu>
         `;
@@ -180,6 +191,7 @@ describe("html-validate", () => {
     });
 
     it("should not be allowed in interactive components", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <button type="button">
                 <f-navigation-menu routes=""></f-navigation-menu>
@@ -193,6 +205,7 @@ describe("html-validate", () => {
     });
 
     it("should not allow interactive children", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-navigation-menu routes="">
                 <button type="button"></button>
@@ -206,6 +219,7 @@ describe("html-validate", () => {
     });
 
     it("should not allow child elements", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-navigation-menu routes="">
                 <em></em>
@@ -219,6 +233,7 @@ describe("html-validate", () => {
     });
 
     it("should not allow text", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-navigation-menu routes=""> mjukglass </f-navigation-menu>
         `;

@@ -1,10 +1,5 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { TranslationService } from "./translation-service";
-
-/* eslint-disable-next-line no-console -- technical debt, bad practice and
- * console is not restored so it leaks to other tests, should use vi.spyOn(..)
- * at least and for tests expected to log should have explicit tests for this */
-console.log = vi.fn();
 
 describe("translate", () => {
     it("should throw error if translate function is unset and no proper default value is passed", () => {
@@ -27,6 +22,7 @@ describe("translate", () => {
     `(
         'should translate default "$defaultValue" with args "$args" as "$expected"',
         ({ defaultValue, args, expected }) => {
+            expect.assertions(1);
             expect(
                 TranslationService.provider.translate(
                     "someKey",

@@ -20,6 +20,7 @@ describe("formatting", () => {
     `(
         'should format "$value" ($type) as "$expected"',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(formatNumber(value)).toBe(expected);
         },
     );
@@ -57,6 +58,7 @@ describe("formatting decimals", () => {
         ${1234.255}  | ${"1\u00a0234,26"}
         ${1000000.5} | ${"1\u00a0000\u00a0000,50"}
     `('should format "$value" as "$expected"', ({ value, expected }) => {
+        expect.assertions(1);
         expect(formatNumber(value, 2)).toEqual(expected);
     });
 });
@@ -91,6 +93,7 @@ describe("parse", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(parseNumber(value)).toEqual(expected);
         },
     );

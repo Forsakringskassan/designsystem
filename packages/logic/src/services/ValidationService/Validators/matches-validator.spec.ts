@@ -17,6 +17,7 @@ it.each`
 `(
     'should return $expected with input value "$inputValue" compared to "$comparedValue" because of $description',
     ({ inputValue, comparedValue, expected }) => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <input id="testID" value="${inputValue}" />
         `;

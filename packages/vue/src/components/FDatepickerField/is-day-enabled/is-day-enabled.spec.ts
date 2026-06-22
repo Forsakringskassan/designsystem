@@ -19,13 +19,16 @@ describe("isDayEnabled", () => {
             dates: ["2020-01-06", "2020-01-05"],
         },
     };
+
     it("should return true when day is enabled", () => {
+        expect.assertions(1);
         const day = FDate.fromIso("2022-12-02");
 
         expect(isDayEnabled(day, valConf)).toBeTruthy();
     });
 
     it("should return false when day is not enabled", () => {
+        expect.assertions(1);
         const day = FDate.fromIso("2020-01-05");
 
         expect(isDayEnabled(day, valConf)).toBeFalsy();

@@ -9,6 +9,7 @@ it.each`
     ${{ key: { key: "value" }, another: { deep: { key: "value" } } }} | ${{ "key.key": "value", "another.deep.key": "value" }}
     ${{ "key.key": "value", "another.another": "value" }}             | ${{ "key.key": "value", "another.another": "value" }}
 `("should flatten $src to $expected", ({ src, expected }) => {
+    expect.assertions(1);
     const result = flatten(src);
 
     expect(result).toEqual(expected);

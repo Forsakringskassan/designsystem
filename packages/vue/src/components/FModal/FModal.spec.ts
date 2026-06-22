@@ -22,6 +22,7 @@ Object.defineProperties(window.HTMLElement.prototype, {
 
 describe("events", () => {
     it('should send "close" event on close button clicked', async () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FModal, {
             props: {
                 isOpen: true,
@@ -34,6 +35,7 @@ describe("events", () => {
     });
 
     it('should send "close" event on escape key pressed"', async () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FModal, {
             props: {
                 isOpen: true,
@@ -48,6 +50,7 @@ describe("events", () => {
 
 describe("props", () => {
     it('should be visible if "isOpen" prop is true', async () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FModal, {
             props: {
                 isOpen: true,
@@ -59,6 +62,7 @@ describe("props", () => {
     });
 
     it('should be invisible if "isOpen" prop is false', async () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FModal, {
             props: {
                 isOpen: false,
@@ -119,6 +123,7 @@ describe("props", () => {
             ${"fullscreen"} | ${"modal__dialog-container--fullwidth"}
             ${"fullwidth"}  | ${"modal__dialog-container--fullwidth"}
         `("$size", async ({ size, classname }) => {
+            expect.assertions(1);
             const wrapper = shallowMount(FModal, {
                 props: {
                     isOpen: true,
@@ -238,6 +243,7 @@ describe("accessibility", () => {
 
 describe("scrollbars", () => {
     it('should remove scrollbars from document if "isOpen" prop is true', async () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FModal, {
             props: {
                 isOpen: true,
@@ -250,6 +256,7 @@ describe("scrollbars", () => {
     });
 
     it('should restore scrollbars in document if "isOpen" prop is false', async () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FModal, {
             props: {
                 isOpen: false,
@@ -262,6 +269,7 @@ describe("scrollbars", () => {
     });
 
     it("should restore scrollbars in document when component is unmounted", async () => {
+        expect.assertions(2);
         const wrapper = shallowMount(FModal, {
             props: {
                 isOpen: true,

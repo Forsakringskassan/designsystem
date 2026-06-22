@@ -83,6 +83,7 @@ function triggerComponentUnmountEvent(
 
 describe("events", () => {
     it("should trigger group-validity event after componentValidity event is triggered", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({});
         const input = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input.element);
@@ -93,6 +94,7 @@ describe("events", () => {
         expect(wrapper.emitted("group-validity")).toHaveLength(1);
     });
 
+    /* eslint-disable-next-line vitest/no-disabled-tests -- technical debt: flaky test */
     it.skip.each`
         stopPropagation | expectedEvent
         ${true}         | ${false}
@@ -100,6 +102,7 @@ describe("events", () => {
     `(
         'should propagate componentValidityEvent = $expectedEvent when stopPropagation="$stopPropagation"',
         async ({ stopPropagation, expectedEvent }) => {
+            expect.assertions(1);
             const wrapper = mount(
                 defineComponent({
                     name: "TestComponent",
@@ -143,6 +146,7 @@ describe("events", () => {
     );
 
     it("should delete components when unmounted", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper({});
         const vGroup = wrapper.getComponent(FValidationGroup);
         const input1 = wrapper.get<HTMLInputElement>("#input1");
@@ -166,6 +170,7 @@ describe("events", () => {
     });
 
     it("should emit isValid = true when all components are valid", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({});
         const input1 = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input1.element, { isValid: true });
@@ -181,6 +186,7 @@ describe("events", () => {
     });
 
     it("should emit isValid = false when some component is not valid", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({});
         const input1 = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input1.element, { isValid: true });
@@ -197,6 +203,7 @@ describe("events", () => {
     });
 
     it("should emit nothing when no components are registered", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({});
         await flushPromises();
         wrapper.vm.$forceUpdate();
@@ -205,6 +212,7 @@ describe("events", () => {
     });
 
     it("should emit components with errors (validityMode = ERROR)", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper({});
         const input1 = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input1.element, {
@@ -227,6 +235,7 @@ describe("events", () => {
     });
 
     it("should emit components with errors in DOM-order", async () => {
+        expect.assertions(3);
         const wrapper = createWrapper({});
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         triggerComponentValidityEvent(input2.element, {
@@ -250,6 +259,7 @@ describe("events", () => {
     });
 
     it("should emit only components that still exists in DOM", async () => {
+        expect.assertions(4);
         const wrapper = createWrapper({});
         const input1 = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input1.element, {
@@ -285,6 +295,7 @@ describe("events", () => {
     });
 
     it("should emit component count", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({});
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         const input1 = wrapper.get<HTMLInputElement>("#input1");
@@ -308,6 +319,7 @@ describe("events", () => {
 
 describe("v-model", () => {
     it("should not require v-model", async () => {
+        expect.assertions(1);
         const wrapper = mount(
             defineComponent({
                 name: "TestComponent",

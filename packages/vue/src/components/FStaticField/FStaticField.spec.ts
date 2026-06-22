@@ -10,6 +10,7 @@ function createWrapper({ slots = {} } = {}): VueWrapper {
 
 describe("snapshots", () => {
     it("should match snapshot with span and p", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: { label: "Heading", default: "En liten text" },
         });
@@ -18,6 +19,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with span, p and tooltip", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 label: "Heading",

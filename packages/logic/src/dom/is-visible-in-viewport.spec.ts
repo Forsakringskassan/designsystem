@@ -18,6 +18,7 @@ it.each`
 `(
     'should return "$expected" when element bounds are $elementBounds because $description',
     ({ elementBounds, expected }) => {
+        expect.assertions(1);
         const element = document.createElement("input");
         const mock = vi.fn();
         mock.mockReturnValue(elementBounds);

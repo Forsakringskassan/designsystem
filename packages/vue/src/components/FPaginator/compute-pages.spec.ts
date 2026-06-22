@@ -21,6 +21,7 @@ describe("compute pages", () => {
     `(
         'compute pages from list of $numberOfPages pages (max $maxPagesShown pages) with current page "$currentPage"',
         ({ numberOfPages, maxPagesShown, currentPage, pages }) => {
+            expect.assertions(1);
             // Compute pages
             const computedPages = computePages({
                 numberOfPages,

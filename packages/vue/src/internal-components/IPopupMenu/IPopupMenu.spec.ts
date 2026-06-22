@@ -67,11 +67,13 @@ afterEach(() => {
 
 describe("props", () => {
     it("should not be visible when isOpen is false", async () => {
+        expect.assertions(1);
         const wrapper = await mountPopup();
         expect(wrapper).not.toContain(".ipopupmenu__list");
     });
 
     it("should have same number of items as in props items when isOpen is true", async () => {
+        expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = await mountPopup();
@@ -86,6 +88,7 @@ describe("props", () => {
 
 describe("events", () => {
     it("should set gotCloseEvent to true on click item", async () => {
+        expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = await mountPopup();
@@ -106,6 +109,7 @@ describe("events", () => {
 
 describe("v-model", () => {
     it("should update v-model when item is selected", async () => {
+        expect.assertions(1);
         const testWrapper = await mountPopup();
         await openPopup(testWrapper);
 
@@ -123,6 +127,7 @@ describe("v-model", () => {
     });
 
     it("should emit select event when item is selected", async () => {
+        expect.assertions(1);
         const testWrapper = await mountPopup();
         await openPopup(testWrapper);
 
@@ -140,6 +145,7 @@ describe("v-model", () => {
     });
 
     it("should test that focus is set on first item and not on previously highlighted item", async () => {
+        expect.assertions(3);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         const wrapper = await mountPopup();
@@ -169,6 +175,7 @@ describe("v-model", () => {
 
 describe("html-validate", () => {
     it("should require is-open attribute", () => {
+        expect.assertions(1);
         expect("<i-popup-menu></i-popup-menu>").not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup-menu> is missing required "is-open" attribute',
@@ -176,6 +183,7 @@ describe("html-validate", () => {
     });
 
     it("should allow setting is-open boolean attribute", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup-menu is-open items=""></i-popup-menu>
         `;
@@ -183,6 +191,7 @@ describe("html-validate", () => {
     });
 
     it("should not allow setting is-open value", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup-menu is-open="" items=""></i-popup-menu>
         `;
@@ -193,6 +202,7 @@ describe("html-validate", () => {
     });
 
     it("should allow setting anchor attribute", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup-menu is-open items="" anchor=""></i-popup-menu>
         `;
@@ -200,6 +210,7 @@ describe("html-validate", () => {
     });
 
     it("should require items attribute", () => {
+        expect.assertions(1);
         expect("<i-popup-menu></i-popup-menu>").not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup-menu> is missing required "items" attribute',
@@ -207,6 +218,7 @@ describe("html-validate", () => {
     });
 
     it("should not be allowed in interactive components", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <button type="button">
                 <i-popup-menu items=""></i-popup-menu>
@@ -220,6 +232,7 @@ describe("html-validate", () => {
     });
 
     it("should not allow interactive children", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup-menu items="">
                 <button type="button"></button>
@@ -233,6 +246,7 @@ describe("html-validate", () => {
     });
 
     it("should not allow child elements", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup-menu items="">
                 <em></em>
@@ -246,6 +260,7 @@ describe("html-validate", () => {
     });
 
     it("should not allow text", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup-menu items=""> mjukglass </i-popup-menu>
         `;

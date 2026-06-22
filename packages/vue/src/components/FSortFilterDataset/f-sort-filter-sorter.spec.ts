@@ -4,6 +4,7 @@ import { sort } from "./f-sort-filter-sorter";
 
 describe("FSortFilterSorter", () => {
     it("should sort alphabetically", () => {
+        expect.assertions(4);
         const data = [
             { text: "aAc" },
             { text: "aba" },
@@ -18,6 +19,7 @@ describe("FSortFilterSorter", () => {
     });
 
     it("should sort numerically", () => {
+        expect.assertions(5);
         const data = [
             { number: 9.01 },
             { number: 0 },
@@ -34,6 +36,7 @@ describe("FSortFilterSorter", () => {
     });
 
     it("should sort booleans", () => {
+        expect.assertions(4);
         const data = [
             { val: false },
             { val: true },
@@ -48,6 +51,7 @@ describe("FSortFilterSorter", () => {
     });
 
     it("should sort data containing null or undefined values", () => {
+        expect.assertions(8);
         const data = [{ val: "bbb" }, { val: null }, {}, { val: "aaa" }];
         let result = sort(data, { attribute: "val", ascending: true });
         expect(result[0].val).toBe("aaa");
@@ -63,6 +67,7 @@ describe("FSortFilterSorter", () => {
     });
 
     it("should trow error when trying to sort objects", () => {
+        expect.assertions(1);
         const data = [{ myObject: { number: 1 } }, { myObject: { number: 2 } }];
         expect(() =>
             sort(data, { attribute: "myObject", ascending: true }),
@@ -73,6 +78,7 @@ describe("FSortFilterSorter", () => {
     });
 
     it("should sort type string first if mixed types", () => {
+        expect.assertions(5);
         const data = [
             { val: 2 },
             { val: 3 },
@@ -89,6 +95,7 @@ describe("FSortFilterSorter", () => {
     });
 
     it("shold throw error for unhandled types", () => {
+        expect.assertions(1);
         interface CustomType {
             a: string;
             b: number;

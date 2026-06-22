@@ -41,12 +41,14 @@ describe("findParentByName()", () => {
     });
 
     it("should return given component if it has the given name", () => {
+        expect.assertions(2);
         const result = findParentByName(child, "ChildComponent");
         expect(result).toBeDefined();
         expect(result?.$options.name).toBe("ChildComponent");
     });
 
     it("should return undefined when given parent is missing", () => {
+        expect.assertions(1);
         const result = findParentByName(
             grandchild,
             "NowhereToBeFoundComponent",
@@ -55,11 +57,13 @@ describe("findParentByName()", () => {
     });
 
     it("should return undefined when given component is a root component", () => {
+        expect.assertions(1);
         const result = findParentByName(wrapper.vm, "Grandparent");
         expect(result).toBeUndefined();
     });
 
     it("should return parent when found at last", () => {
+        expect.assertions(2);
         const result = findParentByName(grandchild, "ParentComponent");
         expect(result).toBeDefined();
         expect(result?.$options.name).toBe("ParentComponent");

@@ -5,6 +5,7 @@ import FPageHeader from "./FPageHeader.vue";
 
 describe("slots", () => {
     it("should change skipLink text via slot", async () => {
+        expect.assertions(1);
         const mySkipLinkText = "my SkipLink Text";
         const mySkipLinkHref = "#myhref";
         const wrapper = mount(FPageHeader, {
@@ -20,6 +21,7 @@ describe("slots", () => {
     });
 
     it("should change logo via slot", () => {
+        expect.assertions(1);
         const logoHtml = "<div>logo</div>";
         const wrapper = mount(FPageHeader, {
             slots: {
@@ -30,6 +32,7 @@ describe("slots", () => {
     });
 
     it("should change app-name via slot", () => {
+        expect.assertions(1);
         const myAppName = "myAppName";
         const wrapper = mount(FPageHeader, {
             slots: {
@@ -41,6 +44,7 @@ describe("slots", () => {
     });
 
     it("should change user-name via slot", () => {
+        expect.assertions(1);
         const myUserName = "<div>Firstname Lastname</div>";
         const wrapper = mount(FPageHeader, {
             slots: {
@@ -54,6 +58,7 @@ describe("slots", () => {
 describe("props", () => {
     describe("skipLink", () => {
         it("should enable and set skiplink target", () => {
+            expect.assertions(1);
             const wrapper = mount(FPageHeader, {
                 props: {
                     skipLink: "awesome-target",
@@ -64,6 +69,7 @@ describe("props", () => {
         });
 
         it("should disable skiplink when empty string", () => {
+            expect.assertions(1);
             const wrapper = mount(FPageHeader, {
                 props: {
                     skipLink: "",
@@ -75,6 +81,7 @@ describe("props", () => {
     });
 
     it("should set headerTag as h1 around default slot", () => {
+        expect.assertions(1);
         const wrapper = mount(FPageHeader, {
             props: {
                 headerTag: "h1",
@@ -92,6 +99,7 @@ describe("props", () => {
 
 describe("html-validate", () => {
     it("should allow usage without attributes, no attributes required", async () => {
+        expect.assertions(1);
         await expect("<f-page-header></f-page-header>").toHTMLValidate();
     });
 

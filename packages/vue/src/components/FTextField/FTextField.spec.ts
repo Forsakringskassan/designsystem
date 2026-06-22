@@ -34,12 +34,14 @@ function createWrapper({
 
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
 
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, error message and input", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: { "error-message": "ERROR_MESSAGE" },
         });
@@ -48,6 +50,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with label, tooltip, description, error message and input", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 description: "DESCRIPTION",
@@ -68,6 +71,7 @@ describe("snapshots", () => {
     `(
         "should match snapshot when validityMode is $validityMode and isValid is $isValid",
         async ({ validityMode, isValid }) => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 attrs: { id: "elementId" },
             });
@@ -101,6 +105,7 @@ describe("snapshots", () => {
     `(
         "should match snapshot when label and description slots are $slotsSpecified",
         async ({ slotsSpecified }) => {
+            expect.assertions(1);
             const wrapper = mount(FTextField, {
                 data() {
                     return {
@@ -136,6 +141,7 @@ describe("snapshots", () => {
 
 describe("attributes", () => {
     it("should pass attributes", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: {
                 disabled: true,
@@ -149,6 +155,7 @@ describe("attributes", () => {
     });
 
     it("should set type", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 type: "email",
@@ -159,6 +166,7 @@ describe("attributes", () => {
     });
 
     it("should set type to text as default", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
         const input = wrapper.get("input");
         expect(input.attributes("type")).toBe("text");
@@ -166,11 +174,13 @@ describe("attributes", () => {
 
     describe("inline", () => {
         it("should not set class by default", () => {
+            expect.assertions(1);
             const wrapper = createWrapper();
             expect(wrapper.classes()).not.toContain("text-field--inline");
         });
 
         it("should set class when enabled", () => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     inline: true,
@@ -183,6 +193,7 @@ describe("attributes", () => {
 
 describe("events", () => {
     it("should emit model update event when no validation is used", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
         const input = wrapper.get("input");
         input.setValue("foo");
@@ -191,6 +202,7 @@ describe("events", () => {
     });
 
     it("should emit change event when no validation is used", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
         const input = wrapper.get("input");
         input.setValue("foo");
@@ -199,6 +211,7 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
+        expect.assertions(3);
         const focus = vi.fn();
         const change = vi.fn();
         const blur = vi.fn();
@@ -221,6 +234,7 @@ describe("events", () => {
     });
 
     it('should have ValidityMode INITIAL when "pending-validity" event is triggered', async () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: { id: "elementId" },
         });
@@ -257,6 +271,7 @@ describe("events", () => {
 
 describe("validation", () => {
     it("should display correct error message when multiple validators", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             options: { sync: false },
         });
@@ -299,6 +314,7 @@ describe("formatting and parsing combined with validation", () => {
     `(
         'should $expected update:modelValue event when valid="$valid" and nativeEvent="$nativeEvent"',
         async ({ valid, nativeEvent, expected }) => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 attrs: {
                     id: "elementId",
@@ -326,9 +342,12 @@ describe("formatting and parsing combined with validation", () => {
             await flushPromises();
             wrapper.vm.$forceUpdate();
 
+            // eslint-disable-next-line vitest/no-conditional-in-test -- technical debt, Vitest migration
             if (expected === "trigger") {
+                // eslint-disable-next-line vitest/no-conditional-expect -- technical debt, Vitest migration
                 expect(wrapper.emitted()["update:modelValue"]).toBeTruthy();
             } else {
+                // eslint-disable-next-line vitest/no-conditional-expect -- technical debt, Vitest migration
                 expect(wrapper.emitted()["update:modelValue"]).toBeFalsy();
             }
         },
@@ -352,6 +371,7 @@ describe("formatting and parsing combined with validation", () => {
             expectedModel,
             expectedValue,
         }) => {
+            expect.assertions(2);
             const formatterMock = (viewValue: string): string =>
                 viewValue.toUpperCase();
             const parserMock = (viewValue: string): string =>
@@ -410,6 +430,7 @@ describe("formatting and parsing combined with validation", () => {
             expectedModel,
             expectedValue,
         }) => {
+            expect.assertions(2);
             const formatterMock = (): string => formatted;
             const parserMock = (): number | undefined => parsed;
 
@@ -463,6 +484,7 @@ describe("set v-model programmatic", () => {
     `(
         "should set viewValue to '$viewValue' when setting v-model to '$modelValue'",
         async ({ modelValue, viewValue }) => {
+            expect.assertions(4);
             const wrapper = createWrapper({
                 attrs: { id: "elementId" },
                 props: {
@@ -520,6 +542,7 @@ describe("set v-model programmatic", () => {
             failingFormatter,
             failingParser,
         }) => {
+            expect.assertions(1);
             const formatterMock = failingFormatter
                 ? () => undefined
                 : (viewValue: string): string => viewValue.toUpperCase();

@@ -10,6 +10,7 @@ afterEach(() => {
 
 describe("FProgressbar", () => {
     it("should show progress", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FProgressbar, {
             props: { value: 25, "aria-label": ariaLabel },
         });
@@ -17,6 +18,7 @@ describe("FProgressbar", () => {
     });
 
     it("should not show progress", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FProgressbar, {
             props: { value: 0, "aria-label": ariaLabel },
         });
@@ -24,6 +26,7 @@ describe("FProgressbar", () => {
     });
 
     it("should set aria-valuenow", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FProgressbar, {
             props: { value: 27, "aria-label": ariaLabel },
         });
@@ -33,6 +36,7 @@ describe("FProgressbar", () => {
     });
 
     it("should set aria-valuetext", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FProgressbar, {
             props: { value: 35, "aria-label": ariaLabel },
         });
@@ -42,6 +46,7 @@ describe("FProgressbar", () => {
     });
 
     it("should use placeholder %VALUE% text", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FProgressbar, {
             props: {
                 value: 42,
@@ -55,6 +60,7 @@ describe("FProgressbar", () => {
     });
 
     it("should round to integer", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FProgressbar, {
             props: { value: 33.33, "aria-label": ariaLabel },
         });
@@ -64,6 +70,7 @@ describe("FProgressbar", () => {
     });
 
     it("should not go below 0%", () => {
+        expect.assertions(1);
         // prevent vue error logging due to value validator
         vi.spyOn(console, "error").mockImplementation(vi.fn());
         const wrapper = shallowMount(FProgressbar, {
@@ -81,6 +88,7 @@ describe("FProgressbar", () => {
     });
 
     it("should not go above 100%", () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FProgressbar, {
             props: { value: 105, "aria-label": ariaLabel },
             global: {
@@ -96,6 +104,7 @@ describe("FProgressbar", () => {
     });
 
     it("should set class pending when progress not started", () => {
+        expect.assertions(3);
         const wrapper = shallowMount(FProgressbar, {
             props: { value: 0, "aria-label": ariaLabel },
         });
@@ -108,6 +117,7 @@ describe("FProgressbar", () => {
     });
 
     it("should set class in-progress when progress has started", () => {
+        expect.assertions(3);
         const wrapper = shallowMount(FProgressbar, {
             props: { value: 42, "aria-label": ariaLabel },
         });
@@ -118,6 +128,7 @@ describe("FProgressbar", () => {
     });
 
     it("should set class finished when progress has completed", () => {
+        expect.assertions(3);
         const wrapper = shallowMount(FProgressbar, {
             props: { value: 100, "aria-label": ariaLabel },
         });

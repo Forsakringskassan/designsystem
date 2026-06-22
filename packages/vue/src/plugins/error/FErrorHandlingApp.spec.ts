@@ -23,6 +23,7 @@ const errorComponent = defineComponent({
 
 describe("FErrorHandlingApp", () => {
     it("should show default page when using component prop", () => {
+        expect.assertions(1);
         // When
         const component = mount(FErrorHandlingApp, {
             props: {
@@ -42,6 +43,7 @@ describe("FErrorHandlingApp", () => {
     });
 
     it("should show default page when using default slot", () => {
+        expect.assertions(1);
         // When
         const component = mount(FErrorHandlingApp, {
             props: {
@@ -65,6 +67,7 @@ describe("FErrorHandlingApp", () => {
     });
 
     it(`should show error page on ${UNHANDLED_ERROR_EVENT} event`, async () => {
+        expect.assertions(1);
         // Given
         const component = mount(FErrorHandlingApp, {
             props: {
@@ -88,6 +91,7 @@ describe("FErrorHandlingApp", () => {
     });
 
     it("should show default page after route", async () => {
+        expect.assertions(1);
         // Given
         const router = createRouter({
             history: createWebHashHistory(),

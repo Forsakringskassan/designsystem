@@ -2,6 +2,7 @@ import { expect, it } from "vitest";
 import { generateIndexFile } from "./generate-index-file";
 
 it("should generate index.js file", () => {
+    expect.assertions(1);
     expect(generateIndexFile(["foo", "bar-baz"])).toMatchInlineSnapshot(`
         "import fooMeta from "./foo/spritesheet.json";
         import barBazMeta from "./bar-baz/spritesheet.json";

@@ -51,6 +51,7 @@ afterEach(() => {
 
 describe("snapshots", () => {
     it("should match snapshot with a list containg three items", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 items,
@@ -61,6 +62,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with list being selectable with second item active", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 items,
@@ -78,6 +80,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with list being selectable with first and second item selected", () => {
+        expect.assertions(1);
         const preSelectedItems = [items[0], items[1]];
         const wrapper = createWrapper({
             props: {
@@ -92,6 +95,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with no items in list and default text", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 items: [],
@@ -102,6 +106,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with no items in list and custom text", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 items: [],
@@ -117,6 +122,7 @@ describe("snapshots", () => {
 
 describe("active element", () => {
     it("should activate element and emit change event when clicking item", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             props: {
                 items,
@@ -145,6 +151,7 @@ describe("active element", () => {
     it.each([" ", "Spacebar"])(
         "should activate element and emit change event when item getting space key (%s) down event",
         async (key: string) => {
+            expect.assertions(2);
             const wrapper = createWrapper({
                 props: {
                     items,
@@ -160,6 +167,7 @@ describe("active element", () => {
     );
 
     it("should activate element and emit click event when clicking item", async () => {
+        expect.assertions(3);
         const wrapper = createWrapper({
             props: {
                 items,
@@ -189,6 +197,7 @@ describe("active element", () => {
     it.each([" ", "Spacebar"])(
         "should activate element and emit click event when item getting space key (%s) down event",
         async (key: string) => {
+            expect.assertions(3);
             const wrapper = createWrapper({
                 props: {
                     items,
@@ -205,6 +214,7 @@ describe("active element", () => {
     );
 
     it("should emit click event when clicking on active item", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 items,
@@ -220,6 +230,7 @@ describe("active element", () => {
     it.each([" ", "Spacebar"])(
         "should emit click event when active item getting space key (%s) down event",
         async (key: string) => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     items,
@@ -234,6 +245,7 @@ describe("active element", () => {
     );
 
     it("should emit update:active when clicking on item", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 items,
@@ -252,6 +264,7 @@ describe("active element", () => {
     });
 
     it("should reset active item", async () => {
+        expect.assertions(2);
         const TestComponent = defineComponent({
             name: "TestComponent",
             components: { FList },
@@ -292,6 +305,7 @@ describe("active element", () => {
 
 describe("select events", () => {
     it("should emit select event when items selectpane is clicked", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 items,
@@ -304,6 +318,7 @@ describe("select events", () => {
     });
 
     it("should emit select event when items checkbox is clicked", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 items,
@@ -317,6 +332,7 @@ describe("select events", () => {
     });
 
     it("should emit unselect event when items checkbox is clicked", async () => {
+        expect.assertions(1);
         const preSelected = [items[1]];
         const wrapper = createWrapper({
             props: {
@@ -333,6 +349,7 @@ describe("select events", () => {
 
 describe("v-model (update event)", () => {
     it("should update v-model when selecting and unselecting same item", async () => {
+        expect.assertions(2);
         const modelValue: ListArray = [];
         const wrapper = createWrapper({
             props: {
@@ -362,6 +379,7 @@ describe("v-model (update event)", () => {
     });
 
     it("should update v-model when selecting two different items", async () => {
+        expect.assertions(2);
         const modelValue: ListArray = [];
         const wrapper = createWrapper({
             props: {
@@ -398,6 +416,7 @@ describe("v-model (update event)", () => {
     });
 
     it("should update v-model when selecting and unselecting two items", async () => {
+        expect.assertions(2);
         const modelValue: ListArray = [];
         const wrapper = createWrapper({
             props: {
@@ -434,6 +453,7 @@ describe("v-model (update event)", () => {
     });
 
     it("should select items when updating v-model", async () => {
+        expect.assertions(6);
         const wrapper = createWrapper({
             props: {
                 items,
@@ -456,6 +476,7 @@ describe("v-model (update event)", () => {
     });
 
     it("should update activeItem from v-model if provided or changed", async () => {
+        expect.assertions(2);
         const active = items[1];
         const wrapper = createWrapper({
             props: {
@@ -479,6 +500,7 @@ describe("v-model (update event)", () => {
     });
 
     it("should be able to preselect items", () => {
+        expect.assertions(3);
         const wrapper = createWrapper({
             props: {
                 items,
@@ -540,6 +562,7 @@ describe("keyboard navigation", () => {
     it.each(["Up", "Down", "ArrowUp", "ArrowDown"])(
         "should pass key '%s' to handleKeyboardFocusNavigation method",
         async (key: string) => {
+            expect.assertions(1);
             const methodSpy = vi.spyOn(
                 ListUtils,
                 "handleKeyboardFocusNavigation",
@@ -571,6 +594,7 @@ describe("keyboard navigation", () => {
     `(
         "should emit 'paginateDataset:$action' event on '$key' key press",
         async ({ key, action }) => {
+            expect.assertions(1);
             const listener = vi.fn();
             const wrapper = mount(FList, {
                 props: {
@@ -598,12 +622,14 @@ describe("keyboard navigation", () => {
 });
 
 describe("screenreader slot", () => {
-    /* eslint-disable-next-line no-console -- technical debt, bad practice and
-     * the mock is not restored so leaking to other tests */
-    console.error = vi.fn();
+    // technical debt, bad practice and the mock is not restored so leaking to other tests
+    vi.spyOn(console, "error").mockImplementation(() => {
+        // Empty
+    });
     const modelValue: ListArray = [];
 
     it("should throw exception if missing screenreader slot and selectable option", async () => {
+        expect.assertions(1);
         expect(() => {
             createWrapper({
                 props: {

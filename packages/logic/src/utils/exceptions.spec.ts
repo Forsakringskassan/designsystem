@@ -3,6 +3,7 @@ import { DecoratedError } from "./exceptions";
 
 describe("DecoratedError", () => {
     it("should contain details from original error", () => {
+        expect.assertions(5);
         const given = new Error("original message");
 
         const actual = new DecoratedError("more details here", given);
@@ -17,6 +18,7 @@ describe("DecoratedError", () => {
     });
 
     it("should keep references to all exceptions in chain", () => {
+        expect.assertions(7);
         const givenRootCause = new Error("original message");
         const givenCause = new DecoratedError("Decorated 1", givenRootCause);
 

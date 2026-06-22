@@ -63,6 +63,7 @@ const defaultMountingOptions = {
 
 describe("events", () => {
     it("should emit submit event when valid form submit", async () => {
+        expect.assertions(1);
         const wrapper = await new Promise<VueWrapper>((resolve) => {
             const wrapper = mount(WrapperComp, {
                 ...defaultMountingOptions,
@@ -107,6 +108,7 @@ describe("events", () => {
     });
 
     it("should not emit submit event when invalid form submit", async () => {
+        expect.assertions(1);
         const wrapper = mount(WrapperComp, defaultMountingOptions);
         await wrapper.find("button").trigger("click");
         const component = wrapper.findComponent(FValidationForm);

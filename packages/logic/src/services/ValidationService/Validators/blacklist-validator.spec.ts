@@ -5,8 +5,10 @@ const element = document.createElement("input");
 
 describe("validation", () => {
     it("should throw error if no values to be excluded", () => {
+        expect.assertions(1);
         expect(() => blacklistValidator.validation("", element, {})).toThrow();
     });
+
     it.each`
         value           | excluded                            | expected | description
         ${undefined}    | ${[]}                               | ${true}  | ${"anything should be valid"}
@@ -23,6 +25,7 @@ describe("validation", () => {
     `(
         'should return "$expected" if "$excluded" excluded and value "$value" because of $description',
         ({ value, expected, excluded }) => {
+            expect.assertions(1);
             expect(
                 blacklistValidator.validation(value, element, {
                     values: excluded,

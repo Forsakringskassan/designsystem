@@ -20,6 +20,7 @@ describe("validation", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             const result = bankgiroValidator.validation(value, element, {});
             expect(result).toEqual(expected);
         },

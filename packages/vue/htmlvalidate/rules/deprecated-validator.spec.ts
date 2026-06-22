@@ -1,3 +1,4 @@
+/* eslint-disable vitest/no-disabled-tests -- not currently in use */
 import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
 import { expect, it } from "vitest";
@@ -73,6 +74,7 @@ it.skip("should set correct error location", async () => {
 });
 
 it.skip("should contain contextual documentation", async () => {
+    expect.assertions(1);
     const context = "dummy";
     const docs = await htmlvalidate.getContextualDocumentation({
         ruleId: "fkui/deprecated-validator",

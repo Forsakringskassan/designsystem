@@ -34,12 +34,12 @@ afterEach(() => {
 describe("props", () => {
     describe("expanded", () => {
         it("should match snapshot being collapsed when expanded prop set to false", async () => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     expanded: false,
                 },
             });
-
             vi.runAllTimers();
             await wrapper.vm.$nextTick();
 
@@ -54,6 +54,7 @@ describe("props", () => {
         });
 
         it("should match snapshot containing the default slot and be expanded (no css or style) when expanded prop defaults to true", async () => {
+            expect.assertions(1);
             const wrapper = createWrapper({});
             vi.runAllTimers();
             await wrapper.vm.$nextTick();
@@ -77,6 +78,7 @@ describe("props", () => {
 
     describe("animate", () => {
         it("should set class animate-expand--expanded and set height to the content height during the opening animation phase and ending with clearing height and css-classes", async () => {
+            expect.assertions(5);
             const wrapper = createWrapper({
                 props: {
                     expanded: false,
@@ -104,6 +106,7 @@ describe("props", () => {
         });
 
         it("should not set class animate-expand--expanded when prop animate is set to false", async () => {
+            expect.assertions(5);
             const wrapper = createWrapper({
                 props: {
                     expanded: false,
@@ -134,6 +137,7 @@ describe("props", () => {
 
     describe("opacity", () => {
         it("should have opacity class as default", async () => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     expanded: false,
@@ -150,6 +154,7 @@ describe("props", () => {
         });
 
         it("should not have opacity class when opacity is set to false", async () => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     expanded: false,
@@ -168,6 +173,7 @@ describe("props", () => {
 
     describe("useVshow", () => {
         it("should use v-if as default, i.e. not containing content in DOM", async () => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     expanded: false,
@@ -180,6 +186,7 @@ describe("props", () => {
         });
 
         it("should use v-show when prop useVShow is true, i.e. containing content in DOM", async () => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 props: {
                     expanded: false,
@@ -204,6 +211,7 @@ describe("callbacks", () => {
     `(
         "should call beforeAnimate($open) immeditately and afterAnimate($open) $description",
         async ({ open, animation, expected }) => {
+            expect.assertions(5);
             const beforeAnimateCallback = vi.fn();
             const afterAnimateCallback = vi.fn();
 
@@ -231,6 +239,7 @@ describe("callbacks", () => {
             expect(afterAnimateCallback).not.toHaveBeenCalled();
             // Wait for component to be expanded in DOM
             await wrapper.vm.$nextTick();
+            // eslint-disable-next-line vitest/no-conditional-in-test -- technical debt, Vitest migration
             if (animation) {
                 vi.advanceTimersByTime(500);
             }
@@ -296,6 +305,7 @@ describe("html-validate", () => {
 });
 
 it("should only call afterAnimation once when cancel animation", async () => {
+    expect.assertions(5);
     const beforeAnimateCallback = vi.fn();
     const afterAnimateCallback = vi.fn();
 

@@ -35,12 +35,14 @@ function createWrapper({
 
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
 
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, error message and input", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: { "error-message": "ERROR_MESSAGE" },
         });
@@ -49,6 +51,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with label, tooltip, description, error message and input", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 description: "DESCRIPTION",
@@ -69,6 +72,7 @@ describe("snapshots", () => {
     `(
         "should match snapshot when validityMode is $validityMode and isValid is $isValid",
         async ({ validityMode, isValid }) => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 attrs: { id: "elementId" },
             });
@@ -98,6 +102,7 @@ describe("snapshots", () => {
 
 describe("slots", () => {
     it("should support custom label in default and extended field", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             props: {
                 extendedValidation: true,
@@ -121,6 +126,7 @@ describe("slots", () => {
 
 describe("attributes", () => {
     it("should pass attributes", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: {
                 disabled: true,
@@ -134,6 +140,7 @@ describe("attributes", () => {
     });
 
     it("should set type to email as default", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
         const input = wrapper.get("input");
         expect(input.attributes("type")).toBe("email");
@@ -142,6 +149,7 @@ describe("attributes", () => {
 
 describe("events", () => {
     it("should support v-model", async () => {
+        expect.assertions(3);
         const wrapper = createWrapper({
             props: { modelValue: "foo@example.net" },
         });
@@ -159,6 +167,7 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
+        expect.assertions(2);
         const focus = vi.fn();
         const blur = vi.fn();
 
@@ -179,6 +188,7 @@ describe("events", () => {
     });
 
     it('should have ValidityMode INITIAL when "pending-validity" event is triggered', async () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: { id: "elementId" },
         });
@@ -215,6 +225,7 @@ describe("events", () => {
 
 describe("validation", () => {
     it("should display correct error message when multiple validators", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper({ options: { sync: false } });
         await flushPromises();
         ValidationService.setSubmitted(wrapper.element);
@@ -252,6 +263,7 @@ describe("validation", () => {
     `(
         `should set confirm email textfield as required = $required when first email textfield is required = $required`,
         async ({ required }) => {
+            expect.assertions(1);
             const validation = required ? "v-validation.required" : "";
             const wrapper = mount(
                 defineComponent({
@@ -286,7 +298,7 @@ describe("disable paste", () => {
             cancelable: true,
             composed: true,
         });
-        clipboardEvent.preventDefault = vi.fn();
+        vi.spyOn(clipboardEvent, "preventDefault");
 
         inputElement.dispatchEvent(clipboardEvent);
         expect(clipboardEvent.preventDefault).toHaveBeenCalled();
@@ -298,13 +310,14 @@ describe("disable paste", () => {
             cancelable: true,
             composed: true,
         });
-        clipboardEvent.preventDefault = vi.fn();
+        vi.spyOn(clipboardEvent, "preventDefault");
 
         inputElement.dispatchEvent(clipboardEvent);
         expect(clipboardEvent.preventDefault).not.toHaveBeenCalled();
     }
 
     it("should paste content", async () => {
+        expect.assertions(3);
         const wrapper = createWrapper({ options: { sync: false } });
         expect(wrapper.find(".label__message--error").exists()).toBeFalsy();
 
@@ -316,6 +329,7 @@ describe("disable paste", () => {
     });
 
     it("should not paste content in second textfield", async () => {
+        expect.assertions(3);
         const wrapper = createWrapper({
             options: { sync: false },
             props: { extendedValidation: true },
@@ -332,6 +346,7 @@ describe("disable paste", () => {
     });
 
     it("should remove paste error message when field is validated", async () => {
+        expect.assertions(4);
         const wrapper = createWrapper({
             options: { sync: false },
             props: { extendedValidation: true },
@@ -372,6 +387,7 @@ describe("html-validate", () => {
     });
 
     it("should allow custom label for default and extended field", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-email-text-field extended-validation>
                 <template #default> E-post </template>

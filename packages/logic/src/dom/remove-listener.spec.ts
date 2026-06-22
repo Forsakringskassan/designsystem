@@ -24,11 +24,13 @@ afterEach(() => {
 
 describe("removeFocusListener", () => {
     let mockEventListener: Mock;
+
     beforeEach(() => {
         mockEventListener = vi.fn();
     });
 
     it("should be able to remove focusListener", () => {
+        expect.assertions(1);
         const elements = setupDomElements();
         elements[0].removeEventListener = mockEventListener;
         elements[1].removeEventListener = mockEventListener;
@@ -40,6 +42,7 @@ describe("removeFocusListener", () => {
 
 describe("combination removeFocusListener and addFocusListener", () => {
     it("should not call callback function after listener is removed", () => {
+        expect.assertions(1);
         const mockEventCallback = vi.fn();
         const elements = setupDomElements();
 
