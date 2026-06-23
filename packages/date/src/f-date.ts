@@ -69,9 +69,9 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
      * @public
      */
     public static fromIso(value: string): FDate {
-        /* eslint-disable-next-line @typescript-eslint/prefer-regexp-exec -- technical debt */
-        const match = value.match(
-            /^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})$/,
+        /* eslint-disable-next-line regexp/no-unused-capturing-group -- for consistency with `(?<month>)` */
+        const match = /^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})$/.exec(
+            value,
         );
         if (match?.groups) {
             const date = new FDate(value);

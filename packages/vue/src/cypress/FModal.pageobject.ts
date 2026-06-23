@@ -46,11 +46,11 @@ export class FModalPageObject implements BasePageObject {
     }
 
     public typeOfModal(): Cypress.Chainable<string> {
-        return (
-            cy
-                .get(this.selector)
-                /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-                .then((el) => el[0].className.replace(/.*modal--(\w+).*/, "$1"))
-        );
+        return cy.get(this.selector).then((el) => {
+            const prefix = "modal--";
+            const classes = Array.from(el[0].classList.values());
+            const statusClass = classes.find((it) => it.startsWith(prefix));
+            return statusClass?.slice(prefix.length) ?? "";
+        });
     }
 }

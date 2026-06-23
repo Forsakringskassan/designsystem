@@ -90,7 +90,6 @@ export class CalendarPageObject implements BasePageObject {
             let currYear = 2023;
             let currentMonth = 0;
             el.text().replace(
-                /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
                 /(\w+)\s+(\d+)/,
                 (match, p1: string, p2: string) => {
                     currentMonth = monthList.indexOf(p1);

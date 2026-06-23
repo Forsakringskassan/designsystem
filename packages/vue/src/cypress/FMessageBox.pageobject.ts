@@ -27,9 +27,11 @@ export class FMessageBoxPageObject implements BasePageObject {
     }
 
     public typeOfMessage(): Cypress.Chainable<string> {
-        return this.el().then((el) =>
-            /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-            el[0].className.replace(/.*message-box--(\w+).*/, "$1"),
-        );
+        return this.el().then((el) => {
+            const prefix = "message-box--";
+            const classes = Array.from(el[0].classList.values());
+            const statusClass = classes.find((it) => it.startsWith(prefix));
+            return statusClass?.slice(prefix.length) ?? "";
+        });
     }
 }
