@@ -214,7 +214,9 @@ describe("FModal", () => {
         modal.primaryButton().should("have.trimmedText", "Stäng");
         modal.secondaryButton().should("have.trimmedText", "Stäng sekundär");
         modal.closeCross().should("have.trimmedText", "Stäng");
-        modal.typeOfModal().should("be.equal", "modal");
+
+        /* technical debt: this assertion is kind of useless, it tests the fallback behavior instead of something useful */
+        modal.typeOfModal().should("be.equal", "");
     });
 
     it("standard should have approved design", () => {

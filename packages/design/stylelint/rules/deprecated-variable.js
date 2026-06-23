@@ -39,10 +39,8 @@ function isDeprecated(variable) {
  */
 function* extractVariables(node) {
     const { value } = node;
-    for (const match of value.matchAll(
-        /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-        /var\(\s*(.+?)\s*(?:,\s*[^)]*\s*)?\)/g,
-    )) {
+    /* eslint-disable-next-line regexp/no-super-linear-backtracking -- technical debt */
+    for (const match of value.matchAll(/var\(\s*(.+?)\s*(?:,[^)]*)?\)/g)) {
         yield {
             name: match[1],
             offset: match.index,

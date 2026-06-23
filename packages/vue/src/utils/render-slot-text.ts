@@ -35,7 +35,7 @@ const defaultOptions: RenderSlotOptions = {
  * space
  */
 function collapseWhitespace(text: string): string {
-    return text.replaceAll(/\s+/gm, " ").replaceAll(/(^ | $)/g, "");
+    return text.replaceAll(/\s+/g, " ").replaceAll(/^ | $/g, "");
 }
 
 function intersection<T>(a: T[], b: T[]): T[] {

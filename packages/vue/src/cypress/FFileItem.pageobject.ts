@@ -56,10 +56,12 @@ export class FFileItemPageObject implements BasePageObject {
      * Filename extension in lowercase.
      */
     public typeOfFile(): Cypress.Chainable<string> {
-        return this._fileIcon().then((el) =>
-            /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-            el[0].classList[1].replace(/.*f-icon-(\w+).*/, "$1"),
-        );
+        return this._fileIcon().then((el) => {
+            const prefix = "f-icon-";
+            const classes = Array.from(el[0].classList.values());
+            const nameClass = classes.find((it) => it.startsWith(prefix));
+            return nameClass?.slice(prefix.length) ?? "";
+        });
     }
 
     /**
@@ -73,9 +75,11 @@ export class FFileItemPageObject implements BasePageObject {
      * @internal
      */
     public typeOfButtonIcon(): Cypress.Chainable<string> {
-        return this._cancelDeleteButtonIcon().then((el) =>
-            /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-            el[0].classList[2].replace(/.*f-icon-(\w+).*/, "$1"),
-        );
+        return this._cancelDeleteButtonIcon().then((el) => {
+            const prefix = "f-icon-";
+            const classes = Array.from(el[0].classList.values());
+            const nameClass = classes.find((it) => it.startsWith(prefix));
+            return nameClass?.slice(prefix.length) ?? "";
+        });
     }
 }

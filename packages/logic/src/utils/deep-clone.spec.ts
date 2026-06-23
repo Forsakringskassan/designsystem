@@ -64,11 +64,11 @@ it.each`
 
 it("should clone regular expression", () => {
     expect.assertions(4);
-    const value = /a/gim;
+    const value = /a/gi;
     const clone = deepClone(value);
     expect(value === clone).toBeFalsy();
     expect(clone).toEqual(value);
-    expect(clone.flags).toBe("gim");
+    expect(clone.flags).toBe("gi");
     expect(clone.source).toBe("a");
 });
 
