@@ -2,6 +2,7 @@
 <script lang="ts">
 import { defineComponent, toRefs } from "vue";
 import { focus } from "@fkui/logic";
+import { TranslationMixin } from "../../plugins";
 import { getElementFromVueRef } from "../../utils";
 import { FButton } from "../FButton";
 import { useLayoutPanel } from "./f-layout-left-panel-mixin";
@@ -11,6 +12,7 @@ export default defineComponent({
     components: {
         FButton,
     },
+    mixins: [TranslationMixin],
     props: {
         /**
          * The default width for the panel in pixels
@@ -22,6 +24,14 @@ export default defineComponent({
                 const parsed = Number.parseInt(value, 10);
                 return !Number.isNaN(parsed);
             },
+        },
+        /**
+         * Unique accessible name for navigation landmark.
+         */
+        navLabel: {
+            type: String,
+            required: false,
+            default: "",
         },
     },
     setup(props) {
@@ -58,6 +68,9 @@ export default defineComponent({
         contentStyle(): Record<string, string> {
             return { "max-width": `${String(this.panelWidth - 35)}px` };
         },
+        ariaLabel(): string {
+            return this.navLabel ? this.navLabel : this.$t("fkui.layout-left-panel.nav.label", "Vänstermeny");
+        },
     },
     mounted(): void {
         const headers = document.querySelectorAll(".layout-application-template__header");
@@ -90,6 +103,7 @@ export default defineComponent({
             class="layout-navigation__navigation"
             :style="navigationStyle"
             :aria-expanded="isOpen"
+            :aria-label
         >
             <div class="layout-navigation__navigation__inner">
                 <template v-if="isOpen">
