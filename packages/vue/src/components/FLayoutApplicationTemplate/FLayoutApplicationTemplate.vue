@@ -2,9 +2,21 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { isSet } from "@fkui/logic";
+import { TranslationMixin } from "../../plugins";
 
 export default defineComponent({
     name: "FLayoutApplicationTemplate",
+    mixins: [TranslationMixin],
+    props: {
+        /**
+         * Unique accessible name for navigation landmark.
+         */
+        navLabel: {
+            type: String,
+            required: false,
+            default: "",
+        },
+    },
     computed: {
         showHeader(): boolean {
             return this.hasSlot("header");
@@ -14,6 +26,11 @@ export default defineComponent({
         },
         showFooter(): boolean {
             return this.hasSlot("footer");
+        },
+        ariaLabel(): string {
+            return this.navLabel
+                ? this.navLabel
+                : this.$t("fkui.layout-application-template.nav.label", "Navigeringsmeny");
         },
     },
     mounted() {
@@ -37,7 +54,7 @@ export default defineComponent({
 @slot Slot for displaying the header.
         -->
             <slot v-if="showHeader" name="header"></slot>
-            <nav v-if="showTopNavigation">
+            <nav v-if="showTopNavigation" :aria-label>
                 <!--
 @slot Slot for displaying top navigation.
             -->

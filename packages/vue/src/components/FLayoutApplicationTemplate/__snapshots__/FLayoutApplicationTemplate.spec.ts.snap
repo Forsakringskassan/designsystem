@@ -11,7 +11,9 @@ exports[`snapshots > should match snapshot with all slots used 1`] = `
     HEADER
     
      
-    <nav>
+    <nav
+      aria-label="Navigeringsmeny"
+    >
       
       TOPNAVIGATION
       
@@ -45,7 +47,9 @@ exports[`snapshots > should render snapshot with no header and footer if running
   >
     <!--v-if-->
      
-    <nav>
+    <nav
+      aria-label="Navigeringsmeny"
+    >
       
       TOPNAVIGATION
       

@@ -103,6 +103,33 @@ it("should apply css class 'layout-application-template__body' to body-element",
     );
 });
 
+describe("navLabel prop", () => {
+    it("should set default aria-label text when not used", () => {
+        expect.assertions(1);
+        const wrapper = mount(FLayoutApplicationTemplate, {
+            slots: {
+                "top-navigation": "lorem ipsum",
+            },
+        });
+        const nav = wrapper.get(".layout-application-template nav");
+        expect(nav.attributes("aria-label")).toContain("Navigeringsmeny");
+    });
+
+    it("should set correct aria-label text when used", () => {
+        expect.assertions(1);
+        const wrapper = mount(FLayoutApplicationTemplate, {
+            props: {
+                navLabel: "Foobar",
+            },
+            slots: {
+                "top-navigation": "lorem ipsum",
+            },
+        });
+        const nav = wrapper.get(".layout-application-template nav");
+        expect(nav.attributes("aria-label")).toContain("Foobar");
+    });
+});
+
 describe("html-validate", () => {
     it("should allow defined slots", () => {
         expect.assertions(1);
