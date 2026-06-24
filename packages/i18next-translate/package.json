@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@fkui/logic": "6.50.0",
-    "@forsakringskassan/vitest-config": "2.2.8",
+    "@forsakringskassan/vitest-config": "2.3.0",
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
