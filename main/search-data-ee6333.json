@@ -49,7 +49,6 @@
     "production",
     "globala inställningar",
     "config",
-    "CHANGELOG v5",
     "Paginering",
     "FPaginateDataset",
     "FPaginator",
@@ -101,6 +100,7 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
+    "CHANGELOG v5",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -210,9 +210,6 @@
     "produktionsklar",
     "beta",
     "experimentell",
-    "EventBus",
-    "EventBus",
-    "services",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -226,6 +223,9 @@
     "testverktyg",
     "Jest",
     "testverktyg",
+    "EventBus",
+    "EventBus",
+    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -690,17 +690,17 @@
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
+    "FFileItemPageObject: FFileItemPageObject() constructor",
+    "FFileItemPageObject: typeOfFile() method",
+    "FFileItemPageObject: fileName() method",
+    "FInteractiveTablePageObject: header() method",
+    "FInteractiveTablePageObject: checkbox() method",
+    "FInteractiveTablePageObject: cell() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
-    "FInteractiveTablePageObject: header() method",
-    "FInteractiveTablePageObject: checkbox() method",
-    "FInteractiveTablePageObject: cell() method",
-    "FFileItemPageObject: FFileItemPageObject() constructor",
-    "FFileItemPageObject: typeOfFile() method",
-    "FFileItemPageObject: fileName() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "FDetailsPanelPageObject: header() method",
     "FDetailsPanelPageObject: footer() method",
@@ -879,11 +879,6 @@
       ]
     },
     {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
-    },
-    {
       "url": "components/pagination.html",
       "title": "Paginering",
       "terms": [
@@ -1013,6 +1008,11 @@
       "terms": [
         "FBadge"
       ]
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -1245,14 +1245,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1283,6 +1275,14 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -2517,6 +2517,36 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
+      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
+      "title": "FFileItemPageObject: typeOfFile() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
+      "title": "FFileItemPageObject: fileName() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
+      "title": "FInteractiveTablePageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
+      "title": "FInteractiveTablePageObject: checkbox() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
       "title": "FLabelPageObject: FLabelPageObject() constructor",
       "terms": []
@@ -2539,36 +2569,6 @@
     {
       "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
       "title": "FLabelPageObject: description() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
-      "title": "FInteractiveTablePageObject: header() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
-      "title": "FInteractiveTablePageObject: checkbox() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
-      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
-      "title": "FFileItemPageObject: typeOfFile() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
-      "title": "FFileItemPageObject: fileName() method",
       "terms": []
     },
     {
@@ -2847,56 +2847,56 @@
     "47": 12,
     "48": 12,
     "49": 13,
-    "50": 14,
-    "51": 14,
+    "50": 13,
+    "51": 13,
     "52": 14,
-    "53": 15,
+    "53": 14,
     "54": 15,
-    "55": 16,
+    "55": 15,
     "56": 16,
-    "57": 17,
-    "58": 17,
-    "59": 17,
-    "60": 17,
+    "57": 16,
+    "58": 16,
+    "59": 16,
+    "60": 16,
     "61": 17,
-    "62": 18,
+    "62": 17,
     "63": 18,
-    "64": 19,
+    "64": 18,
     "65": 19,
-    "66": 20,
-    "67": 20,
-    "68": 20,
-    "69": 20,
-    "70": 20,
+    "66": 19,
+    "67": 19,
+    "68": 19,
+    "69": 19,
+    "70": 19,
     "71": 20,
-    "72": 21,
+    "72": 20,
     "73": 21,
-    "74": 22,
-    "75": 22,
+    "74": 21,
+    "75": 21,
     "76": 22,
-    "77": 23,
-    "78": 23,
+    "77": 22,
+    "78": 22,
     "79": 23,
-    "80": 24,
+    "80": 23,
     "81": 24,
-    "82": 25,
-    "83": 25,
-    "84": 25,
-    "85": 25,
-    "86": 25,
+    "82": 24,
+    "83": 24,
+    "84": 24,
+    "85": 24,
+    "86": 24,
     "87": 25,
-    "88": 26,
-    "89": 26,
+    "88": 25,
+    "89": 25,
     "90": 26,
-    "91": 27,
+    "91": 26,
     "92": 27,
-    "93": 28,
-    "94": 28,
-    "95": 28,
-    "96": 28,
-    "97": 28,
+    "93": 27,
+    "94": 27,
+    "95": 27,
+    "96": 27,
+    "97": 27,
     "98": 28,
-    "99": 29,
+    "99": 28,
     "100": 29,
     "101": 30,
     "102": 30,
@@ -3010,17 +3010,17 @@
     "210": 55,
     "211": 55,
     "212": 55,
-    "213": 56,
+    "213": 55,
     "214": 56,
     "215": 56,
     "216": 56,
-    "217": 57,
+    "217": 56,
     "218": 57,
     "219": 57,
     "220": 57,
     "221": 58,
     "222": 58,
-    "223": 58,
+    "223": 59,
     "224": 59,
     "225": 59,
     "226": 60,
