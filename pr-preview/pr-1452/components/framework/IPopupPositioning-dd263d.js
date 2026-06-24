@@ -3526,7 +3526,7 @@ var defaultOptions = {
   componentPlaceholder: false
 };
 function collapseWhitespace(text) {
-  return text.replaceAll(/\s+/gm, " ").replaceAll(/(^ | $)/g, "");
+  return text.replaceAll(/\s+/g, " ").replaceAll(/^ | $/g, "");
 }
 function intersection(a, b) {
   return a.filter((it) => b.includes(it));
