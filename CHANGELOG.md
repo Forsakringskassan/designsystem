@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 6.51.0 (2026-06-25)
+
+### Features
+
+* **deps:** update dependency vue-router to v5 3479b60
+
 ## 6.50.0 (2026-06-17)
 
 ### Features
