@@ -814,9 +814,9 @@ var FDate = class _FDate {
    * Compares two {@link FDate} objects. Returns and integer indicating whenever
    * `a` comes before or after or is equal to `b`.
    *
-   * - `-1` if `a` beomes before `b`.
+   * - `-1` if `a` comes before `b`.
    * - `0` if `a` and `b` are the same date.
-   * - `1` if `a` beomes after `b`.
+   * - `1` if `a` comes after `b`.
    *
    * If either or both date is invalid the result is undefined behaviour and
    * should not be relied on. Use {@link FDate.isValid} to ensure validity
@@ -1053,9 +1053,9 @@ var FYear = class _FYear {
    * Compares two {@link FYear} objects. Returns and integer indicating
    * whenever `a` comes before or after or is equal to `b`.
    *
-   * - `-1` if `a` beomes before `b`.
+   * - `-1` if `a` comes before `b`.
    * - `0` if `a` and `b` are the same year.
-   * - `1` if `a` beomes after `b`.
+   * - `1` if `a` comes after `b`.
    *
    * If either or both years is invalid the result is undefined behaviour and
    * should not be relied on. Use {@link FYear.isValid} to ensure validity

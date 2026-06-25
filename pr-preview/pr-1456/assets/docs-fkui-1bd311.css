@@ -209,7 +209,7 @@
     --fkds-color-header-text-primary: #ffffff;
     --fkds-focus-indicator-color: #1b1e23;
     --fkds-focus-indicator-color-background: #ffffff;
-    --fkui-theme-default-version: "6.50.0";
+    --fkui-theme-default-version: "6.51.0";
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -398,7 +398,7 @@
     --fkds-color-header-text-primary: #ffffff;
     --fkds-focus-indicator-color: #ffffff;
     --fkds-focus-indicator-color-background: #1b1e23;
-    --fkui-theme-default-version: "6.50.0";
+    --fkui-theme-default-version: "6.51.0";
   }
 }
 :root {

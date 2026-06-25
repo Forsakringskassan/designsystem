@@ -13594,9 +13594,9 @@ var FDate$1 = class FDate$1 {
 	* Compares two {@link FDate} objects. Returns and integer indicating whenever
 	* `a` comes before or after or is equal to `b`.
 	*
-	* - `-1` if `a` beomes before `b`.
+	* - `-1` if `a` comes before `b`.
 	* - `0` if `a` and `b` are the same date.
-	* - `1` if `a` beomes after `b`.
+	* - `1` if `a` comes after `b`.
 	*
 	* If either or both date is invalid the result is undefined behaviour and
 	* should not be relied on. Use {@link FDate.isValid} to ensure validity
@@ -15962,9 +15962,9 @@ var FDate = class FDate {
 	* Compares two {@link FDate} objects. Returns and integer indicating whenever
 	* `a` comes before or after or is equal to `b`.
 	*
-	* - `-1` if `a` beomes before `b`.
+	* - `-1` if `a` comes before `b`.
 	* - `0` if `a` and `b` are the same date.
-	* - `1` if `a` beomes after `b`.
+	* - `1` if `a` comes after `b`.
 	*
 	* If either or both date is invalid the result is undefined behaviour and
 	* should not be relied on. Use {@link FDate.isValid} to ensure validity
