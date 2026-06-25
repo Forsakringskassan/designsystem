@@ -10,6 +10,11 @@ export function FBadgeSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FButtonSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
