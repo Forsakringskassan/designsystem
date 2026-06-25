@@ -63,13 +63,13 @@ export type DefaultCypressChainable = Cypress.Chainable<JQuery>;
 
 // @public (undocumented)
 export class FBadgePageObject implements BasePageObject {
-    constructor(selector: string);
+    constructor(selector?: string);
     // (undocumented)
     el(): DefaultCypressChainable;
     // (undocumented)
     isInverted(): Cypress.Chainable<boolean>;
     // (undocumented)
-    selector: string;
+    get selector(): string;
     // (undocumented)
     status(): Cypress.Chainable<string>;
 }

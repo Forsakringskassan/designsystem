@@ -1,20 +1,25 @@
+import { FBadgeSelectors } from "../selectors";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public
  */
 export class FBadgePageObject implements BasePageObject {
-    public selector: string;
+    private _selectors: ReturnType<typeof FBadgeSelectors>;
 
     /**
      * @param selector - the root of the badge.
      */
-    public constructor(selector: string) {
-        this.selector = selector;
+    public constructor(selector: string = ".badge") {
+        this._selectors = FBadgeSelectors(selector);
+    }
+
+    public get selector(): string {
+        return this._selectors.selector;
     }
 
     public el(): DefaultCypressChainable {
-        return cy.get(this.selector);
+        return cy.get(this._selectors.selector);
     }
 
     public status(): Cypress.Chainable<string> {
