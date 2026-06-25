@@ -79,6 +79,14 @@ För att starta vue-paketet med Vite utvecklingsserver:
 npm run vue start
 ```
 
+För att starta ett specifikt exempel:
+
+```bash
+npm run vue start FILNAMN
+```
+
+där `FILNAMN` är fuzzy sökning (case insensitive) efter filnamnet.
+
 ### Testning
 
 Du kör igång hela test-sviten mot alla paket genom att skriva:
