@@ -1,13 +1,15 @@
 ---
-name: Jest
+name: Vitest
 layout: content-with-menu
 search:
     terms:
         - testverktyg
-        - jest
+        - vitest
 ---
 
-Matchers för Jest.
+Matchers för Vitest.
+
+Nya projekt bör använda Vitest som standardval.
 
 ## `toHaveFocus`
 
@@ -23,19 +25,18 @@ function toHaveFocus(element: HTMLElement): void;
 
 ```ts
 import { defineComponent } from "vue";
-import { expect, it } from "@jest/globals";
 import { mount } from "@vue/test-utils";
+import { expect, it } from "vitest";
 
 const AwesomeComponent = defineComponent({});
 
 /* --- cut above --- */
 
-import "@fkui/test-utils/jest";
+import "@fkui/test-utils/vitest";
 
 it("should have focus", () => {
     const wrapper = mount(AwesomeComponent);
     const element = wrapper.get("#something");
-    /* @ts-expect-error -- bug in @fkui/test-utils, the type declaration is not properly exposed */
     expect(element).toHaveFocus();
 });
 ```

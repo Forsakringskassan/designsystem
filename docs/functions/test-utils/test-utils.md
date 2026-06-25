@@ -6,11 +6,12 @@ sortorder: 0
 search:
     terms:
         - automatiska testfall
+        - Vitest
         - Jest
         - Cypress
 ---
 
-Samling med funktioner och komponenter till Jest och Cypress för att underlätta utveckling av automatiska testfall.
+Samling med funktioner och komponenter för Vitest, Jest och Cypress för att underlätta utveckling av automatiska testfall.
 
     npm install --save-dev @fkui/test-utils
 
@@ -21,6 +22,14 @@ Samling med funktioner och komponenter till Jest och Cypress för att underlätt
 ```ts
 import "@fkui/test-utils";
 ```
+
+### Vitest
+
+```ts
+import "@fkui/test-utils/vitest";
+```
+
+Denna entrypoint exporterar också allt från `@fkui/test-utils`.
 
 ### Jest
 

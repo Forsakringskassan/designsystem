@@ -22,7 +22,7 @@ search:
 
 Testfall i FKUI implementeras med två verktyg:
 
-- Jest för enhetstester
+- Vitest för enhetstester
 - Cypress för komponenttester och E2E-tester
 
 Som en tumregel använder vi enhetstester för att testa logik, komponenttester för att testa interaktion och i undantagsfall E2E-tester för att testa integration.
@@ -31,28 +31,24 @@ Samtliga tester skall köras från CI-miljö vid branch-byggen.
 
 Läs mer om {@link testing att skriva automatiska testfall}.
 
-### Jest
+### Vitest
 
-Paket utan ramverksspecifika komponenter samt logik för Vue-komponenter testas med Jest.
-Vi testar inte interaktion med komponenter med Jest.
+Paket utan ramverksspecifika komponenter samt logik för Vue-komponenter testas med Vitest.
+Vi testar inte interaktion med komponenter med Vitest.
 
 Enhetstester placeras i samma katalog som filen som ska testas och använder `${filename}.spec.ts` som filnamn.
 
-För Jest finns två förinställda konfigurationer:
-
-- [`@forsakringskassan/jest-config`][jest-config]: för paket som är skriva i ren typescript, ej ramverksspecifikt.
-- [`@forsakringskassan/jest-config-vue`][jest-config-vue]: för paket med Vue-komponenter.
+För Vitest finns paket med förinställda konfigurationer: [@forsakringskassan/vitest-config](https://github.com/Forsakringskassan/vitest-config),
+som innehåller standardinställningar för Node.js-projekt.
+Om du behöver JSDOM kan du använda [@forsakringskassan/vitest-config-jsdom](https://github.com/Forsakringskassan/vitest-config/tree/main/packages/vitest-config-jsdom).
 
 Båda konfigurationer genererar coverage och testresultat i maskinläsbart format i `coverage` samt `test-results` katalogerna.
 CI-miljö läser in samtliga filer.
 
-Jest anropas från respektive paket via `test`-scriptet.
+Vitest anropas från respektive paket via `test`-scriptet.
 `test`-scriptet i root anropar i sin tur `test` i respektive paket.
 
 Extra hjälpfunktioner finns i ett stödpaket {@link @fkui/test-utils} och kan nyttjas både av en applikationsutvecklare och den som bidrar till FKUI.
-
-[jest-config]: https://github.com/Forsakringskassan/jest-config/tree/main/packages/jest-config
-[jest-config-vue]: https://github.com/Forsakringskassan/jest-config/tree/main/packages/jest-config-vue
 
 ### Komponenttester (Cypress)
 
