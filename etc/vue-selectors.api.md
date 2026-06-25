@@ -5,6 +5,11 @@
 ```ts
 
 // @public
+export function FBadgeSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
