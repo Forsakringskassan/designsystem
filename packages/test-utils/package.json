@@ -6,6 +6,7 @@
     "fkui",
     "designsystem",
     "test",
+    "vitest",
     "jest",
     "vue",
     "cypress"

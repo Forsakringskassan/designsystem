@@ -10,7 +10,7 @@ Den här sidan innehåller riktlinjer för automatiska testfall.
 
 ## Övergripande riktlinjer
 
-### Enhetstester med `jest`
+### Enhetstester med `vitest`
 
 Med enhetstester testar vi:
 
@@ -20,7 +20,7 @@ Med enhetstester testar vi:
 - regler för HTML-Validate.
 
 I enhetstester testar vi funktionalitet i isolation och mockar omvärlden.
-Styrkan med enhetstester i Jest ligger i att de är snabba, enkla att mocka och att man enkelt kan anropa funktioner.
+Styrkan med enhetstester i Vitest ligger i att de är snabba, enkla att mocka och att man enkelt kan anropa funktioner.
 Svagheten ligger i att det är svårt att vänta ut cykler från exempelvis Vue.js.
 
 ### Komponenttester med `cypress`
@@ -56,13 +56,13 @@ root
 ├─┬ packages
 │ ├─┬ logic
 │ │ └─┬ src
-│ │   └── ${component.spec.ts} (Jest enhetstester)
+│ │   └── ${component.spec.ts} (Vitest enhetstester)
 │ └─┬ vue
 │   ├─┬ pageobject
 │   │ └── ${component}.pageobject.ts (Externa pageobject)
 │   └─┬ src
 │     ├── ${component}.ct.ts (Cypress component tests)
-│     └── ${component}.spec.ts (Jest enhetstester)
+│     └── ${component}.spec.ts (Vitest enhetstester)
 └─┬ tests
   └─┬ specs
     ├─┬ pageobject
@@ -165,7 +165,7 @@ Ytterligare ett alternativ är att skapa en funktion för att skapa upp objektet
 Testdata lägger vi i första hand i direkt anslutning till testfallet.
 
 ```ts
-import { expect } from "@jest/globals";
+import { expect, it } from "vitest";
 
 declare function func(data: unknown): string[];
 
@@ -226,16 +226,17 @@ Stora mängder testdata distraherar från själva testfallet.
 
 ```ts name=given-when-then
 import { defineComponent } from "vue";
-import { expect, jest } from "@jest/globals";
 import { shallowMount } from "@vue/test-utils";
+import { expect, vi } from "vitest";
 
 const ButtonComponent = defineComponent({});
 
 /* --- cut above --- */
 
 it("x should y", () => {
+    expect.assertions(1);
     /* given: a button with a click callback */
-    const spy = jest.fn();
+    const spy = vi.fn();
     const wrapper = shallowMount(ButtonComponent, {
         listeners: {
             click: spy,
@@ -304,7 +305,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 - [ ] Cypresstest för exempel i dokumentation?
 - [ ] Pageobject?
 
-## Jest
+## Vitest
 
 ### Import ordning
 
@@ -322,7 +323,7 @@ Typescript funktion, klass osv:
 
 <!-- prettier-ignore -->
 ```ts nocompile nolint
-import "html-validate/jest";                              // 1. Enbart side-effects
+import "html-validate/vitest";                              // 1. Enbart side-effects
 import path from "path";                                  // 2. NodeJS standardbibiliotek
 import _ from "lodash";                                   // 3. Tredje-parts bibliotek
 import apimock from "@forsakringskassan/apimock-express"; // 4. In-house bibliotek
@@ -383,23 +384,24 @@ Om man inte måste! Testar man focus så måste man ha `attachTo`
 
 Motivering: genom att inte attacha till `body` så behöver vi inte lika mycket uppstädning mellan testfall
 
-### Föredra `jest.spyOn` över `jest.fn()`
+### Föredra `vi.spyOn` över `vi.fn()`
 
 ```diff
--console.log = jest.fn();
-+jest.spyOn(console, 'log');
+-console.log = vi.fn();
++vi.spyOn(console, 'log');
 ```
 
-Motivering: `jest.spyOn` fungerar med `jest.clearAllMocks`
+Motivering: `vi.spyOn` fungerar med `vi.clearAllMocks`
 
 ### Föredra lokalt scopad wrapper över global
 
 istället för:
 
 ```ts
+/* eslint-disable sonarjs/assertions-in-tests */
 import { defineComponent } from "vue";
-import { it } from "@jest/globals";
 import { shallowMount } from "@vue/test-utils";
+import { it } from "vitest";
 
 const AwesomeComponent = defineComponent({});
 
@@ -415,9 +417,10 @@ it("should ..", () => {
 kör:
 
 ```ts
+/* eslint-disable sonarjs/assertions-in-tests */
 import { defineComponent } from "vue";
-import { it } from "@jest/globals";
 import { shallowMount } from "@vue/test-utils";
+import { it } from "vitest";
 
 const AwesomeComponent = defineComponent({});
 
@@ -451,16 +454,16 @@ Utskrifter från Vue ska hanteras och inte döljas, exempelvis:
 
 Istället för att dölja meddelandet se till att korrigera din kod.
 
-För att korrekt mocka och verifiera `console.log` använder du `jest.spyOn(..)`:
+För att korrekt mocka och verifiera `console.log` använder du `vi.spyOn(..)`:
 
 ```ts nocompile nolint
 import { myFunction } from "./my-function";
 
 /* spy on `console.log` but does not stub the function, i.e. the original console.log will still be called */
-const log = jest.spyOn(console, "log");
+const log = vi.spyOn(console, "log");
 
 afterEach(() => {
-    /* keeps the spy but restore eventual mocked implementations of `console.log`. Alternatively `jest.restoreAllMocks()` may be used. */
+    /* keeps the spy but restore eventual mocked implementations of `console.log`. Alternatively `vi.clearAllMocks()` may be used. */
     log.mockRestore();
 });
 
@@ -479,7 +482,7 @@ it("noisy test", () => {
 });
 ```
 
-Undvik `console.log = jest.fn()` då det gör det svårare att återställa mellan testfall.
+Undvik `console.log = vi.fn()` då det gör det svårare att återställa mellan testfall.
 Är du inte försiktig när du mockar `console.log` försvårar du för andra som försöker använda `console.log` och du kan dölja riktiga fel som skrivs ut i console.
 
 ## Test av exempel

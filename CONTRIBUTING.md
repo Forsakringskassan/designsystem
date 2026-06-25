@@ -92,7 +92,7 @@ För att kunna göra ändringar i FKUI i din utvecklingsmiljö behöver du göra
 
 Vi har enhetstester, komponenttester och E2E-tester i FKUI.
 
-Enhetstester med jest-tester
+Enhetstester med Vitest
 
 - logik
 - events
@@ -119,11 +119,11 @@ Eftersom FKUI stödjer responsivitet uppmuntrar vi till test av varierande skär
 
 Du hittar åtgärder som du kan göra i GitBash och tillhörande kommando i tabellen nedan.
 
-| Åtgärd                    | Kommando i GitBash      |
-| ------------------------- | ----------------------- |
-| köra snapshot-test        | npm test                |
-| uppdatera snapshot i jest | npm run vue unit -- - u |
-| köra cypress-test         | npm exec cypress run    |
+| Åtgärd                      | Kommando i GitBash           |
+| --------------------------- | ---------------------------- |
+| köra snapshot-test          | npm test                     |
+| uppdatera snapshot i vitest | npm run vue unit -- --update |
+| köra cypress-test           | npm exec cypress run         |
 
 {@link testing Läs mer om test här}
 

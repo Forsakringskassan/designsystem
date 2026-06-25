@@ -66,7 +66,7 @@ export const startsWithValidator: Validator = {
 ```
 
 Glöm inte att skriva tester som verifierar att validatorn fungerar som tänkt.
-Förslagsvis genom att bryta ut logiken till en egen funktion, då blir den enkel att testa med Jest.
+Förslagsvis genom att bryta ut logiken till en egen funktion, då blir den enkel att testa med enhetstester.
 
 ```diff
 +function startsWithPattern(input: string, pattern: string): boolean {
