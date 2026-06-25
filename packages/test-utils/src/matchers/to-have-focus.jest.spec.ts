@@ -46,15 +46,15 @@ describe("toHaveFocus (jest)", () => {
             /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- assume message will be present */
         } catch (error: any) {
             expect(error?.message).toMatchInlineSnapshot(`
-            expect(received).toHaveFocus(expected)
+                expect(received).toHaveFocus(expected)
 
-            Expected element to have focus but another element was focused
+                Expected element to have focus but another element was focused
 
-            Expected:
-              "html > body > input"
-            Received:
-              "html > body"
-        `);
+                Expected:
+                  "html > body > input"
+                Received:
+                  "html > body"
+            `);
         }
     });
 
@@ -65,15 +65,15 @@ describe("toHaveFocus (jest)", () => {
             /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- assume message will be present  */
         } catch (error: any) {
             expect(error?.message).toMatchInlineSnapshot(`
-            expect(received).toHaveFocus(expected)
+                expect(received).toHaveFocus(expected)
 
-            Expected element to have focus but another element was focused
+                Expected element to have focus but another element was focused
 
-            Expected:
-              "input"
-            Received:
-              "html > body"
-        `);
+                Expected:
+                  "input"
+                Received:
+                  "html > body"
+            `);
         }
     });
 
@@ -96,15 +96,15 @@ describe("toHaveFocus (jest)", () => {
             /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- assume message will be present  */
         } catch (error: any) {
             expect(error?.message).toMatchInlineSnapshot(`
-            expect(received).toHaveFocus(expected)
+                expect(received).toHaveFocus(expected)
 
-            Expected element to have focus but no element was focused
+                Expected element to have focus but no element was focused
 
-            Expected:
-              "html > body > input"
-            Received:
-              "<null>"
-        `);
+                Expected:
+                  "html > body > input"
+                Received:
+                  "<null>"
+            `);
         } finally {
             document.append(root);
         }
