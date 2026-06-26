@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/guides/validation/examples/FormatterExample.vue:FormatterExample-e1c345.js
+// virtual-entry:virtual:docs/guides/validation/examples/FormatterExample.vue:FormatterExample-114efb.js
 import { defineComponent } from "vue";
 import { formatNumber } from "@fkui/logic";
 import { FOutputField, FTextField } from "@fkui/vue";
@@ -115,7 +115,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-e1c345"
+  selector: "#example-114efb"
 });
 export {
   render

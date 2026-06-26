@@ -101,6 +101,20 @@
     "Bricka",
     "FBadge",
     "CHANGELOG v5",
+    "Validering och felhantering",
+    "obligatoriska fält",
+    "submit",
+    "Längdvalidering",
+    "maxlängd",
+    "maxlength",
+    "validator",
+    "attribut",
+    "Validator - anpassad",
+    "egen validator",
+    "Felmeddelande - anpassat",
+    "eget felmeddelande",
+    "Korsvalidering",
+    "datumperiod",
     "Formatering och parsning",
     "formaterare",
     "formatter",
@@ -121,20 +135,6 @@
     "modellvärde",
     "modell-värde",
     "modelValue",
-    "Validering och felhantering",
-    "obligatoriska fält",
-    "submit",
-    "Längdvalidering",
-    "maxlängd",
-    "maxlength",
-    "validator",
-    "attribut",
-    "Validator - anpassad",
-    "egen validator",
-    "Felmeddelande - anpassat",
-    "eget felmeddelande",
-    "Korsvalidering",
-    "datumperiod",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -210,16 +210,6 @@
     "produktionsklar",
     "beta",
     "experimentell",
-    "EventBus",
-    "EventBus",
-    "services",
-    "focus-indicator() mixin",
-    "fokus",
-    "fokusindikator",
-    "sass",
-    "densify() function",
-    "densitet",
-    "sass",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -233,6 +223,16 @@
     "testverktyg",
     "Jest",
     "testverktyg",
+    "EventBus",
+    "EventBus",
+    "services",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -1015,36 +1015,6 @@
       "terms": []
     },
     {
-      "url": "guides/formatting-and-parsing/formatter-parser.html",
-      "title": "Formatering och parsning",
-      "terms": [
-        "formaterare",
-        "formatter",
-        "parser",
-        "vyvärde",
-        "vy-värde",
-        "viewValue",
-        "modellvärde",
-        "modell-värde",
-        "modelValue"
-      ]
-    },
-    {
-      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
-      "title": "Formaterare och parser - anpassad",
-      "terms": [
-        "formaterare",
-        "formatter",
-        "parser",
-        "vyvärde",
-        "vy-värde",
-        "viewValue",
-        "modellvärde",
-        "modell-värde",
-        "modelValue"
-      ]
-    },
-    {
       "url": "guides/validation-and-error-handling/validation.html",
       "title": "Validering och felhantering",
       "terms": [
@@ -1081,6 +1051,36 @@
       "title": "Korsvalidering",
       "terms": [
         "datumperiod"
+      ]
+    },
+    {
+      "url": "guides/formatting-and-parsing/formatter-parser.html",
+      "title": "Formatering och parsning",
+      "terms": [
+        "formaterare",
+        "formatter",
+        "parser",
+        "vyvärde",
+        "vy-värde",
+        "viewValue",
+        "modellvärde",
+        "modell-värde",
+        "modelValue"
+      ]
+    },
+    {
+      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
+      "title": "Formaterare och parser - anpassad",
+      "terms": [
+        "formaterare",
+        "formatter",
+        "parser",
+        "vyvärde",
+        "vy-värde",
+        "viewValue",
+        "modellvärde",
+        "modell-värde",
+        "modelValue"
       ]
     },
     {
@@ -1245,31 +1245,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": [
-        "fokus",
-        "fokusindikator",
-        "sass"
-      ]
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": [
-        "densitet",
-        "sass"
-      ]
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1300,6 +1275,31 @@
       "title": "Jest",
       "terms": [
         "testverktyg"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
+      "terms": [
+        "fokus",
+        "fokusindikator",
+        "sass"
+      ]
+    },
+    {
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
+      "terms": [
+        "densitet",
+        "sass"
       ]
     },
     {
@@ -2901,35 +2901,35 @@
     "101": 30,
     "102": 30,
     "103": 30,
-    "104": 30,
-    "105": 30,
-    "106": 30,
-    "107": 30,
-    "108": 30,
-    "109": 30,
-    "110": 30,
-    "111": 31,
-    "112": 31,
-    "113": 31,
-    "114": 31,
-    "115": 31,
-    "116": 31,
-    "117": 31,
-    "118": 31,
-    "119": 31,
-    "120": 31,
-    "121": 32,
-    "122": 32,
-    "123": 32,
-    "124": 33,
-    "125": 33,
-    "126": 33,
-    "127": 33,
-    "128": 33,
-    "129": 34,
-    "130": 34,
-    "131": 35,
-    "132": 35,
+    "104": 31,
+    "105": 31,
+    "106": 31,
+    "107": 31,
+    "108": 31,
+    "109": 32,
+    "110": 32,
+    "111": 33,
+    "112": 33,
+    "113": 34,
+    "114": 34,
+    "115": 35,
+    "116": 35,
+    "117": 35,
+    "118": 35,
+    "119": 35,
+    "120": 35,
+    "121": 35,
+    "122": 35,
+    "123": 35,
+    "124": 35,
+    "125": 36,
+    "126": 36,
+    "127": 36,
+    "128": 36,
+    "129": 36,
+    "130": 36,
+    "131": 36,
+    "132": 36,
     "133": 36,
     "134": 36,
     "135": 37,
@@ -3010,24 +3010,24 @@
     "210": 55,
     "211": 55,
     "212": 55,
-    "213": 56,
+    "213": 55,
     "214": 56,
     "215": 56,
     "216": 56,
-    "217": 57,
+    "217": 56,
     "218": 57,
     "219": 57,
-    "220": 58,
+    "220": 57,
     "221": 58,
     "222": 58,
-    "223": 58,
+    "223": 59,
     "224": 59,
     "225": 59,
-    "226": 59,
-    "227": 59,
+    "226": 60,
+    "227": 60,
     "228": 60,
     "229": 60,
-    "230": 60,
+    "230": 61,
     "231": 61,
     "232": 61,
     "233": 62,
