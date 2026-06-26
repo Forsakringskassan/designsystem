@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>För utvecklare - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-e0fff8.css"
+            href="../../assets/docs-616992.css"
             crossorigin
-            integrity="sha384-8qYxHQ89VeNWKPp0qqSEQR+4HM4ILnHE1n0j7MFdrN14txp8kF080TL/Wpbnboml"
+            integrity="sha384-RpVDBEgfLVnwSjPCnz6eY1xZUt2hi9Io4/dboDVozxrBlWTkVckgd0mGN3/B9kl2"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-7df2e1.css"
+            href="../../assets/docs-fkui-1bd311.css"
             crossorigin
-            integrity="sha384-MBaVIijJS1w72zkRr/WKoG3U3fZOsFkw2Mc8hCvFO0w4TGxHVnduRcDrb4FTg9NI"
+            integrity="sha384-RAxKrvJslJJVEHRayvpOgICwDpZpZLVC0axGSieKq79oyTUK98MmqGg5PR2PiWie"
             
         />
 
@@ -24,17 +24,17 @@
   "imports": {
     "vue": "../../assets/vendor-vue-5ec080.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-2e0001.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-ba1b7a.js",
-    "@fkui/date": "../../assets/vendor-fkui-date-692a76.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-658561.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-9ed948.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-4ec930.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-ce3f95.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-e77205.js"
   },
   "integrity": {
     "../../assets/vendor-vue-5ec080.js": "sha384-gs192ncfFJwhno/cvRdXGH+jYE5XKrbqOaSi2xM8w6DAe1aLfFy8JHgNkDCx+isP",
     "../../assets/vendor-fkui-vue-selectors-2e0001.js": "sha384-V1Wer3dMsjVpAFS/PrSjSFNHJYDQRv8k1RtPZLszEx/tnYmzbuPR4YIkP21Fwap0",
-    "../../assets/vendor-fkui-logic-ba1b7a.js": "sha384-vzXbs4dDmB5nxB2+/l+eL2n8Ju06KOu7bG1nKtIrQdfxi9EWMrLsxjKsSwK0PauJ",
-    "../../assets/vendor-fkui-date-692a76.js": "sha384-MwbLPk6deCTFOhc1JjO7SwACbk5fiURa0P++wkNh8qT5ckXSJVAIS1wp08u5D8AS",
-    "../../assets/vendor-fkui-vue-658561.js": "sha384-AQjXXdCLAXU97B9SCHD6Wmw+3UzCYXyfgA3pgi/7RO3DP2+Bql/Vuv6z+ImAMwpL",
+    "../../assets/vendor-fkui-logic-9ed948.js": "sha384-5mW5y/PYSM5vHGddH/4Shn8prsUJrV4tEXpuxjA1ZI0z1NDh2JjokIoTk3viQFgU",
+    "../../assets/vendor-fkui-date-4ec930.js": "sha384-pq05tS3yKOrr/fsY3iZ74ZrIeKXlAnLfHhLBVljCdO+ZS0Ulow1fh9oRg+c8zSuE",
+    "../../assets/vendor-fkui-vue-ce3f95.js": "sha384-mBjaJCAYXnjbIxI1Yvub0MTNjo215Uoe8rXApUW2TMFRmUb+9jVoyDNCUI+zTgF9",
     "../../assets/vendor-forsakringskassan-docs-live-example-e77205.js": "sha384-DsovFPooLKpiiaZiNa3CqNblTphlEp/J+pqN41M1kxsCiie+UVPgLJD/7vEfv84K"
   }
 }
@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-4c5a3a.json"
+    href="../../search-data-3e1a81.json"
     as="fetch"
     crossorigin
-    integrity="sha384-BA8RMtoIA1kRbh3ZO5hwLk8bmURUWyVY2mk5oRqYMn4LtlBDHWzz6Qy515KSmf5d"
+    integrity="sha384-CbR5C45HlErCDwgAiqyrymVXxJ1/HNfznSJqUBrGzaFiYsUFxc96HZ7St5Q1JAPL"
     id="search-data"
 />
 <script>
@@ -693,10 +693,24 @@ Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
                     <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm run vue start
 </code></pre>
                 </div>
-            <h3 id="testning" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#testning">Testning</a></h3><p class="docs-paragraph">Du kör igång hela test-sviten mot alla paket genom att skriva:</p>
+            <p class="docs-paragraph">För att starta ett specifikt exempel:</p>
 
                 <div
-                    id="example-c0ebd7"
+                    id="example-17b341"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm run vue start FILNAMN
+</code></pre>
+                </div>
+            <p class="docs-paragraph">där <code>FILNAMN</code> är fuzzy sökning (case insensitive) efter filnamnet.</p>
+<h3 id="testning" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#testning">Testning</a></h3><p class="docs-paragraph">Du kör igång hela test-sviten mot alla paket genom att skriva:</p>
+
+                <div
+                    id="example-9f9121"
                     class="code-preview code-preview--default"
                     
                     
@@ -709,7 +723,7 @@ Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
             <p class="docs-paragraph">För att köra e2e cypress-tester behöver du först starta servern med <code>npm start</code> och därefter köra:</p>
 
                 <div
-                    id="example-84d841"
+                    id="example-5da4f2"
                     class="code-preview code-preview--default"
                     
                     
@@ -722,7 +736,7 @@ Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
             <p class="docs-paragraph">För att köra enhetstest för ett paket skriv:</p>
 
                 <div
-                    id="example-4aac8f"
+                    id="example-16f4eb"
                     class="code-preview code-preview--default"
                     
                     
@@ -735,7 +749,7 @@ Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
             <p class="docs-paragraph">Om du vill köra test i watch mode:</p>
 
                 <div
-                    id="example-208e3a"
+                    id="example-6aebdc"
                     class="code-preview code-preview--default"
                     
                     
@@ -748,7 +762,7 @@ Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
             <h3 id="lintning" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#lintning">Lintning</a></h3><p class="docs-paragraph">Du kör all lintning och konfiguration i rot-paketet genom att skriva:</p>
 
                 <div
-                    id="example-24d8b9"
+                    id="example-c5a8b0"
                     class="code-preview code-preview--default"
                     
                     
@@ -761,7 +775,7 @@ Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
             <h3 id="applicera_kodstandard" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#applicera_kodstandard">Applicera kodstandard</a></h3><p class="docs-paragraph">Se till att all kod följer kodstandard genom att skriva:</p>
 
                 <div
-                    id="example-3b45d2"
+                    id="example-ba307d"
                     class="code-preview code-preview--default"
                     
                     
@@ -774,7 +788,7 @@ Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
             <h3 id="paketering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#paketering">Paketering</a></h3><p class="docs-paragraph">För att paketera allt och lägga de resulterande filerna (tarballs) i dist/-katalogen skriv:</p>
 
                 <div
-                    id="example-744266"
+                    id="example-3fa728"
                     class="code-preview code-preview--default"
                     
                     
@@ -787,7 +801,7 @@ Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
             <h3 id="lankning" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#lankning">Länkning</a></h3><p class="docs-paragraph">Länka alla paket (theme-default, logic, design, vue) så att de kan länkas till andra lokala repon genom att skriva:</p>
 
                 <div
-                    id="example-ec5b62"
+                    id="example-dd410a"
                     class="code-preview code-preview--default"
                     
                     
@@ -800,7 +814,7 @@ Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
             <p class="docs-paragraph">Du länkar till andra lokala repon genom att använda npm link {package-name}, till exempel:</p>
 
                 <div
-                    id="example-eb8de5"
+                    id="example-c898e8"
                     class="code-preview code-preview--default"
                     
                     
@@ -824,7 +838,7 @@ Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
 <p class="docs-paragraph">Scope är frivilligt men ska sättas till det paket som ändringen påverkar eller använd en av de generiska typerna av ändring (Type) från tabellen längre ner.</p>
 
                 <div
-                    id="example-d8e4cf"
+                    id="example-3211a3"
                     class="code-preview code-preview--default"
                     
                     
@@ -838,7 +852,7 @@ Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
 <p class="docs-paragraph">Du kan sätta scope manuellt genom:</p>
 
                 <div
-                    id="example-682bca"
+                    id="example-52ec22"
                     class="code-preview code-preview--default"
                     
                     
@@ -851,7 +865,7 @@ Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
             <p class="docs-paragraph">För att sätta multipla scope separerar du dem i en lista med komma:</p>
 
                 <div
-                    id="example-b4cce6"
+                    id="example-7dd444"
                     class="code-preview code-preview--default"
                     
                     
@@ -1011,9 +1025,9 @@ Du kan också använda ett utropstecken <code>!</code> efter type/scope för att
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">refactor/fbutton-migration (<a href="https://github.com/Forsakringskassan/designsystem/commits/8c3310fa91e601b7253e8c3711cb8935edc7eb7d">8c3310f</a>)<br />
+<div class="footer__right"><div class="version">refactor/fbutton-migration (<a href="https://github.com/Forsakringskassan/designsystem/commits/8809779e80d650e799db68d57881bd942317299d">8809779</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1399">PR 1399</a><br />
-        2026-06-23 12:54
+        2026-06-26 08:12
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1147,10 +1161,10 @@ Du kan också använda ett utropstecken <code>!</code> efter type/scope för att
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-8f49f7.js"
+            src="../../assets/processors/selectable-version/select-version-801459.js"
             type="module"
             crossorigin
-            integrity="sha384-m5rgzEEJgLzfeQsAdJaeK0E1HOGB3D4oNm/5zKzJ+CMQUJ2zVBup6bUwoO1Ljopx"
+            integrity="sha384-nVGvrRuncTDhwriMxkXJW7p9SE+YZkDgIn9Gxv0MwqL5N0MeqzNPH8But3UIrgD6"
             
         ></script><script
             src="../../assets/main-67599b.js"
