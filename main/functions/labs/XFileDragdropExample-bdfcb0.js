@@ -2631,6 +2631,7 @@ var XFileDragdrop_default = /* @__PURE__ */ defineComponent({
               createVNode(unref(FButton), {
                 "data-test": "file-item__file-remove",
                 "icon-left": "trashcan",
+                size: "medium",
                 variant: "tertiary",
                 "aria-label": `Ta bort ${fileName.value}`,
                 onClick: taBortFil
