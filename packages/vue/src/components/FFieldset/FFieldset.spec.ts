@@ -60,16 +60,19 @@ function dispatchValidityEvent(
 
 describe("snapshots", () => {
     it("should match snapshot with generated id attribute", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({ props: { id: undefined } });
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label and content", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({ slots: defaultSlots });
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, content and error message", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 "error-message": "Something went wrong.",
@@ -81,6 +84,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with label, content and tooltip", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: { tooltip: "Tooltip", ...defaultSlots },
         });
@@ -97,6 +101,7 @@ describe("snapshots", () => {
     `(
         "should match snapshot when validityMode is $validityMode",
         async ({ validityMode, isValid }) => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 slots: { label: "Label" },
                 attrs: { id: "elementId" },
@@ -118,6 +123,7 @@ describe("snapshots", () => {
 });
 
 it("should provide injection for label (legend) text", () => {
+    expect.assertions(1);
     const ChildComponent = defineComponent({
         template: /* HTML */ ` <div>{{ getFieldsetLabelText() }}</div> `,
         setup() {
@@ -135,6 +141,7 @@ it("should provide injection for label (legend) text", () => {
 
 describe("attributes", () => {
     it("should pass attributes", () => {
+        expect.assertions(3);
         const wrapper = createWrapper({
             attrs: {
                 disabled: true,
@@ -206,6 +213,7 @@ describe("should display error icon when error is present", () => {
 
 describe("events", () => {
     it("should pass listeners", async () => {
+        expect.assertions(1);
         const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
@@ -218,6 +226,7 @@ describe("events", () => {
 
 describe("onValidity should only handle events from itself", () => {
     it("handles events if event.target is itself", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: { label: "Label" },
             attrs: { id: "elementId" },
@@ -251,6 +260,7 @@ describe("onValidity should only handle events from itself", () => {
     `(
         "$description dispatch component-validity event if element is $element and type is $inputType",
         ({ element, inputType }) => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 slots: { label: "Label" },
                 attrs: { id: "elementId" },
@@ -277,6 +287,7 @@ describe("onValidity should only handle events from itself", () => {
     `(
         "should not dispatch component-validity event if input $inputType belongs to nestled fieldset",
         ({ inputType }) => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 slots: { label: "Label" },
                 attrs: { id: "elementId" },
@@ -304,6 +315,7 @@ describe("onValidity should only handle events from itself", () => {
 
 describe("onValidity should set focusElementId in ComponentValidityEvent", () => {
     it("should set focusElementId to own id if having no child input element", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             slots: { label: "Label" },
             props: { id: "elementId" },
@@ -331,6 +343,7 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
     });
 
     it("should set focusElementId to first child input element", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             slots: { label: "Label" },
             props: { id: "elementId" },
@@ -640,6 +653,7 @@ describe("html-validate", () => {
 
     describe("screen reader text", () => {
         it("one child should only have checkbox checked screen reader text", async () => {
+            expect.assertions(1);
             const TestComponent = defineComponent({
                 components: { FFieldset },
                 template: /* HTML */ `
@@ -657,6 +671,7 @@ describe("html-validate", () => {
         });
 
         it("other than one child should have numbers of and checked children screen reader text", async () => {
+            expect.assertions(2);
             const TestComponent = defineComponent({
                 components: { FFieldset },
                 template: /* HTML */ `
@@ -677,6 +692,7 @@ describe("html-validate", () => {
         });
 
         it("no child should have no screen reader text", async () => {
+            expect.assertions(2);
             const TestComponent = defineComponent({
                 components: { FFieldset },
                 template: /* HTML */ ` <f-fieldset> </f-fieldset> `,

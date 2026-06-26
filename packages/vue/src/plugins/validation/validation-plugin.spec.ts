@@ -271,6 +271,7 @@ it("should call ValidationService.removeValidatorsFromElement and emit 'componen
 });
 
 it("should add prefix to component-validity event errorMessage when inserted to parent", async () => {
+    expect.assertions(3);
     const TestComponent = defineComponent({
         extends: BaseComponent,
         template: /* HTML */ `

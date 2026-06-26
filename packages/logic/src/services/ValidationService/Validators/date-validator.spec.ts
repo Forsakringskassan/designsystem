@@ -26,6 +26,7 @@ describe("validation", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             const result = dateValidator.validation(value, element, {});
             expect(result).toEqual(expected);
         },

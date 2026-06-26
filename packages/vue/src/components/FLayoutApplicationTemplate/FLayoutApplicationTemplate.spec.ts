@@ -38,11 +38,13 @@ function createWrapper(slots: IApplicationTemplateSlots): VueWrapper {
 
 describe("snapshots", () => {
     it("should match snapshot with all slots used", () => {
+        expect.assertions(1);
         wrapper = createWrapper(defaultSlots);
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should render snapshot with no header and footer if running under another application", () => {
+        expect.assertions(1);
         const withoutOptsSlots: IApplicationTemplateSlots = {
             "top-navigation": "TOPNAVIGATION",
             default: "DEFAULT",
@@ -94,10 +96,38 @@ describe("<header>", () => {
 });
 
 it("should apply css class 'layout-application-template__body' to body-element", () => {
+    expect.assertions(1);
     wrapper = createWrapper(defaultSlots);
     expect(window.document.body.classList).toContain(
         "layout-application-template__body",
     );
+});
+
+describe("navLabel prop", () => {
+    it("should set default aria-label text when not used", () => {
+        expect.assertions(1);
+        const wrapper = mount(FLayoutApplicationTemplate, {
+            slots: {
+                "top-navigation": "lorem ipsum",
+            },
+        });
+        const nav = wrapper.get(".layout-application-template nav");
+        expect(nav.attributes("aria-label")).toContain("Navigeringsmeny");
+    });
+
+    it("should set correct aria-label text when used", () => {
+        expect.assertions(1);
+        const wrapper = mount(FLayoutApplicationTemplate, {
+            props: {
+                navLabel: "Foobar",
+            },
+            slots: {
+                "top-navigation": "lorem ipsum",
+            },
+        });
+        const nav = wrapper.get(".layout-application-template nav");
+        expect(nav.attributes("aria-label")).toContain("Foobar");
+    });
 });
 
 describe("html-validate", () => {

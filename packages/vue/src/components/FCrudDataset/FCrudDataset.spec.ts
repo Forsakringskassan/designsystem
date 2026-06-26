@@ -20,13 +20,13 @@ import FCrudDataset from "./FCrudDataset.vue";
 
 vi.useFakeTimers();
 
-afterAll(() => {
-    vi.useRealTimers();
-});
-
 afterEach(() => {
     vi.clearAllTimers();
     vi.clearAllMocks();
+});
+
+afterAll(() => {
+    vi.useRealTimers();
 });
 
 const ADD_TEMPLATE = /* HTML */ `
@@ -216,6 +216,7 @@ async function submitForm(wrapper: VueWrapper): Promise<void> {
 
 describe("snapshot", () => {
     it("should match snapshot", () => {
+        expect.assertions(1);
         const wrapper = createWrapper([ADD_TEMPLATE], {
             stubs: ["FFormModal", "FConfirmModal"],
         });
@@ -224,6 +225,7 @@ describe("snapshot", () => {
 });
 
 it("should not show add button when #add slot is absent", () => {
+    expect.assertions(1);
     const template = /* HTML */ `
         <f-crud-dataset>
             <template #modify></template>
@@ -243,6 +245,7 @@ it("should not show add button when #add slot is absent", () => {
 });
 
 it("should show add button when #add slot is present", () => {
+    expect.assertions(2);
     const template = /* HTML */ `
         <f-crud-dataset>
             <template #add></template>
@@ -259,6 +262,7 @@ it("should show add button when #add slot is present", () => {
 });
 
 it("should show custom buttons when #add slot is present", () => {
+    expect.assertions(4);
     const template = /* HTML */ `
         <f-crud-dataset>
             <template #add></template>
@@ -281,6 +285,7 @@ it("should show custom buttons when #add slot is present", () => {
 });
 
 it("should show add modal when the add button is pressed", async () => {
+    expect.assertions(1);
     const wrapper = createWrapper(
         [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
         {
@@ -293,6 +298,7 @@ it("should show add modal when the add button is pressed", async () => {
 });
 
 it("should show modify modal when the modify button is pressed", async () => {
+    expect.assertions(1);
     const wrapper = createWrapper(
         [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
         {
@@ -321,6 +327,7 @@ it("should show delete modal when the delete button is pressed", async () => {
 });
 
 it("should add item", async () => {
+    expect.assertions(2);
     const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
 
     const wrapper = createWrapper(
@@ -343,6 +350,7 @@ it("should add item", async () => {
 });
 
 it("should modify items", async () => {
+    expect.assertions(3);
     const alertScreenReader = vi.spyOn(logic, "alertScreenReader");
 
     const wrapper = createWrapper(
@@ -367,6 +375,7 @@ it("should modify items", async () => {
 });
 
 it("should not modify original item on cancel", async () => {
+    expect.assertions(1);
     const wrapper = createWrapper([MODIFY_TEMPLATE], {
         stubs: ["FConfirmModal"],
     });
@@ -386,6 +395,7 @@ it("should not modify original item on cancel", async () => {
 });
 
 it("should emit created event when items are added", async () => {
+    expect.assertions(2);
     const wrapper = createWrapper(
         [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
         {
@@ -403,6 +413,7 @@ it("should emit created event when items are added", async () => {
 });
 
 it("should emit updated event when items are updated", async () => {
+    expect.assertions(2);
     const wrapper = createWrapper(
         [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
         {
@@ -419,6 +430,7 @@ it("should emit updated event when items are updated", async () => {
 });
 
 it("should call :onCancel after cancel", async () => {
+    expect.assertions(1);
     const wrapper = createWrapper(
         [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
         {
@@ -437,6 +449,7 @@ it("should call :onCancel after cancel", async () => {
 
 describe("beforeSubmit", () => {
     it('should call "beforeSubmit" when it is provided and submit button clicked', async () => {
+        expect.assertions(2);
         const beforeSubmit = vi.fn();
         const wrapper = createWrapper(
             [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
@@ -458,6 +471,7 @@ describe("beforeSubmit", () => {
     });
 
     it("should not emit submit when beforeSubmit returns CANCEL", async () => {
+        expect.assertions(1);
         function onBeforeSubmit(): FFormModalAction {
             return FFormModalAction.CANCEL;
         }
@@ -484,6 +498,7 @@ describe("beforeSubmit", () => {
     });
 
     it("should emit submit when beforeSubmit returns CONTINUE", async () => {
+        expect.assertions(1);
         function onBeforeSubmit(): FFormModalAction {
             return FFormModalAction.CONTINUE;
         }
@@ -510,6 +525,7 @@ describe("beforeSubmit", () => {
     });
 
     it("should emit submit when beforeSubmit returns undefined", async () => {
+        expect.assertions(1);
         function onBeforeSubmit(): void {
             return;
         }
@@ -536,6 +552,7 @@ describe("beforeSubmit", () => {
     });
 
     it("should emit submit when beforeSubmit props not set (default)", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
             {
@@ -559,6 +576,7 @@ describe("beforeSubmit", () => {
 });
 
 it("should call before validation", async () => {
+    expect.assertions(3);
     const beforeValidation = vi.fn();
     const wrapper = createWrapper(
         [ADD_TEMPLATE_REQUIRED, MODIFY_TEMPLATE, DELETE_TEMPLATE],
@@ -586,6 +604,7 @@ it("should call before validation", async () => {
 
 describe("onCancel", () => {
     it("should be called on cancel-event emitted", async () => {
+        expect.assertions(2);
         const onCancel = vi.fn();
         const wrapper = createWrapper(
             [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
@@ -610,6 +629,7 @@ describe("onCancel", () => {
     });
 
     it("should be called on close-button clicked", async () => {
+        expect.assertions(2);
         const onCancel = vi.fn();
         const wrapper = createWrapper(
             [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
@@ -631,6 +651,7 @@ describe("onCancel", () => {
     });
 
     it("should be called on cancel-button clicked", async () => {
+        expect.assertions(2);
         const onCancel = vi.fn();
         const wrapper = createWrapper(
             [ADD_TEMPLATE, MODIFY_TEMPLATE, DELETE_TEMPLATE],
@@ -654,6 +675,7 @@ describe("onCancel", () => {
 
 describe("formModalSize", () => {
     it("should pass size prop to FFormModal when opening add modal", async () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FCrudDataset, {
             props: { formModalSize: "large" },
             slots: { add: "..." },
@@ -667,6 +689,7 @@ describe("formModalSize", () => {
     });
 
     it("should pass size prop to FFormModal when opening modify modal", async () => {
+        expect.assertions(1);
         const wrapper = mount(FCrudDataset, {
             props: { formModalSize: "large" },
             slots: {
@@ -688,6 +711,7 @@ describe("formModalSize", () => {
     });
 
     it("should use default size (empty string) when prop not provided", async () => {
+        expect.assertions(1);
         const wrapper = shallowMount(FCrudDataset, {
             slots: { add: "..." },
         });
@@ -708,6 +732,7 @@ describe("formModalSize", () => {
         ${"fullscreen"}
         ${"fullwidth"}
     `("should accept valid size '$size'", ({ size }) => {
+        expect.assertions(1);
         const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {
             // Intentionally empty
         });
@@ -727,6 +752,7 @@ describe("formModalSize", () => {
 
 describe("html-validate", () => {
     it("should require default slot", () => {
+        expect.assertions(1);
         expect("<f-crud-dataset></f-crud-dataset>").not.toHTMLValidate({
             message:
                 '<f-crud-dataset> component requires slot "default" to be implemented',
@@ -734,6 +760,7 @@ describe("html-validate", () => {
     });
 
     it("should html-validate", () => {
+        expect.assertions(1);
         expect(
             "<f-crud-dataset><template #default></template></f-crud-dataset>",
         ).toHTMLValidate();

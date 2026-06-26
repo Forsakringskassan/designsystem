@@ -32,6 +32,7 @@ function createWrapper({
 
 describe("snapshot", () => {
     it("should match snapshot when action = modify", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: { action: "modify" },
         });
@@ -39,6 +40,7 @@ describe("snapshot", () => {
     });
 
     it("should match snapshot when action = delete", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: { action: "delete" },
         });
@@ -46,6 +48,7 @@ describe("snapshot", () => {
     });
 
     it("should match snapshot when only icon is used", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: { action: "modify", icon: true },
         });
@@ -53,6 +56,7 @@ describe("snapshot", () => {
     });
 
     it("should match snapshot when only label is used", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: { action: "modify", label: true },
         });
@@ -60,6 +64,7 @@ describe("snapshot", () => {
     });
 
     it("should match snapshot when both label and icon is used", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: { action: "modify", label: true, icon: true },
         });
@@ -69,6 +74,7 @@ describe("snapshot", () => {
 
 describe("html-validate", () => {
     it("should require action attribute", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <!-- [html-validate-disable deprecated -- component should still work] -->
             <f-crud-dataset>
@@ -92,6 +98,7 @@ describe("html-validate", () => {
     });
 
     it("should require item attribute", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <!-- [html-validate-disable deprecated -- component should still work] -->
             <f-crud-dataset>
@@ -115,6 +122,7 @@ describe("html-validate", () => {
     });
 
     it("should only allow actions modify and delete", async () => {
+        expect.assertions(3);
         const markup = (action: string): string => /* HTML */ `
             <!-- [html-validate-disable deprecated -- component should still work] -->
             <f-crud-dataset>
@@ -143,6 +151,7 @@ describe("html-validate", () => {
     });
 
     it("should require f-crud-dataset as ancestor", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <!-- [html-validate-disable deprecated -- component should still work] -->
             <f-crud-button action="modify" item="test"></f-crud-button>

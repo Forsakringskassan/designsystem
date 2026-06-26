@@ -35,12 +35,14 @@ function createWrapper({
 
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
 
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, error message and input", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: { "error-message": "ERROR_MESSAGE" },
         });
@@ -49,6 +51,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with label, tooltip, description, error message and input", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 description: "DESCRIPTION",
@@ -69,6 +72,7 @@ describe("snapshots", () => {
     `(
         "should match snapshot when validityMode is $validityMode and isValid is $isValid",
         async ({ validityMode, isValid }) => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 attrs: { id: "elementId" },
             });
@@ -98,6 +102,7 @@ describe("snapshots", () => {
 
 describe("attributes", () => {
     it("should pass attributes", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: {
                 disabled: true,
@@ -111,6 +116,7 @@ describe("attributes", () => {
     });
 
     it("should set id on input element", () => {
+        expect.assertions(1);
         const wrapper = mount({
             components: { FPhoneTextField },
             template: /* HTML */ `
@@ -122,6 +128,7 @@ describe("attributes", () => {
     });
 
     it("should set id on first input element when using extended validation", () => {
+        expect.assertions(2);
         const wrapper = mount({
             components: { FPhoneTextField },
             template: /* HTML */ `
@@ -135,6 +142,7 @@ describe("attributes", () => {
     });
 
     it("should set type to tel as default", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
         const input = wrapper.get("input");
         expect(input.attributes("type")).toBe("tel");
@@ -143,6 +151,7 @@ describe("attributes", () => {
 
 describe("events", () => {
     it("should support v-model", async () => {
+        expect.assertions(3);
         const wrapper = createWrapper({
             props: { modelValue: "888" },
         });
@@ -160,6 +169,7 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
+        expect.assertions(2);
         const focus = vi.fn();
         const blur = vi.fn();
 
@@ -181,6 +191,7 @@ describe("events", () => {
     });
 
     it('should have ValidityMode INITIAL when "pending-validity" event is triggered', async () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: { id: "elementId" },
         });
@@ -217,6 +228,7 @@ describe("events", () => {
 
 describe("validation", () => {
     it("should display correct error message when multiple validators", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper({ options: { sync: false } });
         ValidationService.setSubmitted(wrapper.element);
         await flushPromises();
@@ -252,6 +264,7 @@ describe("validation", () => {
     `(
         `should set confirm phone textfield as required = $required when first phone textfield is required = $required`,
         async ({ required }) => {
+            expect.assertions(1);
             const validation = required ? "v-validation.required" : "";
             const wrapper = mount(
                 defineComponent({
@@ -282,6 +295,7 @@ describe("validation", () => {
 });
 
 it("should be able to set custom label at default and extended slot", () => {
+    expect.assertions(2);
     const wrapper = createWrapper({
         props: {
             extendedValidation: true,

@@ -85,6 +85,7 @@ describe("events", () => {
     });
 
     it('should send "cancel" and "close" event on close button clicked', async () => {
+        expect.assertions(2);
         const wrapper = mount(FFormModal, {
             props: {
                 isOpen: true,
@@ -97,6 +98,7 @@ describe("events", () => {
     });
 
     it('should send "cancel" and "close" event on cancel button clicked', async () => {
+        expect.assertions(2);
         const wrapper = mount(FFormModal, {
             props: {
                 isOpen: true,
@@ -109,6 +111,7 @@ describe("events", () => {
     });
 
     it('should send "submit" and "close" event on submit button clicked', async () => {
+        expect.assertions(2);
         const wrapper = mount(FFormModal, {
             props: {
                 isOpen: true,
@@ -121,6 +124,7 @@ describe("events", () => {
     });
 
     it('should call "beforeSubmit" when it is provided and submit button clicked', async () => {
+        expect.assertions(2);
         const beforeSubmit = vi.fn();
         const wrapper = mount(FFormModal, {
             props: {
@@ -136,6 +140,7 @@ describe("events", () => {
     });
 
     it("should not emit submit when beforeSubmit returns CANCEL", async () => {
+        expect.assertions(1);
         function onBeforeSubmit(): FFormModalAction {
             return FFormModalAction.CANCEL;
         }
@@ -152,6 +157,7 @@ describe("events", () => {
     });
 
     it("should emit submit when beforeSubmit returns CONTINUE", async () => {
+        expect.assertions(1);
         function onBeforeSubmit(): FFormModalAction {
             return FFormModalAction.CONTINUE;
         }
@@ -168,6 +174,7 @@ describe("events", () => {
     });
 
     it("should emit submit when beforeSubmit returns undefined", async () => {
+        expect.assertions(1);
         function onBeforeSubmit(): void {
             return;
         }
@@ -184,6 +191,7 @@ describe("events", () => {
     });
 
     it("should emit submit when beforeSubmit props not set (default)", async () => {
+        expect.assertions(1);
         const wrapper = mount(FFormModal, {
             props: {
                 isOpen: true,
@@ -196,6 +204,7 @@ describe("events", () => {
     });
 
     it("should contain the submitted data on submit", async () => {
+        expect.assertions(2);
         const errorMessage = "";
         const wrapper = createWrapper(errorMessage);
 
@@ -226,6 +235,7 @@ describe("events", () => {
 
 describe("slots", () => {
     it("should change header via slot", () => {
+        expect.assertions(1);
         const headerText = "foo header";
         const wrapper = mount(FFormModal, {
             props: {
@@ -241,6 +251,7 @@ describe("slots", () => {
     });
 
     it("should change header content via slot", () => {
+        expect.assertions(1);
         const contentText = "bar content";
         const wrapper = mount(FFormModal, {
             props: {
@@ -256,6 +267,7 @@ describe("slots", () => {
     });
 
     it("should change default content via slot", () => {
+        expect.assertions(1);
         const contentText = "bar content";
         const wrapper = mount(FFormModal, {
             props: {
@@ -271,6 +283,7 @@ describe("slots", () => {
     });
 
     it("should add error message text via slot when using error list", async () => {
+        expect.assertions(1);
         const errorMessage = "foo message";
         const wrapper = createWrapper(errorMessage);
 
@@ -297,6 +310,7 @@ describe("props", () => {
         `(
             "'$size' should be reflected in applied class name.",
             async ({ size, className }) => {
+                expect.assertions(1);
                 const wrapper = mount(FFormModal, {
                     props: {
                         size,
@@ -309,6 +323,7 @@ describe("props", () => {
     });
 
     it("should passs ariaCloseText to FModal", async () => {
+        expect.assertions(1);
         const wrapper = mount(FFormModal, {
             props: {
                 isOpen: true,
@@ -322,6 +337,7 @@ describe("props", () => {
     });
 
     it("should append screenreader text if given", () => {
+        expect.assertions(1);
         const wrapper = mount(FFormModal, {
             props: {
                 isOpen: true,
@@ -341,6 +357,7 @@ describe("props", () => {
     });
 
     it("should not append extra space if no screenreader text is given", () => {
+        expect.assertions(1);
         const wrapper = mount(FFormModal, {
             props: {
                 isOpen: true,
@@ -355,10 +372,12 @@ describe("props", () => {
 
 describe("html-validate", () => {
     it("should allow usage without attributes, no attributes required", async () => {
+        expect.assertions(1);
         await expect("<f-form-modal></f-form-modal>").toHTMLValidate();
     });
 
     it("should not allow an invalid form-id attribute", async () => {
+        expect.assertions(1);
         await expect(
             '<f-form-modal form-id="1"></f-form-modal>',
         ).not.toHTMLValidate({

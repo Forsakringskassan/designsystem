@@ -41,6 +41,7 @@ function createWrapper(
 
 describe("cleanUp", () => {
     it("should keep element in 'components' when in DOM", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper(components);
 
         cleanUpElements(wrapper.vm as unknown as Special);
@@ -58,6 +59,7 @@ describe("cleanUp", () => {
     });
 
     it("should remove element from 'components' when not in DOM", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper(componentsNotInDOM);
 
         cleanUpElements(wrapper.vm as unknown as Special);

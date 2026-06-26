@@ -14,6 +14,7 @@ it.each`
 `(
     'should be called with "$expected" for "$value" because of $description',
     ({ value, expected }) => {
+        expect.assertions(1);
         const compareFunction = vi.fn();
         const testConfig = { limit: "1" };
         numberValidator(value, testConfig, "limit", compareFunction);
@@ -35,6 +36,7 @@ it.each`
 `(
     'should be called with "$expected" for "$config" because of $description',
     ({ config, expected }) => {
+        expect.assertions(1);
         const compareFunction = vi.fn();
         numberValidator("1", config, "limit", compareFunction);
         expect(compareFunction).toHaveBeenCalledWith(1, expected);
@@ -54,9 +56,11 @@ it.each`
 `(
     "should return $expected because of $description",
     ({ value, config, expected }) => {
+        expect.assertions(1);
         function compareFunction(): boolean {
             return true;
         }
+
         expect(numberValidator(value, config, "limit", compareFunction)).toBe(
             expected,
         );
@@ -64,12 +68,8 @@ it.each`
 );
 
 it("should throw error if not a number in config", () => {
+    expect.assertions(1);
     const compareFunction = vi.fn();
-    /* eslint-disable-next-line no-console -- technical debt, bad practice
-     * and console is not restored so it leaks to other tests, should use
-     * vi.spyOn(..) at least and for tests expected to log should have
-     * explicit tests for this */
-    console.log = vi.fn();
 
     expect.assertions(1);
 

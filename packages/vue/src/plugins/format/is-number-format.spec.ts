@@ -25,5 +25,6 @@ it.each`
     ${{ number: 123, decimals: 2 }}           | ${true}
     ${{ number: 0, decimals: 2 }}             | ${true}
 `('should return $expected with value "$value"', ({ value, expected }) => {
+    expect.assertions(1);
     expect(isNumberFormat(value)).toBe(expected);
 });

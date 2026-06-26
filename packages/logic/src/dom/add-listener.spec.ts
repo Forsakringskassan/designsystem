@@ -23,11 +23,13 @@ afterEach(() => {
 
 describe("addFocusListener", () => {
     let mockEventListener: Mock;
+
     beforeEach(() => {
         mockEventListener = vi.fn();
     });
 
     it("should be able to add focusListener", () => {
+        expect.assertions(1);
         const elements = setupDomElements();
         elements[0].addEventListener = mockEventListener;
         elements[1].addEventListener = mockEventListener;
@@ -37,6 +39,7 @@ describe("addFocusListener", () => {
     });
 
     it("should call callback function when focus is changed", () => {
+        expect.assertions(1);
         const mockEventCallback = vi.fn();
         const elements = setupDomElements();
         addFocusListener(elements, mockEventCallback);

@@ -7,6 +7,7 @@ interface TestItem {
 }
 
 it("should remove matching item", () => {
+    expect.assertions(1);
     const items: TestItem[] = [{ id: "a" }, { id: "b" }];
     const target = items[1];
     const filtered = filterItem(items, target);
@@ -20,6 +21,7 @@ it("should remove matching item", () => {
 });
 
 it("should remove matching nested item", () => {
+    expect.assertions(1);
     const items: TestItem[] = [
         { id: "a", nested: [{ id: "a1" }, { id: "a2" }] },
     ];
@@ -35,6 +37,7 @@ it("should remove matching nested item", () => {
 });
 
 it("should not remove if not matching reference", () => {
+    expect.assertions(1);
     const items: TestItem[] = [{ id: "a" }, { id: "b" }];
     const target: TestItem = { id: "b" };
     const filtered = filterItem(items, target);

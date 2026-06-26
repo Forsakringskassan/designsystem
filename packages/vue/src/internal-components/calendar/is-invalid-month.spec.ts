@@ -8,6 +8,7 @@ import {
 
 describe("isInvalidMonth", () => {
     it("should return false when passed date is within allowed bounds", () => {
+        expect.assertions(1);
         const currentDate = FDate.fromIso("2023-01-01");
         const minDate = currentDate.addMonths(-1);
         const maxDate = currentDate.addMonths(12);
@@ -15,6 +16,7 @@ describe("isInvalidMonth", () => {
     });
 
     it("should return true when passed date is higher than the maximum allowed date", () => {
+        expect.assertions(1);
         const currentDate = FDate.fromIso("2023-01-15");
         const minDate = currentDate.addMonths(-2);
         const maxDate = currentDate.addMonths(-1);
@@ -22,6 +24,7 @@ describe("isInvalidMonth", () => {
     });
 
     it("should return false when passed date is lower than the minimum allowed date", () => {
+        expect.assertions(1);
         const currentDate = FDate.fromIso("2022-12-15");
         const minDate = currentDate.addMonths(1);
         const maxDate = currentDate.addMonths(12);
@@ -29,6 +32,7 @@ describe("isInvalidMonth", () => {
     });
 
     it("should return false when min-date and max-date is missing", () => {
+        expect.assertions(1);
         const currentDate = FDate.fromIso("2022-12-15");
         expect(isInvalidMonth(currentDate)).toBeFalsy();
     });
@@ -44,6 +48,7 @@ function callMonthAfter(date: string, minDate: string): boolean {
 
 describe("isMonthBefore", () => {
     it("should return true when given date is before month", () => {
+        expect.assertions(4);
         expect(callMonthBefore("2023-01-31", "2023-02-15")).toBeTruthy();
         expect(callMonthBefore("2022-02-16", "2023-02-15")).toBeTruthy();
         expect(callMonthBefore("2022-01-31", "2023-02-01")).toBeTruthy();
@@ -51,6 +56,7 @@ describe("isMonthBefore", () => {
     });
 
     it("should return false when given date is after month", () => {
+        expect.assertions(4);
         expect(callMonthBefore("2023-03-01", "2023-02-15")).toBeFalsy();
         expect(callMonthBefore("2023-02-01", "2023-02-15")).toBeFalsy();
         expect(callMonthBefore("2023-02-01", "2023-02-01")).toBeFalsy();
@@ -60,6 +66,7 @@ describe("isMonthBefore", () => {
 
 describe("isMonthAfter", () => {
     it("should return true when given date is after month", () => {
+        expect.assertions(4);
         expect(callMonthAfter("2023-03-01", "2023-02-15")).toBeTruthy();
         expect(callMonthAfter("2024-02-01", "2023-02-15")).toBeTruthy();
         expect(callMonthAfter("2024-05-01", "2023-04-01")).toBeTruthy();
@@ -67,6 +74,7 @@ describe("isMonthAfter", () => {
     });
 
     it("should return false when given date is before month", () => {
+        expect.assertions(5);
         expect(callMonthAfter("2023-01-31", "2023-02-15")).toBeFalsy();
         expect(callMonthAfter("2023-02-01", "2023-02-15")).toBeFalsy();
         expect(callMonthAfter("2022-02-16", "2023-02-15")).toBeFalsy();

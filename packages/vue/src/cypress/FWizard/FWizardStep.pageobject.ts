@@ -120,9 +120,11 @@ export class FWizardStepPageobject implements BasePageObject {
      * @see STATUS
      */
     public status(): Cypress.Chainable<string> {
-        return this.el().then((el) =>
-            /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-            el[0].className.replace(/.*wizard-step--(\w+).*/, "$1"),
-        );
+        return this.el().then((el) => {
+            const prefix = "wizard-step--";
+            const classes = Array.from(el[0].classList.values());
+            const statusClass = classes.find((it) => it.startsWith(prefix));
+            return statusClass?.slice(prefix.length) ?? "";
+        });
     }
 }

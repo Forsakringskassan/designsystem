@@ -1,4 +1,5 @@
 module.exports = {
-    preset: "@forsakringskassan/jest-config-vue",
-    testPathIgnorePatterns: ["/node_modules/", "\\.vitest\\.spec\\.ts$"],
+    preset: "@forsakringskassan/jest-config",
+    testMatch: ["**/*.jest.spec.ts"],
+    testEnvironment: "jest-environment-jsdom",
 };

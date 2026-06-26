@@ -9,6 +9,7 @@ import cypressConfig from "@forsakringskassan/eslint-config-cypress";
 import jestConfig from "@forsakringskassan/eslint-config-jest";
 import typescriptConfig from "@forsakringskassan/eslint-config-typescript";
 import typeinfoConfig from "@forsakringskassan/eslint-config-typescript-typeinfo";
+import vitestConfig from "@forsakringskassan/eslint-config-vitest";
 import vueConfig from "@forsakringskassan/eslint-config-vue";
 
 async function readJsonFile(filePath) {
@@ -59,7 +60,12 @@ export default [
         ],
     }),
     vueConfig(),
-    jestConfig(),
+    jestConfig({
+        files: ["**/*jest.spec.ts"],
+    }),
+    vitestConfig({
+        ignores: ["**/*jest.spec.ts"],
+    }),
     cypressConfig(),
     docsConfig(),
     examplesConfig(),

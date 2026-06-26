@@ -20,6 +20,7 @@ function createWrapper({
 
 describe("FFileselector", () => {
     it("should pass attributes", () => {
+        expect.assertions(1);
         const filetypesAccepted =
             "application/pdf, image/jpeg, image/tiff, image/png";
         const wrapper = createWrapper({
@@ -32,6 +33,7 @@ describe("FFileselector", () => {
     });
 
     it("should set text in slot", () => {
+        expect.assertions(2);
         const wrapper = createWrapper();
         const label = wrapper.get("label");
         expect(label.text()).toBe("Select file");
@@ -39,6 +41,7 @@ describe("FFileselector", () => {
     });
 
     it("should pass listeners", async () => {
+        expect.assertions(1);
         const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },
@@ -49,6 +52,7 @@ describe("FFileselector", () => {
     });
 
     it("should emit on change", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
         const input = wrapper.get("input");
         await input.trigger("change");
@@ -57,6 +61,7 @@ describe("FFileselector", () => {
     });
 
     it("should disable component when disabled", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             props: { disabled: true },
         });
@@ -67,6 +72,7 @@ describe("FFileselector", () => {
     });
 
     it("should not disable component when not disabled", () => {
+        expect.assertions(2);
         const wrapper = createWrapper();
         const input = wrapper.get("input");
         const label = wrapper.get("label");
@@ -81,6 +87,7 @@ describe("FFileselector", () => {
      * (e.g. "Välj fil: Ingen fil vald" in Edge).
      */
     it("should have input with aria-labelledby attribute", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             props: { id: "foo" },
         });
@@ -95,6 +102,7 @@ describe("FFileselector", () => {
      * was read out twice by screen reader.
      */
     it("should have label with aria-hidden attribute", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
         const label = wrapper.get("label");
         expect(label.attributes("aria-hidden")).toBe("true");

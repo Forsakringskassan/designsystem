@@ -51,6 +51,7 @@ describe("props", () => {
     });
 
     it("iconLibrary should be passed to FIcon", () => {
+        expect.assertions(2);
         const wrapper = shallowMount(FButton, {
             props: {
                 iconLeft: "foo",

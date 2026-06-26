@@ -8,6 +8,7 @@ interface TableRow {
 
 describe("getUpdateFn()", () => {
     it("should return and call provided update-function", () => {
+        expect.assertions(1);
         const fnMock = vi.fn(
             (_row: TableRow, _newValue: string, _oldValue: string) => {
                 /* empty */
@@ -30,6 +31,7 @@ describe("getUpdateFn()", () => {
     });
 
     it("should create and call created update-function", () => {
+        expect.assertions(1);
         const rows: TableRow[] = [
             {
                 id: "1",
@@ -59,6 +61,7 @@ describe("getUpdateFn()", () => {
     });
 
     it("should return a function that returns undefined, when fn and key is undefined", () => {
+        expect.assertions(2);
         const rows: TableRow[] = [
             {
                 id: "1",

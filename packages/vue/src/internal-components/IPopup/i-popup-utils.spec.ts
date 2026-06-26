@@ -312,6 +312,7 @@ describe("isInside()", () => {
 
 describe("getFallbackPosition()", () => {
     it("should return fallback position closest to horizontal anchor position", () => {
+        expect.assertions(1);
         const anchor = { x: 80, y: 50, width: 10, height: 10 };
         const target = { x: Number.NaN, y: Number.NaN, width: 50, height: 10 };
         const clippedArea = { x: 0, y: 0, width: 100, height: 10 };
@@ -324,6 +325,7 @@ describe("getFallbackPosition()", () => {
     });
 
     it("should return fallback position without horizontal alignment", () => {
+        expect.assertions(1);
         const anchor = { x: 10, y: 50, width: 10, height: 10 };
         const target = { x: Number.NaN, y: Number.NaN, width: 50, height: 10 };
         const clippedArea = { x: 20, y: 0, width: 100, height: 10 };

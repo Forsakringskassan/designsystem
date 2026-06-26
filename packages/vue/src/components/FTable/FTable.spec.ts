@@ -9,6 +9,7 @@ const expandableAttribute = "nested";
 
 describe("1.4 Rowheader", () => {
     it("should set rowheader", () => {
+        expect.assertions(2);
         const rows = [{ text: "Foo" }, { text: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -29,6 +30,7 @@ describe("1.4 Rowheader", () => {
     });
 
     it("should set rowheader on expandable rows", async () => {
+        expect.assertions(6);
         interface ExpandableRow {
             text: string;
             nested?: ExpandableRow[];
@@ -70,6 +72,7 @@ describe("1.6 column size", () => {
     const rows = useDatasetRef([]);
 
     it("should have grow class if not set", () => {
+        expect.assertions(1);
         const columns = defineTableColumns([
             {
                 type: "text",
@@ -87,6 +90,7 @@ describe("1.6 column size", () => {
     });
 
     it("should have grow class if set to null", () => {
+        expect.assertions(1);
         const columns = defineTableColumns([
             {
                 type: "text",
@@ -105,6 +109,7 @@ describe("1.6 column size", () => {
     });
 
     it("should have grow class if set to grow", () => {
+        expect.assertions(1);
         const columns = defineTableColumns([
             {
                 type: "text",
@@ -123,6 +128,7 @@ describe("1.6 column size", () => {
     });
 
     it("should have shrink class if set to shrink", () => {
+        expect.assertions(1);
         const columns = defineTableColumns([
             {
                 type: "text",
@@ -143,6 +149,7 @@ describe("1.6 column size", () => {
 
 describe("1.7 enabled columns", () => {
     it("should not render columns when enabled is false", () => {
+        expect.assertions(4);
         const rows = [{ foo: "Foo", bar: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -175,6 +182,7 @@ describe("1.7 enabled columns", () => {
     });
 
     it("should not render header or body sections when all columns are disabled", () => {
+        expect.assertions(2);
         const rows = [{ foo: "Foo", bar: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -224,6 +232,7 @@ describe("1.8 when table is empty", () => {
     ]);
 
     it("should have a single empty row with default text", () => {
+        expect.assertions(2);
         const wrapper = mount(FTable<Row>, {
             props: {
                 rows: rows.value,
@@ -238,6 +247,7 @@ describe("1.8 when table is empty", () => {
     });
 
     it("should be able to change text of empty row", () => {
+        expect.assertions(1);
         const wrapper = mount(FTable<Row>, {
             props: {
                 rows: rows.value,
@@ -250,6 +260,7 @@ describe("1.8 when table is empty", () => {
     });
 
     it("should span all columns", () => {
+        expect.assertions(1);
         const wrapper = mount(FTable<Row>, {
             props: {
                 rows: rows.value,
@@ -261,6 +272,7 @@ describe("1.8 when table is empty", () => {
     });
 
     it("should span all columns when expandable", () => {
+        expect.assertions(1);
         const wrapper = mount(FTable<Row>, {
             props: {
                 rows: expandableRows.value,
@@ -272,6 +284,7 @@ describe("1.8 when table is empty", () => {
     });
 
     it("should span all columns when selectable", () => {
+        expect.assertions(1);
         const wrapper = mount(FTable<Row>, {
             props: {
                 rows: rows.value,
@@ -284,6 +297,7 @@ describe("1.8 when table is empty", () => {
     });
 
     it("should span all columns when selectable and expandable", () => {
+        expect.assertions(1);
         const wrapper = mount(FTable<Row>, {
             props: {
                 rows: expandableRows.value,
@@ -296,6 +310,7 @@ describe("1.8 when table is empty", () => {
     });
 
     it("should not render table header or body when table has no columns", () => {
+        expect.assertions(2);
         const wrapper = mount(FTable<Row>, {
             props: {
                 rows: rows.value,
@@ -330,6 +345,7 @@ describe("1.8 when table is empty", () => {
 
 describe("1.12 aria-rowcount", () => {
     it("should include body rows and header", () => {
+        expect.assertions(1);
         const rows = [{ text: "Foo" }, { text: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -349,6 +365,7 @@ describe("1.12 aria-rowcount", () => {
     });
 
     it("should include footer", () => {
+        expect.assertions(1);
         const rows = [{ text: "Foo" }, { text: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -371,6 +388,7 @@ describe("1.12 aria-rowcount", () => {
     });
 
     it("should include expandable rows", () => {
+        expect.assertions(1);
         const rows = [
             { text: "Foo", nested: [{ text: "Foo1" }, { text: "Foo2" }] },
             { text: "Bar" },
@@ -393,6 +411,7 @@ describe("1.12 aria-rowcount", () => {
     });
 
     it("should exclude header and body rows when table has no columns", () => {
+        expect.assertions(1);
         const rows = [{ text: "Foo" }, { text: "Bar" }];
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             props: {
@@ -405,6 +424,7 @@ describe("1.12 aria-rowcount", () => {
     });
 
     it("should include footer when table has no columns", () => {
+        expect.assertions(1);
         const rows = [{ text: "Foo" }, { text: "Bar" }];
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             props: {
@@ -422,6 +442,7 @@ describe("1.12 aria-rowcount", () => {
 
 describe("1.12 aria-rowindex", () => {
     it("should be correct on header row", () => {
+        expect.assertions(1);
         const rows = [{ text: "Foo" }, { text: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -441,6 +462,7 @@ describe("1.12 aria-rowindex", () => {
     });
 
     it("should be correct on body rows", () => {
+        expect.assertions(2);
         const rows = [{ text: "Foo" }, { text: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -461,6 +483,7 @@ describe("1.12 aria-rowindex", () => {
     });
 
     it("should be correct on expanded rows", async () => {
+        expect.assertions(6);
         const rows = [
             { text: "Foo", nested: [{ text: "Foo1" }, { text: "Foo2" }] },
             { text: "Bar" },
@@ -493,6 +516,7 @@ describe("1.12 aria-rowindex", () => {
     });
 
     it("should be correct on footer", () => {
+        expect.assertions(1);
         const rows = [{ text: "Foo" }, { text: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -534,6 +558,7 @@ describe("6 Expandable table", () => {
     ]);
 
     it("6.1 should expand row when clicking expand cell", async () => {
+        expect.assertions(8);
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
@@ -560,6 +585,7 @@ describe("6 Expandable table", () => {
     });
 
     it("6.3 should collapse expanded row when pressing click on expand button", async () => {
+        expect.assertions(4);
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
@@ -584,6 +610,7 @@ describe("6 Expandable table", () => {
     });
 
     it("6.4 should set correct aria-expanded on expandable rows", async () => {
+        expect.assertions(6);
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
@@ -608,6 +635,7 @@ describe("6 Expandable table", () => {
     });
 
     it("6.4 should set correct aria-level, aria-setsize, aria-posinset on rows", async () => {
+        expect.assertions(1);
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
                 rows: useDatasetRef(rows, expandableAttribute).value,
@@ -656,6 +684,7 @@ describe("6 Expandable table", () => {
     });
 
     it("6.6 should render custom expanded row with colspan spanning all columns", async () => {
+        expect.assertions(4);
         const customColumns = defineTableColumns<ExpandableRow>([
             {
                 type: "text",
@@ -698,6 +727,7 @@ describe("6 Expandable table", () => {
     });
 
     it("6.7 should include selectable column in custom expanded row colspan", async () => {
+        expect.assertions(4);
         const customColumns = defineTableColumns<ExpandableRow>([
             {
                 type: "text",
@@ -746,6 +776,7 @@ describe("1.17 footer", () => {
     const columns = defineTableColumns([]);
 
     it("should add footer slot content to table footer", () => {
+        expect.assertions(1);
         const wrapper = mount(FTable, {
             props: {
                 rows: rows.value,
@@ -760,6 +791,7 @@ describe("1.17 footer", () => {
     });
 
     it("should not render table footer if footer slot is not used", () => {
+        expect.assertions(1);
         const wrapper = mount(FTable, {
             props: {
                 rows: rows.value,
@@ -791,6 +823,7 @@ describe("1.17 footer", () => {
         ]);
 
         it("should span all columns", () => {
+            expect.assertions(1);
             const wrapper = mount(FTable<Row>, {
                 props: {
                     rows: rows.value,
@@ -805,6 +838,7 @@ describe("1.17 footer", () => {
         });
 
         it("should span all columns when selectable", () => {
+            expect.assertions(1);
             const wrapper = mount(FTable<Row>, {
                 props: {
                     rows: rows.value,
@@ -820,6 +854,7 @@ describe("1.17 footer", () => {
         });
 
         it("should span all columns when expandable", () => {
+            expect.assertions(1);
             const wrapper = mount(FTable<Row>, {
                 props: {
                     rows: expandableRows.value,
@@ -834,6 +869,7 @@ describe("1.17 footer", () => {
         });
 
         it("should span all columns when selectable and expandable", () => {
+            expect.assertions(1);
             const wrapper = mount(FTable<Row>, {
                 props: {
                     rows: expandableRows.value,
@@ -878,6 +914,7 @@ describe("1.1 caption", () => {
     const columns = defineTableColumns([]);
 
     it("should not render if missing slot 'caption'", () => {
+        expect.assertions(1);
         const wrapper = mount(FTable, {
             props: {
                 columns,
@@ -889,6 +926,7 @@ describe("1.1 caption", () => {
     });
 
     it("should not render if slot 'caption' is empty", () => {
+        expect.assertions(1);
         const wrapper = mount(FTable, {
             props: {
                 columns,
@@ -902,6 +940,7 @@ describe("1.1 caption", () => {
     });
 
     it("should render if slot 'caption' is present", () => {
+        expect.assertions(2);
         const wrapper = mount(FTable, {
             props: {
                 columns,
@@ -917,6 +956,7 @@ describe("1.1 caption", () => {
     });
 
     it("should render with class 'sr-only' if slot 'caption' with class 'sr-only' is present", () => {
+        expect.assertions(3);
         const wrapper = mount(FTable, {
             props: {
                 columns,
@@ -935,6 +975,7 @@ describe("1.1 caption", () => {
 
 describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
     it("should render bulk checkbox in first column header for regular table", () => {
+        expect.assertions(1);
         const rows = [{ text: "Foo" }, { text: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -961,6 +1002,7 @@ describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
     });
 
     it("should render bulk checkbox in second column header for expandable table", () => {
+        expect.assertions(1);
         const expandableAttribute = "children";
 
         interface ExpandableRow {
@@ -1074,6 +1116,7 @@ describe("7.4 Bulk selection in expandable", () => {
     }
 
     it("should render checkboxes only for top-level rows", async () => {
+        expect.assertions(2);
         const rows: ExpandableRow[] = [
             { text: "Foo", children: [{ text: "Bar" }] },
         ];
@@ -1104,6 +1147,7 @@ describe("7.4 Bulk selection in expandable", () => {
     });
 
     it("should place selection checkboxes in column 2 when expandable column exists", async () => {
+        expect.assertions(2);
         const rows: ExpandableRow[] = [
             { text: "Foo", children: [{ text: "Bar" }] },
         ];
@@ -1143,6 +1187,7 @@ describe("7.4 Bulk selection in expandable", () => {
 
 describe("7.6 aria-selected", () => {
     it("should set aria-selected=true when row is selected via checkbox", async () => {
+        expect.assertions(2);
         const rows = [{ text: "Foo" }, { text: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -1173,6 +1218,7 @@ describe("7.6 aria-selected", () => {
     });
 
     it("should set aria-selected=true only for top-level rows expandable table", async () => {
+        expect.assertions(1);
         const expandableAttribute = "children";
 
         interface ExpandableRow {
@@ -1223,9 +1269,11 @@ describe("7.6 aria-selected", () => {
 });
 
 describe("select cell", () => {
+    // eslint-disable-next-line vitest/prefer-spy-on -- technical debt: Vitest migration
     Element.prototype.scrollTo = vi.fn();
 
     it("should set value when selecting option with click", async () => {
+        expect.assertions(4);
         const rows = [{ option: "Foo" }, { option: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -1262,6 +1310,7 @@ describe("select cell", () => {
     });
 
     it("should call update on selecting option with click", async () => {
+        expect.assertions(1);
         const listener = vi.fn();
         const rows = [{ option: "Foo" }, { option: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
@@ -1292,6 +1341,7 @@ describe("select cell", () => {
     });
 
     it("should set correct aria-expanded", async () => {
+        expect.assertions(4);
         const rows = [{ option: "Foo" }, { option: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -1325,6 +1375,7 @@ describe("select cell", () => {
     });
 
     it("should open dropdown on space", async () => {
+        expect.assertions(1);
         const rows = [{ option: "Foo" }, { option: "Bar" }];
         const columns = defineTableColumns<(typeof rows)[number]>([
             {
@@ -1395,6 +1446,7 @@ describe("Clickable cells", () => {
     });
 
     it("Should be possible to click on cell instead of button", async () => {
+        expect.assertions(2);
         const rows = [
             { text: "text 1" },
             { text: "text 2" },
@@ -1436,6 +1488,7 @@ describe("Clickable cells", () => {
 
 describe("editable cells", () => {
     it("should keep a tabstop after value update and blur", async () => {
+        expect.assertions(5);
         const rows = [{ text: "Foo" }];
 
         const columns = defineTableColumns<(typeof rows)[number]>([

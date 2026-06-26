@@ -23,19 +23,23 @@ describe("alertScreenReader", () => {
     alertScreenReader("Screen reader text");
 
     it("should create wrapper element", () => {
+        expect.assertions(1);
         expect(getWrapper()).toBeTruthy();
     });
 
     it("should set aria-live attribute", () => {
+        expect.assertions(1);
         expect(getWrapper().getAttribute("aria-live")).toBe("polite");
     });
 
     it("should be able to change aria-live attribute", () => {
+        expect.assertions(1);
         alertScreenReader("Screen reader text", { assertive: true });
         expect(getWrapper().getAttribute("aria-live")).toBe("assertive");
     });
 
     it("should add text to wrapper", () => {
+        expect.assertions(3);
         alertScreenReader("Screen reader text");
         expect(getWrapper().textContent).toBe("");
 
@@ -47,6 +51,7 @@ describe("alertScreenReader", () => {
     });
 
     it("should remove previous text when new text is added", () => {
+        expect.assertions(2);
         alertScreenReader("Screen reader text");
         vi.advanceTimersByTime(SCREEN_READER_DELAY);
         expect(getWrapper().textContent).toBe("Screen reader text");

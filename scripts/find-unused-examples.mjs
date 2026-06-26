@@ -56,15 +56,15 @@ async function findDocsImported() {
     const found = /** @type {Set<string>} */ new Set();
     for (const filePath of filePaths) {
         const content = await fs.readFile(filePath, "utf8");
-        /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-        const matches = content.matchAll(/```import[^\n]*([^`]*)```/gm);
+        /* eslint-disable-next-line regexp/no-super-linear-backtracking -- technical debt */
+        const matches = content.matchAll(/```import[^\n]*([^`]*)```/g);
         for (const match of matches) {
             const block = match[1];
             let stripped = block;
             let previous;
             do {
                 previous = stripped;
-                stripped = stripped.replaceAll(/<!--[\S\s]*?-->/g, "");
+                stripped = stripped.replaceAll(/<!--[\s\S]*?-->/g, "");
             } while (stripped !== previous);
             const filename = stripped.trim();
             found.add(filename);
@@ -81,7 +81,7 @@ async function findSrcImported() {
     const found = /** @type {Set<string>} */ new Set();
     for (const filePath of filePaths) {
         const content = await fs.readFile(filePath, "utf8");
-        const matches = content.matchAll(/from "(\.[^"]+\.vue)"/gm);
+        const matches = content.matchAll(/from "(\.[^"]+\.vue)"/g);
         for (const match of matches) {
             const name = match[1];
             found.add(path.basename(name));

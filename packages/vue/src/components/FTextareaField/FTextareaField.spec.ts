@@ -26,12 +26,14 @@ function createWrapper({ props = {}, slots = {}, attrs = {} } = {}): VueWrapper<
 
 describe("snapshots", () => {
     it("should match snapshot with label and textarea", () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
 
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, error message and textarea", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: { "error-message": "ERRROR_MESSAGE" },
         });
@@ -40,6 +42,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with label, tooltip, description, error message and textarea", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 description: "DESCRIPTION",
@@ -52,6 +55,7 @@ describe("snapshots", () => {
     });
 
     it("should match snapshot with resize vertical", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 resizable: true,
@@ -70,6 +74,7 @@ describe("snapshots", () => {
     `(
         "should match snapshot when validityMode is $validityMode and isValid is $isValid",
         async ({ validityMode, isValid }) => {
+            expect.assertions(1);
             const wrapper = createWrapper({
                 attrs: { id: "elementId" },
             });
@@ -100,6 +105,7 @@ describe("snapshots", () => {
 
 describe("attributes", () => {
     it("should pass attributes", () => {
+        expect.assertions(4);
         const wrapper = createWrapper({
             attrs: {
                 required: true,
@@ -121,6 +127,7 @@ describe("attributes", () => {
 
 describe("autoResize", () => {
     it("should use four rows by default", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             props: {
                 autoResize: true,
@@ -136,6 +143,7 @@ describe("autoResize", () => {
     });
 
     it("should let rows override the autoResize default", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: {
                 rows: 3,
@@ -154,6 +162,7 @@ describe("autoResize", () => {
     });
 
     it("should use auto resize class when autoResize is used with resizable", () => {
+        expect.assertions(3);
         const wrapper = createWrapper({
             props: {
                 autoResize: true,
@@ -172,6 +181,7 @@ describe("autoResize", () => {
     });
 
     it("should set max rows style when maxRows is used", () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: {
                 rows: 1,
@@ -194,6 +204,7 @@ describe("autoResize", () => {
     });
 
     it("should use rows as max rows when maxRows is lower", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             attrs: {
                 rows: 6,
@@ -212,6 +223,7 @@ describe("autoResize", () => {
     });
 
     it("should use default rows as max rows when maxRows is lower than default rows and rows are missing", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             props: {
                 autoResize: true,
@@ -229,6 +241,7 @@ describe("autoResize", () => {
 
 describe("events", () => {
     it("should support v-model by emitting input event with value", () => {
+        expect.assertions(3);
         const wrapper = createWrapper({
             props: { modelValue: "Bana" },
         });
@@ -245,6 +258,7 @@ describe("events", () => {
     });
 
     it("should pass listeners", async () => {
+        expect.assertions(2);
         const focus = vi.fn();
         const blur = vi.fn();
 
@@ -263,6 +277,7 @@ describe("events", () => {
     });
 
     it('should have ValidityMode INITIAL when "pending-validity" event is triggered', async () => {
+        expect.assertions(2);
         const wrapper = createWrapper({
             attrs: { id: "elementId" },
         });
@@ -298,6 +313,7 @@ describe("events", () => {
 });
 
 it("should warn the user that the maximum string length limit is near", async () => {
+    expect.assertions(1);
     const wrapper = createWrapper({
         props: {
             maxlength: 10,
@@ -317,6 +333,7 @@ it("should warn the user that the maximum string length limit is near", async ()
 
 describe("element should be possible to disable with prop disabled", () => {
     it("element should be disabled with prop", async () => {
+        expect.assertions(1);
         const wrapper = mount(FTextareaField, {
             propsData: { disabled: true },
         });
@@ -325,6 +342,7 @@ describe("element should be possible to disable with prop disabled", () => {
     });
 
     it("element should be enabled without prop", async () => {
+        expect.assertions(1);
         const wrapper = mount(FTextareaField, {
             propsData: { disabled: false },
         });

@@ -18,18 +18,19 @@ export class FBadgePageObject implements BasePageObject {
     }
 
     public status(): Cypress.Chainable<string> {
-        return this.el().then((el) =>
-            /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-            el[0].className.replace(/.*badge--(\w+).*/, "$1"),
-        );
+        return this.el().then((el) => {
+            /* eslint-disable-next-line regexp/optimal-quantifier-concatenation -- technical debt */
+            return el[0].className.replace(/.*badge--(\w+).*/, "$1");
+        });
     }
 
     public isInverted(): Cypress.Chainable<boolean> {
-        return this.el().then(
-            (el) =>
-                /* eslint-disable-next-line sonarjs/slow-regex -- technical debt */
-                el[0].className.replace(/.*badge--(\w+)-(\w+).*/, "$2") ===
-                "inverted",
-        );
+        return this.el().then((el) => {
+            return (
+                /* eslint-disable-next-line regexp/optimal-quantifier-concatenation -- technical debt */
+                el[0].className.replace(/.*badge--\w+-(\w+).*/, "$1") ===
+                "inverted"
+            );
+        });
     }
 }

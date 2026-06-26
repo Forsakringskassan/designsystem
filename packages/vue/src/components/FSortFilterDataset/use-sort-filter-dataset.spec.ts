@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import { useSortFilterDataset } from "./use-sort-filter-dataset";
 
 it("should output filtered rows directly", async () => {
+    expect.assertions(1);
     const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
 
     const { sortFilterResult } = useSortFilterDataset(
@@ -28,6 +29,7 @@ it("should output filtered rows directly", async () => {
 
 describe("filtered data after editing of input data", () => {
     it("should have new rows at the end of array", async () => {
+        expect.assertions(2);
         const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
 
         const { sortFilterResult } = useSortFilterDataset(
@@ -79,6 +81,7 @@ describe("filtered data after editing of input data", () => {
     });
 
     it("should not contain removed rows", async () => {
+        expect.assertions(2);
         const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
 
         const { sortFilterResult } = useSortFilterDataset(
@@ -112,6 +115,7 @@ describe("filtered data after editing of input data", () => {
     });
 
     it("should contain edit updates", async () => {
+        expect.assertions(1);
         const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
 
         const { sortFilterResult } = useSortFilterDataset(
@@ -139,6 +143,7 @@ describe("filtered data after editing of input data", () => {
     });
 
     it("should not be resorted", async () => {
+        expect.assertions(1);
         const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
 
         const { sortFilterResult } = useSortFilterDataset(
@@ -166,6 +171,7 @@ describe("filtered data after editing of input data", () => {
     });
 
     it("should not be refiltered", async () => {
+        expect.assertions(2);
         const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
 
         const { sortFilterResult, searchString } = useSortFilterDataset(
@@ -203,6 +209,7 @@ describe("filtered data after editing of input data", () => {
     });
 
     it("should be resorted when data is replaced", async () => {
+        expect.assertions(1);
         const data = ref([
             { value: "foo" },
             { value: "bar" },
@@ -236,6 +243,7 @@ describe("filtered data after editing of input data", () => {
 
 describe("lazy callbacks", () => {
     it("should call onLazyRowsAdded when new rows are appended", async () => {
+        expect.assertions(1);
         const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
         const onLazyRowsAdded = vi.fn();
 
@@ -250,6 +258,7 @@ describe("lazy callbacks", () => {
     });
 
     it("should call onFilter and rerun full sort when refresh is called", async () => {
+        expect.assertions(3);
         const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
         const onFilter = vi.fn();
 
@@ -296,6 +305,7 @@ describe("lazy callbacks", () => {
 
 describe("filtered data after replacement of input data", () => {
     it("should update filtered rows when data is replaced", async () => {
+        expect.assertions(1);
         const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
 
         const { sortFilterResult } = useSortFilterDataset(

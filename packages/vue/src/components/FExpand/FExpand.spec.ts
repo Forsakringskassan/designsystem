@@ -16,6 +16,7 @@ function createWrapper({
 
 describe("snapshots", () => {
     it("should match snapshot with default slot content", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 default: /* HTML */ ` <p>Content</p> `,

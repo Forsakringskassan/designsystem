@@ -15,6 +15,7 @@ it.each`
 `(
     'should return $expected with value "$value" , because of $description',
     ({ value, expected }) => {
+        expect.assertions(1);
         expect(isString(value)).toBe(expected);
     },
 );

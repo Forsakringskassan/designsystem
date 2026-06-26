@@ -15,6 +15,7 @@ function createItems(count: number): Array<{ id: string }> {
 
 describe("FPaginateDataset", () => {
     it("should keep numberOfPages at 1 when the dataset is empty", async () => {
+        expect.assertions(1);
         const wrapper = mount(FPaginateDataset, {
             props: {
                 items: [],
@@ -31,6 +32,7 @@ describe("FPaginateDataset", () => {
     });
 
     it("should clamp currentPage to the last valid page when numberOfPages decreases", async () => {
+        expect.assertions(1);
         const wrapper = mount(FPaginateDataset, {
             props: {
                 items: createItems(10),
@@ -63,6 +65,7 @@ describe("FPaginateDataset", () => {
 
         await nextTick();
 
+        expect.assertions(2);
         expect(wrapper.text()).toBe("2-2");
     });
 });
@@ -125,6 +128,7 @@ function setPage(
 
 describe("integration with sortFilterDatasetEvents", () => {
     it("should jump to last page on lazy rows added", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper();
         await nextTick();
 
@@ -139,6 +143,7 @@ describe("integration with sortFilterDatasetEvents", () => {
     });
 
     it("should jump to first page on filter", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper();
         await nextTick();
 
@@ -153,6 +158,7 @@ describe("integration with sortFilterDatasetEvents", () => {
     });
 
     it("should jump to first page on sort", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper();
         await nextTick();
 

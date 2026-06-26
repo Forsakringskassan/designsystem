@@ -13,6 +13,7 @@ describe("parseBankAccountNumber", () => {
     `(
         'should return "$expected" from "$value" because "$description"',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(parseBankAccountNumber(value)).toEqual(expected);
         },
     );

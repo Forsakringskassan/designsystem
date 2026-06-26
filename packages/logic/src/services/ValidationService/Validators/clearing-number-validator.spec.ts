@@ -2,6 +2,7 @@ import { expect, it } from "vitest";
 import { clearingNumberValidator } from "./clearing-number-validator";
 
 const element = document.createElement("input");
+
 //The clearingnumbers we use is for testpurpose only.
 it.each`
     value        | expected | description
@@ -24,6 +25,7 @@ it.each`
 `(
     'should return $expected with value "$value" because of $description',
     ({ value, expected }) => {
+        expect.assertions(1);
         const result = clearingNumberValidator.validation(value, element, {});
         expect(result).toEqual(expected);
     },

@@ -224,6 +224,7 @@ describe("keyboard navigation", () => {
 });
 
 it("selectableYears should contain all years between min/max (inclusive)", () => {
+    expect.assertions(1);
     const modelValue = FDate.fromIso("2001-06-01");
     const minDate = FDate.fromIso("1999-12-31");
     const maxDate = FDate.fromIso("2004-01-01");

@@ -4,6 +4,7 @@ import { focusElement } from "./focus-element";
 
 describe("focusElement", () => {
     it("should focus text field", () => {
+        expect.assertions(1);
         document.body.innerHTML = /* HTML */ ` <input type="text" /> `;
         const textField = document.querySelectorAll("input")[0];
         focusElement(textField, document.body);
@@ -11,6 +12,7 @@ describe("focusElement", () => {
     });
 
     it("should focus first radio button when none is checked", () => {
+        expect.assertions(1);
         document.body.innerHTML = /* HTML */ `
             <div>
                 <input type="radio" value="true" name="radio-group" />
@@ -25,6 +27,7 @@ describe("focusElement", () => {
     });
 
     it("should focus second radio button when it is checked", () => {
+        expect.assertions(1);
         document.body.innerHTML = /* HTML */ `
             <div>
                 <input type="radio" value="true" name="radio-group" />
@@ -40,6 +43,7 @@ describe("focusElement", () => {
     });
 
     it("should focus div with tabindex='0'", () => {
+        expect.assertions(1);
         document.body.innerHTML = /* HTML */ ` <div tabindex="0"></div> `;
         const div = document.querySelectorAll("div")[0];
         focusElement(div, document.body);

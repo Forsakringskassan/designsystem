@@ -18,6 +18,7 @@ beforeEach(() => {
 
 describe("transparency", () => {
     it("should pass attributes to textfield", () => {
+        expect.assertions(1);
         const wrapper = mount(FDatepickerField, {
             attrs: {
                 title: "foo",
@@ -44,6 +45,7 @@ describe("transparency", () => {
 
 describe("textfield", () => {
     it("should be assigned id when specified", () => {
+        expect.assertions(1);
         const wrapper = mount(FDatepickerField, {
             attrs: {
                 id: "foo",
@@ -57,6 +59,7 @@ describe("textfield", () => {
     });
 
     it("should be assigned a generated id when unspecified", () => {
+        expect.assertions(1);
         const wrapper = mount(FDatepickerField);
 
         expect(wrapper.get("input").attributes("id")).toContain(

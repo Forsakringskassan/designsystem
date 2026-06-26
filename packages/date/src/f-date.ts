@@ -69,9 +69,9 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
      * @public
      */
     public static fromIso(value: string): FDate {
-        /* eslint-disable-next-line @typescript-eslint/prefer-regexp-exec -- technical debt */
-        const match = value.match(
-            /^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})$/,
+        /* eslint-disable-next-line regexp/no-unused-capturing-group -- for consistency with `(?<month>)` */
+        const match = /^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})$/.exec(
+            value,
         );
         if (match?.groups) {
             const date = new FDate(value);
@@ -397,9 +397,9 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
      * Compares two {@link FDate} objects. Returns and integer indicating whenever
      * `a` comes before or after or is equal to `b`.
      *
-     * - `-1` if `a` beomes before `b`.
+     * - `-1` if `a` comes before `b`.
      * - `0` if `a` and `b` are the same date.
-     * - `1` if `a` beomes after `b`.
+     * - `1` if `a` comes after `b`.
      *
      * If either or both date is invalid the result is undefined behaviour and
      * should not be relied on. Use {@link FDate.isValid} to ensure validity

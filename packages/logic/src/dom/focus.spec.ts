@@ -16,13 +16,14 @@ import {
 } from "./focus";
 import { scrollTo } from "./scroll-to";
 
-vi.mock("./scroll-to", () => ({
+vi.mock(import("./scroll-to"), () => ({
     scrollTo: vi.fn(),
 }));
 
 describe("focus", () => {
     describe("with force option", () => {
         it('should add tabindex="-1" and focus if no tabindex exists', () => {
+            expect.assertions(2);
             document.body.innerHTML = /* HTML */ `
                 <div class="test-visible"></div>
             `;
@@ -33,6 +34,7 @@ describe("focus", () => {
         });
 
         it('should NOT add tabindex="-1" if it already exists but still focus element', () => {
+            expect.assertions(2);
             document.body.innerHTML = /* HTML */ `
                 <div tabindex="0" class="test-visible"></div>
             `;
@@ -43,6 +45,7 @@ describe("focus", () => {
         });
 
         it('should NOT add tabindex="-1" if it already is focusable', () => {
+            expect.assertions(2);
             document.body.innerHTML = /* HTML */ `
                 <input type="text" class="test-visible" />
             `;
@@ -53,6 +56,7 @@ describe("focus", () => {
         });
 
         it("should handle literal true", () => {
+            expect.assertions(2);
             document.body.innerHTML = /* HTML */ `
                 <div class="test-visible"></div>
             `;
@@ -63,6 +67,7 @@ describe("focus", () => {
         });
 
         it("should handle literal false", () => {
+            expect.assertions(2);
             document.body.innerHTML = /* HTML */ `
                 <div class="test-visible"></div>
             `;
@@ -134,6 +139,7 @@ describe("focus", () => {
     });
 
     it('should NOT add tabindex="-1" or focus if not visible', () => {
+        expect.assertions(2);
         document.body.innerHTML = "<div></div>";
         const div = document.querySelector("div");
         focus(div);
@@ -142,16 +148,19 @@ describe("focus", () => {
     });
 
     it("should ignore element parameter that is undefined", () => {
+        expect.assertions(2);
         expect(() => focus(undefined, true)).not.toThrow();
         expect(document.body).toHaveFocus();
     });
 
     it("should ignore element parameter that is null", () => {
+        expect.assertions(2);
         expect(() => focus(null, true)).not.toThrow();
         expect(document.body).toHaveFocus();
     });
 
     it("should ignore element parameter that is not HTMLElement", () => {
+        expect.assertions(3);
         const svg = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "svg",
@@ -179,8 +188,10 @@ describe("isFocusable", () => {
     `(
         'should return $focusable if markup is "$markup" because $description',
         ({ markup, visible, focusable }) => {
+            expect.assertions(1);
             document.body.innerHTML = markup;
             const element = document.body.firstElementChild!;
+            // eslint-disable-next-line vitest/no-conditional-in-test -- technical debt, Vitest migration
             if (visible) {
                 element.classList.add("test-visible");
             }
@@ -205,8 +216,10 @@ describe("isTabbable", () => {
     `(
         'should return $tabbable if markup "$markup" because $description',
         ({ markup, visible, tabbable }) => {
+            expect.assertions(1);
             document.body.innerHTML = markup;
             const element = document.body.firstElementChild!;
+            // eslint-disable-next-line vitest/no-conditional-in-test -- technical debt, Vitest migration
             if (visible) {
                 element.classList.add("test-visible");
             }
@@ -223,6 +236,7 @@ describe("isDisabled", () => {
     `(
         'should return $disabled if markup is "$markup" because $description',
         ({ markup, disabled }) => {
+            expect.assertions(1);
             document.body.innerHTML = markup;
             const element = document.body.firstElementChild!;
             expect(isDisabled(element)).toBe(disabled);
@@ -232,6 +246,7 @@ describe("isDisabled", () => {
 
 describe("findTabbableElements()", () => {
     it("should return visible elements", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <input class="test-visible" />
             <textarea></textarea>
@@ -283,6 +298,7 @@ describe("findTabbableElements()", () => {
 
 describe("focusFirst", () => {
     it("should focus first visible focusable element", () => {
+        expect.assertions(1);
         document.body.innerHTML = /* HTML */ `
             <div id="outerdiv">
                 <input class="test-visible" />
@@ -300,6 +316,7 @@ describe("focusFirst", () => {
     });
 
     it("should not focus any element if no focusable children", () => {
+        expect.assertions(1);
         document.body.innerHTML = /* HTML */ ` <div>Nothing to focus</div> `;
         focusFirst(document.body);
         expect(document.body).toHaveFocus();
@@ -308,6 +325,7 @@ describe("focusFirst", () => {
 
 describe("focusLast", () => {
     it("should focus last visible focusable element", () => {
+        expect.assertions(1);
         document.body.innerHTML = /* HTML */ `
             <div id="outerdiv">
                 <input class="test-visible" />
@@ -325,6 +343,7 @@ describe("focusLast", () => {
     });
 
     it("should not focus any element if no focusable children", () => {
+        expect.assertions(1);
         document.body.innerHTML = /* HTML */ ` <div>Nothing to focus</div> `;
         focusLast(document.body);
         expect(document.body).toHaveFocus();
@@ -369,7 +388,6 @@ describe("focus stack", () => {
 
         it("should restore focus to element before pushFocus()", () => {
             expect.assertions(2);
-
             document.body.innerHTML = /* HTML */ `
                 <button id="b1"></button>
                 <input id="i1" />
@@ -387,7 +405,6 @@ describe("focus stack", () => {
 
         it("should restore focus to element when popFocus() focus option is true", () => {
             expect.assertions(2);
-
             document.body.innerHTML = /* HTML */ `
                 <button id="b1"></button>
                 <button id="b2"></button>
@@ -406,7 +423,6 @@ describe("focus stack", () => {
 
         it("should retain focus on element when popFocus() focus option is false", () => {
             expect.assertions(2);
-
             document.body.innerHTML = /* HTML */ `
                 <button id="b1"></button>
                 <button id="b2"></button>
@@ -449,7 +465,6 @@ describe("focus stack", () => {
         it("should write an error to the console when focus stack is empty in prod", () => {
             expect.assertions(2);
             vi.spyOn(console, "error").mockReturnValue(undefined);
-
             // Given
             configLogic.production = true;
             const handle1 = pushFocus();
@@ -467,7 +482,6 @@ describe("focus stack", () => {
 
         it("should raise an exception when focus stack is empty in dev mode only", () => {
             expect.assertions(1);
-
             // Given
             configLogic.production = false;
             const handle1 = pushFocus();
@@ -482,7 +496,6 @@ describe("focus stack", () => {
         it("should write an error to the console when popFocus called without valid StackHandle in prod", () => {
             expect.assertions(2);
             vi.spyOn(console, "error").mockReturnValue(undefined);
-
             // Given
             configLogic.production = true;
             const handle1 = pushFocus();
@@ -500,7 +513,6 @@ describe("focus stack", () => {
 
         it("should raise an exception when popFocus called without valid StackHandle in dev mode only", () => {
             expect.assertions(1);
-
             // Given
             configLogic.production = false;
             const handle1 = pushFocus();

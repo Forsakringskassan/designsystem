@@ -3,7 +3,7 @@ import { beforeAll, expect, it, vi } from "vitest";
 import { ErrorItem } from "../../types";
 import { focusError } from "./focus-error";
 
-vi.mock("@fkui/logic");
+vi.mock(import("@fkui/logic"));
 
 const mockElement = document.createElement("a");
 const mockInput = document.createElement("input");
@@ -43,6 +43,7 @@ it("should prefer to focus on focusElementId if given", () => {
 });
 
 it("should throw error when id element is missing", () => {
+    expect.assertions(1);
     const error: ErrorItem = {
         title: "Mock error",
         id: "missing",

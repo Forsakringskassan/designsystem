@@ -25,12 +25,14 @@ describe("page counter", () => {
             const selector = paginator.pageCounter();
 
             it(`should display "${expectedText}" when "aria-hidden"`, () => {
+                expect.assertions(1);
                 expect(wrapper.get(`${selector} [aria-hidden]`).text()).toEqual(
                     expectedText,
                 );
             });
 
             it(`should display "${expectedAriaText}" for screen readers`, () => {
+                expect.assertions(1);
                 expect(wrapper.get(`${selector} .sr-only`).text()).toEqual(
                     expectedAriaText,
                 );
@@ -48,6 +50,7 @@ describe("aria-current", () => {
     `(
         'should have value "$expectedValue" for page button $page when current page is page $currentPage',
         ({ page, currentPage, expectedValue }) => {
+            expect.assertions(1);
             const wrapper = mount(FPaginator, {
                 props: {
                     currentPage,
@@ -76,10 +79,12 @@ describe("previous button", () => {
     });
 
     it("should have the correct label", () => {
+        expect.assertions(1);
         expect(previousButton.text()).toBe("Föregående");
     });
 
     it("should have the correct value for 'aria-label'", () => {
+        expect.assertions(1);
         expect(previousButton.attributes("aria-label")).toBe("Föregående");
     });
 });
@@ -98,10 +103,12 @@ describe("next button", () => {
     });
 
     it("should have the correct label", () => {
+        expect.assertions(1);
         expect(nextButton.text()).toBe("Nästa");
     });
 
     it("should have the correct value for 'aria-label'", () => {
+        expect.assertions(1);
         expect(nextButton.attributes("aria-label")).toBe("Nästa");
     });
 });
@@ -120,6 +127,7 @@ describe("page buttons", () => {
     });
 
     it("should have the correct label", () => {
+        expect.assertions(5);
         for (let page = 1; page <= numberOfPages; page++) {
             const selector = paginator.pageButtonByText(page);
             const button = wrapper.get(selector);
@@ -128,6 +136,7 @@ describe("page buttons", () => {
     });
 
     it("should have the correct value for 'aria-label'", () => {
+        expect.assertions(5);
         for (let page = 1; page <= numberOfPages; page++) {
             const selector = paginator.pageButtonByText(page);
             const button = wrapper.get(selector);
@@ -138,6 +147,7 @@ describe("page buttons", () => {
 
 describe("number of pages to show", () => {
     it("should show 9 pages as default", () => {
+        expect.assertions(1);
         const wrapper = mount(FPaginator, {
             props: {
                 currentPage: 10,
@@ -151,6 +161,7 @@ describe("number of pages to show", () => {
 
 describe("pages and gaps", () => {
     it("should show the correct pages and gaps", () => {
+        expect.assertions(9);
         const wrapper = mount(FPaginator, {
             props: {
                 currentPage: 10,
@@ -181,6 +192,7 @@ describe("pages and gaps", () => {
 
 describe("events", () => {
     it("should emit event 'paginateDataset:previous' when clicking on 'Previous' button", async () => {
+        expect.assertions(1);
         const listener = vi.fn();
         const wrapper = mount(FPaginator, {
             props: {
@@ -196,6 +208,7 @@ describe("events", () => {
     });
 
     it("should emit event 'paginateDataset:next' when clicking on 'Next' button", async () => {
+        expect.assertions(1);
         const listener = vi.fn();
         const wrapper = mount(FPaginator, {
             props: {
@@ -211,6 +224,7 @@ describe("events", () => {
     });
 
     it("should emit event 'paginateDataset:page' when clicking on a page button", async () => {
+        expect.assertions(2);
         const listener = vi.fn();
         const wrapper = mount(FPaginator, {
             props: {
@@ -234,6 +248,7 @@ describe("v-model", () => {
     const items = Array.from({ length: 30 }, (_, index) => ({ index }));
 
     it("should handle initial value", async () => {
+        expect.assertions(1);
         const wrapper = mount(FPaginateDataset, {
             props: {
                 modelValue: 2,
@@ -248,6 +263,7 @@ describe("v-model", () => {
     });
 
     it("should handle setting value programmatically", async () => {
+        expect.assertions(2);
         const wrapper = mount(FPaginateDataset, {
             props: {
                 modelValue: 2,
@@ -264,6 +280,7 @@ describe("v-model", () => {
     });
 
     it("should be updated when model is changed internally", async () => {
+        expect.assertions(3);
         const wrapper = mount(FPaginateDataset, {
             props: {
                 modelValue: 2,

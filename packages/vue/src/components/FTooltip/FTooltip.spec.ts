@@ -54,6 +54,7 @@ it("should set expanded class on tooltip container", () => {
 
 describe("slots", () => {
     it("should render header if header slot is used", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             slots: {
                 header: `Tooltip`,
@@ -81,6 +82,7 @@ describe("slots", () => {
     });
 
     it("should not render header if header slot isn't used", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper();
 
         await wrapper.get(tooltipButtonClass).trigger("click");

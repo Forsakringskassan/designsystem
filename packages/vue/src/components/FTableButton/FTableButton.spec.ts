@@ -65,6 +65,7 @@ it("icon library should be set when iconLibrary prop is used", () => {
 
 describe("html-validate", async () => {
     it("should require text content", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-table-column title="column title">
                 <!-- valid -->
@@ -101,6 +102,7 @@ describe("html-validate", async () => {
     });
 
     it("should not allow interactive descendants", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-table-column title="column title">
                 <f-table-button>
@@ -132,6 +134,7 @@ describe("html-validate", async () => {
     });
 
     it("should be allowed as content under FTableColumn", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-table-column title="column title">
                 <f-table-button>lorem ipsum</f-table-button>
@@ -141,6 +144,7 @@ describe("html-validate", async () => {
     });
 
     it("should require FTableColumn ancestor", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-table-button>lorem ipsum</f-table-button>
         `;
@@ -155,6 +159,7 @@ describe("html-validate", async () => {
     });
 
     it("should not require icon or label prop", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-table-column title="column title">
                 <f-table-button>lorem ipsum</f-table-button>
@@ -164,6 +169,7 @@ describe("html-validate", async () => {
     });
 
     it("should not allow empty icon prop", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-table-column title="column title">
                 <!-- valid -->
@@ -197,6 +203,7 @@ describe("html-validate", async () => {
     });
 
     it("should not allow non-boolean label prop", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-table-column title="column title">
                 <!-- valid -->

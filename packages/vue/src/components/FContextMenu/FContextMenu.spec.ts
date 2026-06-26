@@ -81,12 +81,14 @@ afterEach(() => {
 
 describe("props", () => {
     it("should not be visible when isOpen is false", async () => {
+        expect.assertions(1);
         await mountPopup(testItems1);
 
         expect(wrapper).not.toContain(".contextmenu__list");
     });
 
     it("should have same number of items that are passed in with props", async () => {
+        expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         await mountPopup(testItems1);
@@ -98,6 +100,7 @@ describe("props", () => {
     });
 
     it("should contain 2 separators at correct positions", async () => {
+        expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         /**
@@ -125,6 +128,7 @@ describe("props", () => {
 
 describe("events", () => {
     it("should emit close after select on item click", async () => {
+        expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         await mountPopup(testItems1);
@@ -143,6 +147,7 @@ describe("events", () => {
     });
 
     it("should emit select for given item on item click", async () => {
+        expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         await mountPopup(testItems1);
@@ -163,6 +168,7 @@ describe("events", () => {
     });
 
     it("should test that focus is not set on any item after being mounted", async () => {
+        expect.assertions(2);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         await mountPopup(testItems1);
@@ -189,6 +195,7 @@ describe("events", () => {
 
 describe("keyboard navigation", () => {
     it("should close popup after tab is pressed when popup is open", async () => {
+        expect.assertions(2);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         // Given
@@ -209,6 +216,7 @@ describe("keyboard navigation", () => {
     });
 
     it("should close popup after escape is pressed when popup is open", async () => {
+        expect.assertions(2);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         // Given
@@ -229,6 +237,7 @@ describe("keyboard navigation", () => {
     });
 
     it("should wrap focus on arrow up when on first element", async () => {
+        expect.assertions(2);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
         // Given
@@ -252,6 +261,7 @@ describe("keyboard navigation", () => {
 
 describe("html-validate", () => {
     it("should require is-open and items attributes", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ ` <f-context-menu></f-context-menu> `;
         await expect(markup).toMatchInlineCodeframe(`
             "error: <f-context-menu> is missing required "is-open" attribute (element-required-attributes)
@@ -266,6 +276,7 @@ describe("html-validate", () => {
     });
 
     it("should not be allowed in interactive components", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <button type="button">
                 <f-context-menu anchor="" is-open items=""></f-context-menu>
@@ -279,6 +290,7 @@ describe("html-validate", () => {
     });
 
     it("should not allow interactive children", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-context-menu anchor="" is-open items="">
                 <button type="button"></button>
@@ -292,6 +304,7 @@ describe("html-validate", () => {
     });
 
     it("should not allow child elements", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-context-menu anchor="" is-open items="">
                 <em></em>
@@ -305,6 +318,7 @@ describe("html-validate", () => {
     });
 
     it("should not allow text", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-context-menu anchor="" is-open items="">
                 mjukglass

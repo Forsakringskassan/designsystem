@@ -21,6 +21,7 @@ describe("validation", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected, config }) => {
+            expect.assertions(1);
             const result = invalidWeekdaysValidator.validation(
                 value,
                 element,
@@ -31,6 +32,7 @@ describe("validation", () => {
     );
 
     it("should throw error when invalid config", () => {
+        expect.assertions(1);
         const config = {
             foo: "bar",
         } as unknown as InvalidWeekdaysValidatorConfig;

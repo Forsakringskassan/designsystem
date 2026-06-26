@@ -24,6 +24,7 @@ describe("show page number as gap", () => {
                 const expectedGap = expectedPageNumbers[id] === "...";
 
                 it(`should show page ${page} as "${expectedPageNumbers[id]}"`, () => {
+                    expect.assertions(1);
                     expect(gap).toEqual(expectedGap);
                 });
             });

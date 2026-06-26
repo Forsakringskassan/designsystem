@@ -13,11 +13,13 @@ it.each`
     ${"Alt"}   | ${false}
     ${"Enter"} | ${false}
 `('should return $expected for key "$key"', ({ key, expected }) => {
+    expect.assertions(1);
     const e: KeyboardEvent = new KeyboardEvent("keydown", { key });
     expect(isAlphanumeric(e)).toBe(expected);
 });
 
 it("should return false when shift is pressed", () => {
+    expect.assertions(1);
     const e: KeyboardEvent = new KeyboardEvent("keydown", {
         key: "a",
         ctrlKey: true,
@@ -26,6 +28,7 @@ it("should return false when shift is pressed", () => {
 });
 
 it("should return false when metakey is pressed", () => {
+    expect.assertions(1);
     const e: KeyboardEvent = new KeyboardEvent("keydown", {
         key: "a",
         metaKey: true,

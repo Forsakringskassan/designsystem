@@ -4,6 +4,7 @@ import { computeArrowOffset } from "./compute-arrow-offset";
 
 describe("computeArrowOffset", () => {
     it("should handle Position.A", () => {
+        expect.assertions(1);
         /**
          *     +-----------+
          *     |     (icon)|
@@ -36,6 +37,7 @@ describe("computeArrowOffset", () => {
     });
 
     it("should handle Position.B", () => {
+        expect.assertions(1);
         /**
          *             +-----------+
          *             |     (icon)|
@@ -68,6 +70,7 @@ describe("computeArrowOffset", () => {
     });
 
     it("should handle Position.C", () => {
+        expect.assertions(1);
         /**
          *     +-------------------+
          *     | Errormessage      |
@@ -100,6 +103,7 @@ describe("computeArrowOffset", () => {
     });
 
     it("should handle Position.D", () => {
+        expect.assertions(1);
         /**
          *     +-------------------+
          *     | Errormessage      |
@@ -132,6 +136,7 @@ describe("computeArrowOffset", () => {
     });
 
     it("should handle Position.E", () => {
+        expect.assertions(1);
         /**
          *     +-----------+ +--------------+
          *     |     (icon)| ← Errormessage |
@@ -161,6 +166,7 @@ describe("computeArrowOffset", () => {
     });
 
     it("should handle Position.F", () => {
+        expect.assertions(1);
         /**
          *     +--------------+ +----------+
          *     | Errormessage → |    (icon)|

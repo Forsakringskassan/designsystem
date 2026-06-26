@@ -24,11 +24,13 @@ it.each`
     ${"a 20"}        | ${"aAc 2020, aba 2021, Aab 2022"}           | ${"should match items containing both search terms"}
     ${"bB 20"}       | ${"bbb 2023"}                               | ${"should match item containing both search terms"}
 `("should $description", ({ searchString, expected }) => {
+    expect.assertions(1);
     const result = filter(data, ["text", "year"], searchString);
     expect(toString(result)).toEqual(expected);
 });
 
 it("should ignore object values when filtering", () => {
+    expect.assertions(1);
     const nestedData = [
         {
             text: "Äpple",

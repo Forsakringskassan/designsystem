@@ -54,6 +54,7 @@ describe("should match snapshot", () => {
     });
 
     it("should match snapshot with no items in rows and default text", async () => {
+        expect.assertions(1);
         const wrapper = mount({
             components: { FDataTable, FTableColumn },
             template: TestComponent.template,
@@ -68,6 +69,7 @@ describe("should match snapshot", () => {
     });
 
     it("should match snapshot with no rows in table and custom text", async () => {
+        expect.assertions(1);
         const wrapper = mount({
             components: { FDataTable, FTableColumn },
             template: /* HTML */ `
@@ -358,6 +360,7 @@ it("should handle nested row objects no rows are present", async () => {
 });
 
 it("should call provided sort method when clicking columnheader that is registrated as sortable", async () => {
+    expect.assertions(2);
     const mockedProvedSort = vi.fn();
     let registerSortableColumnsCallback: FSortFilterDatasetMountCallback;
     const TestComponent = {

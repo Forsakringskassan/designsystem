@@ -27,6 +27,7 @@ function createWrapper(
 
 describe("Number", () => {
     it("should format number from string", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:number="'1234567890.1234'"></span>`,
         );
@@ -36,6 +37,7 @@ describe("Number", () => {
     });
 
     it("should format number from number", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:number="1234567890.1234"></span>`,
         );
@@ -45,6 +47,7 @@ describe("Number", () => {
     });
 
     it("should format number from NumberFormat", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:number="{number: 123456.7890123, decimals: 2}"></span>`,
         );
@@ -54,6 +57,7 @@ describe("Number", () => {
     });
 
     it("should format number as string from NumberFormat", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:number="{number: '123456.7890123', decimals: 2}"></span>`,
         );
@@ -63,6 +67,7 @@ describe("Number", () => {
     });
 
     it("should render empty element for invalid data", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:number="'ABC'"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--number"></span>"`,
@@ -70,6 +75,7 @@ describe("Number", () => {
     });
 
     it("should render empty element for undefined", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:number="undefined"></span>`,
         );
@@ -79,6 +85,7 @@ describe("Number", () => {
     });
 
     it("should render empty element for null", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:number="null"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--number"></span>"`,
@@ -86,6 +93,7 @@ describe("Number", () => {
     });
 
     it("should be reactive", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(
             `
                 <span v-format:number="value"></span>
@@ -111,6 +119,7 @@ describe("Number", () => {
 
 describe("Bankgiro", () => {
     it("should format from string", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:bankgiro="'1234566'"></span>`,
         );
@@ -120,6 +129,7 @@ describe("Bankgiro", () => {
     });
 
     it("should render empty element from number", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:bankgiro="1234566"></span>`,
         );
@@ -129,6 +139,7 @@ describe("Bankgiro", () => {
     });
 
     it("should render empty element for invalid data", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:bankgiro="'ABC'"></span>`,
         );
@@ -138,6 +149,7 @@ describe("Bankgiro", () => {
     });
 
     it("should render empty element for undefined", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:bankgiro="undefined"></span>`,
         );
@@ -147,6 +159,7 @@ describe("Bankgiro", () => {
     });
 
     it("should render empty element for null", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:bankgiro="null"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--bankgiro"></span>"`,
@@ -154,6 +167,7 @@ describe("Bankgiro", () => {
     });
 
     it("should be reactive", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(
             `
                 <span v-format:bankgiro="value"></span>
@@ -179,6 +193,7 @@ describe("Bankgiro", () => {
 
 describe("Date", () => {
     it("should format from string", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date="'20250403'"></span>`,
         );
@@ -188,6 +203,7 @@ describe("Date", () => {
     });
 
     it("should format from FDate", () => {
+        expect.assertions(1);
         const date = FDate.fromIso("2025-04-15");
         const wrapper = createWrapper(
             `<span v-format:date="value"></span>`,
@@ -199,6 +215,7 @@ describe("Date", () => {
     });
 
     it("should render empty element for invalid date", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date="'20251333'"></span>`,
         );
@@ -208,6 +225,7 @@ describe("Date", () => {
     });
 
     it("should render empty element for invalid data", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:date="'ABC'"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--date"></span>"`,
@@ -215,6 +233,7 @@ describe("Date", () => {
     });
 
     it("should render empty element for undefined", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date="undefined"></span>`,
         );
@@ -224,6 +243,7 @@ describe("Date", () => {
     });
 
     it("should render empty element for null", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:date="null"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--date"></span>"`,
@@ -231,6 +251,7 @@ describe("Date", () => {
     });
 
     it("should be reactive", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(
             `
                 <span v-format:date="value"></span>
@@ -256,6 +277,7 @@ describe("Date", () => {
 
 describe("Date long", () => {
     it("should format from string", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-long="'20250403'"></span>`,
         );
@@ -265,6 +287,7 @@ describe("Date long", () => {
     });
 
     it("should format from FDate", () => {
+        expect.assertions(1);
         const date = FDate.fromIso("2025-04-15");
         const wrapper = createWrapper(
             `<span v-format:date-long="value"></span>`,
@@ -276,6 +299,7 @@ describe("Date long", () => {
     });
 
     it("should render empty element for invalid date", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-long="'20251333'"></span>`,
         );
@@ -285,6 +309,7 @@ describe("Date long", () => {
     });
 
     it("should render empty element for invalid data", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-long="'ABC'"></span>`,
         );
@@ -294,6 +319,7 @@ describe("Date long", () => {
     });
 
     it("should render empty element for undefined", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-long="undefined"></span>`,
         );
@@ -303,6 +329,7 @@ describe("Date long", () => {
     });
 
     it("should render empty element for null", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-long="null"></span>`,
         );
@@ -312,6 +339,7 @@ describe("Date long", () => {
     });
 
     it("should be reactive", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(
             `
                 <span v-format:date-long="value"></span>
@@ -337,6 +365,7 @@ describe("Date long", () => {
 
 describe("Date full", () => {
     it("should format from string", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-full="'20250403'"></span>`,
         );
@@ -346,6 +375,7 @@ describe("Date full", () => {
     });
 
     it("should format from FDate", () => {
+        expect.assertions(1);
         const date = FDate.fromIso("2025-04-15");
         const wrapper = createWrapper(
             `<span v-format:date-full="value"></span>`,
@@ -357,6 +387,7 @@ describe("Date full", () => {
     });
 
     it("should render empty element for invalid date", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-full="'20251333'"></span>`,
         );
@@ -366,6 +397,7 @@ describe("Date full", () => {
     });
 
     it("should render empty element for invalid data", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-full="'ABC'"></span>`,
         );
@@ -375,6 +407,7 @@ describe("Date full", () => {
     });
 
     it("should render empty element for undefined", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-full="undefined"></span>`,
         );
@@ -384,6 +417,7 @@ describe("Date full", () => {
     });
 
     it("should render empty element for null", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-full="null"></span>`,
         );
@@ -393,6 +427,7 @@ describe("Date full", () => {
     });
 
     it("should be reactive", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(
             `
                 <span v-format:date-full="value"></span>
@@ -418,6 +453,7 @@ describe("Date full", () => {
 
 describe("Date range", () => {
     it("should format range of string dates", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:date-range='{
             from: "20201101",
             to: "20250403",
@@ -428,6 +464,7 @@ describe("Date range", () => {
     });
 
     it("should format range of FDate dates", () => {
+        expect.assertions(1);
         const date = FDate.fromIso("2025-04-15");
         const wrapper = createWrapper(
             `<span v-format:date-range='{
@@ -442,6 +479,7 @@ describe("Date range", () => {
     });
 
     it("should render empty element for invalid date", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:date-range='{
             from: "20201400",
             to: "20251438",
@@ -452,6 +490,7 @@ describe("Date range", () => {
     });
 
     it("should render empty element for invalid data", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-range="'ABC'"></span>`,
         );
@@ -461,6 +500,7 @@ describe("Date range", () => {
     });
 
     it("should render empty element for undefined", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-range="undefined"></span>`,
         );
@@ -470,6 +510,7 @@ describe("Date range", () => {
     });
 
     it("should render empty element for null", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:date-range="null"></span>`,
         );
@@ -479,6 +520,7 @@ describe("Date range", () => {
     });
 
     it("should be reactive", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(
             `
                 <span
@@ -509,6 +551,7 @@ describe("Date range", () => {
 
 describe("Organisationsnummer", () => {
     it("should format from string", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:orgnr="'9999999999'"></span>`,
         );
@@ -518,6 +561,7 @@ describe("Organisationsnummer", () => {
     });
 
     it("should render empty element from number", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:orgnr="9999999999"></span>`,
         );
@@ -527,6 +571,7 @@ describe("Organisationsnummer", () => {
     });
 
     it("should render empty element for invalid data", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:orgnr="'ABC'"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--orgnr"></span>"`,
@@ -534,6 +579,7 @@ describe("Organisationsnummer", () => {
     });
 
     it("should render empty element for undefined", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:orgnr="undefined"></span>`,
         );
@@ -543,6 +589,7 @@ describe("Organisationsnummer", () => {
     });
 
     it("should render empty element for null", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:orgnr="null"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--orgnr"></span>"`,
@@ -550,6 +597,7 @@ describe("Organisationsnummer", () => {
     });
 
     it("should be reactive", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(
             `
                 <span v-format:orgnr="value"></span>
@@ -577,6 +625,7 @@ describe("Organisationsnummer", () => {
 
 describe("Personnummer", () => {
     it("should format from string", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:pnr="'189001079806'"></span>`,
         );
@@ -586,6 +635,7 @@ describe("Personnummer", () => {
     });
 
     it("should render empty element from number", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:pnr="191202119150"></span>`,
         );
@@ -595,6 +645,7 @@ describe("Personnummer", () => {
     });
 
     it("should render empty element for invalid data", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:pnr="'ABC'"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--pnr"></span>"`,
@@ -602,6 +653,7 @@ describe("Personnummer", () => {
     });
 
     it("should render empty element for undefined", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:pnr="undefined"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--pnr"></span>"`,
@@ -609,6 +661,7 @@ describe("Personnummer", () => {
     });
 
     it("should render empty element for null", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:pnr="null"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--pnr"></span>"`,
@@ -616,6 +669,7 @@ describe("Personnummer", () => {
     });
 
     it("should be reactive", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(
             `
                 <span v-format:pnr="value"></span>
@@ -643,6 +697,7 @@ describe("Personnummer", () => {
 
 describe("Text", () => {
     it("should format from string", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:text="'Some random text'"></span>`,
         );
@@ -652,6 +707,7 @@ describe("Text", () => {
     });
 
     it("should render empty element from number", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:text="1234"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--text"></span>"`,
@@ -659,6 +715,7 @@ describe("Text", () => {
     });
 
     it("should render empty element for undefined", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:text="undefined"></span>`,
         );
@@ -668,6 +725,7 @@ describe("Text", () => {
     });
 
     it("should render empty element for null", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:text="null"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--text"></span>"`,
@@ -675,6 +733,7 @@ describe("Text", () => {
     });
 
     it("should be reactive", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(
             `
                 <span v-format:text="value"></span>
@@ -702,6 +761,7 @@ describe("Text", () => {
 
 describe("Plusgiro", () => {
     it("should format from string", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:plusgiro="'9999996'"></span>`,
         );
@@ -711,6 +771,7 @@ describe("Plusgiro", () => {
     });
 
     it("should render empty element from number", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:plusgiro="9999996"></span>`,
         );
@@ -720,6 +781,7 @@ describe("Plusgiro", () => {
     });
 
     it("should render empty element for invalid data", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:plusgiro="'999AB96'"></span>`,
         );
@@ -729,6 +791,7 @@ describe("Plusgiro", () => {
     });
 
     it("should render empty element for undefined", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:plusgiro="undefined"></span>`,
         );
@@ -738,6 +801,7 @@ describe("Plusgiro", () => {
     });
 
     it("should render empty element for null", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(`<span v-format:plusgiro="null"></span>`);
         expect(wrapper.html()).toMatchInlineSnapshot(
             `"<span class="formatter--plusgiro"></span>"`,
@@ -745,6 +809,7 @@ describe("Plusgiro", () => {
     });
 
     it("should be reactive", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(
             /* HTML */ `
                 <span v-format:plusgiro="value"></span>
@@ -770,6 +835,7 @@ describe("Plusgiro", () => {
 
 describe("Postnummer", () => {
     it("should format from string", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:postnummer="'93222'"></span>`,
         );
@@ -779,6 +845,7 @@ describe("Postnummer", () => {
     });
 
     it("should render empty element from number", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:postnummer="93222"></span>`,
         );
@@ -788,6 +855,7 @@ describe("Postnummer", () => {
     });
 
     it("should render empty element for invalid data", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:postnummer="'932BC'"></span>`,
         );
@@ -797,6 +865,7 @@ describe("Postnummer", () => {
     });
 
     it("should render empty element for undefined", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:postnummer="undefined"></span>`,
         );
@@ -806,6 +875,7 @@ describe("Postnummer", () => {
     });
 
     it("should render empty element for null", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             `<span v-format:postnummer="null"></span>`,
         );
@@ -815,6 +885,7 @@ describe("Postnummer", () => {
     });
 
     it("should be reactive", async () => {
+        expect.assertions(2);
         const wrapper = createWrapper(
             /* HTML */ `
                 <span v-format:postnummer="value"></span>

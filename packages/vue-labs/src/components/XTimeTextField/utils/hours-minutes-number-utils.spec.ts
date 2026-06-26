@@ -47,6 +47,7 @@ describe("hoursMinutesStringToMinutes", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(hoursMinutesStringToMinutes(value)).toEqual(expected);
         },
     );
@@ -65,6 +66,7 @@ describe("minutesToHoursMinutesString", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(minutesToHoursMinutesString(value)).toEqual(expected);
         },
     );
@@ -86,6 +88,7 @@ describe("splitHoursMinutes", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(splitHoursMinutes(value)).toEqual(expected);
         },
     );
@@ -104,6 +107,7 @@ describe("minutesToUserFriendlyString", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(minutesToUserFriendlyString(value)).toEqual(expected);
         },
     );
@@ -124,6 +128,7 @@ describe("minutesToHoursFloat", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(minutesToHoursFloat(value)).toEqual(expected);
         },
     );
@@ -134,6 +139,7 @@ describe("minutesToHoursFloat", () => {
         ${[undefined, 60]}  | ${1}
         ${[30, Number.NaN]} | ${0.5}
     `('should return "$expected" for ...$value', ({ value, expected }) => {
+        expect.assertions(1);
         expect(minutesToHoursFloat(...value)).toEqual(expected);
     });
 });
@@ -153,6 +159,7 @@ describe("minutesToObject", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
+            expect.assertions(1);
             expect(minutesToObject(value)).toEqual(expected);
         },
     );
@@ -163,6 +170,7 @@ describe("minutesToObject", () => {
         ${[undefined, 60]}  | ${{ hours: 1, minutes: 0 }}
         ${[30, Number.NaN]} | ${{ hours: 0, minutes: 30 }}
     `('should return "$expected" for $value', ({ value, expected }) => {
+        expect.assertions(1);
         expect(minutesToObject(...value)).toEqual(expected);
     });
 });

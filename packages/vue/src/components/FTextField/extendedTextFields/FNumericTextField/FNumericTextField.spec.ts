@@ -37,6 +37,7 @@ function createWrapper(
 
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-numeric-text-field id="myField" v-model="myModel">
                 My numeric field
@@ -49,6 +50,7 @@ describe("snapshots", () => {
 
 describe("v-model", () => {
     it("should update model with number value", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-numeric-text-field
                 id="myField"
@@ -68,6 +70,7 @@ describe("v-model", () => {
     });
 
     it("should be able to handle zero value", async () => {
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-numeric-text-field id="myField" v-model="myModel">
                 My numeric field
@@ -85,6 +88,7 @@ describe("v-model", () => {
 
 describe("format", () => {
     it("should format with decimals when having decimal prop", async () => {
+        expect.assertions(2);
         const markup = /* HTML */ `
             <f-numeric-text-field
                 id="myField"

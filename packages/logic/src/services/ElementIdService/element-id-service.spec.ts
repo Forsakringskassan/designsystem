@@ -3,6 +3,7 @@ import { ElementIdService } from "./element-id-service";
 
 describe("generateElementId", () => {
     it("should generate element id with increment of 1 each call", () => {
+        expect.assertions(2);
         const firstElementId = ElementIdService.generateElementId();
         const secondElementId = ElementIdService.generateElementId();
 
@@ -11,6 +12,7 @@ describe("generateElementId", () => {
     });
 
     it("should generate element id with increment of 1 each call XXXX", () => {
+        expect.assertions(2);
         document.body.innerHTML = /* HTML */ `
             <div id="fkui-vue-element-0001"></div>
             <div id="fkui-vue-element-0002"></div>
@@ -26,6 +28,7 @@ describe("generateElementId", () => {
     });
 
     it("should generate element id with increment of 1 each call XXXX with support for specific prefix", () => {
+        expect.assertions(3);
         document.body.innerHTML = /* HTML */ `
             <div id="fkui-vue-element-0001"></div>
             <div id="fkui-vue-element-0002"></div>

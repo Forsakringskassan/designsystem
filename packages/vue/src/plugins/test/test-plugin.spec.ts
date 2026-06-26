@@ -12,19 +12,12 @@ function createWrapper(vTestValue: string, isVisible = true): VueWrapper {
             isVisible: Boolean,
         },
         render() {
-            if (this.isVisible) {
-                const test = resolveDirective("test");
-                const data = { maxlength: 100 };
-                const node = h(
-                    FTextField,
-                    data,
-                    () => "Testing v-test directive",
-                );
-                return withDirectives(node, [[test, vTestValue]]);
-            }
-            {
-                return h("div", ["I am empty"]);
-            }
+            const test = resolveDirective("test");
+            const data = { maxlength: 100 };
+            const node = h(FTextField, data, () => "Testing v-test directive");
+            return this.isVisible
+                ? withDirectives(node, [[test, vTestValue]])
+                : h("div", ["I am empty"]);
         },
     });
 
@@ -37,6 +30,7 @@ function createWrapper(vTestValue: string, isVisible = true): VueWrapper {
 }
 
 it("should add data-test attribute to the FTextField", () => {
+    expect.assertions(2);
     const wrapper = createWrapper("test-0047");
 
     expect(wrapper.element).toMatchSnapshot();
@@ -44,15 +38,18 @@ it("should add data-test attribute to the FTextField", () => {
 });
 
 it("should throw an exception if no value is provided for the v-test directive", async () => {
-    /* eslint-disable-next-line no-console -- prevent vue from polluting output */
-    console.error = vi.fn();
     expect.assertions(1);
+    vi.spyOn(console, "error").mockImplementation(() => {
+        // Empty
+    });
+
     expect(() => createWrapper("")).toThrowErrorMatchingInlineSnapshot(
         `[Error: Did you forgot to add a value to v-test?]`,
     );
 });
 
 it("should add data-test attribute if element is not in DOM from mount but toggled through v-if later on", async () => {
+    expect.assertions(2);
     const wrapper = createWrapper("test-0047", false);
 
     expect(wrapper.element).toMatchInlineSnapshot(`

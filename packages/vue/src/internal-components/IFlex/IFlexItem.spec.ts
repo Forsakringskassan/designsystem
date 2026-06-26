@@ -121,6 +121,7 @@ describe("html-validate", () => {
             const report = await htmlvalidate.validateString(markup);
             expect(report).toBeValid();
         });
+
         it("invalid", async () => {
             expect.assertions(2);
             const markup = /* HTML */ `

@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { greaterThanTimeValidator } from "./greater-than-time-validator";
 
 const element = document.createElement("input");
@@ -8,14 +8,6 @@ const testConfig = {
 };
 
 describe("validation", () => {
-    beforeAll(() => {
-        /* eslint-disable-next-line no-console -- technical debt, bad practice
-         * and console is not restored so it leaks to other tests, should use
-         * jest.spyOn(..) at least and for tests expected to log should have
-         * explicit tests for this */
-        console.error = vi.fn();
-    });
-
     it.each`
         value            | expected | config                 | description
         ${"3"}           | ${true}  | ${testConfig}          | ${"value above limit should be valid"}
@@ -42,6 +34,7 @@ describe("validation", () => {
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected, config }) => {
+            expect.assertions(1);
             expect(
                 greaterThanTimeValidator.validation(value, element, config),
             ).toEqual(expected);

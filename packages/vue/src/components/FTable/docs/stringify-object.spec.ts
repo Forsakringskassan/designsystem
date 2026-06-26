@@ -2,6 +2,7 @@ import { expect, it } from "vitest";
 import { stringifyObject } from "./stringify-object";
 
 it("should stringify object", () => {
+    expect.assertions(1);
     expect(
         stringifyObject({
             title: "foo",

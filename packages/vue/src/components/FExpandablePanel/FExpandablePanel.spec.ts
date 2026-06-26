@@ -72,6 +72,7 @@ describe("snapshots", () => {
 
 describe("attributes", () => {
     it("should pass attributes", () => {
+        expect.assertions(1);
         const wrapper = createWrapper({
             attrs: {
                 disabled: true,
@@ -97,7 +98,9 @@ describe("events", () => {
 
         expect(toggle).toHaveBeenCalled();
     });
+
     it("should pass listeners", async () => {
+        expect.assertions(1);
         const foobar = vi.fn();
         const wrapper = createWrapper({
             attrs: { onFoobar: foobar },

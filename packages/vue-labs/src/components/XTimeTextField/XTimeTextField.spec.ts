@@ -30,6 +30,7 @@ function createWrapper(
 
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             /* HTML */ `
                 <x-time-text-field id="myField" v-model="myModel">
@@ -44,6 +45,7 @@ describe("snapshots", () => {
 
 describe("v-model", () => {
     it("should update model with correct parse number value from time value input", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             /* HTML */ `
                 <x-time-text-field id="myField" v-model="myModel">
@@ -63,6 +65,7 @@ describe("v-model", () => {
 
 describe("format", () => {
     it("should format to correct time value", async () => {
+        expect.assertions(1);
         const wrapper = createWrapper(
             /* HTML */ `
                 <x-time-text-field id="myField" v-model="myModel">

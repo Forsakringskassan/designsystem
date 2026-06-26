@@ -18,6 +18,7 @@ it.each`
 `(
     'should return $expected with value "$value" because of $description',
     ({ value, expected }) => {
+        expect.assertions(1);
         expect(
             requiredValidator.validation(
                 value,
@@ -94,6 +95,7 @@ describe("Fieldset with radio inputs", () => {
 
 describe("Fieldset with checkbox inputs", () => {
     it("should validate group as valid when having one checked input", () => {
+        expect.assertions(1);
         const fieldsetElement = createFieldsetWithInputs("checkbox", true);
         expect(requiredValidator.validation("", fieldsetElement, {})).toBe(
             true,
@@ -101,6 +103,7 @@ describe("Fieldset with checkbox inputs", () => {
     });
 
     it("should validate group as invalid when having no checked inputs", () => {
+        expect.assertions(1);
         const fieldsetElement = createFieldsetWithInputs("checkbox", false);
         expect(requiredValidator.validation("", fieldsetElement, {})).toBe(
             false,
@@ -128,11 +131,13 @@ describe("Fieldset with checkbox inputs", () => {
 
 describe("checkbox", () => {
     it("should validate as valid when having one checked input", () => {
+        expect.assertions(1);
         const inputElement = createInputElement("checkbox", true);
         expect(requiredValidator.validation("", inputElement, {})).toBe(true);
     });
 
     it("should validate as invalid when having no checked inputs", () => {
+        expect.assertions(1);
         const inputElement = createInputElement("checkbox", false);
         expect(requiredValidator.validation("", inputElement, {})).toBe(false);
     });
@@ -140,11 +145,13 @@ describe("checkbox", () => {
 
 describe("radiobutton", () => {
     it("should validate as valid when having one checked input", () => {
+        expect.assertions(1);
         const inputElement = createInputElement("radio", true);
         expect(requiredValidator.validation("", inputElement, {})).toBe(true);
     });
 
     it("should validate as invalid when having no checked inputs", () => {
+        expect.assertions(1);
         const inputElement = createInputElement("radio", false);
         expect(requiredValidator.validation("", inputElement, {})).toBe(false);
     });
@@ -160,6 +167,7 @@ describe("nestled fieldsets", () => {
     `(
         "$description",
         ({ outerChecked, innerChecked, expectedOuter, expectedInner }) => {
+            expect.assertions(2);
             const markup = /* HTML */ `
                 <fieldset>
                     <input type="radio" id="outerInput1" /> Radio 1

@@ -2,6 +2,7 @@ import { expect, it } from "vitest";
 import { MissingValueError, ensureSet } from "./ensure-set";
 
 it("should return value if it is defined", () => {
+    expect.assertions(1);
     // Given
     const value = { prop: "foo" };
 
@@ -13,6 +14,7 @@ it("should return value if it is defined", () => {
 });
 
 it("should throw an error if value is not defined", () => {
+    expect.assertions(1);
     // Given
     const value: { prop: string } | undefined = undefined;
 
@@ -26,6 +28,7 @@ it("should throw an error if value is not defined", () => {
 });
 
 it("should throw an error if value is null", () => {
+    expect.assertions(1);
     // Given
     const value: { prop: string } | null = null;
 
@@ -39,6 +42,7 @@ it("should throw an error if value is null", () => {
 });
 
 it("should throw an error, with message, if value is not set and message given", () => {
+    expect.assertions(1);
     //Given
     const value: { prop: string } | null = null;
     const message = "the message";
