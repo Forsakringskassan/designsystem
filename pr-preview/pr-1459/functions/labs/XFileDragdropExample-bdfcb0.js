@@ -1808,7 +1808,7 @@ var require_es_typed_array_with = /* @__PURE__ */ __commonJSMin((() => {
   var $RangeError = RangeError;
   var PROPER_ORDER = (function() {
     try {
-      new Int8Array(1)["with"](2, { valueOf: function() {
+      (/* @__PURE__ */ new Int8Array(1))["with"](2, { valueOf: function() {
         throw 8;
       } });
     } catch (error) {
@@ -1817,7 +1817,7 @@ var require_es_typed_array_with = /* @__PURE__ */ __commonJSMin((() => {
   })();
   var THROW_ON_NEGATIVE_FRACTIONAL_INDEX = PROPER_ORDER && (function() {
     try {
-      new Int8Array(1)["with"](-0.5, 1);
+      (/* @__PURE__ */ new Int8Array(1))["with"](-0.5, 1);
     } catch (error) {
       return true;
     }
@@ -2631,6 +2631,7 @@ var XFileDragdrop_default = /* @__PURE__ */ defineComponent({
               createVNode(unref(FButton), {
                 "data-test": "file-item__file-remove",
                 "icon-left": "trashcan",
+                size: "medium",
                 variant: "tertiary",
                 "aria-label": `Ta bort ${fileName.value}`,
                 onClick: taBortFil
