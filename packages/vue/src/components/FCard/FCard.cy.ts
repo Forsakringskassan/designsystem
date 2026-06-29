@@ -30,11 +30,19 @@ function createComponent(): DefineComponent {
                 </template>
                 <template #footer>
                     <div class="button-group">
-                        <f-button class="button-group__item" variant="tertiary">
+                        <f-button
+                            class="button-group__item"
+                            variant="tertiary"
+                            size="medium"
+                        >
                             <span> Ta bort </span>
                         </f-button>
 
-                        <f-button class="button-group__item" variant="tertiary">
+                        <f-button
+                            class="button-group__item"
+                            variant="tertiary"
+                            size="medium"
+                        >
                             <span> Ändra </span>
                         </f-button>
                     </div>
@@ -121,6 +129,7 @@ describe("density", () => {
                                     align-text
                                     icon-left="pen"
                                     variant="tertiary"
+                                    size="medium"
                                 >
                                     <span> Ändra </span>
                                 </f-button>
@@ -129,6 +138,7 @@ describe("density", () => {
                                     align-text
                                     icon-left="trashcan"
                                     variant="tertiary"
+                                    size="medium"
                                 >
                                     <span> Ta bort </span>
                                 </f-button>
