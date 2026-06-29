@@ -65,6 +65,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ),
     _createVNode(_component_f_button, {
       size: "small",
+      variant: "primary",
       onClick: _ctx.onClick
     }, {
       default: _withCtx(() => [..._cache[0] || (_cache[0] = [
