@@ -134,6 +134,7 @@ describe("FFileItem", () => {
                     data-test="file-item__file-remove"
                     icon-left="trashcan"
                     variant="tertiary"
+                    size="medium"
                 >
                     Ta bort
                 </f-button>
