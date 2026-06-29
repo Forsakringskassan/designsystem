@@ -107,7 +107,7 @@ describe("validation", () => {
         const step2 = wizard.getStep(1);
 
         step1.waitOnOpen();
-        cy.get('[type="checkbox"]').check({ force: true });
+        cy.get('[type="checkbox"]').check({ force: true }); // eslint-disable-line sonarjs/no-forced-browser-interaction -- technical debt
         step1.continue().click();
 
         /**
@@ -132,7 +132,7 @@ describe("validation", () => {
         const step2 = wizard.getStep(1);
 
         step1.waitOnOpen();
-        cy.get('[type="checkbox"]').check({ force: true });
+        cy.get('[type="checkbox"]').check({ force: true }); // eslint-disable-line sonarjs/no-forced-browser-interaction -- technical debt
         step1.continue().click();
 
         step2.waitOnOpen();
@@ -146,7 +146,7 @@ describe("validation", () => {
         const step2 = wizard.getStep(1);
 
         step1.waitOnOpen();
-        cy.get('[type="checkbox"]').check({ force: true });
+        cy.get('[type="checkbox"]').check({ force: true }); // eslint-disable-line sonarjs/no-forced-browser-interaction -- technical debt
         step1.continue().click();
 
         step2.waitOnOpen();

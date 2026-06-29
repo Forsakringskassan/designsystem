@@ -34,7 +34,6 @@ it("should return accurate values for element", () => {
     cy.get(elementId).then((el) => {
         const testElement = el.get(0);
         const result = getAbsolutePosition(testElement);
-
         expect(result.x).to.equal(LEFT + CYPRESS_MARGIN);
         expect(result.y).to.equal(TOP + CYPRESS_MARGIN);
         expect(result.width).to.equal(WIDTH);
@@ -44,5 +43,5 @@ it("should return accurate values for element", () => {
 
 it("should return undefined if pass undefined", () => {
     const result = getAbsolutePosition(undefined);
-    expect(result).to.equal(undefined);
+    assert.isUndefined(result);
 });

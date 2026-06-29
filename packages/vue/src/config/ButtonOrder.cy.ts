@@ -97,7 +97,7 @@ describe("FCrudDataset", () => {
             it("should always show buttons left to right", () => {
                 config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
                 cy.mount(FCrudDatasetTableExample);
-                cy.get(".f-icon-pen:nth(0)").click({ force: true });
+                cy.get(".f-icon-pen:nth(0)").click({ force: true }); // eslint-disable-line sonarjs/no-forced-browser-interaction -- technical debt
                 const modal = new FModalPageObject(".modal");
                 modal
                     .el()
@@ -111,7 +111,7 @@ describe("FCrudDataset", () => {
             it("should ignore button order", () => {
                 config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
                 cy.mount(FCrudDatasetTableExample);
-                cy.get(".f-icon-pen:nth(0)").click({ force: true });
+                cy.get(".f-icon-pen:nth(0)").click({ force: true }); // eslint-disable-line sonarjs/no-forced-browser-interaction -- technical debt
                 const modal = new FModalPageObject(".modal");
                 modal
                     .el()
@@ -127,7 +127,7 @@ describe("FCrudDataset", () => {
             it("should respect button order", () => {
                 config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
                 cy.mount(FCrudDatasetTableExample);
-                cy.get(".f-icon-trashcan:nth(0)").click({ force: true });
+                cy.get(".f-icon-trashcan:nth(0)").click({ force: true }); // eslint-disable-line sonarjs/no-forced-browser-interaction -- technical debt
                 const modal = new FModalPageObject(".modal");
                 modal
                     .el()
@@ -141,7 +141,7 @@ describe("FCrudDataset", () => {
             it("should respect button order", () => {
                 config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
                 cy.mount(FCrudDatasetTableExample);
-                cy.get(".f-icon-trashcan:nth(0)").click({ force: true });
+                cy.get(".f-icon-trashcan:nth(0)").click({ force: true }); // eslint-disable-line sonarjs/no-forced-browser-interaction -- technical debt
                 const modal = new FModalPageObject(".modal");
                 modal
                     .el()
