@@ -1,3 +1,4 @@
+import { FCrudDatasetSelectors } from "../selectors";
 import { FValidationFormPageObject } from "./FValidationForm.pageobject";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
@@ -5,31 +6,31 @@ import { type BasePageObject, type DefaultCypressChainable } from "./common";
  * @public
  */
 export class FCrudDatasetPageObject implements BasePageObject {
-    public selector: string;
-    public el: () => DefaultCypressChainable;
+    private _selectors: ReturnType<typeof FCrudDatasetSelectors>;
     public form: FValidationFormPageObject;
 
     public constructor(selector = ".crud-dataset") {
-        this.selector = selector;
-        this.el = () => cy.get(this.selector);
+        this._selectors = FCrudDatasetSelectors(selector);
         this.form = new FValidationFormPageObject(`${this.selector} form`);
     }
 
+    public get selector(): string {
+        return this._selectors.selector;
+    }
+
+    public el(): DefaultCypressChainable {
+        return cy.get(this._selectors.selector);
+    }
+
     public addButton(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} [data-test="f-crud-dataset-add-button"]`,
-        );
+        return cy.get(this._selectors.addButton());
     }
 
     public cancelButton(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .modal__footer > .button-group > .button--secondary`,
-        );
+        return cy.get(this._selectors.cancelButton());
     }
 
     public confirmButton(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .modal__footer > .button-group > .button--primary`,
-        );
+        return cy.get(this._selectors.confirmButton());
     }
 }

@@ -159,11 +159,11 @@ export class FCrudDatasetPageObject implements BasePageObject {
     // (undocumented)
     confirmButton(): DefaultCypressChainable;
     // (undocumented)
-    el: () => DefaultCypressChainable;
+    el(): DefaultCypressChainable;
     // (undocumented)
     form: FValidationFormPageObject;
     // (undocumented)
-    selector: string;
+    get selector(): string;
 }
 
 // @public (undocumented)
