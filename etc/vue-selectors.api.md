@@ -15,6 +15,14 @@ export function FButtonSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FCrudDatasetSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    addButton(): string;
+    cancelButton(): string;
+    confirmButton(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
