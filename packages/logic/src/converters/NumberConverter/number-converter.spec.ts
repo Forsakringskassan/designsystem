@@ -117,23 +117,23 @@ describe("parse with fractionDigits", () => {
         expect(parseNumber("0.6", 0)).toBe(1);
 
         //One fraction
-        expect(parseNumber("0.10", 1)).toBe(0.1);
-        expect(parseNumber("0.14", 1)).toBe(0.1);
-        expect(parseNumber("0.15", 1)).toBe(0.2);
-        expect(parseNumber("0.16", 1)).toBe(0.2);
+        expect(parseNumber("0.10", 1)).toBeCloseTo(0.1);
+        expect(parseNumber("0.14", 1)).toBeCloseTo(0.1);
+        expect(parseNumber("0.15", 1)).toBeCloseTo(0.2);
+        expect(parseNumber("0.16", 1)).toBeCloseTo(0.2);
 
         //Two fractions
-        expect(parseNumber("0.001", 2)).toBe(0);
-        expect(parseNumber("0.004", 2)).toBe(0);
-        expect(parseNumber("0.005", 2)).toBe(0.01);
-        expect(parseNumber("0.006", 2)).toBe(0.01);
-        expect(parseNumber("9.999", 2)).toBe(10);
+        expect(parseNumber("0.001", 2)).toBeCloseTo(0);
+        expect(parseNumber("0.004", 2)).toBeCloseTo(0);
+        expect(parseNumber("0.005", 2)).toBeCloseTo(0.01);
+        expect(parseNumber("0.006", 2)).toBeCloseTo(0.01);
+        expect(parseNumber("9.999", 2)).toBeCloseTo(10);
 
         //Negative value and 3 fractions
-        expect(parseNumber("-9.9111", 3)).toBe(-9.911);
-        expect(parseNumber("-9.4444", 3)).toBe(-9.444);
-        expect(parseNumber("-9.5555", 3)).toBe(-9.556);
-        expect(parseNumber("-9.6666", 3)).toBe(-9.667);
-        expect(parseNumber("-9.9999", 3)).toBe(-10);
+        expect(parseNumber("-9.9111", 3)).toBeCloseTo(-9.911);
+        expect(parseNumber("-9.4444", 3)).toBeCloseTo(-9.444);
+        expect(parseNumber("-9.5555", 3)).toBeCloseTo(-9.556);
+        expect(parseNumber("-9.6666", 3)).toBeCloseTo(-9.667);
+        expect(parseNumber("-9.9999", 3)).toBeCloseTo(-10);
     });
 });

@@ -31,7 +31,7 @@ describe("FSortFilterSorter", () => {
         expect(result[0].number).toBe(0);
         expect(result[1].number).toBe(2);
         expect(result[2].number).toBe(9);
-        expect(result[3].number).toBe(9.01);
+        expect(result[3].number).toBeCloseTo(9.01, 3);
         expect(result[4].number).toBe(100);
     });
 

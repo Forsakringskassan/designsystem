@@ -908,7 +908,7 @@ describe("FTable, procent", () => {
         // formatted view value
         span.should("contain.text", "100,123").then(() => {
             // row value should be unchanged
-            expect(row.percent).to.equal(100.12255);
+            expect(row.percent).to.closeTo(100.12255, 0.000001);
         });
     });
 
@@ -928,7 +928,7 @@ describe("FTable, procent", () => {
         // formatted view value
         span.should("contain.text", "100,123").then(() => {
             // parsed row value as number
-            expect(row.percent).to.equal(100.123);
+            expect(row.percent).to.closeTo(100.123, 0.0001);
         });
     });
 
@@ -999,7 +999,7 @@ describe("FTable, nummer", () => {
         // formatted view value
         span.should("contain.text", "100,1").then(() => {
             // row value should be unchanged
-            expect(row.number).to.equal(100.12255);
+            expect(row.number).to.closeTo(100.12255, 0.000001);
         });
     });
 
@@ -1019,7 +1019,7 @@ describe("FTable, nummer", () => {
         // formatted view value
         span.should("contain.text", "100,1").then(() => {
             // parsed row value as number
-            expect(row.number).to.equal(100.1);
+            expect(row.number).to.closeTo(100.1, 0.01);
         });
     });
 

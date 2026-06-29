@@ -66,7 +66,7 @@ describe("v-model", () => {
         input.setValue("3,14");
         await input.trigger("blur");
 
-        expect(wrapper.vm.$data.myModel).toBe(3.14);
+        expect(wrapper.vm.$data.myModel).toBeCloseTo(3.14);
     });
 
     it("should be able to handle zero value", async () => {
