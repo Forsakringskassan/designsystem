@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FButton, IPopup } from "@fkui/vue";
+import { FButton, IPopup, findHTMLElementFromVueRef } from "@fkui/vue";
 
 export default defineComponent({
     name: "IPopupExample",
@@ -21,6 +21,9 @@ export default defineComponent({
         onClose() {
             this.isOpen = false;
         },
+        anchor(): HTMLElement | undefined {
+            return findHTMLElementFromVueRef(this.$refs.popupAnchor);
+        },
     },
 });
 </script>
@@ -31,7 +34,7 @@ export default defineComponent({
             Öppna popup
         </f-button>
 
-        <i-popup :is-open :anchor="$refs.popupAnchor as HTMLElement" @close="onClose">
+        <i-popup :is-open :anchor="anchor()" @close="onClose">
             <div class="my-awesome-popup">
                 <p>
                     Träutensilierna i ett tryckeri äro ingalunda en oviktig faktor, för trevnadens,
