@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FButton, IPopupMenu } from "@fkui/vue";
+import { FButton, IPopupMenu, findHTMLElementFromVueRef } from "@fkui/vue";
 
 const exampleItems = [
     { label: "Länk 1", key: "MENU_1" },
@@ -33,8 +33,8 @@ export default defineComponent({
         };
     },
     methods: {
-        getAnchor(): HTMLElement {
-            return this.$refs["popup-anchor"] as HTMLElement;
+        anchor(): HTMLElement | undefined {
+            return findHTMLElementFromVueRef(this.$refs["popup-anchor"]);
         },
         onClose(): void {
             this.popupOpen = false;
@@ -93,7 +93,7 @@ export default defineComponent({
             v-model:focused-item="focusedItem"
             :items
             :is-open="popupOpen"
-            :anchor="getAnchor()"
+            :anchor="anchor()"
             enable-keyboard-navigation
             @close="onClose"
         ></i-popup-menu>
