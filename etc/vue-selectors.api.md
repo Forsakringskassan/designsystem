@@ -64,6 +64,14 @@ export function FLoaderSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FMinimizablePanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    content(): string;
+    footer(): string;
+}>;
+
+// @public
 export function FPaginatorSelectors(selector?: string): Readonly<{
     readonly selector: string;
     currentPageButton(this: void): string;
