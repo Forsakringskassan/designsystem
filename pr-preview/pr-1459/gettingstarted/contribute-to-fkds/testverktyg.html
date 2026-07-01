@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-72c142.json"
+    href="../../search-data-a84391.json"
     as="fetch"
     crossorigin
-    integrity="sha384-ggdYLgSEvPNVaWdNbOD2cY1zcA2EFYdCW9J7bPE/y89g2YE/0kFIagz8BZihonkv"
+    integrity="sha384-dpHjOVuh25dhpwfE8V5SCVexHznTfKRVIzV4/P719q3+7Nnb+qU4eiz1ouWMMuq+"
     id="search-data"
 />
 <script>
@@ -609,6 +609,8 @@ Vi testar inte interaktion med komponenter med Vitest.</p>
 <p class="docs-paragraph">För Vitest finns paket med förinställda konfigurationer: <a href="https://github.com/Forsakringskassan/vitest-config">@forsakringskassan/vitest-config</a>,
 som innehåller standardinställningar för Node.js-projekt.
 Om du behöver JSDOM kan du använda <a href="https://github.com/Forsakringskassan/vitest-config/tree/main/packages/vitest-config-jsdom">@forsakringskassan/vitest-config-jsdom</a>.</p>
+<p class="docs-paragraph">Båda konfigurationer genererar coverage och testresultat i maskinläsbart format i <code>coverage</code> samt <code>test-results</code> katalogerna.
+CI-miljö läser in samtliga filer.</p>
 <p class="docs-paragraph">Vitest anropas från respektive paket via <code>test</code>-scriptet.
 <code>test</code>-scriptet i root anropar i sin tur <code>test</code> i respektive paket.</p>
 <p class="docs-paragraph">Extra hjälpfunktioner finns i ett stödpaket <a href="../../functions/test-utils">Om testverktyg</a> och kan nyttjas både av en applikationsutvecklare och den som bidrar till FKUI.</p>
@@ -632,7 +634,7 @@ CI-miljö läser in filen.</p>
 <p class="docs-paragraph"><code>tsconfig.json</code> i respektive paket med Cypress komponenttester pekar ut en separat <code>tsconfig.cypress.json</code> med specifik typescript-konfiguration för Cypress:</p>
 
                 <div
-                    id="example-b8bc2a"
+                    id="example-ac1e57"
                     class="code-preview code-preview--default"
                     
                     
@@ -659,7 +661,7 @@ E2E-tester kör mot den genererade dokumentationen och kräver att den byggts oc
 <p class="docs-paragraph">För att bygga och starta dokumentation:</p>
 
                 <div
-                    id="example-3c4471"
+                    id="example-7ee9f6"
                     class="code-preview code-preview--default"
                     
                     
@@ -674,7 +676,7 @@ npm start
             <p class="docs-paragraph">Därefter kan du starta E2E-tester i en annan terminal:</p>
 
                 <div
-                    id="example-1c2b89"
+                    id="example-b75952"
                     class="code-preview code-preview--default"
                     
                     
@@ -795,9 +797,9 @@ Endast personnummer från återfinns i <a href="https://www7.skatteverket.se/por
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">doc/vitest (<a href="https://github.com/Forsakringskassan/designsystem/commits/8004b0e62ddcb5ebb724c98113e2ce59d24245b4">8004b0e</a>)<br />
+<div class="footer__right"><div class="version">doc/vitest (<a href="https://github.com/Forsakringskassan/designsystem/commits/68141d76feb01edc6af7052f45a99e7086c17d68">68141d7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1459">PR 1459</a><br />
-        2026-06-30 08:05
+        2026-07-01 07:12
 </div>
 <div class="toolbar__item">
     <form id="version">
