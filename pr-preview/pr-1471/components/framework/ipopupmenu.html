@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-dba85c.json"
+    href="../../search-data-93ef0a.json"
     as="fetch"
     crossorigin
-    integrity="sha384-kVa40jEIgDXyOhJfHtW6etQL0JjD9+IqYjiopxthiwPKVR+8PnjsAxwSdqxOR3j4"
+    integrity="sha384-L3LkcfmmE2awGY4kLC+bJBv/FilZh+pK6FdwHs0A9aPFdEefumOEvfGsq4cZab4i"
     id="search-data"
 />
 <script>
@@ -1549,7 +1549,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/816d209e7df33c5b9e2414c7fcdffe200d80fa2f/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/5140bcec807d71ffc90bb5e1c0f301d28752b4ae/packages/vue/src/internal-components/IPopupMenu/IPopupMenu.vue">
                 IPopupMenu
             </a>
             
@@ -1596,13 +1596,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-03cdea"></div>
+        <div id="example-b66d05"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IPopupMenuExample-03cdea.js"></script>
+        <script type="module" src="./IPopupMenuExample-b66d05.js"></script>
     
                 </div>
                 <div>
@@ -1626,7 +1626,7 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IPopupMenu</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IPopupMenu</span>, findHTMLElementFromVueRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">const</span> exampleItems = [
     { <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Länk 1&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;MENU_1&quot;</span> },
@@ -1658,8 +1658,8 @@
         };
     },
     <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">getAnchor</span>(): <span class="hljs-title class_">HTMLElement</span> {
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>[<span class="hljs-string">&quot;popup-anchor&quot;</span>] <span class="hljs-keyword">as</span> <span class="hljs-title class_">HTMLElement</span>;
+        <span class="hljs-title function_">anchor</span>(): <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-literal">undefined</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_">findHTMLElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>[<span class="hljs-string">&quot;popup-anchor&quot;</span>]);
         },
         <span class="hljs-title function_">onClose</span>(): <span class="hljs-keyword">void</span> {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">popupOpen</span> = <span class="hljs-literal">false</span>;
@@ -1718,7 +1718,7 @@
             <span class="hljs-attr">v-model:focused-item</span>=<span class="hljs-string">&quot;focusedItem&quot;</span>
             <span class="hljs-attr">:items</span>
             <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;popupOpen&quot;</span>
-            <span class="hljs-attr">:anchor</span>=<span class="hljs-string">&quot;getAnchor()&quot;</span>
+            <span class="hljs-attr">:anchor</span>=<span class="hljs-string">&quot;anchor()&quot;</span>
             <span class="hljs-attr">enable-keyboard-navigation</span>
             @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
         &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i-popup-menu</span>&gt;</span>
@@ -1987,9 +1987,9 @@ Sets focus on matching item element when value changes.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">renovate/prettier-3.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/816d209e7df33c5b9e2414c7fcdffe200d80fa2f">816d209</a>)<br />
+<div class="footer__right"><div class="version">renovate/prettier-3.x (<a href="https://github.com/Forsakringskassan/designsystem/commits/5140bcec807d71ffc90bb5e1c0f301d28752b4ae">5140bce</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1471">PR 1471</a><br />
-        2026-07-01 02:18
+        2026-07-01 06:10
 </div>
 <div class="toolbar__item">
     <form id="version">
