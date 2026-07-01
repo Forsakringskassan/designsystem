@@ -27,7 +27,7 @@
     "@fkui/logic": "../assets/vendor-fkui-logic-9ed948.js",
     "@fkui/date": "../assets/vendor-fkui-date-4ec930.js",
     "@fkui/vue": "../assets/vendor-fkui-vue-8e8ae5.js",
-    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-cc95ed.js"
+    "@forsakringskassan/docs-live-example": "../assets/vendor-forsakringskassan-docs-live-example-83362c.js"
   },
   "integrity": {
     "../assets/vendor-vue-5ec080.js": "sha384-gs192ncfFJwhno/cvRdXGH+jYE5XKrbqOaSi2xM8w6DAe1aLfFy8JHgNkDCx+isP",
@@ -35,7 +35,7 @@
     "../assets/vendor-fkui-logic-9ed948.js": "sha384-5mW5y/PYSM5vHGddH/4Shn8prsUJrV4tEXpuxjA1ZI0z1NDh2JjokIoTk3viQFgU",
     "../assets/vendor-fkui-date-4ec930.js": "sha384-pq05tS3yKOrr/fsY3iZ74ZrIeKXlAnLfHhLBVljCdO+ZS0Ulow1fh9oRg+c8zSuE",
     "../assets/vendor-fkui-vue-8e8ae5.js": "sha384-PQ9d0nrZg3CyX1LI6ts7kNGvZxOLeLn+bTrVwqeI3IUl9db63H+gkaFDt1Q9U0ng",
-    "../assets/vendor-forsakringskassan-docs-live-example-cc95ed.js": "sha384-ww/FkpHTezQk6gkvnB4+FYFxFFYRO9jwMpgWWpEvJ81/9K/+rxthjh0qPJkHExyh"
+    "../assets/vendor-forsakringskassan-docs-live-example-83362c.js": "sha384-7PyqGRfvcO68TLMPEWNNQ1qVBNCSld86SfPY9R8hkZZQF1+UNtGXsWU0v3jCGEzD"
   }
 }
         </script><script
@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../search-data-8f4c58.json"
+    href="../search-data-394b17.json"
     as="fetch"
     crossorigin
-    integrity="sha384-DFdHHkQ7vxdPBuVdFl+h46RR2MUYH2+OwT+5ZG9iZnuLoAJVEvfZA8YKx1Tu/fXl"
+    integrity="sha384-uHnKhxo5ONdGkfgUmwUw+jqXWPaBVj8kqsE0gOatGolzwgHzo6dB9KdiUZQaUHPZ"
     id="search-data"
 />
 <script>
@@ -1805,7 +1805,7 @@
 <h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Lägg till i din <code>tsconfig.json</code>:</p>
 
                 <div
-                    id="example-157978"
+                    id="example-68508c"
                     class="code-preview code-preview--default"
                     data-test="recommended"
                     data-tags="context=5"
@@ -1814,16 +1814,14 @@
                     
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> {
 <span class="hljs-addition">+    &quot;extends&quot;: [&quot;@fkui/tsconfig/recommended&quot;],</span>
-     &quot;compilerOptions&quot;: {
-         /* ... */
-     }
+     &quot;compilerOptions&quot;: {/* ... */}
  }
 </code></pre>
                 </div>
             <h2 id="cypress" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#cypress">Cypress</a></h2><p class="docs-paragraph">Utöver den rekommenderade konfigurationen använd konfigurationen för Cypress:</p>
 
                 <div
-                    id="example-62648e"
+                    id="example-1c2291"
                     class="code-preview code-preview--default"
                     
                     data-tags="context=5"
@@ -1833,16 +1831,14 @@
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> {
 <span class="hljs-deletion">-    &quot;extends&quot;: [&quot;@fkui/tsconfig/recommended&quot;],</span>
 <span class="hljs-addition">+    &quot;extends&quot;: [&quot;@fkui/tsconfig/recommended&quot;, &quot;@fkui/tsconfig/cypress&quot;],</span>
-     &quot;compilerOptions&quot;: {
-         /* ... */
-     }
+     &quot;compilerOptions&quot;: {/* ... */}
  }
 </code></pre>
                 </div>
             <h2 id="vue" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#vue">Vue</a></h2><p class="docs-paragraph">Utöver den rekommenderade konfigurationen använd konfigurationen för Vue:</p>
 
                 <div
-                    id="example-71ead4"
+                    id="example-29918c"
                     class="code-preview code-preview--default"
                     
                     data-tags="context=5"
@@ -1852,9 +1848,7 @@
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> {
 <span class="hljs-deletion">-    &quot;extends&quot;: [&quot;@fkui/tsconfig/recommended&quot;],</span>
 <span class="hljs-addition">+    &quot;extends&quot;: [&quot;@fkui/tsconfig/recommended&quot;, &quot;@fkui/tsconfig/vue&quot;],</span>
-     &quot;compilerOptions&quot;: {
-         /* ... */
-     }
+     &quot;compilerOptions&quot;: {/* ... */}
  }
 </code></pre>
                 </div>
@@ -1906,9 +1900,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/8d61d2f735a549fbc9f08fc88bfac4e8a90ca762">8d61d2f</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/01a9399d491c29e7c2710f0221f2a57b7cde7d61">01a9399</a>)<br />
         
-        2026-07-01 06:03
+        2026-07-01 07:32
 </div>
 <div class="toolbar__item">
     <form id="version">
