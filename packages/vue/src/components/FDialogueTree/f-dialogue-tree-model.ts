@@ -19,8 +19,7 @@ export interface FDialogueTreeEndQuestion {
  * @public
  */
 export type FDialogueTreeQuestion =
-    | FDialogueTreeSubQuestion
-    | FDialogueTreeEndQuestion;
+    FDialogueTreeSubQuestion | FDialogueTreeEndQuestion;
 
 /**
  * Each option leads to a new question

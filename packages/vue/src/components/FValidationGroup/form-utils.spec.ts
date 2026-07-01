@@ -6,8 +6,7 @@ import { cleanUpElements } from "./form-utils";
 
 type ComponentReference = Record<string, FormErrorList>;
 type ComponentReferences =
-    | Record<string, ComponentValidityEvent>
-    | Record<string, FormErrorList>;
+    Record<string, ComponentValidityEvent> | Record<string, FormErrorList>;
 interface Special {
     $el: Element;
     components: ComponentReferences;

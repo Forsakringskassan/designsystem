@@ -37,10 +37,10 @@ export function getElement(
  * @internal
  */
 export enum SpacingDirection {
-    "Horizontal",
-    "Vertical",
-    "Both",
-    "None",
+    Horizontal,
+    Vertical,
+    Both,
+    None,
 }
 
 /**
@@ -48,36 +48,36 @@ export enum SpacingDirection {
  */
 export enum Placement {
     /** popup below and alignment towards the left edge. */
-    "A" = "A",
+    A = "A",
     /** popup below and alignment towards the right edge. */
-    "B" = "B",
+    B = "B",
     /** popup above and alignment towards the left edge. */
-    "C" = "C",
+    C = "C",
     /** popup above and alignment towards the right edge. */
-    "D" = "D",
+    D = "D",
     /** popup right of anchor vertically centered. */
-    "E" = "E",
+    E = "E",
     /** popup left of anchor vertically centered. */
-    "F" = "F",
+    F = "F",
     /** popup to the right of the anchor at the top of the area. */
-    "G" = "G",
+    G = "G",
     /** popup to the left of the anchor at the top of the area. */
-    "H" = "H",
+    H = "H",
     /** popup vertically and horizontally centered in area. */
-    "I" = "I",
+    I = "I",
     /**
      * Fallback
      * - If inline is set to never, the popup is positioned below the anchor without inlining.
      * - If inline is set to auto, the popup will appear inline below the anchor.
      */
-    "Fallback" = "Fallback",
+    Fallback = "Fallback",
     /** Placement not calculated. */
-    "NotCalculated" = "NotCalculated",
+    NotCalculated = "NotCalculated",
 }
 
 export enum CandidateOrder {
-    "Default" = "Default",
-    "IPopupError" = "IPopupError",
+    Default = "Default",
+    IPopupError = "IPopupError",
 }
 
 export interface Candidate extends Rect {

@@ -218,9 +218,7 @@ defineComponent({
 
             const formdata = await formModal(this, MyAwesomeModal, {
                 props: {
-                    buttons: [
-                        /* ... */
-                    ],
+                    buttons: [/* ... */],
                 },
             });
 
