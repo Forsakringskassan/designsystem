@@ -35,7 +35,12 @@ describe("props", () => {
 
         it("should not set aria-disabled on the button as default", () => {
             expect.assertions(1);
-            const wrapper = shallowMount(FButton);
+            const wrapper = shallowMount(FButton, {
+                props: {
+                    size: "medium",
+                    variant: "primary",
+                },
+            });
             const button = wrapper.get("button");
             expect(button.attributes("aria-disabled")).toBe("false");
         });
