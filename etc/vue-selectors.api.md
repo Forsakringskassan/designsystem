@@ -40,6 +40,15 @@ export function FExpandableParagraphSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FLabelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    description(): string;
+    formatDescription(): string;
+    errorMessage(): string;
+    errorIcon(): string;
+}>;
+
+// @public
 export function FListSelectors(selector?: string): Readonly<{
     readonly selector: string;
     listItems(this: void): string;

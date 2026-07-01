@@ -1,47 +1,52 @@
+import { FLabelSelectors } from "../selectors";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public
  */
 export class FLabelPageObject implements BasePageObject {
-    public selector: string;
-    public el: () => DefaultCypressChainable;
+    private _selectors: ReturnType<typeof FLabelSelectors>;
 
     /**
      * @param selector - the root of the label, usually `<label class="label">...</label>`.
      */
-    public constructor(selector: string) {
-        this.selector = selector;
-        this.el = () => cy.get(this.selector);
+    public constructor(selector: string = ".label") {
+        this._selectors = FLabelSelectors(selector);
+    }
+
+    public get selector(): string {
+        return this._selectors.selector;
+    }
+
+    public el(): DefaultCypressChainable {
+        return cy.get(this._selectors.selector);
     }
 
     /**
      * Hjälptext
      */
     public description(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .label__description`);
+        return cy.get(this._selectors.description());
     }
 
     /**
      * ErrorIcon
      */
     public errorIcon(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .icon.label__icon--left.f-icon-error`);
+        return cy.get(this._selectors.errorIcon());
     }
 
     /**
      * Formatbeskrivning
      */
     public formatDescription(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .label__description.label__description--format`,
-        );
+        return cy.get(this._selectors.formatDescription());
     }
 
     /**
      * Felmeddelande
      */
     public errorMessage(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .label__message.label__message--error`);
+        return cy.get(this._selectors.errorMessage());
     }
 }
