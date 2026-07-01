@@ -52,7 +52,8 @@
     "stylelint": "stylelint \"packages/*/src/**/*.{css,scss}\" \"internal/*/src/**/*.{css,scss}\"",
     "stylelint:fix": "npm run stylelint -- --fix",
     "pretest": "npm run lint",
-    "test": "lerna run test",
+    "test": "vitest run",
+    "unit": "vitest run --no-coverage",
     "test:ct": "cypress run-ct --headless",
     "version": "scripts/version",
     "postversion": "npm run build",
@@ -129,6 +130,7 @@
     "typedoc": "0.28.19",
     "typescript": "6.0.3",
     "vite": "8.1.0",
+    "vitest": "4.1.9",
     "vue": "3.5.38",
     "vue-tsc": "3.3.5"
   },

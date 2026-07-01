@@ -1,9 +1,13 @@
-/* This file is used by Cypress only, see `packages/vue/vite.config.ts` for the actual config */
 import * as path from "node:path";
-import { defineConfig } from "vite";
 import { vuePlugin } from "@forsakringskassan/vite-lib-config/vite";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
+    test: {
+        projects: ["packages/*"],
+    },
+
+    /* This file is used by Cypress only, see `packages/vue/vite.config.ts` for the actual config */
     optimizeDeps: {
         entries: [
             "packages/{date,logic,vue,vue-labs}/src/**/*.{ts,vue}",
