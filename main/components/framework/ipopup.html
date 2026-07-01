@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-63a699.json"
+    href="../../search-data-8f4c58.json"
     as="fetch"
     crossorigin
-    integrity="sha384-TLkmf54vgZLRzEVpCBOAhAGNcpVUiEkI4FFV/9eW4vrrpHocJ7o1a93HDNv93CKp"
+    integrity="sha384-DFdHHkQ7vxdPBuVdFl+h46RR2MUYH2+OwT+5ZG9iZnuLoAJVEvfZA8YKx1Tu/fXl"
     id="search-data"
 />
 <script>
@@ -1549,7 +1549,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b92ee04099c528713da88aa2fc4533eeeef07490/packages/vue/src/internal-components/IPopup/IPopup.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8d61d2f735a549fbc9f08fc88bfac4e8a90ca762/packages/vue/src/internal-components/IPopup/IPopup.vue">
                 IPopup
             </a>
             
@@ -1604,7 +1604,7 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-ffc022"></div>
+        <div id="example-cde6d4"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1622,7 +1622,7 @@
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IPopupExample-ffc022.js"></script>
+        <script type="module" src="./IPopupExample-cde6d4.js"></script>
     
                 </div>
                 <div>
@@ -1646,7 +1646,7 @@
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IPopup</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">IPopup</span>, findHTMLElementFromVueRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
     <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;IPopupExample&quot;</span>,
@@ -1666,6 +1666,9 @@
         <span class="hljs-title function_">onClose</span>(<span class="hljs-params"></span>) {
             <span class="hljs-variable language_">this</span>.<span class="hljs-property">isOpen</span> = <span class="hljs-literal">false</span>;
         },
+        <span class="hljs-title function_">anchor</span>(): <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-literal">undefined</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_">findHTMLElementFromVueRef</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">popupAnchor</span>);
+        },
     },
 });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
@@ -1676,7 +1679,7 @@
             Öppna popup
         <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">i-popup</span> <span class="hljs-attr">:is-open</span> <span class="hljs-attr">:anchor</span>=<span class="hljs-string">&quot;$refs.popupAnchor as HTMLElement&quot;</span> @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">i-popup</span> <span class="hljs-attr">:is-open</span> <span class="hljs-attr">:anchor</span>=<span class="hljs-string">&quot;anchor()&quot;</span> @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;my-awesome-popup&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
                     Träutensilierna i ett tryckeri äro ingalunda en oviktig faktor, för trevnadens,
@@ -1816,7 +1819,7 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-6a4990"></div>
+        <div id="example-237d1e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -1865,7 +1868,7 @@ Popupens position kommer inte hamna utanför containern (med undantag för om in
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./IPopupPositioning-6a4990.js"></script>
+        <script type="module" src="./IPopupPositioning-237d1e.js"></script>
     
                 </div>
                 <div>
@@ -2370,9 +2373,9 @@ Om popup inte hittar en förälder med <code>scroll-target</code> så kommer den
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/b92ee04099c528713da88aa2fc4533eeeef07490">b92ee04</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/8d61d2f735a549fbc9f08fc88bfac4e8a90ca762">8d61d2f</a>)<br />
         
-        2026-07-01 02:16
+        2026-07-01 06:03
 </div>
 <div class="toolbar__item">
     <form id="version">
