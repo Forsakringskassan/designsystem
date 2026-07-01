@@ -1,5 +1,8 @@
 @use "../z-index";
+@use "../../core";
+@use "../../core/size";
 @use "variables" as *;
+@use "../../core/mixins/focus";
 
 $ZINDEX: z-index.$MODAL_ZINDEX - 1 !default;
 
@@ -34,10 +37,6 @@ $layout-navigation-dot-spacing: 4px !default;
         z-index: $ZINDEX;
         left: 0;
         bottom: 0;
-    }
-
-    &__navigation .button.button--tertiary:hover {
-        background-color: $layout-navigation-button-tertiary-color-background-hover;
     }
 
     &__navigation__border {
@@ -84,9 +83,38 @@ $layout-navigation-dot-spacing: 4px !default;
         }
 
         &__title button {
-            margin: 0;
             position: absolute;
-            right: 0.5rem;
+            right: 1rem;
+        }
+
+        &__button {
+            background-color: $layout-navigation-button-color-background-default;
+            border-radius: var(--f-border-radius-medium);
+            border: var(--f-border-width-medium) solid transparent;
+            box-shadow: none;
+            color: $layout-navigation-button-color-default;
+            cursor: pointer;
+            display: inline-flex;
+            justify-content: center;
+            outline-offset: size.$padding-025;
+            padding: size.$padding-050;
+            transition: background-color var(--f-animation-duration-medium) ease-out;
+
+            &:focus {
+                background-color: $layout-navigation-button-color-background-focus;
+            }
+
+            &:hover {
+                background-color: $layout-navigation-button-color-background-hover;
+            }
+
+            &:active {
+                background-color: $layout-navigation-button-color-background-active;
+            }
+
+            &:focus {
+                @include focus.focus-indicator;
+            }
         }
 
         &__content {
