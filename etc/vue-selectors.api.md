@@ -57,6 +57,13 @@ export function FListSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FLoaderSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    wrapper(): string;
+    waitText(): string;
+}>;
+
+// @public
 export function FPaginatorSelectors(selector?: string): Readonly<{
     readonly selector: string;
     currentPageButton(this: void): string;

@@ -4,5 +4,6 @@ export { FCrudDatasetSelectors } from "./FCrudDataset.selectors";
 export { FDetailsPanelSelectors } from "./FDetailsPanel.selectors";
 export { FLabelSelectors } from "./FLabel.selectors";
 export { FListSelectors } from "./FList.selectors";
+export { FLoaderSelectors } from "./FLoader.selectors";
 export { FPaginatorSelectors } from "./FPaginator.selectors";
 export { FExpandableParagraphSelectors } from "./FExpandableParagraph.selectors";

@@ -453,7 +453,7 @@ export class FLoaderPageObject implements BasePageObject {
     // (undocumented)
     el(): DefaultCypressChainable;
     // (undocumented)
-    selector: string;
+    get selector(): string;
     // (undocumented)
     waitText(): DefaultCypressChainable;
     // (undocumented)
