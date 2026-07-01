@@ -27,7 +27,7 @@
     "@fkui/logic": "../../assets/vendor-fkui-logic-9ed948.js",
     "@fkui/date": "../../assets/vendor-fkui-date-4ec930.js",
     "@fkui/vue": "../../assets/vendor-fkui-vue-8e8ae5.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-cc95ed.js"
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-83362c.js"
   },
   "integrity": {
     "../../assets/vendor-vue-5ec080.js": "sha384-gs192ncfFJwhno/cvRdXGH+jYE5XKrbqOaSi2xM8w6DAe1aLfFy8JHgNkDCx+isP",
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-logic-9ed948.js": "sha384-5mW5y/PYSM5vHGddH/4Shn8prsUJrV4tEXpuxjA1ZI0z1NDh2JjokIoTk3viQFgU",
     "../../assets/vendor-fkui-date-4ec930.js": "sha384-pq05tS3yKOrr/fsY3iZ74ZrIeKXlAnLfHhLBVljCdO+ZS0Ulow1fh9oRg+c8zSuE",
     "../../assets/vendor-fkui-vue-8e8ae5.js": "sha384-PQ9d0nrZg3CyX1LI6ts7kNGvZxOLeLn+bTrVwqeI3IUl9db63H+gkaFDt1Q9U0ng",
-    "../../assets/vendor-forsakringskassan-docs-live-example-cc95ed.js": "sha384-ww/FkpHTezQk6gkvnB4+FYFxFFYRO9jwMpgWWpEvJ81/9K/+rxthjh0qPJkHExyh"
+    "../../assets/vendor-forsakringskassan-docs-live-example-83362c.js": "sha384-7PyqGRfvcO68TLMPEWNNQ1qVBNCSld86SfPY9R8hkZZQF1+UNtGXsWU0v3jCGEzD"
   }
 }
         </script><script
@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-a84391.json"
+    href="../../search-data-2c7166.json"
     as="fetch"
     crossorigin
-    integrity="sha384-dpHjOVuh25dhpwfE8V5SCVexHznTfKRVIzV4/P719q3+7Nnb+qU4eiz1ouWMMuq+"
+    integrity="sha384-XythZ0bgAC0wpw3QQaJhvLvPTRmDyuttnMBUV7LHMX5kGD+ews1cykoPLNTxHqlT"
     id="search-data"
 />
 <script>
@@ -794,7 +794,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
             <h4 id="foredra_testdata_i_direkt_anslutning_till_testfallet" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#foredra_testdata_i_direkt_anslutning_till_testfallet">Föredra testdata i direkt anslutning till testfallet</a></h4><p class="docs-paragraph">Testdata lägger vi i första hand i direkt anslutning till testfallet.</p>
 
                 <div
-                    id="example-64065f"
+                    id="example-29054e"
                     class="code-preview code-preview--default"
                     
                     
@@ -802,15 +802,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;x should y&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-    expect.<span class="hljs-title function_">assertions</span>(<span class="hljs-number">1</span>);
-    <span class="hljs-keyword">const</span> data = [
-        {
-            <span class="hljs-comment">/* ... */</span>
-        },
-        {
-            <span class="hljs-comment">/* ... */</span>
-        },
-    ];
+    <span class="hljs-keyword">const</span> data = [{<span class="hljs-comment">/* ... */</span>}, {<span class="hljs-comment">/* ... */</span>}];
     <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">func</span>(data);
     <span class="hljs-title function_">expect</span>(result).<span class="hljs-title function_">toHaveLength</span>(<span class="hljs-number">2</span>);
 });
@@ -821,7 +813,7 @@ Genom att lägga testdata i anslutning till testet är det lätt att utläsa var
 <h4 id="bryt_ut_stor_och_repetitiv_testdata" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#bryt_ut_stor_och_repetitiv_testdata">Bryt ut stor och repetitiv testdata</a></h4><p class="docs-paragraph">Om det inte går att minimera storleken på testdata eller den används frekvent bryt ut den till en separat fil.</p>
 
                 <div
-                    id="example-273485"
+                    id="example-13609a"
                     class="code-preview code-preview--default"
                     
                     
@@ -848,7 +840,7 @@ Genom att lägga testdata i anslutning till testet är det lätt att utläsa var
             <p class="docs-paragraph">Filerna läggs med fördel i <code>__fixtures__</code>:</p>
 
                 <div
-                    id="example-a36150"
+                    id="example-f1bc44"
                     class="code-preview code-preview--default"
                     
                     
@@ -872,7 +864,7 @@ Stora mängder testdata distraherar från själva testfallet.</p>
 </ol>
 
                 <div
-                    id="example-24c855"
+                    id="example-9cc533"
                     class="code-preview code-preview--default"
                     data-test="given-when-then"
                     
@@ -903,7 +895,7 @@ Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p>
 <p class="docs-paragraph">Dåligt:</p>
 
                 <div
-                    id="example-4bb19a"
+                    id="example-3f7841"
                     class="code-preview code-preview--default"
                     
                     
@@ -919,7 +911,7 @@ Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p>
 <p class="docs-paragraph">Bra:</p>
 
                 <div
-                    id="example-ba5403"
+                    id="example-a2d9e5"
                     class="code-preview code-preview--default"
                     
                     
@@ -963,7 +955,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <li>Systemet under test (SUT) (exempelvis klassen, funktionen, komponenten som testas).</li>
 </ol>
 <p class="docs-paragraph">Typescript funktion, klass osv:</p><div
-                    id="example-d65f98"
+                    id="example-b0f794"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -982,7 +974,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
             <p class="docs-paragraph">För en VueJS komponent, importera komponenten sist direkt från <code>.vue</code> filen:</p>
 
                 <div
-                    id="example-705482"
+                    id="example-7cf0a7"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -995,7 +987,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
             <p class="docs-paragraph">Motivering: ordningen av imports gör det mer överskådligt och snabbare att greppa.</p>
 <h3 id="props" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#props">Props</a></h3>
                 <div
-                    id="example-2e8638"
+                    id="example-181acb"
                     class="code-preview code-preview--default"
                     
                     
@@ -1028,7 +1020,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <p class="docs-paragraph">Motivering: genom att inte attacha till <code>body</code> så behöver vi inte lika mycket uppstädning mellan testfall</p>
 <h3 id="foredra_vi_spyon_over_vi_fn" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#foredra_vi_spyon_over_vi_fn">Föredra <code>vi.spyOn</code> över <code>vi.fn()</code></a></h3>
                 <div
-                    id="example-17017e"
+                    id="example-72aa5e"
                     class="code-preview code-preview--default"
                     
                     
@@ -1043,7 +1035,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <h3 id="foredra_lokalt_scopad_wrapper_over_global" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#foredra_lokalt_scopad_wrapper_over_global">Föredra lokalt scopad wrapper över global</a></h3><p class="docs-paragraph">istället för:</p>
 
                 <div
-                    id="example-942bf6"
+                    id="example-a73c32"
                     class="code-preview code-preview--default"
                     
                     
@@ -1060,7 +1052,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
             <p class="docs-paragraph">kör:</p>
 
                 <div
-                    id="example-768845"
+                    id="example-98b741"
                     class="code-preview code-preview--default"
                     
                     
@@ -1089,7 +1081,7 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
 <p class="docs-paragraph">För att korrekt mocka och verifiera <code>console.log</code> använder du <code>vi.spyOn(..)</code>:</p>
 
                 <div
-                    id="example-97d205"
+                    id="example-7f10ff"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -1128,7 +1120,7 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
 <h2 id="pageobject_for_cypress" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#pageobject_for_cypress">Pageobject för Cypress</a></h2><p class="docs-paragraph">Vi skriver och levererar pageobject för alla publika komponenter och moduler.</p>
 <h3 id="mall" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#mall">Mall</a></h3>
                 <div
-                    id="example-34a83b"
+                    id="example-91127f"
                     class="code-preview code-preview--default"
                     
                     
@@ -1169,7 +1161,7 @@ Undvik arrow-funktion-som-property mönster:</p>
 <p class="docs-paragraph">Istället för:</p>
 
                 <div
-                    id="example-7d78c5"
+                    id="example-093e64"
                     class="code-preview code-preview--default"
                     
                     
@@ -1194,7 +1186,7 @@ Undvik arrow-funktion-som-property mönster:</p>
             <p class="docs-paragraph">Använd vanliga klassmetoder:</p>
 
                 <div
-                    id="example-e9a184"
+                    id="example-cd64bf"
                     class="code-preview code-preview--default"
                     
                     
@@ -1222,7 +1214,7 @@ Undvik arrow-funktion-som-property mönster:</p>
 Skriv istället ihop selectorn med en template literal:</p>
 
                 <div
-                    id="example-4fc1a5"
+                    id="example-b811bd"
                     class="code-preview code-preview--default"
                     
                     
@@ -1282,9 +1274,9 @@ Skriv istället ihop selectorn med en template literal:</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">doc/vitest (<a href="https://github.com/Forsakringskassan/designsystem/commits/68141d76feb01edc6af7052f45a99e7086c17d68">68141d7</a>)<br />
+<div class="footer__right"><div class="version">doc/vitest (<a href="https://github.com/Forsakringskassan/designsystem/commits/7ef2ff9e63ee02beb1c8106e33e0b6b0f4452fd6">7ef2ff9</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1459">PR 1459</a><br />
-        2026-07-01 07:12
+        2026-07-01 08:03
 </div>
 <div class="toolbar__item">
     <form id="version">
