@@ -15,6 +15,14 @@ export function FButtonSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FCheckboxFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    checkbox(): string;
+    label(): string;
+    details(): string;
+}>;
+
+// @public
 export function FCrudDatasetSelectors(selector?: string): Readonly<{
     readonly selector: string;
     addButton(): string;
