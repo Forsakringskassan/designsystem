@@ -229,7 +229,7 @@ export class FDetailsPanelPageObject implements BasePageObject {
     static fromName(name: string): FDetailsPanelPageObject;
     header(): Cypress.Chainable<JQuery>;
     protected static nameSelector(name: string): string;
-    readonly selector: string;
+    get selector(): string;
 }
 
 // @public (undocumented)

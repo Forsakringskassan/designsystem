@@ -23,6 +23,14 @@ export function FCrudDatasetSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FDetailsPanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    content(): string;
+    footer(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
