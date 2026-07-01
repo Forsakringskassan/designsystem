@@ -6,6 +6,10 @@ import { FButtonSelectors } from "./FButton.selectors";
 it("should use default selector when no selector was given", () => {
     expect.assertions(2);
     const wrapper = mount(FButton, {
+        props: {
+            size: "medium",
+            variant: "primary",
+        },
         slots: { default: "Click me" },
     });
     const { selector } = FButtonSelectors();
@@ -18,6 +22,10 @@ it("should use explicit selector when custom selector was given", () => {
     expect.assertions(2);
     const wrapper = mount(FButton, {
         attrs: { "data-test": "my-button" },
+        props: {
+            size: "medium",
+            variant: "primary",
+        },
         slots: { default: "Click me" },
     });
     const { selector } = FButtonSelectors('[data-test="my-button"]');
