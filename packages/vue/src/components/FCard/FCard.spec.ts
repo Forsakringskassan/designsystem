@@ -14,7 +14,7 @@ const loader = new FileSystemConfigLoader([cjsResolver()], {
         "html-validate-vue:recommended",
         "@fkui/vue:recommended",
     ],
-    plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
+    plugins: ["@fkui/vue/htmlvalidate", "html-validate-vue"],
 });
 const htmlvalidate = new HtmlValidate(loader);
 
