@@ -1362,17 +1362,17 @@ export type ParseFunction<TModel> = (viewValue: string) => TModel | undefined;
 
 // @public (undocumented)
 export enum Placement {
-    "A" = "A",
-    "B" = "B",
-    "C" = "C",
-    "D" = "D",
-    "E" = "E",
-    "F" = "F",
-    "Fallback" = "Fallback",
-    "G" = "G",
-    "H" = "H",
-    "I" = "I",
-    "NotCalculated" = "NotCalculated"
+    A = "A",
+    B = "B",
+    C = "C",
+    D = "D",
+    E = "E",
+    F = "F",
+    Fallback = "Fallback",
+    G = "G",
+    H = "H",
+    I = "I",
+    NotCalculated = "NotCalculated"
 }
 
 // @internal (undocumented)

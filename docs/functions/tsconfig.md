@@ -15,18 +15,14 @@ Lägg till i din `tsconfig.json`:
 
 ```json name=base-config hidden
 {
-    "compilerOptions": {
-        /* ... */
-    }
+    "compilerOptions": {/* ... */}
 }
 ```
 
 ```json name=recommended compare=base-config context=5
 {
     "extends": ["@fkui/tsconfig/recommended"],
-    "compilerOptions": {
-        /* ... */
-    }
+    "compilerOptions": {/* ... */}
 }
 ```
 
@@ -37,9 +33,7 @@ Utöver den rekommenderade konfigurationen använd konfigurationen för Cypress:
 ```json compare=recommended context=5
 {
     "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/cypress"],
-    "compilerOptions": {
-        /* ... */
-    }
+    "compilerOptions": {/* ... */}
 }
 ```
 
@@ -50,8 +44,6 @@ Utöver den rekommenderade konfigurationen använd konfigurationen för Vue:
 ```json compare=recommended context=5
 {
     "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/vue"],
-    "compilerOptions": {
-        /* ... */
-    }
+    "compilerOptions": {/* ... */}
 }
 ```

@@ -32,7 +32,6 @@ import { isFTableCellApi, tableCellApiSymbol } from "./f-table-api";
 import { activateCell, maybeNavigateToCell, setDefaultCellTarget, stopEdit } from "./f-table.logic";
 import { getBodyRowCount } from "./get-body-row-count";
 import { getMetaRows } from "./get-meta-rows";
-import { type MetaRow } from "./meta-row";
 import { useSelectableRowSource } from "./selectable-row-source";
 import { stopEditKey } from "./start-stop-edit";
 import { type NormalizedTableColumn, type TableColumn, normalizeTableColumns } from "./table-column";
@@ -111,9 +110,7 @@ const selectableRows = computed(() => {
     const nestedAttribute = getDatasetMetadata(sourceRows).nestedAttribute;
     return setItemIdentifiers(sourceRows, keyAttribute, nestedAttribute);
 });
-const metaRows = computed(
-    (): Array<MetaRow<T>> => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute.value),
-);
+const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute.value));
 const isTreegrid = computed(() => Boolean(expandableAttribute.value));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
 

@@ -1,8 +1,7 @@
 import { type ComponentValidityEvent, type FormErrorList } from "../../types";
 
 type ComponentReferences =
-    | Record<string, ComponentValidityEvent>
-    | Record<string, FormErrorList>;
+    Record<string, ComponentValidityEvent> | Record<string, FormErrorList>;
 
 /**
  * Clean inputs which doesn't exist in the DOM

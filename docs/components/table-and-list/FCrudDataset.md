@@ -52,9 +52,7 @@ interface MyInterface {}
 /* --- cut above --- */
 
 function onBeforeCreate(): MyInterface {
-    return {
-        /* ... */
-    };
+    return {/* ... */};
 }
 ```
 

@@ -4,11 +4,7 @@ import { setLayout } from "./layout-register";
  * @public
  */
 export type LayoutAreaAttachPanel =
-    | "none"
-    | "left"
-    | "right"
-    | "top"
-    | "bottom";
+    "none" | "left" | "right" | "top" | "bottom";
 
 /**
  * @public

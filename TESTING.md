@@ -172,14 +172,7 @@ declare function func(data: unknown): string[];
 /* --- cut above --- */
 
 it("x should y", () => {
-    const data = [
-        {
-            /* ... */
-        },
-        {
-            /* ... */
-        },
-    ];
+    const data = [{/* ... */}, {/* ... */}];
     const result = func(data);
     expect(result).toHaveLength(2);
 });

@@ -30,8 +30,7 @@ export interface TableColumnMenu<T> extends TableColumnBase {
  * @public
  */
 export type TableColumnMenuActionLabel<T> =
-    | string
-    | ((this: void, row: T) => string);
+    string | ((this: void, row: T) => string);
 
 /**
  * @public
