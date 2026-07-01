@@ -484,7 +484,8 @@ export class FMinimizablePanelPageObject implements BasePageObject {
     el(): DefaultCypressChainable;
     footer(): Cypress.Chainable<JQuery>;
     header(): Cypress.Chainable<JQuery>;
-    readonly selector: string;
+    // (undocumented)
+    get selector(): string;
     toggleButton(): Cypress.Chainable<JQuery<HTMLButtonElement>>;
 }
 
