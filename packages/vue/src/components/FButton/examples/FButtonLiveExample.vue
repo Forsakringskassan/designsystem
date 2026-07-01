@@ -92,7 +92,7 @@ export default defineComponent({
         <f-select-field v-model="size">
             <template #label> Storlek </template>
             <option value="small">Small</option>
-            <option :value="undefined">Medium (standard)</option>
+            <option value="medium">Medium (standard)</option>
             <option value="large">Large</option>
         </f-select-field>
         <f-checkbox-field v-model="hasIcon" :value="true"> Visa ikon </f-checkbox-field>
