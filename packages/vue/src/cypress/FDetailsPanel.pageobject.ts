@@ -1,3 +1,4 @@
+import { FDetailsPanelSelectors } from "../selectors";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
@@ -6,11 +7,15 @@ import { type BasePageObject, type DefaultCypressChainable } from "./common";
  * @public
  */
 export class FDetailsPanelPageObject implements BasePageObject {
-    /** Base selector */
-    public readonly selector: string;
+    private _selectors: ReturnType<typeof FDetailsPanelSelectors>;
 
     protected constructor(selector: string) {
-        this.selector = selector;
+        this._selectors = FDetailsPanelSelectors(selector);
+    }
+
+    /** Base selector */
+    public get selector(): string {
+        return this._selectors.selector;
     }
 
     /**
@@ -34,28 +39,28 @@ export class FDetailsPanelPageObject implements BasePageObject {
      * Panel element.
      */
     public el(): DefaultCypressChainable {
-        return cy.get(this.selector);
+        return cy.get(this._selectors.selector);
     }
 
     /**
      * Content in header slot (as defined by consumer).
      */
     public header(): Cypress.Chainable<JQuery> {
-        return cy.get(`${this.selector} [slot=header]`);
+        return cy.get(this._selectors.header());
     }
 
     /**
      * Content in content slot (as defined by consumer).
      */
     public content(): Cypress.Chainable<JQuery> {
-        return cy.get(`${this.selector} [slot=content]`);
+        return cy.get(this._selectors.content());
     }
 
     /**
      * Content in footer slot (as defined by consumer).
      */
     public footer(): Cypress.Chainable<JQuery> {
-        return cy.get(`${this.selector} [slot=footer]`);
+        return cy.get(this._selectors.footer());
     }
 
     /**
