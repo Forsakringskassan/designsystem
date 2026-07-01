@@ -3,4 +3,10 @@ $layout-navigation-resize-handle-color-background-default: var(--fkds-color-back
 $layout-navigation-resize-handle-color-background-hover: var(--fkds-color-action-background-secondary-hover) !default;
 $layout-navigation-resize-handle-dot-color-background: var(--fkds-color-action-text-secondary-default) !default;
 $layout-navigation-scrollbar-thumb-color-background: var(--fkds-color-border-primary) !default;
-$layout-navigation-button-tertiary-color-background-hover: var(--fkds-color-action-background-secondary-hover) !default;
+
+// BUTTON
+$layout-navigation-button-color-background-default: transparent !default;
+$layout-navigation-button-color-background-hover: var(--fkds-color-action-background-secondary-hover) !default;
+$layout-navigation-button-color-background-active: var(--fkds-color-action-background-secondary-active) !default;
+$layout-navigation-button-color-background-focus: transparent !default;
+$layout-navigation-button-color-default: var(--fkds-color-action-text-secondary-default) !default;
