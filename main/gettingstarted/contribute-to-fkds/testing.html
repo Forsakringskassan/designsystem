@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-394b17.json"
+    href="../../search-data-0b141a.json"
     as="fetch"
     crossorigin
-    integrity="sha384-uHnKhxo5ONdGkfgUmwUw+jqXWPaBVj8kqsE0gOatGolzwgHzo6dB9KdiUZQaUHPZ"
+    integrity="sha384-KZ2rwots04Ty7RQqMqAN/HM/RvS4yACiTjPgIWbsPgnKNGE/4KJNWdlYg2H9xin9"
     id="search-data"
 />
 <script>
@@ -589,7 +589,7 @@
                                 
                                 <li><a href="#overgripande_riktlinjer">Övergripande riktlinjer</a></li>
                                 
-                                <li><a href="#jest">Jest</a></li>
+                                <li><a href="#vitest">Vitest</a></li>
                                 
                                 <li><a href="#test_av_exempel">Test av exempel</a></li>
                                 
@@ -618,7 +618,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="overgripande_riktlinjer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#overgripande_riktlinjer">Övergripande riktlinjer</a></h2><h3 id="enhetstester_med_jest" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#enhetstester_med_jest">Enhetstester med <code>jest</code></a></h3><p class="docs-paragraph">Med enhetstester testar vi:</p>
+<h2 id="overgripande_riktlinjer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#overgripande_riktlinjer">Övergripande riktlinjer</a></h2><h3 id="enhetstester_med_vitest" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#enhetstester_med_vitest">Enhetstester med <code>vitest</code></a></h3><p class="docs-paragraph">Med enhetstester testar vi:</p>
 <ul>
 <li>logik</li>
 <li>events</li>
@@ -626,7 +626,7 @@
 <li>regler för HTML-Validate.</li>
 </ul>
 <p class="docs-paragraph">I enhetstester testar vi funktionalitet i isolation och mockar omvärlden.
-Styrkan med enhetstester i Jest ligger i att de är snabba, enkla att mocka och att man enkelt kan anropa funktioner.
+Styrkan med enhetstester i Vitest ligger i att de är snabba, enkla att mocka och att man enkelt kan anropa funktioner.
 Svagheten ligger i att det är svårt att vänta ut cykler från exempelvis Vue.js.</p>
 <h3 id="komponenttester_med_cypress" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#komponenttester_med_cypress">Komponenttester med <code>cypress</code></a></h3><p class="docs-paragraph">Med komponenttester testar vi:</p>
 <ul>
@@ -650,7 +650,7 @@ Styrkan i E2E-tester ligger i att det är enkelt att testa hur flera komponenter
 Svagheten ligger i att testerna är dyra resursmässigt (framförallt långsamma).</p>
 <h3 id="filnamn_och_katalogstruktur" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#filnamn_och_katalogstruktur">Filnamn och katalogstruktur</a></h3>
                 <div
-                    id="example-014a8f"
+                    id="example-e0894e"
                     class="code-preview code-preview--default"
                     
                     
@@ -661,13 +661,13 @@ Svagheten ligger i att testerna är dyra resursmässigt (framförallt långsamma
 ├─┬ packages
 │ ├─┬ logic
 │ │ └─┬ src
-│ │   └── ${component.spec.ts} (Jest enhetstester)
+│ │   └── ${component.spec.ts} (Vitest enhetstester)
 │ └─┬ vue
 │   ├─┬ pageobject
 │   │ └── ${component}.pageobject.ts (Externa pageobject)
 │   └─┬ src
 │     ├── ${component}.ct.ts (Cypress component tests)
-│     └── ${component}.spec.ts (Jest enhetstester)
+│     └── ${component}.spec.ts (Vitest enhetstester)
 └─┬ tests
   └─┬ specs
     ├─┬ pageobject
@@ -794,7 +794,7 @@ Onödig data ökar den kognitiva belastningen för läsaren och gör det svårar
             <h4 id="foredra_testdata_i_direkt_anslutning_till_testfallet" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#foredra_testdata_i_direkt_anslutning_till_testfallet">Föredra testdata i direkt anslutning till testfallet</a></h4><p class="docs-paragraph">Testdata lägger vi i första hand i direkt anslutning till testfallet.</p>
 
                 <div
-                    id="example-047633"
+                    id="example-29054e"
                     class="code-preview code-preview--default"
                     
                     
@@ -864,7 +864,7 @@ Stora mängder testdata distraherar från själva testfallet.</p>
 </ol>
 
                 <div
-                    id="example-d04d0b"
+                    id="example-9cc533"
                     class="code-preview code-preview--default"
                     data-test="given-when-then"
                     
@@ -872,8 +872,9 @@ Stora mängder testdata distraherar från själva testfallet.</p>
                 >
                     
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;x should y&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+    expect.<span class="hljs-title function_">assertions</span>(<span class="hljs-number">1</span>);
     <span class="hljs-comment">/* given: a button with a click callback */</span>
-    <span class="hljs-keyword">const</span> spy = jest.<span class="hljs-title function_">fn</span>();
+    <span class="hljs-keyword">const</span> spy = vi.<span class="hljs-title function_">fn</span>();
     <span class="hljs-keyword">const</span> wrapper = <span class="hljs-title function_">shallowMount</span>(<span class="hljs-title class_">ButtonComponent</span>, {
         <span class="hljs-attr">listeners</span>: {
             <span class="hljs-attr">click</span>: spy,
@@ -894,7 +895,7 @@ Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p>
 <p class="docs-paragraph">Dåligt:</p>
 
                 <div
-                    id="example-259276"
+                    id="example-3f7841"
                     class="code-preview code-preview--default"
                     
                     
@@ -910,7 +911,7 @@ Formatet uppmuntrar igenomtänkta och strukturerade testfall.</p>
 <p class="docs-paragraph">Bra:</p>
 
                 <div
-                    id="example-e49b25"
+                    id="example-a2d9e5"
                     class="code-preview code-preview--default"
                     
                     
@@ -943,7 +944,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <li>[ ] Cypresstest för exempel i dokumentation?</li>
 <li>[ ] Pageobject?</li>
 </ul>
-<h2 id="jest" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#jest">Jest</a></h2><h3 id="import_ordning" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#import_ordning">Import ordning</a></h3><p class="docs-paragraph">Import-rader ska sorteras enligt följande:</p>
+<h2 id="vitest" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#vitest">Vitest</a></h2><h3 id="import_ordning" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#import_ordning">Import ordning</a></h3><p class="docs-paragraph">Import-rader ska sorteras enligt följande:</p>
 <ol>
 <li>Importer med enbart side-effects.</li>
 <li>System och standardbibiliotek.</li>
@@ -954,14 +955,14 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <li>Systemet under test (SUT) (exempelvis klassen, funktionen, komponenten som testas).</li>
 </ol>
 <p class="docs-paragraph">Typescript funktion, klass osv:</p><div
-                    id="example-7adb3a"
+                    id="example-b0f794"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;html-validate/jest&quot;</span>;                              <span class="hljs-comment">// 1. Enbart side-effects</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;html-validate/vitest&quot;</span>;                              <span class="hljs-comment">// 1. Enbart side-effects</span>
 <span class="hljs-keyword">import</span> path <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;path&quot;</span>;                                  <span class="hljs-comment">// 2. NodeJS standardbibiliotek</span>
 <span class="hljs-keyword">import</span> _ <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;lodash&quot;</span>;                                   <span class="hljs-comment">// 3. Tredje-parts bibliotek</span>
 <span class="hljs-keyword">import</span> apimock <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@forsakringskassan/apimock-express&quot;</span>; <span class="hljs-comment">// 4. In-house bibliotek</span>
@@ -973,7 +974,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
             <p class="docs-paragraph">För en VueJS komponent, importera komponenten sist direkt från <code>.vue</code> filen:</p>
 
                 <div
-                    id="example-4cd370"
+                    id="example-7cf0a7"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -986,7 +987,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
             <p class="docs-paragraph">Motivering: ordningen av imports gör det mer överskådligt och snabbare att greppa.</p>
 <h3 id="props" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#props">Props</a></h3>
                 <div
-                    id="example-9fb804"
+                    id="example-181acb"
                     class="code-preview code-preview--default"
                     
                     
@@ -1017,24 +1018,24 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <p class="docs-paragraph">Om din it.each behöver en description parameter bryt istället ut till en egen it</p>
 <h3 id="undvik_attachtodocument_och_attachto" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#undvik_attachtodocument_och_attachto">Undvik <code>attachToDocument</code> och <code>attachTo</code></a></h3><p class="docs-paragraph">Om man inte måste! Testar man focus så måste man ha <code>attachTo</code></p>
 <p class="docs-paragraph">Motivering: genom att inte attacha till <code>body</code> så behöver vi inte lika mycket uppstädning mellan testfall</p>
-<h3 id="foredra_jest_spyon_over_jest_fn" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#foredra_jest_spyon_over_jest_fn">Föredra <code>jest.spyOn</code> över <code>jest.fn()</code></a></h3>
+<h3 id="foredra_vi_spyon_over_vi_fn" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#foredra_vi_spyon_over_vi_fn">Föredra <code>vi.spyOn</code> över <code>vi.fn()</code></a></h3>
                 <div
-                    id="example-3c68f1"
+                    id="example-72aa5e"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-console.log = jest.fn();</span>
-<span class="hljs-addition">+jest.spyOn(console, &#x27;log&#x27;);</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-console.log = vi.fn();</span>
+<span class="hljs-addition">+vi.spyOn(console, &#x27;log&#x27;);</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Motivering: <code>jest.spyOn</code> fungerar med <code>jest.clearAllMocks</code></p>
+            <p class="docs-paragraph">Motivering: <code>vi.spyOn</code> fungerar med <code>vi.clearAllMocks</code></p>
 <h3 id="foredra_lokalt_scopad_wrapper_over_global" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#foredra_lokalt_scopad_wrapper_over_global">Föredra lokalt scopad wrapper över global</a></h3><p class="docs-paragraph">istället för:</p>
 
                 <div
-                    id="example-ea02b7"
+                    id="example-a73c32"
                     class="code-preview code-preview--default"
                     
                     
@@ -1051,7 +1052,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
             <p class="docs-paragraph">kör:</p>
 
                 <div
-                    id="example-a05e87"
+                    id="example-98b741"
                     class="code-preview code-preview--default"
                     
                     
@@ -1077,10 +1078,10 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
 </code></pre>
 </blockquote>
 <p class="docs-paragraph">Istället för att dölja meddelandet se till att korrigera din kod.</p>
-<p class="docs-paragraph">För att korrekt mocka och verifiera <code>console.log</code> använder du <code>jest.spyOn(..)</code>:</p>
+<p class="docs-paragraph">För att korrekt mocka och verifiera <code>console.log</code> använder du <code>vi.spyOn(..)</code>:</p>
 
                 <div
-                    id="example-96bfc3"
+                    id="example-7f10ff"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -1090,10 +1091,10 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
                     <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { myFunction } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./my-function&quot;</span>;
 
 <span class="hljs-comment">/* spy on `console.log` but does not stub the function, i.e. the original console.log will still be called */</span>
-<span class="hljs-keyword">const</span> log = jest.<span class="hljs-title function_">spyOn</span>(<span class="hljs-variable language_">console</span>, <span class="hljs-string">&quot;log&quot;</span>);
+<span class="hljs-keyword">const</span> log = vi.<span class="hljs-title function_">spyOn</span>(<span class="hljs-variable language_">console</span>, <span class="hljs-string">&quot;log&quot;</span>);
 
 <span class="hljs-title function_">afterEach</span>(<span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-comment">/* keeps the spy but restore eventual mocked implementations of `console.log`. Alternatively `jest.restoreAllMocks()` may be used. */</span>
+    <span class="hljs-comment">/* keeps the spy but restore eventual mocked implementations of `console.log`. Alternatively `vi.clearAllMocks()` may be used. */</span>
     log.<span class="hljs-title function_">mockRestore</span>();
 });
 
@@ -1112,14 +1113,14 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
 });
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Undvik <code>console.log = jest.fn()</code> då det gör det svårare att återställa mellan testfall.
+            <p class="docs-paragraph">Undvik <code>console.log = vi.fn()</code> då det gör det svårare att återställa mellan testfall.
 Är du inte försiktig när du mockar <code>console.log</code> försvårar du för andra som försöker använda <code>console.log</code> och du kan dölja riktiga fel som skrivs ut i console.</p>
 <h2 id="test_av_exempel" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#test_av_exempel">Test av exempel</a></h2><h3 id="vi_skriver_cypress_test_for_varje_korbart_exempel" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#vi_skriver_cypress_test_for_varje_korbart_exempel">Vi skriver Cypress test för varje körbart exempel</a></h3><p class="docs-paragraph">Vi implementerar ett E2E‑test för varje exempel för att säkerställa att det laddas korrekt. Dessutom skall enkla komponenttester implementeras för att validera de grundläggande funktionerna.</p>
 <p class="docs-paragraph">Motivering: då exempel är en del av det vi levererar till konsumenter vill vi att de alltid ska vara i ett fungerande skick och inte utdaterade.</p>
 <h2 id="pageobject_for_cypress" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#pageobject_for_cypress">Pageobject för Cypress</a></h2><p class="docs-paragraph">Vi skriver och levererar pageobject för alla publika komponenter och moduler.</p>
 <h3 id="mall" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#mall">Mall</a></h3>
                 <div
-                    id="example-0828da"
+                    id="example-91127f"
                     class="code-preview code-preview--default"
                     
                     
@@ -1160,7 +1161,7 @@ Undvik arrow-funktion-som-property mönster:</p>
 <p class="docs-paragraph">Istället för:</p>
 
                 <div
-                    id="example-bcc21a"
+                    id="example-093e64"
                     class="code-preview code-preview--default"
                     
                     
@@ -1185,7 +1186,7 @@ Undvik arrow-funktion-som-property mönster:</p>
             <p class="docs-paragraph">Använd vanliga klassmetoder:</p>
 
                 <div
-                    id="example-48e8de"
+                    id="example-cd64bf"
                     class="code-preview code-preview--default"
                     
                     
@@ -1213,7 +1214,7 @@ Undvik arrow-funktion-som-property mönster:</p>
 Skriv istället ihop selectorn med en template literal:</p>
 
                 <div
-                    id="example-fec1b2"
+                    id="example-b811bd"
                     class="code-preview code-preview--default"
                     
                     
@@ -1273,9 +1274,9 @@ Skriv istället ihop selectorn med en template literal:</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/01a9399d491c29e7c2710f0221f2a57b7cde7d61">01a9399</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/7f4375ed4ffeb60d2780a53b0ff42959f1156ec8">7f4375e</a>)<br />
         
-        2026-07-01 07:32
+        2026-07-01 08:12
 </div>
 <div class="toolbar__item">
     <form id="version">
