@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-07c65f.json"
+    href="../../search-data-652423.json"
     as="fetch"
     crossorigin
-    integrity="sha384-PohCHLp2uy45QaFkwVgGU62CXoUpvTJjhA42CiPqmxGgWS0VtKZsuoBWw0iiWsd/"
+    integrity="sha384-ca8FWufFq7vhQEScI7ecLb7jjLZATv4N9YjdBPhFDAZ+4aSMfqWwCTK99JEmMnHk"
     id="search-data"
 />
 <script>
@@ -1801,13 +1801,13 @@ Ett exempel är om man har en knapp med en text, och i skärmläsare vill förty
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-2e5558"></div>
+        <div id="example-b77cab"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./accessibility-2e5558.js"></script>
+        <script type="module" src="./accessibility-b77cab.js"></script>
     
                 </div>
                 <div>
@@ -1932,7 +1932,7 @@ Klassen <code>sr-separator</code> används för att separera uppläsningen av tv
             </div>
         
             <div
-                id="example-a8a643"
+                id="example-4dfd11"
                 class="code-preview code-preview--default"
                 
                 
@@ -1948,12 +1948,7 @@ Klassen <code>sr-separator</code> används för att separera uppläsningen av tv
 </div>
 <div class="tooltip">
     <div class="tooltip__container">
-        <f-button
-            size="medium"
-            variant="secondary"
-            class="tooltip__button"
-            aria-expanded="true"
-        >
+        <button type="button" class="tooltip__button" aria-expanded="true">
             <span class="icon-stack icon-stack--circle">
                 <svg focusable="false" class="icon icon__info button__icon">
                     <use href="#f-icon-circle" />
@@ -1963,10 +1958,15 @@ Klassen <code>sr-separator</code> används för att separera uppläsningen av tv
                 </svg>
             </span>
             <span class="sr-only"> Denna text syns bara för skärmläsare. </span>
-        </f-button>
+        </button>
     </div>
 </div>
-<input type="text" class="sr-separator" maxlength="50" />
+<input
+    type="text"
+    class="sr-separator"
+    maxlength="50"
+    aria-label="Inmatningsfält"
+/>
 
                 </div>
                 <div>
@@ -1994,12 +1994,7 @@ Klassen <code>sr-separator</code> används för att separera uppläsningen av tv
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tooltip&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tooltip__container&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
-            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span>
-            <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span>
-            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tooltip__button&quot;</span>
-            <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;true&quot;</span>
-        &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tooltip__button&quot;</span> <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon-stack icon-stack--circle&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon icon__info button__icon&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#f-icon-circle&quot;</span> /&gt;</span>
@@ -2009,10 +2004,15 @@ Klassen <code>sr-separator</code> används för att separera uppläsningen av tv
                 <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> Denna text syns bara för skärmläsare. <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-separator&quot;</span> <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;50&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-separator&quot;</span>
+    <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;50&quot;</span>
+    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Inmatningsfält&quot;</span>
+/&gt;</span>
 </code></pre>
                 </div>
             </div>
@@ -2064,9 +2064,9 @@ Klassen <code>sr-separator</code> används för att separera uppläsningen av tv
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/fbutton-hv (<a href="https://github.com/Forsakringskassan/designsystem/commits/c5842c2cea5e1f69dce434b531c446c79089612c">c5842c2</a>)<br />
+<div class="footer__right"><div class="version">feature/fbutton-hv (<a href="https://github.com/Forsakringskassan/designsystem/commits/5796a724ac543625aa1d347e8ec3f94f2b31dc8d">5796a72</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1479">PR 1479</a><br />
-        2026-07-02 07:56
+        2026-07-02 08:11
 </div>
 <div class="toolbar__item">
     <form id="version">
