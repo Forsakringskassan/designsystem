@@ -2,7 +2,7 @@
  * Selectors for `FLabel`.
  *
  * @public
- * @since %version%
+ * @since v6.52.0
  * @param selector - The selector for the FLabel component.
  * @returns An object with selector methods for the FLabel component.
  */
@@ -14,7 +14,7 @@ export function FLabelSelectors(selector: string = ".label") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -41,7 +41,7 @@ export function FLabelSelectors(selector: string = ".label") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns A selector for the description element.
          */
         description(): string {
@@ -69,7 +69,7 @@ export function FLabelSelectors(selector: string = ".label") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns A selector for the format description element.
          */
         formatDescription(): string {
@@ -97,7 +97,7 @@ export function FLabelSelectors(selector: string = ".label") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns A selector for the error message element.
          */
         errorMessage(): string {
@@ -124,7 +124,7 @@ export function FLabelSelectors(selector: string = ".label") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns A selector for the error icon element.
          */
         errorIcon(): string {

@@ -2,7 +2,7 @@
  * Selectors for `FCrudDataset`.
  *
  * @public
- * @since %version%
+ * @since v6.52.0
  * @param selector - The selector for the FCrudDataset component.
  * @returns An object with selector methods for the FCrudDataset component.
  */
@@ -14,7 +14,7 @@ export function FCrudDatasetSelectors(selector: string = ".crud-dataset") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -39,7 +39,7 @@ export function FCrudDatasetSelectors(selector: string = ".crud-dataset") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns A selector for the add button element.
          */
         addButton(): string {
@@ -67,7 +67,7 @@ export function FCrudDatasetSelectors(selector: string = ".crud-dataset") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns A selector for the cancel button element.
          */
         cancelButton(): string {
@@ -95,7 +95,7 @@ export function FCrudDatasetSelectors(selector: string = ".crud-dataset") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns A selector for the confirm button element.
          */
         confirmButton(): string {

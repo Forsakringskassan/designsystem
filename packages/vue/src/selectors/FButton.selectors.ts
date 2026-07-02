@@ -2,7 +2,7 @@
  * Selectors for `FButton`.
  *
  * @public
- * @since %version%
+ * @since v6.52.0
  * @param selector - The selector for the FButton component.
  * @returns An object with selector methods for the FButton component.
  */
@@ -14,7 +14,7 @@ export function FButtonSelectors(selector: string = ".button") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns The root selector for the component.
          */
         get selector(): string {

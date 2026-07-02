@@ -2,7 +2,7 @@
  * Selectors for `FBadge`.
  *
  * @public
- * @since %version%
+ * @since v6.52.0
  * @param selector - The selector for the FBadge component.
  * @returns An object with selector methods for the FBadge component.
  */
@@ -14,7 +14,7 @@ export function FBadgeSelectors(selector: string = ".badge") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns The root selector for the component.
          */
         get selector(): string {

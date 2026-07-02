@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 6.52.0 (2026-07-02)
+
+### Features
+
+* **@fkui/vue-labs, @fkui/vue:** `FButton` change prop `size` and `variant` to required (refs SFKUI-7994) 79b6d33
+* **@fkui/vue:** add `FBadgeSelectors` (refs SFKUI-6500) 1821004
+* **@fkui/vue:** add `FButtonSelectors` (refs SFKUI-6500) c9fecc0
+* **@fkui/vue:** add `FCrudDatasetSelectors` (refs SFKUI-6500) 0a28b5f
+* **@fkui/vue:** add `FDetailsPanelSelectors` (refs SFKUI-6500) a6b10b6
+* **@fkui/vue:** add `FLabelSelectors` (refs SFKUI-6500) c06f2f4
+* **@fkui/vue:** add `FLoaderSelectors` (refs SFKUI-6500) 403f8e0
+* **@fkui/vue:** add `FMinimizablePanelSelectors` (refs SFKUI-6500) 88a3a34
+
+### Bug Fixes
+
+* **@fkui/vue:** add missing nav landmark label to application layout (refs SFKUI-6500) aaf7050
+* **deps:** update dependency i18next to v26.3.2 e4cc0a3
+* **deps:** update dependency i18next to v26.3.3 3dbfbe4
+
 ## 6.51.0 (2026-06-25)
 
 ### Features

@@ -5,7 +5,7 @@
  * attribute to scope selectors when multiple panels are present on a page.
  *
  * @public
- * @since %version%
+ * @since v6.52.0
  * @param selector - The selector for the FDetailsPanel component.
  * @returns An object with selector methods for the FDetailsPanel component.
  */
@@ -19,7 +19,7 @@ export function FDetailsPanelSelectors(
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -44,7 +44,7 @@ export function FDetailsPanelSelectors(
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns A selector for the panel header slot element.
          */
         header(): string {
@@ -69,7 +69,7 @@ export function FDetailsPanelSelectors(
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns A selector for the panel content slot element.
          */
         content(): string {
@@ -94,7 +94,7 @@ export function FDetailsPanelSelectors(
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns A selector for the panel footer slot element.
          */
         footer(): string {

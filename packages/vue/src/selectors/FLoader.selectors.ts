@@ -2,7 +2,7 @@
  * Selectors for `FLoader`.
  *
  * @public
- * @since %version%
+ * @since v6.52.0
  * @param selector - The selector for the FLoader component.
  * @returns An object with selector methods for the FLoader component.
  */
@@ -14,7 +14,7 @@ export function FLoaderSelectors(selector: string = ".loader") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -39,7 +39,7 @@ export function FLoaderSelectors(selector: string = ".loader") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns A selector for the loader wrapper element.
          */
         wrapper(): string {
@@ -66,7 +66,7 @@ export function FLoaderSelectors(selector: string = ".loader") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.52.0
          * @returns A selector for the wait text element.
          */
         waitText(): string {
