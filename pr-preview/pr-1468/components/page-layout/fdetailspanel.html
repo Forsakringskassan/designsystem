@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-be3b1f.json"
+    href="../../search-data-379d1e.json"
     as="fetch"
     crossorigin
-    integrity="sha384-ZuMFNiB6SAAH7C5p+FCw9Ob9rL9JBtLVDzzXYfmZP3sDvwHA/zWLoGWMswD5hP8c"
+    integrity="sha384-ak7Mv+FPI8Sj3VI92RvPnnK3J/wJljnn09M07BSKePYhrLzuDyB/JRwsBTrivEqr"
     id="search-data"
 />
 <script>
@@ -1549,7 +1549,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/33be8e02ba61a9acf23942d4dd9e0311e45a50a8/packages/vue/src/components/FDetailsPanel/FDetailsPanel.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/cad7af6e8ccb822cba23805b32c8dda189fd6081/packages/vue/src/components/FDetailsPanel/FDetailsPanel.vue">
                 FDetailsPanel
             </a>
             
@@ -1609,18 +1609,18 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-53b744"></div>
+        <div id="example-4b5ecb"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
-.layout-container[data-v-53b744] {
+.layout-container[data-v-4b5ecb] {
     container-type: size;
     height: 200px;
 }
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FDetailsPanelExample-53b744.js"></script>
+        <script type="module" src="./FDetailsPanelExample-4b5ecb.js"></script>
     
                 </div>
                 <div>
@@ -1711,29 +1711,29 @@ interface <span class="hljs-title class_">Item</span> {
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-b7c417"></div>
+        <div id="example-fd5864"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
-.layout-container[data-v-b7c417] {
+.layout-container[data-v-fd5864] {
     container-type: size;
     height: 300px;
     border: 2px dashed #777;
     padding: 1px;
 }
-.panel[data-v-b7c417]::part(header) {
+.panel[data-v-fd5864]::part(header) {
     background: salmon;
 }
-.panel[data-v-b7c417]::part(content) {
+.panel[data-v-fd5864]::part(content) {
     background: cyan;
 }
-.panel[data-v-b7c417]::part(footer) {
+.panel[data-v-fd5864]::part(footer) {
     background: lightgreen;
 }
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FDetailsPanelSlots-b7c417.js"></script>
+        <script type="module" src="./FDetailsPanelSlots-fd5864.js"></script>
     
                     </div>
                 </div>
@@ -1971,7 +1971,7 @@ panel.<span class="hljs-title function_">open</span>({ <span class="hljs-attr">n
             <h2 id="egna_knappar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#egna_knappar">Egna knappar</a></h2><p class="docs-paragraph">Du kan lägga in egna knappar som stänger detaljpanelen.</p>
 
                 <div
-                    id="example-447ce4"
+                    id="example-312cc2"
                     class="code-preview code-preview--default"
                     
                     
@@ -1983,7 +1983,13 @@ panel.<span class="hljs-title function_">open</span>({ <span class="hljs-attr">n
                  &lt;h2 :slot=&quot;panelScope.header&quot;&gt;Rubrik&lt;/h2&gt;
 <span class="hljs-deletion">-                &lt;div :slot=&quot;panelScope.content&quot;&gt;Innehåll&lt;/div&gt;</span>
 <span class="hljs-addition">+                &lt;div :slot=&quot;panelScope.content&quot;&gt;</span>
-<span class="hljs-addition">+                    &lt;f-button @click=&quot;panelScope.close()&quot;&gt; Stäng &lt;/f-button&gt;</span>
+<span class="hljs-addition">+                    &lt;f-button</span>
+<span class="hljs-addition">+                        size=&quot;medium&quot;</span>
+<span class="hljs-addition">+                        variant=&quot;secondary&quot;</span>
+<span class="hljs-addition">+                        @click=&quot;panelScope.close()&quot;</span>
+<span class="hljs-addition">+                    &gt;</span>
+<span class="hljs-addition">+                        Stäng</span>
+<span class="hljs-addition">+                    &lt;/f-button&gt;</span>
 <span class="hljs-addition">+                &lt;/div&gt;</span>
                  &lt;div :slot=&quot;panelScope.footer&quot;&gt;Footer&lt;/div&gt;
              &lt;/template&gt;
@@ -1993,20 +1999,24 @@ panel.<span class="hljs-title function_">open</span>({ <span class="hljs-attr">n
             <p class="docs-paragraph"><code>close()</code> tar en optional sträng som kan användas för att särskilja olika knappar:</p>
 
                 <div
-                    id="example-ffc33b"
+                    id="example-c4ffca"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
                     data-language="html"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;close(&#x27;save&#x27;)&quot;</span>&gt;</span>Spara<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;close(&#x27;cancel&#x27;)&quot;</span>&gt;</span>Avbryt<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;close(&#x27;save&#x27;)&quot;</span>&gt;</span>
+    Spara
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;close(&#x27;cancel&#x27;)&quot;</span>&gt;</span>
+    Avbryt
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
 </code></pre>
                 </div>
             
                 <div
-                    id="example-f5bd8a"
+                    id="example-abd696"
                     class="code-preview code-preview--default"
                     
                     
@@ -2036,7 +2046,7 @@ Annars riskerar du att mutera originalet vilket bland annat förhindrar att avbr
 </ul>
 
             <div
-                id="example-b8dd49"
+                id="example-56a920"
                 class="code-preview code-preview--default"
                 
                 
@@ -2045,18 +2055,18 @@ Annars riskerar du att mutera originalet vilket bland annat förhindrar att avbr
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-71d0fb"></div>
+        <div id="example-49b3ad"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
-.layout-container[data-v-71d0fb] {
+.layout-container[data-v-49b3ad] {
     container-type: size;
     height: 520px;
 }
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FDetailsPanelEdit-71d0fb.js"></script>
+        <script type="module" src="./FDetailsPanelEdit-49b3ad.js"></script>
     
                 </div>
                 <div>
@@ -2223,7 +2233,7 @@ Som en riktlinje rekommenderar vi att endast visa en detaljpanel åt gången.</p
 <p class="docs-paragraph">Då det blir flera rotelement behöver panelerna placeras i en <code>FFixedPane</code> eller <code>FResizePane</code> för att layout ska bete sig korrekt.</p>
 
                 <div
-                    id="example-857a58"
+                    id="example-ebe4ef"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2239,7 +2249,7 @@ Som en riktlinje rekommenderar vi att endast visa en detaljpanel åt gången.</p
             <p class="docs-paragraph">Om en detaljpanel i samma grupp öppnas stängs alla andra detaljpaneler automatiskt (utan att <code>onClose()</code> anropas).</p>
 
                 <div
-                    id="example-ca2606"
+                    id="example-4b1699"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2391,9 +2401,9 @@ from being open at the same time.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">applicationlayout-button (<a href="https://github.com/Forsakringskassan/designsystem/commits/33be8e02ba61a9acf23942d4dd9e0311e45a50a8">33be8e0</a>)<br />
+<div class="footer__right"><div class="version">applicationlayout-button (<a href="https://github.com/Forsakringskassan/designsystem/commits/cad7af6e8ccb822cba23805b32c8dda189fd6081">cad7af6</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1468">PR 1468</a><br />
-        2026-07-01 20:59
+        2026-07-02 09:52
 </div>
 <div class="toolbar__item">
     <form id="version">
