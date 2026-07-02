@@ -172,6 +172,23 @@ describe("html-validate", () => {
     });
 
     describe("variant attribute", () => {
+        it("should be required", async () => {
+            expect.assertions(2);
+            const markup = /* HTML */ `
+                <f-button size="medium"> lorem ipsum </f-button>
+            `;
+            const report = await htmlvalidate.validateString(markup);
+            expect(report).toBeInvalid();
+            await expect(report).toMatchInlineCodeframe(`
+              error: <f-button> is missing required "variant" attribute (element-required-attributes)
+                1 |
+              > 2 |                 <f-button size="medium"> lorem ipsum </f-button>
+                  |                  ^^^^^^^^
+                3 |
+              Selector: f-button
+            `);
+        });
+
         it("should allow valid values", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
@@ -212,6 +229,23 @@ describe("html-validate", () => {
     });
 
     describe("size attribute", () => {
+        it("should be required", async () => {
+            expect.assertions(2);
+            const markup = /* HTML */ `
+                <f-button variant="primary"> lorem ipsum </f-button>
+            `;
+            const report = await htmlvalidate.validateString(markup);
+            expect(report).toBeInvalid();
+            await expect(report).toMatchInlineCodeframe(`
+              error: <f-button> is missing required "size" attribute (element-required-attributes)
+                1 |
+              > 2 |                 <f-button variant="primary"> lorem ipsum </f-button>
+                  |                  ^^^^^^^^
+                3 |
+              Selector: f-button
+            `);
+        });
+
         it("should allow valid values", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
@@ -330,7 +364,9 @@ describe("html-validate", () => {
                 >
                     lorem ipsum
                 </f-button>
-                <f-button variant="tertiary" align-text> lorem ipsum </f-button>
+                <f-button size="medium" variant="tertiary" align-text>
+                    lorem ipsum
+                </f-button>
             `;
             const report = await htmlvalidate.validateString(markup);
             expect(report).toBeValid();

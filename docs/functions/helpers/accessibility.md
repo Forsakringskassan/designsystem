@@ -11,12 +11,18 @@ search:
 Om man vill dölja ett visst innehåll som enbart skärmläsare kan läsa upp så kan man använda sig utav klassen `sr-only`.
 Ett exempel är om man har en knapp med en text, och i skärmläsare vill förtydliga vad som händer när man trycker på knappen.
 
-```html
-<f-button>
-    <span class="sr-only">Gå vidare till</span>
-    Nästa
-    <span class="sr-only">sida</span>
-</f-button>
+```vue
+<script setup lang="ts">
+import { FButton } from "@fkui/vue";
+</script>
+
+<template>
+    <f-button size="medium" variant="secondary">
+        <span class="sr-only">Gå vidare till</span>
+        Nästa
+        <span class="sr-only">sida</span>
+    </f-button>
+</template>
 ```
 
 ## Separera element för skärmläsare
@@ -33,7 +39,7 @@ Klassen `sr-separator` används för att separera uppläsningen av två element,
 </div>
 <div class="tooltip">
     <div class="tooltip__container">
-        <f-button class="tooltip__button" aria-expanded="true">
+        <button type="button" class="tooltip__button" aria-expanded="true">
             <span class="icon-stack icon-stack--circle">
                 <svg focusable="false" class="icon icon__info button__icon">
                     <use href="#f-icon-circle" />
@@ -43,7 +49,7 @@ Klassen `sr-separator` används för att separera uppläsningen av två element,
                 </svg>
             </span>
             <span class="sr-only"> Denna text syns bara för skärmläsare. </span>
-        </f-button>
+        </button>
     </div>
 </div>
 <label class="label sr-separator">
@@ -63,7 +69,7 @@ Klassen `sr-separator` används för att separera uppläsningen av två element,
 </div>
 <div class="tooltip">
     <div class="tooltip__container">
-        <f-button class="tooltip__button" aria-expanded="true">
+        <button type="button" class="tooltip__button" aria-expanded="true">
             <span class="icon-stack icon-stack--circle">
                 <svg focusable="false" class="icon icon__info button__icon">
                     <use href="#f-icon-circle" />
@@ -73,8 +79,13 @@ Klassen `sr-separator` används för att separera uppläsningen av två element,
                 </svg>
             </span>
             <span class="sr-only"> Denna text syns bara för skärmläsare. </span>
-        </f-button>
+        </button>
     </div>
 </div>
-<input type="text" class="sr-separator" maxlength="50" />
+<input
+    type="text"
+    class="sr-separator"
+    maxlength="50"
+    aria-label="Inmatningsfält"
+/>
 ```

@@ -63,7 +63,7 @@ Komponenten förser `footer`-slotten med detaljer om felet.
 
 ```html static
 <template #footer="{ hasError, validationMessage }">
-    <f-button>
+    <f-button size="medium" variant="secondary">
         <span>Ändra</span>
         <span v-if="hasError" class="sr-only">{{ validationMessage }}</span>
     </f-button>
