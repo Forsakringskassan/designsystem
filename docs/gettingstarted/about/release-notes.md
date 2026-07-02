@@ -9,6 +9,16 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version %version%
+
+2026-07-01
+
+### Ändringar för knapp (FButton)
+
+Knapp har ändrats till att göra props `size` och `variant` obligatoriska. Det gör att det blir enklare och tydligare att se vilken storlek/variant som är vald. Läs mer om obligatoriska fält för API Props {@link button#api API Props för knapp}.
+
+Buggfixar, se {@link changelog Changelog}
+
 ## Version v6.49.0
 
 2026-06-03
