@@ -398,7 +398,6 @@ Motivering: `vi.spyOn` fungerar med `vi.clearAllMocks`
 istället för:
 
 ```ts
-/* eslint-disable sonarjs/assertions-in-tests */
 import { defineComponent } from "vue";
 import { shallowMount } from "@vue/test-utils";
 import { it } from "vitest";
@@ -417,7 +416,6 @@ it("should ..", () => {
 kör:
 
 ```ts
-/* eslint-disable sonarjs/assertions-in-tests */
 import { defineComponent } from "vue";
 import { shallowMount } from "@vue/test-utils";
 import { it } from "vitest";

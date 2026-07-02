@@ -126,6 +126,7 @@ module.exports = defineMetadata({
         inherit: "button",
         attributes: {
             size: {
+                required: true,
                 enum: ["small", "medium", "large"],
             },
             type: {
@@ -155,6 +156,7 @@ module.exports = defineMetadata({
                 boolean: true,
             },
             variant: {
+                required: true,
                 enum: ["primary", "secondary", "tertiary"],
             },
         },

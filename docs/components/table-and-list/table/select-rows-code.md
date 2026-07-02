@@ -81,7 +81,9 @@ async function removeSelected(): Promise<void> {
 ```
 
 ```html static
-<f-button @click="removeSelected"> Ta bort valda </f-button>
+<f-button size="medium" variant="secondary" @click="removeSelected">
+    Ta bort valda
+</f-button>
 
 <f-table
     v-model:selected-rows="selectedRows"
