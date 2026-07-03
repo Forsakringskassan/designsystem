@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/guides/validation/examples/WithParserFormatterExample.vue:WithParserFormatterExample-ff24a9.js
+// virtual-entry:virtual:docs/guides/validation/examples/WithParserFormatterExample.vue:WithParserFormatterExample-79ee65.js
 import { defineComponent } from "vue";
 import { FOutputField, FTextField } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createVNode as _createVNode, createElementBlock as _createElementBlock } from "vue";
@@ -111,7 +111,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-ff24a9"
+  selector: "#example-79ee65"
 });
 export {
   render
