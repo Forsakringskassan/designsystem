@@ -20,7 +20,7 @@ jobs:
             - name: Minimal build
               run: npm exec lerna -- run --include-dependencies --scope=@fkui/theme-default --scope=@fkui/vue --scope=@fkui/vue-labs --scope=@fkui/cypress-split build
             - name: Prettier
-              uses: Forsakringskassan/prettier-config@99dcf6a1f79338f14bf4fce03d33df689b8ad92b # v3.7.5
+              uses: Forsakringskassan/prettier-config@9f68ea9b6d1a3329ff59178e5cba8e3e6eafc407 # v3.7.6
             - name: ESLint
               if: success() || failure()
               uses: Forsakringskassan/eslint-config@87646662411746e1c4e4419bd9361d063e409787 # v15.1.12
