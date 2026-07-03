@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 6.52.1 (2026-07-03)
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** fix `FLayoutLeftPanel` content overlap (fixes SFKUI-7858) c5d9cb9
+* **@fkui/test-utils:** make jest matchers work with `injectGlobals: false` (refs SFKUI-6500) ca164b3
+
 ## 6.52.0 (2026-07-02)
 
 ### Features
