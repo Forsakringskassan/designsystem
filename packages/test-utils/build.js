@@ -13,7 +13,7 @@ async function build() {
         const common = {
             logLevel: "info",
             sourcemap: true,
-            external: ["vue", "@fkui/*", "vitest"],
+            external: ["vue", "@jest/globals", "@fkui/*", "vitest"],
             bundle: true,
             platform: "node",
             format,

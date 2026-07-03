@@ -73,6 +73,7 @@
   "devDependencies": {
     "@forsakringskassan/jest-config": "30.4.0",
     "@forsakringskassan/vitest-config-jsdom": "2.5.0",
+    "@jest/globals": "30.4.1",
     "@vue/server-renderer": "3.5.38",
     "@vue/test-utils": "2.4.11",
     "esbuild": "0.28.1",
@@ -82,11 +83,15 @@
     "vue": "3.5.38"
   },
   "peerDependencies": {
+    "@jest/globals": "^26.0.0 || ^27.0.0 || ^28.0.0 || ^29.0.0 || ^30.0.0",
     "jest": "^26.0.0 || ^27.0.0 || ^28.0.0 || ^29.0.0 || ^30.0.0",
     "vitest": "^4.0.0",
     "vue": "^3.0.0"
   },
   "peerDependenciesMeta": {
+    "@jest/globals": {
+      "optional": true
+    },
     "jest": {
       "optional": true
     },
