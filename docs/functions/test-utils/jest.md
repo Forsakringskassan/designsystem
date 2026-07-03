@@ -35,7 +35,6 @@ import "@fkui/test-utils/jest";
 it("should have focus", () => {
     const wrapper = mount(AwesomeComponent);
     const element = wrapper.get("#something");
-    /* @ts-expect-error -- bug in @fkui/test-utils, the type declaration is not properly exposed */
     expect(element).toHaveFocus();
 });
 ```

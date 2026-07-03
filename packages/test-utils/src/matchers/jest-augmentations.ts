@@ -1,3 +1,12 @@
+declare module "expect" {
+    interface Matchers<R> {
+        /**
+         * Expects element to have focus.
+         */
+        toHaveFocus(): R;
+    }
+}
+
 declare global {
     /* eslint-disable-next-line @typescript-eslint/no-namespace -- needed to match upstream */
     namespace jest {
