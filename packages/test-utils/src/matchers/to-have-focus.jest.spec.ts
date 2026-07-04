@@ -1,5 +1,6 @@
 /* eslint-disable jest/no-conditional-expect -- for testing exceptions */
 
+import { beforeEach, describe, expect, it } from "@jest/globals";
 import { toHaveFocus } from "./to-have-focus";
 
 expect.addSnapshotSerializer({
