@@ -28,33 +28,39 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FConfirmModalApiExample.vue:FConfirmModalApiExample-c97542.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FConfirmModalCustomButtons.vue:FConfirmModalCustomButtons-21796b.js
 import { defineComponent } from "vue";
-import { FButton, confirmModal } from "@fkui/vue";
-import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+import { FButton, FConfirmModal, openModal } from "@fkui/vue";
+import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = defineComponent({
-  name: "FConfirmModalApiExample",
+  name: "FConfirmModalCustomButtons",
   components: { FButton },
   data() {
     return {
-      frukt: {
-        namn: "Mango"
-      }
+      action: void 0,
+      isOpen: false,
+      threeButtons: [
+        {
+          label: "Ja, ta bort",
+          type: "primary",
+          screenreader: "telefonnumret",
+          event: "confirm"
+        },
+        { label: "Nej, uppdatera telefonnumret", event: "update" },
+        { label: "Nej, ta inte bort", screenreader: "telefonnumret", event: "dismiss" }
+      ]
     };
   },
   methods: {
-    confirmRemove(frukt) {
-      return confirmModal(this, {
-        heading: "Ta bort frukt",
-        content: `\xC4r du s\xE4ker att du vill ta bort "${frukt.namn}"?`,
-        confirm: "Ja, ta bort",
-        dismiss: "Nej, beh\xE5ll"
-      });
-    },
     async onClick() {
-      if (await this.confirmRemove(this.frukt)) {
-        alert("Bekr\xE4ftade");
-      }
+      this.action = await openModal(this, FConfirmModal, {
+        props: {
+          heading: "Ta bort telefonnummer",
+          content: "Vill du ta bort ditt telefonnummer?",
+          buttons: this.threeButtons,
+          size: "large"
+        }
+      });
     }
   }
 });
@@ -68,20 +74,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, {
       default: _withCtx(() => [..._cache[0] || (_cache[0] = [
         _createTextVNode(
-          "Ta bort",
+          "Tre knappar",
           -1
           /* CACHED */
         )
       ])]),
       _: 1
       /* STABLE */
-    }, 8, ["onClick"])
+    }, 8, ["onClick"]),
+    _createElementVNode(
+      "pre",
+      null,
+      " Modalen st\xE4ngdes med resultatet: " + _toDisplayString(_ctx.action) + " ",
+      1
+      /* TEXT */
+    )
   ]);
 }
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-c97542"
+  selector: "#example-21796b"
 });
 export {
   render
