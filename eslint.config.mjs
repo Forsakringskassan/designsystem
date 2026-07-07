@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/class-reference-in-static-methods": "off",
             "unicorn/consistent-json-file-read": "off",
             "unicorn/explicit-timer-delay": "off",
             "unicorn/logical-assignment-operators": "off",

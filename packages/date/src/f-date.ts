@@ -84,7 +84,7 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
                 return date;
             }
         }
-        return FDate.invalid();
+        return this.invalid();
     }
 
     /**
@@ -119,7 +119,7 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
         const paddedDay = day.toString().padStart(2, "0");
         const iso = `${String(year)}-${paddedMonth}-${paddedDay}`;
 
-        return FDate.fromIso(iso);
+        return this.fromIso(iso);
     }
 
     /**
@@ -412,10 +412,10 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
      */
     public static compare(a: FDate | string, b: FDate | string): number {
         if (typeof a === "string") {
-            a = FDate.fromIso(a);
+            a = this.fromIso(a);
         }
         if (typeof b === "string") {
-            b = FDate.fromIso(b);
+            b = this.fromIso(b);
         }
         const aInvalid = !a.isValid();
         const bInvalid = !b.isValid();

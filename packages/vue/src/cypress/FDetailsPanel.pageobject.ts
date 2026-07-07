@@ -31,7 +31,7 @@ export class FDetailsPanelPageObject implements BasePageObject {
      * @param name - Name given to panel.
      */
     public static fromName(name: string): FDetailsPanelPageObject {
-        const selector = FDetailsPanelPageObject.nameSelector(name);
+        const selector = this.nameSelector(name);
         return new FDetailsPanelPageObject(selector);
     }
 

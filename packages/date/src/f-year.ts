@@ -211,8 +211,8 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
         a: FYear | number | string,
         b: FYear | number | string,
     ): number {
-        const ax = FYear.toFYear(a);
-        const bx = FYear.toFYear(b);
+        const ax = this.toFYear(a);
+        const bx = this.toFYear(b);
         const aInvalid = !ax.isValid();
         const bInvalid = !bx.isValid();
         if (aInvalid || bInvalid) {
@@ -257,10 +257,10 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
      * @internal
      */
     private static toFYear(value: FYear | number | string): FYear {
-        if (value instanceof FYear) {
+        if (value instanceof this) {
             return value;
         } else {
-            return FYear.fromYear(value);
+            return this.fromYear(value);
         }
     }
 

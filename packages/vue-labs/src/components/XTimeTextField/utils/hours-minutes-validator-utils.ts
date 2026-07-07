@@ -22,8 +22,7 @@ export class HoursMinutesValidatorUtils {
             return false;
         }
 
-        const parseFunction =
-            HoursMinutesValidatorUtils.getParserFromConfig(config);
+        const parseFunction = this.getParserFromConfig(config);
         // eslint-disable-next-line @typescript-eslint/no-base-to-string -- Config may contain objects
         const limitAsNumber = parseFunction(String(config[name]));
         if (!isSet(limitAsNumber)) {
