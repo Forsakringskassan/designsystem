@@ -53,7 +53,7 @@ export interface EventBus {
 
 function lazyLoad<T>(fn: () => T): () => T {
     let cache: T;
-    return () => cache ?? (cache = fn());
+    return () => (cache ??= fn());
 }
 
 const eventTarget = lazyLoad(() => new EventTarget());

@@ -23,7 +23,7 @@ function findMatch(regexps: RegExp[], value: string): RegExpMatchArray | null {
 }
 
 function padInitialZeros(value: string | undefined, maxLength = 2): string {
-    value = value ?? "";
+    value ??= "";
     return value.padStart(maxLength, "0");
 }
 
