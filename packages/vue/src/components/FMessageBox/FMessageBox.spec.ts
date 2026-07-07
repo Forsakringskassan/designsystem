@@ -1,43 +1,124 @@
-import { VueWrapper, mount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import FMessageBox from "./FMessageBox.vue";
 import "html-validate/vitest";
 
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-} = {}): VueWrapper {
-    return mount(FMessageBox, {
-        attrs: { ...attrs },
-        props: { type: "", ...props },
-        slots: { ...slots },
-        global: {
-            stubs: ["FIcon"],
-        },
-    });
-}
-
 describe("FMessageBox", () => {
-    it.each`
-        type
-        ${"info"}
-        ${"error"}
-        ${"warning"}
-        ${"success"}
-    `("should match snapshot with correct type", ({ type }) => {
+    it("should render sr-only span when provideScreenReaderContext is true", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({ props: { type } });
-        expect(wrapper.element).toMatchSnapshot();
+        const wrapper = mount(FMessageBox, {
+            props: { type: "info", provideScreenReaderContext: true },
+        });
+
+        expect(wrapper.find("span.sr-only").exists()).toBe(true);
     });
 
-    it("should match snapshot with content", () => {
+    it("should not render sr-only span when provideScreenReaderContext is false", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            props: { type: "success" },
-            slots: { default: ` <p>content</p> ` },
+        const wrapper = mount(FMessageBox, {
+            props: { type: "info", provideScreenReaderContext: false },
         });
-        expect(wrapper.element).toMatchSnapshot();
+
+        expect(wrapper.find("span.sr-only").exists()).toBe(false);
+    });
+
+    it.each`
+        type         | expected
+        ${"info"}    | ${"Informationsmeddelande"}
+        ${"warning"} | ${"Varningsmeddelande"}
+        ${"error"}   | ${"Felmeddelande"}
+        ${"success"} | ${"Meddelande"}
+    `(
+        "should render correct screen reader text for type $type",
+        ({ type, expected }) => {
+            expect.assertions(1);
+            const wrapper = mount(FMessageBox, {
+                props: { type, provideScreenReaderContext: true },
+            });
+
+            expect(wrapper.find("span.sr-only").text()).toBe(expected);
+        },
+    );
+
+    describe("slot bindings", () => {
+        it("should provide headingSlotClass binding when layout is 'standard'", () => {
+            expect.assertions(1);
+            const wrapper = mount(FMessageBox, {
+                props: { type: "info", layout: "standard" },
+                slots: {
+                    default: `
+                        <template #default="{ headingSlotClass }">
+                             <h3 :class="headingSlotClass">Rubrik</h3>                            
+                        </template>
+                    `,
+                },
+            });
+
+            const header = wrapper.get("h3");
+            expect(header.classes()).toContain("message-box__heading");
+        });
+
+        it("should not provide headingSlotClass binding when layout is 'short'", () => {
+            expect.assertions(1);
+            const wrapper = mount(FMessageBox, {
+                props: { type: "info", layout: "short" },
+                slots: {
+                    default: `
+                        <template #default="{ headingSlotClass }">
+                            <h3 :class="headingSlotClass">Rubrik</h3>
+                        </template>
+                    `,
+                },
+            });
+            const header = wrapper.get("h3");
+            expect(header.classes()).not.toContain("message-box__heading");
+        });
+    });
+
+    describe("icon rendering", () => {
+        it("should render icon when layout is 'short'", () => {
+            expect.assertions(1);
+            const wrapper = mount(FMessageBox, {
+                props: { type: "error", layout: "short" },
+            });
+
+            expect(wrapper.find(".message-box__icon").exists()).toBe(true);
+        });
+
+        it("should not render icon when layout is 'standard'", () => {
+            expect.assertions(1);
+            const wrapper = mount(FMessageBox, {
+                props: { type: "error", layout: "standard" },
+            });
+
+            expect(wrapper.find(".message-box__icon").exists()).toBe(false);
+        });
+
+        it.each`
+            type         | symbol        | sign
+            ${"info"}    | ${"circle"}   | ${"i"}
+            ${"warning"} | ${"circle"}   | ${"alert"}
+            ${"error"}   | ${"triangle"} | ${"alert"}
+            ${"success"} | ${"circle"}   | ${"success"}
+        `(
+            "should render correct icon symbols for type=$type with layout='short'",
+            ({ type, symbol, sign }) => {
+                expect.assertions(3);
+                const wrapper = mount(FMessageBox, {
+                    props: { type, layout: "short" },
+                    global: {
+                        stubs: ["FIcon"],
+                    },
+                });
+
+                const icons = wrapper.findAllComponents("f-icon-stub");
+
+                // Two icons are rendered: the symbol icon and the sign icon
+                expect(icons).toHaveLength(2);
+                expect(icons[0].attributes("name")).toBe(symbol);
+                expect(icons[1].attributes("name")).toBe(sign);
+            },
+        );
     });
 });
 

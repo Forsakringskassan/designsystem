@@ -4,6 +4,7 @@ import {
     densityWrapperHeight,
     densityWrapperWidth,
 } from "@fkui/test-utils/vue";
+
 import FMessageBox from "./FMessageBox.vue";
 
 function getShortTemplate(type: string): string {
@@ -61,20 +62,13 @@ describe("short layout", () => {
     });
 });
 
-it("should have approved design", () => {
+it("should have approved default design", () => {
     const ScreenshotComponent = defineComponent({
         template: /* HTML */ `
-            <div class="row">
-                <div class="col col--sm-6">
-                    ${getDefaultTemplate("success")}
-                    ${getDefaultTemplate("warning")}
-                    ${getDefaultTemplate("error")} ${getDefaultTemplate("info")}
-                </div>
-                <div class="col col--sm-6">
-                    ${getShortTemplate("success")}
-                    ${getShortTemplate("warning")} ${getShortTemplate("error")}
-                    ${getShortTemplate("info")}
-                </div>
+            <div>
+                ${getDefaultTemplate("success")}
+                ${getDefaultTemplate("warning")} ${getDefaultTemplate("error")}
+                ${getDefaultTemplate("info")}
             </div>
         `,
         components: {
@@ -83,5 +77,35 @@ it("should have approved design", () => {
     });
 
     cy.mount(ScreenshotComponent);
+    cy.viewport(200, 400);
     cy.toMatchScreenshot();
+});
+
+describe("Visual forcedColor", () => {
+    const forcedColorModes = ["none", "dark", "light"] as const;
+
+    afterEach(() => {
+        cy.forcedColors("none");
+    });
+    for (const mode of Object.values(forcedColorModes)) {
+        it(`Should render short design correct forced color, ${mode} (visual)`, () => {
+            cy.forcedColors(mode);
+            const ScreenshotComponent = defineComponent({
+                template: /* HTML */ `
+                    <div>
+                        ${getShortTemplate("success")}
+                        ${getShortTemplate("warning")}
+                        ${getShortTemplate("error")} ${getShortTemplate("info")}
+                    </div>
+                `,
+                components: {
+                    FMessageBox,
+                },
+            });
+
+            cy.mount(ScreenshotComponent);
+            cy.viewport(200, 400);
+            cy.toMatchScreenshot();
+        });
+    }
 });
