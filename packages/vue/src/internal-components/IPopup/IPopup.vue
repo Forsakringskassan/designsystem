@@ -120,6 +120,7 @@ export default defineComponent({
         isInline(): boolean {
             let isInline = this.teleportDisabled || this.placement === Placement.Fallback;
 
+            /* eslint-disable unicorn/no-duplicate-if-branches -- technical debt */
             if (this.forceInline) {
                 isInline = true;
             } else if (this.forceOverlay) {
@@ -128,6 +129,7 @@ export default defineComponent({
                 // Overlay is required to get accurate results from placement calculation.
                 isInline = false;
             }
+            /* eslint-enable unicorn/no-duplicate-if-branches */
 
             return isInline;
         },

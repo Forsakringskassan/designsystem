@@ -16,6 +16,7 @@ export function updateCalendarValue(
     const { isDateEnabled, minDate, maxDate } = datepicker;
     const newCalendarValue = FDate.fromIso(newValue);
 
+    /* eslint-disable unicorn/no-duplicate-if-branches -- technical debt */
     if (!newCalendarValue.isValid()) {
         datepicker.calendarValue = undefined;
     } else if (isInvalidMonth(newCalendarValue, minDate, maxDate)) {
@@ -25,4 +26,5 @@ export function updateCalendarValue(
     } else if (!datepicker.calendarValue?.equals(newCalendarValue)) {
         datepicker.calendarValue = newCalendarValue;
     }
+    /* eslint-enable unicorn/no-duplicate-if-branches */
 }
