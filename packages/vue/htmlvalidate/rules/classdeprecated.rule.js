@@ -88,6 +88,7 @@ class ClassDeprecated extends Rule {
             for (const { item, location } of tokens.iterator()) {
                 for (const entry of deprecatedClasses) {
                     if (entry.name !== item) {
+                        /* eslint-disable-next-line unicorn/no-break-in-nested-loop -- technical debt */
                         continue;
                     }
 
