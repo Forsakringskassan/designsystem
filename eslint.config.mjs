@@ -13,7 +13,7 @@ import vitestConfig from "@forsakringskassan/eslint-config-vitest";
 import vueConfig from "@forsakringskassan/eslint-config-vue";
 
 async function readJsonFile(filePath) {
-    const content = await fs.readFile(filePath);
+    const content = await fs.readFile(filePath, "utf8");
     return JSON.parse(content);
 }
 
@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/consistent-json-file-read": "off",
             "unicorn/explicit-timer-delay": "off",
             "unicorn/logical-assignment-operators": "off",
             "unicorn/max-nested-calls": "off",
