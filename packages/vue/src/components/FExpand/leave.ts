@@ -27,5 +27,5 @@ export function leaveTransition(element: Element, done: () => void): void {
             },
             { once: true },
         );
-    });
+    }, 0);
 }

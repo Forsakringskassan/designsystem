@@ -199,7 +199,7 @@ export default defineComponent({
             setTimeout(() => {
                 this.height = Number.parseInt(height, 10);
                 htmlElement.style.height = height;
-            });
+            }, 0);
         },
         afterEnter(element: Element): void {
             const htmlElement = getHTMLElementFromVueRef(element);
@@ -215,7 +215,7 @@ export default defineComponent({
             getComputedStyle(element).height;
             setTimeout(() => {
                 Object.assign(htmlElement.style, this.visibleStyle);
-            });
+            }, 0);
         },
     },
 });

@@ -28,7 +28,7 @@ export default defineComponent({
 
             setTimeout(() => {
                 this.contentDivInDOM = this.$el.contains(this.$refs["content-div"]);
-            });
+            }, 0);
         },
     },
 });

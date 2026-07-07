@@ -31,5 +31,5 @@ export function enterTransition(element: Element, done: () => void): void {
             },
             { once: true },
         );
-    });
+    }, 0);
 }
