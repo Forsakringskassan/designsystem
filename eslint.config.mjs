@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-duplicate-loops": "off",
             "unicorn/no-global-object-property-assignment": "off",
             "unicorn/no-incorrect-query-selector": "off",
             "unicorn/no-incorrect-template-string-interpolation": "off",

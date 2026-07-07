@@ -11,7 +11,10 @@ export default defineComponent({
         validateAllFieldsOnPage() {
             const selector = "input, textarea, select";
             const elements = Array.from(document.querySelectorAll(selector));
-            for (const element of elements.filter((element) => element.id)) {
+            for (const element of elements) {
+                if (!element.id) {
+                    continue;
+                }
                 ValidationService.setSubmitted(element);
             }
             /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
