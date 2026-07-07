@@ -26,7 +26,7 @@ function getSlotNames(element: HTMLElement): string[] {
 
 const resolvedSlots = computed(() => {
     return slotNames.value
-        .filter((it) => Boolean(layoutDefinition.value.areas[it]))
+        .filter((it) => Object.hasOwn(layoutDefinition.value.areas, it))
         .map((slotName) => {
             const area = layoutDefinition.value.areas[slotName];
             const { attachPanel: attach, direction, scroll } = area;

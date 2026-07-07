@@ -590,7 +590,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     public getValidatorByName<TConfig>(
         name: ValidatorName,
     ): Validator<TConfig> {
-        if (!(name in registry)) {
+        if (!Object.hasOwn(registry, name)) {
             throw new Error(
                 `Validator '${name}' does not exist or is not registered, see ValidatorService.registerValidator.`,
             );

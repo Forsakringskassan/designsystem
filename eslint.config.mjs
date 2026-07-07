@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-computed-property-existence-check": "off",
             "unicorn/no-confusing-array-splice": "off",
             "unicorn/no-declarations-before-early-exit": "off",
             "unicorn/no-duplicate-if-branches": "off",

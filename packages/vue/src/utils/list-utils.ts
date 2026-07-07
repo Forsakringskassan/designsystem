@@ -65,6 +65,7 @@ export function handleKeyboardFocusNavigation(
         }
     }
 
+    /* eslint-disable-next-line unicorn/no-computed-property-existence-check -- false positive */
     if (focusableElements[tabPosition]) {
         (focusableElements[tabPosition] as HTMLElement).focus();
     }

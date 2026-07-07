@@ -15,7 +15,7 @@ function printTree(tab = "", children) {
     let str = "";
     let last = children.length - 1;
     for (; last >= 0; last--) {
-        if (children[last]) {
+        if (Object.hasOwn(children, last)) {
             break;
         }
     }
