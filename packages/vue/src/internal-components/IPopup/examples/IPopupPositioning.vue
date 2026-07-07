@@ -104,13 +104,15 @@ export default defineComponent({
             if (!this.drag) {
                 return;
             }
+
             const { targetElement: target } = this;
             const anchor = this.$refs.anchor as HTMLElement | undefined;
             const area = this.areaElement;
-            const viewport = this.viewportElement;
             if (!area || !anchor) {
                 return;
             }
+
+            const viewport = this.viewportElement;
             const result = fitInsideArea({
                 area,
                 anchor,

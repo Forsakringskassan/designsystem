@@ -6,12 +6,12 @@
  * @param inputString - A string containing only numbers
  */
 export function testLuhnChecksum(inputString: string): boolean {
-    let sum = 0;
     if (/^\d+$/.test(inputString) === false) {
         throw new Error(
             "Luhn Checksum test only works on strings containing numbers",
         );
     }
+    let sum = 0;
 
     for (const [index, numChar] of inputString
         .split("")

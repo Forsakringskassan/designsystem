@@ -34,7 +34,6 @@ class RequiredMaxLength extends Rule {
             const target = event.target;
             const elementAttrs = target.attributes;
             const tagName = target.tagName;
-            const valueOfType = target.getAttributeValue("type");
 
             if (!allowedTags.has(tagName)) {
                 return;
@@ -53,6 +52,7 @@ class RequiredMaxLength extends Rule {
             if (maxlength) {
                 return;
             } else {
+                const valueOfType = target.getAttributeValue("type");
                 this.checkValidation(
                     formatters,
                     validation,

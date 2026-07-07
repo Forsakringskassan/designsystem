@@ -289,16 +289,17 @@ export function isInside(
     const ySpacing = isVerticalDirection ? spacing : 0;
 
     const ax = [inner.x, inner.x + inner.width];
-    const ay = [inner.y, inner.y + inner.height];
     const bx = [outer.x + xSpacing, outer.x + outer.width - xSpacing];
-    const by = [outer.y + ySpacing, outer.y + outer.height - ySpacing];
-
     if (ax[0] < bx[0] || ax[1] > bx[1]) {
         return false;
     }
+
+    const ay = [inner.y, inner.y + inner.height];
+    const by = [outer.y + ySpacing, outer.y + outer.height - ySpacing];
     if (ay[0] < by[0] || ay[1] > by[1]) {
         return false;
     }
+
     return true;
 }
 

@@ -260,11 +260,11 @@ export function useCombobox(
     }
 
     function onInputKeyDown(event: KeyboardEvent): void {
-        let flag = false;
-
         if (event.ctrlKey || event.shiftKey) {
             return;
         }
+
+        let flag = false;
 
         switch (event.key) {
             case "Enter":
