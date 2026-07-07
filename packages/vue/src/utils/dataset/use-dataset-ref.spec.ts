@@ -75,7 +75,7 @@ describe("useDatasetRef()", () => {
         expect.assertions(2);
         const dsRef = useDatasetRef<Row>([{ id: 1 }, { id: 2 }], "children");
         const before = treeSnapshot(dsRef.value, all);
-        dsRef.value.splice(1, 1, { id: 3 });
+        dsRef.value.splice(1, 1, { id: 3 }); // eslint-disable-line unicorn/no-confusing-array-splice -- intentional
         const after = treeSnapshot(dsRef.value, all);
         expect(before).toMatchInlineSnapshot(`
             length=2 size=2
