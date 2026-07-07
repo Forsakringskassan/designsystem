@@ -59,12 +59,12 @@ export function errorHandler(
     }
 
     if (error instanceof Error) {
-        EventBus.$emit(UNHANDLED_ERROR_EVENT, new ErrorData(error, vm, info));
+        const errorData = new ErrorData(error, vm, info);
+        EventBus.$emit(UNHANDLED_ERROR_EVENT, errorData);
     } else {
-        EventBus.$emit(
-            UNHANDLED_ERROR_EVENT,
-            new ErrorData(new Error(String(error)), vm, info),
-        );
+        const wrappedError = new Error(String(error));
+        const errorData = new ErrorData(wrappedError, vm, info);
+        EventBus.$emit(UNHANDLED_ERROR_EVENT, errorData);
     }
 }
 

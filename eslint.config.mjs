@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/max-nested-calls": "off",
             "unicorn/no-break-in-nested-loop": "off",
             "unicorn/no-computed-property-existence-check": "off",
             "unicorn/no-confusing-array-splice": "off",
