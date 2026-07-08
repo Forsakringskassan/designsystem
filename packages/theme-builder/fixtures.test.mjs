@@ -84,7 +84,7 @@ function toTreeSync(fs, opts = {}) {
                         tab,
                     });
                 } else if (entry.isSymbolicLink()) {
-                    return `{entry.name} → ${fs.readlinkSync(dir + entry.name)}`;
+                    return `${entry.name} → ${fs.readlinkSync(dir + entry.name)}`;
                 } else {
                     return `${entry.name}`;
                 }
@@ -126,6 +126,7 @@ it("should generate version", async (t) => {
         {
             "src/index.scss": [
                 `@use "version" as *;`,
+                /* eslint-disable-next-line unicorn/no-incorrect-template-string-interpolation -- false positive */
                 `:root { --x-foobar: #ff00aa; --version: "#{$version}"; }`,
             ].join("\n"),
         },
