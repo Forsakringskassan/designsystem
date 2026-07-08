@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-late-event-control": "off",
             "unicorn/no-negated-array-predicate": "off",
             "unicorn/no-optional-chaining-on-undeclared-variable": "off",
             "unicorn/no-process-exit": "off",

@@ -134,25 +134,30 @@ async function onEditKeyDown(e: KeyboardEvent): Promise<void> {
             break;
         case "Enter":
         case "NumpadEnter":
+            /* eslint-disable-next-line unicorn/no-late-event-control -- false positive? */
             e.preventDefault();
             await selectDropdownOption(activeOption.value ?? viewValue.value);
             await stopEdit(editRef.value, "enter");
             break;
         case "Tab":
+            /* eslint-disable-next-line unicorn/no-late-event-control -- false positive? */
             e.preventDefault();
             closeDropdown();
             await stopEdit(editRef.value, e.shiftKey ? "shift-tab" : "tab");
             break;
         case "ArrowDown":
+            /* eslint-disable-next-line unicorn/no-late-event-control -- false positive? */
             e.preventDefault();
             setNextOption();
             break;
         case "ArrowUp":
+            /* eslint-disable-next-line unicorn/no-late-event-control -- false positive? */
             e.preventDefault();
             setPreviousOption();
             break;
         case "Space":
             // Prevent default scrolling with space while editing dropdown.
+            /* eslint-disable-next-line unicorn/no-late-event-control -- false positive? */
             e.preventDefault();
             break;
         default:
