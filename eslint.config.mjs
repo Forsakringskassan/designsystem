@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-negated-array-predicate": "off",
             "unicorn/no-optional-chaining-on-undeclared-variable": "off",
             "unicorn/no-process-exit": "off",
             "unicorn/no-return-array-push": "off",
