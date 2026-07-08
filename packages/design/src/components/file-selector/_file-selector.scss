@@ -9,7 +9,7 @@
             @include focus-indicator;
         }
     }
-    label.button.button--tertiary {
+    label.button--tertiary {
         @media (forced-colors: active) {
             border-color: ButtonBorder;
             color: ButtonText;
@@ -17,7 +17,7 @@
 
         cursor: pointer;
     }
-    input[aria-disabled="true"] + label.button.button--tertiary {
+    input[aria-disabled="true"] + label.button--tertiary {
         cursor: default;
         @media (forced-colors: active) {
             color: GrayText;
