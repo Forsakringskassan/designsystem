@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-process-exit": "off",
             "unicorn/no-return-array-push": "off",
             "unicorn/no-top-level-side-effects": "off",
             "unicorn/no-unnecessary-boolean-comparison": "off",

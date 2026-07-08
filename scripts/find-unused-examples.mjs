@@ -99,6 +99,7 @@ if (process.argv.includes("-h") || process.argv.includes("--help")) {
     console.log("");
     console.log("Typical usage:");
     console.log(`  node ${scriptName} -z | xargs -0 cmd...`);
+    /* eslint-disable-next-line unicorn/no-process-exit -- intentional */
     process.exit(0);
 }
 
