@@ -1387,11 +1387,12 @@ describe("5 tabstop", () => {
                 renderButton("After table", { dataTest: buttonAfterTable }),
                 renderButton("Add row", {
                     dataTest: buttonAddRow,
-                    onClick: () =>
+                    onClick() {
                         rows.value.push({
                             foo: String(counter.value++),
                             bar: "Added row",
-                        }),
+                        });
+                    },
                 }),
                 renderButton("Remove row", {
                     dataTest: buttonRemoveRow,
