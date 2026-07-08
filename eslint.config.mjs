@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-incorrect-query-selector": "off",
             "unicorn/no-incorrect-template-string-interpolation": "off",
             "unicorn/no-late-event-control": "off",
             "unicorn/no-negated-array-predicate": "off",
