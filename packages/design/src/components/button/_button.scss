@@ -94,6 +94,12 @@ $button--tertiary: (
     padding-left: var(--f-button-tertiary-padding-left),
 ) !default;
 
+%button--default-size {
+    line-height: 1.5rem;
+    min-width: 9.5rem;
+    padding: core.densify(1rem) size.$padding-150;
+}
+
 /// Deprecated: Will be removed in next major version (FKUI v4).
 .button--text {
     /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
@@ -133,19 +139,18 @@ $button--tertiary: (
     // A default ".button" is a secondary type button.
     @include core.make-button-variant(".button", $button--secondary...);
 
-    // A default ".button" is a large size button.
-    /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- technical debt */
-    @extend .button--large;
+    // A default ".button" is a large size button for legacy reasons.
+    @extend %button--default-size;
 
-    &.button--primary {
+    &--primary {
         @include core.make-button-variant(".button", $button--primary...);
     }
 
-    &.button--secondary {
+    &--secondary {
         @include core.make-button-variant(".button", $button--secondary...);
     }
 
-    &.button--discrete {
+    &--discrete {
         width: inherit;
         min-width: 0;
         font-weight: var(--f-font-weight-bold);
@@ -184,7 +189,7 @@ $button--tertiary: (
         }
     }
 
-    &.button--discrete-inverted {
+    &--discrete-inverted {
         width: inherit;
         min-width: 0;
         font-weight: var(--f-font-weight-bold);
@@ -211,7 +216,7 @@ $button--tertiary: (
         }
     }
 
-    &.button--tertiary {
+    &--tertiary {
         width: inherit;
         font-weight: var(--f-font-weight-medium);
         outline-offset: size.$padding-025;
@@ -276,15 +281,15 @@ $button--tertiary: (
         }
     }
 
-    &.button--full-width {
+    &--full-width {
         min-width: var(--f-width-full);
     }
 
-    &.button--margin-bottom-0 {
+    &--margin-bottom-0 {
         margin-bottom: 0;
     }
 
-    &.button--small {
+    &--small {
         font-size: 14px;
         line-height: 1.25rem;
         min-width: 4rem;
@@ -302,7 +307,7 @@ $button--tertiary: (
         }
     }
 
-    &.button--medium {
+    &--medium {
         line-height: 1.5rem;
         min-width: 8rem;
         padding: core.densify(0.625rem) size.$padding-125;
@@ -314,10 +319,8 @@ $button--tertiary: (
         }
     }
 
-    &.button--large {
-        line-height: 1.5rem;
-        min-width: 9.5rem;
-        padding: core.densify(1rem) size.$padding-150;
+    &--large {
+        @extend %button--default-size;
 
         @include core.breakpoint-down(sm) {
             max-width: var(--f-width-full);
@@ -380,7 +383,16 @@ $button--tertiary: (
             button-spinner-delay $button-spinner-animation-delay linear;
     }
 
-    &.button.button--small {
+    .spinner--before,
+    .spinner--after {
+        display: inline-flex;
+        width: calc(var(--f-icon-size-small) * 0.5 + size.$padding-025 * 0.5);
+        height: var(--f-icon-size-small);
+        align-self: center;
+        transition: $button-text-animation;
+    }
+
+    &--small {
         .button__spinner {
             width: 14px;
             height: 14px;
@@ -392,17 +404,8 @@ $button--tertiary: (
         }
     }
 
-    .spinner--before,
-    .spinner--after {
-        display: inline-flex;
-        width: calc(var(--f-icon-size-small) * 0.5 + size.$padding-025 * 0.5);
-        height: var(--f-icon-size-small);
-        align-self: center;
-        transition: $button-text-animation;
-    }
-
-    &.button__inflight {
-        &.button.button--small {
+    &__inflight {
+        &.button--small {
             .spinner--after {
                 width: 0;
             }
