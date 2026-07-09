@@ -95,6 +95,82 @@ describe("FSelectField", () => {
         selectField.tooltip.iButton().click();
     });
 
+    it("should render inline layout correctly at 639px viewport (visual)", () => {
+        cy.viewport(639, 180);
+        cy.mount({
+            components: { FSelectField, FTooltip },
+            template: /* HTML */ `
+                <f-select-field id="dropplista" v-model="selectField" inline>
+                    <template #label> Etikett </template>
+
+                    <option disabled hidden value="">Välj…</option>
+                    <option value="1">Alternativ 1</option>
+                    <option value="2">Alternativ 2</option>
+                </f-select-field>
+                <f-select-field id="dropplista2" v-model="selectField" inline>
+                    <template #label> Etikett </template>
+
+                    <template #tooltip>
+                        <f-tooltip
+                            screen-reader-text="Läs mer här"
+                            header-tag="h1"
+                        >
+                            <template #header> Header </template>
+                            <template #body> Body </template>
+                        </f-tooltip>
+                    </template>
+
+                    <option disabled hidden value="">Välj…</option>
+                    <option value="1">Alternativ 1</option>
+                    <option value="2">Alternativ 2</option>
+                </f-select-field>
+            `,
+            data() {
+                return { selectField: "" };
+            },
+        });
+        cy.toMatchScreenshot();
+    });
+
+    it("should render inline layout correctly at 640px viewport (visual)", () => {
+        cy.viewport(640, 120);
+        cy.mount({
+            components: { FSelectField, FTooltip },
+            template: /* HTML */ `
+                <f-select-field id="dropplista" v-model="selectField" inline>
+                    <template #label> Etikett </template>
+
+                    <option disabled hidden value="">Välj…</option>
+                    <option value="1">Alternativ 1</option>
+                    <option value="2">Alternativ 2</option>
+                </f-select-field>
+                <f-select-field id="dropplista2" v-model="selectField" inline>
+                    <template #label> Etikett </template>
+
+                    <template #tooltip>
+                        <f-tooltip
+                            screen-reader-text="Läs mer här"
+                            header-tag="h1"
+                        >
+                            <template #header> Header </template>
+                            <template #body> Body </template>
+                        </f-tooltip>
+                    </template>
+
+                    <option disabled hidden value="">Välj…</option>
+                    <option value="1">Alternativ 1</option>
+                    <option value="2">Alternativ 2</option>
+                </f-select-field>
+            `,
+            data() {
+                return { selectField: "" };
+            },
+        });
+        cy.toMatchScreenshot({
+            clip: { x: 0, y: 0, height: 120, width: 250 },
+        });
+    });
+
     describe("density", () => {
         const DensityComponent = defineComponent({
             template: /* HTML */ `
@@ -126,6 +202,9 @@ describe("FSelectField", () => {
     describe("Visual", () => {
         const forcedColorModes = ["none", "dark", "light"] as const;
 
+        afterEach(() => {
+            cy.forcedColors("none");
+        });
         for (const mode of forcedColorModes) {
             it(`should render correct styling for forced color mode '${mode}'`, () => {
                 cy.viewport(300, 300);
