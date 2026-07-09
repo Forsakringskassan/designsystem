@@ -1,9 +1,12 @@
 ---
 name: FBadgePageObject
 title: "FBadgePageObject: FBadgePageObject() constructor"
-short-title: FBadgePageObject()
+short-title: FBadge
 sortorder: 1
 layout: article
+search:
+    terms:
+        - cypress
 ---
 
 Använd `FBadgePageObject` för att hämta information relaterat till {@link FBadge bricka }.

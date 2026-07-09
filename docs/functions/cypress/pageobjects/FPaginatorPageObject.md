@@ -1,7 +1,11 @@
 ---
 name: FPaginatorPageObject
 title: "FPaginatorPageObject"
+short-title: FPaginator
 layout: api.class
+search:
+    terms:
+        - cypress
 ---
 
 Använd `FPaginatorPageObject` för att hämta information relaterat till {@link pagination FPaginator}.

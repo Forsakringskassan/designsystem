@@ -1,8 +1,12 @@
 ---
 title: FTablePageObject
+short-title: FTable
 layout: api.class
 redirect_from:
 	- functions/labs/ftablepageobject.html
+search:
+    terms:
+        - cypress
 ---
 
 Använd `FTablePageObject` för att hämta information relaterat till `FTable` komponenten.

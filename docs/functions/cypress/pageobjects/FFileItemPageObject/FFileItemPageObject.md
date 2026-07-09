@@ -1,9 +1,12 @@
 ---
 name: FFileItemPageObject
 title: "FFileItemPageObject: FFileItemPageObject() constructor"
-short-title: FFileItemPageObject()
+short-title: FFileItem
 sortorder: 1
 layout: article
+search:
+    terms:
+        - cypress
 ---
 
 Använd `FFileItemPageObject` för att hämta information relaterat till {@link FFileItem filpresentatören }.

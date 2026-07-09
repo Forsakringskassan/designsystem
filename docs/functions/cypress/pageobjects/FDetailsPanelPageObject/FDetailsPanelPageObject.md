@@ -1,9 +1,12 @@
 ---
 name: FDetailsPanelPageObject
 title: "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor"
-short-title: FDetailsPanelPageObject()
+short-title: FDetailsPanel
 sortorder: 1
 layout: api.class
+search:
+    terms:
+        - cypress
 ---
 
 `FDetailsPanelPageObject` är ett Cypress pageobjekt för {@link FDetailsPanel Detaljpanel} (FDetailsPanel).
