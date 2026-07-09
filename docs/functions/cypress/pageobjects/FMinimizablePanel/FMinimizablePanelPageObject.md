@@ -1,9 +1,12 @@
 ---
 name: FMinimizablePanelPageObject
 title: "FMinimizablePanelPageObject: constructor"
-short-title: FMinimizablePanelPageObject()
+short-title: FMinimizablePanel
 sortorder: 1
 layout: api.class
+search:
+    terms:
+        - cypress
 ---
 
 `FMinimizablePanelPageObject` är ett Cypress pageobjekt för {@link FMinimizablePanel Minimerbar panel} (FMinimizablePanel).

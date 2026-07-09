@@ -1,7 +1,11 @@
 ---
 name: FDefinitionListPageObject
 title: "FDefinitionListPageObject"
+short-title: FDefinitionList
 layout: api.class
+search:
+    terms:
+        - cypress
 ---
 
 Använd `FDefinitionListPageObject` för att hämta information relaterat till {@link FDefinitionList definitionslista}.

@@ -1,9 +1,12 @@
 ---
 name: FLabelPageObject
 title: "FLabelPageObject: FLabelPageObject() constructor"
-short-title: FLabelPageObject()
+short-title: FLabel
 sortorder: 1
 layout: article
+search:
+    terms:
+        - cypress
 ---
 
 Använd `FLabelPageObject` för att skaffa information relaterat till etikett (`label`-elementet).

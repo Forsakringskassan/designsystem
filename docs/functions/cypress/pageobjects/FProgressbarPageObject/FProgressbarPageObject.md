@@ -1,9 +1,12 @@
 ---
 name: FProgressbarPageObject
 title: "FProgressbarPageObject: FProgressbarPageObject() constructor"
-short-title: FProgressbarPageObject
+short-title: FProgressbar
 sortorder: 1
 layout: article
+search:
+    terms:
+        - cypress
 ---
 
 Använd `FProgressbarPageObject` för att hämta information relaterat till komponenten {@link FProgressbar förloppsindikator} (`FProgressbar`).

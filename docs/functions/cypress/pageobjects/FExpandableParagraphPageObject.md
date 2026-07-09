@@ -1,7 +1,11 @@
 ---
 name: FExpandableParagraphPageObject
 title: FExpandableParagraphPageObject
+short-title: FExpandableParagraph
 layout: api.class
+search:
+    terms:
+        - cypress
 ---
 
 Använd `FExpandableParagraphPageObject` för att hämta information relaterat till {@link FExpandableParagraph}.

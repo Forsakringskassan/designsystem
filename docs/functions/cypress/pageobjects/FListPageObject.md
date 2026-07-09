@@ -1,7 +1,11 @@
 ---
 name: FListPageObject
 title: FListPageObject
+short-title: FList
 layout: api.class
+search:
+    terms:
+        - cypress
 ---
 
 Använd `FListPageObject` för att hämta information relaterat till {@link FList}.
