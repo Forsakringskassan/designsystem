@@ -69,7 +69,7 @@
     "@fkui/test-utils": "6.52.1",
     "@fkui/theme-default": "6.52.0",
     "@fkui/vue": "6.52.1",
-    "@forsakringskassan/docs-generator": "3.3.1",
+    "@forsakringskassan/docs-generator": "3.3.2",
     "@forsakringskassan/vite-lib-config": "5.1.8",
     "@forsakringskassan/vitest-config-jsdom": "2.5.0",
     "@vue/test-utils": "2.4.11",
