@@ -228,6 +228,9 @@
     "Jest",
     "testverktyg",
     "jest",
+    "EventBus",
+    "EventBus",
+    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -272,9 +275,6 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
-    "EventBus",
-    "EventBus",
-    "services",
     "Om FKUI Vue Labs",
     "Tidsinmatning",
     "XTimeTextField",
@@ -559,17 +559,6 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
-    "openModal",
-    "modalfunktion",
-    "options API",
-    "formModal() function",
-    "modalfunktion",
-    "formulärsmodal",
-    "options API",
-    "confirmModal() function",
-    "modalfunktion",
-    "bekräftelsemodal",
-    "options API",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -617,6 +606,27 @@
     "ValidationErrorMessageBuilder: build() method",
     "feltext",
     "validator",
+    "openModal",
+    "modalfunktion",
+    "options API",
+    "formModal() function",
+    "modalfunktion",
+    "formulärsmodal",
+    "options API",
+    "confirmModal() function",
+    "modalfunktion",
+    "bekräftelsemodal",
+    "options API",
+    "FTablePageObject",
+    "cypress",
+    "FPaginatorPageObject",
+    "cypress",
+    "FListPageObject",
+    "cypress",
+    "FExpandableParagraphPageObject",
+    "cypress",
+    "FDefinitionListPageObject",
+    "cypress",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -633,16 +643,6 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
-    "FTablePageObject",
-    "cypress",
-    "FPaginatorPageObject",
-    "cypress",
-    "FListPageObject",
-    "cypress",
-    "FExpandableParagraphPageObject",
-    "cypress",
-    "FDefinitionListPageObject",
-    "cypress",
     "Sortera och filtrera i tabell",
     "tabell",
     "Sortera och filtrera i tabell (kod)",
@@ -1304,6 +1304,14 @@
       ]
     },
     {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
+      ]
+    },
+    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1380,14 +1388,6 @@
         "errorHandler",
         "ErrorPlugin",
         "FErrorHandlingApp"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
       ]
     },
     {
@@ -2086,32 +2086,6 @@
       "terms": []
     },
     {
-      "url": "functions/functions/modal-functions/open-modal.html",
-      "title": "openModal",
-      "terms": [
-        "modalfunktion",
-        "options API"
-      ]
-    },
-    {
-      "url": "functions/functions/modal-functions/form-modal.html",
-      "title": "formModal() function",
-      "terms": [
-        "modalfunktion",
-        "formulärsmodal",
-        "options API"
-      ]
-    },
-    {
-      "url": "functions/functions/modal-functions/confirm-modal.html",
-      "title": "confirmModal() function",
-      "terms": [
-        "modalfunktion",
-        "bekräftelsemodal",
-        "options API"
-      ]
-    },
-    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -2264,6 +2238,67 @@
       ]
     },
     {
+      "url": "functions/functions/modal-functions/open-modal.html",
+      "title": "openModal",
+      "terms": [
+        "modalfunktion",
+        "options API"
+      ]
+    },
+    {
+      "url": "functions/functions/modal-functions/form-modal.html",
+      "title": "formModal() function",
+      "terms": [
+        "modalfunktion",
+        "formulärsmodal",
+        "options API"
+      ]
+    },
+    {
+      "url": "functions/functions/modal-functions/confirm-modal.html",
+      "title": "confirmModal() function",
+      "terms": [
+        "modalfunktion",
+        "bekräftelsemodal",
+        "options API"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/ftablepageobject.html",
+      "title": "FTablePageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
+      "title": "FPaginatorPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/flistpageobject.html",
+      "title": "FListPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
+      "title": "FExpandableParagraphPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
+      "title": "FDefinitionListPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
       "url": "functions/date/f-year/index.html",
       "title": "FYear",
       "terms": [
@@ -2339,41 +2374,6 @@
       "url": "functions/date/f-year/f-date-next.html",
       "title": "FYear: next() method",
       "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/ftablepageobject.html",
-      "title": "FTablePageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
-      "title": "FPaginatorPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/flistpageobject.html",
-      "title": "FListPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
-      "title": "FExpandableParagraphPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
-      "title": "FDefinitionListPageObject",
-      "terms": [
-        "cypress"
-      ]
     },
     {
       "url": "components/table-and-list/table/sort-filter.html",
@@ -3076,47 +3076,47 @@
     "228": 60,
     "229": 60,
     "230": 60,
-    "231": 60,
+    "231": 61,
     "232": 61,
     "233": 61,
     "234": 61,
     "235": 62,
     "236": 62,
     "237": 62,
-    "238": 62,
-    "239": 62,
-    "240": 62,
-    "241": 62,
-    "242": 62,
-    "243": 62,
+    "238": 63,
+    "239": 63,
+    "240": 63,
+    "241": 63,
+    "242": 63,
+    "243": 63,
     "244": 63,
     "245": 63,
     "246": 63,
     "247": 64,
     "248": 64,
     "249": 64,
-    "250": 64,
-    "251": 64,
+    "250": 65,
+    "251": 65,
     "252": 65,
     "253": 65,
     "254": 65,
-    "255": 65,
-    "256": 65,
-    "257": 65,
-    "258": 65,
-    "259": 65,
-    "260": 65,
-    "261": 65,
-    "262": 65,
-    "263": 65,
+    "255": 66,
+    "256": 66,
+    "257": 66,
+    "258": 66,
+    "259": 66,
+    "260": 66,
+    "261": 66,
+    "262": 66,
+    "263": 66,
     "264": 66,
     "265": 66,
     "266": 66,
-    "267": 66,
-    "268": 66,
-    "269": 66,
-    "270": 66,
-    "271": 66,
+    "267": 67,
+    "268": 67,
+    "269": 67,
+    "270": 67,
+    "271": 67,
     "272": 67,
     "273": 67,
     "274": 67,
@@ -3406,87 +3406,87 @@
     "558": 153,
     "559": 154,
     "560": 154,
-    "561": 154,
+    "561": 155,
     "562": 155,
-    "563": 155,
-    "564": 155,
-    "565": 155,
-    "566": 156,
-    "567": 156,
-    "568": 156,
-    "569": 156,
-    "570": 157,
-    "571": 157,
-    "572": 158,
-    "573": 158,
-    "574": 159,
-    "575": 159,
-    "576": 160,
-    "577": 160,
-    "578": 161,
-    "579": 161,
-    "580": 162,
-    "581": 162,
-    "582": 163,
-    "583": 163,
-    "584": 164,
-    "585": 164,
-    "586": 165,
-    "587": 165,
-    "588": 166,
-    "589": 166,
-    "590": 167,
-    "591": 167,
-    "592": 168,
-    "593": 168,
-    "594": 169,
-    "595": 169,
-    "596": 170,
-    "597": 170,
-    "598": 170,
-    "599": 171,
-    "600": 171,
-    "601": 172,
-    "602": 172,
-    "603": 173,
-    "604": 173,
+    "563": 156,
+    "564": 156,
+    "565": 157,
+    "566": 157,
+    "567": 158,
+    "568": 158,
+    "569": 159,
+    "570": 159,
+    "571": 160,
+    "572": 160,
+    "573": 161,
+    "574": 161,
+    "575": 162,
+    "576": 162,
+    "577": 163,
+    "578": 163,
+    "579": 164,
+    "580": 164,
+    "581": 165,
+    "582": 165,
+    "583": 166,
+    "584": 166,
+    "585": 167,
+    "586": 167,
+    "587": 167,
+    "588": 168,
+    "589": 168,
+    "590": 169,
+    "591": 169,
+    "592": 170,
+    "593": 170,
+    "594": 171,
+    "595": 171,
+    "596": 171,
+    "597": 172,
+    "598": 172,
+    "599": 172,
+    "600": 173,
+    "601": 173,
+    "602": 173,
+    "603": 174,
+    "604": 174,
     "605": 174,
-    "606": 174,
-    "607": 174,
+    "606": 175,
+    "607": 175,
     "608": 175,
-    "609": 175,
-    "610": 175,
+    "609": 176,
+    "610": 176,
     "611": 176,
     "612": 176,
-    "613": 176,
+    "613": 177,
     "614": 177,
     "615": 177,
     "616": 177,
     "617": 178,
     "618": 178,
     "619": 179,
-    "620": 180,
-    "621": 181,
-    "622": 182,
-    "623": 183,
-    "624": 184,
-    "625": 185,
-    "626": 186,
-    "627": 187,
-    "628": 188,
-    "629": 189,
-    "630": 190,
-    "631": 191,
-    "632": 192,
-    "633": 193,
-    "634": 193,
-    "635": 194,
-    "636": 194,
-    "637": 195,
-    "638": 195,
-    "639": 196,
-    "640": 196,
-    "641": 197,
+    "620": 179,
+    "621": 180,
+    "622": 180,
+    "623": 181,
+    "624": 181,
+    "625": 182,
+    "626": 182,
+    "627": 183,
+    "628": 183,
+    "629": 184,
+    "630": 185,
+    "631": 186,
+    "632": 187,
+    "633": 188,
+    "634": 189,
+    "635": 190,
+    "636": 191,
+    "637": 192,
+    "638": 193,
+    "639": 194,
+    "640": 195,
+    "641": 196,
     "642": 197,
     "643": 198,
     "644": 198,
