@@ -224,7 +224,8 @@ var require_environment_v8_version = /* @__PURE__ */ __commonJSMin(((exports, mo
   var Deno2 = globalThis2.Deno;
   var versions = process && process.versions || Deno2 && Deno2.version;
   var v8 = versions && versions.v8;
-  var match, version;
+  var match;
+  var version;
   if (v8) {
     match = v8.split(".");
     version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
@@ -575,7 +576,9 @@ var require_internal_state = /* @__PURE__ */ __commonJSMin(((exports, module) =>
   var OBJECT_ALREADY_INITIALIZED = "Object already initialized";
   var TypeError2 = globalThis2.TypeError;
   var WeakMap = globalThis2.WeakMap;
-  var set, get, has;
+  var set;
+  var get;
+  var has;
   var enforce = function(it) {
     return has(it) ? get(it) : set(it, {});
   };
@@ -1139,7 +1142,10 @@ var require_detach_transferable = /* @__PURE__ */ __commonJSMin(((exports, modul
   var $ArrayBuffer = globalThis2.ArrayBuffer;
   var $MessageChannel = globalThis2.MessageChannel;
   var detach = false;
-  var WorkerThreads, channel, buffer, $detach;
+  var WorkerThreads;
+  var channel;
+  var buffer;
+  var $detach;
   if (PROPER_STRUCTURED_CLONE_TRANSFER) detach = function(transferable) {
     structuredClone(transferable, { transfer: [transferable] });
   };
@@ -1279,7 +1285,9 @@ var require_iterators_core = /* @__PURE__ */ __commonJSMin(((exports, module) =>
   var IS_PURE = require_is_pure();
   var ITERATOR = wellKnownSymbol("iterator");
   var BUGGY_SAFARI_ITERATORS = false;
-  var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
+  var IteratorPrototype;
+  var PrototypeOfArrayIteratorPrototype;
+  var arrayIterator;
   if ([].keys) {
     arrayIterator = [].keys();
     if (!("next" in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
@@ -1655,7 +1663,9 @@ var require_array_buffer_view_core = /* @__PURE__ */ __commonJSMin(((exports, mo
   var TYPED_ARRAY_CONSTRUCTOR = "TypedArrayConstructor";
   var NATIVE_ARRAY_BUFFER_VIEWS = NATIVE_ARRAY_BUFFER && !!setPrototypeOf && classof(globalThis2.opera) !== "Opera";
   var TYPED_ARRAY_TAG_REQUIRED = false;
-  var NAME, Constructor, Prototype;
+  var NAME;
+  var Constructor;
+  var Prototype;
   var TypedArrayConstructorsList = {
     Int8Array: 1,
     Uint8Array: 1,
