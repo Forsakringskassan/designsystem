@@ -171,6 +171,45 @@ describe("FSelectField", () => {
         });
     });
 
+    it("should render help and format description and display an error message (visual)", () => {
+        cy.viewport(250, 180);
+        cy.mount({
+            components: { FSelectField },
+            template: /* HTML */ `
+                <f-select-field
+                    id="dropplista"
+                    v-model="selectField"
+                    v-validation.required
+                >
+                    <template #label> Etikett </template>
+                    <template #description="$scope">
+                        <span :class="$scope.descriptionClass">
+                            Hjälptext
+                        </span>
+                        <span :class="$scope.formatDescriptionClass">
+                            Formatbeskrivning
+                        </span>
+                    </template>
+                    <option disabled hidden value="">Gör ett val</option>
+                    <option value="1">Alternativ 1</option>
+                    <option value="2">Alternativ 2</option>
+                </f-select-field>
+            `,
+            data() {
+                return { selectField: "" };
+            },
+            mounted() {
+                ValidationService.setSubmitted("dropplista");
+            },
+        });
+        const selectField = new FSelectFieldPageObject(".select-field");
+
+        // Trigger required validation error.
+        selectField.dropdown().focus().blur();
+
+        cy.toMatchScreenshot({});
+    });
+
     describe("density", () => {
         const DensityComponent = defineComponent({
             template: /* HTML */ `
