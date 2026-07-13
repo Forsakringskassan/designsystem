@@ -156,22 +156,13 @@ $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
 
     &--information .modal__shelf {
         background-color: $modal-shelf-info-color-background;
-        .close-button {
-            color: $modal-color-closebutton-text-inverted;
-        }
     }
 
     &--warning .modal__shelf {
         background-color: $modal-shelf-warning-color-background;
-        .close-button {
-            color: $modal-color-closebutton-text-warning;
-        }
     }
 
     &--error .modal__shelf {
         background-color: $modal-shelf-error-color-background;
-        .close-button {
-            color: $modal-color-closebutton-text-inverted;
-        }
     }
 }

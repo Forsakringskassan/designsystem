@@ -99,6 +99,10 @@ export default defineComponent({
         modalClass(): string[] {
             return this.type ? [`modal--${this.type}`] : [];
         },
+        closeButtonClass(): string[] {
+            const inverted = ["information", "error"].includes(this.type) ? ["close-button--inverted"] : [];
+            return ["close-button", "close-button--small", ...inverted];
+        },
         containerClasses(): string[] {
             const size = sizeClass(this.size);
             if (this.fullscreen) {
@@ -231,7 +235,12 @@ export default defineComponent({
                             </div>
 
                             <div class="modal__shelf">
-                                <button type="button" class="close-button" :aria-label="ariaCloseText" @click="onClose">
+                                <button
+                                    type="button"
+                                    :class="closeButtonClass"
+                                    :aria-label="ariaCloseText"
+                                    @click="onClose"
+                                >
                                     <span>{{ $t("fkui.modal.close", "Stäng") }}</span>
                                     <f-icon name="close"></f-icon>
                                 </button>

@@ -60,12 +60,6 @@ $calendar-width: calc(100vw - #{$popup-spacing});
         display: flex;
         justify-content: flex-end;
     }
-
-    &__close > &__close__button {
-        margin: 0;
-        padding: 1rem;
-        align-items: center;
-    }
 }
 
 .popup--overlay .datepicker-field {
