@@ -46,7 +46,7 @@
     "dedent": "1.7.2",
     "esbuild": "0.28.1",
     "memfs": "4.64.0",
-    "postcss": "8.5.16",
+    "postcss": "8.5.17",
     "stream-buffers": "3.0.3",
     "typescript": "6.0.3"
   },
