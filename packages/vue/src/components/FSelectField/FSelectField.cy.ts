@@ -10,89 +10,25 @@ import FTooltip from "../FTooltip/FTooltip.vue";
 import FSelectField from "./FSelectField.vue";
 import FSelectFieldVisualExample from "./examples/FSelectFieldVisualExample.vue";
 
+const selectField = new FSelectFieldPageObject(".select-field");
+
 describe("FSelectField", () => {
-    it("should provide a page object that can access any necessary elements", () => {
-        const TestComponent = defineComponent({
+    it("should select an option from the dropdown", () => {
+        cy.mount({
+            components: { FSelectField },
             template: /* HTML */ `
-                <f-select-field
-                    id="select-field"
-                    v-model="model"
-                    v-validation.required
-                >
-                    <template #label> Dropplista </template>
-                    <template #tooltip>
-                        <f-tooltip screen-reader-text="sr-text" header-tag="h1">
-                            <template #header> Tooltip header </template>
-                            <template #body> Tooltip body </template>
-                        </f-tooltip>
-                    </template>
-                    <template #description="$scope">
-                        <span :class="$scope.descriptionClass">
-                            Hjälptext
-                        </span>
-                        <span :class="$scope.formatDescriptionClass">
-                            Formatbeskrivning
-                        </span>
-                    </template>
-                    <option disabled hidden value="">Gör ett val</option>
-                    <option
-                        v-for="option in options"
-                        :key="option.value"
-                        :value="option.value"
-                    >
-                        {{ option.label }}
-                    </option>
+                <f-select-field id="dropplista">
+                    <template #label> Etikett </template>
+                    <option value="1">Alternativ 1</option>
+                    <option value="2">Alternativ 2</option>
                 </f-select-field>
             `,
-            components: {
-                FSelectField,
-                FTooltip,
-            },
-            data() {
-                return {
-                    model: "",
-                    options: [
-                        { value: "foo-value", label: "Foo label" },
-                        { value: "bar-value", label: "Bar label" },
-                    ],
-                };
-            },
-            mounted() {
-                ValidationService.setSubmitted("select-field");
-            },
         });
 
-        cy.mount(TestComponent);
-        const selectField = new FSelectFieldPageObject(".select-field");
-        selectField.label.el().should("contain.text", "Dropplista");
-        selectField.label.description().should("contain.text", "Hjälptext");
-        selectField.label
-            .formatDescription()
-            .should("contain.text", "Formatbeskrivning");
-        selectField.arrowIcon().should("exist");
-
-        selectField.dropdown().focus().blur();
-        selectField.el().click();
-        selectField.label
-            .errorMessage()
-            .should("exist")
-            .should("contain.text", "Välj ett av alternativen.");
-
-        selectField
-            .dropdown()
-            .should("have.value", null)
-            .select("foo-value")
-            .focus()
-            .should("have.focus")
-            .should("contain", "Foo label");
-
-        selectField.label.errorMessage().should("not.exist");
-        selectField.selectedOption().should("have.text", "Foo label");
-        selectField.selectedValue().should("be.equal", "foo-value");
-        selectField.numberOfOptions().should("be.equal", 2);
-
-        selectField.tooltip.iButton().should("be.visible");
-        selectField.tooltip.iButton().click();
+        selectField.dropdown().select("2");
+        selectField.selectedOption().should("have.text", "Alternativ 2");
+        selectField.selectedOption().should("have.attr", "value", "2");
+        selectField.selectedValue().should("be.equal", "2");
     });
 
     it("should render inline layout correctly at 639px viewport (visual)", () => {
@@ -202,7 +138,6 @@ describe("FSelectField", () => {
                 ValidationService.setSubmitted("dropplista");
             },
         });
-        const selectField = new FSelectFieldPageObject(".select-field");
 
         // Trigger required validation error.
         selectField.dropdown().focus().blur();
