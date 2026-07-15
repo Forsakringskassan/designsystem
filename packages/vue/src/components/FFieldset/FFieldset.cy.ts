@@ -5,6 +5,7 @@ import { FRadioField } from "../FRadioField";
 import FFieldset from "./FFieldset.vue";
 import Checkbox from "./examples/FFieldsetCheckboxScreenshot.vue";
 import Chip from "./examples/FFieldsetChipScreenshot.vue";
+import ForcedColor from "./examples/FFieldsetForcedColorScreenshot.vue";
 import Radiobutton from "./examples/FFieldsetRadiobuttonScreenshot.vue";
 import FFieldsetScreenshot from "./examples/FFieldsetScreenshot.vue";
 
@@ -275,4 +276,21 @@ describe("Screenshot", () => {
         cy.get("#button").click();
         cy.get("#screenshot").toMatchScreenshot();
     });
+});
+
+describe("Visual", () => {
+    const forcedColorModes = ["none", "dark", "light"] as const;
+
+    afterEach(() => {
+        cy.forcedColors("none");
+    });
+    for (const mode of forcedColorModes) {
+        it(`should render correct styling for forced color '${mode}' (visual)`, () => {
+            cy.forcedColors(mode);
+            cy.mount(ForcedColor);
+            cy.get("#button").click();
+            fieldSetRadio.radioButton(options.first).select();
+            cy.toMatchScreenshot();
+        });
+    }
 });
