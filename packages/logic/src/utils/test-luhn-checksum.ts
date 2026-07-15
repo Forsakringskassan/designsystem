@@ -6,7 +6,7 @@
  * @param inputString - A string containing only numbers
  */
 export function testLuhnChecksum(inputString: string): boolean {
-    if (/^\d+$/.test(inputString) === false) {
+    if (!/^\d+$/.test(inputString)) {
         throw new Error(
             "Luhn Checksum test only works on strings containing numbers",
         );

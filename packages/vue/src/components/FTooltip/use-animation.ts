@@ -59,7 +59,7 @@ export function useAnimation(options: {
     });
 
     return {
-        enabled: computed(() => reducedMotion.value === false),
+        enabled: computed(() => !reducedMotion.value),
         animate(state) {
             current = state;
 

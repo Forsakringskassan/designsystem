@@ -90,9 +90,9 @@ provide(injectionKey, {
     size,
 });
 
-const disabled = computed(() => anyEnabled.value === false);
-const hidden = computed(() => anyVisible.value === false);
-const overlay = computed(() => anyOverlay.value === true);
+const disabled = computed(() => !anyEnabled.value);
+const hidden = computed(() => !anyVisible.value);
+const overlay = computed(() => anyOverlay.value);
 
 function onResize(event: CustomEvent<[size: number]>): void {
     size.value = event.detail[0];

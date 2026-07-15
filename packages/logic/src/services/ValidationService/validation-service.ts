@@ -744,8 +744,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     ): boolean {
         const validatorConfig = validatorConfigs[validator.name] ?? {};
         const isEnabled =
-            validatorConfig.enabled === undefined ||
-            validatorConfig.enabled === true;
+            validatorConfig.enabled === undefined || validatorConfig.enabled;
 
         /**
          * Only execute validation method if enabled is undefined or true.

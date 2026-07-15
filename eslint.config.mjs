@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-unnecessary-boolean-comparison": "off",
             "unicorn/no-unnecessary-splice": "off",
             "unicorn/no-unreadable-for-of-expression": "off",
             "unicorn/no-unreadable-object-destructuring": "off",
