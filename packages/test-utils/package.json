@@ -1,6 +1,6 @@
 {
   "name": "@fkui/test-utils",
-  "version": "6.52.1",
+  "version": "6.52.2",
   "description": "FKUI test utils for Jest och Vitest",
   "keywords": [
     "fkui",

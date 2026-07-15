@@ -1,6 +1,6 @@
 {
   "name": "@fkui/docs",
-  "version": "6.52.1",
+  "version": "6.52.2",
   "private": true,
   "homepage": "https://designsystem.forsakringskassan.se/",
   "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
@@ -14,10 +14,10 @@
     "clean": "rimraf -g *.tsbuildinfo"
   },
   "dependencies": {
-    "@fkui/icon-lib-default": "6.52.0",
-    "@fkui/theme-default": "6.52.0",
-    "@fkui/vue": "6.52.1",
-    "@fkui/vue-labs": "6.52.1"
+    "@fkui/icon-lib-default": "6.52.2",
+    "@fkui/theme-default": "6.52.2",
+    "@fkui/vue": "6.52.2",
+    "@fkui/vue-labs": "6.52.2"
   },
   "devDependencies": {
     "@fkui/font-default": "6.52.0",

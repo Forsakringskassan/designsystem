@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 6.52.2 (2026-07-15)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v26.3.4 e40bd12
+* **deps:** update dependency i18next to v26.3.5 561b6f6
+* **deps:** update dependency i18next to v26.3.6 98ca12b
+* **deps:** update dependency svgo to v4.0.2 7d5a687
+
 ## 6.52.1 (2026-07-03)
 
 ### Bug Fixes
