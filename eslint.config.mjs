@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-array-from-map": "off",
             "unicorn/prefer-array-some": "off",
             "unicorn/prefer-await": "off",
             "unicorn/prefer-dom-node-replace-children": "off",
