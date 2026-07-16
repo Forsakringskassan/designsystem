@@ -39,7 +39,7 @@ export function treeSnapshot<T extends { id: number }>(
             .map((item, i) => {
                 const isLast = i === items.length - 1;
                 const connector = isLast ? "└─ " : "├─ ";
-                const childPrefix = isLast ? "   " : "│  ";
+                const childPrefix = isLast ? " ".repeat(3) : "│  ";
                 const children = nestedAttribute
                     ? item[nestedAttribute]
                     : undefined;
