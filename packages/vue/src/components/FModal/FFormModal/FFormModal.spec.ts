@@ -352,7 +352,7 @@ describe("props", () => {
         });
 
         const button = wrapper.get(".button--secondary");
-        const nbsp = "\u00a0";
+        const nbsp = "\u{A0}";
         expect(button.text()).toBe(`Lorem ipsum ${nbsp}with screenreader text`);
     });
 

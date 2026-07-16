@@ -32,7 +32,7 @@ it.each`
     ${{ limit: "1 000" }}         | ${1000}       | ${"value with whitespace and of type number should be valid"}
     ${{ limit: "1 0000" }}        | ${10_000}     | ${"value with whitespace and of type number should be valid"}
     ${{ limit: " 1 0 0 0 0" }}    | ${10_000}     | ${"value with whitespace and of type number should be valid"}
-    ${{ limit: "10\u00a0050,3" }} | ${10_050.3}   | ${"value with non breaking whitespace and of type number should be valid"}
+    ${{ limit: "10\u{A0}050,3" }} | ${10_050.3}   | ${"value with non breaking whitespace and of type number should be valid"}
 `(
     'should be called with "$expected" for "$config" because of $description',
     ({ config, expected }) => {

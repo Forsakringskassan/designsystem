@@ -7,16 +7,16 @@ describe("formatting", () => {
         ${"0"}       | ${"0"}                   | ${"string"}
         ${"18.5"}    | ${"18,5"}                | ${"string"}
         ${"18,5"}    | ${"18,5"}                | ${"string"}
-        ${"123456"}  | ${"123\u00a0456"}        | ${"string"}
+        ${"123456"}  | ${"123\u{A0}456"}        | ${"string"}
         ${0}         | ${"0"}                   | ${"number"}
         ${18}        | ${"18"}                  | ${"number"}
         ${18.5}      | ${"18,5"}                | ${"number"}
         ${123}       | ${"123"}                 | ${"number"}
-        ${1234}      | ${"1\u00a0234"}          | ${"number"}
-        ${123_456}   | ${"123\u00a0456"}        | ${"number"}
-        ${-123_456}  | ${"−123\u00a0456"}       | ${"number"}
-        ${1234.25}   | ${"1\u00a0234,25"}       | ${"number"}
-        ${1_000_000} | ${"1\u00a0000\u00a0000"} | ${"number"}
+        ${1234}      | ${"1\u{A0}234"}          | ${"number"}
+        ${123_456}   | ${"123\u{A0}456"}        | ${"number"}
+        ${-123_456}  | ${"−123\u{A0}456"}       | ${"number"}
+        ${1234.25}   | ${"1\u{A0}234,25"}       | ${"number"}
+        ${1_000_000} | ${"1\u{A0}000\u{A0}000"} | ${"number"}
     `(
         'should format "$value" ($type) as "$expected"',
         ({ value, expected }) => {
@@ -49,14 +49,14 @@ describe("formatting decimals", () => {
         ${0}           | ${"0,00"}
         ${18}          | ${"18,00"}
         ${123}         | ${"123,00"}
-        ${1234}        | ${"1\u00a0234,00"}
-        ${123_456}     | ${"123\u00a0456,00"}
-        ${-123_456}    | ${"−123\u00a0456,00"}
-        ${1234.2}      | ${"1\u00a0234,20"}
-        ${1234.25}     | ${"1\u00a0234,25"}
-        ${1234.254}    | ${"1\u00a0234,25"}
-        ${1234.255}    | ${"1\u00a0234,26"}
-        ${1_000_000.5} | ${"1\u00a0000\u00a0000,50"}
+        ${1234}        | ${"1\u{A0}234,00"}
+        ${123_456}     | ${"123\u{A0}456,00"}
+        ${-123_456}    | ${"−123\u{A0}456,00"}
+        ${1234.2}      | ${"1\u{A0}234,20"}
+        ${1234.25}     | ${"1\u{A0}234,25"}
+        ${1234.254}    | ${"1\u{A0}234,25"}
+        ${1234.255}    | ${"1\u{A0}234,26"}
+        ${1_000_000.5} | ${"1\u{A0}000\u{A0}000,50"}
     `('should format "$value" as "$expected"', ({ value, expected }) => {
         expect.assertions(1);
         expect(formatNumber(value, 2)).toEqual(expected);
@@ -76,8 +76,8 @@ describe("parse", () => {
         ${"123 456"}           | ${123_456}   | ${"123456 number value should should be formatted as '123 456'"}
         ${"−123 456"}          | ${-123_456}  | ${"-123456 number value should should be formatted as '-123 456'"}
         ${"1 234,25"}          | ${1234.25}   | ${"1234.25 number value should should be formatted as '1 234,25'"}
-        ${"0001\u00a0234,25"}  | ${1234.25}   | ${"0001234.25 string value should should be formatted as '1 234,25'"}
-        ${"−0001\u00a0234,25"} | ${-1234.25}  | ${"-0001234.25 string value should should be formatted as '-1 234,25'"}
+        ${"0001\u{A0}234,25"}  | ${1234.25}   | ${"0001234.25 string value should should be formatted as '1 234,25'"}
+        ${"−0001\u{A0}234,25"} | ${-1234.25}  | ${"-0001234.25 string value should should be formatted as '-1 234,25'"}
         ${"100,3333"}          | ${100.3333}  | ${"value with format xxx,xxxx should be formatted as xxx,xxxx"}
         ${"1000.50"}           | ${1000.5}    | ${"value with dot (.) should convert to comma(,)"}
         ${"10000,50"}          | ${10_000.5}  | ${"value with format xxxxx,xx with space and decimal should be formatted as xx xxx,xx"}
