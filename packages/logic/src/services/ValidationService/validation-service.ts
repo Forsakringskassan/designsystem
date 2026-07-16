@@ -336,6 +336,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
                 return array.every((it) => isValidSync(it));
             }
             if (typeof src === "string") {
+                /* eslint-disable-next-line unicorn/no-useless-recursion -- technical debt */
                 return isValidSync(root.querySelector(`#${src}`));
             }
             if (isValidatableFormElement(src)) {

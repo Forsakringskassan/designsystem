@@ -26,6 +26,7 @@ export function getElementType(
         return "select";
     }
     if (element instanceof HTMLFieldSetElement) {
+        /* eslint-disable-next-line unicorn/no-useless-recursion -- technical debt */
         return getElementType(
             element.querySelector<HTMLInputElement>(
                 "input[type='checkbox'], input[type='radio']",

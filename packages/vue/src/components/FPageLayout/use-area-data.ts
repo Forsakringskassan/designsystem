@@ -51,6 +51,7 @@ function findLayoutElement(
     }
     const root = element.getRootNode();
     if (root instanceof ShadowRoot) {
+        /* eslint-disable-next-line unicorn/no-useless-recursion -- technical debt */
         return findLayoutElement(root.host);
     }
     return null;
