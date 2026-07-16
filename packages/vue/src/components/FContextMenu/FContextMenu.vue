@@ -86,11 +86,13 @@ const separatorPositions = computed((): number[] => {
     if (items.length > 1) {
         /* eslint-disable-next-line unicorn/no-for-each -- technical debt */
         items.forEach((it, i) => {
-            if (isContextMenuSeparatorItem(it)) {
-                const pos = i - 1 - res.length;
-                if (pos >= 0 && pos < items.length - 1) {
-                    res.push(pos);
-                }
+            if (!isContextMenuSeparatorItem(it)) {
+                return;
+            }
+
+            const pos = i - 1 - res.length;
+            if (pos >= 0 && pos < items.length - 1) {
+                res.push(pos);
             }
         });
     }
@@ -154,11 +156,13 @@ function closePopup(reason: string): void {
 }
 
 function onClickItem(item: ContextMenuItem): void {
-    if (isContextMenuTextItem(item) && item.key) {
-        selectedItem.value = item.key;
-        emit("select", selectedItem.value);
-        closePopup("select");
+    if (!(isContextMenuTextItem(item) && item.key)) {
+        return;
     }
+
+    selectedItem.value = item.key;
+    emit("select", selectedItem.value);
+    closePopup("select");
 }
 
 function tabIndex(index: number): number {

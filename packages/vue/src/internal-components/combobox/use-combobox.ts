@@ -182,24 +182,26 @@ export function useCombobox(
     async function openSelected(
         fallback: null | "first" | "last" = null,
     ): Promise<void> {
-        if (hasOptions.value) {
-            dropdownIsOpen.value = true;
-
-            await nextTick();
-
-            if (selectMode.value) {
-                activeOption.value = filter.value;
-            } else if (fallback === "first") {
-                activeOption.value = dropdownOptions.value[0];
-            } else if (fallback === "last") {
-                /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
-                activeOption.value = dropdownOptions.value.at(-1)!;
-            } else {
-                activeOption.value = null;
-            }
-
-            inputRef.value?.focus();
+        if (!hasOptions.value) {
+            return;
         }
+
+        dropdownIsOpen.value = true;
+
+        await nextTick();
+
+        if (selectMode.value) {
+            activeOption.value = filter.value;
+        } else if (fallback === "first") {
+            activeOption.value = dropdownOptions.value[0];
+        } else if (fallback === "last") {
+            /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
+            activeOption.value = dropdownOptions.value.at(-1)!;
+        } else {
+            activeOption.value = null;
+        }
+
+        inputRef.value?.focus();
     }
 
     function close(): void {

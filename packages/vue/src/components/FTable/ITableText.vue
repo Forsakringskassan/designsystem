@@ -197,17 +197,19 @@ function setUpFakeValidation(el: HTMLInputElement): void {
 }
 
 onMounted(() => {
-    if (inputElement.value) {
-        viewValue.value = fromColumnValue();
-
-        if (column.hasValidation) {
-            setUpValidation(inputElement.value);
-        } else {
-            setUpFakeValidation(inputElement.value);
-        }
-
-        void nextTick().then(() => validationFacade.validateElement(inputElement.value)); // wait for .value to be set before validation
+    if (!inputElement.value) {
+        return;
     }
+
+    viewValue.value = fromColumnValue();
+
+    if (column.hasValidation) {
+        setUpValidation(inputElement.value);
+    } else {
+        setUpFakeValidation(inputElement.value);
+    }
+
+    void nextTick().then(() => validationFacade.validateElement(inputElement.value)); // wait for .value to be set before validation
 });
 
 watchEffect(() => {

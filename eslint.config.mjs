@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-early-return": "off",
             "unicorn/prefer-global-number-constants": "off",
             "unicorn/prefer-https": "off",
             "unicorn/prefer-includes-over-repeated-comparisons": "off",

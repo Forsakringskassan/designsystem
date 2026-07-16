@@ -93,10 +93,12 @@ export default defineComponent({
                 checked: this.value === this.modelValue,
                 name: this.sharedName ?? this.$attrs.name,
                 onChange: (event: Event) => {
-                    if (event.target instanceof HTMLInputElement) {
-                        this.$emit("update:modelValue", this.value);
-                        this.$emit("change", this.value);
+                    if (!(event.target instanceof HTMLInputElement)) {
+                        return;
                     }
+
+                    this.$emit("update:modelValue", this.value);
+                    this.$emit("change", this.value);
                 },
                 onInput: (event: Event) => {
                     // ? Force focus on Mac + Safari

@@ -157,14 +157,16 @@ export default defineComponent({
                     // that launches the popup (await nextTick doesnt work here)
                     setTimeout(() => {
                         // verify that it's still open
-                        if (this.isOpen) {
-                            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                            document.addEventListener("click", this.onDocumentClickHandler);
-                            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                            window.addEventListener("resize", this.onWindowResizeDebounced);
-                            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                            window.addEventListener("scroll", this.onScrollDebounced, { capture: true });
+                        if (!this.isOpen) {
+                            return;
                         }
+
+                        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+                        document.addEventListener("click", this.onDocumentClickHandler);
+                        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+                        window.addEventListener("resize", this.onWindowResizeDebounced);
+                        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+                        window.addEventListener("scroll", this.onScrollDebounced, { capture: true });
                     }, 0);
                 } else {
                     /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
@@ -346,10 +348,12 @@ export default defineComponent({
             this.$emit("close", "escape");
         },
         onKeyTab(event: KeyboardEvent): void {
-            if (this.keyboardTrap) {
-                const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
-                handleTab(event, wrapper);
+            if (!this.keyboardTrap) {
+                return;
             }
+
+            const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
+            handleTab(event, wrapper);
         },
     },
 });

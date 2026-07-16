@@ -246,18 +246,20 @@ describe("Editing Rows - Pagination Behavior", () => {
 
         // Go to page 2 if available
         paginator.nextButton().then((button) => {
-            if (!button.prop("disabled")) {
-                cy.wrap(button).click();
-                paginator.currentPageButton().should("contain.text", "2");
-
-                // Edit a row
-                table.cell({ row: 1, col: 2 }).click();
-                cy.focused().clear();
-                cy.focused().type("Beta{enter}");
-
-                // Should stay on page 2
-                paginator.currentPageButton().should("contain.text", "2");
+            if (button.prop("disabled")) {
+                return;
             }
+
+            cy.wrap(button).click();
+            paginator.currentPageButton().should("contain.text", "2");
+
+            // Edit a row
+            table.cell({ row: 1, col: 2 }).click();
+            cy.focused().clear();
+            cy.focused().type("Beta{enter}");
+
+            // Should stay on page 2
+            paginator.currentPageButton().should("contain.text", "2");
         });
     });
 });

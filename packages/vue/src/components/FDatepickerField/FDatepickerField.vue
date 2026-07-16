@@ -157,10 +157,12 @@ export default defineComponent({
     watch: {
         modelValue: {
             async handler(value: string): Promise<void> {
-                if (value !== this.textFieldValue) {
-                    await this.updateTextFieldValue(value);
-                    updateCalendarValue(this, value);
+                if (value === this.textFieldValue) {
+                    return;
                 }
+
+                await this.updateTextFieldValue(value);
+                updateCalendarValue(this, value);
             },
             immediate: true,
         },

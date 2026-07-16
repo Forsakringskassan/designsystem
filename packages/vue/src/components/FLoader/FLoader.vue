@@ -119,21 +119,25 @@ export default defineComponent({
             focus(this.$refs["loader-text"]);
         },
         async openLoader() {
-            if (this.overlay) {
-                saveFocus(document);
-                if (this.focusOnOverlay) {
-                    await this.listener();
-                }
-                /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                addFocusListener(findTabbableElements(document), this.listener);
+            if (!this.overlay) {
+                return;
             }
+
+            saveFocus(document);
+            if (this.focusOnOverlay) {
+                await this.listener();
+            }
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+            addFocusListener(findTabbableElements(document), this.listener);
         },
         closeLoader() {
-            if (this.overlay) {
-                /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                removeFocusListener(findTabbableElements(document), this.listener);
-                restoreFocus();
+            if (!this.overlay) {
+                return;
             }
+
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+            removeFocusListener(findTabbableElements(document), this.listener);
+            restoreFocus();
         },
     },
 });

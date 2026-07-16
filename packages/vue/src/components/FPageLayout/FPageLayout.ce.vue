@@ -48,31 +48,33 @@ const resolvedSlots = computed(() => {
 });
 
 onMounted(() => {
-    if (rootRef.value) {
-        const host = (rootRef.value.getRootNode() as ShadowRoot).host as HTMLElement;
-        slotNames.value = getSlotNames(host);
-
-        /* allow slots to settle before we dispatch the update event otherwise
-         * the updated data will not yet be available */
-        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-        nextTick(() => {
-            emit("update");
-        });
-
-        useMutationObserver(
-            host,
-            () => {
-                slotNames.value = getSlotNames(host);
-                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-                nextTick(() => {
-                    emit("update");
-                });
-            },
-            {
-                childList: true,
-            },
-        );
+    if (!rootRef.value) {
+        return;
     }
+
+    const host = (rootRef.value.getRootNode() as ShadowRoot).host as HTMLElement;
+    slotNames.value = getSlotNames(host);
+
+    /* allow slots to settle before we dispatch the update event otherwise
+     * the updated data will not yet be available */
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+    nextTick(() => {
+        emit("update");
+    });
+
+    useMutationObserver(
+        host,
+        () => {
+            slotNames.value = getSlotNames(host);
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+            nextTick(() => {
+                emit("update");
+            });
+        },
+        {
+            childList: true,
+        },
+    );
 });
 </script>
 

@@ -65,12 +65,14 @@ export function useLayoutPanel(
     }
 
     function onMouseMove(event: MouseEvent): void {
-        if (borderDrag) {
-            const growDirection = growToRight ? 1 : -1;
-            preferredWidth =
-                dragStartWidth + (event.screenX - dragStart) * growDirection;
-            limitWidth();
+        if (!borderDrag) {
+            return;
         }
+
+        const growDirection = growToRight ? 1 : -1;
+        preferredWidth =
+            dragStartWidth + (event.screenX - dragStart) * growDirection;
+        limitWidth();
     }
 
     function onBorderMouseDown(event: MouseEvent): void {

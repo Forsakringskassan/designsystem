@@ -158,13 +158,15 @@ watch(
 );
 
 onMounted(() => {
-    if (props.selectable && props.checkbox) {
-        if (!slots.screenreader) {
-            throw new Error('Slot "screenreader" is required when having "selectable" & "checkbox" option.');
-        }
-        registerCallbackAfterItemAdd(callbackAfterItemAdd);
-        registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
+    if (!(props.selectable && props.checkbox)) {
+        return;
     }
+
+    if (!slots.screenreader) {
+        throw new Error('Slot "screenreader" is required when having "selectable" & "checkbox" option.');
+    }
+    registerCallbackAfterItemAdd(callbackAfterItemAdd);
+    registerCallbackBeforeItemDelete(callbackBeforeItemDelete);
 });
 
 function getLiElements(): HTMLElement[] {

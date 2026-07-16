@@ -62,16 +62,15 @@ export function usePointerHandler(options: UsePointerHandlerOptions): void {
         }
 
         function onLostPointerCapture(event: PointerEvent): void {
-            if (event.pointerId === pointerId) {
-                separatorElement.removeEventListener(
-                    "pointermove",
-                    onPointerMove,
-                );
-                separatorElement.removeEventListener(
-                    "lostpointercapture",
-                    onLostPointerCapture,
-                );
+            if (event.pointerId !== pointerId) {
+                return;
             }
+
+            separatorElement.removeEventListener("pointermove", onPointerMove);
+            separatorElement.removeEventListener(
+                "lostpointercapture",
+                onLostPointerCapture,
+            );
         }
 
         onPointerMove(event);

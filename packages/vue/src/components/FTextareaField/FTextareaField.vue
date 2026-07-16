@@ -213,10 +213,12 @@ export default defineComponent({
             }
         },
         onInput(event: Event): void {
-            if (event.target instanceof HTMLTextAreaElement) {
-                this.$emit("update:modelValue", event.target.value);
-                this.$emit("input", event.target.value);
+            if (!(event.target instanceof HTMLTextAreaElement)) {
+                return;
             }
+
+            this.$emit("update:modelValue", event.target.value);
+            this.$emit("input", event.target.value);
         },
         onValidity({ detail }: CustomEvent<ValidityEvent>): void {
             this.validationMessage = detail.validationMessage;

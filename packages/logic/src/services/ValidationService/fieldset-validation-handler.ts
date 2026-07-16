@@ -60,14 +60,16 @@ class FieldsetValidationHandler {
         // IE11 (not Chrome / FF) trigger focusin-event on legends and other elements inside the fieldset
         // So we need to check the event target, if it's focusable.
         if (
-            this.hasFocusableTarget(event.target) &&
-            !this.hasDocumentListener
+            !this.hasFocusableTarget(event.target) ||
+            this.hasDocumentListener
         ) {
-            this.documentFocusInRef = this.documentFocusIn.bind(this);
-            document.addEventListener("focusin", this.documentFocusInRef);
-            document.addEventListener("click", this.documentFocusInRef);
-            this.hasDocumentListener = true;
+            return;
         }
+
+        this.documentFocusInRef = this.documentFocusIn.bind(this);
+        document.addEventListener("focusin", this.documentFocusInRef);
+        document.addEventListener("click", this.documentFocusInRef);
+        this.hasDocumentListener = true;
     }
 
     private documentFocusIn(event: Event): void {
@@ -84,12 +86,14 @@ class FieldsetValidationHandler {
     }
 
     private removeEventListeners(): void {
-        if (this.hasDocumentListener && this.documentFocusInRef) {
-            document.removeEventListener("focusin", this.documentFocusInRef);
-            document.removeEventListener("click", this.documentFocusInRef);
-            this.hasDocumentListener = false;
-            this.validateFieldsetAndChildren();
+        if (!(this.hasDocumentListener && this.documentFocusInRef)) {
+            return;
         }
+
+        document.removeEventListener("focusin", this.documentFocusInRef);
+        document.removeEventListener("click", this.documentFocusInRef);
+        this.hasDocumentListener = false;
+        this.validateFieldsetAndChildren();
     }
 
     private validateFieldsetAndChildren(): void {
