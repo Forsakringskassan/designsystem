@@ -3,13 +3,13 @@ import { HoursMinutesValidatorUtils } from "./hours-minutes-validator-utils";
 
 describe("validate", () => {
     it.each`
-        value            | expected     | description
-        ${"3"}           | ${180}       | ${"numeric value should be valid"}
-        ${"1000 00 0 0"} | ${600000000} | ${"numeric value with multiple spaces should be valid"}
-        ${"1000 00"}     | ${6000000}   | ${"numeric value with one space should be valid"}
-        ${"1 000"}       | ${60000}     | ${"value with whitespace and of type number should be valid"}
-        ${"1 0000"}      | ${600000}    | ${"value with whitespace and of type number should be valid"}
-        ${" 1 0 0 0 0"}  | ${600000}    | ${"value with whitespace and of type number should be valid"}
+        value            | expected       | description
+        ${"3"}           | ${180}         | ${"numeric value should be valid"}
+        ${"1000 00 0 0"} | ${600_000_000} | ${"numeric value with multiple spaces should be valid"}
+        ${"1000 00"}     | ${6_000_000}   | ${"numeric value with one space should be valid"}
+        ${"1 000"}       | ${60_000}      | ${"value with whitespace and of type number should be valid"}
+        ${"1 0000"}      | ${600_000}     | ${"value with whitespace and of type number should be valid"}
+        ${" 1 0 0 0 0"}  | ${600_000}     | ${"value with whitespace and of type number should be valid"}
     `(
         'should be called with "$expected" for "$value" because of "$description"',
         ({ value, expected }) => {

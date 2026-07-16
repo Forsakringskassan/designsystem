@@ -35,11 +35,11 @@ describe("hoursMinutesStringToMinutes", () => {
         value       | expected     | description
         ${"10:45"}  | ${645}       | ${"10:45 should be recalculated to 645 minutes"}
         ${"10:59"}  | ${659}       | ${"10:59 should be recalculated to 659 minutes"}
-        ${"1030"}   | ${61800}     | ${"1030 should be recalculated to 61800 minutes"}
+        ${"1030"}   | ${61_800}    | ${"1030 should be recalculated to 61800 minutes"}
         ${":30"}    | ${30}        | ${":30 should be recalculated to 30 minutes"}
         ${"0:30"}   | ${30}        | ${"0:30 should be recalculated to 30 minutes"}
         ${"10:30"}  | ${630}       | ${"10:30 should be recalculated to 630 minutes"}
-        ${"10030"}  | ${601800}    | ${"10030 should be recalculated to 601800 minutes"}
+        ${"10030"}  | ${601_800}   | ${"10030 should be recalculated to 601800 minutes"}
         ${"100:00"} | ${6000}      | ${"100:00 should be recalculated to 6000 minutes"}
         ${"nej"}    | ${undefined} | ${"a non conformant string should not be a number"}
         ${"00:00"}  | ${0}         | ${"00:00 should be recalculated to 0 minutes"}
@@ -117,10 +117,10 @@ describe("minutesToHoursFloat", () => {
         value        | expected              | description
         ${645}       | ${10.75}              | ${"645 minutes should be recalculated to 10.75 decimal value"}
         ${659}       | ${10.983333333333333} | ${"659 minutes should be recalculated to 10.983333333333333 decimal value"}
-        ${61800}     | ${1030}               | ${"61800 minutes should be recalculated to 1030 decimal value"}
+        ${61_800}    | ${1030}               | ${"61800 minutes should be recalculated to 1030 decimal value"}
         ${30}        | ${0.5}                | ${"30 minutes should be recalculated to 00.5 decimal value"}
         ${630}       | ${10.5}               | ${"630 minutes should be recalculated to 10.5 decimal value"}
-        ${601800}    | ${10030}              | ${"601800 minutes should be recalculated to 100.5 decimal value"}
+        ${601_800}   | ${10_030}             | ${"601800 minutes should be recalculated to 100.5 decimal value"}
         ${6000}      | ${100}                | ${"6000 minutes should be recalculated to 100 decimal value"}
         ${undefined} | ${0}                  | ${"an undefined number should be recalculated to 0 decimal value"}
         ${0}         | ${0}                  | ${"0 minutes should be recalculated to 0 decimal value"}
@@ -145,16 +145,16 @@ describe("minutesToHoursFloat", () => {
 
 describe("minutesToObject", () => {
     it.each`
-        value        | expected                        | description
-        ${645}       | ${{ hours: 10, minutes: 45 }}   | ${"645 minutes should be recalculated to 10 hours and 45 minutes"}
-        ${659}       | ${{ hours: 10, minutes: 59 }}   | ${"659 minutes should be recalculated to 10 hours and 59 minutes"}
-        ${61800}     | ${{ hours: 1030, minutes: 0 }}  | ${"61800 minutes should be recalculated to 1030 hours and 0 minutes"}
-        ${30}        | ${{ hours: 0, minutes: 30 }}    | ${"30 minutes should be recalculated to 0 hours and 30 minutes"}
-        ${630}       | ${{ hours: 10, minutes: 30 }}   | ${"630 minutes should be recalculated to 10 hours and 30 minutes"}
-        ${601800}    | ${{ hours: 10030, minutes: 0 }} | ${"601800 minutes should be recalculated to 10030 hours and 0 minutes"}
-        ${6000}      | ${{ hours: 100, minutes: 0 }}   | ${"6000 minutes should be recalculated to 100 hours and 0 minutes"}
-        ${undefined} | ${{ hours: 0, minutes: 0 }}     | ${"an undefined number should be recalculated to 0 hours and 0 minutes"}
-        ${0}         | ${{ hours: 0, minutes: 0 }}     | ${"0 minutes should be recalculated to 0 hours and 0 minutes"}
+        value        | expected                         | description
+        ${645}       | ${{ hours: 10, minutes: 45 }}    | ${"645 minutes should be recalculated to 10 hours and 45 minutes"}
+        ${659}       | ${{ hours: 10, minutes: 59 }}    | ${"659 minutes should be recalculated to 10 hours and 59 minutes"}
+        ${61_800}    | ${{ hours: 1030, minutes: 0 }}   | ${"61800 minutes should be recalculated to 1030 hours and 0 minutes"}
+        ${30}        | ${{ hours: 0, minutes: 30 }}     | ${"30 minutes should be recalculated to 0 hours and 30 minutes"}
+        ${630}       | ${{ hours: 10, minutes: 30 }}    | ${"630 minutes should be recalculated to 10 hours and 30 minutes"}
+        ${601_800}   | ${{ hours: 10_030, minutes: 0 }} | ${"601800 minutes should be recalculated to 10030 hours and 0 minutes"}
+        ${6000}      | ${{ hours: 100, minutes: 0 }}    | ${"6000 minutes should be recalculated to 100 hours and 0 minutes"}
+        ${undefined} | ${{ hours: 0, minutes: 0 }}      | ${"an undefined number should be recalculated to 0 hours and 0 minutes"}
+        ${0}         | ${{ hours: 0, minutes: 0 }}      | ${"0 minutes should be recalculated to 0 hours and 0 minutes"}
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {

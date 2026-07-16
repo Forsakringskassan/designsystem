@@ -4,11 +4,11 @@ import { FBadge, FCheckboxField, FSelectField } from "@fkui/vue";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
 import { XRelativeTime } from "@fkui/vue-labs";
 
-const sekunder = 1_000;
+const sekunder = 1000;
 const minuter = 60_000;
-const timmar = 3600_000;
-const dagar = 86400_000;
-const månader = 2592000_000;
+const timmar = 3_600_000;
+const dagar = 86_400_000;
+const månader = 2_592_000_000;
 
 const now = Date.now();
 const time = {

@@ -12,8 +12,8 @@ describe("formatting", () => {
         ${18}       | ${"18"}            | ${"number"}
         ${123}      | ${"123"}           | ${"number"}
         ${1234}     | ${"1\u00a0234"}    | ${"number"}
-        ${123456}   | ${"123\u00a0456"}  | ${"number"}
-        ${-123456}  | ${"−123\u00a0456"} | ${"number"}
+        ${123_456}  | ${"123\u00a0456"}  | ${"number"}
+        ${-123_456} | ${"−123\u00a0456"} | ${"number"}
         ${1234.25}  | ${"1\u00a0234,25"} | ${"number"}
     `(
         'should format "$value" ($type) as "$expected"',
@@ -48,8 +48,8 @@ describe("formatting decimals", () => {
         ${18}       | ${"18,00"}            | ${"18 number value should should be formatted as '18,00'"}
         ${123}      | ${"123,00"}           | ${"123 number value should should be formatted as '123,00'"}
         ${1234}     | ${"1\u00a0234,00"}    | ${"1234 number value should should be formatted as '1 234,00'"}
-        ${123456}   | ${"123\u00a0456,00"}  | ${"123456 number value should should be formatted as '123 456,00'"}
-        ${-123456}  | ${"−123\u00a0456,00"} | ${"-123456 number value should should be formatted as '-123 456,00'"}
+        ${123_456}  | ${"123\u00a0456,00"}  | ${"123456 number value should should be formatted as '123 456,00'"}
+        ${-123_456} | ${"−123\u00a0456,00"} | ${"-123456 number value should should be formatted as '-123 456,00'"}
         ${1234.25}  | ${"1\u00a0234,25"}    | ${"1234.25 number value should should be formatted as '1 234,25'"}
         ${1234.255} | ${"1\u00a0234,26"}    | ${"1234.255 number value should be rounded and formatted as '1 234,26'"}
     `(
@@ -71,8 +71,8 @@ describe("parse", () => {
         ${" 18.5 "}            | ${18.5}     | ${"18.5 string value should should be formatted as '18,5'"}
         ${"0018.5"}            | ${18.5}     | ${"18.5 string value should should be formatted as '18,5'"}
         ${"1 234"}             | ${1234}     | ${"1234 number value should should be formatted as '1 234'"}
-        ${"123 456"}           | ${123456}   | ${"123456 number value should should be formatted as '123 456'"}
-        ${"−123 456"}          | ${-123456}  | ${"-123456 number value should should be formatted as '-123 456'"}
+        ${"123 456"}           | ${123_456}  | ${"123456 number value should should be formatted as '123 456'"}
+        ${"−123 456"}          | ${-123_456} | ${"-123456 number value should should be formatted as '-123 456'"}
         ${"1 234,25"}          | ${1234.25}  | ${"1234.25 number value should should be formatted as '1 234,25'"}
         ${"0001\u00a0234,25"}  | ${1234.25}  | ${"0001234.25 string value should should be formatted as '1 234,25'"}
         ${"−0001\u00a0234,25"} | ${-1234.25} | ${"-0001234.25 string value should should be formatted as '-1 234,25'"}

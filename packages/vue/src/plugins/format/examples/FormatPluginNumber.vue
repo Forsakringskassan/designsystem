@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const number = 123456789.1234;
+const number = 123_456_789.1234;
 const stringNumber = "123456789.1234";
 const precisionNumber = {
-    number: 123456789.1234,
+    number: 123_456_789.1234,
     decimals: 2,
 };
 </script>

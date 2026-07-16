@@ -23,7 +23,7 @@ describe("timeAgo", () => {
 
         it("should return '1s ago' for 1 second ago", () => {
             expect.assertions(1);
-            expect(timeAgo(now - 1_000, now, $t)).toBe("1s ago");
+            expect(timeAgo(now - 1000, now, $t)).toBe("1s ago");
         });
 
         it("should return '59s ago' just before the minute boundary", () => {

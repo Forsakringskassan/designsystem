@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/numeric-separators-style": "off",
             "unicorn/operator-assignment": "off",
             "unicorn/prefer-array-from-map": "off",
             "unicorn/prefer-array-some": "off",
