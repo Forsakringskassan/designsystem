@@ -6,7 +6,7 @@ export function getGridClasses(
 ): Record<string, boolean>;
 export function getGridClasses(width: number): Record<string, boolean>;
 export function getGridClasses(
-    target: { offsetWidth: number } | number | null,
+    target: number | { offsetWidth: number } | null,
 ): Record<string, boolean> {
     if (target === null) {
         return {};

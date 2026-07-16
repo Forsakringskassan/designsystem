@@ -10,7 +10,7 @@ interface IconEntry {
     library: string;
 }
 
-function importDefault<T extends object>(m: { default: T } | T): T {
+function importDefault<T extends object>(m: T | { default: T }): T {
     return "default" in m ? m.default : m;
 }
 
