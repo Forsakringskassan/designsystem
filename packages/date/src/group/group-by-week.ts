@@ -14,7 +14,7 @@ export function groupByWeek(
     const result = [];
     let days: FDate[] | undefined;
 
-    for (const dayIterator of Array.from(range(begin, end))) {
+    for (const dayIterator of range(begin, end)) {
         if (!days || dayIterator.weekDay === Weekday.MONDAY) {
             days = [];
             result.push({ week: dayIterator.week, days });

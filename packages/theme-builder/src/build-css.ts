@@ -108,7 +108,8 @@ export async function buildCss(
     logger.group("Compiling CSS:");
 
     /* eslint-disable-next-line @typescript-eslint/await-thenable -- memfs returns a promise instead */
-    for await (const item of await fs.glob(pattern, { cwd })) {
+    const items = await fs.glob(pattern, { cwd });
+    for await (const item of items) {
         const src = item.replaceAll("\\", "/");
         const { name } = path.parse(src);
         if (name.startsWith("_")) {
