@@ -23,8 +23,8 @@ function stringifyValue(value: unknown): string {
 }
 
 export function stringifyObject(obj: Record<string, unknown>): string {
-    const props = Object.keys(obj).map(
-        (key) => `${key}: ${stringifyValue(obj[key])}`,
+    const props = Object.entries(obj).map(
+        ([key, value]) => `${key}: ${stringifyValue(value)}`,
     );
 
     return `{ ${props.join(", ")} }`;
