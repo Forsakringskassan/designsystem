@@ -74,7 +74,9 @@ export default defineComponent({
             const localChangedMimeTypeText =
                 this.changedMimeTypeText ??
                 this.$t("fkui.file-item.changed-mime-type.text", "(%before% ändrad till %after%)");
-            return localChangedMimeTypeText.replace("%before%", originalMimeType).replace("%after%", currentMimeType);
+            return localChangedMimeTypeText
+                .replace("%before%", () => originalMimeType)
+                .replace("%after%", () => currentMimeType);
         },
         iconName(): IconName {
             const { mimeType } = this;

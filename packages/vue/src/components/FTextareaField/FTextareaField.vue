@@ -147,7 +147,7 @@ export default defineComponent({
             );
         },
         charactersLeftWarningInterpolated(): string {
-            return this.charactersLeftWarning.replace("%charactersLeft%", this.charactersLeft.toString());
+            return this.charactersLeftWarning.replace("%charactersLeft%", () => this.charactersLeft.toString());
         },
         textareaClass(): string[] {
             const classes = ["textarea-field__textarea"];
