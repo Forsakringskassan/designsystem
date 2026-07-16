@@ -179,7 +179,7 @@ describe("isFocusable", () => {
         ${"<textarea></textarea>"}                            | ${true}  | ${true}   | ${"interactive element"}
         ${"<iframe></iframe>"}                                | ${true}  | ${true}   | ${"interactive element"}
         ${'<button type="button">Click me</button>'}          | ${true}  | ${true}   | ${"interactive element"}
-        ${'<a href="http://example.net">A link</a>'}          | ${true}  | ${true}   | ${"interactive element"}
+        ${'<a href="https://example.net">A link</a>'}         | ${true}  | ${true}   | ${"interactive element"}
         ${'<h1 tabindex="0">Content</h1>'}                    | ${true}  | ${true}   | ${"non-interactive element with tabindex"}
         ${'<h1 tabindex="-1">Content</h1>'}                   | ${true}  | ${true}   | ${"non-interactive element with negative tabindex"}
         ${"<h1>Content</h1>"}                                 | ${true}  | ${false}  | ${"non-interactive without tabindex"}
@@ -207,7 +207,7 @@ describe("isTabbable", () => {
         ${"<textarea></textarea>"}                            | ${true}  | ${true}  | ${"interactive element"}
         ${"<iframe></iframe>"}                                | ${true}  | ${true}  | ${"interactive element"}
         ${'<button type="button">Click me</button>'}          | ${true}  | ${true}  | ${"interactive element"}
-        ${'<a href="http://example.net">A link</a>'}          | ${true}  | ${true}  | ${"interactive element"}
+        ${'<a href="https://example.net">A link</a>'}         | ${true}  | ${true}  | ${"interactive element"}
         ${'<h1 tabindex="0">Content</h1>'}                    | ${true}  | ${true}  | ${"non-interactive element with tabindex"}
         ${'<h1 tabindex="-1">Content</h1>'}                   | ${true}  | ${false} | ${"non-interactive element with negative tabindex"}
         ${"<h1>Content</h1>"}                                 | ${true}  | ${false} | ${"non-interactive without tabindex"}

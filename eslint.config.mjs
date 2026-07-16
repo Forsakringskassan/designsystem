@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-https": "off",
             "unicorn/prefer-includes-over-repeated-comparisons": "off",
             "unicorn/prefer-logical-operator-over-ternary": "off",
             "unicorn/prefer-math-constants": "off",
