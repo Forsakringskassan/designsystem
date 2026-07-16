@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-logical-operator-over-ternary": "off",
             "unicorn/prefer-math-constants": "off",
             "unicorn/prefer-modern-dom-apis": "off",
             "unicorn/prefer-native-coercion-functions": "off",

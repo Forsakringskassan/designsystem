@@ -67,7 +67,7 @@ export default defineComponent({
             return { "max-width": `${String(this.panelWidth - 35)}px` };
         },
         ariaLabel(): string {
-            return this.navLabel ? this.navLabel : this.$t("fkui.layout-left-panel.nav.label", "Vänstermeny");
+            return this.navLabel || this.$t("fkui.layout-left-panel.nav.label", "Vänstermeny");
         },
     },
     mounted(): void {

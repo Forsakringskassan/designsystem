@@ -91,7 +91,7 @@ function hanteraFil(filer: FileList): void {
         currentStatus.value = STATUS_HAR_INTE_VALT_FIL;
 
         /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, unicorn/no-for-each -- technical debt */
-        Object.values(filer ? filer : valdFil.value).forEach(async (value) => {
+        Object.values(filer ?? valdFil.value).forEach(async (value) => {
             try {
                 const buffer = await value.arrayBuffer();
                 const reduced = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCodePoint(byte), "");

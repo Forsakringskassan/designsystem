@@ -28,9 +28,7 @@ export default defineComponent({
             return this.hasSlot("footer");
         },
         ariaLabel(): string {
-            return this.navLabel
-                ? this.navLabel
-                : this.$t("fkui.layout-application-template.nav.label", "Navigeringsmeny");
+            return this.navLabel || this.$t("fkui.layout-application-template.nav.label", "Navigeringsmeny");
         },
     },
     mounted() {
