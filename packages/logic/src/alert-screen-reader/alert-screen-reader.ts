@@ -46,10 +46,7 @@ export function alertScreenReader(
 
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     waitForScreenReader(() => {
-        while (wrapper.firstChild) {
-            wrapper.firstChild.remove();
-        }
-
+        wrapper.replaceChildren();
         wrapper.append(msg);
 
         setTimeout(() => {

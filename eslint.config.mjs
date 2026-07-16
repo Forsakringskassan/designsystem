@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-modern-dom-apis": "off",
             "unicorn/prefer-native-coercion-functions": "off",
             "unicorn/prefer-number-coercion": "off",
             "unicorn/prefer-number-is-safe-integer": "off",
