@@ -88,7 +88,7 @@ export default defineComponent({
             required: false,
             default: undefined,
             validator(value: number | undefined): boolean {
-                return value === undefined || (Number.isInteger(value) && value >= 1);
+                return value === undefined || (Number.isSafeInteger(value) && value >= 1);
             },
         },
     },
@@ -173,7 +173,7 @@ export default defineComponent({
         normalizedMaxRows(): number | undefined {
             const { maxRows } = this;
 
-            if (typeof maxRows !== "number" || !Number.isInteger(maxRows) || maxRows < 1) {
+            if (typeof maxRows !== "number" || !Number.isSafeInteger(maxRows) || maxRows < 1) {
                 return undefined;
             }
 
