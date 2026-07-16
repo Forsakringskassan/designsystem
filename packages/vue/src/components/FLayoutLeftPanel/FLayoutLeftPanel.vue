@@ -53,16 +53,14 @@ export default defineComponent({
         navigationStyle(): Record<string, string> {
             if (this.isOpen) {
                 return { width: `${String(this.panelWidth)}px`, top: `${String(this.offsetTop)}px` };
-            } else {
-                return { top: `${String(this.offsetTop)}px` };
             }
+            return { top: `${String(this.offsetTop)}px` };
         },
         primaryStyle(): Record<string, string> {
             if (this.isOpen) {
                 return { "margin-left": `${String(this.panelWidth)}px` };
-            } else {
-                return { "margin-left": `3.5rem` };
             }
+            return { "margin-left": `3.5rem` };
         },
         // This is to make word-wrap work in IE11
         contentStyle(): Record<string, string> {

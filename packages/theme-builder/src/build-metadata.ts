@@ -117,9 +117,8 @@ async function getVariables(
         const name = theme.name;
         const variables = await fromFile(src, paletteVariables, options);
         return [name, variables];
-    } else {
-        return [name, []];
     }
+    return [name, []];
 }
 
 export async function buildMetadata(

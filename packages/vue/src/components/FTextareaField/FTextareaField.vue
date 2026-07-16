@@ -133,10 +133,9 @@ export default defineComponent({
             if (this.modelValue) {
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- required when `softLimit`
                 return this.maxlength! - this.modelValue.length;
-            } else {
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- required when `softLimit`
-                return this.maxlength!;
             }
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- required when `softLimit`
+            return this.maxlength!;
         },
         showCharactersLeftWarning(): boolean {
             return (

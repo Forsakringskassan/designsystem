@@ -95,9 +95,8 @@ export default defineComponent({
         messageBoxType(): string {
             if (this.layout === "short") {
                 return `message-box--${this.type}-short`;
-            } else {
-                return `message-box--${this.type}`;
             }
+            return `message-box--${this.type}`;
         },
         bannerType(): string {
             return this.banner ? `message-box--banner` : "";

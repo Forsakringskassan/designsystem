@@ -71,9 +71,8 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
     public static fromDate(value: FDate | Date): FYear {
         if (value instanceof Date) {
             return new FYear(value.getFullYear());
-        } else {
-            return new FYear(value.year);
         }
+        return new FYear(value.year);
     }
 
     /**
@@ -218,11 +217,11 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
         if (aInvalid || bInvalid) {
             if (aInvalid && bInvalid) {
                 return 0;
-            } else if (aInvalid) {
-                return 1;
-            } else {
-                return -1;
             }
+            if (aInvalid) {
+                return 1;
+            }
+            return -1;
         }
         return Math.max(Math.min(ax._value - bx._value, 1), -1);
     }
@@ -235,9 +234,8 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
     public toString(): string {
         if (this.isValid()) {
             return this._value.toString();
-        } else {
-            return "";
         }
+        return "";
     }
 
     /**
@@ -248,9 +246,8 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
     public toJSON(): number | null {
         if (this.isValid()) {
             return this._value;
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
@@ -259,9 +256,8 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
     private static toFYear(value: FYear | number | string): FYear {
         if (value instanceof this) {
             return value;
-        } else {
-            return this.fromYear(value);
         }
+        return this.fromYear(value);
     }
 
     /**

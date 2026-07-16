@@ -9,9 +9,8 @@ const haveSessionStorage = /* @__PURE__ */ (() => {
             window.sessionStorage.setItem(test, "test");
             window.sessionStorage.removeItem(test);
             return true;
-        } else {
-            return false;
         }
+        return false;
     } catch {
         /* Safari on iOS throws security exceptions when accessing
          * sessionstorage in private browsing. */

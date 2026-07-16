@@ -27,9 +27,8 @@ function getValidatableElement(element: HTMLElement): ValidatableHTMLElement {
     );
     if (validatableInsideElement) {
         return validatableInsideElement as ValidatableHTMLElement;
-    } else {
-        throw new Error(`Couldn't find any validatable element`);
     }
+    throw new Error(`Couldn't find any validatable element`);
 }
 
 function triggerInitialValidation(el: HTMLElement): void {

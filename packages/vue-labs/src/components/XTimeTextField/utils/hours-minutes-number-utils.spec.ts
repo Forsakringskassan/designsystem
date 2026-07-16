@@ -24,9 +24,8 @@ beforeEach(() => {
             return `${args?.hours} timm${args?.hours === 1 ? "e" : "ar"} och ${
                 args?.minutes
             } minut${args?.minutes === 1 ? "" : "er"}`;
-        } else {
-            return key;
         }
+        return key;
     };
     TranslationService.provider.translate = $t;
 });

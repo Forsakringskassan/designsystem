@@ -117,16 +117,14 @@ export default defineComponent({
         shouldVIf(): boolean {
             if (this.useVShow) {
                 return true;
-            } else {
-                return this.internalExpanded;
             }
+            return this.internalExpanded;
         },
         shouldVShow(): boolean {
             if (this.useVShow) {
                 return this.internalExpanded;
-            } else {
-                return true;
             }
+            return true;
         },
     },
     watch: {

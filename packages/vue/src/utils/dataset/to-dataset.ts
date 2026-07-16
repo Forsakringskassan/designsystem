@@ -92,10 +92,8 @@ export function toDataset<T extends object>(
     if (Array.isArray(arg)) {
         if (isDataset(arg)) {
             return inheritDataset(array, arg);
-        } else {
-            return createDataset(array, undefined);
         }
-    } else {
-        return createDataset(array, arg);
+        return createDataset(array, undefined);
     }
+    return createDataset(array, arg);
 }

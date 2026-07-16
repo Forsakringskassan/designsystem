@@ -70,9 +70,8 @@ function findSortAttribute(
             ...foundAttribute,
             name: toValue(foundAttribute.name),
         };
-    } else {
-        return { ...defaultSortValue };
     }
+    return { ...defaultSortValue };
 }
 
 function normalizeFilterAttributes(

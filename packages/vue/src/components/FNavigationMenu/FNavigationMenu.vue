@@ -162,9 +162,8 @@ export default defineComponent({
         selectedItemSrText(): string {
             if (this.selectedMenuItemScreenReaderText === "") {
                 return this.$t("fkui.navigation-menu.current-page", "Aktuell sida");
-            } else {
-                return this.selectedMenuItemScreenReaderText;
             }
+            return this.selectedMenuItemScreenReaderText;
         },
         popupLabel(): string {
             return this.$t("fkui.navigation-menu.more-text", "Mer");
@@ -175,9 +174,8 @@ export default defineComponent({
         popupMenuSelectedSrText(): string {
             if (this.menuMoreWithSelectedItemsScreenReaderText === "") {
                 return this.$t("fkui.navigation-menu.more-selection", "underliggande vald nu");
-            } else {
-                return this.menuMoreWithSelectedItemsScreenReaderText;
             }
+            return this.menuMoreWithSelectedItemsScreenReaderText;
         },
     },
     watch: {

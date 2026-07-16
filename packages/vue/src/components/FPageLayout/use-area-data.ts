@@ -34,10 +34,9 @@ function getProperty<T>(style: CSSStyleDeclaration, key: string): T | null {
     const value = style.getPropertyValue(key);
     if (value === "") {
         return null;
-    } else {
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-        return JSON.parse(value);
     }
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
+    return JSON.parse(value);
 }
 
 function findLayoutElement(

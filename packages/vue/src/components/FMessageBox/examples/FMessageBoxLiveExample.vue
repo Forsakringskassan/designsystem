@@ -24,16 +24,15 @@ export default defineComponent({
                         Kort meddelande
                     </f-message-box>
                 `;
-            } else {
-                return /* HTML */ `
-                    <f-message-box type="${this.messageType}">
-                        <template #default="{ headingSlotClass }">
-                            <h3 :class="headingSlotClass">Rubrik</h3>
-                            <p>Brödtext</p>
-                        </template>
-                    </f-message-box>
-                `;
             }
+            return /* HTML */ `
+                <f-message-box type="${this.messageType}">
+                    <template #default="{ headingSlotClass }">
+                        <h3 :class="headingSlotClass">Rubrik</h3>
+                        <p>Brödtext</p>
+                    </template>
+                </f-message-box>
+            `;
         },
     },
 });

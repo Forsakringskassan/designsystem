@@ -103,9 +103,8 @@ export default defineComponent({
             const size = sizeClass(this.size);
             if (this.fullscreen) {
                 return [...size, "modal__dialog-container--fullscreen"];
-            } else {
-                return size;
             }
+            return size;
         },
         hasHeaderSlot(): boolean {
             return hasSlot(this, "header");

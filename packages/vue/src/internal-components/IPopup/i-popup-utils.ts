@@ -28,9 +28,8 @@ export function getElement(
     }
     if (typeof anchor === "string") {
         return document.querySelector(`#${anchor}`);
-    } else {
-        return anchor;
     }
+    return anchor;
 }
 
 /**
@@ -234,6 +233,11 @@ export function getCandidates(
         height: target.height,
         direction: SpacingDirection.Horizontal,
     };
+
+    if (candidateOrder === CandidateOrder.IPopupError) {
+        return [b, a, d, c, e, f, f, f, f];
+    }
+
     const g: Candidate = {
         placement: Placement.G,
         x: anchor.x + anchor.width + spacing,
@@ -259,12 +263,8 @@ export function getCandidates(
         direction: SpacingDirection.None,
     };
 
-    if (candidateOrder === CandidateOrder.IPopupError) {
-        return [b, a, d, c, e, f, f, f, f];
-    } else {
-        //CandidateOrder.Default
-        return [a, b, c, d, e, f, g, h, i];
-    }
+    //CandidateOrder.Default
+    return [a, b, c, d, e, f, g, h, i];
 }
 
 /**
@@ -420,9 +420,8 @@ export function getScrollToPopup(param: {
 
     if (neededScroll > param.scrollTop) {
         return neededScroll;
-    } else {
-        return param.scrollTop;
     }
+    return param.scrollTop;
 }
 
 /**
@@ -445,11 +444,10 @@ export function getFallbackPosition(
             x,
             y,
         };
-    } else {
-        // no horizontal alignment
-        return {
-            x: clippedArea.x + spacing,
-            y,
-        };
     }
+    // no horizontal alignment
+    return {
+        x: clippedArea.x + spacing,
+        y,
+    };
 }

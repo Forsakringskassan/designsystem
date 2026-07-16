@@ -22,15 +22,11 @@ export default defineComponent({
             return this.isInverted ? template : "";
         },
         status(): string {
-            const BadgeType = this.badgeType;
             if (this.badgeType === "standard") {
-                const template = /* HTML */ ``;
-                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-                return this.badgeType ? template : "";
-            } else {
-                const template = /* HTML */ ` status="${BadgeType}" `;
-                return this.badgeType ? template : "";
+                return "";
             }
+            const template = /* HTML */ ` status="${this.badgeType}" `;
+            return this.badgeType ? template : "";
         },
         template(): string {
             return /* HTML */ ` <f-badge ${this.status} ${this.inverted}> Text </f-badge> `;

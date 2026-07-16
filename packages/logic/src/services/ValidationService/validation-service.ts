@@ -330,16 +330,18 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         ): boolean {
             if (!src) {
                 return false;
-            } else if (Array.isArray(src)) {
+            }
+            if (Array.isArray(src)) {
                 const array: Array<string | Element> = src;
                 return array.every((it) => isValidSync(it));
-            } else if (typeof src === "string") {
-                return isValidSync(root.querySelector(`#${src}`));
-            } else if (isValidatableFormElement(src)) {
-                return src.validity.valid;
-            } else {
-                return src.querySelectorAll(":invalid").length === 0;
             }
+            if (typeof src === "string") {
+                return isValidSync(root.querySelector(`#${src}`));
+            }
+            if (isValidatableFormElement(src)) {
+                return src.validity.valid;
+            }
+            return src.querySelectorAll(":invalid").length === 0;
         }
         return isValidSync(src);
     }
@@ -446,7 +448,8 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     ): void {
         if (!element) {
             return;
-        } else if (typeof element === "string") {
+        }
+        if (typeof element === "string") {
             const found = document.querySelector(`#${element}`);
             /* eslint-disable-next-line @typescript-eslint/no-deprecated -- internal usage */
             this.setState(found, validationState);
@@ -507,15 +510,13 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     ): ValidatableHTMLElement[] {
         if (!parent) {
             return [];
-        } else if (typeof parent === "string") {
+        }
+        if (typeof parent === "string") {
             const element = document.querySelector(`#${parent}`);
             return this.getValidatableElements(element);
-        } else {
-            const selector = ["input", "textarea", "select", "fieldset"].join(
-                ",",
-            );
-            return Array.from(parent.querySelectorAll(selector));
         }
+        const selector = ["input", "textarea", "select", "fieldset"].join(",");
+        return Array.from(parent.querySelectorAll(selector));
     }
 
     private setRequiredAttribute(
@@ -635,15 +636,15 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     ): ValidityMode {
         if (validationState.serverError) {
             return "ERROR";
-        } else if (isValid) {
-            return this.resolveValidityModeWhenValid(element);
-        } else {
-            return this.resolveValidityModeWhenError(
-                element,
-                validationState.touched,
-                validationState.submitted,
-            );
         }
+        if (isValid) {
+            return this.resolveValidityModeWhenValid(element);
+        }
+        return this.resolveValidityModeWhenError(
+            element,
+            validationState.touched,
+            validationState.submitted,
+        );
     }
 
     private resolveValidityModeWhenValid(
@@ -679,9 +680,8 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     private getValue(element: ValidatableHTMLElement): string {
         if ("value" in element) {
             return element.value.trim();
-        } else {
-            return "";
         }
+        return "";
     }
 
     private validateAll(
@@ -731,9 +731,8 @@ class ValidationServiceImpl implements ValidationServiceInterface {
                 getElementType(element),
             );
             return { isValid: false, validationMessage };
-        } else {
-            return { isValid: true, validationMessage: "" };
         }
+        return { isValid: true, validationMessage: "" };
     }
 
     private validate(
@@ -793,9 +792,8 @@ class ValidationServiceImpl implements ValidationServiceInterface {
                 (childElement: ValidatableHTMLElement) =>
                     childElement.closest("fieldset") === element,
             );
-        } else {
-            return [element];
         }
+        return [element];
     }
 
     private dispatchValidityEvent(

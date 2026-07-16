@@ -359,13 +359,14 @@ export default defineComponent({
 
             if (trimmedViewValue === "") {
                 return "";
-            } else if (isSet(this.parser)) {
-                return this.parser(trimmedViewValue) ?? trimmedViewValue;
-            } else if (isSet(this.formatter)) {
-                return this.formatter(trimmedViewValue) ?? trimmedViewValue;
-            } else {
-                return trimmedViewValue;
             }
+            if (isSet(this.parser)) {
+                return this.parser(trimmedViewValue) ?? trimmedViewValue;
+            }
+            if (isSet(this.formatter)) {
+                return this.formatter(trimmedViewValue) ?? trimmedViewValue;
+            }
+            return trimmedViewValue;
         },
         syncViewValueAfterModelUpdate(newModelValue: unknown): void | never {
             if (newModelValue === "") {

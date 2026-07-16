@@ -60,11 +60,10 @@ export function getDatasetMetadata<T extends object>(
     if (Array.isArray(item)) {
         const metadata = getArrayMetadata(item);
         return Object.freeze({ ...metadata });
-    } else {
-        const metadata = getElementMetadata(item);
-        if (!metadata) {
-            throw new Error("Element not found in dataset");
-        }
-        return Object.freeze({ ...metadata });
     }
+    const metadata = getElementMetadata(item);
+    if (!metadata) {
+        throw new Error("Element not found in dataset");
+    }
+    return Object.freeze({ ...metadata });
 }

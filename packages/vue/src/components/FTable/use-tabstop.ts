@@ -126,11 +126,10 @@ export function useTabstop(
         if (!isBeingRemoved) {
             if (oldTabstopFocused) {
                 return;
-            } else {
-                // changed from outside
-                fallbackToFirstCell(newRows, oldRows, false);
-                return;
             }
+            // changed from outside
+            fallbackToFirstCell(newRows, oldRows, false);
+            return;
         }
 
         if (tabFallback === "first-cell") {

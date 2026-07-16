@@ -184,9 +184,8 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
     public get monthName(): string {
         if (this.isValid()) {
             return this.value.locale(getLocale()).format("MMMM");
-        } else {
-            return "";
         }
+        return "";
     }
 
     /**
@@ -201,9 +200,8 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
     public get monthNameShort(): string {
         if (this.isValid()) {
             return this.value.locale(getLocale()).format("MMM");
-        } else {
-            return "";
         }
+        return "";
     }
 
     /**
@@ -218,9 +216,8 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
     public get dayName(): string {
         if (this.isValid()) {
             return this.value.locale(getLocale()).format("dddd");
-        } else {
-            return "";
         }
+        return "";
     }
 
     /**
@@ -235,9 +232,8 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
     public get dayNameShort(): string {
         if (this.isValid()) {
             return this.value.locale(getLocale()).format("ddd");
-        } else {
-            return "";
         }
+        return "";
     }
 
     /**
@@ -422,19 +418,19 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
         if (aInvalid || bInvalid) {
             if (aInvalid && bInvalid) {
                 return 0;
-            } else if (aInvalid) {
-                return 1;
-            } else {
-                return -1;
             }
+            if (aInvalid) {
+                return 1;
+            }
+            return -1;
         }
         if (a.equals(b)) {
             return 0;
-        } else if (a.isBefore(b)) {
-            return -1;
-        } else {
-            return 1;
         }
+        if (a.isBefore(b)) {
+            return -1;
+        }
+        return 1;
     }
 
     /**
@@ -454,9 +450,8 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
         if (this.isValid()) {
             const template = formatter[getLocale()][format];
             return this.value.locale(getLocale()).format(template);
-        } else {
-            return "";
         }
+        return "";
     }
 
     /**

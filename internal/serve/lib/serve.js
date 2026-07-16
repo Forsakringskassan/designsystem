@@ -6,11 +6,11 @@ const kleur = require("kleur");
 function statusColor(text, statusCode) {
     if (statusCode >= 200 && statusCode < 300) {
         return kleur.green(text);
-    } else if (statusCode >= 400) {
-        return kleur.red(text);
-    } else {
-        return kleur.cyan(text);
     }
+    if (statusCode >= 400) {
+        return kleur.red(text);
+    }
+    return kleur.cyan(text);
 }
 
 /**
@@ -54,13 +54,11 @@ function normalizeFolders(folders) {
             if (it.includes(":")) {
                 const [folder, url] = it.split(":");
                 return [`/${url}`, folder];
-            } else {
-                return ["/", it];
             }
+            return ["/", it];
         });
-    } else {
-        return Object.entries(folders);
     }
+    return Object.entries(folders);
 }
 
 /**

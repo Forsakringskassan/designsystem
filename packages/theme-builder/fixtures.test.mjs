@@ -66,13 +66,14 @@ function toTreeSync(fs, opts = {}) {
         list.sort((a, b) => {
             if (a.isDirectory() && b.isDirectory()) {
                 return a.name.localeCompare(b.name);
-            } else if (a.isDirectory()) {
-                return -1;
-            } else if (b.isDirectory()) {
-                return 1;
-            } else {
-                return a.name.localeCompare(b.name);
             }
+            if (a.isDirectory()) {
+                return -1;
+            }
+            if (b.isDirectory()) {
+                return 1;
+            }
+            return a.name.localeCompare(b.name);
         });
         subtree = printTree(
             tab,
@@ -83,11 +84,11 @@ function toTreeSync(fs, opts = {}) {
                         depth: depth - 1,
                         tab,
                     });
-                } else if (entry.isSymbolicLink()) {
-                    return `${entry.name} → ${fs.readlinkSync(dir + entry.name)}`;
-                } else {
-                    return `${entry.name}`;
                 }
+                if (entry.isSymbolicLink()) {
+                    return `${entry.name} → ${fs.readlinkSync(dir + entry.name)}`;
+                }
+                return `${entry.name}`;
             }),
         );
     }

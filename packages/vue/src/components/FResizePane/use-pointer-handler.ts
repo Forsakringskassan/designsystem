@@ -34,9 +34,8 @@ export function usePointerHandler(options: UsePointerHandlerOptions): void {
     const orientation = computed((): Orientation => {
         if (attachment.value === "top" || attachment.value === "bottom") {
             return "horizontal";
-        } else {
-            return "vertical";
         }
+        return "vertical";
     });
 
     useEventListener(separator, "pointerdown", (event) => {

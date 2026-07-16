@@ -58,9 +58,8 @@ function compare<T>(
     // Values with error should always be sorted first.
     if (typeof value1 === "string") {
         return -1;
-    } else {
-        return 1;
     }
+    return 1;
 }
 
 function isSupportedType(value: unknown): boolean {
@@ -76,7 +75,8 @@ function fixOrder(order: number, ascending: boolean): number {
 function booleanCompare(value1: boolean, value2: boolean): number {
     if (value1 === value2) {
         return 0;
-    } else if (value1 > value2) {
+    }
+    if (value1 > value2) {
         return 1;
     }
     return -1;
@@ -89,7 +89,8 @@ function numberCompare(value1: number, value2: number): number {
 function nullCompare(value1: unknown, value2: unknown): number {
     if (!isSet(value1) && !isSet(value2)) {
         return 0;
-    } else if (!isSet(value1)) {
+    }
+    if (!isSet(value1)) {
         return 1;
     }
     return -1;

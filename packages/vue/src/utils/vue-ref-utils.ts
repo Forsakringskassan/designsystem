@@ -164,7 +164,8 @@ function isEmptyArray(value: unknown): boolean {
 export function findElementFromVueRef(ref: unknown): Element | undefined {
     if (refIsElement(ref)) {
         return ref;
-    } else if (refIsVue(ref)) {
+    }
+    if (refIsVue(ref)) {
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
         return ref.$el;
     }

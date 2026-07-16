@@ -41,9 +41,8 @@ const filstorlek = computed(() => {
 const srtextFilvaljare = computed(() => {
     if (!harValtFil.value) {
         return "Välj en PDF";
-    } else {
-        return "Byt PDF";
     }
+    return "Byt PDF";
 });
 
 function tillSkarmlasare(): void {

@@ -110,9 +110,8 @@ const ariaLabel = computed(() => {
 const columnAttributes = computed(() => {
     if (column.attributes && typeof column.attributes === "function") {
         return column.attributes(row);
-    } else {
-        return column.attributes;
     }
+    return column.attributes;
 });
 
 const configAttributes = computed(() => {

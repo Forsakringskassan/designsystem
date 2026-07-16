@@ -145,9 +145,8 @@ export default defineComponent({
                 const prettyDate = calendarValue.toString(DateFormat.FULL);
                 const text = this.$t("fkui.datepicker-field.change", "Ändra datum");
                 return `${text} ${prettyDate}`;
-            } else {
-                return this.$t("fkui.datepicker-field.choose", "Välj datum");
             }
+            return this.$t("fkui.datepicker-field.choose", "Välj datum");
         },
         popupClass(): string {
             return this.textFieldTableMode

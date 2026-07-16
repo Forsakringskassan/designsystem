@@ -37,9 +37,8 @@ export default defineComponent({
             const { skipLink } = this;
             if (skipLink === "") {
                 return null;
-            } else {
-                return `#${skipLink}`;
             }
+            return `#${skipLink}`;
         },
         hasLogo(): boolean {
             return Boolean(this.$slots.logo);

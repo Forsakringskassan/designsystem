@@ -46,9 +46,8 @@ function fsImporter(options: {
             }
             if (path.posix.isAbsolute(url)) {
                 return tryResolve(url);
-            } else {
-                return tryResolve(path.posix.join(cwd, url));
             }
+            return tryResolve(path.posix.join(cwd, url));
         },
         async load(url) {
             const contents = await fs.readFile(url, "utf8");

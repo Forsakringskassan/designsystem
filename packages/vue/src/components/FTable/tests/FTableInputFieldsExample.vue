@@ -217,9 +217,8 @@ const sum = computed(() => {
     return rows.value.reduce((sum, row) => {
         if (typeof row.number === "number") {
             return sum + row.number;
-        } else {
-            return sum;
         }
+        return sum;
     }, 0);
 });
 

@@ -20,9 +20,8 @@ export const config: FKUIConfig = {
                 );
             }
             return element;
-        } else {
-            return popupContainer;
         }
+        return popupContainer;
     },
 
     set popupContainer(value: string | HTMLElement) {

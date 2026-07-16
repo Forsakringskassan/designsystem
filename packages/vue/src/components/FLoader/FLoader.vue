@@ -84,9 +84,8 @@ export default defineComponent({
         teleportTarget() {
             if (this.teleport) {
                 return this.teleport;
-            } else {
-                return config.teleportTarget;
             }
+            return config.teleportTarget;
         },
         teleportDisabled() {
             return !this.overlay;

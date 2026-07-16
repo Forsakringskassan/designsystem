@@ -258,9 +258,8 @@ export function popFocus(
             // eslint-disable-next-line no-console -- expected to log
             console.error(emptyStackErrorMsg);
             return;
-        } else {
-            throw new Error(emptyStackErrorMsg);
         }
+        throw new Error(emptyStackErrorMsg);
     }
 
     const top = _focusElementStack.pop();
@@ -270,9 +269,8 @@ export function popFocus(
             // eslint-disable-next-line no-console -- expected to log
             console.error(outOfOrderErrorMsg);
             return;
-        } else {
-            throw new Error(outOfOrderErrorMsg);
         }
+        throw new Error(outOfOrderErrorMsg);
     }
 
     if (restoreFocus) {

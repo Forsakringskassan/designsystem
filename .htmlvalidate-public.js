@@ -6,9 +6,8 @@ const additionalUrls = (() => {
     if (fs.existsSync(filePath)) {
         /* eslint-disable-next-line import-x/no-dynamic-require -- false positive */
         return require(filePath);
-    } else {
-        return [];
     }
+    return [];
 })();
 
 module.exports = {

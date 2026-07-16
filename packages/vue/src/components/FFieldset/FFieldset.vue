@@ -150,9 +150,8 @@ export default defineComponent({
         groupLabelClassTooltip(): string[] {
             if (this.hasDescriptionSlot || this.hasErrorMessageSlot || this.hasError) {
                 return [];
-            } else {
-                return this.groupLabelClass;
             }
+            return this.groupLabelClass;
         },
         groupContentClass(): string[] {
             return Array.from(contentClasses(this));

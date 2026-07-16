@@ -75,9 +75,8 @@ export default defineComponent({
 
             if (settings.length > 0) {
                 return validators ? `v-validation${validators}="{${settings.join(", ")}}"` : "";
-            } else {
-                return validators ? `v-validation${validators}` : "";
             }
+            return validators ? `v-validation${validators}` : "";
         },
         highlightToday(): string {
             return this.highlightTodayEnabled ? "" : `:highlight-today="false"`;

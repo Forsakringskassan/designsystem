@@ -57,19 +57,17 @@ const iconName = computed((): string | undefined => {
     }
     if (props.action === "delete") {
         return "trashcan";
-    } else {
-        return "pen";
     }
+    return "pen";
 });
 
 const buttonText = computed((): string => {
     if (props.action === "delete") {
         /** Button label when action is "delete" */
         return $t("fkui.crud-button.delete", "Ta bort");
-    } else {
-        /** Button label when action is "modify" */
-        return $t("fkui.crud-button.modify", "Ändra");
     }
+    /** Button label when action is "modify" */
+    return $t("fkui.crud-button.modify", "Ändra");
 });
 
 function executeAction(): void {
