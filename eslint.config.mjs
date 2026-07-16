@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-observer-apis": "off",
             "unicorn/prefer-promise-with-resolvers": "off",
             "unicorn/prefer-queue-microtask": "off",
             "unicorn/prefer-set-has": "off",

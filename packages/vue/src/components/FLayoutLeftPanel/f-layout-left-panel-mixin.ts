@@ -118,6 +118,7 @@ export function useLayoutPanel(
     onMounted(() => {
         window.addEventListener("mouseup", onMouseUp);
         window.addEventListener("mousemove", onMouseMove);
+        /* eslint-disable-next-line unicorn/prefer-observer-apis -- technical debt */
         window.addEventListener("resize", limitWidth);
     });
 
