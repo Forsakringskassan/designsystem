@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-string-replace-all": "off",
             "unicorn/prefer-toggle-attribute": "off",
             "unicorn/prefer-type-literal-last": "off",
             "unicorn/prefer-unicode-code-point-escapes": "off",

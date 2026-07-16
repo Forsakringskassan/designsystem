@@ -12,7 +12,7 @@ function stringifyValue(value: unknown): string {
     }
 
     if (typeof value === "function") {
-        return value.toString().split(`"`).join("'");
+        return value.toString().replaceAll('"', "'");
     }
 
     if (typeof value === "string") {
