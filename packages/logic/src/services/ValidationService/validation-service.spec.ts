@@ -139,7 +139,7 @@ function triggerValidityEvent(
 }
 
 afterEach(() => {
-    document.body.innerHTML = "";
+    document.body.replaceChildren();
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical
      * debt, should not access private variables, rather expose an @internal
      * method to clear up the states */

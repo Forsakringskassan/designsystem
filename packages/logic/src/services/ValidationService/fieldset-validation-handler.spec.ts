@@ -59,7 +59,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-    document.body.innerHTML = "";
+    document.body.replaceChildren();
     ValidationService.clearAllStates();
     vi.resetAllMocks();
     vi.clearAllMocks();

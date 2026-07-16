@@ -354,7 +354,7 @@ describe("focus stack", () => {
     beforeEach(() => {
         resetFocusStack();
         resetStackHandleCounter();
-        document.body.innerHTML = "";
+        document.body.replaceChildren();
     });
 
     describe("pushFocus", () => {

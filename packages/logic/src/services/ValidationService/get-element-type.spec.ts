@@ -21,7 +21,7 @@ function addFieldsetElement(childType: string): HTMLFieldSetElement {
 }
 
 beforeEach(() => {
-    document.body.innerHTML = "";
+    document.body.replaceChildren();
 });
 
 it("should return undefined when null", () => {

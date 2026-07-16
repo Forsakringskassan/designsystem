@@ -22,7 +22,7 @@ describe("toHaveFocus (jest)", () => {
     let detached: HTMLElement;
 
     beforeEach(() => {
-        document.body.innerHTML = "";
+        document.body.replaceChildren();
         element = document.createElement("input");
         detached = document.createElement("input");
         document.body.append(element);

@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-dom-node-replace-children": "off",
             "unicorn/prefer-early-return": "off",
             "unicorn/prefer-global-number-constants": "off",
             "unicorn/prefer-https": "off",

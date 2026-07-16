@@ -2,7 +2,7 @@ import { beforeEach, expect, it } from "vitest";
 import { generateSelector } from "./generate-selector";
 
 beforeEach(() => {
-    document.body.innerHTML = "";
+    document.body.replaceChildren();
 });
 
 it("should generate selector", () => {
