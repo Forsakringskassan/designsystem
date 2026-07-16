@@ -89,6 +89,7 @@ export function useCombobox(
             String(dropdownIsOpen.value),
         );
 
+        /* eslint-disable-next-line unicorn/prefer-toggle-attribute -- false positive, it is not a boolean attribute */
         if (dropdownIsOpen.value) {
             inputRef.value.setAttribute("aria-controls", dropdownId);
         } else {
@@ -102,6 +103,7 @@ export function useCombobox(
             return;
         }
 
+        /* eslint-disable-next-line unicorn/prefer-toggle-attribute -- false positive, it is not a boolean attribute */
         if (activeOption.value) {
             inputRef.value.setAttribute(
                 "aria-activedescendant",
