@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-unreadable-object-destructuring": "off",
             "unicorn/no-unsafe-string-replacement": "off",
             "unicorn/no-useless-boolean-cast": "off",
             "unicorn/no-useless-coercion": "off",
