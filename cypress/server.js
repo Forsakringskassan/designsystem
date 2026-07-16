@@ -3,7 +3,7 @@ const { serve } = require("@fkui/serve");
 const Table = require("cli-table");
 
 const port = process.env.HTTP_PORT
-    ? Number.parseInt(process.env.HTTP_PORT, 10)
+    ? Math.trunc(Number(process.env.HTTP_PORT))
     : 8080;
 const folders = {
     "/": "public",

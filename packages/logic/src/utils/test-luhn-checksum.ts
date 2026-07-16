@@ -18,7 +18,7 @@ export function testLuhnChecksum(inputString: string): boolean {
         .toReversed()
         .entries()) {
         const digit =
-            Number.parseInt(numChar, 10) * ((index + 1) % 2 === 0 ? 2 : 1);
+            Math.trunc(Number(numChar)) * ((index + 1) % 2 === 0 ? 2 : 1);
         sum += digit >= 10 ? digit - 9 : digit;
     }
 

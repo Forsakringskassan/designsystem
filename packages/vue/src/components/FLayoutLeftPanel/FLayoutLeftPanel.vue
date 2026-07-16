@@ -21,7 +21,7 @@ export default defineComponent({
             type: String,
             default: "320",
             validator(value: string): boolean {
-                const parsed = Number.parseInt(value, 10);
+                const parsed = Math.trunc(Number(value));
                 return !Number.isNaN(parsed);
             },
         },

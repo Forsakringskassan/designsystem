@@ -39,6 +39,7 @@ export function hoursMinutesStringToMinutes(
     }
 
     const [hours, minutes] = splitHoursMinutes(valueString, extraForgiving).map(
+        /* eslint-disable-next-line unicorn/prefer-number-coercion -- technial debt */
         (value) => Number.parseInt(value, 10),
     );
     const totalMinutes = hours * 60 + minutes;

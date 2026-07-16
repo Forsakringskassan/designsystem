@@ -42,10 +42,8 @@ export class FExpandablePanelPageObject implements BasePageObject {
         this.notificationIcon()
             .invoke("text")
             .then((text: string) =>
-                text.replace(/(\d+)/, (match, matchGroup1) => {
-                    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
-                    nrOfNotifications = Number.parseInt(matchGroup1, 10);
-                    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
+                text.replace(/(\d+)/, (_match, matchGroup1: string) => {
+                    nrOfNotifications = Math.trunc(Number(matchGroup1));
                     return matchGroup1;
                 }),
             );

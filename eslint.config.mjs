@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-number-coercion": "off",
             "unicorn/prefer-number-is-safe-integer": "off",
             "unicorn/prefer-object-define-properties": "off",
             "unicorn/prefer-object-iterable-methods": "off",

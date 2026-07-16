@@ -51,7 +51,7 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
      */
     public static fromYear(value: number | string): FYear {
         const parsed =
-            typeof value === "string" ? Number.parseInt(value, 10) : value;
+            typeof value === "string" ? Math.trunc(Number(value)) : value;
         return new FYear(parsed);
     }
 

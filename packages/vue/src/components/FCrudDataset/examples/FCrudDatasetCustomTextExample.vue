@@ -31,7 +31,7 @@ export default defineComponent({
         },
         getMaxId() {
             return this.fruits.reduce((max, item) => {
-                return Math.max(max, Number.parseInt(item.id, 10));
+                return Math.max(max, Math.trunc(Number(item.id)));
             }, 0);
         },
         saveModel(row: FruitData) {
