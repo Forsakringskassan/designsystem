@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/operator-assignment": "off",
             "unicorn/prefer-array-from-map": "off",
             "unicorn/prefer-array-some": "off",
             "unicorn/prefer-await": "off",

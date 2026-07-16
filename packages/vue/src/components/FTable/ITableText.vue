@@ -101,7 +101,7 @@ const ariaLabel = computed(() => {
     let value = column.label(row);
 
     if (hasError.value) {
-        value = `${value} ${validity.value.validationMessage}`;
+        value += ` ${validity.value.validationMessage}`;
     }
 
     return value.length > 0 ? value : undefined;
