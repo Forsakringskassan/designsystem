@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-useless-logical-operand": "off",
             "unicorn/no-useless-recursion": "off",
             "unicorn/no-useless-template-literals": "off",
             "unicorn/numeric-separators-style": "off",
