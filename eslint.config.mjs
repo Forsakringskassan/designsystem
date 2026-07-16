@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/no-useless-coercion": "off",
             "unicorn/no-useless-else": "off",
             "unicorn/no-useless-logical-operand": "off",
             "unicorn/no-useless-recursion": "off",

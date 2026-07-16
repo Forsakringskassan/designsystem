@@ -19,10 +19,9 @@ function createNumberRegexp(minDecimals = 0, maxDecimals = 2): RegExp {
 
 export const decimalValidator: Validator<DecimalValidatorConfig> = {
     name: "decimal",
-    validation(value, _element, config) {
+    validation(value: unknown, _element, config) {
         const valueWithoutWhitespace = isSet(value)
-            ? /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-              stripWhitespace(String(value))
+            ? stripWhitespace(String(value))
             : value;
         const minDecimalsAsNumber = isSet(config.minDecimals)
             ? /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
