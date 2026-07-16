@@ -15,7 +15,7 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
         if (Math.round(value) === value) {
             this._value = value;
         } else {
-            this._value = Number.NaN;
+            this._value = NaN;
         }
     }
 

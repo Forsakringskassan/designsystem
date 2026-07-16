@@ -53,7 +53,7 @@ export function minutesToHoursMinutesString(
     value?: number,
 ): HoursMinutesString {
     let valueString = "";
-    const safeValue = value ?? Number.NaN;
+    const safeValue = value ?? NaN;
     if (!Number.isNaN(safeValue)) {
         const { hours, minutes } = minutesToObject(safeValue);
         valueString = [hours, minutes]

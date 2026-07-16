@@ -32,7 +32,7 @@ function parseTimeToNumberUsingConfig(
     }
 
     const parsedValue =
-        hoursMinutesStringToMinutes(value, extraForgiving) ?? Number.NaN;
+        hoursMinutesStringToMinutes(value, extraForgiving) ?? NaN;
 
     return !Number.isNaN(parsedValue) ? parsedValue : undefined;
 }

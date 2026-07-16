@@ -88,7 +88,7 @@ export function parseNumber(
  */
 function getNumberWithFraction(value: number, fractionDigits: number): number {
     if (fractionDigits < 0) {
-        return Number.NaN;
+        return NaN;
     }
     const exp = 10 ** fractionDigits;
     return Math.sign(value) * (Math.round(Math.abs(value) * exp) / exp);

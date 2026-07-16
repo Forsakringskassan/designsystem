@@ -9,7 +9,7 @@ it("should handle numbers", () => {
         assertSet(-1);
         assertSet(Number.MIN_SAFE_INTEGER);
         assertSet(Number.MAX_SAFE_INTEGER);
-        assertSet(Number.NaN);
+        assertSet(NaN);
         assertSet(Infinity);
     }).not.toThrow();
 });
