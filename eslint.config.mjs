@@ -154,10 +154,4 @@ export default [
             "unicorn/filename-case": "off",
         },
     },
-
-    {
-        rules: {
-            "unicorn/require-array-sort-compare": "off",
-        },
-    },
 ];

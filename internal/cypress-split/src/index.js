@@ -92,7 +92,7 @@ function getSpecs(config) {
             additionalIgnorePattern,
             "**/node_modules/**",
         ],
-    }).toSorted();
+    }).toSorted((a, b) => a.localeCompare(b));
 }
 
 /**
