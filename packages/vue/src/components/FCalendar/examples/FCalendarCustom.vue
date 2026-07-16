@@ -75,7 +75,7 @@ export default defineComponent({
             const classes = ["event"];
             const dayOfYear = `${String(date.month)}-${String(date.day)}`;
 
-            const match = holidays.find((it) => it.date === dayOfYear);
+            const match = holidays.some((it) => it.date === dayOfYear);
             if (match) {
                 classes.push("holiday");
             }
