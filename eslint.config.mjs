@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-set-has": "off",
             "unicorn/prefer-split-limit": "off",
             "unicorn/prefer-string-repeat": "off",
             "unicorn/prefer-string-replace-all": "off",

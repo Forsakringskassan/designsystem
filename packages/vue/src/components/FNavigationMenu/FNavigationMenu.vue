@@ -18,7 +18,7 @@ import { type MenuItem } from "./menu-item";
 import { type NavigationMenuItem } from "./navigation-menu-item";
 import { doMenuAction } from "./navigation-menu-logic";
 
-const upKeys = ["Up", "ArrowUp"];
+const upKeys = new Set(["Up", "ArrowUp"]);
 const downKeys = ["Down", "ArrowDown"];
 const verticalKeys = [...upKeys, ...downKeys];
 const preventKeys = new Set([
@@ -372,7 +372,7 @@ export default defineComponent({
             if (shouldCheckPopupKeys && popupKeyPressed) {
                 event.preventDefault();
 
-                const index = upKeys.includes(event.key) ? this.overflowItems.length - 1 : 0;
+                const index = upKeys.has(event.key) ? this.overflowItems.length - 1 : 0;
                 this.focusedPopupMenuItem = this.overflowItems[index].key;
                 return;
             }
