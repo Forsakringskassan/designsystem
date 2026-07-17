@@ -42,7 +42,7 @@ class FieldsetValidationHandler {
                 (childElement: Element) =>
                     childElement.closest("fieldset") === element,
             )
-            /* eslint-disable-next-line unicorn/no-array-for-each -- technical debt */
+            /* eslint-disable-next-line unicorn/no-for-each -- technical debt */
             .forEach((childElement: Element) => {
                 childElement.setAttribute("required", "");
             });
