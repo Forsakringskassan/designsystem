@@ -29,6 +29,7 @@ const activeOptionId = ElementIdService.generateElementId();
 const activeOption: Ref<string | null> = ref(null);
 
 async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
+    /* eslint-disable-next-line unicorn/prefer-includes-over-repeated-comparisons -- technical debt */
     if (e.code === "Enter" || e.code === "NumpadEnter" || e.code === "Space") {
         await startEditing(e);
     }
