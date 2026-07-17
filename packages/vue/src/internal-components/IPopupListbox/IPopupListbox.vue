@@ -81,13 +81,13 @@ watchEffect(() => {
         calculatePosition();
         // wait one tick so we dont get the click
         // that launches the popup (await nextTick doesnt work here)
-        setTimeout(() => {
+        queueMicrotask(() => {
             // verify that it's still open
             /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             if (isOpen) {
                 addListeners();
             }
-        }, 0);
+        });
     } else {
         removeListeners();
     }

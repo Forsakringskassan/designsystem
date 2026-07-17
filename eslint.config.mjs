@@ -157,7 +157,6 @@ export default [
 
     {
         rules: {
-            "unicorn/prefer-queue-microtask": "off",
             "unicorn/prefer-set-has": "off",
             "unicorn/prefer-split-limit": "off",
             "unicorn/prefer-string-repeat": "off",

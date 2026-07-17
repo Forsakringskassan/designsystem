@@ -150,11 +150,11 @@ export default defineComponent({
             // Force redraw
             /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, there should be a better way */
             getComputedStyle(element).height;
-            setTimeout(() => {
+            queueMicrotask(() => {
                 /* eslint-disable-next-line unicorn/prefer-number-coercion -- technical debt: this code relies on stopping parsing at non-digit characters */
                 this.height = Number.parseInt(height, 10);
                 htmlElement.style.height = height;
-            }, 0);
+            });
         },
         afterEnter(element: Element): void {
             const htmlElement = getHTMLElementFromVueRef(element);
@@ -168,9 +168,9 @@ export default defineComponent({
             // Force redraw
             /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, there should be a better way */
             getComputedStyle(element).height;
-            setTimeout(() => {
+            queueMicrotask(() => {
                 Object.assign(htmlElement.style, this.visibleStyle);
-            }, 0);
+            });
         },
     },
 });

@@ -155,7 +155,7 @@ export default defineComponent({
 
                     // wait one tick so we dont get the click
                     // that launches the popup (await nextTick doesnt work here)
-                    setTimeout(() => {
+                    queueMicrotask(() => {
                         // verify that it's still open
                         if (!this.isOpen) {
                             return;
@@ -167,7 +167,7 @@ export default defineComponent({
                         window.addEventListener("resize", this.onWindowResizeDebounced);
                         /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                         window.addEventListener("scroll", this.onScrollDebounced, { capture: true });
-                    }, 0);
+                    });
                 } else {
                     /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                     document.removeEventListener("click", this.onDocumentClickHandler);
