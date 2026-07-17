@@ -3173,7 +3173,7 @@ function padInitialZeros(value, maxLength = 2) {
 }
 function hoursMinutesStringToMinutes(valueString, extraForgiving = false) {
   if (isEmpty(valueString.trim())) return;
-  const [hours, minutes] = splitHoursMinutes(valueString, extraForgiving).map((value) => Math.trunc(Number(value)));
+  const [hours, minutes] = splitHoursMinutes(valueString, extraForgiving).map((value) => Number.parseInt(value, 10));
   const totalMinutes = hours * 60 + minutes;
   return !Number.isNaN(totalMinutes) ? totalMinutes : void 0;
 }
