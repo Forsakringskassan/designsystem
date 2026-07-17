@@ -2034,7 +2034,6 @@ function focusElement(element, container) {
 }
 function focusRadioButtonGroup(element, container) {
   const radioGroupInputs = container.querySelectorAll(
-    /* eslint-disable-next-line unicorn/require-css-escape -- jsdom does not implement CSS.escape */
     `input[type="radio"][name="${element.name}"]`
   );
   const checkedRadioButton = Array.from(radioGroupInputs).find(
