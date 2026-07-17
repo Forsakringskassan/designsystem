@@ -88,7 +88,7 @@ function toTreeSync(fs, opts = {}) {
                 if (entry.isSymbolicLink()) {
                     return `${entry.name} → ${fs.readlinkSync(dir + entry.name)}`;
                 }
-                return `${entry.name}`;
+                return entry.name;
             }),
         );
     }

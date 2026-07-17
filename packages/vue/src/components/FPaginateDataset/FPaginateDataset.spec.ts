@@ -22,7 +22,7 @@ describe("FPaginateDataset", () => {
                 itemsPerPage: 10,
             },
             slots: {
-                default: ({ numberOfPages }) => `${numberOfPages}`,
+                default: ({ numberOfPages }) => String(numberOfPages),
             },
         });
 

@@ -274,7 +274,7 @@ describe("slots", () => {
                 isOpen: true,
             },
             slots: {
-                default: `${contentText}`,
+                default: contentText,
             },
         });
 
