@@ -2473,7 +2473,7 @@ var XFileDragdrop_default = /* @__PURE__ */ defineComponent({
     });
     const srtextFilvaljare = computed(() => {
       if (!harValtFil.value) return "V\xE4lj en PDF";
-      else return "Byt PDF";
+      return "Byt PDF";
     });
     function tillSkarmlasare() {
       if (filValidering.value) alertScreenReader(filValidering.value);
@@ -2506,7 +2506,7 @@ var XFileDragdrop_default = /* @__PURE__ */ defineComponent({
       else if (filer[0].size === 0) filValidering.value = "Dokumentet har inget inneh\xE5ll, v\xE4lj ett annat dokument";
       else {
         currentStatus.value = STATUS_HAR_INTE_VALT_FIL;
-        Object.values(filer ? filer : valdFil.value).forEach(async (value) => {
+        Object.values(filer !== null && filer !== void 0 ? filer : valdFil.value).forEach(async (value) => {
           try {
             const buffer = await value.arrayBuffer();
             const reduced = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCodePoint(byte), "");
@@ -3362,12 +3362,12 @@ function findMatch(regexps, value) {
   return null;
 }
 function padInitialZeros(value, maxLength = 2) {
-  value = value !== null && value !== void 0 ? value : "";
+  value ??= "";
   return value.padStart(maxLength, "0");
 }
 function hoursMinutesStringToMinutes(valueString, extraForgiving = false) {
   if (isEmpty(valueString.trim())) return;
-  const [hours, minutes] = splitHoursMinutes(valueString, extraForgiving).map((value) => Number.parseInt(value, 10));
+  const [hours, minutes] = splitHoursMinutes(valueString, extraForgiving).map((value) => Math.trunc(Number(value)));
   const totalMinutes = hours * 60 + minutes;
   return !Number.isNaN(totalMinutes) ? totalMinutes : void 0;
 }
@@ -3385,12 +3385,12 @@ function parseTimeToNumberUsingConfig(value, extraForgiving) {
 function parseTimeToNumber(value) {
   return parseTimeToNumberUsingConfig(value, false);
 }
-var HoursMinutesValidatorUtils = class HoursMinutesValidatorUtils2 {
+var HoursMinutesValidatorUtils = class {
   static validate(value, config, name, compare) {
     if (value === "") return true;
     const limit = config[name];
     if (!isSet(limit)) return false;
-    const parseFunction = HoursMinutesValidatorUtils2.getParserFromConfig(config);
+    const parseFunction = this.getParserFromConfig(config);
     const limitAsNumber = parseFunction(String(config[name]));
     if (!isSet(limitAsNumber)) throw new Error(`config.${name} must be a number`);
     const valueAsNumber = parseFunction(value);
