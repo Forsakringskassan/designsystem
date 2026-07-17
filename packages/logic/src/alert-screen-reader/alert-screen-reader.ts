@@ -46,10 +46,7 @@ export function alertScreenReader(
 
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     waitForScreenReader(() => {
-        while (wrapper.firstChild) {
-            wrapper.firstChild.remove();
-        }
-
+        wrapper.replaceChildren();
         wrapper.append(msg);
 
         setTimeout(() => {
@@ -71,14 +68,16 @@ export function createScreenReaderWrapper(
     options: AlertScreenReaderOptions,
 ): void {
     /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-    if (!getWrapper()) {
-        wrapper = document.createElement("div");
-        wrapper.id = "fkui-alert-screen-reader";
-        wrapper.className = "sr-only";
-        updateProperties(options);
-
-        document.body.append(wrapper);
+    if (getWrapper()) {
+        return;
     }
+
+    wrapper = document.createElement("div");
+    wrapper.id = "fkui-alert-screen-reader";
+    wrapper.className = "sr-only";
+    updateProperties(options);
+
+    document.body.append(wrapper);
 }
 
 /**

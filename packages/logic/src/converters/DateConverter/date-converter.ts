@@ -25,7 +25,6 @@ export function parseDate(value: string): DateString | undefined {
 
     if (date.isValid()) {
         return date.toString();
-    } else {
-        return undefined;
     }
+    return undefined;
 }

@@ -15,7 +15,7 @@ function printTree(tab = "", children) {
     let str = "";
     let last = children.length - 1;
     for (; last >= 0; last--) {
-        if (children[last]) {
+        if (Object.hasOwn(children, last)) {
             break;
         }
     }
@@ -66,13 +66,14 @@ function toTreeSync(fs, opts = {}) {
         list.sort((a, b) => {
             if (a.isDirectory() && b.isDirectory()) {
                 return a.name.localeCompare(b.name);
-            } else if (a.isDirectory()) {
-                return -1;
-            } else if (b.isDirectory()) {
-                return 1;
-            } else {
-                return a.name.localeCompare(b.name);
             }
+            if (a.isDirectory()) {
+                return -1;
+            }
+            if (b.isDirectory()) {
+                return 1;
+            }
+            return a.name.localeCompare(b.name);
         });
         subtree = printTree(
             tab,
@@ -83,11 +84,11 @@ function toTreeSync(fs, opts = {}) {
                         depth: depth - 1,
                         tab,
                     });
-                } else if (entry.isSymbolicLink()) {
-                    return `{entry.name} → ${fs.readlinkSync(dir + entry.name)}`;
-                } else {
-                    return `${entry.name}`;
                 }
+                if (entry.isSymbolicLink()) {
+                    return `${entry.name} → ${fs.readlinkSync(dir + entry.name)}`;
+                }
+                return entry.name;
             }),
         );
     }
@@ -126,6 +127,7 @@ it("should generate version", async (t) => {
         {
             "src/index.scss": [
                 `@use "version" as *;`,
+                /* eslint-disable-next-line unicorn/no-incorrect-template-string-interpolation -- false positive */
                 `:root { --x-foobar: #ff00aa; --version: "#{$version}"; }`,
             ].join("\n"),
         },

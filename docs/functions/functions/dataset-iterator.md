@@ -72,7 +72,8 @@ const dataset = useDatasetRef(rows, "nested");
 
 /* --- cut above --- */
 
-for (const { item, metadata } of datasetIterator(dataset.value)) {
+const iterator = datasetIterator(dataset.value);
+for (const { item, metadata } of iterator) {
     console.log(metadata.ariaRowIndex, item.name);
 }
 // 1 Äpple
@@ -98,9 +99,8 @@ const dataset = useDatasetRef(rows, "nested");
 
 /* --- cut above --- */
 
-for (const { item, metadata } of datasetIterator(dataset.value, {
-    flat: true,
-})) {
+const iterator = datasetIterator(dataset.value, { flat: true });
+for (const { item, metadata } of iterator) {
     console.log(metadata.ariaRowIndex, item.name);
 }
 // 1 Äpple

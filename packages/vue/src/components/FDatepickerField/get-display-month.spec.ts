@@ -16,11 +16,11 @@ const earlyMaxDate = FDate.fromIso("2020-09-15");
 function dateFn(val: string): FDate | undefined {
     if (val === "missing") {
         return undefined;
-    } else if (val === "invalid") {
-        return FDate.fromIso("foo");
-    } else {
-        return FDate.fromIso(val);
     }
+    if (val === "invalid") {
+        return FDate.fromIso("foo");
+    }
+    return FDate.fromIso(val);
 }
 
 describe.each([

@@ -10,7 +10,7 @@ interface IconEntry {
     library: string;
 }
 
-function importDefault<T extends object>(m: { default: T } | T): T {
+function importDefault<T extends object>(m: T | { default: T }): T {
     return "default" in m ? m.default : m;
 }
 
@@ -22,7 +22,6 @@ function decamelize(value: string): string {
     return value.replaceAll(/([A-Z])/g, (_, ch: string) => `-${ch.toLowerCase()}`);
 }
 
-/* eslint-disable-next-line unicorn/prefer-top-level-await -- technical debt, this is just a hack */
 const iconsPromise = importIcons();
 
 export default defineComponent({

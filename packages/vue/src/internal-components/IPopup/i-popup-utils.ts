@@ -28,9 +28,8 @@ export function getElement(
     }
     if (typeof anchor === "string") {
         return document.querySelector(`#${anchor}`);
-    } else {
-        return anchor;
     }
+    return anchor;
 }
 
 /**
@@ -234,6 +233,11 @@ export function getCandidates(
         height: target.height,
         direction: SpacingDirection.Horizontal,
     };
+
+    if (candidateOrder === CandidateOrder.IPopupError) {
+        return [b, a, d, c, e, f, f, f, f];
+    }
+
     const g: Candidate = {
         placement: Placement.G,
         x: anchor.x + anchor.width + spacing,
@@ -259,12 +263,8 @@ export function getCandidates(
         direction: SpacingDirection.None,
     };
 
-    if (candidateOrder === CandidateOrder.IPopupError) {
-        return [b, a, d, c, e, f, f, f, f];
-    } else {
-        //CandidateOrder.Default
-        return [a, b, c, d, e, f, g, h, i];
-    }
+    //CandidateOrder.Default
+    return [a, b, c, d, e, f, g, h, i];
 }
 
 /**
@@ -289,16 +289,17 @@ export function isInside(
     const ySpacing = isVerticalDirection ? spacing : 0;
 
     const ax = [inner.x, inner.x + inner.width];
-    const ay = [inner.y, inner.y + inner.height];
     const bx = [outer.x + xSpacing, outer.x + outer.width - xSpacing];
-    const by = [outer.y + ySpacing, outer.y + outer.height - ySpacing];
-
     if (ax[0] < bx[0] || ax[1] > bx[1]) {
         return false;
     }
+
+    const ay = [inner.y, inner.y + inner.height];
+    const by = [outer.y + ySpacing, outer.y + outer.height - ySpacing];
     if (ay[0] < by[0] || ay[1] > by[1]) {
         return false;
     }
+
     return true;
 }
 
@@ -419,9 +420,8 @@ export function getScrollToPopup(param: {
 
     if (neededScroll > param.scrollTop) {
         return neededScroll;
-    } else {
-        return param.scrollTop;
     }
+    return param.scrollTop;
 }
 
 /**
@@ -444,11 +444,10 @@ export function getFallbackPosition(
             x,
             y,
         };
-    } else {
-        // no horizontal alignment
-        return {
-            x: clippedArea.x + spacing,
-            y,
-        };
     }
+    // no horizontal alignment
+    return {
+        x: clippedArea.x + spacing,
+        y,
+    };
 }

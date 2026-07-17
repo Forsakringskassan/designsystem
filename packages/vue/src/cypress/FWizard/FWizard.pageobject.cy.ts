@@ -5,7 +5,7 @@ import { DefaultCypressChainable } from "../common";
 import { FWizardPageobject } from "./FWizard.pageobject";
 import { FWizardStepPageobject, STATUS } from "./FWizardStep.pageobject";
 
-export enum FRUIT {
+enum FRUIT {
     banana = ".checkbox:nth(0)",
     apple = ".checkbox:nth(1)",
     mandarin = ".checkbox:nth(2)",
@@ -14,7 +14,7 @@ export enum FRUIT {
     other = ".checkbox:nth(5)",
 }
 
-export class MyOrderWizardStepPageobject extends FWizardStepPageobject {
+class MyOrderWizardStepPageobject extends FWizardStepPageobject {
     public addBasket: () => DefaultCypressChainable;
     public constructor(selector: string) {
         super(selector);
@@ -24,7 +24,7 @@ export class MyOrderWizardStepPageobject extends FWizardStepPageobject {
     }
 }
 
-export class FruitBasketWizardStepPageobject extends FWizardStepPageobject {
+class FruitBasketWizardStepPageobject extends FWizardStepPageobject {
     public nameOnGiftcard: FTextFieldPageObject;
     public fruits: FFieldsetPageObject;
     public constructor(selector: string) {
@@ -39,7 +39,7 @@ export class FruitBasketWizardStepPageobject extends FWizardStepPageobject {
     }
 }
 
-export class MyInfoWizardStepPageobject extends FWizardStepPageobject {
+class MyInfoWizardStepPageobject extends FWizardStepPageobject {
     public myAddress: () => DefaultCypressChainable;
     public constructor(selector: string) {
         super(selector);

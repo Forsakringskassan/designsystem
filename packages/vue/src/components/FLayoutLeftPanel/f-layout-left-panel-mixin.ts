@@ -50,11 +50,10 @@ export function useLayoutPanel(
     const rightPrimaryClasses = ref({}) as Ref<Record<string, boolean>>;
 
     function updateOptions(): void {
-        panelWidth.value = Number.parseInt(
-            toValue(options.initialWidth ?? "0"),
-            10,
+        panelWidth.value = Math.trunc(
+            Number(toValue(options.initialWidth ?? "0")),
         );
-        minWidth = Number.parseInt(toValue(options.minWidth ?? "150"), 10);
+        minWidth = Math.trunc(Number(toValue(options.minWidth ?? "150")));
         maxWidth = toValue(options.maxWidth ?? 0.5);
     }
 
@@ -65,12 +64,14 @@ export function useLayoutPanel(
     }
 
     function onMouseMove(event: MouseEvent): void {
-        if (borderDrag) {
-            const growDirection = growToRight ? 1 : -1;
-            preferredWidth =
-                dragStartWidth + (event.screenX - dragStart) * growDirection;
-            limitWidth();
+        if (!borderDrag) {
+            return;
         }
+
+        const growDirection = growToRight ? 1 : -1;
+        preferredWidth =
+            dragStartWidth + (event.screenX - dragStart) * growDirection;
+        limitWidth();
     }
 
     function onBorderMouseDown(event: MouseEvent): void {
@@ -117,6 +118,7 @@ export function useLayoutPanel(
     onMounted(() => {
         window.addEventListener("mouseup", onMouseUp);
         window.addEventListener("mousemove", onMouseMove);
+        /* eslint-disable-next-line unicorn/prefer-observer-apis -- technical debt */
         window.addEventListener("resize", limitWidth);
     });
 

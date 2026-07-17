@@ -13,9 +13,7 @@ expect.addSnapshotSerializer({
     test(value) {
         return typeof value === "string";
     },
-    serialize(value) {
-        return String(value);
-    },
+    serialize: String,
 });
 
 function rowindex({

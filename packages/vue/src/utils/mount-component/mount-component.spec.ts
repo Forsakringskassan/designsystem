@@ -18,7 +18,7 @@ function p(text: string): HTMLElement {
 }
 
 beforeEach(() => {
-    document.body.innerHTML = "";
+    document.body.replaceChildren();
 });
 
 it("should mount component to container element", () => {

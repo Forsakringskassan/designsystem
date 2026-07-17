@@ -122,7 +122,9 @@ describe("FTextareaField", () => {
                 const textarea = $textarea[0] as HTMLTextAreaElement;
                 const style = getComputedStyle(textarea);
 
+                /* eslint-disable-next-line unicorn/prefer-number-coercion -- technical debt: this code relies on stopping parsing at non-digit characters */
                 const lineHeight = Number.parseFloat(style.lineHeight);
+
                 expandedHeight = textarea.getBoundingClientRect().height;
 
                 expect(expandedHeight).to.be.greaterThan(
@@ -141,6 +143,7 @@ describe("FTextareaField", () => {
                 const textarea = $textarea[0] as HTMLTextAreaElement;
                 const style = getComputedStyle(textarea);
 
+                /* eslint-disable-next-line unicorn/prefer-number-coercion -- technical debt: this code relies on stopping parsing at non-digit characters */
                 const lineHeight = Number.parseFloat(style.lineHeight);
                 const shrunkHeight = textarea.getBoundingClientRect().height;
 
@@ -168,6 +171,7 @@ describe("FTextareaField", () => {
                 const textarea = $textarea[0] as HTMLTextAreaElement;
                 const style = getComputedStyle(textarea);
                 const height = textarea.getBoundingClientRect().height;
+                /* eslint-disable-next-line unicorn/prefer-number-coercion -- technical debt: this code relies on stopping parsing at non-digit characters */
                 const maxHeight = Number.parseFloat(style.maxHeight);
 
                 expect(style.getPropertyValue("field-sizing")).to.equal(

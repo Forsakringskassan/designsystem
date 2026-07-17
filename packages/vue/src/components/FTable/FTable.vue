@@ -315,9 +315,8 @@ function isSortEnabled(column: NormalizedTableColumn<T, KeyAttribute>): boolean 
 function getSortOrder(column: NormalizedTableColumn<T, KeyAttribute>): "unsorted" | "ascending" | "descending" {
     if (sortedColumn.value !== column.sortable) {
         return "unsorted";
-    } else {
-        return sortedAscending.value ? "ascending" : "descending";
     }
+    return sortedAscending.value ? "ascending" : "descending";
 }
 
 function onToggleSortOrder(sortable: string): void {

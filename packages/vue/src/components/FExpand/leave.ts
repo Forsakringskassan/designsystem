@@ -17,7 +17,7 @@ export function leaveTransition(element: Element, done: () => void): void {
     element.style.height = "auto";
     element.style.height = getComputedStyle(element).height;
     Object.assign(element.style, transitionStyle);
-    setTimeout(() => {
+    queueMicrotask(() => {
         element.style.height = "0px";
         element.addEventListener(
             "transitionend",

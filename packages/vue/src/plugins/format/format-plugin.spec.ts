@@ -99,7 +99,7 @@ describe("Number", () => {
                 <span v-format:number="value"></span>
                 <button type="button" @click="value=0">Zero</button>
             `,
-            12345,
+            12_345,
         );
 
         expect(wrapper.html()).toMatchInlineSnapshot(`

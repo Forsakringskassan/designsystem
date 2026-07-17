@@ -36,9 +36,9 @@ export type FModalSize = Exclude<
 export function sizeClass(size: string): string[] {
     if (!size) {
         return [];
-    } else if (size === "fullscreen") {
-        return [`modal__dialog-container--fullwidth`];
-    } else {
-        return [`modal__dialog-container--${size}`];
     }
+    if (size === "fullscreen") {
+        return [`modal__dialog-container--fullwidth`];
+    }
+    return [`modal__dialog-container--${size}`];
 }

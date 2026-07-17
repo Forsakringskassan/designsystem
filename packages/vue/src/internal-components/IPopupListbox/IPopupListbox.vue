@@ -81,13 +81,13 @@ watchEffect(() => {
         calculatePosition();
         // wait one tick so we dont get the click
         // that launches the popup (await nextTick doesnt work here)
-        setTimeout(() => {
+        queueMicrotask(() => {
             // verify that it's still open
             /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             if (isOpen) {
                 addListeners();
             }
-        }, 0);
+        });
     } else {
         removeListeners();
     }
@@ -151,6 +151,7 @@ function calculatePosition(options?: { horizontalOnly: boolean }): void {
     if (verticalSpacing === undefined) {
         const absWrapper = getAbsolutePosition(wrapperElement);
         const { marginTop, marginBottom } = getComputedStyle(wrapperElement);
+        /* eslint-disable-next-line unicorn/prefer-number-coercion -- technical debt: this code relies on stopping parsing at non-digit characters */
         const marginTotal = Number.parseInt(marginTop, 10) + Number.parseInt(marginBottom, 10); // margin-top + margin-bottom
         verticalSpacing = Math.ceil(absWrapper.height - contentItemHeigth * numOfItems) + marginTotal;
     }

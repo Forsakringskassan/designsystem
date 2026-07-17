@@ -2,7 +2,7 @@ import { config } from "@fkui/vue";
 import "@forsakringskassan/docs-generator/runtime";
 
 function importDefault(m) {
-    return m.default ? m.default : m;
+    return m.default ?? m;
 }
 
 async function importIcons() {

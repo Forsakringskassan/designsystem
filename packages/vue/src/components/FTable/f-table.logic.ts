@@ -138,12 +138,11 @@ function navigate(
                 row: 1,
                 cell: 0,
             };
-        } else {
-            return {
-                row: from.row,
-                cell: 0,
-            };
         }
+        return {
+            row: from.row,
+            cell: 0,
+        };
     }
 
     if (e.code === "End") {
@@ -152,12 +151,11 @@ function navigate(
                 row: last.row,
                 cell: table.rows[last.row].cells.length - 1,
             };
-        } else {
-            return {
-                row: from.row,
-                cell: table.rows[from.row].cells.length - 1,
-            };
         }
+        return {
+            row: from.row,
+            cell: table.rows[from.row].cells.length - 1,
+        };
     }
 }
 

@@ -74,6 +74,8 @@ describe("scrollTo with options signature", () => {
         const element = mockElement();
 
         let resolved = false;
+
+        /* eslint-disable-next-line unicorn/prefer-await -- technical debt */
         scrollTo(element, { duration: frameDuration * 60 }).then(() => {
             resolved = true;
         });

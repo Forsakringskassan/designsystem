@@ -27,9 +27,8 @@ function getValidatableElement(element: HTMLElement): ValidatableHTMLElement {
     );
     if (validatableInsideElement) {
         return validatableInsideElement as ValidatableHTMLElement;
-    } else {
-        throw new Error(`Couldn't find any validatable element`);
     }
+    throw new Error(`Couldn't find any validatable element`);
 }
 
 function triggerInitialValidation(el: HTMLElement): void {
@@ -48,7 +47,7 @@ function registerValidators(
     const target = getValidatableElement(el);
 
     for (const validatorName of Object.keys(bindingValue)) {
-        if (!bindingModifiers[validatorName]) {
+        if (!Object.hasOwn(bindingModifiers, validatorName)) {
             throw new Error(
                 `Have you forget to add '${validatorName}' to v-validation.${validatorName}?`,
             );

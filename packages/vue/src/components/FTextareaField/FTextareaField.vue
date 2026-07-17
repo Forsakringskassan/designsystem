@@ -88,7 +88,7 @@ export default defineComponent({
             required: false,
             default: undefined,
             validator(value: number | undefined): boolean {
-                return value === undefined || (Number.isInteger(value) && value >= 1);
+                return value === undefined || (Number.isSafeInteger(value) && value >= 1);
             },
         },
     },
@@ -133,10 +133,9 @@ export default defineComponent({
             if (this.modelValue) {
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- required when `softLimit`
                 return this.maxlength! - this.modelValue.length;
-            } else {
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- required when `softLimit`
-                return this.maxlength!;
             }
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- required when `softLimit`
+            return this.maxlength!;
         },
         showCharactersLeftWarning(): boolean {
             return (
@@ -147,7 +146,7 @@ export default defineComponent({
             );
         },
         charactersLeftWarningInterpolated(): string {
-            return this.charactersLeftWarning.replace("%charactersLeft%", this.charactersLeft.toString());
+            return this.charactersLeftWarning.replace("%charactersLeft%", () => this.charactersLeft.toString());
         },
         textareaClass(): string[] {
             const classes = ["textarea-field__textarea"];
@@ -174,7 +173,7 @@ export default defineComponent({
         normalizedMaxRows(): number | undefined {
             const { maxRows } = this;
 
-            if (typeof maxRows !== "number" || !Number.isInteger(maxRows) || maxRows < 1) {
+            if (typeof maxRows !== "number" || !Number.isSafeInteger(maxRows) || maxRows < 1) {
                 return undefined;
             }
 
@@ -214,10 +213,12 @@ export default defineComponent({
             }
         },
         onInput(event: Event): void {
-            if (event.target instanceof HTMLTextAreaElement) {
-                this.$emit("update:modelValue", event.target.value);
-                this.$emit("input", event.target.value);
+            if (!(event.target instanceof HTMLTextAreaElement)) {
+                return;
             }
+
+            this.$emit("update:modelValue", event.target.value);
+            this.$emit("input", event.target.value);
         },
         onValidity({ detail }: CustomEvent<ValidityEvent>): void {
             this.validationMessage = detail.validationMessage;

@@ -17,6 +17,7 @@ afterEach(() => {
     ElementIdService.reset();
 });
 
+/* eslint-disable-next-line unicorn/no-global-object-property-assignment -- technical debt */
 window.matchMedia = function matchMedia(media: string): MediaQueryList {
     const queries: Record<string, boolean> = {
         "(prefers-reduced-motion: reduce)": true,

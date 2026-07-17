@@ -168,7 +168,7 @@ const rows = useDatasetRef<TableRow>([
         bankgiro: "9999996",
         clearingNumber: "5678",
         date: "2023-06-15",
-        currency: 3453455,
+        currency: 3_453_455,
         number: 5.4,
         percent: 9.987,
         epost: "a.b@example.net",
@@ -184,7 +184,7 @@ const rows = useDatasetRef<TableRow>([
         bankAccountNumber: "0012345678",
         bankgiro: "999-9996",
         clearingNumber: "56781",
-        currency: 24233,
+        currency: 24_233,
         date: "2024-01-20",
         number: 5.5,
         percent: 19.987,
@@ -201,7 +201,7 @@ const rows = useDatasetRef<TableRow>([
         bankAccountNumber: "123456",
         bankgiro: "999-9996",
         clearingNumber: "5678-1",
-        currency: 234623546,
+        currency: 234_623_546,
         date: "2022-11-05",
         number: 5.55,
         percent: 3.1,
@@ -217,9 +217,8 @@ const sum = computed(() => {
     return rows.value.reduce((sum, row) => {
         if (typeof row.number === "number") {
             return sum + row.number;
-        } else {
-            return sum;
         }
+        return sum;
     }, 0);
 });
 

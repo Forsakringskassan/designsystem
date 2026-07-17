@@ -11,7 +11,10 @@ export default defineComponent({
         validateAllFieldsOnPage() {
             const selector = "input, textarea, select";
             const elements = Array.from(document.querySelectorAll(selector));
-            for (const element of elements.filter((element) => element.id)) {
+            for (const element of elements) {
+                if (!element.id) {
+                    continue;
+                }
                 ValidationService.setError(element, `Server fel på fält med id ${element.id} `);
             }
             /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */

@@ -23,7 +23,7 @@ function findMatch(regexps: RegExp[], value: string): RegExpMatchArray | null {
 }
 
 function padInitialZeros(value: string | undefined, maxLength = 2): string {
-    value = value ?? "";
+    value ??= "";
     return value.padStart(maxLength, "0");
 }
 
@@ -39,6 +39,7 @@ export function hoursMinutesStringToMinutes(
     }
 
     const [hours, minutes] = splitHoursMinutes(valueString, extraForgiving).map(
+        /* eslint-disable-next-line unicorn/prefer-number-coercion -- technial debt */
         (value) => Number.parseInt(value, 10),
     );
     const totalMinutes = hours * 60 + minutes;
@@ -53,7 +54,7 @@ export function minutesToHoursMinutesString(
     value?: number,
 ): HoursMinutesString {
     let valueString = "";
-    const safeValue = value ?? Number.NaN;
+    const safeValue = value ?? NaN;
     if (!Number.isNaN(safeValue)) {
         const { hours, minutes } = minutesToObject(safeValue);
         valueString = [hours, minutes]

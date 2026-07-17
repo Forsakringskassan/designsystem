@@ -43,16 +43,14 @@ describe("expected DOM structures", () => {
             const dtElements = wrapper.findAll("dt");
             expect(dtElements).toHaveLength(expectedDtElements);
             for (const [index, dtElement] of dtElements.entries()) {
-                expect(dtElement.text()).toBe(`${definitions[index].term}`);
+                expect(dtElement.text()).toBe(definitions[index].term);
             }
 
             // Exceptions - `dd`
             const ddElements = wrapper.findAll("dd");
             expect(ddElements).toHaveLength(expectedDdElements);
             for (const [index, ddElement] of ddElements.entries()) {
-                expect(ddElement.text()).toBe(
-                    `${definitions[index].definition}`,
-                );
+                expect(ddElement.text()).toBe(definitions[index].definition);
             }
         },
     );

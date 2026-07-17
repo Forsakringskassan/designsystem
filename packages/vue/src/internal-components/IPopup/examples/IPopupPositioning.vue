@@ -50,7 +50,7 @@ export default defineComponent({
         document.addEventListener("mouseup", this.onMouseUp);
         /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         document.addEventListener("mousemove", this.onMouseMove);
-        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+        /* eslint-disable-next-line @typescript-eslint/no-floating-promises, unicorn/prefer-await -- technical debt */
         this.$nextTick().then(() => {
             this.updatePosition();
         });
@@ -104,13 +104,15 @@ export default defineComponent({
             if (!this.drag) {
                 return;
             }
+
             const { targetElement: target } = this;
             const anchor = this.$refs.anchor as HTMLElement | undefined;
             const area = this.areaElement;
-            const viewport = this.viewportElement;
             if (!area || !anchor) {
                 return;
             }
+
+            const viewport = this.viewportElement;
             const result = fitInsideArea({
                 area,
                 anchor,

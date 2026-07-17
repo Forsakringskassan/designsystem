@@ -4,8 +4,7 @@ import { type Validator } from "../validator";
 export const personnummerNotSame: Validator = {
     name: "personnummerNotSame",
     validation(value, _element, config) {
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-        const valuePnr = parsePersonnummer(String(value));
+        const valuePnr = parsePersonnummer(value);
         if (!valuePnr) {
             return true;
         }

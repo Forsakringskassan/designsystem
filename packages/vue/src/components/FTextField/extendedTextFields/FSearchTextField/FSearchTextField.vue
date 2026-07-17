@@ -56,7 +56,7 @@ export default defineComponent({
     },
     computed: {
         canClear(): boolean {
-            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, unicorn/prefer-includes-over-repeated-comparisons -- technical debt */
             const isEmpty = this.modelValue === undefined || this.modelValue === null || this.modelValue === "";
 
             return !isEmpty;

@@ -145,9 +145,8 @@ export default defineComponent({
                 const prettyDate = calendarValue.toString(DateFormat.FULL);
                 const text = this.$t("fkui.datepicker-field.change", "Ändra datum");
                 return `${text} ${prettyDate}`;
-            } else {
-                return this.$t("fkui.datepicker-field.choose", "Välj datum");
             }
+            return this.$t("fkui.datepicker-field.choose", "Välj datum");
         },
         popupClass(): string {
             return this.textFieldTableMode
@@ -158,10 +157,12 @@ export default defineComponent({
     watch: {
         modelValue: {
             async handler(value: string): Promise<void> {
-                if (value !== this.textFieldValue) {
-                    await this.updateTextFieldValue(value);
-                    updateCalendarValue(this, value);
+                if (value === this.textFieldValue) {
+                    return;
                 }
+
+                await this.updateTextFieldValue(value);
+                updateCalendarValue(this, value);
             },
             immediate: true,
         },
@@ -293,8 +294,7 @@ export default defineComponent({
                     throw new Error("MinDate validator must be set");
                 }
 
-                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-                this.minDate = FDate.fromIso(minDateConfig.limit.toString());
+                this.minDate = FDate.fromIso(minDateConfig.limit);
             }
 
             if (this.validationConfig.maxDate) {
@@ -303,8 +303,7 @@ export default defineComponent({
                     throw new Error("MaxDate validator must be set");
                 }
 
-                /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-                this.maxDate = FDate.fromIso(maxDateConfig.limit.toString());
+                this.maxDate = FDate.fromIso(maxDateConfig.limit);
             }
         },
         isDateEnabled(day: FDate): boolean {

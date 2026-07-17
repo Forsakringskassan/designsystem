@@ -120,6 +120,7 @@ export default defineComponent({
         isInline(): boolean {
             let isInline = this.teleportDisabled || this.placement === Placement.Fallback;
 
+            /* eslint-disable unicorn/no-duplicate-if-branches -- technical debt */
             if (this.forceInline) {
                 isInline = true;
             } else if (this.forceOverlay) {
@@ -128,6 +129,7 @@ export default defineComponent({
                 // Overlay is required to get accurate results from placement calculation.
                 isInline = false;
             }
+            /* eslint-enable unicorn/no-duplicate-if-branches */
 
             return isInline;
         },
@@ -153,17 +155,19 @@ export default defineComponent({
 
                     // wait one tick so we dont get the click
                     // that launches the popup (await nextTick doesnt work here)
-                    setTimeout(() => {
+                    queueMicrotask(() => {
                         // verify that it's still open
-                        if (this.isOpen) {
-                            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                            document.addEventListener("click", this.onDocumentClickHandler);
-                            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                            window.addEventListener("resize", this.onWindowResizeDebounced);
-                            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                            window.addEventListener("scroll", this.onScrollDebounced, { capture: true });
+                        if (!this.isOpen) {
+                            return;
                         }
-                    }, 0);
+
+                        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+                        document.addEventListener("click", this.onDocumentClickHandler);
+                        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+                        window.addEventListener("resize", this.onWindowResizeDebounced);
+                        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
+                        window.addEventListener("scroll", this.onScrollDebounced, { capture: true });
+                    });
                 } else {
                     /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                     document.removeEventListener("click", this.onDocumentClickHandler);
@@ -344,10 +348,12 @@ export default defineComponent({
             this.$emit("close", "escape");
         },
         onKeyTab(event: KeyboardEvent): void {
-            if (this.keyboardTrap) {
-                const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
-                handleTab(event, wrapper);
+            if (!this.keyboardTrap) {
+                return;
             }
+
+            const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
+            handleTab(event, wrapper);
         },
     },
 });

@@ -26,7 +26,7 @@ function getSlotNames(element: HTMLElement): string[] {
 
 const resolvedSlots = computed(() => {
     return slotNames.value
-        .filter((it) => Boolean(layoutDefinition.value.areas[it]))
+        .filter((it) => Object.hasOwn(layoutDefinition.value.areas, it))
         .map((slotName) => {
             const area = layoutDefinition.value.areas[slotName];
             const { attachPanel: attach, direction, scroll } = area;
@@ -48,31 +48,33 @@ const resolvedSlots = computed(() => {
 });
 
 onMounted(() => {
-    if (rootRef.value) {
-        const host = (rootRef.value.getRootNode() as ShadowRoot).host as HTMLElement;
-        slotNames.value = getSlotNames(host);
-
-        /* allow slots to settle before we dispatch the update event otherwise
-         * the updated data will not yet be available */
-        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-        nextTick(() => {
-            emit("update");
-        });
-
-        useMutationObserver(
-            host,
-            () => {
-                slotNames.value = getSlotNames(host);
-                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-                nextTick(() => {
-                    emit("update");
-                });
-            },
-            {
-                childList: true,
-            },
-        );
+    if (!rootRef.value) {
+        return;
     }
+
+    const host = (rootRef.value.getRootNode() as ShadowRoot).host as HTMLElement;
+    slotNames.value = getSlotNames(host);
+
+    /* allow slots to settle before we dispatch the update event otherwise
+     * the updated data will not yet be available */
+    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+    nextTick(() => {
+        emit("update");
+    });
+
+    useMutationObserver(
+        host,
+        () => {
+            slotNames.value = getSlotNames(host);
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+            nextTick(() => {
+                emit("update");
+            });
+        },
+        {
+            childList: true,
+        },
+    );
 });
 </script>
 

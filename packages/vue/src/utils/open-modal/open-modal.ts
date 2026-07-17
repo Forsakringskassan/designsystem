@@ -63,11 +63,11 @@ export function openModal<T = void>(
     options?: string | MaybeOptions,
 ): AsyncModalResult<T> {
     if (typeof options === "string") {
-        return openModal(callingInstance, Component, {
+        options = {
             props: {
                 content: options,
             },
-        });
+        };
     }
 
     const defaultOptions: ModalOptions = {

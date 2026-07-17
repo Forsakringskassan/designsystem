@@ -13,7 +13,6 @@ export function getDayTabindex(
 
     if (ref && isSameMonth(ref, date)) {
         return date.equals(ref) ? 0 : -1;
-    } else {
-        return date.day === 1 ? 0 : -1;
     }
+    return date.day === 1 ? 0 : -1;
 }

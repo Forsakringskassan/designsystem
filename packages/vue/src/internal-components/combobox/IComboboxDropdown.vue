@@ -29,11 +29,13 @@ function onListboxClose(): void {
 }
 
 watchEffect(async () => {
-    if (activeOption !== null) {
-        await nextTick();
-        const activeOptionNode = listboxRef.value?.querySelector<HTMLElement>(`#${activeOptionId}`);
-        activeElement.value = activeOptionNode ?? undefined;
+    if (activeOption === null) {
+        return;
     }
+
+    await nextTick();
+    const activeOptionNode = listboxRef.value?.querySelector<HTMLElement>(`#${activeOptionId}`);
+    activeElement.value = activeOptionNode ?? undefined;
 });
 </script>
 

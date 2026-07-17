@@ -34,10 +34,9 @@ function getProperty<T>(style: CSSStyleDeclaration, key: string): T | null {
     const value = style.getPropertyValue(key);
     if (value === "") {
         return null;
-    } else {
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-        return JSON.parse(value);
     }
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
+    return JSON.parse(value);
 }
 
 function findLayoutElement(
@@ -52,6 +51,7 @@ function findLayoutElement(
     }
     const root = element.getRootNode();
     if (root instanceof ShadowRoot) {
+        /* eslint-disable-next-line unicorn/no-useless-recursion -- technical debt */
         return findLayoutElement(root.host);
     }
     return null;

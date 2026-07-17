@@ -24,6 +24,7 @@ function createComponent(options?: {
 
     const testName = Cypress.currentTest.titlePath.join(" ");
     let resolve: () => void, reject: () => void;
+    /* eslint-disable-next-line unicorn/prefer-promise-with-resolvers -- technical debt */
     const promise = new Promise<void>((res, rej) => {
         resolve = res;
         reject = rej;

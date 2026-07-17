@@ -295,7 +295,7 @@ describe("7.7 Dataset change updates selection", () => {
             rows,
         });
 
-        rows.value.splice(0, 1);
+        rows.value.shift();
         await flushPromises();
         expect(selectedRows.value).toMatchObject([{ id: 2 }]);
     });

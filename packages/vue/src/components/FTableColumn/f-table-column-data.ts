@@ -53,7 +53,7 @@ export function addColumn(
         }
     }
 
-    if (!src.some((col) => col.id === column.id)) {
+    if (src.every((col) => col.id !== column.id)) {
         return [...src, column];
     }
     return src;

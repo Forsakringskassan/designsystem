@@ -74,7 +74,9 @@ export default defineComponent({
             const localChangedMimeTypeText =
                 this.changedMimeTypeText ??
                 this.$t("fkui.file-item.changed-mime-type.text", "(%before% ändrad till %after%)");
-            return localChangedMimeTypeText.replace("%before%", originalMimeType).replace("%after%", currentMimeType);
+            return localChangedMimeTypeText
+                .replace("%before%", () => originalMimeType)
+                .replace("%after%", () => currentMimeType);
         },
         iconName(): IconName {
             const { mimeType } = this;
@@ -85,16 +87,14 @@ export default defineComponent({
             }
 
             /* search literal match */
-            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-            if (iconMap[mimeType]) {
+            if (Object.hasOwn(iconMap, mimeType)) {
                 return iconMap[mimeType];
             }
 
             /* search with subtype wildcard, e.g. image/* */
             const p = mimeType.split("/", 1);
             const wildcard = [p[0], "*"].join("/");
-            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-            if (iconMap[wildcard]) {
+            if (Object.hasOwn(iconMap, wildcard)) {
                 return iconMap[wildcard];
             }
 

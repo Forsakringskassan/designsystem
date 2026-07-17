@@ -820,16 +820,16 @@ describe("FTable, valuta", () => {
 
     it("should format row value to viewvalue", () => {
         const row = {
-            currency: 11111119,
+            currency: 11_111_119,
         };
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
         const span = cell.get("span");
 
         // formatted view value
-        span.should("contain.text", "11\u00A0111\u00A0119").then(() => {
+        span.should("contain.text", "11\u{A0}111\u{A0}119").then(() => {
             // row value should be unchanged
-            expect(row.currency).to.equal(11111119);
+            expect(row.currency).to.equal(11_111_119);
         });
     });
 
@@ -847,9 +847,9 @@ describe("FTable, valuta", () => {
 
         const span = cell.get("span");
         // formatted view value
-        span.should("contain.text", "11\u00A0111\u00A0119").then(() => {
+        span.should("contain.text", "11\u{A0}111\u{A0}119").then(() => {
             // parsed row value as number
-            expect(row.currency).to.equal(11111119);
+            expect(row.currency).to.equal(11_111_119);
         });
     });
 

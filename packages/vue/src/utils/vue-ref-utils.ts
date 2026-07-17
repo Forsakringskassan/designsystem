@@ -117,7 +117,7 @@ function parseIntOrDefault(
     defaultValue: number,
 ): number {
     if (typeof value === "string") {
-        const parsed = Number.parseInt(value, 10);
+        const parsed = Math.trunc(Number(value));
         if (!Number.isNaN(parsed)) {
             return parsed;
         }
@@ -164,7 +164,8 @@ function isEmptyArray(value: unknown): boolean {
 export function findElementFromVueRef(ref: unknown): Element | undefined {
     if (refIsElement(ref)) {
         return ref;
-    } else if (refIsVue(ref)) {
+    }
+    if (refIsVue(ref)) {
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
         return ref.$el;
     }

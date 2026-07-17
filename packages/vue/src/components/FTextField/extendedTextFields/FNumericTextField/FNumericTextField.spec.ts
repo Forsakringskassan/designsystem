@@ -63,10 +63,10 @@ describe("v-model", () => {
         const wrapper = createWrapper(markup, "");
 
         const input = wrapper.get("input");
-        input.setValue("3,14");
+        input.setValue("1,23");
         await input.trigger("blur");
 
-        expect(wrapper.vm.$data.myModel).toBeCloseTo(3.14);
+        expect(wrapper.vm.$data.myModel).toBeCloseTo(1.23);
     });
 
     it("should be able to handle zero value", async () => {

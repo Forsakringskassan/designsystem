@@ -14,10 +14,10 @@ export function getNewItemIndexFromMenuAction(
     index: number,
     n: number,
 ): number {
-    let newIndex;
     if (n <= 0) {
         return 0;
     }
+    let newIndex;
     switch (action) {
         case MenuAction.MOVE_NEXT:
             newIndex = (index + 1) % n;

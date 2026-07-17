@@ -33,10 +33,9 @@ export function includeItem<T extends object, K extends keyof T>(
         return false;
     }
     const itemCompareValue = item[compareAttribute];
-    const match = itemList.find((it) => {
+    return itemList.some((it) => {
         return it[compareAttribute] === itemCompareValue;
     });
-    return Boolean(match);
 }
 
 /**
@@ -65,6 +64,7 @@ export function handleKeyboardFocusNavigation(
         }
     }
 
+    /* eslint-disable-next-line unicorn/no-computed-property-existence-check -- false positive */
     if (focusableElements[tabPosition]) {
         (focusableElements[tabPosition] as HTMLElement).focus();
     }

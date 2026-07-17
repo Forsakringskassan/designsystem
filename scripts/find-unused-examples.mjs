@@ -99,6 +99,7 @@ if (process.argv.includes("-h") || process.argv.includes("--help")) {
     console.log("");
     console.log("Typical usage:");
     console.log(`  node ${scriptName} -z | xargs -0 cmd...`);
+    /* eslint-disable-next-line unicorn/no-process-exit -- intentional */
     process.exit(0);
 }
 
@@ -109,7 +110,7 @@ const extraneous = difference(
     imported,
 );
 
-const delimiter = process.argv.includes("-z") ? "\u0000" : "\n";
+const delimiter = process.argv.includes("-z") ? "\u{0}" : "\n";
 
 const s = extraneous.size !== 1 ? "s" : "";
 process.stderr.write(`${extraneous.size} extraneous example${s} found\n`);

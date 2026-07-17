@@ -15,7 +15,7 @@ function includesAllSearchTerms(
         .filter(Boolean);
 
     for (const searchTerm of searchTerms) {
-        const match = values.find((it) => it?.includes(searchTerm));
+        const match = values.some((it) => it?.includes(searchTerm));
         if (!match) {
             return false;
         }

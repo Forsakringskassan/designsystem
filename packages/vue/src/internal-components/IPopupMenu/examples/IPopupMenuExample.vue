@@ -16,7 +16,7 @@ const exampleItems = [
     },
 ];
 
-const upKeys = ["Up", "ArrowUp"];
+const upKeys = new Set(["Up", "ArrowUp"]);
 const downKeys = ["Down", "ArrowDown"];
 const verticalKeys = [...upKeys, ...downKeys];
 const preventKeys = new Set(["Tab", ...verticalKeys]);
@@ -62,7 +62,7 @@ export default defineComponent({
             const focusPopup = tabNext || verticalKeys.includes(event.key);
             if (focusPopup) {
                 event.preventDefault();
-                const index = upKeys.includes(event.key) ? this.items.length - 1 : 0;
+                const index = upKeys.has(event.key) ? this.items.length - 1 : 0;
                 this.focusedItem = this.items[index].key;
                 return;
             }

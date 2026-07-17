@@ -1154,14 +1154,15 @@ describe("6 Expandable table", () => {
                         toJson: () => undefined,
                     });
 
-                    Object.defineProperty(container, "clientWidth", {
-                        value: 100,
-                        configurable: true,
-                    });
-
-                    Object.defineProperty(container, "scrollWidth", {
-                        value: 200,
-                        configurable: true,
+                    Object.defineProperties(container, {
+                        clientWidth: {
+                            value: 100,
+                            configurable: true,
+                        },
+                        scrollWidth: {
+                            value: 200,
+                            configurable: true,
+                        },
                     });
                 });
 
@@ -1387,11 +1388,12 @@ describe("5 tabstop", () => {
                 renderButton("After table", { dataTest: buttonAfterTable }),
                 renderButton("Add row", {
                     dataTest: buttonAddRow,
-                    onClick: () =>
+                    onClick() {
                         rows.value.push({
                             foo: String(counter.value++),
                             bar: "Added row",
-                        }),
+                        });
+                    },
                 }),
                 renderButton("Remove row", {
                     dataTest: buttonRemoveRow,

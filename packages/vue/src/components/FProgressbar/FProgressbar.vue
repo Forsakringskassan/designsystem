@@ -51,14 +51,14 @@ const cssWidth = computed(() => `width: ${String(progressValueNow.value)}%`);
 const progressBarClass = computed(() => {
     if (progressValueNow.value === MIN_VALUE) {
         return "progress__meter--pending";
-    } else if (progressValueNow.value === MAX_VALUE) {
-        return "progress__meter--finished";
-    } else {
-        return "progress__meter--inprogress";
     }
+    if (progressValueNow.value === MAX_VALUE) {
+        return "progress__meter--finished";
+    }
+    return "progress__meter--inprogress";
 });
 const progressText = computed(() => {
-    return props.valueText.replace("%VALUE%", progressValueNow.value.toString());
+    return props.valueText.replace("%VALUE%", () => progressValueNow.value.toString());
 });
 </script>
 

@@ -97,11 +97,11 @@ async function generateSpritesheetJs(library, data) {
     );
     spritesheet = spritesheet
         .replaceAll(/.*eslint-disable.*/g, "")
-        .replaceAll("PACKAGE", JSON.stringify(packageName))
-        .replaceAll("LIBRARY", JSON.stringify(library))
+        .replaceAll("PACKAGE", () => JSON.stringify(packageName))
+        .replaceAll("LIBRARY", () => JSON.stringify(library))
         .replace(
             /IMPORT_SPRITESHEET\(\);.*/,
-            `const spritesheet = '${data.content}';`,
+            () => `const spritesheet = '${data.content}';`,
         );
     let inject = await fs.readFile(
         path.join(templateFolder, "inject.js"),
@@ -132,12 +132,12 @@ async function generateSpritesheetJsNoInject(library, data) {
         "export function injectSpritesheet",
     );
     spritesheet = spritesheet
-        .replaceAll(/.*eslint-disable.*/g, "")
-        .replaceAll("PACKAGE", JSON.stringify(packageName))
-        .replaceAll("LIBRARY", JSON.stringify(library))
+        .replaceAll(/.*eslint-disable.*/g, () => "")
+        .replaceAll("PACKAGE", () => JSON.stringify(packageName))
+        .replaceAll("LIBRARY", () => JSON.stringify(library))
         .replace(
             /IMPORT_SPRITESHEET\(\);.*/,
-            `const spritesheet = '${data.content}';`,
+            () => `const spritesheet = '${data.content}';`,
         );
     const injectJs = path.join(dest, library, "injectSpritesheet.js");
     const injectDts = path.join(dest, library, "injectSpritesheet.d.ts");
@@ -176,9 +176,9 @@ async function getSpriteSheetdata(directory, files) {
         });
 
         const symbol = optimizedSvg.data
-            .replaceAll("<svg", `<symbol id="${id}"`)
-            .replaceAll("</svg>", "</symbol>")
-            .replaceAll(/ xmlns="[^"]*"/g, "");
+            .replaceAll("<svg", () => `<symbol id="${id}"`)
+            .replaceAll("</svg>", () => "</symbol>")
+            .replaceAll(/ xmlns="[^"]*"/g, () => "");
 
         content += symbol;
         icons.push({

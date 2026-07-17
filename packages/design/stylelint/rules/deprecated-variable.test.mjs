@@ -10,12 +10,11 @@ const config = {
 };
 
 async function lint(code) {
-    const {
-        results: [{ warnings, parseErrors }],
-    } = await stylelint.lint({
+    const { results } = await stylelint.lint({
         code,
         config,
     });
+    const [{ warnings, parseErrors }] = results;
     return { warnings, parseErrors };
 }
 

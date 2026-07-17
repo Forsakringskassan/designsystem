@@ -6,10 +6,9 @@ const PERCENT_REGEXP = /^[+-]?\d+(?:[,.]\d+)?$/;
 
 export const percentValidator: Validator = {
     name: "percent",
-    validation(value) {
+    validation(value: unknown) {
         const valueWithoutWhitespace = isSet(value)
-            ? /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-              stripWhitespace(String(value))
+            ? stripWhitespace(String(value))
             : value;
         return (
             isEmpty(valueWithoutWhitespace) ||

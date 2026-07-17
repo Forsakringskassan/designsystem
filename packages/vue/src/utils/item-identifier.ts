@@ -35,9 +35,8 @@ export function getLegacyInternalKey<T>(): keyof T {
 export function findItemIdentifier(item: unknown): ItemIdentifier | undefined {
     if (isObject(item) && Object.prototype.hasOwnProperty.call(item, sym)) {
         return item[sym as keyof typeof item];
-    } else {
-        return undefined;
     }
+    return undefined;
 }
 
 /**
@@ -52,11 +51,10 @@ export function getItemIdentifier(item: unknown): ItemIdentifier {
     const identifier = findItemIdentifier(item);
     if (identifier !== undefined) {
         return identifier;
-    } else {
-        throw new TypeError(
-            "Expected item to have an internal key but no key was set",
-        );
     }
+    throw new TypeError(
+        "Expected item to have an internal key but no key was set",
+    );
 }
 
 /**

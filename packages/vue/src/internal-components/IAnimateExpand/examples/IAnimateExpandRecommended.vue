@@ -26,7 +26,7 @@ export default defineComponent({
             console.log("After animation callback");
             this.callbackInfo = "After animation callback";
 
-            setTimeout(() => {
+            queueMicrotask(() => {
                 this.contentDivInDOM = this.$el.contains(this.$refs["content-div"]);
             });
         },

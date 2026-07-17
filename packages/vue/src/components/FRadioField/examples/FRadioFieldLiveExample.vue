@@ -66,9 +66,8 @@ export default defineComponent({
         showDetailsAttr(): string {
             if (this.showDetails === "never") {
                 return "";
-            } else {
-                return `show-details="${this.showDetails}"`;
             }
+            return `show-details="${this.showDetails}"`;
         },
         details(): string {
             const template = /* HTML */ `

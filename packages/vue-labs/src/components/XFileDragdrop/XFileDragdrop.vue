@@ -21,7 +21,7 @@ const fileName = ref("");
 const mimeType = ref("");
 const fileSize = ref(0);
 const filValidering = ref("");
-const maxFileSize = ref(10000000);
+const maxFileSize = ref(10_000_000);
 const allowedFileTypes = ref("application/pdf");
 const dragEnterTarget = ref<EventTarget | null>(null);
 const visadrag = ref(false);
@@ -41,9 +41,8 @@ const filstorlek = computed(() => {
 const srtextFilvaljare = computed(() => {
     if (!harValtFil.value) {
         return "Välj en PDF";
-    } else {
-        return "Byt PDF";
     }
+    return "Byt PDF";
 });
 
 function tillSkarmlasare(): void {
@@ -91,8 +90,8 @@ function hanteraFil(filer: FileList): void {
     } else {
         currentStatus.value = STATUS_HAR_INTE_VALT_FIL;
 
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, unicorn/no-array-for-each -- technical debt */
-        Object.values(filer ? filer : valdFil.value).forEach(async (value) => {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, unicorn/no-for-each -- technical debt */
+        Object.values(filer ?? valdFil.value).forEach(async (value) => {
             try {
                 const buffer = await value.arrayBuffer();
                 const reduced = new Uint8Array(buffer).reduce((data, byte) => data + String.fromCodePoint(byte), "");

@@ -9,7 +9,7 @@ expect.addSnapshotSerializer({
     },
     serialize(value: string) {
         /* eslint-disable-next-line no-control-regex -- expected to replace control regex */
-        return value.replaceAll(/\u001B\[[\d;]*m/g, "");
+        return value.replaceAll(/\u{1B}\[[\d;]*m/gu, "");
     },
 });
 
@@ -22,7 +22,7 @@ describe("toHaveFocus (vitest)", () => {
     let detached: HTMLElement;
 
     beforeEach(() => {
-        document.body.innerHTML = "";
+        document.body.replaceChildren();
         element = document.createElement("input");
         detached = document.createElement("input");
         document.body.append(element);

@@ -99,7 +99,7 @@ function mountAndGetPageObject(
 describe("tests", () => {
     it("shoud contain 6 items", () => {
         const contextMenu = mountAndGetPageObject();
-        contextMenu.items().should("have.length", `${nbOfTextItems}`);
+        contextMenu.items().should("have.length", nbOfTextItems);
     });
 });
 

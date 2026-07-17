@@ -22,7 +22,7 @@ describe("now()", () => {
         expect.assertions(1);
         vi.setSystemTime(new Date(1999, 11, 31));
         const today = FDate.now();
-        vi.advanceTimersByTime(61234);
+        vi.advanceTimersByTime(61_234);
         const alsoToday = FDate.now();
         expect(today.equals(alsoToday)).toBeTruthy();
     });
@@ -31,7 +31,7 @@ describe("now()", () => {
         expect.assertions(3);
         vi.setSystemTime(new Date(1999, 11, 31));
         const today = FDate.now();
-        vi.advanceTimersByTime(61234);
+        vi.advanceTimersByTime(61_234);
         const alsoToday = FDate.now();
         expect(today.isBefore(today)).toBeFalsy();
         expect(today.isBefore(alsoToday)).toBeFalsy();
@@ -42,7 +42,7 @@ describe("now()", () => {
         expect.assertions(3);
         vi.setSystemTime(new Date(1999, 11, 31));
         const today = FDate.now();
-        vi.advanceTimersByTime(61234);
+        vi.advanceTimersByTime(61_234);
         const alsoToday = FDate.now();
         expect(today.isAfter(today)).toBeFalsy();
         expect(today.isAfter(alsoToday)).toBeFalsy();

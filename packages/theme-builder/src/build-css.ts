@@ -46,9 +46,8 @@ function fsImporter(options: {
             }
             if (path.posix.isAbsolute(url)) {
                 return tryResolve(url);
-            } else {
-                return tryResolve(path.posix.join(cwd, url));
             }
+            return tryResolve(path.posix.join(cwd, url));
         },
         async load(url) {
             const contents = await fs.readFile(url, "utf8");
@@ -108,7 +107,8 @@ export async function buildCss(
     logger.group("Compiling CSS:");
 
     /* eslint-disable-next-line @typescript-eslint/await-thenable -- memfs returns a promise instead */
-    for await (const item of await fs.glob(pattern, { cwd })) {
+    const items = await fs.glob(pattern, { cwd });
+    for await (const item of items) {
         const src = item.replaceAll("\\", "/");
         const { name } = path.parse(src);
         if (name.startsWith("_")) {

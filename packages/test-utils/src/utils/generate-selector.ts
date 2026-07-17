@@ -15,9 +15,10 @@ function stringifyNode(element: Element): [text: string, final: boolean] {
     }
 
     const tagName = element.tagName.toLowerCase();
-    const classes = Array.from(element.classList.values())
-        .map((it) => `.${it}`)
-        .join("");
+    const classes = Array.from(
+        element.classList.values(),
+        (it) => `.${it}`,
+    ).join("");
     return [`${tagName}${classes}`, false];
 }
 

@@ -34,7 +34,6 @@ class RequiredMaxLength extends Rule {
             const target = event.target;
             const elementAttrs = target.attributes;
             const tagName = target.tagName;
-            const valueOfType = target.getAttributeValue("type");
 
             if (!allowedTags.has(tagName)) {
                 return;
@@ -52,14 +51,9 @@ class RequiredMaxLength extends Rule {
 
             if (maxlength) {
                 return;
-            } else {
-                this.checkValidation(
-                    formatters,
-                    validation,
-                    target,
-                    valueOfType,
-                );
             }
+            const valueOfType = target.getAttributeValue("type");
+            this.checkValidation(formatters, validation, target, valueOfType);
         });
     }
 
@@ -87,9 +81,8 @@ class RequiredMaxLength extends Rule {
     checkInputType(valueOfType, target) {
         if (valueOfType && valueOfType !== "text") {
             return;
-        } else {
-            this.report(target, "v-validation.maxLength must be used");
         }
+        this.report(target, "v-validation.maxLength must be used");
     }
 }
 

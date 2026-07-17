@@ -101,7 +101,7 @@ const ariaLabel = computed(() => {
     let value = column.label(row);
 
     if (hasError.value) {
-        value = `${value} ${validity.value.validationMessage}`;
+        value += ` ${validity.value.validationMessage}`;
     }
 
     return value.length > 0 ? value : undefined;
@@ -110,9 +110,8 @@ const ariaLabel = computed(() => {
 const columnAttributes = computed(() => {
     if (column.attributes && typeof column.attributes === "function") {
         return column.attributes(row);
-    } else {
-        return column.attributes;
     }
+    return column.attributes;
 });
 
 const configAttributes = computed(() => {
@@ -198,17 +197,19 @@ function setUpFakeValidation(el: HTMLInputElement): void {
 }
 
 onMounted(() => {
-    if (inputElement.value) {
-        viewValue.value = fromColumnValue();
-
-        if (column.hasValidation) {
-            setUpValidation(inputElement.value);
-        } else {
-            setUpFakeValidation(inputElement.value);
-        }
-
-        void nextTick().then(() => validationFacade.validateElement(inputElement.value)); // wait for .value to be set before validation
+    if (!inputElement.value) {
+        return;
     }
+
+    viewValue.value = fromColumnValue();
+
+    if (column.hasValidation) {
+        setUpValidation(inputElement.value);
+    } else {
+        setUpFakeValidation(inputElement.value);
+    }
+
+    void nextTick().then(() => validationFacade.validateElement(inputElement.value)); // wait for .value to be set before validation
 });
 
 watchEffect(() => {

@@ -18,11 +18,15 @@ export function getElementType(
               element.type === "radio"
               ? "radio"
               : "text";
-    } else if (element instanceof HTMLTextAreaElement) {
+    }
+    if (element instanceof HTMLTextAreaElement) {
         return "textarea";
-    } else if (element instanceof HTMLSelectElement) {
+    }
+    if (element instanceof HTMLSelectElement) {
         return "select";
-    } else if (element instanceof HTMLFieldSetElement) {
+    }
+    if (element instanceof HTMLFieldSetElement) {
+        /* eslint-disable-next-line unicorn/no-useless-recursion -- technical debt */
         return getElementType(
             element.querySelector<HTMLInputElement>(
                 "input[type='checkbox'], input[type='radio']",

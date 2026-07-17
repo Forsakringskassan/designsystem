@@ -134,9 +134,8 @@ const initialSize = computed(() => {
 const orientation = computed((): Orientation => {
     if (attachment.value === "top" || attachment.value === "bottom") {
         return "horizontal";
-    } else {
-        return "vertical";
     }
+    return "vertical";
 });
 
 const classes = computed(() => {

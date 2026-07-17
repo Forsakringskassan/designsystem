@@ -6,7 +6,7 @@ describe("focusElement", () => {
     it("should focus text field", () => {
         expect.assertions(1);
         document.body.innerHTML = /* HTML */ ` <input type="text" /> `;
-        const textField = document.querySelectorAll("input")[0];
+        const textField = document.querySelector("input")!;
         focusElement(textField, document.body);
         expect(textField).toHaveFocus();
     });
@@ -45,7 +45,7 @@ describe("focusElement", () => {
     it("should focus div with tabindex='0'", () => {
         expect.assertions(1);
         document.body.innerHTML = /* HTML */ ` <div tabindex="0"></div> `;
-        const div = document.querySelectorAll("div")[0];
+        const div = document.querySelector("div")!;
         focusElement(div, document.body);
         expect(div).toHaveFocus();
     });

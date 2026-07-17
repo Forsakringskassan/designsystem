@@ -84,9 +84,8 @@ function getTextContent(
                 if (options.componentPlaceholder) {
                     const name = getComponentName(node);
                     return `<${name} />`;
-                } else {
-                    return "";
                 }
+                return "";
             }
             if (Array.isArray(node.children)) {
                 return getTextContent(node.children, options);

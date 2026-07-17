@@ -7,14 +7,14 @@ describe("formatting", () => {
         ${"0"}      | ${"0"}             | ${"string"}
         ${"18.5"}   | ${"18,5"}          | ${"string"}
         ${"18,5"}   | ${"18,5"}          | ${"string"}
-        ${"123456"} | ${"123\u00a0456"}  | ${"string"}
+        ${"123456"} | ${"123\u{A0}456"}  | ${"string"}
         ${0}        | ${"0"}             | ${"number"}
         ${18}       | ${"18"}            | ${"number"}
         ${123}      | ${"123"}           | ${"number"}
-        ${1234}     | ${"1\u00a0234"}    | ${"number"}
-        ${123456}   | ${"123\u00a0456"}  | ${"number"}
-        ${-123456}  | ${"−123\u00a0456"} | ${"number"}
-        ${1234.25}  | ${"1\u00a0234,25"} | ${"number"}
+        ${1234}     | ${"1\u{A0}234"}    | ${"number"}
+        ${123_456}  | ${"123\u{A0}456"}  | ${"number"}
+        ${-123_456} | ${"−123\u{A0}456"} | ${"number"}
+        ${1234.25}  | ${"1\u{A0}234,25"} | ${"number"}
     `(
         'should format "$value" ($type) as "$expected"',
         ({ value, expected }) => {
@@ -37,7 +37,7 @@ describe("formatting", () => {
 
     it("should return undefined for NaN", () => {
         expect.assertions(1);
-        expect(formatPercent(Number.NaN)).toBeUndefined();
+        expect(formatPercent(NaN)).toBeUndefined();
     });
 });
 
@@ -47,11 +47,11 @@ describe("formatting decimals", () => {
         ${0}        | ${"0,00"}             | ${"0 number value should should be formatted as '0,00'"}
         ${18}       | ${"18,00"}            | ${"18 number value should should be formatted as '18,00'"}
         ${123}      | ${"123,00"}           | ${"123 number value should should be formatted as '123,00'"}
-        ${1234}     | ${"1\u00a0234,00"}    | ${"1234 number value should should be formatted as '1 234,00'"}
-        ${123456}   | ${"123\u00a0456,00"}  | ${"123456 number value should should be formatted as '123 456,00'"}
-        ${-123456}  | ${"−123\u00a0456,00"} | ${"-123456 number value should should be formatted as '-123 456,00'"}
-        ${1234.25}  | ${"1\u00a0234,25"}    | ${"1234.25 number value should should be formatted as '1 234,25'"}
-        ${1234.255} | ${"1\u00a0234,26"}    | ${"1234.255 number value should be rounded and formatted as '1 234,26'"}
+        ${1234}     | ${"1\u{A0}234,00"}    | ${"1234 number value should should be formatted as '1 234,00'"}
+        ${123_456}  | ${"123\u{A0}456,00"}  | ${"123456 number value should should be formatted as '123 456,00'"}
+        ${-123_456} | ${"−123\u{A0}456,00"} | ${"-123456 number value should should be formatted as '-123 456,00'"}
+        ${1234.25}  | ${"1\u{A0}234,25"}    | ${"1234.25 number value should should be formatted as '1 234,25'"}
+        ${1234.255} | ${"1\u{A0}234,26"}    | ${"1234.255 number value should be rounded and formatted as '1 234,26'"}
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {
@@ -71,11 +71,11 @@ describe("parse", () => {
         ${" 18.5 "}            | ${18.5}     | ${"18.5 string value should should be formatted as '18,5'"}
         ${"0018.5"}            | ${18.5}     | ${"18.5 string value should should be formatted as '18,5'"}
         ${"1 234"}             | ${1234}     | ${"1234 number value should should be formatted as '1 234'"}
-        ${"123 456"}           | ${123456}   | ${"123456 number value should should be formatted as '123 456'"}
-        ${"−123 456"}          | ${-123456}  | ${"-123456 number value should should be formatted as '-123 456'"}
+        ${"123 456"}           | ${123_456}  | ${"123456 number value should should be formatted as '123 456'"}
+        ${"−123 456"}          | ${-123_456} | ${"-123456 number value should should be formatted as '-123 456'"}
         ${"1 234,25"}          | ${1234.25}  | ${"1234.25 number value should should be formatted as '1 234,25'"}
-        ${"0001\u00a0234,25"}  | ${1234.25}  | ${"0001234.25 string value should should be formatted as '1 234,25'"}
-        ${"−0001\u00a0234,25"} | ${-1234.25} | ${"-0001234.25 string value should should be formatted as '-1 234,25'"}
+        ${"0001\u{A0}234,25"}  | ${1234.25}  | ${"0001234.25 string value should should be formatted as '1 234,25'"}
+        ${"−0001\u{A0}234,25"} | ${-1234.25} | ${"-0001234.25 string value should should be formatted as '-1 234,25'"}
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }) => {

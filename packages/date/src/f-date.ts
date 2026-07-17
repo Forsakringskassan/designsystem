@@ -80,11 +80,11 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
              * it increases the month, this is not the desired behaviour so we
              * compare the parsed month with the original month, if they differ
              * an invalid FDate is returned instead.*/
-            if (date.isValid() && date.month === Number.parseInt(month, 10)) {
+            if (date.isValid() && date.month === Math.trunc(Number(month))) {
                 return date;
             }
         }
-        return FDate.invalid();
+        return this.invalid();
     }
 
     /**
@@ -119,7 +119,7 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
         const paddedDay = day.toString().padStart(2, "0");
         const iso = `${String(year)}-${paddedMonth}-${paddedDay}`;
 
-        return FDate.fromIso(iso);
+        return this.fromIso(iso);
     }
 
     /**
@@ -184,9 +184,8 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
     public get monthName(): string {
         if (this.isValid()) {
             return this.value.locale(getLocale()).format("MMMM");
-        } else {
-            return "";
         }
+        return "";
     }
 
     /**
@@ -201,9 +200,8 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
     public get monthNameShort(): string {
         if (this.isValid()) {
             return this.value.locale(getLocale()).format("MMM");
-        } else {
-            return "";
         }
+        return "";
     }
 
     /**
@@ -218,9 +216,8 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
     public get dayName(): string {
         if (this.isValid()) {
             return this.value.locale(getLocale()).format("dddd");
-        } else {
-            return "";
         }
+        return "";
     }
 
     /**
@@ -235,9 +232,8 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
     public get dayNameShort(): string {
         if (this.isValid()) {
             return this.value.locale(getLocale()).format("ddd");
-        } else {
-            return "";
         }
+        return "";
     }
 
     /**
@@ -256,7 +252,7 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
             return 0;
         }
 
-        const result = Number.parseInt(this.value.format("d"), 10);
+        const result = Math.trunc(Number(this.value.format("d")));
 
         if (!result) {
             return Weekday.SUNDAY;
@@ -412,29 +408,29 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
      */
     public static compare(a: FDate | string, b: FDate | string): number {
         if (typeof a === "string") {
-            a = FDate.fromIso(a);
+            a = this.fromIso(a);
         }
         if (typeof b === "string") {
-            b = FDate.fromIso(b);
+            b = this.fromIso(b);
         }
         const aInvalid = !a.isValid();
         const bInvalid = !b.isValid();
         if (aInvalid || bInvalid) {
             if (aInvalid && bInvalid) {
                 return 0;
-            } else if (aInvalid) {
-                return 1;
-            } else {
-                return -1;
             }
+            if (aInvalid) {
+                return 1;
+            }
+            return -1;
         }
         if (a.equals(b)) {
             return 0;
-        } else if (a.isBefore(b)) {
-            return -1;
-        } else {
-            return 1;
         }
+        if (a.isBefore(b)) {
+            return -1;
+        }
+        return 1;
     }
 
     /**
@@ -454,9 +450,8 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
         if (this.isValid()) {
             const template = formatter[getLocale()][format];
             return this.value.locale(getLocale()).format(template);
-        } else {
-            return "";
         }
+        return "";
     }
 
     /**

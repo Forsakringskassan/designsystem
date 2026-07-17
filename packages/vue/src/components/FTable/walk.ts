@@ -16,6 +16,7 @@ export function walk<T>(
     for (const item of array) {
         const visitChildren = visit(item, level);
 
+        /* eslint-disable-next-line unicorn/no-computed-property-existence-check -- technical debt */
         if (visitChildren && childKey && item[childKey]) {
             walk(item[childKey] as T[], childKey, visit, level + 1);
         }

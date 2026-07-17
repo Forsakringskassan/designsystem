@@ -16,7 +16,7 @@ export default defineComponent({
     },
     data() {
         return {
-            isOnline: navigator.onLine || false,
+            isOnline: navigator.onLine,
             role: "none",
             shouldNotRead: true,
         };

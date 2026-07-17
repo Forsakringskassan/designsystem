@@ -15,7 +15,7 @@ function toString(result: typeof data): string {
 it.each`
     searchString     | expected                                    | description
     ${""}            | ${"aAc 2020, aba 2021, Aab 2022, bbb 2023"} | ${"match all when empty search string"}
-    ${"   "}         | ${"aAc 2020, aba 2021, Aab 2022, bbb 2023"} | ${"match all when search string containering spaces"}
+    ${" ".repeat(3)} | ${"aAc 2020, aba 2021, Aab 2022, bbb 2023"} | ${"match all when search string containering spaces"}
     ${"not-in-data"} | ${""}                                       | ${"match nothing"}
     ${"a"}           | ${"aAc 2020, aba 2021, Aab 2022"}           | ${"find all items including 'a'"}
     ${"A"}           | ${"aAc 2020, aba 2021, Aab 2022"}           | ${"should be caseinsensitive"}

@@ -35,11 +35,12 @@ export function focus(
     options: boolean | FocusOptions = {},
 ): boolean {
     if (Array.isArray(element)) {
-        return focus(element[0], options);
+        element = element[0];
     }
 
     if (isVueComponent(element)) {
         const targetElement = element.focusTarget ?? element.$el;
+        /* eslint-disable-next-line unicorn/no-useless-recursion -- technical debt */
         return focus(targetElement, options);
     }
 

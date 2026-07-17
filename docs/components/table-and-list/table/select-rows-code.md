@@ -59,13 +59,13 @@ const selectedRows = ref<Row[]>([]);
 const { confirmModal } = useModal();
 
 async function removeSelected(): Promise<void> {
-    const selectedCount = selectedRows.value.length;
-    const selectedFruitText =
-        selectedCount === 1 ? "vald frukt" : "valda frukter";
-
     if (selectedRows.value.length === 0) {
         return;
     }
+
+    const selectedCount = selectedRows.value.length;
+    const selectedFruitText =
+        selectedCount === 1 ? "vald frukt" : "valda frukter";
 
     const confirmed = await confirmModal({
         heading: "Ta bort frukt(er)",

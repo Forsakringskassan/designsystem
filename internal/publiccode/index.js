@@ -37,7 +37,7 @@ export async function prepare(_pluginConfig, context) {
     if (verified) {
         const filePath = path.join(cwd, filename);
         const date = new Date();
-        const dateString = date.toISOString().split("T")[0];
+        const dateString = date.toISOString().split("T", 1)[0];
         const file = fs.readFileSync(filePath, "utf8");
         const data = parse(file);
         data.softwareVersion = nextRelease.version;

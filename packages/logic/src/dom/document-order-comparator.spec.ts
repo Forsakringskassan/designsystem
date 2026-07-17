@@ -15,7 +15,7 @@ declare module "vitest" {
 }
 
 beforeEach(() => {
-    document.body.innerHTML = "";
+    document.body.replaceChildren();
 });
 
 it("should sort by position in DOM tree", () => {

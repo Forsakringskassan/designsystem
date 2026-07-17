@@ -28,7 +28,7 @@ describe("validation", () => {
         ${'"'}                         | ${false} | ${"quotes should be invalid"}
         ${"'"}                         | ${false} | ${"single quotes should be invalid"}
         ${"\\"}                        | ${false} | ${"escape should be invalid"}
-        ${"\u200F"}                    | ${false} | ${"right-to-left mark should be invalid"}
+        ${"\u{200F}"}                  | ${false} | ${"right-to-left mark should be invalid"}
         ${"$&%#_<>{}[]/\\\"'"}         | ${false} | ${'"$&%#_<>{}[]/\\"\'" should be invalid'}
         ${" test"}                     | ${false} | ${"non-breaking space should be invalid"}
     `(

@@ -21,7 +21,7 @@ export default defineComponent({
             type: String,
             default: "320",
             validator(value: string): boolean {
-                const parsed = Number.parseInt(value, 10);
+                const parsed = Math.trunc(Number(value));
                 return !Number.isNaN(parsed);
             },
         },
@@ -53,23 +53,21 @@ export default defineComponent({
         navigationStyle(): Record<string, string> {
             if (this.isOpen) {
                 return { width: `${String(this.panelWidth)}px`, top: `${String(this.offsetTop)}px` };
-            } else {
-                return { top: `${String(this.offsetTop)}px` };
             }
+            return { top: `${String(this.offsetTop)}px` };
         },
         primaryStyle(): Record<string, string> {
             if (this.isOpen) {
                 return { "margin-left": `${String(this.panelWidth)}px` };
-            } else {
-                return { "margin-left": `3.5rem` };
             }
+            return { "margin-left": `3.5rem` };
         },
         // This is to make word-wrap work in IE11
         contentStyle(): Record<string, string> {
             return { "max-width": `${String(this.panelWidth - 35)}px` };
         },
         ariaLabel(): string {
-            return this.navLabel ? this.navLabel : this.$t("fkui.layout-left-panel.nav.label", "Vänstermeny");
+            return this.navLabel || this.$t("fkui.layout-left-panel.nav.label", "Vänstermeny");
         },
     },
     mounted(): void {

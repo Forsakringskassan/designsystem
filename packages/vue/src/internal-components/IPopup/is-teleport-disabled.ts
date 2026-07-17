@@ -21,6 +21,7 @@ export function isTeleportDisabled(
     const isMobileSize = window.innerWidth < MIN_DESKTOP_WIDTH;
     let disableTeleport = isMobileSize || placement === Placement.Fallback;
 
+    /* eslint-disable unicorn/no-duplicate-if-branches -- technical debt */
     if (forceInline) {
         disableTeleport = true;
     } else if (forceOverlay) {
@@ -28,6 +29,7 @@ export function isTeleportDisabled(
     } else if (placement === Placement.NotCalculated && !isMobileSize) {
         disableTeleport = false;
     }
+    /* eslint-enable unicorn/no-duplicate-if-branches */
 
     return disableTeleport;
 }

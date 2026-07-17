@@ -48,11 +48,11 @@ export function useHorizontalOffset(options: {
          */
 
         /* defer one tick to allow rendering to settle */
-        setTimeout(() => {
+        queueMicrotask(() => {
             const borderWidth = 2;
             const center = element.offsetWidth / 2;
             const left = element.offsetLeft - parent.offsetLeft;
             offset.value = left - borderWidth + center;
-        }, 0);
+        });
     }
 }

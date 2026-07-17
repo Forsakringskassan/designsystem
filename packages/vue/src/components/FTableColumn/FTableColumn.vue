@@ -115,9 +115,8 @@ const scope = computed(() => {
 const tagName = computed(() => {
     if (props.rowHeader) {
         return "th";
-    } else {
-        return "td";
     }
+    return "td";
 });
 
 /**

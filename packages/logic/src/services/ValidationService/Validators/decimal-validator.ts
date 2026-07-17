@@ -13,16 +13,15 @@ export interface DecimalValidatorConfig extends ValidatorOptions {
 
 function createNumberRegexp(minDecimals = 0, maxDecimals = 2): RegExp {
     return new RegExp(
-        `^([-\u2212]?[0-9]+)([,.][0-9]{${String(minDecimals)},${String(maxDecimals)}})(?<![,.])$`,
+        `^([-\u{2212}]?[0-9]+)([,.][0-9]{${String(minDecimals)},${String(maxDecimals)}})(?<![,.])$`,
     );
 }
 
 export const decimalValidator: Validator<DecimalValidatorConfig> = {
     name: "decimal",
-    validation(value, _element, config) {
+    validation(value: unknown, _element, config) {
         const valueWithoutWhitespace = isSet(value)
-            ? /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-              stripWhitespace(String(value))
+            ? stripWhitespace(String(value))
             : value;
         const minDecimalsAsNumber = isSet(config.minDecimals)
             ? /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */

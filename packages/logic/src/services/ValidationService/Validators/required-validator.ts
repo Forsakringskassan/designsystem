@@ -25,10 +25,10 @@ export const requiredValidator: Validator = {
     validation(value, element) {
         if (element instanceof HTMLFieldSetElement) {
             return validateFieldset(element);
-        } else if (isRadiobuttonOrCheckbox(element)) {
-            return validateChecked(element);
-        } else {
-            return validateInput(value);
         }
+        if (isRadiobuttonOrCheckbox(element)) {
+            return validateChecked(element);
+        }
+        return validateInput(value);
     },
 };

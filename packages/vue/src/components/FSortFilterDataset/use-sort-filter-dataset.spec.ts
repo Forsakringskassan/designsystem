@@ -92,7 +92,7 @@ describe("filtered data after editing of input data", () => {
             true,
         );
 
-        data.value.splice(0, 1);
+        data.value.shift();
         await nextTick();
 
         expect(sortFilterResult.value).toMatchObject([
@@ -104,7 +104,7 @@ describe("filtered data after editing of input data", () => {
             },
         ]);
 
-        data.value.splice(0, 1);
+        data.value.shift();
         await nextTick();
 
         expect(sortFilterResult.value).toMatchObject([

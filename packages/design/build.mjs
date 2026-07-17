@@ -42,15 +42,15 @@ async function postprocess(css, from, to, { theme, minify, sourceMap }) {
 function prettySize(size) {
     if (size < 1024) {
         return `${size} B`;
-    } else if (size < 1024 * 1024) {
+    }
+    if (size < 1024 * 1024) {
         const divisor = 1024;
         const rounded = (size / divisor).toFixed(2);
         return `${rounded} kB`;
-    } else {
-        const divisor = 1024 * 1024;
-        const rounded = (size / divisor).toFixed(2);
-        return `${rounded} mB`;
     }
+    const divisor = 1024 * 1024;
+    const rounded = (size / divisor).toFixed(2);
+    return `${rounded} mB`;
 }
 
 async function compileSass(src, dst, { theme } = {}) {

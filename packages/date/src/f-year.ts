@@ -15,7 +15,7 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
         if (Math.round(value) === value) {
             this._value = value;
         } else {
-            this._value = Number.NaN;
+            this._value = NaN;
         }
     }
 
@@ -51,7 +51,7 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
      */
     public static fromYear(value: number | string): FYear {
         const parsed =
-            typeof value === "string" ? Number.parseInt(value, 10) : value;
+            typeof value === "string" ? Math.trunc(Number(value)) : value;
         return new FYear(parsed);
     }
 
@@ -71,9 +71,8 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
     public static fromDate(value: FDate | Date): FYear {
         if (value instanceof Date) {
             return new FYear(value.getFullYear());
-        } else {
-            return new FYear(value.year);
         }
+        return new FYear(value.year);
     }
 
     /**
@@ -211,18 +210,18 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
         a: FYear | number | string,
         b: FYear | number | string,
     ): number {
-        const ax = FYear.toFYear(a);
-        const bx = FYear.toFYear(b);
+        const ax = this.toFYear(a);
+        const bx = this.toFYear(b);
         const aInvalid = !ax.isValid();
         const bInvalid = !bx.isValid();
         if (aInvalid || bInvalid) {
             if (aInvalid && bInvalid) {
                 return 0;
-            } else if (aInvalid) {
-                return 1;
-            } else {
-                return -1;
             }
+            if (aInvalid) {
+                return 1;
+            }
+            return -1;
         }
         return Math.max(Math.min(ax._value - bx._value, 1), -1);
     }
@@ -235,9 +234,8 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
     public toString(): string {
         if (this.isValid()) {
             return this._value.toString();
-        } else {
-            return "";
         }
+        return "";
     }
 
     /**
@@ -248,20 +246,18 @@ export class FYear implements IterableDate<FYear>, Clampable<FYear> {
     public toJSON(): number | null {
         if (this.isValid()) {
             return this._value;
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
      * @internal
      */
     private static toFYear(value: FYear | number | string): FYear {
-        if (value instanceof FYear) {
+        if (value instanceof this) {
             return value;
-        } else {
-            return FYear.fromYear(value);
         }
+        return this.fromYear(value);
     }
 
     /**

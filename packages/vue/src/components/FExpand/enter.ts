@@ -21,7 +21,7 @@ export function enterTransition(element: Element, done: () => void): void {
     // Force redraw
     /* eslint-disable-next-line @typescript-eslint/no-unused-expressions -- technical debt, there should be a better way */
     getComputedStyle(element).height;
-    setTimeout(() => {
+    queueMicrotask(() => {
         element.style.height = desiredHeight;
         element.addEventListener(
             "transitionend",
