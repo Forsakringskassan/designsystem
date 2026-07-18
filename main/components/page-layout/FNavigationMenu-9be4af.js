@@ -31,7 +31,7 @@ function setup(options) {
 // virtual-entry:virtual:docs/components/page-layout/FNavigationMenu.md:FNavigationMenu-9be4af.js
 import { defineComponent as _defineComponent } from "vue";
 
-// node_modules/vue-router/dist/useApi-s_02lHjl.js
+// node_modules/vue-router/dist/useApi-CROJJdhE.js
 import { inject } from "vue";
 var routerKey = /* @__PURE__ */ Symbol(true ? "router" : "");
 function useRouter() {
@@ -65,10 +65,10 @@ setup({
 });
 /*! Bundled license information:
 
-vue-router/dist/useApi-s_02lHjl.js:
+vue-router/dist/useApi-CROJJdhE.js:
 vue-router/dist/vue-router.js:
   (*!
-  * vue-router v5.1.0
+  * vue-router v5.2.0
   * (c) 2026 Eduardo San Martin Morote
   * @license MIT
   *)
