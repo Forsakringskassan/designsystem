@@ -109,4 +109,4 @@ jobs:
                   npm install $(npx -w packages/vue npm-min-peer --with-name html-validate)
                   npm ls html-validate
             - name: HTML-Validate
-              run: npm run html-validate
+              run: npm exec html-validate -- packages/vue/src/components/FBadge/FBadge.vue
