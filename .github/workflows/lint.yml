@@ -23,7 +23,7 @@ jobs:
               uses: Forsakringskassan/prettier-config@2b3666691fe48f99901de8d821b8196290a8ec42 # v3.7.7
             - name: ESLint
               if: success() || failure()
-              uses: Forsakringskassan/eslint-config@01a7e63559344c8b7ef7ce37556a1491da514d6f # v15.3.14
+              uses: Forsakringskassan/eslint-config@d834494083319a2312e4ddef8c85e0f075d8096a # v15.3.15
             - name: HTML Validate
               if: success() || failure()
               run: npm run html-validate -- --max-warnings 0 || false
