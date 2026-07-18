@@ -3126,7 +3126,7 @@ function findMatch(regexps, value) {
   return null;
 }
 function padInitialZeros(value, maxLength = 2) {
-  value = value !== null && value !== void 0 ? value : "";
+  value ??= "";
   return value.padStart(maxLength, "0");
 }
 function hoursMinutesStringToMinutes(valueString, extraForgiving = false) {
@@ -3182,12 +3182,12 @@ function parseTimeToNumber(value) {
 function forgivingParseTimeToNumber(value) {
   return parseTimeToNumberUsingConfig(value, true);
 }
-var HoursMinutesValidatorUtils = class HoursMinutesValidatorUtils2 {
+var HoursMinutesValidatorUtils = class {
   static validate(value, config, name, compare) {
     if (value === "") return true;
     const limit = config[name];
     if (!isSet(limit)) return false;
-    const parseFunction = HoursMinutesValidatorUtils2.getParserFromConfig(config);
+    const parseFunction = this.getParserFromConfig(config);
     const limitAsNumber = parseFunction(String(config[name]));
     if (!isSet(limitAsNumber)) throw new Error(`config.${name} must be a number`);
     const valueAsNumber = parseFunction(value);
