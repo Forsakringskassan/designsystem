@@ -76,7 +76,7 @@
     "esbuild": "0.28.1",
     "vite": "8.1.5",
     "vitest": "4.1.10",
-    "vue": "3.5.38",
+    "vue": "3.5.40",
     "vue-router": "5.2.0"
   },
   "peerDependencies": {
