@@ -23,7 +23,7 @@
     "@fkui/icon-lib-default": "6.52.2",
     "@fkui/theme-default": "6.52.2",
     "@fkui/vue": "6.52.2",
-    "vue": "3.5.38",
+    "vue": "3.5.40",
     "vue-router": "5.2.0"
   },
   "devDependencies": {

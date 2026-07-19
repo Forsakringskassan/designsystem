@@ -39,7 +39,7 @@ import { usePopupError } from "./use-popup-error";
 import { useSelectable } from "./use-selectable";
 import { useTabstop } from "./use-tabstop";
 
-const selectedRows = defineModel<T[]>("selectedRows", { default: [] });
+const selectedRows = defineModel<T[]>("selectedRows", { default: () => [] });
 
 const {
     columns: rawColumns,
