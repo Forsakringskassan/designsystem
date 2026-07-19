@@ -1885,7 +1885,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
     _ctx.hasError ? (_openBlock2(), _createBlock(_resolveDynamicComponent(_ctx.errorComponent), {
       key: 0,
       payload: _ctx.payload
-    }, null, 8, ["payload"])) : _ctx.defaultComponent ? (_openBlock2(), _createBlock(_resolveDynamicComponent(_ctx.defaultComponent), { key: 1 })) : _renderSlot(_ctx.$slots, "default", { key: 2 })
+    }, null, 8, ["payload"])) : _ctx.defaultComponent ? (_openBlock2(), _createBlock(_resolveDynamicComponent(_ctx.defaultComponent), { key: 1 })) : _renderSlot(_ctx.$slots, "default", {}, void 0, void 0, 2)
   ]);
 }
 
