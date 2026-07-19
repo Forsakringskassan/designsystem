@@ -41,7 +41,7 @@
   "devDependencies": {
     "@fkui/icon-lib-default": "6.52.2",
     "@fkui/theme-default": "6.52.2",
-    "autoprefixer": "10.5.3",
+    "autoprefixer": "10.5.4",
     "cssnano": "8.0.2",
     "postcss": "8.5.19",
     "postcss-var-func-fallback": "3.0.1"
