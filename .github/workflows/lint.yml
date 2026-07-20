@@ -49,7 +49,7 @@ jobs:
             - name: Install Dependencies
               run: npm ci
             - name: npm-pkg-lint
-              uses: ext/npm-pkg-lint@d047a5c228f2b4b8816414b024187812a5bb010d # v5.1.12
+              uses: ext/npm-pkg-lint@62ea2b6ee639fc990406b131e8822e48c3da0889 # v5.2.0
               with:
                   folders: packages/*
                   allow-dependencies: fk-icons
