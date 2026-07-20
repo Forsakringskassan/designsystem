@@ -52,7 +52,7 @@ function normalizeFolders(folders) {
     if (Array.isArray(folders)) {
         return folders.map((it) => {
             if (it.includes(":")) {
-                const [folder, url] = it.split(":");
+                const [folder, url] = it.split(":", 2);
                 return [`/${url}`, folder];
             }
             return ["/", it];
