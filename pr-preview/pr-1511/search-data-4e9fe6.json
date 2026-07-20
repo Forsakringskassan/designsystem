@@ -228,9 +228,6 @@
     "Jest",
     "testverktyg",
     "jest",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -290,6 +287,9 @@
     "TranslationService",
     "I18nextProvider",
     "TranslationService",
+    "EventBus",
+    "EventBus",
+    "services",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -617,16 +617,6 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
-    "FTablePageObject",
-    "cypress",
-    "FPaginatorPageObject",
-    "cypress",
-    "FListPageObject",
-    "cypress",
-    "FExpandableParagraphPageObject",
-    "cypress",
-    "FDefinitionListPageObject",
-    "cypress",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -643,6 +633,16 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
+    "FTablePageObject",
+    "cypress",
+    "FPaginatorPageObject",
+    "cypress",
+    "FListPageObject",
+    "cypress",
+    "FExpandableParagraphPageObject",
+    "cypress",
+    "FDefinitionListPageObject",
+    "cypress",
     "Sortera och filtrera i tabell",
     "tabell",
     "Sortera och filtrera i tabell (kod)",
@@ -1304,14 +1304,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1442,6 +1434,14 @@
       "title": "I18nextProvider",
       "terms": [
         "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -2264,41 +2264,6 @@
       ]
     },
     {
-      "url": "functions/cypress/pageobjects/ftablepageobject.html",
-      "title": "FTablePageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
-      "title": "FPaginatorPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/flistpageobject.html",
-      "title": "FListPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
-      "title": "FExpandableParagraphPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
-      "title": "FDefinitionListPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
       "url": "functions/date/f-year/index.html",
       "title": "FYear",
       "terms": [
@@ -2374,6 +2339,41 @@
       "url": "functions/date/f-year/f-date-next.html",
       "title": "FYear: next() method",
       "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/ftablepageobject.html",
+      "title": "FTablePageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
+      "title": "FPaginatorPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/flistpageobject.html",
+      "title": "FListPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
+      "title": "FExpandableParagraphPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
+      "title": "FDefinitionListPageObject",
+      "terms": [
+        "cypress"
+      ]
     },
     {
       "url": "components/table-and-list/table/sort-filter.html",
@@ -3076,63 +3076,63 @@
     "228": 60,
     "229": 60,
     "230": 60,
-    "231": 61,
+    "231": 60,
     "232": 61,
     "233": 61,
     "234": 61,
     "235": 62,
     "236": 62,
     "237": 62,
-    "238": 63,
-    "239": 63,
-    "240": 63,
-    "241": 63,
-    "242": 63,
-    "243": 63,
+    "238": 62,
+    "239": 62,
+    "240": 62,
+    "241": 62,
+    "242": 62,
+    "243": 62,
     "244": 63,
     "245": 63,
     "246": 63,
     "247": 64,
     "248": 64,
     "249": 64,
-    "250": 65,
-    "251": 65,
+    "250": 64,
+    "251": 64,
     "252": 65,
     "253": 65,
     "254": 65,
-    "255": 66,
-    "256": 66,
-    "257": 66,
-    "258": 66,
-    "259": 66,
-    "260": 66,
-    "261": 66,
-    "262": 66,
-    "263": 66,
+    "255": 65,
+    "256": 65,
+    "257": 65,
+    "258": 65,
+    "259": 65,
+    "260": 65,
+    "261": 65,
+    "262": 65,
+    "263": 65,
     "264": 66,
     "265": 66,
     "266": 66,
-    "267": 67,
-    "268": 67,
-    "269": 67,
-    "270": 67,
-    "271": 67,
+    "267": 66,
+    "268": 66,
+    "269": 66,
+    "270": 66,
+    "271": 66,
     "272": 67,
-    "273": 67,
-    "274": 67,
-    "275": 68,
+    "273": 68,
+    "274": 68,
+    "275": 69,
     "276": 69,
-    "277": 69,
+    "277": 70,
     "278": 70,
-    "279": 70,
+    "279": 71,
     "280": 71,
-    "281": 71,
+    "281": 72,
     "282": 72,
-    "283": 72,
+    "283": 73,
     "284": 73,
-    "285": 73,
+    "285": 74,
     "286": 74,
-    "287": 74,
+    "287": 75,
     "288": 75,
     "289": 75,
     "290": 76,
@@ -3465,28 +3465,28 @@
     "617": 178,
     "618": 178,
     "619": 179,
-    "620": 179,
-    "621": 180,
-    "622": 180,
-    "623": 181,
-    "624": 181,
-    "625": 182,
-    "626": 182,
-    "627": 183,
-    "628": 183,
-    "629": 184,
-    "630": 185,
-    "631": 186,
-    "632": 187,
-    "633": 188,
-    "634": 189,
-    "635": 190,
-    "636": 191,
-    "637": 192,
-    "638": 193,
-    "639": 194,
-    "640": 195,
-    "641": 196,
+    "620": 180,
+    "621": 181,
+    "622": 182,
+    "623": 183,
+    "624": 184,
+    "625": 185,
+    "626": 186,
+    "627": 187,
+    "628": 188,
+    "629": 189,
+    "630": 190,
+    "631": 191,
+    "632": 192,
+    "633": 193,
+    "634": 193,
+    "635": 194,
+    "636": 194,
+    "637": 195,
+    "638": 195,
+    "639": 196,
+    "640": 196,
+    "641": 197,
     "642": 197,
     "643": 198,
     "644": 198,
