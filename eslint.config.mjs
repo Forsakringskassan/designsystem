@@ -148,6 +148,19 @@ export default [
     },
 
     {
+        /* mimic how @vue/eslint-config-typescript disables these typecheckinging rules
+         * https://github.com/vuejs/eslint-config-typescript/blob/ff3e8c2a75afda59f16dc5dfd5f1b6e863cb1a2c/src/internals.ts#L153-L168 */
+        name: "local/vue-type-checking",
+        files: ["**/src/{main,router}.ts"],
+        rules: {
+            /* gives error on `createApp()` */
+            "@typescript-eslint/no-unsafe-argument": "off",
+            /* gives error in router configuration */
+            "@typescript-eslint/no-unsafe-assignment": "off",
+        },
+    },
+
+    {
         name: "technical-debt/docs",
         files: ["docs/**/*"],
         rules: {

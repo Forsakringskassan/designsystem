@@ -28,6 +28,7 @@ export async function confirmModal(
         { label: texts.confirm, event: "confirm", type: "primary" },
         { label: texts.dismiss, event: "dismiss", type: "secondary" },
     ];
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- false positives, the proper type of vue components are not passed to typescript-eslint */
     const { reason } = await openModal(callingInstance, FConfirmModal, {
         props: {
             heading: texts.heading,
