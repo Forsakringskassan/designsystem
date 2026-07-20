@@ -7,10 +7,10 @@
         "rootDir": "../../",
         "paths": {
             "@fkui/table-tests-examples/*": [
-                "../../packages/vue/src/components/FTable/tests/*.vue"
+                "../../packages/vue/src/components/FTable/tests/*"
             ],
             "@fkui/table-docs-examples/*": [
-                "../../packages/vue/src/components/FTable/docs/*.vue"
+                "../../packages/vue/src/components/FTable/docs/*"
             ]
         }
     },

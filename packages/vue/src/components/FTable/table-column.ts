@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment -- false positives, the proper type of vue components are not passed to typescript-eslint */
+
 import ITableAnchor from "./ITableAnchor.vue";
 import ITableButton from "./ITableButton.vue";
 import ITableCheckbox from "./ITableCheckbox.vue";
