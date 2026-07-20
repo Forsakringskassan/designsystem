@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-error-icon.vue:FLabelPageObject-error-icon-7303e9.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-error-message.vue:FLabelPageObject-error-message-b7dcc9.js
 import { defineComponent as _defineComponent } from "vue";
 import { FButton, FTextField, FValidationForm } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createVNode as _createVNode } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FLabelPageObject-error-icon",
+  __name: "FLabelPageObject-error-message",
   setup(__props, { expose: __expose }) {
     __expose();
     const __returned__ = { get FButton() {
@@ -94,7 +94,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-7303e9"
+  selector: "#example-b7dcc9"
 });
 export {
   render
