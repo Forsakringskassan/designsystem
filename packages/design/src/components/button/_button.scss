@@ -14,6 +14,7 @@ $button--primary: (
     color--focus: $button-primary-color-text-focus,
     shadow: var(--f-button-shadow),
     shadow--hover: var(--f-button-shadow-hover),
+    shadow--active: var(--f-button-shadow-active),
     padding-top: core.densify(var(--f-button-primary-padding-top)),
     padding-right: var(--f-button-primary-padding-right),
     padding-bottom: core.densify(var(--f-button-primary-padding-bottom)),
@@ -27,12 +28,15 @@ $button--secondary: (
     background-color--active: $button-secondary-color-background-active,
     background-color--focus: $button-secondary-color-background-focus,
     border-color: $button-secondary-color-border-default,
+    border-color--hover: $button-secondary-color-border-hover,
+    border-color--active: $button-secondary-color-border-active,
     color: $button-secondary-color-text-default,
     color--hover: $button-secondary-color-text-hover,
     color--active: $button-secondary-color-text-active,
     color--focus: $button-secondary-color-text-focus,
     shadow: var(--f-button-shadow),
     shadow--hover: var(--f-button-shadow-hover),
+    shadow--active: var(--f-button-shadow-active),
     padding-top: core.densify(var(--f-button-secondary-padding-top)),
     padding-right: var(--f-button-secondary-padding-right),
     padding-bottom: core.densify(var(--f-button-secondary-padding-bottom)),
@@ -129,7 +133,6 @@ $button--tertiary: (
     min-width: var(--f-button-min-width);
     position: relative;
     text-align: center;
-    transition: background-color var(--f-animation-duration-medium) ease-out;
 
     @include core.breakpoint-down(sm) {
         max-width: var(--f-width-full);
