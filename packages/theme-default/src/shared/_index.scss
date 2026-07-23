@@ -96,6 +96,7 @@
         0 0 0 6px var(--fkds-focus-indicator-color-background);
 
     // Effect related variables
+    --f-animation-duration-extra-short: 100ms;
     --f-animation-duration-short: 150ms;
     --f-animation-duration-medium: 350ms;
     --f-animation-duration-long: 500ms;
@@ -114,12 +115,14 @@
     $_f-button-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     --f-button-shadow: #{$_f-button-shadow};
     --f-button-shadow-hover: #{$_f-button-shadow};
+    --f-button-shadow-active: none;
     --f-button-min-width: 9.5rem;
     --f-button-letter-spacing: 0.01rem;
     --f-button-default-line-height: 1.5rem;
     --f-button-discrete-radius-hover: none;
     --f-button-tertiary-table-column-action-icon-margin: 0 8px 0 2px;
     --f-button-tertiary-table-column-action-margin: 0 0 0 0.5rem;
+    --f-button-animation-curve: ease-out;
 
     $_f-button-default-padding-top: 1rem;
     $_f-button-default-padding-right: 1.5rem;
