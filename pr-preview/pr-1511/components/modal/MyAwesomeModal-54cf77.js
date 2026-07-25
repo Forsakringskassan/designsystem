@@ -28,13 +28,11 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FModalUsage.vue:FModalUsage-754f64.js
-import { defineComponent as _defineComponent2 } from "vue";
-
-// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/examples/MyAwesomeModal.vue?type=script
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/MyAwesomeModal.vue:MyAwesomeModal-54cf77.js
 import { defineComponent as _defineComponent } from "vue";
 import { FButton, FModal } from "@fkui/vue";
-var MyAwesomeModal_default = /* @__PURE__ */ _defineComponent({
+import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
+var exampleComponent = /* @__PURE__ */ _defineComponent({
   __name: "MyAwesomeModal",
   emits: ["close"],
   setup(__props, { expose: __expose, emit: __emit }) {
@@ -49,9 +47,6 @@ var MyAwesomeModal_default = /* @__PURE__ */ _defineComponent({
     return __returned__;
   }
 });
-
-// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/examples/MyAwesomeModal.vue?type=template
-import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var _hoisted_1 = { class: "button-group" };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FModal"], {
@@ -96,54 +91,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
   });
 }
-
-// packages/vue/src/components/FModal/examples/MyAwesomeModal.vue
-MyAwesomeModal_default.render = render;
-MyAwesomeModal_default.__file = "packages/vue/src/components/FModal/examples/MyAwesomeModal.vue";
-var MyAwesomeModal_default2 = MyAwesomeModal_default;
-
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FModalUsage.vue:FModalUsage-754f64.js
-import { FButton as FButton2, useModal } from "@fkui/vue";
-import { createTextVNode as _createTextVNode2, withCtx as _withCtx2, createVNode as _createVNode2, openBlock as _openBlock2, createElementBlock as _createElementBlock } from "vue";
-var exampleComponent = /* @__PURE__ */ _defineComponent2({
-  __name: "FModalUsage",
-  setup(__props, { expose: __expose }) {
-    __expose();
-    const { openModal } = useModal();
-    async function onClick() {
-      await openModal(MyAwesomeModal_default2);
-    }
-    const __returned__ = { openModal, onClick, get FButton() {
-      return FButton2;
-    } };
-    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
-    return __returned__;
-  }
-});
-function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock2(), _createElementBlock("div", null, [
-    _createVNode2($setup["FButton"], {
-      size: "medium",
-      variant: "secondary",
-      onClick: $setup.onClick
-    }, {
-      default: _withCtx2(() => [..._cache[0] || (_cache[0] = [
-        _createTextVNode2(
-          "Open",
-          -1
-          /* CACHED */
-        )
-      ])]),
-      _: 1
-      /* STABLE */
-    })
-  ]);
-}
-exampleComponent.render = render2;
+exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-754f64"
+  selector: "#example-54cf77"
 });
 export {
-  render2 as render
+  render
 };
