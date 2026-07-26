@@ -84,7 +84,9 @@ export function normalizeTextColumn<T, K extends keyof T>(
 ): Omit<NormalizedTableColumnText<T, K>, OmittedNormalizedColumnProperties> {
     const type = column.type;
     const config = inputFieldConfig[type];
+    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt (real bug), "this" is never bound so it will never work as intended, plus the typings are wrong */
     const parser = column.parser ?? config.parser;
+    /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt (real bug), "this" is never bound so it will never work as intended, plus the typings are wrong */
     const formatter = column.formatter ?? config.formatter;
     return {
         type,
