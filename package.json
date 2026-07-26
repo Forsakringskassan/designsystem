@@ -99,6 +99,7 @@
     "@types/estree": "1.0.9",
     "@types/lodash": "4.17.24",
     "@types/node": "20.19.43",
+    "@typescript/native": "npm:typescript@7.0.2",
     "@vue/server-renderer": "3.5.40",
     "artifact-size-analyzer": "1.2.4",
     "autoprefixer": "10.5.4",
@@ -127,7 +128,7 @@
     "rimraf": "6.1.3",
     "sass": "1.101.6",
     "typedoc": "0.28.20",
-    "typescript": "6.0.3",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
     "vite": "8.1.5",
     "vue": "3.5.40",
     "vue-tsc": "3.3.8"
