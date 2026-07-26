@@ -43,12 +43,13 @@
     "@html-validate/release-scripts": "7.5.0",
     "@types/node": "22.20.1",
     "@types/yargs": "17.0.35",
+    "@typescript/native": "npm:typescript@7.0.2",
     "dedent": "1.7.2",
     "esbuild": "0.28.1",
     "memfs": "4.64.0",
     "postcss": "8.5.22",
     "stream-buffers": "3.0.3",
-    "typescript": "6.0.3"
+    "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "peerDependencies": {
     "postcss": "^8.0.0"
