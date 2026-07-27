@@ -6,7 +6,7 @@
  * @param selector - The selector for the FCrudDataset component.
  * @returns An object with selector methods for the FCrudDataset component.
  */
-export function FCrudDatasetSelectors(selector: string = ".crud-dataset") {
+export function FCrudDatasetSelectors(selector: string = ":scope") {
     return Object.freeze({
         /**
          * The base selector for the component.

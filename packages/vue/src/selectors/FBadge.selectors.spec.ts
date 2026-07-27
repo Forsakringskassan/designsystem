@@ -7,20 +7,25 @@ it("should use default selector when no selector was given", () => {
     expect.assertions(2);
     const wrapper = mount(FBadge, {
         props: { status: "info" },
-        slots: { default: "3" },
+        slots: { default: "lorem ipsum" },
     });
     const { selector } = FBadgeSelectors();
     const root = wrapper.get(selector);
-    expect(selector).toBe(".badge");
+    expect(selector).toBe(":scope");
     expect(root.classes()).toContain("badge");
 });
 
 it("should use explicit selector when custom selector was given", () => {
     expect.assertions(2);
-    const wrapper = mount(FBadge, {
-        attrs: { "data-test": "my-badge" },
-        props: { status: "info" },
-        slots: { default: "3" },
+    const wrapper = mount({
+        components: { FBadge },
+        template: /* HTML */ `
+            <div>
+                <f-badge data-test="my-badge" status="info">
+                    lorem ipsum
+                </f-badge>
+            </div>
+        `,
     });
     const { selector } = FBadgeSelectors('[data-test="my-badge"]');
     const root = wrapper.get(selector);

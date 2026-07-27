@@ -6,7 +6,7 @@
  * @param selector - The root selector of the FPaginator component.
  * @returns An object with selector methods for the FPaginator component.
  */
-export function FPaginatorSelectors(selector: string = ".paginator") {
+export function FPaginatorSelectors(selector: string = ":scope") {
     return Object.freeze({
         /**
          * The base selector for the component.

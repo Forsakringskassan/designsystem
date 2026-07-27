@@ -19,7 +19,7 @@
  * @param selector - The selector for the XExample component.
  * @returns An object with selector methods for the XExample component.
  */
-export function XExampleSelectors(selector: string = ".example") {
+export function XExampleSelectors(selector: string = ":scope") {
     return Object.freeze({
         /**
          * The base selector for the component.

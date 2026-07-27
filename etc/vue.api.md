@@ -16,6 +16,7 @@ import { ComponentProvideOptions } from 'vue';
 import { ComponentPublicInstance } from 'vue';
 import { ComputedRef } from 'vue';
 import { DefineComponent } from 'vue';
+import { Directive } from 'vue';
 import { DistributeRef } from '@vue/reactivity';
 import { ExtractPropTypes } from 'vue';
 import { ExtractPublicPropTypes } from 'vue';
@@ -1635,6 +1636,9 @@ export enum TableScroll {
 
 // @public
 export function tableScrollClasses(val: TableScroll): string[];
+
+// @internal (undocumented)
+export const TestDirective: Directive<HTMLElement, string>;
 
 // @public (undocumented)
 export const TestPlugin: Plugin_2;

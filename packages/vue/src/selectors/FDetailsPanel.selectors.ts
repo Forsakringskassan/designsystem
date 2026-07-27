@@ -9,9 +9,7 @@
  * @param selector - The selector for the FDetailsPanel component.
  * @returns An object with selector methods for the FDetailsPanel component.
  */
-export function FDetailsPanelSelectors(
-    selector: string = ".panel.panel--details",
-) {
+export function FDetailsPanelSelectors(selector: string = ":scope") {
     return Object.freeze({
         /**
          * The base selector for the component.

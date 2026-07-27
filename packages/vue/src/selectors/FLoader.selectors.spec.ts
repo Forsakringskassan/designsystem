@@ -8,14 +8,19 @@ it("should use default selector when no selector was given", () => {
     const wrapper = mount(FLoader);
     const { selector } = FLoaderSelectors();
     const root = wrapper.get(selector);
-    expect(selector).toBe(".loader");
+    expect(selector).toBe(":scope");
     expect(root.classes()).toContain("loader");
 });
 
 it("should use explicit selector when custom selector was given", () => {
     expect.assertions(2);
-    const wrapper = mount(FLoader, {
-        attrs: { "data-test": "my-loader" },
+    const wrapper = mount({
+        components: { FLoader },
+        template: /* HTML */ `
+            <div>
+                <f-loader data-test="my-loader"></f-loader>
+            </div>
+        `,
     });
     const { selector } = FLoaderSelectors('[data-test="my-loader"]');
     expect(selector).toBe('[data-test="my-loader"]');

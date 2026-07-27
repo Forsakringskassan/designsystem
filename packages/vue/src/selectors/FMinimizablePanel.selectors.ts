@@ -10,7 +10,7 @@
  * @param selector - The selector for the FMinimizablePanel component.
  * @returns An object with selector methods for the FMinimizablePanel component.
  */
-export function FMinimizablePanelSelectors(selector: string = ".panel") {
+export function FMinimizablePanelSelectors(selector: string = ":scope") {
     return Object.freeze({
         /**
          * The base selector for the component.

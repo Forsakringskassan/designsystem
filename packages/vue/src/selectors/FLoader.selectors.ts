@@ -6,7 +6,7 @@
  * @param selector - The selector for the FLoader component.
  * @returns An object with selector methods for the FLoader component.
  */
-export function FLoaderSelectors(selector: string = ".loader") {
+export function FLoaderSelectors(selector: string = ":scope") {
     return Object.freeze({
         /**
          * The base selector for the component.

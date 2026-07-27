@@ -13,7 +13,10 @@ function throwErrorIfEmpty(value: unknown): never | void {
     }
 }
 
-const TestDirective: Directive<HTMLElement, string> = {
+/**
+ * @internal
+ */
+export const TestDirective: Directive<HTMLElement, string> = {
     mounted(el: HTMLElement, { value }: DirectiveBinding): void {
         throwErrorIfEmpty(value);
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */

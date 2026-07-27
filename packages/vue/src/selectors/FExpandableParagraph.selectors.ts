@@ -6,9 +6,7 @@
  * @param selector - The selector for the FExpandableParagraph component.
  * @returns An object with selector methods for the FExpandableParagraph component.
  */
-export function FExpandableParagraphSelectors(
-    selector: string = ".expandable-paragraph",
-) {
+export function FExpandableParagraphSelectors(selector: string = ":scope") {
     return Object.freeze({
         /**
          * The base selector for the component.

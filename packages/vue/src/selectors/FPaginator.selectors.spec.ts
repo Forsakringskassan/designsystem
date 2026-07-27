@@ -10,15 +10,19 @@ it("should use default selector when no selector was given", () => {
     });
     const { selector } = FPaginatorSelectors();
     const root = wrapper.get(selector);
-    expect(selector).toBe(".paginator");
+    expect(selector).toBe(":scope");
     expect(root.classes()).toContain("paginator");
 });
 
 it("should use explicit selector when custom selector was given", () => {
     expect.assertions(2);
-    const wrapper = mount(FPaginator, {
-        props: { currentPage: 3, numberOfPages: 10 },
-        attrs: { "data-test": "foo" },
+    const wrapper = mount({
+        components: { FPaginator },
+        template: /* HTML */ `
+            <div>
+                <f-paginator data-test="foo"></f-paginator>
+            </div>
+        `,
     });
     const { selector } = FPaginatorSelectors('[data-test="foo"]');
     const root = wrapper.get(selector);

@@ -6,7 +6,7 @@
  * @param selector - The selector for the FBadge component.
  * @returns An object with selector methods for the FBadge component.
  */
-export function FBadgeSelectors(selector: string = ".badge") {
+export function FBadgeSelectors(selector: string = ":scope") {
     return Object.freeze({
         /**
          * The base selector for the component.
