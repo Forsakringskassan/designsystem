@@ -2,7 +2,7 @@ import { defineComponent } from "vue";
 import { config, mount } from "@vue/test-utils";
 import { expect, it } from "vitest";
 import { FCrudDataset } from "../components";
-import { TranslationPlugin } from "../plugins";
+import { TestDirective, TranslationPlugin } from "../plugins";
 import { FCrudDatasetSelectors } from "./FCrudDataset.selectors";
 
 config.global.plugins.push(TranslationPlugin);
@@ -30,6 +30,24 @@ const TestComponent = defineComponent({
     },
 });
 
+const TestComponentWithDirective = defineComponent({
+    components: { FCrudDataset },
+    directives: { test: TestDirective },
+    template: /* HTML */ `
+        <f-crud-dataset v-test="'crud'" v-model="items" key-attribute="id">
+            <template #default="{ updateItem, deleteItem }">
+                <span>item</span>
+            </template>
+            <template #add="{ item }">
+                <span>add</span>
+            </template>
+        </f-crud-dataset>
+    `,
+    data() {
+        return { items: [{ id: 1, name: "Alice" }] };
+    },
+});
+
 it("should use default selector when no selector was given", () => {
     expect.assertions(2);
     const wrapper = mount(FCrudDataset, {
@@ -44,7 +62,15 @@ it("should use default selector when no selector was given", () => {
     expect(root.classes()).toContain("crud-dataset");
 });
 
-it("should use explicit selector when custom selector was given", () => {
+it("should handle explicit selector (v-test directive)", () => {
+    expect.assertions(2);
+    const wrapper = mount(TestComponentWithDirective);
+    const { selector } = FCrudDatasetSelectors('[data-test="crud"]');
+    expect(selector).toBe('[data-test="crud"]');
+    expect(wrapper.find(selector).exists()).toBeTruthy();
+});
+
+it("should handle explicit selector (data-test attribute)", () => {
     expect.assertions(2);
     const wrapper = mount(TestComponent);
     const { selector } = FCrudDatasetSelectors('[data-test="crud"]');

@@ -1,6 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { expect, it } from "vitest";
 import { FPaginator } from "../components";
+import { TestDirective } from "../plugins";
 import { FPaginatorSelectors } from "./FPaginator.selectors";
 
 it("should use default selector when no selector was given", () => {
@@ -14,7 +15,24 @@ it("should use default selector when no selector was given", () => {
     expect(root.classes()).toContain("paginator");
 });
 
-it("should use explicit selector when custom selector was given", () => {
+it("should handle explicit selector (v-test directive)", () => {
+    expect.assertions(2);
+    const wrapper = mount({
+        components: { FPaginator },
+        directives: { test: TestDirective },
+        template: /* HTML */ `
+            <div>
+                <f-paginator v-test="'foo'"></f-paginator>
+            </div>
+        `,
+    });
+    const { selector } = FPaginatorSelectors('[data-test="foo"]');
+    const root = wrapper.get(selector);
+    expect(selector).toBe('[data-test="foo"]');
+    expect(root.classes()).toContain("paginator");
+});
+
+it("should handle explicit selector (data-test attribute)", () => {
     expect.assertions(2);
     const wrapper = mount({
         components: { FPaginator },

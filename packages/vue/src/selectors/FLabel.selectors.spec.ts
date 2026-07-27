@@ -1,6 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { expect, it } from "vitest";
 import { FLabel } from "../components";
+import { TestDirective } from "../plugins";
 import { FLabelSelectors } from "./FLabel.selectors";
 
 it("should use default selector when no selector was given", () => {
@@ -14,7 +15,24 @@ it("should use default selector when no selector was given", () => {
     expect(root.classes()).toContain("label");
 });
 
-it("should use explicit selector when custom selector was given", () => {
+it("should handle explicit selector (v-test directive)", () => {
+    expect.assertions(2);
+    const wrapper = mount({
+        components: { FLabel },
+        directives: { test: TestDirective },
+        template: /* HTML */ `
+            <div>
+                <f-label v-test="'my-label'"></f-label>
+            </div>
+        `,
+    });
+    const { selector } = FLabelSelectors('[data-test="my-label"]');
+    const root = wrapper.get(selector);
+    expect(selector).toBe('[data-test="my-label"]');
+    expect(root.classes()).toContain("label");
+});
+
+it("should handle explicit selector (data-test attribute)", () => {
     expect.assertions(2);
     const wrapper = mount({
         components: { FLabel },
