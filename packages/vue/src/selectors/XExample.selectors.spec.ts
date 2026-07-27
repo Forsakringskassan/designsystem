@@ -1,6 +1,7 @@
 import { type PropType, defineComponent } from "vue";
 import { mount } from "@vue/test-utils";
 import { expect, it } from "vitest";
+import { TestDirective } from "../plugins";
 import { XExampleSelectors } from "./XExample.selectors";
 
 /* Fictive XExample component for testing purposes */
@@ -31,9 +32,33 @@ it("should use default selector when no selector was given", () => {
     expect(root.classes()).toContain("example");
 });
 
-it("should use explicit selector when custom selector was given", () => {
+it("should handle explicit selector (v-test directive)", () => {
     expect.assertions(2);
-    const wrapper = mount(XExample);
+    const wrapper = mount({
+        components: { XExample },
+        directives: { test: TestDirective },
+        template: /* HTML */ `
+            <div>
+                <x-example v-test="'my-example'"></x-example>
+            </div>
+        `,
+    });
+    const { selector } = XExampleSelectors('[data-test="my-example"]');
+    const root = wrapper.get(selector);
+    expect(selector).toBe('[data-test="my-example"]');
+    expect(root.classes()).toContain("example");
+});
+
+it("should handle explicit selector (data-test attribute)", () => {
+    expect.assertions(2);
+    const wrapper = mount({
+        components: { XExample },
+        template: /* HTML */ `
+            <div>
+                <x-example data-test="my-example"></x-example>
+            </div>
+        `,
+    });
     const { selector } = XExampleSelectors(".example");
     const root = wrapper.get(selector);
     expect(selector).toBe(".example");

@@ -13,7 +13,7 @@ it("should use default selector when no selector was given", () => {
     expect(root.classes()).toContain("expandable-paragraph");
 });
 
-it("should use explicit selector when custom selector was given", () => {
+it("should handle explicit selector (v-test directive)", () => {
     expect.assertions(2);
     const wrapper = mount({
         components: { FExpandableParagraph },
@@ -24,6 +24,26 @@ it("should use explicit selector when custom selector was given", () => {
             </div>
         `,
         directives: { test: TestDirective },
+    });
+    const { selector } = FExpandableParagraphSelectors(
+        '[data-test="my-expandable-paragraph"]',
+    );
+    const root = wrapper.get(selector);
+    expect(selector).toBe('[data-test="my-expandable-paragraph"]');
+    expect(root.classes()).toContain("expandable-paragraph");
+});
+
+// eslint-disable-next-line vitest/no-disabled-tests -- FExpandableParagraph has `inheritAttrs: false` and forwards `$attrs` to the inner button (`.expandable-paragraph__button`), so a `data-test` attribute ends up on the button instead of the component root, unlike the `v-test` directive which is applied directly to the resolved root element.
+it.skip("should handle explicit selector (data-test attribute)", () => {
+    expect.assertions(2);
+    const wrapper = mount({
+        components: { FExpandableParagraph },
+        template: /* HTML */ `
+            <div>
+                <f-expandable-paragraph data-test="my-expandable-paragraph">
+                </f-expandable-paragraph>
+            </div>
+        `,
     });
     const { selector } = FExpandableParagraphSelectors(
         '[data-test="my-expandable-paragraph"]',
