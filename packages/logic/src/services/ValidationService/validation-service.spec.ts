@@ -231,12 +231,14 @@ describe("isValid()", () => {
     it("should return true if element is valid", async () => {
         expect.assertions(1);
         const element = createElement({ valid: true });
+        document.body.append(element);
         expect(await ValidationService.isValid(element)).toBeTruthy();
     });
 
     it("should return false if element has error", async () => {
         expect.assertions(1);
         const element = createElement({ valid: false });
+        document.body.append(element);
         expect(await ValidationService.isValid(element)).toBeFalsy();
     });
 
@@ -247,6 +249,7 @@ describe("isValid()", () => {
         const b = createElement({ valid: true });
         fieldset.append(a);
         fieldset.append(b);
+        document.body.append(fieldset);
         expect(await ValidationService.isValid(fieldset)).toBeTruthy();
     });
 
@@ -257,6 +260,7 @@ describe("isValid()", () => {
         const b = createElement({ valid: false });
         fieldset.append(a);
         fieldset.append(b);
+        document.body.append(fieldset);
         expect(await ValidationService.isValid(fieldset)).toBeFalsy();
     });
 
@@ -267,6 +271,7 @@ describe("isValid()", () => {
         const b = createElement({ valid: true });
         div.append(a);
         div.append(b);
+        document.body.append(div);
         expect(await ValidationService.isValid(div)).toBeTruthy();
     });
 
@@ -277,20 +282,29 @@ describe("isValid()", () => {
         const b = createElement({ valid: false });
         div.append(a);
         div.append(b);
+        document.body.append(div);
         expect(await ValidationService.isValid(div)).toBeFalsy();
     });
 
     it("should return true if all elements are valid", async () => {
         expect.assertions(1);
+        const div = document.createElement("div");
         const a = createElement({ valid: true });
         const b = createElement({ valid: true });
+        div.append(a);
+        div.append(b);
+        document.body.append(div);
         expect(await ValidationService.isValid([a, b])).toBeTruthy();
     });
 
     it("should return false if not all elements are valid", async () => {
         expect.assertions(1);
+        const div = document.createElement("div");
         const a = createElement({ valid: true });
         const b = createElement({ valid: false });
+        div.append(a);
+        div.append(b);
+        document.body.append(div);
         expect(await ValidationService.isValid([a, b])).toBeFalsy();
     });
 
@@ -301,6 +315,7 @@ describe("isValid()", () => {
         const bar = createElement({ valid: false, id: "bar" });
         root.append(foo);
         root.append(bar);
+        document.body.append(root);
         expect(await ValidationService.isValid("foo", root)).toBeTruthy();
         expect(await ValidationService.isValid("bar", root)).toBeFalsy();
     });
@@ -312,6 +327,7 @@ describe("isValid()", () => {
         const bar = createElement({ valid: true, id: "bar" });
         root.append(foo);
         root.append(bar);
+        document.body.append(root);
         expect(
             await ValidationService.isValid(["foo", "bar"], root),
         ).toBeTruthy();
@@ -334,6 +350,7 @@ describe("validateElement", () => {
     beforeEach(() => {
         inputElement = document.createElement("input");
         inputElement.id = "test-element";
+        document.body.append(inputElement);
     });
 
     it("should dispatch ValidityEvent to element by reference", async () => {
