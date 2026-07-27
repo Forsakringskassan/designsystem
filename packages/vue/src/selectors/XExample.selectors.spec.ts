@@ -27,14 +27,14 @@ it("should use default selector when no selector was given", () => {
     const wrapper = mount(XExample);
     const { selector } = XExampleSelectors();
     const root = wrapper.get(selector);
-    expect(selector).toBe(".example");
+    expect(selector).toBe(":scope");
     expect(root.classes()).toContain("example");
 });
 
 it("should use explicit selector when custom selector was given", () => {
     expect.assertions(2);
     const wrapper = mount(XExample);
-    const { selector } = XExampleSelectors();
+    const { selector } = XExampleSelectors(".example");
     const root = wrapper.get(selector);
     expect(selector).toBe(".example");
     expect(root.classes()).toContain("example");

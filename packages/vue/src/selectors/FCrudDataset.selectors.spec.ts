@@ -1,14 +1,22 @@
 import { defineComponent } from "vue";
-import { mount } from "@vue/test-utils";
+import { config, mount } from "@vue/test-utils";
 import { expect, it } from "vitest";
 import { FCrudDataset } from "../components";
 import { TranslationPlugin } from "../plugins";
 import { FCrudDatasetSelectors } from "./FCrudDataset.selectors";
 
+config.global.plugins.push(TranslationPlugin);
+config.global.stubs = {
+    ...config.global.stubs,
+    "f-icon": true,
+    "f-form-modal": true,
+    "f-confirm-modal": true,
+};
+
 const TestComponent = defineComponent({
     components: { FCrudDataset },
     template: /* HTML */ `
-        <f-crud-dataset v-model="items" key-attribute="id">
+        <f-crud-dataset data-test="crud" v-model="items" key-attribute="id">
             <template #default="{ updateItem, deleteItem }">
                 <span>item</span>
             </template>
@@ -22,28 +30,23 @@ const TestComponent = defineComponent({
     },
 });
 
-const defaultMountOptions = {
-    global: {
-        plugins: [TranslationPlugin],
-        stubs: ["f-icon", "f-form-modal", "f-confirm-modal"],
-    },
-};
-
 it("should use default selector when no selector was given", () => {
     expect.assertions(2);
-    const wrapper = mount(TestComponent, defaultMountOptions);
+    const wrapper = mount(FCrudDataset, {
+        slots: {
+            default: "item",
+            add: "add",
+        },
+    });
     const { selector } = FCrudDatasetSelectors();
     const root = wrapper.get(selector);
-    expect(selector).toBe(".crud-dataset");
+    expect(selector).toBe(":scope");
     expect(root.classes()).toContain("crud-dataset");
 });
 
 it("should use explicit selector when custom selector was given", () => {
     expect.assertions(2);
-    const wrapper = mount(TestComponent, {
-        ...defaultMountOptions,
-        attrs: { "data-test": "crud" },
-    });
+    const wrapper = mount(TestComponent);
     const { selector } = FCrudDatasetSelectors('[data-test="crud"]');
     expect(selector).toBe('[data-test="crud"]');
     expect(wrapper.find(selector).exists()).toBeTruthy();
@@ -51,21 +54,21 @@ it("should use explicit selector when custom selector was given", () => {
 
 it("addButton() should return the add button element", () => {
     expect.assertions(1);
-    const wrapper = mount(TestComponent, defaultMountOptions);
-    const { addButton } = FCrudDatasetSelectors();
+    const wrapper = mount(TestComponent);
+    const { addButton } = FCrudDatasetSelectors('[data-test="crud"]');
     expect(wrapper.find(addButton()).exists()).toBeTruthy();
 });
 
 it("cancelButton() should not exist when modal is closed", () => {
     expect.assertions(1);
-    const wrapper = mount(TestComponent, defaultMountOptions);
-    const { cancelButton } = FCrudDatasetSelectors();
+    const wrapper = mount(TestComponent);
+    const { cancelButton } = FCrudDatasetSelectors('[data-test="crud"]');
     expect(wrapper.find(cancelButton()).exists()).toBeFalsy();
 });
 
 it("confirmButton() should not exist when modal is closed", () => {
     expect.assertions(1);
-    const wrapper = mount(TestComponent, defaultMountOptions);
-    const { confirmButton } = FCrudDatasetSelectors();
+    const wrapper = mount(TestComponent);
+    const { confirmButton } = FCrudDatasetSelectors('[data-test="crud"]');
     expect(wrapper.find(confirmButton()).exists()).toBeFalsy();
 });

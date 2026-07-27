@@ -20,15 +20,19 @@ it("should use default selector when no selector was given", () => {
     });
     const { selector } = FListSelectors();
     const root = wrapper.get(selector);
-    expect(selector).toBe(".list");
+    expect(selector).toBe(":scope");
     expect(root.classes()).toContain("list");
 });
 
 it("should use explicit selector when custom selector was given", () => {
     expect.assertions(2);
-    const wrapper = mount(FList, {
-        props: { items: [] },
-        attrs: { "data-test": "foo" },
+    const wrapper = mount({
+        components: { FList },
+        template: /* HTML */ `
+            <div>
+                <f-list data-test="foo" :items="[]"></f-list>
+            </div>
+        `,
     });
     const { selector } = FListSelectors('[data-test="foo"]');
     const root = wrapper.get(selector);
@@ -90,9 +94,6 @@ it("listItems() should handle nested lists", () => {
         props: {
             items,
         },
-        attrs: {
-            id: "outer",
-        },
         slots: {
             default({ item }: { item: Item }) {
                 return [
@@ -110,7 +111,7 @@ it("listItems() should handle nested lists", () => {
             },
         },
     });
-    const { listItems } = FListSelectors("#outer");
+    const { listItems } = FListSelectors();
     const elements = wrapper.findAll(listItems());
     expect(elements).toHaveLength(3);
 });

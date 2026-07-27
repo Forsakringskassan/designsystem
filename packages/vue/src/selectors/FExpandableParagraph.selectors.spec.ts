@@ -1,64 +1,77 @@
-import { defineComponent } from "vue";
 import { mount } from "@vue/test-utils";
 import { expect, it } from "vitest";
 import { FExpandableParagraph } from "../components";
+import { TestDirective } from "../plugins";
 import { FExpandableParagraphSelectors } from "./FExpandableParagraph.selectors";
-
-const FExpandableParagraphComponent = defineComponent({
-    template: /* HTML */ `
-        <f-expandable-paragraph :expanded>
-            <template #title> Titel </template>
-            <template #default> Innehåll </template>
-            <template #related> 2026-01-01 </template>
-        </f-expandable-paragraph>
-    `,
-    props: {
-        expanded: {
-            type: Boolean,
-            default: true,
-        },
-    },
-    components: {
-        FExpandableParagraph,
-    },
-});
 
 it("should use default selector when no selector was given", () => {
     expect.assertions(2);
-    const wrapper = mount(FExpandableParagraphComponent);
+    const wrapper = mount(FExpandableParagraph);
     const { selector } = FExpandableParagraphSelectors();
     const root = wrapper.get(selector);
-    expect(selector).toBe(".expandable-paragraph");
+    expect(selector).toBe(":scope");
+    expect(root.classes()).toContain("expandable-paragraph");
+});
+
+it("should use explicit selector when custom selector was given", () => {
+    expect.assertions(2);
+    const wrapper = mount({
+        components: { FExpandableParagraph },
+        template: /* HTML */ `
+            <div>
+                <f-expandable-paragraph v-test="'my-expandable-paragraph'">
+                </f-expandable-paragraph>
+            </div>
+        `,
+        directives: { test: TestDirective },
+    });
+    const { selector } = FExpandableParagraphSelectors(
+        '[data-test="my-expandable-paragraph"]',
+    );
+    const root = wrapper.get(selector);
+    expect(selector).toBe('[data-test="my-expandable-paragraph"]');
     expect(root.classes()).toContain("expandable-paragraph");
 });
 
 it("header() should return the header element", () => {
     expect.assertions(1);
-    const wrapper = mount(FExpandableParagraphComponent);
+    const wrapper = mount(FExpandableParagraph, {
+        slots: {
+            title: "Lorem title ipsum",
+        },
+    });
     const { header } = FExpandableParagraphSelectors();
     const el = wrapper.get(header());
-    expect(el.text()).toBe("Titel");
+    expect(el.text()).toBe("Lorem title ipsum");
 });
 
 it("body() should return the body element", () => {
     expect.assertions(1);
-    const wrapper = mount(FExpandableParagraphComponent);
+    const wrapper = mount(FExpandableParagraph, {
+        slots: {
+            default: "Lorem body ipsum",
+        },
+    });
     const { body } = FExpandableParagraphSelectors();
     const el = wrapper.get(body());
-    expect(el.text()).toContain("Innehåll");
+    expect(el.text()).toContain("Lorem body ipsum");
 });
 
 it("relatedInfo() should return the related info element", () => {
     expect.assertions(1);
-    const wrapper = mount(FExpandableParagraphComponent);
+    const wrapper = mount(FExpandableParagraph, {
+        slots: {
+            related: "Lorem related ipsum",
+        },
+    });
     const { relatedInfo } = FExpandableParagraphSelectors();
     const el = wrapper.get(relatedInfo());
-    expect(el.text()).toContain("2026-01-01");
+    expect(el.text()).toContain("Lorem related ipsum");
 });
 
 it("expandCollapseIcon() should return the expand/collapse icon element", () => {
     expect.assertions(1);
-    const wrapper = mount(FExpandableParagraphComponent);
+    const wrapper = mount(FExpandableParagraph);
     const { expandCollapseIcon } = FExpandableParagraphSelectors();
     const el = wrapper.find(expandCollapseIcon());
     expect(el.exists()).toBeTruthy();

@@ -6,7 +6,7 @@
  * @param selector - The selector for the FLabel component.
  * @returns An object with selector methods for the FLabel component.
  */
-export function FLabelSelectors(selector: string = ".label") {
+export function FLabelSelectors(selector: string = ":scope") {
     return Object.freeze({
         /**
          * The base selector for the component.

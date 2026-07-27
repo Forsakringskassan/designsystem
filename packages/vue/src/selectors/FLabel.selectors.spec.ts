@@ -3,28 +3,26 @@ import { expect, it } from "vitest";
 import { FLabel } from "../components";
 import { FLabelSelectors } from "./FLabel.selectors";
 
-const defaultMountOptions = {
-    global: { stubs: ["FIcon"] },
-};
-
 it("should use default selector when no selector was given", () => {
     expect.assertions(2);
     const wrapper = mount(FLabel, {
-        ...defaultMountOptions,
         slots: { default: "My label" },
     });
     const { selector } = FLabelSelectors();
     const root = wrapper.get(selector);
-    expect(selector).toBe(".label");
+    expect(selector).toBe(":scope");
     expect(root.classes()).toContain("label");
 });
 
 it("should use explicit selector when custom selector was given", () => {
     expect.assertions(2);
-    const wrapper = mount(FLabel, {
-        ...defaultMountOptions,
-        slots: { default: "My label" },
-        attrs: { "data-test": "my-label" },
+    const wrapper = mount({
+        components: { FLabel },
+        template: /* HTML */ `
+            <div>
+                <f-label data-test="my-label"></f-label>
+            </div>
+        `,
     });
     const { selector } = FLabelSelectors('[data-test="my-label"]');
     const root = wrapper.get(selector);
@@ -35,7 +33,6 @@ it("should use explicit selector when custom selector was given", () => {
 it("description() should return the description element when present", () => {
     expect.assertions(1);
     const wrapper = mount(FLabel, {
-        ...defaultMountOptions,
         slots: {
             default: "My label",
             description: `<template v-slot="{ descriptionClass }">
@@ -50,7 +47,6 @@ it("description() should return the description element when present", () => {
 it("description() should not exist when description slot is not used", () => {
     expect.assertions(1);
     const wrapper = mount(FLabel, {
-        ...defaultMountOptions,
         slots: { default: "My label" },
     });
     const { description } = FLabelSelectors();
@@ -60,7 +56,6 @@ it("description() should not exist when description slot is not used", () => {
 it("formatDescription() should return the format description element when present", () => {
     expect.assertions(1);
     const wrapper = mount(FLabel, {
-        ...defaultMountOptions,
         slots: {
             default: "My label",
             description: `<template v-slot="{ formatDescriptionClass }">
@@ -75,7 +70,6 @@ it("formatDescription() should return the format description element when presen
 it("formatDescription() should not exist when format description is not used", () => {
     expect.assertions(1);
     const wrapper = mount(FLabel, {
-        ...defaultMountOptions,
         slots: { default: "My label" },
     });
     const { formatDescription } = FLabelSelectors();
@@ -85,7 +79,6 @@ it("formatDescription() should not exist when format description is not used", (
 it("errorMessage() should not exist by default", () => {
     expect.assertions(1);
     const wrapper = mount(FLabel, {
-        ...defaultMountOptions,
         slots: { default: "My label" },
     });
     const { errorMessage } = FLabelSelectors();
@@ -95,7 +88,6 @@ it("errorMessage() should not exist by default", () => {
 it("errorIcon() should not exist by default", () => {
     expect.assertions(1);
     const wrapper = mount(FLabel, {
-        ...defaultMountOptions,
         slots: { default: "My label" },
     });
     const { errorIcon } = FLabelSelectors();
