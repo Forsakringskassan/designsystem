@@ -72,7 +72,7 @@
   },
   "devDependencies": {
     "@forsakringskassan/jest-config": "30.4.1",
-    "@forsakringskassan/vitest-config-jsdom": "2.5.0",
+    "@forsakringskassan/vitest-config-jsdom": "2.5.1",
     "@jest/globals": "^30.4.1",
     "@vue/server-renderer": "3.5.40",
     "@vue/test-utils": "2.4.11",

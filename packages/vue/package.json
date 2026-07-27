@@ -77,7 +77,7 @@
     "@fkui/test-utils": "6.52.2",
     "@fkui/theme-default": "6.52.2",
     "@forsakringskassan/vite-lib-config": "5.4.1",
-    "@forsakringskassan/vitest-config-jsdom": "2.5.0",
+    "@forsakringskassan/vitest-config-jsdom": "2.5.1",
     "@vue/test-utils": "2.4.11",
     "cypress": "15.19.0",
     "esbuild": "0.28.1",
