@@ -1427,14 +1427,14 @@ describe("Clickable cells", () => {
         });
 
         const cell = wrapper.get<HTMLTableCellElement>(
-            "table tr:nth-child(2) td:first-child",
+            "tr:nth-child(2) td:first-child",
         );
 
         await nextTick();
         await cell.trigger("click");
 
         const checkbox = wrapper.get<HTMLInputElement>(
-            "table tr:nth-child(2) td:first-child input[type='checkbox']",
+            "tr:nth-child(2) td:first-child input[type='checkbox']",
         );
 
         expect(checkbox.element.checked).toBeTruthy();
@@ -1476,7 +1476,7 @@ describe("Clickable cells", () => {
         });
 
         const cell = wrapper.get<HTMLTableCellElement>(
-            "table tr:nth-child(2) td:first-child",
+            "tr:nth-child(2) td:first-child",
         );
 
         await nextTick();
