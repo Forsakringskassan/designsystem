@@ -66,9 +66,33 @@ it("should have approved default design", () => {
     const ScreenshotComponent = defineComponent({
         template: /* HTML */ `
             <div>
-                ${getDefaultTemplate("success")}
-                ${getDefaultTemplate("warning")} ${getDefaultTemplate("error")}
-                ${getDefaultTemplate("info")}
+                <f-message-box type="success">
+                    <template #default="{ headingSlotClass }">
+                        <h2 :class="headingSlotClass">Rubrik</h2>
+                        <p>Brödtext</p>
+                    </template>
+                </f-message-box>
+
+                <f-message-box type="warning">
+                    <template #default="{ headingSlotClass }">
+                        <h2 :class="headingSlotClass">Rubrik</h2>
+                        <p>Brödtext</p>
+                    </template>
+                </f-message-box>
+
+                <f-message-box type="error">
+                    <template #default="{ headingSlotClass }">
+                        <h2 :class="headingSlotClass">Rubrik</h2>
+                        <p>Brödtext</p>
+                    </template>
+                </f-message-box>
+
+                <f-message-box type="info">
+                    <template #default="{ headingSlotClass }">
+                        <h2 :class="headingSlotClass">Rubrik</h2>
+                        <p>Brödtext</p>
+                    </template>
+                </f-message-box>
             </div>
         `,
         components: {
@@ -87,15 +111,40 @@ describe("Visual forcedColor", () => {
     afterEach(() => {
         cy.forcedColors("none");
     });
+
     for (const mode of Object.values(forcedColorModes)) {
         it(`Should render short design correct forced color, ${mode} (visual)`, () => {
             cy.forcedColors(mode);
             const ScreenshotComponent = defineComponent({
                 template: /* HTML */ `
                     <div>
-                        ${getShortTemplate("success")}
-                        ${getShortTemplate("warning")}
-                        ${getShortTemplate("error")} ${getShortTemplate("info")}
+                        <f-message-box type="success">
+                            <template #default="{ headingSlotClass }">
+                                <h2 :class="headingSlotClass">Rubrik</h2>
+                                <p>Brödtext</p>
+                            </template>
+                        </f-message-box>
+
+                        <f-message-box type="warning">
+                            <template #default="{ headingSlotClass }">
+                                <h2 :class="headingSlotClass">Rubrik</h2>
+                                <p>Brödtext</p>
+                            </template>
+                        </f-message-box>
+
+                        <f-message-box type="error">
+                            <template #default="{ headingSlotClass }">
+                                <h2 :class="headingSlotClass">Rubrik</h2>
+                                <p>Brödtext</p>
+                            </template>
+                        </f-message-box>
+
+                        <f-message-box type="info">
+                            <template #default="{ headingSlotClass }">
+                                <h2 :class="headingSlotClass">Rubrik</h2>
+                                <p>Brödtext</p>
+                            </template>
+                        </f-message-box>
                     </div>
                 `,
                 components: {

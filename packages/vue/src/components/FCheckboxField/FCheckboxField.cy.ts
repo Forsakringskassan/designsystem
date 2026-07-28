@@ -254,28 +254,16 @@ describe("FCheckboxField", () => {
                         <template #label>
                             <h2>Kryssrutegrupp</h2>
                         </template>
-                        <f-checkbox-field
-                            v-model="checkboxField"
-                            value="Kryssruta1"
-                        >
+                        <f-checkbox-field value="Kryssruta1">
                             Kryssruta
                         </f-checkbox-field>
-                        <f-checkbox-field
-                            v-model="checkboxField"
-                            value="Kryssruta2"
-                        >
+                        <f-checkbox-field value="Kryssruta2">
                             Kryssruta
                         </f-checkbox-field>
-                        <f-checkbox-field
-                            v-model="checkboxField"
-                            value="Kryssruta3"
-                        >
+                        <f-checkbox-field value="Kryssruta3">
                             Kryssruta
                         </f-checkbox-field>
-                        <f-checkbox-field
-                            v-model="checkboxField"
-                            value="Kryssruta4"
-                        >
+                        <f-checkbox-field value="Kryssruta4">
                             Kryssruta
                         </f-checkbox-field>
                     </f-fieldset>
@@ -297,9 +285,11 @@ describe("FCheckboxField", () => {
 
     describe("Visual forcedColor", () => {
         const forcedColorModes = ["none", "dark", "light"] as const;
+
         afterEach(() => {
             cy.forcedColors("none");
         });
+
         for (const mode of Object.values(forcedColorModes)) {
             it(`should render correct styling for mode, ${mode} (visual)`, () => {
                 cy.forcedColors(mode);

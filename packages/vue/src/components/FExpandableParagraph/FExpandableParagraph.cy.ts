@@ -47,7 +47,7 @@ describe("density", () => {
     const DensityComponent = defineComponent({
         template: /* HTML */ `
             <density-wrapper>
-            <test-component expanded></test-component
+                <test-component expanded></test-component>
             </density-wrapper>
         `,
         components: {

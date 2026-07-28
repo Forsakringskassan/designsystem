@@ -62,11 +62,15 @@ describe("density", () => {
     const DensityComponent = defineComponent({
         template: /* HTML */ `
             <density-wrapper>
-                <f-text-field v-model="value"> Värde </f-text-field>
-                <f-output-field>
-                    <template #label> Beräknat värde </template>
-                    <template #default> {{value + 1}} </template>
-                </f-output-field>
+                <template #default="{ density }">
+                    <f-text-field :id="'input-' + density" v-model="value">
+                        Värde
+                    </f-text-field>
+                    <f-output-field :for="'input-' + density">
+                        <template #label> Beräknat värde </template>
+                        <template #default> {{value + 1}} </template>
+                    </f-output-field>
+                </template>
             </density-wrapper>
         `,
         components: {
