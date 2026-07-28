@@ -287,7 +287,7 @@ describe("FRadioField", () => {
         const DensityComponent = defineComponent({
             template: /* HTML */ `
                 <density-wrapper>
-                    <f-fieldset :name="fieldset">
+                    <f-fieldset>
                         <template #label>
                             <h2>Radioknappsgrupp</h2>
                         </template>

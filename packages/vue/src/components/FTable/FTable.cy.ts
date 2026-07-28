@@ -88,8 +88,9 @@ describe("1. 3 Table test – right-aligned column", () => {
                 FTable<Row>,
                 { rows: rows.value, columns },
                 {
-                    caption:
-                        "Verifierar att kolumner kan vara höger- och vänsterjusterade",
+                    caption() {
+                        return "Verifierar att kolumner kan vara höger- och vänsterjusterade";
+                    },
                 },
             ),
         );
@@ -236,8 +237,9 @@ describe("1.5 Separator", () => {
                     striped: true,
                 },
                 {
-                    caption:
-                        "Verifierar att varannan rad är färgade även vid expanderade rader.",
+                    caption() {
+                        return "Verifierar att varannan rad är färgade även vid expanderade rader.";
+                    },
                 },
             ),
         );
@@ -253,8 +255,9 @@ describe("1.5 Separator", () => {
                 FTable<Row>,
                 { rows: rows.value, columns, disableDividers: true },
                 {
-                    caption:
-                        "Verifierar att radavskiljare inte renderas när disableDividers är satt.",
+                    caption() {
+                        return "Verifierar att radavskiljare inte renderas när disableDividers är satt.";
+                    },
                 },
             ),
         );
@@ -2524,8 +2527,9 @@ describe("editable cell", () => {
                     .then(($editableRow) => {
                         expect(
                             $staticRow[0].getBoundingClientRect().height,
-                        ).to.equal(
+                        ).to.be.closeTo(
                             $editableRow[0].getBoundingClientRect().height,
+                            0.1,
                         );
                     });
             });

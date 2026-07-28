@@ -32,7 +32,7 @@ describe("radiobuttons", () => {
         const TestComponent = defineComponent({
             components: { FFieldset, FRadioField },
             template: /* HTML */ `
-                <f-fieldset horizontal="true">
+                <f-fieldset horizontal>
                     <template #label> Arbetar du deltid? </template>
                     <f-radio-field :value="'test'"> Ja </f-radio-field>
                     <f-radio-field :value="'test2'"> Nej </f-radio-field>
@@ -284,6 +284,7 @@ describe("Visual", () => {
     afterEach(() => {
         cy.forcedColors("none");
     });
+
     for (const mode of forcedColorModes) {
         it(`should render correct styling for forced color '${mode}' (visual)`, () => {
             cy.forcedColors(mode);

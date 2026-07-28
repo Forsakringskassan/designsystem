@@ -389,7 +389,9 @@ it("footer() should get table footer when footer slot is used", () => {
                 rows: dataset,
             },
             {
-                footer: "Footer",
+                footer() {
+                    return "Footer";
+                },
             },
         ),
     );

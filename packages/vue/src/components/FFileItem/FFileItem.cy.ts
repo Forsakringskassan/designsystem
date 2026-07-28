@@ -19,7 +19,7 @@ function createComponent(template: string): DefineComponent {
     });
 }
 
-beforeEach(() => {
+afterEach(() => {
     cy.forcedColors("none");
 });
 
@@ -48,6 +48,7 @@ describe("FFileItem", () => {
                             v-if="progress < 100"
                             data-test="file-item__file-remove"
                             icon-left="close"
+                            size="medium"
                             variant="tertiary"
                         >
                             Avbryt uppladdning
@@ -56,6 +57,7 @@ describe("FFileItem", () => {
                             v-else-if="progress === 100"
                             data-test="file-item__file-remove"
                             icon-left="trashcan"
+                            size="medium"
                             variant="tertiary"
                         >
                             Ta bort

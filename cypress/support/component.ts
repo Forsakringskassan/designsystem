@@ -40,6 +40,11 @@ Cypress.Commands.add("mount", (component, options = {}) => {
             app.use(TestPlugin);
             app.use(TranslationPlugin);
             setRunningContext(app);
+
+            /* handle warnings as errors */
+            app.config.warnHandler = (msg, b, trace) => {
+                throw new Error(`Vue warning: ${msg}\n${trace}`);
+            };
         },
     });
 

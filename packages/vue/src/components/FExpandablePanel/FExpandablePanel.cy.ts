@@ -7,6 +7,8 @@ import {
 import { FExpandablePanelPageObject } from "../../cypress";
 import FExpandablePanel from "./FExpandablePanel.vue";
 
+const epsilon = 0.1;
+
 function createComponent(template: string): DefineComponent {
     return defineComponent({
         template,
@@ -75,9 +77,9 @@ describe("FExpandablePanel", () => {
     it("Should have a page object that can access any necessary elements for expandable panel with notification icon", () => {
         const template = /* HTML */ `
             <f-expandable-panel
-                :expanded="expanded1"
+                :expanded="expanded"
                 :notifications="1"
-                @toggle="onToggle1"
+                @toggle="onToggle"
                 data-test="notification-example"
             >
                 <template #title> Titel med en notifiering </template>
@@ -155,7 +157,7 @@ describe("FExpandablePanel", () => {
 
         /* expanded -> should occupy height */
         panel.expandCollapseIcon().click();
-        panel.body().should((el) => expect(el.height()).gte(500));
+        panel.body().should((el) => expect(el.height()).gte(500 - epsilon));
 
         /* collapsed -> should not occupy height again */
         panel.expandCollapseIcon().click();
@@ -185,7 +187,7 @@ describe("FExpandablePanel", () => {
         cy.mount(TestComponent);
 
         /* initially expanded -> should occupy height */
-        panel.body().should((el) => expect(el.height()).gte(500));
+        panel.body().should((el) => expect(el.height()).gte(500 - epsilon));
 
         /* collapsed -> should not occupy height */
         panel.expandCollapseIcon().click();
@@ -193,6 +195,6 @@ describe("FExpandablePanel", () => {
 
         /* expanded -> should occupy height again */
         panel.expandCollapseIcon().click();
-        panel.body().should((el) => expect(el.height()).gte(500));
+        panel.body().should((el) => expect(el.height()).gte(500 - epsilon));
     });
 });

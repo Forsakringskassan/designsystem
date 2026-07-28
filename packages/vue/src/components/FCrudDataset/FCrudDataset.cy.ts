@@ -242,7 +242,7 @@ describe("item delete", () => {
                                 Select row
                             </template>
                             <template #default="{ row }">
-                                <f-table-column :row-header title="Name">
+                                <f-table-column title="Name">
                                     {{ row.name }}
                                 </f-table-column>
                                 <f-table-column
