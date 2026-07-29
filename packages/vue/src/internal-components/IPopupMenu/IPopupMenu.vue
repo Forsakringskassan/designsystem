@@ -38,10 +38,10 @@ export default defineComponent({
             required: true,
         },
         /**
-         * DOM element to position popup at.
+         * DOM element or element id to position popup at.
          */
         anchor: {
-            type: HTMLElement as PropType<HTMLElement | undefined>,
+            type: [HTMLElement, String] as PropType<HTMLElement | string | null | undefined>,
             default: undefined,
         },
         /**
