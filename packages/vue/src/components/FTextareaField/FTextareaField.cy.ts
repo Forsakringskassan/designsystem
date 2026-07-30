@@ -215,6 +215,7 @@ describe("FTextareaField", () => {
 
     describe("Visual forcedColor", () => {
         const forcedColorModes = ["none", "dark", "light"] as const;
+
         afterEach(() => {
             cy.forcedColors("none");
         });

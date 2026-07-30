@@ -41,6 +41,7 @@ it("should allow negative values", () => {
     cy.get(input).blur();
     cy.get(error).should("not.exist");
 });
+
 it("should show error for non-leading minus sign", () => {
     cy.mount(MaxValueExample);
     cy.get(input).clear();

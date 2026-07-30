@@ -2206,6 +2206,7 @@ describe("7 Bulk Operation ", () => {
         });
     });
 });
+
 describe("select cell", () => {
     interface Row {
         option: string;

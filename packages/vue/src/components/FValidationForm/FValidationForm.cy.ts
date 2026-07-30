@@ -17,6 +17,7 @@ describe("FValidationForm", () => {
         validationForm.errorlist.getLinkByName("Field2").should("exist");
         validationForm.errorlist.el().should("exist");
     });
+
     it("should not display errorlist after filling both fields", () => {
         cy.mount(WithErrorListExample);
 

@@ -240,6 +240,7 @@ describe("FFieldsetPageObject", () => {
             });
         });
     });
+
     describe("Without tooltip", () => {
         describe("Radio", () => {
             const template = /* HTML */ `
@@ -263,6 +264,7 @@ describe("FFieldsetPageObject", () => {
             `;
 
             const fieldset = new FFieldsetPageObject(".radio-button-group");
+
             beforeEach(() => {
                 cy.mount(createComponent(template));
             });
@@ -390,6 +392,7 @@ describe("FFieldsetPageObject", () => {
             `;
 
             const textFieldFieldset = new FFieldsetPageObject(".text-field");
+
             beforeEach(() => {
                 cy.mount(createComponent(template));
             });

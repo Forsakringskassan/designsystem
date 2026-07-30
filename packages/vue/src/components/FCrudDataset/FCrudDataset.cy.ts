@@ -137,6 +137,7 @@ function mountComponent(templates = new Array<string>()): void {
 
     cy.mount(TestComponent, {});
 }
+
 describe("Editing items", () => {
     it("should modify item values and persist the changes", () => {
         const rows = [{ name: "Adam" }, { name: "Carl" }];

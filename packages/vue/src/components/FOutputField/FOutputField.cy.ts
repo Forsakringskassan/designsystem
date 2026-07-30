@@ -45,6 +45,7 @@ const TestComponent = defineComponent({
         };
     },
 });
+
 it("should provide a page object that can access any necessary elements", () => {
     cy.mount(TestComponent);
     const output = new FOutputFieldPageobject("[data-test] .output-field");
