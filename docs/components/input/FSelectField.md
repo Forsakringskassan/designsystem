@@ -19,6 +19,11 @@ I dropplistor är det vanligt att etiketten är formulerad som en fråga eller e
 
 Texten i själva dropplistan formuleras så att det blir tydligt vad användaren ska fylla i, men får inte ensam beskriva valet då den försvinner när användaren gjort ett val.
 
+## Inline
+
+Etiketten och dropplista ska bara placeras på samma rad (inline) om fältet inte har någon validering och om det inte behövs någon hjälptext, formatbeskrivning eller felmeddelande.
+Inline passar till exempel bra för sök och fritextfilter.
+
 ## Responsiv bredd
 
 Etiketten och dropplistan kan ha olika bredd. När etikettens text radbryts behöver alltså inte vara kopplat till hur bred dropplistan i sig är.
