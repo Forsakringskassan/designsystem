@@ -457,7 +457,7 @@ describe("1.12 aria-rowindex", () => {
                 columns,
             },
         });
-        const headerRow = wrapper.get("table thead tr");
+        const headerRow = wrapper.get("thead tr");
         expect(headerRow.attributes("aria-rowindex")).toBe("1");
     });
 
@@ -477,7 +477,7 @@ describe("1.12 aria-rowindex", () => {
                 columns,
             },
         });
-        const bodyRows = wrapper.findAll("table tbody tr");
+        const bodyRows = wrapper.findAll("tbody tr");
         expect(bodyRows[0].attributes("aria-rowindex")).toBe("2");
         expect(bodyRows[1].attributes("aria-rowindex")).toBe("3");
     });
@@ -502,13 +502,13 @@ describe("1.12 aria-rowindex", () => {
             },
         });
 
-        const withoutExpandedRows = wrapper.findAll("table tbody tr");
+        const withoutExpandedRows = wrapper.findAll("tbody tr");
         expect(withoutExpandedRows[0].attributes("aria-rowindex")).toBe("2");
         expect(withoutExpandedRows[1].attributes("aria-rowindex")).toBe("5");
 
-        const expandButton = wrapper.get("table tbody button");
+        const expandButton = wrapper.get("tbody button");
         await expandButton.trigger("click");
-        const withExpandedRows = wrapper.findAll("table tbody tr");
+        const withExpandedRows = wrapper.findAll("tbody tr");
         expect(withExpandedRows[0].attributes("aria-rowindex")).toBe("2");
         expect(withExpandedRows[1].attributes("aria-rowindex")).toBe("3");
         expect(withExpandedRows[2].attributes("aria-rowindex")).toBe("4");
