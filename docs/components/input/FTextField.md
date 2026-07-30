@@ -51,7 +51,8 @@ Om användaren ska ange ett datum där det måste finnas en möjlighet att välj
 
 ## Inline
 
-Etiketten och inmatningsfältet ska bara placeras på samma rad (inline) om fältet inte har någon validering och om det inte behövs någon hjälptext, formatbeskrivning eller felmeddelande. Inline passar till exempel bra för sök och fritextfilter.
+Etiketten och inmatningsfältet ska bara placeras på samma rad (inline) om fältet inte har någon validering och om det inte behövs någon hjälptext, formatbeskrivning eller felmeddelande.
+Inline passar till exempel bra för sök och fritextfilter.
 
 ## Responsiva bredder
 
