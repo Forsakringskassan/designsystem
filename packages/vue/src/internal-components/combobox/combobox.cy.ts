@@ -516,6 +516,7 @@ describe("Validation", () => {
             "modelValue: foo",
         );
     });
+
     describe("`forced-colors` media feature", () => {
         const defaultMountOptions = {
             props: {
@@ -541,6 +542,7 @@ describe("Validation", () => {
             cy.get("li").eq(2).invoke("addClass", "is-hover");
             cy.get(dropdown).toMatchScreenshot();
         });
+
         it("should render correct styling for forced color mode dark withouth scrollbar visual", () => {
             defaultMountOptions.props.options = [
                 "Abchazien",

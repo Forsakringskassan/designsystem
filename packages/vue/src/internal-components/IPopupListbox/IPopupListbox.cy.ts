@@ -151,6 +151,7 @@ describe("IPopupListbox above anchor", () => {
     beforeEach(() => {
         setViewport({ height: 300, width: 480 });
     });
+
     it("should position 3 items above input without scroll", () => {
         const component = defineComponent({
             template: /* HTML */ `

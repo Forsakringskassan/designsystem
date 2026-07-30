@@ -31,8 +31,10 @@ describe("FStaticField", () => {
             .should("have.trimmedText", "En liten statisk text.");
     });
 });
+
 describe("Visual forcedColor", () => {
     const forcedColorModes = ["none", "dark", "light"] as const;
+
     afterEach(() => {
         cy.forcedColors("none");
     });

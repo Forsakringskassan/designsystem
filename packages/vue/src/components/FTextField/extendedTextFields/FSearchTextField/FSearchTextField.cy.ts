@@ -61,6 +61,7 @@ const component = defineComponent({
 
 describe("FSearchTextField", () => {
     let inputField;
+
     beforeEach(() => {
         cy.viewport(640, 200);
     });

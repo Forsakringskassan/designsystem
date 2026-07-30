@@ -54,6 +54,7 @@ const TestComponent = defineComponent({
 
 describe("useErrorList", () => {
     const modal = new FFormModalPageObject('[data-test="form-modal-example"]');
+
     it("should be shown when useErrorList is enabled", () => {
         cy.mount(TestComponent, {
             props: {

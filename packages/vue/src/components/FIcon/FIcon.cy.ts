@@ -3,6 +3,7 @@ import FIcon from "./FIcon.vue";
 
 describe("Visual forcedColor", () => {
     const forcedColorModes = ["none", "dark", "light"] as const;
+
     afterEach(() => {
         cy.forcedColors("none");
     });
@@ -25,6 +26,7 @@ describe("Visual forcedColor", () => {
         });
     }
 });
+
 describe("FIcon screenshot", () => {
     it("stacked icons (visual)", () => {
         const TestComponent = defineComponent({
