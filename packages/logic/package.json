@@ -66,7 +66,7 @@
   "devDependencies": {
     "@fkui/date": "6.52.2",
     "@fkui/test-utils": "6.52.2",
-    "@forsakringskassan/vitest-config-jsdom": "2.5.1",
+    "@forsakringskassan/vitest-config-jsdom": "2.6.0",
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
