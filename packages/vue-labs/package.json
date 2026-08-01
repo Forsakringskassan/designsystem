@@ -59,7 +59,7 @@
     "unit:watch": "vitest"
   },
   "dependencies": {
-    "@vueuse/core": "14.3.0"
+    "@vueuse/core": "14.4.0"
   },
   "devDependencies": {
     "@fkui/date": "6.52.2",
