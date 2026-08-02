@@ -60,8 +60,8 @@ describe("getUpdateFn()", () => {
         ]);
     });
 
-    it("should return a function that returns undefined, when fn and key is undefined", () => {
-        expect.assertions(2);
+    it("should return a function when fn and key is undefined", () => {
+        expect.assertions(1);
         const rows: TableRow[] = [
             {
                 id: "1",
@@ -74,7 +74,7 @@ describe("getUpdateFn()", () => {
         ];
         const myUpdateFn = getUpdateFn(undefined, undefined);
 
-        expect(myUpdateFn(rows[0], "new value", "aaa")).toBeUndefined();
+        myUpdateFn(rows[0], "new value", "aaa");
 
         //rows should be untouched
         expect(rows).toStrictEqual([
