@@ -19,7 +19,7 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp.call(mod, "default") ? __defProp(target, "default", {
   value: mod,
   enumerable: true
 }) : target, mod));
@@ -4945,7 +4945,8 @@ var FValidationForm_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCom
       if (this.useErrorList) focus$1(this.$refs.errors);
       else {
         const firstError = this.validity.componentsWithError[0];
-        focus$1(document.querySelector(`#${firstError.focusElementId}`));
+        const element = document.querySelector(`#${firstError.focusElementId}`);
+        focus$1(element);
       }
       return true;
     },
@@ -6333,7 +6334,10 @@ var ICalendarMonth_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComp
       if (navigatedDay.month !== date.month) await this.$nextTick();
       this.$forceUpdate();
       const navigatedDayRef = this.$refs[navigatedDay.toString()];
-      if (navigatedDayRef) focus$1(getHTMLElementFromVueRef(navigatedDayRef));
+      if (navigatedDayRef) {
+        const navigatedDayElement = getHTMLElementFromVueRef(navigatedDayRef);
+        focus$1(navigatedDayElement);
+      }
     },
     isDayFocused(date) {
       return document.activeElement === this.$refs[date.toString()];
@@ -6480,7 +6484,8 @@ var ICalendarNavbar_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCom
       if (!this.previousDisabled) {
         this.$emit("update:modelValue", this.previousValue);
         const previousMonth = this.getDateText(this.previousValue);
-        alertScreenReader(this.$t("fkui.calendar-navbar.previous-month", "{{ previousMonth }} visas", { previousMonth }), { assertive: true });
+        const previousMonthText = this.$t("fkui.calendar-navbar.previous-month", "{{ previousMonth }} visas", { previousMonth });
+        alertScreenReader(previousMonthText, { assertive: true });
         return;
       }
       const message = getMessage(this.$t, this.previousValue, this.minDate, this.maxDate);
@@ -6491,7 +6496,8 @@ var ICalendarNavbar_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCom
         this.$emit("update:modelValue", this.nextValue);
         this.$emit("change", this.nextValue);
         const nextMonth = this.getDateText(this.nextValue);
-        alertScreenReader(this.$t("fkui.calendar-navbar.next-month", "{{ nextMonth }} visas", { nextMonth }), { assertive: true });
+        const nextMonthText = this.$t("fkui.calendar-navbar.next-month", "{{ nextMonth }} visas", { nextMonth });
+        alertScreenReader(nextMonthText, { assertive: true });
         return;
       }
       const message = getMessage(this.$t, this.nextValue, this.minDate, this.maxDate);
@@ -8539,9 +8545,6 @@ function onKeyDown(event, options) {
       event.preventDefault();
       select(activeYear.value);
       close();
-      break;
-    default:
-      break;
   }
 }
 function useYearSelector(options) {
@@ -9009,7 +9012,8 @@ function getContainer(element, prop) {
 function getFocusableElement(rootElement, callback) {
   var _elements$;
   if (callback) return callback();
-  return (_elements$ = findTabbableElements(getHTMLElementFromVueRef(rootElement))[0]) !== null && _elements$ !== void 0 ? _elements$ : null;
+  const popupElement = getHTMLElementFromVueRef(rootElement);
+  return (_elements$ = findTabbableElements(popupElement)[0]) !== null && _elements$ !== void 0 ? _elements$ : null;
 }
 function offset(page, el) {
   const rect = el.getBoundingClientRect();
@@ -9481,7 +9485,8 @@ var IPopup_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent({
     },
     onKeyTab(event) {
       if (!this.keyboardTrap) return;
-      handleTab(event, getHTMLElementFromVueRef(this.$refs.wrapper));
+      const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
+      handleTab(event, wrapper);
     }
   }
 });
@@ -9899,7 +9904,6 @@ async function doMenuAction$1(action, target) {
       break;
     case MenuAction.ACTIVATE:
       await target.activateItem(newFocusedItemIndex);
-      break;
   }
 }
 var preventKeys$1 = /* @__PURE__ */ new Set([
@@ -10519,9 +10523,6 @@ function useCombobox(inputRef, options, onOptionSelected) {
         break;
       case "Tab":
         if (dropdownIsOpen.value) close();
-        break;
-      default:
-        break;
     }
     if (flag) {
       event.stopPropagation();
@@ -11531,7 +11532,6 @@ function useMenuAction(options) {
         break;
       case MenuAction.ACTIVATE:
         await activateItem(newFocusedItemIndex);
-        break;
     }
   } };
 }
@@ -11630,7 +11630,6 @@ var FContextMenu_default = /* @__PURE__ */ defineComponent({
             break;
           default:
             popFocus(focusHandle, { restoreFocus: true });
-            break;
         }
         focusHandle = null;
       }
@@ -11942,7 +11941,8 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
       result.value = filterItem(result.value, item.value, nestedKey.value);
       emit("deleted", item.value);
       emit("update:modelValue", result.value);
-      alertScreenReader($t2("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort"), { assertive: true });
+      const message = $t2("fkui.crud-dataset.aria-live.delete", "Raden har tagits bort");
+      alertScreenReader(message, { assertive: true });
     }
     function onDeleteClose(e) {
       onModalClose();
@@ -11959,13 +11959,15 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
         emit("created", item.value);
         emit("update:modelValue", result.value);
         callbackAfterItemAdd.value(item.value);
-        alertScreenReader($t2("fkui.crud-dataset.aria-live.add", "En rad har lagts till"), { assertive: true });
+        const message = $t2("fkui.crud-dataset.aria-live.add", "En rad har lagts till");
+        alertScreenReader(message, { assertive: true });
       } else if (operation.value === Operation.MODIFY) {
         if (originalItemToUpdate.value) Object.assign(originalItemToUpdate.value, item.value);
         else originalItemToUpdate.value = item.value;
         emit("updated", originalItemToUpdate.value);
         emit("update:modelValue", result.value);
-        alertScreenReader($t2("fkui.crud-dataset.aria-live.modify", "Raden har \xE4ndrats"), { assertive: true });
+        const message = $t2("fkui.crud-dataset.aria-live.modify", "Raden har \xE4ndrats");
+        alertScreenReader(message, { assertive: true });
       }
       isFormModalOpen.value = false;
     }
@@ -13618,9 +13620,6 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
           break;
         case "Space":
           e.preventDefault();
-          break;
-        default:
-          break;
       }
     }
     async function onEditBlur(event) {
@@ -13979,7 +13978,6 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
           break;
         case "Tab":
           pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
-          break;
       }
     }
     function onKeydown2(event) {
@@ -14377,7 +14375,6 @@ function useSelectable(options) {
         break;
       default:
         headerState.value = "indeterminate";
-        break;
     }
   });
   function toggleSelectableHeader() {
@@ -15721,7 +15718,8 @@ var FSearchTextField_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCo
   } },
   methods: {
     clear() {
-      alertScreenReader(TranslationService.provider.translate("fkui.search-text-field.aria-live.clear", "Inmatningsf\xE4ltet har t\xF6mts"), { assertive: true });
+      const alertText = TranslationService.provider.translate("fkui.search-text-field.aria-live.clear", "Inmatningsf\xE4ltet har t\xF6mts");
+      alertScreenReader(alertText, { assertive: true });
       this.$emit("update:modelValue", "");
       this.$el.querySelector("input").focus();
     },
@@ -16382,10 +16380,13 @@ var FSortFilterDataset_default = /* @__PURE__ */ defineComponent({
     });
     function filterResultset() {
       if (searchString.value === "") alertScreenReader($t2("fkui.sort-filter-dataset.aria-live.empty", "S\xF6k redigera S\xF6k tom"));
-      else alertScreenReader($t2("fkui.sort-filter-dataset.aria-live.search", `Din s\xF6kning p\xE5 "{{ search }}" gav {{ result }} tr\xE4ffar.`, {
-        result: sortFilterResult.value.length,
-        search: searchString.value
-      }));
+      else {
+        const searchAriaLive = $t2("fkui.sort-filter-dataset.aria-live.search", `Din s\xF6kning p\xE5 "{{ search }}" gav {{ result }} tr\xE4ffar.`, {
+          result: sortFilterResult.value.length,
+          search: searchString.value
+        });
+        alertScreenReader(searchAriaLive);
+      }
     }
     const debouncedFilterResultset = debounce(filterResultset, 250);
     let tableCallbackOnSort = () => {
@@ -17974,12 +17975,13 @@ function useResize(options = {}) {
     },
     size: ref(0)
   });
-  onUnmounted(api.register({
+  const unregister = api.register({
     enabled: toOptionalRef(options.enabled),
     visible: toOptionalRef(options.visible),
     overlay: toOptionalRef(options.overlay),
     offset: toOptionalRef(options.offset)
-  }));
+  });
+  onUnmounted(unregister);
   return { size: api.size };
 }
 var _hoisted_1$28 = { slot: "content" };
@@ -19837,7 +19839,8 @@ var FLayoutLeftPanel_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCo
     window.setTimeout(() => {
       this.updatePrimaryGrid();
       const ref2 = this.isOpen ? "close-button" : "open-button";
-      focus$1(getElementFromVueRef(this.$refs[ref2]));
+      const element = getElementFromVueRef(this.$refs[ref2]);
+      focus$1(element);
     }, 0);
   } }
 });
@@ -20023,7 +20026,8 @@ var FLayoutRightPanel_vue_vue_type_script_lang_default = /* @__PURE__ */ defineC
     async onOpenSecondary() {
       this.isOpen = true;
       await this.$nextTick();
-      focus$1(getElementFromVueRef(this.$refs.title).querySelector("h1, h2, h3, h4, h5, h6"), { force: true });
+      const heading = getElementFromVueRef(this.$refs.title).querySelector("h1, h2, h3, h4, h5, h6");
+      focus$1(heading, { force: true });
     },
     onCloseSecondary() {
       this.isOpen = false;
@@ -20941,7 +20945,6 @@ async function doMenuAction(action, target, currentIndex, maxIndex) {
       break;
     case MenuAction.ACTIVATE:
       await target.activateItem(itemIndex);
-      break;
   }
 }
 var upKeys = /* @__PURE__ */ new Set(["Up", "ArrowUp"]);
@@ -21382,7 +21385,6 @@ var FOffline_vue_vue_type_script_lang_default = /* @__PURE__ */ defineComponent(
       default:
         this.shouldNotRead = true;
         this.isOnline = false;
-        break;
     }
     this.role = "alert";
   } }

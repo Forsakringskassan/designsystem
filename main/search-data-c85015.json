@@ -155,6 +155,20 @@
     "scss",
     "css",
     "ikonbibliotek",
+    "På gång",
+    "pågående arbete",
+    "planerat arbete",
+    "framtid",
+    "Releaser",
+    "deprekering",
+    "borttagna komponenter",
+    "Releaseanteckningar",
+    "version",
+    "Designsystemet",
+    "status",
+    "produktionsklar",
+    "beta",
+    "experimentell",
     "Version 5 migreringsguide",
     "Vue 3",
     "FTable migreringsguide",
@@ -196,20 +210,16 @@
     "Riktlinjer för kod",
     "Checklista vid publicering",
     "personuppgifter",
-    "På gång",
-    "pågående arbete",
-    "planerat arbete",
-    "framtid",
-    "Releaser",
-    "deprekering",
-    "borttagna komponenter",
-    "Releaseanteckningar",
-    "version",
-    "Designsystemet",
-    "status",
-    "produktionsklar",
-    "beta",
-    "experimentell",
+    "EventBus",
+    "EventBus",
+    "services",
+    "focus-indicator() mixin",
+    "fokus",
+    "fokusindikator",
+    "sass",
+    "densify() function",
+    "densitet",
+    "sass",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -228,16 +238,6 @@
     "Jest",
     "testverktyg",
     "jest",
-    "EventBus",
-    "EventBus",
-    "services",
-    "focus-indicator() mixin",
-    "fokus",
-    "fokusindikator",
-    "sass",
-    "densify() function",
-    "densitet",
-    "sass",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -457,6 +457,14 @@
     "FFixedPane",
     "Detaljpanel",
     "FDetailsPanel",
+    "Modal dialogruta",
+    "FModal",
+    "FModalSize",
+    "modalSizes",
+    "Formulärsmodal",
+    "FFormModal",
+    "Bekräftelsemodal",
+    "FConfirmModal",
     "Förloppsindikator",
     "FProgressbar",
     "ladda",
@@ -470,14 +478,6 @@
     "länk",
     "Länk",
     "anchor",
-    "Modal dialogruta",
-    "FModal",
-    "FModalSize",
-    "modalSizes",
-    "Formulärsmodal",
-    "FFormModal",
-    "Bekräftelsemodal",
-    "FConfirmModal",
     "Komponentgrupp",
     "group",
     "gruppera",
@@ -1140,6 +1140,40 @@
       ]
     },
     {
+      "url": "gettingstarted/about/roadmap.html",
+      "title": "På gång",
+      "terms": [
+        "pågående arbete",
+        "planerat arbete",
+        "framtid"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/releases.html",
+      "title": "Releaser",
+      "terms": [
+        "deprekering",
+        "borttagna komponenter"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/release-notes.html",
+      "title": "Releaseanteckningar",
+      "terms": [
+        "version"
+      ]
+    },
+    {
+      "url": "gettingstarted/about/index.html",
+      "title": "Designsystemet",
+      "terms": [
+        "status",
+        "produktionsklar",
+        "beta",
+        "experimentell"
+      ]
+    },
+    {
       "url": "gettingstarted/migration/migrating-to-v5.html",
       "title": "Version 5 migreringsguide",
       "terms": [
@@ -1227,37 +1261,28 @@
       ]
     },
     {
-      "url": "gettingstarted/about/roadmap.html",
-      "title": "På gång",
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
       "terms": [
-        "pågående arbete",
-        "planerat arbete",
-        "framtid"
+        "services",
+        "EventBus"
       ]
     },
     {
-      "url": "gettingstarted/about/releases.html",
-      "title": "Releaser",
+      "url": "functions/sass/focus-indicator.html",
+      "title": "focus-indicator() mixin",
       "terms": [
-        "deprekering",
-        "borttagna komponenter"
+        "fokus",
+        "fokusindikator",
+        "sass"
       ]
     },
     {
-      "url": "gettingstarted/about/release-notes.html",
-      "title": "Releaseanteckningar",
+      "url": "functions/sass/densify.html",
+      "title": "densify() function",
       "terms": [
-        "version"
-      ]
-    },
-    {
-      "url": "gettingstarted/about/index.html",
-      "title": "Designsystemet",
-      "terms": [
-        "status",
-        "produktionsklar",
-        "beta",
-        "experimentell"
+        "densitet",
+        "sass"
       ]
     },
     {
@@ -1301,31 +1326,6 @@
       "terms": [
         "testverktyg",
         "jest"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
-      "url": "functions/sass/focus-indicator.html",
-      "title": "focus-indicator() mixin",
-      "terms": [
-        "fokus",
-        "fokusindikator",
-        "sass"
-      ]
-    },
-    {
-      "url": "functions/sass/densify.html",
-      "title": "densify() function",
-      "terms": [
-        "densitet",
-        "sass"
       ]
     },
     {
@@ -1800,6 +1800,29 @@
       ]
     },
     {
+      "url": "components/modal/fmodal.html",
+      "title": "Modal dialogruta",
+      "terms": [
+        "FModalSize",
+        "modalSizes",
+        "FModal"
+      ]
+    },
+    {
+      "url": "components/modal/fformmodal.html",
+      "title": "Formulärsmodal",
+      "terms": [
+        "FFormModal"
+      ]
+    },
+    {
+      "url": "components/modal/fconfirmmodal.html",
+      "title": "Bekräftelsemodal",
+      "terms": [
+        "FConfirmModal"
+      ]
+    },
+    {
       "url": "components/load/fprogressbar.html",
       "title": "Förloppsindikator",
       "terms": [
@@ -1830,29 +1853,6 @@
       "title": "Länk",
       "terms": [
         "anchor"
-      ]
-    },
-    {
-      "url": "components/modal/fmodal.html",
-      "title": "Modal dialogruta",
-      "terms": [
-        "FModalSize",
-        "modalSizes",
-        "FModal"
-      ]
-    },
-    {
-      "url": "components/modal/fformmodal.html",
-      "title": "Formulärsmodal",
-      "terms": [
-        "FFormModal"
-      ]
-    },
-    {
-      "url": "components/modal/fconfirmmodal.html",
-      "title": "Bekräftelsemodal",
-      "terms": [
-        "FConfirmModal"
       ]
     },
     {
@@ -3002,81 +3002,81 @@
     "154": 40,
     "155": 41,
     "156": 41,
-    "157": 42,
-    "158": 43,
-    "159": 44,
-    "160": 44,
-    "161": 45,
-    "162": 45,
-    "163": 45,
-    "164": 45,
-    "165": 45,
-    "166": 45,
-    "167": 45,
-    "168": 45,
+    "157": 41,
+    "158": 41,
+    "159": 42,
+    "160": 42,
+    "161": 42,
+    "162": 43,
+    "163": 43,
+    "164": 44,
+    "165": 44,
+    "166": 44,
+    "167": 44,
+    "168": 44,
     "169": 45,
     "170": 45,
-    "171": 45,
-    "172": 45,
-    "173": 45,
-    "174": 45,
-    "175": 46,
-    "176": 46,
-    "177": 46,
-    "178": 46,
-    "179": 46,
-    "180": 46,
-    "181": 46,
-    "182": 46,
-    "183": 46,
-    "184": 47,
-    "185": 47,
-    "186": 47,
-    "187": 47,
-    "188": 47,
-    "189": 47,
-    "190": 47,
-    "191": 47,
-    "192": 48,
-    "193": 49,
+    "171": 46,
+    "172": 47,
+    "173": 48,
+    "174": 48,
+    "175": 49,
+    "176": 49,
+    "177": 49,
+    "178": 49,
+    "179": 49,
+    "180": 49,
+    "181": 49,
+    "182": 49,
+    "183": 49,
+    "184": 49,
+    "185": 49,
+    "186": 49,
+    "187": 49,
+    "188": 49,
+    "189": 50,
+    "190": 50,
+    "191": 50,
+    "192": 50,
+    "193": 50,
     "194": 50,
     "195": 50,
-    "196": 51,
-    "197": 51,
+    "196": 50,
+    "197": 50,
     "198": 51,
     "199": 51,
-    "200": 52,
-    "201": 52,
-    "202": 52,
-    "203": 53,
-    "204": 53,
-    "205": 54,
-    "206": 54,
-    "207": 54,
+    "200": 51,
+    "201": 51,
+    "202": 51,
+    "203": 51,
+    "204": 51,
+    "205": 51,
+    "206": 52,
+    "207": 53,
     "208": 54,
     "209": 54,
     "210": 55,
     "211": 55,
     "212": 55,
-    "213": 55,
+    "213": 56,
     "214": 56,
     "215": 56,
     "216": 56,
     "217": 57,
     "218": 57,
     "219": 57,
-    "220": 57,
-    "221": 57,
+    "220": 58,
+    "221": 58,
     "222": 58,
     "223": 58,
-    "224": 58,
+    "224": 59,
     "225": 59,
     "226": 59,
-    "227": 59,
+    "227": 60,
     "228": 60,
     "229": 60,
     "230": 60,
-    "231": 61,
+    "231": 60,
     "232": 61,
     "233": 61,
     "234": 61,
@@ -3308,17 +3308,17 @@
     "460": 116,
     "461": 117,
     "462": 117,
-    "463": 117,
-    "464": 117,
-    "465": 118,
-    "466": 118,
-    "467": 118,
+    "463": 118,
+    "464": 118,
+    "465": 119,
+    "466": 119,
+    "467": 119,
     "468": 119,
-    "469": 119,
+    "469": 120,
     "470": 120,
     "471": 120,
     "472": 120,
-    "473": 120,
+    "473": 121,
     "474": 121,
     "475": 121,
     "476": 122,

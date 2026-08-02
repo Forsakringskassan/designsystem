@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/design-component-tests/Anchor/examples/AnchorLiveExample.vue:AnchorLiveExample-b8bd0e.js
+// virtual-entry:virtual:packages/vue/src/design-component-tests/Anchor/examples/AnchorLiveExample.vue:AnchorLiveExample-85e9b6.js
 import { defineComponent } from "vue";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
 import { FCheckboxField, FFieldset, FIcon, FRadioField, FSelectField } from "@fkui/vue";
@@ -213,7 +213,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-b8bd0e"
+  selector: "#example-85e9b6"
 });
 export {
   render

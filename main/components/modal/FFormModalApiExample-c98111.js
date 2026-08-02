@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FFormModalApiExample.vue:FFormModalApiExample-a90b78.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FFormModalApiExample.vue:FFormModalApiExample-c98111.js
 import { defineComponent as defineComponent2 } from "vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/examples/ExampleModal.vue?type=script
@@ -196,7 +196,7 @@ ExampleModal_default.render = render;
 ExampleModal_default.__file = "packages/vue/src/components/FModal/examples/ExampleModal.vue";
 var ExampleModal_default2 = ExampleModal_default;
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FFormModalApiExample.vue:FFormModalApiExample-a90b78.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FFormModalApiExample.vue:FFormModalApiExample-c98111.js
 import { FButton, formModal } from "@fkui/vue";
 import { createTextVNode as _createTextVNode2, resolveComponent as _resolveComponent2, withCtx as _withCtx2, createVNode as _createVNode, createElementVNode as _createElementVNode2, toDisplayString as _toDisplayString, openBlock as _openBlock2, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode } from "vue";
 var exampleComponent = defineComponent2({
@@ -266,7 +266,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-a90b78"
+  selector: "#example-c98111"
 });
 export {
   render2 as render

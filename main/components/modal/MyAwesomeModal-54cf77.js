@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/MyAwesomeModal.vue:MyAwesomeModal-54445e.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/MyAwesomeModal.vue:MyAwesomeModal-54cf77.js
 import { defineComponent as _defineComponent } from "vue";
 import { FButton, FModal } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, createElementVNode as _createElementVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
@@ -94,7 +94,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-54445e"
+  selector: "#example-54cf77"
 });
 export {
   render

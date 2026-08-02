@@ -751,9 +751,7 @@ function trigger(target, type, key, newValue, oldValue, oldTarget) {
 						if (isMap(target)) run(depsMap.get(MAP_KEY_ITERATE_KEY));
 					}
 					break;
-				case "set":
-					if (isMap(target)) run(depsMap.get(ITERATE_KEY));
-					break;
+				case "set": if (isMap(target)) run(depsMap.get(ITERATE_KEY));
 			}
 		}
 	}
@@ -5566,8 +5564,6 @@ function requireLodash_clonedeep() {
 	if (hasRequiredLodash_clonedeep) return lodash_clonedeep.exports;
 	hasRequiredLodash_clonedeep = 1;
 	(function(module, exports) {
-		/** Used as the size to enable large array optimizations. */
-		var LARGE_ARRAY_SIZE = 200;
 		/** Used to stand-in for `undefined` hash values. */
 		var HASH_UNDEFINED = "__lodash_hash_undefined__";
 		/** Used as references for various `Number` constants. */
@@ -6108,7 +6104,7 @@ function requireLodash_clonedeep() {
 			var cache = this.__data__;
 			if (cache instanceof ListCache) {
 				var pairs = cache.__data__;
-				if (!Map || pairs.length < LARGE_ARRAY_SIZE - 1) {
+				if (!Map || pairs.length < 199) {
 					pairs.push([key, value]);
 					return this;
 				}
@@ -7699,20 +7695,6 @@ var TranslationServiceImpl = class {
 * @public
 */
 var TranslationService = /* @__PURE__ */ new TranslationServiceImpl();
-/**
-* Resolves element type for a `ValidatableHTMLElement`.
-*
-* Input types other than text, radio, checkbox returns \"text\".
-* Fieldset returns \"radio\" or \"checkbox\" when it contains radio or checkbox elements.
-*
-* @internal
-*/
-function getElementType(element) {
-	if (element instanceof HTMLInputElement) return element.type === "checkbox" ? "checkbox" : element.type === "radio" ? "radio" : "text";
-	if (element instanceof HTMLTextAreaElement) return "textarea";
-	if (element instanceof HTMLSelectElement) return "select";
-	if (element instanceof HTMLFieldSetElement) return getElementType(element.querySelector("input[type='checkbox'], input[type='radio']"));
-}
 var wrapper;
 /**
 * Create an element for adding text to be read by a screen reader.
@@ -8226,7 +8208,7 @@ var __copyProps = (to, from, except, desc) => {
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp.call(mod, "default") ? __defProp(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -10016,6 +9998,7 @@ var TranslationMixin = { methods: { $t: translate } };
 function useTranslate() {
 	return translate;
 }
+/* istanbul ignore file */
 var require__listCacheClear = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	/**
 	* Removes all key-value entries from the list cache.
@@ -13316,6 +13299,7 @@ var require_function_apply = /* @__PURE__ */ __commonJSMin(((exports, module) =>
 		return accumulator;
 	} });
 })))();
+/* istanbul ignore file */
 var require_get_iterator_flattenable = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var call = require_function_call();
 	var anObject = require_an_object();
@@ -15719,9 +15703,7 @@ async function doMenuAction$1(action, target) {
 		case MenuAction.MOVE_LAST:
 			await target.setFocusOnItem(newFocusedItemIndex);
 			break;
-		case MenuAction.ACTIVATE:
-			await target.activateItem(newFocusedItemIndex);
-			break;
+		case MenuAction.ACTIVATE: await target.activateItem(newFocusedItemIndex);
 	}
 }
 var preventKeys$1 = /* @__PURE__ */ new Set([
@@ -18498,9 +18480,7 @@ async function doMenuAction(action, target, currentIndex, maxIndex) {
 		case MenuAction.MOVE_LAST:
 			await target.setFocusOnItem(itemIndex);
 			break;
-		case MenuAction.ACTIVATE:
-			await target.activateItem(itemIndex);
-			break;
+		case MenuAction.ACTIVATE: await target.activateItem(itemIndex);
 	}
 }
 var upKeys = /* @__PURE__ */ new Set(["Up", "ArrowUp"]);
@@ -19974,9 +19954,7 @@ function tokenizePath(path) {
 				if (char !== "*" && char !== "?" && char !== "+") i--;
 				customRe = "";
 				break;
-			default:
-				crash("Unknown state");
-				break;
+			default: crash("Unknown state");
 		}
 	}
 	if (state === 2) crash(`Unfinished custom RegExp for param "${buffer}"`);

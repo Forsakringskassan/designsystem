@@ -803,9 +803,7 @@ function trigger(target, type, key, newValue, oldValue, oldTarget) {
 						if (isMap(target)) run(depsMap.get(MAP_KEY_ITERATE_KEY));
 					}
 					break;
-				case "set":
-					if (isMap(target)) run(depsMap.get(ITERATE_KEY));
-					break;
+				case "set": if (isMap(target)) run(depsMap.get(ITERATE_KEY));
 			}
 		}
 	}
@@ -5882,15 +5880,7 @@ function h(type, propsOrChildren, children) {
 		setBlockTracking(1);
 	}
 }
-function initCustomFormatter() {
-	return;
-	function isKeyOfType(Comp, key, type) {
-		const opts = Comp[type];
-		if (isArray$1(opts) && opts.includes(key) || isObject$2(opts) && key in opts) return true;
-		if (Comp.extends && isKeyOfType(Comp.extends, key, type)) return true;
-		if (Comp.mixins && Comp.mixins.some((m) => isKeyOfType(m, key, type))) return true;
-	}
-}
+function initCustomFormatter() {}
 function withMemo(memo, render, cache, index) {
 	const cached = cache[index];
 	if (cached && isMemoSame(cached, memo)) return cached;
@@ -8371,9 +8361,7 @@ var Tokenizer = class {
 				case 24:
 					this.stateInProcessingInstruction(c);
 					break;
-				case 33:
-					this.stateInEntity();
-					break;
+				case 33: this.stateInEntity();
 			}
 			this.index++;
 		}
@@ -8494,12 +8482,10 @@ var isMemberExpressionBrowser = (exp) => {
 					if (!--currentOpenParensCount) state = stateStack.pop();
 				}
 				break;
-			case 3:
-				if (char === currentStringType) {
-					state = stateStack.pop();
-					currentStringType = null;
-				}
-				break;
+			case 3: if (char === currentStringType) {
+				state = stateStack.pop();
+				currentStringType = null;
+			}
 		}
 	}
 	return !currentOpenBracketCount && !currentOpenParensCount;
@@ -9465,9 +9451,7 @@ function traverseNode(node, context) {
 		case 10:
 		case 11:
 		case 1:
-		case 0:
-			traverseChildren(node, context);
-			break;
+		case 0: traverseChildren(node, context);
 	}
 	context.currentNode = node;
 	let i = exitFns.length;
@@ -9721,17 +9705,7 @@ function genNode(node, context) {
 		case 20:
 			genCacheExpression(node, context);
 			break;
-		case 21:
-			genNodeList(node.body, context, true, false);
-			break;
-		case 22: break;
-		case 23: break;
-		case 24: break;
-		case 25: break;
-		case 26: break;
-		/* v8 ignore start */
-		case 10: break;
-		default:
+		case 21: genNodeList(node.body, context, true, false);
 	}
 }
 function genText(node, context) {
@@ -10233,9 +10207,7 @@ function hasForwardedSlots(children) {
 				if (hasForwardedSlots(child.branches)) return true;
 				break;
 			case 10:
-			case 11:
-				if (hasForwardedSlots(child.children)) return true;
-				break;
+			case 11: if (hasForwardedSlots(child.children)) return true;
 		}
 	}
 	return false;
@@ -10446,9 +10418,7 @@ function buildProps(node, context, props = node.props, isComponent, isDynamicCom
 			} else propsExpression = createCallExpression(context.helper(NORMALIZE_PROPS), [propsExpression]);
 			break;
 		case 14: break;
-		default:
-			propsExpression = createCallExpression(context.helper(NORMALIZE_PROPS), [createCallExpression(context.helper(GUARD_REACTIVE_PROPS), [propsExpression])]);
-			break;
+		default: propsExpression = createCallExpression(context.helper(NORMALIZE_PROPS), [createCallExpression(context.helper(GUARD_REACTIVE_PROPS), [propsExpression])]);
 	}
 	return {
 		props: propsExpression,
@@ -10803,9 +10773,7 @@ function parseFilter(node, context) {
 				case 123:
 					curly++;
 					break;
-				case 125:
-					curly--;
-					break;
+				case 125: curly--;
 			}
 			if (c === 47) {
 				let j = i - 1;
@@ -11043,8 +11011,6 @@ var transformModel = (dir, node, context) => {
 					case "file":
 						isInvalidType = true;
 						context.onError(createDOMCompilerError(60, dir.loc));
-						break;
-					default: break;
 				}
 			} else if (hasDynamicKeyVBind(node)) directiveToUse = V_MODEL_DYNAMIC;
 		} else if (tag === "select") directiveToUse = V_MODEL_SELECT;
@@ -11369,8 +11335,6 @@ function requireLodash_clonedeep() {
 	if (hasRequiredLodash_clonedeep) return lodash_clonedeep.exports;
 	hasRequiredLodash_clonedeep = 1;
 	(function(module, exports) {
-		/** Used as the size to enable large array optimizations. */
-		var LARGE_ARRAY_SIZE = 200;
 		/** Used to stand-in for `undefined` hash values. */
 		var HASH_UNDEFINED = "__lodash_hash_undefined__";
 		/** Used as references for various `Number` constants. */
@@ -11911,7 +11875,7 @@ function requireLodash_clonedeep() {
 			var cache = this.__data__;
 			if (cache instanceof ListCache) {
 				var pairs = cache.__data__;
-				if (!Map || pairs.length < LARGE_ARRAY_SIZE - 1) {
+				if (!Map || pairs.length < 199) {
 					pairs.push([key, value]);
 					return this;
 				}
@@ -16111,7 +16075,7 @@ var __copyProps$1 = (to, from, except, desc) => {
 	}
 	return to;
 };
-var __toESM$1 = (mod, isNodeMode, target) => (target = mod != null ? __create$1(__getProtoOf$1(mod)) : {}, __copyProps$1(isNodeMode || !mod || !mod.__esModule ? __defProp$1(target, "default", {
+var __toESM$1 = (mod, isNodeMode, target) => (target = mod != null ? __create$1(__getProtoOf$1(mod)) : {}, __copyProps$1(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp$1.call(mod, "default") ? __defProp$1(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -17924,6 +17888,7 @@ var TranslationMixin = { methods: { $t: translate } };
 function useTranslate() {
 	return translate;
 }
+/* istanbul ignore file */
 var require__listCacheClear = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	/**
 	* Removes all key-value entries from the list cache.
@@ -21968,37 +21933,6 @@ function _sfc_render$42(_ctx, _cache, $props, $setup, $data, $options) {
 	]);
 }
 var FFormModal_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FFormModal_vue_vue_type_script_lang_default, [["render", _sfc_render$42]]);
-function isVueComponent(element) {
-	return Boolean(element && typeof element === "object" && "$el" in element);
-}
-/**
-* Give browser focus to a given element.
-*
-* If an array is passed, only the first element will receive focus.
-*
-* Vue components containing a `focusTarget` attribute will recursively pass along the focus to that
-* value.
-*
-* For convenience it will ignore `null` and `undefined` as element parameter.
-*
-* @public
-* @param element - Element to focus.
-* @param options - Focus options. If you pass boolean `true` or `false` it sets the `force` option.
-*
-* @returns `true` if successfully found an HTMLElement to focus. Otherwise, `false`.
-*/
-function focus(element, options = {}) {
-	if (Array.isArray(element)) element = element[0];
-	if (isVueComponent(element)) {
-		var _element$focusTarget;
-		return focus((_element$focusTarget = element.focusTarget) !== null && _element$focusTarget !== void 0 ? _element$focusTarget : element.$el, options);
-	}
-	if (element instanceof HTMLElement) {
-		focus$1(element, options);
-		return true;
-	}
-	return false;
-}
 var defaultOptions$1 = {
 	stripClasses: ["sr-only"],
 	componentPlaceholder: false
@@ -22526,6 +22460,7 @@ var ValidationPlugin = { install(app) {
 	app.directive("validation", ValidationDirective);
 	app.directive("validationPrefix", ValidationPrefixDirective);
 } };
+/* istanbul ignore file */
 var require_get_iterator_flattenable = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var call = require_function_call();
 	var anObject = require_an_object();
@@ -25471,10 +25406,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
 				if (dropdownIsOpen.value) close();
 				flag = true;
 				break;
-			case "Tab":
-				if (dropdownIsOpen.value) close();
-				break;
-			default: break;
+			case "Tab": if (dropdownIsOpen.value) close();
 		}
 		if (flag) {
 			event.stopPropagation();
@@ -26182,9 +26114,7 @@ function useMenuAction(options) {
 			case MenuAction.MOVE_LAST:
 				await setFocusOnItem(newFocusedItemIndex);
 				break;
-			case MenuAction.ACTIVATE:
-				await activateItem(newFocusedItemIndex);
-				break;
+			case MenuAction.ACTIVATE: await activateItem(newFocusedItemIndex);
 		}
 	} };
 }
@@ -26288,9 +26218,7 @@ var FContextMenu_default = /* @__PURE__ */ defineComponent({
 					case "click-outside":
 						popFocus(focusHandle, { restoreFocus: false });
 						break;
-					default:
-						popFocus(focusHandle, { restoreFocus: true });
-						break;
+					default: popFocus(focusHandle, { restoreFocus: true });
 				}
 				focusHandle = null;
 			}
@@ -26522,8 +26450,8 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 		const callbackAfterItemAdd = /* @__PURE__ */ ref(() => ({}));
 		const callbackBeforeItemDelete = /* @__PURE__ */ ref(() => ({}));
 		const formModalButtons = computed(() => {
-			const confirmButtonText = operation.value === Operation.ADD ? $t("fkui.crud-dataset.modal.confirm.add", "Lägg till") : 			/** "Save" button in "modify" modal */ $t("fkui.crud-dataset.modal.confirm.modify", "Spara");
-			const cancelButtonText = operation.value === Operation.ADD ? $t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : 			/** "Cancel" button in "modify" modal */ $t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
+			const confirmButtonText = operation.value === Operation.ADD ? $t("fkui.crud-dataset.modal.confirm.add", "Lägg till") : /** "Save" button in "modify" modal */ $t("fkui.crud-dataset.modal.confirm.modify", "Spara");
+			const cancelButtonText = operation.value === Operation.ADD ? $t("fkui.crud-dataset.modal.cancel.add", "Avbryt") : /** "Cancel" button in "modify" modal */ $t("fkui.crud-dataset.modal.cancel.modify", "Avbryt");
 			return [{
 				label: confirmButtonText,
 				event: "confirm",
@@ -28223,10 +28151,7 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 					e.preventDefault();
 					setPreviousOption();
 					break;
-				case "Space":
-					e.preventDefault();
-					break;
-				default: break;
+				case "Space": e.preventDefault();
 			}
 		}
 		async function onEditBlur(event) {
@@ -28600,9 +28525,7 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 					inputElement.value.value = initialViewValue;
 					validationFacade.validateElement(inputElement.value);
 					break;
-				case "Tab":
-					pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
-					break;
+				case "Tab": pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
 			}
 		}
 		function onKeydown(event) {
@@ -29037,9 +28960,7 @@ function useSelectable(options) {
 			case toValue(rows).length:
 				headerState.value = true;
 				break;
-			default:
-				headerState.value = "indeterminate";
-				break;
+			default: headerState.value = "indeterminate";
 		}
 	});
 	function toggleSelectableHeader() {
@@ -32153,9 +32074,7 @@ function tokenizePath(path) {
 				if (char !== "*" && char !== "?" && char !== "+") i--;
 				customRe = "";
 				break;
-			default:
-				crash("Unknown state");
-				break;
+			default: crash("Unknown state");
 		}
 	}
 	if (state === 2) crash(`Unfinished custom RegExp for param "${buffer}"`);
@@ -40431,9 +40350,7 @@ function Ro$1(e) {
 		case "comment":
 			e.value = e.sourceSpan.toString().slice(4, -3);
 			break;
-		case "text":
-			e.value = e.sourceSpan.toString();
-			break;
+		case "text": e.value = e.sourceSpan.toString();
 	}
 }
 function Oo(e, t) {
@@ -41746,9 +41663,7 @@ function tt(t, e, r, n, u, o) {
 			case M:
 				n = !0;
 				break;
-			case Y:
-				if (n) return !1;
-				break;
+			case Y: if (n) return !1;
 		}
 	}
 	return !1;
@@ -41933,7 +41848,6 @@ function Ce(t, e) {
 							break;
 						}
 						d.literal ? (a.write(u), o = 0, f.root && (f.root.value && a.write(f.root.value), o = f.root.length)) : (a.trim(), a.write(u + f.value), o = f.length);
-						break;
 				}
 				break;
 			case b:
@@ -43672,9 +43586,7 @@ function ru(t, e, r, n, u) {
 		case e.nodeBeforeCursor:
 			D = Ee(D, (s) => [s, ee]);
 			break;
-		case e.nodeAfterCursor:
-			D = Ee(D, (s) => [ee, s]);
-			break;
+		case e.nodeAfterCursor: D = Ee(D, (s) => [ee, s]);
 	}
 	return i.printComment && rt(o.comments) && !i.willPrintOwnComments?.(t, e) && (D = pn(t, D, e)), D;
 }

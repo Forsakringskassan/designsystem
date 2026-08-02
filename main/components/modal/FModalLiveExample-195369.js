@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FModalLiveExample.vue:FModalLiveExample-debf03.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FModalLiveExample.vue:FModalLiveExample-195369.js
 import { defineComponent } from "vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
 import { FButton, FCheckboxField, FModal, FSelectField } from "@fkui/vue";
@@ -237,7 +237,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-debf03"
+  selector: "#example-195369"
 });
 export {
   render
