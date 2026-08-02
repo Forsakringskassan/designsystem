@@ -136,7 +136,7 @@ describe("useExpandableTable", () => {
         const expandableColumns = expandedRow.findAll("td");
 
         expect(expandableColumns).toHaveLength(2);
-        expect(expandableColumns[1].attributes()["colspan"]).toContain("2");
+        expect(expandableColumns[1].attributes().colspan).toContain("2");
         expect(expandableColumns[1].text()).toContain("B");
     });
 

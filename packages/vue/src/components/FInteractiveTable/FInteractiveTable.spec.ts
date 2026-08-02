@@ -666,7 +666,7 @@ describe("events", () => {
             await table.vm.$nextTick();
             expect(table.emitted("update:active")).toHaveLength(2);
             expect(
-                (wrapper.vm.$data as TestComponentData)["active"],
+                (wrapper.vm.$data as TestComponentData).active,
             ).toStrictEqual({ id: 1 });
         });
 

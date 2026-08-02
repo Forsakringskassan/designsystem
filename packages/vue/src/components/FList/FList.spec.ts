@@ -314,7 +314,7 @@ describe("select events", () => {
         });
 
         await wrapper.findAll("div.list__item__selectpane")[1].trigger("click");
-        expect(wrapper.emitted()["select"]).toEqual([[items[1]]]);
+        expect(wrapper.emitted().select).toEqual([[items[1]]]);
     });
 
     it("should emit select event when items checkbox is clicked", async () => {
@@ -328,7 +328,7 @@ describe("select events", () => {
         });
 
         await wrapper.findAll("input")[1].trigger("click");
-        expect(wrapper.emitted()["select"]).toEqual([[items[1]]]);
+        expect(wrapper.emitted().select).toEqual([[items[1]]]);
     });
 
     it("should emit unselect event when items checkbox is clicked", async () => {
@@ -343,7 +343,7 @@ describe("select events", () => {
         });
 
         await wrapper.findAll("input")[1].trigger("click");
-        expect(wrapper.emitted()["unselect"]).toEqual([[items[1]]]);
+        expect(wrapper.emitted().unselect).toEqual([[items[1]]]);
     });
 });
 
