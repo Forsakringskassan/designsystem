@@ -48,9 +48,9 @@ it("should throw error when id element is missing", () => {
         title: "Mock error",
         id: "missing",
     };
-    expect(() => focusError(error)).toThrow(
-        `Can not find element with id "missing"`,
-    );
+    expect(() => {
+        focusError(error);
+    }).toThrow(`Can not find element with id "missing"`);
 });
 
 it("should fallback on id when focusElementId is missing", () => {

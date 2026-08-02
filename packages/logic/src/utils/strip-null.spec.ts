@@ -52,6 +52,7 @@ it("should handle deep object", () => {
 
 it("should convert null to undefined", () => {
     expect.assertions(1);
+    /* eslint-disable-next-line @typescript-eslint/no-confusing-void-expression -- false positive */
     expect(stripNull(null)).toBeUndefined();
 });
 

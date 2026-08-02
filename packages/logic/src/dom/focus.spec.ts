@@ -149,13 +149,17 @@ describe("focus", () => {
 
     it("should ignore element parameter that is undefined", () => {
         expect.assertions(2);
-        expect(() => focus(undefined, true)).not.toThrow();
+        expect(() => {
+            focus(undefined, true);
+        }).not.toThrow();
         expect(document.body).toHaveFocus();
     });
 
     it("should ignore element parameter that is null", () => {
         expect.assertions(2);
-        expect(() => focus(null, true)).not.toThrow();
+        expect(() => {
+            focus(null, true);
+        }).not.toThrow();
         expect(document.body).toHaveFocus();
     });
 
@@ -166,7 +170,9 @@ describe("focus", () => {
             "svg",
         );
         const spy = vi.spyOn(svg, "focus");
-        expect(() => focus(svg, true)).not.toThrow();
+        expect(() => {
+            focus(svg, true);
+        }).not.toThrow();
         expect(spy).not.toHaveBeenCalled();
         expect(document.body).toHaveFocus();
     });
@@ -488,9 +494,9 @@ describe("focus stack", () => {
             resetFocusStack();
 
             // When, Then
-            expect(() => popFocus(handle1)).toThrow(
-                new Error("Can not call pop on an empty focus stack"),
-            );
+            expect(() => {
+                popFocus(handle1);
+            }).toThrow(new Error("Can not call pop on an empty focus stack"));
         });
 
         it("should write an error to the console when popFocus called without valid StackHandle in prod", () => {
@@ -519,7 +525,9 @@ describe("focus stack", () => {
             pushFocus();
 
             // When, Then
-            expect(() => popFocus(handle1)).toThrow(
+            expect(() => {
+                popFocus(handle1);
+            }).toThrow(
                 new Error(
                     "push/pop called out-of-order. Expected stack handle id: 1 but got 0",
                 ),
