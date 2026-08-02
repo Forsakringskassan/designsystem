@@ -42,7 +42,7 @@ describe("validation", () => {
         expect.assertions(1);
 
         expect(() =>
-            maxValueValidator.validation!("2", element, { maxValue: "five" }),
+            maxValueValidator.validation("2", element, { maxValue: "five" }),
         ).toThrowErrorMatchingInlineSnapshot(
             `[Error: config.maxValue must be a number]`,
         );
