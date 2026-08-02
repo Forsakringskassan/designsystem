@@ -52,7 +52,6 @@ export default [
         ignores: [
             "**/*.d.ts",
             "**/*.cy.ts",
-            "**/*.spec.ts",
             "**/jest.setup.ts",
             "**/vitest.setup.ts",
             "**/vite.config.ts",
@@ -165,6 +164,29 @@ export default [
         files: ["docs/**/*"],
         rules: {
             "unicorn/filename-case": "off",
+        },
+    },
+
+    {
+        name: "technical-debt",
+        files: ["**/*.spec.ts"],
+        rules: {
+            "@typescript-eslint/await-thenable": "off",
+            "@typescript-eslint/dot-notation": "off",
+            "@typescript-eslint/no-confusing-void-expression": "off",
+            "@typescript-eslint/no-deprecated": "off",
+            "@typescript-eslint/no-floating-promises": "off",
+            "@typescript-eslint/no-unnecessary-condition": "off",
+            "@typescript-eslint/no-unnecessary-type-assertion": "off",
+            "@typescript-eslint/no-unsafe-argument": "off",
+            "@typescript-eslint/no-unsafe-call": "off",
+            "@typescript-eslint/no-unsafe-return": "off",
+            "@typescript-eslint/non-nullable-type-assertion-style": "off",
+            "@typescript-eslint/prefer-nullish-coalescing": "off",
+            "@typescript-eslint/require-await": "off",
+            "@typescript-eslint/restrict-template-expressions": "off",
+            "@typescript-eslint/unbound-method": "off",
+            "sonarjs/no-undefined-argument": "off",
         },
     },
 ];

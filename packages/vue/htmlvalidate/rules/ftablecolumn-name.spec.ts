@@ -1,7 +1,6 @@
 import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
 import { describe, expect, it } from "vitest";
-// eslint-disable-next-line import-x/extensions -- Vite migration
 import plugin from "../index.cjs";
 
 const htmlvalidate = new HtmlValidate({
