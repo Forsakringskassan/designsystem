@@ -19,14 +19,14 @@ it("should not report when arbitrary svg is used", async () => {
         </svg>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
 });
 
 it("should not report for other elements with icon class", async () => {
     expect.assertions(1);
     const markup = /* HTML */ ` <div class="icon"></div> `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
 });
 
 it("should report error for svg with icon", async () => {
@@ -37,7 +37,7 @@ it("should report error for svg with icon", async () => {
         </svg>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeInvalid();
+    await expect(report).toBeInvalid();
     await expect(report).toMatchInlineCodeframe(`
         "error: Prefer using <f-icon> instead of directly using <svg> (fkui/prefer-ficon)
           1 |

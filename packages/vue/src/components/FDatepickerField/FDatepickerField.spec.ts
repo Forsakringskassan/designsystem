@@ -73,7 +73,7 @@ describe("textfield", () => {
         const wrapper = mount(FDatepickerField);
 
         const input = wrapper.get("input");
-        input.setValue("2022-02-02");
+        await input.setValue("2022-02-02");
         await flushPromises();
 
         const updateEvent = wrapper.emitted("update:modelValue")!;
@@ -86,7 +86,7 @@ describe("textfield", () => {
         const wrapper = mount(FDatepickerField);
 
         const input = wrapper.get("input");
-        input.setValue("2022-02-02");
+        await input.setValue("2022-02-02");
         await flushPromises();
 
         const changeEvent = wrapper.emitted("change")!;
@@ -125,7 +125,7 @@ describe("calendar", () => {
 
 describe("html-validate", () => {
     describe("attributes", () => {
-        it("disabled", () => {
+        it("disabled", async () => {
             expect.assertions(2);
             const valid = /* HTML */ `
                 <f-datepicker-field></f-datepicker-field>
@@ -135,8 +135,8 @@ describe("html-validate", () => {
             const invalid = /* HTML */ `
                 <f-datepicker-field disabled="foobar"></f-datepicker-field>
             `;
-            expect(valid).toMatchInlineCodeframe(`""`);
-            expect(invalid).toMatchInlineCodeframe(`
+            await expect(valid).toMatchInlineCodeframe(`""`);
+            await expect(invalid).toMatchInlineCodeframe(`
                 "error: Attribute "disabled" should omit value (attribute-boolean-style)
                   1 |
                 > 2 |                 <f-datepicker-field disabled="foobar"></f-datepicker-field>
@@ -152,17 +152,17 @@ describe("html-validate", () => {
             `);
         });
 
-        it("initial-month", () => {
+        it("initial-month", async () => {
             expect.assertions(1);
             const valid = /* HTML */ `
                 <f-datepicker-field></f-datepicker-field>
                 <f-datepicker-field :initial-month="myInitialDate">
                 </f-datepicker-field>
             `;
-            expect(valid).toMatchInlineCodeframe(`""`);
+            await expect(valid).toMatchInlineCodeframe(`""`);
         });
 
-        it("highlight-today", () => {
+        it("highlight-today", async () => {
             expect.assertions(2);
             const valid = /* HTML */ `
                 <f-datepicker-field></f-datepicker-field>
@@ -174,8 +174,8 @@ describe("html-validate", () => {
                 <f-datepicker-field highlight-today="foobar">
                 </f-datepicker-field>
             `;
-            expect(valid).toMatchInlineCodeframe(`""`);
-            expect(invalid).toMatchInlineCodeframe(`
+            await expect(valid).toMatchInlineCodeframe(`""`);
+            await expect(invalid).toMatchInlineCodeframe(`
                 "error: Attribute "highlight-today" should omit value (attribute-boolean-style)
                   1 |
                 > 2 |                 <f-datepicker-field highlight-today="foobar">
@@ -193,7 +193,7 @@ describe("html-validate", () => {
             `);
         });
 
-        it("always-inline", () => {
+        it("always-inline", async () => {
             expect.assertions(2);
             const valid = /* HTML */ `
                 <f-datepicker-field></f-datepicker-field>
@@ -203,8 +203,8 @@ describe("html-validate", () => {
             const invalid = /* HTML */ `
                 <f-datepicker-field always-inline="foobar"></f-datepicker-field>
             `;
-            expect(valid).toMatchInlineCodeframe(`""`);
-            expect(invalid).toMatchInlineCodeframe(`
+            await expect(valid).toMatchInlineCodeframe(`""`);
+            await expect(invalid).toMatchInlineCodeframe(`
                 "error: Attribute "always-inline" should omit value (attribute-boolean-style)
                   1 |
                 > 2 |                 <f-datepicker-field always-inline="foobar"></f-datepicker-field>
@@ -222,7 +222,7 @@ describe("html-validate", () => {
     });
 
     describe("slots", () => {
-        it("should allow phrasing content in #default slot", () => {
+        it("should allow phrasing content in #default slot", async () => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <f-datepicker-field>
@@ -231,7 +231,7 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-            expect(markup).toHTMLValidate();
+            await expect(markup).toHTMLValidate();
         });
 
         it("should not allow block content in #default slot", async () => {

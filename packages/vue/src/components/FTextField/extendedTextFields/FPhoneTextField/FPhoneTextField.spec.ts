@@ -159,7 +159,7 @@ describe("events", () => {
         const htmlInput = input.element;
         expect(htmlInput.value).toBe("888");
 
-        input.setValue("888-888");
+        await input.setValue("888-888");
         expect(htmlInput.value).toBe("888-888");
 
         await input.trigger("change");
@@ -241,7 +241,7 @@ describe("validation", () => {
         );
 
         await input.trigger("focus");
-        input.setValue("");
+        await input.setValue("");
         await input.trigger("blur");
 
         expect(wrapper.get(".label__message--error").text()).toBe(
@@ -249,7 +249,7 @@ describe("validation", () => {
         );
 
         await input.trigger("focus");
-        input.setValue("5.5");
+        await input.setValue("5.5");
         await input.trigger("blur");
 
         expect(wrapper.get(".label__message--error").text()).toBe(
@@ -320,9 +320,8 @@ describe("html-validate", () => {
         ${'<f-phone-text-field maxlength="80">Telefonnummer</f-phone-text-field>'}
         ${'<f-phone-text-field id="phone-input" maxlength="80">Telefonnummer</f-phone-text-field>'}
         ${'<f-phone-text-field id="phone-input" v-validation.required maxlength="80">Telefonnummer</f-phone-text-field>'}
-    `("$html should be valid", ({ html }) => {
+    `("$html should be valid", async ({ html }) => {
         expect.assertions(1);
-
-        expect(html).toHTMLValidate();
+        await expect(html).toHTMLValidate();
     });
 });

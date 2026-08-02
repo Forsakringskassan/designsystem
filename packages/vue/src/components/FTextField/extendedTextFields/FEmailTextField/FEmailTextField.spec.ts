@@ -157,7 +157,7 @@ describe("events", () => {
         const htmlInput = input.element;
         expect(htmlInput.value).toBe("foo@example.net");
 
-        input.setValue("bar@example.net");
+        await input.setValue("bar@example.net");
         expect(htmlInput.value).toBe("bar@example.net");
 
         await input.trigger("change");
@@ -238,7 +238,7 @@ describe("validation", () => {
         );
 
         await input.trigger("focus");
-        input.setValue("");
+        await input.setValue("");
         await input.trigger("blur");
         await flushPromises();
 
@@ -247,7 +247,7 @@ describe("validation", () => {
         );
 
         await input.trigger("focus");
-        input.setValue("5.5");
+        await input.setValue("5.5");
         await input.trigger("blur");
         await flushPromises();
 
@@ -364,7 +364,7 @@ describe("disable paste", () => {
 
         const input = wrapper.findAll("input")[1];
         await input.trigger("focus");
-        input.setValue("bad.formatted.email");
+        await input.setValue("bad.formatted.email");
         await input.trigger("blur");
         await flushPromises();
 
@@ -380,13 +380,12 @@ describe("html-validate", () => {
         ${'<f-email-text-field type="email" max-length="80">E-post</f-email-text-field>'}
         ${'<f-email-text-field id="email-input" max-length="80">E-post</f-email-text-field>'}
         ${'<f-email-text-field id="email-input" max-length="80" v-validation.required>E-post</f-email-text-field>'}
-    `("$html should be valid", ({ html }) => {
+    `("$html should be valid", async ({ html }) => {
         expect.assertions(1);
-
-        expect(html).toHTMLValidate();
+        await expect(html).toHTMLValidate();
     });
 
-    it("should allow custom label for default and extended field", () => {
+    it("should allow custom label for default and extended field", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-email-text-field extended-validation>
@@ -394,6 +393,6 @@ describe("html-validate", () => {
                 <template #extended-label> Upprepa e-post </template>
             </f-email-text-field>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 });

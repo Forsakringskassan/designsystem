@@ -22,7 +22,7 @@ it("should focus Vue component", () => {
     expect(wrapper.element).toHaveFocus();
 });
 
-it("should focus $ref", () => {
+it("should focus $ref", async () => {
     expect.assertions(1);
     // Given
     const TestComponent = defineComponent({
@@ -43,13 +43,13 @@ it("should focus $ref", () => {
     });
 
     // When
-    wrapper.get("button").trigger("click");
+    await wrapper.get("button").trigger("click");
 
     // Then
     expect(wrapper.get("p").element).toHaveFocus();
 });
 
-it("should focus nested targetElement", () => {
+it("should focus nested targetElement", async () => {
     expect.assertions(1);
     // Given
     const DeepComponent = defineComponent({
@@ -89,7 +89,7 @@ it("should focus nested targetElement", () => {
         attachTo: createPlaceholderInDocument(),
     });
 
-    wrapper.get("button").trigger("click");
+    await wrapper.get("button").trigger("click");
 
     // Then
     expect(wrapper.get(`[data-test="expectedElement"]`).element).toHaveFocus();

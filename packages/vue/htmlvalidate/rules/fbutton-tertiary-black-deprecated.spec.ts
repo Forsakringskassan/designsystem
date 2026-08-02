@@ -19,8 +19,8 @@ it('should report error when `tertiary-style="black"` is used', async () => {
         ></f-button>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeInvalid();
-    expect(report).toMatchInlineCodeframe(`
+    await expect(report).toBeInvalid();
+    await expect(report).toMatchInlineCodeframe(`
         "error: \`tertiary-style\` \`black\` is deprecated and replaced by \`muted\` (fkui/fbutton-tertiary-black-deprecated)
           3 |             variant="tertiary"
           4 |             size="medium"

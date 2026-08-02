@@ -1135,7 +1135,7 @@ describe("7.4 Bulk selection in expandable", () => {
             },
         });
 
-        wrapper.get("button").trigger("click"); // expand row
+        await wrapper.get("button").trigger("click"); // expand row
         await flushPromises();
 
         expect(
@@ -1169,7 +1169,7 @@ describe("7.4 Bulk selection in expandable", () => {
             },
         });
 
-        wrapper.get("button").trigger("click"); // expand row
+        await wrapper.get("button").trigger("click"); // expand row
         await flushPromises();
 
         expect(

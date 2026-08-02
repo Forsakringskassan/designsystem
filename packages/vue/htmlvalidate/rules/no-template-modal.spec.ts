@@ -20,7 +20,7 @@ it("should report when `f-modal` is not root element", async () => {
         </div>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeInvalid();
+    await expect(report).toBeInvalid();
     await expect(report).toMatchInlineCodeframe(`
         "error: f-modal must be root element (fkui/no-template-modal)
           1 |
@@ -54,7 +54,7 @@ it("should report when `f-confirm-modal` is not root element", async () => {
         </div>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeInvalid();
+    await expect(report).toBeInvalid();
     await expect(report).toMatchInlineCodeframe(`
         "error: f-confirm-modal must be root element (fkui/no-template-modal)
           1 |
@@ -88,7 +88,7 @@ it("should report when `f-form-modal` is not root element", async () => {
         </div>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeInvalid();
+    await expect(report).toBeInvalid();
     await expect(report).toMatchInlineCodeframe(`
         "error: f-form-modal must be root element (fkui/no-template-modal)
           1 |
@@ -120,7 +120,7 @@ it("should not report when `f-modal` is root element", async () => {
         </template>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
 });
 
@@ -133,7 +133,7 @@ it("should not report when `f-confirm-modal` is root element", async () => {
         </template>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
 });
 
@@ -146,6 +146,6 @@ it("should not report when `f-form-modal` is root element", async () => {
         </template>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
 });

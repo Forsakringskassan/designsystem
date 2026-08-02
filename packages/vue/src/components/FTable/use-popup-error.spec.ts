@@ -14,7 +14,7 @@ describe("usePopupError", () => {
         const { activeErrorAnchor, onPopupError } = usePopupError();
         const anchor = document.createElement("div");
         const arrowAnchor = document.createElement("div");
-        onPopupError({
+        await onPopupError({
             hasFocus: true,
             hasHover: false,
             inEdit: false,
@@ -31,7 +31,7 @@ describe("usePopupError", () => {
         const { activeErrorAnchor, onPopupError } = usePopupError();
         const anchor = document.createElement("div");
         const arrowAnchor = document.createElement("div");
-        onPopupError({
+        await onPopupError({
             hasFocus: false,
             hasHover: true,
             inEdit: false,
@@ -50,7 +50,7 @@ describe("usePopupError", () => {
         const anchor2 = document.createElement("div");
         const arrowAnchor1 = document.createElement("div");
         const arrowAnchor2 = document.createElement("div");
-        onPopupError({
+        await onPopupError({
             hasFocus: true,
             hasHover: false,
             inEdit: false,
@@ -61,7 +61,7 @@ describe("usePopupError", () => {
         await flushPromises();
         expect(activeErrorAnchor.value?.isSameNode(anchor1)).toBeTruthy();
 
-        onPopupError({
+        await onPopupError({
             hasFocus: false,
             hasHover: true,
             inEdit: false,

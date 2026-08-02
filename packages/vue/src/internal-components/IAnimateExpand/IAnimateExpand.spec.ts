@@ -254,32 +254,30 @@ describe("html-validate", () => {
         ${"<i-animate-expand></i-animate-expand>"}
         ${"<i-animate-expand>DEFAULT CONTENT</i-animate-expand>"}
         ${"<i-animate-expand><i-animate-expand></i-animate-expand></i-animate-expand>"}
-    `("$html should be valid", ({ html }) => {
+    `("$html should be valid", async ({ html }) => {
         expect.assertions(1);
-
-        expect(html).toHTMLValidate();
+        await expect(html).toHTMLValidate();
     });
 
     it.each(["animate", "opacity", "use-v-show"])(
         "attribute %s should be allowed without value (boolean)",
-        (attr) => {
+        async (attr) => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <i-animate-expand ${attr}></i-animate-expand>
             `;
-            expect(markup).toHTMLValidate();
+            await expect(markup).toHTMLValidate();
         },
     );
 
     it.each(["animate", "opacity", "use-v-show"])(
         "attribute %s should not allow value",
-        (attr) => {
+        async (attr) => {
             expect.assertions(1);
             const markup = /* HTML */ `
                 <i-animate-expand ${attr}="true"></i-animate-expand>
             `;
-
-            expect(markup).not.toHTMLValidate({
+            await expect(markup).not.toHTMLValidate({
                 ruleId: "attribute-boolean-style",
                 message: `Attribute "${attr}" should omit value`,
             });
@@ -294,13 +292,12 @@ describe("html-validate", () => {
         ${0}            | ${"number"}
         ${1}            | ${"number"}
         ${"somestring"} | ${"any string"}
-    `("attribute expand should allow $description ($value)", (value) => {
+    `("attribute expand should allow $description ($value)", async (value) => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <i-animate-expand expanded="${value}"></i-animate-expand>
         `;
-
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 });
 

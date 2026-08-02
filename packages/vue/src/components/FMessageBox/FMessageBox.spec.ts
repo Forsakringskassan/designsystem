@@ -48,7 +48,7 @@ describe("FMessageBox", () => {
                 slots: {
                     default: `
                         <template #default="{ headingSlotClass }">
-                             <h3 :class="headingSlotClass">Rubrik</h3>                            
+                             <h3 :class="headingSlotClass">Rubrik</h3>
                         </template>
                     `,
                 },
@@ -123,7 +123,7 @@ describe("FMessageBox", () => {
 });
 
 describe("html-validate", () => {
-    it("should not report error when used correctly", () => {
+    it("should not report error when used correctly", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-message-box type="warning">
@@ -133,30 +133,30 @@ describe("html-validate", () => {
                 </template>
             </f-message-box>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
-    it("should report error when obsolete heading slot is used", () => {
+    it("should report error when obsolete heading slot is used", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-message-box type="warning">
                 <template v-slot:heading></template>
             </f-message-box>
         `;
-        expect(markup).not.toHTMLValidate();
+        await expect(markup).not.toHTMLValidate();
     });
 
-    it("should report error when type is missing", () => {
+    it("should report error when type is missing", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-message-box></f-message-box> `;
-        expect(markup).not.toHTMLValidate();
+        await expect(markup).not.toHTMLValidate();
     });
 
-    it("should report error when type is invalid", () => {
+    it("should report error when type is invalid", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-message-box type="foobar"></f-message-box>
         `;
-        expect(markup).not.toHTMLValidate();
+        await expect(markup).not.toHTMLValidate();
     });
 });

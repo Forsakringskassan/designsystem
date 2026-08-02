@@ -25,7 +25,7 @@ describe("`FTableColumn` with `FSortFilterDataset`", () => {
             </f-sort-filter-dataset>
         `;
         const report = await htmlvalidate.validateString(markup);
-        expect(report).toBeInvalid();
+        await expect(report).toBeInvalid();
         await expect(report).toMatchInlineCodeframe(`
             "error: <f-table-column> is missing required "name" attribute (fkui/ftablecolumn-name)
                5 |                         <template #caption> TestTable </template>
@@ -57,7 +57,7 @@ describe("`FTableColumn` with `FSortFilterDataset`", () => {
             </f-sort-filter-dataset>
         `;
         const report = await htmlvalidate.validateString(markup);
-        expect(report).toBeValid();
+        await expect(report).toBeValid();
     });
 
     it("should report error if `name` is not unique", async () => {
@@ -86,7 +86,7 @@ describe("`FTableColumn` with `FSortFilterDataset`", () => {
             </f-sort-filter-dataset>
         `;
         const report = await htmlvalidate.validateString(markup);
-        expect(report).toBeInvalid();
+        await expect(report).toBeInvalid();
         await expect(report).toMatchInlineCodeframe(`
             "error: "foo" is not unique (fkui/ftablecolumn-name)
               14 |                             ></f-table-column>
@@ -113,6 +113,6 @@ describe("`FTableColumn` without `FSortFilterDataset`", () => {
             </f-data-table>
         `;
         const report = await htmlvalidate.validateString(markup);
-        expect(report).toBeValid();
+        await expect(report).toBeValid();
     });
 });

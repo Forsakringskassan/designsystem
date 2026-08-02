@@ -36,10 +36,10 @@ it("should use header tag provided from FWizard", async () => {
     });
     await flushPromises();
     expect(wrapper.get(selector).element.tagName).toBe("H1");
-    wrapper.setProps({ headerTag: "h2" });
+    await wrapper.setProps({ headerTag: "h2" });
     await flushPromises();
     expect(wrapper.get(selector).element.tagName).toBe("H2");
-    wrapper.setProps({ headerTag: "h5" });
+    await wrapper.setProps({ headerTag: "h5" });
     await flushPromises();
     expect(wrapper.get(selector).element.tagName).toBe("H5");
 });

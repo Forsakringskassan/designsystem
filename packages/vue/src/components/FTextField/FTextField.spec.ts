@@ -196,7 +196,7 @@ describe("events", () => {
         expect.assertions(1);
         const wrapper = createWrapper();
         const input = wrapper.get("input");
-        input.setValue("foo");
+        await input.setValue("foo");
         await input.trigger("change");
         expect(wrapper.emitted("update:modelValue")![0][0]).toBe("foo");
     });
@@ -205,7 +205,7 @@ describe("events", () => {
         expect.assertions(1);
         const wrapper = createWrapper();
         const input = wrapper.get("input");
-        input.setValue("foo");
+        await input.setValue("foo");
         await input.trigger("change");
         expect(wrapper.emitted("update:modelValue")![0][0]).toBe("foo");
     });
@@ -285,7 +285,7 @@ describe("validation", () => {
         );
 
         await input.trigger("focus");
-        input.setValue("5.5a");
+        await input.setValue("5.5a");
         await input.trigger("blur");
 
         expect(wrapper.get(".label__message--error").text()).toBe(
@@ -293,7 +293,7 @@ describe("validation", () => {
         );
 
         await input.trigger("focus");
-        input.setValue("5.5");
+        await input.setValue("5.5");
         await input.trigger("blur");
 
         expect(wrapper.get(".label__message--error").text()).toBe(
@@ -324,7 +324,7 @@ describe("formatting and parsing combined with validation", () => {
 
             const input = wrapper.get("input");
             const htmlInput = input.element;
-            input.setValue("qweRTY");
+            await input.setValue("qweRTY");
 
             htmlInput.dispatchEvent(
                 new CustomEvent<ValidityEvent>("validity", {
@@ -391,7 +391,7 @@ describe("formatting and parsing combined with validation", () => {
 
             const input = wrapper.get("input");
             const htmlInput = input.element;
-            input.setValue(inputValue);
+            await input.setValue(inputValue);
 
             htmlInput.dispatchEvent(
                 new CustomEvent<ValidityEvent>("validity", {
@@ -448,7 +448,7 @@ describe("formatting and parsing combined with validation", () => {
 
             const input = wrapper.get("input");
             const htmlInput = input.element;
-            input.setValue(inputValue);
+            await input.setValue(inputValue);
 
             htmlInput.dispatchEvent(
                 new CustomEvent<ValidityEvent>("validity", {
@@ -493,7 +493,7 @@ describe("set v-model programmatic", () => {
             });
 
             const input = wrapper.get("input");
-            input.setValue("original input");
+            await input.setValue("original input");
 
             const htmlInput = input.element;
 
@@ -570,7 +570,7 @@ describe("set v-model programmatic", () => {
 });
 
 describe("html-validate", () => {
-    it("should only allow f-tooltip in tooltip slot", () => {
+    it("should only allow f-tooltip in tooltip slot", async () => {
         expect.assertions(2);
         const valid = /* HTML */ `<f-tooltip
             screen-reader-text="lorem ipsum"
@@ -582,8 +582,8 @@ describe("html-validate", () => {
                 <template #tooltip> ${child} </template>
             </f-text-field>
         `;
-        expect(markup(valid)).toHTMLValidate();
-        expect(markup(invalid)).not.toHTMLValidate({
+        await expect(markup(valid)).toHTMLValidate();
+        await expect(markup(invalid)).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message: `<div> element is not permitted as content under slot "tooltip" (<f-text-field>)`,
         });

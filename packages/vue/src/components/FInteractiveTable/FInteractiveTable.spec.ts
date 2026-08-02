@@ -352,7 +352,7 @@ describe("showActive flag", () => {
     it("should add table__row--active class when showActive is true and row is clicked", async () => {
         expect.assertions(2);
         const wrapper = createWrapper(TestComponent);
-        wrapper.setProps({ showActive: true });
+        await wrapper.setProps({ showActive: true });
         await wrapper.vm.$nextTick();
 
         const table = wrapper.getComponent(
@@ -370,7 +370,7 @@ describe("showActive flag", () => {
     it("should not have table__row--active class when showActive is false and row is clicked", async () => {
         expect.assertions(2);
         const wrapper = createWrapper(TestComponent);
-        wrapper.setProps({ showActive: false });
+        await wrapper.setProps({ showActive: false });
         await wrapper.vm.$nextTick();
 
         const table = wrapper.getComponent(
@@ -876,18 +876,18 @@ it("should act as multiselect when selectable is `true`", async () => {
 });
 
 describe("html-validate", () => {
-    it("should require `key-attribute` to be non-empty if used", () => {
+    it("should require `key-attribute` to be non-empty if used", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             '<f-interactive-table key-attribute=""></f-interactive-table>',
         ).not.toHTMLValidate({
             message: 'Attribute "key-attribute" has invalid value ""',
         });
     });
 
-    it("should require row attribute", () => {
+    it("should require row attribute", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             "<f-interactive-table></f-interactive-table>",
         ).not.toHTMLValidate({
             message:
@@ -895,9 +895,9 @@ describe("html-validate", () => {
         });
     });
 
-    it("should require caption slot", () => {
+    it("should require caption slot", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             "<f-interactive-table></f-interactive-table>",
         ).not.toHTMLValidate({
             message:
@@ -905,9 +905,9 @@ describe("html-validate", () => {
         });
     });
 
-    it("should require default slot", () => {
+    it("should require default slot", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             "<f-interactive-table></f-interactive-table>",
         ).not.toHTMLValidate({
             message:
@@ -920,9 +920,8 @@ describe("html-validate", () => {
         ${'<f-email-text-field type="email" maxlength="80">E-post</f-email-text-field>'}
         ${'<f-email-text-field id="email-input" maxlength="80">E-post</f-email-text-field>'}
         ${'<f-email-text-field id="email-input" maxlength="80" v-validation.required>E-post</f-email-text-field>'}
-    `("$html should be valid", ({ html }) => {
+    `("$html should be valid", async ({ html }) => {
         expect.assertions(1);
-
-        expect(html).toHTMLValidate();
+        await expect(html).toHTMLValidate();
     });
 });

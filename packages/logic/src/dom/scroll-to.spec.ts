@@ -14,7 +14,7 @@ describe("scrollTo with offset signature", () => {
         expect.assertions(1);
         const element = document.createElement("input");
 
-        scrollTo(element);
+        void scrollTo(element);
         expect(spyScrollTo).toHaveBeenCalledWith({
             top: 0,
             behavior: "smooth",
@@ -25,7 +25,7 @@ describe("scrollTo with offset signature", () => {
         expect.assertions(1);
         const element = document.createElement("input");
 
-        scrollTo(element, 50);
+        void scrollTo(element, 50);
         expect(spyScrollTo).toHaveBeenCalledWith({
             top: -50,
             behavior: "smooth",
@@ -63,7 +63,7 @@ describe("scrollTo with options signature", () => {
         expect.assertions(1);
         const element = mockElement();
 
-        scrollTo(element, { duration: 1000 });
+        void scrollTo(element, { duration: 1000 });
 
         vi.advanceTimersByTime(frameDuration * 60);
         expect(spyScrollTo).toHaveBeenCalledTimes(60);
@@ -75,8 +75,7 @@ describe("scrollTo with options signature", () => {
 
         let resolved = false;
 
-        /* eslint-disable-next-line unicorn/prefer-await -- technical debt */
-        scrollTo(element, { duration: frameDuration * 60 }).then(() => {
+        void scrollTo(element, { duration: frameDuration * 60 }).then(() => {
             resolved = true;
         });
 
@@ -93,7 +92,7 @@ describe("scrollTo with options signature", () => {
         expect.assertions(2);
         const element = mockElement();
 
-        scrollTo(element, { duration: 500 }); //30 frames
+        void scrollTo(element, { duration: 500 }); //30 frames
 
         vi.advanceTimersByTime(frameDuration * 30);
 
@@ -117,7 +116,7 @@ describe("scrollTo with options signature", () => {
         expect.assertions(3);
         const element = mockElement();
 
-        scrollTo(element, { duration: 500, offset: 50 });
+        void scrollTo(element, { duration: 500, offset: 50 });
 
         vi.advanceTimersByTime(frameDuration * 30);
 

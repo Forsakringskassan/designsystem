@@ -55,13 +55,13 @@ it("should focus title on open", async () => {
 });
 
 describe("html-validate", () => {
-    it("should allow defined slots", () => {
+    it("should allow defined slots", async () => {
         expect.assertions(1);
         const slotTemplates = Object.entries(defaultSlots).map(
             ([key, value]) => `<template #${key}>${value}</template>`,
         );
 
-        expect(
+        await expect(
             `<f-layout-right-panel>${slotTemplates}</f-layout-right-panel>`,
         ).toHTMLValidate();
     });

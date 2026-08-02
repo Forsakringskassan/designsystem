@@ -520,9 +520,9 @@ it("should sort strings independent of case", async () => {
 });
 
 describe("html-validate", () => {
-    it("should require data attribute", () => {
+    it("should require data attribute", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             "<f-sort-filter-dataset></f-sort-filter-dataset>",
         ).not.toHTMLValidate({
             message:
@@ -530,9 +530,9 @@ describe("html-validate", () => {
         });
     });
 
-    it("should require sortable-attributes attribute", () => {
+    it("should require sortable-attributes attribute", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             "<f-sort-filter-dataset></f-sort-filter-dataset>",
         ).not.toHTMLValidate({
             message:
@@ -540,9 +540,9 @@ describe("html-validate", () => {
         });
     });
 
-    it("should require default slot", () => {
+    it("should require default slot", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             "<f-sort-filter-dataset></f-sort-filter-dataset>",
         ).not.toHTMLValidate({
             message:
@@ -550,9 +550,9 @@ describe("html-validate", () => {
         });
     });
 
-    it("html should be valid", () => {
+    it("html should be valid", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             '<f-sort-filter-dataset data="test" sortable-attributes="test igen"><template #default></template></f-sort-filter-dataset>',
         ).toHTMLValidate();
     });

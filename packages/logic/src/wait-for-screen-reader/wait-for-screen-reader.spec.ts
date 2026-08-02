@@ -17,7 +17,7 @@ describe("waitForScreenReader", () => {
         expect.assertions(2);
         const text = "I waited!";
 
-        waitForScreenReader(() => {
+        void waitForScreenReader(() => {
             element.textContent = text;
         });
 
@@ -33,7 +33,7 @@ describe("waitForScreenReader", () => {
         const NEW_DELAY = 500;
         const text = "I waited longer!";
 
-        waitForScreenReader(() => {
+        void waitForScreenReader(() => {
             element.textContent = text;
         }, NEW_DELAY);
 

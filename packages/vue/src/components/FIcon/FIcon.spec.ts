@@ -78,23 +78,29 @@ describe("props", () => {
         });
 
         describe("html-validate", () => {
-            it("should allow valid values", () => {
+            it("should allow valid values", async () => {
                 expect.assertions(1);
                 const markup = /* HTML */ `
                     <f-icon name="my-icon" flip="horizontal"></f-icon>
                     <f-icon name="my-icon" flip="vertical"></f-icon>
                 `;
-                const report = htmlvalidate.validateString(markup, "foo.html");
-                expect(report).toBeValid();
+                const report = await htmlvalidate.validateString(
+                    markup,
+                    "foo.html",
+                );
+                await expect(report).toBeValid();
             });
 
-            it("should not allow invalid values", () => {
+            it("should not allow invalid values", async () => {
                 expect.assertions(2);
                 const markup = /* HTML */ `
                     <f-icon name="my-icon" flip="foo"></f-icon>
                 `;
-                const report = htmlvalidate.validateString(markup, "file.html");
-                expect(report).toBeInvalid();
+                const report = await htmlvalidate.validateString(
+                    markup,
+                    "file.html",
+                );
+                await expect(report).toBeInvalid();
                 expect(report).toHaveError(
                     "attribute-allowed-values",
                     'Attribute "flip" has invalid value "foo"',
@@ -131,7 +137,7 @@ describe("props", () => {
                     <f-icon name="my-icon" rotate="270"></f-icon>
                 `;
                 const report = await htmlvalidate.validateString(markup);
-                expect(report).toBeValid();
+                await expect(report).toBeValid();
             });
 
             it("should not allow arbitrary degrees", async () => {
@@ -140,7 +146,7 @@ describe("props", () => {
                     <f-icon name="my-icon" rotate="42"></f-icon>
                 `;
                 const report = await htmlvalidate.validateString(markup);
-                expect(report).toBeInvalid();
+                await expect(report).toBeInvalid();
                 await expect(report).toMatchInlineCodeframe(`
                     "error: Attribute "rotate" has invalid value "42" (attribute-allowed-values)
                       1 |
@@ -157,7 +163,7 @@ describe("props", () => {
                     <f-icon name="my-icon" rotate="foo"></f-icon>
                 `;
                 const report = await htmlvalidate.validateString(markup);
-                expect(report).toBeInvalid();
+                await expect(report).toBeInvalid();
                 await expect(report).toMatchInlineCodeframe(`
                     "error: Attribute "rotate" has invalid value "foo" (attribute-allowed-values)
                       1 |

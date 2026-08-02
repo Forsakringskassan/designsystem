@@ -31,44 +31,44 @@ function createWrapper({
 }
 
 describe("snapshots", () => {
-    it("should match snapshot when collapsed", () => {
+    it("should match snapshot when collapsed", async () => {
         expect.assertions(2);
         const wrapper = createWrapper();
         expect(wrapper.element).toMatchSnapshot();
-        expect(wrapper.element).toHTMLValidate(config);
+        await expect(wrapper.element).toHTMLValidate(config);
     });
 
-    it("should match snapshot when expanded", () => {
+    it("should match snapshot when expanded", async () => {
         expect.assertions(2);
         const wrapper = createWrapper({ props: { expanded: true } });
         expect(wrapper.element).toMatchSnapshot();
-        expect(wrapper.element).toHTMLValidate(config);
+        await expect(wrapper.element).toHTMLValidate(config);
     });
 
-    it("should match snapshot with custom heading level", () => {
+    it("should match snapshot with custom heading level", async () => {
         expect.assertions(2);
         const wrapper = createWrapper({ props: { headerTag: "h3" } });
         expect(wrapper.element).toMatchSnapshot();
-        expect(wrapper.element).toHTMLValidate(config);
+        await expect(wrapper.element).toHTMLValidate(config);
     });
 
-    it("should match snapshot with list styling", () => {
+    it("should match snapshot with list styling", async () => {
         expect.assertions(2);
         const wrapper = createWrapper({
             props: { headerTag: "h3", list: true },
         });
         expect(wrapper.element).toMatchSnapshot();
-        expect(wrapper.element).toHTMLValidate(config);
+        await expect(wrapper.element).toHTMLValidate(config);
     });
 
-    it("should match snapshot with related information", () => {
+    it("should match snapshot with related information", async () => {
         expect.assertions(2);
         const wrapper = createWrapper({
             props: { headerTag: "h3" },
             slots: { related: "dolor sit amet" },
         });
         expect(wrapper.element).toMatchSnapshot();
-        expect(wrapper.element).toHTMLValidate(config);
+        await expect(wrapper.element).toHTMLValidate(config);
     });
 });
 

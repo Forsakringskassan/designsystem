@@ -386,7 +386,7 @@ it("should not modify original item on cancel", async () => {
     await wrapper.find("#name-input").setValue("test");
     await wrapper.find("#child-name-input").setValue("test child");
 
-    wrapper.find(".button-group .button--secondary").trigger("click");
+    await wrapper.find(".button-group .button--secondary").trigger("click");
     await vi.runAllTimers();
     await flushPromises();
 
@@ -440,7 +440,7 @@ it("should call :onCancel after cancel", async () => {
 
     await wrapper.find(".crud-dataset__add-button").trigger("click");
 
-    wrapper.find(".button-group .button--secondary").trigger("click");
+    await wrapper.find(".button-group .button--secondary").trigger("click");
     await vi.runAllTimers();
     await flushPromises();
 
@@ -645,7 +645,7 @@ describe("onCancel", () => {
 
         expect(onCancel).toHaveBeenCalledTimes(0);
 
-        wrapper.find(".close-button").trigger("click");
+        await wrapper.find(".close-button").trigger("click");
 
         expect(onCancel).toHaveBeenCalledTimes(1);
     });
@@ -667,7 +667,7 @@ describe("onCancel", () => {
 
         expect(onCancel).toHaveBeenCalledTimes(0);
 
-        wrapper.find(".button-group .button--secondary").trigger("click");
+        await wrapper.find(".button-group .button--secondary").trigger("click");
 
         expect(onCancel).toHaveBeenCalledTimes(1);
     });
@@ -751,17 +751,17 @@ describe("formModalSize", () => {
 });
 
 describe("html-validate", () => {
-    it("should require default slot", () => {
+    it("should require default slot", async () => {
         expect.assertions(1);
-        expect("<f-crud-dataset></f-crud-dataset>").not.toHTMLValidate({
+        await expect("<f-crud-dataset></f-crud-dataset>").not.toHTMLValidate({
             message:
                 '<f-crud-dataset> component requires slot "default" to be implemented',
         });
     });
 
-    it("should html-validate", () => {
+    it("should html-validate", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             "<f-crud-dataset><template #default></template></f-crud-dataset>",
         ).toHTMLValidate();
     });

@@ -134,34 +134,34 @@ describe("events", () => {
 });
 
 describe("html-validate", () => {
-    it("should require is-open attribute", () => {
+    it("should require is-open attribute", async () => {
         expect.assertions(1);
-        expect("<i-popup></i-popup>").not.toHTMLValidate({
+        await expect("<i-popup></i-popup>").not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup> is missing required "is-open" attribute',
         });
     });
 
-    it("should require anchor attribute", () => {
+    it("should require anchor attribute", async () => {
         expect.assertions(1);
-        expect("<i-popup></i-popup>").not.toHTMLValidate({
+        await expect("<i-popup></i-popup>").not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup> is missing required "anchor" attribute',
         });
     });
 
-    it("should only allow setting valid `inline` values", () => {
+    it("should only allow setting valid `inline` values", async () => {
         expect.assertions(4);
-        expect(/* HTML */ `
+        await expect(/* HTML */ `
             <i-popup anchor="anchorref" is-open inline="always"></i-popup>
         `).toHTMLValidate();
-        expect(/* HTML */ `
+        await expect(/* HTML */ `
             <i-popup anchor="anchorref" is-open inline="never"></i-popup>
         `).toHTMLValidate();
-        expect(/* HTML */ `
+        await expect(/* HTML */ `
             <i-popup anchor="anchorref" is-open inline="auto"></i-popup>
         `).toHTMLValidate();
-        expect(/* HTML */ `
+        await expect(/* HTML */ `
             <i-popup anchor="anchorref" is-open inline="foo"></i-popup>
         `).not.toHTMLValidate({
             ruleId: "attribute-allowed-values",
@@ -169,7 +169,7 @@ describe("html-validate", () => {
         });
     });
 
-    it("should allow setting viewport value", () => {
+    it("should allow setting viewport value", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup
@@ -178,10 +178,10 @@ describe("html-validate", () => {
                 viewport="viewportref"
             ></i-popup>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
-    it("should allow setting focus-element value", () => {
+    it("should allow setting focus-element value", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup
@@ -190,6 +190,6 @@ describe("html-validate", () => {
                 focus-element="focuselementref"
             ></i-popup>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 });

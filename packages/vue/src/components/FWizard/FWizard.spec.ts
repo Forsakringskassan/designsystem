@@ -2,26 +2,26 @@ import { describe, expect, it } from "vitest";
 import "html-validate/vitest";
 
 describe("html-validate", () => {
-    it("should allow flow content", () => {
+    it("should allow flow content", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1">
                 <div></div>
             </f-wizard>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
-    it("should require header-tag attribute", () => {
+    it("should require header-tag attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-wizard></f-wizard> `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<f-wizard> is missing required "header-tag" attribute',
         });
     });
 
-    it("should allow h{1..6} header-tag attribute", () => {
+    it("should allow h{1..6} header-tag attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-wizard header-tag="h1"></f-wizard>
@@ -31,13 +31,13 @@ describe("html-validate", () => {
             <f-wizard header-tag="h5"></f-wizard>
             <f-wizard header-tag="h6"></f-wizard>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
-    it("should not allow invalid header-tag attribute", () => {
+    it("should not allow invalid header-tag attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-wizard header-tag="foobar"></f-wizard> `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "attribute-allowed-values",
             message: 'Attribute "header-tag" has invalid value "foobar"',
         });

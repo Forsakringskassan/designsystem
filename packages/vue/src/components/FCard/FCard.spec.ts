@@ -72,7 +72,7 @@ describe("html-validate", () => {
             </f-card>
         `;
         const report = await htmlvalidate.validateString(markup);
-        expect(report).toBeValid();
+        await expect(report).toBeValid();
     });
 
     it("should not allow invalid values", async () => {

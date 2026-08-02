@@ -131,13 +131,13 @@ describe("navLabel prop", () => {
 });
 
 describe("html-validate", () => {
-    it("should allow defined slots", () => {
+    it("should allow defined slots", async () => {
         expect.assertions(1);
         const slotTemplates = Object.entries(defaultSlots).map(
             ([key, value]) => `<template #${key}>${value}</template>`,
         );
 
-        expect(
+        await expect(
             `<f-layout-application-template>${slotTemplates}</f-layout-application-template>`,
         ).toHTMLValidate();
     });

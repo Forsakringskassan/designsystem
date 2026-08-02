@@ -240,7 +240,7 @@ describe("autoResize", () => {
 });
 
 describe("events", () => {
-    it("should support v-model by emitting input event with value", () => {
+    it("should support v-model by emitting input event with value", async () => {
         expect.assertions(3);
         const wrapper = createWrapper({
             props: { modelValue: "Bana" },
@@ -250,7 +250,7 @@ describe("events", () => {
             textareaWrapper.element as HTMLTextAreaElement;
 
         expect(htmlTextAreaElement.value).toBe("Bana");
-        textareaWrapper.setValue("Banana");
+        await textareaWrapper.setValue("Banana");
         expect(htmlTextAreaElement.value).toBe("Banana");
         expect(wrapper.emitted("input")![0][0]).toMatchInlineSnapshot(
             `"Banana"`,
@@ -356,21 +356,21 @@ describe("html-validate", () => {
         html
         ${'<f-textarea-field maxlength="10" soft-limit="3">Label</f-textarea-field>'}
         ${'<f-textarea-field auto-resize max-rows="6" resizable>Label</f-textarea-field>'}
-    `("$html should be valid", ({ html }) => {
+    `("$html should be valid", async ({ html }) => {
         expect.assertions(1);
-        expect(html).toHTMLValidate();
+        await expect(html).toHTMLValidate();
     });
 
     it.each`
         html
         ${"<f-textarea-field>Label<template #tooltip><div /></template></f-textarea-field>"}
         ${'<f-textarea-field maxlength="100 000" soft-limit="30 000">Label</f-textarea-field>'}
-    `("$html should be invalid", ({ html }) => {
+    `("$html should be invalid", async ({ html }) => {
         expect.assertions(3);
         let catchedError;
 
         try {
-            expect(html).toHTMLValidate();
+            await expect(html).toHTMLValidate();
         } catch (error) {
             catchedError = error;
         } finally {

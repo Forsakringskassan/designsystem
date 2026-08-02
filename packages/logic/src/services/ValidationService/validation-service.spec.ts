@@ -1328,7 +1328,7 @@ describe("initial state", () => {
 });
 
 describe("clearAllStates", () => {
-    it("should clear all validation states", () => {
+    it("should clear all validation states", async () => {
         expect.assertions(2);
         const input = mountInputElementAndAddValidators("text");
         const validityMock = vi.fn();
@@ -1338,11 +1338,11 @@ describe("clearAllStates", () => {
             submitted: true,
             touched: true,
         });
-        ValidationService.validateElement("test-element");
+        await ValidationService.validateElement("test-element");
         expect(validityMock.mock.calls[0][0].detail.validityMode).toBe("ERROR");
 
         ValidationService.clearAllStates();
-        ValidationService.validateElement("test-element");
+        await ValidationService.validateElement("test-element");
         expect(validityMock.mock.calls[1][0].detail.validityMode).toBe(
             "INITIAL",
         );

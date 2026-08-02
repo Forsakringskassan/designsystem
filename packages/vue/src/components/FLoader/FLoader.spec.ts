@@ -118,10 +118,10 @@ describe("html-validate", () => {
         ${"<f-loader></f-loader>"}
         ${"<f-loader>Loader</f-loader>"}
         ${"<f-loader><template> Read more about FLoader</template></f-loader>"}
-    `("$html should be valid", ({ html }) => {
+    `("$html should be valid", async ({ html }) => {
         expect.assertions(1);
 
-        expect(html).toHTMLValidate();
+        await expect(html).toHTMLValidate();
     });
 
     it.each`
@@ -129,12 +129,12 @@ describe("html-validate", () => {
         ${"<f-loader><div></div></f-loader>"}
         ${"<f-loader><p></p></f-loader>"}
         ${"<f-loader><button></button></f-loader>"}
-    `("$html should be invalid", ({ html }) => {
+    `("$html should be invalid", async ({ html }) => {
         expect.assertions(3);
         let catchedError;
 
         try {
-            expect(html).toHTMLValidate();
+            await expect(html).toHTMLValidate();
         } catch (error) {
             catchedError = error;
         } finally {

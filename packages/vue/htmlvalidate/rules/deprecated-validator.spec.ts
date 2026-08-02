@@ -16,7 +16,7 @@ it.skip("should report when using deprecated validator", async () => {
         <f-text-field v-validation.dummy></f-text-field>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeInvalid();
+    await expect(report).toBeInvalid();
     await expect(report).toMatchInlineCodeframe(`
         "error: validator "dummy" is deprecated (fkui/deprecated-validator) at inline:2:36:
           1 |
@@ -33,7 +33,7 @@ it.skip("should not report when not using deprecated validators", async () => {
         <f-text-field v-validation.personnummerFormat></f-text-field>
     `;
     const report = htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
 });
 
@@ -45,7 +45,7 @@ it.skip("should set correct error location", async () => {
         <f-text-field v-validation.foo.bar.dummy></f-text-field>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeInvalid();
+    await expect(report).toBeInvalid();
     await expect(report).toMatchInlineCodeframe(`
         "error: validator "dummy" is deprecated (fkui/deprecated-validator) at inline:2:36:
           1 |
