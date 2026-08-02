@@ -123,7 +123,7 @@ describe("FErrorHandlingApp", () => {
         await flushPromises();
 
         // When
-        router.push("/another-url");
+        await router.push("/another-url");
         await flushPromises();
 
         // Then

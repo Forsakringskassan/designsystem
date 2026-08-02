@@ -129,7 +129,7 @@ describe("navigation", () => {
         await flushPromises();
 
         const anchor = wrapper.get("a");
-        anchor.trigger("click");
+        await anchor.trigger("click");
         await flushPromises();
 
         const idElement = wrapper.find("#id").element;
@@ -157,7 +157,7 @@ describe("navigation", () => {
         await flushPromises();
 
         const anchor = wrapper.get("a");
-        anchor.trigger("click");
+        await anchor.trigger("click");
         await flushPromises();
 
         const idElement = wrapper.find("#id").element;

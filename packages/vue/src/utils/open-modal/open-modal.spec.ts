@@ -73,7 +73,7 @@ class PageObject {
 it("should attach modal to given parent when opened", async () => {
     expect.assertions(2);
     const container = document.createElement("div");
-    openModal(callingInstance, MockModal, { attachTo: container });
+    void openModal(callingInstance, MockModal, { attachTo: container });
     const modal = new PageObject(container);
     expect(modal.exists()).toBeTruthy();
     expect(modal.element).toBeInstanceOf(HTMLElement);
@@ -84,7 +84,7 @@ it("should attach modal to given parent when opened", async () => {
 it("should remove modal from given parent when closed", async () => {
     expect.assertions(2);
     const container = document.createElement("div");
-    openModal(callingInstance, MockModal, { attachTo: container });
+    void openModal(callingInstance, MockModal, { attachTo: container });
     const modal = new PageObject(container);
     modal.closeButton?.click();
     await flushPromises();
@@ -95,7 +95,7 @@ it("should remove modal from given parent when closed", async () => {
 it("should set isOpen to true", async () => {
     expect.assertions(1);
     const container = document.createElement("div");
-    openModal(callingInstance, MockModal, { attachTo: container });
+    void openModal(callingInstance, MockModal, { attachTo: container });
     const modal = new PageObject(container);
     const props = modal.props();
     expect(props.isOpen).toBe(true);
@@ -149,7 +149,7 @@ it("should include custom reason in resolved object", async () => {
 
 it("should support shorthand syntax", async () => {
     expect.assertions(1);
-    openModal(callingInstance, MockModal, "my custom text");
+    void openModal(callingInstance, MockModal, "my custom text");
     const modal = new PageObject(document.body);
     expect(modal.content?.textContent).toBe("my custom text");
     modal.closeButton?.click();

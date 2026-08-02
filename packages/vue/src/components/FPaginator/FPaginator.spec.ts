@@ -292,7 +292,7 @@ describe("v-model", () => {
         });
         await nextTick();
         expect(wrapper.get(paginator.currentPageButton()).text()).toBe("2");
-        wrapper.get(paginator.nextPageButton()).trigger("click");
+        await wrapper.get(paginator.nextPageButton()).trigger("click");
         await nextTick();
         expect(wrapper.get(paginator.currentPageButton()).text()).toBe("3");
         expect(wrapper.emitted("update:modelValue")).toEqual([[3]]);

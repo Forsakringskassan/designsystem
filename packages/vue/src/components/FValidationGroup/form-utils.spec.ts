@@ -43,7 +43,7 @@ describe("cleanUp", () => {
         expect.assertions(1);
         const wrapper = createWrapper(components);
 
-        cleanUpElements(wrapper.vm as unknown as Special);
+        void cleanUpElements(wrapper.vm as unknown as Special);
 
         // Execute all setTimeout functions
         vi.runAllTimers();
@@ -61,7 +61,7 @@ describe("cleanUp", () => {
         expect.assertions(1);
         const wrapper = createWrapper(componentsNotInDOM);
 
-        cleanUpElements(wrapper.vm as unknown as Special);
+        void cleanUpElements(wrapper.vm as unknown as Special);
 
         // Execute all setTimeout functions
         vi.runAllTimers();

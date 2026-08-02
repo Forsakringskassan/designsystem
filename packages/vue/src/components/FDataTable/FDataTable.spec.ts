@@ -454,33 +454,33 @@ describe("`keyAttribute`", () => {
 });
 
 describe("html-validate", () => {
-    it("should require `key-attribute` to be non-empty if used", () => {
+    it("should require `key-attribute` to be non-empty if used", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             '<f-data-table key-attribute=""></f-data-table>',
         ).not.toHTMLValidate({
             message: 'Attribute "key-attribute" has invalid value ""',
         });
     });
 
-    it("should require row attribute", () => {
+    it("should require row attribute", async () => {
         expect.assertions(1);
-        expect("<f-data-table></f-data-table>").not.toHTMLValidate({
+        await expect("<f-data-table></f-data-table>").not.toHTMLValidate({
             message: '<f-data-table> is missing required "rows" attribute',
         });
     });
 
-    it("should require caption slot", () => {
+    it("should require caption slot", async () => {
         expect.assertions(1);
-        expect("<f-data-table></f-data-table>").not.toHTMLValidate({
+        await expect("<f-data-table></f-data-table>").not.toHTMLValidate({
             message:
                 '<f-data-table> component requires slot "caption" to be implemented',
         });
     });
 
-    it("should require default slot", () => {
+    it("should require default slot", async () => {
         expect.assertions(1);
-        expect("<f-data-table></f-data-table>").not.toHTMLValidate({
+        await expect("<f-data-table></f-data-table>").not.toHTMLValidate({
             message:
                 '<f-data-table> component requires slot "default" to be implemented',
         });
@@ -491,9 +491,8 @@ describe("html-validate", () => {
         ${'<f-email-text-field type="email" maxlength="80">E-post</f-email-text-field>'}
         ${'<f-email-text-field id="email-input" maxlength="80">E-post</f-email-text-field>'}
         ${'<f-email-text-field id="email-input" maxlength="80" v-validation.required>E-post</f-email-text-field>'}
-    `("$html should be valid", ({ html }) => {
+    `("$html should be valid", async ({ html }) => {
         expect.assertions(1);
-
-        expect(html).toHTMLValidate();
+        await expect(html).toHTMLValidate();
     });
 });

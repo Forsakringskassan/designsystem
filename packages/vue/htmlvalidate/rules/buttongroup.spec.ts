@@ -17,7 +17,7 @@ it('should report error when <button> is missing "button-group__item" if used in
         </div>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeInvalid();
+    await expect(report).toBeInvalid();
     await expect(report).toMatchInlineCodeframe(`
         "error: A button that is a direct child to a button group must have the following classes: ['button-group__item'] (fkui/button-group)
           1 |
@@ -38,6 +38,6 @@ it('should not report error when <button class="button-group__item"> is used ins
         </div>
     `;
     const report = htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
 });

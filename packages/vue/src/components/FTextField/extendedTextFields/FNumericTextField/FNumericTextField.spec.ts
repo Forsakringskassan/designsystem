@@ -63,7 +63,7 @@ describe("v-model", () => {
         const wrapper = createWrapper(markup, "");
 
         const input = wrapper.get("input");
-        input.setValue("1,23");
+        await input.setValue("1,23");
         await input.trigger("blur");
 
         expect(wrapper.vm.$data.myModel).toBeCloseTo(1.23);
@@ -79,7 +79,7 @@ describe("v-model", () => {
         const wrapper = createWrapper(markup, "");
 
         const input = wrapper.get("input");
-        input.setValue("0");
+        await input.setValue("0");
         await input.trigger("blur");
 
         expect(wrapper.vm.$data.myModel).toBe(0);
@@ -106,7 +106,7 @@ describe("format", () => {
 
         expect(inputElement.value).toBe("3,00");
 
-        input.setValue("4,1");
+        await input.setValue("4,1");
         await input.trigger("blur");
         await wrapper.vm.$nextTick();
 

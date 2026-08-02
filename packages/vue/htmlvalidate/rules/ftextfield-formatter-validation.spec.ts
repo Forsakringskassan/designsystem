@@ -17,7 +17,7 @@ it("should be valid when FTextField doesn't use v-validation", async () => {
         </div>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
 });
 
@@ -33,7 +33,7 @@ it("should be valid when FTextField uses v-validation.personnummer and :formatte
         </div>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
 });
 
@@ -49,7 +49,7 @@ it("should be valid when FTextField uses v-validation.personnummer and :parser",
         </div>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
 });
 
@@ -65,7 +65,7 @@ it("should be valid when FTextField uses v-validation.required.personnummer and 
         </div>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
 });
 
@@ -81,7 +81,7 @@ it("should be valid when FTextField uses v-validation.personnummer.max-length an
         </div>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
 });
 
@@ -96,7 +96,7 @@ it("should be valid when FTextField uses v-validation.required and no :formatter
         </div>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
 });
 
@@ -111,7 +111,7 @@ it("should be invalid when FTextField uses v-validation.personnummer without :fo
         </div>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeInvalid();
+    await expect(report).toBeInvalid();
     await expect(report).toMatchInlineCodeframe(`
         "error: v-validation.personnummer must be used with :formatter and/or :parser (fkui/ftextfield-formatter-validation)
           3 |             <f-text-field
@@ -139,7 +139,7 @@ it("should be invalid when FTextField uses v-validation.required.personnummer wi
         </div>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeInvalid();
+    await expect(report).toBeInvalid();
     await expect(report).toMatchInlineCodeframe(`
         "error: v-validation.personnummer must be used with :formatter and/or :parser (fkui/ftextfield-formatter-validation)
           4 |                 id="parser-formatter"
@@ -159,6 +159,6 @@ it("should not report error when phoneNumber is used", async () => {
         <f-text-field v-validation.phoneNumber></f-text-field>
     `;
     const report = await htmlvalidate.validateString(markup);
-    expect(report).toBeValid();
+    await expect(report).toBeValid();
     await expect(report).toMatchInlineCodeframe(`""`);
 });

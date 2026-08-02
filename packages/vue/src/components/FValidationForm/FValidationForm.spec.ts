@@ -73,9 +73,9 @@ describe("events", () => {
                     },
                 },
             });
-            wrapper.find("#field1").setValue("foo");
-            wrapper.find("#field2").setValue("bar");
-            wrapper.find("button").trigger("click");
+            void wrapper.find("#field1").setValue("foo");
+            void wrapper.find("#field2").setValue("bar");
+            void wrapper.find("button").trigger("click");
         });
         const component = wrapper.findComponent(FValidationForm);
         const emitted = component.emitted("submit");
@@ -98,9 +98,9 @@ describe("events", () => {
                     },
                 },
             });
-            wrapper.find("#field1").setValue("foo");
-            wrapper.find("#field2").setValue("bar");
-            wrapper.find("button").trigger("click");
+            void wrapper.find("#field1").setValue("foo");
+            void wrapper.find("#field2").setValue("bar");
+            void wrapper.find("button").trigger("click");
         });
         const component = wrapper.findComponent(FValidationForm);
         const emitted = component.emitted("submit");
@@ -160,7 +160,7 @@ describe("html-validate", () => {
         `;
         const report = await htmlvalidate.validateString(markup, filename);
         await expect(report).toMatchInlineCodeframe(`""`);
-        expect(report).toBeValid();
+        await expect(report).toBeValid();
     });
 
     it("should allow buttons in default slot", async () => {
@@ -175,7 +175,7 @@ describe("html-validate", () => {
         `;
         const report = await htmlvalidate.validateString(markup, filename);
         await expect(report).toMatchInlineCodeframe(`""`);
-        expect(report).toBeValid();
+        await expect(report).toBeValid();
     });
 
     it("should not allow flow content in error-message slot", async () => {
@@ -202,7 +202,7 @@ describe("html-validate", () => {
               7 |                     <button type="submit">submit</button>
             Selector: f-validation-form > template:nth-child(1) > div"
         `);
-        expect(report).toBeInvalid();
+        await expect(report).toBeInvalid();
     });
 
     it("should allow heading and phrasing content in error-message slot", async () => {
@@ -220,7 +220,7 @@ describe("html-validate", () => {
         `;
         const report = await htmlvalidate.validateString(markup, filename);
         await expect(report).toMatchInlineCodeframe(`""`);
-        expect(report).toBeValid();
+        await expect(report).toBeValid();
     });
 
     it("should allow use-error-list setting via attribute", async () => {
@@ -234,7 +234,7 @@ describe("html-validate", () => {
         `;
         const report = await htmlvalidate.validateString(markup, filename);
         await expect(report).toMatchInlineCodeframe(`""`);
-        expect(report).toBeValid();
+        await expect(report).toBeValid();
     });
 
     it("should require submit button", async () => {
@@ -247,6 +247,6 @@ describe("html-validate", () => {
                 |   ^^^^^^^^^^^^^^^^^
             Selector: f-validation-form"
         `);
-        expect(report).toBeInvalid();
+        await expect(report).toBeInvalid();
     });
 });

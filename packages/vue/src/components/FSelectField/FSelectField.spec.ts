@@ -155,7 +155,7 @@ describe("events", () => {
         expect(foobar).toHaveBeenCalled();
     });
 
-    it("should support v-model by emitting update:modelValue event with string", () => {
+    it("should support v-model by emitting update:modelValue event with string", async () => {
         expect.assertions(3);
         const wrapper = mount(
             createTestComponentWithOptions([
@@ -168,7 +168,7 @@ describe("events", () => {
         const htmlSelect = select.element;
 
         expect(htmlSelect.value).toBe("banana");
-        select.setValue("apple");
+        await select.setValue("apple");
         expect(htmlSelect.value).toBe("apple");
         expect(
             wrapper
@@ -211,7 +211,7 @@ describe("events", () => {
         expect(vModelValue).toBeNull();
     });
 
-    it("should emit change event with when value changes", () => {
+    it("should emit change event with when value changes", async () => {
         expect.assertions(1);
         const wrapper = mount(
             createTestComponentWithOptions([
@@ -221,7 +221,7 @@ describe("events", () => {
             { props: { modelValue: "banana" } },
         );
         const select = wrapper.get("select");
-        select.setValue("apple");
+        await select.setValue("apple");
         expect(
             wrapper.findComponent(FSelectField).emitted("change")![0][0],
         ).toMatchInlineSnapshot(`"apple"`);
@@ -234,10 +234,10 @@ describe("html-validate", () => {
         ${"<f-select-field><template #label>label</template><option>Apple</option></f-select-field>"}
         ${"<f-select-field><template #label>label</template><template #default>default</template><option>Apple</option></f-select-field>"}
         ${'<f-select-field name="select-field"><template #label>label</template><option>Apple</option></f-select-field>'}
-    `("$html should be valid", ({ html }) => {
+    `("$html should be valid", async ({ html }) => {
         expect.assertions(1);
 
-        expect(html).toHTMLValidate();
+        await expect(html).toHTMLValidate();
     });
 
     it.each`
@@ -245,12 +245,12 @@ describe("html-validate", () => {
         ${"<f-select-field><template #tooltip><div /></template><template #label>label</template></f-select-field>"}
         ${"<f-select-field><template #label>label</template><template #default><div></div></template><option>Apple</option></f-select-field>"}
         ${"<f-select-field><template #label>label</template><div></div></f-select-field>"}
-    `("$html should be invalid", ({ html }) => {
+    `("$html should be invalid", async ({ html }) => {
         expect.assertions(3);
         let catchedError;
 
         try {
-            expect(html).toHTMLValidate();
+            await expect(html).toHTMLValidate();
         } catch (error) {
             catchedError = error;
         } finally {

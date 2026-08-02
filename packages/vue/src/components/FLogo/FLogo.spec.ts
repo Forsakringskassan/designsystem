@@ -60,11 +60,15 @@ describe("html-validate", () => {
     });
     const htmlvalidate = new HtmlValidate(loader);
 
-    it("should allow setting correct size values", () => {
+    it("should allow setting correct size values", async () => {
         expect.assertions(3);
-        expect(/* HTML */ `<f-logo size="small">foo</f-logo>`).toHTMLValidate();
-        expect(/* HTML */ `<f-logo size="large">foo</f-logo>`).toHTMLValidate();
-        expect(
+        await expect(
+            /* HTML */ `<f-logo size="small">foo</f-logo>`,
+        ).toHTMLValidate();
+        await expect(
+            /* HTML */ `<f-logo size="large">foo</f-logo>`,
+        ).toHTMLValidate();
+        await expect(
             /* HTML */ `<f-logo size="responsive">foo</f-logo>`,
         ).toHTMLValidate();
     });
@@ -83,7 +87,7 @@ describe("html-validate", () => {
 
     it("should require text content", async () => {
         expect.assertions(2);
-        expect(/* HTML */ `<f-logo>foo</f-logo>`).toHTMLValidate();
+        await expect(/* HTML */ `<f-logo>foo</f-logo>`).toHTMLValidate();
         const markup = /* HTML */ `<f-logo></f-logo>`;
         const report = await htmlvalidate.validateString(markup);
         await expect(report).toMatchInlineCodeframe(`

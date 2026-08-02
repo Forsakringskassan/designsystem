@@ -491,7 +491,7 @@ describe("v-model (update event)", () => {
             "list__item--active",
         );
 
-        wrapper.setProps({ active: items[2] });
+        await wrapper.setProps({ active: items[2] });
         await wrapper.vm.$nextTick();
 
         expect(Array.from(liItems[2].element.classList.values())).toContain(
@@ -646,21 +646,21 @@ describe("screenreader slot", () => {
 });
 
 describe("html-validate", () => {
-    it("should require `key-attribute` to be non-empty if used", () => {
+    it("should require `key-attribute` to be non-empty if used", async () => {
         expect.assertions(1);
-        expect('<f-list key-attribute=""></f-list>').not.toHTMLValidate({
+        await expect('<f-list key-attribute=""></f-list>').not.toHTMLValidate({
             message: 'Attribute "key-attribute" has invalid value ""',
         });
     });
 
-    it("should require items attribute", () => {
+    it("should require items attribute", async () => {
         expect.assertions(1);
-        expect("<f-list></f-list>").not.toHTMLValidate({
+        await expect("<f-list></f-list>").not.toHTMLValidate({
             message: '<f-list> is missing required "items" attribute',
         });
     });
 
-    it("should allow aria-label or aria-labelledby", () => {
+    it("should allow aria-label or aria-labelledby", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-list :items="[]" aria-label="lorem ipsum"></f-list>
@@ -668,15 +668,15 @@ describe("html-validate", () => {
             <h2 id="header">lorem ipsum</h2>
             <f-list :items="[]" aria-labelledby="header"></f-list>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
-    it("should not allow empty aria-label", () => {
+    it("should not allow empty aria-label", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-list :items="[]" aria-label=""></f-list>
         `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "attribute-allowed-values",
             message: 'Attribute "aria-label" has invalid value ""',
         });

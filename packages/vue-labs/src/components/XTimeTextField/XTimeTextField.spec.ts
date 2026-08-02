@@ -56,7 +56,7 @@ describe("v-model", () => {
         );
 
         const input = wrapper.get("input");
-        input.setValue("12:00");
+        await input.setValue("12:00");
         await input.trigger("blur");
 
         expect(wrapper.vm.$data.myModel).toBe(720);
@@ -78,7 +78,7 @@ describe("format", () => {
         const input = wrapper.get("input");
         const inputElement = input.element as HTMLInputElement;
 
-        input.setValue("1 2:35");
+        await input.setValue("1 2:35");
         await input.trigger("blur");
         await wrapper.vm.$nextTick();
 

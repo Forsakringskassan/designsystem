@@ -411,7 +411,7 @@ describe("html-validate", () => {
                     ></f-validation-group>
                 `;
                 const report = await htmlvalidate.validateString(markup);
-                expect(report).toBeValid();
+                await expect(report).toBeValid();
             },
         );
 

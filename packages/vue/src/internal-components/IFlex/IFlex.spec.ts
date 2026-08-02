@@ -130,7 +130,7 @@ describe("html-validate", () => {
             </i-flex>
         `;
         const report = await htmlvalidate.validateString(markup);
-        expect(report).toBeValid();
+        await expect(report).toBeValid();
     });
 
     it("should not allow arbitrary content", async () => {
@@ -142,7 +142,7 @@ describe("html-validate", () => {
             </i-flex>
         `;
         const report = await htmlvalidate.validateString(markup);
-        expect(report).toBeInvalid();
+        await expect(report).toBeInvalid();
         expect(report).toHaveErrors([
             {
                 ruleId: "element-permitted-content",
@@ -162,7 +162,7 @@ describe("html-validate", () => {
             expect.assertions(1);
             const markup = /* HTML */ ` <i-flex gap="${gap}"></i-flex> `;
             const report = await htmlvalidate.validateString(markup);
-            expect(report).toBeValid();
+            await expect(report).toBeValid();
         });
 
         it("invalid", async () => {

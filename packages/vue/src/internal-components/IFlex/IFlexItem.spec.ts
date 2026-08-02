@@ -86,7 +86,7 @@ describe("html-validate", () => {
             </i-flex>
         `;
         const report = await htmlvalidate.validateString(markup);
-        expect(report).toBeValid();
+        await expect(report).toBeValid();
     });
 
     it("should not allow arbitrary element as parent", async () => {
@@ -97,7 +97,7 @@ describe("html-validate", () => {
             </div>
         `;
         const report = await htmlvalidate.validateString(markup);
-        expect(report).toBeInvalid();
+        await expect(report).toBeInvalid();
         await expect(report).toMatchInlineCodeframe(`
             "error: <i-flex-item> element requires a "i-flex > i-flex-item" ancestor (element-required-ancestor)
               1 |
@@ -119,7 +119,7 @@ describe("html-validate", () => {
                 </i-flex>
             `;
             const report = await htmlvalidate.validateString(markup);
-            expect(report).toBeValid();
+            await expect(report).toBeValid();
         });
 
         it("invalid", async () => {
@@ -130,7 +130,7 @@ describe("html-validate", () => {
                 </i-flex>
             `;
             const report = await htmlvalidate.validateString(markup);
-            expect(report).toBeInvalid();
+            await expect(report).toBeInvalid();
             await expect(report).toMatchInlineCodeframe(`
                 "error: Attribute "align" has invalid value "invalid" (attribute-allowed-values)
                   1 |

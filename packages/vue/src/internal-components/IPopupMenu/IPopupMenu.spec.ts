@@ -174,97 +174,97 @@ describe("v-model", () => {
 });
 
 describe("html-validate", () => {
-    it("should require is-open attribute", () => {
+    it("should require is-open attribute", async () => {
         expect.assertions(1);
-        expect("<i-popup-menu></i-popup-menu>").not.toHTMLValidate({
+        await expect("<i-popup-menu></i-popup-menu>").not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup-menu> is missing required "is-open" attribute',
         });
     });
 
-    it("should allow setting is-open boolean attribute", () => {
+    it("should allow setting is-open boolean attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup-menu is-open items=""></i-popup-menu>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
-    it("should not allow setting is-open value", () => {
+    it("should not allow setting is-open value", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup-menu is-open="" items=""></i-popup-menu>
         `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "attribute-boolean-style",
             message: 'Attribute "is-open" should omit value',
         });
     });
 
-    it("should allow setting anchor attribute", () => {
+    it("should allow setting anchor attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup-menu is-open items="" anchor=""></i-popup-menu>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
-    it("should require items attribute", () => {
+    it("should require items attribute", async () => {
         expect.assertions(1);
-        expect("<i-popup-menu></i-popup-menu>").not.toHTMLValidate({
+        await expect("<i-popup-menu></i-popup-menu>").not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup-menu> is missing required "items" attribute',
         });
     });
 
-    it("should not be allowed in interactive components", () => {
+    it("should not be allowed in interactive components", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <button type="button">
                 <i-popup-menu items=""></i-popup-menu>
             </button>
         `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
                 "<i-popup-menu> element is not permitted as content under <button>",
         });
     });
 
-    it("should not allow interactive children", () => {
+    it("should not allow interactive children", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup-menu items="">
                 <button type="button"></button>
             </i-popup-menu>
         `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
                 "<button> element is not permitted as content under <i-popup-menu>",
         });
     });
 
-    it("should not allow child elements", () => {
+    it("should not allow child elements", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup-menu items="">
                 <em></em>
             </i-popup-menu>
         `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
                 "<em> element is not permitted as content under <i-popup-menu>",
         });
     });
 
-    it("should not allow text", () => {
+    it("should not allow text", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <i-popup-menu items=""> mjukglass </i-popup-menu>
         `;
-        expect(markup).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "text-content",
             message: "<i-popup-menu> must not have text content",
         });

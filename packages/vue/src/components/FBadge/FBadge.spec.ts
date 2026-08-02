@@ -31,23 +31,23 @@ describe("should match correct class", () => {
 });
 
 describe("html-validate", () => {
-    it("should not report error when used correctly", () => {
+    it("should not report error when used correctly", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-badge status="info">
                 <template #default> Badge text </template>
             </f-badge>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
-    it("should report error when status is invalid", () => {
+    it("should report error when status is invalid", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-badge status="conflict">
                 <template #default> Badge text </template>
             </f-badge>
         `;
-        expect(markup).not.toHTMLValidate();
+        await expect(markup).not.toHTMLValidate();
     });
 });

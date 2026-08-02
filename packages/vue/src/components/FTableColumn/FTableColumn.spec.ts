@@ -350,39 +350,39 @@ describe("when in `<thead>`", () => {
 });
 
 describe("html-validate", () => {
-    it("should require title attribute", () => {
+    it("should require title attribute", async () => {
         expect.assertions(2);
-        expect("<f-table-column></f-table-column>").not.toHTMLValidate({
+        await expect("<f-table-column></f-table-column>").not.toHTMLValidate({
             message: '<f-table-column> is missing required "title" attribute',
         });
-        expect('<f-table-column title=""></f-table-column>').not.toHTMLValidate(
-            {
-                message: 'Attribute "title" has invalid value ""',
-            },
-        );
+        await expect(
+            '<f-table-column title=""></f-table-column>',
+        ).not.toHTMLValidate({
+            message: 'Attribute "title" has invalid value ""',
+        });
     });
 
-    it("should not allow invalid types", () => {
+    it("should not allow invalid types", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             '<f-table-column type="foobar"></f-table-column>',
         ).not.toHTMLValidate({
             message: 'Attribute "type" has invalid value "foobar"',
         });
     });
 
-    it("should not allow empty description", () => {
+    it("should not allow empty description", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             '<f-table-column description=""></f-table-column>',
         ).not.toHTMLValidate({
             message: 'Attribute "description" has invalid value ""',
         });
     });
 
-    it("should not allow flow content", () => {
+    it("should not allow flow content", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             "<f-table-column><div></div></f-table-column>",
         ).not.toHTMLValidate({
             message:
@@ -390,20 +390,20 @@ describe("html-validate", () => {
         });
     });
 
-    it("should allow phrasing content", () => {
+    it("should allow phrasing content", async () => {
         expect.assertions(1);
-        expect(
+        await expect(
             '<f-table-column name="foo" title="Foo"><span></span></f-table-column>',
         ).toHTMLValidate();
     });
 
-    it("should allow button content", () => {
+    it("should allow button content", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-table-column name="foo" title="Foo">
                 <button type="button">Foo</button>
             </f-table-column>
         `;
-        expect(markup).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 });

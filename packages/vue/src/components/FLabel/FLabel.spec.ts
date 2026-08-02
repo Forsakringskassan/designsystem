@@ -85,10 +85,10 @@ describe("html-validate", () => {
         ${'<f-label><template #tooltip><f-tooltip screen-reader-text="Read more about FLabel"></f-tooltip></template></f-label>'}
         ${"<f-label><template #tooltip><slot></slot></template></f-label>"}
         ${'<f-label for="number-input"></f-label>'}
-    `("$html should be valid", ({ html }) => {
+    `("$html should be valid", async ({ html }) => {
         expect.assertions(1);
 
-        expect(html).toHTMLValidate();
+        await expect(html).toHTMLValidate();
     });
 
     it.each`
@@ -96,12 +96,12 @@ describe("html-validate", () => {
         ${"<f-label><template #tooltip><div /></template></f-label>"}
         ${'<f-label for="00-number-input"></f-label>'}
         ${'<f-label for="number input"></f-label>'}
-    `("$html should be invalid", ({ html }) => {
+    `("$html should be invalid", async ({ html }) => {
         expect.assertions(3);
         let catchedError;
 
         try {
-            expect(html).toHTMLValidate();
+            await expect(html).toHTMLValidate();
         } catch (error) {
             catchedError = error;
         } finally {
