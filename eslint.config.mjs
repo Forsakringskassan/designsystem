@@ -171,7 +171,6 @@ export default [
         name: "technical-debt",
         files: ["**/*.spec.ts"],
         rules: {
-            "@typescript-eslint/no-deprecated": "off",
             "@typescript-eslint/no-floating-promises": "off",
             "@typescript-eslint/no-unnecessary-condition": "off",
             "@typescript-eslint/no-unnecessary-type-assertion": "off",
