@@ -20,7 +20,7 @@ it.each`
     ${"201812322385"}    | ${false} | ${"test with invalid day is not valid"}
 `(
     'should return $expected with value "$value" because of $description',
-    ({ value, expected }) => {
+    ({ value, expected }: { value: string; expected: boolean }) => {
         expect.assertions(1);
         const result = personnummerFormatValidator.validation(
             value,

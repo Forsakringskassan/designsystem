@@ -30,9 +30,18 @@ describe("validation", () => {
         ${","}           | ${false} | ${testConfig}          | ${"comma(,) should be invalid"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected, config }) => {
+        ({
+            value,
+            expected,
+            config,
+        }: {
+            value: unknown;
+            expected: boolean;
+            config: unknown;
+        }) => {
             expect.assertions(1);
             expect(
+                /* @ts-expect-error -- technical debt, we're lying to the type system */
                 minValueValidator.validation(value, element, config),
             ).toEqual(expected);
         },

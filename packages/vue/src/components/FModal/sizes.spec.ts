@@ -7,7 +7,7 @@ describe("should return correct class for", () => {
         ${"small"}     | ${"modal__dialog-container--small"}
         ${"large"}     | ${"modal__dialog-container--large"}
         ${"fullwidth"} | ${"modal__dialog-container--fullwidth"}
-    `("$size", ({ size, expected }) => {
+    `("$size", ({ size, expected }: { size: string; expected: string }) => {
         expect.assertions(1);
         expect(sizeClass(size)).toEqual([expected]);
     });

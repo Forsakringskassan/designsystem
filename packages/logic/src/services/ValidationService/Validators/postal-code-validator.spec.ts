@@ -23,10 +23,11 @@ describe("validation", () => {
         ${"032 aB"}    | ${false} | ${"value with letters should be invalid"}
     `(
         'should return $expected with value "$value" because of $description',
-        ({ value, expected }) => {
+        ({ value, expected }: { value: unknown; expected: boolean }) => {
             expect.assertions(1);
             expect(
                 postalCodeValidator.validation(
+                    /* @ts-expect-error -- technical debt, we're lying to the type system */
                     value,
                     {} as ValidatableHTMLElement,
                     {},

@@ -41,9 +41,10 @@ describe("validation", () => {
         ${10e3}          | ${true}  | ${"power to should be valid"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected, config }) => {
+        ({ value, expected }: { value: unknown; expected: boolean }) => {
             expect.assertions(1);
-            expect(integerValidator.validation(value, element, config)).toEqual(
+            /* @ts-expect-error -- technical debt, we're lying to the type system */
+            expect(integerValidator.validation(value, element, {})).toEqual(
                 expected,
             );
         },

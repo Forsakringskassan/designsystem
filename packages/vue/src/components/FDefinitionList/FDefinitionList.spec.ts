@@ -29,6 +29,11 @@ describe("expected DOM structures", () => {
             expectedDlElements,
             expectedDtElements,
             expectedDdElements,
+        }: {
+            numberOfDefinitions: number;
+            expectedDlElements: number;
+            expectedDtElements: number;
+            expectedDdElements: number;
         }) => {
             expect.hasAssertions();
             // Create wrapper

@@ -54,6 +54,7 @@ describe("snapshots", () => {
 it("should set css classes", () => {
     expect.assertions(1);
     const wrapper = createWrapper();
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
     const classes = Array.from(wrapper.element.classList);
     expect(classes).toEqual(["icon", "f-icon-my-icon"]);
 });

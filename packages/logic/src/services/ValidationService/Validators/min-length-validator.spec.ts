@@ -11,7 +11,7 @@ it.each`
     ${""}         | ${true}  | ${"empty value is valid"}
 `(
     'should return $expected with value "$value" because of $description',
-    ({ value, expected }) => {
+    ({ value, expected }: { value: string; expected: boolean }) => {
         expect.assertions(1);
         const config = {
             length: 7,

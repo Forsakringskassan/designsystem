@@ -14,7 +14,7 @@ describe("getDayStartOffset", () => {
         ${"2022-07-10"} | ${"Sunday"}    | ${6}
     `(
         "should return $expected when first day is $weekday",
-        ({ date, expected }) => {
+        ({ date, expected }: { date: string; expected: number }) => {
             expect.assertions(1);
             expect(getDayStartOffset([FDate.fromIso(date)])).toBe(expected);
         },
@@ -33,7 +33,7 @@ describe("getDayEndOffset", () => {
         ${"2022-07-10"} | ${"Sunday"}    | ${0}
     `(
         "should return $expected when last day is $weekday",
-        ({ date, expected }) => {
+        ({ date, expected }: { date: string; expected: number }) => {
             expect.assertions(1);
             expect(getDayEndOffset([FDate.fromIso(date)])).toBe(expected);
         },

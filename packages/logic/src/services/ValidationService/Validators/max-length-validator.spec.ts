@@ -11,7 +11,7 @@ it.each`
     ${""}         | ${true}  | ${"empty value is valid"}
 `(
     'should return $expected with value "$value" because of $description',
-    ({ value, expected }) => {
+    ({ value, expected }: { value: string; expected: boolean }) => {
         expect.assertions(1);
         const options = { length: 7 };
         const result = maxLengthValidator.validation(value, element, options);

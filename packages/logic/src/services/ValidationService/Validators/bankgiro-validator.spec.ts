@@ -19,8 +19,9 @@ describe("validation", () => {
         ${"999-999b"}  | ${false} | ${"value with letters should be invalid"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({ value, expected }: { value: unknown; expected: boolean }) => {
             expect.assertions(1);
+            /* @ts-expect-error -- technical debt, we're lying to the type system */
             const result = bankgiroValidator.validation(value, element, {});
             expect(result).toEqual(expected);
         },

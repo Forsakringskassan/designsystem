@@ -28,9 +28,9 @@ describe("validation", () => {
         ${"-100.10"}    | ${true}  | ${"numeric value with leading minus(-) should be valid"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected, config }) => {
+        ({ value, expected }: { value: string; expected: boolean }) => {
             expect.assertions(1);
-            const result = percentValidator.validation(value, element, config);
+            const result = percentValidator.validation(value, element, {});
             expect(result).toEqual(expected);
         },
     );

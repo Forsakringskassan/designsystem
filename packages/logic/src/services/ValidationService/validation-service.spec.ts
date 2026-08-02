@@ -14,6 +14,7 @@ import {
     type ValidatorConfigs,
     type ValidatorOptions,
     type ValidityEvent,
+    type ValidityMode,
 } from "./validation-service-interface";
 import { type Validator, type ValidatorName } from "./validator";
 
@@ -529,7 +530,13 @@ describe("addValidatorsToElement", () => {
         ${{ whitelist: { instant: true } }}  | ${"using an instant validator configured with instant: true"}     | ${true}
     `(
         `should dispatch event instantly: $expected when $description`,
-        ({ validatorConfigs, expected }) => {
+        ({
+            validatorConfigs,
+            expected,
+        }: {
+            validatorConfigs: ValidatorConfigs;
+            expected: boolean;
+        }) => {
             expect.assertions(1);
             const element = mountInputElementAndAddValidators(
                 "text",
@@ -709,6 +716,7 @@ describe("addValidatorsToElement", () => {
             newConfig,
         );
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         expect(Object.keys(result)).toEqual([
             "required",
             "integer",
@@ -1126,7 +1134,15 @@ describe("ValidityMode", () => {
         ${"12"} | ${false} | ${"VALID"}
     `(
         `should be $expected when required is $required and leaving field with "$value" value`,
-        ({ value, required, expected }) => {
+        ({
+            value,
+            required,
+            expected,
+        }: {
+            value: string;
+            required: boolean;
+            expected: ValidationState;
+        }) => {
             expect.assertions(1);
             const validatorConfigs: ValidatorConfigs = {
                 required: { enabled: required },
@@ -1184,7 +1200,17 @@ describe("ValidityMode", () => {
             ${"foo"} | ${true}  | ${true}   | ${"ERROR"}
         `(
             `should return $validityMode for input with value "$value", touched=$touched and submitted=$submitted`,
-            ({ value, touched, submitted, validityMode }) => {
+            ({
+                value,
+                touched,
+                submitted,
+                validityMode,
+            }: {
+                value: string;
+                touched: boolean;
+                submitted: boolean;
+                validityMode: ValidityMode;
+            }) => {
                 expect.assertions(1);
                 const element = document.createElement("input");
                 element.value = value;
@@ -1283,7 +1309,15 @@ describe("initial state", () => {
             ${{ touched: false, submitted: false, serverError: undefined }} | ${"V"}     | ${"ERROR"}
         `(
             `should have validityMode $validityMode if state is $state and input value is $inputValue`,
-            ({ state, inputValue, validityMode }) => {
+            ({
+                state,
+                inputValue,
+                validityMode,
+            }: {
+                state: ValidationState;
+                inputValue: string;
+                validityMode: ValidityMode;
+            }) => {
                 expect.assertions(1);
                 /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
                 ValidationService.setState("test-element", state);

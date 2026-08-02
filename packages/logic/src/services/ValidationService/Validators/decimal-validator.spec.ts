@@ -46,8 +46,17 @@ describe("validation", () => {
         ${10e3}              | ${false} | ${testConfig} | ${"power to should be invalid"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected, config }) => {
+        ({
+            value,
+            expected,
+            config,
+        }: {
+            value: unknown;
+            expected: boolean;
+            config: unknown;
+        }) => {
             expect.assertions(1);
+            /* @ts-expect-error -- technical debt, we're lying to the type system */
             expect(decimalValidator.validation(value, element, config)).toEqual(
                 expected,
             );

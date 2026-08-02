@@ -12,7 +12,7 @@ describe("validate", () => {
         ${" 1 0 0 0 0"}  | ${600_000}     | ${"value with whitespace and of type number should be valid"}
     `(
         'should be called with "$expected" for "$value" because of "$description"',
-        ({ value, expected }) => {
+        ({ value, expected }: { value: string; expected: number }) => {
             expect.assertions(1);
             const compareFunction = vi.fn();
             const testConfig = { limit: "01:30" };
@@ -38,13 +38,22 @@ describe("validate", () => {
         ${"2"}       | ${{ limit: undefined }} | ${false} | ${"undefined as limit should be invalid"}
     `(
         "should return $expected because of $description",
-        ({ value, config, expected }) => {
+        ({
+            value,
+            config,
+            expected,
+        }: {
+            value: unknown;
+            config: unknown;
+            expected: boolean;
+        }) => {
             expect.assertions(1);
             function compareFunction(): boolean {
                 return true;
             }
             expect(
                 HoursMinutesValidatorUtils.validate(
+                    /* @ts-expect-error -- technical debt, we're lying to the type system */
                     value,
                     config,
                     "limit",

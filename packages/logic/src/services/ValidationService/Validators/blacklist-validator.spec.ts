@@ -24,9 +24,18 @@ describe("validation", () => {
         ${"10"}         | ${[123, 55, 7, 8]}                  | ${true}  | ${"not excluded number-value should be valid"}
     `(
         'should return "$expected" if "$excluded" excluded and value "$value" because of $description',
-        ({ value, expected, excluded }) => {
+        ({
+            value,
+            expected,
+            excluded,
+        }: {
+            value: unknown;
+            excluded: unknown;
+            expected: boolean;
+        }) => {
             expect.assertions(1);
             expect(
+                /* @ts-expect-error -- technical debt, we're lying to the type system */
                 blacklistValidator.validation(value, element, {
                     values: excluded,
                 }),

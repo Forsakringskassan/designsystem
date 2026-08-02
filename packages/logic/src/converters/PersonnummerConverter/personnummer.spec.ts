@@ -17,7 +17,13 @@ describe("parsePersonnummer", () => {
             ${"19120AAAA211915"} | ${undefined} | ${"invalid characters should return undefined"}
         `(
             'should return "$expected" for "$value" because of $description',
-            ({ value, expected }) => {
+            ({
+                value,
+                expected,
+            }: {
+                value: string | undefined;
+                expected: undefined;
+            }) => {
                 expect.assertions(1);
                 expect(parsePersonnummer(value)).toEqual(expected);
             },
@@ -41,7 +47,13 @@ describe("parsePersonnummer", () => {
             ${"1912 02 11 9150"} | ${"19120211-9150"} | ${"test with whitespaces is valid"}
         `(
             'should return "$expected" for "$value" because of $description',
-            ({ value, expected }) => {
+            ({
+                value,
+                expected,
+            }: {
+                value: string;
+                expected: string | undefined;
+            }) => {
                 expect.assertions(1);
                 expect(parsePersonnummer(value)).toEqual(expected);
             },
@@ -64,7 +76,13 @@ describe("parsePersonnummer", () => {
             ${"12 01 29 2388"} | ${"20120129-2388"} | ${"test with whitespaces is valid"}
         `(
             'should return "$expected" for "$value" because of $description',
-            ({ value, expected }) => {
+            ({
+                value,
+                expected,
+            }: {
+                value: string;
+                expected: string | undefined;
+            }) => {
                 expect.assertions(1);
                 expect(parsePersonnummer(value)).toEqual(expected);
             },
@@ -92,7 +110,13 @@ describe("parsePersonnummerLuhn", () => {
         ${"201812322385"}    | ${undefined}       | ${"test with invalid day should return undefined"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({
+            value,
+            expected,
+        }: {
+            value: string | undefined;
+            expected: string | undefined;
+        }) => {
             expect.assertions(1);
             expect(parsePersonnummerLuhn(value)).toEqual(expected);
         },
@@ -128,7 +152,13 @@ describe("formatPersonnummerToDate", () => {
         ${"202312319876"} | ${"2023-12-31"} | ${"valid personnummer with date 2023-12-31"}
     `(
         "should return FDate $expectedDate for $description",
-        ({ personnummer, expectedDate }) => {
+        ({
+            personnummer,
+            expectedDate,
+        }: {
+            personnummer: string;
+            expectedDate: string;
+        }) => {
             expect.assertions(1);
             const result = formatPersonnummerToDate(personnummer);
             expect(result?.toString()).toEqual(expectedDate);
@@ -140,11 +170,14 @@ describe("formatPersonnummerToDate", () => {
         ${"invalidstring"} | ${"invalid personnummer string"}
         ${"123456789012"}  | ${"personnummer string with incorrect date"}
         ${""}              | ${"empty personnummer string"}
-    `("should return undefined for $description", ({ personnummer }) => {
-        expect.assertions(1);
-        const result = formatPersonnummerToDate(personnummer);
-        expect(result).toBeUndefined();
-    });
+    `(
+        "should return undefined for $description",
+        ({ personnummer }: { personnummer: string }) => {
+            expect.assertions(1);
+            const result = formatPersonnummerToDate(personnummer);
+            expect(result).toBeUndefined();
+        },
+    );
 
     it("should return undefined for undefined input", () => {
         expect.assertions(1);

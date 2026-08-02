@@ -118,6 +118,7 @@ describe("events", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
         expect(wrapper.emitted().submit).toBeTruthy();
         expect(wrapper.emitted().close).toBeTruthy();
@@ -134,6 +135,7 @@ describe("events", () => {
         });
         expect(beforeSubmit).toHaveBeenCalledTimes(0);
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
 
         expect(beforeSubmit).toHaveBeenCalledTimes(1);
@@ -151,6 +153,7 @@ describe("events", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
 
         expect(wrapper.emitted().submit).toBeFalsy();
@@ -168,6 +171,7 @@ describe("events", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
 
         expect(wrapper.emitted().submit).toBeTruthy();
@@ -185,6 +189,7 @@ describe("events", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
 
         expect(wrapper.emitted().submit).toBeTruthy();
@@ -198,6 +203,7 @@ describe("events", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
 
         expect(wrapper.emitted().submit).toBeTruthy();

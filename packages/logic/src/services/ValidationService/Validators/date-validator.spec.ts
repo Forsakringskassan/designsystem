@@ -25,8 +25,9 @@ describe("validation", () => {
         ${"2000/13/01"} | ${false} | ${"value with correct format but invalid month content should be invalid"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({ value, expected }: { value: unknown; expected: boolean }) => {
             expect.assertions(1);
+            /* @ts-expect-error -- technical debt, we're lying to the type system */
             const result = dateValidator.validation(value, element, {});
             expect(result).toEqual(expected);
         },

@@ -11,7 +11,13 @@ describe("formatPostalCode()", () => {
         ${"371BB"}  | ${undefined} | ${"should not format an incorrect postal code and instead return undefined"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({
+            value,
+            expected,
+        }: {
+            value: string;
+            expected: string | undefined;
+        }) => {
             expect.assertions(1);
             expect(formatPostalCode(value)).toEqual(expected);
         },

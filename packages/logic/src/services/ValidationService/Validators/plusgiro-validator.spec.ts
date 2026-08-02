@@ -26,8 +26,9 @@ describe("validation", () => {
         ${"1-b"}        | ${false} | ${"value with letter should be invalid"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({ value, expected }: { value: unknown; expected: boolean }) => {
             expect.assertions(1);
+            /* @ts-expect-error -- technical debt, we're lying to the type system */
             const result = plusgiroValidator.validation(value, element, {});
             expect(result).toEqual(expected);
         },

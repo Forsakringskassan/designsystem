@@ -19,7 +19,7 @@ describe("formatting", () => {
         ${1_000_000} | ${"1\u{A0}000\u{A0}000"} | ${"number"}
     `(
         'should format "$value" ($type) as "$expected"',
-        ({ value, expected }) => {
+        ({ value, expected }: { value: string | number; expected: string }) => {
             expect.assertions(1);
             expect(formatNumber(value)).toBe(expected);
         },
@@ -57,10 +57,13 @@ describe("formatting decimals", () => {
         ${1234.254}    | ${"1\u{A0}234,25"}
         ${1234.255}    | ${"1\u{A0}234,26"}
         ${1_000_000.5} | ${"1\u{A0}000\u{A0}000,50"}
-    `('should format "$value" as "$expected"', ({ value, expected }) => {
-        expect.assertions(1);
-        expect(formatNumber(value, 2)).toEqual(expected);
-    });
+    `(
+        'should format "$value" as "$expected"',
+        ({ value, expected }: { value: number; expected: string }) => {
+            expect.assertions(1);
+            expect(formatNumber(value, 2)).toEqual(expected);
+        },
+    );
 });
 
 describe("parse", () => {
@@ -92,8 +95,15 @@ describe("parse", () => {
         ${"-Infinity"}         | ${undefined} | ${"invalid value should return undefined"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({
+            value,
+            expected,
+        }: {
+            value: unknown;
+            expected: number | undefined;
+        }) => {
             expect.assertions(1);
+            /* @ts-expect-error -- technical debt, we're lying to the type system */
             expect(parseNumber(value)).toEqual(expected);
         },
     );

@@ -230,6 +230,7 @@ describe("validation", () => {
     it("should display correct error message when multiple validators", async () => {
         expect.assertions(2);
         const wrapper = createWrapper({ options: { sync: false } });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         ValidationService.setSubmitted(wrapper.element);
         await flushPromises();
 
