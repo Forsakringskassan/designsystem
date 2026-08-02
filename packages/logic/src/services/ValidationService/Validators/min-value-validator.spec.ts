@@ -42,7 +42,7 @@ describe("validation", () => {
         expect.assertions(1);
 
         expect(() =>
-            minValueValidator.validation!("2", element, { minValue: "five" }),
+            minValueValidator.validation("2", element, { minValue: "five" }),
         ).toThrowErrorMatchingInlineSnapshot(
             `[Error: config.minValue must be a number]`,
         );

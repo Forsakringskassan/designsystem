@@ -52,7 +52,7 @@ beforeEach(() => {
     fieldset = mountFieldsetElementAndValidator();
     [input1InFieldset, input2InFieldset] = Array.from(
         fieldset.querySelectorAll("input"),
-    ) as HTMLInputElement[];
+    );
     inputOutsideFieldset = document.querySelector(
         "#test-element3",
     ) as HTMLInputElement;

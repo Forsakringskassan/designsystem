@@ -13,8 +13,7 @@ beforeEach(() => {
         public disconnect = vi.fn();
     }
     /* eslint-disable-next-line unicorn/no-global-object-property-assignment -- technical debt */
-    global.ResizeObserver =
-        ResizeObserverMock as unknown as typeof ResizeObserver;
+    global.ResizeObserver = ResizeObserverMock;
 });
 
 describe("transparency", () => {

@@ -46,7 +46,7 @@ describe("validation", () => {
         expect.assertions(1);
 
         expect(() =>
-            lessThanValidator.validation!("2", element, { limit: "five" }),
+            lessThanValidator.validation("2", element, { limit: "five" }),
         ).toThrowErrorMatchingInlineSnapshot(
             `[Error: config.limit must be a number]`,
         );

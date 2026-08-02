@@ -12,7 +12,7 @@ class ResizeObserverMock {
 }
 
 /* eslint-disable-next-line unicorn/no-global-object-property-assignment -- technical debt */
-global.ResizeObserver = ResizeObserverMock as unknown as typeof ResizeObserver;
+global.ResizeObserver = ResizeObserverMock;
 
 const testItems: NavigationMenuItem[] = [
     { label: "label1", route: "ROUTE_1" },

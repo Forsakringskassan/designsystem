@@ -1,5 +1,4 @@
 import { expect, it } from "vitest";
-import { type ValidatorName } from "../validator";
 import { ValidationErrorMessageBuilder } from "./validation-error-message-builder";
 
 it("should create a map with translations for validators", () => {
@@ -40,7 +39,7 @@ it("should create a map with translations for a customer validator", () => {
     expect.assertions(1);
     const validatorMessageMap = ValidationErrorMessageBuilder.create()
         .map(
-            "my-app-specific-validator" as ValidatorName,
+            "my-app-specific-validator",
             "Some application specific validation error message",
         )
         .build();

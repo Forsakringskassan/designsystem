@@ -1,9 +1,9 @@
 import { expect, it } from "vitest";
-import { type MaybeWithFKUIContext, getRunningContext } from "./context";
+import { getRunningContext } from "./context";
 
 it("should throw error if calling instance is without FKUI context", () => {
     expect.assertions(1);
-    expect(() => getRunningContext({} as MaybeWithFKUIContext)).toThrow(
+    expect(() => getRunningContext({})).toThrow(
         "Application running context is unset. Call `setRunningContext(app)` after `app = createApp(..)`.",
     );
 });
