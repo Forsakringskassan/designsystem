@@ -878,6 +878,7 @@ it("should act as multiselect when selectable is `true`", async () => {
 describe("html-validate", () => {
     it("should require `key-attribute` to be non-empty if used", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             '<f-interactive-table key-attribute=""></f-interactive-table>',
         ).not.toHTMLValidate({
@@ -887,6 +888,7 @@ describe("html-validate", () => {
 
     it("should require row attribute", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             "<f-interactive-table></f-interactive-table>",
         ).not.toHTMLValidate({
@@ -897,6 +899,7 @@ describe("html-validate", () => {
 
     it("should require caption slot", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             "<f-interactive-table></f-interactive-table>",
         ).not.toHTMLValidate({
@@ -907,6 +910,7 @@ describe("html-validate", () => {
 
     it("should require default slot", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             "<f-interactive-table></f-interactive-table>",
         ).not.toHTMLValidate({

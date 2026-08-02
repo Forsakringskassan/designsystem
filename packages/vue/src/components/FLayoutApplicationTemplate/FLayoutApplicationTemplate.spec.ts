@@ -136,7 +136,7 @@ describe("html-validate", () => {
         const slotTemplates = Object.entries(defaultSlots).map(
             ([key, value]) => `<template #${key}>${value}</template>`,
         );
-
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             `<f-layout-application-template>${slotTemplates}</f-layout-application-template>`,
         ).toHTMLValidate();

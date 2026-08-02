@@ -176,6 +176,7 @@ describe("v-model", () => {
 describe("html-validate", () => {
     it("should require is-open attribute", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect("<i-popup-menu></i-popup-menu>").not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup-menu> is missing required "is-open" attribute',
@@ -187,6 +188,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <i-popup-menu is-open items=""></i-popup-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();
     });
 
@@ -195,6 +197,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <i-popup-menu is-open="" items=""></i-popup-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "attribute-boolean-style",
             message: 'Attribute "is-open" should omit value',
@@ -206,11 +209,13 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <i-popup-menu is-open items="" anchor=""></i-popup-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();
     });
 
     it("should require items attribute", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect("<i-popup-menu></i-popup-menu>").not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup-menu> is missing required "items" attribute',
@@ -224,6 +229,7 @@ describe("html-validate", () => {
                 <i-popup-menu items=""></i-popup-menu>
             </button>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
@@ -238,6 +244,7 @@ describe("html-validate", () => {
                 <button type="button"></button>
             </i-popup-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
@@ -252,6 +259,7 @@ describe("html-validate", () => {
                 <em></em>
             </i-popup-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
@@ -264,6 +272,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <i-popup-menu items=""> mjukglass </i-popup-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "text-content",
             message: "<i-popup-menu> must not have text content",

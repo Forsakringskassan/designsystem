@@ -582,7 +582,9 @@ describe("html-validate", () => {
                 <template #tooltip> ${child} </template>
             </f-text-field>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup(valid)).toHTMLValidate();
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup(invalid)).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message: `<div> element is not permitted as content under slot "tooltip" (<f-text-field>)`,

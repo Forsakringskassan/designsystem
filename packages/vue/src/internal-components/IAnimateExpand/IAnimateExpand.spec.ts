@@ -266,6 +266,7 @@ describe("html-validate", () => {
             const markup = /* HTML */ `
                 <i-animate-expand ${attr}></i-animate-expand>
             `;
+            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
             await expect(markup).toHTMLValidate();
         },
     );
@@ -277,6 +278,7 @@ describe("html-validate", () => {
             const markup = /* HTML */ `
                 <i-animate-expand ${attr}="true"></i-animate-expand>
             `;
+            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
             await expect(markup).not.toHTMLValidate({
                 ruleId: "attribute-boolean-style",
                 message: `Attribute "${attr}" should omit value`,
@@ -297,6 +299,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <i-animate-expand expanded="${value}"></i-animate-expand>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();
     });
 });

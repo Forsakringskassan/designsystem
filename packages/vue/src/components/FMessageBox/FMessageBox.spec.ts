@@ -133,6 +133,7 @@ describe("html-validate", () => {
                 </template>
             </f-message-box>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();
     });
 
@@ -143,12 +144,14 @@ describe("html-validate", () => {
                 <template v-slot:heading></template>
             </f-message-box>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate();
     });
 
     it("should report error when type is missing", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-message-box></f-message-box> `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate();
     });
 
@@ -157,6 +160,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <f-message-box type="foobar"></f-message-box>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate();
     });
 });

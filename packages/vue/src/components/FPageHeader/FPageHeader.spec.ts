@@ -100,6 +100,7 @@ describe("props", () => {
 describe("html-validate", () => {
     it("should allow usage without attributes, no attributes required", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect("<f-page-header></f-page-header>").toHTMLValidate();
     });
 
@@ -142,6 +143,7 @@ describe("html-validate", () => {
             const markup = /* HTML */ `
                 <f-page-header header-tag="${headerTag}"></f-page-header>
             `;
+            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
             await expect(markup).toHTMLValidate();
         });
 
@@ -150,7 +152,7 @@ describe("html-validate", () => {
             const markup = /* HTML */ `
                 <f-page-header header-tag="h2"></f-page-header>
             `;
-            await expect(markup).toMatchInlineCodeframe(`
+            expect(markup).toMatchInlineCodeframe(`
                 "error: Attribute "header-tag" has invalid value "h2" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-page-header header-tag="h2"></f-page-header>

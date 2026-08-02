@@ -25,7 +25,7 @@ describe("html-validate", () => {
             >
             </i-calendar-day>
         `;
-
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();
     });
 
@@ -36,6 +36,7 @@ describe("html-validate", () => {
                 <span></span>
             </i-calendar-day>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();
     });
 });

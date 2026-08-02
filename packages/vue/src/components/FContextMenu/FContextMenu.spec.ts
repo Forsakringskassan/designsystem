@@ -282,6 +282,7 @@ describe("html-validate", () => {
                 <f-context-menu anchor="" is-open items=""></f-context-menu>
             </button>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
@@ -296,6 +297,7 @@ describe("html-validate", () => {
                 <button type="button"></button>
             </f-context-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
@@ -310,6 +312,7 @@ describe("html-validate", () => {
                 <em></em>
             </f-context-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
@@ -324,6 +327,7 @@ describe("html-validate", () => {
                 mjukglass
             </f-context-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "text-content",
             message: "<f-context-menu> must not have text content",

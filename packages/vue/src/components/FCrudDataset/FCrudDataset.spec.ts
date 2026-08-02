@@ -204,12 +204,12 @@ async function submitForm(wrapper: VueWrapper): Promise<void> {
     // hasFormErrors in FValidationForm
     await flushPromises(); // ValidationService.validateAllElements
     await wrapper.vm.$nextTick(); // FValidationForm.hasFormErrors.$nextTick
-    await vi.runAllTimers(); // FValidationForm.hasFormErrors.setTimeout
+    vi.runAllTimers(); // FValidationForm.hasFormErrors.setTimeout
 
     // hasFormErrors is called twice
     await flushPromises();
     await wrapper.vm.$nextTick();
-    await vi.runAllTimers();
+    vi.runAllTimers();
 
     await wrapper.vm.$nextTick(); // Remove modal from DOM
 }
@@ -387,7 +387,7 @@ it("should not modify original item on cancel", async () => {
     await wrapper.find("#child-name-input").setValue("test child");
 
     await wrapper.find(".button-group .button--secondary").trigger("click");
-    await vi.runAllTimers();
+    vi.runAllTimers();
     await flushPromises();
 
     const updatedItem = wrapper.vm.$data.items[0];
@@ -441,7 +441,7 @@ it("should call :onCancel after cancel", async () => {
     await wrapper.find(".crud-dataset__add-button").trigger("click");
 
     await wrapper.find(".button-group .button--secondary").trigger("click");
-    await vi.runAllTimers();
+    vi.runAllTimers();
     await flushPromises();
 
     expect(wrapper.find("#cancelMessage").text()).toBe("Modalen har stängts");
@@ -753,6 +753,7 @@ describe("formModalSize", () => {
 describe("html-validate", () => {
     it("should require default slot", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect("<f-crud-dataset></f-crud-dataset>").not.toHTMLValidate({
             message:
                 '<f-crud-dataset> component requires slot "default" to be implemented',
@@ -761,6 +762,7 @@ describe("html-validate", () => {
 
     it("should html-validate", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             "<f-crud-dataset><template #default></template></f-crud-dataset>",
         ).toHTMLValidate();

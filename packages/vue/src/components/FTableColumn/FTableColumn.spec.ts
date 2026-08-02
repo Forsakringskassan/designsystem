@@ -352,9 +352,11 @@ describe("when in `<thead>`", () => {
 describe("html-validate", () => {
     it("should require title attribute", async () => {
         expect.assertions(2);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect("<f-table-column></f-table-column>").not.toHTMLValidate({
             message: '<f-table-column> is missing required "title" attribute',
         });
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             '<f-table-column title=""></f-table-column>',
         ).not.toHTMLValidate({
@@ -364,6 +366,7 @@ describe("html-validate", () => {
 
     it("should not allow invalid types", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             '<f-table-column type="foobar"></f-table-column>',
         ).not.toHTMLValidate({
@@ -373,6 +376,7 @@ describe("html-validate", () => {
 
     it("should not allow empty description", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             '<f-table-column description=""></f-table-column>',
         ).not.toHTMLValidate({
@@ -382,6 +386,7 @@ describe("html-validate", () => {
 
     it("should not allow flow content", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             "<f-table-column><div></div></f-table-column>",
         ).not.toHTMLValidate({
@@ -392,6 +397,7 @@ describe("html-validate", () => {
 
     it("should allow phrasing content", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             '<f-table-column name="foo" title="Foo"><span></span></f-table-column>',
         ).toHTMLValidate();
@@ -404,6 +410,7 @@ describe("html-validate", () => {
                 <button type="button">Foo</button>
             </f-table-column>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();
     });
 });

@@ -373,11 +373,13 @@ describe("props", () => {
 describe("html-validate", () => {
     it("should allow usage without attributes, no attributes required", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect("<f-form-modal></f-form-modal>").toHTMLValidate();
     });
 
     it("should not allow an invalid form-id attribute", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             '<f-form-modal form-id="1"></f-form-modal>',
         ).not.toHTMLValidate({
@@ -396,6 +398,7 @@ describe("html-validate", () => {
                     <f-form-modal is-open></f-form-modal>
                     <f-form-modal :is-open="false"></f-form-modal>
                 `;
+                /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
                 await expect(markup).toHTMLValidate();
             });
 
@@ -442,6 +445,7 @@ describe("html-validate", () => {
                 const markup = /* HTML */ `
                     <f-form-modal size="${size}"></f-form-modal>
                 `;
+                /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
                 await expect(markup).toHTMLValidate();
             });
 
