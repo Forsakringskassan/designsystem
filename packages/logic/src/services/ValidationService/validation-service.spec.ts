@@ -119,6 +119,7 @@ function triggerValidityEvent(
     initialState: ValidationState = { touched: false, submitted: false },
 ): ValidityEvent | undefined {
     const element = mountInputElementAndAddValidators(type, validityConfigs);
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
     ValidationService.setState("test-element", initialState);
     const listener = vi.fn();
     element.addEventListener("validity", listener);
@@ -166,6 +167,7 @@ describe("setState", () => {
             </div>
         `);
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         ValidationService.setState("group-element", {
             touched: true,
         });
@@ -232,6 +234,7 @@ describe("isValid()", () => {
         expect.assertions(1);
         const element = createElement({ valid: true });
         document.body.append(element);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(element)).toBeTruthy();
     });
 
@@ -239,6 +242,7 @@ describe("isValid()", () => {
         expect.assertions(1);
         const element = createElement({ valid: false });
         document.body.append(element);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(element)).toBeFalsy();
     });
 
@@ -250,6 +254,7 @@ describe("isValid()", () => {
         fieldset.append(a);
         fieldset.append(b);
         document.body.append(fieldset);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(fieldset)).toBeTruthy();
     });
 
@@ -261,6 +266,7 @@ describe("isValid()", () => {
         fieldset.append(a);
         fieldset.append(b);
         document.body.append(fieldset);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(fieldset)).toBeFalsy();
     });
 
@@ -272,6 +278,7 @@ describe("isValid()", () => {
         div.append(a);
         div.append(b);
         document.body.append(div);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(div)).toBeTruthy();
     });
 
@@ -283,6 +290,7 @@ describe("isValid()", () => {
         div.append(a);
         div.append(b);
         document.body.append(div);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(div)).toBeFalsy();
     });
 
@@ -294,6 +302,7 @@ describe("isValid()", () => {
         div.append(a);
         div.append(b);
         document.body.append(div);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid([a, b])).toBeTruthy();
     });
 
@@ -305,6 +314,7 @@ describe("isValid()", () => {
         div.append(a);
         div.append(b);
         document.body.append(div);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid([a, b])).toBeFalsy();
     });
 
@@ -316,7 +326,9 @@ describe("isValid()", () => {
         root.append(foo);
         root.append(bar);
         document.body.append(root);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid("foo", root)).toBeTruthy();
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid("bar", root)).toBeFalsy();
     });
 
@@ -329,17 +341,20 @@ describe("isValid()", () => {
         root.append(bar);
         document.body.append(root);
         expect(
+            /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
             await ValidationService.isValid(["foo", "bar"], root),
         ).toBeTruthy();
     });
 
     it("should return true for empty array", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid([])).toBeTruthy();
     });
 
     it("should return true for null", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(null)).toBeFalsy();
     });
 });
@@ -726,6 +741,7 @@ describe("addValidatorsToElement", () => {
             true,
         );
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         const internalState = ValidationService.getElementsAndValidators();
         const dangerous = internalState["email-test-element"];
 
@@ -801,6 +817,7 @@ describe("addValidatorsToElement", () => {
         const element = document.querySelector("input")!;
         ValidationService.addValidatorsToElement(element, lazyValidatorConfigs);
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         const internalState = ValidationService.getElementsAndValidators();
         const dangerous = internalState["email-test-element"];
 
@@ -1186,6 +1203,7 @@ describe("ValidityMode", () => {
 describe("initial state", () => {
     it("should have validityMode VALID if input of type radio is checked and untouched", () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element", {
             submitted: false,
             touched: false,
@@ -1204,6 +1222,7 @@ describe("initial state", () => {
     it("should have validityMode INITIAL if input of type radio is not checked and untouched", () => {
         expect.assertions(1);
         ValidationService.validationErrorMessages = { required: "REQUIRED" };
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element", {
             submitted: false,
             touched: false,
@@ -1266,6 +1285,7 @@ describe("initial state", () => {
             `should have validityMode $validityMode if state is $state and input value is $inputValue`,
             ({ state, inputValue, validityMode }) => {
                 expect.assertions(1);
+                /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
                 ValidationService.setState("test-element", state);
                 const validityEvent = triggerValidityEvent(
                     "validate",
@@ -1278,6 +1298,7 @@ describe("initial state", () => {
 
     it("should not trigger validity event on first input when instant is false", () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element", {
             serverError: "Some backend error",
         });
@@ -1334,6 +1355,7 @@ describe("clearAllStates", () => {
         const validityMock = vi.fn();
         input.addEventListener("validity", validityMock);
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element", {
             submitted: true,
             touched: true,
@@ -1373,10 +1395,12 @@ describe("isAnyTouched", () => {
         expect.assertions(1);
         setupTwoInputFields();
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element", {
             submitted: false,
             touched: false,
         });
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element2", {
             submitted: false,
             touched: false,
@@ -1389,10 +1413,12 @@ describe("isAnyTouched", () => {
         expect.assertions(1);
         setupTwoInputFields();
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element", {
             submitted: false,
             touched: false,
         });
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element2", {
             submitted: false,
             touched: true,
