@@ -49,7 +49,15 @@ describe("aria-current", () => {
         ${3} | ${2}        | ${"false"}
     `(
         'should have value "$expectedValue" for page button $page when current page is page $currentPage',
-        ({ page, currentPage, expectedValue }) => {
+        ({
+            page,
+            currentPage,
+            expectedValue,
+        }: {
+            page: number;
+            currentPage: number;
+            expectedValue: string;
+        }) => {
             expect.assertions(1);
             const wrapper = mount(FPaginator, {
                 props: {

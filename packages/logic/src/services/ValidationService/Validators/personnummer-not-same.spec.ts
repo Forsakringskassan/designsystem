@@ -18,8 +18,17 @@ it.each`
     ${undefined}    | ${true}  | ${{ otherField: "1301012397" }} | ${"value is undefined"}
 `(
     'should return $expected with input value "$value" compared to "$config.otherField" because of $description',
-    ({ value, config, expected }) => {
+    ({
+        value,
+        config,
+        expected,
+    }: {
+        value: unknown;
+        expected: boolean;
+        config: unknown;
+    }) => {
         expect.assertions(1);
+        /* @ts-expect-error -- technical debt, we're lying to the type system */
         expect(personnummerNotSame.validation(value, element, config)).toEqual(
             expected,
         );

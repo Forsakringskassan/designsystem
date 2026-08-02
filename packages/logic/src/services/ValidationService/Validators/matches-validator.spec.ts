@@ -16,7 +16,15 @@ it.each`
     ${undefined}          | ${undefined}          | ${true}  | ${"undefined should return true"}
 `(
     'should return $expected with input value "$inputValue" compared to "$comparedValue" because of $description',
-    ({ inputValue, comparedValue, expected }) => {
+    ({
+        inputValue,
+        comparedValue,
+        expected,
+    }: {
+        inputValue: unknown;
+        comparedValue: unknown;
+        expected: boolean;
+    }) => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <input id="testID" value="${inputValue}" />
@@ -24,6 +32,7 @@ it.each`
         document.body.innerHTML = markup;
         expect(
             matchesValidator.validation(
+                /* @ts-expect-error -- technical debt, we're lying to the type system */
                 comparedValue,
                 {} as ValidatableHTMLElement,
                 { id: "testID" },

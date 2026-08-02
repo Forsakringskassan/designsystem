@@ -34,7 +34,15 @@ it.each`
     ${"element-1"} | ${"element-2"} | ${true}
 `(
     "should focus $expectFocus when $havingFocus having focus and pressing tab key and shift is $shift",
-    ({ expectFocus, havingFocus, shift }) => {
+    ({
+        expectFocus,
+        havingFocus,
+        shift,
+    }: {
+        expectFocus: string;
+        havingFocus: string;
+        shift: boolean;
+    }) => {
         expect.assertions(1);
         mountDocument();
         getElement(havingFocus).focus();

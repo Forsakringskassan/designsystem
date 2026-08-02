@@ -21,8 +21,15 @@ describe("parse", () => {
         ${"1 AA 11-2"}   | ${undefined}     | ${"value can't be validated, formatter should return undefined"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({
+            value,
+            expected,
+        }: {
+            value: string | undefined;
+            expected: string | undefined;
+        }) => {
             expect.assertions(1);
+            /* @ts-expect-error -- technical debt, we're lying to the type system */
             expect(parsePlusgiro(value)).toEqual(expected);
         },
     );

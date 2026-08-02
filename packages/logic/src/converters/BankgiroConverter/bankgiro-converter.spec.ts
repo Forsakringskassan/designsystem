@@ -15,8 +15,15 @@ describe("parseBankgiro", () => {
         ${"9999-9997"} | ${"9999-9997"} | ${"value with 8 digits and hyphen should be parsed as XXXX-XXXX"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({
+            value,
+            expected,
+        }: {
+            value: unknown;
+            expected: string | undefined;
+        }) => {
             expect.assertions(1);
+            /* @ts-expect-error -- technical debt, we are lying to the type system */
             expect(parseBankgiro(value)).toEqual(expected);
         },
     );

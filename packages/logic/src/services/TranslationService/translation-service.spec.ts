@@ -21,7 +21,15 @@ describe("translate", () => {
         ${"Du har läst {{ reviewed }} av {{ total }} notifieringar"} | ${{ reviewed: 6, total: 10 }} | ${"Du har läst 6 av 10 notifieringar"}
     `(
         'should translate default "$defaultValue" with args "$args" as "$expected"',
-        ({ defaultValue, args, expected }) => {
+        ({
+            defaultValue,
+            args,
+            expected,
+        }: {
+            defaultValue: string;
+            args: { cound: number } | { reviewed: number; total: number };
+            expected: string;
+        }) => {
             expect.assertions(1);
             expect(
                 TranslationService.provider.translate(

@@ -100,7 +100,13 @@ describe("snapshots", () => {
         ${"INITIAL"} | ${false}
     `(
         "should match snapshot when validityMode is $validityMode",
-        async ({ validityMode, isValid }) => {
+        async ({
+            validityMode,
+            isValid,
+        }: {
+            validityMode: ValidityMode;
+            isValid: boolean;
+        }) => {
             expect.assertions(1);
             const wrapper = createWrapper({
                 slots: { label: "Label" },
@@ -259,7 +265,13 @@ describe("onValidity should only handle events from itself", () => {
         ${"select"}   | ${undefined}  | ${"should not"}
     `(
         "$description dispatch component-validity event if element is $element and type is $inputType",
-        ({ element, inputType }) => {
+        ({
+            element,
+            inputType,
+        }: {
+            element: "input" | "textarea" | "select";
+            inputType: string | undefined;
+        }) => {
             expect.assertions(1);
             const wrapper = createWrapper({
                 slots: { label: "Label" },
@@ -272,6 +284,7 @@ describe("onValidity should only handle events from itself", () => {
             );
             const inputElement = document.createElement(element);
             inputElement.setAttribute("id", "elementId");
+            /* @ts-expect-error -- technical debt */
             inputElement.setAttribute("type", inputType);
             wrapper.element.append(inputElement);
 
@@ -286,7 +299,7 @@ describe("onValidity should only handle events from itself", () => {
         ${"checkbox"}
     `(
         "should not dispatch component-validity event if input $inputType belongs to nestled fieldset",
-        ({ inputType }) => {
+        ({ inputType }: { inputType: string }) => {
             expect.assertions(1);
             const wrapper = createWrapper({
                 slots: { label: "Label" },

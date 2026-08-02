@@ -13,6 +13,7 @@ describe("prop align", () => {
     it("should have top alignment by default", () => {
         expect.assertions(1);
         const wrapper = mount(IFlexItem);
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex__item", "iflex--align-top"]);
     });
@@ -29,6 +30,7 @@ describe("prop align", () => {
             const wrapper = mount(IFlexItem, {
                 props: { align },
             });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
             const classList = Array.from(wrapper.element.classList);
             expect(classList).toEqual(["iflex__item", expected]);
         },
@@ -41,6 +43,7 @@ describe("prop grow/shrink", () => {
         const wrapper = mount(IFlexItem, {
             props: { grow: true },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toContain("iflex--grow");
         expect(classList).not.toContain("iflex--shrink");
@@ -51,6 +54,7 @@ describe("prop grow/shrink", () => {
         const wrapper = mount(IFlexItem, {
             props: { shrink: true },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toContain("iflex--shrink");
         expect(classList).not.toContain("iflex--grow");
@@ -61,6 +65,7 @@ describe("prop grow/shrink", () => {
         const wrapper = mount(IFlexItem, {
             props: { grow: true, shrink: true },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toContain("iflex--grow");
         expect(classList).not.toContain("iflex--shrink");

@@ -20,9 +20,18 @@ describe("validation", () => {
         ${""}           | ${true}  | ${testConfig} | ${"empty string should be valid"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected, config }) => {
+        ({
+            value,
+            expected,
+            config,
+        }: {
+            value: unknown;
+            expected: boolean;
+            config: unknown;
+        }) => {
             expect.assertions(1);
             const result = invalidWeekdaysValidator.validation(
+                /* @ts-expect-error -- technical debt, we're lying to the type system */
                 value,
                 element,
                 config,

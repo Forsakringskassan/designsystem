@@ -24,8 +24,9 @@ it.each`
     ${"asdf"}    | ${false} | ${"only numbers are valid"}
 `(
     'should return $expected with value "$value" because of $description',
-    ({ value, expected }) => {
+    ({ value, expected }: { value: unknown; expected: boolean }) => {
         expect.assertions(1);
+        /* @ts-expect-error -- technical debt, we're lying to the type system */
         const result = clearingNumberValidator.validation(value, element, {});
         expect(result).toEqual(expected);
     },

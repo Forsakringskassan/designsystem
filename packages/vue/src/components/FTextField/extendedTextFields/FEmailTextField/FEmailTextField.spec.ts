@@ -228,6 +228,7 @@ describe("validation", () => {
         expect.assertions(2);
         const wrapper = createWrapper({ options: { sync: false } });
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         ValidationService.setSubmitted(wrapper.element);
 
         const input = wrapper.get("input");

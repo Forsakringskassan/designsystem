@@ -16,8 +16,15 @@ describe("parseClearingNumber", () => {
         ${"12e45"}   | ${undefined} | ${"faulty clearing number should be returned as undefined"}
     `(
         'should return "$expected" from "$value" because "$description"',
-        ({ value, expected }) => {
+        ({
+            value,
+            expected,
+        }: {
+            value: string | undefined;
+            expected: string | undefined;
+        }) => {
             expect.assertions(1);
+            /* @ts-expect-error -- technical debt, we're lying to the type system */
             expect(parseClearingNumber(value)).toEqual(expected);
         },
     );

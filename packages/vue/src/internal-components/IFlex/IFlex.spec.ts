@@ -13,6 +13,7 @@ describe("gap", () => {
     it("should have no gap class when gap is unspecified", () => {
         expect.assertions(1);
         const wrapper = mount(IFlex);
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex"]);
     });
@@ -25,6 +26,7 @@ describe("gap", () => {
             const wrapper = mount(IFlex, {
                 props: { gap },
             });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
             const classList = Array.from(wrapper.element.classList);
             expect(classList).toEqual(["iflex", expectedClass]);
         },
@@ -35,6 +37,7 @@ describe("collapse", () => {
     it("should have no collapse class when collapse is unspecified", () => {
         expect.assertions(1);
         const wrapper = mount(IFlex);
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex"]);
     });
@@ -46,6 +49,7 @@ describe("collapse", () => {
                 collapse: true,
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex", "iflex--collapse"]);
     });
@@ -55,6 +59,7 @@ describe("float", () => {
     it("should have no float class when float is unspecified", () => {
         expect.assertions(1);
         const wrapper = mount(IFlex);
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex"]);
     });
@@ -66,6 +71,7 @@ describe("float", () => {
                 float: "left",
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex", "iflex--float-left"]);
     });
@@ -77,6 +83,7 @@ describe("float", () => {
                 float: "center",
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex", "iflex--float-center"]);
     });
@@ -88,6 +95,7 @@ describe("float", () => {
                 float: "right",
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex", "iflex--float-right"]);
     });
@@ -96,6 +104,7 @@ describe("float", () => {
 it("should have no collapse class when collapse is unspecified", () => {
     expect.assertions(1);
     const wrapper = mount(IFlex);
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
     const classList = Array.from(wrapper.element.classList);
     expect(classList).toEqual(["iflex"]);
 });
@@ -107,6 +116,7 @@ it("should have collapse class when collapse is specified", () => {
             collapse: true,
         },
     });
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
     const classList = Array.from(wrapper.element.classList);
     expect(classList).toEqual(["iflex", "iflex--collapse"]);
 });
