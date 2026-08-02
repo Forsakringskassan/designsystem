@@ -228,8 +228,8 @@ describe("events", () => {
         await wrapper.vm.$nextTick();
         await flushPromises();
 
-        expect(wrapper.vm.$data["field1"]).toBe("foo");
-        expect(wrapper.vm.$data["field2"]).toBe("bar");
+        expect(wrapper.vm.$data.field1).toBe("foo");
+        expect(wrapper.vm.$data.field2).toBe("bar");
     });
 });
 
@@ -333,7 +333,7 @@ describe("props", () => {
         });
 
         const fmodal = wrapper.getComponent(FModal);
-        expect(fmodal.vm.$props["ariaCloseText"]).toBe("CLOSE_TEXT");
+        expect(fmodal.vm.$props.ariaCloseText).toBe("CLOSE_TEXT");
     });
 
     it("should append screenreader text if given", () => {

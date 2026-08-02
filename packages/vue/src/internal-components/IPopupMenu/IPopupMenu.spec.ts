@@ -103,7 +103,7 @@ describe("events", () => {
         await wrapper.vm.$nextTick();
         await flushPromises();
 
-        expect(wrapper.vm.$data["gotCloseEvent"]).toBeTruthy();
+        expect(wrapper.vm.$data.gotCloseEvent).toBeTruthy();
     });
 });
 

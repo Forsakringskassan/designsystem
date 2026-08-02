@@ -354,13 +354,13 @@ it("should emit event when dataset is sorted", async () => {
     const wrapper = createWrapper();
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.emitted()["datasetSorted"]).toBeTruthy();
-    expect(wrapper.emitted()["datasetSorted"]).toEqual([[DATA]]);
+    expect(wrapper.emitted().datasetSorted).toBeTruthy();
+    expect(wrapper.emitted().datasetSorted).toEqual([[DATA]]);
 
     // Sort by Column B (Stigande)
     const options = wrapper.find("select").findAll("option");
     await options[3].setValue();
-    expect(wrapper.emitted()["datasetSorted"]).toEqual([
+    expect(wrapper.emitted().datasetSorted).toEqual([
         [DATA],
         [
             [
@@ -379,7 +379,7 @@ it("should emit event with used attributes when sorting using dropdown", async (
 
     const options = wrapper.find("select").findAll("option");
     await options[3].setValue();
-    expect(wrapper.emitted()["usedSortAttributes"][0]).toEqual([
+    expect(wrapper.emitted().usedSortAttributes[0]).toEqual([
         {
             attribute: "b",
             name: "Column B",
@@ -390,7 +390,7 @@ it("should emit event with used attributes when sorting using dropdown", async (
     ]);
 
     await options[4].setValue();
-    expect(wrapper.emitted()["usedSortAttributes"][1]).toEqual([
+    expect(wrapper.emitted().usedSortAttributes[1]).toEqual([
         {
             attribute: "b",
             name: "Column B",
@@ -401,7 +401,7 @@ it("should emit event with used attributes when sorting using dropdown", async (
     ]);
 
     await options[0].setValue();
-    expect(wrapper.emitted()["usedSortAttributes"][2]).toEqual([
+    expect(wrapper.emitted().usedSortAttributes[2]).toEqual([
         {
             attribute: "",
             ascending: false,

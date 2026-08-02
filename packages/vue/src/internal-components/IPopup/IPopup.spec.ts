@@ -91,7 +91,7 @@ describe("events", () => {
         const wrapper = await mountPopup();
         await openPopup(wrapper);
 
-        expect(wrapper.vm.$data["gotOpenEvent"]).toBeTruthy();
+        expect(wrapper.vm.$data.gotOpenEvent).toBeTruthy();
     });
 
     it('should emit "close" event on escape key pressed', async () => {
@@ -106,7 +106,7 @@ describe("events", () => {
         await wrapper.vm.$nextTick();
         await flushPromises();
 
-        expect(wrapper.vm.$data["gotCloseEvent"]).toBeTruthy();
+        expect(wrapper.vm.$data.gotCloseEvent).toBeTruthy();
     });
 
     it('should emit "close" event when clicked outside an open popup', async () => {
@@ -120,7 +120,7 @@ describe("events", () => {
         await wrapper.vm.$nextTick();
         await flushPromises();
 
-        expect(wrapper.vm.$data["gotCloseEvent"]).toBeTruthy();
+        expect(wrapper.vm.$data.gotCloseEvent).toBeTruthy();
     });
 
     it('should not emit "close" event when clicked outside a closed popup', async () => {
@@ -129,7 +129,7 @@ describe("events", () => {
 
         await wrapper.get("#outside").trigger("click");
 
-        expect(wrapper.vm.$data["gotCloseEvent"]).toBeFalsy();
+        expect(wrapper.vm.$data.gotCloseEvent).toBeFalsy();
     });
 });
 

@@ -320,10 +320,10 @@ it("should show delete modal when the delete button is pressed", async () => {
     );
 
     const confirmModal = wrapper.find("f-confirm-modal-stub");
-    expect(confirmModal.attributes()["isopen"]).toBe("false");
+    expect(confirmModal.attributes().isopen).toBe("false");
     const button = wrapper.find("#deleteButton");
     await button.trigger("click");
-    expect(confirmModal.attributes()["isopen"]).toBe("true");
+    expect(confirmModal.attributes().isopen).toBe("true");
 });
 
 it("should add item", async () => {
