@@ -1,7 +1,7 @@
 import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { type ValidatableHTMLElement } from "@fkui/logic";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import {
     FileSystemConfigLoader,

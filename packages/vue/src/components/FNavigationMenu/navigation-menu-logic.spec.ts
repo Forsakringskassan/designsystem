@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { MenuAction } from "../../types";
 import { type MenuItem } from "./menu-item";
 import {
-    MenuActionTarget,
+    type MenuActionTarget,
     doMenuAction,
     getNewItemIndexFromMenuAction,
 } from "./navigation-menu-logic";

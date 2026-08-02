@@ -1,5 +1,5 @@
 import { nextTick } from "vue";
-import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
+import { type DOMWrapper, type VueWrapper, mount } from "@vue/test-utils";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 import { FPaginatorSelectors } from "../../selectors";
 import FPaginateDataset from "../FPaginateDataset/FPaginateDataset.vue";

@@ -1,6 +1,6 @@
 import * as logic from "@fkui/logic";
 import { beforeAll, expect, it, vi } from "vitest";
-import { ErrorItem } from "../../types";
+import { type ErrorItem } from "../../types";
 import { focusError } from "./focus-error";
 
 vi.mock(import("@fkui/logic"));

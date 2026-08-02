@@ -2,11 +2,11 @@ import "html-validate/vitest";
 import { type PropType, defineComponent, h } from "vue";
 import * as logic from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { VueWrapper, mount, shallowMount } from "@vue/test-utils";
+import { type VueWrapper, mount, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../plugins";
-import { ListItem } from "../../types";
+import { type ListItem } from "../../types";
 import {
     type FModalSize,
     FFormModal,

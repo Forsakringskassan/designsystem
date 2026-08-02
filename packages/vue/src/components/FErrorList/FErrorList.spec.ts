@@ -3,7 +3,7 @@ import "@fkui/test-utils/vitest";
 import { defineComponent } from "vue";
 import * as logic from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import {
     FileSystemConfigLoader,
@@ -12,7 +12,7 @@ import {
 } from "html-validate/node";
 import { describe, expect, it, vi } from "vitest";
 import { IFlexItem } from "../../internal-components/IFlex";
-import { ErrorItem } from "../../types";
+import { type ErrorItem } from "../../types";
 import { FIcon } from "../FIcon";
 import FErrorList from "./FErrorList.vue";
 

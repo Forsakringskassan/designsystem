@@ -1,6 +1,6 @@
 import "html-validate/vitest";
 import { defineComponent } from "vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import IPopupMenu from "./IPopupMenu.vue";

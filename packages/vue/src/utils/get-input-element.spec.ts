@@ -1,4 +1,4 @@
-import { VueWrapper, shallowMount } from "@vue/test-utils";
+import { type VueWrapper, shallowMount } from "@vue/test-utils";
 import { expect, it } from "vitest";
 import "html-validate/vitest";
 import { FLabel } from "../components/FLabel";

@@ -1,7 +1,7 @@
 import { defineComponent } from "vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { ComponentValidityEvent, FormErrorList } from "../../types";
+import { type ComponentValidityEvent, type FormErrorList } from "../../types";
 import { cleanUpElements } from "./form-utils";
 
 type ComponentReference = Record<string, FormErrorList>;

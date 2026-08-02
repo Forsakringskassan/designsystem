@@ -2,7 +2,7 @@ import { defineComponent } from "vue";
 import "html-validate/vitest";
 import "@fkui/test-utils/vitest";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { config } from "../../config";

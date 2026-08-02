@@ -1,5 +1,5 @@
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import FCheckboxField from "./FCheckboxField.vue";
 

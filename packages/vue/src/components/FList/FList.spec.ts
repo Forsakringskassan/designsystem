@@ -1,9 +1,9 @@
 import "html-validate/vitest";
 import { defineComponent } from "vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { TranslationPlugin } from "../../plugins";
-import { ListArray, UnknownItem } from "../../types";
+import { type ListArray, type UnknownItem } from "../../types";
 import * as ListUtils from "../../utils/list-utils";
 import FList from "./FList.vue";
 

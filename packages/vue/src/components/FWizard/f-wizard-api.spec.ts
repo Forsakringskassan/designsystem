@@ -1,5 +1,9 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { FWizardStepDefinition, addStep, removeStep } from "./f-wizard-api";
+import {
+    type FWizardStepDefinition,
+    addStep,
+    removeStep,
+} from "./f-wizard-api";
 
 let steps: FWizardStepDefinition[];
 

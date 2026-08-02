@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
-    FTableColumnData,
+    type FTableColumnData,
     FTableColumnSize,
     FTableColumnSort,
     FTableColumnType,

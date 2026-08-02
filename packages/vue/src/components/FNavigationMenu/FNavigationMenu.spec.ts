@@ -3,7 +3,7 @@ import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import FNavigationMenu from "./FNavigationMenu.vue";
-import { NavigationMenuItem } from "./navigation-menu-item";
+import { type NavigationMenuItem } from "./navigation-menu-item";
 
 class ResizeObserverMock {
     public observe = vi.fn();

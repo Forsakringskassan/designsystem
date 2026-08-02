@@ -1,5 +1,5 @@
 import "html-validate/vitest";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import IAnimateExpand from "./IAnimateExpand.vue";
