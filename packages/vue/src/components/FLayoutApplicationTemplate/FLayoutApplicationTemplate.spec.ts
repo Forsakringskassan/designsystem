@@ -7,9 +7,7 @@ let wrapper: VueWrapper;
 
 function createPlaceholderInDocument(): HTMLElement {
     const elem = document.createElement("div");
-    if (document.body) {
-        document.body.append(elem);
-    }
+    document.body.append(elem);
     return elem;
 }
 
