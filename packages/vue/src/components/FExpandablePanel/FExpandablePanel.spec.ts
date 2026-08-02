@@ -1,4 +1,4 @@
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { type ConfigData } from "html-validate";
 import { describe, expect, it, vi } from "vitest";
 import FExpandablePanel from "./FExpandablePanel.vue";

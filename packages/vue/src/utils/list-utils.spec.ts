@@ -1,5 +1,5 @@
 import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
-import { UnknownItem } from "../types";
+import { type UnknownItem } from "../types";
 import {
     handleKeyboardFocusNavigation,
     includeItem,

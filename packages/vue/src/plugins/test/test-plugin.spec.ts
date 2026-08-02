@@ -1,5 +1,5 @@
 import { defineComponent, h, resolveDirective, withDirectives } from "vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { expect, it, vi } from "vitest";
 import { FTextField } from "../../components/FTextField";
 import { TestPlugin } from "./test-plugin";

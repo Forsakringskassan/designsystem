@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { type MenuItem } from "../../components";
 import { MenuAction } from "../../types";
 import {
-    MenuActionTarget,
+    type MenuActionTarget,
     doMenuAction,
     getNewItemIndexFromMenuAction,
 } from "./ipopupmenu-logic";

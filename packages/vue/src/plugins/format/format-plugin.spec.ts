@@ -1,6 +1,6 @@
 import { defineComponent } from "vue";
 import { FDate } from "@fkui/date";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import { FormatPlugin } from "./format-plugin";
 

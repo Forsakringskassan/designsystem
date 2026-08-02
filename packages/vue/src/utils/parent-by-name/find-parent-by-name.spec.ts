@@ -1,5 +1,5 @@
 import { type ComponentPublicInstance, defineComponent } from "vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { beforeEach, describe, expect, it } from "vitest";
 import { findParentByName } from "./find-parent-by-name";
 

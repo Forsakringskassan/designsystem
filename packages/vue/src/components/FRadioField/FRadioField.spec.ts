@@ -1,5 +1,5 @@
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import { injectionKeys as fieldsetInjectionKeys } from "../FFieldset/use-fieldset";
 import FRadioField from "./FRadioField.vue";

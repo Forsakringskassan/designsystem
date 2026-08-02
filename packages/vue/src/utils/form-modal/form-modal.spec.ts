@@ -1,5 +1,5 @@
 import { expect, it, vi } from "vitest";
-import { MaybeWithFKUIContext } from "../../config";
+import { type MaybeWithFKUIContext } from "../../config";
 import { type MaybeComponent } from "../maybe-component";
 import * as openModalModule from "../open-modal/open-modal";
 import { formModal } from "./form-modal";

@@ -5,7 +5,7 @@ import {
     type ValidityEvent,
 } from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { describe, expect, it, vi } from "vitest";
 import FTextareaField from "./FTextareaField.vue";

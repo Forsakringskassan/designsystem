@@ -1,6 +1,6 @@
 import "html-validate/vitest";
 import { defineComponent } from "vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import { ValidationPlugin } from "../../../../plugins";
 import FNumericTextField from "./FNumericTextField.vue";

@@ -3,9 +3,9 @@ import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { mount } from "@vue/test-utils";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
+    type LayoutAreaAttachPanel,
+    type LayoutAreaDirection,
     type UseAreaData,
-    LayoutAreaAttachPanel,
-    LayoutAreaDirection,
 } from "../FPageLayout";
 import FResizePane from "./FResizePane.ce.vue";
 

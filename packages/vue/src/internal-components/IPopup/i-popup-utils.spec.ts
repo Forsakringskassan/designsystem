@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { Rect } from "../../utils";
+import { type Rect } from "../../utils";
 import {
-    Candidate,
+    type Candidate,
     CandidateOrder,
     Placement,
     SpacingDirection,

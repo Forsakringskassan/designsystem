@@ -1,7 +1,7 @@
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import FDefinitionList from "./FDefinitionList.vue";
-import { FDefinitionListItem } from "./f-definition-list-item";
+import { type FDefinitionListItem } from "./f-definition-list-item";
 
 const definitions = [
     { term: "Term 1", definition: "Description 1" },

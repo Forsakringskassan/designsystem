@@ -1,7 +1,7 @@
 import "html-validate/vitest";
 import "@fkui/test-utils/vitest";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { VueWrapper, flushPromises, mount } from "@vue/test-utils";
+import { type VueWrapper, flushPromises, mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import FLayoutRightPanel from "./FLayoutRightPanel.vue";
 import { FLayoutRightPanelService } from "./services/f-layout-right-panel-service";

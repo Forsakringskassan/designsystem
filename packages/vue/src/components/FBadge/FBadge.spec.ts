@@ -1,4 +1,4 @@
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import FBadge from "./FBadge.vue";
 import { statuses } from "./statuses";

@@ -4,11 +4,11 @@ import {
     type ValidatorConfigs,
     ValidationService,
 } from "@fkui/logic";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { FCheckboxField, FFieldset, FTextField } from "../../components";
-import { ComponentValidityEvent } from "../../types";
+import { type ComponentValidityEvent } from "../../types";
 import { dispatchComponentValidityEvent } from "../../utils";
 import { ValidationPlugin } from "./validation-plugin";
 

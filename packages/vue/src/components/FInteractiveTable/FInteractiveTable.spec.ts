@@ -1,8 +1,8 @@
 import "html-validate/vitest";
 import { type ComponentOptions, defineComponent } from "vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { FSortFilterDatasetMountCallback } from "../FSortFilterDataset";
+import { type FSortFilterDatasetMountCallback } from "../FSortFilterDataset";
 import { FTableColumn } from "../FTableColumn";
 import FInteractiveTable from "./FInteractiveTable.vue";
 

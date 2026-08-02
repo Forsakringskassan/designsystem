@@ -1,6 +1,6 @@
 import { defineComponent, h } from "vue";
 import { beforeEach, expect, it } from "vitest";
-import { MaybeWithFKUIContext } from "../../config";
+import { type MaybeWithFKUIContext } from "../../config";
 import { mountComponent } from "./mount-component";
 
 const callingInstance = { $fkui: {} } as MaybeWithFKUIContext;

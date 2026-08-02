@@ -1,7 +1,7 @@
 import path from "node:path";
 import "html-validate/vitest";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import {
     FileSystemConfigLoader,
     HtmlValidate,

@@ -1,4 +1,4 @@
-import { VueWrapper, mount, shallowMount } from "@vue/test-utils";
+import { type VueWrapper, mount, shallowMount } from "@vue/test-utils";
 import { type ConfigData } from "html-validate";
 import { describe, expect, it, vi } from "vitest";
 import FExpandableParagraph from "./FExpandableParagraph.vue";

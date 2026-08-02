@@ -5,10 +5,10 @@ import {
     type ValidityEvent,
     type ValidityMode,
 } from "@fkui/logic";
-import { VueWrapper, mount, shallowMount } from "@vue/test-utils";
+import { type VueWrapper, mount, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { describe, expect, it, vi } from "vitest";
-import { ComponentValidityEvent } from "../../types";
+import { type ComponentValidityEvent } from "../../types";
 import { FIcon } from "../FIcon";
 import FFieldset from "./FFieldset.vue";
 import { useFieldset } from "./use-fieldset";

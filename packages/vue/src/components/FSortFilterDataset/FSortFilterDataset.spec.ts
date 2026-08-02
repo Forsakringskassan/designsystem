@@ -1,11 +1,11 @@
 import "html-validate/vitest";
 import { defineComponent, nextTick } from "vue";
-import { VueWrapper, mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import FSortFilterDataset from "./FSortFilterDataset.vue";
 import {
+    type FSortFilterDatasetInterface,
     FSortFilterDatasetInjected,
-    FSortFilterDatasetInterface,
 } from "./f-sort-filter-dataset-interface";
 import { type SortOrder } from "./sort-order";
 
