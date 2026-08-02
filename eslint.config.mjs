@@ -171,7 +171,6 @@ export default [
         name: "technical-debt",
         files: ["**/*.spec.ts"],
         rules: {
-            "@typescript-eslint/await-thenable": "off",
             "@typescript-eslint/dot-notation": "off",
             "@typescript-eslint/no-confusing-void-expression": "off",
             "@typescript-eslint/no-deprecated": "off",

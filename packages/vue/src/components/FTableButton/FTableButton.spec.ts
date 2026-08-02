@@ -10,7 +10,7 @@ it("label should be visually hidden by default", async () => {
     });
     expect(wrapper.text()).toBe("lorem ipsum");
     expect(wrapper.get(".sr-only").text()).toBe("lorem ipsum");
-    await expect(wrapper.html()).toMatchInlineSnapshot(`
+    expect(wrapper.html()).toMatchInlineSnapshot(`
       "<button type="button" class="button table__button">
         <!--v-if--> <span class="sr-only">lorem ipsum</span>
       </button>"
@@ -25,7 +25,7 @@ it("label should be visually rendered when label prop is set", async () => {
     });
     expect(wrapper.text()).toBe("lorem ipsum");
     expect(wrapper.find(".sr-only").exists()).toBeFalsy();
-    await expect(wrapper.html()).toMatchInlineSnapshot(`
+    expect(wrapper.html()).toMatchInlineSnapshot(`
       "<button type="button" class="button table__button">
         <!--v-if--> lorem ipsum
       </button>"

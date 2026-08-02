@@ -231,6 +231,7 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
+            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
             await expect(markup).toHTMLValidate();
         });
 
@@ -315,6 +316,7 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
+            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
             await expect(markup).toHTMLValidate();
         });
 
@@ -350,6 +352,7 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
+            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
             await expect(markup).toHTMLValidate();
         });
 

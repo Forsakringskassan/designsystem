@@ -177,6 +177,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <f-navigation-menu routes="" vertical></f-navigation-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();
     });
 
@@ -185,6 +186,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <f-navigation-menu routes="" vertical=""></f-navigation-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "attribute-boolean-style",
             message: 'Attribute "vertical" should omit value',
@@ -198,6 +200,7 @@ describe("html-validate", () => {
                 <f-navigation-menu routes=""></f-navigation-menu>
             </button>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
@@ -212,6 +215,7 @@ describe("html-validate", () => {
                 <button type="button"></button>
             </f-navigation-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
@@ -226,6 +230,7 @@ describe("html-validate", () => {
                 <em></em>
             </f-navigation-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "element-permitted-content",
             message:
@@ -238,6 +243,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <f-navigation-menu routes=""> mjukglass </f-navigation-menu>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate({
             ruleId: "text-content",
             message: "<f-navigation-menu> must not have text content",

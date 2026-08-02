@@ -393,6 +393,7 @@ describe("html-validate", () => {
                 <template #extended-label> Upprepa e-post </template>
             </f-email-text-field>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();
     });
 });

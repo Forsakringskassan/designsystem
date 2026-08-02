@@ -38,6 +38,7 @@ describe("html-validate", () => {
                 <template #default> Badge text </template>
             </f-badge>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();
     });
 
@@ -48,6 +49,7 @@ describe("html-validate", () => {
                 <template #default> Badge text </template>
             </f-badge>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).not.toHTMLValidate();
     });
 });

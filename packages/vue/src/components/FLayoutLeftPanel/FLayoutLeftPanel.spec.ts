@@ -37,6 +37,7 @@ describe("html-validate", () => {
             ([key, value]) => `<template #${key}>${value}</template>`,
         );
 
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
             `<f-layout-left-panel>${slotTemplates}</f-layout-left-panel>`,
         ).toHTMLValidate();

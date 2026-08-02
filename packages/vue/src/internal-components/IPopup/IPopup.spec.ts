@@ -45,7 +45,7 @@ async function mountPopup(
 
 async function openPopup(wrapper: VueWrapper): Promise<void> {
     await wrapper.get("#launch-popup").trigger("click");
-    await vi.runAllTimers();
+    vi.runAllTimers();
     await flushPromises();
 }
 
@@ -136,6 +136,7 @@ describe("events", () => {
 describe("html-validate", () => {
     it("should require is-open attribute", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect("<i-popup></i-popup>").not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup> is missing required "is-open" attribute',
@@ -144,6 +145,7 @@ describe("html-validate", () => {
 
     it("should require anchor attribute", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect("<i-popup></i-popup>").not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup> is missing required "anchor" attribute',
@@ -152,15 +154,19 @@ describe("html-validate", () => {
 
     it("should only allow setting valid `inline` values", async () => {
         expect.assertions(4);
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(/* HTML */ `
             <i-popup anchor="anchorref" is-open inline="always"></i-popup>
         `).toHTMLValidate();
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(/* HTML */ `
             <i-popup anchor="anchorref" is-open inline="never"></i-popup>
         `).toHTMLValidate();
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(/* HTML */ `
             <i-popup anchor="anchorref" is-open inline="auto"></i-popup>
         `).toHTMLValidate();
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(/* HTML */ `
             <i-popup anchor="anchorref" is-open inline="foo"></i-popup>
         `).not.toHTMLValidate({
@@ -178,6 +184,7 @@ describe("html-validate", () => {
                 viewport="viewportref"
             ></i-popup>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();
     });
 
@@ -190,6 +197,7 @@ describe("html-validate", () => {
                 focus-element="focuselementref"
             ></i-popup>
         `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();
     });
 });
