@@ -152,7 +152,7 @@ describe("html-validate", () => {
             const markup = /* HTML */ `
                 <f-page-header header-tag="h2"></f-page-header>
             `;
-            expect(markup).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: Attribute "header-tag" has invalid value "h2" (attribute-allowed-values)
                   1 |
                 > 2 |                 <f-page-header header-tag="h2"></f-page-header>
