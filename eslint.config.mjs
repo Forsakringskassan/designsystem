@@ -171,7 +171,6 @@ export default [
         name: "technical-debt",
         files: ["**/*.spec.ts"],
         rules: {
-            "@typescript-eslint/prefer-nullish-coalescing": "off",
             "@typescript-eslint/require-await": "off",
             "@typescript-eslint/restrict-template-expressions": "off",
             "@typescript-eslint/unbound-method": "off",
