@@ -78,7 +78,7 @@
     "@babel/core": "7.29.7",
     "@babel/preset-env": "7.29.7",
     "@fkui/cypress-split": "*",
-    "@forsakringskassan/commitlint-config": "4.2.5",
+    "@forsakringskassan/commitlint-config": "4.2.6",
     "@forsakringskassan/cypress-axe": "5.1.4",
     "@forsakringskassan/cypress-visual-regression": "5.0.0",
     "@forsakringskassan/docs-generator": "3.5.0",
