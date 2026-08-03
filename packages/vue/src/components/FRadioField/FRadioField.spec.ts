@@ -105,7 +105,7 @@ describe("disabled", () => {
         ${false}      | ${false}       | ${"not be"}
     `(
         "should $description disabled when disabled prop is $disabledAttribute",
-        async ({ disabled, expectedResult }) => {
+        ({ disabled, expectedResult }) => {
             expect.assertions(2);
             const wrapper = createWrapper({
                 props: {

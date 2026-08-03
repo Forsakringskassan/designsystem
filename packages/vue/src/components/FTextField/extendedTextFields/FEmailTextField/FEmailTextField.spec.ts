@@ -268,7 +268,7 @@ describe("validation", () => {
         ${false}
     `(
         `should set confirm email textfield as required = $required when first email textfield is required = $required`,
-        async ({ required }) => {
+        ({ required }) => {
             expect.assertions(1);
             const validation = required ? "v-validation.required" : "";
             const wrapper = mount(

@@ -37,7 +37,7 @@ it("should add data-test attribute to the FTextField", () => {
     expect(wrapper.attributes("data-test")).toBe("test-0047");
 });
 
-it("should throw an exception if no value is provided for the v-test directive", async () => {
+it("should throw an exception if no value is provided for the v-test directive", () => {
     expect.assertions(1);
     vi.spyOn(console, "error").mockImplementation(() => {
         // Empty

@@ -269,7 +269,7 @@ describe("validation", () => {
         ${false}
     `(
         `should set confirm phone textfield as required = $required when first phone textfield is required = $required`,
-        async ({ required }) => {
+        ({ required }) => {
             expect.assertions(1);
             const validation = required ? "v-validation.required" : "";
             const wrapper = mount(

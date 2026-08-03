@@ -132,7 +132,7 @@ it("should add table colum headers to <thead> with correct classes", async () =>
     );
 });
 
-it("should throw error if `FTableColumn.name` is duplicated", async () => {
+it("should throw error if `FTableColumn.name` is duplicated", () => {
     expect.assertions(1);
     const TestComponent = {
         components: { FDataTable, FTableColumn },
@@ -180,7 +180,7 @@ it("should set scope on table columns", async () => {
     expect(th.attributes("scope")).toBe("col");
 });
 
-it("should throw exception when action is set on column", async () => {
+it("should throw exception when action is set on column", () => {
     expect.assertions(1);
     const TestComponent = {
         components: { FDataTable, FTableColumn },
@@ -412,7 +412,7 @@ it("should call provided sort method when clicking columnheader that is registra
 });
 
 describe("`keyAttribute`", () => {
-    it("should not throw if valid and unique", async () => {
+    it("should not throw if valid and unique", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -425,7 +425,7 @@ describe("`keyAttribute`", () => {
         }).not.toThrow();
     });
 
-    it("should throw error if not unique in items", async () => {
+    it("should throw error if not unique in items", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -440,7 +440,7 @@ describe("`keyAttribute`", () => {
         );
     });
 
-    it("should be optional", async () => {
+    it("should be optional", () => {
         expect.assertions(1);
 
         expect(() => {

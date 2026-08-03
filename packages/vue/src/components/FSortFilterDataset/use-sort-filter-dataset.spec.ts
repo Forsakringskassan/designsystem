@@ -2,7 +2,7 @@ import { nextTick, ref } from "vue";
 import { describe, expect, it, vi } from "vitest";
 import { useSortFilterDataset } from "./use-sort-filter-dataset";
 
-it("should output filtered rows directly", async () => {
+it("should output filtered rows directly", () => {
     expect.assertions(1);
     const data = ref([{ foo: "foo" }, { foo: "bar" }, { foo: "baz" }]);
 

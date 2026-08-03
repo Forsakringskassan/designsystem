@@ -335,7 +335,7 @@ it("should warn the user that the maximum string length limit is near", async ()
 });
 
 describe("element should be possible to disable with prop disabled", () => {
-    it("element should be disabled with prop", async () => {
+    it("element should be disabled with prop", () => {
         expect.assertions(1);
         const wrapper = mount(FTextareaField, {
             propsData: { disabled: true },
@@ -344,7 +344,7 @@ describe("element should be possible to disable with prop disabled", () => {
         expect(element.disabled).toBeTruthy();
     });
 
-    it("element should be enabled without prop", async () => {
+    it("element should be enabled without prop", () => {
         expect.assertions(1);
         const wrapper = mount(FTextareaField, {
             propsData: { disabled: false },
