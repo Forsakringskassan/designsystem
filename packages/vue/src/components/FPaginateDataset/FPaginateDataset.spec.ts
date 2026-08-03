@@ -116,6 +116,7 @@ function setPage(
     wrapper: ReturnType<typeof createWrapper>,
     page: number,
 ): void {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     wrapper.findComponent(FPaginateDataset).element.dispatchEvent(
         new CustomEvent("paginateDataset:page", {
             bubbles: true,

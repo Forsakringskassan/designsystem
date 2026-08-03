@@ -83,7 +83,6 @@ describe("html-validate", () => {
                 </template>
             </f-crud-dataset>
         `;
-
         await expect(markup).toMatchInlineCodeframe(`
             "error: <f-crud-button> is missing required "action" attribute (element-required-attributes)
               3 |             <f-crud-dataset>
@@ -107,7 +106,6 @@ describe("html-validate", () => {
                 </template>
             </f-crud-dataset>
         `;
-
         await expect(markup).toMatchInlineCodeframe(`
             "error: <f-crud-button> is missing required "item" attribute (element-required-attributes)
               3 |             <f-crud-dataset>
@@ -134,7 +132,6 @@ describe("html-validate", () => {
                 </template>
             </f-crud-dataset>
         `;
-
         await expect(markup("modify")).toMatchInlineCodeframe(`""`);
         await expect(markup("delete")).toMatchInlineCodeframe(`""`);
         await expect(markup("foobar")).toMatchInlineCodeframe(`
@@ -156,7 +153,6 @@ describe("html-validate", () => {
             <!-- [html-validate-disable deprecated -- component should still work] -->
             <f-crud-button action="modify" item="test"></f-crud-button>
         `;
-
         await expect(markup).toMatchInlineCodeframe(`
             "error: <f-crud-button> element requires a <f-crud-dataset> ancestor (element-required-ancestor)
               1 |

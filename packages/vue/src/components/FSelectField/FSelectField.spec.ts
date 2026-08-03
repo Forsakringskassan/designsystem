@@ -88,6 +88,7 @@ describe("snapshots", () => {
                 attrs: { id: "elementId" },
             });
 
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.element.dispatchEvent(
                 new CustomEvent<ValidityEvent>("validity", {
                     detail: {

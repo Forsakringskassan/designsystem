@@ -208,6 +208,7 @@ describe("events", () => {
                 numberOfPages: 5,
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.addEventListener("paginateDataset:previous", listener);
 
         await wrapper.get(paginator.previousPageButton()).trigger("click");
@@ -224,6 +225,7 @@ describe("events", () => {
                 numberOfPages: 5,
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.addEventListener("paginateDataset:next", listener);
 
         await wrapper.get(paginator.nextPageButton()).trigger("click");
@@ -240,6 +242,7 @@ describe("events", () => {
                 numberOfPages: 5,
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.addEventListener("paginateDataset:page", listener);
 
         await wrapper.get(paginator.pageButtonByText(3)).trigger("click");

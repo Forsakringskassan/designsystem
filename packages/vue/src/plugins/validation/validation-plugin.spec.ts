@@ -257,6 +257,7 @@ it("should call ValidationService.removeValidatorsFromElement and emit 'componen
     `;
     const wrapper = createWrapper(markup);
     const textField = wrapper.getComponent(FTextField);
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     const validatableElement = textField.element.querySelector("input");
     wrapper.vm.$data.exists = false;
     await flushPromises();

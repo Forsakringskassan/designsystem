@@ -620,6 +620,7 @@ describe("onCancel", () => {
 
         expect(onCancel).toHaveBeenCalledTimes(0);
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper
             .findComponent(FCrudDataset)
             .findComponent(FFormModal)

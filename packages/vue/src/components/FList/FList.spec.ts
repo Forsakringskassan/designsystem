@@ -461,6 +461,7 @@ describe("v-model (update event)", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         let allInputs = wrapper.element.querySelectorAll("input");
         expect(allInputs[0].checked).toBeFalsy();
         expect(allInputs[1].checked).toBeFalsy();
@@ -469,6 +470,7 @@ describe("v-model (update event)", () => {
         await wrapper.setProps({ modelValue: [items[0], items[2]] });
         await wrapper.vm.$nextTick();
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         allInputs = wrapper.element.querySelectorAll("input");
         expect(allInputs[0].checked).toBeTruthy();
         expect(allInputs[1].checked).toBeFalsy();
@@ -509,6 +511,7 @@ describe("v-model (update event)", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         const allInputs = wrapper.element.querySelectorAll("input");
         expect(allInputs[0].checked).toBeTruthy();
         expect(allInputs[1].checked).toBeFalsy();
@@ -606,6 +609,7 @@ describe("keyboard navigation", () => {
                 },
             });
 
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.element.addEventListener(
                 `paginateDataset:${action}`,
                 listener,

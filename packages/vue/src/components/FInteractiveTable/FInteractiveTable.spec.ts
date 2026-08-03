@@ -602,9 +602,11 @@ describe("events", () => {
                 keyAttribute: "id",
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         const checkboxes = wrapper.findAll("tbody tr input");
         await checkboxes[1].trigger("click");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         const select = wrapper.emitted("select")!;
         expect(select).toHaveLength(1);
@@ -623,6 +625,7 @@ describe("events", () => {
         );
         const row = table.findAll("tbody tr td")[0];
         await row.trigger("click");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await table.vm.$nextTick();
         expect(table.emitted("click")).toHaveLength(1);
     });
@@ -651,6 +654,7 @@ describe("events", () => {
             const column = table.findAll("tbody tr td")[0];
             await column.trigger("click");
             await column.trigger("click");
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             await table.vm.$nextTick();
             expect(table.emitted("click")).toHaveLength(2);
         });
@@ -663,6 +667,7 @@ describe("events", () => {
             );
             const column = table.findAll("tbody tr td")[0];
             await column.trigger("click");
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             await table.vm.$nextTick();
             expect(table.emitted("update:active")).toHaveLength(2);
             expect(

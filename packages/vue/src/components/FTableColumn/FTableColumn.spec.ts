@@ -130,6 +130,7 @@ describe("when in `<thead>`", () => {
             },
         };
         const wrapper = mount(TestComponent);
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         expect(wrapper.element.querySelector("td")).toMatchInlineSnapshot(`
             <td
               class="table__column table__column--text"
@@ -143,6 +144,7 @@ describe("when in `<thead>`", () => {
         `);
 
         await wrapper.vm.$nextTick();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         expect(wrapper.element.querySelector("tr")).toMatchInlineSnapshot(`
             <tr>
               <!--v-if-->

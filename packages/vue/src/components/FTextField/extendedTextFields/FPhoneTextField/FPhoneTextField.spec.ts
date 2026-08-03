@@ -93,6 +93,7 @@ describe("snapshots", () => {
                 }),
             );
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.element).toMatchSnapshot();
@@ -182,8 +183,10 @@ describe("events", () => {
 
         const input = wrapper.get("input");
         await input.trigger("focus");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         await input.trigger("blur");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
 
         expect(focus).toHaveBeenCalled();
@@ -212,6 +215,7 @@ describe("events", () => {
             }),
         );
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.vm.$data.validityMode).toBe("ERROR");
@@ -220,6 +224,7 @@ describe("events", () => {
             new CustomEvent<PendingValidityEvent>("pending-validity"),
         );
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.vm.$data.validityMode).toBe("INITIAL");

@@ -26,6 +26,7 @@ async function createWrapper(): Promise<VueWrapper> {
     });
     FLayoutRightPanelService.open();
     // wait for it to open
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     await wrapper.vm.$nextTick();
     await flushPromises();
     return wrapper;
