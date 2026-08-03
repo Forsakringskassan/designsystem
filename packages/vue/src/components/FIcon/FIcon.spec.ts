@@ -24,6 +24,7 @@ function createWrapper({
     slots = {},
     attrs = {},
 } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FIcon, {
         attrs: { ...attrs },
         props: { name: "my-icon", ...props },

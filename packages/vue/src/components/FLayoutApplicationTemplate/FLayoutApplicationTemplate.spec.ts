@@ -26,6 +26,7 @@ const defaultSlots: IApplicationTemplateSlots = {
 };
 
 function createWrapper(slots: IApplicationTemplateSlots): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FLayoutApplicationTemplate, {
         slots: {
             ...slots,

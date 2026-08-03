@@ -5,6 +5,7 @@ import { ValidationPlugin } from "../../../../plugins";
 import FPercentTextField from "./FPercentTextField.vue";
 
 function createWrapper(props = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FPercentTextField, {
         props: { ...props },
         global: {

@@ -8,6 +8,7 @@ function createWrapper({
     slots = {},
     attrs = {},
 } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FFileSelector, {
         attrs: { ...attrs },
         props: { ...props },

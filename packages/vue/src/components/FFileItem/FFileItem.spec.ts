@@ -4,6 +4,7 @@ import { TranslationPlugin } from "../../plugins";
 import FFileItem from "./FFileItem.vue";
 
 function createWrapper({ slots = {}, attrs = {}, props = {} }): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return shallowMount(FFileItem, {
         slots,
         attrs: { ...attrs },

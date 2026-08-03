@@ -8,6 +8,7 @@ function createWrapper({
     slots = {},
     attrs = {},
 } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FCheckboxField, {
         attrs: { ...attrs },
         props: { value: "Default value", ...props },

@@ -98,6 +98,7 @@ describe("scrollTo with options signature", () => {
 
         expect(spyScrollTo).toHaveBeenCalledTimes(30);
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
         const values = spyScrollTo.mock.calls.map((call) => call[0].top);
         expect(values).toEqual([
             999.178284305241, 996.7221401100709, 992.6584774442731,

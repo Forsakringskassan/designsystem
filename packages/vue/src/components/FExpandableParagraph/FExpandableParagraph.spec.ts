@@ -16,6 +16,7 @@ function createWrapper({
     slots = {},
     attrs = {},
 } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FExpandableParagraph, {
         attrs: { ...attrs },
         props: { id: "my-id", ...props },

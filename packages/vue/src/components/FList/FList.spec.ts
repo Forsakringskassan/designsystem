@@ -31,6 +31,7 @@ function createWrapper({
         delete preDefinedSlots.screenreader;
     }
 
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FList, {
         props: {
             items: [],

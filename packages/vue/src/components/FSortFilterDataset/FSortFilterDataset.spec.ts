@@ -28,6 +28,7 @@ const ATTRIBUTES = {
 };
 
 function createWrapper({ slots = {} } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FSortFilterDataset, {
         props: {
             data: DATA,

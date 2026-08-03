@@ -23,6 +23,7 @@ function createWrapper({
     listeners = {},
     attrs = {},
 } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FCard, {
         attrs: { ...attrs },
         props: { ...props },

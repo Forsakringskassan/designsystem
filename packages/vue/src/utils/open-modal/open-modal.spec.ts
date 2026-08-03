@@ -66,7 +66,7 @@ class PageObject {
     }
 
     public props(): MockProps {
-        return JSON.parse(this.element?.dataset.props ?? "{}");
+        return JSON.parse(this.element?.dataset.props ?? "{}") as MockProps;
     }
 }
 
