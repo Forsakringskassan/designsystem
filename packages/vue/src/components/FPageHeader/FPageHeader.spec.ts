@@ -112,7 +112,6 @@ describe("html-validate", () => {
         ${"right"}          | ${"<f-page-header><template #right></template></f-page-header>"}
     `("should allow $slotName slot", async ({ html }) => {
         expect.assertions(1);
-
         await expect(html).toHTMLValidate();
     });
 

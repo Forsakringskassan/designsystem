@@ -41,9 +41,11 @@ function dispatchValidityEvent(
         target = document.createElement("input");
         target.setAttribute("id", "elementId");
         target.setAttribute("type", "radio");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.append(target);
     }
 
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     wrapper.element.dispatchEvent(
         new CustomEvent<ValidityEvent>("validity", {
             detail: {
@@ -238,6 +240,7 @@ describe("onValidity should only handle events from itself", () => {
             attrs: { id: "elementId" },
         });
         const onComponentValidityListener = vi.fn();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.addEventListener(
             "component-validity",
             onComponentValidityListener,
@@ -278,6 +281,7 @@ describe("onValidity should only handle events from itself", () => {
                 attrs: { id: "elementId" },
             });
             const onComponentValidityListener = vi.fn();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.element.addEventListener(
                 "component-validity",
                 onComponentValidityListener,
@@ -286,6 +290,7 @@ describe("onValidity should only handle events from itself", () => {
             inputElement.setAttribute("id", "elementId");
             /* @ts-expect-error -- technical debt */
             inputElement.setAttribute("type", inputType);
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.element.append(inputElement);
 
             dispatchValidityEvent(wrapper, false, "INITIAL", inputElement);
@@ -306,12 +311,14 @@ describe("onValidity should only handle events from itself", () => {
                 attrs: { id: "elementId" },
             });
             const onComponentValidityListener = vi.fn();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.element.addEventListener(
                 "component-validity",
                 onComponentValidityListener,
             );
 
             const fieldset = document.createElement("fieldset");
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.element.append(fieldset);
 
             const inputElement = document.createElement("input");
@@ -334,6 +341,7 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
             props: { id: "elementId" },
         });
         const onComponentValidityListener = vi.fn();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.addEventListener(
             "component-validity",
             onComponentValidityListener,
@@ -362,6 +370,7 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
             props: { id: "elementId" },
         });
         const onComponentValidityListener = vi.fn();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.addEventListener(
             "component-validity",
             onComponentValidityListener,
@@ -369,10 +378,12 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
 
         const inputElement1 = document.createElement("input");
         inputElement1.setAttribute("id", "child1Id");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.append(inputElement1);
 
         const inputElement2 = document.createElement("input");
         inputElement2.setAttribute("id", "child2Id");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.append(inputElement2);
 
         dispatchValidityEvent(
@@ -553,7 +564,6 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-
             await expect(markup).toMatchInlineCodeframe(`""`);
         });
 

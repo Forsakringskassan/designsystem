@@ -180,7 +180,6 @@ describe("html-validate", async () => {
                 <f-table-button icon="">lorem ipsum</f-table-button>
             </f-table-column>
         `;
-
         await expect(markup).toMatchInlineCodeframe(`
             "error: Attribute "icon" is missing value (attribute-allowed-values)
                5 |

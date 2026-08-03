@@ -708,7 +708,7 @@ describe("addValidatorsToElement", () => {
             minLength: { length: 20 },
         };
 
-        /* eslint-disable-next-line @typescript-eslint/no-explicit-any --
+        /* eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-call --
          * technical debt, should not access private members, rather they could
          * be made @internal and public */
         const result = (ValidationService as any).mergeValidatorConfigs(

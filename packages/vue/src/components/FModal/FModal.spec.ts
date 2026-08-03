@@ -82,6 +82,7 @@ describe("props", () => {
                     isOpen: true,
                 },
             });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             await wrapper.vm.$nextTick();
             const element = wrapper.get(".modal__dialog-container");
             expect(element.classes()).not.toContain(className);
@@ -95,6 +96,7 @@ describe("props", () => {
                     isOpen: true,
                 },
             });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             await wrapper.vm.$nextTick();
             const element = wrapper.get(".modal__dialog-container");
             expect(element.classes()).toContain(className);
@@ -108,6 +110,7 @@ describe("props", () => {
                     isOpen: true,
                 },
             });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             await wrapper.vm.$nextTick();
             const element = wrapper.get(".modal__dialog-container");
             expect(element.classes()).not.toContain(className);
@@ -130,6 +133,7 @@ describe("props", () => {
                     size,
                 },
             });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             await wrapper.vm.$nextTick();
             const element = wrapper.get(".modal__dialog-container").element;
             expect(element.classList).toContain(classname);
@@ -250,6 +254,7 @@ describe("scrollbars", () => {
             },
             attachTo: createPlaceholderInDocument(),
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         const documentElement = document.documentElement;
         expect(documentElement.style.overflow).toBe("hidden");
@@ -263,6 +268,7 @@ describe("scrollbars", () => {
             },
             attachTo: createPlaceholderInDocument(),
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         const documentElement = document.documentElement;
         expect(documentElement.style.overflow).not.toBe("hidden");
@@ -276,6 +282,7 @@ describe("scrollbars", () => {
             },
             attachTo: createPlaceholderInDocument(),
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
 
         const documentElement = document.documentElement;
@@ -283,6 +290,7 @@ describe("scrollbars", () => {
         expect(documentElement.style.overflow).toBe("hidden");
 
         await wrapper.setProps({ isOpen: false });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
 
         expect(documentElement.style.overflow).not.toBe("hidden");

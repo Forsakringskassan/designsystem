@@ -92,6 +92,7 @@ describe("snapshots", () => {
                 }),
             );
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.element).toMatchSnapshot();
@@ -132,6 +133,7 @@ describe("snapshots", () => {
             });
 
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.element).toMatchSnapshot();
@@ -255,6 +257,7 @@ describe("events", () => {
             }),
         );
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.vm.$data.validityMode).toBe("ERROR");
@@ -263,6 +266,7 @@ describe("events", () => {
             new CustomEvent<PendingValidityEvent>("pending-validity"),
         );
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.vm.$data.validityMode).toBe("INITIAL");
@@ -340,6 +344,7 @@ describe("formatting and parsing combined with validation", () => {
             );
 
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             // eslint-disable-next-line vitest/no-conditional-in-test -- technical debt, Vitest migration
@@ -407,6 +412,7 @@ describe("formatting and parsing combined with validation", () => {
             );
 
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.emitted("update:modelValue")![0][0]).toEqual(
@@ -464,6 +470,7 @@ describe("formatting and parsing combined with validation", () => {
             );
 
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.emitted("update:modelValue")![0][0]).toEqual(
@@ -510,6 +517,7 @@ describe("set v-model programmatic", () => {
                 }),
             );
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.vm.$data.validityMode).toBe("ERROR");

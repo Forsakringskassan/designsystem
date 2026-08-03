@@ -494,7 +494,6 @@ describe("html-validate", () => {
         ${"input-text-fields"} | ${"<f-form-modal><template #input-text-fields></template></f-form-modal>"}
     `("should allow $slotName slot", async ({ html }) => {
         expect.assertions(1);
-
         await expect(html).toHTMLValidate();
     });
 });

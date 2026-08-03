@@ -76,6 +76,7 @@ describe("props", () => {
                     routes: testItems,
                 },
             });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             await wrapper.vm.$nextTick();
 
             const nav = wrapper.get("nav");
@@ -91,6 +92,7 @@ describe("props", () => {
                     vertical: true,
                 },
             });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             await wrapper.vm.$nextTick();
 
             const nav = wrapper.get("nav");
@@ -108,6 +110,7 @@ describe("events", () => {
                 routes: testItems,
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         const imenuList = wrapper.get(".imenu__list");
         const firstItem = imenuList.findAll(
@@ -127,6 +130,7 @@ describe("events", () => {
             },
         });
         // When directly after mount
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         await flushPromises();
 
@@ -144,6 +148,7 @@ describe("events", () => {
                 routes: testItems,
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         await flushPromises();
 
@@ -152,6 +157,7 @@ describe("events", () => {
 
         // when
         await a.trigger("click");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         await flushPromises();
 

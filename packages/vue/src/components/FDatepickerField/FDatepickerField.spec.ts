@@ -328,7 +328,6 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-
             await expect(markup).toMatchInlineCodeframe(`
                 "error: <div> element is not permitted as content under slot "error-message" (<f-datepicker-field>) (element-permitted-content)
                   2 |                 <f-datepicker-field>
@@ -364,7 +363,6 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-
             await expect(markup).toMatchInlineCodeframe(`
                 "error: <div> element is not permitted as content under slot "description" (<f-datepicker-field>) (element-permitted-content)
                   2 |                 <f-datepicker-field>
