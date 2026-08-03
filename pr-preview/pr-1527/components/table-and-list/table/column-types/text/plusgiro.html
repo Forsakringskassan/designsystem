@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../../../assets/vendor-fkui-vue-selectors-cba73f.js",
     "@fkui/logic": "../../../../../assets/vendor-fkui-logic-9591ee.js",
     "@fkui/date": "../../../../../assets/vendor-fkui-date-1a27ab.js",
-    "@fkui/vue": "../../../../../assets/vendor-fkui-vue-f48d14.js",
+    "@fkui/vue": "../../../../../assets/vendor-fkui-vue-4421a0.js",
     "@forsakringskassan/docs-live-example": "../../../../../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js"
   },
   "integrity": {
@@ -34,7 +34,7 @@
     "../../../../../assets/vendor-fkui-vue-selectors-cba73f.js": "sha384-SaJecW2ObIUIuEnO+5qmMjFw9Yyo64+xMbIrjvDQol1Znm2N1FJD6zX1bcv230xq",
     "../../../../../assets/vendor-fkui-logic-9591ee.js": "sha384-sktoLviDHXsiB2lm2hWly0KdUdn7YqJNcPgzVY/3CAbgpuGS0ubsXkl9OoJ4znSi",
     "../../../../../assets/vendor-fkui-date-1a27ab.js": "sha384-WIsjwfLaDqeOimfnc5gS/DFmVv/1BDdGyow7RILJnWl4OP38ocmTvEMggmCsKUun",
-    "../../../../../assets/vendor-fkui-vue-f48d14.js": "sha384-0Kca1HtUd9NMXVAx4Reh7PweuR4eTeR8RXAlw8Z0dHoMngq6hw4Sb/3vqlmqxU0H",
+    "../../../../../assets/vendor-fkui-vue-4421a0.js": "sha384-2xBakBj1u/yjj6ksDkYvg6Rc9q3hbp7/gCR4Suz0b9ayb8dwGIwVUaAoV4KYaxiq",
     "../../../../../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js": "sha384-UD6GYm3c8+uyO/HE6UD/CkzOimyLSzEtI2zsMXEFOYxG5ITkplPDrHIeJBmVI79s"
   }
 }
@@ -46,10 +46,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../../../search-data-7c67d2.json"
+    href="../../../../../search-data-266009.json"
     as="fetch"
     crossorigin
-    integrity="sha384-xL4O2XhEZS20qM71cnq5CBMJ2vxGCCJe0Y8NAyz7d15+twqMfIZfPOMLoNfmwCup"
+    integrity="sha384-bc1/gbodkBs2ZstD8/gQsFrfpe2vNeiP8QLMzkDE62VZDF9P5DURnl4hgcJG82wu"
     id="search-data"
 />
 <script>
@@ -1588,17 +1588,11 @@ Plusgiro följer samma validering, formatering och parsning som det <a href="../
                 </div>
             <h2 id="parametrar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#parametrar">Parametrar</a></h2> <div><dl>
 <dt><code>description?: string | Readonly&lt;Ref&lt;string | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">Format description (shown in header)</p>
-</dd>
+<dd>Format description (shown in header)</dd>
 <dt><code>enabled?: MaybeRef&lt;boolean&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">When enabled, the column is rendered. Set to <code>false</code> to hide the column and its cells. Default: <code>true</code>.</p>
-</dd>
+<dd>When enabled, the column is rendered. Set to <code>false</code> to hide the column and its cells. Default: <code>true</code>.</dd>
 <dt><code>header: string | Readonly&lt;Ref&lt;string&gt;&gt;;</code></dt>
-<dd>
-<p class="docs-paragraph">Column header</p>
-</dd>
+<dd>Column header</dd>
 <dt><code>size?: TableColumnSize | Readonly&lt;Ref&lt;TableColumnSize | null&gt;&gt;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
 <dd>
 <p class="docs-paragraph">Column size, can be one of:</p>
@@ -1609,57 +1603,31 @@ Plusgiro följer samma validering, formatering och parsning som det <a href="../
 <p class="docs-paragraph">Default: <code>&quot;grow&quot;</code>.</p>
 </dd>
 <dt><code>sort?: boolean;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">‐</p>
-</dd>
+<dd>‐</dd>
 <dt><code>align?: &quot;left&quot; | &quot;right&quot;;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">Set the alignment of the cells. Default: <code>&quot;left&quot;</code></p>
-</dd>
+<dd>Set the alignment of the cells. Default: <code>&quot;left&quot;</code></dd>
 <dt><code>attributes?: Record&lt;string, string | number | boolean | undefined&gt; | ((this: void, row: T) =&gt; Record&lt;string, string | number | boolean | undefined&gt;);</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">Arbitrary attributes passed to input field</p>
-</dd>
+<dd>Arbitrary attributes passed to input field</dd>
 <dt><code>editable?: boolean | ((this: void, row: T) =&gt; boolean);</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">When enabled, the cells are editable. Default: <code>false</code></p>
-</dd>
+<dd>When enabled, the cells are editable. Default: <code>false</code></dd>
 <dt><code>formatter?(this: void, value: string): string | undefined;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">‐</p>
-</dd>
+<dd>‐</dd>
 <dt><code>key?: K;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">‐</p>
-</dd>
+<dd>‐</dd>
 <dt><code>label?(this: void, row: T): string;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">Screenreader text for input field</p>
-</dd>
+<dd>Screenreader text for input field</dd>
 <dt><code>parser?(this: void, value: string): string | undefined;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">‐</p>
-</dd>
+<dd>‐</dd>
 <dt><code>tnum?: boolean;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">When enabled, the cells are rendered with tabular numbers</p>
-</dd>
+<dd>When enabled, the cells are rendered with tabular numbers</dd>
 <dt><code>type: InputTypeText;</code></dt>
-<dd>
-<p class="docs-paragraph">Column type (<code>text</code> or a specialized field such as <code>text:date</code> or <code>text:number</code>)</p>
-</dd>
+<dd>Column type (<code>text</code> or a specialized field such as <code>text:date</code> or <code>text:number</code>)</dd>
 <dt><code>update?(this: void, row: T, newValue: string, oldValue: string): void;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">‐</p>
-</dd>
+<dd>‐</dd>
 <dt><code>validation?: ValidatorConfigs;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">‐</p>
-</dd>
+<dd>‐</dd>
 <dt><code>value?(this: void, row: T): string;</code> <span class="docs-tag docs-tag--default">Optional</span></dt>
-<dd>
-<p class="docs-paragraph">‐</p>
-</dd>
+<dd>‐</dd>
 </dl>
 </div> 
 
@@ -1709,9 +1677,9 @@ Plusgiro följer samma validering, formatering och parsning som det <a href="../
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">bugfix/card-error-background (<a href="https://github.com/Forsakringskassan/designsystem/commits/f0cfd827a3e8f678fa2ca3efccaed7504bc762c8">f0cfd82</a>)<br />
+<div class="footer__right"><div class="version">bugfix/card-error-background (<a href="https://github.com/Forsakringskassan/designsystem/commits/cb5832d9a2b0c34a37c2c523cdae1f59902cbe4e">cb5832d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1527">PR 1527</a><br />
-        2026-08-01 18:14
+        2026-08-03 06:45
 </div>
 <div class="toolbar__item">
     <form id="version">
