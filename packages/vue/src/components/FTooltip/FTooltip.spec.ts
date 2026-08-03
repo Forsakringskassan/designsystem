@@ -69,7 +69,7 @@ describe("slots", () => {
         expect(header.text()).toBe("Tooltip");
     });
 
-    it("should throw error if has slot for header but no header-tag", async () => {
+    it("should throw error if has slot for header but no header-tag", () => {
         expect.assertions(1);
         expect(() => {
             createWrapper({

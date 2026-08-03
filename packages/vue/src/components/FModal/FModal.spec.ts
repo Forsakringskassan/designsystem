@@ -49,7 +49,7 @@ describe("events", () => {
 });
 
 describe("props", () => {
-    it('should be visible if "isOpen" prop is true', async () => {
+    it('should be visible if "isOpen" prop is true', () => {
         expect.assertions(1);
         const wrapper = shallowMount(FModal, {
             props: {
@@ -61,7 +61,7 @@ describe("props", () => {
         expect(modal.isVisible()).toBeTruthy();
     });
 
-    it('should be invisible if "isOpen" prop is false', async () => {
+    it('should be invisible if "isOpen" prop is false', () => {
         expect.assertions(1);
         const wrapper = shallowMount(FModal, {
             props: {

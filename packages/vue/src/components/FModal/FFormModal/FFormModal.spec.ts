@@ -315,7 +315,7 @@ describe("props", () => {
             ${"fullscreen"} | ${"modal__dialog-container--fullwidth"}
         `(
             "'$size' should be reflected in applied class name.",
-            async ({ size, className }) => {
+            ({ size, className }) => {
                 expect.assertions(1);
                 const wrapper = mount(FFormModal, {
                     props: {
@@ -328,7 +328,7 @@ describe("props", () => {
         );
     });
 
-    it("should passs ariaCloseText to FModal", async () => {
+    it("should passs ariaCloseText to FModal", () => {
         expect.assertions(1);
         const wrapper = mount(FFormModal, {
             props: {

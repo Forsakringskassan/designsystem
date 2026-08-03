@@ -107,7 +107,7 @@ it("should add table colum headers to <thead> with correct classes", async () =>
     );
 });
 
-it("should throw error if `FTableColumn.name` is duplicated", async () => {
+it("should throw error if `FTableColumn.name` is duplicated", () => {
     expect.assertions(1);
     const TestComponent = {
         components: { FInteractiveTable, FTableColumn },
@@ -812,7 +812,7 @@ describe("Expandable rows", () => {
 });
 
 describe("`keyAttribute`", () => {
-    it("should not throw if valid and unique", async () => {
+    it("should not throw if valid and unique", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -825,7 +825,7 @@ describe("`keyAttribute`", () => {
         }).not.toThrow();
     });
 
-    it("should throw error if not unique in items", async () => {
+    it("should throw error if not unique in items", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -840,7 +840,7 @@ describe("`keyAttribute`", () => {
         );
     });
 
-    it("should be optional", async () => {
+    it("should be optional", () => {
         expect.assertions(1);
 
         expect(() => {

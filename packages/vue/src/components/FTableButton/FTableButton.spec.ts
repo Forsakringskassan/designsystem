@@ -3,7 +3,7 @@ import { shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import FTableButton from "./FTableButton.vue";
 
-it("label should be visually hidden by default", async () => {
+it("label should be visually hidden by default", () => {
     expect.assertions(3);
     const wrapper = shallowMount(FTableButton, {
         slots: { default: "lorem ipsum" },
@@ -17,7 +17,7 @@ it("label should be visually hidden by default", async () => {
     `);
 });
 
-it("label should be visually rendered when label prop is set", async () => {
+it("label should be visually rendered when label prop is set", () => {
     expect.assertions(3);
     const wrapper = shallowMount(FTableButton, {
         props: { label: true },
@@ -63,7 +63,7 @@ it("icon library should be set when iconLibrary prop is used", () => {
     expect(icon.attributes("library")).toBe("bar");
 });
 
-describe("html-validate", async () => {
+describe("html-validate", () => {
     it("should require text content", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `

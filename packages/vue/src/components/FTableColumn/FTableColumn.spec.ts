@@ -153,7 +153,7 @@ describe("when in `<thead>`", () => {
         `);
     });
 
-    it("should not throw on undefined object in content", async () => {
+    it("should not throw on undefined object in content", () => {
         expect.assertions(1);
         const TestComponent = {
             components: { FTableColumn },
@@ -179,7 +179,7 @@ describe("when in `<thead>`", () => {
                 };
             },
         };
-        expect(async () => {
+        expect(() => {
             mount(TestComponent);
         }).not.toThrow();
     });
@@ -320,7 +320,7 @@ describe("when in `<thead>`", () => {
         );
     });
 
-    it("should throw error if both shrink and expand is enabled at the same time", async () => {
+    it("should throw error if both shrink and expand is enabled at the same time", () => {
         expect.assertions(1);
         /* prevent vue from dumping the error on stdout */
         vi.spyOn(console, "error").mockImplementation(() => undefined);

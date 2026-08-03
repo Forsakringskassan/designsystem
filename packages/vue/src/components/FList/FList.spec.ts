@@ -521,7 +521,7 @@ describe("v-model (update event)", () => {
 });
 
 describe("`keyAttribute`", () => {
-    it("should not throw if valid and unique", async () => {
+    it("should not throw if valid and unique", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -534,7 +534,7 @@ describe("`keyAttribute`", () => {
         }).not.toThrow();
     });
 
-    it("should throw error if not unique in items", async () => {
+    it("should throw error if not unique in items", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -549,7 +549,7 @@ describe("`keyAttribute`", () => {
         );
     });
 
-    it("should be optional", async () => {
+    it("should be optional", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -633,7 +633,7 @@ describe("screenreader slot", () => {
     });
     const modelValue: ListArray = [];
 
-    it("should throw exception if missing screenreader slot and selectable option", async () => {
+    it("should throw exception if missing screenreader slot and selectable option", () => {
         expect.assertions(1);
         expect(() => {
             createWrapper({

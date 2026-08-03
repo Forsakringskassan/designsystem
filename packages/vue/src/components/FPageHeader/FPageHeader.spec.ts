@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import FPageHeader from "./FPageHeader.vue";
 
 describe("slots", () => {
-    it("should change skipLink text via slot", async () => {
+    it("should change skipLink text via slot", () => {
         expect.assertions(1);
         const mySkipLinkText = "my SkipLink Text";
         const mySkipLinkHref = "#myhref";

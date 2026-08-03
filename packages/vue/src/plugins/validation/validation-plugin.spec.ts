@@ -22,7 +22,7 @@ const validateElement = vi.spyOn(ValidationService, "validateElement");
 
 ValidationService.setErrorMessages({ required: "REQUIRED" });
 
-afterEach(async () => {
+afterEach(() => {
     vi.clearAllMocks();
 });
 
