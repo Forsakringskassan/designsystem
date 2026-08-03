@@ -79,6 +79,7 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
         };
         // move to first item
         await doMenuAction(MenuAction.MOVE_FIRST, target, 1, 2);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         expect(target.setFocusOnItem).toHaveBeenCalledWith(0); // first item index
     });
 
@@ -91,6 +92,7 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
         };
         // activate current item
         await doMenuAction(MenuAction.ACTIVATE, target, 1, 2);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         expect(target.activateItem).toHaveBeenCalledWith(1); // second item index
     });
 });

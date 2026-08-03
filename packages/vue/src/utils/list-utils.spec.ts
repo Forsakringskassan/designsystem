@@ -84,6 +84,7 @@ describe("handleKeyboardFocusNavigation()", () => {
         (key: string) => {
             expect.assertions(1);
             handleKeyboardFocusNavigation(key, list[1], list);
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             expect(list[2].focus).toHaveBeenCalled();
         },
     );
@@ -93,6 +94,7 @@ describe("handleKeyboardFocusNavigation()", () => {
         (key: string) => {
             expect.assertions(1);
             handleKeyboardFocusNavigation(key, list[1], list);
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             expect(list[0].focus).toHaveBeenCalled();
         },
     );
@@ -102,6 +104,7 @@ describe("handleKeyboardFocusNavigation()", () => {
         (key: string) => {
             expect.assertions(1);
             handleKeyboardFocusNavigation(key, list[2], list);
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             expect(list[0].focus).toHaveBeenCalled();
         },
     );
@@ -111,6 +114,7 @@ describe("handleKeyboardFocusNavigation()", () => {
         (key: string) => {
             expect.assertions(1);
             handleKeyboardFocusNavigation(key, list[0], list);
+            /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
             expect(list[2].focus).toHaveBeenCalled();
         },
     );

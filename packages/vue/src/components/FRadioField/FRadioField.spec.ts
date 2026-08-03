@@ -182,6 +182,7 @@ describe("events", () => {
 
         await input.trigger("click");
         expect(click).toHaveBeenCalled();
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         expect(htmlInput.focus).toHaveBeenCalled();
     });
 });

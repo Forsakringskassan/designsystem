@@ -56,7 +56,9 @@ const UnderlyingComponent = defineComponent({
         };
     },
     mounted() {
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         this.registerCallbackOnSort(this.callbackOnSort);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         this.registerCallbackOnMount(this.callbackSortableColumns);
     },
     setup(): FSortFilterDatasetInterface {
