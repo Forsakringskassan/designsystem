@@ -455,7 +455,7 @@ describe("ValidatorOption.enabled", () => {
         expect.assertions(1);
         const element = mountInputElementAndAddValidators(
             "text",
-            enabledValidatorConfig(undefined),
+            enabledValidatorConfig(),
         );
         const requiredSpy = vi.spyOn(registry.required, "validation");
         dispatchEvent("input", element);

@@ -14,7 +14,7 @@ expect.addSnapshotSerializer({
 describe("getDatasetMetadata()", () => {
     it("when called with only dataset parameter should return metadata about array", () => {
         expect.assertions(1);
-        const dataset = toDataset([{ id: 1 }, { id: 2 }, { id: 3 }], undefined);
+        const dataset = toDataset([{ id: 1 }, { id: 2 }, { id: 3 }]);
         const metadata = getDatasetMetadata(dataset);
         expect(metadata).toEqual({ size: 3, nestedAttribute: undefined });
     });
@@ -22,7 +22,7 @@ describe("getDatasetMetadata()", () => {
     it("when called with element parameter should return metadata about element", () => {
         expect.assertions(4);
         const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
-        const dataset = toDataset(items, undefined);
+        const dataset = toDataset(items);
         expect(dataset).toHaveLength(3);
         expect(getDatasetMetadata(dataset[0])).toEqual({
             rowIndex: 0,
@@ -50,7 +50,7 @@ describe("getDatasetMetadata()", () => {
     it("should be persistent after filtering dataset", () => {
         expect.assertions(2);
         const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
-        const dataset = toDataset(items, undefined);
+        const dataset = toDataset(items);
         const filtered = toDataset(
             dataset.filter((item) => item.id !== 2),
             dataset,
@@ -73,7 +73,7 @@ describe("getDatasetMetadata()", () => {
     it("should return undefined when used when creating the dataset without nested rows", () => {
         expect.assertions(1);
         const rows = [{ id: 1, nested: [] }];
-        const dataset = toDataset(rows, undefined);
+        const dataset = toDataset(rows);
         const metadata = getDatasetMetadata(dataset);
         expect(metadata).toEqual(
             expect.objectContaining({ nestedAttribute: undefined }),

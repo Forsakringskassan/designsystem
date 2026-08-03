@@ -5,7 +5,7 @@ import { toDataset } from "./to-dataset";
 describe("isDataset()", () => {
     it("should return true for dataset", () => {
         expect.assertions(1);
-        const dataset = toDataset([{ foo: "bar" }], undefined);
+        const dataset = toDataset([{ foo: "bar" }]);
         expect(isDataset(dataset)).toBeTruthy();
     });
 
