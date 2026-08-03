@@ -133,11 +133,12 @@ describe("html-validate", () => {
     it("should allow defined slots", async () => {
         expect.assertions(1);
         const slotTemplates = Object.entries(defaultSlots).map(
-            ([key, value]) => `<template #${key}>${value}</template>`,
+            ([key, value]: [string, string]) =>
+                `<template #${key}>${value}</template>`,
         );
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
-            `<f-layout-application-template>${slotTemplates}</f-layout-application-template>`,
+            `<f-layout-application-template>${slotTemplates.join("")}</f-layout-application-template>`,
         ).toHTMLValidate();
     });
 });

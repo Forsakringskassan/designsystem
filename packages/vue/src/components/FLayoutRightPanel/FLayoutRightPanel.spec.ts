@@ -63,7 +63,7 @@ describe("html-validate", () => {
         );
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(
-            `<f-layout-right-panel>${slotTemplates}</f-layout-right-panel>`,
+            `<f-layout-right-panel>${slotTemplates.join("")}</f-layout-right-panel>`,
         ).toHTMLValidate();
     });
 });

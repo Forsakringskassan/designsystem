@@ -24,14 +24,14 @@ describe("page counter", () => {
             });
             const selector = paginator.pageCounter();
 
-            it(`should display "${expectedText}" when "aria-hidden"`, () => {
+            it(`should display "${String(expectedText)}" when "aria-hidden"`, () => {
                 expect.assertions(1);
                 expect(wrapper.get(`${selector} [aria-hidden]`).text()).toEqual(
                     expectedText,
                 );
             });
 
-            it(`should display "${expectedAriaText}" for screen readers`, () => {
+            it(`should display "${String(expectedAriaText)}" for screen readers`, () => {
                 expect.assertions(1);
                 expect(wrapper.get(`${selector} .sr-only`).text()).toEqual(
                     expectedAriaText,

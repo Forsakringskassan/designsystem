@@ -23,7 +23,7 @@ function rowindex({
     item: { id: unknown };
     metadata: DatasetElementMetadata;
 }): string {
-    return `id:${item.id} rowIndex=${metadata.rowIndex}`;
+    return `id:${String(item.id)} rowIndex=${metadata.rowIndex}`;
 }
 
 describe("datasetIterator()", () => {

@@ -597,7 +597,7 @@ describe("keyboard navigation", () => {
         ${"PageDown"} | ${"next"}
     `(
         "should emit 'paginateDataset:$action' event on '$key' key press",
-        async ({ key, action }) => {
+        async ({ key, action }: { key: string; action: string }) => {
             expect.assertions(1);
             const listener = vi.fn();
             const wrapper = mount(FList, {

@@ -97,7 +97,7 @@ describe("text", () => {
             type: "anchor",
             header: "header",
             text: () => "my awesome anchor",
-            href: (row) => `https://example.com/${row.value}`,
+            href: (row) => `https://example.com/${String(row.value)}`,
         });
         const wrapper = shallowMount(
             ITableAnchor as unknown as ComponentPublicInstance,

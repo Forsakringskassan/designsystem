@@ -27,7 +27,7 @@ it.each`
     }) => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <input id="testID" value="${inputValue}" />
+            <input id="testID" value="${String(inputValue)}" />
         `;
         document.body.innerHTML = markup;
         expect(

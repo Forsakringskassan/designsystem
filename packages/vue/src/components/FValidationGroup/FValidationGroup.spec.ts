@@ -125,7 +125,7 @@ describe("events", () => {
                         <div @component-validity="onComponentValidity">
                             <f-validation-group
                                 :value="group1"
-                                :stopPropagation="${stopPropagation}"
+                                :stopPropagation="${String(stopPropagation)}"
                             >
                                 <input id="input1" />
                             </f-validation-group>
@@ -407,7 +407,7 @@ describe("html-validate", () => {
                 expect.assertions(1);
                 const markup = /* HTML */ `
                     <f-validation-group
-                        stop-propagation="${stopPropagation}"
+                        stop-propagation="${String(stopPropagation)}"
                         key="key"
                     ></f-validation-group>
                 `;
