@@ -10,9 +10,7 @@ vi.useFakeTimers();
 createScreenReaderWrapper({ assertive: false });
 
 function getWrapper(): HTMLDivElement {
-    return document.querySelector(
-        "#fkui-alert-screen-reader",
-    ) as HTMLDivElement;
+    return document.querySelector("#fkui-alert-screen-reader")!;
 }
 
 afterEach(() => {
