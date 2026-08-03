@@ -53,9 +53,7 @@ beforeEach(() => {
     [input1InFieldset, input2InFieldset] = Array.from(
         fieldset.querySelectorAll("input"),
     );
-    inputOutsideFieldset = document.querySelector(
-        "#test-element3",
-    ) as HTMLInputElement;
+    inputOutsideFieldset = document.querySelector("#test-element3")!;
 });
 
 afterEach(() => {
@@ -115,7 +113,7 @@ describe("Document listeners", () => {
         expect.assertions(1);
         const listenerSpy = vi.spyOn(document, "addEventListener");
 
-        const legend = document.querySelector("#legend") as HTMLLegendElement;
+        const legend = document.querySelector("#legend")!;
         dispatchEvent("focusin", fieldset, legend);
 
         expect(listenerSpy).toHaveBeenCalledTimes(0);
@@ -235,9 +233,8 @@ describe("Fieldset group", () => {
             required: {},
         });
 
-        const nonRequiredInputInFieldset = fieldset.querySelector(
-            "#test-element2",
-        ) as HTMLInputElement;
+        const nonRequiredInputInFieldset =
+            fieldset.querySelector<HTMLInputElement>("#test-element2")!;
         nonRequiredInputInFieldset.checked = true;
         dispatchEvent("focusin", fieldset, nonRequiredInputInFieldset);
 
