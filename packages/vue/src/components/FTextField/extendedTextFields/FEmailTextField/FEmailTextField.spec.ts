@@ -307,6 +307,7 @@ describe("disable paste", () => {
         vi.spyOn(clipboardEvent, "preventDefault");
 
         inputElement.dispatchEvent(clipboardEvent);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         expect(clipboardEvent.preventDefault).toHaveBeenCalled();
     }
 
@@ -319,6 +320,7 @@ describe("disable paste", () => {
         vi.spyOn(clipboardEvent, "preventDefault");
 
         inputElement.dispatchEvent(clipboardEvent);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         expect(clipboardEvent.preventDefault).not.toHaveBeenCalled();
     }
 

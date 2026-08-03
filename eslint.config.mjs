@@ -171,7 +171,6 @@ export default [
         name: "technical-debt",
         files: ["**/*.spec.ts"],
         rules: {
-            "@typescript-eslint/unbound-method": "off",
             "sonarjs/no-undefined-argument": "off",
         },
     },

@@ -40,6 +40,7 @@ describe("errorHandler", () => {
         errorHandler({}, error, fakeVm, info);
 
         // Then
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         expect(EventBus.$emit).toHaveBeenCalledWith(UNHANDLED_ERROR_EVENT, {
             error,
             vm: fakeVm,
@@ -101,6 +102,7 @@ describe("warnHandler", () => {
         warnHandler({}, message, fakeVm, stack);
 
         // Then
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         expect(EventBus.$emit).toHaveBeenCalledWith(UNHANDLED_ERROR_EVENT, {
             error: {
                 name: "warning",
