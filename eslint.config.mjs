@@ -166,12 +166,4 @@ export default [
             "unicorn/filename-case": "off",
         },
     },
-
-    {
-        name: "technical-debt",
-        files: ["**/*.spec.ts"],
-        rules: {
-            "sonarjs/no-undefined-argument": "off",
-        },
-    },
 ];
