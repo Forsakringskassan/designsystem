@@ -21,6 +21,7 @@ function createWrapper({ props = {}, stubs = [] as string[] }): VueWrapper {
         default: '<input id="input1"> <input id="input2">',
     };
 
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FValidationGroup, {
         props: {
             modelValue: {

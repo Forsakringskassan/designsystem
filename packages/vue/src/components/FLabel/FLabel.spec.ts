@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import FLabel from "./FLabel.vue";
 
 function createWrapper({ slots = {} } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FLabel, {
         props: { for: "FOR_ID" },
         slots: { ...slots },

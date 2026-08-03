@@ -137,6 +137,7 @@ function triggerValidityEvent(
     }
 
     const args = listener.mock.calls.at(-1)!;
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return args[0].detail;
 }
 

@@ -9,6 +9,7 @@ const definitions = [
 ];
 
 function createWrapper(definitions: FDefinitionListItem[]): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FDefinitionList, {
         props: {
             definitions,

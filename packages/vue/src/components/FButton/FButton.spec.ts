@@ -13,9 +13,7 @@ expect.addSnapshotSerializer({
     test() {
         return true;
     },
-    serialize(val) {
-        return val;
-    },
+    serialize: String,
 });
 
 describe("props", () => {

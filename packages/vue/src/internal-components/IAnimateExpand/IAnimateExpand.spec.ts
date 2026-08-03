@@ -14,6 +14,7 @@ Object.assign(Element.prototype, {
 const ANIMATION_DURATION = 501;
 
 function createWrapper({ props = {} } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(IAnimateExpand, {
         props,
         slots: {

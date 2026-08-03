@@ -5,6 +5,7 @@ import { statuses } from "./statuses";
 import "html-validate/vitest";
 
 function createWrapper({ props = {}, attrs = {} } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FBadge, {
         attrs: { ...attrs },
         props: { ...props },

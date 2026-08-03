@@ -435,6 +435,13 @@ describe("formatting and parsing combined with validation", () => {
             parsed,
             expectedModel,
             expectedValue,
+        }: {
+            initialModel: string;
+            inputValue: string;
+            formatted: string;
+            parsed: number | undefined;
+            expectedModel: number | string;
+            expectedValue: string;
         }) => {
             expect.assertions(2);
             const formatterMock = (): string => formatted;
