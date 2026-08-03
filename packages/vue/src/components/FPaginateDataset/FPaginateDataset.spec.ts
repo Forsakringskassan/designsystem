@@ -40,7 +40,7 @@ describe("FPaginateDataset", () => {
             },
             slots: {
                 default: ({ currentPage, numberOfPages }) =>
-                    `${currentPage}-${numberOfPages}`,
+                    `${String(currentPage)}-${String(numberOfPages)}`,
             },
         });
 

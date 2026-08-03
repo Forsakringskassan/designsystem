@@ -21,8 +21,8 @@ beforeEach(() => {
 
         // Translation must be mocked so that we can properly test the user friendly string conversion
         if (key === "ARBE.RW.generell.etikett.timmarochminuter") {
-            return `${args?.hours} timm${args?.hours === 1 ? "e" : "ar"} och ${
-                args?.minutes
+            return `${args?.hours ?? ""} timm${args?.hours === 1 ? "e" : "ar"} och ${
+                args?.minutes ?? ""
             } minut${args?.minutes === 1 ? "" : "er"}`;
         }
         return key;

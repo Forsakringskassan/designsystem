@@ -298,7 +298,7 @@ describe("html-validate", () => {
     `("attribute expand should allow $description ($value)", async (value) => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <i-animate-expand expanded="${value}"></i-animate-expand>
+            <i-animate-expand expanded="${String(value)}"></i-animate-expand>
         `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
         await expect(markup).toHTMLValidate();

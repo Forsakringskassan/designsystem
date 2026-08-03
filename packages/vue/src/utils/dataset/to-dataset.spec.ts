@@ -24,7 +24,7 @@ function ariaLevel({
     item: { id: unknown };
     metadata: DatasetElementMetadata;
 }): string {
-    return `id:${item.id} aria-level="${metadata.ariaLevel}"`;
+    return `id:${String(item.id)} aria-level="${metadata.ariaLevel}"`;
 }
 
 function ariaRowIndex({
@@ -34,7 +34,7 @@ function ariaRowIndex({
     item: { id: unknown };
     metadata: DatasetElementMetadata;
 }): string {
-    return `id:${item.id} aria-rowindex="${metadata.ariaRowIndex}"`;
+    return `id:${String(item.id)} aria-rowindex="${metadata.ariaRowIndex}"`;
 }
 
 describe("toDataset", () => {

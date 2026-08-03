@@ -1255,8 +1255,8 @@ describe("7.6 aria-selected", () => {
         expect(
             trs.map(
                 (tr, index) =>
-                    `Row ${index + 1} aria-selected: ${tr.attributes(
-                        "aria-selected",
+                    `Row ${index + 1} aria-selected: ${String(
+                        tr.attributes("aria-selected"),
                     )}`,
             ),
         ).toMatchObject([
