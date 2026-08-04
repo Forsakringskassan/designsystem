@@ -97,7 +97,7 @@
     "@forsakringskassan/vite-lib-config": "5.4.3",
     "@html-validate/release-scripts": "7.5.0",
     "@types/estree": "1.0.9",
-    "@types/lodash": "4.17.24",
+    "@types/lodash": "4.17.25",
     "@types/node": "20.19.43",
     "@typescript/native": "npm:typescript@7.0.2",
     "@vue/server-renderer": "3.5.40",
