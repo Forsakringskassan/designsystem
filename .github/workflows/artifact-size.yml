@@ -25,7 +25,7 @@ jobs:
             - name: Build
               run: npm run build
             - name: Run analyzer
-              uses: ext/artifact-size-analyzer/analyze@ef6b5b7db48682b36b735629a378ae4645c19746 # v1.2.4
+              uses: ext/artifact-size-analyzer/analyze@3cc00ab793c4b8e017a31481d7de29d7d032bff8 # v1.2.5
               with:
                   config-file: .github/artifact-size.json
                   artifact-name: base-size
@@ -47,7 +47,7 @@ jobs:
             - name: Build
               run: npm run build
             - name: Run analyzer (current)
-              uses: ext/artifact-size-analyzer/analyze@ef6b5b7db48682b36b735629a378ae4645c19746 # v1.2.4
+              uses: ext/artifact-size-analyzer/analyze@3cc00ab793c4b8e017a31481d7de29d7d032bff8 # v1.2.5
               with:
                   config-file: .github/artifact-size.json
                   artifact-name: current-size
@@ -70,7 +70,7 @@ jobs:
               run: npm ci
             - name: Compare results
               id: compare
-              uses: ext/artifact-size-analyzer/compare@ef6b5b7db48682b36b735629a378ae4645c19746 # v1.2.4
+              uses: ext/artifact-size-analyzer/compare@3cc00ab793c4b8e017a31481d7de29d7d032bff8 # v1.2.5
               with:
                   base-artifact: base-size
                   current-artifact: current-size
