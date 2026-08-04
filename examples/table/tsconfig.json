@@ -1,8 +1,7 @@
 {
-    "extends": ["@fkui/tsconfig/recommended", "@fkui/vue/tsconfig.json"],
+    "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/vue"],
     "compilerOptions": {
         "noEmit": true,
-        "types": ["vite/client"],
         "skipLibCheck": true,
         "rootDir": "../../",
         "paths": {
