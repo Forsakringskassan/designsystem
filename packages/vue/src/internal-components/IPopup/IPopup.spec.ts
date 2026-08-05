@@ -136,8 +136,9 @@ describe("events", () => {
 describe("html-validate", () => {
     it("should require is-open attribute", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ ` <i-popup></i-popup> `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect("<i-popup></i-popup>").not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup> is missing required "is-open" attribute',
         });
@@ -145,31 +146,28 @@ describe("html-validate", () => {
 
     it("should require anchor attribute", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ ` <i-popup></i-popup> `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect("<i-popup></i-popup>").not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup> is missing required "anchor" attribute',
         });
     });
 
     it("should only allow setting valid `inline` values", async () => {
-        expect.assertions(4);
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(/* HTML */ `
+        expect.assertions(2);
+        const markupValid = /* HTML */ `
             <i-popup anchor="anchorref" is-open inline="always"></i-popup>
-        `).toHTMLValidate();
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(/* HTML */ `
             <i-popup anchor="anchorref" is-open inline="never"></i-popup>
-        `).toHTMLValidate();
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(/* HTML */ `
             <i-popup anchor="anchorref" is-open inline="auto"></i-popup>
-        `).toHTMLValidate();
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(/* HTML */ `
+        `;
+        const markupInvalid = /* HTML */ `
             <i-popup anchor="anchorref" is-open inline="foo"></i-popup>
-        `).not.toHTMLValidate({
+        `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
+        await expect(markupValid).toHTMLValidate();
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
+        await expect(markupInvalid).not.toHTMLValidate({
             ruleId: "attribute-allowed-values",
             message: 'Attribute "inline" has invalid value "foo"',
         });

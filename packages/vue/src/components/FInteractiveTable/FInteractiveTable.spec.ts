@@ -883,20 +883,22 @@ it("should act as multiselect when selectable is `true`", async () => {
 describe("html-validate", () => {
     it("should require `key-attribute` to be non-empty if used", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-interactive-table key-attribute=""></f-interactive-table>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            '<f-interactive-table key-attribute=""></f-interactive-table>',
-        ).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message: 'Attribute "key-attribute" has invalid value ""',
         });
     });
 
     it("should require row attribute", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-interactive-table></f-interactive-table>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            "<f-interactive-table></f-interactive-table>",
-        ).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message:
                 '<f-interactive-table> is missing required "rows" attribute',
         });
@@ -904,10 +906,11 @@ describe("html-validate", () => {
 
     it("should require caption slot", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-interactive-table></f-interactive-table>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            "<f-interactive-table></f-interactive-table>",
-        ).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message:
                 '<f-interactive-table> component requires slot "caption" to be implemented',
         });
@@ -915,15 +918,17 @@ describe("html-validate", () => {
 
     it("should require default slot", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-interactive-table></f-interactive-table>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            "<f-interactive-table></f-interactive-table>",
-        ).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message:
                 '<f-interactive-table> component requires slot "default" to be implemented',
         });
     });
 
+    /* technical debt: this tests the wrong component */
     it("should be valid", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `

@@ -525,10 +525,11 @@ it("should sort strings independent of case", async () => {
 describe("html-validate", () => {
     it("should require data attribute", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-sort-filter-dataset></f-sort-filter-dataset>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            "<f-sort-filter-dataset></f-sort-filter-dataset>",
-        ).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message:
                 '<f-sort-filter-dataset> is missing required "data" attribute',
         });
@@ -536,10 +537,11 @@ describe("html-validate", () => {
 
     it("should require sortable-attributes attribute", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-sort-filter-dataset></f-sort-filter-dataset>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            "<f-sort-filter-dataset></f-sort-filter-dataset>",
-        ).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message:
                 '<f-sort-filter-dataset> is missing required "sortable-attributes" attribute',
         });
@@ -547,10 +549,11 @@ describe("html-validate", () => {
 
     it("should require default slot", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-sort-filter-dataset></f-sort-filter-dataset>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            "<f-sort-filter-dataset></f-sort-filter-dataset>",
-        ).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message:
                 '<f-sort-filter-dataset> component requires slot "default" to be implemented',
         });
@@ -558,9 +561,12 @@ describe("html-validate", () => {
 
     it("html should be valid", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-sort-filter-dataset data="test" sortable-attributes="test igen">
+                <template #default></template>
+            </f-sort-filter-dataset>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            '<f-sort-filter-dataset data="test" sortable-attributes="test igen"><template #default></template></f-sort-filter-dataset>',
-        ).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 });
