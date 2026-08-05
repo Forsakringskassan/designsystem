@@ -1,18 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`html-validate > '<f-textarea-field maxlength="100 000"…' should be invalid 1`] = `
-[Error: Expected HTML to be valid but had the following errors:
-
-  Attribute "maxlength" has invalid value "100 000" [attribute-allowed-values]
-  Attribute "soft-limit" has invalid value "30 000" [attribute-allowed-values]]
-`;
-
-exports[`html-validate > '<f-textarea-field>Label<template #too…' should be invalid 1`] = `
-[Error: Expected HTML to be valid but had the following errors:
-
-  <div> element is not permitted as content under slot "tooltip" (<f-textarea-field>) [element-permitted-content]]
-`;
-
 exports[`snapshots > should match snapshot when validityMode is 'ERROR' and isValid is false 1`] = `
 <div
   class="textarea-field textarea-field--error"

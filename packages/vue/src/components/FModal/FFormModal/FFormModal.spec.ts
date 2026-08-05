@@ -487,13 +487,16 @@ describe("html-validate", () => {
         });
     });
 
-    it.each`
-        slotName               | html
-        ${"header"}            | ${"<f-form-modal><template #header>Header</template></f-form-modal>"}
-        ${"error-message"}     | ${"<f-form-modal><template #error-message>Error</template></f-form-modal>"}
-        ${"input-text-fields"} | ${"<f-form-modal><template #input-text-fields></template></f-form-modal>"}
-    `("should allow $slotName slot", async ({ html }) => {
+    it("should allow slots", async () => {
         expect.assertions(1);
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-form-modal>
+                <template #header>Header</template>
+                <template #error-message>Error</template>
+                <template #input-text-fields></template>
+            </f-form-modal>
+        `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
+        await expect(markup).toHTMLValidate();
     });
 });

@@ -250,14 +250,17 @@ describe("callbacks", () => {
 });
 
 describe("html-validate", () => {
-    it.each`
-        html
-        ${"<i-animate-expand></i-animate-expand>"}
-        ${"<i-animate-expand>DEFAULT CONTENT</i-animate-expand>"}
-        ${"<i-animate-expand><i-animate-expand></i-animate-expand></i-animate-expand>"}
-    `("$html should be valid", async ({ html }) => {
+    it("should be valid", async () => {
         expect.assertions(1);
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <i-animate-expand></i-animate-expand>
+            <i-animate-expand> DEFAULT CONTENT </i-animate-expand>
+            <i-animate-expand>
+                <i-animate-expand></i-animate-expand>
+            </i-animate-expand>
+        `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
+        await expect(markup).toHTMLValidate();
     });
 
     it.each(["animate", "opacity", "use-v-show"])(
