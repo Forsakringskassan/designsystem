@@ -754,8 +754,9 @@ describe("formModalSize", () => {
 describe("html-validate", () => {
     it("should require default slot", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ ` <f-crud-dataset></f-crud-dataset> `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect("<f-crud-dataset></f-crud-dataset>").not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message:
                 '<f-crud-dataset> component requires slot "default" to be implemented',
         });
@@ -763,9 +764,12 @@ describe("html-validate", () => {
 
     it("should html-validate", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-crud-dataset>
+                <template #default></template>
+            </f-crud-dataset>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            "<f-crud-dataset><template #default></template></f-crud-dataset>",
-        ).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 });

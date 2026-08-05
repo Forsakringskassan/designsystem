@@ -100,8 +100,9 @@ describe("props", () => {
 describe("html-validate", () => {
     it("should allow usage without attributes, no attributes required", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ ` <f-page-header></f-page-header> `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect("<f-page-header></f-page-header>").toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
     it("should allow all slots", async () => {

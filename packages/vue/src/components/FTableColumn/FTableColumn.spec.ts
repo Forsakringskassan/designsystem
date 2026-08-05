@@ -354,45 +354,60 @@ describe("when in `<thead>`", () => {
 
 describe("html-validate", () => {
     it("should require title attribute", async () => {
-        expect.assertions(2);
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect("<f-table-column></f-table-column>").not.toHTMLValidate({
-            message: '<f-table-column> is missing required "title" attribute',
-        });
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            '<f-table-column title=""></f-table-column>',
-        ).not.toHTMLValidate({
-            message: 'Attribute "title" has invalid value ""',
-        });
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-table-column></f-table-column>
+            <f-table-column title=""></f-table-column>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-table-column> is missing required "title" attribute (element-required-attributes)
+            1 |
+          > 2 |             <f-table-column></f-table-column>
+              |              ^^^^^^^^^^^^^^
+            3 |             <f-table-column title=""></f-table-column>
+            4 |
+          Selector: f-table-column:nth-child(1)
+          error: Attribute "title" has invalid value "" (attribute-allowed-values)
+            1 |
+            2 |             <f-table-column></f-table-column>
+          > 3 |             <f-table-column title=""></f-table-column>
+              |                             ^^^^^
+            4 |
+          Selector: f-table-column:nth-child(2)"
+        `);
     });
 
     it("should not allow invalid types", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-table-column type="foobar"></f-table-column>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            '<f-table-column type="foobar"></f-table-column>',
-        ).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message: 'Attribute "type" has invalid value "foobar"',
         });
     });
 
     it("should not allow empty description", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-table-column description=""></f-table-column>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            '<f-table-column description=""></f-table-column>',
-        ).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message: 'Attribute "description" has invalid value ""',
         });
     });
 
     it("should not allow flow content", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-table-column>
+                <div></div>
+            </f-table-column>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            "<f-table-column><div></div></f-table-column>",
-        ).not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message:
                 "<div> element is not permitted as content under <f-table-column>",
         });
@@ -400,10 +415,13 @@ describe("html-validate", () => {
 
     it("should allow phrasing content", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-table-column name="foo" title="Foo">
+                <span></span>
+            </f-table-column>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            '<f-table-column name="foo" title="Foo"><span></span></f-table-column>',
-        ).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
     it("should allow button content", async () => {
