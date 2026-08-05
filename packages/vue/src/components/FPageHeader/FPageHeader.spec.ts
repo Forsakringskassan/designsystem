@@ -104,15 +104,16 @@ describe("html-validate", () => {
         await expect("<f-page-header></f-page-header>").toHTMLValidate();
     });
 
-    it.each`
-        slotName            | html
-        ${"skip-link-text"} | ${"<f-page-header><template #skip-link-text></template></f-page-header>"}
-        ${"logo"}           | ${"<f-page-header><template #logo></template></f-page-header>"}
-        ${"default"}        | ${"<f-page-header><template #default></template></f-page-header>"}
-        ${"right"}          | ${"<f-page-header><template #right></template></f-page-header>"}
-    `("should allow $slotName slot", async ({ html }) => {
+    it("should allow all slots", async () => {
         expect.assertions(1);
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-page-header><template #skip-link-text></template></f-page-header>
+            <f-page-header><template #logo></template></f-page-header>
+            <f-page-header><template #default></template></f-page-header>
+            <f-page-header><template #right></template></f-page-header>
+        `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
+        await expect(markup).toHTMLValidate();
     });
 
     it("skip-link", async () => {
