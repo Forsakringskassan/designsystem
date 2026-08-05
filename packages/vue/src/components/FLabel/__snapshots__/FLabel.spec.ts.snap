@@ -1,23 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`html-validate > '<f-label for="00-number-input"></f-la…' should be invalid 1`] = `
-[Error: Expected HTML to be valid but had the following errors:
-
-  Attribute "for" has invalid value "00-number-input" [attribute-allowed-values]]
-`;
-
-exports[`html-validate > '<f-label for="number input"></f-label>' should be invalid 1`] = `
-[Error: Expected HTML to be valid but had the following errors:
-
-  Attribute "for" has invalid value "number input" [attribute-allowed-values]]
-`;
-
-exports[`html-validate > '<f-label><template #tooltip><div /></…' should be invalid 1`] = `
-[Error: Expected HTML to be valid but had the following errors:
-
-  <div> element is not permitted as content under slot "tooltip" (<f-label>) [element-permitted-content]]
-`;
-
 exports[`snapshots > should match snapshot with a second label element containing the description and error-message slots 1`] = `
 <div>
   <div>

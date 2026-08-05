@@ -924,13 +924,24 @@ describe("html-validate", () => {
         });
     });
 
-    it.each`
-        html
-        ${'<f-email-text-field type="email" maxlength="80">E-post</f-email-text-field>'}
-        ${'<f-email-text-field id="email-input" maxlength="80">E-post</f-email-text-field>'}
-        ${'<f-email-text-field id="email-input" maxlength="80" v-validation.required>E-post</f-email-text-field>'}
-    `("$html should be valid", async ({ html }) => {
+    it("should be valid", async () => {
         expect.assertions(1);
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-email-text-field type="email" maxlength="80">
+                E-post
+            </f-email-text-field>
+            <f-email-text-field id="email-input-1" maxlength="80">
+                E-post
+            </f-email-text-field>
+            <f-email-text-field
+                id="email-input-2"
+                maxlength="80"
+                v-validation.required
+            >
+                E-post
+            </f-email-text-field>
+        `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
+        await expect(markup).toHTMLValidate();
     });
 });

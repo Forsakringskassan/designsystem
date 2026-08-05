@@ -29,22 +29,3 @@ exports[`FLoader > should have text by default 1`] = `
   </div>
 </teleport-stub>"
 `;
-
-exports[`html-validate > '<f-loader><button></button></f-loader>' should be invalid 1`] = `
-[Error: Expected HTML to be valid but had the following errors:
-
-  <button> is missing recommended "type" attribute [no-implicit-button-type]
-  <button> must have accessible text [text-content]]
-`;
-
-exports[`html-validate > '<f-loader><div></div></f-loader>' should be invalid 1`] = `
-[Error: Expected HTML to be valid but had the following errors:
-
-  <div> element is not permitted as content under <f-loader> [element-permitted-content]]
-`;
-
-exports[`html-validate > '<f-loader><p></p></f-loader>' should be invalid 1`] = `
-[Error: Expected HTML to be valid but had the following errors:
-
-  <p> element is not permitted as content under <f-loader> [element-permitted-content]]
-`;
