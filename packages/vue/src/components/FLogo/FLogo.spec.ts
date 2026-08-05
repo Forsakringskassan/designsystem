@@ -62,18 +62,13 @@ describe("html-validate", () => {
 
     it("should allow setting correct size values", async () => {
         expect.assertions(3);
+        const markup = /* HTML */ `
+            <f-logo size="small">foo</f-logo>
+            <f-logo size="large">foo</f-logo>
+            <f-logo size="responsive">foo</f-logo>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            /* HTML */ `<f-logo size="small">foo</f-logo>`,
-        ).toHTMLValidate();
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            /* HTML */ `<f-logo size="large">foo</f-logo>`,
-        ).toHTMLValidate();
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            /* HTML */ `<f-logo size="responsive">foo</f-logo>`,
-        ).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
     it("should report error when size value is invalid", async () => {
@@ -90,11 +85,14 @@ describe("html-validate", () => {
 
     it("should require text content", async () => {
         expect.assertions(2);
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(/* HTML */ `<f-logo>foo</f-logo>`).toHTMLValidate();
-        const markup = /* HTML */ `<f-logo></f-logo>`;
-        const report = await htmlvalidate.validateString(markup);
-        await expect(report).toMatchInlineCodeframe(`
+        const validMarkup = /* HTML */ `
+            <f-logo>foo</f-logo>
+        `;
+        const invalidMarkup = /* HTML */ `
+            <f-logo></f-logo>
+        `;
+        await expect(validMarkup).toBeValid();
+        await expect(invalidMarkup).toMatchInlineCodeframe(`
             "error: <f-logo> must have text content (text-content)
             > 1 | <f-logo></f-logo>
                 |  ^^^^^^

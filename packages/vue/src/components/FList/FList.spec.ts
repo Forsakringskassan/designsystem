@@ -653,16 +653,18 @@ describe("screenreader slot", () => {
 describe("html-validate", () => {
     it("should require `key-attribute` to be non-empty if used", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ ` <f-list key-attribute=""></f-list> `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect('<f-list key-attribute=""></f-list>').not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message: 'Attribute "key-attribute" has invalid value ""',
         });
     });
 
     it("should require items attribute", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ ` <f-list></f-list> `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect("<f-list></f-list>").not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             message: '<f-list> is missing required "items" attribute',
         });
     });

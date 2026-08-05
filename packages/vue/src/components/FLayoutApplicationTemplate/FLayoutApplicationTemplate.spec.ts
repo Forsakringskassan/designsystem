@@ -136,9 +136,12 @@ describe("html-validate", () => {
             ([key, value]: [string, string]) =>
                 `<template #${key}>${value}</template>`,
         );
+        const markup = /* HTML */ `
+        <f-layout-application-template>
+        ${slotTemplates.join("")}
+        </f-layout-application-template>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            `<f-layout-application-template>${slotTemplates.join("")}</f-layout-application-template>`,
-        ).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 });

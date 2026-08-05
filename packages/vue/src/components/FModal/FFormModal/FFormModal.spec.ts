@@ -379,8 +379,11 @@ describe("props", () => {
 describe("html-validate", () => {
     it("should allow usage without attributes, no attributes required", async () => {
         expect.assertions(1);
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect("<f-form-modal></f-form-modal>").toHTMLValidate();
+            const markup = /* HTML */ `
+                <f-form-modal></f-form-modal>
+            `;
+            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
+            await expect(markup).toHTMLValidate();
     });
 
     it("should not allow an invalid form-id attribute", async () => {

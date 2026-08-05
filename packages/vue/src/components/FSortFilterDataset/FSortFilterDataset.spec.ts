@@ -558,9 +558,12 @@ describe("html-validate", () => {
 
     it("html should be valid", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ `
+        <f-sort-filter-dataset data="test" sortable-attributes="test igen">
+        <template #default></template>
+        </f-sort-filter-dataset>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            '<f-sort-filter-dataset data="test" sortable-attributes="test igen"><template #default></template></f-sort-filter-dataset>',
-        ).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 });

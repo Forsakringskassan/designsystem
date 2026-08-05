@@ -176,8 +176,9 @@ describe("v-model", () => {
 describe("html-validate", () => {
     it("should require is-open attribute", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ ` <i-popup-menu></i-popup-menu> `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect("<i-popup-menu></i-popup-menu>").not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup-menu> is missing required "is-open" attribute',
         });
@@ -215,8 +216,9 @@ describe("html-validate", () => {
 
     it("should require items attribute", async () => {
         expect.assertions(1);
+        const markup = /* HTML */ ` <i-popup-menu></i-popup-menu> `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect("<i-popup-menu></i-popup-menu>").not.toHTMLValidate({
+        await expect(markup).not.toHTMLValidate({
             ruleId: "element-required-attributes",
             message: '<i-popup-menu> is missing required "items" attribute',
         });

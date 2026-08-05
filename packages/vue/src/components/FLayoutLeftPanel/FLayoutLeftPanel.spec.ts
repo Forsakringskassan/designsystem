@@ -37,15 +37,18 @@ describe("html-validate", () => {
             ([key, value]) => `<template #${key}>${value}</template>`,
         );
 
+        const markup = /* HTML */ `
+        <f-layout-left-panel>
+        ${slotTemplates.join("")}
+        </f-layout-left-panel>
+        `;
         /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(
-            `<f-layout-left-panel>${slotTemplates.join("")}</f-layout-left-panel>`,
-        ).toHTMLValidate();
+        await expect(markup).toHTMLValidate();
     });
 
     it("should require defined slots", async () => {
         expect.assertions(1);
-        const markup = `<f-layout-left-panel></f-layout-left-panel>`;
+        const markup = /* HTML */ ` <f-layout-left-panel></f-layout-left-panel> `;
         await expect(markup).toMatchInlineCodeframe(`
             "error: <f-layout-left-panel> component requires slot "heading" to be implemented (vue/required-slots)
             > 1 | <f-layout-left-panel></f-layout-left-panel>
