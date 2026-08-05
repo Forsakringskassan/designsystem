@@ -321,13 +321,24 @@ it("should be able to set custom label at default and extended slot", () => {
 });
 
 describe("html-validate", () => {
-    it.each`
-        html
-        ${'<f-phone-text-field maxlength="80">Telefonnummer</f-phone-text-field>'}
-        ${'<f-phone-text-field id="phone-input" maxlength="80">Telefonnummer</f-phone-text-field>'}
-        ${'<f-phone-text-field id="phone-input" v-validation.required maxlength="80">Telefonnummer</f-phone-text-field>'}
-    `("$html should be valid", async ({ html }) => {
+    it("should be valid", async () => {
         expect.assertions(1);
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-phone-text-field maxlength="80">
+                Telefonnummer
+            </f-phone-text-field>
+            <f-phone-text-field id="phone-input-1" maxlength="80">
+                Telefonnummer
+            </f-phone-text-field>
+            <f-phone-text-field
+                id="phone-input-2"
+                v-validation.required
+                maxlength="80"
+            >
+                Telefonnummer
+            </f-phone-text-field>
+        `;
+        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
+        await expect(markup).toHTMLValidate();
     });
 });

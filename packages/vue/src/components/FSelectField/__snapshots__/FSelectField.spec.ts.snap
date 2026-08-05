@@ -1,23 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`html-validate > '<f-select-field><template #label>labe…' should be invalid 1`] = `
-[Error: Expected HTML to be valid but had the following errors:
-
-  <div> element is not permitted as content under slot "default" (<f-select-field>) [element-permitted-content]]
-`;
-
-exports[`html-validate > '<f-select-field><template #label>labe…' should be invalid 2`] = `
-[Error: Expected HTML to be valid but had the following errors:
-
-  <div> element is not permitted as content under <f-select-field> [element-permitted-content]]
-`;
-
-exports[`html-validate > '<f-select-field><template #tooltip><d…' should be invalid 1`] = `
-[Error: Expected HTML to be valid but had the following errors:
-
-  <div> element is not permitted as content under slot "tooltip" (<f-select-field>) [element-permitted-content]]
-`;
-
 exports[`snapshots > should match snapshot when validityMode is 'ERROR' and isValid is false 1`] = `
 <div
   class="select-field select-field--error"
