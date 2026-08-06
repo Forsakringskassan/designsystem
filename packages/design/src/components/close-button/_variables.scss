@@ -1,1 +1,19 @@
-$closebutton-color-default: var(--fkds-color-action-text-secondary-default);
+// DEFAULT
+$closebutton-default-color-background-default: transparent !default;
+$closebutton-default-color-background-hover: var(--fkds-color-action-background-secondary-hover) !default;
+$closebutton-default-color-background-active: var(--fkds-color-action-background-secondary-active) !default;
+$closebutton-default-color-background-focus: transparent !default;
+$closebutton-default-color-text-default: var(--fkds-color-action-text-secondary-default) !default;
+$closebutton-default-color-text-hover: var(--fkds-color-action-text-secondary-default) !default;
+$closebutton-default-color-text-active: var(--fkds-color-action-text-secondary-default) !default;
+$closebutton-default-color-text-focus: var(--fkds-color-action-text-secondary-default) !default;
+
+// INVERTED
+$closebutton-inverted-color-background-default: transparent !default;
+$closebutton-inverted-color-background-hover: transparent !default;
+$closebutton-inverted-color-background-active: transparent !default;
+$closebutton-inverted-color-background-focus: transparent !default;
+$closebutton-inverted-color-text-default: var(--fkds-color-action-text-inverted-default) !default;
+$closebutton-inverted-color-text-hover: var(--fkds-color-action-text-inverted-hover) !default;
+$closebutton-inverted-color-text-active: var(--fkds-color-action-text-inverted-active) !default;
+$closebutton-inverted-color-text-focus: var(--fkds-color-action-text-inverted-focus) !default;

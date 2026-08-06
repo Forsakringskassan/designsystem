@@ -120,10 +120,6 @@ $inner-border:
         margin-bottom: size.$margin-050;
     }
 
-    .close-button {
-        margin: var(--f-tooltip-close-button-margin);
-    }
-
     &__footer {
         display: flex;
         justify-content: flex-end;

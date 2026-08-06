@@ -39,7 +39,7 @@ export class FDatepickerFieldPageobject implements BasePageObject {
     }
 
     public closeCalendarButton(): DefaultCypressChainable {
-        return cy.get(`${this.selector}__close__button`);
+        return cy.get(`${this.selector} .close-button`);
     }
 
     public popup(): DefaultCypressChainable {
