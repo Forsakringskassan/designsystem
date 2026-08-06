@@ -1,1 +1,7 @@
-export const statuses = ["default", "warning", "error", "success", "info"];
+export const statuses = [
+    "default",
+    "warning",
+    "error",
+    "success",
+    "info",
+] as const;

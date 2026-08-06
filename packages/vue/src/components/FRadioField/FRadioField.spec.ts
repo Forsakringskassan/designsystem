@@ -1,27 +1,7 @@
-import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { mount, shallowMount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import { injectionKeys as fieldsetInjectionKeys } from "../FFieldset/use-fieldset";
 import FRadioField from "./FRadioField.vue";
-
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-} = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FRadioField, {
-        attrs: { ...attrs },
-        attachTo: createPlaceholderInDocument(),
-        props: { value: "Default value", ...props },
-        slots: { default: "Default label", ...slots },
-        global: {
-            provide: {
-                [fieldsetInjectionKeys.sharedName as symbol]: "providedName",
-            },
-        },
-    });
-}
 
 it.each`
     vModel       | value        | expected
@@ -62,13 +42,12 @@ it.each`
     'should handle v-model value "$vModel" where checked should be "$expected" when radio value is "$value"',
     ({ vModel, value, expected }) => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FRadioField, {
             props: {
                 value,
                 modelValue: vModel,
             },
         });
-
         expect(wrapper.get("input").element.checked).toBe(expected);
     },
 );
@@ -76,7 +55,15 @@ it.each`
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FRadioField, {
+            props: { value: "Default value" },
+            slots: { default: "Default label" },
+            global: {
+                provide: {
+                    [fieldsetInjectionKeys.sharedName]: "providedName",
+                },
+            },
+        });
         expect(wrapper.element).toMatchSnapshot();
     });
 });
@@ -84,14 +71,13 @@ describe("snapshots", () => {
 describe("attributes", () => {
     it("should pass attributes", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FRadioField, {
             attrs: {
                 disabled: true,
                 required: true,
             },
         });
         const input = wrapper.get("input");
-
         expect(input.attributes("disabled")).toBeDefined();
         expect(input.attributes("required")).toBeDefined();
     });
@@ -107,7 +93,7 @@ describe("disabled", () => {
         "should $description disabled when disabled prop is $disabledAttribute",
         ({ disabled, expectedResult }) => {
             expect.assertions(2);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FRadioField, {
                 props: {
                     disabled,
                 },
@@ -122,12 +108,12 @@ describe("disabled", () => {
 describe("events", () => {
     it("should support v-model by emitting update:modelValue event with value", async () => {
         expect.assertions(3);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FRadioField, {
             props: { value: "Some value", modelValue: "Some value" },
+            attachTo: document.body,
         });
 
         const input = wrapper.get("input");
-
         const htmlInput = input.element;
 
         expect(htmlInput.checked).toBe(true);
@@ -143,10 +129,10 @@ describe("events", () => {
 
     it("should emit change event when input value changes", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FRadioField, {
             props: { value: true, modelValue: false },
+            attachTo: document.body,
         });
-
         const input = wrapper.get("input");
 
         await input.trigger("click");
@@ -160,7 +146,7 @@ describe("events", () => {
     it("should pass listeners", async () => {
         expect.assertions(1);
         const foobar = vi.fn();
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FRadioField, {
             attrs: { onFoobar: foobar },
         });
         const element = wrapper.get("input");
@@ -172,8 +158,10 @@ describe("events", () => {
         expect.assertions(2);
         const click = vi.fn();
 
-        const wrapper = createWrapper({
+        const wrapper = mount(FRadioField, {
             attrs: { onClick: click },
+            props: { value: "Default value" },
+            attachTo: document.body,
         });
 
         const input = wrapper.get("input");

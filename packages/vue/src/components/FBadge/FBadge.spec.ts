@@ -1,30 +1,19 @@
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import FBadge from "./FBadge.vue";
 import { statuses } from "./statuses";
 import "html-validate/vitest";
 
-function createWrapper({ props = {}, attrs = {} } = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FBadge, {
-        attrs: { ...attrs },
-        props: { ...props },
-        slots: {
-            default: "Badge text",
-        },
-    });
-}
-
 describe("should match correct class", () => {
     it.each(statuses)("%s", (status) => {
         expect.assertions(1);
-        const wrapper = createWrapper({ props: { status } });
+        const wrapper = shallowMount(FBadge, { props: { status } });
         expect(wrapper.classes()).toContain(`badge--${status}`);
     });
 
     it.each(statuses)("%s (inverted)", (status) => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FBadge, {
             props: { status, inverted: true },
         });
         expect(wrapper.classes()).toContain(`badge--${status}-inverted`);

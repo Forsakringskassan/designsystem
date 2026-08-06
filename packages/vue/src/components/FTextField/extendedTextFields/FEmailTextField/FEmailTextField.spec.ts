@@ -1,5 +1,4 @@
 import "html-validate/vitest";
-import { defineComponent } from "vue";
 import {
     type PendingValidityEvent,
     type ValidatableHTMLElement,
@@ -7,59 +6,39 @@ import {
     type ValidityEvent,
     ValidationService,
 } from "@fkui/logic";
-import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { config, mount, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../../../plugins";
 import FEmailTextField from "./FEmailTextField.vue";
 
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-    options = {},
-} = {}): VueWrapper<InstanceType<typeof FEmailTextField>> {
-    return mount(FEmailTextField, {
-        attrs: { ...attrs },
-        props: { maxLength: 80, ...props },
-        slots: { ...slots },
-        attachTo: createPlaceholderInDocument(),
-        ...options,
-        global: {
-            stubs: ["f-icon"],
-            plugins: [ValidationPlugin],
-        },
-    });
-}
+config.global.plugins = [ValidationPlugin];
+config.global.stubs = { FLabel: false, FTextField: false };
 
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
-
+        const wrapper = shallowMount(FEmailTextField);
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, error message and input", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FEmailTextField, {
             slots: { "error-message": "ERROR_MESSAGE" },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, tooltip, description, error message and input", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FEmailTextField, {
             slots: {
                 description: "DESCRIPTION",
                 tooltip: "TOOLTIP",
                 "error-message": "ERROR_MESSAGE",
             },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
@@ -73,7 +52,7 @@ describe("snapshots", () => {
         "should match snapshot when validityMode is $validityMode and isValid is $isValid",
         async ({ validityMode, isValid }) => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FEmailTextField, {
                 attrs: { id: "elementId" },
             });
 
@@ -104,7 +83,7 @@ describe("snapshots", () => {
 describe("slots", () => {
     it("should support custom label in default and extended field", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FEmailTextField, {
             props: {
                 extendedValidation: true,
             },
@@ -128,7 +107,7 @@ describe("slots", () => {
 describe("attributes", () => {
     it("should pass attributes", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FEmailTextField, {
             attrs: {
                 disabled: true,
                 required: true,
@@ -142,7 +121,7 @@ describe("attributes", () => {
 
     it("should set type to email as default", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FEmailTextField);
         const input = wrapper.get("input");
         expect(input.attributes("type")).toBe("email");
     });
@@ -151,7 +130,7 @@ describe("attributes", () => {
 describe("events", () => {
     it("should support v-model", async () => {
         expect.assertions(3);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FEmailTextField, {
             props: { modelValue: "foo@example.net" },
         });
         const input = wrapper.get("input");
@@ -172,7 +151,7 @@ describe("events", () => {
         const focus = vi.fn();
         const blur = vi.fn();
 
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FEmailTextField, {
             attrs: {
                 onFocus: focus,
                 onBlur: blur,
@@ -192,7 +171,7 @@ describe("events", () => {
 
     it('should have ValidityMode INITIAL when "pending-validity" event is triggered', async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FEmailTextField, {
             attrs: { id: "elementId" },
         });
 
@@ -231,7 +210,7 @@ describe("events", () => {
 describe("validation", () => {
     it("should display correct error message when multiple validators", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({ options: { sync: false } });
+        const wrapper = shallowMount(FEmailTextField);
         await flushPromises();
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         ValidationService.setSubmitted(wrapper.element);
@@ -271,25 +250,15 @@ describe("validation", () => {
         ({ required }) => {
             expect.assertions(1);
             const validation = required ? "v-validation.required" : "";
-            const wrapper = mount(
-                defineComponent({
-                    name: "TestComponent",
-                    components: {
-                        FEmailTextField,
-                    },
-                    template: /* HTML */ `
-                        <f-email-text-field ${validation} extendedValidation>
-                        </f-email-text-field>
-                    `,
-                }),
-                {
-                    attachTo: createPlaceholderInDocument(),
-                    global: {
-                        plugins: [ValidationPlugin],
-                    },
-                },
-            );
-
+            const wrapper = mount({
+                components: { FEmailTextField },
+                template: /* HTML */ `
+                    <f-email-text-field
+                        ${validation}
+                        extendedValidation
+                    ></f-email-text-field>
+                `,
+            });
             const input = wrapper.findAll("input")[1];
             const expectedValue = required ? "" : undefined;
             expect(input.attributes("required")).toBe(expectedValue);
@@ -326,7 +295,9 @@ describe("disable paste", () => {
 
     it("should paste content", async () => {
         expect.assertions(3);
-        const wrapper = createWrapper({ options: { sync: false } });
+        const wrapper = shallowMount(FEmailTextField, {
+            attachTo: document.body,
+        });
         expect(wrapper.find(".label__message--error").exists()).toBeFalsy();
 
         const inputElement = wrapper.get("input").element;
@@ -338,9 +309,9 @@ describe("disable paste", () => {
 
     it("should not paste content in second textfield", async () => {
         expect.assertions(3);
-        const wrapper = createWrapper({
-            options: { sync: false },
+        const wrapper = shallowMount(FEmailTextField, {
             props: { extendedValidation: true },
+            attachTo: document.body,
         });
         expect(wrapper.find(".label__message--error").exists()).toBeFalsy();
 
@@ -355,9 +326,9 @@ describe("disable paste", () => {
 
     it("should remove paste error message when field is validated", async () => {
         expect.assertions(4);
-        const wrapper = createWrapper({
-            options: { sync: false },
+        const wrapper = shallowMount(FEmailTextField, {
             props: { extendedValidation: true },
+            attachTo: document.body,
         });
         const firstInputElement = wrapper.findAll("input")[0].element;
         const secondInputElement = wrapper.findAll("input")[1].element;

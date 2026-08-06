@@ -1,29 +1,23 @@
 import "html-validate/vitest";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { config, shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import { ValidationPlugin } from "../../../../plugins";
 import FPercentTextField from "./FPercentTextField.vue";
 
-function createWrapper(props = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FPercentTextField, {
-        props: { ...props },
-        global: {
-            plugins: [ValidationPlugin],
-        },
-    });
-}
+config.global.plugins = [ValidationPlugin];
 
 describe("inputmode", () => {
     it("should have numeric as inputmode", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FPercentTextField);
         expect(wrapper.get("input").attributes("inputmode")).toBe("numeric");
     });
 
     it("should have decimal as inputmode", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({ decimals: 2 });
+        const wrapper = shallowMount(FPercentTextField, {
+            props: { decimals: 2 },
+        });
         expect(wrapper.get("input").attributes("inputmode")).toBe("decimal");
     });
 });

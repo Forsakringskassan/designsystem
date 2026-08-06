@@ -11,7 +11,7 @@ const props = defineProps({
         type: String as PropType<"default" | "warning" | "error" | "success" | "info">,
         default: "default",
         validator(value: string) {
-            return statuses.includes(value);
+            return (statuses as readonly string[]).includes(value);
         },
     },
     /**

@@ -1,30 +1,14 @@
 import "html-validate/vitest";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import FFileSelector from "./FFileSelector.vue";
-
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-} = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FFileSelector, {
-        attrs: { ...attrs },
-        props: { ...props },
-        slots: { default: "Select file", ...slots },
-        global: {
-            stubs: ["FIcon"],
-        },
-    });
-}
 
 describe("FFileselector", () => {
     it("should pass attributes", () => {
         expect.assertions(1);
         const filetypesAccepted =
             "application/pdf, image/jpeg, image/tiff, image/png";
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFileSelector, {
             attrs: {
                 accept: filetypesAccepted,
             },
@@ -35,7 +19,11 @@ describe("FFileselector", () => {
 
     it("should set text in slot", () => {
         expect.assertions(2);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FFileSelector, {
+            slots: {
+                default: "Select file",
+            },
+        });
         const label = wrapper.get("label");
         expect(label.text()).toBe("Select file");
         expect(wrapper.element).toMatchSnapshot();
@@ -44,7 +32,7 @@ describe("FFileselector", () => {
     it("should pass listeners", async () => {
         expect.assertions(1);
         const foobar = vi.fn();
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFileSelector, {
             attrs: { onFoobar: foobar },
         });
         const element = wrapper.get("input");
@@ -54,7 +42,7 @@ describe("FFileselector", () => {
 
     it("should emit on change", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FFileSelector);
         const input = wrapper.get("input");
         await input.trigger("change");
         // emits Event and FileList on change
@@ -63,7 +51,7 @@ describe("FFileselector", () => {
 
     it("should disable component when disabled", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFileSelector, {
             props: { disabled: true },
         });
         const input = wrapper.get("input");
@@ -74,7 +62,7 @@ describe("FFileselector", () => {
 
     it("should not disable component when not disabled", () => {
         expect.assertions(2);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FFileSelector);
         const input = wrapper.get("input");
         const label = wrapper.get("label");
         expect(input.attributes("aria-disabled")).toBeUndefined();
@@ -89,7 +77,7 @@ describe("FFileselector", () => {
      */
     it("should have input with aria-labelledby attribute", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFileSelector, {
             props: { id: "foo" },
         });
         const input = wrapper.get("input");
@@ -104,7 +92,7 @@ describe("FFileselector", () => {
      */
     it("should have label with aria-hidden attribute", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FFileSelector);
         const label = wrapper.get("label");
         expect(label.attributes("aria-hidden")).toBe("true");
     });

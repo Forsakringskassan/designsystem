@@ -1,7 +1,7 @@
 import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { type ValidatableHTMLElement } from "@fkui/logic";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
@@ -10,28 +10,6 @@ import {
     type GroupValidityEvent,
 } from "../../types";
 import FValidationGroup from "./FValidationGroup.vue";
-
-function createWrapper({ props = {}, stubs = [] as string[] }): VueWrapper {
-    const slots = {
-        default: '<input id="input1"> <input id="input2">',
-    };
-
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FValidationGroup, {
-        props: {
-            modelValue: {
-                isValid: false,
-                componentsWithError: [],
-                componentCount: 0,
-            },
-            ...props,
-        },
-        slots,
-        global: {
-            stubs,
-        },
-    });
-}
 
 beforeEach(() => {
     vi.useFakeTimers();
@@ -44,10 +22,11 @@ afterEach(() => {
 
 function triggerComponentValidityEvent(
     validatableElement: ValidatableHTMLElement,
-    detail = {},
+    detail: Partial<ComponentValidityEvent> = {},
 ): void {
-    validatableElement.dispatchEvent(
-        new CustomEvent<ComponentValidityEvent>("component-validity", {
+    const event = new CustomEvent<ComponentValidityEvent>(
+        "component-validity",
+        {
             detail: {
                 target: validatableElement,
                 elementId: validatableElement.id,
@@ -60,33 +39,38 @@ function triggerComponentValidityEvent(
                 ...detail,
             },
             bubbles: true,
-        }),
+        },
     );
+    validatableElement.dispatchEvent(event);
 }
 
 function triggerComponentUnmountEvent(
     validatableElement: ValidatableHTMLElement,
 ): void {
-    validatableElement.dispatchEvent(
-        new CustomEvent<ComponentUnmountEvent>("component-unmount", {
-            detail: {
-                elementId: validatableElement.id,
-            },
-            bubbles: true,
-        }),
-    );
+    const event = new CustomEvent<ComponentUnmountEvent>("component-unmount", {
+        detail: {
+            elementId: validatableElement.id,
+        },
+        bubbles: true,
+    });
+    validatableElement.dispatchEvent(event);
 }
 
 describe("events", () => {
     it("should trigger group-validity event after componentValidity event is triggered", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper({});
+        const wrapper = mount(FValidationGroup, {
+            slots: {
+                default: /* HTML */ `
+                    <input id="input1" />
+                    <input id="input2" />
+                `,
+            },
+        });
         const input = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input.element);
         vi.runAllTimers();
         await flushPromises();
-        wrapper.vm.$forceUpdate();
-
         expect(wrapper.emitted("group-validity")).toHaveLength(1);
     });
 
@@ -143,7 +127,14 @@ describe("events", () => {
 
     it("should delete components when unmounted", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({});
+        const wrapper = mount(FValidationGroup, {
+            slots: {
+                default: /* HTML */ `
+                    <input id="input1" />
+                    <input id="input2" />
+                `,
+            },
+        });
         const vGroup = wrapper.getComponent(FValidationGroup);
         const input1 = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input1.element, { isValid: true });
@@ -167,14 +158,20 @@ describe("events", () => {
 
     it("should emit isValid = true when all components are valid", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper({});
+        const wrapper = mount(FValidationGroup, {
+            slots: {
+                default: /* HTML */ `
+                    <input id="input1" />
+                    <input id="input2" />
+                `,
+            },
+        });
         const input1 = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input1.element, { isValid: true });
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         triggerComponentValidityEvent(input2.element, { isValid: true });
         vi.runAllTimers();
         await flushPromises();
-        wrapper.vm.$forceUpdate();
         expect(
             wrapper.emitted<GroupValidityEvent[]>("group-validity")![1][0]
                 .isValid,
@@ -183,15 +180,20 @@ describe("events", () => {
 
     it("should emit isValid = false when some component is not valid", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper({});
+        const wrapper = mount(FValidationGroup, {
+            slots: {
+                default: /* HTML */ `
+                    <input id="input1" />
+                    <input id="input2" />
+                `,
+            },
+        });
         const input1 = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input1.element, { isValid: true });
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         triggerComponentValidityEvent(input2.element, { isValid: false });
         vi.runAllTimers();
         await flushPromises();
-        wrapper.vm.$forceUpdate();
-
         expect(
             wrapper.emitted<GroupValidityEvent[]>("group-validity")![1][0]
                 .isValid,
@@ -200,16 +202,28 @@ describe("events", () => {
 
     it("should emit nothing when no components are registered", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper({});
+        const wrapper = mount(FValidationGroup, {
+            slots: {
+                default: /* HTML */ `
+                    <input id="input1" />
+                    <input id="input2" />
+                `,
+            },
+        });
         await flushPromises();
-        wrapper.vm.$forceUpdate();
-
         expect(wrapper.emitted("group-validity")).toBeUndefined();
     });
 
     it("should emit components with errors (validityMode = ERROR)", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({});
+        const wrapper = mount(FValidationGroup, {
+            slots: {
+                default: /* HTML */ `
+                    <input id="input1" />
+                    <input id="input2" />
+                `,
+            },
+        });
         const input1 = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input1.element, {
             isValid: false,
@@ -222,8 +236,6 @@ describe("events", () => {
         });
         vi.runAllTimers();
         await flushPromises();
-        wrapper.vm.$forceUpdate();
-
         const event =
             wrapper.emitted<GroupValidityEvent[]>("group-validity")![1][0];
         expect(event.componentsWithError).toHaveLength(1);
@@ -232,7 +244,14 @@ describe("events", () => {
 
     it("should emit components with errors in DOM-order", async () => {
         expect.assertions(3);
-        const wrapper = createWrapper({});
+        const wrapper = mount(FValidationGroup, {
+            slots: {
+                default: /* HTML */ `
+                    <input id="input1" />
+                    <input id="input2" />
+                `,
+            },
+        });
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         triggerComponentValidityEvent(input2.element, {
             isValid: false,
@@ -245,8 +264,6 @@ describe("events", () => {
         });
         vi.runAllTimers();
         await flushPromises();
-        wrapper.vm.$forceUpdate();
-
         const event =
             wrapper.emitted<GroupValidityEvent[]>("group-validity")![1][0];
         expect(event.componentsWithError).toHaveLength(2);
@@ -256,7 +273,14 @@ describe("events", () => {
 
     it("should emit only components that still exists in DOM", async () => {
         expect.assertions(4);
-        const wrapper = createWrapper({});
+        const wrapper = mount(FValidationGroup, {
+            slots: {
+                default: /* HTML */ `
+                    <input id="input1" />
+                    <input id="input2" />
+                `,
+            },
+        });
         const input1 = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input1.element, {
             isValid: false,
@@ -278,7 +302,6 @@ describe("events", () => {
 
         vi.runAllTimers();
         await flushPromises();
-        wrapper.vm.$forceUpdate();
 
         const firstEvent =
             wrapper.emitted<GroupValidityEvent[]>("group-validity")![0][0];
@@ -292,7 +315,14 @@ describe("events", () => {
 
     it("should emit component count", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper({});
+        const wrapper = mount(FValidationGroup, {
+            slots: {
+                default: /* HTML */ `
+                    <input id="input1" />
+                    <input id="input2" />
+                `,
+            },
+        });
         const input2 = wrapper.get<HTMLInputElement>("#input2");
         const input1 = wrapper.get<HTMLInputElement>("#input1");
         triggerComponentValidityEvent(input1.element, {
@@ -305,7 +335,6 @@ describe("events", () => {
         });
         vi.runAllTimers();
         await flushPromises();
-        wrapper.vm.$forceUpdate();
 
         const event =
             wrapper.emitted<GroupValidityEvent[]>("group-validity")![1][0];

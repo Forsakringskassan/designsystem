@@ -1,31 +1,10 @@
 import "html-validate/vitest";
-import { type ComponentOptions, defineComponent } from "vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { defineComponent } from "vue";
+import { mount } from "@vue/test-utils";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { type FSortFilterDatasetMountCallback } from "../FSortFilterDataset";
 import { FTableColumn } from "../FTableColumn";
 import FInteractiveTable from "./FInteractiveTable.vue";
-
-function createWrapper(
-    component: ComponentOptions,
-    { props = {}, slots = {}, attrs = {}, provide = {}, options = {} } = {},
-): VueWrapper {
-    return mount(component, {
-        attrs: { ...attrs },
-        props: {
-            ...props,
-        },
-        slots: { ...slots },
-        global: {
-            provide: {
-                addColumn: vi.fn(),
-                setVisibilityColumn: vi.fn(),
-                ...provide,
-            },
-        },
-        ...options,
-    });
-}
 
 afterEach(() => {
     vi.restoreAllMocks();
@@ -58,14 +37,14 @@ describe("should match snapshot", () => {
 
     it("thead", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper(TestComponent);
+        const wrapper = mount(TestComponent);
         await wrapper.vm.$nextTick();
         expect(wrapper.find("thead").html()).toMatchSnapshot();
     });
 
     it("tbody", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper(TestComponent);
+        const wrapper = mount(TestComponent);
         await wrapper.vm.$nextTick();
         expect(wrapper.find("tbody").html()).toMatchSnapshot();
     });
@@ -89,7 +68,7 @@ it("should add table colum headers to <thead> with correct classes", async () =>
             };
         },
     };
-    const wrapper = createWrapper(TestComponent);
+    const wrapper = mount(TestComponent);
     await wrapper.vm.$nextTick();
     const tr = wrapper.findAll("thead tr");
     const th = tr[0].findAll("th");
@@ -149,7 +128,7 @@ it("should set scope on table columns", async () => {
             };
         },
     };
-    const wrapper = createWrapper(TestComponent);
+    const wrapper = mount(TestComponent);
     await wrapper.vm.$nextTick();
     const th = wrapper.find("thead th");
     expect(th.attributes("scope")).toBe("col");
@@ -165,7 +144,7 @@ it("should add <caption> if caption slot is set", async () => {
             </f-interactive-table>
         `,
     };
-    const wrapper = createWrapper(TestComponent);
+    const wrapper = mount(TestComponent);
     await wrapper.vm.$nextTick();
     const caption = wrapper.find("caption");
     expect(caption.exists()).toBeTruthy();
@@ -184,7 +163,7 @@ it("should add <caption> if caption slot only contains sr-only text", async () =
             </f-interactive-table>
         `,
     };
-    const wrapper = createWrapper(TestComponent);
+    const wrapper = mount(TestComponent);
     await wrapper.vm.$nextTick();
     const caption = wrapper.find("caption");
     expect(caption.exists()).toBeTruthy();
@@ -202,7 +181,7 @@ it("should not include caption if no caption slot", async () => {
             ></f-interactive-table>
         `,
     };
-    const wrapper = createWrapper(TestComponent);
+    const wrapper = mount(TestComponent);
     await wrapper.vm.$nextTick();
     const caption = wrapper.find("caption");
     expect(caption.exists()).toBeFalsy();
@@ -219,7 +198,7 @@ it("should not add scroll classes when scroll property is unset", async () => {
             ></f-interactive-table>
         `,
     };
-    const wrapper = createWrapper(TestComponent);
+    const wrapper = mount(TestComponent);
     await wrapper.vm.$nextTick();
     expect(wrapper.classes()).toEqual([]);
 });
@@ -236,7 +215,7 @@ it("should set appropriate scroll class when scroll prop is given", async () => 
             ></f-interactive-table>
         `,
     };
-    const wrapper = createWrapper(TestComponent);
+    const wrapper = mount(TestComponent);
     await wrapper.vm.$nextTick();
     expect(wrapper.classes()).toEqual([
         "table__scroll",
@@ -261,7 +240,7 @@ it("should not add table__row--striped class unless striped is set", async () =>
             };
         },
     };
-    const wrapper = createWrapper(TestComponent);
+    const wrapper = mount(TestComponent);
     await wrapper.vm.$nextTick();
     const table = wrapper.find("table");
     const rows = table.findAll("tbody tr");
@@ -286,7 +265,7 @@ it("should add table__row--striped class to every other row when striped is set"
             };
         },
     };
-    const wrapper = createWrapper(TestComponent);
+    const wrapper = mount(TestComponent);
     await wrapper.vm.$nextTick();
     const table = wrapper.find("table");
     const rows = table.findAll("tbody tr");
@@ -306,7 +285,7 @@ it("should not add table--hover class unless hover is set", async () => {
             ></f-interactive-table>
         `,
     };
-    const wrapper = createWrapper(TestComponent);
+    const wrapper = mount(TestComponent);
     await wrapper.vm.$nextTick();
     const table = wrapper.find("table");
     expect(table.classes()).not.toContain("table--hover");
@@ -324,7 +303,7 @@ it("should add table--hover class when hover is set", async () => {
             ></f-interactive-table>
         `,
     };
-    const wrapper = createWrapper(TestComponent);
+    const wrapper = mount(TestComponent);
     await wrapper.vm.$nextTick();
     const table = wrapper.find("table");
     expect(table.classes()).toContain("table--hover");
@@ -333,6 +312,12 @@ it("should add table--hover class when hover is set", async () => {
 describe("showActive flag", () => {
     const TestComponent = {
         components: { FInteractiveTable, FTableColumn },
+        props: {
+            showActive: {
+                type: Boolean,
+                required: true,
+            },
+        },
         template: /* HTML */ `
             <f-interactive-table
                 :rows="rows"
@@ -344,20 +329,18 @@ describe("showActive flag", () => {
         data() {
             return {
                 rows: [{ id: 1 }, { id: 2 }],
-                showActive: false,
             };
         },
     };
 
     it("should add table__row--active class when showActive is true and row is clicked", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper(TestComponent);
-        await wrapper.setProps({ showActive: true });
+        const wrapper = mount(TestComponent, {
+            props: { showActive: true },
+        });
         await wrapper.vm.$nextTick();
 
-        const table = wrapper.getComponent(
-            FInteractiveTable as ReturnType<typeof defineComponent>,
-        );
+        const table = wrapper.getComponent(FInteractiveTable);
         const row = table.findAll("tbody tr td")[0];
         await row.trigger("click");
         await wrapper.vm.$nextTick();
@@ -369,13 +352,12 @@ describe("showActive flag", () => {
 
     it("should not have table__row--active class when showActive is false and row is clicked", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper(TestComponent);
-        await wrapper.setProps({ showActive: false });
+        const wrapper = mount(TestComponent, {
+            props: { showActive: false },
+        });
         await wrapper.vm.$nextTick();
 
-        const table = wrapper.getComponent(
-            FInteractiveTable as ReturnType<typeof defineComponent>,
-        );
+        const table = wrapper.getComponent(FInteractiveTable);
         const row = table.findAll("tbody tr td")[0];
         await row.trigger("click");
         await wrapper.vm.$nextTick();
@@ -744,7 +726,7 @@ it("should call provided sort method when clicking columnheader that is registra
             };
         },
     };
-    const wrapper = createWrapper(TestComponent);
+    const wrapper = mount(TestComponent);
     registerSortableColumnsCallback!(["name"]);
     await wrapper.vm.$nextTick();
 

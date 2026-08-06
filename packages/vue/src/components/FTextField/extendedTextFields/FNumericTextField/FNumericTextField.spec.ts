@@ -1,50 +1,22 @@
 import "html-validate/vitest";
-import { defineComponent } from "vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { reactive } from "vue";
+import { config, mount, shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import { ValidationPlugin } from "../../../../plugins";
 import FNumericTextField from "./FNumericTextField.vue";
 
-const TestComponent = defineComponent({
-    name: "TestComponent",
-    components: {
-        FNumericTextField,
-    },
-    data() {
-        return {
-            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt */
-            myModel: "" as string | number,
-        };
-    },
-    template: "",
-});
-
-function createWrapper(
-    template: string,
-    myModel: string | number,
-): VueWrapper<InstanceType<typeof TestComponent>> {
-    return mount(TestComponent, {
-        template,
-        data() {
-            return {
-                myModel,
-            };
-        },
-        global: {
-            plugins: [ValidationPlugin],
-        },
-    });
-}
+config.global.plugins = [ValidationPlugin];
+config.global.stubs = { FLabel: false, FTextField: false };
 
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
         expect.assertions(1);
-        const markup = /* HTML */ `
-            <f-numeric-text-field id="myField" v-model="myModel">
-                My numeric field
-            </f-numeric-text-field>
-        `;
-        const wrapper = createWrapper(markup, "");
+        const wrapper = shallowMount(FNumericTextField, {
+            props: { id: "myField" },
+            slots: {
+                default: "My numeric field",
+            },
+        });
         expect(wrapper.element).toMatchSnapshot();
     });
 });
@@ -52,55 +24,65 @@ describe("snapshots", () => {
 describe("v-model", () => {
     it("should update model with number value", async () => {
         expect.assertions(1);
-        const markup = /* HTML */ `
-            <f-numeric-text-field
-                id="myField"
-                v-model="myModel"
-                v-validation.decimal
-            >
-                My numeric field
-            </f-numeric-text-field>
-        `;
-        const wrapper = createWrapper(markup, "");
+        const data = reactive<{ myModel: string | number }>({ myModel: "" });
+        const wrapper = mount({
+            components: { FNumericTextField },
+            template: /* HTML */ `
+                <f-numeric-text-field
+                    v-model="myModel"
+                    v-validation.decimal
+                ></f-numeric-text-field>
+            `,
+            data() {
+                return data;
+            },
+        });
 
         const input = wrapper.get("input");
         await input.setValue("1,23");
         await input.trigger("blur");
 
-        expect(wrapper.vm.$data.myModel).toBeCloseTo(1.23);
+        expect(data.myModel).toBeCloseTo(1.23);
     });
 
     it("should be able to handle zero value", async () => {
         expect.assertions(1);
-        const markup = /* HTML */ `
-            <f-numeric-text-field id="myField" v-model="myModel">
-                My numeric field
-            </f-numeric-text-field>
-        `;
-        const wrapper = createWrapper(markup, "");
+        const data = reactive<{ myModel: string | number }>({ myModel: "" });
+        const wrapper = mount({
+            components: { FNumericTextField },
+            template: /* HTML */ `
+                <f-numeric-text-field v-model="myModel"></f-numeric-text-field>
+            `,
+            data() {
+                return data;
+            },
+        });
 
         const input = wrapper.get("input");
         await input.setValue("0");
         await input.trigger("blur");
 
-        expect(wrapper.vm.$data.myModel).toBe(0);
+        expect(data.myModel).toBe(0);
     });
 });
 
 describe("format", () => {
     it("should format with decimals when having decimal prop", async () => {
         expect.assertions(2);
-        const markup = /* HTML */ `
-            <f-numeric-text-field
-                id="myField"
-                v-model="myModel"
-                :decimals="2"
-                v-validation.decimal
-            >
-                My numeric field
-            </f-numeric-text-field>
-        `;
-        const wrapper = createWrapper(markup, 3);
+        const data = reactive<{ myModel: string | number }>({ myModel: 3 });
+        const wrapper = mount({
+            components: { FNumericTextField },
+            template: /* HTML */ `
+                <f-numeric-text-field
+                    :decimals="2"
+                    v-model="myModel"
+                    v-validation.decimal
+                ></f-numeric-text-field>
+            `,
+            data() {
+                return data;
+            },
+        });
 
         const input = wrapper.get("input");
         const inputElement = input.element;

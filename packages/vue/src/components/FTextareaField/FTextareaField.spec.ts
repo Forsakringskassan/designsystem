@@ -4,64 +4,72 @@ import {
     type ValidatableHTMLElement,
     type ValidityEvent,
 } from "@fkui/logic";
-import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { describe, expect, it, vi } from "vitest";
 import FTextareaField from "./FTextareaField.vue";
 
-function createWrapper({ props = {}, slots = {}, attrs = {} } = {}): VueWrapper<
-    InstanceType<typeof FTextareaField>
-> {
-    return mount(FTextareaField, {
-        attrs: { ...attrs, id: "textarea-field" },
-        props: { ...props },
-        slots: { default: "Label", ...slots },
-        global: {
-            stubs: ["f-icon"],
-        },
-        attachTo: createPlaceholderInDocument(),
-    });
-}
-
 describe("snapshots", () => {
     it("should match snapshot with label and textarea", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
-
+        const wrapper = shallowMount(FTextareaField, {
+            props: { id: "textarea-field" },
+            slots: {
+                default: "Label",
+            },
+            global: {
+                stubs: { FLabel: false },
+            },
+        });
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, error message and textarea", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            slots: { "error-message": "ERRROR_MESSAGE" },
+        const wrapper = shallowMount(FTextareaField, {
+            props: { id: "textarea-field" },
+            slots: {
+                default: "Label",
+                "error-message": "ERRROR_MESSAGE",
+            },
+            global: {
+                stubs: { FLabel: false },
+            },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, tooltip, description, error message and textarea", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextareaField, {
+            props: { id: "textarea-field" },
             slots: {
+                default: "Label",
                 description: "DESCRIPTION",
                 tooltip: "TOOLTIP",
                 "error-message": "ERROR_MESSAGE",
             },
+            global: {
+                stubs: { FLabel: false },
+            },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with resize vertical", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextareaField, {
             props: {
+                id: "textarea-field",
                 resizable: true,
             },
+            slots: {
+                default: "Label",
+            },
+            global: {
+                stubs: { FLabel: false },
+            },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
@@ -75,8 +83,14 @@ describe("snapshots", () => {
         "should match snapshot when validityMode is $validityMode and isValid is $isValid",
         async ({ validityMode, isValid }) => {
             expect.assertions(1);
-            const wrapper = createWrapper({
-                attrs: { id: "elementId" },
+            const wrapper = shallowMount(FTextareaField, {
+                props: { id: "textarea-field" },
+                slots: {
+                    default: "Label",
+                },
+                global: {
+                    stubs: { FLabel: false },
+                },
             });
 
             const textareaWrapper = wrapper.get("textarea");
@@ -107,7 +121,7 @@ describe("snapshots", () => {
 describe("attributes", () => {
     it("should pass attributes", () => {
         expect.assertions(4);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextareaField, {
             attrs: {
                 required: true,
                 rows: 8,
@@ -129,7 +143,7 @@ describe("attributes", () => {
 describe("autoResize", () => {
     it("should use four rows by default", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextareaField, {
             props: {
                 autoResize: true,
             },
@@ -145,7 +159,7 @@ describe("autoResize", () => {
 
     it("should let rows override the autoResize default", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextareaField, {
             attrs: {
                 rows: 3,
             },
@@ -164,7 +178,7 @@ describe("autoResize", () => {
 
     it("should use auto resize class when autoResize is used with resizable", () => {
         expect.assertions(3);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextareaField, {
             props: {
                 autoResize: true,
                 resizable: true,
@@ -183,7 +197,7 @@ describe("autoResize", () => {
 
     it("should set max rows style when maxRows is used", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextareaField, {
             attrs: {
                 rows: 1,
             },
@@ -206,7 +220,7 @@ describe("autoResize", () => {
 
     it("should use rows as max rows when maxRows is lower", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextareaField, {
             attrs: {
                 rows: 6,
             },
@@ -225,7 +239,7 @@ describe("autoResize", () => {
 
     it("should use default rows as max rows when maxRows is lower than default rows and rows are missing", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextareaField, {
             props: {
                 autoResize: true,
                 maxRows: 2,
@@ -243,7 +257,7 @@ describe("autoResize", () => {
 describe("events", () => {
     it("should support v-model by emitting input event with value", async () => {
         expect.assertions(3);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextareaField, {
             props: { modelValue: "Bana" },
         });
         const textareaWrapper = wrapper.get("textarea");
@@ -263,7 +277,7 @@ describe("events", () => {
         const focus = vi.fn();
         const blur = vi.fn();
 
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextareaField, {
             attrs: {
                 onFocus: focus,
                 onBlur: blur,
@@ -279,8 +293,8 @@ describe("events", () => {
 
     it('should have ValidityMode INITIAL when "pending-validity" event is triggered', async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
-            attrs: { id: "elementId" },
+        const wrapper = shallowMount(FTextareaField, {
+            props: { id: "elementId" },
         });
 
         const textarea = wrapper.get("textarea");
@@ -317,11 +331,15 @@ describe("events", () => {
 
 it("should warn the user that the maximum string length limit is near", async () => {
     expect.assertions(1);
-    const wrapper = createWrapper({
+    const wrapper = shallowMount(FTextareaField, {
         props: {
+            id: "textarea-field",
             maxlength: 10,
             softLimit: 5,
             charactersLeftWarning: "Kvar: %charactersLeft%",
+        },
+        global: {
+            stubs: { FLabel: false },
         },
     });
     await wrapper.setProps({
@@ -337,7 +355,7 @@ it("should warn the user that the maximum string length limit is near", async ()
 describe("element should be possible to disable with prop disabled", () => {
     it("element should be disabled with prop", () => {
         expect.assertions(1);
-        const wrapper = mount(FTextareaField, {
+        const wrapper = shallowMount(FTextareaField, {
             propsData: { disabled: true },
         });
         const element = wrapper.get("textarea").element as HTMLTextAreaElement;
@@ -346,7 +364,7 @@ describe("element should be possible to disable with prop disabled", () => {
 
     it("element should be enabled without prop", () => {
         expect.assertions(1);
-        const wrapper = mount(FTextareaField, {
+        const wrapper = shallowMount(FTextareaField, {
             propsData: { disabled: false },
         });
         const element = wrapper.get("textarea").element as HTMLTextAreaElement;

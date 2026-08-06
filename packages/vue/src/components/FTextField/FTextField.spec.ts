@@ -6,59 +6,47 @@ import {
     type ValidityEvent,
     ValidationService,
 } from "@fkui/logic";
-import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { config, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import FTextField from "./FTextField.vue";
 
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-    options = {},
-} = {}): VueWrapper<InstanceType<typeof FTextField>> {
-    return mount(FTextField, {
-        attrs: { ...attrs },
-        props: { ...props },
-        slots: { default: "Label", ...slots },
-        attachTo: createPlaceholderInDocument(),
-        ...options,
-        global: {
-            stubs: ["f-icon"],
-            plugins: [ValidationPlugin],
-        },
-    });
-}
+config.global.plugins = [ValidationPlugin];
+config.global.stubs = { FLabel: false };
 
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
-
+        const wrapper = shallowMount(FTextField, {
+            slots: {
+                default: "Label",
+            },
+        });
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, error message and input", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            slots: { "error-message": "ERROR_MESSAGE" },
+        const wrapper = shallowMount(FTextField, {
+            slots: {
+                default: "Label",
+                "error-message": "ERROR_MESSAGE",
+            },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, tooltip, description, error message and input", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextField, {
             slots: {
+                default: "Label",
                 description: "DESCRIPTION",
                 tooltip: "TOOLTIP",
                 "error-message": "ERROR_MESSAGE",
             },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
@@ -72,8 +60,11 @@ describe("snapshots", () => {
         "should match snapshot when validityMode is $validityMode and isValid is $isValid",
         async ({ validityMode, isValid }) => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FTextField, {
                 attrs: { id: "elementId" },
+                slots: {
+                    default: "Label",
+                },
             });
 
             const input = wrapper.get("input");
@@ -107,7 +98,7 @@ describe("snapshots", () => {
         "should match snapshot when label and description slots are $slotsSpecified",
         async ({ slotsSpecified }) => {
             expect.assertions(1);
-            const wrapper = mount(FTextField, {
+            const wrapper = shallowMount(FTextField, {
                 data() {
                     return {
                         defaultText: "My defaultText",
@@ -118,10 +109,6 @@ describe("snapshots", () => {
                         discreteDescriptionScreenReaderText:
                             "My discreteDescriptionScreenReaderText",
                     };
-                },
-                attachTo: createPlaceholderInDocument(),
-                global: {
-                    stubs: ["f-icon"],
                 },
                 slots:
                     slotsSpecified === "specified"
@@ -144,21 +131,20 @@ describe("snapshots", () => {
 describe("attributes", () => {
     it("should pass attributes", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextField, {
             attrs: {
                 disabled: true,
                 required: true,
             },
         });
         const input = wrapper.get("input");
-
         expect(input.attributes("disabled")).toBeDefined();
         expect(input.attributes("required")).toBeDefined();
     });
 
     it("should set type", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextField, {
             props: {
                 type: "email",
             },
@@ -169,7 +155,7 @@ describe("attributes", () => {
 
     it("should set type to text as default", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FTextField);
         const input = wrapper.get("input");
         expect(input.attributes("type")).toBe("text");
     });
@@ -177,13 +163,13 @@ describe("attributes", () => {
     describe("inline", () => {
         it("should not set class by default", () => {
             expect.assertions(1);
-            const wrapper = createWrapper();
+            const wrapper = shallowMount(FTextField);
             expect(wrapper.classes()).not.toContain("text-field--inline");
         });
 
         it("should set class when enabled", () => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FTextField, {
                 props: {
                     inline: true,
                 },
@@ -196,7 +182,7 @@ describe("attributes", () => {
 describe("events", () => {
     it("should emit model update event when no validation is used", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FTextField);
         const input = wrapper.get("input");
         await input.setValue("foo");
         await input.trigger("change");
@@ -205,7 +191,7 @@ describe("events", () => {
 
     it("should emit change event when no validation is used", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FTextField);
         const input = wrapper.get("input");
         await input.setValue("foo");
         await input.trigger("change");
@@ -218,7 +204,7 @@ describe("events", () => {
         const change = vi.fn();
         const blur = vi.fn();
 
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextField, {
             attrs: {
                 onFocus: focus,
                 onChange: change,
@@ -237,7 +223,7 @@ describe("events", () => {
 
     it('should have ValidityMode INITIAL when "pending-validity" event is triggered', async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTextField, {
             attrs: { id: "elementId" },
         });
 
@@ -276,9 +262,7 @@ describe("events", () => {
 describe("validation", () => {
     it("should display correct error message when multiple validators", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
-            options: { sync: false },
-        });
+        const wrapper = shallowMount(FTextField);
         await flushPromises();
 
         const input = wrapper.get("input");
@@ -319,7 +303,7 @@ describe("formatting and parsing combined with validation", () => {
         'should $expected update:modelValue event when valid="$valid" and nativeEvent="$nativeEvent"',
         async ({ valid, nativeEvent, expected }) => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FTextField, {
                 attrs: {
                     id: "elementId",
                     "data-validation": true,
@@ -382,7 +366,7 @@ describe("formatting and parsing combined with validation", () => {
             const parserMock = (viewValue: string): string =>
                 viewValue.toLowerCase();
 
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FTextField, {
                 props: {
                     formatter: formatter === "yes" ? formatterMock : undefined,
                     parser: parser === "yes" ? parserMock : undefined,
@@ -447,7 +431,7 @@ describe("formatting and parsing combined with validation", () => {
             const formatterMock = (): string => formatted;
             const parserMock = (): number | undefined => parsed;
 
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FTextField, {
                 props: {
                     formatter: formatterMock,
                     parser: parserMock,
@@ -499,7 +483,7 @@ describe("set v-model programmatic", () => {
         "should set viewValue to '$viewValue' when setting v-model to '$modelValue'",
         async ({ modelValue, viewValue }) => {
             expect.assertions(4);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FTextField, {
                 attrs: { id: "elementId" },
                 props: {
                     modelValue: "original input",
@@ -565,7 +549,7 @@ describe("set v-model programmatic", () => {
                 ? () => undefined
                 : (viewValue: string): string => viewValue.toLowerCase();
 
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FTextField, {
                 props: {
                     formatter: formatter ? formatterMock : undefined,
                     parser: parser ? parserMock : undefined,

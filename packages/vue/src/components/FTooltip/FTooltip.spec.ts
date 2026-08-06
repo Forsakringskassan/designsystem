@@ -1,26 +1,10 @@
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import "html-validate/vitest";
 import FTooltip from "./FTooltip.vue";
 
 const tooltipButtonClass = ".tooltip__button";
 const headerClass = ".tooltip__header";
-
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-} = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FTooltip, {
-        attrs: { ...attrs },
-        props: { screenReaderText: "Lorem ipsum", ...props },
-        slots: { ...slots },
-        global: {
-            stubs: ["f-icon"],
-        },
-    });
-}
 
 it("should set aria-expanded on tooltip button", () => {
     expect.assertions(2);
@@ -51,12 +35,13 @@ it("should set expanded class on tooltip container", () => {
 describe("slots", () => {
     it("should render header if header slot is used", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            slots: {
-                header: `Tooltip`,
-            },
+        const wrapper = mount(FTooltip, {
             props: {
                 headerTag: "h3",
+                screenReaderText: "",
+            },
+            slots: {
+                header: `Tooltip`,
             },
         });
         await wrapper.get(tooltipButtonClass).trigger("click");
@@ -67,7 +52,10 @@ describe("slots", () => {
     it("should throw error if has slot for header but no header-tag", () => {
         expect.assertions(1);
         expect(() => {
-            createWrapper({
+            mount(FTooltip, {
+                props: {
+                    screenReaderText: "",
+                },
                 slots: {
                     header: `Tooltip`,
                 },
@@ -79,8 +67,11 @@ describe("slots", () => {
 
     it("should not render header if header slot isn't used", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
-
+        const wrapper = mount(FTooltip, {
+            props: {
+                screenReaderText: "",
+            },
+        });
         await wrapper.get(tooltipButtonClass).trigger("click");
         const header = wrapper.find(headerClass);
         expect(header.exists()).toBeFalsy();

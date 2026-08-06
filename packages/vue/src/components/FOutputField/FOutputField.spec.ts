@@ -1,52 +1,46 @@
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import FOutputField from "./FOutputField.vue";
-
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-} = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FOutputField, {
-        attrs: { ...attrs },
-        props: { for: "", ...props },
-        slots: { default: "1234", ...slots },
-    });
-}
 
 describe("snapshots", () => {
     it("should match snapshot with output and for attribute", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = mount(FOutputField, {
             props: {
                 for: "inputid",
             },
+            slots: {
+                default: "1234",
+            },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with output and two for attributes", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = mount(FOutputField, {
             props: {
                 for: "inputid inputid2",
             },
+            slots: {
+                default: "1234",
+            },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, tooltip, output and for attribute", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            slots: { label: "Summa", tooltip: "TOOLTIP" },
+        const wrapper = mount(FOutputField, {
             props: {
                 for: "inputid",
             },
+            slots: {
+                default: "1234",
+                label: "Summa",
+                tooltip: "TOOLTIP",
+            },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 });
@@ -126,7 +120,7 @@ describe("props", () => {
 describe("attributes", () => {
     it("should pass attributes", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = mount(FOutputField, {
             attrs: {
                 for: "my-awesome-id",
                 foo: "bar",

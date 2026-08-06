@@ -1,45 +1,35 @@
 import { defineComponent } from "vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { mount, shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import FIcon from "./FIcon.vue";
 import "html-validate/vitest";
 
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-} = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FIcon, {
-        attrs: { ...attrs },
-        props: { name: "my-icon", ...props },
-        slots: { ...slots },
-    });
-}
-
 describe("snapshots", () => {
     it("should match snapshot and use prop name to set icon", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
-
+        const wrapper = shallowMount(FIcon, {
+            props: { name: "my-icon" },
+        });
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot when passing content to default slot", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FIcon, {
+            props: { name: "my-icon" },
             slots: {
                 default: /* HTML */ ` <title>FIcon test information</title> `,
             },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 });
 
 it("should set css classes", () => {
     expect.assertions(1);
-    const wrapper = createWrapper();
+    const wrapper = shallowMount(FIcon, {
+        props: { name: "my-icon" },
+    });
     /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
     const classes = Array.from(wrapper.element.classList);
     expect(classes).toEqual(["icon", "f-icon-my-icon"]);
@@ -54,8 +44,9 @@ describe("props", () => {
                 ${"vertical"}   | ${"icon--flip-vertical"}
             `("$value", ({ value, expected }) => {
                 expect.assertions(1);
-                const wrapper = createWrapper({
+                const wrapper = shallowMount(FIcon, {
                     props: {
+                        name: "my-icon",
                         flip: value,
                     },
                 });
@@ -100,8 +91,9 @@ describe("props", () => {
                 ${"270"} | ${"icon--rotate-270"}
             `("$value", ({ value, expected }) => {
                 expect.assertions(1);
-                const wrapper = createWrapper({
+                const wrapper = shallowMount(FIcon, {
                     props: {
+                        name: "my-icon",
                         rotate: value,
                     },
                 });
@@ -177,14 +169,17 @@ describe("stacking", () => {
 describe("aria-hidden", () => {
     it("should be true by default", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FIcon, {
+            props: { name: "my-icon" },
+        });
         const icon = wrapper.get(".icon");
         expect(icon.attributes("aria-hidden")).toBe("true");
     });
 
     it("should be undefined if slot is used", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FIcon, {
+            props: { name: "my-icon" },
             slots: {
                 default: /* HTML */ ` <title>FIcon description</title> `,
             },

@@ -13,27 +13,8 @@ import { FIcon } from "../FIcon";
 import FFieldset from "./FFieldset.vue";
 import { useFieldset } from "./use-fieldset";
 
-const defaultSlots = { label: "Label", default: "Content" };
-
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-    stubs = [],
-} = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FFieldset, {
-        attrs: { ...attrs },
-        props: { id: "someId", name: "someName", ...props },
-        slots: { ...slots },
-        global: {
-            stubs: ["FIcon", ...stubs],
-        },
-    });
-}
-
 function dispatchValidityEvent(
-    wrapper: VueWrapper,
+    wrapper: VueWrapper<InstanceType<typeof FFieldset>>,
     isValid: boolean,
     validityMode: ValidityMode,
     target?: ValidatableHTMLElement,
@@ -64,34 +45,45 @@ function dispatchValidityEvent(
 describe("snapshots", () => {
     it("should match snapshot with generated id attribute", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({ props: { id: undefined } });
+        const wrapper = shallowMount(FFieldset);
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label and content", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({ slots: defaultSlots });
+        const wrapper = shallowMount(FFieldset, {
+            props: { id: "someId" },
+            slots: {
+                label: "Label",
+                default: "Content",
+            },
+        });
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, content and error message", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFieldset, {
+            props: { id: "someId" },
             slots: {
                 "error-message": "Something went wrong.",
-                ...defaultSlots,
+                label: "Label",
+                default: "Content",
             },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, content and tooltip", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            slots: { tooltip: "Tooltip", ...defaultSlots },
+        const wrapper = shallowMount(FFieldset, {
+            props: { id: "someId" },
+            slots: {
+                tooltip: "Tooltip",
+                label: "Label",
+                default: "Content",
+            },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
@@ -111,9 +103,9 @@ describe("snapshots", () => {
             isValid: boolean;
         }) => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FFieldset, {
+                props: { id: "someId" },
                 slots: { label: "Label" },
-                attrs: { id: "elementId" },
             });
 
             dispatchValidityEvent(
@@ -124,6 +116,7 @@ describe("snapshots", () => {
             );
 
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.element).toMatchSnapshot();
@@ -139,7 +132,7 @@ it("should provide injection for label (legend) text", () => {
             return useFieldset();
         },
     });
-    const wrapper = createWrapper({
+    const wrapper = mount(FFieldset, {
         slots: {
             label: "Label text",
             default: ChildComponent,
@@ -151,7 +144,7 @@ it("should provide injection for label (legend) text", () => {
 describe("attributes", () => {
     it("should pass attributes", () => {
         expect.assertions(3);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFieldset, {
             attrs: {
                 disabled: true,
                 required: true,
@@ -185,9 +178,8 @@ describe("attributes", () => {
 describe("should display error icon when error is present", () => {
     it("without tooltip", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFieldset, {
             slots: { label: "Label" },
-            attrs: { id: "elementId" },
         });
         dispatchValidityEvent(
             wrapper,
@@ -203,9 +195,8 @@ describe("should display error icon when error is present", () => {
 
     it("with tooltip", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFieldset, {
             slots: { label: "Label", tooltip: "Tooltip" },
-            attrs: { id: "elementId" },
         });
         dispatchValidityEvent(
             wrapper,
@@ -224,7 +215,7 @@ describe("events", () => {
     it("should pass listeners", async () => {
         expect.assertions(1);
         const foobar = vi.fn();
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFieldset, {
             attrs: { onFoobar: foobar },
         });
         const element = wrapper.get("fieldset");
@@ -236,9 +227,8 @@ describe("events", () => {
 describe("onValidity should only handle events from itself", () => {
     it("handles events if event.target is itself", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFieldset, {
             slots: { label: "Label" },
-            attrs: { id: "elementId" },
         });
         const onComponentValidityListener = vi.fn();
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
@@ -255,6 +245,7 @@ describe("onValidity should only handle events from itself", () => {
         );
 
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
         wrapper.vm.$forceUpdate();
 
         expect(onComponentValidityListener).toHaveBeenCalled();
@@ -277,9 +268,8 @@ describe("onValidity should only handle events from itself", () => {
             inputType: string | undefined;
         }) => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FFieldset, {
                 slots: { label: "Label" },
-                attrs: { id: "elementId" },
             });
             const onComponentValidityListener = vi.fn();
             /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
@@ -307,9 +297,8 @@ describe("onValidity should only handle events from itself", () => {
         "should not dispatch component-validity event if input $inputType belongs to nestled fieldset",
         ({ inputType }: { inputType: string }) => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FFieldset, {
                 slots: { label: "Label" },
-                attrs: { id: "elementId" },
             });
             const onComponentValidityListener = vi.fn();
             /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
@@ -337,9 +326,9 @@ describe("onValidity should only handle events from itself", () => {
 describe("onValidity should set focusElementId in ComponentValidityEvent", () => {
     it("should set focusElementId to own id if having no child input element", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
-            slots: { label: "Label" },
+        const wrapper = shallowMount(FFieldset, {
             props: { id: "elementId" },
+            slots: { label: "Label" },
         });
         const onComponentValidityListener = vi.fn();
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
@@ -356,6 +345,7 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
         );
 
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
         wrapper.vm.$forceUpdate();
 
         const componentValidityEvent = onComponentValidityListener.mock
@@ -366,9 +356,8 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
 
     it("should set focusElementId to first child input element", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFieldset, {
             slots: { label: "Label" },
-            props: { id: "elementId" },
         });
         const onComponentValidityListener = vi.fn();
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
@@ -395,6 +384,7 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
         );
 
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
         wrapper.vm.$forceUpdate();
 
         const componentValidityEvent = onComponentValidityListener.mock
@@ -674,61 +664,61 @@ describe("html-validate", () => {
             `);
         });
     });
+});
 
-    describe("screen reader text", () => {
-        it("one child should only have checkbox checked screen reader text", async () => {
-            expect.assertions(1);
-            const TestComponent = defineComponent({
-                components: { FFieldset },
-                template: /* HTML */ `
-                    <f-fieldset>
-                        <input type="checkbox" />
-                    </f-fieldset>
-                `,
-            });
-            const wrapper = mount(TestComponent);
-            await wrapper.vm.$nextTick();
-            await wrapper.vm.$nextTick();
-            await wrapper.vm.$nextTick();
-            const element = wrapper.get("[data-test='checked-boxes']");
-            expect(element.text()).toBe("Kryssruta ej kryssad");
+describe("screen reader text", () => {
+    it("one child should only have checkbox checked screen reader text", async () => {
+        expect.assertions(1);
+        const TestComponent = defineComponent({
+            components: { FFieldset },
+            template: /* HTML */ `
+                <f-fieldset>
+                    <input type="checkbox" />
+                </f-fieldset>
+            `,
         });
+        const wrapper = mount(TestComponent);
+        await wrapper.vm.$nextTick();
+        await wrapper.vm.$nextTick();
+        await wrapper.vm.$nextTick();
+        const element = wrapper.get("[data-test='checked-boxes']");
+        expect(element.text()).toBe("Kryssruta ej kryssad");
+    });
 
-        it("other than one child should have numbers of and checked children screen reader text", async () => {
-            expect.assertions(2);
-            const TestComponent = defineComponent({
-                components: { FFieldset },
-                template: /* HTML */ `
-                    <f-fieldset>
-                        <input type="checkbox" />
-                        <input type="checkbox" />
-                    </f-fieldset>
-                `,
-            });
-            const wrapper = mount(TestComponent);
-            await wrapper.vm.$nextTick();
-            await wrapper.vm.$nextTick();
-            await wrapper.vm.$nextTick();
-            const content = wrapper.get("[data-test='checked-boxes']");
-            const label = wrapper.get(".sr-only");
-            expect(content.text()).toBe("0 kryssad av 2");
-            expect(label.text()).toBe("Grupp med 2 kryssrutor");
+    it("other than one child should have numbers of and checked children screen reader text", async () => {
+        expect.assertions(2);
+        const TestComponent = defineComponent({
+            components: { FFieldset },
+            template: /* HTML */ `
+                <f-fieldset>
+                    <input type="checkbox" />
+                    <input type="checkbox" />
+                </f-fieldset>
+            `,
         });
+        const wrapper = mount(TestComponent);
+        await wrapper.vm.$nextTick();
+        await wrapper.vm.$nextTick();
+        await wrapper.vm.$nextTick();
+        const content = wrapper.get("[data-test='checked-boxes']");
+        const label = wrapper.get(".sr-only");
+        expect(content.text()).toBe("0 kryssad av 2");
+        expect(label.text()).toBe("Grupp med 2 kryssrutor");
+    });
 
-        it("no child should have no screen reader text", async () => {
-            expect.assertions(2);
-            const TestComponent = defineComponent({
-                components: { FFieldset },
-                template: /* HTML */ ` <f-fieldset> </f-fieldset> `,
-            });
-            const wrapper = mount(TestComponent);
-            await wrapper.vm.$nextTick();
-            await wrapper.vm.$nextTick();
-            await wrapper.vm.$nextTick();
-            const content = wrapper.find("[data-test='checked-boxes']");
-            const label = wrapper.find(".sr-only");
-            expect(content.exists()).toBe(false);
-            expect(label.exists()).toBe(false);
+    it("no child should have no screen reader text", async () => {
+        expect.assertions(2);
+        const TestComponent = defineComponent({
+            components: { FFieldset },
+            template: /* HTML */ ` <f-fieldset> </f-fieldset> `,
         });
+        const wrapper = mount(TestComponent);
+        await wrapper.vm.$nextTick();
+        await wrapper.vm.$nextTick();
+        await wrapper.vm.$nextTick();
+        const content = wrapper.find("[data-test='checked-boxes']");
+        const label = wrapper.find(".sr-only");
+        expect(content.exists()).toBe(false);
+        expect(label.exists()).toBe(false);
     });
 });

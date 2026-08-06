@@ -1,30 +1,20 @@
-import { type VueWrapper, shallowMount } from "@vue/test-utils";
+import { config, shallowMount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import { TranslationPlugin } from "../../plugins";
 import FFileItem from "./FFileItem.vue";
 
-function createWrapper({ slots = {}, attrs = {}, props = {} }): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return shallowMount(FFileItem, {
-        slots,
-        attrs: { ...attrs },
-        props: {
-            id: "123",
-            fileName: "foo.bar",
-            mimeType: "application/pdf",
-            originalMimeType: "application/pdf",
-            ...props,
-        },
-        global: {
-            plugins: [TranslationPlugin],
-        },
-    });
-}
+config.global.plugins = [TranslationPlugin];
 
 describe("FileItem", () => {
     it("should match snapshot with slots", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFileItem, {
+            props: {
+                id: "123",
+                fileName: "foo.bar",
+                mimeType: "application/pdf",
+                originalMimeType: "application/pdf",
+            },
             slots: {
                 row: "file item goes here",
                 default: "progress is 80%",
@@ -35,7 +25,13 @@ describe("FileItem", () => {
 
     it("should pass attributes", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFileItem, {
+            props: {
+                id: "123",
+                fileName: "foo.bar",
+                mimeType: "application/pdf",
+                originalMimeType: "application/pdf",
+            },
             attrs: {
                 disabled: "disabled",
             },
@@ -48,7 +44,8 @@ describe("FileItem", () => {
     it("should pass listeners", async () => {
         expect.assertions(1);
         const foobar = vi.fn();
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFileItem, {
+            props: { fileName: "foo.bar" },
             attrs: { onFoobar: foobar },
         });
         const element = wrapper.get(".file-item__file-open");
@@ -58,8 +55,12 @@ describe("FileItem", () => {
 
     it("should show info when server changed type", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            props: { originalMimeType: "image/png" },
+        const wrapper = shallowMount(FFileItem, {
+            props: {
+                fileName: "foo.bar",
+                mimeType: "application/pdf",
+                originalMimeType: "image/png",
+            },
         });
         const element = wrapper.get(".file-item__change-info");
         expect(element.text()).toContain("(png ändrad till pdf)");
@@ -67,8 +68,10 @@ describe("FileItem", () => {
 
     it("should show custom info when server changed type", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FFileItem, {
             props: {
+                fileName: "foo.bar",
+                mimeType: "application/pdf",
                 originalMimeType: "image/png",
                 changedMimeTypeText: "(%before% changed to %after%)",
             },
@@ -79,7 +82,13 @@ describe("FileItem", () => {
 
     it("should match snapshots without slots", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({});
+        const wrapper = shallowMount(FFileItem, {
+            props: {
+                id: "123",
+                fileName: "foo.bar",
+                mimeType: "application/pdf",
+            },
+        });
         expect(wrapper.element).toMatchSnapshot();
     });
 });
@@ -104,8 +113,9 @@ it.each`
     ${null}                                                                      | ${"file"}
 `("should have correct icon for $mimeType", ({ mimeType, expected }) => {
     expect.assertions(1);
-    const wrapper = createWrapper({
+    const wrapper = shallowMount(FFileItem, {
         props: {
+            fileName: "foo.bar",
             mimeType,
         },
     });

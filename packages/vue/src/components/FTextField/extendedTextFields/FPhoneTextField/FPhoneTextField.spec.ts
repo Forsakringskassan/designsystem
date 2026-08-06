@@ -1,5 +1,4 @@
 import "html-validate/vitest";
-import { defineComponent } from "vue";
 import {
     type PendingValidityEvent,
     type ValidatableHTMLElement,
@@ -7,52 +6,33 @@ import {
     type ValidityEvent,
     ValidationService,
 } from "@fkui/logic";
-import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { config, mount, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../../../plugins";
 import FPhoneTextField from "./FPhoneTextField.vue";
 
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-    options = {},
-} = {}): VueWrapper<InstanceType<typeof FPhoneTextField>> {
-    return mount(FPhoneTextField, {
-        attrs: { ...attrs },
-        props: { maxLength: 80, ...props },
-        slots: { ...slots },
-        attachTo: createPlaceholderInDocument(),
-        ...options,
-        global: {
-            stubs: ["f-icon"],
-            plugins: [ValidationPlugin],
-        },
-    });
-}
+config.global.plugins = [ValidationPlugin];
+config.global.stubs = { FLabel: false, FTextField: false };
 
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
-
+        const wrapper = shallowMount(FPhoneTextField);
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, error message and input", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FPhoneTextField, {
             slots: { "error-message": "ERROR_MESSAGE" },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, tooltip, description, error message and input", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FPhoneTextField, {
             slots: {
                 description: "DESCRIPTION",
                 tooltip: "TOOLTIP",
@@ -73,7 +53,7 @@ describe("snapshots", () => {
         "should match snapshot when validityMode is $validityMode and isValid is $isValid",
         async ({ validityMode, isValid }) => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FPhoneTextField, {
                 attrs: { id: "elementId" },
             });
 
@@ -104,7 +84,7 @@ describe("snapshots", () => {
 describe("attributes", () => {
     it("should pass attributes", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FPhoneTextField, {
             attrs: {
                 disabled: true,
                 required: true,
@@ -118,11 +98,8 @@ describe("attributes", () => {
 
     it("should set id on input element", () => {
         expect.assertions(1);
-        const wrapper = mount({
-            components: { FPhoneTextField },
-            template: /* HTML */ `
-                <f-phone-text-field id="foobar"> </f-phone-text-field>
-            `,
+        const wrapper = shallowMount(FPhoneTextField, {
+            props: { id: "foobar" },
         });
         const input = wrapper.get("input");
         expect(input.attributes("id")).toBe("foobar");
@@ -130,12 +107,8 @@ describe("attributes", () => {
 
     it("should set id on first input element when using extended validation", () => {
         expect.assertions(2);
-        const wrapper = mount({
-            components: { FPhoneTextField },
-            template: /* HTML */ `
-                <f-phone-text-field id="foobar" extended-validation>
-                </f-phone-text-field>
-            `,
+        const wrapper = shallowMount(FPhoneTextField, {
+            props: { id: "foobar", extendedValidation: true },
         });
         const inputs = wrapper.findAll("input");
         expect(inputs[0].attributes("id")).toBe("foobar");
@@ -144,7 +117,7 @@ describe("attributes", () => {
 
     it("should set type to tel as default", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FPhoneTextField);
         const input = wrapper.get("input");
         expect(input.attributes("type")).toBe("tel");
     });
@@ -153,7 +126,7 @@ describe("attributes", () => {
 describe("events", () => {
     it("should support v-model", async () => {
         expect.assertions(3);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FPhoneTextField, {
             props: { modelValue: "888" },
         });
         const input = wrapper.get("input");
@@ -174,7 +147,7 @@ describe("events", () => {
         const focus = vi.fn();
         const blur = vi.fn();
 
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FPhoneTextField, {
             attrs: {
                 onFocus: focus,
                 onBlur: blur,
@@ -195,7 +168,7 @@ describe("events", () => {
 
     it('should have ValidityMode INITIAL when "pending-validity" event is triggered', async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FPhoneTextField, {
             attrs: { id: "elementId" },
         });
 
@@ -234,7 +207,7 @@ describe("events", () => {
 describe("validation", () => {
     it("should display correct error message when multiple validators", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper({ options: { sync: false } });
+        const wrapper = shallowMount(FPhoneTextField);
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         ValidationService.setSubmitted(wrapper.element);
         await flushPromises();
@@ -272,26 +245,15 @@ describe("validation", () => {
         ({ required }) => {
             expect.assertions(1);
             const validation = required ? "v-validation.required" : "";
-            const wrapper = mount(
-                defineComponent({
-                    name: "TestComponent",
-                    components: {
-                        FPhoneTextField,
-                    },
-                    template: /* HTML */ `
-                        <f-phone-text-field
-                            ${validation}
-                            extendedValidation
-                        ></f-phone-text-field>
-                    `,
-                }),
-                {
-                    attachTo: createPlaceholderInDocument(),
-                    global: {
-                        plugins: [ValidationPlugin],
-                    },
-                },
-            );
+            const wrapper = mount({
+                components: { FPhoneTextField },
+                template: /* HTML */ `
+                    <f-phone-text-field
+                        ${validation}
+                        extendedValidation
+                    ></f-phone-text-field>
+                `,
+            });
 
             const input = wrapper.findAll("input")[1];
             const expectedValue = required ? "" : undefined;
@@ -302,7 +264,7 @@ describe("validation", () => {
 
 it("should be able to set custom label at default and extended slot", () => {
     expect.assertions(2);
-    const wrapper = createWrapper({
+    const wrapper = shallowMount(FPhoneTextField, {
         props: {
             extendedValidation: true,
         },

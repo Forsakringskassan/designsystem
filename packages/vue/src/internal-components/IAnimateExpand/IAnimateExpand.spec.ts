@@ -1,5 +1,5 @@
 import "html-validate/vitest";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import IAnimateExpand from "./IAnimateExpand.vue";
@@ -13,16 +13,6 @@ Object.assign(Element.prototype, {
 
 const ANIMATION_DURATION = 501;
 
-function createWrapper({ props = {} } = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(IAnimateExpand, {
-        props,
-        slots: {
-            default: "EXPANDED_CONTENT",
-        },
-    });
-}
-
 beforeEach(() => {
     vi.useFakeTimers();
 });
@@ -34,16 +24,17 @@ afterEach(() => {
 
 describe("props", () => {
     describe("expanded", () => {
-        it("should match snapshot being collapsed when expanded prop set to false", async () => {
+        it("should match snapshot being collapsed when expanded prop set to false", () => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(IAnimateExpand, {
                 props: {
                     expanded: false,
                 },
+                slots: {
+                    default: "EXPANDED_CONTENT",
+                },
             });
             vi.runAllTimers();
-            await wrapper.vm.$nextTick();
-
             expect(wrapper.element).toMatchInlineSnapshot(`
                 <div
                   class="animate-expand animate-expand--opacity"
@@ -54,12 +45,14 @@ describe("props", () => {
             `);
         });
 
-        it("should match snapshot containing the default slot and be expanded (no css or style) when expanded prop defaults to true", async () => {
+        it("should match snapshot containing the default slot and be expanded (no css or style) when expanded prop defaults to true", () => {
             expect.assertions(1);
-            const wrapper = createWrapper({});
+            const wrapper = shallowMount(IAnimateExpand, {
+                slots: {
+                    default: "EXPANDED_CONTENT",
+                },
+            });
             vi.runAllTimers();
-            await wrapper.vm.$nextTick();
-
             expect(wrapper.element).toMatchInlineSnapshot(`
               <div
                 class=""
@@ -80,7 +73,7 @@ describe("props", () => {
     describe("animate", () => {
         it("should set class animate-expand--expanded and set height to the content height during the opening animation phase and ending with clearing height and css-classes", async () => {
             expect.assertions(5);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(IAnimateExpand, {
                 props: {
                     expanded: false,
                 },
@@ -97,6 +90,7 @@ describe("props", () => {
             expect(wrapperElement.style.height).toMatch("200px");
 
             vi.advanceTimersByTime(ANIMATION_DURATION);
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
             await wrapper.vm.$nextTick();
 
             expect(wrapperElement.classList).not.toContain("animate-expand");
@@ -108,7 +102,7 @@ describe("props", () => {
 
         it("should not set class animate-expand--expanded when prop animate is set to false", async () => {
             expect.assertions(5);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(IAnimateExpand, {
                 props: {
                     expanded: false,
                     animate: false,
@@ -126,6 +120,7 @@ describe("props", () => {
             expect(wrapperElement.style.height).toMatch("200px");
 
             vi.advanceTimersByTime(ANIMATION_DURATION);
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
             await wrapper.vm.$nextTick();
 
             expect(wrapper.element.classList).not.toContain(
@@ -139,7 +134,7 @@ describe("props", () => {
     describe("opacity", () => {
         it("should have opacity class as default", async () => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(IAnimateExpand, {
                 props: {
                     expanded: false,
                 },
@@ -147,6 +142,7 @@ describe("props", () => {
 
             vi.advanceTimersByTime(ANIMATION_DURATION);
             vi.runAllTimers();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
             await wrapper.vm.$nextTick();
 
             expect(wrapper.element.classList).toContain(
@@ -156,7 +152,7 @@ describe("props", () => {
 
         it("should not have opacity class when opacity is set to false", async () => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(IAnimateExpand, {
                 props: {
                     expanded: false,
                     opacity: false,
@@ -164,6 +160,7 @@ describe("props", () => {
             });
 
             vi.runAllTimers();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
             await wrapper.vm.$nextTick();
 
             expect(wrapper.element.classList).not.toContain(
@@ -175,27 +172,35 @@ describe("props", () => {
     describe("useVshow", () => {
         it("should use v-if as default, i.e. not containing content in DOM", async () => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(IAnimateExpand, {
                 props: {
                     expanded: false,
+                },
+                slots: {
+                    default: "EXPANDED_CONTENT",
                 },
             });
 
             vi.runAllTimers();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
             await wrapper.vm.$nextTick();
             expect(wrapper.element.innerHTML).not.toContain("EXPANDED_CONTENT");
         });
 
         it("should use v-show when prop useVShow is true, i.e. containing content in DOM", async () => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(IAnimateExpand, {
                 props: {
                     expanded: false,
                     useVShow: true,
                 },
+                slots: {
+                    default: "EXPANDED_CONTENT",
+                },
             });
 
             vi.runAllTimers();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
             await wrapper.vm.$nextTick();
             expect(wrapper.element.innerHTML).toContain("EXPANDED_CONTENT");
         });
@@ -216,7 +221,7 @@ describe("callbacks", () => {
             const beforeAnimateCallback = vi.fn();
             const afterAnimateCallback = vi.fn();
 
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(IAnimateExpand, {
                 props: {
                     expanded: !open,
                     animate: false,
@@ -239,6 +244,7 @@ describe("callbacks", () => {
 
             expect(afterAnimateCallback).not.toHaveBeenCalled();
             // Wait for component to be expanded in DOM
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
             await wrapper.vm.$nextTick();
             // eslint-disable-next-line vitest/no-conditional-in-test -- technical debt, Vitest migration
             if (animation) {
@@ -309,7 +315,7 @@ it("should only call afterAnimation once when cancel animation", async () => {
     const beforeAnimateCallback = vi.fn();
     const afterAnimateCallback = vi.fn();
 
-    const wrapper = createWrapper({
+    const wrapper = shallowMount(IAnimateExpand, {
         props: {
             expanded: false,
             animate: false,
@@ -339,6 +345,7 @@ it("should only call afterAnimation once when cancel animation", async () => {
 
     expect(beforeAnimateCallback).toHaveBeenCalledTimes(2);
     // Wait for component to complete animation
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
     await wrapper.vm.$nextTick();
     vi.advanceTimersByTime(500);
     expect(afterAnimateCallback).toHaveBeenCalledTimes(1);

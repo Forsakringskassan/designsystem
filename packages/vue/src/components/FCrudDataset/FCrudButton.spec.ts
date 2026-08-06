@@ -1,73 +1,76 @@
 import "html-validate/vitest";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { config, mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import FCrudButton from "./FCrudButton.vue";
 
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-} = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FCrudButton, {
-        attrs: { ...attrs },
-        props: {
-            action: "modify",
-            item: { id: 1, name: "test" },
-            ...props,
-        },
-        slots: { ...slots },
-        global: {
-            provide: {
-                delete() {
-                    /* do nothing */
-                },
-                modify() {
-                    /* do nothing */
-                },
-            },
-            stubs: ["FIcon"],
-        },
-    });
-}
+config.global.provide = {
+    delete() {
+        /* do nothing */
+    },
+    modify() {
+        /* do nothing */
+    },
+};
+config.global.stubs = {
+    FIcon: true,
+};
 
 describe("snapshot", () => {
     it("should match snapshot when action = modify", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            props: { action: "modify" },
+        const wrapper = mount(FCrudButton, {
+            props: {
+                action: "modify",
+                item: { id: 1, name: "test" },
+            },
         });
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot when action = delete", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            props: { action: "delete" },
+        const wrapper = mount(FCrudButton, {
+            props: {
+                action: "delete",
+                item: { id: 1, name: "test" },
+            },
         });
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot when only icon is used", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            props: { action: "modify", icon: true },
+        const wrapper = mount(FCrudButton, {
+            props: {
+                action: "modify",
+                icon: true,
+                item: { id: 1, name: "test" },
+            },
         });
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot when only label is used", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            props: { action: "modify", label: true },
+        const wrapper = mount(FCrudButton, {
+            props: {
+                action: "modify",
+                label: true,
+                item: { id: 1, name: "test" },
+            },
         });
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot when both label and icon is used", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            props: { action: "modify", label: true, icon: true },
+        const wrapper = mount(FCrudButton, {
+            props: {
+                action: "modify",
+                label: true,
+                icon: true,
+                item: { id: 1, name: "test" },
+            },
         });
         expect(wrapper.element).toMatchSnapshot();
     });

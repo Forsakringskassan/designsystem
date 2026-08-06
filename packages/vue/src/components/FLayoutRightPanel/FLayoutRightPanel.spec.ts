@@ -1,69 +1,56 @@
 import "html-validate/vitest";
 import "@fkui/test-utils/vitest";
-import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { type VueWrapper, flushPromises, mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import FLayoutRightPanel from "./FLayoutRightPanel.vue";
 import { FLayoutRightPanelService } from "./services/f-layout-right-panel-service";
 
-let wrapper: VueWrapper;
-
-const defaultSlots = {
-    default: "DEFAULT",
-    content: "TOPNAVIGATION",
-    heading: /* HTML */ ` <h3>TITEL</h3> `,
-};
-
-async function createWrapper(): Promise<VueWrapper> {
-    const wrapper = mount(FLayoutRightPanel, {
-        slots: {
-            ...defaultSlots,
-        },
-        global: {
-            stubs: ["FIcon"],
-        },
-        attachTo: createPlaceholderInDocument(),
-    });
-    FLayoutRightPanelService.open();
-    // wait for it to open
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-    await wrapper.vm.$nextTick();
-    await flushPromises();
-    return wrapper;
-}
-
 describe("snapshot", () => {
     it("should match snapshot", async () => {
-        expect.assertions(1);
-        wrapper = await createWrapper();
+        expect.assertions(2);
+        const wrapper = shallowMount(FLayoutRightPanel, {
+            slots: {
+                default: "DEFAULT",
+                content: "TOPNAVIGATION",
+                heading: /* HTML */ ` <h3>TITEL</h3> `,
+            },
+        });
+        FLayoutRightPanelService.open();
+        await expect.poll(() => wrapper.find("aside").exists()).toBeTruthy();
         expect(wrapper.element).toMatchSnapshot();
     });
 });
 
 it("should be closable", async () => {
-    expect.assertions(1);
-    wrapper = await createWrapper();
+    expect.assertions(2);
+    const wrapper = shallowMount(FLayoutRightPanel);
+    FLayoutRightPanelService.open();
+    await expect.poll(() => wrapper.find("aside").exists()).toBeTruthy();
     await wrapper.get("button").trigger("click");
-    await flushPromises();
-    expect(wrapper.find(".layout-secondary__secondary").exists()).toBeFalsy();
+    await expect.poll(() => wrapper.find("aside").exists()).toBeFalsy();
 });
 
 it("should focus title on open", async () => {
-    expect.assertions(1);
-    wrapper = await createWrapper();
-    const heading = wrapper.get("h3");
-    expect(heading.element).toHaveFocus();
+    expect.assertions(2);
+    const wrapper = shallowMount(FLayoutRightPanel, {
+        slots: {
+            heading: /* HTML */ ` <h3>TITEL</h3> `,
+        },
+        attachTo: document.body,
+    });
+    FLayoutRightPanelService.open();
+    await expect.poll(() => wrapper.find("aside").exists()).toBeTruthy();
+    expect(wrapper.get("h3").element).toHaveFocus();
 });
 
 describe("html-validate", () => {
     it("should allow defined slots", async () => {
         expect.assertions(1);
-        const slotTemplates = Object.entries(defaultSlots).map(
-            ([key, value]) => `<template #${key}>${value}</template>`,
-        );
         const markup = /* HTML */ `
             <f-layout-right-panel>
-                ${slotTemplates.join("")}
+                <template #default></template>
+                <template #content></template>
+                <template #heading></template>
             </f-layout-right-panel>
         `;
         await expect(markup).toBeValid();
