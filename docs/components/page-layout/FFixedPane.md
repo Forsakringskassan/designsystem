@@ -1,6 +1,6 @@
 ---
 title: Fixerad yta
-status: Beta
+status: Produktionsklar
 layout: component
 component: FFixedPane
 ---

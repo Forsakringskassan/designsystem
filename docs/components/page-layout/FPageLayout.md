@@ -1,6 +1,6 @@
 ---
 title: Applikationsmall
-status: Beta
+status: Produktionsklar
 layout: component
 component: FPageLayout
 search:

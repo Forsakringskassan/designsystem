@@ -1,6 +1,6 @@
 ---
 title: Minimerbar panel
-status: Beta
+status: Produktionsklar
 layout: component
 component: FMinimizablePanel
 ---
