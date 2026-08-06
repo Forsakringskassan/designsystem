@@ -1,6 +1,6 @@
 ---
 title: Justerbar yta
-status: Beta
+status: Produktionsklar
 layout: component
 component: FResizePane
 ---

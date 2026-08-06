@@ -1,6 +1,6 @@
 ---
 title: Detaljpanel
-status: Beta
+status: Produktionsklar
 layout: component
 component: FDetailsPanel
 ---
