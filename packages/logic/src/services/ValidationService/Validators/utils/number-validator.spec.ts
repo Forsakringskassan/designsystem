@@ -13,7 +13,7 @@ it.each`
     ${" 1 0 0 0 0"}  | ${10_000}     | ${"value with whitespace and of type number should be valid"}
 `(
     'should be called with "$expected" for "$value" because of $description',
-    ({ value, expected }) => {
+    ({ value, expected }: { value: string; expected: number }) => {
         expect.assertions(1);
         const compareFunction = vi.fn();
         const testConfig = { limit: "1" };
@@ -35,9 +35,10 @@ it.each`
     ${{ limit: "10\u{A0}050,3" }} | ${10_050.3}   | ${"value with non breaking whitespace and of type number should be valid"}
 `(
     'should be called with "$expected" for "$config" because of $description',
-    ({ config, expected }) => {
+    ({ config, expected }: { config: unknown; expected: number }) => {
         expect.assertions(1);
         const compareFunction = vi.fn();
+        /* @ts-expect-error -- technical debt, we're lying to the type system */
         numberValidator("1", config, "limit", compareFunction);
         expect(compareFunction).toHaveBeenCalledWith(1, expected);
     },
@@ -55,12 +56,21 @@ it.each`
     ${"2"}       | ${{ limit: undefined }} | ${false} | ${"undefined as limit should be invalid"}
 `(
     "should return $expected because of $description",
-    ({ value, config, expected }) => {
+    ({
+        value,
+        config,
+        expected,
+    }: {
+        value: unknown;
+        config: unknown;
+        expected: boolean;
+    }) => {
         expect.assertions(1);
         function compareFunction(): boolean {
             return true;
         }
 
+        /* @ts-expect-error -- technical debt, we're lying to the type system */
         expect(numberValidator(value, config, "limit", compareFunction)).toBe(
             expected,
         );

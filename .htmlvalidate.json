@@ -31,7 +31,7 @@
         "no-unknown-elements": [
             "error",
             {
-                "exclude": ["example-*"]
+                "exclude": ["example-*", "*-stub"]
             }
         ]
     }

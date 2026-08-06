@@ -23,14 +23,14 @@ function rowindex({
     item: { id: unknown };
     metadata: DatasetElementMetadata;
 }): string {
-    return `id:${item.id} rowIndex=${metadata.rowIndex}`;
+    return `id:${String(item.id)} rowIndex=${metadata.rowIndex}`;
 }
 
 describe("datasetIterator()", () => {
     it("should yield top-level items with their metadata", () => {
         expect.assertions(1);
         const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
-        const dataset = toDataset(items, undefined);
+        const dataset = toDataset(items);
         const result = Array.from(datasetIterator(dataset), rowindex);
         expect(result).toEqual([
             "id:1 rowIndex=0",

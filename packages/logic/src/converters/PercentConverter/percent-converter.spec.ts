@@ -17,7 +17,7 @@ describe("formatting", () => {
         ${1234.25}  | ${"1\u{A0}234,25"} | ${"number"}
     `(
         'should format "$value" ($type) as "$expected"',
-        ({ value, expected }) => {
+        ({ value, expected }: { value: string | number; expected: string }) => {
             expect.assertions(1);
             expect(formatPercent(value)).toBe(expected);
         },
@@ -54,7 +54,7 @@ describe("formatting decimals", () => {
         ${1234.255} | ${"1\u{A0}234,26"}    | ${"1234.255 number value should be rounded and formatted as '1 234,26'"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({ value, expected }: { value: number; expected: string }) => {
             expect.assertions(1);
             expect(formatPercent(value, 2)).toEqual(expected);
         },
@@ -78,7 +78,7 @@ describe("parse", () => {
         ${"−0001\u{A0}234,25"} | ${-1234.25} | ${"-0001234.25 string value should should be formatted as '-1 234,25'"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({ value, expected }: { value: string; expected: number }) => {
             expect.assertions(1);
             expect(parsePercent(value)).toEqual(expected);
         },

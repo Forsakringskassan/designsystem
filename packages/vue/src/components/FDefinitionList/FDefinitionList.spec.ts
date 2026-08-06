@@ -9,6 +9,7 @@ const definitions = [
 ];
 
 function createWrapper(definitions: FDefinitionListItem[]): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FDefinitionList, {
         props: {
             definitions,
@@ -29,6 +30,11 @@ describe("expected DOM structures", () => {
             expectedDlElements,
             expectedDtElements,
             expectedDdElements,
+        }: {
+            numberOfDefinitions: number;
+            expectedDlElements: number;
+            expectedDtElements: number;
+            expectedDdElements: number;
         }) => {
             expect.hasAssertions();
             // Create wrapper

@@ -14,6 +14,7 @@ import {
     type ValidatorConfigs,
     type ValidatorOptions,
     type ValidityEvent,
+    type ValidityMode,
 } from "./validation-service-interface";
 import { type Validator, type ValidatorName } from "./validator";
 
@@ -90,9 +91,8 @@ function mountFieldsetAndAddValidators(
         </div>
     `;
     document.body.innerHTML = markup;
-    const element = document.querySelector(
-        "#test-element",
-    ) as HTMLFieldSetElement;
+    const element =
+        document.querySelector<HTMLFieldSetElement>("#test-element")!;
     ValidationService.addValidatorsToElement(element, validatorConfigs);
 
     return element;
@@ -119,6 +119,7 @@ function triggerValidityEvent(
     initialState: ValidationState = { touched: false, submitted: false },
 ): ValidityEvent | undefined {
     const element = mountInputElementAndAddValidators(type, validityConfigs);
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
     ValidationService.setState("test-element", initialState);
     const listener = vi.fn();
     element.addEventListener("validity", listener);
@@ -135,6 +136,7 @@ function triggerValidityEvent(
     }
 
     const args = listener.mock.calls.at(-1)!;
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return args[0].detail;
 }
 
@@ -166,6 +168,7 @@ describe("setState", () => {
             </div>
         `);
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         ValidationService.setState("group-element", {
             touched: true,
         });
@@ -232,6 +235,7 @@ describe("isValid()", () => {
         expect.assertions(1);
         const element = createElement({ valid: true });
         document.body.append(element);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(element)).toBeTruthy();
     });
 
@@ -239,6 +243,7 @@ describe("isValid()", () => {
         expect.assertions(1);
         const element = createElement({ valid: false });
         document.body.append(element);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(element)).toBeFalsy();
     });
 
@@ -250,6 +255,7 @@ describe("isValid()", () => {
         fieldset.append(a);
         fieldset.append(b);
         document.body.append(fieldset);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(fieldset)).toBeTruthy();
     });
 
@@ -261,6 +267,7 @@ describe("isValid()", () => {
         fieldset.append(a);
         fieldset.append(b);
         document.body.append(fieldset);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(fieldset)).toBeFalsy();
     });
 
@@ -272,6 +279,7 @@ describe("isValid()", () => {
         div.append(a);
         div.append(b);
         document.body.append(div);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(div)).toBeTruthy();
     });
 
@@ -283,6 +291,7 @@ describe("isValid()", () => {
         div.append(a);
         div.append(b);
         document.body.append(div);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(div)).toBeFalsy();
     });
 
@@ -294,6 +303,7 @@ describe("isValid()", () => {
         div.append(a);
         div.append(b);
         document.body.append(div);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid([a, b])).toBeTruthy();
     });
 
@@ -305,6 +315,7 @@ describe("isValid()", () => {
         div.append(a);
         div.append(b);
         document.body.append(div);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid([a, b])).toBeFalsy();
     });
 
@@ -316,7 +327,9 @@ describe("isValid()", () => {
         root.append(foo);
         root.append(bar);
         document.body.append(root);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid("foo", root)).toBeTruthy();
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid("bar", root)).toBeFalsy();
     });
 
@@ -329,17 +342,20 @@ describe("isValid()", () => {
         root.append(bar);
         document.body.append(root);
         expect(
+            /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
             await ValidationService.isValid(["foo", "bar"], root),
         ).toBeTruthy();
     });
 
     it("should return true for empty array", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid([])).toBeTruthy();
     });
 
     it("should return true for null", async () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
         expect(await ValidationService.isValid(null)).toBeFalsy();
     });
 });
@@ -396,7 +412,7 @@ describe("validateAllElements", () => {
         id: string,
         validateEventHandler: () => void,
     ): HTMLElement {
-        const element = document.querySelector(`#${id}`) as HTMLInputElement;
+        const element = document.querySelector<HTMLInputElement>(`#${id}`)!;
         element.addEventListener("validate", validateEventHandler);
         return element;
     }
@@ -439,7 +455,7 @@ describe("ValidatorOption.enabled", () => {
         expect.assertions(1);
         const element = mountInputElementAndAddValidators(
             "text",
-            enabledValidatorConfig(undefined),
+            enabledValidatorConfig(),
         );
         const requiredSpy = vi.spyOn(registry.required, "validation");
         dispatchEvent("input", element);
@@ -514,7 +530,13 @@ describe("addValidatorsToElement", () => {
         ${{ whitelist: { instant: true } }}  | ${"using an instant validator configured with instant: true"}     | ${true}
     `(
         `should dispatch event instantly: $expected when $description`,
-        ({ validatorConfigs, expected }) => {
+        ({
+            validatorConfigs,
+            expected,
+        }: {
+            validatorConfigs: ValidatorConfigs;
+            expected: boolean;
+        }) => {
             expect.assertions(1);
             const element = mountInputElementAndAddValidators(
                 "text",
@@ -686,7 +708,7 @@ describe("addValidatorsToElement", () => {
             minLength: { length: 20 },
         };
 
-        /* eslint-disable-next-line @typescript-eslint/no-explicit-any --
+        /* eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-call --
          * technical debt, should not access private members, rather they could
          * be made @internal and public */
         const result = (ValidationService as any).mergeValidatorConfigs(
@@ -694,6 +716,7 @@ describe("addValidatorsToElement", () => {
             newConfig,
         );
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         expect(Object.keys(result)).toEqual([
             "required",
             "integer",
@@ -726,6 +749,7 @@ describe("addValidatorsToElement", () => {
             true,
         );
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         const internalState = ValidationService.getElementsAndValidators();
         const dangerous = internalState["email-test-element"];
 
@@ -801,6 +825,7 @@ describe("addValidatorsToElement", () => {
         const element = document.querySelector("input")!;
         ValidationService.addValidatorsToElement(element, lazyValidatorConfigs);
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         const internalState = ValidationService.getElementsAndValidators();
         const dangerous = internalState["email-test-element"];
 
@@ -1109,7 +1134,15 @@ describe("ValidityMode", () => {
         ${"12"} | ${false} | ${"VALID"}
     `(
         `should be $expected when required is $required and leaving field with "$value" value`,
-        ({ value, required, expected }) => {
+        ({
+            value,
+            required,
+            expected,
+        }: {
+            value: string;
+            required: boolean;
+            expected: ValidationState;
+        }) => {
             expect.assertions(1);
             const validatorConfigs: ValidatorConfigs = {
                 required: { enabled: required },
@@ -1167,7 +1200,17 @@ describe("ValidityMode", () => {
             ${"foo"} | ${true}  | ${true}   | ${"ERROR"}
         `(
             `should return $validityMode for input with value "$value", touched=$touched and submitted=$submitted`,
-            ({ value, touched, submitted, validityMode }) => {
+            ({
+                value,
+                touched,
+                submitted,
+                validityMode,
+            }: {
+                value: string;
+                touched: boolean;
+                submitted: boolean;
+                validityMode: ValidityMode;
+            }) => {
                 expect.assertions(1);
                 const element = document.createElement("input");
                 element.value = value;
@@ -1186,6 +1229,7 @@ describe("ValidityMode", () => {
 describe("initial state", () => {
     it("should have validityMode VALID if input of type radio is checked and untouched", () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element", {
             submitted: false,
             touched: false,
@@ -1204,6 +1248,7 @@ describe("initial state", () => {
     it("should have validityMode INITIAL if input of type radio is not checked and untouched", () => {
         expect.assertions(1);
         ValidationService.validationErrorMessages = { required: "REQUIRED" };
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element", {
             submitted: false,
             touched: false,
@@ -1264,8 +1309,17 @@ describe("initial state", () => {
             ${{ touched: false, submitted: false, serverError: undefined }} | ${"V"}     | ${"ERROR"}
         `(
             `should have validityMode $validityMode if state is $state and input value is $inputValue`,
-            ({ state, inputValue, validityMode }) => {
+            ({
+                state,
+                inputValue,
+                validityMode,
+            }: {
+                state: ValidationState;
+                inputValue: string;
+                validityMode: ValidityMode;
+            }) => {
                 expect.assertions(1);
+                /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
                 ValidationService.setState("test-element", state);
                 const validityEvent = triggerValidityEvent(
                     "validate",
@@ -1278,6 +1332,7 @@ describe("initial state", () => {
 
     it("should not trigger validity event on first input when instant is false", () => {
         expect.assertions(1);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element", {
             serverError: "Some backend error",
         });
@@ -1334,6 +1389,7 @@ describe("clearAllStates", () => {
         const validityMock = vi.fn();
         input.addEventListener("validity", validityMock);
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element", {
             submitted: true,
             touched: true,
@@ -1359,9 +1415,7 @@ describe("isAnyTouched", () => {
         `;
 
         for (const id of ["test-element", "test-element2"]) {
-            const element = document.querySelector(
-                `#${id}`,
-            ) as HTMLInputElement;
+            const element = document.querySelector<HTMLInputElement>(`#${id}`)!;
             ValidationService.addValidatorsToElement(
                 element,
                 lazyValidatorConfigs,
@@ -1373,10 +1427,12 @@ describe("isAnyTouched", () => {
         expect.assertions(1);
         setupTwoInputFields();
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element", {
             submitted: false,
             touched: false,
         });
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element2", {
             submitted: false,
             touched: false,
@@ -1389,10 +1445,12 @@ describe("isAnyTouched", () => {
         expect.assertions(1);
         setupTwoInputFields();
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element", {
             submitted: false,
             touched: false,
         });
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         ValidationService.setState("test-element2", {
             submitted: false,
             touched: true,

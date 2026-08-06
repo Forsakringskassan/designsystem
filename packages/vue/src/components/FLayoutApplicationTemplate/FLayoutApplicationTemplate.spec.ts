@@ -7,9 +7,7 @@ let wrapper: VueWrapper;
 
 function createPlaceholderInDocument(): HTMLElement {
     const elem = document.createElement("div");
-    if (document.body) {
-        document.body.append(elem);
-    }
+    document.body.append(elem);
     return elem;
 }
 
@@ -28,6 +26,7 @@ const defaultSlots: IApplicationTemplateSlots = {
 };
 
 function createWrapper(slots: IApplicationTemplateSlots): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FLayoutApplicationTemplate, {
         slots: {
             ...slots,
@@ -134,11 +133,14 @@ describe("html-validate", () => {
     it("should allow defined slots", async () => {
         expect.assertions(1);
         const slotTemplates = Object.entries(defaultSlots).map(
-            ([key, value]) => `<template #${key}>${value}</template>`,
+            ([key, value]: [string, string]) =>
+                `<template #${key}>${value}</template>`,
         );
-
-        await expect(
-            `<f-layout-application-template>${slotTemplates}</f-layout-application-template>`,
-        ).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-layout-application-template>
+                ${slotTemplates.join("")}
+            </f-layout-application-template>
+        `;
+        await expect(markup).toBeValid();
     });
 });

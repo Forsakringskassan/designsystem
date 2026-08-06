@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 import { onKeyDown, useYearSelector } from "./use-year-selector";
 
 describe("keyboard navigation", () => {
-    it("arrow down should move to next year", async () => {
+    it("arrow down should move to next year", () => {
         expect.assertions(3);
         const focus = vi.fn();
         const close = vi.fn();
@@ -34,7 +34,7 @@ describe("keyboard navigation", () => {
         expect(preventDefault).toHaveBeenCalledWith();
     });
 
-    it("arrow down should move to first year when last year is active", async () => {
+    it("arrow down should move to first year when last year is active", () => {
         expect.assertions(3);
         const focus = vi.fn();
         const close = vi.fn();
@@ -64,7 +64,7 @@ describe("keyboard navigation", () => {
         expect(preventDefault).toHaveBeenCalledWith();
     });
 
-    it("arrow up should move to previous year", async () => {
+    it("arrow up should move to previous year", () => {
         expect.assertions(3);
         const focus = vi.fn();
         const close = vi.fn();
@@ -94,7 +94,7 @@ describe("keyboard navigation", () => {
         expect(preventDefault).toHaveBeenCalledWith();
     });
 
-    it("arrow up should move to last year when first year is active", async () => {
+    it("arrow up should move to last year when first year is active", () => {
         expect.assertions(3);
         const focus = vi.fn();
         const close = vi.fn();
@@ -124,7 +124,7 @@ describe("keyboard navigation", () => {
         expect(preventDefault).toHaveBeenCalledWith();
     });
 
-    it("enter should select current year and close year selector", async () => {
+    it("enter should select current year and close year selector", () => {
         expect.assertions(4);
         const focus = vi.fn();
         const close = vi.fn();
@@ -155,7 +155,7 @@ describe("keyboard navigation", () => {
         expect(preventDefault).toHaveBeenCalledWith();
     });
 
-    it("should ignore keys when ctrl key is used", async () => {
+    it("should ignore keys when ctrl key is used", () => {
         expect.assertions(5);
         const focus = vi.fn();
         const close = vi.fn();
@@ -190,7 +190,7 @@ describe("keyboard navigation", () => {
         expect(preventDefault).not.toHaveBeenCalled();
     });
 
-    it("should ignore other keys", async () => {
+    it("should ignore other keys", () => {
         expect.assertions(5);
         const focus = vi.fn();
         const close = vi.fn();

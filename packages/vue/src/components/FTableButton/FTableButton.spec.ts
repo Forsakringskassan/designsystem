@@ -3,21 +3,21 @@ import { shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import FTableButton from "./FTableButton.vue";
 
-it("label should be visually hidden by default", async () => {
+it("label should be visually hidden by default", () => {
     expect.assertions(3);
     const wrapper = shallowMount(FTableButton, {
         slots: { default: "lorem ipsum" },
     });
     expect(wrapper.text()).toBe("lorem ipsum");
     expect(wrapper.get(".sr-only").text()).toBe("lorem ipsum");
-    await expect(wrapper.html()).toMatchInlineSnapshot(`
+    expect(wrapper.html()).toMatchInlineSnapshot(`
       "<button type="button" class="button table__button">
         <!--v-if--> <span class="sr-only">lorem ipsum</span>
       </button>"
     `);
 });
 
-it("label should be visually rendered when label prop is set", async () => {
+it("label should be visually rendered when label prop is set", () => {
     expect.assertions(3);
     const wrapper = shallowMount(FTableButton, {
         props: { label: true },
@@ -25,7 +25,7 @@ it("label should be visually rendered when label prop is set", async () => {
     });
     expect(wrapper.text()).toBe("lorem ipsum");
     expect(wrapper.find(".sr-only").exists()).toBeFalsy();
-    await expect(wrapper.html()).toMatchInlineSnapshot(`
+    expect(wrapper.html()).toMatchInlineSnapshot(`
       "<button type="button" class="button table__button">
         <!--v-if--> lorem ipsum
       </button>"
@@ -63,7 +63,7 @@ it("icon library should be set when iconLibrary prop is used", () => {
     expect(icon.attributes("library")).toBe("bar");
 });
 
-describe("html-validate", async () => {
+describe("html-validate", () => {
     it("should require text content", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
@@ -140,7 +140,7 @@ describe("html-validate", async () => {
                 <f-table-button>lorem ipsum</f-table-button>
             </f-table-column>
         `;
-        await expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toBeValid();
     });
 
     it("should require FTableColumn ancestor", async () => {
@@ -165,7 +165,7 @@ describe("html-validate", async () => {
                 <f-table-button>lorem ipsum</f-table-button>
             </f-table-column>
         `;
-        await expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toBeValid();
     });
 
     it("should not allow empty icon prop", async () => {
@@ -180,7 +180,6 @@ describe("html-validate", async () => {
                 <f-table-button icon="">lorem ipsum</f-table-button>
             </f-table-column>
         `;
-
         await expect(markup).toMatchInlineCodeframe(`
             "error: Attribute "icon" is missing value (attribute-allowed-values)
                5 |

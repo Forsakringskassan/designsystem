@@ -17,7 +17,7 @@ it.each`
     ${"false"} | ${true}  | ${"false string is valid"}
 `(
     'should return $expected with value "$value" because of $description',
-    ({ value, expected }) => {
+    ({ value, expected }: { value: string; expected: boolean }) => {
         expect.assertions(1);
         expect(
             requiredValidator.validation(
@@ -39,10 +39,8 @@ function createFieldsetWithInputs(
             <input type="${type}" id="input2" />
         </fieldset>
     `;
-    const fieldsetElement = document.querySelector(
-        "fieldset",
-    ) as HTMLFieldSetElement;
-    (document.querySelector("#input2") as HTMLInputElement).checked = checked;
+    const fieldsetElement = document.querySelector("fieldset")!;
+    document.querySelector<HTMLInputElement>("#input2")!.checked = checked;
     return fieldsetElement;
 }
 
@@ -52,7 +50,7 @@ function createInputElement(
 ): HTMLInputElement {
     const markup = /* HTML */ ` <input type="${type}" id="input1" /> Input 1 `;
     document.body.innerHTML = markup;
-    const inputElement = document.querySelector("#input1") as HTMLInputElement;
+    const inputElement = document.querySelector<HTMLInputElement>("#input1")!;
     inputElement.checked = checked;
     return inputElement;
 }
@@ -179,14 +177,12 @@ describe("nestled fieldsets", () => {
                 </fieldset>
             `;
             document.body.innerHTML = markup;
-            const outerInputElement = document.querySelector(
-                "#outerInput2",
-            ) as HTMLInputElement;
+            const outerInputElement =
+                document.querySelector<HTMLInputElement>("#outerInput2")!;
             outerInputElement.checked = outerChecked;
 
-            const innerInputElement = document.querySelector(
-                "#innerInput2",
-            ) as HTMLInputElement;
+            const innerInputElement =
+                document.querySelector<HTMLInputElement>("#innerInput2")!;
             innerInputElement.checked = innerChecked;
 
             expect(

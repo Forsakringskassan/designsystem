@@ -12,7 +12,7 @@ class ResizeObserverMock {
 }
 
 /* eslint-disable-next-line unicorn/no-global-object-property-assignment -- technical debt */
-global.ResizeObserver = ResizeObserverMock as unknown as typeof ResizeObserver;
+global.ResizeObserver = ResizeObserverMock;
 
 const testItems: NavigationMenuItem[] = [
     { label: "label1", route: "ROUTE_1" },
@@ -76,6 +76,7 @@ describe("props", () => {
                     routes: testItems,
                 },
             });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             await wrapper.vm.$nextTick();
 
             const nav = wrapper.get("nav");
@@ -91,6 +92,7 @@ describe("props", () => {
                     vertical: true,
                 },
             });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             await wrapper.vm.$nextTick();
 
             const nav = wrapper.get("nav");
@@ -108,6 +110,7 @@ describe("events", () => {
                 routes: testItems,
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         const imenuList = wrapper.get(".imenu__list");
         const firstItem = imenuList.findAll(
@@ -127,6 +130,7 @@ describe("events", () => {
             },
         });
         // When directly after mount
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         await flushPromises();
 
@@ -144,6 +148,7 @@ describe("events", () => {
                 routes: testItems,
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         await flushPromises();
 
@@ -152,6 +157,7 @@ describe("events", () => {
 
         // when
         await a.trigger("click");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         await flushPromises();
 
@@ -177,7 +183,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <f-navigation-menu routes="" vertical></f-navigation-menu>
         `;
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should not allow setting vertical value", async () => {
@@ -185,10 +191,14 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <f-navigation-menu routes="" vertical=""></f-navigation-menu>
         `;
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "attribute-boolean-style",
-            message: 'Attribute "vertical" should omit value',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "vertical" should omit value (attribute-boolean-style)
+            1 |
+          > 2 |             <f-navigation-menu routes="" vertical=""></f-navigation-menu>
+              |                                          ^^^^^^^^
+            3 |
+          Selector: f-navigation-menu"
+        `);
     });
 
     it("should not be allowed in interactive components", async () => {
@@ -196,27 +206,47 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <button type="button">
                 <f-navigation-menu routes=""></f-navigation-menu>
+                button text
             </button>
         `;
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                "<f-navigation-menu> element is not permitted as content under <button>",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-navigation-menu> element is not permitted as content under <button> (element-permitted-content)
+            1 |
+            2 |             <button type="button">
+          > 3 |                 <f-navigation-menu routes=""></f-navigation-menu>
+              |                  ^^^^^^^^^^^^^^^^^
+            4 |                 button text
+            5 |             </button>
+            6 |
+          Selector: button > f-navigation-menu"
+        `);
     });
 
     it("should not allow interactive children", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-navigation-menu routes="">
-                <button type="button"></button>
+                <button type="button">button text</button>
             </f-navigation-menu>
         `;
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                "<button> element is not permitted as content under <f-navigation-menu>",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-navigation-menu> must not have text content (text-content)
+            1 |
+          > 2 |             <f-navigation-menu routes="">
+              |              ^^^^^^^^^^^^^^^^^
+            3 |                 <button type="button">button text</button>
+            4 |             </f-navigation-menu>
+            5 |
+          Selector: f-navigation-menu
+          error: <button> element is not permitted as content under <f-navigation-menu> (element-permitted-content)
+            1 |
+            2 |             <f-navigation-menu routes="">
+          > 3 |                 <button type="button">button text</button>
+              |                  ^^^^^^
+            4 |             </f-navigation-menu>
+            5 |
+          Selector: f-navigation-menu > button"
+        `);
     });
 
     it("should not allow child elements", async () => {
@@ -226,11 +256,16 @@ describe("html-validate", () => {
                 <em></em>
             </f-navigation-menu>
         `;
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                "<em> element is not permitted as content under <f-navigation-menu>",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <em> element is not permitted as content under <f-navigation-menu> (element-permitted-content)
+            1 |
+            2 |             <f-navigation-menu routes="">
+          > 3 |                 <em></em>
+              |                  ^^
+            4 |             </f-navigation-menu>
+            5 |
+          Selector: f-navigation-menu > em"
+        `);
     });
 
     it("should not allow text", async () => {
@@ -238,9 +273,13 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <f-navigation-menu routes=""> mjukglass </f-navigation-menu>
         `;
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "text-content",
-            message: "<f-navigation-menu> must not have text content",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-navigation-menu> must not have text content (text-content)
+            1 |
+          > 2 |             <f-navigation-menu routes=""> mjukglass </f-navigation-menu>
+              |              ^^^^^^^^^^^^^^^^^
+            3 |
+          Selector: f-navigation-menu"
+        `);
     });
 });

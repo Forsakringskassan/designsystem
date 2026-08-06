@@ -26,6 +26,7 @@ async function createWrapper(): Promise<VueWrapper> {
     });
     FLayoutRightPanelService.open();
     // wait for it to open
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     await wrapper.vm.$nextTick();
     await flushPromises();
     return wrapper;
@@ -60,9 +61,11 @@ describe("html-validate", () => {
         const slotTemplates = Object.entries(defaultSlots).map(
             ([key, value]) => `<template #${key}>${value}</template>`,
         );
-
-        await expect(
-            `<f-layout-right-panel>${slotTemplates}</f-layout-right-panel>`,
-        ).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-layout-right-panel>
+                ${slotTemplates.join("")}
+            </f-layout-right-panel>
+        `;
+        await expect(markup).toBeValid();
     });
 });

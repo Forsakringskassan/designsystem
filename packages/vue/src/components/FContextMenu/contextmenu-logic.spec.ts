@@ -17,7 +17,15 @@ describe("getNewItemIndexFromMenuAction", () => {
         ${0}  | ${MenuAction.MOVE_LAST}  | ${2}     | ${"MOVE_LAST"}
     `(
         "should return correct new index ($index => $newIndex) on menu action $desc",
-        ({ index, menuAction, newIndex }) => {
+        ({
+            index,
+            menuAction,
+            newIndex,
+        }: {
+            index: number;
+            menuAction: number;
+            newIndex: number;
+        }) => {
             expect.assertions(1);
             const result = getNewItemIndexFromMenuAction(
                 menuAction,
@@ -34,7 +42,15 @@ describe("getNewItemIndexFromMenuAction", () => {
         ${0}  | ${MenuAction.MOVE_PREV} | ${2}     | ${"MOVE_PREV"}
     `(
         "should wrap around new index ($index => $newIndex) on menu action $desc",
-        ({ index, menuAction, newIndex }) => {
+        ({
+            index,
+            menuAction,
+            newIndex,
+        }: {
+            index: number;
+            menuAction: number;
+            newIndex: number;
+        }) => {
             expect.assertions(1);
             const result = getNewItemIndexFromMenuAction(
                 menuAction,

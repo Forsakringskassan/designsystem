@@ -45,6 +45,7 @@ describe("description", () => {
         });
         expect(wrapper.find(selector).exists()).toBeFalsy();
         prop.value = "dolor sit amet";
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         expect(wrapper.find(selector).exists()).toBeTruthy();
         expect(wrapper.find(selector).text()).toBe("dolor sit amet");

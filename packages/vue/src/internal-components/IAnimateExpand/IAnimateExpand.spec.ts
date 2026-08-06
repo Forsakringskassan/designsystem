@@ -14,6 +14,7 @@ Object.assign(Element.prototype, {
 const ANIMATION_DURATION = 501;
 
 function createWrapper({ props = {} } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(IAnimateExpand, {
         props,
         slots: {
@@ -249,14 +250,16 @@ describe("callbacks", () => {
 });
 
 describe("html-validate", () => {
-    it.each`
-        html
-        ${"<i-animate-expand></i-animate-expand>"}
-        ${"<i-animate-expand>DEFAULT CONTENT</i-animate-expand>"}
-        ${"<i-animate-expand><i-animate-expand></i-animate-expand></i-animate-expand>"}
-    `("$html should be valid", async ({ html }) => {
+    it("should be valid", async () => {
         expect.assertions(1);
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <i-animate-expand></i-animate-expand>
+            <i-animate-expand> DEFAULT CONTENT </i-animate-expand>
+            <i-animate-expand>
+                <i-animate-expand></i-animate-expand>
+            </i-animate-expand>
+        `;
+        await expect(markup).toBeValid();
     });
 
     it.each(["animate", "opacity", "use-v-show"])(
@@ -266,7 +269,7 @@ describe("html-validate", () => {
             const markup = /* HTML */ `
                 <i-animate-expand ${attr}></i-animate-expand>
             `;
-            await expect(markup).toHTMLValidate();
+            await expect(markup).toBeValid();
         },
     );
 
@@ -277,6 +280,7 @@ describe("html-validate", () => {
             const markup = /* HTML */ `
                 <i-animate-expand ${attr}="true"></i-animate-expand>
             `;
+            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
             await expect(markup).not.toHTMLValidate({
                 ruleId: "attribute-boolean-style",
                 message: `Attribute "${attr}" should omit value`,
@@ -295,9 +299,9 @@ describe("html-validate", () => {
     `("attribute expand should allow $description ($value)", async (value) => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <i-animate-expand expanded="${value}"></i-animate-expand>
+            <i-animate-expand expanded="${String(value)}"></i-animate-expand>
         `;
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });
 

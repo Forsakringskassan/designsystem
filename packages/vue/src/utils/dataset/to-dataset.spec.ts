@@ -24,7 +24,7 @@ function ariaLevel({
     item: { id: unknown };
     metadata: DatasetElementMetadata;
 }): string {
-    return `id:${item.id} aria-level="${metadata.ariaLevel}"`;
+    return `id:${String(item.id)} aria-level="${metadata.ariaLevel}"`;
 }
 
 function ariaRowIndex({
@@ -34,22 +34,22 @@ function ariaRowIndex({
     item: { id: unknown };
     metadata: DatasetElementMetadata;
 }): string {
-    return `id:${item.id} aria-rowindex="${metadata.ariaRowIndex}"`;
+    return `id:${String(item.id)} aria-rowindex="${metadata.ariaRowIndex}"`;
 }
 
 describe("toDataset", () => {
     it("should create a dataset from array", () => {
         expect.assertions(1);
         const dataset = [{ foo: "bar", baz: 42 }];
-        const result = toDataset(dataset, undefined);
+        const result = toDataset(dataset);
         expect(isDataset(result)).toBeTruthy();
     });
 
     it("should be idempotent", () => {
         expect.assertions(3);
         const dataset = [{ foo: "bar" }];
-        const first = toDataset(dataset, undefined);
-        const second = toDataset(first, undefined);
+        const first = toDataset(dataset);
+        const second = toDataset(first);
         expect(first).toBe(second);
         expect(isDataset(first)).toBeTruthy();
         expect(isDataset(second)).toBeTruthy();
@@ -58,7 +58,7 @@ describe("toDataset", () => {
     it("should not add enumerable properties", () => {
         expect.assertions(3);
         const dataset = [{ foo: "bar", spam: "ham" }];
-        const result = toDataset(dataset, undefined);
+        const result = toDataset(dataset);
         expect(Object.keys(result)).toEqual(["0"]); // indices
         expect(Object.keys(result[0])).toEqual(["foo", "spam"]);
         expect(JSON.stringify(result)).toBe(JSON.stringify(dataset));

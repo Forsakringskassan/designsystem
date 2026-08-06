@@ -21,7 +21,13 @@ describe("parsing", () => {
         ${"1001:45"} | ${60_105}    | ${"value 1001:45 should be parsed as 1001:45"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({
+            value,
+            expected,
+        }: {
+            value: string;
+            expected: number | undefined;
+        }) => {
             expect.assertions(1);
             expect(parseTimeToNumber(value)).toEqual(expected);
         },
@@ -44,7 +50,13 @@ describe("formatting", () => {
         ${60_105}    | ${"1001:45"}   | ${"value 60105 should be formatted as 1001:45"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({
+            value,
+            expected,
+        }: {
+            value: number | undefined;
+            expected: string | undefined;
+        }) => {
             expect.assertions(1);
             expect(formatNumberToTime(value)).toEqual(expected);
         },
@@ -66,7 +78,13 @@ describe("forgiving parsing", () => {
         ${"1001:45"} | ${60_105}    | ${"value 1001:45 should be parsed as 1001:45"}
     `(
         'should return "$expected" for "$value" when `extraForgiving` is true because of $description',
-        ({ value, expected }) => {
+        ({
+            value,
+            expected,
+        }: {
+            value: string;
+            expected: number | undefined;
+        }) => {
             expect.assertions(1);
             expect(forgivingParseTimeToNumber(value)).toEqual(expected);
         },

@@ -17,7 +17,7 @@ function getDayTabindexResults(
     active: FDate | undefined,
     entry: FDate | undefined,
 ): Record<string, number> {
-    const entries = dates.map((date) => {
+    const entries = dates.map((date): [string, number] => {
         return [date.toString(), getDayTabindex(date, active, entry)];
     });
 

@@ -31,6 +31,7 @@ function createWrapper({
         delete preDefinedSlots.screenreader;
     }
 
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FList, {
         props: {
             items: [],
@@ -314,7 +315,7 @@ describe("select events", () => {
         });
 
         await wrapper.findAll("div.list__item__selectpane")[1].trigger("click");
-        expect(wrapper.emitted()["select"]).toEqual([[items[1]]]);
+        expect(wrapper.emitted().select).toEqual([[items[1]]]);
     });
 
     it("should emit select event when items checkbox is clicked", async () => {
@@ -328,7 +329,7 @@ describe("select events", () => {
         });
 
         await wrapper.findAll("input")[1].trigger("click");
-        expect(wrapper.emitted()["select"]).toEqual([[items[1]]]);
+        expect(wrapper.emitted().select).toEqual([[items[1]]]);
     });
 
     it("should emit unselect event when items checkbox is clicked", async () => {
@@ -343,7 +344,7 @@ describe("select events", () => {
         });
 
         await wrapper.findAll("input")[1].trigger("click");
-        expect(wrapper.emitted()["unselect"]).toEqual([[items[1]]]);
+        expect(wrapper.emitted().unselect).toEqual([[items[1]]]);
     });
 });
 
@@ -461,6 +462,7 @@ describe("v-model (update event)", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         let allInputs = wrapper.element.querySelectorAll("input");
         expect(allInputs[0].checked).toBeFalsy();
         expect(allInputs[1].checked).toBeFalsy();
@@ -469,6 +471,7 @@ describe("v-model (update event)", () => {
         await wrapper.setProps({ modelValue: [items[0], items[2]] });
         await wrapper.vm.$nextTick();
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         allInputs = wrapper.element.querySelectorAll("input");
         expect(allInputs[0].checked).toBeTruthy();
         expect(allInputs[1].checked).toBeFalsy();
@@ -509,6 +512,7 @@ describe("v-model (update event)", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         const allInputs = wrapper.element.querySelectorAll("input");
         expect(allInputs[0].checked).toBeTruthy();
         expect(allInputs[1].checked).toBeFalsy();
@@ -517,7 +521,7 @@ describe("v-model (update event)", () => {
 });
 
 describe("`keyAttribute`", () => {
-    it("should not throw if valid and unique", async () => {
+    it("should not throw if valid and unique", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -530,7 +534,7 @@ describe("`keyAttribute`", () => {
         }).not.toThrow();
     });
 
-    it("should throw error if not unique in items", async () => {
+    it("should throw error if not unique in items", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -545,7 +549,7 @@ describe("`keyAttribute`", () => {
         );
     });
 
-    it("should be optional", async () => {
+    it("should be optional", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -593,7 +597,7 @@ describe("keyboard navigation", () => {
         ${"PageDown"} | ${"next"}
     `(
         "should emit 'paginateDataset:$action' event on '$key' key press",
-        async ({ key, action }) => {
+        async ({ key, action }: { key: string; action: string }) => {
             expect.assertions(1);
             const listener = vi.fn();
             const wrapper = mount(FList, {
@@ -606,6 +610,7 @@ describe("keyboard navigation", () => {
                 },
             });
 
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.element.addEventListener(
                 `paginateDataset:${action}`,
                 listener,
@@ -628,7 +633,7 @@ describe("screenreader slot", () => {
     });
     const modelValue: ListArray = [];
 
-    it("should throw exception if missing screenreader slot and selectable option", async () => {
+    it("should throw exception if missing screenreader slot and selectable option", () => {
         expect.assertions(1);
         expect(() => {
             createWrapper({
@@ -648,16 +653,24 @@ describe("screenreader slot", () => {
 describe("html-validate", () => {
     it("should require `key-attribute` to be non-empty if used", async () => {
         expect.assertions(1);
-        await expect('<f-list key-attribute=""></f-list>').not.toHTMLValidate({
-            message: 'Attribute "key-attribute" has invalid value ""',
-        });
+        const markup = /* HTML */ ` <f-list items key-attribute=""></f-list> `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "key-attribute" has invalid value "" (attribute-allowed-values)
+          > 1 |  <f-list items key-attribute=""></f-list>
+              |                ^^^^^^^^^^^^^
+          Selector: f-list"
+        `);
     });
 
     it("should require items attribute", async () => {
         expect.assertions(1);
-        await expect("<f-list></f-list>").not.toHTMLValidate({
-            message: '<f-list> is missing required "items" attribute',
-        });
+        const markup = /* HTML */ ` <f-list></f-list> `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-list> is missing required "items" attribute (element-required-attributes)
+          > 1 |  <f-list></f-list>
+              |   ^^^^^^
+          Selector: f-list"
+        `);
     });
 
     it("should allow aria-label or aria-labelledby", async () => {
@@ -668,7 +681,7 @@ describe("html-validate", () => {
             <h2 id="header">lorem ipsum</h2>
             <f-list :items="[]" aria-labelledby="header"></f-list>
         `;
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should not allow empty aria-label", async () => {
@@ -676,9 +689,13 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <f-list :items="[]" aria-label=""></f-list>
         `;
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "attribute-allowed-values",
-            message: 'Attribute "aria-label" has invalid value ""',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "aria-label" has invalid value "" (attribute-allowed-values)
+            1 |
+          > 2 |             <f-list :items="[]" aria-label=""></f-list>
+              |                                 ^^^^^^^^^^
+            3 |
+          Selector: f-list"
+        `);
     });
 });

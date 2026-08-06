@@ -12,8 +12,15 @@ describe("parseBankAccountNumber", () => {
         ${"0 0 1 234 567-8"} | ${"0012345678"} | ${"should keep initial zeros"}
     `(
         'should return "$expected" from "$value" because "$description"',
-        ({ value, expected }) => {
+        ({
+            value,
+            expected,
+        }: {
+            value: unknown;
+            expected: string | undefined;
+        }) => {
             expect.assertions(1);
+            /* @ts-expect-error -- technical debt, we are lying to the type system */
             expect(parseBankAccountNumber(value)).toEqual(expected);
         },
     );

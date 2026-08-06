@@ -25,8 +25,7 @@ describe("html-validate", () => {
             >
             </i-calendar-day>
         `;
-
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should allow child elements", async () => {
@@ -36,6 +35,6 @@ describe("html-validate", () => {
                 <span></span>
             </i-calendar-day>
         `;
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

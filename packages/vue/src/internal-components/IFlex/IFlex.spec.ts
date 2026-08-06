@@ -1,9 +1,4 @@
 import { mount } from "@vue/test-utils";
-import {
-    FileSystemConfigLoader,
-    HtmlValidate,
-    cjsResolver,
-} from "html-validate/node";
 import { describe, expect, it } from "vitest";
 import "html-validate/vitest";
 import IFlex from "./IFlex.vue";
@@ -13,6 +8,7 @@ describe("gap", () => {
     it("should have no gap class when gap is unspecified", () => {
         expect.assertions(1);
         const wrapper = mount(IFlex);
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex"]);
     });
@@ -25,6 +21,7 @@ describe("gap", () => {
             const wrapper = mount(IFlex, {
                 props: { gap },
             });
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
             const classList = Array.from(wrapper.element.classList);
             expect(classList).toEqual(["iflex", expectedClass]);
         },
@@ -35,6 +32,7 @@ describe("collapse", () => {
     it("should have no collapse class when collapse is unspecified", () => {
         expect.assertions(1);
         const wrapper = mount(IFlex);
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex"]);
     });
@@ -46,6 +44,7 @@ describe("collapse", () => {
                 collapse: true,
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex", "iflex--collapse"]);
     });
@@ -55,6 +54,7 @@ describe("float", () => {
     it("should have no float class when float is unspecified", () => {
         expect.assertions(1);
         const wrapper = mount(IFlex);
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex"]);
     });
@@ -66,6 +66,7 @@ describe("float", () => {
                 float: "left",
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex", "iflex--float-left"]);
     });
@@ -77,6 +78,7 @@ describe("float", () => {
                 float: "center",
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex", "iflex--float-center"]);
     });
@@ -88,6 +90,7 @@ describe("float", () => {
                 float: "right",
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         const classList = Array.from(wrapper.element.classList);
         expect(classList).toEqual(["iflex", "iflex--float-right"]);
     });
@@ -96,6 +99,7 @@ describe("float", () => {
 it("should have no collapse class when collapse is unspecified", () => {
     expect.assertions(1);
     const wrapper = mount(IFlex);
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
     const classList = Array.from(wrapper.element.classList);
     expect(classList).toEqual(["iflex"]);
 });
@@ -107,21 +111,12 @@ it("should have collapse class when collapse is specified", () => {
             collapse: true,
         },
     });
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
     const classList = Array.from(wrapper.element.classList);
     expect(classList).toEqual(["iflex", "iflex--collapse"]);
 });
 
 describe("html-validate", () => {
-    const loader = new FileSystemConfigLoader([cjsResolver()], {
-        extends: [
-            "html-validate:recommended",
-            "html-validate-vue:recommended",
-            "@fkui/vue:recommended",
-        ],
-        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
-    });
-    const htmlvalidate = new HtmlValidate(loader);
-
     it("should allow <i-flex-item> as children", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
@@ -129,47 +124,49 @@ describe("html-validate", () => {
                 <i-flex-item></i-flex-item>
             </i-flex>
         `;
-        const report = await htmlvalidate.validateString(markup);
-        await expect(report).toBeValid();
+        await expect(markup).toBeValid();
     });
 
     it("should not allow arbitrary content", async () => {
-        expect.assertions(2);
+        expect.assertions(1);
         const markup = /* HTML */ `
             <i-flex>
                 <div></div>
                 <span></span>
             </i-flex>
         `;
-        const report = await htmlvalidate.validateString(markup);
-        await expect(report).toBeInvalid();
-        expect(report).toHaveErrors([
-            {
-                ruleId: "element-permitted-content",
-                message:
-                    "<div> element is not permitted as content under <i-flex>",
-            },
-            {
-                ruleId: "element-permitted-content",
-                message:
-                    "<span> element is not permitted as content under <i-flex>",
-            },
-        ]);
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <div> element is not permitted as content under <i-flex> (element-permitted-content)
+            1 |
+            2 |             <i-flex>
+          > 3 |                 <div></div>
+              |                  ^^^
+            4 |                 <span></span>
+            5 |             </i-flex>
+            6 |
+          Selector: i-flex > div
+          error: <span> element is not permitted as content under <i-flex> (element-permitted-content)
+            2 |             <i-flex>
+            3 |                 <div></div>
+          > 4 |                 <span></span>
+              |                  ^^^^
+            5 |             </i-flex>
+            6 |
+          Selector: i-flex > span"
+        `);
     });
 
     describe("gap attribute", () => {
         it.each(GAP)("%s", async (gap) => {
             expect.assertions(1);
             const markup = /* HTML */ ` <i-flex gap="${gap}"></i-flex> `;
-            const report = await htmlvalidate.validateString(markup);
-            await expect(report).toBeValid();
+            await expect(markup).toBeValid();
         });
 
         it("invalid", async () => {
             expect.assertions(1);
             const markup = /* HTML */ ` <i-flex gap="invalid"></i-flex> `;
-            const report = await htmlvalidate.validateString(markup);
-            await expect(report).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: Attribute "gap" has invalid value "invalid" (attribute-allowed-values)
                 > 1 |  <i-flex gap="invalid"></i-flex>
                     |               ^^^^^^^

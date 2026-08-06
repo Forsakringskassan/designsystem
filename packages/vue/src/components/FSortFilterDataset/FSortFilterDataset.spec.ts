@@ -28,6 +28,7 @@ const ATTRIBUTES = {
 };
 
 function createWrapper({ slots = {} } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FSortFilterDataset, {
         props: {
             data: DATA,
@@ -55,7 +56,9 @@ const UnderlyingComponent = defineComponent({
         };
     },
     mounted() {
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         this.registerCallbackOnSort(this.callbackOnSort);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         this.registerCallbackOnMount(this.callbackSortableColumns);
     },
     setup(): FSortFilterDatasetInterface {
@@ -354,13 +357,13 @@ it("should emit event when dataset is sorted", async () => {
     const wrapper = createWrapper();
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.emitted()["datasetSorted"]).toBeTruthy();
-    expect(wrapper.emitted()["datasetSorted"]).toEqual([[DATA]]);
+    expect(wrapper.emitted().datasetSorted).toBeTruthy();
+    expect(wrapper.emitted().datasetSorted).toEqual([[DATA]]);
 
     // Sort by Column B (Stigande)
     const options = wrapper.find("select").findAll("option");
     await options[3].setValue();
-    expect(wrapper.emitted()["datasetSorted"]).toEqual([
+    expect(wrapper.emitted().datasetSorted).toEqual([
         [DATA],
         [
             [
@@ -379,7 +382,7 @@ it("should emit event with used attributes when sorting using dropdown", async (
 
     const options = wrapper.find("select").findAll("option");
     await options[3].setValue();
-    expect(wrapper.emitted()["usedSortAttributes"][0]).toEqual([
+    expect(wrapper.emitted().usedSortAttributes[0]).toEqual([
         {
             attribute: "b",
             name: "Column B",
@@ -390,7 +393,7 @@ it("should emit event with used attributes when sorting using dropdown", async (
     ]);
 
     await options[4].setValue();
-    expect(wrapper.emitted()["usedSortAttributes"][1]).toEqual([
+    expect(wrapper.emitted().usedSortAttributes[1]).toEqual([
         {
             attribute: "b",
             name: "Column B",
@@ -401,7 +404,7 @@ it("should emit event with used attributes when sorting using dropdown", async (
     ]);
 
     await options[0].setValue();
-    expect(wrapper.emitted()["usedSortAttributes"][2]).toEqual([
+    expect(wrapper.emitted().usedSortAttributes[2]).toEqual([
         {
             attribute: "",
             ascending: false,
@@ -522,38 +525,69 @@ it("should sort strings independent of case", async () => {
 describe("html-validate", () => {
     it("should require data attribute", async () => {
         expect.assertions(1);
-        await expect(
-            "<f-sort-filter-dataset></f-sort-filter-dataset>",
-        ).not.toHTMLValidate({
-            message:
-                '<f-sort-filter-dataset> is missing required "data" attribute',
-        });
+        const markup = /* HTML */ `
+            <f-sort-filter-dataset sortable-attributes>
+                <template #default></template>
+            </f-sort-filter-dataset>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-sort-filter-dataset> is missing required "data" attribute (element-required-attributes)
+            1 |
+          > 2 |             <f-sort-filter-dataset sortable-attributes>
+              |              ^^^^^^^^^^^^^^^^^^^^^
+            3 |                 <template #default></template>
+            4 |             </f-sort-filter-dataset>
+            5 |
+          Selector: f-sort-filter-dataset"
+        `);
     });
 
     it("should require sortable-attributes attribute", async () => {
         expect.assertions(1);
-        await expect(
-            "<f-sort-filter-dataset></f-sort-filter-dataset>",
-        ).not.toHTMLValidate({
-            message:
-                '<f-sort-filter-dataset> is missing required "sortable-attributes" attribute',
-        });
+        const markup = /* HTML */ `
+            <f-sort-filter-dataset data>
+                <template #default></template>
+            </f-sort-filter-dataset>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-sort-filter-dataset> is missing required "sortable-attributes" attribute (element-required-attributes)
+            1 |
+          > 2 |             <f-sort-filter-dataset data>
+              |              ^^^^^^^^^^^^^^^^^^^^^
+            3 |                 <template #default></template>
+            4 |             </f-sort-filter-dataset>
+            5 |
+          Selector: f-sort-filter-dataset"
+        `);
     });
 
     it("should require default slot", async () => {
         expect.assertions(1);
-        await expect(
-            "<f-sort-filter-dataset></f-sort-filter-dataset>",
-        ).not.toHTMLValidate({
-            message:
-                '<f-sort-filter-dataset> component requires slot "default" to be implemented',
-        });
+        const markup = /* HTML */ `
+            <f-sort-filter-dataset
+                data
+                sortable-attributes
+            ></f-sort-filter-dataset>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-sort-filter-dataset> component requires slot "default" to be implemented (vue/required-slots)
+            1 |
+          > 2 |             <f-sort-filter-dataset
+              |              ^^^^^^^^^^^^^^^^^^^^^
+            3 |                 data
+            4 |                 sortable-attributes
+            5 |             ></f-sort-filter-dataset>
+          Selector: f-sort-filter-dataset"
+        `);
     });
 
     it("html should be valid", async () => {
         expect.assertions(1);
-        await expect(
-            '<f-sort-filter-dataset data="test" sortable-attributes="test igen"><template #default></template></f-sort-filter-dataset>',
-        ).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-sort-filter-dataset data="test" sortable-attributes="test igen">
+                <template #default></template>
+            </f-sort-filter-dataset>
+        `;
+        await expect(markup).toBeValid();
     });
 });

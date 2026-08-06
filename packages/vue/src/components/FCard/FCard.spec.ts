@@ -1,28 +1,14 @@
 import { type VueWrapper, mount } from "@vue/test-utils";
-import {
-    FileSystemConfigLoader,
-    HtmlValidate,
-    cjsResolver,
-} from "html-validate/node";
 import { describe, expect, it } from "vitest";
 import FCard from "./FCard.vue";
 import "html-validate/vitest";
-
-const loader = new FileSystemConfigLoader([cjsResolver()], {
-    extends: [
-        "html-validate:recommended",
-        "html-validate-vue:recommended",
-        "@fkui/vue:recommended",
-    ],
-    plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
-});
-const htmlvalidate = new HtmlValidate(loader);
 
 function createWrapper({
     props = {},
     listeners = {},
     attrs = {},
 } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FCard, {
         attrs: { ...attrs },
         props: { ...props },
@@ -71,15 +57,13 @@ describe("html-validate", () => {
                 <template #footer></template>
             </f-card>
         `;
-        const report = await htmlvalidate.validateString(markup);
-        await expect(report).toBeValid();
+        await expect(markup).toBeValid();
     });
 
     it("should not allow invalid values", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-card></f-card> `;
-        const report = await htmlvalidate.validateString(markup);
-        await expect(report).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <f-card> component requires slot "default" to be implemented (vue/required-slots)
             > 1 |  <f-card></f-card>
                 |   ^^^^^^

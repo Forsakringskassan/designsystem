@@ -204,12 +204,12 @@ async function submitForm(wrapper: VueWrapper): Promise<void> {
     // hasFormErrors in FValidationForm
     await flushPromises(); // ValidationService.validateAllElements
     await wrapper.vm.$nextTick(); // FValidationForm.hasFormErrors.$nextTick
-    await vi.runAllTimers(); // FValidationForm.hasFormErrors.setTimeout
+    vi.runAllTimers(); // FValidationForm.hasFormErrors.setTimeout
 
     // hasFormErrors is called twice
     await flushPromises();
     await wrapper.vm.$nextTick();
-    await vi.runAllTimers();
+    vi.runAllTimers();
 
     await wrapper.vm.$nextTick(); // Remove modal from DOM
 }
@@ -320,10 +320,10 @@ it("should show delete modal when the delete button is pressed", async () => {
     );
 
     const confirmModal = wrapper.find("f-confirm-modal-stub");
-    expect(confirmModal.attributes()["isopen"]).toBe("false");
+    expect(confirmModal.attributes().isopen).toBe("false");
     const button = wrapper.find("#deleteButton");
     await button.trigger("click");
-    expect(confirmModal.attributes()["isopen"]).toBe("true");
+    expect(confirmModal.attributes().isopen).toBe("true");
 });
 
 it("should add item", async () => {
@@ -387,7 +387,7 @@ it("should not modify original item on cancel", async () => {
     await wrapper.find("#child-name-input").setValue("test child");
 
     await wrapper.find(".button-group .button--secondary").trigger("click");
-    await vi.runAllTimers();
+    vi.runAllTimers();
     await flushPromises();
 
     const updatedItem = wrapper.vm.$data.items[0];
@@ -441,7 +441,7 @@ it("should call :onCancel after cancel", async () => {
     await wrapper.find(".crud-dataset__add-button").trigger("click");
 
     await wrapper.find(".button-group .button--secondary").trigger("click");
-    await vi.runAllTimers();
+    vi.runAllTimers();
     await flushPromises();
 
     expect(wrapper.find("#cancelMessage").text()).toBe("Modalen har stängts");
@@ -620,6 +620,7 @@ describe("onCancel", () => {
 
         expect(onCancel).toHaveBeenCalledTimes(0);
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper
             .findComponent(FCrudDataset)
             .findComponent(FFormModal)
@@ -753,16 +754,22 @@ describe("formModalSize", () => {
 describe("html-validate", () => {
     it("should require default slot", async () => {
         expect.assertions(1);
-        await expect("<f-crud-dataset></f-crud-dataset>").not.toHTMLValidate({
-            message:
-                '<f-crud-dataset> component requires slot "default" to be implemented',
-        });
+        const markup = /* HTML */ ` <f-crud-dataset></f-crud-dataset> `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-crud-dataset> component requires slot "default" to be implemented (vue/required-slots)
+          > 1 |  <f-crud-dataset></f-crud-dataset>
+              |   ^^^^^^^^^^^^^^
+          Selector: f-crud-dataset"
+        `);
     });
 
     it("should html-validate", async () => {
         expect.assertions(1);
-        await expect(
-            "<f-crud-dataset><template #default></template></f-crud-dataset>",
-        ).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-crud-dataset>
+                <template #default></template>
+            </f-crud-dataset>
+        `;
+        await expect(markup).toBeValid();
     });
 });

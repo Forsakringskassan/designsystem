@@ -103,7 +103,7 @@ describe("events", () => {
         await wrapper.vm.$nextTick();
         await flushPromises();
 
-        expect(wrapper.vm.$data["gotCloseEvent"]).toBeTruthy();
+        expect(wrapper.vm.$data.gotCloseEvent).toBeTruthy();
     });
 });
 
@@ -176,10 +176,13 @@ describe("v-model", () => {
 describe("html-validate", () => {
     it("should require is-open attribute", async () => {
         expect.assertions(1);
-        await expect("<i-popup-menu></i-popup-menu>").not.toHTMLValidate({
-            ruleId: "element-required-attributes",
-            message: '<i-popup-menu> is missing required "is-open" attribute',
-        });
+        const markup = /* HTML */ ` <i-popup-menu items></i-popup-menu> `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <i-popup-menu> is missing required "is-open" attribute (element-required-attributes)
+          > 1 |  <i-popup-menu items></i-popup-menu>
+              |   ^^^^^^^^^^^^
+          Selector: i-popup-menu"
+        `);
     });
 
     it("should allow setting is-open boolean attribute", async () => {
@@ -187,7 +190,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <i-popup-menu is-open items=""></i-popup-menu>
         `;
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should not allow setting is-open value", async () => {
@@ -195,10 +198,14 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <i-popup-menu is-open="" items=""></i-popup-menu>
         `;
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "attribute-boolean-style",
-            message: 'Attribute "is-open" should omit value',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "is-open" should omit value (attribute-boolean-style)
+            1 |
+          > 2 |             <i-popup-menu is-open="" items=""></i-popup-menu>
+              |                           ^^^^^^^
+            3 |
+          Selector: i-popup-menu"
+        `);
     });
 
     it("should allow setting anchor attribute", async () => {
@@ -206,67 +213,99 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <i-popup-menu is-open items="" anchor=""></i-popup-menu>
         `;
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should require items attribute", async () => {
         expect.assertions(1);
-        await expect("<i-popup-menu></i-popup-menu>").not.toHTMLValidate({
-            ruleId: "element-required-attributes",
-            message: '<i-popup-menu> is missing required "items" attribute',
-        });
+        const markup = /* HTML */ ` <i-popup-menu is-open></i-popup-menu> `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <i-popup-menu> is missing required "items" attribute (element-required-attributes)
+          > 1 |  <i-popup-menu is-open></i-popup-menu>
+              |   ^^^^^^^^^^^^
+          Selector: i-popup-menu"
+        `);
     });
 
     it("should not be allowed in interactive components", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <button type="button">
-                <i-popup-menu items=""></i-popup-menu>
+                <i-popup-menu is-open items></i-popup-menu>
+                button text
             </button>
         `;
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                "<i-popup-menu> element is not permitted as content under <button>",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <i-popup-menu> element is not permitted as content under <button> (element-permitted-content)
+            1 |
+            2 |             <button type="button">
+          > 3 |                 <i-popup-menu is-open items></i-popup-menu>
+              |                  ^^^^^^^^^^^^
+            4 |                 button text
+            5 |             </button>
+            6 |
+          Selector: button > i-popup-menu"
+        `);
     });
 
     it("should not allow interactive children", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <i-popup-menu items="">
-                <button type="button"></button>
+            <i-popup-menu is-open items>
+                <button type="button">button text</button>
             </i-popup-menu>
         `;
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                "<button> element is not permitted as content under <i-popup-menu>",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <i-popup-menu> must not have text content (text-content)
+            1 |
+          > 2 |             <i-popup-menu is-open items>
+              |              ^^^^^^^^^^^^
+            3 |                 <button type="button">button text</button>
+            4 |             </i-popup-menu>
+            5 |
+          Selector: i-popup-menu
+          error: <button> element is not permitted as content under <i-popup-menu> (element-permitted-content)
+            1 |
+            2 |             <i-popup-menu is-open items>
+          > 3 |                 <button type="button">button text</button>
+              |                  ^^^^^^
+            4 |             </i-popup-menu>
+            5 |
+          Selector: i-popup-menu > button"
+        `);
     });
 
     it("should not allow child elements", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <i-popup-menu items="">
+            <i-popup-menu is-open items>
                 <em></em>
             </i-popup-menu>
         `;
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                "<em> element is not permitted as content under <i-popup-menu>",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <em> element is not permitted as content under <i-popup-menu> (element-permitted-content)
+            1 |
+            2 |             <i-popup-menu is-open items>
+          > 3 |                 <em></em>
+              |                  ^^
+            4 |             </i-popup-menu>
+            5 |
+          Selector: i-popup-menu > em"
+        `);
     });
 
     it("should not allow text", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <i-popup-menu items=""> mjukglass </i-popup-menu>
+            <i-popup-menu is-open items> mjukglass </i-popup-menu>
         `;
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "text-content",
-            message: "<i-popup-menu> must not have text content",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <i-popup-menu> must not have text content (text-content)
+            1 |
+          > 2 |             <i-popup-menu is-open items> mjukglass </i-popup-menu>
+              |              ^^^^^^^^^^^^
+            3 |
+          Selector: i-popup-menu"
+        `);
     });
 });

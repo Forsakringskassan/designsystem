@@ -106,7 +106,7 @@ describe("addColumn()", () => {
     });
 });
 
-it("should hide column", async () => {
+it("should hide column", () => {
     expect.assertions(1);
     const src: FTableColumnData[] = [
         {

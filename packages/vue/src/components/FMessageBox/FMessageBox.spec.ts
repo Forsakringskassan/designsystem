@@ -133,7 +133,7 @@ describe("html-validate", () => {
                 </template>
             </f-message-box>
         `;
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should report error when obsolete heading slot is used", async () => {
@@ -143,13 +143,27 @@ describe("html-validate", () => {
                 <template v-slot:heading></template>
             </f-message-box>
         `;
-        await expect(markup).not.toHTMLValidate();
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-message-box> component has no slot "heading" (vue/available-slots)
+            1 |
+            2 |             <f-message-box type="warning">
+          > 3 |                 <template v-slot:heading></template>
+              |                           ^^^^^^^^^^^^^^
+            4 |             </f-message-box>
+            5 |
+          Selector: f-message-box"
+        `);
     });
 
     it("should report error when type is missing", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-message-box></f-message-box> `;
-        await expect(markup).not.toHTMLValidate();
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-message-box> is missing required "type" attribute (element-required-attributes)
+          > 1 |  <f-message-box></f-message-box>
+              |   ^^^^^^^^^^^^^
+          Selector: f-message-box"
+        `);
     });
 
     it("should report error when type is invalid", async () => {
@@ -157,6 +171,13 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <f-message-box type="foobar"></f-message-box>
         `;
-        await expect(markup).not.toHTMLValidate();
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "type" has invalid value "foobar" (attribute-allowed-values)
+            1 |
+          > 2 |             <f-message-box type="foobar"></f-message-box>
+              |                                  ^^^^^^
+            3 |
+          Selector: f-message-box"
+        `);
     });
 });

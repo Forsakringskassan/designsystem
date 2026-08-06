@@ -4,6 +4,7 @@ import { TranslationPlugin } from "../../plugins";
 import FFileItem from "./FFileItem.vue";
 
 function createWrapper({ slots = {}, attrs = {}, props = {} }): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return shallowMount(FFileItem, {
         slots,
         attrs: { ...attrs },
@@ -55,7 +56,7 @@ describe("FileItem", () => {
         expect(foobar).toHaveBeenCalled();
     });
 
-    it("should show info when server changed type", async () => {
+    it("should show info when server changed type", () => {
         expect.assertions(1);
         const wrapper = createWrapper({
             props: { originalMimeType: "image/png" },
@@ -64,7 +65,7 @@ describe("FileItem", () => {
         expect(element.text()).toContain("(png ändrad till pdf)");
     });
 
-    it("should show custom info when server changed type", async () => {
+    it("should show custom info when server changed type", () => {
         expect.assertions(1);
         const wrapper = createWrapper({
             props: {

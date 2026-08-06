@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import FPageHeader from "./FPageHeader.vue";
 
 describe("slots", () => {
-    it("should change skipLink text via slot", async () => {
+    it("should change skipLink text via slot", () => {
         expect.assertions(1);
         const mySkipLinkText = "my SkipLink Text";
         const mySkipLinkHref = "#myhref";
@@ -100,19 +100,19 @@ describe("props", () => {
 describe("html-validate", () => {
     it("should allow usage without attributes, no attributes required", async () => {
         expect.assertions(1);
-        await expect("<f-page-header></f-page-header>").toHTMLValidate();
+        const markup = /* HTML */ ` <f-page-header></f-page-header> `;
+        await expect(markup).toBeValid();
     });
 
-    it.each`
-        slotName            | html
-        ${"skip-link-text"} | ${"<f-page-header><template #skip-link-text></template></f-page-header>"}
-        ${"logo"}           | ${"<f-page-header><template #logo></template></f-page-header>"}
-        ${"default"}        | ${"<f-page-header><template #default></template></f-page-header>"}
-        ${"right"}          | ${"<f-page-header><template #right></template></f-page-header>"}
-    `("should allow $slotName slot", async ({ html }) => {
+    it("should allow all slots", async () => {
         expect.assertions(1);
-
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-page-header><template #skip-link-text></template></f-page-header>
+            <f-page-header><template #logo></template></f-page-header>
+            <f-page-header><template #default></template></f-page-header>
+            <f-page-header><template #right></template></f-page-header>
+        `;
+        await expect(markup).toBeValid();
     });
 
     it("skip-link", async () => {
@@ -124,7 +124,7 @@ describe("html-validate", () => {
             <!-- omitted value -->
             <f-page-header skip-link></f-page-header>
         `;
-        await expect(valid).toMatchInlineCodeframe(`""`);
+        await expect(valid).toBeValid();
         await expect(invalid).toMatchInlineCodeframe(`
             "error: Attribute "skip-link" is missing value (attribute-allowed-values)
               1 |
@@ -142,7 +142,7 @@ describe("html-validate", () => {
             const markup = /* HTML */ `
                 <f-page-header header-tag="${headerTag}"></f-page-header>
             `;
-            await expect(markup).toHTMLValidate();
+            await expect(markup).toBeValid();
         });
 
         it("h2", async () => {

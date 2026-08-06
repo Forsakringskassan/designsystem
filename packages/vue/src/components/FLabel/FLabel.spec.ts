@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import FLabel from "./FLabel.vue";
 
 function createWrapper({ slots = {} } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FLabel, {
         props: { for: "FOR_ID" },
         slots: { ...slots },
@@ -79,34 +80,59 @@ describe("snapshots", () => {
 });
 
 describe("html-validate", () => {
-    it.each`
-        html
-        ${"<f-label>Label</f-label>"}
-        ${'<f-label><template #tooltip><f-tooltip screen-reader-text="Read more about FLabel"></f-tooltip></template></f-label>'}
-        ${"<f-label><template #tooltip><slot></slot></template></f-label>"}
-        ${'<f-label for="number-input"></f-label>'}
-    `("$html should be valid", async ({ html }) => {
+    it("should be valid", async () => {
         expect.assertions(1);
-
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-label>Label</f-label>
+            <f-label>
+                <template #tooltip>
+                    <f-tooltip
+                        screen-reader-text="Read more about FLabel"
+                    ></f-tooltip>
+                </template>
+            </f-label>
+            <f-label>
+                <template #tooltip> <slot></slot> </template>
+            </f-label>
+            <f-label for="number-input"></f-label>
+        `;
+        await expect(markup).toBeValid();
     });
 
-    it.each`
-        html
-        ${"<f-label><template #tooltip><div /></template></f-label>"}
-        ${'<f-label for="00-number-input"></f-label>'}
-        ${'<f-label for="number input"></f-label>'}
-    `("$html should be invalid", async ({ html }) => {
-        expect.assertions(3);
-        let catchedError;
-
-        try {
-            await expect(html).toHTMLValidate();
-        } catch (error) {
-            catchedError = error;
-        } finally {
-            expect(catchedError).toBeDefined();
-            expect(catchedError).toMatchSnapshot();
-        }
+    it("should be invalid", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-label>
+                <template #tooltip> <div></div> </template>
+            </f-label>
+            <f-label for="00-number-input"></f-label>
+            <f-label for="number input"></f-label>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <div> element is not permitted as content under slot "tooltip" (<f-label>) (element-permitted-content)
+            1 |
+            2 |             <f-label>
+          > 3 |                 <template #tooltip> <div></div> </template>
+              |                                      ^^^
+            4 |             </f-label>
+            5 |             <f-label for="00-number-input"></f-label>
+            6 |             <f-label for="number input"></f-label>
+          Selector: f-label:nth-child(1) > template > div
+          error: Attribute "for" has invalid value "00-number-input" (attribute-allowed-values)
+            3 |                 <template #tooltip> <div></div> </template>
+            4 |             </f-label>
+          > 5 |             <f-label for="00-number-input"></f-label>
+              |                           ^^^^^^^^^^^^^^^
+            6 |             <f-label for="number input"></f-label>
+            7 |
+          Selector: f-label:nth-child(2)
+          error: Attribute "for" has invalid value "number input" (attribute-allowed-values)
+            4 |             </f-label>
+            5 |             <f-label for="00-number-input"></f-label>
+          > 6 |             <f-label for="number input"></f-label>
+              |                           ^^^^^^^^^^^^
+            7 |
+          Selector: f-label:nth-child(3)"
+        `);
     });
 });

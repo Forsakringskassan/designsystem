@@ -83,15 +83,18 @@ describe("refIsElement", () => {
         ${TEMPLATE_WITH_AN_ELEMENT_ARRAY_REF}  | ${false} | ${"ref is an Element array"}
         ${TEMPLATE_WITH_A_COMPONENT_REF}       | ${false} | ${"ref is a Vue component"}
         ${TEMPLATE_WITH_A_COMPONENT_ARRAY_REF} | ${false} | ${"ref is an array of Vue components"}
-    `("should return $expected if $description", ({ template, expected }) => {
-        expect.assertions(1);
-        const wrapper = createWrapper(template);
+    `(
+        "should return $expected if $description",
+        ({ template, expected }: { template: string; expected: boolean }) => {
+            expect.assertions(1);
+            const wrapper = createWrapper(template);
 
-        const ref = wrapper.vm.$refs[REF_NAME];
-        const result = refIsElement(ref);
+            const ref = wrapper.vm.$refs[REF_NAME];
+            const result = refIsElement(ref);
 
-        expect(result).toEqual(expected);
-    });
+            expect(result).toEqual(expected);
+        },
+    );
 });
 
 describe("refIsElementArray", () => {
@@ -102,15 +105,18 @@ describe("refIsElementArray", () => {
         ${TEMPLATE_WITH_AN_ELEMENT_ARRAY_REF}  | ${true}  | ${"ref is an Element array"}
         ${TEMPLATE_WITH_A_COMPONENT_REF}       | ${false} | ${"ref is a Vue component"}
         ${TEMPLATE_WITH_A_COMPONENT_ARRAY_REF} | ${false} | ${"ref is an array of Vue components"}
-    `("should return $expected if $description", ({ template, expected }) => {
-        expect.assertions(1);
-        const wrapper = createWrapper(template);
+    `(
+        "should return $expected if $description",
+        ({ template, expected }: { template: string; expected: boolean }) => {
+            expect.assertions(1);
+            const wrapper = createWrapper(template);
 
-        const ref = wrapper.vm.$refs[REF_NAME];
-        const result = refIsElementArray(ref);
+            const ref = wrapper.vm.$refs[REF_NAME];
+            const result = refIsElementArray(ref);
 
-        expect(result).toEqual(expected);
-    });
+            expect(result).toEqual(expected);
+        },
+    );
 });
 
 describe("refIsHTMLElementArray", () => {
@@ -120,15 +126,18 @@ describe("refIsHTMLElementArray", () => {
         ${TEMPLATE_WITH_AN_ELEMENT_ARRAY_REF}  | ${true}  | ${"ref is an HTMLElement array"}
         ${TEMPLATE_WITH_A_COMPONENT_REF}       | ${false} | ${"ref is a Vue component"}
         ${TEMPLATE_WITH_A_COMPONENT_ARRAY_REF} | ${false} | ${"ref is an array of Vue components"}
-    `("should return $expected if $description", ({ template, expected }) => {
-        expect.assertions(1);
-        const wrapper = createWrapper(template);
+    `(
+        "should return $expected if $description",
+        ({ template, expected }: { template: string; expected: boolean }) => {
+            expect.assertions(1);
+            const wrapper = createWrapper(template);
 
-        const ref = wrapper.vm.$refs[REF_NAME];
-        const result = refIsHTMLElementArray(ref);
+            const ref = wrapper.vm.$refs[REF_NAME];
+            const result = refIsHTMLElementArray(ref);
 
-        expect(result).toEqual(expected);
-    });
+            expect(result).toEqual(expected);
+        },
+    );
 });
 
 describe("refIsVue", () => {
@@ -139,15 +148,18 @@ describe("refIsVue", () => {
         ${TEMPLATE_WITH_AN_ELEMENT_ARRAY_REF}  | ${false} | ${"ref is an Element array"}
         ${TEMPLATE_WITH_A_COMPONENT_REF}       | ${true}  | ${"ref is a Vue component"}
         ${TEMPLATE_WITH_A_COMPONENT_ARRAY_REF} | ${false} | ${"ref is an array of Vue components"}
-    `("should return $expected if $description", ({ template, expected }) => {
-        expect.assertions(1);
-        const wrapper = createWrapper(template);
+    `(
+        "should return $expected if $description",
+        ({ template, expected }: { template: string; expected: boolean }) => {
+            expect.assertions(1);
+            const wrapper = createWrapper(template);
 
-        const ref = wrapper.vm.$refs[REF_NAME];
-        const result = refIsVue(ref);
+            const ref = wrapper.vm.$refs[REF_NAME];
+            const result = refIsVue(ref);
 
-        expect(result).toEqual(expected);
-    });
+            expect(result).toEqual(expected);
+        },
+    );
 });
 
 describe("refIsVueArray", () => {
@@ -158,15 +170,18 @@ describe("refIsVueArray", () => {
         ${TEMPLATE_WITH_AN_ELEMENT_ARRAY_REF}  | ${false} | ${"ref is an Element array"}
         ${TEMPLATE_WITH_A_COMPONENT_REF}       | ${false} | ${"ref is a Vue component"}
         ${TEMPLATE_WITH_A_COMPONENT_ARRAY_REF} | ${true}  | ${"ref is an array of Vue components"}
-    `("should return $expected if $description", ({ template, expected }) => {
-        expect.assertions(1);
-        const wrapper = createWrapper(template);
+    `(
+        "should return $expected if $description",
+        ({ template, expected }: { template: string; expected: boolean }) => {
+            expect.assertions(1);
+            const wrapper = createWrapper(template);
 
-        const ref = wrapper.vm.$refs[REF_NAME];
-        const result = refIsVueArray(ref);
+            const ref = wrapper.vm.$refs[REF_NAME];
+            const result = refIsVueArray(ref);
 
-        expect(result).toEqual(expected);
-    });
+            expect(result).toEqual(expected);
+        },
+    );
 });
 
 describe("getElementsFromVueRef", () => {
@@ -177,15 +192,18 @@ describe("getElementsFromVueRef", () => {
         ${TEMPLATE_WITH_AN_ELEMENT_ARRAY_REF}  | ${"ref is an Element array"}
         ${TEMPLATE_WITH_A_COMPONENT_REF}       | ${"ref is a Vue component"}
         ${TEMPLATE_WITH_A_COMPONENT_ARRAY_REF} | ${"ref is an array of Vue components"}
-    `("should match snapshot if $description", ({ template }) => {
-        expect.assertions(1);
-        const wrapper = createWrapper(template);
+    `(
+        "should match snapshot if $description",
+        ({ template }: { template: string }) => {
+            expect.assertions(1);
+            const wrapper = createWrapper(template);
 
-        const ref = wrapper.vm.$refs[REF_NAME];
-        const result = getElementsFromVueRef(ref);
+            const ref = wrapper.vm.$refs[REF_NAME];
+            const result = getElementsFromVueRef(ref);
 
-        expect(result).toMatchSnapshot();
-    });
+            expect(result).toMatchSnapshot();
+        },
+    );
 });
 
 describe("getHTMLElementsFromVueRef", () => {
@@ -195,15 +213,18 @@ describe("getHTMLElementsFromVueRef", () => {
         ${TEMPLATE_WITH_AN_ELEMENT_ARRAY_REF}  | ${"ref is an HTMLElement array"}
         ${TEMPLATE_WITH_A_COMPONENT_REF}       | ${"ref is a Vue component"}
         ${TEMPLATE_WITH_A_COMPONENT_ARRAY_REF} | ${"ref is an array of Vue components"}
-    `("should match snapshot if $description", ({ template }) => {
-        expect.assertions(1);
-        const wrapper = createWrapper(template);
+    `(
+        "should match snapshot if $description",
+        ({ template }: { template: string }) => {
+            expect.assertions(1);
+            const wrapper = createWrapper(template);
 
-        const ref = wrapper.vm.$refs[REF_NAME];
-        const result = getHTMLElementsFromVueRef(ref);
+            const ref = wrapper.vm.$refs[REF_NAME];
+            const result = getHTMLElementsFromVueRef(ref);
 
-        expect(result).toMatchSnapshot();
-    });
+            expect(result).toMatchSnapshot();
+        },
+    );
 });
 
 describe("getSortedHTMLElementsFromVueRef", () => {
@@ -242,15 +263,18 @@ describe("findElementFromVueRef", () => {
         ${TEMPLATE_WITH_AN_ELEMENT_ARRAY_REF}  | ${"ref is an Element array"}
         ${TEMPLATE_WITH_A_COMPONENT_REF}       | ${"ref is a Vue component"}
         ${TEMPLATE_WITH_A_COMPONENT_ARRAY_REF} | ${"ref is an array of Vue components"}
-    `("should match snapshot if $description", ({ template }) => {
-        expect.assertions(1);
-        const wrapper = createWrapper(template);
+    `(
+        "should match snapshot if $description",
+        ({ template }: { template: string }) => {
+            expect.assertions(1);
+            const wrapper = createWrapper(template);
 
-        const ref = wrapper.vm.$refs[REF_NAME];
-        const result = findElementFromVueRef(ref);
+            const ref = wrapper.vm.$refs[REF_NAME];
+            const result = findElementFromVueRef(ref);
 
-        expect(result).toMatchSnapshot();
-    });
+            expect(result).toMatchSnapshot();
+        },
+    );
 });
 
 describe("getElementFromVueRef", () => {
@@ -259,32 +283,38 @@ describe("getElementFromVueRef", () => {
         ${TEMPLATE_WITHOUT_A_REF}              | ${"ref does not exist"}
         ${TEMPLATE_WITH_AN_ELEMENT_ARRAY_REF}  | ${"ref is an Element array"}
         ${TEMPLATE_WITH_A_COMPONENT_ARRAY_REF} | ${"ref is an array of Vue components"}
-    `("should throw error if $description", ({ template }) => {
-        expect.assertions(1);
-        const wrapper = createWrapper(template);
+    `(
+        "should throw error if $description",
+        ({ template }: { template: string }) => {
+            expect.assertions(1);
+            const wrapper = createWrapper(template);
 
-        const ref = wrapper.vm.$refs[REF_NAME];
+            const ref = wrapper.vm.$refs[REF_NAME];
 
-        const call = (): void => {
-            getElementFromVueRef(ref);
-        };
+            const call = (): void => {
+                getElementFromVueRef(ref);
+            };
 
-        expect(call).toThrow();
-    });
+            expect(call).toThrow();
+        },
+    );
 
     it.each`
         template                         | description
         ${TEMPLATE_WITH_AN_ELEMENT_REF}  | ${"ref is an Element"}
         ${TEMPLATE_WITH_A_COMPONENT_REF} | ${"ref is a Vue component"}
-    `("should match snapshot if $description", ({ template }) => {
-        expect.assertions(1);
-        const wrapper = createWrapper(template);
+    `(
+        "should match snapshot if $description",
+        ({ template }: { template: string }) => {
+            expect.assertions(1);
+            const wrapper = createWrapper(template);
 
-        const ref = wrapper.vm.$refs[REF_NAME];
-        const result = getElementFromVueRef(ref);
+            const ref = wrapper.vm.$refs[REF_NAME];
+            const result = getElementFromVueRef(ref);
 
-        expect(result).toMatchSnapshot();
-    });
+            expect(result).toMatchSnapshot();
+        },
+    );
 });
 
 describe("getHTMLElementFromVueRef", () => {
@@ -294,30 +324,36 @@ describe("getHTMLElementFromVueRef", () => {
         ${TEMPLATE_WITH_AN_ELEMENT_ARRAY_REF}  | ${"ref is an Element array"}
         ${TEMPLATE_WITH_A_COMPONENT_ARRAY_REF} | ${"ref is an array of Vue components"}
         ${TEMPLATE_WITH_AN_ELEMENT_REF}        | ${"ref is an array of Vue components"}
-    `("should throw error if $description", ({ template }) => {
-        expect.assertions(1);
-        const wrapper = createWrapper(template);
+    `(
+        "should throw error if $description",
+        ({ template }: { template: string }) => {
+            expect.assertions(1);
+            const wrapper = createWrapper(template);
 
-        const ref = wrapper.vm.$refs[REF_NAME];
+            const ref = wrapper.vm.$refs[REF_NAME];
 
-        const call = (): void => {
-            getHTMLElementFromVueRef(ref);
-        };
+            const call = (): void => {
+                getHTMLElementFromVueRef(ref);
+            };
 
-        expect(call).toThrow();
-    });
+            expect(call).toThrow();
+        },
+    );
 
     it.each`
         template                            | description
         ${TEMPLATE_WITH_AN_HTMLELEMENT_REF} | ${"ref is an Element"}
         ${TEMPLATE_WITH_A_COMPONENT_REF}    | ${"ref is a Vue component"}
-    `("should match snapshot if $description", ({ template }) => {
-        expect.assertions(1);
-        const wrapper = createWrapper(template);
+    `(
+        "should match snapshot if $description",
+        ({ template }: { template: string }) => {
+            expect.assertions(1);
+            const wrapper = createWrapper(template);
 
-        const ref = wrapper.vm.$refs[REF_NAME];
-        const result = getHTMLElementFromVueRef(ref);
+            const ref = wrapper.vm.$refs[REF_NAME];
+            const result = getHTMLElementFromVueRef(ref);
 
-        expect(result).toMatchSnapshot();
-    });
+            expect(result).toMatchSnapshot();
+        },
+    );
 });

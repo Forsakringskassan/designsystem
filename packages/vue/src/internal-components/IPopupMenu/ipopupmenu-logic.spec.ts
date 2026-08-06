@@ -18,7 +18,15 @@ describe("getNewItemIndexFromMenuAction", () => {
         ${0}  | ${MenuAction.MOVE_LAST}  | ${2}     | ${"MOVE_LAST"}
     `(
         "should return correct new index ($index => $newIndex) on menu action $desc",
-        ({ index, menuAction, newIndex }) => {
+        ({
+            index,
+            menuAction,
+            newIndex,
+        }: {
+            index: number;
+            menuAction: number;
+            newIndex: number;
+        }) => {
             expect.assertions(1);
             const result = getNewItemIndexFromMenuAction(
                 menuAction,
@@ -35,7 +43,15 @@ describe("getNewItemIndexFromMenuAction", () => {
         ${0}  | ${MenuAction.MOVE_PREV} | ${2}     | ${"MOVE_PREV"}
     `(
         "should wrap around new index ($index => $newIndex) on menu action $desc",
-        ({ index, menuAction, newIndex }) => {
+        ({
+            index,
+            menuAction,
+            newIndex,
+        }: {
+            index: number;
+            menuAction: number;
+            newIndex: number;
+        }) => {
             expect.assertions(1);
             const result = getNewItemIndexFromMenuAction(
                 menuAction,
@@ -64,6 +80,7 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
         };
         // move to first item
         await doMenuAction(MenuAction.MOVE_FIRST, target);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         expect(target.setFocusOnItem).toHaveBeenCalledWith(0); // first item index
     });
 
@@ -77,6 +94,7 @@ describe("Menu actions triggered with keyboard (doMenuAction)", () => {
         };
         // activate current item
         await doMenuAction(MenuAction.ACTIVATE, target);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         expect(target.activateItem).toHaveBeenCalledWith(1); // second item index
     });
 });

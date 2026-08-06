@@ -37,27 +37,38 @@ describe("html-validate", () => {
             ([key, value]) => `<template #${key}>${value}</template>`,
         );
 
-        await expect(
-            `<f-layout-left-panel>${slotTemplates}</f-layout-left-panel>`,
-        ).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-layout-left-panel>
+                ${slotTemplates.join("")}
+            </f-layout-left-panel>
+        `;
+        await expect(markup).toBeValid();
     });
 
     it("should require defined slots", async () => {
         expect.assertions(1);
-        const markup = `<f-layout-left-panel></f-layout-left-panel>`;
+        const markup = /* HTML */ `
+            <f-layout-left-panel></f-layout-left-panel>
+        `;
         await expect(markup).toMatchInlineCodeframe(`
-            "error: <f-layout-left-panel> component requires slot "heading" to be implemented (vue/required-slots)
-            > 1 | <f-layout-left-panel></f-layout-left-panel>
-                |  ^^^^^^^^^^^^^^^^^^^
-            Selector: f-layout-left-panel
-            error: <f-layout-left-panel> component requires slot "content" to be implemented (vue/required-slots)
-            > 1 | <f-layout-left-panel></f-layout-left-panel>
-                |  ^^^^^^^^^^^^^^^^^^^
-            Selector: f-layout-left-panel
-            error: <f-layout-left-panel> component requires slot "default" to be implemented (vue/required-slots)
-            > 1 | <f-layout-left-panel></f-layout-left-panel>
-                |  ^^^^^^^^^^^^^^^^^^^
-            Selector: f-layout-left-panel"
+          "error: <f-layout-left-panel> component requires slot "heading" to be implemented (vue/required-slots)
+            1 |
+          > 2 |             <f-layout-left-panel></f-layout-left-panel>
+              |              ^^^^^^^^^^^^^^^^^^^
+            3 |
+          Selector: f-layout-left-panel
+          error: <f-layout-left-panel> component requires slot "content" to be implemented (vue/required-slots)
+            1 |
+          > 2 |             <f-layout-left-panel></f-layout-left-panel>
+              |              ^^^^^^^^^^^^^^^^^^^
+            3 |
+          Selector: f-layout-left-panel
+          error: <f-layout-left-panel> component requires slot "default" to be implemented (vue/required-slots)
+            1 |
+          > 2 |             <f-layout-left-panel></f-layout-left-panel>
+              |              ^^^^^^^^^^^^^^^^^^^
+            3 |
+          Selector: f-layout-left-panel"
         `);
     });
 });

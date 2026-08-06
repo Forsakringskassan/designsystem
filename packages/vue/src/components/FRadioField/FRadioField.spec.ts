@@ -9,6 +9,7 @@ function createWrapper({
     slots = {},
     attrs = {},
 } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FRadioField, {
         attrs: { ...attrs },
         attachTo: createPlaceholderInDocument(),
@@ -104,7 +105,7 @@ describe("disabled", () => {
         ${false}      | ${false}       | ${"not be"}
     `(
         "should $description disabled when disabled prop is $disabledAttribute",
-        async ({ disabled, expectedResult }) => {
+        ({ disabled, expectedResult }) => {
             expect.assertions(2);
             const wrapper = createWrapper({
                 props: {
@@ -181,6 +182,7 @@ describe("events", () => {
 
         await input.trigger("click");
         expect(click).toHaveBeenCalled();
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         expect(htmlInput.focus).toHaveBeenCalled();
     });
 });

@@ -93,6 +93,7 @@ describe("snapshots", () => {
                 }),
             );
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.element).toMatchSnapshot();
@@ -179,8 +180,10 @@ describe("events", () => {
         });
         const input = wrapper.get("input");
         await input.trigger("focus");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         await input.trigger("blur");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
 
         expect(focus).toHaveBeenCalled();
@@ -209,6 +212,7 @@ describe("events", () => {
             }),
         );
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.vm.$data.validityMode).toBe("ERROR");
@@ -217,6 +221,7 @@ describe("events", () => {
             new CustomEvent<PendingValidityEvent>("pending-validity"),
         );
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.vm.$data.validityMode).toBe("INITIAL");
@@ -228,6 +233,7 @@ describe("validation", () => {
         expect.assertions(2);
         const wrapper = createWrapper({ options: { sync: false } });
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         ValidationService.setSubmitted(wrapper.element);
 
         const input = wrapper.get("input");
@@ -262,7 +268,7 @@ describe("validation", () => {
         ${false}
     `(
         `should set confirm email textfield as required = $required when first email textfield is required = $required`,
-        async ({ required }) => {
+        ({ required }) => {
             expect.assertions(1);
             const validation = required ? "v-validation.required" : "";
             const wrapper = mount(
@@ -301,6 +307,7 @@ describe("disable paste", () => {
         vi.spyOn(clipboardEvent, "preventDefault");
 
         inputElement.dispatchEvent(clipboardEvent);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         expect(clipboardEvent.preventDefault).toHaveBeenCalled();
     }
 
@@ -313,6 +320,7 @@ describe("disable paste", () => {
         vi.spyOn(clipboardEvent, "preventDefault");
 
         inputElement.dispatchEvent(clipboardEvent);
+        /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         expect(clipboardEvent.preventDefault).not.toHaveBeenCalled();
     }
 
@@ -375,14 +383,24 @@ describe("disable paste", () => {
 });
 
 describe("html-validate", () => {
-    it.each`
-        html
-        ${'<f-email-text-field type="email" max-length="80">E-post</f-email-text-field>'}
-        ${'<f-email-text-field id="email-input" max-length="80">E-post</f-email-text-field>'}
-        ${'<f-email-text-field id="email-input" max-length="80" v-validation.required>E-post</f-email-text-field>'}
-    `("$html should be valid", async ({ html }) => {
+    it("should be valid", async () => {
         expect.assertions(1);
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-email-text-field type="email" max-length="80">
+                E-post
+            </f-email-text-field>
+            <f-email-text-field id="email-input-1" max-length="80">
+                E-post
+            </f-email-text-field>
+            <f-email-text-field
+                id="email-input-2"
+                max-length="80"
+                v-validation.required
+            >
+                E-post
+            </f-email-text-field>
+        `;
+        await expect(markup).toBeValid();
     });
 
     it("should allow custom label for default and extended field", async () => {
@@ -393,6 +411,6 @@ describe("html-validate", () => {
                 <template #extended-label> Upprepa e-post </template>
             </f-email-text-field>
         `;
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

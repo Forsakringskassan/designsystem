@@ -12,6 +12,7 @@ function createWrapper({
     provide = {},
     options = {},
 } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FTableColumn, {
         attrs: { ...attrs },
         props: {
@@ -130,6 +131,7 @@ describe("when in `<thead>`", () => {
             },
         };
         const wrapper = mount(TestComponent);
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         expect(wrapper.element.querySelector("td")).toMatchInlineSnapshot(`
             <td
               class="table__column table__column--text"
@@ -143,6 +145,7 @@ describe("when in `<thead>`", () => {
         `);
 
         await wrapper.vm.$nextTick();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         expect(wrapper.element.querySelector("tr")).toMatchInlineSnapshot(`
             <tr>
               <!--v-if-->
@@ -150,7 +153,7 @@ describe("when in `<thead>`", () => {
         `);
     });
 
-    it("should not throw on undefined object in content", async () => {
+    it("should not throw on undefined object in content", () => {
         expect.assertions(1);
         const TestComponent = {
             components: { FTableColumn },
@@ -176,7 +179,7 @@ describe("when in `<thead>`", () => {
                 };
             },
         };
-        expect(async () => {
+        expect(() => {
             mount(TestComponent);
         }).not.toThrow();
     });
@@ -317,7 +320,7 @@ describe("when in `<thead>`", () => {
         );
     });
 
-    it("should throw error if both shrink and expand is enabled at the same time", async () => {
+    it("should throw error if both shrink and expand is enabled at the same time", () => {
         expect.assertions(1);
         /* prevent vue from dumping the error on stdout */
         vi.spyOn(console, "error").mockImplementation(() => undefined);
@@ -351,50 +354,91 @@ describe("when in `<thead>`", () => {
 
 describe("html-validate", () => {
     it("should require title attribute", async () => {
-        expect.assertions(2);
-        await expect("<f-table-column></f-table-column>").not.toHTMLValidate({
-            message: '<f-table-column> is missing required "title" attribute',
-        });
-        await expect(
-            '<f-table-column title=""></f-table-column>',
-        ).not.toHTMLValidate({
-            message: 'Attribute "title" has invalid value ""',
-        });
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-table-column></f-table-column>
+            <f-table-column title=""></f-table-column>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-table-column> is missing required "title" attribute (element-required-attributes)
+            1 |
+          > 2 |             <f-table-column></f-table-column>
+              |              ^^^^^^^^^^^^^^
+            3 |             <f-table-column title=""></f-table-column>
+            4 |
+          Selector: f-table-column:nth-child(1)
+          error: Attribute "title" has invalid value "" (attribute-allowed-values)
+            1 |
+            2 |             <f-table-column></f-table-column>
+          > 3 |             <f-table-column title=""></f-table-column>
+              |                             ^^^^^
+            4 |
+          Selector: f-table-column:nth-child(2)"
+        `);
     });
 
     it("should not allow invalid types", async () => {
         expect.assertions(1);
-        await expect(
-            '<f-table-column type="foobar"></f-table-column>',
-        ).not.toHTMLValidate({
-            message: 'Attribute "type" has invalid value "foobar"',
-        });
+        const markup = /* HTML */ `
+            <f-table-column title="Column title" type="foobar"></f-table-column>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "type" has invalid value "foobar" (attribute-allowed-values)
+            1 |
+          > 2 |             <f-table-column title="Column title" type="foobar"></f-table-column>
+              |                                                        ^^^^^^
+            3 |
+          Selector: f-table-column"
+        `);
     });
 
     it("should not allow empty description", async () => {
         expect.assertions(1);
-        await expect(
-            '<f-table-column description=""></f-table-column>',
-        ).not.toHTMLValidate({
-            message: 'Attribute "description" has invalid value ""',
-        });
+        const markup = /* HTML */ `
+            <f-table-column
+                title="Column title"
+                description=""
+            ></f-table-column>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "description" has invalid value "" (attribute-allowed-values)
+            2 |             <f-table-column
+            3 |                 title="Column title"
+          > 4 |                 description=""
+              |                 ^^^^^^^^^^^
+            5 |             ></f-table-column>
+            6 |
+          Selector: f-table-column"
+        `);
     });
 
     it("should not allow flow content", async () => {
         expect.assertions(1);
-        await expect(
-            "<f-table-column><div></div></f-table-column>",
-        ).not.toHTMLValidate({
-            message:
-                "<div> element is not permitted as content under <f-table-column>",
-        });
+        const markup = /* HTML */ `
+            <f-table-column title="Column title">
+                <div></div>
+            </f-table-column>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <div> element is not permitted as content under <f-table-column> (element-permitted-content)
+            1 |
+            2 |             <f-table-column title="Column title">
+          > 3 |                 <div></div>
+              |                  ^^^
+            4 |             </f-table-column>
+            5 |
+          Selector: f-table-column > div"
+        `);
     });
 
     it("should allow phrasing content", async () => {
         expect.assertions(1);
-        await expect(
-            '<f-table-column name="foo" title="Foo"><span></span></f-table-column>',
-        ).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-table-column name="foo" title="Foo">
+                <span></span>
+            </f-table-column>
+        `;
+        await expect(markup).toBeValid();
     });
 
     it("should allow button content", async () => {
@@ -404,6 +448,6 @@ describe("html-validate", () => {
                 <button type="button">Foo</button>
             </f-table-column>
         `;
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

@@ -96,6 +96,7 @@ describe("snapshots", () => {
                 }),
             );
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.element).toMatchSnapshot();
@@ -298,6 +299,7 @@ describe("events", () => {
             }),
         );
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.vm.$data.validityMode).toBe("ERROR");
@@ -306,6 +308,7 @@ describe("events", () => {
             new CustomEvent<PendingValidityEvent>("pending-validity"),
         );
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.vm.$data.validityMode).toBe("INITIAL");
@@ -332,7 +335,7 @@ it("should warn the user that the maximum string length limit is near", async ()
 });
 
 describe("element should be possible to disable with prop disabled", () => {
-    it("element should be disabled with prop", async () => {
+    it("element should be disabled with prop", () => {
         expect.assertions(1);
         const wrapper = mount(FTextareaField, {
             propsData: { disabled: true },
@@ -341,7 +344,7 @@ describe("element should be possible to disable with prop disabled", () => {
         expect(element.disabled).toBeTruthy();
     });
 
-    it("element should be enabled without prop", async () => {
+    it("element should be enabled without prop", () => {
         expect.assertions(1);
         const wrapper = mount(FTextareaField, {
             propsData: { disabled: false },
@@ -352,30 +355,60 @@ describe("element should be possible to disable with prop disabled", () => {
 });
 
 describe("html-validate", () => {
-    it.each`
-        html
-        ${'<f-textarea-field maxlength="10" soft-limit="3">Label</f-textarea-field>'}
-        ${'<f-textarea-field auto-resize max-rows="6" resizable>Label</f-textarea-field>'}
-    `("$html should be valid", async ({ html }) => {
+    it("should be valid", async () => {
         expect.assertions(1);
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-textarea-field maxlength="10" soft-limit="3">
+                Label
+            </f-textarea-field>
+            <f-textarea-field auto-resize max-rows="6" resizable>
+                Label
+            </f-textarea-field>
+        `;
+        await expect(markup).toBeValid();
     });
 
-    it.each`
-        html
-        ${"<f-textarea-field>Label<template #tooltip><div /></template></f-textarea-field>"}
-        ${'<f-textarea-field maxlength="100 000" soft-limit="30 000">Label</f-textarea-field>'}
-    `("$html should be invalid", async ({ html }) => {
-        expect.assertions(3);
-        let catchedError;
-
-        try {
-            await expect(html).toHTMLValidate();
-        } catch (error) {
-            catchedError = error;
-        } finally {
-            expect(catchedError).toBeDefined();
-            expect(catchedError).toMatchSnapshot();
-        }
+    it("should be invalid", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-textarea-field>
+                Label
+                <template #tooltip>
+                    <div></div>
+                </template>
+            </f-textarea-field>
+            <f-textarea-field maxlength="100 000" soft-limit="30 000">
+                Label
+            </f-textarea-field>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <div> element is not permitted as content under slot "tooltip" (<f-textarea-field>) (element-permitted-content)
+            3 |                 Label
+            4 |                 <template #tooltip>
+          > 5 |                     <div></div>
+              |                      ^^^
+            6 |                 </template>
+            7 |             </f-textarea-field>
+            8 |             <f-textarea-field maxlength="100 000" soft-limit="30 000">
+          Selector: f-textarea-field:nth-child(1) > template > div
+          error: Attribute "maxlength" has invalid value "100 000" (attribute-allowed-values)
+             6 |                 </template>
+             7 |             </f-textarea-field>
+          >  8 |             <f-textarea-field maxlength="100 000" soft-limit="30 000">
+               |                                          ^^^^^^^
+             9 |                 Label
+            10 |             </f-textarea-field>
+            11 |
+          Selector: f-textarea-field:nth-child(2)
+          error: Attribute "soft-limit" has invalid value "30 000" (attribute-allowed-values)
+             6 |                 </template>
+             7 |             </f-textarea-field>
+          >  8 |             <f-textarea-field maxlength="100 000" soft-limit="30 000">
+               |                                                               ^^^^^^
+             9 |                 Label
+            10 |             </f-textarea-field>
+            11 |
+          Selector: f-textarea-field:nth-child(2)"
+        `);
     });
 });

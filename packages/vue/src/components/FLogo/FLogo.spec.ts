@@ -1,9 +1,4 @@
 import { mount } from "@vue/test-utils";
-import {
-    FileSystemConfigLoader,
-    HtmlValidate,
-    cjsResolver,
-} from "html-validate/node";
 import { describe, expect, it } from "vitest";
 import "html-validate/vitest";
 import FLogo from "./FLogo.vue";
@@ -50,34 +45,20 @@ describe("size prop", () => {
 });
 
 describe("html-validate", () => {
-    const loader = new FileSystemConfigLoader([cjsResolver()], {
-        extends: [
-            "html-validate:recommended",
-            "html-validate-vue:recommended",
-            "@fkui/vue:recommended",
-        ],
-        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
-    });
-    const htmlvalidate = new HtmlValidate(loader);
-
     it("should allow setting correct size values", async () => {
-        expect.assertions(3);
-        await expect(
-            /* HTML */ `<f-logo size="small">foo</f-logo>`,
-        ).toHTMLValidate();
-        await expect(
-            /* HTML */ `<f-logo size="large">foo</f-logo>`,
-        ).toHTMLValidate();
-        await expect(
-            /* HTML */ `<f-logo size="responsive">foo</f-logo>`,
-        ).toHTMLValidate();
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-logo size="small">foo</f-logo>
+            <f-logo size="large">foo</f-logo>
+            <f-logo size="responsive">foo</f-logo>
+        `;
+        await expect(markup).toBeValid();
     });
 
     it("should report error when size value is invalid", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `<f-logo size="huge">foo</f-logo>`;
-        const report = await htmlvalidate.validateString(markup);
-        await expect(report).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: Attribute "size" has invalid value "huge" (attribute-allowed-values)
             > 1 | <f-logo size="huge">foo</f-logo>
                 |               ^^^^
@@ -87,14 +68,14 @@ describe("html-validate", () => {
 
     it("should require text content", async () => {
         expect.assertions(2);
-        await expect(/* HTML */ `<f-logo>foo</f-logo>`).toHTMLValidate();
-        const markup = /* HTML */ `<f-logo></f-logo>`;
-        const report = await htmlvalidate.validateString(markup);
-        await expect(report).toMatchInlineCodeframe(`
-            "error: <f-logo> must have text content (text-content)
-            > 1 | <f-logo></f-logo>
-                |  ^^^^^^
-            Selector: f-logo"
+        const validMarkup = /* HTML */ ` <f-logo>foo</f-logo> `;
+        const invalidMarkup = /* HTML */ ` <f-logo></f-logo> `;
+        await expect(validMarkup).toBeValid();
+        await expect(invalidMarkup).toMatchInlineCodeframe(`
+          "error: <f-logo> must have text content (text-content)
+          > 1 |  <f-logo></f-logo>
+              |   ^^^^^^
+          Selector: f-logo"
         `);
     });
 });

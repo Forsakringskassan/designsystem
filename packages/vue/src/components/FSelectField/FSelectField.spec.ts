@@ -26,6 +26,7 @@ function createWrapper({
     slots = {},
     attrs = {},
 } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FSelectField, {
         attrs: { ...attrs, id: "select-field" },
         props: { ...props },
@@ -88,6 +89,7 @@ describe("snapshots", () => {
                 attrs: { id: "elementId" },
             });
 
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.element.dispatchEvent(
                 new CustomEvent<ValidityEvent>("validity", {
                     detail: {
@@ -229,33 +231,70 @@ describe("events", () => {
 });
 
 describe("html-validate", () => {
-    it.each`
-        html
-        ${"<f-select-field><template #label>label</template><option>Apple</option></f-select-field>"}
-        ${"<f-select-field><template #label>label</template><template #default>default</template><option>Apple</option></f-select-field>"}
-        ${'<f-select-field name="select-field"><template #label>label</template><option>Apple</option></f-select-field>'}
-    `("$html should be valid", async ({ html }) => {
+    it("should be valid", async () => {
         expect.assertions(1);
-
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-select-field>
+                <template #label>label</template>
+                <option>Apple</option>
+            </f-select-field>
+            <f-select-field>
+                <template #label>label</template>
+                <template #default>default</template>
+                <option>Apple</option>
+            </f-select-field>
+            <f-select-field name="select-field">
+                <template #label>label</template>
+                <option>Apple</option>
+            </f-select-field>
+        `;
+        await expect(markup).toBeValid();
     });
 
-    it.each`
-        html
-        ${"<f-select-field><template #tooltip><div /></template><template #label>label</template></f-select-field>"}
-        ${"<f-select-field><template #label>label</template><template #default><div></div></template><option>Apple</option></f-select-field>"}
-        ${"<f-select-field><template #label>label</template><div></div></f-select-field>"}
-    `("$html should be invalid", async ({ html }) => {
-        expect.assertions(3);
-        let catchedError;
-
-        try {
-            await expect(html).toHTMLValidate();
-        } catch (error) {
-            catchedError = error;
-        } finally {
-            expect(catchedError).toBeDefined();
-            expect(catchedError).toMatchSnapshot();
-        }
+    it("should be invalid", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-select-field>
+                <template #tooltip> <div></div> </template>
+                <template #label> label </template>
+            </f-select-field>
+            <f-select-field>
+                <template #label> label </template>
+                <template #default> <div></div> </template>
+                <option>Apple</option>
+            </f-select-field>
+            <f-select-field>
+                <template #label> label </template>
+                <div></div>
+            </f-select-field>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <div> element is not permitted as content under slot "tooltip" (<f-select-field>) (element-permitted-content)
+            1 |
+            2 |             <f-select-field>
+          > 3 |                 <template #tooltip> <div></div> </template>
+              |                                      ^^^
+            4 |                 <template #label> label </template>
+            5 |             </f-select-field>
+            6 |             <f-select-field>
+          Selector: f-select-field:nth-child(1) > template:nth-child(1) > div
+          error: <div> element is not permitted as content under slot "default" (<f-select-field>) (element-permitted-content)
+             6 |             <f-select-field>
+             7 |                 <template #label> label </template>
+          >  8 |                 <template #default> <div></div> </template>
+               |                                      ^^^
+             9 |                 <option>Apple</option>
+            10 |             </f-select-field>
+            11 |             <f-select-field>
+          Selector: f-select-field:nth-child(2) > template:nth-child(2) > div
+          error: <div> element is not permitted as content under <f-select-field> (element-permitted-content)
+            11 |             <f-select-field>
+            12 |                 <template #label> label </template>
+          > 13 |                 <div></div>
+               |                  ^^^
+            14 |             </f-select-field>
+            15 |
+          Selector: f-select-field:nth-child(3) > div"
+        `);
     });
 });

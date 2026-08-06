@@ -1,9 +1,5 @@
 import { defineComponent } from "vue";
-import {
-    type ValidatableHTMLElement,
-    type ValidatorConfigs,
-    ValidationService,
-} from "@fkui/logic";
+import { type ValidatorConfigs, ValidationService } from "@fkui/logic";
 import { type VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { afterEach, describe, expect, it, vi } from "vitest";
@@ -26,7 +22,7 @@ const validateElement = vi.spyOn(ValidationService, "validateElement");
 
 ValidationService.setErrorMessages({ required: "REQUIRED" });
 
-afterEach(async () => {
+afterEach(() => {
     vi.clearAllMocks();
 });
 
@@ -42,6 +38,7 @@ const BaseComponent = defineComponent({
             exists: true,
             componentUnmountCalled: false,
             show: false,
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- mutable */
             validatorConfigs: {
                 required: { errorMessage: "INITIAL MESSAGE" },
             } as ValidatorConfigs,
@@ -260,6 +257,7 @@ it("should call ValidationService.removeValidatorsFromElement and emit 'componen
     `;
     const wrapper = createWrapper(markup);
     const textField = wrapper.getComponent(FTextField);
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     const validatableElement = textField.element.querySelector("input");
     wrapper.vm.$data.exists = false;
     await flushPromises();
@@ -303,7 +301,7 @@ it("should add prefix to component-validity event errorMessage when inserted to 
 
     const input = wrapper.get("input");
     const vevent: ComponentValidityEvent = {
-        target: input.element as ValidatableHTMLElement,
+        target: input.element,
         elementId: input.element.id,
         isValid: false,
         validationMessage: "bad",

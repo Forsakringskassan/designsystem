@@ -12,6 +12,7 @@ const TestComponent = defineComponent({
     },
     data() {
         return {
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- technical debt */
             myModel: "" as string | number,
         };
     },

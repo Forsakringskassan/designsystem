@@ -21,6 +21,7 @@ function createWrapper({
     attrs = {},
     stubs = [],
 } = {}): VueWrapper {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FFieldset, {
         attrs: { ...attrs },
         props: { id: "someId", name: "someName", ...props },
@@ -41,9 +42,11 @@ function dispatchValidityEvent(
         target = document.createElement("input");
         target.setAttribute("id", "elementId");
         target.setAttribute("type", "radio");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.append(target);
     }
 
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
     wrapper.element.dispatchEvent(
         new CustomEvent<ValidityEvent>("validity", {
             detail: {
@@ -100,7 +103,13 @@ describe("snapshots", () => {
         ${"INITIAL"} | ${false}
     `(
         "should match snapshot when validityMode is $validityMode",
-        async ({ validityMode, isValid }) => {
+        async ({
+            validityMode,
+            isValid,
+        }: {
+            validityMode: ValidityMode;
+            isValid: boolean;
+        }) => {
             expect.assertions(1);
             const wrapper = createWrapper({
                 slots: { label: "Label" },
@@ -232,6 +241,7 @@ describe("onValidity should only handle events from itself", () => {
             attrs: { id: "elementId" },
         });
         const onComponentValidityListener = vi.fn();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.addEventListener(
             "component-validity",
             onComponentValidityListener,
@@ -259,20 +269,29 @@ describe("onValidity should only handle events from itself", () => {
         ${"select"}   | ${undefined}  | ${"should not"}
     `(
         "$description dispatch component-validity event if element is $element and type is $inputType",
-        ({ element, inputType }) => {
+        ({
+            element,
+            inputType,
+        }: {
+            element: "input" | "textarea" | "select";
+            inputType: string | undefined;
+        }) => {
             expect.assertions(1);
             const wrapper = createWrapper({
                 slots: { label: "Label" },
                 attrs: { id: "elementId" },
             });
             const onComponentValidityListener = vi.fn();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.element.addEventListener(
                 "component-validity",
                 onComponentValidityListener,
             );
             const inputElement = document.createElement(element);
             inputElement.setAttribute("id", "elementId");
+            /* @ts-expect-error -- technical debt */
             inputElement.setAttribute("type", inputType);
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.element.append(inputElement);
 
             dispatchValidityEvent(wrapper, false, "INITIAL", inputElement);
@@ -286,19 +305,21 @@ describe("onValidity should only handle events from itself", () => {
         ${"checkbox"}
     `(
         "should not dispatch component-validity event if input $inputType belongs to nestled fieldset",
-        ({ inputType }) => {
+        ({ inputType }: { inputType: string }) => {
             expect.assertions(1);
             const wrapper = createWrapper({
                 slots: { label: "Label" },
                 attrs: { id: "elementId" },
             });
             const onComponentValidityListener = vi.fn();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.element.addEventListener(
                 "component-validity",
                 onComponentValidityListener,
             );
 
             const fieldset = document.createElement("fieldset");
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.element.append(fieldset);
 
             const inputElement = document.createElement("input");
@@ -321,6 +342,7 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
             props: { id: "elementId" },
         });
         const onComponentValidityListener = vi.fn();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.addEventListener(
             "component-validity",
             onComponentValidityListener,
@@ -349,6 +371,7 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
             props: { id: "elementId" },
         });
         const onComponentValidityListener = vi.fn();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.addEventListener(
             "component-validity",
             onComponentValidityListener,
@@ -356,10 +379,12 @@ describe("onValidity should set focusElementId in ComponentValidityEvent", () =>
 
         const inputElement1 = document.createElement("input");
         inputElement1.setAttribute("id", "child1Id");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.append(inputElement1);
 
         const inputElement2 = document.createElement("input");
         inputElement2.setAttribute("id", "child2Id");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.append(inputElement2);
 
         dispatchValidityEvent(
@@ -390,7 +415,7 @@ describe("html-validate", () => {
                     </f-fieldset>
                 </div>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not be allowed where phrasing is expected", async () => {
@@ -402,7 +427,7 @@ describe("html-validate", () => {
                     </f-fieldset>
                 </span>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
     });
 
@@ -414,7 +439,7 @@ describe("html-validate", () => {
                     <template #label> Label </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not allow empty name", async () => {
@@ -455,7 +480,7 @@ describe("html-validate", () => {
                     <template #label> Label </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not allow multiple content classes", async () => {
@@ -484,7 +509,7 @@ describe("html-validate", () => {
                     <template #label> Label </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not allow multiple label classes", async () => {
@@ -528,7 +553,7 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should allow headings in label slot", async () => {
@@ -540,8 +565,7 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not allow block elements in label slot", async () => {
@@ -576,7 +600,7 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not allow block elements in description slot", async () => {
@@ -614,7 +638,7 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not allow arbitrary elements in tooltip slot", async () => {

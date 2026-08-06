@@ -15,7 +15,7 @@ beforeEach(() => {
 it("should not be enumerable", () => {
     expect.assertions(1);
     const item = { name: "foo" };
-    setItemIdentifier(item, undefined);
+    setItemIdentifier(item);
     expect(Object.keys(item)).toMatchInlineSnapshot(`
             [
               "name",

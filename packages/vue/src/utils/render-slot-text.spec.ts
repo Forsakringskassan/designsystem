@@ -23,7 +23,7 @@ const InnerComponent = defineComponent({
     },
     computed: {
         rendered(): string | undefined {
-            const slot = this.$slots["source"];
+            const slot = this.$slots.source;
             return renderSlotText(slot, this.scopeData, this.options);
         },
     },

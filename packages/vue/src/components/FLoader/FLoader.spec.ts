@@ -113,33 +113,42 @@ describe("props", () => {
 });
 
 describe("html-validate", () => {
-    it.each`
-        html
-        ${"<f-loader></f-loader>"}
-        ${"<f-loader>Loader</f-loader>"}
-        ${"<f-loader><template> Read more about FLoader</template></f-loader>"}
-    `("$html should be valid", async ({ html }) => {
+    it("should be valid", async () => {
         expect.assertions(1);
-
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-loader></f-loader>
+            <f-loader>Loader</f-loader>
+            <f-loader>
+                <template> Read more about FLoader </template>
+            </f-loader>
+        `;
+        await expect(markup).toBeValid();
     });
 
-    it.each`
-        html
-        ${"<f-loader><div></div></f-loader>"}
-        ${"<f-loader><p></p></f-loader>"}
-        ${"<f-loader><button></button></f-loader>"}
-    `("$html should be invalid", async ({ html }) => {
-        expect.assertions(3);
-        let catchedError;
-
-        try {
-            await expect(html).toHTMLValidate();
-        } catch (error) {
-            catchedError = error;
-        } finally {
-            expect(catchedError).toBeDefined();
-            expect(catchedError).toMatchSnapshot();
-        }
+    it("should be invalid", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-loader> <div></div> </f-loader>
+            <f-loader> <p></p> </f-loader>
+            <f-loader> <button type="button">button</button> </f-loader>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <div> element is not permitted as content under <f-loader> (element-permitted-content)
+            1 |
+          > 2 |             <f-loader> <div></div> </f-loader>
+              |                         ^^^
+            3 |             <f-loader> <p></p> </f-loader>
+            4 |             <f-loader> <button type="button">button</button> </f-loader>
+            5 |
+          Selector: f-loader:nth-child(1) > div
+          error: <p> element is not permitted as content under <f-loader> (element-permitted-content)
+            1 |
+            2 |             <f-loader> <div></div> </f-loader>
+          > 3 |             <f-loader> <p></p> </f-loader>
+              |                         ^
+            4 |             <f-loader> <button type="button">button</button> </f-loader>
+            5 |
+          Selector: f-loader:nth-child(2) > p"
+        `);
     });
 });

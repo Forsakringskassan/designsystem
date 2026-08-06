@@ -29,7 +29,7 @@ const MockModal = defineComponent({
         const children: VNodeArrayChildren = [
             h("span", this.content ?? "A descriptive text"),
             createButtonElement("Close me!", () => {
-                const haveData = this.payload || this.reason;
+                const haveData = this.payload ?? this.reason;
                 this.$emit(
                     "close",
                     haveData
@@ -66,7 +66,7 @@ class PageObject {
     }
 
     public props(): MockProps {
-        return JSON.parse(this.element?.dataset.props ?? "{}");
+        return JSON.parse(this.element?.dataset.props ?? "{}") as MockProps;
     }
 }
 

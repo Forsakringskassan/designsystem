@@ -93,6 +93,7 @@ describe("snapshots", () => {
                 }),
             );
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.element).toMatchSnapshot();
@@ -182,8 +183,10 @@ describe("events", () => {
 
         const input = wrapper.get("input");
         await input.trigger("focus");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
         await input.trigger("blur");
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
 
         expect(focus).toHaveBeenCalled();
@@ -212,6 +215,7 @@ describe("events", () => {
             }),
         );
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.vm.$data.validityMode).toBe("ERROR");
@@ -220,6 +224,7 @@ describe("events", () => {
             new CustomEvent<PendingValidityEvent>("pending-validity"),
         );
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.vm.$data.validityMode).toBe("INITIAL");
@@ -230,6 +235,7 @@ describe("validation", () => {
     it("should display correct error message when multiple validators", async () => {
         expect.assertions(2);
         const wrapper = createWrapper({ options: { sync: false } });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         ValidationService.setSubmitted(wrapper.element);
         await flushPromises();
 
@@ -263,7 +269,7 @@ describe("validation", () => {
         ${false}
     `(
         `should set confirm phone textfield as required = $required when first phone textfield is required = $required`,
-        async ({ required }) => {
+        ({ required }) => {
             expect.assertions(1);
             const validation = required ? "v-validation.required" : "";
             const wrapper = mount(
@@ -315,13 +321,23 @@ it("should be able to set custom label at default and extended slot", () => {
 });
 
 describe("html-validate", () => {
-    it.each`
-        html
-        ${'<f-phone-text-field maxlength="80">Telefonnummer</f-phone-text-field>'}
-        ${'<f-phone-text-field id="phone-input" maxlength="80">Telefonnummer</f-phone-text-field>'}
-        ${'<f-phone-text-field id="phone-input" v-validation.required maxlength="80">Telefonnummer</f-phone-text-field>'}
-    `("$html should be valid", async ({ html }) => {
+    it("should be valid", async () => {
         expect.assertions(1);
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-phone-text-field maxlength="80">
+                Telefonnummer
+            </f-phone-text-field>
+            <f-phone-text-field id="phone-input-1" maxlength="80">
+                Telefonnummer
+            </f-phone-text-field>
+            <f-phone-text-field
+                id="phone-input-2"
+                v-validation.required
+                maxlength="80"
+            >
+                Telefonnummer
+            </f-phone-text-field>
+        `;
+        await expect(markup).toBeValid();
     });
 });

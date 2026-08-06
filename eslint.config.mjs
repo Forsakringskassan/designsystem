@@ -52,7 +52,6 @@ export default [
         ignores: [
             "**/*.d.ts",
             "**/*.cy.ts",
-            "**/*.spec.ts",
             "**/jest.setup.ts",
             "**/vitest.setup.ts",
             "**/vite.config.ts",

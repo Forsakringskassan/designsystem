@@ -13,8 +13,15 @@ describe("parse", () => {
         ${"20200232"}   | ${undefined}    | ${"invalid value with correct format should not be formatted"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({
+            value,
+            expected,
+        }: {
+            value: string | undefined;
+            expected: string | undefined;
+        }) => {
             expect.assertions(1);
+            /* @ts-expect-error -- technical debt, we're lying to the type system */
             expect(parseDate(value)).toEqual(expected);
         },
     );

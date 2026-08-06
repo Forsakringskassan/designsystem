@@ -24,14 +24,14 @@ describe("page counter", () => {
             });
             const selector = paginator.pageCounter();
 
-            it(`should display "${expectedText}" when "aria-hidden"`, () => {
+            it(`should display "${String(expectedText)}" when "aria-hidden"`, () => {
                 expect.assertions(1);
                 expect(wrapper.get(`${selector} [aria-hidden]`).text()).toEqual(
                     expectedText,
                 );
             });
 
-            it(`should display "${expectedAriaText}" for screen readers`, () => {
+            it(`should display "${String(expectedAriaText)}" for screen readers`, () => {
                 expect.assertions(1);
                 expect(wrapper.get(`${selector} .sr-only`).text()).toEqual(
                     expectedAriaText,
@@ -49,7 +49,15 @@ describe("aria-current", () => {
         ${3} | ${2}        | ${"false"}
     `(
         'should have value "$expectedValue" for page button $page when current page is page $currentPage',
-        ({ page, currentPage, expectedValue }) => {
+        ({
+            page,
+            currentPage,
+            expectedValue,
+        }: {
+            page: number;
+            currentPage: number;
+            expectedValue: string;
+        }) => {
             expect.assertions(1);
             const wrapper = mount(FPaginator, {
                 props: {
@@ -200,6 +208,7 @@ describe("events", () => {
                 numberOfPages: 5,
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.addEventListener("paginateDataset:previous", listener);
 
         await wrapper.get(paginator.previousPageButton()).trigger("click");
@@ -216,6 +225,7 @@ describe("events", () => {
                 numberOfPages: 5,
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.addEventListener("paginateDataset:next", listener);
 
         await wrapper.get(paginator.nextPageButton()).trigger("click");
@@ -232,6 +242,7 @@ describe("events", () => {
                 numberOfPages: 5,
             },
         });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.element.addEventListener("paginateDataset:page", listener);
 
         await wrapper.get(paginator.pageButtonByText(3)).trigger("click");

@@ -33,9 +33,10 @@ describe("validation", () => {
         ${"test.testorsson example.net"}         | ${false} | ${"email address without at-sign should be invalid"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected }) => {
+        ({ value, expected }: { value: unknown; expected: boolean }) => {
             expect.assertions(1);
             const config = {};
+            /* @ts-expect-error -- technical debt, we're lying to the type system */
             expect(emailValidator.validation(value, element, config)).toEqual(
                 expected,
             );

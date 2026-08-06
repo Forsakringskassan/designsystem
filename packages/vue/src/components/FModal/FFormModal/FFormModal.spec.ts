@@ -118,6 +118,7 @@ describe("events", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
         expect(wrapper.emitted().submit).toBeTruthy();
         expect(wrapper.emitted().close).toBeTruthy();
@@ -134,6 +135,7 @@ describe("events", () => {
         });
         expect(beforeSubmit).toHaveBeenCalledTimes(0);
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
 
         expect(beforeSubmit).toHaveBeenCalledTimes(1);
@@ -151,6 +153,7 @@ describe("events", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
 
         expect(wrapper.emitted().submit).toBeFalsy();
@@ -168,6 +171,7 @@ describe("events", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
 
         expect(wrapper.emitted().submit).toBeTruthy();
@@ -185,6 +189,7 @@ describe("events", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
 
         expect(wrapper.emitted().submit).toBeTruthy();
@@ -198,6 +203,7 @@ describe("events", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- technical debt */
         await doTriggerSubmit(wrapper);
 
         expect(wrapper.emitted().submit).toBeTruthy();
@@ -228,8 +234,8 @@ describe("events", () => {
         await wrapper.vm.$nextTick();
         await flushPromises();
 
-        expect(wrapper.vm.$data["field1"]).toBe("foo");
-        expect(wrapper.vm.$data["field2"]).toBe("bar");
+        expect(wrapper.vm.$data.field1).toBe("foo");
+        expect(wrapper.vm.$data.field2).toBe("bar");
     });
 });
 
@@ -309,7 +315,7 @@ describe("props", () => {
             ${"fullscreen"} | ${"modal__dialog-container--fullwidth"}
         `(
             "'$size' should be reflected in applied class name.",
-            async ({ size, className }) => {
+            ({ size, className }) => {
                 expect.assertions(1);
                 const wrapper = mount(FFormModal, {
                     props: {
@@ -322,7 +328,7 @@ describe("props", () => {
         );
     });
 
-    it("should passs ariaCloseText to FModal", async () => {
+    it("should passs ariaCloseText to FModal", () => {
         expect.assertions(1);
         const wrapper = mount(FFormModal, {
             props: {
@@ -333,7 +339,7 @@ describe("props", () => {
         });
 
         const fmodal = wrapper.getComponent(FModal);
-        expect(fmodal.vm.$props["ariaCloseText"]).toBe("CLOSE_TEXT");
+        expect(fmodal.vm.$props.ariaCloseText).toBe("CLOSE_TEXT");
     });
 
     it("should append screenreader text if given", () => {
@@ -373,17 +379,19 @@ describe("props", () => {
 describe("html-validate", () => {
     it("should allow usage without attributes, no attributes required", async () => {
         expect.assertions(1);
-        await expect("<f-form-modal></f-form-modal>").toHTMLValidate();
+        const markup = /* HTML */ ` <f-form-modal></f-form-modal> `;
+        await expect(markup).toBeValid();
     });
 
     it("should not allow an invalid form-id attribute", async () => {
         expect.assertions(1);
-        await expect(
-            '<f-form-modal form-id="1"></f-form-modal>',
-        ).not.toHTMLValidate({
-            ruleId: "attribute-allowed-values",
-            message: 'Attribute "form-id" has invalid value "1"',
-        });
+        const markup = /* HTML */ ` <f-form-modal form-id="1"></f-form-modal> `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "form-id" has invalid value "1" (attribute-allowed-values)
+          > 1 |  <f-form-modal form-id="1"></f-form-modal>
+              |                         ^
+          Selector: f-form-modal"
+        `);
     });
 
     describe("attributes", () => {
@@ -396,7 +404,7 @@ describe("html-validate", () => {
                     <f-form-modal is-open></f-form-modal>
                     <f-form-modal :is-open="false"></f-form-modal>
                 `;
-                await expect(markup).toHTMLValidate();
+                await expect(markup).toBeValid();
             });
 
             it("should not allow empty string", async () => {
@@ -442,7 +450,7 @@ describe("html-validate", () => {
                 const markup = /* HTML */ `
                     <f-form-modal size="${size}"></f-form-modal>
                 `;
-                await expect(markup).toHTMLValidate();
+                await expect(markup).toBeValid();
             });
 
             it("fullscreen", async () => {
@@ -477,14 +485,15 @@ describe("html-validate", () => {
         });
     });
 
-    it.each`
-        slotName               | html
-        ${"header"}            | ${"<f-form-modal><template #header>Header</template></f-form-modal>"}
-        ${"error-message"}     | ${"<f-form-modal><template #error-message>Error</template></f-form-modal>"}
-        ${"input-text-fields"} | ${"<f-form-modal><template #input-text-fields></template></f-form-modal>"}
-    `("should allow $slotName slot", async ({ html }) => {
+    it("should allow slots", async () => {
         expect.assertions(1);
-
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-form-modal>
+                <template #header>Header</template>
+                <template #error-message>Error</template>
+                <template #input-text-fields></template>
+            </f-form-modal>
+        `;
+        await expect(markup).toBeValid();
     });
 });

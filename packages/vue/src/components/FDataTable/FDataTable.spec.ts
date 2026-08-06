@@ -132,7 +132,7 @@ it("should add table colum headers to <thead> with correct classes", async () =>
     );
 });
 
-it("should throw error if `FTableColumn.name` is duplicated", async () => {
+it("should throw error if `FTableColumn.name` is duplicated", () => {
     expect.assertions(1);
     const TestComponent = {
         components: { FDataTable, FTableColumn },
@@ -180,7 +180,7 @@ it("should set scope on table columns", async () => {
     expect(th.attributes("scope")).toBe("col");
 });
 
-it("should throw exception when action is set on column", async () => {
+it("should throw exception when action is set on column", () => {
     expect.assertions(1);
     const TestComponent = {
         components: { FDataTable, FTableColumn },
@@ -412,7 +412,7 @@ it("should call provided sort method when clicking columnheader that is registra
 });
 
 describe("`keyAttribute`", () => {
-    it("should not throw if valid and unique", async () => {
+    it("should not throw if valid and unique", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -425,7 +425,7 @@ describe("`keyAttribute`", () => {
         }).not.toThrow();
     });
 
-    it("should throw error if not unique in items", async () => {
+    it("should throw error if not unique in items", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -440,7 +440,7 @@ describe("`keyAttribute`", () => {
         );
     });
 
-    it("should be optional", async () => {
+    it("should be optional", () => {
         expect.assertions(1);
 
         expect(() => {
@@ -456,43 +456,100 @@ describe("`keyAttribute`", () => {
 describe("html-validate", () => {
     it("should require `key-attribute` to be non-empty if used", async () => {
         expect.assertions(1);
-        await expect(
-            '<f-data-table key-attribute=""></f-data-table>',
-        ).not.toHTMLValidate({
-            message: 'Attribute "key-attribute" has invalid value ""',
-        });
+        const markup = /* HTML */ `
+            <f-data-table rows key-attribute="">
+                <template #caption> lorem ipsum </template>
+                <template #default> </template>
+            </f-data-table>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "key-attribute" has invalid value "" (attribute-allowed-values)
+            1 |
+          > 2 |             <f-data-table rows key-attribute="">
+              |                                ^^^^^^^^^^^^^
+            3 |                 <template #caption> lorem ipsum </template>
+            4 |                 <template #default> </template>
+            5 |             </f-data-table>
+          Selector: f-data-table"
+        `);
     });
 
     it("should require row attribute", async () => {
         expect.assertions(1);
-        await expect("<f-data-table></f-data-table>").not.toHTMLValidate({
-            message: '<f-data-table> is missing required "rows" attribute',
-        });
+        const markup = /* HTML */ `
+            <f-data-table>
+                <template #caption> lorem ipsum </template>
+                <template #default> </template>
+            </f-data-table>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-data-table> is missing required "rows" attribute (element-required-attributes)
+            1 |
+          > 2 |             <f-data-table>
+              |              ^^^^^^^^^^^^
+            3 |                 <template #caption> lorem ipsum </template>
+            4 |                 <template #default> </template>
+            5 |             </f-data-table>
+          Selector: f-data-table"
+        `);
     });
 
     it("should require caption slot", async () => {
         expect.assertions(1);
-        await expect("<f-data-table></f-data-table>").not.toHTMLValidate({
-            message:
-                '<f-data-table> component requires slot "caption" to be implemented',
-        });
+        const markup = /* HTML */ `
+            <f-data-table rows>
+                <template #default> </template>
+            </f-data-table>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-data-table> component requires slot "caption" to be implemented (vue/required-slots)
+            1 |
+          > 2 |             <f-data-table rows>
+              |              ^^^^^^^^^^^^
+            3 |                 <template #default> </template>
+            4 |             </f-data-table>
+            5 |
+          Selector: f-data-table"
+        `);
     });
 
     it("should require default slot", async () => {
         expect.assertions(1);
-        await expect("<f-data-table></f-data-table>").not.toHTMLValidate({
-            message:
-                '<f-data-table> component requires slot "default" to be implemented',
-        });
+        const markup = /* HTML */ `
+            <f-data-table rows>
+                <template #caption> lorem ipsum </template>
+            </f-data-table>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-data-table> component requires slot "default" to be implemented (vue/required-slots)
+            1 |
+          > 2 |             <f-data-table rows>
+              |              ^^^^^^^^^^^^
+            3 |                 <template #caption> lorem ipsum </template>
+            4 |             </f-data-table>
+            5 |
+          Selector: f-data-table"
+        `);
     });
 
-    it.each`
-        html
-        ${'<f-email-text-field type="email" maxlength="80">E-post</f-email-text-field>'}
-        ${'<f-email-text-field id="email-input" maxlength="80">E-post</f-email-text-field>'}
-        ${'<f-email-text-field id="email-input" maxlength="80" v-validation.required>E-post</f-email-text-field>'}
-    `("$html should be valid", async ({ html }) => {
+    /* technical debt: this tests the wrong component */
+    it("should be valid", async () => {
         expect.assertions(1);
-        await expect(html).toHTMLValidate();
+        const markup = /* HTML */ `
+            <f-email-text-field type="email" maxlength="80">
+                E-post
+            </f-email-text-field>
+            <f-email-text-field id="email-input-1" maxlength="80">
+                E-post
+            </f-email-text-field>
+            <f-email-text-field
+                id="email-input-2"
+                maxlength="80"
+                v-validation.required
+            >
+                E-post
+            </f-email-text-field>
+        `;
+        await expect(markup).toBeValid();
     });
 });

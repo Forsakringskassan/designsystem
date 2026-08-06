@@ -29,10 +29,10 @@ describe("validation", () => {
         ${"10:450"}  | ${false} | ${"more than two minute digits should be invalid"}
     `(
         'should return "$expected" for "$value" because of $description',
-        ({ value, expected, config }) => {
+        ({ value, expected }: { value: string; expected: boolean }) => {
             expect.assertions(1);
             expect(
-                hoursMinutesValidator.validation(value, element, config),
+                hoursMinutesValidator.validation(value, element, {}),
             ).toEqual(expected);
         },
     );

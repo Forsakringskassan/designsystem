@@ -36,8 +36,8 @@ describe("hasParentByName()", () => {
 
     beforeEach(() => {
         wrapper = createWrapper(TEMPLATE_WITH_GRANDCHILD);
-        child = wrapper.vm.$refs["child"] as ComponentPublicInstance;
-        grandchild = child.$refs["grandchild"] as ComponentPublicInstance;
+        child = wrapper.vm.$refs.child as ComponentPublicInstance;
+        grandchild = child.$refs.grandchild as ComponentPublicInstance;
     });
 
     it("should return true if given component has the given name", () => {

@@ -92,6 +92,7 @@ describe("snapshots", () => {
                 }),
             );
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.element).toMatchSnapshot();
@@ -132,6 +133,7 @@ describe("snapshots", () => {
             });
 
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.element).toMatchSnapshot();
@@ -255,6 +257,7 @@ describe("events", () => {
             }),
         );
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.vm.$data.validityMode).toBe("ERROR");
@@ -263,6 +266,7 @@ describe("events", () => {
             new CustomEvent<PendingValidityEvent>("pending-validity"),
         );
         await flushPromises();
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         wrapper.vm.$forceUpdate();
 
         expect(wrapper.vm.$data.validityMode).toBe("INITIAL");
@@ -340,6 +344,7 @@ describe("formatting and parsing combined with validation", () => {
             );
 
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             // eslint-disable-next-line vitest/no-conditional-in-test -- technical debt, Vitest migration
@@ -407,6 +412,7 @@ describe("formatting and parsing combined with validation", () => {
             );
 
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.emitted("update:modelValue")![0][0]).toEqual(
@@ -429,6 +435,13 @@ describe("formatting and parsing combined with validation", () => {
             parsed,
             expectedModel,
             expectedValue,
+        }: {
+            initialModel: string;
+            inputValue: string;
+            formatted: string;
+            parsed: number | undefined;
+            expectedModel: number | string;
+            expectedValue: string;
         }) => {
             expect.assertions(2);
             const formatterMock = (): string => formatted;
@@ -464,6 +477,7 @@ describe("formatting and parsing combined with validation", () => {
             );
 
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.emitted("update:modelValue")![0][0]).toEqual(
@@ -510,6 +524,7 @@ describe("set v-model programmatic", () => {
                 }),
             );
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.vm.$data.validityMode).toBe("ERROR");
@@ -575,17 +590,23 @@ describe("html-validate", () => {
         const valid = /* HTML */ `<f-tooltip
             screen-reader-text="lorem ipsum"
         />`;
-        const invalid = /* HTML */ `<div />`;
+        const invalid = /* HTML */ `<div></div>`;
         const markup = (child: string): string => /* HTML */ `
             <f-text-field v-validation.maxLength>
                 Label
                 <template #tooltip> ${child} </template>
             </f-text-field>
         `;
-        await expect(markup(valid)).toHTMLValidate();
-        await expect(markup(invalid)).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message: `<div> element is not permitted as content under slot "tooltip" (<f-text-field>)`,
-        });
+        await expect(markup(valid)).toBeValid();
+        await expect(markup(invalid)).toMatchInlineCodeframe(`
+          "error: <div> element is not permitted as content under slot "tooltip" (<f-text-field>) (element-permitted-content)
+            2 |             <f-text-field v-validation.maxLength>
+            3 |                 Label
+          > 4 |                 <template #tooltip> <div></div> </template>
+              |                                      ^^^
+            5 |             </f-text-field>
+            6 |
+          Selector: f-text-field > template > div"
+        `);
     });
 });

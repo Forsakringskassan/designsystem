@@ -13,7 +13,13 @@ describe("maxPagesShown", () => {
         ${10}                | ${9}
     `(
         'should return value "$expectedMaxPagesShown" for "numberOfPagesToShow: $numbersOfPagesToShow"',
-        ({ numbersOfPagesToShow, expectedMaxPagesShown }) => {
+        ({
+            numbersOfPagesToShow,
+            expectedMaxPagesShown,
+        }: {
+            numbersOfPagesToShow: number;
+            expectedMaxPagesShown: number;
+        }) => {
             expect.assertions(1);
             const maximumNumberOfPages = maxPagesShown(numbersOfPagesToShow);
             expect(maximumNumberOfPages).toEqual(expectedMaxPagesShown);
