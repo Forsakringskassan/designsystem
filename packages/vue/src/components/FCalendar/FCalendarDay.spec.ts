@@ -25,8 +25,7 @@ describe("html-validate", () => {
             >
             </i-calendar-day>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should allow child elements", async () => {
@@ -36,7 +35,6 @@ describe("html-validate", () => {
                 <span></span>
             </i-calendar-day>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

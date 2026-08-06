@@ -380,18 +380,18 @@ describe("html-validate", () => {
     it("should allow usage without attributes, no attributes required", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-form-modal></f-form-modal> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should not allow an invalid form-id attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-form-modal form-id="1"></f-form-modal> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "attribute-allowed-values",
-            message: 'Attribute "form-id" has invalid value "1"',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "form-id" has invalid value "1" (attribute-allowed-values)
+          > 1 |  <f-form-modal form-id="1"></f-form-modal>
+              |                         ^
+          Selector: f-form-modal"
+        `);
     });
 
     describe("attributes", () => {
@@ -404,8 +404,7 @@ describe("html-validate", () => {
                     <f-form-modal is-open></f-form-modal>
                     <f-form-modal :is-open="false"></f-form-modal>
                 `;
-                /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-                await expect(markup).toHTMLValidate();
+                await expect(markup).toBeValid();
             });
 
             it("should not allow empty string", async () => {
@@ -451,8 +450,7 @@ describe("html-validate", () => {
                 const markup = /* HTML */ `
                     <f-form-modal size="${size}"></f-form-modal>
                 `;
-                /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-                await expect(markup).toHTMLValidate();
+                await expect(markup).toBeValid();
             });
 
             it("fullscreen", async () => {
@@ -496,7 +494,6 @@ describe("html-validate", () => {
                 <template #input-text-fields></template>
             </f-form-modal>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

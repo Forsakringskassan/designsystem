@@ -39,8 +39,7 @@ describe("html-validate", () => {
                 <template #default> Badge text </template>
             </f-badge>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should report error when status is invalid", async () => {
@@ -50,7 +49,15 @@ describe("html-validate", () => {
                 <template #default> Badge text </template>
             </f-badge>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate();
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "status" has invalid value "conflict" (attribute-allowed-values)
+            1 |
+          > 2 |             <f-badge status="conflict">
+              |                              ^^^^^^^^
+            3 |                 <template #default> Badge text </template>
+            4 |             </f-badge>
+            5 |
+          Selector: f-badge"
+        `);
     });
 });

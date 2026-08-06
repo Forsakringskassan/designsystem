@@ -755,11 +755,12 @@ describe("html-validate", () => {
     it("should require default slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-crud-dataset></f-crud-dataset> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message:
-                '<f-crud-dataset> component requires slot "default" to be implemented',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-crud-dataset> component requires slot "default" to be implemented (vue/required-slots)
+          > 1 |  <f-crud-dataset></f-crud-dataset>
+              |   ^^^^^^^^^^^^^^
+          Selector: f-crud-dataset"
+        `);
     });
 
     it("should html-validate", async () => {
@@ -769,7 +770,6 @@ describe("html-validate", () => {
                 <template #default></template>
             </f-crud-dataset>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

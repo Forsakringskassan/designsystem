@@ -140,7 +140,7 @@ describe("html-validate", () => {
                 <f-table-button>lorem ipsum</f-table-button>
             </f-table-column>
         `;
-        await expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toBeValid();
     });
 
     it("should require FTableColumn ancestor", async () => {
@@ -165,7 +165,7 @@ describe("html-validate", () => {
                 <f-table-button>lorem ipsum</f-table-button>
             </f-table-column>
         `;
-        await expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toBeValid();
     });
 
     it("should not allow empty icon prop", async () => {

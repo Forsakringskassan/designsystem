@@ -526,37 +526,59 @@ describe("html-validate", () => {
     it("should require data attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-sort-filter-dataset></f-sort-filter-dataset>
+            <f-sort-filter-dataset sortable-attributes>
+                <template #default></template>
+            </f-sort-filter-dataset>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message:
-                '<f-sort-filter-dataset> is missing required "data" attribute',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-sort-filter-dataset> is missing required "data" attribute (element-required-attributes)
+            1 |
+          > 2 |             <f-sort-filter-dataset sortable-attributes>
+              |              ^^^^^^^^^^^^^^^^^^^^^
+            3 |                 <template #default></template>
+            4 |             </f-sort-filter-dataset>
+            5 |
+          Selector: f-sort-filter-dataset"
+        `);
     });
 
     it("should require sortable-attributes attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-sort-filter-dataset></f-sort-filter-dataset>
+            <f-sort-filter-dataset data>
+                <template #default></template>
+            </f-sort-filter-dataset>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message:
-                '<f-sort-filter-dataset> is missing required "sortable-attributes" attribute',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-sort-filter-dataset> is missing required "sortable-attributes" attribute (element-required-attributes)
+            1 |
+          > 2 |             <f-sort-filter-dataset data>
+              |              ^^^^^^^^^^^^^^^^^^^^^
+            3 |                 <template #default></template>
+            4 |             </f-sort-filter-dataset>
+            5 |
+          Selector: f-sort-filter-dataset"
+        `);
     });
 
     it("should require default slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-sort-filter-dataset></f-sort-filter-dataset>
+            <f-sort-filter-dataset
+                data
+                sortable-attributes
+            ></f-sort-filter-dataset>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message:
-                '<f-sort-filter-dataset> component requires slot "default" to be implemented',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-sort-filter-dataset> component requires slot "default" to be implemented (vue/required-slots)
+            1 |
+          > 2 |             <f-sort-filter-dataset
+              |              ^^^^^^^^^^^^^^^^^^^^^
+            3 |                 data
+            4 |                 sortable-attributes
+            5 |             ></f-sort-filter-dataset>
+          Selector: f-sort-filter-dataset"
+        `);
     });
 
     it("html should be valid", async () => {
@@ -566,7 +588,6 @@ describe("html-validate", () => {
                 <template #default></template>
             </f-sort-filter-dataset>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

@@ -128,7 +128,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        await expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toBeValid();
     });
 
     it("should allow flow content in default slot", async () => {
@@ -142,7 +142,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        await expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toBeValid();
     });
 
     it("should allow flow content in step-of slot", async () => {
@@ -156,7 +156,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        await expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toBeValid();
     });
 
     it("should allow flow content in error-message slot", async () => {
@@ -170,7 +170,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        await expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toBeValid();
     });
 
     it("should allow phrasing content in next-button-text slot", async () => {
@@ -184,7 +184,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        await expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toBeValid();
     });
 
     it("should not allow flow content in next-button-text slot", async () => {
@@ -246,7 +246,7 @@ describe("html-validate", () => {
                 </f-wizard-step>
             </f-wizard>
         `;
-        await expect(markup).toMatchInlineCodeframe(`""`);
+        await expect(markup).toBeValid();
     });
 
     it("should not allow flow content in cancel-button-text slot", async () => {

@@ -280,29 +280,47 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <button type="button">
                 <f-context-menu anchor="" is-open items=""></f-context-menu>
+                button text
             </button>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                "<f-context-menu> element is not permitted as content under <button>",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-context-menu> element is not permitted as content under <button> (element-permitted-content)
+            1 |
+            2 |             <button type="button">
+          > 3 |                 <f-context-menu anchor="" is-open items=""></f-context-menu>
+              |                  ^^^^^^^^^^^^^^
+            4 |                 button text
+            5 |             </button>
+            6 |
+          Selector: button > f-context-menu"
+        `);
     });
 
     it("should not allow interactive children", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
             <f-context-menu anchor="" is-open items="">
-                <button type="button"></button>
+                <button type="button">button text</button>
             </f-context-menu>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                "<button> element is not permitted as content under <f-context-menu>",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-context-menu> must not have text content (text-content)
+            1 |
+          > 2 |             <f-context-menu anchor="" is-open items="">
+              |              ^^^^^^^^^^^^^^
+            3 |                 <button type="button">button text</button>
+            4 |             </f-context-menu>
+            5 |
+          Selector: f-context-menu
+          error: <button> element is not permitted as content under <f-context-menu> (element-permitted-content)
+            1 |
+            2 |             <f-context-menu anchor="" is-open items="">
+          > 3 |                 <button type="button">button text</button>
+              |                  ^^^^^^
+            4 |             </f-context-menu>
+            5 |
+          Selector: f-context-menu > button"
+        `);
     });
 
     it("should not allow child elements", async () => {
@@ -312,12 +330,16 @@ describe("html-validate", () => {
                 <em></em>
             </f-context-menu>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message:
-                "<em> element is not permitted as content under <f-context-menu>",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <em> element is not permitted as content under <f-context-menu> (element-permitted-content)
+            1 |
+            2 |             <f-context-menu anchor="" is-open items="">
+          > 3 |                 <em></em>
+              |                  ^^
+            4 |             </f-context-menu>
+            5 |
+          Selector: f-context-menu > em"
+        `);
     });
 
     it("should not allow text", async () => {
@@ -327,10 +349,15 @@ describe("html-validate", () => {
                 mjukglass
             </f-context-menu>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "text-content",
-            message: "<f-context-menu> must not have text content",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-context-menu> must not have text content (text-content)
+            1 |
+          > 2 |             <f-context-menu anchor="" is-open items="">
+              |              ^^^^^^^^^^^^^^
+            3 |                 mjukglass
+            4 |             </f-context-menu>
+            5 |
+          Selector: f-context-menu"
+        `);
     });
 });

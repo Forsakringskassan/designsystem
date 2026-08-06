@@ -1,9 +1,4 @@
 import { mount } from "@vue/test-utils";
-import {
-    FileSystemConfigLoader,
-    HtmlValidate,
-    cjsResolver,
-} from "html-validate/node";
 import { describe, expect, it } from "vitest";
 import "html-validate/vitest";
 import IFlexItem from "./IFlexItem.vue";
@@ -73,16 +68,6 @@ describe("prop grow/shrink", () => {
 });
 
 describe("html-validate", () => {
-    const loader = new FileSystemConfigLoader([cjsResolver()], {
-        extends: [
-            "html-validate:recommended",
-            "html-validate-vue:recommended",
-            "@fkui/vue:recommended",
-        ],
-        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
-    });
-    const htmlvalidate = new HtmlValidate(loader);
-
     it("should allow <i-flex> as parent", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
@@ -90,20 +75,17 @@ describe("html-validate", () => {
                 <i-flex-item></i-flex-item>
             </i-flex>
         `;
-        const report = await htmlvalidate.validateString(markup);
-        await expect(report).toBeValid();
+        await expect(markup).toBeValid();
     });
 
     it("should not allow arbitrary element as parent", async () => {
-        expect.assertions(2);
+        expect.assertions(1);
         const markup = /* HTML */ `
             <div>
                 <i-flex-item></i-flex-item>
             </div>
         `;
-        const report = await htmlvalidate.validateString(markup);
-        await expect(report).toBeInvalid();
-        await expect(report).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <i-flex-item> element requires a "i-flex > i-flex-item" ancestor (element-required-ancestor)
               1 |
               2 |             <div>
@@ -123,20 +105,17 @@ describe("html-validate", () => {
                     <i-flex-item align="${align}"></i-flex-item>
                 </i-flex>
             `;
-            const report = await htmlvalidate.validateString(markup);
-            await expect(report).toBeValid();
+            await expect(markup).toBeValid();
         });
 
         it("invalid", async () => {
-            expect.assertions(2);
+            expect.assertions(1);
             const markup = /* HTML */ `
                 <i-flex>
                     <i-flex-item align="invalid"></i-flex-item>
                 </i-flex>
             `;
-            const report = await htmlvalidate.validateString(markup);
-            await expect(report).toBeInvalid();
-            await expect(report).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: Attribute "align" has invalid value "invalid" (attribute-allowed-values)
                   1 |
                   2 |                 <i-flex>

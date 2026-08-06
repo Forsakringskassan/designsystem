@@ -400,8 +400,7 @@ describe("html-validate", () => {
                 E-post
             </f-email-text-field>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should allow custom label for default and extended field", async () => {
@@ -412,7 +411,6 @@ describe("html-validate", () => {
                 <template #extended-label> Upprepa e-post </template>
             </f-email-text-field>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

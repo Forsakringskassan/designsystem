@@ -590,19 +590,23 @@ describe("html-validate", () => {
         const valid = /* HTML */ `<f-tooltip
             screen-reader-text="lorem ipsum"
         />`;
-        const invalid = /* HTML */ `<div />`;
+        const invalid = /* HTML */ `<div></div>`;
         const markup = (child: string): string => /* HTML */ `
             <f-text-field v-validation.maxLength>
                 Label
                 <template #tooltip> ${child} </template>
             </f-text-field>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup(valid)).toHTMLValidate();
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup(invalid)).not.toHTMLValidate({
-            ruleId: "element-permitted-content",
-            message: `<div> element is not permitted as content under slot "tooltip" (<f-text-field>)`,
-        });
+        await expect(markup(valid)).toBeValid();
+        await expect(markup(invalid)).toMatchInlineCodeframe(`
+          "error: <div> element is not permitted as content under slot "tooltip" (<f-text-field>) (element-permitted-content)
+            2 |             <f-text-field v-validation.maxLength>
+            3 |                 Label
+          > 4 |                 <template #tooltip> <div></div> </template>
+              |                                      ^^^
+            5 |             </f-text-field>
+            6 |
+          Selector: f-text-field > template > div"
+        `);
     });
 });

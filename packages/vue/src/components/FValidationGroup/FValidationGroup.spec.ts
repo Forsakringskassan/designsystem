@@ -3,11 +3,6 @@ import { defineComponent } from "vue";
 import { type ValidatableHTMLElement } from "@fkui/logic";
 import { type VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
-import {
-    FileSystemConfigLoader,
-    HtmlValidate,
-    cjsResolver,
-} from "html-validate/node";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
     type ComponentUnmountEvent,
@@ -359,16 +354,6 @@ describe("v-model", () => {
 });
 
 describe("html-validate", () => {
-    const loader = new FileSystemConfigLoader([cjsResolver()], {
-        extends: [
-            "html-validate:recommended",
-            "html-validate-vue:recommended",
-            "@fkui/vue:recommended",
-        ],
-        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
-    });
-    const htmlvalidate = new HtmlValidate(loader);
-
     describe("key attribute", () => {
         it("should be required", async () => {
             expect.assertions(1);
@@ -376,8 +361,7 @@ describe("html-validate", () => {
                 <f-validation-group></f-validation-group>
                 <f-validation-group key=""></f-validation-group>
             `;
-            const report = await htmlvalidate.validateString(markup);
-            await expect(report).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: <f-validation-group> is missing required "key" attribute (element-required-attributes)
                   1 |
                 > 2 |                 <f-validation-group></f-validation-group>
@@ -397,24 +381,20 @@ describe("html-validate", () => {
     });
 
     describe("stop-propagation attribute", () => {
-        it.each`
-            stopPropagation
-            ${"true"}
-            ${"false"}
-        `(
-            "valid when value is $stopPropagation",
-            async ({ stopPropagation }) => {
-                expect.assertions(1);
-                const markup = /* HTML */ `
-                    <f-validation-group
-                        stop-propagation="${String(stopPropagation)}"
-                        key="key"
-                    ></f-validation-group>
-                `;
-                const report = await htmlvalidate.validateString(markup);
-                await expect(report).toBeValid();
-            },
-        );
+        it("valid", async () => {
+            expect.assertions(1);
+            const markup = /* HTML */ `
+                <f-validation-group
+                    stop-propagation="true"
+                    key="key"
+                ></f-validation-group>
+                <f-validation-group
+                    stop-propagation="false"
+                    key="key"
+                ></f-validation-group>
+            `;
+            await expect(markup).toBeValid();
+        });
 
         it("invalid", async () => {
             expect.assertions(1);
@@ -424,8 +404,7 @@ describe("html-validate", () => {
                     key="key"
                 ></f-validation-group>
             `;
-            const report = await htmlvalidate.validateString(markup);
-            await expect(report).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: Attribute "stop-propagation" has invalid value "invalid" (attribute-allowed-values)
                   1 |
                   2 |                 <f-validation-group

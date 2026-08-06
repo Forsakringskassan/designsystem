@@ -141,7 +141,6 @@ describe("html-validate", () => {
                 ${slotTemplates.join("")}
             </f-layout-application-template>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

@@ -24,42 +24,42 @@ describe("snapshots", () => {
         expect.assertions(2);
         const wrapper = createWrapper();
         expect(wrapper.element).toMatchSnapshot();
-        await expect(wrapper.element).toHTMLValidate();
+        await expect(wrapper.html()).toBeValid();
     });
 
     it("should match snapshot when expanded", async () => {
         expect.assertions(2);
         const wrapper = createWrapper({ props: { expanded: true } });
         expect(wrapper.element).toMatchSnapshot();
-        await expect(wrapper.element).toHTMLValidate();
+        await expect(wrapper.html()).toBeValid();
     });
 
     it("should match snapshot with notification", async () => {
         expect.assertions(2);
         const wrapper = createWrapper({ props: { notifications: 2 } });
         expect(wrapper.element).toMatchSnapshot();
-        await expect(wrapper.element).toHTMLValidate();
+        await expect(wrapper.html()).toBeValid();
     });
 
     it("should match snapshot with generated id", async () => {
         expect.assertions(2);
         const wrapper = createWrapper({ props: { id: undefined } });
         expect(wrapper.element).toMatchSnapshot();
-        await expect(wrapper.element).toHTMLValidate();
+        await expect(wrapper.html()).toBeValid();
     });
 
     it("should match snapshot with custom heading level", async () => {
         expect.assertions(2);
         const wrapper = createWrapper({ props: { headerTag: "h3" } });
         expect(wrapper.element).toMatchSnapshot();
-        await expect(wrapper.element).toHTMLValidate();
+        await expect(wrapper.html()).toBeValid();
     });
 
     it('should match snapshot with "outside" slot', async () => {
         expect.assertions(2);
         const wrapper = createWrapper({ slots: { outside: "dolor sit amet" } });
         expect(wrapper.element).toMatchSnapshot();
-        await expect(wrapper.element).toHTMLValidate();
+        await expect(wrapper.html()).toBeValid();
     });
 });
 

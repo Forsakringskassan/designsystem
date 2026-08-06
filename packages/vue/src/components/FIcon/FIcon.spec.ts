@@ -1,23 +1,8 @@
 import { defineComponent } from "vue";
 import { type VueWrapper, mount } from "@vue/test-utils";
-import {
-    FileSystemConfigLoader,
-    HtmlValidate,
-    cjsResolver,
-} from "html-validate/node";
 import { describe, expect, it } from "vitest";
 import FIcon from "./FIcon.vue";
 import "html-validate/vitest";
-
-const loader = new FileSystemConfigLoader([cjsResolver()], {
-    extends: [
-        "html-validate:recommended",
-        "html-validate-vue:recommended",
-        "@fkui/vue:recommended",
-    ],
-    plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
-});
-const htmlvalidate = new HtmlValidate(loader);
 
 function createWrapper({
     props = {},
@@ -86,27 +71,22 @@ describe("props", () => {
                     <f-icon name="my-icon" flip="horizontal"></f-icon>
                     <f-icon name="my-icon" flip="vertical"></f-icon>
                 `;
-                const report = await htmlvalidate.validateString(
-                    markup,
-                    "foo.html",
-                );
-                await expect(report).toBeValid();
+                await expect(markup).toBeValid();
             });
 
             it("should not allow invalid values", async () => {
-                expect.assertions(2);
+                expect.assertions(1);
                 const markup = /* HTML */ `
                     <f-icon name="my-icon" flip="foo"></f-icon>
                 `;
-                const report = await htmlvalidate.validateString(
-                    markup,
-                    "file.html",
-                );
-                await expect(report).toBeInvalid();
-                expect(report).toHaveError(
-                    "attribute-allowed-values",
-                    'Attribute "flip" has invalid value "foo"',
-                );
+                await expect(markup).toMatchInlineCodeframe(`
+                  "error: Attribute "flip" has invalid value "foo" (attribute-allowed-values)
+                    1 |
+                  > 2 |                     <f-icon name="my-icon" flip="foo"></f-icon>
+                      |                                                  ^^^
+                    3 |
+                  Selector: f-icon"
+                `);
             });
         });
     });
@@ -138,18 +118,15 @@ describe("props", () => {
                     <f-icon name="my-icon" rotate="180"></f-icon>
                     <f-icon name="my-icon" rotate="270"></f-icon>
                 `;
-                const report = await htmlvalidate.validateString(markup);
-                await expect(report).toBeValid();
+                await expect(markup).toBeValid();
             });
 
             it("should not allow arbitrary degrees", async () => {
-                expect.assertions(2);
+                expect.assertions(1);
                 const markup = /* HTML */ `
                     <f-icon name="my-icon" rotate="42"></f-icon>
                 `;
-                const report = await htmlvalidate.validateString(markup);
-                await expect(report).toBeInvalid();
-                await expect(report).toMatchInlineCodeframe(`
+                await expect(markup).toMatchInlineCodeframe(`
                     "error: Attribute "rotate" has invalid value "42" (attribute-allowed-values)
                       1 |
                     > 2 |                     <f-icon name="my-icon" rotate="42"></f-icon>
@@ -160,13 +137,11 @@ describe("props", () => {
             });
 
             it("should not allow invalid values", async () => {
-                expect.assertions(2);
+                expect.assertions(1);
                 const markup = /* HTML */ `
                     <f-icon name="my-icon" rotate="foo"></f-icon>
                 `;
-                const report = await htmlvalidate.validateString(markup);
-                await expect(report).toBeInvalid();
-                await expect(report).toMatchInlineCodeframe(`
+                await expect(markup).toMatchInlineCodeframe(`
                     "error: Attribute "rotate" has invalid value "foo" (attribute-allowed-values)
                       1 |
                     > 2 |                     <f-icon name="my-icon" rotate="foo"></f-icon>
