@@ -2,10 +2,9 @@ import { defineComponent } from "vue";
 import { config, mount } from "@vue/test-utils";
 import { expect, it } from "vitest";
 import { FCrudDataset } from "../components";
-import { TestDirective, TranslationPlugin } from "../plugins";
+import { TestDirective } from "../plugins";
 import { FCrudDatasetSelectors } from "./FCrudDataset.selectors";
 
-config.global.plugins.push(TranslationPlugin);
 config.global.stubs = {
     ...config.global.stubs,
     "f-icon": true,

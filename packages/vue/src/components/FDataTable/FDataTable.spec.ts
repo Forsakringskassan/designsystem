@@ -2,7 +2,6 @@ import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { mount } from "@vue/test-utils";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { TranslationPlugin } from "../../plugins";
 import { type FSortFilterDatasetMountCallback } from "../FSortFilterDataset";
 import { FTableColumn } from "../FTableColumn";
 import FDataTable from "./FDataTable.vue";
@@ -33,9 +32,6 @@ describe("should match snapshot", () => {
                     { a: 3, b: 4 },
                 ],
             };
-        },
-        global: {
-            plugins: [TranslationPlugin],
         },
     };
 
