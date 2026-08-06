@@ -2,6 +2,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ElementIdService, isSet } from "@fkui/logic";
+import { TranslationMixin } from "../../plugins/index.js";
 import FIcon from "../FIcon/FIcon.vue";
 import { type IconName } from "./icon-name";
 
@@ -20,6 +21,7 @@ const iconMap: Record<string, IconName> = {
 export default defineComponent({
     name: "FFileItem",
     components: { FIcon },
+    mixins: [TranslationMixin],
     inheritAttrs: false,
     props: {
         /**
