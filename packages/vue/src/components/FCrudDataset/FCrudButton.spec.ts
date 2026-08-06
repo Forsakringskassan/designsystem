@@ -133,8 +133,8 @@ describe("html-validate", () => {
                 </template>
             </f-crud-dataset>
         `;
-        await expect(markup("modify")).toMatchInlineCodeframe(`""`);
-        await expect(markup("delete")).toMatchInlineCodeframe(`""`);
+        await expect(markup("modify")).toBeValid();
+        await expect(markup("delete")).toBeValid();
         await expect(markup("foobar")).toMatchInlineCodeframe(`
             "error: Attribute "action" has invalid value "foobar" (attribute-allowed-values)
               4 |                 <template #default>

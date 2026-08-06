@@ -5,11 +5,6 @@ import * as logic from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { type VueWrapper, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
-import {
-    FileSystemConfigLoader,
-    HtmlValidate,
-    cjsResolver,
-} from "html-validate/node";
 import { describe, expect, it, vi } from "vitest";
 import { IFlexItem } from "../../internal-components/IFlex";
 import { type ErrorItem } from "../../types";
@@ -173,22 +168,11 @@ describe("navigation", () => {
 });
 
 describe("htmlvalidate", () => {
-    const loader = new FileSystemConfigLoader([cjsResolver()], {
-        extends: [
-            "html-validate:recommended",
-            "html-validate-vue:recommended",
-            "@fkui/vue:recommended",
-        ],
-        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
-    });
-    const htmlvalidate = new HtmlValidate(loader);
-
     describe("items attribute", () => {
         it("should be required", async () => {
             expect.assertions(1);
             const markup = /* HTML */ ` <f-error-list></f-error-list> `;
-            const report = await htmlvalidate.validateString(markup);
-            await expect(report).toMatchInlineCodeframe(`
+            await expect(markup).toMatchInlineCodeframe(`
                 "error: <f-error-list> is missing required "items" attribute (element-required-attributes)
                 > 1 |  <f-error-list></f-error-list>
                     |   ^^^^^^^^^^^^

@@ -136,22 +136,24 @@ describe("events", () => {
 describe("html-validate", () => {
     it("should require is-open attribute", async () => {
         expect.assertions(1);
-        const markup = /* HTML */ ` <i-popup></i-popup> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "element-required-attributes",
-            message: '<i-popup> is missing required "is-open" attribute',
-        });
+        const markup = /* HTML */ ` <i-popup anchor></i-popup> `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <i-popup> is missing required "is-open" attribute (element-required-attributes)
+          > 1 |  <i-popup anchor></i-popup>
+              |   ^^^^^^^
+          Selector: i-popup"
+        `);
     });
 
     it("should require anchor attribute", async () => {
         expect.assertions(1);
-        const markup = /* HTML */ ` <i-popup></i-popup> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "element-required-attributes",
-            message: '<i-popup> is missing required "anchor" attribute',
-        });
+        const markup = /* HTML */ ` <i-popup is-open></i-popup> `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <i-popup> is missing required "anchor" attribute (element-required-attributes)
+          > 1 |  <i-popup is-open></i-popup>
+              |   ^^^^^^^
+          Selector: i-popup"
+        `);
     });
 
     it("should only allow setting valid `inline` values", async () => {
@@ -164,13 +166,15 @@ describe("html-validate", () => {
         const markupInvalid = /* HTML */ `
             <i-popup anchor="anchorref" is-open inline="foo"></i-popup>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markupValid).toHTMLValidate();
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markupInvalid).not.toHTMLValidate({
-            ruleId: "attribute-allowed-values",
-            message: 'Attribute "inline" has invalid value "foo"',
-        });
+        await expect(markupValid).toBeValid();
+        await expect(markupInvalid).toMatchInlineCodeframe(`
+          "error: Attribute "inline" has invalid value "foo" (attribute-allowed-values)
+            1 |
+          > 2 |             <i-popup anchor="anchorref" is-open inline="foo"></i-popup>
+              |                                                         ^^^
+            3 |
+          Selector: i-popup"
+        `);
     });
 
     it("should allow setting viewport value", async () => {
@@ -182,8 +186,7 @@ describe("html-validate", () => {
                 viewport="viewportref"
             ></i-popup>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should allow setting focus-element value", async () => {
@@ -195,7 +198,6 @@ describe("html-validate", () => {
                 focus-element="focuselementref"
             ></i-popup>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

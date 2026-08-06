@@ -653,20 +653,24 @@ describe("screenreader slot", () => {
 describe("html-validate", () => {
     it("should require `key-attribute` to be non-empty if used", async () => {
         expect.assertions(1);
-        const markup = /* HTML */ ` <f-list key-attribute=""></f-list> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message: 'Attribute "key-attribute" has invalid value ""',
-        });
+        const markup = /* HTML */ ` <f-list items key-attribute=""></f-list> `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "key-attribute" has invalid value "" (attribute-allowed-values)
+          > 1 |  <f-list items key-attribute=""></f-list>
+              |                ^^^^^^^^^^^^^
+          Selector: f-list"
+        `);
     });
 
     it("should require items attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-list></f-list> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message: '<f-list> is missing required "items" attribute',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-list> is missing required "items" attribute (element-required-attributes)
+          > 1 |  <f-list></f-list>
+              |   ^^^^^^
+          Selector: f-list"
+        `);
     });
 
     it("should allow aria-label or aria-labelledby", async () => {
@@ -677,8 +681,7 @@ describe("html-validate", () => {
             <h2 id="header">lorem ipsum</h2>
             <f-list :items="[]" aria-labelledby="header"></f-list>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should not allow empty aria-label", async () => {
@@ -686,10 +689,13 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <f-list :items="[]" aria-label=""></f-list>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "attribute-allowed-values",
-            message: 'Attribute "aria-label" has invalid value ""',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "aria-label" has invalid value "" (attribute-allowed-values)
+            1 |
+          > 2 |             <f-list :items="[]" aria-label=""></f-list>
+              |                                 ^^^^^^^^^^
+            3 |
+          Selector: f-list"
+        `);
     });
 });

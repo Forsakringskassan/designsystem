@@ -338,7 +338,6 @@ describe("html-validate", () => {
                 Telefonnummer
             </f-phone-text-field>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

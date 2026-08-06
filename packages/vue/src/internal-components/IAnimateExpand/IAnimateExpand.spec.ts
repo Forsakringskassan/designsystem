@@ -259,8 +259,7 @@ describe("html-validate", () => {
                 <i-animate-expand></i-animate-expand>
             </i-animate-expand>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it.each(["animate", "opacity", "use-v-show"])(
@@ -270,8 +269,7 @@ describe("html-validate", () => {
             const markup = /* HTML */ `
                 <i-animate-expand ${attr}></i-animate-expand>
             `;
-            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-            await expect(markup).toHTMLValidate();
+            await expect(markup).toBeValid();
         },
     );
 
@@ -303,8 +301,7 @@ describe("html-validate", () => {
         const markup = /* HTML */ `
             <i-animate-expand expanded="${String(value)}"></i-animate-expand>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });
 

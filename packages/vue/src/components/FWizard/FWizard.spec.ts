@@ -9,18 +9,18 @@ describe("html-validate", () => {
                 <div></div>
             </f-wizard>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should require header-tag attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-wizard></f-wizard> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "element-required-attributes",
-            message: '<f-wizard> is missing required "header-tag" attribute',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-wizard> is missing required "header-tag" attribute (element-required-attributes)
+          > 1 |  <f-wizard></f-wizard>
+              |   ^^^^^^^^
+          Selector: f-wizard"
+        `);
     });
 
     it("should allow h{1..6} header-tag attribute", async () => {
@@ -33,17 +33,17 @@ describe("html-validate", () => {
             <f-wizard header-tag="h5"></f-wizard>
             <f-wizard header-tag="h6"></f-wizard>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should not allow invalid header-tag attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-wizard header-tag="foobar"></f-wizard> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            ruleId: "attribute-allowed-values",
-            message: 'Attribute "header-tag" has invalid value "foobar"',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "header-tag" has invalid value "foobar" (attribute-allowed-values)
+          > 1 |  <f-wizard header-tag="foobar"></f-wizard>
+              |                        ^^^^^^
+          Selector: f-wizard"
+        `);
     });
 });

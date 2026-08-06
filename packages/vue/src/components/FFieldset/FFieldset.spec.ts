@@ -415,7 +415,7 @@ describe("html-validate", () => {
                     </f-fieldset>
                 </div>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not be allowed where phrasing is expected", async () => {
@@ -427,7 +427,7 @@ describe("html-validate", () => {
                     </f-fieldset>
                 </span>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
     });
 
@@ -439,7 +439,7 @@ describe("html-validate", () => {
                     <template #label> Label </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not allow empty name", async () => {
@@ -480,7 +480,7 @@ describe("html-validate", () => {
                     <template #label> Label </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not allow multiple content classes", async () => {
@@ -509,7 +509,7 @@ describe("html-validate", () => {
                     <template #label> Label </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not allow multiple label classes", async () => {
@@ -553,7 +553,7 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should allow headings in label slot", async () => {
@@ -565,7 +565,7 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not allow block elements in label slot", async () => {
@@ -600,7 +600,7 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not allow block elements in description slot", async () => {
@@ -638,7 +638,7 @@ describe("html-validate", () => {
                     </template>
                 </f-fieldset>
             `;
-            await expect(markup).toMatchInlineCodeframe(`""`);
+            await expect(markup).toBeValid();
         });
 
         it("should not allow arbitrary elements in tooltip slot", async () => {

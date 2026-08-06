@@ -1,12 +1,6 @@
-import path from "node:path";
 import "html-validate/vitest";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
 import { type VueWrapper, mount } from "@vue/test-utils";
-import {
-    FileSystemConfigLoader,
-    HtmlValidate,
-    cjsResolver,
-} from "html-validate/node";
 import { describe, expect, it } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import { FTextField } from "../FTextField";
@@ -136,35 +130,19 @@ describe("events", () => {
 });
 
 describe("html-validate", () => {
-    const loader = new FileSystemConfigLoader([cjsResolver()], {
-        extends: [
-            "html-validate:recommended",
-            "html-validate-vue:recommended",
-            "@fkui/vue:recommended",
-        ],
-        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
-        transform: {
-            ".*": "html-validate-vue:html",
-        },
-    });
-    const htmlvalidate = new HtmlValidate(loader);
-    const filename = path.basename(__filename);
-
     it("should allow flow content", async () => {
-        expect.assertions(2);
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-validation-form>
                 <div></div>
                 <button type="submit">submit</button>
             </f-validation-form>
         `;
-        const report = await htmlvalidate.validateString(markup, filename);
-        await expect(report).toMatchInlineCodeframe(`""`);
-        await expect(report).toBeValid();
+        await expect(markup).toBeValid();
     });
 
     it("should allow buttons in default slot", async () => {
-        expect.assertions(2);
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-validation-form>
                 <template #default>
@@ -173,13 +151,11 @@ describe("html-validate", () => {
                 </template>
             </f-validation-form>
         `;
-        const report = await htmlvalidate.validateString(markup, filename);
-        await expect(report).toMatchInlineCodeframe(`""`);
-        await expect(report).toBeValid();
+        await expect(markup).toBeValid();
     });
 
     it("should not allow flow content in error-message slot", async () => {
-        expect.assertions(2);
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-validation-form>
                 <template #error-message>
@@ -190,8 +166,7 @@ describe("html-validate", () => {
                 </template>
             </f-validation-form>
         `;
-        const report = await htmlvalidate.validateString(markup, filename);
-        await expect(report).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <div> element is not permitted as content under slot "error-message" (<f-validation-form>) (element-permitted-content)
               2 |             <f-validation-form>
               3 |                 <template #error-message>
@@ -202,11 +177,10 @@ describe("html-validate", () => {
               7 |                     <button type="submit">submit</button>
             Selector: f-validation-form > template:nth-child(1) > div"
         `);
-        await expect(report).toBeInvalid();
     });
 
     it("should allow heading and phrasing content in error-message slot", async () => {
-        expect.assertions(2);
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-validation-form>
                 <template #error-message>
@@ -218,13 +192,11 @@ describe("html-validate", () => {
                 </template>
             </f-validation-form>
         `;
-        const report = await htmlvalidate.validateString(markup, filename);
-        await expect(report).toMatchInlineCodeframe(`""`);
-        await expect(report).toBeValid();
+        await expect(markup).toBeValid();
     });
 
     it("should allow use-error-list setting via attribute", async () => {
-        expect.assertions(2);
+        expect.assertions(1);
         const markup = /* HTML */ `
             <f-validation-form use-error-list>
                 <template #default>
@@ -232,21 +204,17 @@ describe("html-validate", () => {
                 </template>
             </f-validation-form>
         `;
-        const report = await htmlvalidate.validateString(markup, filename);
-        await expect(report).toMatchInlineCodeframe(`""`);
-        await expect(report).toBeValid();
+        await expect(markup).toBeValid();
     });
 
     it("should require submit button", async () => {
-        expect.assertions(2);
+        expect.assertions(1);
         const markup = /* HTML */ ` <f-validation-form> </f-validation-form> `;
-        const report = await htmlvalidate.validateString(markup, filename);
-        await expect(report).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <f-validation-form> element must have a submit button (wcag/h32)
             > 1 |  <f-validation-form> </f-validation-form>
                 |   ^^^^^^^^^^^^^^^^^
             Selector: f-validation-form"
         `);
-        await expect(report).toBeInvalid();
     });
 });

@@ -457,41 +457,79 @@ describe("html-validate", () => {
     it("should require `key-attribute` to be non-empty if used", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-data-table key-attribute=""></f-data-table>
+            <f-data-table rows key-attribute="">
+                <template #caption> lorem ipsum </template>
+                <template #default> </template>
+            </f-data-table>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message: 'Attribute "key-attribute" has invalid value ""',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "key-attribute" has invalid value "" (attribute-allowed-values)
+            1 |
+          > 2 |             <f-data-table rows key-attribute="">
+              |                                ^^^^^^^^^^^^^
+            3 |                 <template #caption> lorem ipsum </template>
+            4 |                 <template #default> </template>
+            5 |             </f-data-table>
+          Selector: f-data-table"
+        `);
     });
 
     it("should require row attribute", async () => {
         expect.assertions(1);
-        const markup = /* HTML */ ` <f-data-table></f-data-table> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message: '<f-data-table> is missing required "rows" attribute',
-        });
+        const markup = /* HTML */ `
+            <f-data-table>
+                <template #caption> lorem ipsum </template>
+                <template #default> </template>
+            </f-data-table>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-data-table> is missing required "rows" attribute (element-required-attributes)
+            1 |
+          > 2 |             <f-data-table>
+              |              ^^^^^^^^^^^^
+            3 |                 <template #caption> lorem ipsum </template>
+            4 |                 <template #default> </template>
+            5 |             </f-data-table>
+          Selector: f-data-table"
+        `);
     });
 
     it("should require caption slot", async () => {
         expect.assertions(1);
-        const markup = /* HTML */ ` <f-data-table></f-data-table> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message:
-                '<f-data-table> component requires slot "caption" to be implemented',
-        });
+        const markup = /* HTML */ `
+            <f-data-table rows>
+                <template #default> </template>
+            </f-data-table>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-data-table> component requires slot "caption" to be implemented (vue/required-slots)
+            1 |
+          > 2 |             <f-data-table rows>
+              |              ^^^^^^^^^^^^
+            3 |                 <template #default> </template>
+            4 |             </f-data-table>
+            5 |
+          Selector: f-data-table"
+        `);
     });
 
     it("should require default slot", async () => {
         expect.assertions(1);
-        const markup = /* HTML */ ` <f-data-table></f-data-table> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message:
-                '<f-data-table> component requires slot "default" to be implemented',
-        });
+        const markup = /* HTML */ `
+            <f-data-table rows>
+                <template #caption> lorem ipsum </template>
+            </f-data-table>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-data-table> component requires slot "default" to be implemented (vue/required-slots)
+            1 |
+          > 2 |             <f-data-table rows>
+              |              ^^^^^^^^^^^^
+            3 |                 <template #caption> lorem ipsum </template>
+            4 |             </f-data-table>
+            5 |
+          Selector: f-data-table"
+        `);
     });
 
     /* technical debt: this tests the wrong component */
@@ -512,7 +550,6 @@ describe("html-validate", () => {
                 E-post
             </f-email-text-field>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

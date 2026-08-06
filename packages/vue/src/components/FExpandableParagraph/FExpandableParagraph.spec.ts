@@ -1,15 +1,7 @@
 import { type VueWrapper, mount, shallowMount } from "@vue/test-utils";
-import { type ConfigData } from "html-validate";
 import { describe, expect, it, vi } from "vitest";
 import FExpandableParagraph from "./FExpandableParagraph.vue";
 import "html-validate/vitest";
-
-const config: ConfigData = {
-    root: true,
-    rules: {
-        "no-inline-style": "off",
-    },
-};
 
 function createWrapper({
     props = {},
@@ -36,21 +28,21 @@ describe("snapshots", () => {
         expect.assertions(2);
         const wrapper = createWrapper();
         expect(wrapper.element).toMatchSnapshot();
-        await expect(wrapper.element).toHTMLValidate(config);
+        await expect(wrapper.html()).toBeValid();
     });
 
     it("should match snapshot when expanded", async () => {
         expect.assertions(2);
         const wrapper = createWrapper({ props: { expanded: true } });
         expect(wrapper.element).toMatchSnapshot();
-        await expect(wrapper.element).toHTMLValidate(config);
+        await expect(wrapper.html()).toBeValid();
     });
 
     it("should match snapshot with custom heading level", async () => {
         expect.assertions(2);
         const wrapper = createWrapper({ props: { headerTag: "h3" } });
         expect(wrapper.element).toMatchSnapshot();
-        await expect(wrapper.element).toHTMLValidate(config);
+        await expect(wrapper.html()).toBeValid();
     });
 
     it("should match snapshot with list styling", async () => {
@@ -59,7 +51,7 @@ describe("snapshots", () => {
             props: { headerTag: "h3", list: true },
         });
         expect(wrapper.element).toMatchSnapshot();
-        await expect(wrapper.element).toHTMLValidate(config);
+        await expect(wrapper.html()).toBeValid();
     });
 
     it("should match snapshot with related information", async () => {
@@ -69,7 +61,7 @@ describe("snapshots", () => {
             slots: { related: "dolor sit amet" },
         });
         expect(wrapper.element).toMatchSnapshot();
-        await expect(wrapper.element).toHTMLValidate(config);
+        await expect(wrapper.html()).toBeValid();
     });
 });
 

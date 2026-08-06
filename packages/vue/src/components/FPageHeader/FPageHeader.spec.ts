@@ -101,8 +101,7 @@ describe("html-validate", () => {
     it("should allow usage without attributes, no attributes required", async () => {
         expect.assertions(1);
         const markup = /* HTML */ ` <f-page-header></f-page-header> `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should allow all slots", async () => {
@@ -113,8 +112,7 @@ describe("html-validate", () => {
             <f-page-header><template #default></template></f-page-header>
             <f-page-header><template #right></template></f-page-header>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("skip-link", async () => {
@@ -126,7 +124,7 @@ describe("html-validate", () => {
             <!-- omitted value -->
             <f-page-header skip-link></f-page-header>
         `;
-        await expect(valid).toMatchInlineCodeframe(`""`);
+        await expect(valid).toBeValid();
         await expect(invalid).toMatchInlineCodeframe(`
             "error: Attribute "skip-link" is missing value (attribute-allowed-values)
               1 |
@@ -144,8 +142,7 @@ describe("html-validate", () => {
             const markup = /* HTML */ `
                 <f-page-header header-tag="${headerTag}"></f-page-header>
             `;
-            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-            await expect(markup).toHTMLValidate();
+            await expect(markup).toBeValid();
         });
 
         it("h2", async () => {

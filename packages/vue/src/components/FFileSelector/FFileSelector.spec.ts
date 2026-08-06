@@ -122,7 +122,7 @@ describe("html-validate", () => {
             const invalid = /* HTML */ `
                 <f-file-selector disabled="foobar">text</f-file-selector>
             `;
-            await expect(valid).toMatchInlineCodeframe(`""`);
+            await expect(valid).toBeValid();
             await expect(invalid).toMatchInlineCodeframe(`
                 "error: Attribute "disabled" should omit value (attribute-boolean-style)
                   1 |

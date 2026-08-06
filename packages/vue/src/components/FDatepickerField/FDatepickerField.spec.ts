@@ -134,7 +134,7 @@ describe("html-validate", () => {
             const invalid = /* HTML */ `
                 <f-datepicker-field disabled="foobar"></f-datepicker-field>
             `;
-            await expect(valid).toMatchInlineCodeframe(`""`);
+            await expect(valid).toBeValid();
             await expect(invalid).toMatchInlineCodeframe(`
                 "error: Attribute "disabled" should omit value (attribute-boolean-style)
                   1 |
@@ -158,7 +158,7 @@ describe("html-validate", () => {
                 <f-datepicker-field :initial-month="myInitialDate">
                 </f-datepicker-field>
             `;
-            await expect(valid).toMatchInlineCodeframe(`""`);
+            await expect(valid).toBeValid();
         });
 
         it("highlight-today", async () => {
@@ -173,7 +173,7 @@ describe("html-validate", () => {
                 <f-datepicker-field highlight-today="foobar">
                 </f-datepicker-field>
             `;
-            await expect(valid).toMatchInlineCodeframe(`""`);
+            await expect(valid).toBeValid();
             await expect(invalid).toMatchInlineCodeframe(`
                 "error: Attribute "highlight-today" should omit value (attribute-boolean-style)
                   1 |
@@ -202,7 +202,7 @@ describe("html-validate", () => {
             const invalid = /* HTML */ `
                 <f-datepicker-field always-inline="foobar"></f-datepicker-field>
             `;
-            await expect(valid).toMatchInlineCodeframe(`""`);
+            await expect(valid).toBeValid();
             await expect(invalid).toMatchInlineCodeframe(`
                 "error: Attribute "always-inline" should omit value (attribute-boolean-style)
                   1 |
@@ -230,8 +230,7 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-            await expect(markup).toHTMLValidate();
+            await expect(markup).toBeValid();
         });
 
         it("should not allow block content in #default slot", async () => {
@@ -274,7 +273,7 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-            await expect(valid).toMatchInlineCodeframe(`""`);
+            await expect(valid).toBeValid();
             await expect(invalid).toMatchInlineCodeframe(`
                 "error: <div> element is not permitted as content under slot "tooltip" (<f-datepicker-field>) (element-permitted-content)
                   2 |                 <f-datepicker-field>
@@ -315,8 +314,7 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-            await expect(markup).toHTMLValidate();
+            await expect(markup).toBeValid();
         });
 
         it("should not allow block content in #error-message slot", async () => {
@@ -350,8 +348,7 @@ describe("html-validate", () => {
                     </template>
                 </f-datepicker-field>
             `;
-            /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-            await expect(markup).toHTMLValidate();
+            await expect(markup).toBeValid();
         });
 
         it("should not allow block content in #description slot", async () => {

@@ -248,8 +248,7 @@ describe("html-validate", () => {
                 <option>Apple</option>
             </f-select-field>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should be invalid", async () => {

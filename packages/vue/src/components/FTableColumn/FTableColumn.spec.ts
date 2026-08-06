@@ -380,37 +380,55 @@ describe("html-validate", () => {
     it("should not allow invalid types", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-table-column type="foobar"></f-table-column>
+            <f-table-column title="Column title" type="foobar"></f-table-column>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message: 'Attribute "type" has invalid value "foobar"',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "type" has invalid value "foobar" (attribute-allowed-values)
+            1 |
+          > 2 |             <f-table-column title="Column title" type="foobar"></f-table-column>
+              |                                                        ^^^^^^
+            3 |
+          Selector: f-table-column"
+        `);
     });
 
     it("should not allow empty description", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-table-column description=""></f-table-column>
+            <f-table-column
+                title="Column title"
+                description=""
+            ></f-table-column>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message: 'Attribute "description" has invalid value ""',
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: Attribute "description" has invalid value "" (attribute-allowed-values)
+            2 |             <f-table-column
+            3 |                 title="Column title"
+          > 4 |                 description=""
+              |                 ^^^^^^^^^^^
+            5 |             ></f-table-column>
+            6 |
+          Selector: f-table-column"
+        `);
     });
 
     it("should not allow flow content", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
-            <f-table-column>
+            <f-table-column title="Column title">
                 <div></div>
             </f-table-column>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).not.toHTMLValidate({
-            message:
-                "<div> element is not permitted as content under <f-table-column>",
-        });
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <div> element is not permitted as content under <f-table-column> (element-permitted-content)
+            1 |
+            2 |             <f-table-column title="Column title">
+          > 3 |                 <div></div>
+              |                  ^^^
+            4 |             </f-table-column>
+            5 |
+          Selector: f-table-column > div"
+        `);
     });
 
     it("should allow phrasing content", async () => {
@@ -420,8 +438,7 @@ describe("html-validate", () => {
                 <span></span>
             </f-table-column>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 
     it("should allow button content", async () => {
@@ -431,7 +448,6 @@ describe("html-validate", () => {
                 <button type="button">Foo</button>
             </f-table-column>
         `;
-        /* eslint-disable-next-line @typescript-eslint/await-thenable -- upstream typings are wrong */
-        await expect(markup).toHTMLValidate();
+        await expect(markup).toBeValid();
     });
 });

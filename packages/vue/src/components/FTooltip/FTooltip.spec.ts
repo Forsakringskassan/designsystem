@@ -1,9 +1,4 @@
 import { type VueWrapper, mount } from "@vue/test-utils";
-import {
-    FileSystemConfigLoader,
-    HtmlValidate,
-    cjsResolver,
-} from "html-validate/node";
 import { describe, expect, it } from "vitest";
 import "html-validate/vitest";
 import FTooltip from "./FTooltip.vue";
@@ -93,16 +88,6 @@ describe("slots", () => {
 });
 
 describe("html-validate", () => {
-    const loader = new FileSystemConfigLoader([cjsResolver()], {
-        extends: [
-            "html-validate:recommended",
-            "html-validate-vue:recommended",
-            "@fkui/vue:recommended",
-        ],
-        plugins: [`<rootDir>/htmlvalidate/index.cjs`, "html-validate-vue"],
-    });
-    const htmlvalidate = new HtmlValidate(loader);
-
     it("close-button-text", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
@@ -124,8 +109,7 @@ describe("html-validate", () => {
                 screen-reader-text="foo"
             ></f-tooltip>
         `;
-        const report = htmlvalidate.validateString(markup);
-        await expect(report).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: Attribute "close-button-text" is missing value (attribute-allowed-values)
               4 |
               5 |             <!-- should not allow omitted close-button-text value -->
@@ -172,8 +156,7 @@ describe("html-validate", () => {
             <f-tooltip header-tag="div" screen-reader-text="foo"></f-tooltip>
             <f-tooltip header-tag="span" screen-reader-text="foo"></f-tooltip>
         `;
-        const report = htmlvalidate.validateString(markup);
-        await expect(report).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: Attribute "header-tag" is missing value (attribute-allowed-values)
               4 |
               5 |             <!-- omitted header-tag value -->
@@ -234,8 +217,7 @@ describe("html-validate", () => {
             <!-- should allow valid screen-reader-text -->
             <f-tooltip screen-reader-text="lorem ipsum"></f-tooltip>
         `;
-        const report = htmlvalidate.validateString(markup);
-        await expect(report).toMatchInlineCodeframe(`
+        await expect(markup).toMatchInlineCodeframe(`
             "error: <f-tooltip> is missing required "screen-reader-text" attribute (element-required-attributes)
               1 |
               2 |             <!-- should not allow missing screen-reader-text -->
