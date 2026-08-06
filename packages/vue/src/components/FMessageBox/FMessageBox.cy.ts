@@ -9,11 +9,7 @@ import FMessageBox from "./FMessageBox.vue";
 
 function getShortTemplate(type: string): string {
     return /* HTML */ `
-        <density-wrapper>
-            <f-message-box type="${type}" layout="short">
-                Kort text
-            </f-message-box>
-        </density-wrapper>
+        <f-message-box type="${type}" layout="short"> Kort text </f-message-box>
     `;
 }
 
@@ -48,7 +44,9 @@ describe("default layout", () => {
 
 describe("short layout", () => {
     const DensityComponent = defineComponent({
-        template: getShortTemplate("info"),
+        template: /* HTML */ `
+            <density-wrapper> ${getShortTemplate("info")} </density-wrapper>
+        `,
         components: {
             DensityWrapper,
             FMessageBox,
@@ -118,33 +116,9 @@ describe("Visual forcedColor", () => {
             const ScreenshotComponent = defineComponent({
                 template: /* HTML */ `
                     <div>
-                        <f-message-box type="success">
-                            <template #default="{ headingSlotClass }">
-                                <h2 :class="headingSlotClass">Rubrik</h2>
-                                <p>Brödtext</p>
-                            </template>
-                        </f-message-box>
-
-                        <f-message-box type="warning">
-                            <template #default="{ headingSlotClass }">
-                                <h2 :class="headingSlotClass">Rubrik</h2>
-                                <p>Brödtext</p>
-                            </template>
-                        </f-message-box>
-
-                        <f-message-box type="error">
-                            <template #default="{ headingSlotClass }">
-                                <h2 :class="headingSlotClass">Rubrik</h2>
-                                <p>Brödtext</p>
-                            </template>
-                        </f-message-box>
-
-                        <f-message-box type="info">
-                            <template #default="{ headingSlotClass }">
-                                <h2 :class="headingSlotClass">Rubrik</h2>
-                                <p>Brödtext</p>
-                            </template>
-                        </f-message-box>
+                        ${getShortTemplate("success")}
+                        ${getShortTemplate("warning")}
+                        ${getShortTemplate("error")} ${getShortTemplate("info")}
                     </div>
                 `,
                 components: {
