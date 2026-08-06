@@ -1,71 +1,57 @@
 import "html-validate/vitest";
-import { defineComponent, h } from "vue";
+import { h } from "vue";
 import { type ValidatableHTMLElement, type ValidityEvent } from "@fkui/logic";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { config, mount, shallowMount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { describe, expect, it, vi } from "vitest";
 import FSelectField from "./FSelectField.vue";
 
-function createTestComponentWithOptions(
-    options: Array<{ text: string; value: unknown }> = [],
-): ReturnType<typeof defineComponent> {
-    return defineComponent({
-        components: { FSelectField },
-        render() {
-            const children = options.map((option) => {
-                const data = { value: option.value };
-                return h("option", data, option.text);
-            });
-            return h(FSelectField, this.$attrs, () => children);
-        },
-    });
-}
-
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-} = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FSelectField, {
-        attrs: { ...attrs, id: "select-field" },
-        props: { ...props },
-        slots: {
-            default: /* HTML */ `
-                <option>Apple</option>
-                <option>Banana</option>
-            `,
-            label: "Fruit",
-            ...slots,
-        },
-        global: {
-            stubs: ["f-icon"],
-        },
-    });
-}
+config.global.stubs = {
+    FIcon: true,
+};
 
 describe("snapshots", () => {
     it("should match snapshot with label and select", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
-
+        const wrapper = mount(FSelectField, {
+            attrs: { id: "select-field" },
+            slots: {
+                default: /* HTML */ `
+                    <option>Apple</option>
+                    <option>Banana</option>
+                `,
+                label: "Fruit",
+            },
+        });
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, select and error message", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
-            attrs: { "aria-invalid": true },
-            slots: { "error-message": "ERROR_MESSAGE" },
+        const wrapper = mount(FSelectField, {
+            attrs: { "aria-invalid": true, id: "select-field" },
+            slots: {
+                default: /* HTML */ `
+                    <option>Apple</option>
+                    <option>Banana</option>
+                `,
+                label: "Fruit",
+                "error-message": "ERROR_MESSAGE",
+            },
         });
-
         expect(wrapper.element).toMatchSnapshot();
     });
 
     it("should match snapshot with label, tooltip, description, error message and select", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = mount(FSelectField, {
+            attrs: { id: "select-field" },
             slots: {
+                default: /* HTML */ `
+                    <option>Apple</option>
+                    <option>Banana</option>
+                `,
+                label: "Fruit",
                 description: "DESCRIPTION",
                 tooltip: "TOOLTIP",
                 "error-message": "ERROR_MESSAGE",
@@ -85,8 +71,15 @@ describe("snapshots", () => {
         "should match snapshot when validityMode is $validityMode and isValid is $isValid",
         async ({ validityMode, isValid }) => {
             expect.assertions(1);
-            const wrapper = createWrapper({
-                attrs: { id: "elementId" },
+            const wrapper = mount(FSelectField, {
+                attrs: { id: "select-field" },
+                slots: {
+                    default: /* HTML */ `
+                        <option>Apple</option>
+                        <option>Banana</option>
+                    `,
+                    label: "Fruit",
+                },
             });
 
             /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
@@ -103,6 +96,7 @@ describe("snapshots", () => {
                 }),
             );
             await flushPromises();
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
             wrapper.vm.$forceUpdate();
 
             expect(wrapper.element).toMatchSnapshot();
@@ -113,14 +107,13 @@ describe("snapshots", () => {
 describe("attributes", () => {
     it("should pass attributes", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FSelectField, {
             attrs: {
                 disabled: true,
                 required: true,
             },
         });
         const select = wrapper.get("select");
-
         expect(select.attributes("disabled")).toBeDefined();
         expect(select.attributes("required")).toBeDefined();
     });
@@ -129,18 +122,17 @@ describe("attributes", () => {
 describe("inline", () => {
     it("should not set class by default", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FSelectField);
         expect(wrapper.classes()).not.toContain("select-field--inline");
     });
 
     it("should set class when enabled", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FSelectField, {
             props: {
                 inline: true,
             },
         });
-
         expect(wrapper.classes()).toContain("select-field--inline");
     });
 });
@@ -149,7 +141,7 @@ describe("events", () => {
     it("should pass listeners", async () => {
         expect.assertions(1);
         const foobar = vi.fn();
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FSelectField, {
             attrs: { onFoobar: foobar },
         });
         const element = wrapper.get("select");
@@ -159,13 +151,17 @@ describe("events", () => {
 
     it("should support v-model by emitting update:modelValue event with string", async () => {
         expect.assertions(3);
-        const wrapper = mount(
-            createTestComponentWithOptions([
-                { text: "Banana", value: "banana" },
-                { text: "Apple", value: "apple" },
-            ]),
-            { props: { modelValue: "banana" } },
-        );
+        const wrapper = mount(FSelectField, {
+            slots: {
+                default() {
+                    return [
+                        h("option", { value: "banana" }, "Banana"),
+                        h("option", { value: "apple" }, "Apple"),
+                    ];
+                },
+            },
+            props: { modelValue: "banana" },
+        });
         const select = wrapper.get("select");
         const htmlSelect = select.element;
 
@@ -179,49 +175,73 @@ describe("events", () => {
         ).toMatchInlineSnapshot(`"apple"`);
     });
 
-    it("should support v-model by emitting update:modelValue event with object", async () => {
+    it("should support v-model by emitting update:modelValue event with object", () => {
         expect.assertions(1);
-        const wrapper = mount(
-            createTestComponentWithOptions([
-                { text: "BananaObject", value: { id: 1, fruit: "banana" } },
-                { text: "AppleObject", value: { id: 2, fruit: "apple" } },
-            ]),
-            { props: { modelValue: { id: 1, fruit: "banana" } } },
-        );
-        await wrapper.vm.$nextTick();
+        const wrapper = mount(FSelectField, {
+            slots: {
+                default() {
+                    return [
+                        h(
+                            "option",
+                            { value: { id: 1, fruit: "banana" } },
+                            "Banana",
+                        ),
+                        h(
+                            "option",
+                            { value: { id: 2, fruit: "apple" } },
+                            "Apple",
+                        ),
+                    ];
+                },
+            },
+            props: { modelValue: { id: 1, fruit: "banana" } },
+        });
         const vModelValue = wrapper
             .findComponent(FSelectField)
             .props("modelValue");
-
         expect(vModelValue).toEqual({ id: 1, fruit: "banana" });
     });
 
-    it("should support v-model by emitting update:modelValue event with null", async () => {
+    it("should support v-model by emitting update:modelValue event with null", () => {
         expect.assertions(1);
-        const wrapper = mount(
-            createTestComponentWithOptions([
-                { text: "BananaObject", value: { id: 1, fruit: "banana" } },
-                { text: "AppleObject", value: { id: 2, fruit: "apple" } },
-            ]),
-            { props: { modelValue: null } },
-        );
-        await wrapper.vm.$nextTick();
+        const wrapper = mount(FSelectField, {
+            slots: {
+                default() {
+                    return [
+                        h(
+                            "option",
+                            { value: { id: 1, fruit: "banana" } },
+                            "Banana",
+                        ),
+                        h(
+                            "option",
+                            { value: { id: 2, fruit: "apple" } },
+                            "Apple",
+                        ),
+                    ];
+                },
+            },
+            props: { modelValue: null },
+        });
         const vModelValue = wrapper
             .findComponent(FSelectField)
             .props("modelValue");
-
         expect(vModelValue).toBeNull();
     });
 
     it("should emit change event with when value changes", async () => {
         expect.assertions(1);
-        const wrapper = mount(
-            createTestComponentWithOptions([
-                { text: "Banana", value: "banana" },
-                { text: "Apple", value: "apple" },
-            ]),
-            { props: { modelValue: "banana" } },
-        );
+        const wrapper = mount(FSelectField, {
+            slots: {
+                default() {
+                    return [
+                        h("option", { value: "banana" }, "Banana"),
+                        h("option", { value: "apple" }, "Apple"),
+                    ];
+                },
+            },
+            props: { modelValue: "banana" },
+        });
         const select = wrapper.get("select");
         await select.setValue("apple");
         expect(

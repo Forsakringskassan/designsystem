@@ -1,24 +1,9 @@
-import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import FCheckboxField from "./FCheckboxField.vue";
 
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-} = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FCheckboxField, {
-        attrs: { ...attrs },
-        props: { value: "Default value", ...props },
-        slots: { default: "Default label", ...slots },
-        attachTo: createPlaceholderInDocument(),
-    });
-}
-
 it.each`
-    vModel       | value    | expected
+    modelValue   | value    | expected
     ${undefined} | ${false} | ${false}
     ${null}      | ${false} | ${false}
     ${""}        | ${false} | ${false}
@@ -34,16 +19,15 @@ it.each`
     ${1}         | ${1}     | ${true}
     ${0}         | ${1}     | ${false}
 `(
-    'should handle v-model value "$vModel" where checked should be "$expected" when checkbox value is "$value"',
-    ({ vModel, value, expected }) => {
+    'should handle v-model value "$modelValue" where checked should be "$expected" when checkbox value is "$value"',
+    ({ modelValue, value, expected }) => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FCheckboxField, {
             props: {
                 value,
-                modelValue: vModel,
+                modelValue,
             },
         });
-
         expect(wrapper.get("input").element.checked).toBe(expected);
     },
 );
@@ -51,7 +35,14 @@ it.each`
 describe("snapshots", () => {
     it("should match snapshot with label and input", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FCheckboxField, {
+            props: {
+                value: "Default value",
+            },
+            slots: {
+                default: "Default label",
+            },
+        });
         expect(wrapper.element).toMatchSnapshot();
     });
 });
@@ -59,14 +50,16 @@ describe("snapshots", () => {
 describe("attributes", () => {
     it("should pass attributes", () => {
         expect.assertions(2);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FCheckboxField, {
             attrs: {
                 disabled: true,
                 required: true,
             },
+            props: {
+                value: true,
+            },
         });
         const input = wrapper.get("input");
-
         expect(input.attributes("disabled")).toBeDefined();
         expect(input.attributes("required")).toBeDefined();
     });
@@ -82,9 +75,10 @@ describe("disabled", () => {
         "should $description disabled when disabled prop is $disabledAttribute",
         ({ disabled, expectedResult }) => {
             expect.assertions(2);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FCheckboxField, {
                 props: {
                     disabled,
+                    value: true,
                 },
             });
             const input = wrapper.get("input").element;
@@ -97,8 +91,9 @@ describe("disabled", () => {
 describe("events", () => {
     it("should support v-model by emitting update:modelValue event with value", async () => {
         expect.assertions(3);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FCheckboxField, {
             props: { value: "Some value", modelValue: "Some value" },
+            attachTo: document.body,
         });
 
         const input = wrapper.get("input");
@@ -116,8 +111,9 @@ describe("events", () => {
 
     it("should emit change event when input value changes", async () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FCheckboxField, {
             props: { value: true, modelValue: false },
+            attachTo: document.body,
         });
 
         const input = wrapper.get("input");
@@ -133,11 +129,12 @@ describe("events", () => {
     describe("should support v-model as array", () => {
         it("should add value to array", async () => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FCheckboxField, {
                 props: {
                     value: "This checkbox",
                     modelValue: ["Another checkbox"],
                 },
+                attachTo: document.body,
             });
 
             await wrapper.get("input").trigger("click");
@@ -152,11 +149,12 @@ describe("events", () => {
 
         it("should remove value from array", async () => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FCheckboxField, {
                 props: {
                     value: "This checkbox",
                     modelValue: ["Another checkbox", "This checkbox"],
                 },
+                attachTo: document.body,
             });
 
             await wrapper.get("input").trigger("click");
@@ -170,11 +168,12 @@ describe("events", () => {
 
         it("should add nested array", async () => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FCheckboxField, {
                 props: {
                     value: ["This checkbox"],
                     modelValue: ["Another checkbox"],
                 },
+                attachTo: document.body,
             });
 
             await wrapper.get("input").trigger("click");
@@ -191,11 +190,12 @@ describe("events", () => {
 
         it("should remove nested array", async () => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FCheckboxField, {
                 props: {
                     value: ["This checkbox"],
                     modelValue: ["Another checkbox", ["This checkbox"]],
                 },
+                attachTo: document.body,
             });
 
             await wrapper.get("input").trigger("click");
@@ -209,11 +209,12 @@ describe("events", () => {
 
         it("should add nested object", async () => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FCheckboxField, {
                 props: {
                     value: { foo: true },
                     modelValue: ["Another checkbox"],
                 },
+                attachTo: document.body,
             });
 
             await wrapper.get("input").trigger("click");
@@ -230,11 +231,12 @@ describe("events", () => {
 
         it("should remove nested object", async () => {
             expect.assertions(1);
-            const wrapper = createWrapper({
+            const wrapper = shallowMount(FCheckboxField, {
                 props: {
                     value: { foo: true },
                     modelValue: ["Another checkbox", { foo: true }],
                 },
+                attachTo: document.body,
             });
 
             await wrapper.get("input").trigger("click");
@@ -252,11 +254,12 @@ describe("events", () => {
         const focus = vi.fn();
         const blur = vi.fn();
 
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FCheckboxField, {
             attrs: {
                 onFocus: focus,
                 onBlur: blur,
             },
+            props: { value: true },
         });
         const input = wrapper.get("input");
         await input.trigger("focus");
@@ -270,8 +273,10 @@ describe("events", () => {
         expect.assertions(2);
         const click = vi.fn();
 
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FCheckboxField, {
             attrs: { onClick: click },
+            props: { value: true },
+            attachTo: document.body,
         });
 
         const input = wrapper.get("input");

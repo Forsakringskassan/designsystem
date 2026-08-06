@@ -1,9 +1,8 @@
 import "html-validate/vitest";
 import "@fkui/test-utils/vitest";
-import { defineComponent } from "vue";
+import { type PropType, defineComponent } from "vue";
 import * as logic from "@fkui/logic";
-import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 import { describe, expect, it, vi } from "vitest";
 import { IFlexItem } from "../../internal-components/IFlex";
@@ -11,26 +10,10 @@ import { type ErrorItem } from "../../types";
 import { FIcon } from "../FIcon";
 import FErrorList from "./FErrorList.vue";
 
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-} = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FErrorList, {
-        attrs: { ...attrs },
-        props: { items: [], ...props },
-        slots: { ...slots },
-        global: {
-            stubs: ["FIcon"],
-        },
-    });
-}
-
 describe("snapshots", () => {
     it("should match snapshot when link", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = mount(FErrorList, {
             props: {
                 items: [{ id: "foo", title: "With link" }],
             },
@@ -40,7 +23,7 @@ describe("snapshots", () => {
 
     it("should match snapshot when no link", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = mount(FErrorList, {
             props: {
                 items: [{ title: "With no link" }],
             },
@@ -52,7 +35,8 @@ describe("snapshots", () => {
 describe("title slot", () => {
     it("should contain text if title is present", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = mount(FErrorList, {
+            props: { items: [] },
             slots: {
                 title: "lorem ipsum",
             },
@@ -63,7 +47,8 @@ describe("title slot", () => {
 
     it("should contain icon if title is present", () => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = mount(FErrorList, {
+            props: { items: [] },
             slots: {
                 title: "lorem ipsum",
             },
@@ -74,39 +59,34 @@ describe("title slot", () => {
 
     it("should not contain icon if title is not present", () => {
         expect.assertions(1);
-        const wrapper = createWrapper();
+        const wrapper = mount(FErrorList, {
+            props: { items: [] },
+        });
         const item = wrapper.findComponent(FIcon);
         expect(item.exists()).toBeFalsy();
     });
 });
 
 describe("navigation", () => {
-    function createWrapperWithErrorListAndInputs(
-        items: ErrorItem[],
-    ): VueWrapper {
-        const TestComponent = defineComponent({
-            name: "TestComponent",
-            components: {
-                FErrorList,
+    const TestComponent = defineComponent({
+        name: "TestComponent",
+        components: {
+            FErrorList,
+        },
+        props: {
+            items: {
+                type: Array as PropType<ErrorItem[]>,
+                required: true,
             },
-            template: /* HTML */ `
-                <div>
-                    <f-error-list :items="items"></f-error-list>
-                    <input id="id" />
-                    <input id="focus-element-id" />
-                </div>
-            `,
-            data() {
-                return {
-                    items,
-                };
-            },
-        });
-
-        return mount(TestComponent, {
-            attachTo: createPlaceholderInDocument(),
-        });
-    }
+        },
+        template: /* HTML */ `
+            <div>
+                <f-error-list :items="items"></f-error-list>
+                <input id="id" />
+                <input id="focus-element-id" />
+            </div>
+        `,
+    });
 
     it("should scroll to and focus on id element when focus element is missing", async () => {
         expect.assertions(2);
@@ -115,13 +95,18 @@ describe("navigation", () => {
         });
         const logicScrollToMock = vi.spyOn(logic, "scrollTo");
 
-        const wrapper = createWrapperWithErrorListAndInputs([
-            {
-                title: "Required",
-                id: "id",
-                focusElementId: "missing-focus-element-id",
+        const wrapper = mount(TestComponent, {
+            props: {
+                items: [
+                    {
+                        title: "Required",
+                        id: "id",
+                        focusElementId: "missing-focus-element-id",
+                    },
+                ],
             },
-        ]);
+            attachTo: document.body,
+        });
         await flushPromises();
 
         const anchor = wrapper.get("a");
@@ -143,13 +128,18 @@ describe("navigation", () => {
         });
         const logicScrollToMock = vi.spyOn(logic, "scrollTo");
 
-        const wrapper = createWrapperWithErrorListAndInputs([
-            {
-                title: "Required",
-                id: "id",
-                focusElementId: "focus-element-id",
+        const wrapper = mount(TestComponent, {
+            props: {
+                items: [
+                    {
+                        title: "Required",
+                        id: "id",
+                        focusElementId: "focus-element-id",
+                    },
+                ],
             },
-        ]);
+            attachTo: document.body,
+        });
         await flushPromises();
 
         const anchor = wrapper.get("a");

@@ -1,4 +1,4 @@
-import { nextTick, provide } from "vue";
+import { defineComponent, nextTick, provide } from "vue";
 import { type VueWrapper, mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import {
@@ -70,16 +70,12 @@ describe("FPaginateDataset", () => {
     });
 });
 
-let filterCallback: SortFilterDatasetEventCallback = () => ({});
-let sortCallback: SortFilterDatasetEventCallback = () => ({});
-let lazyRowsAddedCallback: SortFilterDatasetEventCallback = () => ({});
+describe("integration with sortFilterDatasetEvents", () => {
+    let filterCallback: SortFilterDatasetEventCallback = () => ({});
+    let sortCallback: SortFilterDatasetEventCallback = () => ({});
+    let lazyRowsAddedCallback: SortFilterDatasetEventCallback = () => ({});
 
-function createWrapper(): VueWrapper {
-    filterCallback = () => ({});
-    sortCallback = () => ({});
-    lazyRowsAddedCallback = () => ({});
-
-    return mount({
+    const TestComponent = defineComponent({
         components: { FPaginateDataset },
         setup() {
             provide(sortFilterDatasetEventsKey, {
@@ -110,27 +106,25 @@ function createWrapper(): VueWrapper {
             </f-paginate-dataset>
         `,
     });
-}
 
-function setPage(
-    wrapper: ReturnType<typeof createWrapper>,
-    page: number,
-): void {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
-    wrapper.findComponent(FPaginateDataset).element.dispatchEvent(
-        new CustomEvent("paginateDataset:page", {
+    function setPage(
+        wrapper: VueWrapper<InstanceType<typeof TestComponent>>,
+        page: number,
+    ): void {
+        const { element } = wrapper.getComponent(FPaginateDataset);
+        const event = new CustomEvent("paginateDataset:page", {
             bubbles: true,
             detail: {
                 page,
             },
-        }),
-    );
-}
+        });
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
+        element.dispatchEvent(event);
+    }
 
-describe("integration with sortFilterDatasetEvents", () => {
     it("should jump to last page on lazy rows added", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper();
+        const wrapper = mount(TestComponent);
         await nextTick();
 
         setPage(wrapper, 1);
@@ -145,7 +139,7 @@ describe("integration with sortFilterDatasetEvents", () => {
 
     it("should jump to first page on filter", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper();
+        const wrapper = mount(TestComponent);
         await nextTick();
 
         setPage(wrapper, 2);
@@ -160,7 +154,7 @@ describe("integration with sortFilterDatasetEvents", () => {
 
     it("should jump to first page on sort", async () => {
         expect.assertions(2);
-        const wrapper = createWrapper();
+        const wrapper = mount(TestComponent);
         await nextTick();
 
         setPage(wrapper, 2);

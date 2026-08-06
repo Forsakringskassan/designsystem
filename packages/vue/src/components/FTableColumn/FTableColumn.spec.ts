@@ -1,37 +1,18 @@
-import { provide, ref } from "vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { provide } from "vue";
+import { config, mount, shallowMount } from "@vue/test-utils";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import FTableColumn from "./FTableColumn.vue";
 import "html-validate/vitest";
 import { FTableColumnSize, FTableColumnSort } from "./f-table-column-data";
 
-function createWrapper({
-    props = {},
-    slots = {},
-    attrs = {},
-    provide = {},
-    options = {},
-} = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FTableColumn, {
-        attrs: { ...attrs },
-        props: {
-            name: "mock",
-            title: "Mock",
-            ...props,
-        },
-        slots: { ...slots },
-        global: {
-            provide: {
-                addColumn: vi.fn(),
-                setVisibilityColumn: vi.fn(),
-                renderColumns: ref(true),
-                ...provide,
-            },
-        },
-        ...options,
-    });
-}
+config.global.provide = {
+    addColumn() {
+        /* do nothing */
+    },
+    setVisibilityColumn() {
+        /* do nothing */
+    },
+};
 
 describe("should set type class for", () => {
     it.each`
@@ -41,65 +22,76 @@ describe("should set type class for", () => {
         ${"numeric"} | ${"numeric"} | ${"table__column--numeric"}
         ${"date"}    | ${"date"}    | ${"table__column--date"}
         ${"action"}  | ${"action"}  | ${"table__column--action"}
-    `("$description", async ({ type, className }) => {
+    `("$description", ({ type, className }) => {
         expect.assertions(1);
-        const wrapper = createWrapper({
+        const wrapper = shallowMount(FTableColumn, {
             props: {
+                title: "Mock",
                 type,
             },
         });
-        await wrapper.vm.$nextTick();
         expect(wrapper.classes()).toContain(className);
     });
 });
 
-it("should render as a <td> element by default", async () => {
+it("should render as a <td> element by default", () => {
     expect.assertions(1);
-    const wrapper = createWrapper();
-    await wrapper.vm.$nextTick();
+    const wrapper = shallowMount(FTableColumn, {
+        props: {
+            title: "Mock",
+        },
+    });
     expect(wrapper.element.tagName).toBe("TD");
 });
 
-it("should render as a <th> element when rowHeader is set", async () => {
+it("should render as a <th> element when rowHeader is set", () => {
     expect.assertions(1);
-    const wrapper = createWrapper({
+    const wrapper = shallowMount(FTableColumn, {
         props: {
+            title: "Mock",
             rowHeader: true,
         },
     });
-    await wrapper.vm.$nextTick();
     expect(wrapper.element.tagName).toBe("TH");
 });
 
-it("should set scope when rowHeader is set", async () => {
+it("should set scope when rowHeader is set", () => {
     expect.assertions(1);
-    const wrapper = createWrapper({
+    const wrapper = shallowMount(FTableColumn, {
         props: {
+            title: "Mock",
             rowHeader: true,
         },
     });
-    await wrapper.vm.$nextTick();
     expect(wrapper.attributes("scope")).toBe("row");
 });
 
-it("should be transparent", async () => {
+it("should be transparent", () => {
     expect.assertions(1);
-    const wrapper = createWrapper({
-        props: {
+    const wrapper = shallowMount(FTableColumn, {
+        attrs: {
             foo: "bar",
         },
+        props: {
+            title: "Mock",
+        },
     });
-    await wrapper.vm.$nextTick();
     expect(wrapper.attributes("foo")).toBe("bar");
 });
 
 it("should not render any content unless renderColumns is enabled", async () => {
     expect.assertions(1);
-    const wrapper = createWrapper({
-        provide: {
-            renderColumns: false,
+    const wrapper = shallowMount(FTableColumn, {
+        props: {
+            title: "Mock",
+        },
+        global: {
+            provide: {
+                renderColumns: false,
+            },
         },
     });
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- false positive */
     await wrapper.vm.$nextTick();
     expect(wrapper.find("*").exists()).toBeFalsy();
 });

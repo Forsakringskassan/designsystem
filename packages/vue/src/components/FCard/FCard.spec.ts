@@ -1,45 +1,32 @@
-import { type VueWrapper, mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import FCard from "./FCard.vue";
 import "html-validate/vitest";
 
-function createWrapper({
-    props = {},
-    listeners = {},
-    attrs = {},
-} = {}): VueWrapper {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
-    return mount(FCard, {
-        attrs: { ...attrs },
-        props: { ...props },
-        slots: {
-            header: "Header slot",
-            default: "Content slot",
-            footer: "Footer slot",
-        },
-        listeners: { ...listeners },
-    });
-}
-
 describe("snapshots", () => {
     it("should match snapshot", () => {
         expect.assertions(3);
-        const wrapper = createWrapper();
+        const wrapper = shallowMount(FCard, {
+            slots: {
+                header: "Header slot",
+                default: "Content slot",
+                footer: "Footer slot",
+            },
+        });
         expect(wrapper.element).toMatchSnapshot();
-
         expect(wrapper.get(".card__header")).toBeTruthy();
         expect(wrapper.get(".card__footer")).toBeTruthy();
     });
 
     it("should not render header class when heading slot is omitted", () => {
         expect.assertions(1);
-        const wrapper = mount(FCard);
+        const wrapper = shallowMount(FCard);
         expect(wrapper.find(".card__header").exists()).toBeFalsy();
     });
 
     it("should not render footer class when footer slot is omitted", () => {
         expect.assertions(1);
-        const wrapper = mount(FCard);
+        const wrapper = shallowMount(FCard);
         expect(wrapper.find(".card__footer").exists()).toBeFalsy();
     });
 });
