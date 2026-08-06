@@ -1,9 +1,6 @@
-import { config, shallowMount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
-import { TranslationPlugin } from "../../plugins";
 import FFileItem from "./FFileItem.vue";
-
-config.global.plugins = [TranslationPlugin];
 
 describe("FileItem", () => {
     it("should match snapshot with slots", () => {
