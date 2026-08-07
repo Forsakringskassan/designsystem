@@ -51,7 +51,6 @@ export default [
         files: ["{examples,internal,packages}/**/*.{ts,vue}"],
         ignores: [
             "**/*.d.ts",
-            "**/*.cy.ts",
             "**/jest.setup.ts",
             "**/vitest.setup.ts",
             "**/vite.config.ts",
@@ -164,6 +163,27 @@ export default [
         files: ["docs/**/*"],
         rules: {
             "unicorn/filename-case": "off",
+        },
+    },
+
+    {
+        name: "technical-debt",
+        files: ["**/*.cy.ts"],
+        rules: {
+            "@typescript-eslint/consistent-type-imports": "off",
+            "@typescript-eslint/no-deprecated": "off",
+            "@typescript-eslint/no-floating-promises": "off",
+            "@typescript-eslint/no-unnecessary-type-arguments": "off",
+            "@typescript-eslint/no-unnecessary-type-assertion": "off",
+            "@typescript-eslint/no-unsafe-argument": "off",
+            "@typescript-eslint/no-unsafe-assignment": "off",
+            "@typescript-eslint/no-unsafe-call": "off",
+            "@typescript-eslint/no-unsafe-return": "off",
+            "@typescript-eslint/restrict-template-expressions": "off",
+            "@typescript-eslint/unbound-method": "off",
+            "sonarjs/no-incompatible-assertion-types": "off",
+            "sonarjs/no-undefined-argument": "off",
+            "unicorn/no-non-function-verb-prefix": "off",
         },
     },
 ];
