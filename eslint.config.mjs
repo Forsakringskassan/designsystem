@@ -165,12 +165,4 @@ export default [
             "unicorn/filename-case": "off",
         },
     },
-
-    {
-        name: "technical-debt",
-        files: ["**/*.cy.ts"],
-        rules: {
-            "unicorn/no-non-function-verb-prefix": "off",
-        },
-    },
 ];

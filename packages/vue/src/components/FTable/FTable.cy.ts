@@ -2230,6 +2230,7 @@ describe("select cell", () => {
     ]);
 
     it("should set value when selecting option with enter", () => {
+        /* eslint-disable-next-line unicorn/no-non-function-verb-prefix -- technical debt */
         const setValueRows = useDatasetRef<Row>([
             { option: "Foo" },
             { option: "Bar" },
