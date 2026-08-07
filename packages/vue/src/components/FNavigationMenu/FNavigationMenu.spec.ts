@@ -1,6 +1,5 @@
 import "html-validate/vitest";
 import { mount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import FNavigationMenu from "./FNavigationMenu.vue";
 import { type NavigationMenuItem } from "./navigation-menu-item";
@@ -132,7 +131,6 @@ describe("events", () => {
         // When directly after mount
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
-        await flushPromises();
 
         const li = wrapper.findAll(".imenu__list__item").at(1);
         // Then highlight is on preselected route item
@@ -150,7 +148,6 @@ describe("events", () => {
         });
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
-        await flushPromises();
 
         const li = wrapper.findAll(".imenu__list__item")[0];
         const a = li.get("a");
@@ -159,7 +156,6 @@ describe("events", () => {
         await a.trigger("click");
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-call -- technical debt */
         await wrapper.vm.$nextTick();
-        await flushPromises();
 
         // then
         expect(li.classes()).toContain("imenu__list__item--highlight");

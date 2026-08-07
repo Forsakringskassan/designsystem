@@ -5,8 +5,12 @@ import {
     type ValidityEvent,
     type ValidityMode,
 } from "@fkui/logic";
-import { type VueWrapper, mount, shallowMount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
+import {
+    type VueWrapper,
+    flushPromises,
+    mount,
+    shallowMount,
+} from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import { type ComponentValidityEvent } from "../../types";
 import { FIcon } from "../FIcon";

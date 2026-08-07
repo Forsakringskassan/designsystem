@@ -1,8 +1,7 @@
 import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
+import { type VueWrapper, flushPromises, mount } from "@vue/test-utils";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../../plugins";
 import { FTextField } from "../../FTextField";

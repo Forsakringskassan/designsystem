@@ -1,6 +1,5 @@
 /* eslint-disable no-console -- many tests related to console logging triggers this */
 import { type ComponentPublicInstance } from "vue";
-import flushPromises from "flush-promises";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { EventBus } from "../../utils";
 import {
@@ -27,14 +26,13 @@ afterEach(() => {
 });
 
 describe("errorHandler", () => {
-    it("should emit event", async () => {
+    it("should emit event", () => {
         expect.assertions(1);
 
         // Given
         const error = new Error("My error");
         const info = "unittest";
         vi.spyOn(EventBus, "$emit");
-        await flushPromises();
 
         // When
         errorHandler({}, error, fakeVm, info);
@@ -48,14 +46,13 @@ describe("errorHandler", () => {
         });
     });
 
-    it("should log to console if options.logToConsole is set", async () => {
+    it("should log to console if options.logToConsole is set", () => {
         expect.assertions(3);
 
         // Given
         const error = new Error("My error");
         const info = "unittest";
         vi.spyOn(EventBus, "$emit");
-        await flushPromises();
 
         // When
         errorHandler({ logToConsole: true }, error, fakeVm, info);
@@ -70,14 +67,13 @@ describe("errorHandler", () => {
         expect(console.warn).not.toHaveBeenCalled();
     });
 
-    it("should not log to console unless options.logToConsole is set", async () => {
+    it("should not log to console unless options.logToConsole is set", () => {
         expect.assertions(2);
 
         // Given
         const error = new Error("My error");
         const info = "unittest";
         vi.spyOn(EventBus, "$emit");
-        await flushPromises();
 
         // When
         errorHandler({ logToConsole: false }, error, fakeVm, info);
@@ -89,14 +85,13 @@ describe("errorHandler", () => {
 });
 
 describe("warnHandler", () => {
-    it("should emit event", async () => {
+    it("should emit event", () => {
         expect.assertions(1);
 
         // Given
         const message = "A warning";
         const stack = "stacktrace";
         vi.spyOn(EventBus, "$emit");
-        await flushPromises();
 
         // When
         warnHandler({}, message, fakeVm, stack);
@@ -114,14 +109,13 @@ describe("warnHandler", () => {
         });
     });
 
-    it("should log to console if options.logToConsole is set", async () => {
+    it("should log to console if options.logToConsole is set", () => {
         expect.assertions(3);
 
         // Given
         const message = "A warning";
         const stack = "stacktrace";
         vi.spyOn(EventBus, "$emit");
-        await flushPromises();
 
         // When
         warnHandler({ logToConsole: true }, message, fakeVm, stack);
@@ -132,14 +126,13 @@ describe("warnHandler", () => {
         expect(console.warn).toHaveBeenCalledWith("Warning:", message, stack);
     });
 
-    it("should not log to console unless options.logToConsole is set", async () => {
+    it("should not log to console unless options.logToConsole is set", () => {
         expect.assertions(2);
 
         // Given
         const message = "A warning";
         const stack = "stacktrace";
         vi.spyOn(EventBus, "$emit");
-        await flushPromises();
 
         // When
         warnHandler({ logToConsole: false }, message, fakeVm, stack);

@@ -81,7 +81,6 @@
     "@vue/test-utils": "2.4.11",
     "cypress": "15.19.0",
     "esbuild": "0.28.1",
-    "flush-promises": "1.0.2",
     "glob": "13.0.6",
     "vite": "8.2.0",
     "vitest": "4.1.10",

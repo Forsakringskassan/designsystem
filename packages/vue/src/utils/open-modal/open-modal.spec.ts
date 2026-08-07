@@ -1,5 +1,4 @@
 import { type VNodeArrayChildren, defineComponent, h } from "vue";
-import flushPromises from "flush-promises";
 import { expect, it } from "vitest";
 import { type MaybeWithFKUIContext } from "../../config";
 import { openModal } from "./open-modal";
@@ -70,7 +69,7 @@ class PageObject {
     }
 }
 
-it("should attach modal to given parent when opened", async () => {
+it("should attach modal to given parent when opened", () => {
     expect.assertions(2);
     const container = document.createElement("div");
     void openModal(callingInstance, MockModal, { attachTo: container });
@@ -78,21 +77,19 @@ it("should attach modal to given parent when opened", async () => {
     expect(modal.exists()).toBeTruthy();
     expect(modal.element).toBeInstanceOf(HTMLElement);
     modal.closeButton?.click();
-    await flushPromises();
 });
 
-it("should remove modal from given parent when closed", async () => {
+it("should remove modal from given parent when closed", () => {
     expect.assertions(2);
     const container = document.createElement("div");
     void openModal(callingInstance, MockModal, { attachTo: container });
     const modal = new PageObject(container);
     modal.closeButton?.click();
-    await flushPromises();
     expect(modal.exists()).toBeFalsy();
     expect(modal.element).toBeNull();
 });
 
-it("should set isOpen to true", async () => {
+it("should set isOpen to true", () => {
     expect.assertions(1);
     const container = document.createElement("div");
     void openModal(callingInstance, MockModal, { attachTo: container });
@@ -100,7 +97,6 @@ it("should set isOpen to true", async () => {
     const props = modal.props();
     expect(props.isOpen).toBe(true);
     modal.closeButton?.click();
-    await flushPromises();
 });
 
 it("should resolve promise when close is emitted", async () => {
@@ -147,11 +143,10 @@ it("should include custom reason in resolved object", async () => {
     });
 });
 
-it("should support shorthand syntax", async () => {
+it("should support shorthand syntax", () => {
     expect.assertions(1);
     void openModal(callingInstance, MockModal, "my custom text");
     const modal = new PageObject(document.body);
     expect(modal.content?.textContent).toBe("my custom text");
     modal.closeButton?.click();
-    await flushPromises();
 });

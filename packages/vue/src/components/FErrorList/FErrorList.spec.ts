@@ -3,7 +3,6 @@ import "@fkui/test-utils/vitest";
 import { type PropType, defineComponent } from "vue";
 import * as logic from "@fkui/logic";
 import { mount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
 import { describe, expect, it, vi } from "vitest";
 import { IFlexItem } from "../../internal-components/IFlex";
 import { type ErrorItem } from "../../types";
@@ -107,11 +106,9 @@ describe("navigation", () => {
             },
             attachTo: document.body,
         });
-        await flushPromises();
 
         const anchor = wrapper.get("a");
         await anchor.trigger("click");
-        await flushPromises();
 
         const idElement = wrapper.find("#id").element;
         expect(logicScrollToMock).toHaveBeenCalledWith(
@@ -140,11 +137,9 @@ describe("navigation", () => {
             },
             attachTo: document.body,
         });
-        await flushPromises();
 
         const anchor = wrapper.get("a");
         await anchor.trigger("click");
-        await flushPromises();
 
         const idElement = wrapper.find("#id").element;
         expect(logicScrollToMock).toHaveBeenCalledWith(

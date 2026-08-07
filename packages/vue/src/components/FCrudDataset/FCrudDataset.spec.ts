@@ -2,8 +2,12 @@ import "html-validate/vitest";
 import { type PropType, defineComponent, h } from "vue";
 import * as logic from "@fkui/logic";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { type VueWrapper, mount, shallowMount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
+import {
+    type VueWrapper,
+    flushPromises,
+    mount,
+    shallowMount,
+} from "@vue/test-utils";
 import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import { type ListItem } from "../../types";

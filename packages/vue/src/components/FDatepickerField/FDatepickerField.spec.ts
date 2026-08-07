@@ -1,7 +1,6 @@
 import "html-validate/vitest";
 import { FDate } from "@fkui/date";
 import { mount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import FDatepickerField from "./FDatepickerField.vue";
@@ -73,7 +72,6 @@ describe("textfield", () => {
 
         const input = wrapper.get("input");
         await input.setValue("2022-02-02");
-        await flushPromises();
 
         const updateEvent = wrapper.emitted("update:modelValue")!;
         expect(updateEvent).toHaveLength(1);
@@ -86,7 +84,6 @@ describe("textfield", () => {
 
         const input = wrapper.get("input");
         await input.setValue("2022-02-02");
-        await flushPromises();
 
         const changeEvent = wrapper.emitted("change")!;
         expect(changeEvent).toHaveLength(1);
@@ -110,12 +107,10 @@ describe("calendar", () => {
             "[data-test='calendar-button']",
         );
         await toggleCalendarButton.trigger("click");
-        await flushPromises();
 
         const now = FDate.now().toString();
         const todayButton = wrapper.get(`[data-date='${now}']`);
         await todayButton.trigger("click");
-        await flushPromises();
 
         expect(wrapper.emitted("update:modelValue")![0][0]).toBe(now);
         expect(wrapper.emitted("change")![0][0]).toBe(now);
