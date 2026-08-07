@@ -97,7 +97,9 @@ export default defineConfig({
             config.expose = {
                 DISABLE_VISUAL_REGRESSION: disableVisualRegression,
             };
-            getToMatchScreenshotsPlugin(on, config);
+            getToMatchScreenshotsPlugin(on, config, {
+                threshold: 0.005,
+            });
             config = install(on, config);
             config = cypressSplit(on, config);
             return config;
