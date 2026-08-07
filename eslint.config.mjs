@@ -170,7 +170,6 @@ export default [
         name: "technical-debt",
         files: ["**/*.cy.ts"],
         rules: {
-            "@typescript-eslint/consistent-type-imports": "off",
             "@typescript-eslint/no-deprecated": "off",
             "@typescript-eslint/no-floating-promises": "off",
             "@typescript-eslint/no-unnecessary-type-arguments": "off",
