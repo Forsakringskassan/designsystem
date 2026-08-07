@@ -28,7 +28,7 @@ describe("Dialogue Tree", () => {
                 components: { FDialogueTree },
                 data() {
                     return {
-                        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
+                        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call -- false positive (vue-tsc) */
                         tree: dialogueTreeData(
                             "Option 1 (in focus)",
                             "Option 2 (hover)",
