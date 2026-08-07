@@ -8,26 +8,27 @@ import { FBadgePageObject } from "../../cypress";
 import FBadge from "./FBadge.vue";
 
 function createComponent(inverted: boolean): DefineComponent {
+    const invertedProp = String(inverted);
     return defineComponent({
         template: /* HTML */ `
             <div data-test="badges">
-                <f-badge data-test="badge-default" :inverted="${inverted}">
+                <f-badge data-test="badge-default" :inverted="${invertedProp}">
                     Lorem ipsum dolor sit amet
                 </f-badge>
 
-                <f-badge status="warning" :inverted="${inverted}">
+                <f-badge status="warning" :inverted="${invertedProp}">
                     Lorem ipsum dolor sit amet
                 </f-badge>
 
-                <f-badge status="error" :inverted="${inverted}">
+                <f-badge status="error" :inverted="${invertedProp}">
                     Lorem ipsum dolor sit amet
                 </f-badge>
 
-                <f-badge status="success" :inverted="${inverted}">
+                <f-badge status="success" :inverted="${invertedProp}">
                     Lorem ipsum dolor sit amet
                 </f-badge>
 
-                <f-badge status="info" :inverted="${inverted}">
+                <f-badge status="info" :inverted="${invertedProp}">
                     Lorem ipsum dolor sit amet
                 </f-badge>
             </div>
