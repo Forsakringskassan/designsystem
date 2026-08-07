@@ -652,7 +652,7 @@ describe("required field", () => {
                 methods: {
                     onSubmit() {
                         ValidationService.setSubmitted("foo");
-                        ValidationService.validateAllElements("foo");
+                        void ValidationService.validateAllElements("foo");
                     },
                 },
             }),
