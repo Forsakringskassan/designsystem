@@ -41,12 +41,11 @@ describe("ValidationPlugin", () => {
 
     it("should prefix error messages when v-validation-prefix directive is used", () => {
         cy.mount(ValidationPluginFormValidation);
-        const validationPrefixForm = (): Cypress.Chainable<
-            JQuery<HTMLElement>
-        > => cy.get('[data-test="form-validation-prefix"]');
+        const validationPrefixForm = (): Cypress.Chainable<JQuery> =>
+            cy.get('[data-test="form-validation-prefix"]');
         validationPrefixForm().find('button[type="submit"]').click();
 
-        const errorLinks = (): Cypress.Chainable<JQuery<HTMLElement>> =>
+        const errorLinks = (): Cypress.Chainable<JQuery> =>
             validationPrefixForm().get(".error-list__list li a");
         errorLinks().should("have.length", 3);
 
