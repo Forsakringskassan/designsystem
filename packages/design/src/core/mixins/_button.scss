@@ -21,6 +21,7 @@
     $color--disabled: $button-color-text-disabled,
     $shadow,
     $shadow--hover: $shadow,
+    $shadow--active: $shadow,
     $padding-top,
     $padding-right,
     $padding-bottom,
@@ -32,6 +33,9 @@
     box-shadow: $shadow;
     color: $color;
     padding: $padding-top $padding-right $padding-bottom $padding-left;
+    transition-duration: var(--f-button-animation-duration);
+    transition-property: background-color, border-color, transform;
+    transition-timing-function: var(--f-button-animation-curve);
 
     &:focus {
         background-color: $background-color--focus;
@@ -42,14 +46,16 @@
     &:hover {
         background-color: $background-color--hover;
         border-color: $border-color--hover;
-        color: $color--hover;
         box-shadow: $shadow--hover;
+        color: $color--hover;
     }
 
     &:active {
         background-color: $background-color--active;
         border-color: $border-color--active;
+        box-shadow: $shadow--active;
         color: $color--active;
+        transform: translateY(1px);
     }
 
     &:focus {
@@ -72,9 +78,10 @@
 
     &[aria-disabled="true"] {
         pointer-events: none;
+
         @media (forced-colors: active) {
-            color: GrayText;
             border-color: GrayText;
+            color: GrayText;
         }
     }
 }
