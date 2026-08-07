@@ -391,8 +391,11 @@ describe("`checkbox()`", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         table.checkbox(1).label().should("contain.text", "Select row A1");
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         table.checkbox(2).label().should("contain.text", "Select row A2");
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         table.checkbox(3).label().should("contain.text", "Select row A3");
     });
 
@@ -407,8 +410,11 @@ describe("`checkbox()`", () => {
         });
 
         table.row(0).click();
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         table.checkbox(1).label().should("contain.text", "Select row A1");
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         table.checkbox(5).label().should("contain.text", "Select row A2");
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         table.checkbox(6).label().should("contain.text", "Select row A3");
     });
 
@@ -422,8 +428,11 @@ describe("`checkbox()`", () => {
             },
         });
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         table.checkbox(1).label().should("contain.text", "Select row A1");
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         table.checkbox(2).label().should("contain.text", "Select row A2");
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         table.checkbox(3).label().should("contain.text", "Select row A3");
     });
 });
@@ -467,22 +476,31 @@ it("`columnItem()` should get `FTableColumnPageObject` for given row index", () 
     });
 
     table
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         .columnItem(0)
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         .tableRowHeaderContent()
         .eq(2)
         .should("have.trimmedText", "A");
     table
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         .columnItem(0)
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         .tableRowHeaderContent()
         .eq(3)
         .should("have.trimmedText", "B");
     table
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         .columnItem(0)
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         .tableRowHeaderContent()
         .eq(4)
         .should("have.trimmedText", "C");
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
     table.columnItem(1).tableRowBodyContent(2).should("have.trimmedText", "A1");
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
     table.columnItem(1).tableRowBodyContent(3).should("have.trimmedText", "B1");
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
     table.columnItem(1).tableRowBodyContent(4).should("have.trimmedText", "C1");
 });
 
@@ -496,21 +514,30 @@ it("`headerRowItem()` should get `FTableColumnPageObject` for header row", () =>
         },
     });
 
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
     table.headerRowItem().tableRowHeaderContent().should("have.length", 5);
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
     table.headerRowItem().tableRowHeaderContent().eq(0).should("exist");
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
     table.headerRowItem().tableRowHeaderContent().eq(1).should("exist");
     table
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         .headerRowItem()
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         .tableRowHeaderContent()
         .eq(2)
         .should("have.trimmedText", "A");
     table
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         .headerRowItem()
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         .tableRowHeaderContent()
         .eq(3)
         .should("have.trimmedText", "B");
     table
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         .headerRowItem()
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         .tableRowHeaderContent()
         .eq(4)
         .should("have.trimmedText", "C");
