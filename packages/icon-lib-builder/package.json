@@ -26,9 +26,6 @@
     "templates",
     "!scripts/**/*.spec.js"
   ],
-  "scripts": {
-    "test": "vitest run --coverage"
-  },
   "dependencies": {
     "glob": "13.0.6",
     "sass": "1.102.0",

@@ -30,7 +30,8 @@
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
-    "test": "node --test"
+    "test": "node --test",
+    "unit": "node --test"
   },
   "devDependencies": {
     "sass": "1.102.0"
