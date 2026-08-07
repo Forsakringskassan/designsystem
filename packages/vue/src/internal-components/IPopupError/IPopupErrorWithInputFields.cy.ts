@@ -61,7 +61,7 @@ function createComponent(
         },
         mounted() {
             ValidationService.setSubmitted("input");
-            ValidationService.validateAllElements("table");
+            void ValidationService.validateAllElements("table");
         },
     });
 }
