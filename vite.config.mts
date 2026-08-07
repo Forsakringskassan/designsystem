@@ -1,9 +1,36 @@
-/* This file is used by Cypress only, see `packages/vue/vite.config.ts` for the actual config */
 import * as path from "node:path";
-import { defineConfig } from "vite";
 import { vuePlugin } from "@forsakringskassan/vite-lib-config/vite";
+import { defineTestConfig } from "@forsakringskassan/vitest-config";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
+    /**
+     * Configuration for unit-tests.
+     *
+     * Each package defines the actual test configuration in the package
+     * "vite.config.mts", this configuration only setups Vitest projects and the
+     * reports (coverage and result).
+     */
+    test: defineTestConfig({
+        projects: [
+            "internal/*",
+            "packages/*",
+
+            /* ignored: these package use node native test runner */
+            "!internal/publiccode",
+            "!packages/design",
+            "!packages/font-default",
+            "!packages/logo-default",
+            "!packages/theme-builder",
+        ],
+    }),
+
+    /**
+     * Configuration for Cypress E2E and Omponent tests.
+     *
+     * This configuration is only used when running component tests and not when
+     * running builds, for builds see each package "vite.config.mts" file.
+     */
     optimizeDeps: {
         entries: [
             "packages/{date,logic,vue,vue-labs}/src/**/*.{ts,vue}",

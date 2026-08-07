@@ -42,7 +42,8 @@
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
-    "test": "node --test"
+    "test": "node --test",
+    "unit": "node --test"
   },
   "dependencies": {
     "inter-ui": "4.1.1"
