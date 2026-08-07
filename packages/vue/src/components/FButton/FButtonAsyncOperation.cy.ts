@@ -15,8 +15,8 @@ function createComponent(options?: {
 }): {
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt */
     ButtonComponent: DefineComponent<any, any>;
-    resolve(): void;
-    reject(): void;
+    resolve(this: void): void;
+    reject(this: void): void;
 } {
     const { iconLeft, iconRight, mobileFullWidth, tertiaryStyle } =
         options ?? {};
