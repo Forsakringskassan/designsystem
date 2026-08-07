@@ -170,7 +170,6 @@ export default [
         name: "technical-debt",
         files: ["**/*.cy.ts"],
         rules: {
-            "sonarjs/no-undefined-argument": "off",
             "unicorn/no-non-function-verb-prefix": "off",
         },
     },

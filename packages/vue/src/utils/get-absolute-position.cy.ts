@@ -42,6 +42,6 @@ it("should return accurate values for element", () => {
 });
 
 it("should return undefined if pass undefined", () => {
-    const result = getAbsolutePosition(undefined);
+    const result = getAbsolutePosition();
     assert.isUndefined(result);
 });
