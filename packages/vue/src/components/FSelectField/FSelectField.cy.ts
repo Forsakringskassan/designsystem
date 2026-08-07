@@ -15,6 +15,7 @@ const selectField = new FSelectFieldPageObject(".select-field");
 describe("FSelectField", () => {
     it("should select an option from the dropdown", () => {
         cy.mount({
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
             components: { FSelectField },
             template: /* HTML */ `
                 <f-select-field id="dropplista">
@@ -34,6 +35,7 @@ describe("FSelectField", () => {
     it("should render inline layout correctly at 639px viewport (visual)", () => {
         cy.viewport(639, 180);
         cy.mount({
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
             components: { FSelectField, FTooltip },
             template: /* HTML */ `
                 <f-select-field id="dropplista" v-model="selectField" inline>
@@ -71,6 +73,7 @@ describe("FSelectField", () => {
     it("should render inline layout correctly at 640px viewport (visual)", () => {
         cy.viewport(640, 120);
         cy.mount({
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
             components: { FSelectField, FTooltip },
             template: /* HTML */ `
                 <f-select-field id="dropplista" v-model="selectField" inline>
@@ -110,6 +113,7 @@ describe("FSelectField", () => {
     it("should render help and format description and display an error message (visual)", () => {
         cy.viewport(250, 180);
         cy.mount({
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
             components: { FSelectField },
             template: /* HTML */ `
                 <f-select-field

@@ -6,6 +6,7 @@ const selectField = new FSelectFieldPageObject(".select-field");
 it("el() should get root element", () => {
     const selectFieldEl = new FSelectFieldPageObject('[data-test="foobar"]');
     cy.mount({
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
         components: { FSelectField },
         template: /* HTML */ `
             <f-select-field v-test="'foobar'">
@@ -114,6 +115,7 @@ it("label should get label pageobject", () => {
 
 it("tooltip should get tooltip pageobject", () => {
     cy.mount({
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
         components: { FSelectField, FTooltip },
         template: /* HTML */ `
             <f-select-field v-test="'foobar'">

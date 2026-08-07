@@ -152,6 +152,7 @@ it("should expose error label with hidden text when emitting componentValidity e
                     </f-text-field>
                 </div>
             `,
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
             components: { FTextField },
             emits: ["componentValidity"],
             methods: {

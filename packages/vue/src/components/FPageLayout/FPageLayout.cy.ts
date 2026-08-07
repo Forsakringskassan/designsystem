@@ -94,6 +94,7 @@ it("should position simple layout correctly", () => {
                 </template>
             </f-page-layout>
         `,
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
         components: { FPageLayout },
     });
     cy.toMatchScreenshot();
@@ -111,6 +112,7 @@ it("should position left-panel layout correctly", () => {
                 </template>
             </f-page-layout>
         `,
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
         components: { FPageLayout },
     });
     cy.toMatchScreenshot();
@@ -128,6 +130,7 @@ it("should position right-panel layout correctly", () => {
                 </template>
             </f-page-layout>
         `,
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
         components: { FPageLayout },
     });
     cy.toMatchScreenshot();
@@ -146,6 +149,7 @@ it("should position three-column layout correctly", () => {
                 </template>
             </f-page-layout>
         `,
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
         components: { FPageLayout },
     });
     cy.toMatchScreenshot();
@@ -180,6 +184,7 @@ it("should stack flex items vertically by default", () => {
                 </template>
             </f-page-layout>
         `,
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
         components: { FPageLayout },
     });
     cy.toMatchScreenshot();

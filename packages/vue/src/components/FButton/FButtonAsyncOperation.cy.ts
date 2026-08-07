@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { type DefineComponent, defineComponent } from "vue";
 import FButton from "./FButton.vue";
 
 const VIEWPORT = {
@@ -13,7 +13,8 @@ function createComponent(options?: {
     tertiaryStyle?: string;
     variant?: string;
 }): {
-    ButtonComponent: ReturnType<typeof defineComponent>;
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt */
+    ButtonComponent: DefineComponent<any, any>;
     resolve(): void;
     reject(): void;
 } {
