@@ -1143,7 +1143,7 @@ describe("6 Expandable table", () => {
             cy.get("table")
                 .parent()
                 .then(($container) => {
-                    const container = $container[0] as HTMLElement;
+                    const container = $container[0];
 
                     cy.stub(container, "getBoundingClientRect").returns({
                         left: 0,
@@ -1170,7 +1170,7 @@ describe("6 Expandable table", () => {
                 });
 
             cy.get("table").then(($table) => {
-                const { rows } = $table[0] as HTMLTableElement;
+                const { rows } = $table[0];
                 const firstCell = rows[1].cells[0];
                 const secondCell = rows[1].cells[1];
 
@@ -1228,7 +1228,7 @@ describe("6 Expandable table", () => {
             cy.get("table")
                 .parent()
                 .then(($container) => {
-                    const container = $container[0] as HTMLElement;
+                    const container = $container[0];
 
                     cy.stub(container, "getBoundingClientRect").returns({
                         left: 0,
@@ -1244,7 +1244,7 @@ describe("6 Expandable table", () => {
                 });
 
             cy.get("table").then(($table) => {
-                const { rows } = $table[0] as HTMLTableElement;
+                const { rows } = $table[0];
                 const firstCell = rows[1].cells[0];
                 const secondCell = rows[1].cells[1];
 
