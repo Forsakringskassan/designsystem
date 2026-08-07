@@ -36,7 +36,7 @@ function mountTestComponent(
                     :is-open="isOpen"
                     :items="items"
                     anchor="toggle-open"
-                    :enable-keyboard-navigation="${enableKeyNav}"
+                    :enable-keyboard-navigation="${String(enableKeyNav)}"
                     @close="this.isOpen = false"
                 ></i-popup-menu>
             </div>

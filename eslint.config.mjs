@@ -170,7 +170,6 @@ export default [
         name: "technical-debt",
         files: ["**/*.cy.ts"],
         rules: {
-            "@typescript-eslint/restrict-template-expressions": "off",
             "@typescript-eslint/unbound-method": "off",
             "sonarjs/no-incompatible-assertion-types": "off",
             "sonarjs/no-undefined-argument": "off",

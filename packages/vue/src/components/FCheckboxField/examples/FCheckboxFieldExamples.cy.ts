@@ -8,7 +8,7 @@ import FCheckboxGroupValues from "./FCheckboxGroupValues.vue";
  * @param fieldSet - the fieldset containing all checkboxes.
  */
 function toggleAll(fieldSet: FFieldsetPageObject, selected: boolean): void {
-    cy.wrap(`Toggle fieldset: ${selected}...`).then(() => {
+    cy.wrap(`Toggle fieldset: ${String(selected)}...`).then(() => {
         fieldSet.numberOfCheckboxes().then((nbrOf) => {
             for (let index = 0; index < nbrOf; index++) {
                 const selector = `.checkbox:nth(${index})`;
