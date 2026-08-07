@@ -104,7 +104,7 @@ describe("Flist Clickable", () => {
         list.listItem(0).content().click();
         cy.get(`pre`)
             .then((element) => {
-                return JSON.parse(element.get(0).textContent || "");
+                return JSON.parse(element.get(0).textContent || "") as unknown;
             })
             .should("deep.equal", {
                 id: 1,
