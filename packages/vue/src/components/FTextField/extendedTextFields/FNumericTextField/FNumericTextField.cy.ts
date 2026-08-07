@@ -1,11 +1,12 @@
-import { type Component, defineComponent } from "vue";
+import { type Component, type DefineComponent, defineComponent } from "vue";
 import { FTextFieldPageObject } from "../../../../cypress";
 import FNumericTextField from "./FNumericTextField.vue";
 
 function defineTestComponent(
     textFieldTemplate: string,
     components: Record<string, Component>,
-): ReturnType<typeof defineComponent> {
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- technical debt */
+): DefineComponent<any, any> {
     return defineComponent({
         name: "TestComponent",
         template: /* HTML */ `
@@ -52,6 +53,7 @@ it("should retain correct error message when existence is toggled off and on (wr
                 Test
             </f-numeric-text-field>
         `,
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
         { FNumericTextField },
     );
     cy.mount(TestComponent);
@@ -94,6 +96,7 @@ it("should retain correct error message when existance is toggled off and on (wr
                 Test
             </f-numeric-text-field>
         `,
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- false positive (vue-tsc) */
         { FNumericTextField },
     );
     cy.mount(TestComponent);

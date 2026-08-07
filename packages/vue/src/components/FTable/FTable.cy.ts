@@ -2017,8 +2017,9 @@ describe("7 Bulk Operation ", () => {
                         columns,
                         selectable: "multi",
                         selectedRows: selectedRows.value,
-                        "onUpdate:selectedRows": (value) =>
-                            (selectedRows.value = value),
+                        "onUpdate:selectedRows": (value: Row[]) => {
+                            selectedRows.value = value;
+                        },
                     },
                     {
                         caption:
@@ -2039,8 +2040,9 @@ describe("7 Bulk Operation ", () => {
                     columns,
                     selectable: "multi",
                     selectedRows: selectedRows.value,
-                    "onUpdate:selectedRows": (value) =>
-                        (selectedRows.value = value),
+                    "onUpdate:selectedRows": (value: Row[]) => {
+                        selectedRows.value = value;
+                    },
                 }),
             );
 
@@ -2088,8 +2090,9 @@ describe("7 Bulk Operation ", () => {
                     columns,
                     selectable: "multi",
                     selectedRows: selectedRows.value,
-                    "onUpdate:selectedRows": (value) =>
-                        (selectedRows.value = value),
+                    "onUpdate:selectedRows": (value: Row[]) => {
+                        selectedRows.value = value;
+                    },
                 }),
             );
             //select row
@@ -2156,8 +2159,9 @@ describe("7 Bulk Operation ", () => {
                     columns,
                     selectable: "multi",
                     selectedRows: selectedRows.value,
-                    "onUpdate:selectedRows": (value) =>
-                        (selectedRows.value = value),
+                    "onUpdate:selectedRows": (value: Row[]) => {
+                        selectedRows.value = value;
+                    },
                 }),
             );
 
@@ -2185,8 +2189,9 @@ describe("7 Bulk Operation ", () => {
                     columns,
                     selectable: "multi",
                     selectedRows: selectedRows.value,
-                    "onUpdate:selectedRows": (value) =>
-                        (selectedRows.value = value),
+                    "onUpdate:selectedRows": (value: Row[]) => {
+                        selectedRows.value = value;
+                    },
                 }),
             );
 
