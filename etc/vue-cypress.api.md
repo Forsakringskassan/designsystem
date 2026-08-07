@@ -103,7 +103,7 @@ class FCheckboxFieldPageObject implements BasePageObject {
     // (undocumented)
     details(): DefaultCypressChainable;
     // (undocumented)
-    el: () => DefaultCypressChainable;
+    el(): DefaultCypressChainable;
     // (undocumented)
     isSelected(): Cypress.Chainable<boolean>;
     // (undocumented)
@@ -111,7 +111,7 @@ class FCheckboxFieldPageObject implements BasePageObject {
     // (undocumented)
     select(): DefaultCypressChainable;
     // (undocumented)
-    selector: string;
+    get selector(): string;
     // (undocumented)
     value(): Cypress.Chainable<string>;
 }
