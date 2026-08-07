@@ -145,6 +145,7 @@ describe("FFormModal usable with API", () => {
             async onClick() {
                 this.result = "";
                 try {
+                    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- false positive (vue-tsc) */
                     this.result = await formModal(this, ExampleModal, {
                         props: {
                             dataTest: "form-modal-api-example",

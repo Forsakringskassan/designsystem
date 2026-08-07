@@ -1505,6 +1505,7 @@ describe("5 tabstop", () => {
             h("div", [
                 renderButton("Before table", { dataTest: buttonBeforeTable }),
                 h(
+                    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- false positive (vue-tsc) */
                     FTable<NavigationRow>,
                     {
                         rows: rows.value,
