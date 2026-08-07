@@ -20,8 +20,6 @@
         "editor.codeActionsOnSave": {
             "source.fixAll.eslint": "explicit",
         },
-        "jest.jestCommandLine": "npm exec jest --",
-        "jest.runMode": "on-demand",
     },
     "extensions": {
         "recommendations": [
@@ -32,7 +30,7 @@
             "editorconfig.editorconfig",
             "esbenp.prettier-vscode",
             "html-validate.vscode-html-validate",
-            "orta.vscode-jest",
+            "vitest.explorer",
             "vue.volar",
         ],
     },
