@@ -1,11 +1,11 @@
 import "html-validate/vitest";
 import "@fkui/test-utils/vitest";
 import { defineComponent } from "vue";
-import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
+import { type VueWrapper, config, mount } from "@vue/test-utils";
 import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 import IPopup from "./IPopup.vue";
+
+config.global.stubs = { teleport: true };
 
 vi.useFakeTimers();
 
@@ -13,55 +13,37 @@ afterAll(() => {
     vi.useRealTimers();
 });
 
-function createWrapper(
-    template: string,
-): VueWrapper<InstanceType<typeof TestComponent>> {
-    const TestComponent = defineComponent({
-        name: "TestComponent",
-        components: {
-            IPopup,
-        },
-        data() {
-            return { isOpen: false, gotOpenEvent: false, gotCloseEvent: false };
-        },
-        template,
-    });
-
-    return mount(TestComponent, {
-        attachTo: createPlaceholderInDocument(),
-        global: {
-            stubs: ["teleport"],
-        },
-    });
-}
-
-async function mountPopup(
-    template: string = defaultTemplate,
-): Promise<ReturnType<typeof createWrapper>> {
-    const wrapper = createWrapper(template);
-    await flushPromises();
-    return wrapper;
-}
+const TestComponent = defineComponent({
+    name: "TestComponent",
+    components: {
+        IPopup,
+    },
+    data() {
+        return { isOpen: false, gotOpenEvent: false, gotCloseEvent: false };
+    },
+    template: /* HTML */ `
+        <div id="outside">
+            <button
+                id="launch-popup"
+                ref="anchor"
+                @click="isOpen=true"
+            ></button>
+            <i-popup
+                :isOpen="isOpen"
+                :anchor="$refs.anchor"
+                @open="gotOpenEvent = true"
+                @close="isOpen = false; gotCloseEvent = true;"
+            >
+                <span> POPUP CONTENT </span>
+            </i-popup>
+        </div>
+    `,
+});
 
 async function openPopup(wrapper: VueWrapper): Promise<void> {
     await wrapper.get("#launch-popup").trigger("click");
     vi.runAllTimers();
-    await flushPromises();
 }
-
-const defaultTemplate = /* HTML */ `
-    <div id="outside">
-        <button id="launch-popup" ref="anchor" @click="isOpen=true"></button>
-        <i-popup
-            :isOpen="isOpen"
-            :anchor="$refs.anchor"
-            @open="gotOpenEvent = true"
-            @close="isOpen = false; gotCloseEvent = true;"
-        >
-            <span> POPUP CONTENT </span>
-        </i-popup>
-    </div>
-`;
 
 beforeEach(() => {
     vi.restoreAllMocks();
@@ -71,14 +53,14 @@ describe("snapshots", () => {
     it("should match snapshot when open", async () => {
         expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
-        const wrapper = await mountPopup();
+        const wrapper = mount(TestComponent);
         await openPopup(wrapper);
         expect(wrapper.element).toMatchSnapshot();
     });
 
-    it("should match snapshot when closed", async () => {
+    it("should match snapshot when closed", () => {
         expect.assertions(1);
-        const wrapper = await mountPopup();
+        const wrapper = mount(TestComponent);
         expect(wrapper.element).toMatchSnapshot();
     });
 });
@@ -88,7 +70,9 @@ describe("events", () => {
         expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
-        const wrapper = await mountPopup();
+        const wrapper = mount(TestComponent, {
+            attachTo: document.body,
+        });
         await openPopup(wrapper);
 
         expect(wrapper.vm.$data.gotOpenEvent).toBeTruthy();
@@ -98,13 +82,14 @@ describe("events", () => {
         expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
-        const wrapper = await mountPopup();
+        const wrapper = mount(TestComponent, {
+            attachTo: document.body,
+        });
         await openPopup(wrapper);
 
         const closeElement = wrapper.get(".popup__wrapper");
         await closeElement.trigger("keyup.esc");
         await wrapper.vm.$nextTick();
-        await flushPromises();
 
         expect(wrapper.vm.$data.gotCloseEvent).toBeTruthy();
     });
@@ -113,19 +98,22 @@ describe("events", () => {
         expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
-        const wrapper = await mountPopup();
+        const wrapper = mount(TestComponent, {
+            attachTo: document.body,
+        });
         await openPopup(wrapper);
 
         await wrapper.get("#outside").trigger("click");
         await wrapper.vm.$nextTick();
-        await flushPromises();
 
         expect(wrapper.vm.$data.gotCloseEvent).toBeTruthy();
     });
 
     it('should not emit "close" event when clicked outside a closed popup', async () => {
         expect.assertions(1);
-        const wrapper = await mountPopup();
+        const wrapper = mount(TestComponent, {
+            attachTo: document.body,
+        });
 
         await wrapper.get("#outside").trigger("click");
 

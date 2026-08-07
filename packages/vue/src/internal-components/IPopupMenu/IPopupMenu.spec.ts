@@ -1,9 +1,10 @@
 import "html-validate/vitest";
 import { defineComponent } from "vue";
-import { type VueWrapper, mount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
+import { type VueWrapper, config, mount } from "@vue/test-utils";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import IPopupMenu from "./IPopupMenu.vue";
+
+config.global.stubs = { teleport: true };
 
 const testItems = [
     { label: "label1", key: "MENU_1", href: "#href-1" },
@@ -44,21 +45,8 @@ const TestComponent = defineComponent({
     `,
 });
 
-async function mountPopup(): Promise<
-    VueWrapper<InstanceType<typeof TestComponent>>
-> {
-    const wrapper = mount(TestComponent, {
-        global: {
-            stubs: ["teleport"],
-        },
-    });
-    await flushPromises();
-    return wrapper;
-}
-
 async function openPopup(wrapper: VueWrapper): Promise<void> {
     await wrapper.get("#launch-popup").trigger("click");
-    await flushPromises();
 }
 
 afterEach(() => {
@@ -66,9 +54,9 @@ afterEach(() => {
 });
 
 describe("props", () => {
-    it("should not be visible when isOpen is false", async () => {
+    it("should not be visible when isOpen is false", () => {
         expect.assertions(1);
-        const wrapper = await mountPopup();
+        const wrapper = mount(TestComponent);
         expect(wrapper).not.toContain(".ipopupmenu__list");
     });
 
@@ -76,7 +64,7 @@ describe("props", () => {
         expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
-        const wrapper = await mountPopup();
+        const wrapper = mount(TestComponent);
         await openPopup(wrapper);
 
         const ipopupmenuList = wrapper.get(".ipopupmenu__list");
@@ -91,7 +79,7 @@ describe("events", () => {
         expect.assertions(1);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
-        const wrapper = await mountPopup();
+        const wrapper = mount(TestComponent);
         await openPopup(wrapper);
 
         const ipopupmenuList = wrapper.get(".ipopupmenu__list");
@@ -101,7 +89,6 @@ describe("events", () => {
 
         await firstItem.trigger("click");
         await wrapper.vm.$nextTick();
-        await flushPromises();
 
         expect(wrapper.vm.$data.gotCloseEvent).toBeTruthy();
     });
@@ -110,7 +97,7 @@ describe("events", () => {
 describe("v-model", () => {
     it("should update v-model when item is selected", async () => {
         expect.assertions(1);
-        const testWrapper = await mountPopup();
+        const testWrapper = mount(TestComponent);
         await openPopup(testWrapper);
 
         const wrapper = testWrapper.getComponent(IPopupMenu);
@@ -128,7 +115,7 @@ describe("v-model", () => {
 
     it("should emit select event when item is selected", async () => {
         expect.assertions(1);
-        const testWrapper = await mountPopup();
+        const testWrapper = mount(TestComponent);
         await openPopup(testWrapper);
 
         const wrapper = testWrapper.getComponent(IPopupMenu);
@@ -148,7 +135,7 @@ describe("v-model", () => {
         expect.assertions(3);
         vi.spyOn(window, "scrollTo").mockReturnValue();
 
-        const wrapper = await mountPopup();
+        const wrapper = mount(TestComponent);
         await openPopup(wrapper);
 
         const imenuList = wrapper.get(".ipopupmenu__list");

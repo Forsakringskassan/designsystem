@@ -111,7 +111,6 @@
     "dayjs": "1.11.21",
     "esbuild": "0.28.1",
     "fflate": "0.8.3",
-    "flush-promises": "1.0.2",
     "fs-extra": "11.4.0",
     "glob": "13.0.6",
     "html-validate": "11.6.2",

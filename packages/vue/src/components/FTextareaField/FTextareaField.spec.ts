@@ -4,8 +4,7 @@ import {
     type ValidatableHTMLElement,
     type ValidityEvent,
 } from "@fkui/logic";
-import { shallowMount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
+import { flushPromises, shallowMount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import FTextareaField from "./FTextareaField.vue";
 

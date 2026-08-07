@@ -1,8 +1,7 @@
 import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { type ValidatableHTMLElement } from "@fkui/logic";
-import { mount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
+import { flushPromises, mount } from "@vue/test-utils";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
     type ComponentUnmountEvent,

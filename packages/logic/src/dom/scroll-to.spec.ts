@@ -1,4 +1,3 @@
-import flushPromises from "flush-promises";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { scrollTo } from "./scroll-to";
 
@@ -80,11 +79,15 @@ describe("scrollTo with options signature", () => {
         });
 
         vi.advanceTimersByTime(frameDuration * 59);
-        await flushPromises();
+        await new Promise<void>((resolve) => {
+            queueMicrotask(resolve);
+        });
         expect(resolved).toBeFalsy();
 
         vi.advanceTimersByTime(frameDuration * 1);
-        await flushPromises();
+        await new Promise<void>((resolve) => {
+            queueMicrotask(resolve);
+        });
         expect(resolved).toBeTruthy();
     });
 

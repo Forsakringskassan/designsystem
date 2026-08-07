@@ -1,6 +1,5 @@
 import "html-validate/vitest";
-import { shallowMount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
+import { flushPromises, shallowMount } from "@vue/test-utils";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import IAnimateExpand from "./IAnimateExpand.vue";
 

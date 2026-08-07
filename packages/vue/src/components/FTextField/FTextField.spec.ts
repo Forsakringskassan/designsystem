@@ -6,8 +6,7 @@ import {
     type ValidityEvent,
     ValidationService,
 } from "@fkui/logic";
-import { config, shallowMount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
+import { config, flushPromises, shallowMount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import FTextField from "./FTextField.vue";

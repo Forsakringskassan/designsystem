@@ -1,8 +1,7 @@
 import "html-validate/vitest";
 import { defineComponent } from "vue";
 import { createPlaceholderInDocument } from "@fkui/test-utils/vue";
-import { mount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
+import { flushPromises, mount } from "@vue/test-utils";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import FWizard from "./FWizard.vue";
 import FWizardStep from "./FWizardStep.vue";

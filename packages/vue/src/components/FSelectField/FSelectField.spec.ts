@@ -1,8 +1,7 @@
 import "html-validate/vitest";
 import { h } from "vue";
 import { type ValidatableHTMLElement, type ValidityEvent } from "@fkui/logic";
-import { config, mount, shallowMount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
+import { config, flushPromises, mount, shallowMount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import FSelectField from "./FSelectField.vue";
 

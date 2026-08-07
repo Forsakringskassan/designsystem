@@ -1,6 +1,5 @@
 import { defineComponent, h } from "vue";
 import { mount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
 import { expect, it } from "vitest";
 import { TranslationPlugin } from "./translation-plugin";
 
@@ -11,7 +10,7 @@ const TestComponent = defineComponent({
     },
 });
 
-it("should inject global method $t() when plugin is used", async () => {
+it("should inject global method $t() when plugin is used", () => {
     expect.assertions(2);
 
     const wrapper = mount(TestComponent, {
@@ -19,7 +18,6 @@ it("should inject global method $t() when plugin is used", async () => {
             plugins: [TranslationPlugin],
         },
     });
-    await flushPromises();
 
     expect(wrapper.vm.$t).toBeDefined();
     expect(wrapper.vm.$t("testKey", "Test default")).toBe("Test default");

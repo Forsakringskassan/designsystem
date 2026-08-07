@@ -1,6 +1,5 @@
 import { defineComponent, h, markRaw } from "vue";
-import { mount } from "@vue/test-utils";
-import flushPromises from "flush-promises";
+import { flushPromises, mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import { createRouter, createWebHashHistory } from "vue-router";
 import { EventBus } from "../../utils";
