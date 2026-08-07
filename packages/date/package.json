@@ -34,14 +34,11 @@
     "build": "rollup --config",
     "postbuild": "fk-api-extractor",
     "build:docs": "typedoc",
-    "clean": "rimraf coverage lib temp test-results typedoc",
+    "clean": "rimraf lib temp typedoc",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
     "start": "npm run build:docs && fkui-serve typedoc",
-    "test": "vitest run --coverage",
-    "unit": "vitest run",
-    "unit:watch": "vitest",
     "watch": "rollup --config --watch"
   },
   "dependencies": {
