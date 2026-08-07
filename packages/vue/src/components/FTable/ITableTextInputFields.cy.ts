@@ -835,7 +835,7 @@ describe("FTable, valuta", () => {
 
     it("should format typed value and update row value with parsed value as nunmber", () => {
         const row = {
-            currency: "",
+            currency: "" as string | number,
         };
 
         mountTable(row, column);
