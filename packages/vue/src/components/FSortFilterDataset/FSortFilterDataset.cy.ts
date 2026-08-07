@@ -115,7 +115,9 @@ const TestComponent = defineComponent({
 function assertTable(values: string[], column: number): void {
     for (const [i, value] of values.entries()) {
         table
+            /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
             .columnItem(i + 1)
+            /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
             .tableRowBodyContent(column)
             .should("contain.text", value);
     }
@@ -171,6 +173,7 @@ describe("sort", () => {
     });
 
     it("should update selectfield when dataset is sorted by clicking table header", () => {
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         table.headerRowItem().tableRowHeaderContent().eq(COLUMN_TEXT).click();
 
         table.getColumnSortedByIcon(COLUMN_TEXT, "ascending").should("exist");
@@ -180,7 +183,9 @@ describe("sort", () => {
             .selectedOption()
             .should("contain.text", "Text (stigande)");
 
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         table.headerRowItem().tableRowHeaderContent().eq(COLUMN_YEAR).click();
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
         table.headerRowItem().tableRowHeaderContent().eq(COLUMN_YEAR).click();
 
         table.getColumnSortedByIcon(COLUMN_TEXT, "unsorted").should("exist");
