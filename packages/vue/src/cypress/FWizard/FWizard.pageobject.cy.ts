@@ -1,7 +1,7 @@
 import FWizardExampleAddStep from "../../components/FWizard/examples/FWizardExampleAddStep.vue";
 import { FFieldsetPageObject } from "../FFieldset.pageobject";
 import { FTextFieldPageObject } from "../FTextField.pageobject";
-import { DefaultCypressChainable } from "../common";
+import { type DefaultCypressChainable } from "../common";
 import { FWizardPageobject } from "./FWizard.pageobject";
 import { FWizardStepPageobject, STATUS } from "./FWizardStep.pageobject";
 

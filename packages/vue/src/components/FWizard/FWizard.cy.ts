@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import { FWizardPageobject, FWizardStepPageobject } from "../../cypress";
+import { type FWizardStepPageobject, FWizardPageobject } from "../../cypress";
 import { FValidationFormAction } from "../FValidationForm";
 import FWizard from "./FWizard.vue";
 import FWizardStep from "./FWizardStep.vue";

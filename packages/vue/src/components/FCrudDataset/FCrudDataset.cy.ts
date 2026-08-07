@@ -9,7 +9,7 @@ import {
     FTextField,
 } from "..";
 import { FInteractiveTablePageObject } from "../../cypress";
-import { ListItem } from "../../types";
+import { type ListItem } from "../../types";
 import FCrudButton from "./FCrudButton.vue";
 import FCrudDataset from "./FCrudDataset.vue";
 import ListExample from "./examples/FCrudDatasetListExample.vue";
