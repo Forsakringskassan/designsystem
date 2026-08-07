@@ -48,15 +48,11 @@
     "build:dts": "vue-tsc -b",
     "build:lib": "fk-build-vue-lib",
     "build:selectors": "fk-build-selectors",
-    "clean": "rimraf -g coverage dist public temp test-results",
+    "clean": "rimraf -g dist temp",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
-    "start": "vite --",
-    "start:docs": "fkui-serve public",
-    "test": "vitest run --coverage",
-    "unit": "vitest run",
-    "unit:watch": "vitest"
+    "start": "vite --"
   },
   "dependencies": {
     "@vueuse/core": "14.4.0"

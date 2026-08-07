@@ -70,7 +70,7 @@ npm run build:docs
 För att starta dokumentationen skriver du:
 
 ```bash
-npm run start
+npm start
 ```
 
 För att starta vue-paketet med Vite utvecklingsserver:
@@ -87,30 +87,73 @@ npm run vue start FILNAMN
 
 där `FILNAMN` är fuzzy sökning (case insensitive) efter filnamnet.
 
-### Testning
+### Enhetstester
 
 Du kör igång hela test-sviten mot alla paket genom att skriva:
-
-```bash
-npm test
-```
-
-För att köra e2e cypress-tester behöver du först starta servern med `npm start` och därefter köra:
-
-```bash
-npm exec cypress -- open
-```
-
-För att köra enhetstest för ett paket skriv:
 
 ```bash
 npm run unit
 ```
 
+Du kan också köra `npm test`, vilket inkluderar statisk kodanalys, coverage och resultat.
+
+För att köra tester mot ett specifikt paket:
+
+```bash
+npm run unit -- --project @fkui/logic
+```
+
+För att köra tester vars filnamn matchar ett mönster (fuzzy, case insensitive):
+
+```bash
+npm run unit -- FBadge
+```
+
 Om du vill köra test i watch mode:
 
 ```bash
-npm run unit:watch
+npm run unit -- --watch
+```
+
+### Komponenttester
+
+För komponenttester använder vi Cypress.
+
+Starta GUI med:
+
+```bash
+npm exec cypress -- open --component
+```
+
+Starta headless med:
+
+```bash
+npm exec cypress -- run --component
+```
+
+### E2E
+
+För E2E tester använder vi Cypress.
+För att köra E2E behöver du först bygga och starta starta servern.
+
+Bygg och starta serverer:
+
+```bash
+npm run build
+npm run build:docs
+npm start
+```
+
+Starta GUI med:
+
+```bash
+npm exec cypress -- open --e2e
+```
+
+Starta headless med:
+
+```bash
+npm exec cypress -- run --e2e
 ```
 
 ### Lintning

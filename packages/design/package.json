@@ -35,8 +35,7 @@
     "pretest": "node pretest.mjs",
     "test": "node --test --experimental-test-coverage --test-reporter=spec --test-reporter=junit --test-reporter-destination=stdout --test-reporter-destination=test-results/jest-junit.xml",
     "posttest": "sass -p node --no-source-map tests:temp/tests",
-    "unit": "node --test",
-    "unit:watch": "node --test --watch"
+    "unit": "node --test"
   },
   "devDependencies": {
     "@fkui/icon-lib-default": "6.52.2",

@@ -28,7 +28,8 @@
   "scripts": {
     "prebuild": "tsc",
     "build": "node build.mjs",
-    "test": "node --test --experimental-strip-types"
+    "test": "node --test",
+    "unit": "node --test"
   },
   "dependencies": {
     "@adobe/css-tools": "4.5.0",

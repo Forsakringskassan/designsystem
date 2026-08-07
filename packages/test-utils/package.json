@@ -66,9 +66,7 @@
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
-    "test": "npm run test:jest && npm run test:vitest",
-    "test:jest": "jest",
-    "test:vitest": "vitest run"
+    "test": "jest"
   },
   "devDependencies": {
     "@forsakringskassan/jest-config": "30.4.1",
