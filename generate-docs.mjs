@@ -19,7 +19,6 @@ import {
     versionProcessor,
 } from "@forsakringskassan/docs-generator";
 import { strFromU8, strToU8, zlibSync } from "fflate";
-import fse from "fs-extra";
 import { glob } from "glob";
 import isCI from "is-ci";
 import config from "./docs.config.js";
@@ -67,14 +66,22 @@ if (isCI) {
     console.log();
 }
 
+/**
+ * @param {string} pkg
+ * @param {string} from
+ * @param {string} to
+ * @returns {Promise<void>}
+ */
 async function copyDocs(pkg, from, to) {
     const exists = existsSync(from);
-    if (exists) {
-        console.log(`Copying ${pkg} to ${to}`);
-        await fse.copy(from, to);
-    } else {
+    if (!exists) {
         console.log(`${pkg} not built, skipping`);
+        return;
     }
+    console.log(`Copying ${pkg} to ${to}`);
+    await fs.cp(from, to, {
+        recursive: true,
+    });
 }
 
 /**
