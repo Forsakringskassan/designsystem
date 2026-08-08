@@ -49,12 +49,6 @@ export default [
     typescriptConfig(),
     typeinfoConfig(import.meta.dirname, {
         files: ["{examples,internal,packages}/**/*.{ts,vue}"],
-        ignores: [
-            "**/*.d.ts",
-            "**/jest.setup.ts",
-            "**/vitest.setup.ts",
-            "**/vite.config.ts",
-        ],
     }),
     vueConfig(),
     jestConfig({
