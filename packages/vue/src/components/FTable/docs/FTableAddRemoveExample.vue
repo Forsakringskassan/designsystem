@@ -55,7 +55,9 @@ const columns = defineTableColumns<Row>([
         text() {
             return "Ta bort";
         },
-        onClick: onRemoveRow,
+        onClick(row) {
+            void onRemoveRow(row);
+        },
     },
 ]);
 

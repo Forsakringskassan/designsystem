@@ -54,7 +54,6 @@ export default [
             "**/jest.setup.ts",
             "**/vitest.setup.ts",
             "**/vite.config.ts",
-            "**/docs/**",
         ],
     }),
     vueConfig(),

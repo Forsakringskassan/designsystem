@@ -106,7 +106,7 @@ const columns = defineTableColumns<Row>([
         header: "Pris per kilo",
         key: "pris",
         value(row) {
-            return String(row.pris);
+            return row.pris;
         },
     },
 ]);
