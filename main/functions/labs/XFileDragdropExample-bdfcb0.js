@@ -288,17 +288,18 @@ var require_shared_store = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var SHARED = "__core-js_shared__";
   var store = module.exports = globalThis2[SHARED] || defineGlobalProperty(SHARED, {});
   (store.versions || (store.versions = [])).push({
-    version: "3.49.0",
+    version: "3.50.0",
     mode: IS_PURE ? "pure" : "global",
     copyright: "\xA9 2013\u20132025 Denis Pushkarev (zloirock.ru), 2025\u20132026 CoreJS Company (core-js.io). All rights reserved.",
-    license: "https://github.com/zloirock/core-js/blob/v3.49.0/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.50.0/LICENSE",
     source: "https://github.com/zloirock/core-js"
   });
 }));
 var require_shared = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var store = require_shared_store();
+  var create = Object.create || Object;
   module.exports = function(key, value) {
-    return store[key] || (store[key] = value || {});
+    return store[key] || (store[key] = value || create(null));
   };
 }));
 var require_to_object = /* @__PURE__ */ __commonJSMin(((exports, module) => {
@@ -1338,7 +1339,7 @@ var require_function_bind_context = /* @__PURE__ */ __commonJSMin(((exports, mod
   };
 }));
 var require_iterators = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  module.exports = {};
+  module.exports = Object.create ? /* @__PURE__ */ Object.create(null) : {};
 }));
 var require_is_array_iterator_method = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var wellKnownSymbol = require_well_known_symbol();
@@ -1349,52 +1350,26 @@ var require_is_array_iterator_method = /* @__PURE__ */ __commonJSMin(((exports, 
     return it !== void 0 && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
   };
 }));
-var require_to_string_tag_support = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var TO_STRING_TAG = require_well_known_symbol()("toStringTag");
-  var test = {};
-  test[TO_STRING_TAG] = "z";
-  module.exports = String(test) === "[object z]";
-}));
-var require_classof = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var TO_STRING_TAG_SUPPORT = require_to_string_tag_support();
-  var isCallable = require_is_callable();
-  var classofRaw = require_classof_raw();
-  var TO_STRING_TAG = require_well_known_symbol()("toStringTag");
-  var $Object = Object;
-  var CORRECT_ARGUMENTS = classofRaw(/* @__PURE__ */ (function() {
-    return arguments;
-  })()) === "Arguments";
-  var tryGet = function(it, key) {
-    try {
-      return it[key];
-    } catch (error) {
-    }
-  };
-  module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function(it) {
-    var O, tag, result;
-    return it === void 0 ? "Undefined" : it === null ? "Null" : typeof (tag = tryGet(O = $Object(it), TO_STRING_TAG)) == "string" ? tag : CORRECT_ARGUMENTS ? classofRaw(O) : (result = classofRaw(O)) === "Object" && isCallable(O.callee) ? "Arguments" : result;
-  };
-}));
-var require_get_iterator_method = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-  var classof = require_classof();
-  var getMethod = require_get_method();
+var require_get_iterator_method_internal = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var classof = require_classof_raw();
   var isNullOrUndefined = require_is_null_or_undefined();
-  var Iterators = require_iterators();
+  var getMethod = require_get_method();
   var ITERATOR = require_well_known_symbol()("iterator");
+  var ArrayPrototype = Array.prototype;
   module.exports = function(it) {
-    if (!isNullOrUndefined(it)) return getMethod(it, ITERATOR) || getMethod(it, "@@iterator") || Iterators[classof(it)];
+    if (!isNullOrUndefined(it)) return getMethod(it, ITERATOR) || getMethod(it, "@@iterator") || (classof(it) === "Arguments" ? ArrayPrototype[ITERATOR] : void 0);
   };
 }));
-var require_get_iterator = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+var require_get_iterator_internal = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var call = require_function_call();
-  var aCallable = require_a_callable();
+  var isCallable = require_is_callable();
   var anObject = require_an_object();
   var tryToString = require_try_to_string();
-  var getIteratorMethod = require_get_iterator_method();
+  var getIteratorMethod = require_get_iterator_method_internal();
   var $TypeError = TypeError;
   module.exports = function(argument, usingIterator) {
     var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;
-    if (aCallable(iteratorMethod)) return anObject(call(iteratorMethod, argument));
+    if (isCallable(iteratorMethod)) return anObject(call(iteratorMethod, argument));
     throw new $TypeError(tryToString(argument) + " is not iterable");
   };
 }));
@@ -1430,8 +1405,8 @@ var require_iterate = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var isArrayIteratorMethod = require_is_array_iterator_method();
   var lengthOfArrayLike = require_length_of_array_like();
   var isPrototypeOf = require_object_is_prototype_of();
-  var getIterator = require_get_iterator();
-  var getIteratorMethod = require_get_iterator_method();
+  var getIterator = require_get_iterator_internal();
+  var getIteratorMethod = require_get_iterator_method_internal();
   var iteratorClose = require_iterator_close();
   var $TypeError = TypeError;
   var Result = function(stopped, result) {
@@ -1547,6 +1522,32 @@ var require_es_iterator_for_each = /* @__PURE__ */ __commonJSMin((() => {
       fn(value, counter++);
     }, { IS_RECORD: true });
   } });
+}));
+var require_to_string_tag_support = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var TO_STRING_TAG = require_well_known_symbol()("toStringTag");
+  var test = {};
+  test[TO_STRING_TAG] = "z";
+  module.exports = String(test) === "[object z]";
+}));
+var require_classof = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  var TO_STRING_TAG_SUPPORT = require_to_string_tag_support();
+  var isCallable = require_is_callable();
+  var classofRaw = require_classof_raw();
+  var TO_STRING_TAG = require_well_known_symbol()("toStringTag");
+  var $Object = Object;
+  var CORRECT_ARGUMENTS = classofRaw(/* @__PURE__ */ (function() {
+    return arguments;
+  })()) === "Arguments";
+  var tryGet = function(it, key) {
+    try {
+      return it[key];
+    } catch (error) {
+    }
+  };
+  module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function(it) {
+    var O, tag, result;
+    return it === void 0 ? "Undefined" : it === null ? "Null" : typeof (tag = tryGet(O = $Object(it), TO_STRING_TAG)) == "string" ? tag : CORRECT_ARGUMENTS ? classofRaw(O) : (result = classofRaw(O)) === "Object" && isCallable(O.callee) ? "Arguments" : result;
+  };
 }));
 var require_is_possible_prototype = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var isObject = require_is_object();
@@ -1899,7 +1900,9 @@ var require_uint8_from_base64 = /* @__PURE__ */ __commonJSMin(((exports, module)
   var base64UrlAlphabet = base64Map.c2iUrl;
   var SyntaxError = globalThis2.SyntaxError;
   var TypeError2 = globalThis2.TypeError;
+  var $Array = globalThis2.Array;
   var at = uncurryThis("".charAt);
+  var floor = Math.floor;
   var skipAsciiWhitespace = function(string, index) {
     var length = string.length;
     for (; index < length; index++) {
@@ -1941,7 +1944,7 @@ var require_uint8_from_base64 = /* @__PURE__ */ __commonJSMin(((exports, module)
     if (lastChunkHandling !== "loose" && lastChunkHandling !== "strict" && lastChunkHandling !== "stop-before-partial") throw new TypeError2("Incorrect `lastChunkHandling` option");
     if (into) notDetached(into.buffer);
     var stringLength = string.length;
-    var bytes = into || [];
+    var bytes = into || $Array(floor(stringLength * 3 / 4));
     var written = 0;
     var read = 0;
     var chunk = "";
@@ -1990,6 +1993,7 @@ var require_uint8_from_base64 = /* @__PURE__ */ __commonJSMin(((exports, module)
         if (written === maxLength) break;
       }
     }
+    if (!into) bytes.length = written;
     return {
       bytes,
       read,
@@ -2060,7 +2064,7 @@ var require_uint8_from_hex = /* @__PURE__ */ __commonJSMin(((exports, module) =>
     if (stringLength % 2 !== 0) throw new SyntaxError("String should be an even number of characters");
     var maxLength = into ? min(into.length, stringLength / 2) : stringLength / 2;
     var bytes = into || new Uint8Array2(maxLength);
-    var segments = stringMatch(string, /.{2}/g);
+    var segments = stringMatch(string, /[\S\s]{2}/g);
     var written = 0;
     for (; written < maxLength; written++) {
       var result = +("0x" + segments[written] + "0");
@@ -2113,8 +2117,12 @@ var require_es_uint8_array_to_base64 = /* @__PURE__ */ __commonJSMin((() => {
   var getAlphabetOption = require_get_alphabet_option();
   var base64Alphabet = base64Map.i2c;
   var base64UrlAlphabet = base64Map.i2cUrl;
+  var $floor = Math.floor;
+  var $ceil = Math.ceil;
   var charAt = uncurryThis("".charAt);
   var Uint8Array2 = globalThis2.Uint8Array;
+  var $Array = globalThis2.Array;
+  var join = uncurryThis([].join);
   var INCORRECT_BEHAVIOR_OR_DOESNT_EXISTS = !Uint8Array2 || !Uint8Array2.prototype.toBase64 || !(function() {
     try {
       new Uint8Array2().toBase64(null);
@@ -2132,25 +2140,37 @@ var require_es_uint8_array_to_base64 = /* @__PURE__ */ __commonJSMin((() => {
     var alphabet = getAlphabetOption(options) === "base64" ? base64Alphabet : base64UrlAlphabet;
     var omitPadding = !!options && !!options.omitPadding;
     notDetached(this.buffer);
-    var result = "";
     var i = 0;
     var length = array.length;
+    var result = $Array(omitPadding ? $floor(length / 3) * 4 + (length % 3 ? length % 3 + 1 : 0) : $ceil(length / 3) * 4);
+    var written = 0;
     var triplet;
     var at = function(shift) {
       return charAt(alphabet, triplet >> 6 * shift & 63);
     };
     for (; i + 2 < length; i += 3) {
       triplet = (array[i] << 16) + (array[i + 1] << 8) + array[i + 2];
-      result += at(3) + at(2) + at(1) + at(0);
+      result[written++] = at(3);
+      result[written++] = at(2);
+      result[written++] = at(1);
+      result[written++] = at(0);
     }
     if (i + 2 === length) {
       triplet = (array[i] << 16) + (array[i + 1] << 8);
-      result += at(3) + at(2) + at(1) + (omitPadding ? "" : "=");
+      result[written++] = at(3);
+      result[written++] = at(2);
+      result[written++] = at(1);
+      if (!omitPadding) result[written++] = "=";
     } else if (i + 1 === length) {
       triplet = array[i] << 16;
-      result += at(3) + at(2) + (omitPadding ? "" : "==");
+      result[written++] = at(3);
+      result[written++] = at(2);
+      if (!omitPadding) {
+        result[written++] = "=";
+        result[written++] = "=";
+      }
     }
-    return result;
+    return join(result, "");
   } });
 }));
 var require_es_uint8_array_to_hex = /* @__PURE__ */ __commonJSMin((() => {
@@ -2692,6 +2712,11 @@ var require_iterator_close_all = /* @__PURE__ */ __commonJSMin(((exports, module
     return value;
   };
 }));
+var require_iterator_cleanup_state = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+  module.exports = function(state) {
+    state.iterator = state.next = state.nextHandler = state.mapper = state.predicate = state.inner = state.iterables = state.iters = state.openIters = state.padding = state.finishResults = state.buffer = null;
+  };
+}));
 var require_iterator_create_proxy = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   var call = require_function_call();
   var create = require_object_create();
@@ -2704,6 +2729,7 @@ var require_iterator_create_proxy = /* @__PURE__ */ __commonJSMin(((exports, mod
   var createIterResultObject = require_create_iter_result_object();
   var iteratorClose = require_iterator_close();
   var iteratorCloseAll = require_iterator_close_all();
+  var cleanupState = require_iterator_cleanup_state();
   var TO_STRING_TAG = wellKnownSymbol("toStringTag");
   var ITERATOR_HELPER = "IteratorHelper";
   var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
@@ -2719,29 +2745,34 @@ var require_iterator_create_proxy = /* @__PURE__ */ __commonJSMin(((exports, mod
         if (state.done) return createIterResultObject(void 0, true);
         try {
           var result = state.nextHandler();
+          if (state.done) cleanupState(state);
           return state.returnHandlerResult ? result : createIterResultObject(result, state.done);
         } catch (error) {
           state.done = true;
+          cleanupState(state);
           throw error;
         }
       },
       "return": function() {
         var state = getInternalState(this);
         var iterator = state.iterator;
+        var inner = state.inner;
+        var openIters = state.openIters;
         var done = state.done;
         state.done = true;
         if (IS_ITERATOR) {
           var returnMethod = getMethod(iterator, "return");
           return returnMethod ? call(returnMethod, iterator) : createIterResultObject(void 0, true);
         }
+        cleanupState(state);
         if (done) return createIterResultObject(void 0, true);
-        if (state.inner) try {
-          iteratorClose(state.inner.iterator, NORMAL);
+        if (inner) try {
+          iteratorClose(inner.iterator, NORMAL);
         } catch (error) {
           return iteratorClose(iterator, THROW, error);
         }
-        if (state.openIters) try {
-          iteratorCloseAll(state.openIters, NORMAL);
+        if (openIters) try {
+          iteratorCloseAll(openIters, NORMAL);
         } catch (error) {
           if (iterator) return iteratorClose(iterator, THROW, error);
           throw error;
