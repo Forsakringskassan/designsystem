@@ -83,7 +83,7 @@
     "glob": "13.0.6",
     "vite": "8.2.0",
     "vitest": "4.1.10",
-    "vue": "3.5.40",
+    "vue": "3.5.41",
     "vue-router": "5.2.0"
   },
   "peerDependencies": {
