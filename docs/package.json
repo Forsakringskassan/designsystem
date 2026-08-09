@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "vue-tsc -b",
-    "clean": "rimraf -g *.tsbuildinfo"
+    "clean": "rimraf -g temp"
   },
   "dependencies": {
     "@fkui/icon-lib-default": "6.52.2",

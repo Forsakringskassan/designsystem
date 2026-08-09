@@ -2,6 +2,7 @@
     "extends": "./playground/tsconfig.json",
     "compilerOptions": {
         "composite": true,
+        "tsBuildInfoFile": "${configDir}/temp/tsconfig.playground.tsbuildinfo",
         "rootDir": "./playground",
         "noEmit": true,
         "strict": true,

@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "tsBuildInfoFile": "${configDir}/../temp/tsconfig.examples.tsbuildinfo",
         "rootDir": ".",
         "noEmit": true,
         "allowJs": true,

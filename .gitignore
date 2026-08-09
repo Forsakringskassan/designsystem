@@ -10,7 +10,6 @@ dist/
 docs/examples/files/
 public/
 temp/
-*.tsbuildinfo
 
 # Cypress output
 cypress/screenshots/
