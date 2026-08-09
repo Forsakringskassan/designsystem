@@ -38,4 +38,4 @@ runs:
           run: npm exec lerna -- run build --scope='@fkui/example-*'
         - name: Build documentation
           shell: bash
-          run: node generate-docs.mjs
+          run: node generate-docs.mts
