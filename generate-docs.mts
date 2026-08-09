@@ -1,7 +1,6 @@
 import { execSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
-import module from "node:module";
 import path from "node:path";
 import {
     type Processor,
@@ -13,21 +12,17 @@ import {
     manifestProcessor,
     matomoProcessor,
     motdProcessor,
+    playgroundProcessor,
     searchProcessor,
     selectableVersionProcessor,
     sourceUrlProcessor,
     topnavProcessor,
     versionProcessor,
 } from "@forsakringskassan/docs-generator";
-import { strFromU8, strToU8, zlibSync } from "fflate";
-import { glob } from "glob";
 import isCI from "is-ci";
 import config from "./docs.config.js";
+import pkg from "./package.json" with { type: "json" };
 import { fontDir } from "./packages/font-default/metadata.mjs";
-
-const require = module.createRequire(import.meta.url);
-
-const pkg = require("./package.json");
 
 const DEFAULT_MATOMO_CONFIG = {
     trackerUrl: "https://webstats.forsakringskassan.se/matomo/",
@@ -77,32 +72,6 @@ async function copyDocs(pkg: string, from: string, to: string): Promise<void> {
     await fs.cp(from, to, {
         recursive: true,
     });
-}
-
-function sandboxProcessor(folder: string): Processor {
-    return {
-        after: "generate-docs",
-        name: "fkui:sandbox-processor",
-        async handler(context) {
-            const filenames = await glob("**", { cwd: folder, nodir: true });
-            const entries = await Promise.all(
-                filenames.map(async (filename) => {
-                    const filePath = path.join(folder, filename);
-                    const content = await fs.readFile(filePath, "utf8");
-                    return [filename, content];
-                }),
-            );
-            const data = JSON.stringify(Object.fromEntries(entries));
-            const buffer = strToU8(data);
-            const zipped = zlibSync(buffer, { level: 9 });
-            const binary = strFromU8(zipped, true);
-            const hash = btoa(binary);
-            context.setTemplateData(
-                "sandboxLink",
-                `https://play.vuejs.org/#${hash}`,
-            );
-        },
-    };
 }
 
 function themeProcessor(): Processor {
@@ -161,6 +130,16 @@ const docs = new Generator(import.meta.url, {
         extractExamplesProcessor({
             outputFolder: "docs/examples/files",
         }),
+        playgroundProcessor({
+            entries: [
+                {
+                    id: "vue",
+                    variable: "sandboxLink",
+                    folder: "docs/playground",
+                    urlFormat: "https://play.vuejs.org/#{{ zlibBase64 }}",
+                },
+            ],
+        }),
         searchProcessor(),
         versionProcessor(pkg, "footer:right", {
             scm: isRelease
@@ -189,7 +168,6 @@ const docs = new Generator(import.meta.url, {
         }),
         cookieProcessor(),
         htmlRedirectProcessor(),
-        sandboxProcessor("docs/playground"),
     ],
     setupPath: path.resolve("docs/src/setup.ts"),
 });
