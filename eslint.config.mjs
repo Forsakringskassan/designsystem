@@ -40,7 +40,7 @@ export default [
 
     cliConfig({
         files: [
-            "*.{js,mjs}",
+            "*.{js,mjs,mts}",
             "{examples,packages,internal}/*/*.{js,ts,cjs,mjs}",
             "{examples,packages,internal}/*/{htmlvalidate,scripts,stylelint}/**/*.{js,ts,cjs,mjs}",
             "scripts/*.{js,ts,cjs,mjs}",

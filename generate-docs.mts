@@ -4,6 +4,7 @@ import fs from "node:fs/promises";
 import module from "node:module";
 import path from "node:path";
 import {
+    type Processor,
     Generator,
     apiExtractorProcessor,
     cookieProcessor,
@@ -66,13 +67,7 @@ if (isCI) {
     console.log();
 }
 
-/**
- * @param {string} pkg
- * @param {string} from
- * @param {string} to
- * @returns {Promise<void>}
- */
-async function copyDocs(pkg, from, to) {
+async function copyDocs(pkg: string, from: string, to: string): Promise<void> {
     const exists = existsSync(from);
     if (!exists) {
         console.log(`${pkg} not built, skipping`);
@@ -84,11 +79,7 @@ async function copyDocs(pkg, from, to) {
     });
 }
 
-/**
- * @param {string} folder
- * @returns {import("@forsakringskassan/docs-generator").Processor}
- */
-function sandboxProcessor(folder) {
+function sandboxProcessor(folder: string): Processor {
     return {
         after: "generate-docs",
         name: "fkui:sandbox-processor",
@@ -114,10 +105,7 @@ function sandboxProcessor(folder) {
     };
 }
 
-/**
- * @returns {import("@forsakringskassan/docs-generator").Processor}
- */
-function themeProcessor() {
+function themeProcessor(): Processor {
     return {
         after: "generate-docs",
         name: "fkui:theme",

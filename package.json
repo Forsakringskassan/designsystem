@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "build": "lerna run build",
-    "build:docs": "lerna run build:docs && node generate-docs.mjs && run-s --continue-on-error build:docs:*",
+    "build:docs": "lerna run build:docs && node generate-docs.mts && run-s --continue-on-error build:docs:*",
     "build:docs:html-validate": "html-validate --formatter stylish,codeframe --config .htmlvalidate-public.js public",
     "build:docs:tsc": "tsc -b docs/examples",
     "build:docs:eslint": "eslint --cache docs/examples",
