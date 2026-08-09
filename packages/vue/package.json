@@ -49,11 +49,10 @@
     "!htmlvalidate/tsconfig.json"
   ],
   "scripts": {
-    "prebuild": "run-s clean",
     "build": "run-s build:lib build:selectors build:dts build:api build:test-bundles",
     "build:api": "fk-api-extractor --patch-augmentations --patch-declare-var-vls api-extractor.*.json",
     "build:dts": "vue-tsc -b",
-    "build:lib": "fk-build-vue-lib",
+    "build:lib": "fk-build-vue-lib --clean",
     "build:selectors": "fk-build-selectors",
     "build:test-bundles": "node build-test-bundles.mjs",
     "clean": "rimraf -g coverage dist temp test-results",
