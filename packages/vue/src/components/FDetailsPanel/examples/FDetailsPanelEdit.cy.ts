@@ -5,7 +5,7 @@ import {
 import FDetailsPanelExample from "./FDetailsPanelEdit.vue";
 
 class CustomPanelPageObject extends FDetailsPanelPageObject {
-    public static fromName(name: string): CustomPanelPageObject {
+    public static override fromName(name: string): CustomPanelPageObject {
         const selector = this.nameSelector(name);
         return new CustomPanelPageObject(selector);
     }

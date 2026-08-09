@@ -7,8 +7,8 @@ import { Input } from "./input";
  * @public
  */
 export class FTextareaFieldPageObject extends Input implements BasePageObject {
-    public selector: string;
-    public el: () => DefaultCypressChainable;
+    public override selector: string;
+    public override el: () => DefaultCypressChainable;
     public label: FLabelPageObject;
     public tooltip: FTooltipPageObject;
 
