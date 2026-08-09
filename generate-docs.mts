@@ -1,4 +1,3 @@
-import { execSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -9,6 +8,7 @@ import {
     cookieProcessor,
     extractExamplesProcessor,
     htmlRedirectProcessor,
+    isRelease,
     manifestProcessor,
     matomoProcessor,
     motdProcessor,
@@ -42,17 +42,6 @@ const {
 const matomoConfig = MATOMO_CONFIG
     ? JSON.parse(MATOMO_CONFIG)
     : DEFAULT_MATOMO_CONFIG;
-
-const isRelease = (() => {
-    try {
-        const cmd = `git log -n1 --format=format:%s`;
-        const message = execSync(cmd, { encoding: "utf8" }).trim();
-        return message.startsWith("chore(release):");
-    } catch (err) {
-        console.error(err);
-        return false;
-    }
-})();
 
 if (isCI) {
     console.group("Configuration");
@@ -140,7 +129,7 @@ const docs = new Generator(import.meta.url, {
         }),
         searchProcessor(),
         versionProcessor(pkg, "footer:right", {
-            scm: isRelease
+            scm: isRelease()
                 ? undefined
                 : {
                       commitUrlFormat: "{{ repository }}/commits/{{ hash }}",
