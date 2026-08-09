@@ -5,16 +5,12 @@ node_modules/
 # Build artifacts
 .eslintcache
 build/
+coverage/
 dist/
 docs/examples/files/
 public/
 temp/
 *.tsbuildinfo
-
-# Jest output
-.jest-cache/
-coverage/
-jest-junit.xml
 
 # Cypress output
 cypress/screenshots/

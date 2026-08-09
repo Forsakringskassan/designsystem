@@ -8,7 +8,6 @@ CHANGELOG.md
 *.api.md
 
 # build artifacts
-.jest-cache/
 build/
 coverage/
 dist/

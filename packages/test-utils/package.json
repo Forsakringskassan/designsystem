@@ -62,7 +62,7 @@
     "prebuild": "rimraf dist temp && tsc",
     "build": "node build.mjs",
     "postbuild": "fk-api-extractor --patch-augmentations api-extractor.json api-extractor-*.json",
-    "clean": "rimraf .jest-cache dist temp test-results",
+    "clean": "rimraf dist temp test-results",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
