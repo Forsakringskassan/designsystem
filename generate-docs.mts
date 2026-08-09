@@ -107,12 +107,10 @@ const docs = new Generator(import.meta.url, {
     vendor: [
         {
             package: "vue",
-            expose: "named",
             alias: "vue/dist/vue.esm-bundler.js",
         },
         {
             package: "@fkui/vue/selectors",
-            expose: "named",
             alias: "./packages/vue/dist/esm/selectors.esm.js",
         },
         "@fkui/logic",
