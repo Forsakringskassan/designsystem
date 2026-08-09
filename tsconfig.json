@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "noEmit": true,
+        "module": "esnext",
+        "target": "esnext",
+        "lib": ["esnext"],
+        "types": ["node"],
+        "allowJs": true,
+        "checkJs": true
+    },
+    "include": ["*.js", "*.ts", "*.mts"]
+}
