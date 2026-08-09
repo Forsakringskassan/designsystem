@@ -8,8 +8,9 @@ export class FFormModalPageObject
     extends FModalPageObject
     implements BasePageObject
 {
-    public selector: string;
-    public el: () => DefaultCypressChainable;
+    public override selector: string;
+    public override el: () => DefaultCypressChainable;
+
     /**
      * @param selector - the root of the Modal, usually `<div class="modal">...</div>`.
      */
