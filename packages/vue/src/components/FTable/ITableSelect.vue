@@ -181,7 +181,13 @@ async function onEditBlur(event: FocusEvent): Promise<void> {
 </script>
 
 <template>
-    <td class="table-ng__cell table-ng__cell--select" tabindex="-1" @keydown="onCellKeyDown" @click.stop="onCellClick">
+    <td
+        v-if="column.editable(row)"
+        class="table-ng__cell table-ng__cell--select"
+        tabindex="-1"
+        @keydown="onCellKeyDown"
+        @click.stop="onCellClick"
+    >
         <div v-show="!editing" class="table-ng__editable">
             <span class="table-ng__editable__text">{{ viewValue }}</span>
         </div>
@@ -215,5 +221,8 @@ async function onEditBlur(event: FocusEvent): Promise<void> {
             @select="selectDropdownOption"
             @close="onDropdownClose"
         ></i-combobox-dropdown>
+    </td>
+    <td v-else tabindex="-1" class="table-ng__cell table-ng__cell--static">
+        {{ column.selected(row) }}
     </td>
 </template>
