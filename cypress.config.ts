@@ -70,6 +70,7 @@ const htmlValidateOptions: CypressHtmlValidateOptions = {
     exclude,
 };
 
+const isGithub = Boolean(process.env.GITHUB_ACTION);
 const disableVisualRegression = (() => {
     return Boolean(process.env.CI);
 })();
@@ -83,7 +84,9 @@ export default defineConfig({
     video: false,
     reporter: require.resolve("mocha-multi-reporters"),
     reporterOptions: {
-        reporterEnabled: "spec, mocha-junit-reporter",
+        reporterEnabled: isGithub
+            ? "spec, github-actions, mocha-junit-reporter"
+            : "spec, mocha-junit-reporter",
         mochaJunitReporterReporterOptions: {
             mochaFile: "test-results/cypress-test-output_[hash].xml",
         },
