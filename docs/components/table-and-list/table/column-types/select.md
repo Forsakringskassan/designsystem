@@ -37,6 +37,51 @@ const columns = defineTableColumns<Row>([
 - `selected(row)` kan användas om du inte vill läsa från `key`.
 - `update(row, newValue, oldValue)` används när du behöver egen uppdateringslogik.
 
+## Redigerbarhet
+
+Som standard är det alltid möjligt att välja alternativ från en lista.
+
+Om cellen ska vara redigerbar baserat på rad tillhandahåller du en `editable`-funktion
+som returnerar `true` eller `false`.
+
+```ts
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    fruit: string;
+}
+
+const columns = defineTableColumns<Row>([
+    {
+        type: "text",
+        header: "Frukt",
+        key: "fruit",
+        editable(row) {
+            return row.fruit !== "banana";
+        },
+    },
+]);
+```
+
+Det är också möjligt att stänga av redigering för samtliga rader.
+
+```ts
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    fruit: string;
+}
+
+const columns = defineTableColumns<Row>([
+    {
+        type: "text",
+        header: "Frukt",
+        key: "fruit",
+        editable: false,
+    },
+]);
+```
+
 ## Parametrar
 
 ::: api properties

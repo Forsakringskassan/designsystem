@@ -60,6 +60,6 @@ export function normalizeSelectColumn<T, K extends keyof T>(
         editable:
             typeof column.editable === "function"
                 ? column.editable
-                : () => true,
+                : () => Boolean(column.editable ?? true),
     };
 }
