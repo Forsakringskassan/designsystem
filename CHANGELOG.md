@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 6.52.3 (2026-08-10)
+
+### Bug Fixes
+
+* **@fkui/design:** retain card background when `FCard` is invalid (refs SFKUI-6500) 7a72378, closes #1524
+* **@fkui/vue:** add missing `TranslationMixin` to `FFileItem` (refs SFKUI-6500) 92bc009
+* **@fkui/vue:** fix warning when passing id as anchor to `IPopup` and `IPopupMenu` (refs SFKUI-6500) 587942d
+* **@fkui/vue:** selector objects use `:scope` as default selector (refs SFKUI-6500) 936f25a
+* **deps:** update dependency @vueuse/core to v14.4.0 7970678
+* **deps:** update dependency cssnano to v8.0.3 2fdb934
+* **deps:** update dependency cssnano to v8.0.4 ([#1553](undefined/Forsakringskassan/designsystem/issues/1553)) 896c136
+* **deps:** update dependency sass to v1.101.3 1bab743
+* **deps:** update dependency sass to v1.101.6 e3ee49a
+* **deps:** update dependency sass to v1.101.7 b2a20c3
+* **deps:** update dependency sass to v1.102.0 b592bb6
+* **deps:** update dependency vue-router to v5.2.0 1556904
+* **deps:** update dependency yargs to v18.1.0 d7deb7e
+* **deps:** update vue monorepo to v3.5.39 ([#1464](undefined/Forsakringskassan/designsystem/issues/1464)) e5c7867
+* **deps:** update vue monorepo to v3.5.41 852d2ab
+
 ## 6.52.2 (2026-07-15)
 
 ### Bug Fixes

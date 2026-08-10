@@ -1,6 +1,6 @@
 {
   "name": "@fkui/cypress-split",
-  "version": "6.52.2",
+  "version": "6.52.3",
   "private": true,
   "description": "Split Cypress specs across parallel CI machines for speed",
   "keywords": [
