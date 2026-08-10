@@ -19,14 +19,13 @@
   "main": "dist/index.mjs",
   "types": "types.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
     "build": "node build.mjs"
   },
   "devDependencies": {
-    "esbuild": "0.28.1",
-    "globby": "16.2.2"
+    "esbuild": "0.28.1"
   },
   "engines": {
     "node": "^22.16 || >= 24"

@@ -2,8 +2,8 @@
 /// <reference types="Cypress" />
 // @ts-check
 
+import fs from "node:fs";
 import path from "node:path";
-import { globbySync } from "globby";
 
 /**
  * @template T
@@ -84,15 +84,17 @@ function getSpecs(config) {
         excludeSpecPattern,
         additionalIgnorePattern,
     } = config;
-    return globbySync(specPattern, {
-        cwd: projectRoot,
-        absolute: true,
-        ignore: [
-            ...excludeSpecPattern,
-            additionalIgnorePattern,
-            "**/node_modules/**",
-        ],
-    }).toSorted((a, b) => a.localeCompare(b));
+    return fs
+        .globSync(specPattern, {
+            cwd: projectRoot,
+            exclude: [
+                ...excludeSpecPattern,
+                additionalIgnorePattern,
+                "**/node_modules/**",
+            ],
+        })
+        .map((it) => path.join(projectRoot, it))
+        .toSorted((a, b) => a.localeCompare(b));
 }
 
 /**
