@@ -90,14 +90,6 @@ Du aktiverar automatisk höjd med attributet `auto-resize`.
  >
 ```
 
-Automatisk höjd bygger på webbläsarstöd för `field-sizing`.
-I webbläsare utan stöd växer fältet inte automatiskt när användaren skriver.
-Då visar komponenten minst fyra rader, så att fältet inte blir för litet.
-Om du anger fler än fyra rader visar komponenten det antalet rader i stället.
-Om du anger max antal rader kan det begränsa hur stort fältet visas i äldre webbläsare.
-På desktop kan användaren ändra höjden manuellt när max antal rader inte används.
-På mobila enheter kan fältet i stället upplevas som fast.
-
 Med `auto-resize` visas fyra rader som standard, precis som vid fast höjd. Använd `rows` för att ange ett annat minsta antal rader.
 
 ```diff
