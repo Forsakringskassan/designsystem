@@ -1417,6 +1417,7 @@ describe("5 tabstop", () => {
         staticText: string;
         editText: string;
         select: string;
+        staticSelect: string;
         checkbox: boolean;
         button: string;
         anchor: string;
@@ -1434,6 +1435,7 @@ describe("5 tabstop", () => {
                 {
                     staticText: "awesome static text",
                     editText: "awesome edit text",
+                    staticSelect: "awesome static option",
                     select: "awesome option",
                     checkbox: true,
                     button: "awesome button",
@@ -1443,6 +1445,7 @@ describe("5 tabstop", () => {
                         {
                             staticText: "child static text",
                             editText: "child edit text",
+                            staticSelect: "another static option",
                             select: "another option",
                             checkbox: false,
                             button: "child button",
@@ -1467,6 +1470,14 @@ describe("5 tabstop", () => {
                 header: "edit text header",
                 key: "editText",
                 label: () => "edit text label",
+            },
+            {
+                type: "select",
+                header: "static select header",
+                options: ["awesome option", "catastrophic option"],
+                key: "staticSelect",
+                label: () => "select label",
+                editable: false,
             },
             {
                 type: "select",
@@ -1501,6 +1512,7 @@ describe("5 tabstop", () => {
 
         const buttonBeforeTable = "button-before-table";
 
+        cy.viewport(1200, 600);
         cy.mount(() =>
             h("div", [
                 renderButton("Before table", { dataTest: buttonBeforeTable }),
@@ -1663,52 +1675,64 @@ describe("5 tabstop", () => {
             .should("contain.text", "awesome edit text")
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
-        // {1, 5}: select
+        // {1, 5}: static select
+        cy.focused()
+            .should("have.prop", "tagName", "TD")
+            .should("contain.text", "awesome static option")
+            .should("have.attr", "tabindex", 0);
+        cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
+        // {1, 6}: select
         cy.focused()
             .should("have.prop", "tagName", "TD")
             .should("contain.text", "awesome option")
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
-        // {1, 6}: checkbox
+        // {1, 7}: checkbox
         cy.focused()
             .should("have.prop", "tagName", "INPUT")
             .should("have.attr", "type", "checkbox")
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
-        // {1, 7}: button
+        // {1, 8}: button
         cy.focused()
             .should("have.prop", "tagName", "BUTTON")
             .should("contain.text", "awesome button")
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.RIGHT);
-        // {1, 8}: anchor
+        // {1, 9}: anchor
         cy.focused()
             .should("have.prop", "tagName", "A")
             .should("contain.text", "awesome anchor")
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.UP);
-        // {0, 8}: anchor header
+        // {0, 9}: anchor header
         cy.focused()
             .should("have.prop", "tagName", "TH")
             .should("contain.text", "anchor header", true)
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.LEFT);
-        // {0, 7}: button header
+        // {0, 8}: button header
         cy.focused()
             .should("have.prop", "tagName", "TH")
             .should("contain.text", "button header", true)
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.LEFT);
-        // {0, 6}: checkbox header
+        // {0, 7}: checkbox header
         cy.focused()
             .should("have.prop", "tagName", "TH")
             .should("contain.text", "checkbox header", true)
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.LEFT);
-        // {0, 5}: select header
+        // {0, 6}: select header
         cy.focused()
             .should("have.prop", "tagName", "TH")
             .should("contain.text", "select header", true)
+            .should("have.attr", "tabindex", 0);
+        cy.focused().press(Cypress.Keyboard.Keys.LEFT);
+        // {0, 5}: static select header
+        cy.focused()
+            .should("have.prop", "tagName", "TH")
+            .should("contain.text", "static select header", true)
             .should("have.attr", "tabindex", 0);
         cy.focused().press(Cypress.Keyboard.Keys.LEFT);
         // {0, 4}: edit text header
@@ -1783,47 +1807,59 @@ describe("5 tabstop", () => {
         cy.focused()
             .should("have.prop", "tagName", "INPUT")
             .should("have.attr", "tabindex", 0);
-        // {1, 5}: select
+        // {1, 5}: static select
         table.cell({ row: 1, col: 5 }).click();
+        cy.focused()
+            .should("have.prop", "tagName", "TD")
+            .should("contain.text", "awesome static option")
+            .should("have.attr", "tabindex", 0);
+        // {1, 6}: select
+        table.cell({ row: 1, col: 6 }).click();
         cy.focused()
             .should("have.prop", "tagName", "DIV")
             .should("contain.text", "awesome option")
             .should("have.attr", "tabindex", 0);
-        // {1, 6}: checkbox
-        table.cell({ row: 1, col: 6 }).click();
+        // {1, 7}: checkbox
+        table.cell({ row: 1, col: 7 }).click();
         cy.focused()
             .should("have.prop", "tagName", "INPUT")
             .should("have.attr", "type", "checkbox")
             .should("have.attr", "tabindex", 0);
-        // {1, 7}: button
-        table.cell({ row: 1, col: 7 }).click();
+        // {1, 8}: button
+        table.cell({ row: 1, col: 8 }).click();
         cy.focused()
             .should("have.prop", "tagName", "BUTTON")
             .should("contain.text", "awesome button")
             .should("have.attr", "tabindex", 0);
-        // {0, 8}: anchor header
-        table.header(8).click();
+        // {0, 9}: anchor header
+        table.header(9).click();
         cy.focused()
             .should("have.prop", "tagName", "TH")
             .should("contain.text", "anchor header", true)
             .should("have.attr", "tabindex", 0);
-        // {0, 7}: button header
-        table.header(7).click();
+        // {0, 8}: button header
+        table.header(8).click();
         cy.focused()
             .should("have.prop", "tagName", "TH")
             .should("contain.text", "button header", true)
             .should("have.attr", "tabindex", 0);
-        // {0, 6}: checkbox header
-        table.header(6).click();
+        // {0, 7}: checkbox header
+        table.header(7).click();
         cy.focused()
             .should("have.prop", "tagName", "TH")
             .should("contain.text", "checkbox header", true)
             .should("have.attr", "tabindex", 0);
-        // {0, 5}: select header
-        table.header(5).click();
+        // {0, 6}: select header
+        table.header(6).click();
         cy.focused()
             .should("have.prop", "tagName", "TH")
             .should("contain.text", "select header", true)
+            .should("have.attr", "tabindex", 0);
+        // {0, 5}: static select header
+        table.header(5).click();
+        cy.focused()
+            .should("have.prop", "tagName", "TH")
+            .should("contain.text", "static select header", true)
             .should("have.attr", "tabindex", 0);
         // {0, 4}: edit text header
         table.header(4).click();
@@ -2210,6 +2246,42 @@ describe("7 Bulk Operation ", () => {
             table.selectInput(4).should("not.be.checked");
             table.cell({ row: 5, col: 2 }).should("be.empty");
         });
+    });
+});
+
+describe("select cell non-editable", () => {
+    interface Row {
+        option: string;
+    }
+
+    const rows = useDatasetRef<Row>([{ option: "Foo" }, { option: "Bar" }]);
+    const columns = defineTableColumns<Row>([
+        {
+            type: "select",
+            header: "Header",
+            options: ["Foo", "Bar", "Baz"],
+            key: "option",
+            label: () => "Label",
+            editable: false,
+        },
+    ]);
+
+    it("should not open select on click (visual)", () => {
+        cy.mount(() =>
+            h(
+                FTable<Row>,
+                {
+                    rows: rows.value,
+                    columns,
+                },
+                {
+                    caption: "select cell should be static",
+                },
+            ),
+        );
+
+        table.cell({ row: 2, col: 1 }).click();
+        cy.toMatchScreenshot();
     });
 });
 

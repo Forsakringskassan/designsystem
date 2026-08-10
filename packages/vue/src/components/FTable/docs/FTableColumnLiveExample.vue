@@ -339,7 +339,7 @@ export default defineComponent({
             return ["anchor", "button"].includes(this.columnType);
         },
         editableSupport(): boolean {
-            return this.columnType === "text";
+            return this.columnType === "text" || this.columnType === "select";
         },
         normalizedKey(): TableColumnType {
             return this.columnType === "text" ? this.textType : this.columnType;
