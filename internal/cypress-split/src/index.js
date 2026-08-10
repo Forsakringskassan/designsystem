@@ -97,8 +97,10 @@ function getSpecs(config) {
 
 /**
  * Initialize Cypress split plugin using Cypress "on" and "config" arguments.
- * @param {Cypress.PluginEvents} _on Cypress "on" event registration
- * @param {Cypress.PluginConfigOptions} config Cypress config object
+ *
+ * @param {Cypress.PluginEvents} _on - Cypress "on" event registration
+ * @param {Cypress.PluginConfigOptions} config - Cypress config object
+ * @returns {Cypress.PluginConfigOptions}
  */
 function cypressSplit(_on, config) {
     if (!process.env.SPLIT) {
