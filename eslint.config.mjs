@@ -11,13 +11,14 @@ import typescriptConfig from "@forsakringskassan/eslint-config-typescript";
 import typeinfoConfig from "@forsakringskassan/eslint-config-typescript-typeinfo";
 import vitestConfig from "@forsakringskassan/eslint-config-vitest";
 import vueConfig from "@forsakringskassan/eslint-config-vue";
+import pkg from "./package.json" with { type: "json" };
 
 async function readJsonFile(filePath) {
     const content = await fs.readFile(filePath, "utf8");
     return JSON.parse(content);
 }
 
-const pkg = await readJsonFile("packages/vue/package.json");
+const vuePkg = await readJsonFile("packages/vue/package.json");
 
 export default [
     {
@@ -38,14 +39,7 @@ export default [
 
     ...defaultConfig,
 
-    cliConfig({
-        files: [
-            "*.{js,mjs,mts}",
-            "{examples,packages,internal}/*/*.{js,ts,cjs,mjs}",
-            "{examples,packages,internal}/*/{htmlvalidate,scripts,stylelint}/**/*.{js,ts,cjs,mjs}",
-            "scripts/*.{js,ts,cjs,mjs}",
-        ],
-    }),
+    cliConfig(pkg),
     typescriptConfig(),
     typeinfoConfig(import.meta.dirname, {
         files: ["{examples,internal,packages}/**/*.{ts,vue}"],
@@ -94,7 +88,7 @@ export default [
             "vue/no-unsupported-features": [
                 "error",
                 {
-                    version: pkg.peerDependencies.vue,
+                    version: vuePkg.peerDependencies.vue,
                 },
             ],
             "vue/block-lang": [
