@@ -21,6 +21,19 @@ async function getDocsPages(): Promise<Manifest["pages"]> {
     });
 }
 
+function installPlugins(
+    on: Cypress.PluginEvents,
+    config: Cypress.PluginConfigOptions,
+): Cypress.PluginConfigOptions {
+    getToMatchScreenshotsPlugin(on, config, {
+        threshold: 0.005,
+    });
+    htmlvalidate.install(on, htmlValidateConfig, htmlValidateOptions);
+    config = installAxe(on, config);
+    config = cypressSplit(on, config);
+    return config;
+}
+
 const htmlValidateConfig: ConfigData = {
     rules: {
         /* some examples show how to use custom heading levels which often
@@ -80,9 +93,7 @@ export default defineConfig({
         async setupNodeEvents(on, config) {
             const pages = await getDocsPages();
             config.expose = { pages };
-
-            getToMatchScreenshotsPlugin(on, config);
-            return install(on, config);
+            return installPlugins(on, config);
         },
     },
     component: {
@@ -97,12 +108,7 @@ export default defineConfig({
             config.expose = {
                 DISABLE_VISUAL_REGRESSION: disableVisualRegression,
             };
-            getToMatchScreenshotsPlugin(on, config, {
-                threshold: 0.005,
-            });
-            config = install(on, config);
-            config = cypressSplit(on, config);
-            return config;
+            return installPlugins(on, config);
         },
         devServer: {
             framework: "vue",
@@ -112,12 +118,3 @@ export default defineConfig({
     defaultBrowser: "chrome",
     hosts: { localhost: "127.0.0.1" },
 });
-
-export function install(
-    on: Cypress.PluginEvents,
-    config: Cypress.PluginConfigOptions,
-): Cypress.PluginConfigOptions {
-    htmlvalidate.install(on, htmlValidateConfig, htmlValidateOptions);
-    config = installAxe(on, config);
-    return config;
-}
