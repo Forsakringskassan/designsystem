@@ -24,22 +24,39 @@ describe("FLoader", () => {
                 stubs: ["teleport"],
             },
         });
+
         expect(wrapper.get(".loader--overlay")).toBeTruthy();
     });
 
-    it("should have text by default", () => {
-        expect.assertions(1);
+    it("should show delay", () => {
+        expect.assertions(2);
         const wrapper = shallowMount(FLoader, {
-            props: { overlay: true, show: false },
+            props: { delay: true },
             global: {
                 stubs: ["teleport"],
             },
         });
-        expect(wrapper.html()).toMatchSnapshot();
+
+        expect(wrapper.get(".loader.loader--delay")).toBeTruthy();
+        expect(wrapper.get(".loader__wait-text.loader--delay")).toBeTruthy();
+    });
+
+    it("should have text by default", () => {
+        expect.assertions(3);
+        const wrapper = shallowMount(FLoader, {
+            props: { show: true },
+            global: {
+                stubs: ["teleport"],
+            },
+        });
+
+        expect(wrapper.get(".loader__wait-text")).toBeTruthy();
+        expect(wrapper.get(".loader__wait-text").isVisible()).toBeTruthy();
+        expect(wrapper.get(".loader__wait-text").text()).toBe("Vänligen vänta");
     });
 
     it("should be able to specify text", () => {
-        expect.assertions(1);
+        expect.assertions(3);
         const wrapper = shallowMount(FLoader, {
             props: { show: false },
             slots: { default: `Loading...` },
@@ -47,11 +64,14 @@ describe("FLoader", () => {
                 stubs: ["teleport"],
             },
         });
+
         expect(wrapper.get(".loader__wait-text")).toBeTruthy();
+        expect(wrapper.get(".loader__wait-text").text()).toBe("Loading...");
+        expect(wrapper.get(".loader").isVisible()).toBeFalsy();
     });
 
     it("should show the specified text", () => {
-        expect.assertions(1);
+        expect.assertions(3);
         const wrapper = shallowMount(FLoader, {
             props: { show: true },
             slots: { default: `Loading...` },
@@ -59,7 +79,10 @@ describe("FLoader", () => {
                 stubs: ["teleport"],
             },
         });
+
         expect(wrapper.get(".loader__wait-text")).toBeTruthy();
+        expect(wrapper.get(".loader__wait-text").text()).toBe("Loading...");
+        expect(wrapper.get(".loader").isVisible()).toBeTruthy();
     });
 
     it("should show loading text in english", () => {
