@@ -35,3 +35,13 @@
         color: LinkText;
     }
 }
+
+@mixin anchor-discrete {
+    color: $anchor-color-text-discrete-default;
+    text-decoration-color: $anchor-color-text-decoration-discrete-default;
+
+    &:hover {
+        color: $anchor-color-text-discrete-default;
+        text-decoration-color: $anchor-color-text-decoration-discrete-default;
+    }
+}
