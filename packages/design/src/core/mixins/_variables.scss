@@ -10,3 +10,5 @@ $anchor-underline-offset-active: calc($anchor-underline-offset-default - 1px) !d
 $anchor-underline-width-default: 2px !default;
 $anchor-underline-width-hover: 3px !default;
 $anchor-underline-width-active: 3px !default;
+$anchor-color-text-discrete-default: var(--fkds-color-action-text-secondary-default) !default;
+$anchor-color-text-decoration-discrete-default: var(--fkds-color-border-primary) !default;
