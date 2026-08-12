@@ -220,7 +220,6 @@ $button--tertiary: (
     }
 
     &--tertiary {
-        font-weight: var(--f-font-weight-medium);
         outline-offset: size.$padding-025;
 
         @include core.make-button-variant(".button", $button--tertiary...);
