@@ -33,6 +33,17 @@ jobs:
               with:
                   example-apps: true
                   sandbox: true
+            - name: Reset gh-pages branch history
+              env:
+                BUILD_NUMBER: ${{ github.run_number }}
+              run: |
+                git config --global user.email "${{ vars.DOCS_DEPLOY_EMAIL }}"
+                git config --global user.name "${{ vars.DOCS_DEPLOY_NAME }}"
+                #git checkout --orphan gh-pages-${BUILD_NUMBER}
+                #git add v* pr-preview main index.html versions.json latest
+                #git commit -m "Rebuild gh-pages (build $BUILD_NUMBER)"
+                #git push --force origin gh-pages-${BUILD_NUMBER}:gh-pages
+
             - uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1
               id: preview
               with:
