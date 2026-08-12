@@ -81,13 +81,14 @@ watchEffect(() => {
         calculatePosition();
         // wait one tick so we dont get the click
         // that launches the popup (await nextTick doesnt work here)
-        queueMicrotask(() => {
+        // eslint-disable-next-line unicorn/prefer-queue-microtask -- technical debt: microtask closes the popup on same click
+        setTimeout(() => {
             // verify that it's still open
             /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             if (isOpen) {
                 addListeners();
             }
-        });
+        }, 0);
     } else {
         removeListeners();
     }
