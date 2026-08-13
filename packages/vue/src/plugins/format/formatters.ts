@@ -9,6 +9,7 @@ import {
     parsePostalCode,
 } from "@fkui/logic";
 import { type DateRange } from "./date-range";
+import { dateRangeToString } from "./date-range-to-string";
 import { isDateRange } from "./is-date-range";
 import { isNumberFormat } from "./is-number-format";
 import { type NumberFormat } from "./number-format";
@@ -98,7 +99,11 @@ export function formatDateRange(
             : FDate.fromIso(parseDate(range.to) ?? "");
 
     if (fromDate.isValid() && toDate.isValid()) {
-        el.textContent = `${fromDate.toString()} – ${toDate.toString()}`;
+        el.textContent = dateRangeToString({
+            from: fromDate,
+            to: toDate,
+            format: range.format ?? "iso",
+        });
     }
 }
 

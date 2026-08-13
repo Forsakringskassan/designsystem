@@ -19,5 +19,10 @@ export function isDateRange(value: unknown): value is DateRange {
         typeof maybeDateRange.from === "string" &&
         typeof maybeDateRange.to === "string";
 
-    return isFDates || isStrings;
+    const validFormats = ["human", "iso"];
+    const hasValidFormat =
+        maybeDateRange.format === undefined ||
+        validFormats.includes(maybeDateRange.format);
+
+    return (isFDates || isStrings) && hasValidFormat;
 }

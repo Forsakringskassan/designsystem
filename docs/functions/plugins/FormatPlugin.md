@@ -67,18 +67,13 @@ FormatPluginBankgiro.vue
 
 ## Datum
 
-Datumformateraren stödjer fyra olika format:
+Datumformateraren stödjer tre olika format:
 
 - `v-format:date`: "2022-05-04"
 - `v-format:date-long`: "4 maj 2022"
 - `v-format:date-full`: "onsdag 4 maj 2022"
-- `v-format:date-range`: "2022-05-04 – 2022-08-01"
 
-Värdet kan antingen vara av typen `string`, `FDate` eller `DateRange`.
-
-```import
-date-range.ts
-```
+Värdet kan antingen vara av typen `string` eller `FDate`.
 
 ```import static
 FormatPluginDate.vue
@@ -86,6 +81,30 @@ FormatPluginDate.vue
 
 ```import nomarkup
 FormatPluginDate.vue
+```
+
+## Datumintervall
+
+`v-format:date-range` använder ISO-format som standard "2025-01-01 – 2025-12-31".
+För ett mer läsbart datumintervall använder du `format: "human"`:
+
+- Samma månad: "3–5 maj 2000"
+- Samma år: "5 juni – 5 juli 2000"
+- Olika år: "4 juni 2000 – 16 februari 2001"
+
+När perioden innehåller endast en dag skrivs den som t.ex. "2 – 2 januari 2000".
+Konsumenten ansvarar för att hantera presentationen av en-dagsperioder.
+
+```import
+date-range.ts
+```
+
+```import static
+FormatPluginDateRange.vue
+```
+
+```import nomarkup
+FormatPluginDateRange.vue
 ```
 
 ## Nummer
