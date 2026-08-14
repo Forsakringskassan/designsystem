@@ -30,7 +30,7 @@ Om det exempelvis är alternativ som ska hämtas från en server, börja med att
 
 ## Inline
 
-Etiketten och kombobox ska bara placeras på samma rad (inline) om fältet inte har någon validering och om det inte behövs någon hjälptext, formatbeskrivning eller felmeddelande.
+Etikett och kombobox ska bara placeras på samma rad (inline) om fältet inte har någon validering och om det inte behövs någon hjälptext, formatbeskrivning eller felmeddelande.
 Inline passar till exempel bra för sök och fritextfilter.
 
 ## API
