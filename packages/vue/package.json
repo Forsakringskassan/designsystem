@@ -1,6 +1,6 @@
 {
   "name": "@fkui/vue",
-  "version": "6.52.3",
+  "version": "6.53.0",
   "description": "Vue implementation of FKUI components",
   "keywords": [
     "fkui",
@@ -66,12 +66,12 @@
     "lodash": "4.18.1"
   },
   "devDependencies": {
-    "@fkui/date": "6.52.3",
-    "@fkui/design": "6.52.3",
-    "@fkui/icon-lib-default": "6.52.3",
-    "@fkui/logic": "6.52.3",
-    "@fkui/test-utils": "6.52.3",
-    "@fkui/theme-default": "6.52.3",
+    "@fkui/date": "6.53.0",
+    "@fkui/design": "6.53.0",
+    "@fkui/icon-lib-default": "6.53.0",
+    "@fkui/logic": "6.53.0",
+    "@fkui/test-utils": "6.53.0",
+    "@fkui/theme-default": "6.53.0",
     "@forsakringskassan/vite-lib-config": "5.6.1",
     "@forsakringskassan/vitest-config-jsdom": "2.6.0",
     "@vue/test-utils": "2.4.11",
@@ -83,9 +83,9 @@
     "vue-router": "5.2.0"
   },
   "peerDependencies": {
-    "@fkui/date": "^6.52.3",
-    "@fkui/design": "^6.52.3",
-    "@fkui/logic": "^6.52.3",
+    "@fkui/date": "^6.53.0",
+    "@fkui/design": "^6.53.0",
+    "@fkui/logic": "^6.53.0",
     "fk-icons": "^4.30.1",
     "html-validate": ">= 10.10.0",
     "vue": "^3.5.34"

@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 6.53.0 (2026-08-14)
+
+### Features
+
+* **@fkui/design:** create mixin for anchor discrete (refs KA-2356) 96e6b22
+* **@fkui/vue:** add f-table select editable prop (refs SFKUI-6500) 36c96df
+
+### Bug Fixes
+
+* **@fkui/vue:** fix combobox not opening on click (refs SFKUI-6500) 2eda92e
+* **deps:** update dependency cssnano to v8.0.5 ([#1567](undefined/Forsakringskassan/designsystem/issues/1567)) 91d363a
+
 ## 6.52.3 (2026-08-10)
 
 ### Bug Fixes
