@@ -112,7 +112,7 @@ $layout-navigation-dot-spacing: 4px !default;
                 background-color: $layout-navigation-button-color-background-active;
             }
 
-            &:focus {
+            &:focus-visible {
                 @include focus.focus-indicator;
             }
         }

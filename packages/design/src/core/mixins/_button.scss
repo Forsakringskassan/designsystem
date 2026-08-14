@@ -58,7 +58,7 @@
         transform: translateY(1px);
     }
 
-    &:focus {
+    &:focus-visible {
         @include focus.focus-indicator;
     }
 
