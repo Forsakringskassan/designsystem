@@ -34,7 +34,7 @@
   "dependencies": {
     "@adobe/css-tools": "4.5.0",
     "@forsakringskassan/sass-module-importer": "3.0.0",
-    "cssnano": "8.0.4",
+    "cssnano": "8.0.5",
     "get-css-variables": "1.1.1",
     "postcss-scss": "4.0.9",
     "sass": "1.102.0",
@@ -47,7 +47,7 @@
     "@typescript/native": "npm:typescript@7.0.2",
     "dedent": "1.7.2",
     "esbuild": "0.28.2",
-    "memfs": "4.68.0",
+    "memfs": "4.68.1",
     "postcss": "8.5.26",
     "stream-buffers": "3.0.3",
     "typescript": "npm:@typescript/typescript6@6.0.2"

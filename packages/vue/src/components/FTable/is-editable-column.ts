@@ -1,6 +1,7 @@
 import { isTextColumn } from "./is-text-column";
 import {
     type TableColumn,
+    type TableColumnSelect,
     type TableColumnText,
     type TableColumnType,
 } from "./table-column";
@@ -10,10 +11,10 @@ import {
  */
 export function isEditableColumn<T, K extends keyof T = keyof T>(
     column: TableColumn<T, K> & { type?: TableColumnType },
-): column is TableColumnText<T, K> {
+): column is TableColumnText<T, K> | TableColumnSelect<T, K> {
     if (!column.type) {
         return false;
     }
 
-    return isTextColumn(column);
+    return column.type === "select" || isTextColumn(column);
 }
