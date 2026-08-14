@@ -16,9 +16,13 @@ const indeterminate = computed(() => state === "indeterminate");
 const checked = computed(() => (state === "indeterminate" ? false : state));
 const expose: Partial<FTableCellApi> = {};
 const ariaLabel = computed(() => {
-    return !checked.value || indeterminate.value
-        ? $t("fkui.ftable.select-all.aria-label", "Välj alla rader")
-        : $t("fkui.ftable.unselect-all.aria-label", "Avmarkera alla rader");
+    if (!checked.value || indeterminate.value) {
+        /** Screenreader text for "toggle all" checkbox when not all rows are selected. */
+        return $t("fkui.ftable.select-all.aria-label", "Välj alla rader");
+    }
+
+    /** Screenreader text for "toggle all" checkbox when all rows are selected. */
+    return $t("fkui.ftable.unselect-all.aria-label", "Avmarkera alla rader");
 });
 if (selectable === "multi") {
     const inputRef = useTemplateRef("input");

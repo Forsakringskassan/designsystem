@@ -121,6 +121,18 @@ const selectedRows = ref<Row[]>([]);
 ></f-table>
 ```
 
+## Textnycklar
+
+Det är möjligt att anpassa skärmläsartexter vid flerval (bulkkryssruta, kryssruta) och enkelval (radioknapp).
+
+:::api
+translation:ITableHeaderSelectable
+:::
+
+:::api
+translation:ITableSelectable
+:::
+
 ## Relaterat
 
 {@link code Kod för tabell}
