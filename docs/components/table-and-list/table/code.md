@@ -635,8 +635,20 @@ Om ett fel uppstår vid hämtning av tabellens data kan du se till att ett felme
 
 ## Textnycklar
 
+Det finns en slot `empty` för att ange eget innehåll när tabell är tom. Anges inte denna så används istället en textnyckel.
+
 :::api
 translation:FTable
+:::
+
+Det är möjligt att anpassa skärmläsartexter vid flerval (bulkkryssruta, kryssruta) och enkelval (radioknapp).
+
+:::api
+translation:ITableHeaderSelectable
+:::
+
+:::api
+translation:ITableSelectable
 :::
 
 {@link translate-text Läs mer om textnycklar.}
