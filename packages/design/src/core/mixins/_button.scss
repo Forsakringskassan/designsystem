@@ -43,11 +43,13 @@
         color: $color--focus;
     }
 
-    &:hover {
-        background-color: $background-color--hover;
-        border-color: $border-color--hover;
-        box-shadow: $shadow--hover;
-        color: $color--hover;
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-color: $background-color--hover;
+            border-color: $border-color--hover;
+            box-shadow: $shadow--hover;
+            color: $color--hover;
+        }
     }
 
     &:active {
