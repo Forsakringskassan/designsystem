@@ -46,7 +46,7 @@
             background-color: $selectfield-color-background-hover;
         }
 
-        &:focus {
+        &:focus-visible {
             background-color: $selectfield-color-background-focus;
         }
 

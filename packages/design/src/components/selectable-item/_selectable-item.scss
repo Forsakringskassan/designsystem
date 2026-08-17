@@ -13,7 +13,7 @@
         border-bottom: list.$list-border;
     }
 
-    input:focus + label {
+    input:focus-visible + label {
         outline: 2px solid $selectable-item-button-border-color-border-default;
         outline-offset: -2px;
     }
