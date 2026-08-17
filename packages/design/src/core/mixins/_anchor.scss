@@ -36,7 +36,7 @@
     }
 }
 
-@mixin anchor-discrete {
+@mixin anchor-discrete-colors {
     color: $anchor-color-text-discrete-default;
     text-decoration-color: $anchor-color-text-decoration-discrete-default;
 
@@ -44,4 +44,9 @@
         color: $anchor-color-text-discrete-default;
         text-decoration-color: $anchor-color-text-decoration-discrete-default;
     }
+}
+
+@mixin anchor-discrete {
+    @include anchor;
+    @include anchor-discrete-colors;
 }
