@@ -53,3 +53,30 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ligula felis,
 facilisis at ante ac, semper porta ipsum. Nam quis condimentum nulla, vel
 elementum purus. Sed tempor velit id posuere aliquet.
 ```
+
+## SASS-mixin
+
+För att använda länkstylingen i ett eget projekt kan du inkludera anchor() eller anchor-discrete().
+
+anchor ger länken standardutseendet:
+
+```scss
+@use "@fkui/design" as fkui;
+
+a {
+    @include fkui.anchor;
+}
+```
+
+För en diskret länk används anchor-discrete.
+Mixinen inkluderar grundstylingen från anchor och kompletterar den med färgerna för diskreta länkar:
+
+```scss
+@use "@fkui/design" as fkui;
+
+a {
+    @include fkui.anchor-discrete;
+}
+```
+
+Du behöver därför inte inkludera anchor separat när du använder anchor-discrete.

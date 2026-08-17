@@ -1,5 +1,6 @@
 @use "variables" as *;
 
+// @public
 @mixin anchor() {
     color: $anchor-color-text-standard-default;
     font-weight: var(--f-font-weight-medium);
@@ -46,6 +47,7 @@
     }
 }
 
+// @public
 @mixin anchor-discrete {
     @include anchor;
     @include anchor-discrete-colors;
