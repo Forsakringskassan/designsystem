@@ -16,9 +16,13 @@ function onClickButton(): void {
     assertRef(buttonElement);
     buttonElement.value.tabIndex = 0;
 
-    if (column.onClick) {
-        column.onClick(row);
-    }
+    // Wait for the cell activation (which manages focus) to finish before calling onClick()
+    // eslint-disable-next-line unicorn/prefer-queue-microtask -- won't work with microtask, it would run too early.
+    setTimeout(() => {
+        if (column.onClick) {
+            column.onClick(row);
+        }
+    }, 0);
 }
 
 const expose: FTableCellApi = { tabstopEl: buttonElement };
