@@ -139,6 +139,7 @@
     "npm": ">= 7"
   },
   "allowScripts": {
+    "@forsakringskassan/docs-generator": false,
     "@parcel/watcher": false,
     "core-js": false,
     "cypress": true,
