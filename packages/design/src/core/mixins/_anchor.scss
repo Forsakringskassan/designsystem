@@ -10,13 +10,15 @@
     text-decoration-thickness: $anchor-underline-width-default;
     text-underline-offset: $anchor-underline-offset-default;
 
-    &:hover {
-        color: $anchor-color-text-standard-default;
-        text-decoration-color: $anchor-color-text-standard-default;
-        text-decoration-thickness: $anchor-underline-width-hover;
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            color: $anchor-color-text-standard-default;
+            text-decoration-color: $anchor-color-text-standard-default;
+            text-decoration-thickness: $anchor-underline-width-hover;
 
-        @media (forced-colors: active) {
-            color: LinkText;
+            @media (forced-colors: active) {
+                color: LinkText;
+            }
         }
     }
 
@@ -40,8 +42,10 @@
     color: $anchor-color-text-discrete-default;
     text-decoration-color: $anchor-color-text-decoration-discrete-default;
 
-    &:hover {
-        color: $anchor-color-text-discrete-default;
-        text-decoration-color: $anchor-color-text-decoration-discrete-default;
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            color: $anchor-color-text-discrete-default;
+            text-decoration-color: $anchor-color-text-decoration-discrete-default;
+        }
     }
 }
