@@ -175,19 +175,8 @@ export default defineComponent({
         debouncedUpdateChildren(): () => void {
             return debounce(this.updateCheckboxChildren.bind(this), 150);
         },
-        checkboxCheckedScreenReaderText(): string {
-            return this.checkedChildren.length === 1
-                ? this.$t("fkui.checkbox-group.checkbox.checked", "Kryssruta kryssad")
-                : this.$t("fkui.checkbox-group.checkbox.not.checked", "Kryssruta ej kryssad");
-        },
         numberOfCheckboxesScreenReaderText(): string {
             return this.$t("fkui.checkbox-group.count", "Grupp med {{ count }} kryssrutor", {
-                count: String(this.children.length),
-            });
-        },
-        numberOfCheckedCheckboxesScreenText(): string {
-            return this.$t("fkui.checkbox-group.checked", "{{ checked }} kryssad av {{ count }}", {
-                checked: String(this.checkedChildren.length),
                 count: String(this.children.length),
             });
         },
@@ -293,11 +282,6 @@ export default defineComponent({
                 </template>
             </slot>
         </legend>
-
-        <span v-if="hasCheckbox" data-test="checked-boxes" class="sr-only" aria-live="polite">
-            <span v-if="children.length === 1">{{ checkboxCheckedScreenReaderText }}</span>
-            <span v-else>{{ numberOfCheckedCheckboxesScreenText }}</span>
-        </span>
 
         <!-- the original <legend> element is sr-only when a tooltip is present
         so the tooltip button can be positioned correctly when a description is

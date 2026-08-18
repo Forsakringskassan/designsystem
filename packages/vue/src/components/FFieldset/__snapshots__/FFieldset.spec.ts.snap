@@ -33,8 +33,6 @@ exports[`snapshots > should match snapshot when validityMode is 'ERROR' 1`] = `
    
   <!--v-if-->
    
-  <!--v-if-->
-   
   <div
     class="fieldset__content"
   >
@@ -65,8 +63,6 @@ exports[`snapshots > should match snapshot when validityMode is 'INITIAL' 1`] = 
     <!--v-if-->
     
   </legend>
-   
-  <!--v-if-->
    
   <!--v-if-->
    
@@ -103,8 +99,6 @@ exports[`snapshots > should match snapshot when validityMode is 'INITIAL' 2`] = 
    
   <!--v-if-->
    
-  <!--v-if-->
-   
   <div
     class="fieldset__content"
   >
@@ -135,8 +129,6 @@ exports[`snapshots > should match snapshot when validityMode is 'VALID' 1`] = `
     <!--v-if-->
     
   </legend>
-   
-  <!--v-if-->
    
   <!--v-if-->
    
@@ -172,8 +164,6 @@ exports[`snapshots > should match snapshot with generated id attribute 1`] = `
    
   <!--v-if-->
    
-  <!--v-if-->
-   
   <div
     class="fieldset__content"
   >
@@ -204,8 +194,6 @@ exports[`snapshots > should match snapshot with label and content 1`] = `
     <!--v-if-->
     
   </legend>
-   
-  <!--v-if-->
    
   <!--v-if-->
    
@@ -243,8 +231,6 @@ exports[`snapshots > should match snapshot with label, content and error message
    
   <!--v-if-->
    
-  <!--v-if-->
-   
   <div
     class="fieldset__content"
   >
@@ -276,8 +262,6 @@ exports[`snapshots > should match snapshot with label, content and tooltip 1`] =
     <!--v-if-->
     
   </legend>
-   
-  <!--v-if-->
    
   
   <div

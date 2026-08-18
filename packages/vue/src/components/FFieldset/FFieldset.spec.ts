@@ -671,31 +671,13 @@ describe("html-validate", () => {
 });
 
 describe("screen reader text", () => {
-    it("one child should only have checkbox checked screen reader text", async () => {
+    it("other than one child should have numbers of checkboxes screen reader text", async () => {
         expect.assertions(1);
         const TestComponent = defineComponent({
             components: { FFieldset },
             template: /* HTML */ `
                 <f-fieldset>
                     <input type="checkbox" />
-                </f-fieldset>
-            `,
-        });
-        const wrapper = mount(TestComponent);
-        await wrapper.vm.$nextTick();
-        await wrapper.vm.$nextTick();
-        await wrapper.vm.$nextTick();
-        const element = wrapper.get("[data-test='checked-boxes']");
-        expect(element.text()).toBe("Kryssruta ej kryssad");
-    });
-
-    it("other than one child should have numbers of and checked children screen reader text", async () => {
-        expect.assertions(2);
-        const TestComponent = defineComponent({
-            components: { FFieldset },
-            template: /* HTML */ `
-                <f-fieldset>
-                    <input type="checkbox" />
                     <input type="checkbox" />
                 </f-fieldset>
             `,
@@ -704,9 +686,7 @@ describe("screen reader text", () => {
         await wrapper.vm.$nextTick();
         await wrapper.vm.$nextTick();
         await wrapper.vm.$nextTick();
-        const content = wrapper.get("[data-test='checked-boxes']");
         const label = wrapper.get(".sr-only");
-        expect(content.text()).toBe("0 kryssad av 2");
         expect(label.text()).toBe("Grupp med 2 kryssrutor");
     });
 
