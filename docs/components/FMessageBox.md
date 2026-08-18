@@ -58,14 +58,6 @@ Du har redan ansökt om 100 procent vab för den här dagen.
 Rubriken bör tydligt och direkt beskriva vad som är fel.
 Brödtexen bör beskriva vad användaren kan göra för att lösa problemet.
 
-Exempel
-
-_Innan du går vidare_
-Oj, du har missat något. Gå till:
-
-1. Dagar och tid
-2. Kompletterande frågor om vab-dagarna
-
 ## Banner
 
 ```import
