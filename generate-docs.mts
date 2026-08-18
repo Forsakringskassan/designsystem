@@ -112,7 +112,7 @@ const docs = new Generator(import.meta.url, {
         apiExtractorProcessor({
             apiModel: [
                 "packages/vue/temp/vue.api.json",
-                "packages/vue/temp/vue-labs.api.json",
+                "packages/vue-labs/temp/vue-labs.api.json",
             ],
         }),
         extractExamplesProcessor({
