@@ -105,6 +105,7 @@ const docs = new Generator(import.meta.url, {
         "@fkui/logic",
         "@fkui/date",
         "@fkui/vue",
+        "@fkui/vue-labs",
         "@forsakringskassan/docs-live-example",
     ],
     processors: [
