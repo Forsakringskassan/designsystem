@@ -43,7 +43,7 @@
         color: $color--focus;
     }
 
-    @media (hover: hover) and (pointer: fine) {
+    @media (hover: hover) {
         &:hover {
             background-color: $background-color--hover;
             border-color: $border-color--hover;
