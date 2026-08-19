@@ -1,0 +1,31 @@
+name: Clean gh-pages history
+
+on:
+    workflow_dispatch:
+        description: "Manually clean the gh-pages branch history"
+
+permissions:
+    contents: write
+
+jobs:
+    clean-history:
+        name: Clean gh-pages history
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+              with:
+                  ref: "gh-pages"
+            - name: Configure git
+              run: |
+                  git config --global user.email "${{ vars.DOCS_DEPLOY_EMAIL }}"
+                  git config --global user.name "${{ vars.DOCS_DEPLOY_NAME }}"
+            - name: Create orphan branch
+              run: |
+                  git checkout --orphan new-gh-pages
+            - name: Commit changes
+              run: |
+                  git commit -m "Clean gh-pages history"
+            - name: Push changes
+              run: |
+                  git push origin new-gh-pages:gh-pages --force-with-lease
