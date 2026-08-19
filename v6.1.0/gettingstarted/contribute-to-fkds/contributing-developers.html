@@ -1,0 +1,1109 @@
+<!doctype html>
+<html lang="sv" class="layout--pattern" data-root-url="../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>För utvecklare - FK Designsystem</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-3c5333.css"
+            crossorigin
+            integrity="sha384-zGGe26cG+yxHhHNJD1nLxuNvSKPtCFcBhoXKNB8DwrpeRrKbncJA1Y4+zm84Sor0"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-fkui-e2698c.css"
+            crossorigin
+            integrity="sha384-CDETmTgs3T+qNHOzq5hdY4geLicEn7YRUvbZ9nxWDXhP0fudtNatvzjzTMeroJda"
+            data-theme="fkui" disabled
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../assets/bootstrap-956ec3.js"
+            crossorigin
+            integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+
+        <link
+            rel="preload"
+            href="../../search-data-51767f.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-DUxiATGYypO4K4v8oQPJuqpD1DLkBLf8iRjW40K342tdRm7f13kCkPgHux2mJXpv"
+            id="search-data"
+        />
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>
+        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
+        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
+    </p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="button-group">
+        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+
+        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+
+        <div class="layout-wrapper">
+            <header>
+                <!-- prettier-ignore --><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../../index.html">
+            <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list">
+        <!-- prettier-ignore -->
+        
+        
+        
+        <li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="../"> Kom igång </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../components/"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../guides/"> Guider </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../functions/"> Funktioner </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../styles/"> Visuellt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list">
+                    <!-- prettier-ignore -->
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../"> Kom igång </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../components/"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../guides/"> Guider </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../functions/"> Funktioner </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../styles/"> Visuellt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary">
+                <!-- prettier-ignore -->
+<div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Använda designsystemet</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../use-design-system/getting-started.html"
+            
+        >
+            Kom igång
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../use-design-system/getting-started-application.html"
+            
+        >
+            Ta fram applikation
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../use-design-system/icon-library.html"
+            
+        >
+            Skapa eget ikonbibliotek
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable active">
+        <details open>
+            <summary>Bidra till designsystemet</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./"
+            
+        >
+            Bidra till designsystemet
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link active">
+        <!-- prettier-ignore -->
+        <a
+            href="./contributing-developers.html"
+            
+        >
+            För utvecklare
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./release.html"
+            
+        >
+            Releaseprocess
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./testing.html"
+            
+        >
+            Automatisk testning
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./checklist-publication.html"
+            
+        >
+            Checklista vid publicering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./commits.html"
+            
+        >
+            Commits och commitmeddelanden
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./testverktyg.html"
+            
+        >
+            Testverktyg
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Om designsystemet</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../about/"
+            
+        >
+            Designsystemet
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../about/news.html"
+            
+        >
+            Nyheter
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../about/release-plan.html"
+            
+        >
+            På gång
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../help-and-support.html"
+            
+        >
+            Hjälp och support
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Migreringsguider</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migration/migrating-to-fieldset.html"
+            
+        >
+            Fieldset migreringsguide
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migration/migrating-to-v5.html"
+            
+        >
+            Version 5 migreringsguide
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Version 6 migreringsguide</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migration/migrating-to-v6/overview.html"
+            
+        >
+            Sammanfattning
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migration/migrating-to-v6/design.html"
+            
+        >
+            @fkui/design
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migration/migrating-to-v6/logic.html"
+            
+        >
+            @fkui/logic
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migration/migrating-to-v6/vue.html"
+            
+        >
+            @fkui/vue
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../migration/migrating-to-v6/cypress-pageobjects.html"
+            
+        >
+            Cypress Pageobjects
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --></ol>
+</nav>
+</div>
+
+
+                <!-- prettier-ignore -->
+                <script
+                    src="../../assets/vendor-vue-468cb1.js"
+                    crossorigin
+                    integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
+                ></script>
+                <script
+                    src="../../assets/vendor-fkui-logic-62a69f.js"
+                    crossorigin
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
+                ></script>
+                <script
+                    src="../../assets/vendor-fkui-date-7710bf.js"
+                    crossorigin
+                    integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
+                ></script>
+                <script
+                    src="../../assets/vendor-fkui-vue-407f5a.js"
+                    crossorigin
+                    integrity="sha384-UVL5Z/5ZlzgvRIzq8eeAqHOooWaLccRtZaR5o02owDzdKT/3C5G3itBRHwZ5iNiL"
+                ></script>
+                <script
+                    src="../../assets/vendor-forsakringskassan-docs-live-example-e5b7e3.js"
+                    crossorigin
+                    integrity="sha384-xCPY57XKJObfTlktCk3lVaqN1q5FE+90De/IQXXP9Bk65E1+4M1AMGUg1mpBmyNJ"
+                ></script>
+
+                <!-- prettier-ignore --><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">För utvecklare</h1>
+
+                    
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl>
+    <!-- prettier-ignore -->
+    
+</dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#installation">Installation</a></li>
+                                
+                                <li><a href="#kommandon">Kommandon</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content">
+                        <!-- prettier-ignore -->
+<h2 id="installation"><a class="header-anchor" href="#installation">Installation</a></h2><p>Checka ut repo som vanligt och gör en <code>npm install</code>.</p>
+
+                <div
+                    id="example-0d96ef"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm install
+</code></pre>
+                </div>
+            <p>Det här kommer starta igång (bootstrap) för både rot-projekt och alla paket i mappen <code>packages</code>.</p>
+<p>Beroenden kommer bli lösta genom användning av symlänkar (symboliska länkar) och ändringar blir direkt synliga mellan paketen.</p>
+<p>Nästan alla ågärder kan genomföras i batch genom att använda kommando i rot-projektet.
+Till exempel, <code>npm test</code> kommer köra testerna i alla projekt.</p>
+<p>Det finns också ett antal kortkommando-skript för att du ska kunna köra paket-specifika npm-kommandon från roten, till exempel <code>npm run logic build</code>.</p>
+<p><a href="https://github.com/lerna/lerna">Läs mer i dokumentation om Lerna hur kommadon fungerar och se hela listan med kommandon</a></p>
+<p>Om du vill installera ett specifikt paket som till exempel design skriv:</p>
+
+                <div
+                    id="example-183eea"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm  install --save-dev @fkui/design
+</code></pre>
+                </div>
+            <h2 id="kommandon"><a class="header-anchor" href="#kommandon">Kommandon</a></h2><h3 id="installation--1"><a class="header-anchor" href="#installation--1">Installation</a></h3><p>För att ladda ner beroenden kör:</p>
+
+                <div
+                    id="example-c34c1d"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm install
+</code></pre>
+                </div>
+            <p>Efter att du har laddat ner beroenden behöver du bygga dem, se kommando nedan.</p>
+<h3 id="bygga"><a class="header-anchor" href="#bygga">Bygga</a></h3><p>Du bygger alla paket genom:</p>
+
+                <div
+                    id="example-60ed61"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm run build
+</code></pre>
+                </div>
+            <p>För att köra webbplatsen för dokumentationen behöver du först bygga den:</p>
+
+                <div
+                    id="example-208884"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm run build:docs
+</code></pre>
+                </div>
+            <h3 id="kora_run"><a class="header-anchor" href="#kora_run">Köra (Run)</a></h3><p>För att starta dokumentationen skriver du:</p>
+
+                <div
+                    id="example-761ea2"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm run start
+</code></pre>
+                </div>
+            <p>För att starta vue-paketet med Vite utvecklingsserver:</p>
+
+                <div
+                    id="example-b86ffd"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm run vue start
+</code></pre>
+                </div>
+            <h3 id="testning"><a class="header-anchor" href="#testning">Testning</a></h3><p>Du kör igång hela test-sviten mot alla paket genom att skriva:</p>
+
+                <div
+                    id="example-c0ebd7"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm <span class="hljs-built_in">test</span>
+</code></pre>
+                </div>
+            <p>För att köra cypress-tester behöver du först starta servern med <code>npm start</code> och därefter köra:</p>
+
+                <div
+                    id="example-84d841"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm <span class="hljs-built_in">exec</span> cypress -- open
+</code></pre>
+                </div>
+            <p>För att köra enhetstest för ett paket skriv:</p>
+
+                <div
+                    id="example-4aac8f"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm run unit
+</code></pre>
+                </div>
+            <p>Om du vill köra test i watch mode:</p>
+
+                <div
+                    id="example-208e3a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm run unit:watch
+</code></pre>
+                </div>
+            <h3 id="lintning"><a class="header-anchor" href="#lintning">Lintning</a></h3><p>Du kör all lintning och konfiguration i rot-paketet genom att skriva:</p>
+
+                <div
+                    id="example-24d8b9"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm run lint
+</code></pre>
+                </div>
+            <h3 id="applicera_kodstandard"><a class="header-anchor" href="#applicera_kodstandard">Applicera kodstandard</a></h3><p>Se till att all kod följer kodstandard genom att skriva:</p>
+
+                <div
+                    id="example-3b45d2"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm run prettier:write
+</code></pre>
+                </div>
+            <h3 id="paketering"><a class="header-anchor" href="#paketering">Paketering</a></h3><p>För att paketera allt och lägga de resulterande filerna (tarballs) i dist/-katalogen skriv:</p>
+
+                <div
+                    id="example-744266"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm pack --workspaces --pack-destination dist/
+</code></pre>
+                </div>
+            <h3 id="lankning"><a class="header-anchor" href="#lankning">Länkning</a></h3><p>Länka alla paket (theme-default, logic, design, vue) så att de kan länkas till andra lokala repon genom att skriva:</p>
+
+                <div
+                    id="example-ec5b62"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm run link-all
+</code></pre>
+                </div>
+            <p>Du länkar till andra lokala repon genom att använda npm link {package-name}, till exempel:</p>
+
+                <div
+                    id="example-eb8de5"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">npm <span class="hljs-built_in">link</span> @fkui/vue
+</code></pre>
+                </div>
+            <h3 id="kodstandard"><a class="header-anchor" href="#kodstandard">Kodstandard</a></h3><p>Följ riktlinjerna nedan</p>
+<ul>
+<li>Namnge variabler enligt <a href="https://getbem.com/">BEM:s standard för namn</a>.</li>
+<li>Ta fram exempel för olika komponent-tillstånd.</li>
+<li>Undvid att skapa globala CSS-klasser.</li>
+<li>Använd prefix för komponenter för att underlätta för de konsumenter som kör olika versioner på samma webbplats.</li>
+<li>Sätt prefix <code>.h-</code> för hjälp-klasser.</li>
+<li>Använd <code>rem</code> för storlekar (finns undantag, till exempel när du inte vill att skalning ska utgå från rem-storleken).</li>
+</ul>
+<h3 id="commit"><a class="header-anchor" href="#commit">Commit</a></h3><p>Skriv ditt commit-meddelande enligt standard <a href="https://www.conventionalcommits.org/en/v1.0.0/">conventional commits</a>.</p>
+<p>type [optional scope]: description</p>
+<p>Scope är frivilligt men ska sättas till det paket som ändringen påverkar eller använd en av de generiska typerna av ändring (Type) från tabellen längre ner.</p>
+
+                <div
+                    id="example-d8e4cf"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">git commit -m <span class="hljs-string">&#x27;feat: new component (fixes issue number)&#x27;</span>
+</code></pre>
+                </div>
+            <p>Om inget scope är satt kommer det sättas automatiskt baserat på vilka paket som är påverkade.</p>
+<p>Du kan sätta scope manuellt genom:</p>
+
+                <div
+                    id="example-682bca"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">git commit -m <span class="hljs-string">&#x27;feat(fkui-vue): new component (fixes issue number)&#x27;</span>
+</code></pre>
+                </div>
+            <p>För att sätta multipla scope separerar du dem i en lista med komma:</p>
+
+                <div
+                    id="example-b4cce6"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="bash"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-bash" tabindex="0">git commit -m <span class="hljs-string">&#x27;fix(fkui-design,fkui-vue): update styling (fixes issue number)&#x27;</span>
+</code></pre>
+                </div>
+            <p>Du sätter en release som brytande (BREAKING) genom att lägga till orden <code>BREAKING CHANGE:</code> i sidfoten följt av en beskrivning av vad som har ändrats.
+Du behöver också informera konsumenten hur hen ska hantera ändringen. <br>
+Texten kommer inkluderas i <a href="./CHANGELOG.md">CHANGELOG</a>.
+Du kan också använda ett utropstecken <code>!</code> efter type/scope för att visa att en release är brytande.</p>
+<p>De olika typerna av ändring (Type) som är tillåtna och vilken release som de genererar visas i tabellen nedan.</p>
+<h4 id="typer_av_andring_och_vilken_release_de_generar"><a class="header-anchor" href="#typer_av_andring_och_vilken_release_de_generar">Typer av ändring och vilken release de generar</a></h4><table class="table">
+<thead>
+<tr class="table__row">
+<th class="table__column table__column--text" scope="col">Type</th>
+<th class="table__column table__column--text" scope="col">Description</th>
+<th class="table__column table__column--text" scope="col">Release</th>
+</tr>
+</thead>
+<tbody>
+<tr class="table__row">
+<td class="table__column table__column--text">Breaking</td>
+<td class="table__column table__column--text">A breaking which requires the users attention, <br>usually in the form of code changes.</td>
+<td class="table__column table__column--text">Major</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>feat</code></td>
+<td class="table__column table__column--text">A new feature has been added.</td>
+<td class="table__column table__column--text">Minor</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>fix</code></td>
+<td class="table__column table__column--text">An existing feature has been patched.</td>
+<td class="table__column table__column--text">Patch</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>build</code></td>
+<td class="table__column table__column--text">Changes to build-system/tooling only.</td>
+<td class="table__column table__column--text">-</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>chore</code></td>
+<td class="table__column table__column--text">Other changes not fitting any other description.</td>
+<td class="table__column table__column--text">-</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>ci</code></td>
+<td class="table__column table__column--text">Changes to CI/CD configuration only.</td>
+<td class="table__column table__column--text">-</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>docs</code></td>
+<td class="table__column table__column--text">Documentation changes only</td>
+<td class="table__column table__column--text">-</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>perf</code></td>
+<td class="table__column table__column--text">Performance improvements.</td>
+<td class="table__column table__column--text">Patch</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>refactor</code></td>
+<td class="table__column table__column--text">Code change that neither fixes a bug nor adds a feature.</td>
+<td class="table__column table__column--text">-</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>revert</code></td>
+<td class="table__column table__column--text">Revert an existing commit.</td>
+<td class="table__column table__column--text">Patch</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>style</code></td>
+<td class="table__column table__column--text">Cosmetic changes to source code, e.g. reformatting.</td>
+<td class="table__column table__column--text">-</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>test</code></td>
+<td class="table__column table__column--text">Changes to tests only</td>
+<td class="table__column table__column--text">-</td>
+</tr>
+</tbody>
+</table>
+<h4 id="commit_meddelande_utifran_typ_av_andring"><a class="header-anchor" href="#commit_meddelande_utifran_typ_av_andring">Commit-meddelande utifrån typ av ändring</a></h4><table class="table">
+<thead>
+<tr class="table__row">
+<th class="table__column table__column--text" scope="col">Type</th>
+<th class="table__column table__column--text" scope="col">Scope</th>
+<th class="table__column table__column--text" scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>feat</code></td>
+<td class="table__column table__column--text">Package name</td>
+<td class="table__column table__column--text">Comma-separated list of package names affected by the change. <br>Automatically determined if left out.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>fix</code></td>
+<td class="table__column table__column--text">Package name</td>
+<td class="table__column table__column--text">Above.</td>
+</tr>
+<tr class="table__row">
+<td class="table__column table__column--text"><code>chore</code></td>
+<td class="table__column table__column--text"><code>deps</code></td>
+<td class="table__column table__column--text">Use when updating dependencies only.</td>
+</tr>
+</tbody>
+</table>
+
+
+                    </div>
+                </main>
+            </div>
+
+            <footer>
+                <!-- prettier-ignore --><div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="../about/index.html">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center"></div>
+
+<div class="footer__right">
+    <!-- prettier-ignore -->
+    <div class="version">
+    <!-- prettier-ignore -->
+    <div class="heading--h1">FKDS version 6.1.0</div>
+</div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+
+    <ul>
+        <li><a class="anchor" href="../../changelog.html">Changelog</a></li>
+        <li><a class="anchor" href="../../accessibility.html">Tillgänglighetsredogörelse</a></li>
+        <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
+    </ul>
+</div>
+</footer>
+        </div>
+
+        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div>
+<!-- prettier-ignore -->
+        <dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label"> Sök </label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog>
+
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../assets/processors/motd/index-8c87e1.js"
+            crossorigin
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
+            
+        ></script>
+        <script
+            src="../../assets/processors/selectable-version/select-version-004ae0.js"
+            crossorigin
+            integrity="sha384-7p7yp5B/6hnfSpcM6RQpE7QmYzHtNN2tiNGlUV+SJojwaK3TFPppMyMvb5s9ML+h"
+            
+        ></script>
+        <script
+            src="../../assets/main-a42003.js"
+            crossorigin
+            integrity="sha384-x2SQET46c/KcCVPl9j9im2cY+og5S7eYArRrQQxTLOpOGETP3s9r5bCSxKrnzGbP"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/gettingstarted/contribute-to-fkds/contributing-developers.md
+         Document ID: fs:docs/gettingstarted/contribute-to-fkds/contributing-developers.md
+         Document name: contributing-developers
+         Document alias: 
+
+    -->
+</html>

@@ -1,0 +1,424 @@
+{
+  "terms": [
+    "FKUI Vue Labs",
+    "FTablePageObject",
+    "Kod (tillhör nya tabellkomponenten)",
+    "visa data",
+    "kolumn",
+    "rad",
+    "kolumnrubrik",
+    "radrubrik",
+    "kolumntyper",
+    "Tidsinmatning",
+    "XTimeTextField",
+    "XSortFilterDatasetNg",
+    "XSortFilterDatasetNg",
+    "XFileDragdrop",
+    "XFileDragdrop",
+    "FTable: Kontextmeny",
+    "Tabell",
+    "FTable",
+    "navigera i tabell",
+    "tangentbordsnavigering",
+    "kolumn",
+    "rad",
+    "kolumnrubrik",
+    "radrubrik",
+    "kolumntyper",
+    "Kolumntyper - AI",
+    "FTable",
+    "TableColumn",
+    "radrubrik",
+    "kolumntyper",
+    "Dropplista",
+    "FTable",
+    "Radrubrik",
+    "FTable",
+    "Anpassad",
+    "FTable",
+    "Radioknapp",
+    "FTable",
+    "Kontextmeny",
+    "FTable",
+    "Kryssruta",
+    "FTable",
+    "Knapp",
+    "FTable",
+    "Länk",
+    "FTable",
+    "Textfält",
+    "FTable",
+    "TableColumn",
+    "Postnummer",
+    "FTable",
+    "text:postalCode",
+    "Plusgiro",
+    "FTable",
+    "text:plusgiro",
+    "Telefonnummer",
+    "FTable",
+    "text:phoneNumber",
+    "Personnummer",
+    "FTable",
+    "text:personnummer",
+    "Procent",
+    "FTable",
+    "text:percent",
+    "Organisationsnummer",
+    "FTable",
+    "text:organisationsnummer",
+    "Numeriskt",
+    "FTable",
+    "text:number",
+    "Mejladress",
+    "FTable",
+    "text:email",
+    "Datum",
+    "FTable",
+    "text:date",
+    "Valuta",
+    "FTable",
+    "text:currency",
+    "Clearingnummer",
+    "FTable",
+    "text:clearingNumber",
+    "Bankgiro",
+    "FTable",
+    "text:bankgiro",
+    "Kontonummer",
+    "FTable",
+    "text:bankAccountNumber"
+  ],
+  "results": [
+    {
+      "url": "index.html",
+      "title": "FKUI Vue Labs",
+      "terms": []
+    },
+    {
+      "url": "pageobjects/ftablepageobject.html",
+      "title": "FTablePageObject",
+      "terms": []
+    },
+    {
+      "url": "components/code-table.html",
+      "title": "Kod (tillhör nya tabellkomponenten)",
+      "terms": [
+        "visa data",
+        "kolumn",
+        "rad",
+        "kolumnrubrik",
+        "radrubrik",
+        "kolumntyper"
+      ]
+    },
+    {
+      "url": "components/xtimetextfield.html",
+      "title": "Tidsinmatning",
+      "terms": [
+        "XTimeTextField"
+      ]
+    },
+    {
+      "url": "components/xsortfilterdatasetng.html",
+      "title": "XSortFilterDatasetNg",
+      "terms": [
+        "XSortFilterDatasetNg"
+      ]
+    },
+    {
+      "url": "components/xfiledragdrop.html",
+      "title": "XFileDragdrop",
+      "terms": [
+        "XFileDragdrop"
+      ]
+    },
+    {
+      "url": "components/FTable/contextmenu.html",
+      "title": "FTable: Kontextmeny",
+      "terms": []
+    },
+    {
+      "url": "components/FTable/index.html",
+      "title": "Tabell",
+      "terms": [
+        "navigera i tabell",
+        "tangentbordsnavigering",
+        "kolumn",
+        "rad",
+        "kolumnrubrik",
+        "radrubrik",
+        "kolumntyper",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/ftable-columns.html",
+      "title": "Kolumntyper - AI",
+      "terms": [
+        "radrubrik",
+        "kolumntyper",
+        "FTable",
+        "TableColumn"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/select.html",
+      "title": "Dropplista",
+      "terms": [
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/rowheader.html",
+      "title": "Radrubrik",
+      "terms": [
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/render.html",
+      "title": "Anpassad",
+      "terms": [
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/radio.html",
+      "title": "Radioknapp",
+      "terms": [
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/menu.html",
+      "title": "Kontextmeny",
+      "terms": [
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/checkbox.html",
+      "title": "Kryssruta",
+      "terms": [
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/button.html",
+      "title": "Knapp",
+      "terms": [
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/anchor.html",
+      "title": "Länk",
+      "terms": [
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/index.html",
+      "title": "Textfält",
+      "terms": [
+        "FTable",
+        "TableColumn"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-postal-code.html",
+      "title": "Postnummer",
+      "terms": [
+        "text:postalCode",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-plusgiro.html",
+      "title": "Plusgiro",
+      "terms": [
+        "text:plusgiro",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-phonenumber.html",
+      "title": "Telefonnummer",
+      "terms": [
+        "text:phoneNumber",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-personnummer.html",
+      "title": "Personnummer",
+      "terms": [
+        "text:personnummer",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-percent.html",
+      "title": "Procent",
+      "terms": [
+        "text:percent",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-organisationsnummer.html",
+      "title": "Organisationsnummer",
+      "terms": [
+        "text:organisationsnummer",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-number.html",
+      "title": "Numeriskt",
+      "terms": [
+        "text:number",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-email.html",
+      "title": "Mejladress",
+      "terms": [
+        "text:email",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-date.html",
+      "title": "Datum",
+      "terms": [
+        "text:date",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-currency.html",
+      "title": "Valuta",
+      "terms": [
+        "text:currency",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-clearing-number.html",
+      "title": "Clearingnummer",
+      "terms": [
+        "text:clearingNumber",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-bankgiro.html",
+      "title": "Bankgiro",
+      "terms": [
+        "text:bankgiro",
+        "FTable"
+      ]
+    },
+    {
+      "url": "components/FTable/Kolumntyper/group/Specialiserade/text-bank-account-number.html",
+      "title": "Kontonummer",
+      "terms": [
+        "text:bankAccountNumber",
+        "FTable"
+      ]
+    }
+  ],
+  "mapping": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2,
+    "7": 2,
+    "8": 2,
+    "9": 3,
+    "10": 3,
+    "11": 4,
+    "12": 4,
+    "13": 5,
+    "14": 5,
+    "15": 6,
+    "16": 7,
+    "17": 7,
+    "18": 7,
+    "19": 7,
+    "20": 7,
+    "21": 7,
+    "22": 7,
+    "23": 7,
+    "24": 7,
+    "25": 8,
+    "26": 8,
+    "27": 8,
+    "28": 8,
+    "29": 8,
+    "30": 9,
+    "31": 9,
+    "32": 10,
+    "33": 10,
+    "34": 11,
+    "35": 11,
+    "36": 12,
+    "37": 12,
+    "38": 13,
+    "39": 13,
+    "40": 14,
+    "41": 14,
+    "42": 15,
+    "43": 15,
+    "44": 16,
+    "45": 16,
+    "46": 17,
+    "47": 17,
+    "48": 17,
+    "49": 18,
+    "50": 18,
+    "51": 18,
+    "52": 19,
+    "53": 19,
+    "54": 19,
+    "55": 20,
+    "56": 20,
+    "57": 20,
+    "58": 21,
+    "59": 21,
+    "60": 21,
+    "61": 22,
+    "62": 22,
+    "63": 22,
+    "64": 23,
+    "65": 23,
+    "66": 23,
+    "67": 24,
+    "68": 24,
+    "69": 24,
+    "70": 25,
+    "71": 25,
+    "72": 25,
+    "73": 26,
+    "74": 26,
+    "75": 26,
+    "76": 27,
+    "77": 27,
+    "78": 27,
+    "79": 28,
+    "80": 28,
+    "81": 28,
+    "82": 29,
+    "83": 29,
+    "84": 29,
+    "85": 30,
+    "86": 30,
+    "87": 30
+  }
+}

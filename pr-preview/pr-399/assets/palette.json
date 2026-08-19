@@ -1,0 +1,363 @@
+[
+  {
+    "name": "FK-Black",
+    "variables": [
+      {
+        "name": "fk-black-100",
+        "value": "#1b1e23",
+        "group": "FK-Black",
+        "comment": ""
+      },
+      {
+        "name": "fk-black-70",
+        "value": "#5f6165",
+        "group": "FK-Black",
+        "comment": ""
+      },
+      {
+        "name": "fk-black-50",
+        "value": "#8d8e91",
+        "group": "FK-Black",
+        "comment": ""
+      },
+      {
+        "name": "fk-black-30",
+        "value": "#bbbbbd",
+        "group": "FK-Black",
+        "comment": ""
+      },
+      {
+        "name": "fk-black-15",
+        "value": "#ddddde",
+        "group": "FK-Black",
+        "comment": ""
+      },
+      {
+        "name": "fk-black-5",
+        "value": "#f4f4f4",
+        "group": "FK-Black",
+        "comment": ""
+      },
+      {
+        "name": "white-100",
+        "value": "#ffffff",
+        "group": "FK-Black",
+        "comment": ""
+      }
+    ]
+  },
+  {
+    "name": "Bluebell",
+    "variables": [
+      {
+        "name": "bluebell-120",
+        "value": "#3b4292",
+        "group": "Bluebell",
+        "comment": ""
+      },
+      {
+        "name": "bluebell-100",
+        "value": "#4a52b6",
+        "group": "Bluebell",
+        "comment": ""
+      },
+      {
+        "name": "bluebell-85",
+        "value": "#656cc1",
+        "group": "Bluebell",
+        "comment": ""
+      },
+      {
+        "name": "bluebell-50",
+        "value": "#a4a8db",
+        "group": "Bluebell",
+        "comment": ""
+      },
+      {
+        "name": "bluebell-15",
+        "value": "#e5e5f5",
+        "group": "Bluebell",
+        "comment": ""
+      },
+      {
+        "name": "bluebell-5",
+        "value": "#f5f6fa",
+        "group": "Bluebell",
+        "comment": ""
+      }
+    ]
+  },
+  {
+    "name": "Green A",
+    "variables": [
+      {
+        "name": "green-a-120",
+        "value": "#0e5532",
+        "group": "Green A",
+        "comment": ""
+      },
+      {
+        "name": "green-a-100",
+        "value": "#116a3e",
+        "group": "Green A",
+        "comment": ""
+      },
+      {
+        "name": "green-a-85",
+        "value": "#35805b",
+        "group": "Green A",
+        "comment": ""
+      },
+      {
+        "name": "green-a-50",
+        "value": "#88b49f",
+        "group": "Green A",
+        "comment": ""
+      },
+      {
+        "name": "green-a-15",
+        "value": "#dbe9e2",
+        "group": "Green A",
+        "comment": ""
+      },
+      {
+        "name": "green-a-5",
+        "value": "#f3f8f5",
+        "group": "Green A",
+        "comment": ""
+      }
+    ]
+  },
+  {
+    "name": "Green B",
+    "variables": [
+      {
+        "name": "green-b-120",
+        "value": "#4c7e56",
+        "group": "Green B",
+        "comment": ""
+      },
+      {
+        "name": "green-b-100",
+        "value": "#5f9e6c",
+        "group": "Green B",
+        "comment": ""
+      },
+      {
+        "name": "green-b-85",
+        "value": "#77ad82",
+        "group": "Green B",
+        "comment": ""
+      },
+      {
+        "name": "green-b-50",
+        "value": "#afcfb5",
+        "group": "Green B",
+        "comment": ""
+      },
+      {
+        "name": "green-b-15",
+        "value": "#e7f0e9",
+        "group": "Green B",
+        "comment": ""
+      },
+      {
+        "name": "green-b-5",
+        "value": "#f7faf8",
+        "group": "Green B",
+        "comment": ""
+      }
+    ]
+  },
+  {
+    "name": "Yellow",
+    "variables": [
+      {
+        "name": "yellow-120",
+        "value": "#cc980d",
+        "group": "Yellow",
+        "comment": ""
+      },
+      {
+        "name": "yellow-100",
+        "value": "#ffbe10",
+        "group": "Yellow",
+        "comment": ""
+      },
+      {
+        "name": "yellow-85",
+        "value": "#ffc834",
+        "group": "Yellow",
+        "comment": ""
+      },
+      {
+        "name": "yellow-50",
+        "value": "#ffdf87",
+        "group": "Yellow",
+        "comment": ""
+      },
+      {
+        "name": "yellow-15",
+        "value": "#fff5db",
+        "group": "Yellow",
+        "comment": ""
+      },
+      {
+        "name": "yellow-5",
+        "value": "#fffcf3",
+        "group": "Yellow",
+        "comment": ""
+      }
+    ]
+  },
+  {
+    "name": "Red",
+    "variables": [
+      {
+        "name": "red-120",
+        "value": "#a21111",
+        "group": "Red",
+        "comment": ""
+      },
+      {
+        "name": "red-100",
+        "value": "#ca1515",
+        "group": "Red",
+        "comment": ""
+      },
+      {
+        "name": "red-85",
+        "value": "#d23838",
+        "group": "Red",
+        "comment": ""
+      },
+      {
+        "name": "red-50",
+        "value": "#e48a8a",
+        "group": "Red",
+        "comment": ""
+      },
+      {
+        "name": "red-15",
+        "value": "#f7dcdc",
+        "group": "Red",
+        "comment": ""
+      },
+      {
+        "name": "red-5",
+        "value": "#fcf3f3",
+        "group": "Red",
+        "comment": ""
+      }
+    ]
+  },
+  {
+    "name": "Orange",
+    "variables": [
+      {
+        "name": "orange-120",
+        "value": "#c2700d",
+        "group": "Orange",
+        "comment": ""
+      },
+      {
+        "name": "orange-100",
+        "value": "#f38c10",
+        "group": "Orange",
+        "comment": ""
+      },
+      {
+        "name": "orange-85",
+        "value": "#f59d34",
+        "group": "Orange",
+        "comment": ""
+      },
+      {
+        "name": "orange-50",
+        "value": "#f9c587",
+        "group": "Orange",
+        "comment": ""
+      },
+      {
+        "name": "orange-15",
+        "value": "#ffefdc",
+        "group": "Orange",
+        "comment": ""
+      },
+      {
+        "name": "orange-5",
+        "value": "#fef9f3",
+        "group": "Orange",
+        "comment": ""
+      }
+    ]
+  },
+  {
+    "name": "Tegel",
+    "variables": [
+      {
+        "name": "tegel-100",
+        "value": "#d34503",
+        "group": "Tegel",
+        "comment": ""
+      },
+      {
+        "name": "tegel-15",
+        "value": "#f8e3d9",
+        "group": "Tegel",
+        "comment": ""
+      }
+    ]
+  },
+  {
+    "name": "Plommon",
+    "variables": [
+      {
+        "name": "plommon-100",
+        "value": "#a73a64",
+        "group": "Plommon",
+        "comment": ""
+      },
+      {
+        "name": "plommon-15",
+        "value": "#f2e1e8",
+        "group": "Plommon",
+        "comment": ""
+      }
+    ]
+  },
+  {
+    "name": "Senap",
+    "variables": [
+      {
+        "name": "senap-100",
+        "value": "#ba7918",
+        "group": "Senap",
+        "comment": ""
+      },
+      {
+        "name": "senap-15",
+        "value": "#f5ebdc",
+        "group": "Senap",
+        "comment": ""
+      }
+    ]
+  },
+  {
+    "name": "Hav",
+    "variables": [
+      {
+        "name": "hav-100",
+        "value": "#4c669f",
+        "group": "Hav",
+        "comment": ""
+      },
+      {
+        "name": "hav-15",
+        "value": "#e4e8f1",
+        "group": "Hav",
+        "comment": ""
+      }
+    ]
+  }
+]

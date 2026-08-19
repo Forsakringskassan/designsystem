@@ -1,0 +1,96 @@
+// docs/src/setup.ts
+import { createApp, h } from "vue";
+import {
+  ErrorPlugin,
+  FErrorHandlingApp,
+  TestPlugin,
+  TranslationPlugin,
+  ValidationPlugin,
+  setRunningContext
+} from "@fkui/vue";
+function setup(options) {
+  const { rootComponent, selector } = options;
+  const app = createApp({
+    render() {
+      return h(FErrorHandlingApp, { defaultComponent: rootComponent });
+    }
+  });
+  app.use(ErrorPlugin);
+  app.use(ValidationPlugin);
+  app.use(TestPlugin);
+  app.use(TranslationPlugin);
+  app.mount(selector);
+  setRunningContext(app);
+}
+
+// virtual-entry:virtual:docs/components/FTable/Kolumntyper/examples/text/FTableTextUpdate.vue:FTableTextUpdate-d02421.js
+import { defineComponent as _defineComponent } from "vue";
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue-labs";
+import { createVNode as _createVNode, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+var exampleComponent = /* @__PURE__ */ _defineComponent({
+  __name: "FTableTextUpdate",
+  setup(__props, { expose: __expose }) {
+    __expose();
+    const columns = defineTableColumns([
+      {
+        type: "text",
+        header: "Col",
+        key: "value",
+        update(row, newValue, oldValue) {
+          if (newValue.startsWith("a")) {
+            row.value = newValue;
+            return;
+          }
+          row.value = oldValue;
+        },
+        editable: true
+      }
+    ]);
+    const rows = ref([
+      {
+        value: "apelsin"
+      },
+      {
+        value: "annanas"
+      },
+      {
+        value: "avokado"
+      }
+    ]);
+    const __returned__ = { columns, rows, get FTable() {
+      return FTable;
+    } };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
+  }
+});
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock(), _createElementBlock(
+    _Fragment,
+    null,
+    [
+      _createVNode($setup["FTable"], {
+        columns: $setup.columns,
+        rows: $setup.rows
+      }, null, 8, ["columns", "rows"]),
+      _createElementVNode(
+        "pre",
+        null,
+        " rows: " + _toDisplayString($setup.rows),
+        1
+        /* TEXT */
+      )
+    ],
+    64
+    /* STABLE_FRAGMENT */
+  );
+}
+exampleComponent.render = render;
+setup({
+  rootComponent: exampleComponent,
+  selector: "#example-d02421"
+});
+export {
+  render
+};

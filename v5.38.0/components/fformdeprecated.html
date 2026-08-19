@@ -1,0 +1,2115 @@
+<!doctype html>
+<html lang="sv" class="layout--component" data-root-url="..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Formulär - FK Designsystem</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../assets/docs-6e2086.css"
+            crossorigin
+            integrity="sha384-nFampl5SKsCvDUFVH3sb1sDDV1PrkDTUZEjs0SidmLezvMmeH72NtuBQXQb+osXx"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-exp-3cb848.css"
+            crossorigin
+            integrity="sha384-RIFdezZEyghKBnWGnU8GalsCL/pyORCRQSD/JH9H2VJRldNydpMFVdrliikCHoE5"
+            data-theme="exp" disabled
+        />
+        <link
+            rel="stylesheet"
+            href="../assets/docs-int-b89a7a.css"
+            crossorigin
+            integrity="sha384-GsPRhr7ciVP6tZLZNtu7XqSTyiRF9MKoN27IgzNFOlySwiHbE70mXb4Axk1KsG52"
+            data-theme="int" disabled
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../assets/bootstrap-956ec3.js"
+            crossorigin
+            integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <script>
+    function themeRenderBlocker() {
+        const theme = window.localStorage.getItem("fkds-theme") ?? "exp";
+        const style = Array.from(document.querySelectorAll("[data-theme]"));
+        for (const el of style) {
+            el.disabled = el.dataset.theme !== theme;
+        }
+    }
+
+    themeRenderBlocker();
+</script>
+<script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+
+        <link
+            rel="preload"
+            href="../search-data-fa7e3c.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-O2UYP4IObWuttSo1kpzi3vdV+MgyPOgx3jGIfVm8tCfQC2Zmvbt0m7ytMiT8NHSH"
+            id="search-data"
+        />
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        <div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>
+        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
+        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
+    </p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="button-group">
+        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+
+        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+
+        <div class="layout-wrapper">
+            <header>
+                <!-- prettier-ignore --><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../index.html">
+            <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../index.html"> FK Designsystem </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list">
+        <!-- prettier-ignore -->
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../gettingstarted/"> Kom igång </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="./"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../guides/"> Guider </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../functions/"> Funktioner </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../styles/"> Visuellt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list">
+                    <!-- prettier-ignore -->
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../gettingstarted/"> Kom igång </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="./"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../guides/"> Guider </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../functions/"> Funktioner </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../styles/"> Visuellt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+<div class="toolbar__item">
+    <div class="select-field" style="visibility: hidden">
+        <label for="fkds-theme-select" class="label sr-only"> Tema </label>
+        <div class="select-field__icon-wrapper">
+            <select id="fkds-theme-select" class="select-field__select">
+                <option value="exp">Försäkringskassan</option>
+                <option value="int">FK Hapo</option>
+            </select>
+            <svg focusable="false" class="icon select-field__icon">
+                <use xlink:href="#docs-icon-arrow-down"></use>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function themeSelector() {
+            function getSelectedTheme(key) {
+                return window.localStorage.getItem(key) ?? "exp";
+            }
+
+            function saveSelectedTheme(key, value) {
+                window.localStorage.setItem(key, value);
+            }
+
+            function enableTheme(theme) {
+                const style = Array.from(document.querySelectorAll("[data-theme]"));
+                for (const el of style) {
+                    el.disabled = el.dataset.theme !== theme;
+                }
+            }
+
+            const el = document.querySelector("#fkds-theme-select");
+            const wrapper = /** @type {HTMLElement} */ (el.closest(".select-field"));
+            el.addEventListener("change", () => {
+                const theme = el.value;
+                saveSelectedTheme("fkds-theme", theme);
+                enableTheme(theme);
+            });
+
+            const selected = getSelectedTheme("fkds-theme");
+            enableTheme(selected);
+            el.value = selected;
+
+            wrapper.style.visibility = null;
+        }
+
+        themeSelector();
+    </script>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary">
+                <!-- prettier-ignore -->
+<div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fbadge.html"
+            
+        >
+            Bricka
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./chip.html"
+            
+        >
+            Chip
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fdialoguetree.html"
+            
+        >
+            Dialogträd
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./flabel.html"
+            
+        >
+            Etikett
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Expanderbara ytor</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./expandable/fexpandablepanel.html"
+            
+        >
+            Expanderbar panel
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./expandable/fexpand.html"
+            
+        >
+            Expanderbart innehåll
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./expandable/fexpandableparagraph.html"
+            
+        >
+            Expanderbart stycke
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Filuppladdning</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./file-upload/ffileitem.html"
+            
+        >
+            Filpresentatör
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./file-upload/ffileselector.html"
+            
+        >
+            Filväljare
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fform.html"
+            
+        >
+            Formulär
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Gruppera</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./group/ffieldset.html"
+            
+        >
+            Fältgruppering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./group/"
+            
+        >
+            Komponentgrupp
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./ficon.html"
+            
+        >
+            Ikon
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Inmatning</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./input/ftextfield.html"
+            
+        >
+            Inmatningsfält
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./input/fdatepickerfield.html"
+            
+        >
+            Datumväljare
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./input/fselectfield.html"
+            
+        >
+            Dropplista
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./input/ftextareafield.html"
+            
+        >
+            Flerradigt inmatningsfält
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./input/fcheckboxfield.html"
+            
+        >
+            Kryssruta
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./input/fradiofield.html"
+            
+        >
+            Radioknapp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./input/textfield-specialized.html"
+            
+        >
+            Specialiserade inmatningsfält
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fcalendar.html"
+            
+        >
+            Kalender
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./button.html"
+            
+        >
+            Knapp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fcontextmenu.html"
+            
+        >
+            Kontextmeny
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fcard.html"
+            
+        >
+            Kort
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Ladda innehåll</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./load/fprogressbar.html"
+            
+        >
+            Förloppsindikator
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./load/floader.html"
+            
+        >
+            Laddningsindikator
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Länkar</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./links/anchor.html"
+            
+        >
+            Länk
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./links/entrypoint.html"
+            
+        >
+            Startpunkt
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fmessagebox.html"
+            
+        >
+            Meddelanderuta
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Modal</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./modal/fconfirmmodal.html"
+            
+        >
+            Bekräftelsemodal
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./modal/fformmodal.html"
+            
+        >
+            Formulärsmodal
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./modal/fmodal.html"
+            
+        >
+            Modal dialogruta
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./foffline.html"
+            
+        >
+            Offline
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Presentationsfält</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./presentation/foutputfield.html"
+            
+        >
+            Presentationsfält - dynamiskt
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./presentation/fstaticfield.html"
+            
+        >
+            Presentationsfält - statiskt
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Ramverkskomponenter</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./framework/ianimateexpand.html"
+            
+        >
+            Animerad expandering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./framework/iflexitem.html"
+            
+        >
+            Flex Item
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./framework/iflex.html"
+            
+        >
+            Flexibel positionering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./framework/iskiplink.html"
+            
+        >
+            Gå till innehåll
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./framework/icalendarmonth.html"
+            
+        >
+            Kalendermånad
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./framework/icalendarnavbar.html"
+            
+        >
+            Kalendernavigering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./framework/icalendarmonthgrid.html"
+            
+        >
+            Kalenderrutnät
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./framework/imenu.html"
+            
+        >
+            Meny
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./framework/ipopup.html"
+            
+        >
+            Popup
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./framework/ipopupmenu.html"
+            
+        >
+            Popup-meny
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./framework/ipopuperror.html"
+            
+        >
+            PopupError
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Sidlayout</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./page-layout/application-layout.html"
+            
+        >
+            Applikationslayout
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./page-layout/fnavigationmenu.html"
+            
+        >
+            Navigeringsmeny
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./page-layout/fpageheader.html"
+            
+        >
+            Sidhuvud
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fwizard.html"
+            
+        >
+            Steg för steg-guide
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Tabell och lista</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./table-and-list/table.html"
+            
+        >
+            Tabell
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./table-and-list/flist.html"
+            
+        >
+            Lista
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./table-and-list/fcruddataset.html"
+            
+        >
+            Datamängdredigerare
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./table-and-list/fsortfilterdataset.html"
+            
+        >
+            Datamängdsorterare
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./ftooltip.html"
+            
+        >
+            Tooltip
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Validering</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./validation/ferrorlist.html"
+            
+        >
+            Fellista
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./validation/formatters-and-parsers.html"
+            
+        >
+            Formaterare och parsers
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./validation/validators.html"
+            
+        >
+            Validatorer
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./validation/fvalidationgroup.html"
+            
+        >
+            Validering samlad
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./validation/fvalidationform.html"
+            
+        >
+            Valideringsformulär
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --></ol>
+</nav>
+</div>
+
+
+                <!-- prettier-ignore -->
+                <script
+                    src="../assets/vendor-vue-a2f4e5.js"
+                    crossorigin
+                    integrity="sha384-G0p1/R2lkvkBeu18tmdftl6amM/ogqlPyFs4TbAaHZ6wWDgDjawSdlikX3tImEFu"
+                ></script>
+                <script
+                    src="../assets/vendor-fkui-logic-1193bc.js"
+                    crossorigin
+                    integrity="sha384-UNmhiYi/XVBF/0CUVZ3OrzBhrjxEMOts2MfS8iFwj7DP+u5HC5r8NIJz+MsdQyrL"
+                ></script>
+                <script
+                    src="../assets/vendor-fkui-date-9b7c35.js"
+                    crossorigin
+                    integrity="sha384-XgTn6yWRIVTQ33nFXLN5K2ZaFcovqJYAUXIhhFPsvsyWe3HAizwpv5WRjT6S1vOM"
+                ></script>
+                <script
+                    src="../assets/vendor-fkui-vue-1f14b8.js"
+                    crossorigin
+                    integrity="sha384-qWXAjYPcK2tOu4sl0xLowxEGd/zE0DY/83ZkL/+jVRNhvoYw00njtiSxrLTxhbdf"
+                ></script>
+                <script
+                    src="../assets/vendor-forsakringskassan-docs-live-example-131375.js"
+                    crossorigin
+                    integrity="sha384-nJLPQGIUBkkwVgDY+ToqjpI+vosaIHaIBoTit9uWov/I2yjBNiUgUWlsfRJXelga"
+                ></script>
+
+                <!-- prettier-ignore --><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">Formulär</h1>
+
+                    
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl>
+    <!-- prettier-ignore -->
+    
+    <dt>Komponent</dt>
+    <dd>
+        
+        <code>
+            
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/999e94ae55b1f2388a4be51d7542c2f9c2589c83/packages/vue/src/components/FForm/FForm.vue">FForm</a>
+            
+        </code>
+        ,  
+        <code>
+            
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/999e94ae55b1f2388a4be51d7542c2f9c2589c83/packages/vue/src/components/FForm/FFormStep.vue">FFormStep</a>
+            
+        </code>
+        ,  
+        <code>
+            
+            <a href="https://github.com/Forsakringskassan/designsystem/blob/999e94ae55b1f2388a4be51d7542c2f9c2589c83/packages/vue/src/components/FForm/FFormStepButton.vue">FFormStepButton</a>
+            
+        </code>
+         
+    </dd>
+    
+
+    <!-- prettier-ignore -->
+    
+    <dt>Status</dt>
+    <dd>
+        <div class="badge badge--error">Deprekerad</div>
+    </dd>
+    
+</dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#migreringsguide">Migreringsguide</a></li>
+                                
+                                <li><a href="#dokumentaion">Dokumentaion</a></li>
+                                
+                                <li><a href="#exempel">Exempel</a></li>
+                                
+                                <li><a href="#formularsteg">Formulärsteg</a></li>
+                                
+                                <li><a href="#props_events_slots">Props, Events &amp; Slots</a></li>
+                                
+                                <li><a href="#anvandning_av_komponent">Användning av komponent</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content">
+                        <!-- prettier-ignore -->
+<p><code>FForm</code> är deprekerad.</p>
+<h2 id="migreringsguide"><a class="header-anchor" href="#migreringsguide">Migreringsguide</a></h2><p>Som ersättare till <code>FForm</code> finns <code>FWizard</code> alternativt <code>FValidationForm</code>, val av ersättare beror på applikationens komplexitet och utförande. Det är troligt att applikationen behöver ny design, då komponenterna inte är en direkt ersättare av <code>FForm</code>.</p>
+<p>Se dokumentationen för respektive komponent för att avgöra vad som passar bäst:</p>
+<ul>
+<li><a href="./fwizard.html"><code>FWizard</code></a></li>
+<li><a href="validation/fvalidationform.html"><code>FValidationForm</code></a></li>
+</ul>
+<hr>
+<h2 id="dokumentaion"><a class="header-anchor" href="#dokumentaion">Dokumentaion</a></h2><p>Formulär används för att hålla ihop ett eller flera formulärsteg och/eller fristående komponenter.</p>
+<p>I ett formulär med standardbeteende hanterar endast skicka (<code>submit()</code>) valideringen av alla formulärsteg och inmatningskomponenter.</p>
+<p>Det är <strong>rekommenderat</strong> att använda ett formulär när någon inmatningskomponent har validering.</p>
+<h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2>
+            <div
+                id="example-972401"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="FFormExample"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script defer src="./FFormExample-1c8008.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Exempel-alternativ<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Glöm inte att ladda om sidan om du ändrar alternativen.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Formulär-texter:<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;exampleOptions.errorMessageTitleForm&quot;</span>
+                    <span class="hljs-attr">v-validation.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 100 } }&quot;</span>
+                &gt;</span>
+                    Titel för samlingsfel i Formulär:
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;exampleOptions.errorMessageForm&quot;</span>
+                    <span class="hljs-attr">v-validation.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 100 } }&quot;</span>
+                &gt;</span>
+                    Ledtext för samlingsfel i Formulär:
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;exampleOptions.errorMessageFormStep&quot;</span>
+                    <span class="hljs-attr">v-validation.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 100 } }&quot;</span>
+                &gt;</span>
+                    Ledtext för fellista i Formulärsteg:
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;exampleOptions.dataMissing&quot;</span>
+                    <span class="hljs-attr">v-validation.maxLength</span>=<span class="hljs-string">&quot;{ maxLength: { length: 100 } }&quot;</span>
+                &gt;</span>
+                    Text för när uppgifter/data saknas:
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Formulär-alternativ:<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;form-options-checkbox-group&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Felmeddelandevisning <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-checkbox-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;exampleOptions.displayError&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+                Visa samlingsfel
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-checkbox-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;form-error-scroll-radio-group&quot;</span> <span class="hljs-attr">horizontal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Fokusscroll vid valideringsfel: <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;exampleOptions.errorScroll&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;&#x27;center&#x27;&quot;</span>&gt;</span>
+                Center
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;exampleOptions.errorScroll&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;&#x27;top&#x27;&quot;</span>&gt;</span> Top <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;form-number-of-steps-radio-group&quot;</span> <span class="hljs-attr">horizontal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Antal steg i exempel: <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;exampleOptions.numberOfSteps&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span> 1 <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;exampleOptions.numberOfSteps&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span> 2 <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- ALL KOD OVAN ÄR TILL FÖR EXEMPEL. --&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">hr</span> /&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>🍰 Frukt och sötsaksbidraget<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-form</span>
+            <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fruits-and-sweets-form&quot;</span>
+            <span class="hljs-attr">:display-error</span>=<span class="hljs-string">&quot;exampleOptions.displayError&quot;</span>
+            <span class="hljs-attr">:error-scroll</span>=<span class="hljs-string">&quot;exampleOptions.errorScroll&quot;</span>
+            @<span class="hljs-attr">submit</span>=<span class="hljs-string">&quot;onSubmit&quot;</span>
+        &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">error-message</span>=<span class="hljs-string">&quot;{ slotClass }&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;slotClass&quot;</span>&gt;</span>{{ exampleOptions.errorMessageTitleForm }}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;form-error-message&quot;</span>&gt;</span>{{ exampleOptions.errorMessageForm }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-form-step</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;exampleOptions.numberOfSteps &gt; 0&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;information-form-step&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>=<span class="hljs-string">&quot;{ slotClass, isValid }&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;slotClass&quot;</span>&gt;</span>1. Uppgifter<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;isValid&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> Steget är korrekt ifyllt. <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;exampleOptions.errorMessageFormStep&quot;</span> #<span class="hljs-attr">error-message</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{ exampleOptions.errorMessageFormStep }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ toggleIsOpen, isOpen, isAnyFieldTouched }&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+                        Här fyller du i dina uppgifter som kommer användas som hjälp inför det
+                        slutgiltiga beslutet. Uppgifterna här är generella och används för att få en
+                        uppfattning av dig som sökande.
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">&quot;isOpen&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.firstName&quot;</span>
+                            <span class="hljs-attr">v-validation.required.minLength.maxLength</span>=<span class="hljs-string">&quot;{
+                                minLength: { length: 1 },
+                                maxLength: { length: 40 },
+                            }&quot;</span>
+                        &gt;</span>
+                            Förnamn
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.lastName&quot;</span>
+                            <span class="hljs-attr">v-validation.required.minLength.maxLength</span>=<span class="hljs-string">&quot;{
+                                minLength: { length: 1 },
+                                maxLength: { length: 100 },
+                            }&quot;</span>
+                        &gt;</span>
+                            Efternamn
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-email-text-field</span>
+                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.email&quot;</span>
+                            <span class="hljs-attr">v-validation.required</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-email-text-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-organisationsnummer-text-field</span>
+                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.orgnummer&quot;</span>
+                            <span class="hljs-attr">v-validation.required</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-organisationsnummer-text-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-phone-text-field</span>
+                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.phone&quot;</span>
+                            <span class="hljs-attr">v-validation.required</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-phone-text-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-select-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.age&quot;</span> <span class="hljs-attr">v-validation.required</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Ålder <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">hidden</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Välj ålder...<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;age of 200&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;age&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;age&quot;</span>&gt;</span>
+                                {{ age }}
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-select-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">v-validation.required</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;martial-status-radio-group&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Civiltillstånd <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">tooltip</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-tooltip</span> <span class="hljs-attr">screen-reader-text</span>=<span class="hljs-string">&quot;Läs mer om civiltillstånd&quot;</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>&gt;</span> Civiltillstånd <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">body</span>&gt;</span>
+                                        Avser vilket registrerat civiltillstånd som finns i
+                                        Skatteverkets uppgifter.
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-tooltip</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ indentClass }&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.martialStatus&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;SINGEL&quot;</span>&gt;</span>
+                                    Singel
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.martialStatus&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;SAMBO&quot;</span>&gt;</span>
+                                    Sambo
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.martialStatus&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;GIFT&quot;</span>&gt;</span>
+                                    Gift
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.martialStatus&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;ANNAT&quot;</span>&gt;</span>
+                                    Annat
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span>
+                                    <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;formData.martialStatus === &#x27;ANNAT&#x27;&quot;</span>
+                                    <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;indentClass&quot;</span>
+                                    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;martial-status-other-radio-group&quot;</span>
+                                    @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;onChangeResetMartialStatusOther&quot;</span>
+                                &gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
+                                        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.martialStatusOther&quot;</span>
+                                        <span class="hljs-attr">v-validation.required.minLength.maxLength</span>=<span class="hljs-string">&quot;{
+                                            minLength: { length: 1 },
+                                            maxLength: { length: 100 },
+                                            required: {
+                                                enabled: formData.martialStatus === &#x27;ANNAT&#x27;,
+                                            },
+                                        }&quot;</span>
+                                    &gt;</span>
+                                        Annat
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
+                                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span>
+                                                Fyll i vad &quot;Annat&quot; betyder för dig.
+                                            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-text-field</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span>
+                                    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.martialStatus&quot;</span>
+                                    <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;VILL_INTE_SVARA&quot;</span>
+                                &gt;</span>
+                                    Vill inte svara
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">&quot;!isOpen&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Förnamn <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                    {{ formData.firstName || exampleOptions.dataMissing }}
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Efternamn <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                    {{ formData.lastName || exampleOptions.dataMissing }}
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Mejladress <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                    {{ formData.email || exampleOptions.dataMissing }}
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Organisationsnummer <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                    {{ formData.orgnummer || exampleOptions.dataMissing }}
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Telefonnummer <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                    {{ formData.phone || exampleOptions.dataMissing }}
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Ålder <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                    {{ formData.age || exampleOptions.dataMissing }}
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Civiltillstånd <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                            {{ martialStatusText || exampleOptions.dataMissing }}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-form-step-button</span>
+                        <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;isOpen&quot;</span>
+                        <span class="hljs-attr">:is-any-field-touched</span>=<span class="hljs-string">&quot;isAnyFieldTouched&quot;</span>
+                        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggleIsOpen&quot;</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-form-step-button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-form-step</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">example-kostnad</span>
+                <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(cost, index) in costs&quot;</span>
+                <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;index&quot;</span>
+                <span class="hljs-attr">:form-step-id</span>=<span class="hljs-string">&quot;index&quot;</span>
+                <span class="hljs-attr">:kostnad</span>=<span class="hljs-string">&quot;cost&quot;</span>
+            &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">example-kostnad</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-group__item button--discrete&quot;</span>
+                @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;laggTillContainer&quot;</span>
+            &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plus&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button__icon&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-icon</span>&gt;</span>
+                Lägg till container
+            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-form-step</span>
+                <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;exampleOptions.numberOfSteps &gt; 1&quot;</span>
+                <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;consumption-form-step&quot;</span>
+                <span class="hljs-attr">:has-arrow</span>=<span class="hljs-string">&quot;false&quot;</span>
+                <span class="hljs-attr">is-last-step</span>
+            &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>=<span class="hljs-string">&quot;{ slotClass, isValid }&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;slotClass&quot;</span>&gt;</span>{{ containerTitle }}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;isValid&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> Steget är korrekt ifyllt. <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;exampleOptions.errorMessageFormStep&quot;</span> #<span class="hljs-attr">error-message</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{ exampleOptions.errorMessageFormStep }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ toggleIsOpen, isOpen, isAnyFieldTouched }&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+                        Här fyller du i och gör val om vad för frukter och sötsaker du brukar
+                        konsumera. Med &quot;brukar&quot; så syftar vi på vad du konsumerar under vardagar och
+                        helger när du som vanligt jobbar, studerar eller gör någon annan
+                        sysselsättning på mer än 50 procent. Exkludera vad du konsumerar under
+                        ledighet.
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">&quot;isOpen&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-select-field</span>
+                                    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.fruitsPerWeek&quot;</span>
+                                    <span class="hljs-attr">v-validation.required</span>
+                                &gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Frukt <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span>
+                                            Fyll i antal gånger du konsumerar frukt under en vecka.
+                                        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;number in 100&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;number&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;number&quot;</span>&gt;</span>
+                                        {{ number }} {{ number === 1 ? &quot;gång&quot; : &quot;gånger&quot; }}
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-select-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-6&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">f-select-field</span>
+                                    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.sweetsPerWeek&quot;</span>
+                                    <span class="hljs-attr">v-validation.required</span>
+                                &gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Sötsaker <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span>
+                                            Fyll i antal gånger du konsumerar sötsaker under en
+                                            vecka.
+                                        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;number in 100&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;number&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;number&quot;</span>&gt;</span>
+                                        {{ number }} {{ number === 1 ? &quot;gång&quot; : &quot;gånger&quot; }}
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">f-select-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">v-validation.required</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;consumed-fruits-radio-group&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Vilka frukter brukar du konsumera? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">f-checkbox-field</span>
+                                <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;fruit in renderData.fruits&quot;</span>
+                                <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;fruit.value&quot;</span>
+                                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.consumedFruits&quot;</span>
+                                <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;fruit.value&quot;</span>
+                            &gt;</span>
+                                {{ fruit.text }}
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">f-checkbox-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">v-validation.required</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;consumed-sweets-radio-group&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Vilka sötsaker brukar du konsumera? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">f-checkbox-field</span>
+                                <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;sweet in renderData.sweets&quot;</span>
+                                <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;sweet.value&quot;</span>
+                                <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.consumedSweets&quot;</span>
+                                <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;sweet.value&quot;</span>
+                            &gt;</span>
+                                {{ sweet.text }}
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">f-checkbox-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-textarea-field</span>
+                            <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.consumptionDescription&quot;</span>
+                            <span class="hljs-attr">:maxlength</span>=<span class="hljs-string">&quot;400&quot;</span>
+                            <span class="hljs-attr">:soft-limit</span>=<span class="hljs-string">&quot;150&quot;</span>
+                        &gt;</span>
+                            Beskrivning av konsumption (frivilligt)
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass, discreteDescriptionClass }&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span>
+                                    Fyll i hur du uppfattar din konsumption av frukter och sötsaker.
+                                    Det kan till exempel vara hur den förgyller din vardag eller hur
+                                    det ställer till med problem, förhoppningsvis det förstnämnda.
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;discreteDescriptionClass&quot;</span>&gt;</span>(Max 400 tecken)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-textarea-field</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">&quot;!isOpen&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Frukt konsumption <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                            {{ fruitsPerWeekText || exampleOptions.dataMissing }}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Sötsak konsumption <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                            {{ sweetsPerWeekText || exampleOptions.dataMissing }}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Vilka frukter brukar du konsumera? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                            {{ consumedFruitsText || exampleOptions.dataMissing }}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Vilka sötsaker brukar du konsumera? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                            {{ consumedSweetsText || exampleOptions.dataMissing }}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+
+                        <span class="hljs-tag">&lt;<span class="hljs-name">f-static-field</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Beskrivning av komsuption <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                            {{ formData.consumptionDescription || exampleOptions.dataMissing }}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-static-field</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">f-form-step-button</span>
+                        <span class="hljs-attr">:is-open</span>=<span class="hljs-string">&quot;isOpen&quot;</span>
+                        <span class="hljs-attr">:is-any-field-touched</span>=<span class="hljs-string">&quot;isAnyFieldTouched&quot;</span>
+                        <span class="hljs-attr">additional-screenreader-text</span>=<span class="hljs-string">&quot;steg för konsumption&quot;</span>
+                        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;toggleIsOpen&quot;</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-form-step-button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-form-step</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">v-validation.required</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;signing-checkbox-group&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Underskrift<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-checkbox-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.hasSigned&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+                    Jag bekräftar på heder och samvete att alla uppgifter jag lämnat stämmer och är
+                    korrekt ifyllda.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-checkbox-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item button button--primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>
+                    Signera
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item button button--secondary&quot;</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClickClearFormData&quot;</span>
+                &gt;</span>
+                    Rensa formulärdata
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-form</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FCheckboxField</span>,
+    <span class="hljs-title class_">FEmailTextField</span>,
+    <span class="hljs-title class_">FForm</span>,
+    <span class="hljs-title class_">FFormStep</span>,
+    <span class="hljs-title class_">FFormStepButton</span>,
+    <span class="hljs-title class_">FIcon</span>,
+    <span class="hljs-title class_">FOrganisationsnummerTextField</span>,
+    <span class="hljs-title class_">FPhoneTextField</span>,
+    <span class="hljs-title class_">FFieldset</span>,
+    <span class="hljs-title class_">FRadioField</span>,
+    <span class="hljs-title class_">FSelectField</span>,
+    <span class="hljs-title class_">FStaticField</span>,
+    <span class="hljs-title class_">FTextField</span>,
+    <span class="hljs-title class_">FTextareaField</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">ExampleKostnad</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./ExampleKostnad.vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">EXAMPLE_OPTIONS_KEY</span> = <span class="hljs-string">&quot;FKUI_VUE_FORM_OPTIONS_EXAMPLE&quot;</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">FORM_DATA_KEY</span> = <span class="hljs-string">&quot;FKUI_VUE_FORM_DATA_EXAMPLE&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FFormExample&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FCheckboxField</span>,
+        <span class="hljs-title class_">FForm</span>,
+        <span class="hljs-title class_">FFormStep</span>,
+        <span class="hljs-title class_">FFormStepButton</span>,
+        <span class="hljs-title class_">FFieldset</span>,
+        <span class="hljs-title class_">FIcon</span>,
+        <span class="hljs-title class_">FRadioField</span>,
+        <span class="hljs-title class_">FSelectField</span>,
+        <span class="hljs-title class_">FStaticField</span>,
+        <span class="hljs-title class_">FTextareaField</span>,
+        <span class="hljs-title class_">FTextField</span>,
+        <span class="hljs-title class_">FEmailTextField</span>,
+        <span class="hljs-title class_">FOrganisationsnummerTextField</span>,
+        <span class="hljs-title class_">FPhoneTextField</span>,
+        <span class="hljs-title class_">ExampleKostnad</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">costs</span>: [],
+            <span class="hljs-attr">exampleOptions</span>: {
+                <span class="hljs-attr">errorMessageTitleForm</span>: <span class="hljs-string">&quot;Innan du går vidare...&quot;</span>,
+                <span class="hljs-attr">errorMessageForm</span>: <span class="hljs-string">&quot;Du har några fel, glöm inte att titta i följande steg:&quot;</span>,
+                <span class="hljs-attr">errorMessageFormStep</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">displayError</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">errorScroll</span>: <span class="hljs-string">&quot;center&quot;</span>,
+                <span class="hljs-attr">numberOfSteps</span>: <span class="hljs-number">2</span>,
+                <span class="hljs-attr">dataMissing</span>: <span class="hljs-string">&quot;Information saknas.&quot;</span>,
+            },
+
+            <span class="hljs-attr">renderData</span>: {
+                <span class="hljs-attr">fruits</span>: [
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;BANAN&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Banan 🍌&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ÄPPLE&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Äpple 🍏&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;MANDARIN&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Mandarin 🍊&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANANAS&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Ananas 🍍&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;VATTENMELON&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Vattenmelon 🍉&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANDRA_FRUKTER&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Andra frukter&quot;</span> },
+                ],
+                <span class="hljs-attr">sweets</span>: [
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;CHOKLAD&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Choklad 🍫&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;MUNK&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Munk 🍩&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;MJUKGLASS&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Mjukglass 🍦&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;KAKA&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Kaka 🍪&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;LÖSGODIS&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Lösgodis 🍬&quot;</span> },
+                    { <span class="hljs-attr">value</span>: <span class="hljs-string">&quot;ANDRA_SÖTSAKER&quot;</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Andra sötsaker&quot;</span> },
+                ],
+            },
+
+            <span class="hljs-attr">formData</span>: {
+                <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">email</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">orgnummer</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">phone</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">age</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">martialStatus</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">martialStatusOther</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">fruitsPerWeek</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">sweetsPerWeek</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">consumedFruits</span>: [],
+                <span class="hljs-attr">consumedSweets</span>: [],
+                <span class="hljs-attr">consumptionDescription</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">hasSigned</span>: <span class="hljs-literal">false</span>,
+            },
+        };
+    },
+    <span class="hljs-attr">computed</span>: {
+        <span class="hljs-title function_">containerTitle</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.costs.length + <span class="hljs-number">2</span>}</span>. Konsumtion`</span>;
+        },
+        <span class="hljs-title function_">martialStatusText</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">const</span> martialStatuses = {
+                <span class="hljs-attr">SINGEL</span>: <span class="hljs-string">&quot;Singel&quot;</span>,
+                <span class="hljs-attr">SAMBO</span>: <span class="hljs-string">&quot;Sambo&quot;</span>,
+                <span class="hljs-attr">GIFT</span>: <span class="hljs-string">&quot;Gift&quot;</span>,
+                <span class="hljs-attr">ANNAT</span>: <span class="hljs-string">`Annat, <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.formData.martialStatusOther}</span>`</span>,
+                <span class="hljs-attr">VILL_INTE_SVARA</span>: <span class="hljs-string">&quot;Vill inte svara&quot;</span>,
+            };
+            <span class="hljs-keyword">return</span> martialStatuses[<span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">martialStatus</span>];
+        },
+        <span class="hljs-title function_">fruitsPerWeekText</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">const</span> suffix = <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">fruitsPerWeek</span> === <span class="hljs-number">1</span> ? <span class="hljs-string">&quot;gång&quot;</span> : <span class="hljs-string">&quot;gånger&quot;</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">fruitsPerWeek</span>
+                ? <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.formData.fruitsPerWeek}</span> <span class="hljs-subst">${suffix}</span>`</span>
+                : <span class="hljs-literal">undefined</span>;
+        },
+        <span class="hljs-title function_">sweetsPerWeekText</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">const</span> suffix = <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">sweetsPerWeek</span> === <span class="hljs-number">1</span> ? <span class="hljs-string">&quot;gång&quot;</span> : <span class="hljs-string">&quot;gånger&quot;</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">sweetsPerWeek</span>
+                ? <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.formData.sweetsPerWeek}</span> <span class="hljs-subst">${suffix}</span>`</span>
+                : <span class="hljs-literal">undefined</span>;
+        },
+        <span class="hljs-title function_">consumedFruitsText</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">consumedFruits</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>
+                ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">renderData</span>.<span class="hljs-property">fruits</span>
+                      .<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">fruit</span>) =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">consumedFruits</span>.<span class="hljs-title function_">includes</span>(fruit.<span class="hljs-property">value</span>))
+                      .<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">fruit</span>) =&gt;</span> fruit.<span class="hljs-property">text</span>)
+                      .<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;, &quot;</span>)
+                : <span class="hljs-literal">undefined</span>;
+        },
+        <span class="hljs-title function_">consumedSweetsText</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">consumedSweets</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>
+                ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">renderData</span>.<span class="hljs-property">sweets</span>
+                      .<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">sweet</span>) =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">consumedSweets</span>.<span class="hljs-title function_">includes</span>(sweet.<span class="hljs-property">value</span>))
+                      .<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">sweet</span>) =&gt;</span> sweet.<span class="hljs-property">text</span>)
+                      .<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;, &quot;</span>)
+                : <span class="hljs-literal">undefined</span>;
+        },
+    },
+    <span class="hljs-attr">watch</span>: {
+        <span class="hljs-attr">exampleOptions</span>: {
+            <span class="hljs-attr">deep</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-title function_">handler</span>(<span class="hljs-params"></span>) {
+                <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-variable constant_">EXAMPLE_OPTIONS_KEY</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">exampleOptions</span>));
+            },
+        },
+        <span class="hljs-attr">formData</span>: {
+            <span class="hljs-attr">deep</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-title function_">handler</span>(<span class="hljs-params"></span>) {
+                <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-variable constant_">FORM_DATA_KEY</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>));
+            },
+        },
+    },
+    <span class="hljs-title function_">created</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">const</span> exampleOptions = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-variable constant_">EXAMPLE_OPTIONS_KEY</span>);
+        <span class="hljs-keyword">if</span> (exampleOptions) {
+            <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">exampleOptions</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(exampleOptions));
+        }
+        <span class="hljs-keyword">const</span> formData = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-variable constant_">FORM_DATA_KEY</span>);
+        <span class="hljs-keyword">if</span> (formData) {
+            <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(formData));
+        }
+    },
+    <span class="hljs-attr">methods</span>: {
+        <span class="hljs-title function_">laggTillContainer</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">costs</span>.<span class="hljs-title function_">push</span>({
+                <span class="hljs-attr">kostnad</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">belopp</span>: <span class="hljs-literal">undefined</span>,
+                <span class="hljs-attr">beskrivning</span>: <span class="hljs-string">&quot;&quot;</span>,
+            });
+        },
+        <span class="hljs-title function_">onChangeResetMartialStatusOther</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">martialStatus</span> !== <span class="hljs-string">&quot;ANNAT&quot;</span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">martialStatusOther</span> = <span class="hljs-string">&quot;&quot;</span>;
+            }
+        },
+        <span class="hljs-title function_">onSubmit</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Du skickade in formuläret. Varsågod och ta en 🍪!&quot;</span>);
+        },
+        <span class="hljs-title function_">onClickClearFormData</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span> = {
+                <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">age</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">martialStatus</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">martialStatusOther</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">fruitsPerWeek</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">sweetsPerWeek</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">consumedFruits</span>: [],
+                <span class="hljs-attr">consumedSweets</span>: [],
+                <span class="hljs-attr">consumptionDescription</span>: <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">hasSigned</span>: <span class="hljs-literal">false</span>,
+            };
+            <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-title function_">reload</span>();
+        },
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="formularsteg"><a class="header-anchor" href="#formularsteg">Formulärsteg</a></h2><p>I ett formulärsteg så lämnas ansvaret över till applikationskoden om vad som ska hända, i.e. om formulärsteget ska vara öppet eller stängt, vilket innehåll som ska visas med mera.</p>
+<p>För att formulärsteget ska kunna sköta felhantering, validering och progress så krävs följande:</p>
+<h3 id="ta_bort_inmatningskomponenter_helt"><a class="header-anchor" href="#ta_bort_inmatningskomponenter_helt">Ta bort inmatningskomponenter helt</a></h3><p>Ibland finns det behov att ta bort enskilda inmatningskomponenter från GUI:t, vanligtvis för att dessa enbart skall räknas med ifall vissa vilkor uppfylls.
+T.ex. ifall kunden arbetat mer än 5 dagar så skall ett extra inmatningskomponenter för total inkomst visas och måste fyllas i.</p>
+<p>I dessa fall använd alltid <code>v-if</code> på dessa inmatningskomponenter, t.ex FTextField, FFieldset och FCheckboxField.
+Detta beror på att inmatningfälten i dessa fall måste försvinna helt från DOM:en. Annars kommer dessa att räknas med i felhantering, validering och progress.</p>
+<h3 id="dolja_formularsteg_med_inmatningskomponenter"><a class="header-anchor" href="#dolja_formularsteg_med_inmatningskomponenter">Dölja formulärsteg med inmatningskomponenter</a></h3><p>Det är väldigt vanligt att vi vill kunna stänga/öppna en formulärsteg, dvs. bara dölja inmatningskomponenteren i formulärsteget.
+I dessa fall skall <code>v-show</code> användas på wrapper elementet, dvs. element som innehåller inmatningskomponenter.</p>
+<p>Detta är på grund av att inmatningskomponenter ska räknas med oavsett om deras formulärsteg är stängd eller öppen i felhantering, validering och progress.
+Det vanligaste sättet att lösa detta är att lägga inmatningskomponenter innanför:</p>
+
+                <div
+                    id="example-a469fd"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="jsx"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-jsx" tabindex="0"><span class="hljs-keyword">let</span> isOpen = <span class="hljs-literal">true</span>;
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">&quot;isOpen&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+</code></pre>
+                </div>
+            <h3 id="avaktivera_lankarna_i_fellistan"><a class="header-anchor" href="#avaktivera_lankarna_i_fellistan">Avaktivera länkarna i fellistan</a></h3><p>Ibland kan det behövas att avaktivera länkarna i FErrorList för att förhindra att länkarna öppnar ett steg som man vill hålla stängt.
+Då kan man använda propen <code>disable-error-link</code> för att göra om länkarna till text.</p>
+
+                <div
+                    id="example-b8fe00"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-form-step
+<span class="hljs-addition">+    disable-error-links</span>
+ &gt;&lt;/f-form-step&gt;
+</code></pre>
+                </div>
+            <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fform"><a class="header-anchor" href="#fform">FForm</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>id</p>
+</td><td><p>The id for the form id attribute.<br>
+If the prop is not set a random value will be generated.</p>
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
+</td></tr><tr><td><p>displayError</p>
+</td><td><p>If the error-message slot and the invalid elements list<br>
+should be displayed.</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>true</p>
+</td></tr><tr><td><p>errorScroll</p>
+</td><td><p>If invalid fields at submit this tells how the scroll to the error<br>
+field should occur. The default, &quot;center&quot;, centres the error information<br>
+vertically. Allowed value is also &quot;top&quot; which scrolls such that the error<br>
+informations top is at the top of the viewport.</p>
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>&quot;center&quot;</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>error-message</p>
+</td><td><p>Slot for displaying error description.</p>
+</td><td><p>slotClass</p>
+</td></tr><tr><td><p>default</p>
+</td><td><p>Slot for displaying content, e.g. input elements and form steps.</p>
+</td><td><p>‐</p>
+</td></tr></tbody></table></div><h3 id="fformstep"><a class="header-anchor" href="#fformstep">FFormStep</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>id</p>
+</td><td><p>The id for the root div id attribute.<br>
+If the prop is not set a random value will be generated.</p>
+</td><td><p>string</p>
+</td><td><p>true</p>
+</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
+</td></tr><tr><td><p>hasArrow</p>
+</td><td><p>If the form step should have a bottom arrow.<br>
+It is recommended to remove the arrow for the last step with <code>:has-arrow=&quot;false&quot;</code>.</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>true</p>
+</td></tr><tr><td><p>isLastStep</p>
+</td><td><p>If the form step is the last step.<br>
+If set to true the form step will have a bigger bottom margin.</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>false</p>
+</td></tr><tr><td><p>disableErrorLinks</p>
+</td><td><p>If error links should be disabled, <code>:disable-error-links=&quot;true&quot;</code>..<br>
+If <code>true</code>, errors will be displayed as text instead.</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>false</p>
+</td></tr></tbody></table></div><div class="docs-table"><table><caption>Slots</caption><thead><tr><th>Name</th><th>Description</th><th>Bindings</th></tr></thead><tbody><tr><td><p>header</p>
+</td><td><p>‐</p>
+</td><td><p>slotClass<br>
+toggleIsOpen<br>
+v-bind</p>
+</td></tr><tr><td><p>error-message</p>
+</td><td><p>Slot for displaying error description.</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>default</p>
+</td><td><p>‐</p>
+</td><td><p>isSubmitted<br>
+toggleIsOpen<br>
+v-bind</p>
+</td></tr></tbody></table></div><h3 id="fformstepbutton"><a class="header-anchor" href="#fformstepbutton">FFormStepButton</a></h3><div class="docs-table"><table><caption>Props</caption><thead><tr><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody><tr><td><p>id</p>
+</td><td><p>If the id is not set a random value will be generated.</p>
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>() =&gt; ElementIdService.generateElementId()</p>
+</td></tr><tr><td><p>isOpen</p>
+</td><td><p>‐</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>isAnyFieldTouched</p>
+</td><td><p>‐</p>
+</td><td><p>boolean</p>
+</td><td><p>false</p>
+</td><td><p>‐</p>
+</td></tr><tr><td><p>additionalScreenreaderText</p>
+</td><td><p>‐</p>
+</td><td><p>string</p>
+</td><td><p>false</p>
+</td><td><p>&quot;&quot;</p>
+</td></tr></tbody></table></div><h2 id="anvandning_av_komponent"><a class="header-anchor" href="#anvandning_av_komponent">Användning av komponent</a></h2><p><strong>Komponent motsvarar följande HTML element:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">form</a></p>
+
+
+                    </div>
+                </main>
+            </div>
+
+            <footer>
+                <!-- prettier-ignore --><div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="../gettingstarted/about/index.html">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center"></div>
+
+<div class="footer__right">
+    <!-- prettier-ignore -->
+    <div class="version">
+    <!-- prettier-ignore -->
+    <div class="heading--h1">FKDS version 5.38.0</div>
+</div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+
+    <ul>
+        <li><a class="anchor" href="../changelog.html">Changelog</a></li>
+        <li><a class="anchor" href="../accessibility.html">Tillgänglighetsredogörelse</a></li>
+        <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
+    </ul>
+</div>
+</footer>
+        </div>
+
+        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div>
+<!-- prettier-ignore -->
+        <dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label"> Sök </label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog>
+
+
+        <!-- prettier-ignore -->
+        <script
+            src="../assets/processors/selectable-version/select-version-42b338.js"
+            crossorigin
+            integrity="sha384-9teClDZoUmFqd4Uy9zGlWIwizRBX8jp3Tuvbf8GCf6jj1pTG5nVxJGQ/gOCfOsnK"
+            
+        ></script>
+        <script
+            src="../assets/main-8b3997.js"
+            crossorigin
+            integrity="sha384-tMUsZzOmoZSz2qWzoCwYEHpbl3EEWosdUVGhRQ8XHBCBoP4QIjodcfAg2qFXy/NO"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/components/FFormDeprecated.md
+         Document ID: fs:docs/components/FFormDeprecated.md
+         Document name: FFormDeprecated
+         Document alias: component:FForm, component:FFormStep, component:FFormStepButton
+
+    -->
+</html>

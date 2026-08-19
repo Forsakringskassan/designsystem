@@ -1,0 +1,1600 @@
+<!doctype html>
+<html lang="sv" class="layout--article" data-root-url="../../../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>FLabelPageObject: FLabelPageObject() constructor - FK Designsystem</title><link
+            rel="stylesheet"
+            href="../../../../assets/docs-86c5e4.css"
+            crossorigin
+            integrity="sha384-AmvzMyheqWez6bNEen1Xg9cHcAlGGQhllgUOSNnrOb4VtNsuVqci2lu4/MMhaMe5"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../../../assets/docs-fkui-ec7d63.css"
+            crossorigin
+            integrity="sha384-0uebXW3LYLMKttDhGsVuOyaM3wwefRa31iELbGpIUJ/hotD4wjzC4yVl9zX1u5JU"
+            data-theme="fkui" disabled
+        />
+
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../../../../assets/vendor-vue-fd7b76.js",
+    "@fkui/logic": "../../../../assets/vendor-fkui-logic-93a394.js",
+    "@fkui/date": "../../../../assets/vendor-fkui-date-0c3a2b.js",
+    "@fkui/vue": "../../../../assets/vendor-fkui-vue-b51d64.js",
+    "@forsakringskassan/docs-live-example": "../../../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
+  },
+  "integrity": {
+    "../../../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../../../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
+    "../../../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
+    "../../../../assets/vendor-fkui-vue-b51d64.js": "sha384-nUYNoQYu0v2tk/LuIYE+rPBLiKSniQ25k1zIZzZCyhgPYrWVqM8f4O+dw8kwhxJY",
+    "../../../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
+  }
+}
+        </script><script
+            src="../../../../assets/bootstrap-5b0e6e.js"
+            
+            crossorigin
+            integrity="sha384-kGP2A4LFI4CNwztBKqOla524cwTlhYuNFsx/6foX7fdioP3nxHwqF6vcvJFMia/Q"
+            
+        ></script><script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+
+        <link
+            rel="preload"
+            href="../../../../search-data-fe1c9a.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-ljsS2ZPeamszOp7nzKuFNKOOmPR6aRHer5nNHMWrueLuOPrpksaAvzmoCd7OQ6e3"
+            id="search-data"
+        />
+    </head>
+    <body><template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>
+        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
+        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
+    </p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="button-group">
+        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+
+        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+
+        <div class="layout-wrapper">
+            <header><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../../../../index.html">
+            <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../../../../index.html"> FK Designsystem </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../../gettingstarted/"> Kom igång </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../../components/"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../../guides/"> Guider </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="../../../"> Funktioner </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../../../styles/"> Visuellt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../../../gettingstarted/"> Kom igång </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../../../components/"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../../../guides/"> Guider </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../../"> Funktioner </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../../../styles/"> Visuellt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary"><div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol><li class="expandable active">
+        <details open>
+            <summary>Cypress</summary>
+            
+            
+<ol><li class="expandable active">
+        <details open>
+            <summary>Pageobject</summary>
+            
+            
+<ol><li class="expandable ">
+        <details >
+            <summary>FBadgePageObject()</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../FBadgePageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FBadgePageObject/"
+            
+        >
+            FBadgePageObject()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FBadgePageObject/is-inverted.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FBadgePageObject/is-inverted.html"
+            
+        >
+            inverted()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FBadgePageObject/status.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FBadgePageObject/status.html"
+            
+        >
+            status()
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>FDetailsPanelPageObject()</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../FDetailsPanelPageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDetailsPanelPageObject/"
+            
+        >
+            FDetailsPanelPageObject()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FDetailsPanelPageObject/close-button.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html"
+            
+        >
+            closeButton()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FDetailsPanelPageObject/content.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDetailsPanelPageObject/content.html"
+            
+        >
+            content()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FDetailsPanelPageObject/el.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDetailsPanelPageObject/el.html"
+            
+        >
+            el()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FDetailsPanelPageObject/footer.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDetailsPanelPageObject/footer.html"
+            
+        >
+            footer()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FDetailsPanelPageObject/header.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FDetailsPanelPageObject/header.html"
+            
+        >
+            header()
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>FFileItemPageObject()</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../FFileItemPageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FFileItemPageObject/"
+            
+        >
+            FFileItemPageObject()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FFileItemPageObject/filename.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FFileItemPageObject/filename.html"
+            
+        >
+            fileName()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FFileItemPageObject/typeoffile.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html"
+            
+        >
+            typeOfFile()
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>FProgressbarPageObject</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../FProgressbarPageObject/"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FProgressbarPageObject/"
+            
+        >
+            FProgressbarPageObject
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FProgressbarPageObject/el.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FProgressbarPageObject/el.html"
+            
+        >
+            el()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FProgressbarPageObject/progress-status.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FProgressbarPageObject/progress-status.html"
+            
+        >
+            progressStatus()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FProgressbarPageObject/value.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FProgressbarPageObject/value.html"
+            
+        >
+            value()
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>FInteractiveTablePageObject</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../FInteractiveTablePageObject/cell.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html"
+            
+        >
+            cell()
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable active">
+        <details open>
+            <summary>FLabelPageObject</summary>
+            
+            
+<ol><li class="link active">
+        <a
+            href="./"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/"
+            
+        >
+            FLabelPageObject()
+        </a>
+    </li><li class="link ">
+        <a
+            href="./description.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/description.html"
+            
+        >
+            description()
+        </a>
+    </li><li class="link ">
+        <a
+            href="./error-icon.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/error-icon.html"
+            
+        >
+            errorIcon()
+        </a>
+    </li><li class="link ">
+        <a
+            href="./error-message.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/error-message.html"
+            
+        >
+            errorMessage()
+        </a>
+    </li><li class="link ">
+        <a
+            href="./format-description.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FLabelPageObject/format-description.html"
+            
+        >
+            formatDescription()
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>FMinimizablePanel</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../FMinimizablePanel/fminimizablepanelpageobject.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject.html"
+            
+        >
+            FMinimizablePanelPageObject()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FMinimizablePanel/fminimizablepanelpageobject-content.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-content.html"
+            
+        >
+            content()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FMinimizablePanel/fminimizablepanelpageobject-el.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-el.html"
+            
+        >
+            el()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FMinimizablePanel/fminimizablepanelpageobject-footer.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-footer.html"
+            
+        >
+            footer()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FMinimizablePanel/fminimizablepanelpageobject-header.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-header.html"
+            
+        >
+            header()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FMinimizablePanel/fminimizablepanelpageobject-toggle-button.html"
+            
+        >
+            toggleButton()
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li></ol>
+
+            
+        </details>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../../../../date/"
+            
+            target="_blank"
+            rel="external"
+            
+            
+            data-path="date/"
+            
+            
+        >
+            Datum-paket
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Funktioner</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../../../functions/dispatch-component-validity-event.html"
+            
+            
+            
+            data-path="functions/functions/dispatch-component-validity-event.html"
+            
+        >
+            dispatchComponentValidityEvent
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>DOM-funktioner</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../../../functions/dom-functions/find-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/find-element-from-vue-ref.html"
+            
+        >
+            findElementFromVueRef
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/find-html-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/find-html-element-from-vue-ref.html"
+            
+        >
+            findHTMLElementFromVueRef
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/find-parent-by-name.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/find-parent-by-name.html"
+            
+        >
+            findParentByName
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/focus.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/focus.html"
+            
+        >
+            focus
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/get-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-element-from-vue-ref.html"
+            
+        >
+            getElementFromVueRef
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/get-elements-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-elements-from-vue-ref.html"
+            
+        >
+            getElementsFromVueRef
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/get-html-element-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-html-element-from-vue-ref.html"
+            
+        >
+            getHTMLElementFromVueRef
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/get-html-elements-from-vue-ref.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-html-elements-from-vue-ref.html"
+            
+        >
+            getHTMLElementsFromVueRef
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/get-input-element.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-input-element.html"
+            
+        >
+            getInputElement
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/get-parent-by-name.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/get-parent-by-name.html"
+            
+        >
+            getParentByName
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/has-parent-by-name.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/has-parent-by-name.html"
+            
+        >
+            hasParentByName
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/has-slot.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/has-slot.html"
+            
+        >
+            hasSlot()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/ref-is-element.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-element.html"
+            
+        >
+            refIsElement
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/ref-is-element-array.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-element-array.html"
+            
+        >
+            refIsElementArray
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/ref-is-html-element-array.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-html-element-array.html"
+            
+        >
+            refIsHTMLElementArray
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/ref-is-vue.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-vue.html"
+            
+        >
+            refIsVue
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/dom-functions/ref-is-vue-array.html"
+            
+            
+            
+            data-path="functions/functions/dom-functions/ref-is-vue-array.html"
+            
+        >
+            refIsVueArray
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../../../functions/handle-keyboard-focus-navigation.html"
+            
+            
+            
+            data-path="functions/functions/handle-keyboard-focus-navigation.html"
+            
+        >
+            handleKeyboardFocusNavigation
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/include-item.html"
+            
+            
+            
+            data-path="functions/functions/include-item.html"
+            
+        >
+            includeItem
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/item-equals.html"
+            
+            
+            
+            data-path="functions/functions/item-equals.html"
+            
+        >
+            itemEquals
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/maybe-component.html"
+            
+            
+            
+            data-path="functions/functions/maybe-component.html"
+            
+        >
+            MaybeComponent
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Modal funktioner</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../../../functions/modal-functions/confirm-modal.html"
+            
+            
+            
+            data-path="functions/functions/modal-functions/confirm-modal.html"
+            
+        >
+            confirmModal()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/modal-functions/form-modal.html"
+            
+            
+            
+            data-path="functions/functions/modal-functions/form-modal.html"
+            
+        >
+            formModal()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/modal-functions/open-modal.html"
+            
+            
+            
+            data-path="functions/functions/modal-functions/open-modal.html"
+            
+        >
+            openModal
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../../../functions/mount-component.html"
+            
+            
+            
+            data-path="functions/functions/mount-component.html"
+            
+        >
+            mountComponent
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/render-slot-text.html"
+            
+            
+            
+            data-path="functions/functions/render-slot-text.html"
+            
+        >
+            renderSlotText
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/table-scroll.html"
+            
+            
+            
+            data-path="functions/functions/table-scroll.html"
+            
+        >
+            TableScroll
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/table-scroll-classes.html"
+            
+            
+            
+            data-path="functions/functions/table-scroll-classes.html"
+            
+        >
+            tableScrollClasses
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/use-area-data.html"
+            
+            
+            
+            data-path="functions/functions/use-area-data.html"
+            
+        >
+            useAreaData()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/use-details-panel.html"
+            
+            
+            
+            data-path="functions/functions/use-details-panel.html"
+            
+        >
+            useDetailsPanel()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/use-modal.html"
+            
+            
+            
+            data-path="functions/functions/use-modal.html"
+            
+        >
+            useModal()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/use-resize.html"
+            
+            
+            
+            data-path="functions/functions/use-resize.html"
+            
+        >
+            useResize()
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>ValidationErrorMessageBuilder</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../../../functions/ValidationErrorMessageBuilder/build.html"
+            
+            
+            
+            data-path="functions/functions/ValidationErrorMessageBuilder/build.html"
+            
+        >
+            build()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/ValidationErrorMessageBuilder/create.html"
+            
+            
+            
+            data-path="functions/functions/ValidationErrorMessageBuilder/create.html"
+            
+        >
+            create()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/ValidationErrorMessageBuilder/map.html"
+            
+            
+            
+            data-path="functions/functions/ValidationErrorMessageBuilder/map.html"
+            
+        >
+            map()
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../functions/ValidationErrorMessageBuilder/map-combined.html"
+            
+            
+            
+            data-path="functions/functions/ValidationErrorMessageBuilder/map-combined.html"
+            
+        >
+            mapCombined()
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Helpers</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../../../helpers/densify.html"
+            
+            
+            
+            data-path="functions/helpers/densify.html"
+            
+        >
+            densify
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../helpers/"
+            
+            
+            
+            data-path="functions/helpers/"
+            
+        >
+            Hjälpklasser
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../helpers/accessibility.html"
+            
+            
+            
+            data-path="functions/helpers/accessibility.html"
+            
+        >
+            Skärmläsare
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>i18next</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../../../i18next-translate/i18next.html"
+            
+            
+            
+            data-path="functions/i18next-translate/i18next.html"
+            
+        >
+            i18next
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../i18next-translate/i18next-provider.html"
+            
+            
+            
+            data-path="functions/i18next-translate/i18next-provider.html"
+            
+        >
+            i18nextProvider
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../i18next-translate/i18next-provider-interface.html"
+            
+            
+            
+            data-path="functions/i18next-translate/i18next-provider-interface.html"
+            
+        >
+            I18nextProvider
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../../../config.html"
+            
+            
+            
+            data-path="functions/config.html"
+            
+        >
+            Konfiguration
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../../vue-labs/"
+            
+            target="_blank"
+            rel="external"
+            
+            
+            data-path="vue-labs/"
+            
+            
+        >
+            Labs
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../../logic/"
+            
+            target="_blank"
+            rel="external"
+            
+            
+            data-path="logic/"
+            
+            
+        >
+            Logik-paket
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Plugins</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../../../plugins/errorplugin.html"
+            
+            
+            
+            data-path="functions/plugins/errorplugin.html"
+            
+        >
+            Error Plugin
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../plugins/formatplugin.html"
+            
+            
+            
+            data-path="functions/plugins/formatplugin.html"
+            
+        >
+            Format Plugin
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../plugins/testplugin.html"
+            
+            
+            
+            data-path="functions/plugins/testplugin.html"
+            
+        >
+            Test Plugin
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../plugins/translationplugin.html"
+            
+            
+            
+            data-path="functions/plugins/translationplugin.html"
+            
+        >
+            Translation Plugin
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../plugins/validationplugin.html"
+            
+            
+            
+            data-path="functions/plugins/validationplugin.html"
+            
+        >
+            Validation Plugin
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Sass</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../../../sass/focus-indicator.html"
+            
+            
+            
+            data-path="functions/sass/focus-indicator.html"
+            
+        >
+            focus-indicator()
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Services</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../../../services/event-bus.html"
+            
+            
+            
+            data-path="functions/services/event-bus.html"
+            
+        >
+            EventBus
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Testverktyg</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../../../test-utils/"
+            
+            
+            
+            data-path="functions/test-utils/"
+            
+        >
+            Om testverktyg
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../test-utils/lib.html"
+            
+            
+            
+            data-path="functions/test-utils/lib.html"
+            
+        >
+            Generella funktioner
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../test-utils/jest.html"
+            
+            
+            
+            data-path="functions/test-utils/jest.html"
+            
+        >
+            Jest
+        </a>
+    </li><li class="link ">
+        <a
+            href="../../../test-utils/vue.html"
+            
+            
+            
+            data-path="functions/test-utils/vue.html"
+            
+        >
+            Vue.js
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../../../tsconfig.html"
+            
+            
+            
+            data-path="functions/tsconfig.html"
+            
+        >
+            TSConfig
+        </a>
+    </li></ol>
+</nav>
+</div><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">FLabelPageObject: FLabelPageObject() constructor</h1>
+
+                    
+                    <div id="aside"><dl></dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#syntax">Syntax</a></li>
+                                
+                                <li><a href="#exempel">Exempel</a></li>
+                                
+                                <li><a href="#relaterat">Relaterat</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content"><p class="docs-paragraph">Använd <code>FLabelPageObject</code> för att skaffa information relaterat till etikett (<code>label</code>-elementet).</p>
+<p class="docs-paragraph">Komponenten används internt av andra komponenter där en etikett ingår.
+Dessa komponenter brukar därför ha en metod för att nå detta pageobjektet i sina respektive pageobjekt,
+t ex <code>FTextFieldPageObject.label</code>.</p>
+<h2 id="syntax"><a class="header-anchor" href="#syntax">Syntax</a></h2>
+                <div
+                    id="example-289c5c"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile nolint"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">new</span> <span class="hljs-title class_">FLabelPageObject</span>(selector);
+</code></pre>
+                </div>
+            <h3 id="parametrar"><a class="header-anchor" href="#parametrar">Parametrar</a></h3><dl>
+<dt><code>selector: string</code></dt>
+<dd>Selector till <code>FLabel</code> elementet. Du kan med fördel använda <a href="../../../plugins/testplugin.html"><code>v-test</code></a> direktivet för din selector.</dd>
+</dl>
+<h2 id="exempel"><a class="header-anchor" href="#exempel">Exempel</a></h2>
+                <div
+                    id="example-91d6a7"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-label</span> <span class="hljs-attr">v-test</span>=<span class="hljs-string">&quot;&#x27;awesome-label&#x27;&quot;</span>&gt;</span> Etikett <span class="hljs-tag">&lt;/<span class="hljs-name">f-label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-d99ddf"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> awesomeLabel = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FLabelPageObject</span>(<span class="hljs-string">&quot;[data-test=awesome-label]&quot;</span>);
+awesomeLabel.<span class="hljs-title function_">el</span>().<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;Etikett&quot;</span>);</code></pre>
+                </div>
+            <h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
+<li><a href="../../../../components/flabel.html"><code>FLabel</code></a></li>
+<li><a href="../../../plugins/testplugin.html">Test Plugin</a></li>
+</ul>
+
+
+                    </div>
+                </main>
+            </div>
+
+            <footer><div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="../../../../gettingstarted/about/index.html">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center"></div>
+
+<div class="footer__right"><div class="version"><div class="heading--h1">FKDS version 6.7.0</div>
+</div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--tertiary button--tertiary--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+
+    <ul>
+        <li><a class="anchor" href="../../../../changelog.html">Changelog</a></li>
+        <li><a class="anchor" href="../../../../accessibility.html">Tillgänglighetsredogörelse</a></li>
+        <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
+    </ul>
+</div>
+</footer>
+        </div><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div><dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label">Sök</label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog><script
+            src="../../../../assets/processors/motd/index-26ba41.js"
+            type="module"
+            crossorigin
+            integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
+            
+        ></script><script
+            src="../../../../assets/processors/selectable-version/select-version-088264.js"
+            type="module"
+            crossorigin
+            integrity="sha384-L24LuqqDvxkzHPrZZivH0yWBMqrGurxn7ic+D9tYCRsIzQJjoW+ZqoaaFaD9Ib78"
+            
+        ></script><script
+            src="../../../../assets/main-0ec342.js"
+            type="module"
+            crossorigin
+            integrity="sha384-024ARbIkk+36wQRMNqANavYck/wi86OjA7OQfU3szttx8PSUfCLc+u90c5D34iPZ"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject.md
+         Document ID: fs:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject.md
+         Document name: FLabelPageObject
+         Document alias: 
+
+    -->
+</html>

@@ -1,0 +1,102 @@
+{
+  "terms": [
+    "FKUI Vue Labs",
+    "FTablePageObject",
+    "Kod (tillhör nya tabellkomponenten)",
+    "visa data",
+    "kolumn",
+    "rad",
+    "kolumnrubrik",
+    "radrubrik",
+    "kolumntyper",
+    "Tidsinmatning",
+    "XTimeTextField",
+    "XFileDragdrop",
+    "XFileDragdrop",
+    "Tabell",
+    "FTable",
+    "navigera i tabell",
+    "tangentbordsnavigering",
+    "kolumn",
+    "rad",
+    "kolumnrubrik",
+    "radrubrik",
+    "kolumntyper"
+  ],
+  "results": [
+    {
+      "url": "index.html",
+      "title": "FKUI Vue Labs",
+      "terms": []
+    },
+    {
+      "url": "pageobjects/ftablepageobject.html",
+      "title": "FTablePageObject",
+      "terms": []
+    },
+    {
+      "url": "components/code-table.html",
+      "title": "Kod (tillhör nya tabellkomponenten)",
+      "terms": [
+        "visa data",
+        "kolumn",
+        "rad",
+        "kolumnrubrik",
+        "radrubrik",
+        "kolumntyper"
+      ]
+    },
+    {
+      "url": "components/xtimetextfield.html",
+      "title": "Tidsinmatning",
+      "terms": [
+        "XTimeTextField"
+      ]
+    },
+    {
+      "url": "components/xfiledragdrop.html",
+      "title": "XFileDragdrop",
+      "terms": [
+        "XFileDragdrop"
+      ]
+    },
+    {
+      "url": "components/ftable.html",
+      "title": "Tabell",
+      "terms": [
+        "navigera i tabell",
+        "tangentbordsnavigering",
+        "kolumn",
+        "rad",
+        "kolumnrubrik",
+        "radrubrik",
+        "kolumntyper",
+        "FTable"
+      ]
+    }
+  ],
+  "mapping": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2,
+    "7": 2,
+    "8": 2,
+    "9": 3,
+    "10": 3,
+    "11": 4,
+    "12": 4,
+    "13": 5,
+    "14": 5,
+    "15": 5,
+    "16": 5,
+    "17": 5,
+    "18": 5,
+    "19": 5,
+    "20": 5,
+    "21": 5
+  }
+}

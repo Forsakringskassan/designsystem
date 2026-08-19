@@ -1,0 +1,3179 @@
+<!doctype html>
+<html lang="sv" class="layout--component" data-root-url="../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Tabell - FK Designsystem</title><link
+            rel="stylesheet"
+            href="../../assets/docs-86c5e4.css"
+            crossorigin
+            integrity="sha384-AmvzMyheqWez6bNEen1Xg9cHcAlGGQhllgUOSNnrOb4VtNsuVqci2lu4/MMhaMe5"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-fkui-ec7d63.css"
+            crossorigin
+            integrity="sha384-0uebXW3LYLMKttDhGsVuOyaM3wwefRa31iELbGpIUJ/hotD4wjzC4yVl9zX1u5JU"
+            data-theme="fkui" disabled
+        />
+
+        <script type="importmap">
+            {
+  "imports": {
+    "vue": "../../assets/vendor-vue-fd7b76.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-93a394.js",
+    "@fkui/date": "../../assets/vendor-fkui-date-0c3a2b.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-b51d64.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-490176.js"
+  },
+  "integrity": {
+    "../../assets/vendor-vue-fd7b76.js": "sha384-NvjytBDM6edAkgRrARzx6LfjDqTDBD/WkckicB5HpsICtpe7jFFpCwBDcNeU8xTy",
+    "../../assets/vendor-fkui-logic-93a394.js": "sha384-PSKJP4cDX4ZTzrb1qc/DIypEHTIjwH5QlZ9vpFDDIxVWtw3lNwATm4t+BRuU4r6Y",
+    "../../assets/vendor-fkui-date-0c3a2b.js": "sha384-cI2IRKyqWOUC5A8/puNMefgakk6Jr2xD/F0+GkhvOtNU9fIpXCcGqnPBKQjIJeUv",
+    "../../assets/vendor-fkui-vue-b51d64.js": "sha384-nUYNoQYu0v2tk/LuIYE+rPBLiKSniQ25k1zIZzZCyhgPYrWVqM8f4O+dw8kwhxJY",
+    "../../assets/vendor-forsakringskassan-docs-live-example-490176.js": "sha384-/v3n/0H1sIb8t3Tn+eyyHueaZt6RCBTg63XYg6BQGL5dpZPe3bsTaBTch2RtlT0X"
+  }
+}
+        </script><script
+            src="../../assets/bootstrap-5b0e6e.js"
+            
+            crossorigin
+            integrity="sha384-kGP2A4LFI4CNwztBKqOla524cwTlhYuNFsx/6foX7fdioP3nxHwqF6vcvJFMia/Q"
+            
+        ></script><script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+
+        <link
+            rel="preload"
+            href="../../search-data-fe1c9a.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-ljsS2ZPeamszOp7nzKuFNKOOmPR6aRHer5nNHMWrueLuOPrpksaAvzmoCd7OQ6e3"
+            id="search-data"
+        />
+    </head>
+    <body><template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>
+        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
+        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
+    </p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="button-group">
+        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+
+        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+
+        <div class="layout-wrapper">
+            <header><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../../index.html">
+            <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list"><li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../gettingstarted/"> Kom igång </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="../"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../guides/"> Guider </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../functions/"> Funktioner </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../styles/"> Visuellt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list"><li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../gettingstarted/"> Kom igång </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../guides/"> Guider </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../functions/"> Funktioner </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../styles/"> Visuellt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary"><div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol><li class="link ">
+        <a
+            href="../fbadge.html"
+            
+            
+            
+            data-path="components/fbadge.html"
+            
+        >
+            Bricka
+        </a>
+    </li><li class="link ">
+        <a
+            href="../chip.html"
+            
+            
+            
+            data-path="components/chip.html"
+            
+        >
+            Chip
+        </a>
+    </li><li class="link ">
+        <a
+            href="../fdialoguetree.html"
+            
+            
+            
+            data-path="components/fdialoguetree.html"
+            
+        >
+            Dialogträd
+        </a>
+    </li><li class="link ">
+        <a
+            href="../flabel.html"
+            
+            
+            
+            data-path="components/flabel.html"
+            
+        >
+            Etikett
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Expanderbara ytor</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../expandable/fexpandablepanel.html"
+            
+            
+            
+            data-path="components/expandable/fexpandablepanel.html"
+            
+        >
+            Expanderbar panel
+        </a>
+    </li><li class="link ">
+        <a
+            href="../expandable/fexpand.html"
+            
+            
+            
+            data-path="components/expandable/fexpand.html"
+            
+        >
+            Expanderbart innehåll
+        </a>
+    </li><li class="link ">
+        <a
+            href="../expandable/fexpandableparagraph.html"
+            
+            
+            
+            data-path="components/expandable/fexpandableparagraph.html"
+            
+        >
+            Expanderbart stycke
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Filuppladdning</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../file-upload/ffileitem.html"
+            
+            
+            
+            data-path="components/file-upload/ffileitem.html"
+            
+        >
+            Filpresentatör
+        </a>
+    </li><li class="link ">
+        <a
+            href="../file-upload/ffileselector.html"
+            
+            
+            
+            data-path="components/file-upload/ffileselector.html"
+            
+        >
+            Filväljare
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Gruppera</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../group/ffieldset.html"
+            
+            
+            
+            data-path="components/group/ffieldset.html"
+            
+        >
+            Fältgruppering
+        </a>
+    </li><li class="link ">
+        <a
+            href="../group/"
+            
+            
+            
+            data-path="components/group/"
+            
+        >
+            Komponentgrupp
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../ficon.html"
+            
+            
+            
+            data-path="components/ficon.html"
+            
+        >
+            Ikon
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Inmatning</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../input/ftextfield.html"
+            
+            
+            
+            data-path="components/input/ftextfield.html"
+            
+        >
+            Inmatningsfält
+        </a>
+    </li><li class="link ">
+        <a
+            href="../input/fdatepickerfield.html"
+            
+            
+            
+            data-path="components/input/fdatepickerfield.html"
+            
+        >
+            Datumväljare
+        </a>
+    </li><li class="link ">
+        <a
+            href="../input/fselectfield.html"
+            
+            
+            
+            data-path="components/input/fselectfield.html"
+            
+        >
+            Dropplista
+        </a>
+    </li><li class="link ">
+        <a
+            href="../input/ftextareafield.html"
+            
+            
+            
+            data-path="components/input/ftextareafield.html"
+            
+        >
+            Flerradigt inmatningsfält
+        </a>
+    </li><li class="link ">
+        <a
+            href="../input/combobox.html"
+            
+            
+            
+            data-path="components/input/combobox.html"
+            
+        >
+            Kombobox
+        </a>
+    </li><li class="link ">
+        <a
+            href="../input/fcheckboxfield.html"
+            
+            
+            
+            data-path="components/input/fcheckboxfield.html"
+            
+        >
+            Kryssruta
+        </a>
+    </li><li class="link ">
+        <a
+            href="../input/fradiofield.html"
+            
+            
+            
+            data-path="components/input/fradiofield.html"
+            
+        >
+            Radioknapp
+        </a>
+    </li><li class="link ">
+        <a
+            href="../input/textfield-specialized.html"
+            
+            
+            
+            data-path="components/input/textfield-specialized.html"
+            
+        >
+            Specialiserade inmatningsfält
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../fcalendar.html"
+            
+            
+            
+            data-path="components/fcalendar.html"
+            
+        >
+            Kalender
+        </a>
+    </li><li class="link ">
+        <a
+            href="../button.html"
+            
+            
+            
+            data-path="components/button.html"
+            
+        >
+            Knapp
+        </a>
+    </li><li class="link ">
+        <a
+            href="../fcontextmenu.html"
+            
+            
+            
+            data-path="components/fcontextmenu.html"
+            
+        >
+            Kontextmeny
+        </a>
+    </li><li class="link ">
+        <a
+            href="../fcard.html"
+            
+            
+            
+            data-path="components/fcard.html"
+            
+        >
+            Kort
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Ladda innehåll</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../load/fprogressbar.html"
+            
+            
+            
+            data-path="components/load/fprogressbar.html"
+            
+        >
+            Förloppsindikator
+        </a>
+    </li><li class="link ">
+        <a
+            href="../load/floader.html"
+            
+            
+            
+            data-path="components/load/floader.html"
+            
+        >
+            Laddningsindikator
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../flogo.html"
+            
+            
+            
+            data-path="components/flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Länkar</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../links/anchor.html"
+            
+            
+            
+            data-path="components/links/anchor.html"
+            
+        >
+            Länk
+        </a>
+    </li><li class="link ">
+        <a
+            href="../links/entrypoint.html"
+            
+            
+            
+            data-path="components/links/entrypoint.html"
+            
+        >
+            Startpunkt
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../fmessagebox.html"
+            
+            
+            
+            data-path="components/fmessagebox.html"
+            
+        >
+            Meddelanderuta
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Modal</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../modal/fconfirmmodal.html"
+            
+            
+            
+            data-path="components/modal/fconfirmmodal.html"
+            
+        >
+            Bekräftelsemodal
+        </a>
+    </li><li class="link ">
+        <a
+            href="../modal/fformmodal.html"
+            
+            
+            
+            data-path="components/modal/fformmodal.html"
+            
+        >
+            Formulärsmodal
+        </a>
+    </li><li class="link ">
+        <a
+            href="../modal/fmodal.html"
+            
+            
+            
+            data-path="components/modal/fmodal.html"
+            
+        >
+            Modal dialogruta
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../foffline.html"
+            
+            
+            
+            data-path="components/foffline.html"
+            
+        >
+            Offline
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Presentationsfält</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../presentation/foutputfield.html"
+            
+            
+            
+            data-path="components/presentation/foutputfield.html"
+            
+        >
+            Presentationsfält - dynamiskt
+        </a>
+    </li><li class="link ">
+        <a
+            href="../presentation/fstaticfield.html"
+            
+            
+            
+            data-path="components/presentation/fstaticfield.html"
+            
+        >
+            Presentationsfält - statiskt
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Ramverkskomponenter</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../framework/ianimateexpand.html"
+            
+            
+            
+            data-path="components/framework/ianimateexpand.html"
+            
+        >
+            Animerad expandering
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/iflexitem.html"
+            
+            
+            
+            data-path="components/framework/iflexitem.html"
+            
+        >
+            Flex Item
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/iflex.html"
+            
+            
+            
+            data-path="components/framework/iflex.html"
+            
+        >
+            Flexibel positionering
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/iskiplink.html"
+            
+            
+            
+            data-path="components/framework/iskiplink.html"
+            
+        >
+            Gå till innehåll
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/icalendarmonth.html"
+            
+            
+            
+            data-path="components/framework/icalendarmonth.html"
+            
+        >
+            Kalendermånad
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/icalendarnavbar.html"
+            
+            
+            
+            data-path="components/framework/icalendarnavbar.html"
+            
+        >
+            Kalendernavigering
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/icalendarmonthgrid.html"
+            
+            
+            
+            data-path="components/framework/icalendarmonthgrid.html"
+            
+        >
+            Kalenderrutnät
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/ipopup.html"
+            
+            
+            
+            data-path="components/framework/ipopup.html"
+            
+        >
+            Popup
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/ipopupmenu.html"
+            
+            
+            
+            data-path="components/framework/ipopupmenu.html"
+            
+        >
+            Popup-meny
+        </a>
+    </li><li class="link ">
+        <a
+            href="../framework/ipopuperror.html"
+            
+            
+            
+            data-path="components/framework/ipopuperror.html"
+            
+        >
+            PopupError
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Sidlayout</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../page-layout/application-layout.html"
+            
+            
+            
+            data-path="components/page-layout/application-layout.html"
+            
+        >
+            Applikationslayout
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fpagelayout.html"
+            
+            
+            
+            data-path="components/page-layout/fpagelayout.html"
+            
+        >
+            Applikationsmall
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fdetailspanel.html"
+            
+            
+            
+            data-path="components/page-layout/fdetailspanel.html"
+            
+        >
+            Detaljpanel
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/ffixedpane.html"
+            
+            
+            
+            data-path="components/page-layout/ffixedpane.html"
+            
+        >
+            Fixerad yta
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fresizepane.html"
+            
+            
+            
+            data-path="components/page-layout/fresizepane.html"
+            
+        >
+            Justerbar yta
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fminimizablepanel.html"
+            
+            
+            
+            data-path="components/page-layout/fminimizablepanel.html"
+            
+        >
+            Minimerbar panel
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fnavigationmenu.html"
+            
+            
+            
+            data-path="components/page-layout/fnavigationmenu.html"
+            
+        >
+            Navigeringsmeny
+        </a>
+    </li><li class="link ">
+        <a
+            href="../page-layout/fpageheader.html"
+            
+            
+            
+            data-path="components/page-layout/fpageheader.html"
+            
+        >
+            Sidhuvud
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../fwizard.html"
+            
+            
+            
+            data-path="components/fwizard.html"
+            
+        >
+            Steg för steg-guide
+        </a>
+    </li><li class="expandable active">
+        <details open>
+            <summary>Tabell och lista</summary>
+            
+            
+<ol><li class="link active">
+        <a
+            href="./table.html"
+            
+            
+            
+            data-path="components/table-and-list/table.html"
+            
+        >
+            Tabell
+        </a>
+    </li><li class="link ">
+        <a
+            href="./flist.html"
+            
+            
+            
+            data-path="components/table-and-list/flist.html"
+            
+        >
+            Lista
+        </a>
+    </li><li class="link ">
+        <a
+            href="./fcruddataset.html"
+            
+            
+            
+            data-path="components/table-and-list/fcruddataset.html"
+            
+        >
+            Datamängdredigerare
+        </a>
+    </li><li class="link ">
+        <a
+            href="./fsortfilterdataset.html"
+            
+            
+            
+            data-path="components/table-and-list/fsortfilterdataset.html"
+            
+        >
+            Datamängdsorterare
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li><li class="link ">
+        <a
+            href="../ftooltip.html"
+            
+            
+            
+            data-path="components/ftooltip.html"
+            
+        >
+            Tooltip
+        </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>Validering</summary>
+            
+            
+<ol><li class="link ">
+        <a
+            href="../validation/ferrorlist.html"
+            
+            
+            
+            data-path="components/validation/ferrorlist.html"
+            
+        >
+            Fellista
+        </a>
+    </li><li class="link ">
+        <a
+            href="../validation/formatters-and-parsers.html"
+            
+            
+            
+            data-path="components/validation/formatters-and-parsers.html"
+            
+        >
+            Formaterare och parsers
+        </a>
+    </li><li class="link ">
+        <a
+            href="../validation/validators.html"
+            
+            
+            
+            data-path="components/validation/validators.html"
+            
+        >
+            Validatorer
+        </a>
+    </li><li class="link ">
+        <a
+            href="../validation/fvalidationgroup.html"
+            
+            
+            
+            data-path="components/validation/fvalidationgroup.html"
+            
+        >
+            Validering samlad
+        </a>
+    </li><li class="link ">
+        <a
+            href="../validation/fvalidationform.html"
+            
+            
+            
+            data-path="components/validation/fvalidationform.html"
+            
+        >
+            Valideringsformulär
+        </a>
+    </li></ol>
+
+            
+        </details>
+    </li></ol>
+</nav>
+</div><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">Tabell</h1>
+
+                    
+                    <div id="aside"><dl>
+    
+    <dt>Komponent</dt>
+    <dd>
+        <div class="docs-badge-list">
+            
+            
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/eab8f6660158999d279372b664a88f541eaf8063/packages/vue/src/components/FDataTable/FDataTable.vue">
+                FDataTable
+            </a>
+            
+            
+            
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/eab8f6660158999d279372b664a88f541eaf8063/packages/vue/src/components/FInteractiveTable/FInteractiveTable.vue">
+                FInteractiveTable
+            </a>
+            
+            
+            
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/eab8f6660158999d279372b664a88f541eaf8063/packages/vue/src/components/FTableButton/FTableButton.vue">
+                FTableButton
+            </a>
+            
+            
+            
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/eab8f6660158999d279372b664a88f541eaf8063/packages/vue/src/components/FTableColumn/FTableColumn.vue">
+                FTableColumn
+            </a>
+            
+            
+        </div>
+    </dd>
+    
+
+    
+    <dt>Status</dt>
+    <dd>
+        <div class="badge badge--success">Produktionsklar</div>
+    </dd>
+    
+</dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#datatabell">Datatabell</a></li>
+                                
+                                <li><a href="#interaktiv_tabell">Interaktiv tabell</a></li>
+                                
+                                <li><a href="#atgardsknappar">Åtgärdsknappar</a></li>
+                                
+                                <li><a href="#expanderbara_rader">Expanderbara rader</a></li>
+                                
+                                <li><a href="#ange_nyckel_keyattribute">Ange nyckel (keyAttribute)</a></li>
+                                
+                                <li><a href="#tabellrubrik">Tabellrubrik</a></li>
+                                
+                                <li><a href="#tank_pa_det_har">Tänk på det här</a></li>
+                                
+                                <li><a href="#utforma_en_tabell">Utforma en tabell</a></li>
+                                
+                                <li><a href="#valbara_rader">Valbara rader</a></li>
+                                
+                                <li><a href="#radrubriker">Radrubriker</a></li>
+                                
+                                <li><a href="#kolumnbredd">Kolumnbredd</a></li>
+                                
+                                <li><a href="#kolumntyper">Kolumntyper</a></li>
+                                
+                                <li><a href="#textnycklar">Textnycklar</a></li>
+                                
+                                <li><a href="#props_events_slots">Props, Events &amp; Slots</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content"><p class="docs-paragraph">Använd en tabell när användaren behöver analysera och jämföra information strukturerad i rader och kolumner. Tabeller kan antingen vara enkla datatabeller för presentation, eller vara mer avancerade interaktiva tabeller.</p>
+<p class="docs-paragraph">I en tabell har varje rad samma grupper av information som visas kolumnvis, till exempel namn, datum, belopp och diarienummer.</p>
+<h2 id="datatabell"><a class="header-anchor" href="#datatabell">Datatabell</a></h2><p class="docs-paragraph"><code>FDataTable</code></p>
+<p class="docs-paragraph">Använd för att endast presentera information.</p>
+
+                <div
+                    id="example-8b5a0a"
+                    class="code-preview code-preview--borderless"
+                    
+                    data-tags="live-example"
+                    data-language="vue"
+                >
+                    
+        <div id="example-8db59c"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FDataTableLiveExample-8db59c.js"></script>
+    
+                </div>
+            <h3 id="anvandning"><a class="header-anchor" href="#anvandning">Användning</a></h3><p class="docs-paragraph">Komponenten har en prop <code>rows</code> som du sätter till de rader som ska presenteras.</p>
+<p class="docs-paragraph">Slotten <code>default</code> renderas för varje item i <code>rows</code> och har en slot attribute <code>row</code> som innehåller nuvarande rad.</p>
+<p class="docs-paragraph">Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten <code>FTableColumn</code>.</p>
+
+                <div
+                    id="example-e54b8b"
+                    class="code-preview code-preview--default"
+                    data-test="datatable-base"
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-data-table</span> <span class="hljs-attr">:rows</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Tabell exempel <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Kolumnrubrik&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+            {{ row.value }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-data-table</span>&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Innehåller cellen numeriska värden, datum eller annan data som inte är löptext bör du använd direktivet <a href="../../functions/plugins/formatplugin.html"><code>v-format</code></a> för att formatera och undvika radbryt i cellen.</p>
+
+                <div
+                    id="example-40050a"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-data-table :rows&gt;
+     &lt;template #caption&gt; Tabell exempel &lt;/template&gt;
+     &lt;template #default=&quot;{ row }&quot;&gt;
+<span class="hljs-deletion">-        &lt;f-table-column title=&quot;Kolumnrubrik&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-            {{ row.value }}</span>
+<span class="hljs-deletion">-        &lt;/f-table-column&gt;</span>
+<span class="hljs-addition">+        &lt;f-table-column</span>
+<span class="hljs-addition">+            title=&quot;Kolumnrubrik&quot;</span>
+<span class="hljs-addition">+            type=&quot;numeric&quot;</span>
+<span class="hljs-addition">+            v-format:number=&quot;row.value&quot;</span>
+<span class="hljs-addition">+        &gt;&lt;/f-table-column&gt;</span>
+     &lt;/template&gt;
+ &lt;/f-data-table&gt;
+</code></pre>
+                </div>
+            <h2 id="interaktiv_tabell"><a class="header-anchor" href="#interaktiv_tabell">Interaktiv tabell</a></h2><p class="docs-paragraph"><code>FInteractiveTable</code></p>
+<p class="docs-paragraph">Använd en interaktiv tabell när användaren behöver interagera med tabellen. Det kan handla om att välja, lägga till, ändra, ta bort en rad eller utföra andra åtgärder via knappar eller genom att klicka på hela raden.</p>
+
+                <div
+                    id="example-ad977f"
+                    class="code-preview code-preview--borderless"
+                    
+                    data-tags="live-example"
+                    data-language="vue"
+                >
+                    
+        <div id="example-329fe3"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FInteractiveTableLiveExample-329fe3.js"></script>
+    
+                </div>
+            <h3 id="anvandning--1"><a class="header-anchor" href="#anvandning--1">Användning</a></h3><p class="docs-paragraph">Komponenten har en prop <code>rows</code> som du sätter till de rader som ska presenteras.</p>
+<p class="docs-paragraph">Slotten <code>default</code> renderas för varje item i <code>rows</code> och har en slot attribute <code>row</code> som innehåller nuvarande rad.</p>
+<p class="docs-paragraph">Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten <code>FTableColumn</code>.</p>
+
+                <div
+                    id="example-9748df"
+                    class="code-preview code-preview--default"
+                    data-test="interactivetable-base"
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Tabell exempel <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Kolumn A&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+            {{ row.foo }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Kolumn B&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+            {{ row.bar }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Kolumn C&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+            {{ row.baz }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Innehåller cellen numeriska värden, datum eller annan data som inte är löptext bör du använd direktivet <a href="../../functions/plugins/formatplugin.html"><code>v-format</code></a> för att formatera och undvika radbryt i cellen.</p>
+
+                <div
+                    id="example-01ab70"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-interactive-table :rows&gt;
+     &lt;template #caption&gt; Tabell exempel &lt;/template&gt;
+     &lt;template #default=&quot;{ row }&quot;&gt;
+<span class="hljs-deletion">-        &lt;f-table-column title=&quot;Kolumn A&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-deletion">-            {{ row.foo }}</span>
+<span class="hljs-deletion">-        &lt;/f-table-column&gt;</span>
+<span class="hljs-addition">+        &lt;f-table-column</span>
+<span class="hljs-addition">+            title=&quot;Kolumn A&quot;</span>
+<span class="hljs-addition">+            type=&quot;numeric&quot;</span>
+<span class="hljs-addition">+            v-format:number=&quot;row.foo&quot;</span>
+<span class="hljs-addition">+        &gt;&lt;/f-table-column&gt;</span>
+         &lt;f-table-column title=&quot;Kolumn B&quot; type=&quot;text&quot;&gt;
+             {{ row.bar }}
+         &lt;/f-table-column&gt;
+</code></pre>
+                </div>
+            <h3 id="hantera_rader"><a class="header-anchor" href="#hantera_rader">Hantera rader</a></h3><p class="docs-paragraph">Med Datamängsredigeraren kan du lägga till funktionalitet för att skapa, ändra och ta bort rader i tabellen. Se komponent <a href="./fcruddataset.html">Datamängdredigeraren</a></p>
+<h3 id="inmatning_i_tabell"><a class="header-anchor" href="#inmatning_i_tabell">Inmatning i tabell</a></h3><p class="docs-paragraph">Inmatningsfält kan placeras i en tabell för att direkt kunna redigera värdet i cellen.
+Fältens standardetikett är visuellt dolda och ersätts av tabellrubrik för en seende användare, men inmatningfältets etikett läsas fortfarande upp av skärmläsare.
+Fel vid fältvalidering i en tabell indikeras med varningstriangel och röd ram på samma sätt som fält i ett vanligt formulär men felmeddelandet visas i en popup.
+Felmeddelandet visas när det felmarkerade fältet har fokus.</p>
+<p class="docs-paragraph">Följande inmatningfält kan användas:</p>
+<ul>
+<li>textbaserade inmatningsfält (FTextField) förutom sökfält</li>
+<li>datumväljare (FDatepickerField)</li>
+<li>dropplista (FSelectField).</li>
+</ul>
+
+                <div
+                    id="example-e00cea"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">     &lt;template #caption&gt; Tabell exempel &lt;/template&gt;
+     &lt;template #default=&quot;{ row }&quot;&gt;
+         &lt;f-table-column title=&quot;Kolumn A&quot; type=&quot;text&quot;&gt;
+<span class="hljs-deletion">-            {{ row.foo }}</span>
+<span class="hljs-addition">+            &lt;f-datepicker-field v-model=&quot;row.foo&quot; v-validation.required&gt;</span>
+<span class="hljs-addition">+                Kolumn A</span>
+<span class="hljs-addition">+            &lt;/f-datepicker-field&gt;</span>
+         &lt;/f-table-column&gt;
+         &lt;f-table-column title=&quot;Kolumn B&quot; type=&quot;text&quot;&gt;
+             {{ row.bar }}
+</code></pre>
+                </div>
+            
+            <div
+                id="example-3935f0"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview">
+        <div id="example-510756"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FInteractiveTableInputExample-510756.js"></script>
+    </div>
+                <div>
+            <button
+                type="button"
+                class="button button--discrete code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <i class="icon icon--code"></i>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDatepickerField</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FNumericTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;FInteractiveTableInputExample&quot;</span>,
+    <span class="hljs-attr">components</span>: {
+        <span class="hljs-title class_">FInteractiveTable</span>,
+        <span class="hljs-title class_">FTableColumn</span>,
+        <span class="hljs-title class_">FDatepickerField</span>,
+        <span class="hljs-title class_">FNumericTextField</span>,
+    },
+    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">betalningar</span>: [
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
+                    <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2024-05-25&quot;</span>,
+                    <span class="hljs-attr">belopp</span>: <span class="hljs-string">&quot;&quot;</span>,
+                    <span class="hljs-attr">beskrivning</span>: <span class="hljs-string">&quot;Första utbetalning&quot;</span>,
+                },
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2&quot;</span>,
+                    <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2024-06-25&quot;</span>,
+                    <span class="hljs-attr">belopp</span>: <span class="hljs-string">&quot;&quot;</span>,
+                    <span class="hljs-attr">beskrivning</span>: <span class="hljs-string">&quot;Andra utbetalning&quot;</span>,
+                },
+                {
+                    <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;3&quot;</span>,
+                    <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2024-07-24&quot;</span>,
+                    <span class="hljs-attr">belopp</span>: <span class="hljs-string">&quot;&quot;</span>,
+                    <span class="hljs-attr">beskrivning</span>: <span class="hljs-string">&quot;Tredje utbetalning&quot;</span>,
+                },
+            ],
+        };
+    },
+});
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;betalningar&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> Justera betalningar <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Beskrivning&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
+                {{ row.beskrivning }}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Utbetalningsdatum&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-datepicker-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.date&quot;</span> <span class="hljs-attr">v-validation.required</span>&gt;</span>
+                    Utbetalningsdatum
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-datepicker-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Utbetalat belopp&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-numeric-text-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;row.belopp&quot;</span> <span class="hljs-attr">v-validation.required</span>&gt;</span>
+                    Utbetalt belopp
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-numeric-text-field</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <h2 id="atgardsknappar"><a class="header-anchor" href="#atgardsknappar">Åtgärdsknappar</a></h2><p class="docs-paragraph">Åtgärdsknappar kan placeras i en tabell för att utföra en operation på raden.
+Åtgärdsknappar måste ha en etikett men etiketten behöver inte vara visuellt synlig.
+Etiketten behöver tydligt förklara åtgärden och kontext (exempelvis något som förklarar vilken rad som påverkas).
+Kolumnens typ ska sättas till <code>action</code>.</p>
+
+                <div
+                    id="example-a37650"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">         &lt;f-table-column title=&quot;Kolumn C&quot; type=&quot;text&quot;&gt;
+             {{ row.baz }}
+         &lt;/f-table-column&gt;
+<span class="hljs-addition">+        &lt;f-table-column title=&quot;Åtgärder&quot; type=&quot;action&quot; shrink&gt;</span>
+<span class="hljs-addition">+            &lt;f-table-button icon=&quot;pen&quot; @click=&quot;modifyRow(row)&quot;&gt;</span>
+<span class="hljs-addition">+                Redigera rad {{ row.id }}</span>
+<span class="hljs-addition">+            &lt;/f-table-button&gt;</span>
+<span class="hljs-addition">+        &lt;/f-table-column&gt;</span>
+     &lt;/template&gt;
+ &lt;/f-interactive-table&gt;
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-77d9ab"
+                    class="code-preview code-preview--default"
+                    data-test="action-button"
+                    data-tags="nomarkup"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="example-0c76c4"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./TableButton-0c76c4.js"></script>
+    </div>
+                </div>
+            <p class="docs-paragraph">Om etiketten ska vara synlig använder du propen <code>label</code>.
+En <code>&lt;span&gt;</code> med <code>sr-only</code> kan användas för att ge ytterligare kontext till skärmläsare:</p>
+
+                <div
+                    id="example-f60375"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">             {{ row.baz }}
+         &lt;/f-table-column&gt;
+         &lt;f-table-column title=&quot;Åtgärder&quot; type=&quot;action&quot; shrink&gt;
+<span class="hljs-deletion">-            &lt;f-table-button icon=&quot;pen&quot; @click=&quot;modifyRow(row)&quot;&gt;</span>
+<span class="hljs-deletion">-                Redigera rad {{ row.id }}</span>
+<span class="hljs-addition">+            &lt;f-table-button icon=&quot;pen&quot; label @click=&quot;modifyRow(row)&quot;&gt;</span>
+<span class="hljs-addition">+                Redigera &lt;span class=&quot;sr-only&quot;&gt;rad {{ row.id }}&lt;/span&gt;</span>
+             &lt;/f-table-button&gt;
+         &lt;/f-table-column&gt;
+     &lt;/template&gt;
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-255a4f"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nomarkup"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="example-b516a3"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./TableButton-sronly-b516a3.js"></script>
+    </div>
+                </div>
+            <p class="docs-paragraph">Länkar i tabell använder <code>table__anchor</code> klassen:</p>
+
+                <div
+                    id="example-d640ca"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">         &lt;f-table-column title=&quot;Kolumn C&quot; type=&quot;text&quot;&gt;
+             {{ row.baz }}
+         &lt;/f-table-column&gt;
+<span class="hljs-addition">+        &lt;f-table-column title=&quot;Länk&quot; type=&quot;action&quot; shrink&gt;</span>
+<span class="hljs-addition">+            &lt;a class=&quot;anchor table__anchor&quot; href=&quot;#&quot; target=&quot;_blank&quot;&gt;</span>
+<span class="hljs-addition">+                Öppna dokument</span>
+<span class="hljs-addition">+                &lt;span class=&quot;sr-only&quot;&gt;{{ row.id }}&lt;/span&gt;</span>
+<span class="hljs-addition">+                &lt;f-icon name=&quot;new-window&quot;&gt;&lt;/f-icon&gt;</span>
+<span class="hljs-addition">+                &lt;span class=&quot;sr-only&quot;&gt;öppnas i ny flik&lt;/span&gt;</span>
+<span class="hljs-addition">+            &lt;/a&gt;</span>
+<span class="hljs-addition">+        &lt;/f-table-column&gt;</span>
+     &lt;/template&gt;
+ &lt;/f-interactive-table&gt;
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-ea22e7"
+                    class="code-preview code-preview--default"
+                    data-test="action-button"
+                    data-tags="nomarkup"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="example-91e6cf"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./TableLink-91e6cf.js"></script>
+    </div>
+                </div>
+            <h3 id="valja_rader"><a class="header-anchor" href="#valja_rader">Välja rader</a></h3><p class="docs-paragraph">En interaktiv tabell med <code>selectable</code> prop lägger till kryssrutor som kan användas för att välja rader.
+När en rad väljs uppdateras <code>v-model</code> med referens till alla rader som är valda.</p>
+
+                <div
+                    id="example-3e4d56"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table :rows=&quot;myRows&quot;&gt;</span>
+ &lt;f-interactive-table
+<span class="hljs-addition">+   v-model=&quot;selectedRows&quot;</span>
+    :rows=&quot;myRows&quot;
+<span class="hljs-addition">+   selectable</span>
+ &gt;
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Du kan även lägga till eller ta bort valda rader genom att ändra referenserna som skickas till <code>v-model</code>.
+På så sätt kan du till exempel förvälja vissa rader eller skapa bulk-åtgärder som väljer vissa typer av rader.
+Notera att <code>v-model</code> kräver referenser till objekt som du skickat till <code>rows</code> prop för att kunna välja dessa.</p>
+
+                <div
+                    id="example-9571c0"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> rows = [
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Banan&quot;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;Frukt&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Äpple&quot;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;Frukt&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Vitkål&quot;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;Grönsak&quot;</span> },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Spenat&quot;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;Grönsak&quot;</span> },
+];
+
+<span class="hljs-comment">// Preselect all rows that are fruit type.</span>
+<span class="hljs-keyword">const</span> selectedRows = rows.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> row.<span class="hljs-property">type</span> === <span class="hljs-string">&quot;Frukt&quot;</span>);
+</code></pre>
+                </div>
+            <h2 id="expanderbara_rader"><a class="header-anchor" href="#expanderbara_rader">Expanderbara rader</a></h2><p class="docs-paragraph">Med expanderbara rader går det att skapa ytterligare tabellrader som visas när man trycker på en expanderbar rad.</p>
+<p class="docs-paragraph">Expanderbara rader kan presenteras på två sätt:</p>
+<ul>
+<li>Rader som följer existerande kolumner</li>
+<li>Rader med Valfritt innehåll</li>
+</ul>
+<p class="docs-paragraph">För båda varianterna gäller att du sätter propen <code>expandable-attribute</code> till den egenskap i objektet som innehåller rader med expanderat innehåll.</p>
+<p class="docs-paragraph">Givet följande struktur sätter man <code>expandable-attribute</code> till <code>myExpandableRow</code>:</p>
+
+                <div
+                    id="example-792168"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="ts"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> rows = [
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utbetalning&quot;</span>,
+        <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-09-27&quot;</span>,
+        <span class="hljs-attr">sum</span>: <span class="hljs-number">1200</span>,
+        <span class="hljs-attr">myExpandableRow</span>: [
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1a&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Barnbidrag&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-09-25&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">200</span>,
+            },
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1b&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Övrig ersättning&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-09-27&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
+            },
+        ],
+    },
+    {
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2&quot;</span>,
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utbetalning&quot;</span>,
+        <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-12-25&quot;</span>,
+        <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
+        <span class="hljs-attr">myExpandableRow</span>: [
+            {
+                <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;2a&quot;</span>,
+                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Barnbidrag&quot;</span>,
+                <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;2023-12-25&quot;</span>,
+                <span class="hljs-attr">sum</span>: <span class="hljs-number">1000</span>,
+            },
+        ],
+    },
+];</code></pre>
+                </div>
+            <h3 id="folja_existerande_kolumner"><a class="header-anchor" href="#folja_existerande_kolumner">Följa existerande kolumner</a></h3><p class="docs-paragraph">För att skapa expanderbart innehåll som följer existerande kolumner så krävs det att <code>expandable-attribute</code> är satt och att <code>expandable</code> slot inte används.
+Innehållet måste då följa samma datastruktur som ordinarie rader.</p>
+<p class="docs-paragraph">Se nedan exempel av data som kan användas för att generera en expanderbar rad som innehåller två tabellrader.</p>
+
+                <div
+                    id="example-6471d1"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table :rows key-attribute=&quot;id&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-interactive-table :rows key-attribute=&quot;id&quot; expandable-attribute=&quot;myExpandableRow&quot;&gt;</span>
+     &lt;template #caption&gt; Expanderbara rader &lt;/template&gt;
+     &lt;template #default=&quot;{ row }&quot;&gt;
+         &lt;f-table-column title=&quot;Ersättning&quot;&gt; {{ row.name }} &lt;/f-table-column&gt;
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-7dd6a5"
+                    class="code-preview code-preview--default"
+                    data-test="expandable-default"
+                    data-tags="nomarkup"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="example-144a5b"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FInteractiveTableExpandableExample-144a5b.js"></script>
+    </div>
+                </div>
+            <h3 id="valfritt_innehall"><a class="header-anchor" href="#valfritt_innehall">Valfritt innehåll</a></h3><p class="docs-paragraph">För att själv ta kontroll över hur raden presenteras kan du använda slotten <code>expandable</code>.
+Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som ligger i datastrukturen behöver inte följa ordinarie rader.</p>
+
+            <div class="docs-messagebox docs-messagebox--info">
+                <p class="docs-messagebox__title">Observera</p>
+                <p class="docs-paragraph">Det är inte rekommenderat att skapa för komplext expanderat innehåll, så som att placera ytterligare expanderbara tabeller inuti.</p>
+
+            </div>
+        
+                <div
+                    id="example-8c6c00"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0">             &lt;span v-format:number=&quot;row.sum&quot;&gt;&lt;/span&gt; kronor
+         &lt;/f-table-column&gt;
+     &lt;/template&gt;
+<span class="hljs-addition">+    &lt;template #expandable=&quot;{ expandableRow }&quot;&gt;</span>
+<span class="hljs-addition">+        Anpassat innehåll för expanderad rad &quot;{{ expandableRow.name }}&quot;.</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-interactive-table&gt;
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-b21f00"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nomarkup"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="example-38cd1a"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FInteractiveTableExpandableRows-38cd1a.js"></script>
+    </div>
+                </div>
+            <h2 id="ange_nyckel_keyattribute"><a class="header-anchor" href="#ange_nyckel_keyattribute">Ange nyckel (<code>keyAttribute</code>)</a></h2><p class="docs-paragraph">Med <code>keyAttribute</code> så kan du ange namnet för en nyckel (<code>key</code>) som finns i varje rad-ojekt och innehåller ett värde som kan användas för att identifiera olika rader.
+Om detta anges, så måste varje rad (även expanderade rader) innehålla denna nyckel med ett unikt värde.</p>
+<p class="docs-paragraph">Att använda <code>keyAttribute</code> är valfritt och behövs inte anges om du inte har nåt naturligt id att ange för dina rader.
+Men om det är tänkt att dina rader ska laddas om från REST-api eller liknande så måste du använda <code>keyAttribute</code> för att aktuell status för raderna ska kunna bibehållas.</p>
+
+                <div
+                    id="example-6763fc"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table :rows=&quot;myRows&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-interactive-table :rows=&quot;myRows&quot; key-attribute=&quot;id&quot;&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-684fc8"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-comment">// The key &quot;id&quot; is used for &quot;keyAttribute&quot;.</span>
+<span class="hljs-keyword">const</span> myRows = [
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Banan&quot;</span> },
+    { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Äpple&quot;</span> },
+];
+</code></pre>
+                </div>
+            <h2 id="tabellrubrik"><a class="header-anchor" href="#tabellrubrik">Tabellrubrik</a></h2><p class="docs-paragraph">En tabell ska alltid ha en rubrik, antingen med caption-elementet eller en associerad heading.</p>
+<p class="docs-paragraph">Om tabellen har en heading i nära anslutning som också förklarar tabellens innebörd assoccierar du den med <code>aria-labelledby</code>:</p>
+
+                <div
+                    id="example-e1292d"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;h3&gt;Tabellrubrik&lt;/h3&gt;</span>
+<span class="hljs-deletion">-&lt;f-data-table&gt;</span>
+<span class="hljs-addition">+&lt;h3 id=&quot;awesome-heading&quot;&gt;Tabellrubrik&lt;/h3&gt;</span>
+<span class="hljs-addition">+&lt;f-data-table aria-labelledby=&quot;awesome-header&quot;&gt;</span>
+   ...
+ &lt;/f-data-table&gt;
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Använd caption om tabellen inte har en naturlig rubrik:</p>
+
+                <div
+                    id="example-5b6e2f"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-data-table&gt;
+<span class="hljs-addition">+  &lt;template #caption&gt; Tabellrubrik &lt;/template&gt;</span>
+   ...
+ &lt;/f-data-table&gt;
+</code></pre>
+                </div>
+            <p class="docs-paragraph">I undantagsfall kan du också använda en dold skärmläsartext i caption, men tänk på att tabellens innehåll måste vara begripligt för alla:</p>
+
+                <div
+                    id="example-92c218"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-data-table&gt;
+<span class="hljs-addition">+  &lt;template #caption&gt;</span>
+<span class="hljs-addition">+    &lt;span class=&quot;sr-only&quot;&gt; Tabellrubrik &lt;/span&gt;</span>
+<span class="hljs-addition">+  &lt;/template&gt;</span>
+   ...
+ &lt;/f-data-table&gt;
+</code></pre>
+                </div>
+            <h2 id="tank_pa_det_har"><a class="header-anchor" href="#tank_pa_det_har">Tänk på det här</a></h2><ul>
+<li>Gör en ordentlig analys av vilken information som måste visas i tabellen. Målet bör vara att alla kolumner får plats på skärmen.</li>
+<li>Hjälp användaren att hitta i en tabell med mycket information genom att lägga till möjlighet att söka eller sortera. Använd komponent <a href="./fsortfilterdataset.html">Datamängdssorteraren</a></li>
+<li>Formatera datan i tabellen så den blir lätt att läsa. Använd med fördel <a href="../../functions/plugins/formatplugin.html">Format Plugin</a> för att både formatera och undvika radbryt mitt i ett värde.</li>
+</ul>
+<h2 id="utforma_en_tabell"><a class="header-anchor" href="#utforma_en_tabell">Utforma en tabell</a></h2><ul>
+<li>Anpassa bredden på tabellen till innehållet, gör den inte bredare än den behöver vara. Samma princip gäller för kolumner.</li>
+<li>Tabellen kommer radbryta innehåll om det inte får plats. Använd istället skroll-funktionen om innehållet blir svårläst.</li>
+<li>Du kan ange vilka kolumner som tar maximal bredd och vilka som får ta minsta möjliga.</li>
+<li>Text i en tabellcell ska i regel vara vänsterställd. Undantag är belopp och andra numeriska värden som till exempel procent som ska visas högerställt för att lättare kunna jämföras.</li>
+<li>Använd zebra-randiga rader när du har långa och många rader.  Det gör det enklare att visuellt skanna av tabellen och följa rader.</li>
+</ul>
+<h3 id="skroll_i_tabell"><a class="header-anchor" href="#skroll_i_tabell">Skroll i tabell</a></h3><p class="docs-paragraph">För att lägga till skroll i tabell använder du prop <code>scroll</code>:</p>
+
+                <div
+                    id="example-87d5ac"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-data-table :rows&gt;</span>
+<span class="hljs-addition">+&lt;f-data-table :rows scroll=&quot;horizontal&quot;&gt;</span>
+     &lt;template #default=&quot;{ row }&quot;&gt;
+         &lt;!-- [...] --&gt;
+     &lt;/template&gt;
+ &lt;/f-data-table&gt;
+</code></pre>
+                </div>
+            <h3 id="tomt_lage_i_tabellen"><a class="header-anchor" href="#tomt_lage_i_tabellen">Tomt läge i tabellen</a></h3><p class="docs-paragraph">Texten för en tom tabell går att anpassas till att bättre passa innehållet, till exempel &quot;Det finns inga betalningar&quot;, &quot;Ingen anslutning finns&quot;
+Texten sätts i slot <code>#empty</code>:</p>
+
+                <div
+                    id="example-bc6231"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-data-table :rows&gt;
+     &lt;template #caption&gt; Kända ankeborgare &lt;/template&gt;
+<span class="hljs-addition">+    &lt;template #empty&gt; Det finns inga rättigheter &lt;/template&gt;</span>
+     &lt;template #default=&quot;{ row }&quot;&gt;
+         &lt;!-- [...] --&gt;
+     &lt;/template&gt;
+ &lt;/f-data-table&gt;
+</code></pre>
+                </div>
+            <h2 id="valbara_rader"><a class="header-anchor" href="#valbara_rader">Valbara rader</a></h2><p class="docs-paragraph">För interaktiv tabell kan rader kan göras valbara med propen <code>selectable</code>.
+<code>v-model</code> kan användas för att komma åt lista med valda rader.</p>
+<p class="docs-paragraph">Slotten <code>checkbox-description</code> måste användas för att ge en beskrivning av kryssrutan för skärmläsare.
+Texten bör innehålla något som tydligt identifierar raden från andra rader.</p>
+
+                <div
+                    id="example-19d62e"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-interactive-table :rows&gt;</span>
+<span class="hljs-addition">+&lt;f-interactive-table :rows selectable v-model=&quot;selectedRows&quot;&gt;</span>
+     &lt;template #caption&gt; Tabell exempel &lt;/template&gt;
+     &lt;template #default=&quot;{ row }&quot;&gt;
+         &lt;f-table-column title=&quot;Kolumn A&quot; type=&quot;text&quot;&gt;
+<span class="hljs-meta">@@ -11,4 +11,7 @@</span>
+             {{ row.baz }}
+         &lt;/f-table-column&gt;
+     &lt;/template&gt;
+<span class="hljs-addition">+    &lt;template #checkbox-description=&quot;{ row }&quot;&gt;</span>
+<span class="hljs-addition">+        Välj rad {{ row.value }}</span>
+<span class="hljs-addition">+    &lt;/template&gt;</span>
+ &lt;/f-interactive-table&gt;
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-504227"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nomarkup"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="example-e5f2c7"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FInteractiveTableSelectable-e5f2c7.js"></script>
+    </div>
+                </div>
+            <h2 id="radrubriker"><a class="header-anchor" href="#radrubriker">Radrubriker</a></h2><p class="docs-paragraph">Både datatabell och interaktiv tabell kan använda radrubriker utöver kolumnrubriker.
+En radrubrik underlättar för skärmläsareanvändare genom att markera vilken eller vilka celler som utgör en rubrik och blir upplästa automatiskt när skärmläsaren navigerar i tabellen.</p>
+<p class="docs-paragraph">Använd radrubriker om det finns många kolumner och/eller en tydlig cell som identifierar rader från andra rader.</p>
+
+                <div
+                    id="example-37ddfd"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-data-table :rows&gt;
+     &lt;template #caption&gt; Tabell exempel &lt;/template&gt;
+     &lt;template #default=&quot;{ row }&quot;&gt;
+<span class="hljs-deletion">-        &lt;f-table-column title=&quot;Kolumnrubrik&quot; type=&quot;text&quot;&gt;</span>
+<span class="hljs-addition">+        &lt;f-table-column title=&quot;Kolumnrubrik&quot; type=&quot;text&quot; row-header&gt;</span>
+             {{ row.value }}
+         &lt;/f-table-column&gt;
+     &lt;/template&gt;
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-ecd23d"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nomarkup"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview">
+        <div id="example-1f2b4f"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./TableRowHeader-1f2b4f.js"></script>
+    </div>
+                </div>
+            <h2 id="kolumnbredd"><a class="header-anchor" href="#kolumnbredd">Kolumnbredd</a></h2><p class="docs-paragraph">Kolumnents bredd justeras generellt sett av cellernas innehåll men med proparna <code>expand</code> och <code>shrink</code> kan du indikera att en kolumn ska använda så mycket eller så lite utrymme som möjligt.</p>
+<ul>
+<li>En kolumn med <code>expand</code> tar så mycket utrymme den kan.</li>
+<li>En kolumn med <code>shrink</code> tar så lite utrymme den kan.</li>
+</ul>
+<p class="docs-paragraph">Med <code>shrink</code> kommer cellernas innehåll att radbrytas om du inte använt direktivet <a href="../../functions/plugins/formatplugin.html"><code>v-format</code></a> eller på annat sätt förbindrat radbrytning.</p>
+<p class="docs-paragraph">Om flera kolumner har <code>expand</code> fördelas storleken godtycklingt efter webbläsarens preferens.</p>
+<p class="docs-paragraph">Om inget anges fungerar kolumnen som om <code>expand</code> är satt.
+Det är ett fel att sätta både <code>expand</code> och <code>shrink</code> samtidigt.</p>
+
+                <div
+                    id="example-1131b5"
+                    class="code-preview code-preview--borderless"
+                    
+                    data-tags="live-example"
+                    data-language="vue"
+                >
+                    
+        <div id="example-f31610"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./ExpandShrinkExample-f31610.js"></script>
+    
+                </div>
+            <h2 id="kolumntyper"><a class="header-anchor" href="#kolumntyper">Kolumntyper</a></h2><p class="docs-paragraph">Kolumner har fyra olika typer som påverkar hur cellen presenteras:</p>
+<ul>
+<li><code>text</code> (default) - standardformatering</li>
+<li><code>date</code> - font med tabulär bredd på tecken.</li>
+<li><code>numeric</code> - högerställt och font med tabular bredd på tecken.</li>
+<li><code>action</code> - för kolumner som innehåller åtgärdsknappar.</li>
+</ul>
+<p class="docs-paragraph">Typen anges genom att sätta propen <code>type</code>:</p>
+
+                <div
+                    id="example-407380"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Kolumnrubrik&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-table-column title=&quot;Kolumnrubrik&quot; type=&quot;numeric&quot;&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="textnycklar"><a class="header-anchor" href="#textnycklar">Textnycklar</a></h2><p class="docs-paragraph">Läs mer om att <a href="../../gettingstarted/use-design-system/translate-text.html">anpassa och översätta text</a>.</p>
+
+        <dl class="docs-api docs-api--translation">
+            
+                        <dt>
+                            <code id="fdatatable-translation-fkui-data-table-empty"
+                                ><a class="docs-api__anchor" href="#fdatatable-translation-fkui-data-table-empty"
+                                    ><span class="docs-api__name"
+                                        >fkui.data-table.empty</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Text som visas som standardinnehåll i slotten <code>empty</code> (när tabellen är tom).</p>
+
+                            <p class="doc-api__item">Default: "Tabellen är tom"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <dl class="docs-api docs-api--translation">
+            
+                        <dt>
+                            <code id="finteractivetable-translation-fkui-interactive-table-expand"
+                                ><a class="docs-api__anchor" href="#finteractivetable-translation-fkui-interactive-table-expand"
+                                    ><span class="docs-api__name"
+                                        >fkui.interactive-table.expand</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Kolumnrubrik som visas för skärmläsare om funktionen för expanderbara rader (<code>expandable-attribute</code>) aktiveras</p>
+
+                            <p class="doc-api__item">Default: "Expandera"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-translation-fkui-interactive-table-select"
+                                ><a class="docs-api__anchor" href="#finteractivetable-translation-fkui-interactive-table-select"
+                                    ><span class="docs-api__name"
+                                        >fkui.interactive-table.select</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Kolumnrubrik som visas för skärmläsare om funktionen för valbara rader (<code>selectable</code>) aktiveras</p>
+
+                            <p class="doc-api__item">Default: "Markera"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-translation-fkui-interactive-table-empty"
+                                ><a class="docs-api__anchor" href="#finteractivetable-translation-fkui-interactive-table-empty"
+                                    ><span class="docs-api__name"
+                                        >fkui.interactive-table.empty</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            <p>Text som visas som standardinnehåll i slotten <code>empty</code> (när tabellen är tom).</p>
+
+                            <p class="doc-api__item">Default: "Tabellen är tom"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <dl class="docs-api docs-api--translation">
+            
+        </dl>
+    <h2 id="props_events_slots"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="fdatatable"><a class="header-anchor" href="#fdatatable">FDataTable</a></h3><p class="docs-paragraph">Används för att presentera information</p>
+
+        <h4 id="fdatatable-props">
+            <a class="header-anchor" href="#fdatatable-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fdatatable-prop-rows"
+                                ><a class="docs-api__anchor" href="#fdatatable-prop-rows"
+                                    ><span class="docs-api__name"
+                                        >rows</span
+                                    >: T[]</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>The rows to be listed.
+The rows will be listed in the given array order.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatatable-prop-keyattribute"
+                                ><a class="docs-api__anchor" href="#fdatatable-prop-keyattribute"
+                                    ><span class="docs-api__name"
+                                        >keyAttribute</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Unique attribute in rows.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatatable-prop-striped"
+                                ><a class="docs-api__anchor" href="#fdatatable-prop-striped"
+                                    ><span class="docs-api__name"
+                                        >striped</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>When enabled alternating rows will use a different background color.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatatable-prop-scroll"
+                                ><a class="docs-api__anchor" href="#fdatatable-prop-scroll"
+                                    ><span class="docs-api__name"
+                                        >scroll</span
+                                    >: TableScroll</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enable scrolling inside table.</p>
+<p>Can be one of the following values:</p>
+<ul>
+<li><code>&quot;horizontal&quot;</code>: Enables horizontal scrolling</li>
+<li><code>&quot;vertical&quot;</code>: Enables vertical scrolling</li>
+<li><code>&quot;both&quot;</code>: Enables scrolling in both directions</li>
+<li><code>&quot;none&quot;</code>: Disables scrolling (default)</li>
+</ul>
+
+                            <p class="doc-api__item">Default: <code>TableScroll.NONE</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="fdatatable-slots">
+            <a class="header-anchor" href="#fdatatable-slots">Slots</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="fdatatable-slot-caption"
+                                ><a class="docs-api__anchor" href="#fdatatable-slot-caption"
+                                    ><span class="docs-api__name"
+                                        >caption</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for table caption.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatatable-slot-default"
+                                ><a class="docs-api__anchor" href="#fdatatable-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for table row.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>row: T</code> <span role="presentation">&mdash;</span> Current row being rendered.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fdatatable-slot-empty"
+                                ><a class="docs-api__anchor" href="#fdatatable-slot-empty"
+                                    ><span class="docs-api__name"
+                                        >empty</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying a message when table is empty. Default text is 'Tabellen är tom' (key fkui.data-table.empty).</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h3 id="ftablebutton"><a class="header-anchor" href="#ftablebutton">FTableButton</a></h3>
+        <h4 id="ftablebutton-props">
+            <a class="header-anchor" href="#ftablebutton-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftablebutton-prop-icon"
+                                ><a class="docs-api__anchor" href="#ftablebutton-prop-icon"
+                                    ><span class="docs-api__name"
+                                        >icon</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>When set to an icon name an icon is displayed next to the label.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablebutton-prop-label"
+                                ><a class="docs-api__anchor" href="#ftablebutton-prop-label"
+                                    ><span class="docs-api__name"
+                                        >label</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>By default the label is visually hidden. When this prop is enabled the
+label is rendered visually as well.</p>
+
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="ftablebutton-events">
+            <a class="header-anchor" href="#ftablebutton-events">Events</a>
+        </h4>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="ftablebutton-event-click"
+                                ><a class="docs-api__anchor" href="#ftablebutton-event-click"
+                                    ><span class="docs-api__name"
+                                        >click</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when the button is pressed.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="ftablebutton-slots">
+            <a class="header-anchor" href="#ftablebutton-slots">Slots</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftablebutton-slot-default"
+                                ><a class="docs-api__anchor" href="#ftablebutton-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Label text.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h3 id="ftablecolumn"><a class="header-anchor" href="#ftablecolumn">FTableColumn</a></h3>
+        <h4 id="ftablecolumn-props">
+            <a class="header-anchor" href="#ftablecolumn-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftablecolumn-prop-name"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-name"
+                                    ><span class="docs-api__name"
+                                        >name</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Unique (per-table) identifier. Typically set to the row
+property displayed but any unique string can be used.</p>
+<p>Only required when used with <code>FSortFilterDataset</code>.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-visible"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-visible"
+                                    ><span class="docs-api__name"
+                                        >visible</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>When enabled controls column visibility (default <code>true</code>)</p>
+<p>Should be used instead of <code>v-if</code> or <code>v-show</code>.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-rowheader"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-rowheader"
+                                    ><span class="docs-api__name"
+                                        >rowHeader</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>When enabled this cell will be a row header (<code>&lt;th&gt;</code> as opposed to
+<code>&lt;td&gt;</code>).</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-title"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-title"
+                                    ><span class="docs-api__name"
+                                        >title</span
+                                    >: string</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>Text to show in column header. In order to force newlines use <code>\n</code>.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-description"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-description"
+                                    ><span class="docs-api__name"
+                                        >description</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Additional column description.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-shrink"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-shrink"
+                                    ><span class="docs-api__name"
+                                        >shrink</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set this column to shrink as small as possible.</p>
+<p>Cannot be combined with <code>expand</code></p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-expand"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-expand"
+                                    ><span class="docs-api__name"
+                                        >expand</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Set this column to expand as large as possible.</p>
+<p>Cannot be combined with <code>shrink</code></p>
+<p>Default if neither <code>expand</code> or <code>shrink</code> is set.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="ftablecolumn-prop-type"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-prop-type"
+                                    ><span class="docs-api__name"
+                                        >type</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Type of data the rows contains.</p>
+<p>Applies proper alignment and some styling (e.g. &quot;numeric&quot; uses fixed
+width numbers).</p>
+<p>Can be one of the following values:</p>
+<ul>
+<li><code>&quot;text&quot;</code>: regular text data (default)</li>
+<li><code>&quot;date&quot;</code>: date (should be YYYY-MM-DD)</li>
+<li><code>&quot;numeric&quot;</code>: numeric data</li>
+<li><code>&quot;action&quot;</code>: buttons to perform actions on row</li>
+</ul>
+
+                            <p class="doc-api__item">Default: <code>FTableColumnType.TEXT</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="ftablecolumn-slots">
+            <a class="header-anchor" href="#ftablecolumn-slots">Slots</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="ftablecolumn-slot-default"
+                                ><a class="docs-api__anchor" href="#ftablecolumn-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Content to be rendered in table cell.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    <h3 id="finteractivetable"><a class="header-anchor" href="#finteractivetable">FInteractiveTable</a></h3>
+        <h4 id="finteractivetable-props">
+            <a class="header-anchor" href="#finteractivetable-props">Props</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="finteractivetable-prop-rows"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-rows"
+                                    ><span class="docs-api__name"
+                                        >rows</span
+                                    >: T[]</a
+                                ></code
+                            >
+                            
+                            
+                        </dt>
+                        <dd>
+                            <p>The rows to be listed.
+The rows will be listed in the given array order.</p>
+
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-hover"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-hover"
+                                    ><span class="docs-api__name"
+                                        >hover</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>When enabled hovering over a row will be highlighted.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-keyattribute"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-keyattribute"
+                                    ><span class="docs-api__name"
+                                        >keyAttribute</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Unique attribute in rows.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-expandableattribute"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-expandableattribute"
+                                    ><span class="docs-api__name"
+                                        >expandableAttribute</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Attribute of expandable content in rows.
+If provided, the table can contain expandable rows.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-expandabledescribedby"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-expandabledescribedby"
+                                    ><span class="docs-api__name"
+                                        >expandableDescribedby</span
+                                    >: string</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Element id for aria-describedby on expandable rows to describe expanded content.</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;&quot;</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-selectable"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-selectable"
+                                    ><span class="docs-api__name"
+                                        >selectable</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>When enabled the table rows will be selectable.</p>
+<p>The current set of selected rows can be accessed with <code>v-model</code>.</p>
+<p>The <code>select</code> and <code>unselect</code> events will be emitted when a row is selected
+or deselected.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-striped"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-striped"
+                                    ><span class="docs-api__name"
+                                        >striped</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>When enabled alternating rows will use a different background color.</p>
+
+                            <p class="doc-api__item">Default: <code>false</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-scroll"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-scroll"
+                                    ><span class="docs-api__name"
+                                        >scroll</span
+                                    >: TableScroll</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enable scrolling inside table.</p>
+<p>Can be one of the following values:</p>
+<ul>
+<li><code>&quot;horizontal&quot;</code>: Enables horizontal scrolling</li>
+<li><code>&quot;vertical&quot;</code>: Does nothing (deprecated)</li>
+<li><code>&quot;both&quot;</code>: Acts as horizontal (deprecated)</li>
+<li><code>&quot;none&quot;</code>: Disables scrolling (default)</li>
+</ul>
+
+                            <p class="doc-api__item">Default: <code>TableScroll.NONE</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-showactive"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-showactive"
+                                    ><span class="docs-api__name"
+                                        >showActive</span
+                                    >: boolean</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Enable showing the active row.</p>
+
+                            <p class="doc-api__item">Default: <code>true</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-v-model"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-v-model"
+                                    ><span class="docs-api__name"
+                                        >v-model</span
+                                    >: T[] | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Currently selected rows.
+Requires <code>selectable</code> to be set.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-prop-v-model-active"
+                                ><a class="docs-api__anchor" href="#finteractivetable-prop-v-model-active"
+                                    ><span class="docs-api__name"
+                                        >v-model:active</span
+                                    >: T | undefined</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Current active row.</p>
+
+                            <p class="doc-api__item">Default: <code>undefined</code></p>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="finteractivetable-events">
+            <a class="header-anchor" href="#finteractivetable-events">Events</a>
+        </h4>
+        <dl class="docs-api docs-api--events">
+            
+                        <dt>
+                            <code id="finteractivetable-event-change"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-change"
+                                    ><span class="docs-api__name"
+                                        >change</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when row is activated.</p>
+<p>Note: This event is being emitted even if prop <code>showActive</code> is set to <code>false</code>!</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: T</code> <span role="presentation">&mdash;</span> Row being activated.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-click"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-click"
+                                    ><span class="docs-api__name"
+                                        >click</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when row is clicked.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: T</code> <span role="presentation">&mdash;</span> Row being clicked.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-select"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-select"
+                                    ><span class="docs-api__name"
+                                        >select</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when row is selected. See also <code>unselect</code>.</p>
+<p>This event is only emitted when using prop <code>selectable</code>.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: T</code> <span role="presentation">&mdash;</span> Row being selected.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-unselect"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-unselect"
+                                    ><span class="docs-api__name"
+                                        >unselect</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when row is unselected. See also <code>select</code>.</p>
+<p>This event is only emitted when using prop <code>selectable</code>.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: T</code> <span role="presentation">&mdash;</span> Row being unselected.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-expand"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-expand"
+                                    ><span class="docs-api__name"
+                                        >expand</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when row is expanded. See also <code>collapse</code>.</p>
+<p>This event is only emitted when using expandable rows.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: T</code> <span role="presentation">&mdash;</span> The parent row holding rows to be expanded.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-collapse"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-collapse"
+                                    ><span class="docs-api__name"
+                                        >collapse</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Emitted when row is collapsed. See also <code>expand</code>.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: T</code> <span role="presentation">&mdash;</span> The parent row holding rows to be collapsed.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-update-modelvalue"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-update-modelvalue"
+                                    ><span class="docs-api__name"
+                                        >update:modelValue</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-momdel event for selected rows.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>rows: Array</code> <span role="presentation">&mdash;</span> Array of all currently selected rows.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-event-update-active"
+                                ><a class="docs-api__anchor" href="#finteractivetable-event-update-active"
+                                    ><span class="docs-api__name"
+                                        >update:active</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>V-model event for active row.</p>
+
+                            <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
+                            <li><code>row: union</code> <span role="presentation">&mdash;</span> Current active row or <code>undefined</code> if no row is active.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+        </dl>
+    
+        <h4 id="finteractivetable-slots">
+            <a class="header-anchor" href="#finteractivetable-slots">Slots</a>
+        </h4>
+        <dl class="docs-api docs-api--slots">
+            
+                        <dt>
+                            <code id="finteractivetable-slot-row-description"
+                                ><a class="docs-api__anchor" href="#finteractivetable-slot-row-description"
+                                    ><span class="docs-api__name"
+                                        >row-description</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Text to use as <code>aria-label</code> on the table row element (<code>&lt;tr&gt;</code>).</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-slot-caption"
+                                ><a class="docs-api__anchor" href="#finteractivetable-slot-caption"
+                                    ><span class="docs-api__name"
+                                        >caption</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for table caption.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-slot-default"
+                                ><a class="docs-api__anchor" href="#finteractivetable-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for table row.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>row: T</code> <span role="presentation">&mdash;</span> Current row being rendered.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-slot-checkbox-description"
+                                ><a class="docs-api__anchor" href="#finteractivetable-slot-checkbox-description"
+                                    ><span class="docs-api__name"
+                                        >checkbox-description</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Screenreader label for the checkbox when using <code>selectable</code>.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>row: T</code> <span role="presentation">&mdash;</span> Current row being rendered.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-slot-expandable"
+                                ><a class="docs-api__anchor" href="#finteractivetable-slot-expandable"
+                                    ><span class="docs-api__name"
+                                        >expandable</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for expandable table row.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>expandableRow: T</code> <span role="presentation">&mdash;</span> Current expandable row being rendered.</li><li><code>parentRow: T</code> <span role="presentation">&mdash;</span> The parent row of the expandable rows.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="finteractivetable-slot-empty"
+                                ><a class="docs-api__anchor" href="#finteractivetable-slot-empty"
+                                    ><span class="docs-api__name"
+                                        >empty</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying a message when table is empty.</p>
+
+                            
+                            
+                            
+                            
+                        </dd>
+                    
+        </dl>
+    
+
+                    </div>
+                </main>
+            </div>
+
+            <footer><div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="../../gettingstarted/about/index.html">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center"></div>
+
+<div class="footer__right"><div class="version"><div class="heading--h1">FKDS version 6.7.0</div>
+</div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--tertiary button--tertiary--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+
+    <ul>
+        <li><a class="anchor" href="../../changelog.html">Changelog</a></li>
+        <li><a class="anchor" href="../../accessibility.html">Tillgänglighetsredogörelse</a></li>
+        <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
+    </ul>
+</div>
+</footer>
+        </div><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div><dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label">Sök</label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog><script
+            src="../../assets/processors/motd/index-26ba41.js"
+            type="module"
+            crossorigin
+            integrity="sha384-dRUZKuoDucHdxWgTjhjsiUKqA/8XdoGnuv7g3Sr48xEYC0Ek5QprgPB4/cPcByma"
+            
+        ></script><script
+            src="../../assets/processors/selectable-version/select-version-088264.js"
+            type="module"
+            crossorigin
+            integrity="sha384-L24LuqqDvxkzHPrZZivH0yWBMqrGurxn7ic+D9tYCRsIzQJjoW+ZqoaaFaD9Ib78"
+            
+        ></script><script
+            src="../../assets/main-0ec342.js"
+            type="module"
+            crossorigin
+            integrity="sha384-024ARbIkk+36wQRMNqANavYck/wi86OjA7OQfU3szttx8PSUfCLc+u90c5D34iPZ"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/components/table-and-list/table.md
+         Document ID: fs:docs/components/table-and-list/table.md
+         Document name: table
+         Document alias: component:FDataTable, component:FInteractiveTable, component:FTableButton, component:FTableColumn
+
+    -->
+</html>

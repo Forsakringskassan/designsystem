@@ -1,0 +1,1345 @@
+<!doctype html>
+<html lang="sv" class="layout--component" data-root-url="../..">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Formaterare och parsers - FK Designsystem</title>
+
+        <!-- prettier-ignore -->
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-3c5333.css"
+            crossorigin
+            integrity="sha384-zGGe26cG+yxHhHNJD1nLxuNvSKPtCFcBhoXKNB8DwrpeRrKbncJA1Y4+zm84Sor0"
+            
+        />
+        <link
+            rel="stylesheet"
+            href="../../assets/docs-fkui-e2698c.css"
+            crossorigin
+            integrity="sha384-CDETmTgs3T+qNHOzq5hdY4geLicEn7YRUvbZ9nxWDXhP0fudtNatvzjzTMeroJda"
+            data-theme="fkui" disabled
+        />
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../assets/bootstrap-956ec3.js"
+            crossorigin
+            integrity="sha384-xxAJqJoQn4hXyrxMhtQL+Vf9cvR79mtI9cjQwcm4awdJR3rcJZo1/+24cjUnFmfe"
+            
+        ></script>
+
+        <!-- prettier-ignore -->
+        <script>
+    (() => {
+        withCookieConsent(() =>  {
+            const allowedHostnames = [
+  "designsystem.forsakringskassan.se",
+  "designsystem.fk.se",
+  "ds.fk.se",
+  "forsakringskassan.github.io"
+];
+            if (allowedHostnames.length === 0 || allowedHostnames.includes(location.hostname)) {
+                /* Matomo */
+                var _paq = (window._paq = window._paq || []);
+                
+                _paq.push(["trackPageView"]);
+                _paq.push(["enableLinkTracking"]);
+                (function () {
+                    var u = "https://webstats.forsakringskassan.se/matomo/";
+                    _paq.push(["setTrackerUrl", u + "matomo.php"]);
+                    _paq.push(["setSiteId", "19"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.async = true;
+                    g.src = u + "matomo.js";
+                    s.parentNode.insertBefore(g, s);
+                })();
+                /* End Matomo Code */
+            } else {
+                console.error(
+                    "Matomo analytics disabled as we are not running on one of the configured hostnames",
+                    allowedHostnames,
+                );
+            }
+        });
+    })();
+</script>
+
+
+        <link
+            rel="preload"
+            href="../../search-data-51767f.json"
+            as="fetch"
+            crossorigin
+            integrity="sha384-DUxiATGYypO4K4v8oQPJuqpD1DLkBLf8iRjW40K342tdRm7f13kCkPgHux2mJXpv"
+            id="search-data"
+        />
+    </head>
+    <body>
+        <!-- prettier-ignore -->
+        
+<template id="motd-message">
+<div class="docs-motd docs-motd--info">
+    <span class="docs-motd__icon">
+        <span class="icon-stack icon-stack--info">
+            <svg class="icon icon--circle" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-circle"></use>
+            </svg>
+            <svg class="icon icon--i" focusable="false" aria-hidden="true">
+                <use xlink:href="#docs-icon-i"></use>
+            </svg>
+        </span>
+    </span><span data-bind="screenreader" class="sr-only"></span>
+    <p data-bind="message"></p></div>
+</template>
+
+
+<div id="motd-container">
+    </div>
+<div class="cookie-warning">
+    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+    <h1>Kakor på webbplatsen</h1>
+    <p>
+        Vi använder kakor (cookies) för att webbplatsen ska fungera så bra som möjligt för dig.<br />
+        Vi använder också kakor för webbanalys för att göra webbplatsen bättre.
+    </p>
+    <p>Godkänner du att vi också använder kakor för webbanalys?</p>
+
+    <div class="button-group">
+        <button id="consent-all-button" class="button button-group__item button--primary" type="button">
+            Ja, jag godkänner alla kakor
+        </button>
+
+        <button id="consent-functional-button" class="button button-group__item button--secondary" type="button">
+            Nej, jag godkänner bara nödvändiga kakor
+        </button>
+    </div>
+</div>
+
+
+        <div class="layout-wrapper">
+            <header>
+                <!-- prettier-ignore --><div class="page-header__root">
+    <div class="page-header">
+        <a class="page-header__logo" href="../../index.html">
+            <span aria-label="FK Designsystem" role="img" class="page-header__logo--small"> </span>
+        </a>
+        <a class="page-header__app-name" href="../../index.html"> FK Designsystem </a>
+        <div class="page-header__right"><nav id="topnav" class="docs-topnav" aria-label="Primär">
+    <ul class="docs-topnav__list">
+        <!-- prettier-ignore -->
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../gettingstarted/"> Kom igång </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item highlight">
+            <a class="docs-topnav__anchor" href="../"> Komponenter </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../guides/"> Guider </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../functions/"> Funktioner </a>
+        </li>
+        
+        
+        
+        
+        <li class="docs-topnav__item ">
+            <a class="docs-topnav__anchor" href="../../styles/"> Visuellt </a>
+        </li>
+        <li class="docs-topnav__item docs-topnav__item--more" style="visibility: hidden">
+            <button type="button" class="docs-topnav__anchor" aria-expanded="false">
+                <span>Mer</span>
+                <svg class="icon" focusable="false" aria-hidden="true">
+                    <use xlink:href="#docs-icon-arrow-down"></use>
+                </svg>
+            </button>
+            <div class="docs-contextmenu">
+                <ul class="docs-contextmenu__list">
+                    <!-- prettier-ignore -->
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../gettingstarted/"> Kom igång </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item highlight" style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../"> Komponenter </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../guides/"> Guider </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../functions/"> Funktioner </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="docs-contextmenu__item " style="display: none">
+                        <a class="docs-contextmenu__anchor" href="../../styles/"> Visuellt </a>
+                    </li>
+                    </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+            <div class="page-header__right-slot">
+                <div class="toolbar"><div class="toolbar__item">
+    <form id="search" role="search">
+        <button class="text-field__input" type="submit">
+            <svg focusable="false" class="icon button__icon">
+                <use xlink:href="#docs-icon-search"></use></svg
+            >Sök <kbd>ctrl-k</kbd>
+        </button>
+    </form>
+</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+
+            <div id="primary">
+                <!-- prettier-ignore -->
+<div id="sidenav">
+<input type="checkbox" class="sidenav__toggle" aria-label="Open/close navigation" />
+<nav class="navigation" aria-label="Sekundär">
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fbadge.html"
+            
+        >
+            Bricka
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../chip.html"
+            
+        >
+            Chip
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fdialoguetree.html"
+            
+        >
+            Dialogträd
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../flabel.html"
+            
+        >
+            Etikett
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Expanderbara ytor</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../expandable/fexpandablepanel.html"
+            
+        >
+            Expanderbar panel
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../expandable/fexpand.html"
+            
+        >
+            Expanderbart innehåll
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../expandable/fexpandableparagraph.html"
+            
+        >
+            Expanderbart stycke
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Filuppladdning</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../file-upload/ffileitem.html"
+            
+        >
+            Filpresentatör
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../file-upload/ffileselector.html"
+            
+        >
+            Filväljare
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Gruppera</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../group/ffieldset.html"
+            
+        >
+            Fältgruppering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../group/"
+            
+        >
+            Komponentgrupp
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../ficon.html"
+            
+        >
+            Ikon
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Inmatning</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../input/ftextfield.html"
+            
+        >
+            Inmatningsfält
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../input/fdatepickerfield.html"
+            
+        >
+            Datumväljare
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../input/fselectfield.html"
+            
+        >
+            Dropplista
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../input/ftextareafield.html"
+            
+        >
+            Flerradigt inmatningsfält
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../input/combobox.html"
+            
+        >
+            Kombobox
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../input/fcheckboxfield.html"
+            
+        >
+            Kryssruta
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../input/fradiofield.html"
+            
+        >
+            Radioknapp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../input/textfield-specialized.html"
+            
+        >
+            Specialiserade inmatningsfält
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fcalendar.html"
+            
+        >
+            Kalender
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../button.html"
+            
+        >
+            Knapp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fcontextmenu.html"
+            
+        >
+            Kontextmeny
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fcard.html"
+            
+        >
+            Kort
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Ladda innehåll</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../load/fprogressbar.html"
+            
+        >
+            Förloppsindikator
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../load/floader.html"
+            
+        >
+            Laddningsindikator
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../flogo.html"
+            
+        >
+            Logotyp
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Länkar</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../links/anchor.html"
+            
+        >
+            Länk
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../links/entrypoint.html"
+            
+        >
+            Startpunkt
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fmessagebox.html"
+            
+        >
+            Meddelanderuta
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Modal</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../modal/fconfirmmodal.html"
+            
+        >
+            Bekräftelsemodal
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../modal/fformmodal.html"
+            
+        >
+            Formulärsmodal
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../modal/fmodal.html"
+            
+        >
+            Modal dialogruta
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../foffline.html"
+            
+        >
+            Offline
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Presentationsfält</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../presentation/foutputfield.html"
+            
+        >
+            Presentationsfält - dynamiskt
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../presentation/fstaticfield.html"
+            
+        >
+            Presentationsfält - statiskt
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Ramverkskomponenter</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/ianimateexpand.html"
+            
+        >
+            Animerad expandering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/iflexitem.html"
+            
+        >
+            Flex Item
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/iflex.html"
+            
+        >
+            Flexibel positionering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/iskiplink.html"
+            
+        >
+            Gå till innehåll
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/icalendarmonth.html"
+            
+        >
+            Kalendermånad
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/icalendarnavbar.html"
+            
+        >
+            Kalendernavigering
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/icalendarmonthgrid.html"
+            
+        >
+            Kalenderrutnät
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/ipopup.html"
+            
+        >
+            Popup
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/ipopupmenu.html"
+            
+        >
+            Popup-meny
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../framework/ipopuperror.html"
+            
+        >
+            PopupError
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Sidlayout</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../page-layout/application-layout.html"
+            
+        >
+            Applikationslayout
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../page-layout/fnavigationmenu.html"
+            
+        >
+            Navigeringsmeny
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../page-layout/fpageheader.html"
+            
+        >
+            Sidhuvud
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../fwizard.html"
+            
+        >
+            Steg för steg-guide
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable ">
+        <details >
+            <summary>Tabell och lista</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../table-and-list/table.html"
+            
+        >
+            Tabell
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../table-and-list/flist.html"
+            
+        >
+            Lista
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../table-and-list/fcruddataset.html"
+            
+        >
+            Datamängdredigerare
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../table-and-list/fsortfilterdataset.html"
+            
+        >
+            Datamängdsorterare
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="../ftooltip.html"
+            
+        >
+            Tooltip
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <li class="expandable active">
+        <details open>
+            <summary>Validering</summary>
+            <!-- prettier-ignore -->
+            
+            
+<ol>
+    <!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./ferrorlist.html"
+            
+        >
+            Fellista
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link active">
+        <!-- prettier-ignore -->
+        <a
+            href="./formatters-and-parsers.html"
+            
+        >
+            Formaterare och parsers
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./validators.html"
+            
+        >
+            Validatorer
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fvalidationgroup.html"
+            
+        >
+            Validering samlad
+        </a>
+    </li><!-- prettier-ignore --><!-- prettier-ignore -->
+    <!-- prettier-ignore -->
+    <li class="link ">
+        <!-- prettier-ignore -->
+        <a
+            href="./fvalidationform.html"
+            
+        >
+            Valideringsformulär
+        </a>
+    </li><!-- prettier-ignore --></ol>
+
+            
+        </details>
+    </li><!-- prettier-ignore -->
+    <!-- prettier-ignore --></ol>
+</nav>
+</div>
+
+
+                <!-- prettier-ignore -->
+                <script
+                    src="../../assets/vendor-vue-468cb1.js"
+                    crossorigin
+                    integrity="sha384-KKjiOjaw6Q5fH4WnjR/Bs1bYIxZ/yOxDk3Wtk665LIZMMavXzSWZawkLXt4Xqv48"
+                ></script>
+                <script
+                    src="../../assets/vendor-fkui-logic-62a69f.js"
+                    crossorigin
+                    integrity="sha384-WH8SnvWcbj2mb+4BZkTAU4vGLenzQTr9nNRbbTAYW+10d9B7A0t53hcX52Ab9yId"
+                ></script>
+                <script
+                    src="../../assets/vendor-fkui-date-7710bf.js"
+                    crossorigin
+                    integrity="sha384-JO7k+GvhHdpmiDiWKkys94ppUsf2X5XSV/pJaS86aT5REuaoliLDbwTsDzjWTg2M"
+                ></script>
+                <script
+                    src="../../assets/vendor-fkui-vue-407f5a.js"
+                    crossorigin
+                    integrity="sha384-UVL5Z/5ZlzgvRIzq8eeAqHOooWaLccRtZaR5o02owDzdKT/3C5G3itBRHwZ5iNiL"
+                ></script>
+                <script
+                    src="../../assets/vendor-forsakringskassan-docs-live-example-e5b7e3.js"
+                    crossorigin
+                    integrity="sha384-xCPY57XKJObfTlktCk3lVaqN1q5FE+90De/IQXXP9Bk65E1+4M1AMGUg1mpBmyNJ"
+                ></script>
+
+                <!-- prettier-ignore --><main>
+                    <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
+                    <h1 id="title">Formaterare och parsers</h1>
+
+                    
+                    <div id="aside">
+                        <!-- prettier-ignore -->
+<dl>
+    <!-- prettier-ignore -->
+    
+
+    <!-- prettier-ignore -->
+    
+</dl>
+
+
+                        
+                        <details id="outline">
+                            <summary class="outline__heading">Innehåll</summary>
+                            <ul>
+                                
+                                <li><a href="#bankgiro_parser">Bankgiro (parser)</a></li>
+                                
+                                <li><a href="#clearingnummer_formaterare">Clearingnummer (formaterare)</a></li>
+                                
+                                <li><a href="#clearingnummer_parser">Clearingnummer (parser)</a></li>
+                                
+                                <li><a href="#datum_parser">Datum (parser)</a></li>
+                                
+                                <li><a href="#kontonummer_parser">Kontonummer (parser)</a></li>
+                                
+                                <li><a href="#nummer_formaterare">Nummer (formaterare)</a></li>
+                                
+                                <li><a href="#nummer_parser">Nummer (parser)</a></li>
+                                
+                                <li><a href="#organisationsnummer_parser">Organisationsnummer (parser)</a></li>
+                                
+                                <li><a href="#personnummer_formaterare">Personnummer (formaterare)</a></li>
+                                
+                                <li><a href="#personnummer_parser">Personnummer (parser)</a></li>
+                                
+                                <li><a href="#plusgiro_parser">Plusgiro (parser)</a></li>
+                                
+                                <li><a href="#postnummer_parser">Postnummer (parser)</a></li>
+                                
+                                <li><a href="#procent_formaterare">Procent (formaterare)</a></li>
+                                
+                                <li><a href="#procent_parser">Procent (parser)</a></li>
+                                
+                                <li><a href="#relaterat">Relaterat</a></li>
+                                
+                            </ul>
+                        </details>
+                        
+                    </div>
+                    
+
+                    <div id="content">
+                        <!-- prettier-ignore -->
+<p>Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält. Parsning används för att ändra på det som faktiskt hanteras och skickas in. Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag. Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.</p>
+<h2 id="bankgiro_parser"><a class="header-anchor" href="#bankgiro_parser">Bankgiro (parser)</a></h2><p><code>parseBankgiro</code></p>
+<p>Parsern för bankgiro tolkar vy-värdet genom att ändra så att modell-värdet blir</p>
+<ul>
+<li>NNN-NNNN om längden är sju tecken</li>
+<li>NNNN-NNNN om längden är åtta tecken.</li>
+</ul>
+<h2 id="clearingnummer_formaterare"><a class="header-anchor" href="#clearingnummer_formaterare">Clearingnummer (formaterare)</a></h2><p><code>formatClearingNumberForBackend</code></p>
+<p>Formateraren för clearingnummer tar bort sista siffran om clearingnumret innehåller fem siffror.</p>
+<h2 id="clearingnummer_parser"><a class="header-anchor" href="#clearingnummer_parser">Clearingnummer (parser)</a></h2><p><code>parseClearingNumber</code></p>
+<p>Parsern för clearingnummer tolkar vy-värdet genom att ändra så att modell-värdet blir</p>
+<ul>
+<li>NNNN om antalet siffror är fyra</li>
+<li>NNNN-N om antalet siffror är fem.</li>
+</ul>
+<h2 id="datum_parser"><a class="header-anchor" href="#datum_parser">Datum (parser)</a></h2><p><code>parseDate</code></p>
+<p>Parsern för datum tolkar vy-värdet genom att ändra så att modell-värdet får formatet ÅÅÅÅ-MM-DD.</p>
+<p>Exempel</p>
+<ul>
+<li>20211220 -&gt; 2021-12-20</li>
+</ul>
+<h2 id="kontonummer_parser"><a class="header-anchor" href="#kontonummer_parser">Kontonummer (parser)</a></h2><p><code>parseBankAccountNumber</code></p>
+<p>Parsern för kontonummer tar bort bindestreck, mellanslag, punkt och komma. Den behåller inledande nollor.</p>
+<h2 id="nummer_formaterare"><a class="header-anchor" href="#nummer_formaterare">Nummer (formaterare)</a></h2><p><code>formatNumber</code></p>
+<p>Formateraren för nummer formaterar inmatat värde genom att den</p>
+<ul>
+<li>tar bort inledande nollor</li>
+<li>sätter tusenavdelare</li>
+<li>konverterar punkt till komma.</li>
+</ul>
+<p>Exempel</p>
+<ul>
+<li>1000 -&gt; 1 000</li>
+<li>001000 -&gt; 1 000</li>
+<li>002.20003 -&gt; 2,2003</li>
+</ul>
+<h2 id="nummer_parser"><a class="header-anchor" href="#nummer_parser">Nummer (parser)</a></h2><p><code>parseNumber</code></p>
+<p>Parsern för nummer tolkar vy-värdet så att modell-värdet blir numerisk typ genom att den</p>
+<ul>
+<li>gör om sträng till numeriskt värde</li>
+<li>konverterar komma till punkt.</li>
+</ul>
+<h2 id="organisationsnummer_parser"><a class="header-anchor" href="#organisationsnummer_parser">Organisationsnummer (parser)</a></h2><p><code>parseOrganisationsnummer</code></p>
+<p>Parsern för organisationsnummer tolkar vy-värdet så att modell-värdet får formatet NNNNNN-NNNN.</p>
+<p>Exempel</p>
+<ul>
+<li>0123456789 -&gt; 012345-6789</li>
+</ul>
+<h2 id="personnummer_formaterare"><a class="header-anchor" href="#personnummer_formaterare">Personnummer (formaterare)</a></h2><p><code>formatPersonnummer</code></p>
+<p>Visar personnummer med 10 siffror enligt <a href="https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html">Skatteverkets regler</a> genom att den</p>
+<ul>
+<li>tar bort sekelsiffror</li>
+<li>lägger till bindestreck respektive plustecken.</li>
+</ul>
+<p>Exempel</p>
+<ul>
+<li>19980101-0000 -&gt; 980101-0000</li>
+<li>18980101-0000 -&gt; 980101+0000</li>
+</ul>
+<h2 id="personnummer_parser"><a class="header-anchor" href="#personnummer_parser">Personnummer (parser)</a></h2><p><code>parsePersonnummer</code></p>
+<p>Parsern för personnummer tolkar vy-värdet så att modell-värdet får formatet ååååmmdd-nnnn.</p>
+<p>Exempel</p>
+<ul>
+<li>199801010000 -&gt; 19980101-0000</li>
+<li>980101+0000 -&gt; 18980101-0000</li>
+<li>9801010000 -&gt; 19980101-0000</li>
+</ul>
+<h2 id="plusgiro_parser"><a class="header-anchor" href="#plusgiro_parser">Plusgiro (parser)</a></h2><p><code>parsePlusgiro</code></p>
+<p>Parsern för plusgiro tolkar vy-värdet så att modell-värdet får</p>
+<ul>
+<li>bindestreck mellan näst sista och sista siffran</li>
+<li>grupper med två siffror till vänster om bindestreck.</li>
+</ul>
+<p>Vid udda antal siffror till vänster kommer första gruppen innehålla en siffra. Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffror.</p>
+<p>Exempel</p>
+<ul>
+<li>N-N</li>
+<li>NN-N</li>
+<li>N NN-N</li>
+<li>NN NN-N</li>
+<li>N NN NN-N</li>
+</ul>
+<h2 id="postnummer_parser"><a class="header-anchor" href="#postnummer_parser">Postnummer (parser)</a></h2><p><code>parsePostalCode</code></p>
+<p>Formaterar inmatat värde till NNN NN.</p>
+<p>Exempel</p>
+<ul>
+<li>12345 -&gt; 123 45</li>
+</ul>
+<h2 id="procent_formaterare"><a class="header-anchor" href="#procent_formaterare">Procent (formaterare)</a></h2><p><code>formatPercent</code></p>
+<p>Formateraren för procent baseras på nummer-formateraren, för beskrivning se <a href="#nummer_formaterare">nummer-formaterare</a>.</p>
+<h2 id="procent_parser"><a class="header-anchor" href="#procent_parser">Procent (parser)</a></h2><p><code>parserPercent</code></p>
+<p>Parsern för procent baseras på nummer-parsern, för beskrivning se <a href="#nummer_parser">nummer-parser</a>.</p>
+<h2 id="relaterat"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><p><a href="../../guides/formatting-and-parsing/formatter-parser.html">Formatering och parsning</a></p>
+<p><a href="../../guides/formatting-and-parsing/custom-formatter-parser.html">Formaterare och parser - anpassad</a></p>
+
+
+                    </div>
+                </main>
+            </div>
+
+            <footer>
+                <!-- prettier-ignore --><div class="footer__left">
+    <h1>Kontakta oss</h1>
+    <ul>
+        <li><a class="anchor" href="mailto:designsystem@forsakringskassan.se">designsystem@forsakringskassan.se</a></li>
+        <li><a class="anchor" href="../../gettingstarted/about/index.html">Om designsystemet</a></li>
+    </ul>
+</div>
+
+<div class="footer__center"></div>
+
+<div class="footer__right">
+    <!-- prettier-ignore -->
+    <div class="version">
+    <!-- prettier-ignore -->
+    <div class="heading--h1">FKDS version 6.1.0</div>
+</div>
+<div class="toolbar__item">
+    <form id="version">
+        <button type="submit">
+            <span id="version-info" class="anchor"> Byt version </span>
+        </button>
+    </form>
+
+    <dialog id="version-dialog">
+        <div id="version-dialog-head">
+            <h1>Välj version</h1>
+            <button type="button" class="button button--discrete button--discrete--black">
+                <span>Stäng</span>
+                <svg class="button__icon icon f-icon-close" focusable="false" aria-hidden>
+                    <use xlink:href="#f-icon-close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="version-list">
+            <p>Var god vänta, laddar versionsdata...</p>
+        </div>
+    </dialog>
+</div>
+
+<template id="version-list-item">
+    <li class="list__item">
+        <a class="list__item__itempane">template</a>
+    </li>
+</template>
+
+
+    <ul>
+        <li><a class="anchor" href="../../changelog.html">Changelog</a></li>
+        <li><a class="anchor" href="../../accessibility.html">Tillgänglighetsredogörelse</a></li>
+        <li><a class="anchor" href="https://github.com/Forsakringskassan/designsystem">GitHub</a></li>
+    </ul>
+</div>
+</footer>
+        </div>
+
+        <!-- prettier-ignore --><div aria-hidden="true" style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <symbol id="docs-icon-search" viewBox="0 0 512 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+                fill="currentColor"
+                d="M505 442.7 405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34M208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-close" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="m322.72 256 100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L256 189.28 155.93 89.21c-12.28-12.28-32.19-12.28-44.48 0l-22.24 22.24c-12.28 12.28-12.28 32.19 0 44.48L189.28 256 89.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L256 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48z"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-arrow-down" viewBox="0 0 512 512">
+            <path
+                fill="currentColor"
+                d="M239.373 380.982 45.03 186.638c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04l154.746 154.021L411.089 129.99c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L273.315 380.982c-9.373 9.372-24.569 9.372-33.942 0"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-circle" xml:space="preserve" viewBox="0 0 512 512">
+            <path
+                d="M489.5 256c0 129-104.6 233.5-233.5 233.5C127 489.5 22.5 385 22.5 256S127 22.5 256 22.5 489.5 127 489.5 256"
+                style="fill: currentColor"
+            ></path>
+            <path
+                d="M512 256c0 141.4-114.6 256-256 256S0 397.4 0 256 114.6 0 256 0s256 114.6 256 256M256 469.3c117.8 0 213.3-95.5 213.3-213.3S373.8 42.7 256 42.7 42.7 138.2 42.7 256 138.2 469.3 256 469.3"
+                style="fill-rule: evenodd; clip-rule: evenodd"
+            ></path>
+        </symbol>
+        <symbol id="docs-icon-i" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+            <style>
+                .i {
+                    fill: currentColor;
+                }
+            </style>
+            <path
+                d="M228.25 243.12c0-15.33 12.42-27.75 27.75-27.75s27.75 12.43 27.75 27.75v117.19c0 15.33-12.43 27.75-27.75 27.75-15.33 0-27.75-12.43-27.75-27.75zM285.09 153.03c0 16.07-13.02 29.09-29.09 29.09s-29.09-13.02-29.09-29.09 13.02-29.09 29.09-29.09 29.09 13.02 29.09 29.09"
+                class="i"
+            ></path>
+        </symbol>
+    </svg>
+</div>
+<!-- prettier-ignore -->
+        <dialog id="search-dialog">
+    <!-- [html-validate-disable-next wcag/h32 -- handled via script] -->
+    <form id="search-form">
+        <div class="text-field">
+            <label for="search-field" class="label"> Sök </label>
+            <div class="text-field__input-wrapper">
+                <div class="text-field__icon-wrapper">
+                    <input
+                        autofocus
+                        autocomplete="off"
+                        autocapitalize="off"
+                        autocorrect="off"
+                        id="search-field"
+                        type="text"
+                        class="text-field__input"
+                        maxlength="50"
+                        placeholder="Skriv för att börja söka"
+                    />
+                </div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+        <p><kbd>Esc</kbd> för att stänga <kbd>Pil upp/ner</kbd> för att navigera <kbd>Enter</kbd> för att välja</p>
+    </form>
+</dialog>
+
+
+        <!-- prettier-ignore -->
+        <script
+            src="../../assets/processors/motd/index-8c87e1.js"
+            crossorigin
+            integrity="sha384-VgbNs0pGkTPNii6sZDsQfyDa2hDTsNJePPW42/GgMW4jj8RspvO2p7e7j22mfz/b"
+            
+        ></script>
+        <script
+            src="../../assets/processors/selectable-version/select-version-004ae0.js"
+            crossorigin
+            integrity="sha384-7p7yp5B/6hnfSpcM6RQpE7QmYzHtNN2tiNGlUV+SJojwaK3TFPppMyMvb5s9ML+h"
+            
+        ></script>
+        <script
+            src="../../assets/main-a42003.js"
+            crossorigin
+            integrity="sha384-x2SQET46c/KcCVPl9j9im2cY+og5S7eYArRrQQxTLOpOGETP3s9r5bCSxKrnzGbP"
+            
+        ></script>
+    </body>
+
+    <!--
+
+         Source file: docs/components/validation/formatters-and-parsers.md
+         Document ID: fs:docs/components/validation/formatters-and-parsers.md
+         Document name: formatters-and-parsers
+         Document alias: 
+
+    -->
+</html>
