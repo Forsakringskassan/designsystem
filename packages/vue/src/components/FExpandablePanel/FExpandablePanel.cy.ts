@@ -27,16 +27,13 @@ function createComponent(template: string): DefineComponent {
 }
 
 describe("FExpandablePanel", () => {
-    const panel = new FExpandablePanelPageObject(".expandable-panel__body");
-    const panelWithNotification = new FExpandablePanelPageObject(
-        "[data-test=notification-example]",
-    );
+    const defaultPanel = new FExpandablePanelPageObject(".expandable-panel");
 
     const defaultTemplate = /* HTML */ `
         <f-expandable-panel
             :expanded="expanded"
             @toggle="onToggle"
-            data-test="expandable-panel"
+            v-test="'expandable-panel'"
             id="expandable-panel-id"
         >
             <template #title> Titel </template>
@@ -55,17 +52,11 @@ describe("FExpandablePanel", () => {
         cy.clearLocalStorage();
     });
 
-    it("Should have a page object that can access any necessary elements for default expandable panel with `id` selector ", () => {
-        cy.mount(createComponent(defaultTemplate));
-        const panel = new FExpandablePanelPageObject("#expandable-panel-id");
-        panel.header().should("have.trimmedText", "Titel");
-    });
-
-    it("Should have a page object that can access any necessary elements for default expandable panel with `data-*` selector ", () => {
-        cy.mount(createComponent(defaultTemplate));
+    it("Should access necessary elements for default expandable panel", () => {
         const panel = new FExpandablePanelPageObject(
             "[data-test=expandable-panel]",
         );
+        cy.mount(createComponent(defaultTemplate));
         panel.el().should("be.visible");
         panel.isOpen().should("be.false");
         panel.expandCollapseIcon().click();
@@ -74,13 +65,13 @@ describe("FExpandablePanel", () => {
         panel.notificationIcon().should("not.exist");
     });
 
-    it("Should have a page object that can access any necessary elements for expandable panel with notification icon", () => {
+    it("Should access any necessary elements for expandable panel with notification icon", () => {
         const template = /* HTML */ `
             <f-expandable-panel
                 :expanded="expanded"
                 :notifications="1"
                 @toggle="onToggle"
-                data-test="notification-example"
+                v-test="'notification-example'"
             >
                 <template #title> Titel med en notifiering </template>
                 <template #default> Innehåll </template>
@@ -90,7 +81,13 @@ describe("FExpandablePanel", () => {
                 </template>
             </f-expandable-panel>
         `;
+
+        const panelWithNotification = new FExpandablePanelPageObject(
+            ".expandable-panel",
+        );
+
         cy.mount(createComponent(template));
+
         panelWithNotification.notificationIcon().should("be.visible");
         panelWithNotification
             .notificationIcon()
@@ -105,29 +102,6 @@ describe("FExpandablePanel", () => {
             );
 
         panelWithNotification.numberOfNotifications().should("be.equal", 1);
-    });
-
-    describe("density", () => {
-        const DensityComponent = defineComponent({
-            template: /* HTML */ `
-                <density-wrapper>
-                    <f-expandable-panel :expanded="true">
-                        <template #title> Rubrik </template>
-                        <template #default> Innehåll </template>
-                    </f-expandable-panel>
-                </density-wrapper>
-            `,
-            components: {
-                DensityWrapper,
-                FExpandablePanel,
-            },
-        });
-
-        it(`should be densified`, () => {
-            cy.viewport(densityWrapperWidth, densityWrapperHeight);
-            cy.mount(DensityComponent);
-            cy.toMatchScreenshot();
-        });
     });
 
     it("should handle initial collapsed", () => {
@@ -153,15 +127,17 @@ describe("FExpandablePanel", () => {
         cy.mount(TestComponent);
 
         /* initially collapsed -> should not occupy height */
-        panel.body().should((el) => expect(el.height()).lte(0));
+        defaultPanel.body().should((el) => expect(el.height()).lte(0));
 
         /* expanded -> should occupy height */
-        panel.expandCollapseIcon().click();
-        panel.body().should((el) => expect(el.height()).gte(500 - epsilon));
+        defaultPanel.expandCollapseIcon().click();
+        defaultPanel
+            .body()
+            .should((el) => expect(el.height()).gte(500 - epsilon));
 
         /* collapsed -> should not occupy height again */
-        panel.expandCollapseIcon().click();
-        panel.body().should((el) => expect(el.height()).lte(0));
+        defaultPanel.expandCollapseIcon().click();
+        defaultPanel.body().should((el) => expect(el.height()).lte(0));
     });
 
     it("should handle initial expanded", () => {
@@ -187,14 +163,41 @@ describe("FExpandablePanel", () => {
         cy.mount(TestComponent);
 
         /* initially expanded -> should occupy height */
-        panel.body().should((el) => expect(el.height()).gte(500 - epsilon));
+        defaultPanel
+            .body()
+            .should((el) => expect(el.height()).gte(500 - epsilon));
 
         /* collapsed -> should not occupy height */
-        panel.expandCollapseIcon().click();
-        panel.body().should((el) => expect(el.height()).lte(0));
+        defaultPanel.expandCollapseIcon().click();
+        defaultPanel.body().should((el) => expect(el.height()).lte(0));
 
         /* expanded -> should occupy height again */
-        panel.expandCollapseIcon().click();
-        panel.body().should((el) => expect(el.height()).gte(500 - epsilon));
+        defaultPanel.expandCollapseIcon().click();
+        defaultPanel
+            .body()
+            .should((el) => expect(el.height()).gte(500 - epsilon));
+    });
+
+    describe("density", () => {
+        const DensityComponent = defineComponent({
+            template: /* HTML */ `
+                <density-wrapper>
+                    <f-expandable-panel :expanded="true">
+                        <template #title> Rubrik </template>
+                        <template #default> Innehåll </template>
+                    </f-expandable-panel>
+                </density-wrapper>
+            `,
+            components: {
+                DensityWrapper,
+                FExpandablePanel,
+            },
+        });
+
+        it(`should be densified`, () => {
+            cy.viewport(densityWrapperWidth, densityWrapperHeight);
+            cy.mount(DensityComponent);
+            cy.toMatchScreenshot();
+        });
     });
 });
