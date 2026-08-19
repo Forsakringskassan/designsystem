@@ -28,6 +28,11 @@ Om det exempelvis är alternativ som ska hämtas från en server, börja med att
 
 - Vid färre alternativ, använd en dropplista eller radioknappar.
 
+## Inline
+
+Etikett och kombobox ska bara placeras på samma rad (inline) om fältet inte har någon validering och om det inte behövs någon hjälptext, formatbeskrivning eller felmeddelande.
+Inline passar till exempel bra för sök och fritextfilter.
+
 ## API
 
 :::api
