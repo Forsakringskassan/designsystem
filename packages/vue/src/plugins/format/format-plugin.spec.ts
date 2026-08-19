@@ -486,7 +486,7 @@ describe("Date full", () => {
 });
 
 describe("Date range", () => {
-    it("should format range of string dates", () => {
+    it("should format range of string dates in iso format by default", () => {
         expect.assertions(1);
         const wrapper = shallowMount({
             template: /* HTML */ `
@@ -503,7 +503,25 @@ describe("Date range", () => {
         );
     });
 
-    it("should format range of FDate dates", () => {
+    it("should format range of string dates in human format", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount({
+            template: /* HTML */ `
+                <span
+                    v-format:date-range='{
+            from: "20201101",
+            to: "20250403",
+            format: "human",
+        }'
+                ></span>
+            `,
+        });
+        expect(wrapper.html()).toMatchInlineSnapshot(
+            `"<span class="formatter--date-range">1 november 2020 – 3 april 2025</span>"`,
+        );
+    });
+
+    it("should format range of FDate dates in human format", () => {
         expect.assertions(1);
         const date = FDate.fromIso("2025-04-15");
         const wrapper = shallowMount({
@@ -511,6 +529,7 @@ describe("Date range", () => {
                 v-format:date-range="{
             from: value,
             to: value.addDays(100),
+            format: 'human',
         }"
             ></span>`,
             setup() {
@@ -518,7 +537,55 @@ describe("Date range", () => {
             },
         });
         expect(wrapper.html()).toMatchInlineSnapshot(
-            `"<span class="formatter--date-range">2025-04-15 – 2025-07-24</span>"`,
+            `"<span class="formatter--date-range">15 april – 24 juli 2025</span>"`,
+        );
+    });
+
+    it("should format date range in same month without repeating month", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount({
+            template: /* HTML */ ` <span
+                v-format:date-range='{
+            from: "20000503",
+            to: "20000505",
+            format: "human",
+        }'
+            ></span>`,
+        });
+        expect(wrapper.html()).toMatchInlineSnapshot(
+            `"<span class="formatter--date-range">3 – 5 maj 2000</span>"`,
+        );
+    });
+
+    it("should format date range in same year without repeating year", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount({
+            template: /* HTML */ ` <span
+                v-format:date-range='{
+            from: "20000605",
+            to: "20000705",
+            format: "human",
+        }'
+            ></span>`,
+        });
+        expect(wrapper.html()).toMatchInlineSnapshot(
+            `"<span class="formatter--date-range">5 juni – 5 juli 2000</span>"`,
+        );
+    });
+
+    it("should format date range across years", () => {
+        expect.assertions(1);
+        const wrapper = shallowMount({
+            template: /* HTML */ ` <span
+                v-format:date-range='{
+            from: "20000604",
+            to: "20010216",
+            format: "human",
+        }'
+            ></span>`,
+        });
+        expect(wrapper.html()).toMatchInlineSnapshot(
+            `"<span class="formatter--date-range">4 juni 2000 – 16 februari 2001</span>"`,
         );
     });
 
@@ -579,6 +646,7 @@ describe("Date range", () => {
                     v-format:date-range='{
                     from: value,
                     to: "20250403",
+                    format: "human",
                 }'
                 ></span>
                 <button type="button" @click="value='19990203'">Update</button>
@@ -589,7 +657,7 @@ describe("Date range", () => {
         });
 
         expect(wrapper.html()).toMatchInlineSnapshot(`
-          "<span class="formatter--date-range">2020-01-01 – 2025-04-03</span>
+          "<span class="formatter--date-range">1 januari 2020 – 3 april 2025</span>
           <button type="button">Update</button>"
         `);
         const button = wrapper.get("button").element;
@@ -597,7 +665,7 @@ describe("Date range", () => {
         await wrapper.vm.$nextTick();
 
         expect(wrapper.html()).toMatchInlineSnapshot(`
-          "<span class="formatter--date-range">1999-02-03 – 2025-04-03</span>
+          "<span class="formatter--date-range">3 februari 1999 – 3 april 2025</span>
           <button type="button">Update</button>"
         `);
     });

@@ -1481,6 +1481,10 @@ describe("Clickable cells", () => {
 
         await nextTick();
         await cell.trigger("click");
+
+        // Let the 0‑ms timer inside ITableButton.vue fire
+        await new Promise((r) => setTimeout(r, 0));
+
         expect(onClickSpy).toHaveBeenCalledTimes(1);
         expect(onClickSpy).toHaveBeenCalledWith({ text: "text 2" });
     });

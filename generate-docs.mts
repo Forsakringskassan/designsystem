@@ -105,13 +105,14 @@ const docs = new Generator(import.meta.url, {
         "@fkui/logic",
         "@fkui/date",
         "@fkui/vue",
+        "@fkui/vue-labs",
         "@forsakringskassan/docs-live-example",
     ],
     processors: [
         apiExtractorProcessor({
             apiModel: [
                 "packages/vue/temp/vue.api.json",
-                "packages/vue/temp/vue-labs.api.json",
+                "packages/vue-labs/temp/vue-labs.api.json",
             ],
         }),
         extractExamplesProcessor({

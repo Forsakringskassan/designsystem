@@ -1,5 +1,4 @@
 import { config } from "@fkui/vue";
-import "@forsakringskassan/docs-generator/runtime";
 
 function importDefault(m) {
     return m.default ?? m;
