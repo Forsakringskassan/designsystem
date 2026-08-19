@@ -3,8 +3,5 @@
     "extends": "@forsakringskassan/vite-lib-config/api-extractor/api-extractor.json",
     "apiReport": {
         "reportFolder": "<projectFolder>/../../etc/"
-    },
-    "dtsRollup": {
-        "publicTrimmedFilePath": "<projectFolder>/lib/types/index.d.ts"
     }
 }
