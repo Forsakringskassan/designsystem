@@ -4,7 +4,7 @@
         {
             "id": "@fkui/date",
             "name": "@fkui/date (esm)",
-            "include": ["packages/date/lib/esm/index.js"],
+            "include": ["packages/date/dist/esm/index.js"],
             "compression": false
         },
         {
@@ -17,7 +17,7 @@
         {
             "id": "@fkui/logic",
             "name": "@fkui/logic (esm)",
-            "include": ["packages/logic/lib/esm/index.js"],
+            "include": ["packages/logic/dist/esm/index.js"],
             "compression": false
         },
         {

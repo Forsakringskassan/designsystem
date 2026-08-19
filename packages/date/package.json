@@ -17,24 +17,23 @@
   "author": "Försäkringskassan",
   "exports": {
     ".": {
-      "types": "./lib/types/index.d.ts",
-      "import": "./lib/esm/index.js",
-      "require": "./lib/cjs/index.js"
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
     }
   },
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
-  "types": "lib/types/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
-    "lib",
-    "!**/*.js.map"
+    "dist"
   ],
   "scripts": {
     "prebuild": "tsc",
     "build": "rollup --config",
     "postbuild": "fk-api-extractor",
     "build:docs": "typedoc",
-    "clean": "rimraf lib temp typedoc",
+    "clean": "rimraf dist temp typedoc",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",

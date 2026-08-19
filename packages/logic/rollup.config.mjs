@@ -15,7 +15,7 @@ function suppress(needle) {
 }
 
 function build(format) {
-    const outDir = `lib/${format}`;
+    const outDir = `dist/${format}`;
 
     return {
         input: ["src/index.ts", "src/polyfills.ts"],
@@ -66,7 +66,7 @@ export default [
     {
         input: ["temp/types/polyfills.d.ts"],
         output: {
-            file: "lib/types/polyfills.d.ts",
+            file: "dist/types/polyfills.d.ts",
             format: "esm",
         },
         onwarn: suppress({ code: "EMPTY_BUNDLE", name: "polyfills.d" }),
