@@ -23,7 +23,7 @@ it("should use default selector when no selector was given", () => {
     });
     const { selector } = FCheckboxFieldSelectors();
     const root = wrapper.get(selector);
-    expect(selector).toBe(".checkbox");
+    expect(selector).toBe(":scope");
     expect(root.classes()).toContain("checkbox");
 });
 

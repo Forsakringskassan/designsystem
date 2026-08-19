@@ -6,7 +6,7 @@
  * @param selector - The selector for the FCheckboxField component.
  * @returns An object with selector methods for the FCheckboxField component.
  */
-export function FCheckboxFieldSelectors(selector: string = ".checkbox") {
+export function FCheckboxFieldSelectors(selector: string = ":scope") {
     return Object.freeze({
         /**
          * The base selector for the component.
