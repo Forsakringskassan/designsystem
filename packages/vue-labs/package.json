@@ -43,7 +43,7 @@
   ],
   "scripts": {
     "build": "run-s build:lib build:selectors build:dts build:api",
-    "build:api": "fk-api-extractor --patch-augmentations api-extractor.*.json",
+    "build:api": "fk-api-extractor api-extractor.*.json",
     "build:dts": "vue-tsc -b",
     "build:lib": "fk-build-vue-lib --clean",
     "build:selectors": "fk-build-selectors",
