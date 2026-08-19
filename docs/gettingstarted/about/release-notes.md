@@ -9,6 +9,18 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version %version%
+
+2026-08-19
+
+### Ändringar i formateraren för datumintervall
+
+Direktivet `v-format:date-range` är utökat att även stödja datumintervall där månadens namn skrivs ut enligt myndigheternas skrivregler.
+Till exempel "1 januari 2025 – 1 januari 2026".
+Läs mer {@link FormatPlugin#datumintervall Format Plugin}
+
+Övriga buggfixar se {@link changelog Changelog}
+
 ## Version v6.52.0
 
 2026-07-01
