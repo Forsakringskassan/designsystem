@@ -15,6 +15,6 @@ $anchor-svg-margin: 0.25rem;
     }
 
     &.anchor--discrete {
-        @include anchor.anchor-discrete;
+        @include anchor.anchor-discrete-colors;
     }
 }
