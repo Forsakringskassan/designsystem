@@ -1,4 +1,10 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
-    "extends": "../../api-extractor.json"
+    "extends": "@forsakringskassan/vite-lib-config/api-extractor/api-extractor.json",
+    "apiReport": {
+        "reportFolder": "<projectFolder>/../../etc/"
+    },
+    "dtsRollup": {
+        "publicTrimmedFilePath": "<projectFolder>/lib/types/index.d.ts"
+    }
 }
