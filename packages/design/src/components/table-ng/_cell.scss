@@ -74,9 +74,16 @@ $cell-border-width: 1px;
         &:hover {
             background: $table-ng-cell-color-hover-background;
         }
+    }
 
-        &:focus-visible,
-        &:has(:focus-visible) {
+    // Select should have visible focus even on click when using focus-visible, but table select is a div.
+    &--select {
+        &:has([aria-expanded="true"]):focus,
+        &:has([aria-expanded="true"]):focus-within {
+            box-shadow: none;
+            outline: $table-ng-selection-outline solid $table-ng-cell-color-outline;
+            outline-offset: -$table-ng-selection-outline;
+
             .table-ng__editable {
                 box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
                 border-radius: 0;
@@ -84,8 +91,17 @@ $cell-border-width: 1px;
         }
     }
 
-    &--text:hover:has(.table-ng__textedit:focus-visible) {
-        background: transparent;
+    &--text {
+        &:focus-visible,
+        &:has(:focus-visible) {
+            .table-ng__editable {
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+                border-radius: 0;
+            }
+        }
+        &:hover:has(.table-ng__textedit:focus-visible) {
+            background: transparent;
+        }
     }
 
     .table-ng__editable {
@@ -261,9 +277,9 @@ $cell-border-width: 1px;
 
     .table-ng__editable,
     .table-ng__editable:hover,
-    .table-ng__editable:hover:not(:has(:focus-visible)),
-    .table-ng__editable:focus-visible,
-    .table-ng__editable:has(:focus-visible) {
+    .table-ng__editable:hover:not(:focus-within),
+    .table-ng__editable:focus,
+    .table-ng__editable:focus-within {
         box-shadow: none;
         border-radius: 0;
     }
@@ -314,16 +330,16 @@ $cell-border-width: 1px;
     .table-ng__cell--text:hover .table-ng__editable,
     .table-ng__cell--select:hover .table-ng__editable,
     .table-ng__cell--text:has(:focus-visible) .table-ng__editable,
-    .table-ng__cell--select:has(:focus-visible) .table-ng__editable {
+    .table-ng__cell--select:focus-within .table-ng__editable {
         box-shadow: inset 0 (-$underline-thickness) 0 0 Highlight;
         border-radius: 0;
     }
 
     .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable,
     .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:hover,
-    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:hover:not(:has(:focus-visible)),
-    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:focus-visible,
-    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:has(:focus-visible) {
+    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:hover:not(:focus-within),
+    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:focus,
+    .table-ng__cell--select:has([role="combobox"][aria-expanded="true"]) .table-ng__editable:focus-within {
         box-shadow: none;
         border-radius: 0;
     }
