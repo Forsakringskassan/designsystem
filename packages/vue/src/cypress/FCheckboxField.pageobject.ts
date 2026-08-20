@@ -1,11 +1,11 @@
+import { FCheckboxFieldSelectors } from "../selectors";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public
  */
 export class FCheckboxFieldPageObject implements BasePageObject {
-    public selector: string;
-    public el: () => DefaultCypressChainable;
+    private _selectors: ReturnType<typeof FCheckboxFieldSelectors>;
 
     /**
      * @param selector - the root of the checkbox, usually `<div class="checkbox">...</div>`.
@@ -13,20 +13,28 @@ export class FCheckboxFieldPageObject implements BasePageObject {
      */
     public constructor(selector: string, index?: number) {
         if (index) {
-            this.selector = `${selector}:nth(${String(index)})`;
+            this._selectors = FCheckboxFieldSelectors(
+                `${selector}:nth(${String(index)})`,
+            );
         } else {
-            this.selector = selector;
+            this._selectors = FCheckboxFieldSelectors(selector);
         }
+    }
 
-        this.el = () => cy.get(this.selector);
+    public get selector(): string {
+        return this._selectors.selector;
+    }
+
+    public el(): DefaultCypressChainable {
+        return cy.get(this._selectors.selector);
     }
 
     public checkbox(): Cypress.Chainable<JQuery<HTMLInputElement>> {
-        return cy.get(`${this.selector} input`);
+        return cy.get(this._selectors.checkbox());
     }
 
     public label(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .checkbox__label`);
+        return cy.get(this._selectors.label());
     }
 
     public select(): DefaultCypressChainable {
@@ -46,6 +54,6 @@ export class FCheckboxFieldPageObject implements BasePageObject {
     }
 
     public details(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .checkbox__details`);
+        return cy.get(this._selectors.details());
     }
 }
