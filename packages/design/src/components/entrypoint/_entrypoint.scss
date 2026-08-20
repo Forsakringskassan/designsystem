@@ -6,23 +6,22 @@
 .entrypoint {
     @include core.make-button-variant(".entrypoint", button.$button--primary...);
 
+    align-items: center;
     border-radius: var(--f-border-radius-medium);
     border-style: solid;
+    cursor: pointer;
+    display: inline-flex;
     font-size: var(--f-font-size-standard);
     font-weight: var(--f-font-weight-medium);
-    transition: background-color var(--f-animation-duration-medium) ease-out;
-    display: inline-flex;
     justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
+    line-height: var(--f-line-height-large);
     margin-bottom: core.densify(size.$margin-150);
     margin-top: core.densify(size.$margin-025);
     text-align: left;
-    line-height: var(--f-line-height-large);
     width: 100%;
 
     &__icon {
-        margin-left: 2rem;
         flex-shrink: 0;
+        margin-left: 2rem;
     }
 }
