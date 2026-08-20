@@ -45,7 +45,6 @@
     "htmlvalidate",
     "tsconfig-consumer.json",
     "!**/*.spec.{js,ts,d.ts}",
-    "!**/.eslintrc.json",
     "!htmlvalidate/tsconfig.json"
   ],
   "scripts": {

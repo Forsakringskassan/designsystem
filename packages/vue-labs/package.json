@@ -38,8 +38,7 @@
     "dummy.css",
     "htmlvalidate",
     "!**/examples/**",
-    "!**/*.spec.{js,ts,d.ts,d.ts.map}",
-    "!**/.eslintrc.json"
+    "!**/*.spec.{js,ts,d.ts,d.ts.map}"
   ],
   "scripts": {
     "build": "run-s build:lib build:selectors build:dts build:api",
