@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Länk - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-42ee9a.css"
+            href="../../assets/docs-dffc68.css"
             crossorigin
-            integrity="sha384-msef1IHtbEXrrkyLqwJqYewYjrtv/g6BleWPqzmdgJlet6aeW3VisGDCFVtk9V6P"
+            integrity="sha384-08OhQtDEHK9aJoM6B52oiHIAV2MYZm714mBzGUi3UM4okaDwbdIKY4x3R37E4Ejb"
             
         />
         <link
@@ -26,7 +26,8 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-cba73f.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-9591ee.js",
     "@fkui/date": "../../assets/vendor-fkui-date-1a27ab.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-9b5a93.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-6130f5.js",
+    "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-4f4793.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js"
   },
   "integrity": {
@@ -34,7 +35,8 @@
     "../../assets/vendor-fkui-vue-selectors-cba73f.js": "sha384-SaJecW2ObIUIuEnO+5qmMjFw9Yyo64+xMbIrjvDQol1Znm2N1FJD6zX1bcv230xq",
     "../../assets/vendor-fkui-logic-9591ee.js": "sha384-sktoLviDHXsiB2lm2hWly0KdUdn7YqJNcPgzVY/3CAbgpuGS0ubsXkl9OoJ4znSi",
     "../../assets/vendor-fkui-date-1a27ab.js": "sha384-WIsjwfLaDqeOimfnc5gS/DFmVv/1BDdGyow7RILJnWl4OP38ocmTvEMggmCsKUun",
-    "../../assets/vendor-fkui-vue-9b5a93.js": "sha384-i8g2JyXdWtm1hX4B23Jpu+hPbqSHOhBJO3+ziIShjJxGKUMNQu6o0+sfAS/q48sC",
+    "../../assets/vendor-fkui-vue-6130f5.js": "sha384-7N5i6qOSA2sHDndRfQjFoj6W9f15UVbDHm0JsSUglgKYbS5TJJMuiFiv2u2FZOvf",
+    "../../assets/vendor-fkui-vue-labs-4f4793.js": "sha384-Vsl9NRCmwyKE83o18q+LPwtCTpg2jrIV0/eDyQvinLTWTBHTaxeYx4z0YIMu/Daw",
     "../../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js": "sha384-UD6GYm3c8+uyO/HE6UD/CkzOimyLSzEtI2zsMXEFOYxG5ITkplPDrHIeJBmVI79s"
   }
 }
@@ -46,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-5078ad.json"
+    href="../../search-data-57ba18.json"
     as="fetch"
     crossorigin
-    integrity="sha384-ITadQmaLZ7A2y62vgx3693OWUjq6yB/I+9dDJiypmZz/Tj9hCkhXY2KNwAyGGWNj"
+    integrity="sha384-EyfZoiPCNW8WWJiTlmbUS74BYsKWiQa99lAYfs6fOP4CefqM3kb2e5cCDx6mWdNH"
     id="search-data"
 />
 <script>
@@ -1549,7 +1551,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/c30fedd02741a01f399854d52a4b9030c25bc7d2/packages/design/src/components/anchor/_anchor.scss">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/54db46029fe31a4ee98820088af993f55f052df2/packages/design/src/components/anchor/_anchor.scss">
                 anchor
             </a>
             
@@ -1583,6 +1585,8 @@
                                 
                                 <li><a href="#lank_i_loptext_ej_fristaende">Länk i löptext (ej fristående)</a></li>
                                 
+                                <li><a href="#sass_mixin">SASS-mixin</a></li>
+                                
                             </ul>
                         </details>
                         
@@ -1599,13 +1603,13 @@
                     data-language="vue"
                 >
                     
-        <div id="example-72281c"></div>
+        <div id="example-97f777"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./AnchorLiveExample-72281c.js"></script>
+        <script type="module" src="./AnchorLiveExample-97f777.js"></script>
     
                 </div>
             <h2 id="lank_pa_flera_rader_fristaende" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lank_pa_flera_rader_fristaende">Länk på flera rader (fristående)</a></h2><p class="docs-paragraph">Vid fokus hamnar ramen runt hela länken även om den sträcker sig över flera rader.</p>
@@ -1755,7 +1759,44 @@ elementum purus. Sed tempor velit id posuere aliquet.
 </code></pre>
                 </div>
             </div>
-        
+        <h2 id="sass_mixin" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sass_mixin">SASS-mixin</a></h2><p class="docs-paragraph">För att använda länkstylingen i ett eget projekt kan du inkludera anchor() eller anchor-discrete().</p>
+<p class="docs-paragraph">anchor ger länken standardutseendet:</p>
+
+                <div
+                    id="example-a1c658"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="scss"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-scss" tabindex="0"><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/design&quot;</span> as fkui;
+
+<span class="hljs-selector-tag">a</span> {
+    <span class="hljs-keyword">@include</span> fkui.anchor;
+}
+</code></pre>
+                </div>
+            <p class="docs-paragraph">För en diskret länk används anchor-discrete.
+Mixinen inkluderar grundstylingen från anchor och kompletterar den med färgerna för diskreta länkar:</p>
+
+                <div
+                    id="example-e96311"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="scss"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-scss" tabindex="0"><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;@fkui/design&quot;</span> as fkui;
+
+<span class="hljs-selector-tag">a</span> {
+    <span class="hljs-keyword">@include</span> fkui.anchor-discrete;
+}
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Du behöver därför inte inkludera anchor separat när du använder anchor-discrete.</p>
+
 
                     </div>
                 </main>
@@ -1803,9 +1844,9 @@ elementum purus. Sed tempor velit id posuere aliquet.
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feat/focusvisible (<a href="https://github.com/Forsakringskassan/designsystem/commits/c30fedd02741a01f399854d52a4b9030c25bc7d2">c30fedd</a>)<br />
+<div class="footer__right"><div class="version">feat/focusvisible (<a href="https://github.com/Forsakringskassan/designsystem/commits/54db46029fe31a4ee98820088af993f55f052df2">54db460</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1580">PR 1580</a><br />
-        2026-08-18 13:27
+        2026-08-20 07:01
 </div>
 <div class="toolbar__item">
     <form id="version">
