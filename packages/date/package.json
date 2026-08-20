@@ -1,6 +1,6 @@
 {
   "name": "@fkui/date",
-  "version": "6.53.0",
+  "version": "6.54.0",
   "description": "Date",
   "keywords": [
     "fkui",
@@ -42,7 +42,7 @@
     "watch": "rollup --config --watch"
   },
   "dependencies": {
-    "dayjs": "1.11.21"
+    "dayjs": "1.11.22"
   },
   "devDependencies": {
     "@forsakringskassan/vitest-config": "2.6.0",
