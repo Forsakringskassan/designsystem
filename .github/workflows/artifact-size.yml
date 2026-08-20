@@ -24,6 +24,8 @@ jobs:
               run: npm ci
             - name: Build
               run: npm run build
+            - name: Workaround # https://github.com/ext/artifact-size-analyzer/issues/88
+              run: mkdir -p temp
             - name: Run analyzer
               uses: ext/artifact-size-analyzer/analyze@3cc00ab793c4b8e017a31481d7de29d7d032bff8 # v1.2.5
               with:
@@ -46,6 +48,8 @@ jobs:
               run: npm ci
             - name: Build
               run: npm run build
+            - name: Workaround # https://github.com/ext/artifact-size-analyzer/issues/88
+              run: mkdir -p temp
             - name: Run analyzer (current)
               uses: ext/artifact-size-analyzer/analyze@3cc00ab793c4b8e017a31481d7de29d7d032bff8 # v1.2.5
               with:
