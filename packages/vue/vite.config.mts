@@ -3,6 +3,9 @@ import { defineTestConfig } from "@forsakringskassan/vitest-config-jsdom";
 
 export default defineConfig({
     test: defineTestConfig({
-        setupFiles: ["./vitest.setup.ts"],
+        setupFiles: [
+            "@forsakringskassan/vitest-config-jsdom/setup",
+            "./vitest.setup.ts",
+        ],
     }),
 });
