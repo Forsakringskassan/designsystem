@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Sortera och filtrera i tabell (kod) - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-edbf96.css"
+            href="../../../assets/docs-673500.css"
             crossorigin
-            integrity="sha384-biSlO7M1BA+fravnN+Gra+x0YnHiuaRL0IFtclrq+FCSdEgAHzwXU8oLHbgWbYFa"
+            integrity="sha384-EJxOGk1hLMLIWhlw3itafdSURDSbZbu0vxFmjdggxYuJbiRNXNw5Lt9M/XAO7Qnk"
             
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-fkui-261b3c.css"
+            href="../../../assets/docs-fkui-1f43d3.css"
             crossorigin
-            integrity="sha384-b8qtIWzljOhh3ZEtm7ISzyqiygQWsEI8D/0GENLIkCPuQXLbpvz0rYSDwpNqo/3V"
+            integrity="sha384-Qn+kKK6XXmCAGt8bQq8FTAf80NhOX6YeqcWmxzHV0FQWeEQ/eGMcCPNizO8cVR3t"
             
         />
 
@@ -26,16 +26,18 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-cba73f.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-9591ee.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-1a27ab.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-b15934.js",
-    "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js"
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-e08b54.js",
+    "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-4f4793.js",
+    "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-b984a8.js": "sha384-RuFta7Ma1Ej/QiKmbY4zSvZUMv82wYEgfbDWyQ32nxbtxCtr7nll3Bh2Gw4XGIj2",
     "../../../assets/vendor-fkui-vue-selectors-cba73f.js": "sha384-SaJecW2ObIUIuEnO+5qmMjFw9Yyo64+xMbIrjvDQol1Znm2N1FJD6zX1bcv230xq",
     "../../../assets/vendor-fkui-logic-9591ee.js": "sha384-sktoLviDHXsiB2lm2hWly0KdUdn7YqJNcPgzVY/3CAbgpuGS0ubsXkl9OoJ4znSi",
     "../../../assets/vendor-fkui-date-1a27ab.js": "sha384-WIsjwfLaDqeOimfnc5gS/DFmVv/1BDdGyow7RILJnWl4OP38ocmTvEMggmCsKUun",
-    "../../../assets/vendor-fkui-vue-b15934.js": "sha384-J5DZfGy1+WviEpLIwA8HTeNmi5s36jXKoXn/Wra1aSfrfCHimNDerW7Xz3FzQ2pp",
-    "../../../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js": "sha384-UD6GYm3c8+uyO/HE6UD/CkzOimyLSzEtI2zsMXEFOYxG5ITkplPDrHIeJBmVI79s"
+    "../../../assets/vendor-fkui-vue-e08b54.js": "sha384-gsSMufyDfJI23GCZaqFY070pu4dZfMTlAmMKg0rsVJSlNWMa8f34n9uDDFtIO7tU",
+    "../../../assets/vendor-fkui-vue-labs-4f4793.js": "sha384-Vsl9NRCmwyKE83o18q+LPwtCTpg2jrIV0/eDyQvinLTWTBHTaxeYx4z0YIMu/Daw",
+    "../../../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js": "sha384-T8jkOagoFX6LDj2QbCvP8DkKMrMPgdAFrg/sYvtRagV4DTNYut32ghIjZatx0QE3"
   }
 }
         </script><script
@@ -46,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-5f9189.json"
+    href="../../../search-data-ddfd14.json"
     as="fetch"
     crossorigin
-    integrity="sha384-iX55C1zMl/x10o8p+yrTbMod6iKFLHKrja0OSxtztsHZOhIUzIVICqspL0S3Tvu9"
+    integrity="sha384-L3VXdk4gmJ8URaePfC6Fes1Wg7RoA7i5qx43ggM9H+plWBsSTuIsAjyym+gmVp6E"
     id="search-data"
 />
 <script>
@@ -1577,13 +1579,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-58eae8"></div>
+        <div id="example-4b9164"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableBasicSortFilterExample-58eae8.js"></script>
+        <script type="module" src="./FTableBasicSortFilterExample-4b9164.js"></script>
     
                 </div>
                 <div>
@@ -1840,9 +1842,9 @@ interface <span class="hljs-title class_">Row</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">SFKUI-7293-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/e69d929fcfed4f7e35219e05ed6269d913169fad">e69d929</a>)<br />
+<div class="footer__right"><div class="version">SFKUI-7293-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/77e0666aa3e55ab5ef239a47f0b7594e01b49e31">77e0666</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1578">PR 1578</a><br />
-        2026-08-17 06:27
+        2026-08-21 11:00
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1982,10 +1984,10 @@ interface <span class="hljs-title class_">Row</span> {
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-38f6d0.js"
+            src="../../../assets/processors/selectable-version/select-version-0341e6.js"
             type="module"
             crossorigin
-            integrity="sha384-IyaPCyHxAi0BPHdWjQldk9o9GKpx8nDxWRJu4S3rt2anc2xmM2+Jst3YTZ+aOnlk"
+            integrity="sha384-cyO3nlFKDStdkp8Wthu31X0HqHDGg+1bzI3e8XB5jXuDKP/kfnospn2MlnT6iLa0"
             
         ></script><script
             src="../../../assets/processors/cookie/cookie-ca9142.js"
@@ -1994,16 +1996,16 @@ interface <span class="hljs-title class_">Row</span> {
             integrity="sha384-QYu1B22kJoEySBmGgY/4+SG8KjzgSAPAm+oqZzy4hHFaG21xEJAzOTNnQDHdhEZY"
             
         ></script><script
-            src="../../../assets/runtime-43dbca.js"
+            src="../../../assets/runtime-1697a8.js"
             type="module"
             crossorigin
-            integrity="sha384-SQclN5vBeM6kHuydbkDCXMjNY7blK1DxK6nNWWCRjo4kou4Y//GaJAve5N2m6sk5"
+            integrity="sha384-6dVujNqBpPwTDTrwwDJ1kM940T4Y+H7i/cnZ17oDcX/BFkiNx5kYyHX51n8hpKnw"
             
         ></script><script
-            src="../../../assets/main-989d68.js"
+            src="../../../assets/main-2a697b.js"
             type="module"
             crossorigin
-            integrity="sha384-qtANW3GJpWgTjlp421KqSkfTemzN+sh4Z0SkjzpVmxdE6jj6pvehLc10SuBFt6Jf"
+            integrity="sha384-VcXXCVWs406KSWK5pJAjyOVdBpbqnlT4dn4xLifE5VtvbvG+b095DRbl/s6bYa7h"
             
         ></script>
     </body>

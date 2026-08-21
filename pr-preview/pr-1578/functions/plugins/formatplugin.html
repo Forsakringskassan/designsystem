@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Format Plugin - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-edbf96.css"
+            href="../../assets/docs-673500.css"
             crossorigin
-            integrity="sha384-biSlO7M1BA+fravnN+Gra+x0YnHiuaRL0IFtclrq+FCSdEgAHzwXU8oLHbgWbYFa"
+            integrity="sha384-EJxOGk1hLMLIWhlw3itafdSURDSbZbu0vxFmjdggxYuJbiRNXNw5Lt9M/XAO7Qnk"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-261b3c.css"
+            href="../../assets/docs-fkui-1f43d3.css"
             crossorigin
-            integrity="sha384-b8qtIWzljOhh3ZEtm7ISzyqiygQWsEI8D/0GENLIkCPuQXLbpvz0rYSDwpNqo/3V"
+            integrity="sha384-Qn+kKK6XXmCAGt8bQq8FTAf80NhOX6YeqcWmxzHV0FQWeEQ/eGMcCPNizO8cVR3t"
             
         />
 
@@ -26,16 +26,18 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-cba73f.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-9591ee.js",
     "@fkui/date": "../../assets/vendor-fkui-date-1a27ab.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-b15934.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js"
+    "@fkui/vue": "../../assets/vendor-fkui-vue-e08b54.js",
+    "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-4f4793.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js"
   },
   "integrity": {
     "../../assets/vendor-vue-b984a8.js": "sha384-RuFta7Ma1Ej/QiKmbY4zSvZUMv82wYEgfbDWyQ32nxbtxCtr7nll3Bh2Gw4XGIj2",
     "../../assets/vendor-fkui-vue-selectors-cba73f.js": "sha384-SaJecW2ObIUIuEnO+5qmMjFw9Yyo64+xMbIrjvDQol1Znm2N1FJD6zX1bcv230xq",
     "../../assets/vendor-fkui-logic-9591ee.js": "sha384-sktoLviDHXsiB2lm2hWly0KdUdn7YqJNcPgzVY/3CAbgpuGS0ubsXkl9OoJ4znSi",
     "../../assets/vendor-fkui-date-1a27ab.js": "sha384-WIsjwfLaDqeOimfnc5gS/DFmVv/1BDdGyow7RILJnWl4OP38ocmTvEMggmCsKUun",
-    "../../assets/vendor-fkui-vue-b15934.js": "sha384-J5DZfGy1+WviEpLIwA8HTeNmi5s36jXKoXn/Wra1aSfrfCHimNDerW7Xz3FzQ2pp",
-    "../../assets/vendor-forsakringskassan-docs-live-example-f2dba9.js": "sha384-UD6GYm3c8+uyO/HE6UD/CkzOimyLSzEtI2zsMXEFOYxG5ITkplPDrHIeJBmVI79s"
+    "../../assets/vendor-fkui-vue-e08b54.js": "sha384-gsSMufyDfJI23GCZaqFY070pu4dZfMTlAmMKg0rsVJSlNWMa8f34n9uDDFtIO7tU",
+    "../../assets/vendor-fkui-vue-labs-4f4793.js": "sha384-Vsl9NRCmwyKE83o18q+LPwtCTpg2jrIV0/eDyQvinLTWTBHTaxeYx4z0YIMu/Daw",
+    "../../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js": "sha384-T8jkOagoFX6LDj2QbCvP8DkKMrMPgdAFrg/sYvtRagV4DTNYut32ghIjZatx0QE3"
   }
 }
         </script><script
@@ -46,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-5f9189.json"
+    href="../../search-data-ddfd14.json"
     as="fetch"
     crossorigin
-    integrity="sha384-iX55C1zMl/x10o8p+yrTbMod6iKFLHKrja0OSxtztsHZOhIUzIVICqspL0S3Tvu9"
+    integrity="sha384-L3VXdk4gmJ8URaePfC6Fes1Wg7RoA7i5qx43ggM9H+plWBsSTuIsAjyym+gmVp6E"
     id="search-data"
 />
 <script>
@@ -1806,6 +1808,8 @@
                                 
                                 <li><a href="#datum">Datum</a></li>
                                 
+                                <li><a href="#datumintervall">Datumintervall</a></li>
+                                
                                 <li><a href="#nummer">Nummer</a></li>
                                 
                                 <li><a href="#organisationsnummer">Organisationsnummer</a></li>
@@ -1901,17 +1905,66 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
     
                     </div>
                 </div>
-            <h2 id="datum" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#datum">Datum</a></h2><p class="docs-paragraph">Datumformateraren stödjer fyra olika format:</p>
+            <h2 id="datum" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#datum">Datum</a></h2><p class="docs-paragraph">Datumformateraren stödjer tre olika format:</p>
 <ul>
 <li><code>v-format:date</code>: &quot;2022-05-04&quot;</li>
 <li><code>v-format:date-long</code>: &quot;4 maj 2022&quot;</li>
 <li><code>v-format:date-full</code>: &quot;onsdag 4 maj 2022&quot;</li>
-<li><code>v-format:date-range</code>: &quot;2022-05-04 – 2022-08-01&quot;</li>
 </ul>
-<p class="docs-paragraph">Värdet kan antingen vara av typen <code>string</code>, <code>FDate</code> eller <code>DateRange</code>.</p>
+<p class="docs-paragraph">Värdet kan antingen vara av typen <code>string</code> eller <code>FDate</code>.</p>
 
                 <div
-                    id="example-e04ddd"
+                    id="example-c85962"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">const</span> myDate = <span class="hljs-string">&quot;2025-01-01&quot;</span>;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-format:date</span>=<span class="hljs-string">&quot;myDate&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-format:date-long</span>=<span class="hljs-string">&quot;myDate&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-format:date-full</span>=<span class="hljs-string">&quot;myDate&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
+                <div
+                    id="example-1ce3d2"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nomarkup"
+                    data-language="vue"
+                >
+                    
+                    <div class="code-preview__preview user-background">
+                        
+        <div id="example-9972ee"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FormatPluginDate-9972ee.js"></script>
+    
+                    </div>
+                </div>
+            <h2 id="datumintervall" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#datumintervall">Datumintervall</a></h2><p class="docs-paragraph"><code>v-format:date-range</code> använder ISO-format som standard &quot;2025-01-01 – 2025-12-31&quot;.
+För ett mer läsbart datumintervall använder du <code>format: &quot;human&quot;</code>:</p>
+<ul>
+<li>Samma månad: &quot;3–5 maj 2000&quot;</li>
+<li>Samma år: &quot;5 juni – 5 juli 2000&quot;</li>
+<li>Olika år: &quot;4 juni 2000 – 16 februari 2001&quot;</li>
+</ul>
+<p class="docs-paragraph">När perioden innehåller endast en dag skrivs den som t.ex. &quot;2 – 2 januari 2000&quot;.
+Konsumenten ansvarar för att hantera presentationen av en-dagsperioder.</p>
+
+                <div
+                    id="example-9579a2"
                     class="code-preview code-preview--default"
                     
                     
@@ -1922,16 +1975,18 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
     | {
           <span class="hljs-attr">from</span>: <span class="hljs-built_in">string</span>;
           <span class="hljs-attr">to</span>: <span class="hljs-built_in">string</span>;
+          <span class="hljs-attr">format</span>?: <span class="hljs-string">&quot;human&quot;</span> | <span class="hljs-string">&quot;iso&quot;</span>;
       }
     | {
           <span class="hljs-attr">from</span>: <span class="hljs-title class_">FDate</span>;
           <span class="hljs-attr">to</span>: <span class="hljs-title class_">FDate</span>;
+          <span class="hljs-attr">format</span>?: <span class="hljs-string">&quot;human&quot;</span> | <span class="hljs-string">&quot;iso&quot;</span>;
       };
 </code></pre>
                 </div>
             
                 <div
-                    id="example-336f29"
+                    id="example-ea6b09"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -1941,32 +1996,27 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                     <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">FDate</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/date&quot;</span>;
 
-<span class="hljs-keyword">const</span> myDate = <span class="hljs-string">&quot;20250408&quot;</span>;
-<span class="hljs-keyword">const</span> dateRange = {
-    <span class="hljs-attr">from</span>: <span class="hljs-string">&quot;20250101&quot;</span>,
-    <span class="hljs-attr">to</span>: <span class="hljs-string">&quot;20251231&quot;</span>,
-};
-
 <span class="hljs-keyword">const</span> myFDate = <span class="hljs-title class_">FDate</span>.<span class="hljs-title function_">fromIso</span>(<span class="hljs-string">&quot;2025-01-01&quot;</span>);
-<span class="hljs-keyword">const</span> myFDateRange = {
+<span class="hljs-keyword">const</span> myISORange = {
     <span class="hljs-attr">from</span>: myFDate,
-    <span class="hljs-attr">to</span>: myFDate.<span class="hljs-title function_">addDays</span>(<span class="hljs-number">100</span>),
+    <span class="hljs-attr">to</span>: myFDate.<span class="hljs-title function_">addDays</span>(<span class="hljs-number">365</span>),
+};
+<span class="hljs-keyword">const</span> myHumanRange = {
+    <span class="hljs-attr">from</span>: myFDate,
+    <span class="hljs-attr">to</span>: myFDate.<span class="hljs-title function_">addDays</span>(<span class="hljs-number">365</span>),
+    <span class="hljs-attr">format</span>: <span class="hljs-string">&quot;human&quot;</span>,
 };
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-format:date</span>=<span class="hljs-string">&quot;myDate&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-format:date-long</span>=<span class="hljs-string">&quot;myDate&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-format:date-full</span>=<span class="hljs-string">&quot;myDate&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-format:date-range</span>=<span class="hljs-string">&quot;dateRange&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-format:date-full</span>=<span class="hljs-string">&quot;myFDate&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-format:date-range</span>=<span class="hljs-string">&quot;myFDateRange&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-format:date-range</span>=<span class="hljs-string">&quot;myISORange&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-format:date-range</span>=<span class="hljs-string">&quot;myHumanRange&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             
                 <div
-                    id="example-cba2f6"
+                    id="example-67c1aa"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1975,13 +2025,13 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-e980fd"></div>
+        <div id="example-3cd0ba"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FormatPluginDate-e980fd.js"></script>
+        <script type="module" src="./FormatPluginDateRange-3cd0ba.js"></script>
     
                     </div>
                 </div>
@@ -1994,7 +2044,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
 <p class="docs-paragraph">Värdet kan antingen vara av typen <code>string</code>,<code>number</code> eller <code>NumberFormat</code> om man vill precisera antalet decimaler.</p>
 
                 <div
-                    id="example-aa5467"
+                    id="example-2e3de9"
                     class="code-preview code-preview--default"
                     
                     
@@ -2009,7 +2059,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                 </div>
             
                 <div
-                    id="example-9ec1ed"
+                    id="example-b2d19f"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2034,7 +2084,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                 </div>
             
                 <div
-                    id="example-91fc04"
+                    id="example-49dedf"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2043,13 +2093,13 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-234ffb"></div>
+        <div id="example-53ec51"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FormatPluginNumber-234ffb.js"></script>
+        <script type="module" src="./FormatPluginNumber-53ec51.js"></script>
     
                     </div>
                 </div>
@@ -2057,7 +2107,7 @@ app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&q
 Värdet ska vara av typen <code>string</code>.</p>
 
                 <div
-                    id="example-a81a35"
+                    id="example-4eb6a3"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2075,7 +2125,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-f6a219"
+                    id="example-f1188e"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2084,13 +2134,13 @@ Värdet ska vara av typen <code>string</code>.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-6f0ed9"></div>
+        <div id="example-d42161"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FormatPluginOrgnr-6f0ed9.js"></script>
+        <script type="module" src="./FormatPluginOrgnr-d42161.js"></script>
     
                     </div>
                 </div>
@@ -2098,7 +2148,7 @@ Värdet ska vara av typen <code>string</code>.</p>
 Värdet ska vara av typen <code>string</code>.</p>
 
                 <div
-                    id="example-51b2c4"
+                    id="example-c13ac9"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2116,7 +2166,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-52e5cd"
+                    id="example-c929ef"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2125,13 +2175,13 @@ Värdet ska vara av typen <code>string</code>.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-af4d72"></div>
+        <div id="example-b1de65"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FormatPluginPnr-af4d72.js"></script>
+        <script type="module" src="./FormatPluginPnr-b1de65.js"></script>
     
                     </div>
                 </div>
@@ -2153,7 +2203,7 @@ Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffro
 <p class="docs-paragraph">Värdet ska vara av typen <code>string</code>.</p>
 
                 <div
-                    id="example-a67325"
+                    id="example-10fe95"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2171,7 +2221,7 @@ Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffro
                 </div>
             
                 <div
-                    id="example-27381b"
+                    id="example-8249db"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2180,13 +2230,13 @@ Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffro
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-e966fe"></div>
+        <div id="example-d2cea9"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FormatPluginPlusgiro-e966fe.js"></script>
+        <script type="module" src="./FormatPluginPlusgiro-d2cea9.js"></script>
     
                     </div>
                 </div>
@@ -2194,7 +2244,7 @@ Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffro
 Värdet ska vara av typen <code>string</code>.</p>
 
                 <div
-                    id="example-7b62e9"
+                    id="example-6e2a07"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2212,7 +2262,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-8f8fb7"
+                    id="example-7955a4"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2221,20 +2271,20 @@ Värdet ska vara av typen <code>string</code>.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-b9b538"></div>
+        <div id="example-494e0f"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FormatPluginPostnummer-b9b538.js"></script>
+        <script type="module" src="./FormatPluginPostnummer-494e0f.js"></script>
     
                     </div>
                 </div>
             <h2 id="text" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#text">Text</a></h2><p class="docs-paragraph">Formateraren för text ser till att texten inte radbryts.</p>
 
                 <div
-                    id="example-98b368"
+                    id="example-0549ec"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2257,7 +2307,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                 </div>
             
                 <div
-                    id="example-120367"
+                    id="example-543023"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -2266,7 +2316,7 @@ Värdet ska vara av typen <code>string</code>.</p>
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-97c0a1"></div>
+        <div id="example-603d8a"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
@@ -2276,7 +2326,7 @@ Värdet ska vara av typen <code>string</code>.</p>
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FormatPluginText-97c0a1.js"></script>
+        <script type="module" src="./FormatPluginText-603d8a.js"></script>
     
                     </div>
                 </div>
@@ -2328,9 +2378,9 @@ Värdet ska vara av typen <code>string</code>.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">SFKUI-7293-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/e69d929fcfed4f7e35219e05ed6269d913169fad">e69d929</a>)<br />
+<div class="footer__right"><div class="version">SFKUI-7293-scroll (<a href="https://github.com/Forsakringskassan/designsystem/commits/77e0666aa3e55ab5ef239a47f0b7594e01b49e31">77e0666</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1578">PR 1578</a><br />
-        2026-08-17 06:27
+        2026-08-21 11:00
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -2470,10 +2520,10 @@ Värdet ska vara av typen <code>string</code>.</p>
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors/selectable-version/select-version-38f6d0.js"
+            src="../../assets/processors/selectable-version/select-version-0341e6.js"
             type="module"
             crossorigin
-            integrity="sha384-IyaPCyHxAi0BPHdWjQldk9o9GKpx8nDxWRJu4S3rt2anc2xmM2+Jst3YTZ+aOnlk"
+            integrity="sha384-cyO3nlFKDStdkp8Wthu31X0HqHDGg+1bzI3e8XB5jXuDKP/kfnospn2MlnT6iLa0"
             
         ></script><script
             src="../../assets/processors/cookie/cookie-ca9142.js"
@@ -2482,16 +2532,16 @@ Värdet ska vara av typen <code>string</code>.</p>
             integrity="sha384-QYu1B22kJoEySBmGgY/4+SG8KjzgSAPAm+oqZzy4hHFaG21xEJAzOTNnQDHdhEZY"
             
         ></script><script
-            src="../../assets/runtime-43dbca.js"
+            src="../../assets/runtime-1697a8.js"
             type="module"
             crossorigin
-            integrity="sha384-SQclN5vBeM6kHuydbkDCXMjNY7blK1DxK6nNWWCRjo4kou4Y//GaJAve5N2m6sk5"
+            integrity="sha384-6dVujNqBpPwTDTrwwDJ1kM940T4Y+H7i/cnZ17oDcX/BFkiNx5kYyHX51n8hpKnw"
             
         ></script><script
-            src="../../assets/main-989d68.js"
+            src="../../assets/main-2a697b.js"
             type="module"
             crossorigin
-            integrity="sha384-qtANW3GJpWgTjlp421KqSkfTemzN+sh4Z0SkjzpVmxdE6jj6pvehLc10SuBFt6Jf"
+            integrity="sha384-VcXXCVWs406KSWK5pJAjyOVdBpbqnlT4dn4xLifE5VtvbvG+b095DRbl/s6bYa7h"
             
         ></script>
     </body>
