@@ -44,7 +44,7 @@
     "dayjs": "1.11.23"
   },
   "devDependencies": {
-    "@forsakringskassan/vitest-config": "2.6.0",
+    "@forsakringskassan/vitest-config": "2.7.0",
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",

@@ -32,7 +32,7 @@
     "svgo": "4.0.2"
   },
   "devDependencies": {
-    "@forsakringskassan/vitest-config": "2.6.0",
+    "@forsakringskassan/vitest-config": "2.7.0",
     "vitest": "4.1.11"
   },
   "engines": {
