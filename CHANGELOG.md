@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 6.54.0 (2026-08-20)
+
+### Features
+
+* **@fkui/design:** add documentation for anchor mixins (refs KA-2356) 9b00a0e
+* **@fkui/design:** refactor discrete anchor styles into reusable mixins (refs KA-2356) ebe05df
+* **@fkui/vue:** extend date period formatter with human readable format (refs SFKUI-5499) b32d728
+
+### Bug Fixes
+
+* **@fkui/vue:** the ITableButton should not steal focus when activated (fixes SFKUI-8005) 3aa0a8a
+* **deps:** update dependency cssnano to v8.0.6 b697e8f
+* **deps:** update dependency dayjs to v1.11.22 a424280
+
 ## 6.53.0 (2026-08-14)
 
 ### Features
