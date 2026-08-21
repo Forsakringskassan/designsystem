@@ -22,7 +22,7 @@
   "devDependencies": {
     "@fkui/font-default": "6.54.0",
     "@fkui/logo-default": "6.54.0",
-    "@forsakringskassan/docs-generator": "3.6.0",
+    "@forsakringskassan/docs-generator": "3.6.1",
     "cypress": "15.20.1",
     "vue": "3.5.41"
   },
