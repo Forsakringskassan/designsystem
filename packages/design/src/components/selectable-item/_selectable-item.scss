@@ -9,33 +9,24 @@
     width: 100%;
     cursor: pointer;
     border-bottom: none;
+    padding: 1rem;
+
     &:last-child {
         border-bottom: list.$list-border;
     }
 
-    input:focus + label {
+    &:has(input:focus) {
         outline: 2px solid $selectable-item-button-border-color-border-default;
         outline-offset: -2px;
+        z-index: 0;
     }
-    input + label::after {
-        top: 0.9rem;
-        left: 1rem;
-    }
-    input:checked + label::after {
-        top: 0.9rem;
-        left: 1rem;
-    }
+
     &:hover {
-        @extend %list-item-hover;
+        background: $selectable-item-color-background-hover;
     }
-    label::before {
-        top: 0.9rem;
-        left: 1rem;
-    }
-    label {
-        padding: 1rem;
-        padding-left: 3rem;
-        width: 100%;
+
+    &:has(.checkbox__input:disabled):hover {
+        background: transparent;
     }
 }
 

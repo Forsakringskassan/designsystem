@@ -8,7 +8,7 @@ export class FRadioFieldPageObject implements BasePageObject {
     public el: () => DefaultCypressChainable;
 
     /**
-     * @param selector - the root of the radio button, usually `<div class="radio-button">...</div>`.
+     * @param selector - the root of the radio button, usually `<label class="radio-button">...</label>`.
      * @param index -  the index of matched radiobuttons
      */
     public constructor(selector: string, index?: number) {
@@ -26,11 +26,11 @@ export class FRadioFieldPageObject implements BasePageObject {
     }
 
     public label(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .radio-button__label`);
+        return cy.get(this.selector);
     }
 
-    public select(): DefaultCypressChainable {
-        return cy.get(`${this.selector} label`).click();
+    public select(): Cypress.Chainable<JQuery<HTMLInputElement>> {
+        return this.radioButton().click();
     }
 
     public details(): DefaultCypressChainable {

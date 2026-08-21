@@ -109,7 +109,7 @@ class FCheckboxFieldPageObject implements BasePageObject {
     // (undocumented)
     label(): DefaultCypressChainable;
     // (undocumented)
-    select(): DefaultCypressChainable;
+    select(): Cypress.Chainable<JQuery<HTMLInputElement>>;
     // (undocumented)
     selector: string;
     // (undocumented)
@@ -603,7 +603,7 @@ class FRadioFieldPageObject implements BasePageObject {
     // (undocumented)
     radioButton(): Cypress.Chainable<JQuery<HTMLInputElement>>;
     // (undocumented)
-    select(): DefaultCypressChainable;
+    select(): Cypress.Chainable<JQuery<HTMLInputElement>>;
     // (undocumented)
     selector: string;
     // (undocumented)
