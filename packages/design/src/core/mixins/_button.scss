@@ -27,6 +27,7 @@
     $padding-bottom,
     $padding-left
 ) {
+    -webkit-tap-highlight-color: transparent;
     background-color: $background-color;
     border-color: $border-color;
     border-width: $border-width;
