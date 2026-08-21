@@ -177,17 +177,21 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="radio-button" :class="disabledClass" @validity="onValidity">
-        <input :id type="radio" class="radio-button__input" :disabled v-bind="attrs" />
+    <label :class="$slots.details ? 'radio-button radio-button--fullwidth' : 'radio-button'" @validity="onValidity">
+        <input :id v-bind="attrs" type="radio" class="radio-button__input" :disabled />
 
-        <label :class="$slots.details ? 'radio-button__label radio-button__width' : 'radio-button__label'" :for="id">
-            <!-- @slot Slot for label content. -->
-            <slot></slot>
+        <span class="radio-button__content">
+            <span>
+                <!-- @slot Slot for label content. -->
+                <slot name="default"></slot>
+            </span>
+
             <template v-if="$slots.details">
                 <span v-if="showDetails === 'always'" class="radio-button__details">
                     <!-- @slot Slot for details, should only contain short text -->
                     <slot name="details"></slot>
                 </span>
+
                 <transition
                     v-if="showDetails === 'when-selected'"
                     @enter="enter"
@@ -195,11 +199,14 @@ export default defineComponent({
                     @leave="leave"
                 >
                     <span v-if="value === modelValue" class="radio-button__details">
-                        <!-- @slot Slot for details, should only contain short text-->
+                        <!--
+                            @slot Slot for details, should only contain short text
+                            @binding {number} height The height of the expanded details content.
+                            -->
                         <slot name="details" :height></slot>
                     </span>
                 </transition>
             </template>
-        </label>
-    </div>
+        </span>
+    </label>
 </template>

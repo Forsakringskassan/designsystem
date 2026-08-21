@@ -8,56 +8,53 @@ $chip-border-width: var(--f-border-width-medium);
 
 @mixin chip($group, $item, $type) {
     .#{$group}--chip {
-        .#{$group}__label {
-            margin-bottom: size.$margin-025;
-        }
-
         .#{$group}__content {
-            margin: -0.25rem;
+            gap: 0.5rem;
         }
 
         .#{$item} {
-            margin: 0;
-            padding: size.$padding-025;
-
-            &.disabled {
-                .#{$item}__label {
-                    background: $chip-color-background-disabled;
-                    border-color: $chip-color-border-disabled;
-                    color: $chip-color-text-disabled;
-
-                    @media (forced-colors: active) {
-                        color: GrayText;
-                    }
-                }
-            }
-        }
-
-        .#{$item}__label {
             display: flex;
             align-items: center;
             cursor: pointer;
+            margin: 0;
+            gap: 0;
             font-weight: var(--f-font-weight-medium);
             padding: size.$padding-050 size.$padding-100;
             border-radius: $chip-border-radius;
             border: $chip-border-width solid $chip-color-border-default;
             background-color: $chip-color-background-default;
             color: $chip-color-text-default;
-            justify-content: center;
             max-width: 400px;
-            user-select: none;
-
-            &::before,
-            &::after {
-                display: none;
-            }
+            width: 100%;
 
             svg {
                 margin-right: size.$margin-050;
             }
+
+            &:has(.#{$item}__input:disabled) {
+                background: $chip-color-background-disabled;
+                border-color: $chip-color-border-disabled;
+                color: $chip-color-text-disabled;
+
+                @media (forced-colors: active) {
+                    color: GrayText;
+                }
+            }
         }
 
-        .#{$item}__label:hover {
+        .#{$item}__input {
+            display: initial;
+            width: initial;
+            height: initial;
+            border: none;
+        }
+
+        .#{$item}__content {
+            align-items: center;
+            width: 100%;
+        }
+
+        .#{$item}:hover {
             border-color: $chip-color-border-hover;
             background-color: $chip-color-background-hover;
             color: $chip-color-text-hover;
@@ -65,7 +62,7 @@ $chip-border-width: var(--f-border-width-medium);
             @include forcedcolors.hover-indicator(border, $chip-border-width);
         }
 
-        input[type="#{$type}"]:checked + .#{$item}__label {
+        .#{$item}:has(.#{$item}__input:checked) {
             background: $chip-color-background-selected;
             border-color: $chip-color-border-selected;
             color: $chip-color-text-selected;
@@ -73,7 +70,7 @@ $chip-border-width: var(--f-border-width-medium);
             @include forcedcolors.selected-indicator;
         }
 
-        input[type="#{$type}"]:focus + label.#{$item}__label {
+        .#{$item}:has(.#{$item}__input:focus) {
             border-radius: $chip-border-radius;
         }
     }
@@ -83,13 +80,9 @@ $chip-border-width: var(--f-border-width-medium);
             flex-flow: row wrap;
 
             .#{$item} {
-                margin-bottom: 0;
-            }
+                width: fit-content;
 
-            @include bp.breakpoint-down(sm) {
-                flex-flow: row wrap;
-
-                .#{$item} {
+                @include bp.breakpoint-down(sm) {
                     margin-bottom: 0;
                 }
             }

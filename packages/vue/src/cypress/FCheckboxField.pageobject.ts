@@ -8,7 +8,7 @@ export class FCheckboxFieldPageObject implements BasePageObject {
     public el: () => DefaultCypressChainable;
 
     /**
-     * @param selector - the root of the checkbox, usually `<div class="checkbox">...</div>`.
+     * @param selector - the root of the checkbox, usually `<label class="checkbox">...</label>`.
      * @param index -  the index of matched radiobuttons
      */
     public constructor(selector: string, index?: number) {
@@ -26,11 +26,11 @@ export class FCheckboxFieldPageObject implements BasePageObject {
     }
 
     public label(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .checkbox__label`);
+        return cy.get(this.selector);
     }
 
     public select(): DefaultCypressChainable {
-        return this.label().click();
+        return this.checkbox().click();
     }
 
     public isSelected(): Cypress.Chainable<boolean> {

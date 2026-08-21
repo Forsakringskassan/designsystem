@@ -108,10 +108,10 @@ describe("FCheckboxField", () => {
         const checkboxFirst = fieldset.checkBox(checkboxField.first);
         const checkboxSecond = fieldset.checkBox(checkboxField.second);
 
-        checkboxSecond.select();
+        checkboxSecond.label().click();
         checkboxSecond.isSelected().should("be.false");
 
-        checkboxFirst.select();
+        checkboxFirst.label().click();
         checkboxFirst.isSelected().should("be.true");
     });
 
