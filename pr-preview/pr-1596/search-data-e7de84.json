@@ -49,6 +49,7 @@
     "production",
     "globala inställningar",
     "config",
+    "CHANGELOG v5",
     "Paginering",
     "FPaginateDataset",
     "FPaginator",
@@ -100,7 +101,6 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
-    "CHANGELOG v5",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -554,6 +554,11 @@
     "FExpandablePanel",
     "Expanderbart innehåll",
     "FExpand",
+    "Version 6 migreringsguide: @fkui/vue",
+    "Version 6 migreringsguide",
+    "Version 6 migreringsguide: @fkui/logic",
+    "Version 6 migreringsguide: @fkui/design",
+    "Version 6 migreringsguide: Cypress Pageobjects",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -570,11 +575,6 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
-    "Version 6 migreringsguide: @fkui/vue",
-    "Version 6 migreringsguide",
-    "Version 6 migreringsguide: @fkui/logic",
-    "Version 6 migreringsguide: @fkui/design",
-    "Version 6 migreringsguide: Cypress Pageobjects",
     "openModal",
     "modalfunktion",
     "options API",
@@ -711,6 +711,10 @@
     "FInteractiveTablePageObject: header() method",
     "FInteractiveTablePageObject: checkbox() method",
     "FInteractiveTablePageObject: cell() method",
+    "FFileItemPageObject: FFileItemPageObject() constructor",
+    "cypress",
+    "FFileItemPageObject: typeOfFile() method",
+    "FFileItemPageObject: fileName() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "cypress",
     "FDetailsPanelPageObject: header() method",
@@ -722,10 +726,6 @@
     "cypress",
     "FFileItemPageObject: status() method",
     "FFileItemPageObject: inverted() method",
-    "FFileItemPageObject: FFileItemPageObject() constructor",
-    "cypress",
-    "FFileItemPageObject: typeOfFile() method",
-    "FFileItemPageObject: fileName() method",
     "Kolumntyp dropplista i tabell",
     "select",
     "Kolumntyp radrubrik i tabell",
@@ -895,6 +895,11 @@
       ]
     },
     {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
+    },
+    {
       "url": "components/pagination.html",
       "title": "Paginering",
       "terms": [
@@ -1024,11 +1029,6 @@
       "terms": [
         "FBadge"
       ]
-    },
-    {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
     },
     {
       "url": "guides/validation-and-error-handling/validation.html",
@@ -2061,6 +2061,31 @@
       ]
     },
     {
+      "url": "gettingstarted/migration/migrating-to-v6/vue.html",
+      "title": "Version 6 migreringsguide: @fkui/vue",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/overview.html",
+      "title": "Version 6 migreringsguide",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/logic.html",
+      "title": "Version 6 migreringsguide: @fkui/logic",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/design.html",
+      "title": "Version 6 migreringsguide: @fkui/design",
+      "terms": []
+    },
+    {
+      "url": "gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html",
+      "title": "Version 6 migreringsguide: Cypress Pageobjects",
+      "terms": []
+    },
+    {
       "url": "functions/date/f-year/index.html",
       "title": "FYear",
       "terms": [
@@ -2135,31 +2160,6 @@
     {
       "url": "functions/date/f-year/f-date-next.html",
       "title": "FYear: next() method",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/vue.html",
-      "title": "Version 6 migreringsguide: @fkui/vue",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/overview.html",
-      "title": "Version 6 migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/logic.html",
-      "title": "Version 6 migreringsguide: @fkui/logic",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/design.html",
-      "title": "Version 6 migreringsguide: @fkui/design",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v6/cypress-pageobjects.html",
-      "title": "Version 6 migreringsguide: Cypress Pageobjects",
       "terms": []
     },
     {
@@ -2599,6 +2599,23 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
+      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
+      "title": "FFileItemPageObject: typeOfFile() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
+      "title": "FFileItemPageObject: fileName() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": [
@@ -2645,23 +2662,6 @@
     {
       "url": "functions/cypress/pageobjects/FBadgePageObject/is-inverted.html",
       "title": "FFileItemPageObject: inverted() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
-      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
-      "title": "FFileItemPageObject: typeOfFile() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
-      "title": "FFileItemPageObject: fileName() method",
       "terms": []
     },
     {
@@ -2895,56 +2895,56 @@
     "47": 12,
     "48": 12,
     "49": 13,
-    "50": 13,
-    "51": 13,
+    "50": 14,
+    "51": 14,
     "52": 14,
-    "53": 14,
+    "53": 15,
     "54": 15,
-    "55": 15,
+    "55": 16,
     "56": 16,
-    "57": 16,
-    "58": 16,
-    "59": 16,
-    "60": 16,
+    "57": 17,
+    "58": 17,
+    "59": 17,
+    "60": 17,
     "61": 17,
-    "62": 17,
+    "62": 18,
     "63": 18,
-    "64": 18,
+    "64": 19,
     "65": 19,
-    "66": 19,
-    "67": 19,
-    "68": 19,
-    "69": 19,
-    "70": 19,
+    "66": 20,
+    "67": 20,
+    "68": 20,
+    "69": 20,
+    "70": 20,
     "71": 20,
-    "72": 20,
+    "72": 21,
     "73": 21,
-    "74": 21,
-    "75": 21,
+    "74": 22,
+    "75": 22,
     "76": 22,
-    "77": 22,
-    "78": 22,
+    "77": 23,
+    "78": 23,
     "79": 23,
-    "80": 23,
+    "80": 24,
     "81": 24,
-    "82": 24,
-    "83": 24,
-    "84": 24,
-    "85": 24,
-    "86": 24,
+    "82": 25,
+    "83": 25,
+    "84": 25,
+    "85": 25,
+    "86": 25,
     "87": 25,
-    "88": 25,
-    "89": 25,
+    "88": 26,
+    "89": 26,
     "90": 26,
-    "91": 26,
+    "91": 27,
     "92": 27,
-    "93": 27,
-    "94": 27,
-    "95": 27,
-    "96": 27,
-    "97": 27,
+    "93": 28,
+    "94": 28,
+    "95": 28,
+    "96": 28,
+    "97": 28,
     "98": 28,
-    "99": 28,
+    "99": 29,
     "100": 29,
     "101": 30,
     "102": 30,
@@ -3400,11 +3400,11 @@
     "552": 148,
     "553": 148,
     "554": 149,
-    "555": 149,
-    "556": 150,
-    "557": 151,
-    "558": 152,
-    "559": 153,
+    "555": 150,
+    "556": 151,
+    "557": 152,
+    "558": 153,
+    "559": 154,
     "560": 154,
     "561": 155,
     "562": 156,
@@ -3561,9 +3561,9 @@
     "713": 233,
     "714": 234,
     "715": 235,
-    "716": 236,
-    "717": 237,
-    "718": 238,
+    "716": 235,
+    "717": 236,
+    "718": 237,
     "719": 238,
     "720": 239,
     "721": 240,
