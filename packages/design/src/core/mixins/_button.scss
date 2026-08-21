@@ -27,6 +27,7 @@
     $padding-bottom,
     $padding-left
 ) {
+    -webkit-tap-highlight-color: transparent;
     background-color: $background-color;
     border-color: $border-color;
     border-width: $border-width;
@@ -43,11 +44,13 @@
         color: $color--focus;
     }
 
-    &:hover {
-        background-color: $background-color--hover;
-        border-color: $border-color--hover;
-        box-shadow: $shadow--hover;
-        color: $color--hover;
+    @media (hover: hover) {
+        &:hover {
+            background-color: $background-color--hover;
+            border-color: $border-color--hover;
+            box-shadow: $shadow--hover;
+            color: $color--hover;
+        }
     }
 
     &:active {
