@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@forsakringskassan/vitest-config": "2.6.0",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   },
   "engines": {
     "node": "^22.16 || >= 24",
