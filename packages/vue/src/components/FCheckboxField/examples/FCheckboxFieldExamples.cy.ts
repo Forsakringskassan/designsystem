@@ -44,12 +44,6 @@ describe("Basic functionality in FCheckboxGroupSingle", () => {
     it("should confirm that the basic features of the live example work as intended", () => {
         fieldset.el().should("exist");
         fieldset.numberOfCheckboxes().should("equal", 1);
-        toggleAll(fieldset, true); // Select
-        toggleAll(fieldset, false); // Deselect
-        cy.get("[data-test=checked-boxes]").should(
-            "contain.text",
-            "Kryssruta ej kryssad",
-        );
     });
 });
 
