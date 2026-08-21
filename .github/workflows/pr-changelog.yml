@@ -29,7 +29,7 @@ jobs:
                       @forsakringskassan/semantic-release-common@3 \
                       conventional-changelog-conventionalcommits@8
             - name: Pull Requst Changelog
-              uses: ext/pull-request-changelog@94f2a58932d3699c19f6c7756e1a06f98aefc670 # v1
+              uses: ext/pull-request-changelog@adb1008685e3c7c3e22f4f799849d40969cc75c9 # v1
               with:
                   config: .github/pull-request-changelog/config.mjs
                   template-dir: .github/pull-request-changelog
