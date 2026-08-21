@@ -195,13 +195,13 @@ describe("FRadioField", () => {
             </f-fieldset>
         `;
         cy.mount(createComponent(template));
-        radioGroup.radioButton(radioField.disabled1).select();
+        radioGroup.radioButton(radioField.disabled1).label().click();
         radioGroup
             .radioButton(radioField.disabled1)
             .isSelected()
             .should("be.false");
 
-        radioGroup.radioButton(radioField.disabled2).select();
+        radioGroup.radioButton(radioField.disabled2).label().click();
         radioGroup
             .radioButton(radioField.disabled2)
             .isSelected()

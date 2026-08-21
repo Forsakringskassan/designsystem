@@ -223,7 +223,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="checkbox" :class="disabledClass" @validity="onValidity">
+    <label :class="$slots.details ? 'checkbox checkbox--fullwidth' : 'checkbox'" @validity="onValidity">
         <input
             :id
             v-bind="attrs"
@@ -234,14 +234,19 @@ export default defineComponent({
             @keydown.space="onKeydown"
             @change="updateExpandedFlag()"
         />
-        <label :class="$slots.details ? 'checkbox__label checkbox__width' : 'checkbox__label'" :for="id">
-            <!-- @slot Slot for label content. -->
-            <slot name="default"></slot>
+
+        <span class="checkbox__content">
+            <span>
+                <!-- @slot Slot for label content. -->
+                <slot name="default"></slot>
+            </span>
+
             <template v-if="$slots.details">
                 <span v-if="showDetails === 'always'" class="checkbox__details">
                     <!-- @slot Slot for extended label, should only contain short text -->
                     <slot name="details"></slot>
                 </span>
+
                 <transition
                     v-if="showDetails === 'when-selected'"
                     @enter="enter"
@@ -250,13 +255,13 @@ export default defineComponent({
                 >
                     <span v-if="expanded" class="checkbox__details">
                         <!--
-                        @slot Slot for details, should only contain short text
-                        @binding {number} height The height of the expanded details content.
-                        -->
+                            @slot Slot for details, should only contain short text
+                            @binding {number} height The height of the expanded details content.
+                            -->
                         <slot name="details" :height></slot>
                     </span>
                 </transition>
             </template>
-        </label>
-    </div>
+        </span>
+    </label>
 </template>
