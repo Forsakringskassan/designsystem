@@ -64,11 +64,12 @@
         background-color: $minimizable-panel-icon-hover;
     }
 
-    &:active,
-    &:focus {
-        @include fkui.focus-indicator;
-
+    &:active {
         background-color: $minimizable-panel-icon-hover;
+    }
+
+    &:focus-visible {
+        @include fkui.focus-indicator;
     }
 }
 

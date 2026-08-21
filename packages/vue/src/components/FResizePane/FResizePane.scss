@@ -183,19 +183,19 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
     }
 
     /* disable regular focus indicator as this component has its own */
-    &:focus {
+    &:focus-visible {
         outline: none;
         box-shadow: none;
     }
 
     /* when focus by keyboard we dont want the delay or transition */
-    &:focus::before {
+    &:focus-visible::before {
         transition: none;
     }
 
     /* as the handle area expand we increase z-index for the handle to make sure it covers other separators */
     &:hover,
-    &:focus,
+    &:focus-visible,
     &.drag {
         z-index: 2;
         transition: z-index 0s 0s;

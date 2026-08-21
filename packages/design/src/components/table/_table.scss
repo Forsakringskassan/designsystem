@@ -94,7 +94,7 @@ $table-input-offset-horizontal: 0.25rem;
     // while focus is active
     border: $table-focus-size solid transparent;
 
-    &:focus {
+    &:focus-visible {
         // border color is used instead of dual-color shadow because when
         // combined with scroll the edges are cut by overflow of the container
         // element, especially on the right side.
@@ -174,7 +174,7 @@ $table-input-offset-horizontal: 0.25rem;
                 }
             }
 
-            &:focus-within,
+            &:has(:focus-visible),
             &--focus-within {
                 @extend %table-row-focus-within;
 
@@ -186,7 +186,7 @@ $table-input-offset-horizontal: 0.25rem;
                 }
             }
 
-            &:focus,
+            &:focus-visible,
             &--focus {
                 @extend %table-row-focus;
 
