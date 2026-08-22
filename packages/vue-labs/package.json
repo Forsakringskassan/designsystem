@@ -28,7 +28,7 @@
       "require": "./dist/cjs/cypress.cjs.js"
     },
     "./style.css": "./dist/esm/vue-labs.css",
-    "./htmlvalidate": "./htmlvalidate/index.cjs"
+    "./htmlvalidate": "./htmlvalidate/index.mjs"
   },
   "main": "./dist/cjs/index.cjs.js",
   "module": "./dist/esm/index.esm.js",

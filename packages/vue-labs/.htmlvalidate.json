@@ -1,6 +1,6 @@
 {
     "extends": ["@fkui/vue:recommended", "@fkui/vue-labs:recommended"],
-    "plugins": ["@fkui/vue/htmlvalidate", "./htmlvalidate/index.cjs"],
+    "plugins": ["@fkui/vue/htmlvalidate", "./htmlvalidate/index.mjs"],
     "transform": {
         "^.*\\.spec.ts$": "html-validate-vue:html"
     }
