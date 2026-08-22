@@ -1,10 +1,12 @@
-module.exports = {
+import { defineConfig } from "html-validate";
+
+export default defineConfig({
     plugins: ["html-validate-vue"],
     elements: [
         "html5",
-        require.resolve("../elements/overrides"),
-        require.resolve("../elements/components"),
-        require.resolve("../elements/internal-components"),
+        import.meta.resolve("../elements/overrides.mjs"),
+        import.meta.resolve("../elements/components.mjs"),
+        import.meta.resolve("../elements/internal-components.mjs"),
     ],
     rules: {
         "fkui/button-group": "error",
@@ -18,4 +20,4 @@ module.exports = {
         "fkui/ftablecolumn-name": "error",
         "vue/prefer-slot-shorthand": "off",
     },
-};
+});

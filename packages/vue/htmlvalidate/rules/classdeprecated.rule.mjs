@@ -1,5 +1,5 @@
-const { DOMTokenList, Rule } = require("html-validate");
-const { getDocumentationUrl } = require("./common");
+import { DOMTokenList, Rule } from "html-validate";
+import { getDocumentationUrl } from "./common.mjs";
 
 /**
  * @typedef {import("html-validate").RuleDocumentation} RuleDocumentation
@@ -57,7 +57,7 @@ const deprecatedClasses = [
 /**
  * @extends {Rule<Entry, void>}
  */
-class ClassDeprecated extends Rule {
+export class ClassDeprecated extends Rule {
     /**
      * @param {Entry} context
      * @returns {RuleDocumentation}
@@ -105,5 +105,3 @@ class ClassDeprecated extends Rule {
         });
     }
 }
-
-module.exports = ClassDeprecated;

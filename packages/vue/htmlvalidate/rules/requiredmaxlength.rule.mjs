@@ -1,5 +1,5 @@
-const { Rule } = require("html-validate");
-const { getDocumentationUrl } = require("./common");
+import { Rule } from "html-validate";
+import { getDocumentationUrl } from "./common.mjs";
 
 const formatters = [
     "bankaccountnumber",
@@ -18,7 +18,7 @@ const formatters = [
 ];
 const allowedTags = new Set(["input", "f-text-field"]);
 
-class RequiredMaxLength extends Rule {
+export class RequiredMaxLength extends Rule {
     documentation() {
         return {
             description: "Element is missing a maxlength-validation",
@@ -85,5 +85,3 @@ class RequiredMaxLength extends Rule {
         this.report(target, "v-validation.maxLength must be used");
     }
 }
-
-module.exports = RequiredMaxLength;

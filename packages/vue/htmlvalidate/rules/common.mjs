@@ -1,11 +1,13 @@
-const { homepage } = require("../../package.json");
+import pkg from "../../package.json" with { type: "json" };
+
+const { homepage } = pkg;
 
 /**
  * @internal
  * @param {string} path
  * @returns {string}
  */
-function getDocumentationUrl(path) {
+export function getDocumentationUrl(path) {
     if (path.startsWith("/")) {
         path = path.slice(1);
     }
@@ -17,7 +19,7 @@ function getDocumentationUrl(path) {
  * @param {import("html-validate").HtmlElement} element
  * @returns {string[]}
  */
-function getSlots(element) {
+export function getSlots(element) {
     return Object.fromEntries(
         element.childElements
             .filter((it) => it.is("template"))
@@ -29,5 +31,3 @@ function getSlots(element) {
             }),
     );
 }
-
-module.exports = { getDocumentationUrl, getSlots };

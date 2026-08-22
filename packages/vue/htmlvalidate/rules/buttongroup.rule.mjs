@@ -1,7 +1,7 @@
-const { Rule } = require("html-validate");
-const { getDocumentationUrl } = require("./common");
+import { Rule } from "html-validate";
+import { getDocumentationUrl } from "./common.mjs";
 
-class ButtonGroupRule extends Rule {
+export class ButtonGroupRule extends Rule {
     documentation() {
         return {
             description:
@@ -38,5 +38,3 @@ class ButtonGroupRule extends Rule {
         }
     }
 }
-
-module.exports = ButtonGroupRule;

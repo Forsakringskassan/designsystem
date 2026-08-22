@@ -1,5 +1,5 @@
-const { Rule } = require("html-validate/node");
-const { getDocumentationUrl } = require("./common");
+import { Rule } from "html-validate/node";
+import { getDocumentationUrl } from "./common.mjs";
 
 /**
  * @typedef {import("html-validate/node").ElementReadyEvent} ElementReadyEvent
@@ -39,7 +39,7 @@ function isSFCTemplateRoot(node) {
     return node.is("template") && node.parent.isRootElement();
 }
 
-class NoTemplateModal extends Rule {
+export class NoTemplateModal extends Rule {
     documentation() {
         return {
             description:
@@ -62,5 +62,3 @@ class NoTemplateModal extends Rule {
         });
     }
 }
-
-module.exports = NoTemplateModal;
