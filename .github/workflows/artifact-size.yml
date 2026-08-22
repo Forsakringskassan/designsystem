@@ -27,7 +27,7 @@ jobs:
             - name: Workaround # https://github.com/ext/artifact-size-analyzer/issues/88
               run: mkdir -p temp
             - name: Run analyzer
-              uses: ext/artifact-size-analyzer/analyze@3cc00ab793c4b8e017a31481d7de29d7d032bff8 # v1.2.5
+              uses: ext/artifact-size-analyzer/analyze@25dd249eacbef70fcab39789685371e1c64176db # v1.2.6
               with:
                   config-file: .github/artifact-size.json
                   artifact-name: base-size
@@ -51,7 +51,7 @@ jobs:
             - name: Workaround # https://github.com/ext/artifact-size-analyzer/issues/88
               run: mkdir -p temp
             - name: Run analyzer (current)
-              uses: ext/artifact-size-analyzer/analyze@3cc00ab793c4b8e017a31481d7de29d7d032bff8 # v1.2.5
+              uses: ext/artifact-size-analyzer/analyze@25dd249eacbef70fcab39789685371e1c64176db # v1.2.6
               with:
                   config-file: .github/artifact-size.json
                   artifact-name: current-size
@@ -74,7 +74,7 @@ jobs:
               run: npm ci
             - name: Compare results
               id: compare
-              uses: ext/artifact-size-analyzer/compare@3cc00ab793c4b8e017a31481d7de29d7d032bff8 # v1.2.5
+              uses: ext/artifact-size-analyzer/compare@25dd249eacbef70fcab39789685371e1c64176db # v1.2.6
               with:
                   base-artifact: base-size
                   current-artifact: current-size
