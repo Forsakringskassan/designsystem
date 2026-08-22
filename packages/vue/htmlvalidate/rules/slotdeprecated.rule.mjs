@@ -1,5 +1,5 @@
-const { Rule } = require("html-validate/node");
-const { getDocumentationUrl, getSlots } = require("./common");
+import { Rule } from "html-validate/node";
+import { getDocumentationUrl, getSlots } from "./common.mjs";
 
 /**
  * @typedef {import("html-validate").RuleDocumentation} RuleDocumentation
@@ -37,7 +37,7 @@ function isRelevant(event) {
 /**
  * @extends {Rule<Entry, void>}
  */
-class SlotDeprecated extends Rule {
+export class SlotDeprecated extends Rule {
     /**
      * @param {Entry} context
      * @returns {RuleDocumentation}
@@ -81,5 +81,3 @@ class SlotDeprecated extends Rule {
         });
     }
 }
-
-module.exports = SlotDeprecated;

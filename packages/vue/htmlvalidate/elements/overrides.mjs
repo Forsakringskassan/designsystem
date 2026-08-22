@@ -1,6 +1,6 @@
-const { defineMetadata } = require("html-validate");
+import { defineMetadata } from "html-validate";
 
-module.exports = defineMetadata({
+export default defineMetadata({
     /* override <title> element so it can be used under <f-icon> as well (and is
      * inserted inside the <svg>) */
     title: {

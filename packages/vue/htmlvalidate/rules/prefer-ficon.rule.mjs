@@ -1,5 +1,5 @@
-const { Rule } = require("html-validate/node");
-const { getDocumentationUrl } = require("./common");
+import { Rule } from "html-validate/node";
+import { getDocumentationUrl } from "./common.mjs";
 
 /**
  * @typedef {import("html-validate/node").ElementReadyEvent} ElementReadyEvent
@@ -14,7 +14,7 @@ function isRelevant(event) {
     return target.is("svg") && target.classList.includes("icon");
 }
 
-class PreferFIcon extends Rule {
+export class PreferFIcon extends Rule {
     documentation() {
         return {
             description:
@@ -32,5 +32,3 @@ class PreferFIcon extends Rule {
         });
     }
 }
-
-module.exports = PreferFIcon;

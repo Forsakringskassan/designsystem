@@ -1,4 +1,4 @@
-const { defineMetadata, metadataHelper } = require("html-validate");
+import { defineMetadata, metadataHelper } from "html-validate";
 
 const {
     allowedIfAttributeHasValue,
@@ -6,7 +6,7 @@ const {
     allowedIfAttributeIsPresent,
 } = metadataHelper;
 
-module.exports = defineMetadata({
+export default defineMetadata({
     /* f-label is defined at top as many other elements inherits from it */
     "f-label": {
         inherit: "label",

@@ -2,7 +2,7 @@
 import "html-validate/vitest";
 import { HtmlValidate } from "html-validate";
 import { expect, it } from "vitest";
-import plugin from "../index.cjs";
+import plugin from "../index.mjs";
 
 const htmlvalidate = new HtmlValidate({
     plugins: [plugin],
