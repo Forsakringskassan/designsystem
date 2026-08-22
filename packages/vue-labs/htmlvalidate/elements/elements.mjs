@@ -1,6 +1,6 @@
-const { defineMetadata } = require("html-validate");
+import { defineMetadata } from "html-validate";
 
-module.exports = defineMetadata({
+export default defineMetadata({
     "x-file-dragdrop": {
         flow: true,
     },
