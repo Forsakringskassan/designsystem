@@ -119,7 +119,7 @@
     "html-validate-vue": "9.3.1",
     "is-ci": "4.1.0",
     "jsdom": "30.0.1",
-    "lerna": "10.0.0",
+    "lerna": "10.0.1",
     "mocha-junit-reporter": "2.2.1",
     "mocha-multi-reporters": "1.5.1",
     "npm-pkg-lint": "5.2.3",
