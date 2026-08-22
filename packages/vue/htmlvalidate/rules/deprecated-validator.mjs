@@ -1,5 +1,5 @@
-const { Rule, sliceLocation } = require("html-validate");
-const { getDocumentationUrl } = require("./common");
+import { Rule, sliceLocation } from "html-validate";
+import { getDocumentationUrl } from "./common.mjs";
 
 const replacements = {
     dummy: ["dummyReplacements"],
@@ -25,7 +25,7 @@ function* splitModifiers(text) {
     }
 }
 
-class DeprecatedValidator extends Rule {
+export class DeprecatedValidator extends Rule {
     documentation(context) {
         return {
             description: [
@@ -59,5 +59,3 @@ class DeprecatedValidator extends Rule {
         });
     }
 }
-
-module.exports = DeprecatedValidator;

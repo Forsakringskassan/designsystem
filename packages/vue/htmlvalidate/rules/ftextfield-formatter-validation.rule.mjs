@@ -1,5 +1,5 @@
-const { Rule } = require("html-validate");
-const { getDocumentationUrl } = require("./common");
+import { Rule } from "html-validate";
+import { getDocumentationUrl } from "./common.mjs";
 
 /**
  * @typedef {import("html-validate").HtmlElement} HtmlElement
@@ -29,7 +29,7 @@ function isRelevant(node) {
     return node.target.tagName === "f-text-field";
 }
 
-class FtextFieldFormatterValidation extends Rule {
+export class FtextFieldFormatterValidation extends Rule {
     documentation() {
         return {
             description:
@@ -98,5 +98,3 @@ class FtextFieldFormatterValidation extends Rule {
         });
     }
 }
-
-module.exports = FtextFieldFormatterValidation;

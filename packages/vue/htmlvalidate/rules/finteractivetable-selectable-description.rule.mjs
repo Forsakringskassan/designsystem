@@ -1,9 +1,5 @@
-const {
-    Rule,
-    TextClassification,
-    classifyNodeText,
-} = require("html-validate/node");
-const { getDocumentationUrl, getSlots } = require("./common");
+import { Rule, TextClassification, classifyNodeText } from "html-validate/node";
+import { getDocumentationUrl, getSlots } from "./common.mjs";
 
 /**
  * @param {import("html-validate").ElementReadyEvent} event
@@ -13,7 +9,7 @@ function isRelevant(event) {
     return event.target.is("f-interactive-table");
 }
 
-class FInteractiveTableSelectableDescription extends Rule {
+export class FInteractiveTableSelectableDescription extends Rule {
     documentation() {
         return {
             description:
@@ -53,5 +49,3 @@ class FInteractiveTableSelectableDescription extends Rule {
         });
     }
 }
-
-module.exports = FInteractiveTableSelectableDescription;

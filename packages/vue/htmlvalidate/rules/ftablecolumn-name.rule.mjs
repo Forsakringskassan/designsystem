@@ -1,7 +1,7 @@
-const { Rule } = require("html-validate/node");
-const { getDocumentationUrl } = require("./common");
+import { Rule } from "html-validate/node";
+import { getDocumentationUrl } from "./common.mjs";
 
-class FTableColumnName extends Rule {
+export class FTableColumnName extends Rule {
     documentation() {
         return {
             description:
@@ -54,5 +54,3 @@ class FTableColumnName extends Rule {
         }
     }
 }
-
-module.exports = FTableColumnName;

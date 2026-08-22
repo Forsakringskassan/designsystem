@@ -1,7 +1,7 @@
-const { Rule } = require("html-validate/node");
-const { getDocumentationUrl } = require("./common");
+import { Rule } from "html-validate/node";
+import { getDocumentationUrl } from "./common.mjs";
 
-class FButtonTertiaryBlackDeprecated extends Rule {
+export class FButtonTertiaryBlackDeprecated extends Rule {
     documentation() {
         return {
             description:
@@ -27,5 +27,3 @@ class FButtonTertiaryBlackDeprecated extends Rule {
         });
     }
 }
-
-module.exports = FButtonTertiaryBlackDeprecated;
