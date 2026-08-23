@@ -37,7 +37,7 @@
     "cssnano": "8.0.6",
     "get-css-variables": "1.1.1",
     "postcss-scss": "4.0.9",
-    "sass": "1.102.0",
+    "sass": "1.103.0",
     "yargs": "18.1.0"
   },
   "devDependencies": {
