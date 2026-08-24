@@ -2813,3 +2813,54 @@ describe("columns", () => {
         }
     });
 });
+
+describe("with wrapping text cell values", () => {
+    interface Row {
+        static: string;
+        editable: string;
+    }
+
+    const columns = defineTableColumns<Row>([
+        {
+            type: "text",
+            header: "Static",
+            editable: false,
+            key: "static",
+            label: () => "text",
+        },
+        {
+            type: "text",
+            header: "Editable",
+            editable: true,
+            key: "editable",
+            label: () => "text",
+        },
+    ]);
+
+    const rows = useDatasetRef<Row>([
+        {
+            static: "A2",
+            editable:
+                "Attack feet behind the couch destroy couch flop over give attitude hide when guests come over hopped up on goofballs hunt anything that moves intently stare at the same spot bag stretch, claw drapes swat at dog lick butt intently sniff hand rub.",
+        },
+        {
+            static: "Bag stretch intently stare at the same spot destroy couch hunt anything that moves hopped up on goofballs behind the couch, make muffins shake treat claw drapes.",
+            editable: "Hej",
+        },
+    ]);
+
+    it("should wrap overflowing text (visual)", () => {
+        cy.mount(() =>
+            h(
+                FTable<Row>,
+                { rows: rows.value, columns },
+                {
+                    caption:
+                        "Verifierar att texten radbryter när den flödar över",
+                },
+            ),
+        );
+
+        table.el().toMatchScreenshot();
+    });
+});
