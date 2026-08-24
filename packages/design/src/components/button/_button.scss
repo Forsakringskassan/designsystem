@@ -118,6 +118,7 @@ $button--tertiary: (
 }
 
 .button {
+    -webkit-tap-highlight-color: transparent;
     align-items: center;
     border-radius: var(--f-border-radius-medium);
     border-style: solid;
