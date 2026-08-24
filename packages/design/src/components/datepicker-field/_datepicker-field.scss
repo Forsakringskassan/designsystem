@@ -30,12 +30,14 @@ $calendar-width: calc(100vw - #{$popup-spacing});
             }
         }
 
-        &:hover {
-            .icon {
-                color: $datepickerfield-f-icon-calendar-color-content-hover;
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                .icon {
+                    color: $datepickerfield-f-icon-calendar-color-content-hover;
 
-                @media (forced-colors: active) {
-                    color: LinkText;
+                    @media (forced-colors: active) {
+                        color: LinkText;
+                    }
                 }
             }
         }

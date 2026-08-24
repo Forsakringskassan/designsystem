@@ -60,10 +60,11 @@
     padding: 1rem;
     width: max-content;
 
-    &:hover {
-        background-color: $details-panel-icon-hover;
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-color: $details-panel-icon-hover;
+        }
     }
-
     &:active,
     &:focus {
         @include fkui.focus-indicator;

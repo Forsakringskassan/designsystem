@@ -104,8 +104,10 @@ $layout-navigation-dot-spacing: 4px !default;
                 background-color: $layout-navigation-button-color-background-focus;
             }
 
-            &:hover {
-                background-color: $layout-navigation-button-color-background-hover;
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background-color: $layout-navigation-button-color-background-hover;
+                }
             }
 
             &:active {
