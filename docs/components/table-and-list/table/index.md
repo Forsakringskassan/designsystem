@@ -112,10 +112,7 @@ Underlätta för användaren genom att formatera innehållet i tabellen så det 
 Undvik långa texter i tabellceller.
 Håll innehållet kort och koncist så att det blir lätt och överskådligt för användaren att hitta.
 
-#### Långa texter
-
-Långa texter i tabellceller bör undvikas.
-Använd i stället expanderbara rader, en modal för att visa mer information eller undersök om en annan komponent, exempelvis {@link FList lista}, är mer lämplig.
+Om du ändå måste ha långa texter använd i stället expanderbara rader, en modal för att visa mer information eller undersök om en annan komponent, exempelvis {@link FList lista}, är mer lämplig.
 
 ### Funktioner
 
