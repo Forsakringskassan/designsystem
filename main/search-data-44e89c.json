@@ -228,9 +228,6 @@
     "Jest",
     "testverktyg",
     "jest",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -238,6 +235,9 @@
     "densify() function",
     "densitet",
     "sass",
+    "EventBus",
+    "EventBus",
+    "services",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -617,16 +617,6 @@
     "ValidationErrorMessageBuilder: build() method",
     "feltext",
     "validator",
-    "FTablePageObject",
-    "cypress",
-    "FPaginatorPageObject",
-    "cypress",
-    "FListPageObject",
-    "cypress",
-    "FExpandableParagraphPageObject",
-    "cypress",
-    "FDefinitionListPageObject",
-    "cypress",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -643,6 +633,16 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
+    "FTablePageObject",
+    "cypress",
+    "FPaginatorPageObject",
+    "cypress",
+    "FListPageObject",
+    "cypress",
+    "FExpandableParagraphPageObject",
+    "cypress",
+    "FDefinitionListPageObject",
+    "cypress",
     "Sortera och filtrera i tabell",
     "tabell",
     "Sortera och filtrera i tabell (kod)",
@@ -1304,14 +1304,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1326,6 +1318,14 @@
       "terms": [
         "densitet",
         "sass"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -2264,41 +2264,6 @@
       ]
     },
     {
-      "url": "functions/cypress/pageobjects/ftablepageobject.html",
-      "title": "FTablePageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
-      "title": "FPaginatorPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/flistpageobject.html",
-      "title": "FListPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
-      "title": "FExpandableParagraphPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
-      "title": "FDefinitionListPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
       "url": "functions/date/f-year/index.html",
       "title": "FYear",
       "terms": [
@@ -2374,6 +2339,41 @@
       "url": "functions/date/f-year/f-date-next.html",
       "title": "FYear: next() method",
       "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/ftablepageobject.html",
+      "title": "FTablePageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
+      "title": "FPaginatorPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/flistpageobject.html",
+      "title": "FListPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
+      "title": "FExpandableParagraphPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
+      "title": "FDefinitionListPageObject",
+      "terms": [
+        "cypress"
+      ]
     },
     {
       "url": "components/table-and-list/table/sort-filter.html",
@@ -3076,7 +3076,7 @@
     "228": 60,
     "229": 60,
     "230": 60,
-    "231": 61,
+    "231": 60,
     "232": 61,
     "233": 61,
     "234": 61,
@@ -3465,28 +3465,28 @@
     "617": 178,
     "618": 178,
     "619": 179,
-    "620": 179,
-    "621": 180,
-    "622": 180,
-    "623": 181,
-    "624": 181,
-    "625": 182,
-    "626": 182,
-    "627": 183,
-    "628": 183,
-    "629": 184,
-    "630": 185,
-    "631": 186,
-    "632": 187,
-    "633": 188,
-    "634": 189,
-    "635": 190,
-    "636": 191,
-    "637": 192,
-    "638": 193,
-    "639": 194,
-    "640": 195,
-    "641": 196,
+    "620": 180,
+    "621": 181,
+    "622": 182,
+    "623": 183,
+    "624": 184,
+    "625": 185,
+    "626": 186,
+    "627": 187,
+    "628": 188,
+    "629": 189,
+    "630": 190,
+    "631": 191,
+    "632": 192,
+    "633": 193,
+    "634": 193,
+    "635": 194,
+    "636": 194,
+    "637": 195,
+    "638": 195,
+    "639": 196,
+    "640": 196,
+    "641": 197,
     "642": 197,
     "643": 198,
     "644": 198,
