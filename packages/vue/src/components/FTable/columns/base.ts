@@ -11,7 +11,7 @@ export type TableColumnSize = "grow" | "shrink";
  *
  * @public
  */
-export interface TableColumnBase {
+export interface TableColumnBase<T> {
     /** Column header */
     header: string | Readonly<Ref<string>>;
     /** Format description (shown in header) */
@@ -31,6 +31,7 @@ export interface TableColumnBase {
      * and its cells. Default: `true`.
      */
     enabled?: MaybeRef<boolean>;
+    hidden?: boolean | ((this: void, row: T) => boolean);
 }
 
 /**
@@ -38,13 +39,14 @@ export interface TableColumnBase {
  *
  * @internal
  */
-export interface NormalizedTableColumnBase<K> {
+export interface NormalizedTableColumnBase<T, K> {
     readonly id: symbol;
     readonly header: Readonly<Ref<string>>;
     readonly description: Readonly<Ref<string | null>>;
     readonly sortable: K | null;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
     readonly enabled: MaybeRef<boolean>;
+    readonly hidden?: boolean | ((this: void, row: T) => boolean);
 }
 
 /**
@@ -60,16 +62,17 @@ export type OmittedNormalizedColumnProperties =
     | "sortable"
     | "size"
     | "component"
-    | "enabled";
+    | "enabled"
+    | "hidden";
 
 /**
  * @internal
  */
-export function normalizeBaseColumn<K = never>(
-    column: TableColumnBase,
+export function normalizeBaseColumn<T, K = never>(
+    column: TableColumnBase<T>,
 ): Pick<
-    NormalizedTableColumnBase<K>,
-    "id" | "header" | "description" | "size" | "enabled" | "sortable"
+    NormalizedTableColumnBase<T, K>,
+    "id" | "header" | "description" | "size" | "enabled" | "sortable" | "hidden"
 > {
     const id = Symbol();
     const header = toRef(column.header);
@@ -86,5 +89,6 @@ export function normalizeBaseColumn<K = never>(
         sortable,
         size,
         enabled: column.enabled ?? true,
+        hidden: column.hidden ?? false,
     };
 }

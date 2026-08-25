@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { useTemplateRef } from "vue";
+import { computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { FIcon } from "../FIcon";
 import { type FTableCellApi } from "./f-table-api";
@@ -11,6 +11,16 @@ const { column, row } = defineProps<{
 }>();
 
 const buttonElement = useTemplateRef("button");
+
+const isHidden = computed((): boolean => {
+    if (column.hidden === undefined) {
+        return false;
+    }
+    if (typeof column.hidden === "boolean") {
+        return column.hidden;
+    }
+    return column.hidden(row);
+});
 
 function onClickButton(): void {
     assertRef(buttonElement);
@@ -31,7 +41,7 @@ defineExpose(expose);
 
 <template>
     <td class="table-ng__cell table-ng__cell--button">
-        <button ref="button" class="icon-button" type="button" tabindex="-1" @click="onClickButton">
+        <button v-if="!isHidden" ref="button" class="icon-button" type="button" tabindex="-1" @click="onClickButton">
             <f-icon v-if="column.icon" :library="column.iconLibrary" :name="column.icon"></f-icon>
             <span class="sr-only">{{ column.text(row) }}</span>
         </button>

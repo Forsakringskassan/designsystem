@@ -1481,6 +1481,7 @@ export interface TableColumnBase {
 
 // @public (undocumented)
 export interface TableColumnButton<T, K extends keyof T> extends TableColumnBase {
+    hidden?(this: void, row: T): boolean;
     icon?: string;
     iconLibrary?: string;
     // (undocumented)

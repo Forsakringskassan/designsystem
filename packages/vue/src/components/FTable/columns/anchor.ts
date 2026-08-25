@@ -12,7 +12,7 @@ import { getValueFn } from "./helpers";
 export interface TableColumnAnchor<
     T,
     K extends keyof T,
-> extends TableColumnBase {
+> extends TableColumnBase<T> {
     /** Column type */
     type: "anchor";
     key?: K;
@@ -28,7 +28,7 @@ export interface TableColumnAnchor<
 export interface NormalizedTableColumnAnchor<
     T,
     K,
-> extends NormalizedTableColumnBase<K> {
+> extends NormalizedTableColumnBase<T, K> {
     readonly type: "anchor";
     readonly component: Component<{
         row: T;

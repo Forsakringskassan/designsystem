@@ -11,7 +11,7 @@ import { type NormalizedTableColumnText } from "./text";
 export interface TableColumnSimple<
     T,
     K extends keyof T,
-> extends TableColumnBase {
+> extends TableColumnBase<T> {
     type?: undefined;
     key?: K;
     label?(this: void, row: T): string;

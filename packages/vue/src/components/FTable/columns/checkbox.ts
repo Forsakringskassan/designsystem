@@ -12,7 +12,7 @@ import { getLabelFn, getUpdateFn, getValueFn } from "./helpers";
 export interface TableColumnCheckbox<
     T,
     K extends keyof T,
-> extends TableColumnBase {
+> extends TableColumnBase<T> {
     /** Column type */
     type: "checkbox";
     key?: K;
@@ -28,7 +28,7 @@ export interface TableColumnCheckbox<
 export interface NormalizedTableColumnCheckbox<
     T,
     K,
-> extends NormalizedTableColumnBase<K> {
+> extends NormalizedTableColumnBase<T, K> {
     readonly type: "checkbox";
     readonly component: Component<{
         row: T;

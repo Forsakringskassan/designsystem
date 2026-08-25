@@ -12,7 +12,7 @@ import { getLabelFn, getUpdateFn, getValueFn } from "./helpers";
 export interface TableColumnSelect<
     T,
     K extends keyof T,
-> extends TableColumnBase {
+> extends TableColumnBase<T> {
     /** Column type */
     type: "select";
     key?: K;
@@ -32,7 +32,7 @@ export interface TableColumnSelect<
 export interface NormalizedTableColumnSelect<
     T,
     K,
-> extends NormalizedTableColumnBase<K> {
+> extends NormalizedTableColumnBase<T, K> {
     readonly type: "select";
     readonly options: string[];
     readonly component: Component<{
