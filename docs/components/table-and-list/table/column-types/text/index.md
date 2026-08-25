@@ -194,6 +194,7 @@ För vissa vanliga datatyper finns färdiga varianter av `text` med inbyggd form
 - `label` används som skärmläsartext för redigerbara celler.
 - `align` och `tnum` kan användas för att styra justering och tabular figures.
 - `text:currency`, `text:number` och `text:percent` blir högerjusterade som standard.
+- Om texten är längre än fältet kommer den automatiskt att radbryta.
 
 ## Flödesdiagram
 
