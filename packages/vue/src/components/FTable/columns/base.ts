@@ -31,7 +31,7 @@ export interface TableColumnBase<T> {
      * and its cells. Default: `true`.
      */
     enabled?: MaybeRef<boolean>;
-    hidden?: boolean | ((this: void, row: T) => boolean);
+    visible?: boolean | ((this: void, row: T) => boolean);
 }
 
 /**
@@ -46,7 +46,7 @@ export interface NormalizedTableColumnBase<T, K> {
     readonly sortable: K | null;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
     readonly enabled: MaybeRef<boolean>;
-    readonly hidden?: boolean | ((this: void, row: T) => boolean);
+    readonly visible?: boolean | ((this: void, row: T) => boolean);
 }
 
 /**
@@ -63,7 +63,7 @@ export type OmittedNormalizedColumnProperties =
     | "size"
     | "component"
     | "enabled"
-    | "hidden";
+    | "visible";
 
 /**
  * @internal
@@ -72,7 +72,13 @@ export function normalizeBaseColumn<T, K = never>(
     column: TableColumnBase<T>,
 ): Pick<
     NormalizedTableColumnBase<T, K>,
-    "id" | "header" | "description" | "size" | "enabled" | "sortable" | "hidden"
+    | "id"
+    | "header"
+    | "description"
+    | "size"
+    | "enabled"
+    | "sortable"
+    | "visible"
 > {
     const id = Symbol();
     const header = toRef(column.header);
@@ -89,6 +95,6 @@ export function normalizeBaseColumn<T, K = never>(
         sortable,
         size,
         enabled: column.enabled ?? true,
-        hidden: column.hidden ?? false,
+        visible: column.visible ?? true,
     };
 }

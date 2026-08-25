@@ -12,14 +12,14 @@ const { column, row } = defineProps<{
 
 const buttonElement = useTemplateRef("button");
 
-const isHidden = computed((): boolean => {
-    if (column.hidden === undefined) {
-        return false;
+const isVisible = computed((): boolean => {
+    if (column.visible === undefined) {
+        return true;
     }
-    if (typeof column.hidden === "boolean") {
-        return column.hidden;
+    if (typeof column.visible === "boolean") {
+        return column.visible;
     }
-    return column.hidden(row);
+    return column.visible(row);
 });
 
 function onClickButton(): void {
@@ -41,7 +41,7 @@ defineExpose(expose);
 
 <template>
     <td class="table-ng__cell table-ng__cell--button">
-        <button v-if="!isHidden" ref="button" class="icon-button" type="button" tabindex="-1" @click="onClickButton">
+        <button v-if="isVisible" ref="button" class="icon-button" type="button" tabindex="-1" @click="onClickButton">
             <f-icon v-if="column.icon" :library="column.iconLibrary" :name="column.icon"></f-icon>
             <span class="sr-only">{{ column.text(row) }}</span>
         </button>
