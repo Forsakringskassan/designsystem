@@ -1,0 +1,103 @@
+import "html-validate/vitest";
+import { HtmlValidate } from "html-validate";
+import { expect, it } from "vitest";
+import plugin from "../index.mjs";
+
+const htmlvalidate = new HtmlValidate({
+    plugins: [plugin],
+    rules: { "fkui/finteractivetable-selectable-description": "error" },
+});
+
+it("should not report error when selectable is used with non-empty selectable description", async () => {
+    expect.assertions(2);
+    const markup = /* HTML */ `
+        <f-interactive-table selectable>
+            <template #default="{ row }"></template>
+            <template #selectable-description> Select this row </template>
+        </f-interactive-table>
+    `;
+    const report = await htmlvalidate.validateString(markup);
+    expect(report).toBeValid();
+    await expect(report).toMatchInlineCodeframe(`""`);
+});
+
+it("should report error when selectable is used without selectable description", async () => {
+    expect.assertions(2);
+    const markup = /* HTML */ `
+        <f-interactive-table selectable>
+            <template #default="{ row }"></template>
+        </f-interactive-table>
+    `;
+    const report = await htmlvalidate.validateString(markup);
+    expect(report).toBeInvalid();
+    await expect(report).toMatchInlineCodeframe(`
+        "error: #selectable-description slot must be implemented when selectable is enabled (fkui/finteractivetable-selectable-description)
+          1 |
+        > 2 |         <f-interactive-table selectable>
+            |                              ^^^^^^^^^^
+          3 |             <template #default="{ row }"></template>
+          4 |         </f-interactive-table>
+          5 |
+        Selector: f-interactive-table"
+    `);
+});
+
+it("should report error when selectable is used with empty selectable description", async () => {
+    expect.assertions(2);
+    const markup = /* HTML */ `
+        <f-interactive-table selectable>
+            <template #default="{ row }"></template>
+            <template #selectable-description></template>
+        </f-interactive-table>
+    `;
+    const report = await htmlvalidate.validateString(markup);
+    expect(report).toBeInvalid();
+    await expect(report).toMatchInlineCodeframe(`
+        "error: #selectable-description cannot be empty when selectable is enabled (fkui/finteractivetable-selectable-description)
+          2 |         <f-interactive-table selectable>
+          3 |             <template #default="{ row }"></template>
+        > 4 |             <template #selectable-description></template>
+            |              ^^^^^^^^
+          5 |         </f-interactive-table>
+          6 |
+        Selector: f-interactive-table > template:nth-child(2)"
+    `);
+});
+
+it("should handle when no slots are implemented", async () => {
+    expect.assertions(2);
+    const markup = /* HTML */ `
+        <f-interactive-table selectable></f-interactive-table>
+    `;
+    const report = await htmlvalidate.validateString(markup);
+    expect(report).toBeInvalid();
+    await expect(report).toMatchInlineCodeframe(`
+        "error: #selectable-description slot must be implemented when selectable is enabled (fkui/finteractivetable-selectable-description)
+          1 |
+        > 2 |         <f-interactive-table selectable></f-interactive-table>
+            |                              ^^^^^^^^^^
+          3 |
+        Selector: f-interactive-table"
+    `);
+});
+
+it("should handle when non-slot template element is used", async () => {
+    expect.assertions(2);
+    const markup = /* HTML */ `
+        <f-interactive-table selectable>
+            <template v-if="false"></template>
+        </f-interactive-table>
+    `;
+    const report = await htmlvalidate.validateString(markup);
+    expect(report).toBeInvalid();
+    await expect(report).toMatchInlineCodeframe(`
+        "error: #selectable-description slot must be implemented when selectable is enabled (fkui/finteractivetable-selectable-description)
+          1 |
+        > 2 |         <f-interactive-table selectable>
+            |                              ^^^^^^^^^^
+          3 |             <template v-if="false"></template>
+          4 |         </f-interactive-table>
+          5 |
+        Selector: f-interactive-table"
+    `);
+});

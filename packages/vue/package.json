@@ -1,6 +1,6 @@
 {
   "name": "@fkui/vue",
-  "version": "6.53.0",
+  "version": "6.54.0",
   "description": "Vue implementation of FKUI components",
   "keywords": [
     "fkui",
@@ -32,7 +32,7 @@
       "import": "./dist/esm/selectors.esm.js",
       "require": "./dist/cjs/selectors.cjs.js"
     },
-    "./htmlvalidate": "./htmlvalidate/index.cjs",
+    "./htmlvalidate": "./htmlvalidate/index.mjs",
     "./htmlvalidate/cypress": "./htmlvalidate/cypress.js",
     "./package.json": "./package.json",
     "./tsconfig.json": "./tsconfig-consumer.json"
@@ -45,7 +45,6 @@
     "htmlvalidate",
     "tsconfig-consumer.json",
     "!**/*.spec.{js,ts,d.ts}",
-    "!**/.eslintrc.json",
     "!htmlvalidate/tsconfig.json"
   ],
   "scripts": {
@@ -66,26 +65,26 @@
     "lodash": "4.18.1"
   },
   "devDependencies": {
-    "@fkui/date": "6.53.0",
-    "@fkui/design": "6.53.0",
-    "@fkui/icon-lib-default": "6.53.0",
-    "@fkui/logic": "6.53.0",
-    "@fkui/test-utils": "6.53.0",
-    "@fkui/theme-default": "6.53.0",
-    "@forsakringskassan/vite-lib-config": "5.7.0",
-    "@forsakringskassan/vitest-config-jsdom": "2.6.0",
+    "@fkui/date": "6.54.0",
+    "@fkui/design": "6.54.0",
+    "@fkui/icon-lib-default": "6.54.0",
+    "@fkui/logic": "6.54.0",
+    "@fkui/test-utils": "6.54.0",
+    "@fkui/theme-default": "6.54.0",
+    "@forsakringskassan/vite-lib-config": "5.9.3",
+    "@forsakringskassan/vitest-config-jsdom": "2.7.0",
     "@vue/test-utils": "2.4.11",
     "esbuild": "0.28.2",
     "glob": "13.0.6",
-    "vite": "8.2.1",
-    "vitest": "4.1.10",
+    "vite": "8.2.2",
+    "vitest": "4.1.11",
     "vue": "3.5.41",
     "vue-router": "5.2.0"
   },
   "peerDependencies": {
-    "@fkui/date": "^6.53.0",
-    "@fkui/design": "^6.53.0",
-    "@fkui/logic": "^6.53.0",
+    "@fkui/date": "^6.54.0",
+    "@fkui/design": "^6.54.0",
+    "@fkui/logic": "^6.54.0",
     "fk-icons": "^4.30.1",
     "html-validate": ">= 10.10.0",
     "vue": "^3.5.34"

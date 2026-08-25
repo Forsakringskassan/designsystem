@@ -1,6 +1,6 @@
 {
   "name": "@fkui/date",
-  "version": "6.53.0",
+  "version": "6.54.0",
   "description": "Date",
   "keywords": [
     "fkui",
@@ -17,24 +17,23 @@
   "author": "Försäkringskassan",
   "exports": {
     ".": {
-      "types": "./lib/types/index.d.ts",
-      "import": "./lib/esm/index.js",
-      "require": "./lib/cjs/index.js"
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
     }
   },
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
-  "types": "lib/types/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
-    "lib",
-    "!**/*.js.map"
+    "dist"
   ],
   "scripts": {
     "prebuild": "tsc",
     "build": "rollup --config",
     "postbuild": "fk-api-extractor",
     "build:docs": "typedoc",
-    "clean": "rimraf lib temp typedoc",
+    "clean": "rimraf dist temp typedoc",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
@@ -42,15 +41,15 @@
     "watch": "rollup --config --watch"
   },
   "dependencies": {
-    "dayjs": "1.11.21"
+    "dayjs": "1.11.23"
   },
   "devDependencies": {
-    "@forsakringskassan/vitest-config": "2.6.0",
+    "@forsakringskassan/vitest-config": "2.7.0",
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
-    "rollup": "4.62.4",
-    "vitest": "4.1.10"
+    "rollup": "4.62.5",
+    "vitest": "4.1.11"
   },
   "engines": {
     "node": "^22.16 || >= 24",

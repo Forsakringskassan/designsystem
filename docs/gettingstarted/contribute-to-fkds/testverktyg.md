@@ -139,14 +139,9 @@ Ej migrerat till Eslint v9 och flat config!
 ESLint körs på alla källkodsfiler i repository.
 
 Använder [`@forsakringskassan/eslint-config`][eslint-config] och tillhörande paket.
-Konfiguration hittas i `.eslintrc.cjs` samt `.eslintignore`.
+Konfiguration hittas i `eslint.config.mjs`.
 
 Utöver standardkonfigurationen så är exempel och testfall konfigurerade med en snällare konfiguration.
-
-::: warning
-I undantagsfall finns `.eslintrc.*` filer i underkataloger.
-Det är kodskuld som bör migreras.
-:::
 
 [eslint-config]: https://github.com/Forsakringskassan/eslint-config
 

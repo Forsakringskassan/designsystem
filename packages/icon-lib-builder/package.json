@@ -1,6 +1,6 @@
 {
   "name": "@fkui/icon-lib-builder",
-  "version": "6.53.0",
+  "version": "6.54.0",
   "description": "Icon library builder",
   "keywords": [
     "fkui",
@@ -28,12 +28,12 @@
   ],
   "dependencies": {
     "glob": "13.0.6",
-    "sass": "1.102.0",
+    "sass": "1.103.0",
     "svgo": "4.0.2"
   },
   "devDependencies": {
-    "@forsakringskassan/vitest-config": "2.6.0",
-    "vitest": "4.1.10"
+    "@forsakringskassan/vitest-config": "2.7.0",
+    "vitest": "4.1.11"
   },
   "engines": {
     "node": "^22.16 || >= 24",

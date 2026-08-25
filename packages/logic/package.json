@@ -1,6 +1,6 @@
 {
   "name": "@fkui/logic",
-  "version": "6.53.0",
+  "version": "6.54.0",
   "description": "Logic",
   "keywords": [
     "fkui",
@@ -16,40 +16,39 @@
   "license": "MIT",
   "author": "Försäkringskassan",
   "sideEffects": [
-    "./lib/cjs/polyfills.js",
-    "./lib/esm/polyfills.js",
-    "./lib/polyfills.js"
+    "./dist/cjs/polyfills.js",
+    "./dist/esm/polyfills.js",
+    "./dist/polyfills.js"
   ],
   "exports": {
     ".": {
-      "types": "./lib/types/index.d.ts",
-      "import": "./lib/esm/index.js",
-      "require": "./lib/cjs/index.js"
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
     },
     "./polyfills": {
-      "types": "./lib/types/polyfills.d.ts",
-      "import": "./lib/esm/polyfills.js",
-      "require": "./lib/cjs/polyfills.js"
+      "types": "./dist/types/polyfills.d.ts",
+      "import": "./dist/esm/polyfills.js",
+      "require": "./dist/cjs/polyfills.js"
     },
     "./lib/polyfills": {
-      "types": "./lib/types/polyfills.d.ts",
-      "import": "./lib/esm/polyfills.js",
-      "require": "./lib/cjs/polyfills.js"
+      "types": "./dist/types/polyfills.d.ts",
+      "import": "./dist/esm/polyfills.js",
+      "require": "./dist/cjs/polyfills.js"
     }
   },
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
-  "types": "lib/types/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
-    "lib",
-    "!**/*.js.map"
+    "dist"
   ],
   "scripts": {
     "prebuild": "tsc",
     "build": "rollup --config",
     "postbuild": "fk-api-extractor",
     "build:docs": "typedoc",
-    "clean": "rimraf lib/cjs lib/esm lib/types temp typedoc",
+    "clean": "rimraf dist temp typedoc",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
     "prepublishOnly": "release-prepublish --bundle --retain-scripts",
@@ -60,19 +59,19 @@
     "lodash.clonedeep": "4.5.0"
   },
   "devDependencies": {
-    "@fkui/date": "6.53.0",
-    "@fkui/test-utils": "6.53.0",
-    "@forsakringskassan/vitest-config-jsdom": "2.6.0",
+    "@fkui/date": "6.54.0",
+    "@fkui/test-utils": "6.54.0",
+    "@forsakringskassan/vitest-config-jsdom": "2.7.0",
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
     "@types/lodash.clonedeep": "4.5.9",
-    "rollup": "4.62.4",
+    "rollup": "4.62.5",
     "rollup-plugin-dts": "6.5.1",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   },
   "peerDependencies": {
-    "@fkui/date": "^6.53.0"
+    "@fkui/date": "^6.54.0"
   },
   "engines": {
     "node": "^22.16 || >= 24",
