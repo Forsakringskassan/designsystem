@@ -64,10 +64,12 @@
     background: inherit;
     border: none;
     color: $combobox-f-icon-arrow-down-color-content-default;
+    cursor: pointer;
     margin: 0;
     padding: 0;
 
     &:disabled {
         color: $combobox-f-icon-arrow-down-color-content-disabled;
+        cursor: default;
     }
 }
