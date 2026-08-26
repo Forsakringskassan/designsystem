@@ -1,4 +1,4 @@
-@use "../../components/combobox/combobox";
+@use "../../components/listbox/listbox";
 
 .calendar {
     &__wrapper {
@@ -11,16 +11,21 @@
         position: relative;
 
         &__listbox {
-            @extend %combobox__listbox__list;
+            @include listbox.list;
         }
 
         &__year {
-            @extend %combobox__listbox__option;
+            @include listbox.option;
 
             margin: 5px;
 
+            &.is-hover,
+            &:hover:not(&--highlight) {
+                @include listbox.option-hover;
+            }
+
             &--highlight {
-                @extend %combobox__listbox__option--highlight;
+                @include listbox.option-selected;
             }
         }
     }
