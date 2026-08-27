@@ -9,6 +9,15 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version %version%
+
+2026-08-27
+
+Vi har uppdaterat tabellen med stöd för wrappning av text.
+För kolumntyp textfält kommer tabellen radbryta texten om den är längre än fältet.
+
+Buggfixar, se {@link changelog Changelog}
+
 ## Version v6.54.0
 
 2026-08-19
