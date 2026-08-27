@@ -3,6 +3,7 @@ import { computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { type NormalizedTableColumnRadio } from "./columns";
 import { type FTableCellApi } from "./f-table-api";
+import { isVisible } from "./is-visible";
 
 const { column, row } = defineProps<{
     column: NormalizedTableColumnRadio<T, K>;
@@ -14,6 +15,8 @@ const ariaLabel = computed(() => {
     const value = column.label(row);
     return value.length > 0 ? value : undefined;
 });
+
+const visible = computed((): boolean => isVisible(column.visible, row));
 
 function onChange(_e: Event): void {
     assertRef(inputElement);
@@ -27,6 +30,7 @@ defineExpose(expose);
 <template>
     <td class="table-ng__cell table-ng__cell--radio">
         <input
+            v-if="visible"
             ref="input"
             type="radio"
             :checked="Boolean(column.checked(row))"
