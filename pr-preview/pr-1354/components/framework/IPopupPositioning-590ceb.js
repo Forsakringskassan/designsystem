@@ -3453,25 +3453,25 @@ var FValidationForm_default = defineComponent10({
     async submit(event) {
       this.submitted = true;
       this.isInflight = true;
-      const beforeValidation = this.beforeValidation ? await this.beforeValidation() : void 0;
-      if (beforeValidation === 1 /* CANCEL */) {
-        this.isInflight = false;
-        return;
-      }
-      if (await this.hasFormErrors()) {
-        this.isInflight = false;
-        return;
-      }
-      const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : void 0;
-      if (beforeAction === 1 /* CANCEL */) {
-        this.isInflight = false;
-        return;
-      }
-      if (await this.hasFormErrors()) {
-        this.isInflight = false;
-        return;
-      }
       try {
+        const beforeValidation = this.beforeValidation ? await this.beforeValidation() : void 0;
+        if (beforeValidation === 1 /* CANCEL */) {
+          this.isInflight = false;
+          return;
+        }
+        if (await this.hasFormErrors()) {
+          this.isInflight = false;
+          return;
+        }
+        const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : void 0;
+        if (beforeAction === 1 /* CANCEL */) {
+          this.isInflight = false;
+          return;
+        }
+        if (await this.hasFormErrors()) {
+          this.isInflight = false;
+          return;
+        }
         const parentSubmitHandler = this.$props.onSubmit;
         if (typeof parentSubmitHandler === "function") {
           await parentSubmitHandler(event);
