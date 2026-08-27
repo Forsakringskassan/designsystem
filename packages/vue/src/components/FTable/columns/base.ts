@@ -31,6 +31,14 @@ export interface TableColumnBase<T> {
      * and its cells. Default: `true`.
      */
     enabled?: MaybeRef<boolean>;
+    /**
+     * Hides cell content.
+     *
+     * When `false` it hides all cells in column. A callback can be used for hiding
+     * specific cells in the column.
+     *
+     * Default `false`.
+     */
     visible?: boolean | ((this: void, row: T) => boolean);
 }
 
