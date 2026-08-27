@@ -413,15 +413,7 @@ describe("Promises", () => {
     });
 
     it("should remove spinner when rejected", () => {
-        cy.on("uncaught:exception", (err, _runnable) => {
-            if (
-                err.message.includes(
-                    "It was caused by an unhandled promise rejection.",
-                )
-            ) {
-                return false;
-            }
-        });
+        // <expectedException>It was caused by an unhandled promise rejection.</expectedException>
 
         const { ButtonComponent, reject } = createComponent();
         cy.mount(ButtonComponent);

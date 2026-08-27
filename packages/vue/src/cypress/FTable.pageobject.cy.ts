@@ -496,6 +496,9 @@ it("selectDropdown() should get dropdown when open", () => {
     table.selectDropdown().should("not.exist");
     table.cell({ row: 1, col: 1 }).click();
     table.selectDropdown().should("exist");
+
+    // Close dialog when done
+    table.cell({ row: 1, col: 1 }).focus().should("have.focus");
 });
 
 it("selectDropdownOption() should get options when dropdown is open", () => {
@@ -526,4 +529,7 @@ it("selectDropdownOption() should get options when dropdown is open", () => {
     table.cell({ row: 1, col: 1 }).click();
     table.selectDropdownOption(1).should("contain.text", "Foo");
     table.selectDropdownOption(2).should("contain.text", "Bar");
+
+    // Close dialog when done
+    table.cell({ row: 1, col: 1 }).focus().should("have.focus");
 });
