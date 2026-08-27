@@ -1,0 +1,48 @@
+{
+    "name": "FLayoutLeftPanel",
+    "slug": "flayoutleftpanel",
+    "models": [],
+    "props": [
+        {
+            "name": "initialWidth",
+            "description": "The default width for the panel in pixels",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"320\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "navLabel",
+            "description": "Unique accessible name for navigation landmark.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "heading",
+            "description": "Slot for heading",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "content",
+            "description": "Slot for displaying content in the navigation-panel",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot for displaying the primary content.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

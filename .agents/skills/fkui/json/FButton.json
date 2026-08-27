@@ -1,0 +1,106 @@
+{
+    "name": "FButton",
+    "slug": "fbutton",
+    "models": [],
+    "props": [
+        {
+            "name": "variant",
+            "description": "Type of button, can be one of:\n- `primary`\n- `secondary`\n- `tertiary`",
+            "type": "\"primary\" | \"secondary\" | \"tertiary\"",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "size",
+            "description": "Button size, can be one of:\n- `small`\n- `medium`\n- `large`",
+            "type": "\"small\" | \"medium\" | \"large\"",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "iconLeft",
+            "description": "Name of an icon to display on the left side of the button.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "iconRight",
+            "description": "Name of an icon to display on the right side of the button.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "iconLibrary",
+            "description": "Icon library to use.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"f\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "tertiaryStyle",
+            "description": "Tertiary button style, used in conjunction with button variant `tertiary`.\nCan be one of:\n- `standard`\n- `muted`\n- `inverted`",
+            "type": "\"standard\" | \"muted\" | \"black\" | \"inverted\"",
+            "required": false,
+            "default": {
+                "value": "\"standard\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "alignText",
+            "description": "Align button text and icon with content above or below.\nUsed in conjunction with button variant `tertiary`.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "mobileFullWidth",
+            "description": "Enable full width on mobile for sizes `small` and `medium`, always active for button size `large`.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "type",
+            "description": "The default behavior of the button. Possible values are:\n- `submit`\n- `reset`\n- `button`",
+            "type": "\"submit\" | \"reset\" | \"button\"",
+            "required": false,
+            "default": {
+                "value": "\"button\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "disabled",
+            "description": "Disable the button.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

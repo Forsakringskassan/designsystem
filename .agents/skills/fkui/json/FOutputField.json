@@ -1,0 +1,46 @@
+{
+    "name": "FOutputField",
+    "slug": "foutputfield",
+    "models": [],
+    "props": [
+        {
+            "name": "for",
+            "description": "Associate the output field with one or more id's of the elements\ncontributing or affecting the result of this field. Multiple id's can\nbe set with a space-separated string or an array of strings.",
+            "type": "string|array",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "id",
+            "description": "The id for the output id attribute.\nThe id for the label for attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "label",
+            "description": "Slot for label content.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "tooltip",
+            "description": "Slot primarily for tooltip.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot for output field content.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

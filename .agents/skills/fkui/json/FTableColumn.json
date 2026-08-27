@@ -1,0 +1,88 @@
+{
+    "name": "FTableColumn",
+    "slug": "ftablecolumn",
+    "models": [],
+    "props": [
+        {
+            "name": "name",
+            "description": "Unique (per-table) identifier. Typically set to the row\nproperty displayed but any unique string can be used.\n\nOnly required when used with `FSortFilterDataset`.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "visible",
+            "description": "When enabled controls column visibility (default `true`)\n\nShould be used instead of `v-if` or `v-show`.",
+            "type": "boolean",
+            "required": false,
+            "default": {
+                "value": "true"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "rowHeader",
+            "description": "When enabled this cell will be a row header (`<th>` as opposed to\n`<td>`).",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "title",
+            "description": "Text to show in column header. In order to force newlines use `\\n`.",
+            "type": "string",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "description",
+            "description": "Additional column description.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "shrink",
+            "description": "Set this column to shrink as small as possible.\n\nCannot be combined with `expand`",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "expand",
+            "description": "Set this column to expand as large as possible.\n\nCannot be combined with `shrink`\n\nDefault if neither `expand` or `shrink` is set.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "type",
+            "description": "Type of data the rows contains.\n\nApplies proper alignment and some styling (e.g. \"numeric\" uses fixed\nwidth numbers).\n\nCan be one of the following values:\n\n- `\"text\"`: regular text data (default)\n- `\"date\"`: date (should be YYYY-MM-DD)\n- `\"numeric\"`: numeric data\n- `\"action\"`: buttons to perform actions on row",
+            "type": "\"text\" | \"date\" | \"numeric\" | \"action\"",
+            "required": false,
+            "default": {
+                "value": "FTableColumnType.TEXT"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Content to be rendered in table cell.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}
