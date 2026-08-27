@@ -110,7 +110,6 @@ describe("FTable, personnummer", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "text");
         cell.get("input").invoke("attr", "maxlength").should("eq", "23");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
@@ -190,7 +189,6 @@ describe("FTable, bankgiro", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "text");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
         cell.get("input").invoke("attr", "maxlength").should("eq", "40");
@@ -268,7 +266,6 @@ describe("FTable, bankAccountNumber", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "text");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
         cell.get("input").invoke("attr", "maxlength").should("eq", "40");
@@ -345,7 +342,6 @@ describe("FTable, clearingNumber", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "text");
         cell.get("input").invoke("attr", "maxlength").should("eq", "16");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
@@ -423,7 +419,6 @@ describe("FTable, date", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "text");
     });
 });
@@ -495,7 +490,6 @@ describe("FTable, email", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "maxlength").should("eq", "80");
         cell.get("input").invoke("attr", "type").should("eq", "email");
     });
@@ -572,7 +566,6 @@ describe("FTable, organisationsnummer", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "text");
         cell.get("input").invoke("attr", "maxlength").should("eq", "20");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
@@ -647,7 +640,6 @@ describe("FTable, telefonnummer", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "tel");
         cell.get("input").invoke("attr", "maxlength").should("eq", "80");
     });
@@ -724,7 +716,6 @@ describe("FTable, postnummer", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "text");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
         cell.get("input").invoke("attr", "maxlength").should("eq", "15");
@@ -802,7 +793,6 @@ describe("FTable, plusgiro", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "text");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
         cell.get("input").invoke("attr", "maxlength").should("eq", "16");
@@ -880,7 +870,6 @@ describe("FTable, valuta", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "text");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
         cell.get("input").invoke("attr", "maxlength").should("eq", "20");
@@ -959,7 +948,6 @@ describe("FTable, procent", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "text");
         cell.get("input").invoke("attr", "inputmode").should("eq", "decimal");
         cell.get("input").invoke("attr", "maxlength").should("eq", "10");
@@ -973,7 +961,6 @@ describe("FTable, procent", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
     });
 });
@@ -1050,7 +1037,6 @@ describe("FTable, nummer", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "type").should("eq", "text");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
         cell.get("input").invoke("attr", "maxlength").should("eq", "20");
@@ -1080,7 +1066,6 @@ describe("FTable, attribute config function", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "foo").should("eq", "bar");
         cell.get("input").invoke("attr", "bar").should("eq", "foo");
         cell.get("input").invoke("attr", "baz").should("eq", "true");
@@ -1108,7 +1093,6 @@ describe("FTable, attribute config function", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "foo").should("eq", "bar");
         cell.get("input").invoke("attr", "bar").should("eq", "foo");
         cell.get("input").invoke("attr", "baz").should("eq", "true");
@@ -1135,7 +1119,6 @@ describe("FTable, attribute config function", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "inputmode").should("eq", "text");
         cell.get("input").invoke("attr", "maxlength").should("eq", "2");
     });
@@ -1160,7 +1143,6 @@ describe("FTable, attribute config function", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "maxlength").should("be.undefined");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
     });
@@ -1187,7 +1169,6 @@ describe("FTable, attribute config object", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "foo").should("eq", "bar");
         cell.get("input").invoke("attr", "bar").should("eq", "foo");
         cell.get("input").invoke("attr", "baz").should("eq", "true");
@@ -1213,7 +1194,6 @@ describe("FTable, attribute config object", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "foo").should("eq", "bar");
         cell.get("input").invoke("attr", "bar").should("eq", "foo");
         cell.get("input").invoke("attr", "baz").should("eq", "true");
@@ -1238,7 +1218,6 @@ describe("FTable, attribute config object", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "inputmode").should("eq", "text");
         cell.get("input").invoke("attr", "maxlength").should("eq", "2");
     });
@@ -1261,7 +1240,6 @@ describe("FTable, attribute config object", () => {
         mountTable(row, column);
         const cell = table.cell({ row: 1, col: 1 });
 
-        cell.click();
         cell.get("input").invoke("attr", "maxlength").should("be.undefined");
         cell.get("input").invoke("attr", "inputmode").should("eq", "numeric");
     });
