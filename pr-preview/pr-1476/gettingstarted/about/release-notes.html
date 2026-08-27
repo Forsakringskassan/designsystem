@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Releaseanteckningar - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-5b7006.css"
+            href="../../assets/docs-416191.css"
             crossorigin
-            integrity="sha384-9v6joUAKDYI6R5cLmMC4f1YjiUF4wM8S6OmYoJu+Lk+Gk3XhEQ+zZxWccGZ/Zk8b"
+            integrity="sha384-7Um1vXH4v9j/fnoAkY5ZnBSriTFwbhwvN8FV9fhqz/V99VyBQ9EyKvyt0aF8+T3/"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-5cd71a.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-d98f1d.js",
     "@fkui/date": "../../assets/vendor-fkui-date-756ff1.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-6ac080.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-d6234d.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-4f4793.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js"
   },
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-vue-selectors-5cd71a.js": "sha384-HqBtH+imB0y0sHwLWsiZ09cThgHwKkyaMGmRFacWs2LmNv5zHgmA13qXruqBf+ek",
     "../../assets/vendor-fkui-logic-d98f1d.js": "sha384-SGeHcEY4B6lmI5P91r2mELwluuhA7jlFsJ8b9rHDscdLxLKoug5qRQ363SzDUSQt",
     "../../assets/vendor-fkui-date-756ff1.js": "sha384-poMivCeyRvtjqiexqG/jXcCfyu2x3A7bwI5tx3mB74FC5uQUUjIVoQFYJQTHi23Q",
-    "../../assets/vendor-fkui-vue-6ac080.js": "sha384-jF/hiUsub+ZcGxuqivdAvHPR2LqlXGP2/VpC/LsUycaElgh2KfBKq6Ig6PaxtMrj",
+    "../../assets/vendor-fkui-vue-d6234d.js": "sha384-rxRqxmU7XnTsLUxecbUfvPOHP15YDC33u48qfZ0IcOB1mvDc6hBCCCISV3JsVBLU",
     "../../assets/vendor-fkui-vue-labs-4f4793.js": "sha384-Vsl9NRCmwyKE83o18q+LPwtCTpg2jrIV0/eDyQvinLTWTBHTaxeYx4z0YIMu/Daw",
     "../../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js": "sha384-T8jkOagoFX6LDj2QbCvP8DkKMrMPgdAFrg/sYvtRagV4DTNYut32ghIjZatx0QE3"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-c43e23.json"
+    href="../../search-data-f808cd.json"
     as="fetch"
     crossorigin
-    integrity="sha384-IL1kyBrgLydjmx4IcCASVytoZQf8jdAVEKrLyR0W3l53wZ2qs0zhNZaEDlgIbBjA"
+    integrity="sha384-UYUvy7+XYzu1zd899hL5iNrnKV374r5oYHpCi7SLR+ySRPe66v+2bh+6IeYHt6Po"
     id="search-data"
 />
 <script>
@@ -587,6 +587,8 @@
                             </summary>
                             <ul>
                                 
+                                <li><a href="#version_version">Version %version%</a></li>
+                                
                                 <li><a href="#version_v6_54_0">Version v6.54.0</a></li>
                                 
                                 <li><a href="#version_v6_52_0">Version v6.52.0</a></li>
@@ -671,7 +673,11 @@
                     </div>
                     
 
-                    <div id="content"><h2 id="version_v6_54_0" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#version_v6_54_0">Version v6.54.0</a></h2><p class="docs-paragraph">2026-08-19</p>
+                    <div id="content"><h2 id="version_version" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#version_version">Version %version%</a></h2><p class="docs-paragraph">2026-08-27</p>
+<p class="docs-paragraph">Vi har uppdaterat tabellen med stöd för wrappning av text.
+För kolumntyp textfält kommer tabellen radbryta texten om den är längre än fältet.</p>
+<p class="docs-paragraph">Buggfixar, se <a href="../../changelog.html">Changelog</a></p>
+<h2 id="version_v6_54_0" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#version_v6_54_0">Version v6.54.0</a></h2><p class="docs-paragraph">2026-08-19</p>
 <h3 id="andringar_i_formateraren_for_datumintervall" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#andringar_i_formateraren_for_datumintervall">Ändringar i formateraren för datumintervall</a></h3><p class="docs-paragraph">Direktivet <code>v-format:date-range</code> är utökat att även stödja datumintervall där månadens namn skrivs ut enligt myndigheternas skrivregler.
 Till exempel &quot;1 januari 2025 – 1 januari 2026&quot;.
 Läs mer <a href="../../functions/plugins/formatplugin.html#datumintervall">Format Plugin</a></p>
@@ -954,9 +960,9 @@ blev ifyllt (t.ex. ett fält för att ange ett namn).</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">feature/selector-objects (<a href="https://github.com/Forsakringskassan/designsystem/commits/c17120faffe7bbf1d83c58b15de5b5c1305972c6">c17120f</a>)<br />
+<div class="footer__right"><div class="version">feature/selector-objects (<a href="https://github.com/Forsakringskassan/designsystem/commits/20af8e1b039b91c7dbaf7398cd05520420b4aa4c">20af8e1</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1476">PR 1476</a><br />
-        2026-08-26 13:15
+        2026-08-27 10:04
 </div>
 <div class="toolbar__item">
     <form id="version">
