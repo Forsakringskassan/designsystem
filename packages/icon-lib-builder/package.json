@@ -29,7 +29,7 @@
   "dependencies": {
     "glob": "13.0.6",
     "sass": "1.103.1",
-    "svgo": "4.0.2"
+    "svgo": "4.1.0"
   },
   "devDependencies": {
     "@forsakringskassan/vitest-config": "2.7.0",
