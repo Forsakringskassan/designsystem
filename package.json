@@ -98,7 +98,7 @@
     "@forsakringskassan/stylelint-config": "3.4.5",
     "@forsakringskassan/vite-lib-config": "5.9.3",
     "@forsakringskassan/vitest-config": "2.7.0",
-    "@html-validate/release-scripts": "7.6.6",
+    "@html-validate/release-scripts": "7.6.8",
     "@types/estree": "1.0.9",
     "@types/lodash": "4.17.25",
     "@types/node": "20.19.43",
