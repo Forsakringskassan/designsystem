@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 6.55.0 (2026-08-27)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** add textwrapping for `FTable` text columns (refs SFKUI-7876) ([#1609](undefined/Forsakringskassan/designsystem/issues/1609)) e2c8e6c
+
+### Bug Fixes
+
+* **@fkui/design:** use pointer cursor for combobox toggle (refs SFKUI-6500) 764973c
+* **@fkui/vue:** remove redundant FFieldset checkbox screen reader texts (fixes SFKUI-7816) f0e4577
+* **@fkui/vue:** reset FDialogueTree SFKUI-7415 (refs SFKUI-8094) a3a5e85
+* **deps:** update dependency cssnano to v8.0.8 5aad630
+* **deps:** update dependency dayjs to v1.11.23 e27ddcc
+* **deps:** update dependency i18next to v26.4.0 f724531
+* **deps:** update dependency sass to v1.103.0 f831926
+* **deps:** update dependency sass to v1.103.1 ([#1614](undefined/Forsakringskassan/designsystem/issues/1614)) 57353f1
+
 ## 6.54.0 (2026-08-20)
 
 ### Features
