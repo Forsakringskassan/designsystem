@@ -23,7 +23,7 @@ jobs:
               uses: Forsakringskassan/prettier-config@af7b8bc222a38143e50e156cd4c23dd2010b95ee # v3.7.8
             - name: ESLint
               if: success() || failure()
-              uses: Forsakringskassan/eslint-config@f3edc08bbd12b3b8439b03621e9c0d12a7bd2639 # v15.8.10
+              uses: Forsakringskassan/eslint-config@a7df2151ff916b66ebbbbcc08a5e53bc2d79e5a8 # v15.8.12
             - name: HTML Validate
               if: success() || failure()
               run: npm run html-validate -- --max-warnings 0 || false
@@ -49,7 +49,7 @@ jobs:
             - name: Install Dependencies
               run: npm ci
             - name: npm-pkg-lint
-              uses: ext/npm-pkg-lint@0f248d6e964b93440067affcea09aae6c20c8ed9 # v5.2.3
+              uses: ext/npm-pkg-lint@3302780a68362bcbd28d78fef340f5d40ad93f3a # v5.2.4
               with:
                   folders: packages/*
                   allow-dependencies: fk-icons

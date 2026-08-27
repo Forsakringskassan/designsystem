@@ -34,10 +34,10 @@
   "dependencies": {
     "@adobe/css-tools": "4.5.0",
     "@forsakringskassan/sass-module-importer": "3.0.0",
-    "cssnano": "8.0.6",
+    "cssnano": "8.0.8",
     "get-css-variables": "1.1.1",
     "postcss-scss": "4.0.9",
-    "sass": "1.103.0",
+    "sass": "1.103.1",
     "yargs": "18.1.0"
   },
   "devDependencies": {

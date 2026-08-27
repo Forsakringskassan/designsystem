@@ -1,0 +1,51 @@
+@use "variables" as *;
+@use "../../core/mixins/forcedcolors";
+@use "../../core/size";
+
+// Internal mixins, not part of the public @fkui/design Sass API.
+
+@mixin surface {
+    background-color: $listbox-color-background;
+    border: var(--f-border-width-medium) solid $listbox-color-border;
+    border-radius: var(--f-border-radius-medium);
+    box-shadow: var(--f-box-modal-shadow);
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 2px;
+    scrollbar-gutter: stable;
+}
+
+@mixin list {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin option {
+    color: $listbox-option-color-text;
+    cursor: pointer;
+    list-style-type: none;
+    padding: size.$padding-075;
+    white-space: nowrap;
+    box-sizing: border-box;
+    margin-right: size.$margin-050;
+}
+
+@mixin option-hover {
+    background-color: $listbox-option-color-background-hover;
+    color: $listbox-option-color-text-hover;
+
+    @media (forced-colors: active) {
+        outline-offset: -2px;
+        margin-right: size.$margin-150;
+    }
+
+    @include forcedcolors.hover-indicator(outline, 2px);
+}
+
+@mixin option-selected {
+    background-color: $listbox-option-color-background-selected;
+    color: $listbox-option-color-text-selected;
+    font-weight: var(--f-font-weight-medium);
+
+    @include forcedcolors.selected-indicator;
+}
