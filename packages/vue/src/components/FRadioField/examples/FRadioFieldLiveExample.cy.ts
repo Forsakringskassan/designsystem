@@ -7,9 +7,9 @@ describe("FRadioFieldLiveExample", () => {
     const fieldset = new FRadioGroupPageObject(
         ".live-example__example fieldset",
     );
-    enum barnover18 {
-        Ja = ".radio-button:nth(0)",
-        Nej = ".radio-button:nth(1)",
+    enum Answer {
+        Yes = ".radio-button:nth(0)",
+        No = ".radio-button:nth(1)",
     }
 
     describe("Basic functionality in FRadioFieldLiveExample", () => {
@@ -23,28 +23,19 @@ describe("FRadioFieldLiveExample", () => {
             fieldset.numberOfOptions().should("equal", 2);
 
             fieldset
-                .radioButton(barnover18.Ja)
+                .radioButton(Answer.Yes)
                 .isSelected()
                 .should("equal", false);
-            fieldset
-                .radioButton(barnover18.Nej)
-                .isSelected()
-                .should("equal", false);
+            fieldset.radioButton(Answer.No).isSelected().should("equal", false);
 
-            fieldset.radioButton(barnover18.Ja).select();
-            fieldset
-                .radioButton(barnover18.Ja)
-                .isSelected()
-                .should("equal", true);
-            fieldset.radioButton(barnover18.Nej).select();
+            fieldset.radioButton(Answer.Yes).select();
+            fieldset.radioButton(Answer.Yes).isSelected().should("equal", true);
+            fieldset.radioButton(Answer.No).select();
+
+            fieldset.radioButton(Answer.No).isSelected().should("equal", true);
 
             fieldset
-                .radioButton(barnover18.Nej)
-                .isSelected()
-                .should("equal", true);
-
-            fieldset
-                .radioButton(barnover18.Ja)
+                .radioButton(Answer.Yes)
                 .isSelected()
                 .should("equal", false);
         });
