@@ -4,7 +4,7 @@ import { FTablePageObject } from "../../cypress";
 import { useDatasetRef } from "../../utils";
 import { FValidationForm } from "../FValidationForm";
 import FTable from "./FTable.vue";
-import { type TableColumn, defineTableColumns } from "./table-column";
+import { defineTableColumns } from "./table-column";
 import FTableSortFilterExample from "./tests/FTableSortFilterExample.vue";
 import FTableTabstopExample from "./tests/FTableTabstopExample.vue";
 
@@ -2872,59 +2872,65 @@ describe("visible", () => {
         select: string;
         rowheader: string;
     }
-    let columns: Array<TableColumn<Row, keyof Row>>;
 
-    beforeEach(() => {
-        columns = defineTableColumns<Row>([
-            {
-                type: "text",
-                header: "Static text",
-                key: "static",
-                label: () => "text",
-            },
-            {
-                type: "text",
-                header: "Editable text",
-                key: "editable",
-                label: () => "text",
-            },
-            {
-                type: "button",
-                header: "button",
-                icon: "trashcan",
-                text: () => "button",
-            },
-            {
-                type: "anchor",
-                header: "anchor",
-                href: "",
-                text: () => "text",
-            },
-            {
-                type: "checkbox",
-                header: "checkbox",
-                label: () => "checkbox",
-            },
-            {
-                type: "rowheader",
-                key: "rowheader",
-                header: "row header",
-                text: () => "rowheader",
-            },
-            {
-                type: "menu",
-                header: "Menu",
-                text: () => "text",
-            },
-            {
-                type: "select",
-                header: "Select",
-                key: "select",
-                options: ["op1", "op2"],
-                label: () => "Select",
-            },
-        ]);
-    });
+    const defaultColumns = defineTableColumns<Row>([
+        {
+            type: "text",
+            header: "Static text",
+            key: "static",
+            label: () => "text",
+        },
+        {
+            type: "text",
+            header: "Editable text",
+            key: "editable",
+            editable: true,
+            label: () => "text",
+        },
+        {
+            type: "button",
+            header: "button",
+            icon: "trashcan",
+            text: () => "button",
+        },
+        {
+            type: "anchor",
+            header: "anchor",
+            href: "",
+            text: () => "text",
+        },
+        {
+            type: "checkbox",
+            header: "checkbox",
+            label: () => "checkbox",
+        },
+        {
+            type: "rowheader",
+            key: "rowheader",
+            header: "row header",
+            text: () => "rowheader",
+        },
+        {
+            type: "menu",
+            header: "Menu",
+            text: () => "text",
+        },
+        {
+            type: "select",
+            header: "Select",
+            key: "select",
+            options: ["op1", "op2"],
+            label: () => "Select",
+        },
+        {
+            type: "select",
+            header: "Select non-editable",
+            key: "select",
+            options: ["op1", "op2"],
+            editable: false,
+            label: () => "Select non-editable",
+        },
+    ]);
 
     const rows = useDatasetRef<Row>([
         {
@@ -2936,35 +2942,20 @@ describe("visible", () => {
     ]);
 
     it("should show cell content when visible is undefined", () => {
-        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
+        cy.mount(() =>
+            h(FTable<Row>, {
+                rows: rows.value,
+                columns: defaultColumns,
+            }),
+        );
 
-        for (let i = 1; i <= columns.length; i++) {
-            table.cell({ row: 1, col: i }).should("not.be.empty");
-        }
-    });
-
-    it("should not show cell content when visible is false", () => {
-        columns = columns.map((column) => ({ ...column, visible: false }));
-
-        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
-
-        for (let i = 1; i <= columns.length; i++) {
-            table.cell({ row: 1, col: i }).should("be.empty");
-        }
-    });
-
-    it("should show cell content when visible is true", () => {
-        columns = columns.map((column) => ({ ...column, visible: true }));
-
-        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
-
-        for (let i = 1; i <= columns.length; i++) {
+        for (let i = 1; i <= defaultColumns.length; i++) {
             table.cell({ row: 1, col: i }).should("not.be.empty");
         }
     });
 
     it("should not show cell content when visible is function that returns false", () => {
-        columns = columns.map((column) => ({
+        const columns = defaultColumns.map((column) => ({
             ...column,
             visible: () => false,
         }));
@@ -2977,7 +2968,7 @@ describe("visible", () => {
     });
 
     it("should show cell content when visible is function that returns true", () => {
-        columns = columns.map((column) => ({
+        const columns = defaultColumns.map((column) => ({
             ...column,
             visible: () => true,
         }));

@@ -43,5 +43,6 @@ export function normalizeRenderColumn<T, K extends keyof T>(
         type: undefined,
         render: column.render,
         sortable: null,
+        visible: column.visible ?? (() => true),
     };
 }

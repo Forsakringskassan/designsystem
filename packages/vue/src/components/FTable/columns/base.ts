@@ -32,14 +32,13 @@ export interface TableColumnBase<T> {
      */
     enabled?: MaybeRef<boolean>;
     /**
-     * Hides cell content.
+     * Show cell content.
      *
-     * When `false` it hides all cells in column. A callback can be used for hiding
-     * specific cells in the column.
+     * A callback that can be used for hiding specific cells in the column.
      *
-     * Default `false`.
+     * Default `() => true`.
      */
-    visible?: boolean | ((this: void, row: T) => boolean);
+    visible?: (this: void, row: T) => boolean;
 }
 
 /**
@@ -54,7 +53,7 @@ export interface NormalizedTableColumnBase<T, K> {
     readonly sortable: K | null;
     readonly size: Readonly<Ref<TableColumnSize | null>>;
     readonly enabled: MaybeRef<boolean>;
-    readonly visible?: boolean | ((this: void, row: T) => boolean);
+    readonly visible: (this: void, row: T) => boolean;
 }
 
 /**
@@ -103,6 +102,6 @@ export function normalizeBaseColumn<T, K = never>(
         sortable,
         size,
         enabled: column.enabled ?? true,
-        visible: column.visible ?? true,
+        visible: column.visible ?? (() => true),
     };
 }
