@@ -1,5 +1,6 @@
 export { FBadgeSelectors } from "./FBadge.selectors";
 export { FButtonSelectors } from "./FButton.selectors";
+export { FCheckboxFieldSelectors } from "./FCheckboxField.selectors";
 export { FCrudDatasetSelectors } from "./FCrudDataset.selectors";
 export { FDetailsPanelSelectors } from "./FDetailsPanel.selectors";
 export { FExpandableParagraphSelectors } from "./FExpandableParagraph.selectors";
