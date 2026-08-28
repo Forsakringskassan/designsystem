@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent } from "vue";
-import { type ValidityEvent, ElementIdService, isSet } from "@fkui/logic";
+import { type ValidityEvent, ElementIdService, ValidationService, isSet } from "@fkui/logic";
 import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
 import { FLabel } from "../FLabel";
 
@@ -186,6 +186,12 @@ export default defineComponent({
         }
 
         this.updateTextareaHeightVariables();
+
+        void this.$nextTick(async () => {
+            if (this.$refs.textarea) {
+                await ValidationService.validateElement(this.$refs.textarea as HTMLElement);
+            }
+        });
     },
     updated() {
         this.updateTextareaHeightVariables();
@@ -235,6 +241,12 @@ export default defineComponent({
         },
         onPendingValidity(): void {
             this.validityMode = "INITIAL";
+        },
+        async onValidationConfigUpdate(): Promise<void> {
+            await this.$nextTick();
+            if (this.$refs.textarea) {
+                await ValidationService.validateElement(this.$refs.textarea as HTMLElement);
+            }
         },
     },
 });
@@ -290,6 +302,7 @@ export default defineComponent({
             @input="onInput"
             @validity="onValidity"
             @pending-validity="onPendingValidity"
+            @validation-config-update="onValidationConfigUpdate"
         ></textarea>
     </div>
 </template>

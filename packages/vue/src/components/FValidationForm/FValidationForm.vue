@@ -128,8 +128,8 @@ export default defineComponent({
     },
     methods: {
         async hasFormErrors(): Promise<boolean> {
-            ValidationService.setSubmitted(this.id);
-            await ValidationService.validateAllElements(this.id);
+            ValidationService.setSubmitted(this.$el);
+            await ValidationService.validateAllElements(this.$el);
             await this.$nextTick();
             await new Promise((resolve) => window.setTimeout(resolve, 0));
 
@@ -141,7 +141,7 @@ export default defineComponent({
             } else {
                 const firstError = this.validity.componentsWithError[0];
                 /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
-                const element = document.querySelector(`#${firstError.focusElementId}`)!;
+                const element = this.$el.querySelector(`#${firstError.focusElementId}`)!;
                 focus(element);
             }
 
