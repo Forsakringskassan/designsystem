@@ -113,6 +113,7 @@ $inner-border:
     }
 
     &__header {
+        color: $tooltip-header-color-text-default;
         font-size: var(--f-font-size-large);
         font-weight: var(--f-font-weight-bold);
         line-height: var(--f-line-height-medium);
