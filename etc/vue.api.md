@@ -1477,7 +1477,7 @@ export interface TableColumnBase<T> {
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     // (undocumented)
     sort?: boolean;
-    visible?: boolean | ((this: void, row: T) => boolean);
+    visible?: (this: void, row: T) => boolean;
 }
 
 // @public (undocumented)
