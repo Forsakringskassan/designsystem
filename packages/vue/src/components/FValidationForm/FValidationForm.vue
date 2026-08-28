@@ -128,8 +128,8 @@ export default defineComponent({
     },
     methods: {
         async hasFormErrors(): Promise<boolean> {
-            ValidationService.setSubmitted(this.id);
-            await ValidationService.validateAllElements(this.id);
+            ValidationService.setSubmitted(this.$el);
+            await ValidationService.validateAllElements(this.$el);
             await this.$nextTick();
             await new Promise((resolve) => window.setTimeout(resolve, 0));
 
@@ -140,7 +140,7 @@ export default defineComponent({
                 focus(this.$refs.errors as HTMLElement);
             } else {
                 const firstError = this.validity.componentsWithError[0];
-                const element = document.querySelector(`#${firstError.focusElementId}`);
+                const element = this.$el.querySelector(`#${firstError.focusElementId}`);
                 focus(element);
             }
 
