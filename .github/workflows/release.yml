@@ -13,7 +13,7 @@ permissions:
 jobs:
     release:
         name: Release
-        uses: Forsakringskassan/.github/.github/workflows/npm-release.yaml@3d07e5561c26a363c95b9ec7cd58405f82e044f4 # main
+        uses: Forsakringskassan/.github/.github/workflows/npm-release.yaml@d1349e6aa4ed2c4d3d0c0da328f831472102dee1 # main
         with:
             app-id: ${{ vars.RELEASE_APP_ID }}
             config-preset: "@forsakringskassan/semantic-release-monorepo-config"
