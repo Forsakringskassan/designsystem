@@ -41,7 +41,7 @@
     "@fkui/icon-lib-default": "6.55.0",
     "@fkui/theme-default": "6.55.0",
     "autoprefixer": "10.5.4",
-    "cssnano": "8.0.8",
+    "cssnano": "8.0.9",
     "postcss": "8.5.26",
     "postcss-var-func-fallback": "3.0.1"
   },
