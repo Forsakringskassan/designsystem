@@ -3,7 +3,7 @@ import { FButton } from "@fkui/vue";
 </script>
 
 <template>
-    <ul class="button-list no-marker">
+    <ul class="button-list">
         <li>
             <f-button size="medium" variant="tertiary" icon-left="success">
                 Knapp 1 i lista
@@ -19,8 +19,3 @@ import { FButton } from "@fkui/vue";
         </li>
     </ul>
 </template>
-<style>
-.no-marker {
-    list-style-type: none;
-}
-</style>
