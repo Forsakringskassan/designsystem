@@ -24,7 +24,7 @@
     "@fkui/logo-default": "6.55.0",
     "@forsakringskassan/docs-generator": "3.6.2",
     "cypress": "15.21.1",
-    "vue": "3.5.41"
+    "vue": "3.5.42"
   },
   "engines": {
     "node": "^22.16 || >= 24"
