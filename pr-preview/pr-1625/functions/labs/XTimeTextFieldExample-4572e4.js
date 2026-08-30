@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue-labs/src/components/XTimeTextField/examples/XTimeTextFieldExample.vue:XTimeTextFieldExample-d199a3.js
+// virtual-entry:virtual:packages/vue-labs/src/components/XTimeTextField/examples/XTimeTextFieldExample.vue:XTimeTextFieldExample-4572e4.js
 import { defineComponent } from "vue";
 import {
   XTimeTextField,
@@ -148,7 +148,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-d199a3"
+  selector: "#example-4572e4"
 });
 export {
   render

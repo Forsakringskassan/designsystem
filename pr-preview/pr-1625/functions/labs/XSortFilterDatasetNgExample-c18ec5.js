@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue-labs/src/components/XSortFilterDatasetNg/examples/XSortFilterDatasetNgExample.vue:XSortFilterDatasetNgExample-62f971.js
+// virtual-entry:virtual:packages/vue-labs/src/components/XSortFilterDatasetNg/examples/XSortFilterDatasetNgExample.vue:XSortFilterDatasetNgExample-c18ec5.js
 import { defineComponent as _defineComponent } from "vue";
 import { computed, ref, useTemplateRef } from "vue";
 import {
@@ -73,7 +73,7 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue-labs/src/components/XSortFilterDatasetNg/examples/XSortFilterDatasetNgExample.vue:XSortFilterDatasetNgExample-62f971.js
+// virtual-entry:virtual:packages/vue-labs/src/components/XSortFilterDatasetNg/examples/XSortFilterDatasetNgExample.vue:XSortFilterDatasetNgExample-c18ec5.js
 import { XSortFilterDatasetNg, matchPropertyValue, uniqueValues } from "@fkui/vue-labs";
 import { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
@@ -257,7 +257,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-62f971"
+  selector: "#example-c18ec5"
 });
 export {
   render

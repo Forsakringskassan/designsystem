@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue-labs/src/components/XRelativeTime/examples/XRelativeTimeLiveExample.vue:XRelativeTimeLiveExample-452e76.js
+// virtual-entry:virtual:packages/vue-labs/src/components/XRelativeTime/examples/XRelativeTimeLiveExample.vue:XRelativeTimeLiveExample-f2937d.js
 import { defineComponent as _defineComponent } from "vue";
 import { computed, ref } from "vue";
 import { FSelectField } from "@fkui/vue";
@@ -115,7 +115,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-452e76"
+  selector: "#example-f2937d"
 });
 export {
   render

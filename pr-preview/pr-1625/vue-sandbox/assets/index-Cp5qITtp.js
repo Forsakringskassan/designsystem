@@ -17186,12 +17186,20 @@ function _sfc_render$1(_ctx, _cache) {
 }
 var App_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render$1]]);
 //#endregion
-//#region ../../node_modules/vue-router/dist/useApi-CROJJdhE.js
+//#region ../../node_modules/vue-router/dist/useApi-CUgTH_jn.js
 /*!
-* vue-router v5.2.0
+* vue-router v5.3.0
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
+/**
+* Checks if a path is absolute, meaning it starts with a `/`.
+*
+* @param path - path to check
+*
+* @internal
+*/
+var isAbsolutePath = (path) => path.startsWith("/");
 /**
 * Allows differentiating lazy components from functional components and vue-class-component
 * @internal
@@ -17279,9 +17287,9 @@ var routeLocationKey = Symbol("");
 */
 var routerViewLocationKey = Symbol("");
 //#endregion
-//#region ../../node_modules/vue-router/dist/devtools-Bpr7ZAVB.js
+//#region ../../node_modules/vue-router/dist/devtools-CLRpXhL7.js
 /*!
-* vue-router v5.2.0
+* vue-router v5.3.0
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
@@ -17499,7 +17507,7 @@ function isEquivalentArray(a, b) {
 * @param from - currentLocation.path, should start with `/`
 */
 function resolveRelativePath(to, from) {
-	if (to.startsWith("/")) return to;
+	if (isAbsolutePath(to)) return to;
 	if (!to) return from;
 	const fromSegments = from.split("/");
 	const toSegments = to.split("/");
@@ -17550,11 +17558,13 @@ var START_LOCATION_NORMALIZED = {
 * @param base - base to normalize
 */
 function normalizeBase(base) {
-	if (!base) if (isBrowser) {
-		const baseEl = document.querySelector("base");
-		base = baseEl && baseEl.getAttribute("href") || "/";
-		base = base.replace(/^\w+:\/\/[^/]+/, "");
-	} else base = "/";
+	if (!base) {
+		if (isBrowser) {
+			const baseEl = document.querySelector("base");
+			base = baseEl && baseEl.getAttribute("href") || "/";
+			base = base.replace(/^\w+:\/\/[^/]+/, "");
+		} else base = "/";
+	}
 	if (base[0] !== "/" && base[0] !== "#") base = "/" + base;
 	return removeTrailingSlash(base);
 }
@@ -17571,10 +17581,10 @@ function getElementPosition(el, offset) {
 		top: elRect.top - docRect.top - (offset.top || 0)
 	};
 }
-var computeScrollPosition = () => ({
+var computeScrollPosition = () => history.scrollRestoration === "manual" ? {
 	left: window.scrollX,
 	top: window.scrollY
-});
+} : null;
 function scrollToPosition(position) {
 	let scrollToOptions;
 	if ("el" in position) {
@@ -17591,8 +17601,8 @@ function getScrollKey(path, delta) {
 	return (history.state ? history.state.position - delta : -1) + path;
 }
 var scrollPositions = /* @__PURE__ */ new Map();
-function saveScrollPosition(key, scrollPosition) {
-	scrollPositions.set(key, scrollPosition);
+function saveScrollPosition(key) {
+	scrollPositions.set(key, computeScrollPosition());
 }
 function getSavedScrollPosition(key) {
 	const scroll = scrollPositions.get(key);
@@ -17759,8 +17769,10 @@ function extractChangingRecords(to, from) {
 	const len = Math.max(from.matched.length, to.matched.length);
 	for (let i = 0; i < len; i++) {
 		const recordFrom = from.matched[i];
-		if (recordFrom) if (to.matched.find((record) => isSameRouteRecord(record, recordFrom))) updatingRecords.push(recordFrom);
-		else leavingRecords.push(recordFrom);
+		if (recordFrom) {
+			if (to.matched.find((record) => isSameRouteRecord(record, recordFrom))) updatingRecords.push(recordFrom);
+			else leavingRecords.push(recordFrom);
+		}
 		const recordTo = to.matched[i];
 		if (recordTo) {
 			if (!from.matched.find((record) => isSameRouteRecord(record, recordTo))) enteringRecords.push(recordTo);
@@ -17775,7 +17787,7 @@ function extractChangingRecords(to, from) {
 //#endregion
 //#region ../../node_modules/vue-router/dist/vue-router.js
 /*!
-* vue-router v5.2.0
+* vue-router v5.3.0
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
@@ -17835,22 +17847,18 @@ function useHistoryListeners(base, historyState, currentLocation, replace) {
 		return teardown;
 	}
 	function beforeUnloadListener() {
-		if (document.visibilityState === "hidden") {
-			const { history } = window;
-			if (!history.state) return;
-			history.replaceState(assign({}, history.state, { scroll: computeScrollPosition() }), "");
-		}
+		const { history } = window;
+		if (!history.state) return;
+		history.replaceState(assign({}, history.state, { scroll: computeScrollPosition() }), "");
 	}
 	function destroy() {
 		for (const teardown of teardowns) teardown();
 		teardowns = [];
 		window.removeEventListener("popstate", popStateHandler);
 		window.removeEventListener("pagehide", beforeUnloadListener);
-		document.removeEventListener("visibilitychange", beforeUnloadListener);
 	}
 	window.addEventListener("popstate", popStateHandler);
 	window.addEventListener("pagehide", beforeUnloadListener);
-	document.addEventListener("visibilitychange", beforeUnloadListener);
 	return {
 		pauseListeners,
 		listen,
@@ -17860,14 +17868,14 @@ function useHistoryListeners(base, historyState, currentLocation, replace) {
 /**
 * Creates a state object
 */
-function buildState(back, current, forward, replaced = false, computeScroll = false) {
+function buildState(back, current, forward, replaced = false) {
 	return {
 		back,
 		current,
 		forward,
 		replaced,
 		position: window.history.length,
-		scroll: computeScroll ? computeScrollPosition() : null
+		scroll: null
 	};
 }
 function useHistoryStateNavigation(base) {
@@ -17988,7 +17996,7 @@ var VALID_PARAM_RE = /[a-zA-Z0-9_]/;
 function tokenizePath(path) {
 	if (!path) return [[]];
 	if (path === "/") return [[ROOT_TOKEN]];
-	if (!path.startsWith("/")) throw new Error(`Invalid path "${path}"`);
+	if (!isAbsolutePath(path)) throw new Error(`Invalid path "${path}"`);
 	function crash(message) {
 		throw new Error(`ERR (${state})/"${buffer}": ${message}`);
 	}
@@ -18054,9 +18062,10 @@ function tokenizePath(path) {
 				}
 				break;
 			case 2:
-				if (char === ")") if (customRe[customRe.length - 1] == "\\") customRe = customRe.slice(0, -1) + char;
-				else state = 3;
-				else customRe += char;
+				if (char === ")") {
+					if (customRe[customRe.length - 1] == "\\") customRe = customRe.slice(0, -1) + char;
+					else state = 3;
+				} else customRe += char;
 				break;
 			case 3:
 				consumeBuffer();
@@ -18162,10 +18171,14 @@ function tokensToParser(segments, extraOptions) {
 				const param = value in params ? params[value] : "";
 				if (isArray(param) && !repeatable) throw new Error(`Provided param "${value}" is an array but it is not repeatable (* or + modifiers)`);
 				const text = isArray(param) ? param.join("/") : param;
-				if (!text) if (optional) {
-					if (segment.length < 2) if (path.endsWith("/")) path = path.slice(0, -1);
-					else avoidDuplicatedSlash = true;
-				} else throw new Error(`Missing required param "${value}"`);
+				if (!text) {
+					if (optional) {
+						if (segment.length < 2) {
+							if (path.endsWith("/")) path = path.slice(0, -1);
+							else avoidDuplicatedSlash = true;
+						}
+					} else throw new Error(`Missing required param "${value}"`);
+				}
 				path += text;
 			}
 		}
@@ -18280,7 +18293,7 @@ function createRouterMatcher(routes, globalOptions) {
 		let originalMatcher;
 		for (const normalizedRecord of normalizedRecords) {
 			const { path } = normalizedRecord;
-			if (parent && path[0] !== "/") {
+			if (parent && !isAbsolutePath(path)) {
 				const parentPath = parent.record.path;
 				const connectingSlash = parentPath[parentPath.length - 1] === "/" ? "" : "/";
 				normalizedRecord.path = parent.record.path + (path && connectingSlash + path);
@@ -18702,6 +18715,7 @@ function createRouter(options) {
 	const beforeResolveGuards = useCallbacks();
 	const afterGuards = useCallbacks();
 	const currentRoute = /* @__PURE__ */ shallowRef(START_LOCATION_NORMALIZED);
+	const routesVersion = /* @__PURE__ */ shallowRef(0);
 	let pendingLocation = START_LOCATION_NORMALIZED;
 	if (isBrowser && options.scrollBehavior && "scrollRestoration" in history) history.scrollRestoration = "manual";
 	const normalizeParams = applyToParams.bind(null, (paramValue) => "" + paramValue);
@@ -18714,11 +18728,23 @@ function createRouter(options) {
 			parent = matcher.getRecordMatcher(parentOrRoute);
 			record = route;
 		} else record = parentOrRoute;
-		return matcher.addRoute(record, parent);
+		const removeRoute = matcher.addRoute(record, parent);
+		routesVersion.value++;
+		return () => {
+			removeRoute();
+			routesVersion.value++;
+		};
 	}
 	function removeRoute(name) {
 		const recordMatcher = matcher.getRecordMatcher(name);
-		if (recordMatcher) matcher.removeRoute(recordMatcher);
+		if (recordMatcher) {
+			matcher.removeRoute(recordMatcher);
+			routesVersion.value++;
+		}
+	}
+	function clearRoutes() {
+		matcher.clearRoutes();
+		routesVersion.value++;
 	}
 	function getRoutes() {
 		return matcher.getRoutes().map((routeMatcher) => routeMatcher.record);
@@ -18727,8 +18753,9 @@ function createRouter(options) {
 		return !!matcher.getRecordMatcher(name);
 	}
 	function resolve(rawLocation, currentLocation) {
-		currentLocation = assign({}, currentLocation || currentRoute.value);
+		routesVersion.value;
 		if (typeof rawLocation === "string") {
+			currentLocation = currentLocation || (rawLocation.startsWith("/") ? START_LOCATION_NORMALIZED : currentRoute.value);
 			const locationNormalized = parseURL(parseQuery$1, rawLocation, currentLocation.path);
 			const matchedRoute = matcher.resolve({ path: locationNormalized.path }, currentLocation);
 			const href = routerHistory.createHref(locationNormalized.fullPath);
@@ -18738,6 +18765,7 @@ function createRouter(options) {
 				href
 			});
 		}
+		currentLocation = assign({}, currentLocation || (rawLocation.path != null && rawLocation.path.startsWith("/") && !("name" in rawLocation && rawLocation.name) ? START_LOCATION_NORMALIZED : currentRoute.value));
 		let matcherLocation;
 		if (rawLocation.path != null) matcherLocation = assign({}, rawLocation, { path: parseURL(parseQuery$1, rawLocation.path, currentLocation.path).path });
 		else {
@@ -18863,8 +18891,10 @@ function createRouter(options) {
 			return runGuardQueue(guards);
 		}).then(() => {
 			guards = [];
-			for (const record of enteringRecords) if (record.beforeEnter) if (isArray(record.beforeEnter)) for (const beforeEnter of record.beforeEnter) guards.push(guardToPromiseFn(beforeEnter, to, from));
-			else guards.push(guardToPromiseFn(record.beforeEnter, to, from));
+			for (const record of enteringRecords) if (record.beforeEnter) {
+				if (isArray(record.beforeEnter)) for (const beforeEnter of record.beforeEnter) guards.push(guardToPromiseFn(beforeEnter, to, from));
+				else guards.push(guardToPromiseFn(record.beforeEnter, to, from));
+			}
 			guards.push(canceledNavigationCheck);
 			return runGuardQueue(guards);
 		}).then(() => {
@@ -18892,8 +18922,10 @@ function createRouter(options) {
 		if (error) return error;
 		const isFirstNavigation = from === START_LOCATION_NORMALIZED;
 		const state = !isBrowser ? {} : history.state;
-		if (isPush) if (replace || isFirstNavigation) routerHistory.replace(toLocation.fullPath, assign({ scroll: isFirstNavigation && state && state.scroll }, data));
-		else routerHistory.push(toLocation.fullPath, data);
+		if (isPush) {
+			if (replace || isFirstNavigation) routerHistory.replace(toLocation.fullPath, assign({ scroll: isFirstNavigation && state && state.scroll }, data));
+			else routerHistory.push(toLocation.fullPath, data);
+		}
 		currentRoute.value = toLocation;
 		handleScroll(toLocation, from, isPush, isFirstNavigation);
 		markAsReady();
@@ -18914,7 +18946,7 @@ function createRouter(options) {
 			}
 			pendingLocation = toLocation;
 			const from = currentRoute.value;
-			if (isBrowser) saveScrollPosition(getScrollKey(from.fullPath, info.delta), computeScrollPosition());
+			if (isBrowser && info.delta) saveScrollPosition(getScrollKey(from.fullPath, info.delta));
 			navigate(toLocation, from).catch((error) => {
 				if (isNavigationFailure(error, 12)) return error;
 				if (isNavigationFailure(error, 2)) {
@@ -18982,7 +19014,7 @@ function createRouter(options) {
 		listening: true,
 		addRoute,
 		removeRoute,
-		clearRoutes: matcher.clearRoutes,
+		clearRoutes,
 		hasRoute,
 		getRoutes,
 		resolve,

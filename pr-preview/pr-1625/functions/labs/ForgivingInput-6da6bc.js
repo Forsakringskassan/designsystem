@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue-labs/src/components/XTimeTextField/examples/ForgivingInput.vue:ForgivingInput-88c9ad.js
+// virtual-entry:virtual:packages/vue-labs/src/components/XTimeTextField/examples/ForgivingInput.vue:ForgivingInput-6da6bc.js
 import { defineComponent } from "vue";
 import {
   XTimeTextField,
@@ -160,7 +160,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-88c9ad"
+  selector: "#example-6da6bc"
 });
 export {
   render
