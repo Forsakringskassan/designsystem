@@ -35,8 +35,6 @@ const menuitems = computed((): ContextMenuItem[] => {
     });
 });
 
-const menuIcon = computed((): string => column.icon ?? "bars");
-
 function onToggle(event: MouseEvent): void {
     /* prevent FTable from activating the cell (which moves the focus back to
      * the cell instead of the context menu) */
@@ -70,7 +68,7 @@ defineExpose(expose);
 <template>
     <td class="table-ng__cell table-ng__cell--button" :class="{ 'table-ng__cell--menu-open': isOpen }">
         <button ref="button" class="icon-button" type="button" tabindex="-1" aria-haspopup="menu" @click="onToggle">
-            <f-icon :library="column.iconLibrary" :name="menuIcon"></f-icon>
+            <f-icon :library="column.iconLibrary" :name="column.icon"></f-icon>
             <span class="sr-only">{{ column.text(row) }}</span>
         </button>
         <f-context-menu

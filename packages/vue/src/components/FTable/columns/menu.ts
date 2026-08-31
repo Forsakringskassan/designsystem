@@ -80,7 +80,7 @@ export interface NormalizedTableColumnMenu<
     T,
 > extends NormalizedTableColumnBase<never> {
     readonly type: "menu";
-    readonly icon: string | null;
+    readonly icon: string;
     readonly iconLibrary: string | undefined;
     readonly actions: NormalizedTableColumnMenuActions<T>;
     readonly component: Component<{
@@ -122,7 +122,7 @@ export function normalizeMenuColumn<T>(
             typeof actions === "function"
                 ? (row: T) => actions(row).map(normalizeMenuAction)
                 : actions.map(normalizeMenuAction),
-        icon: column.icon ?? null,
+        icon: column.icon ?? "bars",
         iconLibrary: column.iconLibrary,
     };
 }
