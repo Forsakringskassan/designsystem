@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Radioknapp - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-338aa2.css"
+            href="../../assets/docs-c4442c.css"
             crossorigin
-            integrity="sha384-G1yLZTs2wCUrQjzl1akmzNVs2ZXg6DFBy5UqTIRGVLd2guGl6v28TXUwYXjZ4ciQ"
+            integrity="sha384-bad8BpIObEZW+EoJGEXrcIxik1VPqgVoxOjAhUW4XzByZbczfcb+mvHf52aYVlzX"
             
         />
         <link
@@ -26,8 +26,8 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-5cd71a.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-d98f1d.js",
     "@fkui/date": "../../assets/vendor-fkui-date-756ff1.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-ca0702.js",
-    "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-4f4793.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-bc6949.js",
+    "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-6ce7bb.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js"
   },
   "integrity": {
@@ -35,8 +35,8 @@
     "../../assets/vendor-fkui-vue-selectors-5cd71a.js": "sha384-HqBtH+imB0y0sHwLWsiZ09cThgHwKkyaMGmRFacWs2LmNv5zHgmA13qXruqBf+ek",
     "../../assets/vendor-fkui-logic-d98f1d.js": "sha384-SGeHcEY4B6lmI5P91r2mELwluuhA7jlFsJ8b9rHDscdLxLKoug5qRQ363SzDUSQt",
     "../../assets/vendor-fkui-date-756ff1.js": "sha384-poMivCeyRvtjqiexqG/jXcCfyu2x3A7bwI5tx3mB74FC5uQUUjIVoQFYJQTHi23Q",
-    "../../assets/vendor-fkui-vue-ca0702.js": "sha384-233p+ujqF5IiEiF5vA89pkLuIXJqdq4aY6Ro6tHcQwPZH0CYz/LPT2KdiA/HIqxD",
-    "../../assets/vendor-fkui-vue-labs-4f4793.js": "sha384-Vsl9NRCmwyKE83o18q+LPwtCTpg2jrIV0/eDyQvinLTWTBHTaxeYx4z0YIMu/Daw",
+    "../../assets/vendor-fkui-vue-bc6949.js": "sha384-tNI57CLcpHvpJfe/2lbkBjKbO9WDtKHquh8Sw0YrjlQ4KmZmvPmonMlH7o9do3X+",
+    "../../assets/vendor-fkui-vue-labs-6ce7bb.js": "sha384-QO/yLIQT6IBPgk3MmDGmpABWSFSlfMKTad2JFm+/JTVgPFg0xO2DNC0P8Ci05VYS",
     "../../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js": "sha384-T8jkOagoFX6LDj2QbCvP8DkKMrMPgdAFrg/sYvtRagV4DTNYut32ghIjZatx0QE3"
   }
 }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-f4b6d9.json"
+    href="../../search-data-c1c91b.json"
     as="fetch"
     crossorigin
-    integrity="sha384-fUmCF80RbONQ1fVL5Puxmys32Sh5oMaMhiwvCyh5242tBqxjdkYK1w6rKh9gFLEt"
+    integrity="sha384-I2lihytYAG+CvA6YZuzxOns1tHBrSxX/HYJDdzNrSLunWvysK1WcyYpca+XQFimD"
     id="search-data"
 />
 <script>
@@ -1551,13 +1551,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/73f8098c0874ab2580bfc878959cd7b60e0f755b/packages/vue/src/components/FFieldset/FFieldset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/1bf5943f66cca7d64a2a265cd8e944ecb92ed26c/packages/vue/src/components/FFieldset/FFieldset.vue">
                 FFieldset
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/73f8098c0874ab2580bfc878959cd7b60e0f755b/packages/vue/src/components/FRadioField/FRadioField.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/1bf5943f66cca7d64a2a265cd8e944ecb92ed26c/packages/vue/src/components/FRadioField/FRadioField.vue">
                 FRadioField
             </a>
             
@@ -1601,50 +1601,75 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Använd radioknappar när användaren ska välja ett av ett fåtal fördefinierade alternativ. Alla alternativ visas samtidigt, vilket gör dem enkla att överblicka och jämföra.</p>
+                    <div id="content"><p class="docs-paragraph">Använd radioknappar när användaren ska välja ett av ett fåtal fördefinierade alternativ.
+Alla alternativ visas samtidigt, vilket gör dem enkla att överblicka och jämföra.</p>
 
                 <div
-                    id="example-27e8ea"
+                    id="example-6a4acd"
                     class="code-preview code-preview--borderless"
-                    data-test="live"
+                    
                     data-tags="live-example"
                     data-language="vue"
                 >
                     
-        <div id="example-c57167"></div>
+        <div id="example-a12486"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FRadioFieldLiveExample-c57167.js"></script>
+        <script type="module" src="./FRadioFieldLiveExample-a12486.js"></script>
     
                 </div>
-            <h2 id="radioknappar_eller_dropplista" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#radioknappar_eller_dropplista">Radioknappar eller dropplista</a></h2><p class="docs-paragraph">Radioknappar tar mer plats än en dropplista men låter användaren se alternativen utan att först öppna en lista. En <a href="./fselectfield.html">dropplista</a> passar bättre när alternativen är många eller när antalet är dynamiskt och kan öka.</p>
-<h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2><h3 id="placering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#placering">Placering</a></h3><p class="docs-paragraph">Visa radioknappar vertikalt som standard. Horisontell placering kan användas när det finns två alternativ med korta texter, till exempel ja och nej. På mindre skärmar visas alternativen vertikalt.</p>
-<h3 id="forvalt_alternativ" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#forvalt_alternativ">Förvalt alternativ</a></h3><p class="docs-paragraph">Förvälj bara ett alternativ när det finns ett rimligt standardval. Låt annars användaren göra ett aktivt val, särskilt när valet får viktiga konsekvenser.</p>
-<h3 id="inaktiverade_alternativ" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#inaktiverade_alternativ">Inaktiverade alternativ</a></h3><p class="docs-paragraph">Undvik inaktiverade alternativ. De kan vara svåra att uppfatta och ger inte användaren någon förklaring till varför de inte går att välja.</p>
-<h2 id="varianter" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#varianter">Varianter</a></h2><p class="docs-paragraph">Radioknappar kan kompletteras med texter som förtydligar alternativen och med en ram som skapar tydligare visuell avgränsning mellan alternativen. Vad som passar beror på hur mycket stöd användaren behöver för att göra sitt val. Text och ram kan kombineras på olika sätt. Här visas två vanliga varianter.</p>
-<h3 id="utvidgad_text" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#utvidgad_text">Utvidgad text</a></h3><p class="docs-paragraph">Använd utvidgad text när ett alternativ behöver förklaras eller förtydligas. Håll alternativets huvudsakliga text kort och placera förklaringen på en egen rad. Det gör alternativen lättare att överblicka och skapar en tydlig visuell hierarki mellan alternativet och den kompletterande informationen.</p>
-<p class="docs-paragraph">Texten ska vara kort och beskriva det enskilda alternativet. Information som gäller hela frågan ska i stället placeras som hjälptext vid frågan.</p>
+            <h2 id="radioknappar_eller_dropplista" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#radioknappar_eller_dropplista">Radioknappar eller dropplista</a></h2><p class="docs-paragraph">Radioknappar tar mer plats än en dropplista men låter användaren se alternativen utan att först öppna en lista.
+En <a href="./fselectfield.html">dropplista</a> passar bättre när alternativen är många eller när antalet är dynamiskt och kan öka.</p>
+<h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2><h3 id="placering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#placering">Placering</a></h3><p class="docs-paragraph">Visa radioknappar vertikalt som standard.
+Horisontell placering kan användas när det finns två alternativ med korta texter, till exempel ja och nej.
+På mindre skärmar visas alternativen vertikalt.</p>
+<h3 id="forvalt_alternativ" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#forvalt_alternativ">Förvalt alternativ</a></h3><p class="docs-paragraph">Förvälj bara ett alternativ när det finns ett rimligt standardval.
+Låt annars användaren göra ett aktivt val, särskilt när valet får viktiga konsekvenser.</p>
+<h3 id="inaktiverade_alternativ" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#inaktiverade_alternativ">Inaktiverade alternativ</a></h3><p class="docs-paragraph">Undvik inaktiverade alternativ.
+De kan vara svåra att uppfatta och ger inte användaren någon förklaring till varför de inte går att välja.</p>
+<h2 id="varianter" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#varianter">Varianter</a></h2><p class="docs-paragraph">Radioknappar kan kompletteras med texter som förtydligar alternativen och med en ram som skapar tydligare visuell avgränsning mellan alternativen.
+Vad som passar beror på hur mycket stöd användaren behöver för att göra sitt val.
+Text och ram kan kombineras på olika sätt.
+Här visas två vanliga varianter.</p>
+<h3 id="utvidgad_text" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#utvidgad_text">Utvidgad text</a></h3><p class="docs-paragraph">Använd utvidgad text när ett alternativ behöver förklaras eller förtydligas.
+Håll alternativets huvudsakliga text kort och placera förklaringen på en egen rad.
+Det gör alternativen lättare att överblicka och skapar en tydlig visuell hierarki mellan alternativet och den kompletterande informationen.</p>
+<p class="docs-paragraph">Texten ska vara kort och beskriva det enskilda alternativet.
+Information som gäller hela frågan ska i stället placeras som hjälptext vid frågan.</p>
 
+                <div
+                    id="example-6d8145"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-fieldset name=&quot;illness&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-fieldset name=&quot;illness&quot; show-details=&quot;always&quot;&gt;</span>
+</code></pre>
+                </div>
+            
             <div
-                id="example-f83f24"
+                id="example-fad8f3"
                 class="code-preview code-preview--default"
-                data-test="details-always"
+                
                 
                 data-language="vue"
             >
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-44194b"></div>
+        <div id="example-4d5d3e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FRadioFieldDetailsAlwaysExample-44194b.js"></script>
+        <script type="module" src="./FRadioFieldDetailsAlwaysExample-4d5d3e.js"></script>
     
                 </div>
                 <div>
@@ -1673,45 +1698,55 @@
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-9&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;illness&quot;</span> <span class="hljs-attr">show-details</span>=<span class="hljs-string">&quot;always&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Vad hade barnet? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;illness&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;temporary&quot;</span>&gt;</span>
-                    Tillfällig sjukdom
-                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> som förkylning eller brutet ben <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;illness&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;long-term&quot;</span>&gt;</span>
-                    Långvarig sjukdom
-                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> som diabetes eller astma <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;illness&quot;</span> <span class="hljs-attr">show-details</span>=<span class="hljs-string">&quot;always&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Vad hade barnet? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;illness&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;temporary&quot;</span>&gt;</span>
+            Tillfällig sjukdom
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> som förkylning eller brutet ben <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;illness&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;long-term&quot;</span>&gt;</span>
+            Långvarig sjukdom
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> som diabetes eller astma <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
-        <h3 id="inramade_alternativ_med_expanderbar_text" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#inramade_alternativ_med_expanderbar_text">Inramade alternativ med expanderbar text</a></h3><p class="docs-paragraph">Använd inramade alternativ med expanderbar text när varje val behöver framträda som en egen tydlig och klickbar yta och den kompletterande informationen blir relevant först efter valet. Ramen gör det tydligare vilken text som hör till respektive alternativ när innehållet visas.</p>
+        <h3 id="inramade_alternativ_med_expanderbar_text" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#inramade_alternativ_med_expanderbar_text">Inramade alternativ med expanderbar text</a></h3><p class="docs-paragraph">Använd inramade alternativ med expanderbar text när varje val behöver framträda som en egen tydlig och klickbar yta och den kompletterande informationen blir relevant först efter valet.
+Ramen gör det tydligare vilken text som hör till respektive alternativ när innehållet visas.</p>
 <p class="docs-paragraph">Dölj inte information som användaren behöver för att kunna välja.</p>
 
+                <div
+                    id="example-5161ce"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-fieldset name=&quot;payment-plan&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-fieldset name=&quot;payment-plan&quot; border show-details=&quot;when-selected&quot;&gt;</span>
+</code></pre>
+                </div>
+            
             <div
-                id="example-102a0e"
+                id="example-a59792"
                 class="code-preview code-preview--default"
-                data-test="border-expandable"
+                
                 
                 data-language="vue"
             >
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-0efa05"></div>
+        <div id="example-9b7bcb"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FRadioFieldBorderExpandableExample-0efa05.js"></script>
+        <script type="module" src="./FRadioFieldBorderExpandableExample-9b7bcb.js"></script>
     
                 </div>
                 <div>
@@ -1740,33 +1775,30 @@
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;row&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;col col--md-9&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;payment-plan&quot;</span> <span class="hljs-attr">border</span> <span class="hljs-attr">show-details</span>=<span class="hljs-string">&quot;when-selected&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Välj en avbetalningsplan <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span> Alla belopp är inklusive ränta. <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;paymentPlan&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;525-12&quot;</span>&gt;</span>
-                    525 kronor per månad i 12 månader
-                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> Du kommer att betala tillbaka 6 300 kronor. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;paymentPlan&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;570-11&quot;</span>&gt;</span>
-                    570 kronor per månad i 11 månader
-                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> Du kommer att betala tillbaka 6 270 kronor. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;paymentPlan&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;625-10&quot;</span>&gt;</span>
-                    625 kronor per månad i 10 månader
-                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> Du kommer att betala tillbaka 6 250 kronor. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;payment-plan&quot;</span> <span class="hljs-attr">border</span> <span class="hljs-attr">show-details</span>=<span class="hljs-string">&quot;when-selected&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Välj en avbetalningsplan <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span> Alla belopp är inklusive ränta. <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;paymentPlan&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;525-12&quot;</span>&gt;</span>
+            525 kronor per månad i 12 månader
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> Du kommer att betala tillbaka 6 300 kronor. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;paymentPlan&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;570-11&quot;</span>&gt;</span>
+            570 kronor per månad i 11 månader
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> Du kommer att betala tillbaka 6 270 kronor. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;paymentPlan&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;625-10&quot;</span>&gt;</span>
+            625 kronor per månad i 10 månader
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> Du kommer att betala tillbaka 6 250 kronor. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 </code></pre>
                 </div>
             </div>
-        <h2 id="migrera_fran_fradiogroup" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#migrera_fran_fradiogroup">Migrera från FRadioGroup</a></h2><p class="docs-paragraph"><code>FRadioGroup</code> och <code>FRadioGroupField</code> har tagits bort och ersatts av <code>FFieldset</code> respektive <code>FRadioField</code>. Se <a href="../../gettingstarted/migration/migrating-to-fieldset.html">migreringsguiden</a> för information om hur du uppdaterar din kod.</p>
+        <h2 id="migrera_fran_fradiogroup" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#migrera_fran_fradiogroup">Migrera från FRadioGroup</a></h2><p class="docs-paragraph"><code>FRadioGroup</code> och <code>FRadioGroupField</code> har tagits bort och ersatts av <code>FFieldset</code> respektive <code>FRadioField</code>.
+Se <a href="../../gettingstarted/migration/migrating-to-fieldset.html">migreringsguiden</a> för information om hur du uppdaterar din kod.</p>
 <h2 id="props_events_slots" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="ffieldset" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ffieldset">FFieldset</a></h3>
         <h4 class="docs-heading docs-heading--h4" id="ffieldset-props">
             <a class="header-anchor" href="#ffieldset-props">Props</a>
@@ -1918,8 +1950,6 @@ Supported by radiobuttons and chip layout.</p>
                             <p>Sets visibility behaviour for details slot in selectable child items. By default details slot is not rendered.</p>
 <ul>
 <li><code>never</code> (default) - Never show item details.</li>
-</ul>
-<ul>
 <li><code>when-selected</code> - Show item details when selected.</li>
 <li><code>always</code> - Always show item details.</li>
 </ul>
@@ -2239,9 +2269,9 @@ If the prop is not set a random value will be generated.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">docs/radio-checkbox-guidance (<a href="https://github.com/Forsakringskassan/designsystem/commits/73f8098c0874ab2580bfc878959cd7b60e0f755b">73f8098</a>)<br />
+<div class="footer__right"><div class="version">docs/radio-checkbox-guidance (<a href="https://github.com/Forsakringskassan/designsystem/commits/1bf5943f66cca7d64a2a265cd8e944ecb92ed26c">1bf5943</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1628">PR 1628</a><br />
-        2026-08-31 10:07
+        2026-08-31 19:19
 </div>
 <div class="toolbar__item">
     <form id="version">
