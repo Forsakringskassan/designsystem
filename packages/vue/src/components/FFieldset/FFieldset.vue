@@ -87,7 +87,7 @@ export default defineComponent({
         /**
          * Sets visibility behaviour for details slot in selectable child items. By default details slot is not rendered.
          *
-         * * `never` (default) - Never show item details.
+         * - `never` (default) - Never show item details.
          * - `when-selected` - Show item details when selected.
          * - `always` - Always show item details.
          */
