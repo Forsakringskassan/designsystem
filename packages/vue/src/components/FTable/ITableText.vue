@@ -16,6 +16,7 @@ import { isColumnTypeNumber } from "./columns/helpers";
 import { inputFieldConfig } from "./input-fields-config";
 import { addInputValidators } from "./input-validators";
 import { isAlphanumeric } from "./is-alphanumeric";
+import { isVisible } from "./is-visible";
 import { type PopupError } from "./popup-eror";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnNumber, type NormalizedTableColumnText } from "./table-column";
@@ -122,6 +123,8 @@ const configAttributes = computed(() => {
     }
     return inputFieldConfig[column.type].attributes({ decimals });
 });
+
+const visible = computed((): boolean => isVisible(column.visible, row));
 
 const tdElement = useTemplateRef("td");
 const inputElement = useTemplateRef("input");
@@ -413,34 +416,36 @@ function onPendingValidity(): void {
         @click.stop="onClickCell"
         @keydown="onKeydown"
     >
-        <div :class="divClasses">
-            <span class="table-ng__editable__text">{{ fromColumnValue() }}</span>
-            <span v-if="viewModeErrorMessage" class="sr-only">{{ viewModeErrorMessage }}</span>
-            <input
-                :id="inputId"
-                ref="input"
-                v-model="viewValue"
-                :class="inputClasses"
-                type="text"
-                maxlength="40"
-                tabindex="-1"
-                :aria-label
-                v-bind="{ ...configAttributes, ...columnAttributes }"
-                :aria-hidden="!inEdit"
-                @validity="onValidity"
-                @pending-validity="onPendingValidity"
-            />
-            <span ref="arrowAnchor" aria-hidden="true" />
-        </div>
-        <i-popup-error
-            :anchor="tdElement"
-            :is-open="openPopupError"
-            :error-message="validity.validationMessage"
-            :arrow-anchor="arrowAnchorElement"
-            layout="f-table"
-        ></i-popup-error>
+        <template v-if="visible">
+            <div :class="divClasses">
+                <span class="table-ng__editable__text">{{ fromColumnValue() }}</span>
+                <span v-if="viewModeErrorMessage" class="sr-only">{{ viewModeErrorMessage }}</span>
+                <input
+                    :id="inputId"
+                    ref="input"
+                    v-model="viewValue"
+                    :class="inputClasses"
+                    type="text"
+                    maxlength="40"
+                    tabindex="-1"
+                    :aria-label
+                    v-bind="{ ...configAttributes, ...columnAttributes }"
+                    :aria-hidden="!inEdit"
+                    @validity="onValidity"
+                    @pending-validity="onPendingValidity"
+                />
+                <span ref="arrowAnchor" aria-hidden="true" />
+            </div>
+            <i-popup-error
+                :anchor="tdElement"
+                :is-open="openPopupError"
+                :error-message="validity.validationMessage"
+                :arrow-anchor="arrowAnchorElement"
+                layout="f-table"
+            ></i-popup-error>
+        </template>
     </td>
     <td v-else ref="td" tabindex="-1" :class="staticClasses" @keydown.space.prevent>
-        <div class="table-ng__cell--static__text">{{ fromColumnValue() }}</div>
+        <div v-if="visible" class="table-ng__cell--static__text">{{ fromColumnValue() }}</div>
     </td>
 </template>

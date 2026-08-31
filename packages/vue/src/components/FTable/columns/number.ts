@@ -19,7 +19,7 @@ import {
 export interface TableColumnNumber<
     T,
     K extends keyof T,
-> extends TableColumnBase {
+> extends TableColumnBase<T> {
     type: InputTypeNumber;
     decimals?: number;
     key?: K;
@@ -51,7 +51,7 @@ export interface TableColumnNumber<
 export interface NormalizedTableColumnNumber<
     T,
     K,
-> extends NormalizedTableColumnBase<K> {
+> extends NormalizedTableColumnBase<T, K> {
     readonly type: InputTypeNumber;
     readonly decimals?: number;
     readonly validation: ValidatorConfigs;

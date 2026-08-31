@@ -2,6 +2,7 @@
 import { type Ref, computed, nextTick, ref, useTemplateRef } from "vue";
 import { ElementIdService, assertRef, assertSet } from "@fkui/logic";
 import { IComboboxDropdown } from "../../internal-components";
+import { isVisible } from "./is-visible";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnSelect } from "./table-column";
 
@@ -27,6 +28,8 @@ const dropdownId = ElementIdService.generateElementId();
 const dropdownIsOpen = ref(false);
 const activeOptionId = ElementIdService.generateElementId();
 const activeOption: Ref<string | null> = ref(null);
+
+const visible = computed((): boolean => isVisible(column.visible, row));
 
 async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
     /* eslint-disable-next-line unicorn/prefer-includes-over-repeated-comparisons -- technical debt */
@@ -188,41 +191,43 @@ async function onEditBlur(event: FocusEvent): Promise<void> {
         @keydown="onCellKeyDown"
         @click.stop="onCellClick"
     >
-        <div v-show="!editing" class="table-ng__editable">
-            <span class="table-ng__editable__text">{{ viewValue }}</span>
-        </div>
-        <div
-            v-show="editing"
-            ref="edit"
-            role="combobox"
-            tabindex="-1"
-            :aria-expanded="dropdownIsOpen"
-            :aria-controls="dropdownIsOpen ? dropdownId : undefined"
-            :aria-activedescendant="dropdownIsOpen ? activeOptionId : undefined"
-            aria-autocomplete="list"
-            class="table-ng__editable"
-            :aria-label
-            @click.stop
-            @dblclick.prevent
-            @keydown.stop="onEditKeyDown"
-            @focusout="(e) => onEditBlur(e)"
-        >
-            <span class="table-ng__editable__text">{{ viewValue }}</span>
-        </div>
+        <template v-if="visible">
+            <div v-show="!editing" class="table-ng__editable">
+                <span class="table-ng__editable__text">{{ viewValue }}</span>
+            </div>
+            <div
+                v-show="editing"
+                ref="edit"
+                role="combobox"
+                tabindex="-1"
+                :aria-expanded="dropdownIsOpen"
+                :aria-controls="dropdownIsOpen ? dropdownId : undefined"
+                :aria-activedescendant="dropdownIsOpen ? activeOptionId : undefined"
+                aria-autocomplete="list"
+                class="table-ng__editable"
+                :aria-label
+                @click.stop
+                @dblclick.prevent
+                @keydown.stop="onEditKeyDown"
+                @focusout="(e) => onEditBlur(e)"
+            >
+                <span class="table-ng__editable__text">{{ viewValue }}</span>
+            </div>
 
-        <i-combobox-dropdown
-            v-show="editing"
-            :id="dropdownId"
-            :is-open="dropdownIsOpen"
-            :options="column.options"
-            :active-option
-            :active-option-id
-            :input-node="editRef as HTMLInputElement"
-            @select="selectDropdownOption"
-            @close="onDropdownClose"
-        ></i-combobox-dropdown>
+            <i-combobox-dropdown
+                v-show="editing"
+                :id="dropdownId"
+                :is-open="dropdownIsOpen"
+                :options="column.options"
+                :active-option
+                :active-option-id
+                :input-node="editRef as HTMLInputElement"
+                @select="selectDropdownOption"
+                @close="onDropdownClose"
+            ></i-combobox-dropdown>
+        </template>
     </td>
     <td v-else tabindex="-1" class="table-ng__cell table-ng__cell--static">
-        <div class="table-ng__cell--static__text">{{ column.selected(row) }}</div>
+        <div v-if="visible" class="table-ng__cell--static__text">{{ column.selected(row) }}</div>
     </td>
 </template>

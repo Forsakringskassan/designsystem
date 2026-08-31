@@ -7,7 +7,7 @@ import { type NormalizedTableColumnBase, type TableColumnBase } from "./base";
 export interface TableColumnRender<
     T,
     K extends keyof T = keyof T,
-> extends TableColumnBase {
+> extends TableColumnBase<T> {
     key?: K;
     /**
      * Render function to render cell contents.
@@ -22,7 +22,7 @@ export interface TableColumnRender<
  * @internal
  */
 export interface NormalizedTableColumnRender<T> extends Omit<
-    NormalizedTableColumnBase<never>,
+    NormalizedTableColumnBase<T, never>,
     "sortable"
 > {
     readonly type: undefined;
@@ -43,5 +43,6 @@ export function normalizeRenderColumn<T, K extends keyof T>(
         type: undefined,
         render: column.render,
         sortable: null,
+        visible: column.visible ?? (() => true),
     };
 }
