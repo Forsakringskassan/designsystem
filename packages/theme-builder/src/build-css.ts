@@ -2,7 +2,7 @@ import nodefs from "node:fs/promises";
 import path from "node:path/posix";
 import { pathToFileURL } from "node:url";
 import { moduleImporter } from "@forsakringskassan/sass-module-importer";
-import cssnano from "cssnano";
+import cssnano, { type Options as CssNanoOptions } from "cssnano";
 import postcss from "postcss";
 import * as sass from "sass";
 import { type NormalizedOptions } from "./options.ts";
@@ -85,7 +85,7 @@ async function postprocess(
     from: string,
     to: string,
 ): Promise<postcss.LazyResult<postcss.Root>> {
-    const cssnanoOptions = {
+    const cssnanoOptions: CssNanoOptions = {
         preset: [
             "default",
             {

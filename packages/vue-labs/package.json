@@ -41,11 +41,10 @@
     "!**/*.spec.{js,ts,d.ts,d.ts.map}"
   ],
   "scripts": {
-    "build": "run-s build:lib build:selectors build:dts build:api",
+    "build": "run-s build:lib build:dts build:api",
     "build:api": "fk-api-extractor api-extractor.*.json",
     "build:dts": "vue-tsc -b",
-    "build:lib": "fk-build-vue-lib --clean",
-    "build:selectors": "fk-build-selectors",
+    "build:lib": "fk-build-vue-lib --clean --pageobjects",
     "clean": "rimraf -g dist temp",
     "prepack": "release-prepack --bundle --retain-scripts",
     "postpack": "release-postpack",
@@ -64,7 +63,7 @@
     "@fkui/theme-default": "6.55.0",
     "@fkui/vue": "6.55.0",
     "@forsakringskassan/docs-generator": "3.6.2",
-    "@forsakringskassan/vite-lib-config": "5.9.3",
+    "@forsakringskassan/vite-lib-config": "5.10.1",
     "@forsakringskassan/vitest-config-jsdom": "2.7.0",
     "@vue/test-utils": "2.5.0",
     "esbuild": "0.28.2",
