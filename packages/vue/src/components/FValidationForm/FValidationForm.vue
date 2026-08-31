@@ -140,8 +140,7 @@ export default defineComponent({
                 focus(this.$refs.errors as HTMLElement);
             } else {
                 const firstError = this.validity.componentsWithError[0];
-                /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
-                const element = this.$el.querySelector(`#${firstError.focusElementId}`)!;
+                const element = this.$el.querySelector(`#${firstError.focusElementId}`);
                 focus(element);
             }
 

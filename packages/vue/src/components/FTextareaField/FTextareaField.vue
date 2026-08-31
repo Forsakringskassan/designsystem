@@ -2,7 +2,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { type ValidityEvent, ElementIdService, ValidationService, isSet } from "@fkui/logic";
-import { dispatchComponentValidityEvent, renderSlotText } from "../../utils";
+import { dispatchComponentValidityEvent, findHTMLElementFromVueRef, renderSlotText } from "../../utils";
 import { FLabel } from "../FLabel";
 
 export default defineComponent({
@@ -187,11 +187,10 @@ export default defineComponent({
 
         this.updateTextareaHeightVariables();
 
-        void this.$nextTick(async () => {
-            if (this.$refs.textarea) {
-                await ValidationService.validateElement(this.$refs.textarea as HTMLElement);
-            }
-        });
+        const element = findHTMLElementFromVueRef(this.$refs.textarea);
+        if (element) {
+            return ValidationService.validateElement(element);
+        }
     },
     updated() {
         this.updateTextareaHeightVariables();
@@ -285,7 +284,6 @@ export default defineComponent({
                 </slot>
             </template>
         </f-label>
-
         <f-label v-if="softLimit" :for="id" aria-live="polite">
             <template #description="{ descriptionClass }">
                 <span v-if="showCharactersLeftWarning" :class="descriptionClass">
