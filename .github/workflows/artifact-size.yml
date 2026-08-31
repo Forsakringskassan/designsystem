@@ -9,6 +9,7 @@ permissions:
 
 jobs:
     analyze-base:
+        if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
         name: Analyze (base)
         runs-on: ubuntu-latest
         steps:
@@ -33,6 +34,7 @@ jobs:
                   artifact-name: base-size
 
     analyze-current:
+        if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
         name: Analyze (current)
         runs-on: ubuntu-latest
         steps:
@@ -57,6 +59,7 @@ jobs:
                   artifact-name: current-size
 
     compare:
+        if: github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]'
         name: Compare
         permissions:
             contents: read
