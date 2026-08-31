@@ -1674,23 +1674,23 @@ function refIsElement(value) {
 function refIsVue(value) {
   return value?.$el !== void 0;
 }
-function findElementFromVueRef(ref2) {
-  if (refIsElement(ref2)) {
-    return ref2;
+function findElementFromVueRef(ref3) {
+  if (refIsElement(ref3)) {
+    return ref3;
   }
-  if (refIsVue(ref2)) {
-    return ref2.$el;
+  if (refIsVue(ref3)) {
+    return ref3.$el;
   }
 }
-function getHTMLElementFromVueRef(ref2) {
-  const element = findElementFromVueRef(ref2);
+function getHTMLElementFromVueRef(ref3) {
+  const element = findElementFromVueRef(ref3);
   if (!isSet2(element)) {
-    throw new Error(`Unable to find element from ${String(ref2)}.`);
+    throw new Error(`Unable to find element from ${String(ref3)}.`);
   }
   if (element instanceof HTMLElement) {
     return element;
   }
-  throw new Error(`Not instance of HTMLELement ${String(ref2)}.`);
+  throw new Error(`Not instance of HTMLELement ${String(ref3)}.`);
 }
 
 // packages/vue/src/utils/event-bus.ts
@@ -2587,8 +2587,264 @@ import { defineComponent as defineComponent11 } from "vue";
 import { ElementIdService as ElementIdService3, TranslationService as TranslationService2, ValidationService as ValidationService3 } from "@fkui/logic";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=script
-import { defineComponent as defineComponent10 } from "vue";
+import { computed as computed2, defineComponent as defineComponent10 } from "vue";
 import { ElementIdService as ElementIdService2, ValidationService as ValidationService2, focus as focus4 } from "@fkui/logic";
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=script
+import { defineComponent as _defineComponent } from "vue";
+import { computed, inject, useAttrs } from "vue";
+
+// packages/vue/src/components/FButton/button-inflight-injection-key.ts
+var buttonInflightInjectionKey = /* @__PURE__ */ Symbol();
+
+// packages/vue/src/components/FButton/use-inflight.ts
+import { ref } from "vue";
+function useInflight(fn2, disabled) {
+  const inflight = ref(false);
+  if (!fn2 || typeof fn2 !== "function") {
+    return { inflight, fn: void 0 };
+  }
+  const originalFn = fn2;
+  async function wrapper() {
+    if (disabled.value) {
+      return;
+    }
+    try {
+      inflight.value = true;
+      await originalFn();
+    } finally {
+      inflight.value = false;
+    }
+  }
+  return { inflight, fn: wrapper };
+}
+
+// sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=script
+var FButton_default = /* @__PURE__ */ _defineComponent({
+  ...{
+    inheritAttrs: false
+  },
+  __name: "FButton",
+  props: {
+    /**
+     * Type of button, can be one of:
+     * - `primary`
+     * - `secondary`
+     * - `tertiary`
+     */
+    variant: {
+      type: String,
+      required: true,
+      validator(value) {
+        return ["primary", "secondary", "tertiary"].includes(value);
+      }
+    },
+    /**
+     * Button size, can be one of:
+     * - `small`
+     * - `medium`
+     * - `large`
+     */
+    size: {
+      type: String,
+      required: true,
+      validator(value) {
+        return ["small", "medium", "large"].includes(value);
+      }
+    },
+    /**
+     * Name of an icon to display on the left side of the button.
+     */
+    iconLeft: {
+      type: String,
+      default: void 0
+    },
+    /**
+     * Name of an icon to display on the right side of the button.
+     */
+    iconRight: {
+      type: String,
+      default: void 0
+    },
+    /**
+     * Icon library to use.
+     */
+    iconLibrary: {
+      type: String,
+      required: false,
+      default: "f"
+    },
+    /**
+     * Tertiary button style, used in conjunction with button variant `tertiary`.
+     * Can be one of:
+     * - `standard`
+     * - `muted`
+     * - `inverted`
+     */
+    tertiaryStyle: {
+      type: String,
+      default: "standard",
+      validator(value) {
+        return ["standard", "muted", "black", "inverted"].includes(value);
+      }
+    },
+    /**
+     * Align button text and icon with content above or below.
+     * Used in conjunction with button variant `tertiary`.
+     */
+    alignText: {
+      type: Boolean
+    },
+    /**
+     *
+     * Enable full width on mobile for sizes `small` and `medium`, always active for button size `large`.
+     */
+    mobileFullWidth: {
+      type: Boolean
+    },
+    /**
+     * The default behavior of the button. Possible values are:
+     * - `submit`
+     * - `reset`
+     * - `button`
+     */
+    type: {
+      type: String,
+      default: "button",
+      validator(value) {
+        return ["submit", "reset", "button"].includes(value);
+      }
+    },
+    /**
+     * Disable the button.
+     */
+    disabled: {
+      type: Boolean,
+      required: false
+    }
+  },
+  setup(__props, { expose: __expose }) {
+    __expose();
+    const props = __props;
+    const originalAttrs = useAttrs();
+    const disabled = computed(() => {
+      return props.disabled || inflight.value || hasSubmitInflight.value;
+    });
+    const { inflight, fn: onClick } = useInflight(originalAttrs.onClick, disabled);
+    const attrs = { ...originalAttrs, onClick };
+    const hasIconLeft = computed(() => {
+      return Boolean(props.iconLeft);
+    });
+    const hasIconRight = computed(() => {
+      return Boolean(props.iconRight);
+    });
+    const hasIcon = computed(() => {
+      return hasIconLeft.value || hasIconRight.value;
+    });
+    const hasIconInflight = computed(() => inflight.value || hasSubmitInflight.value);
+    const hasSubmitInflight = computed(() => props.type === "submit" && isParentInflight.value);
+    const buttonClass = computed(() => {
+      const classes = ["button", `button--${props.variant}`, `button--${props.size}`];
+      if (props.variant === "tertiary" && props.alignText) {
+        classes.push(`button--align-text`);
+      }
+      if (props.variant === "tertiary") {
+        classes.push(`button--tertiary--${props.tertiaryStyle}`);
+      }
+      if (props.variant === "tertiary" && !hasIcon.value) {
+        classes.push(`button--tertiary--underline`);
+      }
+      if (props.mobileFullWidth && props.size !== "large") {
+        classes.push(`button--full-width`);
+      }
+      if (inflight.value || hasSubmitInflight.value) {
+        classes.push(`button__inflight`);
+      }
+      return classes;
+    });
+    const isParentInflight = inject(
+      buttonInflightInjectionKey,
+      computed(() => false)
+    );
+    const __returned__ = { props, originalAttrs, disabled, inflight, onClick, attrs, hasIconLeft, hasIconRight, hasIcon, hasIconInflight, hasSubmitInflight, buttonClass, isParentInflight, get FIcon() {
+      return FIcon_default2;
+    } };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
+  }
+});
+
+// sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FButton/FButton.vue?type=template
+import { openBlock as _openBlock6, createBlock as _createBlock3, createCommentVNode as _createCommentVNode5, Fragment as _Fragment3, createElementBlock as _createElementBlock6, renderSlot as _renderSlot5, createElementVNode as _createElementVNode5, mergeProps as _mergeProps2 } from "vue";
+var _hoisted_15 = ["type", "aria-disabled"];
+var _hoisted_24 = {
+  key: 1,
+  class: "spinner--before"
+};
+var _hoisted_33 = {
+  key: 3,
+  class: "spinner--after"
+};
+function render6(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock6(), _createElementBlock6("button", _mergeProps2({
+    type: $props.type,
+    class: $setup.buttonClass,
+    "aria-disabled": $setup.disabled
+  }, $setup.attrs), [
+    $setup.hasIconLeft ? (_openBlock6(), _createElementBlock6(
+      _Fragment3,
+      { key: 0 },
+      [
+        $setup.hasIconInflight ? (_openBlock6(), _createBlock3($setup["FIcon"], {
+          key: 0,
+          name: "circle-notch-solid",
+          class: "button__icon button__spinner"
+        })) : $setup.props.iconLeft ? (_openBlock6(), _createBlock3($setup["FIcon"], {
+          key: 1,
+          class: "button__icon",
+          name: $setup.props.iconLeft,
+          library: $setup.props.iconLibrary
+        }, null, 8, ["name", "library"])) : _createCommentVNode5("v-if", true)
+      ],
+      64
+      /* STABLE_FRAGMENT */
+    )) : _createCommentVNode5("v-if", true),
+    !$setup.hasIcon ? (_openBlock6(), _createElementBlock6("span", _hoisted_24, [
+      $setup.hasIconInflight ? (_openBlock6(), _createBlock3($setup["FIcon"], {
+        key: 0,
+        name: "circle-notch-solid",
+        class: "button__icon button__spinner"
+      })) : _createCommentVNode5("v-if", true)
+    ])) : _createCommentVNode5("v-if", true),
+    _createCommentVNode5("\n        @slot Slot for text to display in the button.\n        "),
+    _createElementVNode5("span", null, [
+      _renderSlot5(_ctx.$slots, "default")
+    ]),
+    $setup.hasIconRight ? (_openBlock6(), _createElementBlock6(
+      _Fragment3,
+      { key: 2 },
+      [
+        $setup.hasIconInflight ? (_openBlock6(), _createBlock3($setup["FIcon"], {
+          key: 0,
+          name: "circle-notch-solid",
+          class: "button__icon button__spinner"
+        })) : $setup.props.iconRight ? (_openBlock6(), _createBlock3($setup["FIcon"], {
+          key: 1,
+          class: "button__icon",
+          name: $setup.props.iconRight,
+          library: $setup.props.iconLibrary
+        }, null, 8, ["name", "library"])) : _createCommentVNode5("v-if", true)
+      ],
+      64
+      /* STABLE_FRAGMENT */
+    )) : _createCommentVNode5("v-if", true),
+    !$setup.hasIcon ? (_openBlock6(), _createElementBlock6("span", _hoisted_33)) : _createCommentVNode5("v-if", true)
+  ], 16, _hoisted_15);
+}
+
+// packages/vue/src/components/FButton/FButton.vue
+FButton_default.render = render6;
+FButton_default.__file = "packages/vue/src/components/FButton/FButton.vue";
 
 // sfc-script:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=script
 import { defineComponent as defineComponent8 } from "vue";
@@ -2677,16 +2933,16 @@ var IFlex_default = defineComponent6({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlex.vue?type=template
-import { createCommentVNode as _createCommentVNode5, renderSlot as _renderSlot5, normalizeClass as _normalizeClass3, openBlock as _openBlock6, createElementBlock as _createElementBlock6 } from "vue";
-function render6(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock6(), _createElementBlock6(
+import { createCommentVNode as _createCommentVNode6, renderSlot as _renderSlot6, normalizeClass as _normalizeClass3, openBlock as _openBlock7, createElementBlock as _createElementBlock7 } from "vue";
+function render7(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock7(), _createElementBlock7(
     "div",
     {
       class: _normalizeClass3(["iflex", _ctx.classList])
     },
     [
-      _createCommentVNode5(" @slot Slot for IFlexItem's "),
-      _renderSlot5(_ctx.$slots, "default")
+      _createCommentVNode6(" @slot Slot for IFlexItem's "),
+      _renderSlot6(_ctx.$slots, "default")
     ],
     2
     /* CLASS */
@@ -2694,7 +2950,7 @@ function render6(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/internal-components/IFlex/IFlex.vue
-IFlex_default.render = render6;
+IFlex_default.render = render7;
 IFlex_default.__file = "packages/vue/src/internal-components/IFlex/IFlex.vue";
 var IFlex_default2 = IFlex_default;
 
@@ -2747,16 +3003,16 @@ var IFlexItem_default = defineComponent7({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/internal-components/IFlex/IFlexItem.vue?type=template
-import { createCommentVNode as _createCommentVNode6, renderSlot as _renderSlot6, normalizeClass as _normalizeClass4, openBlock as _openBlock7, createElementBlock as _createElementBlock7 } from "vue";
-function render7(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock7(), _createElementBlock7(
+import { createCommentVNode as _createCommentVNode7, renderSlot as _renderSlot7, normalizeClass as _normalizeClass4, openBlock as _openBlock8, createElementBlock as _createElementBlock8 } from "vue";
+function render8(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock8(), _createElementBlock8(
     "div",
     {
       class: _normalizeClass4(["iflex__item", _ctx.classList])
     },
     [
-      _createCommentVNode6(" @slot Content "),
-      _renderSlot6(_ctx.$slots, "default")
+      _createCommentVNode7(" @slot Content "),
+      _renderSlot7(_ctx.$slots, "default")
     ],
     2
     /* CLASS */
@@ -2764,7 +3020,7 @@ function render7(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/internal-components/IFlex/IFlexItem.vue
-IFlexItem_default.render = render7;
+IFlexItem_default.render = render8;
 IFlexItem_default.__file = "packages/vue/src/internal-components/IFlex/IFlexItem.vue";
 var IFlexItem_default2 = IFlexItem_default;
 
@@ -2823,20 +3079,20 @@ var FErrorList_default = defineComponent8({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FErrorList/FErrorList.vue?type=template
-import { resolveComponent as _resolveComponent3, createVNode as _createVNode2, withCtx as _withCtx2, openBlock as _openBlock8, createBlock as _createBlock3, createCommentVNode as _createCommentVNode7, createTextVNode as _createTextVNode2, renderSlot as _renderSlot7, createElementBlock as _createElementBlock8, renderList as _renderList2, Fragment as _Fragment3, createElementVNode as _createElementVNode5, toDisplayString as _toDisplayString3, withModifiers as _withModifiers } from "vue";
-var _hoisted_15 = { class: "error-list" };
-var _hoisted_24 = { key: 0 };
-var _hoisted_33 = { class: "error-list__list error-list--list-style-none" };
+import { resolveComponent as _resolveComponent3, createVNode as _createVNode2, withCtx as _withCtx2, openBlock as _openBlock9, createBlock as _createBlock4, createCommentVNode as _createCommentVNode8, createTextVNode as _createTextVNode2, renderSlot as _renderSlot8, createElementBlock as _createElementBlock9, renderList as _renderList2, Fragment as _Fragment4, createElementVNode as _createElementVNode6, toDisplayString as _toDisplayString3, withModifiers as _withModifiers } from "vue";
+var _hoisted_16 = { class: "error-list" };
+var _hoisted_25 = { key: 0 };
+var _hoisted_34 = { class: "error-list__list error-list--list-style-none" };
 var _hoisted_42 = ["onClick"];
 var _hoisted_52 = { class: "error-list__link" };
-function render8(_ctx, _cache, $props, $setup, $data, $options) {
+function render9(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_icon = _resolveComponent3("f-icon");
   const _component_i_flex_item = _resolveComponent3("i-flex-item");
   const _component_i_flex = _resolveComponent3("i-flex");
-  return _openBlock8(), _createElementBlock8("div", _hoisted_15, [
+  return _openBlock9(), _createElementBlock9("div", _hoisted_16, [
     _createVNode2(_component_i_flex, null, {
       default: _withCtx2(() => [
-        _ctx.hasTitleSlot ? (_openBlock8(), _createBlock3(_component_i_flex_item, {
+        _ctx.hasTitleSlot ? (_openBlock9(), _createBlock4(_component_i_flex_item, {
           key: 0,
           shrink: ""
         }, {
@@ -2848,9 +3104,9 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
           ]),
           _: 1
           /* STABLE */
-        })) : _createCommentVNode7("v-if", true),
-        _createCommentVNode7(" use a space as separator to get same width FLabel which uses an actual space "),
-        _ctx.hasTitleSlot ? (_openBlock8(), _createBlock3(_component_i_flex_item, {
+        })) : _createCommentVNode8("v-if", true),
+        _createCommentVNode8(" use a space as separator to get same width FLabel which uses an actual space "),
+        _ctx.hasTitleSlot ? (_openBlock9(), _createBlock4(_component_i_flex_item, {
           key: 1,
           shrink: ""
         }, {
@@ -2863,27 +3119,27 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
           ])]),
           _: 1
           /* STABLE */
-        })) : _createCommentVNode7("v-if", true),
+        })) : _createCommentVNode8("v-if", true),
         _createVNode2(_component_i_flex_item, { grow: "" }, {
           default: _withCtx2(() => [
-            _ctx.hasTitleSlot ? (_openBlock8(), _createElementBlock8("div", _hoisted_24, [
-              _createCommentVNode7(" @slot Optional title shown above the errorlist. No icon is shown if no title is set "),
-              _renderSlot7(_ctx.$slots, "title")
-            ])) : _createCommentVNode7("v-if", true),
-            _createElementVNode5("ul", _hoisted_33, [
-              (_openBlock8(true), _createElementBlock8(
-                _Fragment3,
+            _ctx.hasTitleSlot ? (_openBlock9(), _createElementBlock9("div", _hoisted_25, [
+              _createCommentVNode8(" @slot Optional title shown above the errorlist. No icon is shown if no title is set "),
+              _renderSlot8(_ctx.$slots, "title")
+            ])) : _createCommentVNode8("v-if", true),
+            _createElementVNode6("ul", _hoisted_34, [
+              (_openBlock9(true), _createElementBlock9(
+                _Fragment4,
                 null,
                 _renderList2(_ctx.items, (item) => {
-                  return _openBlock8(), _createElementBlock8("li", {
+                  return _openBlock9(), _createElementBlock9("li", {
                     key: item.id
                   }, [
-                    item.id ? (_openBlock8(), _createElementBlock8("a", {
+                    item.id ? (_openBlock9(), _createElementBlock9("a", {
                       key: 0,
                       href: "javascript:",
                       onClick: _withModifiers(($event) => _ctx.onClickItem(item), ["prevent"])
                     }, [
-                      _cache[1] || (_cache[1] = _createElementVNode5(
+                      _cache[1] || (_cache[1] = _createElementVNode6(
                         "span",
                         {
                           class: "error-list__bullet",
@@ -2893,18 +3149,18 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                         -1
                         /* CACHED */
                       )),
-                      _createElementVNode5(
+                      _createElementVNode6(
                         "span",
                         _hoisted_52,
                         _toDisplayString3(item.title),
                         1
                         /* TEXT */
                       )
-                    ], 8, _hoisted_42)) : (_openBlock8(), _createElementBlock8(
-                      _Fragment3,
+                    ], 8, _hoisted_42)) : (_openBlock9(), _createElementBlock9(
+                      _Fragment4,
                       { key: 1 },
                       [
-                        _cache[2] || (_cache[2] = _createElementVNode5(
+                        _cache[2] || (_cache[2] = _createElementVNode6(
                           "span",
                           {
                             class: "error-list__bullet",
@@ -2914,7 +3170,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
                           -1
                           /* CACHED */
                         )),
-                        _createElementVNode5(
+                        _createElementVNode6(
                           "span",
                           null,
                           _toDisplayString3(item.title),
@@ -2943,7 +3199,7 @@ function render8(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FErrorList/FErrorList.vue
-FErrorList_default.render = render8;
+FErrorList_default.render = render9;
 FErrorList_default.__file = "packages/vue/src/components/FErrorList/FErrorList.vue";
 var FErrorList_default2 = FErrorList_default;
 
@@ -3038,16 +3294,16 @@ var FValidationGroup_default = defineComponent9({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationGroup/FValidationGroup.vue?type=template
-import { renderSlot as _renderSlot8, openBlock as _openBlock9, createElementBlock as _createElementBlock9 } from "vue";
-function render9(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock9(), _createElementBlock9(
+import { renderSlot as _renderSlot9, openBlock as _openBlock10, createElementBlock as _createElementBlock10 } from "vue";
+function render10(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock10(), _createElementBlock10(
     "div",
     {
       onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)),
       onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
     },
     [
-      _renderSlot8(_ctx.$slots, "default")
+      _renderSlot9(_ctx.$slots, "default")
     ],
     32
     /* NEED_HYDRATION */
@@ -3055,7 +3311,7 @@ function render9(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FValidationGroup/FValidationGroup.vue
-FValidationGroup_default.render = render9;
+FValidationGroup_default.render = render10;
 FValidationGroup_default.__file = "packages/vue/src/components/FValidationGroup/FValidationGroup.vue";
 var FValidationGroup_default2 = FValidationGroup_default;
 
@@ -3065,8 +3321,30 @@ function noop2() {
 var FValidationForm_default = defineComponent10({
   name: "FValidationForm",
   components: { FValidationGroup: FValidationGroup_default2, FErrorList: FErrorList_default2 },
+  provide() {
+    return {
+      [buttonInflightInjectionKey]: computed2(() => this.isInflight)
+    };
+  },
   inheritAttrs: false,
   props: {
+    /**
+     * Callback function triggered when the form is submitted.
+     *
+     * Since this component declares `emits: ["submit"]`, Vue automatically
+     * intercepts the `@submit` event listener. By declaring this `onSubmit`
+     * prop, the component can intercept, await, and monitor the lifecycle
+     * of the parent's asynchronous submit handler before the event is emitted.
+     *
+     * @ignore
+     */
+    onSubmit: {
+      type: Function,
+      required: false,
+      default() {
+        return noop2;
+      }
+    },
     /**
      * If given, this function is called before the `submit` event is emitted.
      *
@@ -3135,7 +3413,8 @@ var FValidationForm_default = defineComponent10({
   data() {
     return {
       validity: { isValid: true, componentsWithError: [], componentCount: 0 },
-      submitted: false
+      submitted: false,
+      isInflight: false
     };
   },
   computed: {
@@ -3171,63 +3450,77 @@ var FValidationForm_default = defineComponent10({
       }
       return true;
     },
-    async onSubmit(event) {
+    async submit(event) {
       this.submitted = true;
-      const beforeValidation = this.beforeValidation ? await this.beforeValidation() : void 0;
-      if (beforeValidation === 1 /* CANCEL */) {
-        return;
+      this.isInflight = true;
+      try {
+        const beforeValidation = this.beforeValidation ? await this.beforeValidation() : void 0;
+        if (beforeValidation === 1 /* CANCEL */) {
+          this.isInflight = false;
+          return;
+        }
+        if (await this.hasFormErrors()) {
+          this.isInflight = false;
+          return;
+        }
+        const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : void 0;
+        if (beforeAction === 1 /* CANCEL */) {
+          this.isInflight = false;
+          return;
+        }
+        if (await this.hasFormErrors()) {
+          this.isInflight = false;
+          return;
+        }
+        const parentSubmitHandler = this.$props.onSubmit;
+        if (typeof parentSubmitHandler === "function") {
+          await parentSubmitHandler(event);
+        } else {
+          this.$emit("submit", event);
+        }
+      } finally {
+        this.isInflight = false;
       }
-      if (await this.hasFormErrors()) {
-        return;
-      }
-      const beforeAction = this.beforeSubmit ? await this.beforeSubmit() : void 0;
-      if (beforeAction === 1 /* CANCEL */) {
-        return;
-      }
-      if (await this.hasFormErrors()) {
-        return;
-      }
-      this.$emit("submit", event);
     }
   }
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FValidationForm/FValidationForm.vue?type=template
-import { createCommentVNode as _createCommentVNode8, renderSlot as _renderSlot9, resolveComponent as _resolveComponent4, withCtx as _withCtx3, createVNode as _createVNode3, openBlock as _openBlock10, createElementBlock as _createElementBlock10, withModifiers as _withModifiers2, mergeProps as _mergeProps2, createElementVNode as _createElementVNode6, createBlock as _createBlock4 } from "vue";
-var _hoisted_16 = ["id"];
-var _hoisted_25 = {
+import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, resolveComponent as _resolveComponent4, withCtx as _withCtx3, createVNode as _createVNode3, openBlock as _openBlock11, createElementBlock as _createElementBlock11, withModifiers as _withModifiers2, mergeProps as _mergeProps3, createElementVNode as _createElementVNode7, createBlock as _createBlock5 } from "vue";
+var _hoisted_17 = ["id"];
+var _hoisted_26 = {
   key: 0,
   ref: "errors",
   tabindex: "-1",
   role: "group"
 };
-function render10(_ctx, _cache, $props, $setup, $data, $options) {
+function render11(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_error_list = _resolveComponent4("f-error-list");
   const _component_f_validation_group = _resolveComponent4("f-validation-group");
-  return _openBlock10(), _createBlock4(_component_f_validation_group, {
+  return _openBlock11(), _createBlock5(_component_f_validation_group, {
     key: _ctx.groupKey,
     modelValue: _ctx.validity,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.validity = $event),
     "stop-propagation": true
   }, {
     default: _withCtx3(() => [
-      _createCommentVNode8(" [html-validate-disable-next wcag/h32 -- submit button is slotted] "),
-      _createElementVNode6("form", _mergeProps2({ id: _ctx.id }, _ctx.$attrs, {
+      _createCommentVNode9(" [html-validate-disable-next wcag/h32 -- submit button is slotted] "),
+      _createElementVNode7("form", _mergeProps3({ id: _ctx.id }, _ctx.$attrs, {
         novalidate: "",
         autocomplete: "off",
-        onSubmit: _cache[0] || (_cache[0] = _withModifiers2((...args) => _ctx.onSubmit && _ctx.onSubmit(...args), ["prevent"]))
+        onSubmit: _cache[0] || (_cache[0] = _withModifiers2((...args) => _ctx.submit && _ctx.submit(...args), ["prevent"]))
       }), [
-        _ctx.displayErrors ? (_openBlock10(), _createElementBlock10(
+        _ctx.displayErrors ? (_openBlock11(), _createElementBlock11(
           "nav",
-          _hoisted_25,
+          _hoisted_26,
           [
             _createVNode3(_component_f_error_list, {
               items: _ctx.errors,
               "before-navigate": _ctx.errorListBeforeNavigate
             }, {
               title: _withCtx3(() => [
-                _createCommentVNode8("\n                            @slot **optional** Slot for displaying error description.\n\n                            After this slot a list of invalid elements is listed.\n                            When an item is clicked it will scroll to and focus that invalid element.\n                        "),
-                _renderSlot9(_ctx.$slots, "error-message")
+                _createCommentVNode9("\n                            @slot **optional** Slot for displaying error description.\n\n                            After this slot a list of invalid elements is listed.\n                            When an item is clicked it will scroll to and focus that invalid element.\n                        "),
+                _renderSlot10(_ctx.$slots, "error-message")
               ]),
               _: 3
               /* FORWARDED */
@@ -3235,10 +3528,10 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
           ],
           512
           /* NEED_PATCH */
-        )) : _createCommentVNode8("v-if", true),
-        _createCommentVNode8(" @slot Slot for content, i.e. input elements. "),
-        _renderSlot9(_ctx.$slots, "default")
-      ], 16, _hoisted_16)
+        )) : _createCommentVNode9("v-if", true),
+        _createCommentVNode9(" @slot Slot for content, i.e. input elements. "),
+        _renderSlot10(_ctx.$slots, "default")
+      ], 16, _hoisted_17)
     ]),
     _: 3
     /* FORWARDED */
@@ -3246,7 +3539,7 @@ function render10(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FValidationForm/FValidationForm.vue
-FValidationForm_default.render = render10;
+FValidationForm_default.render = render11;
 FValidationForm_default.__file = "packages/vue/src/components/FValidationForm/FValidationForm.vue";
 var FValidationForm_default2 = FValidationForm_default;
 
@@ -3425,17 +3718,17 @@ var FFormModal_default = defineComponent11({
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/packages/vue/src/components/FModal/FFormModal/FFormModal.vue?type=template
-import { createCommentVNode as _createCommentVNode9, renderSlot as _renderSlot10, createElementVNode as _createElementVNode7, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, renderList as _renderList3, Fragment as _Fragment4, openBlock as _openBlock11, createElementBlock as _createElementBlock11, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass5, createBlock as _createBlock5 } from "vue";
-var _hoisted_17 = { class: "button-group" };
-var _hoisted_26 = ["type", "form", "onClick"];
-var _hoisted_34 = {
+import { createCommentVNode as _createCommentVNode10, renderSlot as _renderSlot11, createElementVNode as _createElementVNode8, resolveComponent as _resolveComponent5, withCtx as _withCtx4, createVNode as _createVNode4, renderList as _renderList3, Fragment as _Fragment5, openBlock as _openBlock12, createElementBlock as _createElementBlock12, toDisplayString as _toDisplayString4, normalizeClass as _normalizeClass5, createBlock as _createBlock6 } from "vue";
+var _hoisted_18 = { class: "button-group" };
+var _hoisted_27 = ["type", "form", "onClick"];
+var _hoisted_35 = {
   key: 0,
   class: "sr-only"
 };
-function render11(_ctx, _cache, $props, $setup, $data, $options) {
+function render12(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_f_validation_form = _resolveComponent5("f-validation-form");
   const _component_f_modal = _resolveComponent5("f-modal");
-  return _openBlock11(), _createBlock5(_component_f_modal, {
+  return _openBlock12(), _createBlock6(_component_f_modal, {
     "data-test": _ctx.dataTest,
     fullscreen: _ctx.fullscreen,
     "is-open": _ctx.isOpen,
@@ -3444,15 +3737,15 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
     onClose: _ctx.onClose
   }, {
     header: _withCtx4(() => [
-      _createCommentVNode9(" @slot Slot for the header. "),
-      _renderSlot10(_ctx.$slots, "header")
+      _createCommentVNode10(" @slot Slot for the header. "),
+      _renderSlot11(_ctx.$slots, "header")
     ]),
     content: _withCtx4(() => [
-      _createElementVNode7("div", null, [
-        _createCommentVNode9(" @slot Slot for main content above text fields and buttons. "),
-        _renderSlot10(_ctx.$slots, "default")
+      _createElementVNode8("div", null, [
+        _createCommentVNode10(" @slot Slot for main content above text fields and buttons. "),
+        _renderSlot11(_ctx.$slots, "default")
       ]),
-      _createCommentVNode9(" [html-validate-disable-next wcag/h32 -- Submit button with `formId` present in footer ] "),
+      _createCommentVNode10(" [html-validate-disable-next wcag/h32 -- Submit button with `formId` present in footer ] "),
       _createVNode4(_component_f_validation_form, {
         id: _ctx.formId,
         "before-submit": _ctx.beforeSubmit,
@@ -3462,44 +3755,44 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
         onCancel: _ctx.onCancel
       }, {
         "error-message": _withCtx4(() => [
-          _createCommentVNode9(" @slot Slot for error message "),
-          _renderSlot10(_ctx.$slots, "error-message")
+          _createCommentVNode10(" @slot Slot for error message "),
+          _renderSlot11(_ctx.$slots, "error-message")
         ]),
         default: _withCtx4(() => [
-          _renderSlot10(_ctx.$slots, "input-text-fields")
+          _renderSlot11(_ctx.$slots, "input-text-fields")
         ]),
         _: 3
         /* FORWARDED */
       }, 8, ["id", "before-submit", "before-validation", "use-error-list", "onSubmit", "onCancel"])
     ]),
     footer: _withCtx4(() => [
-      _createElementVNode7("div", _hoisted_17, [
-        (_openBlock11(true), _createElementBlock11(
-          _Fragment4,
+      _createElementVNode8("div", _hoisted_18, [
+        (_openBlock12(true), _createElementBlock12(
+          _Fragment5,
           null,
           _renderList3(_ctx.preparedButtons, (button) => {
-            return _openBlock11(), _createElementBlock11("button", {
+            return _openBlock12(), _createElementBlock12("button", {
               key: button.label,
               type: button.buttonType,
               class: _normalizeClass5([button.classlist, "button-group__item"]),
               form: button.buttonType === "submit" ? _ctx.formId : void 0,
               onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false
             }, [
-              _createElementVNode7(
+              _createElementVNode8(
                 "span",
                 null,
                 _toDisplayString4(button.label),
                 1
                 /* TEXT */
               ),
-              button.screenreader ? (_openBlock11(), _createElementBlock11(
+              button.screenreader ? (_openBlock12(), _createElementBlock12(
                 "span",
-                _hoisted_34,
+                _hoisted_35,
                 "\xA0" + _toDisplayString4(button.screenreader),
                 1
                 /* TEXT */
-              )) : _createCommentVNode9("v-if", true)
-            ], 10, _hoisted_26);
+              )) : _createCommentVNode10("v-if", true)
+            ], 10, _hoisted_27);
           }),
           128
           /* KEYED_FRAGMENT */
@@ -3512,7 +3805,7 @@ function render11(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 // packages/vue/src/components/FModal/FFormModal/FFormModal.vue
-FFormModal_default.render = render11;
+FFormModal_default.render = render12;
 FFormModal_default.__file = "packages/vue/src/components/FModal/FFormModal/FFormModal.vue";
 
 // packages/vue/src/utils/focus.ts
@@ -3575,11 +3868,11 @@ function getTextContent(children, options) {
     }
   }).join("");
 }
-function renderSlotText(render13, props = {}, options) {
-  if (!render13) {
+function renderSlotText(render14, props = {}, options) {
+  if (!render14) {
     return void 0;
   }
-  const nodes = render13(props);
+  const nodes = render14(props);
   if (nodes.length === 0) {
     return void 0;
   }
@@ -3625,7 +3918,7 @@ function getAbsolutePosition(src) {
 }
 
 // packages/vue/src/utils/dataset/use-dataset-ref.ts
-import { ref, toRaw, watch } from "vue";
+import { ref as ref2, toRaw, watch } from "vue";
 
 // packages/vue/src/internal-components/IPopup/i-popup-utils.ts
 function clamp(value, min, max) {
@@ -3809,7 +4102,7 @@ function getFallbackPosition(anchor, target, clippedArea, spacing) {
 }
 
 // virtual-entry:virtual:packages/vue/src/internal-components/IPopup/examples/IPopupPositioning.vue:IPopupPositioning-590ceb.js
-import { createElementVNode as _createElementVNode8, vModelSelect as _vModelSelect, withDirectives as _withDirectives, createTextVNode as _createTextVNode3, openBlock as _openBlock12, createElementBlock as _createElementBlock12 } from "vue";
+import { createElementVNode as _createElementVNode9, vModelSelect as _vModelSelect, withDirectives as _withDirectives, createTextVNode as _createTextVNode3, openBlock as _openBlock13, createElementBlock as _createElementBlock13 } from "vue";
 var SPACING = 10;
 var exampleComponent = defineComponent12({
   name: "IPopupPositioning",
@@ -3933,25 +4226,25 @@ var exampleComponent = defineComponent12({
     }
   }
 });
-var _hoisted_18 = { class: "wrapper" };
-var _hoisted_27 = {
+var _hoisted_19 = { class: "wrapper" };
+var _hoisted_28 = {
   ref: "area",
   class: "area"
 };
-var _hoisted_35 = {
+var _hoisted_36 = {
   ref: "target",
   class: "pos-target"
 };
-function render12(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock12(), _createElementBlock12("div", _hoisted_18, [
-    _cache[4] || (_cache[4] = _createElementVNode8(
+function render13(_ctx, _cache, $props, $setup, $data, $options) {
+  return _openBlock13(), _createElementBlock13("div", _hoisted_19, [
+    _cache[4] || (_cache[4] = _createElementVNode9(
       "label",
       { for: "constraint" },
       " Begr\xE4nsa till: ",
       -1
       /* CACHED */
     )),
-    _withDirectives(_createElementVNode8(
+    _withDirectives(_createElementVNode9(
       "select",
       {
         id: "constraint",
@@ -3959,21 +4252,21 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
         onChange: _cache[1] || (_cache[1] = (...args) => _ctx.onChangeConstraint && _ctx.onChangeConstraint(...args))
       },
       [..._cache[3] || (_cache[3] = [
-        _createElementVNode8(
+        _createElementVNode9(
           "option",
           { value: "viewport" },
           "Viewport",
           -1
           /* CACHED */
         ),
-        _createElementVNode8(
+        _createElementVNode9(
           "option",
           { value: "container" },
           "Container",
           -1
           /* CACHED */
         ),
-        _createElementVNode8(
+        _createElementVNode9(
           "option",
           { value: "combo" },
           "Viewport + container",
@@ -3986,22 +4279,22 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
     ), [
       [_vModelSelect, _ctx.constraint]
     ]),
-    _cache[5] || (_cache[5] = _createElementVNode8(
+    _cache[5] || (_cache[5] = _createElementVNode9(
       "p",
       null,
       [
         _createTextVNode3("Dra "),
-        _createElementVNode8("i", null, "ankaret"),
+        _createElementVNode9("i", null, "ankaret"),
         _createTextVNode3(" med hj\xE4lp av musen.")
       ],
       -1
       /* CACHED */
     )),
-    _createElementVNode8(
+    _createElementVNode9(
       "div",
-      _hoisted_27,
+      _hoisted_28,
       [
-        _createElementVNode8(
+        _createElementVNode9(
           "div",
           {
             ref: "anchor",
@@ -4012,9 +4305,9 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
           544
           /* NEED_HYDRATION, NEED_PATCH */
         ),
-        _createElementVNode8(
+        _createElementVNode9(
           "div",
-          _hoisted_35,
+          _hoisted_36,
           "Popup",
           512
           /* NEED_PATCH */
@@ -4025,11 +4318,11 @@ function render12(_ctx, _cache, $props, $setup, $data, $options) {
     )
   ]);
 }
-exampleComponent.render = render12;
+exampleComponent.render = render13;
 setup({
   rootComponent: exampleComponent,
   selector: "#example-590ceb"
 });
 export {
-  render12 as render
+  render13 as render
 };
