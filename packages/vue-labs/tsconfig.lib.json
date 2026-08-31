@@ -5,7 +5,6 @@
     "compilerOptions": {
         "paths": {
             "@fkui/vue-labs/cypress": ["./src/cypress/index.ts"],
-            "@fkui/vue-labs/selectors": ["./src/selectors/index.ts"],
             "@fkui/vue-labs": ["./src/index.ts"]
         }
     }

@@ -48,11 +48,10 @@
     "!htmlvalidate/tsconfig.json"
   ],
   "scripts": {
-    "build": "run-s build:lib build:selectors build:dts build:api build:test-bundles",
+    "build": "run-s build:lib build:dts build:api build:test-bundles",
     "build:api": "fk-api-extractor --patch-augmentations --patch-declare-var-vls api-extractor.*.json",
     "build:dts": "vue-tsc -b",
-    "build:lib": "fk-build-vue-lib --clean",
-    "build:selectors": "fk-build-selectors",
+    "build:lib": "fk-build-vue-lib --clean --pageobjects --selectors",
     "build:test-bundles": "node build-test-bundles.mjs",
     "clean": "rimraf -g dist temp",
     "prepack": "release-prepack --bundle --retain-scripts",
@@ -71,7 +70,7 @@
     "@fkui/logic": "6.55.0",
     "@fkui/test-utils": "6.55.0",
     "@fkui/theme-default": "6.55.0",
-    "@forsakringskassan/vite-lib-config": "5.9.3",
+    "@forsakringskassan/vite-lib-config": "5.10.1",
     "@forsakringskassan/vitest-config-jsdom": "2.7.0",
     "@vue/test-utils": "2.5.0",
     "esbuild": "0.28.2",
