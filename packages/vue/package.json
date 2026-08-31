@@ -73,13 +73,13 @@
     "@fkui/theme-default": "6.55.0",
     "@forsakringskassan/vite-lib-config": "5.9.3",
     "@forsakringskassan/vitest-config-jsdom": "2.7.0",
-    "@vue/test-utils": "2.4.11",
+    "@vue/test-utils": "2.5.0",
     "esbuild": "0.28.2",
     "glob": "13.0.6",
     "vite": "8.2.2",
     "vitest": "4.1.11",
-    "vue": "3.5.41",
-    "vue-router": "5.2.0"
+    "vue": "3.5.42",
+    "vue-router": "5.3.0"
   },
   "peerDependencies": {
     "@fkui/date": "^6.55.0",

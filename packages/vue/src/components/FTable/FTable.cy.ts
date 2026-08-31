@@ -700,6 +700,9 @@ describe("3.1 Feedback to user on invalid input components", () => {
         cy.focused().type("7");
 
         cy.get(".popup-error").should("not.exist");
+
+        // Step out from edit mode
+        table.cell({ row: 1, col: 1 }).focus().should("have.focus");
     });
 
     it("should remain invalid after temporary edit that returns to the same invalid vaule", () => {
@@ -782,8 +785,9 @@ describe("3.1 Feedback to user on invalid input components", () => {
                 FTable<Row>,
                 { rows: useDatasetRef<Row>(rows).value, columns },
                 {
-                    caption:
-                        "Verifierar att felpopupens pil positioneras korrekt i bred cell.",
+                    caption() {
+                        return "Verifierar att felpopupens pil positioneras korrekt i bred cell.";
+                    },
                 },
             ),
         );
@@ -794,6 +798,9 @@ describe("3.1 Feedback to user on invalid input components", () => {
         cy.get(".popup-error").should("be.visible");
 
         table.el().toMatchScreenshot();
+
+        // Step out from edit mode
+        table.cell({ row: 1, col: 1 }).focus().should("have.focus");
     });
 
     describe("Visual", () => {
@@ -833,8 +840,9 @@ describe("3.1 Feedback to user on invalid input components", () => {
                         FTable<Row>,
                         { rows: useDatasetRef<Row>(rows).value, columns },
                         {
-                            caption:
-                                "Verifierar felindikering och tooltip vid ogiltigt värde.",
+                            caption() {
+                                return "Verifierar felindikering och tooltip vid ogiltigt värde.";
+                            },
                         },
                     ),
                 );
@@ -1086,7 +1094,7 @@ describe("6 Expandable table", () => {
                         rows: navRows.value,
                         columns: navColumns,
                     },
-                    { expandable: "Foo" },
+                    { expandable: () => "Foo" },
                 ),
             );
 
@@ -1645,7 +1653,11 @@ describe("5 tabstop", () => {
     });
 
     it("should set correct tabstop for all types of headers, cells and footer on navigation", () => {
-        const slots = { footer: "footer" };
+        const slots = {
+            footer() {
+                return "footer";
+            },
+        };
         const { buttonBeforeTable } = mountNavigationTestbed(slots);
         cy.get(buttonBeforeTable).focus();
         cy.focused().press(Cypress.Keyboard.Keys.TAB);
@@ -1781,7 +1793,11 @@ describe("5 tabstop", () => {
     });
 
     it("should set correct tabstop for all types of headers, cells and footer on click", () => {
-        const slots = { footer: "footer" };
+        const slots = {
+            footer() {
+                return "footer";
+            },
+        };
         mountNavigationTestbed(slots);
 
         // {1, 1}: expand button
@@ -1916,7 +1932,7 @@ describe("5 tabstop", () => {
     });
 
     it("should allow tab navigation in and out of custom expanded row", () => {
-        const slots = { expandable: "Foo" };
+        const slots = { expandable: () => "Foo" };
         const { buttonBeforeTable } = mountNavigationTestbed(slots);
 
         table.expandButton(1).click();
@@ -2002,8 +2018,9 @@ describe("Radio button single‑select functionality in table", () => {
                     selectedRows,
                 },
                 {
-                    caption:
-                        "Verifierar att radioknappar är renderade korrekt vid enkelval.",
+                    caption() {
+                        return "Verifierar att radioknappar är renderade korrekt vid enkelval.";
+                    },
                 },
             ),
         );
@@ -2058,8 +2075,9 @@ describe("7 Bulk Operation ", () => {
                         },
                     },
                     {
-                        caption:
-                            "Verifierar att övre kryssrutan är delvis vald när inte alla rader är valda.",
+                        caption() {
+                            return "Verifierar att övre kryssrutan är delvis vald när inte alla rader är valda.";
+                        },
                     },
                 ),
             );
@@ -2275,7 +2293,9 @@ describe("select cell non-editable", () => {
                     columns,
                 },
                 {
-                    caption: "select cell should be static",
+                    caption() {
+                        return "select cell should be static";
+                    },
                 },
             ),
         );
@@ -2360,7 +2380,9 @@ describe("select cell", () => {
                     columns,
                 },
                 {
-                    footer: "Lorem ipsum",
+                    footer() {
+                        return "Lorem ipsum";
+                    },
                 },
             ),
         );
@@ -2427,14 +2449,16 @@ describe("select cell", () => {
                     columns,
                 },
                 {
-                    caption:
-                        "select cell should have correct styling when open",
+                    caption() {
+                        return "select cell should have correct styling when open";
+                    },
                 },
             ),
         );
 
         table.cell({ row: 2, col: 1 }).click();
         cy.toMatchScreenshot();
+        cy.get("body").realClick({ position: "topLeft" });
     });
 
     it("should have correct styling when focused", () => {
@@ -2446,14 +2470,17 @@ describe("select cell", () => {
                     columns,
                 },
                 {
-                    caption:
-                        "select cell should have correct styling when focused",
+                    caption() {
+                        return "select cell should have correct styling when focused";
+                    },
                 },
             ),
         );
 
         table.cell({ row: 2, col: 1 }).focus();
+        table.cell({ row: 2, col: 1 }).should("have.focus");
         cy.toMatchScreenshot();
+        cy.get("body").realClick({ position: "topLeft" });
     });
 });
 
@@ -2663,8 +2690,9 @@ describe("13 Cell interaction states", () => {
                     FTable<Row>,
                     { rows: rows.value, columns },
                     {
-                        caption:
-                            "Verifierar understrykning för redigerbar cell",
+                        caption() {
+                            return "Verifierar understrykning för redigerbar cell";
+                        },
                     },
                 ),
             );
@@ -2681,9 +2709,16 @@ describe("13 Cell interaction states", () => {
             cy.forcedColors(mode);
             const modeDescription =
                 mode === "none" ? " (normal mode)" : ` (${mode} mode)`;
-            const caption = `Verifierar fokusmarkering för kolumnrubrik ${modeDescription}`;
             cy.mount(() =>
-                h(FTable<Row>, { rows: rows.value, columns }, { caption }),
+                h(
+                    FTable<Row>,
+                    { rows: rows.value, columns },
+                    {
+                        caption() {
+                            return `Verifierar fokusmarkering för kolumnrubrik ${modeDescription}`;
+                        },
+                    },
+                ),
             );
 
             table.header(2).click();
@@ -2714,7 +2749,6 @@ describe("13 Cell interaction states", () => {
             cy.forcedColors(mode);
             const modeDescription =
                 mode === "none" ? " (normal mode)" : ` (${mode} mode)`;
-            const caption = `Verifierar fokusmarkering för markeringskolumnens rubrik ${modeDescription}`;
 
             cy.mount(() =>
                 h(
@@ -2726,7 +2760,9 @@ describe("13 Cell interaction states", () => {
                         selectedRows,
                     },
                     {
-                        caption,
+                        caption() {
+                            return `Verifierar fokusmarkering för markeringskolumnens rubrik ${modeDescription}`;
+                        },
                     },
                 ),
             );
@@ -2745,8 +2781,9 @@ describe("13 Cell interaction states", () => {
                 FTable<Row>,
                 { rows: rows.value, columns },
                 {
-                    caption:
-                        "Verifierar att redigerbar cell inte visar hoverbakgrund i redigeringsläge",
+                    caption() {
+                        return "Verifierar att redigerbar cell inte visar hoverbakgrund i redigeringsläge";
+                    },
                 },
             ),
         );
@@ -2855,8 +2892,9 @@ describe("with wrapping text cell values", () => {
                 FTable<Row>,
                 { rows: rows.value, columns },
                 {
-                    caption:
-                        "Verifierar att texten radbryter när den flödar över",
+                    caption() {
+                        return "Verifierar att texten radbryter när den flödar över";
+                    },
                 },
             ),
         );
