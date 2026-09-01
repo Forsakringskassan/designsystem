@@ -86,6 +86,12 @@ const props = defineProps({
         type: String,
         default: () => ElementIdService.generateElementId(),
     },
+    /**
+     * If `true` the list will have a darker color on every other row.
+     */
+    striped: {
+        type: Boolean,
+    },
 });
 const emit = defineEmits<{
     /**
@@ -131,6 +137,14 @@ const isEmpty = computed((): boolean => {
 const internalItems = computed((): T[] => {
     const { keyAttribute } = props;
     return setItemIdentifiers(props.items, keyAttribute as keyof T | undefined);
+});
+
+const listClasses = computed(() => {
+    return [
+        {
+            "list--striped": props.striped,
+        },
+    ];
 });
 
 watch(
@@ -329,7 +343,7 @@ function isActive(item: T): boolean {
 </script>
 
 <template>
-    <ul v-if="!selectable" class="list">
+    <ul v-if="!selectable" :class="listClasses" class="list">
         <li v-for="item in internalItems" :key="itemKey(item)" class="list__item">
             <div ref="listItemPanes" class="list__item__itempane">
                 <!--
@@ -350,7 +364,7 @@ function isActive(item: T): boolean {
             </div>
         </li>
     </ul>
-    <ul v-else ref="ulElement" class="list list--hover">
+    <ul v-else ref="ulElement" :class="listClasses" class="list list--hover">
         <li
             v-for="(item, index) in internalItems"
             :id="getItemId(item)"

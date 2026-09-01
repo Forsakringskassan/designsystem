@@ -18,6 +18,7 @@ export default defineComponent({
             isEmpty: false,
             hasCustomEmptyText: false,
             listOption: ListOption.STATIC,
+            striped: false,
         };
     },
     computed: {
@@ -48,6 +49,9 @@ export default defineComponent({
         selectable(): string {
             return this.isSelectable ? "selectable" : "";
         },
+        isStriped(): string {
+            return this.striped ? "striped" : "";
+        },
         checkbox(): string {
             return this.listOption === ListOption.LINK ? `:checkbox="false"` : "";
         },
@@ -73,6 +77,7 @@ export default defineComponent({
                     ${this.items}
                     ${this.selectable}
                     ${this.checkbox}
+                    ${this.isStriped}
                 >
                     <template #default="{ item }">
                         <h3>{{ item.frukt }}</h3>
@@ -93,6 +98,7 @@ export default defineComponent({
             <option value="checkbox">Interaktiv med kryssruta</option>
             <option value="link">Interaktiv med länk</option>
         </f-select-field>
+        <f-checkbox-field v-model="striped" :value="true"> Zebrarandig </f-checkbox-field>
         <f-checkbox-field v-model="isEmpty" :value="true"> Tom lista </f-checkbox-field>
         <f-fieldset v-if="isEmpty" name="radio-empty-text">
             <template #label> Meddelande för tom lista </template>
