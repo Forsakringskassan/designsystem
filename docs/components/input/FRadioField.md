@@ -78,6 +78,18 @@ Dölj inte information som användaren behöver för att kunna välja.
 FRadioFieldBorderExpandableExample.vue
 ```
 
+## Validering
+
+Om användaren måste välja ett alternativ ska radioknappsgruppen valideras som obligatorisk.
+Lägg `v-validation.required` på `FFieldset`.
+
+```diff
+-<f-fieldset name="ersattning-fran-utlandet">
++<f-fieldset v-validation.required name="ersattning-fran-utlandet">
+```
+
+{@link validation Validering och felhantering}
+
 ## Migrera från FRadioGroup
 
 `FRadioGroup` och `FRadioGroupField` har tagits bort och ersatts av `FFieldset` respektive `FRadioField`.
