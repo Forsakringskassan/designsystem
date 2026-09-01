@@ -853,8 +853,10 @@ export class ICalendarNavbarPageObject implements BasePageObject {
     prevButton(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
-    // (undocumented)
+    // @deprecated (undocumented)
     text(): DefaultCypressChainable;
+    // (undocumented)
+    title(): DefaultCypressChainable;
     // @internal (undocumented)
     yearSelectorButton(): DefaultCypressChainable;
 }
