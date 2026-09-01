@@ -12,7 +12,6 @@ export default defineComponent({
             isHorizontal: false,
             isPreselected: false,
             isDisabled: false,
-            isRequired: false,
             tooltipVisible: false,
             descriptionVisible: false,
         };
@@ -68,12 +67,9 @@ export default defineComponent({
         disabled(): string {
             return this.isDisabled ? "disabled" : "";
         },
-        required(): string {
-            return this.isRequired ? "v-validation.required" : "";
-        },
         template(): string {
             return /* HTML */ `
-                <f-fieldset name="ersattning-fran-utlandet" ${this.horizontal} ${this.required}>
+                <f-fieldset name="ersattning-fran-utlandet" ${this.horizontal}>
                     <template #label> Får du ersättning från utlandet? </template>
                     ${this.tooltip} ${this.description}
                     <template #default> ${this.radioFields} </template>
@@ -107,13 +103,6 @@ export default defineComponent({
             <f-checkbox-field v-model="tooltipVisible" :value="true"> Tooltip </f-checkbox-field>
             <f-checkbox-field v-model="descriptionVisible" :value="true">
                 Hjälptext
-            </f-checkbox-field>
-        </f-fieldset>
-
-        <f-fieldset name="radio-validation">
-            <template #label> Validering </template>
-            <f-checkbox-field v-model="isRequired" :value="true">
-                Obligatoriskt val
             </f-checkbox-field>
         </f-fieldset>
     </live-example>
