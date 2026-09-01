@@ -55,11 +55,14 @@
     "test": "vitest run",
     "posttest": "npm run --if-present --workspaces test",
     "unit": "vitest run --no-coverage",
-    "test:ct": "cypress run-ct --headless",
     "version": "scripts/version",
     "postversion": "npm run build",
     "vue": "npm run --workspace packages/vue --",
-    "prepare": "commitlint-config"
+    "prepare": "commitlint-config",
+    "unit:coverage": "vitest run --coverage",
+    "cypress:coverage": "cross-env VITE_COVERAGE=true cypress run --component",
+    "coverage:merge": "node scripts/merge-coverage.mjs",
+    "run:coverage": "npm run unit:coverage && npm run cypress:coverage && npm run coverage:merge"
   },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config"
@@ -76,9 +79,17 @@
       "color-function-notation": null
     }
   },
+  "nyc": {
+    "report-dir": "coverage/cypress",
+    "reporter": [
+      "lcov",
+      "json"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "7.29.7",
     "@babel/preset-env": "7.29.7",
+    "@cypress/code-coverage": "4.0.3",
     "@fkui/cypress-split": "*",
     "@forsakringskassan/commitlint-config": "4.2.8",
     "@forsakringskassan/cypress-axe": "5.1.5",
@@ -103,11 +114,13 @@
     "@types/lodash": "4.17.25",
     "@types/node": "20.19.43",
     "@typescript/native": "npm:typescript@7.0.2",
+    "@vitest/coverage-istanbul": "4.1.11",
     "@vue/server-renderer": "3.5.42",
     "artifact-size-analyzer": "1.2.6",
     "autoprefixer": "10.5.4",
     "cli-table": "0.3.11",
     "core-js": "3.50.0",
+    "cross-env": "10.1.0",
     "cypress": "15.21.1",
     "cypress-html-validate": "9.0.0",
     "cypress-real-events": "1.15.0",
@@ -118,18 +131,23 @@
     "html-validate-markdown": "6.0.0",
     "html-validate-vue": "9.3.1",
     "is-ci": "4.1.0",
+    "istanbul-lib-coverage": "3.2.2",
+    "istanbul-lib-report": "3.0.1",
+    "istanbul-reports": "3.2.0",
     "jsdom": "30.0.1",
     "lerna": "10.0.1",
     "mocha-junit-reporter": "2.2.1",
     "mocha-multi-reporters": "1.5.1",
     "npm-pkg-lint": "5.2.4",
     "npm-run-all2": "9.0.3",
+    "nyc": "18.0.0",
     "postcss": "8.5.26",
     "rimraf": "6.1.3",
     "sass": "1.103.1",
     "typedoc": "0.28.20",
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "vite": "8.2.2",
+    "vite-plugin-istanbul": "8.0.0",
     "vitest": "4.1.11",
     "vue": "3.5.42",
     "vue-tsc": "3.3.11"

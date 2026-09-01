@@ -3,6 +3,7 @@
 import "@forsakringskassan/cypress-visual-regression/commands";
 import "@forsakringskassan/cypress-axe/support";
 import "cypress-html-validate/dist/commands";
+import "@cypress/code-coverage/support";
 import "../assertions/trimmed-text";
 import "./commands/forced-colors";
 

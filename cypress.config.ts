@@ -1,6 +1,7 @@
 import { pathToFileURL } from "node:url";
 import { styleText } from "node:util";
 import { defineConfig } from "cypress";
+import codeCoverageTask from "@cypress/code-coverage/task";
 import { init as installAxe } from "@forsakringskassan/cypress-axe/plugins";
 import getToMatchScreenshotsPlugin from "@forsakringskassan/cypress-visual-regression/plugin";
 import { type Manifest, Generator } from "@forsakringskassan/docs-generator";
@@ -31,6 +32,10 @@ function installPlugins(
     htmlvalidate.install(on, htmlValidateConfig, htmlValidateOptions);
     config = installAxe(on, config);
     config = cypressSplit(on, config);
+
+    // Register the Cypress code‑coverage task
+    config = codeCoverageTask(on, config);
+
     return config;
 }
 

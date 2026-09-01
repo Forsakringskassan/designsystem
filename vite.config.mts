@@ -1,6 +1,7 @@
 import * as path from "node:path";
 import { vuePlugin } from "@forsakringskassan/vite-lib-config/vite";
 import { defineTestConfig } from "@forsakringskassan/vitest-config";
+import istanbul from "vite-plugin-istanbul";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -23,10 +24,18 @@ export default defineConfig({
             "!packages/logo-default",
             "!packages/theme-builder",
         ],
+        // Vitest coverage options
+        coverage: {
+            provider: "istanbul",
+            include: ["**/src/**/*.ts", "**/src/**/*.vue"],
+            exclude: ["node_modules", "cypress", "**/*.cy.ts", "**/*.spec.ts"],
+            reportsDirectory: "coverage/vitest",
+            reporter: ["lcov", "json"],
+        },
     }),
 
     /**
-     * Configuration for Cypress E2E and Omponent tests.
+     * Configuration for Cypress tests.
      *
      * This configuration is only used when running component tests and not when
      * running builds, for builds see each package "vite.config.mts" file.
@@ -39,7 +48,16 @@ export default defineConfig({
         ],
         include: ["dayjs", "lodash", "vue", "vue-router"],
     },
-    plugins: [vuePlugin()],
+    plugins: [
+        vuePlugin(),
+        istanbul({
+            include: ["**/*.ts", "**/*.vue"],
+            exclude: ["node_modules", "cypress", "**/*.cy.ts", "**/*.spec.ts"],
+            extension: [".ts", ".vue"],
+            // Instrumentation should be active during Cypress component tests, VITE_COVERAGE to execute
+            requireEnv: true,
+        }),
+    ],
     resolve: {
         alias: {
             /* enable vue with runtime compiler */

@@ -6,6 +6,7 @@ node_modules/
 .eslintcache
 build/
 coverage/
+.nyc_output/
 dist/
 docs/examples/files/
 public/
