@@ -44,50 +44,50 @@ describe("FCalendar default", () => {
     it("FCalendar", () => {
         calendar.el().scrollIntoView();
         calendar.navigationBar
-            .text()
+            .title()
             .should("have.trimmedText", "Oktober 2022");
         calendar.navigationBar.nextButton().click();
         calendar.navigationBar
-            .text()
+            .title()
             .should("have.trimmedText", "November 2022");
 
         calendar.weekNumbers().eq(2).should("have.trimmedText", "46");
         calendar.headerCells().eq(0).should("have.trimmedText", "mån");
         calendar.headerCells().eq(-1).should("have.trimmedText", "sön");
         calendar.navigateTo(2022, 6);
-        calendar.navigationBar.text().should("have.trimmedText", "Juli 2022");
+        calendar.navigationBar.title().should("have.trimmedText", "Juli 2022");
         calendar.navigateTo(2022, 8);
         calendar.navigationBar
-            .text()
+            .title()
             .should("have.trimmedText", "September 2022");
 
         calendar.navigateTo(2023, 2);
-        calendar.navigationBar.text().should("have.trimmedText", "Mars 2023");
+        calendar.navigationBar.title().should("have.trimmedText", "Mars 2023");
 
         calendar.navigateTo(2024, 4);
-        calendar.navigationBar.text().should("have.trimmedText", "Maj 2024");
+        calendar.navigationBar.title().should("have.trimmedText", "Maj 2024");
 
         calendar.navigateTo(2025, 4);
-        calendar.navigationBar.text().should("have.trimmedText", "Maj 2025");
+        calendar.navigationBar.title().should("have.trimmedText", "Maj 2025");
 
         calendar.navigateTo(2026, 0);
         calendar.navigationBar
-            .text()
+            .title()
             .should("have.trimmedText", "Januari 2026");
 
         calendar.navigateTo(2025, 11);
         calendar.navigationBar
-            .text()
+            .title()
             .should("have.trimmedText", "December 2025");
 
         calendar.navigateTo(2024, 10);
         calendar.navigationBar
-            .text()
+            .title()
             .should("have.trimmedText", "November 2024");
 
         calendar.navigateTo(2023, 11);
         calendar.navigationBar
-            .text()
+            .title()
             .should("have.trimmedText", "December 2023");
 
         calendar.day(1).number().should("have.trimmedText", "1");
