@@ -44,7 +44,7 @@ export default defineComponent({
     methods: {
         async onClickItem(item: ErrorItem) {
             await this.beforeNavigate(item);
-            focusError(item);
+            focusError(item, this.$el.getRootNode() as Document | ShadowRoot);
         },
     },
 });
