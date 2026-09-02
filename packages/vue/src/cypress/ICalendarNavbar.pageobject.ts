@@ -18,7 +18,7 @@ export class ICalendarNavbarPageObject implements BasePageObject {
     }
 
     /**
-     * @deprecated Use title() instead. Deprecated since %version%.
+     * @deprecated Use title() instead. Deprecated since v6.56.0.
      */
     public text(): DefaultCypressChainable {
         return cy.get(`${this.selector} .calendar-navbar__month--title`);

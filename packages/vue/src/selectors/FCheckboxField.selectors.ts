@@ -2,7 +2,7 @@
  * Selectors for `FCheckboxField`.
  *
  * @public
- * @since %version%
+ * @since v6.56.0
  * @param selector - The selector for the FCheckboxField component.
  * @returns An object with selector methods for the FCheckboxField component.
  */
@@ -14,7 +14,7 @@ export function FCheckboxFieldSelectors(selector: string = ":scope") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.56.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -44,7 +44,7 @@ export function FCheckboxFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.56.0
          * @returns A selector for the checkbox input element.
          */
         checkbox(): string {
@@ -75,7 +75,7 @@ export function FCheckboxFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.56.0
          * @returns A selector for the label element.
          */
         label(): string {
@@ -103,7 +103,7 @@ export function FCheckboxFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.56.0
          * @returns A selector for the details element.
          */
         details(): string {
