@@ -140,11 +140,9 @@ const internalItems = computed((): T[] => {
 });
 
 const listClasses = computed(() => {
-    return [
-        {
-            "list--striped": props.striped,
-        },
-    ];
+    return {
+        "list--striped": props.striped,
+    };
 });
 
 watch(
