@@ -30,6 +30,12 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
     margin: $list-margin;
     padding-left: 0;
 
+    &--striped {
+        .list__item:nth-child(even) {
+            background: $list-row-color-background-alt;
+        }
+    }
+
     &__item:not(:last-child) {
         border-bottom: none;
     }
