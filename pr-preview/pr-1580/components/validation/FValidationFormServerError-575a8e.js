@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FValidationForm/examples/FValidationFormServerError.vue:FValidationFormServerError-575a8e.js
+// virtual-entry:virtual:packages/vue/src/components/FValidationForm/docs/FValidationFormServerError.vue:FValidationFormServerError-575a8e.js
 import { defineComponent } from "vue";
 import { ValidationService } from "@fkui/logic";
 import {
