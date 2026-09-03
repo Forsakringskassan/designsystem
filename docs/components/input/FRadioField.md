@@ -7,25 +7,26 @@ component:
     - FRadioField
 ---
 
-Använd radioknappar när användaren ska välja ett av ett fåtal fördefinierade alternativ.
-Alla alternativ visas samtidigt, vilket gör dem enkla att överblicka och jämföra.
-
 ```import live-example
 FRadioFieldLiveExample.vue
 ```
 
+Använd radioknappar när användaren ska välja endast ett alternativ från en lista med flera svarsalternativ.
+Radioknappar har en gemensam {@link FLabel etikett} som beskriver vad användaren ska ta ställning till.
+
 ## Radioknappar eller dropplista
 
-Radioknappar tar mer plats än en dropplista men låter användaren se alternativen utan att först öppna en lista.
-En {@link FSelectField dropplista} passar bättre när alternativen är många eller när antalet är dynamiskt och kan öka.
+Radioknappar tar mer plats än en dropplista eftersom alla svarsalternativ visas direkt.
+Det gör det lättare att överblicka och jämföra alternativen.
+En {@link FSelectField dropplista} passar bättre när alternativen är många eller när antalet kan variera och bli stort.
 
 ## Användning
 
 ### Placering
 
 Visa radioknappar vertikalt som standard.
-Horisontell placering kan användas när det finns två alternativ med korta texter, till exempel ja och nej.
-På mindre skärmar visas alternativen vertikalt.
+Horisontell placering kan användas när det finns två korta svarsalternativ, till exempel ja och nej.
+På mindre skärmar visas alternativen alltid vertikalt.
 
 ### Förvalt alternativ
 
@@ -84,8 +85,8 @@ Om användaren måste välja ett alternativ ska radioknappsgruppen valideras som
 Lägg `v-validation.required` på `FFieldset`.
 
 ```diff
--<f-fieldset name="ersattning-fran-utlandet">
-+<f-fieldset v-validation.required name="ersattning-fran-utlandet">
+-<f-fieldset name="arbete-annat-land">
++<f-fieldset v-validation.required name="arbete-annat-land">
 ```
 
 {@link validation Validering och felhantering}
