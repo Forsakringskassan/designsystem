@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 6.56.0 (2026-09-02)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** add prop for striped in FList (refs SFKUI-5653) f672738
+* **@fkui/vue:** add selector objects (part 2) ([#1476](undefined/Forsakringskassan/designsystem/issues/1476)) 63be7a7
+* **@fkui/vue:** add support for hiding content in cells for `FTable` per row (refs SFKUI-7876) f25938b
+* **@fkui/vue:** deprecate ICalenderNavbarPageObject.text() (refs SFKUI-8092) 3bb5dc9
+* **deps:** update dependency cssnano to v9 d9f0c4e
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** scroll to checkbox, radio input on error (fixes SFKUI-7293) bfd5852
+* **@fkui/design:** set tooltip header text color (refs SFKUI-6500) 7f2212e
+* **@fkui/vue:** provide and inject to tell fbutton when inflight is present (refs SFKUI-7684) c876b46
+* **@fkui/vue:** shadow DOM selection in form components (refs SFKUI-6500) 223313e, closes #1595
+* **deps:** update dependency cssnano to v8.0.10 66ca8a6
+* **deps:** update dependency cssnano to v8.0.9 14173e8
+* **deps:** update dependency cssnano to v9.0.1 3e79193
+* **deps:** update dependency svgo to v4.1.0 aa155a2
+* **deps:** update dependency vue-router to v5.3.0 8858f9f
+* **deps:** update vue monorepo to v3.5.42 b5be47d
+
 ## 6.55.0 (2026-08-27)
 
 ### Features

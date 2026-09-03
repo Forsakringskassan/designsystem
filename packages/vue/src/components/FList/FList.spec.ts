@@ -705,3 +705,55 @@ describe("html-validate", () => {
         `);
     });
 });
+
+describe.each([{ selectable: false }, { selectable: true }])(
+    "striped when selectable $selectable",
+    ({ selectable }) => {
+        it("should not set striped class when striped is not set", () => {
+            expect.assertions(1);
+            const wrapper = mount(FList, {
+                props: {
+                    items,
+                    selectable,
+                },
+                slots: {
+                    screenreader: "",
+                },
+            });
+            const list = wrapper.find("ul");
+            expect(list.classes()).not.contain("list--striped");
+        });
+
+        it("should set striped class when striped is set to false", () => {
+            expect.assertions(1);
+            const wrapper = mount(FList, {
+                props: {
+                    items,
+                    selectable,
+                    striped: false,
+                },
+                slots: {
+                    screenreader: "",
+                },
+            });
+            const list = wrapper.find("ul");
+            expect(list.classes()).not.contain("list--striped");
+        });
+
+        it("should set striped class when striped is set to true", () => {
+            expect.assertions(1);
+            const wrapper = mount(FList, {
+                props: {
+                    items,
+                    selectable,
+                    striped: true,
+                },
+                slots: {
+                    screenreader: "",
+                },
+            });
+            const list = wrapper.find("ul");
+            expect(list.classes()).contain("list--striped");
+        });
+    },
+);

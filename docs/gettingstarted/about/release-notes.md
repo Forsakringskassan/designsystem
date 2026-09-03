@@ -9,6 +9,18 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version v6.56.0
+
+2026-09-02
+
+### Bidrag från Bolagsverket!
+
+Bolagsverket använder Försäkringskassans designsystem och har nu bidragit för att få ett ännu bättre designsystem. De har förbättrat formulärvalideringen i Shadow DOM som inte fungerade som förväntat, läs mer om {@link FValidationForm Valideringsformulär}.
+
+En fix för `FButton` är också värd att nämna. När `FButton` används tillsammans med `FValidationForm` så kommer den vid submit automatiskt in i asynkront läge.
+
+Övriga rättningar och förbättringar i releasen, se {@link changelog Changelog}.
+
 ## Version v6.55.0
 
 2026-08-27

@@ -27,7 +27,7 @@ jobs:
                   npm ci
                   npm install --no-save \
                       @forsakringskassan/semantic-release-common@3 \
-                      conventional-changelog-conventionalcommits@8
+                      conventional-changelog-conventionalcommits@10
             - name: Pull Requst Changelog
               uses: ext/pull-request-changelog@adb1008685e3c7c3e22f4f799849d40969cc75c9 # v1
               with:
