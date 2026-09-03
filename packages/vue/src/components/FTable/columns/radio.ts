@@ -12,7 +12,7 @@ import { getLabelFn, getUpdateFn, getValueFn } from "./helpers";
 export interface TableColumnRadio<
     T,
     K extends keyof T,
-> extends TableColumnBase {
+> extends TableColumnBase<T> {
     type: "radio";
     key?: K;
     label?(this: void, row: T): string;
@@ -26,7 +26,7 @@ export interface TableColumnRadio<
 export interface NormalizedTableColumnRadio<
     T,
     K,
-> extends NormalizedTableColumnBase<K> {
+> extends NormalizedTableColumnBase<T, K> {
     readonly type: "radio";
     readonly component: Component<{
         row: T;

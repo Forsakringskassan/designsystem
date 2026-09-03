@@ -51,7 +51,7 @@ export class FDatepickerFieldPageobject implements BasePageObject {
     }
 
     public calendarCaption(): DefaultCypressChainable {
-        return this.calendarNavbar.text();
+        return this.calendarNavbar.title();
     }
 
     /**

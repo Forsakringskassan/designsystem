@@ -37,12 +37,12 @@ export class CalendarPageObject implements BasePageObject {
     }
 
     /**
-     * Get the caption text.
+     * Get the caption title.
      *
      * @internal
      */
     public calendarCaption(): DefaultCypressChainable {
-        return this.navigationBar.text();
+        return this.navigationBar.title();
     }
 
     /**
@@ -86,7 +86,7 @@ export class CalendarPageObject implements BasePageObject {
      */
     public navigateTo(targetYear: number, targetMonth: number): void {
         cy.log(`Navigate to ${monthList[targetMonth]} ${String(targetYear)}`);
-        this.navigationBar.text().then((el) => {
+        this.navigationBar.title().then((el) => {
             let currYear = 2023;
             let currentMonth = 0;
             el.text().replace(

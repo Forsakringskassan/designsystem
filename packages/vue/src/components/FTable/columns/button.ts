@@ -12,11 +12,11 @@ import { getValueFn } from "./helpers";
 export interface TableColumnButton<
     T,
     K extends keyof T,
-> extends TableColumnBase {
+> extends TableColumnBase<T> {
     /** Column type */
     type: "button";
     key?: K;
-    /** Button text */
+    /** Screenreader text  */
     text(this: void, row: T): string | null;
     /** Callback when button is clicked */
     onClick?(this: void, row: T): void;
@@ -34,7 +34,7 @@ export interface TableColumnButton<
 export interface NormalizedTableColumnButton<
     T,
     K,
-> extends NormalizedTableColumnBase<K> {
+> extends NormalizedTableColumnBase<T, K> {
     readonly type: "button";
     readonly icon: string | null;
     readonly iconLibrary: string | undefined;

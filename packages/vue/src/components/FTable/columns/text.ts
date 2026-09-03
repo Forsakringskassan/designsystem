@@ -16,7 +16,10 @@ import {
 /**
  * @public
  */
-export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
+export interface TableColumnText<
+    T,
+    K extends keyof T,
+> extends TableColumnBase<T> {
     /**
      * Column type (`text` or a specialized field such as `text:date` or
      * `text:number`)
@@ -51,7 +54,7 @@ export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
 export interface NormalizedTableColumnText<
     T,
     K,
-> extends NormalizedTableColumnBase<K> {
+> extends NormalizedTableColumnBase<T, K> {
     readonly type: InputTypeText;
     readonly validation: ValidatorConfigs;
     readonly hasValidation: boolean;

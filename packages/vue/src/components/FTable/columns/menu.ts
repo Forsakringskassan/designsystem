@@ -9,7 +9,7 @@ import { getValueFn } from "./helpers";
 /**
  * @public
  */
-export interface TableColumnMenu<T> extends TableColumnBase {
+export interface TableColumnMenu<T> extends TableColumnBase<T> {
     /** Column type */
     type: "menu";
     /** Screenreader text */
@@ -76,9 +76,10 @@ export type NormalizedTableColumnMenuActions<T> =
 /**
  * @internal
  */
-export interface NormalizedTableColumnMenu<
+export interface NormalizedTableColumnMenu<T> extends NormalizedTableColumnBase<
     T,
-> extends NormalizedTableColumnBase<never> {
+    never
+> {
     readonly type: "menu";
     readonly icon: string;
     readonly iconLibrary: string | undefined;

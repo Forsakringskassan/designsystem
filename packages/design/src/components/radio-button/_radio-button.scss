@@ -1,13 +1,13 @@
 @use "../../core";
 @use "../../core/size";
 @use "../../core/mixins/focus" as *;
-@use "../../core/mixins/sr-only" as *;
 @use "../../core/utils/functions" as *;
 @use "variables" as *;
 
 $radio_button_label_offset: 0.1rem;
 
 .radio-button {
+    display: flex;
     min-height: var(--f-height-medium);
     margin-bottom: core.densify(size.$margin-100);
     margin-right: size.$margin-150;
@@ -18,12 +18,9 @@ $radio_button_label_offset: 0.1rem;
     }
 
     &__input {
-        @include sr-only;
-
-        // Set height so that IE11 will scroll element into view when navigating (tab, arrow).
-        // Use 4 times the height of radio-button to ensure it is inside the view.
-        // This height will not be visible.
-        min-height: calc(4 * var(--f-height-medium));
+        appearance: none;
+        outline: none;
+        border: none;
     }
 
     &__label {

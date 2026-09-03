@@ -17,14 +17,15 @@ const datepickerField = new FDatepickerFieldPageobject(".datepicker-field");
 const alertScreenReader = new AlertScreenReaderPageObject();
 
 const VIEWPORT = {
-    DESKTOP: { width: 1024, height: 600 }, // enough height to avoid scroll
-    MOBILE: { width: 639, height: 600 },
+    DESKTOP: { width: 800, height: 600 }, // show weeknumbers
+    MOBILE: { width: 320, height: 600 },
     SHORT: { width: 1024, height: 300 }, // low enough height to result in no valid popup candidate
+    SMALL: { width: 200, height: 100 }, // small screenshot
 };
 
-const baseDelay = 400;
 const today = new Date(2022, 11, 24);
 
+const forcedColorModes = ["none", "dark", "light"] as const;
 function setDate(date: Date): void {
     cy.clock(date, ["Date"]);
 }
@@ -33,19 +34,15 @@ function setViewport(viewPort: { height: number; width: number }): void {
     cy.viewport(viewPort.width, viewPort.height);
 }
 
-function shouldMatchScreenshot(): void {
-    cy.toMatchScreenshot({ baseDelay });
-}
-
 describe("pristine", () => {
     beforeEach(() => {
         setDate(today);
-        setViewport(VIEWPORT.MOBILE);
         cy.mount(FDatepickerField);
     });
 
     it("should have approved design", () => {
-        shouldMatchScreenshot();
+        setViewport(VIEWPORT.SMALL);
+        cy.toMatchScreenshot();
     });
 
     it("should set calendar button sr-text", () => {
@@ -64,14 +61,14 @@ describe("pristine", () => {
 describe("enter a valid date and leave textfield", () => {
     beforeEach(() => {
         setDate(today);
-        setViewport(VIEWPORT.MOBILE);
         cy.mount(FDatepickerField);
         datepickerField.input().type("2022-03-01");
         datepickerField.input().blur();
     });
 
     it("should have approved design", () => {
-        shouldMatchScreenshot();
+        setViewport(VIEWPORT.SMALL);
+        cy.toMatchScreenshot();
     });
 
     it("should show no error message", () => {
@@ -88,14 +85,15 @@ describe("enter a valid date and leave textfield", () => {
 describe("enter an invalid date and leave textfield", () => {
     beforeEach(() => {
         setDate(today);
-        setViewport(VIEWPORT.MOBILE);
+        cy.viewport(300, 130);
+
         cy.mount(FDatepickerField);
         datepickerField.input().type("asdf");
         datepickerField.input().blur();
     });
 
     it("should have approved design", () => {
-        shouldMatchScreenshot();
+        cy.toMatchScreenshot();
     });
 
     it("should show error message", () => {
@@ -112,7 +110,6 @@ describe("enter an invalid date and leave textfield", () => {
 describe("enter an invalid date format and leave textfield", () => {
     beforeEach(() => {
         setDate(today);
-        setViewport(VIEWPORT.MOBILE);
         cy.mount(FDatepickerField);
         datepickerField.input().type("2022-02-31");
         datepickerField.input().blur();
@@ -132,7 +129,6 @@ describe("enter an invalid date format and leave textfield", () => {
 describe("enter default mindate", () => {
     it("should not show error message", () => {
         setDate(today);
-        setViewport(VIEWPORT.MOBILE);
         cy.mount(FDatepickerField);
         datepickerField.input().type("2012-12-24");
         datepickerField.input().blur();
@@ -143,7 +139,6 @@ describe("enter default mindate", () => {
 describe("enter day before default mindate", () => {
     it("should show error message", () => {
         setDate(today);
-        setViewport(VIEWPORT.MOBILE);
         cy.mount(FDatepickerField);
         datepickerField.input().type("2012-12-23");
         datepickerField.input().blur();
@@ -154,7 +149,6 @@ describe("enter day before default mindate", () => {
 describe("enter default maxdate", () => {
     it("should not show error message", () => {
         setDate(today);
-        setViewport(VIEWPORT.MOBILE);
         cy.mount(FDatepickerField);
         datepickerField.input().type("2032-12-24");
         datepickerField.input().blur();
@@ -165,7 +159,6 @@ describe("enter default maxdate", () => {
 describe("enter day after default maxdate", () => {
     it("should show error message", () => {
         setDate(today);
-        setViewport(VIEWPORT.MOBILE);
         cy.mount(FDatepickerField);
         datepickerField.input().type("2032-12-25");
         datepickerField.input().blur();
@@ -237,7 +230,7 @@ describe("open calendar", () => {
 describe("open calendar with year selector enabled", () => {
     beforeEach(() => {
         setDate(today);
-        setViewport(VIEWPORT.MOBILE);
+
         cy.mount(FDatepickerField, {
             props: {
                 yearSelector: true,
@@ -288,22 +281,35 @@ describe("open calendar with year selector enabled", () => {
         datepickerField.input().should("have.value", "2013-10-10");
     });
 
-    /* eslint-disable-next-line mocha/no-pending-tests -- temporary to get builds running */
-    it.skip("should have approved design", () => {
-        shouldMatchScreenshot();
+    afterEach(() => {
+        cy.forcedColors("none");
     });
+
+    for (const mode of Object.values(forcedColorModes)) {
+        it(`should have approved design, ${mode} (visual)`, () => {
+            cy.viewport(500, 600);
+            cy.forcedColors(mode);
+            datepickerField.input().type("2020-10-31");
+            datepickerField.input().blur();
+            datepickerField.toggleCalendarButton().click();
+            datepickerField.calendarCaption().should("have.focus");
+            cy.realPress("Tab");
+
+            cy.toMatchScreenshot();
+        });
+    }
 });
 
 describe("open calendar with year selector enabled and open", () => {
     beforeEach(() => {
         setDate(today);
-        setViewport(VIEWPORT.MOBILE);
         cy.mount(FDatepickerField, {
             props: {
                 yearSelector: true,
             },
         });
         datepickerField.toggleCalendarButton().click();
+        datepickerField.calendarCaption().should("have.focus");
         datepickerField.navYearSelectorButton().click();
         datepickerField.yearSelector().should("exist");
     });
@@ -429,22 +435,25 @@ describe("open calendar with year selector enabled and open", () => {
         datepickerField.yearSelector().should("not.exist");
     });
 
-    /* eslint-disable-next-line mocha/no-pending-tests -- temporary to get builds running */
-    it.skip("should have approved design", () => {
-        shouldMatchScreenshot();
+    it("should have approved design", () => {
+        cy.viewport(400, 600);
+        cy.realPress(["Shift", "Tab"]);
+        cy.toMatchScreenshot();
     });
 });
 
 describe("open calendar in desktop", () => {
     beforeEach(() => {
         setDate(today);
+        // Inline mode for >640px screens
         setViewport(VIEWPORT.DESKTOP);
+
         cy.mount(FDatepickerField);
         datepickerField.toggleCalendarButton().click();
     });
 
     it("should not show calendar inline", () => {
-        shouldMatchScreenshot();
+        cy.toMatchScreenshot();
     });
 });
 
@@ -591,7 +600,7 @@ describe("open calendar and press ESC", () => {
 
 describe("open calendar with width 320px", () => {
     it("should not show week numbers", () => {
-        cy.viewport(339, 639);
+        setViewport(VIEWPORT.MOBILE);
 
         const template = /* HTML */ `
             <div style="display: flex">
@@ -611,7 +620,7 @@ describe("open calendar with width 320px", () => {
         );
 
         datepickerField.toggleCalendarButton().click();
-        shouldMatchScreenshot();
+        cy.toMatchScreenshot();
     });
 });
 
@@ -778,7 +787,7 @@ describe("valid date", () => {
         });
 
         it("should have approved design", () => {
-            shouldMatchScreenshot();
+            cy.toMatchScreenshot();
         });
 
         it("should show belonging month and indicate day is selected", () => {
@@ -828,7 +837,7 @@ describe("today's date", () => {
         });
 
         it("should have approved design", () => {
-            shouldMatchScreenshot();
+            cy.toMatchScreenshot();
         });
 
         it("should set selected today's day sr-text", () => {
@@ -937,7 +946,7 @@ describe("open calendar in desktop with always inline", () => {
     });
 
     it("should show calendar inline", () => {
-        shouldMatchScreenshot();
+        cy.toMatchScreenshot();
     });
 });
 
@@ -1060,7 +1069,7 @@ describe("mindate within month", () => {
         `;
 
         setDate(today);
-        setViewport(VIEWPORT.MOBILE);
+        setViewport(VIEWPORT.DESKTOP);
         cy.mount(
             defineComponent({
                 template,
@@ -1072,7 +1081,7 @@ describe("mindate within month", () => {
     describe("open calendar", () => {
         it("should have approved design", () => {
             datepickerField.toggleCalendarButton().click();
-            shouldMatchScreenshot();
+            cy.toMatchScreenshot();
         });
 
         it("should set corresponding days to disabled", () => {
@@ -1166,7 +1175,7 @@ describe("maxdate within month", () => {
         `;
 
         setDate(today);
-        setViewport(VIEWPORT.MOBILE);
+        setViewport(VIEWPORT.DESKTOP);
         cy.mount(
             defineComponent({
                 template,
@@ -1178,7 +1187,7 @@ describe("maxdate within month", () => {
     describe("open calendar", () => {
         it("should have approved design", () => {
             datepickerField.toggleCalendarButton().click();
-            shouldMatchScreenshot();
+            cy.toMatchScreenshot();
         });
 
         it("should set corresponding days to disabled", () => {
@@ -1277,7 +1286,7 @@ describe("min- and maxdate within month", () => {
     describe("open calendar", () => {
         it("should have approved design", () => {
             datepickerField.toggleCalendarButton().click();
-            shouldMatchScreenshot();
+            cy.toMatchScreenshot();
         });
     });
 });
@@ -1333,8 +1342,9 @@ describe("density", () => {
 });
 
 describe("Visual", () => {
-    const forcedColorModes = ["none", "dark", "light"] as const;
-
+    afterEach(() => {
+        cy.forcedColors("none");
+    });
     for (const mode of forcedColorModes) {
         it(`should render correct styling for forced color mode '${mode}'`, () => {
             cy.viewport(300, 200);

@@ -1461,7 +1461,7 @@ export type StepNumber = number;
 export type TableColumn<T, K extends keyof T = keyof T> = TableColumnSimple<T, K> | TableColumnCheckbox<T, K> | TableColumnRowHeader<T, K> | TableColumnText<T, K> | TableColumnNumber<T, K> | TableColumnAnchor<T, K> | TableColumnButton<T, K> | TableColumnRender<T, K> | TableColumnSelect<T, K> | TableColumnMenu<T>;
 
 // @public (undocumented)
-export interface TableColumnAnchor<T, K extends keyof T> extends TableColumnBase {
+export interface TableColumnAnchor<T, K extends keyof T> extends TableColumnBase<T> {
     href: string | ((this: void, row: T) => string);
     // (undocumented)
     key?: K;
@@ -1470,17 +1470,18 @@ export interface TableColumnAnchor<T, K extends keyof T> extends TableColumnBase
 }
 
 // @public
-export interface TableColumnBase {
+export interface TableColumnBase<T> {
     description?: string | Readonly<Ref<string | null>>;
     enabled?: MaybeRef<boolean>;
     header: string | Readonly<Ref<string>>;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
     // (undocumented)
     sort?: boolean;
+    visible?: (this: void, row: T) => boolean;
 }
 
 // @public (undocumented)
-export interface TableColumnButton<T, K extends keyof T> extends TableColumnBase {
+export interface TableColumnButton<T, K extends keyof T> extends TableColumnBase<T> {
     icon?: string;
     iconLibrary?: string;
     // (undocumented)
@@ -1491,7 +1492,7 @@ export interface TableColumnButton<T, K extends keyof T> extends TableColumnBase
 }
 
 // @public (undocumented)
-export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBase {
+export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBase<T> {
     // (undocumented)
     checked?(this: void, row: T): boolean;
     // (undocumented)
@@ -1503,7 +1504,7 @@ export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBa
 }
 
 // @public (undocumented)
-export interface TableColumnMenu<T> extends TableColumnBase {
+export interface TableColumnMenu<T> extends TableColumnBase<T> {
     actions?: TableColumnMenuActions<T>;
     icon?: string;
     iconLibrary?: string;
@@ -1525,7 +1526,7 @@ export type TableColumnMenuActionLabel<T> = string | ((this: void, row: T) => st
 export type TableColumnMenuActions<T> = Array<TableColumnMenuAction<T>> | ((this: void, row: T) => Array<TableColumnMenuAction<T>>);
 
 // @public (undocumented)
-export interface TableColumnNumber<T, K extends keyof T> extends TableColumnBase {
+export interface TableColumnNumber<T, K extends keyof T> extends TableColumnBase<T> {
     // (undocumented)
     align?: "left" | "right";
     // (undocumented)
@@ -1555,14 +1556,14 @@ export interface TableColumnNumber<T, K extends keyof T> extends TableColumnBase
 }
 
 // @public (undocumented)
-export interface TableColumnRender<T, K extends keyof T = keyof T> extends TableColumnBase {
+export interface TableColumnRender<T, K extends keyof T = keyof T> extends TableColumnBase<T> {
     // (undocumented)
     key?: K;
     render(this: void, row: T): VNode | Component;
 }
 
 // @public (undocumented)
-export interface TableColumnRowHeader<T, K extends keyof T> extends TableColumnBase {
+export interface TableColumnRowHeader<T, K extends keyof T> extends TableColumnBase<T> {
     // (undocumented)
     key?: K;
     text?(this: void, row: T): string;
@@ -1570,7 +1571,7 @@ export interface TableColumnRowHeader<T, K extends keyof T> extends TableColumnB
 }
 
 // @public (undocumented)
-export interface TableColumnSelect<T, K extends keyof T> extends TableColumnBase {
+export interface TableColumnSelect<T, K extends keyof T> extends TableColumnBase<T> {
     editable?: boolean | ((this: void, row: T) => boolean);
     // (undocumented)
     key?: K;
@@ -1584,7 +1585,7 @@ export interface TableColumnSelect<T, K extends keyof T> extends TableColumnBase
 }
 
 // @public (undocumented)
-export interface TableColumnSimple<T, K extends keyof T> extends TableColumnBase {
+export interface TableColumnSimple<T, K extends keyof T> extends TableColumnBase<T> {
     // (undocumented)
     key?: K;
     // (undocumented)
@@ -1599,7 +1600,7 @@ export interface TableColumnSimple<T, K extends keyof T> extends TableColumnBase
 export type TableColumnSize = "grow" | "shrink";
 
 // @public (undocumented)
-export interface TableColumnText<T, K extends keyof T> extends TableColumnBase {
+export interface TableColumnText<T, K extends keyof T> extends TableColumnBase<T> {
     align?: "left" | "right";
     attributes?: Record<string, string | number | boolean | undefined> | ((this: void, row: T) => Record<string, string | number | boolean | undefined>);
     editable?: boolean | ((this: void, row: T) => boolean);

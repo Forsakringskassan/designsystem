@@ -4,6 +4,7 @@ import { type ContextMenuItem, FContextMenu } from "../FContextMenu";
 import { FIcon } from "../FIcon";
 import { type TableColumnMenuActionLabel } from "./columns/menu";
 import { type FTableCellApi } from "./f-table-api";
+import { isVisible } from "./is-visible";
 import { type NormalizedTableColumnMenu } from "./table-column";
 
 const { column, row } = defineProps<{
@@ -34,6 +35,8 @@ const menuitems = computed((): ContextMenuItem[] => {
         return { label: it.label, icon: it.icon ?? undefined, key: it.key };
     });
 });
+
+const visible = computed((): boolean => isVisible(column.visible, row));
 
 function onToggle(event: MouseEvent): void {
     /* prevent FTable from activating the cell (which moves the focus back to
@@ -67,17 +70,19 @@ defineExpose(expose);
 
 <template>
     <td class="table-ng__cell table-ng__cell--button" :class="{ 'table-ng__cell--menu-open': isOpen }">
-        <button ref="button" class="icon-button" type="button" tabindex="-1" aria-haspopup="menu" @click="onToggle">
-            <f-icon :library="column.iconLibrary" :name="column.icon"></f-icon>
-            <span class="sr-only">{{ column.text(row) }}</span>
-        </button>
-        <f-context-menu
-            :is-open
-            :items="menuitems"
-            :anchor="buttonRef ?? undefined"
-            @close="onClose"
-            @select="onSelect"
-            @focusout="onFocusout"
-        ></f-context-menu>
+        <template v-if="visible">
+            <button ref="button" class="icon-button" type="button" tabindex="-1" aria-haspopup="menu" @click="onToggle">
+                <f-icon :library="column.iconLibrary" :name="column.icon"></f-icon>
+                <span class="sr-only">{{ column.text(row) }}</span>
+            </button>
+            <f-context-menu
+                :is-open
+                :items="menuitems"
+                :anchor="buttonRef ?? undefined"
+                @close="onClose"
+                @select="onSelect"
+                @focusout="onFocusout"
+            ></f-context-menu>
+        </template>
     </td>
 </template>

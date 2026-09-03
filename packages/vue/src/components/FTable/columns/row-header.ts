@@ -12,7 +12,7 @@ import { getValueFn } from "./helpers";
 export interface TableColumnRowHeader<
     T,
     K extends keyof T,
-> extends TableColumnBase {
+> extends TableColumnBase<T> {
     /** Column type */
     type: "rowheader";
     key?: K;
@@ -26,7 +26,7 @@ export interface TableColumnRowHeader<
 export interface NormalizedTableColumnRowHeader<
     T,
     K,
-> extends NormalizedTableColumnBase<K> {
+> extends NormalizedTableColumnBase<T, K> {
     readonly type: "rowheader";
     readonly component: Component<{
         row: T;

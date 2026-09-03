@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { useTemplateRef } from "vue";
+import { computed, useTemplateRef } from "vue";
 import { type FTableCellApi } from "./f-table-api";
+import { isVisible } from "./is-visible";
 import { type NormalizedTableColumnAnchor } from "./table-column";
 
 const { column, row } = defineProps<{
@@ -10,13 +11,22 @@ const { column, row } = defineProps<{
 
 const targetElement = useTemplateRef("target");
 
+const visible = computed((): boolean => isVisible(column.visible, row));
+
 const expose: FTableCellApi = { tabstopEl: targetElement };
 defineExpose(expose);
 </script>
 
 <template>
     <td v-if="column.text(row)" class="table-ng__cell table-ng__cell--anchor" @keydown.space.prevent>
-        <a ref="target" class="anchor anchor--block" target="_blank" :href="column.href(row)" tabindex="-1">
+        <a
+            v-if="visible"
+            ref="target"
+            class="anchor anchor--block"
+            target="_blank"
+            :href="column.href(row)"
+            tabindex="-1"
+        >
             {{ column.text(row) }}
         </a>
     </td>

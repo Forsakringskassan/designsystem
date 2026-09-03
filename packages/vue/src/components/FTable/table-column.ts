@@ -146,7 +146,7 @@ export function normalizeTableColumn<T, K extends keyof T = keyof T>(
 export function normalizeTableColumn<T, K extends keyof T = keyof T>(
     column: TableColumn<T, K>,
 ): NormalizedTableColumn<T, K> {
-    const base = normalizeBaseColumn(column);
+    const base = normalizeBaseColumn<T>(column);
     if ("render" in column) {
         return Object.freeze({
             ...normalizeRenderColumn(column),
