@@ -36,7 +36,7 @@ const columns = defineTableColumns<Row>([
 
 ## Bra att veta
 
-- `text(row)` styr knappens text eller skärmläsartext.
+- `text(row)` styr knappens skärmläsartext.
 - `onClick(row)` kör åtgärden för raden.
 - `icon` och `iconLibrary` är valfria.
 

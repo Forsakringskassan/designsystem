@@ -16,7 +16,7 @@ export interface TableColumnButton<
     /** Column type */
     type: "button";
     key?: K;
-    /** Button text */
+    /** Screenreader text  */
     text(this: void, row: T): string | null;
     /** Callback when button is clicked */
     onClick?(this: void, row: T): void;
