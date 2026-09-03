@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-c37aae.json"
+    href="../../../search-data-14283a.json"
     as="fetch"
     crossorigin
-    integrity="sha384-QBwbVISJohGtURvVjDhA2ykyWHMB5vBx67RJCbIMoT/25/TLKWm6pQ99bsHrp/lz"
+    integrity="sha384-wgqWL4QslvHvE5e87bXS7md65TYeLlOLoJDNSJHzwSMGO1tyLaF5dHVX+5keH19/"
     id="search-data"
 />
 <script>
@@ -1735,13 +1735,13 @@ interface <span class="hljs-title class_">Row</span> {
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-8ec996"></div>
+        <div id="example-e56111"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableCrudEdit-8ec996.js"></script>
+        <script type="module" src="./FTableCrudEdit-e56111.js"></script>
     
                 </div>
                 <div>
@@ -1769,7 +1769,6 @@ interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-title class_">FCurrencyTextField</span>,
     <span class="hljs-title class_">FSelectField</span>,
     <span class="hljs-title class_">FTable</span>,
-    <span class="hljs-title class_">FTextField</span>,
     defineTableColumns,
     useDatasetRef,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
@@ -1793,46 +1792,57 @@ interface <span class="hljs-title class_">Row</span> {
     <span class="hljs-string">&quot;Sydafrika&quot;</span>,
 ];
 
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">getColumns</span>(<span class="hljs-params">
-    updateItem: (item: Row) =&gt; <span class="hljs-keyword">void</span>,
-    deleteItem: (item: Row) =&gt; <span class="hljs-keyword">void</span>,
-</span>): <span class="hljs-title class_">Array</span>&lt;<span class="hljs-title class_">TableColumn</span>&lt;<span class="hljs-title class_">Row</span>&gt;&gt; {
-    <span class="hljs-keyword">return</span> defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
-        {
-            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-            <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
-            <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;namn&quot;</span>,
+type <span class="hljs-title class_">CrudAction</span> = <span class="hljs-function">(<span class="hljs-params">item: Row</span>) =&gt;</span> <span class="hljs-keyword">void</span>;
+
+<span class="hljs-keyword">let</span> updateItemCallback!: <span class="hljs-title class_">CrudAction</span>;
+<span class="hljs-keyword">let</span> deleteItemCallback!: <span class="hljs-title class_">CrudAction</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">columns</span>: <span class="hljs-title class_">Array</span>&lt;<span class="hljs-title class_">TableColumn</span>&lt;<span class="hljs-title class_">Row</span>&gt;&gt; = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;namn&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;menu&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärder&quot;</span>,
+        <span class="hljs-title function_">text</span>(<span class="hljs-params">row</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">`Visa åtgärder för <span class="hljs-subst">${row.namn}</span>`</span>;
         },
-        {
-            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
-            <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
-            <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
-        },
-        {
-            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
-            <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
-            <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
-        },
-        {
-            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;menu&quot;</span>,
-            <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärder&quot;</span>,
-            <span class="hljs-title function_">text</span>(<span class="hljs-params">row</span>) {
-                <span class="hljs-keyword">return</span> <span class="hljs-string">`Visa åtgärder för <span class="hljs-subst">${row.namn}</span>`</span>;
+        <span class="hljs-attr">actions</span>: [
+            {
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ändra&quot;</span>,
+                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;pen&quot;</span>,
+                <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
+                    <span class="hljs-title function_">updateItemCallback</span>(row);
+                },
             },
-            <span class="hljs-attr">actions</span>: [
-                {
-                    <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ändra&quot;</span>,
-                    <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;pen&quot;</span>,
-                    <span class="hljs-attr">onClick</span>: updateItem,
+            {
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ta bort&quot;</span>,
+                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
+                <span class="hljs-title function_">onClick</span>(<span class="hljs-params">row</span>) {
+                    <span class="hljs-title function_">deleteItemCallback</span>(row);
                 },
-                {
-                    <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ta bort&quot;</span>,
-                    <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
-                    <span class="hljs-attr">onClick</span>: deleteItem,
-                },
-            ],
-        },
-    ]);
+            },
+        ],
+    },
+]);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">getColumns</span>(<span class="hljs-params">updateItem: CrudAction, deleteItem: CrudAction</span>): <span class="hljs-title class_">Array</span>&lt;<span class="hljs-title class_">TableColumn</span>&lt;<span class="hljs-title class_">Row</span>&gt;&gt; {
+    updateItemCallback = updateItem;
+    deleteItemCallback = deleteItem;
+
+    <span class="hljs-keyword">return</span> columns;
 }
 
 <span class="hljs-keyword">const</span> rows = useDatasetRef&lt;<span class="hljs-title class_">Row</span>&gt;([
@@ -1843,7 +1853,7 @@ interface <span class="hljs-title class_">Row</span> {
     },
     {
         <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Banan&quot;</span>,
-        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Equador&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Ecuador&quot;</span>,
         <span class="hljs-attr">pris</span>: <span class="hljs-number">15</span>,
     },
     {
@@ -1931,9 +1941,9 @@ Samma sak gäller även för redigerbar tabell och användare med skärmläsarve
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/42feacfcbd2b04190ce93ade4e91d0ed0123c08f">42feacf</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/3f7a49de0659f201a57325f802df55621ac54e25">3f7a49d</a>)<br />
         
-        2026-09-03 11:48
+        2026-09-03 14:01
 </div>
 <div class="toolbar__item">
     <form id="version">
