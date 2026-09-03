@@ -3026,14 +3026,12 @@ var IFlexItem_default2 = IFlexItem_default;
 
 // packages/vue/src/components/FErrorList/focus-error.ts
 import { focus as focus3, scrollTo } from "@fkui/logic";
-function focusError(item) {
-  const element = document.querySelector(`#${String(item.id)}`);
+function focusError(item, root) {
+  const element = root.querySelector(`#${String(item.id)}`);
   if (!element) {
     throw new Error(`Can not find element with id "${String(item.id)}"`);
   }
-  const focusElement3 = document.querySelector(
-    `#${String(item.focusElementId)}`
-  );
+  const focusElement3 = root.querySelector(`#${String(item.focusElementId)}`);
   scrollTo(element, window.innerHeight * 0.25);
   focus3(focusElement3 ?? element);
 }
@@ -3073,7 +3071,7 @@ var FErrorList_default = defineComponent8({
   methods: {
     async onClickItem(item) {
       await this.beforeNavigate(item);
-      focusError(item);
+      focusError(item, this.$el.getRootNode());
     }
   }
 });
@@ -3434,8 +3432,8 @@ var FValidationForm_default = defineComponent10({
   },
   methods: {
     async hasFormErrors() {
-      ValidationService2.setSubmitted(this.id);
-      await ValidationService2.validateAllElements(this.id);
+      ValidationService2.setSubmitted(this.$el);
+      await ValidationService2.validateAllElements(this.$el);
       await this.$nextTick();
       await new Promise((resolve) => window.setTimeout(resolve, 0));
       if (this.validity.isValid) {
@@ -3445,7 +3443,7 @@ var FValidationForm_default = defineComponent10({
         focus4(this.$refs.errors);
       } else {
         const firstError = this.validity.componentsWithError[0];
-        const element = document.querySelector(`#${firstError.focusElementId}`);
+        const element = this.$el.querySelector(`#${firstError.focusElementId}`);
         focus4(element);
       }
       return true;
