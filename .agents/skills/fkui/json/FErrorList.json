@@ -1,0 +1,34 @@
+{
+    "name": "FErrorList",
+    "slug": "ferrorlist",
+    "models": [],
+    "props": [
+        {
+            "name": "items",
+            "description": "List of errors of type `ErrorItem`.\nIf element id is unspecified, no link will be rendered.\nIf element with id don't exist on navigation, an exception is thrown.",
+            "type": "ErrorItem[]",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "beforeNavigate",
+            "description": "Optional callback for performing actions before navigation.",
+            "type": "BeforeNavigate",
+            "required": false,
+            "default": {
+                "value": "function() {\r\n    return noop;\r\n}"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "title",
+            "description": "Optional title shown above the errorlist. No icon is shown if no title is set",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "name": "FProgressbar",
+    "slug": "fprogressbar",
+    "models": [],
+    "props": [
+        {
+            "name": "value",
+            "description": "Sets the progress. Higher value indicates further progress.\n\nValue must be in range 0-100.",
+            "type": "number",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "valueText",
+            "description": "Text that the screenreader will read.\n\n`%VALUE%` can be used as a placeholder for the actual value e.g\n`\"You have uploaded %VALUE% percent\"`.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"Du har slutfört %VALUE% %.\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "aria-label",
+            "description": "Accessible name for this progressbar. Should describe the purpose of this\nprogressbar.",
+            "type": "string",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": []
+}
