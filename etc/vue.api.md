@@ -1506,6 +1506,8 @@ export interface TableColumnCheckbox<T, K extends keyof T> extends TableColumnBa
 // @public (undocumented)
 export interface TableColumnMenu<T> extends TableColumnBase<T> {
     actions?: TableColumnMenuActions<T>;
+    icon?: string;
+    iconLibrary?: string;
     text(this: void, row: T): string | null;
     type: "menu";
 }
