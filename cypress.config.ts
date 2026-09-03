@@ -1,106 +1,47 @@
-import { pathToFileURL } from "node:url";
 import { styleText } from "node:util";
-import { defineConfig } from "cypress";
-import { init as installAxe } from "@forsakringskassan/cypress-axe/plugins";
+import {
+    axePlugin,
+    defineConfig,
+    docsGeneratorPlugin,
+    htmlValidatePlugin,
+} from "@forsakringskassan/cypress-config";
 import getToMatchScreenshotsPlugin from "@forsakringskassan/cypress-visual-regression/plugin";
-import { type Manifest, Generator } from "@forsakringskassan/docs-generator";
-import htmlvalidate, {
-    CypressHtmlValidateOptions,
-} from "cypress-html-validate/plugin";
-import { type ConfigData } from "html-validate";
+import { Generator } from "@forsakringskassan/docs-generator";
 import config from "./docs.config";
-import exclude from "./packages/vue/htmlvalidate/cypress";
 import cypressSplit from "@fkui/cypress-split";
 
-async function getDocsPages(): Promise<Manifest["pages"]> {
-    const importMetaUrl = pathToFileURL(__filename);
-    const docs = new Generator(importMetaUrl, config);
-    const manifest = await docs.manifest(config.sourceFiles);
-    return manifest.pages.filter((it) => {
-        return it.path.endsWith(".html");
-    });
-}
+const docs = new Generator(import.meta.url, config);
+const sourceFiles = config.sourceFiles;
 
-function installPlugins(
+async function installPlugins(
     on: Cypress.PluginEvents,
     config: Cypress.PluginConfigOptions,
-): Cypress.PluginConfigOptions {
+): Promise<Cypress.PluginConfigOptions> {
     getToMatchScreenshotsPlugin(on, config, {
         threshold: 0.005,
     });
-    htmlvalidate.install(on, htmlValidateConfig, htmlValidateOptions);
-    config = installAxe(on, config);
+    config = await axePlugin(on, config);
+    config = await htmlValidatePlugin(on, config);
     config = cypressSplit(on, config);
     return config;
 }
 
-const htmlValidateConfig: ConfigData = {
-    rules: {
-        /* some examples show how to use custom heading levels which often
-         * doesn't match the heading outline for the documentation */
-        "heading-level": ["off"],
-
-        /* prevents mismatches from disabled rules which does not trigger errors
-         * when Cypress tests are running but would yield errors during normal
-         * validation */
-        "no-unused-disable": "off",
-
-        /* we cannot use native progressbar element due to SLA */
-        "prefer-native-element": [
-            "error",
-            {
-                exclude: ["progressbar"],
-            },
-        ],
-
-        /* sadly we dont use SRI at FK */
-        "require-sri": "off",
-    },
-};
-
-const htmlValidateOptions: CypressHtmlValidateOptions = {
-    include: [
-        /* Cypress component tests */
-        "#__cy_vue_root > div",
-        /* @forsakringskassan/docs-generator examples */
-        ".code-preview__preview",
-        /* @forsakringskassan/docs-live-example examples */
-        ".live-example__example",
-    ],
-    exclude,
-};
-
-const isGithub = Boolean(process.env.GITHUB_ACTION);
 const disableVisualRegression = (() => {
     return Boolean(process.env.CI);
 })();
 
-export default defineConfig({
-    allowCypressEnv: false,
+export default defineConfig(import.meta.dirname, {
     // Cypress may sometimes restart tests when it detects a changed file in the __screenshot__ folder.
     watchForFileChanges: false,
-    /* disable video recording, it is to slow both on remote machines and on
-     * CI/CD testing. */
-    video: false,
-    reporter: require.resolve("mocha-multi-reporters"),
-    reporterOptions: {
-        reporterEnabled: isGithub
-            ? "spec, github-actions, mocha-junit-reporter"
-            : "spec, mocha-junit-reporter",
-        mochaJunitReporterReporterOptions: {
-            mochaFile: "test-results/cypress-test-output_[hash].xml",
-        },
-    },
     e2e: {
         baseUrl: "http://localhost:8080",
         async setupNodeEvents(on, config) {
-            const pages = await getDocsPages();
-            config.expose = { pages };
-            return installPlugins(on, config);
+            config = await docsGeneratorPlugin(on, config, docs, sourceFiles);
+            return await installPlugins(on, config);
         },
     },
     component: {
-        setupNodeEvents(on, config) {
+        async setupNodeEvents(on, config) {
             console.log(
                 "Visual regression:",
                 disableVisualRegression
@@ -110,13 +51,8 @@ export default defineConfig({
             config.expose = {
                 DISABLE_VISUAL_REGRESSION: disableVisualRegression,
             };
-            return installPlugins(on, config);
-        },
-        devServer: {
-            framework: "vue",
-            bundler: "vite",
+            return await installPlugins(on, config);
         },
     },
-    defaultBrowser: "chrome",
     hosts: { localhost: "127.0.0.1" },
 });
