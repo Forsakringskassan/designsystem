@@ -5,7 +5,6 @@ import {
     FCurrencyTextField,
     FSelectField,
     FTable,
-    FTextField,
     defineTableColumns,
     useDatasetRef,
 } from "@fkui/vue";
@@ -29,46 +28,57 @@ const lander = [
     "Sydafrika",
 ];
 
-function getColumns(
-    updateItem: (item: Row) => void,
-    deleteItem: (item: Row) => void,
-): Array<TableColumn<Row>> {
-    return defineTableColumns<Row>([
-        {
-            type: "text",
-            header: "Frukt",
-            key: "namn",
+type CrudAction = (item: Row) => void;
+
+let updateItemCallback!: CrudAction;
+let deleteItemCallback!: CrudAction;
+
+const columns: Array<TableColumn<Row>> = defineTableColumns<Row>([
+    {
+        type: "text",
+        header: "Frukt",
+        key: "namn",
+    },
+    {
+        type: "text",
+        header: "Land",
+        key: "land",
+    },
+    {
+        type: "text:currency",
+        header: "Pris per kilo",
+        key: "pris",
+    },
+    {
+        type: "menu",
+        header: "Åtgärder",
+        text(row) {
+            return `Visa åtgärder för ${row.namn}`;
         },
-        {
-            type: "text",
-            header: "Land",
-            key: "land",
-        },
-        {
-            type: "text:currency",
-            header: "Pris per kilo",
-            key: "pris",
-        },
-        {
-            type: "menu",
-            header: "Åtgärder",
-            text(row) {
-                return `Visa åtgärder för ${row.namn}`;
+        actions: [
+            {
+                label: "Ändra",
+                icon: "pen",
+                onClick(row) {
+                    updateItemCallback(row);
+                },
             },
-            actions: [
-                {
-                    label: "Ändra",
-                    icon: "pen",
-                    onClick: updateItem,
+            {
+                label: "Ta bort",
+                icon: "trashcan",
+                onClick(row) {
+                    deleteItemCallback(row);
                 },
-                {
-                    label: "Ta bort",
-                    icon: "trashcan",
-                    onClick: deleteItem,
-                },
-            ],
-        },
-    ]);
+            },
+        ],
+    },
+]);
+
+function getColumns(updateItem: CrudAction, deleteItem: CrudAction): Array<TableColumn<Row>> {
+    updateItemCallback = updateItem;
+    deleteItemCallback = deleteItem;
+
+    return columns;
 }
 
 const rows = useDatasetRef<Row>([
@@ -79,7 +89,7 @@ const rows = useDatasetRef<Row>([
     },
     {
         namn: "Banan",
-        land: "Equador",
+        land: "Ecuador",
         pris: 15,
     },
     {

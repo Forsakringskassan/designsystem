@@ -82,4 +82,15 @@ describe("FTableCrudDatasetExample", () => {
         table.cell({ row: 1, col: 1 }).should("contain.text", "Ärende A");
         table.cell({ row: 2, col: 1 }).should("contain.text", "Ärende C");
     });
+
+    it("should restore focus to menu button after closing modify modal", () => {
+        table.cell({ row: 1, col: 3 }).click();
+        table.contextmenu().should("exist");
+
+        table.contextmenuItems().eq(0).click();
+
+        crudDataset.cancelButton().click();
+
+        table.cell({ row: 1, col: 3 }).find("button").should("have.focus");
+    });
 });
