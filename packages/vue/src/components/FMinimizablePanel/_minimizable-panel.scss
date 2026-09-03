@@ -60,8 +60,10 @@
     padding: 1rem;
     width: max-content;
 
-    &:hover {
-        background-color: $minimizable-panel-icon-hover;
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-color: $minimizable-panel-icon-hover;
+        }
     }
 
     &:active,
