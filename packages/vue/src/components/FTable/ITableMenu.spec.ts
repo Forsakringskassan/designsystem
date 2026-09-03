@@ -1,5 +1,6 @@
 import { mount, shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
+import { FIcon } from "../FIcon/index.js";
 import ITableMenu from "./ITableMenu.vue";
 import { normalizeTableColumn } from "./table-column";
 
@@ -164,5 +165,63 @@ describe("ITableMenu", () => {
             label: "Edit draft",
             key: "item-1",
         });
+    });
+
+    it("should use icon 'bars' as default", () => {
+        expect.assertions(1);
+
+        const row = {};
+        const column = normalizeTableColumn<typeof row>({
+            type: "menu",
+            header: "Actions",
+            text: () => "Actions",
+        });
+
+        const wrapper = shallowMount(ITableMenu<typeof row>, {
+            props: { column, row },
+        });
+
+        const icon = wrapper.getComponent(FIcon);
+        expect(icon.attributes("name")).toBe("bars");
+    });
+
+    it("should pass icon to FIcon", () => {
+        expect.assertions(1);
+
+        const row = {};
+        const column = normalizeTableColumn<typeof row>({
+            type: "menu",
+            header: "Actions",
+            text: () => "Actions",
+            icon: "trashcan",
+        });
+
+        const wrapper = shallowMount(ITableMenu<typeof row>, {
+            props: { column, row },
+        });
+
+        const icon = wrapper.getComponent(FIcon);
+        expect(icon.attributes("name")).toBe("trashcan");
+    });
+
+    it("should pass iconLibrary to FIcon", () => {
+        expect.assertions(2);
+
+        const row = {};
+        const column = normalizeTableColumn<typeof row>({
+            type: "menu",
+            header: "Actions",
+            text: () => "Actions",
+            icon: "foo",
+            iconLibrary: "bar",
+        });
+
+        const wrapper = shallowMount(ITableMenu<typeof row>, {
+            props: { column, row },
+        });
+
+        const icon = wrapper.getComponent(FIcon);
+        expect(icon.attributes("name")).toBe("foo");
+        expect(icon.attributes("library")).toBe("bar");
     });
 });

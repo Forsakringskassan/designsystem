@@ -100,7 +100,7 @@ $layout-navigation-dot-spacing: 4px !default;
             padding: size.$padding-050;
             transition: background-color var(--f-animation-duration-medium) ease-out;
 
-            &:focus {
+            &:focus-visible {
                 background-color: $layout-navigation-button-color-background-focus;
             }
 
@@ -112,7 +112,7 @@ $layout-navigation-dot-spacing: 4px !default;
                 background-color: $layout-navigation-button-color-background-active;
             }
 
-            &:focus {
+            &:focus-visible {
                 @include focus.focus-indicator;
             }
         }
