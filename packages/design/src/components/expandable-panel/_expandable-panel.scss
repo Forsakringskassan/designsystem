@@ -55,7 +55,7 @@
             font-weight: var(--f-font-weight-bold);
             line-height: var(--f-line-height-large);
 
-            &:focus,
+            &:focus-visible,
             &:hover {
                 background-color: $expandablepanel-heading-color-background-hover;
             }

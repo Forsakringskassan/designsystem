@@ -24,6 +24,12 @@ export interface TableColumnMenu<T> extends TableColumnBase<T> {
      * - `onClick`: a callback when the action is clicked.
      */
     actions?: TableColumnMenuActions<T>;
+    /** Name of icon to show on the button, see {@link FIcon} for list of icons. */
+    icon?: string;
+    /**
+     * The icon library to use when rendering an icon. If not set, the default icon library will be used.
+     */
+    iconLibrary?: string;
 }
 
 /**
@@ -75,6 +81,8 @@ export interface NormalizedTableColumnMenu<T> extends NormalizedTableColumnBase<
     never
 > {
     readonly type: "menu";
+    readonly icon: string;
+    readonly iconLibrary: string | undefined;
     readonly actions: NormalizedTableColumnMenuActions<T>;
     readonly component: Component<{
         row: T;
@@ -115,5 +123,7 @@ export function normalizeMenuColumn<T>(
             typeof actions === "function"
                 ? (row: T) => actions(row).map(normalizeMenuAction)
                 : actions.map(normalizeMenuAction),
+        icon: column.icon ?? "bars",
+        iconLibrary: column.iconLibrary,
     };
 }

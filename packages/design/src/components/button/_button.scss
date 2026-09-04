@@ -182,7 +182,7 @@ $button--tertiary: (
             mix-blend-mode: multiply;
         }
         &,
-        &:focus,
+        &:focus-visible,
         &:active,
         &:hover {
             border-radius: var(--f-button-discrete-radius-hover);
@@ -212,7 +212,7 @@ $button--tertiary: (
         }
 
         &,
-        &:focus,
+        &:focus-visible,
         &:active,
         &:hover {
             border-radius: var(--f-button-discrete-radius-hover);
@@ -235,7 +235,7 @@ $button--tertiary: (
 
             &:hover,
             &:active,
-            &:focus {
+            &:focus-visible {
                 color: $button-tertiary-muted-color-text-focus;
             }
         }
@@ -245,7 +245,7 @@ $button--tertiary: (
 
             &:hover,
             &:active,
-            &:focus {
+            &:focus-visible {
                 color: $button-tertiary-inverted-color-text-focus;
                 background-color: $button-tertiary-inverted-color-background-focus;
             }
