@@ -11,7 +11,7 @@ const { id, isOpen, options, activeOption, activeOptionId, inputNode } = defineP
     inputNode: HTMLInputElement;
 }>();
 
-const emit = defineEmits<{ select: [option: string]; close: [] }>();
+const emit = defineEmits<{ select: [option: string]; close: []; preselect: [option: string] }>();
 
 const listboxRef = useTemplateRef("listbox");
 const activeElement: Ref<HTMLElement | undefined> = ref();
@@ -22,6 +22,10 @@ function isOptionActive(item: string): boolean {
 
 function onOptionClick(value: string): void {
     emit("select", value);
+}
+
+function onOptionSelect(value: string): void {
+    emit("preselect", value);
 }
 
 function onListboxClose(): void {
@@ -60,6 +64,7 @@ watchEffect(async () => {
                     class="combobox__listbox__option"
                     :class="{ 'combobox__listbox__option--highlight': isOptionActive(item) }"
                     @click.stop.prevent="onOptionClick(item)"
+                    @mousedown="onOptionSelect(item)"
                 >
                     {{ item }}
                 </li>

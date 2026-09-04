@@ -185,6 +185,7 @@ export default defineComponent({
         discreteDescriptionText: string;
         discreteDescriptionScreenReaderText: string;
         dropdownOpenedWithoutVisibleError: boolean;
+        clickedOnDropdown: boolean;
     } {
         return {
             showErrorPopup: false,
@@ -200,6 +201,7 @@ export default defineComponent({
             discreteDescriptionText: "",
             discreteDescriptionScreenReaderText: "",
             dropdownOpenedWithoutVisibleError: false,
+            clickedOnDropdown: false,
         };
     },
     computed: {
@@ -269,6 +271,11 @@ export default defineComponent({
         onDropdownSelect(value: string): void {
             this.selectOption(value);
             this.$emit("update:modelValue", value);
+            this.clickedOnDropdown = false;
+        },
+        onPreDropdownSelect(value: string): void {
+            this.clickedOnDropdown = true;
+            this.$emit("change", value);
         },
         onDropdownClose(): void {
             this.closeDropdown();
@@ -287,7 +294,7 @@ export default defineComponent({
 
             // trigger v-model update when not handled by onValidity event
             const element = this.$refs.input as HTMLInputElement;
-            if (!Object.hasOwn(element.dataset, "validation")) {
+            if (!Object.hasOwn(element.dataset, "validation") && !this.clickedOnDropdown) {
                 this.$emit("update:modelValue", this.viewValue);
 
                 await this.$nextTick(); // wait for model update before triggering change event
@@ -306,7 +313,7 @@ export default defineComponent({
 
             // trigger v-model update when not handled by onValidity event
             const element = this.$refs.input as HTMLInputElement;
-            if (!Object.hasOwn(element.dataset, "validation")) {
+            if (!Object.hasOwn(element.dataset, "validation") && !this.clickedOnDropdown) {
                 this.$emit("update:modelValue", this.viewValue);
                 await this.$nextTick(); // wait for model update before triggering blur event
                 this.$emit("blur", this.viewValue);
@@ -326,6 +333,7 @@ export default defineComponent({
                 this.lastModelValue = newModelValue;
 
                 this.$emit("update:modelValue", newModelValue);
+
                 await this.$nextTick(); // wait for model update before triggering change, blur event
 
                 this.$emit(detail.nativeEvent, newModelValue);
@@ -528,6 +536,7 @@ export default defineComponent({
             :active-option
             :active-option-id
             :input-node="$refs.input as HTMLInputElement"
+            @preselect="onPreDropdownSelect"
             @select="onDropdownSelect"
             @close="onDropdownClose"
         ></i-combobox-dropdown>
