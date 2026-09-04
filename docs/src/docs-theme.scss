@@ -34,6 +34,11 @@ $fk-logo-large: "fk-logo-primary-large.svg";
     margin-bottom: 0;
 }
 
+.code-preview[data-tags~="reading-width"] {
+    // Match the body text's reading width in docs-generator.
+    max-width: 680px;
+}
+
 .color-table__color {
     display: inline-block;
     background: var(--value);

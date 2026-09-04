@@ -2,9 +2,7 @@ import { FRadioGroupPageObject } from "../../../cypress";
 import Example from "./FRadioFieldLiveExample.vue";
 
 describe("FRadioFieldLiveExample", () => {
-    const fieldset = new FRadioGroupPageObject(
-        ".live-example__example fieldset",
-    );
+    const fieldset = new FRadioGroupPageObject(".fieldset");
     enum Answer {
         Yes = ".radio-button:nth(0)",
         No = ".radio-button:nth(1)",
@@ -16,8 +14,6 @@ describe("FRadioFieldLiveExample", () => {
         });
 
         it("should confirm that the basic features of the live example work as intended", () => {
-            cy.get(".live-example__container").should("exist");
-
             fieldset.numberOfOptions().should("equal", 2);
 
             fieldset
