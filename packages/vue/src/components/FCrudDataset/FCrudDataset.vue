@@ -98,6 +98,14 @@ const props = defineProps({
         required: false,
         default: "",
     },
+    /**
+     * Property for deciding the position of the add button
+     */
+    addButtonPosition: {
+        type: String as PropType<"bottom" | "top">,
+        required: false,
+        default: "bottom",
+    },
 });
 const emit = defineEmits<{
     /**
@@ -324,13 +332,7 @@ function setNestedKey(key: keyof T | null | undefined): void {
 
 <template>
     <div class="crud-dataset">
-        <!--
-             @slot Slot for displaying the data.
-             @binding {(item: T) => void} updateItem Callback to trigger modification modal
-             @binding {(item: T, nested?: keyof T) => void} deleteItem Callback to trigger deletion modal
-        -->
-        <slot v-bind="{ updateItem, deleteItem }"></slot>
-        <div v-if="hasAddSlot">
+        <template v-if="props.addButtonPosition === 'top' && hasAddSlot">
             <button
                 data-test="f-crud-dataset-add-button"
                 type="button"
@@ -347,17 +349,43 @@ function setNestedKey(key: keyof T | null | undefined): void {
                 }}</slot>
             </button>
 
-            <!--
-                @slot Slot for additional add buttons
-                @binding {string[]} buttonClasses Default button classes.
-            -->
             <slot
                 name="buttons"
                 v-bind="{
                     buttonClasses: ['button', 'button--tertiary', 'crud-dataset__add-button'],
                 }"
-            ></slot>
-        </div>
+            />
+        </template>
+        <!--
+             @slot Slot for displaying the data.
+             @binding {(item: T) => void} updateItem Callback to trigger modification modal
+             @binding {(item: T, nested?: keyof T) => void} deleteItem Callback to trigger deletion modal
+        -->
+        <slot v-bind="{ updateItem, deleteItem }"></slot>
+        <template v-if="props.addButtonPosition === 'bottom' && hasAddSlot">
+            <button
+                data-test="f-crud-dataset-add-button"
+                type="button"
+                class="button button--tertiary crud-dataset__add-button"
+                @click="createItem()"
+            >
+                <f-icon class="button__icon" name="plus" />
+                <!--
+                     @slot Slot for changing the text in "Add new" button`
+                -->
+                <slot name="add-button">{{
+                    /** Buttontext for adding a new item */
+                    $t("fkui.crud-dataset.button.add", "Lägg till ny")
+                }}</slot>
+            </button>
+
+            <slot
+                name="buttons"
+                v-bind="{
+                    buttonClasses: ['button', 'button--tertiary', 'crud-dataset__add-button'],
+                }"
+            />
+        </template>
 
         <!-- [html-validate-disable-block fkui/no-template-modal -- technical debt] -->
         <f-form-modal
