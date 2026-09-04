@@ -7,7 +7,7 @@ component:
     - FRadioField
 ---
 
-```import live-example
+```import reading-width
 FRadioFieldLiveExample.vue
 ```
 
@@ -28,22 +28,20 @@ Visa radioknappar vertikalt som standard.
 Horisontell placering kan användas när det finns två korta svarsalternativ, till exempel ja och nej.
 På mindre skärmar visas alternativen alltid vertikalt.
 
+```import reading-width
+FRadioFieldHorizontalExample.vue
+```
+
+```diff reading-width
+-<f-fieldset name="arbete-annat-land">
++<f-fieldset name="arbete-annat-land" horizontal>
+```
+
 ### Förvalt alternativ
 
-Förvälj bara ett alternativ när det finns ett rimligt standardval.
-Låt annars användaren göra ett aktivt val, särskilt när valet får viktiga konsekvenser.
-
-### Inaktiverade alternativ
-
-Undvik inaktiverade alternativ.
-De kan vara svåra att uppfatta och ger inte användaren någon förklaring till varför de inte går att välja.
-
-## Varianter
-
-Radioknappar kan kompletteras med texter som förtydligar alternativen och med en ram som skapar tydligare visuell avgränsning mellan alternativen.
-Vad som passar beror på hur mycket stöd användaren behöver för att göra sitt val.
-Text och ram kan kombineras på olika sätt.
-Här visas två vanliga varianter.
+Undvik att markera ett alternativ från början.
+Låt användaren i stället göra ett aktivt val.
+Då minskar risken för att frågan missas eller att användaren skickar in ett svar som inte stämmer.
 
 ### Utvidgad text
 
@@ -54,13 +52,13 @@ Det gör alternativen lättare att överblicka och skapar en tydlig visuell hier
 Texten ska vara kort och beskriva det enskilda alternativet.
 Information som gäller hela frågan ska i stället placeras som hjälptext vid frågan.
 
-```diff
--<f-fieldset name="illness">
-+<f-fieldset name="illness" show-details="always">
+```import reading-width
+FRadioFieldDetailsAlwaysExample.vue
 ```
 
-```import
-FRadioFieldDetailsAlwaysExample.vue
+```diff reading-width
+-<f-fieldset name="care-reason">
++<f-fieldset name="care-reason" show-details="always">
 ```
 
 ### Inramade alternativ med expanderbar text
@@ -70,13 +68,13 @@ Ramen gör det tydligare vilken text som hör till respektive alternativ när in
 
 Dölj inte information som användaren behöver för att kunna välja.
 
-```diff
--<f-fieldset name="payment-plan">
-+<f-fieldset name="payment-plan" border show-details="when-selected">
+```import reading-width
+FRadioFieldBorderExpandableExample.vue
 ```
 
-```import
-FRadioFieldBorderExpandableExample.vue
+```diff reading-width
+-<f-fieldset name="payment-plan">
++<f-fieldset name="payment-plan" border show-details="when-selected">
 ```
 
 ## Validering
@@ -84,7 +82,7 @@ FRadioFieldBorderExpandableExample.vue
 Om användaren måste välja ett alternativ ska radioknappsgruppen valideras som obligatorisk.
 Lägg `v-validation.required` på `FFieldset`.
 
-```diff
+```diff reading-width
 -<f-fieldset name="arbete-annat-land">
 +<f-fieldset v-validation.required name="arbete-annat-land">
 ```
