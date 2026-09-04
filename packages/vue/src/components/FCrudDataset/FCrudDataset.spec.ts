@@ -265,6 +265,62 @@ it("should show add button when #add slot is present", () => {
     expect(buttons.at(0)?.text()).toBe("Lägg till ny");
 });
 
+describe("addButtonPosition", () => {
+    it("should render add button at the top when position is top", () => {
+        expect.assertions(2);
+
+        const wrapper = createWrapper([ADD_TEMPLATE], {
+            stubs: ["FConfirmModal"],
+            props: {
+                addButtonPosition: "top",
+            },
+        });
+
+        const addButton = wrapper.find(".crud-dataset__add-button");
+        const table = wrapper.find("table");
+
+        expect(addButton.exists()).toBe(true);
+        expect(addButton.element.compareDocumentPosition(table.element)).toBe(
+            Node.DOCUMENT_POSITION_FOLLOWING,
+        );
+    });
+
+    it("should render add button at the bottom when position is bottom", () => {
+        expect.assertions(2);
+
+        const wrapper = createWrapper([ADD_TEMPLATE], {
+            stubs: ["FConfirmModal"],
+            props: {
+                addButtonPosition: "bottom",
+            },
+        });
+
+        const addButton = wrapper.find(".crud-dataset__add-button");
+        const table = wrapper.find("table");
+
+        expect(addButton.exists()).toBe(true);
+        expect(addButton.element.compareDocumentPosition(table.element)).toBe(
+            Node.DOCUMENT_POSITION_PRECEDING,
+        );
+    });
+
+    it("should render add button at the bottom by default", () => {
+        expect.assertions(2);
+
+        const wrapper = createWrapper([ADD_TEMPLATE], {
+            stubs: ["FConfirmModal"],
+        });
+
+        const addButton = wrapper.find(".crud-dataset__add-button");
+        const table = wrapper.find("table");
+
+        expect(addButton.exists()).toBe(true);
+        expect(addButton.element.compareDocumentPosition(table.element)).toBe(
+            Node.DOCUMENT_POSITION_PRECEDING,
+        );
+    });
+});
+
 it("should show custom buttons when #add slot is present", () => {
     expect.assertions(4);
     const template = /* HTML */ `
