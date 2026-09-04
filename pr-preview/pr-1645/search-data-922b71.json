@@ -49,7 +49,6 @@
     "production",
     "globala inställningar",
     "config",
-    "CHANGELOG v5",
     "Paginering",
     "FPaginateDataset",
     "FPaginator",
@@ -101,6 +100,41 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
+    "CHANGELOG v5",
+    "Validering och felhantering",
+    "obligatoriska fält",
+    "submit",
+    "Längdvalidering",
+    "maxlängd",
+    "maxlength",
+    "validator",
+    "attribut",
+    "Validator - anpassad",
+    "egen validator",
+    "Felmeddelande - anpassat",
+    "eget felmeddelande",
+    "Korsvalidering",
+    "datumperiod",
+    "Formatering och parsning",
+    "formaterare",
+    "formatter",
+    "parser",
+    "vyvärde",
+    "vy-värde",
+    "viewValue",
+    "modellvärde",
+    "modell-värde",
+    "modelValue",
+    "Formaterare och parser - anpassad",
+    "formaterare",
+    "formatter",
+    "parser",
+    "vyvärde",
+    "vy-värde",
+    "viewValue",
+    "modellvärde",
+    "modell-värde",
+    "modelValue",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -176,43 +210,6 @@
     "produktionsklar",
     "beta",
     "experimentell",
-    "Validering och felhantering",
-    "obligatoriska fält",
-    "submit",
-    "Längdvalidering",
-    "maxlängd",
-    "maxlength",
-    "validator",
-    "attribut",
-    "Validator - anpassad",
-    "egen validator",
-    "Felmeddelande - anpassat",
-    "eget felmeddelande",
-    "Korsvalidering",
-    "datumperiod",
-    "Formatering och parsning",
-    "formaterare",
-    "formatter",
-    "parser",
-    "vyvärde",
-    "vy-värde",
-    "viewValue",
-    "modellvärde",
-    "modell-värde",
-    "modelValue",
-    "Formaterare och parser - anpassad",
-    "formaterare",
-    "formatter",
-    "parser",
-    "vyvärde",
-    "vy-värde",
-    "viewValue",
-    "modellvärde",
-    "modell-värde",
-    "modelValue",
-    "EventBus",
-    "EventBus",
-    "services",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -231,6 +228,9 @@
     "Jest",
     "testverktyg",
     "jest",
+    "EventBus",
+    "EventBus",
+    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -275,12 +275,6 @@
     "captureWarnings",
     "logToConsole",
     "errorHandler",
-    "i18next",
-    "TranslationService",
-    "i18nextProvider",
-    "TranslationService",
-    "I18nextProvider",
-    "TranslationService",
     "Om FKUI Vue Labs",
     "Tidsinmatning",
     "XTimeTextField",
@@ -290,6 +284,12 @@
     "XRelativeTime",
     "XFileDragdrop",
     "XFileDragdrop",
+    "i18next",
+    "TranslationService",
+    "i18nextProvider",
+    "TranslationService",
+    "I18nextProvider",
+    "TranslationService",
     "Hjälpklasser",
     "helpers",
     "h-no-margin",
@@ -465,6 +465,11 @@
     "FFormModal",
     "Bekräftelsemodal",
     "FConfirmModal",
+    "Startpunkt",
+    "entrypoint",
+    "länk",
+    "Länk",
+    "anchor",
     "Förloppsindikator",
     "FProgressbar",
     "ladda",
@@ -473,11 +478,6 @@
     "FLoader",
     "ladda",
     "laddning",
-    "Startpunkt",
-    "entrypoint",
-    "länk",
-    "Länk",
-    "anchor",
     "Specialiserade inmatningsfält",
     "bankgiro",
     "clearingnummer",
@@ -570,6 +570,18 @@
     "modalfunktion",
     "bekräftelsemodal",
     "options API",
+    "ValidationErrorMessageBuilder: map() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: mapCombined() method",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: create() function",
+    "feltext",
+    "validator",
+    "ValidationErrorMessageBuilder: build() method",
+    "feltext",
+    "validator",
     "refIsVue",
     "DOM-funktion",
     "refIsVueArray",
@@ -605,18 +617,6 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
-    "ValidationErrorMessageBuilder: map() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: mapCombined() method",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: create() function",
-    "feltext",
-    "validator",
-    "ValidationErrorMessageBuilder: build() method",
-    "feltext",
-    "validator",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -895,11 +895,6 @@
       ]
     },
     {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
-    },
-    {
       "url": "components/pagination.html",
       "title": "Paginering",
       "terms": [
@@ -1028,6 +1023,80 @@
       "title": "Bricka",
       "terms": [
         "FBadge"
+      ]
+    },
+    {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
+    },
+    {
+      "url": "guides/validation-and-error-handling/validation.html",
+      "title": "Validering och felhantering",
+      "terms": [
+        "obligatoriska fält",
+        "submit"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/length-validation.html",
+      "title": "Längdvalidering",
+      "terms": [
+        "maxlängd",
+        "maxlength",
+        "validator",
+        "attribut"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/custom-validator.html",
+      "title": "Validator - anpassad",
+      "terms": [
+        "egen validator"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/custom-error-message.html",
+      "title": "Felmeddelande - anpassat",
+      "terms": [
+        "eget felmeddelande"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/cross-validation.html",
+      "title": "Korsvalidering",
+      "terms": [
+        "datumperiod"
+      ]
+    },
+    {
+      "url": "guides/formatting-and-parsing/formatter-parser.html",
+      "title": "Formatering och parsning",
+      "terms": [
+        "formaterare",
+        "formatter",
+        "parser",
+        "vyvärde",
+        "vy-värde",
+        "viewValue",
+        "modellvärde",
+        "modell-värde",
+        "modelValue"
+      ]
+    },
+    {
+      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
+      "title": "Formaterare och parser - anpassad",
+      "terms": [
+        "formaterare",
+        "formatter",
+        "parser",
+        "vyvärde",
+        "vy-värde",
+        "viewValue",
+        "modellvärde",
+        "modell-värde",
+        "modelValue"
       ]
     },
     {
@@ -1192,83 +1261,6 @@
       ]
     },
     {
-      "url": "guides/validation-and-error-handling/validation.html",
-      "title": "Validering och felhantering",
-      "terms": [
-        "obligatoriska fält",
-        "submit"
-      ]
-    },
-    {
-      "url": "guides/validation-and-error-handling/length-validation.html",
-      "title": "Längdvalidering",
-      "terms": [
-        "maxlängd",
-        "maxlength",
-        "validator",
-        "attribut"
-      ]
-    },
-    {
-      "url": "guides/validation-and-error-handling/custom-validator.html",
-      "title": "Validator - anpassad",
-      "terms": [
-        "egen validator"
-      ]
-    },
-    {
-      "url": "guides/validation-and-error-handling/custom-error-message.html",
-      "title": "Felmeddelande - anpassat",
-      "terms": [
-        "eget felmeddelande"
-      ]
-    },
-    {
-      "url": "guides/validation-and-error-handling/cross-validation.html",
-      "title": "Korsvalidering",
-      "terms": [
-        "datumperiod"
-      ]
-    },
-    {
-      "url": "guides/formatting-and-parsing/formatter-parser.html",
-      "title": "Formatering och parsning",
-      "terms": [
-        "formaterare",
-        "formatter",
-        "parser",
-        "vyvärde",
-        "vy-värde",
-        "viewValue",
-        "modellvärde",
-        "modell-värde",
-        "modelValue"
-      ]
-    },
-    {
-      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
-      "title": "Formaterare och parser - anpassad",
-      "terms": [
-        "formaterare",
-        "formatter",
-        "parser",
-        "vyvärde",
-        "vy-värde",
-        "viewValue",
-        "modellvärde",
-        "modell-värde",
-        "modelValue"
-      ]
-    },
-    {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/test-utils/vue.html",
       "title": "Vue.js",
       "terms": [
@@ -1309,6 +1301,14 @@
       "terms": [
         "testverktyg",
         "jest"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -1391,27 +1391,6 @@
       ]
     },
     {
-      "url": "functions/i18next-translate/i18next.html",
-      "title": "i18next",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider.html",
-      "title": "i18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
-      "url": "functions/i18next-translate/i18next-provider-interface.html",
-      "title": "I18nextProvider",
-      "terms": [
-        "TranslationService"
-      ]
-    },
-    {
       "url": "functions/labs/index.html",
       "title": "Om FKUI Vue Labs",
       "terms": []
@@ -1442,6 +1421,27 @@
       "title": "XFileDragdrop",
       "terms": [
         "XFileDragdrop"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next.html",
+      "title": "i18next",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider.html",
+      "title": "i18nextProvider",
+      "terms": [
+        "TranslationService"
+      ]
+    },
+    {
+      "url": "functions/i18next-translate/i18next-provider-interface.html",
+      "title": "I18nextProvider",
+      "terms": [
+        "TranslationService"
       ]
     },
     {
@@ -1823,6 +1823,21 @@
       ]
     },
     {
+      "url": "components/links/entrypoint.html",
+      "title": "Startpunkt",
+      "terms": [
+        "länk",
+        "entrypoint"
+      ]
+    },
+    {
+      "url": "components/links/anchor.html",
+      "title": "Länk",
+      "terms": [
+        "anchor"
+      ]
+    },
+    {
       "url": "components/load/fprogressbar.html",
       "title": "Förloppsindikator",
       "terms": [
@@ -1838,21 +1853,6 @@
         "ladda",
         "laddning",
         "FLoader"
-      ]
-    },
-    {
-      "url": "components/links/entrypoint.html",
-      "title": "Startpunkt",
-      "terms": [
-        "länk",
-        "entrypoint"
-      ]
-    },
-    {
-      "url": "components/links/anchor.html",
-      "title": "Länk",
-      "terms": [
-        "anchor"
       ]
     },
     {
@@ -2112,6 +2112,38 @@
       ]
     },
     {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
+      "title": "ValidationErrorMessageBuilder: map() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
+      "title": "ValidationErrorMessageBuilder: mapCombined() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
+      "title": "ValidationErrorMessageBuilder: create() function",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
+      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
+      "title": "ValidationErrorMessageBuilder: build() method",
+      "terms": [
+        "feltext",
+        "validator"
+      ]
+    },
+    {
       "url": "functions/functions/dom-functions/ref-is-vue.html",
       "title": "refIsVue",
       "terms": [
@@ -2229,38 +2261,6 @@
       "title": "findElementFromVueRef",
       "terms": [
         "DOM-funktion"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map.html",
-      "title": "ValidationErrorMessageBuilder: map() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/map-combined.html",
-      "title": "ValidationErrorMessageBuilder: mapCombined() method",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/create.html",
-      "title": "ValidationErrorMessageBuilder: create() function",
-      "terms": [
-        "feltext",
-        "validator"
-      ]
-    },
-    {
-      "url": "functions/functions/ValidationErrorMessageBuilder/build.html",
-      "title": "ValidationErrorMessageBuilder: build() method",
-      "terms": [
-        "feltext",
-        "validator"
       ]
     },
     {
@@ -2895,161 +2895,161 @@
     "47": 12,
     "48": 12,
     "49": 13,
-    "50": 14,
-    "51": 14,
+    "50": 13,
+    "51": 13,
     "52": 14,
-    "53": 15,
+    "53": 14,
     "54": 15,
-    "55": 16,
+    "55": 15,
     "56": 16,
-    "57": 17,
-    "58": 17,
-    "59": 17,
-    "60": 17,
+    "57": 16,
+    "58": 16,
+    "59": 16,
+    "60": 16,
     "61": 17,
-    "62": 18,
+    "62": 17,
     "63": 18,
-    "64": 19,
+    "64": 18,
     "65": 19,
-    "66": 20,
-    "67": 20,
-    "68": 20,
-    "69": 20,
-    "70": 20,
+    "66": 19,
+    "67": 19,
+    "68": 19,
+    "69": 19,
+    "70": 19,
     "71": 20,
-    "72": 21,
+    "72": 20,
     "73": 21,
-    "74": 22,
-    "75": 22,
+    "74": 21,
+    "75": 21,
     "76": 22,
-    "77": 23,
-    "78": 23,
+    "77": 22,
+    "78": 22,
     "79": 23,
-    "80": 24,
+    "80": 23,
     "81": 24,
-    "82": 25,
-    "83": 25,
-    "84": 25,
-    "85": 25,
-    "86": 25,
+    "82": 24,
+    "83": 24,
+    "84": 24,
+    "85": 24,
+    "86": 24,
     "87": 25,
-    "88": 26,
-    "89": 26,
+    "88": 25,
+    "89": 25,
     "90": 26,
-    "91": 27,
+    "91": 26,
     "92": 27,
-    "93": 28,
-    "94": 28,
-    "95": 28,
-    "96": 28,
-    "97": 28,
+    "93": 27,
+    "94": 27,
+    "95": 27,
+    "96": 27,
+    "97": 27,
     "98": 28,
-    "99": 29,
+    "99": 28,
     "100": 29,
     "101": 30,
     "102": 30,
     "103": 30,
-    "104": 30,
-    "105": 30,
-    "106": 30,
-    "107": 30,
+    "104": 31,
+    "105": 31,
+    "106": 31,
+    "107": 31,
     "108": 31,
-    "109": 31,
-    "110": 31,
-    "111": 32,
-    "112": 32,
-    "113": 32,
-    "114": 32,
-    "115": 33,
-    "116": 33,
-    "117": 33,
-    "118": 33,
-    "119": 33,
-    "120": 33,
-    "121": 34,
-    "122": 34,
+    "109": 32,
+    "110": 32,
+    "111": 33,
+    "112": 33,
+    "113": 34,
+    "114": 34,
+    "115": 35,
+    "116": 35,
+    "117": 35,
+    "118": 35,
+    "119": 35,
+    "120": 35,
+    "121": 35,
+    "122": 35,
     "123": 35,
-    "124": 36,
-    "125": 37,
-    "126": 37,
-    "127": 38,
-    "128": 38,
-    "129": 38,
-    "130": 38,
-    "131": 38,
-    "132": 38,
-    "133": 38,
-    "134": 38,
-    "135": 38,
-    "136": 38,
-    "137": 38,
-    "138": 38,
-    "139": 38,
-    "140": 38,
-    "141": 39,
-    "142": 39,
-    "143": 39,
-    "144": 39,
+    "124": 35,
+    "125": 36,
+    "126": 36,
+    "127": 36,
+    "128": 36,
+    "129": 36,
+    "130": 36,
+    "131": 36,
+    "132": 36,
+    "133": 36,
+    "134": 36,
+    "135": 37,
+    "136": 37,
+    "137": 37,
+    "138": 37,
+    "139": 37,
+    "140": 37,
+    "141": 37,
+    "142": 38,
+    "143": 38,
+    "144": 38,
     "145": 39,
     "146": 39,
     "147": 39,
     "148": 39,
-    "149": 39,
+    "149": 40,
     "150": 40,
     "151": 40,
     "152": 40,
     "153": 40,
     "154": 40,
-    "155": 40,
-    "156": 40,
-    "157": 40,
-    "158": 41,
-    "159": 42,
-    "160": 43,
-    "161": 43,
-    "162": 44,
-    "163": 44,
-    "164": 44,
-    "165": 44,
+    "155": 41,
+    "156": 41,
+    "157": 42,
+    "158": 43,
+    "159": 44,
+    "160": 44,
+    "161": 45,
+    "162": 45,
+    "163": 45,
+    "164": 45,
+    "165": 45,
     "166": 45,
     "167": 45,
     "168": 45,
-    "169": 46,
-    "170": 46,
-    "171": 47,
-    "172": 47,
-    "173": 47,
-    "174": 47,
-    "175": 47,
-    "176": 48,
-    "177": 48,
-    "178": 48,
-    "179": 49,
-    "180": 49,
-    "181": 49,
-    "182": 49,
-    "183": 49,
-    "184": 50,
-    "185": 50,
-    "186": 51,
-    "187": 51,
-    "188": 52,
-    "189": 52,
-    "190": 53,
-    "191": 53,
-    "192": 53,
-    "193": 53,
-    "194": 53,
-    "195": 53,
-    "196": 53,
-    "197": 53,
-    "198": 53,
-    "199": 53,
-    "200": 54,
-    "201": 54,
-    "202": 54,
-    "203": 54,
-    "204": 54,
+    "169": 45,
+    "170": 45,
+    "171": 45,
+    "172": 45,
+    "173": 45,
+    "174": 45,
+    "175": 46,
+    "176": 46,
+    "177": 46,
+    "178": 46,
+    "179": 46,
+    "180": 46,
+    "181": 46,
+    "182": 46,
+    "183": 46,
+    "184": 47,
+    "185": 47,
+    "186": 47,
+    "187": 47,
+    "188": 47,
+    "189": 47,
+    "190": 47,
+    "191": 47,
+    "192": 48,
+    "193": 49,
+    "194": 50,
+    "195": 50,
+    "196": 51,
+    "197": 51,
+    "198": 51,
+    "199": 51,
+    "200": 52,
+    "201": 52,
+    "202": 52,
+    "203": 53,
+    "204": 53,
     "205": 54,
     "206": 54,
     "207": 54,
@@ -3058,15 +3058,15 @@
     "210": 55,
     "211": 55,
     "212": 55,
-    "213": 56,
+    "213": 55,
     "214": 56,
     "215": 56,
     "216": 56,
     "217": 57,
     "218": 57,
     "219": 57,
-    "220": 58,
-    "221": 58,
+    "220": 57,
+    "221": 57,
     "222": 58,
     "223": 58,
     "224": 58,
@@ -3121,11 +3121,11 @@
     "273": 67,
     "274": 67,
     "275": 68,
-    "276": 68,
+    "276": 69,
     "277": 69,
-    "278": 69,
+    "278": 70,
     "279": 70,
-    "280": 70,
+    "280": 71,
     "281": 71,
     "282": 72,
     "283": 72,
@@ -3313,14 +3313,14 @@
     "465": 119,
     "466": 119,
     "467": 119,
-    "468": 119,
+    "468": 120,
     "469": 120,
-    "470": 120,
-    "471": 120,
-    "472": 120,
+    "470": 121,
+    "471": 121,
+    "472": 121,
     "473": 121,
-    "474": 121,
-    "475": 121,
+    "474": 122,
+    "475": 122,
     "476": 122,
     "477": 122,
     "478": 123,
@@ -3417,49 +3417,49 @@
     "569": 156,
     "570": 157,
     "571": 157,
-    "572": 158,
+    "572": 157,
     "573": 158,
-    "574": 159,
-    "575": 159,
-    "576": 160,
-    "577": 160,
-    "578": 161,
-    "579": 161,
-    "580": 162,
-    "581": 162,
-    "582": 163,
-    "583": 163,
-    "584": 164,
-    "585": 164,
-    "586": 165,
-    "587": 165,
-    "588": 166,
-    "589": 166,
-    "590": 167,
-    "591": 167,
-    "592": 168,
-    "593": 168,
-    "594": 169,
-    "595": 169,
-    "596": 170,
-    "597": 170,
-    "598": 170,
-    "599": 171,
-    "600": 171,
-    "601": 172,
-    "602": 172,
-    "603": 173,
-    "604": 173,
-    "605": 174,
-    "606": 174,
-    "607": 174,
-    "608": 175,
-    "609": 175,
-    "610": 175,
-    "611": 176,
-    "612": 176,
+    "574": 158,
+    "575": 158,
+    "576": 159,
+    "577": 159,
+    "578": 159,
+    "579": 160,
+    "580": 160,
+    "581": 160,
+    "582": 161,
+    "583": 161,
+    "584": 162,
+    "585": 162,
+    "586": 163,
+    "587": 163,
+    "588": 164,
+    "589": 164,
+    "590": 165,
+    "591": 165,
+    "592": 166,
+    "593": 166,
+    "594": 167,
+    "595": 167,
+    "596": 168,
+    "597": 168,
+    "598": 169,
+    "599": 169,
+    "600": 170,
+    "601": 170,
+    "602": 171,
+    "603": 171,
+    "604": 172,
+    "605": 172,
+    "606": 173,
+    "607": 173,
+    "608": 174,
+    "609": 174,
+    "610": 174,
+    "611": 175,
+    "612": 175,
     "613": 176,
-    "614": 177,
+    "614": 176,
     "615": 177,
     "616": 177,
     "617": 178,
