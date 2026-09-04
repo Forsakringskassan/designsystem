@@ -29,6 +29,7 @@ export default defineComponent({
             <f-text-field
                 id="field1"
                 v-model="field1"
+                v-test="'field1'"
                 v-validation.required.maxLength="{ maxLength: { length: 32 } }"
             >
                 Field1
@@ -36,6 +37,7 @@ export default defineComponent({
             <f-text-field
                 id="field2"
                 v-model="field2"
+                v-test="'field2'"
                 v-validation.required.maxLength="{ maxLength: { length: 32 } }"
             >
                 Field2
