@@ -3,111 +3,149 @@ import NoErrorListExample from "./docs/NoErrorList.vue";
 import WithErrorListExample from "./docs/WithErrorList.vue";
 import WithErrorListAndCbFunctionExample from "./docs/WithErrorListAndCbFunction.vue";
 
-const validationForm = new ExamplePageobject("form");
+const po = new ExamplePageobject("form");
 
 describe("FValidationForm", () => {
+    it("should validate a text field mounted in a shadow dom", () => {
+        cy.document().then((document) => {
+            const shadowHost = document.createElement("div");
+            shadowHost.className = "shadow-host";
+            document.body.append(shadowHost);
+
+            cy.mount(NoErrorListExample, {
+                attachTo: shadowHost.attachShadow({
+                    mode: "open",
+                }) as unknown as HTMLElement,
+            });
+        });
+
+        cy.get(".shadow-host")
+            .shadow()
+            .find(po.textField1.selector)
+            .should("be.visible");
+
+        cy.get(".shadow-host")
+            .shadow()
+            .find(po.textField2.selector)
+            .should("be.visible");
+
+        cy.get(".shadow-host")
+            .shadow()
+            .find(po.submitSelectors.selector)
+            .should("be.visible")
+            .click();
+
+        cy.get(".shadow-host")
+            .shadow()
+            .find(po.firstTextFieldLabelSelectors().errorMessage())
+            .should("be.visible")
+            .should("contain.text", "Fyll i text");
+
+        cy.get(".shadow-host")
+            .shadow()
+            .find(po.secondTextFieldLabelSelectors().errorMessage())
+            .should("be.visible")
+            .should("contain.text", "Fyll i text");
+    });
+
     it("should display error if one field is invalid on submit", () => {
         cy.mount(WithErrorListExample);
 
-        validationForm.getFirstTextFieldInput().type("foo");
+        po.textField1.input().type("foo");
 
-        validationForm.getSubmitButton().click();
+        cy.get(po.submitSelectors.selector).click();
 
-        validationForm.errorlist.getLinkByName("Field1").should("not.exist");
-        validationForm.errorlist.getLinkByName("Field2").should("exist");
-        validationForm.errorlist.el().should("exist");
+        po.errorlist.getLinkByName("Field1").should("not.exist");
+        po.errorlist.getLinkByName("Field2").should("exist");
+        po.errorlist.el().should("exist");
     });
 
     it("should not display errorlist after filling both fields", () => {
         cy.mount(WithErrorListExample);
 
-        validationForm.getFirstTextFieldInput().type("foo");
-        validationForm.getSecondTextFieldInput().type("foo");
+        po.textField1.input().type("foo");
+        po.textField2.input().type("foo");
 
-        validationForm.getSubmitButton().click();
+        cy.get(po.submitSelectors.selector).click();
 
-        validationForm.errorlist.el().should("not.exist");
+        po.errorlist.el().should("not.exist");
     });
 
     it("should display errorlist with 2 errors", () => {
         cy.mount(WithErrorListExample);
 
-        validationForm.getSubmitButton().click();
+        cy.get(po.submitSelectors.selector).click();
 
-        validationForm.errorlist.getLinkByName("Field1").should("exist");
-        validationForm.errorlist.getLinkByName("Field2").should("exist");
+        po.errorlist.getLinkByName("Field1").should("exist");
+        po.errorlist.getLinkByName("Field2").should("exist");
     });
 
     it("should move focus to field when clicking errorlink", () => {
         cy.mount(WithErrorListExample);
 
-        validationForm.getSubmitButton().click();
+        cy.get(po.submitSelectors.selector).click();
 
-        validationForm.errorlist.getLinkByName("Field1").click();
+        po.errorlist.getLinkByName("Field1").click();
         cy.focused().should("have.attr", "id").and("eq", "field1");
 
-        validationForm.errorlist.getLinkByName("Field2").click();
+        po.errorlist.getLinkByName("Field2").click();
         cy.focused().should("have.attr", "id").and("eq", "field2");
     });
 
     it("should not show errorlist on submit when fields are valid", () => {
         cy.mount(WithErrorListExample);
-        validationForm.getFirstTextFieldInput().type("foo");
-        validationForm.getSecondTextFieldInput().type("foo");
+        po.textField1.input().type("foo");
+        po.textField2.input().type("foo");
 
         cy.get("form").submit();
 
-        validationForm.errorlist.el().should("not.exist");
+        po.errorlist.el().should("not.exist");
     });
 
     it("should not display errorlist when leaving input field", () => {
         cy.mount(WithErrorListExample);
 
-        validationForm.getFirstTextFieldInput().focus().blur();
+        po.textField1.input().focus().blur();
 
-        validationForm.errorlist.el().should("not.exist");
+        po.errorlist.el().should("not.exist");
     });
 
     it("should update errorlist when updating errors in fields", () => {
         cy.mount(WithErrorListExample);
 
-        validationForm.getFirstTextFieldInput().type("foo");
+        po.textField1.input().type("foo");
 
-        validationForm.getSubmitButton().click();
+        cy.get(po.submitSelectors.selector).click();
 
-        validationForm.errorlist.getLinkByName("Field1").should("not.exist");
-        validationForm.errorlist.getLinkByName("Field2").should("exist");
+        po.errorlist.getLinkByName("Field1").should("not.exist");
+        po.errorlist.getLinkByName("Field2").should("exist");
 
-        validationForm.getSecondTextFieldInput().type("foo").blur();
-        validationForm.errorlist.el().should("not.exist");
+        po.textField2.input().type("foo").blur();
+        po.errorlist.el().should("not.exist");
     });
 
     it("should display errors after submitted valid fields and making fields invalid", () => {
         cy.mount(WithErrorListExample);
 
-        validationForm.getFirstTextFieldInput().type("foo");
-        validationForm.getSecondTextFieldInput().type("foo");
+        po.textField1.input().type("foo");
+        po.textField2.input().type("foo");
 
-        validationForm.getSubmitButton().click();
+        cy.get(po.submitSelectors.selector).click();
 
-        validationForm.errorlist.el().should("not.exist");
+        po.errorlist.el().should("not.exist");
 
-        validationForm.getSecondTextFieldInput().clear().blur();
+        po.textField2.input().clear().blur();
 
-        validationForm.errorlist.getLinkByName("Field2");
+        po.errorlist.getLinkByName("Field2");
     });
 
     it("should display errors in same order as input fields", () => {
         cy.mount(WithErrorListExample);
 
-        validationForm.getSubmitButton().click();
+        cy.get(po.submitSelectors.selector).click();
 
-        validationForm.errorlist
-            .listItems()
-            .first()
-            .contains("Field1")
-            .should("exist");
-        validationForm.errorlist
+        po.errorlist.listItems().first().contains("Field1").should("exist");
+        po.errorlist
             .listItems()
             .first()
             .next()
@@ -118,27 +156,27 @@ describe("FValidationForm", () => {
     it("should not display error list when adding prop 'useErrorList=False'", () => {
         cy.mount(NoErrorListExample);
 
-        validationForm.getSubmitButton().click();
+        cy.get(po.submitSelectors.selector).click();
 
-        validationForm.errorlist.el().should("not.exist");
+        po.errorlist.el().should("not.exist");
     });
 
     it("should display custom error message via slot", () => {
         cy.mount(WithErrorListExample);
 
-        validationForm.getSubmitButton().click();
+        cy.get(po.submitSelectors.selector).click();
 
-        validationForm.errorlist.el().get("span").contains("Custom message");
+        po.errorlist.el().get("span").contains("Custom message");
     });
 
     it("should execute FErrorList callback function when clicking errorLink", () => {
         cy.mount(WithErrorListAndCbFunctionExample);
-        validationForm.getSubmitButton().click();
+        cy.get(po.submitSelectors.selector).click();
 
-        validationForm.errorlist.getLinkByName("Field1").click();
+        po.errorlist.getLinkByName("Field1").click();
         cy.focused().should("have.attr", "id").and("eq", "field1");
 
-        validationForm.errorlist.getLinkByName("Field2").click();
+        po.errorlist.getLinkByName("Field2").click();
         cy.focused().should("have.attr", "id").and("eq", "field2");
     });
 });
