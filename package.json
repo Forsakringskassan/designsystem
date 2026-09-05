@@ -109,7 +109,7 @@
     "cli-table": "0.3.11",
     "core-js": "3.50.0",
     "cypress": "15.21.1",
-    "cypress-html-validate": "9.0.0",
+    "cypress-html-validate": "9.1.0",
     "cypress-real-events": "1.15.0",
     "dayjs": "1.11.23",
     "esbuild": "0.28.2",
