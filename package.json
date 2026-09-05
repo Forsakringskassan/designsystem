@@ -82,7 +82,7 @@
     "@fkui/cypress-split": "*",
     "@forsakringskassan/commitlint-config": "4.2.8",
     "@forsakringskassan/cypress-axe": "5.1.5",
-    "@forsakringskassan/cypress-visual-regression": "5.1.1",
+    "@forsakringskassan/cypress-visual-regression": "5.2.0",
     "@forsakringskassan/docs-generator": "3.6.3",
     "@forsakringskassan/docs-live-example": "3.0.2",
     "@forsakringskassan/eslint-config": "15.9.3",
