@@ -42,6 +42,7 @@
 .radio-button,
 .checkbox {
     &__details {
+        color: $selectable-item-color-text-details;
         display: block;
         margin-top: core.densify(size.$margin-025);
     }
