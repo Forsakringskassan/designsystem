@@ -355,3 +355,59 @@ describe("toggle existence", () => {
             });
     });
 });
+
+describe("ComboBox - Fix-validering", () => {
+    const TestComponent = defineComponent({
+        name: "TestComponent",
+        template: /* HTML */ `
+            <f-text-field v-model="valtLand" :options="land" @change="onChange">
+                <template #default> Välj land </template>
+            </f-text-field>
+        `,
+        components: {
+            FTextField,
+        },
+        data() {
+            return {
+                changeEvent: [] as string[],
+                valtLand: "",
+                land: ["Svalbard och Jan Mayen", "Swaziland", "Sverige"],
+            };
+        },
+        methods: {
+            onChange(value: string): void {
+                this.changeEvent.push(value);
+            },
+        },
+    });
+
+    it("should never set valtLand to 'sv' during input and selection", () => {
+        cy.mount(TestComponent).then(({ wrapper }) => {
+            cy.get("input").should("be.visible");
+            cy.get("input").click();
+
+            cy.get("input").type("sv");
+
+            cy.contains("li", "Sverige").should("be.visible").realClick();
+
+            cy.wrap(wrapper.vm).its("valtLand").should("equal", "Sverige");
+            cy.wrap(wrapper.vm)
+                .its("changeEvent")
+                .should("deep.equal", ["Sverige", "Sverige"]);
+        });
+    });
+
+    it("should set typed value", () => {
+        cy.mount(TestComponent).then(({ wrapper }) => {
+            cy.get("input").should("be.visible").click();
+
+            cy.get("input").type("Norge");
+            cy.get("input").blur();
+
+            cy.wrap(wrapper.vm).its("valtLand").should("equal", "Norge");
+            cy.wrap(wrapper.vm)
+                .its("changeEvent")
+                .should("deep.equal", ["Norge"]);
+        });
+    });
+});
