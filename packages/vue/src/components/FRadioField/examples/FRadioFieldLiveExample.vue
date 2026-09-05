@@ -1,25 +1,20 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
 import { defineComponent } from "vue";
-import { DateFormat, FDate } from "@fkui/date";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
-import { FCheckboxField, FFieldset, FRadioField, FSelectField, FTooltip } from "@fkui/vue";
-
-const todaysDate = FDate.now().toString(DateFormat.ISO8601);
+import { FCheckboxField, FFieldset, FRadioField, FTooltip } from "@fkui/vue";
 
 export default defineComponent({
     name: "FRadioFieldLiveExample",
-    components: { LiveExample, FCheckboxField, FFieldset, FRadioField, FSelectField },
+    components: { LiveExample, FCheckboxField, FFieldset, FRadioField },
     data() {
         return {
             isHorizontal: false,
-            isBorder: false,
             isPreselected: false,
             isDisabled: false,
             isRequired: false,
             tooltipVisible: false,
             descriptionVisible: false,
-            showDetails: "never",
         };
     },
     computed: {
@@ -38,15 +33,10 @@ export default defineComponent({
         tooltip(): string {
             const template = /* HTML */ `
                 <template #tooltip>
-                    <f-tooltip
-                        screen-reader-text="Läs mer om Bor det barn som har fyllt 18 år i bostaden?"
-                        header-tag="h2"
-                    >
-                        <template #header> Bor det barn som har fyllt 18 år i bostaden? </template>
+                    <f-tooltip screen-reader-text="Läs mer om ersättning från utlandet">
                         <template #body>
-                            Här svarar du på om du har ett eller flera barn som fyllt 18 i din
-                            bostad. Alla personer som fyllt 18 idag (${todaysDate}) eller tidigare
-                            på året beräknas med i denna grupp.
+                            Om du redan får ersättning från ett annat land för samma period kan du
+                            inte få full ersättning från Sverige.
                         </template>
                     </f-tooltip>
                 </template>
@@ -57,41 +47,23 @@ export default defineComponent({
             const template = /* HTML */ `
                 <template #description="{ descriptionClass }">
                     <span :class="descriptionClass">
-                        Här svarar du på om du har ett eller flera barn som fyllt 18 i din bostad.
+                        Till exempel a-kassa, sjukpenning eller föräldrapenning från något annat
+                        land än Sverige.
                     </span>
                 </template>
             `;
             return this.descriptionVisible ? template : "";
         },
-        showDetailsAttr(): string {
-            if (this.showDetails === "never") {
-                return "";
-            }
-            return `show-details="${this.showDetails}"`;
-        },
-        details(): string {
-            const template = /* HTML */ `
-                <template #details>
-                    Här svarar du på om du har ett eller flera barn som fyllt 18 i din bostad.
-                </template>
-            `;
-            return this.showDetails !== "never" ? template : "";
-        },
         radioFields(): string {
             return /* HTML */ `
-                <f-radio-field v-model="modelValue" :value="true">
-                    Ja, det bor barn över 18 år där ${this.details}
-                </f-radio-field>
+                <f-radio-field v-model="modelValue" :value="true"> Ja </f-radio-field>
                 <f-radio-field v-model="modelValue" :value="false" ${this.disabled}>
-                    Nej, inga barn över 18 år bor där ${this.details}
+                    Nej
                 </f-radio-field>
             `;
         },
         horizontal(): string {
             return this.isHorizontal ? "horizontal" : "";
-        },
-        border(): string {
-            return this.isBorder ? "border" : "";
         },
         disabled(): string {
             return this.isDisabled ? "disabled" : "";
@@ -101,23 +73,12 @@ export default defineComponent({
         },
         template(): string {
             return /* HTML */ `
-                <f-fieldset
-                    name="barn-over-18"
-                    ${this.horizontal}
-                    ${this.required}
-                    ${this.border}
-                    ${this.showDetailsAttr}
-                >
-                    <template #label> Bor det barn som har fyllt 18 år i bostaden? </template>
+                <f-fieldset name="ersattning-fran-utlandet" ${this.horizontal} ${this.required}>
+                    <template #label> Får du ersättning från utlandet? </template>
                     ${this.tooltip} ${this.description}
                     <template #default> ${this.radioFields} </template>
                 </f-fieldset>
             `;
-        },
-    },
-    methods: {
-        onHorizontalChange() {
-            this.isBorder = this.isHorizontal ? false : this.isBorder;
         },
     },
 });
@@ -125,37 +86,35 @@ export default defineComponent({
 
 <template>
     <live-example :components :template :livedata>
-        <f-fieldset name="radio-orientation" @change="onHorizontalChange">
+        <f-fieldset name="radio-orientation">
             <template #label> Placering </template>
-            <f-radio-field v-model="isHorizontal" :value="false">
-                Vertikalt (standard)</f-radio-field
-            >
+            <f-radio-field v-model="isHorizontal" :value="false"> Vertikalt </f-radio-field>
             <f-radio-field v-model="isHorizontal" :value="true"> Horisontellt </f-radio-field>
         </f-fieldset>
 
-        <f-checkbox-field v-if="!isHorizontal" v-model="isBorder" :value="true">
-            Ram
-        </f-checkbox-field>
-        <f-checkbox-field v-model="isPreselected" :value="true">
-            Förvald radioknapp
-        </f-checkbox-field>
-        <f-checkbox-field v-model="isDisabled" :value="true">
-            Inaktiverad radioknapp
-        </f-checkbox-field>
-        <f-checkbox-field v-model="isRequired" :value="true"> Obligatoriskt val </f-checkbox-field>
+        <f-fieldset name="radio-options">
+            <template #label> Egenskaper </template>
+            <f-checkbox-field v-model="isPreselected" :value="true">
+                Förvald radioknapp
+            </f-checkbox-field>
+            <f-checkbox-field v-model="isDisabled" :value="true">
+                Inaktiverad radioknapp
+            </f-checkbox-field>
+        </f-fieldset>
 
         <f-fieldset name="radio-label">
-            <template #label> Etiketten </template>
+            <template #label> Etikett </template>
             <f-checkbox-field v-model="tooltipVisible" :value="true"> Tooltip </f-checkbox-field>
             <f-checkbox-field v-model="descriptionVisible" :value="true">
                 Hjälptext
             </f-checkbox-field>
-            <f-select-field v-model="showDetails">
-                <template #label> Utökad etikett </template>
-                <option value="never">Nej</option>
-                <option value="always">Utvidgad text</option>
-                <option value="when-selected">Expanderbar text</option>
-            </f-select-field>
+        </f-fieldset>
+
+        <f-fieldset name="radio-validation">
+            <template #label> Validering </template>
+            <f-checkbox-field v-model="isRequired" :value="true">
+                Obligatoriskt val
+            </f-checkbox-field>
         </f-fieldset>
     </live-example>
 </template>

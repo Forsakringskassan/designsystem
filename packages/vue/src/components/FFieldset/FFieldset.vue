@@ -87,7 +87,7 @@ export default defineComponent({
         /**
          * Sets visibility behaviour for details slot in selectable child items. By default details slot is not rendered.
          *
-         * * `never` (default) - Never show item details.
+         * - `never` (default) - Never show item details.
          * - `when-selected` - Show item details when selected.
          * - `always` - Always show item details.
          */
@@ -273,6 +273,11 @@ export default defineComponent({
             -->
             <slot name="description" :description-class :format-description-class></slot>
 
+            <!--
+                @slot Optional slot for displaying one or more error messages.
+                @binding {boolean} hasError Set to true when a validation error is present.
+                @binding {string} validationMessage Descriptive validation error message for the current error.
+            -->
             <slot name="error-message" v-bind="{ hasError, validationMessage: validity.validationMessage }">
                 <template v-if="hasError">
                     <span class="label__message label__message--error">
@@ -310,9 +315,9 @@ export default defineComponent({
                 <slot name="description" :description-class :format-description-class></slot>
 
                 <!--
-                    @slot Slot for displaying single or several error messages.
-                    @binding {boolean} hasError Set to true when a validation error is present
-                    @binding {string} validationMessage Descriptive validation error message for current error
+                    @slot Optional slot for displaying one or more error messages.
+                    @binding {boolean} hasError Set to true when a validation error is present.
+                    @binding {string} validationMessage Descriptive validation error message for the current error.
                 -->
                 <slot name="error-message" v-bind="{ hasError, validationMessage: validity.validationMessage }">
                     <template v-if="hasError">
