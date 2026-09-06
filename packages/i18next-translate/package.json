@@ -40,7 +40,7 @@
     "watch": "rollup --config --watch"
   },
   "dependencies": {
-    "i18next": "26.4.1"
+    "i18next": "26.4.2"
   },
   "devDependencies": {
     "@fkui/logic": "6.56.0",
