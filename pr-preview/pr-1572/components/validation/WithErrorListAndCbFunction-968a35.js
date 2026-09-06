@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FValidationForm/examples/WithErrorListAndCbFunction.vue:WithErrorListAndCbFunction-968a35.js
+// virtual-entry:virtual:packages/vue/src/components/FValidationForm/docs/WithErrorListAndCbFunction.vue:WithErrorListAndCbFunction-968a35.js
 import { defineComponent } from "vue";
 import { FButton, FExpandablePanel, FTextField, FValidationForm } from "@fkui/vue";
 import { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createVNode as _createVNode } from "vue";

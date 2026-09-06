@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FValidationForm/examples/FValidationFormDefault.vue:FValidationFormDefault-f6e2ed.js
+// virtual-entry:virtual:packages/vue/src/components/FValidationForm/docs/FValidationFormDefault.vue:FValidationFormDefault-f6e2ed.js
 import { defineComponent } from "vue";
 import {
   FButton,
