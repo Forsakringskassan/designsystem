@@ -265,14 +265,14 @@ it("should show add button when #add slot is present", () => {
     expect(buttons.at(0)?.text()).toBe("Lägg till ny");
 });
 
-describe("addButtonPosition", () => {
+describe("buttonPosition", () => {
     it("should render add button at the top when position is top", () => {
         expect.assertions(2);
 
         const wrapper = createWrapper([ADD_TEMPLATE], {
             stubs: ["FConfirmModal"],
             props: {
-                addButtonPosition: "top",
+                buttonPosition: "top",
             },
         });
 
@@ -291,7 +291,7 @@ describe("addButtonPosition", () => {
         const wrapper = createWrapper([ADD_TEMPLATE], {
             stubs: ["FConfirmModal"],
             props: {
-                addButtonPosition: "bottom",
+                buttonPosition: "bottom",
             },
         });
 
