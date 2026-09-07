@@ -9,3 +9,5 @@ export { FListSelectors } from "./FList.selectors";
 export { FLoaderSelectors } from "./FLoader.selectors";
 export { FMinimizablePanelSelectors } from "./FMinimizablePanel.selectors";
 export { FPaginatorSelectors } from "./FPaginator.selectors";
+export { FTextFieldSelectors } from "./FTextField.selectors";
+export { FTextareaFieldSelectors } from "./FTextareaField.selectors";

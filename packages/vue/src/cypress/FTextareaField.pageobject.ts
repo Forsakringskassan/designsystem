@@ -1,3 +1,5 @@
+import { FTextareaFieldSelectors } from "../selectors";
+
 import { FLabelPageObject } from "./FLabel.pageobject";
 import { FTooltipPageObject } from "./FTooltip.pageobject";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
@@ -7,6 +9,8 @@ import { Input } from "./input";
  * @public
  */
 export class FTextareaFieldPageObject extends Input implements BasePageObject {
+    private _selectors: ReturnType<typeof FTextareaFieldSelectors>;
+
     public override selector: string;
     public override el: () => DefaultCypressChainable;
     public label: FLabelPageObject;
@@ -17,18 +21,26 @@ export class FTextareaFieldPageObject extends Input implements BasePageObject {
      */
     public constructor(selector: string) {
         super(selector, "textarea");
-        this.selector = selector;
-        this.el = () => cy.get(this.selector);
-        this.label = new FLabelPageObject(`${this.selector} .label`);
-        this.tooltip = new FTooltipPageObject(`${this.selector} .tooltip`);
+        this._selectors = FTextareaFieldSelectors(selector);
+
+        this.selector = this._selectors.selector;
+        this.el = () => cy.get(this._selectors.selector);
+        this.label = new FLabelPageObject(this._selectors.label());
+        this.tooltip = new FTooltipPageObject(
+            `${this._selectors.selector} .tooltip`,
+        );
     }
 
     public input(): DefaultCypressChainable {
-        return cy.get(`${this.selector} textarea`);
+        return cy.get(this._selectors.textarea());
     }
+
+    /**
+     * @deprecated Not used anymore for error feedback within the field
+     */
     public errorIcon(): DefaultCypressChainable {
         return cy.get(
-            `${this.selector} .icon.textarea-field__icon.f-icon-error`,
+            `${this._selectors.selector} .icon.textarea-field__icon.f-icon-error`,
         );
     }
 }
