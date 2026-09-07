@@ -49,7 +49,6 @@
     "production",
     "globala inställningar",
     "config",
-    "CHANGELOG v5",
     "Paginering",
     "FPaginateDataset",
     "FPaginator",
@@ -101,6 +100,41 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
+    "CHANGELOG v5",
+    "Formatering och parsning",
+    "formaterare",
+    "formatter",
+    "parser",
+    "vyvärde",
+    "vy-värde",
+    "viewValue",
+    "modellvärde",
+    "modell-värde",
+    "modelValue",
+    "Formaterare och parser - anpassad",
+    "formaterare",
+    "formatter",
+    "parser",
+    "vyvärde",
+    "vy-värde",
+    "viewValue",
+    "modellvärde",
+    "modell-värde",
+    "modelValue",
+    "Validering och felhantering",
+    "obligatoriska fält",
+    "submit",
+    "Längdvalidering",
+    "maxlängd",
+    "maxlength",
+    "validator",
+    "attribut",
+    "Validator - anpassad",
+    "egen validator",
+    "Felmeddelande - anpassat",
+    "eget felmeddelande",
+    "Korsvalidering",
+    "datumperiod",
     "Anpassa och översätt text",
     "translate",
     "translation",
@@ -121,12 +155,6 @@
     "scss",
     "css",
     "ikonbibliotek",
-    "Version 5 migreringsguide",
-    "Vue 3",
-    "FTable migreringsguide",
-    "Fieldset migreringsguide",
-    "FCrudButton migreringsguide",
-    "FCrudButton",
     "Testverktyg",
     "testfall",
     "jest",
@@ -176,40 +204,12 @@
     "produktionsklar",
     "beta",
     "experimentell",
-    "Validering och felhantering",
-    "obligatoriska fält",
-    "submit",
-    "Längdvalidering",
-    "maxlängd",
-    "maxlength",
-    "validator",
-    "attribut",
-    "Validator - anpassad",
-    "egen validator",
-    "Felmeddelande - anpassat",
-    "eget felmeddelande",
-    "Korsvalidering",
-    "datumperiod",
-    "Formatering och parsning",
-    "formaterare",
-    "formatter",
-    "parser",
-    "vyvärde",
-    "vy-värde",
-    "viewValue",
-    "modellvärde",
-    "modell-värde",
-    "modelValue",
-    "Formaterare och parser - anpassad",
-    "formaterare",
-    "formatter",
-    "parser",
-    "vyvärde",
-    "vy-värde",
-    "viewValue",
-    "modellvärde",
-    "modell-värde",
-    "modelValue",
+    "Version 5 migreringsguide",
+    "Vue 3",
+    "FTable migreringsguide",
+    "Fieldset migreringsguide",
+    "FCrudButton migreringsguide",
+    "FCrudButton",
     "Vue.js",
     "testverktyg",
     "cypress",
@@ -228,9 +228,6 @@
     "Jest",
     "testverktyg",
     "jest",
-    "EventBus",
-    "EventBus",
-    "services",
     "focus-indicator() mixin",
     "fokus",
     "fokusindikator",
@@ -238,6 +235,9 @@
     "densify() function",
     "densitet",
     "sass",
+    "EventBus",
+    "EventBus",
+    "services",
     "Validation Plugin",
     "validering",
     "v-validation",
@@ -617,6 +617,16 @@
     "ValidationErrorMessageBuilder: build() method",
     "feltext",
     "validator",
+    "FTablePageObject",
+    "cypress",
+    "FPaginatorPageObject",
+    "cypress",
+    "FListPageObject",
+    "cypress",
+    "FExpandableParagraphPageObject",
+    "cypress",
+    "FDefinitionListPageObject",
+    "cypress",
     "FYear",
     "årtal",
     "FYear: value property",
@@ -633,16 +643,6 @@
     "FYear: addYears() method",
     "FYear: previous() method",
     "FYear: next() method",
-    "FTablePageObject",
-    "cypress",
-    "FPaginatorPageObject",
-    "cypress",
-    "FListPageObject",
-    "cypress",
-    "FExpandableParagraphPageObject",
-    "cypress",
-    "FDefinitionListPageObject",
-    "cypress",
     "Sortera och filtrera i tabell",
     "tabell",
     "Sortera och filtrera i tabell (kod)",
@@ -895,11 +895,6 @@
       ]
     },
     {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
-      "terms": []
-    },
-    {
       "url": "components/pagination.html",
       "title": "Paginering",
       "terms": [
@@ -1031,6 +1026,80 @@
       ]
     },
     {
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
+      "terms": []
+    },
+    {
+      "url": "guides/formatting-and-parsing/formatter-parser.html",
+      "title": "Formatering och parsning",
+      "terms": [
+        "formaterare",
+        "formatter",
+        "parser",
+        "vyvärde",
+        "vy-värde",
+        "viewValue",
+        "modellvärde",
+        "modell-värde",
+        "modelValue"
+      ]
+    },
+    {
+      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
+      "title": "Formaterare och parser - anpassad",
+      "terms": [
+        "formaterare",
+        "formatter",
+        "parser",
+        "vyvärde",
+        "vy-värde",
+        "viewValue",
+        "modellvärde",
+        "modell-värde",
+        "modelValue"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/validation.html",
+      "title": "Validering och felhantering",
+      "terms": [
+        "obligatoriska fält",
+        "submit"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/length-validation.html",
+      "title": "Längdvalidering",
+      "terms": [
+        "maxlängd",
+        "maxlength",
+        "validator",
+        "attribut"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/custom-validator.html",
+      "title": "Validator - anpassad",
+      "terms": [
+        "egen validator"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/custom-error-message.html",
+      "title": "Felmeddelande - anpassat",
+      "terms": [
+        "eget felmeddelande"
+      ]
+    },
+    {
+      "url": "guides/validation-and-error-handling/cross-validation.html",
+      "title": "Korsvalidering",
+      "terms": [
+        "datumperiod"
+      ]
+    },
+    {
       "url": "gettingstarted/use-design-system/translate-text.html",
       "title": "Anpassa och översätt text",
       "terms": [
@@ -1068,30 +1137,6 @@
         "scss",
         "css",
         "ikonbibliotek"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-v5.html",
-      "title": "Version 5 migreringsguide",
-      "terms": [
-        "Vue 3"
-      ]
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-ftable.html",
-      "title": "FTable migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-to-fieldset.html",
-      "title": "Fieldset migreringsguide",
-      "terms": []
-    },
-    {
-      "url": "gettingstarted/migration/migrating-crud-button.html",
-      "title": "FCrudButton migreringsguide",
-      "terms": [
-        "FCrudButton"
       ]
     },
     {
@@ -1192,72 +1237,27 @@
       ]
     },
     {
-      "url": "guides/validation-and-error-handling/validation.html",
-      "title": "Validering och felhantering",
+      "url": "gettingstarted/migration/migrating-to-v5.html",
+      "title": "Version 5 migreringsguide",
       "terms": [
-        "obligatoriska fält",
-        "submit"
+        "Vue 3"
       ]
     },
     {
-      "url": "guides/validation-and-error-handling/length-validation.html",
-      "title": "Längdvalidering",
-      "terms": [
-        "maxlängd",
-        "maxlength",
-        "validator",
-        "attribut"
-      ]
+      "url": "gettingstarted/migration/migrating-to-ftable.html",
+      "title": "FTable migreringsguide",
+      "terms": []
     },
     {
-      "url": "guides/validation-and-error-handling/custom-validator.html",
-      "title": "Validator - anpassad",
-      "terms": [
-        "egen validator"
-      ]
+      "url": "gettingstarted/migration/migrating-to-fieldset.html",
+      "title": "Fieldset migreringsguide",
+      "terms": []
     },
     {
-      "url": "guides/validation-and-error-handling/custom-error-message.html",
-      "title": "Felmeddelande - anpassat",
+      "url": "gettingstarted/migration/migrating-crud-button.html",
+      "title": "FCrudButton migreringsguide",
       "terms": [
-        "eget felmeddelande"
-      ]
-    },
-    {
-      "url": "guides/validation-and-error-handling/cross-validation.html",
-      "title": "Korsvalidering",
-      "terms": [
-        "datumperiod"
-      ]
-    },
-    {
-      "url": "guides/formatting-and-parsing/formatter-parser.html",
-      "title": "Formatering och parsning",
-      "terms": [
-        "formaterare",
-        "formatter",
-        "parser",
-        "vyvärde",
-        "vy-värde",
-        "viewValue",
-        "modellvärde",
-        "modell-värde",
-        "modelValue"
-      ]
-    },
-    {
-      "url": "guides/formatting-and-parsing/custom-formatter-parser.html",
-      "title": "Formaterare och parser - anpassad",
-      "terms": [
-        "formaterare",
-        "formatter",
-        "parser",
-        "vyvärde",
-        "vy-värde",
-        "viewValue",
-        "modellvärde",
-        "modell-värde",
-        "modelValue"
+        "FCrudButton"
       ]
     },
     {
@@ -1304,14 +1304,6 @@
       ]
     },
     {
-      "url": "functions/services/event-bus.html",
-      "title": "EventBus",
-      "terms": [
-        "services",
-        "EventBus"
-      ]
-    },
-    {
       "url": "functions/sass/focus-indicator.html",
       "title": "focus-indicator() mixin",
       "terms": [
@@ -1326,6 +1318,14 @@
       "terms": [
         "densitet",
         "sass"
+      ]
+    },
+    {
+      "url": "functions/services/event-bus.html",
+      "title": "EventBus",
+      "terms": [
+        "services",
+        "EventBus"
       ]
     },
     {
@@ -2264,6 +2264,41 @@
       ]
     },
     {
+      "url": "functions/cypress/pageobjects/ftablepageobject.html",
+      "title": "FTablePageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
+      "title": "FPaginatorPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/flistpageobject.html",
+      "title": "FListPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
+      "title": "FExpandableParagraphPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
+      "title": "FDefinitionListPageObject",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
       "url": "functions/date/f-year/index.html",
       "title": "FYear",
       "terms": [
@@ -2339,41 +2374,6 @@
       "url": "functions/date/f-year/f-date-next.html",
       "title": "FYear: next() method",
       "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/ftablepageobject.html",
-      "title": "FTablePageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/fpaginatorpageobject.html",
-      "title": "FPaginatorPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/flistpageobject.html",
-      "title": "FListPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/fexpandableparagraphpageobject.html",
-      "title": "FExpandableParagraphPageObject",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/fdefinitionlistpageobject.html",
-      "title": "FDefinitionListPageObject",
-      "terms": [
-        "cypress"
-      ]
     },
     {
       "url": "components/table-and-list/table/sort-filter.html",
@@ -2895,56 +2895,56 @@
     "47": 12,
     "48": 12,
     "49": 13,
-    "50": 14,
-    "51": 14,
+    "50": 13,
+    "51": 13,
     "52": 14,
-    "53": 15,
+    "53": 14,
     "54": 15,
-    "55": 16,
+    "55": 15,
     "56": 16,
-    "57": 17,
-    "58": 17,
-    "59": 17,
-    "60": 17,
+    "57": 16,
+    "58": 16,
+    "59": 16,
+    "60": 16,
     "61": 17,
-    "62": 18,
+    "62": 17,
     "63": 18,
-    "64": 19,
+    "64": 18,
     "65": 19,
-    "66": 20,
-    "67": 20,
-    "68": 20,
-    "69": 20,
-    "70": 20,
+    "66": 19,
+    "67": 19,
+    "68": 19,
+    "69": 19,
+    "70": 19,
     "71": 20,
-    "72": 21,
+    "72": 20,
     "73": 21,
-    "74": 22,
-    "75": 22,
+    "74": 21,
+    "75": 21,
     "76": 22,
-    "77": 23,
-    "78": 23,
+    "77": 22,
+    "78": 22,
     "79": 23,
-    "80": 24,
+    "80": 23,
     "81": 24,
-    "82": 25,
-    "83": 25,
-    "84": 25,
-    "85": 25,
-    "86": 25,
+    "82": 24,
+    "83": 24,
+    "84": 24,
+    "85": 24,
+    "86": 24,
     "87": 25,
-    "88": 26,
-    "89": 26,
+    "88": 25,
+    "89": 25,
     "90": 26,
-    "91": 27,
+    "91": 26,
     "92": 27,
-    "93": 28,
-    "94": 28,
-    "95": 28,
-    "96": 28,
-    "97": 28,
+    "93": 27,
+    "94": 27,
+    "95": 27,
+    "96": 27,
+    "97": 27,
     "98": 28,
-    "99": 29,
+    "99": 28,
     "100": 29,
     "101": 30,
     "102": 30,
@@ -2953,106 +2953,106 @@
     "105": 30,
     "106": 30,
     "107": 30,
-    "108": 31,
-    "109": 31,
-    "110": 31,
-    "111": 32,
-    "112": 32,
-    "113": 32,
-    "114": 32,
-    "115": 33,
-    "116": 33,
-    "117": 33,
-    "118": 33,
-    "119": 33,
-    "120": 33,
-    "121": 34,
-    "122": 34,
-    "123": 35,
-    "124": 36,
-    "125": 37,
-    "126": 37,
-    "127": 38,
-    "128": 38,
-    "129": 38,
-    "130": 38,
-    "131": 38,
-    "132": 38,
-    "133": 38,
-    "134": 38,
-    "135": 38,
-    "136": 38,
-    "137": 38,
-    "138": 38,
-    "139": 38,
-    "140": 38,
-    "141": 39,
-    "142": 39,
-    "143": 39,
-    "144": 39,
+    "108": 30,
+    "109": 30,
+    "110": 30,
+    "111": 31,
+    "112": 31,
+    "113": 31,
+    "114": 31,
+    "115": 31,
+    "116": 31,
+    "117": 31,
+    "118": 31,
+    "119": 31,
+    "120": 31,
+    "121": 32,
+    "122": 32,
+    "123": 32,
+    "124": 33,
+    "125": 33,
+    "126": 33,
+    "127": 33,
+    "128": 33,
+    "129": 34,
+    "130": 34,
+    "131": 35,
+    "132": 35,
+    "133": 36,
+    "134": 36,
+    "135": 37,
+    "136": 37,
+    "137": 37,
+    "138": 37,
+    "139": 37,
+    "140": 37,
+    "141": 37,
+    "142": 38,
+    "143": 38,
+    "144": 38,
     "145": 39,
     "146": 39,
     "147": 39,
     "148": 39,
-    "149": 39,
+    "149": 40,
     "150": 40,
     "151": 40,
     "152": 40,
     "153": 40,
     "154": 40,
-    "155": 40,
-    "156": 40,
-    "157": 40,
+    "155": 41,
+    "156": 41,
+    "157": 41,
     "158": 41,
-    "159": 42,
-    "160": 43,
-    "161": 43,
-    "162": 44,
-    "163": 44,
-    "164": 44,
-    "165": 44,
-    "166": 45,
-    "167": 45,
-    "168": 45,
-    "169": 46,
-    "170": 46,
-    "171": 47,
-    "172": 47,
-    "173": 47,
-    "174": 47,
-    "175": 47,
-    "176": 48,
-    "177": 48,
-    "178": 48,
-    "179": 49,
-    "180": 49,
-    "181": 49,
-    "182": 49,
-    "183": 49,
-    "184": 50,
-    "185": 50,
-    "186": 51,
-    "187": 51,
-    "188": 52,
-    "189": 52,
-    "190": 53,
-    "191": 53,
-    "192": 53,
-    "193": 53,
-    "194": 53,
-    "195": 53,
-    "196": 53,
-    "197": 53,
-    "198": 53,
-    "199": 53,
-    "200": 54,
-    "201": 54,
-    "202": 54,
-    "203": 54,
-    "204": 54,
-    "205": 54,
-    "206": 54,
-    "207": 54,
+    "159": 41,
+    "160": 41,
+    "161": 41,
+    "162": 41,
+    "163": 41,
+    "164": 41,
+    "165": 41,
+    "166": 41,
+    "167": 41,
+    "168": 41,
+    "169": 42,
+    "170": 42,
+    "171": 42,
+    "172": 42,
+    "173": 42,
+    "174": 42,
+    "175": 42,
+    "176": 42,
+    "177": 42,
+    "178": 43,
+    "179": 43,
+    "180": 43,
+    "181": 43,
+    "182": 43,
+    "183": 43,
+    "184": 43,
+    "185": 43,
+    "186": 44,
+    "187": 45,
+    "188": 46,
+    "189": 46,
+    "190": 47,
+    "191": 47,
+    "192": 47,
+    "193": 47,
+    "194": 48,
+    "195": 48,
+    "196": 48,
+    "197": 49,
+    "198": 49,
+    "199": 50,
+    "200": 50,
+    "201": 50,
+    "202": 50,
+    "203": 50,
+    "204": 51,
+    "205": 51,
+    "206": 52,
+    "207": 53,
     "208": 54,
     "209": 54,
     "210": 55,
@@ -3076,7 +3076,7 @@
     "228": 60,
     "229": 60,
     "230": 60,
-    "231": 61,
+    "231": 60,
     "232": 61,
     "233": 61,
     "234": 61,
@@ -3465,28 +3465,28 @@
     "617": 178,
     "618": 178,
     "619": 179,
-    "620": 180,
-    "621": 181,
-    "622": 182,
-    "623": 183,
-    "624": 184,
-    "625": 185,
-    "626": 186,
-    "627": 187,
-    "628": 188,
-    "629": 189,
-    "630": 190,
-    "631": 191,
-    "632": 192,
-    "633": 193,
-    "634": 193,
-    "635": 194,
-    "636": 194,
-    "637": 195,
-    "638": 195,
-    "639": 196,
-    "640": 196,
-    "641": 197,
+    "620": 179,
+    "621": 180,
+    "622": 180,
+    "623": 181,
+    "624": 181,
+    "625": 182,
+    "626": 182,
+    "627": 183,
+    "628": 183,
+    "629": 184,
+    "630": 185,
+    "631": 186,
+    "632": 187,
+    "633": 188,
+    "634": 189,
+    "635": 190,
+    "636": 191,
+    "637": 192,
+    "638": 193,
+    "639": 194,
+    "640": 195,
+    "641": 196,
     "642": 197,
     "643": 198,
     "644": 198,
