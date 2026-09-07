@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "glob": "13.0.6",
-    "sass": "1.103.1",
+    "sass": "1.104.0",
     "svgo": "4.1.0"
   },
   "devDependencies": {
