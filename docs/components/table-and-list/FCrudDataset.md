@@ -62,6 +62,11 @@ Standardinställningen för knappordningen i modalerna för "Lägg till" och "Ä
 Standardinställningen för modalen "Ta bort" är att sekundärknappen ligger först följt av primärknappen.
 Du kan ändra knappordningen för bekräftelsemodalen och därmed ändra knappordningen för modalen "Ta bort" genom inställning av {@link config#referens buttonOrder} i konfigurationen.
 
+## Knapposition
+
+I standardutförande är knapparna positionerade under huvudinnehållet.
+Med propen `buttonPosition` kan knapparna istället positioneras ovanför huvudinnehållet.
+
 ## Egna lägg till knappar
 
 Använd slotten `#buttons` för att lägga till egna anpassade lägg-till knappar.
