@@ -23,19 +23,19 @@
             {
   "imports": {
     "vue": "../../assets/vendor-vue-de7570.js",
-    "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-0b05ed.js",
+    "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-94331f.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-d98f1d.js",
     "@fkui/date": "../../assets/vendor-fkui-date-756ff1.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-1e3727.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-11dd1d.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-6ce7bb.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js"
   },
   "integrity": {
     "../../assets/vendor-vue-de7570.js": "sha384-WPWz93taK2QwJ4Wn4+VnBNQQCRrMi6sDR9z8/jDQyCsimuklI/LF0cmvQb6bBq1C",
-    "../../assets/vendor-fkui-vue-selectors-0b05ed.js": "sha384-R4JtmMYJ/VOW6IKN44n9Vp7MpL3VvvYKB6Rxu3vX4LfvSgAdoCPdDyYRVMMTMTYK",
+    "../../assets/vendor-fkui-vue-selectors-94331f.js": "sha384-D4xYSFtr6w1NbilmG63z1mEjOXO6Hsb9VhsJ8rogNo235nGB2AJ0jUpDcX0QEMvp",
     "../../assets/vendor-fkui-logic-d98f1d.js": "sha384-SGeHcEY4B6lmI5P91r2mELwluuhA7jlFsJ8b9rHDscdLxLKoug5qRQ363SzDUSQt",
     "../../assets/vendor-fkui-date-756ff1.js": "sha384-poMivCeyRvtjqiexqG/jXcCfyu2x3A7bwI5tx3mB74FC5uQUUjIVoQFYJQTHi23Q",
-    "../../assets/vendor-fkui-vue-1e3727.js": "sha384-Zo7ChhZcf+KOXiung65XB8C+24fxlCs4C4BdIjs+NxsABHI+SxoNZZ1Hrk8my/+Q",
+    "../../assets/vendor-fkui-vue-11dd1d.js": "sha384-GvyPATlclIma1cb0TndjE5yPbZUfTmzfqhs9CGoA2JWf7miegX4tdncdBU+tpmo7",
     "../../assets/vendor-fkui-vue-labs-6ce7bb.js": "sha384-QO/yLIQT6IBPgk3MmDGmpABWSFSlfMKTad2JFm+/JTVgPFg0xO2DNC0P8Ci05VYS",
     "../../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js": "sha384-T8jkOagoFX6LDj2QbCvP8DkKMrMPgdAFrg/sYvtRagV4DTNYut32ghIjZatx0QE3"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-955049.json"
+    href="../../search-data-e3fd71.json"
     as="fetch"
     crossorigin
-    integrity="sha384-uS8w52lpLbX+bT36cRW9tM2GOkHF1M42GPxLfiwer4ata00sD3lQf+YAVXLJuFJZ"
+    integrity="sha384-FdjzBEhrLkt9lS73ByUfvthFSnHSZOtz9daDsdlj2XXiDKby0OYCpqtA4KPsC9Uz"
     id="search-data"
 />
 <script>
@@ -1551,7 +1551,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/79ed75636a2381fb9fc8707fd5fc72c27f1bc34d/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/375e2b5062e91defabf5caf25aa9ba94ae38c537/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
@@ -1584,6 +1584,8 @@
                                 <li><a href="#forpopulera_objekt">Förpopulera objekt</a></li>
                                 
                                 <li><a href="#knappordning">Knappordning</a></li>
+                                
+                                <li><a href="#knapposition">Knapposition</a></li>
                                 
                                 <li><a href="#egna_lagg_till_knappar">Egna lägg till knappar</a></li>
                                 
@@ -1804,11 +1806,13 @@ Callback anropas innan modalen visas.</p>
             <h2 id="knappordning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#knappordning">Knappordning</a></h2><p class="docs-paragraph">Standardinställningen för knappordningen i modalerna för &quot;Lägg till&quot; och &quot;Ändra&quot; är att primärknappen ligger först följt av sekundärknappen.
 Standardinställningen för modalen &quot;Ta bort&quot; är att sekundärknappen ligger först följt av primärknappen.
 Du kan ändra knappordningen för bekräftelsemodalen och därmed ändra knappordningen för modalen &quot;Ta bort&quot; genom inställning av <a href="../../functions/config.html#referens">buttonOrder</a> i konfigurationen.</p>
+<h2 id="knapposition" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#knapposition">Knapposition</a></h2><p class="docs-paragraph">I standardutförande är knapparna positionerade under huvudinnehållet.
+Med propen <code>buttonPosition</code> kan knapparna istället positioneras ovanför huvudinnehållet.</p>
 <h2 id="egna_lagg_till_knappar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#egna_lagg_till_knappar">Egna lägg till knappar</a></h2><p class="docs-paragraph">Använd slotten <code>#buttons</code> för att lägga till egna anpassade lägg-till knappar.
 Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 
                 <div
-                    id="example-b7be0a"
+                    id="example-667c04"
                     class="code-preview code-preview--default"
                     
                     
@@ -1827,7 +1831,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 </div>
             
                 <div
-                    id="example-4b5cf1"
+                    id="example-3d4955"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -1848,7 +1852,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 </div>
             <h2 id="datatabell_med_lagg_till_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
             <div
-                id="example-4dc150"
+                id="example-c1213c"
                 class="code-preview code-preview--default"
                 
                 
@@ -1962,7 +1966,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="interaktiv_tabell_med_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#interaktiv_tabell_med_knapp">Interaktiv tabell med knapp</a></h2>
             <div
-                id="example-ef22b4"
+                id="example-b67799"
                 class="code-preview code-preview--default"
                 
                 
@@ -2065,7 +2069,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="lista_med_redigering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lista_med_redigering">Lista med redigering</a></h2>
             <div
-                id="example-32fa9e"
+                id="example-4da53a"
                 class="code-preview code-preview--default"
                 
                 
@@ -2243,7 +2247,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
             </div>
         <h2 id="sorterbar_lista" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sorterbar_lista">Sorterbar lista</a></h2>
             <div
-                id="example-1e6d23"
+                id="example-65eba4"
                 class="code-preview code-preview--default"
                 
                 
@@ -2439,7 +2443,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 </ul>
 
             <div
-                id="example-371dc7"
+                id="example-f95363"
                 class="code-preview code-preview--default"
                 
                 
@@ -2629,7 +2633,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 </ul>
 
                 <div
-                    id="example-95b944"
+                    id="example-c6aa13"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -2694,6 +2698,23 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                         <dd>
                             &#8208;
                             <p class="doc-api__item">Default: "Är du säker på att du vill ta bort raden?"</p>
+                            
+                            
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-translation-fkui-crud-dataset-button-add"
+                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-button-add"
+                                    ><span class="docs-api__name"
+                                        >fkui.crud-dataset.button.add</span
+                                    ></a
+                                ></code
+                            >
+                        </dt>
+                        <dd>
+                            &#8208;
+                            <p class="doc-api__item">Default: "Lägg till ny"</p>
                             
                             
                             
@@ -2856,24 +2877,6 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                             <p>Text announced to screenreaders when an item has been modified</p>
 
                             <p class="doc-api__item">Default: "Raden har ändrats"</p>
-                            
-                            
-                            
-                        </dd>
-                    
-                        <dt>
-                            <code id="fcruddataset-translation-fkui-crud-dataset-button-add"
-                                ><a class="docs-api__anchor" href="#fcruddataset-translation-fkui-crud-dataset-button-add"
-                                    ><span class="docs-api__name"
-                                        >fkui.crud-dataset.button.add</span
-                                    ></a
-                                ></code
-                            >
-                        </dt>
-                        <dd>
-                            <p>Buttontext for adding a new item</p>
-
-                            <p class="doc-api__item">Default: "Lägg till ny"</p>
                             
                             
                             
@@ -3099,6 +3102,24 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
                             
                         </dd>
                     
+                        <dt>
+                            <code id="fcruddataset-prop-buttonposition"
+                                ><a class="docs-api__anchor" href="#fcruddataset-prop-buttonposition"
+                                    ><span class="docs-api__name"
+                                        >buttonPosition</span
+                                    >: &quot;bottom&quot; | &quot;top&quot;</a
+                                ></code
+                            >
+                            <span class="docs-tag docs-tag--default">Optional</span>
+                            
+                        </dt>
+                        <dd>
+                            <p>Property for setting the position of the add button</p>
+
+                            <p class="doc-api__item">Default: <code>&quot;bottom&quot;</code></p>
+                            
+                        </dd>
+                    
         </dl>
     
         <h4 class="docs-heading docs-heading--h4" id="fcruddataset-events">
@@ -3171,25 +3192,6 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
         <dl class="docs-api docs-api--slots">
             
                         <dt>
-                            <code id="fcruddataset-slot-default"
-                                ><a class="docs-api__anchor" href="#fcruddataset-slot-default"
-                                    ><span class="docs-api__name"
-                                        >default</span
-                                    ></a
-                                ></code
-                            >
-                            
-                        </dt>
-                        <dd>
-                            <p>Slot for displaying the data.</p>
-
-                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>updateItem: (item: T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger modification modal</li><li><code>deleteItem: (item: T, nested?: keyof T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger deletion modal</li>
-                            </ul>
-                            
-                        </dd>
-                    
-                        <dt>
                             <code id="fcruddataset-slot-add-button"
                                 ><a class="docs-api__anchor" href="#fcruddataset-slot-add-button"
                                     ><span class="docs-api__name"
@@ -3223,6 +3225,25 @@ See &lt;f-validation-form&gt; <code>beforeValidation</code> props for more info.
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
                             <li><code>buttonClasses: string[]</code> <span role="presentation">&mdash;</span> Default button classes.</li>
+                            </ul>
+                            
+                        </dd>
+                    
+                        <dt>
+                            <code id="fcruddataset-slot-default"
+                                ><a class="docs-api__anchor" href="#fcruddataset-slot-default"
+                                    ><span class="docs-api__name"
+                                        >default</span
+                                    ></a
+                                ></code
+                            >
+                            
+                        </dt>
+                        <dd>
+                            <p>Slot for displaying the data.</p>
+
+                            <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
+                            <li><code>updateItem: (item: T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger modification modal</li><li><code>deleteItem: (item: T, nested?: keyof T) =&gt; void</code> <span role="presentation">&mdash;</span> Callback to trigger deletion modal</li>
                             </ul>
                             
                         </dd>
@@ -3335,9 +3356,9 @@ Läs mer om att <a href="../../gettingstarted/migration/migrating-crud-button.ht
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/79ed75636a2381fb9fc8707fd5fc72c27f1bc34d">79ed756</a>)<br />
+<div class="footer__right"><div class="version">main (<a href="https://github.com/Forsakringskassan/designsystem/commits/375e2b5062e91defabf5caf25aa9ba94ae38c537">375e2b5</a>)<br />
         
-        2026-09-07 13:09
+        2026-09-07 13:56
 </div>
 <div class="toolbar__item">
     <form id="version">
