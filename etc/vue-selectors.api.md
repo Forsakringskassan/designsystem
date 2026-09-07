@@ -26,6 +26,7 @@ export function FCheckboxFieldSelectors(selector?: string): Readonly<{
 export function FCrudDatasetSelectors(selector?: string): Readonly<{
     readonly selector: string;
     addButton(): string;
+    addButtonTop(): string;
     cancelButton(): string;
     confirmButton(): string;
 }>;

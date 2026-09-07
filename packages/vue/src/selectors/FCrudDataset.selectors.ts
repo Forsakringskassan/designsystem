@@ -47,6 +47,31 @@ export function FCrudDatasetSelectors(selector: string = ":scope") {
         },
 
         /**
+         * Get the add button element.
+         *
+         * @example Cypress
+         *
+         * ```ts
+         * const { addButton } = FCrudDatasetSelectors();
+         * cy.get(addButton()).click();
+         * ```
+         *
+         * @example Playwright
+         *
+         * ```ts
+         * const { addButton } = FCrudDatasetSelectors();
+         * await page.locator(addButton()).click();
+         * ```
+         *
+         * @public
+         * @since %version%
+         * @returns A selector for the add button element.
+         */
+        addButtonTop(): string {
+            return `${selector} [data-test="f-crud-dataset-add-button-top"]`;
+        },
+
+        /**
          * Get the cancel button element.
          *
          * The cancel button is present in the modal footer when the add or edit

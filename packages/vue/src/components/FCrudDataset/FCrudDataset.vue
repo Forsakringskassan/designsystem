@@ -99,9 +99,9 @@ const props = defineProps({
         default: "",
     },
     /**
-     * Property for deciding the position of the add button
+     * Property for setting the position of the add button
      */
-    addButtonPosition: {
+    buttonPosition: {
         type: String as PropType<"bottom" | "top">,
         required: false,
         default: "bottom",
@@ -149,6 +149,7 @@ const isFormModalOpen = ref(false);
 const isConfirmModalOpen = ref(false);
 const callbackAfterItemAdd = ref<(item: T) => void>(() => ({}));
 const callbackBeforeItemDelete = ref<(item: T) => void>(() => ({}));
+const addButtonText = $t("fkui.crud-dataset.button.add", "Lägg till ny");
 
 const formModalButtons = computed((): FModalButtonDescriptor[] => {
     const confirmButtonText =
@@ -332,7 +333,7 @@ function setNestedKey(key: keyof T | null | undefined): void {
 
 <template>
     <div class="crud-dataset">
-        <template v-if="props.addButtonPosition === 'top' && hasAddSlot">
+        <template v-if="props.buttonPosition === 'top' && hasAddSlot">
             <button
                 data-test="f-crud-dataset-add-button"
                 type="button"
@@ -345,10 +346,14 @@ function setNestedKey(key: keyof T | null | undefined): void {
                 -->
                 <slot name="add-button">{{
                     /** Buttontext for adding a new item */
-                    $t("fkui.crud-dataset.button.add", "Lägg till ny")
+                    addButtonText
                 }}</slot>
             </button>
 
+            <!--
+                @slot Slot for additional add buttons
+                @binding {string[]} buttonClasses Default button classes.
+            -->
             <slot
                 name="buttons"
                 v-bind="{
@@ -362,7 +367,7 @@ function setNestedKey(key: keyof T | null | undefined): void {
              @binding {(item: T, nested?: keyof T) => void} deleteItem Callback to trigger deletion modal
         -->
         <slot v-bind="{ updateItem, deleteItem }"></slot>
-        <template v-if="props.addButtonPosition === 'bottom' && hasAddSlot">
+        <template v-if="props.buttonPosition === 'bottom' && hasAddSlot">
             <button
                 data-test="f-crud-dataset-add-button"
                 type="button"
@@ -375,10 +380,14 @@ function setNestedKey(key: keyof T | null | undefined): void {
                 -->
                 <slot name="add-button">{{
                     /** Buttontext for adding a new item */
-                    $t("fkui.crud-dataset.button.add", "Lägg till ny")
+                    addButtonText
                 }}</slot>
             </button>
 
+            <!--
+                @slot Slot for additional add buttons
+                @binding {string[]} buttonClasses Default button classes.
+            -->
             <slot
                 name="buttons"
                 v-bind="{
