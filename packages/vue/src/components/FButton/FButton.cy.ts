@@ -1,5 +1,6 @@
 import { type DefineComponent, defineComponent } from "vue";
 import FButton from "./FButton.vue";
+import FButtonFocusVisualTest from "./examples/FButtonFocusVisualTest.vue";
 
 const VIEWPORT = {
     DESKTOP: { width: 700, height: 600 },
@@ -100,6 +101,14 @@ describe("Primary", () => {
         cy.mount(createComponent({ mobileFullWidth: true }));
         cy.get("#background").toMatchScreenshot();
     });
+
+    it("should have correct focus style (visual)", () => {
+        cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
+        cy.mount(FButtonFocusVisualTest, { props: { variant: "primary" } });
+        cy.get("button").eq(0).realClick();
+        cy.focused().realPress("Tab");
+        cy.get("#background").toMatchScreenshot();
+    });
 });
 
 describe("Secondary", () => {
@@ -127,6 +136,14 @@ describe("Secondary", () => {
         cy.mount(
             createComponent({ variant: "secondary", mobileFullWidth: true }),
         );
+        cy.get("#background").toMatchScreenshot();
+    });
+
+    it("should have correct focus style (visual)", () => {
+        cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
+        cy.mount(FButtonFocusVisualTest, { props: { variant: "secondary" } });
+        cy.get("button").eq(0).realClick();
+        cy.focused().realPress("Tab");
         cy.get("#background").toMatchScreenshot();
     });
 });
@@ -159,11 +176,34 @@ describe("Tertiary", () => {
         cy.get("#background").toMatchScreenshot();
     });
 
-    it("muted", () => {
-        cy.mount(
-            createComponent({ variant: "tertiary", tertiaryStyle: "muted" }),
-        );
+    it("should have correct focus style (visual)", () => {
+        cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
+        cy.mount(FButtonFocusVisualTest, { props: { variant: "tertiary" } });
+        cy.get("button").eq(0).realClick();
+        cy.focused().realPress("Tab");
         cy.get("#background").toMatchScreenshot();
+    });
+
+    describe("muted", () => {
+        it("no icon", () => {
+            cy.mount(
+                createComponent({
+                    variant: "tertiary",
+                    tertiaryStyle: "muted",
+                }),
+            );
+            cy.get("#background").toMatchScreenshot();
+        });
+
+        it("should have correct focus style (visual)", () => {
+            cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
+            cy.mount(FButtonFocusVisualTest, {
+                props: { variant: "tertiary", tertiaryStyle: "muted" },
+            });
+            cy.get("button").eq(0).realClick();
+            cy.focused().realPress("Tab");
+            cy.get("#background").toMatchScreenshot();
+        });
     });
 
     // `tertiary-style="black"` is deprecated since v6.49.0, replaced by `muted`.
@@ -174,10 +214,32 @@ describe("Tertiary", () => {
         cy.get("#background").toMatchScreenshot();
     });
 
-    it("inverted", () => {
-        cy.mount(
-            createComponent({ variant: "tertiary", tertiaryStyle: "inverted" }),
-        );
-        cy.get("#background").toMatchScreenshot();
+    describe("inverted", () => {
+        it("no icon", () => {
+            cy.mount(
+                createComponent({
+                    variant: "tertiary",
+                    tertiaryStyle: "inverted",
+                }),
+            );
+            cy.get("#background").toMatchScreenshot();
+        });
+
+        it("should have correct focus style (visual)", () => {
+            cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
+            cy.mount(FButtonFocusVisualTest, {
+                props: { variant: "tertiary", tertiaryStyle: "inverted" },
+            });
+            cy.get("button").eq(0).realClick();
+            cy.focused().realPress("Tab");
+            cy.get("#background").toMatchScreenshot();
+        });
     });
+});
+
+it("FButton should not show focus style on click (visual)", () => {
+    cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
+    cy.mount(FButtonFocusVisualTest, { props: { variant: "primary" } });
+    cy.get("button").eq(1).realClick();
+    cy.get("#background").toMatchScreenshot();
 });

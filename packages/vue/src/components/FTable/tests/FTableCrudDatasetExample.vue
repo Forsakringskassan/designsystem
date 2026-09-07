@@ -11,6 +11,9 @@ interface Row {
 
 type CrudAction = (item: Row) => void;
 
+let updateItemCallback!: CrudAction;
+let deleteItemCallback!: CrudAction;
+
 const rows = useDatasetRef<Row>([
     {
         id: "1",
@@ -29,43 +32,48 @@ const rows = useDatasetRef<Row>([
     },
 ]);
 
-function getColumns(updateItem: CrudAction, deleteItem: CrudAction): Array<TableColumn<Row>> {
-    return defineTableColumns<Row>([
-        {
-            type: "text",
-            header: "Namn",
-            key: "name",
+const columns: Array<TableColumn<Row>> = defineTableColumns<Row>([
+    {
+        type: "text",
+        header: "Namn",
+        key: "name",
+    },
+    {
+        type: "text",
+        header: "Beskrivning",
+        key: "description",
+        label: (row) => `Beskrivning för rad ${row.id}`,
+    },
+    {
+        type: "menu",
+        header: "Åtgärder",
+        text(row) {
+            return `Visa åtgärder för ${row.name}`;
         },
-        {
-            type: "text",
-            header: "Beskrivning",
-            key: "description",
-            label: (row) => `Beskrivning för rad ${row.id}`,
-        },
-        {
-            type: "menu",
-            header: "Åtgärder",
-            text(row) {
-                return `Visa åtgärder för ${row.name}`;
+        actions: [
+            {
+                label: "Ändra",
+                icon: "pen",
+                onClick(row) {
+                    updateItemCallback(row);
+                },
             },
-            actions: [
-                {
-                    label: "Ändra",
-                    icon: "pen",
-                    onClick(row) {
-                        updateItem(row);
-                    },
+            {
+                label: "Ta bort",
+                icon: "trashcan",
+                onClick(row) {
+                    deleteItemCallback(row);
                 },
-                {
-                    label: "Ta bort",
-                    icon: "trashcan",
-                    onClick(row) {
-                        deleteItem(row);
-                    },
-                },
-            ],
-        },
-    ]);
+            },
+        ],
+    },
+]);
+
+function getColumns(updateItem: CrudAction, deleteItem: CrudAction): Array<TableColumn<Row>> {
+    updateItemCallback = updateItem;
+    deleteItemCallback = deleteItem;
+
+    return columns;
 }
 
 const nextId = ref(4);

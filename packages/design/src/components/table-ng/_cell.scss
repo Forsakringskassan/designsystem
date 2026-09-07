@@ -15,8 +15,8 @@ $cell-border-width: 1px;
     text-wrap: nowrap;
     border: $cell-border-width solid transparent;
 
-    &:focus,
-    &:focus-within {
+    &:focus-visible,
+    &:has(:focus-visible) {
         box-shadow: none;
         outline: $table-ng-selection-outline solid $table-ng-cell-color-outline;
         outline-offset: -$table-ng-selection-outline;
@@ -30,7 +30,7 @@ $cell-border-width: 1px;
     button,
     a,
     [role="combobox"] {
-        &:focus {
+        &:focus-visible {
             box-shadow: none;
         }
     }
@@ -78,9 +78,15 @@ $cell-border-width: 1px;
         &:hover {
             background: $table-ng-cell-color-hover-background;
         }
+    }
 
-        &:focus,
+    // Select should have visible focus even on click when using focus-visible, but table select is a div.
+    &--select {
         &:focus-within {
+            box-shadow: none;
+            outline: $table-ng-selection-outline solid $table-ng-cell-color-outline;
+            outline-offset: -$table-ng-selection-outline;
+
             .table-ng__editable {
                 box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
                 border-radius: 0;
@@ -88,20 +94,29 @@ $cell-border-width: 1px;
         }
     }
 
-    &--text:hover:has(.table-ng__textedit:focus) {
-        background: transparent;
+    &--text {
+        &:focus-visible,
+        &:has(:focus-visible) {
+            .table-ng__editable {
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+                border-radius: 0;
+            }
+        }
+        &:hover:has(.table-ng__textedit:focus-visible) {
+            background: transparent;
+        }
     }
 
     .table-ng__editable {
         min-block-size: $editable-min-height;
 
-        &:focus-within {
+        &:has(:focus-visible) {
             box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
             border-radius: 0;
             background: transparent;
         }
 
-        &:hover:not(:focus-within) {
+        &:hover:not(:has(:focus-visible)) {
             box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
             border-radius: 0;
         }
@@ -119,21 +134,21 @@ $cell-border-width: 1px;
             box-shadow: none !important;
         }
 
-        &.table-ng__cell--error:not(:focus-within) {
+        &.table-ng__cell--error:not(:has(:focus-visible)) {
             .table-ng__editable {
                 box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
                 border-radius: 0;
             }
         }
 
-        &.table-ng__cell--error:hover:not(:focus-within) {
+        &.table-ng__cell--error:hover:not(:has(:focus-visible)) {
             .table-ng__editable {
                 box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
                 border-radius: 0;
             }
         }
 
-        &.table-ng__cell--error:focus {
+        &.table-ng__cell--error:focus-visible {
             .table-ng__editable {
                 box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
                 border-radius: 0;
@@ -145,7 +160,7 @@ $cell-border-width: 1px;
             box-sizing: border-box;
             position: relative;
 
-            &:focus-within {
+            &:has(:focus-visible) {
                 box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
                 border-radius: 0;
 
@@ -239,7 +254,7 @@ $cell-border-width: 1px;
         padding: $vertical-padding $horizontal-padding;
         border: $cell-border-width solid transparent;
 
-        &:focus {
+        &:focus-visible {
             box-shadow: none;
             outline: $table-ng-selection-outline solid $table-ng-cell-color-outline;
             outline-offset: -$table-ng-selection-outline;
@@ -280,7 +295,7 @@ $cell-border-width: 1px;
     padding: 0;
     background: transparent;
 
-    &:focus {
+    &:focus-visible {
         box-shadow: none !important;
     }
 }
@@ -318,7 +333,7 @@ $cell-border-width: 1px;
 
     .table-ng__cell--text:hover .table-ng__editable,
     .table-ng__cell--select:hover .table-ng__editable,
-    .table-ng__cell--text:focus-within .table-ng__editable,
+    .table-ng__cell--text:has(:focus-visible) .table-ng__editable,
     .table-ng__cell--select:focus-within .table-ng__editable {
         box-shadow: inset 0 (-$underline-thickness) 0 0 Highlight;
         border-radius: 0;
@@ -333,14 +348,12 @@ $cell-border-width: 1px;
         border-radius: 0;
     }
 
-    .table-ng [tabindex="0"]:focus,
     .table-ng [tabindex="0"]:focus-visible {
         outline: $table-ng-selection-outline solid CanvasText;
         outline-offset: -$table-ng-selection-outline;
         background: transparent;
     }
 
-    .table-ng__cell :is(button, a, input, select, [role="combobox"]):focus,
     .table-ng__cell :is(button, a, input, select, [role="combobox"]):focus-visible {
         outline: none;
     }

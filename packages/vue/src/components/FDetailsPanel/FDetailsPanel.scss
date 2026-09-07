@@ -64,11 +64,12 @@
         background-color: $details-panel-icon-hover;
     }
 
-    &:active,
-    &:focus {
-        @include fkui.focus-indicator;
-
+    &:active {
         background-color: $details-panel-icon-hover;
+    }
+
+    &:focus-visible {
+        @include fkui.focus-indicator;
     }
 }
 

@@ -5,7 +5,7 @@
     input[type="file"] {
         @include sr-only;
 
-        &:focus + label {
+        &:focus-visible + label {
             @include focus-indicator;
         }
     }

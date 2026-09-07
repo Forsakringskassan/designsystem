@@ -74,7 +74,7 @@ $chip-border-width: var(--f-border-width-medium);
             @include forcedcolors.selected-indicator;
         }
 
-        input[type="#{$type}"]:focus + label.#{$item}__label {
+        input[type="#{$type}"]:focus-visible + label.#{$item}__label {
             border-radius: $chip-border-radius;
         }
     }

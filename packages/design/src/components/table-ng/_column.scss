@@ -10,8 +10,8 @@ $horizontal-padding: size.$padding-050;
     border-bottom: 2px solid transparent;
     border-right: 1px solid transparent;
 
-    &:focus,
-    &:focus-within {
+    &:focus-visible,
+    &:has(:focus-visible) {
         box-shadow: none;
         outline: $table-ng-selection-outline solid $table-ng-cell-color-outline;
         outline-offset: -$table-ng-selection-outline;
@@ -28,7 +28,6 @@ $horizontal-padding: size.$padding-050;
             accent-color: $table-ng-button-primary-color-background-default;
         }
 
-        input[type="checkbox"]:focus,
         input[type="checkbox"]:focus-visible {
             box-shadow: none;
         }

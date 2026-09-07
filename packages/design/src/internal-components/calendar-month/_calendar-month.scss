@@ -62,7 +62,7 @@ $day-width: calc((100% - $week-width) / $days);
         background-color: $month-day-color-background-default;
         font-size: 1rem;
 
-        &:focus {
+        &:focus-visible {
             position: relative;
             z-index: z-index.$CALENDAR_MONTH;
 

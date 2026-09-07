@@ -16,7 +16,7 @@ export class FExpandablePanelPageObject implements BasePageObject {
      * @param selector - the root of the expandablepanel, usually `<div class="expandable-panel">...</div>`.
      */
     public constructor(selector: string) {
-        this.selector = `.expandable-panel:has(${selector})`;
+        this.selector = selector;
         this.el = () => cy.get(this.selector);
 
         this.expandCollapseIcon = () =>

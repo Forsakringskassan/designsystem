@@ -106,7 +106,7 @@ $radio_button_label_offset: 0.1rem;
         opacity: 1;
     }
 
-    input[type="radio"]:focus + label {
+    input[type="radio"]:focus-visible + label {
         @include focus-indicator;
     }
 }

@@ -126,7 +126,7 @@ footer {
         button {
             appearance: none;
 
-            &:focus {
+            &:focus-visible {
                 @include fkui.focus-indicator;
             }
 

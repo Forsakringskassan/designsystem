@@ -37,7 +37,7 @@
     transition-property: background-color, border-color, transform;
     transition-timing-function: var(--f-button-animation-curve);
 
-    &:focus {
+    &:focus-visible {
         background-color: $background-color--focus;
         border-color: $border-color--focus;
         color: $color--focus;
@@ -58,7 +58,7 @@
         transform: translateY(1px);
     }
 
-    &:focus {
+    &:focus-visible {
         @include focus.focus-indicator;
     }
 

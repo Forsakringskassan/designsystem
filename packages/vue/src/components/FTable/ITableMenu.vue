@@ -72,7 +72,7 @@ defineExpose(expose);
     <td class="table-ng__cell table-ng__cell--button" :class="{ 'table-ng__cell--menu-open': isOpen }">
         <template v-if="visible">
             <button ref="button" class="icon-button" type="button" tabindex="-1" aria-haspopup="menu" @click="onToggle">
-                <f-icon name="bars"></f-icon>
+                <f-icon :library="column.iconLibrary" :name="column.icon"></f-icon>
                 <span class="sr-only">{{ column.text(row) }}</span>
             </button>
             <f-context-menu
