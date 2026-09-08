@@ -4,6 +4,8 @@ exports[`snapshot > should match snapshot 1`] = `
 <div
   class="crud-dataset"
 >
+  <!--v-if-->
+   
   
   <div
     id="cancelMessage"
@@ -142,26 +144,26 @@ exports[`snapshot > should match snapshot 1`] = `
   </table>
   
    
-  <div>
-    <button
-      class="button button--tertiary crud-dataset__add-button"
-      data-test="f-crud-dataset-add-button"
-      type="button"
-    >
-      <f-icon-stub
-        class="button__icon"
-        library="f"
-        name="plus"
-      />
-       
-      
-      Lägg till ny
-      
-    </button>
+  
+  <button
+    class="button button--tertiary crud-dataset__add-button"
+    data-test="f-crud-dataset-add-button"
+    type="button"
+  >
+    <f-icon-stub
+      class="button__icon"
+      library="f"
+      name="plus"
+    />
      
     
+    Lägg till ny
     
-  </div>
+  </button>
+   
+  
+  
+  
    
   <f-form-modal-stub
     ariaclosetext="Stäng"

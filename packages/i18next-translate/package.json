@@ -40,11 +40,11 @@
     "watch": "rollup --config --watch"
   },
   "dependencies": {
-    "i18next": "26.4.0"
+    "i18next": "26.4.2"
   },
   "devDependencies": {
     "@fkui/logic": "6.56.0",
-    "@forsakringskassan/vitest-config": "2.7.0",
+    "@forsakringskassan/vitest-config": "2.8.1",
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",

@@ -1081,6 +1081,10 @@ export default defineMetadata({
             "form-modal-size": {
                 enum: ["small", "medium", "large", "fullwidth"],
             },
+            "add-button-position": {
+                required: false,
+                enum: ["bottom", "top"],
+            },
         },
     },
 

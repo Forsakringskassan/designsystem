@@ -294,7 +294,6 @@ describe("open calendar with year selector enabled", () => {
             datepickerField.toggleCalendarButton().click();
             datepickerField.calendarCaption().should("have.focus");
             cy.realPress("Tab");
-
             cy.toMatchScreenshot();
         });
     }
@@ -432,6 +431,7 @@ describe("open calendar with year selector enabled and open", () => {
 
     it("should close year selector when pressing highlighted year", () => {
         datepickerField.highlightedYear().click();
+        datepickerField.navYearSelectorButton().should("have.focus");
         datepickerField.yearSelector().should("not.exist");
     });
 
@@ -449,7 +449,8 @@ describe("open calendar in desktop", () => {
         setViewport(VIEWPORT.DESKTOP);
 
         cy.mount(FDatepickerField);
-        datepickerField.toggleCalendarButton().click();
+        datepickerField.toggleCalendarButton().realClick();
+        datepickerField.calendarCaption().should("have.focus");
     });
 
     it("should not show calendar inline", () => {
@@ -619,7 +620,8 @@ describe("open calendar with width 320px", () => {
             }),
         );
 
-        datepickerField.toggleCalendarButton().click();
+        datepickerField.toggleCalendarButton().realClick();
+        datepickerField.calendarCaption().should("have.focus");
         cy.toMatchScreenshot();
     });
 });
@@ -783,10 +785,11 @@ describe("valid date", () => {
 
     describe("open calendar", () => {
         beforeEach(() => {
-            datepickerField.toggleCalendarButton().click();
+            datepickerField.toggleCalendarButton().realClick();
         });
 
         it("should have approved design", () => {
+            datepickerField.calendarCaption().should("have.focus");
             cy.toMatchScreenshot();
         });
 
@@ -833,10 +836,11 @@ describe("today's date", () => {
                 },
             });
 
-            datepickerField.toggleCalendarButton().click();
+            datepickerField.toggleCalendarButton().realClick();
         });
 
         it("should have approved design", () => {
+            datepickerField.calendarCaption().should("have.focus");
             cy.toMatchScreenshot();
         });
 
@@ -942,7 +946,7 @@ describe("open calendar in desktop with always inline", () => {
                 alwaysInline: true,
             },
         });
-        datepickerField.toggleCalendarButton().click();
+        datepickerField.toggleCalendarButton().realClick();
     });
 
     it("should show calendar inline", () => {
@@ -1080,7 +1084,8 @@ describe("mindate within month", () => {
 
     describe("open calendar", () => {
         it("should have approved design", () => {
-            datepickerField.toggleCalendarButton().click();
+            datepickerField.toggleCalendarButton().realClick();
+            datepickerField.calendarCaption().should("have.focus");
             cy.toMatchScreenshot();
         });
 
@@ -1186,7 +1191,8 @@ describe("maxdate within month", () => {
 
     describe("open calendar", () => {
         it("should have approved design", () => {
-            datepickerField.toggleCalendarButton().click();
+            datepickerField.toggleCalendarButton().realClick();
+            datepickerField.calendarCaption().should("have.focus");
             cy.toMatchScreenshot();
         });
 
@@ -1285,7 +1291,8 @@ describe("min- and maxdate within month", () => {
 
     describe("open calendar", () => {
         it("should have approved design", () => {
-            datepickerField.toggleCalendarButton().click();
+            datepickerField.toggleCalendarButton().realClick();
+            datepickerField.calendarCaption().should("have.focus");
             cy.toMatchScreenshot();
         });
     });

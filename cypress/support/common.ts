@@ -1,8 +1,7 @@
 /// <reference types="cypress" />
 
+import { configure } from "@forsakringskassan/cypress-config/support";
 import "@forsakringskassan/cypress-visual-regression/commands";
-import "@forsakringskassan/cypress-axe/support";
-import "cypress-html-validate/dist/commands";
 import "../assertions/trimmed-text";
 import "./commands/forced-colors";
 
@@ -14,6 +13,8 @@ if (Cypress.expose("DISABLE_VISUAL_REGRESSION")) {
     });
 }
 
-afterEach(() => {
-    cy.htmlvalidate();
+configure({
+    afterEach: {
+        htmlvalidate: true,
+    },
 });
