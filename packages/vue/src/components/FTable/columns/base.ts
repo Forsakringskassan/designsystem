@@ -7,6 +7,11 @@ import { getSortable } from "./helpers/get-sortable";
 export type TableColumnSize = "grow" | "shrink";
 
 /**
+ * @public
+ */
+export type TableColumnWidthUnit = "px" | "rem";
+
+/**
  * Base properties shared by all table column types.
  *
  * @public
@@ -39,6 +44,17 @@ export interface TableColumnBase<T> {
      * Default `() => true`.
      */
     visible?: (this: void, row: T) => boolean;
+    /**
+     * Column fixed width. It should be used with caution, since its not as resposive as `size`.
+     * It will grow if no other column is allowed to grow and the table can be wider.
+     */
+    width?: number;
+    /**
+     * The unit for `width`. Supports `"px"` and `"rem"`.
+     *
+     * Default `"px"`
+     */
+    widthUnit?: TableColumnWidthUnit;
 }
 
 /**
@@ -54,6 +70,8 @@ export interface NormalizedTableColumnBase<T, K> {
     readonly size: Readonly<Ref<TableColumnSize | null>>;
     readonly enabled: MaybeRef<boolean>;
     readonly visible: (this: void, row: T) => boolean;
+    readonly width?: number;
+    readonly widthUnit: TableColumnWidthUnit;
 }
 
 /**
@@ -70,7 +88,9 @@ export type OmittedNormalizedColumnProperties =
     | "size"
     | "component"
     | "enabled"
-    | "visible";
+    | "visible"
+    | "width"
+    | "widthUnit";
 
 /**
  * @internal
@@ -86,6 +106,8 @@ export function normalizeBaseColumn<T, K = never>(
     | "enabled"
     | "sortable"
     | "visible"
+    | "width"
+    | "widthUnit"
 > {
     const id = Symbol();
     const header = toRef(column.header);
@@ -103,5 +125,7 @@ export function normalizeBaseColumn<T, K = never>(
         size,
         enabled: column.enabled ?? true,
         visible: column.visible ?? (() => true),
+        width: column.width,
+        widthUnit: column.widthUnit ?? "px",
     };
 }

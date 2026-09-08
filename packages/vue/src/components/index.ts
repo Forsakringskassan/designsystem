@@ -198,6 +198,7 @@ export {
     type TableColumnSize,
     type TableColumnText,
     type TableColumnType,
+    type TableColumnWidthUnit,
     FTable,
     baseTypes,
     defineTableColumns,

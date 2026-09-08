@@ -2,6 +2,7 @@ import { type ComponentPublicInstance, ref } from "vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import ITableHeader from "./ITableHeader.vue";
+import { type TableColumnWidthUnit } from "./columns/base.js";
 import { normalizeTableColumn } from "./table-column";
 
 describe("description", () => {
@@ -136,4 +137,71 @@ describe("sorting keyboard interaction", () => {
 
         expect(wrapper.emitted("toggleSortOrder")).toBeUndefined();
     });
+});
+
+describe("Fixed width", () => {
+    interface TestRow {
+        name: string;
+    }
+
+    it("should not set width when width is not provided", () => {
+        expect.assertions(3);
+        const column = normalizeTableColumn<TestRow>({
+            header: "lorem ipsum",
+            key: "name",
+            widthUnit: "rem",
+        });
+        const wrapper = mount(
+            ITableHeader as unknown as ComponentPublicInstance,
+            { props: { column, sortEnabled: false, sortOrder: "unsorted" } },
+        );
+
+        expect(wrapper.get("th").element.style.width).toBe("");
+        expect(wrapper.get("th").element.style.minWidth).toBe("");
+        expect(wrapper.get("th").element.style.maxWidth).toBe("");
+    });
+
+    it("should set width with default px unit", () => {
+        expect.assertions(3);
+        const column = normalizeTableColumn<TestRow>({
+            header: "lorem ipsum",
+            key: "name",
+            width: 200,
+        });
+        const wrapper = mount(
+            ITableHeader as unknown as ComponentPublicInstance,
+            { props: { column, sortEnabled: false, sortOrder: "unsorted" } },
+        );
+
+        expect(wrapper.get("th").element.style.width).toBe("200px");
+        expect(wrapper.get("th").element.style.minWidth).toBe("200px");
+        expect(wrapper.get("th").element.style.maxWidth).toBe("200px");
+    });
+
+    it.each(["px", "rem"] as TableColumnWidthUnit[])(
+        "should set width with provided %s unit",
+        (unit) => {
+            expect.assertions(3);
+            const column = normalizeTableColumn<TestRow>({
+                header: "lorem ipsum",
+                key: "name",
+                width: 200,
+                widthUnit: unit,
+            });
+            const wrapper = mount(
+                ITableHeader as unknown as ComponentPublicInstance,
+                {
+                    props: {
+                        column,
+                        sortEnabled: false,
+                        sortOrder: "unsorted",
+                    },
+                },
+            );
+
+            expect(wrapper.get("th").element.style.width).toBe(`200${unit}`);
+            expect(wrapper.get("th").element.style.minWidth).toBe(`200${unit}`);
+            expect(wrapper.get("th").element.style.maxWidth).toBe(`200${unit}`);
+        },
+    );
 });

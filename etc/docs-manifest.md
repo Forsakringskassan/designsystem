@@ -110,6 +110,7 @@ components/table-and-list/table/select-rows-code.html
 components/table-and-list/table/select-rows.html
 components/table-and-list/table/sort-filter-code.html
 components/table-and-list/table/sort-filter.html
+components/table-and-list/table/width.html
 components/validation/ferrorlist.html
 components/validation/formatters-and-parsers.html
 components/validation/fvalidationform.html
