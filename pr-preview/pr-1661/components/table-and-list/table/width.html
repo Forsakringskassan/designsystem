@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Sätta kolumnbredd i tabell - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../assets/docs-13e79d.css"
+            href="../../../assets/docs-e6f9ec.css"
             crossorigin
-            integrity="sha384-m86AU88PqMXtgsqVeYHwbkYs0WcSEACIZ/Kvj3tPJ/Uhrl7lUJMKw2z+28iRFi/m"
+            integrity="sha384-Sa/Hj4erk1Vgl1fIiBk0Uk+djwkpxlWxCKH80R4Ak/cyYoitMkRhwAPzyYp3hoJD"
             
         />
         <link
             rel="stylesheet"
-            href="../../../assets/docs-fkui-f7bb51.css"
+            href="../../../assets/docs-fkui-f099ac.css"
             crossorigin
-            integrity="sha384-jaA7WhBIs5Eg1VGFC+T8baqwhKtDoi9ta2UnW8lYdwXpiuzu+hsUAsPFNyuRQcv6"
+            integrity="sha384-iZR7inEDL3pI9m7ClK4+asFJ6W7TKqFt39qEu5x/LZxCMoxRXNTcTtNtQCBbjn2/"
             
         />
 
@@ -23,19 +23,19 @@
             {
   "imports": {
     "vue": "../../../assets/vendor-vue-de7570.js",
-    "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-94331f.js",
+    "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-6dc1c5.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-d98f1d.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-756ff1.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-556b83.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-534f16.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-6ce7bb.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js"
   },
   "integrity": {
     "../../../assets/vendor-vue-de7570.js": "sha384-WPWz93taK2QwJ4Wn4+VnBNQQCRrMi6sDR9z8/jDQyCsimuklI/LF0cmvQb6bBq1C",
-    "../../../assets/vendor-fkui-vue-selectors-94331f.js": "sha384-D4xYSFtr6w1NbilmG63z1mEjOXO6Hsb9VhsJ8rogNo235nGB2AJ0jUpDcX0QEMvp",
+    "../../../assets/vendor-fkui-vue-selectors-6dc1c5.js": "sha384-yBhHfgBXbp99zC026AAWDqAlXw9ySf/CydabCreqjwycHhBYl1C6yg8jW3oAnD2p",
     "../../../assets/vendor-fkui-logic-d98f1d.js": "sha384-SGeHcEY4B6lmI5P91r2mELwluuhA7jlFsJ8b9rHDscdLxLKoug5qRQ363SzDUSQt",
     "../../../assets/vendor-fkui-date-756ff1.js": "sha384-poMivCeyRvtjqiexqG/jXcCfyu2x3A7bwI5tx3mB74FC5uQUUjIVoQFYJQTHi23Q",
-    "../../../assets/vendor-fkui-vue-556b83.js": "sha384-GxtjGl9ctW+/MTcYbUhjZNrroh29QwztwaKceJISwCTAId4sClS6EHhVC3sY/xki",
+    "../../../assets/vendor-fkui-vue-534f16.js": "sha384-ZwIjy/3RhQsYtr89r6neLa5irOj9Er8uGbvaQHYjrXvRWStAN+E2H3VTk61Sn9Nh",
     "../../../assets/vendor-fkui-vue-labs-6ce7bb.js": "sha384-QO/yLIQT6IBPgk3MmDGmpABWSFSlfMKTad2JFm+/JTVgPFg0xO2DNC0P8Ci05VYS",
     "../../../assets/vendor-forsakringskassan-docs-live-example-6d2d9d.js": "sha384-T8jkOagoFX6LDj2QbCvP8DkKMrMPgdAFrg/sYvtRagV4DTNYut32ghIjZatx0QE3"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-387c67.json"
+    href="../../../search-data-ef3553.json"
     as="fetch"
     crossorigin
-    integrity="sha384-asUJf2KAqk1+aX3iAmcsTg4zChivaU8fxaQJnakkQTUdu1w05wI4bx49r3yMtFrr"
+    integrity="sha384-EdgbAIJ8wY6TNm080M+MBt5w8FfsMKDv1eqlu8sAHuYbHnjIg9oDoIZkyxTG0xGn"
     id="search-data"
 />
 <script>
@@ -1570,13 +1570,15 @@
                                 
                                 <li><a href="#anvandning">Användning</a></li>
                                 
+                                <li><a href="#anvandning_av_procentuella_enheter_pa_kolumnerna">Användning av procentuella enheter på kolumnerna</a></li>
+                                
                             </ul>
                         </details>
                         
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Kolumnernas bredd i tabellen kan skjusteras med olika parametrar.</p>
+                    <div id="content"><p class="docs-paragraph">Kolumnernas bredd i tabellen kan justeras med olika parametrar.</p>
 <h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2>
             <div
                 id="example-4fe447"
@@ -1588,13 +1590,13 @@
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-6cf530"></div>
+        <div id="example-673e01"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableWidthExample-6cf530.js"></script>
+        <script type="module" src="./FTableWidthExample-673e01.js"></script>
     
                 </div>
                 <div>
@@ -1655,8 +1657,7 @@ interface <span class="hljs-title class_">Row</span> {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
         <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
         <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
-        <span class="hljs-attr">width</span>: <span class="hljs-number">13</span>,
-        <span class="hljs-attr">widthUnit</span>: <span class="hljs-string">&quot;rem&quot;</span>,
+        <span class="hljs-attr">width</span>: <span class="hljs-string">&quot;13rem&quot;</span>,
     },
     {
         <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
@@ -1683,22 +1684,120 @@ interface <span class="hljs-title class_">Row</span> {
 <li><code>Land</code> kolumnen har <code>width</code> satt.</li>
 <li><code>Pris per kilo</code> kolumnen har <code>&quot;shrink&quot;</code>.</li>
 </ul>
-<h3 id="size" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#size"><code>size</code></a></h3><p class="docs-paragraph">Är det föredragna sättet att skjustera kolumnbredder på eftersom det är mest responsivt.</p>
+<h3 id="size" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#size"><code>size</code></a></h3><p class="docs-paragraph">Är det föredragna sättet att justera kolumnbredder på eftersom det är mest responsivt.</p>
 <ul>
 <li><code>&quot;grow&quot;</code> kolumnen tar upp så mycket utrymme den kan.</li>
 <li><code>&quot;shrink&quot;</code> kolumnen tar upp så lite den kan utan att kapa innehållet.</li>
 </ul>
-<h3 id="width" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#width"><code>width</code></a></h3><p class="docs-paragraph">Sätter en bredd som inte kan bli mindre eller större än det som är satt. Bör användas med
-försiktighet eftersom det gör tabellen mindre responsiv och kan kapa innehållet.</p>
-<p class="docs-paragraph">Kräver att en kolumn i tabellen får växa med <code>&quot;grow&quot;</code> för att inte själv växa. Om tabellen bara har kolumner med <code>&quot;shrink&quot;</code> och tabellen får växa kommer kolumnen med <code>width</code> satt att växa.</p>
-<h3 id="widthunit" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#widthunit"><code>widthUnit</code></a></h3><p class="docs-paragraph">Bestämmer vilket enhet <code>width</code> ska använda.</p>
-<p class="docs-paragraph">Tillgängliga enheter:</p>
+<h3 id="width" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#width"><code>width</code></a></h3><p class="docs-paragraph">Används för att sätta en mer specifik bredd än vad <code>size</code> kan ge. Skrivs som <code>&quot;50%&quot;</code>.</p>
+<p class="docs-paragraph">Enhet:</p>
+<ul>
+<li><code>&quot;%&quot;</code></li>
+</ul>
+<p class="docs-paragraph">Kolumnen tar upp den precentuella angivna delen. Den kan både växa och krympa.</p>
+<p class="docs-paragraph">Enheter:</p>
 <ul>
 <li><code>&quot;px&quot;</code></li>
 <li><code>&quot;rem&quot;</code></li>
+<li><code>&quot;ch&quot;</code></li>
 </ul>
-<p class="docs-paragraph">Default: <code>&quot;px&quot;</code></p>
+<p class="docs-paragraph">Sätter en bredd som inte kan bli mindre eller större än det som är satt. Bör användas med försiktighet eftersom det gör tabellen mindre responsiv.</p>
+<p class="docs-paragraph">Kräver att en kolumn i tabellen får växa med <code>&quot;grow&quot;</code> för att inte själv växa. Om tabellen bara har kolumner med <code>&quot;shrink&quot;</code> och tabellen får växa kommer kolumnen med <code>width</code> satt att växa.</p>
+<h2 id="anvandning_av_procentuella_enheter_pa_kolumnerna" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning_av_procentuella_enheter_pa_kolumnerna">Användning av procentuella enheter på kolumnerna</a></h2>
+            <div
+                id="example-4d8017"
+                class="code-preview code-preview--default"
+                
+                
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-760042"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableWidthPercentExample-760042.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="code-preview__button code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTable</span>, defineTableColumns, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
+interface <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">namn</span>: string;
+    <span class="hljs-attr">land</span>: string;
+    <span class="hljs-attr">pris</span>: string;
+}
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">data</span>: <span class="hljs-title class_">Row</span>[] = [
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Apelsin&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Spanien&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;30&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Banan&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Ecuador&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;15&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">namn</span>: <span class="hljs-string">&quot;Äpple&quot;</span>,
+        <span class="hljs-attr">land</span>: <span class="hljs-string">&quot;Sverige&quot;</span>,
+        <span class="hljs-attr">pris</span>: <span class="hljs-string">&quot;22&quot;</span>,
+    },
+];
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Frukt&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;namn&quot;</span>,
+        <span class="hljs-attr">width</span>: <span class="hljs-string">&quot;30%&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;land&quot;</span>,
+        <span class="hljs-attr">width</span>: <span class="hljs-string">&quot;50%&quot;</span>,
+    },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:currency&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Pris per kilo&quot;</span>,
+        <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;pris&quot;</span>,
+        <span class="hljs-attr">width</span>: <span class="hljs-string">&quot;20%&quot;</span>,
+    },
+]);
+
+<span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">useDatasetRef</span>(data);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        
 
                     </div>
                 </main>
@@ -1746,9 +1845,9 @@ försiktighet eftersom det gör tabellen mindre responsiv och kan kapa innehåll
     </ul>
 </div>
 
-<div class="footer__right"><div class="version">SFKUI-7270-FTable-column-width (<a href="https://github.com/Forsakringskassan/designsystem/commits/d0c2ff9d039978f2631e5affba93779976250415">d0c2ff9</a>)<br />
+<div class="footer__right"><div class="version">SFKUI-7270-FTable-column-width (<a href="https://github.com/Forsakringskassan/designsystem/commits/f2648475063fa7641478227ddafb9fefcb9c9106">f264847</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1661">PR 1661</a><br />
-        2026-09-08 12:12
+        2026-09-09 13:52
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -1888,10 +1987,10 @@ försiktighet eftersom det gör tabellen mindre responsiv och kan kapa innehåll
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../../assets/processors/selectable-version/select-version-cd4b90.js"
+            src="../../../assets/processors/selectable-version/select-version-d7b0cb.js"
             type="module"
             crossorigin
-            integrity="sha384-41GbZjwaVPAQ76y2vEAmhBfywQ3kTymdg946wgOQzJdmmAMCg7ydw7ZzYi0xwzMz"
+            integrity="sha384-WdGhBghn2xQJYe+pj27GQqeShglIvHfnPMIol/JhZ62/Gw/xiqx+kYHaocQidwTr"
             
         ></script><script
             src="../../../assets/processors/cookie/cookie-ca9142.js"
