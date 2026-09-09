@@ -43,10 +43,6 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
     &__item {
         @extend %list-item;
 
-        &--hover {
-            @extend %list-item-hover;
-        }
-
         &--active {
             @extend %list-item-active;
         }
@@ -95,13 +91,16 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
     }
 
     &--hover {
-        .list__item:hover {
-            cursor: pointer;
-            @extend %list-item-hover;
+        @media (hover: hover) {
+            .list__item:hover {
+                cursor: pointer;
 
-            &.list__item {
-                &--active {
-                    @extend %list-item-active;
+                &:not(.disabled) {
+                    background: $list-row-color-background-hover;
+                }
+
+                &.list__item--active {
+                    background: $list-row-color-background-active;
                 }
             }
         }
