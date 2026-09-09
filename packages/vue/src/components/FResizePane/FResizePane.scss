@@ -171,8 +171,18 @@ $handle-offset: ($handle-size + $handle-expand) * 0.5;
         position: absolute;
     }
 
+    @media (hover: hover) {
+        &:hover::before {
+            background-color: $handle-highlight;
+            transition-delay: $transition-delay;
+
+            @media (forced-colors: active) {
+                background-color: Highlight;
+            }
+        }
+    }
+
     &:focus::before,
-    &:hover::before,
     &.drag::before {
         background-color: $handle-highlight;
         transition-delay: $transition-delay;
