@@ -46,3 +46,9 @@ Enheter:
 Sätter en bredd som inte kan bli mindre eller större än det som är satt. Bör användas med försiktighet eftersom det gör tabellen mindre responsiv.
 
 Kräver att en kolumn i tabellen får växa med `"grow"` för att inte själv växa. Om tabellen bara har kolumner med `"shrink"` och tabellen får växa kommer kolumnen med `width` satt att växa.
+
+## Användning av procentuella enheter på kolumnerna
+
+```import
+FTableWidthPercentExample.vue
+```

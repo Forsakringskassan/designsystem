@@ -46,7 +46,7 @@ export interface TableColumnBase<T> {
      */
     visible?: (this: void, row: T) => boolean;
     /**
-     * Used to set a more specific width then `size` can provide. Write like: `"20%"`
+     * Used to set a more specific width than `size` can provide. Write like: `"20%"`
      *
      * `"%"`
      * The column takes up the percent given of the grid. It can both grow and shrink.
