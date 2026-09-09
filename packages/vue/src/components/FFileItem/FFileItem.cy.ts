@@ -19,10 +19,6 @@ function createComponent(template: string): DefineComponent {
     });
 }
 
-afterEach(() => {
-    cy.forcedColors("none");
-});
-
 describe("FFileItem", () => {
     const fileItem = new FFileItemPageObject("[data-test=file-item]");
 
@@ -154,7 +150,10 @@ describe("FFileItem", () => {
         for (const mode of forcedColorModes) {
             it(`should render correct styling for forced color mode '${mode}'`, () => {
                 cy.viewport(300, 100);
-                cy.forcedColors(mode);
+                if (mode !== "none") {
+                    cy.prefersColorScheme(mode);
+                    cy.forcedColors("active");
+                }
                 cy.mount(FFileItem, {
                     props: {
                         fileName: "visualExample.pdf",

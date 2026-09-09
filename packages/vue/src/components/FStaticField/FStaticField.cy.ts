@@ -35,12 +35,12 @@ describe("FStaticField", () => {
 describe("Visual forcedColor", () => {
     const forcedColorModes = ["none", "dark", "light"] as const;
 
-    afterEach(() => {
-        cy.forcedColors("none");
-    });
     for (const mode of Object.values(forcedColorModes)) {
         it(`static field with tooltip, ${mode} (visual)`, () => {
-            cy.forcedColors(mode);
+            if (mode !== "none") {
+                cy.prefersColorScheme(mode);
+                cy.forcedColors("active");
+            }
             const TestComponent = defineComponent({
                 components: { FStaticField, FTooltip },
                 template: /* HTML */ `
