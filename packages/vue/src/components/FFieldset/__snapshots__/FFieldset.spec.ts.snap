@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots > should match snapshot when validityMode is 'ERROR' 1`] = `
+exports[`snapshots > should match snapshot when validityMode is ERROR 1`] = `
 <fieldset
   class="fieldset"
   id="someId"
@@ -42,7 +42,7 @@ exports[`snapshots > should match snapshot when validityMode is 'ERROR' 1`] = `
 </fieldset>
 `;
 
-exports[`snapshots > should match snapshot when validityMode is 'INITIAL' 1`] = `
+exports[`snapshots > should match snapshot when validityMode is INITIAL 1`] = `
 <fieldset
   class="fieldset"
   id="someId"
@@ -75,7 +75,7 @@ exports[`snapshots > should match snapshot when validityMode is 'INITIAL' 1`] = 
 </fieldset>
 `;
 
-exports[`snapshots > should match snapshot when validityMode is 'INITIAL' 2`] = `
+exports[`snapshots > should match snapshot when validityMode is INITIAL 2`] = `
 <fieldset
   class="fieldset"
   id="someId"
@@ -108,7 +108,7 @@ exports[`snapshots > should match snapshot when validityMode is 'INITIAL' 2`] = 
 </fieldset>
 `;
 
-exports[`snapshots > should match snapshot when validityMode is 'VALID' 1`] = `
+exports[`snapshots > should match snapshot when validityMode is VALID 1`] = `
 <fieldset
   class="fieldset"
   id="someId"

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`snapshots > should match snapshot when validityMode is 'ERROR' and isValid is false 1`] = `
+exports[`snapshots > should match snapshot when validityMode is ERROR and isValid is false 1`] = `
 <div>
   <div
     class="text-field text-field--error"
@@ -85,7 +85,7 @@ exports[`snapshots > should match snapshot when validityMode is 'ERROR' and isVa
 </div>
 `;
 
-exports[`snapshots > should match snapshot when validityMode is 'INITIAL' and isValid is false 1`] = `
+exports[`snapshots > should match snapshot when validityMode is INITIAL and isValid is false 1`] = `
 <div>
   <div
     class="text-field"
@@ -154,7 +154,7 @@ exports[`snapshots > should match snapshot when validityMode is 'INITIAL' and is
 </div>
 `;
 
-exports[`snapshots > should match snapshot when validityMode is 'INITIAL' and isValid is true 1`] = `
+exports[`snapshots > should match snapshot when validityMode is INITIAL and isValid is true 1`] = `
 <div>
   <div
     class="text-field"
@@ -223,7 +223,7 @@ exports[`snapshots > should match snapshot when validityMode is 'INITIAL' and is
 </div>
 `;
 
-exports[`snapshots > should match snapshot when validityMode is 'VALID' and isValid is true 1`] = `
+exports[`snapshots > should match snapshot when validityMode is VALID and isValid is true 1`] = `
 <div>
   <div
     class="text-field"
