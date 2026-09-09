@@ -113,6 +113,67 @@ describe("ITableText", () => {
         expect(td.element.tabIndex).toBe(0);
     });
 
+    it.each([
+        { key: "Tab", shiftKey: false },
+        { key: "Shift+Tab", shiftKey: true },
+    ])(
+        "should save value and keep focus on cell then $key is presses in edit mode",
+        async ({ shiftKey }) => {
+            expect.assertions(8);
+            const row = { text: "Foo" };
+            const column = normalizeTableColumn<typeof row>({
+                type: "text",
+                header: "Text",
+                key: "text",
+                editable: true,
+                label: () => "Text",
+            });
+
+            const wrapper = mount(ITableText, {
+                attachTo: document.body,
+                props: {
+                    row,
+                    column,
+                } as never,
+                global: {
+                    stubs: {
+                        IPopupError: true,
+                    },
+                },
+            });
+
+            const td = wrapper.get("td");
+            const input = wrapper.get("input");
+
+            expect(td.element.tabIndex).toBe(-1);
+            expect(input.element.tabIndex).toBe(-1);
+
+            await td.trigger("click");
+            await flushPromises();
+
+            expect(input.element.tabIndex).toBe(0);
+
+            await input.setValue("Mjauu");
+
+            const event = new KeyboardEvent("keydown", {
+                bubbles: true,
+                cancelable: true,
+                key: "Tab",
+                code: "Tab",
+                shiftKey,
+            });
+
+            input.element.dispatchEvent(event);
+            await flushPromises();
+
+            expect(event.defaultPrevented).toBe(true);
+            expect(input.element.tabIndex).toBe(-1);
+            expect(td.element.tabIndex).toBe(0);
+            expect(document.activeElement).toBe(td.element);
+            expect(row.text).toBe("Mjauu");
+        },
+    );
+
     it("should not set numeric class when tnum is disabled in editable cell", () => {
         expect.assertions(1);
         const row: Row = { foo: "Foo" };

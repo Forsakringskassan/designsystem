@@ -267,6 +267,12 @@ function onStopEdit(options: { reason: "enter" | "escape" | "tab" | "shift-tab" 
 
     if (reason === "blur") {
         tdElement.value.tabIndex = 0;
+    } else if (reason === "tab" || reason === "shift-tab") {
+        tdElement.value.tabIndex = 0;
+
+        void nextTick().then(() => {
+            tdElement.value?.focus();
+        });
     }
 
     void stopEdit(inputElement.value, reason);
@@ -348,7 +354,9 @@ function onEditingKeydown(event: KeyboardEvent): void {
             break;
         }
         case "Tab": {
+            event.preventDefault();
             pendingStopEditReason = event.shiftKey ? "shift-tab" : "tab";
+            void validationFacade.validateElement(inputElement.value);
             break;
         }
     }
