@@ -4,8 +4,8 @@ import { type SimplePersistenceServiceInterface } from "../simple-persistence-se
 export class SimplePersistenceService<
     T,
 > implements SimplePersistenceServiceInterface<T> {
-    public get = vi.fn();
-    public find = vi.fn();
-    public set = vi.fn();
-    public remove = vi.fn();
+    public get = vi.fn<() => T>();
+    public find = vi.fn<() => T | undefined>();
+    public set = vi.fn<() => void>();
+    public remove = vi.fn<() => void>();
 }

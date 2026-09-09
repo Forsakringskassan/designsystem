@@ -20,6 +20,10 @@ vi.mock(import("./scroll-to"), () => ({
     scrollTo: vi.fn(),
 }));
 
+beforeEach(() => {
+    vi.mocked(scrollTo).mockClear();
+});
+
 describe("focus", () => {
     describe("with force option", () => {
         it('should add tabindex="-1" and focus if no tabindex exists', () => {
@@ -119,7 +123,7 @@ describe("focus", () => {
             const element = document.createElement("input");
             const spy = vi.spyOn(element, "focus");
             focus(element, { scrollToTop: true });
-            expect(scrollTo).toHaveBeenCalled();
+            expect(scrollTo).toHaveBeenCalledTimes(1);
             expect(spy).toHaveBeenCalledWith({ preventScroll: true });
         });
 
@@ -128,12 +132,12 @@ describe("focus", () => {
             const element = document.createElement("input");
             const spy = vi.spyOn(element, "focus");
             focus(element, { scrollToTop: false });
-            expect(scrollTo).toHaveBeenCalledTimes(1);
+            expect(scrollTo).toHaveBeenCalledTimes(0);
             expect(spy).toHaveBeenCalledWith({});
             focus(element);
             spy.mockClear();
             focus(element);
-            expect(scrollTo).toHaveBeenCalledTimes(1); // Still 1
+            expect(scrollTo).toHaveBeenCalledTimes(0);
             expect(spy).toHaveBeenCalledWith({});
         });
     });

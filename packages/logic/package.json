@@ -68,7 +68,7 @@
     "@types/lodash.clonedeep": "4.5.9",
     "rollup": "4.63.1",
     "rollup-plugin-dts": "6.5.1",
-    "vitest": "4.1.11"
+    "vitest": "5.0.0"
   },
   "peerDependencies": {
     "@fkui/date": "^6.57.0"
