@@ -58,12 +58,14 @@ $chip-border-width: var(--f-border-width-medium);
             }
         }
 
-        .#{$item}__label:hover {
-            border-color: $chip-color-border-hover;
-            background-color: $chip-color-background-hover;
-            color: $chip-color-text-hover;
+        @media (hover: hover) {
+            .#{$item}__label:hover {
+                border-color: $chip-color-border-hover;
+                background-color: $chip-color-background-hover;
+                color: $chip-color-text-hover;
 
-            @include forcedcolors.hover-indicator(border, $chip-border-width);
+                @include forcedcolors.hover-indicator(border, $chip-border-width);
+            }
         }
 
         input[type="#{$type}"]:checked + .#{$item}__label {

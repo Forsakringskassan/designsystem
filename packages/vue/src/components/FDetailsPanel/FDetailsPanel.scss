@@ -60,8 +60,10 @@
     padding: 1rem;
     width: max-content;
 
-    &:hover {
-        background-color: $details-panel-icon-hover;
+    @media (hover: hover) {
+        &:hover {
+            background-color: $details-panel-icon-hover;
+        }
     }
 
     &:active {

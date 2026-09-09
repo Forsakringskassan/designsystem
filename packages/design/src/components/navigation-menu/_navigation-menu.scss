@@ -25,11 +25,13 @@
                 }
             }
 
-            a:hover {
-                color: $navigationmenu-menuitem-color-text-hover;
+            @media (hover: hover) {
+                a:hover {
+                    color: $navigationmenu-menuitem-color-text-hover;
 
-                @media (forced-colors: active) {
-                    color: LinkText;
+                    @media (forced-colors: active) {
+                        color: LinkText;
+                    }
                 }
             }
         }
@@ -59,10 +61,12 @@
             padding: size.$padding-075;
             display: block;
 
-            &:hover {
-                font-weight: var(--f-font-weight-normal);
-                background-color: $navigationmenu-vertical-color-background-hover;
-                @include forcedcolors.hover-indicator(outline, 2px);
+            @media (hover: hover) {
+                &:hover {
+                    font-weight: var(--f-font-weight-normal);
+                    background-color: $navigationmenu-vertical-color-background-hover;
+                    @include forcedcolors.hover-indicator(outline, 2px);
+                }
             }
 
             &--highlight {
@@ -79,11 +83,13 @@
                 }
             }
 
-            &--highlight:hover {
-                background-color: $navigationmenu-vertical-color-background-selected;
-                font-weight: var(--f-font-weight-medium);
-                color: $navigationmenu-vertical-menuitem-color-text-selected;
-                @include forcedcolors.selected-indicator;
+            @media (hover: hover) {
+                &--highlight:hover {
+                    background-color: $navigationmenu-vertical-color-background-selected;
+                    font-weight: var(--f-font-weight-medium);
+                    color: $navigationmenu-vertical-menuitem-color-text-selected;
+                    @include forcedcolors.selected-indicator;
+                }
             }
         }
     }
@@ -109,8 +115,10 @@
                     @include forcedcolors.hover-indicator(border-bottom, 5px);
                 }
 
-                .imenu__list__anchor:hover {
-                    font-weight: var(--f-font-weight-medium);
+                @media (hover: hover) {
+                    .imenu__list__anchor:hover {
+                        font-weight: var(--f-font-weight-medium);
+                    }
                 }
             }
 
@@ -119,9 +127,11 @@
             }
         }
 
-        &__item:not(.imenu__list__item--highlight) .imenu__list__anchor-container:hover {
-            border-bottom: 5px solid $navigationmenu-horizontal-color-border-hover;
-            @include forcedcolors.hover-indicator(border-bottom, 5px);
+        @media (hover: hover) {
+            &__item:not(.imenu__list__item--highlight) .imenu__list__anchor-container:hover {
+                border-bottom: 5px solid $navigationmenu-horizontal-color-border-hover;
+                @include forcedcolors.hover-indicator(border-bottom, 5px);
+            }
         }
 
         &__anchor-container {

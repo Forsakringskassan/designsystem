@@ -42,9 +42,11 @@ $paginator-width-full: $button-width + $gap-size + $page-width * $number-of-page
             @include forcedcolors.selected-indicator;
         }
 
-        &:hover:enabled:not(&--active) {
-            background-color: var(--fkds-color-action-background-secondary-hover);
-            @include forcedcolors.hover-indicator(border, 2px);
+        @media (hover: hover) {
+            &:hover:enabled:not(&--active) {
+                background-color: var(--fkds-color-action-background-secondary-hover);
+                @include forcedcolors.hover-indicator(border, 2px);
+            }
         }
     }
 
