@@ -281,13 +281,12 @@ describe("Screenshot", () => {
 describe("Visual", () => {
     const forcedColorModes = ["none", "dark", "light"] as const;
 
-    afterEach(() => {
-        cy.forcedColors("none");
-    });
-
     for (const mode of forcedColorModes) {
         it(`should render correct styling for forced color '${mode}' (visual)`, () => {
-            cy.forcedColors(mode);
+            if (mode !== "none") {
+                cy.prefersColorScheme(mode);
+                cy.forcedColors("active");
+            }
             cy.mount(ForcedColor);
             cy.get("#button").click();
             fieldSetRadio.radioButton(options.first).select();

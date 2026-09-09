@@ -281,14 +281,13 @@ describe("open calendar with year selector enabled", () => {
         datepickerField.input().should("have.value", "2013-10-10");
     });
 
-    afterEach(() => {
-        cy.forcedColors("none");
-    });
-
     for (const mode of Object.values(forcedColorModes)) {
         it(`should have approved design, ${mode} (visual)`, () => {
             cy.viewport(500, 600);
-            cy.forcedColors(mode);
+            if (mode !== "none") {
+                cy.prefersColorScheme(mode);
+                cy.forcedColors("active");
+            }
             datepickerField.input().type("2020-10-31");
             datepickerField.input().blur();
             datepickerField.toggleCalendarButton().click();
@@ -1349,13 +1348,13 @@ describe("density", () => {
 });
 
 describe("Visual", () => {
-    afterEach(() => {
-        cy.forcedColors("none");
-    });
     for (const mode of forcedColorModes) {
         it(`should render correct styling for forced color mode '${mode}'`, () => {
             cy.viewport(300, 200);
-            cy.forcedColors(mode);
+            if (mode !== "none") {
+                cy.prefersColorScheme(mode);
+                cy.forcedColors("active");
+            }
             cy.mount(FDatepickerFieldIconExample);
             cy.toMatchScreenshot();
         });

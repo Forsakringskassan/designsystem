@@ -106,13 +106,12 @@ it("should have approved default design", () => {
 describe("Visual forcedColor", () => {
     const forcedColorModes = ["none", "dark", "light"] as const;
 
-    afterEach(() => {
-        cy.forcedColors("none");
-    });
-
     for (const mode of Object.values(forcedColorModes)) {
         it(`Should render short design correct forced color, ${mode} (visual)`, () => {
-            cy.forcedColors(mode);
+            if (mode !== "none") {
+                cy.prefersColorScheme(mode);
+                cy.forcedColors("active");
+            }
             const ScreenshotComponent = defineComponent({
                 template: /* HTML */ `
                     <div>

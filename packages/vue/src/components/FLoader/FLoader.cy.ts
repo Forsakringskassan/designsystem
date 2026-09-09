@@ -134,7 +134,10 @@ describe("FLoader", () => {
         for (const mode of Object.values(forcedColorModes)) {
             it(`should render correct styling for forced color mode '${mode}'`, () => {
                 cy.viewport(300, 300);
-                cy.forcedColors(mode);
+                if (mode !== "none") {
+                    cy.prefersColorScheme(mode);
+                    cy.forcedColors("active");
+                }
                 cy.mount(FLoader, {
                     props: {
                         show: true,
