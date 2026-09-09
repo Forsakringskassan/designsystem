@@ -8,7 +8,7 @@ search:
         - tabell
 ---
 
-Kolumnernas bredd i tabellen kan skjusteras med olika parametrar.
+Kolumnernas bredd i tabellen kan justeras med olika parametrar.
 
 ## Användning
 
@@ -22,25 +22,27 @@ FTableWidthExample.vue
 
 ### `size`
 
-Är det föredragna sättet att skjustera kolumnbredder på eftersom det är mest responsivt.
+Är det föredragna sättet att justera kolumnbredder på eftersom det är mest responsivt.
 
 - `"grow"` kolumnen tar upp så mycket utrymme den kan.
 - `"shrink"` kolumnen tar upp så lite den kan utan att kapa innehållet.
 
 ### `width`
 
-Sätter en bredd som inte kan bli mindre eller större än det som är satt. Bör användas med
-försiktighet eftersom det gör tabellen mindre responsiv och kan kapa innehållet.
+Används för att sätta en mer specifik bredd än vad `size` kan ge. Skrivs som `"50%"`.
 
-Kräver att en kolumn i tabellen får växa med `"grow"` för att inte själv växa. Om tabellen bara har kolumner med `"shrink"` och tabellen får växa kommer kolumnen med `width` satt att växa.
+Enhet:
 
-### `widthUnit`
+- `"%"`
 
-Bestämmer vilket enhet `width` ska använda.
+Kolumnen tar upp den precentuella angivna delen. Den kan både växa och krympa.
 
-Tillgängliga enheter:
+Enheter:
 
 - `"px"`
 - `"rem"`
+- `"ch"`
 
-Default: `"px"`
+Sätter en bredd som inte kan bli mindre eller större än det som är satt. Bör användas med försiktighet eftersom det gör tabellen mindre responsiv.
+
+Kräver att en kolumn i tabellen får växa med `"grow"` för att inte själv växa. Om tabellen bara har kolumner med `"shrink"` och tabellen får växa kommer kolumnen med `width` satt att växa.

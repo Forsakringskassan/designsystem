@@ -25,7 +25,7 @@ export {
     type TableColumnSize,
     type TableColumnText,
     type TableColumnType,
-    type TableColumnWidthUnit,
+    type TableColumnWidth,
     defineTableColumns,
 } from "./table-column";
 

@@ -50,7 +50,6 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, K> = {
     },
     enabled: true,
     visible: () => true,
-    widthUnit: "px",
 };
 
 const singleSelectColumn: NormalizedTableColumnRadio<T, K> = {
@@ -73,7 +72,6 @@ const singleSelectColumn: NormalizedTableColumnRadio<T, K> = {
     },
     enabled: true,
     visible: () => true,
-    widthUnit: "px",
 };
 </script>
 

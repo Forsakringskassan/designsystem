@@ -66,7 +66,7 @@ export {
     type TableColumnSimple,
     type TableColumnSize,
     type TableColumnText,
-    type TableColumnWidthUnit,
+    type TableColumnWidth,
 } from "./columns";
 
 /**

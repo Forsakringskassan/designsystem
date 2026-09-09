@@ -38,8 +38,7 @@ const columns = defineTableColumns<Row>([
         type: "text",
         header: "Land",
         key: "land",
-        width: 13,
-        widthUnit: "rem",
+        width: "13rem",
     },
     {
         type: "text:currency",

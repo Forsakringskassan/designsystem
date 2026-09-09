@@ -1478,8 +1478,7 @@ export interface TableColumnBase<T> {
     // (undocumented)
     sort?: boolean;
     visible?: (this: void, row: T) => boolean;
-    width?: number;
-    widthUnit?: TableColumnWidthUnit;
+    width?: TableColumnWidth;
 }
 
 // @public (undocumented)
@@ -1629,7 +1628,7 @@ export type TableColumnType = TableColumn<unknown, never> extends infer U ? U ex
 } ? T extends undefined ? never : T : never : never;
 
 // @public (undocumented)
-export type TableColumnWidthUnit = "px" | "rem";
+export type TableColumnWidth = `${number}px` | `${number}rem` | `${number}%` | `${number}ch`;
 
 // @public (undocumented)
 export enum TableScroll {

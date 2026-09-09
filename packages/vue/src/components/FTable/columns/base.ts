@@ -9,7 +9,8 @@ export type TableColumnSize = "grow" | "shrink";
 /**
  * @public
  */
-export type TableColumnWidthUnit = "px" | "rem";
+export type TableColumnWidth =
+    `${number}px` | `${number}rem` | `${number}%` | `${number}ch`;
 
 /**
  * Base properties shared by all table column types.
@@ -45,16 +46,18 @@ export interface TableColumnBase<T> {
      */
     visible?: (this: void, row: T) => boolean;
     /**
-     * Column fixed width. It should be used with caution, since its not as resposive as `size`.
-     * It will grow if no other column is allowed to grow and the table can be wider.
-     */
-    width?: number;
-    /**
-     * The unit for `width`. Supports `"px"` and `"rem"`.
+     * Used to set a more specific width then `size` can provide. Write like: `"20%"`
      *
-     * Default `"px"`
+     * `"%"`
+     * The column takes up the percent given of the grid. It can both grow and shrink.
+     *
+     * `"px"`
+     * `"rem"`
+     * `"ch"`
+     * Should be used with caution, since they´re not as responsive as `size` or `"%"`.
+     * The column will grow if no other column is allowed to grow and the table can be wider.
      */
-    widthUnit?: TableColumnWidthUnit;
+    width?: TableColumnWidth;
 }
 
 /**
@@ -70,8 +73,7 @@ export interface NormalizedTableColumnBase<T, K> {
     readonly size: Readonly<Ref<TableColumnSize | null>>;
     readonly enabled: MaybeRef<boolean>;
     readonly visible: (this: void, row: T) => boolean;
-    readonly width?: number;
-    readonly widthUnit: TableColumnWidthUnit;
+    readonly width?: TableColumnWidth;
 }
 
 /**
@@ -107,7 +109,6 @@ export function normalizeBaseColumn<T, K = never>(
     | "sortable"
     | "visible"
     | "width"
-    | "widthUnit"
 > {
     const id = Symbol();
     const header = toRef(column.header);
@@ -126,6 +127,5 @@ export function normalizeBaseColumn<T, K = never>(
         enabled: column.enabled ?? true,
         visible: column.visible ?? (() => true),
         width: column.width,
-        widthUnit: column.widthUnit ?? "px",
     };
 }

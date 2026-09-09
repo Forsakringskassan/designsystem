@@ -31,10 +31,9 @@ const columnStyles = computed(() => {
     const styles: CSSProperties = {};
 
     if (column.width !== undefined) {
-        const widthValue = `${column.width}${column.widthUnit}`;
-        styles.width = widthValue;
-        styles.minWidth = widthValue;
-        styles.maxWidth = widthValue;
+        styles.width = column.width;
+        styles.minWidth = column.width;
+        styles.maxWidth = column.width;
     }
 
     return styles;
@@ -97,6 +96,7 @@ function onClickCell(): void {
 </script>
 
 <template>
+    <!-- [html-validate-disable-next no-inline-style] -->
     <th
         ref="th"
         :aria-sort="sortValue"

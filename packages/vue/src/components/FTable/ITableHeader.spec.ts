@@ -2,7 +2,7 @@ import { type ComponentPublicInstance, ref } from "vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import ITableHeader from "./ITableHeader.vue";
-import { type TableColumnWidthUnit } from "./columns/base.js";
+import { type TableColumnWidth } from "./columns/base.js";
 import { normalizeTableColumn } from "./table-column";
 
 describe("description", () => {
@@ -149,7 +149,6 @@ describe("Fixed width", () => {
         const column = normalizeTableColumn<TestRow>({
             header: "lorem ipsum",
             key: "name",
-            widthUnit: "rem",
         });
         const wrapper = mount(
             ITableHeader as unknown as ComponentPublicInstance,
@@ -161,32 +160,14 @@ describe("Fixed width", () => {
         expect(wrapper.get("th").element.style.maxWidth).toBe("");
     });
 
-    it("should set width with default px unit", () => {
-        expect.assertions(3);
-        const column = normalizeTableColumn<TestRow>({
-            header: "lorem ipsum",
-            key: "name",
-            width: 200,
-        });
-        const wrapper = mount(
-            ITableHeader as unknown as ComponentPublicInstance,
-            { props: { column, sortEnabled: false, sortOrder: "unsorted" } },
-        );
-
-        expect(wrapper.get("th").element.style.width).toBe("200px");
-        expect(wrapper.get("th").element.style.minWidth).toBe("200px");
-        expect(wrapper.get("th").element.style.maxWidth).toBe("200px");
-    });
-
-    it.each(["px", "rem"] as TableColumnWidthUnit[])(
-        "should set width with provided %s unit",
-        (unit) => {
+    it.each(["200px", "200rem", "20ch", "20%"] as TableColumnWidth[])(
+        "should set width as provided %s",
+        (width) => {
             expect.assertions(3);
             const column = normalizeTableColumn<TestRow>({
                 header: "lorem ipsum",
                 key: "name",
-                width: 200,
-                widthUnit: unit,
+                width,
             });
             const wrapper = mount(
                 ITableHeader as unknown as ComponentPublicInstance,
@@ -199,9 +180,9 @@ describe("Fixed width", () => {
                 },
             );
 
-            expect(wrapper.get("th").element.style.width).toBe(`200${unit}`);
-            expect(wrapper.get("th").element.style.minWidth).toBe(`200${unit}`);
-            expect(wrapper.get("th").element.style.maxWidth).toBe(`200${unit}`);
+            expect(wrapper.get("th").element.style.width).toBe(width);
+            expect(wrapper.get("th").element.style.minWidth).toBe(width);
+            expect(wrapper.get("th").element.style.maxWidth).toBe(width);
         },
     );
 });
