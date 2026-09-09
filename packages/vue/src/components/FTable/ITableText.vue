@@ -270,6 +270,7 @@ function onStopEdit(options: { reason: "enter" | "escape" | "tab" | "shift-tab" 
     } else if (reason === "tab" || reason === "shift-tab") {
         tdElement.value.tabIndex = 0;
 
+        // Wait for tabIndex to be applied before focusing the cell.
         void nextTick().then(() => {
             tdElement.value?.focus();
         });
