@@ -64,7 +64,7 @@
     "@fkui/vue": "6.57.1",
     "@forsakringskassan/docs-generator": "3.6.3",
     "@forsakringskassan/vite-lib-config": "5.11.0",
-    "@forsakringskassan/vitest-config-jsdom": "2.8.1",
+    "@forsakringskassan/vitest-config-jsdom": "5.0.0",
     "@vue/test-utils": "2.5.0",
     "esbuild": "0.28.2",
     "vite": "8.2.2",
