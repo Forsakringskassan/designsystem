@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 6.57.1 (2026-09-10)
+
+### Bug Fixes
+
+* **@fkui/vue:** handle Tab and Shift+Tab when editing in ITableText (refs SFKUI-8084) 85ec9d1
+* **deps:** allow vitest v5 when using @fkui/test-utils (refs SFKUI-6500) 1a8000c
+* **deps:** update dependency cssnano to v9.0.3 ([#1663](undefined/Forsakringskassan/designsystem/issues/1663)) a4303cd
+* handle Tab and Shift+Tab when editing textfield in `FTable` (refs SFKUI-8084) be0f6c8
+
 ## 6.57.0 (2026-09-09)
 
 ### Features
