@@ -40,8 +40,10 @@
             color: $errorlist-color-text;
         }
 
-        &:hover {
-            text-decoration-thickness: 2px;
+        @media (hover: hover) {
+            &:hover {
+                text-decoration-thickness: 2px;
+            }
         }
     }
 

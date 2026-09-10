@@ -27,11 +27,13 @@
                 }
             }
 
-            a:hover {
-                color: $popupmenu-color-text-hover;
+            @media (hover: hover) {
+                a:hover {
+                    color: $popupmenu-color-text-hover;
 
-                @media (forced-colors: active) {
-                    color: LinkText;
+                    @media (forced-colors: active) {
+                        color: LinkText;
+                    }
                 }
             }
         }
@@ -46,9 +48,11 @@
             padding: size.$padding-075;
             display: block;
 
-            &:hover:not(.ipopupmenu__list__item--highlight) {
-                background-color: $popupmenu-color-background-hover;
-                @include forcedcolors.hover-indicator(outline, 2px);
+            @media (hover: hover) {
+                &:hover:not(.ipopupmenu__list__item--highlight) {
+                    background-color: $popupmenu-color-background-hover;
+                    @include forcedcolors.hover-indicator(outline, 2px);
+                }
             }
 
             &--highlight {

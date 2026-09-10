@@ -22,8 +22,10 @@ $cell-border-width: 1px;
         outline-offset: -$table-ng-selection-outline;
     }
 
-    &:not(&--menu-open):hover:has(button) {
-        background: $table-ng-cell-color-hover-background;
+    @media (hover: hover) {
+        &:not(&--menu-open):hover:has(button) {
+            background: $table-ng-cell-color-hover-background;
+        }
     }
 
     input,
@@ -75,8 +77,10 @@ $cell-border-width: 1px;
     &--text {
         padding: 0;
 
-        &:hover {
-            background: $table-ng-cell-color-hover-background;
+        @media (hover: hover) {
+            &:hover {
+                background: $table-ng-cell-color-hover-background;
+            }
         }
     }
 
@@ -102,8 +106,11 @@ $cell-border-width: 1px;
                 border-radius: 0;
             }
         }
-        &:hover:has(.table-ng__textedit:focus-visible) {
-            background: transparent;
+
+        @media (hover: hover) {
+            &:hover:has(.table-ng__textedit:focus-visible) {
+                background: transparent;
+            }
         }
     }
 
@@ -116,9 +123,11 @@ $cell-border-width: 1px;
             background: transparent;
         }
 
-        &:hover:not(:has(:focus-visible)) {
-            box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
-            border-radius: 0;
+        @media (hover: hover) {
+            &:hover:not(:has(:focus-visible)) {
+                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+                border-radius: 0;
+            }
         }
     }
 
@@ -141,10 +150,12 @@ $cell-border-width: 1px;
             }
         }
 
-        &.table-ng__cell--error:hover:not(:has(:focus-visible)) {
-            .table-ng__editable {
-                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
-                border-radius: 0;
+        @media (hover: hover) {
+            &.table-ng__cell--error:hover:not(:has(:focus-visible)) {
+                .table-ng__editable {
+                    box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
+                    border-radius: 0;
+                }
             }
         }
 
@@ -177,9 +188,11 @@ $cell-border-width: 1px;
                 }
             }
 
-            &:hover {
-                box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
-                border-radius: 0;
+            @media (hover: hover) {
+                &:hover {
+                    box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-underline;
+                    border-radius: 0;
+                }
             }
         }
     }
@@ -196,9 +209,11 @@ $cell-border-width: 1px;
             accent-color: $table-ng-button-primary-color-background-default;
         }
 
-        &:hover {
-            background: $table-ng-cell-color-hover-background;
-            accent-color: $table-ng-button-primary-color-background-hover;
+        @media (hover: hover) {
+            &:hover {
+                background: $table-ng-cell-color-hover-background;
+                accent-color: $table-ng-button-primary-color-background-hover;
+            }
         }
     }
 
@@ -213,8 +228,11 @@ $cell-border-width: 1px;
             background: inherit;
             color: $table-ng-button-primary-color-background-default;
             cursor: pointer;
-            &:hover {
-                color: $table-ng-button-primary-color-background-hover;
+
+            @media (hover: hover) {
+                &:hover {
+                    color: $table-ng-button-primary-color-background-hover;
+                }
             }
 
             svg {
@@ -231,8 +249,10 @@ $cell-border-width: 1px;
     &--selectable {
         width: var(--f-icon-size-medium);
 
-        &:hover {
-            background: $table-ng-cell-color-hover-background;
+        @media (hover: hover) {
+            &:hover {
+                background: $table-ng-cell-color-hover-background;
+            }
         }
     }
 
@@ -331,8 +351,14 @@ $cell-border-width: 1px;
         color: CanvasText;
     }
 
-    .table-ng__cell--text:hover .table-ng__editable,
-    .table-ng__cell--select:hover .table-ng__editable,
+    @media (hover: hover) {
+        .table-ng__cell--text:hover .table-ng__editable,
+        .table-ng__cell--select:hover .table-ng__editable {
+            box-shadow: inset 0 (-$underline-thickness) 0 0 Highlight;
+            border-radius: 0;
+        }
+    }
+
     .table-ng__cell--text:has(:focus-visible) .table-ng__editable,
     .table-ng__cell--select:focus-within .table-ng__editable {
         box-shadow: inset 0 (-$underline-thickness) 0 0 Highlight;

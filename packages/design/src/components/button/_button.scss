@@ -233,9 +233,17 @@ $button--tertiary: (
         &--black {
             color: $button-tertiary-muted-color-text-default;
 
-            &:hover,
-            &:active,
             &:focus-visible {
+                color: $button-tertiary-muted-color-text-focus;
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    color: $button-tertiary-muted-color-text-focus;
+                }
+            }
+
+            &:active {
                 color: $button-tertiary-muted-color-text-focus;
             }
         }
@@ -243,9 +251,19 @@ $button--tertiary: (
         &--inverted {
             color: $button-tertiary-inverted-color-text-default;
 
-            &:hover,
-            &:active,
             &:focus-visible {
+                color: $button-tertiary-inverted-color-text-focus;
+                background-color: $button-tertiary-inverted-color-background-focus;
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    color: $button-tertiary-inverted-color-text-focus;
+                    background-color: $button-tertiary-inverted-color-background-focus;
+                }
+            }
+
+            &:active {
                 color: $button-tertiary-inverted-color-text-focus;
                 background-color: $button-tertiary-inverted-color-background-focus;
             }
