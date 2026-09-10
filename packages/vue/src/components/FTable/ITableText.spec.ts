@@ -117,7 +117,7 @@ describe("ITableText", () => {
         { key: "Tab", shiftKey: false },
         { key: "Shift+Tab", shiftKey: true },
     ])(
-        "should save value and keep focus on cell then $key is presses in edit mode",
+        "should save value and keep focus on cell then $key is pressed in edit mode",
         async ({ shiftKey }) => {
             expect.assertions(8);
             const row = { text: "Foo" };
