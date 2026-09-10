@@ -1,6 +1,6 @@
 {
   "name": "@fkui/test-utils",
-  "version": "6.56.0",
+  "version": "6.57.0",
   "description": "FKUI test utils for Jest och Vitest",
   "keywords": [
     "fkui",
@@ -72,18 +72,19 @@
     "@forsakringskassan/jest-config": "30.4.3",
     "@forsakringskassan/vitest-config-jsdom": "2.8.1",
     "@jest/globals": "^30.4.1",
+    "@vitest/expect": "5.0.0",
     "@vue/server-renderer": "3.5.42",
     "@vue/test-utils": "2.5.0",
     "esbuild": "0.28.2",
     "expect": "^30.4.1",
     "jest-environment-jsdom": "^30.4.1",
-    "vitest": "4.1.11",
+    "vitest": "5.0.0",
     "vue": "3.5.42"
   },
   "peerDependencies": {
     "@jest/globals": "^26.0.0 || ^27.0.0 || ^28.0.0 || ^29.0.0 || ^30.0.0",
     "jest": "^26.0.0 || ^27.0.0 || ^28.0.0 || ^29.0.0 || ^30.0.0",
-    "vitest": "^4.0.0",
+    "vitest": "^4.0.0 || ^5.0.0",
     "vue": "^3.0.0"
   },
   "peerDependenciesMeta": {

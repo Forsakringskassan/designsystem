@@ -64,7 +64,7 @@ export function FCrudDatasetSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.57.0
          * @returns A selector for the add button element.
          */
         addButtonTop(): string {

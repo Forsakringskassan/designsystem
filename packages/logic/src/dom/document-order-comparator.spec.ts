@@ -8,8 +8,11 @@ import {
 import { documentOrderComparator } from "./document-order-comparator";
 
 declare module "vitest" {
-    /* eslint-disable-next-line @typescript-eslint/no-explicit-any -- to match upstream */
-    interface Matchers<T = any> {
+    interface Matchers<
+        /* eslint-disable-next-line @typescript-eslint/no-unused-vars -- to match upstream */
+        R extends void | Promise<void> = void | Promise<void>,
+        T = unknown,
+    > {
         toBeSameElement(node: Element): T;
     }
 }
