@@ -65,10 +65,31 @@ describe("FExpandablePanel", () => {
     });
 
     it("Should not focus elements inside a collapsed expandable panel when tabbing", () => {
+        const template = /* HTML */ `
+            <f-expandable-panel
+                :expanded="expanded"
+                @toggle="onToggle"
+                v-test="'expandable-panel'"
+            >
+                <template #title> Titel </template>
+                <template #default>
+                    Innehåll
+                    <p>
+                        <a class="anchor" href="" target="_blank">
+                            Länk till annan sida
+                        </a>
+                    </p>
+                </template>
+            </f-expandable-panel>
+            <a class="test-anchor" href="" target="_blank">
+                Länk till en annan sida
+            </a>
+        `;
+
         const panel = new FExpandablePanelPageObject(
             "[data-test=expandable-panel]",
         );
-        cy.mount(createComponent(defaultTemplate));
+        cy.mount(createComponent(template));
 
         panel.header().focus();
         panel.header().should("have.focus");
@@ -88,10 +109,11 @@ describe("FExpandablePanel", () => {
 
         cy.realPress("Tab");
         panel.header().should("not.have.focus");
+        cy.document().find(".test-anchor").should("be.focused");
         panel.body().find(".anchor").should("not.be.focused");
     });
 
-    it("Should set the body to inert when an expandable panel collapsed", () => {
+    it("Should set the body to inert when the expandable panel is collapsed", () => {
         const panel = new FExpandablePanelPageObject(
             "[data-test=expandable-panel]",
         );
@@ -99,10 +121,13 @@ describe("FExpandablePanel", () => {
         cy.mount(createComponent(defaultTemplate));
 
         panel.isOpen().should("be.false");
-        panel.body().should("have.attr", "inert");
+        panel
+            .el()
+            .find(".expandable-panel__content")
+            .should("have.attr", "inert");
     });
 
-    it("Should not set the body to inert when an expandable panel is expanded", () => {
+    it("Should not set the body to inert when the expandable panel is expanded", () => {
         const panel = new FExpandablePanelPageObject(
             "[data-test=expandable-panel]",
         );
@@ -112,7 +137,10 @@ describe("FExpandablePanel", () => {
         panel.expandCollapseIcon().click();
 
         panel.isOpen().should("be.true");
-        panel.body().should("not.have.attr", "inert");
+        panel
+            .el()
+            .find(".expandable-panel__content")
+            .should("not.have.attr", "inert");
     });
 
     // eslint-disable-next-line mocha/no-pending-tests -- ticket exists to correct this behaviour
