@@ -9,13 +9,37 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version v6.57.0
+
+2026-09-09
+
+För att se samtliga ändringar i releasen, se {@link changelog changelog}.
+
+### Fokusram
+
+Vi har ändrat så att komponenter bara får fokusram vid användning av tangentbord och inte vid musklick.
+Undantag är komponenter där det är förväntat att tangentbord ska användas, som till exempel för inmatningsfält och dropplista.
+Där kommer webbläsaren att visa fokusram vid musklick.
+
+### Placering av lägg till-knapp i datamängdredigeraren
+
+Det är nu möjligt att placera lägg till-knapp överst när det är långa listor eller tabeller.
+Då kan användaren lättare se att det går att lägga till ny entitet/rad.
+
+{@link FCrudDataset#knapposition Läs här om hur du sätter knappens position.}
+
+### Tabell
+
+Tabell har nu stöd för att anpassa ikon i kolumntyp kontextmeny.
+
 ## Version v6.56.0
 
 2026-09-02
 
 ### Bidrag från Bolagsverket!
 
-Bolagsverket använder Försäkringskassans designsystem och har nu bidragit för att få ett ännu bättre designsystem. De har förbättrat formulärvalideringen i Shadow DOM som inte fungerade som förväntat, läs mer om {@link FValidationForm Valideringsformulär}.
+Bolagsverket använder Försäkringskassans designsystem och har nu bidragit för att få ett ännu bättre designsystem.
+De har förbättrat formulärvalideringen i Shadow DOM som inte fungerade som förväntat, läs mer om {@link FValidationForm Valideringsformulär}.
 
 En fix för `FButton` är också värd att nämna. När `FButton` används tillsammans med `FValidationForm` så kommer den vid submit automatiskt in i asynkront läge.
 

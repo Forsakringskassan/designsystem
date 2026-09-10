@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## 6.57.1 (2026-09-10)
+
+### Bug Fixes
+
+* **@fkui/vue:** handle Tab and Shift+Tab when editing in ITableText (refs SFKUI-8084) 85ec9d1
+* **deps:** allow vitest v5 when using @fkui/test-utils (refs SFKUI-6500) 1a8000c
+* **deps:** update dependency cssnano to v9.0.3 ([#1663](undefined/Forsakringskassan/designsystem/issues/1663)) a4303cd
+* handle Tab and Shift+Tab when editing textfield in `FTable` (refs SFKUI-8084) be0f6c8
+
+## 6.57.0 (2026-09-09)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** focus styles use `focus-visible` (refs SFKUI-7690) 5c1279f
+* **@fkui/design, @fkui/vue:** show focus indicator only on `focus-visible` (refs SFKUI-7690) 456efb5
+* **@fkui/vue:** add property to set position for buttons in `FCrudDataset` (refs SFKUI-7778) ([#1647](undefined/Forsakringskassan/designsystem/issues/1647)) 375e2b5
+* **@fkui/vue:** support for other icons on ITableMenu (refs SFKUI-7901) 37fc99b
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** secondary text color for checkbox/radio details (refs SFKUI-8126) a2cbe1e
+* **@fkui/vue:** expandablepanel po wrong selector when using has (refs SFKUI-7854) b3bde79
+* **deps:** update dependency cssnano to v9.0.2 ([#1644](undefined/Forsakringskassan/designsystem/issues/1644)) 887029e
+* **deps:** update dependency i18next to v26.4.1 ([#1642](undefined/Forsakringskassan/designsystem/issues/1642)) 7a41139
+* **deps:** update dependency i18next to v26.4.2 ([#1653](undefined/Forsakringskassan/designsystem/issues/1653)) cc5e7a6
+* **deps:** update dependency sass to v1.104.0 ([#1655](undefined/Forsakringskassan/designsystem/issues/1655)) be5ff77
+* **deps:** update dependency vue-router to v5.3.1 ([#1650](undefined/Forsakringskassan/designsystem/issues/1650)) f566988
+
 ## 6.56.0 (2026-09-02)
 
 ### Features
