@@ -64,6 +64,57 @@ describe("FExpandablePanel", () => {
         panel.notificationIcon().should("not.exist");
     });
 
+    it("Should not focus elements inside a collapsed expandable panel when tabbing", () => {
+        const panel = new FExpandablePanelPageObject(
+            "[data-test=expandable-panel]",
+        );
+        cy.mount(createComponent(defaultTemplate));
+
+        panel.header().focus();
+        panel.header().should("have.focus");
+
+        panel.isOpen().should("be.false");
+        panel.body().find(".anchor").should("not.be.focused");
+
+        cy.realPress("Enter");
+        panel.isOpen().should("be.true");
+
+        cy.realPress("Tab");
+        panel.body().find(".anchor").should("be.focused");
+
+        cy.realPress(["Shift", "Tab"]);
+        cy.realPress("Enter");
+        panel.isOpen().should("be.false");
+
+        cy.realPress("Tab");
+        panel.header().should("not.have.focus");
+        panel.body().find(".anchor").should("not.be.focused");
+    });
+
+    it("Should set the body to inert when an expandable panel collapsed", () => {
+        const panel = new FExpandablePanelPageObject(
+            "[data-test=expandable-panel]",
+        );
+
+        cy.mount(createComponent(defaultTemplate));
+
+        panel.isOpen().should("be.false");
+        panel.body().should("have.attr", "inert");
+    });
+
+    it("Should not set the body to inert when an expandable panel is expanded", () => {
+        const panel = new FExpandablePanelPageObject(
+            "[data-test=expandable-panel]",
+        );
+
+        cy.mount(createComponent(defaultTemplate));
+
+        panel.expandCollapseIcon().click();
+
+        panel.isOpen().should("be.true");
+        panel.body().should("not.have.attr", "inert");
+    });
+
     // eslint-disable-next-line mocha/no-pending-tests -- ticket exists to correct this behaviour
     it.skip("Should have a page object that can access any necessary elements for default expandable panel with `id` selector ", () => {
         const template = /* HTML */ `
