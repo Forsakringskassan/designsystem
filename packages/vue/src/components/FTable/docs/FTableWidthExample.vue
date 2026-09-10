@@ -51,9 +51,5 @@ const columns = defineTableColumns<Row>([
 const rows = useDatasetRef(data);
 </script>
 <template>
-    <f-table v-model:selected-rows="selectedRows" :rows :columns selectable="multi">
-        <template #expandable="{ row }: { row: Row }">
-            {{ row.namn }}
-        </template>
-    </f-table>
+    <f-table v-model:selected-rows="selectedRows" :rows :columns selectable="multi"> </f-table>
 </template>

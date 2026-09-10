@@ -91,8 +91,7 @@ export type OmittedNormalizedColumnProperties =
     | "component"
     | "enabled"
     | "visible"
-    | "width"
-    | "widthUnit";
+    | "width";
 
 /**
  * @internal

@@ -17,7 +17,7 @@ FTableWidthExample.vue
 ```
 
 - `Frukt` kolumnen har `"grow"`.
-- `Land` kolumnen har `width` satt.
+- `Land` kolumnen har `width` `"13rem"` satt.
 - `Pris per kilo` kolumnen har `"shrink"`.
 
 ### `size`
@@ -47,8 +47,12 @@ Sätter en bredd som inte kan bli mindre eller större än det som är satt. Bö
 
 Kräver att en kolumn i tabellen får växa med `"grow"` för att inte själv växa. Om tabellen bara har kolumner med `"shrink"` och tabellen får växa kommer kolumnen med `width` satt att växa.
 
-## Användning av procentuella enheter på kolumnerna
+## Användning av procent på kolumnerna
 
 ```import
 FTableWidthPercentExample.vue
 ```
+
+- `Frukt` kolumnen har `"30%"`.
+- `Land` kolumnen har `"50%"`.
+- `Pris per kilo` kolumnen har `"20%"`.
