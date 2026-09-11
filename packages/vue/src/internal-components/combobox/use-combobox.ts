@@ -274,6 +274,12 @@ export function useCombobox(
             case "Enter":
                 if (dropdownIsOpen.value) {
                     if (activeOption.value) {
+                        inputRef.value?.dispatchEvent(
+                            new CustomEvent<string>("select", {
+                                bubbles: false,
+                                detail: activeOption.value,
+                            }),
+                        );
                         selectOption(activeOption.value);
                         flag = true;
                     }

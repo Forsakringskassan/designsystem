@@ -517,6 +517,75 @@ describe("Validation", () => {
         );
     });
 
+    describe("ComboBox update model", () => {
+        const TestComponent = defineComponent({
+            name: "TestComponent",
+            template: /* HTML */ `
+                <f-text-field
+                    v-model="valtLand"
+                    v-validation.allowList="{ allowList: { list: land } }"
+                    :options="land"
+                    @change="onChange"
+                    @update:model-value="onUpdate"
+                >
+                    <template #default> Välj land </template>
+                </f-text-field>
+            `,
+            components: {
+                FTextField,
+            },
+            data() {
+                return {
+                    changeEvent: [] as string[],
+                    updateEvent: [] as string[],
+                    valtLand: "",
+                    land: ["Svalbard och Jan Mayen", "Swaziland", "Sverige"],
+                };
+            },
+            methods: {
+                onChange(value: string): void {
+                    this.changeEvent.push(value);
+                },
+                onUpdate(value: string): void {
+                    this.updateEvent.push(value);
+                },
+            },
+        });
+
+        it("should never set valtLand to 'sv' during input and selection", () => {
+            cy.mount(TestComponent).then(({ wrapper }) => {
+                cy.get("input").should("be.visible");
+
+                cy.get("input").realClick();
+                cy.get("input").realType("sv");
+
+                cy.contains("li", "Sverige").should("be.visible").realClick();
+
+                cy.wrap(wrapper.vm).its("valtLand").should("equal", "Sverige");
+                cy.wrap(wrapper.vm)
+                    .its("changeEvent")
+                    .should("deep.equal", ["Sverige"]);
+                cy.wrap(wrapper.vm)
+                    .its("updateEvent")
+                    .should("deep.equal", ["Sverige"]);
+            });
+        });
+
+        it("should set typed value", () => {
+            cy.mount(TestComponent).then(({ wrapper }) => {
+                cy.get("input").should("be.visible").click();
+
+                cy.get("input").type("Norge");
+                cy.get("input").blur();
+
+                cy.wrap(wrapper.vm).its("valtLand").should("equal", "Norge");
+                cy.wrap(wrapper.vm)
+                    .its("changeEvent")
+                    .should("deep.equal", ["Norge"]);
+            });
+        });
+    });
+
     describe("`forced-colors` media feature", () => {
         const defaultMountOptions = {
             props: {
