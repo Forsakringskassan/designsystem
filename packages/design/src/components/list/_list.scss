@@ -95,7 +95,6 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
     }
 
     &--hover {
-        .list__item:focus-within,
         .list__item:hover {
             cursor: pointer;
             @extend %list-item-hover;
