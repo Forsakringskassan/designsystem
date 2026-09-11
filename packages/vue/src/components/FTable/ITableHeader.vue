@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { computed, useTemplateRef } from "vue";
+import { type CSSProperties, computed, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { IFlex, IFlexItem } from "../../internal-components";
 import { FIcon } from "../FIcon";
@@ -25,6 +25,18 @@ const thElement = useTemplateRef("th");
 const columnClasses = computed(() => {
     const size = column.size.value === "shrink" ? "table-ng__column--shrink" : "table-ng__column--grow";
     return ["table-ng__column", size];
+});
+
+const columnStyles = computed(() => {
+    const styles: CSSProperties = {};
+
+    if (column.width !== undefined) {
+        styles.width = column.width;
+        styles.minWidth = column.width;
+        styles.maxWidth = column.width;
+    }
+
+    return styles;
 });
 
 const sortIconClass = computed(() => {
@@ -84,10 +96,12 @@ function onClickCell(): void {
 </script>
 
 <template>
+    <!-- [html-validate-disable-next no-inline-style] -->
     <th
         ref="th"
         :aria-sort="sortValue"
         :class="columnClasses"
+        :style="columnStyles"
         tabindex="-1"
         @keydown.enter.space.prevent="onClickCell"
         @click.stop="onClickCell"

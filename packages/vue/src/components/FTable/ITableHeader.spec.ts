@@ -2,6 +2,7 @@ import { type ComponentPublicInstance, ref } from "vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import ITableHeader from "./ITableHeader.vue";
+import { type TableColumnWidth } from "./columns/base.js";
 import { normalizeTableColumn } from "./table-column";
 
 describe("description", () => {
@@ -136,4 +137,52 @@ describe("sorting keyboard interaction", () => {
 
         expect(wrapper.emitted("toggleSortOrder")).toBeUndefined();
     });
+});
+
+describe("Fixed width", () => {
+    interface TestRow {
+        name: string;
+    }
+
+    it("should not set width when width is not provided", () => {
+        expect.assertions(3);
+        const column = normalizeTableColumn<TestRow>({
+            header: "lorem ipsum",
+            key: "name",
+        });
+        const wrapper = mount(
+            ITableHeader as unknown as ComponentPublicInstance,
+            { props: { column, sortEnabled: false, sortOrder: "unsorted" } },
+        );
+
+        expect(wrapper.get("th").element.style.width).toBe("");
+        expect(wrapper.get("th").element.style.minWidth).toBe("");
+        expect(wrapper.get("th").element.style.maxWidth).toBe("");
+    });
+
+    it.each(["200px", "200rem", "20ch", "20%"] as TableColumnWidth[])(
+        "should set width as provided %s",
+        (width) => {
+            expect.assertions(3);
+            const column = normalizeTableColumn<TestRow>({
+                header: "lorem ipsum",
+                key: "name",
+                width,
+            });
+            const wrapper = mount(
+                ITableHeader as unknown as ComponentPublicInstance,
+                {
+                    props: {
+                        column,
+                        sortEnabled: false,
+                        sortOrder: "unsorted",
+                    },
+                },
+            );
+
+            expect(wrapper.get("th").element.style.width).toBe(width);
+            expect(wrapper.get("th").element.style.minWidth).toBe(width);
+            expect(wrapper.get("th").element.style.maxWidth).toBe(width);
+        },
+    );
 });

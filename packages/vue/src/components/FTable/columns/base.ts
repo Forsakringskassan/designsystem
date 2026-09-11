@@ -7,6 +7,12 @@ import { getSortable } from "./helpers/get-sortable";
 export type TableColumnSize = "grow" | "shrink";
 
 /**
+ * @public
+ */
+export type TableColumnWidth =
+    `${number}px` | `${number}rem` | `${number}%` | `${number}ch`;
+
+/**
  * Base properties shared by all table column types.
  *
  * @public
@@ -39,6 +45,19 @@ export interface TableColumnBase<T> {
      * Default `() => true`.
      */
     visible?: (this: void, row: T) => boolean;
+    /**
+     * Used to set a more specific width than `size` can provide. Write like: `"20%"`
+     *
+     * `"%"`
+     * The column takes up the percent given of the grid. It can both grow and shrink.
+     *
+     * `"px"`
+     * `"rem"`
+     * `"ch"`
+     * Should be used with caution, since they´re not as responsive as `size` or `"%"`.
+     * The column will grow if no other column is allowed to grow and the table can be wider.
+     */
+    width?: TableColumnWidth;
 }
 
 /**
@@ -54,6 +73,7 @@ export interface NormalizedTableColumnBase<T, K> {
     readonly size: Readonly<Ref<TableColumnSize | null>>;
     readonly enabled: MaybeRef<boolean>;
     readonly visible: (this: void, row: T) => boolean;
+    readonly width?: TableColumnWidth;
 }
 
 /**
@@ -70,7 +90,8 @@ export type OmittedNormalizedColumnProperties =
     | "size"
     | "component"
     | "enabled"
-    | "visible";
+    | "visible"
+    | "width";
 
 /**
  * @internal
@@ -86,6 +107,7 @@ export function normalizeBaseColumn<T, K = never>(
     | "enabled"
     | "sortable"
     | "visible"
+    | "width"
 > {
     const id = Symbol();
     const header = toRef(column.header);
@@ -103,5 +125,6 @@ export function normalizeBaseColumn<T, K = never>(
         size,
         enabled: column.enabled ?? true,
         visible: column.visible ?? (() => true),
+        width: column.width,
     };
 }

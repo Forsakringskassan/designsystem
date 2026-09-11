@@ -7,6 +7,7 @@ export {
     type NormalizedTableColumnBase,
     type TableColumnBase,
     type TableColumnSize,
+    type TableColumnWidth,
     normalizeBaseColumn,
 } from "./base";
 export {
