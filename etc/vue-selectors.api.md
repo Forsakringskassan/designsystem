@@ -40,6 +40,17 @@ export function FDetailsPanelSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FExpandablePanelSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    header(): string;
+    toggleButton(): string;
+    expandCollapseIcon(): string;
+    body(): string;
+    notification(): string;
+    relatedInfo(): string;
+}>;
+
+// @public
 export function FExpandableParagraphSelectors(selector?: string): Readonly<{
     readonly selector: string;
     expandCollapseIcon(): string;
@@ -95,6 +106,14 @@ export function FPaginatorSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FRadioFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    input(): string;
+    label(): string;
+    details(): string;
+}>;
+
+// @public
 export function FTextareaFieldSelectors(selector?: string): Readonly<{
     readonly selector: string;
     textarea(): string;
@@ -112,6 +131,16 @@ export function FTextFieldSelectors(selector?: string): Readonly<{
     description(): string;
     formatDescription(): string;
     errorMessage(): string;
+}>;
+
+// @public
+export function FTooltipSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    toggleButton(): string;
+    bubble(): string;
+    header(): string;
+    body(): string;
+    closeButton(): string;
 }>;
 
 // (No @packageDocumentation comment for this package)

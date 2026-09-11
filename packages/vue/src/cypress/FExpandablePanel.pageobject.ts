@@ -1,11 +1,12 @@
+import { FExpandablePanelSelectors } from "../selectors";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public
  */
 export class FExpandablePanelPageObject implements BasePageObject {
-    public selector: string;
-    public el: () => DefaultCypressChainable;
+    private _selectors: ReturnType<typeof FExpandablePanelSelectors>;
+
     public expandCollapseIcon: () => DefaultCypressChainable;
     public header: () => DefaultCypressChainable;
     public body: () => DefaultCypressChainable;
@@ -16,22 +17,31 @@ export class FExpandablePanelPageObject implements BasePageObject {
      * @param selector - the root of the expandablepanel, usually `<div class="expandable-panel">...</div>`.
      */
     public constructor(selector: string) {
-        this.selector = selector;
-        this.el = () => cy.get(this.selector);
+        this._selectors = FExpandablePanelSelectors(selector);
 
         this.expandCollapseIcon = () =>
-            cy.get(`${this.selector} .expandable-panel__icon`);
-        this.header = () =>
-            cy.get(`${this.selector} .expandable-panel__heading button`);
+            cy.get(this._selectors.expandCollapseIcon());
 
-        this.notificationIcon = () =>
-            cy.get(
-                `${this.selector} .expandable-panel__heading .expandable-panel__notification`,
-            );
+        this.header = () => cy.get(this._selectors.toggleButton());
 
-        this.body = () => cy.get(`${this.selector} .expandable-panel__body`);
-        this.relatedInfo = () =>
-            cy.get(`${this.selector} .expandable-panel__outside`);
+        this.notificationIcon = () => cy.get(this._selectors.notification());
+
+        this.body = () => cy.get(this._selectors.body());
+
+        this.relatedInfo = () => cy.get(this._selectors.relatedInfo());
+    }
+
+    public get selector(): string {
+        return this._selectors.selector;
+    }
+
+    /**
+     * Get the root element.
+     *
+     * @returns The element itself.
+     */
+    public el(): DefaultCypressChainable {
+        return cy.get(this._selectors.selector);
     }
 
     /**
