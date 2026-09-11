@@ -779,7 +779,7 @@ export class FTooltipPageObject implements BasePageObject {
     // (undocumented)
     iButton(): DefaultCypressChainable;
     // (undocumented)
-    selector: string;
+    get selector(): string;
 }
 
 // @public (undocumented)
