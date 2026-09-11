@@ -1,0 +1,44 @@
+{
+    "name": "FLayoutApplicationTemplate",
+    "slug": "flayoutapplicationtemplate",
+    "models": [],
+    "props": [
+        {
+            "name": "navLabel",
+            "description": "Unique accessible name for navigation landmark.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "header",
+            "description": "Slot for displaying the header.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "top-navigation",
+            "description": "Slot for displaying top navigation.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot for displaying the primary content.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "footer",
+            "description": "Slot for displaying the footer.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

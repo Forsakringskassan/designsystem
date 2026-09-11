@@ -1,0 +1,198 @@
+{
+    "name": "FCrudDataset",
+    "slug": "fcruddataset",
+    "models": [],
+    "props": [
+        {
+            "name": "beforeCreate",
+            "description": "A function that returns an item to the #add template. Can be used to populate data that the user should not input themself e.g. an id.\nOr to give the user suggestions for inputs. If the prop is not used an empty item will be returned.",
+            "type": "(() => T) | undefined",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "beforeSubmit",
+            "description": "If given, this function is called before the [[submit]] event is emitted.\nSee <f-validation-form> `beforeSubmit` props for more info.",
+            "type": "FValidationFormCallback",
+            "required": false,
+            "default": {
+                "value": "function() {\r\n    /* do nothing */\r\n}"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "beforeValidation",
+            "description": "If given, this function is called before the form data is validated and the [[submit]] event is emitted.\nSee <f-validation-form> `beforeValidation` props for more info.",
+            "type": "FValidationFormCallback",
+            "required": false,
+            "default": {
+                "value": "function() {\r\n    /* do nothing */\r\n}"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "onCancel",
+            "description": "If given, this function is called after the modal has been closed.",
+            "type": "() => void",
+            "required": false,
+            "default": {
+                "value": "function() {\r\n    return undefined;\r\n}"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "addNewModalHeader",
+            "description": "Property for changing the \"add new\" modal heading",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "TranslationService.provider.translate(\"fkui.crud-dataset.modal.header.add\", \"Lägg till rad\")"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "modifyModalHeader",
+            "description": "Property for changing the \"modify\" modal heading",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "TranslationService.provider.translate(\"fkui.crud-dataset.modal.header.modify\", \"Ändra rad\")"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "deleteModalHeader",
+            "description": "Property for changing the \"delete\" modal heading",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "TranslationService.provider.translate(\r\n    \"fkui.crud-dataset.modal.header.delete\",\r\n    \"Är du säker på att du vill ta bort raden?\",\r\n)"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "formModalSize",
+            "description": "Property for changing the \"add\" and \"modify\" modal size",
+            "type": "FModalSize | \"fullscreen\" | \"\"",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "created",
+            "description": "Emitted when an item is added.",
+            "properties": [
+                {
+                    "name": "item",
+                    "type": "T",
+                    "description": "the added item."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "deleted",
+            "description": "Emitted when an item is deleted.",
+            "properties": [
+                {
+                    "name": "item",
+                    "type": "T",
+                    "description": "the deleted item."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "updated",
+            "description": "Emitted when an item is updated.",
+            "properties": [
+                {
+                    "name": "item",
+                    "type": "T",
+                    "description": "the updated item."
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for displaying the data.",
+            "bindings": [
+                {
+                    "name": "updateItem",
+                    "type": "(item: T) => void",
+                    "description": "Callback to trigger modification modal"
+                },
+                {
+                    "name": "deleteItem",
+                    "type": "(item: T, nested?: keyof T) => void",
+                    "description": "Callback to trigger deletion modal"
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "add-button",
+            "description": "Slot for changing the text in \"Add new\" button`",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "buttons",
+            "description": "Slot for additional add buttons",
+            "bindings": [
+                {
+                    "name": "buttonClasses",
+                    "type": "string[]",
+                    "description": "Default button classes."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "add",
+            "description": "Slot for inputs when creating a new item. The new item is available through `v-slot=\"{ item }\"`. If any data in the item should be set not by the user the prop `beforeCreate` can be used to set that data.",
+            "bindings": [
+                {
+                    "name": "item",
+                    "type": "T",
+                    "description": "Item returned by `beforeCreate` or an empty object."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "modify",
+            "description": "Slot for inputs when modifying an item. The item being modified is available through `v-slot=\"{ item }\"`.",
+            "bindings": [
+                {
+                    "name": "item",
+                    "type": "T",
+                    "description": "A clone of the current item."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "delete",
+            "description": "Slot for displaying a warning message before an item is deleted. The item being deleted is available through `v-slot=\"{ item }\"`.",
+            "bindings": [
+                {
+                    "name": "item",
+                    "type": "T",
+                    "description": "Item about to be deleted."
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}

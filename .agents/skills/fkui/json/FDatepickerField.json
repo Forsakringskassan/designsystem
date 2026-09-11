@@ -1,0 +1,144 @@
+{
+    "name": "FDatepickerField",
+    "slug": "fdatepickerfield",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "Selected day.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "initialMonth",
+            "description": "Initial month. Applies when no day is selected.\nIf unspecified, todays month will be shown when no day is selected.",
+            "type": "FDate | undefined",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "highlightToday",
+            "description": "Highlight today.",
+            "type": "boolean",
+            "required": false,
+            "default": {
+                "value": "true"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "alwaysInline",
+            "description": "Always display inline.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "yearSelector",
+            "description": "Includes a year selector when enabled.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "labelWidth",
+            "description": "Set responsive width for label section.\n\n```\nlabel-width=\"md-9 lg-6\"\n```",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"sm-12\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "inputWidth",
+            "description": "Set responsive width for input section that wraps input element and icons.\n\n```\ninput-width=\"md-6 lg-3\"\n```",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"sm-12\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "disabled",
+            "description": "Disables the date picker.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "change",
+            "description": "Emitted when date changes.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "string",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "**Optional** Slot for setting the label. Default value \"Datum\"",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "tooltip",
+            "description": "**Optional** Slot for tooltip. May only contain an {@link FTooltip}.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "description",
+            "description": "**Optional** Slot for displaying description. The contents are passed to the description-slot of {@link FLabel}.",
+            "bindings": [
+                {
+                    "name": "description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for primary description content."
+                },
+                {
+                    "name": "format-description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for format description."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "error-message",
+            "description": "**Optional** Slot for error message(s). The contents are passed to the error message-slot of {@link FLabel}.",
+            "bindings": [
+                {
+                    "name": "hasError",
+                    "type": "boolean",
+                    "description": "Set to true when a validation error is present"
+                },
+                {
+                    "name": "validationMessage",
+                    "type": "string",
+                    "description": "Descriptive validation error message for current error"
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}

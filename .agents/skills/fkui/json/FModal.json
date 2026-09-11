@@ -1,0 +1,101 @@
+{
+    "name": "FModal",
+    "slug": "fmodal",
+    "models": [],
+    "props": [
+        {
+            "name": "id",
+            "description": "The id for the root element id attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "isOpen",
+            "description": "If the modal is open.\nUse this to toggle if the modal should be visible or not.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "ariaCloseText",
+            "description": "The aria-label attribute text for the top right close button.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "fullscreen",
+            "description": "Enable fullscreen mode in mobile.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "type",
+            "description": "The type of modal. 'information', 'warning' and 'error' is valid.",
+            "type": "\"\" | \"information\" | \"warning\" | \"error\"",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "size",
+            "description": "The size of modal in desktop mode.",
+            "type": "FModalSize | \"fullscreen\" | \"\"",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "focus",
+            "description": "Default behavior is that the modal will restore focus to previous element once closed.\n- \"on\" (default) - component will set focus both when opened and closed\n- \"off\" - focus strategy disabled\n- \"open\" - focus will only be applied once modal is opened",
+            "type": "\"on\" | \"off\" | \"open\"",
+            "required": false,
+            "default": {
+                "value": "\"on\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "close",
+            "description": "Event that is dispatched when the escape button is pressed.\nIn most use cases the `isOpen` prop should be set to false when this event is triggered.",
+            "properties": [],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "header",
+            "description": "Slot for the header.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "content",
+            "description": "Slot for the main content, e.g. paragraphs, input fields, etc.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "footer",
+            "description": "Slot the footer content, i.e. buttons.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

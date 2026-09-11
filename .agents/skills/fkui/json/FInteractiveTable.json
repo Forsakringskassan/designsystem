@@ -1,0 +1,243 @@
+{
+    "name": "FInteractiveTable",
+    "slug": "finteractivetable",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "Currently selected rows.\nRequires `selectable` to be set.",
+            "type": "T[]",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "v-model:active",
+            "description": "Current active row.",
+            "type": "T",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "rows",
+            "description": "The rows to be listed.\nThe rows will be listed in the given array order.",
+            "type": "T[]",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "hover",
+            "description": "When enabled hovering over a row will be highlighted.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "keyAttribute",
+            "description": "Unique attribute in rows.",
+            "type": "KeyAttribute",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "expandableAttribute",
+            "description": "Attribute of expandable content in rows.\nIf provided, the table can contain expandable rows.",
+            "type": "ExpandableAttribute",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "expandableDescribedby",
+            "description": "Element id for aria-describedby on expandable rows to describe expanded content.",
+            "type": "string",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "selectable",
+            "description": "When set the table rows will be selectable.\n\nFor multiselect, set value to `\"multi\"` (or `true`).\nFor single select, set value to `\"single\"`.\n\nThe current set of selected rows can be accessed with `v-model`.\n\nThe `select` and `unselect` events will be emitted when a row is selected\nor deselected.",
+            "type": "boolean | \"single\" | \"multi\"",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "striped",
+            "description": "When enabled alternating rows will use a different background color.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "scroll",
+            "description": "Enable scrolling inside table.\n\nCan be one of the following values:\n\n- `\"horizontal\"`: Enables horizontal scrolling\n- `\"vertical\"`: Does nothing (deprecated)\n- `\"both\"`: Acts as horizontal (deprecated)\n- `\"none\"`: Disables scrolling (default)",
+            "type": "TableScroll",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "showActive",
+            "description": "Enable showing the active row.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "change",
+            "description": "Emitted when row is activated.\n\nNote: This event is being emitted even if prop `showActive` is set to `false`!",
+            "properties": [
+                {
+                    "name": "row",
+                    "type": "T",
+                    "description": "Row being activated."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "click",
+            "description": "Emitted when row is clicked.",
+            "properties": [
+                {
+                    "name": "row",
+                    "type": "T",
+                    "description": "Row being clicked."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "select",
+            "description": "Emitted when row is selected. See also `unselect`.\n\nThis event is only emitted when using prop `selectable`.",
+            "properties": [
+                {
+                    "name": "row",
+                    "type": "T",
+                    "description": "Row being selected."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "unselect",
+            "description": "Emitted when row is unselected. See also `select`.\n\nThis event is only emitted when using prop `selectable`.",
+            "properties": [
+                {
+                    "name": "row",
+                    "type": "T",
+                    "description": "Row being unselected."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "expand",
+            "description": "Emitted when row is expanded. See also `collapse`.\n\nThis event is only emitted when using expandable rows.",
+            "properties": [
+                {
+                    "name": "row",
+                    "type": "T",
+                    "description": "The parent row holding rows to be expanded."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "collapse",
+            "description": "Emitted when row is collapsed. See also `expand`.",
+            "properties": [
+                {
+                    "name": "row",
+                    "type": "T",
+                    "description": "The parent row holding rows to be collapsed."
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "row-description",
+            "description": "Text to use as `aria-label` on the table row element (`<tr>`).",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "caption",
+            "description": "Slot for table caption.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot for table row.",
+            "bindings": [
+                {
+                    "name": "row",
+                    "type": "T",
+                    "description": "Current row being rendered."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "checkbox-description",
+            "description": "Screenreader label for the checkbox when using `selectable`.",
+            "bindings": [
+                {
+                    "name": "row",
+                    "type": "T",
+                    "description": "Current row being rendered."
+                }
+            ],
+            "deprecated": "Use `selectable-description` slot instead."
+        },
+        {
+            "name": "selectable-description",
+            "description": "Screenreader label for selectable radio or checkbox when using `selectable`.",
+            "bindings": [
+                {
+                    "name": "row",
+                    "type": "T",
+                    "description": "Current row being rendered."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "expandable",
+            "description": "Slot for expandable table row.",
+            "bindings": [
+                {
+                    "name": "expandableRow",
+                    "type": "T[ExpandableAttribute][number]",
+                    "description": "Current expandable row being rendered."
+                },
+                {
+                    "name": "parentRow",
+                    "type": "T",
+                    "description": "The parent row of the expandable rows."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "empty",
+            "description": "Slot for displaying a message when table is empty.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

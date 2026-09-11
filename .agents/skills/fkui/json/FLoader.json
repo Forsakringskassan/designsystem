@@ -1,0 +1,70 @@
+{
+    "name": "FLoader",
+    "slug": "floader",
+    "models": [],
+    "props": [
+        {
+            "name": "show",
+            "description": "Determine if the loader is visible or not",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "overlay",
+            "description": "If loader should be displayed as a fullscreen overlay.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "delay",
+            "description": "Delay the loader icon and text by 1 second",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "language",
+            "description": "Language used for determining fallback value for the loading text. Useful if loader is displayed before\ntext keys have been downloaded. Default is Swedish `sv`, can be changed to English `en`.",
+            "type": "\"sv\" | \"en\"",
+            "required": false,
+            "default": {
+                "value": "\"sv\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "focusOnOverlay",
+            "description": "Controls if focus should be set on the loading text when the loader is displayed with overlay.\n- When set to true focus will be set on the loading text when the loader is displayed with overlay.\n- When set to false no focus will be set, instead aria alert is used to announce loading for screen readers.",
+            "type": "boolean",
+            "required": false,
+            "default": {
+                "value": "true"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "teleport",
+            "description": null,
+            "type": "string | HTMLElement | undefined",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for define a custom loading text",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

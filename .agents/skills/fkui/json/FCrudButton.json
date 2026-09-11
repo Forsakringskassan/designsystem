@@ -1,0 +1,48 @@
+{
+    "name": "FCrudButton",
+    "slug": "fcrudbutton",
+    "models": [],
+    "props": [
+        {
+            "name": "action",
+            "description": "The action to be performed by the button.\nMust be one of the following values: \"delete\" or \"modify\".",
+            "type": "\"delete\" | \"modify\"",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "icon",
+            "description": "Determines if an icon should be displayed on the button.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "item",
+            "description": "The item that the action will be performed on.",
+            "type": "object",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "label",
+            "description": "Determines if the button should display a label.\nIf false, the button will use a visually hidden text for accessibility.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot used to provide custom content for the button text.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

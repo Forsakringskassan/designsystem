@@ -1,0 +1,54 @@
+{
+    "name": "FPageHeader",
+    "slug": "fpageheader",
+    "models": [],
+    "props": [
+        {
+            "name": "skipLink",
+            "description": "Render skiplink.\n\nWhen set to a non-empty string the skiplink feature is enabled.\nThe string is the id of the element to move focus to.\n\nWhen set to empty string (default) the skiplink feature is disabled.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "headerTag",
+            "description": "HTML element type for header.",
+            "type": "\"span\" | \"h1\"",
+            "required": false,
+            "default": {
+                "value": "\"span\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "skip-link-text",
+            "description": "Slot for skip link text.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "logo",
+            "description": "Slot for custom logo.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot for application title.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "right",
+            "description": "Slot for user/custom information display.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}
