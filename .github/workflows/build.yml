@@ -60,10 +60,6 @@ jobs:
     cypress-ct:
         name: Cypress Component Tests
         runs-on: ubuntu-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                containers: [1, 2, 3, 4]
         steps:
             - name: Checkout
               uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -77,9 +73,6 @@ jobs:
               run: npm exec lerna -- run --include-dependencies --scope=@fkui/vue --scope=@fkui/cypress-split build
             - name: Cypress Component Testing
               uses: cypress-io/github-action@09090944bd8aaa2a517cefb6e38bf1aae336b42b # v7.4.3
-              env:
-                  SPLIT: ${{ strategy.job-total }}
-                  SPLIT_INDEX: ${{ strategy.job-index }}
               with:
                   summary-title: "Component tests"
                   browser: chrome
