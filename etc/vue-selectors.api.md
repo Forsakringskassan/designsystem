@@ -94,6 +94,26 @@ export function FPaginatorSelectors(selector?: string): Readonly<{
     previousPageButton(this: void): string;
 }>;
 
+// @public
+export function FTextareaFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    textarea(): string;
+    label(): string;
+    description(): string;
+    formatDescription(): string;
+    errorMessage(): string;
+}>;
+
+// @public
+export function FTextFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    input(): string;
+    label(): string;
+    description(): string;
+    formatDescription(): string;
+    errorMessage(): string;
+}>;
+
 // (No @packageDocumentation comment for this package)
 
 ```
