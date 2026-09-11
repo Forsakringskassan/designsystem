@@ -94,6 +94,16 @@ export function FPaginatorSelectors(selector?: string): Readonly<{
     previousPageButton(this: void): string;
 }>;
 
+// @public
+export function FTooltipSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    toggleButton(): string;
+    bubble(): string;
+    header(): string;
+    body(): string;
+    closeButton(): string;
+}>;
+
 // (No @packageDocumentation comment for this package)
 
 ```
