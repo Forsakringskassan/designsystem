@@ -31,14 +31,15 @@ export default defineComponent({
             default: () => ElementIdService.generateElementId(),
         },
         /**
-         * The value for the input checked attribute.
+         * Current value selected in the radio button group.
+         * The radio button is checked when this value strictly equals the `value` prop.
          */
         modelValue: {
             type: anyType,
             default: () => undefined,
         },
         /**
-         * The value for the input.
+         * The value represented by this radio button.
          */
         value: {
             type: anyType,
@@ -47,9 +48,9 @@ export default defineComponent({
     },
     emits: [
         /**
-         * Emitted when the value of the radiobutton changes.
+         * Emitted when the radio button is selected.
          *
-         * @type {anyType}
+         * @param {anyType} value - Value of the selected radio button.
          */
         "change",
         /**
@@ -185,7 +186,7 @@ export default defineComponent({
             <slot></slot>
             <template v-if="$slots.details">
                 <span v-if="showDetails === 'always'" class="radio-button__details">
-                    <!-- @slot Slot for details, should only contain short text -->
+                    <!-- @slot Slot for additional information about the option. -->
                     <slot name="details"></slot>
                 </span>
                 <transition
@@ -195,7 +196,10 @@ export default defineComponent({
                     @leave="leave"
                 >
                     <span v-if="value === modelValue" class="radio-button__details">
-                        <!-- @slot Slot for details, should only contain short text-->
+                        <!--
+                            @slot Slot for additional information about the option.
+                            @binding {number} height The height of the expanded details content.
+                        -->
                         <slot name="details" :height></slot>
                     </span>
                 </transition>
