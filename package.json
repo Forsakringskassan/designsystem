@@ -87,7 +87,7 @@
     "@forsakringskassan/docs-live-example": "3.0.2",
     "@forsakringskassan/eslint-config": "15.9.7",
     "@forsakringskassan/eslint-config-cli": "15.9.3",
-    "@forsakringskassan/eslint-config-cypress": "15.9.3",
+    "@forsakringskassan/eslint-config-cypress": "15.9.9",
     "@forsakringskassan/eslint-config-jest": "15.9.2",
     "@forsakringskassan/eslint-config-typescript": "15.9.8",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "15.9.8",
