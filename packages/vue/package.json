@@ -70,7 +70,7 @@
     "@fkui/logic": "6.57.1",
     "@fkui/test-utils": "6.57.1",
     "@fkui/theme-default": "6.57.1",
-    "@forsakringskassan/vite-lib-config": "5.11.0",
+    "@forsakringskassan/vite-lib-config": "5.11.1",
     "@forsakringskassan/vitest-config-jsdom": "5.0.0",
     "@vue/test-utils": "2.5.0",
     "esbuild": "0.28.2",
