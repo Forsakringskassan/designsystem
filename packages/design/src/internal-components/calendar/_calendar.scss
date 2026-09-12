@@ -19,9 +19,11 @@
 
             margin: 5px;
 
-            &.is-hover,
-            &:hover:not(&--highlight) {
-                @include listbox.option-hover;
+            @media (hover: hover) {
+                &.is-hover,
+                &:hover:not(&--highlight) {
+                    @include listbox.option-hover;
+                }
             }
 
             &--highlight {
