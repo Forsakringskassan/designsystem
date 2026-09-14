@@ -6,8 +6,6 @@
             "cypress",
             "node",
             "vite/client",
-            "cy-mount",
-            "cypress-html-validate/commands",
             "cypress-real-events",
             "@forsakringskassan/cypress-config/support",
             "@forsakringskassan/cypress-visual-regression/commands",
