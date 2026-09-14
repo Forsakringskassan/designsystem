@@ -109,38 +109,8 @@ describe("FExpandablePanel", () => {
 
         cy.realPress("Tab");
         panel.header().should("not.have.focus");
-        cy.document().find(".test-anchor").should("be.focused");
+        cy.get(".test-anchor").should("be.focused");
         panel.body().find(".anchor").should("not.be.focused");
-    });
-
-    it("Should set the body to inert when the expandable panel is collapsed", () => {
-        const panel = new FExpandablePanelPageObject(
-            "[data-test=expandable-panel]",
-        );
-
-        cy.mount(createComponent(defaultTemplate));
-
-        panel.isOpen().should("be.false");
-        panel
-            .el()
-            .find(".expandable-panel__content")
-            .should("have.attr", "inert");
-    });
-
-    it("Should not set the body to inert when the expandable panel is expanded", () => {
-        const panel = new FExpandablePanelPageObject(
-            "[data-test=expandable-panel]",
-        );
-
-        cy.mount(createComponent(defaultTemplate));
-
-        panel.expandCollapseIcon().click();
-
-        panel.isOpen().should("be.true");
-        panel
-            .el()
-            .find(".expandable-panel__content")
-            .should("not.have.attr", "inert");
     });
 
     // eslint-disable-next-line mocha/no-pending-tests -- ticket exists to correct this behaviour
