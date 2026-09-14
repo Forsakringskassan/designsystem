@@ -12,7 +12,8 @@ if (Cypress.expose("DISABLE_VISUAL_REGRESSION")) {
     });
 }
 
-configure({
+await configure({
+    fkuiVue: await import("@fkui/vue"),
     resetEmulatedMedia: true,
     afterEach: {
         htmlvalidate: true,
