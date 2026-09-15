@@ -180,9 +180,11 @@ $icon-size: 30px;
             text-underline-offset: 0.25em;
         }
 
-        #{$anchor-selector}:hover {
-            text-decoration-thickness: 3px;
-            text-underline-offset: 0.25em;
+        @media (hover: hover) {
+            #{$anchor-selector}:hover {
+                text-decoration-thickness: 3px;
+                text-underline-offset: 0.25em;
+            }
         }
 
         #{$success-selector} {
