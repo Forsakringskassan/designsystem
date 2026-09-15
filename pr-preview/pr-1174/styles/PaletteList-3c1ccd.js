@@ -44,7 +44,7 @@ var palette_default = [
       },
       {
         name: "neutral-800",
-        value: "#2d3139",
+        value: "#292d34",
         group: "Neutral",
         comment: ""
       },
@@ -109,13 +109,13 @@ var palette_default = [
     variables: [
       {
         name: "blue-900",
-        value: "#061023",
+        value: "#0e1623",
         group: "Blue",
         comment: ""
       },
       {
         name: "blue-800",
-        value: "#14336c",
+        value: "#162f5d",
         group: "Blue",
         comment: ""
       },
@@ -174,13 +174,13 @@ var palette_default = [
     variables: [
       {
         name: "green-900",
-        value: "#041f12",
+        value: "#0f1f19",
         group: "Green",
         comment: ""
       },
       {
         name: "green-800",
-        value: "#0b4c2b",
+        value: "#14432a",
         group: "Green",
         comment: ""
       },
@@ -239,13 +239,13 @@ var palette_default = [
     variables: [
       {
         name: "yellow-900",
-        value: "#231c00",
+        value: "#201d10",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-800",
-        value: "#795b01",
+        value: "#625019",
         group: "Yellow",
         comment: ""
       },
@@ -304,13 +304,13 @@ var palette_default = [
     variables: [
       {
         name: "red-900",
-        value: "#220506",
+        value: "#211011",
         group: "Red",
         comment: ""
       },
       {
         name: "red-800",
-        value: "#6e1517",
+        value: "#5e1b1b",
         group: "Red",
         comment: ""
       },
