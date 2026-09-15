@@ -244,12 +244,12 @@ describe("density", () => {
 describe("Visual forcedColor", () => {
     const forcedColorModes = ["none", "dark", "light"] as const;
 
-    afterEach(() => {
-        cy.forcedColors("none");
-    });
     for (const mode of Object.values(forcedColorModes)) {
         it(`should render correct styling for forced color mode, ${mode} (visual)`, () => {
-            cy.forcedColors(mode);
+            if (mode !== "none") {
+                cy.prefersColorScheme(mode);
+                cy.forcedColors("active");
+            }
 
             const textField = new FTextFieldPageObject(
                 `[data-test="textField"]`,
