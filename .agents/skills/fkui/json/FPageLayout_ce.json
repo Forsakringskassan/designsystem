@@ -1,0 +1,37 @@
+{
+    "name": "FPageLayout.ce",
+    "slug": "fpagelayout-ce",
+    "models": [],
+    "props": [
+        {
+            "name": "layout",
+            "description": null,
+            "type": "string",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "update",
+            "description": null,
+            "properties": [],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "item.name",
+            "description": null,
+            "bindings": [
+                {
+                    "name": "name",
+                    "type": "unknown",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}

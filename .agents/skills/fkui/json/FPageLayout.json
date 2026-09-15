@@ -1,0 +1,31 @@
+{
+    "name": "FPageLayout",
+    "slug": "fpagelayout",
+    "models": [],
+    "props": [
+        {
+            "name": "layout",
+            "description": null,
+            "type": "T",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "update",
+            "description": null,
+            "properties": [],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

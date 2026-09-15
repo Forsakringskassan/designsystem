@@ -1,0 +1,44 @@
+{
+    "name": "FStaticField",
+    "slug": "fstaticfield",
+    "models": [],
+    "props": [],
+    "events": [],
+    "slots": [
+        {
+            "name": "label",
+            "description": "Slot for label content.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "tooltip",
+            "description": "Slot primarily for tooltip.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "description",
+            "description": "Optional slot for description. See {@link FLabel} for details.",
+            "bindings": [
+                {
+                    "name": "description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for primary description content."
+                },
+                {
+                    "name": "format-description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for format description."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot for text content.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

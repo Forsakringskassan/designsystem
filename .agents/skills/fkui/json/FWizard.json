@@ -1,0 +1,62 @@
+{
+    "name": "FWizard",
+    "slug": "fwizard",
+    "models": [
+        {
+            "name": "v-model",
+            "description": null,
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "null"
+            },
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "headerTag",
+            "description": "Element to render for the header element inside the wizard steps.",
+            "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "disableInitialFocus",
+            "description": "When the first wizard step is registered, it is opened and focused by default.\nSet this property to disable that behaviour.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "cancel",
+            "description": "Emitted when wizard is canceled, i.e.\nuser pressing 'Avbryt' button.\n\nPasses a boolean indicating if it was cancelled on the final step.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "undefined",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "completed",
+            "description": "Emitted when wizard is finished, i.e.\nuser pressing 'Fortsätt' button in last step.",
+            "properties": [],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "One or more <f-wizard-step> elements",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

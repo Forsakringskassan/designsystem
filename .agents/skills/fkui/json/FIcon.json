@@ -1,0 +1,54 @@
+{
+    "name": "FIcon",
+    "slug": "ficon",
+    "models": [],
+    "props": [
+        {
+            "name": "name",
+            "description": "Icon name.",
+            "type": "string",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "library",
+            "description": "fk-icon library",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"f\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "flip",
+            "description": "Flip icon horizontally or vertically.\n\nMust be set to one of:\n\n- `horizontal`\n- `vertical`",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "null"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "rotate",
+            "description": "Rotate icon.\n\nMust be set to one of:\n\n- `90`\n- `180`\n- `270`",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "null"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "name": "FResizePane",
+    "slug": "fresizepane",
+    "models": [],
+    "props": [
+        {
+            "name": "min",
+            "description": "Minimal size of pane.\n\nCan be set in `px`, `%`  (percent of application layout total size)\nor both as a space-separated list, e.g. `200px 20%`.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"0\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "max",
+            "description": "Maximum size of pane.\n\nCan be set in `px`, `%`  (percent of application layout total size)\nor both as a space-separated list, e.g. `600px 50%`.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"100%\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "initial",
+            "description": "Initial size of pane used when the pane is used for the first time.\n\nCan be set in `px` or `%` (percent of application layout total\nsize)",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"50%\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Pane content",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

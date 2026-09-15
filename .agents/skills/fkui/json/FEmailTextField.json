@@ -1,0 +1,96 @@
+{
+    "name": "FEmailTextField",
+    "slug": "femailtextfield",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "The value for the input.\nIf the prop is not set undefined will be used.",
+            "type": "string|null",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "id",
+            "description": "The id for the input id attribute.\nThe id for the label for attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "maxLength",
+            "description": null,
+            "type": "number",
+            "required": false,
+            "default": {
+                "value": "80"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "extendedValidation",
+            "description": null,
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "pasteErrorText",
+            "description": "The error message to be displayed on paste\nIf the prop is not set the default text \"Du kan inte kopiera mejladressen. Du måste skriva in den igen.\" will be set",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "TranslationService.provider.translate(\r\n    \"fkui.email-text-field.error.pasting\",\r\n    \"Du kan inte kopiera mejladressen. Du måste skriva in den igen.\",\r\n)"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "blur",
+            "description": null,
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "string | number",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "change",
+            "description": null,
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "string | number",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Optional slot for label content.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "extended-label",
+            "description": "Optional slot for label content of extended field.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

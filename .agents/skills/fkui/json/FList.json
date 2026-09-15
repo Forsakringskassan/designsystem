@@ -1,0 +1,156 @@
+{
+    "name": "FList",
+    "slug": "flist",
+    "models": [
+        {
+            "name": "v-model:active",
+            "description": "V-model will bind to value containing the current active item.",
+            "type": "T | undefined",
+            "required": false,
+            "default": {
+                "value": "() => undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "v-model",
+            "description": "V-model will bind to value containing selected items.",
+            "type": "T[] | undefined",
+            "required": false,
+            "default": {
+                "value": "() => undefined"
+            },
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "items",
+            "description": "The items to be listed.\nThe items will be listed in the given array order.",
+            "type": "T[]",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "keyAttribute",
+            "description": "Unique attribute in items.\nV-for directive in vue requires a unique key to\nbe able to optimize reuse of components.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "selectable",
+            "description": "If `true` the list will be selectable.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "checkbox",
+            "description": "Only applies if selectable:true\nDisable checkbox in interactive list and create a <a>-wrapper for each item, making them clickable",
+            "type": "boolean",
+            "required": false,
+            "default": {
+                "value": "true"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "elementId",
+            "description": "Unique item id that will be used instead of the automatically generated one.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "change",
+            "description": "Emitted when item is activated, i.e. clicked",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "T",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "click",
+            "description": "Emitted when item is activated, i.e. clicked",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "T",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "select",
+            "description": "Emitted when item is selected.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "T",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "unselect",
+            "description": "Emitted when item is unselected.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "T",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for displaying an item. The item object is available through `v-slot=\"{ <propertyName> }\"`, e.g. `v-slot=\"{ item }\"`.",
+            "bindings": [
+                {
+                    "name": "item",
+                    "type": "unknown",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "empty",
+            "description": "Slot for displaying a message when list is empty. Default text is 'Listan är tom' (key fkui.list.empty).",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "screenreader",
+            "description": "Slot for screen reader text when checkbox (to selecte item) get focus. The item object is available through `v-slot=\"{ <propertyName> }\"`, e.g. `v-slot=\"{ item }\"`.",
+            "bindings": [
+                {
+                    "name": "item",
+                    "type": "T",
+                    "description": "The object to be screen read."
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}

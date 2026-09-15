@@ -1,0 +1,86 @@
+{
+    "name": "FPhoneTextField",
+    "slug": "fphonetextfield",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "The value for the input.\nIf the prop is not used or set to undefined\nor null then the default value will be used.",
+            "type": "string|null",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "id",
+            "description": "The id for the input id attribute.\nThe id for the label for attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "maxLength",
+            "description": null,
+            "type": "number",
+            "required": false,
+            "default": {
+                "value": "80"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "extendedValidation",
+            "description": null,
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "blur",
+            "description": null,
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "string | number",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "change",
+            "description": null,
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "string | number",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "extendedLabel",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}
