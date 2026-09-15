@@ -1,4 +1,4 @@
-import { shallowMount } from "@vue/test-utils";
+import { mount, shallowMount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import FExpandablePanel from "./FExpandablePanel.vue";
 import "html-validate/vitest";
@@ -106,6 +106,39 @@ describe("attributes", () => {
         });
         const input = wrapper.get("button");
         expect(input.attributes("disabled")).toBeDefined();
+    });
+
+    it('should set "inert" on the content slot when collapsed', () => {
+        expect.assertions(1);
+        const wrapper = mount(FExpandablePanel, {
+            attrs: {
+                id: "my-id",
+            },
+            slots: {
+                title: "My panel title",
+                default: "My panel content",
+            },
+        });
+        const content = wrapper.get(".expandable-panel__content");
+        expect(content.attributes("inert")).toBe("true");
+    });
+
+    it('should not set "inert" on the content slot when opened', () => {
+        expect.assertions(1);
+        const wrapper = mount(FExpandablePanel, {
+            attrs: {
+                id: "my-id",
+            },
+            props: {
+                expanded: true,
+            },
+            slots: {
+                title: "My panel title",
+                default: "My panel content",
+            },
+        });
+        const content = wrapper.get(".expandable-panel__content");
+        expect(content.attributes("inert")).toBe("false");
     });
 });
 
