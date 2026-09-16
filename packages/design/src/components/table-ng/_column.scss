@@ -34,7 +34,7 @@ $horizontal-padding: size.$padding-050;
     }
 
     &--expandable {
-        width: var(--f-icon-size-medium);
+        min-width: var(--f-icon-size-medium);
     }
 
     &--rowheader {
