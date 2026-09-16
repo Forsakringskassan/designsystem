@@ -877,7 +877,7 @@ function FTextFieldSelectors(selector = ":scope") {
      * @returns A selector for the text input element.
      */
     input() {
-      return `${selector} .text-field__input`;
+      return `${selector} input`;
     },
     /**
      * Get the label element selector.
