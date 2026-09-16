@@ -99,8 +99,8 @@
     "kalenderdag",
     "Bricka",
     "FBadge",
-    "Hjälp och support",
     "CHANGELOG v5",
+    "Hjälp och support",
     "Validering och felhantering",
     "obligatoriska fält",
     "submit",
@@ -702,15 +702,15 @@
     "FMinimizablePanelPageObject: footer() method",
     "FMinimizablePanelPageObject: el() method",
     "FMinimizablePanelPageObject: content() method",
+    "FInteractiveTablePageObject: header() method",
+    "FInteractiveTablePageObject: checkbox() method",
+    "FInteractiveTablePageObject: cell() method",
     "FLabelPageObject: FLabelPageObject() constructor",
     "cypress",
     "FLabelPageObject: formatDescription() method",
     "FLabelPageObject: errorMessage() method",
     "FLabelPageObject: errorIcon() method",
     "FLabelPageObject: description() method",
-    "FInteractiveTablePageObject: header() method",
-    "FInteractiveTablePageObject: checkbox() method",
-    "FInteractiveTablePageObject: cell() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
     "cypress",
     "FFileItemPageObject: typeOfFile() method",
@@ -1021,13 +1021,13 @@
       ]
     },
     {
-      "url": "gettingstarted/help-and-support.html",
-      "title": "Hjälp och support",
+      "url": "changelog/v5.html",
+      "title": "CHANGELOG v5",
       "terms": []
     },
     {
-      "url": "changelog/v5.html",
-      "title": "CHANGELOG v5",
+      "url": "gettingstarted/help-and-support.html",
+      "title": "Hjälp och support",
       "terms": []
     },
     {
@@ -2557,6 +2557,21 @@
       "terms": []
     },
     {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
+      "title": "FInteractiveTablePageObject: header() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
+      "title": "FInteractiveTablePageObject: checkbox() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
+      "title": "FInteractiveTablePageObject: cell() method",
+      "terms": []
+    },
+    {
       "url": "functions/cypress/pageobjects/FLabelPageObject/index.html",
       "title": "FLabelPageObject: FLabelPageObject() constructor",
       "terms": [
@@ -2581,21 +2596,6 @@
     {
       "url": "functions/cypress/pageobjects/FLabelPageObject/description.html",
       "title": "FLabelPageObject: description() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
-      "title": "FInteractiveTablePageObject: header() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
-      "title": "FInteractiveTablePageObject: checkbox() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html",
-      "title": "FInteractiveTablePageObject: cell() method",
       "terms": []
     },
     {
@@ -3548,9 +3548,9 @@
     "700": 222,
     "701": 223,
     "702": 224,
-    "703": 224,
-    "704": 225,
-    "705": 226,
+    "703": 225,
+    "704": 226,
+    "705": 227,
     "706": 227,
     "707": 228,
     "708": 229,
