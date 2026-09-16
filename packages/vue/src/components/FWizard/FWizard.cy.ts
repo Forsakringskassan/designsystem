@@ -335,7 +335,10 @@ describe("Visual", () => {
     for (const mode of forcedColorModes) {
         it(`should render correct styling for forced color mode '${mode}'`, () => {
             cy.viewport(600, 600);
-            cy.forcedColors(mode);
+            if (mode !== "none") {
+                cy.prefersColorScheme(mode);
+                cy.forcedColors("active");
+            }
             const { step2 } = mountAndGetPageObjects({
                 openStep: "STEP2",
             });

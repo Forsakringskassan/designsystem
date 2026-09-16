@@ -536,7 +536,8 @@ describe("Validation", () => {
         };
 
         it("should render correct styling for forced color mode dark with scrollbar visual", () => {
-            cy.forcedColors("dark");
+            cy.prefersColorScheme("dark");
+            cy.forcedColors("active");
             cy.mount(FTextField, defaultMountOptions);
             cy.get(input).click();
             cy.get("li").eq(2).invoke("addClass", "is-hover");
@@ -549,7 +550,8 @@ describe("Validation", () => {
                 "Afghanistan",
                 "Albanien",
             ];
-            cy.forcedColors("dark");
+            cy.prefersColorScheme("dark");
+            cy.forcedColors("active");
             cy.mount(FTextField, defaultMountOptions);
             cy.get(input).click();
             cy.get("li").eq(2).invoke("addClass", "is-hover");

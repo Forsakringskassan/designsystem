@@ -3,7 +3,6 @@
 import { configure } from "@forsakringskassan/cypress-config/support";
 import "@forsakringskassan/cypress-visual-regression/commands";
 import "../assertions/trimmed-text";
-import "./commands/forced-colors";
 
 if (Cypress.expose("DISABLE_VISUAL_REGRESSION")) {
     Cypress.Commands.overwrite("toMatchScreenshot", () => {
@@ -13,7 +12,9 @@ if (Cypress.expose("DISABLE_VISUAL_REGRESSION")) {
     });
 }
 
-configure({
+await configure({
+    fkuiVue: await import("@fkui/vue"),
+    resetEmulatedMedia: true,
     afterEach: {
         htmlvalidate: true,
     },

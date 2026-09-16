@@ -23,7 +23,7 @@ jobs:
             - name: Build documentation
               run: npm run build:docs
             - name: Tests
-              uses: Forsakringskassan/vitest-config@9300fc565e776c0c8d4c3dd803cb4c84166699f4 # v2.8.1
+              uses: Forsakringskassan/vitest-config@535425e94f144591a70bdc5343089344b58aad4f # v5.0.0
 
     cypress-e2e:
         name: Cypress E2E Tests
@@ -109,6 +109,8 @@ jobs:
             - name: Remove conflicting dependencies
               run: |
                   npm rm --include-workspace-root --workspaces \
+                      @forsakringskassan/vitest-config \
+                      @forsakringskassan/vitest-config-jsdom \
                       vitest
             - name: Install html-validate
               run: |
