@@ -30,19 +30,8 @@ injectSpritesheet();
 
 const uncaughtErrors: string[] = [];
 
-Cypress.on("uncaught:exception", (err, { body, fullTitle }) => {
-    const match = body.match(
-        /<expectedException>([\s\S]*?)<\/expectedException>|<expectedException\s*\/>/i,
-    );
-    const message = match ? match[1].trim() : null;
-    if (message?.length === 0 || (message && err.message.includes(message))) {
-        /* suppress error */
-        return false;
-    }
-
-    uncaughtErrors.push(fullTitle());
-
-    /* fail test */
+Cypress.on("uncaught:exception", (err, runnable) => {
+    uncaughtErrors.push(runnable.fullTitle());
     return true;
 });
 
