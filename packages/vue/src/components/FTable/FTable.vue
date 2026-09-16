@@ -391,7 +391,12 @@ onBeforeUnmount(() => {
         </caption>
         <thead v-if="hasColumns">
             <tr class="table-ng__row" aria-rowindex="1">
-                <th v-if="isTreegrid" scope="col" tabindex="-1" class="table-ng__column"></th>
+                <th
+                    v-if="isTreegrid"
+                    scope="col"
+                    tabindex="-1"
+                    class="table-ng__column table-ng__column--expandable"
+                ></th>
                 <i-table-header-selectable
                     v-if="selectable"
                     :ref="bindCellApiRef"

@@ -33,6 +33,10 @@ $horizontal-padding: size.$padding-050;
         }
     }
 
+    &--expandable {
+        width: var(--f-icon-size-medium);
+    }
+
     &--rowheader {
         text-align: left;
         padding: core.densify(size.$padding-025);

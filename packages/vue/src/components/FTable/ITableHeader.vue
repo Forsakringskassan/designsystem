@@ -23,7 +23,14 @@ const emit = defineEmits<{
 const thElement = useTemplateRef("th");
 
 const columnClasses = computed(() => {
-    const size = column.size.value === "shrink" ? "table-ng__column--shrink" : "table-ng__column--grow";
+    let size;
+
+    if (column.width !== undefined) {
+        size = "table-ng__column--fixed";
+    } else {
+        size = column.size.value === "shrink" ? "table-ng__column--shrink" : "table-ng__column--grow";
+    }
+
     return ["table-ng__column", size];
 });
 
