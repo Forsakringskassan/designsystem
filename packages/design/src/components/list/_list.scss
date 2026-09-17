@@ -58,7 +58,8 @@ $list-selectpane-padding: calc(var(--f-list-item-itempane-padding) - 0.2rem);
                 margin-bottom: 0;
             }
 
-            ul {
+            // Reset `list-style-type` for content since `.list` (`FList`) is a ul.
+            ul:not(.button-list) {
                 list-style-type: disc;
 
                 ul {
