@@ -20,8 +20,8 @@ export interface TableColumnSelect<
     label?(this: void, row: T): string;
     selected?(this: void, row: T): string;
     update?(this: void, row: T, newValue: string, oldValue: string): void;
-    /** List of options */
-    options: string[];
+    /** List of options of a callback function */
+    options: string[] | ((this: void, row: T) => string[]);
     /** When enabled, the cells are editable. Default: `true` */
     editable?: boolean | ((this: void, row: T) => boolean);
 }
@@ -34,7 +34,7 @@ export interface NormalizedTableColumnSelect<
     K,
 > extends NormalizedTableColumnBase<T, K> {
     readonly type: "select";
-    readonly options: string[];
+    readonly options: (this: void, row: T) => string[];
     readonly component: Component<{
         row: T;
         column: NormalizedTableColumnSelect<T, K>;
@@ -56,7 +56,10 @@ export function normalizeSelectColumn<T, K extends keyof T>(
         label: getLabelFn(column.label),
         selected: getValueFn(column.selected, column.key, String, ""),
         update: getUpdateFn(column.update, column.key),
-        options: column.options,
+        options: (row) =>
+            typeof column.options === "function"
+                ? column.options(row)
+                : column.options,
         editable:
             typeof column.editable === "function"
                 ? column.editable

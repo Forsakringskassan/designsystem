@@ -30,6 +30,7 @@ const activeOptionId = ElementIdService.generateElementId();
 const activeOption: Ref<string | null> = ref(null);
 
 const visible = computed((): boolean => isVisible(column.visible, row));
+const options = computed(() => column.options(row));
 
 async function onCellKeyDown(e: KeyboardEvent): Promise<void> {
     /* eslint-disable-next-line unicorn/prefer-includes-over-repeated-comparisons -- technical debt */
@@ -98,31 +99,31 @@ function closeDropdown(): void {
 
 function setNextOption(): void {
     if (activeOption.value) {
-        const index = column.options.indexOf(activeOption.value);
+        const index = options.value.indexOf(activeOption.value);
 
-        if (index === column.options.length - 1) {
-            activeOption.value = column.options[0];
+        if (index === options.value.length - 1) {
+            activeOption.value = options.value[0];
         } else {
-            activeOption.value = column.options[index + 1];
+            activeOption.value = options.value[index + 1];
         }
     } else {
-        activeOption.value = column.options[0];
+        activeOption.value = options.value[0];
     }
 }
 
 function setPreviousOption(): void {
     if (activeOption.value) {
-        const index = column.options.indexOf(activeOption.value);
+        const index = options.value.indexOf(activeOption.value);
 
         if (index === 0) {
             /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
-            activeOption.value = column.options.at(-1)!;
+            activeOption.value = options.value.at(-1)!;
         } else {
-            activeOption.value = column.options[index - 1];
+            activeOption.value = options.value[index - 1];
         }
     } else {
         /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- technical debt */
-        activeOption.value = column.options.at(-1)!;
+        activeOption.value = options.value.at(-1)!;
     }
 }
 
@@ -218,7 +219,7 @@ async function onEditBlur(event: FocusEvent): Promise<void> {
                 v-show="editing"
                 :id="dropdownId"
                 :is-open="dropdownIsOpen"
-                :options="column.options"
+                :options
                 :active-option
                 :active-option-id
                 :input-node="editRef as HTMLInputElement"
