@@ -269,9 +269,15 @@ export default defineComponent({
         onDropdownSelect(value: string): void {
             this.selectOption(value);
             this.$emit("update:modelValue", value);
+            this.$emit("change", value);
         },
         onDropdownClose(): void {
             this.closeDropdown();
+        },
+        onInputSelect(event: Event): void {
+            const targetEvent = event as CustomEvent<string>;
+            this.$emit("update:modelValue", targetEvent.detail);
+            this.$emit("change", targetEvent.detail);
         },
         getErrorPopupAnchor(): HTMLElement {
             return this.$refs.input as HTMLElement;
@@ -324,7 +330,6 @@ export default defineComponent({
                     newModelValue = this.viewValue;
                 }
                 this.lastModelValue = newModelValue;
-
                 this.$emit("update:modelValue", newModelValue);
                 await this.$nextTick(); // wait for model update before triggering change, blur event
 
@@ -480,6 +485,7 @@ export default defineComponent({
                     :type
                     class="text-field__input"
                     v-bind="$attrs"
+                    @select="onInputSelect"
                     @blur="onBlur"
                     @focus="onFocus"
                     @change="onChange"
