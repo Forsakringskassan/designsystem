@@ -3,7 +3,7 @@ import { flushPromises, mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import { useDatasetRef } from "../../utils";
 import FTable from "./FTable.vue";
-import { defineTableColumns } from "./table-column";
+import { type TableColumnSize, defineTableColumns } from "./table-column";
 
 const expandableAttribute = "nested";
 
@@ -145,6 +145,31 @@ describe("1.6 column size", () => {
         const header = wrapper.get("thead th");
         expect(header.classes()).toContain("table-ng__column--shrink");
     });
+
+    it.each([null, "shrink", "grow"] as Array<TableColumnSize | null>)(
+        "should have fixed class if width is set and size is %s",
+        (size) => {
+            expect.assertions(3);
+            const columns = defineTableColumns([
+                {
+                    type: "text",
+                    header: "A",
+                    size: ref(size),
+                    width: "20rem",
+                },
+            ]);
+            const wrapper = mount(FTable, {
+                props: {
+                    rows: rows.value,
+                    columns,
+                },
+            });
+            const header = wrapper.get("thead th");
+            expect(header.classes()).not.toContain("table-ng__column--grow");
+            expect(header.classes()).not.toContain("table-ng__column--shrink");
+            expect(header.classes()).toContain("table-ng__column--fixed");
+        },
+    );
 });
 
 describe("1.7 enabled columns", () => {

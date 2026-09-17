@@ -36,6 +36,16 @@ $table-ng-description-font-weight: var(--f-font-weight-normal) !default;
     }
 
     thead {
+        tr {
+            &:not(:has(.table-ng__column--grow)) {
+                .table-ng__column--fixed {
+                    // Allow fixed columns to grow in size when having no grow column present
+                    // to prevent shrink columns from growing.
+                    width: unset !important;
+                }
+            }
+        }
+
         th {
             background: $table-ng-header-background;
             border-bottom: $table-ng-header-border;
