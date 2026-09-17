@@ -2482,6 +2482,90 @@ describe("select cell", () => {
         cy.toMatchScreenshot();
         cy.get("body").realClick({ position: "topLeft" });
     });
+
+    it("should grow the popup to fit longer options", () => {
+        cy.mount(() =>
+            h(
+                FTable<Row>,
+                {
+                    rows: rows.value,
+                    columns: [
+                        {
+                            type: "select",
+                            header: "Header",
+                            options: [
+                                "Foo",
+                                "Loooooooooooong looooooooooooong text",
+                                "Baz",
+                            ],
+                            key: "option",
+                            label: () => "Label",
+                        },
+                        {
+                            type: "text",
+                            header: "Filler",
+                            key: "option",
+                            label: () => "Label",
+                        },
+                    ],
+                },
+                {
+                    caption() {
+                        return "select cell should grow the popup to fit longer options";
+                    },
+                },
+            ),
+        );
+
+        table.cell({ row: 2, col: 1 }).click();
+        cy.toMatchScreenshot();
+        cy.get("body").realClick({ position: "topLeft" });
+    });
+
+    it("should grow the popup to fit longest option further down the scroll", () => {
+        cy.mount(() =>
+            h(
+                FTable<Row>,
+                {
+                    rows: rows.value,
+                    columns: [
+                        {
+                            type: "select",
+                            header: "Header",
+                            options: [
+                                "Foo",
+                                "Loooooooooooong looooooooooooong text",
+                                "a",
+                                "b",
+                                "c",
+                                "d",
+                                "e",
+                                "Loooooooooooonger loooooooooooooooonger text",
+                                "f",
+                            ],
+                            key: "option",
+                            label: () => "Label",
+                        },
+                        {
+                            type: "text",
+                            header: "Filler",
+                            key: "option",
+                            label: () => "Label",
+                        },
+                    ],
+                },
+                {
+                    caption() {
+                        return "select cell should grow the popup to fit longest option further down the scroll";
+                    },
+                },
+            ),
+        );
+
+        table.cell({ row: 2, col: 1 }).click();
+        cy.toMatchScreenshot();
+        cy.get("body").realClick({ position: "topLeft" });
+    });
 });
 
 describe("editable cell", () => {
