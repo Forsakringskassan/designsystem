@@ -1,9 +1,9 @@
-import Example from "./FTableDependebleSelectsExample.vue";
+import Example from "./FTableDependableSelectsExample.vue";
 import { FTablePageObject } from "@fkui/vue/cypress";
 
 const table = new FTablePageObject();
 
-describe("FTableDependebleSelectsExample", () => {
+describe("FTableDependableSelectsExample", () => {
     it("should show options depending on the selected category", () => {
         cy.mount(Example);
 
