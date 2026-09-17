@@ -20,7 +20,7 @@ export interface TableColumnSelect<
     label?(this: void, row: T): string;
     selected?(this: void, row: T): string;
     update?(this: void, row: T, newValue: string, oldValue: string): void;
-    /** List of options of a callback function */
+    /** List of options or a callback function */
     options: string[] | ((this: void, row: T) => string[]);
     /** When enabled, the cells are editable. Default: `true` */
     editable?: boolean | ((this: void, row: T) => boolean);
