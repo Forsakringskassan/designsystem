@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 6.58.0 (2026-09-17)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** add support for fixed column width in FTable (refs SFKUI-7270) dfffaff
+* **@fkui/vue:** creating selectors for textfields (refs SFKUI-8165) ee3f18a
+
+### Bug Fixes
+
+* **@fkui/vue:** fixed some issues with the tests (refs SFKUI-8156) c284e10
+* **@fkui/vue:** prevent hidden content from being focusable (refs SFKUI-8156) fb3fb43
+* **deps:** update dependency cssnano to v9.0.4 79ca968
+* **deps:** update dependency sass to v1.104.1 192ba72
+* **vscode:** fix html-validate issue when resolving paths (refs SFKUI-6500) c4d1f18
+
 ## 6.57.1 (2026-09-10)
 
 ### Bug Fixes

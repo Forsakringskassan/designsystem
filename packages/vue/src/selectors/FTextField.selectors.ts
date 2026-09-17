@@ -4,7 +4,7 @@ import { FLabelSelectors } from "./FLabel.selectors";
  * Selectors for `FTextField`.
  *
  * @public
- * @since %version%
+ * @since v6.58.0
  * @param selector - The selector for the FTextField component.
  * @returns An object with selector methods for the FTextField component.
  */
@@ -18,7 +18,7 @@ export function FTextFieldSelectors(selector: string = ":scope") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.58.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -43,7 +43,7 @@ export function FTextFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.58.0
          * @returns A selector for the text input element.
          */
         input(): string {
@@ -70,7 +70,7 @@ export function FTextFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.58.0
          * @returns A selector for the label element.
          */
         label(): string {
@@ -97,7 +97,7 @@ export function FTextFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.58.0
          * @returns A selector for the description element.
          */
         description(): string {
@@ -125,7 +125,7 @@ export function FTextFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.58.0
          * @returns A selector for the format description element.
          */
         formatDescription(): string {
@@ -152,7 +152,7 @@ export function FTextFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.58.0
          * @returns A selector for the error message element.
          */
         errorMessage(): string {

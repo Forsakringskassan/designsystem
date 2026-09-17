@@ -4,7 +4,7 @@ import { FLabelSelectors } from "./FLabel.selectors";
  * Selectors for `FTextareaField`.
  *
  * @public
- * @since %version%
+ * @since v6.58.0
  * @param selector - The selector for the FTextareaField component.
  * @returns An object with selector methods for the FTextareaField component.
  */
@@ -18,7 +18,7 @@ export function FTextareaFieldSelectors(selector: string = ":scope") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.58.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -43,7 +43,7 @@ export function FTextareaFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.58.0
          * @returns A selector for the textarea element.
          */
         textarea(): string {
@@ -68,7 +68,7 @@ export function FTextareaFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.58.0
          * @returns A selector for the label element.
          */
         label(): string {
@@ -95,7 +95,7 @@ export function FTextareaFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.58.0
          * @returns A selector for the description element.
          */
         description(): string {
@@ -123,7 +123,7 @@ export function FTextareaFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.58.0
          * @returns A selector for the format description element.
          */
         formatDescription(): string {
@@ -150,7 +150,7 @@ export function FTextareaFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.58.0
          * @returns A selector for the error message element.
          */
         errorMessage(): string {
