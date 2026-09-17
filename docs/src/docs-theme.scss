@@ -65,7 +65,7 @@ $fk-logo-large: "fk-logo-primary-large.svg";
 }
 
 footer {
-    background: palette.$palette-color-green-a-85;
+    background: palette.$palette-color-green-600;
     color: var(--fkds-color-text-inverted);
     padding: 3rem;
 
@@ -100,8 +100,8 @@ footer {
     .anchor,
     #version button {
         &:hover {
-            color: palette.$palette-color-fk-black-100;
-            text-decoration-color: palette.$palette-color-fk-black-100;
+            color: palette.$palette-color-neutral-900;
+            text-decoration-color: palette.$palette-color-neutral-900;
         }
     }
 
