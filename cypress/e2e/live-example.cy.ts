@@ -61,15 +61,12 @@ describe("validate documentation examples...", () => {
 
             it(path, () => {
                 cy.visit(path);
-                // cy.get('.mermaid:not([data-processed="true"])').should('not.exist');
-                cy.get("body").then(($body) => {
-                    // find mermaid-block on page
-                    const blocks = $body.find(".mermaid");
-
-                    if (blocks.length > 0) {
+                cy.then(() => {
+                    const count = Cypress.$(".mermaid").length;
+                    if (count > 0) {
                         cy.get('.mermaid[data-processed="true"]').should(
                             "have.length",
-                            blocks.length,
+                            count,
                         );
                     }
                 });
@@ -118,13 +115,6 @@ describe("validate documentation examples...", () => {
                         expect($el, path).not.to.exist;
                     });
                 }
-                if (
-                    path ===
-                    "guides/formatting-and-parsing/custom-formatter-parser.html"
-                ) {
-                    console.log("mermaid");
-                }
-                // cy.get(".mermaid-loading").should("not.exist");
             });
         }
     });

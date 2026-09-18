@@ -1478,6 +1478,7 @@ export interface TableColumnBase<T> {
     // (undocumented)
     sort?: boolean;
     visible?: (this: void, row: T) => boolean;
+    width?: TableColumnWidth;
 }
 
 // @public (undocumented)
@@ -1576,7 +1577,7 @@ export interface TableColumnSelect<T, K extends keyof T> extends TableColumnBase
     // (undocumented)
     key?: K;
     label?(this: void, row: T): string;
-    options: string[];
+    options: string[] | ((this: void, row: T) => string[]);
     // (undocumented)
     selected?(this: void, row: T): string;
     type: "select";
@@ -1625,6 +1626,9 @@ export interface TableColumnText<T, K extends keyof T> extends TableColumnBase<T
 export type TableColumnType = TableColumn<unknown, never> extends infer U ? U extends {
     type: infer T;
 } ? T extends undefined ? never : T : never : never;
+
+// @public (undocumented)
+export type TableColumnWidth = `${number}px` | `${number}rem` | `${number}%` | `${number}ch`;
 
 // @public (undocumented)
 export enum TableScroll {

@@ -1191,12 +1191,14 @@ describe("maxdate within month", () => {
     describe("open calendar", () => {
         it("should have approved design", () => {
             datepickerField.toggleCalendarButton().realClick();
+            datepickerField.calendar().should("be.visible");
             datepickerField.calendarCaption().should("have.focus");
             cy.toMatchScreenshot();
         });
 
         it("should set corresponding days to disabled", () => {
             datepickerField.toggleCalendarButton().click();
+            datepickerField.calendar().should("be.visible");
             datepickerField.disabledDay("2022-12-23").should("not.exist");
             datepickerField.disabledDay("2022-12-24").should("exist");
             datepickerField.disabledDay("2022-12-25").should("exist");
@@ -1206,6 +1208,7 @@ describe("maxdate within month", () => {
     describe("open calendar and click disabled next month button", () => {
         beforeEach(() => {
             datepickerField.toggleCalendarButton().click();
+            datepickerField.calendar().should("be.visible");
             datepickerField.navNextButton().click();
         });
 
@@ -1228,6 +1231,7 @@ describe("maxdate within month", () => {
     describe("open calendar and navigate to next month by pressing right arrow", () => {
         beforeEach(() => {
             datepickerField.toggleCalendarButton().click();
+            datepickerField.calendar().should("be.visible");
             datepickerField.dayButton("2022-12-31").focus();
             cy.focused().trigger("keydown", { code: "ArrowRight" });
         });
