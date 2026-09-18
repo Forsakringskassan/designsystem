@@ -56,5 +56,5 @@ jobs:
               uses: ext/npm-pkg-lint@63e0a7b1935b65261cc3c8ab1c2b4a9aafa18c5c # v5.2.5
               with:
                   build: false
-                  folders: packages/* docs
+                  folders: packages/* docs .
                   allow-dependencies: fk-icons

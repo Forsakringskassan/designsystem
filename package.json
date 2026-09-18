@@ -3,6 +3,10 @@
   "version": "6.58.0",
   "private": true,
   "description": "fkui monorepo",
+  "keywords": [
+    "fkui",
+    "designsystem"
+  ],
   "homepage": "https://designsystem.forsakringskassan.se/",
   "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
   "repository": {
@@ -11,7 +15,6 @@
   },
   "license": "MIT",
   "author": "Försäkringskassan",
-  "main": "index.js",
   "files": [],
   "workspaces": [
     "docs",
