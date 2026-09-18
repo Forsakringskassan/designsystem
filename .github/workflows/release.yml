@@ -17,6 +17,9 @@ jobs:
         with:
             app-id: ${{ vars.RELEASE_APP_ID }}
             config-preset: "@forsakringskassan/semantic-release-monorepo-config"
+            build-command: |
+                npm run build
+                npm run build:docs
         secrets:
             app-key: ${{ secrets.RELEASE_APP_KEY }}
 
