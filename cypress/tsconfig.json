@@ -8,8 +8,7 @@
             "vite/client",
             "cypress-real-events",
             "@forsakringskassan/cypress-config/support",
-            "@forsakringskassan/cypress-visual-regression/commands",
-            "mocha"
+            "@forsakringskassan/cypress-visual-regression/commands"
         ],
         "typeRoots": ["../node_modules", "../node_modules/@types", "./types"],
         "paths": {
