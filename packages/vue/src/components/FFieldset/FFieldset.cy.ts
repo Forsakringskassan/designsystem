@@ -227,27 +227,27 @@ describe("checkbox", () => {
     });
 
     it("should be able to select and deselect second option", () => {
-        fieldSetCheckbox.radioButton(checkBoxOptions.second).select();
+        fieldSetCheckbox.checkBox(checkBoxOptions.second).select();
         fieldSetCheckbox
-            .radioButton(checkBoxOptions.second)
+            .checkBox(checkBoxOptions.second)
             .isSelected()
             .should("be.true");
-        fieldSetCheckbox.radioButton(checkBoxOptions.second).select();
+        fieldSetCheckbox.checkBox(checkBoxOptions.second).select();
         fieldSetCheckbox
-            .radioButton(checkBoxOptions.second)
+            .checkBox(checkBoxOptions.second)
             .isSelected()
             .should("be.false");
     });
 
     it("should be able to select and deselect fifth option", () => {
-        fieldSetCheckbox.radioButton(checkBoxOptions.fifth).select();
+        fieldSetCheckbox.checkBox(checkBoxOptions.fifth).select();
         fieldSetCheckbox
-            .radioButton(checkBoxOptions.fifth)
+            .checkBox(checkBoxOptions.fifth)
             .isSelected()
             .should("be.true");
-        fieldSetCheckbox.radioButton(checkBoxOptions.fifth).select();
+        fieldSetCheckbox.checkBox(checkBoxOptions.fifth).select();
         fieldSetCheckbox
-            .radioButton(checkBoxOptions.fifth)
+            .checkBox(checkBoxOptions.fifth)
             .isSelected()
             .should("be.false");
     });
