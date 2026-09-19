@@ -27,7 +27,7 @@
       "import": "./dist/esm/cypress.esm.js",
       "require": "./dist/cjs/cypress.cjs.js"
     },
-    "./style.css": "./dist/esm/vue-labs.css",
+    "./style.css": "./dist/esm/style.css",
     "./htmlvalidate": "./htmlvalidate/index.mjs"
   },
   "main": "./dist/cjs/index.cjs.js",
@@ -63,7 +63,7 @@
     "@fkui/theme-default": "6.58.0",
     "@fkui/vue": "6.58.0",
     "@forsakringskassan/docs-generator": "3.10.1",
-    "@forsakringskassan/vite-lib-config": "5.12.3",
+    "@forsakringskassan/vite-lib-config": "5.12.4",
     "@forsakringskassan/vitest-config-jsdom": "5.0.0",
     "@vue/test-utils": "2.5.0",
     "esbuild": "0.28.2",
