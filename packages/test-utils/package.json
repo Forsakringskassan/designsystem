@@ -74,7 +74,7 @@
     "@jest/globals": "^30.4.1",
     "@vitest/expect": "5.0.1",
     "@vue/server-renderer": "3.5.42",
-    "@vue/test-utils": "2.5.0",
+    "@vue/test-utils": "2.5.1",
     "esbuild": "0.28.2",
     "expect": "^30.4.1",
     "jest-environment-jsdom": "^30.4.1",
