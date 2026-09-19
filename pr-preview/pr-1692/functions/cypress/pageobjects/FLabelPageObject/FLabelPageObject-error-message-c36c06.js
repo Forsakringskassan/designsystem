@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-error-message.vue:FLabelPageObject-error-message-196974.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FLabelPageObject/FLabelPageObject-error-message.vue:FLabelPageObject-error-message-c36c06.js
 import { defineComponent as _defineComponent } from "vue";
 import { FButton, FTextField, FValidationForm } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createVNode as _createVNode } from "vue";
@@ -94,7 +94,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-196974"
+  selector: "#example-c36c06"
 });
 export {
   render
