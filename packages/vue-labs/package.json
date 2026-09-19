@@ -52,7 +52,7 @@
     "start": "vite --"
   },
   "dependencies": {
-    "@vueuse/core": "14.4.0"
+    "@vueuse/core": "15.0.0"
   },
   "devDependencies": {
     "@fkui/date": "6.58.0",
