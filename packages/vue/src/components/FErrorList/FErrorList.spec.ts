@@ -2,7 +2,7 @@ import "html-validate/vitest";
 import "@fkui/test-utils/vitest";
 import { type PropType, defineComponent } from "vue";
 import * as logic from "@fkui/logic";
-import { mount } from "@vue/test-utils";
+import { type VueWrapper, mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import { IFlexItem } from "../../internal-components/IFlex";
 import { type ErrorItem } from "../../types";
@@ -52,7 +52,9 @@ describe("title slot", () => {
                 title: "lorem ipsum",
             },
         });
-        const item = wrapper.findComponent(FIcon);
+        const item = wrapper.findComponent(FIcon) as VueWrapper<
+            InstanceType<typeof FIcon>
+        >;
         expect(item.exists()).toBeTruthy();
     });
 
@@ -61,7 +63,9 @@ describe("title slot", () => {
         const wrapper = mount(FErrorList, {
             props: { items: [] },
         });
-        const item = wrapper.findComponent(FIcon);
+        const item = wrapper.findComponent(FIcon) as VueWrapper<
+            InstanceType<typeof FIcon>
+        >;
         expect(item.exists()).toBeFalsy();
     });
 });
