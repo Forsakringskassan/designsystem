@@ -8,6 +8,7 @@ import { focus } from "../../utils";
 
 export default defineComponent({
     name: "FLoader",
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     inheritAttrs: false,
     props: {

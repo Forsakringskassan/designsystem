@@ -15,6 +15,7 @@ export default defineComponent({
     components: {
         ICalendarMonthGrid,
     },
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     props: {
         /**

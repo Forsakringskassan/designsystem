@@ -13,6 +13,7 @@ export default defineComponent({
     components: {
         FIcon,
     },
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     props: {
         /**
