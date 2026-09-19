@@ -15,6 +15,7 @@ import { type FModalSize, sizeClass } from "./sizes";
 export default defineComponent({
     name: "FModal",
     components: { FIcon },
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     inheritAttrs: true,
     props: {
