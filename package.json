@@ -101,7 +101,7 @@
     "@html-validate/release-scripts": "7.6.11",
     "@types/estree": "1.0.9",
     "@types/lodash": "4.17.25",
-    "@types/node": "22.20.2",
+    "@types/node": "22.20.3",
     "@typescript/native": "npm:typescript@7.0.2",
     "@vue/server-renderer": "3.5.42",
     "artifact-size-analyzer": "1.2.6",
