@@ -103,7 +103,7 @@
     "@types/lodash": "4.17.25",
     "@types/node": "22.20.3",
     "@typescript/native": "npm:typescript@7.0.2",
-    "@vue/server-renderer": "3.5.42",
+    "@vue/server-renderer": "3.5.43",
     "artifact-size-analyzer": "1.2.6",
     "autoprefixer": "10.6.1",
     "cli-table": "0.3.11",
@@ -129,7 +129,7 @@
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "vite": "8.3.0",
     "vitest": "5.0.1",
-    "vue": "3.5.42",
+    "vue": "3.5.43",
     "vue-tsc": "3.3.11"
   },
   "engines": {
