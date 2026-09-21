@@ -1,1 +1,8 @@
-$closebutton-color-default: var(--fkds-color-action-text-secondary-default);
+$closebutton-color-background-default: transparent !default;
+$closebutton-color-background-hover: var(--fkds-color-action-background-secondary-hover) !default;
+$closebutton-color-background-active: var(--fkds-color-action-background-secondary-active) !default;
+$closebutton-color-background-focus: transparent !default;
+$closebutton-color-text-default: var(--fkds-color-action-text-secondary-default) !default;
+$closebutton-color-text-hover: var(--fkds-color-action-text-secondary-default) !default;
+$closebutton-color-text-active: var(--fkds-color-action-text-secondary-default) !default;
+$closebutton-color-text-focus: var(--fkds-color-action-text-secondary-default) !default;

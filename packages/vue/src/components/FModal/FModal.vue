@@ -232,7 +232,12 @@ export default defineComponent({
                             </div>
 
                             <div class="modal__shelf">
-                                <button type="button" class="close-button" :aria-label="ariaCloseText" @click="onClose">
+                                <button
+                                    type="button"
+                                    class="modal-close-button"
+                                    :aria-label="ariaCloseText"
+                                    @click="onClose"
+                                >
                                     <span>{{ $t("fkui.modal.close", "Stäng") }}</span>
                                     <f-icon name="close"></f-icon>
                                 </button>
