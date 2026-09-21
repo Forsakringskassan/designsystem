@@ -59,3 +59,8 @@
         width: 100%;
     }
 }
+
+.radio-button.disabled .radio-button__details,
+.checkbox.disabled .checkbox__details {
+    color: inherit;
+}

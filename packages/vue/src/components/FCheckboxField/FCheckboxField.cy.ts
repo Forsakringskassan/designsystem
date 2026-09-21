@@ -91,15 +91,20 @@ describe("FCheckboxField", () => {
         checkboxSecond.details().should("not.exist");
     });
 
-    it("should not be able to select a disabled checkbox", () => {
+    it("should prevent selection and use disabled text color for details", () => {
         const template = /* HTML */ `
-            <f-fieldset name="checkbox-name" v-validation.required>
+            <f-fieldset
+                name="checkbox-name"
+                show-details="always"
+                v-validation.required
+            >
                 <template #label> Label text </template>
                 <f-checkbox-field v-model="checkboxModel" value="foo">
                     Foo
                 </f-checkbox-field>
                 <f-checkbox-field v-model="checkboxModel" value="bar" disabled>
-                    Bar
+                    <template #default> Bar </template>
+                    <template #details> Disabled details </template>
                 </f-checkbox-field>
             </f-fieldset>
         `;
@@ -110,6 +115,10 @@ describe("FCheckboxField", () => {
 
         checkboxSecond.select();
         checkboxSecond.isSelected().should("be.false");
+        checkboxSecond.label().then(($label) => {
+            const labelColor = getComputedStyle($label.get(0)).color;
+            checkboxSecond.details().should("have.css", "color", labelColor);
+        });
 
         checkboxFirst.select();
         checkboxFirst.isSelected().should("be.true");
