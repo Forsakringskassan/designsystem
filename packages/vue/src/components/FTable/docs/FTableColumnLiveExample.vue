@@ -18,7 +18,6 @@ import {
     FSelectField,
     FTable,
     defineTableColumns as defineTableColumnsFunc,
-    getHTMLElementFromVueRef,
     useDatasetRef,
 } from "@fkui/vue";
 
@@ -30,7 +29,7 @@ interface Row {
 const columnData: Record<TableColumnType, TableColumn<Row>> = {
     checkbox: {
         type: "checkbox",
-        header: "Kryssruta",
+        header: "Kryssruta kolumnrubrik",
         key: "value",
         label: () => {
             return "Kryssruta label";
@@ -38,7 +37,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     "text:currency": {
         type: "text:currency",
-        header: "Valuta",
+        header: "Valuta kolumnrubrik",
         key: "value",
         label: () => {
             return "Valuta label";
@@ -64,7 +63,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     text: {
         type: "text",
-        header: "Fritext",
+        header: "Fritext kolumnrubrik",
         key: "value",
         label: () => {
             return "Fritext label";
@@ -72,7 +71,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     "text:bankAccountNumber": {
         type: "text:bankAccountNumber",
-        header: "Kontonummer",
+        header: "Kontonummer kolumnrubrik",
         key: "value",
         label: () => {
             return "Kontonummer label";
@@ -80,7 +79,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     "text:bankgiro": {
         type: "text:bankgiro",
-        header: "Bankgiro",
+        header: "Bankgiro kolumnrubrik",
         key: "value",
         label: () => {
             return "Bankgiro label";
@@ -88,7 +87,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     "text:clearingNumber": {
         type: "text:clearingNumber",
-        header: "Clearingnummer",
+        header: "Clearingnummer kolumnrubrik",
         key: "value",
         label: () => {
             return "Clearingnummer label";
@@ -96,7 +95,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     "text:email": {
         type: "text:email",
-        header: "Mejladress",
+        header: "Mejladress kolumnrubrik",
         key: "value",
         label: () => {
             return "Mejladress label";
@@ -104,7 +103,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     "text:organisationsnummer": {
         type: "text:organisationsnummer",
-        header: "Organisationsnummer",
+        header: "Organisationsnummer kolumnrubrik",
         key: "value",
         label: () => {
             return "Organisationsnummer label";
@@ -112,7 +111,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     "text:personnummer": {
         type: "text:personnummer",
-        header: "Personnummer",
+        header: "Personnummer kolumnrubrik",
         key: "value",
         label: () => {
             return "Personnummer label";
@@ -120,7 +119,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     "text:phoneNumber": {
         type: "text:phoneNumber",
-        header: "Telefonnummer",
+        header: "Telefonnummer kolumnrubrik",
         key: "value",
         label: () => {
             return "Telefonnummer label";
@@ -128,7 +127,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     "text:plusgiro": {
         type: "text:plusgiro",
-        header: "Plusgiro",
+        header: "Plusgiro kolumnrubrik",
         key: "value",
         label: () => {
             return "Plusgiro label";
@@ -136,7 +135,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     "text:postalCode": {
         type: "text:postalCode",
-        header: "Postnummer",
+        header: "Postnummer kolumnrubrik",
         key: "value",
         label: () => {
             return "Postnummer label";
@@ -149,19 +148,19 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     anchor: {
         type: "anchor",
-        header: "Länk",
-        text: () => "value",
-        href: "#",
+        header: "Länk kolumnrubrik",
+        text: (row) => String(row.value),
+        href: (row) => String(row.id),
     },
     button: {
         type: "button",
-        header: "Knapp",
+        header: "Knapp kolumnrubrik",
         text: () => "value",
         icon: "bell",
     },
     select: {
         type: "select",
-        header: "Dropplista",
+        header: "Dropplista kolumnrubrik",
         key: "value",
         options: ["Foo", "Bar", "Baz"],
         label: () => {
@@ -170,7 +169,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     },
     "text:date": {
         type: "text:date",
-        header: "Datum",
+        header: "Datum kolumnrubrik",
         key: "value",
         label: () => {
             return "Datum label";
@@ -243,7 +242,7 @@ function getColumn(options: {
     const column = { ...columnData[columnType] };
 
     if (description) {
-        column.description = "Formatbeskrivning";
+        column.description = "Text med formatbeskrivning";
     }
 
     if (tnum !== undefined && isTextColumn(column)) {
@@ -306,16 +305,16 @@ export default defineComponent({
             return { FTable };
         },
         tnumSupport(): boolean {
-            return this.columnType === "text";
+            return this.columnType.includes("text");
         },
         alignSupport(): boolean {
-            return this.columnType === "text";
+            return this.columnType.includes("text");
         },
         defaultTNUM(): boolean {
             return defaultTnumValue(this.textType as InputType);
         },
         defaultAlign(): "left" | "right" {
-            if (this.columnType === "text") {
+            if (this.columnType.includes("text")) {
                 return ["text:currency", "text:number", "text:percent"].includes(this.textType)
                     ? "right"
                     : "left";
@@ -339,7 +338,7 @@ export default defineComponent({
             return ["anchor", "button"].includes(this.columnType);
         },
         editableSupport(): boolean {
-            return this.columnType === "text" || this.columnType === "select";
+            return this.columnType.includes("text") || this.columnType === "select";
         },
         normalizedKey(): TableColumnType {
             return this.columnType === "text" ? this.textType : this.columnType;
@@ -357,27 +356,12 @@ export default defineComponent({
 
             return `defineTableColumns([${stringifyObject(column as unknown as Record<string, unknown>)}])`;
         },
-
         template(): string {
             return createElement("f-table", { ":columns": this.columns, ":rows": "rows" });
         },
     },
-    mounted() {
-        this.limitTableWidth();
-    },
-    updated() {
-        this.limitTableWidth();
-    },
     methods: {
-        limitTableWidth() {
-            const root = getHTMLElementFromVueRef(this.$el);
-            const table = root.querySelector("table");
-
-            if (table) {
-                table.style.width = "300px";
-            }
-        },
-        onTextTypeChange() {
+        onTypeChange() {
             this.align = this.defaultAlign;
             this.tnum = this.defaultTNUM;
         },
@@ -387,20 +371,9 @@ export default defineComponent({
 
 <template>
     <live-example :components :template :livemethods :livedata>
-        <f-select-field v-model="columnType">
+        <f-select-field v-model="columnType" @change="onTypeChange">
             <template #label> Kolumntyp </template>
             <option value="text">Text</option>
-            <option value="checkbox">Kryssruta</option>
-            <option value="rowheader">Radrubrik</option>
-            <option value="anchor">Länk</option>
-            <option value="button">Knapp</option>
-            <option value="select">Dropplista</option>
-            <option value="menu">Meny</option>
-        </f-select-field>
-
-        <f-select-field v-if="columnType === 'text'" v-model="textType" @change="onTextTypeChange">
-            <template #label> Texttyp </template>
-            <option value="text">Fritext</option>
             <option value="text:bankgiro">Bankgiro</option>
             <option value="text:clearingNumber">Clearingnummer</option>
             <option value="text:bankAccountNumber">Kontonummer</option>
@@ -414,6 +387,12 @@ export default defineComponent({
             <option value="text:phoneNumber">Telefonnummer</option>
             <option value="text:currency">Valuta</option>
             <option value="text:date">Datum</option>
+            <option value="checkbox">Kryssruta</option>
+            <option value="rowheader">Radrubrik</option>
+            <option value="anchor">Länk</option>
+            <option value="button">Knapp</option>
+            <option value="select">Dropplista</option>
+            <option value="menu">Meny</option>
         </f-select-field>
 
         <f-checkbox-field v-if="editableSupport" v-model="editableChecked" :value="true">
