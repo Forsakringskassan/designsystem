@@ -43,6 +43,11 @@ Undvik att markera ett alternativ från början.
 Låt användaren i stället göra ett aktivt val.
 Då minskar risken för att frågan missas eller att användaren skickar in ett svar som inte stämmer.
 
+### Frivilliga frågor
+
+När användaren har valt ett alternativ går det inte att återställa gruppen till att inget alternativ är valt.
+Om frågan är frivillig behöver den därför ha ett neutralt svarsalternativ, till exempel ”Inget av alternativen”.
+
 ### Utvidgad text
 
 Använd utvidgad text när ett alternativ behöver förklaras eller förtydligas.
