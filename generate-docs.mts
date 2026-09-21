@@ -190,6 +190,11 @@ try {
     await fs.mkdir("temp/docs", { recursive: true });
     await fs.writeFile("temp/docs/versions.json", versions, "utf8");
 
+    /* create empty stub package for now */
+    await fs.mkdir("docs/dist", { recursive: true });
+    await fs.writeFile("docs/dist/index.mjs", "export {};\n", "utf8");
+    await fs.writeFile("docs/dist/index.d.mts", "export {};\n", "utf8");
+
     /* copy docs from each package */
     console.log(); // intentional blank line
     await copyDocs("@fkui/date", "packages/date/typedoc", "public/date");

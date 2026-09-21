@@ -15,6 +15,7 @@ function defaultFormatter(this: { decimals: number }, modelValue: number): strin
 export default defineComponent({
     name: "FPercentTextField",
     extends: FTextField,
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     props: {
         /**

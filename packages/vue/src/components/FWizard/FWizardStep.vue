@@ -26,6 +26,7 @@ let ongoingScrollPromise: undefined | Promise<void> = undefined;
 export default defineComponent({
     name: "FWizardStep",
     components: { IAnimateExpand, IFlex, IFlexItem, FValidationForm, FIcon },
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     inheritAttrs: true,
     props: {

@@ -11,6 +11,7 @@ import { useTextFieldSetup } from "../../use-text-field-setup";
 export default defineComponent({
     name: "FPlusgiroTextField",
     extends: FTextField,
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     props: {
         /* eslint-disable-next-line vue/no-unused-properties -- used by FTextField (extended) */

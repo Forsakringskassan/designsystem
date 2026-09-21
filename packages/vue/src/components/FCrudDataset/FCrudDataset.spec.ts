@@ -549,12 +549,10 @@ describe("beforeSubmit", () => {
         await wrapper.find(".crud-dataset__add-button").trigger("click");
         await submitForm(wrapper);
 
-        expect(
-            wrapper
-                .findComponent(FCrudDataset)
-                .findComponent(FFormModal)
-                .emitted().submit,
-        ).toBeFalsy();
+        const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
+        const modal = crud.findComponent(FFormModal) as VueWrapper;
+
+        expect(modal.emitted().submit).toBeFalsy();
     });
 
     it("should emit submit when beforeSubmit returns CONTINUE", async () => {
@@ -576,12 +574,10 @@ describe("beforeSubmit", () => {
         await wrapper.find(".crud-dataset__add-button").trigger("click");
         await submitForm(wrapper);
 
-        expect(
-            wrapper
-                .findComponent(FCrudDataset)
-                .findComponent(FFormModal)
-                .emitted().submit,
-        ).toBeTruthy();
+        const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
+        const modal = crud.findComponent(FFormModal) as VueWrapper;
+
+        expect(modal.emitted().submit).toBeTruthy();
     });
 
     it("should emit submit when beforeSubmit returns undefined", async () => {
@@ -603,12 +599,10 @@ describe("beforeSubmit", () => {
         await wrapper.find(".crud-dataset__add-button").trigger("click");
         await submitForm(wrapper);
 
-        expect(
-            wrapper
-                .findComponent(FCrudDataset)
-                .findComponent(FFormModal)
-                .emitted().submit,
-        ).toBeTruthy();
+        const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
+        const modal = crud.findComponent(FFormModal) as VueWrapper;
+
+        expect(modal.emitted().submit).toBeTruthy();
     });
 
     it("should emit submit when beforeSubmit props not set (default)", async () => {
@@ -626,12 +620,10 @@ describe("beforeSubmit", () => {
         await wrapper.find(".crud-dataset__add-button").trigger("click");
         await submitForm(wrapper);
 
-        expect(
-            wrapper
-                .findComponent(FCrudDataset)
-                .findComponent(FFormModal)
-                .emitted().submit,
-        ).toBeTruthy();
+        const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
+        const modal = crud.findComponent(FFormModal) as VueWrapper;
+
+        expect(modal.emitted().submit).toBeTruthy();
     });
 });
 
@@ -656,10 +648,11 @@ it("should call before validation", async () => {
     expect(beforeValidation).toHaveBeenCalledTimes(0);
     await submitForm(wrapper);
     expect(beforeValidation).toHaveBeenCalledTimes(1);
-    expect(
-        wrapper.findComponent(FCrudDataset).findComponent(FFormModal).emitted()
-            .submit,
-    ).toBeFalsy();
+
+    const crud = wrapper.findComponent(FCrudDataset) as VueWrapper;
+    const modal = crud.findComponent(FFormModal) as VueWrapper;
+
+    expect(modal.emitted().submit).toBeFalsy();
 });
 
 describe("onCancel", () => {
@@ -745,7 +738,9 @@ describe("formModalSize", () => {
         await wrapper.get(".crud-dataset__add-button").trigger("click");
         await flushPromises();
 
-        const formModal = wrapper.findComponent(FFormModal);
+        const formModal = wrapper.findComponent(FFormModal) as VueWrapper<
+            InstanceType<typeof FFormModal>
+        >;
         expect(formModal.props("size")).toBe("large");
     });
 
@@ -767,7 +762,9 @@ describe("formModalSize", () => {
         await wrapper.get("#modify-button").trigger("click");
         await flushPromises();
 
-        const formModal = wrapper.findComponent(FFormModal);
+        const formModal = wrapper.findComponent(FFormModal) as VueWrapper<
+            InstanceType<typeof FFormModal>
+        >;
         expect(formModal.props("size")).toBe("large");
     });
 
@@ -780,7 +777,9 @@ describe("formModalSize", () => {
         await wrapper.get(".crud-dataset__add-button").trigger("click");
         await flushPromises();
 
-        const formModal = wrapper.findComponent(FFormModal);
+        const formModal = wrapper.findComponent(FFormModal) as VueWrapper<
+            InstanceType<typeof FFormModal>
+        >;
         expect(formModal.props("size")).toBe("");
     });
 

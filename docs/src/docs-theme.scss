@@ -99,9 +99,11 @@ footer {
 
     .anchor,
     #version button {
-        &:hover {
-            color: palette.$palette-color-fk-black-100;
-            text-decoration-color: palette.$palette-color-fk-black-100;
+        @media (hover: hover) {
+            &:hover {
+                color: palette.$palette-color-fk-black-100;
+                text-decoration-color: palette.$palette-color-fk-black-100;
+            }
         }
     }
 
@@ -130,7 +132,13 @@ footer {
                 @include fkui.focus-indicator;
             }
 
-            &:hover,
+            @media (hover: hover) {
+                &:hover {
+                    background: transparent;
+                    cursor: pointer;
+                }
+            }
+
             &:active {
                 background: transparent;
                 cursor: pointer;

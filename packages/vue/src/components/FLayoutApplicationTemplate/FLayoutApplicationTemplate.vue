@@ -6,6 +6,7 @@ import { TranslationMixin } from "../../plugins";
 
 export default defineComponent({
     name: "FLayoutApplicationTemplate",
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     props: {
         /**

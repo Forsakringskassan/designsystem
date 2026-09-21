@@ -11,6 +11,7 @@ import { type FModalSize } from "../sizes";
 export default defineComponent({
     name: "FFormModal",
     components: { FModal, FValidationForm },
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     inheritAttrs: true,
 

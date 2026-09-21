@@ -61,7 +61,15 @@ describe("validate documentation examples...", () => {
 
             it(path, () => {
                 cy.visit(path);
-
+                cy.then(() => {
+                    const count = Cypress.$(".mermaid").length;
+                    if (count > 0) {
+                        cy.get('.mermaid[data-processed="true"]').should(
+                            "have.length",
+                            count,
+                        );
+                    }
+                });
                 for (const example of liveExamples) {
                     const selector = example.selector;
                     const container = `${selector} .live-example__container`;

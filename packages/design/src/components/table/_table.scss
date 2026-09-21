@@ -47,9 +47,9 @@ $table-input-offset-horizontal: 0.25rem;
 }
 
 %table-row-hover {
-    background: var(--fkds-color-select-background-primary-hover);
+    background: $table-color-row-background-hover;
     color: $table-color-row-text;
-    outline: 1px solid var(--fkds-color-border-primary);
+    outline: $table-row-outline-hover;
 }
 
 %table-row-focus-within {
@@ -318,22 +318,27 @@ $table-input-offset-horizontal: 0.25rem;
     }
 
     &--hover tbody {
-        .table__row:hover {
-            @extend %table-row-hover;
+        @media (hover: hover) {
+            .table__row:hover {
+                background: $table-color-row-background-hover;
+                color: $table-color-row-text;
+                outline: $table-row-outline-hover;
 
-            // these have higher priority
-            &.table__row {
-                &--active {
-                    @extend %table-row-active;
+                // these have higher priority
+                &.table__row--active {
+                    background: $table-color-row-background-hover;
+                    color: $table-color-row-text;
                 }
             }
         }
     }
 
     &--selectable .table__row {
-        td:hover,
-        th:hover {
-            cursor: pointer;
+        @media (hover: hover) {
+            td:hover,
+            th:hover {
+                cursor: pointer;
+            }
         }
     }
 

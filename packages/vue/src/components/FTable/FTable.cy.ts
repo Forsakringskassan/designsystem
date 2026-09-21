@@ -41,7 +41,10 @@ describe("1. 3 Table test – right-aligned column", () => {
 
     const rows = useDatasetRef<Row>(
         [
-            { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+            {
+                text: "A1",
+                nested: [{ text: "A2 justering av text" }, { text: "A3" }],
+            },
             { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
         ],
         expandableAttribute,
@@ -83,6 +86,7 @@ describe("1. 3 Table test – right-aligned column", () => {
     ]);
 
     it("should verify that text column is left/right alignment and formatted correctly (visual)", () => {
+        cy.viewport(600, 500);
         cy.mount(() =>
             h(
                 FTable<Row>,

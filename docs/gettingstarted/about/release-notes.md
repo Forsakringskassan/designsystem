@@ -9,6 +9,16 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version v6.58.0
+
+2026-09-17
+
+För att se samtliga ändringar i releasen, se {@link changelog changelog}
+
+### Tabell
+
+Vi har lagt till stöd för att sätta kolumnbredd i tabellen, läs mer {@link width om att sätta kolumnbredd.}
+
 ## Version v6.57.0
 
 2026-09-09

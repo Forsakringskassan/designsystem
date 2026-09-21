@@ -61,8 +61,10 @@ module.exports = {
         {
             include: "docs/**/*.md",
             exclude: [
-                "docs/node_modules/**",
+                "docs/README.md",
+                "docs/dist/**",
                 "docs/examples/**",
+                "docs/node_modules/**",
                 "docs/playground/**",
                 "docs/temp/**",
             ],
@@ -85,8 +87,9 @@ module.exports = {
         {
             include: "docs/*/**/*.json",
             exclude: [
-                "docs/node_modules/**",
+                "docs/dist/**",
                 "docs/examples/**",
+                "docs/node_modules/**",
                 "docs/playground/**",
                 "docs/temp/**",
             ],

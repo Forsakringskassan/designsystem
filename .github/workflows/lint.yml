@@ -20,10 +20,10 @@ jobs:
             - name: Minimal build
               run: npm exec lerna -- run --include-dependencies --scope=@fkui/theme-default --scope=@fkui/vue --scope=@fkui/vue-labs --scope=@fkui/cypress-split build
             - name: Prettier
-              uses: Forsakringskassan/prettier-config@af7b8bc222a38143e50e156cd4c23dd2010b95ee # v3.7.8
+              uses: Forsakringskassan/prettier-config@61a28b450d2d1f8df7efd11956de7d95ddcab074 # v3.7.9
             - name: ESLint
               if: success() || failure()
-              uses: Forsakringskassan/eslint-config@af4c7fb5685a5679eee8fcd7fb99de88cbd57b4e # v15.9.10
+              uses: Forsakringskassan/eslint-config@8a0fb66409af3a235936fc328affef1571fcbb5f # v15.9.12
             - name: HTML Validate
               if: success() || failure()
               run: npm run html-validate -- --max-warnings 0 || false
@@ -48,8 +48,13 @@ jobs:
                   node-version: 22.x
             - name: Install Dependencies
               run: npm ci
+            - name: Build
+              run: |
+                  npm run build
+                  npm run build:docs
             - name: npm-pkg-lint
               uses: ext/npm-pkg-lint@63e0a7b1935b65261cc3c8ab1c2b4a9aafa18c5c # v5.2.5
               with:
-                  folders: packages/*
+                  build: false
+                  folders: packages/* docs
                   allow-dependencies: fk-icons
