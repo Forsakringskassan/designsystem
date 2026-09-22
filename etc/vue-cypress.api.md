@@ -215,7 +215,7 @@ export class FDefinitionListPageObject implements BasePageObject {
     definition(index: number): DefaultCypressChainable;
     el(): DefaultCypressChainable;
     numberOfDefinitions(): Cypress.Chainable<number>;
-    selector: string;
+    get selector(): string;
     term(index: number): DefaultCypressChainable;
 }
 
@@ -637,8 +637,7 @@ export class FSelectFieldPageObject implements BasePageObject {
     arrowIcon(): DefaultCypressChainable;
     // (undocumented)
     dropdown(): Cypress.Chainable<JQuery<HTMLSelectElement>>;
-    // (undocumented)
-    el: () => DefaultCypressChainable;
+    el(): DefaultCypressChainable;
     // (undocumented)
     label: FLabelPageObject;
     // (undocumented)
@@ -648,8 +647,7 @@ export class FSelectFieldPageObject implements BasePageObject {
     selectedOption(): Cypress.Chainable<JQuery<HTMLOptionElement>>;
     // (undocumented)
     selectedValue(): Cypress.Chainable<string>;
-    // (undocumented)
-    selector: string;
+    get selector(): string;
     // (undocumented)
     tooltip: FTooltipPageObject;
 }
