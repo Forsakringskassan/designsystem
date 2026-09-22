@@ -46722,7 +46722,7 @@ function stringifyObject(obj) {
 var columnData = {
 	checkbox: {
 		type: "checkbox",
-		header: "Kryssruta",
+		header: "Kryssruta kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Kryssruta label";
@@ -46730,7 +46730,7 @@ var columnData = {
 	},
 	"text:currency": {
 		type: "text:currency",
-		header: "Valuta",
+		header: "Valuta kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Valuta label";
@@ -46756,7 +46756,7 @@ var columnData = {
 	},
 	text: {
 		type: "text",
-		header: "Fritext",
+		header: "Fritext kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Fritext label";
@@ -46764,7 +46764,7 @@ var columnData = {
 	},
 	"text:bankAccountNumber": {
 		type: "text:bankAccountNumber",
-		header: "Kontonummer",
+		header: "Kontonummer kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Kontonummer label";
@@ -46772,7 +46772,7 @@ var columnData = {
 	},
 	"text:bankgiro": {
 		type: "text:bankgiro",
-		header: "Bankgiro",
+		header: "Bankgiro kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Bankgiro label";
@@ -46780,7 +46780,7 @@ var columnData = {
 	},
 	"text:clearingNumber": {
 		type: "text:clearingNumber",
-		header: "Clearingnummer",
+		header: "Clearingnummer kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Clearingnummer label";
@@ -46788,7 +46788,7 @@ var columnData = {
 	},
 	"text:email": {
 		type: "text:email",
-		header: "Mejladress",
+		header: "Mejladress kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Mejladress label";
@@ -46796,7 +46796,7 @@ var columnData = {
 	},
 	"text:organisationsnummer": {
 		type: "text:organisationsnummer",
-		header: "Organisationsnummer",
+		header: "Organisationsnummer kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Organisationsnummer label";
@@ -46804,7 +46804,7 @@ var columnData = {
 	},
 	"text:personnummer": {
 		type: "text:personnummer",
-		header: "Personnummer",
+		header: "Personnummer kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Personnummer label";
@@ -46812,7 +46812,7 @@ var columnData = {
 	},
 	"text:phoneNumber": {
 		type: "text:phoneNumber",
-		header: "Telefonnummer",
+		header: "Telefonnummer kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Telefonnummer label";
@@ -46820,7 +46820,7 @@ var columnData = {
 	},
 	"text:plusgiro": {
 		type: "text:plusgiro",
-		header: "Plusgiro",
+		header: "Plusgiro kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Plusgiro label";
@@ -46828,7 +46828,7 @@ var columnData = {
 	},
 	"text:postalCode": {
 		type: "text:postalCode",
-		header: "Postnummer",
+		header: "Postnummer kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Postnummer label";
@@ -46841,19 +46841,19 @@ var columnData = {
 	},
 	anchor: {
 		type: "anchor",
-		header: "Länk",
-		text: () => "value",
-		href: "#"
+		header: "Länk kolumnrubrik",
+		text: (row) => String(row.value),
+		href: (row) => String(row.id)
 	},
 	button: {
 		type: "button",
-		header: "Knapp",
+		header: "Knapp kolumnrubrik",
 		text: () => "value",
 		icon: "bell"
 	},
 	select: {
 		type: "select",
-		header: "Dropplista",
+		header: "Dropplista kolumnrubrik",
 		key: "value",
 		options: [
 			"Foo",
@@ -46866,7 +46866,7 @@ var columnData = {
 	},
 	"text:date": {
 		type: "text:date",
-		header: "Datum",
+		header: "Datum kolumnrubrik",
 		key: "value",
 		label: () => {
 			return "Datum label";
@@ -46932,7 +46932,7 @@ var rowData = {
 function getColumn(options) {
 	const { columnType, description, tnum, align, enabled, editable } = options;
 	const column = { ...columnData[columnType] };
-	if (description) column.description = "Formatbeskrivning";
+	if (description) column.description = "Text med formatbeskrivning";
 	if (tnum !== void 0 && isTextColumn(column)) column.tnum = tnum;
 	if (align !== void 0 && isTextColumn(column)) column.align = align;
 	if (editable !== void 0 && isEditableColumn(column)) column.editable = editable;
@@ -46973,16 +46973,16 @@ var FTableColumnLiveExample_vue_vue_type_script_lang_default = /* @__PURE__ */ d
 			return { FTable: FTable_default };
 		},
 		tnumSupport() {
-			return this.columnType === "text";
+			return this.columnType.includes("text");
 		},
 		alignSupport() {
-			return this.columnType === "text";
+			return this.columnType.includes("text");
 		},
 		defaultTNUM() {
 			return defaultTnumValue(this.textType);
 		},
 		defaultAlign() {
-			if (this.columnType === "text") return [
+			if (this.columnType.includes("text")) return [
 				"text:currency",
 				"text:number",
 				"text:percent"
@@ -47005,7 +47005,7 @@ var FTableColumnLiveExample_vue_vue_type_script_lang_default = /* @__PURE__ */ d
 			return ["anchor", "button"].includes(this.columnType);
 		},
 		editableSupport() {
-			return this.columnType === "text" || this.columnType === "select";
+			return this.columnType.includes("text") || this.columnType === "select";
 		},
 		normalizedKey() {
 			return this.columnType === "text" ? this.textType : this.columnType;
@@ -47027,22 +47027,10 @@ var FTableColumnLiveExample_vue_vue_type_script_lang_default = /* @__PURE__ */ d
 			});
 		}
 	},
-	mounted() {
-		this.limitTableWidth();
-	},
-	updated() {
-		this.limitTableWidth();
-	},
-	methods: {
-		limitTableWidth() {
-			const table = getHTMLElementFromVueRef(this.$el).querySelector("table");
-			if (table) table.style.width = "300px";
-		},
-		onTextTypeChange() {
-			this.align = this.defaultAlign;
-			this.tnum = this.defaultTNUM;
-		}
-	}
+	methods: { onTypeChange() {
+		this.align = this.defaultAlign;
+		this.tnum = this.defaultTNUM;
+	} }
 });
 //#endregion
 //#region ../../packages/vue/src/components/FTable/docs/FTableColumnLiveExample.vue
@@ -47061,78 +47049,67 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 		default: withCtx(() => [
 			createVNode(_component_f_select_field, {
 				modelValue: _ctx.columnType,
-				"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.columnType = $event)
+				"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.columnType = $event),
+				onChange: _ctx.onTypeChange
 			}, {
-				label: withCtx(() => [..._cache[9] || (_cache[9] = [createTextVNode(" Kolumntyp ", -1)])]),
+				label: withCtx(() => [..._cache[8] || (_cache[8] = [createTextVNode(" Kolumntyp ", -1)])]),
 				default: withCtx(() => [
-					_cache[10] || (_cache[10] = createBaseVNode("option", { value: "text" }, "Text", -1)),
-					_cache[11] || (_cache[11] = createBaseVNode("option", { value: "checkbox" }, "Kryssruta", -1)),
-					_cache[12] || (_cache[12] = createBaseVNode("option", { value: "rowheader" }, "Radrubrik", -1)),
-					_cache[13] || (_cache[13] = createBaseVNode("option", { value: "anchor" }, "Länk", -1)),
-					_cache[14] || (_cache[14] = createBaseVNode("option", { value: "button" }, "Knapp", -1)),
-					_cache[15] || (_cache[15] = createBaseVNode("option", { value: "select" }, "Dropplista", -1)),
-					_cache[16] || (_cache[16] = createBaseVNode("option", { value: "menu" }, "Meny", -1))
+					_cache[9] || (_cache[9] = createBaseVNode("option", { value: "text" }, "Text", -1)),
+					_cache[10] || (_cache[10] = createBaseVNode("option", { value: "text:bankgiro" }, "Bankgiro", -1)),
+					_cache[11] || (_cache[11] = createBaseVNode("option", { value: "text:clearingNumber" }, "Clearingnummer", -1)),
+					_cache[12] || (_cache[12] = createBaseVNode("option", { value: "text:bankAccountNumber" }, "Kontonummer", -1)),
+					_cache[13] || (_cache[13] = createBaseVNode("option", { value: "text:email" }, "Mejladress", -1)),
+					_cache[14] || (_cache[14] = createBaseVNode("option", { value: "text:number" }, "Numeriskt", -1)),
+					_cache[15] || (_cache[15] = createBaseVNode("option", { value: "text:organisationsnummer" }, "Organisationsnummer", -1)),
+					_cache[16] || (_cache[16] = createBaseVNode("option", { value: "text:personnummer" }, "Personnummer", -1)),
+					_cache[17] || (_cache[17] = createBaseVNode("option", { value: "text:plusgiro" }, "Plusgiro", -1)),
+					_cache[18] || (_cache[18] = createBaseVNode("option", { value: "text:postalCode" }, "Postnummer", -1)),
+					_cache[19] || (_cache[19] = createBaseVNode("option", { value: "text:percent" }, "Procent", -1)),
+					_cache[20] || (_cache[20] = createBaseVNode("option", { value: "text:phoneNumber" }, "Telefonnummer", -1)),
+					_cache[21] || (_cache[21] = createBaseVNode("option", { value: "text:currency" }, "Valuta", -1)),
+					_cache[22] || (_cache[22] = createBaseVNode("option", { value: "text:date" }, "Datum", -1)),
+					_cache[23] || (_cache[23] = createBaseVNode("option", { value: "checkbox" }, "Kryssruta", -1)),
+					_cache[24] || (_cache[24] = createBaseVNode("option", { value: "rowheader" }, "Radrubrik", -1)),
+					_cache[25] || (_cache[25] = createBaseVNode("option", { value: "anchor" }, "Länk", -1)),
+					_cache[26] || (_cache[26] = createBaseVNode("option", { value: "button" }, "Knapp", -1)),
+					_cache[27] || (_cache[27] = createBaseVNode("option", { value: "select" }, "Dropplista", -1)),
+					_cache[28] || (_cache[28] = createBaseVNode("option", { value: "menu" }, "Meny", -1))
 				]),
 				_: 1
-			}, 8, ["modelValue"]),
-			_ctx.columnType === "text" ? (openBlock(), createBlock(_component_f_select_field, {
-				key: 0,
-				modelValue: _ctx.textType,
-				"onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.textType = $event),
-				onChange: _ctx.onTextTypeChange
-			}, {
-				label: withCtx(() => [..._cache[17] || (_cache[17] = [createTextVNode(" Texttyp ", -1)])]),
-				default: withCtx(() => [
-					_cache[18] || (_cache[18] = createBaseVNode("option", { value: "text" }, "Fritext", -1)),
-					_cache[19] || (_cache[19] = createBaseVNode("option", { value: "text:bankgiro" }, "Bankgiro", -1)),
-					_cache[20] || (_cache[20] = createBaseVNode("option", { value: "text:clearingNumber" }, "Clearingnummer", -1)),
-					_cache[21] || (_cache[21] = createBaseVNode("option", { value: "text:bankAccountNumber" }, "Kontonummer", -1)),
-					_cache[22] || (_cache[22] = createBaseVNode("option", { value: "text:email" }, "Mejladress", -1)),
-					_cache[23] || (_cache[23] = createBaseVNode("option", { value: "text:number" }, "Numeriskt", -1)),
-					_cache[24] || (_cache[24] = createBaseVNode("option", { value: "text:organisationsnummer" }, "Organisationsnummer", -1)),
-					_cache[25] || (_cache[25] = createBaseVNode("option", { value: "text:personnummer" }, "Personnummer", -1)),
-					_cache[26] || (_cache[26] = createBaseVNode("option", { value: "text:plusgiro" }, "Plusgiro", -1)),
-					_cache[27] || (_cache[27] = createBaseVNode("option", { value: "text:postalCode" }, "Postnummer", -1)),
-					_cache[28] || (_cache[28] = createBaseVNode("option", { value: "text:percent" }, "Procent", -1)),
-					_cache[29] || (_cache[29] = createBaseVNode("option", { value: "text:phoneNumber" }, "Telefonnummer", -1)),
-					_cache[30] || (_cache[30] = createBaseVNode("option", { value: "text:currency" }, "Valuta", -1)),
-					_cache[31] || (_cache[31] = createBaseVNode("option", { value: "text:date" }, "Datum", -1))
-				]),
-				_: 1
-			}, 8, ["modelValue", "onChange"])) : createCommentVNode("", true),
+			}, 8, ["modelValue", "onChange"]),
 			_ctx.editableSupport ? (openBlock(), createBlock(_component_f_checkbox_field, {
-				key: 1,
+				key: 0,
 				modelValue: _ctx.editableChecked,
-				"onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.editableChecked = $event),
+				"onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.editableChecked = $event),
 				value: true
 			}, {
-				default: withCtx(() => [..._cache[32] || (_cache[32] = [createTextVNode(" Redigerbar ", -1)])]),
+				default: withCtx(() => [..._cache[29] || (_cache[29] = [createTextVNode(" Redigerbar ", -1)])]),
 				_: 1
 			}, 8, ["modelValue"])) : createCommentVNode("", true),
 			_ctx.enabledSupport ? (openBlock(), createBlock(_component_f_checkbox_field, {
-				key: 2,
+				key: 1,
 				modelValue: _ctx.enabledChecked,
-				"onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.enabledChecked = $event),
+				"onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.enabledChecked = $event),
 				value: true
 			}, {
-				default: withCtx(() => [..._cache[33] || (_cache[33] = [createTextVNode(" Enabled ", -1)])]),
+				default: withCtx(() => [..._cache[30] || (_cache[30] = [createTextVNode(" Enabled ", -1)])]),
 				_: 1
 			}, 8, ["modelValue"])) : createCommentVNode("", true),
 			_ctx.alignSupport ? (openBlock(), createBlock(_component_f_fieldset, {
-				key: 3,
+				key: 2,
 				name: "align"
 			}, {
-				label: withCtx(() => [..._cache[34] || (_cache[34] = [createTextVNode(" Justering ", -1)])]),
+				label: withCtx(() => [..._cache[31] || (_cache[31] = [createTextVNode(" Justering ", -1)])]),
 				default: withCtx(() => [createVNode(_component_f_radio_field, {
 					modelValue: _ctx.align,
-					"onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.align = $event),
+					"onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.align = $event),
 					value: "left"
 				}, {
 					default: withCtx(() => [createTextVNode(toDisplayString(_ctx.alignLeftText), 1)]),
 					_: 1
 				}, 8, ["modelValue"]), createVNode(_component_f_radio_field, {
 					modelValue: _ctx.align,
-					"onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.align = $event),
+					"onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.align = $event),
 					value: "right"
 				}, {
 					default: withCtx(() => [createTextVNode(toDisplayString(_ctx.alignRightText), 1)]),
@@ -47141,20 +47118,20 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 				_: 1
 			})) : createCommentVNode("", true),
 			_ctx.tnumSupport ? (openBlock(), createBlock(_component_f_fieldset, {
-				key: 4,
+				key: 3,
 				name: "tnum"
 			}, {
-				label: withCtx(() => [..._cache[35] || (_cache[35] = [createTextVNode(" TNUM ", -1)])]),
+				label: withCtx(() => [..._cache[32] || (_cache[32] = [createTextVNode(" TNUM ", -1)])]),
 				default: withCtx(() => [createVNode(_component_f_radio_field, {
 					modelValue: _ctx.tnum,
-					"onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.tnum = $event),
+					"onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.tnum = $event),
 					value: false
 				}, {
 					default: withCtx(() => [createTextVNode(toDisplayString(_ctx.tnumOffText), 1)]),
 					_: 1
 				}, 8, ["modelValue"]), createVNode(_component_f_radio_field, {
 					modelValue: _ctx.tnum,
-					"onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.tnum = $event),
+					"onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => _ctx.tnum = $event),
 					value: true
 				}, {
 					default: withCtx(() => [createTextVNode(toDisplayString(_ctx.tnumOnText), 1)]),
@@ -47163,13 +47140,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 				_: 1
 			})) : createCommentVNode("", true),
 			createVNode(_component_f_fieldset, { name: "rubrik" }, {
-				label: withCtx(() => [..._cache[36] || (_cache[36] = [createTextVNode(" Rubriken ", -1)])]),
+				label: withCtx(() => [..._cache[33] || (_cache[33] = [createTextVNode(" Rubriken ", -1)])]),
 				default: withCtx(() => [createVNode(_component_f_checkbox_field, {
 					modelValue: _ctx.descriptionChecked,
-					"onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.descriptionChecked = $event),
+					"onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.descriptionChecked = $event),
 					value: true
 				}, {
-					default: withCtx(() => [..._cache[37] || (_cache[37] = [createTextVNode(" Formatbeskrivning ", -1)])]),
+					default: withCtx(() => [..._cache[34] || (_cache[34] = [createTextVNode(" Formatbeskrivning ", -1)])]),
 					_: 1
 				}, 8, ["modelValue"])]),
 				_: 1
