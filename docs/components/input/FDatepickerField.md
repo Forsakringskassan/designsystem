@@ -66,6 +66,7 @@ En årsväljare gör det lättare för användaren att byta till ett annat år o
 
 - På små skärmar (<640 px bredd) visas kalendern som en del av webbsidan (inline)
 - På större skärmar visas kalendern i en pop-up och täcker en del av sidan.
+- Kalendern placeras under, över eller bredvid datumfältet utan att täcka fältet. Om ingen sådan placering ryms visas kalendern inline. Vid skrollning följer kalendern datumfältet med samma placering och mellanrum, även om delar av den hamnar utanför den synliga ytan. När kalendern öppnas igen väljs placeringen på nytt.
 - Kalenderns bredd anpassas utifrån skärmens bredd.
 - För att ge tillräcklig plats för datumen visas inte veckonummer på skärmar som är 325 px eller smalare.
 
