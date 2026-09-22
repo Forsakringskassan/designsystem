@@ -1,3 +1,4 @@
+import { FSelectFieldSelectors } from "../selectors";
 import { FLabelPageObject } from "./FLabel.pageobject";
 import { FTooltipPageObject } from "./FTooltip.pageobject";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
@@ -6,8 +7,7 @@ import { type BasePageObject, type DefaultCypressChainable } from "./common";
  * @public
  */
 export class FSelectFieldPageObject implements BasePageObject {
-    public selector: string;
-    public el: () => DefaultCypressChainable;
+    private _selectors: ReturnType<typeof FSelectFieldSelectors>;
     public label: FLabelPageObject;
     public tooltip: FTooltipPageObject;
 
@@ -15,20 +15,37 @@ export class FSelectFieldPageObject implements BasePageObject {
      * @param selector - the root of the select field, usually `<div class="select-field">...</div>`.
      */
     public constructor(selector: string) {
-        this.selector = selector;
-        this.el = () => cy.get(this.selector);
-        this.label = new FLabelPageObject(`${this.selector} .label`);
-        this.tooltip = new FTooltipPageObject(`${this.selector} .tooltip`);
+        this._selectors = FSelectFieldSelectors(selector);
+        this.label = new FLabelPageObject(this._selectors.label());
+        this.tooltip = new FTooltipPageObject(
+            `${this._selectors.selector} .tooltip`,
+        );
+    }
+
+    /**
+     * Gets the page object selector.
+     *
+     * @returns The page object selector.
+     */
+    public get selector(): string {
+        return this._selectors.selector;
+    }
+
+    /**
+     * Gets the page object element.
+     *
+     * @returns The page object element.
+     */
+    public el(): DefaultCypressChainable {
+        return cy.get(this._selectors.selector);
     }
 
     public dropdown(): Cypress.Chainable<JQuery<HTMLSelectElement>> {
-        return cy.get(`${this.selector} select`);
+        return cy.get(this._selectors.select());
     }
 
     public arrowIcon(): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .icon.select-field__icon.f-icon-arrow-down`,
-        );
+        return cy.get(this._selectors.arrowIcon());
     }
 
     public numberOfOptions(): Cypress.Chainable<number> {
@@ -40,7 +57,7 @@ export class FSelectFieldPageObject implements BasePageObject {
     public listOfOptions(): Cypress.Chainable<string[]> {
         const listItem: string[] = [];
         return cy
-            .get(`${this.selector} select option`)
+            .get(this._selectors.options())
             .not('[disabled="disabled"]')
             .each((el) => {
                 listItem.push(el.get(0).textContent.trim());
@@ -52,7 +69,7 @@ export class FSelectFieldPageObject implements BasePageObject {
      * Get the currently selected `<option>` element.
      */
     public selectedOption(): Cypress.Chainable<JQuery<HTMLOptionElement>> {
-        return cy.get<HTMLOptionElement>(`${this.selector} option:selected`);
+        return cy.get<HTMLOptionElement>(this._selectors.selectedOption());
     }
 
     public selectedValue(): Cypress.Chainable<string> {
