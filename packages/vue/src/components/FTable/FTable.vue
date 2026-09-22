@@ -161,7 +161,9 @@ const expandedColspan = computed((): number => {
 const hasFooter = computed((): boolean => {
     return hasSlot("footer");
 });
-const columns = computed(() => normalizeTableColumns(rawColumns).filter((col) => toValue(col.enabled)));
+
+const normalizedColumns = computed(() => normalizeTableColumns(rawColumns));
+const columns = computed(() => normalizedColumns.value.filter((col) => toValue(col.enabled)));
 const hasColumns = computed(() => columns.value.length > 0);
 
 const tableClasses = computed(() => {
