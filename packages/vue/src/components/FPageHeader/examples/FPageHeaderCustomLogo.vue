@@ -30,7 +30,7 @@ export default defineComponent({
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='39'><rect fill='lightgrey' x='0' y='0' width='100%' height='100%'/></svg>");
     border: 2px solid yellow;
 }
-@media only screen and (max-width: 639px) {
+@media only screen and (width <= 639px) {
     .my-own-logos {
         min-width: 0.8rem;
         width: 0.8rem;
