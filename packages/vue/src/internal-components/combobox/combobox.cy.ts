@@ -586,6 +586,21 @@ describe("Validation", () => {
         });
     });
 
+    describe("modelValue as the default option", () => {
+        it("should set aktiveOption even when opening via the button", () => {
+            cy.mount(FTextField, {
+                props: {
+                    options: ["foo", "bar", "baz"],
+                    modelValue: "bar",
+                },
+                slots: { default: "Etikett" },
+                attrs: { maxlength: "100" },
+            });
+            cy.get(button).click();
+            cy.get(activeOption).should("have.text", "bar");
+        });
+    });
+
     describe("`forced-colors` media feature", () => {
         const defaultMountOptions = {
             props: {
