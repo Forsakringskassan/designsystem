@@ -215,6 +215,14 @@ export function useCombobox(
 
     function toggleDropdown(): void {
         if (!dropdownIsOpen.value) {
+            const input = inputRef.value;
+            if (!input) {
+                return;
+            }
+            filter.value = input.value;
+            selectMode.value = options.value
+                ? options.value.includes(filter.value)
+                : false;
             /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             openSelected();
         } else {
