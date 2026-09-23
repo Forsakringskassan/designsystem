@@ -54,7 +54,14 @@ module.exports = {
     },
     outputFolder: "./public",
     cacheFolder: "./temp/docs",
-    exampleFolders: ["./packages/vue/src", "./packages/vue-labs/src", "./docs"],
+    exampleFolders: [
+        "./packages/vue/src",
+        "./packages/vue-labs/src",
+        "./docs/components",
+        "./docs/functions",
+        "./docs/guides",
+        "./docs/styles",
+    ],
     templateFolders: ["./docs/templates"],
     setupPath: path.resolve("docs/src/setup.ts"),
     sourceFiles: [

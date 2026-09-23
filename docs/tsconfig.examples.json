@@ -8,10 +8,11 @@
     },
     "include": ["**/*.ts", "**/*.vue"],
     "exclude": [
-        "node_modules/**",
+        "**/*.cy.ts",
+        "dist/**",
         "examples/**",
+        "node_modules/**",
         "playground/**",
-        "src/**",
-        "**/*.cy.ts"
+        "src/**"
     ]
 }
