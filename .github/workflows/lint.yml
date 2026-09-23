@@ -53,7 +53,7 @@ jobs:
                   npm run build
                   npm run build:docs
             - name: npm-pkg-lint
-              uses: ext/npm-pkg-lint@63e0a7b1935b65261cc3c8ab1c2b4a9aafa18c5c # v5.2.5
+              uses: ext/npm-pkg-lint@52f0ad3b4dc08b570f2f45ce95bd8d1f67bd3297 # v5.3.1
               with:
                   build: false
                   folders: packages/* docs
