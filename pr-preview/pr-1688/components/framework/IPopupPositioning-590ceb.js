@@ -2070,6 +2070,7 @@ function sizeClass(size) {
 var FModal_default = defineComponent4({
   name: "FModal",
   components: { FIcon: FIcon_default2 },
+  /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
   mixins: [TranslationMixin],
   inheritAttrs: true,
   props: {
@@ -3545,6 +3546,7 @@ var FValidationForm_default2 = FValidationForm_default;
 var FFormModal_default = defineComponent11({
   name: "FFormModal",
   components: { FModal: FModal_default2, FValidationForm: FValidationForm_default2 },
+  /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
   mixins: [TranslationMixin],
   inheritAttrs: true,
   props: {
