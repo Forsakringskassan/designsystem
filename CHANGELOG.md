@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 6.59.0 (2026-09-23)
+
+### Features
+
+* **@fkui/docs:** include documents in `@fkui/docs` (refs SFKUI-6500) b79b557
+* **@fkui/docs:** new (empty) package `@fkui/docs` (refs SFKUI-6500) 7ad8837
+* **@fkui/vue:** allow select column options in FTable to be a function (refs SFKUI-8120) 4869d45
+* **@fkui/vue:** migration towards selector objects part 3 (refs SFKUI-6500) 09d5dfb
+* **deps:** update dependency @vueuse/core to v15 e4ef46a
+
+### Bug Fixes
+
+* **@fkui/design, @fkui/vue:** disabled text color for checkbox/radio details (refs SFKUI-6500) 1b3513a
+* **@fkui/design, @fkui/vue:** remove bullets from `button-list` (fixes SFKUI-8002) 56eb1c3
+* **@fkui/design:** remove extra focus styles from `FList` (fixes SFKUI-8213) 96c0539
+* **@fkui/docs, @fkui/design, @fkui/vue:** only activate hover style on devices that can hover (fixes SFKUI-8163) e0222ef
+* **@fkui/vue:** ´IComboboxDropdown´ add mousedown to li element (refs SFKUI-8129) e49efbc
+* **@fkui/vue:** update broken table live example (refs SFKUI-6500) b367f9f
+* **deps:** update dependency cssnano to v9.0.5 9683b66
+* **deps:** update vue monorepo to v3.5.43 982431f
+
 ## 6.58.0 (2026-09-17)
 
 ### Features

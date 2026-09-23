@@ -2,7 +2,7 @@
  * Selectors for `FExpandablePanel`.
  *
  * @public
- * @since %version%
+ * @since v6.59.0
  * @param selector - The selector for the FExpandablePanel component.
  * @returns An object with selector methods for the FExpandablePanel component.
  */
@@ -14,7 +14,7 @@ export function FExpandablePanelSelectors(selector: string = ":scope") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -41,7 +41,7 @@ export function FExpandablePanelSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the header element.
          */
         header(): string {
@@ -72,7 +72,7 @@ export function FExpandablePanelSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the header element.
          */
         toggleButton(): string {
@@ -97,7 +97,7 @@ export function FExpandablePanelSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the expand/collapse icon element.
          */
         expandCollapseIcon(): string {
@@ -124,7 +124,7 @@ export function FExpandablePanelSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the body element.
          */
         body(): string {
@@ -158,7 +158,7 @@ export function FExpandablePanelSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the notification badge element.
          */
         notification(): string {
@@ -186,7 +186,7 @@ export function FExpandablePanelSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the related info element.
          */
         relatedInfo(): string {

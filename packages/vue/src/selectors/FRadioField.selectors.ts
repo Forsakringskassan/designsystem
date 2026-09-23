@@ -2,7 +2,7 @@
  * Selectors for `FRadioField`.
  *
  * @public
- * @since %version%
+ * @since v6.59.0
  * @param selector - The selector for the FRadioField component.
  * @returns An object with selector methods for the FRadioField component.
  */
@@ -14,7 +14,7 @@ export function FRadioFieldSelectors(selector: string = ":scope") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -44,7 +44,7 @@ export function FRadioFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the radio input element.
          */
         input(): string {
@@ -76,7 +76,7 @@ export function FRadioFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the label element.
          */
         label(): string {
@@ -104,7 +104,7 @@ export function FRadioFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the details element.
          */
         details(): string {

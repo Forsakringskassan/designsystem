@@ -2,7 +2,7 @@
  * Selectors for `FTooltip`.
  *
  * @public
- * @since %version%
+ * @since v6.59.0
  * @param selector - The selector for the FTooltip component.
  * @returns An object with selector methods for the FTooltip component.
  */
@@ -14,7 +14,7 @@ export function FTooltipSelectors(selector: string = ".tooltip") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -41,7 +41,7 @@ export function FTooltipSelectors(selector: string = ".tooltip") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the toggle button element.
          */
         toggleButton(): string {
@@ -75,7 +75,7 @@ export function FTooltipSelectors(selector: string = ".tooltip") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the tooltip bubble element.
          */
         bubble(): string {
@@ -100,7 +100,7 @@ export function FTooltipSelectors(selector: string = ".tooltip") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the tooltip header element.
          */
         header(): string {
@@ -125,7 +125,7 @@ export function FTooltipSelectors(selector: string = ".tooltip") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the tooltip body element.
          */
         body(): string {
@@ -150,7 +150,7 @@ export function FTooltipSelectors(selector: string = ".tooltip") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.59.0
          * @returns A selector for the close button element.
          */
         closeButton(): string {
