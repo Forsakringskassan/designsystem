@@ -7,6 +7,7 @@ import {
     apiExtractorProcessor,
     cookieProcessor,
     extractExamplesProcessor,
+    extractMarkdownProcessor,
     htmlRedirectProcessor,
     isRelease,
     manifestProcessor,
@@ -82,7 +83,14 @@ const docs = new Generator(import.meta.url, {
     },
     outputFolder: "./public",
     cacheFolder: "./temp/docs",
-    exampleFolders: ["./packages/vue/src", "./docs", "./packages/vue-labs/src"],
+    exampleFolders: [
+        "./packages/vue/src",
+        "./packages/vue-labs/src",
+        "./docs/components",
+        "./docs/functions",
+        "./docs/guides",
+        "./docs/styles",
+    ],
     templateFolders: ["./docs-alt/templates", "./docs/templates"],
     markdown: {
         messagebox: {
@@ -117,6 +125,9 @@ const docs = new Generator(import.meta.url, {
         }),
         extractExamplesProcessor({
             outputFolder: "docs/examples/files",
+        }),
+        extractMarkdownProcessor({
+            outputFolder: "docs/dist",
         }),
         playgroundProcessor({
             entries: [
@@ -189,11 +200,6 @@ try {
     );
     await fs.mkdir("temp/docs", { recursive: true });
     await fs.writeFile("temp/docs/versions.json", versions, "utf8");
-
-    /* create empty stub package for now */
-    await fs.mkdir("docs/dist", { recursive: true });
-    await fs.writeFile("docs/dist/index.mjs", "export {};\n", "utf8");
-    await fs.writeFile("docs/dist/index.d.mts", "export {};\n", "utf8");
 
     /* copy docs from each package */
     console.log(); // intentional blank line
