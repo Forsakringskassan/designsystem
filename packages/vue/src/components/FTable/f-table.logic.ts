@@ -26,6 +26,17 @@ export function getCellTarget(
     return tableElement.rows[rowIndex].cells[cellIndex];
 }
 
+export function focusCell(
+    tableElement: HTMLTableElement,
+    rowIndex: number,
+    cellIndex: number,
+): void {
+    const cell = getCellTarget(tableElement, rowIndex, cellIndex);
+    activateCell(cell, { focus: true });
+
+    cell.click();
+}
+
 function getTr(td: HTMLTableCellElement): HTMLTableRowElement {
     return td.parentElement as HTMLTableRowElement;
 }

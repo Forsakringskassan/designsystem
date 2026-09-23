@@ -2,7 +2,7 @@ import { type Ref, type ShallowRef, onUpdated, ref, watch } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
 import { getItemIdentifier } from "../../utils";
 import { type FTableApi } from "./f-table-api";
-import { activateCell, getCellTarget } from "./f-table.logic";
+import { activateCell, focusCell, getCellTarget } from "./f-table.logic";
 import { type MetaRow } from "./meta-row";
 
 function matching(
@@ -194,5 +194,11 @@ export function useTabstop(
         }
     }
 
-    return { withTabstopBehaviour };
+    return {
+        withTabstopBehaviour,
+        focusCell(rowIndex: number, cellIndex: number) {
+            assertRef(tableRef);
+            focusCell(tableRef.value, rowIndex, cellIndex);
+        },
+    };
 }

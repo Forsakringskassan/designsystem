@@ -849,6 +849,7 @@ export const FTable: typeof __VLS_export_72;
 
 // @public
 export interface FTableApi {
+    focusCell(rowIndex: number, cellIndex: number): void;
     withTabstopBehaviour(behaviour: "default" | "row-removal", action: () => void | Promise<void>): Promise<void>;
 }
 

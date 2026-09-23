@@ -19,6 +19,12 @@ export interface FTableApi {
         behaviour: "default" | "row-removal",
         action: () => void | Promise<void>,
     ): Promise<void>;
+    /**
+     * Can be used to programmatically focus and activate a cell.
+     * @param rowIndex - The row index of the cell.
+     * @param cellIndex - The cell index of the cell.
+     */
+    focusCell(rowIndex: number, cellIndex: number): void;
 }
 
 /**
