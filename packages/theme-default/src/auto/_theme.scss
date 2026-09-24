@@ -2,15 +2,16 @@
 @use "../dark/theme" as dark;
 @use "../version" as *;
 
-@mixin theme {
+/// @param {Boolean} $legacy-palette - Override semantic color tokens with the legacy palette.
+@mixin theme($legacy-palette: false) {
     color-scheme: light dark;
 
     @media (prefers-color-scheme: light) {
-        @include light.theme;
+        @include light.theme($legacy-palette);
     }
 
     @media (prefers-color-scheme: dark) {
-        @include dark.theme;
+        @include dark.theme($legacy-palette);
     }
 
     --fkui-theme-default-version: "#{$version}";

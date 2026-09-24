@@ -22,6 +22,10 @@ $fk-logo-large-url: "#{config-variables.$asset-path-images}/fk-logo-primary-larg
     .user-theme {
         @include theme.light;
     }
+
+    .docs-legacy-palette {
+        @include theme.light($legacy-palette: true);
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,6 +33,10 @@ $fk-logo-large-url: "#{config-variables.$asset-path-images}/fk-logo-primary-larg
     .live-example__example,
     .user-theme {
         @include theme.dark;
+    }
+
+    .docs-legacy-palette {
+        @include theme.dark($legacy-palette: true);
     }
 }
 

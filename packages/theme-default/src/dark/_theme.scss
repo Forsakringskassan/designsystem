@@ -1,10 +1,16 @@
 @use "../shared" as shared;
 @use "variables" as dark;
+@use "../legacy/dark" as legacy;
 @use "../version" as *;
 
-@mixin theme {
+/// @param {Boolean} $legacy-palette - Override semantic color tokens with the legacy palette.
+@mixin theme($legacy-palette: false) {
     @include shared.variables;
     @include dark.variables;
+
+    @if $legacy-palette {
+        @include legacy.variables;
+    }
 
     --fkui-theme-default-version: "#{$version}";
 }

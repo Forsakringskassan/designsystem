@@ -8,24 +8,28 @@
 
 $global: true !default;
 
-@mixin light {
-    @include themeDefault.light;
+/// When enabled the semantic color tokens are overridden with the colors from
+/// the legacy palette. Disabled by default.
+$legacy-palette: false !default;
+
+@mixin light($legacy-palette: $legacy-palette) {
+    @include themeDefault.light($legacy-palette);
     @include light.theme;
 }
 
-@mixin dark {
-    @include themeDefault.dark;
+@mixin dark($legacy-palette: $legacy-palette) {
+    @include themeDefault.dark($legacy-palette);
     @include dark.theme;
 }
 
-@mixin auto {
-    @include themeDefault.auto;
+@mixin auto($legacy-palette: $legacy-palette) {
+    @include themeDefault.auto($legacy-palette);
     @include auto.theme;
 }
 
 @if $global {
     :root {
-        @include themeDefault.light;
+        @include themeDefault.light($legacy-palette);
         @include light.theme;
     }
 }
