@@ -51,8 +51,8 @@ Om frågan är frivillig behöver den därför ha ett neutralt svarsalternativ, 
 ### Utvidgad text
 
 Använd utvidgad text när ett alternativ behöver förklaras eller förtydligas.
-Håll alternativets huvudsakliga text kort och placera förklaringen på en egen rad.
-Det gör alternativen lättare att överblicka och skapar en tydlig visuell hierarki mellan alternativet och den kompletterande informationen.
+Håll alternativets huvudsakliga text kort.
+Den utvidgade texten visas på en egen rad, vilket gör alternativen lättare att överblicka och skapar en tydlig visuell hierarki mellan alternativet och den kompletterande informationen.
 
 Texten ska vara kort och beskriva det enskilda alternativet.
 Information som gäller hela frågan ska i stället placeras som hjälptext vid frågan.
@@ -99,7 +99,7 @@ Lägg `v-validation.required` på `FFieldset`.
 `FRadioGroup` och `FRadioGroupField` har tagits bort och ersatts av `FFieldset` respektive `FRadioField`.
 Se {@link migrating-to-fieldset migreringsguiden} för information om hur du uppdaterar din kod.
 
-## Props, Events & Slots
+## API
 
 ### FFieldset
 
