@@ -2,7 +2,8 @@ import { type Ref, type ShallowRef, onUpdated, ref, watch } from "vue";
 import { assertRef, assertSet } from "@fkui/logic";
 import { getItemIdentifier } from "../../utils";
 import { type FTableApi } from "./f-table-api";
-import { activateCell, focusCell, getCellTarget } from "./f-table.logic";
+import { activateCell, getCellTarget } from "./f-table.logic";
+import { focusCell } from "./focus-cell";
 import { type MetaRow } from "./meta-row";
 
 function matching(
