@@ -1,0 +1,58 @@
+{
+    "name": "FLayoutRightPanel",
+    "slug": "flayoutrightpanel",
+    "models": [],
+    "props": [
+        {
+            "name": "initialWidth",
+            "description": "The default width for the panel in pixels",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"320\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "maxWidth",
+            "description": "The default maximun width for the panel in percentage where 1 is 100% and 0 is 0%",
+            "type": "number",
+            "required": false,
+            "default": {
+                "value": "0.5"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "minWidth",
+            "description": "The default minium width for the panel in pixels",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"150\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for displaying the primary content.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "heading",
+            "description": "Slot for heading",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "content",
+            "description": "Slot for displaying content in the secondary-panel",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

@@ -1,0 +1,80 @@
+{
+    "name": "FRadioField",
+    "slug": "fradiofield",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "The value for the input checked attribute.",
+            "type": "anyType",
+            "required": false,
+            "default": {
+                "value": "() => undefined"
+            },
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "disabled",
+            "description": "Disables the radio button.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "id",
+            "description": "The id for the input id attribute.\nThe id for the label for attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "value",
+            "description": "The value for the input.",
+            "type": "anyType",
+            "required": false,
+            "default": {
+                "value": "() => undefined"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "change",
+            "description": "Emitted when the value of the radiobutton changes.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "anyType",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for label content.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "details",
+            "description": "Slot for details, should only contain short text",
+            "bindings": [
+                {
+                    "name": "height",
+                    "type": "unknown",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}

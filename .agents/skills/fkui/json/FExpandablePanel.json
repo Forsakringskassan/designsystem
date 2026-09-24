@@ -1,0 +1,89 @@
+{
+    "name": "FExpandablePanel",
+    "slug": "fexpandablepanel",
+    "models": [],
+    "props": [
+        {
+            "name": "expanded",
+            "description": "Toggle expanded/collapsed state",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "headerTag",
+            "description": "Element to render for the header element inside the expandable panel.\n'h1', 'h2', 'h3', 'h4', 'h5' and 'h6' is valid.",
+            "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+            "required": false,
+            "default": {
+                "value": "\"h2\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "id",
+            "description": "The id for the content id attribute.\nIf the prop is not set the id will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "notifications",
+            "description": "Number of notifications present in panel.\n\nIf set to zero (default) no notification badge will be displayed.",
+            "type": "number",
+            "required": false,
+            "default": {
+                "value": "0"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "screenReaderNotificationTemplate",
+            "description": "Text template for the screen reader notification text.\nUse `%VALUE%` as a placeholder for the number of notifications.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"Du har %VALUE% notifieringar.\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "toggle",
+            "description": "Emitted when panel heading is clicked.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "MouseEvent",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "title",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot used for content shown when panel is expanded",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "outside",
+            "description": "Slot used for optional content rendered below panel when expanded",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

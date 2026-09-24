@@ -1,0 +1,15 @@
+{
+    "name": "FOffline",
+    "slug": "foffline",
+    "models": [],
+    "props": [],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for customizing text message.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}
