@@ -33,6 +33,7 @@ export default defineComponent({
         FIcon,
         FCalendarDay,
     },
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     inheritAttrs: false,
     props: {

@@ -41,7 +41,10 @@ describe("1. 3 Table test – right-aligned column", () => {
 
     const rows = useDatasetRef<Row>(
         [
-            { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+            {
+                text: "A1",
+                nested: [{ text: "A2 justering av text" }, { text: "A3" }],
+            },
             { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
         ],
         expandableAttribute,
@@ -83,6 +86,7 @@ describe("1. 3 Table test – right-aligned column", () => {
     ]);
 
     it("should verify that text column is left/right alignment and formatted correctly (visual)", () => {
+        cy.viewport(600, 500);
         cy.mount(() =>
             h(
                 FTable<Row>,
@@ -804,10 +808,6 @@ describe("3.1 Feedback to user on invalid input components", () => {
     });
 
     describe("Visual", () => {
-        afterEach(() => {
-            cy.forcedColors("none");
-        });
-
         for (const mode of Object.values(forcedColorModes)) {
             it(`should render invalid cell styling and tooltip, mode ${mode} (visual)`, () => {
                 interface Row {
@@ -834,7 +834,11 @@ describe("3.1 Feedback to user on invalid input components", () => {
                     { text: "12345" },
                 ];
 
-                cy.forcedColors(mode);
+                if (mode !== "none") {
+                    cy.prefersColorScheme(mode);
+                    cy.forcedColors("active");
+                }
+
                 cy.mount(() =>
                     h(
                         FTable<Row>,
@@ -2677,13 +2681,12 @@ describe("13 Cell interaction states", () => {
         { plain: "B1", text: "B2", button: "B3" },
     ]);
 
-    afterEach(() => {
-        cy.forcedColors("none");
-    });
-
     for (const mode of Object.values(forcedColorModes)) {
         it(`13.1 should render focus underline on editable cell, mode ${mode} (visual)`, () => {
-            cy.forcedColors(mode);
+            if (mode !== "none") {
+                cy.prefersColorScheme(mode);
+                cy.forcedColors("active");
+            }
 
             cy.mount(() =>
                 h(
@@ -2706,7 +2709,10 @@ describe("13 Cell interaction states", () => {
 
     for (const mode of Object.values(forcedColorModes)) {
         it(`13.2 should render focus outline on column header, mode ${mode} (visual)`, () => {
-            cy.forcedColors(mode);
+            if (mode !== "none") {
+                cy.prefersColorScheme(mode);
+                cy.forcedColors("active");
+            }
             const modeDescription =
                 mode === "none" ? " (normal mode)" : ` (${mode} mode)`;
             cy.mount(() =>
@@ -2746,7 +2752,10 @@ describe("13 Cell interaction states", () => {
 
             const selectedRows: Row[] = [];
 
-            cy.forcedColors(mode);
+            if (mode !== "none") {
+                cy.prefersColorScheme(mode);
+                cy.forcedColors("active");
+            }
             const modeDescription =
                 mode === "none" ? " (normal mode)" : ` (${mode} mode)`;
 
@@ -2774,8 +2783,6 @@ describe("13 Cell interaction states", () => {
     }
 
     it("should not render hover background on editable cell while editing (visual)", () => {
-        cy.forcedColors("none");
-
         cy.mount(() =>
             h(
                 FTable<Row>,
@@ -2835,13 +2842,12 @@ describe("columns", () => {
     });
 
     describe("Sorting icon forced colors", () => {
-        afterEach(() => {
-            cy.forcedColors("none");
-        });
-
         for (const mode of Object.values(forcedColorModes)) {
             it(`should show active sort icon in forced colors mode ${mode} (visual)`, () => {
-                cy.forcedColors(mode);
+                if (mode !== "none") {
+                    cy.prefersColorScheme(mode);
+                    cy.forcedColors("active");
+                }
 
                 cy.mount(FTableSortFilterExample);
 

@@ -21,6 +21,7 @@ const iconMap: Record<string, IconName> = {
 export default defineComponent({
     name: "FFileItem",
     components: { FIcon },
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     inheritAttrs: false,
     props: {

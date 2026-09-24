@@ -54,15 +54,24 @@ module.exports = {
     },
     outputFolder: "./public",
     cacheFolder: "./temp/docs",
-    exampleFolders: ["./packages/vue/src", "./packages/vue-labs/src", "./docs"],
+    exampleFolders: [
+        "./packages/vue/src",
+        "./packages/vue-labs/src",
+        "./docs/components",
+        "./docs/functions",
+        "./docs/guides",
+        "./docs/styles",
+    ],
     templateFolders: ["./docs/templates"],
     setupPath: path.resolve("docs/src/setup.ts"),
     sourceFiles: [
         {
             include: "docs/**/*.md",
             exclude: [
-                "docs/node_modules/**",
+                "docs/README.md",
+                "docs/dist/**",
                 "docs/examples/**",
+                "docs/node_modules/**",
                 "docs/playground/**",
                 "docs/temp/**",
             ],
@@ -85,8 +94,9 @@ module.exports = {
         {
             include: "docs/*/**/*.json",
             exclude: [
-                "docs/node_modules/**",
+                "docs/dist/**",
                 "docs/examples/**",
+                "docs/node_modules/**",
                 "docs/playground/**",
                 "docs/temp/**",
             ],

@@ -23,7 +23,7 @@ jobs:
             - name: Build documentation
               run: npm run build:docs
             - name: Tests
-              uses: Forsakringskassan/vitest-config@9300fc565e776c0c8d4c3dd803cb4c84166699f4 # v2.8.1
+              uses: Forsakringskassan/vitest-config@535425e94f144591a70bdc5343089344b58aad4f # v5.0.0
 
     cypress-e2e:
         name: Cypress E2E Tests
@@ -42,7 +42,7 @@ jobs:
                   npm run build
                   npm run build:docs
             - name: Cypress E2E tests
-              uses: cypress-io/github-action@09090944bd8aaa2a517cefb6e38bf1aae336b42b # v7.4.3
+              uses: cypress-io/github-action@01e3b659a495b41649cdd0aa82e1d1624e26520b # v7.4.4
               with:
                   summary-title: "E2E tests"
                   start: npm start
@@ -76,7 +76,7 @@ jobs:
             - name: Build (minimal)
               run: npm exec lerna -- run --include-dependencies --scope=@fkui/vue --scope=@fkui/cypress-split build
             - name: Cypress Component Testing
-              uses: cypress-io/github-action@09090944bd8aaa2a517cefb6e38bf1aae336b42b # v7.4.3
+              uses: cypress-io/github-action@01e3b659a495b41649cdd0aa82e1d1624e26520b # v7.4.4
               env:
                   SPLIT: ${{ strategy.job-total }}
                   SPLIT_INDEX: ${{ strategy.job-index }}
@@ -109,6 +109,8 @@ jobs:
             - name: Remove conflicting dependencies
               run: |
                   npm rm --include-workspace-root --workspaces \
+                      @forsakringskassan/vitest-config \
+                      @forsakringskassan/vitest-config-jsdom \
                       vitest
             - name: Install html-validate
               run: |

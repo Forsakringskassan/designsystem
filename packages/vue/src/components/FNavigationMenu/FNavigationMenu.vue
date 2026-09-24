@@ -38,6 +38,7 @@ const preventKeys = new Set([
 export default defineComponent({
     name: "FNavigationMenu",
     components: { FIcon, IPopupMenu },
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     props: {
         /**

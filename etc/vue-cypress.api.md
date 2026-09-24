@@ -282,8 +282,7 @@ export class FExpandablePanelPageObject implements BasePageObject {
     constructor(selector: string);
     // (undocumented)
     body: () => DefaultCypressChainable;
-    // (undocumented)
-    el: () => DefaultCypressChainable;
+    el(): DefaultCypressChainable;
     // (undocumented)
     expandCollapseIcon: () => DefaultCypressChainable;
     // (undocumented)
@@ -296,7 +295,7 @@ export class FExpandablePanelPageObject implements BasePageObject {
     // (undocumented)
     relatedInfo: () => DefaultCypressChainable;
     // (undocumented)
-    selector: string;
+    get selector(): string;
 }
 
 // @public (undocumented)
@@ -595,7 +594,7 @@ class FRadioFieldPageObject implements BasePageObject {
     // (undocumented)
     details(): DefaultCypressChainable;
     // (undocumented)
-    el: () => DefaultCypressChainable;
+    el(): DefaultCypressChainable;
     // (undocumented)
     isSelected(): Cypress.Chainable<boolean>;
     // (undocumented)
@@ -605,7 +604,7 @@ class FRadioFieldPageObject implements BasePageObject {
     // (undocumented)
     select(): DefaultCypressChainable;
     // (undocumented)
-    selector: string;
+    get selector(): string;
     // (undocumented)
     value(): Cypress.Chainable<string>;
 }
@@ -736,7 +735,7 @@ export class FTextareaFieldPageObject extends Input implements BasePageObject {
     constructor(selector: string);
     // (undocumented)
     el: () => DefaultCypressChainable;
-    // (undocumented)
+    // @deprecated (undocumented)
     errorIcon(): DefaultCypressChainable;
     // (undocumented)
     input(): DefaultCypressChainable;
@@ -779,7 +778,7 @@ export class FTooltipPageObject implements BasePageObject {
     // (undocumented)
     iButton(): DefaultCypressChainable;
     // (undocumented)
-    selector: string;
+    get selector(): string;
 }
 
 // @public (undocumented)

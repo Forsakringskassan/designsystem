@@ -1,6 +1,6 @@
 {
   "name": "@fkui/semantic-release-publiccode",
-  "version": "6.57.0",
+  "version": "6.59.0",
   "private": true,
   "description": "Sets version and date in publiccode.yml",
   "homepage": "https://forsakringskassan.github.io/designsystem/",
@@ -19,8 +19,8 @@
   },
   "devDependencies": {
     "execa": "10.0.1",
-    "prettier": "3.9.6",
-    "yaml": "2.9.0"
+    "prettier": "3.9.8",
+    "yaml": "2.9.1"
   },
   "engines": {
     "node": "^22.16 || >= 24",

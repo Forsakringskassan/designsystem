@@ -1,12 +1,21 @@
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "html-validate";
+
+/**
+ * @param {string} specifier
+ * @returns {string}
+ */
+function resolve(specifier) {
+    return fileURLToPath(import.meta.resolve(specifier));
+}
 
 export default defineConfig({
     plugins: ["html-validate-vue"],
     elements: [
         "html5",
-        import.meta.resolve("../elements/overrides.mjs"),
-        import.meta.resolve("../elements/components.mjs"),
-        import.meta.resolve("../elements/internal-components.mjs"),
+        resolve("../elements/overrides.mjs"),
+        resolve("../elements/components.mjs"),
+        resolve("../elements/internal-components.mjs"),
     ],
     rules: {
         "fkui/button-group": "error",

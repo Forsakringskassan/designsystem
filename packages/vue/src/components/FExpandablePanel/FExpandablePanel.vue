@@ -13,6 +13,7 @@ export default defineComponent({
         FIcon,
         FExpand,
     },
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     inheritAttrs: false,
     props: {
@@ -134,7 +135,7 @@ export default defineComponent({
         </component>
 
         <f-expand>
-            <div v-show="expanded" :id class="expandable-panel__content">
+            <div v-show="expanded" :id class="expandable-panel__content" :inert="!expanded">
                 <div class="expandable-panel__body">
                     <!-- @slot Slot used for content shown when panel is expanded -->
                     <slot></slot>

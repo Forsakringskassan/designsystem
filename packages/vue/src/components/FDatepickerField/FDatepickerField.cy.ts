@@ -281,14 +281,13 @@ describe("open calendar with year selector enabled", () => {
         datepickerField.input().should("have.value", "2013-10-10");
     });
 
-    afterEach(() => {
-        cy.forcedColors("none");
-    });
-
     for (const mode of Object.values(forcedColorModes)) {
         it(`should have approved design, ${mode} (visual)`, () => {
             cy.viewport(500, 600);
-            cy.forcedColors(mode);
+            if (mode !== "none") {
+                cy.prefersColorScheme(mode);
+                cy.forcedColors("active");
+            }
             datepickerField.input().type("2020-10-31");
             datepickerField.input().blur();
             datepickerField.toggleCalendarButton().click();
@@ -1192,12 +1191,14 @@ describe("maxdate within month", () => {
     describe("open calendar", () => {
         it("should have approved design", () => {
             datepickerField.toggleCalendarButton().realClick();
+            datepickerField.calendar().should("be.visible");
             datepickerField.calendarCaption().should("have.focus");
             cy.toMatchScreenshot();
         });
 
         it("should set corresponding days to disabled", () => {
             datepickerField.toggleCalendarButton().click();
+            datepickerField.calendar().should("be.visible");
             datepickerField.disabledDay("2022-12-23").should("not.exist");
             datepickerField.disabledDay("2022-12-24").should("exist");
             datepickerField.disabledDay("2022-12-25").should("exist");
@@ -1207,6 +1208,7 @@ describe("maxdate within month", () => {
     describe("open calendar and click disabled next month button", () => {
         beforeEach(() => {
             datepickerField.toggleCalendarButton().click();
+            datepickerField.calendar().should("be.visible");
             datepickerField.navNextButton().click();
         });
 
@@ -1229,6 +1231,7 @@ describe("maxdate within month", () => {
     describe("open calendar and navigate to next month by pressing right arrow", () => {
         beforeEach(() => {
             datepickerField.toggleCalendarButton().click();
+            datepickerField.calendar().should("be.visible");
             datepickerField.dayButton("2022-12-31").focus();
             cy.focused().trigger("keydown", { code: "ArrowRight" });
         });
@@ -1349,13 +1352,13 @@ describe("density", () => {
 });
 
 describe("Visual", () => {
-    afterEach(() => {
-        cy.forcedColors("none");
-    });
     for (const mode of forcedColorModes) {
         it(`should render correct styling for forced color mode '${mode}'`, () => {
             cy.viewport(300, 200);
-            cy.forcedColors(mode);
+            if (mode !== "none") {
+                cy.prefersColorScheme(mode);
+                cy.forcedColors("active");
+            }
             cy.mount(FDatepickerFieldIconExample);
             cy.toMatchScreenshot();
         });

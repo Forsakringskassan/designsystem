@@ -30,10 +30,12 @@
                 color: $contextmenu-color-text-active;
             }
 
-            &:hover {
-                color: $contextmenu-color-text-hover;
-                background-color: $contextmenu-color-item-background-hover;
-                @include forcedcolors.hover-indicator(outline, 2px);
+            @media (hover: hover) {
+                &:hover {
+                    color: $contextmenu-color-text-hover;
+                    background-color: $contextmenu-color-item-background-hover;
+                    @include forcedcolors.hover-indicator(outline, 2px);
+                }
             }
 
             // when desktop, long texts expands popup

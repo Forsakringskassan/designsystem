@@ -5,7 +5,13 @@ import {
     type ValidityEvent,
     type ValidityMode,
 } from "@fkui/logic";
-import { config, flushPromises, mount, shallowMount } from "@vue/test-utils";
+import {
+    type VueWrapper,
+    config,
+    flushPromises,
+    mount,
+    shallowMount,
+} from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import FSelectField from "./FSelectField.vue";
 
@@ -281,10 +287,11 @@ describe("events", () => {
         expect(htmlSelect.value).toBe("banana");
         await select.setValue("apple");
         expect(htmlSelect.value).toBe("apple");
+        const selectField = wrapper.findComponent(FSelectField) as VueWrapper<
+            InstanceType<typeof FSelectField>
+        >;
         expect(
-            wrapper
-                .findComponent(FSelectField)
-                .emitted("update:modelValue")![0][0],
+            selectField.emitted("update:modelValue")![0][0],
         ).toMatchInlineSnapshot(`"apple"`);
     });
 
@@ -309,9 +316,10 @@ describe("events", () => {
             },
             props: { modelValue: { id: 1, fruit: "banana" } },
         });
-        const vModelValue = wrapper
-            .findComponent(FSelectField)
-            .props("modelValue");
+        const selectField = wrapper.findComponent(FSelectField) as VueWrapper<
+            InstanceType<typeof FSelectField>
+        >;
+        const vModelValue = selectField.props("modelValue");
         expect(vModelValue).toEqual({ id: 1, fruit: "banana" });
     });
 
@@ -336,9 +344,10 @@ describe("events", () => {
             },
             props: { modelValue: null },
         });
-        const vModelValue = wrapper
-            .findComponent(FSelectField)
-            .props("modelValue");
+        const selectField = wrapper.findComponent(FSelectField) as VueWrapper<
+            InstanceType<typeof FSelectField>
+        >;
+        const vModelValue = selectField.props("modelValue");
         expect(vModelValue).toBeNull();
     });
 
@@ -357,9 +366,12 @@ describe("events", () => {
         });
         const select = wrapper.get("select");
         await select.setValue("apple");
-        expect(
-            wrapper.findComponent(FSelectField).emitted("change")![0][0],
-        ).toMatchInlineSnapshot(`"apple"`);
+        const selectField = wrapper.findComponent(FSelectField) as VueWrapper<
+            InstanceType<typeof FSelectField>
+        >;
+        expect(selectField.emitted("change")![0][0]).toMatchInlineSnapshot(
+            `"apple"`,
+        );
     });
 });
 

@@ -1,11 +1,11 @@
+import { FRadioFieldSelectors } from "../selectors";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
  * @public
  */
 export class FRadioFieldPageObject implements BasePageObject {
-    public selector: string;
-    public el: () => DefaultCypressChainable;
+    private _selectors: ReturnType<typeof FRadioFieldSelectors>;
 
     /**
      * @param selector - the root of the radio button, usually `<div class="radio-button">...</div>`.
@@ -13,28 +13,36 @@ export class FRadioFieldPageObject implements BasePageObject {
      */
     public constructor(selector: string, index?: number) {
         if (index) {
-            this.selector = `${selector}:nth(${String(index)})`;
+            this._selectors = FRadioFieldSelectors(
+                `${selector}:nth(${String(index)})`,
+            );
         } else {
-            this.selector = selector;
+            this._selectors = FRadioFieldSelectors(selector);
         }
+    }
 
-        this.el = () => cy.get(this.selector);
+    public get selector(): string {
+        return this._selectors.selector;
+    }
+
+    public el(): DefaultCypressChainable {
+        return cy.get(this._selectors.selector);
     }
 
     public radioButton(): Cypress.Chainable<JQuery<HTMLInputElement>> {
-        return cy.get(`${this.selector} input`);
+        return cy.get(this._selectors.input());
     }
 
     public label(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .radio-button__label`);
+        return cy.get(this._selectors.label());
     }
 
     public select(): DefaultCypressChainable {
-        return cy.get(`${this.selector} label`).click();
+        return cy.get(this._selectors.label()).click();
     }
 
     public details(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .radio-button__details`);
+        return cy.get(this._selectors.details());
     }
 
     public isSelected(): Cypress.Chainable<boolean> {

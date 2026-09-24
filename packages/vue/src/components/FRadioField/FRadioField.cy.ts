@@ -176,9 +176,9 @@ describe("FRadioField", () => {
         radioGroup.tooltip.iButton().should("exist");
     });
 
-    it("should not be able to select disabled fields, expanded should not exist", () => {
+    it("should prevent selection, omit expansion and use disabled text color for details", () => {
         const template = /* HTML */ `
-            <f-fieldset name="radio-name">
+            <f-fieldset name="radio-name" show-details="always">
                 <template #label> Label text </template>
                 <f-radio-field v-model="radioModel" :value="true">
                     Yes
@@ -187,7 +187,8 @@ describe("FRadioField", () => {
                     No
                 </f-radio-field>
                 <f-radio-field v-model="radioModel" :value="false" disabled>
-                    Disabled 1
+                    <template #default> Disabled 1 </template>
+                    <template #details> Disabled details </template>
                 </f-radio-field>
                 <f-radio-field v-model="radioModel" :value="false" disabled>
                     Disabled 2
@@ -200,6 +201,16 @@ describe("FRadioField", () => {
             .radioButton(radioField.disabled1)
             .isSelected()
             .should("be.false");
+        radioGroup
+            .radioButton(radioField.disabled1)
+            .label()
+            .then(($label) => {
+                const labelColor = getComputedStyle($label.get(0)).color;
+                radioGroup
+                    .radioButton(radioField.disabled1)
+                    .details()
+                    .should("have.css", "color", labelColor);
+            });
 
         radioGroup.radioButton(radioField.disabled2).select();
         radioGroup
@@ -328,12 +339,12 @@ describe("FRadioField", () => {
     describe("Visual forcedColor", () => {
         const forcedColorModes = ["none", "dark", "light"] as const;
 
-        afterEach(() => {
-            cy.forcedColors("none");
-        });
         for (const mode of Object.values(forcedColorModes)) {
             it(`should render correct styling for forced color mode, ${mode} (visual)`, () => {
-                cy.forcedColors(mode);
+                if (mode !== "none") {
+                    cy.prefersColorScheme(mode);
+                    cy.forcedColors("active");
+                }
 
                 const TestComponent = defineComponent({
                     components: { FFieldset, FRadioField },

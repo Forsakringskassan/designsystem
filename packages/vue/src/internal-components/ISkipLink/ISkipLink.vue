@@ -5,6 +5,7 @@ import { TranslationMixin } from "../../plugins/translation";
 
 export default defineComponent({
     name: "ISkipLink",
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     props: {
         /**

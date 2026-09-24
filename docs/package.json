@@ -1,7 +1,11 @@
 {
   "name": "@fkui/docs",
-  "version": "6.57.1",
-  "private": true,
+  "version": "6.59.0",
+  "description": "FKUI documentation for including on third-party sites",
+  "keywords": [
+    "fkui",
+    "designsystem"
+  ],
   "homepage": "https://designsystem.forsakringskassan.se/",
   "bugs": "https://github.com/Forsakringskassan/designsystem/issues",
   "repository": {
@@ -9,22 +13,36 @@
     "url": "git+https://github.com/Forsakringskassan/designsystem.git",
     "directory": "docs"
   },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "vue-tsc -b",
-    "clean": "rimraf -g temp"
+    "clean": "rimraf -g temp",
+    "prepack": "release-prepack --bundle --retain-scripts",
+    "postpack": "release-postpack",
+    "prepublishOnly": "release-prepublish --bundle --retain-scripts"
   },
   "dependencies": {
-    "@fkui/icon-lib-default": "6.57.1",
-    "@fkui/theme-default": "6.57.1",
-    "@fkui/vue": "6.57.1",
-    "@fkui/vue-labs": "6.57.1"
+    "@fkui/icon-lib-default": "6.59.0",
+    "@fkui/theme-default": "6.59.0",
+    "@fkui/vue": "6.59.0",
+    "@fkui/vue-labs": "6.59.0"
   },
   "devDependencies": {
-    "@fkui/font-default": "6.57.0",
-    "@fkui/logo-default": "6.57.0",
-    "@forsakringskassan/docs-generator": "3.6.3",
-    "cypress": "15.21.1",
-    "vue": "3.5.42"
+    "@fkui/font-default": "6.59.0",
+    "@fkui/logo-default": "6.59.0",
+    "@forsakringskassan/docs-generator": "3.12.0",
+    "cypress": "16.1.0",
+    "vue": "3.5.43"
   },
   "engines": {
     "node": "^22.16 || >= 24"

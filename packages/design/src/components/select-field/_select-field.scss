@@ -42,8 +42,10 @@
             border-color: ButtonBorder;
         }
 
-        &:hover {
-            background-color: $selectfield-color-background-hover;
+        @media (hover: hover) {
+            &:hover {
+                background-color: $selectfield-color-background-hover;
+            }
         }
 
         &:focus-visible {

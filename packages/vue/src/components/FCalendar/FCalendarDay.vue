@@ -7,6 +7,7 @@ import { getCalendarDaySrText } from "./get-calendar-day-sr-text";
 
 export default defineComponent({
     name: "FCalendarDay",
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     props: {
         /**

@@ -15,6 +15,7 @@ import { dispatchComponentValidityEvent, renderSlotText } from "../../../../util
 export default defineComponent({
     name: "FEmailTextField",
     components: { FTextField },
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     inheritAttrs: false,
     props: {

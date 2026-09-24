@@ -1,6 +1,6 @@
 {
   "name": "@fkui/date",
-  "version": "6.57.1",
+  "version": "6.59.0",
   "description": "Date",
   "keywords": [
     "fkui",
@@ -44,12 +44,12 @@
     "dayjs": "1.11.23"
   },
   "devDependencies": {
-    "@forsakringskassan/vitest-config": "2.8.1",
+    "@forsakringskassan/vitest-config": "5.0.0",
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.0",
-    "rollup": "4.63.1",
-    "vitest": "5.0.0"
+    "rollup": "4.63.4",
+    "vitest": "5.0.1"
   },
   "engines": {
     "node": "^22.16 || >= 24",

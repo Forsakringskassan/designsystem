@@ -9,6 +9,7 @@ import { dispatchComponentValidityEvent, renderSlotText } from "../../../../util
 export default defineComponent({
     name: "FPhoneTextField",
     components: { FTextField },
+    /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     inheritAttrs: false,
     props: {

@@ -1,6 +1,6 @@
 {
   "name": "@fkui/example-table",
-  "version": "6.57.1",
+  "version": "6.59.0",
   "private": true,
   "description": "An example and testbed for application table components",
   "homepage": "https://designsystem.forsakringskassan.se/",
@@ -19,16 +19,16 @@
     "start": "vite --"
   },
   "dependencies": {
-    "@fkui/design": "6.57.1",
-    "@fkui/icon-lib-default": "6.57.1",
-    "@fkui/theme-default": "6.57.1",
-    "@fkui/vue": "6.57.1",
-    "vue": "3.5.42",
+    "@fkui/design": "6.59.0",
+    "@fkui/icon-lib-default": "6.59.0",
+    "@fkui/theme-default": "6.59.0",
+    "@fkui/vue": "6.59.0",
+    "vue": "3.5.43",
     "vue-router": "5.3.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "6.0.8",
-    "vite": "8.2.2"
+    "@vitejs/plugin-vue": "6.0.9",
+    "vite": "8.3.0"
   },
   "engines": {
     "node": "^22.16 || >= 24",

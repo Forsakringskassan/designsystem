@@ -23,7 +23,6 @@ function isOptionActive(item: string): boolean {
 function onOptionClick(value: string): void {
     emit("select", value);
 }
-
 function onListboxClose(): void {
     emit("close");
 }
@@ -60,6 +59,7 @@ watchEffect(async () => {
                     class="combobox__listbox__option"
                     :class="{ 'combobox__listbox__option--highlight': isOptionActive(item) }"
                     @click.stop.prevent="onOptionClick(item)"
+                    @mousedown.stop.prevent
                 >
                     {{ item }}
                 </li>
