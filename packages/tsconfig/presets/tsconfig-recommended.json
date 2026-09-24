@@ -3,6 +3,7 @@
     "display": "@fkui/tsconfig/recommended",
 
     "compilerOptions": {
+        "allowImportingTsExtensions": true,
         "target": "es2023",
         "module": "esnext",
         "moduleResolution": "bundler",
