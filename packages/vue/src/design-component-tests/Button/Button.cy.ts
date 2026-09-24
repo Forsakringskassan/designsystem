@@ -1,5 +1,6 @@
 import ButtonButtonGroupFullWidthExample from "./examples/ButtonButtonGroupFullWidthExample.vue";
 import ButtonDiscreteExample from "./examples/ButtonDiscreteExample.vue";
+import ButtonListVisualTest from "./examples/ButtonListVisualTest.vue";
 
 const VIEWPORT = {
     DESKTOP: { width: 700, height: 600 },
@@ -121,5 +122,37 @@ describe("button-group ", () => {
             },
         });
         cy.toMatchScreenshot({ baseDelay: 100 });
+    });
+});
+
+describe("button-list", () => {
+    it("with large button (visual)", () => {
+        cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
+        cy.mount(ButtonListVisualTest, {
+            props: {
+                size: "large",
+            },
+        });
+        cy.get("#visual-wrapper").toMatchScreenshot();
+    });
+
+    it("with medium button (visual)", () => {
+        cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
+        cy.mount(ButtonListVisualTest, {
+            props: {
+                size: "medium",
+            },
+        });
+        cy.get("#visual-wrapper").toMatchScreenshot();
+    });
+
+    it("with small button (visual)", () => {
+        cy.viewport(VIEWPORT.DESKTOP.width, VIEWPORT.DESKTOP.height);
+        cy.mount(ButtonListVisualTest, {
+            props: {
+                size: "small",
+            },
+        });
+        cy.get("#visual-wrapper").toMatchScreenshot();
     });
 });

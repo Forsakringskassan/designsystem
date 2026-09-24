@@ -1,6 +1,6 @@
 {
   "name": "@fkui/test-utils",
-  "version": "6.58.0",
+  "version": "6.59.0",
   "description": "FKUI test utils for Jest och Vitest",
   "keywords": [
     "fkui",
@@ -69,7 +69,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@forsakringskassan/jest-config": "30.4.3",
+    "@forsakringskassan/jest-config": "30.4.4",
     "@forsakringskassan/vitest-config-jsdom": "5.0.0",
     "@jest/globals": "^30.4.1",
     "@vitest/expect": "5.0.1",

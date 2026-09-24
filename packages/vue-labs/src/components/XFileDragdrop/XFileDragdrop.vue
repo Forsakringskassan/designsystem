@@ -300,6 +300,7 @@ EventBus.$on("RENSA_FIL_VALJARE", () => {
 .show_separator {
     visibility: visible;
 }
+
 // Lite av ett hack för att filnamnet inte ska se ut som en knapp, i nyaste FKUI versionen behövs inte det här för där är den inte en knapp.
 #fillista:hover {
     cursor: default;

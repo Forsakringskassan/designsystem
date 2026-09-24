@@ -1,6 +1,6 @@
 {
   "name": "@fkui/theme-builder",
-  "version": "6.58.0",
+  "version": "6.59.0",
   "description": "Build script for FKUI theme",
   "keywords": [
     "fkui",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@html-validate/release-scripts": "7.6.12",
-    "@types/node": "22.20.3",
+    "@types/node": "22.20.4",
     "@types/yargs": "17.0.35",
     "@typescript/native": "npm:typescript@7.0.2",
     "dedent": "1.7.2",
