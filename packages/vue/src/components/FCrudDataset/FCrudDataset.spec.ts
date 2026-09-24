@@ -699,7 +699,7 @@ describe("onCancel", () => {
 
         expect(onCancel).toHaveBeenCalledTimes(0);
 
-        await wrapper.find(".close-button").trigger("click");
+        await wrapper.find(".modal-close-button").trigger("click");
 
         expect(onCancel).toHaveBeenCalledTimes(1);
     });
