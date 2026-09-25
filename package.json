@@ -83,7 +83,7 @@
     "@forsakringskassan/commitlint-config": "4.2.8",
     "@forsakringskassan/cypress-config": "1.10.0",
     "@forsakringskassan/cypress-visual-regression": "5.2.0",
-    "@forsakringskassan/docs-generator": "3.12.0",
+    "@forsakringskassan/docs-generator": "3.12.1",
     "@forsakringskassan/docs-live-example": "3.0.2",
     "@forsakringskassan/eslint-config": "15.9.12",
     "@forsakringskassan/eslint-config-cli": "15.9.3",
