@@ -213,6 +213,10 @@ export function useCombobox(
 
     function toggleDropdown(): void {
         if (!dropdownIsOpen.value) {
+            filter.value = inputRef.value?.value ?? "";
+            selectMode.value = options.value
+                ? options.value.includes(filter.value)
+                : false;
             /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             openSelected();
         } else {
