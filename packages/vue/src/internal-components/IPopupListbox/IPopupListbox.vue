@@ -158,7 +158,6 @@ function calculatePosition(options?: { horizontalOnly: boolean }): void {
     }
 
     wrapperElement.style.overflowY = "auto";
-    wrapperElement.style.overflowX = "hidden";
     wrapperElement.style.left = "0px";
 
     const rect = computeListboxRect(anchor, { itemHeight: contentItemHeigth, numOfItems, verticalSpacing });
@@ -174,9 +173,8 @@ function calculatePosition(options?: { horizontalOnly: boolean }): void {
         }
 
         wrapperElement.style.top = `${String(top - offSetTop)}px`;
-        wrapperElement.style.width = `${String(width)}px`;
+        wrapperElement.style.minWidth = `${String(width)}px`;
         contentWrapper.style.maxHeight = `${String(height)}px`;
-        contentWrapper.style.width = `${String(width)}px`;
     }
 }
 </script>
