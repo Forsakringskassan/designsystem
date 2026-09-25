@@ -7,7 +7,7 @@ component:
     - FRadioField
 ---
 
-```import reading-width
+```import reading-width nomarkup solid-background
 FRadioFieldLiveExample.vue
 ```
 
@@ -20,35 +20,36 @@ Radioknappar tar mer plats än en dropplista eftersom alla svarsalternativ visas
 Det gör det lättare att överblicka och jämföra alternativen.
 En {@link FSelectField dropplista} passar bättre när alternativen är många eller när antalet kan variera och bli stort.
 
-## Användning
+<nav class="docs-view-switcher" aria-label="Dokumentationsvy">
+<a href="?view=usage" data-docs-view-link="usage" aria-current="page">Användning &amp; exempel</a>
+<a href="?view=code" data-docs-view-link="code">Kod</a>
+<a href="?view=api" data-docs-view-link="api">API</a>
+</nav>
 
-### Placering
+<div data-docs-view="usage">
+
+## Placering
 
 Visa radioknappar vertikalt som standard.
 Horisontell placering kan användas när det finns två korta svarsalternativ, till exempel ja och nej.
 På mindre skärmar visas alternativen alltid vertikalt.
 
-```import reading-width
+```import reading-width nomarkup solid-background
 FRadioFieldHorizontalExample.vue
 ```
 
-```diff reading-width
--<f-fieldset name="arbete-annat-land">
-+<f-fieldset name="arbete-annat-land" horizontal>
-```
-
-### Förvalt alternativ
+## Förvalt alternativ
 
 Undvik att markera ett alternativ från början.
 Låt användaren i stället göra ett aktivt val.
 Då minskar risken för att frågan missas eller att användaren skickar in ett svar som inte stämmer.
 
-### Frivilliga frågor
+## Frivilliga frågor
 
 När användaren har valt ett alternativ går det inte att återställa gruppen till att inget alternativ är valt.
 Om frågan är frivillig behöver den därför ha ett neutralt svarsalternativ, till exempel ”Inget av alternativen”.
 
-### Utvidgad text
+## Utvidgad text
 
 Använd utvidgad text när ett alternativ behöver förklaras eller förtydligas.
 Håll alternativets huvudsakliga text kort.
@@ -57,25 +58,56 @@ Den utvidgade texten visas på en egen rad, vilket gör alternativen lättare at
 Texten ska vara kort och beskriva det enskilda alternativet.
 Information som gäller hela frågan ska i stället placeras som hjälptext vid frågan.
 
-```import reading-width
+```import reading-width nomarkup solid-background
 FRadioFieldDetailsAlwaysExample.vue
 ```
 
-```diff reading-width
--<f-fieldset name="care-reason">
-+<f-fieldset name="care-reason" show-details="always">
-```
-
-### Inramade alternativ med expanderbar text
+## Inramade alternativ med expanderbar text
 
 Använd inramade alternativ med expanderbar text när varje val behöver framträda som en egen tydlig och klickbar yta och den kompletterande informationen blir relevant först efter valet.
 Ramen gör det tydligare vilken text som hör till respektive alternativ när innehållet visas.
 
 Dölj inte information som användaren behöver för att kunna välja.
 
-```import reading-width
+```import reading-width nomarkup solid-background
 FRadioFieldBorderExpandableExample.vue
 ```
+
+</div>
+
+<div data-docs-view="code" hidden>
+
+## Interaktiv kodgenerator
+
+Här visas möjliga inställningar för komponenten.
+Vissa kombinationer bör undvikas.
+Se fliken ”Användning & exempel” för rekommenderade sätt att använda komponenten.
+
+```import live-example reading-width
+FRadioFieldApiExample.vue
+```
+
+## Horisontell placering
+
+Använd `horizontal` när det finns två korta svarsalternativ.
+
+```diff reading-width
+-<f-fieldset name="arbete-annat-land">
++<f-fieldset name="arbete-annat-land" horizontal>
+```
+
+## Utvidgad text
+
+Använd `show-details="always"` när kompletterande information alltid ska visas.
+
+```diff reading-width
+-<f-fieldset name="care-reason">
++<f-fieldset name="care-reason" show-details="always">
+```
+
+## Inramade alternativ med expanderbar text
+
+Använd `border` och `show-details="when-selected"` när kompletterande information ska visas för det valda alternativet.
 
 ```diff reading-width
 -<f-fieldset name="payment-plan">
@@ -99,16 +131,20 @@ Lägg `v-validation.required` på `FFieldset`.
 `FRadioGroup` och `FRadioGroupField` har tagits bort och ersatts av `FFieldset` respektive `FRadioField`.
 Se {@link migrating-to-fieldset migreringsguiden} för information om hur du uppdaterar din kod.
 
-## API
+</div>
 
-### FFieldset
+<div data-docs-view="api" hidden>
+
+## FFieldset
 
 :::api
 vue:FFieldset
 :::
 
-### FRadioField
+## FRadioField
 
 :::api
 vue:FRadioField
 :::
+
+</div>
