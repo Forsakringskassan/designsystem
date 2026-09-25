@@ -32,6 +32,13 @@ export function FCrudDatasetSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FDefinitionListSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    terms(): string;
+    definitions(): string;
+}>;
+
+// @public
 export function FDetailsPanelSelectors(selector?: string): Readonly<{
     readonly selector: string;
     header(): string;
@@ -111,6 +118,18 @@ export function FRadioFieldSelectors(selector?: string): Readonly<{
     input(): string;
     label(): string;
     details(): string;
+}>;
+
+// @public
+export function FSelectFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    select(): string;
+    errorMessage(): string;
+    label(): string;
+    description(): string;
+    selectedOption(): string;
+    options(): string;
+    arrowIcon(): string;
 }>;
 
 // @public
