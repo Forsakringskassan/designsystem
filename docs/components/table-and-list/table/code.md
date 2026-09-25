@@ -653,6 +653,32 @@ translation:ITableSelectable
 
 {@link translate-text Läs mer om textnycklar.}
 
+## Programmatiskt fokus
+
+Du kan programmässigt fokusera och aktivera en specifik cell i tabellen med hjälp av `focusCell`.
+
+```ts
+table.value?.focusCell(rowIndex, cellIndex);
+```
+
+`focusCell` kan till exempel användas för att flytta fokus till en cell med ett valideringsfel efter att en tabell har validerats. Rad- och cellindex kan då hämtas från den cell som har valideringsfelet:
+
+```ts
+const invalidCell = document.querySelector<HTMLTableCellElement>(
+    '[aria-invalid="true"]',
+);
+
+if (!invalidCell) {
+    return;
+}
+
+const row = invalidCell.parentElement as HTMLTableRowElement;
+
+table.value?.focusCell(row.rowIndex, invalidCell.cellIndex);
+```
+
+Funktionen fokuserar och aktiverar den angivna cellen.
+
 ## API
 
 :::api
