@@ -3,6 +3,7 @@ import { assertRef, assertSet } from "@fkui/logic";
 import { getItemIdentifier } from "../../utils";
 import { type FTableApi } from "./f-table-api";
 import { activateCell, getCellTarget } from "./f-table.logic";
+import { focusCell } from "./focus-cell";
 import { type MetaRow } from "./meta-row";
 
 function matching(
@@ -194,5 +195,11 @@ export function useTabstop(
         }
     }
 
-    return { withTabstopBehaviour };
+    return {
+        withTabstopBehaviour,
+        focusCell(rowIndex: number, cellIndex: number) {
+            assertRef(tableRef);
+            focusCell(tableRef.value, rowIndex, cellIndex);
+        },
+    };
 }
