@@ -86,6 +86,12 @@ Positioneringen föredrar:
 * "H" - popup vänster om ankaren linjering i toppen av begränsade ytan.
 * "I" - popup vertikalt och horisontellt centrerad i begränsade ytan.
 
+Standardvärdet `anchor-overlap="allow"` tillåter att popupen använder en placering som överlappar ankaret. Sätt `anchor-overlap="never"` om ankaret alltid ska vara synligt. Då utesluts placeringar som överlappar ankaret, medan ordningen för övriga placeringar är oförändrad.
+
+```html
+<i-popup :anchor="anchor" :is-open="isOpen" anchor-overlap="never"></i-popup>
+```
+
 Ifall ingen av ovanstående positioner fungerar kommer en fallback användas.
 
 - Om `inline` är satt till `never` positioneras popup under ankare utan linjering.
@@ -107,6 +113,8 @@ När popup öppnas som inline kommer den att skrolla så att den är synlig i f�
 
 Popup använder först och främst sin närmaste förälder med klassen `scroll-target` som skrollyta.
 Om popup inte hittar en förälder med `scroll-target` så kommer den istället använda fönstret (`window`).
+
+Med `anchor-overlap="never"` följer en overlay ankaret med samma placering och mellanrum vid skrollning. Placeringen ändras inte medan popupen är öppen, även om delar av den hamnar utanför den synliga ytan. När popupen öppnas nästa gång väljs placeringen på nytt.
 
 ## API
 
