@@ -34,6 +34,15 @@ $fk-logo-large: "fk-logo-primary-large.svg";
     margin-bottom: 0;
 }
 
+.code-preview[data-tags~="reading-width"] {
+    // Match the body text's reading width in docs-generator.
+    max-width: 680px;
+}
+
+.code-preview[data-tags~="solid-background"] .user-background {
+    background: var(--fkds-color-background-primary);
+}
+
 .color-table__color {
     display: inline-block;
     background: var(--value);
@@ -176,4 +185,29 @@ footer {
 
     margin: 0 0.75rem 0 0;
     padding: 0.25rem 0.75rem !important;
+}
+
+#content .docs-view-switcher {
+    display: flex;
+    gap: 1rem;
+    max-width: 680px;
+    margin: 3rem 0 2rem;
+    border-bottom: 1px solid var(--fkds-color-border-primary);
+    padding-bottom: 0.5rem;
+
+    a,
+    a:visited {
+        color: var(--fkds-color-text-primary);
+        text-decoration-color: currentcolor;
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--fkds-color-action-text-primary-default);
+            }
+        }
+
+        &[aria-current="page"] {
+            color: var(--fkds-color-action-text-primary-default);
+        }
+    }
 }
