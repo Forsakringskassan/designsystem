@@ -289,9 +289,11 @@ Skriv så här i kod:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i ett felaktigt datum.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Du har fyllt i ett felaktigt datum.
 
-Felmeddelandet när validatorn för datum `date` är kombinerad med validatorn för obligatoriskt fält `required` är:<br> Välj ett datum.
+Felmeddelandet när validatorn för datum `date` är kombinerad med validatorn för obligatoriskt fält `required` är:  
+Välj ett datum.
 
 ### Datumformat
 
@@ -318,7 +320,8 @@ Skriv så här i kod:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i datumet med åtta siffror.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i datumet med åtta siffror.
 
 ### Inte valbara datum
 
@@ -338,7 +341,8 @@ Skriv så här i kod för att 1 januari 2022, 5 maj 2022 och 20 juni 2022 inte s
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du kan inte välja det här datumet.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Du kan inte välja det här datumet.
 
 ### Inte valbara veckodagar
 
@@ -358,7 +362,8 @@ Skriv så här i kod för att sätta måndagar, tisdagar, onsdagar och torsdagar
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringern inte är godkänd är:<br> Du kan inte välja det här datumet.
+Felmeddelandet till användaren när valideringern inte är godkänd är:  
+Du kan inte välja det här datumet.
 
 ### Maxdatum
 
@@ -383,7 +388,8 @@ Skriv så här i kod när användaren ska välja ett datum fram till och med 30 
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Datumet ligger för långt fram i tiden.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Datumet ligger för långt fram i tiden.
 
 ### Mindatum
 
@@ -408,7 +414,8 @@ Skriv så här i kod när användaren ska välja ett datum från och med 1 janua
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Datumet ligger för långt bak i tiden.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Datumet ligger för långt bak i tiden.
 
 ## Tal och valutabelopp
 
@@ -438,7 +445,8 @@ Skriv så här i kod:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i ett ogiltigt tecken.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Du har fyllt i ett ogiltigt tecken.
 Fyll i siffror.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
@@ -471,7 +479,8 @@ Skriv så här i kod när användaren måste fylla i ett heltal:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i siffror utan decimal.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i siffror utan decimal.
 
 Det finns särskilda felmeddelanden när den här validatorn komponbineras med andra validatorer:
 
@@ -511,7 +520,8 @@ Skriv så här i kod när användaren måste fylla i ett tal med minst en decima
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i ett värde med rätt antal decimaler.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i ett värde med rätt antal decimaler.
 
 ### Maxvärde
 
@@ -542,7 +552,8 @@ Skriv så här i kod när användaren måste fylla i ett tal som inte överstige
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i en för hög siffra.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Du har fyllt i en för hög siffra.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -579,7 +590,8 @@ Skriv så här i kod när användaren ska fylla i ett tal som inte understiger 1
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i en högre siffra.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i en högre siffra.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -616,7 +628,8 @@ Skriv så här i kod när användaren fylla i ett tal som är mindre än 100:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i en för hög siffra.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Du har fyllt i en för hög siffra.
 
 ### Större än
 
@@ -647,7 +660,8 @@ Skriv så här i kod när användaren ska fylla i ett tal som är större än 0.
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i en högre siffra.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i en högre siffra.
 
 ### Procent
 
@@ -674,7 +688,8 @@ Skriv så här i kod när användaren ska fylla i ett tal i procent:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i procent med en siffra.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i procent med en siffra.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -701,7 +716,8 @@ Skriv så här i kod när användaren ska fylla i ett valutabelopp:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i ett belopp.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i ett belopp.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -738,7 +754,8 @@ Skriv så här i kod när användaren ska fylla i organisationsnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -778,7 +795,8 @@ Skriv så här i kod när användaren ska fylla i personnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i personnumret med 10 siffror.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i personnumret med 10 siffror.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -806,7 +824,8 @@ Skriv så här i kod när användaren ska fylla i personnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kolla att personnumret stämmer.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Kolla att personnumret stämmer.
 
 ### Personnummer - inte samma
 
@@ -909,7 +928,8 @@ Skriv så här i kod när användaren ska fylla i mejladress:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Mejladressen är inte rätt ifylld.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Mejladressen är inte rätt ifylld.
 
 ### Postnummer
 
@@ -938,7 +958,8 @@ Skriv så här i kod när användare ska fylla i postnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i postnumret med fem siffror.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i postnumret med fem siffror.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -972,9 +993,11 @@ Skriv så här i kod när användaren ska fylla i telefonnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Telefonnumret är inte rätt ifyllt.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Telefonnumret är inte rätt ifyllt.
 
-Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:<br> Kolla att telefonnumret stämmer.
+Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:  
+Kolla att telefonnumret stämmer.
 
 ## Bank
 
@@ -1005,7 +1028,8 @@ Skriv så här i kod när användaren ska fylla i bankgiro:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i bankgironumret med sju eller åtta siffror och bindestreck.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i bankgironumret med sju eller åtta siffror och bindestreck.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -1039,10 +1063,12 @@ Skriv så här i kod när användaren ska fylla i clearingnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Clearingnumret är inte rätt ifyllt.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Clearingnumret är inte rätt ifyllt.
 Kolla att det stämmer.
 
-Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:<br> Fyll i ett clearingnummer.
+Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:  
+Fyll i ett clearingnummer.
 
 ### Kontonummer
 
@@ -1061,7 +1087,7 @@ Valideringskriterier:
 BankAccountNumberExample.vue
 ```
 
-Skriv så här i kod när användaren ska fylla i kontonummer:<br>
+Skriv så här i kod när användaren ska fylla i kontonummer:
 
 ```diff
  <f-text-field
@@ -1069,10 +1095,12 @@ Skriv så här i kod när användaren ska fylla i kontonummer:<br>
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kontonumret är inte rätt ifyllt.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Kontonumret är inte rätt ifyllt.
 Kolla att det stämmer.
 
-Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:<br> Fyll i ett kontonummer.
+Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:  
+Fyll i ett kontonummer.
 
 ### Plusgiro
 
@@ -1102,7 +1130,8 @@ Skriv så här i kod när användaren ska fylla i plusgiro:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i plusgironumret med siffror och bindestreck.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i plusgironumret med siffror och bindestreck.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 

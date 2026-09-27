@@ -273,7 +273,7 @@ Se {@link FTextField#api Inmatningsfält} för API.
 
 Inmatningsfältet för personnummer har förlåtande inmatning,
 så att användaren kan skriva in personnummer med både 10 eller 12 siffror.
-Det inmatade värdet kommer efter godkänd validering att formateras enligt [<u>Skatteverkets regler</u>](https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html) för personnummer.
+Det inmatade värdet kommer efter godkänd validering att formateras enligt [Skatteverkets regler](https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html) för personnummer.
 Från och med det år personen fyller 100 år ska personnumret skrivas med plustecken istället för bindestreck.
 Inskick till backend innehåller 12 siffror, `ååååmmdd-nnnn`.
 
