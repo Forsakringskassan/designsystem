@@ -17,9 +17,9 @@
         "link-fragments": false, // grammar does not 100% to output from docs-generator
         "link-image-style": false, // no preference
         "no-duplicate-heading": { "siblings_only": true },
+        "no-hard-tabs": { "spaces_per_tab": 4 },
 
         /* technical debt */
-        "no-hard-tabs": false,
         "no-inline-html": false,
         "no-trailing-punctuation": false,
         "single-title": false,

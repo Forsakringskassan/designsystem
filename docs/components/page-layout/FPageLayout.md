@@ -11,9 +11,9 @@ search:
 <!-- to force the examples to a maximum size -->
 <!-- [html-validate-disable-next element-permitted-content -- hack to contain layout component to example wrapper] -->
 <style>
-[data-test=example] .code-preview__preview {
-	container-type: size;
-	aspect-ratio: 16 / 9;
+[data-test="example"] .code-preview__preview {
+    container-type: size;
+    aspect-ratio: 16 / 9;
 }
 </style>
 

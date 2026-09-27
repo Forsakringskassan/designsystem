@@ -34,8 +34,8 @@ Typically `this`.
 
         Must be one of:
 
-    	- `"large"`
-    	- `"fullscreen"
+        - `"large"`
+        - `"fullscreen"
 
     `props` {@optional}
     : Optional props to pass to modal.
