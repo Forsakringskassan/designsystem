@@ -12,13 +12,13 @@ Installera peer dependencies i ditt projekt:
 
 Installera med **Vitest**:
 
-```
+```bash
 npm install --save-dev @fkui/test-utils vitest
 ```
 
 eller med **Jest**:
 
-```
+```bash
 npm install --save-dev @fkui/test-utils jest
 ```
 
