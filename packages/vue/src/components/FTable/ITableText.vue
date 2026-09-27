@@ -58,6 +58,7 @@ let validationFacade: ValidationFacade = {
 };
 
 const hasError = computed(() => validity.value.validityMode === "ERROR");
+/* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
 const viewModeAriaInvalid = computed(() => (!inEdit.value && hasError.value ? true : undefined));
 const viewModeErrorMessage = computed(() =>
     !inEdit.value && hasError.value ? validity.value.validationMessage : undefined,
@@ -326,10 +327,12 @@ function onViewingKeydown(event: KeyboardEvent): void {
         onStartEdit("");
     }
 
-    if (event.key === "Enter") {
-        event.stopPropagation();
-        onStartEdit(fromColumnValue());
+    if (event.key !== "Enter") {
+        return;
     }
+
+    event.stopPropagation();
+    onStartEdit(fromColumnValue());
 }
 
 function onEditingKeydown(event: KeyboardEvent): void {

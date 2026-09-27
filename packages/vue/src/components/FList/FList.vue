@@ -217,11 +217,13 @@ function onSelect(item: T): void {
 function setActiveItem(item: T): void {
     emit("click", item);
 
-    if (!itemEquals(item, activeItem.value, internalKey)) {
-        emit("change", item);
-        activeItem.value = item;
-        emit("update:active", activeItem.value);
+    if (itemEquals(item, activeItem.value, internalKey)) {
+        return;
     }
+
+    emit("change", item);
+    activeItem.value = item;
+    emit("update:active", activeItem.value);
 }
 
 function onItemClick(event: Event, index: number, item: T): void {

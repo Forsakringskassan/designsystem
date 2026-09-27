@@ -180,11 +180,13 @@ export default defineComponent({
                     this.customLabel = false;
                 }
 
-                if (this.isEmail) {
-                    this.tooltipVisible = false;
-                    this.formatDescriptionVisible = false;
-                    this.descriptionVisible = false;
+                if (!this.isEmail) {
+                    return;
                 }
+
+                this.tooltipVisible = false;
+                this.formatDescriptionVisible = false;
+                this.descriptionVisible = false;
             },
         },
     },

@@ -53,18 +53,22 @@ function tillSkarmlasare(): void {
 
 function dragover(e: DragEvent): void {
     e.preventDefault();
-    if (!dragEnterTarget.value) {
-        visadrag.value = true;
-        dragEnterTarget.value = e.currentTarget;
+    if (dragEnterTarget.value) {
+        return;
     }
+
+    visadrag.value = true;
+    dragEnterTarget.value = e.currentTarget;
 }
 
 function dragleave(e: DragEvent): void {
     e.preventDefault();
-    if (dragEnterTarget.value === e.target) {
-        visadrag.value = false;
-        dragEnterTarget.value = null;
+    if (dragEnterTarget.value !== e.target) {
+        return;
     }
+
+    visadrag.value = false;
+    dragEnterTarget.value = null;
 }
 
 function drop(e: DragEvent): void {
@@ -114,12 +118,14 @@ function hanteraFil(filer: FileList): void {
                 return;
             }
 
-            if (harValtFil.value) {
-                filValidering.value = "";
-                EventBus.$emit("UPPLADDAT_DOKUMENT", uppladdatDokument.value);
-                alertScreenReader("Fil är tillagd i ladda upp-dialog");
-                fokusElement("laggTillKnapp");
+            if (!harValtFil.value) {
+                return;
             }
+
+            filValidering.value = "";
+            EventBus.$emit("UPPLADDAT_DOKUMENT", uppladdatDokument.value);
+            alertScreenReader("Fil är tillagd i ladda upp-dialog");
+            fokusElement("laggTillKnapp");
         });
     }
 

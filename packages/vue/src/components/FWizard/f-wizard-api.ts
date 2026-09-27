@@ -125,8 +125,10 @@ export function removeStep(
     key: FWizardKey,
 ): void {
     const index = dst.findIndex((it) => it.key === key);
-    if (index !== -1) {
-        dst.splice(index, 1);
-        reindex(dst);
+    if (index === -1) {
+        return;
     }
+
+    dst.splice(index, 1);
+    reindex(dst);
 }

@@ -27,6 +27,7 @@ export function getMessage(
         );
     }
 
+    /* eslint-disable-next-line unicorn/prefer-early-return -- for consistency with other if-statement */
     if (date.isAfter(maxDate)) {
         const { day, monthName, year } = maxDate;
         return $t(

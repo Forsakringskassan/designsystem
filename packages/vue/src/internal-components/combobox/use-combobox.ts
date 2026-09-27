@@ -170,14 +170,16 @@ export function useCombobox(
     function selectOption(value: string): void {
         selectedOption.value = value;
 
-        if (selectedOption.value) {
-            close();
-            filter.value = selectedOption.value;
-            selectMode.value = true;
+        if (!selectedOption.value) {
+            return;
+        }
 
-            if (onOptionSelected) {
-                onOptionSelected(value);
-            }
+        close();
+        filter.value = selectedOption.value;
+        selectMode.value = true;
+
+        if (onOptionSelected) {
+            onOptionSelected(value);
         }
     }
 
@@ -334,10 +336,12 @@ export function useCombobox(
                 break;
         }
 
-        if (flag) {
-            event.stopPropagation();
-            event.preventDefault();
+        if (!flag) {
+            return;
         }
+
+        event.stopPropagation();
+        event.preventDefault();
     }
 
     function onInputKeyUp(): void {

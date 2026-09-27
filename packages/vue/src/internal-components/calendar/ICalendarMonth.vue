@@ -97,11 +97,12 @@ export default defineComponent({
 
             this.$forceUpdate(); // required for provided data to be updated
             const navigatedDayRef = this.$refs[navigatedDay.toString()];
-
-            if (navigatedDayRef) {
-                const navigatedDayElement = getHTMLElementFromVueRef(navigatedDayRef);
-                focus(navigatedDayElement);
+            if (!navigatedDayRef) {
+                return;
             }
+
+            const navigatedDayElement = getHTMLElementFromVueRef(navigatedDayRef);
+            focus(navigatedDayElement);
         },
         isDayFocused(date: FDate): boolean {
             return document.activeElement === this.$refs[date.toString()];

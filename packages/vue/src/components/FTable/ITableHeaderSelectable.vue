@@ -13,6 +13,7 @@ const emit = defineEmits<{
 }>();
 const $t = useTranslate();
 const indeterminate = computed(() => state === "indeterminate");
+/* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
 const checked = computed(() => (state === "indeterminate" ? false : state));
 const expose: Partial<FTableCellApi> = {};
 const ariaLabel = computed(() => {

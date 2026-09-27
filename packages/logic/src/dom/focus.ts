@@ -87,20 +87,22 @@ export function focus(
     if (typeof options === "boolean") {
         options = { force: options };
     }
-    if (isHTMLElement(element)) {
-        if (options.force && !isFocusable(element)) {
-            element.setAttribute("tabindex", "-1");
-        }
+    if (!isHTMLElement(element)) {
+        return;
+    }
 
-        const { force, scrollToTop, ...params } = options;
+    if (options.force && !isFocusable(element)) {
+        element.setAttribute("tabindex", "-1");
+    }
+
+    const { force, scrollToTop, ...params } = options;
+    element.focus(params);
+    if (scrollToTop) {
+        element.focus({ ...params, preventScroll: true });
+        /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+        scrollTo(element);
+    } else {
         element.focus(params);
-        if (scrollToTop) {
-            element.focus({ ...params, preventScroll: true });
-            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-            scrollTo(element);
-        } else {
-            element.focus(params);
-        }
     }
 }
 
@@ -113,6 +115,7 @@ export function focus(
  * @returns `true` if the element is focusable, otherwise `false`.
  */
 export function isFocusable(element: Element): boolean {
+    /* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
     const visible = element instanceof HTMLElement ? isVisible(element) : false;
     return (
         isTabbable(element) || (visible && element.matches('*[tabindex="-1"]'))
@@ -142,6 +145,7 @@ export function isDisabled(element: Element & { disabled?: boolean }): boolean {
  */
 export function isTabbable(element: Element): boolean {
     const tabindexAttr = element instanceof HTMLElement ? element.tabIndex : 0;
+    /* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
     const visible = element instanceof HTMLElement ? isVisible(element) : false;
 
     return (

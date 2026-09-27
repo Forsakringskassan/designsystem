@@ -234,10 +234,12 @@ export default defineComponent({
 
             const message = detail.validityMode === "INITIAL" ? "" : detail.validationMessage;
 
-            if (message !== this.oldMessage) {
-                this.forceLegendUpdate();
-                this.oldMessage = message;
+            if (message === this.oldMessage) {
+                return;
             }
+
+            this.forceLegendUpdate();
+            this.oldMessage = message;
         },
         /**
          * Workaround for NVDA-bug. Force re rendering of legend element due to NVDA not recognizing innerHTML changes.

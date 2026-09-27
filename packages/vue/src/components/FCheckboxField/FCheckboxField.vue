@@ -145,9 +145,11 @@ export default defineComponent({
                 }
             } else {
                 if (this.value === this.modelValue) {
+                    /* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
                     newModel = typeof this.value === "boolean" ? false : undefined;
                 } else {
                     const target = event.target as HTMLInputElement;
+                    /* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
                     newModel = target.value === "true" ? true : this.value;
                 }
             }

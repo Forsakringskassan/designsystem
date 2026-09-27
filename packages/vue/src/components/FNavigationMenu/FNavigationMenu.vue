@@ -245,10 +245,12 @@ export default defineComponent({
             if (key !== this.selectedItem) {
                 this.selectedItem = key;
             }
-            if (key !== this.route) {
-                this.$emit("update:route", key);
-                this.$emit("selectedRoute", key);
+            if (key === this.route) {
+                return;
             }
+
+            this.$emit("update:route", key);
+            this.$emit("selectedRoute", key);
         },
         /* eslint-disable-next-line @typescript-eslint/require-await -- technical debt */
         async activateItem(index: number): Promise<void> {
