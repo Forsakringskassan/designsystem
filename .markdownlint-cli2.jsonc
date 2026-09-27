@@ -11,6 +11,7 @@
         "extends": "markdownlint/style/prettier",
 
         /* customizations */
+        "code-block-style": false, // should be fenced but interferes with definition lists
         "heading-style": { "style": "atx" },
         "line-length": false,
         "link-fragments": false, // grammar does not 100% to output from docs-generator
@@ -18,7 +19,6 @@
         "no-duplicate-heading": { "siblings_only": true },
 
         /* technical debt */
-        "code-block-style": false,
         "fenced-code-language": false,
         "first-line-heading": false,
         "link-image-reference-definitions": false,

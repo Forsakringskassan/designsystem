@@ -448,7 +448,9 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
 
 Utskrifter från Vue ska hanteras och inte döljas, exempelvis:
 
->     [vue-test-utils]: name is deprecated and will be removed in the next major version.
+> ```plaintext
+> [vue-test-utils]: name is deprecated and will be removed in the next major version.
+> ```
 
 Istället för att dölja meddelandet se till att korrigera din kod.
 

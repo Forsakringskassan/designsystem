@@ -13,7 +13,9 @@ search:
 
 Samling med funktioner och komponenter för Vitest, Jest och Cypress för att underlätta utveckling av automatiska testfall.
 
-    npm install --save-dev @fkui/test-utils
+```bash
+npm install --save-dev @fkui/test-utils
+```
 
 ## Användning
 
