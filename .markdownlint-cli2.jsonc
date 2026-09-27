@@ -1,0 +1,51 @@
+{
+    "gitignore": true,
+    "globs": ["**/*.md"],
+    "ignores": ["**/node_modules/**", "etc/*.api.md", "etc/docs-manifest.md"],
+    "customRules": ["markdownlint-rule-max-one-sentence-per-line"],
+    "config": {
+        /* enable all rules by default */
+        "default": true,
+
+        /* disable rules overlapping with prettier */
+        "extends": "markdownlint/style/prettier",
+
+        /* customizations */
+        "heading-style": { "style": "atx" },
+        "line-length": false,
+        "link-fragments": false, // grammar does not 100% to output from docs-generator
+        "link-image-style": false, // no preference
+        "no-duplicate-heading": { "siblings_only": true },
+
+        /* technical debt */
+        "code-block-style": false,
+        "fenced-code-language": false,
+        "first-line-heading": false,
+        "link-image-reference-definitions": false,
+        "max-one-sentence-per-line": false,
+        "no-bare-urls": false,
+        "no-emphasis-as-heading": false,
+        "no-hard-tabs": false,
+        "no-inline-html": false,
+        "no-trailing-punctuation": false,
+        "single-title": false,
+        "ul-style": false,
+    },
+    "overrides": [
+        {
+            "filter": ["CHANGELOG.md"],
+            "combine": "merge",
+            "config": {
+                "ul-style": false,
+            },
+        },
+        {
+            "filter": ["**/LICENSE.md"],
+            "combine": "merge",
+            "config": {
+                "first-line-heading": false,
+                "max-one-sentence-per-line": false,
+            },
+        },
+    ],
+}

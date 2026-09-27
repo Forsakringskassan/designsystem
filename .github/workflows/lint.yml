@@ -30,6 +30,9 @@ jobs:
             - name: Stylelint
               if: success() || failure()
               run: npm run stylelint -- --max-warnings 0
+            - name: Markdownlint
+              if: success() || failure()
+              run: npm run markdownlint
             - name: pnr-scanner
               if: success() || failure()
               run: |
