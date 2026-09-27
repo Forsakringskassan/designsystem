@@ -31,7 +31,7 @@ FBadgeLiveExample.vue
   Om vi till exempel undviker ordet "handlägga" i en närliggande vy ska det inte användas på en bricka.
 - Undvik upprepningar så att brickan och andra texter runt omkring (rubriker, brödtext) inte säger samma sak.
 
-### Exempel på texter till brickor:
+### Exempel på texter till brickor
 
 - Sekretess
 - Klar

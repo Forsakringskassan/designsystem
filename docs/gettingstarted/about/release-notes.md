@@ -46,7 +46,7 @@ Tabell har nu stöd för att anpassa ikon i kolumntyp kontextmeny.
 
 2026-09-02
 
-### Bidrag från Bolagsverket!
+### Bidrag från Bolagsverket
 
 Bolagsverket använder Försäkringskassans designsystem och har nu bidragit för att få ett ännu bättre designsystem.
 De har förbättrat formulärvalideringen i Shadow DOM som inte fungerade som förväntat, läs mer om {@link FValidationForm Valideringsformulär}.

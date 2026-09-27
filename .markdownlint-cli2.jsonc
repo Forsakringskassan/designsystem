@@ -24,7 +24,6 @@
         "no-hard-tabs": { "spaces_per_tab": 4 },
 
         /* technical debt */
-        "no-trailing-punctuation": false,
         "single-title": false,
         "ul-style": false,
     },
