@@ -158,7 +158,6 @@ Om du använder textnycklar måste texterna ha hämtats ner innan valideringsfel
 
 :::
 
-[getErrorMessages]: ../../logic/functions/getErrorMessages.html
 [TranslationService]: ../../logic/variables/TranslationService.html
 [TranslationProvider]: ../../logic/interfaces/TranslationProviderInterface.html
 [ValidationService]: ../../logic/variables/ValidationService.html
