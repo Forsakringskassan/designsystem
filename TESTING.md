@@ -51,7 +51,7 @@ Svagheten ligger i att testerna är dyra resursmässigt (framförallt långsamma
 
 ### Filnamn och katalogstruktur
 
-```
+```plaintext
 root
 ├─┬ packages
 │ ├─┬ logic
@@ -205,7 +205,7 @@ Om det inte går att minimera storleken på testdata eller den används frekvent
 
 Filerna läggs med fördel i `__fixtures__`:
 
-```
+```plaintext
 MyComponent
 ├─┬ __fixtures__
 │ ├── index.ts

@@ -4,7 +4,7 @@ Toolchain to build an FKUI theme.
 
 ## Usage
 
-```
+```plaintext
 fkui-theme-builder [OPTIONS]
 
 Options:

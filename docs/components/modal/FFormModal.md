@@ -131,7 +131,7 @@ defineComponent({
 
 **Composition API:**
 
-```
+```ts
 import { defineComponent } from "vue";
 
 /* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
@@ -146,9 +146,9 @@ import { useModal } from "@fkui/vue";
 const { formModal } = useModal();
 
 async function onOpen(): Promise<void> {
-	const result = await formModal<Person>(PersonFormModal);
+    const result = await formModal<Person>(PersonFormModal);
 
-	/* do something with result */
+    /* do something with result */
 }
 ```
 
