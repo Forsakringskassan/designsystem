@@ -103,7 +103,8 @@ Utgå från standardtemat och skriv över de variabler som ska ändras.
 
 ## Importera ikonbibliotek
 
-{@link icons Biblioteket för standardikoner} ligger i `@fkui/icon-lib-default`. Det innehåller licensfria ikoner som används av komponenterna i FKUI.
+{@link icons Biblioteket för standardikoner} ligger i `@fkui/icon-lib-default`.
+Det innehåller licensfria ikoner som används av komponenterna i FKUI.
 
 För att använda ikoner i din applikation måste du ladda in det `spritesheet` med ikoner som du vill använda.
 Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.
@@ -118,7 +119,8 @@ För att använda ett annat ikon-bibliotek ersätt `@fkui/icon-lib-default` med 
 
 Spritesheets kommer automatiskt laddas in i DOM:en.
 
-Om du vill ha tillgång till `injectSpritesheet`-funktionen kan du anropa den själv. Importera den genom:
+Om du vill ha tillgång till `injectSpritesheet`-funktionen kan du anropa den själv.
+Importera den genom:
 
 ```javascript
 import { injectSpritesheet } from "@fkui/icon-lib-default/dist/f/injectSpritesheet";
@@ -126,6 +128,7 @@ import { injectSpritesheet } from "@fkui/icon-lib-default/dist/f/injectSpriteshe
 injectSpritesheet();
 ```
 
-Om du behöver andra ikoner utöver de standardikoner som finns kan du ändra på befintliga ikoner eller lägga till nya. Du bygger då ett nytt ikonbibliotek.
+Om du behöver andra ikoner utöver de standardikoner som finns kan du ändra på befintliga ikoner eller lägga till nya.
+Du bygger då ett nytt ikonbibliotek.
 
 {@link icon-library#skapa-eget-ikonbibliotek Läs mer här om hur du tar fram egna ikoner.}

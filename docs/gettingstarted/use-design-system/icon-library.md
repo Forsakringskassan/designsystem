@@ -9,7 +9,8 @@ search:
         - icon-lib-builder
 ---
 
-Om du behöver andra ikoner utöver de standardikoner som finns kan du ändra på befintliga ikoner eller lägga till nya. Du bygger då ett nytt ikonbibliotek.
+Om du behöver andra ikoner utöver de standardikoner som finns kan du ändra på befintliga ikoner eller lägga till nya.
+Du bygger då ett nytt ikonbibliotek.
 
 ## Skapa eget ikonbibliotek
 

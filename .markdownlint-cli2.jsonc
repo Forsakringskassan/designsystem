@@ -19,7 +19,6 @@
         "no-duplicate-heading": { "siblings_only": true },
 
         /* technical debt */
-        "max-one-sentence-per-line": false,
         "no-bare-urls": false,
         "no-emphasis-as-heading": false,
         "no-hard-tabs": false,

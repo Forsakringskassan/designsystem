@@ -51,7 +51,8 @@ Tabell har nu stöd för att anpassa ikon i kolumntyp kontextmeny.
 Bolagsverket använder Försäkringskassans designsystem och har nu bidragit för att få ett ännu bättre designsystem.
 De har förbättrat formulärvalideringen i Shadow DOM som inte fungerade som förväntat, läs mer om {@link FValidationForm Valideringsformulär}.
 
-En fix för `FButton` är också värd att nämna. När `FButton` används tillsammans med `FValidationForm` så kommer den vid submit automatiskt in i asynkront läge.
+En fix för `FButton` är också värd att nämna.
+När `FButton` används tillsammans med `FValidationForm` så kommer den vid submit automatiskt in i asynkront läge.
 
 Övriga rättningar och förbättringar i releasen, se {@link changelog Changelog}.
 
@@ -82,7 +83,9 @@ Läs mer {@link FormatPlugin#datumintervall Format Plugin}
 
 ### Ändringar för knapp (FButton)
 
-Knapp har ändrats till att göra props `size` och `variant` obligatoriska. Det gör att det blir enklare och tydligare att se vilken storlek/variant som är vald. Läs mer om obligatoriska fält för API Props {@link button#api API Props för knapp}.
+Knapp har ändrats till att göra props `size` och `variant` obligatoriska.
+Det gör att det blir enklare och tydligare att se vilken storlek/variant som är vald.
+Läs mer om obligatoriska fält för API Props {@link button#api API Props för knapp}.
 
 Buggfixar, se {@link changelog Changelog}
 
@@ -123,13 +126,15 @@ Vanligtvis sker detta tidigast ett år efter deprekering.
 Vi har ändrat beteendet för datamängdsorteraren från aktiv till lat.
 Om innehållet i en sorterad lista/tabell redigeras (exempelvis att användaren redigerar en rad) uppdateras inte sorteringsordningen i listan/tabellen.
 Användaren behöver aktivt sortera om listan/tabellen.
-Nya rader läggs till sist oavsett sorteringsordning. Användaren behöver även här aktivt sortera om listan/tabellen.
+Nya rader läggs till sist oavsett sorteringsordning.
+Användaren behöver även här aktivt sortera om listan/tabellen.
 
 ## Version 6.40.0
 
 2026-03-26
 
-Releasen innehåller många fixar och buggrättningar. Här är några viktiga nyheter:
+Releasen innehåller många fixar och buggrättningar.
+Här är några viktiga nyheter:
 
 - Vi introducerar definitionslista (FDefinitionList), en ny komponent för kompaktare datapresentation.
 
@@ -142,7 +147,8 @@ Buggfixar finns listade i {@link changelog Changelog}
 
 2026-03-04
 
-Vi har förbättrat textnyckelhanteringen så att det är möjligt att fånga upp saknade textnycklar. Läs mer {@link translate-text#strikt_typning_av_textnycklar Anpassa och översätt text}.  
+Vi har förbättrat textnyckelhanteringen så att det är möjligt att fånga upp saknade textnycklar.
+Läs mer {@link translate-text#strikt_typning_av_textnycklar Anpassa och översätt text}.  
 Klassen `icon--stack` har deprekerats och ersatts av `icon-stack`.
 
 Buggfixar, se {@link changelog Changelog}
@@ -373,7 +379,8 @@ Använd slotten #buttons för att lägga till egna anpassade lägg-till knappar.
 
 Release innehåller följande uppdateringar:
 
-- Nytt paket `@fkui/tsconfig` med rekommenderad konfiguration för TypeScript och FKUI. Läs mer om {@link tsconfig}.
+- Nytt paket `@fkui/tsconfig` med rekommenderad konfiguration för TypeScript och FKUI.
+  Läs mer om {@link tsconfig}.
 - Inmatningsfält (FTextField) hanterar `null` som modellvärde.
 - Ändringar i {@link FPageLayout} och relaterade komponenter (fortfarande i beta).
 - Flera buggar är rättade.
@@ -425,7 +432,10 @@ Releasen innehåller bland annat följande uppdateringar:
 
 ### Kombobox
 
-Komboboxen kombinerar ett textfält med en lista som har förbestämda alternativ. Listan filtreras för att matcha det som skrivs in i textfältet och presenterar förslag. För användaren innebär detta ett smidigare sätt att göra ett val bland ett stort antal alternativ i stället för att behöva skrolla i en lång dropplista. Komboboxen kan också användas i de fall då användaren både ska kunna skriva en godtycklig fritext eller välja i en lista med förbestämda förslag.
+Komboboxen kombinerar ett textfält med en lista som har förbestämda alternativ.
+Listan filtreras för att matcha det som skrivs in i textfältet och presenterar förslag.
+För användaren innebär detta ett smidigare sätt att göra ett val bland ett stort antal alternativ i stället för att behöva skrolla i en lång dropplista.
+Komboboxen kan också användas i de fall då användaren både ska kunna skriva en godtycklig fritext eller välja i en lista med förbestämda förslag.
 
 {@link combobox Läs mer om kombobox}
 
@@ -435,11 +445,19 @@ Komboboxen kombinerar ett textfält med en lista som har förbestämda alternati
 
 ### Densitet
 
-Densitet styr hur många komponenter och hur mycket information som får plats på skärmen utan att användaren behöver skrolla. Höjden är frikopplad från fontstorlek och rem. Densitet påverkar en komponents höjd samt avståndet mellan komponenter. Hög densitet ger en kompakt layout för applikationer som behöver presentera mycket information som användaren måste kunna överblicka. Till exempel handläggningsstöd.
+Densitet styr hur många komponenter och hur mycket information som får plats på skärmen utan att användaren behöver skrolla.
+Höjden är frikopplad från fontstorlek och rem.
+Densitet påverkar en komponents höjd samt avståndet mellan komponenter.
+Hög densitet ger en kompakt layout för applikationer som behöver presentera mycket information som användaren måste kunna överblicka.
+Till exempel handläggningsstöd.
 
-Densitet är en viktig pusselbit i vår strävan att leverera ett designsystem med bara ett tema. Temat ska följa Försäkringskassans visuella identitet och ska kunna användas för alla typer av applikationer på Försäkringskassan. Oavsett om applikationen riktar sig till medborgare, arbetsgivare eller är ett internt IT-stöd. Vi vill kunna stödja allt från e-tjänster för självbetjäning till handläggningsstöd med samma tema.
+Densitet är en viktig pusselbit i vår strävan att leverera ett designsystem med bara ett tema.
+Temat ska följa Försäkringskassans visuella identitet och ska kunna användas för alla typer av applikationer på Försäkringskassan.
+Oavsett om applikationen riktar sig till medborgare, arbetsgivare eller är ett internt IT-stöd.
+Vi vill kunna stödja allt från e-tjänster för självbetjäning till handläggningsstöd med samma tema.
 
-Det ska tilläggas att webbapplikationer som körs i Hapo kommer att fortsätta följa Hapos färger. Därför behåller vi det temat i designsystemet, men har döpt om det till FK Hapo.
+Det ska tilläggas att webbapplikationer som körs i Hapo kommer att fortsätta följa Hapos färger.
+Därför behåller vi det temat i designsystemet, men har döpt om det till FK Hapo.
 
 {@link density Läs mer om densitet}
 
@@ -449,13 +467,17 @@ Det ska tilläggas att webbapplikationer som körs i Hapo kommer att fortsätta 
 
 ### Inmatning i tabellceller
 
-Inmatningsfält kan placeras i en tabell för att direkt kunna redigera värdet i cellen. Fältens standardetikett är visuellt dolda och ersätts av tabellrubriken för en seende användare men läsas upp som vanligt av skärmläsare. Vid fältvalidering visas felmeddelande i en tooltip när fältet har fokus. Utöver inmatningsfält har datumväljare och dropplista stöd för att användas i tabell.
+Inmatningsfält kan placeras i en tabell för att direkt kunna redigera värdet i cellen.
+Fältens standardetikett är visuellt dolda och ersätts av tabellrubriken för en seende användare men läsas upp som vanligt av skärmläsare.
+Vid fältvalidering visas felmeddelande i en tooltip när fältet har fokus.
+Utöver inmatningsfält har datumväljare och dropplista stöd för att användas i tabell.
 
 {@link table#inmatning_i_tabell Läs mer om inmatning i tabell }
 
 ### Internt tema byter namn
 
-Det interna temat byter i dokumentationen namn till FK Hapo. Detta är ett steg mot att framöver lägga till stöd för att kunna bygga desktopanpassade applikationer med samma tema för hela Försäkringskassan.
+Det interna temat byter i dokumentationen namn till FK Hapo.
+Detta är ett steg mot att framöver lägga till stöd för att kunna bygga desktopanpassade applikationer med samma tema för hela Försäkringskassan.
 
 ## Version 5.17.0
 
@@ -483,14 +505,21 @@ Det interna temat byter i dokumentationen namn till FK Hapo. Detta är ett steg 
 
 ### Validering och visning av status
 
-Ett obligatoriskt inmatningsfält som lämnas tomt när användaren tabbar förbi fältet visas inte längre som felaktigt. Istället visas de som felaktiga först när användaren
+Ett obligatoriskt inmatningsfält som lämnas tomt när användaren tabbar förbi fältet visas inte längre som felaktigt.
+Istället visas de som felaktiga först när användaren
 försöker skicka in formuläret.
-Det här underlättar främst för skärmläsaranvändare som ofta tabbar igenom formulär för att skapa sig en överblick innan de börjar fylla i information. De användarna slipper alltså att få fel presenterade för sig när de shift-tabbar tillbaka till första fältet igen.
-Det här är en ändring som följer Arbetsförmedlingens designmönster. Eftersom vi dessutom strävar efter att bara be om information som vi verkligen behöver och därmed bara använder frivilliga fält i undantagsfall känns ändringen än mer motiverad. Oberoende av om användaren har en skärmläsare eller inte.
+Det här underlättar främst för skärmläsaranvändare som ofta tabbar igenom formulär för att skapa sig en överblick innan de börjar fylla i information.
+De användarna slipper alltså att få fel presenterade för sig när de shift-tabbar tillbaka till första fältet igen.
+Det här är en ändring som följer Arbetsförmedlingens designmönster.
+Eftersom vi dessutom strävar efter att bara be om information som vi verkligen behöver och därmed bara använder frivilliga fält i undantagsfall känns ändringen än mer motiverad.
+Oberoende av om användaren har en skärmläsare eller inte.
 En användare som väljer att klicka sig igenom ett formulär och fylla i uppgifterna i en annan ordning än den de presenteras kommer inte heller att få en massa fel presenterade för sig.
 
-Som ytterligare en del i att förenkla och linjera med vanliga mönster (bl.a. Arbetsförmedlingen) visar vi inte fält med grön markering. Vi vill inte belasta användaren med onödig information.
-Istället förblir ett ifyllt fält neutralt när det är ifyllt. Notera att det är så som dropplistor redan beter sig.
+Som ytterligare en del i att förenkla och linjera med vanliga mönster (bl.a.
+Arbetsförmedlingen) visar vi inte fält med grön markering.
+Vi vill inte belasta användaren med onödig information.
+Istället förblir ett ifyllt fält neutralt när det är ifyllt.
+Notera att det är så som dropplistor redan beter sig.
 Innan den här ändringen visades inmatningsfält som OK när uppgifterna som användaren matade in uppfyllde formatregler eller när ett fält utan formatregler helt enkelt bara
 blev ifyllt (t.ex. ett fält för att ange ett namn).
 
@@ -500,7 +529,10 @@ blev ifyllt (t.ex. ett fält för att ange ett namn).
 
 ### Förlåtande personnummer
 
-Det {@link textfield-specialized#personnummer specialiserade inmatningsfältet för personnummer} har uppdaterats med förlåtande inmatning. Användaren kan skriva in personnummer med både 10 siffror eller 12 siffror. Det inmatade värdet kommer efter godkänd validering att formateras enligt [Skatteverkets regler](https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html) för personnummer. Från och med det år en person fyller 100 år har personnumret plustecken istället för bindestreck.
+Det {@link textfield-specialized#personnummer specialiserade inmatningsfältet för personnummer} har uppdaterats med förlåtande inmatning.
+Användaren kan skriva in personnummer med både 10 siffror eller 12 siffror.
+Det inmatade värdet kommer efter godkänd validering att formateras enligt [Skatteverkets regler](https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html) för personnummer.
+Från och med det år en person fyller 100 år har personnumret plustecken istället för bindestreck.
 
 ## Version 5.0.0
 

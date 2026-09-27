@@ -83,7 +83,8 @@ Applikationsmallen läggs typiskt till i `App.vue` och man låter `<router-view>
 ## Vänsteryta
 
 Vänsterytan `FLayoutLeftPanel` placeras till vänster om den primära ytan -- här kan t ex länkar för navigering till undersidor i applikationen placeras.
-Den kan också användas för att visa sökalternativ då sökresultat listas i den primära ytan. Gemensamt för funktionaliteten som placeras i vänsterytan är att den påverkar vad som visas i den primära ytan.
+Den kan också användas för att visa sökalternativ då sökresultat listas i den primära ytan.
+Gemensamt för funktionaliteten som placeras i vänsterytan är att den påverkar vad som visas i den primära ytan.
 
 Vänsterytan kan minimeras genom att klicka på pilarna längst upp till höger, i minimerat läge visas ytan som en tunn list som kan expanderas genom att klicka på menysymbolen.
 

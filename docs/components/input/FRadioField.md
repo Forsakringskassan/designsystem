@@ -13,7 +13,8 @@ Använd radioknappar för att låta en användare välja ett alternativ i en lis
 FRadioFieldLiveExample.vue
 ```
 
-Saknar du `FRadioGroup`-komponenten? Den är deprekerad, för detaljer se {@link migrating-to-fieldset migreringsguide }.
+Saknar du `FRadioGroup`-komponenten?
+Den är deprekerad, för detaljer se {@link migrating-to-fieldset migreringsguide }.
 
 ## Radioknappar vs Dropplista
 

@@ -635,7 +635,8 @@ Om ett fel uppstår vid hämtning av tabellens data kan du se till att ett felme
 
 ## Textnycklar
 
-Det finns en slot `empty` för att ange eget innehåll när tabell är tom. Anges inte denna så används istället en textnyckel.
+Det finns en slot `empty` för att ange eget innehåll när tabell är tom.
+Anges inte denna så används istället en textnyckel.
 
 :::api
 translation:FTable

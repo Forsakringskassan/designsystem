@@ -8,7 +8,8 @@ search:
         - tangentbordsnavigering
 ---
 
-I tabellen navigerar användaren med hjälp av piltangenterna. Pilningen är inte cirkulär.
+I tabellen navigerar användaren med hjälp av piltangenterna.
+Pilningen är inte cirkulär.
 Om en cell innehåller ett interagerbart objekt som exempelvis inmatningsfält eller dropplista kommer objektet få fokus direkt.
 Användaren tar sig till och från tabellen med hjälp av tabbning.
 Om användaren tabbar sig ur tabellen och sedan tabbar tillbaka med hjälp av shift + tab hamnar fokus på senast besökta cell.

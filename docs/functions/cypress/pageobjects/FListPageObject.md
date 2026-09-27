@@ -29,7 +29,8 @@ new FListPageObject(selector);
 #### Parametrar
 
 `selector: string` {@optional}
-: Selector till `FList` elementet. Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
+: Selector till `FList` elementet.
+Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
 
 ## listItems()
 

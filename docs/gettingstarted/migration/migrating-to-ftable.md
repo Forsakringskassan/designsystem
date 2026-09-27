@@ -32,7 +32,8 @@ Läs mer i dokumentationen om {@link column-type-menu kontextmeny}.
 
 Om tabellen innehåller mer komplext innehåll än vad de inbyggda kolumntyperna stödjer går det inte alltid att migrera rakt av.
 
-Kontakta i första hand teamet för att reda ut om scenariot bör stödjas av `FTable` eller om det är ett rimligt specialfall. Vi nås på <designsystem@forsakringskassan.se>.
+Kontakta i första hand teamet för att reda ut om scenariot bör stödjas av `FTable` eller om det är ett rimligt specialfall.
+Vi nås på <designsystem@forsakringskassan.se>.
 
 ## Kolumner flyttas från template till konfiguration
 
@@ -116,7 +117,8 @@ const columns = defineTableColumns<Row>([
 
 Om kolumnen bara ska läsa och skriva direkt mot ett fält på raden räcker `key`.
 Till exempel innebär `key: "name"` att kolumnen läser från och skriver till `row.name`.
-`key` är standardfallet. Om kolumnen bygger på ett fält i raden är `key` normalt det tydligaste valet, även när du senare behöver komplettera med annan logik.
+`key` är standardfallet.
+Om kolumnen bygger på ett fält i raden är `key` normalt det tydligaste valet, även när du senare behöver komplettera med annan logik.
 Om du behöver styra läsning eller skrivning på ett annat sätt finns det stöd för det i `FTable`.
 
 Läs mer i dokumentationen om {@link code#mappa_data_till_kolumner Mappa data till kolumner}.
@@ -352,7 +354,8 @@ Läs mer i dokumentationen om {@link select-rows valbara rader}.
 +}
 ```
 
-I `FTable` går det inte längre att ha flera knappar i samma kolumn. Det är ett design och tillgänglighetsval.
+I `FTable` går det inte längre att ha flera knappar i samma kolumn.
+Det är ett design och tillgänglighetsval.
 
 Om du tidigare hade flera actions i samma kolumn behöver du istället:
 

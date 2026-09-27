@@ -40,7 +40,8 @@ Som standard när laddningsindikatorn visas så informeras skärmläsaranvändar
 Om `overlay` används så sätts istället fokus på laddningsindikatorns text,
 för att sedan flyttas tillbaka till föregående element när den stängs.
 
-Om man inte vill att fokus ska flyttas till laddningsindikatorns text vid `overlay` kan man sätta egenskapen `focusOnOverlay` till `false`. Då informeras skärmläsaranvändare med hjälp av `role="alert"` även vid `overlay`.
+Om man inte vill att fokus ska flyttas till laddningsindikatorns text vid `overlay` kan man sätta egenskapen `focusOnOverlay` till `false`.
+Då informeras skärmläsaranvändare med hjälp av `role="alert"` även vid `overlay`.
 
 ```diff
 -<f-loader overlay> </f-loader>

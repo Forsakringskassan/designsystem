@@ -38,7 +38,8 @@ Inmatningsfältet använder inte [inputmode](https://developer.mozilla.org/en-US
 
 ### Månad som visas när inget datum är valt
 
-Använd initialMonth för att bestämma vilken månad som ska visas när inget datum är valt. Närmst efterföljande månad med valbara datum visas om du
+Använd initialMonth för att bestämma vilken månad som ska visas när inget datum är valt.
+Närmst efterföljande månad med valbara datum visas om du
 har valt en månad som inte har några valbara datum.
 
 ```diff
@@ -77,7 +78,8 @@ Det går att styra vilka dagar som är valbara genom att:
 - Ange enskilda datum som inte är valbara
 - Ange veckodagar som inte är valbara.
 
-Som standard är datumväljaren begränsad till att bara tillåta val av datum 10 år tillbaka och framåt i tiden. Alla veckodagar och datum är valbara som standard.
+Som standard är datumväljaren begränsad till att bara tillåta val av datum 10 år tillbaka och framåt i tiden.
+Alla veckodagar och datum är valbara som standard.
 
 Validatorer används för att sätta begränsningar av valbara dagar.
 
@@ -113,7 +115,8 @@ Validatorer används för att sätta begränsningar av valbara dagar.
 
 ## Bredd på inmatningsfält och etikett
 
-För att få plats med en längre text i etiketten går det att ha olika bredder på kalenderns etikett och inmatningsfält. Bredden för inmatningsfältet och etiketten anges i antal kolumner vid en viss skärmbredd.
+För att få plats med en längre text i etiketten går det att ha olika bredder på kalenderns etikett och inmatningsfält.
+Bredden för inmatningsfältet och etiketten anges i antal kolumner vid en viss skärmbredd.
 
 ```diff
  <f-datepicker-field

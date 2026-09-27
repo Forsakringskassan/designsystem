@@ -5,7 +5,8 @@ layout: component
 component: FExpandablePanel
 ---
 
-Använd en expanderbar panel för att gruppera information och formulärskomponenter. Med en expanderbar panel kan mängden information som visas vid en första anblick minskas.
+Använd en expanderbar panel för att gruppera information och formulärskomponenter.
+Med en expanderbar panel kan mängden information som visas vid en första anblick minskas.
 
 ```import test-id=example
 FExpandablePanelExample.vue

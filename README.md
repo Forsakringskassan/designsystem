@@ -32,7 +32,8 @@ It is composed of the component framework along with related design documentatio
 We aim for all components to fulfill WCAG 2.2 AA (or higher) and the EU accessibility directive (EN301549).
 All components are tested both manually and with automated tools on a large range of devices.
 
-The component framework was initially released internally in October 2019. It has been continuously evolved since then with more components added.
+The component framework was initially released internally in October 2019.
+It has been continuously evolved since then with more components added.
 
 ## Getting started
 

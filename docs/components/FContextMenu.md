@@ -11,7 +11,8 @@ search:
 En kontextmeny presenterar en popup-ruta med funktioner kopplade till ett objekt, till exempel en lista eller tabellrad.
 
 Använd en kontextmeny för att presentera flera åtgärder som hör ihop när det inte finns plats eller
-är önskvärt att visa alla funktioner direkt. Kontextmenyn aktiveras alltid med en knapp som har `aria-haspopup="menu"`.
+är önskvärt att visa alla funktioner direkt.
+Kontextmenyn aktiveras alltid med en knapp som har `aria-haspopup="menu"`.
 
 Placera bara funktioner som används sällan i en kontextmeny.
 

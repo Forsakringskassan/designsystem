@@ -380,7 +380,8 @@ Om din it.each behöver en description parameter bryt istället ut till en egen 
 
 ### Undvik `attachToDocument` och `attachTo`
 
-Om man inte måste! Testar man focus så måste man ha `attachTo`
+Om man inte måste!
+Testar man focus så måste man ha `attachTo`
 
 Motivering: genom att inte attacha till `body` så behöver vi inte lika mycket uppstädning mellan testfall
 
@@ -489,7 +490,8 @@ Undvik `console.log = vi.fn()` då det gör det svårare att återställa mellan
 
 ### Vi skriver Cypress test för varje körbart exempel
 
-Vi implementerar ett E2E‑test för varje exempel för att säkerställa att det laddas korrekt. Dessutom skall enkla komponenttester implementeras för att validera de grundläggande funktionerna.
+Vi implementerar ett E2E‑test för varje exempel för att säkerställa att det laddas korrekt.
+Dessutom skall enkla komponenttester implementeras för att validera de grundläggande funktionerna.
 
 Motivering: då exempel är en del av det vi levererar till konsumenter vill vi att de alltid ska vara i ett fungerande skick och inte utdaterade.
 

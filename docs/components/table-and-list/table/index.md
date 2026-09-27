@@ -53,7 +53,8 @@ Ett alternativ är komponenten {@link FList lista.}
 Om du ändå använder tabeller på mobila enheter finns det några saker att tänka på:
 
 - Gör en innehållsanalys, går det att minska ner informationen som användaren ser?
-- Anpassa tabellens bredd och antal kolumner efter enhetens skärmstorlek. Undvik horisontell scrollning så långt det är möjligt.
+- Anpassa tabellens bredd och antal kolumner efter enhetens skärmstorlek.
+  Undvik horisontell scrollning så långt det är möjligt.
 - Undvik för många rader i tabellen.
 - Använd inte redigerbar tabell på mobila enheter. {@link edit Läs mer om redigerbar tabell.}
 

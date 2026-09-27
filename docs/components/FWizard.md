@@ -17,7 +17,8 @@ Steg för steg-guide används för att dela upp en uppgift i några få steg som
 FWizardExampleDefault.vue
 ```
 
-Använd steg för steg för att dela upp en större uppgift som användaren ska utföra. Då kan användaren fokusera på en sak i taget istället för att bli överöst med information och val.
+Använd steg för steg för att dela upp en större uppgift som användaren ska utföra.
+Då kan användaren fokusera på en sak i taget istället för att bli överöst med information och val.
 
 - Använd så få steg som möjligt, helst inte fler än 5 eller 6.
 - Ett steg ska innehålla en eller några få enkla val eller kortfattad information.
@@ -27,7 +28,9 @@ Använd steg för steg för att dela upp en större uppgift som användaren ska 
 
 ## Stegens storlek och omfattning
 
-Ett steg ska innehålla en eller några få enkla val eller kortfattad information. Fokusera på en huvudfråga eller ett tydligt område. Ett steg bör ha en kort och konkret rubrik.
+Ett steg ska innehålla en eller några få enkla val eller kortfattad information.
+Fokusera på en huvudfråga eller ett tydligt område.
+Ett steg bör ha en kort och konkret rubrik.
 
 Innehåll och frågor som inte passar under en och samma rubrik ska inte placeras i samma steg. Om innehållet i ett steg behöver delas upp med underrubriker bör du antagligen dela upp steget i flera steg.
 
@@ -46,7 +49,8 @@ Innehåll och frågor som inte passar under en och samma rubrik ska inte placera
 - Ska ge användaren en snabb översikt över det enskilda steget och även en tydlig översikt över flödet.
 - Ska vara så kortfattade som möjligt.
 - Bör bestå av konkreta substantiv som till exempel Dagar, Bostad, Sjukdom och symtom.
-- ”Kompletterande uppgifter” och ”Övrigt” ska undvikas. Om det är svårt att skriva en lämplig rubrik på grund av att innehållet spretar bör du se över indelningen i steg.
+- ”Kompletterande uppgifter” och ”Övrigt” ska undvikas.
+  Om det är svårt att skriva en lämplig rubrik på grund av att innehållet spretar bör du se över indelningen i steg.
 
 ### Knapptexter
 

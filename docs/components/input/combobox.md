@@ -7,7 +7,9 @@ component: FTextField
 
 Använd en kombobox när användaren behöver välja från ett stort antal alternativ, eller i de fall då användaren både ska kunna välja från förbestämda förslag eller skriva en egen text.
 
-Komboboxen kombinerar ett textfält med en lista med förbestämda alternativ. Listan filtreras för att matcha inmatningen i textfältet. Den kan antingen sättas att tillåta fritext eller kräva att användaren väljer ett alternativ från listan.
+Komboboxen kombinerar ett textfält med en lista med förbestämda alternativ.
+Listan filtreras för att matcha inmatningen i textfältet.
+Den kan antingen sättas att tillåta fritext eller kräva att användaren väljer ett alternativ från listan.
 
 ## Exempel
 

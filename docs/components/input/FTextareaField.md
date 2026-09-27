@@ -51,8 +51,10 @@ Du kan styra höjden på tre sätt:
 - Justerbar höjd: användaren kan själv ändra fältets höjd.
 - Automatisk höjd: fältet anpassar antalet synliga rader efter innehållet.
 
-Fast höjd är standard. Anpassa antalet rader utifrån fältets bredd och hur mycket text användaren kan tänkas skriva.
-Det är sällan lämpligt att sätta antalet rader utifrån maximalt antal tillåtna tecken. Om inmatningsfältet visar många rader får användaren dålig överblick om inmatningsfältet är placerat i ett formulär eller tillsammans med annat innehåll.
+Fast höjd är standard.
+Anpassa antalet rader utifrån fältets bredd och hur mycket text användaren kan tänkas skriva.
+Det är sällan lämpligt att sätta antalet rader utifrån maximalt antal tillåtna tecken.
+Om inmatningsfältet visar många rader får användaren dålig överblick om inmatningsfältet är placerat i ett formulär eller tillsammans med annat innehåll.
 
 Du anger antalet rader med attributet [`rows`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#rows).
 Fyra rader visas som standard om du inte anger något annat.
@@ -90,7 +92,8 @@ Du aktiverar automatisk höjd med attributet `auto-resize`.
  >
 ```
 
-Med `auto-resize` visas fyra rader som standard, precis som vid fast höjd. Använd `rows` för att ange ett annat minsta antal rader.
+Med `auto-resize` visas fyra rader som standard, precis som vid fast höjd.
+Använd `rows` för att ange ett annat minsta antal rader.
 
 ```diff
  <f-textarea-field
@@ -101,7 +104,8 @@ Med `auto-resize` visas fyra rader som standard, precis som vid fast höjd. Anv�
 
 Använd `max-rows` för att ange max antal rader som fältet får visa.
 När texten inte ryms inom max antal rader kan användaren skrolla i fältet.
-Attributet `rows` anger alltid minsta antal rader. Om `max-rows` är lägre än `rows` visar komponenten ändå antalet rader från `rows`.
+Attributet `rows` anger alltid minsta antal rader.
+Om `max-rows` är lägre än `rows` visar komponenten ändå antalet rader från `rows`.
 
 ```diff
  <f-textarea-field
@@ -110,7 +114,8 @@ Attributet `rows` anger alltid minsta antal rader. Om `max-rows` är lägre än 
  >
 ```
 
-Kombinera inte `auto-resize` och `resizable`. Om du ändå anger båda använder komponenten automatisk höjd.
+Kombinera inte `auto-resize` och `resizable`.
+Om du ändå anger båda använder komponenten automatisk höjd.
 
 ## API
 
