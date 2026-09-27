@@ -49,11 +49,12 @@ function removeNestedRows<T>(
 ): void {
     for (const currentRow of dataset) {
         const nestedRows = currentRow[nestedAttribute];
-        if (Array.isArray(nestedRows)) {
-            const index = nestedRows.indexOf(row);
-            if (index !== -1) {
-                nestedRows.splice(index, 1);
-            }
+        if (!Array.isArray(nestedRows)) {
+            continue;
+        }
+        const index = nestedRows.indexOf(row);
+        if (index !== -1) {
+            nestedRows.splice(index, 1);
         }
     }
 }

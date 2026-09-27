@@ -20,12 +20,13 @@ export default defineComponent({
     methods: {
         async onToggleDisable() {
             await this.$nextTick();
-            if (this.isDisabled) {
-                const wrapper = getElementFromVueRef(this.$refs.inputField);
-                const input = wrapper.querySelector("input");
-                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-                ValidationService.validateElement(input);
+            if (!this.isDisabled) {
+                return;
             }
+            const wrapper = getElementFromVueRef(this.$refs.inputField);
+            const input = wrapper.querySelector("input");
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+            ValidationService.validateElement(input);
         },
     },
 });

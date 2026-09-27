@@ -9,6 +9,7 @@ function isRelevantElement(input: Element): input is HTMLInputElement {
 
 function validateFieldset(fieldset: HTMLFieldSetElement): boolean {
     const inputs = Array.from(fieldset.elements).filter(isRelevantElement);
+    /* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
     return inputs.length > 0 ? inputs.some((input) => input.checked) : true;
 }
 

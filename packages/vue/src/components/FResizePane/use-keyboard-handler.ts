@@ -62,9 +62,11 @@ export function useKeyboardHandler(options: UseKeyboardHandlerOptions): void {
             return;
         }
         const action = keymap[attachment.value][event.key];
-        if (action) {
-            event.preventDefault();
-            options[action]();
+        if (!action) {
+            return;
         }
+
+        event.preventDefault();
+        options[action]();
     });
 }

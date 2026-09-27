@@ -236,13 +236,15 @@ export default defineComponent({
             const component = getHTMLElementFromVueRef(this.$refs.component);
             const relatedTarget = e.relatedTarget as Node;
 
-            if (!component.contains(relatedTarget)) {
-                this.componentTouched = true;
-                const inputElement = getInputElement(this);
-                ValidationService.setTouched(inputElement);
-                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-                ValidationService.validateElement(inputElement);
+            if (component.contains(relatedTarget)) {
+                return;
             }
+
+            this.componentTouched = true;
+            const inputElement = getInputElement(this);
+            ValidationService.setTouched(inputElement);
+            /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+            ValidationService.validateElement(inputElement);
         },
         async onSelectCalendarDay(date: FDate): Promise<void> {
             // Consider component touched when a date is selected.
@@ -298,14 +300,16 @@ export default defineComponent({
                 this.minDate = FDate.fromIso(minDateConfig.limit);
             }
 
-            if (this.validationConfig.maxDate) {
-                const maxDateConfig = this.validationConfig.maxDate as Partial<MaxDateValidatorConfig>;
-                if (!maxDateConfig.limit) {
-                    throw new Error("MaxDate validator must be set");
-                }
-
-                this.maxDate = FDate.fromIso(maxDateConfig.limit);
+            if (!this.validationConfig.maxDate) {
+                return;
             }
+
+            const maxDateConfig = this.validationConfig.maxDate as Partial<MaxDateValidatorConfig>;
+            if (!maxDateConfig.limit) {
+                throw new Error("MaxDate validator must be set");
+            }
+
+            this.maxDate = FDate.fromIso(maxDateConfig.limit);
         },
         isDateEnabled(day: FDate): boolean {
             return isDayEnabled(day, this.validationConfig);

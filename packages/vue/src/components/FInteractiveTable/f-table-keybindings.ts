@@ -59,8 +59,10 @@ export function onKeydown<T>(
     current: number,
 ): void {
     const fn = keybindings[event.key];
-    if (fn) {
-        event.preventDefault();
-        fn(table, current);
+    if (!fn) {
+        return;
     }
+
+    event.preventDefault();
+    fn(table, current);
 }

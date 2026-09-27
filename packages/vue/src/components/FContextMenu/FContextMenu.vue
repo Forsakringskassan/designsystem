@@ -219,10 +219,12 @@ async function setFocusOnItem(index: number): Promise<void> {
         return;
     }
     const items = itemElementsRef.value ?? [];
-    if (items.length > 0) {
-        const popupMenuItem = items[index];
-        focus(popupMenuItem, { preventScroll: true });
+    if (items.length === 0) {
+        return;
     }
+
+    const popupMenuItem = items[index];
+    focus(popupMenuItem, { preventScroll: true });
 }
 
 async function activateItem(index: number): Promise<void> {

@@ -29,10 +29,12 @@ function CLI(argv) {
             console.log();
             console.log(`Server started at http://localhost:${addr.port}`);
             console.log();
-            if (!silent) {
-                console.table(table.toString());
-                console.log();
+            if (silent) {
+                return;
             }
+
+            console.table(table.toString());
+            console.log();
         },
     });
 }

@@ -42,14 +42,16 @@ function applyElementMetadata<T extends object>(
             });
         }
 
-        if (nestedAttribute) {
-            const nested = element[nestedAttribute] as T[];
-            if (Array.isArray(nested) && nested.length > 0) {
-                applyElementMetadata(nested, nestedAttribute, {
-                    depth: depth + 1,
-                    rowCounter,
-                });
-            }
+        if (!nestedAttribute) {
+            continue;
+        }
+
+        const nested = element[nestedAttribute] as T[];
+        if (Array.isArray(nested) && nested.length > 0) {
+            applyElementMetadata(nested, nestedAttribute, {
+                depth: depth + 1,
+                rowCounter,
+            });
         }
     }
 }

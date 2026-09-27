@@ -105,14 +105,16 @@ export class CalendarPageObject implements BasePageObject {
                 currYear > targetYear ? yearDiff * -12 : yearDiff * 12;
             diffInMonths += currentMonth > targetMonth ? -monthDiff : monthDiff;
 
-            if (diffInMonths !== 0) {
-                const stepMonth =
-                    diffInMonths < 0
-                        ? this.navigationBar.prevButton()
-                        : this.navigationBar.nextButton();
-                for (let i = 0; i < Math.abs(diffInMonths); i++) {
-                    stepMonth.click();
-                }
+            if (diffInMonths === 0) {
+                return;
+            }
+
+            const stepMonth =
+                diffInMonths < 0
+                    ? this.navigationBar.prevButton()
+                    : this.navigationBar.nextButton();
+            for (let i = 0; i < Math.abs(diffInMonths); i++) {
+                stepMonth.click();
             }
         });
     }
