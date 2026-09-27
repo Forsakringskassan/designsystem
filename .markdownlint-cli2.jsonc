@@ -22,9 +22,6 @@
             "table_allowed_elements": ["br"],
         },
         "no-hard-tabs": { "spaces_per_tab": 4 },
-
-        /* technical debt */
-        "ul-style": false,
     },
     "overrides": [
         {
