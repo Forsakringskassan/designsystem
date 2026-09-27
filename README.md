@@ -23,7 +23,11 @@ Läser mer om vad som är på gång i designsystemet: <https://designsystem.fors
 Har du några övergripande funderingar på designsystemet och FKUI hör av dig till oss på
 <designsystem@forsakringskassan.se>.
 
+<!-- markdownlint-disable single-title -- explicitly want multiple h1 -->
+
 # FK Design System
+
+<!--markdownlint-restore -->
 
 FK Design System is developed by the Swedish Social Insurance Agency (Försäkringskassan).
 
