@@ -1,5 +1,5 @@
 ---
-name: Jest
+title: Jest
 layout: content-with-menu
 search:
     terms:

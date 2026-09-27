@@ -1,5 +1,5 @@
 ---
-name: Generella funktioner
+title: Generella funktioner
 layout: content-with-menu
 search:
     terms:
