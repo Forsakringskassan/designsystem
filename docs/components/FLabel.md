@@ -85,7 +85,11 @@ Feltexter har alltid stor bokstav och punkt.
 
 Fundera alltid på om den feltext som finns för komponenten fungerar eller om det behövs en mer specifik text för den aktuella situationen.
 
+<!-- markdownlint-disable no-emphasis-as-heading -- technical debt -->
+
 _Exempel på feltexter_
+
+<!-- markdownlint-restore -->
 
 | Skriv hellre                                                                          | Skriv inte                             |
 | ------------------------------------------------------------------------------------- | -------------------------------------- |
