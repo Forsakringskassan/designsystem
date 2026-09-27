@@ -21,13 +21,13 @@ För en djupare förståelse om hur data flödar från inmatningsfält till mode
 
 ```mermaid
 graph LR
-	FTextField["`**FTextField**
-	    &quot;AbcD&quot;`"]
+    FTextField["`**FTextField**
+        &quot;AbcD&quot;`"]
     validerar?{"`**Validerar?**
-	    &quot;AbcD&quot;`"}
+        &quot;AbcD&quot;`"}
     trim["trim()"]
     modelValue[("`**modelValue**
-	    &quot;AbcD&quot;`")]
+        &quot;AbcD&quot;`")]
 
     FTextField -. "Ändrar värde\n(blur)" .-> validerar?
     validerar? -- Ja --> trim
@@ -47,14 +47,14 @@ function myFormatter(value: string): string {
 
 ```mermaid
 graph LR
-	FTextField["`**FTextField**
-	    &quot;AbcD&quot;`"]
+    FTextField["`**FTextField**
+        &quot;AbcD&quot;`"]
     validerar?{"`**Validerar?**
-	    &quot;AbcD&quot;`"}
+        &quot;AbcD&quot;`"}
     modelValue[("`**modelValue**
-	    &quot;abcd&quot;`")]
+        &quot;abcd&quot;`")]
     viewValue[("`**viewValue**
-	    &quot;abcd&quot;`")]
+        &quot;abcd&quot;`")]
     pformatter["formatter()"]
     ptrim["trim()"]
     stringify["String()"]
@@ -90,12 +90,12 @@ function myParser(value: string): string {
 
 ```mermaid
 graph LR
-	FTextField["`**FTextField**
-	    &quot;AbcD&quot;`"]
+    FTextField["`**FTextField**
+        &quot;AbcD&quot;`"]
     validerar?{"`**Validerar?**
-	    &quot;AbcD&quot;`"}
+        &quot;AbcD&quot;`"}
     modelValue[("`**modelValue**
-	    &quot;ABCD&quot;`")]
+        &quot;ABCD&quot;`")]
     pparser["parser()"]
     ptrim["trim()"]
 
@@ -118,14 +118,14 @@ I detta exempel kombinerar vi formateraren och parsern från tidigare flöden.
 
 ```mermaid
 graph LR
-	FTextField["`**FTextField**
-	    &quot;AbcD&quot;`"]
+    FTextField["`**FTextField**
+        &quot;AbcD&quot;`"]
     modelValue[("`**modelValue**
-	    &quot;ABCD&quot;`")]
+        &quot;ABCD&quot;`")]
     viewValue[("`**viewValue**
-	    &quot;abcd&quot;`")]
+        &quot;abcd&quot;`")]
     validerar?{"`**Validerar?**
-	    &quot;AbcD&quot;`"}
+        &quot;AbcD&quot;`"}
     pparser["parser()"]
     ptrim["trim()"]
     wformatter["formatter()"]
@@ -155,9 +155,9 @@ Misslyckas parsning eller formatering på vägen så sätts vy-värdet till mode
 ```mermaid
 graph LR
     modelValue[("`**modelValue**
-	    &quot;AbcD&quot;`")]
+        &quot;AbcD&quot;`")]
     viewValue[("`**viewValue**
-	    &quot;abcd&quot;`")]
+        &quot;abcd&quot;`")]
     stringify["String()"]
     wparser["parser()"]
     wformatter["formatter()"]

@@ -38,7 +38,7 @@ Modell-värdet är det som senare används av logik och om en parser används ä
 
 ```mermaid
 graph LR
-	viewValue -- parser --> modelValue -- formatter --> viewValue
+    viewValue -- parser --> modelValue -- formatter --> viewValue
 ```
 
 Undantaget från detta är när enbart en formaterare används: då agerar formateraren både som `formatter` och `parser`, det vill säga det formaterade värdet är det som skrivs ner som modell-värde.
