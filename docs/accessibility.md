@@ -22,7 +22,7 @@ I avsnittet {@link accessibility#overgripande_brister_pa_webbplatsen Övergripan
 Vi strävar hela tiden efter att förbättra webbplatsens tillgänglighet.
 Om du upptäcker problem som inte är beskrivna på den här sidan, eller om du anser att vi inte uppfyller lagens krav, meddela oss så att vi får veta att problemet finns.
 
-designsystem@forsakringskassan.se
+<designsystem@forsakringskassan.se>
 
 ### Kontakta tillsynsmyndigheten
 

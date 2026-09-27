@@ -23,7 +23,7 @@ Om du har ett designproblem som kräver en unik lösning som inte behövs i andr
 Egna komponenter ska helst undvikas.
 Försök att hitta ett sätt att kombinera designsystemets komponenter för att lösa problemet.
 
-När du vill skapa skisser eller prototyper med designsystemets komponenter kan du använda {@link https://www.figma.com/@fkds Försäkringskassan UI kit}.
+När du vill skapa skisser eller prototyper med designsystemets komponenter kan du använda [Försäkringskassan UI kit](https://www.figma.com/@fkds).
 Det är ett komponentbibliotek framtaget för designverktyget Figma.
 
 ### Visuellt
