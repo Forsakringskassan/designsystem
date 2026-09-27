@@ -70,8 +70,10 @@ För att kunna göra ändringar i FKUI i din utvecklingsmiljö behöver du göra
 
 1. Klona FKUI-repo
 2. Sätt upp din utvecklingsmiljö
-3. Skapa en branch där du kan göra dina ändringar.<br> Branchnamn ska börja med feature/bugfix/docs.
-   Dela gärna upp större ändringar i mindre delar, vilket ibland kräver att du har flera pull requests.<br> Kom ihåg att använda korta och beskrivande commit-meddelande.
+3. Skapa en branch där du kan göra dina ändringar.
+   Branchnamn ska börja med feature/bugfix/docs.
+   Dela gärna upp större ändringar i mindre delar, vilket ibland kräver att du har flera pull requests.
+   Kom ihåg att använda korta och beskrivande commit-meddelande.
 
 - feature - om du tänker ändra API eller lägga till ny funktionalitet
 - bugfix - om du tänker göra en kodändring för att lösa ett problem
@@ -80,7 +82,8 @@ För att kunna göra ändringar i FKUI i din utvecklingsmiljö behöver du göra
 4. Om dina kodändringar behöver testas, lägg till testfall.
    Lägg till de enhetstester, komponenttester och e2e-tester som är relevanta, se mer under avsnitt Test.
 5. Kontrollera att dina ändringar följer krav på vad som är tillåtet att publicera för kod och dokumentation, se {@link checklist-publication checklista}.
-6. Lägg din pull request i GitHub.<br> Försäkra dig om att inget liknande arbete pågår för att förhindra överlappande arbete.
+6. Lägg din pull request i GitHub.
+   Försäkra dig om att inget liknande arbete pågår för att förhindra överlappande arbete.
 7. FKDS-teamet kommer granska din pull request och återkoppla.
    Vi granskar utifrån följande kriterier
 
