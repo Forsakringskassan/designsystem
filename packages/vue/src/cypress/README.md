@@ -1,6 +1,7 @@
 # FKUI Vue page objects
 
-Page objects for FKUI Vue components. All page objects are dependent on Cypress commands.
+Page objects for FKUI Vue components.
+All page objects are dependent on Cypress commands.
 
 ## Best practices for FKUI Vue
 
@@ -14,6 +15,7 @@ Page objects for FKUI Vue components. All page objects are dependent on Cypress 
     FFieldset.pageobject.js
     ```
 
-- All page objects should implement the `BasePageObject` interface. This ensures that all page objects at least contains a the selector that was used and the element itself.
+- All page objects should implement the `BasePageObject` interface.
+  This ensures that all page objects at least contains a the selector that was used and the element itself.
 
 - All page objects MUST use relative imports, this is to ensure that all consumers can use them.

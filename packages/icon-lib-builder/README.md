@@ -1,6 +1,7 @@
 # fkui/icon-lib-builder
 
-Biblioteket innehåller skript för att bygga ett ikonbibliotek. Genererar spritesheet utifrån svg-filer
+Biblioteket innehåller skript för att bygga ett ikonbibliotek.
+Genererar spritesheet utifrån svg-filer
 
 ## Katalogstruktur
 

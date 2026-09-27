@@ -16,7 +16,8 @@ FTooltipLiveExample.vue
 - Använd inte rubriken i tooltip om den inte verkligen behövs.
     - Om rubrik används behöver även header-tag anges.
 - Flera informationsrutor kan vara öppna samtidigt.
-- Sträva efter att minimera användning av tooltip. Information som alla behöver veta ska visas med etiketten.
+- Sträva efter att minimera användning av tooltip.
+  Information som alla behöver veta ska visas med etiketten.
 
 ## Copy
 
@@ -25,7 +26,8 @@ FTooltipLiveExample.vue
 Omfattande eller komplex information som gäller alla
 Om informationen är viktig för alla, men så pass omfattande att den inte kan ligga i brödtext, ska den ligga i en tooltip.
 
-Information som är nödvändig för att förstå hur man ska fylla i något ska i första hand vara brödtext. Men om den är för omfattande eller komplex kan den placeras i en tooltip.
+Information som är nödvändig för att förstå hur man ska fylla i något ska i första hand vara brödtext.
+Men om den är för omfattande eller komplex kan den placeras i en tooltip.
 
 #### Lång eller kort information som bara gäller vissa
 
@@ -43,7 +45,8 @@ Ska ligga i tooltip även om den är kortfattad.
 
 Rubriken för en tooltip formuleras enligt formatet "Information om + namnet på tooltipen".
 
-Om det inte blir en begriplig mening om du använder namnet på tooltipen behöver du formulera om meningen. Till exempel är skärmläsartexten till tooltipen till filuppladdaren "Information om hur du laddar upp bilagor" (och inte "Information om så här laddar du upp bilagor").
+Om det inte blir en begriplig mening om du använder namnet på tooltipen behöver du formulera om meningen.
+Till exempel är skärmläsartexten till tooltipen till filuppladdaren "Information om hur du laddar upp bilagor" (och inte "Information om så här laddar du upp bilagor").
 
 ### Rubriksnivå
 

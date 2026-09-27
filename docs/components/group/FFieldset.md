@@ -32,22 +32,26 @@ innehåll.
 
 ## Nästla inte
 
-Placera inte en fältgruppering i en annan fältgruppering. Skärmläsare läser inte upp när en fältgruppering slutar.
+Placera inte en fältgruppering i en annan fältgruppering.
+Skärmläsare läser inte upp när en fältgruppering slutar.
 När en fältgruppering placeras i en annan fältgruppering kommer skärmläsaren inte heller läsa upp
-vilken etikett den yttre fältgrupperingen har. Därmed får användaren inte tillräckligt med
+vilken etikett den yttre fältgrupperingen har.
+Därmed får användaren inte tillräckligt med
 information för att avgöra i vilket sammanhang som en komponent är placerad.
 
 ## Copy
 
 Fältgruppering ger möjlighet att använda en etikett som inte behöver
-upprepas för varje inmatningskomponent. Se exemplet med från- och till-datum.
+upprepas för varje inmatningskomponent.
+Se exemplet med från- och till-datum.
 
 Vi återkommer med detaljer kring copy.
 
 ## Exempel
 
 Fältgruppering används alltid för att gruppera {@link FRadioField radioknappar} och
-{@link FCheckboxField kryssrutor}. Fältgrupperingen styr om radioknappar ska visas
+{@link FCheckboxField kryssrutor}.
+Fältgrupperingen styr om radioknappar ska visas
 horisontellt eller om radioknappar eller kryssrutor ska visas som {@link chip chip}.
 
 ### Rekommenderade attribut

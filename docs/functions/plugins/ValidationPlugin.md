@@ -65,7 +65,8 @@ ValidationService.setErrorMessages(messages);
 
 ## Användning
 
-Flera validatorer kan läggas till fältet genom att separera dem med punkter. Vissa validatorer kräver en konfiguration vilket görs genom att ange konfigurationen i direktivsvärdet.
+Flera validatorer kan läggas till fältet genom att separera dem med punkter.
+Vissa validatorer kräver en konfiguration vilket görs genom att ange konfigurationen i direktivsvärdet.
 
 **Observera** Ordningen definierar prioriteten för varje validator, ju längre till vänster desto högre prioritet.
 Till exempel i `v-validation.required.maxLength.minLength` kommer validatorn för `required` köras först och endast om den validatorn är giltig kommer nästa validator att köras och så vidare.

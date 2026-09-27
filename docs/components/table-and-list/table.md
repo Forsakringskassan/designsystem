@@ -10,7 +10,8 @@ component:
     - FTableColumn
 ---
 
-Använd en tabell när användaren behöver analysera och jämföra information strukturerad i rader och kolumner. Tabeller kan antingen vara enkla datatabeller för presentation, eller vara mer avancerade interaktiva tabeller.
+Använd en tabell när användaren behöver analysera och jämföra information strukturerad i rader och kolumner.
+Tabeller kan antingen vara enkla datatabeller för presentation, eller vara mer avancerade interaktiva tabeller.
 
 Använd i första hand den nya tabellkomponenten som på sikt kommer ersätta datatabell och interkativ tabell.
 
@@ -90,7 +91,8 @@ FDataTableErrorExample.vue
 
 `FInteractiveTable`
 
-Använd en interaktiv tabell när användaren behöver interagera med tabellen. Det kan handla om att välja, lägga till, ändra, ta bort en rad eller utföra andra åtgärder via knappar eller genom att klicka på hela raden.
+Använd en interaktiv tabell när användaren behöver interagera med tabellen.
+Det kan handla om att välja, lägga till, ändra, ta bort en rad eller utföra andra åtgärder via knappar eller genom att klicka på hela raden.
 
 ```import live-example
 FInteractiveTableLiveExample.vue
@@ -144,7 +146,8 @@ Innehåller cellen numeriska värden, datum eller annan data som inte är löpte
 
 ### Hantera rader
 
-Med Datamängsredigeraren kan du lägga till funktionalitet för att skapa, ändra och ta bort rader i tabellen. Se komponent {@link FCrudDataset Datamängdredigeraren}
+Med Datamängsredigeraren kan du lägga till funktionalitet för att skapa, ändra och ta bort rader i tabellen.
+Se komponent {@link FCrudDataset Datamängdredigeraren}
 
 ### Inmatning i tabell
 
@@ -363,17 +366,24 @@ I undantagsfall kan du också använda en dold skärmläsartext i caption, men t
 
 ## Tänk på det här
 
-- Gör en ordentlig analys av vilken information som måste visas i tabellen. Målet bör vara att alla kolumner får plats på skärmen.
-- Hjälp användaren att hitta i en tabell med mycket information genom att lägga till möjlighet att söka eller sortera. Använd komponent {@link FSortFilterDataset Datamängdssorteraren}
-- Formatera datan i tabellen så den blir lätt att läsa. Använd med fördel {@link FormatPlugin} för att både formatera och undvika radbryt mitt i ett värde.
+- Gör en ordentlig analys av vilken information som måste visas i tabellen.
+  Målet bör vara att alla kolumner får plats på skärmen.
+- Hjälp användaren att hitta i en tabell med mycket information genom att lägga till möjlighet att söka eller sortera.
+  Använd komponent {@link FSortFilterDataset Datamängdssorteraren}
+- Formatera datan i tabellen så den blir lätt att läsa.
+  Använd med fördel {@link FormatPlugin} för att både formatera och undvika radbryt mitt i ett värde.
 
 ## Utforma en tabell
 
-- Anpassa bredden på tabellen till innehållet, gör den inte bredare än den behöver vara. Samma princip gäller för kolumner.
-- Tabellen kommer radbryta innehåll om det inte får plats. Använd istället skroll-funktionen om innehållet blir svårläst.
+- Anpassa bredden på tabellen till innehållet, gör den inte bredare än den behöver vara.
+  Samma princip gäller för kolumner.
+- Tabellen kommer radbryta innehåll om det inte får plats.
+  Använd istället skroll-funktionen om innehållet blir svårläst.
 - Du kan ange vilka kolumner som tar maximal bredd och vilka som får ta minsta möjliga.
-- Text i en tabellcell ska i regel vara vänsterställd. Undantag är belopp och andra numeriska värden som till exempel procent som ska visas högerställt för att lättare kunna jämföras.
-- Använd zebra-randiga rader när du har långa och många rader.  Det gör det enklare att visuellt skanna av tabellen och följa rader.
+- Text i en tabellcell ska i regel vara vänsterställd.
+  Undantag är belopp och andra numeriska värden som till exempel procent som ska visas högerställt för att lättare kunna jämföras.
+- Använd zebra-randiga rader när du har långa och många rader.
+   Det gör det enklare att visuellt skanna av tabellen och följa rader.
 
 ### Skroll i tabell
 

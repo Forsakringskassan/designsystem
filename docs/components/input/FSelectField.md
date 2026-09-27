@@ -5,7 +5,8 @@ layout: component
 component: FSelectField
 ---
 
-Använd dropplista när användaren ska välja ett av flera liknande, fördefinierade alternativ. En dropplista måste ha minst två alternativ men används oftast då det finns fyra val eller fler.
+Använd dropplista när användaren ska välja ett av flera liknande, fördefinierade alternativ.
+En dropplista måste ha minst två alternativ men används oftast då det finns fyra val eller fler.
 
 ```import live-example test-id=live
 FSelectFieldLiveExample.vue
@@ -26,7 +27,8 @@ Inline passar till exempel bra för sök och fritextfilter.
 
 ## Responsiv bredd
 
-Etiketten och dropplistan kan ha olika bredd. När etikettens text radbryts behöver alltså inte vara kopplat till hur bred dropplistan i sig är.
+Etiketten och dropplistan kan ha olika bredd.
+När etikettens text radbryts behöver alltså inte vara kopplat till hur bred dropplistan i sig är.
 
 Bredden för respektive del anges med antal kolumner vid olika skärmbredder (brytpunkter).
 

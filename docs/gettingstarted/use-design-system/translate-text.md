@@ -173,7 +173,8 @@ För att din globala typ-fil (`.d.ts`) ska registreras och för att TypeScript s
 
 #### Inkludera din definitionsfil
 
-Kontrollera att mappen där du skapat din `translations.d.ts` ingår i projektets källfiler. Om du har en strikt `include`-lista måste du lägga till din types-mapp:
+Kontrollera att mappen där du skapat din `translations.d.ts` ingår i projektets källfiler.
+Om du har en strikt `include`-lista måste du lägga till din types-mapp:
 
 ```jsonc
 {
@@ -198,7 +199,8 @@ Eftersom `RepoSchema` bygger på `typeof data`, där `data` är en importerad `.
 
 ### Implementering
 
-Skapa en global definitionsfil, förslagsvis `src/types/translations.d.ts`, i ditt projekt. Det är viktigt att du importerar din faktiska JSON-fil och använder hjälptypen `NestedKeys` för att skapa en union av alla möjliga nycklar.
+Skapa en global definitionsfil, förslagsvis `src/types/translations.d.ts`, i ditt projekt.
+Det är viktigt att du importerar din faktiska JSON-fil och använder hjälptypen `NestedKeys` för att skapa en union av alla möjliga nycklar.
 
 ```ts nocompile nolint
 // src/types/translations.d.ts
@@ -240,7 +242,8 @@ Eftersom TypeScript inte kan veta vid kompilering exakt vad ett API-svar kommer 
 
 #### Hantering med Generic `TranslateFunction<string>`
 
-För att lösa detta kan du explicit typa om funktionen till `TranslateFunction<string>`. Detta "låser upp" funktionen så att den återigen accepterar vilken sträng som helst.
+För att lösa detta kan du explicit typa om funktionen till `TranslateFunction<string>`.
+Detta "låser upp" funktionen så att den återigen accepterar vilken sträng som helst.
 
 **Exempel i en hjälpfunktion:**
 När du skapar en funktion som tar emot översättningsfunktionen som argument, deklarera den som `TranslateFunction<string>`.

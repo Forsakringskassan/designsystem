@@ -29,7 +29,8 @@ new FDefinitionListPageObject(selector);
 #### Parametrar
 
 `selector: string`
-: Selector till elementet. Du kan med fördel använda direktivet {@link TestPlugin `v-test`} för din selector.
+: Selector till elementet.
+Du kan med fördel använda direktivet {@link TestPlugin `v-test`} för din selector.
 
 ### Exempel
 

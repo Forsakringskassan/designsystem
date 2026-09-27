@@ -24,7 +24,8 @@ new FLabelPageObject(selector);
 ### Parametrar
 
 `selector: string`
-: Selector till `FLabel` elementet. Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
+: Selector till `FLabel` elementet.
+Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
 
 ## Exempel
 

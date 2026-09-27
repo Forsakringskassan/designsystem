@@ -150,7 +150,9 @@ export const startsWithValidator: Validator<StartsWithConfig> = {
 ## Registrering
 
 För att göra validatorn tillgänglig för användning i din applikation så behöver den registreras.
-Tänk på att bara registrera validatorn en gång, förslagsvis görs det globalt tillsammans med registrering av plugins m.m. i t.ex. `main.ts`. Gör det inte i en komponents lifecycle-hooks så som `created`, `mounted` m.fl.
+Tänk på att bara registrera validatorn en gång, förslagsvis görs det globalt tillsammans med registrering av plugins m.m.
+i t.ex. `main.ts`.
+Gör det inte i en komponents lifecycle-hooks så som `created`, `mounted` m.fl.
 
 ```diff
 + ValidationService.registerValidator(customStartValidator);
@@ -161,7 +163,8 @@ Nu när validatorn är klar så passar det bra att skriva komponenttester för a
 ## Användning
 
 Aktivera validatorn på ditt inputfält genom att lägga till direktivet `v-validation.startsWith` och förse den med en konfiguration.
-I exemplet nedan så anger du värdet `test` till konfigurationens attribut `startString`. Nu kommer validatorn validera att input-fältets värde börjar med "test".
+I exemplet nedan så anger du värdet `test` till konfigurationens attribut `startString`.
+Nu kommer validatorn validera att input-fältets värde börjar med "test".
 
 ```diff
 <f-text-field

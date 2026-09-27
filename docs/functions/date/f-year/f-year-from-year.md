@@ -17,7 +17,8 @@ FYear.fromYear(value);
 ### Parametrar
 
 `value: number | string`
-: Årtal att skapa `FYear` från. Nummer eller sträng med fyra siffror.
+: Årtal att skapa `FYear` från.
+Nummer eller sträng med fyra siffror.
 
 ### Returvärde
 

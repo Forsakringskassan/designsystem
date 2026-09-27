@@ -26,10 +26,12 @@ function getDatasetMetadata(element: object): DatasetElementMetadata;
 ### Parametrar
 
 `dataset: Dataset<T>`
-: En datamängd. Returnerar metadata om datamängden som helhet.
+: En datamängd.
+Returnerar metadata om datamängden som helhet.
 
 `element: object`
-: Ett enskilt element i en datamängd. Returnerar metadata om ett enskilt element i datamängden.
+: Ett enskilt element i en datamängd.
+Returnerar metadata om ett enskilt element i datamängden.
 
 ### Returvärde
 

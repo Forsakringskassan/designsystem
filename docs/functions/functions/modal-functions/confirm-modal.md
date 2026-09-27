@@ -23,7 +23,8 @@ function confirmModal(callingInstance, texts);
 ### Parameters
 
 `callingInstance`
-: Current component attempting to open confirmation modal. Typically `this`.
+: Current component attempting to open confirmation modal.
+Typically `this`.
 
 `texts`
 : Texts to display in modal.

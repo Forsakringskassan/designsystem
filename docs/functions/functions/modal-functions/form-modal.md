@@ -23,7 +23,8 @@ function formModal(callingInstance, options);
 ### Parameters
 
 `callingInstance`
-: Current component attempting to open confirmation modal. Typically `this`.
+: Current component attempting to open confirmation modal.
+Typically `this`.
 
 `options` {@optional}
 : Modal options.

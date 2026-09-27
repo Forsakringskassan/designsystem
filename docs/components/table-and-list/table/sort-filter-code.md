@@ -33,11 +33,14 @@ const sortableAttributes = {
 
 ## Sortera och filtera på värden från `value()`
 
-`FTable` kan visa värden med hjälp av `value()`, till exempel om värdet är nästlat i objektet. `FSortFilterDataset` använder däremot inte `value()` när datan sorteras eller filtreras. Sortering och filtrering sker på attribut i datamängden.
+`FTable` kan visa värden med hjälp av `value()`, till exempel om värdet är nästlat i objektet. `FSortFilterDataset` använder däremot inte `value()` när datan sorteras eller filtreras.
+Sortering och filtrering sker på attribut i datamängden.
 
-Om en tabellkolumn visar ett beräknat eller nästlat värde med `value()`, behöver samma värde även finnas som ett attribut i datamängden. Använd sedan det attributet i både `sortableAttributes` och tabellens `key`.
+Om en tabellkolumn visar ett beräknat eller nästlat värde med `value()`, behöver samma värde även finnas som ett attribut i datamängden.
+Använd sedan det attributet i både `sortableAttributes` och tabellens `key`.
 
-I exemplet nedan visar tabellen `row.ursprung.land` med `value()`. Däremot fungerar inte sortering och filtrering på `land`, eftersom `row.land` inte finns.
+I exemplet nedan visar tabellen `row.ursprung.land` med `value()`.
+Däremot fungerar inte sortering och filtrering på `land`, eftersom `row.land` inte finns.
 
 ```ts nocompile
 const columns = defineTableColumns<Row>([

@@ -259,7 +259,8 @@ Du kan lägga till extra skärmläsartext på knappar med `screenreader` propert
 +buttons: [{ label: "Stäng", screenreader: "formuläret", event: "dismiss" }];
 ```
 
-Om du använder `screenreader` för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i `label`. Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.
+Om du använder `screenreader` för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i `label`.
+Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.
 
 ### Validering av inmatad data
 

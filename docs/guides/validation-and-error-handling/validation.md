@@ -51,7 +51,8 @@ Formuläret valideras när användaren trycker på submit-knappen eller på ENTE
 Det finns två alternativ för hur fel i ett formulär kan visas när användaren ha tryckt på submit-knappen:
 
 - Fokus flyttas till den första formulärskomponenten med fel eller saknade uppgifter.
-- En {@link FErrorList fellista} med ankarlänkar till varje fält med fel visas ovanför formuläret. Fellistan får automatiskt fokus.
+- En {@link FErrorList fellista} med ankarlänkar till varje fält med fel visas ovanför formuläret.
+  Fellistan får automatiskt fokus.
 
 I formulär med några få komponenter rekommenderas det att fokus flyttas direkt till första formulärskomponenten.
 För stora formulär bör du använda en fellista.

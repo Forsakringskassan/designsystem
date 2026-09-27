@@ -22,7 +22,8 @@ Sass hjälpfunktion för att anpassa värde baserat på aktuell densitet.
 ### Parametrar
 
 `$value: number`
-: Värdet som ska ändras baserat på aktuell densitetsfaktor. Du kan inte skicka in flera värden i variabeln, utan det måste vara enbart ett värde (inte `1rem 2rem 3rem 4rem`).
+: Värdet som ska ändras baserat på aktuell densitetsfaktor.
+Du kan inte skicka in flera värden i variabeln, utan det måste vara enbart ett värde (inte `1rem 2rem 3rem 4rem`).
 
 ## Exempel
 

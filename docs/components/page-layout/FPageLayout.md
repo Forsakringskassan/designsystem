@@ -19,7 +19,8 @@ search:
 
 Applikationsmallen erbjuder olika layouter för att dela upp en applikation som täcker hela skärmen i ytor.
 Du kan utgå från en av fyra standardlayouter eller skapa en egen.
-Mallen styr hur ytorna placeras i förhållande till varandra. Storleken på en yta styrs av vad som placeras i ytan.
+Mallen styr hur ytorna placeras i förhållande till varandra.
+Storleken på en yta styrs av vad som placeras i ytan.
 
 Se också [exempelapplikation för Applikationsmall][example-app] ([källkod][example-source]) för en komplett applikation.
 
