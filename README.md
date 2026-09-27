@@ -10,13 +10,13 @@ Komponenterna är testade både manuellt och med hjälp av automatiserade verkty
 
 ## Kom igång
 
-Läs mer om hur du kommer igång med att använda FKUI: https://designsystem.forsakringskassan.se/latest/gettingstarted/
+Läs mer om hur du kommer igång med att använda FKUI: <https://designsystem.forsakringskassan.se/latest/gettingstarted/>
 
-Läs mer om hur du bidrar till FKUI: https://designsystem.forsakringskassan.se/latest/gettingstarted/contribute-to-fkds/
+Läs mer om hur du bidrar till FKUI: <https://designsystem.forsakringskassan.se/latest/gettingstarted/contribute-to-fkds/>
 
 ## På gång i designsystemet
 
-Läser mer om vad som är på gång i designsystemet: https://designsystem.forsakringskassan.se/latest/gettingstarted/about/release-plan.html
+Läser mer om vad som är på gång i designsystemet: <https://designsystem.forsakringskassan.se/latest/gettingstarted/about/release-plan.html>
 
 ## Kontakta oss
 
@@ -37,13 +37,13 @@ It has been continuously evolved since then with more components added.
 
 ## Getting started
 
-Getting started: https://designsystem.forsakringskassan.se/latest/gettingstarted/
+Getting started: <https://designsystem.forsakringskassan.se/latest/gettingstarted/>
 
-How to contribute: https://designsystem.forsakringskassan.se/latest/gettingstarted/contribute-to-fkds/
+How to contribute: <https://designsystem.forsakringskassan.se/latest/gettingstarted/contribute-to-fkds/>
 
 ## Coming up next
 
-What we are working on: https://designsystem.forsakringskassan.se/latest/gettingstarted/about/release-plan.html
+What we are working on: <https://designsystem.forsakringskassan.se/latest/gettingstarted/about/release-plan.html>
 
 ## Contact us
 

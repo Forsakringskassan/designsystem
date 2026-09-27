@@ -2,7 +2,7 @@
 
 Documentation for Försäkringskassans Designsystem.
 
-https://designsystem.forsakringskassan.se/
+<https://designsystem.forsakringskassan.se/>
 
 ## Including documentation in third-party sites
 

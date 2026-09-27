@@ -14,10 +14,10 @@ Det valda kontrasttemat ersätter alla färger som används i Windows-applikatio
 Syftet är att förenkla användargränssnittet genom att minska antalet färger.
 Men syftet är också att använda färger som ökar kontrasten mellan bakgrunden och element i förgrunden.
 
-Det här kallas Windows högkontrast eller Windows kontrasttema och aktiverar i sin tur {@link https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors CSS media-funktionen forced-colors}.
+Det här kallas Windows högkontrast eller Windows kontrasttema och aktiverar i sin tur [CSS media-funktionen forced-colors](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors).
 
 Varken Android, iOS eller MacOS har stöd för kontrastteman.
-Däremot har flera {@link https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors#browser_compatibility webbläsare stöd för forced-colors}.
+Däremot har flera [webbläsare stöd för forced-colors](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors#browser_compatibility).
 I praktiken är det bara Windows i kombination med någon av webbläsarna med stöd för forced-colors som ger användaren möjlighet att själv välja ett kontrasttema.
 
 Här används omväxlande begreppen högkontrast och forced-colors.
@@ -75,7 +75,7 @@ Exempel:
 
 Den här typen av visuell effekt försvinner i högkontrast eftersom alla element får samma bakgrundsfärg.
 
-I dessa fall använder komponenter i FKDS en media-query för att sätta elements kantlinje (border eller outline) till {@link https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/system-color systemfärgen} highlight.
+I dessa fall använder komponenter i FKDS en media-query för att sätta elements kantlinje (border eller outline) till [systemfärgen](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/system-color) highlight.
 
 ![Ett datum i kalendern visas med en lila ram som hover-effekt i högkontrast.](./forcedcolors/calendar_hover.png)  
 Hover-effekt för en dag i kalendern i Windows kontrasttema Natthimmel.
@@ -110,7 +110,7 @@ I dessa fall sätts komponents bakgrundsfärg till systemfärgen `highlight` nä
 Eventuell text som visas i förgrunden får systemfärgen `highlightText`.
 
 När en bakgrund färgläggs med en systemfärg lägger webbläsare till en bakgrund bakom texten för att säkra tillräcklig kontrast.
-Genom att använda {@link https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/forced-color-adjust forced-color-adjust: none} kan du ta full kontroll över presentationen i högkontrastläget.
+Genom att använda [forced-color-adjust: none](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/forced-color-adjust) kan du ta full kontroll över presentationen i högkontrastläget.
 
 ![3 exempel som visar ett markerat alternativ i en lista i komboboxen. I alla exempel är det valda alternativets bakgrund satt till highglight. Exempel 1 har oförändrad textfärg. I exempel 2 är textens färg highlighttext. I tredje exempel är texten satt till highlighttext och forced-color-adjust är satt till none ](./forcedcolors/bkg_highlight.png)  
 De tre exemplen visar ett valt alternativ i komboboxens lista där bakgrundsfärgen är satt till `highlight`.
@@ -141,7 +141,7 @@ Till exempel kan en knapp för att radera ha en text samt en ikon i form av en s
 Ikonerna är alltid enkla och består oftast bara av en färg, samma som intilliggande text.
 
 Ikoner i designsystemet har oftast ingen egen färg.
-Istället pekar SVG-filerna på {@link https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#currentcolor_keyword currentColor}.
+Istället pekar SVG-filerna på [currentColor](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#currentcolor_keyword).
 Därmed kommer ikonen att följa textfärgen i den kontext där ikonen används.
 Till exempel kommer en ikon som används i en knapp alltid att följa knappens textfärg, även när forced-colors är aktivt.
 
