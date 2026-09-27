@@ -15,7 +15,7 @@ Komponentgrupp används för att gruppera komponenter.
 
 ## Exempel
 
-### Ett antal komponenter som grupperas visuellt.
+### Ett antal komponenter som grupperas visuellt
 
 Avstånd justeras mellan komponenter och efter gruppen genom att lägga på klassen "component-group" på ett överliggande element och "component-group\_\_item" på komponenterna i gruppen.
 
