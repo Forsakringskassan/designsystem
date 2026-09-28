@@ -43,6 +43,11 @@ $fk-logo-large: "fk-logo-primary-large.svg";
     background: var(--fkds-color-background-primary);
 }
 
+.code-preview[data-tags~="square-corners"],
+.code-preview[data-tags~="square-corners"] .live-example__container {
+    border-radius: 0;
+}
+
 .color-table__color {
     display: inline-block;
     background: var(--value);
