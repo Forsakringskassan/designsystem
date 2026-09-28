@@ -2,15 +2,15 @@
 @use "../dark/theme" as dark;
 @use "../version" as *;
 
-@mixin theme {
+@mixin theme($legacy-palette: true) {
     color-scheme: light dark;
 
     @media (prefers-color-scheme: light) {
-        @include light.theme;
+        @include light.theme($legacy-palette);
     }
 
     @media (prefers-color-scheme: dark) {
-        @include dark.theme;
+        @include dark.theme($legacy-palette);
     }
 
     --fkui-theme-default-version: "#{$version}";

@@ -1,5 +1,6 @@
 @use "@fkui/theme-default" as theme with (
-    $global: false
+    $global: false,
+    $legacy-palette: false
 );
 
 @use "@fkui/font-default" as font with (

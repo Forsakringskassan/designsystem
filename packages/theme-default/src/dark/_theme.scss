@@ -1,10 +1,16 @@
 @use "../shared" as shared;
 @use "variables" as dark;
+@use "../legacy/dark" as legacy;
 @use "../version" as *;
 
-@mixin theme {
+@mixin theme($legacy-palette: true) {
     @include shared.variables;
-    @include dark.variables;
+
+    @if $legacy-palette {
+        @include legacy.variables;
+    } @else {
+        @include dark.variables;
+    }
 
     --fkui-theme-default-version: "#{$version}";
 }

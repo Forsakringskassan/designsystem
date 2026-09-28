@@ -1,4 +1,6 @@
-@use "pkg:@fkui/theme-default";
+@use "pkg:@fkui/theme-default" with (
+    $legacy-palette: false
+);
 @use "@fkui/theme-default/src/palette-variables" as palette;
 @use "@fkui/design/src/core/config-variables" with (
     $asset-path: ".",

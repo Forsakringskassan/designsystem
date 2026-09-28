@@ -2,11 +2,12 @@
 
 @use "light/theme" as light;
 
-@mixin css-variables {
-    @include light.theme;
-}
-
 $global: true !default;
+$legacy-palette: true !default;
+
+@mixin css-variables($legacy-palette: $legacy-palette) {
+    @include light.theme($legacy-palette);
+}
 
 @if $global {
     :root {

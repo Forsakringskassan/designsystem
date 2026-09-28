@@ -8,24 +8,27 @@
 
 $global: true !default;
 
-@mixin light {
-    @include themeDefault.light;
+/// Use the legacy semantic color mapping. Set to `false` to opt-in to the new palette.
+$legacy-palette: true !default;
+
+@mixin light($legacy-palette: $legacy-palette) {
+    @include themeDefault.light($legacy-palette);
     @include light.theme;
 }
 
-@mixin dark {
-    @include themeDefault.dark;
+@mixin dark($legacy-palette: $legacy-palette) {
+    @include themeDefault.dark($legacy-palette);
     @include dark.theme;
 }
 
-@mixin auto {
-    @include themeDefault.auto;
+@mixin auto($legacy-palette: $legacy-palette) {
+    @include themeDefault.auto($legacy-palette);
     @include auto.theme;
 }
 
 @if $global {
     :root {
-        @include themeDefault.light;
+        @include themeDefault.light($legacy-palette);
         @include light.theme;
     }
 }
