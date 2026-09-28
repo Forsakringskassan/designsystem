@@ -1320,6 +1320,9 @@ var init_dist = __esm({
     init_methods();
   }
 });
+function _OverloadYield(e3, d3) {
+  this.v = e3, this.k = d3;
+}
 function _arrayLikeToArray(r2, a2) {
   (null == a2 || a2 > r2.length) && (a2 = r2.length);
   for (var e3 = 0, n2 = Array(a2); e3 < a2; e3++) n2[e3] = r2[e3];
@@ -1333,8 +1336,10 @@ function _iterableToArrayLimit(r2, l4) {
   if (null != t4) {
     var e3, n2, i4, u2, a2 = [], f2 = true, o2 = false;
     try {
-      if (i4 = (t4 = t4.call(r2)).next, 0 === l4) ;
-      else for (; !(f2 = (e3 = i4.call(t4)).done) && (a2.push(e3.value), a2.length !== l4); f2 = true) ;
+      if (i4 = (t4 = t4.call(r2)).next, 0 === l4) {
+        if (Object(t4) !== t4) return;
+        f2 = false;
+      } else for (; !(f2 = (e3 = i4.call(t4)).done) && (a2.push(e3.value), a2.length !== l4); f2 = true) ;
     } catch (r3) {
       o2 = true, n2 = r3;
     } finally {
@@ -1360,42 +1365,68 @@ function _unsupportedIterableToArray(r2, a2) {
     return "Object" === t4 && r2.constructor && (t4 = r2.constructor.name), "Map" === t4 || "Set" === t4 ? Array.from(r2) : "Arguments" === t4 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t4) ? _arrayLikeToArray(r2, a2) : void 0;
   }
 }
+function AsyncGenerator(e3) {
+  var t4, n2;
+  function resume(t5, n3) {
+    try {
+      var r2 = e3[t5](n3), o2 = r2.value, u2 = o2 instanceof _OverloadYield;
+      Promise.resolve(u2 ? o2.v : o2).then(function(n4) {
+        if (u2) {
+          var i4 = "return" === t5 && o2.k ? t5 : "next";
+          if (!o2.k || n4.done) return resume(i4, n4);
+          n4 = e3[i4](n4).value;
+        }
+        settle(!!r2.done, n4);
+      }, function(e4) {
+        resume("throw", e4);
+      });
+    } catch (e4) {
+      settle(2, e4);
+    }
+  }
+  function settle(e4, r2) {
+    2 === e4 ? t4.reject(r2) : t4.resolve({
+      value: r2,
+      done: e4
+    }), (t4 = t4.next) ? resume(t4.key, t4.arg) : n2 = null;
+  }
+  this._invoke = function(e4, r2) {
+    return new Promise(function(o2, u2) {
+      var i4 = {
+        key: e4,
+        arg: r2,
+        resolve: o2,
+        reject: u2,
+        next: null
+      };
+      n2 ? n2 = n2.next = i4 : (t4 = n2 = i4, resume(e4, r2));
+    });
+  }, "function" != typeof e3.return && (this.return = void 0);
+}
 function unapply(func) {
   return function(thisArg) {
-    if (thisArg instanceof RegExp) {
-      thisArg.lastIndex = 0;
-    }
-    for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-      args[_key3 - 1] = arguments[_key3];
-    }
+    if (thisArg instanceof RegExp) thisArg.lastIndex = 0;
+    for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) args[_key3 - 1] = arguments[_key3];
     return apply(func, thisArg, args);
   };
 }
 function unconstruct(Func) {
   return function() {
-    for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-      args[_key4] = arguments[_key4];
-    }
+    for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) args[_key4] = arguments[_key4];
     return construct(Func, args);
   };
 }
 function addToSet(set5, array4) {
   let transformCaseFunc = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : stringToLowerCase;
-  if (setPrototypeOf) {
-    setPrototypeOf(set5, null);
-  }
-  if (!arrayIsArray(array4)) {
-    return set5;
-  }
+  if (setPrototypeOf) setPrototypeOf(set5, null);
+  if (!arrayIsArray(array4)) return set5;
   let l4 = array4.length;
   while (l4--) {
     let element3 = array4[l4];
     if (typeof element3 === "string") {
       const lcElement = transformCaseFunc(element3);
       if (lcElement !== element3) {
-        if (!isFrozen(array4)) {
-          array4[l4] = lcElement;
-        }
+        if (!isFrozen(array4)) array4[l4] = lcElement;
         element3 = lcElement;
       }
     }
@@ -1404,12 +1435,7 @@ function addToSet(set5, array4) {
   return set5;
 }
 function cleanArray(array4) {
-  for (let index = 0; index < array4.length; index++) {
-    const isPropertyExist = objectHasOwnProperty(array4, index);
-    if (!isPropertyExist) {
-      array4[index] = null;
-    }
-  }
+  for (let index = 0; index < array4.length; index++) if (!objectHasOwnProperty(array4, index)) array4[index] = null;
   return array4;
 }
 function clone(object3) {
@@ -1418,44 +1444,31 @@ function clone(object3) {
     var _ref3 = _slicedToArray(_ref2, 2);
     const property3 = _ref3[0];
     const value2 = _ref3[1];
-    const isPropertyExist = objectHasOwnProperty(object3, property3);
-    if (isPropertyExist) {
-      if (arrayIsArray(value2)) {
-        newObject[property3] = cleanArray(value2);
-      } else if (value2 && typeof value2 === "object" && value2.constructor === Object) {
-        newObject[property3] = clone(value2);
-      } else {
-        newObject[property3] = value2;
-      }
+    if (objectHasOwnProperty(object3, property3)) {
+      if (arrayIsArray(value2)) newObject[property3] = cleanArray(value2);
+      else if (value2 && typeof value2 === "object" && value2.constructor === Object) newObject[property3] = clone(value2);
+      else newObject[property3] = value2;
     }
   }
   return newObject;
 }
 function stringifyValue(value2) {
   switch (typeof value2) {
-    case "string": {
+    case "string":
       return value2;
-    }
-    case "number": {
+    case "number":
       return numberToString(value2);
-    }
-    case "boolean": {
+    case "boolean":
       return booleanToString(value2);
-    }
-    case "bigint": {
+    case "bigint":
       return bigintToString ? bigintToString(value2) : "0";
-    }
-    case "symbol": {
+    case "symbol":
       return symbolToString ? symbolToString(value2) : "Symbol()";
-    }
-    case "undefined": {
+    case "undefined":
       return objectToString(value2);
-    }
     case "function":
     case "object": {
-      if (value2 === null) {
-        return objectToString(value2);
-      }
+      if (value2 === null) return objectToString(value2);
       const valueAsRecord = value2;
       const valueToString = lookupGetter(valueAsRecord, "toString");
       if (typeof valueToString === "function") {
@@ -1464,21 +1477,16 @@ function stringifyValue(value2) {
       }
       return objectToString(value2);
     }
-    default: {
+    default:
       return objectToString(value2);
-    }
   }
 }
 function lookupGetter(object3, prop) {
   while (object3 !== null) {
     const desc = getOwnPropertyDescriptor(object3, prop);
     if (desc) {
-      if (desc.get) {
-        return unapply(desc.get);
-      }
-      if (typeof desc.value === "function") {
-        return unapply(desc.value);
-      }
+      if (desc.get) return unapply(desc.get);
+      if (typeof desc.value === "function") return unapply(desc.value);
     }
     object3 = getPrototypeOf(object3);
   }
@@ -1498,7 +1506,7 @@ function isRegex(value2) {
 function createDOMPurify() {
   let window3 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : getGlobal();
   const DOMPurify = (root4) => createDOMPurify(root4);
-  DOMPurify.version = "3.4.15";
+  DOMPurify.version = "3.4.16";
   DOMPurify.removed = [];
   if (!window3 || !window3.document || window3.document.nodeType !== NODE_TYPE.document || !window3.Element) {
     DOMPurify.isSupported = false;
@@ -1508,8 +1516,8 @@ function createDOMPurify() {
   const originalDocument = document2;
   const currentScript = originalDocument.currentScript;
   window3.DocumentFragment;
-  const HTMLTemplateElement = window3.HTMLTemplateElement, Node2 = window3.Node, Element3 = window3.Element, NodeFilter = window3.NodeFilter, _window$NamedNodeMap = window3.NamedNodeMap;
-  _window$NamedNodeMap === void 0 ? window3.NamedNodeMap || window3.MozNamedAttrMap : _window$NamedNodeMap;
+  const HTMLTemplateElement = window3.HTMLTemplateElement, Node2 = window3.Node, Element3 = window3.Element, NodeFilter = window3.NodeFilter;
+  window3.NamedNodeMap === void 0 && (window3.NamedNodeMap || window3.MozNamedAttrMap);
   window3.HTMLFormElement;
   const DOMParser2 = window3.DOMParser, trustedTypes = window3.trustedTypes;
   const ElementPrototype = Element3.prototype;
@@ -1532,9 +1540,7 @@ function createDOMPurify() {
   };
   if (typeof HTMLTemplateElement === "function") {
     const template = document2.createElement("template");
-    if (template.content && template.content.ownerDocument) {
-      document2 = template.content.ownerDocument;
-    }
+    if (template.content && template.content.ownerDocument) document2 = template.content.ownerDocument;
   }
   let trustedTypesPolicy;
   let emptyHTML = "";
@@ -1542,9 +1548,7 @@ function createDOMPurify() {
   let defaultTrustedTypesPolicyResolved = false;
   let IN_TRUSTED_TYPES_POLICY = 0;
   const _assertNotInTrustedTypesPolicy = function _assertNotInTrustedTypesPolicy2() {
-    if (IN_TRUSTED_TYPES_POLICY > 0) {
-      throw typeErrorCreate('A configured TRUSTED_TYPES_POLICY callback (createHTML or createScriptURL) must not call DOMPurify.sanitize, as that causes infinite recursion. Do not pass a policy whose callbacks wrap DOMPurify as TRUSTED_TYPES_POLICY; see the "DOMPurify and Trusted Types" section of the README.');
-    }
+    if (IN_TRUSTED_TYPES_POLICY > 0) throw typeErrorCreate('A configured TRUSTED_TYPES_POLICY callback (createHTML or createScriptURL) must not call DOMPurify.sanitize, as that causes infinite recursion. Do not pass a policy whose callbacks wrap DOMPurify as TRUSTED_TYPES_POLICY; see the "DOMPurify and Trusted Types" section of the README.');
   };
   const _createTrustedHTML = function _createTrustedHTML2(html2) {
     _assertNotInTrustedTypesPolicy();
@@ -1578,9 +1582,20 @@ function createDOMPurify() {
   const MUSTACHE_EXPR$1 = MUSTACHE_EXPR, ERB_EXPR$1 = ERB_EXPR, TMPLIT_EXPR$1 = TMPLIT_EXPR, DATA_ATTR$1 = DATA_ATTR, ARIA_ATTR$1 = ARIA_ATTR, IS_SCRIPT_OR_DATA$1 = IS_SCRIPT_OR_DATA, ATTR_WHITESPACE$1 = ATTR_WHITESPACE, CUSTOM_ELEMENT$1 = CUSTOM_ELEMENT;
   let IS_ALLOWED_URI$1 = IS_ALLOWED_URI;
   let ALLOWED_TAGS = null;
-  const DEFAULT_ALLOWED_TAGS = addToSet({}, [...html$1, ...svg$1, ...svgFilters, ...mathMl$1, ...text]);
+  const DEFAULT_ALLOWED_TAGS = addToSet({}, [
+    ...html$1,
+    ...svg$1,
+    ...svgFilters,
+    ...mathMl$1,
+    ...text
+  ]);
   let ALLOWED_ATTR = null;
-  const DEFAULT_ALLOWED_ATTR = addToSet({}, [...html, ...svg, ...mathMl, ...xml]);
+  const DEFAULT_ALLOWED_ATTR = addToSet({}, [
+    ...html,
+    ...svg,
+    ...mathMl,
+    ...xml
+  ]);
   let CUSTOM_ELEMENT_HANDLING = Object.seal(create(null, {
     tagNameCheck: {
       writable: true,
@@ -1657,15 +1672,6 @@ function createDOMPurify() {
     "noscript",
     "plaintext",
     "script",
-    // <selectedcontent> mirrors the selected <option>'s subtree, cloned by
-    // the UA (customizable <select>) — including any on* handlers — and the
-    // engine re-mirrors synchronously whenever a removal changes which
-    // option/selectedcontent is current, even inside DOMPurify's inert
-    // DOMParser document. Hoisting its children on removal re-inserts a fresh
-    // mirror target ahead of the walk, which the engine refills, looping
-    // forever (DoS) and amplifying output. Dropping its content on removal
-    // (rather than hoisting) breaks that cascade; the content is a duplicate
-    // of the option, which is sanitized on its own. See campaign-3 F1/F6.
     "selectedcontent",
     "style",
     "svg",
@@ -1676,21 +1682,59 @@ function createDOMPurify() {
     "xmp"
   ]);
   let DATA_URI_TAGS = null;
-  const DEFAULT_DATA_URI_TAGS = addToSet({}, ["audio", "video", "img", "source", "image", "track"]);
+  const DEFAULT_DATA_URI_TAGS = addToSet({}, [
+    "audio",
+    "video",
+    "img",
+    "source",
+    "image",
+    "track"
+  ]);
   let URI_SAFE_ATTRIBUTES = null;
-  const DEFAULT_URI_SAFE_ATTRIBUTES = addToSet({}, ["alt", "class", "for", "id", "label", "name", "pattern", "placeholder", "role", "summary", "title", "value", "style", "xmlns"]);
+  const DEFAULT_URI_SAFE_ATTRIBUTES = addToSet({}, [
+    "alt",
+    "class",
+    "for",
+    "id",
+    "label",
+    "name",
+    "pattern",
+    "placeholder",
+    "role",
+    "summary",
+    "title",
+    "value",
+    "style",
+    "xmlns"
+  ]);
   const MATHML_NAMESPACE = "http://www.w3.org/1998/Math/MathML";
   const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
   const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
   let NAMESPACE2 = HTML_NAMESPACE;
   let IS_EMPTY_INPUT = false;
   let ALLOWED_NAMESPACES = null;
-  const DEFAULT_ALLOWED_NAMESPACES = addToSet({}, [MATHML_NAMESPACE, SVG_NAMESPACE, HTML_NAMESPACE], stringToString);
-  const DEFAULT_MATHML_TEXT_INTEGRATION_POINTS = freeze(["mi", "mo", "mn", "ms", "mtext"]);
+  const DEFAULT_ALLOWED_NAMESPACES = addToSet({}, [
+    MATHML_NAMESPACE,
+    SVG_NAMESPACE,
+    HTML_NAMESPACE
+  ], stringToString);
+  const DEFAULT_MATHML_TEXT_INTEGRATION_POINTS = freeze([
+    "mi",
+    "mo",
+    "mn",
+    "ms",
+    "mtext"
+  ]);
   let MATHML_TEXT_INTEGRATION_POINTS = addToSet({}, DEFAULT_MATHML_TEXT_INTEGRATION_POINTS);
   const DEFAULT_HTML_INTEGRATION_POINTS = freeze(["annotation-xml"]);
   let HTML_INTEGRATION_POINTS = addToSet({}, DEFAULT_HTML_INTEGRATION_POINTS);
-  const COMMON_SVG_AND_HTML_ELEMENTS = addToSet({}, ["title", "style", "font", "a", "script"]);
+  const COMMON_SVG_AND_HTML_ELEMENTS = addToSet({}, [
+    "title",
+    "style",
+    "font",
+    "a",
+    "script"
+  ]);
   let PARSER_MEDIA_TYPE = null;
   const SUPPORTED_PARSER_MEDIA_TYPES = ["application/xhtml+xml", "text/html"];
   const DEFAULT_PARSER_MEDIA_TYPE = "text/html";
@@ -1702,25 +1746,14 @@ function createDOMPurify() {
   };
   const _parseConfig = function _parseConfig2() {
     let cfg = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-    if (CONFIG && CONFIG === cfg) {
-      return;
-    }
-    if (!cfg || typeof cfg !== "object") {
-      cfg = {};
-    }
+    if (CONFIG && CONFIG === cfg) return;
+    if (!cfg || typeof cfg !== "object") cfg = {};
     cfg = clone(cfg);
-    PARSER_MEDIA_TYPE = // eslint-disable-next-line unicorn/prefer-includes
-    SUPPORTED_PARSER_MEDIA_TYPES.indexOf(cfg.PARSER_MEDIA_TYPE) === -1 ? DEFAULT_PARSER_MEDIA_TYPE : cfg.PARSER_MEDIA_TYPE;
+    PARSER_MEDIA_TYPE = SUPPORTED_PARSER_MEDIA_TYPES.indexOf(cfg.PARSER_MEDIA_TYPE) === -1 ? DEFAULT_PARSER_MEDIA_TYPE : cfg.PARSER_MEDIA_TYPE;
     transformCaseFunc = PARSER_MEDIA_TYPE === "application/xhtml+xml" ? stringToString : stringToLowerCase;
-    ALLOWED_TAGS = _resolveSetOption(cfg, "ALLOWED_TAGS", DEFAULT_ALLOWED_TAGS, {
-      transform: transformCaseFunc
-    });
-    ALLOWED_ATTR = _resolveSetOption(cfg, "ALLOWED_ATTR", DEFAULT_ALLOWED_ATTR, {
-      transform: transformCaseFunc
-    });
-    ALLOWED_NAMESPACES = _resolveSetOption(cfg, "ALLOWED_NAMESPACES", DEFAULT_ALLOWED_NAMESPACES, {
-      transform: stringToString
-    });
+    ALLOWED_TAGS = _resolveSetOption(cfg, "ALLOWED_TAGS", DEFAULT_ALLOWED_TAGS, { transform: transformCaseFunc });
+    ALLOWED_ATTR = _resolveSetOption(cfg, "ALLOWED_ATTR", DEFAULT_ALLOWED_ATTR, { transform: transformCaseFunc });
+    ALLOWED_NAMESPACES = _resolveSetOption(cfg, "ALLOWED_NAMESPACES", DEFAULT_ALLOWED_NAMESPACES, { transform: stringToString });
     URI_SAFE_ATTRIBUTES = _resolveSetOption(cfg, "ADD_URI_SAFE_ATTR", DEFAULT_URI_SAFE_ATTRIBUTES, {
       transform: transformCaseFunc,
       base: DEFAULT_URI_SAFE_ATTRIBUTES
@@ -1729,15 +1762,9 @@ function createDOMPurify() {
       transform: transformCaseFunc,
       base: DEFAULT_DATA_URI_TAGS
     });
-    FORBID_CONTENTS = _resolveSetOption(cfg, "FORBID_CONTENTS", DEFAULT_FORBID_CONTENTS, {
-      transform: transformCaseFunc
-    });
-    FORBID_TAGS = _resolveSetOption(cfg, "FORBID_TAGS", clone({}), {
-      transform: transformCaseFunc
-    });
-    FORBID_ATTR = _resolveSetOption(cfg, "FORBID_ATTR", clone({}), {
-      transform: transformCaseFunc
-    });
+    FORBID_CONTENTS = _resolveSetOption(cfg, "FORBID_CONTENTS", DEFAULT_FORBID_CONTENTS, { transform: transformCaseFunc });
+    FORBID_TAGS = _resolveSetOption(cfg, "FORBID_TAGS", clone({}), { transform: transformCaseFunc });
+    FORBID_ATTR = _resolveSetOption(cfg, "FORBID_ATTR", clone({}), { transform: transformCaseFunc });
     USE_PROFILES = objectHasOwnProperty(cfg, "USE_PROFILES") ? cfg.USE_PROFILES && typeof cfg.USE_PROFILES === "object" ? clone(cfg.USE_PROFILES) : cfg.USE_PROFILES : false;
     ALLOW_ARIA_ATTR = cfg.ALLOW_ARIA_ATTR !== false;
     ALLOW_DATA_ATTR = cfg.ALLOW_DATA_ATTR !== false;
@@ -1756,36 +1783,16 @@ function createDOMPurify() {
     IN_PLACE = cfg.IN_PLACE || false;
     IS_ALLOWED_URI$1 = isRegex(cfg.ALLOWED_URI_REGEXP) ? cfg.ALLOWED_URI_REGEXP : IS_ALLOWED_URI;
     NAMESPACE2 = typeof cfg.NAMESPACE === "string" ? cfg.NAMESPACE : HTML_NAMESPACE;
-    MATHML_TEXT_INTEGRATION_POINTS = _resolveObjectOption(
-      cfg,
-      "MATHML_TEXT_INTEGRATION_POINTS",
-      () => addToSet({}, DEFAULT_MATHML_TEXT_INTEGRATION_POINTS)
-      // Default built-in map
-    );
-    HTML_INTEGRATION_POINTS = _resolveObjectOption(
-      cfg,
-      "HTML_INTEGRATION_POINTS",
-      () => addToSet({}, DEFAULT_HTML_INTEGRATION_POINTS)
-      // Default built-in map
-    );
+    MATHML_TEXT_INTEGRATION_POINTS = _resolveObjectOption(cfg, "MATHML_TEXT_INTEGRATION_POINTS", () => addToSet({}, DEFAULT_MATHML_TEXT_INTEGRATION_POINTS));
+    HTML_INTEGRATION_POINTS = _resolveObjectOption(cfg, "HTML_INTEGRATION_POINTS", () => addToSet({}, DEFAULT_HTML_INTEGRATION_POINTS));
     const customElementHandling = _resolveObjectOption(cfg, "CUSTOM_ELEMENT_HANDLING", () => create(null));
     CUSTOM_ELEMENT_HANDLING = create(null);
-    if (objectHasOwnProperty(customElementHandling, "tagNameCheck") && isRegexOrFunction(customElementHandling.tagNameCheck)) {
-      CUSTOM_ELEMENT_HANDLING.tagNameCheck = customElementHandling.tagNameCheck;
-    }
-    if (objectHasOwnProperty(customElementHandling, "attributeNameCheck") && isRegexOrFunction(customElementHandling.attributeNameCheck)) {
-      CUSTOM_ELEMENT_HANDLING.attributeNameCheck = customElementHandling.attributeNameCheck;
-    }
-    if (objectHasOwnProperty(customElementHandling, "allowCustomizedBuiltInElements") && typeof customElementHandling.allowCustomizedBuiltInElements === "boolean") {
-      CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements = customElementHandling.allowCustomizedBuiltInElements;
-    }
+    if (objectHasOwnProperty(customElementHandling, "tagNameCheck") && isRegexOrFunction(customElementHandling.tagNameCheck)) CUSTOM_ELEMENT_HANDLING.tagNameCheck = customElementHandling.tagNameCheck;
+    if (objectHasOwnProperty(customElementHandling, "attributeNameCheck") && isRegexOrFunction(customElementHandling.attributeNameCheck)) CUSTOM_ELEMENT_HANDLING.attributeNameCheck = customElementHandling.attributeNameCheck;
+    if (objectHasOwnProperty(customElementHandling, "allowCustomizedBuiltInElements") && typeof customElementHandling.allowCustomizedBuiltInElements === "boolean") CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements = customElementHandling.allowCustomizedBuiltInElements;
     seal(CUSTOM_ELEMENT_HANDLING);
-    if (SAFE_FOR_TEMPLATES) {
-      ALLOW_DATA_ATTR = false;
-    }
-    if (RETURN_DOM_FRAGMENT) {
-      RETURN_DOM = true;
-    }
+    if (SAFE_FOR_TEMPLATES) ALLOW_DATA_ATTR = false;
+    if (RETURN_DOM_FRAGMENT) RETURN_DOM = true;
     if (USE_PROFILES) {
       ALLOWED_TAGS = addToSet({}, text);
       ALLOWED_ATTR = create(null);
@@ -1812,48 +1819,36 @@ function createDOMPurify() {
     EXTRA_ELEMENT_HANDLING.tagCheck = null;
     EXTRA_ELEMENT_HANDLING.attributeCheck = null;
     if (objectHasOwnProperty(cfg, "ADD_TAGS")) {
-      if (typeof cfg.ADD_TAGS === "function") {
-        EXTRA_ELEMENT_HANDLING.tagCheck = cfg.ADD_TAGS;
-      } else if (arrayIsArray(cfg.ADD_TAGS)) {
-        if (ALLOWED_TAGS === DEFAULT_ALLOWED_TAGS) {
-          ALLOWED_TAGS = clone(ALLOWED_TAGS);
-        }
+      if (typeof cfg.ADD_TAGS === "function") EXTRA_ELEMENT_HANDLING.tagCheck = cfg.ADD_TAGS;
+      else if (arrayIsArray(cfg.ADD_TAGS)) {
+        if (ALLOWED_TAGS === DEFAULT_ALLOWED_TAGS) ALLOWED_TAGS = clone(ALLOWED_TAGS);
         addToSet(ALLOWED_TAGS, cfg.ADD_TAGS, transformCaseFunc);
       }
     }
     if (objectHasOwnProperty(cfg, "ADD_ATTR")) {
-      if (typeof cfg.ADD_ATTR === "function") {
-        EXTRA_ELEMENT_HANDLING.attributeCheck = cfg.ADD_ATTR;
-      } else if (arrayIsArray(cfg.ADD_ATTR)) {
-        if (ALLOWED_ATTR === DEFAULT_ALLOWED_ATTR) {
-          ALLOWED_ATTR = clone(ALLOWED_ATTR);
-        }
+      if (typeof cfg.ADD_ATTR === "function") EXTRA_ELEMENT_HANDLING.attributeCheck = cfg.ADD_ATTR;
+      else if (arrayIsArray(cfg.ADD_ATTR)) {
+        if (ALLOWED_ATTR === DEFAULT_ALLOWED_ATTR) ALLOWED_ATTR = clone(ALLOWED_ATTR);
         addToSet(ALLOWED_ATTR, cfg.ADD_ATTR, transformCaseFunc);
       }
     }
     if (objectHasOwnProperty(cfg, "ADD_FORBID_CONTENTS") && arrayIsArray(cfg.ADD_FORBID_CONTENTS)) {
-      if (FORBID_CONTENTS === DEFAULT_FORBID_CONTENTS) {
-        FORBID_CONTENTS = clone(FORBID_CONTENTS);
-      }
+      if (FORBID_CONTENTS === DEFAULT_FORBID_CONTENTS) FORBID_CONTENTS = clone(FORBID_CONTENTS);
       addToSet(FORBID_CONTENTS, cfg.ADD_FORBID_CONTENTS, transformCaseFunc);
     }
-    if (KEEP_CONTENT) {
-      ALLOWED_TAGS["#text"] = true;
-    }
-    if (WHOLE_DOCUMENT) {
-      addToSet(ALLOWED_TAGS, ["html", "head", "body"]);
-    }
+    if (KEEP_CONTENT) ALLOWED_TAGS["#text"] = true;
+    if (WHOLE_DOCUMENT) addToSet(ALLOWED_TAGS, [
+      "html",
+      "head",
+      "body"
+    ]);
     if (ALLOWED_TAGS.table) {
       addToSet(ALLOWED_TAGS, ["tbody"]);
       delete FORBID_TAGS.tbody;
     }
     if (cfg.TRUSTED_TYPES_POLICY) {
-      if (typeof cfg.TRUSTED_TYPES_POLICY.createHTML !== "function") {
-        throw typeErrorCreate('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');
-      }
-      if (typeof cfg.TRUSTED_TYPES_POLICY.createScriptURL !== "function") {
-        throw typeErrorCreate('TRUSTED_TYPES_POLICY configuration option must provide a "createScriptURL" hook.');
-      }
+      if (typeof cfg.TRUSTED_TYPES_POLICY.createHTML !== "function") throw typeErrorCreate('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');
+      if (typeof cfg.TRUSTED_TYPES_POLICY.createScriptURL !== "function") throw typeErrorCreate('TRUSTED_TYPES_POLICY configuration option must provide a "createScriptURL" hook.');
       const previousTrustedTypesPolicy = trustedTypesPolicy;
       trustedTypesPolicy = cfg.TRUSTED_TYPES_POLICY;
       try {
@@ -1866,85 +1861,55 @@ function createDOMPurify() {
       trustedTypesPolicy = void 0;
       emptyHTML = "";
     } else {
-      if (trustedTypesPolicy === void 0) {
-        trustedTypesPolicy = _getDefaultTrustedTypesPolicy();
-      }
-      if (trustedTypesPolicy && typeof emptyHTML === "string") {
-        emptyHTML = _createTrustedHTML("");
-      }
+      if (trustedTypesPolicy === void 0) trustedTypesPolicy = _getDefaultTrustedTypesPolicy();
+      if (trustedTypesPolicy && typeof emptyHTML === "string") emptyHTML = _createTrustedHTML("");
     }
-    if (freeze) {
-      freeze(cfg);
-    }
+    if (freeze) freeze(cfg);
     CONFIG = cfg;
   };
-  const ALL_SVG_TAGS = addToSet({}, [...svg$1, ...svgFilters, ...svgDisallowed]);
+  const ALL_SVG_TAGS = addToSet({}, [
+    ...svg$1,
+    ...svgFilters,
+    ...svgDisallowed
+  ]);
   const ALL_MATHML_TAGS = addToSet({}, [...mathMl$1, ...mathMlDisallowed]);
   const _checkSvgNamespace = function _checkSvgNamespace2(tagName, parent4, parentTagName) {
-    if (parent4.namespaceURI === HTML_NAMESPACE) {
-      return tagName === "svg";
-    }
-    if (parent4.namespaceURI === MATHML_NAMESPACE) {
-      return tagName === "svg" && (parentTagName === "annotation-xml" || MATHML_TEXT_INTEGRATION_POINTS[parentTagName]);
-    }
+    if (parent4.namespaceURI === HTML_NAMESPACE) return tagName === "svg";
+    if (parent4.namespaceURI === MATHML_NAMESPACE) return tagName === "svg" && (parentTagName === "annotation-xml" || MATHML_TEXT_INTEGRATION_POINTS[parentTagName]);
     return Boolean(ALL_SVG_TAGS[tagName]);
   };
   const _checkMathMlNamespace = function _checkMathMlNamespace2(tagName, parent4, parentTagName) {
-    if (parent4.namespaceURI === HTML_NAMESPACE) {
-      return tagName === "math";
-    }
-    if (parent4.namespaceURI === SVG_NAMESPACE) {
-      return tagName === "math" && HTML_INTEGRATION_POINTS[parentTagName];
-    }
+    if (parent4.namespaceURI === HTML_NAMESPACE) return tagName === "math";
+    if (parent4.namespaceURI === SVG_NAMESPACE) return tagName === "math" && HTML_INTEGRATION_POINTS[parentTagName];
     return Boolean(ALL_MATHML_TAGS[tagName]);
   };
   const _checkHtmlNamespace = function _checkHtmlNamespace2(tagName, parent4, parentTagName) {
-    if (parent4.namespaceURI === SVG_NAMESPACE && !HTML_INTEGRATION_POINTS[parentTagName]) {
-      return false;
-    }
-    if (parent4.namespaceURI === MATHML_NAMESPACE && !MATHML_TEXT_INTEGRATION_POINTS[parentTagName]) {
-      return false;
-    }
+    if (parent4.namespaceURI === SVG_NAMESPACE && !HTML_INTEGRATION_POINTS[parentTagName]) return false;
+    if (parent4.namespaceURI === MATHML_NAMESPACE && !MATHML_TEXT_INTEGRATION_POINTS[parentTagName]) return false;
     return !ALL_MATHML_TAGS[tagName] && (COMMON_SVG_AND_HTML_ELEMENTS[tagName] || !ALL_SVG_TAGS[tagName]);
   };
   const _checkValidNamespace = function _checkValidNamespace2(element3) {
     let parent4 = getParentNode(element3);
-    if (!parent4 || !parent4.tagName) {
-      parent4 = {
-        namespaceURI: NAMESPACE2,
-        tagName: "template"
-      };
-    }
+    if (!parent4 || !parent4.tagName) parent4 = {
+      namespaceURI: NAMESPACE2,
+      tagName: "template"
+    };
     const tagName = stringToLowerCase(element3.tagName);
     const parentTagName = stringToLowerCase(parent4.tagName);
-    if (!ALLOWED_NAMESPACES[element3.namespaceURI]) {
-      return false;
-    }
-    if (element3.namespaceURI === SVG_NAMESPACE) {
-      return _checkSvgNamespace(tagName, parent4, parentTagName);
-    }
-    if (element3.namespaceURI === MATHML_NAMESPACE) {
-      return _checkMathMlNamespace(tagName, parent4, parentTagName);
-    }
-    if (element3.namespaceURI === HTML_NAMESPACE) {
-      return _checkHtmlNamespace(tagName, parent4, parentTagName);
-    }
-    if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && ALLOWED_NAMESPACES[element3.namespaceURI]) {
-      return true;
-    }
+    if (!ALLOWED_NAMESPACES[element3.namespaceURI]) return false;
+    if (element3.namespaceURI === SVG_NAMESPACE) return _checkSvgNamespace(tagName, parent4, parentTagName);
+    if (element3.namespaceURI === MATHML_NAMESPACE) return _checkMathMlNamespace(tagName, parent4, parentTagName);
+    if (element3.namespaceURI === HTML_NAMESPACE) return _checkHtmlNamespace(tagName, parent4, parentTagName);
+    if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && ALLOWED_NAMESPACES[element3.namespaceURI]) return true;
     return false;
   };
   const _forceRemove = function _forceRemove2(node2) {
-    arrayPush(DOMPurify.removed, {
-      element: node2
-    });
+    arrayPush(DOMPurify.removed, { element: node2 });
     try {
       getParentNode(node2).removeChild(node2);
     } catch (_3) {
       remove3(node2);
-      if (!getParentNode(node2)) {
-        throw typeErrorCreate("a node selected for removal could not be detached from its tree and cannot be safely returned; refusing to sanitize in place");
-      }
+      if (!getParentNode(node2)) throw typeErrorCreate("a node selected for removal could not be detached from its tree and cannot be safely returned; refusing to sanitize in place");
     }
   };
   const _stripAttributeNode = function _stripAttributeNode2(element3, attribute, name) {
@@ -1973,34 +1938,25 @@ function createDOMPurify() {
       });
     }
     const attributes = getAttributes(root4);
-    if (attributes) {
-      for (let i4 = attributes.length - 1; i4 >= 0; --i4) {
-        const attribute = attributes[i4];
-        const name = attribute && attribute.name;
-        if (typeof name === "string") {
-          _stripAttributeNode(root4, attribute, name);
-        }
-      }
+    if (attributes) for (let i4 = attributes.length - 1; i4 >= 0; --i4) {
+      const attribute = attributes[i4];
+      const name = attribute && attribute.name;
+      if (typeof name === "string") _stripAttributeNode(root4, attribute, name);
     }
   };
   const _removeAttribute = function _removeAttribute2(name, element3, attr) {
-    if (!attr) {
-      try {
-        attr = element3.getAttributeNode(name);
-      } catch (_3) {
-        attr = null;
-      }
+    if (!attr) try {
+      attr = element3.getAttributeNode(name);
+    } catch (_3) {
+      attr = null;
     }
     arrayPush(DOMPurify.removed, {
       attribute: attr || null,
       from: element3
     });
     try {
-      if (attr) {
-        removeAttributeNode(element3, attr);
-      } else {
-        element3.removeAttribute(name);
-      }
+      if (attr) removeAttributeNode(element3, attr);
+      else element3.removeAttribute(name);
     } catch (_3) {
       try {
         element3.removeAttribute(name);
@@ -2008,30 +1964,23 @@ function createDOMPurify() {
       }
     }
     if (name === "is") {
-      if (RETURN_DOM || RETURN_DOM_FRAGMENT) {
-        try {
-          _forceRemove(element3);
-        } catch (_3) {
-        }
-      } else {
-        try {
-          element3.setAttribute(name, "");
-        } catch (_3) {
-        }
+      if (RETURN_DOM || RETURN_DOM_FRAGMENT) try {
+        _forceRemove(element3);
+      } catch (_3) {
+      }
+      else try {
+        element3.setAttribute(name, "");
+      } catch (_3) {
       }
     }
   };
   const _stripDisallowedAttributes = function _stripDisallowedAttributes2(element3) {
     const attributes = getAttributes(element3);
-    if (!attributes) {
-      return;
-    }
+    if (!attributes) return;
     for (let i4 = attributes.length - 1; i4 >= 0; --i4) {
       const attribute = attributes[i4];
       const name = attribute && attribute.name;
-      if (typeof name !== "string" || ALLOWED_ATTR[transformCaseFunc(name)]) {
-        continue;
-      }
+      if (typeof name !== "string" || ALLOWED_ATTR[transformCaseFunc(name)]) continue;
       _stripAttributeNode(element3, attribute, name);
     }
   };
@@ -2039,31 +1988,18 @@ function createDOMPurify() {
     const stack = [root4];
     while (stack.length > 0) {
       const node2 = stack.pop();
-      const nodeType3 = _readNodeType(node2);
-      if (nodeType3 === NODE_TYPE.element) {
-        _stripDisallowedAttributes(node2);
-      }
+      if (_readNodeType(node2) === NODE_TYPE.element) _stripDisallowedAttributes(node2);
       const childNodes = getChildNodes(node2);
-      if (childNodes) {
-        for (let i4 = childNodes.length - 1; i4 >= 0; --i4) {
-          stack.push(childNodes[i4]);
-        }
-      }
+      if (childNodes) for (let i4 = childNodes.length - 1; i4 >= 0; --i4) stack.push(childNodes[i4]);
     }
   };
   const _isPatchLinkageAttribute = function _isPatchLinkageAttribute2(lcName, lcTag) {
-    if (!SAFE_FOR_XML) {
-      return false;
-    }
-    if (lcName === "patchsrc") {
-      return true;
-    }
+    if (!SAFE_FOR_XML) return false;
+    if (lcName === "patchsrc") return true;
     return lcName === "for" && lcTag !== "label" && lcTag !== "output";
   };
   const _neutralizePatchLinkage = function _neutralizePatchLinkage2(root4) {
-    if (!SAFE_FOR_XML) {
-      return;
-    }
+    if (!SAFE_FOR_XML) return;
     const stack = [root4];
     while (stack.length > 0) {
       const node2 = stack.pop();
@@ -2079,41 +2015,28 @@ function createDOMPurify() {
         const element3 = node2;
         const lcTag = transformCaseFunc(_readNodeName(node2));
         try {
-          if (element3.hasAttribute && element3.hasAttribute("patchsrc")) {
-            element3.removeAttribute("patchsrc");
-          }
-          if (element3.hasAttribute && element3.hasAttribute("for") && _isPatchLinkageAttribute("for", lcTag)) {
-            element3.removeAttribute("for");
-          }
+          if (element3.hasAttribute && element3.hasAttribute("patchsrc")) element3.removeAttribute("patchsrc");
+          if (element3.hasAttribute && element3.hasAttribute("for") && _isPatchLinkageAttribute("for", lcTag)) element3.removeAttribute("for");
         } catch (_3) {
         }
       }
       const childNodes = getChildNodes(node2);
-      if (childNodes) {
-        for (let i4 = childNodes.length - 1; i4 >= 0; --i4) {
-          stack.push(childNodes[i4]);
-        }
-      }
+      if (childNodes) for (let i4 = childNodes.length - 1; i4 >= 0; --i4) stack.push(childNodes[i4]);
     }
   };
   const _initDocument = function _initDocument2(dirty) {
     let doc = null;
     let leadingWhitespace = null;
-    if (FORCE_BODY) {
-      dirty = "<remove></remove>" + dirty;
-    } else {
+    if (FORCE_BODY) dirty = "<remove></remove>" + dirty;
+    else {
       const matches33 = stringMatch(dirty, /^[\r\n\t ]+/);
       leadingWhitespace = matches33 && matches33[0];
     }
-    if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && NAMESPACE2 === HTML_NAMESPACE) {
-      dirty = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + dirty + "</body></html>";
-    }
+    if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && NAMESPACE2 === HTML_NAMESPACE) dirty = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + dirty + "</body></html>";
     const dirtyPayload = trustedTypesPolicy ? _createTrustedHTML(dirty) : dirty;
-    if (NAMESPACE2 === HTML_NAMESPACE) {
-      try {
-        doc = new DOMParser2().parseFromString(dirtyPayload, PARSER_MEDIA_TYPE);
-      } catch (_3) {
-      }
+    if (NAMESPACE2 === HTML_NAMESPACE) try {
+      doc = new DOMParser2().parseFromString(dirtyPayload, PARSER_MEDIA_TYPE);
+    } catch (_3) {
     }
     if (!doc || !doc.documentElement) {
       doc = implementation.createDocument(NAMESPACE2, "template", null);
@@ -2123,23 +2046,13 @@ function createDOMPurify() {
       }
     }
     const body = doc.body || doc.documentElement;
-    if (dirty && leadingWhitespace) {
-      body.insertBefore(document2.createTextNode(leadingWhitespace), body.childNodes[0] || null);
-    }
-    if (NAMESPACE2 === HTML_NAMESPACE) {
-      return getElementsByTagName.call(doc, WHOLE_DOCUMENT ? "html" : "body")[0];
-    }
+    if (dirty && leadingWhitespace) body.insertBefore(document2.createTextNode(leadingWhitespace), body.childNodes[0] || null);
+    if (NAMESPACE2 === HTML_NAMESPACE) return getElementsByTagName.call(doc, WHOLE_DOCUMENT ? "html" : "body")[0];
     return WHOLE_DOCUMENT ? doc.documentElement : body;
   };
   const _createNodeIterator = function _createNodeIterator2(root4) {
     const doc = getOwnerDocument ? getOwnerDocument(root4) : root4.ownerDocument;
-    return createNodeIterator.call(
-      doc || root4,
-      root4,
-      // eslint-disable-next-line no-bitwise
-      NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT | NodeFilter.SHOW_PROCESSING_INSTRUCTION | NodeFilter.SHOW_CDATA_SECTION,
-      null
-    );
+    return createNodeIterator.call(doc || root4, root4, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT | NodeFilter.SHOW_PROCESSING_INSTRUCTION | NodeFilter.SHOW_CDATA_SECTION, null);
   };
   const _stripTemplateExpressions = function _stripTemplateExpressions2(value2) {
     value2 = stringReplace(value2, MUSTACHE_EXPR$1, " ");
@@ -2151,73 +2064,25 @@ function createDOMPurify() {
     var _node$querySelectorAl;
     node2.normalize();
     const doc = getOwnerDocument ? getOwnerDocument(node2) : node2.ownerDocument;
-    const walker = createNodeIterator.call(
-      doc || node2,
-      node2,
-      // eslint-disable-next-line no-bitwise
-      NodeFilter.SHOW_TEXT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_CDATA_SECTION | NodeFilter.SHOW_PROCESSING_INSTRUCTION,
-      null
-    );
+    const walker = createNodeIterator.call(doc || node2, node2, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_CDATA_SECTION | NodeFilter.SHOW_PROCESSING_INSTRUCTION, null);
     let currentNode = walker.nextNode();
     while (currentNode) {
       currentNode.data = _stripTemplateExpressions(currentNode.data);
       currentNode = walker.nextNode();
     }
     const templates = (_node$querySelectorAl = node2.querySelectorAll) === null || _node$querySelectorAl === void 0 ? void 0 : _node$querySelectorAl.call(node2, "template");
-    if (templates) {
-      arrayForEach(templates, (tmpl) => {
-        if (_isDocumentFragment(tmpl.content)) {
-          _scrubTemplateExpressions2(tmpl.content);
-        }
-      });
-    }
+    if (templates) arrayForEach(templates, (tmpl) => {
+      if (_isDocumentFragment(tmpl.content)) _scrubTemplateExpressions2(tmpl.content);
+    });
   };
   const _isClobbered = function _isClobbered2(element3) {
     const realTagName = getNodeName ? getNodeName(element3) : null;
-    if (typeof realTagName !== "string") {
-      return false;
-    }
-    if (transformCaseFunc(realTagName) !== "form") {
-      return false;
-    }
-    return typeof element3.nodeName !== "string" || typeof element3.textContent !== "string" || typeof element3.removeChild !== "function" || // Realm-safe NamedNodeMap detection: equality against the cached
-    // prototype getter. Clobbered .attributes (e.g. <input name="attributes">)
-    // makes the direct read diverge from the cached read; a clean form
-    // (same-realm OR foreign-realm) has both reads pointing at the same
-    // canonical NamedNodeMap.
-    element3.attributes !== getAttributes(element3) || typeof element3.removeAttribute !== "function" || // A form descendant named "removeAttributeNode" or "getAttributeNode"
-    // shadows these Attr-node methods via [LegacyOverrideBuiltIns].
-    // _removeAttribute() / _stripAttributeNode() reach for
-    // element.removeAttributeNode(attr) first; when it is shadowed the call
-    // throws and the name-based fallback element.removeAttribute(name)
-    // ASCII-lowercases its lookup key in an HTML document, silently missing
-    // a case-preserved event-handler attribute (e.g. an ONANIMATIONSTART
-    // that reached the sanitizer through an XML/XHTML parse). Flag the form
-    // so it is removed wholesale, exactly as for the other shadowed methods.
-    typeof element3.removeAttributeNode !== "function" || typeof element3.getAttributeNode !== "function" || typeof element3.setAttribute !== "function" || typeof element3.namespaceURI !== "string" || typeof element3.insertBefore !== "function" || typeof element3.hasChildNodes !== "function" || // NodeType clobbering probe. Cached Node.prototype.nodeType getter
-    // returns the integer 1 for any Element regardless of realm; direct
-    // read on a clobbered form (e.g. <input name="nodeType">) returns
-    // the named child element. Cheap addition — nodeType is read from
-    // an internal slot, no serialization cost — and removes a residual
-    // clobbering surface used by several mXSS / PI / comment branches
-    // in _sanitizeElements that compare currentNode.nodeType directly.
-    element3.nodeType !== getNodeType(element3) || // HTMLFormElement has [LegacyOverrideBuiltIns]: a descendant named
-    // "childNodes" shadows the prototype getter. Direct reads of
-    // form.childNodes from a clobbered form return the named child
-    // instead of the real NodeList, so any walk that reads it directly
-    // skips the form's real children. Compare the direct read to the
-    // cached Node.prototype getter — when the form's named-property
-    // getter intercepts the read, the two values differ and we flag
-    // the form. This catches every clobbering child type (input,
-    // select, etc.) regardless of whether the named child happens to
-    // carry a numeric .length, which a typeof-based probe would miss
-    // (e.g. HTMLSelectElement.length is a defined unsigned-long).
-    element3.childNodes !== getChildNodes(element3);
+    if (typeof realTagName !== "string") return false;
+    if (transformCaseFunc(realTagName) !== "form") return false;
+    return typeof element3.nodeName !== "string" || typeof element3.textContent !== "string" || typeof element3.removeChild !== "function" || element3.attributes !== getAttributes(element3) || typeof element3.removeAttribute !== "function" || typeof element3.removeAttributeNode !== "function" || typeof element3.getAttributeNode !== "function" || typeof element3.setAttribute !== "function" || typeof element3.namespaceURI !== "string" || typeof element3.insertBefore !== "function" || typeof element3.hasChildNodes !== "function" || element3.nodeType !== getNodeType(element3) || element3.childNodes !== getChildNodes(element3);
   };
   const _isDocumentFragment = function _isDocumentFragment2(value2) {
-    if (!getNodeType || typeof value2 !== "object" || value2 === null) {
-      return false;
-    }
+    if (!getNodeType || typeof value2 !== "object" || value2 === null) return false;
     try {
       return getNodeType(value2) === NODE_TYPE.documentFragment;
     } catch (_3) {
@@ -2225,9 +2090,7 @@ function createDOMPurify() {
     }
   };
   const _isNode = function _isNode2(value2) {
-    if (!getNodeType || typeof value2 !== "object" || value2 === null) {
-      return false;
-    }
+    if (!getNodeType || typeof value2 !== "object" || value2 === null) return false;
     try {
       return typeof getNodeType(value2) === "number";
     } catch (_3) {
@@ -2235,44 +2098,28 @@ function createDOMPurify() {
     }
   };
   function _executeHooks(hooks2, currentNode, data6) {
-    if (hooks2.length === 0) {
-      return;
-    }
+    if (hooks2.length === 0) return;
     arrayForEach(hooks2, (hook2) => {
       hook2.call(DOMPurify, currentNode, data6, CONFIG);
     });
   }
   const _isUnsafeNode = function _isUnsafeNode2(currentNode, tagName) {
-    if (SAFE_FOR_XML && currentNode.hasChildNodes() && !_isNode(currentNode.firstElementChild) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.innerHTML)) {
-      return true;
-    }
-    if (SAFE_FOR_XML && currentNode.namespaceURI === HTML_NAMESPACE && LITERAL_TEXT_ELEMENTS[tagName] && (_isNode(currentNode.firstElementChild) || typeof currentNode.textContent === "string" && regExpTest(LITERAL_TEXT_CLOSE[tagName], currentNode.textContent))) {
-      return true;
-    }
-    if (currentNode.nodeType === NODE_TYPE.processingInstruction) {
-      return true;
-    }
-    if (SAFE_FOR_XML && currentNode.nodeType === NODE_TYPE.comment && regExpTest(COMMENT_MARKUP_PROBE, currentNode.data)) {
-      return true;
-    }
+    if (SAFE_FOR_XML && currentNode.hasChildNodes() && !_isNode(currentNode.firstElementChild) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.innerHTML)) return true;
+    if (SAFE_FOR_XML && currentNode.namespaceURI === HTML_NAMESPACE && LITERAL_TEXT_ELEMENTS[tagName] && (_isNode(currentNode.firstElementChild) || typeof currentNode.textContent === "string" && regExpTest(LITERAL_TEXT_CLOSE[tagName], currentNode.textContent))) return true;
+    if (currentNode.nodeType === NODE_TYPE.processingInstruction) return true;
+    if (SAFE_FOR_XML && currentNode.nodeType === NODE_TYPE.comment && regExpTest(COMMENT_MARKUP_PROBE, currentNode.data)) return true;
     return false;
   };
   const _matchesNameCheck = function _matchesNameCheck2(check, name) {
-    if (check instanceof RegExp) {
-      return regExpTest(check, name);
-    }
+    if (check instanceof RegExp) return regExpTest(check, name);
     if (check instanceof Function) {
-      for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-        args[_key - 2] = arguments[_key];
-      }
+      for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) args[_key - 2] = arguments[_key];
       return Boolean(check(name, ...args));
     }
     return false;
   };
   const _sanitizeDisallowedNode = function _sanitizeDisallowedNode2(currentNode, tagName, root4) {
-    if (!FORBID_TAGS[tagName] && _isBasicCustomElement(tagName) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, tagName)) {
-      return false;
-    }
+    if (!FORBID_TAGS[tagName] && _isBasicCustomElement(tagName) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, tagName)) return false;
     if (KEEP_CONTENT && !FORBID_CONTENTS[tagName]) {
       const parentNode = getParentNode(currentNode);
       const childNodes = getChildNodes(currentNode);
@@ -2288,25 +2135,17 @@ function createDOMPurify() {
     return true;
   };
   const _forkSharedAllowlist = function _forkSharedAllowlist2(hookList, set5, defaultSet, setConfigSet) {
-    if (hookList.length === 0) {
-      return set5;
-    }
+    if (hookList.length === 0) return set5;
     return set5 === defaultSet || set5 === setConfigSet ? clone(set5) : set5;
   };
   const _handleHookDetachedNode = function _handleHookDetachedNode2(currentNode, root4) {
-    if (currentNode === root4 || getParentNode(currentNode) !== null) {
-      return false;
-    }
-    if (IN_PLACE) {
-      _neutralizeSubtree(currentNode);
-    }
+    if (currentNode === root4 || getParentNode(currentNode) !== null) return false;
+    if (IN_PLACE) _neutralizeSubtree(currentNode);
     return true;
   };
   const _sanitizeElements = function _sanitizeElements2(currentNode, root4) {
     _executeHooks(hooks.beforeSanitizeElements, currentNode, null);
-    if (_handleHookDetachedNode(currentNode, root4)) {
-      return true;
-    }
+    if (_handleHookDetachedNode(currentNode, root4)) return true;
     if (_isClobbered(currentNode)) {
       _forceRemove(currentNode);
       return true;
@@ -2317,9 +2156,7 @@ function createDOMPurify() {
       tagName,
       allowedTags: ALLOWED_TAGS
     });
-    if (_handleHookDetachedNode(currentNode, root4)) {
-      return true;
-    }
+    if (_handleHookDetachedNode(currentNode, root4)) return true;
     if (_isUnsafeNode(currentNode, tagName)) {
       _forceRemove(currentNode);
       return true;
@@ -2328,11 +2165,11 @@ function createDOMPurify() {
       const removed = _sanitizeDisallowedNode(currentNode, tagName, root4);
       if (removed === false) {
         _executeHooks(hooks.afterSanitizeElements, currentNode, null);
+        if (_handleHookDetachedNode(currentNode, root4)) return true;
       }
       return removed;
     }
-    const nt2 = _readNodeType(currentNode);
-    if (nt2 === NODE_TYPE.element && !_checkValidNamespace(currentNode)) {
+    if (_readNodeType(currentNode) === NODE_TYPE.element && !_checkValidNamespace(currentNode)) {
       _forceRemove(currentNode);
       return true;
     }
@@ -2343,81 +2180,53 @@ function createDOMPurify() {
     if (SAFE_FOR_TEMPLATES && currentNode.nodeType === NODE_TYPE.text) {
       const content = _stripTemplateExpressions(currentNode.textContent);
       if (currentNode.textContent !== content) {
-        arrayPush(DOMPurify.removed, {
-          element: currentNode.cloneNode()
-        });
+        arrayPush(DOMPurify.removed, { element: currentNode.cloneNode() });
         currentNode.textContent = content;
       }
     }
     _executeHooks(hooks.afterSanitizeElements, currentNode, null);
-    return false;
+    return _handleHookDetachedNode(currentNode, root4);
   };
   const _isValidAttribute = function _isValidAttribute2(lcTag, lcName, value2) {
-    if (FORBID_ATTR[lcName]) {
-      return false;
-    }
-    if (_isPatchLinkageAttribute(lcName, lcTag)) {
-      return false;
-    }
-    if (SANITIZE_DOM && (lcName === "id" || lcName === "name") && (value2 in document2 || value2 in formElement)) {
-      return false;
-    }
+    if (FORBID_ATTR[lcName]) return false;
+    if (_isPatchLinkageAttribute(lcName, lcTag)) return false;
+    if (SANITIZE_DOM && (lcName === "id" || lcName === "name") && (value2 in document2 || value2 in formElement)) return false;
     const nameIsPermitted = ALLOWED_ATTR[lcName] || EXTRA_ELEMENT_HANDLING.attributeCheck instanceof Function && EXTRA_ELEMENT_HANDLING.attributeCheck(lcName, lcTag);
-    if (ALLOW_DATA_ATTR && regExpTest(DATA_ATTR$1, lcName)) {
-      return true;
-    }
-    if (ALLOW_ARIA_ATTR && regExpTest(ARIA_ATTR$1, lcName)) {
-      return true;
-    }
-    if (!nameIsPermitted) {
-      return (
-        // Condition a) covers a basically valid custom element tag name whose
-        // tag passes the configured tagNameCheck and whose attribute name
-        // passes the configured attributeNameCheck ...
-        _isBasicCustomElement(lcTag) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, lcTag) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.attributeNameCheck, lcName, lcTag) || // Condition b) covers an `is` attribute whose value passes the
-        // configured tagNameCheck while customized built-in elements are
-        // allowed.
-        lcName === "is" && CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, value2)
-      );
-    }
-    if (URI_SAFE_ATTRIBUTES[lcName]) {
-      return true;
-    }
-    if (regExpTest(IS_ALLOWED_URI$1, stringReplace(value2, ATTR_WHITESPACE$1, ""))) {
-      return true;
-    }
-    if ((lcName === "src" || lcName === "xlink:href" || lcName === "href") && lcTag !== "script" && stringIndexOf(value2, "data:") === 0 && DATA_URI_TAGS[lcTag]) {
-      return true;
-    }
-    if (ALLOW_UNKNOWN_PROTOCOLS && !regExpTest(IS_SCRIPT_OR_DATA$1, stringReplace(value2, ATTR_WHITESPACE$1, ""))) {
-      return true;
-    }
+    if (ALLOW_DATA_ATTR && regExpTest(DATA_ATTR$1, lcName)) return true;
+    if (ALLOW_ARIA_ATTR && regExpTest(ARIA_ATTR$1, lcName)) return true;
+    if (!nameIsPermitted) return _isBasicCustomElement(lcTag) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, lcTag) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.attributeNameCheck, lcName, lcTag) || lcName === "is" && CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, value2);
+    if (URI_SAFE_ATTRIBUTES[lcName]) return true;
+    if (regExpTest(IS_ALLOWED_URI$1, stringReplace(value2, ATTR_WHITESPACE$1, ""))) return true;
+    if ((lcName === "src" || lcName === "xlink:href" || lcName === "href") && lcTag !== "script" && stringIndexOf(value2, "data:") === 0 && DATA_URI_TAGS[lcTag]) return true;
+    if (ALLOW_UNKNOWN_PROTOCOLS && !regExpTest(IS_SCRIPT_OR_DATA$1, stringReplace(value2, ATTR_WHITESPACE$1, ""))) return true;
     return !value2;
   };
-  const RESERVED_CUSTOM_ELEMENT_NAMES = addToSet({}, ["annotation-xml", "color-profile", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "missing-glyph"]);
+  const RESERVED_CUSTOM_ELEMENT_NAMES = addToSet({}, [
+    "annotation-xml",
+    "color-profile",
+    "font-face",
+    "font-face-format",
+    "font-face-name",
+    "font-face-src",
+    "font-face-uri",
+    "missing-glyph"
+  ]);
   const _isBasicCustomElement = function _isBasicCustomElement2(tagName) {
     return !RESERVED_CUSTOM_ELEMENT_NAMES[stringToLowerCase(tagName)] && regExpTest(CUSTOM_ELEMENT$1, tagName);
   };
   const _applyTrustedTypesToAttribute = function _applyTrustedTypesToAttribute2(lcTag, lcName, namespaceURI, value2) {
-    if (trustedTypesPolicy && typeof trustedTypes === "object" && typeof trustedTypes.getAttributeType === "function" && !namespaceURI) {
-      switch (trustedTypes.getAttributeType(lcTag, lcName)) {
-        case "TrustedHTML": {
-          return _createTrustedHTML(value2);
-        }
-        case "TrustedScriptURL": {
-          return _createTrustedScriptURL(value2);
-        }
-      }
+    if (trustedTypesPolicy && typeof trustedTypes === "object" && typeof trustedTypes.getAttributeType === "function" && !namespaceURI) switch (trustedTypes.getAttributeType(lcTag, lcName)) {
+      case "TrustedHTML":
+        return _createTrustedHTML(value2);
+      case "TrustedScriptURL":
+        return _createTrustedScriptURL(value2);
     }
     return value2;
   };
   const _setAttributeValue = function _setAttributeValue2(currentNode, name, namespaceURI, value2) {
     try {
-      if (namespaceURI) {
-        currentNode.setAttributeNS(namespaceURI, name, value2);
-      } else {
-        currentNode.setAttribute(name, value2);
-      }
+      if (namespaceURI) currentNode.setAttributeNS(namespaceURI, name, value2);
+      else currentNode.setAttribute(name, value2);
       if (_isClobbered(currentNode)) {
         _forceRemove(currentNode);
         return false;
@@ -2428,12 +2237,11 @@ function createDOMPurify() {
       return false;
     }
   };
-  const _sanitizeAttributes = function _sanitizeAttributes2(currentNode) {
+  const _sanitizeAttributes = function _sanitizeAttributes2(currentNode, root4) {
     _executeHooks(hooks.beforeSanitizeAttributes, currentNode, null);
+    if (_handleHookDetachedNode(currentNode, root4)) return;
     const attributes = currentNode.attributes;
-    if (!attributes || _isClobbered(currentNode)) {
-      return;
-    }
+    if (!attributes || _isClobbered(currentNode)) return;
     ALLOWED_ATTR = _forkSharedAllowlist(hooks.uponSanitizeAttribute, ALLOWED_ATTR, DEFAULT_ALLOWED_ATTR, SET_CONFIG_ALLOWED_ATTR);
     const hookEvent = {
       attrName: "",
@@ -2470,9 +2278,7 @@ function createDOMPurify() {
         _removeAttribute(name, currentNode, attr);
         continue;
       }
-      if (hookEvent.forceKeepAttr) {
-        continue;
-      }
+      if (hookEvent.forceKeepAttr) continue;
       if (!hookEvent.keepAttr) {
         _removeAttribute(name, currentNode, attr);
         continue;
@@ -2481,22 +2287,18 @@ function createDOMPurify() {
         _removeAttribute(name, currentNode, attr);
         continue;
       }
-      if (SAFE_FOR_TEMPLATES) {
-        value2 = _stripTemplateExpressions(value2);
-      }
+      if (SAFE_FOR_TEMPLATES) value2 = _stripTemplateExpressions(value2);
       if (!_isValidAttribute(lcTag, lcName, value2)) {
         _removeAttribute(name, currentNode, attr);
         continue;
       }
       value2 = _applyTrustedTypesToAttribute(lcTag, lcName, namespaceURI, value2);
       if (value2 !== initValue) {
-        const cleanWrite = _setAttributeValue(currentNode, name, namespaceURI, value2);
-        if (cleanWrite && recreatedNamedProp) {
-          arrayPop(DOMPurify.removed);
-        }
+        if (_setAttributeValue(currentNode, name, namespaceURI, value2) && recreatedNamedProp) arrayPop(DOMPurify.removed);
       }
     }
     _executeHooks(hooks.afterSanitizeAttributes, currentNode, null);
+    _handleHookDetachedNode(currentNode, root4);
   };
   const _sanitizeShadowDOM2 = function _sanitizeShadowDOM(fragment) {
     let shadowNode = null;
@@ -2505,10 +2307,8 @@ function createDOMPurify() {
     while (shadowNode = shadowIterator.nextNode()) {
       _executeHooks(hooks.uponSanitizeShadowNode, shadowNode, null);
       _sanitizeElements(shadowNode, fragment);
-      _sanitizeAttributes(shadowNode);
-      if (_isDocumentFragment(shadowNode.content)) {
-        _sanitizeShadowDOM2(shadowNode.content);
-      }
+      _sanitizeAttributes(shadowNode, fragment);
+      if (_isDocumentFragment(shadowNode.content)) _sanitizeShadowDOM2(shadowNode.content);
       if (_readNodeType(shadowNode) === NODE_TYPE.element) {
         const innerSr = getShadowRoot(shadowNode);
         if (_isDocumentFragment(innerSr)) {
@@ -2531,40 +2331,31 @@ function createDOMPurify() {
         continue;
       }
       const node2 = item.node;
-      const nodeType3 = _readNodeType(node2);
-      const isElement = nodeType3 === NODE_TYPE.element;
+      const isElement = _readNodeType(node2) === NODE_TYPE.element;
       const childNodes = getChildNodes(node2);
-      if (childNodes) {
-        for (let i4 = childNodes.length - 1; i4 >= 0; --i4) {
-          stack.push({
-            node: childNodes[i4],
-            shadow: null
-          });
-        }
-      }
+      if (childNodes) for (let i4 = childNodes.length - 1; i4 >= 0; --i4) stack.push({
+        node: childNodes[i4],
+        shadow: null
+      });
       if (isElement) {
         const rootName = getNodeName ? getNodeName(node2) : null;
         if (typeof rootName === "string" && transformCaseFunc(rootName) === "template") {
           const content = node2.content;
-          if (_isDocumentFragment(content)) {
-            stack.push({
-              node: content,
-              shadow: null
-            });
-          }
+          if (_isDocumentFragment(content)) stack.push({
+            node: content,
+            shadow: null
+          });
         }
       }
       if (isElement) {
         const sr = getShadowRoot(node2);
-        if (_isDocumentFragment(sr)) {
-          stack.push({
-            node: null,
-            shadow: sr
-          }, {
-            node: sr,
-            shadow: null
-          });
-        }
+        if (_isDocumentFragment(sr)) stack.push({
+          node: null,
+          shadow: sr
+        }, {
+          node: sr,
+          shadow: null
+        });
       }
     }
   };
@@ -2575,30 +2366,18 @@ function createDOMPurify() {
     let currentNode = null;
     let returnNode = null;
     IS_EMPTY_INPUT = !dirty;
-    if (IS_EMPTY_INPUT) {
-      dirty = "<!-->";
-    }
+    if (IS_EMPTY_INPUT) dirty = "<!-->";
     if (typeof dirty !== "string" && !_isNode(dirty)) {
       dirty = stringifyValue(dirty);
-      if (typeof dirty !== "string") {
-        throw typeErrorCreate("dirty is not a string, aborting");
-      }
+      if (typeof dirty !== "string") throw typeErrorCreate("dirty is not a string, aborting");
     }
-    if (!DOMPurify.isSupported) {
-      return dirty;
-    }
+    if (!DOMPurify.isSupported) return dirty;
     if (SET_CONFIG) {
       ALLOWED_TAGS = SET_CONFIG_ALLOWED_TAGS;
       ALLOWED_ATTR = SET_CONFIG_ALLOWED_ATTR;
-    } else {
-      _parseConfig(cfg);
-    }
-    if (hooks.uponSanitizeElement.length > 0 || hooks.uponSanitizeAttribute.length > 0) {
-      ALLOWED_TAGS = clone(ALLOWED_TAGS);
-    }
-    if (hooks.uponSanitizeAttribute.length > 0) {
-      ALLOWED_ATTR = clone(ALLOWED_ATTR);
-    }
+    } else _parseConfig(cfg);
+    if (hooks.uponSanitizeElement.length > 0 || hooks.uponSanitizeAttribute.length > 0) ALLOWED_TAGS = clone(ALLOWED_TAGS);
+    if (hooks.uponSanitizeAttribute.length > 0) ALLOWED_ATTR = clone(ALLOWED_ATTR);
     DOMPurify.removed = [];
     const inPlace = IN_PLACE && typeof dirty !== "string" && _isNode(dirty);
     if (inPlace) {
@@ -2624,83 +2403,57 @@ function createDOMPurify() {
     } else if (_isNode(dirty)) {
       body = _initDocument("<!---->");
       importedNode = body.ownerDocument.importNode(dirty, true);
-      if (importedNode.nodeType === NODE_TYPE.element && importedNode.nodeName === "BODY") {
-        body = importedNode;
-      } else if (importedNode.nodeName === "HTML") {
-        body = importedNode;
-      } else {
-        body.appendChild(importedNode);
-      }
+      if (importedNode.nodeType === NODE_TYPE.element && importedNode.nodeName === "BODY") body = importedNode;
+      else if (importedNode.nodeName === "HTML") body = importedNode;
+      else body.appendChild(importedNode);
       _sanitizeAttachedShadowRoots(body);
     } else {
-      if (!RETURN_DOM && !SAFE_FOR_TEMPLATES && !WHOLE_DOCUMENT && // eslint-disable-next-line unicorn/prefer-includes
-      dirty.indexOf("<") === -1) {
-        return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? _createTrustedHTML(dirty) : dirty;
-      }
+      if (!RETURN_DOM && !SAFE_FOR_TEMPLATES && !WHOLE_DOCUMENT && dirty.indexOf("<") === -1) return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? _createTrustedHTML(dirty) : dirty;
       body = _initDocument(dirty);
-      if (!body) {
-        return RETURN_DOM ? null : RETURN_TRUSTED_TYPE ? emptyHTML : "";
-      }
+      if (!body) return RETURN_DOM ? null : RETURN_TRUSTED_TYPE ? emptyHTML : "";
     }
-    if (body && FORCE_BODY) {
-      _forceRemove(body.firstChild);
-    }
+    if (body && FORCE_BODY) _forceRemove(body.firstChild);
     const walkRoot = inPlace ? dirty : body;
     try {
       const nodeIterator = _createNodeIterator(walkRoot);
       while (currentNode = nodeIterator.nextNode()) {
         _sanitizeElements(currentNode, walkRoot);
-        _sanitizeAttributes(currentNode);
-        if (_isDocumentFragment(currentNode.content)) {
-          _sanitizeShadowDOM2(currentNode.content);
-        }
+        _sanitizeAttributes(currentNode, walkRoot);
+        if (_isDocumentFragment(currentNode.content)) _sanitizeShadowDOM2(currentNode.content);
       }
     } catch (error3) {
       if (inPlace) {
         _neutralizeRoot(dirty);
         arrayForEach(DOMPurify.removed, (entry) => {
-          if (entry.element) {
-            _neutralizeSubtree(entry.element);
-          }
+          if (entry.element) _neutralizeSubtree(entry.element);
         });
       }
       throw error3;
     }
     if (inPlace) {
+      let rootWasRemoved = false;
       arrayForEach(DOMPurify.removed, (entry) => {
         if (entry.element) {
+          if (entry.element === dirty) rootWasRemoved = true;
           _neutralizeSubtree(entry.element);
         }
       });
-      if (SAFE_FOR_TEMPLATES) {
-        _scrubTemplateExpressions2(dirty);
-      }
+      if (rootWasRemoved) throw typeErrorCreate("a node selected for removal could not be safely returned; refusing to sanitize in place");
+      if (SAFE_FOR_TEMPLATES) _scrubTemplateExpressions2(dirty);
       return dirty;
     }
     if (RETURN_DOM) {
-      if (SAFE_FOR_TEMPLATES) {
-        _scrubTemplateExpressions2(body);
-      }
+      if (SAFE_FOR_TEMPLATES) _scrubTemplateExpressions2(body);
       if (RETURN_DOM_FRAGMENT) {
         returnNode = createDocumentFragment.call(body.ownerDocument);
-        while (body.firstChild) {
-          returnNode.appendChild(body.firstChild);
-        }
-      } else {
-        returnNode = body;
-      }
-      if (ALLOWED_ATTR.shadowroot || ALLOWED_ATTR.shadowrootmode) {
-        returnNode = importNode.call(originalDocument, returnNode, true);
-      }
+        while (body.firstChild) returnNode.appendChild(body.firstChild);
+      } else returnNode = body;
+      if (ALLOWED_ATTR.shadowroot || ALLOWED_ATTR.shadowrootmode) returnNode = importNode.call(originalDocument, returnNode, true);
       return returnNode;
     }
     let serializedHTML = WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
-    if (WHOLE_DOCUMENT && ALLOWED_TAGS["!doctype"] && body.ownerDocument && body.ownerDocument.doctype && body.ownerDocument.doctype.name && regExpTest(DOCTYPE_NAME, body.ownerDocument.doctype.name)) {
-      serializedHTML = "<!DOCTYPE " + body.ownerDocument.doctype.name + ">\n" + serializedHTML;
-    }
-    if (SAFE_FOR_TEMPLATES) {
-      serializedHTML = _stripTemplateExpressions(serializedHTML);
-    }
+    if (WHOLE_DOCUMENT && ALLOWED_TAGS["!doctype"] && body.ownerDocument && body.ownerDocument.doctype && body.ownerDocument.doctype.name && regExpTest(DOCTYPE_NAME, body.ownerDocument.doctype.name)) serializedHTML = "<!DOCTYPE " + body.ownerDocument.doctype.name + ">\n" + serializedHTML;
+    if (SAFE_FOR_TEMPLATES) serializedHTML = _stripTemplateExpressions(serializedHTML);
     return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? _createTrustedHTML(serializedHTML) : serializedHTML;
   };
   DOMPurify.setConfig = function() {
@@ -2719,26 +2472,18 @@ function createDOMPurify() {
     emptyHTML = "";
   };
   DOMPurify.isValidAttribute = function(tag, attr, value2) {
-    if (!CONFIG) {
-      _parseConfig({});
-    }
+    if (!CONFIG) _parseConfig({});
     const lcTag = transformCaseFunc(tag);
     const lcName = transformCaseFunc(attr);
     return _isValidAttribute(lcTag, lcName, value2);
   };
   DOMPurify.addHook = function(entryPoint, hookFunction) {
-    if (typeof hookFunction !== "function") {
-      return;
-    }
-    if (!objectHasOwnProperty(hooks, entryPoint)) {
-      return;
-    }
+    if (typeof hookFunction !== "function") return;
+    if (!objectHasOwnProperty(hooks, entryPoint)) return;
     arrayPush(hooks[entryPoint], hookFunction);
   };
   DOMPurify.removeHook = function(entryPoint, hookFunction) {
-    if (!objectHasOwnProperty(hooks, entryPoint)) {
-      return void 0;
-    }
+    if (!objectHasOwnProperty(hooks, entryPoint)) return;
     if (hookFunction !== void 0) {
       const index = arrayLastIndexOf(hooks[entryPoint], hookFunction);
       return index === -1 ? void 0 : arraySplice(hooks[entryPoint], index, 1)[0];
@@ -2746,9 +2491,7 @@ function createDOMPurify() {
     return arrayPop(hooks[entryPoint]);
   };
   DOMPurify.removeHooks = function(entryPoint) {
-    if (!objectHasOwnProperty(hooks, entryPoint)) {
-      return;
-    }
+    if (!objectHasOwnProperty(hooks, entryPoint)) return;
     hooks[entryPoint] = [];
   };
   DOMPurify.removeAllHooks = function() {
@@ -2821,9 +2564,18 @@ var _createTrustedTypesPolicy;
 var _createHooksMap;
 var _resolveSetOption;
 var _resolveObjectOption;
-var purify;
+var purify_default;
 var init_purify_es = __esm({
   "node_modules/dompurify/dist/purify.es.mjs"() {
+    AsyncGenerator.prototype["function" == typeof Symbol && Symbol.asyncIterator || "@@asyncIterator"] = function() {
+      return this;
+    }, AsyncGenerator.prototype.next = function(e3) {
+      return this._invoke("next", e3);
+    }, AsyncGenerator.prototype.throw = function(e3) {
+      return this._invoke("throw", e3);
+    }, AsyncGenerator.prototype.return = function(e3) {
+      return this._invoke("return", e3);
+    };
     entries = Object.entries;
     setPrototypeOf = Object.setPrototypeOf;
     isFrozen = Object.isFrozen;
@@ -2835,36 +2587,26 @@ var init_purify_es = __esm({
     _ref = typeof Reflect !== "undefined" && Reflect;
     apply = _ref.apply;
     construct = _ref.construct;
-    if (!freeze) {
-      freeze = function freeze2(x6) {
-        return x6;
-      };
-    }
-    if (!seal) {
-      seal = function seal2(x6) {
-        return x6;
-      };
-    }
-    if (!apply) {
-      apply = function apply5(func, thisArg) {
-        for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-          args[_key - 2] = arguments[_key];
-        }
-        return func.apply(thisArg, args);
-      };
-    }
-    if (!construct) {
-      construct = function construct2(Func) {
-        for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-          args[_key2 - 1] = arguments[_key2];
-        }
-        return new Func(...args);
-      };
-    }
+    if (!freeze) freeze = function freeze2(x6) {
+      return x6;
+    };
+    if (!seal) seal = function seal2(x6) {
+      return x6;
+    };
+    if (!apply) apply = function apply2(func, thisArg) {
+      for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) args[_key - 2] = arguments[_key];
+      return func.apply(thisArg, args);
+    };
+    if (!construct) construct = function construct2(Func) {
+      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) args[_key2 - 1] = arguments[_key2];
+      return new Func(...args);
+    };
     arrayForEach = unapply(Array.prototype.forEach);
+    Array.prototype.indexOf;
     arrayLastIndexOf = unapply(Array.prototype.lastIndexOf);
     arrayPop = unapply(Array.prototype.pop);
     arrayPush = unapply(Array.prototype.push);
+    Array.prototype.slice;
     arraySplice = unapply(Array.prototype.splice);
     arrayIsArray = Array.isArray;
     stringToLowerCase = unapply(String.prototype.toLowerCase);
@@ -2881,31 +2623,662 @@ var init_purify_es = __esm({
     objectToString = unapply(Object.prototype.toString);
     regExpTest = unapply(RegExp.prototype.test);
     typeErrorCreate = unconstruct(TypeError);
-    html$1 = freeze(["a", "abbr", "acronym", "address", "area", "article", "aside", "audio", "b", "bdi", "bdo", "big", "blink", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "content", "data", "datalist", "dd", "decorator", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "element", "em", "fieldset", "figcaption", "figure", "font", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "img", "input", "ins", "kbd", "label", "legend", "li", "main", "map", "mark", "marquee", "menu", "menuitem", "meter", "nav", "nobr", "ol", "optgroup", "option", "output", "p", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "search", "section", "select", "shadow", "slot", "small", "source", "spacer", "span", "strike", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "tr", "track", "tt", "u", "ul", "var", "video", "wbr"]);
-    svg$1 = freeze(["svg", "a", "altglyph", "altglyphdef", "altglyphitem", "animatecolor", "animatemotion", "animatetransform", "circle", "clippath", "defs", "desc", "ellipse", "enterkeyhint", "exportparts", "filter", "font", "g", "glyph", "glyphref", "hkern", "image", "inputmode", "line", "lineargradient", "marker", "mask", "metadata", "mpath", "part", "path", "pattern", "polygon", "polyline", "radialgradient", "rect", "stop", "style", "switch", "symbol", "text", "textpath", "title", "tref", "tspan", "view", "vkern"]);
-    svgFilters = freeze(["feBlend", "feColorMatrix", "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap", "feDistantLight", "feDropShadow", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence"]);
-    svgDisallowed = freeze(["animate", "color-profile", "cursor", "discard", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "foreignobject", "hatch", "hatchpath", "mesh", "meshgradient", "meshpatch", "meshrow", "missing-glyph", "script", "set", "solidcolor", "unknown", "use"]);
-    mathMl$1 = freeze(["math", "menclose", "merror", "mfenced", "mfrac", "mglyph", "mi", "mlabeledtr", "mmultiscripts", "mn", "mo", "mover", "mpadded", "mphantom", "mroot", "mrow", "ms", "mspace", "msqrt", "mstyle", "msub", "msup", "msubsup", "mtable", "mtd", "mtext", "mtr", "munder", "munderover", "mprescripts"]);
-    mathMlDisallowed = freeze(["maction", "maligngroup", "malignmark", "mlongdiv", "mscarries", "mscarry", "msgroup", "mstack", "msline", "msrow", "semantics", "annotation", "annotation-xml", "mprescripts", "none"]);
+    html$1 = freeze([
+      "a",
+      "abbr",
+      "acronym",
+      "address",
+      "area",
+      "article",
+      "aside",
+      "audio",
+      "b",
+      "bdi",
+      "bdo",
+      "big",
+      "blink",
+      "blockquote",
+      "body",
+      "br",
+      "button",
+      "canvas",
+      "caption",
+      "center",
+      "cite",
+      "code",
+      "col",
+      "colgroup",
+      "content",
+      "data",
+      "datalist",
+      "dd",
+      "decorator",
+      "del",
+      "details",
+      "dfn",
+      "dialog",
+      "dir",
+      "div",
+      "dl",
+      "dt",
+      "element",
+      "em",
+      "fieldset",
+      "figcaption",
+      "figure",
+      "font",
+      "footer",
+      "form",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "head",
+      "header",
+      "hgroup",
+      "hr",
+      "html",
+      "i",
+      "img",
+      "input",
+      "ins",
+      "kbd",
+      "label",
+      "legend",
+      "li",
+      "main",
+      "map",
+      "mark",
+      "marquee",
+      "menu",
+      "menuitem",
+      "meter",
+      "nav",
+      "nobr",
+      "ol",
+      "optgroup",
+      "option",
+      "output",
+      "p",
+      "picture",
+      "pre",
+      "progress",
+      "q",
+      "rp",
+      "rt",
+      "ruby",
+      "s",
+      "samp",
+      "search",
+      "section",
+      "select",
+      "shadow",
+      "slot",
+      "small",
+      "source",
+      "spacer",
+      "span",
+      "strike",
+      "strong",
+      "style",
+      "sub",
+      "summary",
+      "sup",
+      "table",
+      "tbody",
+      "td",
+      "template",
+      "textarea",
+      "tfoot",
+      "th",
+      "thead",
+      "time",
+      "tr",
+      "track",
+      "tt",
+      "u",
+      "ul",
+      "var",
+      "video",
+      "wbr"
+    ]);
+    svg$1 = freeze([
+      "svg",
+      "a",
+      "altglyph",
+      "altglyphdef",
+      "altglyphitem",
+      "animatecolor",
+      "animatemotion",
+      "animatetransform",
+      "circle",
+      "clippath",
+      "defs",
+      "desc",
+      "ellipse",
+      "enterkeyhint",
+      "exportparts",
+      "filter",
+      "font",
+      "g",
+      "glyph",
+      "glyphref",
+      "hkern",
+      "image",
+      "inputmode",
+      "line",
+      "lineargradient",
+      "marker",
+      "mask",
+      "metadata",
+      "mpath",
+      "part",
+      "path",
+      "pattern",
+      "polygon",
+      "polyline",
+      "radialgradient",
+      "rect",
+      "stop",
+      "style",
+      "switch",
+      "symbol",
+      "text",
+      "textpath",
+      "title",
+      "tref",
+      "tspan",
+      "view",
+      "vkern"
+    ]);
+    svgFilters = freeze([
+      "feBlend",
+      "feColorMatrix",
+      "feComponentTransfer",
+      "feComposite",
+      "feConvolveMatrix",
+      "feDiffuseLighting",
+      "feDisplacementMap",
+      "feDistantLight",
+      "feDropShadow",
+      "feFlood",
+      "feFuncA",
+      "feFuncB",
+      "feFuncG",
+      "feFuncR",
+      "feGaussianBlur",
+      "feImage",
+      "feMerge",
+      "feMergeNode",
+      "feMorphology",
+      "feOffset",
+      "fePointLight",
+      "feSpecularLighting",
+      "feSpotLight",
+      "feTile",
+      "feTurbulence"
+    ]);
+    svgDisallowed = freeze([
+      "animate",
+      "color-profile",
+      "cursor",
+      "discard",
+      "font-face",
+      "font-face-format",
+      "font-face-name",
+      "font-face-src",
+      "font-face-uri",
+      "foreignobject",
+      "hatch",
+      "hatchpath",
+      "mesh",
+      "meshgradient",
+      "meshpatch",
+      "meshrow",
+      "missing-glyph",
+      "script",
+      "set",
+      "solidcolor",
+      "unknown",
+      "use"
+    ]);
+    mathMl$1 = freeze([
+      "math",
+      "menclose",
+      "merror",
+      "mfenced",
+      "mfrac",
+      "mglyph",
+      "mi",
+      "mlabeledtr",
+      "mmultiscripts",
+      "mn",
+      "mo",
+      "mover",
+      "mpadded",
+      "mphantom",
+      "mroot",
+      "mrow",
+      "ms",
+      "mspace",
+      "msqrt",
+      "mstyle",
+      "msub",
+      "msup",
+      "msubsup",
+      "mtable",
+      "mtd",
+      "mtext",
+      "mtr",
+      "munder",
+      "munderover",
+      "mprescripts"
+    ]);
+    mathMlDisallowed = freeze([
+      "maction",
+      "maligngroup",
+      "malignmark",
+      "mlongdiv",
+      "mscarries",
+      "mscarry",
+      "msgroup",
+      "mstack",
+      "msline",
+      "msrow",
+      "semantics",
+      "annotation",
+      "annotation-xml",
+      "mprescripts",
+      "none"
+    ]);
     text = freeze(["#text"]);
-    html = freeze(["accept", "action", "align", "alt", "autocapitalize", "autocomplete", "autopictureinpicture", "autoplay", "background", "bgcolor", "border", "capture", "cellpadding", "cellspacing", "checked", "cite", "class", "clear", "color", "cols", "colspan", "command", "commandfor", "controls", "controlslist", "coords", "crossorigin", "datetime", "decoding", "default", "dir", "disabled", "disablepictureinpicture", "disableremoteplayback", "download", "draggable", "enctype", "enterkeyhint", "exportparts", "face", "for", "headers", "height", "hidden", "high", "href", "hreflang", "id", "inert", "inputmode", "integrity", "ismap", "kind", "label", "lang", "list", "loading", "loop", "low", "max", "maxlength", "media", "method", "min", "minlength", "multiple", "muted", "name", "nonce", "noshade", "novalidate", "nowrap", "open", "optimum", "part", "pattern", "placeholder", "playsinline", "popover", "popovertarget", "popovertargetaction", "poster", "preload", "pubdate", "radiogroup", "readonly", "rel", "required", "rev", "reversed", "role", "rows", "rowspan", "spellcheck", "scope", "selected", "shape", "size", "sizes", "slot", "span", "srclang", "start", "src", "srcset", "step", "style", "summary", "tabindex", "title", "translate", "type", "usemap", "valign", "value", "width", "wrap", "xmlns"]);
-    svg = freeze(["accent-height", "accumulate", "additive", "alignment-baseline", "amplitude", "ascent", "attributename", "attributetype", "azimuth", "basefrequency", "baseline-shift", "begin", "bias", "by", "class", "clip", "clippathunits", "clip-path", "clip-rule", "color", "color-interpolation", "color-interpolation-filters", "color-profile", "color-rendering", "cx", "cy", "d", "dx", "dy", "diffuseconstant", "direction", "display", "divisor", "dominant-baseline", "dur", "edgemode", "elevation", "end", "exponent", "fill", "fill-opacity", "fill-rule", "filter", "filterunits", "flood-color", "flood-opacity", "font-family", "font-size", "font-size-adjust", "font-stretch", "font-style", "font-variant", "font-weight", "fx", "fy", "g1", "g2", "glyph-name", "glyphref", "gradientunits", "gradienttransform", "height", "href", "id", "image-rendering", "in", "in2", "intercept", "k", "k1", "k2", "k3", "k4", "kerning", "keypoints", "keysplines", "keytimes", "lang", "lengthadjust", "letter-spacing", "kernelmatrix", "kernelunitlength", "lighting-color", "local", "marker-end", "marker-mid", "marker-start", "markerheight", "markerunits", "markerwidth", "maskcontentunits", "maskunits", "max", "mask", "mask-type", "media", "method", "mode", "min", "name", "numoctaves", "offset", "operator", "opacity", "order", "orient", "orientation", "origin", "overflow", "paint-order", "path", "pathlength", "patterncontentunits", "patterntransform", "patternunits", "pointer-events", "points", "preservealpha", "preserveaspectratio", "primitiveunits", "r", "rx", "ry", "radius", "refx", "refy", "repeatcount", "repeatdur", "restart", "result", "rotate", "scale", "seed", "shape-rendering", "slope", "specularconstant", "specularexponent", "spreadmethod", "startoffset", "stddeviation", "stitchtiles", "stop-color", "stop-opacity", "stroke-dasharray", "stroke-dashoffset", "stroke-linecap", "stroke-linejoin", "stroke-miterlimit", "stroke-opacity", "stroke", "stroke-width", "style", "surfacescale", "systemlanguage", "tabindex", "tablevalues", "targetx", "targety", "transform", "transform-origin", "text-anchor", "text-decoration", "text-orientation", "text-rendering", "textlength", "type", "u1", "u2", "unicode", "values", "vector-effect", "viewbox", "visibility", "version", "vert-adv-y", "vert-origin-x", "vert-origin-y", "width", "word-spacing", "wrap", "writing-mode", "xchannelselector", "ychannelselector", "x", "x1", "x2", "xmlns", "y", "y1", "y2", "z", "zoomandpan"]);
-    mathMl = freeze(["accent", "accentunder", "align", "bevelled", "close", "columnalign", "columnlines", "columnspacing", "columnspan", "denomalign", "depth", "dir", "display", "displaystyle", "encoding", "fence", "frame", "height", "href", "id", "largeop", "length", "linethickness", "lquote", "lspace", "mathbackground", "mathcolor", "mathsize", "mathvariant", "maxsize", "minsize", "movablelimits", "notation", "numalign", "open", "rowalign", "rowlines", "rowspacing", "rowspan", "rspace", "rquote", "scriptlevel", "scriptminsize", "scriptsizemultiplier", "selection", "separator", "separators", "stretchy", "subscriptshift", "supscriptshift", "symmetric", "voffset", "width", "xmlns"]);
-    xml = freeze(["xlink:href", "xml:id", "xlink:title", "xml:space", "xmlns:xlink"]);
+    html = freeze([
+      "accept",
+      "action",
+      "align",
+      "alt",
+      "autocapitalize",
+      "autocomplete",
+      "autopictureinpicture",
+      "autoplay",
+      "background",
+      "bgcolor",
+      "border",
+      "capture",
+      "cellpadding",
+      "cellspacing",
+      "checked",
+      "cite",
+      "class",
+      "clear",
+      "color",
+      "cols",
+      "colspan",
+      "command",
+      "commandfor",
+      "controls",
+      "controlslist",
+      "coords",
+      "crossorigin",
+      "datetime",
+      "decoding",
+      "default",
+      "dir",
+      "disabled",
+      "disablepictureinpicture",
+      "disableremoteplayback",
+      "download",
+      "draggable",
+      "enctype",
+      "enterkeyhint",
+      "exportparts",
+      "face",
+      "for",
+      "headers",
+      "height",
+      "hidden",
+      "high",
+      "href",
+      "hreflang",
+      "id",
+      "inert",
+      "inputmode",
+      "integrity",
+      "ismap",
+      "kind",
+      "label",
+      "lang",
+      "list",
+      "loading",
+      "loop",
+      "low",
+      "max",
+      "maxlength",
+      "media",
+      "method",
+      "min",
+      "minlength",
+      "multiple",
+      "muted",
+      "name",
+      "nonce",
+      "noshade",
+      "novalidate",
+      "nowrap",
+      "open",
+      "optimum",
+      "part",
+      "pattern",
+      "placeholder",
+      "playsinline",
+      "popover",
+      "popovertarget",
+      "popovertargetaction",
+      "poster",
+      "preload",
+      "pubdate",
+      "radiogroup",
+      "readonly",
+      "rel",
+      "required",
+      "rev",
+      "reversed",
+      "role",
+      "rows",
+      "rowspan",
+      "spellcheck",
+      "scope",
+      "selected",
+      "shape",
+      "size",
+      "sizes",
+      "slot",
+      "span",
+      "srclang",
+      "start",
+      "src",
+      "srcset",
+      "step",
+      "style",
+      "summary",
+      "tabindex",
+      "title",
+      "translate",
+      "type",
+      "usemap",
+      "valign",
+      "value",
+      "width",
+      "wrap",
+      "xmlns"
+    ]);
+    svg = freeze([
+      "accent-height",
+      "accumulate",
+      "additive",
+      "alignment-baseline",
+      "amplitude",
+      "ascent",
+      "attributename",
+      "attributetype",
+      "azimuth",
+      "basefrequency",
+      "baseline-shift",
+      "begin",
+      "bias",
+      "by",
+      "class",
+      "clip",
+      "clippathunits",
+      "clip-path",
+      "clip-rule",
+      "color",
+      "color-interpolation",
+      "color-interpolation-filters",
+      "color-profile",
+      "color-rendering",
+      "cx",
+      "cy",
+      "d",
+      "dx",
+      "dy",
+      "diffuseconstant",
+      "direction",
+      "display",
+      "divisor",
+      "dominant-baseline",
+      "dur",
+      "edgemode",
+      "elevation",
+      "end",
+      "exponent",
+      "fill",
+      "fill-opacity",
+      "fill-rule",
+      "filter",
+      "filterunits",
+      "flood-color",
+      "flood-opacity",
+      "font-family",
+      "font-size",
+      "font-size-adjust",
+      "font-stretch",
+      "font-style",
+      "font-variant",
+      "font-weight",
+      "fx",
+      "fy",
+      "g1",
+      "g2",
+      "glyph-name",
+      "glyphref",
+      "gradientunits",
+      "gradienttransform",
+      "height",
+      "href",
+      "id",
+      "image-rendering",
+      "in",
+      "in2",
+      "intercept",
+      "k",
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "kerning",
+      "keypoints",
+      "keysplines",
+      "keytimes",
+      "lang",
+      "lengthadjust",
+      "letter-spacing",
+      "kernelmatrix",
+      "kernelunitlength",
+      "lighting-color",
+      "local",
+      "marker-end",
+      "marker-mid",
+      "marker-start",
+      "markerheight",
+      "markerunits",
+      "markerwidth",
+      "maskcontentunits",
+      "maskunits",
+      "max",
+      "mask",
+      "mask-type",
+      "media",
+      "method",
+      "mode",
+      "min",
+      "name",
+      "numoctaves",
+      "offset",
+      "operator",
+      "opacity",
+      "order",
+      "orient",
+      "orientation",
+      "origin",
+      "overflow",
+      "paint-order",
+      "path",
+      "pathlength",
+      "patterncontentunits",
+      "patterntransform",
+      "patternunits",
+      "pointer-events",
+      "points",
+      "preservealpha",
+      "preserveaspectratio",
+      "primitiveunits",
+      "r",
+      "rx",
+      "ry",
+      "radius",
+      "refx",
+      "refy",
+      "repeatcount",
+      "repeatdur",
+      "restart",
+      "result",
+      "rotate",
+      "scale",
+      "seed",
+      "shape-rendering",
+      "slope",
+      "specularconstant",
+      "specularexponent",
+      "spreadmethod",
+      "startoffset",
+      "stddeviation",
+      "stitchtiles",
+      "stop-color",
+      "stop-opacity",
+      "stroke-dasharray",
+      "stroke-dashoffset",
+      "stroke-linecap",
+      "stroke-linejoin",
+      "stroke-miterlimit",
+      "stroke-opacity",
+      "stroke",
+      "stroke-width",
+      "style",
+      "surfacescale",
+      "systemlanguage",
+      "tabindex",
+      "tablevalues",
+      "targetx",
+      "targety",
+      "transform",
+      "transform-origin",
+      "text-anchor",
+      "text-decoration",
+      "text-orientation",
+      "text-rendering",
+      "textlength",
+      "type",
+      "u1",
+      "u2",
+      "unicode",
+      "values",
+      "vector-effect",
+      "viewbox",
+      "visibility",
+      "version",
+      "vert-adv-y",
+      "vert-origin-x",
+      "vert-origin-y",
+      "width",
+      "word-spacing",
+      "wrap",
+      "writing-mode",
+      "xchannelselector",
+      "ychannelselector",
+      "x",
+      "x1",
+      "x2",
+      "xmlns",
+      "y",
+      "y1",
+      "y2",
+      "z",
+      "zoomandpan"
+    ]);
+    mathMl = freeze([
+      "accent",
+      "accentunder",
+      "align",
+      "bevelled",
+      "close",
+      "columnalign",
+      "columnlines",
+      "columnspacing",
+      "columnspan",
+      "denomalign",
+      "depth",
+      "dir",
+      "display",
+      "displaystyle",
+      "encoding",
+      "fence",
+      "frame",
+      "height",
+      "href",
+      "id",
+      "largeop",
+      "length",
+      "linethickness",
+      "lquote",
+      "lspace",
+      "mathbackground",
+      "mathcolor",
+      "mathsize",
+      "mathvariant",
+      "maxsize",
+      "minsize",
+      "movablelimits",
+      "notation",
+      "numalign",
+      "open",
+      "rowalign",
+      "rowlines",
+      "rowspacing",
+      "rowspan",
+      "rspace",
+      "rquote",
+      "scriptlevel",
+      "scriptminsize",
+      "scriptsizemultiplier",
+      "selection",
+      "separator",
+      "separators",
+      "stretchy",
+      "subscriptshift",
+      "supscriptshift",
+      "symmetric",
+      "voffset",
+      "width",
+      "xmlns"
+    ]);
+    xml = freeze([
+      "xlink:href",
+      "xml:id",
+      "xlink:title",
+      "xml:space",
+      "xmlns:xlink"
+    ]);
     MUSTACHE_EXPR = seal(/{{[\w\W]*|^[\w\W]*}}/g);
     ERB_EXPR = seal(/<%[\w\W]*|^[\w\W]*%>/g);
     TMPLIT_EXPR = seal(/\${[\w\W]*/g);
     DATA_ATTR = seal(/^data-[\-\w.\u00B7-\uFFFF]+$/);
     ARIA_ATTR = seal(/^aria-[\-\w]+$/);
-    IS_ALLOWED_URI = seal(
-      /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp|matrix):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
-      // eslint-disable-line no-useless-escape
-    );
+    IS_ALLOWED_URI = seal(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp|matrix):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i);
     IS_SCRIPT_OR_DATA = seal(/^(?:\w+script|data):/i);
-    ATTR_WHITESPACE = seal(
-      /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g
-      // eslint-disable-line no-control-regex
-    );
+    ATTR_WHITESPACE = seal(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g);
     DOCTYPE_NAME = seal(/^html$/i);
     CUSTOM_ELEMENT = seal(/^[a-z][.\w]*(-[.\w]+)+$/i);
     ELEMENT_MARKUP_PROBE = seal(/<[/\w!]/g);
@@ -2918,18 +3291,24 @@ var init_purify_es = __esm({
       text: 3,
       cdataSection: 4,
       entityReference: 5,
-      // Deprecated
       entityNode: 6,
-      // Deprecated
       processingInstruction: 7,
       comment: 8,
       document: 9,
       documentType: 10,
       documentFragment: 11,
       notation: 12
-      // Deprecated
     };
-    LITERAL_TEXT_ELEMENT_NAMES = ["style", "script", "xmp", "iframe", "noembed", "noframes", "plaintext", "noscript"];
+    LITERAL_TEXT_ELEMENT_NAMES = [
+      "style",
+      "script",
+      "xmp",
+      "iframe",
+      "noembed",
+      "noframes",
+      "plaintext",
+      "noscript"
+    ];
     LITERAL_TEXT_ELEMENTS = freeze(addToSet({}, LITERAL_TEXT_ELEMENT_NAMES));
     LITERAL_TEXT_CLOSE = (function() {
       const map6 = {};
@@ -2942,14 +3321,10 @@ var init_purify_es = __esm({
       return typeof window === "undefined" ? null : window;
     };
     _createTrustedTypesPolicy = function _createTrustedTypesPolicy2(trustedTypes, purifyHostElement) {
-      if (typeof trustedTypes !== "object" || typeof trustedTypes.createPolicy !== "function") {
-        return null;
-      }
+      if (typeof trustedTypes !== "object" || typeof trustedTypes.createPolicy !== "function") return null;
       let suffix = null;
       const ATTR_NAME = "data-tt-policy-suffix";
-      if (purifyHostElement && purifyHostElement.hasAttribute(ATTR_NAME)) {
-        suffix = purifyHostElement.getAttribute(ATTR_NAME);
-      }
+      if (purifyHostElement && purifyHostElement.hasAttribute(ATTR_NAME)) suffix = purifyHostElement.getAttribute(ATTR_NAME);
       const policyName = "dompurify" + (suffix ? "#" + suffix : "");
       try {
         return trustedTypes.createPolicy(policyName, {
@@ -2985,7 +3360,7 @@ var init_purify_es = __esm({
       const value2 = objectHasOwnProperty(cfg, key) ? cfg[key] : void 0;
       return value2 && typeof value2 === "object" ? clone(value2) : makeFallback();
     };
-    purify = createDOMPurify();
+    purify_default = createDOMPurify();
   }
 });
 var katex_exports = {};
@@ -17811,12 +18186,12 @@ var init_katex = __esm({
 });
 function setupDompurifyHooks() {
   const TEMPORARY_ATTRIBUTE = "data-temp-href-target";
-  purify.addHook("beforeSanitizeAttributes", (node2) => {
+  purify_default.addHook("beforeSanitizeAttributes", (node2) => {
     if (node2.tagName === "A" && node2.hasAttribute("target")) {
       node2.setAttribute(TEMPORARY_ATTRIBUTE, node2.getAttribute("target") ?? "");
     }
   });
-  purify.addHook("afterSanitizeAttributes", (node2) => {
+  purify_default.addHook("afterSanitizeAttributes", (node2) => {
     if (node2.tagName === "A" && node2.hasAttribute(TEMPORARY_ATTRIBUTE)) {
       node2.setAttribute("target", node2.getAttribute(TEMPORARY_ATTRIBUTE) ?? "");
       node2.removeAttribute(TEMPORARY_ATTRIBUTE);
@@ -23168,7 +23543,7 @@ var init_chunk_O7XYJQB3 = __esm({
     __name(setupDompurifyHooks, "setupDompurifyHooks");
     removeScript = /* @__PURE__ */ __name((txt) => {
       setupDompurifyHooksIfNotSetup();
-      const sanitizedText = purify.sanitize(txt);
+      const sanitizedText = purify_default.sanitize(txt);
       return sanitizedText;
     }, "removeScript");
     sanitizeMore = /* @__PURE__ */ __name((text4, config22) => {
@@ -23190,9 +23565,9 @@ var init_chunk_O7XYJQB3 = __esm({
         return text4;
       }
       if (config22.dompurifyConfig) {
-        text4 = purify.sanitize(sanitizeMore(text4, config22), config22.dompurifyConfig).toString();
+        text4 = purify_default.sanitize(sanitizeMore(text4, config22), config22.dompurifyConfig).toString();
       } else {
-        text4 = purify.sanitize(sanitizeMore(text4, config22), {
+        text4 = purify_default.sanitize(sanitizeMore(text4, config22), {
           FORBID_TAGS: ["style"]
         }).toString();
       }
@@ -48574,7 +48949,7 @@ var init_baseCreate = __esm({
     baseCreate_default = baseCreate;
   }
 });
-function apply2(func, thisArg, args) {
+function apply3(func, thisArg, args) {
   switch (args.length) {
     case 0:
       return func.call(thisArg);
@@ -48590,7 +48965,7 @@ function apply2(func, thisArg, args) {
 var apply_default;
 var init_apply = __esm({
   "node_modules/lodash-es/_apply.js"() {
-    apply_default = apply2;
+    apply_default = apply3;
   }
 });
 function noop3() {
@@ -168992,7 +169367,7 @@ var init_cytoscape_esm = __esm({
       playing: function playing() {
         return this._private.playing;
       },
-      apply: function apply3() {
+      apply: function apply4() {
         var _p = this._private;
         _p.applying = true;
         _p.started = false;
@@ -199268,7 +199643,7 @@ You have to call mermaid.initialize.`
           const rect2 = e3.currentTarget?.getBoundingClientRect();
           tooltipElem.transition().duration(200).style("opacity", ".9");
           tooltipElem.text(el.attr("title")).style("left", window.scrollX + rect2.left + (rect2.right - rect2.left) / 2 + "px").style("top", window.scrollY + rect2.bottom + "px");
-          tooltipElem.html(purify.sanitize(title2));
+          tooltipElem.html(purify_default.sanitize(title2));
           el.classed("hover", true);
         }).on("mouseout", (e3) => {
           tooltipElem.transition().duration(500).style("opacity", 0);
@@ -202506,7 +202881,7 @@ You have to call mermaid.initialize.`
           const rect2 = e3.currentTarget?.getBoundingClientRect();
           tooltipElem.transition().duration(200).style("opacity", ".9");
           tooltipElem.text(el.attr("title")).style("left", window.scrollX + rect2.left + (rect2.right - rect2.left) / 2 + "px").style("top", window.scrollY + rect2.bottom + "px");
-          tooltipElem.html(purify.sanitize(title2));
+          tooltipElem.html(purify_default.sanitize(title2));
           el.classed("hover", true);
         }).on("mouseout", (e3) => {
           tooltipElem.transition().duration(500).style("opacity", 0);
@@ -208394,7 +208769,7 @@ function getNative2(object3, key) {
   var value2 = getValue_default2(object3, key);
   return baseIsNative_default2(value2) ? value2 : void 0;
 }
-function apply4(func, thisArg, args) {
+function apply5(func, thisArg, args) {
   switch (args.length) {
     case 0:
       return func.call(thisArg);
@@ -225949,8 +226324,8 @@ ${JSON.stringify(message, null, 4)}`);
       };
     })();
     baseCreate_default2 = baseCreate2;
-    __name2(apply4, "apply");
-    apply_default2 = apply4;
+    __name2(apply5, "apply");
+    apply_default2 = apply5;
     __name2(noop7, "noop");
     noop_default3 = noop7;
     __name2(copyArray4, "copyArray");
@@ -256622,7 +256997,7 @@ var init_classDiagram_v2_NBCMYWYE = __esm({
             }
             const rect2 = event3.currentTarget.getBoundingClientRect();
             tooltipElem.transition().duration(200).style("opacity", ".9");
-            tooltipElem.html(purify.sanitize(title2)).style("left", `${window.scrollX + rect2.left + rect2.width / 2}px`).style("top", `${window.scrollY + rect2.bottom + 4}px`);
+            tooltipElem.html(purify_default.sanitize(title2)).style("left", `${window.scrollX + rect2.left + rect2.width / 2}px`).style("top", `${window.scrollY + rect2.bottom + 4}px`);
             el.classed("hover", true);
           }).on("mouseout", (event3) => {
             tooltipElem.transition().duration(500).style("opacity", 0);
@@ -259455,7 +259830,7 @@ var init_stateDiagram_v2_GCMORJYK = __esm({
           const rect2 = e3.currentTarget?.getBoundingClientRect();
           tooltipElem.transition().duration(200).style("opacity", ".9");
           tooltipElem.style("left", window.scrollX + rect2.left + (rect2.right - rect2.left) / 2 + "px").style("top", window.scrollY + rect2.bottom + "px");
-          tooltipElem.html(purify.sanitize(title2));
+          tooltipElem.html(purify_default.sanitize(title2));
           el.classed("hover", true);
         }).on("mouseout", (e3) => {
           tooltipElem.transition().duration(500).style("opacity", 0);
@@ -299310,7 +299685,7 @@ var renderDiagram = /* @__PURE__ */ __name(async function(id38, text4, svgContai
       const svgEl = root4.select(enclosingDivID_selector + " svg").node();
       code2 = putIntoIFrame(code2, svgEl);
     } else if (!isLooseSecurityLevel) {
-      code2 = purify.sanitize(code2, {
+      code2 = purify_default.sanitize(code2, {
         ADD_TAGS: DOMPURIFY_TAGS,
         ADD_ATTR: DOMPURIFY_ATTR,
         HTML_INTEGRATION_POINTS: { foreignobject: true }
@@ -300032,7 +300407,8 @@ export {
   (*! Bundled license information:
   
   dompurify/dist/purify.es.mjs:
-    (*! @license DOMPurify 3.4.15 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.15/LICENSE *)
+    (*! @license DOMPurify 3.4.16 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.16/LICENSE *)
+    (*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE *)
   
   lodash-es/lodash.js:
     (**
