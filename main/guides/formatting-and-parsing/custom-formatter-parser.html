@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-127ebe.json"
+    href="../../search-data-6c082b.json"
     as="fetch"
     crossorigin
-    integrity="sha384-sV6dVWTGe5P3au0B1/uoUM1YBcJcz06QnFHFx8EPiksj54HZLrdkUBtDTERNwEy8"
+    integrity="sha384-C9VtJd5sn6UBA0s5t2+7juHJ28n60bghvhjryC4m0wmr/Nf0gp45g8KCtZ2fFnYr"
     id="search-data"
 />
 <script>
@@ -5911,13 +5911,13 @@
                     <div id="content"><p class="docs-paragraph">För en djupare förståelse om hur data flödar från inmatningsfält till modell-värde till vy-värde presenterar vi flödesscheman.</p>
 <h2 id="utan_parser_och_formaterare" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#utan_parser_och_formaterare">Utan parser och formaterare</a></h2>
                 <pre class="mermaid">graph LR
-	FTextField[&quot;`**FTextField**
-	    &amp;quot;AbcD&amp;quot;`&quot;]
+    FTextField[&quot;`**FTextField**
+        &amp;quot;AbcD&amp;quot;`&quot;]
     validerar?{&quot;`**Validerar?**
-	    &amp;quot;AbcD&amp;quot;`&quot;}
+        &amp;quot;AbcD&amp;quot;`&quot;}
     trim[&quot;trim()&quot;]
     modelValue[(&quot;`**modelValue**
-	    &amp;quot;AbcD&amp;quot;`&quot;)]
+        &amp;quot;AbcD&amp;quot;`&quot;)]
 
     FTextField -. &quot;Ändrar värde\n(blur)&quot; .-&gt; validerar?
     validerar? -- Ja --&gt; trim
@@ -5941,14 +5941,14 @@
                 </div>
             
                 <pre class="mermaid">graph LR
-	FTextField[&quot;`**FTextField**
-	    &amp;quot;AbcD&amp;quot;`&quot;]
+    FTextField[&quot;`**FTextField**
+        &amp;quot;AbcD&amp;quot;`&quot;]
     validerar?{&quot;`**Validerar?**
-	    &amp;quot;AbcD&amp;quot;`&quot;}
+        &amp;quot;AbcD&amp;quot;`&quot;}
     modelValue[(&quot;`**modelValue**
-	    &amp;quot;abcd&amp;quot;`&quot;)]
+        &amp;quot;abcd&amp;quot;`&quot;)]
     viewValue[(&quot;`**viewValue**
-	    &amp;quot;abcd&amp;quot;`&quot;)]
+        &amp;quot;abcd&amp;quot;`&quot;)]
     pformatter[&quot;formatter()&quot;]
     ptrim[&quot;trim()&quot;]
     stringify[&quot;String()&quot;]
@@ -6013,12 +6013,12 @@
                 </div>
             
                 <pre class="mermaid">graph LR
-	FTextField[&quot;`**FTextField**
-	    &amp;quot;AbcD&amp;quot;`&quot;]
+    FTextField[&quot;`**FTextField**
+        &amp;quot;AbcD&amp;quot;`&quot;]
     validerar?{&quot;`**Validerar?**
-	    &amp;quot;AbcD&amp;quot;`&quot;}
+        &amp;quot;AbcD&amp;quot;`&quot;}
     modelValue[(&quot;`**modelValue**
-	    &amp;quot;ABCD&amp;quot;`&quot;)]
+        &amp;quot;ABCD&amp;quot;`&quot;)]
     pparser[&quot;parser()&quot;]
     ptrim[&quot;trim()&quot;]
 
@@ -6053,14 +6053,14 @@
             <h2 id="formaterare_och_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#formaterare_och_parser">Formaterare och parser</a></h2><p class="docs-paragraph">I detta exempel kombinerar vi formateraren och parsern från tidigare flöden.</p>
 
                 <pre class="mermaid">graph LR
-	FTextField[&quot;`**FTextField**
-	    &amp;quot;AbcD&amp;quot;`&quot;]
+    FTextField[&quot;`**FTextField**
+        &amp;quot;AbcD&amp;quot;`&quot;]
     modelValue[(&quot;`**modelValue**
-	    &amp;quot;ABCD&amp;quot;`&quot;)]
+        &amp;quot;ABCD&amp;quot;`&quot;)]
     viewValue[(&quot;`**viewValue**
-	    &amp;quot;abcd&amp;quot;`&quot;)]
+        &amp;quot;abcd&amp;quot;`&quot;)]
     validerar?{&quot;`**Validerar?**
-	    &amp;quot;AbcD&amp;quot;`&quot;}
+        &amp;quot;AbcD&amp;quot;`&quot;}
     pparser[&quot;parser()&quot;]
     ptrim[&quot;trim()&quot;]
     wformatter[&quot;formatter()&quot;]
@@ -6103,9 +6103,9 @@ Misslyckas parsning eller formatering på vägen så sätts vy-värdet till mode
 
                 <pre class="mermaid">graph LR
     modelValue[(&quot;`**modelValue**
-	    &amp;quot;AbcD&amp;quot;`&quot;)]
+        &amp;quot;AbcD&amp;quot;`&quot;)]
     viewValue[(&quot;`**viewValue**
-	    &amp;quot;abcd&amp;quot;`&quot;)]
+        &amp;quot;abcd&amp;quot;`&quot;)]
     stringify[&quot;String()&quot;]
     wparser[&quot;parser()&quot;]
     wformatter[&quot;formatter()&quot;]
@@ -6164,9 +6164,9 @@ Misslyckas parsning eller formatering på vägen så sätts vy-värdet till mode
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/fbdcb652c411bd96897a9c3f4a5a8a12bb16592e">fbdcb65</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/39abd7be701611dc268b8f393dfc399c0810490a">39abd7b</a>)<br />
         
-       <span class="version-text-block">2026-09-28 03:30</span>
+       <span class="version-text-block">2026-09-28 09:29</span>
 </div>
 <div class="toolbar__item">
     <form id="version">

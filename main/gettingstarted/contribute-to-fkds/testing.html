@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-127ebe.json"
+    href="../../search-data-6c082b.json"
     as="fetch"
     crossorigin
-    integrity="sha384-sV6dVWTGe5P3au0B1/uoUM1YBcJcz06QnFHFx8EPiksj54HZLrdkUBtDTERNwEy8"
+    integrity="sha384-C9VtJd5sn6UBA0s5t2+7juHJ28n60bghvhjryC4m0wmr/Nf0gp45g8KCtZ2fFnYr"
     id="search-data"
 />
 <script>
@@ -6191,11 +6191,11 @@ Styrkan i E2E-tester ligger i att det är enkelt att testa hur flera komponenter
 Svagheten ligger i att testerna är dyra resursmässigt (framförallt långsamma).</p>
 <h3 id="filnamn_och_katalogstruktur" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#filnamn_och_katalogstruktur">Filnamn och katalogstruktur</a></h3>
                 <div
-                    id="example-e0894e"
+                    id="example-5e3da0"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language=""
+                    data-language="plaintext"
                 >
                     
                     <pre class="code-preview__markup"><code>root
@@ -6381,11 +6381,11 @@ Genom att lägga testdata i anslutning till testet är det lätt att utläsa var
             <p class="docs-paragraph">Filerna läggs med fördel i <code>__fixtures__</code>:</p>
 
                 <div
-                    id="example-f1bc44"
+                    id="example-3755d9"
                     class="code-preview code-preview--default"
                     
                     
-                    data-language=""
+                    data-language="plaintext"
                 >
                     
                     <pre class="code-preview__markup"><code>MyComponent
@@ -6557,11 +6557,12 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <h3 id="it_each" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#it_each">it.each</a></h3><p class="docs-paragraph">Används för repetitiva tester där man vill testa många olika input värden som ger olika output värden.</p>
 <p class="docs-paragraph">Om din it.each behöver en if-sats dela istället upp it.each i två it.each, en för varje condition.</p>
 <p class="docs-paragraph">Om din it.each behöver en description parameter bryt istället ut till en egen it</p>
-<h3 id="undvik_attachtodocument_och_attachto" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#undvik_attachtodocument_och_attachto">Undvik <code>attachToDocument</code> och <code>attachTo</code></a></h3><p class="docs-paragraph">Om man inte måste! Testar man focus så måste man ha <code>attachTo</code></p>
+<h3 id="undvik_attachtodocument_och_attachto" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#undvik_attachtodocument_och_attachto">Undvik <code>attachToDocument</code> och <code>attachTo</code></a></h3><p class="docs-paragraph">Om man inte måste!
+Testar man focus så måste man ha <code>attachTo</code></p>
 <p class="docs-paragraph">Motivering: genom att inte attacha till <code>body</code> så behöver vi inte lika mycket uppstädning mellan testfall</p>
 <h3 id="foredra_vi_spyon_over_vi_fn" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#foredra_vi_spyon_over_vi_fn">Föredra <code>vi.spyOn</code> över <code>vi.fn()</code></a></h3>
                 <div
-                    id="example-72aa5e"
+                    id="example-acbcf2"
                     class="code-preview code-preview--default"
                     
                     
@@ -6576,7 +6577,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
 <h3 id="foredra_lokalt_scopad_wrapper_over_global" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#foredra_lokalt_scopad_wrapper_over_global">Föredra lokalt scopad wrapper över global</a></h3><p class="docs-paragraph">istället för:</p>
 
                 <div
-                    id="example-60669b"
+                    id="example-7a18c6"
                     class="code-preview code-preview--default"
                     
                     
@@ -6593,7 +6594,7 @@ Det underlättar för både utvecklare och testare att härleda vilket krav test
             <p class="docs-paragraph">kör:</p>
 
                 <div
-                    id="example-ad5631"
+                    id="example-c0eea2"
                     class="code-preview code-preview--default"
                     
                     
@@ -6615,14 +6616,24 @@ För felhantering så visas det bara för den som letar, om det rör sig om ett 
 Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt genom att mocka <code>console.log</code>, verifiera resultatet samt avsaknad av andra utskrifter.</p>
 <p class="docs-paragraph">Utskrifter från Vue ska hanteras och inte döljas, exempelvis:</p>
 <blockquote>
-<pre><code>[vue-test-utils]: name is deprecated and will be removed in the next major version.
+
+                <div
+                    id="example-b6cb35"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="plaintext"
+                >
+                    
+                    <pre class="code-preview__markup"><code>[vue-test-utils]: name is deprecated and will be removed in the next major version.
 </code></pre>
-</blockquote>
+                </div>
+            </blockquote>
 <p class="docs-paragraph">Istället för att dölja meddelandet se till att korrigera din kod.</p>
 <p class="docs-paragraph">För att korrekt mocka och verifiera <code>console.log</code> använder du <code>vi.spyOn(..)</code>:</p>
 
                 <div
-                    id="example-385156"
+                    id="example-876fce"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -6656,12 +6667,13 @@ Om utskriften bedöms rimlig så bör du också testa att utskriften är korrekt
                 </div>
             <p class="docs-paragraph">Undvik <code>console.log = vi.fn()</code> då det gör det svårare att återställa mellan testfall.
 Är du inte försiktig när du mockar <code>console.log</code> försvårar du för andra som försöker använda <code>console.log</code> och du kan dölja riktiga fel som skrivs ut i console.</p>
-<h2 id="test_av_exempel" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#test_av_exempel">Test av exempel</a></h2><h3 id="vi_skriver_cypress_test_for_varje_korbart_exempel" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#vi_skriver_cypress_test_for_varje_korbart_exempel">Vi skriver Cypress test för varje körbart exempel</a></h3><p class="docs-paragraph">Vi implementerar ett E2E‑test för varje exempel för att säkerställa att det laddas korrekt. Dessutom skall enkla komponenttester implementeras för att validera de grundläggande funktionerna.</p>
+<h2 id="test_av_exempel" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#test_av_exempel">Test av exempel</a></h2><h3 id="vi_skriver_cypress_test_for_varje_korbart_exempel" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#vi_skriver_cypress_test_for_varje_korbart_exempel">Vi skriver Cypress test för varje körbart exempel</a></h3><p class="docs-paragraph">Vi implementerar ett E2E‑test för varje exempel för att säkerställa att det laddas korrekt.
+Dessutom skall enkla komponenttester implementeras för att validera de grundläggande funktionerna.</p>
 <p class="docs-paragraph">Motivering: då exempel är en del av det vi levererar till konsumenter vill vi att de alltid ska vara i ett fungerande skick och inte utdaterade.</p>
 <h2 id="pageobject_for_cypress" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#pageobject_for_cypress">Pageobject för Cypress</a></h2><p class="docs-paragraph">Vi skriver och levererar pageobject för alla publika komponenter och moduler.</p>
 <h3 id="mall" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#mall">Mall</a></h3>
                 <div
-                    id="example-403c88"
+                    id="example-7b035b"
                     class="code-preview code-preview--default"
                     
                     
@@ -6702,7 +6714,7 @@ Undvik arrow-funktion-som-property mönster:</p>
 <p class="docs-paragraph">Istället för:</p>
 
                 <div
-                    id="example-12f9c0"
+                    id="example-33f0b6"
                     class="code-preview code-preview--default"
                     
                     
@@ -6727,7 +6739,7 @@ Undvik arrow-funktion-som-property mönster:</p>
             <p class="docs-paragraph">Använd vanliga klassmetoder:</p>
 
                 <div
-                    id="example-c75d4d"
+                    id="example-1efe0c"
                     class="code-preview code-preview--default"
                     
                     
@@ -6755,7 +6767,7 @@ Undvik arrow-funktion-som-property mönster:</p>
 Skriv istället ihop selectorn med en template literal:</p>
 
                 <div
-                    id="example-ac3209"
+                    id="example-7bafdb"
                     class="code-preview code-preview--default"
                     
                     
@@ -6815,9 +6827,9 @@ Skriv istället ihop selectorn med en template literal:</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/fbdcb652c411bd96897a9c3f4a5a8a12bb16592e">fbdcb65</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/39abd7be701611dc268b8f393dfc399c0810490a">39abd7b</a>)<br />
         
-       <span class="version-text-block">2026-09-28 03:30</span>
+       <span class="version-text-block">2026-09-28 09:29</span>
 </div>
 <div class="toolbar__item">
     <form id="version">

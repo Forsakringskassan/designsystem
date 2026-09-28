@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../search-data-127ebe.json"
+    href="../search-data-6c082b.json"
     as="fetch"
     crossorigin
-    integrity="sha384-sV6dVWTGe5P3au0B1/uoUM1YBcJcz06QnFHFx8EPiksj54HZLrdkUBtDTERNwEy8"
+    integrity="sha384-C9VtJd5sn6UBA0s5t2+7juHJ28n60bghvhjryC4m0wmr/Nf0gp45g8KCtZ2fFnYr"
     id="search-data"
 />
 <script>
@@ -5888,12 +5888,22 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">I Windows kan användaren välja ett kontrasttema. Varje tema har en enkel färgpalett med några få färger. Det valda kontrasttemat ersätter alla färger som används i Windows-applikationer och på webbplatser. Syftet är att förenkla användargränssnittet genom att minska antalet färger. Men syftet är också att använda färger som ökar kontrasten mellan bakgrunden och element i förgrunden.</p>
+                    <div id="content"><p class="docs-paragraph">I Windows kan användaren välja ett kontrasttema.
+Varje tema har en enkel färgpalett med några få färger.
+Det valda kontrasttemat ersätter alla färger som används i Windows-applikationer och på webbplatser.
+Syftet är att förenkla användargränssnittet genom att minska antalet färger.
+Men syftet är också att använda färger som ökar kontrasten mellan bakgrunden och element i förgrunden.</p>
 <p class="docs-paragraph">Det här kallas Windows högkontrast eller Windows kontrasttema och aktiverar i sin tur <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors">CSS media-funktionen forced-colors</a>.</p>
-<p class="docs-paragraph">Varken Android, iOS eller MacOS har stöd för kontrastteman. Däremot har flera <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors#browser_compatibility">webbläsare stöd för forced-colors</a>. I praktiken är det bara Windows i kombination med någon av webbläsarna med stöd för forced-colors som ger användaren möjlighet att själv välja ett kontrasttema.</p>
+<p class="docs-paragraph">Varken Android, iOS eller MacOS har stöd för kontrastteman.
+Däremot har flera <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors#browser_compatibility">webbläsare stöd för forced-colors</a>.
+I praktiken är det bara Windows i kombination med någon av webbläsarna med stöd för forced-colors som ger användaren möjlighet att själv välja ett kontrasttema.</p>
 <p class="docs-paragraph">Här används omväxlande begreppen högkontrast och forced-colors.</p>
-<h2 id="fkds_och_hogkontrast" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fkds_och_hogkontrast">FKDS och högkontrast</a></h2><p class="docs-paragraph">I designsystemet försöker vi undvika att designa specifikt för högkontrast, istället ska komponenter i FKDS ha en design som fungerar även i högkontrast. Ibland behöver designers och utvecklare göra val för att designen ska fungera även i högkontrast. Ibland behövs justeringar specifikt för högkontrast. Här tar vi upp några exempel på designval och anpassningar som används i designsystemet.</p>
-<h2 id="bakgrundsfarger" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#bakgrundsfarger">Bakgrundsfärger</a></h2><p class="docs-paragraph">Alla element får samma bakgrundsfärg när forced-colors är aktivt. Om du använder en avvikande bakgrundsfärg för att skilja ut ett element eller en del av en sida behöver du hitta andra eller kompletterande metoder.</p>
+<h2 id="fkds_och_hogkontrast" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fkds_och_hogkontrast">FKDS och högkontrast</a></h2><p class="docs-paragraph">I designsystemet försöker vi undvika att designa specifikt för högkontrast, istället ska komponenter i FKDS ha en design som fungerar även i högkontrast.
+Ibland behöver designers och utvecklare göra val för att designen ska fungera även i högkontrast.
+Ibland behövs justeringar specifikt för högkontrast.
+Här tar vi upp några exempel på designval och anpassningar som används i designsystemet.</p>
+<h2 id="bakgrundsfarger" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#bakgrundsfarger">Bakgrundsfärger</a></h2><p class="docs-paragraph">Alla element får samma bakgrundsfärg när forced-colors är aktivt.
+Om du använder en avvikande bakgrundsfärg för att skilja ut ett element eller en del av en sida behöver du hitta andra eller kompletterande metoder.</p>
 <p class="docs-paragraph">Exempel:</p>
 <ul>
 <li>Du använder en avvikande bakgrundsfärg på en yta med information.</li>
@@ -5908,7 +5918,7 @@
 <p class="docs-paragraph">Tips: Genom att använda en transparent kantlinje syns den bara i högkontrastläget.</p>
 
                 <div
-                    id="example-61f4d1"
+                    id="example-4cfd5e"
                     class="code-preview code-preview--default"
                     
                     
@@ -5937,7 +5947,7 @@ Med en transparent outline får modalen en tydlig kantlinje när forcedcolors ä
 Hover-effekt för en dag i kalendern i Windows kontrasttema Natthimmel.</p>
 
                 <div
-                    id="example-bd31f9"
+                    id="example-9e03b2"
                     class="code-preview code-preview--default"
                     
                     
@@ -5951,10 +5961,12 @@ Hover-effekt för en dag i kalendern i Windows kontrasttema Natthimmel.</p>
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Ibland kan det vara bra att hitta andra sätt att än att ändra bakgrundsfärgen när du vill ge användaren tydlig återkoppling. I FKDS ändras till exempel tjockleken på länkars understrykning när användaren för muspekaren över dem. En design som fungerar även i högkontrast, utan justeringar.</p>
+            <p class="docs-paragraph">Ibland kan det vara bra att hitta andra sätt att än att ändra bakgrundsfärgen när du vill ge användaren tydlig återkoppling.
+I FKDS ändras till exempel tjockleken på länkars understrykning när användaren för muspekaren över dem.
+En design som fungerar även i högkontrast, utan justeringar.</p>
 
             <div
-                id="example-f1a7fc"
+                id="example-944a93"
                 class="code-preview code-preview--default"
                 
                 
@@ -5994,13 +6006,19 @@ Hover-effekt för en dag i kalendern i Windows kontrasttema Natthimmel.</p>
 <li>Dag i kalendern</li>
 <li>Checkbox</li>
 </ul>
-<p class="docs-paragraph">I dessa fall sätts komponents bakgrundsfärg till systemfärgen <code>highlight</code> när forced-colors är aktivt. Eventuell text som visas i förgrunden får systemfärgen <code>highlightText</code>.</p>
-<p class="docs-paragraph">När en bakgrund färgläggs med en systemfärg lägger webbläsare till en bakgrund bakom texten för att säkra tillräcklig kontrast. Genom att använda <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/forced-color-adjust">forced-color-adjust: none</a> kan du ta full kontroll över presentationen i högkontrastläget.</p>
+<p class="docs-paragraph">I dessa fall sätts komponents bakgrundsfärg till systemfärgen <code>highlight</code> när forced-colors är aktivt.
+Eventuell text som visas i förgrunden får systemfärgen <code>highlightText</code>.</p>
+<p class="docs-paragraph">När en bakgrund färgläggs med en systemfärg lägger webbläsare till en bakgrund bakom texten för att säkra tillräcklig kontrast.
+Genom att använda <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/forced-color-adjust">forced-color-adjust: none</a> kan du ta full kontroll över presentationen i högkontrastläget.</p>
 <p class="docs-paragraph"><img src="../assets/images/69a9bfbc2402c523cd7f7d01d32fc415.png" alt="3 exempel som visar ett markerat alternativ i en lista i komboboxen. I alla exempel är det valda alternativets bakgrund satt till highglight. Exempel 1 har oförändrad textfärg. I exempel 2 är textens färg highlighttext. I tredje exempel är texten satt till highlighttext och forced-color-adjust är satt till none "><br>
-De tre exemplen visar ett valt alternativ i komboboxens lista där bakgrundsfärgen är satt till <code>highlight</code>. I första exemmplet är textens färg oförändrad. I andra exemplet är textfärgen <code>highlightText</code>. I både första och andra exemplet har browsern lagt en svart bakgrund bakom texten. I tredje exemplet används <code>highlightText</code> och <code>forced-color-adjust: none</code>.</p>
+De tre exemplen visar ett valt alternativ i komboboxens lista där bakgrundsfärgen är satt till <code>highlight</code>.
+I första exemmplet är textens färg oförändrad.
+I andra exemplet är textfärgen <code>highlightText</code>.
+I både första och andra exemplet har browsern lagt en svart bakgrund bakom texten.
+I tredje exemplet används <code>highlightText</code> och <code>forced-color-adjust: none</code>.</p>
 
                 <div
-                    id="example-844679"
+                    id="example-1d917f"
                     class="code-preview code-preview--default"
                     
                     
@@ -6017,13 +6035,19 @@ De tre exemplen visar ett valt alternativ i komboboxens lista där bakgrundsfär
 </code></pre>
                 </div>
             <p class="docs-paragraph">Var noggrann med när du använder forced-color-adjust, det kan ge oförutsedda effekter.</p>
-<h2 id="svg_filer_och_farger" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#svg_filer_och_farger">SVG-filer och färger</a></h2><p class="docs-paragraph">SVG-filer behåller sina färger när forced-colors är aktivt. Det gäller både SVG-filer som färgsätts i SVG-filen i sig eller via CSS.</p>
-<p class="docs-paragraph">I FKDS komponenter används ikoner i SVG-format som komplement till text. Till exempel kan en knapp för att radera ha en text samt en ikon i form av en soptunna. Ikonerna är alltid enkla och består oftast bara av en färg, samma som intilliggande text.</p>
-<p class="docs-paragraph">Ikoner i designsystemet har oftast ingen egen färg. Istället pekar SVG-filerna på <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#currentcolor_keyword">currentColor</a>. Därmed kommer ikonen att följa textfärgen i den kontext där ikonen används. Till exempel kommer en ikon som används i en knapp alltid att följa knappens textfärg, även när forced-colors är aktivt.</p>
+<h2 id="svg_filer_och_farger" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#svg_filer_och_farger">SVG-filer och färger</a></h2><p class="docs-paragraph">SVG-filer behåller sina färger när forced-colors är aktivt.
+Det gäller både SVG-filer som färgsätts i SVG-filen i sig eller via CSS.</p>
+<p class="docs-paragraph">I FKDS komponenter används ikoner i SVG-format som komplement till text.
+Till exempel kan en knapp för att radera ha en text samt en ikon i form av en soptunna.
+Ikonerna är alltid enkla och består oftast bara av en färg, samma som intilliggande text.</p>
+<p class="docs-paragraph">Ikoner i designsystemet har oftast ingen egen färg.
+Istället pekar SVG-filerna på <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#currentcolor_keyword">currentColor</a>.
+Därmed kommer ikonen att följa textfärgen i den kontext där ikonen används.
+Till exempel kommer en ikon som används i en knapp alltid att följa knappens textfärg, även när forced-colors är aktivt.</p>
 <p class="docs-paragraph">I de fall en ikon används som en knapp utan någon relaterad text sätts ikonen till systemfärgen <code>buttonBorder</code>.</p>
 
                 <div
-                    id="example-2d691a"
+                    id="example-c73820"
                     class="code-preview code-preview--default"
                     
                     
@@ -6038,7 +6062,8 @@ De tre exemplen visar ett valt alternativ i komboboxens lista där bakgrundsfär
 </code></pre>
                 </div>
             <h2 id="kantlinjer" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kantlinjer">Kantlinjer</a></h2><p class="docs-paragraph">Undvik att skapa linjer med en <code>&lt;div&gt;</code> som färgsätts med en bakgrundsfärg.
-Försök använda en border istället. Om du måste används en <code>&lt;div&gt;</code> med en bakgrundsfärg behöver du sätta en färg med media-query forced-colors.</p>
+Försök använda en border istället.
+Om du måste används en <code>&lt;div&gt;</code> med en bakgrundsfärg behöver du sätta en färg med media-query forced-colors.</p>
 <p class="docs-paragraph">Exempel i FKDS:
 Kantlinjen till en <a href="../components/page-layout/fresizepane.html">Justerbar yta</a> använder systemfärgen <code>canvasText</code> som bakgrundsfärg på en <code>&lt;div&gt;</code> som används som en avdelande linje.</p>
 
@@ -6089,9 +6114,9 @@ Kantlinjen till en <a href="../components/page-layout/fresizepane.html">Justerba
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/fbdcb652c411bd96897a9c3f4a5a8a12bb16592e">fbdcb65</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/39abd7be701611dc268b8f393dfc399c0810490a">39abd7b</a>)<br />
         
-       <span class="version-text-block">2026-09-28 03:30</span>
+       <span class="version-text-block">2026-09-28 09:29</span>
 </div>
 <div class="toolbar__item">
     <form id="version">

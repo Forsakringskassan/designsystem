@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-127ebe.json"
+    href="../../search-data-6c082b.json"
     as="fetch"
     crossorigin
-    integrity="sha384-sV6dVWTGe5P3au0B1/uoUM1YBcJcz06QnFHFx8EPiksj54HZLrdkUBtDTERNwEy8"
+    integrity="sha384-C9VtJd5sn6UBA0s5t2+7juHJ28n60bghvhjryC4m0wmr/Nf0gp45g8KCtZ2fFnYr"
     id="search-data"
 />
 <script>
@@ -6068,10 +6068,12 @@ Om konsumenten inte förser validatorn med konfiguration så sätter du även et
 </code></pre>
                 </div>
             <h2 id="registrering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#registrering">Registrering</a></h2><p class="docs-paragraph">För att göra validatorn tillgänglig för användning i din applikation så behöver den registreras.
-Tänk på att bara registrera validatorn en gång, förslagsvis görs det globalt tillsammans med registrering av plugins m.m. i t.ex. <code>main.ts</code>. Gör det inte i en komponents lifecycle-hooks så som <code>created</code>, <code>mounted</code> m.fl.</p>
+Tänk på att bara registrera validatorn en gång, förslagsvis görs det globalt tillsammans med registrering av plugins m.m.
+i t.ex. <code>main.ts</code>.
+Gör det inte i en komponents lifecycle-hooks så som <code>created</code>, <code>mounted</code> m.fl.</p>
 
                 <div
-                    id="example-6953f2"
+                    id="example-66e090"
                     class="code-preview code-preview--default"
                     
                     
@@ -6083,10 +6085,11 @@ Tänk på att bara registrera validatorn en gång, förslagsvis görs det global
                 </div>
             <p class="docs-paragraph">Nu när validatorn är klar så passar det bra att skriva komponenttester för att verifiera att validatorn är rätt registrerad och att den går att använda tillsammans med sin konfiguration.</p>
 <h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Aktivera validatorn på ditt inputfält genom att lägga till direktivet <code>v-validation.startsWith</code> och förse den med en konfiguration.
-I exemplet nedan så anger du värdet <code>test</code> till konfigurationens attribut <code>startString</code>. Nu kommer validatorn validera att input-fältets värde börjar med &quot;test&quot;.</p>
+I exemplet nedan så anger du värdet <code>test</code> till konfigurationens attribut <code>startString</code>.
+Nu kommer validatorn validera att input-fältets värde börjar med &quot;test&quot;.</p>
 
                 <div
-                    id="example-a58abe"
+                    id="example-f1ce31"
                     class="code-preview code-preview--default"
                     
                     
@@ -6111,7 +6114,7 @@ Antigen sätter man en global standardtext (rekomenderat) eller så sätter man 
 Det gör du genom att lägga till attributet <code>errorMessage</code> till validatorns konfiguration, med en tillhörande text.</p>
 
                 <div
-                    id="example-b3421e"
+                    id="example-501790"
                     class="code-preview code-preview--default"
                     
                     
@@ -6136,7 +6139,7 @@ Det gör du genom att lägga till attributet <code>errorMessage</code> till vali
 Då behöver <code>errorMessage</code> användas och felmeddelande blir samma på alla ställen i applikationen där validatorn används.</p>
 
                 <div
-                    id="example-3bc6b5"
+                    id="example-a9359d"
                     class="code-preview code-preview--default"
                     
                     
@@ -6155,7 +6158,7 @@ Då behöver <code>errorMessage</code> användas och felmeddelande blir samma p�
             <h2 id="exempel" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#exempel">Exempel</a></h2><p class="docs-paragraph">Här nedan visas ett komplett exempel med tre input-fält.</p>
 
             <div
-                id="example-a79a4d"
+                id="example-34663f"
                 class="code-preview code-preview--default"
                 
                 
@@ -6342,9 +6345,9 @@ interface <span class="hljs-title class_">StartsWithConfig</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/fbdcb652c411bd96897a9c3f4a5a8a12bb16592e">fbdcb65</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/39abd7be701611dc268b8f393dfc399c0810490a">39abd7b</a>)<br />
         
-       <span class="version-text-block">2026-09-28 03:30</span>
+       <span class="version-text-block">2026-09-28 09:29</span>
 </div>
 <div class="toolbar__item">
     <form id="version">

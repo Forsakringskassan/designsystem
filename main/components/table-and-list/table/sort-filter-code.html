@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-127ebe.json"
+    href="../../../search-data-6c082b.json"
     as="fetch"
     crossorigin
-    integrity="sha384-sV6dVWTGe5P3au0B1/uoUM1YBcJcz06QnFHFx8EPiksj54HZLrdkUBtDTERNwEy8"
+    integrity="sha384-C9VtJd5sn6UBA0s5t2+7juHJ28n60bghvhjryC4m0wmr/Nf0gp45g8KCtZ2fFnYr"
     id="search-data"
 />
 <script>
@@ -7246,12 +7246,15 @@ interface <span class="hljs-title class_">Row</span> {
 </code></pre>
                 </div>
             <p class="docs-paragraph"><code>sortFilterResult</code> innehåller de rader som ska visas efter sortering och filtrering.</p>
-<h2 id="sortera_och_filtera_pa_varden_fran_value" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sortera_och_filtera_pa_varden_fran_value">Sortera och filtera på värden från <code>value()</code></a></h2><p class="docs-paragraph"><code>FTable</code> kan visa värden med hjälp av <code>value()</code>, till exempel om värdet är nästlat i objektet. <code>FSortFilterDataset</code> använder däremot inte <code>value()</code> när datan sorteras eller filtreras. Sortering och filtrering sker på attribut i datamängden.</p>
-<p class="docs-paragraph">Om en tabellkolumn visar ett beräknat eller nästlat värde med <code>value()</code>, behöver samma värde även finnas som ett attribut i datamängden. Använd sedan det attributet i både <code>sortableAttributes</code> och tabellens <code>key</code>.</p>
-<p class="docs-paragraph">I exemplet nedan visar tabellen <code>row.ursprung.land</code> med <code>value()</code>. Däremot fungerar inte sortering och filtrering på <code>land</code>, eftersom <code>row.land</code> inte finns.</p>
+<h2 id="sortera_och_filtera_pa_varden_fran_value" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#sortera_och_filtera_pa_varden_fran_value">Sortera och filtera på värden från <code>value()</code></a></h2><p class="docs-paragraph"><code>FTable</code> kan visa värden med hjälp av <code>value()</code>, till exempel om värdet är nästlat i objektet. <code>FSortFilterDataset</code> använder däremot inte <code>value()</code> när datan sorteras eller filtreras.
+Sortering och filtrering sker på attribut i datamängden.</p>
+<p class="docs-paragraph">Om en tabellkolumn visar ett beräknat eller nästlat värde med <code>value()</code>, behöver samma värde även finnas som ett attribut i datamängden.
+Använd sedan det attributet i både <code>sortableAttributes</code> och tabellens <code>key</code>.</p>
+<p class="docs-paragraph">I exemplet nedan visar tabellen <code>row.ursprung.land</code> med <code>value()</code>.
+Däremot fungerar inte sortering och filtrering på <code>land</code>, eftersom <code>row.land</code> inte finns.</p>
 
                 <div
-                    id="example-5e0e60"
+                    id="example-8d6f99"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -7277,7 +7280,7 @@ interface <span class="hljs-title class_">Row</span> {
             <p class="docs-paragraph">För att sortering och filtrering ska ske på samma värde som visas i tabellen behöver värdet mappas ut till ett attribut i datamängden.</p>
 
                 <div
-                    id="example-55a155"
+                    id="example-652c37"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -7338,7 +7341,7 @@ interface <span class="hljs-title class_">Row</span> {
                 </div>
             
                 <div
-                    id="example-de9cae"
+                    id="example-4458d2"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7403,9 +7406,9 @@ interface <span class="hljs-title class_">Row</span> {
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/fbdcb652c411bd96897a9c3f4a5a8a12bb16592e">fbdcb65</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/39abd7be701611dc268b8f393dfc399c0810490a">39abd7b</a>)<br />
         
-       <span class="version-text-block">2026-09-28 03:30</span>
+       <span class="version-text-block">2026-09-28 09:29</span>
 </div>
 <div class="toolbar__item">
     <form id="version">

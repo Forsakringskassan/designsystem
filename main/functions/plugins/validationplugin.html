@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-127ebe.json"
+    href="../../search-data-6c082b.json"
     as="fetch"
     crossorigin
-    integrity="sha384-sV6dVWTGe5P3au0B1/uoUM1YBcJcz06QnFHFx8EPiksj54HZLrdkUBtDTERNwEy8"
+    integrity="sha384-C9VtJd5sn6UBA0s5t2+7juHJ28n60bghvhjryC4m0wmr/Nf0gp45g8KCtZ2fFnYr"
     id="search-data"
 />
 <script>
@@ -7393,12 +7393,13 @@ I nedan exempel anges ett objekt med validatornamnet som nyckel och översättni
 <span class="hljs-title class_">ValidationService</span>.<span class="hljs-title function_">setErrorMessages</span>(messages);
 </code></pre>
                 </div>
-            <h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Flera validatorer kan läggas till fältet genom att separera dem med punkter. Vissa validatorer kräver en konfiguration vilket görs genom att ange konfigurationen i direktivsvärdet.</p>
+            <h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2><p class="docs-paragraph">Flera validatorer kan läggas till fältet genom att separera dem med punkter.
+Vissa validatorer kräver en konfiguration vilket görs genom att ange konfigurationen i direktivsvärdet.</p>
 <p class="docs-paragraph"><strong>Observera</strong> Ordningen definierar prioriteten för varje validator, ju längre till vänster desto högre prioritet.
 Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer validatorn för <code>required</code> köras först och endast om den validatorn är giltig kommer nästa validator att köras och så vidare.</p>
 
             <div
-                id="example-085b97"
+                id="example-d3eadd"
                 class="code-preview code-preview--default"
                 
                 
@@ -7461,7 +7462,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer val
         <p class="docs-paragraph">Valideringsdirektivet är även reaktivt vilket betyder att man kan binda variabler i konfigurationen och när variablerna uppdateras i runtime så kommer valideringen hantera detta.</p>
 
             <div
-                id="example-02fce1"
+                id="example-29fda8"
                 class="code-preview code-preview--default"
                 
                 
@@ -7531,7 +7532,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer val
 <code>ValidityEvent</code> innehåller information om valideringens status.</p>
 
             <div
-                id="example-0aea31"
+                id="example-64d9a5"
                 class="code-preview code-preview--default"
                 
                 
@@ -7605,7 +7606,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer val
         <h2 id="utokade_komponenter_med_default_validering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#utokade_komponenter_med_default_validering">Utökade komponenter med default-validering</a></h2><p class="docs-paragraph">Om du behöver utveckla en egen komponent med inbyggd validering som standard-beteende måste du lägga till validatorn i komponentens mounted()-metod via metoden <code>ValidationService.addValidatorsToElement()</code> och med tredje parametern <code>isBaseConfigs</code> satt till <code>true</code>:</p>
 
                 <div
-                    id="example-7abd4d"
+                    id="example-80f9ad"
                     class="code-preview code-preview--default"
                     
                     
@@ -7629,7 +7630,7 @@ Till exempel i <code>v-validation.required.maxLength.minLength</code> kommer val
 <h2 id="applikationsspecifikt_felmeddelande" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#applikationsspecifikt_felmeddelande">Applikationsspecifikt felmeddelande</a></h2><p class="docs-paragraph">Alla validatorers konfiguration tar attributet <code>errorMessage</code> som ersätter felmeddelandet som definieras med <code>ValidatorService.setErrorMessages()</code> funktionen.</p>
 
             <div
-                id="example-77d947"
+                id="example-685cca"
                 class="code-preview code-preview--default"
                 
                 
@@ -7699,7 +7700,7 @@ Vue-direktivet <code>v-validation-prefix</code> plockar ut <code>errorMessage</c
 Det innebär att du kan lägga direktivet på flera platser för att kontinuerligt lägga på fler prefix.</p>
 
             <div
-                id="example-43dc9f"
+                id="example-20028e"
                 class="code-preview code-preview--default"
                 
                 
@@ -7784,7 +7785,7 @@ Det innebär att du kan lägga direktivet på flera platser för att kontinuerli
 Ett use-case för detta är till exempel om ett fält längre ned skall vara required baserat på val som tidigare har gjorts.</p>
 
                 <div
-                    id="example-58bda1"
+                    id="example-619250"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7802,7 +7803,7 @@ Ett use-case för detta är till exempel om ett fält längre ned skall vara req
                 </div>
             
             <div
-                id="example-58445d"
+                id="example-18126f"
                 class="code-preview code-preview--default"
                 
                 
@@ -7886,7 +7887,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
 <h2 id="revalidera_falt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#revalidera_falt">Revalidera fält</a></h2><p class="docs-paragraph">Exempel på revalidering av all fält på denna sida.</p>
 
             <div
-                id="example-886c88"
+                id="example-538c93"
                 class="code-preview code-preview--default"
                 
                 
@@ -7958,7 +7959,7 @@ Den erbjuder även funktioner för att sätta fel ifrån servern.</p>
         <h2 id="serverfel" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#serverfel">Serverfel</a></h2><p class="docs-paragraph">Exempel på att sätta serverfel på all fält på denna sida.</p>
 
             <div
-                id="example-8ddfb5"
+                id="example-6ffcb3"
                 class="code-preview code-preview--default"
                 
                 
@@ -8033,7 +8034,7 @@ Detta eftersom användaren inte har möjlighet att interagera med inaktiva fält
 Det rekommenderade sättet är att använda sig av event listeners för <code>change</code>, <code>click</code> och så vidare och validera om därifrån.</p>
 
             <div
-                id="example-9bc1b6"
+                id="example-1fafad"
                 class="code-preview code-preview--default"
                 
                 
@@ -8197,9 +8198,9 @@ Det rekommenderade sättet är att använda sig av event listeners för <code>ch
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/fbdcb652c411bd96897a9c3f4a5a8a12bb16592e">fbdcb65</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/39abd7be701611dc268b8f393dfc399c0810490a">39abd7b</a>)<br />
         
-       <span class="version-text-block">2026-09-28 03:30</span>
+       <span class="version-text-block">2026-09-28 09:29</span>
 </div>
 <div class="toolbar__item">
     <form id="version">

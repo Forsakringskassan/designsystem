@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-127ebe.json"
+    href="../../search-data-6c082b.json"
     as="fetch"
     crossorigin
-    integrity="sha384-sV6dVWTGe5P3au0B1/uoUM1YBcJcz06QnFHFx8EPiksj54HZLrdkUBtDTERNwEy8"
+    integrity="sha384-C9VtJd5sn6UBA0s5t2+7juHJ28n60bghvhjryC4m0wmr/Nf0gp45g8KCtZ2fFnYr"
     id="search-data"
 />
 <script>
@@ -7112,7 +7112,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/fbdcb652c411bd96897a9c3f4a5a8a12bb16592e/packages/vue/src/components/FTextField/FTextField.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/39abd7be701611dc268b8f393dfc399c0810490a/packages/vue/src/components/FTextField/FTextField.vue">
                 FTextField
             </a>
             
@@ -7179,28 +7179,39 @@
         <script type="module" src="./FTextFieldLiveExample-8544da.js"></script>
     
                 </div>
-            <p class="docs-paragraph">Ett inmatningsfält har alltid en <a href="../flabel.html">etikett</a> som beskriver vad användaren ska fylla i. Etiketten kan också visa ett felmeddelande, en formatbeskrivning och en hjälptext.</p>
-<p class="docs-paragraph">Ett inmatningsfält kan användas för inmatning som inte kräver något särskilt format, till exempel ett personnamn, och för inmatning enligt specifika format som mejladresser och personnummer. Använd något av de <a href="./textfield-specialized.html">specialiserade inmatningsfälten</a> eller skapa ett eget inmatningsfält med utvalda validatorer och regler.</p>
+            <p class="docs-paragraph">Ett inmatningsfält har alltid en <a href="../flabel.html">etikett</a> som beskriver vad användaren ska fylla i.
+Etiketten kan också visa ett felmeddelande, en formatbeskrivning och en hjälptext.</p>
+<p class="docs-paragraph">Ett inmatningsfält kan användas för inmatning som inte kräver något särskilt format, till exempel ett personnamn, och för inmatning enligt specifika format som mejladresser och personnummer.
+Använd något av de <a href="./textfield-specialized.html">specialiserade inmatningsfälten</a> eller skapa ett eget inmatningsfält med utvalda validatorer och regler.</p>
 <p class="docs-paragraph">Tänk på följande om du ska använda ett inmatningsfält utan något särskilt krav på formatet, till exempel ett fält för ett personnamn:</p>
 <ul>
 <li>Ange en maxgräns för antal tecken, se <a href="../../guides/validation-and-error-handling/length-validation.html">längdvalidering</a>.</li>
 <li>Du behöver troligtvis hindra att användaren matar in otillåtna tecken genom att använda <a href="../validation/validators.html">validatorn för otillåtna tecken</a>.</li>
 </ul>
 <p class="docs-paragraph">Använd inte inaktiva komponenter, bland annat då de är svåra att uppfatta för användare med skärmläsare.</p>
-<h2 id="validering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Ett inmatningsfält kan visas med två statusar: neutral och fel. Innehållet i ett inmatningsfält valideras när användaren lämnar fältet. Information om felaktig inmatning visas med etikettens feltext. Ett inmatningsfält kan ha en eller flera validatorer.</p>
+<h2 id="validering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#validering">Validering</a></h2><p class="docs-paragraph">Ett inmatningsfält kan visas med två statusar: neutral och fel.
+Innehållet i ett inmatningsfält valideras när användaren lämnar fältet.
+Information om felaktig inmatning visas med etikettens feltext.
+Ett inmatningsfält kan ha en eller flera validatorer.</p>
 <p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/validation.html">Läs mer om validering</a></p>
-<h2 id="formatering_och_parsning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#formatering_och_parsning">Formatering och parsning</a></h2><p class="docs-paragraph">Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält. Parsning används för att ändra på det som faktiskt hanteras och skickas in. Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag. Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.</p>
+<h2 id="formatering_och_parsning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#formatering_och_parsning">Formatering och parsning</a></h2><p class="docs-paragraph">Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält.
+Parsning används för att ändra på det som faktiskt hanteras och skickas in.
+Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag.
+Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.</p>
 <p class="docs-paragraph"><a href="../../guides/formatting-and-parsing/formatter-parser.html">Läs mer om formatering och parsning</a></p>
-<h2 id="typer_av_inmatningsfalt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#typer_av_inmatningsfalt">Typer av inmatningsfält</a></h2><p class="docs-paragraph">Utöver ett generellt inmatningsfält för text finns det flera färdigbyggda specialiserade inmatningsfält. Det är till exempel mejladress och personnummer. Ett sådant inmatningsfält har redan alla nödvändiga validatorer, ett tak för antal tecken, input mode för att rätt tangentbord ska visas på en mobil samt regler för formatering och parsning.</p>
+<h2 id="typer_av_inmatningsfalt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#typer_av_inmatningsfalt">Typer av inmatningsfält</a></h2><p class="docs-paragraph">Utöver ett generellt inmatningsfält för text finns det flera färdigbyggda specialiserade inmatningsfält.
+Det är till exempel mejladress och personnummer.
+Ett sådant inmatningsfält har redan alla nödvändiga validatorer, ett tak för antal tecken, input mode för att rätt tangentbord ska visas på en mobil samt regler för formatering och parsning.</p>
 <p class="docs-paragraph">Om användaren ska ange ett datum där det måste finnas en möjlighet att välja en dag i en kalender ska du använda komponenten <a href="./fdatepickerfield.html">datumväljare</a>.</p>
 <p class="docs-paragraph"><a href="./textfield-specialized.html">Läs mer om specialiserade inmatningsfält</a></p>
 <h2 id="inline" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#inline">Inline</a></h2><p class="docs-paragraph">Etiketten och inmatningsfältet ska bara placeras på samma rad (inline) om fältet inte har någon validering och om det inte behövs någon hjälptext, formatbeskrivning eller felmeddelande.
 Inline passar till exempel bra för sök och fritextfilter.</p>
-<h2 id="responsiva_bredder" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#responsiva_bredder">Responsiva bredder</a></h2><p class="docs-paragraph">Etiketten och inmatningsfältet kan ha olika bredd. När etikettens text radbryts behöver alltså inte vara kopplat till hur brett inmatningsfältet i sig är.</p>
+<h2 id="responsiva_bredder" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#responsiva_bredder">Responsiva bredder</a></h2><p class="docs-paragraph">Etiketten och inmatningsfältet kan ha olika bredd.
+När etikettens text radbryts behöver alltså inte vara kopplat till hur brett inmatningsfältet i sig är.</p>
 <p class="docs-paragraph">Bredden för respektive del anges med antal kolumner vid olika skärmbredder (brytpunkter).</p>
 
             <div
-                id="example-a1e37b"
+                id="example-23fd26"
                 class="code-preview code-preview--default"
                 data-test="grid"
                 
@@ -7748,9 +7759,9 @@ If the prop is not set text will be used.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/fbdcb652c411bd96897a9c3f4a5a8a12bb16592e">fbdcb65</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/39abd7be701611dc268b8f393dfc399c0810490a">39abd7b</a>)<br />
         
-       <span class="version-text-block">2026-09-28 03:30</span>
+       <span class="version-text-block">2026-09-28 09:29</span>
 </div>
 <div class="toolbar__item">
     <form id="version">

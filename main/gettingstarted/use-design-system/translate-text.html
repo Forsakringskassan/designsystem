@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-127ebe.json"
+    href="../../search-data-6c082b.json"
     as="fetch"
     crossorigin
-    integrity="sha384-sV6dVWTGe5P3au0B1/uoUM1YBcJcz06QnFHFx8EPiksj54HZLrdkUBtDTERNwEy8"
+    integrity="sha384-C9VtJd5sn6UBA0s5t2+7juHJ28n60bghvhjryC4m0wmr/Nf0gp45g8KCtZ2fFnYr"
     id="search-data"
 />
 <script>
@@ -6316,7 +6316,8 @@ Vi använder endast interpolering med parametrar.</p>
         <h2 id="strikt_typning_av_textnycklar" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#strikt_typning_av_textnycklar">Strikt typning av textnycklar</a></h2><p class="docs-paragraph">Som standard accepterar <code>$t()</code>-funktionen och <code>useTranslate()</code> vilken textsträng som helst som nyckel.
 För att få en bättre utvecklarupplevelse med autokomplettering i din IDE (IntelliSense) och för att fånga upp felstavade eller saknade textnycklar redan vid kompilering, kan du registrera dina textnycklar globalt i biblioteket.</p>
 <h3 id="typescript_konfiguration_tsconfig_json" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#typescript_konfiguration_tsconfig_json">TypeScript-konfiguration (<code>tsconfig.json</code>)</a></h3><p class="docs-paragraph">För att din globala typ-fil (<code>.d.ts</code>) ska registreras och för att TypeScript ska kunna läsa in dina JSON-filer som underlag för nycklarna, krävs specifika inställningar i din <code>tsconfig.json</code>.</p>
-<h4 id="inkludera_din_definitionsfil" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#inkludera_din_definitionsfil">Inkludera din definitionsfil</a></h4><p class="docs-paragraph">Kontrollera att mappen där du skapat din <code>translations.d.ts</code> ingår i projektets källfiler. Om du har en strikt <code>include</code>-lista måste du lägga till din types-mapp:</p>
+<h4 id="inkludera_din_definitionsfil" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#inkludera_din_definitionsfil">Inkludera din definitionsfil</a></h4><p class="docs-paragraph">Kontrollera att mappen där du skapat din <code>translations.d.ts</code> ingår i projektets källfiler.
+Om du har en strikt <code>include</code>-lista måste du lägga till din types-mapp:</p>
 
                 <div
                     id="example-e37a70"
@@ -6351,10 +6352,11 @@ För att få en bättre utvecklarupplevelse med autokomplettering i din IDE (Int
 <span class="hljs-punctuation">}</span>
 </code></pre>
                 </div>
-            <h3 id="implementering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#implementering">Implementering</a></h3><p class="docs-paragraph">Skapa en global definitionsfil, förslagsvis <code>src/types/translations.d.ts</code>, i ditt projekt. Det är viktigt att du importerar din faktiska JSON-fil och använder hjälptypen <code>NestedKeys</code> för att skapa en union av alla möjliga nycklar.</p>
+            <h3 id="implementering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#implementering">Implementering</a></h3><p class="docs-paragraph">Skapa en global definitionsfil, förslagsvis <code>src/types/translations.d.ts</code>, i ditt projekt.
+Det är viktigt att du importerar din faktiska JSON-fil och använder hjälptypen <code>NestedKeys</code> för att skapa en union av alla möjliga nycklar.</p>
 
                 <div
-                    id="example-a80ae0"
+                    id="example-ce65f9"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -6383,7 +6385,7 @@ För att få en bättre utvecklarupplevelse med autokomplettering i din IDE (Int
             <p class="docs-paragraph">Givet att <code>data.json</code> har följande format:</p>
 
                 <div
-                    id="example-17d8f6"
+                    id="example-eff36e"
                     class="code-preview code-preview--default"
                     
                     
@@ -6401,12 +6403,13 @@ För att få en bättre utvecklarupplevelse med autokomplettering i din IDE (Int
             <h3 id="undantag_dynamiska_nycklar_och_raa_strangar" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#undantag_dynamiska_nycklar_och_raa_strangar">Undantag: Dynamiska nycklar och råa strängar</a></h3><p class="docs-paragraph">Ibland räcker inte den strikta typningen till.
 Ett vanligt scenario är när du bygger en textnyckel dynamiskt baserat på data från ett API (t.ex. en status eller en förmånstyp), eller när du skickar vidare <code>$t</code> som en prop till en hjälpfunktion.</p>
 <p class="docs-paragraph">Eftersom TypeScript inte kan veta vid kompilering exakt vad ett API-svar kommer att innehålla, kommer den strikta typningen att varna för att en vanlig <code>string</code> inte matchar dina kända nycklar.</p>
-<h4 id="hantering_med_generic_translatefunction_string" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#hantering_med_generic_translatefunction_string">Hantering med Generic <code>TranslateFunction&lt;string&gt;</code></a></h4><p class="docs-paragraph">För att lösa detta kan du explicit typa om funktionen till <code>TranslateFunction&lt;string&gt;</code>. Detta &quot;låser upp&quot; funktionen så att den återigen accepterar vilken sträng som helst.</p>
+<h4 id="hantering_med_generic_translatefunction_string" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#hantering_med_generic_translatefunction_string">Hantering med Generic <code>TranslateFunction&lt;string&gt;</code></a></h4><p class="docs-paragraph">För att lösa detta kan du explicit typa om funktionen till <code>TranslateFunction&lt;string&gt;</code>.
+Detta &quot;låser upp&quot; funktionen så att den återigen accepterar vilken sträng som helst.</p>
 <p class="docs-paragraph"><strong>Exempel i en hjälpfunktion:</strong>
 När du skapar en funktion som tar emot översättningsfunktionen som argument, deklarera den som <code>TranslateFunction&lt;string&gt;</code>.</p>
 
                 <div
-                    id="example-235f03"
+                    id="example-02cb23"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -6426,7 +6429,7 @@ När du skapar en funktion som tar emot översättningsfunktionen som argument, 
 <p class="docs-paragraph"><strong>Kodexempel:</strong></p>
 
                 <div
-                    id="example-f4d0ea"
+                    id="example-2876b6"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -6488,9 +6491,9 @@ När du skapar en funktion som tar emot översättningsfunktionen som argument, 
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/fbdcb652c411bd96897a9c3f4a5a8a12bb16592e">fbdcb65</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/39abd7be701611dc268b8f393dfc399c0810490a">39abd7b</a>)<br />
         
-       <span class="version-text-block">2026-09-28 03:30</span>
+       <span class="version-text-block">2026-09-28 09:29</span>
 </div>
 <div class="toolbar__item">
     <form id="version">
