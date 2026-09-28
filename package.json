@@ -106,7 +106,7 @@
     "@types/node": "22.20.4",
     "@typescript/native": "npm:typescript@7.0.2",
     "@vue/server-renderer": "3.5.43",
-    "artifact-size-analyzer": "1.2.6",
+    "artifact-size-analyzer": "1.2.7",
     "autoprefixer": "10.6.1",
     "cli-table": "0.3.11",
     "core-js": "3.50.0",
