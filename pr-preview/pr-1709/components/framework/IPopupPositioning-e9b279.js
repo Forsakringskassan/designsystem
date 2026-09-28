@@ -2226,12 +2226,13 @@ var FModal_default = defineComponent4({
       root.style.removeProperty("right");
       root.style.removeProperty("overflow");
       root.style.removeProperty("position");
-      if (this.focus === "on" && this.savedFocus) {
-        root.scrollTop = this.savedScroll ?? 0;
-        this.savedScroll = null;
-        popFocus(this.savedFocus);
-        this.savedFocus = null;
+      if (!(this.focus === "on" && this.savedFocus)) {
+        return;
       }
+      root.scrollTop = this.savedScroll ?? 0;
+      this.savedScroll = null;
+      popFocus(this.savedFocus);
+      this.savedFocus = null;
     },
     onFocusFirst() {
       const tabbableElements = findTabbableElements(this.$refs.modalDialogContainer);
