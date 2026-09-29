@@ -24,20 +24,20 @@
   "imports": {
     "vue": "../../assets/vendor-vue-f8f1bb.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-91ece2.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-d98f1d.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-8cd34b.js",
     "@fkui/date": "../../assets/vendor-fkui-date-756ff1.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-f4e0be.js",
-    "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-6ce7bb.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-4d3df1.js"
+    "@fkui/vue": "../../assets/vendor-fkui-vue-0d24cd.js",
+    "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-59db36.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js"
   },
   "integrity": {
     "../../assets/vendor-vue-f8f1bb.js": "sha384-2h0pGXLCmTwD41SU1sbbk/H1O2eu5RpROsi5Z8hiFjhf2+Zv2bz5rFA2uLqKMqfz",
     "../../assets/vendor-fkui-vue-selectors-91ece2.js": "sha384-JAQYszmezn6fEXVWuq7QZxMzVu4EX1/dVRgEP0HnWMzgHABgFbBfBGN+XlbtVWnt",
-    "../../assets/vendor-fkui-logic-d98f1d.js": "sha384-SGeHcEY4B6lmI5P91r2mELwluuhA7jlFsJ8b9rHDscdLxLKoug5qRQ363SzDUSQt",
+    "../../assets/vendor-fkui-logic-8cd34b.js": "sha384-FedmI01oX4kAWgI2AfIMiWdzOG4NpS5WFKED5pKZ+b9/C5QannrwAz5BCGgUtGIE",
     "../../assets/vendor-fkui-date-756ff1.js": "sha384-poMivCeyRvtjqiexqG/jXcCfyu2x3A7bwI5tx3mB74FC5uQUUjIVoQFYJQTHi23Q",
-    "../../assets/vendor-fkui-vue-f4e0be.js": "sha384-uRWUmkDTA3qwL0uDsxCKR3zYBhWp8QHQACNlUPQvCAJKkL5syGWBHMZYzn+g2jza",
-    "../../assets/vendor-fkui-vue-labs-6ce7bb.js": "sha384-QO/yLIQT6IBPgk3MmDGmpABWSFSlfMKTad2JFm+/JTVgPFg0xO2DNC0P8Ci05VYS",
-    "../../assets/vendor-forsakringskassan-docs-live-example-4d3df1.js": "sha384-qEH0EU6KJjNMvGkeASBkzstMsX+itOgTluNoPYIzAY+XrsBRHjbb5CCwdk7n8yot"
+    "../../assets/vendor-fkui-vue-0d24cd.js": "sha384-jvAWNXVV9/9r6BzdXdBmkLpY6UDbxheUnt/0zMje1gqT+xhyywiJXXazLzlsEk0D",
+    "../../assets/vendor-fkui-vue-labs-59db36.js": "sha384-lZUC9laa/ssLtJePpKjK6elLLQVt4JPthEwGVEgSEr5PY3gvupaz53R+iGDZRr1S",
+    "../../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js": "sha384-VKppHxCeZq82kVDB1OYOYbpV834R6UMQhJGy0Ljiv1cQlksKAiIBgmXoroQOISfR"
   }
 }
         </script><script
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-c18b01.json"
+    href="../../search-data-763711.json"
     as="fetch"
     crossorigin
-    integrity="sha384-4muyBAw8jLjj9LEv0WcE/ph2gxTfmKpnipsFS5p6CwWoM91kPj9eXjlhLOV9qf28"
+    integrity="sha384-ID3iwiJgSORIx2SYLlCt/7Ik+Lr59vIl69OyosQ+uar7DFEKBlrPYsc+kQlce1pf"
     id="search-data"
 />
 <script>
@@ -7158,7 +7158,10 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält. Parsning används för att ändra på det som faktiskt hanteras och skickas in. Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag. Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.</p>
+                    <div id="content"><p class="docs-paragraph">Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält.
+Parsning används för att ändra på det som faktiskt hanteras och skickas in.
+Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag.
+Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.</p>
 <h2 id="bankgiro_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#bankgiro_parser">Bankgiro (parser)</a></h2><p class="docs-paragraph"><code>parseBankgiro</code></p>
 <p class="docs-paragraph">Parsern för bankgiro tolkar vy-värdet genom att ändra så att modell-värdet blir</p>
 <ul>
@@ -7180,7 +7183,8 @@
 <li>20211220 -&gt; 2021-12-20</li>
 </ul>
 <h2 id="kontonummer_parser" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kontonummer_parser">Kontonummer (parser)</a></h2><p class="docs-paragraph"><code>parseBankAccountNumber</code></p>
-<p class="docs-paragraph">Parsern för kontonummer tar bort bindestreck, mellanslag, punkt och komma. Den behåller inledande nollor.</p>
+<p class="docs-paragraph">Parsern för kontonummer tar bort bindestreck, mellanslag, punkt och komma.
+Den behåller inledande nollor.</p>
 <h2 id="nummer_formaterare" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#nummer_formaterare">Nummer (formaterare)</a></h2><p class="docs-paragraph"><code>formatNumber</code></p>
 <p class="docs-paragraph">Formateraren för nummer formaterar inmatat värde genom att den</p>
 <ul>
@@ -7231,7 +7235,8 @@
 <li>bindestreck mellan näst sista och sista siffran</li>
 <li>grupper med två siffror till vänster om bindestreck.</li>
 </ul>
-<p class="docs-paragraph">Vid udda antal siffror till vänster kommer första gruppen innehålla en siffra. Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffror.</p>
+<p class="docs-paragraph">Vid udda antal siffror till vänster kommer första gruppen innehålla en siffra.
+Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffror.</p>
 <p class="docs-paragraph">Exempel</p>
 <ul>
 <li>N-N</li>
@@ -7300,9 +7305,9 @@
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">SFKUI-7355-table-cell-focus-and-activation</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/fe9d8a92f4a992bd13ccf6142af9a39513b99786">fe9d8a9</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">SFKUI-7355-table-cell-focus-and-activation</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/4e37c22322ade36ff53af79d18cad510621790fe">4e37c22</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1704">PR 1704</a><br />
-       <span class="version-text-block">2026-09-25 11:39</span>
+       <span class="version-text-block">2026-09-29 06:05</span>
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -7466,10 +7471,10 @@
             integrity="sha384-tVCPgyHrw9QQDcAlHqPg4Kp0bEoCdZDJ17PfDW2CxedfOn3IvSDI/FJUCnY/WxiK"
             
         ></script><script
-            src="../../assets/runtime-2fe3bf.js"
+            src="../../assets/runtime-e09c13.js"
             type="module"
             crossorigin
-            integrity="sha384-6G6uSj0Mm2/VyMtyP4RsEiMzWfPGz6dPrNON0MPqCSOQ8lBsiWtFpneg5+T68PDh"
+            integrity="sha384-FYAcZYo6w9hJ3JOs9umYgkszdILd0NVT7S7swTZWm/1CPMJLCjeCMNWcgps4/7rw"
             
         ></script><script
             src="../../assets/main-2a697b.js"

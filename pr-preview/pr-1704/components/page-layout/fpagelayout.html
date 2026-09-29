@@ -24,20 +24,20 @@
   "imports": {
     "vue": "../../assets/vendor-vue-f8f1bb.js",
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-91ece2.js",
-    "@fkui/logic": "../../assets/vendor-fkui-logic-d98f1d.js",
+    "@fkui/logic": "../../assets/vendor-fkui-logic-8cd34b.js",
     "@fkui/date": "../../assets/vendor-fkui-date-756ff1.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-f4e0be.js",
-    "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-6ce7bb.js",
-    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-4d3df1.js"
+    "@fkui/vue": "../../assets/vendor-fkui-vue-0d24cd.js",
+    "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-59db36.js",
+    "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js"
   },
   "integrity": {
     "../../assets/vendor-vue-f8f1bb.js": "sha384-2h0pGXLCmTwD41SU1sbbk/H1O2eu5RpROsi5Z8hiFjhf2+Zv2bz5rFA2uLqKMqfz",
     "../../assets/vendor-fkui-vue-selectors-91ece2.js": "sha384-JAQYszmezn6fEXVWuq7QZxMzVu4EX1/dVRgEP0HnWMzgHABgFbBfBGN+XlbtVWnt",
-    "../../assets/vendor-fkui-logic-d98f1d.js": "sha384-SGeHcEY4B6lmI5P91r2mELwluuhA7jlFsJ8b9rHDscdLxLKoug5qRQ363SzDUSQt",
+    "../../assets/vendor-fkui-logic-8cd34b.js": "sha384-FedmI01oX4kAWgI2AfIMiWdzOG4NpS5WFKED5pKZ+b9/C5QannrwAz5BCGgUtGIE",
     "../../assets/vendor-fkui-date-756ff1.js": "sha384-poMivCeyRvtjqiexqG/jXcCfyu2x3A7bwI5tx3mB74FC5uQUUjIVoQFYJQTHi23Q",
-    "../../assets/vendor-fkui-vue-f4e0be.js": "sha384-uRWUmkDTA3qwL0uDsxCKR3zYBhWp8QHQACNlUPQvCAJKkL5syGWBHMZYzn+g2jza",
-    "../../assets/vendor-fkui-vue-labs-6ce7bb.js": "sha384-QO/yLIQT6IBPgk3MmDGmpABWSFSlfMKTad2JFm+/JTVgPFg0xO2DNC0P8Ci05VYS",
-    "../../assets/vendor-forsakringskassan-docs-live-example-4d3df1.js": "sha384-qEH0EU6KJjNMvGkeASBkzstMsX+itOgTluNoPYIzAY+XrsBRHjbb5CCwdk7n8yot"
+    "../../assets/vendor-fkui-vue-0d24cd.js": "sha384-jvAWNXVV9/9r6BzdXdBmkLpY6UDbxheUnt/0zMje1gqT+xhyywiJXXazLzlsEk0D",
+    "../../assets/vendor-fkui-vue-labs-59db36.js": "sha384-lZUC9laa/ssLtJePpKjK6elLLQVt4JPthEwGVEgSEr5PY3gvupaz53R+iGDZRr1S",
+    "../../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js": "sha384-VKppHxCeZq82kVDB1OYOYbpV834R6UMQhJGy0Ljiv1cQlksKAiIBgmXoroQOISfR"
   }
 }
         </script><script
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-c18b01.json"
+    href="../../search-data-763711.json"
     as="fetch"
     crossorigin
-    integrity="sha384-4muyBAw8jLjj9LEv0WcE/ph2gxTfmKpnipsFS5p6CwWoM91kPj9eXjlhLOV9qf28"
+    integrity="sha384-ID3iwiJgSORIx2SYLlCt/7Ik+Lr59vIl69OyosQ+uar7DFEKBlrPYsc+kQlce1pf"
     id="search-data"
 />
 <script>
@@ -7112,7 +7112,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/fe9d8a92f4a992bd13ccf6142af9a39513b99786/packages/vue/src/components/FPageLayout/FPageLayout.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/4e37c22322ade36ff53af79d18cad510621790fe/packages/vue/src/components/FPageLayout/FPageLayout.vue">
                 FPageLayout
             </a>
             
@@ -7159,18 +7159,19 @@
                     <div id="content"><!-- to force the examples to a maximum size -->
 <!-- [html-validate-disable-next element-permitted-content -- hack to contain layout component to example wrapper] -->
 <style>
-[data-test=example] .code-preview__preview {
-	container-type: size;
-	aspect-ratio: 16 / 9;
+[data-test="example"] .code-preview__preview {
+    container-type: size;
+    aspect-ratio: 16 / 9;
 }
 </style>
 <p class="docs-paragraph">Applikationsmallen erbjuder olika layouter för att dela upp en applikation som täcker hela skärmen i ytor.
 Du kan utgå från en av fyra standardlayouter eller skapa en egen.
-Mallen styr hur ytorna placeras i förhållande till varandra. Storleken på en yta styrs av vad som placeras i ytan.</p>
+Mallen styr hur ytorna placeras i förhållande till varandra.
+Storleken på en yta styrs av vad som placeras i ytan.</p>
 <p class="docs-paragraph">Se också <a href="../../examples/page-layout">exempelapplikation för Applikationsmall</a> (<a href="https://github.com/Forsakringskassan/designsystem/tree/main/examples/page-layout">källkod</a>) för en komplett applikation.</p>
 <h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2>
             <div
-                id="example-ffac43"
+                id="example-6190fd"
                 class="code-preview code-preview--default"
                 data-test="example"
                 
@@ -7179,40 +7180,40 @@ Mallen styr hur ytorna placeras i förhållande till varandra. Storleken på en 
                 <!-- [html-validate-disable-block unique-landmark, no-multiple-main, heading-level -- clashes with site layout] -->
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-86888c"></div>
+        <div id="example-2154a0"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
-.my-header[data-v-86888c] {
+.my-header[data-v-2154a0] {
     background: darkred;
     color: white;
     padding: 1rem;
 }
-.my-footer[data-v-86888c] {
+.my-footer[data-v-2154a0] {
     background: cyan;
     color: black;
     padding: 1rem;
 }
-.my-left-panel[data-v-86888c] {
+.my-left-panel[data-v-2154a0] {
     background: greenyellow;
     padding: 1rem;
     flex-grow: 1;
     width: 25cqw;
 }
-.my-right-panel[data-v-86888c] {
+.my-right-panel[data-v-2154a0] {
     background: hotpink;
     padding: 1rem;
     flex-grow: 1;
     width: 25cqw;
 }
-.my-content[data-v-86888c] {
+.my-content[data-v-2154a0] {
     flex-grow: 1;
     padding: 1rem;
 }
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FPageLayoutExample-86888c.js"></script>
+        <script type="module" src="./FPageLayoutExample-2154a0.js"></script>
     
                 </div>
                 <div>
@@ -7287,7 +7288,7 @@ Mallen styr hur ytorna placeras i förhållande till varandra. Storleken på en 
         <p class="docs-paragraph">Vilken layout som används bestäms av <code>layout</code>-propen:</p>
 
                 <div
-                    id="example-bebf7e"
+                    id="example-cd65f7"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7302,7 +7303,7 @@ Ytans innehåll fylls med hjälp av Vue slots med motsvarande namn.</p>
 <p class="docs-paragraph">För att fylla ytan <code>header</code> med innehåll:</p>
 
                 <div
-                    id="example-61f735"
+                    id="example-004be3"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7343,7 +7344,7 @@ Vi rekommenderar att använda följande landmärken i respektive yta:</p>
 <h2 id="standardlayouter" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#standardlayouter">Standardlayouter</a></h2><p class="docs-paragraph">Följande förkonfigurerade layouter följer med som standard:</p>
 
                 <div
-                    id="example-284b46"
+                    id="example-63913b"
                     class="code-preview code-preview--borderless"
                     
                     data-tags="borderless nomarkup"
@@ -7352,52 +7353,52 @@ Vi rekommenderar att använda följande landmärken i respektive yta:</p>
                     <!-- [html-validate-disable-block unique-landmark, no-multiple-main, heading-level -- clashes with site layout] -->
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-bac77c"></div>
+        <div id="example-9f2e7e"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
-.wrapper[data-v-bac77c] {
+.wrapper[data-v-9f2e7e] {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
-.layout-container[data-v-bac77c] {
+.layout-container[data-v-9f2e7e] {
     container-type: size;
     aspect-ratio: 16 / 9;
     max-height: 230px;
     border: 2px dashed #777;
     padding: 1px;
 }
-.area[data-v-bac77c] {
+.area[data-v-9f2e7e] {
     padding: 0.5rem;
     align-content: center;
     text-align: center;
 }
-.header[data-v-bac77c] {
+.header[data-v-9f2e7e] {
     background: darkred;
     color: white;
 }
-.footer[data-v-bac77c] {
+.footer[data-v-9f2e7e] {
     background: cyan;
     color: black;
 }
-.left-panel[data-v-bac77c] {
+.left-panel[data-v-9f2e7e] {
     background: greenyellow;
     flex-grow: 1;
     width: 25cqw;
 }
-.right-panel[data-v-bac77c] {
+.right-panel[data-v-9f2e7e] {
     background: hotpink;
     flex-grow: 1;
     width: 25cqw;
 }
-.content[data-v-bac77c] {
+.content[data-v-9f2e7e] {
     flex-grow: 1;
 }
 
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FPageLayoutPredefined-bac77c.js"></script>
+        <script type="module" src="./FPageLayoutPredefined-9f2e7e.js"></script>
     
                     </div>
                 </div>
@@ -7452,9 +7453,9 @@ Vi rekommenderar att använda följande landmärken i respektive yta:</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">SFKUI-7355-table-cell-focus-and-activation</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/fe9d8a92f4a992bd13ccf6142af9a39513b99786">fe9d8a9</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">SFKUI-7355-table-cell-focus-and-activation</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/4e37c22322ade36ff53af79d18cad510621790fe">4e37c22</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1704">PR 1704</a><br />
-       <span class="version-text-block">2026-09-25 11:39</span>
+       <span class="version-text-block">2026-09-29 06:05</span>
 </div>
 <div class="toolbar__item">
     <form id="version">
@@ -7618,10 +7619,10 @@ Vi rekommenderar att använda följande landmärken i respektive yta:</p>
             integrity="sha384-tVCPgyHrw9QQDcAlHqPg4Kp0bEoCdZDJ17PfDW2CxedfOn3IvSDI/FJUCnY/WxiK"
             
         ></script><script
-            src="../../assets/runtime-2fe3bf.js"
+            src="../../assets/runtime-e09c13.js"
             type="module"
             crossorigin
-            integrity="sha384-6G6uSj0Mm2/VyMtyP4RsEiMzWfPGz6dPrNON0MPqCSOQ8lBsiWtFpneg5+T68PDh"
+            integrity="sha384-FYAcZYo6w9hJ3JOs9umYgkszdILd0NVT7S7swTZWm/1CPMJLCjeCMNWcgps4/7rw"
             
         ></script><script
             src="../../assets/main-2a697b.js"
