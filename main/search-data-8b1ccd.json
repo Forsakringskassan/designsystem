@@ -297,6 +297,8 @@
     "h-display-flex",
     "Skärmläsare",
     "NVDA",
+    "clamp() function",
+    "datum",
     "useResize() composable",
     "justerbar yta",
     "useModal() composable",
@@ -328,8 +330,6 @@
     "datamängd",
     "assertSet() function",
     "assertRef() function",
-    "clamp() function",
-    "datum",
     "Validatorer",
     "identisk",
     "matches",
@@ -559,6 +559,22 @@
     "Version 6 migreringsguide: @fkui/logic",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: Cypress Pageobjects",
+    "FYear",
+    "årtal",
+    "FYear: value property",
+    "FYear: toString() method",
+    "FYear: toJSON() method",
+    "FYear: now() function",
+    "FYear: isValid() method",
+    "FYear: isBefore() method",
+    "FYear: isAfter() method",
+    "FYear: fromYear() function",
+    "FYear: fromDate() function",
+    "FYear: equals() method",
+    "FYear: compare() function",
+    "FYear: addYears() method",
+    "FYear: previous() method",
+    "FYear: next() method",
     "openModal",
     "modalfunktion",
     "options API",
@@ -617,22 +633,6 @@
     "DOM-funktion",
     "findElementFromVueRef",
     "DOM-funktion",
-    "FYear",
-    "årtal",
-    "FYear: value property",
-    "FYear: toString() method",
-    "FYear: toJSON() method",
-    "FYear: now() function",
-    "FYear: isValid() method",
-    "FYear: isBefore() method",
-    "FYear: isAfter() method",
-    "FYear: fromYear() function",
-    "FYear: fromDate() function",
-    "FYear: equals() method",
-    "FYear: compare() function",
-    "FYear: addYears() method",
-    "FYear: previous() method",
-    "FYear: next() method",
     "FTablePageObject",
     "cypress",
     "FPaginatorPageObject",
@@ -717,10 +717,6 @@
     "FInteractiveTablePageObject: header() method",
     "FInteractiveTablePageObject: checkbox() method",
     "FInteractiveTablePageObject: cell() method",
-    "FFileItemPageObject: FFileItemPageObject() constructor",
-    "cypress",
-    "FFileItemPageObject: typeOfFile() method",
-    "FFileItemPageObject: fileName() method",
     "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
     "cypress",
     "FDetailsPanelPageObject: header() method",
@@ -728,6 +724,10 @@
     "FDetailsPanelPageObject: el() method",
     "FDetailsPanelPageObject: content() method",
     "FDetailsPanelPageObject: closeButton() method",
+    "FFileItemPageObject: FFileItemPageObject() constructor",
+    "cypress",
+    "FFileItemPageObject: typeOfFile() method",
+    "FFileItemPageObject: fileName() method",
     "FBadgePageObject: FBadgePageObject() constructor",
     "cypress",
     "FFileItemPageObject: status() method",
@@ -1468,6 +1468,13 @@
       ]
     },
     {
+      "url": "functions/date/clamp.html",
+      "title": "clamp() function",
+      "terms": [
+        "datum"
+      ]
+    },
+    {
       "url": "functions/functions/use-resize.html",
       "title": "useResize() composable",
       "terms": [
@@ -1575,13 +1582,6 @@
       "url": "functions/functions/assert-ref.html",
       "title": "assertRef() function",
       "terms": []
-    },
-    {
-      "url": "functions/date/clamp.html",
-      "title": "clamp() function",
-      "terms": [
-        "datum"
-      ]
     },
     {
       "url": "components/validation/validators.html",
@@ -2092,6 +2092,83 @@
       "terms": []
     },
     {
+      "url": "functions/date/f-year/index.html",
+      "title": "FYear",
+      "terms": [
+        "årtal"
+      ]
+    },
+    {
+      "url": "functions/date/f-year/value.html",
+      "title": "FYear: value property",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/tostring.html",
+      "title": "FYear: toString() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/tojson.html",
+      "title": "FYear: toJSON() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/now.html",
+      "title": "FYear: now() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/is-valid.html",
+      "title": "FYear: isValid() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/is-before.html",
+      "title": "FYear: isBefore() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/is-after.html",
+      "title": "FYear: isAfter() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/from-year.html",
+      "title": "FYear: fromYear() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/from-date.html",
+      "title": "FYear: fromDate() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/equals.html",
+      "title": "FYear: equals() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/compare.html",
+      "title": "FYear: compare() function",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/add-years.html",
+      "title": "FYear: addYears() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/f-date-previous.html",
+      "title": "FYear: previous() method",
+      "terms": []
+    },
+    {
+      "url": "functions/date/f-year/f-date-next.html",
+      "title": "FYear: next() method",
+      "terms": []
+    },
+    {
       "url": "functions/functions/modal-functions/open-modal.html",
       "title": "openModal",
       "terms": [
@@ -2268,83 +2345,6 @@
       "terms": [
         "DOM-funktion"
       ]
-    },
-    {
-      "url": "functions/date/f-year/index.html",
-      "title": "FYear",
-      "terms": [
-        "årtal"
-      ]
-    },
-    {
-      "url": "functions/date/f-year/value.html",
-      "title": "FYear: value property",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/tostring.html",
-      "title": "FYear: toString() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/tojson.html",
-      "title": "FYear: toJSON() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/now.html",
-      "title": "FYear: now() function",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/is-valid.html",
-      "title": "FYear: isValid() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/is-before.html",
-      "title": "FYear: isBefore() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/is-after.html",
-      "title": "FYear: isAfter() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/from-year.html",
-      "title": "FYear: fromYear() function",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/from-date.html",
-      "title": "FYear: fromDate() function",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/equals.html",
-      "title": "FYear: equals() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/compare.html",
-      "title": "FYear: compare() function",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/add-years.html",
-      "title": "FYear: addYears() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/f-date-previous.html",
-      "title": "FYear: previous() method",
-      "terms": []
-    },
-    {
-      "url": "functions/date/f-year/f-date-next.html",
-      "title": "FYear: next() method",
-      "terms": []
     },
     {
       "url": "functions/cypress/pageobjects/ftablepageobject.html",
@@ -2621,23 +2621,6 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
-      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
-      "terms": [
-        "cypress"
-      ]
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
-      "title": "FFileItemPageObject: typeOfFile() method",
-      "terms": []
-    },
-    {
-      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
-      "title": "FFileItemPageObject: fileName() method",
-      "terms": []
-    },
-    {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/index.html",
       "title": "FDetailsPanelPageObject: FDetailsPanelPageObject() constructor",
       "terms": [
@@ -2667,6 +2650,23 @@
     {
       "url": "functions/cypress/pageobjects/FDetailsPanelPageObject/close-button.html",
       "title": "FDetailsPanelPageObject: closeButton() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/index.html",
+      "title": "FFileItemPageObject: FFileItemPageObject() constructor",
+      "terms": [
+        "cypress"
+      ]
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html",
+      "title": "FFileItemPageObject: typeOfFile() method",
+      "terms": []
+    },
+    {
+      "url": "functions/cypress/pageobjects/FFileItemPageObject/filename.html",
+      "title": "FFileItemPageObject: fileName() method",
       "terms": []
     },
     {
@@ -3168,34 +3168,34 @@
     "298": 78,
     "299": 79,
     "300": 79,
-    "301": 79,
-    "302": 79,
-    "303": 79,
+    "301": 80,
+    "302": 80,
+    "303": 80,
     "304": 80,
     "305": 80,
     "306": 81,
     "307": 81,
-    "308": 81,
+    "308": 82,
     "309": 82,
-    "310": 83,
-    "311": 84,
-    "312": 85,
-    "313": 86,
-    "314": 87,
-    "315": 88,
-    "316": 89,
-    "317": 90,
-    "318": 91,
+    "310": 82,
+    "311": 83,
+    "312": 84,
+    "313": 85,
+    "314": 86,
+    "315": 87,
+    "316": 88,
+    "317": 89,
+    "318": 90,
     "319": 91,
-    "320": 91,
-    "321": 91,
+    "320": 92,
+    "321": 92,
     "322": 92,
-    "323": 93,
+    "323": 92,
     "324": 93,
-    "325": 93,
+    "325": 94,
     "326": 94,
-    "327": 95,
-    "328": 96,
+    "327": 94,
+    "328": 95,
     "329": 96,
     "330": 97,
     "331": 97,
@@ -3428,77 +3428,77 @@
     "558": 153,
     "559": 154,
     "560": 154,
-    "561": 154,
-    "562": 155,
-    "563": 155,
-    "564": 155,
-    "565": 155,
-    "566": 156,
-    "567": 156,
-    "568": 156,
-    "569": 156,
-    "570": 157,
-    "571": 157,
-    "572": 157,
-    "573": 158,
-    "574": 158,
-    "575": 158,
-    "576": 159,
-    "577": 159,
-    "578": 159,
-    "579": 160,
-    "580": 160,
-    "581": 160,
-    "582": 161,
-    "583": 161,
-    "584": 162,
-    "585": 162,
-    "586": 163,
-    "587": 163,
-    "588": 164,
-    "589": 164,
-    "590": 165,
-    "591": 165,
-    "592": 166,
-    "593": 166,
-    "594": 167,
-    "595": 167,
-    "596": 168,
-    "597": 168,
-    "598": 169,
-    "599": 169,
-    "600": 170,
-    "601": 170,
-    "602": 171,
-    "603": 171,
-    "604": 172,
-    "605": 172,
-    "606": 173,
-    "607": 173,
-    "608": 174,
-    "609": 174,
-    "610": 174,
-    "611": 175,
-    "612": 175,
-    "613": 176,
-    "614": 176,
-    "615": 177,
-    "616": 177,
-    "617": 178,
-    "618": 178,
-    "619": 179,
-    "620": 180,
-    "621": 181,
-    "622": 182,
-    "623": 183,
-    "624": 184,
-    "625": 185,
-    "626": 186,
-    "627": 187,
-    "628": 188,
-    "629": 189,
-    "630": 190,
-    "631": 191,
+    "561": 155,
+    "562": 156,
+    "563": 157,
+    "564": 158,
+    "565": 159,
+    "566": 160,
+    "567": 161,
+    "568": 162,
+    "569": 163,
+    "570": 164,
+    "571": 165,
+    "572": 166,
+    "573": 167,
+    "574": 168,
+    "575": 169,
+    "576": 169,
+    "577": 169,
+    "578": 170,
+    "579": 170,
+    "580": 170,
+    "581": 170,
+    "582": 171,
+    "583": 171,
+    "584": 171,
+    "585": 171,
+    "586": 172,
+    "587": 172,
+    "588": 172,
+    "589": 173,
+    "590": 173,
+    "591": 173,
+    "592": 174,
+    "593": 174,
+    "594": 174,
+    "595": 175,
+    "596": 175,
+    "597": 175,
+    "598": 176,
+    "599": 176,
+    "600": 177,
+    "601": 177,
+    "602": 178,
+    "603": 178,
+    "604": 179,
+    "605": 179,
+    "606": 180,
+    "607": 180,
+    "608": 181,
+    "609": 181,
+    "610": 182,
+    "611": 182,
+    "612": 183,
+    "613": 183,
+    "614": 184,
+    "615": 184,
+    "616": 185,
+    "617": 185,
+    "618": 186,
+    "619": 186,
+    "620": 187,
+    "621": 187,
+    "622": 188,
+    "623": 188,
+    "624": 189,
+    "625": 189,
+    "626": 189,
+    "627": 190,
+    "628": 190,
+    "629": 191,
+    "630": 191,
+    "631": 192,
     "632": 192,
     "633": 193,
     "634": 193,
@@ -3589,9 +3589,9 @@
     "719": 235,
     "720": 236,
     "721": 237,
-    "722": 237,
-    "723": 238,
-    "724": 239,
+    "722": 238,
+    "723": 239,
+    "724": 240,
     "725": 240,
     "726": 241,
     "727": 242,
