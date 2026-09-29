@@ -29,7 +29,8 @@ new FPaginatorPageObject(selector);
 #### Parametrar
 
 `selector: string`
-: Selector till `FPaginator` elementet. Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
+: Selector till `FPaginator` elementet.
+Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
 
 ### Exempel
 

@@ -1,5 +1,5 @@
 ---
-name: Vue.js
+title: Vue.js
 layout: content-with-menu
 search:
     terms:

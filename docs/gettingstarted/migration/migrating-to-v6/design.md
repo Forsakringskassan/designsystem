@@ -86,7 +86,8 @@ Styling och klasser för navbar är borttagen och har ersatts av Vue-komponenter
 - `--f-border-color-navbar-hover`
 
 Komponenten `FPageHeader` ersätter det som tidigare bestod av `.navbar__header`, och `FNavigationMenu` ersätter `.navbar__nav`.
-För att behålla samma funktionalitet behövs båda dessa komponenter användas. Besök respektive sida för ytterligare information om dessa komponenter och för exempel om hur du ska använda komponenterna.
+För att behålla samma funktionalitet behövs båda dessa komponenter användas.
+Besök respektive sida för ytterligare information om dessa komponenter och för exempel om hur du ska använda komponenterna.
 
 För att migrera till endast HTML och CSS, se nedan för ett exempel med liten logo samt första menyalternativ valt.
 

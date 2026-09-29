@@ -43,7 +43,8 @@ registerLayout({
 
 där:
 
-- `attachPanel` talar om hur en panel ska fästas. Om ytan inte kan ta paneler sätter man `"none"`.
+- `attachPanel` talar om hur en panel ska fästas.
+  Om ytan inte kan ta paneler sätter man `"none"`.
 - `direction` talar om ifall ytan flödar horisontellt eller vertikalt.
 - `scroll` talar om ifall ytan ska scrolla (i den riktning som `direction` talar om).
 

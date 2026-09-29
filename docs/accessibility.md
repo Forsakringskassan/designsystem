@@ -8,7 +8,8 @@ visible: false
 ## Tillgänglighet för webbplats
 
 Det här är tillgänglighetsredogörelsen för webbplatsen Försäkringskassans designsystem, designsystem.forsakringskassan.se.
-Vi vill att så många som möjligt ska kunna använda den. Här beskriver vi hur webbplatsen uppfyller lagen om tillgänglighet till digital offentlig service.
+Vi vill att så många som möjligt ska kunna använda den.
+Här beskriver vi hur webbplatsen uppfyller lagen om tillgänglighet till digital offentlig service.
 Vi beskriver också eventuella kända tillgänglighetsproblem och hur du kan rapportera brister till oss så att vi kan åtgärda dem.
 
 ### Hur tillgänglig är webbplatsen?
@@ -21,7 +22,7 @@ I avsnittet {@link accessibility#overgripande_brister_pa_webbplatsen Övergripan
 Vi strävar hela tiden efter att förbättra webbplatsens tillgänglighet.
 Om du upptäcker problem som inte är beskrivna på den här sidan, eller om du anser att vi inte uppfyller lagens krav, meddela oss så att vi får veta att problemet finns.
 
-designsystem@forsakringskassan.se
+<designsystem@forsakringskassan.se>
 
 ### Kontakta tillsynsmyndigheten
 

@@ -145,18 +145,20 @@ function navigate(
         };
     }
 
-    if (e.code === "End") {
-        if (e.ctrlKey) {
-            return {
-                row: last.row,
-                cell: table.rows[last.row].cells.length - 1,
-            };
-        }
+    if (e.code !== "End") {
+        return;
+    }
+
+    if (e.ctrlKey) {
         return {
-            row: from.row,
-            cell: table.rows[from.row].cells.length - 1,
+            row: last.row,
+            cell: table.rows[last.row].cells.length - 1,
         };
     }
+    return {
+        row: from.row,
+        cell: table.rows[from.row].cells.length - 1,
+    };
 }
 
 function getCell(element: HTMLElement): HTMLTableCellElement {
@@ -264,15 +266,13 @@ export function maybeNavigateToCell(e: KeyboardEvent): void {
     };
 
     const navigateTo = navigate(e, table, fromIndex, lastIndex);
-    if (navigateTo) {
-        const newCellTarget = getCellTarget(
-            table,
-            navigateTo.row,
-            navigateTo.cell,
-        );
-        activateCell(newCellTarget, { focus: true });
-        ensureCellVisible(newCellTarget);
+    if (!navigateTo) {
+        return;
     }
+
+    const newCellTarget = getCellTarget(table, navigateTo.row, navigateTo.cell);
+    activateCell(newCellTarget, { focus: true });
+    ensureCellVisible(newCellTarget);
 }
 
 /** @internal */

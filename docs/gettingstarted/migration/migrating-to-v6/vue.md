@@ -40,7 +40,8 @@ Klassnamnet för formatbeskrivning på etikett är ändrat.
 
 ### Förändrad knappordning
 
-Den inbördes ordning som knapparna presenteras i har ändrats, `FKUIConfig.buttonOrder` byter standardvärde till `RIGHT_TO_LEFT`. Det innebär att interna system som följer knappordningen enligt windows standard behöver nu aktivt sätta `LEFT_TO_RIGHT`.
+Den inbördes ordning som knapparna presenteras i har ändrats, `FKUIConfig.buttonOrder` byter standardvärde till `RIGHT_TO_LEFT`.
+Det innebär att interna system som följer knappordningen enligt windows standard behöver nu aktivt sätta `LEFT_TO_RIGHT`.
 
 Görs lämpligtvis i applikationens `main.ts`.
 
@@ -86,7 +87,8 @@ Det eventet är nu borttaget och ersatt med `v-model`.
 ## `FForm`, `FFormStep` och `FFormStepButton`
 
 De deprekerade komponenterna `FForm`, `FFormStep` och `FFormStepButton` har tagits bort.
-Som ersättare till `FForm` finns `FWizard` alternativt `FValidationForm`, val av ersättare beror på applikationens komplexitet och utförande. Det är troligt att applikationen behöver ny design, då komponenterna inte är en direkt ersättare av `FForm`.
+Som ersättare till `FForm` finns `FWizard` alternativt `FValidationForm`, val av ersättare beror på applikationens komplexitet och utförande.
+Det är troligt att applikationen behöver ny design, då komponenterna inte är en direkt ersättare av `FForm`.
 
 Se dokumentationen för respektive komponent för att avgöra vad som passar bäst:
 

@@ -46,8 +46,7 @@ export function alertScreenReader(
 
     /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
     waitForScreenReader(() => {
-        wrapper.replaceChildren();
-        wrapper.append(msg);
+        wrapper.replaceChildren(msg);
 
         setTimeout(() => {
             // Remove element if it is still in the DOM.

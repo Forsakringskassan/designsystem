@@ -23,7 +23,8 @@ function formModal(callingInstance, options);
 ### Parameters
 
 `callingInstance`
-: Current component attempting to open confirmation modal. Typically `this`.
+: Current component attempting to open confirmation modal.
+Typically `this`.
 
 `options` {@optional}
 : Modal options.
@@ -33,8 +34,8 @@ function formModal(callingInstance, options);
 
         Must be one of:
 
-    	- `"large"`
-    	- `"fullscreen"
+        - `"large"`
+        - `"fullscreen"
 
     `props` {@optional}
     : Optional props to pass to modal.

@@ -29,7 +29,8 @@ Automatiskt så är h1 stylad som rubriknivå 1 och så vidare ner till h6.
 ### Visuell rubriknivå
 
 För att en applikation ska vara tillgänglig ska det bara finnas en h1, och sedan ska resten av sidan följa rubrikstrukturen.
-I vissa fall visas struktur på ett annat sätt för seende. Till exempel med extra luft eller ett streck och en annan visuell rubriknivå.
+I vissa fall visas struktur på ett annat sätt för seende.
+Till exempel med extra luft eller ett streck och en annan visuell rubriknivå.
 Genom att sätta klassen `heading--h<nivå>` är det möjligt att styla om en heading att visuellt se ut som en annan rubriknivå.
 
 ```html
@@ -38,7 +39,8 @@ Genom att sätta klassen `heading--h<nivå>` är det möjligt att styla om en he
 
 ### Fetmarkerad text som rubrik
 
-I fall en komponent kan ligga på fler ställen i rubrikstrukturen går det att styla headings som strong. Använd då `heading--strong`.
+I fall en komponent kan ligga på fler ställen i rubrikstrukturen går det att styla headings som strong.
+Använd då `heading--strong`.
 
 ```html
 <h3 class="heading--strong">Fetmarkerad text som rubrik</h3>
@@ -149,4 +151,5 @@ För att texten ska vara tillgänglig ska vi aldrig använda text under 16px eft
 
 ### Kursiv text
 
-Använd aldrig kursiv stil i löpande brödtext. Detta är ett tillgänglighetskrav, då kursiv text försvårar läsningen för till exempel dyslektiker.
+Använd aldrig kursiv stil i löpande brödtext.
+Detta är ett tillgänglighetskrav, då kursiv text försvårar läsningen för till exempel dyslektiker.

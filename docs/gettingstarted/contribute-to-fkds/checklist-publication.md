@@ -13,7 +13,8 @@ Om du bidrar till designsystemet genom att göra en uppdatering, kontrollera att
 
 ## Personuppgifter
 
-Det får inte finnas uppgifter som tillhör en person eller som möjliggör identifiering av person. Det kan till exempel vara
+Det får inte finnas uppgifter som tillhör en person eller som möjliggör identifiering av person.
+Det kan till exempel vara
 
 - personnummer
 - kortnummer

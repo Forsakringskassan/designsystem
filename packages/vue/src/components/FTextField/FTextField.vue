@@ -293,12 +293,14 @@ export default defineComponent({
 
             // trigger v-model update when not handled by onValidity event
             const element = this.$refs.input as HTMLInputElement;
-            if (!Object.hasOwn(element.dataset, "validation")) {
-                this.$emit("update:modelValue", this.viewValue);
-
-                await this.$nextTick(); // wait for model update before triggering change event
-                this.$emit("change", this.viewValue);
+            if (Object.hasOwn(element.dataset, "validation")) {
+                return;
             }
+
+            this.$emit("update:modelValue", this.viewValue);
+
+            await this.$nextTick(); // wait for model update before triggering change event
+            this.$emit("change", this.viewValue);
         },
         onFocus() {
             this.showErrorPopup = true;
@@ -312,11 +314,13 @@ export default defineComponent({
 
             // trigger v-model update when not handled by onValidity event
             const element = this.$refs.input as HTMLInputElement;
-            if (!Object.hasOwn(element.dataset, "validation")) {
-                this.$emit("update:modelValue", this.viewValue);
-                await this.$nextTick(); // wait for model update before triggering blur event
-                this.$emit("blur", this.viewValue);
+            if (Object.hasOwn(element.dataset, "validation")) {
+                return;
             }
+
+            this.$emit("update:modelValue", this.viewValue);
+            await this.$nextTick(); // wait for model update before triggering blur event
+            this.$emit("blur", this.viewValue);
         },
         async onValidity({ detail }: CustomEvent<ValidityEvent>): Promise<void> {
             this.validationMessage = detail.validationMessage;

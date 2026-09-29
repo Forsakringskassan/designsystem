@@ -1,5 +1,5 @@
 ---
-name: Vitest
+title: Vitest
 layout: content-with-menu
 search:
     terms:

@@ -131,7 +131,7 @@ defineComponent({
 
 **Composition API:**
 
-```
+```ts
 import { defineComponent } from "vue";
 
 /* eslint-disable-next-line @typescript-eslint/no-empty-object-type */
@@ -146,9 +146,9 @@ import { useModal } from "@fkui/vue";
 const { formModal } = useModal();
 
 async function onOpen(): Promise<void> {
-	const result = await formModal<Person>(PersonFormModal);
+    const result = await formModal<Person>(PersonFormModal);
 
-	/* do something with result */
+    /* do something with result */
 }
 ```
 
@@ -259,7 +259,8 @@ Du kan lägga till extra skärmläsartext på knappar med `screenreader` propert
 +buttons: [{ label: "Stäng", screenreader: "formuläret", event: "dismiss" }];
 ```
 
-Om du använder `screenreader` för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i `label`. Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.
+Om du använder `screenreader` för en knapp så kommer skärmläsare att läsa upp den texten efter knapptexten i `label`.
+Detta används för att tydliggöra vad knappen kommer att göra i de fallen där det kan vara otydligt för skärmläsaranvändare.
 
 ### Validering av inmatad data
 

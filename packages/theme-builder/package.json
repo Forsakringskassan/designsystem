@@ -37,8 +37,8 @@
     "cssnano": "9.0.5",
     "get-css-variables": "1.1.1",
     "postcss-scss": "4.0.9",
-    "sass": "1.104.1",
-    "yargs": "18.1.0"
+    "sass": "1.105.0",
+    "yargs": "18.2.0"
   },
   "devDependencies": {
     "@html-validate/release-scripts": "7.6.12",
@@ -47,7 +47,7 @@
     "@typescript/native": "npm:typescript@7.0.2",
     "dedent": "1.7.2",
     "esbuild": "0.28.2",
-    "memfs": "4.78.1",
+    "memfs": "4.79.0",
     "postcss": "8.5.28",
     "stream-buffers": "3.0.3",
     "typescript": "npm:@typescript/typescript6@6.0.2"

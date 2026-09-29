@@ -15,7 +15,10 @@ search:
         - procent
 ---
 
-Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält. Parsning används för att ändra på det som faktiskt hanteras och skickas in. Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag. Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.
+Formatering används för att göra det lättare för användaren att läsa texten i ett inmatningsfält.
+Parsning används för att ändra på det som faktiskt hanteras och skickas in.
+Till exempel kan formatering lägga till ett mellanslag som tusenavdelare i ett inmatat belopp medan parsning ser till att beloppet hanteras som ett tal och inte som text med ett mellanslag.
+Både formatering och parsning görs när användaren lämnar inmatningsfältet och efter att innehållet är validerat och godkänt.
 
 ## Bankgiro (parser)
 
@@ -55,7 +58,8 @@ Exempel
 
 `parseBankAccountNumber`
 
-Parsern för kontonummer tar bort bindestreck, mellanslag, punkt och komma. Den behåller inledande nollor.
+Parsern för kontonummer tar bort bindestreck, mellanslag, punkt och komma.
+Den behåller inledande nollor.
 
 ## Nummer (formaterare)
 
@@ -127,7 +131,8 @@ Parsern för plusgiro tolkar vy-värdet så att modell-värdet får
 - bindestreck mellan näst sista och sista siffran
 - grupper med två siffror till vänster om bindestreck.
 
-Vid udda antal siffror till vänster kommer första gruppen innehålla en siffra. Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffror.
+Vid udda antal siffror till vänster kommer första gruppen innehålla en siffra.
+Vid jämnt antal siffror till vänster kommer alla grupper innehåll två siffror.
 
 Exempel
 

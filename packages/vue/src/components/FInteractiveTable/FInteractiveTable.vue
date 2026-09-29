@@ -398,11 +398,13 @@ function onClick(event: MouseEvent, row: T): void {
     const { target } = event as MouseEvent & { target: HTMLElement };
     const isRelevant = ["TD", "TH"].includes(target.nodeName);
 
-    if (isRelevant) {
-        /* get <tr> element */
-        const parent = target.parentElement;
-        activate(row, parent);
+    if (!isRelevant) {
+        return;
     }
+
+    /* get <tr> element */
+    const parent = target.parentElement;
+    activate(row, parent);
 }
 
 function activate(row: T, tr: HTMLElement | null): void {
@@ -412,13 +414,15 @@ function activate(row: T, tr: HTMLElement | null): void {
         toggleExpanded(row);
     }
 
-    if (!itemEquals(row, activeRow.value, internalKey)) {
-        emit("change", row);
-        setActiveRow(row);
+    if (itemEquals(row, activeRow.value, internalKey)) {
+        return;
+    }
 
-        if (tr) {
-            tr.focus();
-        }
+    emit("change", row);
+    setActiveRow(row);
+
+    if (tr) {
+        tr.focus();
     }
 }
 

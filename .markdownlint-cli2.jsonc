@@ -1,0 +1,43 @@
+{
+    "gitignore": true,
+    "globs": ["**/*.md"],
+    "ignores": ["**/node_modules/**", "etc/*.api.md", "etc/docs-manifest.md"],
+    "customRules": ["markdownlint-rule-max-one-sentence-per-line"],
+    "config": {
+        /* enable all rules by default */
+        "default": true,
+
+        /* disable rules overlapping with prettier */
+        "extends": "markdownlint/style/prettier",
+
+        /* customizations */
+        "code-block-style": false, // should be fenced but interferes with definition lists
+        "heading-style": { "style": "atx" },
+        "line-length": false,
+        "link-fragments": false, // grammar does not 100% to output from docs-generator
+        "link-image-style": false, // no preference
+        "no-duplicate-heading": { "siblings_only": true },
+        "no-inline-html": {
+            "allowed_elements": ["kbd", "style"],
+            "table_allowed_elements": ["br"],
+        },
+        "no-hard-tabs": { "spaces_per_tab": 4 },
+    },
+    "overrides": [
+        {
+            "filter": ["CHANGELOG.md"],
+            "combine": "merge",
+            "config": {
+                "ul-style": false,
+            },
+        },
+        {
+            "filter": ["**/LICENSE.md"],
+            "combine": "merge",
+            "config": {
+                "first-line-heading": false,
+                "max-one-sentence-per-line": false,
+            },
+        },
+    ],
+}

@@ -20,7 +20,8 @@ new FFileItemPageObject(selector);
 ### Parametrar
 
 `selector: string`
-: Selector till `FFileItem` elementet. Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
+: Selector till `FFileItem` elementet.
+Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
 
 ## Exempel
 

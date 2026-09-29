@@ -29,7 +29,8 @@ new FExpandableParagraphPageObject(selector);
 #### Parametrar
 
 `selector: string` {@optional}
-: Selector till `FExpandableParagraph` elementet. Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
+: Selector till `FExpandableParagraph` elementet.
+Du kan med fördel använda {@link TestPlugin `v-test`} direktivet för din selector.
 
 ## expandCollapseIcon()
 

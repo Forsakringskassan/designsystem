@@ -32,30 +32,37 @@ search:
 }
 </style>
 
-Grid används för att skapa responsiva gränssnitt som anpassar sig till olika skärm- och fönsterstorlekar. Det definierar den yta som komponenter kan placeras på och styr hur stor del av ytans bredd som komponenterna får uppta vid olika brytpunkter för skärmbredden.
+Grid används för att skapa responsiva gränssnitt som anpassar sig till olika skärm- och fönsterstorlekar.
+Det definierar den yta som komponenter kan placeras på och styr hur stor del av ytans bredd som komponenterna får uppta vid olika brytpunkter för skärmbredden.
 
 ## Containers
 
-Containern styr den maximala bredden som innehållet får ta och sätter marginal i vänster- och högerkant. Containerns fulla bredd motsvarar 12 kolumner.
+Containern styr den maximala bredden som innehållet får ta och sätter marginal i vänster- och högerkant.
+Containerns fulla bredd motsvarar 12 kolumner.
 Det finns två typer av containers:
 
 - **Container** – centrerar innehållet på skärmen i en maxbredd som varierar beroende av skärmens bredd
 
 ![Container](./grid/container.png)
 
-- **Container-fluid** - tar 100% av den tillgängliga ytan. Om en maxbredd sätts kommer ytan vänsterjusteras
+- **Container-fluid** - tar 100% av den tillgängliga ytan.
+  Om en maxbredd sätts kommer ytan vänsterjusteras
 
 ![Container-fluid](./grid/container-fluid.png)
 
 ## Marginaler och mellanrum
 
-Containers har inbyggda marginaler motsvarande 1 rem till höger och vänster. Gutter är mellanrummet mellan kolumnerna och motsvarar 2 rem.
+Containers har inbyggda marginaler motsvarande 1 rem till höger och vänster.
+Gutter är mellanrummet mellan kolumnerna och motsvarar 2 rem.
 
 ![Gutter](./grid/gutter.png)
 
 ## Rader och kolumner
 
-Innehåll i ett gridlayout placeras i kolumner (`col`) och kolumnerna ska i sig alltid ligga i en rad (`row`). Varje rad har 12 möjliga kolumner, vilket motsvarar hela bredden som raden placeras i. Bredden på en kolumn anges i hur många av radens 12 möjliga kolumner som den får uppta. Komponenter som placeras i kolumnen tar sedan hela kolumnens bredd.
+Innehåll i ett gridlayout placeras i kolumner (`col`) och kolumnerna ska i sig alltid ligga i en rad (`row`).
+Varje rad har 12 möjliga kolumner, vilket motsvarar hela bredden som raden placeras i.
+Bredden på en kolumn anges i hur många av radens 12 möjliga kolumner som den får uppta.
+Komponenter som placeras i kolumnen tar sedan hela kolumnens bredd.
 
 ### Exempel kolumner
 
@@ -162,7 +169,9 @@ Komponenternas bredd styrs av bredden på den kolumn de placeras i.
 
 ## Brytpunkter
 
-Genom att använda fördefinierade brytpunkter kan du anpassa hur en layout ska se ut vid olika skärmstorlekar. Det finns fyra brytpunkter som kan konfigureras. Varje brytpunkt har ett standardvärde för vilken skärmbredd den kommer att bryta på:
+Genom att använda fördefinierade brytpunkter kan du anpassa hur en layout ska se ut vid olika skärmstorlekar.
+Det finns fyra brytpunkter som kan konfigureras.
+Varje brytpunkt har ett standardvärde för vilken skärmbredd den kommer att bryta på:
 
 - sm - skärmbredd mellan 0 och 639 pixlar
 - md - skärmbredd mellan 640 och 1023 pixlar
@@ -175,7 +184,8 @@ Du sätter bredden på en kolumn för olika skärmstorlekar genom att ange i kla
 
 För att aktivera de olika brytpunkterna så kan du minska bredden på webbläsarens fönster.
 
-I de angivna exempel nedan finns det två olika scenarion. Ett där föräldern tar upp hela bredden på 12 kolumner och ett exempel där föräldern tar 8 kolumner medan dess barn tar hela bredden på 12 kolumner inuti dess förälder.
+I de angivna exempel nedan finns det två olika scenarion.
+Ett där föräldern tar upp hela bredden på 12 kolumner och ett exempel där föräldern tar 8 kolumner medan dess barn tar hela bredden på 12 kolumner inuti dess förälder.
 
 #### Förälder med 12 kolumner
 

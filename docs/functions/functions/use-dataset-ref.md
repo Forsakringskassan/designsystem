@@ -22,7 +22,8 @@ function useDatasetRef<T>(initial, nestedAttribute);
 ### Parametrar
 
 `initial: T[]` {@optional}
-: Initialt värde. Default är en tom array.
+: Initialt värde.
+Default är en tom array.
 
 `nestedAttribute: DatasetNestedKeyOf<T>` {@optional}
 : Property i element som innehåller nästlade rader.

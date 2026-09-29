@@ -162,22 +162,24 @@ function calculatePosition(options?: { horizontalOnly: boolean }): void {
     wrapperElement.style.left = "0px";
 
     const rect = computeListboxRect(anchor, { itemHeight: contentItemHeigth, numOfItems, verticalSpacing });
-    if (rect) {
-        const { top, left, width, height } = rect;
-        const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
-        const offsetLeft = Math.floor((offsetRect?.x ?? 0) + window.scrollX);
-        const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
-
-        wrapperElement.style.left = `${String(left - offsetLeft)}px`;
-        if (options?.horizontalOnly) {
-            return;
-        }
-
-        wrapperElement.style.top = `${String(top - offSetTop)}px`;
-        wrapperElement.style.width = `${String(width)}px`;
-        contentWrapper.style.maxHeight = `${String(height)}px`;
-        contentWrapper.style.width = `${String(width)}px`;
+    if (!rect) {
+        return;
     }
+
+    const { top, left, width, height } = rect;
+    const offsetRect = wrapperElement.offsetParent?.getBoundingClientRect();
+    const offsetLeft = Math.floor((offsetRect?.x ?? 0) + window.scrollX);
+    const offSetTop = Math.floor((offsetRect?.top ?? 0) + window.scrollY);
+
+    wrapperElement.style.left = `${String(left - offsetLeft)}px`;
+    if (options?.horizontalOnly) {
+        return;
+    }
+
+    wrapperElement.style.top = `${String(top - offSetTop)}px`;
+    wrapperElement.style.width = `${String(width)}px`;
+    contentWrapper.style.maxHeight = `${String(height)}px`;
+    contentWrapper.style.width = `${String(width)}px`;
 }
 </script>
 

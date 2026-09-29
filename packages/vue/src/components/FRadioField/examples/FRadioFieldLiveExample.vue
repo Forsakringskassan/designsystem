@@ -117,6 +117,7 @@ export default defineComponent({
     },
     methods: {
         onHorizontalChange() {
+            /* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
             this.isBorder = this.isHorizontal ? false : this.isBorder;
         },
     },

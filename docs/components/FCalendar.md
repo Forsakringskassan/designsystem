@@ -58,7 +58,8 @@ En årsväljare gör det lättare för användaren att byta till ett annat år o
 
 ## Storlek
 
-Kalendern är 100% i bredd. För att ändra bredden placeras kalendern i en container som hanterar komponentens bredd.
+Kalendern är 100% i bredd.
+För att ändra bredden placeras kalendern i en container som hanterar komponentens bredd.
 
 Kolumnen med veckonummer visas inte på skärmar som är under 325px breda.
 
@@ -94,7 +95,8 @@ FCalendarCustom.vue
 
 ## Välja flera dagar
 
-I följande exempel av kalendern kan man välja flera dagar och visuellt se vilka dagar som är valda. Alla valda dagar sparas ner till en array.
+I följande exempel av kalendern kan man välja flera dagar och visuellt se vilka dagar som är valda.
+Alla valda dagar sparas ner till en array.
 
 ```diff
  <f-calendar
@@ -114,8 +116,10 @@ I följande exempel av kalendern kan man välja flera dagar och visuellt se vilk
  </f-calendar>
 ```
 
-Metoden `onSelectDay` kommer i exemplet lägga till den dagen du klickar på i en array för alla dagar. Finns redan dagen i arrayen kommer den valda dagen tas bort från arrayen.
-Metoden `isSelected(date)` kommer loopa igenom vår array där dagarna sparas och kolla om den valda dagen finns. Finns den markeras den, finns den inte avmarkeras den.
+Metoden `onSelectDay` kommer i exemplet lägga till den dagen du klickar på i en array för alla dagar.
+Finns redan dagen i arrayen kommer den valda dagen tas bort från arrayen.
+Metoden `isSelected(date)` kommer loopa igenom vår array där dagarna sparas och kolla om den valda dagen finns.
+Finns den markeras den, finns den inte avmarkeras den.
 
 Exemplet lagrar dagarna som `string` i arrayen.
 

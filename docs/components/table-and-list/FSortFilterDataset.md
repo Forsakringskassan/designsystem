@@ -116,7 +116,8 @@ FSortFilterDatasetTableExampleToolbar.vue
 Om innehållet i en sorterad lista/tabell redigeras (exempelvis att användaren redigerar en rad) uppdateras inte sorteringsordningen i listan/tabellen.
 Användaren måste aktivt sortera om listan/tabellen .
 Nya rader läggs till sist oavsett sorteringsordning.
-Användaren behöver även här aktivt sortera om listan/tabellen. Om datamängden ersätts helt körs filter och sortering på nytt.
+Användaren behöver även här aktivt sortera om listan/tabellen.
+Om datamängden ersätts helt körs filter och sortering på nytt.
 
 ## Datamängdsorterare och egen presentation
 

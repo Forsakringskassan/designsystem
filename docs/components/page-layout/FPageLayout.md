@@ -11,15 +11,16 @@ search:
 <!-- to force the examples to a maximum size -->
 <!-- [html-validate-disable-next element-permitted-content -- hack to contain layout component to example wrapper] -->
 <style>
-[data-test=example] .code-preview__preview {
-	container-type: size;
-	aspect-ratio: 16 / 9;
+[data-test="example"] .code-preview__preview {
+    container-type: size;
+    aspect-ratio: 16 / 9;
 }
 </style>
 
 Applikationsmallen erbjuder olika layouter för att dela upp en applikation som täcker hela skärmen i ytor.
 Du kan utgå från en av fyra standardlayouter eller skapa en egen.
-Mallen styr hur ytorna placeras i förhållande till varandra. Storleken på en yta styrs av vad som placeras i ytan.
+Mallen styr hur ytorna placeras i förhållande till varandra.
+Storleken på en yta styrs av vad som placeras i ytan.
 
 Se också [exempelapplikation för Applikationsmall][example-app] ([källkod][example-source]) för en komplett applikation.
 

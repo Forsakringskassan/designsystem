@@ -9,7 +9,8 @@ search:
 ---
 
 Densitet styr hur många komponenter och hur mycket information som får plats på skärmen utan att
-användaren behöver skrolla. Densitet påverkar en komponents höjd samt avståndet mellan komponenter.
+användaren behöver skrolla.
+Densitet påverkar en komponents höjd samt avståndet mellan komponenter.
 Hög densitet ger en kompakt layout för applikationer som behöver presentera mycket information som
 användaren måste kunna överblicka.
 

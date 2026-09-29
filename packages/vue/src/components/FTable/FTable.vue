@@ -161,7 +161,9 @@ const expandedColspan = computed((): number => {
 const hasFooter = computed((): boolean => {
     return hasSlot("footer");
 });
-const columns = computed(() => normalizeTableColumns(rawColumns).filter((col) => toValue(col.enabled)));
+
+const normalizedColumns = computed(() => normalizeTableColumns(rawColumns));
+const columns = computed(() => normalizedColumns.value.filter((col) => toValue(col.enabled)));
 const hasColumns = computed(() => columns.value.length > 0);
 
 const tableClasses = computed(() => {
@@ -226,22 +228,25 @@ function onKeydown(e: KeyboardEvent): void {
 
     // If keyboard focus is on the cell rather than the actual target,
     // forward activation to the target just like the click handler does
-    if (!targetEl.contains(e.target)) {
-        e.preventDefault();
-        targetEl.click();
+    if (targetEl.contains(e.target)) {
+        return;
     }
+
+    e.preventDefault();
+    targetEl.click();
 }
 
 function onClick(e: MouseEvent): void {
     const cell = (e.target as HTMLElement).closest<HTMLElement>("td, th");
+    if (!cell) {
+        return;
+    }
 
-    if (cell) {
-        const targetEl = activateCell(cell, { focus: true });
+    const targetEl = activateCell(cell, { focus: true });
 
-        // If you haven't clicked on target, click on it.
-        if (e.target instanceof Node && !targetEl.contains(e.target)) {
-            targetEl.click();
-        }
+    // If you haven't clicked on target, click on it.
+    if (e.target instanceof Node && !targetEl.contains(e.target)) {
+        targetEl.click();
     }
 }
 

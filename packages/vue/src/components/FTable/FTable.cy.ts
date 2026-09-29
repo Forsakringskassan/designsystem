@@ -2841,6 +2841,61 @@ describe("columns", () => {
         table.header(1).should("contain.text", "foo");
     });
 
+    it("should preserve input focus when another column's enabled is changed", () => {
+        interface Row {
+            text: string;
+            land: string;
+            bob: string;
+        }
+
+        const showLand = ref(true);
+        const rows = useDatasetRef<Row>([
+            { text: "value", land: "Land namn", bob: "bob" },
+        ]);
+        const columns = defineTableColumns<Row>([
+            {
+                type: "text",
+                header: "Text",
+                key: "text",
+                editable: true,
+                label: () => "Text",
+            },
+            {
+                type: "text",
+                header: "Land",
+                key: "land",
+                editable: true,
+                label: () => "Land",
+                enabled: showLand,
+            },
+            {
+                type: "text",
+                header: "Bob",
+                key: "bob",
+                editable: true,
+                label: () => "bob",
+            },
+        ]);
+
+        cy.mount(() => h(FTable<typeof rows>, { rows: rows.value, columns }));
+
+        showLand.value = true;
+        table.header(2).should("contain.text", "Land");
+
+        table.cell({ row: 1, col: 1 }).focus().should("have.focus");
+        cy.focused().click();
+        table.cell({ row: 1, col: 1 }).find("input").should("have.focus");
+
+        table
+            .cell({ row: 1, col: 1 })
+            .find("input")
+            .should("be.focused")
+            .then(() => (showLand.value = false));
+
+        table.header(2).should("not.contain.text", "Land");
+        table.cell({ row: 1, col: 1 }).find("input").should("be.focused");
+    });
+
     describe("Sorting icon forced colors", () => {
         for (const mode of Object.values(forcedColorModes)) {
             it(`should show active sort icon in forced colors mode ${mode} (visual)`, () => {

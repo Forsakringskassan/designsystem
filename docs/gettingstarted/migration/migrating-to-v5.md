@@ -163,7 +163,8 @@ By default any `IPopup` will be mounted as a child of `<body>` but this can be c
 
 ### `mountOffline(...)` removed
 
-`mountOffline(...)` is no longer available. For EXP-applications it´s not needed, as the feature is now included in Sitevision.
+`mountOffline(...)` is no longer available.
+For EXP-applications it´s not needed, as the feature is now included in Sitevision.
 If you are creating a GHS-application with the need for the `FOffline` component, just add `<f-offline> Custom Message </f-offline>` to your application template.
 
 ### `#tooltip` slot in custom components

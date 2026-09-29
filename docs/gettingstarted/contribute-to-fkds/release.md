@@ -123,7 +123,8 @@ gitGraph
 
 Läs igenom dina commits och tänk till för varje:
 
-- Är det en distinkt ändring? Ska den delas eller slås ihop med andra commits?
+- Är det en distinkt ändring?
+  Ska den delas eller slås ihop med andra commits?
 - Är meddelandet begripligt utan mer sammanhang?
 - Ska meddelandet visas i Changelog och announcements?
 
@@ -145,7 +146,8 @@ Går det inte lösa utan att bryta kompatibilitet så gäller följande:
 - Vi tillsammans uppdaterar {@link releases Releaser}.
 - Vi tillsammans arbetar fram ett releaseanteckning.
 - Din commit ska använda `!` efter type samt en trailer med `BREAKING CHANGE:` och kortfattade förklaring och instruktioner till migrering.
-- Din commit ska innehålla en utförlig migreringsguide. Inkludera exempel och kod-diff.
+- Din commit ska innehålla en utförlig migreringsguide.
+  Inkludera exempel och kod-diff.
 
 Exempel på commitmeddelande:
 
@@ -181,7 +183,8 @@ Om du har detta måste du också göra detta:
 En pull request ska generellt sett innehålla:
 
 1. En tydlig beskrivning:
-    - Vad är bakgrunden till ändringen? Beskriv ett användarfall eller hur en bugg uppstår.
+    - Vad är bakgrunden till ändringen?
+      Beskriv ett användarfall eller hur en bugg uppstår.
     - Hur löser denna pull requesten ovan beskrivet problem?
     - Om ändringen är visuell inkludera gärna en enkel före/efter bild i beskrivningen.
 2. Välskriven kod som följer de kodstandarer vi satt upp.
@@ -205,15 +208,22 @@ Ta bort övriga texter, behåll enbart det nya commitmeddelandet.
 Innan merge förväntar vi oss att du läst igenom listan med commits och säkerställt att samtliga commits är lämpliga för changelog.
 Några exempel på vanliga fel (men ej uteslutande lista):
 
-- Flera commits med samma meddelande. Det medför brus i changelog där samma feature visas flera gånger (en gång per commit). Om commits hör ihop slå ihop dem till en och samma commit.
-- Flera distinkta feature eller buggrättningar ligger inbakade i en och samma commit. Det medför att ändringar inte syns i changelog. Dela upp din commit i flera nya, en per distinkt ändring.
-- Fel typ, exempelvis att `fix` eller `feat` används för ändringar som inte direkt påverkar konsumenten. Det medför brus i changelog där vi visar ändringar som inte påverkar. Använd en annan lämplig type exempelvis `refactor` eller `style`.
+- Flera commits med samma meddelande.
+  Det medför brus i changelog där samma feature visas flera gånger (en gång per commit).
+  Om commits hör ihop slå ihop dem till en och samma commit.
+- Flera distinkta feature eller buggrättningar ligger inbakade i en och samma commit.
+  Det medför att ändringar inte syns i changelog.
+  Dela upp din commit i flera nya, en per distinkt ändring.
+- Fel typ, exempelvis att `fix` eller `feat` används för ändringar som inte direkt påverkar konsumenten.
+  Det medför brus i changelog där vi visar ändringar som inte påverkar.
+  Använd en annan lämplig type exempelvis `refactor` eller `style`.
 
 Vi har ingen hård regel för hur många som behöver godkänna din pull request men några tumregler:
 
 - Om ändringen rör mer än trivial kod: minst en utvecklare ur FKDS-teamet ska ha granskat.
 - Om ändringen rör mer än trivial dokumentation (stavfel, osv): minst en icke-utvecklare ur FKDS-teamet ska ha granskat.
-- Om ändringen behöver testning (och vid kodändring ska du utgå från att det behövs): minst en testare från ditt team eller ur FKDS-teamet. Rådgör gärna med testare i FKDS-teamet om vad/hur ändringen ska testas.
+- Om ändringen behöver testning (och vid kodändring ska du utgå från att det behövs): minst en testare från ditt team eller ur FKDS-teamet.
+  Rådgör gärna med testare i FKDS-teamet om vad/hur ändringen ska testas.
 
 Tumregler för godkännande av pull request:
 

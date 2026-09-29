@@ -9,7 +9,9 @@ search:
 
 Ett Vue-plugin som hjälper till med att översätta textnycklar globalt.
 
-**Observera** att TranslationService används av detta plugin. TranslationsService stödjer enbart möjligheten att ange standardvärde i sitt grundutförande. För att översätta nycklar måste en implementation anges i TranslationService.
+**Observera** att TranslationService används av detta plugin.
+TranslationsService stödjer enbart möjligheten att ange standardvärde i sitt grundutförande.
+För att översätta nycklar måste en implementation anges i TranslationService.
 
 ## Användning
 
@@ -95,7 +97,8 @@ Det är enbart att rekommendera för applikationer och ej för komponentbibliote
 
 - `key` - Textnyckel som ska översättas.
 - `defaultValue` - Standardtext som visas när ingen översättning finns.
-- `params` - Parametrar som kan interpoleras. Kräver en provider med stöd för interpolering.
+- `params` - Parametrar som kan interpoleras.
+  Kräver en provider med stöd för interpolering.
 
 Första parametern till `$t()` är textnyckeln som används för att slå upp översatt text.
 

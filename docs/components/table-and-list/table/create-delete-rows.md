@@ -11,7 +11,8 @@ search:
 FTableAddRemoveExample.vue
 ```
 
-När användaren lägger till en rad ska den alltid läggas sist i tabellen. Fokus ska vara kvar på Lägg till-knappen.
+När användaren lägger till en rad ska den alltid läggas sist i tabellen.
+Fokus ska vara kvar på Lägg till-knappen.
 
 När användaren tar bort en rad ska fokus flyttas enligt prio:
 

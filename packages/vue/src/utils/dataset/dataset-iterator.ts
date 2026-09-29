@@ -8,11 +8,12 @@ function* datasetGenerator<T extends object>(
 ): Generator<{ item: T; metadata: DatasetElementMetadata }> {
     for (const item of array) {
         yield { item, metadata: getDatasetMetadata(item) };
-        if (nestedAttribute) {
-            const nested = item[nestedAttribute];
-            if (Array.isArray(nested)) {
-                yield* datasetGenerator(nested, nestedAttribute);
-            }
+        if (!nestedAttribute) {
+            continue;
+        }
+        const nested = item[nestedAttribute];
+        if (Array.isArray(nested)) {
+            yield* datasetGenerator(nested, nestedAttribute);
         }
     }
 }

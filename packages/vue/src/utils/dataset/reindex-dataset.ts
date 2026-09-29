@@ -25,14 +25,16 @@ function reindex<T extends object>(
         });
         rowCounter.value++;
 
-        if (nestedAttribute) {
-            const nested = element[nestedAttribute] as T[];
-            if (Array.isArray(nested)) {
-                reindex(nested, nestedAttribute, {
-                    depth: depth + 1,
-                    rowCounter,
-                });
-            }
+        if (!nestedAttribute) {
+            continue;
+        }
+
+        const nested = element[nestedAttribute] as T[];
+        if (Array.isArray(nested)) {
+            reindex(nested, nestedAttribute, {
+                depth: depth + 1,
+                rowCounter,
+            });
         }
     }
 }

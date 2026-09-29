@@ -101,7 +101,8 @@ Kända buggar:
 
 - Validatorn kraschar om `id` refererar till ett inmatningsfält som inte finns.
 - Validatorn ger alltid ett felmeddelande om `id` refererar till ett element som inte är ett inmatningsfält.
-- Validatorn fungerar inte om referensvärdet uppdateras. Du behöver hantera det manuellt, se {@link cross-validation korsvalidering}.
+- Validatorn fungerar inte om referensvärdet uppdateras.
+  Du behöver hantera det manuellt, se {@link cross-validation korsvalidering}.
 
 ### Maxlängd
 
@@ -121,7 +122,9 @@ Skriv så här i kod för att sätta en maxlängd på tio tecken:
  ></f-text-field>
 ```
 
-Du behöver ändra felmeddelandet till användaren när valideringen inte är godkänd så att det passar sammanhanget. Om du inte ändrar kommer det stå MAXLENGTH. Undantag är om validatorn är kombinerad med någon av validatorerna som nämns nedan.
+Du behöver ändra felmeddelandet till användaren när valideringen inte är godkänd så att det passar sammanhanget.
+Om du inte ändrar kommer det stå MAXLENGTH.
+Undantag är om validatorn är kombinerad med någon av validatorerna som nämns nedan.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -149,7 +152,8 @@ Skriv så här i kod för att sätta en minlängd på fyra tecken:
  ></f-text-field>
 ```
 
-Du behöver ändra felmeddelandet till användaren när valideringen inte är godkänd så att det passar sammanhanget. Om du inte ändrar kommer det stå MINLENGTH.
+Du behöver ändra felmeddelandet till användaren när valideringen inte är godkänd så att det passar sammanhanget.
+Om du inte ändrar kommer det stå MINLENGTH.
 
 ### Obligatoriskt
 
@@ -209,7 +213,8 @@ Validatorn kontrollerar att de tecken som användaren har fyllt i är tillåtna 
 
 Tillåtna tecken är:  a-z A-Z 0-9 . , - ( ) ? + = ! : @ \* À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß à á â ã ä å æ ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
 
-Valideringen sker direkt efter användaren har fyllt i ett otillåtet tecken. Direktvalideringen är inbyggd i validatorn.
+Valideringen sker direkt efter användaren har fyllt i ett otillåtet tecken.
+Direktvalideringen är inbyggd i validatorn.
 
 ```import nomarkup
 WhitelistExample.vue
@@ -225,7 +230,8 @@ Skriv så här i kod:
 
 Felmeddelandet till användaren när valideringen inte är godkänd är:
 
-- Fältet innehåller otillåtna tecken. Exempel på ogiltiga tecken är /, % och ".
+- Fältet innehåller otillåtna tecken.
+  Exempel på ogiltiga tecken är /, % och ".
 
 ### Val från lista
 
@@ -262,9 +268,11 @@ Validatorn kontrollerar att det ifyllda värdet är ett giltigt datum.
 Valideringskriterier:
 
 - Tillåtna tecken är siffror, bindestreck eller snedstreck.
-- Om det finns bindestreck eller snedstreck måste de vara på plats nummer fem eller åtta. Godkända format är åååå-mm-dd, ååååmmdd och åååå/mm/dd.
+- Om det finns bindestreck eller snedstreck måste de vara på plats nummer fem eller åtta.
+  Godkända format är åååå-mm-dd, ååååmmdd och åååå/mm/dd.
 - Max antal tecken är tio.
-- Minsta antal tecken är åtta. Minst åtta tecken måste vara siffror.
+- Minsta antal tecken är åtta.
+  Minst åtta tecken måste vara siffror.
 - Det datum som fylls i måste vara ett giltigt datum (det kontrolleras mot en kalender).
 
 Till exempel är 2020-02-30 inte ett giltigt datum.
@@ -281,9 +289,11 @@ Skriv så här i kod:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i ett felaktigt datum.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Du har fyllt i ett felaktigt datum.
 
-Felmeddelandet när validatorn för datum `date` är kombinerad med validatorn för obligatoriskt fält `required` är:<br> Välj ett datum.
+Felmeddelandet när validatorn för datum `date` är kombinerad med validatorn för obligatoriskt fält `required` är:  
+Välj ett datum.
 
 ### Datumformat
 
@@ -292,9 +302,11 @@ Felmeddelandet när validatorn för datum `date` är kombinerad med validatorn f
 Validatorn kontrollerar att det ifyllda värde stämmer överens mot de här valideringskriterierna:
 
 - Tillåtna tecken är siffror, bindestreck eller snedstreck.
-- Om det finns bindestreck eller snedstreck måste de vara på plats nummer fem eller åtta. Godkända format är åååå-mm-dd, ååååmmdd och åååå/mm/dd.
+- Om det finns bindestreck eller snedstreck måste de vara på plats nummer fem eller åtta.
+  Godkända format är åååå-mm-dd, ååååmmdd och åååå/mm/dd.
 - Max antal tecken är tio.
-- Minsta antal tecken är åtta. Minst åtta tecken måste vara siffror.
+- Minsta antal tecken är åtta.
+  Minst åtta tecken måste vara siffror.
 
 ```import nomarkup
 DateFormatExample.vue
@@ -308,7 +320,8 @@ Skriv så här i kod:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i datumet med åtta siffror.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i datumet med åtta siffror.
 
 ### Inte valbara datum
 
@@ -328,7 +341,8 @@ Skriv så här i kod för att 1 januari 2022, 5 maj 2022 och 20 juni 2022 inte s
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du kan inte välja det här datumet.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Du kan inte välja det här datumet.
 
 ### Inte valbara veckodagar
 
@@ -348,13 +362,15 @@ Skriv så här i kod för att sätta måndagar, tisdagar, onsdagar och torsdagar
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringern inte är godkänd är:<br> Du kan inte välja det här datumet.
+Felmeddelandet till användaren när valideringern inte är godkänd är:  
+Du kan inte välja det här datumet.
 
 ### Maxdatum
 
 `maxDate`
 
-Validatorn kontrollerar att det datum som användaren har fyllt i **inte** ligger längre fram än angivet datum. Använd maxdatum-validatorn tillsammans med datum-validatorn.
+Validatorn kontrollerar att det datum som användaren har fyllt i **inte** ligger längre fram än angivet datum.
+Använd maxdatum-validatorn tillsammans med datum-validatorn.
 
 Valideringskriterie:
 
@@ -372,13 +388,15 @@ Skriv så här i kod när användaren ska välja ett datum fram till och med 30 
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Datumet ligger för långt fram i tiden.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Datumet ligger för långt fram i tiden.
 
 ### Mindatum
 
 `minDate`
 
-Validatorn kontrollerar att det datum som användaren har fyllt i **inte** ligger tidigare än angivet datum. Använd mindatum-validatorn tillsammans med datum-validatorn.
+Validatorn kontrollerar att det datum som användaren har fyllt i **inte** ligger tidigare än angivet datum.
+Använd mindatum-validatorn tillsammans med datum-validatorn.
 
 Valideringskriterie:
 
@@ -396,7 +414,8 @@ Skriv så här i kod när användaren ska välja ett datum från och med 1 janua
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Datumet ligger för långt bak i tiden.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Datumet ligger för långt bak i tiden.
 
 ## Tal och valutabelopp
 
@@ -426,7 +445,9 @@ Skriv så här i kod:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i ett ogiltigt tecken. Fyll i siffror.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Du har fyllt i ett ogiltigt tecken.
+Fyll i siffror.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -458,7 +479,8 @@ Skriv så här i kod när användaren måste fylla i ett heltal:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i siffror utan decimal.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i siffror utan decimal.
 
 Det finns särskilda felmeddelanden när den här validatorn komponbineras med andra validatorer:
 
@@ -471,7 +493,9 @@ Det finns särskilda felmeddelanden när den här validatorn komponbineras med a
 
 Validatorn kontrollerar att det ifyllda värdet är ett decimaltal.
 
-Max antal decimaler och minsta antal decimaler är konfigurerbart. Utgångsvärden för max antal decimaler är två. Utgångsvärdet för minsta antal decimaler är ett.
+Max antal decimaler och minsta antal decimaler är konfigurerbart.
+Utgångsvärden för max antal decimaler är två.
+Utgångsvärdet för minsta antal decimaler är ett.
 
 Valideringskriterier:
 
@@ -496,7 +520,8 @@ Skriv så här i kod när användaren måste fylla i ett tal med minst en decima
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i ett värde med rätt antal decimaler.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i ett värde med rätt antal decimaler.
 
 ### Maxvärde
 
@@ -527,7 +552,8 @@ Skriv så här i kod när användaren måste fylla i ett tal som inte överstige
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i en för hög siffra.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Du har fyllt i en för hög siffra.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -564,7 +590,8 @@ Skriv så här i kod när användaren ska fylla i ett tal som inte understiger 1
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i en högre siffra.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i en högre siffra.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -601,7 +628,8 @@ Skriv så här i kod när användaren fylla i ett tal som är mindre än 100:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Du har fyllt i en för hög siffra.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Du har fyllt i en för hög siffra.
 
 ### Större än
 
@@ -632,7 +660,8 @@ Skriv så här i kod när användaren ska fylla i ett tal som är större än 0.
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i en högre siffra.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i en högre siffra.
 
 ### Procent
 
@@ -659,7 +688,8 @@ Skriv så här i kod när användaren ska fylla i ett tal i procent:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i procent med en siffra.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i procent med en siffra.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -686,7 +716,8 @@ Skriv så här i kod när användaren ska fylla i ett valutabelopp:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i ett belopp.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i ett belopp.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -706,7 +737,8 @@ Valideringskriterier:
 
 - Tillåtna tecken är siffror och bindestreck.
 - Bindestreck får bara vara på plats nummer sju i ordningen.
-- Minsta antal tecken är tio. Minst tio tecken måste vara siffror.
+- Minsta antal tecken är tio.
+  Minst tio tecken måste vara siffror.
 - Max antal tecken är 11.
 - Checksumman stämmer överens med det ifyllda värdet.
 
@@ -722,7 +754,8 @@ Skriv så här i kod när användaren ska fylla i organisationsnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i organisationsnumret med 10 siffror, till exempel 999999-9999.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -747,7 +780,8 @@ Valideringskriterier:
 - Dag >= 01 och <=31 eller >= 60 och <=91 (det senare är samordningsnummer).
 - De fyra sista siffrorna: 0000-9999.
 
-Det finns en separat validator för att kontrollera checksumman på ett personnummer, personnummer-checksumma (personnummerLuhn). Validatorn för format ska stå före validatorn för checksumma.
+Det finns en separat validator för att kontrollera checksumman på ett personnummer, personnummer-checksumma (personnummerLuhn).
+Validatorn för format ska stå före validatorn för checksumma.
 
 ```import nomarkup
 PersonnummerFormatExample.vue
@@ -761,7 +795,8 @@ Skriv så här i kod när användaren ska fylla i personnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i personnumret med 10 siffror.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i personnumret med 10 siffror.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -774,7 +809,8 @@ Det finns särskilda felmeddelanden när den här validatorn kombineras med andr
 
 Validatorn kontrollerar att det ifyllda värdet stämmer med checksumman för personnummer.
 
-Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (personnummerFormat). Validatorn för format ska stå före validatorn för checksumma.
+Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (personnummerFormat).
+Validatorn för format ska stå före validatorn för checksumma.
 
 ```import nomarkup
 PersonnummerLuhnExample.vue
@@ -788,7 +824,8 @@ Skriv så här i kod när användaren ska fylla i personnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kolla att personnumret stämmer.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Kolla att personnumret stämmer.
 
 ### Personnummer - inte samma
 
@@ -796,7 +833,8 @@ Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kol
 
 Validatorn kontrollerar att det ifyllda personnumret inte är samma som personnumret i annat fält.
 
-Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (`personnummerFormat`). Validatorn för format ska stå före validatorn för `personnummerNotSame`.
+Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (`personnummerFormat`).
+Validatorn för format ska stå före validatorn för `personnummerNotSame`.
 
 ```import nomarkup
 PersonnummerNotSameExample.vue
@@ -818,7 +856,8 @@ Felmeddelandet till användaren när valideringen inte är godkänd måste skapa
 
 Validatorn kontrollerar att det ifyllda personnumret är äldre än eller är i samma ålder som personnumret i annat fält.
 
-Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (`personnummerFormat`). Validatorn för format ska stå före validatorn för `personnummerOlder`.
+Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (`personnummerFormat`).
+Validatorn för format ska stå före validatorn för `personnummerOlder`.
 
 ```import nomarkup
 PersonnummerOlderExample.vue
@@ -840,7 +879,8 @@ Felmeddelandet till användaren när valideringen inte är godkänd måste skapa
 
 Validatorn kontrollerar att det ifyllda personnumret är yngre än eller är i samma ålder som personnumret i annat fält.
 
-Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (`personnummerFormat`). Validatorn för format ska stå före validatorn för `personnummerYounger`.
+Det finns en separat validator för att kontrollera format för personnummer, personnummer-format (`personnummerFormat`).
+Validatorn för format ska stå före validatorn för `personnummerYounger`.
 
 ```import nomarkup
 PersonnummerYoungerExample.vue
@@ -888,7 +928,8 @@ Skriv så här i kod när användaren ska fylla i mejladress:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Mejladressen är inte rätt ifylld.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Mejladressen är inte rätt ifylld.
 
 ### Postnummer
 
@@ -917,7 +958,8 @@ Skriv så här i kod när användare ska fylla i postnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i postnumret med fem siffror.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i postnumret med fem siffror.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -951,9 +993,11 @@ Skriv så här i kod när användaren ska fylla i telefonnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Telefonnumret är inte rätt ifyllt.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Telefonnumret är inte rätt ifyllt.
 
-Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:<br> Kolla att telefonnumret stämmer.
+Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:  
+Kolla att telefonnumret stämmer.
 
 ## Bank
 
@@ -984,7 +1028,8 @@ Skriv så här i kod när användaren ska fylla i bankgiro:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i bankgironumret med sju eller åtta siffror och bindestreck.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i bankgironumret med sju eller åtta siffror och bindestreck.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 
@@ -1018,9 +1063,12 @@ Skriv så här i kod när användaren ska fylla i clearingnummer:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Clearingnumret är inte rätt ifyllt. Kolla att det stämmer.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Clearingnumret är inte rätt ifyllt.
+Kolla att det stämmer.
 
-Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:<br> Fyll i ett clearingnummer.
+Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:  
+Fyll i ett clearingnummer.
 
 ### Kontonummer
 
@@ -1039,7 +1087,7 @@ Valideringskriterier:
 BankAccountNumberExample.vue
 ```
 
-Skriv så här i kod när användaren ska fylla i kontonummer:<br>
+Skriv så här i kod när användaren ska fylla i kontonummer:
 
 ```diff
  <f-text-field
@@ -1047,9 +1095,12 @@ Skriv så här i kod när användaren ska fylla i kontonummer:<br>
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Kontonumret är inte rätt ifyllt. Kolla att det stämmer.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Kontonumret är inte rätt ifyllt.
+Kolla att det stämmer.
 
-Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:<br> Fyll i ett kontonummer.
+Felmeddelandet när den här validatorn kombineras med validatorn för obligatorisk `required` är:  
+Fyll i ett kontonummer.
 
 ### Plusgiro
 
@@ -1060,8 +1111,10 @@ Validatorn kontrollerar att det ifyllda värdet stämmer med formatet för plusg
 Valideringskriterier:
 
 - Tillåtna tecken är siffror och bindestreck.
-- Minsta antal tecken är tre. Minst två tecken måste vara siffror.
-- Max antal tecken är nio. Max åtta tecken får vara siffror.
+- Minsta antal tecken är tre.
+  Minst två tecken måste vara siffror.
+- Max antal tecken är nio.
+  Max åtta tecken får vara siffror.
 - Bindestreck får bara vara på näst sista positionen.
 - Checksumman ska stämma på det ifyllda värdet.
 
@@ -1077,7 +1130,8 @@ Skriv så här i kod när användaren ska fylla i plusgiro:
  ></f-text-field>
 ```
 
-Felmeddelandet till användaren när valideringen inte är godkänd är:<br> Fyll i plusgironumret med siffror och bindestreck.
+Felmeddelandet till användaren när valideringen inte är godkänd är:  
+Fyll i plusgironumret med siffror och bindestreck.
 
 Det finns särskilda felmeddelanden när den här validatorn kombineras med andra validatorer:
 

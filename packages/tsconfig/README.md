@@ -8,7 +8,7 @@ The recommended `tsconfig.json` for general use.
 
 Add to your `tsconfig.json`:
 
-```
+```json
 "extends": ["@fkui/tsconfig/recommended"]
 ```
 
@@ -18,7 +18,7 @@ Recommended configuration for Cypress, optionally combined with `recommended`:
 
 Add to your `tsconfig.json`:
 
-```
+```json
 "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/cypress"]
 ```
 
@@ -28,6 +28,6 @@ Recommended configuration for Vue, optionally combined with `recommended`:
 
 Add to your `tsconfig.json`:
 
-```
+```json
 "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/vue"]
 ```

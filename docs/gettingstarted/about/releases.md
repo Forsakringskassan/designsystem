@@ -10,6 +10,7 @@ search:
 
 ## Releaser
 
+<!-- markdownlint-disable no-inline-html -->
 <div class="support-table">
     <table class="table" aria-labelledby="releaser">
         <thead>
@@ -70,6 +71,7 @@ search:
         </tbody>
     </table>
 </div>
+<!-- markdownlint-restore -->
 
 Status  
 **Aktiv**: Vi släpper ny funktionalitet och fixar buggar i releasen.  

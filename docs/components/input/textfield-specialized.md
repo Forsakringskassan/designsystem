@@ -19,7 +19,8 @@ search:
         - valuta
 ---
 
-Det specialiserade inmatningsfältet används när användaren själv ska skriva in information som kontonummer, personnummer eller telefonnummer. Det specialiserade inmatningsfältet ärver egenskaper från vanliga inmatningsfältet och lägger till text för etikett, validerar inmatat värde och formaterar värde vid behov.
+Det specialiserade inmatningsfältet används när användaren själv ska skriva in information som kontonummer, personnummer eller telefonnummer.
+Det specialiserade inmatningsfältet ärver egenskaper från vanliga inmatningsfältet och lägger till text för etikett, validerar inmatat värde och formaterar värde vid behov.
 
 {@link formatter-parser Läs mer om formatering och parsning}
 
@@ -80,7 +81,8 @@ Se {@link FTextField#api Inmatningsfält} för API.
 | Parser       | {@link formatters-and-parsers#clearingnummer_parser parseClearingNumber}                 | Vyvärdet uppdateras med bindesteck mellan siffra 4 & 5.               |
 | Tangentbord  | `inputmode="numeric"`                                                                    |                                                                       |
 
-För clearingnummer kan värdet behöva omvandlas ytterligare innan det skickas till backend. Importera `formatClearingNumberForBackend`-metod från logik-paketet för att ta bort eventuell femte siffra.
+För clearingnummer kan värdet behöva omvandlas ytterligare innan det skickas till backend.
+Importera `formatClearingNumberForBackend`-metod från logik-paketet för att ta bort eventuell femte siffra.
 
 ### Validering
 
@@ -136,7 +138,8 @@ Se {@link FTextField#api Inmatningsfält} för API.
 
 `FEmailTextField`
 
-Inmatningsfält för mejladress finns med enkel validering som beskrivs nedan och med [utökad validering](#mejladress_utokad). Vid utökad validering ska användaren bekräfta mejladressen genom att skriva in den en gång till.
+Inmatningsfält för mejladress finns med enkel validering som beskrivs nedan och med [utökad validering](#mejladress_utokad).
+Vid utökad validering ska användaren bekräfta mejladressen genom att skriva in den en gång till.
 
 ### Etikett
 
@@ -164,7 +167,8 @@ FEmailTextFieldSimple.vue
 
 `FEmailTextField`
 
-Inmatningsfält för mejladress finns med [enkel validering](#mejladress) och med utökad validering som beskrivs nedan. Vid utökad validering ska användaren bekräfta mejladressen genom att skriva in det en gång till.
+Inmatningsfält för mejladress finns med [enkel validering](#mejladress) och med utökad validering som beskrivs nedan.
+Vid utökad validering ska användaren bekräfta mejladressen genom att skriva in det en gång till.
 
 ### Etikett
 
@@ -198,7 +202,9 @@ vue:FEmailTextField
 
 `FNumericTextField`
 
-Inmatningsfält används när användaren ska fylla i ett tal. Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskiljare och kommatecken som decimalpunkt. Utvecklaren behöver själv lägga till lämpliga numeriska validatorer som till exempel `_v-validation.required.decimal.maxValue.minValue=" ... "`.
+Inmatningsfält används när användaren ska fylla i ett tal.
+Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskiljare och kommatecken som decimalpunkt.
+Utvecklaren behöver själv lägga till lämpliga numeriska validatorer som till exempel `_v-validation.required.decimal.maxValue.minValue=" ... "`.
 
 ### Format
 
@@ -267,7 +273,7 @@ Se {@link FTextField#api Inmatningsfält} för API.
 
 Inmatningsfältet för personnummer har förlåtande inmatning,
 så att användaren kan skriva in personnummer med både 10 eller 12 siffror.
-Det inmatade värdet kommer efter godkänd validering att formateras enligt [<u>Skatteverkets regler</u>](https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html) för personnummer.
+Det inmatade värdet kommer efter godkänd validering att formateras enligt [Skatteverkets regler](https://www.skatteverket.se/privat/folkbokforing/personnummer.4.3810a01c150939e893f18c29.html) för personnummer.
 Från och med det år personen fyller 100 år ska personnumret skrivas med plustecken istället för bindestreck.
 Inskick till backend innehåller 12 siffror, `ååååmmdd-nnnn`.
 
@@ -437,7 +443,8 @@ Se {@link FTextField#api Inmatningsfält} för API.
 
 `FPhoneTextField`
 
-Inmatningsfält för telefonnummer finns med enkel validering som beskrivs nedan och med [utökad validering](#telefonnummer_utokad). Vid utökad validering ska användaren bekräfta telefonnummer genom att skriva in det en gång till.
+Inmatningsfält för telefonnummer finns med enkel validering som beskrivs nedan och med [utökad validering](#telefonnummer_utokad).
+Vid utökad validering ska användaren bekräfta telefonnummer genom att skriva in det en gång till.
 
 ### Etikett
 
@@ -471,7 +478,8 @@ FPhoneTextFieldSimple.vue
 
 `FPhoneTextField`
 
-Inmatningsfält för telefonnummer finns med [enkel validering](#telefonnummer) och med utökad validering som beskrivs nedan. Vid utökad validering ska användaren bekräfta telefonnummer genom att skriva in det en gång till.
+Inmatningsfält för telefonnummer finns med [enkel validering](#telefonnummer) och med utökad validering som beskrivs nedan.
+Vid utökad validering ska användaren bekräfta telefonnummer genom att skriva in det en gång till.
 
 ### Etikett
 
@@ -512,7 +520,8 @@ vue:FPhoneTextField
 `FCurrencyTextField`
 
 Inmatningsfält för valuta används när modellen (`v-model`) är av typen `number`.
-Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskiljare och kommatecken som decimalpunkt. Utvecklaren behöver själv lägga till ytterligare lämpliga numeriska validatorer som till exempel `_v-validation.required.maxValue=" ... "`.
+Värdet i fältet kommer automatiskt formateras som ett nummer med tusenavskiljare och kommatecken som decimalpunkt.
+Utvecklaren behöver själv lägga till ytterligare lämpliga numeriska validatorer som till exempel `_v-validation.required.maxValue=" ... "`.
 
 ### Format
 

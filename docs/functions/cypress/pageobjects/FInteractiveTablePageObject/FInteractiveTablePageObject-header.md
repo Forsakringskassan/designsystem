@@ -7,7 +7,8 @@ layout: api.method
 
 Hämtar en cell i tabellhuvudet för en {@link component:FInteractiveTable interaktiv tabell} (FInteractiveTable).
 
-Kolumnumreringen är 1-indexerad och varken markören för expanderbara rader eller kryssrutan för valbara rader inkluderas i kolumnnummer. Detta innebär att kolumn 1 refererar till första kolumnen som har innehåll.
+Kolumnumreringen är 1-indexerad och varken markören för expanderbara rader eller kryssrutan för valbara rader inkluderas i kolumnnummer.
+Detta innebär att kolumn 1 refererar till första kolumnen som har innehåll.
 
 ## Syntax
 

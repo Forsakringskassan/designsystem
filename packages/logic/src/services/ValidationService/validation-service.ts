@@ -749,6 +749,7 @@ class ValidationServiceImpl implements ValidationServiceInterface {
         /**
          * Only execute validation method if enabled is undefined or true.
          */
+        /* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
         return isEnabled
             ? validator.validation(value, element, validatorConfig)
             : true;

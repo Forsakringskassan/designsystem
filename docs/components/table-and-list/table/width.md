@@ -29,13 +29,15 @@ FTableWidthExample.vue
 
 ### `width`
 
-Används för att sätta en mer specifik bredd än vad `size` kan ge. Skrivs som `"50%"`.
+Används för att sätta en mer specifik bredd än vad `size` kan ge.
+Skrivs som `"50%"`.
 
 Enhet:
 
 - `"%"`
 
-Kolumnen tar upp den precentuella angivna delen. Den kan både växa och krympa.
+Kolumnen tar upp den precentuella angivna delen.
+Den kan både växa och krympa.
 
 Enheter:
 
@@ -43,9 +45,11 @@ Enheter:
 - `"rem"`
 - `"ch"`
 
-Sätter en bredd som inte kan bli mindre eller större än det som är satt. Bör användas med försiktighet eftersom det gör tabellen mindre responsiv.
+Sätter en bredd som inte kan bli mindre eller större än det som är satt.
+Bör användas med försiktighet eftersom det gör tabellen mindre responsiv.
 
-Kräver att en kolumn i tabellen får växa med `"grow"` för att inte själv växa. Om tabellen bara har kolumner med `"shrink"` och tabellen får växa kommer kolumnen med `width` satt att växa.
+Kräver att en kolumn i tabellen får växa med `"grow"` för att inte själv växa.
+Om tabellen bara har kolumner med `"shrink"` och tabellen får växa kommer kolumnen med `width` satt att växa.
 
 ## Användning av procent på kolumnerna
 
