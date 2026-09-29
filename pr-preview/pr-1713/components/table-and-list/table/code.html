@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-91ece2.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-8cd34b.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-756ff1.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-6c3daf.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-0d24cd.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-59db36.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js"
   },
@@ -35,7 +35,7 @@
     "../../../assets/vendor-fkui-vue-selectors-91ece2.js": "sha384-JAQYszmezn6fEXVWuq7QZxMzVu4EX1/dVRgEP0HnWMzgHABgFbBfBGN+XlbtVWnt",
     "../../../assets/vendor-fkui-logic-8cd34b.js": "sha384-FedmI01oX4kAWgI2AfIMiWdzOG4NpS5WFKED5pKZ+b9/C5QannrwAz5BCGgUtGIE",
     "../../../assets/vendor-fkui-date-756ff1.js": "sha384-poMivCeyRvtjqiexqG/jXcCfyu2x3A7bwI5tx3mB74FC5uQUUjIVoQFYJQTHi23Q",
-    "../../../assets/vendor-fkui-vue-6c3daf.js": "sha384-qfuNYqZbmS2ogL/eKnjTTIeJoZFdWzS4GGeRljEs8YtpPHpgJXijiCYJBDiSN1Xe",
+    "../../../assets/vendor-fkui-vue-0d24cd.js": "sha384-jvAWNXVV9/9r6BzdXdBmkLpY6UDbxheUnt/0zMje1gqT+xhyywiJXXazLzlsEk0D",
     "../../../assets/vendor-fkui-vue-labs-59db36.js": "sha384-lZUC9laa/ssLtJePpKjK6elLLQVt4JPthEwGVEgSEr5PY3gvupaz53R+iGDZRr1S",
     "../../../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js": "sha384-VKppHxCeZq82kVDB1OYOYbpV834R6UMQhJGy0Ljiv1cQlksKAiIBgmXoroQOISfR"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-1ec8e1.json"
+    href="../../../search-data-c0e021.json"
     as="fetch"
     crossorigin
-    integrity="sha384-B2aUxUv5mBf93uTBYkH74i4EAiv41GcZlwa6QImG9miO/+iVo5B0gqZjhsJcqUqS"
+    integrity="sha384-S+Zdmaj9fyDv9us8Bvj4AWBg76eC26tbDGKR24f/kZonbvQUolMKP3toLQkI4sRA"
     id="search-data"
 />
 <script>
@@ -7142,6 +7142,8 @@
                                 
                                 <li><a href="#textnycklar">Textnycklar</a></li>
                                 
+                                <li><a href="#programmatiskt_fokus">Programmatiskt fokus</a></li>
+                                
                                 <li><a href="#api">API</a></li>
                                 
                                 <li><a href="#relaterat">Relaterat</a></li>
@@ -7912,6 +7914,37 @@ Anges inte denna så används istället en textnyckel.</p>
                     
         </dl>
     <p class="docs-paragraph"><a href="../../../gettingstarted/use-design-system/translate-text.html">Läs mer om textnycklar.</a></p>
+<h2 id="programmatiskt_fokus" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#programmatiskt_fokus">Programmatiskt fokus</a></h2><p class="docs-paragraph">Du kan programmässigt fokusera och aktivera en specifik cell i tabellen med hjälp av <code>focusCell</code>.</p>
+<p class="docs-paragraph">Funktionen kan till exempel användas för att flytta fokus till en cell med ett valideringsfel efter att en tabell har validerats.
+Rad- och cellindex kan då hämtas från den cell som har valideringsfelet.</p>
+
+                <div
+                    id="example-b67810"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="typescript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> table = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;table&quot;</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">focusInvalidCell</span>(<span class="hljs-params"></span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> invalidCell = <span class="hljs-variable language_">document</span>.<span class="hljs-property">querySelector</span>&lt;<span class="hljs-title class_">HTMLTableCellElement</span>&gt;(
+        <span class="hljs-string">&#x27;table td[aria-invalid=&quot;true&quot;]&#x27;</span>,
+    );
+
+    <span class="hljs-keyword">if</span> (!invalidCell) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    table.<span class="hljs-property">value</span>?.<span class="hljs-title function_">focusCell</span>(invalidCell);
+}
+</code></pre>
+                </div>
+            <p class="docs-paragraph">När <code>focusCell</code> anropas fokuseras och aktiveras den angivna cellen.
+Det kan användas när en applikation behöver styra fokus till en specifik cell, exempelvis efter validering eller annan programmatisk åtgärd.</p>
 <h2 id="api" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#api">API</a></h2>
         <h3 class="docs-heading docs-heading--h3" id="ftable-props">
             <a class="header-anchor" href="#ftable-props">Props</a>
@@ -8171,9 +8204,9 @@ Anges inte denna så används istället en textnyckel.</p>
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">feat/deprecate-legacy-table-components</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/265fd45cfb6895837636cf001213c6a4faa6d0a3">265fd45</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">feat/deprecate-legacy-table-components</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/3b0ef3397c41f789767fd8a14eba4d4bfb1ecdf6">3b0ef33</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1713">PR 1713</a><br />
-       <span class="version-text-block">2026-09-28 14:20</span>
+       <span class="version-text-block">2026-09-29 12:17</span>
 </div>
 <div class="toolbar__item">
     <form id="version">
