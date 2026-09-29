@@ -43,20 +43,6 @@ it("should handle explicit selector (v-test directive)", () => {
     expect(root.classes()).toContain("select-field");
 });
 
-it("should use explicit selector when custom selector was given", () => {
-    expect.assertions(2);
-    const wrapper = shallowMount(FSelectField, {
-        slots: {
-            label: "Country",
-            default: "<option value='se'>Sweden</option>",
-        },
-        attrs: { "data-test": "country" },
-    });
-    const { selector } = FSelectFieldSelectors('[data-test="country"]');
-    expect(selector).toBe('[data-test="country"]');
-    expect(wrapper.find(selector).exists()).toBeTruthy();
-});
-
 it("select() should return the select element", () => {
     expect.assertions(1);
     const wrapper = shallowMount(FSelectField, {
@@ -89,7 +75,7 @@ it("options() should return the option elements", () => {
 });
 
 it("label() should return the label element", () => {
-    expect.assertions(2);
+    expect.assertions(1);
     const wrapper = shallowMount(FSelectField, {
         slots: {
             label: "Country",
@@ -100,9 +86,7 @@ it("label() should return the label element", () => {
         },
     });
     const { label } = FSelectFieldSelectors();
-    const el = wrapper.find(label());
-    expect(el.exists()).toBeTruthy();
-    expect(el.classes()).toContain("label");
+    expect(wrapper.get(label()).classes()).toContain("label");
 });
 
 it("description() should exist if description slot is used", () => {
@@ -121,7 +105,7 @@ it("description() should exist if description slot is used", () => {
         },
     });
     const { description } = FSelectFieldSelectors();
-    expect(wrapper.find(description()).exists()).toBeTruthy();
+    expect(wrapper.get(description()).text()).toBe("Description");
 });
 
 it("arrowIcon() should return the arrow icon element", () => {

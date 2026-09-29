@@ -1,3 +1,4 @@
+import { FProgressbarSelectors } from "../selectors";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
@@ -11,27 +12,36 @@ export type ProgressbarStatus = "pending" | "inprogress" | "finished";
  * @public
  */
 export class FProgressbarPageObject implements BasePageObject {
-    public readonly selector: string;
+    private _selectors: ReturnType<typeof FProgressbarSelectors>;
 
     /**
      * @param selector - the root of the static field, usually `<div class="progress">...</div>`.
      */
     public constructor(selector: string = ".progress") {
-        this.selector = selector;
+        this._selectors = FProgressbarSelectors(selector);
+    }
+
+    /**
+     * Gets the page object selector.
+     *
+     * @returns The page object selector.
+     */
+    public get selector(): string {
+        return this._selectors.selector;
     }
 
     /**
      * Get the element itself.
      */
     public el(): DefaultCypressChainable {
-        return cy.get(this.selector);
+        return cy.get(this._selectors.selector);
     }
 
     /**
      * @internal
      */
     public progressMeter(): DefaultCypressChainable {
-        return cy.get(`${this.selector} .progress__meter`);
+        return cy.get(this._selectors.meter());
     }
 
     /**
