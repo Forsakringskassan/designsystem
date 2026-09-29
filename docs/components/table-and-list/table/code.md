@@ -654,6 +654,34 @@ translation:ITableSelectable
 
 {@link translate-text Läs mer om textnycklar.}
 
+## Programmatiskt fokus
+
+Du kan programmässigt fokusera och aktivera en specifik cell i tabellen med hjälp av `focusCell`.
+
+Funktionen kan till exempel användas för att flytta fokus till en cell med ett valideringsfel efter att en tabell har validerats.
+Rad- och cellindex kan då hämtas från den cell som har valideringsfelet.
+
+```ts nocompile
+import { useTemplateRef } from "vue";
+
+const table = useTemplateRef("table");
+
+function focusInvalidCell(): void {
+    const invalidCell = document.querySelector<HTMLTableCellElement>(
+        'table td[aria-invalid="true"]',
+    );
+
+    if (!invalidCell) {
+        return;
+    }
+
+    table.value?.focusCell(invalidCell);
+}
+```
+
+När `focusCell` anropas fokuseras och aktiveras den angivna cellen.
+Det kan användas när en applikation behöver styra fokus till en specifik cell, exempelvis efter validering eller annan programmatisk åtgärd.
+
 ## API
 
 :::api

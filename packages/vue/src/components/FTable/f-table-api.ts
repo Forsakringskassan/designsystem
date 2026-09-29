@@ -19,6 +19,11 @@ export interface FTableApi {
         behaviour: "default" | "row-removal",
         action: () => void | Promise<void>,
     ): Promise<void>;
+    /**
+     * Can be used to programmatically focus and activate a cell.
+     * @param cell - The cell to focus and activate.
+     */
+    focusCell(cell: HTMLTableCellElement): void;
 }
 
 /**
