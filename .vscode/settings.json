@@ -1,9 +1,0 @@
-{
-    "css.validate": false,
-    "less.validate": false,
-    "scss.validate": false,
-    "eslint.enable": true,
-    "prettier.requireConfig": true,
-    "editor.renderWhitespace": "boundary",
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-}
