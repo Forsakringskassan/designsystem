@@ -11,6 +11,7 @@ export { FListSelectors } from "./FList.selectors";
 export { FLoaderSelectors } from "./FLoader.selectors";
 export { FMinimizablePanelSelectors } from "./FMinimizablePanel.selectors";
 export { FPaginatorSelectors } from "./FPaginator.selectors";
+export { FProgressbarSelectors } from "./FProgressbar.selectors";
 export { FRadioFieldSelectors } from "./FRadioField.selectors";
 export { FSelectFieldSelectors } from "./FSelectField.selectors";
 export { FTextareaFieldSelectors } from "./FTextareaField.selectors";

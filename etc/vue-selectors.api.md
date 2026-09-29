@@ -113,6 +113,12 @@ export function FPaginatorSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FProgressbarSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    meter(): string;
+}>;
+
+// @public
 export function FRadioFieldSelectors(selector?: string): Readonly<{
     readonly selector: string;
     input(): string;
