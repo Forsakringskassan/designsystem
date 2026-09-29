@@ -583,8 +583,7 @@ export class FProgressbarPageObject implements BasePageObject {
     // @internal (undocumented)
     progressMeter(): DefaultCypressChainable;
     progressStatus(): Cypress.Chainable<ProgressbarStatus>;
-    // (undocumented)
-    readonly selector: string;
+    get selector(): string;
     value(): Cypress.Chainable<number>;
 }
 
