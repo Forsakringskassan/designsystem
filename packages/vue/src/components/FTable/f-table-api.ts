@@ -21,10 +21,9 @@ export interface FTableApi {
     ): Promise<void>;
     /**
      * Can be used to programmatically focus and activate a cell.
-     * @param rowIndex - The row index of the cell.
-     * @param cellIndex - The cell index of the cell.
+     * @param cell - The cell to focus and activate.
      */
-    focusCell(rowIndex: number, cellIndex: number): void;
+    focusCell(cell: HTMLTableCellElement): void;
 }
 
 /**

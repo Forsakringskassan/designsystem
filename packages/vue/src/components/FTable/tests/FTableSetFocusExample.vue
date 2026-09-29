@@ -47,15 +47,13 @@ const table = useTemplateRef("table");
 async function validate(): Promise<void> {
     await ValidationService.validateAllElements("all");
 
-    const invalidCell = document.querySelector<HTMLTableCellElement>('[aria-invalid="true"]');
+    const invalidCell = document.querySelector<HTMLTableCellElement>('table td[aria-invalid="true"]');
 
     if (!invalidCell) {
         return;
     }
 
-    const row = invalidCell.parentElement as HTMLTableRowElement;
-
-    table.value?.focusCell(row.rowIndex, invalidCell.cellIndex);
+    table.value?.focusCell(invalidCell);
 }
 </script>
 
