@@ -3,6 +3,7 @@
     "display": "@fkui/tsconfig/cypress",
 
     "compilerOptions": {
+        "allowImportingTsExtensions": true,
         "module": "esnext",
         "moduleResolution": "bundler",
         "resolveJsonModule": true,
