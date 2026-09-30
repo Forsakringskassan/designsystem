@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 6.60.0 (2026-09-30)
+
+### Features
+
+* **@fkui/docs, @fkui/vue:** add support for focusing and activating a specific cell in FTable (refs SFKUI-7355) 2b2ce1b
+
+### Bug Fixes
+
+* **@fkui/vue:** focus lost when updating enabled on columns in FTable (refs SFKUI-8154) 3a8a1ff
+* **deps:** update dependency sass to v1.105.0 ([#1710](undefined/Forsakringskassan/designsystem/issues/1710)) 62c2215
+* **deps:** update dependency yargs to v18.2.0 9d41106
+
 ## 6.59.0 (2026-09-23)
 
 ### Features
