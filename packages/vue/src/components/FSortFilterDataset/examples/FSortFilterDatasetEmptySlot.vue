@@ -2,13 +2,30 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { type FruitData, fruits } from "./fruit-data";
-import { FDataTable, FSelectField, FSortFilterDataset, FTableColumn } from "@fkui/vue";
+import {
+    FSelectField,
+    FSortFilterDataset,
+    FTable,
+    defineTableColumns,
+    useDatasetRef,
+} from "@fkui/vue";
 
 const emptyList: FruitData[] = [];
 const populatedList: FruitData[] = fruits;
+const columns = defineTableColumns<FruitData>([
+    { type: "text", header: "Namn", key: "name", size: "shrink" },
+    { type: "text", header: "Land", key: "origin", size: "shrink" },
+    { type: "text", header: "Beskrivning", key: "description" },
+]);
 
 export default defineComponent({
-    components: { FSelectField, FSortFilterDataset, FDataTable, FTableColumn },
+    components: { FSelectField, FSortFilterDataset, FTable },
+    setup() {
+        return {
+            columns,
+            rows: useDatasetRef(populatedList),
+        };
+    },
     data() {
         return {
             sortableAttributes: {
@@ -38,28 +55,15 @@ export default defineComponent({
             </template>
             <template #default="{ sortFilterResult }">
                 <p>Visar {{ sortFilterResult.length }} av {{ fruits.length }} frukter.</p>
-                <f-data-table :rows="sortFilterResult" striped key-attribute="id">
-                    <template #caption>
-                        <span class="sr-only"> Frukter </span>
-                    </template>
-                    <template #default="{ row }">
-                        <f-table-column name="name" title="Namn" type="text" shrink>
-                            {{ row.name }}
-                        </f-table-column>
-                        <f-table-column name="origin" title="Land" type="text" shrink>
-                            {{ row.origin }}
-                        </f-table-column>
-                        <f-table-column name="description" title="Beskrivning" type="text" expand>
-                            {{ row.description }}
-                        </f-table-column>
-                    </template>
+                <f-table :rows="sortFilterResult" :columns striped>
+                    <template #caption><span class="sr-only"> Frukter </span></template>
                     <template #empty>
                         <template v-if="fruits.length === 0">
                             Det finns inga frukter att visa.
                         </template>
                         <template v-else> Sökningen gav inga träffar. </template>
                     </template>
-                </f-data-table>
+                </f-table>
             </template>
         </f-sort-filter-dataset>
     </div>

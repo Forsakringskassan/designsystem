@@ -340,7 +340,7 @@ export const FCurrencyTextField: typeof __VLS_export_56;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_10" needs to be exported by the entry point index.d.ts
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const FDataTable: typeof __VLS_export_10;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_11" needs to be exported by the entry point index.d.ts
@@ -491,7 +491,7 @@ export function findParentByName(vm: ComponentPublicInstance | undefined | null,
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_24" needs to be exported by the entry point index.d.ts
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const FInteractiveTable: typeof __VLS_export_24;
 
 // @public (undocumented)

@@ -1,3 +1,10 @@
+<script lang="ts">
+/**
+ * @deprecated Use `<f-table>` instead.
+ */
+export default {};
+</script>
+
 <script setup lang="ts" generic="T extends object">
 import { type PropType, computed, onMounted, provide, ref } from "vue";
 import { useSlotUtils } from "../../composables";

@@ -17,6 +17,7 @@ const rows: Row[] = [
 
 <template>
     <!-- cut above -->
+    <!-- [html-validate-disable-block deprecated -- page-object documentation] -->
     <f-interactive-table :rows>
         <template #caption> Tabell </template>
         <template #default="{ row }">

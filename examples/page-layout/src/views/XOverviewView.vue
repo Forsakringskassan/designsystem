@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FButton, FInteractiveTable, FTableColumn, useDetailsPanel } from "@fkui/vue";
+import { FButton, FTable, defineTableColumns, useDatasetRef, useDetailsPanel } from "@fkui/vue";
 import { type Expense } from "../expense";
 import { type Person } from "../person";
 
@@ -12,6 +12,7 @@ const ankeborgare: Person[] = [
     { name: "Magica De Hex", adress: "Vulkanen", city: "Vesuvius", car: null },
     { name: "Bolivar", adress: "Paradisäppelvägen 111", city: "Ankeborg", car: null },
 ];
+const rows = useDatasetRef(ankeborgare);
 
 function showPerson(item: Person): void {
     personPanel.open(item);
@@ -20,6 +21,17 @@ function showPerson(item: Person): void {
 function openThing(): void {
     expensePanel.open({ id: 1, description: "Hallonsoda", amount: 25 });
 }
+
+const columns = defineTableColumns<Person>([
+    {
+        type: "button",
+        header: "Namn",
+        key: "name",
+        text: (row) => row.name,
+        onClick: showPerson,
+    },
+    { type: "text", header: "Adress", key: "adress" },
+]);
 </script>
 
 <template>
@@ -29,20 +41,7 @@ function openThing(): void {
         Öppna en helt annan detaljpanel
     </f-button>
 
-    <f-interactive-table
-        :rows="ankeborgare"
-        key-attribute="name"
-        aria-labelledby="ankeborgare"
-        @click="showPerson($event)"
-    >
+    <f-table :rows :columns aria-labelledby="ankeborgare">
         <template #caption>Ankeborgare</template>
-        <template #default="{ row }">
-            <f-table-column name="name" title="Namn">
-                {{ row.name }}
-            </f-table-column>
-            <f-table-column name="adress" title="Address">
-                {{ row.adress }}
-            </f-table-column>
-        </template>
-    </f-interactive-table>
+    </f-table>
 </template>

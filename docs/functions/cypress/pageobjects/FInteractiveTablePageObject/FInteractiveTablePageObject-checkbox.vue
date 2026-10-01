@@ -17,6 +17,7 @@ const rows: Row[] = [
 
 <template>
     <!-- cut above -->
+    <!-- [html-validate-disable-block deprecated -- page-object documentation] -->
     <f-interactive-table :rows selectable="multi">
         <template #caption> Tabell </template>
         <template #selectable-description="{ row }"> Select row {{ row.a }} </template>

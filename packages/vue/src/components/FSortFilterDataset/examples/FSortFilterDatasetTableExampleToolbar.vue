@@ -1,27 +1,22 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
-import { fruits } from "./fruit-data";
-import { FButton, FInteractiveTable, FSortFilterDataset, FTableColumn } from "@fkui/vue";
+<script setup lang="ts">
+import { ref } from "vue";
+import { type FruitData, fruits } from "../../FCrudDataset/examples/fruit-data";
+import { FButton, FSortFilterDataset, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
-export default defineComponent({
-    components: { FButton, FInteractiveTable, FSortFilterDataset, FTableColumn },
-    data() {
-        return {
-            sortableAttributes: {
-                name: "Namn",
-                origin: "Land",
-            },
-            fruits,
-        };
-    },
-});
+const rows = useDatasetRef([...fruits]);
+const selectedRows = ref<FruitData[]>([]);
+const columns = defineTableColumns<FruitData>([
+    { type: "text", header: "Namn", key: "name", size: "shrink" },
+    { type: "text", header: "Land", key: "origin", size: "shrink" },
+    { type: "text", header: "Beskrivning", key: "description" },
+]);
+const sortableAttributes = { name: "Namn", origin: "Land" };
 </script>
 
 <template>
     <h3>Frukter</h3>
     <f-sort-filter-dataset
-        :data="fruits"
+        :data="rows"
         default-sort-attribute="name"
         :default-sort-ascending="true"
         :sortable-attributes
@@ -48,28 +43,15 @@ export default defineComponent({
         </template>
 
         <template #default="{ sortFilterResult }">
-            <f-interactive-table
+            <f-table
+                v-model:selected-rows="selectedRows"
                 :rows="sortFilterResult"
+                :columns
                 striped
                 selectable="multi"
-                key-attribute="id"
             >
-                <template #caption>
-                    <span class="sr-only"> Frukter </span>
-                </template>
-                <template #selectable-description> Välj denna raden </template>
-                <template #default="{ row }">
-                    <f-table-column name="name" title="Namn" type="text" shrink>
-                        {{ row.name }}
-                    </f-table-column>
-                    <f-table-column name="origin" title="Land" type="text" shrink>
-                        {{ row.origin }}
-                    </f-table-column>
-                    <f-table-column name="description" title="Beskrivning" type="text" expand>
-                        {{ row.description }}
-                    </f-table-column>
-                </template>
-            </f-interactive-table>
+                <template #caption><span class="sr-only"> Frukter </span></template>
+            </f-table>
         </template>
     </f-sort-filter-dataset>
 </template>

@@ -60,5 +60,5 @@ jobs:
               with:
                   build: false
                   folders: packages/* docs
-                  allow-files: dist/**/examples/*
+                  allow-files: dist/**/examples/**
                   allow-dependencies: fk-icons
