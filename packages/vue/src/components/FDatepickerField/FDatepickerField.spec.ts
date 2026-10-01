@@ -92,6 +92,14 @@ describe("textfield", () => {
 });
 
 describe("calendar", () => {
+    it("should prevent the popup from overlapping the field", () => {
+        expect.assertions(1);
+        const wrapper = mount(FDatepickerField);
+        const popup = wrapper.getComponent({ name: "IPopup" });
+
+        expect(popup.props("anchorOverlap")).toBe("never");
+    });
+
     it("should emit v-model and change event when selecting day", async () => {
         expect.assertions(2);
 

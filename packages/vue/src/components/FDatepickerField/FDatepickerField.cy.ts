@@ -9,11 +9,13 @@ import {
 import {
     AlertScreenReaderPageObject,
     FDatepickerFieldPageobject,
+    IPopupPageObject,
 } from "../../cypress";
 import FDatepickerField from "./FDatepickerField.vue";
 import FDatepickerFieldIconExample from "./examples/FDatepickerFieldIconExample.vue";
 
 const datepickerField = new FDatepickerFieldPageobject(".datepicker-field");
+const popup = new IPopupPageObject();
 const alertScreenReader = new AlertScreenReaderPageObject();
 
 const VIEWPORT = {
@@ -454,6 +456,35 @@ describe("open calendar in desktop", () => {
 
     it("should not show calendar inline", () => {
         cy.toMatchScreenshot();
+    });
+});
+
+describe("open calendar where only a centered overlay fits", () => {
+    beforeEach(() => {
+        setDate(today);
+        cy.viewport(1000, 600);
+        cy.mount(
+            defineComponent({
+                components: { FDatepickerField },
+                template: /* HTML */ `
+                    <div
+                        style="height: 600px; position: relative; width: 1000px;"
+                    >
+                        <div
+                            style="left: 200px; position: absolute; top: 250px; width: 600px;"
+                        >
+                            <f-datepicker-field></f-datepicker-field>
+                        </div>
+                    </div>
+                `,
+            }),
+        );
+    });
+
+    it("should use fallback instead of overlapping the field", () => {
+        datepickerField.toggleCalendarButton().click();
+
+        popup.el().should("have.class", "popup--inline");
     });
 });
 
