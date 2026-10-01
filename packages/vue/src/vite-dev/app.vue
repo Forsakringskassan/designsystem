@@ -1,37 +1,26 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { FTextField } from "../components";
+import DatasetTableDual from "./DatasetTableDual.vue";
+import DatasetTableSingle from "./DatasetTableSingle.vue";
+import DatasetTableSubsets from "./DatasetTableSubsets.vue";
+import { type Product } from "./product";
+import { useDatasetRef } from "@fkui/vue";
 
-const namn = ref("World");
+const products = useDatasetRef<Product>([
+    { name: "Äpple", category: "Frukt", tags: ["ekologisk"] },
+    { name: "Banan", category: "Frukt", tags: ["importerad"] },
+    { name: "Morot", category: "Grönsak", tags: ["ekologisk", "lokal"] },
+    { name: "Potatis", category: "Grönsak", tags: ["lokal"] },
+    { name: "Apelsin", category: "Frukt", tags: ["ekologisk", "importerad"] },
+]);
 </script>
 
 <template>
-    <div class="container">
-        <h1>@fkui/vue</h1>
+    <h2>A. En tabell</h2>
+    <dataset-table-single v-model="products" />
 
-        <p>A few common commands to keep track of:</p>
-        <dl>
-            <dt><code>npm run vue unit</code></dt>
-            <dd>Run Vitest unit tests</dd>
-            <dt><code>npm run vue unit -- Foobar</code></dt>
-            <dd>Run unit tests matching "Foobar"</dd>
-            <dt><code>npm run vue unit -- -u</code></dt>
-            <dd>Update snapshots</dd>
-            <dt><code>npm exec cypress -- open --component</code></dt>
-            <dd>Run Cypress Component Tests</dd>
-            <dt><code>npm run prettier:write</code></dt>
-            <dd>Reformat files</dd>
-            <dt><code>npm run lint</code></dt>
-            <dd>Run all linting and static analyzis</dd>
-            <dt><code>npm test</code></dt>
-            <dd>Run all tests</dd>
-        </dl>
+    <h2>B. Två tabeller, samma källa</h2>
+    <dataset-table-dual v-model="products" />
 
-        <hr />
-
-        <h2>Sandbox</h2>
-
-        <f-text-field v-model="namn" v-validation.required maxlength="100"> Namn </f-text-field>
-        <pre>Hello {{ namn }}!</pre>
-    </div>
+    <h2>C. Två tabeller, överlappande delmängder</h2>
+    <dataset-table-subsets v-model="products" />
 </template>
