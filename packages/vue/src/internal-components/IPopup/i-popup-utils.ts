@@ -135,6 +135,13 @@ export interface FitInsideAreaOptions<T> {
      * Determines the order in which the candidates are checked, first valid candidate will be used.
      */
     candidateOrder: CandidateOrder;
+
+    /**
+     * Whether placement candidates may overlap the anchor.
+     *
+     * @defaultValue `true`
+     */
+    allowAnchorOverlap?: boolean;
 }
 
 export interface FitInsideAreaResult extends Point {
@@ -310,6 +317,18 @@ function isElementOptions(
 }
 
 /**
+ * @internal
+ */
+function isOverlapping(a: Rect, b: Rect): boolean {
+    return (
+        a.x < b.x + b.width &&
+        a.x + a.width > b.x &&
+        a.y < b.y + b.height &&
+        a.y + a.height > b.y
+    );
+}
+
+/**
  * Clip given rect so no edges is outside the viewport, i.e. the rect where rect
  * and viewport intersects.
  *
@@ -344,6 +363,7 @@ export function fitInsideArea(
             viewport: viewportElement,
             spacing,
             candidateOrder,
+            allowAnchorOverlap,
         } = options;
         const area = getAbsolutePosition(areaElement);
         const anchor = getAbsolutePosition(anchorElement);
@@ -356,6 +376,7 @@ export function fitInsideArea(
             viewport,
             spacing,
             candidateOrder,
+            allowAnchorOverlap,
         });
 
         const offset = targetElement.offsetParent?.getBoundingClientRect();
@@ -369,7 +390,14 @@ export function fitInsideArea(
         };
     }
 
-    const { anchor, target, area, viewport, spacing } = options;
+    const {
+        anchor,
+        target,
+        area,
+        viewport,
+        spacing,
+        allowAnchorOverlap = true,
+    } = options;
     const clippedArea = clipRect(area, viewport);
 
     const candidates = getCandidates(
@@ -382,8 +410,10 @@ export function fitInsideArea(
 
     /* try to find a good match, i.e. a candidate where the entire target fits
      * inside given area */
-    const index = candidates.findIndex((it) =>
-        isInside(clippedArea, it, spacing),
+    const index = candidates.findIndex(
+        (it) =>
+            isInside(clippedArea, it, spacing) &&
+            (allowAnchorOverlap || !isOverlapping(anchor, it)),
     );
     if (index !== -1) {
         const match = candidates[index];
