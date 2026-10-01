@@ -1,6 +1,7 @@
 import { type Dataset, type DatasetNestedKeyOf } from "./dataset";
 import { setArrayMetadata } from "./dataset-array-metadata";
-import { getDatasetMetadata } from "./get-dataset-metadata";
+import { createElementMetadataStore } from "./dataset-element-metadata";
+import { getArrayMetadata } from "./get-dataset-metadata";
 import { isDataset } from "./is-dataset";
 import { preserveDataset } from "./preserve-dataset";
 import { reindexDataset } from "./reindex-dataset";
@@ -9,10 +10,14 @@ function createDataset<T extends object>(
     array: T[],
     nestedAttribute: DatasetNestedKeyOf<T> | undefined,
 ): Dataset<T> {
-    setArrayMetadata(array, {
-        size: 0, // intermediate value, will be overwritten when reindexing
-        nestedAttribute,
-    });
+    setArrayMetadata(
+        array,
+        {
+            size: 0, // intermediate value, will be overwritten when reindexing
+            nestedAttribute,
+        },
+        createElementMetadataStore(),
+    );
     const dataset = array as Dataset<T>;
 
     reindexDataset(dataset, nestedAttribute);
@@ -24,16 +29,20 @@ function inheritDataset<T extends object>(
     array: T[],
     originalDataset: Dataset<T>,
 ): Dataset<T> {
-    const metadata = getDatasetMetadata(originalDataset);
+    const metadata = getArrayMetadata(originalDataset);
 
-    const result = setArrayMetadata(array, {
-        get size() {
-            return metadata.size;
+    const result = setArrayMetadata(
+        array,
+        {
+            get size() {
+                return metadata.size;
+            },
+            get nestedAttribute() {
+                return metadata.nestedAttribute;
+            },
         },
-        get nestedAttribute() {
-            return metadata.nestedAttribute;
-        },
-    });
+        metadata.elements,
+    );
 
     preserveDataset(result);
 

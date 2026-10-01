@@ -32,6 +32,12 @@ const columns = defineTableColumns<Product>([
         key: "category",
         value: (row) => formatDatasetCell(row.category, row),
     },
+    {
+        type: "text",
+        header: "Kommentar",
+        key: "comment",
+        editable: true,
+    },
 ]);
 </script>
 

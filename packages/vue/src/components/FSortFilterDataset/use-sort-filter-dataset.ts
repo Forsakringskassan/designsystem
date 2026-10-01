@@ -7,7 +7,8 @@ import {
     watch,
 } from "vue";
 import { useTranslate } from "../../plugins";
-import { type Dataset, toDataset } from "../../utils";
+import { type Dataset, getDatasetMetadata, toDataset } from "../../utils";
+import { isDataset } from "../../utils/dataset";
 import { filter } from "./f-sort-filter-filter";
 import { sort } from "./f-sort-filter-sorter";
 import { type SortOrder } from "./sort-order";
@@ -95,7 +96,14 @@ function sortFilterData<T extends object>(
         attribute: sortAttribute.attribute as keyof T | "",
         ascending: sortAttribute.ascending,
     });
-    return toDataset(sortedData, data);
+    // Build a fresh, independent dataset (own position metadata) instead of
+    // inheriting `data`'s metadata, since sorting/filtering can reorder rows
+    // and this view's result may be shared with unrelated views of the same
+    // source data.
+    const nestedAttribute = isDataset(data)
+        ? getDatasetMetadata(data).nestedAttribute
+        : undefined;
+    return toDataset(sortedData, nestedAttribute);
 }
 
 function noop(): void {

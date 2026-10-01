@@ -1,8 +1,9 @@
 import {
+    type Dataset,
     type ItemIdentifier,
-    getDatasetMetadata,
     getItemIdentifier,
 } from "../../utils";
+import { getRowMetadata } from "../../utils/dataset";
 import { type MetaRow } from "./meta-row";
 import { walk } from "./walk";
 
@@ -10,6 +11,7 @@ import { walk } from "./walk";
  * @internal
  */
 export function getMetaRows<T extends object>(
+    dataset: Dataset<T>,
     keyedRows: T[],
     expandedKeys: Set<ItemIdentifier>,
     expandableAttribute?: keyof T,
@@ -24,8 +26,10 @@ export function getMetaRows<T extends object>(
             row[expandableAttribute].length > 0,
         );
 
+        // Resolved via the owning dataset's own metadata store, so rows
+        // shared with unrelated datasets/views do not clash.
         const { ariaLevel, ariaPosInSet, ariaRowIndex, ariaSetSize } =
-            getDatasetMetadata(row);
+            getRowMetadata(dataset, row);
         const rowIndex = ariaRowIndex + 1; // +1 to include header row
         const isExpanded = isExpandable && expandedKeys.has(key);
 

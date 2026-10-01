@@ -1,16 +1,22 @@
+import { toRaw } from "vue";
 import { type Dataset, type DatasetNestedKeyOf } from "./dataset";
-import { setElementMetadata } from "./dataset-element-metadata";
-import { getArrayMetadata, getElementMetadata } from "./get-dataset-metadata";
+import {
+    type ElementMetadataStore,
+    setElementMetadata,
+} from "./dataset-element-metadata";
+import { getArrayMetadata } from "./get-dataset-metadata";
 
 function assignElementMetadata(options: {
+    elements: ElementMetadataStore;
     element: object;
     index: number;
     ariaRowIndex: number;
     totalSize: number;
     ariaLevel: number;
 }): void {
-    const { element, index, ariaRowIndex, totalSize, ariaLevel } = options;
-    setElementMetadata(element, {
+    const { elements, element, index, ariaRowIndex, totalSize, ariaLevel } =
+        options;
+    setElementMetadata(elements, element, {
         rowIndex: index,
         ariaRowIndex,
         ariaLevel,
@@ -22,6 +28,7 @@ function assignElementMetadata(options: {
 function applyElementMetadata<T extends object>(
     array: T[],
     nestedAttribute: DatasetNestedKeyOf<T> | undefined,
+    elements: ElementMetadataStore,
     options: {
         depth: number;
         rowCounter: { value: number };
@@ -30,10 +37,10 @@ function applyElementMetadata<T extends object>(
     const { depth, rowCounter } = options;
     for (let i = 0; i < array.length; i++) {
         const element = array[i];
-        const metadata = getElementMetadata(element);
-        if (!metadata) {
+        if (!elements.has(toRaw(element))) {
             rowCounter.value++;
             assignElementMetadata({
+                elements,
                 element,
                 index: i,
                 ariaRowIndex: rowCounter.value,
@@ -48,7 +55,7 @@ function applyElementMetadata<T extends object>(
 
         const nested = element[nestedAttribute] as T[];
         if (Array.isArray(nested) && nested.length > 0) {
-            applyElementMetadata(nested, nestedAttribute, {
+            applyElementMetadata(nested, nestedAttribute, elements, {
                 depth: depth + 1,
                 rowCounter,
             });
@@ -63,8 +70,8 @@ function applyElementMetadata<T extends object>(
  * @internal
  */
 export function preserveDataset<T extends object>(dataset: Dataset<T>): void {
-    const { size, nestedAttribute } = getArrayMetadata(dataset);
-    applyElementMetadata(dataset, nestedAttribute, {
+    const { size, nestedAttribute, elements } = getArrayMetadata(dataset);
+    applyElementMetadata(dataset, nestedAttribute, elements, {
         depth: 1,
         /* when new elements are detected the rowindex will start att current
          * size instead of starting over at 0 */

@@ -110,7 +110,7 @@ const selectableRows = computed(() => {
     const nestedAttribute = getDatasetMetadata(sourceRows).nestedAttribute;
     return setItemIdentifiers(sourceRows, keyAttribute, nestedAttribute);
 });
-const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute.value));
+const metaRows = computed(() => getMetaRows(rows, keyedRows.value, expandedKeys.value, expandableAttribute.value));
 const isTreegrid = computed(() => Boolean(expandableAttribute.value));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
 

@@ -1,5 +1,6 @@
 import { nextTick, ref } from "vue";
 import { describe, expect, it, vi } from "vitest";
+import { getRowMetadata } from "../../utils/dataset";
 import { useSortFilterDataset } from "./use-sort-filter-dataset";
 
 it("should output filtered rows directly", () => {
@@ -25,6 +26,49 @@ it("should output filtered rows directly", () => {
             foo: "foo",
         },
     ]);
+});
+
+it("should give each independent view over the same source its own position metadata reflecting its own sort order", () => {
+    expect.assertions(2);
+    const data = ref([
+        { name: "Banan" },
+        { name: "Citron" },
+        { name: "Apelsin" },
+    ]);
+
+    const ascending = useSortFilterDataset(
+        data,
+        { name: "Namn" },
+        [],
+        "name",
+        true,
+    );
+    const descending = useSortFilterDataset(
+        data,
+        { name: "Namn" },
+        [],
+        "name",
+        false,
+    );
+
+    const apelsinAscending = ascending.sortFilterResult.value.find(
+        (row) => row.name === "Apelsin",
+    )!;
+    const apelsinDescending = descending.sortFilterResult.value.find(
+        (row) => row.name === "Apelsin",
+    )!;
+
+    // Ascending: Apelsin, Banan, Citron -> Apelsin is first.
+    expect(
+        getRowMetadata(ascending.sortFilterResult.value, apelsinAscending)
+            .ariaPosInSet,
+    ).toBe(1);
+    // Descending: Citron, Banan, Apelsin -> Apelsin is last, unaffected by
+    // the ascending view's position for the same underlying row.
+    expect(
+        getRowMetadata(descending.sortFilterResult.value, apelsinDescending)
+            .ariaPosInSet,
+    ).toBe(3);
 });
 
 describe("filtered data after editing of input data", () => {

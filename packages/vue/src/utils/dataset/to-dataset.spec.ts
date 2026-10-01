@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { type DatasetElementMetadata } from "./dataset-element-metadata";
-import { getDatasetMetadata } from "./get-dataset-metadata";
+import { getDatasetMetadata, getRowMetadata } from "./get-dataset-metadata";
 import { isDataset } from "./is-dataset";
 import { toDataset } from "./to-dataset";
 import { rowindex, treeSnapshot } from "./tree-snapshot";
@@ -188,6 +188,20 @@ describe("toDataset", () => {
                 └─ id:2 aria-rowindex="4"
                    └─ id:5 aria-rowindex="5"
             `);
+        });
+    });
+
+    describe("when an element is shared between unrelated datasets", () => {
+        it("should resolve each dataset's own metadata for a shared row, scoped per dataset", () => {
+            expect.assertions(4);
+            const shared = { id: 1 };
+            const first = toDataset([shared, { id: 2 }, { id: 3 }]);
+            const second = toDataset([{ id: 9 }, shared]);
+
+            expect(getRowMetadata(first, shared).ariaSetSize).toBe(3);
+            expect(getRowMetadata(first, shared).ariaPosInSet).toBe(1);
+            expect(getRowMetadata(second, shared).ariaSetSize).toBe(2);
+            expect(getRowMetadata(second, shared).ariaPosInSet).toBe(2);
         });
     });
 });

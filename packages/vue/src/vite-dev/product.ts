@@ -3,4 +3,5 @@ export interface Product {
     name: string;
     category: string;
     tags: string[];
+    comment: string;
 }

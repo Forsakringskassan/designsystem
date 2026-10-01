@@ -1,11 +1,17 @@
 import { type Dataset, type DatasetNestedKeyOf } from "./dataset";
 import { setArrayMetadata } from "./dataset-array-metadata";
-import { setElementMetadata } from "./dataset-element-metadata";
+import {
+    type ElementMetadataStore,
+    createElementMetadataStore,
+    setElementMetadata,
+} from "./dataset-element-metadata";
+import { getArrayMetadata } from "./get-dataset-metadata";
 import { getSize } from "./get-size";
 
 function reindex<T extends object>(
     array: T[],
     nestedAttribute: DatasetNestedKeyOf<T> | undefined,
+    elements: ElementMetadataStore,
     options: {
         depth: number;
         rowCounter: { value: number };
@@ -16,7 +22,7 @@ function reindex<T extends object>(
     for (let i = 0; i < array.length; i++) {
         const element = array[i];
 
-        setElementMetadata(element, {
+        setElementMetadata(elements, element, {
             rowIndex: rowCounter.value,
             ariaRowIndex: rowCounter.value + 1,
             ariaLevel: depth + 1,
@@ -31,7 +37,7 @@ function reindex<T extends object>(
 
         const nested = element[nestedAttribute] as T[];
         if (Array.isArray(nested)) {
-            reindex(nested, nestedAttribute, {
+            reindex(nested, nestedAttribute, elements, {
                 depth: depth + 1,
                 rowCounter,
             });
@@ -46,11 +52,17 @@ export function reindexDataset<T extends object>(
     dataset: Dataset<T>,
     nestedAttribute: DatasetNestedKeyOf<T> | undefined,
 ): void {
-    setArrayMetadata(dataset, {
-        size: getSize(dataset, nestedAttribute),
-        nestedAttribute,
-    });
-    reindex(dataset, nestedAttribute, {
+    const existing = getArrayMetadata(dataset as T[]);
+    const elements = existing?.elements ?? createElementMetadataStore();
+    setArrayMetadata(
+        dataset,
+        {
+            size: getSize(dataset, nestedAttribute),
+            nestedAttribute,
+        },
+        elements,
+    );
+    reindex(dataset, nestedAttribute, elements, {
         depth: 0,
         rowCounter: { value: 0 },
     });
