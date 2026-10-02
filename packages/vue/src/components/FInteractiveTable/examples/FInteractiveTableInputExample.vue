@@ -39,6 +39,7 @@ export default defineComponent({
 </script>
 
 <template>
+    <!-- [html-validate-disable-block deprecated -- legacy table documentation] -->
     <f-interactive-table :rows="betalningar" key-attribute="id">
         <template #caption> Justera betalningar </template>
         <template #default="{ row }">

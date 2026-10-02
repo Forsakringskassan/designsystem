@@ -4,25 +4,59 @@ import { defineComponent } from "vue";
 import { type FruitData, fruits } from "./fruit-data";
 import {
     FCrudDataset,
-    FInteractiveTable,
-    FTableButton,
-    FTableColumn,
+    FTable,
     FTextField,
     FTextareaField,
+    defineTableColumns,
+    useDatasetRef,
 } from "@fkui/vue";
+
+const rows = useDatasetRef(fruits, "variant");
+let updateRow: (row: FruitData) => void = (_row: FruitData) => undefined;
+let deleteRow: (row: FruitData) => void = (_row: FruitData) => undefined;
+const columns = defineTableColumns([
+    { type: "text", header: "Namn", key: "name", size: "shrink" },
+    { type: "text", header: "Land", key: "origin", size: "shrink" },
+    { type: "text", header: "Beskrivning", key: "description" },
+    {
+        type: "menu",
+        header: "Åtgärd",
+        text: (row: FruitData) => `Visa åtgärder för ${row.name}`,
+        actions: [
+            {
+                label: "Ändra",
+                icon: "pen",
+                onClick: (row: FruitData) => {
+                    updateRow(row);
+                },
+            },
+            {
+                label: "Ta bort",
+                icon: "trashcan",
+                onClick: (row: FruitData) => {
+                    deleteRow(row);
+                },
+            },
+        ],
+    },
+]);
 
 export default defineComponent({
     components: {
         FCrudDataset,
-        FInteractiveTable,
-        FTableButton,
-        FTableColumn,
+        FTable,
         FTextField,
         FTextareaField,
     },
-    data() {
+    setup() {
         return {
-            fruits,
+            rows,
+            columns,
+            getColumns(updateItem: (row: FruitData) => void, deleteItem: (row: FruitData) => void) {
+                updateRow = updateItem;
+                deleteRow = deleteItem;
+                return columns;
+            },
         };
     },
     methods: {
@@ -34,30 +68,11 @@ export default defineComponent({
 </script>
 
 <template>
-    <f-crud-dataset v-model="fruits" @created="saveModel" @updated="saveModel" @deleted="saveModel">
+    <f-crud-dataset v-model="rows" @created="saveModel" @updated="saveModel" @deleted="saveModel">
         <template #default="{ updateItem, deleteItem }">
-            <f-interactive-table :rows="fruits" expandable-attribute="variant" key-attribute="id">
+            <f-table :rows :columns="getColumns(updateItem, deleteItem)" striped>
                 <template #caption> <b>Frukter</b> </template>
-                <template #default="{ row }">
-                    <f-table-column title="Namn" type="text" shrink>
-                        {{ row.name }}
-                    </f-table-column>
-                    <f-table-column title="Land" type="text" shrink>
-                        {{ row.origin }}
-                    </f-table-column>
-                    <f-table-column title="Beskrivning" type="text" expand>
-                        {{ row.description }}
-                    </f-table-column>
-                    <f-table-column title="Åtgärd" type="action" shrink>
-                        <f-table-button icon="pen" @click="updateItem(row)">
-                            Ändra {{ row.name }}
-                        </f-table-button>
-                        <f-table-button icon="trashcan" @click="deleteItem(row)">
-                            Ta bort {{ row.name }}
-                        </f-table-button>
-                    </f-table-column>
-                </template>
-            </f-interactive-table>
+            </f-table>
         </template>
         <template #modify="{ item }">
             <f-text-field

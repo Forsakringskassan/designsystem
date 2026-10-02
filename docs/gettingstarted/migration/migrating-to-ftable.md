@@ -72,6 +72,7 @@ Det innebär i praktiken:
 Om tabellen tidigare såg ut så här:
 
 ```html static
+<!-- [html-validate-disable-block deprecated -- migration guide] -->
 <f-interactive-table :rows>
     <template #caption> Tabellrubrik </template>
 
@@ -200,6 +201,7 @@ Läs mer i dokumentationen om {@link validators validatorer}.
 I `FInteractiveTable` användes `expandable-attribute` för att ange vilket attribut som innehöll expanderbart innehåll.
 
 ```html static
+<!-- [html-validate-disable-block deprecated -- migration guide] -->
 <f-interactive-table
     :rows
     key-attribute="id"

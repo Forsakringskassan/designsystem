@@ -6,7 +6,6 @@ import {
     FButton,
     FCard,
     FCheckboxField,
-    FDataTable,
     FDatepickerField,
     FExpandablePanel,
     FExpandableParagraph,
@@ -16,10 +15,12 @@ import {
     FRadioField,
     FSelectField,
     FStaticField,
-    FTableColumn,
+    FTable,
     FTextField,
     FTextareaField,
     FTooltip,
+    defineTableColumns,
+    useDatasetRef,
 } from "@fkui/vue";
 
 export default defineComponent({
@@ -28,7 +29,7 @@ export default defineComponent({
         FButton,
         FCard,
         FCheckboxField,
-        FDataTable,
+        FTable,
         FDatepickerField,
         FExpandablePanel,
         FExpandableParagraph,
@@ -38,10 +39,18 @@ export default defineComponent({
         FRadioField,
         FSelectField,
         FStaticField,
-        FTableColumn,
         FTextField,
         FTextareaField,
         FTooltip,
+    },
+    setup() {
+        const rows = useDatasetRef(["1", "2", "3"].map((id) => ({ id })));
+        const columns = defineTableColumns([
+            { type: "text", header: "Kolumnrubrik", value: () => "Text" },
+            { type: "text", header: "Kolumnrubrik", value: () => "Text" },
+            { type: "text", header: "Kolumnrubrik", value: () => "Text" },
+        ]);
+        return { rows, columns };
     },
     data() {
         return {
@@ -54,8 +63,6 @@ export default defineComponent({
             datepickerField: "2024-01-01",
             checkboxField: [],
             radioField: "",
-            dataTableRows: ["1", "2", "3"].map((id) => ({ id })),
-            dataTableColumns: ["1", "2", "3"].map((id) => ({ id })),
             listItems: ["1", "2", "3"].map((id) => ({ id })),
             listSelectedItems: [],
         };
@@ -167,19 +174,9 @@ export default defineComponent({
                     <f-radio-field v-model="radioField" value="Radio4"> Text </f-radio-field>
                 </f-fieldset>
 
-                <f-data-table :rows="dataTableRows" striped key-attribute="id">
+                <f-table :rows :columns striped>
                     <template #caption> Tabell </template>
-                    <template #default>
-                        <f-table-column
-                            v-for="column in dataTableColumns"
-                            :key="column.id"
-                            title="Kolumnrubrik"
-                            type="text"
-                        >
-                            Text
-                        </f-table-column>
-                    </template>
-                </f-data-table>
+                </f-table>
 
                 <f-list v-model="listSelectedItems" key-attribute="id" :items="listItems">
                     <template #default> Lista </template>

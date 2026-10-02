@@ -1,10 +1,10 @@
-import { FInteractiveTablePageObject } from "../../cypress";
+import { FTablePageObject } from "../../cypress";
 import { FPaginatorPageObject } from "../../cypress/FPaginator.pageobject";
 import FPaginator from "./FPaginator.vue";
 import paginatorDynamicDataExample from "./examples/FPaginatorDynamicDataExample.vue";
 import paginatorStaticDataExample from "./examples/FPaginatorStaticDataExample.vue";
 
-const table = new FInteractiveTablePageObject();
+const table = new FTablePageObject();
 const paginator = new FPaginatorPageObject();
 
 describe("Requirement 1.1: splitting data across multiple pages", () => {
@@ -43,7 +43,7 @@ describe("Requirement 1.2", () => {
     it("should be able to fetch a subset", () => {
         cy.mount(paginatorStaticDataExample);
 
-        table.bodyRow().should("have.length", 5); //check the first page (subset)
+        table.rows().should("have.length", 5); //check the first page (subset)
         table.cell({ row: 1, col: 1 }).should("contain.text", "A1");
         table.cell({ row: 5, col: 3 }).should("contain.text", "C5");
 
@@ -64,7 +64,7 @@ describe("Requirement 1.2", () => {
     it("should be able to fetch the entire dataset", () => {
         cy.mount(paginatorDynamicDataExample);
 
-        table.bodyRow().should("have.length", 10);
+        table.rows().should("have.length", 10);
         table.cell({ row: 1, col: 2 }).should("contain.text", "Maria Olofsson");
         table.cell({ row: 10, col: 2 }).should("contain.text", "Lars Larsson");
 

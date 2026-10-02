@@ -167,6 +167,10 @@ export default defineMetadata({
 
     "f-data-table": {
         flow: true,
+        deprecated: {
+            message: "use <f-table> instead.",
+            source: "@fkui/vue",
+        },
         attributes: {
             "empty-row": {
                 deprecated: "prop is obsolete and should no longer be used",
@@ -447,6 +451,10 @@ export default defineMetadata({
 
     "f-interactive-table": {
         flow: true,
+        deprecated: {
+            message: "use <f-table> instead.",
+            source: "@fkui/vue",
+        },
         attributes: {
             "empty-row": {
                 deprecated: "prop is obsolete and should no longer be used",

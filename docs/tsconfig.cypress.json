@@ -11,7 +11,7 @@
         "**/*.cy.ts",
         "**/*.vue",
         "components/pagination/examples/pagination-data.ts",
-        "components/table-and-list/examples/table-data.ts"
+        "components/table-and-list/examples/legacy/table-data.ts"
     ],
     "exclude": ["dist/**", "node_modules/**", "playground/**"]
 }
