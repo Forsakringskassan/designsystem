@@ -258,6 +258,7 @@ export class FDate implements IterableDate<FDate>, Clampable<FDate> {
             return Weekday.SUNDAY;
         }
 
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-enum-assignment -- technical debt */
         return result;
     }
 
