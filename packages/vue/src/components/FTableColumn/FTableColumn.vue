@@ -157,6 +157,7 @@ onMounted(() => {
             description: props.description || undefined,
             id,
             size,
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-enum-assignment -- technical debt */
             type: props.type as FTableColumnType,
             visible: props.visible,
             sortable: false,

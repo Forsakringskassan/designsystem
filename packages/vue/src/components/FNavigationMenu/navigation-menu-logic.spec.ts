@@ -24,7 +24,7 @@ describe("getNewItemIndexFromMenuAction", () => {
             newIndex,
         }: {
             index: number;
-            menuAction: number;
+            menuAction: MenuAction;
             newIndex: number;
         }) => {
             expect.assertions(1);
@@ -49,7 +49,7 @@ describe("getNewItemIndexFromMenuAction", () => {
             newIndex,
         }: {
             index: number;
-            menuAction: number;
+            menuAction: MenuAction;
             newIndex: number;
         }) => {
             expect.assertions(1);
