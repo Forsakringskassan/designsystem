@@ -179,8 +179,8 @@ it("should include palette", async (t) => {
     t.assert.strictEqual(
         css,
         content`
-        :root{
-          --x-foobar:#f0a;
+        :root {
+          --x-foobar: #f0a;
         }
     `,
     );
