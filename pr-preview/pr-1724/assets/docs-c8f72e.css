@@ -7953,7 +7953,7 @@ main {
   --highlight-width: 4px;
   background-color: var(--docs-background-color);
   display: none;
-  padding: 1.5rem;
+  padding: 1rem;
   height: max-content;
   z-index: 2;
 }
@@ -8401,15 +8401,24 @@ main #aside dd {
 }
 
 .code-preview--default .code-preview__preview {
+  border-radius: 3px 3px 0 0;
   border-bottom: 1px solid var(--docs-code-border-color);
   padding: 1.5rem;
   overflow: auto;
+}
+
+.code-preview--default .code-preview__preview:only-child {
+  border-radius: 3px;
 }
 
 .code-preview--borderless {
   width: 100%;
   background-color: var(--docs-code-background-color);
   margin-bottom: 1rem;
+}
+
+.code-preview--borderless[data-tags~=live-example] {
+  border-radius: 4px;
 }
 
 .code-preview__preview {
@@ -9190,10 +9199,6 @@ header .docs-page-header__logo > a {
   text-decoration: none;
   color: var(--docs-header-text-color-default);
   font-size: 16px;
-}
-
-.docs-mobile-nav__list ul {
-  padding-left: 1.5rem;
 }
 
 @media (width >= 640px) {
