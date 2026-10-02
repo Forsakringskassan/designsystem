@@ -286,11 +286,7 @@ export function useCombobox(
                         flag = true;
                     }
                     close();
-                } else {
-                    /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
-                    openSelected();
                 }
-
                 break;
 
             case "Down":
