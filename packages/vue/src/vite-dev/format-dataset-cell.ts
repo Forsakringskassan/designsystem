@@ -1,7 +1,7 @@
 import { getDatasetMetadata } from "@fkui/vue";
 
 /** Renders a cell value together with the live dataset metadata for the row. */
-export function formatDatasetCell(value: string, row: object): string {
+export function formatDatasetCell(row: object): string {
     const meta = getDatasetMetadata(row);
-    return `${value} [rowIndex=${meta.rowIndex}, pos=${meta.ariaPosInSet}/${meta.ariaSetSize}]`;
+    return `ariaRowIndex=${meta.rowIndex}, ariaPosInSet=${meta.ariaPosInSet}, ariaSetSize=${meta.ariaSetSize},  ariaLevel=${meta.ariaLevel}`;
 }
