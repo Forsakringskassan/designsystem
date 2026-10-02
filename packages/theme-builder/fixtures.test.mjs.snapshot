@@ -14,8 +14,8 @@ exports[`should build simple theme 1`] = `
 `;
 
 exports[`should build simple theme 2`] = `
-:root{
-  --x-foobar:#f0a;
+:root {
+  --x-foobar: #f0a;
 }
 `;
 
@@ -84,9 +84,9 @@ exports[`should generate version 1`] = `
 `;
 
 exports[`should generate version 2`] = `
-:root{
-  --x-foobar:#f0a;
-  --version:"1.2.3";
+:root {
+  --x-foobar: #f0a;
+  --version: "1.2.3";
 }
 `;
 
