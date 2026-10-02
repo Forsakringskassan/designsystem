@@ -9545,9 +9545,17 @@ body:has(#mobile-toggle:checked) {
     grid-template-columns: 1fr var(--live-example-controls-width);
     grid-template-areas: "example controls" "code code";
   }
+  .live-example__container:not(.live-example__container--single-column) > .live-example__example {
+    border-top-right-radius: 0;
+  }
+  .live-example__container:not(.live-example__container--single-column) > .live-example__controls {
+    border-top: 0;
+    border-left: var(--live-example-border-width) solid var(--live-example-border-color);
+  }
 }
 .live-example__example {
   grid-area: example;
+  border-radius: max(0px, 4px - var(--live-example-border-width)) max(0px, 4px - var(--live-example-border-width)) 0 0;
   padding: var(--live-example-space);
   overflow: auto;
 }
@@ -9555,11 +9563,12 @@ body:has(#mobile-toggle:checked) {
 .live-example__controls {
   grid-area: controls;
   padding: var(--live-example-space);
-  border-left: var(--live-example-border-width) solid var(--live-example-border-color);
+  border-top: var(--live-example-border-width) solid var(--live-example-border-color);
 }
 
 .live-example__code {
   grid-area: code;
+  border-radius: 0 0 max(0px, 4px - var(--live-example-border-width)) max(0px, 4px - var(--live-example-border-width));
   border-top: var(--live-example-border-width) solid var(--live-example-border-color);
   background-color: var(--live-example-code-background);
 }
@@ -9572,6 +9581,7 @@ body:has(#mobile-toggle:checked) {
 .live-example__code pre code {
   margin: 0;
   padding: var(--live-example-space);
+  border-radius: 0 0 max(0px, 4px - var(--live-example-border-width)) max(0px, 4px - var(--live-example-border-width));
 }
 
 .live-example__code-toggle {
