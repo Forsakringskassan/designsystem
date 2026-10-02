@@ -1,3 +1,4 @@
+import { FDefinitionListSelectors } from "../selectors";
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
 
 /**
@@ -6,18 +7,22 @@ import { type BasePageObject, type DefaultCypressChainable } from "./common";
  * @public
  */
 export class FDefinitionListPageObject implements BasePageObject {
-    /**
-     * The root of the component.
-     *
-     * @param selector - The selector
-     */
-    public selector: string;
+    private _selectors: ReturnType<typeof FDefinitionListSelectors>;
 
     /**
      * @param selector - The selector.
      */
     public constructor(selector: string) {
-        this.selector = selector;
+        this._selectors = FDefinitionListSelectors(selector);
+    }
+
+    /**
+     * Gets the page object selector.
+     *
+     * @returns The page object selector.
+     */
+    public get selector(): string {
+        return this._selectors.selector;
     }
 
     /**
@@ -26,7 +31,7 @@ export class FDefinitionListPageObject implements BasePageObject {
      * @returns The page object element.
      */
     public el(): DefaultCypressChainable {
-        return cy.get(this.selector);
+        return cy.get(this._selectors.selector);
     }
 
     /**
@@ -36,9 +41,7 @@ export class FDefinitionListPageObject implements BasePageObject {
      * @returns The definition value.
      */
     public definition(index: number): DefaultCypressChainable {
-        return cy.get(
-            `${this.selector} .definition-list__definition:nth(${index})`,
-        );
+        return cy.get(`${this._selectors.definitions()}:nth(${index})`);
     }
 
     /**
@@ -47,7 +50,7 @@ export class FDefinitionListPageObject implements BasePageObject {
      * @returns The number of definitions.
      */
     public numberOfDefinitions(): Cypress.Chainable<number> {
-        return cy.get(`${this.selector} .definition-list__term`).its("length");
+        return cy.get(this._selectors.terms()).its("length");
     }
 
     /**
@@ -57,6 +60,6 @@ export class FDefinitionListPageObject implements BasePageObject {
      * @returns The term of the definition.
      */
     public term(index: number): DefaultCypressChainable {
-        return cy.get(`${this.selector} .definition-list__term:nth(${index})`);
+        return cy.get(`${this._selectors.terms()}:nth(${index})`);
     }
 }

@@ -1,0 +1,54 @@
+/**
+ * Selectors for `FProgressbar`.
+ *
+ * @public
+ * @since %version%
+ * @param selector - The selector for the FProgressbar component.
+ * @returns An object with selector methods for the FProgressbar component.
+ */
+export function FProgressbarSelectors(selector: string = ":scope") {
+    return Object.freeze({
+        /**
+         * The base selector for the component.
+         *
+         * This is the same selector that the consumer provided.
+         *
+         * @public
+         * @since %version%
+         * @returns The root selector for the component.
+         */
+        get selector(): string {
+            return selector;
+        },
+
+        /**
+         * Get the progress meter element.
+         *
+         * The meter element carries the `role="progressbar"` attribute and the
+         * current progress value in the `aria-valuenow` attribute. To read the
+         * numeric value, get the `aria-valuenow` attribute and convert to a
+         * number.
+         *
+         * @example Cypress
+         *
+         * ```ts
+         * const { meter } = FProgressbarSelectors();
+         * cy.get(meter()).invoke("attr", "aria-valuenow").then(Number).should("eq", 50);
+         * ```
+         *
+         * @example Playwright
+         *
+         * ```ts
+         * const { meter } = FProgressbarSelectors();
+         * const value = Number(await page.locator(meter()).getAttribute("aria-valuenow"));
+         * ```
+         *
+         * @public
+         * @since %version%
+         * @returns A selector for the progress meter element.
+         */
+        meter(): string {
+            return `${selector} .progress__meter`;
+        },
+    });
+}
