@@ -7,7 +7,7 @@ component:
     - FRadioField
 ---
 
-```import reading-width background=solid
+```import background=solid
 FRadioFieldLiveExample.vue
 ```
 
@@ -33,11 +33,11 @@ Visa radioknappar vertikalt som standard.
 Horisontell placering kan användas när det finns två korta svarsalternativ, till exempel ja och nej.
 På mindre skärmar visas alternativen alltid vertikalt.
 
-```import reading-width background=solid
+```import background=solid
 FRadioFieldHorizontalExample.vue
 ```
 
-```diff reading-width
+```diff
 -<f-fieldset name="arbete-annat-land">
 +<f-fieldset name="arbete-annat-land" horizontal>
 ```
@@ -58,7 +58,7 @@ Om frågan är frivillig behöver den därför ha ett neutralt svarsalternativ, 
 Om användaren måste välja ett alternativ ska radioknappsgruppen valideras som obligatorisk.
 Lägg `v-validation.required` på `FFieldset`.
 
-```diff reading-width
+```diff
 -<f-fieldset name="arbete-annat-land">
 +<f-fieldset v-validation.required name="arbete-annat-land">
 ```
@@ -74,11 +74,11 @@ Den utvidgade texten visas på en egen rad, vilket gör alternativen lättare at
 Texten ska vara kort och beskriva det enskilda alternativet.
 Information som gäller hela frågan ska i stället placeras som hjälptext vid frågan.
 
-```import reading-width background=solid
+```import background=solid
 FRadioFieldDetailsAlwaysExample.vue
 ```
 
-```diff reading-width
+```diff
 -<f-fieldset name="care-reason">
 +<f-fieldset name="care-reason" show-details="always">
 ```
@@ -90,11 +90,11 @@ Ramen gör det tydligare vilken text som hör till respektive alternativ när in
 
 Dölj inte information som användaren behöver för att kunna välja.
 
-```import reading-width background=solid
+```import background=solid
 FRadioFieldBorderExpandableExample.vue
 ```
 
-```diff reading-width
+```diff
 -<f-fieldset name="payment-plan">
 +<f-fieldset name="payment-plan" border show-details="when-selected">
 ```
@@ -109,7 +109,7 @@ Här visas möjliga inställningar för komponenten.
 Vissa kombinationer bör undvikas.
 Se fliken ”Användning & exempel” för rekommenderade sätt att använda komponenten.
 
-```import live-example reading-width
+```import live-example
 FRadioFieldApiExample.vue
 ```
 

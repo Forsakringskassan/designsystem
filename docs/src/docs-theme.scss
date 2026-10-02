@@ -15,6 +15,7 @@ $fk-logo-small: "fk-logo-primary-small.svg";
 $fk-logo-large: "fk-logo-primary-large.svg";
 
 :root {
+    --docs-content-max-width: 680px;
     --f-logo-image-small:
         url("#{config-variables.$asset-path-images}/#{$fk-logo-small}"),
         linear-gradient(var(--fkds-color-header-background-primary), var(--fkds-color-header-background-primary));
@@ -34,9 +35,14 @@ $fk-logo-large: "fk-logo-primary-large.svg";
     margin-bottom: 0;
 }
 
-.code-preview[data-tags~="reading-width"] {
-    // Match the body text's reading width in docs-generator.
-    max-width: 680px;
+// Keep section wrappers full-width so their content width can be overridden.
+#title,
+#content :where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, table, pre, .code-preview, .docs-messagebox, .docs-view-switcher):not(.code-preview *) {
+    max-width: min(100%, var(--docs-content-max-width));
+}
+
+#content .code-preview[data-tags~="live-example"] {
+    max-width: 100%;
 }
 
 .color-table__color {
@@ -103,7 +109,6 @@ $fk-logo-large: "fk-logo-primary-large.svg";
 #content .docs-view-switcher {
     display: flex;
     gap: 1rem;
-    max-width: 680px;
     margin: 3rem 0 2rem;
     border-bottom: 1px solid var(--fkds-color-border-primary);
     padding-bottom: 0.5rem;
