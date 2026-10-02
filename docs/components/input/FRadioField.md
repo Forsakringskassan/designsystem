@@ -7,7 +7,7 @@ component:
     - FRadioField
 ---
 
-```import reading-width solid-background square-corners
+```import reading-width background=solid
 FRadioFieldLiveExample.vue
 ```
 
@@ -33,7 +33,7 @@ Visa radioknappar vertikalt som standard.
 Horisontell placering kan användas när det finns två korta svarsalternativ, till exempel ja och nej.
 På mindre skärmar visas alternativen alltid vertikalt.
 
-```import reading-width solid-background square-corners
+```import reading-width background=solid
 FRadioFieldHorizontalExample.vue
 ```
 
@@ -74,7 +74,7 @@ Den utvidgade texten visas på en egen rad, vilket gör alternativen lättare at
 Texten ska vara kort och beskriva det enskilda alternativet.
 Information som gäller hela frågan ska i stället placeras som hjälptext vid frågan.
 
-```import reading-width solid-background square-corners
+```import reading-width background=solid
 FRadioFieldDetailsAlwaysExample.vue
 ```
 
@@ -90,7 +90,7 @@ Ramen gör det tydligare vilken text som hör till respektive alternativ när in
 
 Dölj inte information som användaren behöver för att kunna välja.
 
-```import reading-width solid-background square-corners
+```import reading-width background=solid
 FRadioFieldBorderExpandableExample.vue
 ```
 
@@ -109,7 +109,7 @@ Här visas möjliga inställningar för komponenten.
 Vissa kombinationer bör undvikas.
 Se fliken ”Användning & exempel” för rekommenderade sätt att använda komponenten.
 
-```import live-example reading-width square-corners
+```import live-example reading-width
 FRadioFieldApiExample.vue
 ```
 
