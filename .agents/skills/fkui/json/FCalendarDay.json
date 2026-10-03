@@ -1,0 +1,43 @@
+{
+    "name": "FCalendarDay",
+    "slug": "fcalendarday",
+    "models": [],
+    "props": [
+        {
+            "name": "day",
+            "description": "Day to render.",
+            "type": "FDate",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "enabled",
+            "description": "Set to `true` if day is enabled.",
+            "type": "boolean",
+            "required": false,
+            "default": {
+                "value": "true"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "selected",
+            "description": "Set to `true` if day is selected.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "highlight",
+            "description": "Set to `true` if day should be highlighted.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": []
+}

@@ -1,0 +1,57 @@
+{
+    "name": "FFileSelector",
+    "slug": "ffileselector",
+    "models": [],
+    "props": [
+        {
+            "name": "id",
+            "description": "The id for the input id attribute.\nThe id for the label for attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "disabled",
+            "description": "Disables the file selector.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "size",
+            "description": "Button size, can be one of:\n- `small`\n- `medium`\n- `large`",
+            "type": "\"small\" | \"medium\" | \"large\"",
+            "required": false,
+            "default": {
+                "value": "\"medium\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "change",
+            "description": "Emitted when file changes.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "FileList",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

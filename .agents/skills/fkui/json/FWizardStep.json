@@ -1,0 +1,116 @@
+{
+    "name": "FWizardStep",
+    "slug": "fwizardstep",
+    "models": [],
+    "props": [
+        {
+            "name": "title",
+            "description": "The title of the wizard step.\nThis will be displayed as the step's header.",
+            "type": "string",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "beforeNext",
+            "description": "Supply this function in order to run actions before navigating to the next step.\n\nIt is possible to cancel the navigation by returning `BeforeNextAction.CANCEL`.\nWhen cancelled, the consumer is responsible to indicate why this happened.\n\nNote that `FWizardStep` already checks validity of contained fields using `v-validation`\nbefore allowing navigation to the next step.",
+            "type": "FWizardValidationCallback",
+            "required": false,
+            "default": {
+                "value": "function() {\r\n    /* do nothing */\r\n}"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "beforeValidation",
+            "description": "Supply this function in order to run actions before `FWizardStep` checks validity.\n\n`beforeValidation` is used by {@link FValidationForm}.\n\nIt is possible to cancel the navigation by returning `BeforeNextAction.CANCEL`.\nWhen cancelled, the consumer is responsible to indicate why this happened.",
+            "type": "FWizardValidationCallback",
+            "required": false,
+            "default": {
+                "value": "function() {\r\n    /* do nothing */\r\n}"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "useErrorList",
+            "description": "Include the error list component.",
+            "type": "boolean",
+            "required": false,
+            "default": {
+                "value": "true"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "step-of",
+            "description": "Use this slot to customize the content displayed for the \"step of\" information.",
+            "bindings": [
+                {
+                    "name": "headerClass",
+                    "type": "string",
+                    "description": "Class to be applied to the step-of information."
+                },
+                {
+                    "name": "stepNumber",
+                    "type": "number",
+                    "description": "Current step number."
+                },
+                {
+                    "name": "totalSteps",
+                    "type": "number",
+                    "description": "The total number of steps in this wizard."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "error-message",
+            "description": "Use this slot to customize the error message displayed when validation fails.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "next-button-text",
+            "description": "Use this slot to customize the text of the \"Next\" button.",
+            "bindings": [
+                {
+                    "name": "stepNumber",
+                    "type": "number",
+                    "description": "Current step number (starts at 1)."
+                },
+                {
+                    "name": "totalSteps",
+                    "type": "number",
+                    "description": "The total number of steps in this wizard."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "cancel-button-text",
+            "description": "Use this slot to customize the text of the \"Cancel\" button.",
+            "bindings": [
+                {
+                    "name": "stepNumber",
+                    "type": "number",
+                    "description": "Current step number (starts at 1)."
+                },
+                {
+                    "name": "totalSteps",
+                    "type": "number",
+                    "description": "The total number of steps in this wizard."
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}

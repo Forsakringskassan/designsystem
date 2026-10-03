@@ -1,0 +1,40 @@
+{
+    "name": "FDetailsPanel.ce",
+    "slug": "fdetailspanel-ce",
+    "models": [],
+    "props": [],
+    "events": [
+        {
+            "name": "closed",
+            "description": null,
+            "properties": [],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "header",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "icon",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "content",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "footer",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

@@ -1,0 +1,96 @@
+{
+    "name": "FTable",
+    "slug": "ftable",
+    "models": [],
+    "props": [
+        {
+            "name": "columns",
+            "description": null,
+            "type": "TableColumn[]",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "rows",
+            "description": null,
+            "type": "Dataset",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "keyAttribute",
+            "description": null,
+            "type": "KeyAttribute",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "rowClass",
+            "description": "Optional callback for setting classes on table rows (`<tr>` element).",
+            "type": "TSFunctionType",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "striped",
+            "description": null,
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "disableDividers",
+            "description": null,
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "selectable",
+            "description": null,
+            "type": "\"single\" | \"multi\"",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "caption",
+            "description": "Slot for table caption",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "empty",
+            "description": "Slot for content when table is empty",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "expandable",
+            "description": "Slot for rendering custom expandable content",
+            "bindings": [
+                {
+                    "name": "row",
+                    "type": "unknown",
+                    "description": "The expanded row (from the dataset nested attribute of the parent row)"
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "footer",
+            "description": "Slot for table footer",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

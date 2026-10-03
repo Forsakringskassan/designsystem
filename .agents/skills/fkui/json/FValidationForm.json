@@ -1,0 +1,85 @@
+{
+    "name": "FValidationForm",
+    "slug": "fvalidationform",
+    "models": [],
+    "props": [
+        {
+            "name": "beforeSubmit",
+            "description": "If given, this function is called before the `submit` event is emitted.\n\nOptionally this callback may return `FValidationFormAction`. If\n`FValidationFormAction.CANCEL` is returned the submission is\ncancelled and no event will be emitted. The consumer should make it\nclear why the action was cancelled.\n\nIf a promise is returned it will be awaited.\n\nThe consumer does not need to validate form data, it is handled\ninternally by the component.",
+            "type": "FValidationFormCallback",
+            "required": false,
+            "default": {
+                "value": "function() {\r\n    return noop;\r\n}"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "beforeValidation",
+            "description": "If given, this function is called before the form data is validated and the `submit` event is emitted.",
+            "type": "FValidationFormCallback",
+            "required": false,
+            "default": {
+                "value": "function() {\r\n    return noop;\r\n}"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "id",
+            "description": "The id for the form id attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "useErrorList",
+            "description": "Include the error list component.",
+            "type": "boolean",
+            "required": false,
+            "default": {
+                "value": "true"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "errorListBeforeNavigate",
+            "description": "Optional callback function to the error list component for performing actions before navigation.",
+            "type": "BeforeNavigate",
+            "required": false,
+            "default": {
+                "value": "function() {\r\n    return noop;\r\n}"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "submit",
+            "description": "Emitted when form is successfully submitted.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "undefined",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "error-message",
+            "description": "**optional** Slot for displaying error description.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot for content, i.e. input elements.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

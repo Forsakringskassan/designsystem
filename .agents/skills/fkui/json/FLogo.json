@@ -1,0 +1,19 @@
+{
+    "name": "FLogo",
+    "slug": "flogo",
+    "models": [],
+    "props": [
+        {
+            "name": "size",
+            "description": "Size of the logo: `\"small\"`, `\"large\"`, or `\"responsive\"`.\nRequires matching CSS variable to be set (`--f-logo-image-{small/large}`), or both if \"responsive\".",
+            "type": "\"small\" | \"large\" | \"responsive\"",
+            "required": false,
+            "default": {
+                "value": "\"responsive\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": []
+}
