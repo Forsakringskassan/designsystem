@@ -47,6 +47,7 @@ export {
 } from "./item-identifier";
 export {
     type Dataset,
+    type DatasetArrayKeyOf,
     type DatasetArrayMetadata,
     type DatasetElementMetadata,
     type DatasetNestedKeyOf,
