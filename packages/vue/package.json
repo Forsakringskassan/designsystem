@@ -71,7 +71,7 @@
     "@fkui/test-utils": "6.60.0",
     "@fkui/theme-default": "6.60.0",
     "@forsakringskassan/vite-lib-config": "5.13.0",
-    "@forsakringskassan/vitest-config-jsdom": "5.0.0",
+    "@forsakringskassan/vitest-config-jsdom": "5.0.1",
     "@vue/test-utils": "2.5.1",
     "esbuild": "0.28.2",
     "glob": "13.0.6",
