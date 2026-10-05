@@ -9727,75 +9727,8 @@ body:has(#mobile-toggle:checked) {
   margin: 1em 0px;
 }
 
-footer {
-  background: #35805b;
-  color: var(--fkds-color-text-inverted);
-  padding: 3rem;
-}
-@media (min-width: 1024px) {
-  footer {
-    display: flex;
-    gap: 5rem;
-  }
-}
-footer h1,
-footer .heading--h1 {
-  font-size: 1.5rem;
-  font-weight: var(--f-font-weight-medium);
-}
-footer ul {
-  list-style: none;
-  margin: 0 0 1rem;
-  padding: 0;
-}
-footer li,
-footer #version button {
-  margin-bottom: 0.5rem;
-}
-footer .anchor {
-  color: var(--fkds-color-text-inverted);
-  font-weight: var(--f-font-weight-normal);
-  text-decoration-color: var(--fkds-color-text-inverted);
-}
-@media (hover: hover) {
-  footer .anchor:hover,
-  footer #version button:hover {
-    color: #1b1e23;
-    text-decoration-color: #1b1e23;
-  }
-}
-footer .footer__left {
-  flex: 0 0 auto;
-}
-footer .footer__center {
-  flex: 1 1 auto;
-}
-footer .footer__right {
-  flex: 0 0 auto;
-}
-footer .version {
-  color: var(--fkds-color-text-inverted);
+.docs-footer .version {
   margin-left: 0;
-}
-footer #version button {
-  appearance: none;
-}
-footer #version button:focus-visible {
-  box-shadow: var(--f-focus-box-shadow);
-  outline: 3px solid transparent;
-}
-@media (hover: hover) {
-  footer #version button:hover {
-    background: transparent;
-    cursor: pointer;
-  }
-}
-footer #version button:active {
-  background: transparent;
-  cursor: pointer;
-}
-footer #version-dialog .list__item {
-  margin: 0;
 }
 
 .support-table .table__row.obsolete {
