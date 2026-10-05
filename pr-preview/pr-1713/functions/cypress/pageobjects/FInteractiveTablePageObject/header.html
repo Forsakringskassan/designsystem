@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FInteractiveTablePageObject: header() method - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../../../assets/docs-9aec07.css"
+            href="../../../../assets/docs-c8f72e.css"
             crossorigin
-            integrity="sha384-/n/3eWREFadEzFSAS7sVU10Ep58tnh/EMz0JB7zbws5cPjzOtRSDpD1QH65993VN"
+            integrity="sha384-nEHLTTuPlcF5mUZzj4u75UdhQ8CQWlDtEHu1JzsU9WTiluY/Mtcmaqc/4/4xS2DE"
             
         />
         <link
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../../search-data-40f979.json"
+    href="../../../../search-data-b00f8c.json"
     as="fetch"
     crossorigin
-    integrity="sha384-cTJxFwZBybAqjI9MNHDbXvhGTWItj9nFaQAH0JL71vLWA60K9fI7u9iXbP5UAeon"
+    integrity="sha384-3U0HGWb80qOeb5mUainil/xu/pW8YRfi4fMIGmGMdgxvBoMTMwHeouLmIBDxj54m"
     id="search-data"
 />
 <script>
@@ -7353,12 +7353,15 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Hämtar en cell i tabellhuvudet för en <a href="../../../../components/table-and-list/table.html">interaktiv tabell</a> (FInteractiveTable).</p>
+                    <div id="content"><p class="docs-paragraph"><code>FInteractiveTablePageObject</code> är deprekerad.
+Migrera tabellen till <code>FTable</code> och använd därefter <code>FTablePageObject.header()</code>.
+Observera att <code>FTablePageObject.header()</code> även räknar kolumner för expanderingsknappar och valbara rader.</p>
+<p class="docs-paragraph">Hämtar en cell i tabellhuvudet för en <a href="../../../../components/table-and-list/table.html">interaktiv tabell</a> (FInteractiveTable).</p>
 <p class="docs-paragraph">Kolumnumreringen är 1-indexerad och varken markören för expanderbara rader eller kryssrutan för valbara rader inkluderas i kolumnnummer.
 Detta innebär att kolumn 1 refererar till första kolumnen som har innehåll.</p>
 <h2 id="syntax" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-7a6a20"
+                    id="example-4d8875"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -7375,7 +7378,7 @@ Detta innebär att kolumn 1 refererar till första kolumnen som har innehåll.</
 <h3 id="returvarde" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#returvarde">Returvärde</a></h3><p class="docs-paragraph"><code>HTMLTableCellElement</code> med en cell från tabellhuvudet beskriven av <code>col</code>.</p>
 <h2 id="exempel" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#exempel">Exempel</a></h2>
                 <div
-                    id="example-2cee74"
+                    id="example-5336df"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -7385,19 +7388,19 @@ Detta innebär att kolumn 1 refererar till första kolumnen som har innehåll.</
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-000878"></div>
+        <div id="example-fb08c5"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FInteractiveTablePageObject-header-000878.js"></script>
+        <script type="module" src="./FInteractiveTablePageObject-header-fb08c5.js"></script>
     
                     </div>
                 </div>
             
                 <div
-                    id="example-e56e74"
+                    id="example-029b11"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7415,7 +7418,7 @@ Detta innebär att kolumn 1 refererar till första kolumnen som har innehåll.</
                 </div>
             
                 <div
-                    id="example-05bfe3"
+                    id="example-9c495c"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7478,9 +7481,9 @@ table.<span class="hljs-title function_">header</span>(<span class="hljs-number"
     </ul>
 </div>
 
-<div class="footer__right"><div class="version"><span class="version-text-block">feat/deprecate-legacy-table-components</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/9834128bc02f219e05a9e1d3794d285100481357">9834128</a>)<br />
+<div class="footer__right"><div class="version"><span class="version-text-block">feat/deprecate-legacy-table-components</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/62628ec7a0bbf18e7c4d10415281aa73449ee116">62628ec</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1713">PR 1713</a><br />
-       <span class="version-text-block">2026-10-01 11:27</span>
+       <span class="version-text-block">2026-10-05 09:29</span>
 </div>
 <div class="toolbar__item">
     <form id="version">
