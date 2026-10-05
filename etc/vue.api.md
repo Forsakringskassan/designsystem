@@ -17,7 +17,6 @@ import { ComponentPublicInstance } from 'vue';
 import { ComputedRef } from 'vue';
 import { DefineComponent } from 'vue';
 import { Directive } from 'vue';
-import { DistributeRef } from '@vue/reactivity';
 import { ExtractPropTypes } from 'vue';
 import { ExtractPublicPropTypes } from 'vue';
 import { FDate } from '@fkui/date';
