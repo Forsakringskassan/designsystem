@@ -4,6 +4,7 @@ import { FInteractiveTablePageObject } from "../../cypress";
 import { FTableColumn } from "../FTableColumn";
 import FInteractiveTable from "./FInteractiveTable.vue";
 
+/* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
 const table = new FInteractiveTablePageObject('[data-test="table-example"]');
 
 const rows = [
