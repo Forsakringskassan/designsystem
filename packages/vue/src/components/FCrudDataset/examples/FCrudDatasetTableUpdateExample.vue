@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { useTemplateRef } from "vue";
 import { type FruitData, fruits } from "./fruit-data";
 import { FCrudDataset, FTable, FTextField, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
 const rows = useDatasetRef(fruits);
-let updateRow: (row: FruitData) => void = (_row: FruitData) => undefined;
+const crud = useTemplateRef("crud");
 const columns = defineTableColumns([
     { type: "text", header: "Namn", key: "name", size: "shrink" },
     { type: "text", header: "Land", key: "origin", size: "shrink" },
@@ -14,15 +15,10 @@ const columns = defineTableColumns([
         text: (row: FruitData) => `Ändra ${row.name}`,
         icon: "pen",
         onClick: (row: FruitData) => {
-            updateRow(row);
+            crud.value?.updateItem(row);
         },
     },
 ]);
-
-function getColumns(updateItem: (row: FruitData) => void) {
-    updateRow = updateItem;
-    return columns;
-}
 
 function saveModel(row: FruitData): void {
     console.log("Post model to backend", row);
@@ -30,9 +26,15 @@ function saveModel(row: FruitData): void {
 </script>
 
 <template>
-    <f-crud-dataset v-model="rows" @created="saveModel" @updated="saveModel" @deleted="saveModel">
-        <template #default="{ updateItem }">
-            <f-table :rows :columns="getColumns(updateItem)">
+    <f-crud-dataset
+        ref="crud"
+        v-model="rows"
+        @created="saveModel"
+        @updated="saveModel"
+        @deleted="saveModel"
+    >
+        <template #default>
+            <f-table :rows :columns>
                 <template #caption> <b>Frukter</b> </template>
             </f-table>
         </template>

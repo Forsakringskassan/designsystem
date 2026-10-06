@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, useTemplateRef } from "vue";
 import { FCrudDataset, FTextField, useDatasetRef } from "@fkui/vue";
 import { type TableColumn, FTable, defineTableColumns } from "@fkui/vue";
 
@@ -9,10 +9,7 @@ interface Row {
     description: string;
 }
 
-type CrudAction = (item: Row) => void;
-
-let updateItemCallback!: CrudAction;
-let deleteItemCallback!: CrudAction;
+const crud = useTemplateRef("crud");
 
 const rows = useDatasetRef<Row>([
     {
@@ -55,26 +52,19 @@ const columns: Array<TableColumn<Row>> = defineTableColumns<Row>([
                 label: "Ändra",
                 icon: "pen",
                 onClick(row) {
-                    updateItemCallback(row);
+                    crud.value?.updateItem(row);
                 },
             },
             {
                 label: "Ta bort",
                 icon: "trashcan",
                 onClick(row) {
-                    deleteItemCallback(row);
+                    crud.value?.deleteItem(row);
                 },
             },
         ],
     },
 ]);
-
-function getColumns(updateItem: CrudAction, deleteItem: CrudAction): Array<TableColumn<Row>> {
-    updateItemCallback = updateItem;
-    deleteItemCallback = deleteItem;
-
-    return columns;
-}
 
 const nextId = ref(4);
 
@@ -94,9 +84,16 @@ function saveModel(row: Row): void {
 </script>
 
 <template>
-    <f-crud-dataset v-model="rows" :before-create @created="saveModel" @updated="saveModel" @deleted="saveModel">
-        <template #default="{ updateItem, deleteItem }">
-            <f-table :rows :columns="getColumns(updateItem, deleteItem)" key-attribute="id">
+    <f-crud-dataset
+        ref="crud"
+        v-model="rows"
+        :before-create
+        @created="saveModel"
+        @updated="saveModel"
+        @deleted="saveModel"
+    >
+        <template #default>
+            <f-table :rows :columns key-attribute="id">
                 <template #caption> Exempeldata </template>
             </f-table>
         </template>

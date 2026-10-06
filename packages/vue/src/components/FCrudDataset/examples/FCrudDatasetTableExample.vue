@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useTemplateRef } from "vue";
 import { type FruitData, fruits } from "./fruit-data";
 import {
     FCrudDataset,
@@ -10,8 +11,7 @@ import {
 } from "@fkui/vue";
 
 const rows = useDatasetRef(fruits, "variant");
-let updateRow: (row: FruitData) => void = (_row: FruitData) => undefined;
-let deleteRow: (row: FruitData) => void = (_row: FruitData) => undefined;
+const crud = useTemplateRef("crud");
 const columns = defineTableColumns([
     { type: "text", header: "Namn", key: "name", size: "shrink" },
     { type: "text", header: "Land", key: "origin", size: "shrink" },
@@ -25,25 +25,19 @@ const columns = defineTableColumns([
                 label: "Ändra",
                 icon: "pen",
                 onClick: (row: FruitData) => {
-                    updateRow(row);
+                    crud.value?.updateItem(row);
                 },
             },
             {
                 label: "Ta bort",
                 icon: "trashcan",
                 onClick: (row: FruitData) => {
-                    deleteRow(row);
+                    crud.value?.deleteItem(row);
                 },
             },
         ],
     },
 ]);
-
-function getColumns(updateItem: (row: FruitData) => void, deleteItem: (row: FruitData) => void) {
-    updateRow = updateItem;
-    deleteRow = deleteItem;
-    return columns;
-}
 
 function saveModel(row: FruitData): void {
     console.log("Post model to backend", row);
@@ -51,9 +45,15 @@ function saveModel(row: FruitData): void {
 </script>
 
 <template>
-    <f-crud-dataset v-model="rows" @created="saveModel" @updated="saveModel" @deleted="saveModel">
-        <template #default="{ updateItem, deleteItem }">
-            <f-table :rows :columns="getColumns(updateItem, deleteItem)" striped>
+    <f-crud-dataset
+        ref="crud"
+        v-model="rows"
+        @created="saveModel"
+        @updated="saveModel"
+        @deleted="saveModel"
+    >
+        <template #default>
+            <f-table :rows :columns striped>
                 <template #caption> <b>Frukter</b> </template>
             </f-table>
         </template>
