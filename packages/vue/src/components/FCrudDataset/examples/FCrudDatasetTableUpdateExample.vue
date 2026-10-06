@@ -1,53 +1,40 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import { type FruitData, fruits } from "./fruit-data";
-import { FCrudDataset, FInteractiveTable, FTableButton, FTableColumn, FTextField } from "@fkui/vue";
+import { FCrudDataset, FTable, FTextField, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
-export default defineComponent({
-    name: "ExampleApp",
-    components: {
-        FCrudDataset,
-        FTextField,
-        FInteractiveTable,
-        FTableButton,
-        FTableColumn,
-    },
-    data() {
-        return {
-            fruits,
-        };
-    },
-    methods: {
-        saveModel(row: FruitData) {
-            console.log("Post model to backend", row);
+const rows = useDatasetRef(fruits);
+let updateRow: (row: FruitData) => void = (_row: FruitData) => undefined;
+const columns = defineTableColumns([
+    { type: "text", header: "Namn", key: "name", size: "shrink" },
+    { type: "text", header: "Land", key: "origin", size: "shrink" },
+    { type: "text", header: "Beskrivning", key: "description" },
+    {
+        type: "button",
+        header: "Åtgärd",
+        text: (row: FruitData) => `Ändra ${row.name}`,
+        icon: "pen",
+        onClick: (row: FruitData) => {
+            updateRow(row);
         },
     },
-});
+]);
+
+function getColumns(updateItem: (row: FruitData) => void) {
+    updateRow = updateItem;
+    return columns;
+}
+
+function saveModel(row: FruitData): void {
+    console.log("Post model to backend", row);
+}
 </script>
 
 <template>
-    <f-crud-dataset v-model="fruits" @created="saveModel" @updated="saveModel" @deleted="saveModel">
+    <f-crud-dataset v-model="rows" @created="saveModel" @updated="saveModel" @deleted="saveModel">
         <template #default="{ updateItem }">
-            <f-interactive-table :rows="fruits" key-attribute="id">
+            <f-table :rows :columns="getColumns(updateItem)">
                 <template #caption> <b>Frukter</b> </template>
-                <template #default="{ row }">
-                    <f-table-column title="Namn" type="text" shrink>
-                        {{ row.name }}
-                    </f-table-column>
-                    <f-table-column title="Land" type="text" shrink>
-                        {{ row.origin }}
-                    </f-table-column>
-                    <f-table-column title="Beskrivning" type="text" expand>
-                        {{ row.description }}
-                    </f-table-column>
-                    <f-table-column title="Åtgärd" shrink type="action">
-                        <f-table-button icon="pen" label @click="updateItem(row)">
-                            Ändra <span class="sr-only"> {{ row.name }} </span>
-                        </f-table-button>
-                    </f-table-column>
-                </template>
-            </f-interactive-table>
+            </f-table>
         </template>
         <template #modify="{ item }">
             <f-text-field

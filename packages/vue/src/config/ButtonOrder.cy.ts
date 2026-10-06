@@ -1,7 +1,11 @@
 import FCrudDatasetTableExample from "../components/FCrudDataset/examples/FCrudDatasetTableExample.vue";
 import FConfirmModalApiExample from "../components/FModal/examples/FConfirmModalApiExample.vue";
 import FFormModalApiExample from "../components/FModal/examples/FFormModalApiExample.vue";
-import { FCrudDatasetPageObject, FModalPageObject } from "../cypress";
+import {
+    FCrudDatasetPageObject,
+    FModalPageObject,
+    FTablePageObject,
+} from "../cypress";
 import { config } from "./config";
 import { FKUIConfigButtonOrder } from "./fkui-config";
 
@@ -60,6 +64,8 @@ describe("FFormModal", () => {
 });
 
 describe("FCrudDataset", () => {
+    const table = new FTablePageObject();
+
     describe("Lägg till", () => {
         describe("LEFT_TO_RIGHT", () => {
             it("should always show buttons left to right", () => {
@@ -97,7 +103,8 @@ describe("FCrudDataset", () => {
             it("should always show buttons left to right", () => {
                 config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
                 cy.mount(FCrudDatasetTableExample);
-                cy.get(".f-icon-pen:nth(0)").click({ force: true }); // eslint-disable-line sonarjs/no-forced-browser-interaction -- technical debt
+                table.cell({ row: 1, col: 5 }).click();
+                table.contextmenuItems().eq(0).click();
                 const modal = new FModalPageObject(".modal");
                 modal
                     .el()
@@ -111,7 +118,8 @@ describe("FCrudDataset", () => {
             it("should ignore button order", () => {
                 config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
                 cy.mount(FCrudDatasetTableExample);
-                cy.get(".f-icon-pen:nth(0)").click({ force: true }); // eslint-disable-line sonarjs/no-forced-browser-interaction -- technical debt
+                table.cell({ row: 1, col: 5 }).click();
+                table.contextmenuItems().eq(0).click();
                 const modal = new FModalPageObject(".modal");
                 modal
                     .el()
@@ -127,7 +135,8 @@ describe("FCrudDataset", () => {
             it("should respect button order", () => {
                 config.buttonOrder = FKUIConfigButtonOrder.LEFT_TO_RIGHT;
                 cy.mount(FCrudDatasetTableExample);
-                cy.get(".f-icon-trashcan:nth(0)").click({ force: true }); // eslint-disable-line sonarjs/no-forced-browser-interaction -- technical debt
+                table.cell({ row: 1, col: 5 }).click();
+                table.contextmenuItems().eq(1).click();
                 const modal = new FModalPageObject(".modal");
                 modal
                     .el()
@@ -141,7 +150,8 @@ describe("FCrudDataset", () => {
             it("should respect button order", () => {
                 config.buttonOrder = FKUIConfigButtonOrder.RIGHT_TO_LEFT;
                 cy.mount(FCrudDatasetTableExample);
-                cy.get(".f-icon-trashcan:nth(0)").click({ force: true }); // eslint-disable-line sonarjs/no-forced-browser-interaction -- technical debt
+                table.cell({ row: 1, col: 5 }).click();
+                table.contextmenuItems().eq(1).click();
                 const modal = new FModalPageObject(".modal");
                 modal
                     .el()
