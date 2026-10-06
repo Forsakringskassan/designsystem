@@ -5,6 +5,10 @@ short-title: header()
 layout: api.method
 ---
 
+`FInteractiveTablePageObject` är deprekerad.
+Migrera tabellen till `FTable` och använd därefter `FTablePageObject.header()`.
+Observera att `FTablePageObject.header()` även räknar kolumner för expanderingsknappar och valbara rader.
+
 Hämtar en cell i tabellhuvudet för en {@link component:FInteractiveTable interaktiv tabell} (FInteractiveTable).
 
 Kolumnumreringen är 1-indexerad och varken markören för expanderbara rader eller kryssrutan för valbara rader inkluderas i kolumnnummer.

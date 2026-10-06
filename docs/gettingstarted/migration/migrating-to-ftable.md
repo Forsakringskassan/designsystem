@@ -72,6 +72,8 @@ Det innebär i praktiken:
 Om tabellen tidigare såg ut så här:
 
 ```html static
+<!-- [html-validate-disable-block deprecated -- migration guide] -->
+<!-- cut above -->
 <f-interactive-table :rows>
     <template #caption> Tabellrubrik </template>
 
@@ -123,7 +125,7 @@ Om du behöver styra läsning eller skrivning på ett annat sätt finns det stö
 
 Läs mer i dokumentationen om {@link code#mappa_data_till_kolumner Mappa data till kolumner}.
 
-## Formattering flyttas in i kolumntypen
+## Formatering flyttas in i kolumntypen
 
 Om du tidigare definierade datum i template:
 
@@ -200,6 +202,7 @@ Läs mer i dokumentationen om {@link validators validatorer}.
 I `FInteractiveTable` användes `expandable-attribute` för att ange vilket attribut som innehöll expanderbart innehåll.
 
 ```html static
+<!-- [html-validate-disable-block deprecated -- migration guide] -->
 <f-interactive-table
     :rows
     key-attribute="id"
