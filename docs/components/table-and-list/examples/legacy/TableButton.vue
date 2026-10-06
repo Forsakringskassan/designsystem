@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { FIcon, FInteractiveTable, FTableColumn } from "@fkui/vue";
+import { FInteractiveTable, FTableButton, FTableColumn } from "@fkui/vue";
 import rows from "./table-data";
+
+function modifyRow(_item: unknown): void {
+    /* do nothing */
+}
 </script>
 
 <template>
     <!-- cut above -->
+    <!-- [html-validate-disable-block deprecated -- legacy table documentation] -->
     <f-interactive-table :rows>
         <template #caption> Tabell exempel </template>
         <template #default="{ row }">
@@ -17,13 +22,10 @@ import rows from "./table-data";
             <f-table-column title="Kolumn C" type="text">
                 {{ row.baz }}
             </f-table-column>
-            <f-table-column title="Länk" type="action" shrink>
-                <a class="anchor table__anchor" href="#" target="_blank">
-                    Öppna dokument
-                    <span class="sr-only">{{ row.id }}</span>
-                    <f-icon name="new-window"></f-icon>
-                    <span class="sr-only">öppnas i ny flik</span>
-                </a>
+            <f-table-column title="Åtgärder" type="action" shrink>
+                <f-table-button icon="pen" @click="modifyRow(row)">
+                    Redigera rad {{ row.id }}
+                </f-table-button>
             </f-table-column>
         </template>
     </f-interactive-table>

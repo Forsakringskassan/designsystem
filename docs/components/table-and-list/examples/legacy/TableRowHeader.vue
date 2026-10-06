@@ -9,6 +9,7 @@ const rows = [
 </script>
 
 <template>
+    <!-- [html-validate-disable-block deprecated -- legacy table documentation] -->
     <f-data-table :rows>
         <template #caption> <span class="sr-only">Tabell</span> </template>
         <template #default="{ row }">
