@@ -1,26 +1,32 @@
 <script setup lang="ts">
-import { persons } from "./pagination-data";
-import { FDataTable, FPaginateDataset, FPaginator, FTableColumn } from "@fkui/vue";
+import { type Dataset } from "../../../utils";
+import { type PersonData, persons } from "./pagination-data";
+import {
+    FPaginateDataset,
+    FPaginator,
+    FTable,
+    defineTableColumns,
+    toDataset,
+    useDatasetRef,
+} from "@fkui/vue";
 
-async function fetchData(first: number, last: number) {
+const rows = useDatasetRef<PersonData>(persons);
+const columns = defineTableColumns<PersonData>([
+    { type: "text:number", decimals: 0, header: "ID", key: "id" },
+    { type: "text", header: "Name", key: "name" },
+]);
+
+async function fetchData(first: number, last: number): Promise<Dataset<PersonData>> {
     await new Promise((resolve) => setTimeout(resolve, 0));
-    return persons.slice(first, last);
+    return toDataset(persons.slice(first, last), rows.value);
 }
 </script>
 <template>
     <f-paginate-dataset :items-length="persons.length" :items-per-page="10" :fetch-data>
         <template #default="{ items: currentPageItems, currentPage, numberOfPages }">
-            <f-data-table :rows="currentPageItems">
+            <f-table :rows="currentPageItems" :columns>
                 <template #caption>Persons</template>
-                <template #default="{ row }">
-                    <f-table-column title="ID" type="numeric">
-                        {{ row.id }}
-                    </f-table-column>
-                    <f-table-column title="Name" type="text">
-                        {{ row.name }}
-                    </f-table-column>
-                </template>
-            </f-data-table>
+            </f-table>
             <f-paginator :current-page :number-of-pages :number-of-pages-to-show="9" />
         </template>
     </f-paginate-dataset>

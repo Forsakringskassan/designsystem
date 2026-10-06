@@ -1,50 +1,34 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FDataTable, FTableColumn } from "@fkui/vue";
+<script setup lang="ts">
+import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
-export default defineComponent({
-    components: { FDataTable, FTableColumn },
-    data() {
-        return {
-            selectedItems: [],
-            items: [
-                { id: "1", date: "2022-02-01", amount: "2 300" },
-                { id: "2", date: "2024-04-20", amount: "5 250" },
-                { id: "3", date: "2024-05-01", amount: "2 100" },
-            ],
-        };
-    },
-});
+interface Row {
+    id: string;
+    date: string;
+    amount: string;
+}
+
+const rows = useDatasetRef<Row>([
+    { id: "1", date: "2022-02-01", amount: "2 300" },
+    { id: "2", date: "2024-04-20", amount: "5 250" },
+    { id: "3", date: "2024-05-01", amount: "2 100" },
+]);
+const columns = defineTableColumns<Row>([
+    { type: "text:date", header: "Datum", key: "date" },
+    { type: "text:number", header: "Belopp", key: "amount" },
+]);
 </script>
 
 <template>
     <div class="row">
         <div class="col col--md-6 density-default">
-            <f-data-table :rows="items" key-attribute="id">
+            <f-table :rows :columns>
                 <template #caption> Tabell med standard densitet </template>
-                <template #default="{ row }">
-                    <f-table-column title="Datum" type="text">
-                        {{ row.date }}
-                    </f-table-column>
-                    <f-table-column title="Belopp" type="numeric">
-                        {{ row.amount }}
-                    </f-table-column>
-                </template>
-            </f-data-table>
+            </f-table>
         </div>
         <div class="col col--md-6 density-dense">
-            <f-data-table :rows="items" key-attribute="id">
+            <f-table :rows :columns>
                 <template #caption> Tabell med kompakt densitet </template>
-                <template #default="{ row }">
-                    <f-table-column title="Datum" type="text">
-                        {{ row.date }}
-                    </f-table-column>
-                    <f-table-column title="Belopp" type="numeric">
-                        {{ row.amount }}
-                    </f-table-column>
-                </template>
-            </f-data-table>
+            </f-table>
         </div>
     </div>
 </template>

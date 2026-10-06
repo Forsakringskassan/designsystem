@@ -16,6 +16,7 @@ const Viewport = {
 const sortFilterDataset = new FSortFilterDatasetPageObject(
     '[data-test="sort-filter-dataset-example"]',
 );
+/* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
 const table = new FInteractiveTablePageObject(
     '[data-test="sort-filter-dataset-example"]',
 );
