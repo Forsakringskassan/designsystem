@@ -9,6 +9,7 @@ function modifyRow(_item: unknown): void {
 
 <template>
     <!-- cut above -->
+    <!-- [html-validate-disable-block deprecated -- legacy table documentation] -->
     <f-interactive-table :rows>
         <template #caption> Tabell exempel </template>
         <template #default="{ row }">
@@ -22,8 +23,8 @@ function modifyRow(_item: unknown): void {
                 {{ row.baz }}
             </f-table-column>
             <f-table-column title="Åtgärder" type="action" shrink>
-                <f-table-button icon="pen" @click="modifyRow(row)">
-                    Redigera rad {{ row.id }}
+                <f-table-button icon="pen" label @click="modifyRow(row)">
+                    Redigera <span class="sr-only">rad {{ row.id }}</span>
                 </f-table-button>
             </f-table-column>
         </template>

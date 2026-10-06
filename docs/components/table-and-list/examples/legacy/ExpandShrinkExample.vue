@@ -39,6 +39,7 @@ const template = computed(() => {
 </script>
 
 <template>
+    <!-- [html-validate-disable-block deprecated -- legacy table documentation] -->
     <live-example :template :components :livedata>
         <f-select-field v-model="a">
             <template #label> Kolumn A </template>
