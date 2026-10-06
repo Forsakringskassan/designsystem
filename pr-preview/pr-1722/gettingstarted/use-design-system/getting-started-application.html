@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-440911.json"
+    href="../../search-data-e28260.json"
     as="fetch"
     crossorigin
-    integrity="sha384-grAI2Tq7t+RAbiPEgG9stvti0ASwVZhTPFzE2qSSKmS0e8hdUL1bOgHFY5fctcjp"
+    integrity="sha384-UpGR7xT9FKcfDBYfFl3OjfvHGL+8//hX23QpD96itjg7T20aI/vqSXFbWBmGsW+g"
     id="search-data"
 />
 <script>
@@ -6240,14 +6240,14 @@ Du behöver sedan referera till filen i assets-katalogen för varje sida.</p>
 </code></pre>
                 </div>
             <h3 id="eget_tema" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#eget_tema">Eget tema</a></h3><p class="docs-paragraph">Utgå från standardtemat och skriv över de variabler som ska ändras.</p>
-<h3 id="legacy_palett" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#legacy_palett">Legacy-palett</a></h3><p class="docs-paragraph">Om din applikation inte är redo för den nya färgpaletten i <code>@fkui/theme-default</code> kan du använda legacy-paletten.
+<h3 id="gamla_fargpaletten" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#gamla_fargpaletten">Gamla färgpaletten</a></h3><p class="docs-paragraph">Om din applikation inte är redo för den nya färgpaletten i <code>@fkui/theme-default</code> kan du istället använda den gamla färgpaletten (<code>legacy-palette</code>).
 Den skriver över temats färgvariabler med färgerna från den tidigare färgpaletten.
+<code>legacy-palette</code> måste importeras efter temat.
 Övriga variabler i temat påverkas inte.</p>
-<p class="docs-paragraph">Legacy-paletten måste importeras efter temat.</p>
-<h4 id="legacy_palett_med_sass" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#legacy_palett_med_sass">Legacy-palett med Sass</a></h4><p class="docs-paragraph">För att applicera legacy-paletten på <code>:root</code>:</p>
+<h4 id="gamla_fargpaletten_med_sass" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#gamla_fargpaletten_med_sass">Gamla färgpaletten med Sass</a></h4><p class="docs-paragraph">För att applicera den gamla färgpaletten på <code>:root</code>:</p>
 
                 <div
-                    id="example-41b82e"
+                    id="example-aec8c0"
                     class="code-preview code-preview--default"
                     
                     
@@ -6259,10 +6259,10 @@ Den skriver över temats färgvariabler med färgerna från den tidigare färgpa
  @use &quot;@fkui/design&quot;;
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Om du applicerar temat på en selektor med <code>$global: false</code> behöver du också sätta <code>$global: false</code> för legacy-paletten och inkludera den efter temat:</p>
+            <p class="docs-paragraph">Om du applicerar temat på en selektor med <code>$global: false</code> behöver du också sätta <code>$global: false</code> för <code>legacy-palette</code> och inkludera den efter temat:</p>
 
                 <div
-                    id="example-2ee3ea"
+                    id="example-5b2dc8"
                     class="code-preview code-preview--default"
                     
                     
@@ -6284,7 +6284,7 @@ Den skriver över temats färgvariabler med färgerna från den tidigare färgpa
 <span class="hljs-addition">+}</span>
 </code></pre>
                 </div>
-            <h4 id="legacy_palett_med_css" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#legacy_palett_med_css">Legacy-palett med CSS</a></h4><p class="docs-paragraph">Om din applikation inte använder Sass finns legacy-paletten som förkompilerade CSS-filer i <code>@fkui/theme-default/dist</code>:</p>
+            <h4 id="gamla_fargpaletten_med_css" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#gamla_fargpaletten_med_css">Gamla färgpaletten med CSS</a></h4><p class="docs-paragraph">Om din applikation inte använder Sass finns den gamla färgpaletten som förkompilerade CSS-filer i <code>@fkui/theme-default/dist</code>:</p>
 <ul>
 <li><code>legacy-palette-light.css</code></li>
 <li><code>legacy-palette-dark.css</code></li>
@@ -6293,7 +6293,7 @@ Den skriver över temats färgvariabler med färgerna från den tidigare färgpa
 <p class="docs-paragraph">Placera filen i din assets-katalog och referera till den efter <code>fkui.min.css</code>:</p>
 
                 <div
-                    id="example-3fa1e4"
+                    id="example-9e5779"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -6307,7 +6307,7 @@ Den skriver över temats färgvariabler med färgerna från den tidigare färgpa
             <p class="docs-paragraph">Om du importerar styling till javascript:</p>
 
                 <div
-                    id="example-aa78be"
+                    id="example-92b49e"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile"
@@ -6325,7 +6325,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 <p class="docs-paragraph">Importera ikonbiblioteket genom att lägga nedan i applikationens index.ts eller motsvarande:</p>
 
                 <div
-                    id="example-9e266d"
+                    id="example-1cbab7"
                     class="code-preview code-preview--default"
                     
                     
@@ -6341,7 +6341,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 Importera den genom:</p>
 
                 <div
-                    id="example-2f802c"
+                    id="example-da37d6"
                     class="code-preview code-preview--default"
                     
                     
@@ -6424,9 +6424,9 @@ Du bygger då ett nytt ikonbibliotek.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">legacy-palette</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/5120ac2d206f6b98f1103751b93ce7cc00002317">5120ac2</a>)<br />
+<div class="version"><span class="version-text-block">legacy-palette</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/3b454a500be45e220741812131b5eaf7db9535ce">3b454a5</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1722">PR 1722</a><br />
-       <span class="version-text-block">2026-10-06 10:02</span>
+       <span class="version-text-block">2026-10-06 12:20</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
