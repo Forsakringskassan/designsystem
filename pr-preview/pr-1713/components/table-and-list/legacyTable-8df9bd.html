@@ -33,10 +33,10 @@
         <!-- prettier-ignore -->
         <link
     rel="preload"
-    href="../../search-data-b00f8c.json"
+    href="../../search-data-193ddf.json"
     as="fetch"
     crossorigin
-    integrity="sha384-3U0HGWb80qOeb5mUainil/xu/pW8YRfi4fMIGmGMdgxvBoMTMwHeouLmIBDxj54m"
+    integrity="sha384-ObiUbSRbPU3JvVWApx2x/1TdQne1+C8m4NxS6aHIp4+6cq8XNWU8Q8sIhDdYET7V"
     id="search-data"
 />
 <script>
@@ -123,7 +123,15 @@
             crossorigin
             integrity="sha384-VcXXCVWs406KSWK5pJAjyOVdBpbqnlT4dn4xLifE5VtvbvG+b095DRbl/s6bYa7h"
             
-        ></script> <f-table-column title="My title" v-format:text="getText(row)"></f-table-column>
+        ></script> <!-- [html-validate-disable-block deprecated -- legacy component documentation] -->
+<f-data-table :rows>
+    <template #caption> Tabell exempel </template>
+    <template #default="{ row }">
+        <f-table-column title="Kolumnrubrik" type="text">
+            {{ row.value }}
+        </f-table-column>
+    </template>
+</f-data-table>
 
     </body>
 </html>

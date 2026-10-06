@@ -2194,7 +2194,7 @@
       ]
     },
     {
-      "url": "components/table-and-list/table.html",
+      "url": "components/table-and-list/legacytable.html",
       "title": "Datatabell och interaktiv tabell",
       "terms": [
         "FDataTable",
