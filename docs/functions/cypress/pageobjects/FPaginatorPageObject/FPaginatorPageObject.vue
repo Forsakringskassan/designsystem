@@ -37,6 +37,7 @@ const rows: Row[] = [
     <f-paginate-dataset :items="rows" :items-per-page="1">
         <template #default="{ items: currentPageItems, currentPage, numberOfPages }">
             <!-- cut begin -->
+            <!-- [html-validate-disable-block deprecated -- page-object documentation] -->
             <f-interactive-table :rows="currentPageItems">
                 <template #caption> Tabell </template>
                 <template #default="{ row }">
