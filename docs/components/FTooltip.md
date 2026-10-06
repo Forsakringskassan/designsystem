@@ -74,7 +74,7 @@ const heading = useTemplateRef("heading");
     <div ref="heading">
         <h2>En rubrik</h2>
     </div>
-    <f-tooltip attach-to="heading" screen-reader-text="Skärmläsartext">
+    <f-tooltip :attach-to="heading" screen-reader-text="Skärmläsartext">
         <template #body> Lorem ipsum dolor sit amet. </template>
     </f-tooltip>
 </template>
