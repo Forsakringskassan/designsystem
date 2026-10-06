@@ -215,7 +215,7 @@ Buggfixar, se {@link changelog Changelog}
 2025-11-25
 
 Komponenten {@link FExpandablePanel expanderbar panel} har fått ny design och semantiska färgvariabler.
-{@link table#valja_rader Interaktiv tabell} har nu stöd för radioknappar (att välja en rad).  
+{@link legacyTable#valja_rader Interaktiv tabell} har nu stöd för radioknappar (att välja en rad).  
 Buggfixar, se {@link changelog#v6-28-0 Changelog}
 
 ## Version 6.27.0
@@ -322,7 +322,7 @@ Tabellen behåller nu sorteringen på den kolumn som användaren har valt efter 
 ### Vertikal skroll i tabell
 
 Tabell har inte längre stöd för vertikal skroll då det har fungerat bristfälligt.
-Påverkar komponenterna {@link table#interaktiv_tabell interaktiv tabell} (FInteractiveTable) och {@link table#datatabell datatabell} (FDatatable).
+Påverkar komponenterna {@link legacyTable#interaktiv_tabell interaktiv tabell} (FInteractiveTable) och {@link legacyTable#datatabell datatabell} (FDatatable).
 `TableScroll.VERTICAL` och `TableScroll.BOTH` är deprekerade och bör ej användas.
 
 ### Åtgärdsknappar i tabell
@@ -472,7 +472,7 @@ Fältens standardetikett är visuellt dolda och ersätts av tabellrubriken för 
 Vid fältvalidering visas felmeddelande i en tooltip när fältet har fokus.
 Utöver inmatningsfält har datumväljare och dropplista stöd för att användas i tabell.
 
-{@link table#inmatning_i_tabell Läs mer om inmatning i tabell }
+{@link legacyTable#inmatning_i_tabell Läs mer om inmatning i tabell }
 
 ### Internt tema byter namn
 
@@ -497,7 +497,7 @@ Detta är ett steg mot att framöver lägga till stöd för att kunna bygga desk
 
 ### Expanderbara rader i tabeller
 
-{@link table#interaktiv_tabell Interaktiva tabeller } kan ha expanderbara rader för att visa ytterligare rader eller valfritt innehåll.
+{@link legacyTable#interaktiv_tabell Interaktiva tabeller } kan ha expanderbara rader för att visa ytterligare rader eller valfritt innehåll.
 
 ## Version 5.15.0
 
