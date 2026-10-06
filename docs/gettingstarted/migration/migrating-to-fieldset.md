@@ -1,5 +1,6 @@
 ---
 title: Fieldset migreringsguide
+short-title: Fieldset
 name: migrating-to-fieldset
 layout: article
 ---
