@@ -866,6 +866,7 @@ describe("html-validate", () => {
     it("should require `key-attribute` to be non-empty if used", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
+            <!-- [html-validate-disable-next deprecated -- validating legacy component rules] -->
             <f-interactive-table rows key-attribute="">
                 <template #caption> lorem ipsum </template>
                 <template #default> </template>
@@ -874,11 +875,12 @@ describe("html-validate", () => {
         await expect(markup).toMatchInlineCodeframe(`
           "error: Attribute "key-attribute" has invalid value "" (attribute-allowed-values)
             1 |
-          > 2 |             <f-interactive-table rows key-attribute="">
+            2 |             <!-- [html-validate-disable-next deprecated -- validating legacy component rules] -->
+          > 3 |             <f-interactive-table rows key-attribute="">
               |                                       ^^^^^^^^^^^^^
-            3 |                 <template #caption> lorem ipsum </template>
-            4 |                 <template #default> </template>
-            5 |             </f-interactive-table>
+            4 |                 <template #caption> lorem ipsum </template>
+            5 |                 <template #default> </template>
+            6 |             </f-interactive-table>
           Selector: f-interactive-table"
         `);
     });
@@ -886,6 +888,7 @@ describe("html-validate", () => {
     it("should require row attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
+            <!-- [html-validate-disable-next deprecated -- validating legacy component rules] -->
             <f-interactive-table>
                 <template #caption> lorem ipsum </template>
                 <template #default> </template>
@@ -894,11 +897,12 @@ describe("html-validate", () => {
         await expect(markup).toMatchInlineCodeframe(`
           "error: <f-interactive-table> is missing required "rows" attribute (element-required-attributes)
             1 |
-          > 2 |             <f-interactive-table>
+            2 |             <!-- [html-validate-disable-next deprecated -- validating legacy component rules] -->
+          > 3 |             <f-interactive-table>
               |              ^^^^^^^^^^^^^^^^^^^
-            3 |                 <template #caption> lorem ipsum </template>
-            4 |                 <template #default> </template>
-            5 |             </f-interactive-table>
+            4 |                 <template #caption> lorem ipsum </template>
+            5 |                 <template #default> </template>
+            6 |             </f-interactive-table>
           Selector: f-interactive-table"
         `);
     });
@@ -906,6 +910,7 @@ describe("html-validate", () => {
     it("should require caption slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
+            <!-- [html-validate-disable-next deprecated -- validating legacy component rules] -->
             <f-interactive-table rows>
                 <template #default> </template>
             </f-interactive-table>
@@ -913,11 +918,12 @@ describe("html-validate", () => {
         await expect(markup).toMatchInlineCodeframe(`
           "error: <f-interactive-table> component requires slot "caption" to be implemented (vue/required-slots)
             1 |
-          > 2 |             <f-interactive-table rows>
+            2 |             <!-- [html-validate-disable-next deprecated -- validating legacy component rules] -->
+          > 3 |             <f-interactive-table rows>
               |              ^^^^^^^^^^^^^^^^^^^
-            3 |                 <template #default> </template>
-            4 |             </f-interactive-table>
-            5 |
+            4 |                 <template #default> </template>
+            5 |             </f-interactive-table>
+            6 |
           Selector: f-interactive-table"
         `);
     });
@@ -925,6 +931,7 @@ describe("html-validate", () => {
     it("should require default slot", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
+            <!-- [html-validate-disable-next deprecated -- validating legacy component rules] -->
             <f-interactive-table rows>
                 <template #caption> lorem ipsum </template>
             </f-interactive-table>
@@ -932,11 +939,32 @@ describe("html-validate", () => {
         await expect(markup).toMatchInlineCodeframe(`
           "error: <f-interactive-table> component requires slot "default" to be implemented (vue/required-slots)
             1 |
+            2 |             <!-- [html-validate-disable-next deprecated -- validating legacy component rules] -->
+          > 3 |             <f-interactive-table rows>
+              |              ^^^^^^^^^^^^^^^^^^^
+            4 |                 <template #caption> lorem ipsum </template>
+            5 |             </f-interactive-table>
+            6 |
+          Selector: f-interactive-table"
+        `);
+    });
+
+    it("should be deprecated", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-interactive-table rows>
+                <template #caption> lorem ipsum </template>
+                <template #default> </template>
+            </f-interactive-table>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-interactive-table> is deprecated: use <f-table> instead (deprecated)
+            1 |
           > 2 |             <f-interactive-table rows>
               |              ^^^^^^^^^^^^^^^^^^^
             3 |                 <template #caption> lorem ipsum </template>
-            4 |             </f-interactive-table>
-            5 |
+            4 |                 <template #default> </template>
+            5 |             </f-interactive-table>
           Selector: f-interactive-table"
         `);
     });
