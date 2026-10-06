@@ -1,7 +1,4 @@
-import {
-    FDetailsPanelPageObject,
-    FInteractiveTablePageObject,
-} from "../../../cypress";
+import { FDetailsPanelPageObject, FTablePageObject } from "../../../cypress";
 import FDetailsPanelExample from "./FDetailsPanelEdit.vue";
 
 class CustomPanelPageObject extends FDetailsPanelPageObject {
@@ -35,7 +32,7 @@ class CustomPanelPageObject extends FDetailsPanelPageObject {
     }
 }
 
-const table = new FInteractiveTablePageObject("table");
+const table = new FTablePageObject();
 const panel = CustomPanelPageObject.fromName("edit-panel");
 
 beforeEach(() => {
@@ -45,7 +42,7 @@ beforeEach(() => {
 it("should open and close details panel", () => {
     cy.mount(FDetailsPanelExample);
     panel.el().should("not.exist");
-    table.cell({ row: 2, col: 1 }).click();
+    table.cell({ row: 2, col: 5 }).click();
     panel.el().should("exist");
     panel.closeButton().click();
     panel.el().should("not.exist");
@@ -57,7 +54,7 @@ it("should save edited row", () => {
     table.cell({ row: 2, col: 2 }).should("contain.text", "Text22");
     table.cell({ row: 2, col: 3 }).should("contain.text", "Text23");
     table.cell({ row: 2, col: 4 }).should("contain.text", "Text24");
-    table.cell({ row: 2, col: 1 }).click();
+    table.cell({ row: 2, col: 5 }).click();
     panel.el().should("exist");
     panel.input1().type("{selectall}{del}Lorem");
     panel.input2().type("{selectall}{del}ipsum");
@@ -77,7 +74,7 @@ it("should retain original object when cancellng", () => {
     table.cell({ row: 2, col: 2 }).should("contain.text", "Text22");
     table.cell({ row: 2, col: 3 }).should("contain.text", "Text23");
     table.cell({ row: 2, col: 4 }).should("contain.text", "Text24");
-    table.cell({ row: 2, col: 1 }).click();
+    table.cell({ row: 2, col: 5 }).click();
     panel.el().should("exist");
     panel.input1().type("{selectall}{del}Lorem");
     panel.input2().type("{selectall}{del}ipsum");

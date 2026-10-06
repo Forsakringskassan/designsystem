@@ -1,26 +1,19 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
-import { fruits } from "./fruit-data";
-import { FInteractiveTable, FSortFilterDataset, FTableColumn } from "@fkui/vue";
+<script setup lang="ts">
+import { type FruitData, fruits } from "../../FCrudDataset/examples/fruit-data";
+import { FSortFilterDataset, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
-export default defineComponent({
-    components: { FSortFilterDataset, FInteractiveTable, FTableColumn },
-    data() {
-        return {
-            sortableAttributes: {
-                name: "Namn",
-                origin: "Land",
-            },
-            fruits,
-        };
-    },
-});
+const rows = useDatasetRef([...fruits]);
+const columns = defineTableColumns<FruitData>([
+    { type: "text", header: "Namn", key: "name", size: "shrink" },
+    { type: "text", header: "Land", key: "origin", size: "shrink" },
+    { type: "text", header: "Beskrivning", key: "description" },
+]);
+const sortableAttributes = { name: "Namn", origin: "Land" };
 </script>
 
 <template>
     <f-sort-filter-dataset
-        :data="fruits"
+        :data="rows"
         default-sort-attribute="name"
         :default-sort-ascending="true"
         :sortable-attributes
@@ -29,22 +22,9 @@ export default defineComponent({
             <h3 :class="slotClass">Frukter</h3>
         </template>
         <template #default="{ sortFilterResult }">
-            <f-interactive-table :rows="sortFilterResult" striped key-attribute="id">
-                <template #caption>
-                    <span class="sr-only"> Frukter </span>
-                </template>
-                <template #default="{ row }">
-                    <f-table-column name="name" title="Namn" type="text" shrink>
-                        {{ row.name }}
-                    </f-table-column>
-                    <f-table-column name="origin" title="Land" type="text" shrink>
-                        {{ row.origin }}
-                    </f-table-column>
-                    <f-table-column name="description" title="Beskrivning" type="text" expand>
-                        {{ row.description }}
-                    </f-table-column>
-                </template>
-            </f-interactive-table>
+            <f-table :rows="sortFilterResult" :columns striped>
+                <template #caption><span class="sr-only"> Frukter </span></template>
+            </f-table>
         </template>
     </f-sort-filter-dataset>
 </template>
