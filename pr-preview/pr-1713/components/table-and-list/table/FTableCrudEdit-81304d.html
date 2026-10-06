@@ -1,22 +1,22 @@
 <!doctype html>
-<html lang="sv" class="layout--example" data-root-url="../..">
+<html lang="sv" class="layout--example" data-root-url="../../..">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>FCrudButton migreringsguide - FK Designsystem</title>
+        <title>Redigera innehåll i tabell (kod) - FK Designsystem</title>
 
         <!-- prettier-ignore -->
         <link
             rel="stylesheet"
-            href="../../assets/docs-c8f72e.css"
+            href="../../../assets/docs-8c489a.css"
             crossorigin
-            integrity="sha384-nEHLTTuPlcF5mUZzj4u75UdhQ8CQWlDtEHu1JzsU9WTiluY/Mtcmaqc/4/4xS2DE"
+            integrity="sha384-htFyNGJC71FcYize0rIX5QsFMf0j4m2KC0zt4Xagaw8B8vA3LxK1vVQMRxusP3p3"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-e66b1e.css"
+            href="../../../assets/docs-fkui-e66b1e.css"
             crossorigin
             integrity="sha384-LcDXiwfq/KWp2fDc62CfeI7oSjeTkx+SIxn9ZR0PJQ9tufyZF0VKkWCraXjrYKTr"
             
@@ -24,7 +24,7 @@
 
         <!-- prettier-ignore -->
         <script
-            src="../../assets/bootstrap-b9aefb.js"
+            src="../../../assets/bootstrap-b9aefb.js"
             crossorigin
             integrity="sha384-F/7dWMNnyjtxV9ZLu4kMSJ74pLIaxPZbcRbfScnz4R6GvgvC5pM7UbjffD/AoRWL"
             
@@ -33,7 +33,7 @@
         <!-- prettier-ignore -->
         <link
     rel="preload"
-    href="../../search-data-b00f8c.json"
+    href="../../../search-data-b00f8c.json"
     as="fetch"
     crossorigin
     integrity="sha384-3U0HGWb80qOeb5mUainil/xu/pW8YRfi4fMIGmGMdgxvBoMTMwHeouLmIBDxj54m"
@@ -79,57 +79,58 @@
     </head>
     <body>
         <!-- prettier-ignore -->
-        <script src="../../assets/vendor-vue-f8f1bb.js"></script>
-        <script src="../../assets/vendor-fkui-vue-selectors-91ece2.js"></script>
-        <script src="../../assets/vendor-fkui-logic-8cd34b.js"></script>
-        <script src="../../assets/vendor-fkui-date-756ff1.js"></script>
-        <script src="../../assets/vendor-fkui-vue-0d24cd.js"></script>
-        <script src="../../assets/vendor-fkui-vue-labs-59db36.js"></script>
-        <script src="../../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js"></script>
+        <script src="../../../assets/vendor-vue-f8f1bb.js"></script>
+        <script src="../../../assets/vendor-fkui-vue-selectors-91ece2.js"></script>
+        <script src="../../../assets/vendor-fkui-logic-8cd34b.js"></script>
+        <script src="../../../assets/vendor-fkui-date-756ff1.js"></script>
+        <script src="../../../assets/vendor-fkui-vue-103b6b.js"></script>
+        <script src="../../../assets/vendor-fkui-vue-labs-59db36.js"></script>
+        <script src="../../../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js"></script>
 
         <!-- prettier-ignore --><!-- prettier-ignore -->
         <script
-            src="../../assets/processors_search_search-c6b9b3.js"
+            src="../../../assets/processors_search_search-c6b9b3.js"
             crossorigin
             integrity="sha384-TlvngLo2PgHl4aWDT6Z1L5rTk1ieEEShW8ykV10/SzsxE02HvOCtdZMt5deuYok7"
             
         ></script>
         <script
-            src="../../assets/processors_motd_index-cda4cc.js"
+            src="../../../assets/processors_motd_index-cda4cc.js"
             crossorigin
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script>
         <script
-            src="../../assets/processors_selectable-version_select-version-b5abd1.js"
+            src="../../../assets/processors_selectable-version_select-version-1cbd71.js"
             crossorigin
-            integrity="sha384-rm7EOCfxYY1uVkhZD/Kr8tkv1BerzReQOJNAjRD5HFBVoqi4QKgDcWE4paWAn5W+"
+            integrity="sha384-UoU51gv8jnZvlveMRoxmPBmGkExxiCUGkBqvj/+1F/rQ/Ykef4B3fpk8hoHl7tmL"
             
         ></script>
         <script
-            src="../../assets/processors_cookie_cookie-efa23b.js"
+            src="../../../assets/processors_cookie_cookie-efa23b.js"
             crossorigin
             integrity="sha384-tVCPgyHrw9QQDcAlHqPg4Kp0bEoCdZDJ17PfDW2CxedfOn3IvSDI/FJUCnY/WxiK"
             
         ></script>
         <script
-            src="../../assets/runtime-e09c13.js"
+            src="../../../assets/runtime-e09c13.js"
             crossorigin
             integrity="sha384-FYAcZYo6w9hJ3JOs9umYgkszdILd0NVT7S7swTZWm/1CPMJLCjeCMNWcgps4/7rw"
             
         ></script>
         <script
-            src="../../assets/main-2a697b.js"
+            src="../../../assets/main-2a697b.js"
             crossorigin
             integrity="sha384-VcXXCVWs406KSWK5pJAjyOVdBpbqnlT4dn4xLifE5VtvbvG+b095DRbl/s6bYa7h"
             
-        ></script> <f-crud-dataset v-model="rows">
-    <template #default="{ updateItem, deleteItem }">
-        <f-table :rows :columns="getColumns(updateItem, deleteItem)">
-            <template #caption> Tabell </template>
-        </f-table>
-    </template>
-</f-crud-dataset>
-
+        ></script> 
+        <div id="example-81304d"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FTableCrudEdit-81304d.js"></script>
+    
     </body>
 </html>

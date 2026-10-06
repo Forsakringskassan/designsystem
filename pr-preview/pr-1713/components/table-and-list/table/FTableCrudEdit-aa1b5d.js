@@ -28,8 +28,9 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableCrudEdit.vue:FTableCrudEdit-9bebf3.js
+// virtual-entry:virtual:packages/vue/src/components/FTable/docs/FTableCrudEdit.vue:FTableCrudEdit-aa1b5d.js
 import { defineComponent as _defineComponent } from "vue";
+import { useTemplateRef } from "vue";
 import {
   FCrudDataset,
   FCurrencyTextField,
@@ -55,8 +56,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
       "Sverige",
       "Sydafrika"
     ];
-    let updateItemCallback;
-    let deleteItemCallback;
+    const crud = useTemplateRef("crud");
     const columns = defineTableColumns([
       {
         type: "text",
@@ -84,24 +84,19 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
             label: "\xC4ndra",
             icon: "pen",
             onClick(row) {
-              updateItemCallback(row);
+              crud.value?.updateItem(row);
             }
           },
           {
             label: "Ta bort",
             icon: "trashcan",
             onClick(row) {
-              deleteItemCallback(row);
+              crud.value?.deleteItem(row);
             }
           }
         ]
       }
     ]);
-    function getColumns(updateItem, deleteItem) {
-      updateItemCallback = updateItem;
-      deleteItemCallback = deleteItem;
-      return columns;
-    }
     const rows = useDatasetRef([
       {
         namn: "Apelsin",
@@ -119,15 +114,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
         pris: 22
       }
     ]);
-    const __returned__ = { lander, get updateItemCallback() {
-      return updateItemCallback;
-    }, set updateItemCallback(v) {
-      updateItemCallback = v;
-    }, get deleteItemCallback() {
-      return deleteItemCallback;
-    }, set deleteItemCallback(v) {
-      deleteItemCallback = v;
-    }, columns, getColumns, rows, get FCrudDataset() {
+    const __returned__ = { lander, crud, columns, rows, get FCrudDataset() {
       return FCrudDataset;
     }, get FCurrencyTextField() {
       return FCurrencyTextField;
@@ -142,14 +129,15 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 });
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createBlock($setup["FCrudDataset"], {
+    ref: "crud",
     modelValue: $setup.rows,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.rows = $event)
   }, {
-    default: _withCtx(({ updateItem, deleteItem }) => [
+    default: _withCtx(() => [
       _createVNode($setup["FTable"], {
         ref: "table",
         rows: $setup.rows,
-        columns: $setup.getColumns(updateItem, deleteItem),
+        columns: $setup.columns,
         striped: ""
       }, {
         caption: _withCtx(() => [..._cache[1] || (_cache[1] = [
@@ -237,7 +225,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-9bebf3"
+  selector: "#example-aa1b5d"
 });
 export {
   render

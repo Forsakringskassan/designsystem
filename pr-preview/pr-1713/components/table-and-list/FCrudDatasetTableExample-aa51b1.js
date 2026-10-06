@@ -28,8 +28,9 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-6b77d4.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-aa51b1.js
 import { defineComponent as _defineComponent } from "vue";
+import { useTemplateRef } from "vue";
 
 // packages/vue/src/components/FCrudDataset/examples/fruit-data.ts
 var fruits = [
@@ -73,7 +74,7 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-6b77d4.js
+// virtual-entry:virtual:packages/vue/src/components/FCrudDataset/examples/FCrudDatasetTableExample.vue:FCrudDatasetTableExample-aa51b1.js
 import {
   FCrudDataset,
   FTable,
@@ -88,8 +89,7 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
   setup(__props, { expose: __expose }) {
     __expose();
     const rows = useDatasetRef(fruits, "variant");
-    let updateRow = (_row) => void 0;
-    let deleteRow = (_row) => void 0;
+    const crud = useTemplateRef("crud");
     const columns = defineTableColumns([
       { type: "text", header: "Namn", key: "name", size: "shrink" },
       { type: "text", header: "Land", key: "origin", size: "shrink" },
@@ -103,36 +103,23 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
             label: "\xC4ndra",
             icon: "pen",
             onClick: (row) => {
-              updateRow(row);
+              crud.value?.updateItem(row);
             }
           },
           {
             label: "Ta bort",
             icon: "trashcan",
             onClick: (row) => {
-              deleteRow(row);
+              crud.value?.deleteItem(row);
             }
           }
         ]
       }
     ]);
-    function getColumns(updateItem, deleteItem) {
-      updateRow = updateItem;
-      deleteRow = deleteItem;
-      return columns;
-    }
     function saveModel(row) {
       console.log("Post model to backend", row);
     }
-    const __returned__ = { rows, get updateRow() {
-      return updateRow;
-    }, set updateRow(v) {
-      updateRow = v;
-    }, get deleteRow() {
-      return deleteRow;
-    }, set deleteRow(v) {
-      deleteRow = v;
-    }, columns, getColumns, saveModel, get FCrudDataset() {
+    const __returned__ = { rows, crud, columns, saveModel, get FCrudDataset() {
       return FCrudDataset;
     }, get FTable() {
       return FTable;
@@ -148,16 +135,17 @@ var exampleComponent = /* @__PURE__ */ _defineComponent({
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_validation = _resolveDirective("validation");
   return _openBlock(), _createBlock($setup["FCrudDataset"], {
+    ref: "crud",
     modelValue: $setup.rows,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.rows = $event),
     onCreated: $setup.saveModel,
     onUpdated: $setup.saveModel,
     onDeleted: $setup.saveModel
   }, {
-    default: _withCtx(({ updateItem, deleteItem }) => [
+    default: _withCtx(() => [
       _createVNode($setup["FTable"], {
         rows: $setup.rows,
-        columns: $setup.getColumns(updateItem, deleteItem),
+        columns: $setup.columns,
         striped: ""
       }, {
         caption: _withCtx(() => [..._cache[1] || (_cache[1] = [
@@ -363,7 +351,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-6b77d4"
+  selector: "#example-aa51b1"
 });
 export {
   render

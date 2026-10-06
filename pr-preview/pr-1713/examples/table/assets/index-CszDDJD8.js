@@ -26797,7 +26797,7 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 		"updated",
 		"update:modelValue"
 	],
-	setup(__props, { emit: __emit }) {
+	setup(__props, { expose: __expose, emit: __emit }) {
 		const props = __props;
 		const emit = __emit;
 		const $t = useTranslate();
@@ -26860,6 +26860,16 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
 			callbackBeforeItemDelete.value = callback;
 		});
 		provide("setNestedKey", setNestedKey);
+		__expose({
+			/**
+			* Opens the modification modal for the given item.
+			*/
+			updateItem,
+			/**
+			* Opens the deletion modal for the given item.
+			*/
+			deleteItem
+		});
 		onMounted(() => {
 			if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) throw new Error("At least one template of the following must be defined. #add, #delete or #modify");
 		});
@@ -47169,8 +47179,7 @@ var FTableColumnLiveExample_default = /*#__PURE__*/ _plugin_vue_export_helper_de
 var FTableCrudDatasetExample_default = /* @__PURE__ */ defineComponent({
 	__name: "FTableCrudDatasetExample",
 	setup(__props) {
-		let updateItemCallback;
-		let deleteItemCallback;
+		const crud = useTemplateRef("crud");
 		const rows = useDatasetRef([
 			{
 				id: "1",
@@ -47210,22 +47219,17 @@ var FTableCrudDatasetExample_default = /* @__PURE__ */ defineComponent({
 					label: "Ändra",
 					icon: "pen",
 					onClick(row) {
-						updateItemCallback(row);
+						crud.value?.updateItem(row);
 					}
 				}, {
 					label: "Ta bort",
 					icon: "trashcan",
 					onClick(row) {
-						deleteItemCallback(row);
+						crud.value?.deleteItem(row);
 					}
 				}]
 			}
 		]);
-		function getColumns(updateItem, deleteItem) {
-			updateItemCallback = updateItem;
-			deleteItemCallback = deleteItem;
-			return columns;
-		}
 		const nextId = /* @__PURE__ */ ref(4);
 		function beforeCreate() {
 			const id = String(nextId.value);
@@ -47242,6 +47246,8 @@ var FTableCrudDatasetExample_default = /* @__PURE__ */ defineComponent({
 		return (_ctx, _cache) => {
 			const _directive_validation = resolveDirective("validation");
 			return openBlock(), createBlock(unref(FCrudDataset_default), {
+				ref_key: "crud",
+				ref: crud,
 				modelValue: unref(rows),
 				"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => /* @__PURE__ */ isRef(rows) ? rows.value = $event : null),
 				"before-create": beforeCreate,
@@ -47249,9 +47255,9 @@ var FTableCrudDatasetExample_default = /* @__PURE__ */ defineComponent({
 				onUpdated: saveModel,
 				onDeleted: saveModel
 			}, {
-				default: withCtx(({ updateItem, deleteItem }) => [createVNode(unref(FTable_default), {
+				default: withCtx(() => [createVNode(unref(FTable_default), {
 					rows: unref(rows),
-					columns: getColumns(updateItem, deleteItem),
+					columns: unref(columns),
 					"key-attribute": "id"
 				}, {
 					caption: withCtx(() => [..._cache[1] || (_cache[1] = [createTextVNode(" Exempeldata ", -1)])]),

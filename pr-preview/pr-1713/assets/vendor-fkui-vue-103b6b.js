@@ -12010,7 +12010,7 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
     "updated",
     "update:modelValue"
   ],
-  setup(__props, { emit: __emit }) {
+  setup(__props, { expose: __expose, emit: __emit }) {
     const props = __props;
     const emit = __emit;
     const $t2 = useTranslate();
@@ -12079,6 +12079,16 @@ var FCrudDataset_default = /* @__PURE__ */ defineComponent({
       callbackBeforeItemDelete.value = callback;
     });
     provide("setNestedKey", setNestedKey);
+    __expose({
+      /**
+      * Opens the modification modal for the given item.
+      */
+      updateItem,
+      /**
+      * Opens the deletion modal for the given item.
+      */
+      deleteItem
+    });
     onMounted(() => {
       if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) throw new Error("At least one template of the following must be defined. #add, #delete or #modify");
     });
