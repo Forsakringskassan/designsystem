@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useTemplateRef } from "vue";
 import {
     type TableColumn,
     FCrudDataset,
@@ -28,10 +29,7 @@ const lander = [
     "Sydafrika",
 ];
 
-type CrudAction = (item: Row) => void;
-
-let updateItemCallback!: CrudAction;
-let deleteItemCallback!: CrudAction;
+const crud = useTemplateRef("crud");
 
 const columns: Array<TableColumn<Row>> = defineTableColumns<Row>([
     {
@@ -60,26 +58,19 @@ const columns: Array<TableColumn<Row>> = defineTableColumns<Row>([
                 label: "Ändra",
                 icon: "pen",
                 onClick(row) {
-                    updateItemCallback(row);
+                    crud.value?.updateItem(row);
                 },
             },
             {
                 label: "Ta bort",
                 icon: "trashcan",
                 onClick(row) {
-                    deleteItemCallback(row);
+                    crud.value?.deleteItem(row);
                 },
             },
         ],
     },
 ]);
-
-function getColumns(updateItem: CrudAction, deleteItem: CrudAction): Array<TableColumn<Row>> {
-    updateItemCallback = updateItem;
-    deleteItemCallback = deleteItem;
-
-    return columns;
-}
 
 const rows = useDatasetRef<Row>([
     {
@@ -101,9 +92,9 @@ const rows = useDatasetRef<Row>([
 </script>
 
 <template>
-    <f-crud-dataset v-model="rows">
-        <template #default="{ updateItem, deleteItem }">
-            <f-table ref="table" :rows :columns="getColumns(updateItem, deleteItem)" striped>
+    <f-crud-dataset ref="crud" v-model="rows">
+        <template #default>
+            <f-table ref="table" :rows :columns striped>
                 <template #caption><span class="sr-only">Redigera innehåll-exempel</span></template>
             </f-table>
         </template>
