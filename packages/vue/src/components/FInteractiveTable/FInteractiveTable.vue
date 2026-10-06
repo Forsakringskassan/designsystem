@@ -4,6 +4,11 @@
 type IsArray<T, U> = T extends any[] | undefined ? U : never;
 type AnyPropertyOf<T> = keyof T;
 type ArrayPropertyOf<T> = { [K in keyof T]: IsArray<T[K], K> }[keyof T];
+
+/**
+ * @deprecated Use `<f-table>` instead.
+ */
+export default {};
 </script>
 
 <script

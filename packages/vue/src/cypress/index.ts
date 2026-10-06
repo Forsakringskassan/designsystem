@@ -42,6 +42,7 @@ export { FRadioGroupPageObject } from "./FRadioGroup.pageobject";
 export { FSelectFieldPageObject } from "./FSelectField.pageobject";
 export { FSortFilterDatasetPageObject } from "./FSortFilterDataset.pageobject";
 export { FStaticFieldPageObject } from "./FStaticField.pageobject";
+/* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
 export { FInteractiveTablePageObject } from "./FInteractiveTable.pageobject";
 /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
 export { FTableColumnPageObject } from "./FTableColumn.pageobject";
