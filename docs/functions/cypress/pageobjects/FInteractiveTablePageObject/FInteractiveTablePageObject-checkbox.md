@@ -5,6 +5,9 @@ short-title: checkbox()
 layout: api.method
 ---
 
+`FInteractiveTablePageObject` är deprekerad.
+Migrera tabellen till `FTable` och använd därefter `FTablePageObject.selectInput()`.
+
 Hämtar ut page objekt för en kryssruta i en valbar {@link component:FInteractiveTable interaktiv tabell} (FInteractiveTable).
 
 Radnumreringen är 1-indexerad och inkluderar rader som har expanderats i en expanderbar tabell.

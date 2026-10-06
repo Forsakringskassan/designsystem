@@ -1,6 +1,6 @@
 ---
 title: Datatabell och interaktiv tabell
-status: Produktionsklar
+status: Deprekerad
 layout: component
 sortorder: 5
 component:
@@ -10,10 +10,12 @@ component:
     - FTableColumn
 ---
 
+Datatabell (FDataTable) och interaktiv tabell (FInteractiveTable) är deprekerade och ersätts av tabell (FTable).
+
 Använd en tabell när användaren behöver analysera och jämföra information strukturerad i rader och kolumner.
 Tabeller kan antingen vara enkla datatabeller för presentation, eller vara mer avancerade interaktiva tabeller.
 
-Använd i första hand den nya tabellkomponenten som på sikt kommer ersätta datatabell och interkativ tabell.
+Använd tabell (FTable) för nya tabeller och följ {@link migrating-to-ftable migreringsguiden} för befintliga tabeller.
 
 {@link FTable Läs mer om nya tabellkomponenten.}
 
@@ -38,6 +40,7 @@ Slotten `default` renderas för varje item i `rows` och har en slot attribute `r
 Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten `FTableColumn`.
 
 ```html static name=datatable-base
+<!-- [html-validate-disable-block deprecated -- legacy component documentation] -->
 <f-data-table :rows>
     <template #caption> Tabell exempel </template>
     <template #default="{ row }">
@@ -51,6 +54,7 @@ Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten `
 Innehåller cellen numeriska värden, datum eller annan data som inte är löptext bör du använd direktivet {@link FormatPlugin `v-format`} för att formatera och undvika radbryt i cellen.
 
 ```html compare=datatable-base
+<!-- [html-validate-disable-block deprecated -- legacy component documentation] -->
 <f-data-table :rows>
     <template #caption> Tabell exempel </template>
     <template #default="{ row }">
@@ -68,6 +72,7 @@ Innehåller cellen numeriska värden, datum eller annan data som inte är löpte
 Om ett fel uppstår vid hämtning av tabellens data kan ett felmeddelande visas med hjälp av `#empty` sloten och {@link FMessageBox en meddelanderuta}.
 
 ```html compare=datatable-base
+<!-- [html-validate-disable-block deprecated -- legacy component documentation] -->
 <f-data-table :rows>
     <template #caption> Tabell exempel </template>
     <template #default="{ row }">
@@ -107,6 +112,7 @@ Slotten `default` renderas för varje item i `rows` och har en slot attribute `r
 Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten `FTableColumn`.
 
 ```html static name=interactivetable-base
+<!-- [html-validate-disable-block deprecated -- legacy component documentation] -->
 <f-interactive-table :rows>
     <template #caption> Tabell exempel </template>
     <template #default="{ row }">
@@ -126,6 +132,7 @@ Varje kolumn som tabellen ska innehålla skapas genom att använda komponenten `
 Innehåller cellen numeriska värden, datum eller annan data som inte är löptext bör du använd direktivet {@link FormatPlugin `v-format`} för att formatera och undvika radbryt i cellen.
 
 ```html compare=interactivetable-base
+<!-- [html-validate-disable-block deprecated -- legacy component documentation] -->
 <f-interactive-table :rows>
     <template #caption> Tabell exempel </template>
     <template #default="{ row }">
@@ -163,6 +170,7 @@ Följande inmatningfält kan användas:
 - dropplista (FSelectField).
 
 ```html static compare=interactivetable-base
+<!-- [html-validate-disable-block deprecated -- legacy component documentation] -->
 <f-interactive-table :rows>
     <template #caption> Tabell exempel </template>
     <template #default="{ row }">
@@ -424,6 +432,7 @@ Slotten `selectable-description` måste användas för att ge en beskrivning av 
 Texten bör innehålla något som tydligt identifierar raden från andra rader.
 
 ```html compare=interactivetable-base
+<!-- [html-validate-disable-block deprecated -- legacy component documentation] -->
 <f-interactive-table :rows selectable="multi" v-model="selectedRows">
     <template #caption> Tabell exempel </template>
     <template #default="{ row }">
@@ -455,6 +464,7 @@ En radrubrik underlättar för skärmläsareanvändare genom att markera vilken 
 Använd radrubriker om det finns många kolumner och/eller en tydlig cell som identifierar rader från andra rader.
 
 ```html compare=datatable-base
+<!-- [html-validate-disable-block deprecated -- legacy component documentation] -->
 <f-data-table :rows>
     <template #caption> Tabell exempel </template>
     <template #default="{ row }">

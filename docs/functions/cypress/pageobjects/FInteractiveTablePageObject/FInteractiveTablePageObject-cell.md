@@ -5,6 +5,11 @@ short-title: cell()
 layout: api.method
 ---
 
+`FInteractiveTablePageObject` är deprekerad.
+
+Migrera tabellen till `FTable` och använd därefter `FTablePageObject.cell()`.
+Observera att `FTablePageObject.cell()` även räknar kolumner för expanderingsknappar och valbara rader.
+
 Hämtar en tabellcell från en {@link component:FInteractiveTable interaktiv tabell} (FInteractiveTable).
 
 Både rad och kolumn är 1-indexerade, vilket innebär att rad 1 kolumn 1 refererar till första cellen.
