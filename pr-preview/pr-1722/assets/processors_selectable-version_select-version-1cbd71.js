@@ -2005,7 +2005,7 @@ async function fetchVersions() {
 var getVersions = memoize(fetchVersions);
 async function initVersionProcessor() {
   const dialog = document.querySelector("#version-dialog");
-  const form = document.querySelector("#version");
+  const form = document.querySelector(".docs-selectable-version__form");
   const dialogCloseButton = dialog?.querySelector("button");
   const { latest } = await getVersions();
   if (motdProxy.enabled && latest !== current) {
