@@ -1,8 +1,7 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { h, onMounted } from "vue";
 import { type IconPackage } from "@fkui/icon-lib-default";
-import { FDataTable, FIcon, FTableColumn } from "@fkui/vue";
+import { FIcon, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
 interface IconEntry {
     id: string;
@@ -23,58 +22,51 @@ function decamelize(value: string): string {
 }
 
 const iconsPromise = importIcons();
-
-export default defineComponent({
-    name: "FIconAll",
-    components: { FDataTable, FTableColumn, FIcon },
-    data() {
-        return {
-            allIcons: [] as IconEntry[],
-        };
+const rows = useDatasetRef<IconEntry>([]);
+const columns = defineTableColumns<IconEntry>([
+    {
+        header: "Ikon",
+        render(row) {
+            return h("td", { class: "table-ng__cell table-ng__cell--static" }, [
+                h(FIcon, { name: row.namn, library: row.library }),
+            ]);
+        },
     },
-    async mounted() {
-        /*
-            FKUI supports rendering of an icon package other than `@fkui/icon-lib-default`.
-            The icon package must be based on `@fkui/icon-lib-builder`.
+    { type: "text", header: "Ikonnamn", key: "namn" },
+    { type: "text", header: "Ikon-bibliotek", key: "library" },
+]);
 
-            Set env variable `DOCS_ICON_LIB` to desired icon package and make sure that the package is installed during build.
-            This is typically done in your CI/CD setup.
+onMounted(async () => {
+    /*
+        FKUI supports rendering of an icon package other than `@fkui/icon-lib-default`.
+        The icon package must be based on `@fkui/icon-lib-builder`.
 
-            The imported icon package libraries are returned as:
-            f
-            fSocial
-            fFiletypes
-            ...
-            But needs to be converted to the format of "f", "f-social", "f-filetypes".
-        */
-        const icons = await iconsPromise;
-        this.allIcons = Object.entries(icons).flatMap(([name, entry]) => {
-            const library = decamelize(name);
-            return entry.metadata.map((icon) => ({
-                id: icon.key,
-                namn: icon.name,
-                library,
-            }));
-        });
-    },
+        Set env variable `DOCS_ICON_LIB` to desired icon package and make sure that the package is installed during build.
+        This is typically done in your CI/CD setup.
+
+        The imported icon package libraries are returned as:
+        f
+        fSocial
+        fFiletypes
+        ...
+        But needs to be converted to the format of "f", "f-social", "f-filetypes".
+    */
+    const icons = await iconsPromise;
+    rows.value = Object.entries(icons).flatMap(([name, entry]) => {
+        const library = decamelize(name);
+        return entry.metadata.map((icon) => ({
+            id: icon.key,
+            namn: icon.name,
+            library,
+        }));
+    });
 });
 </script>
 
 <template>
-    <f-data-table :rows="allIcons" :striped="true" key-attribute="id">
+    <f-table :rows :columns striped>
         <template #caption>
             <span> Ikoner </span>
         </template>
-        <template #default="{ row }">
-            <f-table-column title="Ikon" type="text">
-                <f-icon :name="row.namn" :library="row.library"></f-icon>
-            </f-table-column>
-            <f-table-column title="Ikonnamn" type="text">
-                {{ row.namn }}
-            </f-table-column>
-            <f-table-column title="Ikon-bibliotek" type="text">
-                {{ row.library }}
-            </f-table-column>
-        </template>
-    </f-data-table>
+    </f-table>
 </template>

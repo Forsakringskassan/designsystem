@@ -1,32 +1,34 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { type PropType, defineComponent } from "vue";
+<script setup lang="ts">
+import { h } from "vue";
 import { type SassVariable } from "@fkui/theme-default/dist/palette.json";
-import { FDataTable, FTableColumn } from "@fkui/vue";
+import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
-export default defineComponent({
-    components: { FDataTable, FTableColumn },
-    props: {
-        colors: {
-            type: Array as PropType<SassVariable[]>,
-            required: true,
+const props = defineProps<{ colors: SassVariable[] }>();
+
+const columns = defineTableColumns<SassVariable>([
+    { type: "text", header: "Namn", key: "name", size: "shrink" },
+    {
+        header: "Färg",
+        size: "grow",
+        render(row) {
+            return h("td", { class: "table-ng__cell table-ng__cell--static" }, [
+                h("div", [
+                    h("span", {
+                        class: "color-table__color",
+                        style: { "--value": row.value },
+                    }),
+                    h("code", { class: "color-table__term" }, row.value),
+                ]),
+            ]);
         },
     },
-});
+]);
+
+const rows = useDatasetRef(props.colors);
 </script>
 
 <template>
-    <f-data-table :rows="colors" key-attribute="name" class="density-densest">
+    <f-table :rows :columns class="density-densest">
         <template #caption> <span class="sr-only"> Färgpaletten </span> </template>
-        <template #default="{ row }">
-            <f-table-column title="Namn" type="text" shrink>
-                <code class="color-table__term">{{ row.name }}</code>
-            </f-table-column>
-            <f-table-column title="Färg" type="text" expand>
-                <!-- [html-validate-disable-next no-inline-style] -->
-                <span class="color-table__color" :style="`--value: ${row.value}`"></span>
-                <code class="color-table__term">{{ row.value }}</code>
-            </f-table-column>
-        </template>
-    </f-data-table>
+    </f-table>
 </template>

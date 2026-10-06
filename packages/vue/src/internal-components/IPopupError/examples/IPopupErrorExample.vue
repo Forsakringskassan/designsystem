@@ -1,69 +1,42 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
-import {
-    FButton,
-    FEmailTextField,
-    FInteractiveTable,
-    FPostalCodeTextField,
-    FTableColumn,
-    FValidationForm,
-} from "@fkui/vue";
+<script setup lang="ts">
+import { FButton, FTable, FValidationForm, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
-export default defineComponent({
-    name: "TestApp",
-    components: {
-        FButton,
-        FInteractiveTable,
-        FTableColumn,
-        FValidationForm,
-        FEmailTextField,
-        FPostalCodeTextField,
+interface Row {
+    id: string;
+    email: string;
+    postnr: string;
+}
+
+const rows = useDatasetRef<Row>([
+    { id: "1", email: "", postnr: "" },
+    { id: "2", email: "", postnr: "" },
+    { id: "3", email: "", postnr: "" },
+]);
+const columns = defineTableColumns<Row>([
+    {
+        type: "text:email",
+        header: "Epost",
+        key: "email",
+        editable: true,
+        label: () => "Epost",
+        validation: { required: {} },
     },
-    data() {
-        return {
-            insatser: [
-                {
-                    id: "1",
-                    email: "",
-                    postnr: "",
-                },
-                {
-                    id: "2",
-                    email: "",
-                    postnr: "",
-                },
-                {
-                    id: "3",
-                    email: "",
-                    postnr: "",
-                },
-            ],
-        };
+    {
+        type: "text:postalCode",
+        header: "Postnummer",
+        key: "postnr",
+        editable: true,
+        label: () => "Postnummer",
+        validation: { required: {} },
     },
-});
+]);
 </script>
 
 <template>
     <f-validation-form :use-error-list="false">
-        <f-interactive-table :rows="insatser" hover key-attribute="id">
+        <f-table :rows :columns>
             <template #caption> PopupError example </template>
-            <template #default="{ row }">
-                <f-table-column title="Epost" type="text" shrink>
-                    <f-email-text-field
-                        v-model="row.email"
-                        v-validation.required
-                    ></f-email-text-field>
-                </f-table-column>
-
-                <f-table-column title="Postnummer" type="text" shrink>
-                    <f-postal-code-text-field
-                        v-model="row.postnr"
-                        v-validation.required
-                    ></f-postal-code-text-field>
-                </f-table-column>
-            </template>
-        </f-interactive-table>
+        </f-table>
         <f-button size="large" variant="primary" type="submit">Submit</f-button>
     </f-validation-form>
 </template>
