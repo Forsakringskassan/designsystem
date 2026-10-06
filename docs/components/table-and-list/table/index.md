@@ -30,7 +30,7 @@ Tabeller kan antingen vara enkla tabeller för presentation eller vara mer avanc
 
 I en tabell har varje rad samma grupper av information som visas kolumnvis, till exempel namn, datum, belopp och diarienummer.
 
-Här hittar du information om de gamla tabellkomponenerna {@link table#datatabell datatabell} och {@link table#interaktiv_tabell interaktiv tabell}.
+Här hittar du information om de gamla tabellkomponenerna {@link legacyTable#datatabell datatabell} och {@link legacyTable#interaktiv_tabell interaktiv tabell}.
 
 ## Tänk på att
 

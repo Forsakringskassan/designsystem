@@ -71,7 +71,7 @@ components/presentation/fstaticfield.html
 components/table-and-list/fcruddataset.html
 components/table-and-list/flist.html
 components/table-and-list/fsortfilterdataset.html
-components/table-and-list/table.html
+components/table-and-list/legacytable.html
 components/table-and-list/table/action-button-link.html
 components/table-and-list/table/code.html
 components/table-and-list/table/column-types/anchor.html
