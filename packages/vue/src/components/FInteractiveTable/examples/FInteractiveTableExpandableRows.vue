@@ -5,6 +5,7 @@ import { FInteractiveTable, FTableColumn } from "@fkui/vue";
 
 <template>
     <!-- cut above -->
+    <!-- [html-validate-disable-block deprecated -- legacy table documentation] -->
     <f-interactive-table :rows key-attribute="id" expandable-attribute="myExpandableRow">
         <template #caption> Expanderbara rader </template>
         <template #default="{ row }">

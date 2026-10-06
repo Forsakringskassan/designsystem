@@ -6,6 +6,7 @@ const showError = ref(true);
 </script>
 
 <template>
+    <!-- [html-validate-disable-block deprecated -- legacy table documentation] -->
     <f-data-table :rows="[]">
         <template #caption> Exempel med felmeddelande </template>
         <template #default>
