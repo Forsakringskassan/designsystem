@@ -241,5 +241,6 @@ it("FButton should not show focus style on click (visual)", () => {
     cy.viewport(VIEWPORT.MOBILE.width, VIEWPORT.MOBILE.height);
     cy.mount(FButtonFocusVisualTest, { props: { variant: "primary" } });
     cy.get("button").eq(1).realClick();
+    cy.get("body").realHover();
     cy.get("#background").toMatchScreenshot();
 });
