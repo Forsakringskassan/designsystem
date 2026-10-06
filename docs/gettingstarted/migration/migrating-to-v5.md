@@ -1,5 +1,6 @@
 ---
 title: Version 5 migreringsguide
+short-title: Version 5
 name: migrating-to-v5
 layout: pattern
 search:

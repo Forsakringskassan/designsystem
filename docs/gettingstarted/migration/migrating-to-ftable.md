@@ -1,6 +1,6 @@
 ---
 title: FTable migreringsguide
-short-title: Ftable
+short-title: FTable
 layout: article
 ---
 
