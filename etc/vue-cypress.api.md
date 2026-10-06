@@ -383,7 +383,7 @@ export class FFormModalPageObject extends FModalPageObject implements BasePageOb
     submitButton(): DefaultCypressChainable;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export class FInteractiveTablePageObject implements BasePageObject {
     constructor(selector?: string);
     bodyRow(): DefaultCypressChainable;

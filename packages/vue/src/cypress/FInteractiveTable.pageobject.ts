@@ -3,6 +3,7 @@ import { FCheckboxFieldPageObject, FTableColumnPageObject } from ".";
 
 /**
  * @public
+ * @deprecated Migrate to `FTable` and use `FTablePageObject` instead.
  */
 export class FInteractiveTablePageObject implements BasePageObject {
     public selector: string;
