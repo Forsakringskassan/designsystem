@@ -1,47 +1,32 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import { type FruitData, fruits } from "./fruit-data";
-import { FCrudDataset, FDataTable, FTableColumn, FTextField, FTextareaField } from "@fkui/vue";
+import {
+    FCrudDataset,
+    FTable,
+    FTextField,
+    FTextareaField,
+    defineTableColumns,
+    useDatasetRef,
+} from "@fkui/vue";
 
-export default defineComponent({
-    components: {
-        FCrudDataset,
-        FDataTable,
-        FTableColumn,
-        FTextField,
-        FTextareaField,
-    },
-    data() {
-        return {
-            fruits,
-        };
-    },
-    methods: {
-        saveModel(row: FruitData) {
-            console.log("Post model to backend", row);
-        },
-    },
-});
+const rows = useDatasetRef(fruits);
+const columns = defineTableColumns<FruitData>([
+    { type: "text", header: "Namn", key: "name", size: "shrink" },
+    { type: "text", header: "Land", key: "origin", size: "shrink" },
+    { type: "text", header: "Beskrivning", key: "description" },
+]);
+
+function saveModel(row: FruitData): void {
+    console.log("Post model to backend", row);
+}
 </script>
 
 <template>
-    <f-crud-dataset v-model="fruits" @created="saveModel" @updated="saveModel" @deleted="saveModel">
+    <f-crud-dataset v-model="rows" @created="saveModel" @updated="saveModel" @deleted="saveModel">
         <template #default>
-            <f-data-table :rows="fruits" key-attribute="id">
+            <f-table :rows :columns>
                 <template #caption> <b>Rättigheter</b> </template>
-                <template #default="{ row }">
-                    <f-table-column title="Namn" type="text" shrink>
-                        {{ row.name }}
-                    </f-table-column>
-                    <f-table-column title="Land" type="text" shrink>
-                        {{ row.origin }}
-                    </f-table-column>
-                    <f-table-column title="Beskrivning" type="text" expand>
-                        {{ row.description }}
-                    </f-table-column>
-                </template>
-            </f-data-table>
+            </f-table>
         </template>
         <template #add="{ item }">
             <f-text-field

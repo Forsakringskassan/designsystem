@@ -193,6 +193,7 @@ describe("Editing items", () => {
             `,
         });
         cy.mount(TestComponent);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         const table = new FInteractiveTablePageObject();
 
         table.row(1).find(".button").click();
@@ -272,6 +273,7 @@ describe("item delete", () => {
             `,
         });
         cy.mount(TestComponent);
+        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
         const table = new FInteractiveTablePageObject();
 
         table.row(0).click();
