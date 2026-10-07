@@ -1,0 +1,28 @@
+@use "light" as legacy-light;
+@use "dark" as legacy-dark;
+
+$global: true !default;
+
+@mixin light {
+    @include legacy-light.variables;
+}
+
+@mixin dark {
+    @include legacy-dark.variables;
+}
+
+@mixin auto {
+    @media (prefers-color-scheme: light) {
+        @include light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        @include dark;
+    }
+}
+
+@if $global {
+    :root {
+        @include light;
+    }
+}
