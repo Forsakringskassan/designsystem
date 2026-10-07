@@ -645,6 +645,11 @@ export default defineMetadata({
 
     "f-table-column": {
         flow: false,
+        deprecated: {
+            message:
+                "use <f-table> and define columns with defineTableColumns() instead of <f-table-column>.",
+            source: "@fkui/vue",
+        },
         attributes: {
             name: ["/.+/"],
             title: ["/.+/"],
