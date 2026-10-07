@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/components/FTooltip.md:FTooltip-4edfa9.js
+// virtual-entry:virtual:docs/components/FTooltip.md:FTooltip-f3bbb4.js
 import { useTemplateRef } from "vue";
 import { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = {
@@ -64,7 +64,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* NEED_PATCH */
       ),
       _createVNode(_component_f_tooltip, {
-        "attach-to": "heading",
+        "attach-to": $setup.heading,
         "screen-reader-text": "Sk\xE4rml\xE4sartext"
       }, {
         body: _withCtx(() => [..._cache[1] || (_cache[1] = [
@@ -76,7 +76,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ])]),
         _: 1
         /* STABLE */
-      })
+      }, 8, ["attach-to"])
     ],
     64
     /* STABLE_FRAGMENT */
@@ -85,7 +85,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-4edfa9"
+  selector: "#example-f3bbb4"
 });
 export {
   render
