@@ -345,26 +345,43 @@ describe("when in `<thead>`", () => {
 });
 
 describe("html-validate", () => {
+    it("should be deprecated", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-table-column title="lorem ipsum"></f-table-column>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-table-column> is deprecated: use <f-table> and define columns with defineTableColumns() instead of <f-table-column> (deprecated)
+            1 |
+          > 2 |             <f-table-column title="lorem ipsum"></f-table-column>
+              |              ^^^^^^^^^^^^^^
+            3 |
+          Selector: f-table-column"
+        `);
+    });
+
     it("should require title attribute", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
             <f-table-column></f-table-column>
             <f-table-column title=""></f-table-column>
         `;
         await expect(markup).toMatchInlineCodeframe(`
           "error: <f-table-column> is missing required "title" attribute (element-required-attributes)
             1 |
-          > 2 |             <f-table-column></f-table-column>
+            2 |             <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+          > 3 |             <f-table-column></f-table-column>
               |              ^^^^^^^^^^^^^^
-            3 |             <f-table-column title=""></f-table-column>
-            4 |
+            4 |             <f-table-column title=""></f-table-column>
+            5 |
           Selector: f-table-column:nth-child(1)
           error: Attribute "title" has invalid value "" (attribute-allowed-values)
-            1 |
-            2 |             <f-table-column></f-table-column>
-          > 3 |             <f-table-column title=""></f-table-column>
+            2 |             <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+            3 |             <f-table-column></f-table-column>
+          > 4 |             <f-table-column title=""></f-table-column>
               |                             ^^^^^
-            4 |
+            5 |
           Selector: f-table-column:nth-child(2)"
         `);
     });
@@ -372,14 +389,16 @@ describe("html-validate", () => {
     it("should not allow invalid types", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
             <f-table-column title="Column title" type="foobar"></f-table-column>
         `;
         await expect(markup).toMatchInlineCodeframe(`
           "error: Attribute "type" has invalid value "foobar" (attribute-allowed-values)
             1 |
-          > 2 |             <f-table-column title="Column title" type="foobar"></f-table-column>
+            2 |             <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+          > 3 |             <f-table-column title="Column title" type="foobar"></f-table-column>
               |                                                        ^^^^^^
-            3 |
+            4 |
           Selector: f-table-column"
         `);
     });
@@ -387,6 +406,7 @@ describe("html-validate", () => {
     it("should not allow empty description", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
             <f-table-column
                 title="Column title"
                 description=""
@@ -394,12 +414,12 @@ describe("html-validate", () => {
         `;
         await expect(markup).toMatchInlineCodeframe(`
           "error: Attribute "description" has invalid value "" (attribute-allowed-values)
-            2 |             <f-table-column
-            3 |                 title="Column title"
-          > 4 |                 description=""
+            3 |             <f-table-column
+            4 |                 title="Column title"
+          > 5 |                 description=""
               |                 ^^^^^^^^^^^
-            5 |             ></f-table-column>
-            6 |
+            6 |             ></f-table-column>
+            7 |
           Selector: f-table-column"
         `);
     });
@@ -407,18 +427,19 @@ describe("html-validate", () => {
     it("should not allow flow content", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
             <f-table-column title="Column title">
                 <div></div>
             </f-table-column>
         `;
         await expect(markup).toMatchInlineCodeframe(`
           "error: <div> element is not permitted as content under <f-table-column> (element-permitted-content)
-            1 |
-            2 |             <f-table-column title="Column title">
-          > 3 |                 <div></div>
+            2 |             <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+            3 |             <f-table-column title="Column title">
+          > 4 |                 <div></div>
               |                  ^^^
-            4 |             </f-table-column>
-            5 |
+            5 |             </f-table-column>
+            6 |
           Selector: f-table-column > div"
         `);
     });
@@ -426,6 +447,7 @@ describe("html-validate", () => {
     it("should allow phrasing content", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
             <f-table-column name="foo" title="Foo">
                 <span></span>
             </f-table-column>
@@ -436,6 +458,7 @@ describe("html-validate", () => {
     it("should allow button content", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
             <f-table-column name="foo" title="Foo">
                 <button type="button">Foo</button>
             </f-table-column>

@@ -864,7 +864,7 @@ export interface FTableCellApi {
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_51" needs to be exported by the entry point index.d.ts
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const FTableColumn: typeof __VLS_export_51;
 
 // @public (undocumented)
