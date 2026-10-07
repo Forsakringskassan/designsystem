@@ -9,6 +9,8 @@ search:
         - sass
         - scss
         - css
+        - legacy-palette
+        - gamla färgpaletten
         - ikonbibliotek
 ---
 
@@ -100,6 +102,62 @@ import "@fkui/design";
 ### Eget tema
 
 Utgå från standardtemat och skriv över de variabler som ska ändras.
+
+### Gamla färgpaletten
+
+Om din applikation inte är redo för den kommande nya färgpaletten för `@fkui/theme-default` kan du istället använda `legacy-palette` så att din applikation inte påverkas när den nya färgpaletten släpps.
+`legacy-palette` skriver över temats färgvariabler med färgerna från den gamla färgpaletten.
+Övriga variabler i temat påverkas inte.
+`legacy-palette` måste importeras efter temat.
+
+#### Gamla färgpaletten med Sass
+
+För att applicera den gamla färgpaletten på `:root`:
+
+```scss compare=sass-base
+@use "@fkui/theme-default";
+@use "@fkui/theme-default/src/legacy-palette";
+@use "@fkui/design";
+```
+
+Om du applicerar temat på en selektor med `$global: false` behöver du också sätta `$global: false` för `legacy-palette` och inkludera den efter temat:
+
+```scss compare=sass-base
+@use "@fkui/theme-default" as theme with (
+    $global: false
+);
+@use "@fkui/theme-default/src/legacy-palette" with (
+    $global: false
+);
+@use "@fkui/design";
+
+.my-scope {
+    @include theme.light;
+    @include legacy-palette.light;
+}
+```
+
+#### Gamla färgpaletten med CSS
+
+Om din applikation inte använder Sass finns den gamla färgpaletten som förkompilerade CSS-filer i `@fkui/theme-default/dist`:
+
+- `legacy-palette-light.css`
+- `legacy-palette-dark.css`
+- `legacy-palette-auto.css`
+
+Placera filen i din assets-katalog och referera till den efter `fkui.min.css`:
+
+```html static
+<link rel="stylesheet" href="assets/fkui.min.css" />
+<link rel="stylesheet" href="assets/legacy-palette-light.css" />
+```
+
+Om du importerar styling till javascript:
+
+```js nocompile
+import "@fkui/design";
+import "@fkui/theme-default/dist/legacy-palette-light.css";
+```
 
 ## Importera ikonbibliotek
 
