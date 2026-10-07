@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-b00f8c.json"
+    href="../../search-data-8d61c5.json"
     as="fetch"
     crossorigin
-    integrity="sha384-3U0HGWb80qOeb5mUainil/xu/pW8YRfi4fMIGmGMdgxvBoMTMwHeouLmIBDxj54m"
+    integrity="sha384-qvGvdt8wL06lU9cCvDQ4NfkJ8RYiacx6FpJASa/P6/P1NVKuC4IZUifp6pA/xSyN"
     id="search-data"
 />
 <script>
@@ -6240,14 +6240,92 @@ Du behöver sedan referera till filen i assets-katalogen för varje sida.</p>
 </code></pre>
                 </div>
             <h3 id="eget_tema" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#eget_tema">Eget tema</a></h3><p class="docs-paragraph">Utgå från standardtemat och skriv över de variabler som ska ändras.</p>
-<h2 id="importera_ikonbibliotek" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#importera_ikonbibliotek">Importera ikonbibliotek</a></h2><p class="docs-paragraph"><a href="../../styles/icons.html">Biblioteket för standardikoner</a> ligger i <code>@fkui/icon-lib-default</code>.
+<h3 id="gamla_fargpaletten" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#gamla_fargpaletten">Gamla färgpaletten</a></h3><p class="docs-paragraph">Om din applikation inte är redo för den kommande nya färgpaletten för <code>@fkui/theme-default</code> kan du istället använda <code>legacy-palette</code> så att din applikation inte påverkas när den nya färgpaletten släpps.
+<code>legacy-palette</code> skriver över temats färgvariabler med färgerna från den gamla färgpaletten.
+Övriga variabler i temat påverkas inte.
+<code>legacy-palette</code> måste importeras efter temat.</p>
+<h4 id="gamla_fargpaletten_med_sass" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#gamla_fargpaletten_med_sass">Gamla färgpaletten med Sass</a></h4><p class="docs-paragraph">För att applicera den gamla färgpaletten på <code>:root</code>:</p>
+
+                <div
+                    id="example-aec8c0"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> @use &quot;@fkui/theme-default&quot;;
+<span class="hljs-addition">+@use &quot;@fkui/theme-default/src/legacy-palette&quot;;</span>
+ @use &quot;@fkui/design&quot;;
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du applicerar temat på en selektor med <code>$global: false</code> behöver du också sätta <code>$global: false</code> för <code>legacy-palette</code> och inkludera den efter temat:</p>
+
+                <div
+                    id="example-5b2dc8"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-@use &quot;@fkui/theme-default&quot;;</span>
+<span class="hljs-addition">+@use &quot;@fkui/theme-default&quot; as theme with (</span>
+<span class="hljs-addition">+    $global: false</span>
+<span class="hljs-addition">+);</span>
+<span class="hljs-addition">+@use &quot;@fkui/theme-default/src/legacy-palette&quot; with (</span>
+<span class="hljs-addition">+    $global: false</span>
+<span class="hljs-addition">+);</span>
+ @use &quot;@fkui/design&quot;;
+<span class="hljs-addition">+</span>
+<span class="hljs-addition">+.my-scope {</span>
+<span class="hljs-addition">+    @include theme.light;</span>
+<span class="hljs-addition">+    @include legacy-palette.light;</span>
+<span class="hljs-addition">+}</span>
+</code></pre>
+                </div>
+            <h4 id="gamla_fargpaletten_med_css" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#gamla_fargpaletten_med_css">Gamla färgpaletten med CSS</a></h4><p class="docs-paragraph">Om din applikation inte använder Sass finns den gamla färgpaletten som förkompilerade CSS-filer i <code>@fkui/theme-default/dist</code>:</p>
+<ul>
+<li><code>legacy-palette-light.css</code></li>
+<li><code>legacy-palette-dark.css</code></li>
+<li><code>legacy-palette-auto.css</code></li>
+</ul>
+<p class="docs-paragraph">Placera filen i din assets-katalog och referera till den efter <code>fkui.min.css</code>:</p>
+
+                <div
+                    id="example-9e5779"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/fkui.min.css&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/legacy-palette-light.css&quot;</span> /&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du importerar styling till javascript:</p>
+
+                <div
+                    id="example-92b49e"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="javascript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/design&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/theme-default/dist/legacy-palette-light.css&quot;</span>;
+</code></pre>
+                </div>
+            <h2 id="importera_ikonbibliotek" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#importera_ikonbibliotek">Importera ikonbibliotek</a></h2><p class="docs-paragraph"><a href="../../styles/icons.html">Biblioteket för standardikoner</a> ligger i <code>@fkui/icon-lib-default</code>.
 Det innehåller licensfria ikoner som används av komponenterna i FKUI.</p>
 <p class="docs-paragraph">För att använda ikoner i din applikation måste du ladda in det <code>spritesheet</code> med ikoner som du vill använda.
 Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.</p>
 <p class="docs-paragraph">Importera ikonbiblioteket genom att lägga nedan i applikationens index.ts eller motsvarande:</p>
 
                 <div
-                    id="example-8dc60a"
+                    id="example-1cbab7"
                     class="code-preview code-preview--default"
                     
                     
@@ -6263,7 +6341,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 Importera den genom:</p>
 
                 <div
-                    id="example-7e49ef"
+                    id="example-da37d6"
                     class="code-preview code-preview--default"
                     
                     
@@ -6346,9 +6424,9 @@ Du bygger då ett nytt ikonbibliotek.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/409ef3e1907cbaeb14cdb7158a174e64137e25e4">409ef3e</a>)<br />
+<div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/24a5060ffa5b1824c80f2da2eff88f245315b922">24a5060</a>)<br />
         
-       <span class="version-text-block">2026-10-07 05:17</span>
+       <span class="version-text-block">2026-10-07 10:43</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
