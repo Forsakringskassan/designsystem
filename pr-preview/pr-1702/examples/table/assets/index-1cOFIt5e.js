@@ -25724,8 +25724,9 @@ function useCombobox(inputRef, options, onOptionSelected) {
 	}
 	function toggleDropdown() {
 		if (!dropdownIsOpen.value) {
-			var _inputRef$value$value;
-			filter.value = (_inputRef$value$value = inputRef.value?.value) !== null && _inputRef$value$value !== void 0 ? _inputRef$value$value : "";
+			const input = inputRef.value;
+			if (!input) return;
+			filter.value = input.value;
 			selectMode.value = options.value ? options.value.includes(filter.value) : false;
 			openSelected();
 		} else close();
@@ -25748,9 +25749,9 @@ function useCombobox(inputRef, options, onOptionSelected) {
 		toggleDropdown();
 	}
 	async function onInputFocus() {
-		var _inputRef$value$value2;
+		var _inputRef$value$value;
 		await nextTick();
-		filter.value = (_inputRef$value$value2 = inputRef.value?.value) !== null && _inputRef$value$value2 !== void 0 ? _inputRef$value$value2 : "";
+		filter.value = (_inputRef$value$value = inputRef.value?.value) !== null && _inputRef$value$value !== void 0 ? _inputRef$value$value : "";
 		selectMode.value = options.value ? options.value.includes(filter.value) : false;
 	}
 	function onInputKeyDown(event) {
