@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 6.61.0 (2026-10-07)
+
+### Features
+
+* **@fkui/docs, @fkui/theme-default:** add `legacy-palette` (refs SFKUI-6500) 24a5060
+
+### Bug Fixes
+
+* **deps:** update dependency cssnano to v9.1.1 ([#1723](undefined/Forsakringskassan/designsystem/issues/1723)) 206bf77
+* **deps:** update dependency cssnano to v9.1.2 4173954
+* **deps:** update dependency cssnano to v9.2.0 065a7d3
+* **deps:** update dependency sass to v1.105.1 dab2735
+
 ## 6.60.0 (2026-09-30)
 
 ### Features
