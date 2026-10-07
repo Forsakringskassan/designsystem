@@ -527,7 +527,6 @@ Om du anropar en funktion med `row` som argument bör du returnera ett standardv
 
 ```html static
 <!-- [html-validate-disable-block deprecated -- legacy component documentation] -->
-<!-- cut above -->
 <f-table-column title="My title" v-format:text="getText(row)"></f-table-column>
 ```
 
