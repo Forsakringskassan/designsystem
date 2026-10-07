@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Ta fram applikation - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-8c489a.css"
+            href="../../assets/docs-068b0c.css"
             crossorigin
-            integrity="sha384-htFyNGJC71FcYize0rIX5QsFMf0j4m2KC0zt4Xagaw8B8vA3LxK1vVQMRxusP3p3"
+            integrity="sha384-scTd4FaZSEHRo+DaMp+5soSmd0mS1fYZOt6k2wscQ4bhXS0ED/Lk50e7fAEzDHtm"
             
         />
         <link
             rel="stylesheet"
-            href="../../assets/docs-fkui-e66b1e.css"
+            href="../../assets/docs-fkui-5ef0ae.css"
             crossorigin
-            integrity="sha384-LcDXiwfq/KWp2fDc62CfeI7oSjeTkx+SIxn9ZR0PJQ9tufyZF0VKkWCraXjrYKTr"
+            integrity="sha384-LmYz9ZqAKmVyq6lleCVqMM3MJVgbDZhRT+NTaLAsJyXmTAz12DfXM4YX4RHJiklb"
             
         />
 
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-193ddf.json"
+    href="../../search-data-72279c.json"
     as="fetch"
     crossorigin
-    integrity="sha384-ObiUbSRbPU3JvVWApx2x/1TdQne1+C8m4NxS6aHIp4+6cq8XNWU8Q8sIhDdYET7V"
+    integrity="sha384-gIot8HuogFIWma8MmMH6mKBVCt0DqcWHmgB7Bac7w/Vsuu/CGzqZ7MGPENFvs/rH"
     id="search-data"
 />
 <script>
@@ -134,11 +134,11 @@
         <div class="layout-wrapper">
             <header><div class="docs-page-header__root">
     <div class="docs-page-header">
-        <div class="docs-page-header__left">
-            <a class="docs-page-header__logo" href="../../index.html">
-                <span aria-label="FK Designsystem" role="img" class="docs-page-header__logo--pipe"> </span>
-            </a>
-            <a class="docs-page-header__app-name" href="../../index.html"> FK Designsystem </a>
+        <div class="docs-page-header__left"><a class="docs-page-header__logo" href="../../index.html">
+    <span aria-label="FK Designsystem" role="img" class="docs-page-header__logo--pipe"> </span>
+</a>
+<a class="docs-page-header__app-name" href="../../index.html"> FK Designsystem </a>
+
         </div>
         <div class="docs-page-header__right"><div class="docs-mobile-nav">
     <input id="mobile-toggle" type="checkbox" class="sr-only" aria-label="Öppen/stängd meny" />
@@ -6240,14 +6240,92 @@ Du behöver sedan referera till filen i assets-katalogen för varje sida.</p>
 </code></pre>
                 </div>
             <h3 id="eget_tema" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#eget_tema">Eget tema</a></h3><p class="docs-paragraph">Utgå från standardtemat och skriv över de variabler som ska ändras.</p>
-<h2 id="importera_ikonbibliotek" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#importera_ikonbibliotek">Importera ikonbibliotek</a></h2><p class="docs-paragraph"><a href="../../styles/icons.html">Biblioteket för standardikoner</a> ligger i <code>@fkui/icon-lib-default</code>.
+<h3 id="gamla_fargpaletten" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#gamla_fargpaletten">Gamla färgpaletten</a></h3><p class="docs-paragraph">Om din applikation inte är redo för den kommande nya färgpaletten för <code>@fkui/theme-default</code> kan du istället använda <code>legacy-palette</code> så att din applikation inte påverkas när den nya färgpaletten släpps.
+<code>legacy-palette</code> skriver över temats färgvariabler med färgerna från den gamla färgpaletten.
+Övriga variabler i temat påverkas inte.
+<code>legacy-palette</code> måste importeras efter temat.</p>
+<h4 id="gamla_fargpaletten_med_sass" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#gamla_fargpaletten_med_sass">Gamla färgpaletten med Sass</a></h4><p class="docs-paragraph">För att applicera den gamla färgpaletten på <code>:root</code>:</p>
+
+                <div
+                    id="example-aec8c0"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> @use &quot;@fkui/theme-default&quot;;
+<span class="hljs-addition">+@use &quot;@fkui/theme-default/src/legacy-palette&quot;;</span>
+ @use &quot;@fkui/design&quot;;
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du applicerar temat på en selektor med <code>$global: false</code> behöver du också sätta <code>$global: false</code> för <code>legacy-palette</code> och inkludera den efter temat:</p>
+
+                <div
+                    id="example-5b2dc8"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-@use &quot;@fkui/theme-default&quot;;</span>
+<span class="hljs-addition">+@use &quot;@fkui/theme-default&quot; as theme with (</span>
+<span class="hljs-addition">+    $global: false</span>
+<span class="hljs-addition">+);</span>
+<span class="hljs-addition">+@use &quot;@fkui/theme-default/src/legacy-palette&quot; with (</span>
+<span class="hljs-addition">+    $global: false</span>
+<span class="hljs-addition">+);</span>
+ @use &quot;@fkui/design&quot;;
+<span class="hljs-addition">+</span>
+<span class="hljs-addition">+.my-scope {</span>
+<span class="hljs-addition">+    @include theme.light;</span>
+<span class="hljs-addition">+    @include legacy-palette.light;</span>
+<span class="hljs-addition">+}</span>
+</code></pre>
+                </div>
+            <h4 id="gamla_fargpaletten_med_css" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#gamla_fargpaletten_med_css">Gamla färgpaletten med CSS</a></h4><p class="docs-paragraph">Om din applikation inte använder Sass finns den gamla färgpaletten som förkompilerade CSS-filer i <code>@fkui/theme-default/dist</code>:</p>
+<ul>
+<li><code>legacy-palette-light.css</code></li>
+<li><code>legacy-palette-dark.css</code></li>
+<li><code>legacy-palette-auto.css</code></li>
+</ul>
+<p class="docs-paragraph">Placera filen i din assets-katalog och referera till den efter <code>fkui.min.css</code>:</p>
+
+                <div
+                    id="example-9e5779"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="html"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/fkui.min.css&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/legacy-palette-light.css&quot;</span> /&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Om du importerar styling till javascript:</p>
+
+                <div
+                    id="example-92b49e"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="nocompile"
+                    data-language="javascript"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/design&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@fkui/theme-default/dist/legacy-palette-light.css&quot;</span>;
+</code></pre>
+                </div>
+            <h2 id="importera_ikonbibliotek" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#importera_ikonbibliotek">Importera ikonbibliotek</a></h2><p class="docs-paragraph"><a href="../../styles/icons.html">Biblioteket för standardikoner</a> ligger i <code>@fkui/icon-lib-default</code>.
 Det innehåller licensfria ikoner som används av komponenterna i FKUI.</p>
 <p class="docs-paragraph">För att använda ikoner i din applikation måste du ladda in det <code>spritesheet</code> med ikoner som du vill använda.
 Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.</p>
 <p class="docs-paragraph">Importera ikonbiblioteket genom att lägga nedan i applikationens index.ts eller motsvarande:</p>
 
                 <div
-                    id="example-8dc60a"
+                    id="example-1cbab7"
                     class="code-preview code-preview--default"
                     
                     
@@ -6263,7 +6341,7 @@ Komponenterna i FKUI är beroende av att minst ett ikon-bibliotek är inladdat.<
 Importera den genom:</p>
 
                 <div
-                    id="example-7e49ef"
+                    id="example-da37d6"
                     class="code-preview code-preview--default"
                     
                     
@@ -6346,9 +6424,9 @@ Du bygger då ett nytt ikonbibliotek.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">feat/deprecate-legacy-table-components</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/86bb6261c18af8dec13d485e373804914a228867">86bb626</a>)<br />
+<div class="version"><span class="version-text-block">feat/deprecate-legacy-table-components</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/a3b7223f4c3fa6718a176d9f5debaaa2f5be1645">a3b7223</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1713">PR 1713</a><br />
-       <span class="version-text-block">2026-10-06 13:38</span>
+       <span class="version-text-block">2026-10-07 12:04</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
@@ -6493,10 +6571,10 @@ Du bygger då ett nytt ikonbibliotek.</p>
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors_selectable-version_select-version-1cbd71.js"
+            src="../../assets/processors_selectable-version_select-version-715db4.js"
             type="module"
             crossorigin
-            integrity="sha384-UoU51gv8jnZvlveMRoxmPBmGkExxiCUGkBqvj/+1F/rQ/Ykef4B3fpk8hoHl7tmL"
+            integrity="sha384-KfdpiMtf1J0EoZAA0Y4Aqy6WSYDDH0n0i8xDoY2K5DiXNtekvBTDDQTnI0Em5teT"
             
         ></script><script
             src="../../assets/processors_cookie_cookie-efa23b.js"
@@ -6505,10 +6583,10 @@ Du bygger då ett nytt ikonbibliotek.</p>
             integrity="sha384-tVCPgyHrw9QQDcAlHqPg4Kp0bEoCdZDJ17PfDW2CxedfOn3IvSDI/FJUCnY/WxiK"
             
         ></script><script
-            src="../../assets/runtime-e09c13.js"
+            src="../../assets/runtime-13f9d3.js"
             type="module"
             crossorigin
-            integrity="sha384-FYAcZYo6w9hJ3JOs9umYgkszdILd0NVT7S7swTZWm/1CPMJLCjeCMNWcgps4/7rw"
+            integrity="sha384-ofcsVhvOiCteqECDozMbFaZY312g0ltucTupeuDajzBqkjmLhol/wLrb3FPA5Crw"
             
         ></script><script
             src="../../assets/main-2a697b.js"
