@@ -40,6 +40,8 @@ Vi nås på <designsystem@forsakringskassan.se>.
 I `FInteractiveTable` definierades kolumner i template med `FTableColumn`.
 
 ```html static
+<!-- [html-validate-disable-block deprecated -- migration guide] -->
+<!-- cut above -->
 <f-table-column title="Namn" type="text"> {{ row.name }} </f-table-column>
 ```
 
