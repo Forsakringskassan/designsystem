@@ -125,7 +125,7 @@
     "markdownlint-cli2": "0.23.3",
     "markdownlint-rule-max-one-sentence-per-line": "0.0.2",
     "mocha-junit-reporter": "2.2.1",
-    "npm-pkg-lint": "5.3.1",
+    "npm-pkg-lint": "5.4.0",
     "npm-run-all2": "9.0.3",
     "postcss": "8.5.28",
     "rimraf": "6.1.3",
