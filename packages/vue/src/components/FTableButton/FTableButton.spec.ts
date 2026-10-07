@@ -64,6 +64,33 @@ it("icon library should be set when iconLibrary prop is used", () => {
 });
 
 describe("html-validate", () => {
+    it("should be deprecated", async () => {
+        expect.assertions(1);
+        const markup = /* HTML */ `
+            <f-table-column title="lorem ipsum">
+                <f-table-button>lorem ipsum</f-table-button>
+            </f-table-column>
+        `;
+        await expect(markup).toMatchInlineCodeframe(`
+          "error: <f-table-column> is deprecated: use <f-table> and define columns with defineTableColumns() instead of <f-table-column> (deprecated)
+            1 |
+          > 2 |             <f-table-column title="lorem ipsum">
+              |              ^^^^^^^^^^^^^^
+            3 |                 <f-table-button>lorem ipsum</f-table-button>
+            4 |             </f-table-column>
+            5 |
+          Selector: f-table-column
+          error: <f-table-button> is deprecated: use <f-table> with a column of type "button" in defineTableColumns() instead of <f-table-button> (deprecated)
+            1 |
+            2 |             <f-table-column title="lorem ipsum">
+          > 3 |                 <f-table-button>lorem ipsum</f-table-button>
+              |                  ^^^^^^^^^^^^^^
+            4 |             </f-table-column>
+            5 |
+          Selector: f-table-column > f-table-button"
+        `);
+    });
+
     it("should require text content", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
@@ -149,15 +176,17 @@ describe("html-validate", () => {
     it("should require FTableColumn ancestor", async () => {
         expect.assertions(1);
         const markup = /* HTML */ `
+            <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
             <f-table-button>lorem ipsum</f-table-button>
         `;
         await expect(markup).toMatchInlineCodeframe(`
-            "error: <f-table-button> element requires a <f-table-column> ancestor (element-required-ancestor)
-              1 |
-            > 2 |             <f-table-button>lorem ipsum</f-table-button>
-                |              ^^^^^^^^^^^^^^
-              3 |
-            Selector: f-table-button"
+          "error: <f-table-button> element requires a <f-table-column> ancestor (element-required-ancestor)
+            1 |
+            2 |             <!-- [html-validate-disable-block deprecated -- validating legacy component rules] -->
+          > 3 |             <f-table-button>lorem ipsum</f-table-button>
+              |              ^^^^^^^^^^^^^^
+            4 |
+          Selector: f-table-button"
         `);
     });
 

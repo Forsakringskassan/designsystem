@@ -1,3 +1,10 @@
+<script lang="ts">
+/**
+ * @deprecated Use a column with `type: "button"` in `<f-table>` instead.
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import { FIcon } from "../FIcon";
 

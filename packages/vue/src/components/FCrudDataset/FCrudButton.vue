@@ -80,7 +80,7 @@ function executeAction(): void {
 </script>
 
 <template>
-    <!-- [html-validate-disable-block element-permitted-content, element-required-ancestor -- this is now the responsibility of FCrudButton instead] -->
+    <!-- [html-validate-disable-block element-permitted-content, element-required-ancestor, deprecated -- this is now the responsibility of FCrudButton instead] -->
     <f-table-button :icon="iconName" :label="props.label" @click="executeAction">
         <!--
              @slot Slot used to provide custom content for the button text.
