@@ -25723,8 +25723,13 @@ function useCombobox(inputRef, options, onOptionSelected) {
 		activeOption.value = null;
 	}
 	function toggleDropdown() {
-		if (!dropdownIsOpen.value) openSelected();
-		else close();
+		if (!dropdownIsOpen.value) {
+			const input = inputRef.value;
+			if (!input) return;
+			filter.value = input.value;
+			selectMode.value = options.value ? options.value.includes(filter.value) : false;
+			openSelected();
+		} else close();
 	}
 	function setNextOption() {
 		if (activeOption.value && hasMultipleOptions.value) {
