@@ -28,7 +28,7 @@ describe("yesterday, today, tomorrow", () => {
     it("should return today text when date is today", () => {
         expect.assertions(1);
         expect(getCalendarDaySrText(FDate.now(), true, false, t)).toBe(
-            "idag lördag 24 december 2022",
+            "idag lördag\u{A0}24\u{A0}december\u{A0}2022",
         );
     });
 
@@ -36,25 +36,25 @@ describe("yesterday, today, tomorrow", () => {
         expect.assertions(1);
         expect(
             getCalendarDaySrText(FDate.now().addDays(-1), true, false, t),
-        ).toBe("igår fredag 23 december 2022");
+        ).toBe("igår fredag\u{A0}23\u{A0}december\u{A0}2022");
     });
 
     it("should return tomorrow text when date is tomorrow", () => {
         expect.assertions(1);
         expect(
             getCalendarDaySrText(FDate.now().addDays(1), true, false, t),
-        ).toBe("imorgon söndag 25 december 2022");
+        ).toBe("imorgon söndag\u{A0}25\u{A0}december\u{A0}2022");
     });
 
     it("should not return extra text when date differs from yesterday, today, tomorrow", () => {
         expect.assertions(2);
         expect(
             getCalendarDaySrText(FDate.now().addDays(-2), true, false, t),
-        ).toBe("torsdag 22 december 2022");
+        ).toBe("torsdag\u{A0}22\u{A0}december\u{A0}2022");
 
         expect(
             getCalendarDaySrText(FDate.now().addDays(2), true, false, t),
-        ).toBe("måndag 26 december 2022");
+        ).toBe("måndag\u{A0}26\u{A0}december\u{A0}2022");
     });
 });
 
@@ -63,14 +63,14 @@ describe("selected", () => {
         expect.assertions(1);
         expect(
             getCalendarDaySrText(FDate.fromIso("2022-06-22"), true, true, t),
-        ).toBe("vald dag onsdag 22 juni 2022");
+        ).toBe("vald dag onsdag\u{A0}22\u{A0}juni\u{A0}2022");
     });
 
     it("should not return selected text when date is not selected", () => {
         expect.assertions(1);
         expect(
             getCalendarDaySrText(FDate.fromIso("2022-06-22"), true, false, t),
-        ).toBe("onsdag 22 juni 2022");
+        ).toBe("onsdag\u{A0}22\u{A0}juni\u{A0}2022");
     });
 });
 
@@ -79,14 +79,14 @@ describe("enabled", () => {
         expect.assertions(1);
         expect(
             getCalendarDaySrText(FDate.fromIso("2022-06-22"), true, false, t),
-        ).toBe("onsdag 22 juni 2022");
+        ).toBe("onsdag\u{A0}22\u{A0}juni\u{A0}2022");
     });
 
     it("should return disabled text when date is disabled", () => {
         expect.assertions(1);
         expect(
             getCalendarDaySrText(FDate.fromIso("2022-06-22"), false, false, t),
-        ).toBe("inte valbar onsdag 22 juni 2022");
+        ).toBe("inte valbar onsdag\u{A0}22\u{A0}juni\u{A0}2022");
     });
 });
 
@@ -97,6 +97,6 @@ describe("mixed today, selected, enabled", () => {
 
         expect(
             getCalendarDaySrText(FDate.fromIso("2022-08-08"), true, true, t),
-        ).toBe("vald dag idag måndag 8 augusti 2022");
+        ).toBe("vald dag idag måndag\u{A0}8\u{A0}augusti\u{A0}2022");
     });
 });

@@ -298,7 +298,7 @@ describe("Date long", () => {
             `,
         });
         expect(wrapper.html()).toMatchInlineSnapshot(
-            `"<span class="formatter--date-long">3 april 2025</span>"`,
+            `"<span class="formatter--date-long">3&nbsp;april&nbsp;2025</span>"`,
         );
     });
 
@@ -312,7 +312,7 @@ describe("Date long", () => {
             },
         });
         expect(wrapper.html()).toMatchInlineSnapshot(
-            `"<span class="formatter--date-long">15 april 2025</span>"`,
+            `"<span class="formatter--date-long">15&nbsp;april&nbsp;2025</span>"`,
         );
     });
 
@@ -373,7 +373,7 @@ describe("Date long", () => {
         });
 
         expect(wrapper.html()).toMatchInlineSnapshot(`
-          "<span class="formatter--date-long">31 december 2025</span>
+          "<span class="formatter--date-long">31&nbsp;december&nbsp;2025</span>
           <button type="button">Update</button>"
         `);
         const button = wrapper.get("button").element;
@@ -381,7 +381,7 @@ describe("Date long", () => {
         await wrapper.vm.$nextTick();
 
         expect(wrapper.html()).toMatchInlineSnapshot(`
-          "<span class="formatter--date-long">1 januari 2020</span>
+          "<span class="formatter--date-long">1&nbsp;januari&nbsp;2020</span>
           <button type="button">Update</button>"
         `);
     });
@@ -396,7 +396,7 @@ describe("Date full", () => {
             `,
         });
         expect(wrapper.html()).toMatchInlineSnapshot(
-            `"<span class="formatter--date-full">torsdag 3 april 2025</span>"`,
+            `"<span class="formatter--date-full">torsdag&nbsp;3&nbsp;april&nbsp;2025</span>"`,
         );
     });
 
@@ -410,7 +410,7 @@ describe("Date full", () => {
             },
         });
         expect(wrapper.html()).toMatchInlineSnapshot(
-            `"<span class="formatter--date-full">tisdag 15 april 2025</span>"`,
+            `"<span class="formatter--date-full">tisdag&nbsp;15&nbsp;april&nbsp;2025</span>"`,
         );
     });
 
@@ -471,7 +471,7 @@ describe("Date full", () => {
         });
 
         expect(wrapper.html()).toMatchInlineSnapshot(`
-          "<span class="formatter--date-full">onsdag 31 december 2025</span>
+          "<span class="formatter--date-full">onsdag&nbsp;31&nbsp;december&nbsp;2025</span>
           <button type="button">Update</button>"
         `);
         const button = wrapper.get("button").element;
@@ -479,7 +479,7 @@ describe("Date full", () => {
         await wrapper.vm.$nextTick();
 
         expect(wrapper.html()).toMatchInlineSnapshot(`
-          "<span class="formatter--date-full">onsdag 1 januari 2020</span>
+          "<span class="formatter--date-full">onsdag&nbsp;1&nbsp;januari&nbsp;2020</span>
           <button type="button">Update</button>"
         `);
     });
@@ -517,7 +517,7 @@ describe("Date range", () => {
             `,
         });
         expect(wrapper.html()).toMatchInlineSnapshot(
-            `"<span class="formatter--date-range">1 november 2020 – 3 april 2025</span>"`,
+            `"<span class="formatter--date-range">1&nbsp;november&nbsp;2020 – 3&nbsp;april&nbsp;2025</span>"`,
         );
     });
 
@@ -537,7 +537,7 @@ describe("Date range", () => {
             },
         });
         expect(wrapper.html()).toMatchInlineSnapshot(
-            `"<span class="formatter--date-range">15 april – 24 juli 2025</span>"`,
+            `"<span class="formatter--date-range">15 april – 24&nbsp;juli&nbsp;2025</span>"`,
         );
     });
 
@@ -553,7 +553,7 @@ describe("Date range", () => {
             ></span>`,
         });
         expect(wrapper.html()).toMatchInlineSnapshot(
-            `"<span class="formatter--date-range">3 – 5 maj 2000</span>"`,
+            `"<span class="formatter--date-range">3 – 5&nbsp;maj&nbsp;2000</span>"`,
         );
     });
 
@@ -569,7 +569,7 @@ describe("Date range", () => {
             ></span>`,
         });
         expect(wrapper.html()).toMatchInlineSnapshot(
-            `"<span class="formatter--date-range">5 juni – 5 juli 2000</span>"`,
+            `"<span class="formatter--date-range">5 juni – 5&nbsp;juli&nbsp;2000</span>"`,
         );
     });
 
@@ -585,7 +585,7 @@ describe("Date range", () => {
             ></span>`,
         });
         expect(wrapper.html()).toMatchInlineSnapshot(
-            `"<span class="formatter--date-range">4 juni 2000 – 16 februari 2001</span>"`,
+            `"<span class="formatter--date-range">4&nbsp;juni&nbsp;2000 – 16&nbsp;februari&nbsp;2001</span>"`,
         );
     });
 
@@ -657,7 +657,7 @@ describe("Date range", () => {
         });
 
         expect(wrapper.html()).toMatchInlineSnapshot(`
-          "<span class="formatter--date-range">1 januari 2020 – 3 april 2025</span>
+          "<span class="formatter--date-range">1&nbsp;januari&nbsp;2020 – 3&nbsp;april&nbsp;2025</span>
           <button type="button">Update</button>"
         `);
         const button = wrapper.get("button").element;
@@ -665,7 +665,7 @@ describe("Date range", () => {
         await wrapper.vm.$nextTick();
 
         expect(wrapper.html()).toMatchInlineSnapshot(`
-          "<span class="formatter--date-range">3 februari 1999 – 3 april 2025</span>
+          "<span class="formatter--date-range">3&nbsp;februari&nbsp;1999 – 3&nbsp;april&nbsp;2025</span>
           <button type="button">Update</button>"
         `);
     });
