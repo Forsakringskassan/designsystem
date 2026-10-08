@@ -13528,14 +13528,14 @@ Locale$1.SWEDISH, Weekday$1.MONDAY, Weekday$1.TUESDAY, Weekday$1.WEDNESDAY, Week
 var ISO8601_YYYY_MM_DD$1 = "YYYY-MM-DD";
 var formatter$1 = {
 	[Locale$1.SWEDISH]: {
-		[DateFormat$1.FULL]: "dddd D MMMM YYYY",
-		[DateFormat$1.LONG]: "D MMMM YYYY",
+		[DateFormat$1.FULL]: "dddd\xA0D\xA0MMMM\xA0YYYY",
+		[DateFormat$1.LONG]: "D\xA0MMMM\xA0YYYY",
 		[DateFormat$1.ISO8601]: ISO8601_YYYY_MM_DD$1,
 		[DateFormat$1.YYYYMMDD]: "YYYYMMDD"
 	},
 	[Locale$1.ENGLISH]: {
-		[DateFormat$1.FULL]: "dddd, D MMMM YYYY",
-		[DateFormat$1.LONG]: "D MMMM YYYY",
+		[DateFormat$1.FULL]: "dddd,\xA0D\xA0MMMM\xA0YYYY",
+		[DateFormat$1.LONG]: "D\xA0MMMM\xA0YYYY",
 		[DateFormat$1.ISO8601]: ISO8601_YYYY_MM_DD$1,
 		[DateFormat$1.YYYYMMDD]: "YYYYMMDD"
 	}
@@ -15895,14 +15895,14 @@ Locale.SWEDISH, Weekday.MONDAY, Weekday.TUESDAY, Weekday.WEDNESDAY, Weekday.THUR
 var ISO8601_YYYY_MM_DD = "YYYY-MM-DD";
 var formatter = {
 	[Locale.SWEDISH]: {
-		[DateFormat.FULL]: "dddd D MMMM YYYY",
-		[DateFormat.LONG]: "D MMMM YYYY",
+		[DateFormat.FULL]: "dddd\xA0D\xA0MMMM\xA0YYYY",
+		[DateFormat.LONG]: "D\xA0MMMM\xA0YYYY",
 		[DateFormat.ISO8601]: ISO8601_YYYY_MM_DD,
 		[DateFormat.YYYYMMDD]: "YYYYMMDD"
 	},
 	[Locale.ENGLISH]: {
-		[DateFormat.FULL]: "dddd, D MMMM YYYY",
-		[DateFormat.LONG]: "D MMMM YYYY",
+		[DateFormat.FULL]: "dddd,\xA0D\xA0MMMM\xA0YYYY",
+		[DateFormat.LONG]: "D\xA0MMMM\xA0YYYY",
 		[DateFormat.ISO8601]: ISO8601_YYYY_MM_DD,
 		[DateFormat.YYYYMMDD]: "YYYYMMDD"
 	}
