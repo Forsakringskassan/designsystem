@@ -78,7 +78,10 @@ describe("enter a valid date and leave textfield", () => {
     it("should set calendar button sr-text", () => {
         datepickerField
             .toggleCalendarButton()
-            .should("contain.text", "Ändra datum tisdag 1 mars 2022");
+            .should(
+                "contain.text",
+                "Ändra datum tisdag\u{A0}1\u{A0}mars\u{A0}2022",
+            );
     });
 });
 
@@ -207,13 +210,16 @@ describe("open calendar", () => {
     it("should set default day sr-text", () => {
         datepickerField
             .dayButton("2022-12-01")
-            .should("contain.text", "torsdag 1 december 2022");
+            .should("contain.text", "torsdag\u{A0}1\u{A0}december\u{A0}2022");
     });
 
     it("should set today's day sr-text", () => {
         datepickerField
             .dayButton("2022-12-24")
-            .should("contain.text", "idag lördag 24 december 2022");
+            .should(
+                "contain.text",
+                "idag lördag\u{A0}24\u{A0}december\u{A0}2022",
+            );
     });
 
     it("should have entry focus on day 1 when nothing is selected", () => {
@@ -511,25 +517,37 @@ describe("open calendar and focus on a day", () => {
 
     it("should navigate when pressing  focus on prev day when pressing left arrow", () => {
         cy.focused().trigger("keydown", { code: "ArrowLeft" });
-        cy.focused().should("contain.text", "onsdag 30 november 2022");
+        cy.focused().should(
+            "contain.text",
+            "onsdag\u{A0}30\u{A0}november\u{A0}2022",
+        );
         cy.focused().should("have.attr", "tabindex", 0);
     });
 
     it("should focus on next day when pressing right arrow", () => {
         cy.focused().trigger("keydown", { code: "ArrowRight" });
-        cy.focused().should("contain.text", "fredag 2 december 2022");
+        cy.focused().should(
+            "contain.text",
+            "fredag\u{A0}2\u{A0}december\u{A0}2022",
+        );
         cy.focused().should("have.attr", "tabindex", 0);
     });
 
     it("should focus on prev week when pressing up arrow", () => {
         cy.focused().trigger("keydown", { code: "ArrowUp" });
-        cy.focused().should("contain.text", "torsdag 24 november 2022");
+        cy.focused().should(
+            "contain.text",
+            "torsdag\u{A0}24\u{A0}november\u{A0}2022",
+        );
         cy.focused().should("have.attr", "tabindex", 0);
     });
 
     it("should focus on next week when pressing down arrow", () => {
         cy.focused().trigger("keydown", { code: "ArrowDown" });
-        cy.focused().should("contain.text", "torsdag 8 december 2022");
+        cy.focused().should(
+            "contain.text",
+            "torsdag\u{A0}8\u{A0}december\u{A0}2022",
+        );
         cy.focused().should("have.attr", "tabindex", 0);
     });
 });
@@ -802,7 +820,10 @@ describe("valid date", () => {
         it("should set selected day sr-text", () => {
             datepickerField
                 .selectedDay()
-                .should("contain.text", "vald dag lördag 31 december 2022");
+                .should(
+                    "contain.text",
+                    "vald dag lördag\u{A0}31\u{A0}december\u{A0}2022",
+                );
         });
 
         it("should have entry focus on selected day if it is within current month", () => {
@@ -848,7 +869,7 @@ describe("today's date", () => {
                 .selectedDay()
                 .should(
                     "contain.text",
-                    "vald dag idag lördag 24 december 2022",
+                    "vald dag idag lördag\u{A0}24\u{A0}december\u{A0}2022",
                 );
         });
     });
@@ -996,7 +1017,10 @@ describe("disabled days", () => {
             datepickerField.toggleCalendarButton().click();
             datepickerField
                 .dayButton("2022-12-01")
-                .should("contain.text", "inte valbar torsdag 1 december 2022");
+                .should(
+                    "contain.text",
+                    "inte valbar torsdag\u{A0}1\u{A0}december\u{A0}2022",
+                );
         });
 
         it("should set corresponding days as disabled", () => {
