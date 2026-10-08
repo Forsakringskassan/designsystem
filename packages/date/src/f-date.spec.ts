@@ -552,13 +552,17 @@ describe("toString()", () => {
     it("should return date formatted as full format", () => {
         expect.assertions(1);
         const date = FDate.fromIso("2012-02-29");
-        expect(date.toString(DateFormat.FULL)).toBe("onsdag 29 februari 2012");
+        expect(date.toString(DateFormat.FULL)).toBe(
+            "onsdag\u{A0}29\u{A0}februari\u{A0}2012",
+        );
     });
 
     it("should return date formatted as long format", () => {
         expect.assertions(1);
         const date = FDate.fromIso("2012-02-29");
-        expect(date.toString(DateFormat.LONG)).toBe("29 februari 2012");
+        expect(date.toString(DateFormat.LONG)).toBe(
+            "29\u{A0}februari\u{A0}2012",
+        );
     });
 
     it("should return date formatted as ISO-8601", () => {
@@ -608,8 +612,8 @@ describe("should support locales", () => {
         expect(result).toMatchInlineSnapshot(`
             {
               "dayName": "tisdag",
-              "full": "tisdag 31 januari 2012",
-              "long": "31 januari 2012",
+              "full": "tisdag\u{A0}31\u{A0}januari\u{A0}2012",
+              "long": "31\u{A0}januari\u{A0}2012",
               "monthName": "januari",
             }
         `);
@@ -628,8 +632,8 @@ describe("should support locales", () => {
         expect(result).toMatchInlineSnapshot(`
             {
               "dayName": "Tuesday",
-              "full": "Tuesday, 31 January 2012",
-              "long": "31 January 2012",
+              "full": "Tuesday,\u{A0}31\u{A0}January\u{A0}2012",
+              "long": "31\u{A0}January\u{A0}2012",
               "monthName": "January",
             }
         `);
