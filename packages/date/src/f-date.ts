@@ -10,16 +10,17 @@ type Formatter = Record<DateFormat, string>;
 
 const ISO8601_YYYY_MM_DD = "YYYY-MM-DD";
 
+// Non-breaking spaces keep a formatted date together as one unit, preventing it from wrapping across lines and improving readability and accessibility.
 const formatter: Record<Locale, Formatter> = {
     [Locale.SWEDISH]: {
-        [DateFormat.FULL]: "dddd D MMMM YYYY",
-        [DateFormat.LONG]: "D MMMM YYYY",
+        [DateFormat.FULL]: "dddd\u{A0}D\u{A0}MMMM\u{A0}YYYY",
+        [DateFormat.LONG]: "D\u{A0}MMMM\u{A0}YYYY",
         [DateFormat.ISO8601]: ISO8601_YYYY_MM_DD,
         [DateFormat.YYYYMMDD]: "YYYYMMDD",
     },
     [Locale.ENGLISH]: {
-        [DateFormat.FULL]: "dddd, D MMMM YYYY",
-        [DateFormat.LONG]: "D MMMM YYYY",
+        [DateFormat.FULL]: "dddd,\u{A0}D\u{A0}MMMM\u{A0}YYYY",
+        [DateFormat.LONG]: "D\u{A0}MMMM\u{A0}YYYY",
         [DateFormat.ISO8601]: ISO8601_YYYY_MM_DD,
         [DateFormat.YYYYMMDD]: "YYYYMMDD",
     },
