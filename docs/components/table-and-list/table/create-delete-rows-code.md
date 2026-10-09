@@ -23,8 +23,8 @@ dataset.push(newRow);
 
 Använd metoden `withTabstopBehaviour` som tabellkomponenten exponerar för att fokus ska landa på prioriterad cell efter borttag.
 
-Använd metoden `removeDatasetRows` för att smidigt ta bort en eller flera rader i din datamängd.
-Metoden muterar ditt befintliga dataset.
+Använd metoden `removeTableRows` för att smidigt ta bort en eller flera rader i din datamängd.
+Metoden muterar din befintliga datamängd.
 
 ```ts
 import { ref, useTemplateRef } from "vue";
@@ -34,7 +34,7 @@ import {
     FButton,
     FTable,
     defineTableColumns,
-    removeDatasetRows,
+    removeTableRows,
     useDatasetRef,
 } from "@fkui/vue";
 
@@ -72,7 +72,7 @@ function onRemoveRow(row: Row): void {
     assertRef(tableRef);
 
     tableRef.value.withTabstopBehaviour("row-removal", () => {
-        removeDatasetRows(rows, row);
+        removeTableRows(rows, row);
     });
 }
 ```

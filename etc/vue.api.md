@@ -1404,7 +1404,10 @@ export function refIsVueArray(value: unknown): value is ComponentPublicInstance[
 export function registerLayout<T extends LayoutDefinition>(definition: T): void;
 
 // @public
-export function removeDatasetRows<T extends object>(dataset: MaybeRef<Dataset<T>>, rows: MaybeRef<T | T[]>): void;
+export function removeDatasetRows<T extends object>(dataset: MaybeRef<Dataset<T> | T[]>, rows: MaybeRef<T | T[]>): void;
+
+// @public
+export function removeTableRows<T extends object>(rows: T[], rowsToRemove: T | T[], expandableAttribute?: keyof T): void;
 
 // @public (undocumented)
 export interface RenderSlotOptions {

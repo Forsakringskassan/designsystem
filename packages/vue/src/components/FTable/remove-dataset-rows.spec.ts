@@ -82,4 +82,23 @@ describe("row removal", () => {
         expect(dataset.value).toHaveLength(1);
         expect(dataset.value.find((r) => r.id === 2)).toBeDefined();
     });
+
+    it("should remove rows from a regular array", () => {
+        expect.assertions(2);
+        const rows: Row[] = [{ id: 1 }, { id: 2 }, { id: 3 }];
+
+        removeDatasetRows(rows, [rows[0], rows[2]]);
+
+        expect(rows).toHaveLength(1);
+        expect(rows[0].id).toBe(2);
+    });
+
+    it("should not remove expandable rows from a regular array", () => {
+        expect.assertions(1);
+        const rows: Row[] = [{ id: 1, expandableRows: [{ id: 11 }] }];
+
+        removeDatasetRows(rows, rows[0].expandableRows![0]);
+
+        expect(rows[0].expandableRows).toEqual([{ id: 11 }]);
+    });
 });

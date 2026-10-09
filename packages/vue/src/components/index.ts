@@ -205,5 +205,6 @@ export {
     getTableSortableAttributes,
     numberTypes,
     removeDatasetRows,
+    removeTableRows,
     textTypes,
 } from "./FTable";
