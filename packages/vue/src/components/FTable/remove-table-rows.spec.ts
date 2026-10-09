@@ -26,6 +26,30 @@ describe("removeTableRows", () => {
         expect(rows).toEqual([{ id: 2 }]);
     });
 
+    it("should remove rows at any nesting level", () => {
+        expect.assertions(1);
+        const rows: Row[] = [
+            { id: 1 },
+            {
+                id: 2,
+                children: [{ id: 21, children: [{ id: 211 }, { id: 212 }] }],
+            },
+        ];
+
+        removeTableRows(rows, rows[1].children![0].children![0], "children");
+
+        expect(rows[1].children![0].children).toEqual([{ id: 212 }]);
+    });
+
+    it("should remove all rows when the same array is passed as rows and rowsToRemove", () => {
+        expect.assertions(1);
+        const rows: Row[] = [{ id: 1 }, { id: 2 }, { id: 3 }];
+
+        removeTableRows(rows, rows);
+
+        expect(rows).toEqual([]);
+    });
+
     it("should remove rows from a ref", () => {
         expect.assertions(1);
         const rows = ref<Row[]>([{ id: 1 }, { id: 2 }, { id: 3 }]);
