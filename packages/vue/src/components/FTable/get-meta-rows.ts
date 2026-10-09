@@ -1,8 +1,4 @@
-import {
-    type ItemIdentifier,
-    getDatasetMetadata,
-    getItemIdentifier,
-} from "../../utils";
+import { type ItemIdentifier, getItemIdentifier } from "../../utils";
 import { type MetaRow } from "./meta-row";
 import { walk } from "./walk";
 
@@ -14,37 +10,30 @@ export function getMetaRows<T extends object>(
     expandedKeys: Set<ItemIdentifier>,
     expandableAttribute?: keyof T,
 ): Array<MetaRow<T>> {
+    if (expandableAttribute === undefined) {
+        return keyedRows.map((row) => ({
+            key: getItemIdentifier(row),
+            row,
+        }));
+    }
+
     const array: Array<MetaRow<T>> = [];
 
-    walk(keyedRows, expandableAttribute, (row) => {
+    walk(keyedRows, expandableAttribute, (row, level, setsize, posinset) => {
         const key = getItemIdentifier(row);
-        const isExpandable = Boolean(
-            expandableAttribute &&
-            Array.isArray(row[expandableAttribute]) &&
-            row[expandableAttribute].length > 0,
-        );
-
-        const { ariaLevel, ariaPosInSet, ariaRowIndex, ariaSetSize } =
-            getDatasetMetadata(row);
-        const rowIndex = ariaRowIndex + 1; // +1 to include header row
+        const children = row[expandableAttribute];
+        const isExpandable = Array.isArray(children) && children.length > 0;
         const isExpanded = isExpandable && expandedKeys.has(key);
 
-        let metarow: MetaRow<T> = {
+        const metarow: MetaRow<T> = {
             key,
             row,
-            rowIndex,
             isExpandable,
             isExpanded,
+            level,
+            setsize,
+            posinset,
         };
-
-        if (expandableAttribute) {
-            metarow = {
-                level: ariaLevel,
-                posinset: ariaPosInSet,
-                setsize: ariaSetSize,
-                ...metarow,
-            };
-        }
 
         array.push(metarow);
 
