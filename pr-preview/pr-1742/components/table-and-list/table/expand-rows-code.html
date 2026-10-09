@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../../assets/vendor-fkui-vue-selectors-91ece2.js",
     "@fkui/logic": "../../../assets/vendor-fkui-logic-af161a.js",
     "@fkui/date": "../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../assets/vendor-fkui-vue-2b4287.js",
+    "@fkui/vue": "../../../assets/vendor-fkui-vue-5705ff.js",
     "@fkui/vue-labs": "../../../assets/vendor-fkui-vue-labs-59db36.js",
     "@forsakringskassan/docs-live-example": "../../../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js"
   },
@@ -35,7 +35,7 @@
     "../../../assets/vendor-fkui-vue-selectors-91ece2.js": "sha384-JAQYszmezn6fEXVWuq7QZxMzVu4EX1/dVRgEP0HnWMzgHABgFbBfBGN+XlbtVWnt",
     "../../../assets/vendor-fkui-logic-af161a.js": "sha384-Wl55FjgQ57C00bSZGJO0m+91pwbX1dXODsA86PSv4gYNehWxi5ACsZRPeK9hvFjz",
     "../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../assets/vendor-fkui-vue-2b4287.js": "sha384-ZTjGn63f+yJobnwX1+fRVLOa/JzyySrnSQYhFmMGrNgBaqaKmHwBEc9UM1lqkQ4B",
+    "../../../assets/vendor-fkui-vue-5705ff.js": "sha384-zsbJlJFq/JQPrumsoLRqkW70HId1i/9j43B7v4sXDHGgBkDGVzcK8kwwPGYv7C2u",
     "../../../assets/vendor-fkui-vue-labs-59db36.js": "sha384-lZUC9laa/ssLtJePpKjK6elLLQVt4JPthEwGVEgSEr5PY3gvupaz53R+iGDZRr1S",
     "../../../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js": "sha384-VKppHxCeZq82kVDB1OYOYbpV834R6UMQhJGy0Ljiv1cQlksKAiIBgmXoroQOISfR"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-8d61c5.json"
+    href="../../../search-data-5e5e7e.json"
     as="fetch"
     crossorigin
-    integrity="sha384-qvGvdt8wL06lU9cCvDQ4NfkJ8RYiacx6FpJASa/P6/P1NVKuC4IZUifp6pA/xSyN"
+    integrity="sha384-YcR6NY913nCl/10FeSogcLAz1Tk4iGKpP8I47jJdf4/Xgk4wj0l2usqEO8XXjx+p"
     id="search-data"
 />
 <script>
@@ -4227,11 +4227,7 @@
                     
                 
                     
-                
-                    
                         
-                    
-                
                     
                 
                     
@@ -4299,19 +4295,6 @@
             
         >
             assertSet()
-        </a>
-    </li>
-
-<li class="link ">
-        <a
-            href="../../../functions/functions/dataset-iterator.html"
-            
-            
-            
-            data-path="functions/functions/dataset-iterator.html"
-            
-        >
-            datasetIterator()
         </a>
     </li>
 
@@ -4612,19 +4595,6 @@
 
 <li class="link ">
         <a
-            href="../../../functions/functions/get-dataset-metadata.html"
-            
-            
-            
-            data-path="functions/functions/get-dataset-metadata.html"
-            
-        >
-            getDatasetMetadata()
-        </a>
-    </li>
-
-<li class="link ">
-        <a
             href="../../../functions/functions/handle-keyboard-focus-navigation.html"
             
             
@@ -4762,6 +4732,19 @@
 
 <li class="link ">
         <a
+            href="../../../functions/functions/remove-table-rows.html"
+            
+            
+            
+            data-path="functions/functions/remove-table-rows.html"
+            
+        >
+            removeTableRows()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
             href="../../../functions/functions/render-slot-text.html"
             
             
@@ -4809,19 +4792,6 @@
             
         >
             useAreaData()
-        </a>
-    </li>
-
-<li class="link ">
-        <a
-            href="../../../functions/functions/use-dataset-ref.html"
-            
-            
-            
-            data-path="functions/functions/use-dataset-ref.html"
-            
-        >
-            useDatasetRef()
         </a>
     </li>
 
@@ -7139,13 +7109,13 @@
                     data-language="vue"
                 >
                     
-        <div id="example-a9a1a6"></div>
+        <div id="example-0d8d99"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FTableExpandableLiveExample-a9a1a6.js"></script>
+        <script type="module" src="./FTableExpandableLiveExample-0d8d99.js"></script>
     
                 </div>
             <p class="docs-paragraph">Givet att vi har en datakälla med nästlade rader:</p>
@@ -7165,28 +7135,25 @@
 }
 </code></pre>
                 </div>
-            <p class="docs-paragraph">För att använda expanderade rader i tabellen anger du egenskapens namn när du skapar datamängden:</p>
+            <p class="docs-paragraph">Ange den nästlade egenskapens namn med <code>expandable-attribute</code>:</p>
 
                 <div
-                    id="example-57122e"
+                    id="example-e948f7"
                     class="code-preview code-preview--default"
                     
-                    
+                    data-tags="static"
                     data-language="diff"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> import { useDatasetRef } from &quot;@fkui/vue&quot;;
- 
-<span class="hljs-deletion">-const rows = useDatasetRef(data);</span>
-<span class="hljs-addition">+const rows = useDatasetRef(data, &quot;nested&quot;);</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table :rows :columns&gt;&lt;/f-table&gt;</span>
+<span class="hljs-addition">+&lt;f-table :rows :columns expandable-attribute=&quot;nested&quot;&gt;&lt;/f-table&gt;</span>
 </code></pre>
                 </div>
-            <p class="docs-paragraph">Tabellen känner av om datamängden har skapats med nästlad data automatiskt.</p>
-<h2 id="folja_existerande_kolumner" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#folja_existerande_kolumner">Följa existerande kolumner</a></h2><p class="docs-paragraph">Tabellen presenterar rader med nästlad data som expanderade rader.
+            <h2 id="folja_existerande_kolumner" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#folja_existerande_kolumner">Följa existerande kolumner</a></h2><p class="docs-paragraph">Tabellen presenterar rader med nästlad data som expanderade rader.
 Som standard följer expanderade rader samma kolumnstruktur som överordnade rader.</p>
 
                 <div
-                    id="example-136f00"
+                    id="example-0c5f7c"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -7196,13 +7163,13 @@ Som standard följer expanderade rader samma kolumnstruktur som överordnade rad
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-ef5ce4"></div>
+        <div id="example-02eb42"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./expand-rows-code-ef5ce4.js"></script>
+        <script type="module" src="./expand-rows-code-02eb42.js"></script>
     
                     </div>
                 </div>
@@ -7210,14 +7177,14 @@ Som standard följer expanderade rader samma kolumnstruktur som överordnade rad
 Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som ligger i datastrukturen behöver inte följa ordinarie rader.</p>
 
                 <div
-                    id="example-d122c3"
+                    id="example-37a2a5"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
                     data-language="html"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>&gt;</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">expandable-attribute</span>=<span class="hljs-string">&quot;nested&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">expandable</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{{ row }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -7226,7 +7193,7 @@ Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som
                 </div>
             
                 <div
-                    id="example-b7b833"
+                    id="example-531dd5"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -7236,13 +7203,13 @@ Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-13e212"></div>
+        <div id="example-7473b3"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./expand-rows-code-13e212.js"></script>
+        <script type="module" src="./expand-rows-code-7473b3.js"></script>
     
                     </div>
                 </div>
@@ -7317,9 +7284,9 @@ Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">use-dataset-ref-deprecation</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/2e2a35730c8258ac30391e5d590bc706f7a1fcfc">2e2a357</a>)<br />
+<div class="version"><span class="version-text-block">use-dataset-ref-deprecation</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/a4c38e3fe59b5920fb31e079dddfad59c5dbbbc8">a4c38e3</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1742">PR 1742</a><br />
-       <span class="version-text-block">2026-10-09 08:09</span>
+       <span class="version-text-block">2026-10-09 13:58</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
