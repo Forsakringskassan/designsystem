@@ -9,8 +9,7 @@ import {
     FSortFilterDataset,
     FTable,
     defineTableColumns,
-    removeDatasetRows,
-    useDatasetRef,
+    removeTableRows,
     useModal,
 } from "@fkui/vue";
 
@@ -58,7 +57,7 @@ const columns = defineTableColumns<Row>([
 
 const sortableAttributes = { namn: "Frukt", land: "Land" };
 const itemsPerPage = ref(3);
-const rows = useDatasetRef([...data]);
+const rows = ref([...data]);
 const selectedRows = ref<Row[]>([]);
 
 const useSortFilter = ref(false);
@@ -98,7 +97,7 @@ const livemethods = {
         });
 
         if (confirmed) {
-            removeDatasetRows(rows, selectedRows);
+            removeTableRows(rows, selectedRows);
         }
     },
     onRestoreRows() {

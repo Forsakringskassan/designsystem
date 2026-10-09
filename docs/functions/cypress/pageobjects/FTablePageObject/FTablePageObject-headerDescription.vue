@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     id: string;
@@ -25,7 +26,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef([
+const rows = ref([
     {
         id: "1",
         name: "Foo",

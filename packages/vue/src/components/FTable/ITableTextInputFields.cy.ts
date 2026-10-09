@@ -1,6 +1,5 @@
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { FTablePageObject } from "../../cypress/FTable.pageobject";
-import { useDatasetRef } from "../../utils";
 import FTable from "./FTable.vue";
 import { type TableColumn, defineTableColumns } from "./table-column";
 
@@ -29,7 +28,7 @@ function mountTable(row: Row, columns: TableColumn<Row, keyof Row>): void {
             components: { FTable },
             data() {
                 return {
-                    rows: useDatasetRef([row]),
+                    rows: ref([row]),
                     columns: cols,
                 };
             },

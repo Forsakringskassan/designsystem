@@ -21,41 +21,15 @@ interface Row {
 }
 ```
 
-För att använda expanderade rader i tabellen anger du egenskapens namn när du skapar datamängden:
+Ange den nästlade egenskapens namn med `expandable-attribute`:
 
-```ts name=base hidden
-declare const data: Row[];
-
-interface Row {
-    namn: string;
-    land: string;
-    nested?: Row[];
-}
-
-/* --- cut above --- */
-
-import { useDatasetRef } from "@fkui/vue";
-
-const rows = useDatasetRef(data);
+```html static name=base hidden
+<f-table :rows :columns></f-table>
 ```
 
-```ts compare=base
-declare const data: Row[];
-
-interface Row {
-    namn: string;
-    land: string;
-    nested?: Row[];
-}
-
-/* --- cut above --- */
-
-import { useDatasetRef } from "@fkui/vue";
-
-const rows = useDatasetRef(data, "nested");
+```html static compare=base
+<f-table :rows :columns expandable-attribute="nested"></f-table>
 ```
-
-Tabellen känner av om datamängden har skapats med nästlad data automatiskt.
 
 ## Följa existerande kolumner
 
@@ -64,7 +38,8 @@ Som standard följer expanderade rader samma kolumnstruktur som överordnade rad
 
 ```vue nomarkup
 <script setup lang="ts">
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -104,7 +79,7 @@ const data: Row[] = [
         ],
     },
 ];
-const rows = useDatasetRef(data, "nested");
+const rows = ref(data);
 const columns = defineTableColumns<Row>([
     {
         type: "text",
@@ -119,7 +94,7 @@ const columns = defineTableColumns<Row>([
 ]);
 </script>
 <template>
-    <f-table :rows :columns></f-table>
+    <f-table :rows :columns expandable-attribute="nested"></f-table>
 </template>
 ```
 
@@ -129,7 +104,7 @@ Valfritt innehåll kan presenteras istället för att följa tabellens kolumner 
 Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som ligger i datastrukturen behöver inte följa ordinarie rader.
 
 ```html static
-<f-table :rows :columns>
+<f-table :rows :columns expandable-attribute="nested">
     <template #expandable="{ row }">
         <pre>{{ row }}</pre>
     </template>
@@ -138,7 +113,8 @@ Ditt innehåll placeras i en cell som sträcker sig över hela raden och vad som
 
 ```vue nomarkup
 <script setup lang="ts">
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -178,7 +154,7 @@ const data: Row[] = [
         ],
     },
 ];
-const rows = useDatasetRef(data, "nested");
+const rows = ref(data);
 const columns = defineTableColumns<Row>([
     {
         type: "text",
@@ -193,7 +169,7 @@ const columns = defineTableColumns<Row>([
 ]);
 </script>
 <template>
-    <f-table :rows :columns>
+    <f-table :rows :columns expandable-attribute="nested">
         <template #expandable="{ row }">
             <pre>{{ row }}</pre>
         </template>
