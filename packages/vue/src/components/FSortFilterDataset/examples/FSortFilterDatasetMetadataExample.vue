@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { type FruitData, fruits } from "./fruit-data";
 import {
     type FDefinitionListItem,
