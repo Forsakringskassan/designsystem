@@ -19,8 +19,9 @@ export function removeTableRows<T extends object>(
     const rowsValue = toValue(rows);
     const rowsToRemoveValue = toValue(rowsToRemove);
     const expandableAttributeValue = toValue(expandableAttribute);
+    // copy to avoid skipping rows if the same array is passed as both arguments
     const normalizedRows = Array.isArray(rowsToRemoveValue)
-        ? rowsToRemoveValue
+        ? [...rowsToRemoveValue]
         : [rowsToRemoveValue];
 
     for (const row of normalizedRows) {
@@ -45,15 +46,23 @@ function removeNestedRows<T extends object>(
     rows: T[],
     row: T,
     expandableAttribute: keyof T,
-): void {
+): boolean {
     for (const currentRow of rows) {
         const nestedRows = currentRow[expandableAttribute];
         if (!Array.isArray(nestedRows)) {
             continue;
         }
         const index = nestedRows.indexOf(row);
+
         if (index !== -1) {
             nestedRows.splice(index, 1);
+            return true;
+        }
+
+        if (removeNestedRows(nestedRows, row, expandableAttribute)) {
+            return true;
         }
     }
+
+    return false;
 }
