@@ -80,7 +80,7 @@ const emit = defineEmits<{
      *
      * @arg items - The sorted data.
      */
-    datasetSorted: [items: Dataset<T>];
+    datasetSorted: [items: Dataset<T> | T[]];
 
     /**
      * Emits the used sorting attributes.
