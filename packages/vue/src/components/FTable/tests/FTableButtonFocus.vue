@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { useTemplateRef } from "vue";
+import { ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
 import { useModal } from "@fkui/vue";
 import { FTable } from "@fkui/vue";
-import { defineTableColumns, removeDatasetRows, useDatasetRef } from "@fkui/vue";
+import { defineTableColumns, removeTableRows } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -12,7 +12,7 @@ interface Row {
 const tableRef = useTemplateRef("table");
 const { confirmModal } = useModal();
 
-const rows = useDatasetRef<Row>([{ namn: "Apelsin" }, { namn: "Banan" }, { namn: "Äpple" }]);
+const rows = ref<Row[]>([{ namn: "Apelsin" }, { namn: "Banan" }, { namn: "Äpple" }]);
 
 const columns = defineTableColumns<Row>([
     { type: "text", header: "Frukt", key: "namn" },
@@ -39,7 +39,7 @@ async function onRemoveRow(row: Row): Promise<void> {
     });
     if (confirmed) {
         tableRef.value.withTabstopBehaviour("row-removal", () => {
-            removeDatasetRows(rows, row);
+            removeTableRows(rows, row);
         });
     }
 }

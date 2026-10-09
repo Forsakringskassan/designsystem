@@ -62,6 +62,7 @@ const sortableAttributes = {
 För att sortering och filtrering ska ske på samma värde som visas i tabellen behöver värdet mappas ut till ett attribut i datamängden.
 
 ```ts nocompile
+import { ref } from "vue";
 interface Fruit {
     frukt: string;
     ursprung: {
@@ -82,7 +83,7 @@ const fruits: Fruit[] = [
     { frukt: "Äpple", ursprung: { land: "Sverige" }, pris: "22" },
 ];
 
-const rows = useDatasetRef<Row>(
+const rows = ref<Row[]>(
     fruits.map((fruit) => ({
         frukt: fruit.frukt,
         land: fruit.ursprung.land,

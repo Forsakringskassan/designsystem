@@ -40,13 +40,13 @@ Om användaren kan ta bort innehåll från tabellen bör du låta användaren be
 
 ```ts
 import { ref } from "vue";
-import { removeDatasetRows, useDatasetRef, useModal } from "@fkui/vue";
+import { removeTableRows, useModal } from "@fkui/vue";
 
 interface Row {
     frukt: string;
 }
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     { frukt: "Apelsin" },
     { frukt: "Banan" },
     { frukt: "Päron" },
@@ -75,7 +75,7 @@ async function removeSelected(): Promise<void> {
     });
 
     if (confirmed) {
-        removeDatasetRows(rows, selectedRows);
+        removeTableRows(rows, selectedRows);
     }
 }
 ```

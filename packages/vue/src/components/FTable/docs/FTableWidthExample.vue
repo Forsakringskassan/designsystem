@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -48,7 +48,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef(data);
+const rows = ref(data);
 </script>
 <template>
     <f-table v-model:selected-rows="selectedRows" :rows :columns selectable="multi"> </f-table>

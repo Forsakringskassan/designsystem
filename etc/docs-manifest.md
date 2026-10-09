@@ -172,7 +172,6 @@ functions/date/f-year/value.html
 functions/font-default.html
 functions/functions/assert-ref.html
 functions/functions/assert-set.html
-functions/functions/dataset-iterator.html
 functions/functions/dispatch-component-validity-event.html
 functions/functions/dom-functions/find-element-from-vue-ref.html
 functions/functions/dom-functions/find-html-element-from-vue-ref.html
@@ -191,7 +190,6 @@ functions/functions/dom-functions/ref-is-element.html
 functions/functions/dom-functions/ref-is-html-element-array.html
 functions/functions/dom-functions/ref-is-vue-array.html
 functions/functions/dom-functions/ref-is-vue.html
-functions/functions/get-dataset-metadata.html
 functions/functions/handle-keyboard-focus-navigation.html
 functions/functions/include-item.html
 functions/functions/item-equals.html
@@ -200,11 +198,11 @@ functions/functions/modal-functions/confirm-modal.html
 functions/functions/modal-functions/form-modal.html
 functions/functions/modal-functions/open-modal.html
 functions/functions/mount-component.html
+functions/functions/remove-table-rows.html
 functions/functions/render-slot-text.html
 functions/functions/table-scroll-classes.html
 functions/functions/table-scroll.html
 functions/functions/use-area-data.html
-functions/functions/use-dataset-ref.html
 functions/functions/use-details-panel.html
 functions/functions/use-modal.html
 functions/functions/use-resize.html

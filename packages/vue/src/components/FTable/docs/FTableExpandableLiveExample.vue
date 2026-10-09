@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
-import { FCheckboxField, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FCheckboxField, FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -55,7 +55,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef(data, "nested");
+const rows = ref(data);
 const useCustom = ref(false);
 
 const components = {
@@ -81,7 +81,15 @@ const customSlot = computed(() => {
 });
 
 const template = computed(() => {
-    return createElement("f-table", { ":rows": true, ":columns": true }, customSlot.value);
+    return createElement(
+        "f-table",
+        {
+            ":rows": true,
+            ":columns": true,
+            "expandable-attribute": "nested",
+        },
+        customSlot.value,
+    );
 });
 </script>
 

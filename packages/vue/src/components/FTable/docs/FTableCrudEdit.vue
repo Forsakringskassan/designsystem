@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import {
     type TableColumn,
     FCrudDataset,
@@ -6,7 +7,6 @@ import {
     FSelectField,
     FTable,
     defineTableColumns,
-    useDatasetRef,
 } from "@fkui/vue";
 
 interface Row {
@@ -81,7 +81,7 @@ function getColumns(updateItem: CrudAction, deleteItem: CrudAction): Array<Table
     return columns;
 }
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         namn: "Apelsin",
         land: "Spanien",

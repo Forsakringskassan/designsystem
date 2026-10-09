@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     id: string;
@@ -24,56 +25,53 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>(
-    [
-        {
-            id: "1",
-            name: "Foo",
-            nested: [
-                {
-                    id: "1-a",
-                    name: "Expanded 1-1",
-                },
-                {
-                    id: "1-b",
-                    name: "Expanded 1-2",
-                },
-            ],
-        },
-        {
-            id: "2",
-            name: "Bar",
-            nested: [
-                {
-                    id: "2-a",
-                    name: "Expanded 2-1",
-                },
-                {
-                    id: "2-b",
-                    name: "Expanded 2-2",
-                },
-            ],
-        },
-        {
-            id: "3",
-            name: "Baz",
-            nested: [
-                {
-                    id: "3-a",
-                    name: "Expanded 3-1",
-                },
-                {
-                    id: "3-b",
-                    name: "Expanded -32",
-                },
-            ],
-        },
-    ],
-    "nested",
-);
+const rows = ref<Row[]>([
+    {
+        id: "1",
+        name: "Foo",
+        nested: [
+            {
+                id: "1-a",
+                name: "Expanded 1-1",
+            },
+            {
+                id: "1-b",
+                name: "Expanded 1-2",
+            },
+        ],
+    },
+    {
+        id: "2",
+        name: "Bar",
+        nested: [
+            {
+                id: "2-a",
+                name: "Expanded 2-1",
+            },
+            {
+                id: "2-b",
+                name: "Expanded 2-2",
+            },
+        ],
+    },
+    {
+        id: "3",
+        name: "Baz",
+        nested: [
+            {
+                id: "3-a",
+                name: "Expanded 3-1",
+            },
+            {
+                id: "3-b",
+                name: "Expanded -32",
+            },
+        ],
+    },
+]);
 </script>
 <template>
     <!-- cut above -->
-    <f-table v-test="'table'" :columns :rows></f-table>
+    <f-table v-test="'table'" :columns :rows expandable-attribute="nested"></f-table>
     <!-- cut below -->
 </template>

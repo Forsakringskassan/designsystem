@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useTemplateRef } from "vue";
+import { ref, useTemplateRef } from "vue";
 import { ValidationService } from "@fkui/logic";
-import { FButton, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FButton, FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     id: number;
@@ -9,7 +9,7 @@ interface Row {
     email: string;
 }
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         id: 1,
         name: "Pippi Långstrump",

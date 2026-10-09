@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { type TableColumn, FSelectField, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { type TableColumn, FSelectField, FTable, defineTableColumns } from "@fkui/vue";
 
 type Status = "Utkast" | "Godkänd";
 type Permission = "Läs" | "Redigera" | "Admin";
@@ -64,7 +64,7 @@ const actionConfig: ActionConfig[] = [
     },
 ];
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         id: "1",
         name: "Exampel A",

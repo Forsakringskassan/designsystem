@@ -29,6 +29,7 @@ import { HTMLAttributes } from 'vue';
 import { IfAny } from '@vue/shared';
 import { InjectionKey } from 'vue';
 import { MaybeRef } from 'vue';
+import { MaybeRefOrGetter } from 'vue';
 import { OrganisationsnummerString } from '@fkui/logic';
 import { parseBankAccountNumber } from '@fkui/logic';
 import { parseBankgiro } from '@fkui/logic';
@@ -1407,7 +1408,7 @@ export function registerLayout<T extends LayoutDefinition>(definition: T): void;
 export function removeDatasetRows<T extends object>(dataset: MaybeRef<Dataset<T> | T[]>, rows: MaybeRef<T | T[]>): void;
 
 // @public
-export function removeTableRows<T extends object>(rows: T[], rowsToRemove: T | T[], expandableAttribute?: keyof T): void;
+export function removeTableRows<T extends object>(rows: MaybeRef<T[]>, rowsToRemove: MaybeRef<T | T[]>, expandableAttribute?: MaybeRefOrGetter<keyof T | undefined>): void;
 
 // @public (undocumented)
 export interface RenderSlotOptions {

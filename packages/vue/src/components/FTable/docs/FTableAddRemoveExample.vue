@@ -1,14 +1,7 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
-import {
-    FButton,
-    FTable,
-    defineTableColumns,
-    removeDatasetRows,
-    useDatasetRef,
-    useModal,
-} from "@fkui/vue";
+import { FButton, FTable, defineTableColumns, removeTableRows, useModal } from "@fkui/vue";
 
 const tableRef = useTemplateRef("table");
 const { confirmModal } = useModal();
@@ -18,7 +11,7 @@ interface Row {
     land: string;
 }
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         namn: "Apelsin",
         land: "Spanien",
@@ -82,7 +75,7 @@ async function onRemoveRow(row: Row): Promise<void> {
 
     if (confirmed) {
         tableRef.value.withTabstopBehaviour("row-removal", () => {
-            removeDatasetRows(rows, row);
+            removeTableRows(rows, row);
         });
     }
 }

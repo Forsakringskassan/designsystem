@@ -26,19 +26,20 @@ function removeTableRows<T extends object>(
 
 ### Parametrar
 
-`rows: T[]`
-: Tabellens rader.
+`rows: MaybeRef<T[]>`
+: Tabellens rader, antingen som array eller ref till en array.
 
-`rowsToRemove: T | T[]`
-: Raden eller raderna som ska tas bort.
+`rowsToRemove: MaybeRef<T | T[]>`
+: Raden eller raderna som ska tas bort, antingen direkt eller som ref.
 
-`expandableAttribute: keyof T` {@optional}
-: Egenskapen som innehåller expanderade rader.
+`expandableAttribute: MaybeRefOrGetter<keyof T | undefined>` {@optional}
+: Egenskapen som innehåller expanderade rader, direkt, som ref eller som getter.
 Om den anges kan även rader från nästlade arrayer tas bort.
 
 ## Exempel
 
 ```ts
+import { ref } from "vue";
 import { removeTableRows } from "@fkui/vue";
 
 interface Row {
@@ -46,9 +47,9 @@ interface Row {
     children?: Row[];
 }
 
-const rows: Row[] = [{ name: "Parent", children: [{ name: "Child" }] }];
+const rows = ref<Row[]>([{ name: "Parent", children: [{ name: "Child" }] }]);
 
 /* --- cut above --- */
 
-removeTableRows(rows, rows[0].children![0], "children");
+removeTableRows(rows, rows.value[0].firstElementChild, "children");
 ```

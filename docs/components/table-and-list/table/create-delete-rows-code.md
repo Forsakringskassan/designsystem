@@ -13,10 +13,10 @@ FTableAddRemoveExample.vue
 
 ## Lägga till en rad
 
-Använd [`Array.push()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) eller motsvarande för att lägga till en ny rad i ditt befintliga dataset.
+Använd [`Array.push()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) eller motsvarande för att lägga till en ny rad i din befintliga array med rader.
 
 ```ts nocompile
-dataset.push(newRow);
+rows.push(newRow);
 ```
 
 ## Ta bort en rad
@@ -35,14 +35,13 @@ import {
     FTable,
     defineTableColumns,
     removeTableRows,
-    useDatasetRef,
 } from "@fkui/vue";
 
 interface Row {
     namn: string;
 }
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         namn: "Apelsin",
     },

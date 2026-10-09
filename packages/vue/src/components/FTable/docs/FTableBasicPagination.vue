@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { FPaginateDataset, FPaginator, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { FPaginateDataset, FPaginator, FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -7,7 +8,7 @@ interface Row {
     pris: string;
 }
 
-const rows = useDatasetRef([
+const rows = ref([
     {
         namn: "Apelsin",
         land: "Spanien",

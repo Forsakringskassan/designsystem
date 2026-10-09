@@ -1,6 +1,5 @@
-import { h } from "vue";
+import { h, ref } from "vue";
 import { FTable, defineTableColumns } from "../components";
-import { useDatasetRef } from "../utils";
 import { FTablePageObject } from "./FTable.pageobject";
 
 const table = new FTablePageObject();
@@ -21,7 +20,7 @@ interface Row {
     nested?: Row[];
 }
 
-const rows: Row[] = [
+const sourceRows: Row[] = [
     {
         rowheader: "A1",
         text: "A2",
@@ -54,13 +53,8 @@ const rows: Row[] = [
     },
 ];
 
-const dataset = useDatasetRef(
-    rows.map(({ nested, ...it }) => ({ ...it })),
-).value;
-const expandableDataset = useDatasetRef(
-    rows.map((it) => ({ ...it })),
-    "nested",
-).value;
+const rows = ref(sourceRows.map(({ nested, ...it }) => ({ ...it })));
+const expandableRows = ref(sourceRows.map((it) => ({ ...it })));
 
 const columns = defineTableColumns<Row>([
     {
@@ -113,13 +107,13 @@ beforeEach(() => {
 });
 
 it("el() should get root element", () => {
-    cy.mount(() => h(FTable<Row>, { columns, rows: dataset }));
+    cy.mount(() => h(FTable<Row>, { columns, rows: rows.value }));
     table.el().should("have.prop", "tagName", "TABLE");
 });
 
 it("header()", () => {
     it("should get correct header", () => {
-        cy.mount(() => h(FTable<Row>, { columns, rows: dataset }));
+        cy.mount(() => h(FTable<Row>, { columns, rows: rows.value }));
         table.header(1).should("contain.text", "Rowheader");
         table.header(2).should("contain.text", "Text");
         table.header(3).should("contain.text", "Input");
@@ -131,7 +125,8 @@ it("header()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: expandableDataset,
+                rows: expandableRows.value,
+                expandableAttribute: "nested",
             }),
         );
         table.header(1).should("have.class", TABLE_CLASS.HEADER_EXPAND);
@@ -141,7 +136,7 @@ it("header()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: dataset,
+                rows: rows.value,
                 selectable: "multi",
             }),
         );
@@ -154,7 +149,7 @@ it("headerTitle()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: dataset,
+                rows: rows.value,
             }),
         );
         table.headerTitle(1).should("contain.text", "Rowheader");
@@ -168,7 +163,8 @@ it("headerTitle()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: expandableDataset,
+                rows: expandableRows.value,
+                expandableAttribute: "nested",
             }),
         );
         table.headerTitle(2).should("have.class", "Rowheader");
@@ -178,7 +174,7 @@ it("headerTitle()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: dataset,
+                rows: rows.value,
                 selectable: "multi",
             }),
         );
@@ -191,7 +187,7 @@ it("headerDescription()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: dataset,
+                rows: rows.value,
             }),
         );
         table.headerDescription(1).should("contain.text", "Column 1");
@@ -205,7 +201,8 @@ it("headerDescription()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: expandableDataset,
+                rows: expandableRows.value,
+                expandableAttribute: "nested",
             }),
         );
         table.headerDescription(2).should("have.class", "Rowheader");
@@ -215,7 +212,7 @@ it("headerDescription()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: dataset,
+                rows: rows.value,
                 selectable: "multi",
             }),
         );
@@ -228,7 +225,7 @@ describe("cell()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: dataset,
+                rows: rows.value,
             }),
         );
 
@@ -249,7 +246,8 @@ describe("cell()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: expandableDataset,
+                rows: expandableRows.value,
+                expandableAttribute: "nested",
             }),
         );
 
@@ -265,7 +263,7 @@ describe("cell()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: dataset,
+                rows: rows.value,
                 selectable: "multi",
             }),
         );
@@ -282,7 +280,8 @@ describe("cell()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: expandableDataset,
+                rows: expandableRows.value,
+                expandableAttribute: "nested",
             }),
         );
 
@@ -312,7 +311,8 @@ describe("cell()", () => {
                 FTable<Row>,
                 {
                     columns,
-                    rows: expandableDataset,
+                    rows: expandableRows.value,
+                    expandableAttribute: "nested",
                 },
                 {
                     expandable: (scope: { row: Row }) => scope.row.rowheader,
@@ -336,7 +336,8 @@ it("expandButton() should get expand button", () => {
     cy.mount(() =>
         h(FTable<Row>, {
             columns,
-            rows: expandableDataset,
+            rows: expandableRows.value,
+            expandableAttribute: "nested",
         }),
     );
     table.expandButton(1).should("have.prop", "tagName", "BUTTON");
@@ -348,7 +349,7 @@ describe("selectInput()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: dataset,
+                rows: rows.value,
                 selectable: "multi",
             }),
         );
@@ -360,7 +361,7 @@ describe("selectInput()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: dataset,
+                rows: rows.value,
                 selectable: "single",
             }),
         );
@@ -373,7 +374,7 @@ it("selectHeaderInput() should get input when table is multiselect", () => {
     cy.mount(() =>
         h(FTable<Row>, {
             columns,
-            rows: dataset,
+            rows: rows.value,
             selectable: "multi",
         }),
     );
@@ -386,7 +387,7 @@ it("footer() should get table footer when footer slot is used", () => {
             FTable<Row>,
             {
                 columns,
-                rows: dataset,
+                rows: rows.value,
             },
             {
                 footer() {
@@ -404,7 +405,7 @@ describe("tabbableElement()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: dataset,
+                rows: rows.value,
             }),
         );
         table.tabbableElement().focus();
@@ -424,7 +425,8 @@ describe("tabbableElement()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: expandableDataset,
+                rows: expandableRows.value,
+                expandableAttribute: "nested",
             }),
         );
         table.tabbableElement().focus();
@@ -435,7 +437,7 @@ describe("tabbableElement()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: dataset,
+                rows: rows.value,
                 selectable: "multi",
             }),
         );
@@ -449,7 +451,7 @@ describe("rows()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: dataset,
+                rows: rows.value,
             }),
         );
         table.rows().should("have.length", 2);
@@ -459,7 +461,8 @@ describe("rows()", () => {
         cy.mount(() =>
             h(FTable<Row>, {
                 columns,
-                rows: expandableDataset,
+                rows: expandableRows.value,
+                expandableAttribute: "nested",
             }),
         );
         table.rows().should("have.length", 2);
@@ -474,10 +477,7 @@ it("selectDropdown() should get dropdown when open", () => {
         option: string;
     }
 
-    const selectRows = useDatasetRef<SelectRow>([
-        { option: "Foo" },
-        { option: "Bar" },
-    ]);
+    const selectRows = ref<SelectRow[]>([{ option: "Foo" }, { option: "Bar" }]);
     const selectColumns = defineTableColumns<SelectRow>([
         {
             type: "select",
@@ -506,10 +506,7 @@ it("selectDropdownOption() should get options when dropdown is open", () => {
         option: string;
     }
 
-    const selectRows = useDatasetRef<SelectRow>([
-        { option: "Foo" },
-        { option: "Bar" },
-    ]);
+    const selectRows = ref<SelectRow[]>([{ option: "Foo" }, { option: "Bar" }]);
     const selectColumns = defineTableColumns<SelectRow>([
         {
             type: "select",

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { type FruitData, fruits } from "./fruit-data";
 import {
     type FDefinitionListItem,
@@ -6,10 +7,9 @@ import {
     FList,
     FSortFilterDataset,
     getDatasetMetadata,
-    useDatasetRef,
 } from "@fkui/vue";
 
-const items = useDatasetRef<FruitData>(fruits);
+const items = ref<FruitData[]>(fruits);
 
 const sortableAttributes = {
     name: "Namn",

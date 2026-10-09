@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { computed, ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     kategori: "Katter" | "Hundar";
     alternativ: string;
 }
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     { kategori: "Katter", alternativ: "Findus" },
     { kategori: "Hundar", alternativ: "Båtsman" },
     { kategori: "Katter", alternativ: "Pelle Svanslös" },

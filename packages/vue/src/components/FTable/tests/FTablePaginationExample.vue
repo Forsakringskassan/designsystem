@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FPaginateDataset, FPaginator, useDatasetRef } from "@fkui/vue";
+import { FPaginateDataset, FPaginator } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
@@ -16,7 +16,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>(
+const rows = ref<Row[]>(
     Array.from({ length: 6 }, (_, index) => ({
         id: String(index + 1),
         name: `Rad ${index + 1}`,

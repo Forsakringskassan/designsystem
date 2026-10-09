@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import {
     type FDefinitionListItem,
     FDefinitionList,
@@ -6,7 +7,6 @@ import {
     FPaginateDataset,
     FPaginator,
     getDatasetMetadata,
-    useDatasetRef,
 } from "@fkui/vue";
 
 interface Row {
@@ -14,40 +14,36 @@ interface Row {
     children?: Row[];
 }
 
-const items = useDatasetRef<Row>(
-    /* page 1 */
-    [
-        {
-            name: "Kalle Anka",
-            children: [{ name: "Knatte Anka" }, { name: "Fnatte Anka" }, { name: "Tjatte Anka" }],
-        },
-        {
-            name: "Joakim von Anka",
-        },
-        {
-            name: "Alexander Lukas",
-        },
-        {
-            name: "Oppfinnar-Jocke",
-        },
-        {
-            name: "Magica de Hex",
-        },
+const items = ref<Row[]>([
+    {
+        name: "Kalle Anka",
+        children: [{ name: "Knatte Anka" }, { name: "Fnatte Anka" }, { name: "Tjatte Anka" }],
+    },
+    {
+        name: "Joakim von Anka",
+    },
+    {
+        name: "Alexander Lukas",
+    },
+    {
+        name: "Oppfinnar-Jocke",
+    },
+    {
+        name: "Magica de Hex",
+    },
 
-        /* page 2 */
-        {
-            name: "Knase Anka",
-        },
-        {
-            name: "Kajsa Anka",
-            children: [{ name: "Kicki Anka" }, { name: "Pippi Anka" }, { name: "Titti Anka" }],
-        },
-        {
-            name: "Farmor Anka",
-        },
-    ],
-    "children",
-);
+    /* page 2 */
+    {
+        name: "Knase Anka",
+    },
+    {
+        name: "Kajsa Anka",
+        children: [{ name: "Kicki Anka" }, { name: "Pippi Anka" }, { name: "Titti Anka" }],
+    },
+    {
+        name: "Farmor Anka",
+    },
+]);
 
 function itemDefinitions(row: Row): FDefinitionListItem[] {
     const meta = getDatasetMetadata(row);
