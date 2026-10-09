@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FCrudDataset, FTextField, useDatasetRef } from "@fkui/vue";
+import { FCrudDataset, FTextField } from "@fkui/vue";
 import { type TableColumn, FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
@@ -14,7 +14,7 @@ type CrudAction = (item: Row) => void;
 let updateItemCallback!: CrudAction;
 let deleteItemCallback!: CrudAction;
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         id: "1",
         name: "Ärende A",

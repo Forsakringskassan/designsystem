@@ -1,6 +1,6 @@
+import { ref } from "vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
-import { useDatasetRef } from "../../utils";
 import FTable from "./FTable.vue";
 import { defineTableColumns } from "./table-column";
 
@@ -18,18 +18,15 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     { text: "Foo", match: true },
     { text: "Bar", match: false },
 ]);
 
-const expandedRows = useDatasetRef<Row>(
-    [
-        { text: "A", nested: [{ text: "A1" }, { text: "A2" }] },
-        { text: "B", nested: [{ text: "B1" }, { text: "B2" }] },
-    ],
-    "nested",
-);
+const expandedRows = ref<Row[]>([
+    { text: "A", nested: [{ text: "A1" }, { text: "A2" }] },
+    { text: "B", nested: [{ text: "B1" }, { text: "B2" }] },
+]);
 
 describe("custom row class", () => {
     it("should apply custom class to body rows", () => {
@@ -58,6 +55,7 @@ describe("custom row class", () => {
             props: {
                 rows: expandedRows.value,
                 columns,
+                expandableAttribute: "nested",
                 rowClass(row: Row) {
                     return row.text.endsWith("1") ? "row-match" : undefined;
                 },
@@ -83,7 +81,7 @@ describe("custom row class", () => {
 
         const wrapper = mount(FTable<Row>, {
             props: {
-                rows: useDatasetRef<Row>([{ text: "Foo" }]).value,
+                rows: ref<Row[]>([{ text: "Foo" }]).value,
                 columns,
             },
         });

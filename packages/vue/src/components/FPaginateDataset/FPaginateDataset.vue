@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends object, TArray extends Dataset<T> | T[] = Dataset<T> | T[]">
 import { type Ref, computed, onMounted, provide, ref, watch } from "vue";
-import { type Dataset, toDataset } from "../../utils";
+import { type Dataset, isDataset, toDataset } from "../../utils/dataset";
 import { type FPaginateDatasetPageEventDetail } from "../FPaginator";
 import { useSortFilterDatasetEvents } from "../FSortFilterDataset";
 import { provideSelectableRowSource, useSelectableRowSource } from "../FTable";
@@ -69,8 +69,16 @@ const currentPageItems = computed<TInfered>((): TInfered => {
     if (fetchedData.value) {
         return fetchedData.value;
     }
+
+    const pageItems = items.slice(firstItemIndex.value, lastItemIndex.value);
+
+    if (isDataset<T>(items)) {
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
+        return toDataset(pageItems, items) as TInfered;
+    }
+
     /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
-    return toDataset(items.slice(firstItemIndex.value, lastItemIndex.value), items) as TInfered;
+    return pageItems as TInfered;
 });
 
 // Computes number of items on current page

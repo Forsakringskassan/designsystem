@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
-import { FButton, FSortFilterDataset, useDatasetRef } from "@fkui/vue";
-import { FTable, defineTableColumns, removeDatasetRows } from "@fkui/vue";
+import { FButton, FSortFilterDataset } from "@fkui/vue";
+import { FTable, defineTableColumns, removeTableRows } from "@fkui/vue";
 
 interface Row {
     text: string;
@@ -31,7 +31,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     { text: "Apelsin" },
     { text: "Banan" },
     { text: "Citron" },
@@ -50,14 +50,14 @@ function onAddRow(): void {
 }
 
 function onRemoveSelectedRows(): void {
-    removeDatasetRows(rows, selectedRows);
+    removeTableRows(rows, selectedRows);
 }
 
 function onRemoveRow(row: Row): void {
     assertRef(tableRef);
 
     tableRef.value.withTabstopBehaviour("row-removal", () => {
-        removeDatasetRows(rows, row);
+        removeTableRows(rows, row);
     });
 }
 

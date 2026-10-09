@@ -2,8 +2,8 @@
 import { useTemplateRef } from "vue";
 import { computed, ref } from "vue";
 import { assertRef } from "@fkui/logic";
-import { type DatasetNestedKeyOf, FSelectField, useDatasetRef } from "@fkui/vue";
-import { FTable, defineTableColumns, removeDatasetRows } from "@fkui/vue";
+import { FSelectField } from "@fkui/vue";
+import { FTable, defineTableColumns, removeTableRows } from "@fkui/vue";
 
 const tableRef = useTemplateRef("table");
 const selectedValue = ref("");
@@ -100,24 +100,22 @@ const sourceRows: ExpandableTabstopRow[] = [
     },
 ];
 
-const withoutExpandableRows = useDatasetRef<ExpandableTabstopRow>(
+const withoutExpandableRows = ref<ExpandableTabstopRow[]>(
     sourceRows.map(({ expandableRows, expandableContent, ...attrs }) => ({
         ...attrs,
     })),
 );
 
-const withExpandableRows = useDatasetRef<ExpandableTabstopRow>(
+const withExpandableRows = ref<ExpandableTabstopRow[]>(
     sourceRows.map(({ expandableContent, ...attrs }) => ({
         ...attrs,
     })),
-    "expandableRows",
 );
 
-const withExpandableContent = useDatasetRef<ExpandableTabstopRow>(
+const withExpandableContent = ref<ExpandableTabstopRow[]>(
     sourceRows.map(({ expandableRows, ...attrs }) => ({
         ...attrs,
     })),
-    "expandableContent" as DatasetNestedKeyOf<ExpandableTabstopRow>,
 );
 
 const rows = computed(() => {
@@ -158,7 +156,7 @@ function onRemoveRow(row: ExpandableTabstopRow): void {
     assertRef(tableRef);
 
     tableRef.value.withTabstopBehaviour("row-removal", () => {
-        removeDatasetRows(rows, row);
+        removeTableRows(rows, row, expandableAttr);
     });
 }
 </script>
@@ -171,7 +169,16 @@ function onRemoveRow(row: ExpandableTabstopRow): void {
         <option value="table">Tabellrad</option>
     </f-select-field>
 
-    <f-table ref="table" :key="expandableAttr" :rows :columns key-attribute="id" striped selectable="multi">
+    <f-table
+        ref="table"
+        :key="expandableAttr"
+        :rows
+        :columns
+        :expandable-attribute="expandableAttr"
+        key-attribute="id"
+        striped
+        selectable="multi"
+    >
         <template #caption>Tabell</template>
         <template v-if="selectedValue === 'content'" #expandable="{ row }">
             {{ (row as any).content }}

@@ -13,7 +13,7 @@ Om du tidigare importerade `FTable` från `@fkui/vue-labs` behöver du nu uppdat
 - `FTableColumn` i template ersätts av kolumndefinitioner i `defineTableColumns(...)`
 - Formattering i template ersätts av kolumntyper som till exempel `text:date` och `text:number`
 - `v-model` för valbara rader byter namn till `v-model:selected-rows`
-- Expanderbart innehåll sätts upp via `useDatasetRef(...)`
+- Expanderbart innehåll anges med `expandable-attribute`
 - Aktiv rad och radklick har ingen direkt motsvarighet i `FTable`
 
 **Om din tabell använder något av följande behöver du läsa vidare extra noggrant:**
@@ -215,10 +215,11 @@ I `FInteractiveTable` användes `expandable-attribute` för att ange vilket attr
 </f-interactive-table>
 ```
 
-I `FTable` skapas motsvarande `rows` med `useDatasetRef(...)`, där det nästlade attributet anges som andra parameter.
+I `FTable` är `rows` en vanlig Vue-ref till en array.
+Ange nästlade rader med `expandable-attribute`:
 
 ```ts
-import { useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
 
 interface Row {
     id: string;
@@ -236,18 +237,21 @@ const rawData: Row[] = [
     },
 ];
 
-const rows = useDatasetRef(rawData, "expandableRows");
+const rows = ref(rawData);
 ```
 
-Det datasetet skickas sedan in som `rows` till `FTable`.
+Arrayen skickas sedan in som `rows` till `FTable`.
 
 ```html static
-<f-table :rows :columns key-attribute="id"></f-table>
+<f-table
+    :rows
+    :columns
+    key-attribute="id"
+    expandable-attribute="expandableRows"
+></f-table>
 ```
 
 För vanliga expanderbara rader behövs ingen `#expandable-slot`.
-
-Läs mer i dokumentationen om {@link useDatasetRef useDatasetRef}.
 
 Läs mer i dokumentationen om {@link expand-rows expanderbara rader}.
 
@@ -265,8 +269,6 @@ Både `FInteractiveTable` och `FTable` använder slotten `#expandable`, men slot
 +    {{ row.content }}
 +</template>
 ```
-
-Läs mer i dokumentationen om {@link useDatasetRef useDatasetRef}.
 
 Läs mer i dokumentationen om {@link expand-rows expanderbara rader}.
 
