@@ -10,11 +10,16 @@
 export function walk<T>(
     array: T[],
     childKey: keyof T | undefined,
-    visit: (item: T, level: number) => boolean,
+    visit: (
+        item: T,
+        level: number,
+        setsize: number,
+        posinset: number,
+    ) => boolean,
     level = 1,
 ): void {
-    for (const item of array) {
-        const visitChildren = visit(item, level);
+    for (const [i, item] of array.entries()) {
+        const visitChildren = visit(item, level, array.length, i + 1);
 
         /* eslint-disable-next-line unicorn/no-computed-property-existence-check -- technical debt */
         if (visitChildren && childKey && item[childKey]) {
