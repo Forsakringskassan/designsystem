@@ -32,6 +32,13 @@ export function FCrudDatasetSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FDefinitionListSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    terms(): string;
+    definitions(): string;
+}>;
+
+// @public
 export function FDetailsPanelSelectors(selector?: string): Readonly<{
     readonly selector: string;
     header(): string;
@@ -106,11 +113,29 @@ export function FPaginatorSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FProgressbarSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    meter(): string;
+}>;
+
+// @public
 export function FRadioFieldSelectors(selector?: string): Readonly<{
     readonly selector: string;
     input(): string;
     label(): string;
     details(): string;
+}>;
+
+// @public
+export function FSelectFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    select(): string;
+    errorMessage(): string;
+    label(): string;
+    description(): string;
+    selectedOption(): string;
+    options(): string;
+    arrowIcon(): string;
 }>;
 
 // @public
