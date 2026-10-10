@@ -24,7 +24,7 @@
     "@fkui/theme-default": "6.61.0",
     "@fkui/vue": "6.61.0",
     "vue": "3.5.43",
-    "vue-router": "5.3.1"
+    "vue-router": "5.4.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "6.0.9",
