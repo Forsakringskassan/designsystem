@@ -628,6 +628,11 @@ export default defineMetadata({
 
     "f-table-button": {
         flow: false,
+        deprecated: {
+            message:
+                'use <f-table> with a column of type "button" in defineTableColumns() instead of <f-table-button>.',
+            source: "@fkui/vue",
+        },
         interactive: true,
         attributes: {
             icon: {
@@ -645,6 +650,11 @@ export default defineMetadata({
 
     "f-table-column": {
         flow: false,
+        deprecated: {
+            message:
+                "use <f-table> and define columns with defineTableColumns() instead of <f-table-column>.",
+            source: "@fkui/vue",
+        },
         attributes: {
             name: ["/.+/"],
             title: ["/.+/"],

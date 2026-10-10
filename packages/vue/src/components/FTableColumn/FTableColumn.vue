@@ -1,3 +1,10 @@
+<script lang="ts">
+/**
+ * @deprecated Use `columns` defined with `defineTableColumns()` in `<f-table>` instead.
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import { type PropType, computed, onMounted, ref, useTemplateRef, watch } from "vue";
 import { ElementIdService } from "@fkui/logic";
