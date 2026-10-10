@@ -1,63 +1,61 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { useTemplateRef } from "vue";
 import { type FruitData, fruits } from "./fruit-data";
 import {
     FCrudDataset,
-    FInteractiveTable,
-    FTableButton,
-    FTableColumn,
+    FTable,
     FTextField,
     FTextareaField,
+    defineTableColumns,
+    useDatasetRef,
 } from "@fkui/vue";
 
-export default defineComponent({
-    components: {
-        FCrudDataset,
-        FInteractiveTable,
-        FTableButton,
-        FTableColumn,
-        FTextField,
-        FTextareaField,
+const rows = useDatasetRef(fruits, "variant");
+const crud = useTemplateRef("crud");
+const columns = defineTableColumns([
+    { type: "text", header: "Namn", key: "name", size: "shrink" },
+    { type: "text", header: "Land", key: "origin", size: "shrink" },
+    { type: "text", header: "Beskrivning", key: "description" },
+    {
+        type: "menu",
+        header: "Åtgärd",
+        text: (row: FruitData) => `Visa åtgärder för ${row.name}`,
+        actions: [
+            {
+                label: "Ändra",
+                icon: "pen",
+                onClick: (row: FruitData) => {
+                    crud.value?.updateItem(row);
+                },
+            },
+            {
+                label: "Ta bort",
+                icon: "trashcan",
+                onClick: (row: FruitData) => {
+                    crud.value?.deleteItem(row);
+                },
+            },
+        ],
     },
-    data() {
-        return {
-            fruits,
-        };
-    },
-    methods: {
-        saveModel(row: FruitData) {
-            console.log("Post model to backend", row);
-        },
-    },
-});
+]);
+
+function saveModel(row: FruitData): void {
+    console.log("Post model to backend", row);
+}
 </script>
 
 <template>
-    <f-crud-dataset v-model="fruits" @created="saveModel" @updated="saveModel" @deleted="saveModel">
-        <template #default="{ updateItem, deleteItem }">
-            <f-interactive-table :rows="fruits" expandable-attribute="variant" key-attribute="id">
+    <f-crud-dataset
+        ref="crud"
+        v-model="rows"
+        @created="saveModel"
+        @updated="saveModel"
+        @deleted="saveModel"
+    >
+        <template #default>
+            <f-table :rows :columns striped>
                 <template #caption> <b>Frukter</b> </template>
-                <template #default="{ row }">
-                    <f-table-column title="Namn" type="text" shrink>
-                        {{ row.name }}
-                    </f-table-column>
-                    <f-table-column title="Land" type="text" shrink>
-                        {{ row.origin }}
-                    </f-table-column>
-                    <f-table-column title="Beskrivning" type="text" expand>
-                        {{ row.description }}
-                    </f-table-column>
-                    <f-table-column title="Åtgärd" type="action" shrink>
-                        <f-table-button icon="pen" @click="updateItem(row)">
-                            Ändra {{ row.name }}
-                        </f-table-button>
-                        <f-table-button icon="trashcan" @click="deleteItem(row)">
-                            Ta bort {{ row.name }}
-                        </f-table-button>
-                    </f-table-column>
-                </template>
-            </f-interactive-table>
+            </f-table>
         </template>
         <template #modify="{ item }">
             <f-text-field

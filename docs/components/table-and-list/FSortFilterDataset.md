@@ -80,24 +80,27 @@ FSortFilterDatasetListExample.vue
 
 ## Tabell med datamängdsorterare
 
-När tabell ({@link table#interaktiv_tabell `FInteractiveTable`} eller {@link table#datatabell `FDataTable`}) används med datamängdsorterare måste varje tabellkolumn använda `name` prop med ett unikt värde.
-För objektet som du skickar till datamängdsorterarens `sortableAttributes` behöver egenskapernas namn även matcha kolumnernas namn för att kunna sortera dem.
-
-```diff
--<f-table-column title="Datum">
-+<f-table-column name="date" title="Datum">
-```
+När {@link FTable} används med datamängdsorteraren behöver nycklarna i `sortableAttributes` matcha kolumnernas `key`.
 
 ```ts
-const mySortableAttributes = {
-    // Property name must match column name.
+import { defineTableColumns } from "@fkui/vue";
+
+interface Row {
+    date: string;
+}
+
+const columns = defineTableColumns<Row>([
+    { type: "text:date", header: "Datum", key: "date" },
+]);
+
+const sortableAttributes = {
     date: "Datum",
 };
 ```
 
 ### Tabell med förvald sortering
 
-Visar hur `FSortFilterDataset` kan användas med {@link table#interaktiv_tabell `FInteractiveTable`}.
+Visar hur `FSortFilterDataset` kan användas med {@link FTable}.
 
 ```import
 FSortFilterDatasetTableExample.vue
@@ -164,9 +167,9 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
  <f-sort-filter-dataset :data="items">
      <template #default="{ sortFilterResult }">
 +        Visar {{ sortFilterResult.length }} av {{ items.length }} frukter.
-         <f-data-table :rows="sortFilterResult">
+        <f-table :rows="sortFilterResult" :columns>
              <!-- [...] --->
-         </f-data-table>
+        </f-table>
      </template>
  </f-sort-filter-dataset>
 ```
@@ -176,7 +179,7 @@ Detta går också utnyttja i tabell för att presentera om tabellen är tom pga 
 ```diff
  <f-sort-filter-dataset :data="items">
      <template #default="{ sortFilterResult }">
-         <f-data-table :rows="sortFilterResult">
+        <f-table :rows="sortFilterResult" :columns>
              <template #empty>
 +                <template v-if="items.length === 0">
 +                    Det finns inga frukter att visa.
@@ -185,7 +188,7 @@ Detta går också utnyttja i tabell för att presentera om tabellen är tom pga 
 +                    Sökningen gav inga träffar.
 +                </template>
              </template>
-         </f-data-table>
+        </f-table>
      </template>
  </f-sort-filter-dataset>
 ```

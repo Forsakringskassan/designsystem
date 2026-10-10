@@ -28,7 +28,7 @@ som tydligör vad som läggs till.
 </f-crud-dataset>
 ```
 
-## Interaktiv tabell med redigering
+## Tabell med redigering
 
 ```import
 FCrudDatasetTableExample.vue
@@ -87,13 +87,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.
 FCrudDatasetAdditionalButtons.vue
 ```
 
-## Datatabell med lägg till-knapp
+## Tabell med lägg till-knapp
 
 ```import
 FCrudDatasetTableCreateExample.vue
 ```
 
-## Interaktiv tabell med knapp
+## Tabell med knapp
 
 ```import
 FCrudDatasetTableUpdateExample.vue

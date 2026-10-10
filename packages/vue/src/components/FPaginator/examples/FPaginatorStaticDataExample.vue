@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FInteractiveTable, FPaginateDataset, FPaginator, FTableColumn } from "@fkui/vue";
+import { FPaginateDataset, FPaginator, FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
 interface Row {
     id: string;
@@ -30,20 +30,21 @@ const rows: Row[] = [
     { id: "19", a: "A19", b: "B19", c: "C19" },
     { id: "20", a: "A20", b: "B20", c: "C20" },
 ];
+const dataset = useDatasetRef(rows);
+const columns = defineTableColumns<Row>([
+    { type: "text", header: "A", key: "a" },
+    { type: "text", header: "B", key: "b" },
+    { type: "text", header: "C", key: "c" },
+]);
 </script>
 
 <template>
     <!-- cut above -->
-    <f-paginate-dataset :items="rows" :items-per-page="5">
+    <f-paginate-dataset :items="dataset" :items-per-page="5">
         <template #default="{ items: currentPageItems, currentPage, numberOfPages }">
-            <f-interactive-table :rows="currentPageItems">
+            <f-table :rows="currentPageItems" :columns>
                 <template #caption> Tabell </template>
-                <template #default="{ row }">
-                    <f-table-column title="A"> {{ row.a }} </f-table-column>
-                    <f-table-column title="B"> {{ row.b }} </f-table-column>
-                    <f-table-column title="C"> {{ row.c }} </f-table-column>
-                </template>
-            </f-interactive-table>
+            </f-table>
             <f-paginator :current-page :number-of-pages />
         </template>
     </f-paginate-dataset>

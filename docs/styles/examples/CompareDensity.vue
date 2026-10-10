@@ -1,12 +1,10 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { computed, ref } from "vue";
 import {
     FBadge,
     FButton,
     FCard,
     FCheckboxField,
-    FDataTable,
     FDatepickerField,
     FExpandablePanel,
     FExpandableParagraph,
@@ -16,55 +14,34 @@ import {
     FRadioField,
     FSelectField,
     FStaticField,
-    FTableColumn,
+    FTable,
     FTextField,
     FTextareaField,
     FTooltip,
+    defineTableColumns,
+    useDatasetRef,
 } from "@fkui/vue";
 
-export default defineComponent({
-    components: {
-        FBadge,
-        FButton,
-        FCard,
-        FCheckboxField,
-        FDataTable,
-        FDatepickerField,
-        FExpandablePanel,
-        FExpandableParagraph,
-        FFieldset,
-        FList,
-        FMessageBox,
-        FRadioField,
-        FSelectField,
-        FStaticField,
-        FTableColumn,
-        FTextField,
-        FTextareaField,
-        FTooltip,
-    },
-    data() {
-        return {
-            components: [] as string[],
-            densityLeft: "density-default",
-            densityRight: "density-dense",
-            textField: "Text",
-            textAreaField: [1, 2, 3, 4].map((it) => `Rad ${it}`).join("\n"),
-            selectField: "Text",
-            datepickerField: "2024-01-01",
-            checkboxField: [],
-            radioField: "",
-            dataTableRows: ["1", "2", "3"].map((id) => ({ id })),
-            dataTableColumns: ["1", "2", "3"].map((id) => ({ id })),
-            listItems: ["1", "2", "3"].map((id) => ({ id })),
-            listSelectedItems: [],
-        };
-    },
-    computed: {
-        densities(): Array<{ class: string }> {
-            return [this.densityLeft, this.densityRight].map((it) => ({ class: it }));
-        },
-    },
+const rows = useDatasetRef(["1", "2", "3"].map((id) => ({ id })));
+const columns = defineTableColumns([
+    { type: "text", header: "Kolumnrubrik", value: () => "Text" },
+    { type: "text", header: "Kolumnrubrik", value: () => "Text" },
+    { type: "text", header: "Kolumnrubrik", value: () => "Text" },
+]);
+
+const densityLeft = ref("density-default");
+const densityRight = ref("density-dense");
+const textField = ref("Text");
+const textAreaField = ref([1, 2, 3, 4].map((it) => `Rad ${it}`).join("\n"));
+const selectField = ref("Text");
+const datepickerField = ref("2024-01-01");
+const checkboxField = ref<string[]>([]);
+const radioField = ref("");
+const listItems = ["1", "2", "3"].map((id) => ({ id }));
+const listSelectedItems = ref<Array<{ id: string }>>([]);
+
+const densities = computed((): Array<{ class: string }> => {
+    return [densityLeft.value, densityRight.value].map((it) => ({ class: it }));
 });
 </script>
 
@@ -167,19 +144,9 @@ export default defineComponent({
                     <f-radio-field v-model="radioField" value="Radio4"> Text </f-radio-field>
                 </f-fieldset>
 
-                <f-data-table :rows="dataTableRows" striped key-attribute="id">
+                <f-table :rows :columns striped>
                     <template #caption> Tabell </template>
-                    <template #default>
-                        <f-table-column
-                            v-for="column in dataTableColumns"
-                            :key="column.id"
-                            title="Kolumnrubrik"
-                            type="text"
-                        >
-                            Text
-                        </f-table-column>
-                    </template>
-                </f-data-table>
+                </f-table>
 
                 <f-list v-model="listSelectedItems" key-attribute="id" :items="listItems">
                     <template #default> Lista </template>

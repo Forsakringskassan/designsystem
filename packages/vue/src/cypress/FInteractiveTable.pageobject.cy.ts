@@ -60,6 +60,7 @@ const TestComponent = defineComponent({
     `,
 });
 
+/* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
 const table = new FInteractiveTablePageObject();
 
 describe("cell()", () => {

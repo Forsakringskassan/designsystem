@@ -221,6 +221,17 @@ provide("registerCallbackBeforeItemDelete", (callback: (item: T) => void) => {
 
 provide("setNestedKey", setNestedKey);
 
+defineExpose({
+    /**
+     * Opens the modification modal for the given item.
+     */
+    updateItem,
+    /**
+     * Opens the deletion modal for the given item.
+     */
+    deleteItem,
+});
+
 onMounted(() => {
     if (!hasAddSlot.value && !hasDeleteSlot.value && !hasModifySlot.value) {
         throw new Error("At least one template of the following must be defined. #add, #delete or #modify");
