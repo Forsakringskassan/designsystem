@@ -18,7 +18,7 @@
     "test": "node --test --experimental-test-module-mocks"
   },
   "devDependencies": {
-    "execa": "10.0.1",
+    "execa": "10.1.0",
     "prettier": "3.9.9",
     "yaml": "2.9.1"
   },
