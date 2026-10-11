@@ -17,6 +17,37 @@ function isVuePreviewExample(example: ManifestExample): boolean {
     );
 }
 
+function showDocsViewForExample(selector: string): void {
+    cy.get(selector).then(($example) => {
+        const view = $example
+            .closest("[data-docs-view]")
+            .attr("data-docs-view");
+
+        if (view) {
+            cy.get(`[data-docs-view-link="${view}"]`).click();
+        }
+    });
+}
+
+function assertDocsViewInitialized(): void {
+    cy.get("body").then(($body) => {
+        const viewLinks = $body.find("[data-docs-view-link]");
+
+        if (viewLinks.length === 0) {
+            return;
+        }
+
+        const activeLinks = viewLinks.filter('[aria-current="page"]');
+        expect(activeLinks).to.have.length(1);
+
+        const activeView = activeLinks.attr("data-docs-view-link");
+        cy.get(`[data-docs-view="${activeView}"]`).should("be.visible");
+        cy.get(`[data-docs-view]:not([data-docs-view="${activeView}"])`).should(
+            "not.be.visible",
+        );
+    });
+}
+
 describe("validate documentation examples...", () => {
     const pages = Cypress.expose("pages");
 
@@ -61,6 +92,7 @@ describe("validate documentation examples...", () => {
 
             it(path, () => {
                 cy.visit(path);
+                assertDocsViewInitialized();
                 cy.then(() => {
                     const count = Cypress.$(".mermaid").length;
                     if (count > 0) {
@@ -80,6 +112,7 @@ describe("validate documentation examples...", () => {
                     const markup = `${code} code`;
                     const errorhandler = `${selector} [data-test=f-error-page]`;
 
+                    showDocsViewForExample(selector);
                     cy.get(container).should(($el) => {
                         expect($el, path).to.exist;
                     });
@@ -108,6 +141,7 @@ describe("validate documentation examples...", () => {
                     const preview = `${selector} .code-preview__preview`;
                     const errorhandler = `${selector} [data-test=f-error-page]`;
 
+                    showDocsViewForExample(selector);
                     cy.get(preview).should(($el) => {
                         expect($el, path).to.exist.and.not.be.empty;
                     });
