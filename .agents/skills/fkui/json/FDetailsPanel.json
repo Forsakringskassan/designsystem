@@ -1,0 +1,58 @@
+{
+    "name": "FDetailsPanel",
+    "slug": "fdetailspanel",
+    "models": [],
+    "props": [
+        {
+            "name": "name",
+            "description": "Name of this panel. Used when referencing the panel in useDetailsPanel.",
+            "type": "string",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "exclusive",
+            "description": "An optional identifier to prevent other panels with the same identifier\nfrom being open at the same time.",
+            "type": "string",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Panel content. Use native slots",
+            "bindings": [
+                {
+                    "name": "item",
+                    "type": "T",
+                    "description": "Object the panel was opened with."
+                },
+                {
+                    "name": "close",
+                    "type": "(reason?: string) => void",
+                    "description": "Callback to close the panel. The optional reason will be passed to the `onClose()` callback."
+                },
+                {
+                    "name": "header",
+                    "type": "string",
+                    "description": "Native slot name for header content"
+                },
+                {
+                    "name": "footer",
+                    "type": "string",
+                    "description": "Native slot name for footer content"
+                },
+                {
+                    "name": "content",
+                    "type": "string",
+                    "description": "Native slot name for main content"
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}

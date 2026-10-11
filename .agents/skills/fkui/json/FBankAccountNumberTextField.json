@@ -1,0 +1,196 @@
+{
+    "name": "FBankAccountNumberTextField",
+    "slug": "fbankaccountnumbertextfield",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "The value for the input.\nIf the prop is not used or set to undefined\nor null then the default value will be used.",
+            "type": "string|number|null",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "id",
+            "description": "The id for the input id attribute.\nThe id for the label for attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "inline",
+            "description": "Show the component inline.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "type",
+            "description": "The type used for the input.\nIf the prop is not set text will be used.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"text\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "formatter",
+            "description": "- The `formatter` function must only be used on a component that uses validation.\n- The `formatter` function acts differently depending on if the `parser` function is defined or not.\n\n| formatter without parser | formatter with parser |\n| ----- | -----|\n| modelvalue = parsed viewvalue using formatter function | modelvalue = parsed viewvalue using parser function |\n| viewvalue = modelvalue (where modelvalue is already parsed) | viewvalue = formatted modelvalue using formatter function (where modelvalue is already parsed) |",
+            "type": "FormatFunction<any>",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "parser",
+            "description": "- The `parser` function must only be used on a component that uses validation.\n- The `parser` function acts differently depending on if the `formatter` function is defined or not.\n  - For parser combined with formatter, refer to formatter prop doc.\n\n| parser without formatter |\n| ----- |\n| modelvalue = parsed viewvalue using parser function |\n| viewvalue = never updated except when modelvalue differs from parsed viewvalue |",
+            "type": "ParseFunction<BankAccountNumberString>",
+            "required": false,
+            "default": {
+                "value": "parseBankAccountNumber"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "labelWidth",
+            "description": "Set responsive width for label section.\n\n```\nlabel-width=\"md-9 lg-6\"\n```",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"sm-12\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "inputWidth",
+            "description": "Set responsive width for input section that wraps input element and icons.\n\n```\ninput-width=\"md-6 lg-3\"\n```",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"sm-12\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "options",
+            "description": "List of options.\n\nWhen set, the user can select a value from the list of options and filter while typing.\n\nIf options will be set at a later time, initially specify as an empty array.\n\nIf a formatter is used by the component, make sure the options are formatted as well.",
+            "type": "string[] | undefined",
+            "required": false,
+            "default": {
+                "value": "() => undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "disabled",
+            "description": "Disables the text field.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "blur",
+            "description": null,
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "string",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "change",
+            "description": null,
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "string",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for label content.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "tooltip",
+            "description": "Slot for tooltip.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "description",
+            "description": "Optional slot for description. See {@link FLabel} for details.",
+            "bindings": [
+                {
+                    "name": "description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for primary description content."
+                },
+                {
+                    "name": "format-description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for format description."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "error-message",
+            "description": "Slot for displaying single or several error messages.",
+            "bindings": [
+                {
+                    "name": "hasError",
+                    "type": "boolean",
+                    "description": "Set to true when a validation error is present"
+                },
+                {
+                    "name": "validationMessage",
+                    "type": "string",
+                    "description": "Descriptive validation error message for current error"
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "input-left",
+            "description": "Slot for adding content to the left of the input element.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "append-inner",
+            "description": "Slot for add content inside the input to the right",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "input-right",
+            "description": "Slot for adding content to the right of the input element.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

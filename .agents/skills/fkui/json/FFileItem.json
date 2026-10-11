@@ -1,0 +1,70 @@
+{
+    "name": "FFileItem",
+    "slug": "ffileitem",
+    "models": [],
+    "props": [
+        {
+            "name": "id",
+            "description": "The id for the input id attribute.\nThe id for the label for attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "fileName",
+            "description": "The file name.",
+            "type": "string",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "mimeType",
+            "description": "The mime type, can be changed if i.e server change the name.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "originalMimeType",
+            "description": "The name of the file uploaded",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "changedMimeTypeText",
+            "description": "If file name changed, this info will be displayed, placeholder %before% and %after% will be replaced with originalMimeType and mimeType",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "row",
+            "description": "Slot for any content that should be placed beside the file icon and file name. If several elements is placed, they will be spaced evenly, for more information see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot for any type of content. Elements placed in this slot will be position after the file icon and file name.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

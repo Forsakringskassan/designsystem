@@ -1,0 +1,85 @@
+{
+    "name": "FMinimizablePanel.ce",
+    "slug": "fminimizablepanel-ce",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "v-model binding.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "openPrefix",
+            "description": "Screenreader prefix for toggle button when minimized.\n\nDefault value \"Återställ\".",
+            "type": "string",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "closePrefix",
+            "description": "Screenreader prefix for toggle button when open.\n\nDefault value \"Minimera\".",
+            "type": "string",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "context",
+            "description": "Screenreader context for toggle button.\n\nDefault value \"panel\".",
+            "type": "string",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "toggle",
+            "description": "Emitted when button is toggled.",
+            "properties": [
+                {
+                    "name": "isOpen",
+                    "type": "boolean",
+                    "description": "open or minimized panel."
+                },
+                {
+                    "name": "overlay",
+                    "type": "mixed",
+                    "description": "show panel as overlay."
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "header",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "icon",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "content",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "footer",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}
