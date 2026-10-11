@@ -12,7 +12,7 @@ const page = {
     modal: ".modal__dialog-container",
     modalHeader: ".modal__header",
     modalContent: ".modal__content",
-    modalDismiss: ".modal__dialog-container button.close-button",
+    modalDismiss: ".modal__dialog-container button.modal-close-button",
     modalSubmit: ".modal__dialog-container button[type=submit]",
     modalFormInput: ".modal__dialog-container input",
 };
