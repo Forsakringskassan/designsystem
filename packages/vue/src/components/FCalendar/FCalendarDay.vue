@@ -27,6 +27,13 @@ export default defineComponent({
             default: true,
         },
         /**
+         * Set to `true` if day is being selected.
+         */
+        selecting: {
+            type: Boolean,
+            required: false,
+        },
+        /**
          * Set to `true` if day is selected.
          */
         selected: {
@@ -55,6 +62,8 @@ export default defineComponent({
             if (this.enabled) {
                 if (this.selected) {
                     classes.push(`${component}--selected`);
+                } else if (this.selecting) {
+                    classes.push(`${component}--selecting`);
                 }
             } else {
                 classes.push(`${component}--disabled`);
