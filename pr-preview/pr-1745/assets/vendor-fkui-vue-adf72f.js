@@ -14820,12 +14820,10 @@ var FTable_default = /* @__PURE__ */ defineComponent({
     const expandableAttributeName = isDataset(__props.rows) ? computed(() => getDatasetMetadata(__props.rows).nestedAttribute) : computed(() => __props.expandableAttribute);
     const keyedRows = computed(() => setItemIdentifiers(__props.rows, __props.keyAttribute, expandableAttributeName.value));
     const { rows: selectableSourceRows, isProvided: isSelectableSourceProvided } = useSelectableRowSource();
-    const selectableRows = isDataset(__props.rows) ? computed(() => {
+    const selectableRows = computed(() => {
       if (!isSelectableSourceProvided.value) return keyedRows.value;
-      const sourceRows = selectableSourceRows.value;
-      const nestedAttribute = getDatasetMetadata(sourceRows).nestedAttribute;
-      return setItemIdentifiers(sourceRows, __props.keyAttribute, nestedAttribute);
-    }) : computed(() => keyedRows.value);
+      return setItemIdentifiers(selectableSourceRows.value, __props.keyAttribute, expandableAttributeName.value);
+    });
     const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttributeName.value));
     const isTreegrid = computed(() => Boolean(expandableAttributeName.value));
     const role = computed(() => isTreegrid.value ? "treegrid" : "grid");
