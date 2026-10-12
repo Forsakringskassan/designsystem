@@ -148,19 +148,19 @@ export interface ContextMenuTextItem {
 // @public
 export function copyItemIdentifier<T extends object>(from: T, to: T): void;
 
-// @public
+// @public @deprecated
 export type Dataset<T extends object> = T[] & {
     readonly [datasetSymbol]: true;
     readonly __type: T;
 };
 
-// @public
+// @public @deprecated
 export interface DatasetArrayMetadata<T> {
     readonly nestedAttribute: DatasetNestedKeyOf<T> | undefined;
     readonly size: number;
 }
 
-// @public
+// @public @deprecated
 export interface DatasetElementMetadata {
     readonly ariaLevel: number;
     readonly ariaPosInSet: number;
@@ -169,7 +169,7 @@ export interface DatasetElementMetadata {
     readonly rowIndex: number;
 }
 
-// @public
+// @public @deprecated
 export function datasetIterator<T extends object>(dataset: Dataset<T>, options?: {
     flat?: boolean;
 }): Generator<{
@@ -177,7 +177,7 @@ export function datasetIterator<T extends object>(dataset: Dataset<T>, options?:
     metadata: DatasetElementMetadata;
 }>;
 
-// @public
+// @public @deprecated
 export type DatasetNestedKeyOf<T> = {
     [K in keyof T]: NonNullable<T[K]> extends T[] ? K : never;
 }[keyof T];
@@ -1031,10 +1031,10 @@ export function getAbsolutePosition(src: HTMLElement): Rect;
 // @internal
 export function getAbsolutePosition(src?: HTMLElement): Rect | undefined;
 
-// @public
+// @public @deprecated
 export function getDatasetMetadata<T extends object>(dataset: Dataset<T>): DatasetArrayMetadata<T>;
 
-// @public
+// @public @deprecated
 export function getDatasetMetadata(element: object): DatasetElementMetadata;
 
 // @public
@@ -1680,10 +1680,10 @@ export interface TextFieldSetupProps {
 // @public (undocumented)
 export const textTypes: readonly ["text:bankAccountNumber", "text:bankgiro", "text:clearingNumber", "text:date", "text:email", "text:organisationsnummer", "text:personnummer", "text:phoneNumber", "text:plusgiro", "text:postalCode", "text"];
 
-// @internal
+// @internal @deprecated
 export function toDataset<T extends object>(array: T[], nestedAttribute?: DatasetNestedKeyOf<T>): Dataset<T>;
 
-// @internal
+// @internal @deprecated
 export function toDataset<T extends object>(dataset: T[], originalDataset: Dataset<T> | T[]): Dataset<T>;
 
 // @internal (undocumented)
@@ -1725,7 +1725,7 @@ export function useCombobox(inputRef: Readonly<ShallowRef<HTMLInputElement | nul
     closeDropdown: () => void;
 };
 
-// @public
+// @public @deprecated
 export function useDatasetRef<T extends object>(initial?: T[], nestedAttribute?: DatasetNestedKeyOf<T>): Ref<Dataset<T>, T[] | Dataset<T>>;
 
 // @public (undocumented)
