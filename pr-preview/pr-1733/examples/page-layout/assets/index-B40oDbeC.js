@@ -7452,14 +7452,14 @@ Locale$1.SWEDISH, Weekday$1.MONDAY, Weekday$1.TUESDAY, Weekday$1.WEDNESDAY, Week
 var ISO8601_YYYY_MM_DD$1 = "YYYY-MM-DD";
 var formatter$1 = {
 	[Locale$1.SWEDISH]: {
-		[DateFormat$1.FULL]: "dddd D MMMM YYYY",
-		[DateFormat$1.LONG]: "D MMMM YYYY",
+		[DateFormat$1.FULL]: "dddd\xA0D\xA0MMMM\xA0YYYY",
+		[DateFormat$1.LONG]: "D\xA0MMMM\xA0YYYY",
 		[DateFormat$1.ISO8601]: ISO8601_YYYY_MM_DD$1,
 		[DateFormat$1.YYYYMMDD]: "YYYYMMDD"
 	},
 	[Locale$1.ENGLISH]: {
-		[DateFormat$1.FULL]: "dddd, D MMMM YYYY",
-		[DateFormat$1.LONG]: "D MMMM YYYY",
+		[DateFormat$1.FULL]: "dddd,\xA0D\xA0MMMM\xA0YYYY",
+		[DateFormat$1.LONG]: "D\xA0MMMM\xA0YYYY",
 		[DateFormat$1.ISO8601]: ISO8601_YYYY_MM_DD$1,
 		[DateFormat$1.YYYYMMDD]: "YYYYMMDD"
 	}
@@ -22705,9 +22705,9 @@ var XPersonPanel_default = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/vue-router/dist/useApi-BPuI6ZR9.js
+//#region ../../node_modules/vue-router/dist/useApi-CUWMwLLw.js
 /*!
-* vue-router v5.3.1
+* vue-router v5.4.0
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
@@ -22806,6 +22806,13 @@ var routeLocationKey = Symbol("");
 */
 var routerViewLocationKey = Symbol("");
 /**
+* Callbacks called by the closest ancestor router-view once it displays a new
+* route. Used by `onRouteRendered()`.
+*
+* @internal
+*/
+var routerViewOnRouteRenderedKey = Symbol("");
+/**
 * Returns the router instance. Equivalent to using `$router` inside
 * templates.
 */
@@ -22813,9 +22820,9 @@ function useRouter() {
 	return inject(routerKey);
 }
 //#endregion
-//#region ../../node_modules/vue-router/dist/devtools-CN5uWJaH.js
+//#region ../../node_modules/vue-router/dist/devtools-CxgSYwGp.js
 /*!
-* vue-router v5.3.1
+* vue-router v5.4.0
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
@@ -22836,6 +22843,11 @@ var isBrowser = typeof document !== "undefined";
 * into a `/` if directly typed in. The _backtick_ (`````) should also be
 * encoded everywhere because some browsers like FF encode it when directly
 * written while others don't. Safari and IE don't encode ``"<>{}``` in hash.
+*/
+/**
+* NOTE: `replaceAll()` is not faster than `replace()` with a global RegExp.
+* Benchmarks do not show a clear benefit for these simple replacements:
+* https://github.com/mathiasbynens/string-prototype-replace-regexp-benchmark
 */
 var HASH_RE = /#/g;
 var AMPERSAND_RE = /&/g;
@@ -23135,6 +23147,12 @@ function getSavedScrollPosition(key) {
 	scrollPositions.delete(key);
 	return scroll;
 }
+function invalidateScrollPositions(position, replace = false) {
+	for (const key of scrollPositions.keys()) {
+		const entryPosition = parseInt(key, 10);
+		if (entryPosition === position || !replace && entryPosition > position) scrollPositions.delete(key);
+	}
+}
 /**
 * ScrollBehavior instance used by the router to compute and restore the scroll
 * position when navigating.
@@ -23313,7 +23331,7 @@ function extractChangingRecords(to, from) {
 //#endregion
 //#region ../../node_modules/vue-router/dist/vue-router.js
 /*!
-* vue-router v5.3.1
+* vue-router v5.4.0
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
@@ -23437,7 +23455,9 @@ function useHistoryStateNavigation(base) {
 		}
 	}
 	function replace(to, data) {
-		changeLocation(to, assign({}, history.state, buildState(historyState.value.back, to, historyState.value.forward, true), data, { position: historyState.value.position }), true);
+		const state = assign({}, history.state, buildState(historyState.value.back, to, historyState.value.forward, true), data, { position: historyState.value.position });
+		changeLocation(to, state, true);
+		invalidateScrollPositions(state.position, true);
 		currentLocation.value = to;
 	}
 	function push(to, data) {
@@ -23447,6 +23467,7 @@ function useHistoryStateNavigation(base) {
 		});
 		changeLocation(currentState.current, currentState, true);
 		changeLocation(to, assign({}, buildState(currentLocation.value, to, null), { position: currentState.position + 1 }, data), false);
+		invalidateScrollPositions(currentState.position);
 		currentLocation.value = to;
 	}
 	return {
@@ -24178,7 +24199,11 @@ var RouterViewImpl = /*#__PURE__*/ defineComponent({
 		provide(viewDepthKey, computed(() => depth.value + 1));
 		provide(matchedRouteKey, matchedRouteRef);
 		provide(routerViewLocationKey, routeToDisplay);
+		const onRouteRenderedCallbacks = /* @__PURE__ */ new Set();
+		provide(routerViewOnRouteRenderedKey, onRouteRenderedCallbacks);
 		const viewRef = /* @__PURE__ */ ref();
+		let settledRoute = START_LOCATION_NORMALIZED;
+		const { app } = getCurrentInstance().appContext;
 		watch(() => [
 			viewRef.value,
 			matchedRouteRef.value,
@@ -24207,8 +24232,16 @@ var RouterViewImpl = /*#__PURE__*/ defineComponent({
 			const onVnodeUnmounted = (vnode) => {
 				if (vnode.component.isUnmounted) matchedRoute.instances[currentName] = null;
 			};
+			const onVnodeSettled = (vnode) => nextTick(() => {
+				if (settledRoute === route || routeToDisplay.value !== route || vnode.el.getRootNode() !== app._container.getRootNode()) return;
+				const from = settledRoute;
+				settledRoute = route;
+				for (const callback of onRouteRenderedCallbacks) callback(route, from);
+			});
 			const component = h(ViewComponent, assign({}, routeProps, attrs, {
 				onVnodeUnmounted,
+				onVnodeMounted: onVnodeSettled,
+				onVnodeUpdated: onVnodeSettled,
 				ref: viewRef
 			}));
 			return normalizeSlot(slots.default, {
@@ -24233,7 +24266,7 @@ var RouterView = RouterViewImpl;
 * @param options - {@link RouterOptions}
 */
 function createRouter(options) {
-	const matcher = createRouterMatcher(options.routes, options);
+	const matcher = options.matcher || createRouterMatcher(options.routes, options);
 	const parseQuery$1 = options.parseQuery || parseQuery;
 	const stringifyQuery$1 = options.stringifyQuery || stringifyQuery;
 	const routerHistory = options.history;
