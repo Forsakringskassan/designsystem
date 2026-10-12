@@ -105,17 +105,13 @@ const expandableAttributeName = isDataset(rows)
 
 const keyedRows = computed(() => setItemIdentifiers(rows, keyAttribute, expandableAttributeName.value));
 const { rows: selectableSourceRows, isProvided: isSelectableSourceProvided } = useSelectableRowSource();
-const selectableRows = isDataset(rows)
-    ? computed(() => {
-          if (!isSelectableSourceProvided.value) {
-              return keyedRows.value;
-          }
+const selectableRows = computed(() => {
+    if (!isSelectableSourceProvided.value) {
+        return keyedRows.value;
+    }
 
-          const sourceRows = selectableSourceRows.value as Dataset<T>;
-          const nestedAttribute = getDatasetMetadata(sourceRows).nestedAttribute;
-          return setItemIdentifiers(sourceRows, keyAttribute, nestedAttribute);
-      })
-    : computed(() => keyedRows.value);
+    return setItemIdentifiers(selectableSourceRows.value as T[], keyAttribute, expandableAttributeName.value);
+});
 
 const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttributeName.value));
 const isTreegrid = computed(() => Boolean(expandableAttributeName.value));
