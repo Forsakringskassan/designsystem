@@ -251,6 +251,80 @@ function FCrudDatasetSelectors(selector = ":scope") {
     }
   });
 }
+function FDefinitionListSelectors(selector = ":scope") {
+  return Object.freeze({
+    /**
+     * The base selector for the component.
+     *
+     * This is the same selector that the consumer provided.
+     *
+     * @public
+     * @since %version%
+     * @returns The root selector for the component.
+     */
+    get selector() {
+      return selector;
+    },
+    /**
+     * Get all term (`dt`) elements.
+     *
+     * To target a specific term by index use `.eq()` in Cypress or
+     * `.nth()` in Playwright.
+     *
+     * @example Cypress
+     *
+     * ```ts
+     * const { terms } = FDefinitionListSelectors();
+     * cy.get(terms()).should("have.length", 3);
+     * cy.get(terms()).eq(0).should("contain.text", "Name");
+     * ```
+     *
+     * @example Playwright
+     *
+     * ```ts
+     * const { terms } = FDefinitionListSelectors();
+     * await expect(page.locator(terms())).toHaveCount(3);
+     * await expect(page.locator(terms()).nth(0)).toContainText("Name");
+     * ```
+     *
+     * @public
+     * @since %version%
+     * @returns A selector for all term elements.
+     */
+    terms() {
+      return `${selector} .definition-list__term`;
+    },
+    /**
+     * Get all definition (`dd`) elements.
+     *
+     * To target a specific definition by index use `.eq()` in Cypress or
+     * `.nth()` in Playwright.
+     *
+     * @example Cypress
+     *
+     * ```ts
+     * const { definitions } = FDefinitionListSelectors();
+     * cy.get(definitions()).should("have.length", 3);
+     * cy.get(definitions()).eq(0).should("contain.text", "Jane Doe");
+     * ```
+     *
+     * @example Playwright
+     *
+     * ```ts
+     * const { definitions } = FDefinitionListSelectors();
+     * await expect(page.locator(definitions())).toHaveCount(3);
+     * await expect(page.locator(definitions()).nth(0)).toContainText("Jane Doe");
+     * ```
+     *
+     * @public
+     * @since %version%
+     * @returns A selector for all definition elements.
+     */
+    definitions() {
+      return `${selector} .definition-list__definition`;
+    }
+  });
+}
 function FDetailsPanelSelectors(selector = ":scope") {
   return Object.freeze({
     /**
@@ -1022,6 +1096,51 @@ function FPaginatorSelectors(selector = ":scope") {
     }
   });
 }
+function FProgressbarSelectors(selector = ":scope") {
+  return Object.freeze({
+    /**
+     * The base selector for the component.
+     *
+     * This is the same selector that the consumer provided.
+     *
+     * @public
+     * @since %version%
+     * @returns The root selector for the component.
+     */
+    get selector() {
+      return selector;
+    },
+    /**
+     * Get the progress meter element.
+     *
+     * The meter element carries the `role="progressbar"` attribute and the
+     * current progress value in the `aria-valuenow` attribute. To read the
+     * numeric value, get the `aria-valuenow` attribute and convert to a
+     * number.
+     *
+     * @example Cypress
+     *
+     * ```ts
+     * const { meter } = FProgressbarSelectors();
+     * cy.get(meter()).invoke("attr", "aria-valuenow").then(Number).should("eq", 50);
+     * ```
+     *
+     * @example Playwright
+     *
+     * ```ts
+     * const { meter } = FProgressbarSelectors();
+     * const value = Number(await page.locator(meter()).getAttribute("aria-valuenow"));
+     * ```
+     *
+     * @public
+     * @since %version%
+     * @returns A selector for the progress meter element.
+     */
+    meter() {
+      return `${selector} .progress__meter`;
+    }
+  });
+}
 function FRadioFieldSelectors(selector = ":scope") {
   return Object.freeze({
     /**
@@ -1122,6 +1241,210 @@ function FRadioFieldSelectors(selector = ":scope") {
      */
     details() {
       return `${selector} .radio-button__details`;
+    }
+  });
+}
+function FSelectFieldSelectors(selector = ":scope") {
+  const labelSelectors = FLabelSelectors(`${selector} .label`);
+  return Object.freeze({
+    /**
+     * The base selector for the component.
+     *
+     * This is the same selector that the consumer provided.
+     *
+     * @public
+     * @since %version%
+     * @returns The root selector for the component.
+     */
+    get selector() {
+      return selector;
+    },
+    /**
+     * Get the select element.
+     *
+     * Use this to select an option or assert the currently selected value.
+     * To count or list options, query `option` children. To get the
+     * currently selected option use `selectedOption()`.
+     *
+     * @example Cypress
+     *
+     * ```ts
+     * const { select } = FSelectFieldSelectors();
+     * cy.get(select()).select("Option 2");
+     * cy.get(select()).find("option:not([disabled])").should("have.length", 3);
+     * ```
+     *
+     * @example Playwright
+     *
+     * ```ts
+     * const { select } = FSelectFieldSelectors();
+     * await page.locator(select()).selectOption("Option 2");
+     * await expect(page.locator(select()).locator("option:not([disabled])")).toHaveCount(3);
+     * ```
+     *
+     * @public
+     * @since %version%
+     * @returns A selector for the select element.
+     */
+    select() {
+      return `${selector} select`;
+    },
+    /**
+     * Get the error message element.
+     *
+     * Only present when the field has a validation error.
+     *
+     * @example Cypress
+     *
+     * ```ts
+     * const { errorMessage } = FSelectFieldSelectors();
+     * cy.get(errorMessage()).should("contain.text", "This field is required");
+     * ```
+     *
+     * @example Playwright
+     *
+     * ```ts
+     * const { errorMessage } = FSelectFieldSelectors();
+     * await expect(page.locator(errorMessage())).toContainText("This field is required");
+     * ```
+     *
+     * @public
+     * @since %version%
+     * @returns A selector for the error message element.
+     */
+    errorMessage() {
+      return labelSelectors.errorMessage();
+    },
+    /**
+     * Get the label element.
+     *
+     * The label contains the heading text and, when present, description
+     * and tooltip. Use `FLabelSelectors` for more fine-grained access to
+     * label sub-elements.
+     *
+     * @example Cypress
+     *
+     * ```ts
+     * const { label } = FSelectFieldSelectors();
+     * cy.get(label()).should("contain.text", "Country");
+     * ```
+     *
+     * @example Playwright
+     *
+     * ```ts
+     * const { label } = FSelectFieldSelectors();
+     * await expect(page.locator(label())).toContainText("Country");
+     * ```
+     *
+     * @public
+     * @since %version%
+     * @returns A selector for the label element.
+     */
+    label() {
+      return labelSelectors.selector;
+    },
+    /**
+     * Get the description element selector.
+     *
+     * The description is only present when the `description` slot is used.
+     *
+     * @example Cypress
+     *
+     * ```ts
+     * const { description } = FSelectFieldSelectors();
+     * cy.get(description()).should("contain.text", "Help text");
+     * ```
+     *
+     * @example Playwright
+     *
+     * ```ts
+     * const { description } = FSelectFieldSelectors();
+     * await expect(page.locator(description())).toContainText("Help text");
+     * ```
+     *
+     * @public
+     * @since v6.58.0
+     * @returns A selector for the description element.
+     */
+    description() {
+      return labelSelectors.description();
+    },
+    /**
+     * Get the currently selected option element.
+     *
+     * @example Cypress
+     *
+     * ```ts
+     * const { selectedOption } = FSelectFieldSelectors();
+     * cy.get(selectedOption()).should("have.text", "Sweden");
+     * ```
+     *
+     * @example Playwright
+     *
+     * ```ts
+     * const { selectedOption } = FSelectFieldSelectors();
+     * await expect(page.locator(selectedOption())).toHaveText("Sweden");
+     * ```
+     *
+     * @public
+     * @since %version%
+     * @returns A selector for the currently selected option element.
+     */
+    selectedOption() {
+      return `${selector} option:checked`;
+    },
+    /**
+     * Get all options elements.
+     *
+     * To target a specific option by index use `.eq()` in Cypress or
+     * `.nth()` in Playwright.
+     *
+     * @example Cypress
+     *
+     * ```ts
+     * const { options } = FSelectFieldSelectors();
+     * cy.get(options()).should("have.length", 3);
+     * cy.get(options()).eq(0).should("contain.text", "Option 1");
+     * ```
+     *
+     * @example Playwright
+     *
+     * ```ts
+     * const { definitions } = FSelectFieldSelectors();
+     * await expect(page.locator(definitions())).toHaveCount(3);
+     * await expect(page.locator(definitions()).nth(0)).toContainText("Option 1");
+     * ```
+     *
+     * @public
+     * @since %version%
+     * @returns A selector for the currently selected option element.
+     */
+    options() {
+      return `${selector} select option`;
+    },
+    /**
+     * Get the dropdown arrow icon element.
+     *
+     * @example Cypress
+     *
+     * ```ts
+     * const { arrowIcon } = FSelectFieldSelectors();
+     * cy.get(arrowIcon()).should("exist");
+     * ```
+     *
+     * @example Playwright
+     *
+     * ```ts
+     * const { arrowIcon } = FSelectFieldSelectors();
+     * await expect(page.locator(arrowIcon())).toBeVisible();
+     * ```
+     *
+     * @public
+     * @since %version%
+     * @returns A selector for the arrow icon element.
+     */
+    arrowIcon() {
+      return `${selector} .icon.select-field__icon.f-icon-arrow-down`;
     }
   });
 }
@@ -1566,6 +1889,7 @@ export {
   FButtonSelectors,
   FCheckboxFieldSelectors,
   FCrudDatasetSelectors,
+  FDefinitionListSelectors,
   FDetailsPanelSelectors,
   FExpandablePanelSelectors,
   FExpandableParagraphSelectors,
@@ -1574,7 +1898,9 @@ export {
   FLoaderSelectors,
   FMinimizablePanelSelectors,
   FPaginatorSelectors,
+  FProgressbarSelectors,
   FRadioFieldSelectors,
+  FSelectFieldSelectors,
   FTextFieldSelectors,
   FTextareaFieldSelectors,
   FTooltipSelectors
