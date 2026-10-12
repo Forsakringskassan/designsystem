@@ -22,8 +22,9 @@ function* datasetGenerator<T extends object>(
  * Returns an iterator over the elements of a dataset, yielding each element
  * together with its metadata.
  *
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead.
  * @public
- * @since v6.42.0
+ * @since %version%
  * @param dataset - The dataset to iterate over.
  * @param options - Options controlling iteration behaviour. Set `flat` to
  *   `true` to yield nested rows in depth-first pre-order after their parent.

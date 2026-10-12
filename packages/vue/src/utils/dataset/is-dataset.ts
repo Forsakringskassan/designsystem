@@ -3,8 +3,9 @@ import { type Dataset, datasetSymbol } from "./dataset";
 /**
  * Check if a dataset is a dataset.
  *
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead.
  * @internal
- * @since v6.39.0
+ * @since %version%
  */
 export function isDataset<T extends object>(
     dataset: T[] | null | undefined,

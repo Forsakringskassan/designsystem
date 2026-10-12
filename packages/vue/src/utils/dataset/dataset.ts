@@ -3,8 +3,9 @@
  * Used to constrain the `nestedAttribute` parameter to only keys that
  * actually hold a nested array of the same type.
  *
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead.
  * @public
- * @since v6.41.0
+ * @since %version%
  */
 export type DatasetNestedKeyOf<T> = {
     [K in keyof T]: NonNullable<T[K]> extends T[] ? K : never;
@@ -16,10 +17,9 @@ export const datasetSymbol: unique symbol = Symbol("dataset");
  * Dataset contains row metadata for components such as `FSortFilterDataset`
  * and `FTable`.
  *
- * Use `useDatasetRef()` to create a new dataset.
- *
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead.
  * @public
- * @since v6.39.0
+ * @since %version%
  */
 export type Dataset<T extends object> = T[] & {
     readonly [datasetSymbol]: true;

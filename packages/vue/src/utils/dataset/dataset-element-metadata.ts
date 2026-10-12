@@ -3,8 +3,9 @@ import { datasetSymbol } from "./dataset";
 /**
  * Metadata about a single element within a dataset.
  *
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead.
  * @public
- * @since v6.40.0
+ * @since %version%
  */
 export interface DatasetElementMetadata {
     /** Zero-based position of the element in the dataset. */

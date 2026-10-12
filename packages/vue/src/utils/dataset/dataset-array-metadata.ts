@@ -7,8 +7,9 @@ import {
 /**
  * Metadata about a dataset (entire array).
  *
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead.
  * @public
- * @since v6.40.0
+ * @since %version%
  */
 export interface DatasetArrayMetadata<T> {
     /** Total original number of elements in the dataset. */
