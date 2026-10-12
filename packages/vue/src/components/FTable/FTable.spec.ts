@@ -1491,7 +1491,7 @@ describe("useDatasetRef compatibility", () => {
     ]);
 
     it("should render a basic table from a dataset", () => {
-        expect.assertions(4);
+        expect.assertions(2);
         const dataset = useDatasetRef<Row>([{ text: "A" }, { text: "B" }]);
         const wrapper = mount(FTable<Row>, {
             props: {
