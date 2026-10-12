@@ -7328,14 +7328,17 @@ Om den anges kan även rader från nästlade arrayer tas bort.</dd>
 </dl>
 <h2 id="exempel" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#exempel">Exempel</a></h2>
                 <div
-                    id="example-bf40fb"
+                    id="example-c243b7"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-title function_">removeTableRows</span>(rows, rows.<span class="hljs-property">value</span>[<span class="hljs-number">0</span>].<span class="hljs-property">firstElementChild</span>, <span class="hljs-string">&quot;children&quot;</span>);
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> childRow = rows.<span class="hljs-property">value</span>[<span class="hljs-number">0</span>].<span class="hljs-property">children</span>?.[<span class="hljs-number">0</span>];
+<span class="hljs-keyword">if</span> (childRow) {
+    <span class="hljs-title function_">removeTableRows</span>(rows, childRow, <span class="hljs-string">&quot;children&quot;</span>);
+}
 </code></pre>
                 </div>
             
@@ -7406,9 +7409,9 @@ Om den anges kan även rader från nästlade arrayer tas bort.</dd>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">use-dataset-ref-deprecation</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/6b7370c989322bcd67ab305cddaa8a7933bd1d05">6b7370c</a>)<br />
+<div class="version"><span class="version-text-block">use-dataset-ref-deprecation</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/33a20aca3ffc51f153c1c04628a05d66ecd0bfb7">33a20ac</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1745">PR 1745</a><br />
-       <span class="version-text-block">2026-10-12 10:55</span>
+       <span class="version-text-block">2026-10-12 11:20</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
