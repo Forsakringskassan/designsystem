@@ -103,7 +103,7 @@
     "@forsakringskassan/vitest-config": "5.0.1",
     "@html-validate/release-scripts": "7.6.14",
     "@types/estree": "1.0.9",
-    "@types/lodash": "4.17.25",
+    "@types/lodash": "4.17.26",
     "@types/node": "22.20.5",
     "@typescript/native": "npm:typescript@7.0.2",
     "@vue/server-renderer": "3.5.43",
