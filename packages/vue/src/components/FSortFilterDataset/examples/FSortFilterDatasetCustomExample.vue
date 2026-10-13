@@ -32,7 +32,8 @@ export default defineComponent({
 <style>
 .sort-filter-dataset pre {
     display: inline-block;
-    border: 1px solid black;
+    border: 1px solid var(--fkds-color-border-primary);
+    color: var(--fkds-color-text-primary);
     padding: 10px;
     margin: 10px;
 }
