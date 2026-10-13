@@ -104,6 +104,7 @@ $calendar-icon-forced-colors-padding: calc($calendar-icon-padding - $calendar-ic
         display: flex;
         border: none;
         background-color: transparent;
+        flex-shrink: 0;
         cursor: pointer;
 
         @media (forced-colors: active) {
