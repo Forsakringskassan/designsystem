@@ -9,6 +9,34 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version %version%
+
+2026-10-14
+
+För att se samtliga ändringar i releasen, se {@link changelog changelog}
+
+### Deprekering av tabellkomponenter
+
+Vi deprekerar de gamla tabellkomponenterna
+
+- datatabell (FDataTable)
+- interaktiv tabell (FInteractiveTable)
+- tabellknapp (FTableButton)
+- tabellkolumn (FTableColumn).
+
+Tillhörande PageObject kommer också deprekeras.
+
+Deprekering är en förvarning om att vi kommer ta bort komponenter/funktioner på sikt.
+Detta kommer tidigast ske om ett år.
+
+{@link migrating-to-ftable Läs om hur du migrerar till nya tabellen.}
+
+{@link FTable Läs om nya tabellen.}
+
+### Datum utan radbrytning
+
+Datum visas nu utan radbrytning, vilket förbättrar läsbarheten.
+
 ## Version v6.58.0
 
 2026-09-17
