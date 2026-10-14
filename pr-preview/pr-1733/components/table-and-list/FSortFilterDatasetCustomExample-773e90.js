@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetCustomExample.vue:FSortFilterDatasetCustomExample-4df47e.js
+// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetCustomExample.vue:FSortFilterDatasetCustomExample-773e90.js
 import { defineComponent } from "vue";
 
 // packages/vue/src/components/FSortFilterDataset/examples/fruit-data.ts
@@ -59,7 +59,7 @@ var fruits = [
   }
 ];
 
-// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetCustomExample.vue:FSortFilterDatasetCustomExample-4df47e.js
+// virtual-entry:virtual:packages/vue/src/components/FSortFilterDataset/examples/FSortFilterDatasetCustomExample.vue:FSortFilterDatasetCustomExample-773e90.js
 import { FSortFilterDataset } from "@fkui/vue";
 import { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, withCtx as _withCtx, createBlock as _createBlock } from "vue";
 var exampleComponent = defineComponent({
@@ -109,7 +109,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-4df47e"
+  selector: "#example-773e90"
 });
 export {
   render
