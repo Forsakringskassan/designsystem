@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useDatasetRef } from "../../../utils";
 import {
     type FDefinitionListItem,
     FDefinitionList,
@@ -6,7 +7,6 @@ import {
     FPaginateDataset,
     FPaginator,
     getDatasetMetadata,
-    useDatasetRef,
 } from "@fkui/vue";
 
 interface Row {
@@ -15,7 +15,6 @@ interface Row {
 }
 
 const items = useDatasetRef<Row>(
-    /* page 1 */
     [
         {
             name: "Kalle Anka",

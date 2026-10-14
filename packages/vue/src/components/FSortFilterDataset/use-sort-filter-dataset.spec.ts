@@ -1,5 +1,7 @@
 import { nextTick, ref } from "vue";
 import { describe, expect, it, vi } from "vitest";
+import { type Dataset, getDatasetMetadata, useDatasetRef } from "../../utils";
+import { isDataset } from "../../utils/dataset";
 import { useSortFilterDataset } from "./use-sort-filter-dataset";
 
 it("should output filtered rows directly", () => {
@@ -25,6 +27,46 @@ it("should output filtered rows directly", () => {
             foo: "foo",
         },
     ]);
+});
+
+it("should return a regular array when input data is a regular array", () => {
+    expect.assertions(2);
+    const data = ref([{ foo: "foo" }, { foo: "bar" }]);
+
+    const { sortFilterResult } = useSortFilterDataset(
+        data,
+        { foo: "foo" },
+        [],
+        "foo",
+        true,
+    );
+
+    expect(sortFilterResult.value).toMatchObject([
+        { foo: "bar" },
+        { foo: "foo" },
+    ]);
+    expect(isDataset(sortFilterResult.value)).toBe(false);
+});
+
+it("should return a dataset with metadata when input data is a dataset", () => {
+    expect.assertions(3);
+    const data = useDatasetRef([{ foo: "foo" }, { foo: "bar" }]);
+
+    const { sortFilterResult } = useSortFilterDataset(
+        data,
+        { foo: "foo" },
+        [],
+        "foo",
+        true,
+    );
+
+    expect(sortFilterResult.value).toMatchObject([
+        { foo: "bar" },
+        { foo: "foo" },
+    ]);
+    expect(isDataset(sortFilterResult.value)).toBe(true);
+    const datasetResult = sortFilterResult.value as Dataset<{ foo: string }>;
+    expect(getDatasetMetadata(datasetResult).size).toBe(2);
 });
 
 describe("filtered data after editing of input data", () => {

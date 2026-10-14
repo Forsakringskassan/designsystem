@@ -39,8 +39,9 @@ export function getElementMetadata(
 /**
  * Returns metadata about a dataset.
  *
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead.
  * @public
- * @since v6.40.0
+ * @since %version%
  */
 export function getDatasetMetadata<T extends object>(
     dataset: Dataset<T>,
@@ -49,8 +50,9 @@ export function getDatasetMetadata<T extends object>(
 /**
  * Returns metadata about an element within a dataset.
  *
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead.
  * @public
- * @since v6.40.0
+ * @since %version%
  */
 export function getDatasetMetadata(element: object): DatasetElementMetadata;
 

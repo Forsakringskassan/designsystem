@@ -52,8 +52,9 @@ function inheritDataset<T extends object>(
  * Reusing element references across **unrelated** datasets is not supported and
  * will produce incorrect metadata in the second dataset.
  *
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead.
  * @internal
- * @since v6.39.0
+ * @since %version%
  */
 export function toDataset<T extends object>(
     array: T[],
@@ -70,8 +71,9 @@ export function toDataset<T extends object>(
  * Note: the new dataset must be a subset of the original dataset, that is all
  * the elements passed into the new array or dataset must exist in the original.
  *
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead.
  * @internal
- * @since v6.41.0
+ * @since %version%
  */
 export function toDataset<T extends object>(
     dataset: T[],

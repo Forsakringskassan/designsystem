@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { FDate } from "@fkui/date";
 import { LiveExample, createElement } from "@forsakringskassan/docs-live-example";
 import { defaultTnumValue } from "../columns/helpers";
@@ -18,7 +18,6 @@ import {
     FSelectField,
     FTable,
     defineTableColumns as defineTableColumnsFunc,
-    useDatasetRef,
 } from "@fkui/vue";
 
 interface Row {
@@ -288,7 +287,7 @@ export default defineComponent({
     },
     computed: {
         livedata(): object {
-            const rows = useDatasetRef(
+            const rows = ref(
                 rowData[this.columnType].map((it, index) => ({ id: index + 1, value: it })),
             );
 
