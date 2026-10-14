@@ -28613,6 +28613,9 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 			await nextTick();
 			await stopEdit(editRef.value, "blur");
 		}
+		watch(() => __props.column.selected(__props.row), (value) => {
+			viewValue.value = value;
+		});
 		return (_ctx, _cache) => {
 			return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
 				key: 0,
@@ -44530,7 +44533,7 @@ var Ai = {
 	replaceEndOfLine: Nr,
 	canBreak: wr
 };
-var gu = "3.9.9";
+var gu = "3.9.10";
 var fr = {};
 yt(fr, {
 	addDanglingComment: () => re,

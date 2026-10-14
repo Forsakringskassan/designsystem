@@ -13878,6 +13878,9 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
       await nextTick();
       await stopEdit2(editRef.value, "blur");
     }
+    watch(() => __props.column.selected(__props.row), (value) => {
+      viewValue.value = value;
+    });
     return (_ctx, _cache) => {
       return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
         key: 0,
