@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-629152.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-af161a.js",
     "@fkui/date": "../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-986a3a.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-231c5f.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-59db36.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js"
   },
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-vue-selectors-629152.js": "sha384-VuM36DKbCXHV4uUMo7OIABJwYSxTRhi4khmeaqn9QK4GZs2nV1mZGkSPJqtNVRGl",
     "../../assets/vendor-fkui-logic-af161a.js": "sha384-Wl55FjgQ57C00bSZGJO0m+91pwbX1dXODsA86PSv4gYNehWxi5ACsZRPeK9hvFjz",
     "../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../assets/vendor-fkui-vue-986a3a.js": "sha384-7oPukd+qxVbQUNi05kPyVVvhCZb0FhRSFHMR0107HcNPmWIzkVhdZoGQl6aI42S4",
+    "../../assets/vendor-fkui-vue-231c5f.js": "sha384-vp+oLfBsBU9rV0FjADTAYROKsfj6GtK+DtQBCIZTewa8SFHkffiHX0wZOUArBGW8",
     "../../assets/vendor-fkui-vue-labs-59db36.js": "sha384-lZUC9laa/ssLtJePpKjK6elLLQVt4JPthEwGVEgSEr5PY3gvupaz53R+iGDZRr1S",
     "../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js": "sha384-Zomp3tpZgQ5vBn1jDfJPFtzxDwJLLe39dK/jC//bT97+TQqCbXlfNz6um+bZc61n"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-8d61c5.json"
+    href="../../search-data-72279c.json"
     as="fetch"
     crossorigin
-    integrity="sha384-qvGvdt8wL06lU9cCvDQ4NfkJ8RYiacx6FpJASa/P6/P1NVKuC4IZUifp6pA/xSyN"
+    integrity="sha384-gIot8HuogFIWma8MmMH6mKBVCt0DqcWHmgB7Bac7w/Vsuu/CGzqZ7MGPENFvs/rH"
     id="search-data"
 />
 <script>
@@ -2696,11 +2696,11 @@
 
 <li class="link ">
         <a
-            href="./table.html"
+            href="./legacytable.html"
             
             
             
-            data-path="components/table-and-list/table.html"
+            data-path="components/table-and-list/legacytable.html"
             
         >
             Datatabell och interaktiv tabell
@@ -7010,11 +7010,11 @@
         </a>
     </li><li class="link ">
         <a
-            href="./table.html"
+            href="./legacytable.html"
             
             
             
-            data-path="components/table-and-list/table.html"
+            data-path="components/table-and-list/legacytable.html"
             
         >
             Datatabell och interaktiv tabell
@@ -7112,7 +7112,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/8b11c8330287adbe395fa970350ff1c56307ac9c/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/4fc9d15e5571cef6f164c953f49cb5294ab85e1a/packages/vue/src/components/FCrudDataset/FCrudDataset.vue">
                 FCrudDataset
             </a>
             
@@ -7141,7 +7141,7 @@
                             </summary>
                             <ul>
                                 
-                                <li><a href="#interaktiv_tabell_med_redigering">Interaktiv tabell med redigering</a></li>
+                                <li><a href="#tabell_med_redigering">Tabell med redigering</a></li>
                                 
                                 <li><a href="#forpopulera_objekt">Förpopulera objekt</a></li>
                                 
@@ -7151,9 +7151,9 @@
                                 
                                 <li><a href="#egna_lagg_till_knappar">Egna lägg till knappar</a></li>
                                 
-                                <li><a href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></li>
+                                <li><a href="#tabell_med_lagg_till_knapp">Tabell med lägg till-knapp</a></li>
                                 
-                                <li><a href="#interaktiv_tabell_med_knapp">Interaktiv tabell med knapp</a></li>
+                                <li><a href="#tabell_med_knapp">Tabell med knapp</a></li>
                                 
                                 <li><a href="#lista_med_redigering">Lista med redigering</a></li>
                                 
@@ -7180,7 +7180,7 @@ Vanligtvis används lista eller tabell för presentation men kan även vara egen
 behöver knappen kompletteras med en text för skärmläsare.
 Beroende på sammanhang kan även knappen för &quot;lägg till ny&quot; behöva kompletteras med en skärmläsartext,
 som tydligör vad som läggs till.</p>
-<h2 id="interaktiv_tabell_med_redigering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#interaktiv_tabell_med_redigering">Interaktiv tabell med redigering</a></h2>
+<h2 id="tabell_med_redigering" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_redigering">Tabell med redigering</a></h2>
             <div
                 id="example-55b036"
                 class="code-preview code-preview--default"
@@ -7192,13 +7192,13 @@ som tydligör vad som läggs till.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-bc15ff"></div>
+        <div id="example-aa51b1"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableExample-bc15ff.js"></script>
+        <script type="module" src="./FCrudDatasetTableExample-aa51b1.js"></script>
     
                 </div>
                 <div>
@@ -7219,66 +7219,64 @@ som tydligör vad som läggs till.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
 <span class="hljs-keyword">import</span> {
     <span class="hljs-title class_">FCrudDataset</span>,
-    <span class="hljs-title class_">FInteractiveTable</span>,
-    <span class="hljs-title class_">FTableButton</span>,
-    <span class="hljs-title class_">FTableColumn</span>,
+    <span class="hljs-title class_">FTable</span>,
     <span class="hljs-title class_">FTextField</span>,
     <span class="hljs-title class_">FTextareaField</span>,
+    defineTableColumns,
+    useDatasetRef,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudDataset</span>,
-        <span class="hljs-title class_">FInteractiveTable</span>,
-        <span class="hljs-title class_">FTableButton</span>,
-        <span class="hljs-title class_">FTableColumn</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FTextareaField</span>,
+<span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">useDatasetRef</span>(fruits, <span class="hljs-string">&quot;variant&quot;</span>);
+<span class="hljs-keyword">const</span> crud = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;crud&quot;</span>);
+<span class="hljs-keyword">const</span> columns = <span class="hljs-title function_">defineTableColumns</span>([
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;shrink&quot;</span> },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;origin&quot;</span>, <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;shrink&quot;</span> },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Beskrivning&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;description&quot;</span> },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;menu&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärd&quot;</span>,
+        <span class="hljs-attr">text</span>: <span class="hljs-function">(<span class="hljs-params">row: FruitData</span>) =&gt;</span> <span class="hljs-string">`Visa åtgärder för <span class="hljs-subst">${row.name}</span>`</span>,
+        <span class="hljs-attr">actions</span>: [
+            {
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ändra&quot;</span>,
+                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;pen&quot;</span>,
+                <span class="hljs-attr">onClick</span>: <span class="hljs-function">(<span class="hljs-params">row: FruitData</span>) =&gt;</span> {
+                    crud.<span class="hljs-property">value</span>?.<span class="hljs-title function_">updateItem</span>(row);
+                },
+            },
+            {
+                <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Ta bort&quot;</span>,
+                <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;trashcan&quot;</span>,
+                <span class="hljs-attr">onClick</span>: <span class="hljs-function">(<span class="hljs-params">row: FruitData</span>) =&gt;</span> {
+                    crud.<span class="hljs-property">value</span>?.<span class="hljs-title function_">deleteItem</span>(row);
+                },
+            },
+        ],
     },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            fruits,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
-            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
-        },
-    },
-});
+]);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>): <span class="hljs-keyword">void</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
+}
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ updateItem, deleteItem }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">expandable-attribute</span>=<span class="hljs-string">&quot;variant&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span>
+        <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;crud&quot;</span>
+        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;rows&quot;</span>
+        @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
+        @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
+        @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
+    &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">striped</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Namn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.name }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Land&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.origin }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Beskrivning&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">expand</span>&gt;</span>
-                        {{ row.description }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Åtgärd&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;action&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">f-table-button</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;pen&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;updateItem(row)&quot;</span>&gt;</span>
-                            Ändra {{ row.name }}
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">f-table-button</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;trashcan&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;deleteItem(row)&quot;</span>&gt;</span>
-                            Ta bort {{ row.name }}
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">modify</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
@@ -7414,7 +7412,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
     
                     </div>
                 </div>
-            <h2 id="datatabell_med_lagg_till_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#datatabell_med_lagg_till_knapp">Datatabell med lägg till-knapp</a></h2>
+            <h2 id="tabell_med_lagg_till_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_lagg_till_knapp">Tabell med lägg till-knapp</a></h2>
             <div
                 id="example-c1213c"
                 class="code-preview code-preview--default"
@@ -7426,13 +7424,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-f5cee6"></div>
+        <div id="example-205668"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableCreateExample-f5cee6.js"></script>
+        <script type="module" src="./FCrudDatasetTableCreateExample-205668.js"></script>
     
                 </div>
                 <div>
@@ -7453,50 +7451,35 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FDataTable</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FTextField</span>, <span class="hljs-title class_">FTextareaField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> {
+    <span class="hljs-title class_">FCrudDataset</span>,
+    <span class="hljs-title class_">FTable</span>,
+    <span class="hljs-title class_">FTextField</span>,
+    <span class="hljs-title class_">FTextareaField</span>,
+    defineTableColumns,
+    useDatasetRef,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudDataset</span>,
-        <span class="hljs-title class_">FDataTable</span>,
-        <span class="hljs-title class_">FTableColumn</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FTextareaField</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            fruits,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
-            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
-        },
-    },
-});
+<span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">useDatasetRef</span>(fruits);
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">FruitData</span>&gt;([
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;shrink&quot;</span> },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;origin&quot;</span>, <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;shrink&quot;</span> },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Beskrivning&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;description&quot;</span> },
+]);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>): <span class="hljs-keyword">void</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
+}
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;rows&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-data-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Rättigheter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Namn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.name }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Land&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.origin }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Beskrivning&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">expand</span>&gt;</span>
-                        {{ row.description }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-data-table</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">add</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
@@ -7529,7 +7512,7 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
 </code></pre>
                 </div>
             </div>
-        <h2 id="interaktiv_tabell_med_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#interaktiv_tabell_med_knapp">Interaktiv tabell med knapp</a></h2>
+        <h2 id="tabell_med_knapp" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_knapp">Tabell med knapp</a></h2>
             <div
                 id="example-b67799"
                 class="code-preview code-preview--default"
@@ -7541,13 +7524,13 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-da0486"></div>
+        <div id="example-7f43c1"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FCrudDatasetTableUpdateExample-da0486.js"></script>
+        <script type="module" src="./FCrudDatasetTableUpdateExample-7f43c1.js"></script>
     
                 </div>
                 <div>
@@ -7568,56 +7551,45 @@ Du behöver själv hantera vad klick på knappen ska utföra för åtgärd.</p>
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { useTemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableButton</span>, <span class="hljs-title class_">FTableColumn</span>, <span class="hljs-title class_">FTextField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FCrudDataset</span>, <span class="hljs-title class_">FTable</span>, <span class="hljs-title class_">FTextField</span>, defineTableColumns, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ExampleApp&quot;</span>,
-    <span class="hljs-attr">components</span>: {
-        <span class="hljs-title class_">FCrudDataset</span>,
-        <span class="hljs-title class_">FTextField</span>,
-        <span class="hljs-title class_">FInteractiveTable</span>,
-        <span class="hljs-title class_">FTableButton</span>,
-        <span class="hljs-title class_">FTableColumn</span>,
-    },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            fruits,
-        };
-    },
-    <span class="hljs-attr">methods</span>: {
-        <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>) {
-            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
+<span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">useDatasetRef</span>(fruits);
+<span class="hljs-keyword">const</span> crud = <span class="hljs-title function_">useTemplateRef</span>(<span class="hljs-string">&quot;crud&quot;</span>);
+<span class="hljs-keyword">const</span> columns = <span class="hljs-title function_">defineTableColumns</span>([
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;shrink&quot;</span> },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;origin&quot;</span>, <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;shrink&quot;</span> },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Beskrivning&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;description&quot;</span> },
+    {
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;button&quot;</span>,
+        <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Åtgärd&quot;</span>,
+        <span class="hljs-attr">text</span>: <span class="hljs-function">(<span class="hljs-params">row: FruitData</span>) =&gt;</span> <span class="hljs-string">`Ändra <span class="hljs-subst">${row.name}</span>`</span>,
+        <span class="hljs-attr">icon</span>: <span class="hljs-string">&quot;pen&quot;</span>,
+        <span class="hljs-attr">onClick</span>: <span class="hljs-function">(<span class="hljs-params">row: FruitData</span>) =&gt;</span> {
+            crud.<span class="hljs-property">value</span>?.<span class="hljs-title function_">updateItem</span>(row);
         },
     },
-});
+]);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">saveModel</span>(<span class="hljs-params">row: FruitData</span>): <span class="hljs-keyword">void</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Post model to backend&quot;</span>, row);
+}
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;fruits&quot;</span> @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span> @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ updateItem }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;fruits&quot;</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-crud-dataset</span>
+        <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;crud&quot;</span>
+        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;rows&quot;</span>
+        @<span class="hljs-attr">created</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
+        @<span class="hljs-attr">updated</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
+        @<span class="hljs-attr">deleted</span>=<span class="hljs-string">&quot;saveModel&quot;</span>
+    &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span> <span class="hljs-attr">:columns</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Namn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.name }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Land&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.origin }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Beskrivning&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">expand</span>&gt;</span>
-                        {{ row.description }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Åtgärd&quot;</span> <span class="hljs-attr">shrink</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;action&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">f-table-button</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">&quot;pen&quot;</span> <span class="hljs-attr">label</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;updateItem(row)&quot;</span>&gt;</span>
-                            Ändra <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> {{ row.name }} <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">modify</span>=<span class="hljs-string">&quot;{ item }&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">f-text-field</span>
@@ -8946,9 +8918,9 @@ Läs mer om att <a href="../../gettingstarted/migration/migrating-crud-button.ht
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">docs/update-releasenotesv42</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/8b11c8330287adbe395fa970350ff1c56307ac9c">8b11c83</a>)<br />
+<div class="version"><span class="version-text-block">docs/update-releasenotesv42</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/4fc9d15e5571cef6f164c953f49cb5294ab85e1a">4fc9d15</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1748">PR 1748</a><br />
-       <span class="version-text-block">2026-10-14 09:27</span>
+       <span class="version-text-block">2026-10-14 10:49</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
