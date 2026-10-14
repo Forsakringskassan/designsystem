@@ -6221,11 +6221,21 @@
                     
 
                     <div id="content"><h2 id="version_version" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#version_version">Version %version%</a></h2><p class="docs-paragraph">2026-10-14</p>
-<h3 id="vart_att_namna_i_releasen_ar_skriv_har_under_vad_du_har_med_i_releasen" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#vart_att_namna_i_releasen_ar_skriv_har_under_vad_du_har_med_i_releasen">Värt att nämna i releasen är (skriv här under vad du har med i releasen)</a></h3><ul>
-<li>deprekering av &quot;dataset&quot;</li>
+<p class="docs-paragraph">För att se samtliga ändringar i releasen, se <a href="../../changelog.html">changelog</a></p>
+<h3 id="deprekering_av_tabellkomponenter" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#deprekering_av_tabellkomponenter">Deprekering av tabellkomponenter</a></h3><p class="docs-paragraph">Vi deprekerar de gamla tabellkomponenterna</p>
+<ul>
+<li>datatabell (FDataTable)</li>
+<li>interaktiv tabell (FInteractiveTable)</li>
+<li>tabellknapp (FTableButton)</li>
+<li>tabellkolumn (FTableColumn).</li>
 </ul>
-<h3 id="use_non_breaking_spaces_in_date_formats" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#use_non_breaking_spaces_in_date_formats">use non-breaking spaces in date formats</a></h3><p class="docs-paragraph">NBS (hårt mellanslag) används för att förhindra radbrytning mitt i ett datum, vilket förbättrar läsbarheten.</p>
-<p class="docs-paragraph">Övriga buggfixar se <a href="../../changelog.html">Changelog</a></p>
+<p class="docs-paragraph">Tillhörande PageObject kommer också deprekeras.</p>
+<p class="docs-paragraph">Deprekering är en förvarning om att vi kommer ta bort komponenter/funktioner på sikt.
+Detta kommer tidigast ske om ett år.</p>
+<p class="docs-paragraph"><a href="../migration/migrating-to-ftable.html">Läs om hur du migrerar till nya tabellen.</a></p>
+<p class="docs-paragraph"><a href="../../components/table-and-list/table">Läs om nya tabellen.</a></p>
+<h3 id="datum_utan_radbrytning" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#datum_utan_radbrytning">Datum utan radbrytning</a></h3><p class="docs-paragraph">Du kan nu använda icke-brytande/hårt mellanslag, NBSP, för datum.
+Det förbättrar läsbarheten genom att förhindra radbrytning mitt i ett datum.</p>
 <h2 id="version_v6_58_0" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#version_v6_58_0">Version v6.58.0</a></h2><p class="docs-paragraph">2026-09-17</p>
 <p class="docs-paragraph">För att se samtliga ändringar i releasen, se <a href="../../changelog.html">changelog</a></p>
 <h3 id="tabell" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tabell">Tabell</a></h3><p class="docs-paragraph">Vi har lagt till stöd för att sätta kolumnbredd i tabellen, läs mer <a href="../../components/table-and-list/table/width.html">om att sätta kolumnbredd.</a></p>
@@ -6582,9 +6592,9 @@ Från och med det år en person fyller 100 år har personnumret plustecken istä
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">docs/update-releasenotesv42</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/f02fd543773f76d28b60f990a9ebf1d45ccb78fc">f02fd54</a>)<br />
+<div class="version"><span class="version-text-block">docs/update-releasenotesv42</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/6c28f22c7c71cb5658e54c35b5e89346da0d2a81">6c28f22</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1748">PR 1748</a><br />
-       <span class="version-text-block">2026-10-14 07:55</span>
+       <span class="version-text-block">2026-10-14 09:21</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
