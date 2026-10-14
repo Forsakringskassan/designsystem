@@ -26,18 +26,18 @@
     "@fkui/vue/selectors": "../../../../assets/vendor-fkui-vue-selectors-629152.js",
     "@fkui/logic": "../../../../assets/vendor-fkui-logic-af161a.js",
     "@fkui/date": "../../../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../../../assets/vendor-fkui-vue-bbfc21.js",
+    "@fkui/vue": "../../../../assets/vendor-fkui-vue-701b4a.js",
     "@fkui/vue-labs": "../../../../assets/vendor-fkui-vue-labs-59db36.js",
-    "@forsakringskassan/docs-live-example": "../../../../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js"
+    "@forsakringskassan/docs-live-example": "../../../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js"
   },
   "integrity": {
     "../../../../assets/vendor-vue-f8f1bb.js": "sha384-2h0pGXLCmTwD41SU1sbbk/H1O2eu5RpROsi5Z8hiFjhf2+Zv2bz5rFA2uLqKMqfz",
     "../../../../assets/vendor-fkui-vue-selectors-629152.js": "sha384-VuM36DKbCXHV4uUMo7OIABJwYSxTRhi4khmeaqn9QK4GZs2nV1mZGkSPJqtNVRGl",
     "../../../../assets/vendor-fkui-logic-af161a.js": "sha384-Wl55FjgQ57C00bSZGJO0m+91pwbX1dXODsA86PSv4gYNehWxi5ACsZRPeK9hvFjz",
     "../../../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../../../assets/vendor-fkui-vue-bbfc21.js": "sha384-GURtHbuPAGoT3INgM57RtYoytSFVy9bvtg774Pv6WRlpvYkfaLNjtxEZR9gx76Q1",
+    "../../../../assets/vendor-fkui-vue-701b4a.js": "sha384-DRp+RYdYKXahgzGMSrTEycQfiTfiigaeQ5nk3XwrdUO6xAwPqjiwncIGFUYXsMJ8",
     "../../../../assets/vendor-fkui-vue-labs-59db36.js": "sha384-lZUC9laa/ssLtJePpKjK6elLLQVt4JPthEwGVEgSEr5PY3gvupaz53R+iGDZRr1S",
-    "../../../../assets/vendor-forsakringskassan-docs-live-example-a7dd47.js": "sha384-VKppHxCeZq82kVDB1OYOYbpV834R6UMQhJGy0Ljiv1cQlksKAiIBgmXoroQOISfR"
+    "../../../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js": "sha384-Zomp3tpZgQ5vBn1jDfJPFtzxDwJLLe39dK/jC//bT97+TQqCbXlfNz6um+bZc61n"
   }
 }
         </script><script
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../../search-data-8d61c5.json"
+    href="../../../../search-data-72279c.json"
     as="fetch"
     crossorigin
-    integrity="sha384-qvGvdt8wL06lU9cCvDQ4NfkJ8RYiacx6FpJASa/P6/P1NVKuC4IZUifp6pA/xSyN"
+    integrity="sha384-gIot8HuogFIWma8MmMH6mKBVCt0DqcWHmgB7Bac7w/Vsuu/CGzqZ7MGPENFvs/rH"
     id="search-data"
 />
 <script>
@@ -579,7 +579,7 @@
             data-path="gettingstarted/migration/migrating-crud-button.html"
             
         >
-            FCrudButton migreringsguide
+            FCrudButton
         </a>
     </li>
 
@@ -592,7 +592,7 @@
             data-path="gettingstarted/migration/migrating-to-fieldset.html"
             
         >
-            Fieldset migreringsguide
+            Fieldset
         </a>
     </li>
 
@@ -605,7 +605,7 @@
             data-path="gettingstarted/migration/migrating-to-ftable.html"
             
         >
-            Ftable
+            FTable
         </a>
     </li>
 
@@ -618,7 +618,7 @@
             data-path="gettingstarted/migration/migrating-to-v5.html"
             
         >
-            Version 5 migreringsguide
+            Version 5
         </a>
     </li>
 
@@ -629,7 +629,7 @@
 
     <li class="expandable">
         <details >
-            <summary>Version 6 migreringsguide <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            <summary>Version 6 <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
 
 
@@ -2696,11 +2696,11 @@
 
 <li class="link ">
         <a
-            href="../../../../components/table-and-list/table.html"
+            href="../../../../components/table-and-list/legacytable.html"
             
             
             
-            data-path="components/table-and-list/table.html"
+            data-path="components/table-and-list/legacytable.html"
             
         >
             Datatabell och interaktiv tabell
@@ -7353,7 +7353,10 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph">Hämtar en tabellcell från en <a href="../../../../components/table-and-list/table.html">interaktiv tabell</a> (FInteractiveTable).</p>
+                    <div id="content"><p class="docs-paragraph"><code>FInteractiveTablePageObject</code> är deprekerad.</p>
+<p class="docs-paragraph">Migrera tabellen till <code>FTable</code> och använd därefter <code>FTablePageObject.cell()</code>.
+Observera att <code>FTablePageObject.cell()</code> även räknar kolumner för expanderingsknappar och valbara rader.</p>
+<p class="docs-paragraph">Hämtar en tabellcell från en <a href="../../../../components/table-and-list/legacytable.html">interaktiv tabell</a> (FInteractiveTable).</p>
 <p class="docs-paragraph">Både rad och kolumn är 1-indexerade, vilket innebär att rad 1 kolumn 1 refererar till första cellen.</p>
 <p class="docs-paragraph">Varken markören för expanderbara rader eller kryssrutan för valbara rader inkluderas i kolumnnummer.
 Det innebär att kolumn 1 refererar till första cellen med innehåll.</p>
@@ -7361,7 +7364,7 @@ Det innebär att kolumn 1 refererar till första cellen med innehåll.</p>
 Om första raden är kollapsad refererar andra raden till nästa icke-expanderade rad medans om första raden är expanderad refererar andra raden till första expanderade raden under den första raden.</p>
 <h2 id="syntax" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#syntax">Syntax</a></h2>
                 <div
-                    id="example-ac789a"
+                    id="example-90c0dc"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -7386,7 +7389,7 @@ Om första raden är kollapsad refererar andra raden till nästa icke-expanderad
 <h3 id="returvarde" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#returvarde">Returvärde</a></h3><p class="docs-paragraph"><code>HTMLTableCellElement</code> med tabellcellen beskriven av <code>descriptor</code>.</p>
 <h2 id="exempel" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#exempel">Exempel</a></h2>
                 <div
-                    id="example-650036"
+                    id="example-2baafa"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -7396,19 +7399,19 @@ Om första raden är kollapsad refererar andra raden till nästa icke-expanderad
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-00d8d9"></div>
+        <div id="example-6e0583"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FInteractiveTablePageObject-cell-00d8d9.js"></script>
+        <script type="module" src="./FInteractiveTablePageObject-cell-6e0583.js"></script>
     
                     </div>
                 </div>
             
                 <div
-                    id="example-267aba"
+                    id="example-5e643c"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7426,7 +7429,7 @@ Om första raden är kollapsad refererar andra raden till nästa icke-expanderad
                 </div>
             
                 <div
-                    id="example-c62778"
+                    id="example-f31081"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7438,7 +7441,7 @@ table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">r
 table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">row</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">col</span>: <span class="hljs-number">3</span> }).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;contain.text&quot;</span>, <span class="hljs-string">&quot;C2&quot;</span>);</code></pre>
                 </div>
             <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
-<li><a href="../../../../components/table-and-list/table.html">Interaktiv tabell</a> (FInteractiveTable)</li>
+<li><a href="../../../../components/table-and-list/legacytable.html">Interaktiv tabell</a> (FInteractiveTable)</li>
 </ul>
 
 
@@ -7508,9 +7511,9 @@ table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">r
         <a class="docs-footer__anchor" href="../../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">bugfix/datepicker-icon</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/813b6370899446eea9d8bfb927869025adce2584">813b637</a>)<br />
+<div class="version"><span class="version-text-block">bugfix/datepicker-icon</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/8079577460406da5fffc2fd87706c7aa0889adb6">8079577</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1749">PR 1749</a><br />
-       <span class="version-text-block">2026-10-13 11:08</span>
+       <span class="version-text-block">2026-10-14 10:53</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

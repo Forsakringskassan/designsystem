@@ -29,7 +29,7 @@ function setup(options) {
 }
 
 // virtual-entry:virtual:docs/styles/examples/PaletteList.vue:PaletteList-c0725f.js
-import { defineComponent as defineComponent2 } from "vue";
+import { defineComponent } from "vue";
 
 // packages/theme-default/dist/palette.json
 var palette_default = [
@@ -397,28 +397,50 @@ var palette_default = [
 ];
 
 // sfc-script:/home/runner/work/designsystem/designsystem/docs/styles/examples/ColorTable.vue?type=script
-import { defineComponent } from "vue";
-import { FDataTable, FTableColumn } from "@fkui/vue";
-var ColorTable_default = defineComponent({
-  components: { FDataTable, FTableColumn },
+import { defineComponent as _defineComponent } from "vue";
+import { h as h2 } from "vue";
+import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+var ColorTable_default = /* @__PURE__ */ _defineComponent({
+  __name: "ColorTable",
   props: {
-    colors: {
-      type: Array,
-      required: true
-    }
+    colors: { type: Array, required: true }
+  },
+  setup(__props, { expose: __expose }) {
+    __expose();
+    const props = __props;
+    const columns = defineTableColumns([
+      { type: "text", header: "Namn", key: "name", size: "shrink" },
+      {
+        header: "F\xE4rg",
+        size: "grow",
+        render(row) {
+          return h2("td", { class: "table-ng__cell table-ng__cell--static" }, [
+            h2("div", [
+              h2("span", {
+                class: "color-table__color",
+                style: { "--value": row.value }
+              }),
+              h2("code", { class: "color-table__term" }, row.value)
+            ])
+          ]);
+        }
+      }
+    ]);
+    const rows = useDatasetRef(props.colors);
+    const __returned__ = { props, columns, rows, get FTable() {
+      return FTable;
+    } };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
   }
 });
 
 // sfc-template:/home/runner/work/designsystem/designsystem/docs/styles/examples/ColorTable.vue?type=template
-import { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createCommentVNode as _createCommentVNode, normalizeStyle as _normalizeStyle, openBlock as _openBlock, createBlock as _createBlock } from "vue";
-var _hoisted_1 = { class: "color-table__term" };
-var _hoisted_2 = { class: "color-table__term" };
+import { createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_f_table_column = _resolveComponent("f-table-column");
-  const _component_f_data_table = _resolveComponent("f-data-table");
-  return _openBlock(), _createBlock(_component_f_data_table, {
-    rows: _ctx.colors,
-    "key-attribute": "name",
+  return _openBlock(), _createBlock($setup["FTable"], {
+    rows: $setup.rows,
+    columns: $setup.columns,
     class: "density-densest"
   }, {
     caption: _withCtx(() => [..._cache[0] || (_cache[0] = [
@@ -430,68 +452,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* CACHED */
       )
     ])]),
-    default: _withCtx(({ row }) => [
-      _createVNode(
-        _component_f_table_column,
-        {
-          title: "Namn",
-          type: "text",
-          shrink: ""
-        },
-        {
-          default: _withCtx(() => [
-            _createElementVNode(
-              "code",
-              _hoisted_1,
-              _toDisplayString(row.name),
-              1
-              /* TEXT */
-            )
-          ]),
-          _: 2
-          /* DYNAMIC */
-        },
-        1024
-        /* DYNAMIC_SLOTS */
-      ),
-      _createVNode(
-        _component_f_table_column,
-        {
-          title: "F\xE4rg",
-          type: "text",
-          expand: ""
-        },
-        {
-          default: _withCtx(() => [
-            _createCommentVNode(" [html-validate-disable-next no-inline-style] "),
-            _createElementVNode(
-              "span",
-              {
-                class: "color-table__color",
-                style: _normalizeStyle(`--value: ${row.value}`)
-              },
-              null,
-              4
-              /* STYLE */
-            ),
-            _createElementVNode(
-              "code",
-              _hoisted_2,
-              _toDisplayString(row.value),
-              1
-              /* TEXT */
-            )
-          ]),
-          _: 2
-          /* DYNAMIC */
-        },
-        1024
-        /* DYNAMIC_SLOTS */
-      )
-    ]),
     _: 1
     /* STABLE */
-  }, 8, ["rows"]);
+  }, 8, ["rows", "columns"]);
 }
 
 // docs/styles/examples/ColorTable.vue
@@ -500,8 +463,8 @@ ColorTable_default.__file = "docs/styles/examples/ColorTable.vue";
 var ColorTable_default2 = ColorTable_default;
 
 // virtual-entry:virtual:docs/styles/examples/PaletteList.vue:PaletteList-c0725f.js
-import { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock2, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString2, createElementVNode as _createElementVNode2, resolveComponent as _resolveComponent2, createVNode as _createVNode2 } from "vue";
-var exampleComponent = defineComponent2({
+import { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock2, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode2, resolveComponent as _resolveComponent, createVNode as _createVNode } from "vue";
+var exampleComponent = defineComponent({
   components: { ColorTable: ColorTable_default2 },
   data() {
     return {
@@ -510,7 +473,7 @@ var exampleComponent = defineComponent2({
   }
 });
 function render2(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_color_table = _resolveComponent2("color-table");
+  const _component_color_table = _resolveComponent("color-table");
   return _openBlock2(), _createElementBlock("div", null, [
     (_openBlock2(true), _createElementBlock(
       _Fragment,
@@ -525,11 +488,11 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
             _createElementVNode2(
               "h3",
               null,
-              _toDisplayString2(p.name),
+              _toDisplayString(p.name),
               1
               /* TEXT */
             ),
-            _createVNode2(_component_color_table, {
+            _createVNode(_component_color_table, {
               colors: p.variables
             }, null, 8, ["colors"])
           ],
