@@ -26,6 +26,10 @@ $fk-logo-large: "fk-logo-primary-large.svg";
     color-scheme: light dark;
 }
 
+#title {
+    margin-bottom: var(--docs-heading-margin-bottom-h1);
+}
+
 #content a.button.docs-button {
     color: #fff;
 }
