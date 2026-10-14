@@ -3,7 +3,7 @@
 import { type PropType, defineComponent } from "vue";
 import { debounce, handleTab, popFocus, pushFocus } from "@fkui/logic";
 import { config } from "../../config";
-import { getHTMLElementFromVueRef } from "../../utils";
+import { type Point, getAbsolutePosition, getHTMLElementFromVueRef } from "../../utils";
 import { MIN_DESKTOP_WIDTH, POPUP_SPACING } from "./constants";
 import { getContainer } from "./get-container";
 import { getFocusableElement } from "./get-focusable-element";
@@ -44,6 +44,19 @@ export default defineComponent({
                 return ["always", "never", "auto"].includes(value);
             },
             default: "auto",
+        },
+        /**
+         * Controls whether the popup may overlap its anchor.
+         * - `"allow"` allows placements that overlap the anchor.
+         * - `"never"` excludes placement candidates that overlap the anchor.
+         */
+        anchorOverlap: {
+            type: String as PropType<"allow" | "never">,
+            required: false,
+            validator(value: string) {
+                return ["allow", "never"].includes(value);
+            },
+            default: "allow",
         },
         /**
          * Which element to use as container.
@@ -105,11 +118,12 @@ export default defineComponent({
          */
         "close",
     ],
-    data(): IPopupData {
+    data(): IPopupData & { anchorOffset: Point | null } {
         return {
             teleportDisabled: false,
             placement: Placement.NotCalculated,
             focus: null,
+            anchorOffset: null,
         };
     },
     computed: {
@@ -167,7 +181,7 @@ export default defineComponent({
                         /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                         window.addEventListener("resize", this.onWindowResizeDebounced);
                         /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                        window.addEventListener("scroll", this.onScrollDebounced, { capture: true });
+                        window.addEventListener("scroll", this.onScrollEvent, { capture: true });
                     }, 0);
                 } else {
                     /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
@@ -175,9 +189,15 @@ export default defineComponent({
                     /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
                     window.removeEventListener("resize", this.onWindowResizeDebounced);
                     /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-                    window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
+                    window.removeEventListener("scroll", this.onScrollEvent, { capture: true });
                 }
             },
+        },
+        anchorOverlap(): void {
+            if (this.isOpen && this.placement !== Placement.NotCalculated) {
+                /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
+                this.recalculatePlacement();
+            }
         },
     },
     created() {
@@ -193,13 +213,14 @@ export default defineComponent({
         /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
         window.removeEventListener("resize", this.onWindowResizeDebounced);
         /* eslint-disable-next-line @typescript-eslint/unbound-method -- technical debt */
-        window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
+        window.removeEventListener("scroll", this.onScrollEvent, { capture: true });
     },
     methods: {
         async toggleIsOpen(isOpen: boolean): Promise<void> {
             /* popup is closing */
             if (!isOpen) {
                 this.placement = Placement.NotCalculated;
+                this.anchorOffset = null;
 
                 /* restore focus */
                 if (this.focus) {
@@ -237,6 +258,7 @@ export default defineComponent({
                     viewport,
                     spacing: POPUP_SPACING,
                     candidateOrder: CandidateOrder.Default,
+                    allowAnchorOverlap: this.anchorOverlap === "allow",
                 });
 
                 this.placement = result.placement;
@@ -248,6 +270,9 @@ export default defineComponent({
                     }
 
                     wrapper.style.top = `${String(result.y)}px`;
+                    if (this.anchorOverlap === "never") {
+                        this.saveAnchorOffset(wrapper, anchor);
+                    }
                     return;
                 }
             }
@@ -299,21 +324,57 @@ export default defineComponent({
         },
         // eslint-disable-next-line @typescript-eslint/no-unused-vars -- Need to match actual `onScroll` method.
         onScrollDebounced(event: Event): void {
-            // Overwritten in created so that the debounced `onScroll`
-            // method can be removed by removeEventListener.
+            // Overwritten in created to debounce placement calculation for allow mode.
+        },
+        async onScrollEvent(event: Event): Promise<void> {
+            if (this.anchorOverlap === "never") {
+                await this.onScroll(event);
+            } else {
+                this.onScrollDebounced(event);
+            }
         },
         async onWindowResize(): Promise<void> {
             await this.recalculatePlacement();
         },
         async onScroll(event: Event): Promise<void> {
-            if (this.isInline) {
+            if (!this.isOpen || this.isInline) {
                 return;
             }
             const isPopupTarget = event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"));
             if (isPopupTarget) {
                 return;
             }
+            if (this.anchorOverlap === "never") {
+                this.followAnchor();
+                return;
+            }
+
             await this.recalculatePlacement({ horizontalOnly: true });
+        },
+        saveAnchorOffset(wrapper: HTMLElement, anchor: HTMLElement): void {
+            const wrapperPosition = getAbsolutePosition(wrapper);
+            const anchorPosition = getAbsolutePosition(anchor);
+            this.anchorOffset = {
+                x: wrapperPosition.x - anchorPosition.x,
+                y: wrapperPosition.y - anchorPosition.y,
+            };
+        },
+        followAnchor(): void {
+            if (!this.anchorOffset) {
+                return;
+            }
+            const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
+            const anchor = getElement(this.anchor);
+            if (!anchor) {
+                throw new Error("No anchor element found");
+            }
+
+            const anchorPosition = getAbsolutePosition(anchor);
+            const offsetParent = wrapper.offsetParent?.getBoundingClientRect();
+            const offsetLeft = offsetParent ? offsetParent.left + window.pageXOffset : 0;
+            const offsetTop = offsetParent ? offsetParent.top + window.pageYOffset : 0;
+            wrapper.style.left = `${String(anchorPosition.x + this.anchorOffset.x - offsetLeft)}px`;
+            wrapper.style.top = `${String(anchorPosition.y + this.anchorOffset.y - offsetTop)}px`;
         },
         async recalculatePlacement(options?: { horizontalOnly: boolean }): Promise<void> {
             // Abort if popup was closed during debounce.
