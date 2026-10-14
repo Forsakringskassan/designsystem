@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { type Ref, computed, nextTick, ref, useTemplateRef } from "vue";
+import { type Ref, computed, nextTick, ref, useTemplateRef, watch } from "vue";
 import { ElementIdService, assertRef, assertSet } from "@fkui/logic";
 import { IComboboxDropdown } from "../../internal-components";
 import { isVisible } from "./is-visible";
@@ -182,6 +182,13 @@ async function onEditBlur(event: FocusEvent): Promise<void> {
     await nextTick();
     await stopEdit(editRef.value, "blur");
 }
+
+watch(
+    () => column.selected(row),
+    (value) => {
+        viewValue.value = value;
+    },
+);
 </script>
 
 <template>
