@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-629152.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-af161a.js",
     "@fkui/date": "../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-0c7c34.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-b2c90c.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-59db36.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js"
   },
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-vue-selectors-629152.js": "sha384-VuM36DKbCXHV4uUMo7OIABJwYSxTRhi4khmeaqn9QK4GZs2nV1mZGkSPJqtNVRGl",
     "../../assets/vendor-fkui-logic-af161a.js": "sha384-Wl55FjgQ57C00bSZGJO0m+91pwbX1dXODsA86PSv4gYNehWxi5ACsZRPeK9hvFjz",
     "../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../assets/vendor-fkui-vue-0c7c34.js": "sha384-F0Jd3jhmczz//emsU0HWgY2czk3A7cnb1ofsZILFp+kQEFvzScyNPG23QC1pEvwH",
+    "../../assets/vendor-fkui-vue-b2c90c.js": "sha384-xIYFL/RR+0T8kRCy+ymXFdcqS2hbMJ2asjEJFdbbrbtpGRUiuDhXLS3qK8Pfu26e",
     "../../assets/vendor-fkui-vue-labs-59db36.js": "sha384-lZUC9laa/ssLtJePpKjK6elLLQVt4JPthEwGVEgSEr5PY3gvupaz53R+iGDZRr1S",
     "../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js": "sha384-Zomp3tpZgQ5vBn1jDfJPFtzxDwJLLe39dK/jC//bT97+TQqCbXlfNz6um+bZc61n"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-8d61c5.json"
+    href="../../search-data-72279c.json"
     as="fetch"
     crossorigin
-    integrity="sha384-qvGvdt8wL06lU9cCvDQ4NfkJ8RYiacx6FpJASa/P6/P1NVKuC4IZUifp6pA/xSyN"
+    integrity="sha384-gIot8HuogFIWma8MmMH6mKBVCt0DqcWHmgB7Bac7w/Vsuu/CGzqZ7MGPENFvs/rH"
     id="search-data"
 />
 <script>
@@ -2696,11 +2696,11 @@
 
 <li class="link ">
         <a
-            href="./table.html"
+            href="./legacytable.html"
             
             
             
-            data-path="components/table-and-list/table.html"
+            data-path="components/table-and-list/legacytable.html"
             
         >
             Datatabell och interaktiv tabell
@@ -7010,11 +7010,11 @@
         </a>
     </li><li class="link ">
         <a
-            href="./table.html"
+            href="./legacytable.html"
             
             
             
-            data-path="components/table-and-list/table.html"
+            data-path="components/table-and-list/legacytable.html"
             
         >
             Datatabell och interaktiv tabell
@@ -7112,7 +7112,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/c90667e8d21c5a1b0eb5e49f205692e17c92c056/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/a11a545a47c52a5d3591b4b4e3e74205db887d55/packages/vue/src/components/FSortFilterDataset/FSortFilterDataset.vue">
                 FSortFilterDataset
             </a>
             
@@ -7324,40 +7324,35 @@ Om <code>filterAttributes</code> inte anges inkluderas alla attribut i filtrerin
 </code></pre>
                 </div>
             </div>
-        <h2 id="tabell_med_datamangdsorterare" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_datamangdsorterare">Tabell med datamängdsorterare</a></h2><p class="docs-paragraph">När tabell (<a href="./table.html#interaktiv_tabell"><code>FInteractiveTable</code></a> eller <a href="./table.html#datatabell"><code>FDataTable</code></a>) används med datamängdsorterare måste varje tabellkolumn använda <code>name</code> prop med ett unikt värde.
-För objektet som du skickar till datamängdsorterarens <code>sortableAttributes</code> behöver egenskapernas namn även matcha kolumnernas namn för att kunna sortera dem.</p>
+        <h2 id="tabell_med_datamangdsorterare" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell_med_datamangdsorterare">Tabell med datamängdsorterare</a></h2><p class="docs-paragraph">När <a href="table"><code>FTable</code></a> används med datamängdsorteraren behöver nycklarna i <code>sortableAttributes</code> matcha kolumnernas <code>key</code>.</p>
 
                 <div
-                    id="example-dd7c99"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-table-column title=&quot;Datum&quot;&gt;</span>
-<span class="hljs-addition">+&lt;f-table-column name=&quot;date&quot; title=&quot;Datum&quot;&gt;</span>
-</code></pre>
-                </div>
-            
-                <div
-                    id="example-6b6d05"
+                    id="example-742617"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="typescript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> mySortableAttributes = {
-    <span class="hljs-comment">// Property name must match column name.</span>
+                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">import</span> { defineTableColumns } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Row</span> {
+    <span class="hljs-attr">date</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">Row</span>&gt;([
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text:date&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Datum&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;date&quot;</span> },
+]);
+
+<span class="hljs-keyword">const</span> sortableAttributes = {
     <span class="hljs-attr">date</span>: <span class="hljs-string">&quot;Datum&quot;</span>,
 };
 </code></pre>
                 </div>
-            <h3 id="tabell_med_forvald_sortering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tabell_med_forvald_sortering">Tabell med förvald sortering</a></h3><p class="docs-paragraph">Visar hur <code>FSortFilterDataset</code> kan användas med <a href="./table.html#interaktiv_tabell"><code>FInteractiveTable</code></a>.</p>
+            <h3 id="tabell_med_forvald_sortering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tabell_med_forvald_sortering">Tabell med förvald sortering</a></h3><p class="docs-paragraph">Visar hur <code>FSortFilterDataset</code> kan användas med <a href="table"><code>FTable</code></a>.</p>
 
             <div
-                id="example-159c0d"
+                id="example-995499"
                 class="code-preview code-preview--default"
                 
                 
@@ -7367,13 +7362,13 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-42051d"></div>
+        <div id="example-651436"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FSortFilterDatasetTableExample-42051d.js"></script>
+        <script type="module" src="./FSortFilterDatasetTableExample-651436.js"></script>
     
                 </div>
                 <div>
@@ -7394,29 +7389,22 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FSortFilterDataset</span>, <span class="hljs-title class_">FTableColumn</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../FCrudDataset/examples/fruit-data&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FSortFilterDataset</span>, <span class="hljs-title class_">FTable</span>, defineTableColumns, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FSortFilterDataset</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FTableColumn</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">sortableAttributes</span>: {
-                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Namn&quot;</span>,
-                <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;Land&quot;</span>,
-            },
-            fruits,
-        };
-    },
-});
+<span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">useDatasetRef</span>([...fruits]);
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">FruitData</span>&gt;([
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;shrink&quot;</span> },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;origin&quot;</span>, <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;shrink&quot;</span> },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Beskrivning&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;description&quot;</span> },
+]);
+<span class="hljs-keyword">const</span> sortableAttributes = { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Namn&quot;</span>, <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;Land&quot;</span> };
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span>
-        <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;fruits&quot;</span>
+        <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span>
         <span class="hljs-attr">default-sort-attribute</span>=<span class="hljs-string">&quot;name&quot;</span>
         <span class="hljs-attr">:default-sort-ascending</span>=<span class="hljs-string">&quot;true&quot;</span>
         <span class="hljs-attr">:sortable-attributes</span>
@@ -7425,22 +7413,9 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
             <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;slotClass&quot;</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span> <span class="hljs-attr">striped</span> <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> Frukter <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Namn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.name }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;origin&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Land&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.origin }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Beskrivning&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">expand</span>&gt;</span>
-                        {{ row.description }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span> <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span> <span class="hljs-attr">:columns</span> <span class="hljs-attr">striped</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> Frukter <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -7450,7 +7425,7 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
         <h3 id="tabell_med_atgarder" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#tabell_med_atgarder">Tabell med åtgärder</a></h3><p class="docs-paragraph">Åtgärder som till exempel batch-funktioner som rör hela datamängden kan placeras i sloten Header för att gruppera med sortering och filtering.</p>
 
             <div
-                id="example-2afb41"
+                id="example-618d9f"
                 class="code-preview code-preview--default"
                 
                 
@@ -7460,13 +7435,13 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
                 
                 <div class="code-preview__preview user-background">
                     
-        <div id="example-ef3ce1"></div>
+        <div id="example-73a78c"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FSortFilterDatasetTableExampleToolbar-ef3ce1.js"></script>
+        <script type="module" src="./FSortFilterDatasetTableExampleToolbar-73a78c.js"></script>
     
                 </div>
                 <div>
@@ -7487,30 +7462,25 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
                     style="height: 0px;"
                     hidden
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-comment">&lt;!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
-<span class="hljs-keyword">import</span> { defineComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
-<span class="hljs-keyword">import</span> { fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./fruit-data&quot;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FSortFilterDataset</span>, <span class="hljs-title class_">FTableColumn</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { type <span class="hljs-title class_">FruitData</span>, fruits } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../FCrudDataset/examples/fruit-data&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FSortFilterDataset</span>, <span class="hljs-title class_">FTable</span>, defineTableColumns, useDatasetRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>({
-    <span class="hljs-attr">components</span>: { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FInteractiveTable</span>, <span class="hljs-title class_">FSortFilterDataset</span>, <span class="hljs-title class_">FTableColumn</span> },
-    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
-        <span class="hljs-keyword">return</span> {
-            <span class="hljs-attr">sortableAttributes</span>: {
-                <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Namn&quot;</span>,
-                <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;Land&quot;</span>,
-            },
-            fruits,
-        };
-    },
-});
+<span class="hljs-keyword">const</span> rows = <span class="hljs-title function_">useDatasetRef</span>([...fruits]);
+<span class="hljs-keyword">const</span> selectedRows = ref&lt;<span class="hljs-title class_">FruitData</span>[]&gt;([]);
+<span class="hljs-keyword">const</span> columns = defineTableColumns&lt;<span class="hljs-title class_">FruitData</span>&gt;([
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Namn&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;shrink&quot;</span> },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Land&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;origin&quot;</span>, <span class="hljs-attr">size</span>: <span class="hljs-string">&quot;shrink&quot;</span> },
+    { <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;text&quot;</span>, <span class="hljs-attr">header</span>: <span class="hljs-string">&quot;Beskrivning&quot;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&quot;description&quot;</span> },
+]);
+<span class="hljs-keyword">const</span> sortableAttributes = { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Namn&quot;</span>, <span class="hljs-attr">origin</span>: <span class="hljs-string">&quot;Land&quot;</span> };
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Frukter<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">f-sort-filter-dataset</span>
-        <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;fruits&quot;</span>
+        <span class="hljs-attr">:data</span>=<span class="hljs-string">&quot;rows&quot;</span>
         <span class="hljs-attr">default-sort-attribute</span>=<span class="hljs-string">&quot;name&quot;</span>
         <span class="hljs-attr">:default-sort-ascending</span>=<span class="hljs-string">&quot;true&quot;</span>
         <span class="hljs-attr">:sortable-attributes</span>
@@ -7537,28 +7507,15 @@ För objektet som du skickar till datamängdsorterarens <code>sortableAttributes
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ sortFilterResult }&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">f-interactive-table</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">f-table</span>
+                <span class="hljs-attr">v-model:selected-rows</span>=<span class="hljs-string">&quot;selectedRows&quot;</span>
                 <span class="hljs-attr">:rows</span>=<span class="hljs-string">&quot;sortFilterResult&quot;</span>
+                <span class="hljs-attr">:columns</span>
                 <span class="hljs-attr">striped</span>
                 <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;multi&quot;</span>
-                <span class="hljs-attr">key-attribute</span>=<span class="hljs-string">&quot;id&quot;</span>
             &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> Frukter <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">selectable-description</span>&gt;</span> Välj denna raden <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">default</span>=<span class="hljs-string">&quot;{ row }&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Namn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.name }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;origin&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Land&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">shrink</span>&gt;</span>
-                        {{ row.origin }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">f-table-column</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;description&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Beskrivning&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">expand</span>&gt;</span>
-                        {{ row.description }}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">f-table-column</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">f-interactive-table</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">caption</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span> Frukter <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">f-table</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">f-sort-filter-dataset</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
@@ -7572,7 +7529,7 @@ Användaren behöver även här aktivt sortera om listan/tabellen.
 Om datamängden ersätts helt körs filter och sortering på nytt.</p>
 <h2 id="datamangdsorterare_och_egen_presentation" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#datamangdsorterare_och_egen_presentation">Datamängdsorterare och egen presentation</a></h2>
             <div
-                id="example-ff6cef"
+                id="example-d206d6"
                 class="code-preview code-preview--default"
                 
                 
@@ -7663,7 +7620,7 @@ Om datamängden ersätts helt körs filter och sortering på nytt.</p>
         <h2 id="andra_rubrikniva" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#andra_rubrikniva">Ändra rubriknivå</a></h2><p class="docs-paragraph">Du kan variera storleken genom att inte använda den tillgängliga <code>slotClass</code> (som sätter den standardiserade storleken för rubriken).</p>
 
                 <div
-                    id="example-366a05"
+                    id="example-9e7a8c"
                     class="code-preview code-preview--default"
                     
                     
@@ -7687,7 +7644,7 @@ Om datamängden ersätts helt körs filter och sortering på nytt.</p>
                 </div>
             
             <div
-                id="example-72e4e6"
+                id="example-751564"
                 class="code-preview code-preview--default"
                 
                 
@@ -7758,7 +7715,7 @@ Om datamängden ersätts helt körs filter och sortering på nytt.</p>
 Om det går att specificera träffar så är det bättre att göra det, till exempel &quot;Det finns inga frukter att visa&quot; istället för &quot;Det finns inga träffar att visa&quot;.</p>
 
                 <div
-                    id="example-73a233"
+                    id="example-7c4ae7"
                     class="code-preview code-preview--default"
                     
                     
@@ -7768,9 +7725,9 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-sort-filter-dataset :data=&quot;items&quot;&gt;
      &lt;template #default=&quot;{ sortFilterResult }&quot;&gt;
 <span class="hljs-addition">+        Visar {{ sortFilterResult.length }} av {{ items.length }} frukter.</span>
-         &lt;f-data-table :rows=&quot;sortFilterResult&quot;&gt;
+        &lt;f-table :rows=&quot;sortFilterResult&quot; :columns&gt;
              &lt;!-- [...] ---&gt;
-         &lt;/f-data-table&gt;
+        &lt;/f-table&gt;
      &lt;/template&gt;
  &lt;/f-sort-filter-dataset&gt;
 </code></pre>
@@ -7778,7 +7735,7 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
             <p class="docs-paragraph">Detta går också utnyttja i tabell för att presentera om tabellen är tom pga filtrering eller att inga rader fanns från första början:</p>
 
                 <div
-                    id="example-8f1824"
+                    id="example-7c4a60"
                     class="code-preview code-preview--default"
                     
                     
@@ -7787,7 +7744,7 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
                     
                     <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-sort-filter-dataset :data=&quot;items&quot;&gt;
      &lt;template #default=&quot;{ sortFilterResult }&quot;&gt;
-         &lt;f-data-table :rows=&quot;sortFilterResult&quot;&gt;
+        &lt;f-table :rows=&quot;sortFilterResult&quot; :columns&gt;
              &lt;template #empty&gt;
 <span class="hljs-addition">+                &lt;template v-if=&quot;items.length === 0&quot;&gt;</span>
 <span class="hljs-addition">+                    Det finns inga frukter att visa.</span>
@@ -7796,14 +7753,14 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
 <span class="hljs-addition">+                    Sökningen gav inga träffar.</span>
 <span class="hljs-addition">+                &lt;/template&gt;</span>
              &lt;/template&gt;
-         &lt;/f-data-table&gt;
+        &lt;/f-table&gt;
      &lt;/template&gt;
  &lt;/f-sort-filter-dataset&gt;
 </code></pre>
                 </div>
             
                 <div
-                    id="example-1d73e9"
+                    id="example-79991e"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -7813,13 +7770,13 @@ Om det går att specificera träffar så är det bättre att göra det, till exe
                     
                     <div class="code-preview__preview user-background">
                         
-        <div id="example-e02672"></div>
+        <div id="example-8d8f83"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FSortFilterDatasetEmptySlot-e02672.js"></script>
+        <script type="module" src="./FSortFilterDatasetEmptySlot-8d8f83.js"></script>
     
                     </div>
                 </div>
@@ -8154,9 +8111,9 @@ Default includes all attributes.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">buggfix/indentering-live-example</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/c90667e8d21c5a1b0eb5e49f205692e17c92c056">c90667e</a>)<br />
+<div class="version"><span class="version-text-block">buggfix/indentering-live-example</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/a11a545a47c52a5d3591b4b4e3e74205db887d55">a11a545</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1737">PR 1737</a><br />
-       <span class="version-text-block">2026-10-14 07:41</span>
+       <span class="version-text-block">2026-10-14 10:59</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
