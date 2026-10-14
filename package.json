@@ -91,7 +91,7 @@
     "@forsakringskassan/eslint-config": "15.11.13",
     "@forsakringskassan/eslint-config-cli": "15.11.11",
     "@forsakringskassan/eslint-config-cypress": "15.11.10",
-    "@forsakringskassan/eslint-config-jest": "15.11.1",
+    "@forsakringskassan/eslint-config-jest": "15.11.17",
     "@forsakringskassan/eslint-config-typescript": "15.11.14",
     "@forsakringskassan/eslint-config-typescript-typeinfo": "15.11.14",
     "@forsakringskassan/eslint-config-vitest": "15.11.11",
