@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-629152.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-af161a.js",
     "@fkui/date": "../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-986a3a.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-231c5f.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-59db36.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js"
   },
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-vue-selectors-629152.js": "sha384-VuM36DKbCXHV4uUMo7OIABJwYSxTRhi4khmeaqn9QK4GZs2nV1mZGkSPJqtNVRGl",
     "../../assets/vendor-fkui-logic-af161a.js": "sha384-Wl55FjgQ57C00bSZGJO0m+91pwbX1dXODsA86PSv4gYNehWxi5ACsZRPeK9hvFjz",
     "../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../assets/vendor-fkui-vue-986a3a.js": "sha384-7oPukd+qxVbQUNi05kPyVVvhCZb0FhRSFHMR0107HcNPmWIzkVhdZoGQl6aI42S4",
+    "../../assets/vendor-fkui-vue-231c5f.js": "sha384-vp+oLfBsBU9rV0FjADTAYROKsfj6GtK+DtQBCIZTewa8SFHkffiHX0wZOUArBGW8",
     "../../assets/vendor-fkui-vue-labs-59db36.js": "sha384-lZUC9laa/ssLtJePpKjK6elLLQVt4JPthEwGVEgSEr5PY3gvupaz53R+iGDZRr1S",
     "../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js": "sha384-Zomp3tpZgQ5vBn1jDfJPFtzxDwJLLe39dK/jC//bT97+TQqCbXlfNz6um+bZc61n"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-8d61c5.json"
+    href="../../search-data-72279c.json"
     as="fetch"
     crossorigin
-    integrity="sha384-qvGvdt8wL06lU9cCvDQ4NfkJ8RYiacx6FpJASa/P6/P1NVKuC4IZUifp6pA/xSyN"
+    integrity="sha384-gIot8HuogFIWma8MmMH6mKBVCt0DqcWHmgB7Bac7w/Vsuu/CGzqZ7MGPENFvs/rH"
     id="search-data"
 />
 <script>
@@ -2696,11 +2696,11 @@
 
 <li class="link ">
         <a
-            href="../../components/table-and-list/table.html"
+            href="../../components/table-and-list/legacytable.html"
             
             
             
-            data-path="components/table-and-list/table.html"
+            data-path="components/table-and-list/legacytable.html"
             
         >
             Datatabell och interaktiv tabell
@@ -6138,49 +6138,21 @@
                     </div>
                     
 
-                    <div id="content"><p class="docs-paragraph"><code>FCrudButton</code> är deprekerad och ersatt med <a href="../../components/table-and-list/table.html">FTableButton</a> för tabeller eller <a href="../../components/button.html">knapp</a> för andra användningsområden.</p>
-<p class="docs-paragraph">Proparna</p>
+                    <div id="content"><p class="docs-paragraph"><code>FCrudButton</code> är deprekerad.
+För enskilda knappar använder du <a href="../../components/button.html">FButton</a>.
+I tabeller använder du i stället en <code>menu</code>-kolumn i <a href="../../components/table-and-list/table">FTable</a>.
+När du placerar tabellen i <code>FCrudDataset</code> kopplar du menyåtgärdernas <code>onClick</code> till <code>updateItem(item)</code> och <code>deleteItem(item)</code>, som du når via en template ref på <code>FCrudDataset</code>.
+Utanför tabeller får du samma funktioner som slot-props i defaultslotten.</p>
+<p class="docs-paragraph">Så ersätter du propsen:</p>
 <ul>
-<li><code>action</code> är ersatt med slot attributes <code>updateItem()</code> respektive <code>deleteItem()</code>.</li>
-<li><code>icon</code> är ersatt med prop <code>icon</code> på <code>FTableButton</code> samt <code>FIcon</code> för övriga användningsområden.</li>
-<li><code>label</code> är ersatt med prop <code>label</code> på <code>FTableButton</code> samt vanlig text i knapp för övriga användningsområden.</li>
+<li><code>action</code> ersätts med <code>updateItem(item)</code> eller <code>deleteItem(item)</code> i menyåtgärdens <code>onClick</code> eller knappens <code>@click</code>.</li>
+<li><code>icon</code> anges på en action i <code>menu</code>-kolumnen eller med <code>icon-left</code> på <code>FButton</code>.</li>
+<li><code>label</code> anges med actionens <code>label</code> eller som knappens text i <code>FButton</code>.</li>
 </ul>
-<h2 id="tabell" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell">Tabell</a></h2>
+<h2 id="tabell" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#tabell">Tabell</a></h2><p class="docs-paragraph">Se <a href="../../components/table-and-list/fcruddataset.html#tabell-med-redigering">Tabell med redigering</a> för ett exempel med <code>menu</code>-kolumn.</p>
+<h2 id="lista_och_ovrigt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lista_och_ovrigt">Lista och övrigt</a></h2>
                 <div
-                    id="example-2c7521"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> &lt;f-crud-dataset&gt;
-<span class="hljs-deletion">-    &lt;template #default&gt;</span>
-<span class="hljs-addition">+    &lt;template #default=&quot;{ updateItem, deleteItem }&quot;&gt;</span>
-         &lt;f-interactive-table :rows&gt;
-             &lt;template #caption&gt; Tabell &lt;/template&gt;
-             &lt;template #default=&quot;{ row }&quot;&gt;
-                 &lt;f-table-column title=&quot;Åtgärder&quot;&gt;
-<span class="hljs-deletion">-                    &lt;f-crud-button action=&quot;modify&quot; :item=&quot;row&quot; icon&gt;</span>
-<span class="hljs-deletion">-                        Ändra {{ row.name }}</span>
-<span class="hljs-deletion">-                    &lt;/f-crud-button&gt;</span>
-<span class="hljs-deletion">-                    &lt;f-crud-button action=&quot;delete&quot; :item=&quot;row&quot; icon&gt;</span>
-<span class="hljs-deletion">-                        Ta bort {{ row.name }}</span>
-<span class="hljs-deletion">-                    &lt;/f-crud-button&gt;</span>
-<span class="hljs-addition">+                    &lt;f-table-button icon=&quot;pen&quot; @click=&quot;updateItem(item)&quot;&gt;</span>
-<span class="hljs-addition">+                        Ändra {{ item.name }}</span>
-<span class="hljs-addition">+                    &lt;/f-table-button&gt;</span>
-<span class="hljs-addition">+                    &lt;f-table-button icon=&quot;trashcan&quot; @click=&quot;deleteItem(item)&quot;&gt;</span>
-<span class="hljs-addition">+                        Ta bort {{ item.name }}</span>
-<span class="hljs-addition">+                    &lt;/f-table-button&gt;</span>
-                 &lt;/f-table-column&gt;
-             &lt;/template&gt;
-         &lt;/f-interactive-table&gt;
-</code></pre>
-                </div>
-            <h2 id="lista_och_ovrigt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#lista_och_ovrigt">Lista och övrigt</a></h2>
-                <div
-                    id="example-79d66c"
+                    id="example-a10823"
                     class="code-preview code-preview--default"
                     
                     
@@ -6392,9 +6364,9 @@ If false, the button will use a visually hidden text for accessibility.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/ca903005c0a677317103986f5c22b7dd34a6f82b">ca90300</a>)<br />
+<div class="version"><span class="version-text-block">main</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/d4f01c3401359bfb216a84dc67bb70e1df4a33f6">d4f01c3</a>)<br />
         
-       <span class="version-text-block">2026-10-14 07:00</span>
+       <span class="version-text-block">2026-10-14 10:47</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
