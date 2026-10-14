@@ -477,14 +477,14 @@ function getWeekdayNamings(locale) {
 var ISO8601_YYYY_MM_DD = "YYYY-MM-DD";
 var formatter = {
   [Locale.SWEDISH]: {
-    [DateFormat.FULL]: "dddd D MMMM YYYY",
-    [DateFormat.LONG]: "D MMMM YYYY",
+    [DateFormat.FULL]: "dddd\xA0D\xA0MMMM\xA0YYYY",
+    [DateFormat.LONG]: "D\xA0MMMM\xA0YYYY",
     [DateFormat.ISO8601]: ISO8601_YYYY_MM_DD,
     [DateFormat.YYYYMMDD]: "YYYYMMDD"
   },
   [Locale.ENGLISH]: {
-    [DateFormat.FULL]: "dddd, D MMMM YYYY",
-    [DateFormat.LONG]: "D MMMM YYYY",
+    [DateFormat.FULL]: "dddd,\xA0D\xA0MMMM\xA0YYYY",
+    [DateFormat.LONG]: "D\xA0MMMM\xA0YYYY",
     [DateFormat.ISO8601]: ISO8601_YYYY_MM_DD,
     [DateFormat.YYYYMMDD]: "YYYYMMDD"
   }
