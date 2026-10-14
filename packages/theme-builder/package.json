@@ -41,7 +41,7 @@
     "yargs": "18.2.0"
   },
   "devDependencies": {
-    "@html-validate/release-scripts": "7.6.12",
+    "@html-validate/release-scripts": "7.6.14",
     "@types/node": "22.20.5",
     "@types/yargs": "17.0.35",
     "@typescript/native": "npm:typescript@7.0.2",

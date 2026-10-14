@@ -1,5 +1,6 @@
 ---
 title: FCrudButton migreringsguide
+short-title: FCrudButton
 layout: article
 component: FCrudButton
 ---
