@@ -6820,6 +6820,7 @@ input[type=search]:focus-visible,
   display: flex;
   border: none;
   background-color: transparent;
+  flex-shrink: 0;
   cursor: pointer;
 }
 @media (forced-colors: active) {
