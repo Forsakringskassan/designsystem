@@ -44523,7 +44523,7 @@ var Ai = {
 	replaceEndOfLine: Nr,
 	canBreak: wr
 };
-var gu = "3.9.9";
+var gu = "3.9.10";
 var fr = {};
 yt(fr, {
 	addDanglingComment: () => re,
