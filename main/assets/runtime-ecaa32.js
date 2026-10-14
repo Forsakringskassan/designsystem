@@ -296936,11 +296936,11 @@ function tableOfContents(toc, headings) {
   }
 }
 onContentReady(() => {
-  const toc = document.querySelector("#outline");
+  const toc = document.querySelector("#docs-outline");
   if (!toc) {
     return;
   }
-  const headings = document.querySelectorAll("#content h2");
+  const headings = document.querySelectorAll("#docs-content h2");
   tableOfContents(toc, headings);
 });
 var tableOfContentsQuery = window.matchMedia(
@@ -296949,7 +296949,7 @@ var tableOfContentsQuery = window.matchMedia(
 tableOfContentsQuery.addEventListener("change", toggleTableOfContents);
 toggleTableOfContents();
 function toggleTableOfContents() {
-  const toc = document.querySelector("#outline");
+  const toc = document.querySelector("#docs-outline");
   if (!toc) {
     return;
   }
@@ -296995,7 +296995,7 @@ async function replaceContent(href) {
   const response = await fetch(href);
   const body = await response.text();
   const doc = parser36.parseFromString(body, "text/html");
-  const sidenav = doc.querySelector("#sidenav");
+  const sidenav = doc.querySelector("#docs-sidenav");
   const rootUrl = doc.documentElement.dataset.rootUrl;
   const selector = response.ok && sidenav ? "main" : "body";
   const header2 = doc.querySelector("header");
@@ -297012,7 +297012,7 @@ async function replaceContent(href) {
     headerTarget.replaceWith(importedHeader);
     footerTarget.replaceWith(footer2);
   }
-  const anchorSelector = "#sidenav li.link a";
+  const anchorSelector = "#docs-sidenav li.link a";
   const anchorLinks = document.querySelectorAll(anchorSelector);
   for (const link2 of anchorLinks) {
     const { path: path4 } = link2.dataset;
@@ -297020,7 +297020,7 @@ async function replaceContent(href) {
       continue;
     }
     const element4 = doc.querySelector(
-      `#sidenav a[data-path="${CSS.escape(path4)}"]`
+      `#docs-sidenav a[data-path="${CSS.escape(path4)}"]`
     );
     const href2 = element4?.getAttribute("href");
     if (href2) {
@@ -297030,9 +297030,9 @@ async function replaceContent(href) {
   document.documentElement.dataset.rootUrl = rootUrl;
   document.title = doc.title;
   target.replaceWith(element3);
-  const toc = document.querySelector("#outline");
+  const toc = document.querySelector("#docs-outline");
   if (toc) {
-    const headings = document.querySelectorAll("#content h2");
+    const headings = document.querySelectorAll("#docs-content h2");
     tableOfContents(toc, headings);
     toggleTableOfContents();
   }
@@ -297100,7 +297100,7 @@ function updateSidenavHeight(navigation2) {
   })();
   variableBlock.textContent = /* CSS */
   `
-        #sidenav {
+        #docs-sidenav {
             --header-footer-visible-height: ${String(offset)}px;
         }
     `;
@@ -297113,11 +297113,11 @@ for (const details of document.querySelectorAll("details")) {
   });
 }
 var toggle = document.querySelector(
-  "#sidenav .sidenav__toggle"
+  "#docs-sidenav .sidenav__toggle"
 );
-var navigation = document.querySelector("#sidenav nav");
+var navigation = document.querySelector("#docs-sidenav nav");
 if (toggle && navigation) {
-  const anchorSelector = "#sidenav li.link a";
+  const anchorSelector = "#docs-sidenav li.link a";
   const anchorLinks = document.querySelectorAll(anchorSelector);
   for (const link2 of anchorLinks) {
     const { rel: rel2 } = link2;
@@ -297231,7 +297231,7 @@ function checkLayout(nav) {
 }
 function headerLayoutDetector(nav) {
   const resizeObserver = new ResizeObserver(() => {
-    const nav2 = document.querySelector("#topnav");
+    const nav2 = document.querySelector("#docs-topnav");
     if (nav2) {
       checkLayout(nav2);
     }
@@ -297239,7 +297239,7 @@ function headerLayoutDetector(nav) {
   document.documentElement.classList.remove("loading");
   resizeObserver.observe(document.body);
   window.addEventListener("docs:navigation", () => {
-    const nav2 = document.querySelector("#topnav");
+    const nav2 = document.querySelector("#docs-topnav");
     if (nav2) {
       checkLayout(nav2);
     }
@@ -297247,7 +297247,7 @@ function headerLayoutDetector(nav) {
   checkLayout(nav);
 }
 function getElementsRefs() {
-  const nav = document.querySelector("#topnav");
+  const nav = document.querySelector("#docs-topnav");
   if (!nav) {
     return;
   }

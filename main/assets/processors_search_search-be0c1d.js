@@ -987,7 +987,7 @@ function setup() {
   initButton();
   return;
   function initButton() {
-    const button = document.querySelector("#search");
+    const button = document.querySelector("#docs-search");
     if (button) {
       button.addEventListener("submit", (event) => {
         event.preventDefault();
