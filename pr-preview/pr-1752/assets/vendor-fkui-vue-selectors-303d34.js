@@ -259,7 +259,7 @@ function FDefinitionListSelectors(selector = ":scope") {
      * This is the same selector that the consumer provided.
      *
      * @public
-     * @since %version%
+     * @since v6.62.0
      * @returns The root selector for the component.
      */
     get selector() {
@@ -288,7 +288,7 @@ function FDefinitionListSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.62.0
      * @returns A selector for all term elements.
      */
     terms() {
@@ -317,7 +317,7 @@ function FDefinitionListSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.62.0
      * @returns A selector for all definition elements.
      */
     definitions() {
@@ -1104,7 +1104,7 @@ function FProgressbarSelectors(selector = ":scope") {
      * This is the same selector that the consumer provided.
      *
      * @public
-     * @since %version%
+     * @since v6.62.0
      * @returns The root selector for the component.
      */
     get selector() {
@@ -1133,7 +1133,7 @@ function FProgressbarSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.62.0
      * @returns A selector for the progress meter element.
      */
     meter() {
@@ -1253,7 +1253,7 @@ function FSelectFieldSelectors(selector = ":scope") {
      * This is the same selector that the consumer provided.
      *
      * @public
-     * @since %version%
+     * @since v6.62.0
      * @returns The root selector for the component.
      */
     get selector() {
@@ -1283,7 +1283,7 @@ function FSelectFieldSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.62.0
      * @returns A selector for the select element.
      */
     select() {
@@ -1309,7 +1309,7 @@ function FSelectFieldSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.62.0
      * @returns A selector for the error message element.
      */
     errorMessage() {
@@ -1337,7 +1337,7 @@ function FSelectFieldSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.62.0
      * @returns A selector for the label element.
      */
     label() {
@@ -1387,7 +1387,7 @@ function FSelectFieldSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.62.0
      * @returns A selector for the currently selected option element.
      */
     selectedOption() {
@@ -1416,7 +1416,7 @@ function FSelectFieldSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.62.0
      * @returns A selector for the currently selected option element.
      */
     options() {
@@ -1440,7 +1440,7 @@ function FSelectFieldSelectors(selector = ":scope") {
      * ```
      *
      * @public
-     * @since %version%
+     * @since v6.62.0
      * @returns A selector for the arrow icon element.
      */
     arrowIcon() {
