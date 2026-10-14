@@ -2,7 +2,7 @@
  * Selectors for `FDefinitionList`.
  *
  * @public
- * @since %version%
+ * @since v6.62.0
  * @param selector - The selector for the FDefinitionList component.
  * @returns An object with selector methods for the FDefinitionList component.
  */
@@ -14,7 +14,7 @@ export function FDefinitionListSelectors(selector: string = ":scope") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.62.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -44,7 +44,7 @@ export function FDefinitionListSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.62.0
          * @returns A selector for all term elements.
          */
         terms(): string {
@@ -74,7 +74,7 @@ export function FDefinitionListSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.62.0
          * @returns A selector for all definition elements.
          */
         definitions(): string {

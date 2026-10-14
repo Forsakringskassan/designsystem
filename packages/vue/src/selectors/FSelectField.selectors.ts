@@ -4,7 +4,7 @@ import { FLabelSelectors } from "./FLabel.selectors";
  * Selectors for `FSelectField`.
  *
  * @public
- * @since %version%
+ * @since v6.62.0
  * @param selector - The selector for the FSelectField component.
  * @returns An object with selector methods for the FSelectField component.
  */
@@ -18,7 +18,7 @@ export function FSelectFieldSelectors(selector: string = ":scope") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.62.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -49,7 +49,7 @@ export function FSelectFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.62.0
          * @returns A selector for the select element.
          */
         select(): string {
@@ -76,7 +76,7 @@ export function FSelectFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.62.0
          * @returns A selector for the error message element.
          */
         errorMessage(): string {
@@ -105,7 +105,7 @@ export function FSelectFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.62.0
          * @returns A selector for the label element.
          */
         label(): string {
@@ -157,7 +157,7 @@ export function FSelectFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.62.0
          * @returns A selector for the currently selected option element.
          */
         selectedOption(): string {
@@ -187,7 +187,7 @@ export function FSelectFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.62.0
          * @returns A selector for the currently selected option element.
          */
         options(): string {
@@ -212,7 +212,7 @@ export function FSelectFieldSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.62.0
          * @returns A selector for the arrow icon element.
          */
         arrowIcon(): string {

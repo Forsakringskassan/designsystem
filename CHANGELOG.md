@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 6.62.0 (2026-10-14)
+
+### Features
+
+* **@fkui/docs, @fkui/vue:** deprecate FTableButton (refs SFKUI-8146) d4f01c3
+* **@fkui/docs, @fkui/vue:** deprecate FTableColumn (refs SFKUI-8146) 2e3da72
+* **@fkui/docs, @fkui/vue:** expose updateItem and deleteItem from FCrudDataset (refs SFKUI-8146) d5452d6
+* **@fkui/vue:** add progressbar selectors (refs SFKUI-8230) da78af3
+* **@fkui/vue:** deprecate FDataTable and FInteractiveTable (refs SFKUI-8146) 2f24f34
+* **@fkui/vue:** selector objects for definitionlist and selectfield (refs SFKUI-8230) b241026
+
+### Bug Fixes
+
+* **@fkui/date:** use non-breaking spaces in date formats (refs SFKUI-6500) be7ed42
+* **@fkui/design:** add width to none appearance input (refs SFKUI-8270) f90fa8f
+* **@fkui/design:** fix shrinking calendar arrow buttons (fixes SFKUI-8179) 2442828
+* **@fkui/vue:** set selectedMode on toggle open use-combobox (refs SFKUI-7922) cc9cd33
+* **@fkui/vue:** sync FTable select value with row changes (fixes SFKUI-8344) ca90300
+* **deps:** update dependency cssnano to v9.2.2 ([#1735](undefined/Forsakringskassan/designsystem/issues/1735)) 2f6687f
+* **deps:** update dependency cssnano to v9.3.1 ([#1741](undefined/Forsakringskassan/designsystem/issues/1741)) 8c44ba1
+* **deps:** update dependency cssnano to v9.4.0 596e4f2
+* **deps:** update dependency express to v5.3.0 d5e2378
+* **deps:** update dependency vue-router to v5.4.0 fe53593
+
 ## 6.61.0 (2026-10-07)
 
 ### Features

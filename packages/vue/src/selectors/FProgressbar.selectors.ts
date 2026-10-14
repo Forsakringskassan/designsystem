@@ -2,7 +2,7 @@
  * Selectors for `FProgressbar`.
  *
  * @public
- * @since %version%
+ * @since v6.62.0
  * @param selector - The selector for the FProgressbar component.
  * @returns An object with selector methods for the FProgressbar component.
  */
@@ -14,7 +14,7 @@ export function FProgressbarSelectors(selector: string = ":scope") {
          * This is the same selector that the consumer provided.
          *
          * @public
-         * @since %version%
+         * @since v6.62.0
          * @returns The root selector for the component.
          */
         get selector(): string {
@@ -44,7 +44,7 @@ export function FProgressbarSelectors(selector: string = ":scope") {
          * ```
          *
          * @public
-         * @since %version%
+         * @since v6.62.0
          * @returns A selector for the progress meter element.
          */
         meter(): string {
