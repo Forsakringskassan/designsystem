@@ -37,21 +37,21 @@ $fk-logo-large: "fk-logo-primary-large.svg";
 }
 
 // Keep section wrappers full-width so their content width can be overridden.
-#title,
-#content :where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, table, pre, .code-preview, .docs-messagebox, .docs-view-switcher):not(.code-preview *) {
+#docs-title,
+#docs-content :where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, table, pre, .code-preview, .docs-messagebox, .docs-view-switcher):not(.code-preview *) {
     max-width: min(100%, var(--docs-content-max-width, 100%));
 }
 
-#content :where(p, ul, ol, dl, blockquote, .docs-messagebox:not(.docs-messagebox--details)):not(.code-preview *) {
+#docs-content :where(p, ul, ol, dl, blockquote, .docs-messagebox:not(.docs-messagebox--details)):not(.code-preview *) {
     max-width: min(100%, var(--docs-content-max-width, 100%), var(--docs-text-max-width, 100%));
 }
 
 // Preserve the paragraph default when no text width has been configured.
-#content p:not(.code-preview p) {
+#docs-content p:not(.code-preview p) {
     max-width: min(100%, var(--docs-content-max-width, 100%), var(--docs-text-max-width, 680px));
 }
 
-#content .code-preview[data-tags~="live-example"] {
+#docs-content .code-preview[data-tags~="live-example"] {
     max-width: min(100%, var(--docs-live-example-max-width, 100%));
 }
 
@@ -116,7 +116,7 @@ $fk-logo-large: "fk-logo-primary-large.svg";
     padding: 0.25rem 0.75rem !important;
 }
 
-#content .docs-view-switcher {
+#docs-content .docs-view-switcher {
     display: flex;
     gap: 1rem;
     margin: 3rem 0 2rem;
