@@ -20,12 +20,15 @@ Radioknappar tar mer plats än en dropplista eftersom alla svarsalternativ visas
 Det gör det lättare att överblicka och jämföra alternativen.
 En {@link FSelectField dropplista} passar bättre när alternativen är många eller när antalet kan variera och bli stort.
 
+<!-- markdownlint-disable no-inline-html -->
 <nav class="docs-view-switcher" aria-label="Dokumentationsvy">
 <a href="?view=usage" data-docs-view-link="usage" aria-current="page">Användning &amp; exempel</a>
 <a href="?view=api" data-docs-view-link="api">API</a>
 </nav>
 
 <div data-docs-view="usage">
+
+<!-- markdownlint-enable no-inline-html -->
 
 ## Placering
 
@@ -101,6 +104,7 @@ FRadioFieldBorderExpandableExample.vue
 
 </div>
 
+<!-- markdownlint-disable-next-line no-inline-html -->
 <div data-docs-view="api" hidden>
 
 ## Interaktiv kodgenerator
