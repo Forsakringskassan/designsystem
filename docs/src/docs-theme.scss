@@ -15,6 +15,8 @@ $fk-logo-small: "fk-logo-primary-small.svg";
 $fk-logo-large: "fk-logo-primary-large.svg";
 
 :root {
+    --docs-content-max-width: 770px;
+    --docs-text-max-width: 625px;
     --f-logo-image-small:
         url("#{config-variables.$asset-path-images}/#{$fk-logo-small}"),
         linear-gradient(var(--fkds-color-header-background-primary), var(--fkds-color-header-background-primary));
@@ -32,6 +34,25 @@ $fk-logo-large: "fk-logo-primary-large.svg";
 
 .mermaid p {
     margin-bottom: 0;
+}
+
+// Keep section wrappers full-width so their content width can be overridden.
+#docs-title,
+#docs-content :where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, table, pre, .code-preview, .docs-messagebox, .docs-view-switcher):not(.code-preview *) {
+    max-width: min(100%, var(--docs-content-max-width, 100%));
+}
+
+#docs-content :where(p, ul, ol, dl, blockquote, .docs-messagebox:not(.docs-messagebox--details)):not(.code-preview *) {
+    max-width: min(100%, var(--docs-content-max-width, 100%), var(--docs-text-max-width, 100%));
+}
+
+// Preserve the paragraph default when no text width has been configured.
+#docs-content p:not(.code-preview p) {
+    max-width: min(100%, var(--docs-content-max-width, 100%), var(--docs-text-max-width, 680px));
+}
+
+#docs-content .code-preview[data-tags~="live-example"] {
+    max-width: min(100%, var(--docs-live-example-max-width, 100%));
 }
 
 .color-table__color {
@@ -93,4 +114,28 @@ $fk-logo-large: "fk-logo-primary-large.svg";
 
     margin: 0 0.75rem 0 0;
     padding: 0.25rem 0.75rem !important;
+}
+
+#docs-content .docs-view-switcher {
+    display: flex;
+    gap: 1rem;
+    margin: 3rem 0 2rem;
+    border-bottom: 1px solid var(--fkds-color-border-primary);
+    padding-bottom: 0.5rem;
+
+    a,
+    a:visited {
+        color: var(--fkds-color-text-primary);
+        text-decoration-color: currentcolor;
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--fkds-color-action-text-primary-default);
+            }
+        }
+
+        &[aria-current="page"] {
+            color: var(--fkds-color-action-text-primary-default);
+        }
+    }
 }
