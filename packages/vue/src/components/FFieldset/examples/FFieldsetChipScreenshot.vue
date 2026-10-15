@@ -4,6 +4,7 @@ import {
     FButton,
     FCheckboxField,
     FFieldset,
+    FIcon,
     FRadioField,
     FTooltip,
     FValidationForm,
@@ -35,7 +36,7 @@ const choices2 = ref([]);
                 </f-radio-field>
 
                 <f-radio-field v-model="choices1" value="Ytterligare alternativ">
-                    Ytterligare alternativ
+                    <f-icon name="bell"></f-icon> Ytterligare alternativ
                 </f-radio-field>
 
                 <f-radio-field v-model="choices1" value="Sista" disabled> Sista </f-radio-field>
@@ -67,7 +68,7 @@ const choices2 = ref([]);
                 </f-checkbox-field>
 
                 <f-checkbox-field v-model="choices2" value="Ytterligare alternativ">
-                    Ytterligare alternativ
+                    <f-icon name="bell"></f-icon> Ytterligare alternativ
                 </f-checkbox-field>
 
                 <f-checkbox-field v-model="choices2" value="Sista" disabled>
