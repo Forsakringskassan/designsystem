@@ -2,7 +2,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { LiveExample } from "@forsakringskassan/docs-live-example";
-import { FCheckboxField, FFieldset, FRadioField, FTooltip } from "@fkui/vue";
+import { FCheckboxField, FFieldset, FIcon, FRadioField, FTooltip } from "@fkui/vue";
 
 export default defineComponent({
     name: "FFieldsetLiveExample",
@@ -15,6 +15,7 @@ export default defineComponent({
             descriptionVisible: false,
             isDisabled: false,
             isRequired: false,
+            iconVisible: false,
         };
     },
     computed: {
@@ -23,6 +24,7 @@ export default defineComponent({
                 FTooltip,
                 FFieldset,
                 FCheckboxField,
+                FIcon,
                 FRadioField,
             };
         },
@@ -61,21 +63,21 @@ export default defineComponent({
                     v-model="choices"
                     value="Ett alternativ"
                 >
-                    Ett alternativ
+                    ${this.icon("success")} Ett alternativ
                 </${this.componentType}>
 
                 <${this.componentType}
                     v-model="choices"
                     value="Alternativ 2"
                 >
-                    Alternativ 2
+                    ${this.icon("cross")} Alternativ 2
                 </${this.componentType}>
 
                 <${this.componentType}
                     v-model="choices"
                     value="Ytterligare alternativ"
                 >
-                    Ytterligare alternativ
+                    ${this.icon("error")} Ytterligare alternativ
                 </${this.componentType}>
 
                 <${this.componentType}
@@ -83,7 +85,7 @@ export default defineComponent({
                     value="Sista"
                     ${this.disabled}
                 >
-                    Sista
+                    ${this.icon("bell")} Sista
                 </${this.componentType}>
             `;
         },
@@ -105,6 +107,11 @@ export default defineComponent({
             `;
         },
     },
+    methods: {
+        icon(name: string): string {
+            return this.iconVisible ? `<f-icon name="${name}"></f-icon>` : "";
+        },
+    },
 });
 </script>
 
@@ -119,6 +126,7 @@ export default defineComponent({
         <f-checkbox-field v-model="isHorizontal" :value="true">
             Horisontell layout
         </f-checkbox-field>
+        <f-checkbox-field v-model="iconVisible" :value="true"> Visa ikon </f-checkbox-field>
         <f-checkbox-field v-model="isDisabled" :value="true"> Inaktiverad </f-checkbox-field>
         <f-checkbox-field v-model="isRequired" :value="true"> Obligatorisk </f-checkbox-field>
         <f-fieldset name="checkbox-label">
