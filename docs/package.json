@@ -41,7 +41,7 @@
     "@fkui/font-default": "6.62.0",
     "@fkui/logo-default": "6.62.0",
     "@forsakringskassan/docs-generator": "3.21.0",
-    "axios": "1.18.1",
+    "axios": "1.20.0",
     "cypress": "16.1.1",
     "vue": "3.5.43"
   },
