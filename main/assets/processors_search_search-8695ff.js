@@ -791,6 +791,18 @@ function e2(e3, r2) {
     a.scroll({ top: t2, left: o3, behavior: l2 });
   }
 }
+function removeIsTouch() {
+  const searchForm = document.querySelector("#search-form");
+  if (searchForm) {
+    searchForm.classList.remove("is-touch");
+  }
+}
+function setIsTouch() {
+  const searchForm = document.querySelector("#search-form");
+  if (searchForm) {
+    searchForm.classList.add("is-touch");
+  }
+}
 function isMoreSpecific(a, b) {
   if (b === null) {
     return true;
@@ -914,9 +926,11 @@ function setup() {
   function clickOutside(event) {
     const rect = dialog.getBoundingClientRect();
     const point = { x: event.clientX, y: event.clientY };
-    if (isOutside(rect, point)) {
-      dialog.close();
+    if (!isOutside(rect, point)) {
+      return;
     }
+    dialog.close();
+    removeIsTouch();
   }
   queueMicrotask(async () => {
     try {
@@ -932,9 +946,11 @@ function setup() {
   dialog.addEventListener("close", () => {
     document.body.removeEventListener("click", clickOutside);
     document.body.classList.remove("docs-modal-active");
+    removeIsTouch();
   });
   dialogCloseButton.addEventListener("click", () => {
     dialog.close();
+    removeIsTouch();
   });
   input.addEventListener("input", () => {
     searchTerm = input.value.toLowerCase();
@@ -974,6 +990,7 @@ function setup() {
     if (!(event.ctrlKey && event.key === "k")) {
       return;
     }
+    removeIsTouch();
     event.preventDefault();
     input.value = searchTerm = "";
     updateResults();
@@ -988,15 +1005,29 @@ function setup() {
   return;
   function initButton() {
     const button = document.querySelector("#docs-search");
-    if (button) {
-      button.addEventListener("submit", (event) => {
-        event.preventDefault();
-        input.value = searchTerm = "";
-        dialog.showModal();
-        document.body.addEventListener("click", clickOutside);
-        document.body.classList.add("docs-modal-active");
-      });
+    if (!button) {
+      return;
     }
+    const searchForm = document.querySelector("#search-form");
+    if (searchForm) {
+      removeIsTouch();
+    }
+    button.addEventListener("submit", (event) => {
+      event.preventDefault();
+      input.value = searchTerm = "";
+      dialog.showModal();
+      document.body.addEventListener("click", clickOutside);
+      document.body.classList.add("docs-modal-active");
+    });
+    button.addEventListener(
+      "touchstart",
+      () => {
+        if (searchForm) {
+          setIsTouch();
+        }
+      },
+      { passive: true }
+    );
   }
 }
 setup();

@@ -8939,6 +8939,10 @@ textarea {
   min-width: 1rem;
 }
 
+.docs-modal__body.is-touch p {
+  display: none;
+}
+
 .docs-modal::backdrop {
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(5px);
@@ -9004,12 +9008,19 @@ kbd {
 #search-dialog {
   --docs-text-color-default: var(--docs-search-text-color);
   margin-top: 80px;
+  width: 580px;
   background: var(--docs-search-background-color);
   border: 1px solid var(--docs-search-border-color);
   color: var(--docs-text-color-default);
-  width: 580px;
 }
 
+@media (width < 640px) {
+  #search-dialog {
+    width: auto;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
 .docs-search-dialog__input {
   background-color: #fff;
   box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
@@ -9019,6 +9030,10 @@ kbd {
   padding: 0 0.75rem;
   width: 100%;
   margin: 0 0 1.5rem;
+}
+
+.docs-modal__body.is-touch .docs-search-dialog__input {
+  margin: 0;
 }
 
 .docs-search-dialog__input:focus {
@@ -9040,6 +9055,11 @@ kbd {
   max-height: 60vh;
   margin: 0.5rem 0 1.5rem;
   padding: 0.2rem;
+}
+
+.docs-modal__body.is-touch .docs-search-result__list:empty {
+  margin: 0.5rem 0;
+  padding: 0;
 }
 
 .docs-search-result__item {
