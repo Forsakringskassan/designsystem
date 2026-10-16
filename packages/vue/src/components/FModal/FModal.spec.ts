@@ -27,7 +27,7 @@ describe("events", () => {
                 isOpen: true,
             },
         });
-        const closeElement = wrapper.get(".close-button");
+        const closeElement = wrapper.get(".modal-close-button");
 
         await closeElement.trigger("click");
         expect(wrapper.emitted().close).toBeTruthy();
@@ -236,8 +236,9 @@ describe("accessibility", () => {
         const modalTitle = wrapper.get(".modal__title").element;
         expect(modalTitle).toHaveFocus();
 
-        const closeButton =
-            wrapper.get<HTMLButtonElement>(".close-button").element;
+        const closeButton = wrapper.get<HTMLButtonElement>(
+            ".modal-close-button",
+        ).element;
         closeButton.click();
         await flushPromises();
         expect(toggleButton).toHaveFocus();
