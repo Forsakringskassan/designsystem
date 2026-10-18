@@ -14665,7 +14665,9 @@ var FieldsetValidationHandler = class {
 		});
 	}
 	hasFocusableTarget(target) {
-		return target ? Array.from(this.element.querySelectorAll("input, label")).some((element) => element === target) : false;
+		if (!target) return false;
+		const nodelist = this.element.querySelectorAll("input, label");
+		return Array.from(nodelist).some((element) => element === target);
 	}
 	onFocusIn(event) {
 		if (!this.hasFocusableTarget(event.target) || this.hasDocumentListener) return;
@@ -25882,7 +25884,8 @@ function useCombobox(inputRef, options, onOptionSelected) {
 			const input = inputRef.value;
 			if (!input) return;
 			filter.value = input.value;
-			selectMode.value = options.value ? options.value.includes(filter.value) : false;
+			if (options.value) selectMode.value = options.value.includes(filter.value);
+			else selectMode.value = false;
 			openSelected();
 		} else close();
 	}
@@ -25907,7 +25910,8 @@ function useCombobox(inputRef, options, onOptionSelected) {
 		var _inputRef$value$value;
 		await nextTick();
 		filter.value = (_inputRef$value$value = inputRef.value?.value) !== null && _inputRef$value$value !== void 0 ? _inputRef$value$value : "";
-		selectMode.value = options.value ? options.value.includes(filter.value) : false;
+		if (options.value) selectMode.value = options.value.includes(filter.value);
+		else selectMode.value = false;
 	}
 	function onInputKeyDown(event) {
 		if (event.ctrlKey || event.shiftKey) return;
