@@ -3445,9 +3445,8 @@ function findMatch(regexps, value) {
   }
   return null;
 }
-function padInitialZeros(value, maxLength = 2) {
-  value ??= "";
-  return value.padStart(maxLength, "0");
+function padInitialZeros(value = "") {
+  return value.padStart(2, "0");
 }
 function hoursMinutesStringToMinutes(valueString, extraForgiving = false) {
   if (isEmpty(valueString.trim())) return;
