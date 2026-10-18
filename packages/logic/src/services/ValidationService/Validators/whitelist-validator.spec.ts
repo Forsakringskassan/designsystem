@@ -30,7 +30,7 @@ describe("validation", () => {
         ${"\\"}                        | ${false} | ${"escape should be invalid"}
         ${"\u{200F}"}                  | ${false} | ${"right-to-left mark should be invalid"}
         ${"$&%#_<>{}[]/\\\"'"}         | ${false} | ${'"$&%#_<>{}[]/\\"\'" should be invalid'}
-        ${" test"}                     | ${false} | ${"non-breaking space should be invalid"}
+        ${"\u{A0}test"}                | ${false} | ${"non-breaking space should be invalid"}
     `(
         'should return "$expected" for "$value" because of $description',
         ({ value, expected }: { value: unknown; expected: boolean }) => {

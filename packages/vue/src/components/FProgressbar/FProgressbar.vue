@@ -42,8 +42,8 @@ const MAX_VALUE = 100;
 /* @ts-expect-error The prop name is actually normalized to ariaLabel but the type system does not realize */
 const ariaLabel = props.ariaLabel;
 
-function clamp(val: number): number {
-    return Math.round(Math.min(Math.max(val || 0, MIN_VALUE), MAX_VALUE));
+function clamp(val: number = 0): number {
+    return Math.round(Math.min(Math.max(val, MIN_VALUE), MAX_VALUE));
 }
 
 const progressValueNow = computed(() => clamp(props.value));

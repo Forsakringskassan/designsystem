@@ -13,6 +13,7 @@ const dates = [
 ];
 
 function getDayTabindexResults(
+    /* eslint-disable-next-line unicorn/no-unnecessary-parameters -- dont want to read from global variable */
     dates: FDate[],
     active: FDate | undefined,
     entry: FDate | undefined,

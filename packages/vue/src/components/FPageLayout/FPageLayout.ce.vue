@@ -28,8 +28,7 @@ const resolvedSlots = computed(() => {
     return slotNames.value
         .filter((it) => Object.hasOwn(layoutDefinition.value.areas, it))
         .map((slotName) => {
-            const area = layoutDefinition.value.areas[slotName];
-            const { attachPanel: attach, direction, scroll } = area;
+            const { attachPanel: attach, direction, scroll } = layoutDefinition.value.areas[slotName];
             const style = [
                 `grid-area: ${slotName};`,
                 `${VAR_NAME_AREA}: "${slotName}";`,

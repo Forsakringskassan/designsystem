@@ -84,7 +84,7 @@ expect.extend({
         received: Element | null | undefined,
         actual: Element,
     ): MatcherResult {
-        const pass = received ? received.isSameNode(actual) : false;
+        const pass = Boolean(received?.isSameNode(actual));
         const message = (): string => {
             const hint = this.utils.matcherHint(".toBeSameElement");
             const prettyExpected = this.utils.printExpected(actual.outerHTML);

@@ -49,11 +49,11 @@ class FieldsetValidationHandler {
     }
 
     private hasFocusableTarget(target: EventTarget | null): boolean {
-        return target
-            ? Array.from(this.element.querySelectorAll("input, label")).some(
-                  (element) => element === target,
-              )
-            : false;
+        if (!target) {
+            return false;
+        }
+        const nodelist = this.element.querySelectorAll("input, label");
+        return Array.from(nodelist).some((element) => element === target);
     }
 
     private onFocusIn(event: FocusEvent): void {

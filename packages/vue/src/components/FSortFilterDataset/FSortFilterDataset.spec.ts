@@ -27,14 +27,13 @@ const ATTRIBUTES = {
     b: "Column B",
 };
 
-function createWrapper({ slots = {} } = {}): VueWrapper {
+function createWrapper(): VueWrapper {
     /* eslint-disable-next-line @typescript-eslint/no-unsafe-return -- technical debt */
     return mount(FSortFilterDataset, {
         props: {
             data: DATA,
             sortableAttributes: ATTRIBUTES,
         },
-        slots: { ...slots },
         global: {
             stubs: ["f-text-field", "f-icon"],
         },

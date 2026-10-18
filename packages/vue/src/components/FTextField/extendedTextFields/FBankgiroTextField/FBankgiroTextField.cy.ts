@@ -1,35 +1,29 @@
 import { defineComponent } from "vue";
 import FBankgiroTextField from "./FBankgiroTextField.vue";
 
-function mountBankgiro(template: string): void {
-    cy.mount(
-        defineComponent({
-            template,
-            components: {
-                FBankgiroTextField,
-            },
-            data() {
-                return {
-                    model: "",
-                };
-            },
-        }),
-    );
-}
+const TestComponent = defineComponent({
+    template: /* HTML */ `
+        <f-bankgiro-text-field v-model="model"></f-bankgiro-text-field>
+    `,
+    components: {
+        FBankgiroTextField,
+    },
+    data() {
+        return {
+            model: "",
+        };
+    },
+});
 
 describe("FBankgiroTextField", () => {
     it(`should mount with correct label `, () => {
-        mountBankgiro(
-            `<f-bankgiro-text-field v-model="model"></f-bankgiro-text-field>`,
-        );
+        cy.mount(TestComponent);
         cy.viewport(400, 200);
         cy.toMatchScreenshot();
     });
 
     it(`should accept correct bankgiro numer `, () => {
-        mountBankgiro(
-            `<f-bankgiro-text-field v-model="model"></f-bankgiro-text-field>`,
-        );
+        cy.mount(TestComponent);
         cy.get("input").should("be.visible");
         //These fake bankgiro values are as of this writing 2024-06-03 verified as non-existing,
         //but are not provided as official fake sample numbers by bankgirot.se
@@ -39,9 +33,7 @@ describe("FBankgiroTextField", () => {
     });
 
     it(`should not accept incorrect bankgiro numer `, () => {
-        mountBankgiro(
-            `<f-bankgiro-text-field v-model="model"></f-bankgiro-text-field>`,
-        );
+        cy.mount(TestComponent);
         cy.get("input").should("be.visible");
         cy.get("input").type("abc");
         cy.get("input").blur();

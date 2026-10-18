@@ -22,9 +22,8 @@ function findMatch(regexps: RegExp[], value: string): RegExpMatchArray | null {
     return null;
 }
 
-function padInitialZeros(value: string | undefined, maxLength = 2): string {
-    value ??= "";
-    return value.padStart(maxLength, "0");
+function padInitialZeros(value: string = ""): string {
+    return value.padStart(2, "0");
 }
 
 /**

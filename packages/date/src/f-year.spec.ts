@@ -53,15 +53,13 @@ describe("fromDate()", () => {
 describe("value getter", () => {
     it("should return numeric year from given year", () => {
         expect.assertions(1);
-        const year = FYear.fromYear(2012);
-        const { value } = year;
+        const { value } = FYear.fromYear(2012);
         expect(value).toBe(2012);
     });
 
     it("should return NaN if year is invalid", () => {
         expect.assertions(1);
-        const year = FYear.fromYear("invalid");
-        const { value } = year;
+        const { value } = FYear.fromYear("invalid");
         expect(value).toBeNaN();
     });
 });

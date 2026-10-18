@@ -20,6 +20,7 @@ import { tooltipAttachTo } from "./tooltip-attach-to";
 import { useAnimation } from "./use-animation";
 import { useHorizontalOffset } from "./use-horizontal-offset";
 
+/* eslint-disable-next-line unicorn/no-top-level-side-effects -- false positive */
 export default defineComponent({
     name: "FTooltip",
     components: { FExpand, FIcon, IFlex, IFlexItem },

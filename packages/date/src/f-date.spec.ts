@@ -133,8 +133,7 @@ describe("fromYearMonthDay()", () => {
 describe("year, month, week and day getters", () => {
     it("should return components from given date", () => {
         expect.assertions(4);
-        const date = FDate.fromIso("2012-01-31");
-        const { year, month, week, day } = date;
+        const { year, month, week, day } = FDate.fromIso("2012-01-31");
         expect(year).toBe(2012);
         expect(month).toBe(1);
         expect(week).toBe(5);
@@ -143,8 +142,7 @@ describe("year, month, week and day getters", () => {
 
     it("should return NaN when date is invalid", () => {
         expect.assertions(4);
-        const date = FDate.fromIso("invalid");
-        const { year, month, week, day } = date;
+        const { year, month, week, day } = FDate.fromIso("invalid");
         expect(year).toBeNaN();
         expect(month).toBeNaN();
         expect(week).toBeNaN();
