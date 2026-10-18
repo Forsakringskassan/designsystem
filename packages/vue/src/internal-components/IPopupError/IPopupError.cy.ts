@@ -5,6 +5,7 @@ import { FTextFieldPageObject } from "../../cypress";
 import IPopupError from "./IPopupError.vue";
 
 const textfield = new FTextFieldPageObject(".text-field");
+
 interface Styling {
     caption: string;
     styleDiv: string;
@@ -12,6 +13,7 @@ interface Styling {
     styleTh2: string;
     styleTh3: string;
 }
+
 function createComponent(styling: Styling): DefineComponent {
     const { caption, styleDiv, styleTh1, styleTh2, styleTh3 } = styling;
     return defineComponent({
@@ -58,7 +60,8 @@ function createComponent(styling: Styling): DefineComponent {
         },
     });
 }
-function triggerPopupError(textfield: FTextFieldPageObject): void {
+
+function triggerPopupError(): void {
     textfield.input().focus();
     textfield.input().blur();
     textfield.input().click();
@@ -78,7 +81,7 @@ describe("PopupError", () => {
             styleTh3: "width: 25%",
         });
         cy.mount(component);
-        triggerPopupError(textfield);
+        triggerPopupError();
         cy.toMatchScreenshot();
     });
 
@@ -91,7 +94,7 @@ describe("PopupError", () => {
             styleTh3: "width: 90%",
         });
         cy.mount(component);
-        triggerPopupError(textfield);
+        triggerPopupError();
         cy.toMatchScreenshot();
     });
 
@@ -104,7 +107,7 @@ describe("PopupError", () => {
             styleTh3: "width: 5%",
         });
         cy.mount(component);
-        triggerPopupError(textfield);
+        triggerPopupError();
         cy.toMatchScreenshot();
     });
 
@@ -117,7 +120,7 @@ describe("PopupError", () => {
             styleTh3: "width: 5%",
         });
         cy.mount(component);
-        triggerPopupError(textfield);
+        triggerPopupError();
         cy.toMatchScreenshot();
     });
 
@@ -130,7 +133,7 @@ describe("PopupError", () => {
             styleTh3: "width: 5%",
         });
         cy.mount(component);
-        triggerPopupError(textfield);
+        triggerPopupError();
         cy.toMatchScreenshot();
     });
 
@@ -143,7 +146,7 @@ describe("PopupError", () => {
             styleTh3: "width: 25%",
         });
         cy.mount(component);
-        triggerPopupError(textfield);
+        triggerPopupError();
         cy.get(".popup-error").should("be.visible");
         textfield.input().trigger("keyup", { key: "Escape" });
         cy.get(".popup-error").should("not.exist");
@@ -158,7 +161,7 @@ describe("PopupError", () => {
             styleTh3: "width: 25%",
         });
         cy.mount(component);
-        triggerPopupError(textfield);
+        triggerPopupError();
         cy.get(".popup-error").should("be.visible");
         textfield.input().blur();
         cy.get(".popup-error").should("not.exist");
@@ -183,7 +186,7 @@ describe("PopupError", () => {
         );
 
         cy.mount(() => component);
-        triggerPopupError(textfield);
+        triggerPopupError();
         cy.get("#scroll-box").scrollTo(200);
 
         // Wait until debounce finished.

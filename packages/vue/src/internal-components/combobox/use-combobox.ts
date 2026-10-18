@@ -220,9 +220,13 @@ export function useCombobox(
                 return;
             }
             filter.value = input.value;
-            selectMode.value = options.value
-                ? options.value.includes(filter.value)
-                : false;
+
+            if (options.value) {
+                selectMode.value = options.value.includes(filter.value);
+            } else {
+                selectMode.value = false;
+            }
+
             /* eslint-disable-next-line @typescript-eslint/no-floating-promises -- technical debt */
             openSelected();
         } else {
@@ -268,9 +272,12 @@ export function useCombobox(
         await nextTick(); // wait for any formatting
 
         filter.value = inputRef.value?.value ?? "";
-        selectMode.value = options.value
-            ? options.value.includes(filter.value)
-            : false;
+
+        if (options.value) {
+            selectMode.value = options.value.includes(filter.value);
+        } else {
+            selectMode.value = false;
+        }
     }
 
     function onInputKeyDown(event: KeyboardEvent): void {

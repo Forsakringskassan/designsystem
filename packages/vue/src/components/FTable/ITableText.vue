@@ -58,7 +58,6 @@ let validationFacade: ValidationFacade = {
 };
 
 const hasError = computed(() => validity.value.validityMode === "ERROR");
-/* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
 const viewModeAriaInvalid = computed(() => (!inEdit.value && hasError.value ? true : undefined));
 const viewModeErrorMessage = computed(() =>
     !inEdit.value && hasError.value ? validity.value.validationMessage : undefined,

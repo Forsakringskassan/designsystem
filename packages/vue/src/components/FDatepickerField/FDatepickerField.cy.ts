@@ -26,6 +26,8 @@ const VIEWPORT = {
 const today = new Date(2022, 11, 24);
 
 const forcedColorModes = ["none", "dark", "light"] as const;
+
+/* eslint-disable-next-line unicorn/no-unnecessary-parameters -- dont want to use global variable */
 function setDate(date: Date): void {
     cy.clock(date, ["Date"]);
 }
