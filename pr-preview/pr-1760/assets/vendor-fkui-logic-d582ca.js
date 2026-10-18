@@ -2311,7 +2311,11 @@ var FieldsetValidationHandler = class {
     });
   }
   hasFocusableTarget(target) {
-    return target ? Array.from(this.element.querySelectorAll("input, label")).some((element) => element === target) : false;
+    if (!target) {
+      return false;
+    }
+    const nodelist = this.element.querySelectorAll("input, label");
+    return Array.from(nodelist).some((element) => element === target);
   }
   onFocusIn(event) {
     if (!this.hasFocusableTarget(event.target) || this.hasDocumentListener) {
