@@ -1,5 +1,15 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { computed, nextTick, onMounted, ref, useTemplateRef, watchEffect } from "vue";
+import {
+    type EffectScope,
+    computed,
+    effectScope,
+    nextTick,
+    onScopeDispose,
+    ref,
+    useTemplateRef,
+    watch,
+    watchEffect,
+} from "vue";
 import {
     type ValidationResult,
     type ValidityEvent,
@@ -158,6 +168,11 @@ function setUpFakeValidation(el: HTMLInputElement): void {
     const input = inputElement.value;
 
     function emitFakeValidity(nativeEvent: ValidityNativeEvent): void {
+        // Removing a focused input fires blur after the input is gone.
+        if (inputElement.value !== input) {
+            return;
+        }
+
         const fakeEvent = new CustomEvent<ValidityEvent>("validity", {
             detail: {
                 isValid: true,
@@ -199,21 +214,39 @@ function setUpFakeValidation(el: HTMLInputElement): void {
     });
 }
 
-onMounted(() => {
-    if (!inputElement.value) {
-        return;
-    }
+let fakeValidationScope: EffectScope | undefined;
 
-    viewValue.value = fromColumnValue();
-
-    if (column.hasValidation) {
-        setUpValidation(inputElement.value);
-    } else {
-        setUpFakeValidation(inputElement.value);
-    }
-
-    void nextTick().then(() => validationFacade.validateElement(inputElement.value)); // wait for .value to be set before validation
+onScopeDispose(() => {
+    fakeValidationScope?.stop();
 });
+
+// The input only exists while `column.editable(row)` is true, so it can appear (or be recreated) after mount.
+watch(
+    inputElement,
+    (el) => {
+        fakeValidationScope?.stop();
+        fakeValidationScope = undefined;
+
+        if (!el) {
+            return;
+        }
+
+        viewValue.value = fromColumnValue();
+
+        if (column.hasValidation) {
+            setUpValidation(el);
+        } else {
+            fakeValidationScope = effectScope();
+            fakeValidationScope.run(() => {
+                setUpFakeValidation(el);
+            });
+        }
+
+        // wait for .value to be set before validation
+        void nextTick().then(() => validationFacade.validateElement(el));
+    },
+    { flush: "post" },
+);
 
 watchEffect(() => {
     if (hasError.value) {
