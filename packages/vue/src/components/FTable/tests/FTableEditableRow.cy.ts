@@ -56,4 +56,14 @@ describe("FTable with editable(row) depending on other fields", () => {
             description: "",
         });
     });
+
+    it("should show reset name in the cell when animal changes", () => {
+        table.cell({ row: 1, col: 2 }).should("contain.text", "Pluto");
+
+        table.cell({ row: 1, col: 1 }).click();
+        table.selectDropdownOption(2).click();
+
+        table.cell({ row: 1, col: 1 }).should("contain.text", "Katt");
+        table.cell({ row: 1, col: 2 }).should("not.contain.text", "Pluto");
+    });
 });

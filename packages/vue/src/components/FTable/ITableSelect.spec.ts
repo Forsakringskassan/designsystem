@@ -30,4 +30,35 @@ describe("ITableSelect", () => {
 
         expect(displayedValue()).toBe("bar");
     });
+
+    it("should keep locally selected value when column has no key", async () => {
+        expect.assertions(2);
+
+        const row = reactive({ value: "foo" });
+        const column = normalizeTableColumn<typeof row>({
+            type: "select",
+            header: "Value",
+            options: ["foo", "bar", "baz"],
+        });
+
+        const wrapper = mount(ITableSelect<typeof row, "value">, {
+            props: { column, row },
+            global: { stubs: { IComboboxDropdown: true } },
+        });
+
+        const displayedValue = (): string =>
+            wrapper.get(".table-ng__editable__text").text();
+
+        expect(displayedValue()).toBe("");
+
+        const dropdown = wrapper.findComponent({ name: "IComboboxDropdown" });
+        (
+            dropdown.vm as unknown as {
+                $emit(event: string, value: string): void;
+            }
+        ).$emit("select", "bar");
+        await nextTick();
+
+        expect(displayedValue()).toBe("bar");
+    });
 });
