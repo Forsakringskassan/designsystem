@@ -1,4 +1,4 @@
-import { type ComponentPublicInstance } from "vue";
+import { type ComponentPublicInstance, reactive } from "vue";
 import { flushPromises, mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import ITableText from "./ITableText.vue";
@@ -259,6 +259,141 @@ describe("ITableText", () => {
 
         expect(wrapper.get("td").classes()).toContain(
             "table-ng__cell--numeric",
+        );
+    });
+
+    it("should save value when cell becomes editable after mount", async () => {
+        expect.assertions(3);
+        const row = reactive({ unlocked: false, text: "" });
+        const column = normalizeTableColumn<typeof row, keyof typeof row>({
+            type: "text",
+            header: "Text",
+            key: "text",
+            editable: (it) => it.unlocked,
+            label: () => "Text",
+        });
+
+        const wrapper = mount(
+            ITableText as unknown as ComponentPublicInstance,
+            {
+                attachTo: document.body,
+                props: { row, column },
+                global: { stubs: { IPopupError: true } },
+            },
+        );
+
+        expect(wrapper.find("input").exists()).toBe(false);
+
+        row.unlocked = true;
+        await flushPromises();
+
+        await wrapper.get("td").trigger("click");
+        await wrapper.get("input").setValue("Mjauu");
+        await wrapper.get("input").trigger("blur");
+        await flushPromises();
+
+        expect(row.text).toBe("Mjauu");
+        expect(wrapper.get("td .table-ng__editable__text").text()).toBe(
+            "Mjauu",
+        );
+    });
+
+    it("should save value when cell becomes editable again", async () => {
+        expect.assertions(1);
+        const row = reactive({ unlocked: true, text: "" });
+        const column = normalizeTableColumn<typeof row, keyof typeof row>({
+            type: "text",
+            header: "Text",
+            key: "text",
+            editable: (it) => it.unlocked,
+            label: () => "Text",
+        });
+
+        const wrapper = mount(
+            ITableText as unknown as ComponentPublicInstance,
+            {
+                attachTo: document.body,
+                props: { row, column },
+                global: { stubs: { IPopupError: true } },
+            },
+        );
+
+        row.unlocked = false;
+        await flushPromises();
+        row.unlocked = true;
+        await flushPromises();
+
+        await wrapper.get("td").trigger("click");
+        await wrapper.get("input").setValue("Mjauu");
+        await wrapper.get("input").trigger("blur");
+        await flushPromises();
+
+        expect(row.text).toBe("Mjauu");
+    });
+
+    it("should remove event listeners from the input when it is removed", async () => {
+        expect.assertions(2);
+        const row = reactive({ unlocked: true, text: "" });
+        const column = normalizeTableColumn<typeof row, keyof typeof row>({
+            type: "text",
+            header: "Text",
+            key: "text",
+            editable: (it) => it.unlocked,
+            label: () => "Text",
+        });
+
+        const wrapper = mount(
+            ITableText as unknown as ComponentPublicInstance,
+            {
+                attachTo: document.body,
+                props: { row, column },
+                global: { stubs: { IPopupError: true } },
+            },
+        );
+        await flushPromises();
+        const input = wrapper.get("input").element;
+        const removeSpy = vi.spyOn(input, "removeEventListener");
+
+        row.unlocked = false;
+        await flushPromises();
+
+        const removed = removeSpy.mock.calls.map(([type]) => type);
+        expect(removed).toContain("blur");
+        expect(removed).toContain("change");
+    });
+
+    it("should remove event listeners from the input when unmounted", async () => {
+        expect.assertions(1);
+        const row = reactive({ text: "" });
+        const column = normalizeTableColumn<typeof row, keyof typeof row>({
+            type: "text",
+            header: "Text",
+            key: "text",
+            editable: true,
+            label: () => "Text",
+        });
+
+        const wrapper = mount(
+            ITableText as unknown as ComponentPublicInstance,
+            {
+                attachTo: document.body,
+                props: { row, column },
+                global: { stubs: { IPopupError: true } },
+            },
+        );
+        await flushPromises();
+        const removeSpy = vi.spyOn(
+            wrapper.get("input").element,
+            "removeEventListener",
+        );
+
+        wrapper.unmount();
+        await flushPromises();
+
+        expect(removeSpy).toHaveBeenCalledWith(
+            "blur",
+            expect.any(Function),
+            undefined,
         );
     });
 });
