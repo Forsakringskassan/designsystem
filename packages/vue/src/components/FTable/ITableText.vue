@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, K extends keyof T">
-import { computed, nextTick, onMounted, ref, useTemplateRef, watchEffect } from "vue";
+import { computed, nextTick, ref, useTemplateRef, watch, watchEffect } from "vue";
 import {
     type ValidationResult,
     type ValidityEvent,
@@ -158,6 +158,11 @@ function setUpFakeValidation(el: HTMLInputElement): void {
     const input = inputElement.value;
 
     function emitFakeValidity(nativeEvent: ValidityNativeEvent): void {
+        // Removing a focused input fires blur after the input is gone.
+        if (inputElement.value !== input) {
+            return;
+        }
+
         const fakeEvent = new CustomEvent<ValidityEvent>("validity", {
             detail: {
                 isValid: true,
@@ -199,21 +204,27 @@ function setUpFakeValidation(el: HTMLInputElement): void {
     });
 }
 
-onMounted(() => {
-    if (!inputElement.value) {
-        return;
-    }
+// The input only exists while `column.editable(row)` is true, so it can appear (or be recreated) after mount.
+watch(
+    inputElement,
+    (el) => {
+        if (!el) {
+            return;
+        }
 
-    viewValue.value = fromColumnValue();
+        viewValue.value = fromColumnValue();
 
-    if (column.hasValidation) {
-        setUpValidation(inputElement.value);
-    } else {
-        setUpFakeValidation(inputElement.value);
-    }
+        if (column.hasValidation) {
+            setUpValidation(el);
+        } else {
+            setUpFakeValidation(el);
+        }
 
-    void nextTick().then(() => validationFacade.validateElement(inputElement.value)); // wait for .value to be set before validation
-});
+        // wait for .value to be set before validation
+        void nextTick().then(() => validationFacade.validateElement(el));
+    },
+    { flush: "post" },
+);
 
 watchEffect(() => {
     if (hasError.value) {
