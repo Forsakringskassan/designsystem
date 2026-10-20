@@ -1,0 +1,15 @@
+{
+    "name": "FFixedPane.ce",
+    "slug": "ffixedpane-ce",
+    "models": [],
+    "props": [],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+{
+    "name": "FDialogueTree",
+    "slug": "fdialoguetree",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "Current dialogue question",
+            "type": "FDialogueTreeUserProgress",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "dialogueTree",
+            "description": "Dialogue tree",
+            "type": "FDialogueTreeQuestion",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for last dialogue step.",
+            "bindings": [
+                {
+                    "name": "userData",
+                    "type": "userData",
+                    "description": "Step information"
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}

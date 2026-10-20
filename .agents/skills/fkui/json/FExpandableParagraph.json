@@ -1,0 +1,87 @@
+{
+    "name": "FExpandableParagraph",
+    "slug": "fexpandableparagraph",
+    "models": [],
+    "props": [
+        {
+            "name": "expanded",
+            "description": "Toggle expanded/collapsed state",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "headerTag",
+            "description": "Element to render for the button elmement\n'span', 'h1', 'h2', 'h3', 'h4', 'h5' and 'h6' is valid.",
+            "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"span\"",
+            "required": false,
+            "default": {
+                "value": "\"span\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "headerVisualTag",
+            "description": "Visual header size for the button element.\n'h1', 'h2', 'h3', 'h4', 'h5' and 'h6' is valid.\nIf not used, the default styling will be h4",
+            "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "list",
+            "description": "Toggle list style of component",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "id",
+            "description": "The id for the content id attribute.\nIf the prop is not set the id will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "toggle",
+            "description": "Emitted when heading is clicked.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "MouseEvent",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "title",
+            "description": "Slot used for title content",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "related",
+            "description": "Slot used for related information besides the header element",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot used for content shown when expanded",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

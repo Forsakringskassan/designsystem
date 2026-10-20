@@ -1,0 +1,76 @@
+{
+    "name": "FCheckboxField",
+    "slug": "fcheckboxfield",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "The value for the input checked attribute.",
+            "type": "anyType",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "disabled",
+            "description": "Disables the checkbox.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "id",
+            "description": "The id for the input id attribute.\nThe id for the label for attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "value",
+            "description": "The value for the input.",
+            "type": "anyType",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "change",
+            "description": "Emitted when the value of the checkbox changes.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "anyType | anyType[]",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for label content.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "details",
+            "description": "Slot for extended label, should only contain short text",
+            "bindings": [
+                {
+                    "name": "height",
+                    "type": "number",
+                    "description": "The height of the expanded details content."
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}

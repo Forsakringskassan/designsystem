@@ -1,0 +1,82 @@
+{
+    "name": "FTooltip",
+    "slug": "ftooltip",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "State (expanded or collapsed) of the tooltip. The value is `true` if the tooltip is expanded.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "attachTo",
+            "description": "Element to attach tooltip toggle button.\n\nOnly needed when using with arbitrary elements, e.g. when using with\n`FLabel` you do not need to set this prop.",
+            "type": "HTMLElement | null | undefined",
+            "required": false,
+            "default": {
+                "value": "null"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "screenReaderText",
+            "description": "Screen reader text for toggle button",
+            "type": "string",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "closeButtonText",
+            "description": "Close button text",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "TranslationService.provider.translate(\"fkui.tooltip.close\", \"Stäng\")"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "headerTag",
+            "description": "Element to render for the header element inside the tooltip.\n\nMust be set to one of:\n- `h1`\n- `h2`\n- `h3`\n- `h4`\n- `h5`\n- `h6`",
+            "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "toggle",
+            "description": "Emitted when the state of the tooltip (collapsed/expanded) changes.",
+            "properties": [
+                {
+                    "name": "event",
+                    "type": "{ isOpen: boolean }",
+                    "description": "New state of tooltip."
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "header",
+            "description": "Tooltip header content",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "body",
+            "description": "Tooltip body content",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

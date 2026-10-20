@@ -1,0 +1,134 @@
+{
+    "name": "FSearchTextField",
+    "slug": "fsearchtextfield",
+    "models": [
+        {
+            "name": "v-model",
+            "description": null,
+            "type": "string|null",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "id",
+            "description": null,
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "clearableScreenReaderText",
+            "description": null,
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "TranslationService.provider.translate(\r\n    \"fkui.search-text-field.search-screen-reader\",\r\n    \"Töm inmatningsfält\",\r\n)"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "maxLength",
+            "description": null,
+            "type": "number",
+            "required": false,
+            "default": {
+                "value": "80"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "blur",
+            "description": null,
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "string | number",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "change",
+            "description": null,
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "string | number",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "tooltip",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "input-right",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "input-left",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "error-message",
+            "description": null,
+            "bindings": [
+                {
+                    "name": "hasError",
+                    "type": "unknown",
+                    "description": null
+                },
+                {
+                    "name": "validationMessage",
+                    "type": "unknown",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "description",
+            "description": "Optional slot for description. See {@link FLabel} for details.",
+            "bindings": [
+                {
+                    "name": "description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for primary description content."
+                },
+                {
+                    "name": "format-description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for format description."
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}
