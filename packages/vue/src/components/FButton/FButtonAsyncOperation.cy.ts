@@ -413,7 +413,13 @@ describe("Promises", () => {
     });
 
     it("should remove spinner when rejected", () => {
-        // <expectedException>It was caused by an unhandled promise rejection.</expectedException>
+        /* suppress the unhandled rejection error: https://docs.cypress.io/api/cypress-api/catalog-of-events#To-conditionally-turn-off-uncaught-exception-handling-unhandled-promise-rejections */
+        cy.on("uncaught:exception", (_err, _runner, promise) => {
+            if (promise) {
+                return false;
+            }
+            return true;
+        });
 
         const { ButtonComponent, reject } = createComponent();
         cy.mount(ButtonComponent);
