@@ -13522,12 +13522,23 @@ function getBodyRowCount(rows, childKey) {
   });
   return count;
 }
+function countDescendants(rows, expandableAttribute) {
+  let count = 0;
+  for (const row of rows) {
+    const children = row[expandableAttribute];
+    count += 1;
+    if (Array.isArray(children)) count += countDescendants(children, expandableAttribute);
+  }
+  return count;
+}
 function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
-  if (expandableAttribute === void 0) return keyedRows.map((row) => ({
+  if (expandableAttribute === void 0) return keyedRows.map((row, index) => ({
     key: getItemIdentifier(row),
-    row
+    row,
+    rowindex: index + 1
   }));
   const array = [];
+  let nextRowindex = 1;
   walk(keyedRows, expandableAttribute, (row, level, setsize, posinset) => {
     const key = getItemIdentifier(row);
     const children = row[expandableAttribute];
@@ -13540,9 +13551,11 @@ function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
       isExpanded,
       level,
       setsize,
-      posinset
+      posinset,
+      rowindex: nextRowindex++
     };
     array.push(metarow);
+    if (!isExpanded && isExpandable) nextRowindex += countDescendants(children, expandableAttribute);
     return isExpanded;
   });
   return array;
@@ -15124,7 +15137,7 @@ function removeTableRows(rows, rowsToRemove, expandableAttribute) {
   const rowsValue = toValue(rows);
   const rowsToRemoveValue = toValue(rowsToRemove);
   const expandableAttributeValue = toValue(expandableAttribute);
-  const normalizedRows = Array.isArray(rowsToRemoveValue) ? rowsToRemoveValue : [rowsToRemoveValue];
+  const normalizedRows = Array.isArray(rowsToRemoveValue) ? [...rowsToRemoveValue] : [rowsToRemoveValue];
   for (const row of normalizedRows) removeRow$1(rowsValue, row, expandableAttributeValue);
 }
 function removeRow$1(rows, row, expandableAttribute) {
@@ -15137,8 +15150,13 @@ function removeNestedRows$1(rows, row, expandableAttribute) {
     const nestedRows = currentRow[expandableAttribute];
     if (!Array.isArray(nestedRows)) continue;
     const index = nestedRows.indexOf(row);
-    if (index !== -1) nestedRows.splice(index, 1);
+    if (index !== -1) {
+      nestedRows.splice(index, 1);
+      return true;
+    }
+    if (removeNestedRows$1(nestedRows, row, expandableAttribute)) return true;
   }
+  return false;
 }
 function removeDatasetRows(dataset, rows) {
   const datasetValue = toValue(dataset);

@@ -19243,15 +19243,26 @@ function getBodyRowCount(rows, childKey) {
 	});
 	return count;
 }
+function countDescendants(rows, expandableAttribute) {
+	let count = 0;
+	for (const row of rows) {
+		const children = row[expandableAttribute];
+		count += 1;
+		if (Array.isArray(children)) count += countDescendants(children, expandableAttribute);
+	}
+	return count;
+}
 /**
 * @internal
 */
 function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
-	if (expandableAttribute === void 0) return keyedRows.map((row) => ({
+	if (expandableAttribute === void 0) return keyedRows.map((row, index) => ({
 		key: getItemIdentifier(row),
-		row
+		row,
+		rowindex: index + 1
 	}));
 	const array = [];
+	let nextRowindex = 1;
 	walk(keyedRows, expandableAttribute, (row, level, setsize, posinset) => {
 		const key = getItemIdentifier(row);
 		const children = row[expandableAttribute];
@@ -19264,9 +19275,11 @@ function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
 			isExpanded,
 			level,
 			setsize,
-			posinset
+			posinset,
+			rowindex: nextRowindex++
 		};
 		array.push(metarow);
+		if (!isExpanded && isExpandable) nextRowindex += countDescendants(children, expandableAttribute);
 		return isExpanded;
 	});
 	return array;
