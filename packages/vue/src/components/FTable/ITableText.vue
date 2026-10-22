@@ -430,7 +430,9 @@ function onPendingValidity(): void {
     >
         <template v-if="visible">
             <div :class="divClasses">
-                <span class="table-ng__editable__text">{{ fromColumnValue() }}</span>
+                <span class="table-ng__editable__text" :class="{ 'table-ng__editable__text--wrap': column.wrap }">{{
+                    fromColumnValue()
+                }}</span>
                 <span v-if="viewModeErrorMessage" class="sr-only">{{ viewModeErrorMessage }}</span>
                 <input
                     :id="inputId"
@@ -458,6 +460,12 @@ function onPendingValidity(): void {
         </template>
     </td>
     <td v-else ref="td" tabindex="-1" :class="staticClasses" @keydown.space.prevent>
-        <div v-if="visible" class="table-ng__cell--static__text">{{ fromColumnValue() }}</div>
+        <div
+            v-if="visible"
+            class="table-ng__cell--static__text"
+            :class="{ 'table-ng__cell--static__text--wrap': column.wrap }"
+        >
+            {{ fromColumnValue() }}
+        </div>
     </td>
 </template>

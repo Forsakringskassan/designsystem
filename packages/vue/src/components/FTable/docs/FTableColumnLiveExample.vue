@@ -234,11 +234,12 @@ function getColumn(options: {
     columnType: TableColumnType;
     description?: boolean;
     tnum?: boolean;
+    wrap?: boolean;
     align?: "left" | "right";
     enabled?: boolean;
     editable?: boolean;
 }): TableColumn<Row> {
-    const { columnType, description, tnum, align, enabled, editable } = options;
+    const { columnType, description, tnum, wrap, align, enabled, editable } = options;
     const column = { ...columnData[columnType] };
 
     if (description) {
@@ -247,6 +248,10 @@ function getColumn(options: {
 
     if (tnum !== undefined && isTextColumn(column)) {
         column.tnum = tnum;
+    }
+
+    if (wrap !== undefined && isTextColumn(column)) {
+        column.wrap = wrap;
     }
 
     if (align !== undefined && isTextColumn(column)) {
@@ -272,6 +277,7 @@ export default defineComponent({
         textType: TableColumnType;
         descriptionChecked: boolean;
         tnum: boolean;
+        wrap: boolean;
         align: "left" | "right";
         editableChecked: boolean;
         enabledChecked: boolean;
@@ -281,6 +287,7 @@ export default defineComponent({
             textType: "text",
             descriptionChecked: false,
             tnum: false,
+            wrap: false,
             align: "left",
             editableChecked: true,
             enabledChecked: true,
@@ -305,6 +312,9 @@ export default defineComponent({
             return { FTable };
         },
         tnumSupport(): boolean {
+            return this.columnType.includes("text");
+        },
+        wrapSupport(): boolean {
             return this.columnType.includes("text");
         },
         alignSupport(): boolean {
@@ -348,6 +358,7 @@ export default defineComponent({
                 columnType: this.normalizedKey,
                 description: this.descriptionChecked,
                 tnum: this.tnumSupport && this.tnum !== this.defaultTNUM ? this.tnum : undefined,
+                wrap: this.wrapSupport && this.wrap ? this.wrap : undefined,
                 align:
                     this.alignSupport && this.align !== this.defaultAlign ? this.align : undefined,
                 editable: this.editableSupport ? this.editableChecked : undefined,
@@ -364,6 +375,7 @@ export default defineComponent({
         onTypeChange() {
             this.align = this.defaultAlign;
             this.tnum = this.defaultTNUM;
+            this.wrap = false;
         },
     },
 });
@@ -416,6 +428,12 @@ export default defineComponent({
             <template #label> TNUM </template>
             <f-radio-field v-model="tnum" :value="false"> {{ tnumOffText }} </f-radio-field>
             <f-radio-field v-model="tnum" :value="true"> {{ tnumOnText }} </f-radio-field>
+        </f-fieldset>
+
+        <f-fieldset v-if="wrapSupport" name="wrap">
+            <template #label> Radbrytning </template>
+            <f-radio-field v-model="wrap" :value="false"> Av (default) </f-radio-field>
+            <f-radio-field v-model="wrap" :value="true"> På </f-radio-field>
         </f-fieldset>
 
         <f-fieldset name="rubrik">

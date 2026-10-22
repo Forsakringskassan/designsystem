@@ -261,4 +261,46 @@ describe("ITableText", () => {
             "table-ng__cell--numeric",
         );
     });
+
+    it.each([
+        { editable: false, wrap: undefined, expected: false },
+        { editable: false, wrap: false, expected: false },
+        { editable: false, wrap: true, expected: true },
+        { editable: true, wrap: undefined, expected: false },
+        { editable: true, wrap: false, expected: false },
+        { editable: true, wrap: true, expected: true },
+    ])(
+        "should have wrap class=$expected when editable=$editable and wrap=$wrap",
+        ({ editable, wrap, expected }) => {
+            expect.assertions(1);
+
+            const row: Row = { foo: "Some text that could wrap" };
+            const column = normalizeTableColumn<Row, keyof Row>({
+                type: "text",
+                header: "Header",
+                key: "foo",
+                editable,
+                wrap,
+            });
+
+            const wrapper = mount(
+                ITableText as unknown as ComponentPublicInstance,
+                {
+                    props: { column, row },
+                },
+            );
+
+            const selector = editable
+                ? ".table-ng__editable__text"
+                : ".table-ng__cell--static__text";
+
+            const wrapClass = editable
+                ? "table-ng__editable__text--wrap"
+                : "table-ng__cell--static__text--wrap";
+
+            expect(wrapper.get(selector).classes().includes(wrapClass)).toBe(
+                expected,
+            );
+        },
+    );
 });

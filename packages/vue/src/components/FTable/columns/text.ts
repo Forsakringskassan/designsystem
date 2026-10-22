@@ -30,6 +30,11 @@ export interface TableColumnText<
     label?(this: void, row: T): string;
     /** When enabled, the cells are rendered with tabular numbers */
     tnum?: boolean;
+    /**
+     * Allow cell content to wrap onto multiple lines.
+     * Default `false` (content is displayed on a single line).
+     */
+    wrap?: boolean;
     /** Set the alignment of the cells. Default: `"left"` */
     align?: "left" | "right";
     /** Arbitrary attributes passed to input field */
@@ -59,6 +64,7 @@ export interface NormalizedTableColumnText<
     readonly validation: ValidatorConfigs;
     readonly hasValidation: boolean;
     readonly tnum: boolean;
+    readonly wrap: boolean;
     readonly align: "left" | "right";
     readonly component: Component<{
         row: T;
@@ -94,6 +100,7 @@ export function normalizeTextColumn<T, K extends keyof T>(
     return {
         type,
         tnum: column.tnum ?? defaultTnumValue(type),
+        wrap: column.wrap ?? false,
         align: column.align ?? "left",
         attributes: column.attributes,
         label: getLabelFn(column.label),
