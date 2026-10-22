@@ -10643,7 +10643,8 @@ function useCombobox(inputRef, options, onOptionSelected) {
       const input = inputRef.value;
       if (!input) return;
       filter2.value = input.value;
-      selectMode.value = options.value ? options.value.includes(filter2.value) : false;
+      if (options.value) selectMode.value = options.value.includes(filter2.value);
+      else selectMode.value = false;
       openSelected();
     } else close();
   }
@@ -10668,7 +10669,8 @@ function useCombobox(inputRef, options, onOptionSelected) {
     var _inputRef$value$value;
     await nextTick();
     filter2.value = (_inputRef$value$value = inputRef.value?.value) !== null && _inputRef$value$value !== void 0 ? _inputRef$value$value : "";
-    selectMode.value = options.value ? options.value.includes(filter2.value) : false;
+    if (options.value) selectMode.value = options.value.includes(filter2.value);
+    else selectMode.value = false;
   }
   function onInputKeyDown(event) {
     if (event.ctrlKey || event.shiftKey) return;
@@ -17472,7 +17474,8 @@ var FDatepickerField_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCo
       return isDayEnabled(day, this.validationConfig);
     },
     isDaySelected(date) {
-      return this.calendarValue ? date.equals(this.calendarValue) : false;
+      if (!this.calendarValue) return false;
+      return date.equals(this.calendarValue);
     },
     highlightDay(date) {
       return this.highlightToday && date.equals(FDate.now());
@@ -22176,8 +22179,8 @@ var FProgressbar_default = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const props = __props;
     const ariaLabel = props.ariaLabel;
-    function clamp2(val) {
-      return Math.round(Math.min(Math.max(val || 0, MIN_VALUE), MAX_VALUE));
+    function clamp2(val = 0) {
+      return Math.round(Math.min(Math.max(val, MIN_VALUE), MAX_VALUE));
     }
     const progressValueNow = computed(() => clamp2(props.value));
     const cssWidth = computed(() => `width: ${String(progressValueNow.value)}%`);
