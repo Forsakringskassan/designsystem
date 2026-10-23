@@ -19841,6 +19841,7 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 			assertRef(inputElement);
 			const input = inputElement.value;
 			function emitFakeValidity(nativeEvent) {
+				if (inputElement.value !== input) return;
 				onValidity(new CustomEvent("validity", { detail: {
 					isValid: true,
 					nativeEvent,
@@ -19870,13 +19871,24 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 				e.stopPropagation();
 			});
 		}
-		onMounted(() => {
-			if (!inputElement.value) return;
-			viewValue.value = fromColumnValue();
-			if (__props.column.hasValidation) setUpValidation(inputElement.value);
-			else setUpFakeValidation(inputElement.value);
-			nextTick().then(() => validationFacade.validateElement(inputElement.value));
+		let fakeValidationScope;
+		onScopeDispose(() => {
+			fakeValidationScope?.stop();
 		});
+		watch(inputElement, (el) => {
+			fakeValidationScope?.stop();
+			fakeValidationScope = void 0;
+			if (!el) return;
+			viewValue.value = fromColumnValue();
+			if (__props.column.hasValidation) setUpValidation(el);
+			else {
+				fakeValidationScope = effectScope();
+				fakeValidationScope.run(() => {
+					setUpFakeValidation(el);
+				});
+			}
+			nextTick().then(() => validationFacade.validateElement(el));
+		}, { flush: "post" });
 		watchEffect(() => {
 			if (hasError.value) {
 				var _tdElement$value, _arrowAnchorElement$v;
