@@ -1,4 +1,4 @@
-import postcss from "postcss";
+import postcss, { type ChildNode } from "postcss";
 import postcssScss from "postcss-scss";
 import { type NormalizedOptions } from "./options.ts";
 
@@ -47,7 +47,7 @@ export async function extractSassVariables(
     filename: string,
     options: NormalizedOptions,
 ): Promise<VariableGroup[]> {
-    const { fs, logger } = options;
+    const { fs, logger, prefix } = options;
 
     const content = await readFile(fs, filename);
     if (!content) {
@@ -69,7 +69,11 @@ export async function extractSassVariables(
 
     const variables: SassVariable[] = [];
 
-    root.each((node) => {
+    const prefixPattern = new RegExp(
+        `^(\\$palette-color-|--${prefix}-palette-)`,
+    );
+
+    function visit(node: ChildNode): void {
         if (commentAccumulator.length > 0 && node.type !== "comment") {
             docblock = parseDoc(commentAccumulator);
             commentAccumulator = "";
@@ -86,15 +90,22 @@ export async function extractSassVariables(
                 break;
             case "decl":
                 variables.push({
-                    name: node.prop.replace(/^\$palette-color-/, ""),
+                    name: node.prop.replace(prefixPattern, ""),
                     value: node.value.replace(/!default/, "").trim(),
                     group: docblock?.group ?? "Uncategorised",
                     comment: comment ?? "",
                 });
                 comment = undefined;
                 break;
-            case "rule":
             case "atrule":
+                /* the palette is declared as custom properties inside a mixin */
+                if (node.name === "mixin") {
+                    node.each((child) => {
+                        visit(child);
+                    });
+                }
+                break;
+            case "rule":
                 /* ignore */
                 break;
 
@@ -104,6 +115,10 @@ export async function extractSassVariables(
                     `Unhandled node type "${String((node as any).type)}"`,
                 );
         }
+    }
+
+    root.each((node) => {
+        visit(node);
     });
 
     const s = variables.length !== 1 ? "s" : "";
