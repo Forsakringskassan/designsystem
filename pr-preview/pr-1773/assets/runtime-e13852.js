@@ -296678,6 +296678,49 @@ mermaid_default.initialize({
     commitLabelFontSize: "16px"
   }
 });
+function forceReflow(element3) {
+  element3.style.display = "none";
+  element3.offsetHeight;
+  element3.style.removeProperty("display");
+}
+function closeNested(event3) {
+  if (!event3) {
+    return;
+  }
+  const targetDetails = event3;
+  if (targetDetails.tagName !== "DETAILS") {
+    return;
+  }
+  if (targetDetails.open) {
+    return;
+  }
+  const openChildren = targetDetails.querySelectorAll("details[open]");
+  openChildren.forEach((child) => {
+    child.removeAttribute("open");
+  });
+  const parentList = targetDetails.closest("ul");
+  if (!parentList) {
+    return;
+  }
+  forceReflow(parentList);
+}
+function initCloseDetailMenu() {
+  const mobileNav = document.querySelector(
+    ".docs-mobile-nav-wrapper"
+  );
+  if (!mobileNav) {
+    return;
+  }
+  mobileNav.addEventListener(
+    "toggle",
+    ({ target }) => {
+      closeNested(target);
+    },
+    {
+      capture: true
+    }
+  );
+}
 var style3 = getComputedStyle(document.documentElement);
 var BREAKPOINT_SMALL = style3.getPropertyValue("--docs-breakpoint-sm");
 var BREAKPOINT_MEDIUM = style3.getPropertyValue("--docs-breakpoint-md");
@@ -296746,11 +296789,6 @@ var variableBlock = document.createElement("style");
 var header = document.querySelector("header");
 var footer = document.querySelector("footer");
 var previousPath = location.pathname;
-function closeNested(details) {
-  for (const nested of details.querySelectorAll("details")) {
-    nested.open = false;
-  }
-}
 function cloneScripts(element3, href) {
   const ts = String(Date.now());
   for (const script2 of element3.querySelectorAll("script")) {
@@ -296887,9 +296925,7 @@ function updateSidenavHeight(navigation2) {
 }
 for (const details of document.querySelectorAll("details")) {
   details.addEventListener("toggle", () => {
-    if (!details.open) {
-      closeNested(details);
-    }
+    closeNested(details);
   });
 }
 var toggle = document.querySelector(
@@ -297048,6 +297084,7 @@ onContentReady(() => {
     return;
   }
   headerLayoutDetector(newRefs.nav);
+  initCloseDetailMenu();
 });
 var motdSymbol = /* @__PURE__ */ Symbol.for("motd");
 var motdProxy = {
