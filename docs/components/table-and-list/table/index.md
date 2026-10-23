@@ -145,7 +145,6 @@ Tabellen stödjer inte följande
 
 Följande förbättringar av tabell återstår:
 
-- radbrytning av text i cell
 - stöd för kolumntypen kombobox
 - laddning av data (spinner)
 - konsument ska kunna sätta kolumnbredd
