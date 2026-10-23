@@ -9,8 +9,8 @@ component:
 
 Använd radioknappar för att låta en användare välja ett alternativ i en lista.
 
-```import live-example test-id=live
-FRadioFieldLiveExample.vue
+```import background=solid
+FRadioFieldExample.vue
 ```
 
 Saknar du `FRadioGroup`-komponenten?
@@ -20,7 +20,15 @@ Den är deprekerad, för detaljer se {@link migrating-to-fieldset migreringsguid
 
 En dropplista bör användas om antalet alternativ är relativt stort eller är om antalet är dynamiskt och därmed kan öka i antal .
 
-## Props, Events & Slots
+## Kod och API
+
+Här visas möjliga inställningar för komponenten.
+Vissa kombinationer bör undvikas.
+Se användningsråden ovan för rekommenderade sätt att använda komponenten.
+
+```import live-example
+FRadioFieldLiveExample.vue
+```
 
 ### FFieldset
 
