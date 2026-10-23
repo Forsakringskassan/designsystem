@@ -14,6 +14,8 @@ $fk-logo-small: "fk-logo-primary-small.svg";
 $fk-logo-large: "fk-logo-primary-large.svg";
 
 :root {
+    --docs-content-max-width: 770px;
+    --docs-text-max-width: 625px;
     --f-logo-image-small:
         url("#{config-variables.$asset-path-images}/#{$fk-logo-small}"),
         linear-gradient(var(--fkds-color-header-background-primary), var(--fkds-color-header-background-primary));
