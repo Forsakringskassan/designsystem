@@ -16549,10 +16549,10 @@ var require_shared_store = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var SHARED = "__core-js_shared__";
 	var store = module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, {});
 	(store.versions || (store.versions = [])).push({
-		version: "3.50.0",
+		version: "3.51.0",
 		mode: IS_PURE ? "pure" : "global",
 		copyright: "© 2013–2025 Denis Pushkarev (zloirock.ru), 2025–2026 CoreJS Company (core-js.io). All rights reserved.",
-		license: "https://github.com/zloirock/core-js/blob/v3.50.0/LICENSE",
+		license: "https://github.com/zloirock/core-js/blob/v3.51.0/LICENSE",
 		source: "https://github.com/zloirock/core-js"
 	});
 }));
@@ -29584,7 +29584,7 @@ var _hoisted_2$30 = {
 	"data-test": "caption"
 };
 var _hoisted_3$24 = { key: 1 };
-var _hoisted_4$19 = { class: "table-ng__row" };
+var _hoisted_4$19 = ["aria-rowindex"];
 var _hoisted_5$15 = {
 	key: 0,
 	scope: "col",
@@ -29598,13 +29598,14 @@ var _hoisted_7$9 = {
 };
 var _hoisted_8$6 = ["colspan"];
 var _hoisted_9$4 = [
+	"aria-rowindex",
 	"aria-level",
 	"aria-setsize",
 	"aria-posinset",
 	"aria-selected"
 ];
 var _hoisted_10$2 = { key: 3 };
-var _hoisted_11$2 = { class: "table-ng__row" };
+var _hoisted_11$2 = ["aria-rowindex"];
 var _hoisted_12$2 = ["colspan"];
 var FTable_default = /* @__PURE__ */ defineComponent({
 	__name: "FTable",
@@ -29649,6 +29650,7 @@ var FTable_default = /* @__PURE__ */ defineComponent({
 			return metaRows.value.length === 0;
 		});
 		const ariaRowcount = computed(() => {
+			if (!isTreegrid.value) return;
 			const footerRow = hasFooter.value ? 1 : 0;
 			if (!hasColumns.value) return footerRow;
 			return getBodyRowCount(keyedRows.value, expandableAttributeName.value) + 1 + footerRow;
@@ -29792,7 +29794,10 @@ var FTable_default = /* @__PURE__ */ defineComponent({
 			}, [
 				hasCaption.value ? (openBlock(), createElementBlock("caption", _hoisted_2$30, [renderSlot(_ctx.$slots, "caption")])) : createCommentVNode("v-if", true),
 				_cache[6] || (_cache[6] = createTextVNode()),
-				hasColumns.value ? (openBlock(), createElementBlock("thead", _hoisted_3$24, [createBaseVNode("tr", _hoisted_4$19, [
+				hasColumns.value ? (openBlock(), createElementBlock("thead", _hoisted_3$24, [createBaseVNode("tr", {
+					class: "table-ng__row",
+					"aria-rowindex": isTreegrid.value ? 1 : void 0
+				}, [
 					isTreegrid.value ? (openBlock(), createElementBlock("th", _hoisted_5$15)) : createCommentVNode("v-if", true),
 					_cache[2] || (_cache[2] = createTextVNode()),
 					__props.selectable ? (openBlock(), createBlock(ITableHeaderSelectable_default, {
@@ -29821,16 +29826,17 @@ var FTable_default = /* @__PURE__ */ defineComponent({
 							"sort-order"
 						]);
 					}), 128))
-				])])) : createCommentVNode("v-if", true),
+				], 8, _hoisted_4$19)])) : createCommentVNode("v-if", true),
 				_cache[7] || (_cache[7] = createTextVNode()),
 				hasColumns.value ? (openBlock(), createElementBlock("tbody", _hoisted_6$12, [isEmpty.value ? (openBlock(), createElementBlock("tr", _hoisted_7$9, [createBaseVNode("td", {
 					colspan: fullColspan.value,
 					class: "table-ng__cell",
 					onKeydown: _cache[0] || (_cache[0] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
-				}, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t)("fkui.ftable.empty.text", "Tabellen är tom")), 1)])], 40, _hoisted_8$6)])) : (openBlock(true), createElementBlock(Fragment, { key: 1 }, renderList(metaRows.value, ({ key, row, level, setsize, posinset, isExpandable, isExpanded }) => {
+				}, [renderSlot(_ctx.$slots, "empty", {}, () => [createTextVNode(toDisplayString(unref($t)("fkui.ftable.empty.text", "Tabellen är tom")), 1)])], 40, _hoisted_8$6)])) : (openBlock(true), createElementBlock(Fragment, { key: 1 }, renderList(metaRows.value, ({ key, row, level, setsize, posinset, rowindex, isExpandable, isExpanded }) => {
 					return openBlock(), createElementBlock("tr", {
 						key,
 						class: normalizeClass(["table-ng__row", getRowClass(row)]),
+						"aria-rowindex": isTreegrid.value ? rowindex + 1 : void 0,
 						"aria-level": level,
 						"aria-setsize": setsize,
 						"aria-posinset": posinset,
@@ -29899,11 +29905,14 @@ var FTable_default = /* @__PURE__ */ defineComponent({
 					], 10, _hoisted_9$4);
 				}), 128))])) : createCommentVNode("v-if", true),
 				_cache[8] || (_cache[8] = createTextVNode()),
-				hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_10$2, [createBaseVNode("tr", _hoisted_11$2, [createBaseVNode("td", {
+				hasFooter.value ? (openBlock(), createElementBlock("tfoot", _hoisted_10$2, [createBaseVNode("tr", {
+					class: "table-ng__row",
+					"aria-rowindex": ariaRowcount.value
+				}, [createBaseVNode("td", {
 					colspan: fullColspan.value,
 					class: "table-ng__cell--custom",
 					onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
-				}, [renderSlot(_ctx.$slots, "footer")], 40, _hoisted_12$2)])])) : createCommentVNode("v-if", true)
+				}, [renderSlot(_ctx.$slots, "footer")], 40, _hoisted_12$2)], 8, _hoisted_11$2)])) : createCommentVNode("v-if", true)
 			], 42, _hoisted_1$39);
 		};
 	}
