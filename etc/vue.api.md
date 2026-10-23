@@ -1583,6 +1583,7 @@ export interface TableColumnSelect<T, K extends keyof T> extends TableColumnBase
     type: "select";
     // (undocumented)
     update?(this: void, row: T, newValue: string, oldValue: string): void;
+    validation?: ValidatorConfigs;
 }
 
 // @public (undocumented)

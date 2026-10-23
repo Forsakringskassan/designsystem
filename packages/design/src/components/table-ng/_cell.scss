@@ -138,11 +138,9 @@ $cell-border-width: 1px;
         }
     }
 
+    // Shared error styling for text and select cells
+    &--select,
     &--text {
-        &:focus-visible {
-            box-shadow: none !important;
-        }
-
         &.table-ng__cell--error:not(:has(:focus-visible)) {
             .table-ng__editable {
                 box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
@@ -164,6 +162,12 @@ $cell-border-width: 1px;
                 box-shadow: inset 0 (-$underline-thickness) 0 0 $table-ng-cell-color-error;
                 border-radius: 0;
             }
+        }
+    }
+
+    &--text {
+        &:focus-visible {
+            box-shadow: none !important;
         }
 
         .table-ng__editable {

@@ -1,4 +1,5 @@
 import { type Component } from "vue";
+import { type ValidatorConfigs } from "@fkui/logic";
 import {
     type NormalizedTableColumnBase,
     type OmittedNormalizedColumnProperties,
@@ -16,6 +17,8 @@ export interface TableColumnSelect<
     /** Column type */
     type: "select";
     key?: K;
+    /** Validation rules applied to the selected value */
+    validation?: ValidatorConfigs;
     /** Screenreader text */
     label?(this: void, row: T): string;
     selected?(this: void, row: T): string;
@@ -39,6 +42,8 @@ export interface NormalizedTableColumnSelect<
         row: T;
         column: NormalizedTableColumnSelect<T, K>;
     }>;
+    readonly validation: ValidatorConfigs;
+    readonly hasValidation: boolean;
     label(this: void, row: T): string;
     selected(this: void, row: T): string;
     update(this: void, row: T, newValue: string, oldValue: string): void;
@@ -64,5 +69,7 @@ export function normalizeSelectColumn<T, K extends keyof T>(
             typeof column.editable === "function"
                 ? column.editable
                 : () => Boolean(column.editable ?? true),
+        validation: column.validation ?? {},
+        hasValidation: Boolean(column.validation),
     };
 }
