@@ -41,7 +41,7 @@ export class FModalPageObject implements BasePageObject {
 
     public closeCross(): DefaultCypressChainable {
         return cy.get(
-            `${this.selector} .modal__dialog-container .close-button`,
+            `${this.selector} .modal__dialog-container .modal-close-button`,
         );
     }
 
