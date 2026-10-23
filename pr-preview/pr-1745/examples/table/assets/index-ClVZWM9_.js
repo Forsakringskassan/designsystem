@@ -28188,6 +28188,21 @@ function stopEdit(element, reason) {
 	}
 }
 /**
+* Get the nested rows of a row (if any).
+*
+* The nested rows may be of another type than the parent row (e.g. custom
+* expandable content) but are treated as rows when walking the table.
+*
+* @internal
+* @param row - The parent row.
+* @param key - Key of the property holding the nested rows.
+* @returns The nested rows or `undefined` if the property is not an array.
+*/
+function getNestedRows(row, key) {
+	const value = row[key];
+	return Array.isArray(value) ? value : void 0;
+}
+/**
 * Visits each item in an array and executes given callback.
 *
 * @internal
@@ -28197,7 +28212,11 @@ function stopEdit(element, reason) {
 * @param level - Nested level of current item (1 for root level).
 */
 function walk(array, childKey, visit, level = 1) {
-	for (const [i, item] of array.entries()) if (visit(item, level, array.length, i + 1) && childKey && item[childKey]) walk(item[childKey], childKey, visit, level + 1);
+	for (const [i, item] of array.entries()) {
+		if (!visit(item, level, array.length, i + 1) || !childKey) continue;
+		const children = getNestedRows(item, childKey);
+		if (children) walk(children, childKey, visit, level + 1);
+	}
 }
 /**
 * Return number of rows from array used to generate the rows in table body.
@@ -28218,9 +28237,9 @@ function getBodyRowCount(rows, childKey) {
 function countDescendants(rows, expandableAttribute) {
 	let count = 0;
 	for (const row of rows) {
-		const children = row[expandableAttribute];
+		const children = getNestedRows(row, expandableAttribute);
 		count += 1;
-		if (Array.isArray(children)) count += countDescendants(children, expandableAttribute);
+		if (children) count += countDescendants(children, expandableAttribute);
 	}
 	return count;
 }
@@ -28237,8 +28256,8 @@ function getMetaRows(keyedRows, expandedKeys, expandableAttribute) {
 	let nextRowindex = 1;
 	walk(keyedRows, expandableAttribute, (row, level, setsize, posinset) => {
 		const key = getItemIdentifier(row);
-		const children = row[expandableAttribute];
-		const isExpandable = Array.isArray(children) && children.length > 0;
+		const children = getNestedRows(row, expandableAttribute);
+		const isExpandable = children !== void 0 && children.length > 0;
 		const isExpanded = isExpandable && expandedKeys.has(key);
 		const metarow = {
 			key,
@@ -28840,6 +28859,7 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 			assertRef(inputElement);
 			const input = inputElement.value;
 			function emitFakeValidity(nativeEvent) {
+				if (inputElement.value !== input) return;
 				onValidity(new CustomEvent("validity", { detail: {
 					isValid: true,
 					nativeEvent,
@@ -28869,13 +28889,24 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 				e.stopPropagation();
 			});
 		}
-		onMounted(() => {
-			if (!inputElement.value) return;
-			viewValue.value = fromColumnValue();
-			if (__props.column.hasValidation) setUpValidation(inputElement.value);
-			else setUpFakeValidation(inputElement.value);
-			nextTick().then(() => validationFacade.validateElement(inputElement.value));
+		let fakeValidationScope;
+		onScopeDispose(() => {
+			fakeValidationScope?.stop();
 		});
+		watch(inputElement, (el) => {
+			fakeValidationScope?.stop();
+			fakeValidationScope = void 0;
+			if (!el) return;
+			viewValue.value = fromColumnValue();
+			if (__props.column.hasValidation) setUpValidation(el);
+			else {
+				fakeValidationScope = effectScope();
+				fakeValidationScope.run(() => {
+					setUpFakeValidation(el);
+				});
+			}
+			nextTick().then(() => validationFacade.validateElement(el));
+		}, { flush: "post" });
 		watchEffect(() => {
 			if (hasError.value) {
 				var _tdElement$value, _arrowAnchorElement$v;
@@ -29942,8 +29973,8 @@ function removeRow$1(rows, row, expandableAttribute) {
 }
 function removeNestedRows$1(rows, row, expandableAttribute) {
 	for (const currentRow of rows) {
-		const nestedRows = currentRow[expandableAttribute];
-		if (!Array.isArray(nestedRows)) continue;
+		const nestedRows = getNestedRows(currentRow, expandableAttribute);
+		if (!nestedRows) continue;
 		const index = nestedRows.indexOf(row);
 		if (index !== -1) {
 			nestedRows.splice(index, 1);
