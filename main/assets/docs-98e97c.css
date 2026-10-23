@@ -9723,6 +9723,8 @@ body:has(#mobile-toggle:checked) {
 }
 
 :root {
+  --docs-content-max-width: 770px;
+  --docs-text-max-width: 625px;
   --f-logo-image-small:
       url("./images/fk-logo-primary-small.svg"),
       linear-gradient(var(--fkds-color-header-background-primary), var(--fkds-color-header-background-primary));
