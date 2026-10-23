@@ -16549,10 +16549,10 @@ var require_shared_store = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var SHARED = "__core-js_shared__";
 	var store = module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, {});
 	(store.versions || (store.versions = [])).push({
-		version: "3.50.0",
+		version: "3.51.0",
 		mode: IS_PURE ? "pure" : "global",
 		copyright: "© 2013–2025 Denis Pushkarev (zloirock.ru), 2025–2026 CoreJS Company (core-js.io). All rights reserved.",
-		license: "https://github.com/zloirock/core-js/blob/v3.50.0/LICENSE",
+		license: "https://github.com/zloirock/core-js/blob/v3.51.0/LICENSE",
 		source: "https://github.com/zloirock/core-js"
 	});
 }));
@@ -28881,11 +28881,22 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 				e.stopPropagation();
 			});
 		}
+		let fakeValidationScope;
+		onScopeDispose(() => {
+			fakeValidationScope?.stop();
+		});
 		watch(inputElement, (el) => {
+			fakeValidationScope?.stop();
+			fakeValidationScope = void 0;
 			if (!el) return;
 			viewValue.value = fromColumnValue();
 			if (__props.column.hasValidation) setUpValidation(el);
-			else setUpFakeValidation(el);
+			else {
+				fakeValidationScope = effectScope();
+				fakeValidationScope.run(() => {
+					setUpFakeValidation(el);
+				});
+			}
 			nextTick().then(() => validationFacade.validateElement(el));
 		}, { flush: "post" });
 		watchEffect(() => {
