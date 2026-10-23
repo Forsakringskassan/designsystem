@@ -237,3 +237,73 @@ it("should include deprecated variables", async (t) => {
     );
     t.assert.strictEqual(deprecated, `["--foo"]`);
 });
+
+it("should generate palette from json", async (t) => {
+    const vol = Volume.fromJSON(
+        {
+            "src/palette-variables.json": JSON.stringify({
+                Pinks: { "pink-100": "#ff00aa", "pink-50": "#ff80d5" },
+                Blues: { "blue-100": "#0000ff" },
+            }),
+            "src/index.scss": [
+                `@use "palette-variables" as palette;`,
+                `:root { @include palette.css-variables; --x-foobar: #{palette.$palette-color-pink-100}; }`,
+            ].join("\n"),
+        },
+        "/",
+    );
+    const fs = vol.promises;
+    const buffer = new WritableStreamBuffer();
+    const logger = new Console(buffer);
+    await cli([], {
+        cwd: "/",
+        fs,
+        logger,
+        outdir: "out",
+        prefix: "x",
+    });
+    t.assert.snapshot(await fs.readFile("/src/palette-variables.scss", "utf8"));
+    const css = await fs.readFile("/out/index.css", "utf8");
+    const palette = JSON.parse(await fs.readFile("/out/palette.json", "utf8"));
+    t.assert.strictEqual(
+        css,
+        content`
+        :root {
+          --x-palette-color-pink-100: #f0a;
+          --x-palette-color-pink-50: #ff80d5;
+          --x-palette-color-blue-100: #00f;
+          --x-foobar: #f0a;
+        }
+    `,
+    );
+    t.assert.deepStrictEqual(palette, [
+        {
+            name: "Pinks",
+            variables: [
+                {
+                    name: "pink-100",
+                    value: "#ff00aa",
+                    group: "Pinks",
+                    comment: "",
+                },
+                {
+                    name: "pink-50",
+                    value: "#ff80d5",
+                    group: "Pinks",
+                    comment: "",
+                },
+            ],
+        },
+        {
+            name: "Blues",
+            variables: [
+                {
+                    name: "blue-100",
+                    value: "#0000ff",
+                    group: "Blues",
+                    comment: "",
+                },
+            ],
+        },
+    ]);
+});
