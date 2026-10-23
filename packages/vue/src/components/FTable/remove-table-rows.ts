@@ -1,4 +1,6 @@
 import { type MaybeRef, type MaybeRefOrGetter, toValue } from "vue";
+import { getNestedRows } from "./get-nested-rows";
+import { type TableNestedKeyOf } from "./table-nested-key-of";
 
 /**
  * Removes given row(s) from a table row array.
@@ -14,7 +16,7 @@ import { type MaybeRef, type MaybeRefOrGetter, toValue } from "vue";
 export function removeTableRows<T extends object>(
     rows: MaybeRef<T[]>,
     rowsToRemove: MaybeRef<T | T[]>,
-    expandableAttribute?: MaybeRefOrGetter<keyof T | undefined>,
+    expandableAttribute?: MaybeRefOrGetter<TableNestedKeyOf<T> | undefined>,
 ): void {
     const rowsValue = toValue(rows);
     const rowsToRemoveValue = toValue(rowsToRemove);
@@ -32,7 +34,7 @@ export function removeTableRows<T extends object>(
 function removeRow<T extends object>(
     rows: T[],
     row: T,
-    expandableAttribute?: keyof T,
+    expandableAttribute?: TableNestedKeyOf<T>,
 ): void {
     const rowIndex = rows.indexOf(row);
     if (rowIndex !== -1) {
@@ -45,11 +47,11 @@ function removeRow<T extends object>(
 function removeNestedRows<T extends object>(
     rows: T[],
     row: T,
-    expandableAttribute: keyof T,
+    expandableAttribute: TableNestedKeyOf<T>,
 ): boolean {
     for (const currentRow of rows) {
-        const nestedRows = currentRow[expandableAttribute];
-        if (!Array.isArray(nestedRows)) {
+        const nestedRows = getNestedRows(currentRow, expandableAttribute);
+        if (!nestedRows) {
             continue;
         }
         const index = nestedRows.indexOf(row);

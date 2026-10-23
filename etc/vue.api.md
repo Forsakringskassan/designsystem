@@ -1408,7 +1408,7 @@ export function registerLayout<T extends LayoutDefinition>(definition: T): void;
 export function removeDatasetRows<T extends object>(dataset: MaybeRef<Dataset<T> | T[]>, rows: MaybeRef<T | T[]>): void;
 
 // @public
-export function removeTableRows<T extends object>(rows: MaybeRef<T[]>, rowsToRemove: MaybeRef<T | T[]>, expandableAttribute?: MaybeRefOrGetter<keyof T | undefined>): void;
+export function removeTableRows<T extends object>(rows: MaybeRef<T[]>, rowsToRemove: MaybeRef<T | T[]>, expandableAttribute?: MaybeRefOrGetter<TableNestedKeyOf<T> | undefined>): void;
 
 // @public (undocumented)
 export interface RenderSlotOptions {
@@ -1633,6 +1633,11 @@ export type TableColumnType = TableColumn<unknown, never> extends infer U ? U ex
 
 // @public (undocumented)
 export type TableColumnWidth = `${number}px` | `${number}rem` | `${number}%` | `${number}ch`;
+
+// @public
+export type TableNestedKeyOf<T> = {
+    [K in keyof T]: NonNullable<T[K]> extends unknown[] ? K : never;
+}[keyof T];
 
 // @public (undocumented)
 export enum TableScroll {
