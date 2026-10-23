@@ -50,3 +50,16 @@ it("should run callback on each nested item when `childKey` is provided", () => 
         { name: "C", level: 1 },
     ]);
 });
+
+it("should ignore `childKey` values that are not arrays", () => {
+    expect.assertions(1);
+    const rows = [{ name: "A", nested: "not an array" as unknown as [] }];
+    const names: string[] = [];
+
+    walk(rows, "nested", (item) => {
+        names.push(item.name);
+        return true;
+    });
+
+    expect(names).toStrictEqual(["A"]);
+});

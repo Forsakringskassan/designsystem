@@ -199,6 +199,7 @@ export {
     type TableColumnText,
     type TableColumnType,
     type TableColumnWidth,
+    type TableNestedKeyOf,
     FTable,
     baseTypes,
     defineTableColumns,

@@ -1,18 +1,20 @@
 import { type ItemIdentifier, getItemIdentifier } from "../../utils";
+import { getNestedRows } from "./get-nested-rows";
 import { type MetaRow } from "./meta-row";
+import { type TableNestedKeyOf } from "./table-nested-key-of";
 import { walk } from "./walk";
 
 function countDescendants<T extends object>(
     rows: T[],
-    expandableAttribute: keyof T,
+    expandableAttribute: TableNestedKeyOf<T>,
 ): number {
     let count = 0;
 
     for (const row of rows) {
-        const children = row[expandableAttribute];
+        const children = getNestedRows(row, expandableAttribute);
         count += 1;
 
-        if (Array.isArray(children)) {
+        if (children) {
             count += countDescendants(children, expandableAttribute);
         }
     }
@@ -26,7 +28,7 @@ function countDescendants<T extends object>(
 export function getMetaRows<T extends object>(
     keyedRows: T[],
     expandedKeys: Set<ItemIdentifier>,
-    expandableAttribute?: keyof T,
+    expandableAttribute?: TableNestedKeyOf<T>,
 ): Array<MetaRow<T>> {
     if (expandableAttribute === undefined) {
         return keyedRows.map((row, index) => ({
@@ -41,8 +43,8 @@ export function getMetaRows<T extends object>(
 
     walk(keyedRows, expandableAttribute, (row, level, setsize, posinset) => {
         const key = getItemIdentifier(row);
-        const children = row[expandableAttribute];
-        const isExpandable = Array.isArray(children) && children.length > 0;
+        const children = getNestedRows(row, expandableAttribute);
+        const isExpandable = children !== undefined && children.length > 0;
         const isExpanded = isExpandable && expandedKeys.has(key);
 
         const metarow: MetaRow<T> = {

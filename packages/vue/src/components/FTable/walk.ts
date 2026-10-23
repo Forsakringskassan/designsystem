@@ -1,3 +1,6 @@
+import { getNestedRows } from "./get-nested-rows";
+import { type TableNestedKeyOf } from "./table-nested-key-of";
+
 /**
  * Visits each item in an array and executes given callback.
  *
@@ -9,7 +12,7 @@
  */
 export function walk<T>(
     array: T[],
-    childKey: keyof T | undefined,
+    childKey: TableNestedKeyOf<T> | undefined,
     visit: (
         item: T,
         level: number,
@@ -21,9 +24,13 @@ export function walk<T>(
     for (const [i, item] of array.entries()) {
         const visitChildren = visit(item, level, array.length, i + 1);
 
-        /* eslint-disable-next-line unicorn/no-computed-property-existence-check -- technical debt */
-        if (visitChildren && childKey && item[childKey]) {
-            walk(item[childKey] as T[], childKey, visit, level + 1);
+        if (!visitChildren || !childKey) {
+            continue;
+        }
+
+        const children = getNestedRows(item, childKey);
+        if (children) {
+            walk(children, childKey, visit, level + 1);
         }
     }
 }

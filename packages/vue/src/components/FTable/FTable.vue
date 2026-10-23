@@ -15,13 +15,7 @@ import {
 import { assertRef, assertSet } from "@fkui/logic";
 import { useSlotUtils } from "../../composables";
 import { useTranslate } from "../../plugins";
-import {
-    type Dataset,
-    type DatasetNestedKeyOf,
-    type ItemIdentifier,
-    getDatasetMetadata,
-    setItemIdentifiers,
-} from "../../utils";
+import { type Dataset, type ItemIdentifier, getDatasetMetadata, setItemIdentifiers } from "../../utils";
 import { isDataset } from "../../utils/dataset";
 import { FSortFilterDatasetInjected, useSortFilterDatasetEvents } from "../FSortFilterDataset";
 import ITableExpandButton from "./ITableExpandButton.vue";
@@ -36,6 +30,7 @@ import { getMetaRows } from "./get-meta-rows";
 import { useSelectableRowSource } from "./selectable-row-source";
 import { stopEditKey } from "./start-stop-edit";
 import { type NormalizedTableColumn, type TableColumn, normalizeTableColumns } from "./table-column";
+import { type TableNestedKeyOf } from "./table-nested-key-of";
 import { usePopupError } from "./use-popup-error";
 import { useSelectable } from "./use-selectable";
 import { useTabstop } from "./use-tabstop";
@@ -62,7 +57,7 @@ const {
     striped?: boolean;
     disableDividers?: boolean;
     selectable?: "single" | "multi";
-    expandableAttribute?: keyof T;
+    expandableAttribute?: TableNestedKeyOf<T>;
 }>();
 
 defineSlots<{
@@ -91,8 +86,8 @@ defineSlots<{
 
 const sortFilterDatasetEvents = useSortFilterDatasetEvents();
 
-type ExpandedContent = Required<T>[DatasetNestedKeyOf<T>] extends unknown[]
-    ? Required<T>[DatasetNestedKeyOf<T>][number]
+type ExpandedContent = Required<T>[TableNestedKeyOf<T>] extends unknown[]
+    ? Required<T>[TableNestedKeyOf<T>][number]
     : never;
 
 const $t = useTranslate();
@@ -100,7 +95,10 @@ const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
 const expandedKeys: Ref<Set<ItemIdentifier>> = ref(new Set());
 const expandableAttributeName = isDataset(rows)
-    ? computed(() => getDatasetMetadata(rows).nestedAttribute)
+    ? computed(
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- required by vue-tsc as `DatasetNestedKeyOf<T>` is not provably assignable for generic `T`
+          () => getDatasetMetadata(rows).nestedAttribute as TableNestedKeyOf<T> | undefined,
+      )
     : computed(() => expandableAttribute);
 
 const keyedRows = computed(() => setItemIdentifiers(rows, keyAttribute, expandableAttributeName.value));
