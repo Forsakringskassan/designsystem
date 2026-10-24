@@ -55,6 +55,7 @@ $chip-border-width: var(--f-border-width-medium);
 
             svg {
                 margin-right: size.$margin-050;
+                flex-shrink: 0;
             }
         }
 
