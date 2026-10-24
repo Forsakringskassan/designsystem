@@ -43,7 +43,7 @@
     "@forsakringskassan/docs-generator": "3.22.2",
     "axios": "1.20.0",
     "cypress": "16.2.0",
-    "vue": "3.5.43"
+    "vue": "3.5.44"
   },
   "engines": {
     "node": "^22.16 || >= 24"
