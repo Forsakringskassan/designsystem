@@ -8,7 +8,7 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod, mod.exports), cb = null), mod.exports);
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
     key = keys[i];
@@ -23,11 +23,11 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   value: mod,
   enumerable: true
 }) : target, mod));
-var require_global_this = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+var require_global_this = /* @__PURE__ */ __commonJSMin(((exports, module, this$1) => {
   var check = function(it) {
     return it && it.Math === Math && it;
   };
-  module.exports = check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || check(typeof self == "object" && self) || check(typeof global == "object" && global) || check(typeof exports == "object" && exports) || /* @__PURE__ */ (function() {
+  module.exports = check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || check(typeof self == "object" && self) || check(typeof global == "object" && global) || check(typeof this$1 == "object" && this$1) || /* @__PURE__ */ (function() {
     return this;
   })() || Function("return this")();
 }));

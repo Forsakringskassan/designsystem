@@ -2,12 +2,12 @@
 import { computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, guardReactiveProps, normalizeClass, normalizeProps, openBlock, ref, renderSlot, resolveDirective, toDisplayString, unref, withCtx, withDirectives } from "vue";
 import { TranslationService, ValidationService, alertScreenReader, debounce, isEmpty, isSet, stripWhitespace } from "@fkui/logic";
 import { EventBus, FButton, FFileItem, FFileSelector, FIcon, FTextField, TranslationMixin, useTextFieldSetup, useTranslate } from "@fkui/vue";
-var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
-var require_global_this = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod, mod.exports), cb = null), mod.exports);
+var require_global_this = /* @__PURE__ */ __commonJSMin(((exports, module, this$1) => {
   var check = function(it) {
     return it && it.Math === Math && it;
   };
-  module.exports = check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || check(typeof self == "object" && self) || check(typeof global == "object" && global) || check(typeof exports == "object" && exports) || /* @__PURE__ */ (function() {
+  module.exports = check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || check(typeof self == "object" && self) || check(typeof global == "object" && global) || check(typeof this$1 == "object" && this$1) || /* @__PURE__ */ (function() {
     return this;
   })() || Function("return this")();
 }));
