@@ -48,7 +48,7 @@
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-typescript": "12.3.1",
-    "rollup": "4.64.12",
+    "rollup": "4.65.0",
     "vitest": "5.0.5"
   },
   "engines": {
