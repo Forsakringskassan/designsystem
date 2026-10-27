@@ -433,9 +433,8 @@ describe("ITableText", () => {
                 ? "table-ng__editable__text--wrap"
                 : "table-ng__cell--static__text--wrap";
 
-            expect(wrapper.get(selector).classes().includes(wrapClass)).toBe(
-                expected,
-            );
+            const classes = wrapper.get(selector).classes();
+            expect(classes.includes(wrapClass)).toBe(expected);
         },
     );
 });
