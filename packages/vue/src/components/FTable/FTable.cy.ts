@@ -929,12 +929,12 @@ describe("Select column validation", () => {
     ]);
 
     it("should display required error when submitting an empty select", () => {
-        const rows = useDatasetRef<Row>([{ option: "" }]);
+        const rows: Row[] = [{ option: "" }];
 
         cy.mount(() =>
             h(FValidationForm, { useErrorList: false }, () => [
                 h(FTable<Row>, {
-                    rows: rows.value,
+                    rows,
                     columns,
                 }),
                 renderButton("submit", { type: "submit" }),
@@ -954,12 +954,12 @@ describe("Select column validation", () => {
     });
 
     it("should clear required error when a valid option is selected", () => {
-        const rows = useDatasetRef<Row>([{ option: "" }]);
+        const rows: Row[] = [{ option: "" }];
 
         cy.mount(() =>
             h(FValidationForm, { useErrorList: false }, () => [
                 h(FTable<Row>, {
-                    rows: rows.value,
+                    rows,
                     columns,
                 }),
                 renderButton("submit", { type: "submit" }),
