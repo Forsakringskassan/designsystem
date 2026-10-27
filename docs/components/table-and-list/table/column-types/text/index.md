@@ -7,6 +7,7 @@ sortorder: 1
 search:
     terms:
         - text
+        - radbrytning
 ---
 
 Använd kolumntypen textfält (`text`) för inmatning och visning av textbaserat innehåll i tabellen.
