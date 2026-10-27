@@ -35,7 +35,6 @@ function generateFFormModalTemplate(errorMessage: string): string {
 
 function createWrapper(
     errorMessage: string,
-    { props = {}, slots = {}, attrs = {} } = {},
 ): VueWrapper<InstanceType<typeof TestComponent>> {
     const TestComponent = defineComponent({
         name: "TestComponent",
@@ -53,9 +52,7 @@ function createWrapper(
     });
 
     return mount(TestComponent, {
-        attrs: { ...attrs },
-        props: { id: "test-id", ...props },
-        slots: { ...slots },
+        props: { id: "test-id" },
         attachTo: createPlaceholderInDocument(),
         global: {
             plugins: [ValidationPlugin],

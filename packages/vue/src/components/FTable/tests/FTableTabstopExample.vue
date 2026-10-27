@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { useTemplateRef } from "vue";
+import { ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
-import { useDatasetRef } from "@fkui/vue";
-import { FTable, defineTableColumns, removeDatasetRows } from "@fkui/vue";
+import { FTable, defineTableColumns, removeTableRows } from "@fkui/vue";
 
 const tableRef = useTemplateRef("table");
 const keyAttribute = "foo";
@@ -13,36 +12,33 @@ interface Row {
     expandableRows?: Row[];
 }
 
-const rows = useDatasetRef<Row>(
-    [
-        {
-            foo: "1",
-            bar: "alpha",
-            expandableRows: [
-                { foo: "1_1", bar: "alpha_sub1" },
-                { foo: "1_2", bar: "alpha_sub2" },
-            ],
-        },
-        {
-            foo: "2",
-            bar: "beta",
-            expandableRows: [
-                { foo: "2_1", bar: "beta_sub1" },
-                { foo: "2_2", bar: "beta_sub2" },
-            ],
-        },
-        {
-            foo: "3",
-            bar: "gamma",
-            expandableRows: [
-                { foo: "3_1", bar: "gamma_sub1" },
-                { foo: "3_2", bar: "gamma_sub2" },
-                { foo: "3_3", bar: "gamma_sub3" },
-            ],
-        },
-    ],
-    "expandableRows",
-);
+const rows = ref<Row[]>([
+    {
+        foo: "1",
+        bar: "alpha",
+        expandableRows: [
+            { foo: "1_1", bar: "alpha_sub1" },
+            { foo: "1_2", bar: "alpha_sub2" },
+        ],
+    },
+    {
+        foo: "2",
+        bar: "beta",
+        expandableRows: [
+            { foo: "2_1", bar: "beta_sub1" },
+            { foo: "2_2", bar: "beta_sub2" },
+        ],
+    },
+    {
+        foo: "3",
+        bar: "gamma",
+        expandableRows: [
+            { foo: "3_1", bar: "gamma_sub1" },
+            { foo: "3_2", bar: "gamma_sub2" },
+            { foo: "3_3", bar: "gamma_sub3" },
+        ],
+    },
+]);
 
 const columns = defineTableColumns<Row>([
     {
@@ -67,11 +63,11 @@ function onRemoveRow(row: Row): void {
     assertRef(tableRef);
 
     tableRef.value.withTabstopBehaviour("row-removal", () => {
-        removeDatasetRows(rows, row);
+        removeTableRows(rows, row, "expandableRows");
     });
 }
 </script>
 
 <template>
-    <f-table ref="table" :rows :columns :key-attribute />
+    <f-table ref="table" :rows :columns :key-attribute expandable-attribute="expandableRows" />
 </template>

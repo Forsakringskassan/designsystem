@@ -28,12 +28,12 @@
   ],
   "dependencies": {
     "glob": "13.0.6",
-    "sass": "1.105.1",
+    "sass": "1.106.1",
     "svgo": "4.1.0"
   },
   "devDependencies": {
     "@forsakringskassan/vitest-config": "5.0.1",
-    "vitest": "5.0.3"
+    "vitest": "5.0.5"
   },
   "engines": {
     "node": "^22.16 || >= 24",

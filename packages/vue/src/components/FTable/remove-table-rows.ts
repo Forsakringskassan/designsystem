@@ -1,0 +1,70 @@
+import { type MaybeRef, type MaybeRefOrGetter, toValue } from "vue";
+import { getNestedRows } from "./get-nested-rows";
+import { type TableNestedKeyOf } from "./table-nested-key-of";
+
+/**
+ * Removes given row(s) from a table row array.
+ *
+ * Note: The array is mutated.
+ *
+ * @public
+ * @since %version%
+ * @param rows - The row array
+ * @param rowsToRemove - The row(s) to remove (expected to exist in the rows)
+ * @param expandableAttribute - Property containing expandable child rows
+ */
+export function removeTableRows<T extends object>(
+    rows: MaybeRef<T[]>,
+    rowsToRemove: MaybeRef<T | T[]>,
+    expandableAttribute?: MaybeRefOrGetter<TableNestedKeyOf<T> | undefined>,
+): void {
+    const rowsValue = toValue(rows);
+    const rowsToRemoveValue = toValue(rowsToRemove);
+    const expandableAttributeValue = toValue(expandableAttribute);
+    // copy to avoid skipping rows if the same array is passed as both arguments
+    const normalizedRows = Array.isArray(rowsToRemoveValue)
+        ? [...rowsToRemoveValue]
+        : [rowsToRemoveValue];
+
+    for (const row of normalizedRows) {
+        removeRow(rowsValue, row, expandableAttributeValue);
+    }
+}
+
+function removeRow<T extends object>(
+    rows: T[],
+    row: T,
+    expandableAttribute?: TableNestedKeyOf<T>,
+): void {
+    const rowIndex = rows.indexOf(row);
+    if (rowIndex !== -1) {
+        rows.splice(rowIndex, 1);
+    } else if (expandableAttribute) {
+        removeNestedRows(rows, row, expandableAttribute);
+    }
+}
+
+function removeNestedRows<T extends object>(
+    rows: T[],
+    row: T,
+    expandableAttribute: TableNestedKeyOf<T>,
+): boolean {
+    for (const currentRow of rows) {
+        const nestedRows = getNestedRows(currentRow, expandableAttribute);
+        if (!nestedRows) {
+            continue;
+        }
+        const index = nestedRows.indexOf(row);
+
+        if (index !== -1) {
+            nestedRows.splice(index, 1);
+            return true;
+        }
+
+        if (removeNestedRows(nestedRows, row, expandableAttribute)) {
+            return true;
+        }
+    }
+
+    return false;
+}

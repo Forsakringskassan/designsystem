@@ -31,9 +31,9 @@ const defaultTemplate = /* HTML */ `
     </f-interactive-table>
 `;
 
-function createComponent(template: string = defaultTemplate): DefineComponent {
+function createComponent(): DefineComponent {
     return defineComponent({
-        template,
+        template: defaultTemplate,
         components: {
             FInteractiveTable,
             FTableColumn,

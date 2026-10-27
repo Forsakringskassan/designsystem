@@ -1,6 +1,5 @@
-import { h } from "vue";
+import { h, ref } from "vue";
 import { FTablePageObject } from "../../cypress";
-import { useDatasetRef } from "../../utils";
 import FTable from "./FTable.vue";
 import { defineTableColumns } from "./table-column";
 
@@ -35,7 +34,7 @@ describe("ITableMenu", () => {
         ]);
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.contextmenu().should("not.exist");
@@ -61,7 +60,7 @@ describe("ITableMenu", () => {
         ]);
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.contextmenu().should("not.exist");
@@ -87,7 +86,7 @@ describe("ITableMenu", () => {
         ]);
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.contextmenu().should("not.exist");
@@ -113,7 +112,7 @@ describe("ITableMenu", () => {
         ]);
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.cell({ row: 1, col: 2 }).click();
@@ -138,7 +137,7 @@ describe("ITableMenu", () => {
         ]);
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.cell({ row: 1, col: 2 }).click();
@@ -166,7 +165,7 @@ describe("ITableMenu", () => {
         ]);
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.cell({ row: 2, col: 2 }).click();
@@ -196,7 +195,7 @@ describe("ITableMenu", () => {
         ]);
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.cell({ row: 1, col: 2 }).click();
@@ -223,7 +222,7 @@ describe("ITableMenu", () => {
         ]);
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.cell({ row: 1, col: 2 }).click();
@@ -248,7 +247,7 @@ describe("ITableMenu", () => {
         ]);
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.cell({ row: 1, col: 2 }).click();
@@ -276,7 +275,7 @@ describe("ITableMenu", () => {
         ]);
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.cell({ row: 1, col: 2 }).find("button").focus();
@@ -307,7 +306,7 @@ describe("ITableMenu", () => {
         ]);
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.cell({ row: 1, col: 2 }).click();
@@ -344,7 +343,7 @@ describe("ITableMenu", () => {
 
         cy.mount(() =>
             h(FTable<DynamicRow>, {
-                rows: useDatasetRef<DynamicRow>(rows).value,
+                rows: ref<DynamicRow[]>(rows).value,
                 columns,
             }),
         );
@@ -396,7 +395,7 @@ describe("ITableMenu", () => {
 
         cy.mount(() =>
             h(FTable<DynamicRow>, {
-                rows: useDatasetRef<DynamicRow>(rows).value,
+                rows: ref<DynamicRow[]>(rows).value,
                 columns,
             }),
         );
@@ -428,7 +427,7 @@ describe("ITableMenu", () => {
         ]);
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.contextmenu().should("not.exist");

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTemplateRef } from "vue";
+import { ref, useTemplateRef } from "vue";
 import {
     type TableColumn,
     FCrudDataset,
@@ -7,7 +7,6 @@ import {
     FSelectField,
     FTable,
     defineTableColumns,
-    useDatasetRef,
 } from "@fkui/vue";
 
 interface Row {
@@ -72,7 +71,7 @@ const columns: Array<TableColumn<Row>> = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         namn: "Apelsin",
         land: "Spanien",

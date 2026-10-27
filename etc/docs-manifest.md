@@ -200,6 +200,7 @@ functions/functions/modal-functions/confirm-modal.html
 functions/functions/modal-functions/form-modal.html
 functions/functions/modal-functions/open-modal.html
 functions/functions/mount-component.html
+functions/functions/remove-table-rows.html
 functions/functions/render-slot-text.html
 functions/functions/table-scroll-classes.html
 functions/functions/table-scroll.html

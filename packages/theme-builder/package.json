@@ -34,21 +34,21 @@
   "dependencies": {
     "@adobe/css-tools": "4.5.0",
     "@forsakringskassan/sass-module-importer": "3.0.0",
-    "cssnano": "9.6.0",
+    "cssnano": "9.9.0",
     "get-css-variables": "1.1.1",
     "postcss-scss": "4.0.9",
-    "sass": "1.105.1",
+    "sass": "1.106.1",
     "yargs": "18.2.0"
   },
   "devDependencies": {
-    "@html-validate/release-scripts": "7.6.14",
+    "@html-validate/release-scripts": "7.6.17",
     "@types/node": "22.20.5",
     "@types/yargs": "17.0.35",
     "@typescript/native": "npm:typescript@7.0.2",
     "dedent": "1.7.2",
     "esbuild": "0.28.2",
     "memfs": "4.80.0",
-    "postcss": "8.5.29",
+    "postcss": "8.5.31",
     "stream-buffers": "3.0.3",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },

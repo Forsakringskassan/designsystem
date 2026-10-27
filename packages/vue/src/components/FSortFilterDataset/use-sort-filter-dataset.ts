@@ -8,6 +8,7 @@ import {
 } from "vue";
 import { useTranslate } from "../../plugins";
 import { type Dataset, toDataset } from "../../utils";
+import { isDataset } from "../../utils/dataset";
 import { filter } from "./f-sort-filter-filter";
 import { sort } from "./f-sort-filter-sorter";
 import { type SortOrder } from "./sort-order";
@@ -89,13 +90,13 @@ function sortFilterData<T extends object>(
     filterAttributes: PropertyKey[],
     searchString: string,
     sortAttribute: SortableAttribute,
-): Dataset<T> {
+): Dataset<T> | T[] {
     const filteredData = filter(data, filterAttributes, searchString);
     const sortedData = sort(filteredData, {
         attribute: sortAttribute.attribute as keyof T | "",
         ascending: sortAttribute.ascending,
     });
-    return toDataset(sortedData, data);
+    return isDataset(data) ? toDataset(sortedData, data) : sortedData;
 }
 
 function noop(): void {
@@ -105,7 +106,7 @@ function noop(): void {
 export interface SortFilterDatasetState<T extends object> {
     searchString: Ref<string>;
     sortAttribute: Ref<SortOrder>;
-    sortFilterResult: Ref<Dataset<T>>;
+    sortFilterResult: Ref<Dataset<T> | T[]>;
     showClearButton: Ref<boolean>;
     defaultSortValue: SortOrder;
     sortableKeys: Ref<Array<string | symbol>>;
@@ -138,7 +139,9 @@ export function useSortFilterDataset<T extends object>(
 ): SortFilterDatasetState<T> {
     const searchString = ref("");
     const sortAttribute = ref<SortOrder>({ ...defaultSortValue });
-    const sortFilterResult = ref(toDataset([])) as Ref<Dataset<T>>;
+    const sortFilterResult = ref(
+        isDataset(toValue(data)) ? toDataset<T>([]) : [],
+    ) as Ref<Dataset<T> | T[]>;
     const useDefaultSortOrder = ref(true);
 
     const {

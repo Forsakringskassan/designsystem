@@ -64,11 +64,11 @@
     "@forsakringskassan/vitest-config-jsdom": "5.0.1",
     "@rollup/plugin-commonjs": "29.0.3",
     "@rollup/plugin-node-resolve": "16.0.3",
-    "@rollup/plugin-typescript": "12.3.0",
+    "@rollup/plugin-typescript": "12.3.1",
     "@types/lodash.clonedeep": "4.5.9",
-    "rollup": "4.64.5",
+    "rollup": "4.65.0",
     "rollup-plugin-dts": "6.5.1",
-    "vitest": "5.0.3"
+    "vitest": "5.0.5"
   },
   "peerDependencies": {
     "@fkui/date": "^6.62.0"

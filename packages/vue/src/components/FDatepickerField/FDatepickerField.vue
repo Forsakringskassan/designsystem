@@ -315,7 +315,10 @@ export default defineComponent({
             return isDayEnabled(day, this.validationConfig);
         },
         isDaySelected(date: FDate): boolean {
-            return this.calendarValue ? date.equals(this.calendarValue) : false;
+            if (!this.calendarValue) {
+                return false;
+            }
+            return date.equals(this.calendarValue);
         },
         highlightDay(date: FDate): boolean {
             return this.highlightToday && date.equals(FDate.now());

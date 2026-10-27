@@ -106,9 +106,7 @@ const TestComponent = defineComponent({
     computed: {
         showHideAttrs(): Record<string, boolean | undefined> {
             return {
-                /* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
                 showSort: this.showSort ? undefined : false,
-                /* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary -- false positive */
                 showFilter: this.showFilter ? undefined : false,
             };
         },

@@ -15,13 +15,8 @@ import {
 import { assertRef, assertSet } from "@fkui/logic";
 import { useSlotUtils } from "../../composables";
 import { useTranslate } from "../../plugins";
-import {
-    type Dataset,
-    type DatasetNestedKeyOf,
-    type ItemIdentifier,
-    getDatasetMetadata,
-    setItemIdentifiers,
-} from "../../utils";
+import { type Dataset, type ItemIdentifier, getDatasetMetadata, setItemIdentifiers } from "../../utils";
+import { isDataset } from "../../utils/dataset";
 import { FSortFilterDatasetInjected, useSortFilterDatasetEvents } from "../FSortFilterDataset";
 import ITableExpandButton from "./ITableExpandButton.vue";
 import ITableExpandable from "./ITableExpandable.vue";
@@ -35,6 +30,7 @@ import { getMetaRows } from "./get-meta-rows";
 import { useSelectableRowSource } from "./selectable-row-source";
 import { stopEditKey } from "./start-stop-edit";
 import { type NormalizedTableColumn, type TableColumn, normalizeTableColumns } from "./table-column";
+import { type TableNestedKeyOf } from "./table-nested-key-of";
 import { usePopupError } from "./use-popup-error";
 import { useSelectable } from "./use-selectable";
 import { useTabstop } from "./use-tabstop";
@@ -49,9 +45,10 @@ const {
     striped,
     disableDividers,
     selectable = undefined,
+    expandableAttribute = undefined,
 } = defineProps<{
     columns: Array<TableColumn<T, KeyAttribute>>;
-    rows: Dataset<T>;
+    rows: Dataset<T> | T[];
     keyAttribute?: KeyAttribute;
     /**
      * Optional callback for setting classes on table rows (`<tr>` element).
@@ -60,6 +57,7 @@ const {
     striped?: boolean;
     disableDividers?: boolean;
     selectable?: "single" | "multi";
+    expandableAttribute?: TableNestedKeyOf<T>;
 }>();
 
 defineSlots<{
@@ -80,7 +78,7 @@ defineSlots<{
      */
     expandable?(bindings: {
         /**
-         * The expanded row (from the dataset nested attribute of the parent row)
+         * The expanded row (from the expandable attribute of the parent row)
          */
         row: ExpandedContent;
     }): void;
@@ -88,30 +86,33 @@ defineSlots<{
 
 const sortFilterDatasetEvents = useSortFilterDatasetEvents();
 
-type ExpandedContent = Required<T>[DatasetNestedKeyOf<T>] extends unknown[]
-    ? Required<T>[DatasetNestedKeyOf<T>][number]
+type ExpandedContent = Required<T>[TableNestedKeyOf<T>] extends unknown[]
+    ? Required<T>[TableNestedKeyOf<T>][number]
     : never;
 
 const $t = useTranslate();
 const { hasSlot } = useSlotUtils();
 const tableRef = useTemplateRef("table");
 const expandedKeys: Ref<Set<ItemIdentifier>> = ref(new Set());
-const expandableAttribute = computed(() => {
-    return getDatasetMetadata(rows).nestedAttribute;
-});
-const keyedRows = computed(() => setItemIdentifiers(rows, keyAttribute, expandableAttribute.value));
+const expandableAttributeName = isDataset(rows)
+    ? computed(
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- required by vue-tsc as `DatasetNestedKeyOf<T>` is not provably assignable for generic `T`
+          () => getDatasetMetadata(rows).nestedAttribute as TableNestedKeyOf<T> | undefined,
+      )
+    : computed(() => expandableAttribute);
+
+const keyedRows = computed(() => setItemIdentifiers(rows, keyAttribute, expandableAttributeName.value));
 const { rows: selectableSourceRows, isProvided: isSelectableSourceProvided } = useSelectableRowSource();
 const selectableRows = computed(() => {
     if (!isSelectableSourceProvided.value) {
         return keyedRows.value;
     }
 
-    const sourceRows = selectableSourceRows.value as Dataset<T>;
-    const nestedAttribute = getDatasetMetadata(sourceRows).nestedAttribute;
-    return setItemIdentifiers(sourceRows, keyAttribute, nestedAttribute);
+    return setItemIdentifiers(selectableSourceRows.value as T[], keyAttribute, expandableAttributeName.value);
 });
-const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttribute.value));
-const isTreegrid = computed(() => Boolean(expandableAttribute.value));
+
+const metaRows = computed(() => getMetaRows(keyedRows.value, expandedKeys.value, expandableAttributeName.value));
+const isTreegrid = computed(() => Boolean(expandableAttributeName.value));
 const role = computed(() => (isTreegrid.value ? "treegrid" : "grid"));
 
 const hasCaption = computed(() => {
@@ -122,7 +123,11 @@ const isEmpty = computed((): boolean => {
     return metaRows.value.length === 0;
 });
 
-const ariaRowcount = computed((): number => {
+const ariaRowcount = computed((): number | undefined => {
+    if (!isTreegrid.value) {
+        return undefined;
+    }
+
     const footerRow = hasFooter.value ? 1 : 0;
 
     if (!hasColumns.value) {
@@ -130,7 +135,7 @@ const ariaRowcount = computed((): number => {
     }
 
     const headerRow = 1;
-    const bodyRows = getBodyRowCount(keyedRows.value, expandableAttribute.value);
+    const bodyRows = getBodyRowCount(keyedRows.value, expandableAttributeName.value);
     return bodyRows + headerRow + footerRow;
 });
 
@@ -395,7 +400,7 @@ onBeforeUnmount(() => {
             <slot name="caption"></slot>
         </caption>
         <thead v-if="hasColumns">
-            <tr class="table-ng__row" aria-rowindex="1">
+            <tr class="table-ng__row" :aria-rowindex="isTreegrid ? 1 : undefined">
                 <th
                     v-if="isTreegrid"
                     scope="col"
@@ -431,13 +436,13 @@ onBeforeUnmount(() => {
                 </tr>
             </template>
             <tr
-                v-for="{ key, row, rowIndex, level, setsize, posinset, isExpandable, isExpanded } in metaRows"
+                v-for="{ key, row, level, setsize, posinset, rowindex, isExpandable, isExpanded } in metaRows"
                 v-else
                 :key
                 class="table-ng__row"
                 :class="getRowClass(row)"
+                :aria-rowindex="isTreegrid ? rowindex + 1 : undefined"
                 :aria-level="level"
-                :aria-rowindex="rowIndex"
                 :aria-setsize="setsize"
                 :aria-posinset="posinset"
                 :aria-selected="isAriaSelected(level, row)"

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
-import { FCrudDataset, FTextField, useDatasetRef } from "@fkui/vue";
+import { FCrudDataset, FTextField } from "@fkui/vue";
 import { type TableColumn, FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
@@ -11,7 +11,7 @@ interface Row {
 
 const crud = useTemplateRef("crud");
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         id: "1",
         name: "Ärende A",

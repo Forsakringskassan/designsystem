@@ -12,6 +12,7 @@ import { FTextField } from "../..";
 import { TranslationMixin } from "../../../../plugins";
 import { dispatchComponentValidityEvent, renderSlotText } from "../../../../utils";
 
+/* eslint-disable-next-line unicorn/no-top-level-side-effects -- false positive */
 export default defineComponent({
     name: "FEmailTextField",
     components: { FTextField },

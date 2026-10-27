@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { FSortFilterDataset, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { FSortFilterDataset } from "@fkui/vue";
 import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
@@ -42,7 +43,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         namn: "Apelsin",
         land: "Spanien",

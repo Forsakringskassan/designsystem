@@ -221,13 +221,13 @@ describe("isValid()", () => {
         id?: string;
         tagName?: string;
     }): HTMLElement {
-        const { valid, id, tagName = "input" } = options;
+        const { valid, id = "", tagName = "input" } = options;
         const element = document.createElement(tagName);
         if (element instanceof HTMLInputElement) {
             element.setCustomValidity(valid ? "" : "custom error");
             element.reportValidity();
         }
-        element.id = id ?? "";
+        element.id = id;
         return element;
     }
 

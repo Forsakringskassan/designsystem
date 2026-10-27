@@ -1,3 +1,4 @@
+import { type TableNestedKeyOf } from "./table-nested-key-of";
 import { walk } from "./walk";
 
 /**
@@ -8,7 +9,10 @@ import { walk } from "./walk";
  * @param childKey - Key to check for nested rows.
  * @returns Number of rows.
  */
-export function getBodyRowCount<T>(rows: T[], childKey?: keyof T): number {
+export function getBodyRowCount<T>(
+    rows: T[],
+    childKey?: TableNestedKeyOf<T>,
+): number {
     let count = 0;
     walk(rows, childKey, () => {
         count++;
