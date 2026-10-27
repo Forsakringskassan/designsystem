@@ -7127,13 +7127,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3a4650754c79357839308a95f6eec2865bf10a01/packages/vue/src/components/FFieldset/FFieldset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b4b2dd25ed8b3ca782200be75b7cacfba5f8a113/packages/vue/src/components/FFieldset/FFieldset.vue">
                 FFieldset
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/3a4650754c79357839308a95f6eec2865bf10a01/packages/vue/src/components/FRadioField/FRadioField.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/b4b2dd25ed8b3ca782200be75b7cacfba5f8a113/packages/vue/src/components/FRadioField/FRadioField.vue">
                 FRadioField
             </a>
             
@@ -7307,24 +7307,10 @@ På mindre skärmar visas alternativen alltid vertikalt.</p>
             <h3 id="forvalt_alternativ" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#forvalt_alternativ">Förvalt alternativ</a></h3><p class="docs-paragraph">Undvik att markera ett alternativ från början.
 Låt användaren i stället göra ett aktivt val.
 Då minskar risken för att frågan missas eller att användaren skickar in ett svar som inte stämmer.</p>
-<h3 id="frivilliga_fragor" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#frivilliga_fragor">Frivilliga frågor</a></h3><p class="docs-paragraph">När användaren har valt ett alternativ går det inte att återställa gruppen till att inget alternativ är valt.
-Om frågan är frivillig behöver den därför ha ett neutralt svarsalternativ, till exempel ”Inget av alternativen”.</p>
-<h3 id="validering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering">Validering</a></h3><p class="docs-paragraph">Om användaren måste välja ett alternativ ska radioknappsgruppen valideras som obligatorisk.
-Lägg <code>v-validation.required</code> på <code>FFieldset</code>.</p>
-
-                <div
-                    id="example-2859e6"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="diff"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-fieldset name=&quot;arbete-annat-land&quot;&gt;</span>
-<span class="hljs-addition">+&lt;f-fieldset v-validation.required name=&quot;arbete-annat-land&quot;&gt;</span>
-</code></pre>
-                </div>
-            <p class="docs-paragraph"><a href="../../guides/validation-and-error-handling/validation.html">Validering och felhantering</a></p>
+<h3 id="nar_inget_alternativ_passar" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#nar_inget_alternativ_passar">När inget alternativ passar</a></h3><p class="docs-paragraph">När användaren har valt ett alternativ går det inte att återställa en grupp med radioknappar till att inget alternativ är valt.
+Om användaren ska kunna svara att inget alternativ passar behöver det finnas ett särskilt svarsalternativ, till exempel ”Inget av alternativen ovan”.
+Placera det sist i listan.
+Detta gäller både obligatoriska och frivilliga frågor.</p>
 <h3 id="utvidgad_text" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#utvidgad_text">Utvidgad text</a></h3><p class="docs-paragraph">Använd utvidgad text när ett alternativ behöver förklaras eller förtydligas.
 Håll alternativets huvudsakliga text kort.
 Den utvidgade texten visas på en egen rad, vilket gör alternativen lättare att överblicka och skapar en tydlig visuell hierarki mellan alternativet och den kompletterande informationen.</p>
@@ -7332,7 +7318,7 @@ Den utvidgade texten visas på en egen rad, vilket gör alternativen lättare at
 Information som gäller hela frågan ska i stället placeras som hjälptext vid frågan.</p>
 
             <div
-                id="example-78868e"
+                id="example-4d4c57"
                 class="code-preview code-preview--default"
                 
                 
@@ -7401,7 +7387,7 @@ Information som gäller hela frågan ska i stället placeras som hjälptext vid 
             </div>
         
                 <div
-                    id="example-254762"
+                    id="example-4a2ebb"
                     class="code-preview code-preview--default"
                     
                     
@@ -7417,7 +7403,7 @@ Ramen gör det tydligare vilken text som hör till respektive alternativ när in
 <p class="docs-paragraph">Dölj inte information som användaren behöver för att kunna välja.</p>
 
             <div
-                id="example-cd4d4c"
+                id="example-5b289a"
                 class="code-preview code-preview--default"
                 
                 
@@ -7486,7 +7472,7 @@ Ramen gör det tydligare vilken text som hör till respektive alternativ när in
             </div>
         
                 <div
-                    id="example-8ca5e3"
+                    id="example-7629a6"
                     class="code-preview code-preview--default"
                     
                     
@@ -7502,7 +7488,7 @@ Vissa kombinationer bör undvikas.
 Se användningsråden ovan för rekommenderade sätt att använda komponenten.</p>
 
                 <div
-                    id="example-1b147a"
+                    id="example-ac5ba0"
                     class="code-preview code-preview--borderless"
                     
                     data-tags="live-example"
@@ -7521,6 +7507,22 @@ Se användningsråden ovan för rekommenderade sätt att använda komponenten.</
                 </div>
             <h3 id="migrera_fran_fradiogroup" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#migrera_fran_fradiogroup">Migrera från FRadioGroup</a></h3><p class="docs-paragraph"><code>FRadioGroup</code> och <code>FRadioGroupField</code> har tagits bort och ersatts av <code>FFieldset</code> respektive <code>FRadioField</code>.
 Se <a href="../../gettingstarted/migration/migrating-to-fieldset.html">migreringsguiden</a> för information om hur du uppdaterar din kod.</p>
+<h3 id="validering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering">Validering</a></h3><p class="docs-paragraph">Om användaren måste välja ett alternativ ska radioknappsgruppen valideras som obligatorisk.
+Lägg <code>v-validation.required</code> på <code>FFieldset</code>.</p>
+
+                <div
+                    id="example-c8beaa"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-fieldset name=&quot;arbete-annat-land&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-fieldset v-validation.required name=&quot;arbete-annat-land&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Läs mer om <a href="../../guides/validation-and-error-handling/validation.html">validering och felhantering</a>.</p>
 <h3 id="ffieldset" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ffieldset">FFieldset</a></h3>
         <h4 class="docs-heading docs-heading--h4" id="ffieldset-props">
             <a class="header-anchor" href="#ffieldset-props">Props</a>
@@ -8012,9 +8014,9 @@ If the prop is not set a random value will be generated.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">docs/radio-guidance</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/3a4650754c79357839308a95f6eec2865bf10a01">3a46507</a>)<br />
+<div class="version"><span class="version-text-block">docs/radio-guidance</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/b4b2dd25ed8b3ca782200be75b7cacfba5f8a113">b4b2dd2</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1776">PR 1776</a><br />
-       <span class="version-text-block">2026-10-26 07:01</span>
+       <span class="version-text-block">2026-10-27 11:04</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
