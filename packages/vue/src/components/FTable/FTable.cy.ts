@@ -1,7 +1,5 @@
-import { type VNode, ref } from "vue";
-import { h } from "vue";
+import { type VNode, h, ref } from "vue";
 import { FTablePageObject } from "../../cypress";
-import { useDatasetRef } from "../../utils";
 import { FValidationForm } from "../FValidationForm";
 import FTable from "./FTable.vue";
 import { defineTableColumns } from "./table-column";
@@ -39,16 +37,13 @@ describe("1. 3 Table test – right-aligned column", () => {
 
     const expandableAttribute = "nested";
 
-    const rows = useDatasetRef<Row>(
-        [
-            {
-                text: "A1",
-                nested: [{ text: "A2 justering av text" }, { text: "A3" }],
-            },
-            { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
-        ],
-        expandableAttribute,
-    );
+    const rows = ref<Row[]>([
+        {
+            text: "A1",
+            nested: [{ text: "A2 justering av text" }, { text: "A3" }],
+        },
+        { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
+    ]);
 
     const columns = defineTableColumns<Row>([
         {
@@ -90,7 +85,11 @@ describe("1. 3 Table test – right-aligned column", () => {
         cy.mount(() =>
             h(
                 FTable<Row>,
-                { rows: rows.value, columns },
+                {
+                    rows: rows.value,
+                    columns,
+                    expandableAttribute,
+                },
                 {
                     caption() {
                         return "Verifierar att kolumner kan vara höger- och vänsterjusterade";
@@ -188,14 +187,9 @@ describe("1.5 Separator", () => {
             ],
         },
     ];
-    const rows = useDatasetRef<Row>(
-        rawRows.map(({ nested, ...row }) => ({ ...row })),
-    );
+    const rows = ref<Row[]>(rawRows.map(({ nested, ...row }) => ({ ...row })));
     const expandableAttribute = "nested";
-    const expandableRows = useDatasetRef<Row>(
-        rawRows.map((row) => ({ ...row })),
-        expandableAttribute,
-    );
+    const expandableRows = ref<Row[]>(rawRows.map((row) => ({ ...row })));
     const columns = defineTableColumns<Row>([
         {
             type: "rowheader",
@@ -238,6 +232,7 @@ describe("1.5 Separator", () => {
                 {
                     rows: expandableRows.value,
                     columns,
+                    expandableAttribute,
                     striped: true,
                 },
                 {
@@ -300,7 +295,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         ];
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table
@@ -333,7 +328,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         ];
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table
@@ -366,7 +361,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         ];
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.cell({ row: 1, col: 1 }).click();
@@ -402,7 +397,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         ];
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.cell({ row: 1, col: 1 }).click();
@@ -444,7 +439,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         ];
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.cell({ row: 1, col: 1 }).click();
@@ -484,7 +479,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         ];
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table
@@ -524,7 +519,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         ];
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table
@@ -565,7 +560,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         ];
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table
@@ -606,7 +601,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         const onComponentValidity = cy.spy().as("onComponentValidity");
         cy.mount(() =>
             h(FTable<Row>, {
-                rows: useDatasetRef<Row>(rows).value,
+                rows: ref<Row[]>(rows).value,
                 columns,
                 onValidity,
                 onComponentValidity,
@@ -650,7 +645,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         const onComponentValidity = cy.spy().as("onComponentValidity");
         cy.mount(() =>
             h(FTable<Row>, {
-                rows: useDatasetRef<Row>(rows).value,
+                rows: ref<Row[]>(rows).value,
                 columns,
                 onValidity,
                 onComponentValidity,
@@ -694,7 +689,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         ];
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table.cell({ row: 1, col: 1 }).focus().should("have.focus");
@@ -734,7 +729,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         ];
 
         cy.mount(() =>
-            h(FTable<Row>, { rows: useDatasetRef<Row>(rows).value, columns }),
+            h(FTable<Row>, { rows: ref<Row[]>(rows).value, columns }),
         );
 
         table
@@ -787,7 +782,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
         cy.mount(() =>
             h(
                 FTable<Row>,
-                { rows: useDatasetRef<Row>(rows).value, columns },
+                { rows: ref<Row[]>(rows).value, columns },
                 {
                     caption() {
                         return "Verifierar att felpopupens pil positioneras korrekt i bred cell.";
@@ -842,7 +837,7 @@ describe("3.1 Feedback to user on invalid input components", () => {
                 cy.mount(() =>
                     h(
                         FTable<Row>,
-                        { rows: useDatasetRef<Row>(rows).value, columns },
+                        { rows: ref<Row[]>(rows).value, columns },
                         {
                             caption() {
                                 return "Verifierar felindikering och tooltip vid ogiltigt värde.";
@@ -901,7 +896,7 @@ describe("3.6 Feedback to user on table validation errors at submit", () => {
         cy.mount(() =>
             h(FValidationForm, { useErrorList: false }, () => [
                 h(FTable<Row>, {
-                    rows: useDatasetRef<Row>(rows).value,
+                    rows: ref<Row[]>(rows).value,
                     columns,
                 }),
                 renderButton("submit", { type: "submit" }),
@@ -998,13 +993,10 @@ describe("4.4 Home and End keyboard behavior", () => {
 
     const expandableAttribute = "nested";
 
-    const rows = useDatasetRef<Row>(
-        [
-            { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
-            { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
-        ],
-        expandableAttribute,
-    );
+    const rows = ref<Row[]>([
+        { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+        { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
+    ]);
 
     const columns = defineTableColumns<Row>([
         {
@@ -1015,7 +1007,13 @@ describe("4.4 Home and End keyboard behavior", () => {
     ]);
 
     it("should handle Home, End, Ctrl+Home and Ctrl+End correctly", () => {
-        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
+        cy.mount(() =>
+            h(FTable<Row>, {
+                rows: rows.value,
+                columns,
+                expandableAttribute,
+            }),
+        );
 
         table.expandButton(2).focus().click();
         table.expandButton(1).focus().click();
@@ -1047,13 +1045,10 @@ describe("6 Expandable table", () => {
 
     const expandableAttribute = "nested";
 
-    const rows = useDatasetRef<Row>(
-        [
-            { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
-            { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
-        ],
-        expandableAttribute,
-    );
+    const rows = ref<Row[]>([
+        { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+        { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
+    ]);
 
     const columns = defineTableColumns<Row>([
         {
@@ -1064,7 +1059,13 @@ describe("6 Expandable table", () => {
     ]);
 
     it("6.1 should expand row when pressing Enter on expand cell", () => {
-        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
+        cy.mount(() =>
+            h(FTable<Row>, {
+                rows: rows.value,
+                columns,
+                expandableAttribute,
+            }),
+        );
 
         table.expandButton(2).focus();
         table.expandButton(2).type("{enter}");
@@ -1080,7 +1081,9 @@ describe("6 Expandable table", () => {
     });
 
     it("6.1 should expand row when pressing Space on expand cell", () => {
-        cy.mount(() => h(FTable<Row>, { rows: rows.value, columns }));
+        cy.mount(() =>
+            h(FTable<Row>, { rows: rows.value, columns, expandableAttribute }),
+        );
 
         table.expandButton(2).focus();
         table.expandButton(2).press(Cypress.Keyboard.Keys.SPACE);
@@ -1102,10 +1105,10 @@ describe("6 Expandable table", () => {
             nested?: NavigationRow[];
         }
 
-        const navRows = useDatasetRef<NavigationRow>(
-            [{ text: "A1", nested: [{ text: "A2" }] }, { text: "B1" }],
-            expandableAttribute,
-        );
+        const navRows = ref<NavigationRow[]>([
+            { text: "A1", nested: [{ text: "A2" }] },
+            { text: "B1" },
+        ]);
 
         const navColumns = defineTableColumns<NavigationRow>([
             {
@@ -1130,6 +1133,7 @@ describe("6 Expandable table", () => {
                 h(FTable<NavigationRow>, {
                     rows: navRows.value,
                     columns: navColumns,
+                    expandableAttribute,
                 }),
             );
 
@@ -1173,6 +1177,7 @@ describe("6 Expandable table", () => {
                     {
                         rows: navRows.value,
                         columns: navColumns,
+                        expandableAttribute,
                     },
                     { expandable: () => "Foo" },
                 ),
@@ -1208,7 +1213,7 @@ describe("6 Expandable table", () => {
                 text: string;
             }
 
-            const rows = useDatasetRef<Row>([{ text: "A1" }]);
+            const rows = ref<Row[]>([{ text: "A1" }]);
 
             const columns = defineTableColumns<Row>([
                 { type: "text", header: "A", key: "text" },
@@ -1293,7 +1298,7 @@ describe("6 Expandable table", () => {
                 text: string;
             }
 
-            const rows = useDatasetRef<Row>([{ text: "A1" }]);
+            const rows = ref<Row[]>([{ text: "A1" }]);
 
             const columns = defineTableColumns<Row>([
                 { type: "text", header: "A", key: "text" },
@@ -1361,13 +1366,10 @@ describe("6 Expandable table", () => {
     });
 
     describe("6.3 Collapse expanded row", () => {
-        const rows = useDatasetRef<Row>(
-            [
-                { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
-                { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
-            ],
-            expandableAttribute,
-        );
+        const rows = ref<Row[]>([
+            { text: "A1", nested: [{ text: "A2" }, { text: "A3" }] },
+            { text: "B1", nested: [{ text: "B2" }, { text: "B3" }] },
+        ]);
 
         const columns = defineTableColumns<Row>([
             {
@@ -1382,6 +1384,7 @@ describe("6 Expandable table", () => {
                 h(FTable<Row>, {
                     rows: rows.value,
                     columns,
+                    expandableAttribute,
                 }),
             );
 
@@ -1403,6 +1406,7 @@ describe("6 Expandable table", () => {
                 h(FTable<Row>, {
                     rows: rows.value,
                     columns,
+                    expandableAttribute,
                 }),
             );
 
@@ -1438,7 +1442,7 @@ describe("5 tabstop", () => {
         buttonAddRow: string;
         buttonRemoveRow: string;
     } {
-        const rows = useDatasetRef<TabstopRow>([
+        const rows = ref<TabstopRow[]>([
             { foo: "1", bar: "alpha" },
             { foo: "2", bar: "beta" },
             { foo: "3", bar: "gamma" },
@@ -1518,33 +1522,30 @@ describe("5 tabstop", () => {
     } {
         const expandableAttribute = "children";
 
-        const rows = useDatasetRef<NavigationRow>(
-            [
-                {
-                    staticText: "awesome static text",
-                    editText: "awesome edit text",
-                    staticSelect: "awesome static option",
-                    select: "awesome option",
-                    checkbox: true,
-                    button: "awesome button",
-                    anchor: "awesome anchor",
-                    custom: "awesome custom",
-                    children: [
-                        {
-                            staticText: "child static text",
-                            editText: "child edit text",
-                            staticSelect: "another static option",
-                            select: "another option",
-                            checkbox: false,
-                            button: "child button",
-                            anchor: "child anchor",
-                            custom: "child custom",
-                        },
-                    ],
-                },
-            ],
-            expandableAttribute,
-        );
+        const rows = ref<NavigationRow[]>([
+            {
+                staticText: "awesome static text",
+                editText: "awesome edit text",
+                staticSelect: "awesome static option",
+                select: "awesome option",
+                checkbox: true,
+                button: "awesome button",
+                anchor: "awesome anchor",
+                custom: "awesome custom",
+                children: [
+                    {
+                        staticText: "child static text",
+                        editText: "child edit text",
+                        staticSelect: "another static option",
+                        select: "another option",
+                        checkbox: false,
+                        button: "child button",
+                        anchor: "child anchor",
+                        custom: "child custom",
+                    },
+                ],
+            },
+        ]);
 
         const columns = defineTableColumns<NavigationRow>([
             {
@@ -1610,6 +1611,7 @@ describe("5 tabstop", () => {
                     {
                         rows: rows.value,
                         columns,
+                        expandableAttribute,
                         selectable: "multi",
                     },
                     slots,
@@ -2033,7 +2035,7 @@ describe("Radio button single‑select functionality in table", () => {
         text: string;
     }
 
-    const rows = useDatasetRef<Row>([{ text: "A1" }, { text: "A2" }]);
+    const rows = ref<Row[]>([{ text: "A1" }, { text: "A2" }]);
 
     const columns = defineTableColumns<Row>([
         {
@@ -2130,7 +2132,7 @@ describe("7 Bulk Operation ", () => {
             text: string;
         }
 
-        const rows = useDatasetRef<Row>([{ text: "A1" }, { text: "A2" }]);
+        const rows = ref<Row[]>([{ text: "A1" }, { text: "A2" }]);
 
         const columns = defineTableColumns<Row>([
             {
@@ -2263,14 +2265,11 @@ describe("7 Bulk Operation ", () => {
 
         const expandableAttribute = "expandableRows";
 
-        const rows = useDatasetRef<Row>(
-            [
-                { text: "A1", expandableRows: [{ text: "A2" }] },
-                { text: "B1" },
-                { text: "C1", expandableRows: [{ text: "C2" }] },
-            ],
-            expandableAttribute,
-        );
+        const rows = ref<Row[]>([
+            { text: "A1", expandableRows: [{ text: "A2" }] },
+            { text: "B1" },
+            { text: "C1", expandableRows: [{ text: "C2" }] },
+        ]);
 
         const columns = defineTableColumns<Row>([
             {
@@ -2291,6 +2290,7 @@ describe("7 Bulk Operation ", () => {
                 h(FTable<Row>, {
                     rows: rows.value,
                     columns,
+                    expandableAttribute,
                     selectable: "multi",
                     selectedRows: selectedRows.value,
                     "onUpdate:selectedRows": (value: Row[]) => {
@@ -2321,6 +2321,7 @@ describe("7 Bulk Operation ", () => {
                 h(FTable<Row>, {
                     rows: rows.value,
                     columns,
+                    expandableAttribute,
                     selectable: "multi",
                     selectedRows: selectedRows.value,
                     "onUpdate:selectedRows": (value: Row[]) => {
@@ -2352,7 +2353,7 @@ describe("select cell non-editable", () => {
         option: string;
     }
 
-    const rows = useDatasetRef<Row>([{ option: "Foo" }, { option: "Bar" }]);
+    const rows = ref<Row[]>([{ option: "Foo" }, { option: "Bar" }]);
     const columns = defineTableColumns<Row>([
         {
             type: "select",
@@ -2390,7 +2391,7 @@ describe("select cell", () => {
         option: string;
     }
 
-    const rows = useDatasetRef<Row>([{ option: "Foo" }, { option: "Bar" }]);
+    const rows = ref<Row[]>([{ option: "Foo" }, { option: "Bar" }]);
     const columns = defineTableColumns<Row>([
         {
             type: "select",
@@ -2403,10 +2404,7 @@ describe("select cell", () => {
 
     it("should set value when selecting option with enter", () => {
         /* eslint-disable-next-line unicorn/no-non-function-verb-prefix -- technical debt */
-        const setValueRows = useDatasetRef<Row>([
-            { option: "Foo" },
-            { option: "Bar" },
-        ]);
+        const setValueRows = ref<Row[]>([{ option: "Foo" }, { option: "Bar" }]);
         cy.mount(() =>
             h(FTable<Row>, {
                 rows: setValueRows.value,
@@ -2569,7 +2567,7 @@ describe("editable cell", () => {
         text: string;
     }
 
-    const rows = useDatasetRef<Row>([{ text: "Foo" }, { text: "Bar" }]);
+    const rows = ref<Row[]>([{ text: "Foo" }, { text: "Bar" }]);
 
     it("should move to next row on Enter after clearing a directly typed value with validation", () => {
         const columns = defineTableColumns<Row>([
@@ -2631,7 +2629,7 @@ describe("editable cell", () => {
             editableText: string;
         }
 
-        const rows = useDatasetRef<Row>([
+        const rows = ref<Row[]>([
             { staticText: "Static", editableText: "Editable" },
         ]);
 
@@ -2666,8 +2664,8 @@ describe("editable cell", () => {
             text: string;
         }
 
-        const staticRows = useDatasetRef<Row>([{ text: "Text" }]);
-        const editableRows = useDatasetRef<Row>([{ text: "Text" }]);
+        const staticRows = ref<Row[]>([{ text: "Text" }]);
+        const editableRows = ref<Row[]>([{ text: "Text" }]);
 
         const staticColumns = defineTableColumns<Row>([
             {
@@ -2752,7 +2750,7 @@ describe("13 Cell interaction states", () => {
         },
     ]);
 
-    const rows = useDatasetRef<Row>([
+    const rows = ref<Row[]>([
         { plain: "A1", text: "A2", button: "A3" },
         { plain: "B1", text: "B2", button: "B3" },
     ]);
@@ -2816,7 +2814,7 @@ describe("13 Cell interaction states", () => {
                 text: string;
             }
 
-            const rows = useDatasetRef<Row>([{ text: "A1" }, { text: "A2" }]);
+            const rows = ref<Row[]>([{ text: "A1" }, { text: "A2" }]);
 
             const columns = defineTableColumns<Row>([
                 {
@@ -2882,7 +2880,7 @@ describe("13 Cell interaction states", () => {
 
 describe("columns", () => {
     it("should not render column when toggling enabled to false", () => {
-        const rows = useDatasetRef([{ foo: "1", bar: "alpha" }]);
+        const rows = ref([{ foo: "1", bar: "alpha" }]);
         const fooEnabled = ref(true);
         const columns = defineTableColumns<{ foo: string; bar: string }>([
             {
@@ -2925,7 +2923,7 @@ describe("columns", () => {
         }
 
         const showLand = ref(true);
-        const rows = useDatasetRef<Row>([
+        const rows = ref<Row[]>([
             { text: "value", land: "Land namn", bob: "bob" },
         ]);
         const columns = defineTableColumns<Row>([
@@ -3011,7 +3009,7 @@ describe("with wrapping text cell values", () => {
         },
     ]);
 
-    const rows = useDatasetRef<Row>([
+    const rows = ref<Row[]>([
         {
             static: "A2",
             editable:
@@ -3107,7 +3105,7 @@ describe("visible", () => {
         },
     ]);
 
-    const rows = useDatasetRef<Row>([
+    const rows = ref<Row[]>([
         {
             static: "A2",
             editable: "Attack",

@@ -11,6 +11,10 @@ search:
 
 Returnerar en iterator över elementen i en datamängd, där varje element levereras tillsammans med sin metadata.
 
+::: warning
+Metoden är deprekerad.
+:::
+
 ## Syntax
 
 ```ts nocompile

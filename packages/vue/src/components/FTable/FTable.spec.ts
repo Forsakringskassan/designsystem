@@ -20,7 +20,7 @@ describe("1.4 Rowheader", () => {
         ]);
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             props: {
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
                 columns,
             },
         });
@@ -49,8 +49,9 @@ describe("1.4 Rowheader", () => {
         ]);
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
-                rows: useDatasetRef(rows, expandableAttribute).value,
+                rows: ref(rows).value,
                 columns,
+                expandableAttribute,
             },
         });
 
@@ -69,7 +70,7 @@ describe("1.4 Rowheader", () => {
 });
 
 describe("1.6 column size", () => {
-    const rows = useDatasetRef([]);
+    const rows = ref([]);
 
     it("should have grow class if not set", () => {
         expect.assertions(1);
@@ -192,7 +193,7 @@ describe("1.7 enabled columns", () => {
         ]);
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             props: {
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
                 columns,
             },
         });
@@ -225,7 +226,7 @@ describe("1.7 enabled columns", () => {
         ]);
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             props: {
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
                 columns,
             },
         });
@@ -239,8 +240,8 @@ describe("1.8 when table is empty", () => {
     interface Row {
         nested?: Row[];
     }
-    const rows = useDatasetRef<Row>([]);
-    const expandableRows = useDatasetRef<Row>([], expandableAttribute);
+    const rows = ref<Row[]>([]);
+    const expandableRows = ref<Row[]>([]);
     const columns = defineTableColumns<Row>([
         {
             type: "text",
@@ -302,6 +303,7 @@ describe("1.8 when table is empty", () => {
             props: {
                 rows: expandableRows.value,
                 columns,
+                expandableAttribute,
             },
         });
         const emptyCell = wrapper.get("tbody td");
@@ -327,6 +329,7 @@ describe("1.8 when table is empty", () => {
             props: {
                 rows: expandableRows.value,
                 columns,
+                expandableAttribute,
                 selectable: "multi",
             },
         });
@@ -368,199 +371,111 @@ describe("1.8 when table is empty", () => {
     });
 });
 
-describe("1.12 aria-rowcount", () => {
+describe("1.12 aria-rowcount and aria-rowindex", () => {
+    interface Row {
+        text: string;
+        nested?: Row[];
+    }
+
+    const columns = defineTableColumns<Row>([
+        {
+            type: "text",
+            header: "Header",
+            key: "text",
+        },
+    ]);
+
+    function mountTable(
+        rows: Row[],
+        options: { expandable?: boolean; footer?: boolean } = {},
+    ): ReturnType<typeof mount<typeof FTable<Row>>> {
+        return mount(FTable<Row>, {
+            props: {
+                rows: ref(rows).value,
+                columns,
+                expandableAttribute: options.expandable ? "nested" : undefined,
+            },
+            slots: options.footer ? { footer: "Footer" } : {},
+        });
+    }
+
+    const expandableRows: Row[] = [
+        { text: "Foo", nested: [{ text: "Foo1" }, { text: "Foo2" }] },
+        { text: "Bar" },
+    ];
+
+    it("should not set aria-rowcount or aria-rowindex when table is not expandable", () => {
+        expect.assertions(3);
+        const wrapper = mountTable([{ text: "Foo" }, { text: "Bar" }], {
+            footer: true,
+        });
+        expect(
+            wrapper.get("table").attributes("aria-rowcount"),
+        ).toBeUndefined();
+        expect(wrapper.findAll("[aria-rowindex]")).toHaveLength(0);
+        expect(
+            wrapper.get("tfoot tr").attributes("aria-rowindex"),
+        ).toBeUndefined();
+    });
+
     it("should include body rows and header", () => {
         expect.assertions(1);
-        const rows = [{ text: "Foo" }, { text: "Bar" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
-            {
-                type: "text",
-                header: "Header",
-                key: "text",
-            },
-        ]);
-        const wrapper = mount(FTable<(typeof rows)[number]>, {
-            props: {
-                rows: useDatasetRef(rows).value,
-                columns,
-            },
+        const wrapper = mountTable([{ text: "Foo" }, { text: "Bar" }], {
+            expandable: true,
         });
-        const table = wrapper.get("table");
-        expect(table.attributes("aria-rowcount")).toBe("3");
+        expect(wrapper.get("table").attributes("aria-rowcount")).toBe("3");
     });
 
     it("should include footer", () => {
         expect.assertions(1);
-        const rows = [{ text: "Foo" }, { text: "Bar" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
-            {
-                type: "text",
-                header: "Header",
-                key: "text",
-            },
-        ]);
-        const wrapper = mount(FTable<(typeof rows)[number]>, {
-            props: {
-                rows: useDatasetRef(rows).value,
-                columns,
-            },
-            slots: {
-                footer: "Footer",
-            },
+        const wrapper = mountTable([{ text: "Foo" }, { text: "Bar" }], {
+            expandable: true,
+            footer: true,
         });
-        const table = wrapper.get("table");
-        expect(table.attributes("aria-rowcount")).toBe("4");
+        expect(wrapper.get("table").attributes("aria-rowcount")).toBe("4");
     });
 
-    it("should include expandable rows", () => {
+    it("should include nested rows", () => {
         expect.assertions(1);
-        const rows = [
-            { text: "Foo", nested: [{ text: "Foo1" }, { text: "Foo2" }] },
-            { text: "Bar" },
-        ];
-        const columns = defineTableColumns<(typeof rows)[number]>([
-            {
-                type: "text",
-                header: "Header",
-                key: "text",
-            },
-        ]);
-        const wrapper = mount(FTable<(typeof rows)[number]>, {
-            props: {
-                rows: useDatasetRef(rows, expandableAttribute).value,
-                columns,
-            },
+        const wrapper = mountTable(expandableRows, { expandable: true });
+        expect(wrapper.get("table").attributes("aria-rowcount")).toBe("5");
+    });
+
+    it("should set aria-rowindex on header, body rows and footer", () => {
+        expect.assertions(1);
+        const wrapper = mountTable(expandableRows, {
+            expandable: true,
+            footer: true,
         });
-        const table = wrapper.get("table");
-        expect(table.attributes("aria-rowcount")).toBe("5");
+        const indices = wrapper
+            .findAll("tr")
+            .map((it) => it.attributes("aria-rowindex"));
+        expect(indices).toEqual(["1", "2", "5", "6"]);
     });
 
     it("should exclude header and body rows when table has no columns", () => {
         expect.assertions(1);
-        const rows = [{ text: "Foo" }, { text: "Bar" }];
-        const wrapper = mount(FTable<(typeof rows)[number]>, {
+        const wrapper = mount(FTable<Row>, {
             props: {
-                rows: useDatasetRef(rows).value,
+                rows: ref([{ text: "Foo" }, { text: "Bar" }]).value,
                 columns: [],
+                expandableAttribute: "nested",
             },
         });
-        const table = wrapper.get("table");
-        expect(table.attributes("aria-rowcount")).toBe("0");
+        expect(wrapper.get("table").attributes("aria-rowcount")).toBe("0");
     });
 
     it("should include footer when table has no columns", () => {
         expect.assertions(1);
-        const rows = [{ text: "Foo" }, { text: "Bar" }];
-        const wrapper = mount(FTable<(typeof rows)[number]>, {
+        const wrapper = mount(FTable<Row>, {
             props: {
-                rows: useDatasetRef(rows).value,
+                rows: ref([{ text: "Foo" }, { text: "Bar" }]).value,
                 columns: [],
+                expandableAttribute: "nested",
             },
-            slots: {
-                footer: "Footer",
-            },
+            slots: { footer: "Footer" },
         });
-        const table = wrapper.get("table");
-        expect(table.attributes("aria-rowcount")).toBe("1");
-    });
-});
-
-describe("1.12 aria-rowindex", () => {
-    it("should be correct on header row", () => {
-        expect.assertions(1);
-        const rows = [{ text: "Foo" }, { text: "Bar" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
-            {
-                type: "text",
-                header: "Header",
-                key: "text",
-            },
-        ]);
-        const wrapper = mount(FTable<(typeof rows)[number]>, {
-            props: {
-                rows: useDatasetRef(rows).value,
-                columns,
-            },
-        });
-        const headerRow = wrapper.get("thead tr");
-        expect(headerRow.attributes("aria-rowindex")).toBe("1");
-    });
-
-    it("should be correct on body rows", () => {
-        expect.assertions(2);
-        const rows = [{ text: "Foo" }, { text: "Bar" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
-            {
-                type: "text",
-                header: "Header",
-                key: "text",
-            },
-        ]);
-        const wrapper = mount(FTable<(typeof rows)[number]>, {
-            props: {
-                rows: useDatasetRef(rows).value,
-                columns,
-            },
-        });
-        const bodyRows = wrapper.findAll("tbody tr");
-        expect(bodyRows[0].attributes("aria-rowindex")).toBe("2");
-        expect(bodyRows[1].attributes("aria-rowindex")).toBe("3");
-    });
-
-    it("should be correct on expanded rows", async () => {
-        expect.assertions(6);
-        const rows = [
-            { text: "Foo", nested: [{ text: "Foo1" }, { text: "Foo2" }] },
-            { text: "Bar" },
-        ];
-        const columns = defineTableColumns<(typeof rows)[number]>([
-            {
-                type: "text",
-                header: "Header",
-                key: "text",
-            },
-        ]);
-        const wrapper = mount(FTable<(typeof rows)[number]>, {
-            props: {
-                rows: useDatasetRef(rows, expandableAttribute).value,
-                columns,
-            },
-        });
-
-        const withoutExpandedRows = wrapper.findAll("tbody tr");
-        expect(withoutExpandedRows[0].attributes("aria-rowindex")).toBe("2");
-        expect(withoutExpandedRows[1].attributes("aria-rowindex")).toBe("5");
-
-        const expandButton = wrapper.get("tbody button");
-        await expandButton.trigger("click");
-        const withExpandedRows = wrapper.findAll("tbody tr");
-        expect(withExpandedRows[0].attributes("aria-rowindex")).toBe("2");
-        expect(withExpandedRows[1].attributes("aria-rowindex")).toBe("3");
-        expect(withExpandedRows[2].attributes("aria-rowindex")).toBe("4");
-        expect(withExpandedRows[3].attributes("aria-rowindex")).toBe("5");
-    });
-
-    it("should be correct on footer", () => {
-        expect.assertions(1);
-        const rows = [{ text: "Foo" }, { text: "Bar" }];
-        const columns = defineTableColumns<(typeof rows)[number]>([
-            {
-                type: "text",
-                header: "Header",
-                key: "text",
-            },
-        ]);
-        const wrapper = mount(FTable<(typeof rows)[number]>, {
-            props: {
-                rows: useDatasetRef(rows).value,
-                columns,
-            },
-            slots: {
-                footer: "Footer",
-            },
-        });
-        const footerRow = wrapper.get("tfoot tr");
-        expect(footerRow.attributes("aria-rowindex")).toBe("4");
+        expect(wrapper.get("table").attributes("aria-rowcount")).toBe("1");
     });
 });
 
@@ -586,8 +501,9 @@ describe("6 Expandable table", () => {
         expect.assertions(8);
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
-                rows: useDatasetRef(rows, expandableAttribute).value,
+                rows: ref(rows).value,
                 columns,
+                expandableAttribute,
             },
         });
 
@@ -613,8 +529,9 @@ describe("6 Expandable table", () => {
         expect.assertions(4);
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
-                rows: useDatasetRef(rows, expandableAttribute).value,
+                rows: ref(rows).value,
                 columns,
+                expandableAttribute,
             },
         });
 
@@ -638,8 +555,9 @@ describe("6 Expandable table", () => {
         expect.assertions(6);
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
-                rows: useDatasetRef(rows, expandableAttribute).value,
+                rows: ref(rows).value,
                 columns,
+                expandableAttribute,
             },
         });
 
@@ -663,8 +581,9 @@ describe("6 Expandable table", () => {
         expect.assertions(1);
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
-                rows: useDatasetRef(rows, expandableAttribute).value,
+                rows: ref(rows).value,
                 columns,
+                expandableAttribute,
             },
         });
 
@@ -729,8 +648,9 @@ describe("6 Expandable table", () => {
         ]);
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
-                rows: useDatasetRef(rows, expandableAttribute).value,
+                rows: ref(rows).value,
                 columns: customColumns,
+                expandableAttribute,
             },
             slots: {
                 expandable: "Lorem ipsum",
@@ -772,8 +692,9 @@ describe("6 Expandable table", () => {
         ]);
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
-                rows: useDatasetRef(rows, expandableAttribute).value,
+                rows: ref(rows).value,
                 columns: customColumns,
+                expandableAttribute,
                 selectable: "multi",
             },
             slots: {
@@ -797,7 +718,7 @@ describe("6 Expandable table", () => {
 });
 
 describe("1.17 footer", () => {
-    const rows = useDatasetRef([]);
+    const rows = ref([]);
     const columns = defineTableColumns([]);
 
     it("should add footer slot content to table footer", () => {
@@ -830,8 +751,8 @@ describe("1.17 footer", () => {
         interface Row {
             nested?: Row[];
         }
-        const rows = useDatasetRef<Row>([]);
-        const expandableRows = useDatasetRef<Row>([], expandableAttribute);
+        const rows = ref<Row[]>([]);
+        const expandableRows = ref<Row[]>([]);
         const columns = defineTableColumns<Row>([
             {
                 type: "text",
@@ -884,6 +805,7 @@ describe("1.17 footer", () => {
                 props: {
                     rows: expandableRows.value,
                     columns,
+                    expandableAttribute,
                 },
                 slots: {
                     footer: "Footer",
@@ -899,6 +821,7 @@ describe("1.17 footer", () => {
                 props: {
                     rows: expandableRows.value,
                     columns,
+                    expandableAttribute,
                     selectable: "multi",
                 },
                 slots: {
@@ -935,7 +858,7 @@ describe("1.17 footer", () => {
 });
 
 describe("1.1 caption", () => {
-    const rows = useDatasetRef([]);
+    const rows = ref([]);
     const columns = defineTableColumns([]);
 
     it("should not render if missing slot 'caption'", () => {
@@ -1012,7 +935,7 @@ describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             props: {
                 selectable: "multi",
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
                 columns,
             },
             global: {
@@ -1048,8 +971,9 @@ describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
                 selectable: "multi",
-                rows: useDatasetRef(rows, expandableAttribute).value,
+                rows: ref(rows).value,
                 columns,
+                expandableAttribute,
             },
             global: {
                 stubs: ["i-table-header-selectable"],
@@ -1077,7 +1001,7 @@ describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
             attachTo: document.body,
             props: {
                 selectable: "multi",
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
                 columns,
                 "onUpdate:selectedRows": (value: typeof rows) => {
                     selectedRows = value;
@@ -1110,7 +1034,7 @@ describe("7.1 Bulk checkbox in header when multiselect is enabled", () => {
             attachTo: document.body,
             props: {
                 selectable: "multi",
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
                 columns,
                 "onUpdate:selectedRows": (value: typeof rows) => {
                     selectedRows = value;
@@ -1155,8 +1079,9 @@ describe("7.4 Bulk selection in expandable", () => {
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
                 selectable: "multi",
-                rows: useDatasetRef(rows, expandableAttribute).value,
+                rows: ref(rows).value,
                 columns,
+                expandableAttribute,
             },
         });
 
@@ -1186,8 +1111,9 @@ describe("7.4 Bulk selection in expandable", () => {
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
                 selectable: "multi",
-                rows: useDatasetRef(rows, expandableAttribute).value,
+                rows: ref(rows).value,
                 columns,
+                expandableAttribute,
             },
             global: {
                 stubs: ["i-table-selectable"],
@@ -1224,7 +1150,7 @@ describe("7.6 aria-selected", () => {
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             props: {
                 columns,
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
                 selectable: "multi",
                 keyAttribute: "text",
                 selectedRows: [],
@@ -1265,7 +1191,8 @@ describe("7.6 aria-selected", () => {
         const wrapper = mount(FTable<ExpandableRow>, {
             props: {
                 columns,
-                rows: useDatasetRef(rows, expandableAttribute).value,
+                rows: ref(rows).value,
+                expandableAttribute,
                 selectable: "multi",
                 keyAttribute: "text",
                 selectedRows: [],
@@ -1312,7 +1239,7 @@ describe("select cell", () => {
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             props: {
                 columns,
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
             },
             global: {
                 stubs: ["teleport"],
@@ -1353,7 +1280,7 @@ describe("select cell", () => {
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             props: {
                 columns,
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
             },
             global: {
                 stubs: ["teleport"],
@@ -1382,7 +1309,7 @@ describe("select cell", () => {
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             props: {
                 columns,
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
             },
             global: {
                 stubs: ["teleport"],
@@ -1416,7 +1343,7 @@ describe("select cell", () => {
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             props: {
                 columns,
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
             },
             global: {
                 stubs: ["teleport"],
@@ -1448,7 +1375,7 @@ describe("Clickable cells", () => {
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             attachTo: document.body,
             props: {
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
                 columns,
             },
         });
@@ -1497,7 +1424,7 @@ describe("Clickable cells", () => {
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             attachTo: document.body,
             props: {
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
                 columns,
             },
         });
@@ -1535,7 +1462,7 @@ describe("editable cells", () => {
         const wrapper = mount(FTable<(typeof rows)[number]>, {
             attachTo: document.body,
             props: {
-                rows: useDatasetRef(rows).value,
+                rows: ref(rows).value,
                 columns,
             },
         });
@@ -1558,5 +1485,55 @@ describe("editable cells", () => {
         const tabstops = wrapper.findAll('[tabindex="0"]');
         expect(tabstops).toHaveLength(1);
         expect(tabstops[0].element.tagName).toBe("TD");
+    });
+});
+
+describe("useDatasetRef compatibility", () => {
+    interface Row {
+        text: string;
+        nested?: Row[];
+    }
+
+    const columns = defineTableColumns<Row>([
+        {
+            type: "text",
+            header: "Header",
+            key: "text",
+        },
+    ]);
+
+    it("should render a basic table from a dataset", () => {
+        expect.assertions(2);
+        const dataset = useDatasetRef<Row>([{ text: "A" }, { text: "B" }]);
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: dataset.value,
+                columns,
+            },
+        });
+        expect(wrapper.get("table").attributes("role")).toBe("grid");
+        expect(wrapper.findAll("tbody tr")).toHaveLength(2);
+    });
+
+    it("should support expandable rows from a dataset", async () => {
+        expect.assertions(4);
+        const dataset = useDatasetRef<Row>(
+            [{ text: "A", nested: [{ text: "A1" }] }],
+            "nested",
+        );
+        const wrapper = mount(FTable<Row>, {
+            props: {
+                rows: dataset.value,
+                columns,
+            },
+        });
+
+        expect(wrapper.get("table").attributes("role")).toBe("treegrid");
+        expect(wrapper.findAll("tbody tr")).toHaveLength(1);
+
+        await wrapper.get("tbody button").trigger("click");
+
+        expect(wrapper.findAll("tbody tr")).toHaveLength(2);
+        expect(wrapper.findAll("tbody td:nth-child(2)")[1].text()).toBe("A1");
     });
 });

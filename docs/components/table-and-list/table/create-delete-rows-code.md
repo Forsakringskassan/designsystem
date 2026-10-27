@@ -13,18 +13,18 @@ FTableAddRemoveExample.vue
 
 ## Lägga till en rad
 
-Använd [`Array.push()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) eller motsvarande för att lägga till en ny rad i ditt befintliga dataset.
+Använd [`Array.push()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) eller motsvarande för att lägga till en ny rad i din befintliga array med rader.
 
 ```ts nocompile
-dataset.push(newRow);
+rows.value.push(newRow);
 ```
 
 ## Ta bort en rad
 
 Använd metoden `withTabstopBehaviour` som tabellkomponenten exponerar för att fokus ska landa på prioriterad cell efter borttag.
 
-Använd metoden `removeDatasetRows` för att smidigt ta bort en eller flera rader i din datamängd.
-Metoden muterar ditt befintliga dataset.
+Använd metoden `removeTableRows` för att smidigt ta bort en eller flera rader i din datamängd.
+Metoden muterar din befintliga datamängd.
 
 ```ts
 import { ref, useTemplateRef } from "vue";
@@ -34,15 +34,14 @@ import {
     FButton,
     FTable,
     defineTableColumns,
-    removeDatasetRows,
-    useDatasetRef,
+    removeTableRows,
 } from "@fkui/vue";
 
 interface Row {
     namn: string;
 }
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         namn: "Apelsin",
     },
@@ -72,7 +71,7 @@ function onRemoveRow(row: Row): void {
     assertRef(tableRef);
 
     tableRef.value.withTabstopBehaviour("row-removal", () => {
-        removeDatasetRows(rows, row);
+        removeTableRows(rows, row);
     });
 }
 ```

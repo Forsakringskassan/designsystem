@@ -13,6 +13,10 @@ Composable för att skapa en reaktiv datamängd inkapslad i en Vue ref.
 
 Datamängder är arrayer utökade med extra metadata för att hantera tillgänglighet i tabeller och listor, specifikt när datamängden är ett urval av en större mängd, och används lämpligtvis av komponenter så som {@link FSortFilterDataset datamängdsorterare} (FSortFilterDataset) och {@link FTable tabell} (FTable).
 
+::: warning
+Metoden är deprekerad.
+:::
+
 ## Syntax
 
 ```ts nocompile

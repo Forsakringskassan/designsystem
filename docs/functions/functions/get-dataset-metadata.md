@@ -14,6 +14,10 @@ Returnerar metadata om en datamängd eller ett enskilt element i en datamängd.
 
 Kastar ett fel om ett element skickas in som inte tillhör någon datamängd.
 
+::: warning
+Metoden är deprekerad.
+:::
+
 ## Syntax
 
 ```ts nocompile

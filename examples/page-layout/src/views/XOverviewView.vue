@@ -12,6 +12,7 @@ const ankeborgare: Person[] = [
     { name: "Magica De Hex", adress: "Vulkanen", city: "Vesuvius", car: null },
     { name: "Bolivar", adress: "Paradisäppelvägen 111", city: "Ankeborg", car: null },
 ];
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- test
 const rows = useDatasetRef(ankeborgare);
 
 function showPerson(item: Person): void {

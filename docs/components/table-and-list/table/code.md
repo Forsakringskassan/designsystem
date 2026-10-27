@@ -23,7 +23,8 @@ FTableExample.vue
 Du sätter upp din tabell genom att definiera kolumner och rader som ska ingå.
 
 ```ts
-import { defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { defineTableColumns } from "@fkui/vue";
 
 // definiera data
 interface Row {
@@ -39,7 +40,7 @@ const columns = defineTableColumns<Row>([
 ]);
 
 // definiera rader
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         namn: "Banan",
     },
@@ -49,6 +50,10 @@ const rows = useDatasetRef<Row>([
 ```html static
 <f-table :columns :rows></f-table>
 ```
+
+::: info
+Tidigare definierades rader med {@link useDatasetRef `useDatasetRef()`} (numera deprekerad).
+:::
 
 ## Kolumner
 
@@ -212,7 +217,8 @@ const columns = defineTableColumns<Row>([
 
 ```vue nomarkup
 <script setup lang="ts">
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -227,7 +233,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         namn: "Apelsin",
         land: "Spanien",
@@ -278,7 +284,8 @@ const columns = defineTableColumns<Row>([
 
 ```vue nomarkup
 <script setup lang="ts">
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -298,7 +305,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         namn: "Apelsin",
         land: "Spanien",
@@ -351,7 +358,8 @@ const columns = defineTableColumns<Row>([
 
 ```vue nomarkup
 <script setup lang="ts">
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -373,7 +381,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         namn: "Apelsin",
         land: "Spanien",
@@ -432,7 +440,8 @@ const columns = defineTableColumns<Row>([
 
 ```vue nomarkup
 <script setup lang="ts">
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     value: number;
@@ -453,7 +462,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         value: 111,
     },
@@ -487,7 +496,8 @@ För att få zebrarandig tabell använd propen `striped`.
 
 ```vue nomarkup
 <script setup lang="ts">
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -507,7 +517,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>([
+const rows = ref<Row[]>([
     {
         namn: "Apelsin",
         land: "Spanien",
@@ -565,7 +575,8 @@ Som standard visas textnyckeln `fkui.ftable.empty.text`, se [Textnycklar](#textn
 
 ```vue nomarkup
 <script setup lang="ts">
-import { FTable, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { ref } from "vue";
+import { FTable, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -583,7 +594,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef<Row>([]);
+const rows = ref<Row[]>([]);
 </script>
 
 <template>
