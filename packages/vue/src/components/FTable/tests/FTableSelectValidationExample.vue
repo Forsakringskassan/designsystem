@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import { FButton, FMessageBox, FTable, FValidationForm, defineTableColumns, useDatasetRef } from "@fkui/vue";
+import { FButton, FMessageBox, FTable, FValidationForm, defineTableColumns } from "@fkui/vue";
 
 interface Row {
     namn: string;
@@ -34,7 +34,7 @@ const columns = defineTableColumns<Row>([
     },
 ]);
 
-const rows = useDatasetRef(data);
+const rows = ref(data);
 const showSuccess = ref(false);
 
 function addRow(): void {
