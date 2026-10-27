@@ -5,7 +5,7 @@ import { useElementHover, useFocusWithin } from "@vueuse/core";
 import { IComboboxDropdown, IPopupError } from "../../internal-components";
 import { dispatchComponentValidityEvent } from "../../utils";
 import { isVisible } from "./is-visible";
-import { type PopupError } from "./popup-eror";
+import { type PopupError } from "./popup-error";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnSelect } from "./table-column";
 
@@ -325,7 +325,7 @@ watchEffect(() => {
         @click.stop="onCellClick"
     >
         <template v-if="visible">
-            <!--Temparary validation element for table select columns.
+            <!--Temporary validation element for table select columns.
             Update when implementing SFKUI-8257
         -->
             <select
