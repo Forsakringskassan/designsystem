@@ -9,6 +9,20 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version %version%
+
+2026-10-28
+
+För att se samtliga ändringar i releasen, se {@link changelog changelog}
+
+### Förenklad användning av tabell
+
+Tabellen kan nu ta emot rader direkt från en vanlig Vue-ref, till exempel `const rows = ref<Row[]>(...)`.
+Du behöver alltså inte längre använda `useDatasetRef()` för att visa data i en tabell.
+I samband med detta deprekerar vi `useDatasetRef()`.
+
+{@link code Läs mer och se exempel på hur du kan definiera rader här.}
+
 ## Version v6.62.0
 
 2026-10-14
