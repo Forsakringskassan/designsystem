@@ -1,0 +1,165 @@
+{
+    "name": "FFormModal",
+    "slug": "fformmodal",
+    "models": [],
+    "props": [
+        {
+            "name": "fullscreen",
+            "description": "Enable fullscreen mode in mobile.",
+            "type": "boolean",
+            "required": false,
+            "default": {
+                "value": "true"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "isOpen",
+            "description": "If the modal is open.\nUse this to toggle if the modal should be visible or not.",
+            "type": "boolean",
+            "required": false,
+            "default": {
+                "value": "true"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "size",
+            "description": "See <f-modal> `size` props.",
+            "type": "FModalSize | \"fullscreen\" | \"\"",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "value",
+            "description": "The data that has been submitted.",
+            "type": "object",
+            "required": false,
+            "default": {
+                "value": "{}"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "useErrorList",
+            "description": "Include the error list component.",
+            "type": "boolean",
+            "required": false,
+            "default": {
+                "value": "true"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "formId",
+            "description": "The id for the form id attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "ariaCloseText",
+            "description": "The aria-label attribute text for the top right close button.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "beforeSubmit",
+            "description": "If given, this function is called before the [[submit]] event is emitted.\nSee <f-validation-form> `beforeSubmit` props for more info.",
+            "type": "FValidationFormCallback",
+            "required": false,
+            "default": {
+                "value": "function() {\r\n    /* do nothing */\r\n}"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "beforeValidation",
+            "description": "If given, this function is called before the form data is validated and the [[submit]] event is emitted.\nSee <f-validation-form> `beforeValidation` props for more info.",
+            "type": "FValidationFormCallback",
+            "required": false,
+            "default": {
+                "value": "function() {\r\n    /* do nothing */\r\n}"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "buttons",
+            "description": "List of buttons to display in the modal.\nEach button is defined as an FModalButtonDescriptor with the following properties:\n- `label` (String): The text displayed on the button.\n- `event` (String): The event emitted when the button is clicked.\n- `type` (String): The button type. Valid values are: \"primary\" or \"secondary\".\n- `submitButton` (Boolean): Whether the button is a submit button.",
+            "type": "FModalButtonDescriptor[]",
+            "required": false,
+            "default": {
+                "value": "(): FModalButtonDescriptor[] => [\r\n    {\r\n        label: TranslationService.provider.translate(\"fkui.form-modal.button.submit.text\", \"Spara\"),\r\n        event: \"submit\",\r\n        type: \"primary\",\r\n        submitButton: true,\r\n    },\r\n    {\r\n        label: TranslationService.provider.translate(\"fkui.form-modal.button.cancel.text\", \"Avbryt\"),\r\n        event: \"dismiss\",\r\n        type: \"secondary\",\r\n    },\r\n]"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "cancel",
+            "description": "Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.\nIn most use cases the isOpen prop should be set to false when this event is triggered.",
+            "properties": [],
+            "deprecated": null
+        },
+        {
+            "name": "close",
+            "description": "Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.\nIn most use cases the isOpen prop should be set to false when this event is triggered.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "undefined",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "submit",
+            "description": "Event that is dispatched when the submit button is is clicked.\nThe event payload is the data that has been submitted.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "undefined",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "header",
+            "description": "Slot for the header.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot for main content above text fields and buttons.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "error-message",
+            "description": "Slot for error message",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "input-text-fields",
+            "description": "Slot for input text fields for entering text.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

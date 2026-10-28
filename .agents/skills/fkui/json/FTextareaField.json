@@ -1,0 +1,154 @@
+{
+    "name": "FTextareaField",
+    "slug": "ftextareafield",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "The value for the input.\nIf the prop is not set undefined will be used.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "id",
+            "description": "The id for the input id attribute.\nThe id for the label for attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "softLimit",
+            "description": "The number of characters for when the \"characters left\" warning should be shown.\nA value of 100 means that when 100 or less characters is left the warning is shown.\nIf softLimit is used, then maxlength is required.\nIf the prop is not set undefined will be used, which means that no warning will be shown.",
+            "type": "number",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "maxlength",
+            "description": "The maximum amount of characters permitted in the textarea.\nIf the prop is not set undefined will be used, which means unlimited.",
+            "type": "number",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "charactersLeftWarning",
+            "description": "The string that should be shown in the \"characters left\" warning.\nMust contain the word %charactersLeft% which is used to interpolate the number of characters left into the warning string.\nIf the prop is not set \"Antal tecken kvar: %charactersLeft%\" will be used.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"Antal tecken kvar: %charactersLeft%\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "disabled",
+            "description": "Specifies that the component should be disabled, i.e. unusable.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "resizable",
+            "description": "Enabling vertical resizing of the textarea",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "autoResize",
+            "description": "Automatically adjust the textarea height to fit its content.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "maxRows",
+            "description": "Maximum number of visible rows when `autoResize` is enabled.\nWhen the content exceeds this height the textarea will scroll.",
+            "type": "number",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "input",
+            "description": null,
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "string",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for label content.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "tooltip",
+            "description": "Slot for tooltip.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "description",
+            "description": "Optional slot for description. See {@link FLabel} for details.",
+            "bindings": [
+                {
+                    "name": "description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for primary description content."
+                },
+                {
+                    "name": "format-description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for format description."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "error-message",
+            "description": "Slot for displaying single or several error messages.",
+            "bindings": [
+                {
+                    "name": "hasError",
+                    "type": "boolean",
+                    "description": "Set to true when a validation error is present"
+                },
+                {
+                    "name": "validationMessage",
+                    "type": "string",
+                    "description": "Descriptive validation error message for current error"
+                }
+            ],
+            "deprecated": null
+        }
+    ]
+}

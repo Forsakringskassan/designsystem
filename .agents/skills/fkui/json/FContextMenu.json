@@ -1,0 +1,60 @@
+{
+    "name": "FContextMenu",
+    "slug": "fcontextmenu",
+    "models": [],
+    "props": [
+        {
+            "name": "isOpen",
+            "description": "Toggle open/closed popup.",
+            "type": "boolean",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "anchor",
+            "description": "DOM element to position popup at.",
+            "type": "HTMLElement",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "items",
+            "description": "The items to be displayed in the menu.",
+            "type": "ContextMenuItem[]",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "ariaLabel",
+            "description": "Unique accessible name for navigation landmark.",
+            "type": "string",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "close",
+            "description": "Event that is dispatched after an item is selected or\nafter pressing for example esc in the menu",
+            "properties": [],
+            "deprecated": null
+        },
+        {
+            "name": "select",
+            "description": "Event that is dispatched when an item is selected.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "string",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": []
+}

@@ -1,0 +1,70 @@
+{
+    "name": "FDataTable",
+    "slug": "fdatatable",
+    "models": [],
+    "props": [
+        {
+            "name": "rows",
+            "description": "The rows to be listed.\nThe rows will be listed in the given array order.",
+            "type": "T[]",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "keyAttribute",
+            "description": "Unique attribute in rows.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "striped",
+            "description": "When enabled alternating rows will use a different background color.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "scroll",
+            "description": "Enable scrolling inside table.\n\nCan be one of the following values:\n\n- `\"horizontal\"`: Enables horizontal scrolling\n- `\"vertical\"`: Enables vertical scrolling\n- `\"both\"`: Enables scrolling in both directions\n- `\"none\"`: Disables scrolling (default)",
+            "type": "TableScroll",
+            "required": false,
+            "default": {
+                "value": "TableScroll.NONE"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "caption",
+            "description": "Slot for table caption.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot for table row.",
+            "bindings": [
+                {
+                    "name": "row",
+                    "type": "T",
+                    "description": "Current row being rendered."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "empty",
+            "description": "Slot for displaying a message when table is empty. Default text is 'Tabellen är tom' (key fkui.data-table.empty).",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}
