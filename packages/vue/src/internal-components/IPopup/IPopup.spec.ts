@@ -1,6 +1,6 @@
 import "html-validate/vitest";
 import "@fkui/test-utils/vitest";
-import { defineComponent, h, nextTick } from "vue";
+import { defineComponent, h } from "vue";
 import { type VueWrapper, config, mount } from "@vue/test-utils";
 import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 import IPopup from "./IPopup.vue";
@@ -103,9 +103,15 @@ function mountPopupWithAnchorOverlap(
     });
 }
 
-async function waitForPlacementCalculation(): Promise<void> {
-    await nextTick();
-    await nextTick();
+async function waitForPlacementCalculation(
+    wrapper: IPopupWrapper,
+    expected: Placement,
+): Promise<void> {
+    await vi.waitUntil(
+        () =>
+            wrapper.get("[data-placement]").attributes("data-placement") ===
+            expected,
+    );
 }
 
 beforeEach(() => {
@@ -191,19 +197,19 @@ describe("`anchorOverlap` prop", () => {
         mockAnchorOverlapGeometry();
 
         const defaultPopup = mountPopupWithAnchorOverlap();
-        await waitForPlacementCalculation();
+        await waitForPlacementCalculation(defaultPopup, Placement.I);
         expect(
             defaultPopup.get("[data-placement]").attributes("data-placement"),
         ).toBe(Placement.I);
 
         const allowPopup = mountPopupWithAnchorOverlap("allow");
-        await waitForPlacementCalculation();
+        await waitForPlacementCalculation(allowPopup, Placement.I);
         expect(
             allowPopup.get("[data-placement]").attributes("data-placement"),
         ).toBe(Placement.I);
 
         const neverPopup = mountPopupWithAnchorOverlap("never");
-        await waitForPlacementCalculation();
+        await waitForPlacementCalculation(neverPopup, Placement.Fallback);
         expect(
             neverPopup.get("[data-placement]").attributes("data-placement"),
         ).toBe(Placement.Fallback);
@@ -220,20 +226,20 @@ describe("`anchorOverlap` prop", () => {
         mockAnchorOverlapGeometry();
         const wrapper = mountPopupWithAnchorOverlap("allow");
 
-        await waitForPlacementCalculation();
+        await waitForPlacementCalculation(wrapper, Placement.I);
         expect(
             wrapper.get("[data-placement]").attributes("data-placement"),
         ).toBe(Placement.I);
 
         await wrapper.setProps({ anchorOverlap: "never" });
-        await waitForPlacementCalculation();
+        await waitForPlacementCalculation(wrapper, Placement.Fallback);
         expect(
             wrapper.get("[data-placement]").attributes("data-placement"),
         ).toBe(Placement.Fallback);
         await vi.runAllTimersAsync();
 
         await wrapper.setProps({ anchorOverlap: "allow" });
-        await waitForPlacementCalculation();
+        await waitForPlacementCalculation(wrapper, Placement.I);
         expect(
             wrapper.get("[data-placement]").attributes("data-placement"),
         ).toBe(Placement.I);
@@ -263,7 +269,7 @@ describe("`anchorOverlap` prop", () => {
         const wrapper = mountPopupWithAnchorOverlap("allow", false);
 
         await wrapper.setProps({ isOpen: true, anchorOverlap: "never" });
-        await waitForPlacementCalculation();
+        await waitForPlacementCalculation(wrapper, Placement.Fallback);
 
         expect(
             wrapper.get("[data-placement]").attributes("data-placement"),
