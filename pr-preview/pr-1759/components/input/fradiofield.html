@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-303d34.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-d582ca.js",
     "@fkui/date": "../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-3dd8ce.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-84e98d.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-a2a6fb.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js"
   },
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-vue-selectors-303d34.js": "sha384-VDRtJukmYHvieJUGPqtaVb0j7ocu/gYIS2kUcj02cMAoFvt7ZMs9DwEjogtf5x5X",
     "../../assets/vendor-fkui-logic-d582ca.js": "sha384-cyM52KZVB1KqIVXEOAq8NZSkYppVF7zOYJyYxWRwf0AcmqyTyReggC0b5ka14TtJ",
     "../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../assets/vendor-fkui-vue-3dd8ce.js": "sha384-CVrqP+MIgLyEGgtazM7LeF7LSoM5kBgen7REJT9KRSRc2H+Y+J4d7C5SQHhGoPY+",
+    "../../assets/vendor-fkui-vue-84e98d.js": "sha384-e1xDaX9RyYod3lA3XobX+sVmUEwQ+K6H1bDUKhZfuNi9faK5ix59dv2ArXtODWHZ",
     "../../assets/vendor-fkui-vue-labs-a2a6fb.js": "sha384-h40XX4ozhvBgz6AWNQ0/PORIMa6s3scmYMA6oJTujg2racMU/GypyFfqTvLaa6oJ",
     "../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js": "sha384-Zomp3tpZgQ5vBn1jDfJPFtzxDwJLLe39dK/jC//bT97+TQqCbXlfNz6um+bZc61n"
   }
@@ -7127,13 +7127,13 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/705336d7b9eb447ed2056d035531582f68dddeb8/packages/vue/src/components/FFieldset/FFieldset.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/f87e45b85b0bcb84a35e18b1cbefc06c7013d318/packages/vue/src/components/FFieldset/FFieldset.vue">
                 FFieldset
             </a>
             
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/705336d7b9eb447ed2056d035531582f68dddeb8/packages/vue/src/components/FRadioField/FRadioField.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/f87e45b85b0bcb84a35e18b1cbefc06c7013d318/packages/vue/src/components/FRadioField/FRadioField.vue">
                 FRadioField
             </a>
             
@@ -7162,9 +7162,9 @@
                             </summary>
                             <ul>
                                 
-                                <li><a href="#radioknappar_vs_dropplista">Radioknappar vs Dropplista</a></li>
+                                <li><a href="#anvandning">Användning</a></li>
                                 
-                                <li><a href="#props_events_slots">Props, Events &amp; Slots</a></li>
+                                <li><a href="#kod_och_api">Kod och API</a></li>
                                 
                             </ul>
                         </details>
@@ -7172,31 +7172,358 @@
                     </div>
                     
 
-                    <div id="docs-content"><p class="docs-paragraph">Använd radioknappar för att låta en användare välja ett alternativ i en lista.</p>
-
-                <div
-                    id="example-27e8ea"
-                    class="code-preview code-preview--borderless"
-                    data-test="live"
-                    data-tags="live-example"
+                    <div id="docs-content"><div
+                id="example-8573c2"
+                class="code-preview code-preview--default"
+                
+                
+                data-background="solid"
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
                     
-                    data-language="vue"
-                >
-                    
-        <div id="example-e01233"></div>
+        <div id="example-154046"></div>
         <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
         <style>
             
         </style>
         <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
-        <script type="module" src="./FRadioFieldLiveExample-e01233.js"></script>
+        <script type="module" src="./FRadioFieldExample-154046.js"></script>
     
                 </div>
-            <p class="docs-paragraph">Saknar du <code>FRadioGroup</code>-komponenten?
-Den är deprekerad, för detaljer se <a href="../../gettingstarted/migration/migrating-to-fieldset.html">migreringsguide</a>.</p>
-<h2 id="radioknappar_vs_dropplista" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#radioknappar_vs_dropplista">Radioknappar vs Dropplista</a></h2><p class="docs-paragraph">En dropplista bör användas om antalet alternativ är relativt stort eller är om antalet är dynamiskt och därmed kan öka i antal .</p>
-<h2 id="props_events_slots" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#props_events_slots">Props, Events &amp; Slots</a></h2><h3 id="ffieldset" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ffieldset">FFieldset</a></h3><p class="docs-paragraph">Ersätter <code>FRadioGroup</code>.</p>
+                <div>
+            <button
+                type="button"
+                class="code-preview__button code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FRadioField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
 
+<span class="hljs-keyword">const</span> modelValue = ref&lt;boolean&gt;();
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;arbete-annat-land&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Har du arbetat utomlands under de senaste 12 månaderna? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;modelValue&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span> Ja <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;modelValue&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span> Nej <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        <p class="docs-paragraph">Använd radioknappar när användaren ska välja endast ett alternativ från en lista med flera svarsalternativ.
+Radioknappar har en gemensam <a href="../flabel.html">etikett</a> som beskriver vad användaren ska ta ställning till.</p>
+<h2 id="anvandning" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#anvandning">Användning</a></h2><h3 id="radioknappar_eller_dropplista" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#radioknappar_eller_dropplista">Radioknappar eller dropplista</a></h3><p class="docs-paragraph">Radioknappar tar mer plats än en dropplista eftersom alla svarsalternativ visas direkt.
+Det gör det lättare att överblicka och jämföra alternativen.
+En <a href="./fselectfield.html">dropplista</a> passar bättre när alternativen är många eller när antalet kan variera och bli stort.</p>
+<h3 id="placering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#placering">Placering</a></h3><p class="docs-paragraph">Visa radioknappar vertikalt som standard.
+Horisontell placering kan användas när det finns två korta svarsalternativ, till exempel ja och nej.
+På mindre skärmar visas alternativen alltid vertikalt.</p>
+
+            <div
+                id="example-079e9b"
+                class="code-preview code-preview--default"
+                
+                
+                data-background="solid"
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-b09cf4"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FRadioFieldHorizontalExample-b09cf4.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="code-preview__button code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FRadioField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> modelValue = ref&lt;boolean&gt;();
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;arbete-annat-land&quot;</span> <span class="hljs-attr">horizontal</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Har du arbetat utomlands under de senaste 12 månaderna? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;modelValue&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span> Ja <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;modelValue&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span> Nej <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        
+                <div
+                    id="example-7c7216"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-fieldset name=&quot;arbete-annat-land&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-fieldset name=&quot;arbete-annat-land&quot; horizontal&gt;</span>
+</code></pre>
+                </div>
+            <h3 id="forvalt_alternativ" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#forvalt_alternativ">Förvalt alternativ</a></h3><p class="docs-paragraph">Undvik att markera ett alternativ från början.
+Låt användaren i stället göra ett aktivt val.
+Då minskar risken för att frågan missas eller att användaren skickar in ett svar som inte stämmer.</p>
+<h3 id="nar_inget_alternativ_passar" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#nar_inget_alternativ_passar">När inget alternativ passar</a></h3><p class="docs-paragraph">När användaren har valt ett alternativ går det inte att återställa en grupp med radioknappar till att inget alternativ är valt.
+Om användaren ska kunna svara att inget alternativ passar behöver det finnas ett särskilt svarsalternativ, till exempel ”Inget av alternativen ovan”.
+Placera det sist i listan.
+Detta gäller både obligatoriska och frivilliga frågor.</p>
+<h3 id="utvidgad_text" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#utvidgad_text">Utvidgad text</a></h3><p class="docs-paragraph">Använd utvidgad text när ett alternativ behöver förklaras eller förtydligas.
+Håll alternativets huvudsakliga text kort.
+Den utvidgade texten visas på en egen rad, vilket gör alternativen lättare att överblicka och skapar en tydlig visuell hierarki mellan alternativet och den kompletterande informationen.</p>
+<p class="docs-paragraph">Texten ska vara kort och beskriva det enskilda alternativet.
+Information som gäller hela frågan ska i stället placeras som hjälptext vid frågan.</p>
+
+            <div
+                id="example-4d4c57"
+                class="code-preview code-preview--default"
+                
+                
+                data-background="solid"
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-e3a8a1"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FRadioFieldDetailsAlwaysExample-e3a8a1.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="code-preview__button code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FRadioField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> careReason = ref&lt;string&gt;();
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;care-reason&quot;</span> <span class="hljs-attr">show-details</span>=<span class="hljs-string">&quot;always&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Hur var barnet sjukt eller skadat? <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;careReason&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;temporary&quot;</span>&gt;</span>
+            Tillfällig sjukdom eller skada
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> som förkylning eller bruten arm <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;careReason&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;mental-health&quot;</span>&gt;</span>
+            Psykisk ohälsa
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> som stark oro, ångest eller panikattack <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;careReason&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;temporary-disability-deterioration&quot;</span>&gt;</span>
+            Tillfällig försämring i funktionsnedsättning
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> som ADHD eller autism <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;careReason&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;other&quot;</span>&gt;</span>
+            Annan sjukdom eller skada
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        
+                <div
+                    id="example-4a2ebb"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-fieldset name=&quot;care-reason&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-fieldset name=&quot;care-reason&quot; show-details=&quot;always&quot;&gt;</span>
+</code></pre>
+                </div>
+            <h3 id="inramade_alternativ_med_expanderbar_text" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#inramade_alternativ_med_expanderbar_text">Inramade alternativ med expanderbar text</a></h3><p class="docs-paragraph">Använd inramade alternativ med expanderbar text när varje val behöver framträda som en egen tydlig och klickbar yta och den kompletterande informationen blir relevant först efter valet.
+Ramen gör det tydligare vilken text som hör till respektive alternativ när innehållet visas.</p>
+<p class="docs-paragraph">Dölj inte information som användaren behöver för att kunna välja.</p>
+
+            <div
+                id="example-5b289a"
+                class="code-preview code-preview--default"
+                
+                
+                data-background="solid"
+                data-language="vue"
+            >
+                
+                <div class="code-preview__preview user-background">
+                    
+        <div id="example-f82292"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FRadioFieldBorderExpandableExample-f82292.js"></script>
+    
+                </div>
+                <div>
+            <button
+                type="button"
+                class="code-preview__button code-preview__toggle-markup"
+                aria-expanded="false"
+                onclick="toggleMarkup(this)"
+            >
+                <svg focusable="false" class="docs-icon" aria-hidden="true">
+                    <use href="#docs-icon-code"></use>
+                </svg>
+                Visa kod
+            </button>
+         </div>
+                <div
+                    class="code-preview__expand animate-expand"
+                    style="height: 0px;"
+                    hidden
+                >
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FFieldset</span>, <span class="hljs-title class_">FRadioField</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> paymentPlan = ref&lt;string&gt;();
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-fieldset</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;payment-plan&quot;</span> <span class="hljs-attr">border</span> <span class="hljs-attr">show-details</span>=<span class="hljs-string">&quot;when-selected&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">label</span>&gt;</span> Välj en avbetalningsplan <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">description</span>=<span class="hljs-string">&quot;{ descriptionClass }&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;descriptionClass&quot;</span>&gt;</span> Alla belopp är inklusive ränta. <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;paymentPlan&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;525-12&quot;</span>&gt;</span>
+            525 kronor per månad i 12 månader
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> Du kommer att betala tillbaka 6 300 kronor. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;paymentPlan&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;570-11&quot;</span>&gt;</span>
+            570 kronor per månad i 11 månader
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> Du kommer att betala tillbaka 6 270 kronor. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">f-radio-field</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;paymentPlan&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;625-10&quot;</span>&gt;</span>
+            625 kronor per månad i 10 månader
+            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">details</span>&gt;</span> Du kommer att betala tillbaka 6 250 kronor. <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">f-radio-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-fieldset</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            </div>
+        
+                <div
+                    id="example-7629a6"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-fieldset name=&quot;payment-plan&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-fieldset name=&quot;payment-plan&quot; border show-details=&quot;when-selected&quot;&gt;</span>
+</code></pre>
+                </div>
+            <h2 id="kod_och_api" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#kod_och_api">Kod och API</a></h2><p class="docs-paragraph">Här visas möjliga inställningar för komponenten.
+Vissa kombinationer bör undvikas.
+Se användningsråden ovan för rekommenderade sätt att använda komponenten.</p>
+
+                <div
+                    id="example-ac5ba0"
+                    class="code-preview code-preview--borderless"
+                    
+                    data-tags="live-example"
+                    
+                    data-language="vue"
+                >
+                    
+        <div id="example-bb35a5"></div>
+        <!-- [html-validate-disable-next element-permitted-content -- technical debt, should be inserted into <head>] -->
+        <style>
+            
+        </style>
+        <!-- [html-validate-disable-next require-sri -- technical debt, should generate integrity but we don't know the hash of the compiled file yet] -->
+        <script type="module" src="./FRadioFieldLiveExample-bb35a5.js"></script>
+    
+                </div>
+            <h3 id="migrera_fran_fradiogroup" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#migrera_fran_fradiogroup">Migrera från FRadioGroup</a></h3><p class="docs-paragraph"><code>FRadioGroup</code> och <code>FRadioGroupField</code> har tagits bort och ersatts av <code>FFieldset</code> respektive <code>FRadioField</code>.
+Se <a href="../../gettingstarted/migration/migrating-to-fieldset.html">migreringsguiden</a> för information om hur du uppdaterar din kod.</p>
+<h3 id="validering" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering">Validering</a></h3><p class="docs-paragraph">Om användaren måste välja ett alternativ ska radioknappsgruppen valideras som obligatorisk.
+Lägg <code>v-validation.required</code> på <code>FFieldset</code>.</p>
+
+                <div
+                    id="example-c8beaa"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-fieldset name=&quot;arbete-annat-land&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-fieldset v-validation.required name=&quot;arbete-annat-land&quot;&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">Läs mer om <a href="../../guides/validation-and-error-handling/validation.html">validering och felhantering</a>.</p>
+<h3 id="ffieldset" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ffieldset">FFieldset</a></h3>
         <h4 class="docs-heading docs-heading--h4" id="ffieldset-props">
             <a class="header-anchor" href="#ffieldset-props">Props</a>
         </h4>
@@ -7347,8 +7674,6 @@ Supported by radiobuttons and chip layout.</p>
                             <p>Sets visibility behaviour for details slot in selectable child items. By default details slot is not rendered.</p>
 <ul>
 <li><code>never</code> (default) - Never show item details.</li>
-</ul>
-<ul>
 <li><code>when-selected</code> - Show item details when selected.</li>
 <li><code>always</code> - Always show item details.</li>
 </ul>
@@ -7413,10 +7738,10 @@ Supported by radiobuttons and chip layout.</p>
                             
                         </dt>
                         <dd>
-                            <p>Slot for label content. This slot is required.</p>
+                            <p>Optional slot for displaying one or more error messages.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>hasError: boolean</code> <span role="presentation">&mdash;</span> Set to true when a validation error is present</li><li><code>validationMessage: string</code> <span role="presentation">&mdash;</span> Descriptive validation error message for current error</li>
+                            <li><code>hasError: boolean</code> <span role="presentation">&mdash;</span> Set to true when a validation error is present.</li><li><code>validationMessage: string</code> <span role="presentation">&mdash;</span> Descriptive validation error message for the current error.</li>
                             </ul>
                             
                         </dd>
@@ -7460,8 +7785,7 @@ Supported by radiobuttons and chip layout.</p>
                         </dd>
                     
         </dl>
-    <h3 id="fradiofield" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fradiofield">FRadioField</a></h3><p class="docs-paragraph">Ersätter <code>FRadioGroupField</code>.</p>
-
+    <h3 id="fradiofield" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fradiofield">FRadioField</a></h3>
         <h4 class="docs-heading docs-heading--h4" id="fradiofield-models">
             <a class="header-anchor" href="#fradiofield-models">Models</a>
         </h4>
@@ -7479,7 +7803,8 @@ Supported by radiobuttons and chip layout.</p>
                             
                         </dt>
                         <dd>
-                            <p>The value for the input checked attribute.</p>
+                            <p>Current value selected in the radio button group.
+The radio button is checked when this value strictly equals the <code>value</code> prop.</p>
 
                             <p class="doc-api__item">Default: <code>() =&gt; undefined</code></p>
                             
@@ -7542,7 +7867,7 @@ If the prop is not set a random value will be generated.</p>
                             
                         </dt>
                         <dd>
-                            <p>The value for the input.</p>
+                            <p>The value represented by this radio button.</p>
 
                             <p class="doc-api__item">Default: <code>() =&gt; undefined</code></p>
                             
@@ -7566,10 +7891,10 @@ If the prop is not set a random value will be generated.</p>
                             
                         </dt>
                         <dd>
-                            <p>Emitted when the value of the radiobutton changes.</p>
+                            <p>Emitted when the radio button is selected.</p>
 
                             <p class="docs-api__list-title">Arguments:</p><ul class="docs-api__list">
-                            <li><code>&lt;anonymous&gt;: anyType</code></li>
+                            <li><code>value: anyType</code> <span role="presentation">&mdash;</span> Value of the selected radio button.</li>
                             </ul>
                             
                         </dd>
@@ -7611,10 +7936,10 @@ If the prop is not set a random value will be generated.</p>
                             
                         </dt>
                         <dd>
-                            <p>Slot for details, should only contain short text</p>
+                            <p>Slot for additional information about the option.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>height: unknown</code></li>
+                            <li><code>height: number</code> <span role="presentation">&mdash;</span> The height of the expanded details content.</li>
                             </ul>
                             
                         </dd>
@@ -7689,9 +8014,9 @@ If the prop is not set a random value will be generated.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">renovate/vue-monorepo</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/705336d7b9eb447ed2056d035531582f68dddeb8">705336d</a>)<br />
+<div class="version"><span class="version-text-block">renovate/vue-monorepo</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/f87e45b85b0bcb84a35e18b1cbefc06c7013d318">f87e45b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1759">PR 1759</a><br />
-       <span class="version-text-block">2026-10-27 22:04</span>
+       <span class="version-text-block">2026-10-28 09:55</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
