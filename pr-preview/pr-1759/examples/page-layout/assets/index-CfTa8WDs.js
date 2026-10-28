@@ -14572,7 +14572,7 @@ function getDatasetMetadata(item) {
 /**
 * Check if a dataset is a dataset.
 *
-* @deprecated Dataset metadata is no longer required; use regular arrays instead (%version%).
+* @deprecated Dataset metadata is no longer required; use regular arrays instead (v6.63.0).
 * @internal
 * @since v6.39.0
 */
@@ -14778,7 +14778,7 @@ function toDataset(array, ...args) {
 * Creates a dataset as a Vue ref.
 *
 * @deprecated Use Vue's `ref()` instead. For expandable rows in `FTable`, pass
-*   the nested property name to `expandable-attribute` (%version%).
+*   the nested property name to `expandable-attribute` (v6.63.0).
 * @public
 * @since v6.39.0
 */
