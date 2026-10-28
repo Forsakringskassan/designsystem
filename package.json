@@ -114,7 +114,7 @@
     "@html-validate/release-scripts": "7.6.17",
     "@types/estree": "1.0.9",
     "@types/lodash": "4.17.27",
-    "@types/node": "22.20.5",
+    "@types/node": "26.6.5",
     "@typescript/native": "npm:typescript@7.0.2",
     "@vue/compiler-core": "3.5.43",
     "@vue/compiler-dom": "3.5.43",

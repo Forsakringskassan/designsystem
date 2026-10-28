@@ -33,7 +33,7 @@ jobs:
             - name: Use Node.js 22.x
               uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
               with:
-                  node-version: 22.x
+                  node-version: 26.x
             - name: Determine version
               run: echo "VERSION=v$(npm pkg get version | jq -r)" | tee -a $GITHUB_ENV
             - name: Install dependencies
