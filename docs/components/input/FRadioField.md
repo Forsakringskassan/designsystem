@@ -7,32 +7,117 @@ component:
     - FRadioField
 ---
 
-Använd radioknappar för att låta en användare välja ett alternativ i en lista.
+```import background=solid
+FRadioFieldExample.vue
+```
 
-```import live-example test-id=live
+Använd radioknappar när användaren ska välja endast ett alternativ från en lista med flera svarsalternativ.
+Radioknappar har en gemensam {@link FLabel etikett} som beskriver vad användaren ska ta ställning till.
+
+## Användning
+
+### Radioknappar eller dropplista
+
+Radioknappar tar mer plats än en dropplista eftersom alla svarsalternativ visas direkt.
+Det gör det lättare att överblicka och jämföra alternativen.
+En {@link FSelectField dropplista} passar bättre när alternativen är många eller när antalet kan variera och bli stort.
+
+### Placering
+
+Visa radioknappar vertikalt som standard.
+Horisontell placering kan användas när det finns två korta svarsalternativ, till exempel ja och nej.
+På mindre skärmar visas alternativen alltid vertikalt.
+
+```import background=solid
+FRadioFieldHorizontalExample.vue
+```
+
+```diff
+-<f-fieldset name="arbete-annat-land">
++<f-fieldset name="arbete-annat-land" horizontal>
+```
+
+### Förvalt alternativ
+
+Undvik att markera ett alternativ från början.
+Låt användaren i stället göra ett aktivt val.
+Då minskar risken för att frågan missas eller att användaren skickar in ett svar som inte stämmer.
+
+### När inget alternativ passar
+
+När användaren har valt ett alternativ går det inte att återställa en grupp med radioknappar till att inget alternativ är valt.
+Om användaren ska kunna svara att inget alternativ passar behöver det finnas ett särskilt svarsalternativ, till exempel ”Inget av alternativen ovan”.
+Placera det sist i listan.
+Detta gäller både obligatoriska och frivilliga frågor.
+
+### Utvidgad text
+
+Använd utvidgad text när ett alternativ behöver förklaras eller förtydligas.
+Håll alternativets huvudsakliga text kort.
+Den utvidgade texten visas på en egen rad, vilket gör alternativen lättare att överblicka och skapar en tydlig visuell hierarki mellan alternativet och den kompletterande informationen.
+
+Texten ska vara kort och beskriva det enskilda alternativet.
+Information som gäller hela frågan ska i stället placeras som hjälptext vid frågan.
+
+```import background=solid
+FRadioFieldDetailsAlwaysExample.vue
+```
+
+```diff
+-<f-fieldset name="care-reason">
++<f-fieldset name="care-reason" show-details="always">
+```
+
+### Inramade alternativ med expanderbar text
+
+Använd inramade alternativ med expanderbar text när varje val behöver framträda som en egen tydlig och klickbar yta och den kompletterande informationen blir relevant först efter valet.
+Ramen gör det tydligare vilken text som hör till respektive alternativ när innehållet visas.
+
+Dölj inte information som användaren behöver för att kunna välja.
+
+```import background=solid
+FRadioFieldBorderExpandableExample.vue
+```
+
+```diff
+-<f-fieldset name="payment-plan">
++<f-fieldset name="payment-plan" border show-details="when-selected">
+```
+
+## Kod och API
+
+Här visas möjliga inställningar för komponenten.
+Vissa kombinationer bör undvikas.
+Se användningsråden ovan för rekommenderade sätt att använda komponenten.
+
+```import live-example
 FRadioFieldLiveExample.vue
 ```
 
-Saknar du `FRadioGroup`-komponenten?
-Den är deprekerad, för detaljer se {@link migrating-to-fieldset migreringsguide }.
+### Migrera från FRadioGroup
 
-## Radioknappar vs Dropplista
+`FRadioGroup` och `FRadioGroupField` har tagits bort och ersatts av `FFieldset` respektive `FRadioField`.
+Se {@link migrating-to-fieldset migreringsguiden} för information om hur du uppdaterar din kod.
 
-En dropplista bör användas om antalet alternativ är relativt stort eller är om antalet är dynamiskt och därmed kan öka i antal .
+### Validering
 
-## Props, Events & Slots
+Om användaren måste välja ett alternativ ska radioknappsgruppen valideras som obligatorisk.
+Lägg `v-validation.required` på `FFieldset`.
+
+```diff
+-<f-fieldset name="arbete-annat-land">
++<f-fieldset v-validation.required name="arbete-annat-land">
+```
+
+Läs mer om {@link validation validering och felhantering}.
 
 ### FFieldset
-
-Ersätter `FRadioGroup`.
 
 :::api
 vue:FFieldset
 :::
 
 ### FRadioField
-
-Ersätter `FRadioGroupField`.
 
 :::api
 vue:FRadioField
