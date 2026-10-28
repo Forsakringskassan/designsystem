@@ -22,7 +22,7 @@ function* datasetGenerator<T extends object>(
  * Returns an iterator over the elements of a dataset, yielding each element
  * together with its metadata.
  *
- * @deprecated Dataset metadata is no longer required; use regular arrays instead (%version%).
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead (v6.63.0).
  * @public
  * @since v6.42.0
  * @param dataset - The dataset to iterate over.

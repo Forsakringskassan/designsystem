@@ -3,7 +3,7 @@
  * Used to constrain the `nestedAttribute` parameter to only keys that
  * actually hold a nested array of the same type.
  *
- * @deprecated Dataset metadata is no longer required; use regular arrays instead (%version%).
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead (v6.63.0).
  * @public
  * @since v6.41.0
  */
@@ -17,7 +17,7 @@ export const datasetSymbol: unique symbol = Symbol("dataset");
  * Dataset contains row metadata for components such as `FSortFilterDataset`
  * and `FTable`.
  *
- * @deprecated Dataset metadata is no longer required; use regular arrays instead (%version%).
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead (v6.63.0).
  * @public
  * @since v6.39.0
  */
