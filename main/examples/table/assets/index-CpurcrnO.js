@@ -22428,7 +22428,7 @@ function getDatasetMetadata(item) {
 /**
 * Check if a dataset is a dataset.
 *
-* @deprecated Dataset metadata is no longer required; use regular arrays instead (%version%).
+* @deprecated Dataset metadata is no longer required; use regular arrays instead (v6.63.0).
 * @internal
 * @since v6.39.0
 */
@@ -29940,7 +29940,7 @@ var FTable_default = /* @__PURE__ */ defineComponent({
 * Note: The array is mutated.
 *
 * @public
-* @since %version%
+* @since v6.63.0
 * @param rows - The row array
 * @param rowsToRemove - The row(s) to remove (expected to exist in the rows)
 * @param expandableAttribute - Property containing expandable child rows
