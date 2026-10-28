@@ -874,8 +874,8 @@ var metadata_default = {
           "palette": "green-200"
         },
         "dark": {
-          "value": "#aad8c0",
-          "palette": "green-200"
+          "value": "#494f5b",
+          "palette": "neutral-700"
         }
       }
     },
@@ -888,8 +888,8 @@ var metadata_default = {
           "palette": "green-600"
         },
         "dark": {
-          "value": "#248f59",
-          "palette": "green-500"
+          "value": "#77bb98",
+          "palette": "green-300"
         }
       }
     },
