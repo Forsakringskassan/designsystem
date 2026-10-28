@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## 6.63.0 (2026-10-28)
+
+### Features
+
+* **@fkui/docs, @fkui/vue:** deprecate dataset (refs SFKUI-8305) 1a9b274
+* **@fkui/docs, @fkui/vue:** ftable support removing non-dataset rows (refs SFKUI-8305) f777737
+* **@fkui/vue:** add `TableNestedKeyOf` (refs SFKUI-8305) ea8a8c7
+* **@fkui/vue:** f-table `rows` prop accepts `T[]` (refs SFKUI-8305) d3c5ee5
+
+### Bug Fixes
+
+* **@fkui/vue:** save FTable text cell value when editable(row) changes after mount (refs SFKUI-8362) a902168
+* **deps:** update dependency cssnano to v9.6.0 083435d
+* **deps:** update dependency cssnano to v9.8.0 ([#1761](undefined/Forsakringskassan/designsystem/issues/1761)) 37420ad
+* **deps:** update dependency cssnano to v9.9.0 f72aae0
+* **deps:** update dependency i18next to v26.4.3 ([#1753](undefined/Forsakringskassan/designsystem/issues/1753)) ec1f3b4
+* **deps:** update dependency i18next to v26.4.4 78cbef0
+* **deps:** update dependency i18next to v26.4.5 c72a40c
+* **deps:** update dependency i18next to v26.4.6 bfbd0bf
+* **deps:** update dependency i18next to v26.4.7 1dac3c6
+* **deps:** update dependency i18next to v26.5.10 72c0d9e
+* **deps:** update dependency i18next to v26.5.2 92a73ea
+* **deps:** update dependency i18next to v26.5.3 44c0c2d
+* **deps:** update dependency i18next to v26.5.4 b03048d
+* **deps:** update dependency i18next to v26.5.5 1c25d4e
+* **deps:** update dependency i18next to v26.5.6 515e114
+* **deps:** update dependency i18next to v26.5.7 c582f97
+* **deps:** update dependency sass to v1.105.2 ([#1768](undefined/Forsakringskassan/designsystem/issues/1768)) 4274277
+* **deps:** update dependency sass to v1.106.0 e6559cd
+* **deps:** update dependency sass to v1.106.1 953128c
+
 ## 6.62.0 (2026-10-14)
 
 ### Features

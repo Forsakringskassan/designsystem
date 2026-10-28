@@ -39,7 +39,7 @@ export function getElementMetadata(
 /**
  * Returns metadata about a dataset.
  *
- * @deprecated Dataset metadata is no longer required; use regular arrays instead (%version%).
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead (v6.63.0).
  * @public
  * @since v6.40.0
  */
@@ -50,7 +50,7 @@ export function getDatasetMetadata<T extends object>(
 /**
  * Returns metadata about an element within a dataset.
  *
- * @deprecated Dataset metadata is no longer required; use regular arrays instead (%version%).
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead (v6.63.0).
  * @public
  * @since v6.40.0
  */

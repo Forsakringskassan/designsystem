@@ -7,7 +7,7 @@ import {
 /**
  * Metadata about a dataset (entire array).
  *
- * @deprecated Dataset metadata is no longer required; use regular arrays instead (%version%).
+ * @deprecated Dataset metadata is no longer required; use regular arrays instead (v6.63.0).
  * @public
  * @since v6.40.0
  */

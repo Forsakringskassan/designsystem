@@ -7,7 +7,7 @@ import { toDataset } from "./to-dataset";
  * Creates a dataset as a Vue ref.
  *
  * @deprecated Use Vue's `ref()` instead. For expandable rows in `FTable`, pass
- *   the nested property name to `expandable-attribute` (%version%).
+ *   the nested property name to `expandable-attribute` (v6.63.0).
  * @public
  * @since v6.39.0
  */
