@@ -15032,8 +15032,8 @@ var decimalValidator = {
 	name: "decimal",
 	validation(value, _element, config) {
 		const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
-		const minDecimalsAsNumber = isSet(config.minDecimals) ? config.minDecimals : void 0;
-		const maxDecimalsAsNumber = isSet(config.maxDecimals) ? config.maxDecimals : void 0;
+		const minDecimalsAsNumber = isSet(config.minDecimals) ? Number(config.minDecimals) : void 0;
+		const maxDecimalsAsNumber = isSet(config.maxDecimals) ? Number(config.maxDecimals) : void 0;
 		if (config.minDecimals && Number.isNaN(minDecimalsAsNumber)) throw new Error("config.minDecimals must be a number");
 		if (config.maxDecimals && Number.isNaN(maxDecimalsAsNumber)) throw new Error("config.maxDecimals must be a number");
 		return isEmpty(valueWithoutWhitespace) || createNumberRegexp(minDecimalsAsNumber, maxDecimalsAsNumber).test(valueWithoutWhitespace);
