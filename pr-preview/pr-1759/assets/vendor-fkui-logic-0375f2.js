@@ -2933,11 +2933,11 @@ var decimalValidator = {
   validation(value, _element, config) {
     const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
     const minDecimalsAsNumber = isSet(config.minDecimals) ? (
-      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion, unicorn/no-useless-coercion -- technical debt */
       Number(config.minDecimals)
     ) : void 0;
     const maxDecimalsAsNumber = isSet(config.maxDecimals) ? (
-      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion, unicorn/no-useless-coercion -- technical debt */
       Number(config.maxDecimals)
     ) : void 0;
     if (config.minDecimals && Number.isNaN(minDecimalsAsNumber)) {
