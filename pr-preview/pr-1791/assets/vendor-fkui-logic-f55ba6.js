@@ -2932,14 +2932,8 @@ var decimalValidator = {
   name: "decimal",
   validation(value, _element, config) {
     const valueWithoutWhitespace = isSet(value) ? stripWhitespace(String(value)) : value;
-    const minDecimalsAsNumber = isSet(config.minDecimals) ? (
-      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-      Number(config.minDecimals)
-    ) : void 0;
-    const maxDecimalsAsNumber = isSet(config.maxDecimals) ? (
-      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion -- technical debt */
-      Number(config.maxDecimals)
-    ) : void 0;
+    const minDecimalsAsNumber = isSet(config.minDecimals) ? config.minDecimals : void 0;
+    const maxDecimalsAsNumber = isSet(config.maxDecimals) ? config.maxDecimals : void 0;
     if (config.minDecimals && Number.isNaN(minDecimalsAsNumber)) {
       throw new Error("config.minDecimals must be a number");
     }
