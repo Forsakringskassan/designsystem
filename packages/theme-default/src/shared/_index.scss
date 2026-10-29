@@ -1,6 +1,10 @@
 // stylelint-disable custom-property-empty-line-before -- technical debt, should just add a comment before each block
 
+@use "../palette-variables" as palette;
+
 @mixin variables {
+    @include palette.palette;
+
     // ***********
     // TEXT COLORS
     // ***********
