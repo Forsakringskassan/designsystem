@@ -9,7 +9,6 @@ function resolve(specifier) {
     return fileURLToPath(import.meta.resolve(specifier));
 }
 
-/* eslint-disable-next-line unicorn/no-top-level-side-effects -- false positive */
 export default defineConfig({
     plugins: ["html-validate-vue"],
     elements: [

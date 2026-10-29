@@ -14,7 +14,6 @@ const defaultButtons: FModalButtonDescriptor[] = [
 /**
  * Level: Ready
  */
-/* eslint-disable-next-line unicorn/no-top-level-side-effects -- false positive */
 export default defineComponent({
     name: "FConfirmModal",
     components: { FModal },
