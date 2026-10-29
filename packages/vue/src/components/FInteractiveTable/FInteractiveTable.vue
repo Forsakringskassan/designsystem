@@ -299,7 +299,7 @@ const nbOfColumns = computed((): number => {
 });
 
 const internalRows = computed((): T[] => {
-    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, vue/no-ref-as-operand -- technical debt */
     if (isExpandableTable) {
         return setItemIdentifiers(rows, keyAttribute, expandableAttribute);
     }
@@ -373,7 +373,7 @@ onMounted(() => {
     if (tbody.value) {
         updateTr(tbody.value);
     }
-    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, vue/no-ref-as-operand -- technical debt */
     if (isExpandableTable) {
         setNestedKey(expandableAttribute);
     }
@@ -537,7 +537,7 @@ function callbackBeforeItemDelete(item: T): void {
     }
 
     let index;
-    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, vue/no-ref-as-operand -- technical debt */
     if (isExpandableTable) {
         index = getExpandedIndex(item, internalRows.value);
     } else {

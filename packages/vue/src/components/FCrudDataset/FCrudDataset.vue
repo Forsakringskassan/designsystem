@@ -149,6 +149,8 @@ const isFormModalOpen = ref(false);
 const isConfirmModalOpen = ref(false);
 const callbackAfterItemAdd = ref<(item: T) => void>(() => ({}));
 const callbackBeforeItemDelete = ref<(item: T) => void>(() => ({}));
+
+/* eslint-disable-next-line unicorn/no-non-function-verb-prefix -- false positive */
 const addButtonText = $t("fkui.crud-dataset.button.add", "Lägg till ny");
 
 const formModalButtons = computed((): FModalButtonDescriptor[] => {

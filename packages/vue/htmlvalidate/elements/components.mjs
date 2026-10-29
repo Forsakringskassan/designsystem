@@ -6,7 +6,6 @@ const {
     allowedIfAttributeIsPresent,
 } = metadataHelper;
 
-/* eslint-disable-next-line unicorn/no-top-level-side-effects -- false positive */
 export default defineMetadata({
     /* f-label is defined at top as many other elements inherits from it */
     "f-label": {
