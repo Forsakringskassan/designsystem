@@ -123,7 +123,7 @@
     "@vue/server-renderer": "3.5.43",
     "@vue/shared": "3.5.43",
     "artifact-size-analyzer": "1.2.7",
-    "autoprefixer": "10.6.1",
+    "autoprefixer": "10.6.2",
     "cli-table": "0.3.11",
     "core-js": "3.51.0",
     "cypress": "16.2.0",
