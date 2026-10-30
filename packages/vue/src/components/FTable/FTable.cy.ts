@@ -909,6 +909,82 @@ describe("3.6 Feedback to user on table validation errors at submit", () => {
     });
 });
 
+describe("Select column validation", () => {
+    interface Row {
+        option: string;
+    }
+
+    const columns = defineTableColumns<Row>([
+        {
+            type: "select",
+            header: "Option",
+            key: "option",
+            editable: true,
+            options: ["Foo", "Bar", "Baz"],
+            label: () => "Option",
+            validation: {
+                required: {},
+            },
+        },
+    ]);
+
+    it("should display required error when submitting an empty select", () => {
+        const rows: Row[] = [{ option: "" }];
+
+        cy.mount(() =>
+            h(FValidationForm, { useErrorList: false }, () => [
+                h(FTable<Row>, {
+                    rows,
+                    columns,
+                }),
+                renderButton("submit", { type: "submit" }),
+            ]),
+        );
+
+        table
+            .cell({ row: 1, col: 1 })
+            .should("not.have.class", "table-ng__cell--error");
+
+        cy.get('button[type="submit"]').click();
+
+        table
+            .cell({ row: 1, col: 1 })
+            .should("have.class", "table-ng__cell--error")
+            .and("have.attr", "aria-invalid", "true");
+    });
+
+    it("should clear required error when a valid option is selected", () => {
+        const rows: Row[] = [{ option: "" }];
+
+        cy.mount(() =>
+            h(FValidationForm, { useErrorList: false }, () => [
+                h(FTable<Row>, {
+                    rows,
+                    columns,
+                }),
+                renderButton("submit", { type: "submit" }),
+            ]),
+        );
+
+        cy.get('button[type="submit"]').click();
+
+        table
+            .cell({ row: 1, col: 1 })
+            .should("have.class", "table-ng__cell--error");
+
+        table.cell({ col: 1, row: 1 }).click();
+        table.selectDropdown().should("exist");
+
+        cy.focused().press(Cypress.Keyboard.Keys.DOWN);
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+
+        table
+            .cell({ col: 1, row: 1 })
+            .should("contain.text", "Foo")
+            .and("not.have.class", "table-ng__cell--error");
+    });
+});
+
 describe("4.4 Home and End keyboard behavior", () => {
     interface Row {
         text: string;

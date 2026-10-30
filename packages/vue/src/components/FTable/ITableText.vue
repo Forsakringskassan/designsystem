@@ -27,7 +27,7 @@ import { inputFieldConfig } from "./input-fields-config";
 import { addInputValidators } from "./input-validators";
 import { isAlphanumeric } from "./is-alphanumeric";
 import { isVisible } from "./is-visible";
-import { type PopupError } from "./popup-eror";
+import { type PopupError } from "./popup-error";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnNumber, type NormalizedTableColumnText } from "./table-column";
 
