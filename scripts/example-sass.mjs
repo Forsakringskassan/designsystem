@@ -1,14 +1,13 @@
+import fs from "node:fs/promises";
 import { moduleImporter } from "@forsakringskassan/sass-module-importer";
-import { glob } from "glob";
 import { compileAsync } from "sass";
 
 const args = process.argv.slice(2);
-const filenames = await glob(args, {
-    posix: true,
-    ignore: ["**/*-nocompile*"],
+const filenames = fs.glob(args, {
+    exclude: ["**/*-nocompile*"],
 });
 
-for (const filename of filenames.flat()) {
+for await (const filename of filenames) {
     try {
         await compileAsync(filename, {
             importers: [moduleImporter()],
