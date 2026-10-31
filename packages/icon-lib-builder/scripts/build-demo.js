@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import path from "node:path";
-import { globSync } from "glob";
 
 const __dirname = import.meta.dirname;
 /**
@@ -25,7 +24,7 @@ export function buildDemo() {
     let iconMarkup = "";
     let spritesheets = "";
 
-    for (const directory of globSync(`${dest}/*/`)) {
+    for (const directory of fs.globSync(`${dest}/*/`)) {
         const directoryName = path.basename(directory);
 
         const iconList = loadJsonFile(
