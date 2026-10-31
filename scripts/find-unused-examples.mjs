@@ -30,7 +30,10 @@ function union(a, b) {
  * @returns {Promise<Set<{ filePath: string, name: string }>>}
  */
 async function findExamples() {
-    const filePaths = await glob("{docs,packages}/**/examples/*.vue");
+    const filePaths = await glob(
+        "packages/**/{examples,docs,tests}/*.vue",
+        "docs/**/*.vue",
+    );
     const entries = filePaths.map((it) => {
         const filePath = it.replaceAll("\\", "/");
         const name = path.basename(filePath);
@@ -50,7 +53,7 @@ async function findExamples() {
  * @returns {Promise<Set<string>>}
  */
 async function findDocsImported() {
-    const filePaths = await glob("{docs,packages/vue-labs/docs}/**/*.md", {
+    const filePaths = await glob("docs/**/*.md", {
         ignore: ["docs/examples/**"],
     });
     const found = /** @type {Set<string>} */ new Set();
