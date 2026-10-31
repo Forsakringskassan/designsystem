@@ -27,7 +27,7 @@
     "!scripts/**/*.spec.js"
   ],
   "dependencies": {
-    "glob": "13.0.6",
+    "glob": "14.0.2",
     "sass": "1.106.1",
     "svgo": "4.1.0"
   },
