@@ -130,7 +130,7 @@
     "cypress-real-events": "1.15.1",
     "dayjs": "1.11.23",
     "esbuild": "0.28.2",
-    "glob": "13.0.6",
+    "glob": "14.0.2",
     "html-validate": "11.17.0",
     "html-validate-markdown": "6.0.0",
     "html-validate-vue": "9.3.1",
