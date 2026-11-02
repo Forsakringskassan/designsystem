@@ -316,6 +316,42 @@ FTablePageObject.vue
 FTablePageObject-rows.cy.ts
 ```
 
+## select()
+
+Hämtar ett native `<select>` element från en redigerbar selectcell i tabellen.
+
+Både rad och kolumnnumreringen är 1-indexerad.
+
+Kolumnnumreringen inkluderar även eventuellta kolumner för expanderingsknappar och valbara rader.
+
+### Syntax
+
+```ts nocompile nolint
+select(row, col);
+```
+
+#### Parametrar
+
+`row: number`
+: Radnummer (1-indexerat).
+
+`col: number`
+: Kolumnnummer (1-indexerat).
+
+### exempel
+
+```import static
+FTablePageObject-select.vue
+```
+
+```import nomarkup
+FTablePageObject-select.vue
+```
+
+```import static
+FTablePageObject-select.cy.ts
+```
+
 ## selectDropdownOption()
 
 Hämtar ett alternativ från en cell med en öppen dropplista.

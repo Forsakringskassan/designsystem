@@ -175,6 +175,23 @@ export class FTablePageObject implements BasePageObject {
     }
 
     /**
+     * Get the native select element in a table cell.
+     *
+     * Only applicable if using an editable select cell.
+     *
+     * @public
+     * @param row - Row number (1-indexed).
+     * @param col - Column number (1-indexed).
+     * @returns The native select element.
+     */
+    public select(
+        row: number,
+        col: number,
+    ): Cypress.Chainable<JQuery<HTMLSelectElement>> {
+        return this.cell({ row, col }).find("select");
+    }
+
+    /**
      * Get the dropdown from a select cell.
      *
      * Only applicable if using a select cell.

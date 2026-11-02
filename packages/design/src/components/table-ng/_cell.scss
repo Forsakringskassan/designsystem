@@ -135,6 +135,22 @@ $cell-border-width: 1px;
         .table-ng__editable {
             border: $editable-border-width solid transparent;
             box-sizing: border-box;
+            appearance: none;
+            background: transparent;
+            border-radius: 0;
+            color: inherit;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .table-ng__select-wrapper {
+            display: flex;
+            position: relative;
+
+            span {
+                right: 12px;
+                position: absolute;
+            }
         }
     }
 
