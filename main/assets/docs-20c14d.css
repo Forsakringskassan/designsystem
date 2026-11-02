@@ -5953,22 +5953,22 @@ input[type=search]:focus-visible,
   border: 3px solid transparent;
   box-sizing: border-box;
 }
-.table-ng__cell--text:focus-visible {
-  box-shadow: none !important;
-}
-.table-ng__cell--text.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable {
+.table-ng__cell--select.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable {
   box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);
   border-radius: 0;
 }
 @media (hover: hover) {
-  .table-ng__cell--text.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable {
+  .table-ng__cell--select.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable {
     box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);
     border-radius: 0;
   }
 }
-.table-ng__cell--text.table-ng__cell--error:focus-visible .table-ng__editable {
+.table-ng__cell--select.table-ng__cell--error:focus-visible .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:focus-visible .table-ng__editable {
   box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);
   border-radius: 0;
+}
+.table-ng__cell--text:focus-visible {
+  box-shadow: none !important;
 }
 .table-ng__cell--text .table-ng__editable {
   border: 3px solid transparent;
