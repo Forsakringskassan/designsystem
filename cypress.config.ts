@@ -31,6 +31,12 @@ const disableVisualRegression = (() => {
 })();
 
 export default defineConfig(import.meta.dirname, {
+    /* retry flaky twice when running headless (CI) before failing the suite */
+    retries: {
+        runMode: 2,
+        openMode: 0,
+    },
+
     // Cypress may sometimes restart tests when it detects a changed file in the __screenshot__ folder.
     watchForFileChanges: false,
     e2e: {
