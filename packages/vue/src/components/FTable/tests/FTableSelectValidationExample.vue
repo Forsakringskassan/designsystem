@@ -8,9 +8,9 @@ interface Row {
 }
 
 const data: Row[] = [
-    { namn: "Apelsin", land: "Spanien" },
-    { namn: "Banan", land: "Ecuador" },
-    { namn: "Äpple", land: "Sverige" },
+    { namn: "Apelsin", land: "spanien" },
+    { namn: "Banan", land: "ecuador" },
+    { namn: "Äpple", land: "sverige" },
 ];
 
 const columns = defineTableColumns<Row>([
@@ -27,7 +27,20 @@ const columns = defineTableColumns<Row>([
         type: "select",
         header: "Land",
         key: "land",
-        options: ["Spanien", "Ecuador", "Sverige"],
+        options: [
+            {
+                value: "spanien",
+                label: "Spanien",
+            },
+            {
+                value: "ecuador",
+                label: "Ecuador",
+            },
+            {
+                value: "sverige",
+                label: "Sverige",
+            },
+        ],
         validation: {
             required: {},
         },
@@ -41,7 +54,7 @@ function addRow(): void {
     showSuccess.value = false;
     rows.value.push({
         namn: "",
-        land: "Välj...",
+        land: "",
     });
 }
 
