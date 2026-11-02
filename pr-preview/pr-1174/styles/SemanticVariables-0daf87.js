@@ -758,8 +758,8 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#1b7e4d",
-          "palette": "green-600"
+          "value": "#116a3e",
+          "palette": "green-700"
         },
         "dark": {
           "value": "#41aa75",
