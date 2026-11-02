@@ -79,7 +79,7 @@ function onCellKeyDown(event: KeyboardEvent): void {
         return;
     }
 
-    if (event.code !== "Enter" && event.code !== "NumpadEnter" && event.code !== "Space") {
+    if (!["Enter", "NumpadEnter", "Space"].includes(event.code)) {
         return;
     }
 
