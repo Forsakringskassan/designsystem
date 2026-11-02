@@ -137,11 +137,11 @@
   --fkds-color-action-text-inverted-focus: #ffffff;
   --fkds-color-action-background-primary-default: #2358af;
   --fkds-color-action-background-primary-hover: #1b478d;
-  --fkds-color-action-background-primary-active: #162f5d;
+  --fkds-color-action-background-primary-active: #1b478d;
   --fkds-color-action-background-primary-focus: #2358af;
   --fkds-color-action-background-secondary-default: #ffffff;
   --fkds-color-action-background-secondary-hover: #dee9f7;
-  --fkds-color-action-background-secondary-active: #a2bfe3;
+  --fkds-color-action-background-secondary-active: #dee9f7;
   --fkds-color-action-background-secondary-focus: #ffffff;
   --fkds-color-action-border-primary-default: #2358af;
   --fkds-color-action-border-primary-hover: #1b478d;
@@ -204,17 +204,7 @@ h6 {
   margin-top: 0;
 }
 
-article,
-aside,
-dialog,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section {
+:where(article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section) {
   display: block;
 }
 
@@ -5961,22 +5951,22 @@ input[type=search]:focus-visible,
   border: 3px solid transparent;
   box-sizing: border-box;
 }
-.table-ng__cell--text:focus-visible {
-  box-shadow: none !important;
-}
-.table-ng__cell--text.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable {
+.table-ng__cell--select.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable {
   box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);
   border-radius: 0;
 }
 @media (hover: hover) {
-  .table-ng__cell--text.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable {
+  .table-ng__cell--select.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable {
     box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);
     border-radius: 0;
   }
 }
-.table-ng__cell--text.table-ng__cell--error:focus-visible .table-ng__editable {
+.table-ng__cell--select.table-ng__cell--error:focus-visible .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:focus-visible .table-ng__editable {
   box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);
   border-radius: 0;
+}
+.table-ng__cell--text:focus-visible {
+  box-shadow: none !important;
 }
 .table-ng__cell--text .table-ng__editable {
   border: 3px solid transparent;
