@@ -21244,20 +21244,20 @@ var _hoisted_3$42 = { class: "modal__inner-container" };
 var _hoisted_4$33 = { class: "modal__dialog" };
 var _hoisted_5$26 = { class: "modal__dialog-inner" };
 var _hoisted_6$19 = { class: "modal__header" };
-var _hoisted_7$13 = {
+var _hoisted_7$14 = {
 	key: 0,
 	ref: "modalTitle",
 	class: "modal__title",
 	tabindex: "-1"
 };
-var _hoisted_8$9 = {
+var _hoisted_8$10 = {
 	ref: "modalContent",
 	class: "modal__content",
 	tabindex: "-1"
 };
-var _hoisted_9$7 = { class: "modal__footer" };
-var _hoisted_10$5 = { class: "modal__shelf" };
-var _hoisted_11$4 = ["aria-label"];
+var _hoisted_9$8 = { class: "modal__footer" };
+var _hoisted_10$6 = { class: "modal__shelf" };
+var _hoisted_11$5 = ["aria-label"];
 function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_f_icon = resolveComponent("f-icon");
 	return _ctx.isOpen ? (openBlock(), createElementBlock("div", {
@@ -21281,15 +21281,15 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 					onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
 				}, null, 32),
 				_cache[4] || (_cache[4] = createTextVNode()),
-				_ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$13, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("v-if", true)
+				_ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$14, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("v-if", true)
 			]),
 			_cache[5] || (_cache[5] = createTextVNode()),
-			createBaseVNode("div", _hoisted_8$9, [renderSlot(_ctx.$slots, "content")], 512),
+			createBaseVNode("div", _hoisted_8$10, [renderSlot(_ctx.$slots, "content")], 512),
 			_cache[6] || (_cache[6] = createTextVNode()),
-			createBaseVNode("div", _hoisted_9$7, [renderSlot(_ctx.$slots, "footer")])
+			createBaseVNode("div", _hoisted_9$8, [renderSlot(_ctx.$slots, "footer")])
 		]),
 		_cache[9] || (_cache[9] = createTextVNode()),
-		createBaseVNode("div", _hoisted_10$5, [
+		createBaseVNode("div", _hoisted_10$6, [
 			createBaseVNode("button", {
 				type: "button",
 				class: "close-button",
@@ -21299,7 +21299,7 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 				createBaseVNode("span", null, toDisplayString(_ctx.$t("fkui.modal.close", "Stäng")), 1),
 				_cache[7] || (_cache[7] = createTextVNode()),
 				createVNode(_component_f_icon, { name: "close" })
-			], 8, _hoisted_11$4),
+			], 8, _hoisted_11$5),
 			_cache[8] || (_cache[8] = createTextVNode()),
 			createBaseVNode("div", {
 				tabindex: "0",
@@ -27217,7 +27217,7 @@ var _hoisted_5$18 = {
 	class: "label__message label__message--error"
 };
 var _hoisted_6$15 = ["for"];
-var _hoisted_7$10 = {
+var _hoisted_7$11 = {
 	key: 0,
 	class: "label__message label__message--error"
 };
@@ -27262,7 +27262,7 @@ function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
 			formatDescriptionClass: _ctx.formatDescriptionClass
 		}),
 		_cache[6] || (_cache[6] = createTextVNode()),
-		_ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$10, [
+		_ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$11, [
 			createVNode(_component_f_icon, {
 				class: "label__icon--left",
 				name: "error"
@@ -28629,21 +28629,34 @@ var ITableRowheader_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-var _hoisted_1$41 = { class: "table-ng__editable" };
-var _hoisted_2$32 = { class: "table-ng__editable__text" };
-var _hoisted_3$26 = [
+var _hoisted_1$41 = ["id", "aria-invalid"];
+var _hoisted_2$32 = ["id"];
+var _hoisted_3$26 = ["value"];
+var _hoisted_4$21 = { class: "table-ng__editable" };
+var _hoisted_5$17 = { class: "table-ng__editable__text" };
+var _hoisted_6$14 = {
+	ref: "arrowAnchor",
+	"aria-hidden": "true"
+};
+var _hoisted_7$10 = {
+	key: 0,
+	class: "sr-only"
+};
+var _hoisted_8$7 = [
 	"aria-expanded",
 	"aria-controls",
 	"aria-activedescendant",
-	"aria-label"
+	"aria-label",
+	"aria-invalid",
+	"aria-required"
 ];
-var _hoisted_4$21 = { class: "table-ng__editable__text" };
-var _hoisted_5$17 = {
+var _hoisted_9$5 = { class: "table-ng__editable__text" };
+var _hoisted_10$3 = {
 	key: 1,
 	tabindex: "-1",
 	class: "table-ng__cell table-ng__cell--static"
 };
-var _hoisted_6$14 = {
+var _hoisted_11$3 = {
 	key: 0,
 	class: "table-ng__cell--static__text"
 };
@@ -28651,13 +28664,41 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableSelect",
 	props: {
 		row: {},
-		column: {}
+		column: {},
+		activeErrorAnchor: { default: () => void 0 }
 	},
-	setup(__props) {
+	emits: ["onError", "closeError"],
+	setup(__props, { emit: __emit }) {
+		const emit = __emit;
+		const validationSelectId = ElementIdService.generateElementId();
 		const editing = /* @__PURE__ */ ref(false);
 		const editRef = useTemplateRef("edit");
+		const validationSelectElement = useTemplateRef("validationSelect");
+		const tdElement = useTemplateRef("td");
+		const arrowAnchorElement = useTemplateRef("arrowAnchor");
+		const isHovered = useElementHover(tdElement, { delayEnter: 200 });
+		const { focused } = useFocusWithin(tdElement);
+		const openPopupError = computed(() => {
+			if (!tdElement.value || dropdownIsOpen.value) return false;
+			return tdElement.value === __props.activeErrorAnchor;
+		});
+		const wrapperClasses = computed(() => ({
+			"table-ng__cell": true,
+			"table-ng__cell--select": true,
+			"table-ng__cell--valid": !hasError.value,
+			"table-ng__cell--error": hasError.value
+		}));
 		const { stopEdit } = useStartStopEdit();
 		const viewValue = /* @__PURE__ */ ref(__props.column.selected(__props.row));
+		const cellId = ElementIdService.generateElementId();
+		const validity = /* @__PURE__ */ ref({
+			isValid: true,
+			validationMessage: "",
+			validityMode: "INITIAL"
+		});
+		const hasError = computed(() => validity.value.validityMode === "ERROR");
+		const viewModeAriaInvalid = computed(() => !editing.value && hasError.value || void 0);
+		const viewModeErrorMessage = computed(() => !editing.value && hasError.value ? validity.value.validationMessage : void 0);
 		const ariaLabel = computed(() => {
 			const value = __props.column.label(__props.row);
 			return value.length > 0 ? value : void 0;
@@ -28690,6 +28731,10 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 			const oldValue = viewValue.value;
 			viewValue.value = value;
 			__props.column.update(__props.row, value, oldValue);
+			if (__props.column.hasValidation && validationSelectElement.value) {
+				await nextTick();
+				await ValidationService.validateElement(validationSelectElement.value);
+			}
 			closeDropdown();
 			await stopEdit(editRef.value, "enter");
 		}
@@ -28766,19 +28811,99 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 			await nextTick();
 			await stopEdit(editRef.value, "blur");
 		}
+		function onValidity(event) {
+			const { isValid, validationMessage, validityMode } = event.detail;
+			validity.value = {
+				isValid,
+				validationMessage,
+				validityMode
+			};
+			assertRef(validationSelectElement);
+			dispatchComponentValidityEvent(validationSelectElement.value, {
+				...event.detail,
+				errorMessage: validationMessage,
+				focusElementId: cellId
+			});
+		}
+		function onPendingValidity() {
+			validity.value = {
+				...validity.value,
+				validityMode: "INITIAL"
+			};
+		}
 		watch(() => __props.column.selected(__props.row), (value) => {
 			viewValue.value = value;
+		});
+		watch(validationSelectElement, (element) => {
+			if (!element || !__props.column.hasValidation) return;
+			ValidationService.addValidatorsToElement(element, __props.column.validation);
+			nextTick().then(() => ValidationService.validateElement(element));
+		}, { flush: "post" });
+		watchEffect(() => {
+			if (hasError.value) {
+				var _tdElement$value, _arrowAnchorElement$v;
+				emit("onError", {
+					anchor: (_tdElement$value = tdElement.value) !== null && _tdElement$value !== void 0 ? _tdElement$value : void 0,
+					arrowAnchor: (_arrowAnchorElement$v = arrowAnchorElement.value) !== null && _arrowAnchorElement$v !== void 0 ? _arrowAnchorElement$v : void 0,
+					message: validity.value.validationMessage,
+					hasFocus: focused.value,
+					hasHover: isHovered.value,
+					inEdit: editing.value
+				});
+			} else {
+				var _tdElement$value2, _arrowAnchorElement$v2;
+				emit("closeError", {
+					anchor: (_tdElement$value2 = tdElement.value) !== null && _tdElement$value2 !== void 0 ? _tdElement$value2 : void 0,
+					arrowAnchor: (_arrowAnchorElement$v2 = arrowAnchorElement.value) !== null && _arrowAnchorElement$v2 !== void 0 ? _arrowAnchorElement$v2 : void 0,
+					message: validity.value.validationMessage,
+					hasFocus: focused.value,
+					hasHover: isHovered.value,
+					inEdit: editing.value
+				});
+			}
 		});
 		return (_ctx, _cache) => {
 			return __props.column.editable(__props.row) ? (openBlock(), createElementBlock("td", {
 				key: 0,
-				class: "table-ng__cell table-ng__cell--select",
+				id: unref(cellId),
+				ref: "td",
+				class: normalizeClass(wrapperClasses.value),
+				"aria-invalid": viewModeAriaInvalid.value,
 				tabindex: "-1",
 				onKeydown: onCellKeyDown,
 				onClick: withModifiers(onCellClick, ["stop"])
 			}, [visible.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-				withDirectives(createBaseVNode("div", _hoisted_1$41, [createBaseVNode("span", _hoisted_2$32, toDisplayString(viewValue.value), 1)], 512), [[vShow, !editing.value]]),
-				_cache[3] || (_cache[3] = createTextVNode()),
+				withDirectives(createBaseVNode("select", {
+					id: unref(validationSelectId),
+					ref: "validationSelect",
+					"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => viewValue.value = $event),
+					tabindex: "-1",
+					"aria-hidden": "true",
+					class: "sr-only",
+					onValidity,
+					onPendingValidity
+				}, [
+					_cache[4] || (_cache[4] = createBaseVNode("option", {
+						value: "",
+						disabled: ""
+					}, "Välj...", -1)),
+					_cache[5] || (_cache[5] = createTextVNode()),
+					(openBlock(true), createElementBlock(Fragment, null, renderList(options.value, (option) => {
+						return openBlock(), createElementBlock("option", {
+							key: option,
+							value: option
+						}, toDisplayString(option), 9, _hoisted_3$26);
+					}), 128))
+				], 40, _hoisted_2$32), [[vModelSelect, viewValue.value]]),
+				_cache[8] || (_cache[8] = createTextVNode()),
+				withDirectives(createBaseVNode("div", _hoisted_4$21, [
+					createBaseVNode("span", _hoisted_5$17, toDisplayString(viewValue.value), 1),
+					_cache[6] || (_cache[6] = createTextVNode()),
+					createBaseVNode("span", _hoisted_6$14, null, 512),
+					_cache[7] || (_cache[7] = createTextVNode()),
+					viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_7$10, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("v-if", true)
+				], 512), [[vShow, !editing.value]]),
+				_cache[9] || (_cache[9] = createTextVNode()),
 				withDirectives(createBaseVNode("div", {
 					ref: "edit",
 					role: "combobox",
@@ -28789,12 +28914,14 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 					"aria-autocomplete": "list",
 					class: "table-ng__editable",
 					"aria-label": ariaLabel.value,
-					onClick: _cache[0] || (_cache[0] = withModifiers(() => {}, ["stop"])),
-					onDblclick: _cache[1] || (_cache[1] = withModifiers(() => {}, ["prevent"])),
+					"aria-invalid": hasError.value ? true : void 0,
+					"aria-required": Boolean(__props.column.validation.required),
+					onClick: _cache[1] || (_cache[1] = withModifiers(() => {}, ["stop"])),
+					onDblclick: _cache[2] || (_cache[2] = withModifiers(() => {}, ["prevent"])),
 					onKeydown: withModifiers(onEditKeyDown, ["stop"]),
-					onFocusout: _cache[2] || (_cache[2] = (e) => onEditBlur(e))
-				}, [createBaseVNode("span", _hoisted_4$21, toDisplayString(viewValue.value), 1)], 40, _hoisted_3$26), [[vShow, editing.value]]),
-				_cache[4] || (_cache[4] = createTextVNode()),
+					onFocusout: _cache[3] || (_cache[3] = (e) => onEditBlur(e))
+				}, [createBaseVNode("span", _hoisted_9$5, toDisplayString(viewValue.value), 1)], 40, _hoisted_8$7), [[vShow, editing.value]]),
+				_cache[10] || (_cache[10] = createTextVNode()),
 				withDirectives(createVNode(unref(IComboboxDropdown_default), {
 					id: unref(dropdownId),
 					"is-open": dropdownIsOpen.value,
@@ -28811,8 +28938,21 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 					"active-option",
 					"active-option-id",
 					"input-node"
-				]), [[vShow, editing.value]])
-			], 64)) : createCommentVNode("v-if", true)], 32)) : (openBlock(), createElementBlock("td", _hoisted_5$17, [visible.value ? (openBlock(), createElementBlock("div", _hoisted_6$14, toDisplayString(__props.column.selected(__props.row)), 1)) : createCommentVNode("v-if", true)]));
+				]), [[vShow, editing.value]]),
+				_cache[11] || (_cache[11] = createTextVNode()),
+				createVNode(unref(IPopupError_default), {
+					anchor: tdElement.value,
+					"is-open": openPopupError.value,
+					"error-message": validity.value.validationMessage,
+					"arrow-anchor": arrowAnchorElement.value,
+					layout: "f-table"
+				}, null, 8, [
+					"anchor",
+					"is-open",
+					"error-message",
+					"arrow-anchor"
+				])
+			], 64)) : createCommentVNode("v-if", true)], 42, _hoisted_1$41)) : (openBlock(), createElementBlock("td", _hoisted_10$3, [visible.value ? (openBlock(), createElementBlock("div", _hoisted_11$3, toDisplayString(__props.column.selected(__props.row)), 1)) : createCommentVNode("v-if", true)]));
 		};
 	}
 });
@@ -29404,6 +29544,7 @@ function normalizeRowHeaderColumn(column) {
 * @internal
 */
 function normalizeSelectColumn(column) {
+	var _column$validation;
 	return {
 		type: "select",
 		label: getLabelFn(column.label),
@@ -29413,7 +29554,9 @@ function normalizeSelectColumn(column) {
 		editable: typeof column.editable === "function" ? column.editable : () => {
 			var _column$editable;
 			return Boolean((_column$editable = column.editable) !== null && _column$editable !== void 0 ? _column$editable : true);
-		}
+		},
+		validation: (_column$validation = column.validation) !== null && _column$validation !== void 0 ? _column$validation : {},
+		hasValidation: Boolean(column.validation)
 	};
 }
 /**

@@ -16552,7 +16552,7 @@ var _hoisted_5$18 = {
 	class: "label__message label__message--error"
 };
 var _hoisted_6$15 = ["for"];
-var _hoisted_7$10 = {
+var _hoisted_7$11 = {
 	key: 0,
 	class: "label__message label__message--error"
 };
@@ -16597,7 +16597,7 @@ function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
 			formatDescriptionClass: _ctx.formatDescriptionClass
 		}),
 		_cache[6] || (_cache[6] = createTextVNode()),
-		_ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$10, [
+		_ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_7$11, [
 			createVNode(_component_f_icon, {
 				class: "label__icon--left",
 				name: "error"
