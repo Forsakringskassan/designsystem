@@ -28536,7 +28536,11 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 		const visible = computed(() => isVisible$1(__props.column.visible, __props.row));
 		function onCellKeyDown(event) {
 			if (event.target !== tdElement.value) return;
-			if (event.code !== "Enter" && event.code !== "NumpadEnter" && event.code !== "Space") return;
+			if (![
+				"Enter",
+				"NumpadEnter",
+				"Space"
+			].includes(event.code)) return;
 			const select = selectElement.value;
 			if (!select) return;
 			event.preventDefault();
