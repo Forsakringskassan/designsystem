@@ -716,12 +716,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#df3035",
-          "palette": "red-500"
+          "value": "#bf272b",
+          "palette": "red-600"
         },
         "dark": {
-          "value": "#e85b60",
-          "palette": "red-400"
+          "value": "#ef8a8e",
+          "palette": "red-300"
         }
       }
     },
