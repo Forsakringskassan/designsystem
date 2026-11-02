@@ -762,8 +762,8 @@ var metadata_default = {
           "palette": "green-700"
         },
         "dark": {
-          "value": "#41aa75",
-          "palette": "green-400"
+          "value": "#116a3e",
+          "palette": "green-700"
         }
       }
     },
