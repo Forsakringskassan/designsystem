@@ -234,6 +234,14 @@ function onKeydown(e: KeyboardEvent): void {
     // If keyboard focus is on the cell rather than the actual target,
     // forward activation to the target just like the click handler does
     if (targetEl.contains(e.target)) {
+        // Enter on a checkbox or radio would otherwise implicitly submit an enclosing form.
+        if (
+            e.key === "Enter" &&
+            e.target instanceof HTMLInputElement &&
+            ["checkbox", "radio"].includes(e.target.type)
+        ) {
+            e.preventDefault();
+        }
         return;
     }
 

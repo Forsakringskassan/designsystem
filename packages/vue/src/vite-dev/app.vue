@@ -1,37 +1,76 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { FTextField } from "../components";
+import { FButton, FTable, FValidationForm, defineTableColumns, useDatasetRef } from "@fkui/vue";
 
-const namn = ref("World");
+interface Row {
+    id: string;
+    firstName: string;
+    lastName: string;
+    subscribed: boolean;
+}
+
+const rows = useDatasetRef<Row>([
+    {
+        id: "1",
+        firstName: "Jane",
+        lastName: "Doe",
+        subscribed: false,
+    },
+    {
+        id: "2",
+        firstName: "John",
+        lastName: "Doe",
+        subscribed: false,
+    },
+]);
+
+const selectedRows = ref<Row[]>([]);
+
+const columns = defineTableColumns<Row>([
+    {
+        type: "text",
+        header: "Förnamn",
+        key: "firstName",
+        editable: true,
+    },
+    {
+        type: "text",
+        header: "Efternamn",
+        key: "lastName",
+        editable: true,
+    },
+    {
+        type: "checkbox",
+        header: "Prenumerera",
+        key: "subscribed",
+        label: (row) => `Prenumerera ${row.firstName}`,
+    },
+]);
+
+const submitCount = ref(0);
+
+function onSubmit(): void {
+    submitCount.value++;
+}
 </script>
 
 <template>
-    <div class="container">
-        <h1>@fkui/vue</h1>
+    <h2>FTable + FValidationForm - Enter skickar formuläret</h2>
 
-        <p>A few common commands to keep track of:</p>
-        <dl>
-            <dt><code>npm run vue unit</code></dt>
-            <dd>Run Vitest unit tests</dd>
-            <dt><code>npm run vue unit -- Foobar</code></dt>
-            <dd>Run unit tests matching "Foobar"</dd>
-            <dt><code>npm run vue unit -- -u</code></dt>
-            <dd>Update snapshots</dd>
-            <dt><code>npm exec cypress -- open --component</code></dt>
-            <dd>Run Cypress Component Tests</dd>
-            <dt><code>npm run prettier:write</code></dt>
-            <dd>Reformat files</dd>
-            <dt><code>npm run lint</code></dt>
-            <dd>Run all linting and static analyzis</dd>
-            <dt><code>npm test</code></dt>
-            <dd>Run all tests</dd>
-        </dl>
+    <p>
+        Redigera textfälten i tabellen genom att trycka Enter. Kontrollera om formuläret skickats trots att du inte
+        klickat på knappen "Skicka".
+    </p>
 
-        <hr />
+    <f-validation-form @submit="onSubmit">
+        <h3>Checkbox-kolumn</h3>
+        <f-table :rows :columns key-attribute="id" />
 
-        <h2>Sandbox</h2>
+        <h3>Radio (selectable="single")</h3>
+        <f-table v-model:selected-rows="selectedRows" :rows :columns key-attribute="id" selectable="single" />
 
-        <f-text-field v-model="namn" v-validation.required maxlength="100"> Namn </f-text-field>
-        <pre>Hello {{ namn }}!</pre>
-    </div>
+        <f-button type="submit" size="medium" variant="primary">Skicka</f-button>
+    </f-validation-form>
+
+    <p>Formuläret har skickats {{ submitCount }} gånger.</p>
 </template>

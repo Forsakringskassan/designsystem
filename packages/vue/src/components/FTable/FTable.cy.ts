@@ -909,6 +909,89 @@ describe("3.6 Feedback to user on table validation errors at submit", () => {
     });
 });
 
+describe("Enter key inside a form", () => {
+    interface Row {
+        text: string;
+        checked: boolean;
+    }
+
+    const columns = defineTableColumns<Row>([
+        {
+            type: "text",
+            header: "Text",
+            key: "text",
+            editable: true,
+            label: () => "text",
+        },
+        {
+            type: "checkbox",
+            header: "Checkbox",
+            key: "checked",
+            label: () => "checkbox",
+        },
+    ]);
+
+    function mountInForm(options: { selectable?: "single" } = {}): void {
+        const rows = ref<Row[]>([{ text: "A1", checked: false }]);
+        cy.mount(() =>
+            h(FValidationForm, { useErrorList: false }, () => [
+                h(FTable<Row>, { rows: rows.value, columns, ...options }),
+                renderButton("submit", { type: "submit" }),
+            ]),
+        );
+        const onSubmit = cy.spy().as("onSubmit");
+        cy.get("form").then(($form) => {
+            $form[0].addEventListener("submit", onSubmit);
+        });
+    }
+
+    it("should not submit form when starting edit with Enter", () => {
+        mountInForm();
+
+        table
+            .cell({ row: 1, col: 1 })
+            .focus()
+            .press(Cypress.Keyboard.Keys.ENTER);
+
+        table.cell({ row: 1, col: 1 }).find("input").should("have.focus");
+        cy.get("@onSubmit").should("not.have.been.called");
+    });
+
+    it("should not submit form when stopping edit with Enter", () => {
+        mountInForm();
+
+        table
+            .cell({ row: 1, col: 1 })
+            .focus()
+            .press(Cypress.Keyboard.Keys.ENTER);
+        cy.focused().type("edit");
+        cy.focused().press(Cypress.Keyboard.Keys.ENTER);
+
+        table.cell({ row: 1, col: 1 }).should("contain.text", "edit");
+        cy.get("@onSubmit").should("not.have.been.called");
+    });
+
+    it("should not submit form when pressing Enter on checkbox", () => {
+        mountInForm();
+
+        table
+            .cell({ row: 1, col: 2 })
+            .find("input")
+            .focus()
+            .press(Cypress.Keyboard.Keys.ENTER);
+
+        cy.get("@onSubmit").should("not.have.been.called");
+    });
+
+    it("should not submit form when pressing Enter on radio", () => {
+        mountInForm({ selectable: "single" });
+
+        table.selectInput(1).focus().press(Cypress.Keyboard.Keys.ENTER);
+
+        cy.get("@onSubmit").should("not.have.been.called");
+    });
+});
+
 describe("4.4 Home and End keyboard behavior", () => {
     interface Row {
         text: string;

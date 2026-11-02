@@ -363,6 +363,8 @@ function onViewingKeydown(event: KeyboardEvent): void {
         return;
     }
 
+    // Focus moves to the input before the default action runs, which would otherwise submit the form.
+    event.preventDefault();
     event.stopPropagation();
     onStartEdit(fromColumnValue());
 }
@@ -373,6 +375,7 @@ function onEditingKeydown(event: KeyboardEvent): void {
 
     switch (event.key) {
         case "Enter": {
+            event.preventDefault();
             if (viewValue.value === initialViewValue) {
                 validity.value = { ...initialValidity };
                 onStopEdit({ reason: "enter" });
