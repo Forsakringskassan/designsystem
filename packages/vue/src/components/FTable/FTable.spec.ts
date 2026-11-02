@@ -1247,12 +1247,14 @@ describe("select cell", () => {
         });
 
         const cellView = wrapper.findAll(
-            "tbody td .table-ng__editable:nth-child(1)",
+            "tbody td .table-ng__editable[role='combobox']",
         );
         expect(cellView[0].text()).toBe("Foo");
         expect(cellView[1].text()).toBe("Bar");
 
-        await cellView[0].trigger("click");
+        await wrapper.get("tbody tr:first-child td").trigger("click");
+        await nextTick();
+
         const thirdOption = wrapper.get(
             ".combobox__listbox li.combobox__listbox__option:nth-child(3)",
         );
