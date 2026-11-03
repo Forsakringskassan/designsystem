@@ -210,6 +210,8 @@
     --fkds-color-navigation-background-selected: #35805b;
     --fkds-color-header-background-primary: #116a3e;
     --fkds-color-header-text-primary: #ffffff;
+    --fkds-color-footer-background-primary: #116a3e;
+    --fkds-color-footer-text-primary: #ffffff;
     --fkds-focus-indicator-color: #1b1e23;
     --fkds-focus-indicator-color-background: #ffffff;
     --fkui-theme-default-version: "6.63.0";
@@ -402,6 +404,8 @@
     --fkds-color-navigation-background-selected: #35805b;
     --fkds-color-header-background-primary: #35805b;
     --fkds-color-header-text-primary: #ffffff;
+    --fkds-color-footer-background-primary: #35805b;
+    --fkds-color-footer-text-primary: #ffffff;
     --fkds-focus-indicator-color: #ffffff;
     --fkds-focus-indicator-color-background: #1b1e23;
     --fkui-theme-default-version: "6.63.0";
