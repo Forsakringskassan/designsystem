@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 6.64.1 (2026-11-03)
+
+### Bug Fixes
+
+* **@fkui/design:** preserve button text and border colors (refs SFKUI-6500) 91c17b5
+
 ## 6.64.0 (2026-11-03)
 
 ### Features
