@@ -9,7 +9,7 @@
 
 ### Bug Fixes
 
-* **@fkui/design:** wrap HTML5 elements in :where() to fix <dialog> behavior (refs SFKUI-8164) 2cee558
+* **@fkui/design:** wrap HTML5 elements in `:where()` to fix `<dialog>` behavior (refs SFKUI-8164) 2cee558
 * **@fkui/theme-default, @fkui/vue:** separate footer color tokens from header (refs SFKUI-6500) 92f85f9
 * **@fkui/vue:** enter should not open ´IComboxDropdowm´ (refs SFKUI-7564) 7ee8864
 * **deps:** update dependency i18next to v26.5.11 eae54ba
