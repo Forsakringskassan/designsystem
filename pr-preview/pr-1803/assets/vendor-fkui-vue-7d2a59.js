@@ -10687,7 +10687,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
             flag = true;
           }
           close();
-        } else openSelected();
+        }
         break;
       case "Down":
       case "ArrowDown":
