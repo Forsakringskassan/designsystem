@@ -1488,16 +1488,16 @@ input[type=search]:focus-visible,
 @media (hover: hover) {
   .button:hover, .calendar-navbar__year-selector-button:hover {
     background-color: var(--fkds-color-action-background-secondary-hover);
-    border-color: var(--fkds-color-action-border-primary-hover);
+    border-color: var(--fkds-color-action-border-primary-default);
     box-shadow: var(--f-button-shadow-hover);
-    color: var(--fkds-color-action-text-primary-hover);
+    color: var(--fkds-color-action-text-primary-default);
   }
 }
 .button:active, .calendar-navbar__year-selector-button:active {
   background-color: var(--fkds-color-action-background-secondary-active);
-  border-color: var(--fkds-color-action-border-primary-active);
+  border-color: var(--fkds-color-action-border-primary-default);
   box-shadow: var(--f-button-shadow-active);
-  color: var(--fkds-color-action-text-primary-active);
+  color: var(--fkds-color-action-text-primary-default);
   transform: translateY(1px);
 }
 .button:focus-visible, .calendar-navbar__year-selector-button:focus-visible {
@@ -1588,16 +1588,16 @@ input[type=search]:focus-visible,
 @media (hover: hover) {
   .button--secondary:hover {
     background-color: var(--fkds-color-action-background-secondary-hover);
-    border-color: var(--fkds-color-action-border-primary-hover);
+    border-color: var(--fkds-color-action-border-primary-default);
     box-shadow: var(--f-button-shadow-hover);
-    color: var(--fkds-color-action-text-primary-hover);
+    color: var(--fkds-color-action-text-primary-default);
   }
 }
 .button--secondary:active {
   background-color: var(--fkds-color-action-background-secondary-active);
-  border-color: var(--fkds-color-action-border-primary-active);
+  border-color: var(--fkds-color-action-border-primary-default);
   box-shadow: var(--f-button-shadow-active);
-  color: var(--fkds-color-action-text-primary-active);
+  color: var(--fkds-color-action-text-primary-default);
   transform: translateY(1px);
 }
 .button--secondary:focus-visible {
@@ -1790,14 +1790,14 @@ input[type=search]:focus-visible,
     background-color: var(--fkds-color-action-background-secondary-hover);
     border-color: transparent;
     box-shadow: none;
-    color: var(--fkds-color-action-text-primary-hover);
+    color: var(--fkds-color-action-text-primary-default);
   }
 }
 .button--tertiary:active, .calendar-navbar__year-selector-button:active {
   background-color: var(--fkds-color-action-background-secondary-active);
   border-color: transparent;
   box-shadow: none;
-  color: var(--fkds-color-action-text-primary-active);
+  color: var(--fkds-color-action-text-primary-default);
   transform: translateY(1px);
 }
 .button--tertiary:focus-visible, .calendar-navbar__year-selector-button:focus-visible {
@@ -5799,14 +5799,14 @@ input[type=search]:focus-visible,
     background-color: var(--fkds-color-action-background-secondary-hover);
     border-color: transparent;
     box-shadow: none;
-    color: var(--fkds-color-action-text-primary-hover);
+    color: var(--fkds-color-action-text-primary-default);
   }
 }
 .table__button:active {
   background-color: var(--fkds-color-action-background-secondary-active);
   border-color: transparent;
   box-shadow: none;
-  color: var(--fkds-color-action-text-primary-active);
+  color: var(--fkds-color-action-text-primary-default);
   transform: translateY(1px);
 }
 .table__button:focus-visible {
