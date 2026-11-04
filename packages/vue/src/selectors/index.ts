@@ -15,6 +15,7 @@ export { FPaginatorSelectors } from "./FPaginator.selectors";
 export { FProgressbarSelectors } from "./FProgressbar.selectors";
 export { FRadioFieldSelectors } from "./FRadioField.selectors";
 export { FSelectFieldSelectors } from "./FSelectField.selectors";
+export { FStaticFieldSelectors } from "./FStaticField.selectors";
 export { FTextareaFieldSelectors } from "./FTextareaField.selectors";
 export { FTextFieldSelectors } from "./FTextField.selectors";
 export { FTooltipSelectors } from "./FTooltip.selectors";

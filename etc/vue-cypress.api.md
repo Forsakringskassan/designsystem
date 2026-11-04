@@ -672,11 +672,11 @@ export class FStaticFieldPageObject implements BasePageObject {
     // (undocumented)
     body(): DefaultCypressChainable;
     // (undocumented)
-    el: () => DefaultCypressChainable;
+    el(): DefaultCypressChainable;
     // (undocumented)
     label: FLabelPageObject;
     // (undocumented)
-    selector: string;
+    get selector(): string;
     // (undocumented)
     tooltip: FTooltipPageObject;
 }

@@ -147,6 +147,15 @@ export function FSelectFieldSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FStaticFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    body(): string;
+    label(): string;
+    description(): string;
+    formatDescription(): string;
+}>;
+
+// @public
 export function FTextareaFieldSelectors(selector?: string): Readonly<{
     readonly selector: string;
     textarea(): string;
