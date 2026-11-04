@@ -1,10 +1,50 @@
+@use "../../core";
+@use "../../core/size";
 @use "variables" as *;
+
+$close-button: (
+    background-color: $closebutton-color-background-default,
+    background-color--hover: $closebutton-color-background-hover,
+    background-color--active: $closebutton-color-background-active,
+    background-color--focus: $closebutton-color-background-focus,
+    color: $closebutton-color-text-default,
+    color--hover: $closebutton-color-text-hover,
+    color--active: $closebutton-color-text-active,
+    color--focus: $closebutton-color-text-focus,
+    shadow: none,
+    padding-top: core.densify(0.625rem),
+    padding-right: size.$padding-125,
+    padding-bottom: core.densify(0.625rem),
+    padding-left: size.$padding-125,
+) !default;
 
 .close-button {
     align-items: center;
+    border-radius: var(--f-border-radius-medium);
+    border-style: solid;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: var(--f-font-size-standard);
+    font-weight: var(--f-font-weight-medium);
+    gap: 0.5rem;
+    justify-content: center;
+    letter-spacing: var(--f-button-letter-spacing);
+    line-height: var(--f-button-default-line-height);
+    margin: 0.375rem;
+    text-align: center;
+
+    @include core.make-button-variant(".close-button", $close-button...);
+
+    .icon {
+        min-width: var(--f-icon-size-small);
+    }
+}
+
+.modal-close-button {
+    align-items: center;
     background: inherit;
     border: none;
-    color: $closebutton-color-default;
+    color: $closebutton-color-text-default;
     cursor: pointer;
     display: flex;
     font-weight: 700;
