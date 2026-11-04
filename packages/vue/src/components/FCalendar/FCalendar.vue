@@ -79,6 +79,12 @@ export default defineComponent({
         "update:modelValue"(_date: FDate) {
             return true;
         },
+        selecting(_days: string[]) {
+            return true;
+        },
+        select(_days: string[]) {
+            return true;
+        },
     },
     setup(props, context) {
         const modelValue = shallowRef(props.modelValue);
@@ -154,6 +160,12 @@ export default defineComponent({
         onClickDay(date: FDate): void {
             this.$emit("click", date);
         },
+        onSelecting(days: string[]): void {
+            this.$emit("selecting", days);
+        },
+        onSelect(days: string[]): void {
+            this.$emit("select", days);
+        },
     },
 });
 </script>
@@ -205,6 +217,8 @@ export default defineComponent({
             :tab-date
             @click="onClickDay"
             @update:model-value="onChangeDate"
+            @selecting="onSelecting"
+            @select="onSelect"
         >
             <template #default="{ date, focused }">
                 <!--
