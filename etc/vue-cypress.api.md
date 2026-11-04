@@ -465,13 +465,13 @@ export class FMessageBoxPageObject implements BasePageObject {
     // (undocumented)
     content(): DefaultCypressChainable;
     // (undocumented)
-    el: () => DefaultCypressChainable;
+    el(): DefaultCypressChainable;
     // (undocumented)
     errors: FErrorListPageObject;
     // (undocumented)
     icon(): DefaultCypressChainable;
     // (undocumented)
-    selector: string;
+    get selector(): string;
     // (undocumented)
     typeOfMessage(): Cypress.Chainable<string>;
 }

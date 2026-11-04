@@ -91,6 +91,14 @@ export function FLoaderSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FMessageBoxSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    content(): string;
+    heading(): string;
+    icon(): string;
+}>;
+
+// @public
 export function FMinimizablePanelSelectors(selector?: string): Readonly<{
     readonly selector: string;
     header(): string;
