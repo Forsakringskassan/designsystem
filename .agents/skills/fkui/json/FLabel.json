@@ -1,0 +1,55 @@
+{
+    "name": "FLabel",
+    "slug": "flabel",
+    "models": [],
+    "props": [
+        {
+            "name": "for",
+            "description": "The id for the form element the label is bound to.",
+            "type": "string | undefined",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for label content.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "tooltip",
+            "description": "Slot for tooltip.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "description",
+            "description": "Optional slot for description.",
+            "bindings": [
+                {
+                    "name": "description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for primary description content."
+                },
+                {
+                    "name": "format-description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for format description."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "error-message",
+            "description": "Slot for displaying single or several error messages.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}
