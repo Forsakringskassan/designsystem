@@ -46,14 +46,10 @@ describe("FTable with editable(row) depending on other fields", () => {
         cy.focused().type("Hund i parken");
         cy.get("button").contains("Utanför").click();
 
-        table
-            .select(1, 1)
-            .find("option")
-            .eq(1)
-            .invoke("val")
-            .then((value) => {
-                table.select(1, 1).select(String(value));
-            });
+        table.select(1, 1).select("Katt");
+
+        // Wait for Vue to update the rendered row data
+        cy.get("[data-test=rows]").should("contain.text", '"animal": "Katt"');
 
         firstRow().should("include", {
             animal: "Katt",
