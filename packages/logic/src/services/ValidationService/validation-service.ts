@@ -264,31 +264,29 @@ class ValidationServiceImpl implements ValidationServiceInterface {
     ): void {
         const element = elementValidatorsReference.element;
         if (!(element instanceof HTMLFieldSetElement)) {
-            if (!(element instanceof HTMLSelectElement)) {
-                element.addEventListener("input", () => {
-                    const validationState =
-                        this.getExistingStateOrSetDefault(element);
-                    validationState.serverError = undefined;
+            element.addEventListener("input", () => {
+                const validationState =
+                    this.getExistingStateOrSetDefault(element);
+                validationState.serverError = undefined;
 
-                    if (elementValidatorsReference.instant) {
-                        validationState.touched = true;
+                if (elementValidatorsReference.instant) {
+                    validationState.touched = true;
 
-                        this.validateAndDispatchEvent("input", {
-                            validationState,
-                            elementValidatorsReference,
-                        });
-                    } else {
-                        element.dispatchEvent(
-                            new CustomEvent<PendingValidityEvent>(
-                                "pending-validity",
-                                {
-                                    bubbles: false,
-                                },
-                            ),
-                        );
-                    }
-                });
-            }
+                    this.validateAndDispatchEvent("input", {
+                        validationState,
+                        elementValidatorsReference,
+                    });
+                } else {
+                    element.dispatchEvent(
+                        new CustomEvent<PendingValidityEvent>(
+                            "pending-validity",
+                            {
+                                bubbles: false,
+                            },
+                        ),
+                    );
+                }
+            });
             element.addEventListener("change", () => {
                 const validationState =
                     this.getExistingStateOrSetDefault(element);

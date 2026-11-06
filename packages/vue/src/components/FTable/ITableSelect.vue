@@ -142,6 +142,12 @@ function onValidity(event: CustomEvent<ValidityEvent>): void {
 }
 
 function onPendingValidity(): void {
+    const select = selectElement.value;
+
+    if (select) {
+        viewValue.value = select.value;
+    }
+
     validity.value = {
         ...validity.value,
         validityMode: "INITIAL",
