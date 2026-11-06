@@ -73,8 +73,8 @@ watch(
 <template>
     <f-validation-form @submit="onSubmit">
         <f-table :rows :columns />
-        <f-message-box v-if="showSuccess" type="success"> Alla rader är korrekt ifyllda </f-message-box>
-        <f-button variant="secondary" size="medium" type="button" @click="addRow">Lägg till rad</f-button>
+        <f-message-box v-if="showSuccess" type="success" layout="short"> Alla rader är korrekt ifyllda </f-message-box>
+        <f-button variant="tertiary" size="medium" type="button" align-text @click="addRow">Lägg till rad</f-button>
         <f-button variant="primary" size="medium" type="submit">Validera</f-button>
     </f-validation-form>
 </template>
