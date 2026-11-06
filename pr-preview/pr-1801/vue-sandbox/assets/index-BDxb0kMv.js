@@ -7998,7 +7998,7 @@ var ValidationServiceImpl = class {
 	createEventListeners(elementValidatorsReference) {
 		const element = elementValidatorsReference.element;
 		if (!(element instanceof HTMLFieldSetElement)) {
-			if (!(element instanceof HTMLSelectElement)) element.addEventListener("input", () => {
+			element.addEventListener("input", () => {
 				const validationState = this.getExistingStateOrSetDefault(element);
 				validationState.serverError = void 0;
 				if (elementValidatorsReference.instant) {
@@ -16283,7 +16283,7 @@ function useCombobox(inputRef, options, onOptionSelected) {
 						flag = true;
 					}
 					close();
-				} else openSelected();
+				}
 				break;
 			case "Down":
 			case "ArrowDown":

@@ -2503,23 +2503,21 @@ var ValidationServiceImpl = class {
   createEventListeners(elementValidatorsReference) {
     const element = elementValidatorsReference.element;
     if (!(element instanceof HTMLFieldSetElement)) {
-      if (!(element instanceof HTMLSelectElement)) {
-        element.addEventListener("input", () => {
-          const validationState = this.getExistingStateOrSetDefault(element);
-          validationState.serverError = void 0;
-          if (elementValidatorsReference.instant) {
-            validationState.touched = true;
-            this.validateAndDispatchEvent("input", {
-              validationState,
-              elementValidatorsReference
-            });
-          } else {
-            element.dispatchEvent(new CustomEvent("pending-validity", {
-              bubbles: false
-            }));
-          }
-        });
-      }
+      element.addEventListener("input", () => {
+        const validationState = this.getExistingStateOrSetDefault(element);
+        validationState.serverError = void 0;
+        if (elementValidatorsReference.instant) {
+          validationState.touched = true;
+          this.validateAndDispatchEvent("input", {
+            validationState,
+            elementValidatorsReference
+          });
+        } else {
+          element.dispatchEvent(new CustomEvent("pending-validity", {
+            bubbles: false
+          }));
+        }
+      });
       element.addEventListener("change", () => {
         const validationState = this.getExistingStateOrSetDefault(element);
         validationState.touched = true;
