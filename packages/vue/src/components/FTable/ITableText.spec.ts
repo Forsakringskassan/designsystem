@@ -71,6 +71,47 @@ describe("ITableText", () => {
         expect(event.defaultPrevented).toBe(false);
     });
 
+    it("should prevent default when Enter starts and ends editing", async () => {
+        expect.assertions(4);
+        const row = { text: "Foo" };
+        const column = normalizeTableColumn<typeof row>({
+            type: "text",
+            header: "Text",
+            key: "text",
+            editable: true,
+            label: () => "Text",
+        });
+        const wrapper = mount(ITableText, {
+            attachTo: document.body,
+            props: { row, column } as never,
+            global: { stubs: { IPopupError: true } },
+        });
+        const td = wrapper.get("td");
+        const input = wrapper.get("input");
+        await flushPromises();
+        td.element.focus();
+
+        const start = new KeyboardEvent("keydown", {
+            bubbles: true,
+            cancelable: true,
+            key: "Enter",
+        });
+        td.element.dispatchEvent(start);
+        expect(start.defaultPrevented).toBe(true);
+        expect(document.activeElement).toBe(input.element);
+
+        await input.setValue("Bar");
+        const end = new KeyboardEvent("keydown", {
+            bubbles: true,
+            cancelable: true,
+            key: "Enter",
+        });
+        input.element.dispatchEvent(end);
+        expect(end.defaultPrevented).toBe(true);
+        await flushPromises();
+        expect(row.text).toBe("Bar");
+    });
+
     it("should restore td tabstop on blur when exiting edit mode", async () => {
         expect.assertions(5);
         const row = { text: "Foo" };
