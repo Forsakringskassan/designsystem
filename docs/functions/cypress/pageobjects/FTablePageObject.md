@@ -322,7 +322,7 @@ Hämtar ett native `<select>` element från en redigerbar selectcell i tabellen.
 
 Både rad och kolumnnumreringen är 1-indexerad.
 
-Kolumnnumreringen inkluderar även eventuellta kolumner för expanderingsknappar och valbara rader.
+Kolumnnumreringen inkluderar även eventuella kolumner för expanderingsknappar och valbara rader.
 
 ### Syntax
 
@@ -338,7 +338,7 @@ select(row, col);
 `col: number`
 : Kolumnnummer (1-indexerat).
 
-### exempel
+### Exempel
 
 ```import static
 FTablePageObject-select.vue
