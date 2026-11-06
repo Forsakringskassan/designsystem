@@ -717,8 +717,9 @@ export class FTablePageObject implements BasePageObject {
     headerTitle(col: number): DefaultCypressChainable;
     rows(): Cypress.Chainable<JQuery<HTMLTableRowElement>>;
     select(row: number, col: number): Cypress.Chainable<JQuery<HTMLSelectElement>>;
-    // @internal
+    // @internal @deprecated
     selectDropdown(): DefaultCypressChainable;
+    // @deprecated
     selectDropdownOption(option: number): DefaultCypressChainable;
     selectHeaderInput(): Cypress.Chainable<JQuery<HTMLInputElement>>;
     selectInput(row: number): Cypress.Chainable<JQuery<HTMLInputElement>>;

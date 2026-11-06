@@ -354,6 +354,11 @@ FTablePageObject-select.cy.ts
 
 ## selectDropdownOption()
 
+::: warning
+Metoden är deprekerad och fungerar inte med native `<select>`.
+Använd `select(row, col)` tillsammans med Cypress `.select()` istället.
+:::
+
 Hämtar ett alternativ från en cell med en öppen dropplista.
 
 Alternativnumreringen är 1-indexerad.
