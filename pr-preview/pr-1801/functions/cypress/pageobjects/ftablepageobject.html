@@ -8050,30 +8050,27 @@ table.<span class="hljs-title function_">rows</span>().<span class="hljs-title f
                     data-language="ts"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">FTablePageObject</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue/cypress&quot;</span>;
-<span class="hljs-keyword">import</span> <span class="hljs-title class_">Example</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./FTablePageObject-select.vue&quot;</span>;
+                    <pre class="code-preview__markup"><code class="hljs lang-ts" tabindex="0"><span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
 
-<span class="hljs-title function_">it</span>(<span class="hljs-string">&quot;select() should get native select element and update value&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-    cy.<span class="hljs-title function_">mount</span>(<span class="hljs-title class_">Example</span>);
-
-    <span class="hljs-comment">/*-- cut above --*/</span>
-    <span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FTablePageObject</span>(<span class="hljs-string">&quot;[data-test=table]&quot;</span>);
-
-    table.<span class="hljs-title function_">select</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.prop&quot;</span>, <span class="hljs-string">&quot;tagName&quot;</span>, <span class="hljs-string">&quot;SELECT&quot;</span>);
-    table.<span class="hljs-title function_">select</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.value&quot;</span>, <span class="hljs-string">&quot;Foo&quot;</span>);
-    table.<span class="hljs-title function_">select</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).<span class="hljs-title function_">select</span>(<span class="hljs-string">&quot;Baz&quot;</span>);
-    table.<span class="hljs-title function_">select</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.value&quot;</span>, <span class="hljs-string">&quot;Baz&quot;</span>);
-    <span class="hljs-comment">/*-- cut below --*/</span>
-});
-</code></pre>
+table.<span class="hljs-title function_">select</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.prop&quot;</span>, <span class="hljs-string">&quot;tagName&quot;</span>, <span class="hljs-string">&quot;SELECT&quot;</span>);
+table.<span class="hljs-title function_">select</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.value&quot;</span>, <span class="hljs-string">&quot;Foo&quot;</span>);
+table.<span class="hljs-title function_">select</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).<span class="hljs-title function_">select</span>(<span class="hljs-string">&quot;Baz&quot;</span>);
+table.<span class="hljs-title function_">select</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).<span class="hljs-title function_">should</span>(<span class="hljs-string">&quot;have.value&quot;</span>, <span class="hljs-string">&quot;Baz&quot;</span>);</code></pre>
                 </div>
-            <h2 id="selectdropdownoption" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#selectdropdownoption">selectDropdownOption()</a></h2><p class="docs-paragraph">Hämtar ett alternativ från en cell med en öppen dropplista.</p>
+            <h2 id="selectdropdownoption" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#selectdropdownoption">selectDropdownOption()</a></h2>
+            <div class="docs-messagebox docs-messagebox--warning">
+                <p class="docs-messagebox__title">Tänk på att</p>
+                <p class="docs-paragraph">Metoden är deprekerad och fungerar inte med native <code>&lt;select&gt;</code>.
+Använd <code>select(row, col)</code> tillsammans med Cypress <code>.select()</code> istället.</p>
+
+            </div>
+        <p class="docs-paragraph">Hämtar ett alternativ från en cell med en öppen dropplista.</p>
 <p class="docs-paragraph">Alternativnumreringen är 1-indexerad.</p>
 <p class="docs-paragraph">Dropplistans element teleporteras och använder därav inte <code>selector</code>.
 Se därför till att inte flera dropplistor är öppna samtidigt vid test.</p>
 <h3 id="syntax--32" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#syntax--32">Syntax</a></h3>
                 <div
-                    id="example-5f19c8"
+                    id="example-d0b0c8"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -8090,7 +8087,7 @@ Se därför till att inte flera dropplistor är öppna samtidigt vid test.</p>
 <h4 id="returvarde--34" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#returvarde--34">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLElement</code> med ett alternativ för dropplistan.</p>
 <h3 id="exempel--35" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#exempel--35">Exempel</a></h3>
                 <div
-                    id="example-bfb9b6"
+                    id="example-40302f"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -8101,7 +8098,7 @@ Se därför till att inte flera dropplistor är öppna samtidigt vid test.</p>
                 </div>
             
                 <div
-                    id="example-6e23ef"
+                    id="example-0e3041"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -8123,7 +8120,7 @@ Se därför till att inte flera dropplistor är öppna samtidigt vid test.</p>
                 </div>
             
                 <div
-                    id="example-35d082"
+                    id="example-dc6a3e"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -8143,7 +8140,7 @@ table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">r
 <p class="docs-paragraph">Notera att denna metod kan endast användas om tabellen är en flervalstabell (den använder <code>selectable=&quot;multi&quot;</code>).</p>
 <h3 id="syntax--36" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#syntax--36">Syntax</a></h3>
                 <div
-                    id="example-34bfdb"
+                    id="example-85aa39"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -8156,7 +8153,7 @@ table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">r
             <h4 id="returvarde--37" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#returvarde--37">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLInputElement</code> med checkboxen för bulkoperation.</p>
 <h3 id="exempel--38" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#exempel--38">Exempel</a></h3>
                 <div
-                    id="example-4a57b4"
+                    id="example-8dfe88"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -8167,7 +8164,7 @@ table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">r
                 </div>
             
                 <div
-                    id="example-69e520"
+                    id="example-09bfc3"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -8189,7 +8186,7 @@ table.<span class="hljs-title function_">cell</span>({ <span class="hljs-attr">r
                 </div>
             
                 <div
-                    id="example-1c2b70"
+                    id="example-e15c12"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -8207,7 +8204,7 @@ table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-nu
 <p class="docs-paragraph">Radnumreringen är 1-indexerad och inkluderar expanderade rader.</p>
 <h3 id="syntax--39" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#syntax--39">Syntax</a></h3>
                 <div
-                    id="example-8a3741"
+                    id="example-db6085"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -8224,7 +8221,7 @@ table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-nu
 <h4 id="returvarde--41" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#returvarde--41">Returvärde</a></h4><p class="docs-paragraph"><code>HTMLInputElement</code> med checkbox eller radioknapp för en valbar tabell.</p>
 <h3 id="exempel--42" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#exempel--42">Exempel</a></h3>
                 <div
-                    id="example-aad391"
+                    id="example-01c9eb"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -8235,7 +8232,7 @@ table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-nu
                 </div>
             
                 <div
-                    id="example-b22827"
+                    id="example-7ca3c4"
                     class="code-preview code-preview--default"
                     
                     data-tags="nomarkup"
@@ -8257,7 +8254,7 @@ table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-nu
                 </div>
             
                 <div
-                    id="example-30ba77"
+                    id="example-b9a2c0"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -8338,9 +8335,9 @@ table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-nu
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">feat/native-table-select</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/d40dbbd012f40aee2b3bf58b6f10529fe505ebfd">d40dbbd</a>)<br />
+<div class="version"><span class="version-text-block">feat/native-table-select</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/8572702dfc40dfd96123f5cdbff69792b07f3380">8572702</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1801">PR 1801</a><br />
-       <span class="version-text-block">2026-11-06 09:22</span>
+       <span class="version-text-block">2026-11-06 10:18</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
@@ -8497,10 +8494,10 @@ table.<span class="hljs-title function_">selectInput</span>(<span class="hljs-nu
             integrity="sha384-tVCPgyHrw9QQDcAlHqPg4Kp0bEoCdZDJ17PfDW2CxedfOn3IvSDI/FJUCnY/WxiK"
             
         ></script><script
-            src="../../../assets/runtime-e13852.js"
+            src="../../../assets/runtime-586cef.js"
             type="module"
             crossorigin
-            integrity="sha384-OoLmDExzeuT8qma7ynODcvPG0UEywnZMSEKD0+mHihpSlPbImm2nt+7hk2nidpIq"
+            integrity="sha384-r/n5l9+pi9ilkAah1ZY8ZlfWmhuyEiZJA5OdqGWWppBk7d286Spo2Ho+8Higq5NX"
             
         ></script><script
             src="../../../assets/main-6bc205.js"
