@@ -213,6 +213,68 @@ it("should include palette", async (t) => {
     );
 });
 
+it("should include palette declared as custom properties", async (t) => {
+    const vol = Volume.fromJSON(
+        {
+            "src/palette-variables.scss": [
+                `@mixin palette {`,
+                `  /// @group Pink`,
+                `  --x-palette-awesome-pink: #ff00aa;`,
+                `}`,
+            ].join("\n"),
+            "src/theme-light.scss": [
+                `@use "palette-variables" as palette;`,
+                `:root {`,
+                `  @include palette.palette;`,
+                `  --x-foobar: var(--x-palette-awesome-pink);`,
+                `}`,
+            ].join("\n"),
+            "src/theme-dark.scss": [
+                `@use "palette-variables" as palette;`,
+                `:root {`,
+                `  @include palette.palette;`,
+                `}`,
+            ].join("\n"),
+        },
+        "/",
+    );
+    const fs = vol.promises;
+    const buffer = new WritableStreamBuffer();
+    const logger = new Console(buffer);
+    await cli([], {
+        cwd: "/",
+        fs,
+        logger,
+        outdir: "out",
+        prefix: "x",
+    });
+    const palette = await fs.readFile("/out/palette.json", "utf8");
+    const metadata = await fs.readFile("/out/metadata.mjs", "utf8");
+    t.assert.strictEqual(
+        palette,
+        content`
+        [
+          {
+            "name": "Pink",
+            "variables": [
+              {
+                "name": "awesome-pink",
+                "value": "#ff00aa",
+                "group": "Pink",
+                "comment": ""
+              }
+            ]
+          }
+        ]
+    `,
+    );
+    t.assert.match(
+        metadata,
+        /"name": "--x-foobar",\s+"comment": null,\s+"values": \{\s+"light": \{\s+"value": "#ff00aa",\s+"palette": "awesome-pink"\s+\},\s+"dark": \{\s+"value": null,\s+"palette": null\s+\}/,
+    );
+    t.assert.doesNotMatch(metadata, /x-palette-awesome-pink/);
+});
+
 it("should include deprecated variables", async (t) => {
     const vol = Volume.fromJSON(
         {

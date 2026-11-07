@@ -1,75 +1,77 @@
 // Palette colors
-// Palette colors should follow the following palette-color-<name> convention.
+// Palette colors should follow the following --fkds-palette-<name> convention.
 
-/// @group FK-Black
-$palette-color-fk-black-100: #1b1e23 !default;
-$palette-color-fk-black-70: #5f6165 !default;
-$palette-color-fk-black-50: #8d8e91 !default;
-$palette-color-fk-black-30: #bbbbbd !default;
-$palette-color-fk-black-15: #ddddde !default;
-$palette-color-fk-black-5: #f4f4f4 !default;
-$palette-color-white-100: #ffffff !default;
+@mixin palette {
+    /// @group FK-Black
+    --fkds-palette-fk-black-100: #1b1e23;
+    --fkds-palette-fk-black-70: #5f6165;
+    --fkds-palette-fk-black-50: #8d8e91;
+    --fkds-palette-fk-black-30: #bbbbbd;
+    --fkds-palette-fk-black-15: #ddddde;
+    --fkds-palette-fk-black-5: #f4f4f4;
+    --fkds-palette-white-100: #ffffff;
 
-/// @group Bluebell
-$palette-color-bluebell-120: #3b4292 !default;
-$palette-color-bluebell-100: #4a52b6 !default;
-$palette-color-bluebell-85: #656cc1 !default;
-$palette-color-bluebell-50: #a4a8db !default;
-$palette-color-bluebell-15: #e5e5f5 !default;
-$palette-color-bluebell-5: #f5f6fa !default;
+    /// @group Bluebell
+    --fkds-palette-bluebell-120: #3b4292;
+    --fkds-palette-bluebell-100: #4a52b6;
+    --fkds-palette-bluebell-85: #656cc1;
+    --fkds-palette-bluebell-50: #a4a8db;
+    --fkds-palette-bluebell-15: #e5e5f5;
+    --fkds-palette-bluebell-5: #f5f6fa;
 
-/// @group Green A
-$palette-color-green-a-120: #0e5532 !default;
-$palette-color-green-a-100: #116a3e !default;
-$palette-color-green-a-85: #35805b !default;
-$palette-color-green-a-50: #88b49f !default;
-$palette-color-green-a-15: #dbe9e2 !default;
-$palette-color-green-a-5: #f3f8f5 !default;
+    /// @group Green A
+    --fkds-palette-green-a-120: #0e5532;
+    --fkds-palette-green-a-100: #116a3e;
+    --fkds-palette-green-a-85: #35805b;
+    --fkds-palette-green-a-50: #88b49f;
+    --fkds-palette-green-a-15: #dbe9e2;
+    --fkds-palette-green-a-5: #f3f8f5;
 
-/// @group Green B
-$palette-color-green-b-120: #4c7e56 !default;
-$palette-color-green-b-100: #5f9e6c !default;
-$palette-color-green-b-85: #77ad82 !default;
-$palette-color-green-b-50: #afcfb5 !default;
-$palette-color-green-b-15: #e7f0e9 !default;
-$palette-color-green-b-5: #f7faf8 !default;
+    /// @group Green B
+    --fkds-palette-green-b-120: #4c7e56;
+    --fkds-palette-green-b-100: #5f9e6c;
+    --fkds-palette-green-b-85: #77ad82;
+    --fkds-palette-green-b-50: #afcfb5;
+    --fkds-palette-green-b-15: #e7f0e9;
+    --fkds-palette-green-b-5: #f7faf8;
 
-/// @group Yellow
-$palette-color-yellow-120: #cc980d !default;
-$palette-color-yellow-100: #ffbe10 !default;
-$palette-color-yellow-85: #ffc834 !default;
-$palette-color-yellow-50: #ffdf87 !default;
-$palette-color-yellow-15: #fff5db !default;
-$palette-color-yellow-5: #fffcf3 !default;
+    /// @group Yellow
+    --fkds-palette-yellow-120: #cc980d;
+    --fkds-palette-yellow-100: #ffbe10;
+    --fkds-palette-yellow-85: #ffc834;
+    --fkds-palette-yellow-50: #ffdf87;
+    --fkds-palette-yellow-15: #fff5db;
+    --fkds-palette-yellow-5: #fffcf3;
 
-/// @group Red
-$palette-color-red-120: #a21111 !default;
-$palette-color-red-100: #ca1515 !default;
-$palette-color-red-85: #d23838 !default;
-$palette-color-red-50: #e48a8a !default;
-$palette-color-red-15: #f7dcdc !default;
-$palette-color-red-5: #fcf3f3 !default;
+    /// @group Red
+    --fkds-palette-red-120: #a21111;
+    --fkds-palette-red-100: #ca1515;
+    --fkds-palette-red-85: #d23838;
+    --fkds-palette-red-50: #e48a8a;
+    --fkds-palette-red-15: #f7dcdc;
+    --fkds-palette-red-5: #fcf3f3;
 
-/// @group Orange
-$palette-color-orange-120: #c2700d !default;
-$palette-color-orange-100: #f38c10 !default;
-$palette-color-orange-85: #f59d34 !default;
-$palette-color-orange-50: #f9c587 !default;
-$palette-color-orange-15: #ffefdc !default;
-$palette-color-orange-5: #fef9f3 !default;
+    /// @group Orange
+    --fkds-palette-orange-120: #c2700d;
+    --fkds-palette-orange-100: #f38c10;
+    --fkds-palette-orange-85: #f59d34;
+    --fkds-palette-orange-50: #f9c587;
+    --fkds-palette-orange-15: #ffefdc;
+    --fkds-palette-orange-5: #fef9f3;
 
-/// @group Tegel
-$palette-color-tegel-100: #d34503 !default;
-$palette-color-tegel-15: #f8e3d9 !default;
+    /// @group Tegel
+    --fkds-palette-tegel-100: #d34503;
+    --fkds-palette-tegel-15: #f8e3d9;
 
-/// @group Plommon
-$palette-color-plommon-100: #a73a64 !default;
-$palette-color-plommon-15: #f2e1e8 !default;
+    /// @group Plommon
+    --fkds-palette-plommon-100: #a73a64;
+    --fkds-palette-plommon-15: #f2e1e8;
 
-/// @group Senap
-$palette-color-senap-100: #ba7918 !default;
-$palette-color-senap-15: #f5ebdc !default;
+    /// @group Senap
+    --fkds-palette-senap-100: #ba7918;
+    --fkds-palette-senap-15: #f5ebdc;
 
-/// @group Hav
-$palette-color-hav-100: #4c669f !default;
-$palette-color-hav-15: #e4e8f1 !default;
+    /// @group Hav
+    --fkds-palette-hav-100: #4c669f;
+    --fkds-palette-hav-15: #e4e8f1;
+}

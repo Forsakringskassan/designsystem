@@ -56,9 +56,35 @@ function isRootRule(rule: CssAtRuleAST): rule is CssRuleAST {
     return rule.type === CssTypes.rule && rule.selectors.includes(":root");
 }
 
+interface PaletteLookup {
+    /** Palette name by color value */
+    readonly byValue: Record<string, string>;
+    /** Color value by palette name */
+    readonly byName: Record<string, string>;
+}
+
+/**
+ * Resolves a declaration value to the palette color it refers to, either by
+ * referencing the palette custom property or by having the same color value.
+ */
+function resolveValue(
+    value: string,
+    palette: PaletteLookup,
+    prefix: string,
+): Pick<Variable, "value" | "palette"> {
+    const match = new RegExp(`^var\\(--${prefix}-palette-([^)]+)\\)$`).exec(
+        value,
+    );
+    const name = match?.[1];
+    if (name && Object.hasOwn(palette.byName, name)) {
+        return { value: palette.byName[name], palette: name };
+    }
+    return { value, palette: palette.byValue[value] ?? null };
+}
+
 function* getTokens(
     rule: CssRuleAST | undefined,
-    palette: Record<string, string>,
+    palette: PaletteLookup,
     prefix: string,
 ): Generator<Variable> {
     if (!rule) {
@@ -68,12 +94,17 @@ function* getTokens(
     for (const decl of rule.declarations) {
         if (
             decl.type === CssTypes.declaration &&
+            decl.property.startsWith(`--${prefix}-palette-`)
+        ) {
+            /* palette variables are not tokens */
+            last = null;
+        } else if (
+            decl.type === CssTypes.declaration &&
             decl.property.startsWith(`--${prefix}-`)
         ) {
             last = {
                 name: decl.property,
-                value: decl.value,
-                palette: palette[decl.value] ?? null,
+                ...resolveValue(decl.value, palette, prefix),
                 comment: null,
             };
             yield last;
@@ -91,11 +122,11 @@ async function fromFile(
     const { fs, prefix } = options;
     const css = await fs.readFile(src, "utf8");
 
-    const palette = Object.fromEntries(
-        paletteVariables
-            .flatMap((it) => it.variables)
-            .map((it) => [it.value, it.name]),
-    );
+    const entries = paletteVariables.flatMap((it) => it.variables);
+    const palette: PaletteLookup = {
+        byValue: Object.fromEntries(entries.map((it) => [it.value, it.name])),
+        byName: Object.fromEntries(entries.map((it) => [it.name, it.value])),
+    };
     const { stylesheet } = parse(css);
     const rule = stylesheet.rules.find(isRootRule);
 
