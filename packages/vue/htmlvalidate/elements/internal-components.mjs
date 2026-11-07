@@ -174,6 +174,10 @@ export default defineMetadata({
                 required: false,
                 enum: ["always", "never", "auto"],
             },
+            "anchor-overlap": {
+                required: false,
+                enum: ["allow", "never"],
+            },
             container: {},
             viewport: {
                 required: false,
