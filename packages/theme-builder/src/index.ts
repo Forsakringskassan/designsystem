@@ -6,6 +6,7 @@ import { buildJs } from "./build-js.ts";
 import { buildMetadata } from "./build-metadata.ts";
 import { buildPalette } from "./build-palette.ts";
 import { clean } from "./clean.ts";
+import { generatePalette } from "./generate-palette.ts";
 import { generateVersion } from "./generate-version.ts";
 import { type NormalizedOptions, type Options } from "./options.ts";
 
@@ -15,6 +16,11 @@ async function run(options: NormalizedOptions): Promise<void> {
     const { cwd, fs, logger, outdir } = options;
     await clean(options);
     await generateVersion("src/_version.scss", options);
+    await generatePalette(
+        "src/palette-variables.json",
+        "src/palette-variables.scss",
+        options,
+    );
     const files = await buildCss("src/*.scss", options);
     await buildJs(files, options);
     const paletteVariables = await buildPalette(

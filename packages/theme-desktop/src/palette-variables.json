@@ -1,0 +1,75 @@
+{
+    "FK-Black": {
+        "fk-black-100": "#1b1e23",
+        "fk-black-70": "#5f6165",
+        "fk-black-50": "#8d8e91",
+        "fk-black-30": "#bbbbbd",
+        "fk-black-15": "#ddddde",
+        "fk-black-5": "#f4f4f4",
+        "white-100": "#ffffff"
+    },
+    "Bluebell": {
+        "bluebell-120": "#3b4292",
+        "bluebell-100": "#4a52b6",
+        "bluebell-85": "#656cc1",
+        "bluebell-50": "#a4a8db",
+        "bluebell-15": "#e5e5f5",
+        "bluebell-5": "#f5f6fa"
+    },
+    "Green A": {
+        "green-a-120": "#0e5532",
+        "green-a-100": "#116a3e",
+        "green-a-85": "#35805b",
+        "green-a-50": "#88b49f",
+        "green-a-15": "#dbe9e2",
+        "green-a-5": "#f3f8f5"
+    },
+    "Green B": {
+        "green-b-120": "#4c7e56",
+        "green-b-100": "#5f9e6c",
+        "green-b-85": "#77ad82",
+        "green-b-50": "#afcfb5",
+        "green-b-15": "#e7f0e9",
+        "green-b-5": "#f7faf8"
+    },
+    "Yellow": {
+        "yellow-120": "#cc980d",
+        "yellow-100": "#ffbe10",
+        "yellow-85": "#ffc834",
+        "yellow-50": "#ffdf87",
+        "yellow-15": "#fff5db",
+        "yellow-5": "#fffcf3"
+    },
+    "Red": {
+        "red-120": "#a21111",
+        "red-100": "#ca1515",
+        "red-85": "#d23838",
+        "red-50": "#e48a8a",
+        "red-15": "#f7dcdc",
+        "red-5": "#fcf3f3"
+    },
+    "Orange": {
+        "orange-120": "#c2700d",
+        "orange-100": "#f38c10",
+        "orange-85": "#f59d34",
+        "orange-50": "#f9c587",
+        "orange-15": "#ffefdc",
+        "orange-5": "#fef9f3"
+    },
+    "Tegel": {
+        "tegel-100": "#d34503",
+        "tegel-15": "#f8e3d9"
+    },
+    "Plommon": {
+        "plommon-100": "#a73a64",
+        "plommon-15": "#f2e1e8"
+    },
+    "Senap": {
+        "senap-100": "#ba7918",
+        "senap-15": "#f5ebdc"
+    },
+    "Hav": {
+        "hav-100": "#4c669f",
+        "hav-15": "#e4e8f1"
+    }
+}
