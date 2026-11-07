@@ -91,6 +91,14 @@ export function FLoaderSelectors(selector?: string): Readonly<{
 }>;
 
 // @public
+export function FMessageBoxSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    content(): string;
+    heading(): string;
+    icon(): string;
+}>;
+
+// @public
 export function FMinimizablePanelSelectors(selector?: string): Readonly<{
     readonly selector: string;
     header(): string;
@@ -136,6 +144,15 @@ export function FSelectFieldSelectors(selector?: string): Readonly<{
     selectedOption(): string;
     options(): string;
     arrowIcon(): string;
+}>;
+
+// @public
+export function FStaticFieldSelectors(selector?: string): Readonly<{
+    readonly selector: string;
+    body(): string;
+    label(): string;
+    description(): string;
+    formatDescription(): string;
 }>;
 
 // @public
