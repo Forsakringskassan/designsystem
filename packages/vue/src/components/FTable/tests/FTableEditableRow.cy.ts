@@ -15,9 +15,8 @@ describe("FTable with editable(row) depending on other fields", () => {
         cy.mount(Example);
 
         table.cell({ row: 1, col: 1 }).click();
-        table.selectDropdownOption(1).click();
-        table.cell({ row: 1, col: 2 }).click();
-        table.selectDropdownOption(1).click();
+        table.select(1, 1).select(0);
+        table.select(1, 2).select(0);
     });
 
     it("should keep description after clicking outside the row", () => {
@@ -47,8 +46,10 @@ describe("FTable with editable(row) depending on other fields", () => {
         cy.focused().type("Hund i parken");
         cy.get("button").contains("Utanför").click();
 
-        table.cell({ row: 1, col: 1 }).click();
-        table.selectDropdownOption(2).click();
+        table.select(1, 1).select("Katt");
+
+        // Wait for Vue to update the rendered row data
+        cy.get("[data-test=rows]").should("contain.text", '"animal": "Katt"');
 
         firstRow().should("include", {
             animal: "Katt",

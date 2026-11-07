@@ -472,7 +472,7 @@ describe("rows()", () => {
     });
 });
 
-it("selectDropdown() should get dropdown when open", () => {
+it("select() should get native select element", () => {
     interface SelectRow {
         option: string;
     }
@@ -493,15 +493,13 @@ it("selectDropdown() should get dropdown when open", () => {
             rows: selectRows.value,
         }),
     );
-    table.selectDropdown().should("not.exist");
-    table.cell({ row: 1, col: 1 }).click();
-    table.selectDropdown().should("exist");
 
-    // Close dialog when done
-    table.cell({ row: 1, col: 1 }).focus().should("have.focus");
+    table.select(1, 1).should("have.prop", "tagName", "SELECT");
+    table.select(1, 1).should("have.value", "Foo");
+    table.select(2, 1).should("have.value", "Bar");
 });
 
-it("selectDropdownOption() should get options when dropdown is open", () => {
+it("select() should get native select options", () => {
     interface SelectRow {
         option: string;
     }
@@ -522,11 +520,8 @@ it("selectDropdownOption() should get options when dropdown is open", () => {
             rows: selectRows.value,
         }),
     );
-    table.selectDropdownOption(1).should("not.exist");
-    table.cell({ row: 1, col: 1 }).click();
-    table.selectDropdownOption(1).should("contain.text", "Foo");
-    table.selectDropdownOption(2).should("contain.text", "Bar");
-
-    // Close dialog when done
-    table.cell({ row: 1, col: 1 }).focus().should("have.focus");
+    table.select(1, 1).find("option").should("have.length", 3);
+    table.select(1, 1).find("option").eq(0).should("have.text", "Foo");
+    table.select(1, 1).find("option").eq(1).should("have.text", "Bar");
+    table.select(1, 1).find("option").eq(2).should("have.text", "Baz");
 });

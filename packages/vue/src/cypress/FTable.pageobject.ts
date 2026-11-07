@@ -175,6 +175,24 @@ export class FTablePageObject implements BasePageObject {
     }
 
     /**
+     * Get the native select element in a table cell.
+     *
+     * Only applicable if using an editable select cell.
+     *
+     * @public
+     * @since %version%
+     * @param row - Row number (1-indexed).
+     * @param col - Column number (1-indexed).
+     * @returns The native select element.
+     */
+    public select(
+        row: number,
+        col: number,
+    ): Cypress.Chainable<JQuery<HTMLSelectElement>> {
+        return this.cell({ row, col }).find("select");
+    }
+
+    /**
      * Get the dropdown from a select cell.
      *
      * Only applicable if using a select cell.
@@ -183,6 +201,7 @@ export class FTablePageObject implements BasePageObject {
      * not work properly if there are several dropdowns open simultaneously.
      *
      * @internal
+     * @deprecated Since %version%. This method targets legacy combobox dropdown. Which has been replaced by native select elements. Use `select()` instad.
      * @returns Dropdown for a select cell.
      */
     public selectDropdown(): DefaultCypressChainable {
@@ -198,6 +217,7 @@ export class FTablePageObject implements BasePageObject {
      * not work properly if there are several dropdowns open simultaneously.
      *
      * @public
+     * @deprecated Since %version%. This method targes the legacy combobox dropdown. Use `select()` with Cypress `.select()` instead.
      * @param option - option number (1-indexed).
      * @returns Option of given number from a select cell dropdown.
      */
