@@ -23,7 +23,7 @@ jobs:
             - name: Build documentation
               run: npm run build:docs
             - name: Tests
-              uses: Forsakringskassan/vitest-config@ad1b62a56aab1165f60d27e5ae6b64c0baaedaf9 # v5.0.2
+              uses: Forsakringskassan/vitest-config@377b52787267326aadb6f3e84cd0c00241f38ef7 # v5.1.0
 
     cypress-e2e:
         name: Cypress E2E Tests

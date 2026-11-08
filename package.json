@@ -110,7 +110,7 @@
     "@forsakringskassan/sass-module-importer": "3.0.0",
     "@forsakringskassan/stylelint-config": "3.5.1",
     "@forsakringskassan/vite-lib-config": "5.15.2",
-    "@forsakringskassan/vitest-config": "5.0.2",
+    "@forsakringskassan/vitest-config": "5.1.0",
     "@html-validate/release-scripts": "7.6.17",
     "@types/estree": "1.0.10",
     "@types/lodash": "4.17.27",
