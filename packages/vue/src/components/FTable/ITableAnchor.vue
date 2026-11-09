@@ -12,7 +12,7 @@ const { column, row } = defineProps<{
 
 const targetElement = useTemplateRef("target");
 
-const hasTarget = computed(() => {
+const target = computed(() => {
     return column.target ?? "_blank";
 });
 
