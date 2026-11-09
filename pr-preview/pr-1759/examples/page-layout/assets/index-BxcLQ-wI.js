@@ -20325,6 +20325,7 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 				onStartEdit("");
 			}
 			if (event.key !== "Enter") return;
+			event.preventDefault();
 			event.stopPropagation();
 			onStartEdit(fromColumnValue());
 		}
@@ -20333,6 +20334,7 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 			event.stopPropagation();
 			switch (event.key) {
 				case "Enter":
+					event.preventDefault();
 					if (viewValue.value === initialViewValue) {
 						validity.value = { ...initialValidity };
 						onStopEdit({ reason: "enter" });
