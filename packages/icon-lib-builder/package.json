@@ -27,7 +27,7 @@
     "!scripts/**/*.spec.js"
   ],
   "dependencies": {
-    "sass": "1.107.1",
+    "sass": "1.108.0",
     "svgo": "4.1.0"
   },
   "devDependencies": {
