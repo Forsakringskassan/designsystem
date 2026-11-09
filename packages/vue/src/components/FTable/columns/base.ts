@@ -53,7 +53,7 @@ export interface TableColumnBase<T> {
      * `"_parent"`
      * `"_top"`
      */
-    target?: string | undefined;
+    target?: "_blank" | "_self" | "_parent" | "_top" | undefined;
     /**
      * Set icon left to the anchor link
      *
