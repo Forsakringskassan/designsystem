@@ -2,10 +2,6 @@
 @use "../../core/size";
 @use "variables" as *;
 
-// FIXME:
-// - Options in dark-mode (background...)
-// - Text color in highlight mode
-
 $vertical-padding: core.densify(size.$padding-025);
 $horizontal-padding: size.$padding-050;
 $underline-thickness: 3px;
@@ -392,7 +388,7 @@ $cell-border-width: 1px;
     }
 
     .table-ng__cell--text:has(:focus-visible) .table-ng__editable,
-    .table-ng__cell--select:focus-within .table-ng__editable {
+    .table-ng__cell--select:has(select:focus) .table-ng__editable {
         box-shadow: inset 0 (-$underline-thickness) 0 0 Highlight;
         border-radius: 0;
     }
