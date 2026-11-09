@@ -6148,7 +6148,7 @@ input[type=search]:focus-visible,
 }
 @media (forced-colors: active) {
   .table-ng__cell--text:has(:focus-visible) .table-ng__editable,
-  .table-ng__cell--select:focus-within .table-ng__editable {
+  .table-ng__cell--select:has(select:focus) .table-ng__editable {
     box-shadow: inset 0 -3px 0 0 Highlight;
     border-radius: 0;
   }
