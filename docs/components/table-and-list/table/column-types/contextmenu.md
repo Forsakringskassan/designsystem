@@ -32,7 +32,7 @@ const columns = defineTableColumns<typeof row>([
     {
         header: "Åtgärd",
         type: "menu",
-        text(row) {
+        screenreaderText(row) {
             return `Åtgärder för rad ${row.id}`;
         },
         actions: [

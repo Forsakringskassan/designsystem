@@ -218,7 +218,7 @@ describe("1.5 Separator", () => {
             header: "Button",
             key: "button",
             icon: "trashcan",
-            text: (row) => row.button,
+            screenreaderText: (row) => row.button,
         },
         {
             header: "Anchor",
@@ -1462,7 +1462,7 @@ describe("5 tabstop", () => {
                 type: "button",
                 header: "remove",
                 icon: "trashcan",
-                text(row) {
+                screenreaderText(row) {
                     return row.bar;
                 },
                 onClick(row) {
@@ -1588,7 +1588,7 @@ describe("5 tabstop", () => {
             {
                 type: "button",
                 header: "button header",
-                text(row) {
+                screenreaderText(row) {
                     return row.button;
                 },
                 icon: "bell",
@@ -2750,7 +2750,7 @@ describe("13 Cell interaction states", () => {
             header: "Button",
             key: "button",
             icon: "trashcan",
-            text: (row) => row.button,
+            screenreaderText: (row) => row.button,
         },
     ]);
 
@@ -3070,7 +3070,7 @@ describe("visible", () => {
             type: "button",
             header: "button",
             icon: "trashcan",
-            text: () => "button",
+            screenreaderText: () => "button",
         },
         {
             type: "anchor",
@@ -3092,7 +3092,7 @@ describe("visible", () => {
         {
             type: "menu",
             header: "Menu",
-            text: () => "text",
+            screenreaderText: () => "text",
         },
         {
             type: "select",

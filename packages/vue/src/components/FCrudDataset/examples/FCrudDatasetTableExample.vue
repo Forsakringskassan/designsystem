@@ -19,7 +19,7 @@ const columns = defineTableColumns([
     {
         type: "menu",
         header: "Åtgärd",
-        text: (row: FruitData) => `Visa åtgärder för ${row.name}`,
+        screenreaderText: (row: FruitData) => `Visa åtgärder för ${row.name}`,
         actions: [
             {
                 label: "Ändra",

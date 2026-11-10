@@ -13,7 +13,7 @@ export interface TableColumnMenu<T> extends TableColumnBase<T> {
     /** Column type */
     type: "menu";
     /** Screenreader text */
-    text(this: void, row: T): string | null;
+    screenreaderText(this: void, row: T): string | null;
     /**
      * List of menu actions, or a callback returning actions for a row.
      *
@@ -88,7 +88,7 @@ export interface NormalizedTableColumnMenu<T> extends NormalizedTableColumnBase<
         row: T;
         column: NormalizedTableColumnMenu<T>;
     }>;
-    text(this: void, row: T): string | null;
+    screenreaderText(this: void, row: T): string | null;
 }
 
 function noop(): void {
@@ -118,7 +118,12 @@ export function normalizeMenuColumn<T>(
 
     return {
         type: "menu",
-        text: getValueFn(column.text, undefined, String, ""),
+        screenreaderText: getValueFn(
+            column.screenreaderText,
+            undefined,
+            String,
+            "",
+        ),
         actions:
             typeof actions === "function"
                 ? (row: T) => actions(row).map(normalizeMenuAction)
