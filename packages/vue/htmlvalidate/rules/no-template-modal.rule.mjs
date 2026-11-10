@@ -43,7 +43,7 @@ export class NoTemplateModal extends Rule {
     documentation() {
         return {
             description:
-                "The template method of using modals is deprecated. Modals need to be the root element in a Vue component and opened using API.",
+                "The template method of using modals is no longer supported. Modals need to be the root element in a Vue component and opened using API.",
             url: getDocumentationUrl("/components/fmodal.html"),
         };
     }
