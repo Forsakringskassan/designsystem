@@ -12,10 +12,6 @@ search:
 Använd modala dialogrutor för korta interaktioner som är en del av ett flöde.
 Modaler kan användas för att låta användaren bekräfta ett val, för att förmedla information eller för enkel inmatning.
 
-```import live-example
-FModalLiveExample.vue
-```
-
 Använd inte modala dialogrutor för att presentera felmeddelanden eller information som användaren behöver kunna läsa under tiden som hen åtgärdar ett fel eller gör ändringar.
 
 - I de flesta fall där användaren måste uppmärksammas på viktig information eller problem är en {@link FMessageBox meddelanderuta} att föredra.
@@ -24,12 +20,9 @@ Använd inte modala dialogrutor för att presentera felmeddelanden eller informa
   Tabb-fokus loopar genom alla klickbara ytor i en modal.
 - Öppna inte ytterligare en modal från en modal.
 
-Modala dialogrutor finns i fyra varianter:
-
-- standard
-- information
-- varning
-- fel.
+```import
+FModalUsage.vue
+```
 
 ## Användning
 
@@ -45,22 +38,31 @@ Du kan sedan öppna din modal genom att använda {@link useModal `useModal()`} (
 FModalUsage.vue
 ```
 
-### Användning med template (deprekerad)
+## Varianter
 
-Att använda `FModal` nästlad i template är deprekerat.
-Om du använder detta rekommenderar vi att du flyttar den till en egen Vue komponent och använder API för att öppna den.
-Se {@link FModal#anvandning `Användning`} för hur du använder `FModal` med API.
+```import nomarkup background=solid
+FModalTypableExample.vue
+```
+
+Modala dialogrutor finns i fyra varianter:
+
+- standard
+- information
+- varning
+- fel.
+
+Använd `type`-prop för att välja variant.
 
 ```diff
- <template>
-     <div>
-         <f-button @click="onClick">Open modal</f-button>
--        <f-modal></f-modal>
-     </div>
- </template>
+-<f-modal>
++<f-modal type="information">
 ```
 
 ## Storlek
+
+```import nomarkup background=solid
+FModalSizableExample.vue
+```
 
 Modalens höjd anpassas utifrån innehållet.
 I desktop (>639px) kan modalens bredd anpassas till

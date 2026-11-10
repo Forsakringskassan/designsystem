@@ -75,22 +75,6 @@ async function onOpen(): Promise<void> {
 }
 ```
 
-### Användning med template (deprekerad)
-
-Att använda `FConfirmModal` i template är deprekerat.
-Om du använder detta rekommenderar vi att du tar bort `f-confirm-modal` och istället använder API för att öppna modalen.
-
-Se {@link FConfirmModal#anvandning `Användning`} för hur du använder `FConfirmModal` med API.
-
-```diff
- <template>
-     <div>
-         <f-button @click="onClick">Open modal</f-button>
--        <f-confirm-modal></f-confirm-modal>
-     </div>
- </template>
-```
-
 ## Knapparna
 
 En {@link button#sekundar_knapp sekundär knapp} används för att ångra och gå tillbaka.

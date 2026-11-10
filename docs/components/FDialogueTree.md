@@ -64,7 +64,13 @@ ExampleFDialogueTree.vue
 
 ## Flerstegsmodal
 
-Exempel på en kombination av komponenterna FFormModal och FDialogueTree för att skapa en modal som inehåller flera steg.
+Exempel på innehållet i en egen Vue-komponent som kombinerar `FFormModal` och `FDialogueTree` för flera steg.
+Öppna komponenten via:
+
+- {@link useModal `useModal()`} – för Composition API
+- {@link form-modal `formModal()`} – för Options API
+
+Lägg inte `FFormModal` direkt i sidans template.
 
 ```jsx
 <!-- [html-validate-disable-block aria-label-misuse -- well supported]-->

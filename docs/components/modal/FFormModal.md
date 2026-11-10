@@ -185,21 +185,6 @@ const result = await formModal<Person>(PersonFormModal, {
 FFormModalApiExample.vue
 ```
 
-## Användning med template (deprekerad)
-
-Att använda `FFormModal` nästlad i template är deprekerat.
-Vi rekommenderar att du flyttar den till en egen Vue komponent och använder API för att öppna den.
-Se {@link FFormModal#anvandning `Användning`} för hur du använder `FFormModal` med API.
-
-```diff
- <template>
-     <div>
-         <f-button @click="onClick">Open modal</f-button>
--        <f-form-modal></f-form-modal>
-     </div>
- </template>
-```
-
 ## Formulärsmodal med flera knappar
 
 Komponenten har en prop `buttons` som styr vilka knappar som finns i modalens sidfot.
