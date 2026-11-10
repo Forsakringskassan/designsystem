@@ -72,7 +72,7 @@ Du kan antingen låta din formulärsmodal hantera detta genom att internt kopier
 
 ## Öppna modal
 
-Du öppnar modalen med {@link form-modal `formModal()`}.
+Du öppnar modalen med {@link useModal `useModal()`}.
 
 ```ts
 import { defineComponent } from "vue";
@@ -124,21 +124,6 @@ const result = await formModal<Person>(PersonFormModal, {
 
 ```import
 FFormModalApiExample.vue
-```
-
-## Användning med template (deprekerad)
-
-Att använda `FFormModal` nästlad i template är deprekerat.
-Vi rekommenderar att du flyttar den till en egen Vue komponent och använder API för att öppna den.
-Se {@link FFormModal#anvandning `Användning`} för hur du använder `FFormModal` med API.
-
-```diff
- <template>
-     <div>
-         <f-button @click="onClick">Open modal</f-button>
--        <f-form-modal></f-form-modal>
-     </div>
- </template>
 ```
 
 ## Formulärsmodal med flera knappar
@@ -261,5 +246,5 @@ vue:FFormModal
 
 ## Relaterat
 
-- {@link useModal `useModal()`} (composition API) {@link form-modal `formModal()`} (options API) för programatiskt användande av formulärsmodal.
+- {@link useModal `useModal()`} för programatiskt användande av formulärsmodal.
 - {@link FModal Modal} för mer information om modaler.
