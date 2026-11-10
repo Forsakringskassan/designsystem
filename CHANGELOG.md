@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 6.64.1 (2026-11-03)
+
+### Bug Fixes
+
+* **@fkui/design:** preserve button text and border colors (refs SFKUI-6500) 91c17b5
+
+## 6.64.0 (2026-11-03)
+
+### Features
+
+* **@fkui/design, @fkui/vue:** add required validation for FTable select columns (refs SFKUI-8346) 8454860
+* **deps:** replace `glob` with native glob from `node:fs` (refs SFKUI-6500) f29d81d
+
+### Bug Fixes
+
+* **@fkui/design:** wrap HTML5 elements in `:where()` to fix `<dialog>` behavior (refs SFKUI-8164) 2cee558
+* **@fkui/theme-default, @fkui/vue:** separate footer color tokens from header (refs SFKUI-6500) 92f85f9
+* **@fkui/vue:** enter should not open ´IComboxDropdowm´ (refs SFKUI-7564) 7ee8864
+* **deps:** update dependency i18next to v26.5.11 eae54ba
+* **deps:** update dependency i18next to v26.5.12 c2c522e
+* **deps:** update dependency sass to v1.107.0 c7fcb88
+* **deps:** update dependency sass to v1.107.1 85d1eae
+
 ## 6.63.0 (2026-10-28)
 
 ### Features

@@ -23,7 +23,7 @@ jobs:
             - name: Build documentation
               run: npm run build:docs
             - name: Tests
-              uses: Forsakringskassan/vitest-config@09162c2996701e49faf17cd569ab3591610a8094 # v5.0.1
+              uses: Forsakringskassan/vitest-config@377b52787267326aadb6f3e84cd0c00241f38ef7 # v5.1.0
 
     cypress-e2e:
         name: Cypress E2E Tests
@@ -42,7 +42,7 @@ jobs:
                   npm run build
                   npm run build:docs
             - name: Cypress E2E tests
-              uses: cypress-io/github-action@4ce68f262a3888d22cf3175d62010a145ba737ee # v7.4.8
+              uses: cypress-io/github-action@18016a55674bd02cabf197de5762a1710cb5577c # v7.4.9
               with:
                   summary-title: "E2E tests"
                   start: npm start
@@ -76,7 +76,7 @@ jobs:
             - name: Build (minimal)
               run: npm exec lerna -- run --include-dependencies --scope=@fkui/vue --scope=@fkui/cypress-split build
             - name: Cypress Component Testing
-              uses: cypress-io/github-action@4ce68f262a3888d22cf3175d62010a145ba737ee # v7.4.8
+              uses: cypress-io/github-action@18016a55674bd02cabf197de5762a1710cb5577c # v7.4.9
               env:
                   SPLIT: ${{ strategy.job-total }}
                   SPLIT_INDEX: ${{ strategy.job-index }}

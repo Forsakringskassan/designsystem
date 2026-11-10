@@ -15,6 +15,7 @@ export interface TableColumnSimple<
     type?: undefined;
     key?: K;
     label?(this: void, row: T): string;
+    wrap?: boolean;
     value?(this: void, row: T): string;
 }
 
@@ -28,6 +29,7 @@ export function normalizeSimpleColumn<T, K extends keyof T>(
         type: "text",
         label: () => "",
         tnum: false,
+        wrap: column.wrap ?? false,
         align: "left",
         value: getValueFn(column.value, column.key, String, ""),
         update() {

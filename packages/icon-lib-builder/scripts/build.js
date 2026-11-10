@@ -1,6 +1,5 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { globSync } from "glob";
 import sass from "sass";
 import { optimize } from "svgo";
 
@@ -204,14 +203,15 @@ async function generateStyle(directory, directoryName) {
 }
 
 async function main() {
-    const directories = globSync("icons/*/");
-
+    const directories = await Array.fromAsync(fs.glob("icons/*/"));
     const directoryNames = directories.map((d) => path.basename(d));
     await fs.rm(dest, { force: true, recursive: true });
 
     for (const directory of directories) {
         const directoryName = path.basename(directory);
-        const files = globSync("**/**.svg", { cwd: directory });
+        const files = await Array.fromAsync(
+            fs.glob("**/**.svg", { cwd: directory }),
+        );
         await fs.mkdir(path.join(dest, directoryName), { recursive: true });
 
         const data = await getSpriteSheetdata(directory, files);

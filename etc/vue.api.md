@@ -1558,6 +1558,8 @@ export interface TableColumnNumber<T, K extends keyof T> extends TableColumnBase
     validation?: ValidatorConfigs;
     // (undocumented)
     value?(this: void, row: T): string | number;
+    // (undocumented)
+    wrap?: boolean;
 }
 
 // @public (undocumented)
@@ -1606,6 +1608,8 @@ export interface TableColumnSimple<T, K extends keyof T> extends TableColumnBase
     type?: undefined;
     // (undocumented)
     value?(this: void, row: T): string;
+    // (undocumented)
+    wrap?: boolean;
 }
 
 // @public (undocumented)
@@ -1631,6 +1635,7 @@ export interface TableColumnText<T, K extends keyof T> extends TableColumnBase<T
     validation?: ValidatorConfigs;
     // (undocumented)
     value?(this: void, row: T): string;
+    wrap?: boolean;
 }
 
 // @internal

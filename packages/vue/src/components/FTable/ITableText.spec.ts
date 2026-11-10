@@ -71,6 +71,47 @@ describe("ITableText", () => {
         expect(event.defaultPrevented).toBe(false);
     });
 
+    it("should prevent default when Enter starts and ends editing", async () => {
+        expect.assertions(4);
+        const row = { text: "Foo" };
+        const column = normalizeTableColumn<typeof row>({
+            type: "text",
+            header: "Text",
+            key: "text",
+            editable: true,
+            label: () => "Text",
+        });
+        const wrapper = mount(ITableText, {
+            attachTo: document.body,
+            props: { row, column } as never,
+            global: { stubs: { IPopupError: true } },
+        });
+        const td = wrapper.get("td");
+        const input = wrapper.get("input");
+        await flushPromises();
+        td.element.focus();
+
+        const start = new KeyboardEvent("keydown", {
+            bubbles: true,
+            cancelable: true,
+            key: "Enter",
+        });
+        td.element.dispatchEvent(start);
+        expect(start.defaultPrevented).toBe(true);
+        expect(document.activeElement).toBe(input.element);
+
+        await input.setValue("Bar");
+        const end = new KeyboardEvent("keydown", {
+            bubbles: true,
+            cancelable: true,
+            key: "Enter",
+        });
+        input.element.dispatchEvent(end);
+        expect(end.defaultPrevented).toBe(true);
+        await flushPromises();
+        expect(row.text).toBe("Bar");
+    });
+
     it("should restore td tabstop on blur when exiting edit mode", async () => {
         expect.assertions(5);
         const row = { text: "Foo" };
@@ -396,4 +437,45 @@ describe("ITableText", () => {
             undefined,
         );
     });
+
+    it.each([
+        { editable: false, wrap: undefined, expected: false },
+        { editable: false, wrap: false, expected: false },
+        { editable: false, wrap: true, expected: true },
+        { editable: true, wrap: undefined, expected: false },
+        { editable: true, wrap: false, expected: false },
+        { editable: true, wrap: true, expected: true },
+    ])(
+        "should have wrap class=$expected when editable=$editable and wrap=$wrap",
+        ({ editable, wrap, expected }) => {
+            expect.assertions(1);
+
+            const row: Row = { foo: "Some text that could wrap" };
+            const column = normalizeTableColumn<Row, keyof Row>({
+                type: "text",
+                header: "Header",
+                key: "foo",
+                editable,
+                wrap,
+            });
+
+            const wrapper = mount(
+                ITableText as unknown as ComponentPublicInstance,
+                {
+                    props: { column, row },
+                },
+            );
+
+            const selector = editable
+                ? ".table-ng__editable__text"
+                : ".table-ng__cell--static__text";
+
+            const wrapClass = editable
+                ? "table-ng__editable__text--wrap"
+                : "table-ng__cell--static__text--wrap";
+
+            const classes = wrapper.get(selector).classes();
+            expect(classes.includes(wrapClass)).toBe(expected);
+        },
+    );
 });

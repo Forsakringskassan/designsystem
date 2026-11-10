@@ -1,6 +1,5 @@
 import fs from "node:fs/promises";
 import path from "node:path/posix";
-import { glob } from "glob";
 
 /**
  * @template T
@@ -30,11 +29,13 @@ function union(a, b) {
  * @returns {Promise<Set<{ filePath: string, name: string }>>}
  */
 async function findExamples() {
-    const filePaths = await glob(
-        "packages/**/{examples,docs,tests}/*.vue",
-        "docs/**/*.vue",
+    const filePaths = fs.glob(
+        ["packages/**/{examples,docs,tests}/*.vue", "docs/**/*.vue"],
+        {
+            exclude: ["docs/**/playground/**"],
+        },
     );
-    const entries = filePaths.map((it) => {
+    const entries = await Array.fromAsync(filePaths, (it) => {
         const filePath = it.replaceAll("\\", "/");
         const name = path.basename(filePath);
         return { filePath, name };
@@ -53,11 +54,16 @@ async function findExamples() {
  * @returns {Promise<Set<string>>}
  */
 async function findDocsImported() {
-    const filePaths = await glob("docs/**/*.md", {
+    const dirents = fs.glob("docs/**/*.md", {
         ignore: ["docs/examples/**"],
+        withFileTypes: true,
     });
     const found = /** @type {Set<string>} */ new Set();
-    for (const filePath of filePaths) {
+    for await (const dirent of dirents) {
+        if (!dirent.isFile()) {
+            continue;
+        }
+        const filePath = path.join(dirent.parentPath, dirent.name);
         const content = await fs.readFile(filePath, "utf8");
         /* eslint-disable-next-line regexp/no-super-linear-backtracking -- technical debt */
         const matches = content.matchAll(/```import[^\n]*([^`]*)```/g);
@@ -80,9 +86,15 @@ async function findDocsImported() {
  * @returns {Promise<Set<string>>}
  */
 async function findSrcImported() {
-    const filePaths = await glob("{docs,packages}/**/*.{ts,vue}");
+    const dirents = fs.glob("{docs,packages}/**/*.{ts,vue}", {
+        withFileTypes: true,
+    });
     const found = /** @type {Set<string>} */ new Set();
-    for (const filePath of filePaths) {
+    for await (const dirent of dirents) {
+        if (!dirent.isFile()) {
+            continue;
+        }
+        const filePath = path.join(dirent.parentPath, dirent.name);
         const content = await fs.readFile(filePath, "utf8");
         const matches = content.matchAll(/from "(\.[^"]+\.vue)"/g);
         for (const match of matches) {
