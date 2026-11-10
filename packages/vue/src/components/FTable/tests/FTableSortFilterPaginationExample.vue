@@ -26,7 +26,7 @@ const columns = defineTableColumns<Row>([
         header: "Åtgärd",
         icon: "trashcan",
         size: "shrink",
-        text(row) {
+        screenreaderText(row) {
             return `Ta bort ${row.text}`;
         },
         onClick: (row) => {

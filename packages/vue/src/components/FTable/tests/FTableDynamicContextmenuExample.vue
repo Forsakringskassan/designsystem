@@ -101,7 +101,7 @@ const columns = computed<Array<TableColumn<Row>>>(() =>
         {
             type: "menu",
             header: "Åtgärd",
-            text(row) {
+            screenreaderText(row) {
                 return `Visa åtgärder för rad ${row.id}`;
             },
             actions(row) {

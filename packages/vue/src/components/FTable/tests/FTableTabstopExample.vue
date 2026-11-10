@@ -50,7 +50,7 @@ const columns = defineTableColumns<Row>([
         type: "button",
         header: "remove",
         icon: "trashcan",
-        text(row) {
+        screenreaderText(row) {
             return row.bar;
         },
         onClick(row: Row) {

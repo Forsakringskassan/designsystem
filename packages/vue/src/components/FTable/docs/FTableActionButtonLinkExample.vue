@@ -39,7 +39,7 @@ const columns = defineTableColumns<Row>([
         type: "button",
         header: "",
         icon: "trashcan",
-        text() {
+        screenreaderText() {
             return "Ta bort";
         },
         onClick: onRemoveRow,
@@ -47,7 +47,7 @@ const columns = defineTableColumns<Row>([
     {
         header: "",
         type: "menu",
-        text(row) {
+        screenreaderText(row) {
             return `Åtgärder för "${row.frukt}"`;
         },
         actions: [

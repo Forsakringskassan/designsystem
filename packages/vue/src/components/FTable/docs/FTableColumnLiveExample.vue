@@ -156,7 +156,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     button: {
         type: "button",
         header: "Knapp kolumnrubrik",
-        text: () => "value",
+        screenreaderText: () => "value",
         icon: "bell",
     },
     select: {
@@ -179,7 +179,7 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     menu: {
         type: "menu",
         header: "Åtgärd",
-        text: (row) => {
+        screenreaderText: (row) => {
             return `Visa åtgärder för rad "${row.id ?? -1}"`;
         },
         actions: [
