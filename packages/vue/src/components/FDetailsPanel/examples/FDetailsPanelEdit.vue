@@ -60,7 +60,7 @@ const columns = defineTableColumns<Row>([
     {
         type: "button",
         header: "Åtgärd",
-        text: (row) => `Öppna detaljpanel för ${row.column1}`,
+        screenreaderText: (row) => `Öppna detaljpanel för ${row.column1}`,
         icon: "arrow-right",
         onClick: openPanel,
     },
