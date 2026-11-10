@@ -78,7 +78,7 @@
     "@fkui/logic": "^6.64.0",
     "@fkui/vue": "^6.64.1",
     "html-validate": ">= 10.10.0",
-    "vue": "^3.5.34"
+    "vue": "^3.5.40"
   },
   "peerDependenciesMeta": {
     "html-validate": {
