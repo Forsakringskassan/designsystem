@@ -10,7 +10,5 @@ async function onClick(): Promise<void> {
 </script>
 
 <template>
-    <div>
-        <f-button size="medium" variant="secondary" @click="onClick">Open</f-button>
-    </div>
+    <f-button size="medium" variant="secondary" @click="onClick">Öppna modal</f-button>
 </template>
