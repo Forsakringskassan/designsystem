@@ -754,6 +754,34 @@ var metadata_default = {
       }
     },
     {
+      "name": "--fkds-color-footer-background-primary",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#116a3e",
+          "palette": "green-a-100"
+        },
+        "dark": {
+          "value": "#35805b",
+          "palette": "green-a-85"
+        }
+      }
+    },
+    {
+      "name": "--fkds-color-footer-text-primary",
+      "comment": null,
+      "values": {
+        "light": {
+          "value": "#fff",
+          "palette": null
+        },
+        "dark": {
+          "value": "#fff",
+          "palette": null
+        }
+      }
+    },
+    {
       "name": "--fkds-color-header-background-primary",
       "comment": null,
       "values": {
