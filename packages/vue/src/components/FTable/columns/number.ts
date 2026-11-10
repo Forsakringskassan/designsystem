@@ -25,6 +25,7 @@ export interface TableColumnNumber<
     key?: K;
     label?(this: void, row: T): string;
     tnum?: boolean;
+    wrap?: boolean;
     align?: "left" | "right";
     attributes?:
         | Record<string, string | number | boolean | undefined>
@@ -57,6 +58,7 @@ export interface NormalizedTableColumnNumber<
     readonly validation: ValidatorConfigs;
     readonly hasValidation: boolean;
     readonly tnum: boolean;
+    readonly wrap: boolean;
     readonly align: "left" | "right";
     readonly component: Component<{
         row: T;
@@ -98,6 +100,7 @@ export function normalizeNumberColumn<T, K extends keyof T>(
         label: getLabelFn(column.label),
         decimals,
         tnum: column.tnum ?? defaultTnumValue(type),
+        wrap: column.wrap ?? false,
         align: column.align ?? "right",
         attributes: column.attributes,
         value: getValueFn(column.value, column.key, String, ""),
