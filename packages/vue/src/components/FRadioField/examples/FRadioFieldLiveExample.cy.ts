@@ -1,50 +1,37 @@
-import { FRadioGroupPageObject } from "../../../cypress";
+import { FTooltipPageObject } from "../../../cypress";
 import Example from "./FRadioFieldLiveExample.vue";
 
 describe("FRadioFieldLiveExample", () => {
-    const fieldset = new FRadioGroupPageObject(
-        ".live-example__example fieldset",
-    );
-    enum barnover18 {
-        Ja = ".radio-button:nth(0)",
-        Nej = ".radio-button:nth(1)",
-    }
+    beforeEach(() => {
+        cy.mount(Example);
+    });
 
-    describe("Basic functionality in FRadioFieldLiveExample", () => {
-        beforeEach(() => {
-            cy.mount(Example);
+    it("should update the example from the content controls", () => {
+        const tooltip = new FTooltipPageObject(
+            ".live-example__example .tooltip",
+        );
+
+        cy.get(".live-example__example").within(() => {
+            cy.contains("Etikettrubrik").should("be.visible");
+            cy.contains("Label 1").should("be.visible");
+            cy.contains("Label 2").should("be.visible");
+            cy.contains("Hjälptext").should("not.exist");
+            cy.contains("Utvidgad text").should("not.exist");
         });
 
-        it("should confirm that the basic features of the live example work as intended", () => {
-            cy.get(".live-example__container").should("exist");
+        cy.get(".live-example__controls").contains("label", "Tooltip").click();
+        tooltip.iButton().click();
+        tooltip.header().should("contain", "Rubrik");
+        tooltip.body().should("contain", "Text");
 
-            fieldset.numberOfOptions().should("equal", 2);
+        cy.get(".live-example__controls")
+            .contains("label", "Hjälptext")
+            .click();
+        cy.get(".live-example__controls select").select("always");
 
-            fieldset
-                .radioButton(barnover18.Ja)
-                .isSelected()
-                .should("equal", false);
-            fieldset
-                .radioButton(barnover18.Nej)
-                .isSelected()
-                .should("equal", false);
-
-            fieldset.radioButton(barnover18.Ja).select();
-            fieldset
-                .radioButton(barnover18.Ja)
-                .isSelected()
-                .should("equal", true);
-            fieldset.radioButton(barnover18.Nej).select();
-
-            fieldset
-                .radioButton(barnover18.Nej)
-                .isSelected()
-                .should("equal", true);
-
-            fieldset
-                .radioButton(barnover18.Ja)
-                .isSelected()
-                .should("equal", false);
+        cy.get(".live-example__example").within(() => {
+            cy.contains("Hjälptext").should("be.visible");
+            cy.contains("Utvidgad text").should("be.visible");
         });
     });
 });

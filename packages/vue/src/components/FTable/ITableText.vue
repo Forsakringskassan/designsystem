@@ -27,7 +27,7 @@ import { inputFieldConfig } from "./input-fields-config";
 import { addInputValidators } from "./input-validators";
 import { isAlphanumeric } from "./is-alphanumeric";
 import { isVisible } from "./is-visible";
-import { type PopupError } from "./popup-eror";
+import { type PopupError } from "./popup-error";
 import { useStartStopEdit } from "./start-stop-edit";
 import { type NormalizedTableColumnNumber, type NormalizedTableColumnText } from "./table-column";
 
@@ -363,6 +363,7 @@ function onViewingKeydown(event: KeyboardEvent): void {
         return;
     }
 
+    event.preventDefault();
     event.stopPropagation();
     onStartEdit(fromColumnValue());
 }
@@ -373,6 +374,7 @@ function onEditingKeydown(event: KeyboardEvent): void {
 
     switch (event.key) {
         case "Enter": {
+            event.preventDefault();
             if (viewValue.value === initialViewValue) {
                 validity.value = { ...initialValidity };
                 onStopEdit({ reason: "enter" });

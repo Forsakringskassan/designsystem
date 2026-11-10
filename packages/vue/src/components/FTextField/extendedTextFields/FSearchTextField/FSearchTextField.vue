@@ -5,7 +5,6 @@ import { ElementIdService, TranslationService, alertScreenReader } from "@fkui/l
 import { FTextField } from "../..";
 import { FIcon } from "../../../FIcon";
 
-/* eslint-disable-next-line unicorn/no-top-level-side-effects -- false positive */
 export default defineComponent({
     name: "FSearchTextField",
     components: { FTextField, FIcon },
@@ -57,7 +56,7 @@ export default defineComponent({
     },
     computed: {
         canClear(): boolean {
-            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, unicorn/prefer-includes-over-repeated-comparisons -- technical debt */
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
             const isEmpty = this.modelValue === undefined || this.modelValue === null || this.modelValue === "";
 
             return !isEmpty;

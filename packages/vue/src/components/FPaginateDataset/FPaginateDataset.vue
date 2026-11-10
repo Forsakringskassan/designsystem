@@ -6,6 +6,7 @@ import { useSortFilterDatasetEvents } from "../FSortFilterDataset";
 import { provideSelectableRowSource, useSelectableRowSource } from "../FTable";
 import { paginateDatasetKey } from "./provide";
 
+/* eslint-disable-next-line vue/no-dupe-keys -- technical debt, see comment about modelValue below */
 const currentPage = defineModel<number>({
     default: 1,
 });

@@ -1,7 +1,0 @@
-@use "legacy-palette" with (
-    $global: false
-);
-
-:root {
-    @include legacy-palette.light;
-}

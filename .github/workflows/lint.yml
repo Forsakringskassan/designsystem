@@ -23,7 +23,7 @@ jobs:
               uses: Forsakringskassan/prettier-config@b170cc346f291b88a74cf9ab01501aa61e4602a7 # v3.7.13
             - name: ESLint
               if: success() || failure()
-              uses: Forsakringskassan/eslint-config@028916f920ae19b53c76ba5c055949e9564771b3 # v15.12.8
+              uses: Forsakringskassan/eslint-config@541e9be57965e04661baa3f2f6f6061e03ae304c # v15.13.10
             - name: HTML Validate
               if: success() || failure()
               run: npm run html-validate -- --max-warnings 0 || false
@@ -56,7 +56,7 @@ jobs:
                   npm run build
                   npm run build:docs
             - name: npm-pkg-lint
-              uses: ext/npm-pkg-lint@b5e4434a9b6fa649638592c01e39d26cf11c8667 # v5.4.0
+              uses: ext/npm-pkg-lint@3ec3576422cbd4418a6b1eed27738effd0ea7038 # v5.4.1
               with:
                   build: false
                   folders: packages/* docs

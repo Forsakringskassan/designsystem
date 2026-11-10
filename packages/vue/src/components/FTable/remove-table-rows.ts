@@ -8,7 +8,7 @@ import { type TableNestedKeyOf } from "./table-nested-key-of";
  * Note: The array is mutated.
  *
  * @public
- * @since %version%
+ * @since v6.63.0
  * @param rows - The row array
  * @param rowsToRemove - The row(s) to remove (expected to exist in the rows)
  * @param expandableAttribute - Property containing expandable child rows
