@@ -21087,8 +21087,8 @@ var _hoisted_1$79 = ["id"];
 var _hoisted_2$56 = { class: "modal__backdrop" };
 var _hoisted_3$42 = { class: "modal__inner-container" };
 var _hoisted_4$33 = { class: "modal__dialog" };
-var _hoisted_5$26 = { class: "modal__dialog-inner" };
-var _hoisted_6$19 = { class: "modal__header" };
+var _hoisted_5$25 = { class: "modal__dialog-inner" };
+var _hoisted_6$18 = { class: "modal__header" };
 var _hoisted_7$14 = {
 	key: 0,
 	ref: "modalTitle",
@@ -21119,8 +21119,8 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 		ref: "modalDialogContainer",
 		class: normalizeClass(["modal__dialog-container", _ctx.containerClasses])
 	}, [createBaseVNode("div", _hoisted_4$33, [
-		createBaseVNode("div", _hoisted_5$26, [
-			createBaseVNode("div", _hoisted_6$19, [
+		createBaseVNode("div", _hoisted_5$25, [
+			createBaseVNode("div", _hoisted_6$18, [
 				createBaseVNode("div", {
 					tabindex: "0",
 					onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
@@ -21516,7 +21516,7 @@ var _hoisted_1$77 = { class: "error-list" };
 var _hoisted_2$54 = { key: 0 };
 var _hoisted_3$40 = { class: "error-list__list error-list--list-style-none" };
 var _hoisted_4$32 = ["onClick"];
-var _hoisted_5$25 = { class: "error-list__link" };
+var _hoisted_5$24 = { class: "error-list__link" };
 function _sfc_render$45(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_f_icon = resolveComponent("f-icon");
 	const _component_i_flex_item = resolveComponent("i-flex-item");
@@ -21557,7 +21557,7 @@ function _sfc_render$45(_ctx, _cache, $props, $setup, $data, $options) {
 								"aria-hidden": "true"
 							}, null, -1)),
 							_cache[2] || (_cache[2] = createTextVNode()),
-							createBaseVNode("span", _hoisted_5$25, toDisplayString(item.title), 1)
+							createBaseVNode("span", _hoisted_5$24, toDisplayString(item.title), 1)
 						], 8, _hoisted_4$32)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
 							_cache[3] || (_cache[3] = createBaseVNode("span", {
 								class: "error-list__bullet",
@@ -26127,7 +26127,7 @@ var _hoisted_3$31 = {
 	class: "label__message label__message--error"
 };
 var _hoisted_4$25 = { "aria-hidden": "true" };
-var _hoisted_5$20 = {
+var _hoisted_5$19 = {
 	key: 0,
 	class: "label__message label__message--error"
 };
@@ -26181,7 +26181,7 @@ function _sfc_render$28(_ctx, _cache, $props, $setup, $data, $options) {
 				renderSlot(_ctx.$slots, "error-message", normalizeProps(guardReactiveProps({
 					hasError: _ctx.hasError,
 					validationMessage: _ctx.validity.validationMessage
-				})), () => [_ctx.hasError ? (openBlock(), createElementBlock("span", _hoisted_5$20, [createVNode(_component_f_icon, {
+				})), () => [_ctx.hasError ? (openBlock(), createElementBlock("span", _hoisted_5$19, [createVNode(_component_f_icon, {
 					class: "label__icon--left",
 					name: "error"
 				}), createTextVNode(" " + toDisplayString(_ctx.validity.validationMessage), 1)])) : createCommentVNode("v-if", true)])
@@ -26468,7 +26468,7 @@ var _hoisted_2$40 = {
 };
 var _hoisted_3$29 = ["onClick"];
 var _hoisted_4$23 = ["tabindex"];
-var _hoisted_5$19 = {
+var _hoisted_5$18 = {
 	key: 0,
 	class: "contextmenu__separator"
 };
@@ -26638,7 +26638,7 @@ var FContextMenu_default = /* @__PURE__ */ defineComponent({
 							}, toDisplayString(item.label), 513)
 						], 8, _hoisted_4$23),
 						_cache[2] || (_cache[2] = createTextVNode()),
-						hasSeparatorAfterItemAt(index) ? (openBlock(), createElementBlock("hr", _hoisted_5$19)) : createCommentVNode("v-if", true)
+						hasSeparatorAfterItemAt(index) ? (openBlock(), createElementBlock("hr", _hoisted_5$18)) : createCommentVNode("v-if", true)
 					], 8, _hoisted_3$29);
 				}), 128))], 512)], 40, _hoisted_1$57)]),
 				_: 1
@@ -27057,11 +27057,11 @@ var _hoisted_2$39 = {
 };
 var _hoisted_3$28 = ["for"];
 var _hoisted_4$22 = ["for"];
-var _hoisted_5$18 = {
+var _hoisted_5$17 = {
 	key: 0,
 	class: "label__message label__message--error"
 };
-var _hoisted_6$15 = ["for"];
+var _hoisted_6$14 = ["for"];
 var _hoisted_7$11 = {
 	key: 0,
 	class: "label__message label__message--error"
@@ -27086,7 +27086,7 @@ function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
 				formatDescriptionClass: _ctx.formatDescriptionClass
 			}),
 			_cache[1] || (_cache[1] = createTextVNode()),
-			_ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$18, [
+			_ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$17, [
 				createVNode(_component_f_icon, {
 					class: "label__icon--left",
 					name: "error"
@@ -27115,7 +27115,7 @@ function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
 			_cache[4] || (_cache[4] = createTextVNode()),
 			renderSlot(_ctx.$slots, "error-message")
 		])) : createCommentVNode("v-if", true)
-	], 8, _hoisted_6$15));
+	], 8, _hoisted_6$14));
 }
 var FLabel_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FLabel_vue_vue_type_script_lang_default, [["render", _sfc_render$26]]);
 function resolveWidthClass$1(words, inline) {
@@ -28478,8 +28478,8 @@ var _hoisted_1$41 = ["id", "aria-invalid"];
 var _hoisted_2$32 = ["id"];
 var _hoisted_3$26 = ["value"];
 var _hoisted_4$21 = { class: "table-ng__editable" };
-var _hoisted_5$17 = { class: "table-ng__editable__text" };
-var _hoisted_6$14 = {
+var _hoisted_5$16 = { class: "table-ng__editable__text" };
+var _hoisted_6$13 = {
 	ref: "arrowAnchor",
 	"aria-hidden": "true"
 };
@@ -28742,9 +28742,9 @@ var ITableSelect_default = /* @__PURE__ */ defineComponent({
 				], 40, _hoisted_2$32), [[vModelSelect, viewValue.value]]),
 				_cache[8] || (_cache[8] = createTextVNode()),
 				withDirectives(createBaseVNode("div", _hoisted_4$21, [
-					createBaseVNode("span", _hoisted_5$17, toDisplayString(viewValue.value), 1),
+					createBaseVNode("span", _hoisted_5$16, toDisplayString(viewValue.value), 1),
 					_cache[6] || (_cache[6] = createTextVNode()),
-					createBaseVNode("span", _hoisted_6$14, null, 512),
+					createBaseVNode("span", _hoisted_6$13, null, 512),
 					_cache[7] || (_cache[7] = createTextVNode()),
 					viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_7$10, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("v-if", true)
 				], 512), [[vShow, !editing.value]]),
@@ -28868,23 +28868,18 @@ function isAlphanumeric(e) {
 	return e.key.length === 1 && !e.ctrlKey && !e.metaKey;
 }
 var _hoisted_1$40 = ["id", "aria-invalid"];
-var _hoisted_2$31 = { class: "table-ng__editable__text" };
-var _hoisted_3$25 = {
+var _hoisted_2$31 = {
 	key: 0,
 	class: "sr-only"
 };
-var _hoisted_4$20 = [
+var _hoisted_3$25 = [
 	"id",
 	"aria-label",
 	"aria-hidden"
 ];
-var _hoisted_5$16 = {
+var _hoisted_4$20 = {
 	ref: "arrowAnchor",
 	"aria-hidden": "true"
-};
-var _hoisted_6$13 = {
-	key: 0,
-	class: "table-ng__cell--static__text"
 };
 var ITableText_default = /* @__PURE__ */ defineComponent({
 	__name: "ITableText",
@@ -29198,9 +29193,9 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 				onKeydown
 			}, [visible.value ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
 				createBaseVNode("div", { class: normalizeClass(divClasses.value) }, [
-					createBaseVNode("span", _hoisted_2$31, toDisplayString(fromColumnValue()), 1),
+					createBaseVNode("span", { class: normalizeClass(["table-ng__editable__text", { "table-ng__editable__text--wrap": __props.column.wrap }]) }, toDisplayString(fromColumnValue()), 3),
 					_cache[2] || (_cache[2] = createTextVNode()),
-					viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_3$25, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("v-if", true),
+					viewModeErrorMessage.value ? (openBlock(), createElementBlock("span", _hoisted_2$31, toDisplayString(viewModeErrorMessage.value), 1)) : createCommentVNode("v-if", true),
 					_cache[3] || (_cache[3] = createTextVNode()),
 					withDirectives(createBaseVNode("input", mergeProps({
 						id: unref(inputId),
@@ -29218,9 +29213,9 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 						"aria-hidden": !inEdit.value,
 						onValidity,
 						onPendingValidity
-					}), null, 16, _hoisted_4$20), [[vModelText, viewValue.value]]),
+					}), null, 16, _hoisted_3$25), [[vModelText, viewValue.value]]),
 					_cache[4] || (_cache[4] = createTextVNode()),
-					createBaseVNode("span", _hoisted_5$16, null, 512)
+					createBaseVNode("span", _hoisted_4$20, null, 512)
 				], 2),
 				_cache[5] || (_cache[5] = createTextVNode()),
 				createVNode(unref(IPopupError_default), {
@@ -29241,7 +29236,10 @@ var ITableText_default = /* @__PURE__ */ defineComponent({
 				tabindex: "-1",
 				class: normalizeClass(staticClasses.value),
 				onKeydown: _cache[1] || (_cache[1] = withKeys(withModifiers(() => {}, ["prevent"]), ["space"]))
-			}, [visible.value ? (openBlock(), createElementBlock("div", _hoisted_6$13, toDisplayString(fromColumnValue()), 1)) : createCommentVNode("v-if", true)], 34));
+			}, [visible.value ? (openBlock(), createElementBlock("div", {
+				key: 0,
+				class: normalizeClass(["table-ng__cell--static__text", { "table-ng__cell--static__text--wrap": __props.column.wrap }])
+			}, toDisplayString(fromColumnValue()), 3)) : createCommentVNode("v-if", true)], 34));
 		};
 	}
 });
@@ -29341,7 +29339,7 @@ function normalizeMenuColumn(column) {
 * @internal
 */
 function normalizeNumberColumn(column) {
-	var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation;
+	var _column$parser, _column$formatter, _column$tnum, _column$wrap, _column$align, _column$validation;
 	const type = column.type;
 	const config = inputFieldConfig[type];
 	const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser.bind(column);
@@ -29352,6 +29350,7 @@ function normalizeNumberColumn(column) {
 		label: getLabelFn(column.label),
 		decimals,
 		tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue$1(type),
+		wrap: (_column$wrap = column.wrap) !== null && _column$wrap !== void 0 ? _column$wrap : false,
 		align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "right",
 		attributes: column.attributes,
 		value: getValueFn(column.value, column.key, String, ""),
@@ -29410,10 +29409,12 @@ function normalizeSelectColumn(column) {
 * @internal
 */
 function normalizeSimpleColumn(column) {
+	var _column$wrap;
 	return {
 		type: "text",
 		label: () => "",
 		tnum: false,
+		wrap: (_column$wrap = column.wrap) !== null && _column$wrap !== void 0 ? _column$wrap : false,
 		align: "left",
 		value: getValueFn(column.value, column.key, String, ""),
 		update() {},
@@ -29428,7 +29429,7 @@ function normalizeSimpleColumn(column) {
 * @internal
 */
 function normalizeTextColumn(column) {
-	var _column$parser, _column$formatter, _column$tnum, _column$align, _column$validation;
+	var _column$parser, _column$formatter, _column$tnum, _column$wrap, _column$align, _column$validation;
 	const type = column.type;
 	const config = inputFieldConfig[type];
 	const parser = (_column$parser = column.parser) !== null && _column$parser !== void 0 ? _column$parser : config.parser;
@@ -29436,6 +29437,7 @@ function normalizeTextColumn(column) {
 	return {
 		type,
 		tnum: (_column$tnum = column.tnum) !== null && _column$tnum !== void 0 ? _column$tnum : defaultTnumValue$1(type),
+		wrap: (_column$wrap = column.wrap) !== null && _column$wrap !== void 0 ? _column$wrap : false,
 		align: (_column$align = column.align) !== null && _column$align !== void 0 ? _column$align : "left",
 		attributes: column.attributes,
 		label: getLabelFn(column.label),
@@ -47131,10 +47133,11 @@ var rowData = {
 	]
 };
 function getColumn(options) {
-	const { columnType, description, tnum, align, enabled, editable } = options;
+	const { columnType, description, tnum, wrap, align, enabled, editable } = options;
 	const column = { ...columnData[columnType] };
 	if (description) column.description = "Text med formatbeskrivning";
 	if (tnum !== void 0 && isTextColumn(column)) column.tnum = tnum;
+	if (wrap !== void 0 && isTextColumn(column)) column.wrap = wrap;
 	if (align !== void 0 && isTextColumn(column)) column.align = align;
 	if (editable !== void 0 && isEditableColumn(column)) column.editable = editable;
 	if (enabled !== void 0 && isEnableColumn(column)) column.enabled = enabled;
@@ -47155,6 +47158,7 @@ var FTableColumnLiveExample_vue_vue_type_script_lang_default = /* @__PURE__ */ d
 			textType: "text",
 			descriptionChecked: false,
 			tnum: false,
+			wrap: false,
 			align: "left",
 			editableChecked: true,
 			enabledChecked: true
@@ -47174,6 +47178,9 @@ var FTableColumnLiveExample_vue_vue_type_script_lang_default = /* @__PURE__ */ d
 			return { FTable: FTable_default };
 		},
 		tnumSupport() {
+			return this.columnType.includes("text");
+		},
+		wrapSupport() {
 			return this.columnType.includes("text");
 		},
 		alignSupport() {
@@ -47216,6 +47223,7 @@ var FTableColumnLiveExample_vue_vue_type_script_lang_default = /* @__PURE__ */ d
 				columnType: this.normalizedKey,
 				description: this.descriptionChecked,
 				tnum: this.tnumSupport && this.tnum !== this.defaultTNUM ? this.tnum : void 0,
+				wrap: this.wrapSupport && this.wrap ? this.wrap : void 0,
 				align: this.alignSupport && this.align !== this.defaultAlign ? this.align : void 0,
 				editable: this.editableSupport ? this.editableChecked : void 0,
 				enabled: this.enabledSupport ? this.enabledChecked : void 0
@@ -47231,6 +47239,7 @@ var FTableColumnLiveExample_vue_vue_type_script_lang_default = /* @__PURE__ */ d
 	methods: { onTypeChange() {
 		this.align = this.defaultAlign;
 		this.tnum = this.defaultTNUM;
+		this.wrap = false;
 	} }
 });
 // ../../packages/vue/src/components/FTable/docs/FTableColumnLiveExample.vue
@@ -47252,28 +47261,28 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 				"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.columnType = $event),
 				onChange: _ctx.onTypeChange
 			}, {
-				label: withCtx(() => [..._cache[8] || (_cache[8] = [createTextVNode(" Kolumntyp ", -1)])]),
+				label: withCtx(() => [..._cache[10] || (_cache[10] = [createTextVNode(" Kolumntyp ", -1)])]),
 				default: withCtx(() => [
-					_cache[9] || (_cache[9] = createBaseVNode("option", { value: "text" }, "Text", -1)),
-					_cache[10] || (_cache[10] = createBaseVNode("option", { value: "text:bankgiro" }, "Bankgiro", -1)),
-					_cache[11] || (_cache[11] = createBaseVNode("option", { value: "text:clearingNumber" }, "Clearingnummer", -1)),
-					_cache[12] || (_cache[12] = createBaseVNode("option", { value: "text:bankAccountNumber" }, "Kontonummer", -1)),
-					_cache[13] || (_cache[13] = createBaseVNode("option", { value: "text:email" }, "Mejladress", -1)),
-					_cache[14] || (_cache[14] = createBaseVNode("option", { value: "text:number" }, "Numeriskt", -1)),
-					_cache[15] || (_cache[15] = createBaseVNode("option", { value: "text:organisationsnummer" }, "Organisationsnummer", -1)),
-					_cache[16] || (_cache[16] = createBaseVNode("option", { value: "text:personnummer" }, "Personnummer", -1)),
-					_cache[17] || (_cache[17] = createBaseVNode("option", { value: "text:plusgiro" }, "Plusgiro", -1)),
-					_cache[18] || (_cache[18] = createBaseVNode("option", { value: "text:postalCode" }, "Postnummer", -1)),
-					_cache[19] || (_cache[19] = createBaseVNode("option", { value: "text:percent" }, "Procent", -1)),
-					_cache[20] || (_cache[20] = createBaseVNode("option", { value: "text:phoneNumber" }, "Telefonnummer", -1)),
-					_cache[21] || (_cache[21] = createBaseVNode("option", { value: "text:currency" }, "Valuta", -1)),
-					_cache[22] || (_cache[22] = createBaseVNode("option", { value: "text:date" }, "Datum", -1)),
-					_cache[23] || (_cache[23] = createBaseVNode("option", { value: "checkbox" }, "Kryssruta", -1)),
-					_cache[24] || (_cache[24] = createBaseVNode("option", { value: "rowheader" }, "Radrubrik", -1)),
-					_cache[25] || (_cache[25] = createBaseVNode("option", { value: "anchor" }, "Länk", -1)),
-					_cache[26] || (_cache[26] = createBaseVNode("option", { value: "button" }, "Knapp", -1)),
-					_cache[27] || (_cache[27] = createBaseVNode("option", { value: "select" }, "Dropplista", -1)),
-					_cache[28] || (_cache[28] = createBaseVNode("option", { value: "menu" }, "Meny", -1))
+					_cache[11] || (_cache[11] = createBaseVNode("option", { value: "text" }, "Text", -1)),
+					_cache[12] || (_cache[12] = createBaseVNode("option", { value: "text:bankgiro" }, "Bankgiro", -1)),
+					_cache[13] || (_cache[13] = createBaseVNode("option", { value: "text:clearingNumber" }, "Clearingnummer", -1)),
+					_cache[14] || (_cache[14] = createBaseVNode("option", { value: "text:bankAccountNumber" }, "Kontonummer", -1)),
+					_cache[15] || (_cache[15] = createBaseVNode("option", { value: "text:email" }, "Mejladress", -1)),
+					_cache[16] || (_cache[16] = createBaseVNode("option", { value: "text:number" }, "Numeriskt", -1)),
+					_cache[17] || (_cache[17] = createBaseVNode("option", { value: "text:organisationsnummer" }, "Organisationsnummer", -1)),
+					_cache[18] || (_cache[18] = createBaseVNode("option", { value: "text:personnummer" }, "Personnummer", -1)),
+					_cache[19] || (_cache[19] = createBaseVNode("option", { value: "text:plusgiro" }, "Plusgiro", -1)),
+					_cache[20] || (_cache[20] = createBaseVNode("option", { value: "text:postalCode" }, "Postnummer", -1)),
+					_cache[21] || (_cache[21] = createBaseVNode("option", { value: "text:percent" }, "Procent", -1)),
+					_cache[22] || (_cache[22] = createBaseVNode("option", { value: "text:phoneNumber" }, "Telefonnummer", -1)),
+					_cache[23] || (_cache[23] = createBaseVNode("option", { value: "text:currency" }, "Valuta", -1)),
+					_cache[24] || (_cache[24] = createBaseVNode("option", { value: "text:date" }, "Datum", -1)),
+					_cache[25] || (_cache[25] = createBaseVNode("option", { value: "checkbox" }, "Kryssruta", -1)),
+					_cache[26] || (_cache[26] = createBaseVNode("option", { value: "rowheader" }, "Radrubrik", -1)),
+					_cache[27] || (_cache[27] = createBaseVNode("option", { value: "anchor" }, "Länk", -1)),
+					_cache[28] || (_cache[28] = createBaseVNode("option", { value: "button" }, "Knapp", -1)),
+					_cache[29] || (_cache[29] = createBaseVNode("option", { value: "select" }, "Dropplista", -1)),
+					_cache[30] || (_cache[30] = createBaseVNode("option", { value: "menu" }, "Meny", -1))
 				]),
 				_: 1
 			}, 8, ["modelValue", "onChange"]),
@@ -47283,7 +47292,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 				"onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.editableChecked = $event),
 				value: true
 			}, {
-				default: withCtx(() => [..._cache[29] || (_cache[29] = [createTextVNode(" Redigerbar ", -1)])]),
+				default: withCtx(() => [..._cache[31] || (_cache[31] = [createTextVNode(" Redigerbar ", -1)])]),
 				_: 1
 			}, 8, ["modelValue"])) : createCommentVNode("", true),
 			_ctx.enabledSupport ? (openBlock(), createBlock(_component_f_checkbox_field, {
@@ -47292,14 +47301,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 				"onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => _ctx.enabledChecked = $event),
 				value: true
 			}, {
-				default: withCtx(() => [..._cache[30] || (_cache[30] = [createTextVNode(" Enabled ", -1)])]),
+				default: withCtx(() => [..._cache[32] || (_cache[32] = [createTextVNode(" Enabled ", -1)])]),
 				_: 1
 			}, 8, ["modelValue"])) : createCommentVNode("", true),
 			_ctx.alignSupport ? (openBlock(), createBlock(_component_f_fieldset, {
 				key: 2,
 				name: "align"
 			}, {
-				label: withCtx(() => [..._cache[31] || (_cache[31] = [createTextVNode(" Justering ", -1)])]),
+				label: withCtx(() => [..._cache[33] || (_cache[33] = [createTextVNode(" Justering ", -1)])]),
 				default: withCtx(() => [createVNode(_component_f_radio_field, {
 					modelValue: _ctx.align,
 					"onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.align = $event),
@@ -47321,7 +47330,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 				key: 3,
 				name: "tnum"
 			}, {
-				label: withCtx(() => [..._cache[32] || (_cache[32] = [createTextVNode(" TNUM ", -1)])]),
+				label: withCtx(() => [..._cache[34] || (_cache[34] = [createTextVNode(" TNUM ", -1)])]),
 				default: withCtx(() => [createVNode(_component_f_radio_field, {
 					modelValue: _ctx.tnum,
 					"onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => _ctx.tnum = $event),
@@ -47339,14 +47348,36 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 				}, 8, ["modelValue"])]),
 				_: 1
 			})) : createCommentVNode("", true),
-			createVNode(_component_f_fieldset, { name: "rubrik" }, {
-				label: withCtx(() => [..._cache[33] || (_cache[33] = [createTextVNode(" Rubriken ", -1)])]),
-				default: withCtx(() => [createVNode(_component_f_checkbox_field, {
-					modelValue: _ctx.descriptionChecked,
-					"onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.descriptionChecked = $event),
+			_ctx.wrapSupport ? (openBlock(), createBlock(_component_f_fieldset, {
+				key: 4,
+				name: "wrap"
+			}, {
+				label: withCtx(() => [..._cache[35] || (_cache[35] = [createTextVNode(" Radbrytning ", -1)])]),
+				default: withCtx(() => [createVNode(_component_f_radio_field, {
+					modelValue: _ctx.wrap,
+					"onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => _ctx.wrap = $event),
+					value: false
+				}, {
+					default: withCtx(() => [..._cache[36] || (_cache[36] = [createTextVNode(" Av (default) ", -1)])]),
+					_: 1
+				}, 8, ["modelValue"]), createVNode(_component_f_radio_field, {
+					modelValue: _ctx.wrap,
+					"onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => _ctx.wrap = $event),
 					value: true
 				}, {
-					default: withCtx(() => [..._cache[34] || (_cache[34] = [createTextVNode(" Formatbeskrivning ", -1)])]),
+					default: withCtx(() => [..._cache[37] || (_cache[37] = [createTextVNode(" På ", -1)])]),
+					_: 1
+				}, 8, ["modelValue"])]),
+				_: 1
+			})) : createCommentVNode("", true),
+			createVNode(_component_f_fieldset, { name: "rubrik" }, {
+				label: withCtx(() => [..._cache[38] || (_cache[38] = [createTextVNode(" Rubriken ", -1)])]),
+				default: withCtx(() => [createVNode(_component_f_checkbox_field, {
+					modelValue: _ctx.descriptionChecked,
+					"onUpdate:modelValue": _cache[9] || (_cache[9] = ($event) => _ctx.descriptionChecked = $event),
+					value: true
+				}, {
+					default: withCtx(() => [..._cache[39] || (_cache[39] = [createTextVNode(" Formatbeskrivning ", -1)])]),
 					_: 1
 				}, 8, ["modelValue"])]),
 				_: 1
