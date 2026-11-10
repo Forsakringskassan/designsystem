@@ -36,7 +36,7 @@ defineExpose(expose);
     <td class="table-ng__cell table-ng__cell--button">
         <button v-if="visible" ref="button" class="icon-button" type="button" tabindex="-1" @click="onClickButton">
             <f-icon v-if="column.icon" :library="column.iconLibrary" :name="column.icon"></f-icon>
-            <span class="sr-only">{{ column.text(row) }}</span>
+            <span class="sr-only">{{ column.srOnlyText(row) }}</span>
         </button>
     </td>
 </template>

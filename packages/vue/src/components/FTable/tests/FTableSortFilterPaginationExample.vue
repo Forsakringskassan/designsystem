@@ -26,7 +26,7 @@ const columns = defineTableColumns<Row>([
         header: "Åtgärd",
         icon: "trashcan",
         size: "shrink",
-        text(row) {
+        srOnlyText(row) {
             return `Ta bort ${row.text}`;
         },
         onClick: (row) => {

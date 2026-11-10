@@ -28,7 +28,7 @@ const columns = defineTableColumns<Person>([
         type: "button",
         header: "Namn",
         key: "name",
-        text: (row) => row.name,
+        srOnlyText: (row) => row.name,
         onClick: showPerson,
     },
     { type: "text", header: "Adress", key: "adress" },

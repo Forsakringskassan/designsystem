@@ -23,7 +23,7 @@ const columns = defineTableColumns<Row>([
     {
         type: "button",
         header: "Åtgärd",
-        text() {
+        srOnlyText() {
             return "Visa";
         },
         onClick(row) {

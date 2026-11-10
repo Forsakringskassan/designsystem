@@ -50,7 +50,7 @@ const columns = defineTableColumns<Row>([
         type: "button",
         header: "remove",
         icon: "trashcan",
-        text(row) {
+        srOnlyText(row) {
             return row.bar;
         },
         onClick(row: Row) {

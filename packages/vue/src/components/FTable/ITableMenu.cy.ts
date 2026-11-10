@@ -26,7 +26,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [{ label: "foo" }, { label: "bar" }],
@@ -52,7 +52,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [{ label: "foo" }, { label: "bar" }],
@@ -78,7 +78,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [{ label: "foo" }, { label: "bar" }],
@@ -104,7 +104,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [{ label: "foo" }, { label: "bar" }],
@@ -129,7 +129,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [{ label: "foo" }, { label: "bar" }],
@@ -157,7 +157,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [{ label: "foo" }, { label: "bar" }],
@@ -184,7 +184,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [
@@ -214,7 +214,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [{ label: "foo", onClick: foo }, { label: "bar" }],
@@ -239,7 +239,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [{ label: "foo" }, { label: "bar" }],
@@ -264,7 +264,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [
@@ -293,7 +293,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [
@@ -330,7 +330,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions(row) {
@@ -378,7 +378,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [
@@ -419,7 +419,7 @@ describe("ITableMenu", () => {
             {
                 type: "menu",
                 header: "Actions",
-                text() {
+                srOnlyText() {
                     return "Actions";
                 },
                 actions: [{ label: "foo" }, { label: "bar" }],

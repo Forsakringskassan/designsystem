@@ -44,7 +44,7 @@ const columns: Array<TableColumn<Row>> = defineTableColumns<Row>([
     {
         type: "menu",
         header: "Åtgärder",
-        text(row) {
+        srOnlyText(row) {
             return `Visa åtgärder för ${row.name}`;
         },
         actions: [
