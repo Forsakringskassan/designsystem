@@ -1495,7 +1495,7 @@ export interface TableColumnButton<T, K extends keyof T> extends TableColumnBase
     // (undocumented)
     key?: K;
     onClick?(this: void, row: T): void;
-    text(this: void, row: T): string | null;
+    screenreaderText(this: void, row: T): string | null;
     type: "button";
 }
 
@@ -1516,7 +1516,7 @@ export interface TableColumnMenu<T> extends TableColumnBase<T> {
     actions?: TableColumnMenuActions<T>;
     icon?: string;
     iconLibrary?: string;
-    text(this: void, row: T): string | null;
+    screenreaderText(this: void, row: T): string | null;
     type: "menu";
 }
 

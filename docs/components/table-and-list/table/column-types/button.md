@@ -23,7 +23,7 @@ const columns = defineTableColumns<Row>([
     {
         type: "button",
         header: "Åtgärd",
-        text() {
+        screenreaderText() {
             return "Visa";
         },
         onClick(row) {
