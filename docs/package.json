@@ -40,7 +40,7 @@
   "devDependencies": {
     "@fkui/font-default": "6.64.0",
     "@fkui/logo-default": "6.64.0",
-    "@forsakringskassan/docs-generator": "3.24.0",
+    "@forsakringskassan/docs-generator": "3.24.1",
     "axios": "1.21.0",
     "cypress": "16.2.1",
     "vue": "3.5.43"
