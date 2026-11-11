@@ -16,8 +16,9 @@ function isObject(value: unknown): value is object {
 /**
  * Do not use. This only exists for backwards compatibility.
  *
- * @public
- * @deprecated Use `getInternalKey(item)` instead.
+ * @internal
+ * @deprecated Use `findItemIdentifier(item)` if the item might not have an
+ * identifier, or `getItemIdentifier(item)` if it is required to have one.
  */
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- this should not be used */
 export function getLegacyInternalKey<T>(): keyof T {
