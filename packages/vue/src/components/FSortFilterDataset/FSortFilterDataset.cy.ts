@@ -116,10 +116,7 @@ const TestComponent = defineComponent({
 function assertTable(values: string[], column: number): void {
     for (const [i, value] of values.entries()) {
         table
-            /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
-            .columnItem(i + 1)
-            /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
-            .tableRowBodyContent(column)
+            .cell({ row: i + 1, col: column + 1 })
             .should("contain.text", value);
     }
 
@@ -174,8 +171,7 @@ describe("sort", () => {
     });
 
     it("should update selectfield when dataset is sorted by clicking table header", () => {
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
-        table.headerRowItem().tableRowHeaderContent().eq(COLUMN_TEXT).click();
+        table.header(COLUMN_TEXT + 1).click();
 
         table.getColumnSortedByIcon(COLUMN_TEXT, "ascending").should("exist");
         table.getColumnSortedByIcon(COLUMN_YEAR, "unsorted").should("exist");
@@ -184,10 +180,8 @@ describe("sort", () => {
             .selectedOption()
             .should("contain.text", "Text (stigande)");
 
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
-        table.headerRowItem().tableRowHeaderContent().eq(COLUMN_YEAR).click();
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- technical debt */
-        table.headerRowItem().tableRowHeaderContent().eq(COLUMN_YEAR).click();
+        table.header(COLUMN_YEAR + 1).click();
+        table.header(COLUMN_YEAR + 1).click();
 
         table.getColumnSortedByIcon(COLUMN_TEXT, "unsorted").should("exist");
         table.getColumnSortedByIcon(COLUMN_YEAR, "descending").should("exist");
