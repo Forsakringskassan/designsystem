@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-08b2a8.json"
+    href="../../../search-data-9defa2.json"
     as="fetch"
     crossorigin
-    integrity="sha384-l1XQAfeSpRcm27WP5isz2DdU6lSTlqSdBjB2+kk6ujQZ5sa0cFhf8YmtJhILcE/s"
+    integrity="sha384-caxoPvRgypsshmP8WYIHiEL5T5WADAUgg/pQJjDrSehSrPhEpNS1aWp8zsZjM2q/"
     id="search-data"
 />
 <script>
@@ -566,6 +566,10 @@
                         
                     
                 
+                    
+                        
+                    
+                
 
                 
                 
@@ -744,8 +748,6 @@
                 
                     
                 
-                    
-                
 
                 
                 
@@ -753,19 +755,6 @@
 
             
 <ul class="docs-mobile-nav__list">
-
-<li class="link ">
-        <a
-            href="./theme-desktop.html"
-            
-            
-            
-            data-path="gettingstarted/migration/migration-to-v7/theme-desktop.html"
-            
-        >
-            @fkui/theme-desktop
-        </a>
-    </li>
 
 <li class="link highlight">
         <a
@@ -780,6 +769,19 @@
         </a>
     </li></ul>
 
+            
+        </details>
+    </li>
+    
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>Version 7 <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
         </details>
     </li>
@@ -6183,18 +6185,7 @@
             <summary>Version 7 <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
             
-<ul><li class="link ">
-        <a
-            href="./theme-desktop.html"
-            
-            
-            
-            data-path="gettingstarted/migration/migration-to-v7/theme-desktop.html"
-            
-        >
-            @fkui/theme-desktop
-        </a>
-    </li><li class="link active">
+<ul><li class="link active">
         <a
             href="./f-wizard.html"
             
@@ -6207,6 +6198,11 @@
         </a>
     </li></ul>
 
+            
+        </details>
+    </li><li class="expandable ">
+        <details >
+            <summary>Version 7 <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
             
         </details>
     </li></ul>
@@ -6241,51 +6237,25 @@
                     </div>
                     
 
-                    <div id="docs-content"><h2 id="fkui_vue" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fkui_vue"><code>@fkui/vue</code></a></h2><h3 id="steg_for_steg_guide_fwizard" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#steg_for_steg_guide_fwizard">Steg för steg-guide (<code>FWizard</code>)</a></h3><p class="docs-paragraph">Prop:en <code>disable-initial-focus</code> har ersatts av <code>focus-initial-step</code>.
-Initialt fokus på det första steget är nu opt-in.</p>
-<p class="docs-paragraph">Lägg till <code>focus-initial-step</code> om guiden ska fokusera det första steget när den öppnas:</p>
+                    <div id="docs-content"><h2 id="fkui_vue" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fkui_vue"><code>@fkui/vue</code></a></h2><h3 id="fokushantering_for_steg_for_steg_guide_fwizard" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fokushantering_for_steg_for_steg_guide_fwizard">Fokushantering för steg för steg-guide (<code>FWizard</code>)</a></h3><p class="docs-paragraph">I version 7 är initialt fokus på det första steget avstängt som standard.</p>
+<p class="docs-paragraph">Om du vill att det första steget ska få fokus när guiden öppnas, lägg till <code>focus-initial-step</code>:</p>
 
-            <div
-                id="example-6bff1c"
-                class="code-preview code-preview--default"
-                
-                
-                
-                data-language="html"
-            >
-                
-                <div class="code-preview__preview user-background">
-                    <f-wizard header-tag="h2" focus-initial-step>
-    <!-- guidesteg -->
-</f-wizard>
-
-                </div>
-                <div>
-            <button
-                type="button"
-                class="code-preview__button code-preview__toggle-markup"
-                aria-expanded="false"
-                onclick="toggleMarkup(this)"
-            >
-                <svg focusable="false" class="docs-icon" aria-hidden="true">
-                    <use href="#docs-icon-code"></use>
-                </svg>
-                Visa kod
-            </button>
-         </div>
                 <div
-                    class="code-preview__expand animate-expand"
-                    style="height: 0px;"
-                    hidden
+                    id="example-20b2be"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
                 >
-                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">f-wizard</span> <span class="hljs-attr">header-tag</span>=<span class="hljs-string">&quot;h2&quot;</span> <span class="hljs-attr">focus-initial-step</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- guidesteg --&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">f-wizard</span>&gt;</span>
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"><span class="hljs-deletion">-&lt;f-wizard header-tag=&quot;h2&quot;&gt;</span>
+<span class="hljs-addition">+&lt;f-wizard header-tag=&quot;h2&quot; focus-initial-step&gt;</span>
+    &lt;!-- guidesteg --&gt;
+&lt;/f-wizard&gt;
 </code></pre>
                 </div>
-            </div>
-        <p class="docs-paragraph">Ta bort <code>disable-initial-focus</code> från befintlig kod.
-Om du tidigare förlitade dig på att det första steget fick fokus som standard behöver du lägga till <code>focus-initial-step</code>.</p>
+            <p class="docs-paragraph">Om du inte vill att det första steget ska få fokus när guiden öppnas behöver du inte längre lägga till någon fokusprop.
+Ta bort <code>disable-initial-focus</code> från befintlig kod om den används, den finns inte längre i version 7.</p>
 
 
                     </div>
@@ -6354,9 +6324,9 @@ Om du tidigare förlitade dig på att det första steget fick fokus som standard
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">wizard-initial-focus-opt-in</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/54c7bb553f33daabead50cf8501071913456fd3a">54c7bb5</a>)<br />
+<div class="version"><span class="version-text-block">wizard-initial-focus-opt-in</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/47fbcdad36a55812ee8520e297420ef290a4e9fc">47fbcda</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1821">PR 1821</a><br />
-       <span class="version-text-block">2026-11-11 11:37</span>
+       <span class="version-text-block">2026-11-11 13:50</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
