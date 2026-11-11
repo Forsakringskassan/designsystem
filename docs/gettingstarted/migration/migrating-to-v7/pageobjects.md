@@ -12,6 +12,7 @@ Följande pageobjekt är borttagna:
 
 Följande methoder är borttagna:
 
+- [`FFileItemPageObject.typeOfFileIcon()`](#ffileitempageobject)
 - [`FInteractiveTablePageObject.columnItem()`](#finteractivetablepageobject)
 - [`FInteractiveTablePageObject.headerRowItem()`](#finteractivetablepageobject)
 - [`FTextareaFieldPageObject.errorIcon()`](#ftextareafieldpageobject)
@@ -24,6 +25,20 @@ Aliaset `FCalenderDayPageobject` (felstavning) är borttaget och ersatt med `FCa
 ::: details 🤖 Prompt för AI Agenter
 
 For each usage of the Cypress pageobject `FCalenderDayPageobject`, replace with `FCalendarDayPageObject`.
+
+Verify the result by running each affected Cypress test.
+
+:::
+
+## `FFileItemPageObject`
+
+Aliaset `typeOfFileIcon()` är borttaget och ersatt med `typeOfFile()`.
+Båda är funktionellt ekvivalenta och inga övriga åtgärder behöver göras.
+
+::: details 🤖 Prompt för AI Agenter
+
+For each usage of the Cypress pageobject `FFileItemPageObject`, replace each usage of `typeOfFileIcon()` with `typeOfFile()`.
+The former was a deprecated alias and was functionally equivalent.
 
 Verify the result by running each affected Cypress test.
 
