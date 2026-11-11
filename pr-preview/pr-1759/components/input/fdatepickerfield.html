@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Datumväljare - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-bd0886.css"
+            href="../../assets/docs-aa2e0e.css"
             crossorigin
-            integrity="sha384-vT1vX6RI5iemTFEq8UfGXZ1Rs8aYQCHa6ZRwSWqv2DhF0iBsVY/hLcccK5PIcNvV"
+            integrity="sha384-NOElli+1FcjDhHr3mJmsKdOUG3FskdrV0X3SIUqoCLSIOxtFHRIYvbInAUOoEnW8"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-303d34.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-0375f2.js",
     "@fkui/date": "../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-ba58e2.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-8b545c.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-a2a6fb.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js"
   },
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-vue-selectors-303d34.js": "sha384-VDRtJukmYHvieJUGPqtaVb0j7ocu/gYIS2kUcj02cMAoFvt7ZMs9DwEjogtf5x5X",
     "../../assets/vendor-fkui-logic-0375f2.js": "sha384-AmTACorVlStyNetYWs4/XxIjlxix05CTn9CkP8Ep73l33fRW8dC/jgfe0fWWcnHP",
     "../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../assets/vendor-fkui-vue-ba58e2.js": "sha384-bJ1Karh83C3QaQdwqwanGU0CkYBxtlivc/YchSG+0uMGPqgOAd1J9Fbrj+8a6qDh",
+    "../../assets/vendor-fkui-vue-8b545c.js": "sha384-dYZnttI7RWcjhB/IuSeO8aks4bTzzCyT209CGkm51vG0vOCcar/Ygn8gSEBJhB/o",
     "../../assets/vendor-fkui-vue-labs-a2a6fb.js": "sha384-h40XX4ozhvBgz6AWNQ0/PORIMa6s3scmYMA6oJTujg2racMU/GypyFfqTvLaa6oJ",
     "../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js": "sha384-Zomp3tpZgQ5vBn1jDfJPFtzxDwJLLe39dK/jC//bT97+TQqCbXlfNz6um+bZc61n"
   }
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-426697.json"
+    href="../../search-data-76bb94.json"
     as="fetch"
     crossorigin
-    integrity="sha384-9U+hJsbTMz8PzpT/x0dqHI/1G8oG1tTjH4Mbj15Bp67K7XOQa75RpBwxFnGCw8jX"
+    integrity="sha384-ni/BQlCjgbVrMIl2J62jsUH00sZ5xHnRCRNBqBksO54ltOIgXPR+QtZJD4c67fvu"
     id="search-data"
 />
 <script>
@@ -7127,7 +7127,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/ae85e2e3927e1e9d4bc61e9674d6bca1efc01a85/packages/vue/src/components/FDatepickerField/FDatepickerField.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/bfcbc0bb5e70f5a06b1742f199d6927d90da57b3/packages/vue/src/components/FDatepickerField/FDatepickerField.vue">
                 FDatepickerField
             </a>
             
@@ -7260,6 +7260,10 @@ har valt en månad som inte har några valbara datum.</p>
             <h2 id="responsivitet" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#responsivitet">Responsivitet</a></h2><ul>
 <li>På små skärmar (&lt;640 px bredd) visas kalendern som en del av webbsidan (inline)</li>
 <li>På större skärmar visas kalendern i en pop-up och täcker en del av sidan.</li>
+<li>Kalendern placeras under, över eller bredvid datumfältet utan att täcka fältet.
+Om ingen sådan placering ryms visas kalendern inline.
+Vid skrollning följer kalendern datumfältet med samma placering och mellanrum, även om delar av den hamnar utanför den synliga ytan.
+När kalendern öppnas igen väljs placeringen på nytt.</li>
 <li>Kalenderns bredd anpassas utifrån skärmens bredd.</li>
 <li>För att ge tillräcklig plats för datumen visas inte veckonummer på skärmar som är 325 px eller smalare.</li>
 </ul>
@@ -7274,7 +7278,7 @@ Alla veckodagar och datum är valbara som standard.</p>
 <p class="docs-paragraph">Validatorer används för att sätta begränsningar av valbara dagar.</p>
 <h3 id="min_och_maxdatum" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#min_och_maxdatum">Min- och maxdatum</a></h3>
                 <div
-                    id="example-9efc34"
+                    id="example-f15986"
                     class="code-preview code-preview--default"
                     
                     
@@ -7292,7 +7296,7 @@ Alla veckodagar och datum är valbara som standard.</p>
                 </div>
             <h3 id="begransa_valbara_datum" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#begransa_valbara_datum">Begränsa valbara datum</a></h3>
                 <div
-                    id="example-719f62"
+                    id="example-70a785"
                     class="code-preview code-preview--default"
                     
                     
@@ -7307,7 +7311,7 @@ Alla veckodagar och datum är valbara som standard.</p>
                 </div>
             <h3 id="begransa_valbara_veckodagar" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#begransa_valbara_veckodagar">Begränsa valbara veckodagar</a></h3>
                 <div
-                    id="example-982fae"
+                    id="example-48e899"
                     class="code-preview code-preview--default"
                     
                     
@@ -7324,7 +7328,7 @@ Alla veckodagar och datum är valbara som standard.</p>
 Bredden för inmatningsfältet och etiketten anges i antal kolumner vid en viss skärmbredd.</p>
 
                 <div
-                    id="example-a12079"
+                    id="example-4b45b7"
                     class="code-preview code-preview--default"
                     
                     
@@ -7346,7 +7350,7 @@ Bredden för inmatningsfältet och etiketten anges i antal kolumner vid en viss 
 </ul>
 
                 <div
-                    id="example-237326"
+                    id="example-e8e036"
                     class="code-preview code-preview--default"
                     
                     
@@ -7362,7 +7366,7 @@ Bredden för inmatningsfältet och etiketten anges i antal kolumner vid en viss 
             <h2 id="visa_inline" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#visa_inline">Visa inline</a></h2><p class="docs-paragraph">Använd alwaysInline om kalendern ska visas inline oavsett skärmbredd.</p>
 
                 <div
-                    id="example-2354b7"
+                    id="example-e1dbb0"
                     class="code-preview code-preview--default"
                     
                     
@@ -7377,7 +7381,7 @@ Bredden för inmatningsfältet och etiketten anges i antal kolumner vid en viss 
                 </div>
             <h2 id="dolj_markering_av_dagens_datum" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#dolj_markering_av_dagens_datum">Dölj markering av dagens datum</a></h2>
                 <div
-                    id="example-f7fab6"
+                    id="example-1970a7"
                     class="code-preview code-preview--default"
                     
                     
@@ -7637,7 +7641,7 @@ If unspecified, todays month will be shown when no day is selected.</p>
                             <p><strong>Optional</strong> Slot for displaying description. The contents are passed to the description-slot of <a href="../flabel.html"><code>FLabel</code></a>.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>description-class: string[]</code> <span role="presentation">&mdash;</span> CSS classes for primary description content.</li><li><code>format-description-class: string[]</code> <span role="presentation">&mdash;</span> CSS classes for format description.</li>
+                            <li><code>description-class: string[]</code> <span role="none">&mdash;</span> CSS classes for primary description content.</li><li><code>format-description-class: string[]</code> <span role="none">&mdash;</span> CSS classes for format description.</li>
                             </ul>
                             
                         </dd>
@@ -7656,7 +7660,7 @@ If unspecified, todays month will be shown when no day is selected.</p>
                             <p><strong>Optional</strong> Slot for error message(s). The contents are passed to the error message-slot of <a href="../flabel.html"><code>FLabel</code></a>.</p>
 
                             <p class="docs-api__list-title">Bindings:</p><ul class="docs-api__list">
-                            <li><code>hasError: boolean</code> <span role="presentation">&mdash;</span> Set to true when a validation error is present</li><li><code>validationMessage: string</code> <span role="presentation">&mdash;</span> Descriptive validation error message for current error</li>
+                            <li><code>hasError: boolean</code> <span role="none">&mdash;</span> Set to true when a validation error is present</li><li><code>validationMessage: string</code> <span role="none">&mdash;</span> Descriptive validation error message for current error</li>
                             </ul>
                             
                         </dd>
@@ -7731,9 +7735,9 @@ If unspecified, todays month will be shown when no day is selected.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">renovate/vue-monorepo</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/ae85e2e3927e1e9d4bc61e9674d6bca1efc01a85">ae85e2e</a>)<br />
+<div class="version"><span class="version-text-block">renovate/vue-monorepo</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/bfcbc0bb5e70f5a06b1742f199d6927d90da57b3">bfcbc0b</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1759">PR 1759</a><br />
-       <span class="version-text-block">2026-11-09 19:27</span>
+       <span class="version-text-block">2026-11-11 18:10</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
@@ -7878,10 +7882,10 @@ If unspecified, todays month will be shown when no day is selected.</p>
             integrity="sha384-MiyHuq1hbcemP/RGZgotKZC8qlPOYjlrbQ/VNcrv6ju3y4SnFHj2CvLfATECOQdA"
             
         ></script><script
-            src="../../assets/processors_selectable-version_select-version-df88c7.js"
+            src="../../assets/processors_selectable-version_select-version-7a0285.js"
             type="module"
             crossorigin
-            integrity="sha384-cO+tK1WL3tGNRd6rCung8w75SXs4uMX8Uf/8kYJLFPUKRKtUuWVkJwi8stMW8FOn"
+            integrity="sha384-nq7UA83GdySPK3s3dOEaRV1myE4H5yLcVqQ+ADJeAYq52Ymnl2VmTRnOmWeZuRah"
             
         ></script><script
             src="../../assets/processors_cookie_cookie-efa23b.js"
@@ -7890,10 +7894,10 @@ If unspecified, todays month will be shown when no day is selected.</p>
             integrity="sha384-tVCPgyHrw9QQDcAlHqPg4Kp0bEoCdZDJ17PfDW2CxedfOn3IvSDI/FJUCnY/WxiK"
             
         ></script><script
-            src="../../assets/runtime-586cef.js"
+            src="../../assets/runtime-1386cb.js"
             type="module"
             crossorigin
-            integrity="sha384-r/n5l9+pi9ilkAah1ZY8ZlfWmhuyEiZJA5OdqGWWppBk7d286Spo2Ho+8Higq5NX"
+            integrity="sha384-itrRXGS8+3//Skg6pEghBlw6idzh61Po5cP6C5y9dME1zkBWZV64pgICQGxC8XZi"
             
         ></script><script
             src="../../assets/main-6bc205.js"

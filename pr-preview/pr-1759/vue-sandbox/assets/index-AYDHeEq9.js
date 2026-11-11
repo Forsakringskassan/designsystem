@@ -15805,6 +15805,12 @@ function isElementOptions(options) {
 	return options.target instanceof HTMLElement;
 }
 /**
+* @internal
+*/
+function isOverlapping(a, b) {
+	return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
+}
+/**
 * Clip given rect so no edges is outside the viewport, i.e. the rect where rect
 * and viewport intersects.
 *
@@ -15829,7 +15835,7 @@ function clipRect(src, clip) {
 */
 function fitInsideArea(options) {
 	if (isElementOptions(options)) {
-		const { area: areaElement, anchor: anchorElement, target: targetElement, viewport: viewportElement, spacing, candidateOrder } = options;
+		const { area: areaElement, anchor: anchorElement, target: targetElement, viewport: viewportElement, spacing, candidateOrder, allowAnchorOverlap } = options;
 		const area = getAbsolutePosition(areaElement);
 		const anchor = getAbsolutePosition(anchorElement);
 		const result = fitInsideArea({
@@ -15838,7 +15844,8 @@ function fitInsideArea(options) {
 			anchor,
 			viewport: getAbsolutePosition(viewportElement),
 			spacing,
-			candidateOrder
+			candidateOrder,
+			allowAnchorOverlap
 		});
 		const offset = targetElement.offsetParent?.getBoundingClientRect();
 		if (!offset) return result;
@@ -15848,10 +15855,10 @@ function fitInsideArea(options) {
 			y: result.y - (offset.top + window.pageYOffset)
 		};
 	}
-	const { anchor, target, area, viewport, spacing } = options;
+	const { anchor, target, area, viewport, spacing, allowAnchorOverlap = true } = options;
 	const clippedArea = clipRect(area, viewport);
 	const candidates = getCandidates(anchor, target, clippedArea, spacing, options.candidateOrder);
-	const index = candidates.findIndex((it) => isInside(clippedArea, it, spacing));
+	const index = candidates.findIndex((it) => isInside(clippedArea, it, spacing) && (allowAnchorOverlap || !isOverlapping(anchor, it)));
 	if (index !== -1) {
 		const match = candidates[index];
 		return {
@@ -16579,11 +16586,11 @@ var _hoisted_2$39 = {
 };
 var _hoisted_3$28 = ["for"];
 var _hoisted_4$22 = ["for"];
-var _hoisted_5$18 = {
+var _hoisted_5$17 = {
 	key: 0,
 	class: "label__message label__message--error"
 };
-var _hoisted_6$15 = ["for"];
+var _hoisted_6$14 = ["for"];
 var _hoisted_7$11 = {
 	key: 0,
 	class: "label__message label__message--error"
@@ -16608,7 +16615,7 @@ function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
 				formatDescriptionClass: _ctx.formatDescriptionClass
 			}),
 			_cache[1] || (_cache[1] = createTextVNode()),
-			_ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$18, [
+			_ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$17, [
 				createVNode(_component_f_icon, {
 					class: "label__icon--left",
 					name: "error"
@@ -16637,7 +16644,7 @@ function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
 			_cache[4] || (_cache[4] = createTextVNode()),
 			renderSlot(_ctx.$slots, "error-message")
 		])) : createCommentVNode("v-if", true)
-	], 8, _hoisted_6$15));
+	], 8, _hoisted_6$14));
 }
 var FLabel_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FLabel_vue_vue_type_script_lang_default, [["render", _sfc_render$26]]);
 function resolveWidthClass(words, inline) {

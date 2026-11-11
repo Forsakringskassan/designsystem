@@ -2811,6 +2811,10 @@ input[type=search]:focus-visible,
   padding: 1rem;
   align-items: center;
 }
+.datepicker-field__close > .datepicker-field__close__button:hover, .datepicker-field__close > .datepicker-field__close__button:active {
+  color: var(--fkds-color-action-text-secondary-default);
+  mix-blend-mode: normal;
+}
 
 .popup--overlay .datepicker-field__popup {
   width: calc(100vw - 40px);
@@ -5926,7 +5930,10 @@ input[type=search]:focus-visible,
   box-shadow: none;
 }
 .table-ng__cell--static__text {
-  text-wrap: wrap;
+  white-space: nowrap;
+}
+.table-ng__cell--static__text--wrap {
+  white-space: pre-wrap;
 }
 .table-ng__cell--align-left {
   text-align: left;
@@ -6145,8 +6152,10 @@ input[type=search]:focus-visible,
 }
 .table-ng__editable__text {
   flex: 1 1 auto;
-  white-space: pre;
-  text-wrap: wrap;
+  white-space: nowrap;
+}
+.table-ng__editable__text--wrap {
+  white-space: pre-wrap;
 }
 .table-ng__editable__numeric span,
 .table-ng__editable__numeric input {
