@@ -1365,6 +1365,7 @@ export default defineMetadata({
             },
             "use-error-list": {
                 required: false,
+                boolean: true,
             },
         },
         permittedContent: ["@flow", "template"],
