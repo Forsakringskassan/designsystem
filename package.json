@@ -108,7 +108,7 @@
     "@forsakringskassan/eslint-config-vue": "15.13.10",
     "@forsakringskassan/prettier-config": "3.7.13",
     "@forsakringskassan/sass-module-importer": "3.0.0",
-    "@forsakringskassan/stylelint-config": "3.5.1",
+    "@forsakringskassan/stylelint-config": "3.5.2",
     "@forsakringskassan/vite-lib-config": "5.15.2",
     "@forsakringskassan/vitest-config": "5.1.0",
     "@html-validate/release-scripts": "7.6.17",
