@@ -37,6 +37,7 @@ Tänk på att scrollbara ytor måste vara kunna tangentbordsnavigeras för att v
 
 Följande pageobjekt är borttagna:
 
+- [`FCalenderDayPageobject`](#FCalenderDayPageobject) (alias med felstavning)
 - [`FTableColumnPageObject`](#ftablecolumnpageobject)
 
 Följande methoder är borttagna:
@@ -44,6 +45,10 @@ Följande methoder är borttagna:
 - [`FFileItemPageObject.typeOfFileIcon()`](#ffileitempageobject)
 - [`FTextareaFieldPageObject.errorIcon()`][#ftextareafieldpageobject]
 - [`ICalendarNavbarPageObject.text()`][#icalendarnavbarpageobject_text]
+
+### `FCalenderDayPageobject`
+
+Aliaset `FCalenderDayPageobject` (felstavning) är borttaget och ersatt med `FCalendarDayPageobject` (rättstavat).
 
 ### `FFileItemPageObject`
 
