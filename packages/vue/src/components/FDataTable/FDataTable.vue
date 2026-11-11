@@ -54,14 +54,13 @@ const props = defineProps({
     striped: {
         type: Boolean,
     },
+
     /**
      * Enable scrolling inside table.
      *
      * Can be one of the following values:
      *
      * - `"horizontal"`: Enables horizontal scrolling
-     * - `"vertical"`: Enables vertical scrolling
-     * - `"both"`: Enables scrolling in both directions
      * - `"none"`: Disables scrolling (default)
      */
     scroll: {
