@@ -1,5 +1,5 @@
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
-import { FCheckboxFieldPageObject, FTableColumnPageObject } from ".";
+import { FCheckboxFieldPageObject } from ".";
 
 /**
  * @public
@@ -202,37 +202,6 @@ export class FInteractiveTablePageObject implements BasePageObject {
 
         return cy.get(
             `${this.selector} thead th:nth(${String(index)}) svg.${iconName}`,
-        );
-    }
-
-    /**
-     * Get page object for `FTableColumn` with selector targeting the header row.
-     *
-     * @deprecated Use `header()` instead. Deprecated since v6.11.0.
-     * @returns Page object for `FTableColumn`.
-     */
-    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
-    public headerRowItem(): FTableColumnPageObject {
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
-        return new FTableColumnPageObject(`${this.selector} .table__row`, 0);
-    }
-
-    /**
-     * Get page object for `FTableColumn` with selector targeting the given row number.
-     *
-     * Index includes the header row (index 0 selects the header row while 1 selects first row in table body).
-     * Index ignores expandable rows.
-     *
-     * @deprecated Use `cell()` for body content and `header()` for header content instead. Deprecated since v6.11.0.
-     * @param index - Row number (0-indexed).
-     * @returns Page object for `FTableColumn`.
-     */
-    /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
-    public columnItem(index: number): FTableColumnPageObject {
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
-        return new FTableColumnPageObject(
-            `${this.selector} .table__row`,
-            index,
         );
     }
 }
