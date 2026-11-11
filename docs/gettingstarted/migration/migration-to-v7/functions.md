@@ -37,7 +37,12 @@ Tänk på att scrollbara ytor måste vara kunna tangentbordsnavigeras för att v
 
 Följande methoder är borttagna:
 
+- [`FTextareaFieldPageObject.errorIcon()`][#ftextareafieldpageobject]
 - [`ICalendarNavbarPageObject.text()`][#icalendarnavbarpageobject_text]
+
+### `FTextareaFieldPageObject`
+
+Metoden `errorIcon()` är borttagen och har ingen ersättare.
 
 ### `ICalendarNavbarPageObject.text()`
 
