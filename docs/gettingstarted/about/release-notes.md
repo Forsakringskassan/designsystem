@@ -9,6 +9,20 @@ redirect_from:
     - gettingstarted/about/news.html
 ---
 
+## Version %version%
+
+2026-11-11
+
+För att se samtliga ändringar i releasen, se {@link changelog changelog}
+
+### Radbrytning för textkolumner i tabell
+
+Vi har gjort förändringar kring radbrytning i tabellen.
+Nu finns det en ny prop `wrap` för att slå på radbrytning för text-kolumner.
+Det är ingen radbrytning som default.
+
+{@link column-type-text#bra_att_veta Läs mer här om radbrytning i tabellen}
+
 ## Version v6.63.0
 
 2026-10-28
