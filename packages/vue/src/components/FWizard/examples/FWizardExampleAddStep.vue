@@ -64,13 +64,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <f-wizard
-            v-model="current"
-            header-tag="h2"
-            disable-initial-focus
-            @completed="onCompleted"
-            @cancel="onCancel"
-        >
+        <f-wizard v-model="current" header-tag="h2" @completed="onCompleted" @cancel="onCancel">
             <f-wizard-step key="fruktkorg-antal" v-test="'myOrderStep'" title="Min beställning">
                 <h3>Fruktkorg</h3>
                 <f-button icon-left="plus" size="medium" variant="tertiary" @click="addBasket">
