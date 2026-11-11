@@ -34,13 +34,4 @@ export class FTextareaFieldPageObject extends Input implements BasePageObject {
     public input(): DefaultCypressChainable {
         return cy.get(this._selectors.textarea());
     }
-
-    /**
-     * @deprecated Not used anymore for error feedback within the field
-     */
-    public errorIcon(): DefaultCypressChainable {
-        return cy.get(
-            `${this._selectors.selector} .icon.textarea-field__icon.f-icon-error`,
-        );
-    }
 }
