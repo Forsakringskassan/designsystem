@@ -22,3 +22,18 @@ Om du vill att det första steget ska få fokus när guiden öppnas, lägg till 
 
 Om du inte vill att det första steget ska få fokus när guiden öppnas behöver du inte längre lägga till någon fokusprop.
 Ta bort `disable-initial-focus` från befintlig kod om den används, den finns inte längre i version 7.
+
+### Fellista för steg för steg-guide (`FWizardStep`)
+
+I version 7 visas fellistan inte längre som standard i ett guidesteg.
+
+Om du vill visa fellistan, lägg till `use-error-list` på `f-wizard-step`:
+
+```diff
+-<f-wizard-step key="step1" title="Steg 1">
++<f-wizard-step key="step1" title="Steg 1" use-error-list>
+    <!-- innehåll -->
+</f-wizard-step>
+```
+
+Om du redan använder `:use-error-list="false"` kan du ta bort propen eftersom det nu är standardbeteendet.
