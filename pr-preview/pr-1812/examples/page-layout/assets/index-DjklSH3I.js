@@ -17021,6 +17021,12 @@ function isElementOptions(options) {
 	return options.target instanceof HTMLElement;
 }
 /**
+* @internal
+*/
+function isOverlapping(a, b) {
+	return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
+}
+/**
 * Clip given rect so no edges is outside the viewport, i.e. the rect where rect
 * and viewport intersects.
 *
@@ -17045,7 +17051,7 @@ function clipRect(src, clip) {
 */
 function fitInsideArea(options) {
 	if (isElementOptions(options)) {
-		const { area: areaElement, anchor: anchorElement, target: targetElement, viewport: viewportElement, spacing, candidateOrder } = options;
+		const { area: areaElement, anchor: anchorElement, target: targetElement, viewport: viewportElement, spacing, candidateOrder, allowAnchorOverlap } = options;
 		const area = getAbsolutePosition(areaElement);
 		const anchor = getAbsolutePosition(anchorElement);
 		const result = fitInsideArea({
@@ -17054,7 +17060,8 @@ function fitInsideArea(options) {
 			anchor,
 			viewport: getAbsolutePosition(viewportElement),
 			spacing,
-			candidateOrder
+			candidateOrder,
+			allowAnchorOverlap
 		});
 		const offset = targetElement.offsetParent?.getBoundingClientRect();
 		if (!offset) return result;
@@ -17064,10 +17071,10 @@ function fitInsideArea(options) {
 			y: result.y - (offset.top + window.pageYOffset)
 		};
 	}
-	const { anchor, target, area, viewport, spacing } = options;
+	const { anchor, target, area, viewport, spacing, allowAnchorOverlap = true } = options;
 	const clippedArea = clipRect(area, viewport);
 	const candidates = getCandidates(anchor, target, clippedArea, spacing, options.candidateOrder);
-	const index = candidates.findIndex((it) => isInside(clippedArea, it, spacing));
+	const index = candidates.findIndex((it) => isInside(clippedArea, it, spacing) && (allowAnchorOverlap || !isOverlapping(anchor, it)));
 	if (index !== -1) {
 		const match = candidates[index];
 		return {
@@ -17165,6 +17172,19 @@ var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 			default: "auto"
 		},
 		/**
+		* Controls whether the popup may overlap its anchor.
+		* - `"allow"` allows placements that overlap the anchor.
+		* - `"never"` excludes placement candidates that overlap the anchor.
+		*/
+		anchorOverlap: {
+			type: String,
+			required: false,
+			validator(value) {
+				return ["allow", "never"].includes(value);
+			},
+			default: "allow"
+		},
+		/**
 		* Which element to use as container.
 		*/
 		container: {
@@ -17212,7 +17232,8 @@ var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 		return {
 			teleportDisabled: false,
 			placement: Placement.NotCalculated,
-			focus: null
+			focus: null,
+			anchorOffset: null
 		};
 	},
 	computed: {
@@ -17236,31 +17257,36 @@ var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 			return config.teleportTarget;
 		}
 	},
-	watch: { isOpen: {
-		immediate: true,
-		handler(value) {
-			this.toggleIsOpen(value);
-			if (value) {
-				const { placement, forceInline, forceOverlay } = this;
-				this.teleportDisabled = isTeleportDisabled({
-					window,
-					placement,
-					forceInline,
-					forceOverlay
-				});
-				setTimeout(() => {
-					if (!this.isOpen) return;
-					document.addEventListener("click", this.onDocumentClickHandler);
-					window.addEventListener("resize", this.onWindowResizeDebounced);
-					window.addEventListener("scroll", this.onScrollDebounced, { capture: true });
-				}, 0);
-			} else {
-				document.removeEventListener("click", this.onDocumentClickHandler);
-				window.removeEventListener("resize", this.onWindowResizeDebounced);
-				window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
+	watch: {
+		isOpen: {
+			immediate: true,
+			handler(value) {
+				this.toggleIsOpen(value);
+				if (value) {
+					const { placement, forceInline, forceOverlay } = this;
+					this.teleportDisabled = isTeleportDisabled({
+						window,
+						placement,
+						forceInline,
+						forceOverlay
+					});
+					setTimeout(() => {
+						if (!this.isOpen) return;
+						document.addEventListener("click", this.onDocumentClickHandler);
+						window.addEventListener("resize", this.onWindowResizeDebounced);
+						window.addEventListener("scroll", this.onScrollEvent, { capture: true });
+					}, 0);
+				} else {
+					document.removeEventListener("click", this.onDocumentClickHandler);
+					window.removeEventListener("resize", this.onWindowResizeDebounced);
+					window.removeEventListener("scroll", this.onScrollEvent, { capture: true });
+				}
 			}
+		},
+		anchorOverlap() {
+			if (this.isOpen && this.placement !== Placement.NotCalculated) this.recalculatePlacement();
 		}
-	} },
+	},
 	created() {
 		this.onWindowResizeDebounced = debounce(this.onWindowResize, 100).bind(this);
 		this.onScrollDebounced = debounce(this.onScroll, 100).bind(this);
@@ -17268,12 +17294,13 @@ var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	unmounted() {
 		document.removeEventListener("click", this.onDocumentClickHandler);
 		window.removeEventListener("resize", this.onWindowResizeDebounced);
-		window.removeEventListener("scroll", this.onScrollDebounced, { capture: true });
+		window.removeEventListener("scroll", this.onScrollEvent, { capture: true });
 	},
 	methods: {
 		async toggleIsOpen(isOpen) {
 			if (!isOpen) {
 				this.placement = Placement.NotCalculated;
+				this.anchorOffset = null;
 				if (this.focus) {
 					popFocus(this.focus);
 					this.focus = null;
@@ -17299,13 +17326,15 @@ var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 					target: wrapper,
 					viewport,
 					spacing: 20,
-					candidateOrder: CandidateOrder.Default
+					candidateOrder: CandidateOrder.Default,
+					allowAnchorOverlap: this.anchorOverlap === "allow"
 				});
 				this.placement = result.placement;
 				if (this.forceOverlay || result.placement !== Placement.Fallback) {
 					wrapper.style.left = `${String(result.x)}px`;
 					if (options?.horizontalOnly) return;
 					wrapper.style.top = `${String(result.y)}px`;
+					if (this.anchorOverlap === "never") this.saveAnchorOffset(wrapper, anchor);
 					return;
 				}
 			}
@@ -17342,13 +17371,41 @@ var IPopup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 		},
 		onWindowResizeDebounced() {},
 		onScrollDebounced(event) {},
+		async onScrollEvent(event) {
+			if (this.anchorOverlap === "never") await this.onScroll(event);
+			else this.onScrollDebounced(event);
+		},
 		async onWindowResize() {
 			await this.recalculatePlacement();
 		},
 		async onScroll(event) {
-			if (this.isInline) return;
+			if (!this.isOpen || this.isInline) return;
 			if (event.target instanceof HTMLElement && Boolean(event.target.closest(".popup"))) return;
+			if (this.anchorOverlap === "never") {
+				this.followAnchor();
+				return;
+			}
 			await this.recalculatePlacement({ horizontalOnly: true });
+		},
+		saveAnchorOffset(wrapper, anchor) {
+			const wrapperPosition = getAbsolutePosition(wrapper);
+			const anchorPosition = getAbsolutePosition(anchor);
+			this.anchorOffset = {
+				x: wrapperPosition.x - anchorPosition.x,
+				y: wrapperPosition.y - anchorPosition.y
+			};
+		},
+		followAnchor() {
+			if (!this.anchorOffset) return;
+			const wrapper = getHTMLElementFromVueRef(this.$refs.wrapper);
+			const anchor = getElement(this.anchor);
+			if (!anchor) throw new Error("No anchor element found");
+			const anchorPosition = getAbsolutePosition(anchor);
+			const offsetParent = wrapper.offsetParent?.getBoundingClientRect();
+			const offsetLeft = offsetParent ? offsetParent.left + window.pageXOffset : 0;
+			const offsetTop = offsetParent ? offsetParent.top + window.pageYOffset : 0;
+			wrapper.style.left = `${String(anchorPosition.x + this.anchorOffset.x - offsetLeft)}px`;
+			wrapper.style.top = `${String(anchorPosition.y + this.anchorOffset.y - offsetTop)}px`;
 		},
 		async recalculatePlacement(options) {
 			if (!this.isOpen) return;
