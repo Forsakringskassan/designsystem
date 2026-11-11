@@ -25,6 +25,17 @@ function createComponent(template: string): DefineComponent {
                     { id: 2, frukt: "Äpple" },
                     { id: 3, frukt: "Apelsin" },
                 ] as Item[],
+                moreItems: [
+                    { id: 1, frukt: "Banan" },
+                    { id: 2, frukt: "Äpple" },
+                    { id: 3, frukt: "Apelsin" },
+                    { id: 4, frukt: "Mango" },
+                    { id: 5, frukt: "Kiwi" },
+                    { id: 6, frukt: "Clementin" },
+                    { id: 7, frukt: "Mandarin" },
+                    { id: 8, frukt: "Citron" },
+                    { id: 9, frukt: "Päron" },
+                ] as Item[],
                 selectedItems: [{ id: 3, frukt: "Apelsin" }] as Item[],
                 changeItem: {} as Item,
             };
@@ -81,6 +92,34 @@ describe("Flist screenshot", () => {
             </f-list>
         `;
         cy.mount(createComponent(template));
+        cy.toMatchScreenshot();
+    });
+
+    it("should show focus border when having scrollbar", () => {
+        const template = /* HTML */ `
+            <f-list
+                v-model="selectedItems"
+                key-attribute="id"
+                :items="moreItems"
+                selectable
+                :style="{ 'height': '300px', 'overflow': 'auto' }"
+            >
+                <template #default="{ item }"> {{ item.frukt }} </template>
+                <template #screenreader="{ item }">
+                    Frukt {{ item.frukt }}
+                </template>
+            </f-list>
+        `;
+        cy.mount(createComponent(template));
+
+        list.listItem(1).content().click();
+        list.listItem(1)
+            .content()
+            .parent()
+            .should("have.class", "list__item--active");
+
+        list.listItem(1).content().type("{downArrow}");
+
         cy.toMatchScreenshot();
     });
 });
