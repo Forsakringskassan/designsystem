@@ -57,7 +57,7 @@ export interface FWizardApi {
     cancel(this: void, isFinalStep: boolean): void;
     inheritedProps: {
         readonly headerTag: string;
-        readonly disableInitialFocus: boolean;
+        readonly focusInitialStep: boolean;
     };
 }
 
