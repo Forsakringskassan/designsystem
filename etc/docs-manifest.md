@@ -268,6 +268,7 @@ gettingstarted/migration/migrating-to-v6/overview.html
 gettingstarted/migration/migrating-to-v6/vue.html
 gettingstarted/migration/migration-to-v7/button-classes.html
 gettingstarted/migration/migration-to-v7/esm-only.html
+gettingstarted/migration/migration-to-v7/f-wizard.html
 gettingstarted/migration/migration-to-v7/theme-desktop.html
 gettingstarted/use-design-system/getting-started-application.html
 gettingstarted/use-design-system/getting-started.html
