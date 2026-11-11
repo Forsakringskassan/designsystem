@@ -1063,7 +1063,7 @@ export function getInputElement(vm: {
 // @public
 export function getItemIdentifier(item: unknown): ItemIdentifier;
 
-// @public @deprecated
+// @internal @deprecated
 export function getLegacyInternalKey<T>(): keyof T;
 
 // @public
