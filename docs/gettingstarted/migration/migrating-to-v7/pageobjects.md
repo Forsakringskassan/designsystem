@@ -11,6 +11,7 @@ Följande pageobjekt är borttagna:
 
 Följande methoder är borttagna:
 
+- [`FTextareaFieldPageObject.errorIcon()`](#ftextareafieldpageobject)
 - [`ICalendarNavbarPageObject.text()`](#icalendarnavbarpageobject)
 
 ## `FCalenderDayPageobject`
@@ -24,6 +25,10 @@ For each usage of the Cypress pageobject `FCalenderDayPageobject`, replace with 
 Verify the result by running each affected Cypress test.
 
 :::
+
+## `FTextareaFieldPageObject`
+
+Metoden `errorIcon()` är borttagen och har ingen ersättare.
 
 ## `ICalendarNavbarPageObject`
 
