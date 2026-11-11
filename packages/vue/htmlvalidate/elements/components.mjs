@@ -1335,6 +1335,10 @@ export default defineMetadata({
         permittedContent: ["f-wizard-step", "@flow"],
         attributes: {
             "disable-initial-focus": {
+                deprecated:
+                    "Initial focus is disabled by default; remove this obsolete prop. Use focus-initial-step to enable initial focus.",
+            },
+            "focus-initial-step": {
                 required: false,
                 boolean: true,
             },
