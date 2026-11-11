@@ -26,7 +26,7 @@ export default defineComponent({
 <template>
     <div>
         <f-wizard v-model="current" header-tag="h2" @completed="onCompleted">
-            <f-wizard-step key="foo" :use-error-list="false" title="Stegrubrik 1">
+            <f-wizard-step key="foo" title="Stegrubrik 1">
                 <f-text-field v-validation.required.maxLength="{ maxLength: { length: 100 } }">
                     Etikett-rubrik
                 </f-text-field>
@@ -35,7 +35,7 @@ export default defineComponent({
                 </f-text-field>
             </f-wizard-step>
 
-            <f-wizard-step key="bar" :use-error-list="false" title="Stegrubrik 2">
+            <f-wizard-step key="bar" title="Stegrubrik 2">
                 <f-datepicker-field v-model="date" v-validation.required>
                     Etikett-rubrik
                 </f-datepicker-field>
@@ -47,7 +47,7 @@ export default defineComponent({
                     <option value="ALTERNATIV2">Alternativ 2</option>
                 </f-select-field>
             </f-wizard-step>
-            <f-wizard-step key="baz" :use-error-list="false" title="Stegrubrik 3">
+            <f-wizard-step key="baz" title="Stegrubrik 3">
                 En informationstext
                 <template #next-button-text> Klar </template>
             </f-wizard-step>
