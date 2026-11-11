@@ -728,8 +728,6 @@ export class FTextareaFieldPageObject extends Input implements BasePageObject {
     constructor(selector: string);
     // (undocumented)
     el: () => DefaultCypressChainable;
-    // @deprecated (undocumented)
-    errorIcon(): DefaultCypressChainable;
     // (undocumented)
     input(): DefaultCypressChainable;
     // (undocumented)
