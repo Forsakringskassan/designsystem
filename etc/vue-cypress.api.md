@@ -849,8 +849,6 @@ export class ICalendarNavbarPageObject implements BasePageObject {
     prevButton(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
-    // @deprecated (undocumented)
-    text(): DefaultCypressChainable;
     // (undocumented)
     title(): DefaultCypressChainable;
     // @internal (undocumented)

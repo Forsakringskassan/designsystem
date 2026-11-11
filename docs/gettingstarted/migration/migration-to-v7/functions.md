@@ -20,3 +20,19 @@ Använd `findItemIdentifier()` eller `getItemIdentifier()` istället för att h�
 -const id = myObj[key];
 +const id = getItemIdentifier(myObj);
 ```
+
+## Cypress pageobjekt
+
+Följande methoder är borttagna:
+
+- [`ICalendarNavbarPageObject.text()`][#icalendarnavbarpageobject_text]
+
+### `ICalendarNavbarPageObject.text()`
+
+Ersatt med `title()` metoden.
+
+```diff
+ const navbar = new ICalendarNavbarPageObject();
+-navbar.text().should("contain.text", "Lorem ipsum");
++navbar.title().should("contain.text", "Lorem ipsum");
+```
