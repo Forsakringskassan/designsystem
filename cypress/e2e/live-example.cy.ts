@@ -17,6 +17,19 @@ function isVuePreviewExample(example: ManifestExample): boolean {
     );
 }
 
+function openExampleTab(selector: string): void {
+    cy.get(selector).then(($example) => {
+        const panel = $example.closest('[role="tabpanel"]');
+        if (panel.length === 0 || panel.is(":visible")) {
+            return;
+        }
+
+        const panelId = panel.attr("id");
+        cy.get(`[role="tab"][aria-controls="${panelId}"]`).click();
+        cy.wrap(panel).should("be.visible");
+    });
+}
+
 describe("validate documentation examples...", () => {
     const pages = Cypress.expose("pages");
 
@@ -80,6 +93,8 @@ describe("validate documentation examples...", () => {
                     const markup = `${code} code`;
                     const errorhandler = `${selector} [data-test=f-error-page]`;
 
+                    openExampleTab(selector);
+
                     cy.get(container).should(($el) => {
                         expect($el, path).to.exist;
                     });
@@ -107,6 +122,8 @@ describe("validate documentation examples...", () => {
                     const selector = example.selector;
                     const preview = `${selector} .code-preview__preview`;
                     const errorhandler = `${selector} [data-test=f-error-page]`;
+
+                    openExampleTab(selector);
 
                     cy.get(preview).should(($el) => {
                         expect($el, path).to.exist.and.not.be.empty;
