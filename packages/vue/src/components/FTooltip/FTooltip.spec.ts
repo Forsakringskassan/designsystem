@@ -1,3 +1,4 @@
+import { nextTick } from "vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import "html-validate/vitest";
@@ -19,7 +20,7 @@ it("should set aria-expanded on tooltip button", () => {
     expect(collapsed.get(selector).attributes("aria-expanded")).toBe("false");
 });
 
-it("should set expanded class on tooltip container", () => {
+it("should set expanded class on tooltip container", async () => {
     expect.assertions(2);
     const expanded = mount(FTooltip, {
         props: { screenReaderText: "", modelValue: true },
@@ -28,6 +29,7 @@ it("should set expanded class on tooltip container", () => {
         props: { screenReaderText: "", modelValue: false },
     });
     const selector = ".tooltip";
+    await nextTick();
     expect(expanded.get(selector).classes()).toContain("expanded");
     expect(collapsed.get(selector).classes()).not.toContain("expanded");
 });
