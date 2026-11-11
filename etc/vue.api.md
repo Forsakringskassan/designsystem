@@ -1650,14 +1650,10 @@ export type TableNestedKeyOf<T> = {
 
 // @public (undocumented)
 export enum TableScroll {
-    // @deprecated (undocumented)
-    BOTH = "both",
     // (undocumented)
     HORIZONTAL = "horizontal",
     // (undocumented)
-    NONE = "none",
-    // @deprecated (undocumented)
-    VERTICAL = "vertical"
+    NONE = "none"
 }
 
 // @public
