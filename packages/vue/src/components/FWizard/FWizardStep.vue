@@ -190,11 +190,11 @@ export default defineComponent({
             }
 
             this.ignoreClick = false;
-            // Skip focus once for first step when `disableInitialFocus` is set
+            // Skip initial focus on the first step unless explicitly enabled.
             if (this.isOpenedFirstTime) {
                 this.isOpenedFirstTime = false;
 
-                if (this.inheritedProps.disableInitialFocus && this.stepNumber === 1) {
+                if (!this.inheritedProps.focusInitialStep && this.stepNumber === 1) {
                     return;
                 }
             }
