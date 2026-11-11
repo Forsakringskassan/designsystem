@@ -44,8 +44,6 @@ export { FSortFilterDatasetPageObject } from "./FSortFilterDataset.pageobject";
 export { FStaticFieldPageObject } from "./FStaticField.pageobject";
 /* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
 export { FInteractiveTablePageObject } from "./FInteractiveTable.pageobject";
-/* eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility */
-export { FTableColumnPageObject } from "./FTableColumn.pageobject";
 export { FTextFieldPageObject } from "./FTextField.pageobject";
 export { FTextareaFieldPageObject } from "./FTextareaField.pageobject";
 export { FTooltipPageObject } from "./FTooltip.pageobject";

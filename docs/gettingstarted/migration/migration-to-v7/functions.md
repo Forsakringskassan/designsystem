@@ -35,10 +35,18 @@ Tänk på att scrollbara ytor måste vara kunna tangentbordsnavigeras för att v
 
 ## Cypress pageobjekt
 
+Följande pageobjekt är borttagna:
+
+- [`FTableColumnPageObject`](#ftablecolumnpageobject)
+
 Följande methoder är borttagna:
 
 - [`FTextareaFieldPageObject.errorIcon()`][#ftextareafieldpageobject]
 - [`ICalendarNavbarPageObject.text()`][#icalendarnavbarpageobject_text]
+
+### `FTableColumnPageObject`
+
+Pageobjektet `FTableColumnPageObject` är borttaget och ersatt med att anropa `header()` eller `cell()` på `FInteractiveTablePageObject()`.
 
 ### `FInteractiveTablePageObject`
 

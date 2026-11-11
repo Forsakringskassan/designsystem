@@ -677,23 +677,6 @@ export class FStaticFieldPageObject implements BasePageObject {
     tooltip: FTooltipPageObject;
 }
 
-// @public @deprecated (undocumented)
-export class FTableColumnPageObject implements BasePageObject {
-    constructor(selector: string, index: number);
-    // @deprecated (undocumented)
-    checkbox(): FCheckboxFieldPageObject;
-    // (undocumented)
-    el: () => DefaultCypressChainable;
-    // (undocumented)
-    index: number;
-    // (undocumented)
-    selector: string;
-    // @deprecated (undocumented)
-    tableRowBodyContent(position: number): DefaultCypressChainable;
-    // @deprecated (undocumented)
-    tableRowHeaderContent(): DefaultCypressChainable;
-}
-
 // @public (undocumented)
 export class FTablePageObject implements BasePageObject {
     constructor(selector?: string);
