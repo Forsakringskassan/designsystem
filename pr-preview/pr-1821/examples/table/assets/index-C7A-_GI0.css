@@ -2767,6 +2767,10 @@ input[type=search]:focus-visible,
   padding: 1rem;
   align-items: center;
 }
+.datepicker-field__close > .datepicker-field__close__button:hover, .datepicker-field__close > .datepicker-field__close__button:active {
+  color: var(--fkds-color-action-text-secondary-default);
+  mix-blend-mode: normal;
+}
 
 .popup--overlay .datepicker-field__popup {
   width: calc(100vw - 40px);
