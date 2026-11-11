@@ -156,8 +156,8 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#162f5d",
-          "palette": "blue-800"
+          "value": "#1b478d",
+          "palette": "blue-700"
         },
         "dark": {
           "value": "#a2bfe3",
@@ -926,12 +926,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#a2bfe3",
-          "palette": "blue-200"
+          "value": "#dee9f7",
+          "palette": "blue-100"
         },
         "dark": {
-          "value": "#292d34",
-          "palette": "neutral-800"
+          "value": "#494f5b",
+          "palette": "neutral-700"
         }
       }
     },
