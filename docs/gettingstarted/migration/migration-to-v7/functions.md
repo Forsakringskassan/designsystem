@@ -10,6 +10,7 @@ layout: article
 Följande funktioner är borttagna:
 
 - [`getLegacyInternalKey()`](#getlegacyinternalkey)
+- [`TableScroll.VERTICAL` och `TableScroll.BOTH`](#tablescroll)
 
 ### `getLegacyInternalKey()`
 
@@ -20,6 +21,17 @@ Använd `findItemIdentifier()` eller `getItemIdentifier()` istället för att h�
 -const id = myObj[key];
 +const id = getItemIdentifier(myObj);
 ```
+
+### `TableScroll`
+
+`FDataTable` och `FInteractiveTable` stödjer inte längre `TableScroll.VERTICAL` och `TableScroll.HORIZONTAL`.
+Vi rekommenderar att undvika vertikal scroll, behöver du trots allt det så behöver det implementeras i applikationen.
+
+::: warning
+
+Tänk på att scrollbara ytor måste vara kunna tangentbordsnavigeras för att vara tillgängliga.
+
+:::
 
 ## Cypress pageobjekt
 
