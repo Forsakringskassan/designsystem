@@ -40,6 +40,14 @@ Följande methoder är borttagna:
 - [`FTextareaFieldPageObject.errorIcon()`][#ftextareafieldpageobject]
 - [`ICalendarNavbarPageObject.text()`][#icalendarnavbarpageobject_text]
 
+### `FInteractiveTablePageObject`
+
+Metoden `headerRowItem()` är borttagen och ersatt med `header()`.
+Notera att `header()` refererar till en specifik kolumnrubrik (`<th>` element) och inte hela tabellhuvudet (`<thead>` element).
+
+Metoden `columnItem()` är borttagen och ersatt med `cell()` (och i vissa fall `header()`).
+Notera att `cell()` refererar till en specifik tabellcell (`<td>` element) och inte hela tabellraden (`<tr>` element).
+
 ### `FTextareaFieldPageObject`
 
 Metoden `errorIcon()` är borttagen och har ingen ersättare.

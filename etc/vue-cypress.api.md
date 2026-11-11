@@ -394,13 +394,9 @@ export class FInteractiveTablePageObject implements BasePageObject {
     }): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
     // @deprecated
     checkbox(row: number): FCheckboxFieldPageObject;
-    // @deprecated
-    columnItem(index: number): FTableColumnPageObject;
     el(): DefaultCypressChainable;
     getColumnSortedByIcon(index: number, order: "ascending" | "descending" | "unsorted"): DefaultCypressChainable;
     header(col: number): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
-    // @deprecated
-    headerRowItem(): FTableColumnPageObject;
     headersRow(): DefaultCypressChainable;
     row(index: number): DefaultCypressChainable;
     selectable(row: number): DefaultCypressChainable;
@@ -732,8 +728,6 @@ export class FTextareaFieldPageObject extends Input implements BasePageObject {
     constructor(selector: string);
     // (undocumented)
     el: () => DefaultCypressChainable;
-    // @deprecated (undocumented)
-    errorIcon(): DefaultCypressChainable;
     // (undocumented)
     input(): DefaultCypressChainable;
     // (undocumented)
