@@ -75,6 +75,7 @@ export default defineComponent({
             <f-wizard-step
                 v-for="item in fruktkorgar"
                 :key="'fruktkorg-' + item.id"
+                use-error-list
                 :title="'Frukt korg ' + item.id"
                 :data-test="'fruitBasketStep-' + item.id"
             >
