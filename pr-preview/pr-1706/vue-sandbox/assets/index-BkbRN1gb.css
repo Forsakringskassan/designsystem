@@ -183,9 +183,11 @@
   --fkds-color-navigation-background-selected: #35805b;
   --fkds-color-header-background-primary: #116a3e;
   --fkds-color-header-text-primary: #ffffff;
+  --fkds-color-footer-background-primary: #116a3e;
+  --fkds-color-footer-text-primary: #ffffff;
   --fkds-focus-indicator-color: #1b1e23;
   --fkds-focus-indicator-color-background: #ffffff;
-  --fkui-theme-default-version: "6.63.0";
+  --fkui-theme-default-version: "6.64.0";
 }
 
 *,
@@ -204,17 +206,7 @@ h6 {
   margin-top: 0;
 }
 
-article,
-aside,
-dialog,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section {
+:where(article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section) {
   display: block;
 }
 
@@ -1452,16 +1444,16 @@ input[type=search]:focus-visible,
 @media (hover: hover) {
   .button:hover, .calendar-navbar__year-selector-button:hover {
     background-color: var(--fkds-color-action-background-secondary-hover);
-    border-color: var(--fkds-color-action-border-primary-hover);
+    border-color: var(--fkds-color-action-border-primary-default);
     box-shadow: var(--f-button-shadow-hover);
-    color: var(--fkds-color-action-text-primary-hover);
+    color: var(--fkds-color-action-text-primary-default);
   }
 }
 .button:active, .calendar-navbar__year-selector-button:active {
   background-color: var(--fkds-color-action-background-secondary-active);
-  border-color: var(--fkds-color-action-border-primary-active);
+  border-color: var(--fkds-color-action-border-primary-default);
   box-shadow: var(--f-button-shadow-active);
-  color: var(--fkds-color-action-text-primary-active);
+  color: var(--fkds-color-action-text-primary-default);
   transform: translateY(1px);
 }
 .button:focus-visible, .calendar-navbar__year-selector-button:focus-visible {
@@ -1552,16 +1544,16 @@ input[type=search]:focus-visible,
 @media (hover: hover) {
   .button--secondary:hover {
     background-color: var(--fkds-color-action-background-secondary-hover);
-    border-color: var(--fkds-color-action-border-primary-hover);
+    border-color: var(--fkds-color-action-border-primary-default);
     box-shadow: var(--f-button-shadow-hover);
-    color: var(--fkds-color-action-text-primary-hover);
+    color: var(--fkds-color-action-text-primary-default);
   }
 }
 .button--secondary:active {
   background-color: var(--fkds-color-action-background-secondary-active);
-  border-color: var(--fkds-color-action-border-primary-active);
+  border-color: var(--fkds-color-action-border-primary-default);
   box-shadow: var(--f-button-shadow-active);
-  color: var(--fkds-color-action-text-primary-active);
+  color: var(--fkds-color-action-text-primary-default);
   transform: translateY(1px);
 }
 .button--secondary:focus-visible {
@@ -1754,14 +1746,14 @@ input[type=search]:focus-visible,
     background-color: var(--fkds-color-action-background-secondary-hover);
     border-color: transparent;
     box-shadow: none;
-    color: var(--fkds-color-action-text-primary-hover);
+    color: var(--fkds-color-action-text-primary-default);
   }
 }
 .button--tertiary:active, .calendar-navbar__year-selector-button:active {
   background-color: var(--fkds-color-action-background-secondary-active);
   border-color: transparent;
   box-shadow: none;
-  color: var(--fkds-color-action-text-primary-active);
+  color: var(--fkds-color-action-text-primary-default);
   transform: translateY(1px);
 }
 .button--tertiary:focus-visible, .calendar-navbar__year-selector-button:focus-visible {
@@ -2774,6 +2766,10 @@ input[type=search]:focus-visible,
   margin: 0;
   padding: 1rem;
   align-items: center;
+}
+.datepicker-field__close > .datepicker-field__close__button:hover, .datepicker-field__close > .datepicker-field__close__button:active {
+  color: var(--fkds-color-action-text-secondary-default);
+  mix-blend-mode: normal;
 }
 
 .popup--overlay .datepicker-field__popup {
@@ -5763,14 +5759,14 @@ input[type=search]:focus-visible,
     background-color: var(--fkds-color-action-background-secondary-hover);
     border-color: transparent;
     box-shadow: none;
-    color: var(--fkds-color-action-text-primary-hover);
+    color: var(--fkds-color-action-text-primary-default);
   }
 }
 .table__button:active {
   background-color: var(--fkds-color-action-background-secondary-active);
   border-color: transparent;
   box-shadow: none;
-  color: var(--fkds-color-action-text-primary-active);
+  color: var(--fkds-color-action-text-primary-default);
   transform: translateY(1px);
 }
 .table__button:focus-visible {
@@ -5890,7 +5886,10 @@ input[type=search]:focus-visible,
   box-shadow: none;
 }
 .table-ng__cell--static__text {
-  text-wrap: wrap;
+  white-space: nowrap;
+}
+.table-ng__cell--static__text--wrap {
+  white-space: pre-wrap;
 }
 .table-ng__cell--align-left {
   text-align: left;
@@ -5961,22 +5960,22 @@ input[type=search]:focus-visible,
   border: 3px solid transparent;
   box-sizing: border-box;
 }
-.table-ng__cell--text:focus-visible {
-  box-shadow: none !important;
-}
-.table-ng__cell--text.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable {
+.table-ng__cell--select.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:not(:has(:focus-visible)) .table-ng__editable {
   box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);
   border-radius: 0;
 }
 @media (hover: hover) {
-  .table-ng__cell--text.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable {
+  .table-ng__cell--select.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:hover:not(:has(:focus-visible)) .table-ng__editable {
     box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);
     border-radius: 0;
   }
 }
-.table-ng__cell--text.table-ng__cell--error:focus-visible .table-ng__editable {
+.table-ng__cell--select.table-ng__cell--error:focus-visible .table-ng__editable, .table-ng__cell--text.table-ng__cell--error:focus-visible .table-ng__editable {
   box-shadow: inset 0 -3px 0 0 var(--fkds-color-feedback-text-negative);
   border-radius: 0;
+}
+.table-ng__cell--text:focus-visible {
+  box-shadow: none !important;
 }
 .table-ng__cell--text .table-ng__editable {
   border: 3px solid transparent;
@@ -6109,8 +6108,10 @@ input[type=search]:focus-visible,
 }
 .table-ng__editable__text {
   flex: 1 1 auto;
-  white-space: pre;
-  text-wrap: wrap;
+  white-space: nowrap;
+}
+.table-ng__editable__text--wrap {
+  white-space: pre-wrap;
 }
 .table-ng__editable__numeric span,
 .table-ng__editable__numeric input {
