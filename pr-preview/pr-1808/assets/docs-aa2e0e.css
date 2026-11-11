@@ -8154,6 +8154,92 @@ main {
     transform: translateX(100%);
   }
 }
+.docs-tabs {
+  position: relative;
+}
+
+.docs-tablist-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+  border-bottom: var(--fkds-color-border-weak) 1px solid;
+}
+
+.docs-tablist {
+  display: flex;
+  flex-wrap: nowrap;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.docs-tab {
+  background-color: transparent;
+  border: none;
+  padding: 0.25rem 1rem;
+  white-space: nowrap;
+  border-bottom: transparent 3px solid;
+  cursor: pointer;
+  outline-offset: -1px;
+}
+
+.docs-tab:not(:last-of-type) {
+  margin-right: 0.25rem;
+}
+
+.docs-tab:hover {
+  border-bottom: var(--docs-tab-hover-border-color) 3px solid;
+}
+
+.docs-tab[aria-selected=true] {
+  border-bottom: var(--docs-tab-active-border-color) 3px solid;
+  font-weight: 600;
+}
+
+.docs-tabpanel.hidden-tabpanel {
+  display: none;
+}
+
+.docs-tabs-more-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 0 0.5rem;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.docs-tabs-more-button[hidden] {
+  display: none;
+}
+
+.docs-tabs-more-button:hover, .docs-tabs-more-button:active {
+  background-color: var(--docs-tab-hover-border-color);
+}
+
+.docs-tabs-more-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.docs-tabs-more-icon--right {
+  transform: rotate(-90deg);
+}
+
+.docs-tabs-more-icon--left {
+  transform: rotate(90deg);
+}
+
+@media (forced-colors: active) {
+  .docs-tab {
+    forced-color-adjust: none;
+    color: ButtonText;
+    border-bottom: transparent 3px solid;
+    outline-offset: -2px;
+  }
+  .docs-tab:hover, .docs-tab[aria-selected=true] {
+    border-bottom: Highlight 3px solid;
+  }
+}
 .docs-tag {
   border-radius: 4px;
   border-style: solid;
@@ -8621,6 +8707,8 @@ pre.mermaid:not([data-processed])::after {
   --docs-navigation-active-background: #ddd;
   --docs-navigation-highlight-color: #116a3e;
   --docs-navigation-hover-color: #ddd;
+  --docs-tab-hover-border: var(--docs-tab-hover-border-color);
+  --docs-tab-border-color: var(--docs-tab-active-border-color);
 }
 
 *,
@@ -9620,6 +9708,8 @@ body:has(#mobile-toggle:checked) {
   --docs-navigation-hover-color: var(--fkds-color-background-tertiary);
   --docs-navigation-active-background: var(--fkds-color-background-secondary);
   --docs-navigation-highlight-color: var(--fkds-color-select-background-secondary-default);
+  --docs-tab-hover-border-color: var(--fkds-color-navigation-border-hover);
+  --docs-tab-active-border-color: var(--fkds-color-navigation-border-selected);
 }
 
 :root {
