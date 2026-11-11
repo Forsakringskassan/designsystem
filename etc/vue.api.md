@@ -979,7 +979,7 @@ export interface FWizardApi {
     // (undocumented)
     inheritedProps: {
         readonly headerTag: string;
-        readonly disableInitialFocus: boolean;
+        readonly focusInitialStep: boolean;
     };
     // (undocumented)
     openNext(this: void, self: FWizardStepDefinition): void;
