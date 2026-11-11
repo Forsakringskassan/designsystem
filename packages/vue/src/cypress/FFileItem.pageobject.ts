@@ -65,13 +65,6 @@ export class FFileItemPageObject implements BasePageObject {
     }
 
     /**
-     * @deprecated Deprecated alias for `typeOfFile`.
-     */
-    public typeOfFileIcon(): Cypress.Chainable<string> {
-        return this.typeOfFile();
-    }
-
-    /**
      * @internal
      */
     public typeOfButtonIcon(): Cypress.Chainable<string> {

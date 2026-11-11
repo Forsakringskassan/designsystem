@@ -353,8 +353,6 @@ export class FFileItemPageObject implements BasePageObject {
     // @internal (undocumented)
     typeOfButtonIcon(): Cypress.Chainable<string>;
     typeOfFile(): Cypress.Chainable<string>;
-    // @deprecated (undocumented)
-    typeOfFileIcon(): Cypress.Chainable<string>;
 }
 
 // @public (undocumented)

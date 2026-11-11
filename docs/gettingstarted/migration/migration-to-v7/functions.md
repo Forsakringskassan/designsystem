@@ -41,8 +41,13 @@ Följande pageobjekt är borttagna:
 
 Följande methoder är borttagna:
 
+- [`FFileItemPageObject.typeOfFileIcon()`](#ffileitempageobject)
 - [`FTextareaFieldPageObject.errorIcon()`][#ftextareafieldpageobject]
 - [`ICalendarNavbarPageObject.text()`][#icalendarnavbarpageobject_text]
+
+### `FFileItemPageObject`
+
+Aliaset `typeOfFileIcon()` är borttaget och ersatt med `typeOfFile()`.
 
 ### `FTableColumnPageObject`
 
