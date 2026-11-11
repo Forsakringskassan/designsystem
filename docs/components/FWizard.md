@@ -77,6 +77,17 @@ Lägg till `focus-initial-step` för att sätta fokus på det första steget nä
 </f-wizard>
 ```
 
+Lägg till `use-error-list` på ett guidesteg för att visa en fellista när steget innehåller valideringsfel:
+
+```diff
+<f-wizard header-tag="h2">
+-    <f-wizard-step key="unique-identifier" title="Beskrivande titel">
++    <f-wizard-step key="unique-identifier" title="Beskrivande titel" use-error-list>
+        <template #default>Innehåll</template>
+    </f-wizard-step>
+</f-wizard>
+```
+
 Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend osv) så kan du använda beforeSubmit:
 
 ```html static
