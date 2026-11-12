@@ -219,11 +219,6 @@ async function main() {
         await generateStyle(directory, directoryName);
         await generateSpritesheetSvg(directoryName, data);
         await generateSpritesheetJson(directoryName, data);
-        await fs.writeFile(
-            path.join(dest, directoryName, "index.js"),
-            "module.exports = require('./spritesheet.json');",
-        );
-
         await generateSpritesheetJs(directoryName, data);
         await generateSpritesheetJsNoInject(directoryName, data);
     }
