@@ -19,29 +19,26 @@
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.esm.js",
-      "require": "./dist/cjs/index.cjs.js"
+      "default": "./dist/esm/index.esm.js"
     },
     "./cypress": {
       "types": "./dist/types/cypress.d.ts",
-      "import": "./dist/esm/cypress.esm.js",
-      "require": "./dist/cjs/cypress.cjs.js"
+      "default": "./dist/esm/cypress.esm.js"
     },
     "./selectors": {
       "types": "./dist/types/selectors.d.ts",
-      "import": "./dist/esm/selectors.esm.js",
-      "require": "./dist/cjs/selectors.cjs.js"
+      "default": "./dist/esm/selectors.esm.js"
     },
     "./htmlvalidate": "./htmlvalidate/index.mjs",
     "./htmlvalidate/cypress": "./htmlvalidate/cypress.js",
     "./package.json": "./package.json",
     "./tsconfig.json": "./tsconfig-consumer.json"
   },
-  "main": "dist/cjs/index.cjs.js",
-  "module": "dist/esm/index.esm.js",
+  "main": "dist/esm/index.esm.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist",
+    "!dist/cjs",
     "htmlvalidate",
     "tsconfig-consumer.json",
     "!**/*.spec.{js,ts,d.ts}",
