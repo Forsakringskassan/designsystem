@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Version 7 migreringsguide: Cypress PageObjects - FK Designsystem</title><link
+        <title>Version 7 migreringsguide: Cypress Pageobjects - FK Designsystem</title><link
             rel="stylesheet"
             href="../../../assets/docs-aa2e0e.css"
             crossorigin
@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-0b3c6f.json"
+    href="../../../search-data-7c5c6c.json"
     as="fetch"
     crossorigin
-    integrity="sha384-3u5y8Kf1Sw3+FSCYin8BfTeKbeBvUfs74S/x0+MbRdL/zVgsUqeQU/v1wK4BmSk5"
+    integrity="sha384-1dMbClfXiNdozSVy+pVui4LmmzyFLYMQ1FCnhithDwW1BYkh1Sl8gKUUMsaRxwM5"
     id="search-data"
 />
 <script>
@@ -557,6 +557,10 @@
                     
                 
                     
+                        
+                    
+                
+                    
                 
                     
                         
@@ -612,6 +616,48 @@
             FTable
         </a>
     </li>
+
+
+
+    
+  
+
+    <li class="expandable">
+        <details >
+            <summary>migration-to-v7 <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../migration-to-v7/theme-desktop.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migration-to-v7/theme-desktop.html"
+            
+        >
+            @fkui/theme-desktop
+        </a>
+    </li></ul>
+
+            
+        </details>
+    </li>
+    
 
 <li class="link ">
         <a
@@ -761,7 +807,7 @@
             data-path="gettingstarted/migration/migrating-to-v7/pageobjects.html"
             
         >
-            Cypress PageObjects
+            Cypress Pageobjects
         </a>
     </li></ul>
 
@@ -6088,6 +6134,26 @@
         >
             FTable
         </a>
+    </li><li class="expandable ">
+        <details >
+            <summary>migration-to-v7 <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+            
+<ul><li class="link ">
+        <a
+            href="../migration-to-v7/theme-desktop.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migration-to-v7/theme-desktop.html"
+            
+        >
+            @fkui/theme-desktop
+        </a>
+    </li></ul>
+
+            
+        </details>
     </li><li class="link ">
         <a
             href="../migrating-to-v5.html"
@@ -6177,7 +6243,7 @@
             data-path="gettingstarted/migration/migrating-to-v7/pageobjects.html"
             
         >
-            Cypress PageObjects
+            Cypress Pageobjects
         </a>
     </li></ul>
 
@@ -6191,7 +6257,7 @@
 </nav>
 </div><main>
                     <!-- [html-validate-disable-next heading-level, no-unused-disable -- allowed sectioning root] -->
-                    <h1 class="docs-heading docs-heading--h1" id="docs-title">Version 7 migreringsguide: Cypress PageObjects</h1>
+                    <h1 class="docs-heading docs-heading--h1" id="docs-title">Version 7 migreringsguide: Cypress Pageobjects</h1>
 
                     
                     <div id="docs-aside"><dl></dl>
@@ -6207,7 +6273,7 @@
                             </summary>
                             <ul>
                                 
-                                <li><a href="#cypress_pageobjekt">Cypress pageobjekt</a></li>
+                                <li><a href="#fcalenderdaypageobject">FCalenderDayPageobject</a></li>
                                 
                             </ul>
                         </details>
@@ -6215,7 +6281,7 @@
                     </div>
                     
 
-                    <div id="docs-content"><h2 id="cypress_pageobjekt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#cypress_pageobjekt">Cypress pageobjekt</a></h2><p class="docs-paragraph">Följande pageobjekt är borttagna:</p>
+                    <div id="docs-content"><p class="docs-paragraph">Följande pageobjekt är borttagna:</p>
 <ul>
 <li><a href="#fcalenderdaypageobject"><code>FCalenderDayPageobject</code></a> (alias med felstavning)</li>
 <li><a href="#ftablecolumnpageobject"><code>FTableColumnPageObject</code></a></li>
@@ -6223,21 +6289,120 @@
 <p class="docs-paragraph">Följande methoder är borttagna:</p>
 <ul>
 <li><a href="#ffileitempageobject"><code>FFileItemPageObject.typeOfFileIcon()</code></a></li>
+<li><a href="#finteractivetablepageobject"><code>FInteractiveTablePageObject.columnItem()</code></a></li>
+<li><a href="#finteractivetablepageobject"><code>FInteractiveTablePageObject.headerRowItem()</code></a></li>
 <li><a href="#ftextareafieldpageobject"><code>FTextareaFieldPageObject.errorIcon()</code></a></li>
-<li><a href="#icalendarnavbarpageobject_text"><code>ICalendarNavbarPageObject.text()</code></a></li>
+<li><a href="#icalendarnavbarpageobject"><code>ICalendarNavbarPageObject.text()</code></a></li>
 </ul>
-<h3 id="fcalenderdaypageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#fcalenderdaypageobject"><code>FCalenderDayPageobject</code></a></h3><p class="docs-paragraph">Aliaset <code>FCalenderDayPageobject</code> (felstavning) är borttaget och ersatt med <code>FCalendarDayPageobject</code> (rättstavat).</p>
-<h3 id="ffileitempageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ffileitempageobject"><code>FFileItemPageObject</code></a></h3><p class="docs-paragraph">Aliaset <code>typeOfFileIcon()</code> är borttaget och ersatt med <code>typeOfFile()</code>.</p>
-<h3 id="ftablecolumnpageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ftablecolumnpageobject"><code>FTableColumnPageObject</code></a></h3><p class="docs-paragraph">Pageobjektet <code>FTableColumnPageObject</code> är borttaget och ersatt med att anropa <code>header()</code> eller <code>cell()</code> på <code>FInteractiveTablePageObject()</code>.</p>
-<h3 id="finteractivetablepageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#finteractivetablepageobject"><code>FInteractiveTablePageObject</code></a></h3><p class="docs-paragraph">Metoden <code>headerRowItem()</code> är borttagen och ersatt med <code>header()</code>.
-Notera att <code>header()</code> refererar till en specifik kolumnrubrik (<code>&lt;th&gt;</code> element) och inte hela tabellhuvudet (<code>&lt;thead&gt;</code> element).</p>
-<p class="docs-paragraph">Metoden <code>columnItem()</code> är borttagen och ersatt med <code>cell()</code> (och i vissa fall <code>header()</code>).
-Notera att <code>cell()</code> refererar till en specifik tabellcell (<code>&lt;td&gt;</code> element) och inte hela tabellraden (<code>&lt;tr&gt;</code> element).</p>
-<h3 id="ftextareafieldpageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ftextareafieldpageobject"><code>FTextareaFieldPageObject</code></a></h3><p class="docs-paragraph">Metoden <code>errorIcon()</code> är borttagen och har ingen ersättare.</p>
-<h3 id="icalendarnavbarpageobject_text" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#icalendarnavbarpageobject_text"><code>ICalendarNavbarPageObject.text()</code></a></h3><p class="docs-paragraph">Ersatt med <code>title()</code> metoden.</p>
+<h2 id="fcalenderdaypageobject" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#fcalenderdaypageobject"><code>FCalenderDayPageobject</code></a></h2><p class="docs-paragraph">Aliaset <code>FCalenderDayPageobject</code> (felstavning) är borttaget och ersatt med <code>FCalendarDayPageobject</code> (rättstavat).</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">For each usage of the Cypress pageobject <code>FCalenderDayPageobject</code>, replace with <code>FCalendarDayPageobject</code>.</p>
+<p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
+
+            </details>
+        <h3 id="ffileitempageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ffileitempageobject"><code>FFileItemPageObject</code></a></h3><p class="docs-paragraph">Aliaset <code>typeOfFileIcon()</code> är borttaget och ersatt med <code>typeOfFile()</code>.
+Båda är funktionellt ekvivalenta och inga övriga åtgärder behöver göras.</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">For each usage of the Cypress pageobject <code>FFileItemPageObject</code>, replace each usage of <code>typeOfFileIcon()</code> with <code>typeOfFile()</code>.
+The former was a deprecated alias and was functionally equivalent.</p>
+<p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
+
+            </details>
+        <h3 id="ftablecolumnpageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ftablecolumnpageobject"><code>FTableColumnPageObject</code></a></h3><p class="docs-paragraph">Pageobjektet <code>FTableColumnPageObject</code> är borttaget och ersatt med att anropa <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html"><code>cell()</code></a> (och i vissa fall <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"><code>header()</code></a>) på <code>FInteractiveTablePageObject()</code>.</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">For each usage of the Cypress pageobject <code>FTableColumnPageObject</code>, determine which table row it references and replace with using <code>cell()</code> on the <code>FInteractiveTablePageObject</code> pageobject.
+Despite the class name it references a <code>&lt;tr&gt;</code> row.
+<code>cell()</code> needs both row and column to be 1-indexed.</p>
+<p class="docs-paragraph">If the referenced row is the header row, it should be replaced with <code>header()</code> instead of <code>cell()</code>.</p>
+<p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
+
+            </details>
+        <h3 id="finteractivetablepageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#finteractivetablepageobject"><code>FInteractiveTablePageObject</code></a></h3><p class="docs-paragraph">Metoden <code>columnItem()</code> är borttagen och ersatt med <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html"><code>cell()</code></a> (och i vissa fall <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"><code>header()</code></a>).</p>
+<p class="docs-paragraph">Notera att <code>cell()</code> refererar till en specifik tabellcell (<code>&lt;td&gt;</code> element) och inte hela tabellraden (<code>&lt;tr&gt;</code> element) samt att <code>FTableColumnPageObject</code> är 0-indexerat (första kolumnen är 0, andra är 1, osv) medans <code>cell()</code> är 1-indexerat.</p>
 
                 <div
-                    id="example-8cec27"
+                    id="example-ac1187"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> const table = new FInteractiveTablePageObject();
+ table
+<span class="hljs-deletion">-    .columnItem(1)</span>
+<span class="hljs-deletion">-    .tableRowBodyContent(0)</span>
+<span class="hljs-addition">+    .cell({ row: 1, col: 1 })</span>
+     .should(&quot;contain.text&quot;, &quot;Content for Row 1 Column 1&quot;);
+ table
+<span class="hljs-deletion">-    .columnItem(1)</span>
+<span class="hljs-deletion">-    .tableRowBodyContent(1)</span>
+<span class="hljs-addition">+    .cell({ row: 1, col: 2 })</span>
+     .should(&quot;contain.text&quot;, &quot;Content for Row 1 Column 2&quot;);
+</code></pre>
+                </div>
+            <p class="docs-paragraph"><code>table.columnItem(0).tableRowHeaderContent().eq(N)</code> ska ersättas med <code>table.header(N + 1)</code>.</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">For each usage of the Cypress pageobject <code>FInteractiveTablePageObject</code>, replace each usage of <code>columnItem()</code> with <code>cell()</code>.
+The former returns a wrapper around the <code>&lt;tr&gt;</code> row and the latter returns a specific <code>&lt;td&gt;</code> or <code>&lt;th&gt;</code> cell.
+<code>cell()</code> needs both row and column to be 1-indexed.</p>
+<p class="docs-paragraph">If <code>columnItem()</code> is called with index 0 it referenced the row in <code>&lt;thead&gt;</code> and should be replaced with <code>header()</code> instead of <code>cell()</code>.</p>
+<p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
+
+            </details>
+        <p class="docs-paragraph">Metoden <code>headerRowItem()</code> är borttagen och ersatt med <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"><code>header()</code></a>).</p>
+<p class="docs-paragraph">Notera att <code>header()</code> refererar till en specifik kolumnrubrik (<code>&lt;th&gt;</code> element) och inte hela tabellhuvudet (<code>&lt;thead&gt;</code> element) samt att <code>tableRowHeaderContent().eq()</code> är 0-indexerat (första kolumnen är 0, andra är 1, osv) medans <code>header()</code> är 1-indexerat.</p>
+
+                <div
+                    id="example-b60468"
+                    class="code-preview code-preview--default"
+                    
+                    
+                    data-language="diff"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-diff" tabindex="0"> const table = new FInteractiveTablePageObject();
+<span class="hljs-deletion">-table</span>
+<span class="hljs-deletion">-    .headerRowItem()</span>
+<span class="hljs-deletion">-    .tableRowHeaderContent()</span>
+<span class="hljs-deletion">-    .eq(0)</span>
+<span class="hljs-deletion">-    .should(&quot;contain.text&quot;, &quot;Column 1&quot;);</span>
+<span class="hljs-addition">+table.header(1).should(&quot;contain.text&quot;, &quot;Column 1&quot;);</span>
+</code></pre>
+                </div>
+            
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">For each usage of the Cypress pageobject <code>FInteractiveTablePageObject</code>, replace each usage of <code>headerRowItem()</code> with <code>header()</code>.
+The former returns a wrapper around the <code>&lt;tr&gt;</code> row and the latter returns a specific <code>&lt;th&gt;</code> cell.
+<code>cell()</code> needs both row and column to be 1-indexed.</p>
+<p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
+
+            </details>
+        <h3 id="ftextareafieldpageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ftextareafieldpageobject"><code>FTextareaFieldPageObject</code></a></h3><p class="docs-paragraph">Metoden <code>errorIcon()</code> är borttagen och har ingen ersättare.</p>
+<h3 id="icalendarnavbarpageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#icalendarnavbarpageobject"><code>ICalendarNavbarPageObject</code></a></h3><p class="docs-paragraph">Aliaset <code>text()</code> är borttaget och ersatt med <code>title()</code> metoden.
+Båda är funktionellt ekvivalenta och inga övriga åtgärder behöver göras.</p>
+
+                <div
+                    id="example-235b29"
                     class="code-preview code-preview--default"
                     
                     
@@ -6250,6 +6415,16 @@ Notera att <code>cell()</code> refererar till en specifik tabellcell (<code>&lt;
 </code></pre>
                 </div>
             
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">For each usage of the Cypress pageobject <code>ICalendarNavbarPageObject</code>, replace each usage of <code>text()</code> with <code>title()</code>.
+The former was a deprecated alias and was functionally equivalent.</p>
+<p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
+
+            </details>
+        
 
                     </div>
                 </main>
@@ -6317,9 +6492,9 @@ Notera att <code>cell()</code> refererar till en specifik tabellcell (<code>&lt;
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">feature/deprecated-pageobjects</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/f72e3dae44cdf0c2cf094a63e63ac1f80e87e1a4">f72e3da</a>)<br />
+<div class="version"><span class="version-text-block">feature/deprecated-pageobjects</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/7c7893377f46cc6b5d0204600a5361966c36fb39">7c78933</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1841">PR 1841</a><br />
-       <span class="version-text-block">2026-11-12 14:12</span>
+       <span class="version-text-block">2026-11-12 16:46</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
