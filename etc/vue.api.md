@@ -406,10 +406,10 @@ export interface FDialogueTreeUserProgress {
 // @public (undocumented)
 export const FEmailTextField: typeof __VLS_export_56;
 
-// Warning: (ae-forgotten-export) The symbol "__VLS_export_85" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_86" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export const FErrorHandlingApp: typeof __VLS_export_85;
+export const FErrorHandlingApp: typeof __VLS_export_86;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_14" needs to be exported by the entry point index.d.ts
 //
@@ -1102,6 +1102,11 @@ export const ICalendarMonthGrid: typeof __VLS_export_81;
 //
 // @public (undocumented)
 export const ICalendarNavbar: typeof __VLS_export_82;
+
+// Warning: (ae-forgotten-export) The symbol "__VLS_export_85" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const ICloseButton: typeof __VLS_export_85;
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_83" needs to be exported by the entry point index.d.ts
 //
