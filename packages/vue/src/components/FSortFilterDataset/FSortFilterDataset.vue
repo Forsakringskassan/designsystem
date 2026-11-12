@@ -24,8 +24,6 @@ const {
     /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
     showFilter = true,
     filterLabel = undefined,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated -- for backwards compatibility
-    placeholderFilter = undefined,
     /* eslint-disable-next-line vue/no-boolean-default -- technical debt, boolean attributes should be opt-in not opt-out */
     defaultSortAscending = true,
     filterAttributes = undefined,
@@ -55,14 +53,6 @@ const {
      * Label text for filter input field.
      */
     filterLabel?: string;
-    /**
-     * Previously set placeholder text in filter input field.
-     *
-     * Default is textkey "fkui.sort-filter-dataset.placeholder.filter"
-     *
-     * @deprecated Use `filterLabel` instead. Deprecated since v6.40.0.
-     */
-    placeholderFilter?: string;
     /**
      * The order the data will be sorted by if defaultSortAttribute has been set.
      */
@@ -132,7 +122,7 @@ const {
 const clearableScreenReaderText = $t("fkui.sort-filter-dataset.clear.filter", "Rensa sökfält");
 
 const translatedFilterLabel = computed(() => {
-    const label = filterLabel ?? placeholderFilter;
+    const label = filterLabel;
     if (label) {
         return label;
     }
