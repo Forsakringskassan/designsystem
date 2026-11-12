@@ -34,32 +34,58 @@ exports[`snapshot > should match snapshot 1`] = `
         </td>
         <td>
           <button
-            class="button table__button"
+            aria-disabled="false"
+            class="button button--tertiary button--small button--tertiary--standard button--tertiary--underline"
             id="modifyButton"
             type="button"
           >
             <!--v-if-->
              
-            
-            
-            Ändra
-            
-            
+            <span
+              class="spinner--before"
+            >
+              <!--v-if-->
+            </span>
+             
+            <span>
+              
+               Ändra 
+              
+            </span>
+             
+            <!--v-if-->
+             
+            <span
+              class="spinner--after"
+            />
           </button>
         </td>
         <td>
           <button
-            class="button table__button"
+            aria-disabled="false"
+            class="button button--tertiary button--small button--tertiary--standard button--tertiary--underline"
             id="deleteButton"
             type="button"
           >
             <!--v-if-->
              
-            
-            
-            Ta bort
-            
-            
+            <span
+              class="spinner--before"
+            >
+              <!--v-if-->
+            </span>
+             
+            <span>
+              
+               Ta bort 
+              
+            </span>
+             
+            <!--v-if-->
+             
+            <span
+              class="spinner--after"
+            />
           </button>
         </td>
       </tr>
@@ -72,32 +98,58 @@ exports[`snapshot > should match snapshot 1`] = `
         </td>
         <td>
           <button
-            class="button table__button"
+            aria-disabled="false"
+            class="button button--tertiary button--small button--tertiary--standard button--tertiary--underline"
             id="modifyButton"
             type="button"
           >
             <!--v-if-->
              
-            
-            
-            Ändra
-            
-            
+            <span
+              class="spinner--before"
+            >
+              <!--v-if-->
+            </span>
+             
+            <span>
+              
+               Ändra 
+              
+            </span>
+             
+            <!--v-if-->
+             
+            <span
+              class="spinner--after"
+            />
           </button>
         </td>
         <td>
           <button
-            class="button table__button"
+            aria-disabled="false"
+            class="button button--tertiary button--small button--tertiary--standard button--tertiary--underline"
             id="deleteButton"
             type="button"
           >
             <!--v-if-->
              
-            
-            
-            Ta bort
-            
-            
+            <span
+              class="spinner--before"
+            >
+              <!--v-if-->
+            </span>
+             
+            <span>
+              
+               Ta bort 
+              
+            </span>
+             
+            <!--v-if-->
+             
+            <span
+              class="spinner--after"
+            />
           </button>
         </td>
       </tr>
@@ -110,32 +162,58 @@ exports[`snapshot > should match snapshot 1`] = `
         </td>
         <td>
           <button
-            class="button table__button"
+            aria-disabled="false"
+            class="button button--tertiary button--small button--tertiary--standard button--tertiary--underline"
             id="modifyButton"
             type="button"
           >
             <!--v-if-->
              
-            
-            
-            Ändra
-            
-            
+            <span
+              class="spinner--before"
+            >
+              <!--v-if-->
+            </span>
+             
+            <span>
+              
+               Ändra 
+              
+            </span>
+             
+            <!--v-if-->
+             
+            <span
+              class="spinner--after"
+            />
           </button>
         </td>
         <td>
           <button
-            class="button table__button"
+            aria-disabled="false"
+            class="button button--tertiary button--small button--tertiary--standard button--tertiary--underline"
             id="deleteButton"
             type="button"
           >
             <!--v-if-->
              
-            
-            
-            Ta bort
-            
-            
+            <span
+              class="spinner--before"
+            >
+              <!--v-if-->
+            </span>
+             
+            <span>
+              
+               Ta bort 
+              
+            </span>
+             
+            <!--v-if-->
+             
+            <span
+              class="spinner--after"
+            />
           </button>
         </td>
       </tr>

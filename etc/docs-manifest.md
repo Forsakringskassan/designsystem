@@ -266,6 +266,7 @@ gettingstarted/migration/migrating-to-v6/design.html
 gettingstarted/migration/migrating-to-v6/logic.html
 gettingstarted/migration/migrating-to-v6/overview.html
 gettingstarted/migration/migrating-to-v6/vue.html
+gettingstarted/migration/migrating-to-v7/f-crud-button.html
 gettingstarted/use-design-system/getting-started-application.html
 gettingstarted/use-design-system/getting-started.html
 gettingstarted/use-design-system/icon-library.html

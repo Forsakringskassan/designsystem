@@ -1,5 +1,6 @@
 import { defineComponent } from "vue";
 import {
+    FButton,
     FConfirmModal,
     FFormModal,
     FInteractiveTable,
@@ -10,7 +11,6 @@ import {
 } from "..";
 import { FInteractiveTablePageObject } from "../../cypress";
 import { type ListItem } from "../../types";
-import FCrudButton from "./FCrudButton.vue";
 import FCrudDataset from "./FCrudDataset.vue";
 import ListExample from "./examples/FCrudDatasetListExample.vue";
 
@@ -48,7 +48,7 @@ function mountComponent(templates = new Array<string>()): void {
                 @updated="onUpdatedEvent"
                 @deleted="onDeletedEvent"
             >
-                <template #default>
+                <template #default="{ updateItem, deleteItem }">
                     <table>
                         <thead>
                             <tr>
@@ -61,20 +61,24 @@ function mountComponent(templates = new Array<string>()): void {
                                 <td :id="'item'+item.id"> {{ item.id }} </td>
                                 <td> {{ item.name }} </td>
                                 <td>
-                                    <f-crud-button
+                                    <f-button
                                         :id="'modifyButton'+item.id"
-                                        action="modify"
-                                        :item="item"
-                                        label
-                                    />
+                                        variant="tertiary"
+                                        size="small"
+                                        @click="updateItem(item)"
+                                    >
+                                        Ändra
+                                    </f-button>
                                 </td>
                                 <td>
-                                    <f-crud-button
+                                    <f-button
                                         :id="'deleteButton'+item.id"
-                                        action="delete"
-                                        :item="item"
-                                        label
-                                    />
+                                        variant="tertiary"
+                                        size="small"
+                                        @click="deleteItem(item)"
+                                    >
+                                        Ta bort
+                                    </f-button>
                                 </td>
                             </tr>
                         </tbody>
@@ -101,8 +105,8 @@ function mountComponent(templates = new Array<string>()): void {
     const TestComponent = defineComponent({
         template: testComponentTemplate + testDataTemplate,
         components: {
+            FButton,
             FCrudDataset,
-            FCrudButton,
             FModal,
             FConfirmModal,
             FFormModal,

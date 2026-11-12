@@ -1112,23 +1112,6 @@ export default defineMetadata({
         textContent: "required",
     },
 
-    "f-crud-button": {
-        flow: true,
-        interactive: true,
-        phrasing: true,
-        attributes: {
-            action: ["modify", "delete"],
-            item: ["/.*/"],
-        },
-        requiredAttributes: ["action", "item"],
-        requiredAncestors: ["f-crud-dataset"],
-        deprecated: {
-            message:
-                "<f-crud-button> is deprecated, for table replace with <f-table-button> or <button> in other cases",
-            source: "@fkui/vue",
-        },
-    },
-
     "f-radio-field": {
         flow: true,
         phrasing: true,

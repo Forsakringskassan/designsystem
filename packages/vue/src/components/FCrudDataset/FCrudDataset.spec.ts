@@ -11,6 +11,7 @@ import {
 import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
 import { ValidationPlugin } from "../../plugins";
 import { type ListItem } from "../../types";
+import { FButton } from "../FButton";
 import {
     type FModalSize,
     FFormModal,
@@ -19,7 +20,6 @@ import {
 } from "../FModal";
 import { FTextField } from "../FTextField";
 import { type FValidationFormCallback } from "../FValidationForm";
-import FCrudButton from "./FCrudButton.vue";
 import FCrudDataset from "./FCrudDataset.vue";
 
 vi.useFakeTimers();
@@ -77,7 +77,7 @@ const DELETE_TEMPLATE = /* HTML */ `
 
 const TestComponent = defineComponent({
     name: "TestComponent",
-    components: { FCrudDataset, FCrudButton, FModal, FTextField },
+    components: { FButton, FCrudDataset, FModal, FTextField },
     props: {
         beforeSubmit: {
             type: Function as PropType<FValidationFormCallback>,
@@ -147,7 +147,7 @@ function createWrapper(
             @updated="onUpdatedEvent"
             @deleted="onDeletedEvent"
         >
-            <template #default>
+            <template #default="{ updateItem, deleteItem }">
                 <div id="cancelMessage">Modalen har stängts</div>
                 <table>
                     <thead>
@@ -161,20 +161,24 @@ function createWrapper(
                             <td>{{ item.id }}</td>
                             <td>{{ item.name }}</td>
                             <td>
-                                <f-crud-button
+                                <f-button
                                     id="modifyButton"
-                                    action="modify"
-                                    :item="item"
-                                    label
-                                />
+                                    variant="tertiary"
+                                    size="small"
+                                    @click="updateItem(item)"
+                                >
+                                    Ändra
+                                </f-button>
                             </td>
                             <td>
-                                <f-crud-button
+                                <f-button
                                     id="deleteButton"
-                                    action="delete"
-                                    :item="item"
-                                    label
-                                />
+                                    variant="tertiary"
+                                    size="small"
+                                    @click="deleteItem(item)"
+                                >
+                                    Ta bort
+                                </f-button>
                             </td>
                         </tr>
                     </tbody>
@@ -749,11 +753,23 @@ describe("formModalSize", () => {
         const wrapper = mount(FCrudDataset, {
             props: { formModalSize: "large" },
             slots: {
-                default: h(FCrudButton, {
-                    id: "modify-button",
-                    action: "modify",
-                    item: {},
-                }),
+                default: ({
+                    updateItem,
+                }: {
+                    updateItem: (item: object) => void;
+                }) =>
+                    h(
+                        FButton,
+                        {
+                            id: "modify-button",
+                            variant: "tertiary",
+                            size: "small",
+                            onClick: () => {
+                                updateItem({});
+                            },
+                        },
+                        () => "Ändra",
+                    ),
                 modify: "...",
             },
             stubs: [FFormModal],

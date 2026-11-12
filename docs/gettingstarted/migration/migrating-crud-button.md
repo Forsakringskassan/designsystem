@@ -5,7 +5,7 @@ layout: article
 component: FCrudButton
 ---
 
-`FCrudButton` är deprekerad.
+`FCrudButton` är borttagen sedan version 7.
 För enskilda knappar använder du {@link component:FButton FButton}.
 I tabeller använder du i stället en `menu`-kolumn i {@link component:FTable FTable}.
 När du placerar tabellen i `FCrudDataset` kopplar du menyåtgärdernas `onClick` till `updateItem(item)` och `deleteItem(item)`, som du når via en template ref på `FCrudDataset`.
@@ -24,7 +24,6 @@ Se {@link FCrudDataset#tabell-med-redigering Tabell med redigering} för ett exe
 ## Lista och övrigt
 
 ```html name=list-button-original hidden
-<!-- [html-validate-disable-block deprecated -- migration guide] -->
 <f-crud-dataset>
     <template #default>
         <f-list :items>
@@ -55,7 +54,7 @@ Se {@link FCrudDataset#tabell-med-redigering Tabell med redigering} för ett exe
                     Ändra {{ item.name }}
                 </f-button>
                 <f-button
-                    icon-left="pen"
+                    icon-left="trashcan"
                     size="small"
                     variant="tertiary"
                     @click="deleteItem(item)"
@@ -67,9 +66,3 @@ Se {@link FCrudDataset#tabell-med-redigering Tabell med redigering} för ett exe
     </template>
 </f-crud-dataset>
 ```
-
-## API
-
-:::api
-vue:FCrudButton
-:::
