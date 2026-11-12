@@ -6242,19 +6242,14 @@ Det här avsnittet är främst relevant om du använder FKUI i en annan byggkedj
 <p class="docs-paragraph">I CommonJS-kod kan du använda dynamisk <code>import()</code> för att ladda ett FKUI-paket:</p>
 
                 <div
-                    id="example-36fd35"
+                    id="example-736e7c"
                     class="code-preview code-preview--default"
                     
                     
                     data-language="javascript"
                 >
                     
-                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">main</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">const</span> date = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&quot;@fkui/date&quot;</span>);
-    <span class="hljs-comment">// Använd date här, efter att importen har slutförts.</span>
-}
-
-<span class="hljs-title function_">main</span>();
+                    <pre class="code-preview__markup"><code class="hljs lang-javascript" tabindex="0"><span class="hljs-keyword">const</span> date = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&quot;@fkui/date&quot;</span>);
 </code></pre>
                 </div>
             <h4 id="test_och_andra_byggverktyg" class="docs-heading docs-heading--h4"><a class="header-anchor" href="#test_och_andra_byggverktyg">Test och andra byggverktyg</a></h4><p class="docs-paragraph">Kontrollera även test- och byggverktyg samt konfigurationsfiler som laddar FKUI-paketen.
@@ -6328,9 +6323,9 @@ CSS- och Sass-ingångar påverkas inte av att JavaScript-exporterna är ESM-only
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">esm-only</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/2f116eea9855e8551a8c759377ff69ad6daf234b">2f116ee</a>)<br />
+<div class="version"><span class="version-text-block">esm-only</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/929c0441842c659ded851ff662cb8c886056c059">929c044</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1842">PR 1842</a><br />
-       <span class="version-text-block">2026-11-12 11:43</span>
+       <span class="version-text-block">2026-11-12 11:50</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
