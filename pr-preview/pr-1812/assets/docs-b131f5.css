@@ -7456,12 +7456,8 @@ a.docs-badge:hover {
   margin-top: 3rem;
 }
 
-:where(.code-preview + .docs-heading--h3) {
-  margin-top: 3rem;
-}
-
-:where(.code-preview + .docs-paragraph) {
-  margin-top: 3rem;
+:where(.docs-paragraph + .docs-tabs) {
+  margin-block-start: 2.5rem;
 }
 
 @media (width <= 640px) {
@@ -8483,12 +8479,19 @@ main #docs-aside dd {
   all: revert;
 }
 
+.code-preview:not(:where(.code-preview *)) {
+  margin-block-end: 2rem;
+}
+
+.code-preview:not(:where(.code-preview *)) + * {
+  margin-block-start: 0;
+}
+
 .code-preview--default {
   border: 1px solid var(--docs-code-border-color);
   border-radius: 4px;
   width: 100%;
   background-color: var(--docs-code-background-color);
-  margin-bottom: 1rem;
 }
 
 .code-preview--default .code-preview__preview {
@@ -8505,7 +8508,6 @@ main #docs-aside dd {
 .code-preview--borderless {
   width: 100%;
   background-color: var(--docs-code-background-color);
-  margin-bottom: 1rem;
 }
 
 .code-preview--borderless[data-tags~=live-example] {
@@ -8723,7 +8725,7 @@ body {
   padding: 0;
 }
 
-p:not(:where(.code-preview + .docs-paragraph)) {
+p {
   margin-top: 0;
 }
 
@@ -8772,7 +8774,7 @@ textarea {
   max-width: min(100%, var(--docs-content-max-width, 100%), var(--docs-text-max-width, 100%));
 }
 
-:where(#docs-title:not(.code-preview *), #docs-content :not(.code-preview *)):where(#docs-title, .docs-heading, .code-preview, pre, .table, .docs-messagebox--details) {
+:where(#docs-title:not(.code-preview *), #docs-content :not(.code-preview *)):where(#docs-title, .docs-heading, .code-preview, pre, .table, .docs-messagebox--details, .docs-tablist-wrapper) {
   box-sizing: border-box;
   max-width: min(100%, var(--docs-content-max-width, 100%));
 }
