@@ -8,6 +8,7 @@ layout: article
 Följande pageobjekt är borttagna:
 
 - [`FCalenderDayPageobject`](#fcalenderdaypageobject) (alias med felstavning)
+- [`FTableColumnPageObject`](#ftablecolumnpageobject)
 
 Följande methoder är borttagna:
 
@@ -23,6 +24,22 @@ Aliaset `FCalenderDayPageobject` (felstavning) är borttaget och ersatt med `FCa
 ::: details 🤖 Prompt för AI Agenter
 
 For each usage of the Cypress pageobject `FCalenderDayPageobject`, replace with `FCalendarDayPageObject`.
+
+Verify the result by running each affected Cypress test.
+
+:::
+
+## `FTableColumnPageObject`
+
+Pageobjektet `FTableColumnPageObject` är borttaget och ersatt med att anropa {@link FInteractiveTablePageObject.cell `cell()`} (och i vissa fall {@link FInteractiveTablePageObject.header `header()`}) på `FInteractiveTablePageObject()`.
+
+::: details 🤖 Prompt för AI Agenter
+
+For each usage of the Cypress pageobject `FTableColumnPageObject`, determine which table row it references and replace with using `cell()` on the `FInteractiveTablePageObject` pageobject.
+Despite the class name it references a `<tr>` row.
+`cell()` needs both row and column to be 1-indexed.
+
+If the referenced row is the header row, it should be replaced with `header()` instead of `cell()`.
 
 Verify the result by running each affected Cypress test.
 
