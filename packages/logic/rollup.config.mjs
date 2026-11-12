@@ -61,7 +61,6 @@ function build(format) {
 }
 
 export default [
-    build("cjs"),
     build("esm"),
     {
         input: ["temp/types/polyfills.d.ts"],

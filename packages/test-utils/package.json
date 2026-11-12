@@ -21,9 +21,7 @@
   "license": "MIT",
   "author": "Försäkringskassan",
   "sideEffects": [
-    "./dist/cjs/jest.js",
     "./dist/esm/jest.js",
-    "./dist/cjs/vitest.js",
     "./dist/esm/vitest.js",
     "./src/matchers/jest-augmentations.ts",
     "./src/matchers/vitest-augmentations.ts",
@@ -32,26 +30,22 @@
   "exports": {
     ".": {
       "types": "./dist/types/lib.d.ts",
-      "import": "./dist/esm/lib.js",
-      "require": "./dist/cjs/lib.js"
+      "default": "./dist/esm/lib.js"
     },
     "./jest": {
       "types": "./dist/types/jest.d.ts",
-      "import": "./dist/esm/jest.js",
-      "require": "./dist/cjs/jest.js"
+      "default": "./dist/esm/jest.js"
     },
     "./vitest": {
       "types": "./dist/types/vitest.d.ts",
-      "import": "./dist/esm/vitest.js",
-      "require": "./dist/cjs/vitest.js"
+      "default": "./dist/esm/vitest.js"
     },
     "./vue": {
       "types": "./dist/types/vue.d.ts",
-      "import": "./dist/esm/vue.js",
-      "require": "./dist/cjs/vue.js"
+      "default": "./dist/esm/vue.js"
     }
   },
-  "main": "dist/cjs/lib.js",
+  "main": "dist/esm/vue.js",
   "types": "dist/types/lib.d.ts",
   "files": [
     "dist",
