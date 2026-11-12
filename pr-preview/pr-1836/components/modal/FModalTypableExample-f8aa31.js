@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FModalTypableExample.vue:FModalTypableExample-efe4fa.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FModalTypableExample.vue:FModalTypableExample-f8aa31.js
 import { defineComponent as _defineComponent2 } from "vue";
 import { onMounted, ref, useTemplateRef } from "vue";
 import { assertRef } from "@fkui/logic";
@@ -110,7 +110,7 @@ ConfigurableModal_default.render = render;
 ConfigurableModal_default.__file = "packages/vue/src/components/FModal/examples/ConfigurableModal.vue";
 var ConfigurableModal_default2 = ConfigurableModal_default;
 
-// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FModalTypableExample.vue:FModalTypableExample-efe4fa.js
+// virtual-entry:virtual:packages/vue/src/components/FModal/examples/FModalTypableExample.vue:FModalTypableExample-f8aa31.js
 import { FButton as FButton2, FSelectField, useModal } from "@fkui/vue";
 import { createTextVNode as _createTextVNode2, createElementVNode as _createElementVNode2, withCtx as _withCtx2, createVNode as _createVNode2, openBlock as _openBlock2, createElementBlock as _createElementBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent2({
@@ -119,15 +119,15 @@ var exampleComponent = /* @__PURE__ */ _defineComponent2({
     __expose();
     const wrapperRef = useTemplateRef("wrapper");
     const { openModal } = useModal();
-    const modalSize = ref("");
+    const modalType = ref("");
     onMounted(() => {
       assertRef(wrapperRef);
       wrapperRef.value.style.width = "200px";
     });
     async function onClick() {
-      await openModal(ConfigurableModal_default2, { props: { size: modalSize.value } });
+      await openModal(ConfigurableModal_default2, { props: { type: modalType.value } });
     }
-    const __returned__ = { wrapperRef, openModal, modalSize, onClick, get FButton() {
+    const __returned__ = { wrapperRef, openModal, modalType, onClick, get FButton() {
       return FButton2;
     }, get FSelectField() {
       return FSelectField;
@@ -144,12 +144,12 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
     [
       _createVNode2($setup["FSelectField"], {
         id: "dropplista",
-        modelValue: $setup.modalSize,
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.modalSize = $event)
+        modelValue: $setup.modalType,
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $setup.modalType = $event)
       }, {
         label: _withCtx2(() => [..._cache[1] || (_cache[1] = [
           _createTextVNode2(
-            " Storlek ",
+            " Variant ",
             -1
             /* CACHED */
           )
@@ -157,29 +157,29 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
         default: _withCtx2(() => [
           _cache[2] || (_cache[2] = _createElementVNode2(
             "option",
-            { value: "small" },
-            "Liten",
+            { value: "" },
+            "Standard",
             -1
             /* CACHED */
           )),
           _cache[3] || (_cache[3] = _createElementVNode2(
             "option",
-            { value: "medium" },
-            "Medium",
+            { value: "information" },
+            "Information",
             -1
             /* CACHED */
           )),
           _cache[4] || (_cache[4] = _createElementVNode2(
             "option",
-            { value: "large" },
-            "Stor",
+            { value: "warning" },
+            "Varning",
             -1
             /* CACHED */
           )),
           _cache[5] || (_cache[5] = _createElementVNode2(
             "option",
-            { value: "fullwidth" },
-            "Fullbredd",
+            { value: "error" },
+            "Fel",
             -1
             /* CACHED */
           ))
@@ -211,7 +211,7 @@ function render2(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render2;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-efe4fa"
+  selector: "#example-f8aa31"
 });
 export {
   render2 as render
