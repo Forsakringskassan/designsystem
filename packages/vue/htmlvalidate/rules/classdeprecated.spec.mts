@@ -67,6 +67,28 @@ it("should report error when `.button--text` is used", async () => {
     );
 });
 
+it("should report error when `.button--text--black` is used", async () => {
+    expect.assertions(3);
+    const markup = /* HTML */ `
+        <button type="button" class="button button--text--black"></button>
+    `;
+    const report = await htmlvalidate.validateString(markup);
+    await expect(report).toBeInvalid();
+    await expect(report).toMatchInlineCodeframe(`
+        "error: class "button--text--black" is deprecated and replaced with "button--tertiary--muted" (fkui/class-deprecated)
+          1 |
+        > 2 |         <button type="button" class="button button--text--black"></button>
+            |                                             ^^^^^^^^^^^^^^^^^^^
+          3 |
+        Selector: button"
+    `);
+    const error = report.results[0].messages[0];
+    const docs = await htmlvalidate.getContextualDocumentation(error);
+    expect(docs?.description).toMatchInlineSnapshot(
+        `"Class \`button--text--black\` is deprecated and should be replaced with \`button--tertiary--muted\`"`,
+    );
+});
+
 it("should report error when `.button--discrete` is used", async () => {
     expect.assertions(3);
     const markup = /* HTML */ `
@@ -86,6 +108,28 @@ it("should report error when `.button--discrete` is used", async () => {
     const docs = await htmlvalidate.getContextualDocumentation(error);
     expect(docs?.description).toMatchInlineSnapshot(
         `"Class \`button--discrete\` is deprecated and should be replaced with \`button--tertiary\`"`,
+    );
+});
+
+it("should report error when `.button--discrete--black` is used", async () => {
+    expect.assertions(3);
+    const markup = /* HTML */ `
+        <button type="button" class="button button--discrete--black"></button>
+    `;
+    const report = await htmlvalidate.validateString(markup);
+    await expect(report).toBeInvalid();
+    await expect(report).toMatchInlineCodeframe(`
+        "error: class "button--discrete--black" is deprecated and replaced with "button--tertiary--muted" (fkui/class-deprecated)
+          1 |
+        > 2 |         <button type="button" class="button button--discrete--black"></button>
+            |                                             ^^^^^^^^^^^^^^^^^^^^^^^
+          3 |
+        Selector: button"
+    `);
+    const error = report.results[0].messages[0];
+    const docs = await htmlvalidate.getContextualDocumentation(error);
+    expect(docs?.description).toMatchInlineSnapshot(
+        `"Class \`button--discrete--black\` is deprecated and should be replaced with \`button--tertiary--muted\`"`,
     );
 });
 

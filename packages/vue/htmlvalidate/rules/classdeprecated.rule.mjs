@@ -27,8 +27,18 @@ const deprecatedClasses = [
         url: "/components/button.html",
     },
     {
+        name: "button--text--black",
+        replacement: "button--tertiary--muted",
+        url: "/components/button.html",
+    },
+    {
         name: "button--discrete",
         replacement: "button--tertiary",
+        url: "/components/button.html",
+    },
+    {
+        name: "button--discrete--black",
+        replacement: "button--tertiary--muted",
         url: "/components/button.html",
     },
     {
