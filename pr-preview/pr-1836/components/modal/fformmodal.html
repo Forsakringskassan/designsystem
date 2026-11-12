@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../search-data-e297b8.json"
+    href="../../search-data-dc0771.json"
     as="fetch"
     crossorigin
-    integrity="sha384-2meB3EMpZUkoczbeu60jLMrvpazfoKYjX0yG2nUq29KlAbKQwXJ8+EjrVua1sLaT"
+    integrity="sha384-3MMTDa20oM0AVNPfjismV3UZQW192C/vyFANOLSnY5a+iwLS83fnxN/aEl0lXH0h"
     id="search-data"
 />
 <script>
@@ -758,14 +758,14 @@
 
 <li class="link ">
         <a
-            href="../../gettingstarted/migration/migrating-to-v7/modal-api-only.html"
+            href="../../gettingstarted/migration/migration-to-v7/theme-desktop.html"
             
             
             
-            data-path="gettingstarted/migration/migrating-to-v7/modal-api-only.html"
+            data-path="gettingstarted/migration/migration-to-v7/theme-desktop.html"
             
         >
-            Modal api only
+            @fkui/theme-desktop
         </a>
     </li></ul>
 
@@ -782,6 +782,35 @@
     <li class="expandable">
         <details >
             <summary>Version 7 <svg focusable="false" class="docs-icon" aria-hidden="true"> <use href="#docs-icon-arrow-down"></use></svg></summary>
+            
+
+
+            
+               
+                
+                    
+                
+
+                
+                
+
+
+            
+<ul class="docs-mobile-nav__list">
+
+<li class="link ">
+        <a
+            href="../../gettingstarted/migration/migrating-to-v7/modal-api-only.html"
+            
+            
+            
+            data-path="gettingstarted/migration/migrating-to-v7/modal-api-only.html"
+            
+        >
+            Modal api only
+        </a>
+    </li></ul>
+
             
         </details>
     </li>
@@ -7190,7 +7219,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/64df522e52d4833cd11d0ababf674335ea1f0f67/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/02d5ca7d9c098157fd22722353a8088a7b22d35f/packages/vue/src/components/FModal/FFormModal/FFormModal.vue">
                 FFormModal
             </a>
             
@@ -7360,23 +7389,10 @@ Det kan leda till oönskade konsekvenser om konsumenten skickas in existernade r
 Du kan antingen låta din formulärsmodal hantera detta genom att internt kopiera <code>value</code> eller tydligt dokumentera att konsumenten måste skicka in en kopia.</p>
 
             </div>
-        <h2 id="oppna_modal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#oppna_modal">Öppna modal</a></h2><p class="docs-paragraph">Du öppnar modalen med <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) eller <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API).</p>
-<p class="docs-paragraph"><strong>Options API:</strong></p>
+        <h2 id="oppna_modal" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#oppna_modal">Öppna modal</a></h2><p class="docs-paragraph">Du öppnar modalen med <a href="../../functions/functions/use-modal.html"><code>useModal()</code></a>.</p>
 
                 <div
-                    id="example-a3147b"
-                    class="code-preview code-preview--default"
-                    
-                    
-                    data-language="typescript"
-                >
-                    
-                    <pre class="code-preview__markup"><code class="hljs lang-typescript" tabindex="0"><span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> formModal&lt;<span class="hljs-title class_">Person</span>&gt;(<span class="hljs-variable language_">this</span>, <span class="hljs-title class_">PersonFormModal</span>);</code></pre>
-                </div>
-            <p class="docs-paragraph"><strong>Composition API:</strong></p>
-
-                <div
-                    id="example-4a8bb4"
+                    id="example-06976f"
                     class="code-preview code-preview--default"
                     
                     
@@ -7399,7 +7415,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
 <p class="docs-paragraph">Förifylld data kan skickas in med propen <code>value</code>:</p>
 
                 <div
-                    id="example-a25fc3"
+                    id="example-376132"
                     class="code-preview code-preview--default"
                     
                     
@@ -7422,7 +7438,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
                 </div>
             
             <div
-                id="example-3cbe9a"
+                id="example-e9d9ef"
                 class="code-preview code-preview--default"
                 
                 
@@ -7514,7 +7530,7 @@ Om användaren avbryter modalen avvisas <code>Promise</code> med <code>reject()<
 Med den kan du ta bort existerande knappar eller använda en helt egen uppsättning.</p>
 
                 <div
-                    id="example-45e3fd"
+                    id="example-ab6100"
                     class="code-preview code-preview--default"
                     
                     
@@ -7530,7 +7546,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
             <p class="docs-paragraph"><code>buttons</code> är en lista av typen <code>FModalButtonDescriptor</code>:</p>
 
                 <div
-                    id="example-8b7e0f"
+                    id="example-47140d"
                     class="code-preview code-preview--default"
                     
                     
@@ -7549,7 +7565,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
                 </div>
             
                 <div
-                    id="example-e6cbc2"
+                    id="example-9edd18"
                     class="code-preview code-preview--default"
                     
                     data-tags="nocompile nolint"
@@ -7567,7 +7583,7 @@ Med den kan du ta bort existerande knappar eller använda en helt egen uppsättn
 <h2 id="skarmlasare" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#skarmlasare">Skärmläsare</a></h2><p class="docs-paragraph">Du kan lägga till extra skärmläsartext på knappar med <code>screenreader</code> property:</p>
 
                 <div
-                    id="example-78d946"
+                    id="example-7ee855"
                     class="code-preview code-preview--default"
                     
                     
@@ -7583,7 +7599,7 @@ Detta används för att tydliggöra vad knappen kommer att göra i de fallen dä
 <h3 id="validering_av_inmatad_data" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#validering_av_inmatad_data">Validering av inmatad data</a></h3><p class="docs-paragraph">Inmatningsfälten valideras redan med vanlig validering, men om du behöver utföra extra validering (manuella steg, korsvalidering eller validering på backend och så vidare) så kan du använda beforeSubmit:</p>
 
                 <div
-                    id="example-6c4b96"
+                    id="example-bc0679"
                     class="code-preview code-preview--default"
                     
                     data-tags="static"
@@ -7603,7 +7619,7 @@ Detta används för att tydliggöra vad knappen kommer att göra i de fallen dä
 I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel på inmatningsfält:</p>
 
                 <div
-                    id="example-505132"
+                    id="example-9b37f2"
                     class="code-preview code-preview--default"
                     
                     
@@ -7618,7 +7634,7 @@ I <code>onBeforeSubmit</code> har du möjlighet att sätta nya valideringsfel p�
             <p class="docs-paragraph">Vi rekommenderar att alla fel är kopplade till ett specifikt inmatningsfält men om du istället vill avbryta inskicket och presentera ett fel med exempelvis en meddeladeruta kan du returnera <code>FFormModalAction.CANCEL</code> från <code>onBeforeSubmit</code>:</p>
 
                 <div
-                    id="example-5adea9"
+                    id="example-9e283b"
                     class="code-preview code-preview--default"
                     
                     
@@ -7995,7 +8011,7 @@ The event payload is the data that has been submitted.</p>
                     
         </dl>
     <h2 id="relaterat" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#relaterat">Relaterat</a></h2><ul>
-<li><a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> (composition API) <a href="../../functions/functions/modal-functions/form-modal.html"><code>formModal()</code></a> (options API) för programatiskt användande av formulärsmodal.</li>
+<li><a href="../../functions/functions/use-modal.html"><code>useModal()</code></a> för programatiskt användande av formulärsmodal.</li>
 <li><a href="./fmodal.html">Modal</a> för mer information om modaler.</li>
 </ul>
 
@@ -8067,9 +8083,9 @@ The event payload is the data that has been submitted.</p>
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">modal-template-removal</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/64df522e52d4833cd11d0ababf674335ea1f0f67">64df522</a>)<br />
+<div class="version"><span class="version-text-block">modal-template-removal</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/02d5ca7d9c098157fd22722353a8088a7b22d35f">02d5ca7</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1836">PR 1836</a><br />
-       <span class="version-text-block">2026-11-12 14:36</span>
+       <span class="version-text-block">2026-11-12 15:12</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
