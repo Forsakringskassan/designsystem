@@ -18,13 +18,14 @@ layout: article
 
 ### Övriga ändringar
 
-| Komponent                                          | Ändring                                                  |
-| :------------------------------------------------- | :------------------------------------------------------- |
-| cypress                                            | Lorem ipsum                                              |
-| Knapp (@fkui/design)                               | Lorem                                                    |
-| Modal (Fmodal)                                     | Tagit bort template Api:et                               |
-| Steg för steg guide (FWizard)                      | Focushantering är opt in istället för opt out            |
-| {@link migrating-to-v7-vue#ftable Tabell (FTable)} | Egenskapen `text` har bytt namn till `screenreaderText`. |
+| Komponent                                           | Ändring                                                  |
+| :-------------------------------------------------- | :------------------------------------------------------- |
+| cypress                                             | Lorem ipsum                                              |
+| {@link migrating-to-v7-vue#fcrudbutton FCrudButton} | Komponenten har tagits bort                              |
+| Knapp (@fkui/design)                                | Lorem                                                    |
+| Modal (Fmodal)                                      | Tagit bort template Api:et                               |
+| Steg för steg guide (FWizard)                       | Focushantering är opt in istället för opt out            |
+| {@link migrating-to-v7-vue#ftable Tabell (FTable)}  | Egenskapen `text` har bytt namn till `screenreaderText`. |
 
 ## ESM Only
 

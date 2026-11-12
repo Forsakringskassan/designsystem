@@ -14,9 +14,7 @@ export {
 export {
     type ActivateItemCallback,
     type ActivateItemInterface,
-    type FCrudDatasetInterface,
     ActivateItemInjected,
-    FCrudButton,
     FCrudDataset,
     Operation,
 } from "./FCrudDataset";
