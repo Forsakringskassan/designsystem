@@ -3,6 +3,7 @@ title: Modal dialogruta
 status: Produktionsklar
 layout: component
 component: FModal
+sortorder: 1
 search:
     terms:
         - FModalSize
