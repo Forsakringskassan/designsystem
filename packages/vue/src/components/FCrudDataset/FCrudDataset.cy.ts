@@ -10,7 +10,6 @@ import {
 } from "..";
 import { FInteractiveTablePageObject } from "../../cypress";
 import { type ListItem } from "../../types";
-import FCrudButton from "./FCrudButton.vue";
 import FCrudDataset from "./FCrudDataset.vue";
 import ListExample from "./examples/FCrudDatasetListExample.vue";
 
@@ -48,33 +47,37 @@ function mountComponent(templates = new Array<string>()): void {
                 @updated="onUpdatedEvent"
                 @deleted="onDeletedEvent"
             >
-                <template #default>
+                <template #default="{ updateItem, deleteItem }">
                     <table>
                         <thead>
                             <tr>
-                                <th scope="col"> id </th>
-                                <th scope="col"> name </th>
+                                <th scope="col">id</th>
+                                <th scope="col">name</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="item in items" :key="item.id">
-                                <td :id="'item'+item.id"> {{ item.id }} </td>
-                                <td> {{ item.name }} </td>
+                                <td :id="'item'+item.id">{{ item.id }}</td>
+                                <td>{{ item.name }}</td>
                                 <td>
-                                    <f-crud-button
+                                    <f-table-button
                                         :id="'modifyButton'+item.id"
-                                        action="modify"
-                                        :item="item"
+                                        icon="pen"
                                         label
-                                    />
+                                        @click="updateItem(item)"
+                                    >
+                                        Ändra
+                                    </f-table-button>
                                 </td>
                                 <td>
-                                    <f-crud-button
+                                    <f-table-button
                                         :id="'deleteButton'+item.id"
-                                        action="delete"
-                                        :item="item"
+                                        icon="trashcan"
                                         label
-                                    />
+                                        @click="deleteItem(item)"
+                                    >
+                                        Ta bort
+                                    </f-table-button>
                                 </td>
                             </tr>
                         </tbody>
@@ -101,11 +104,11 @@ function mountComponent(templates = new Array<string>()): void {
     const TestComponent = defineComponent({
         template: testComponentTemplate + testDataTemplate,
         components: {
-            FCrudDataset,
-            FCrudButton,
-            FModal,
             FConfirmModal,
+            FCrudDataset,
             FFormModal,
+            FModal,
+            FTableButton,
         },
         data() {
             return {
