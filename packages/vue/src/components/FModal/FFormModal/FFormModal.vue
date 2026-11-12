@@ -39,7 +39,7 @@ export default defineComponent({
          * See <f-modal> `size` props.
          */
         size: {
-            type: String as PropType<FModalSize | "fullscreen" | "">,
+            type: String as PropType<FModalSize | "">,
             default: "",
         },
         /**

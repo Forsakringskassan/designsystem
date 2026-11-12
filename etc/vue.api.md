@@ -632,7 +632,7 @@ export interface FModalData {
 }
 
 // @public
-export type FModalSize = Exclude<(typeof modalSizes)[number], "" | "fullscreen">;
+export type FModalSize = (typeof modalSizes)[number];
 
 // Warning: (ae-forgotten-export) The symbol "__VLS_export_37" needs to be exported by the entry point index.d.ts
 //
@@ -1286,7 +1286,7 @@ export interface ModalResult<T = void> {
 }
 
 // @public
-export const modalSizes: readonly ["small", "medium", "large", "fullwidth", "", "fullscreen"];
+export const modalSizes: readonly ["small", "medium", "large", "fullwidth"];
 
 // @public
 export function mountComponent(callingInstance: MaybeWithFKUIContext, Component: MaybeComponent, options?: Record<string, unknown> & MountOptions): App<Element>;
