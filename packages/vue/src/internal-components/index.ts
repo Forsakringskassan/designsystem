@@ -18,3 +18,4 @@ export {
     IComboboxToggleButton,
     useCombobox,
 } from "./combobox";
+export { ICloseButton } from "./ICloseButton";

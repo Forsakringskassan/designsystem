@@ -1,6 +1,16 @@
 import { defineMetadata } from "html-validate";
 
 export default defineMetadata({
+    "i-close-button": {
+        inherit: "button",
+        textContent: "default",
+        submitButton: false,
+        attributes: {
+            compact: { boolean: true },
+            "icon-only": { boolean: true },
+        },
+    },
+
     "i-flex": {
         flow: true,
         attributes: {
