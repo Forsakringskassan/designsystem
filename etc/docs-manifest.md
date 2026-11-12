@@ -258,7 +258,7 @@ gettingstarted/contribute-to-fkds/testing.html
 gettingstarted/contribute-to-fkds/testverktyg.html
 gettingstarted/help-and-support.html
 gettingstarted/index.html
-gettingstarted/migration/migrating-crud-button.html
+gettingstarted/migration/migrating-crud-button.html -> gettingstarted/migration/migrating-to-v7/vue.html
 gettingstarted/migration/migrating-to-fieldset.html
 gettingstarted/migration/migrating-to-ftable.html
 gettingstarted/migration/migrating-to-v5.html
