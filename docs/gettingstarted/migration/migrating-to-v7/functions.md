@@ -7,6 +7,10 @@ layout: article
 
 ## `@fkui/vue`
 
+Följande propar är ändrade:
+
+- [`FModal` `size`](#fmodal)
+
 Följande propar är borttagna:
 
 - [`FSortFilterDataset` `placeholderFilter`](#fsortfilterdataset)
@@ -15,6 +19,17 @@ Följande funktioner är borttagna:
 
 - [`getLegacyInternalKey()`](#getlegacyinternalkey)
 - [`TableScroll.VERTICAL` och `TableScroll.BOTH`](#tablescroll)
+
+### `FModal`
+
+Propen `size` stödjer inte längre aliaset `fullscreen` och är ersatt med `fullwidth`.
+
+```diff
+ const modal = openModal(FModal, {
+-    size: "fullscreen",
++    size: "fullwidth",
+ });
+```
 
 ### `FSortFilterDataset`
 

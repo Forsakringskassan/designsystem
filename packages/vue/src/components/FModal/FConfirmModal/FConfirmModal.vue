@@ -53,7 +53,7 @@ export default defineComponent({
          * The size of modal. 'large' and 'fullscreen' is valid.
          */
         size: {
-            type: String as PropType<FModalSize | "fullscreen" | "">,
+            type: String as PropType<FModalSize | "">,
             default: "",
         },
         /**

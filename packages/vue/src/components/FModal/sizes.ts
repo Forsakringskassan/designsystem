@@ -4,18 +4,7 @@
  * @public
  * @since v6.31.0
  */
-export const modalSizes = [
-    "small",
-    "medium",
-    "large",
-    "fullwidth",
-
-    /** @deprecated deprecated default value */
-    "",
-
-    /** @deprecated deprecated alias for fullwidth */
-    "fullscreen",
-] as const;
+export const modalSizes = ["small", "medium", "large", "fullwidth"] as const;
 
 /**
  * The sizes allowed by the `FModal` `size` prop.
@@ -23,12 +12,7 @@ export const modalSizes = [
  * @public
  * @since v6.31.0
  */
-export type FModalSize = Exclude<
-    (typeof modalSizes)[number],
-    /* exclude deprecated alias from the type, if the deprecated types are
-     * needed the consumer should add those manually.  */
-    "" | "fullscreen"
->;
+export type FModalSize = (typeof modalSizes)[number];
 
 /**
  * @internal
