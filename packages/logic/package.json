@@ -16,29 +16,24 @@
   "license": "MIT",
   "author": "Försäkringskassan",
   "sideEffects": [
-    "./dist/cjs/polyfills.js",
     "./dist/esm/polyfills.js",
     "./dist/polyfills.js"
   ],
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "default": "./dist/esm/index.js"
     },
     "./polyfills": {
       "types": "./dist/types/polyfills.d.ts",
-      "import": "./dist/esm/polyfills.js",
-      "require": "./dist/cjs/polyfills.js"
+      "default": "./dist/esm/polyfills.js"
     },
     "./lib/polyfills": {
       "types": "./dist/types/polyfills.d.ts",
-      "import": "./dist/esm/polyfills.js",
-      "require": "./dist/cjs/polyfills.js"
+      "default": "./dist/esm/polyfills.js"
     }
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist"
