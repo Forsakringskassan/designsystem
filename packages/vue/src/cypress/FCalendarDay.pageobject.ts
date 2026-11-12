@@ -39,9 +39,3 @@ export class FCalendarDayPageObject implements BasePageObject {
         return this.button().click();
     }
 }
-
-/**
- * @deprecated Deprecated alias; use `FCalendarDayPageObject` instead (typo in name)
- * @public
- */
-export class FCalenderDayPageobject extends FCalendarDayPageObject {}

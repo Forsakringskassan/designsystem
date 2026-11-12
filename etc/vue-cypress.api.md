@@ -91,10 +91,6 @@ export class FCalendarDayPageObject implements BasePageObject {
     srOnly(): DefaultCypressChainable;
 }
 
-// @public @deprecated (undocumented)
-export class FCalenderDayPageobject extends FCalendarDayPageObject {
-}
-
 // @public (undocumented)
 class FCheckboxFieldPageObject implements BasePageObject {
     constructor(selector: string, index?: number);
