@@ -423,7 +423,6 @@ export default defineComponent({
                 </f-calendar>
 
                 <div class="datepicker-field__close">
-                    <!-- [html-validate-disable-next fkui/class-deprecated -- technical debt] -->
                     <button
                         class="button button--tertiary button--tertiary--muted datepicker-field__close__button"
                         type="button"
