@@ -5,10 +5,35 @@ name: migrating-to-v7-funktioner
 layout: article
 ---
 
+Följande propar är borttagna:
+
+- [`FSortFilterDataset` `placeholderFilter`](#fsortfilterdataset)
+
 Följande funktioner är borttagna:
 
 - [`getLegacyInternalKey()`](#getlegacyinternalkey)
 - [`TableScroll.VERTICAL` och `TableScroll.BOTH`](#tablescroll)
+
+## `FSortFilterDataset`
+
+Propen `placeholderFilter` är borttagen och ersatt med `filterLabel`.
+
+```diff
+ <f-sort-filter-dataset
+-    placeholder-filter="Lorem ipsum"
++    filter-label="Lorem ipsum"
+ >
+```
+
+::: details 🤖 Prompt för AI Agenter
+
+För varje användning av propen `placeholderFilter` på komponenten `FSortFilterDataset`, ersätt med propen med `filterLabel`.
+Propen är identisk i funktion.
+
+Verifiera resultatet genom att bygga projektet och köra enhetstester.
+Ignorera övriga fel, applikationen migreras till FKUI v7 och det kan finnas orelaterade kvarstående fel.
+
+:::
 
 ## `getLegacyInternalKey()`
 
