@@ -1124,7 +1124,7 @@ export default defineMetadata({
         requiredAncestors: ["f-crud-dataset"],
         deprecated: {
             message:
-                "<f-crud-button> is deprecated, for table replace with <f-table-button> or <button> in other cases",
+                "<f-crud-button> has been removed, use <f-button> instead.",
             source: "@fkui/vue",
         },
     },

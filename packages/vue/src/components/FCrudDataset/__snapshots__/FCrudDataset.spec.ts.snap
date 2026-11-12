@@ -38,12 +38,14 @@ exports[`snapshot > should match snapshot 1`] = `
             id="modifyButton"
             type="button"
           >
-            <!--v-if-->
+            <f-icon-stub
+              class="button__icon"
+              library="f"
+              name="pen"
+            />
              
             
-            
-            Ändra
-            
+             Ändra 
             
           </button>
         </td>
@@ -53,12 +55,14 @@ exports[`snapshot > should match snapshot 1`] = `
             id="deleteButton"
             type="button"
           >
-            <!--v-if-->
+            <f-icon-stub
+              class="button__icon"
+              library="f"
+              name="trashcan"
+            />
              
             
-            
-            Ta bort
-            
+             Ta bort 
             
           </button>
         </td>
@@ -76,12 +80,14 @@ exports[`snapshot > should match snapshot 1`] = `
             id="modifyButton"
             type="button"
           >
-            <!--v-if-->
+            <f-icon-stub
+              class="button__icon"
+              library="f"
+              name="pen"
+            />
              
             
-            
-            Ändra
-            
+             Ändra 
             
           </button>
         </td>
@@ -91,12 +97,14 @@ exports[`snapshot > should match snapshot 1`] = `
             id="deleteButton"
             type="button"
           >
-            <!--v-if-->
+            <f-icon-stub
+              class="button__icon"
+              library="f"
+              name="trashcan"
+            />
              
             
-            
-            Ta bort
-            
+             Ta bort 
             
           </button>
         </td>
@@ -114,12 +122,14 @@ exports[`snapshot > should match snapshot 1`] = `
             id="modifyButton"
             type="button"
           >
-            <!--v-if-->
+            <f-icon-stub
+              class="button__icon"
+              library="f"
+              name="pen"
+            />
              
             
-            
-            Ändra
-            
+             Ändra 
             
           </button>
         </td>
@@ -129,12 +139,14 @@ exports[`snapshot > should match snapshot 1`] = `
             id="deleteButton"
             type="button"
           >
-            <!--v-if-->
+            <f-icon-stub
+              class="button__icon"
+              library="f"
+              name="trashcan"
+            />
              
             
-            
-            Ta bort
-            
+             Ta bort 
             
           </button>
         </td>
