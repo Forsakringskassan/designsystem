@@ -6275,6 +6275,16 @@
                                 
                                 <li><a href="#fcalenderdaypageobject">FCalenderDayPageobject</a></li>
                                 
+                                <li><a href="#ffileitempageobject">FFileItemPageObject</a></li>
+                                
+                                <li><a href="#ftablecolumnpageobject">FTableColumnPageObject</a></li>
+                                
+                                <li><a href="#finteractivetablepageobject">FInteractiveTablePageObject</a></li>
+                                
+                                <li><a href="#ftextareafieldpageobject">FTextareaFieldPageObject</a></li>
+                                
+                                <li><a href="#icalendarnavbarpageobject">ICalendarNavbarPageObject</a></li>
+                                
                             </ul>
                         </details>
                         
@@ -6304,7 +6314,7 @@
 <p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
 
             </details>
-        <h3 id="ffileitempageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ffileitempageobject"><code>FFileItemPageObject</code></a></h3><p class="docs-paragraph">Aliaset <code>typeOfFileIcon()</code> är borttaget och ersatt med <code>typeOfFile()</code>.
+        <h2 id="ffileitempageobject" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ffileitempageobject"><code>FFileItemPageObject</code></a></h2><p class="docs-paragraph">Aliaset <code>typeOfFileIcon()</code> är borttaget och ersatt med <code>typeOfFile()</code>.
 Båda är funktionellt ekvivalenta och inga övriga åtgärder behöver göras.</p>
 
             <details class="docs-messagebox docs-messagebox--details">
@@ -6316,7 +6326,7 @@ The former was a deprecated alias and was functionally equivalent.</p>
 <p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
 
             </details>
-        <h3 id="ftablecolumnpageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ftablecolumnpageobject"><code>FTableColumnPageObject</code></a></h3><p class="docs-paragraph">Pageobjektet <code>FTableColumnPageObject</code> är borttaget och ersatt med att anropa <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html"><code>cell()</code></a> (och i vissa fall <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"><code>header()</code></a>) på <code>FInteractiveTablePageObject()</code>.</p>
+        <h2 id="ftablecolumnpageobject" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ftablecolumnpageobject"><code>FTableColumnPageObject</code></a></h2><p class="docs-paragraph">Pageobjektet <code>FTableColumnPageObject</code> är borttaget och ersatt med att anropa <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html"><code>cell()</code></a> (och i vissa fall <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"><code>header()</code></a>) på <code>FInteractiveTablePageObject()</code>.</p>
 
             <details class="docs-messagebox docs-messagebox--details">
                 <summary class="docs-messagebox__title">
@@ -6329,7 +6339,7 @@ Despite the class name it references a <code>&lt;tr&gt;</code> row.
 <p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
 
             </details>
-        <h3 id="finteractivetablepageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#finteractivetablepageobject"><code>FInteractiveTablePageObject</code></a></h3><p class="docs-paragraph">Metoden <code>columnItem()</code> är borttagen och ersatt med <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html"><code>cell()</code></a> (och i vissa fall <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"><code>header()</code></a>).</p>
+        <h2 id="finteractivetablepageobject" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#finteractivetablepageobject"><code>FInteractiveTablePageObject</code></a></h2><p class="docs-paragraph">Metoden <code>columnItem()</code> är borttagen och ersatt med <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html"><code>cell()</code></a> (och i vissa fall <a href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"><code>header()</code></a>).</p>
 <p class="docs-paragraph">Notera att <code>cell()</code> refererar till en specifik tabellcell (<code>&lt;td&gt;</code> element) och inte hela tabellraden (<code>&lt;tr&gt;</code> element) samt att <code>FTableColumnPageObject</code> är 0-indexerat (första kolumnen är 0, andra är 1, osv) medans <code>cell()</code> är 1-indexerat.</p>
 
                 <div
@@ -6397,8 +6407,8 @@ The former returns a wrapper around the <code>&lt;tr&gt;</code> row and the latt
 <p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
 
             </details>
-        <h3 id="ftextareafieldpageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#ftextareafieldpageobject"><code>FTextareaFieldPageObject</code></a></h3><p class="docs-paragraph">Metoden <code>errorIcon()</code> är borttagen och har ingen ersättare.</p>
-<h3 id="icalendarnavbarpageobject" class="docs-heading docs-heading--h3"><a class="header-anchor" href="#icalendarnavbarpageobject"><code>ICalendarNavbarPageObject</code></a></h3><p class="docs-paragraph">Aliaset <code>text()</code> är borttaget och ersatt med <code>title()</code> metoden.
+        <h2 id="ftextareafieldpageobject" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#ftextareafieldpageobject"><code>FTextareaFieldPageObject</code></a></h2><p class="docs-paragraph">Metoden <code>errorIcon()</code> är borttagen och har ingen ersättare.</p>
+<h2 id="icalendarnavbarpageobject" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#icalendarnavbarpageobject"><code>ICalendarNavbarPageObject</code></a></h2><p class="docs-paragraph">Aliaset <code>text()</code> är borttaget och ersatt med <code>title()</code> metoden.
 Båda är funktionellt ekvivalenta och inga övriga åtgärder behöver göras.</p>
 
                 <div
@@ -6419,9 +6429,13 @@ Båda är funktionellt ekvivalenta och inga övriga åtgärder behöver göras.<
                 <summary class="docs-messagebox__title">
                     🤖 Prompt för AI Agenter
                 </summary>
-                <p class="docs-paragraph">For each usage of the Cypress pageobject <code>ICalendarNavbarPageObject</code>, replace each usage of <code>text()</code> with <code>title()</code>.
-The former was a deprecated alias and was functionally equivalent.</p>
-<p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
+                <p class="docs-paragraph">Ersätt alla anrop till <code>text()</code> på Cypress-pageobjeket <code>ICalendarNavbarPageObject</code> med <code>title()</code>.</p>
+<p class="docs-paragraph">Metoden <code>text()</code> tas bort i FKUI 7.
+Den är ett föråldrat alias för <code>title()</code>, som redan finns.
+Metoderna är funktionellt likvärdiga, så endast metodnamnet behöver ändras.
+Behåll övrig kod och testernas förväntade resultat.</p>
+<p class="docs-paragraph">Verifera ändringen genom att köra samtliga berörda Cypress-tester med projektets befintliga testkommandon.
+Redovisa resultatet och ange om några tester inte kunde köras.</p>
 
             </details>
         
@@ -6492,9 +6506,9 @@ The former was a deprecated alias and was functionally equivalent.</p>
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">feature/deprecated-pageobjects</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/86ec133bc722569f56508636cdb87200c5287c77">86ec133</a>)<br />
+<div class="version"><span class="version-text-block">feature/deprecated-pageobjects</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/96f4fcb16b58025f89847622b9489545e8ec1e57">96f4fcb</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1841">PR 1841</a><br />
-       <span class="version-text-block">2026-11-12 17:01</span>
+       <span class="version-text-block">2026-11-12 17:19</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
