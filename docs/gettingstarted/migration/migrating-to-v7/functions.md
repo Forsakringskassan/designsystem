@@ -7,10 +7,25 @@ layout: article
 
 ## `@fkui/vue`
 
+Följande propar är borttagna:
+
+- [`FSortFilterDataset` `placeholderFilter`](#fsortfilterdataset)
+
 Följande funktioner är borttagna:
 
 - [`getLegacyInternalKey()`](#getlegacyinternalkey)
 - [`TableScroll.VERTICAL` och `TableScroll.BOTH`](#tablescroll)
+
+### `FSortFilterDataset`
+
+Propen `placeholderFilter` är borttagen och ersatt med `filterLabel`.
+
+```diff
+ <f-sort-filter-dataset
+-    placeholderFilter="Lorem ipsum"
++    filter-label="Lorem ipsum"
+ >
+```
 
 ### `getLegacyInternalKey()`
 
