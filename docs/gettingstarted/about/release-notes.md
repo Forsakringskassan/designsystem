@@ -350,7 +350,7 @@ Tabellen behåller nu sorteringen på den kolumn som användaren har valt efter 
 
 2025-05-23
 
-`FCrudButton` är deprekerad, läs mer om att {@link migrating-crud-button migrera FCrudButton}.
+`FCrudButton` är deprekerad.
 
 ## Version 6.7.0
 

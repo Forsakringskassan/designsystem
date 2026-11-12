@@ -35,30 +35,32 @@ exports[`snapshot > should match snapshot 1`] = `
         <td>
           <button
             class="button table__button"
+            icon-left="pen"
             id="modifyButton"
+            size="small"
             type="button"
+            variant="tertiary"
           >
             <!--v-if-->
              
             
-            
-            Ändra
-            
+             Ändra 
             
           </button>
         </td>
         <td>
           <button
             class="button table__button"
+            icon-left="trashcan"
             id="deleteButton"
+            size="small"
             type="button"
+            variant="tertiary"
           >
             <!--v-if-->
              
             
-            
-            Ta bort
-            
+             Ta bort 
             
           </button>
         </td>
@@ -73,30 +75,32 @@ exports[`snapshot > should match snapshot 1`] = `
         <td>
           <button
             class="button table__button"
+            icon-left="pen"
             id="modifyButton"
+            size="small"
             type="button"
+            variant="tertiary"
           >
             <!--v-if-->
              
             
-            
-            Ändra
-            
+             Ändra 
             
           </button>
         </td>
         <td>
           <button
             class="button table__button"
+            icon-left="trashcan"
             id="deleteButton"
+            size="small"
             type="button"
+            variant="tertiary"
           >
             <!--v-if-->
              
             
-            
-            Ta bort
-            
+             Ta bort 
             
           </button>
         </td>
@@ -111,30 +115,32 @@ exports[`snapshot > should match snapshot 1`] = `
         <td>
           <button
             class="button table__button"
+            icon-left="pen"
             id="modifyButton"
+            size="small"
             type="button"
+            variant="tertiary"
           >
             <!--v-if-->
              
             
-            
-            Ändra
-            
+             Ändra 
             
           </button>
         </td>
         <td>
           <button
             class="button table__button"
+            icon-left="trashcan"
             id="deleteButton"
+            size="small"
             type="button"
+            variant="tertiary"
           >
             <!--v-if-->
              
             
-            
-            Ta bort
-            
+             Ta bort 
             
           </button>
         </td>

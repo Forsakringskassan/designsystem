@@ -127,11 +127,6 @@ Knapptexter i modaler kan anpassas med textnycklar.
 
 Knappentexten för "Lägg till" kan anpassas med textnyckel `fkui.crud-dataset.button.add` eller slotten `add-button`.
 
-Knapptexter för åtgärdsknappar kan anpassas med textnycklar eller med knappens default slot.
-
-- Ändra: textnyckel `fkui.crud-button.modify` eller default slot.
-- Ta bort: textnyckel `fkui.crud-button.delete` eller default slot.
-
 ```import
 FCrudDatasetCustomTextExample.vue
 ```
@@ -166,10 +161,6 @@ Läs mer om att {@link translate-text anpassa och översätta text}.
 translation:FCrudDataset
 :::
 
-:::api
-translation:FCrudButton
-:::
-
 ## API
 
 ### `FCrudDataset`
@@ -177,8 +168,3 @@ translation:FCrudButton
 :::api
 vue:FCrudDataset
 :::
-
-### `FCrudButton`
-
-Komponenten är deprekerad.
-Läs mer om att {@link migrating-crud-button migrera FCrudButton}.
