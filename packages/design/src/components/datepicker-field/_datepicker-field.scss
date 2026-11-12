@@ -69,6 +69,7 @@ $calendar-width: calc(100vw - #{$popup-spacing});
         margin: 0;
         padding: 1rem;
         align-items: center;
+        min-width: unset;
 
         &:hover,
         &:active {
