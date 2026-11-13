@@ -148,6 +148,8 @@ const columnData: Record<TableColumnType, TableColumn<Row>> = {
     anchor: {
         type: "anchor",
         header: "Länk kolumnrubrik",
+        iconRight: "arrow-right",
+        target: "_blank",
         text: (row) => String(row.value),
         href: (row) => String(row.id),
     },

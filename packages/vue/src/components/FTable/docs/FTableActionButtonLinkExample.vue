@@ -27,6 +27,8 @@ const columns = defineTableColumns<Row>([
     },
     {
         type: "anchor",
+        target: "_blank",
+        iconRight: "arrow-right",
         header: "Länk",
         text() {
             return "Mer information";

@@ -1479,9 +1479,6 @@ export interface TableColumnBase<T> {
     enabled?: MaybeRef<boolean>;
     header: string | Readonly<Ref<string>>;
     size?: TableColumnSize | Readonly<Ref<TableColumnSize | null>>;
-    iconLeft?: string | null;
-    iconRight?: string | null;
-    target?: string | null;
     // (undocumented)
     sort?: boolean;
     visible?: (this: void, row: T) => boolean;

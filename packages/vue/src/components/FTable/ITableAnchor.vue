@@ -28,13 +28,13 @@ defineExpose(expose);
             v-if="visible"
             ref="target"
             class="anchor anchor--block"
-            :target="hasTarget"
+            :target="target(row)"
             :href="column.href(row)"
             tabindex="-1"
         >
-            <f-icon v-if="column.iconLeft" :name="column.iconLeft"></f-icon>
+            <f-icon v-if="column.iconLeft" :name="column.iconLeft(row)"></f-icon>
             {{ column.text(row) }}
-            <f-icon v-if="column.iconRight" :name="column.iconRight"></f-icon>
+            <f-icon v-if="column.iconRight" :name="column.iconRight(row)"></f-icon>
         </a>
     </td>
     <td v-else ref="target" tabindex="-1" class="table-ng__cell"></td>

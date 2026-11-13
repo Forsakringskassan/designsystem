@@ -18,6 +18,11 @@ export interface TableColumnAnchor<
     key?: K;
     /** Link text */
     text(this: void, row: T): string | null;
+    /** Name of optional icon */
+    iconLeft?: string | ((this: void, row: T) => string);
+    iconRight?: string | ((this: void, row: T) => string);
+    /** Target attribute on link */
+    target?: string | ((this: void, row: T) => string);
     /** Link destination */
     href: string | ((this: void, row: T) => string);
 }
@@ -35,6 +40,9 @@ export interface NormalizedTableColumnAnchor<
         column: NormalizedTableColumnAnchor<T, K>;
     }>;
     text(this: void, row: T): string | null;
+    iconRight?: (this: void, row: T) => string;
+    iconLeft?: (this: void, row: T) => string;
+    target?: (this: void, row: T) => string;
     href(this: void, row: T): string;
 }
 
@@ -47,6 +55,18 @@ export function normalizeAnchorColumn<T, K extends keyof T>(
     return {
         type: "anchor",
         text: getValueFn(column.text, column.key, String, ""),
+        iconLeft:
+            typeof column.iconLeft === "function"
+                ? column.iconLeft
+                : () => String(column.iconLeft),
+        iconRight:
+            typeof column.iconRight === "function"
+                ? column.iconRight
+                : () => String(column.iconRight),
+        target:
+            typeof column.target === "function"
+                ? column.target
+                : () => String(column.target),
         href:
             typeof column.href === "function"
                 ? column.href

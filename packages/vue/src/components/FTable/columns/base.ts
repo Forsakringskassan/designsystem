@@ -53,19 +53,6 @@ export interface TableColumnBase<T> {
      * `"_parent"`
      * `"_top"`
      */
-    target?: "_blank" | "_self" | "_parent" | "_top" | undefined;
-    /**
-     * Set icon left to the anchor link
-     *
-     * `"name of the f-icon"`
-     */
-    iconLeft?: string | undefined;
-    /**
-     * Set icon right to the anchor link
-     *
-     * `"name of the f-icon"`
-     */
-    iconRight?: string | undefined;
     /**
      * Used to set a more specific width than `size` can provide. Write like: `"20%"`
      *
