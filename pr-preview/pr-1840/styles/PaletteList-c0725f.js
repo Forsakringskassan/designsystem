@@ -34,171 +34,202 @@ import { defineComponent } from "vue";
 // packages/theme-default/dist/palette.json
 var palette_default = [
   {
-    name: "FK-Black",
+    name: "Neutral",
     variables: [
       {
-        name: "fk-black-100",
+        name: "neutral-900",
         value: "#1b1e23",
-        group: "FK-Black",
+        group: "Neutral",
         comment: ""
       },
       {
-        name: "fk-black-70",
-        value: "#5f6165",
-        group: "FK-Black",
+        name: "neutral-800",
+        value: "#292d34",
+        group: "Neutral",
         comment: ""
       },
       {
-        name: "fk-black-50",
-        value: "#8d8e91",
-        group: "FK-Black",
+        name: "neutral-700",
+        value: "#494f5b",
+        group: "Neutral",
         comment: ""
       },
       {
-        name: "fk-black-30",
-        value: "#bbbbbd",
-        group: "FK-Black",
+        name: "neutral-600",
+        value: "#606876",
+        group: "Neutral",
         comment: ""
       },
       {
-        name: "fk-black-15",
-        value: "#ddddde",
-        group: "FK-Black",
+        name: "neutral-500",
+        value: "#777f8d",
+        group: "Neutral",
         comment: ""
       },
       {
-        name: "fk-black-5",
-        value: "#f4f4f4",
-        group: "FK-Black",
+        name: "neutral-400",
+        value: "#8e949f",
+        group: "Neutral",
         comment: ""
       },
       {
-        name: "white-100",
+        name: "neutral-300",
+        value: "#afb3bb",
+        group: "Neutral",
+        comment: ""
+      },
+      {
+        name: "neutral-200",
+        value: "#d6d8dc",
+        group: "Neutral",
+        comment: ""
+      },
+      {
+        name: "neutral-100",
+        value: "#ecedef",
+        group: "Neutral",
+        comment: ""
+      },
+      {
+        name: "neutral-50",
+        value: "#f7f7f8",
+        group: "Neutral",
+        comment: ""
+      },
+      {
+        name: "neutral-0",
         value: "#ffffff",
-        group: "FK-Black",
+        group: "Neutral",
         comment: ""
       }
     ]
   },
   {
-    name: "Bluebell",
+    name: "Blue",
     variables: [
       {
-        name: "bluebell-120",
-        value: "#3b4292",
-        group: "Bluebell",
+        name: "blue-900",
+        value: "#0e1623",
+        group: "Blue",
         comment: ""
       },
       {
-        name: "bluebell-100",
-        value: "#4a52b6",
-        group: "Bluebell",
+        name: "blue-800",
+        value: "#162f5d",
+        group: "Blue",
         comment: ""
       },
       {
-        name: "bluebell-85",
-        value: "#656cc1",
-        group: "Bluebell",
+        name: "blue-700",
+        value: "#1b478d",
+        group: "Blue",
         comment: ""
       },
       {
-        name: "bluebell-50",
-        value: "#a4a8db",
-        group: "Bluebell",
+        name: "blue-600",
+        value: "#2358af",
+        group: "Blue",
         comment: ""
       },
       {
-        name: "bluebell-15",
-        value: "#e5e5f5",
-        group: "Bluebell",
+        name: "blue-500",
+        value: "#3472d5",
+        group: "Blue",
         comment: ""
       },
       {
-        name: "bluebell-5",
-        value: "#f5f6fa",
-        group: "Bluebell",
+        name: "blue-400",
+        value: "#578edb",
+        group: "Blue",
+        comment: ""
+      },
+      {
+        name: "blue-300",
+        value: "#76a6e0",
+        group: "Blue",
+        comment: ""
+      },
+      {
+        name: "blue-200",
+        value: "#a2bfe3",
+        group: "Blue",
+        comment: ""
+      },
+      {
+        name: "blue-100",
+        value: "#dee9f7",
+        group: "Blue",
+        comment: ""
+      },
+      {
+        name: "blue-50",
+        value: "#f3f7fc",
+        group: "Blue",
         comment: ""
       }
     ]
   },
   {
-    name: "Green A",
+    name: "Green",
     variables: [
       {
-        name: "green-a-120",
-        value: "#0e5532",
-        group: "Green A",
+        name: "green-900",
+        value: "#0f1f19",
+        group: "Green",
         comment: ""
       },
       {
-        name: "green-a-100",
+        name: "green-800",
+        value: "#14432a",
+        group: "Green",
+        comment: ""
+      },
+      {
+        name: "green-700",
         value: "#116a3e",
-        group: "Green A",
+        group: "Green",
         comment: ""
       },
       {
-        name: "green-a-85",
-        value: "#35805b",
-        group: "Green A",
+        name: "green-600",
+        value: "#1b7e4d",
+        group: "Green",
         comment: ""
       },
       {
-        name: "green-a-50",
-        value: "#88b49f",
-        group: "Green A",
+        name: "green-500",
+        value: "#248f59",
+        group: "Green",
         comment: ""
       },
       {
-        name: "green-a-15",
-        value: "#dbe9e2",
-        group: "Green A",
+        name: "green-400",
+        value: "#41aa75",
+        group: "Green",
         comment: ""
       },
       {
-        name: "green-a-5",
-        value: "#f3f8f5",
-        group: "Green A",
-        comment: ""
-      }
-    ]
-  },
-  {
-    name: "Green B",
-    variables: [
-      {
-        name: "green-b-120",
-        value: "#4c7e56",
-        group: "Green B",
+        name: "green-300",
+        value: "#77bb98",
+        group: "Green",
         comment: ""
       },
       {
-        name: "green-b-100",
-        value: "#5f9e6c",
-        group: "Green B",
+        name: "green-200",
+        value: "#aad8c0",
+        group: "Green",
         comment: ""
       },
       {
-        name: "green-b-85",
-        value: "#77ad82",
-        group: "Green B",
+        name: "green-100",
+        value: "#d9ede3",
+        group: "Green",
         comment: ""
       },
       {
-        name: "green-b-50",
-        value: "#afcfb5",
-        group: "Green B",
-        comment: ""
-      },
-      {
-        name: "green-b-15",
-        value: "#e7f0e9",
-        group: "Green B",
-        comment: ""
-      },
-      {
-        name: "green-b-5",
-        value: "#f7faf8",
-        group: "Green B",
+        name: "green-50",
+        value: "#f5faf7",
+        group: "Green",
         comment: ""
       }
     ]
@@ -207,38 +238,62 @@ var palette_default = [
     name: "Yellow",
     variables: [
       {
-        name: "yellow-120",
-        value: "#cc980d",
+        name: "yellow-900",
+        value: "#201d10",
+        group: "Yellow",
+        comment: ""
+      },
+      {
+        name: "yellow-800",
+        value: "#625019",
+        group: "Yellow",
+        comment: ""
+      },
+      {
+        name: "yellow-700",
+        value: "#b18502",
+        group: "Yellow",
+        comment: ""
+      },
+      {
+        name: "yellow-600",
+        value: "#d6a103",
+        group: "Yellow",
+        comment: ""
+      },
+      {
+        name: "yellow-500",
+        value: "#f1b604",
+        group: "Yellow",
+        comment: ""
+      },
+      {
+        name: "yellow-400",
+        value: "#f2cc4d",
+        group: "Yellow",
+        comment: ""
+      },
+      {
+        name: "yellow-300",
+        value: "#f6db80",
+        group: "Yellow",
+        comment: ""
+      },
+      {
+        name: "yellow-200",
+        value: "#f9e49f",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-100",
-        value: "#ffbe10",
-        group: "Yellow",
-        comment: ""
-      },
-      {
-        name: "yellow-85",
-        value: "#ffc834",
+        value: "#fef4cd",
         group: "Yellow",
         comment: ""
       },
       {
         name: "yellow-50",
-        value: "#ffdf87",
-        group: "Yellow",
-        comment: ""
-      },
-      {
-        name: "yellow-15",
-        value: "#fff5db",
-        group: "Yellow",
-        comment: ""
-      },
-      {
-        name: "yellow-5",
-        value: "#fffcf3",
+        value: "#fffbf0",
         group: "Yellow",
         comment: ""
       }
@@ -248,148 +303,63 @@ var palette_default = [
     name: "Red",
     variables: [
       {
-        name: "red-120",
-        value: "#a21111",
+        name: "red-900",
+        value: "#211011",
+        group: "Red",
+        comment: ""
+      },
+      {
+        name: "red-800",
+        value: "#5e1b1b",
+        group: "Red",
+        comment: ""
+      },
+      {
+        name: "red-700",
+        value: "#9f2024",
+        group: "Red",
+        comment: ""
+      },
+      {
+        name: "red-600",
+        value: "#bf272b",
+        group: "Red",
+        comment: ""
+      },
+      {
+        name: "red-500",
+        value: "#df3035",
+        group: "Red",
+        comment: ""
+      },
+      {
+        name: "red-400",
+        value: "#e85b60",
+        group: "Red",
+        comment: ""
+      },
+      {
+        name: "red-300",
+        value: "#ef8a8e",
+        group: "Red",
+        comment: ""
+      },
+      {
+        name: "red-200",
+        value: "#f4afb2",
         group: "Red",
         comment: ""
       },
       {
         name: "red-100",
-        value: "#ca1515",
-        group: "Red",
-        comment: ""
-      },
-      {
-        name: "red-85",
-        value: "#d23838",
+        value: "#f9dcdc",
         group: "Red",
         comment: ""
       },
       {
         name: "red-50",
-        value: "#e48a8a",
+        value: "#fdf3f3",
         group: "Red",
-        comment: ""
-      },
-      {
-        name: "red-15",
-        value: "#f7dcdc",
-        group: "Red",
-        comment: ""
-      },
-      {
-        name: "red-5",
-        value: "#fcf3f3",
-        group: "Red",
-        comment: ""
-      }
-    ]
-  },
-  {
-    name: "Orange",
-    variables: [
-      {
-        name: "orange-120",
-        value: "#c2700d",
-        group: "Orange",
-        comment: ""
-      },
-      {
-        name: "orange-100",
-        value: "#f38c10",
-        group: "Orange",
-        comment: ""
-      },
-      {
-        name: "orange-85",
-        value: "#f59d34",
-        group: "Orange",
-        comment: ""
-      },
-      {
-        name: "orange-50",
-        value: "#f9c587",
-        group: "Orange",
-        comment: ""
-      },
-      {
-        name: "orange-15",
-        value: "#ffefdc",
-        group: "Orange",
-        comment: ""
-      },
-      {
-        name: "orange-5",
-        value: "#fef9f3",
-        group: "Orange",
-        comment: ""
-      }
-    ]
-  },
-  {
-    name: "Tegel",
-    variables: [
-      {
-        name: "tegel-100",
-        value: "#d34503",
-        group: "Tegel",
-        comment: ""
-      },
-      {
-        name: "tegel-15",
-        value: "#f8e3d9",
-        group: "Tegel",
-        comment: ""
-      }
-    ]
-  },
-  {
-    name: "Plommon",
-    variables: [
-      {
-        name: "plommon-100",
-        value: "#a73a64",
-        group: "Plommon",
-        comment: ""
-      },
-      {
-        name: "plommon-15",
-        value: "#f2e1e8",
-        group: "Plommon",
-        comment: ""
-      }
-    ]
-  },
-  {
-    name: "Senap",
-    variables: [
-      {
-        name: "senap-100",
-        value: "#ba7918",
-        group: "Senap",
-        comment: ""
-      },
-      {
-        name: "senap-15",
-        value: "#f5ebdc",
-        group: "Senap",
-        comment: ""
-      }
-    ]
-  },
-  {
-    name: "Hav",
-    variables: [
-      {
-        name: "hav-100",
-        value: "#4c669f",
-        group: "Hav",
-        comment: ""
-      },
-      {
-        name: "hav-15",
-        value: "#e4e8f1",
-        group: "Hav",
         comment: ""
       }
     ]

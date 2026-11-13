@@ -1,48 +1,4 @@
 @charset "UTF-8";
-.contextbar[data-v-f3c4fc0f] {
-    display: flex;
-    gap: 1rem;
-    padding: 0.5rem 0.75rem;
-}
-.contextbar__forman[data-v-f3c4fc0f] {
-    font-weight: bold;
-}
-
-.toolbar {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-[data-v-7fd1e637]::part(grid awesome-layout) {
-    grid-template:
-        "header header header" min-content
-        "left contextbar contextbar" min-content
-        "left toolbar toolbar" min-content
-        "left content right" 1fr
-        / min-content 1fr;
-}
-[data-v-7fd1e637]::part(area header) {
-    --f-page-layout-background: var(--fkds-color-header-background-primary);
-    --f-page-layout-color: var(--fkds-color-text-inverted);
-}
-[data-v-7fd1e637]::part(area contextbar) {
-    --f-page-layout-background: var(--fkds-color-background-secondary);
-    --f-page-layout-color: var(--fkds-color-text-primary);
-}
-[data-v-7fd1e637]::part(area toolbar) {
-    --f-page-layout-background: var(--fkds-color-background-secondary);
-    --f-page-layout-color: var(--fkds-color-text-primary);
-}
-[data-v-7fd1e637]::part(area left) {
-    --f-page-layout-background: var(--fkds-color-background-secondary);
-    --f-page-layout-color: var(--fkds-color-text-primary);
-}
-[data-v-7fd1e637]::part(area right) {
-    --f-page-layout-background: var(--fkds-color-background-secondary);
-    --f-page-layout-color: var(--fkds-color-text-primary);
-}
-
 :root {
   --f-text-color-heading-1: inherit;
   --f-text-color-heading-2: inherit;
@@ -151,76 +107,76 @@
   --min: 0;
   --max: 0;
   --fkds-color-text-primary: #1b1e23;
-  --fkds-color-text-secondary: #5f6165;
+  --fkds-color-text-secondary: #606876;
   --fkds-color-text-inverted: #ffffff;
-  --fkds-color-text-disabled: #8d8e91;
+  --fkds-color-text-disabled: #606876;
   --fkds-color-background-primary: #ffffff;
-  --fkds-color-background-secondary: #f4f4f4;
-  --fkds-color-background-tertiary: #ddddde;
-  --fkds-color-background-disabled: #f4f4f4;
-  --fkds-color-border-primary: #8d8e91;
-  --fkds-color-border-strong: #5f6165;
-  --fkds-color-border-weak: #ddddde;
-  --fkds-color-border-disabled: #8d8e91;
+  --fkds-color-background-secondary: #f7f7f8;
+  --fkds-color-background-tertiary: #ecedef;
+  --fkds-color-background-disabled: #ecedef;
+  --fkds-color-border-primary: #777f8d;
+  --fkds-color-border-strong: #494f5b;
+  --fkds-color-border-weak: #d6d8dc;
+  --fkds-color-border-disabled: #8e949f;
   --fkds-color-border-inverted: #ffffff;
-  --fkds-color-action-text-primary-default: #4a52b6;
-  --fkds-color-action-text-primary-hover: #3b4292;
-  --fkds-color-action-text-primary-active: #3b4292;
-  --fkds-color-action-text-primary-focus: #4a52b6;
+  --fkds-color-action-text-primary-default: #2358af;
+  --fkds-color-action-text-primary-hover: #1b478d;
+  --fkds-color-action-text-primary-active: #1b478d;
+  --fkds-color-action-text-primary-focus: #2358af;
   --fkds-color-action-text-secondary-default: #1b1e23;
-  --fkds-color-action-text-secondary-hover: #3b4292;
-  --fkds-color-action-text-secondary-active: #3b4292;
-  --fkds-color-action-text-secondary-focus: #4a52b6;
+  --fkds-color-action-text-secondary-hover: #1b478d;
+  --fkds-color-action-text-secondary-active: #1b478d;
+  --fkds-color-action-text-secondary-focus: #1b1e23;
   --fkds-color-action-text-inverted-default: #ffffff;
   --fkds-color-action-text-inverted-hover: #ffffff;
   --fkds-color-action-text-inverted-active: #ffffff;
   --fkds-color-action-text-inverted-focus: #ffffff;
-  --fkds-color-action-background-primary-default: #4a52b6;
-  --fkds-color-action-background-primary-hover: #3b4292;
-  --fkds-color-action-background-primary-active: #3b4292;
-  --fkds-color-action-background-primary-focus: #4a52b6;
-  --fkds-color-action-background-secondary-default: #f5f6fa;
-  --fkds-color-action-background-secondary-hover: #e5e5f5;
-  --fkds-color-action-background-secondary-active: #e5e5f5;
-  --fkds-color-action-background-secondary-focus: #f5f6fa;
-  --fkds-color-action-border-primary-default: #4a52b6;
-  --fkds-color-action-border-primary-hover: #3b4292;
-  --fkds-color-action-border-primary-active: #3b4292;
-  --fkds-color-action-border-primary-focus: #4a52b6;
-  --fkds-color-feedback-background-neutral: #f4f4f4;
-  --fkds-color-feedback-background-neutral-strong: #ddddde;
-  --fkds-color-feedback-background-info: #f5f6fa;
-  --fkds-color-feedback-background-info-strong: #4a52b6;
-  --fkds-color-feedback-background-positive: #f3f8f5;
-  --fkds-color-feedback-background-positive-strong: #35805b;
-  --fkds-color-feedback-background-warning: #fffcf3;
-  --fkds-color-feedback-background-warning-strong: #ffbe10;
-  --fkds-color-feedback-background-negative: #fcf3f3;
-  --fkds-color-feedback-background-negative-strong: #ca1515;
-  --fkds-color-feedback-border-neutral: #8d8e91;
-  --fkds-color-feedback-border-info: #4a52b6;
-  --fkds-color-feedback-border-positive: #35805b;
-  --fkds-color-feedback-border-warning: #ffbe10;
-  --fkds-color-feedback-border-negative: #ca1515;
-  --fkds-color-feedback-text-negative: #ca1515;
-  --fkds-color-feedback-text-positive: #35805b;
+  --fkds-color-action-background-primary-default: #2358af;
+  --fkds-color-action-background-primary-hover: #1b478d;
+  --fkds-color-action-background-primary-active: #1b478d;
+  --fkds-color-action-background-primary-focus: #2358af;
+  --fkds-color-action-background-secondary-default: #ffffff;
+  --fkds-color-action-background-secondary-hover: #dee9f7;
+  --fkds-color-action-background-secondary-active: #dee9f7;
+  --fkds-color-action-background-secondary-focus: #ffffff;
+  --fkds-color-action-border-primary-default: #2358af;
+  --fkds-color-action-border-primary-hover: #1b478d;
+  --fkds-color-action-border-primary-active: #1b478d;
+  --fkds-color-action-border-primary-focus: #2358af;
+  --fkds-color-feedback-background-neutral: #ffffff;
+  --fkds-color-feedback-background-neutral-strong: #d6d8dc;
+  --fkds-color-feedback-background-info: #f3f7fc;
+  --fkds-color-feedback-background-info-strong: #3472d5;
+  --fkds-color-feedback-background-positive: #f5faf7;
+  --fkds-color-feedback-background-positive-strong: #1b7e4d;
+  --fkds-color-feedback-background-warning: #fffbf0;
+  --fkds-color-feedback-background-warning-strong: #f1b604;
+  --fkds-color-feedback-background-negative: #fdf3f3;
+  --fkds-color-feedback-background-negative-strong: #df3035;
+  --fkds-color-feedback-border-neutral: #777f8d;
+  --fkds-color-feedback-border-info: #3472d5;
+  --fkds-color-feedback-border-positive: #248f59;
+  --fkds-color-feedback-border-warning: #f1b604;
+  --fkds-color-feedback-border-negative: #df3035;
+  --fkds-color-feedback-text-negative: #bf272b;
+  --fkds-color-feedback-text-positive: #1b7e4d;
   --fkds-color-feedback-text-on-warning: #1b1e23;
-  --fkds-color-select-background-primary-default: #4a52b6;
-  --fkds-color-select-background-primary-hover: #e5e5f5;
-  --fkds-color-select-background-primary-active: #e5e5f5;
-  --fkds-color-select-background-primary-focus: #e5e5f5;
-  --fkds-color-select-background-secondary-default: #35805b;
-  --fkds-color-select-background-secondary-hover: #dbe9e2;
-  --fkds-color-select-background-secondary-active: #dbe9e2;
-  --fkds-color-select-background-secondary-focus: #dbe9e2;
-  --fkds-color-interactive-surface-background-primary-default: #f4f4f4;
-  --fkds-color-interactive-surface-background-primary-hover: #ddddde;
-  --fkds-color-interactive-surface-background-primary-active: #ddddde;
-  --fkds-color-interactive-surface-background-primary-focus: #ddddde;
-  --fkds-color-navigation-border-hover: #88b49f;
-  --fkds-color-navigation-border-selected: #35805b;
-  --fkds-color-navigation-background-hover: #dbe9e2;
-  --fkds-color-navigation-background-selected: #35805b;
+  --fkds-color-select-background-primary-default: #2358af;
+  --fkds-color-select-background-primary-hover: #dee9f7;
+  --fkds-color-select-background-primary-active: #dee9f7;
+  --fkds-color-select-background-primary-focus: #dee9f7;
+  --fkds-color-select-background-secondary-default: #1b7e4d;
+  --fkds-color-select-background-secondary-hover: #d9ede3;
+  --fkds-color-select-background-secondary-active: #d9ede3;
+  --fkds-color-select-background-secondary-focus: #d9ede3;
+  --fkds-color-interactive-surface-background-primary-default: #f7f7f8;
+  --fkds-color-interactive-surface-background-primary-hover: #ecedef;
+  --fkds-color-interactive-surface-background-primary-active: #ecedef;
+  --fkds-color-interactive-surface-background-primary-focus: #f7f7f8;
+  --fkds-color-navigation-border-hover: #aad8c0;
+  --fkds-color-navigation-border-selected: #1b7e4d;
+  --fkds-color-navigation-background-hover: #d9ede3;
+  --fkds-color-navigation-background-selected: #1b7e4d;
   --fkds-color-header-background-primary: #116a3e;
   --fkds-color-header-text-primary: #ffffff;
   --fkds-color-footer-background-primary: #116a3e;
@@ -2719,10 +2675,14 @@ input[type=search]:focus-visible,
   padding: 1rem;
   align-items: center;
   min-width: unset;
+  border-radius: 0;
 }
 .datepicker-field__close > .datepicker-field__close__button:hover, .datepicker-field__close > .datepicker-field__close__button:active {
   color: var(--fkds-color-action-text-secondary-default);
   mix-blend-mode: normal;
+}
+.datepicker-field__close > .datepicker-field__close__button:active {
+  transform: none;
 }
 
 .popup--overlay .datepicker-field__popup {
@@ -7215,4 +7175,35 @@ body {
 
 main {
   padding: 1rem;
+}
+.top-nav[data-v-4a70eede] {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--fkds-color-header-background-primary);
+    padding: 1rem;
+}
+.test-label[data-v-4a70eede] {
+    width: 100%;
+    background: var(--fkds-color-background-secondary);
+    border: 1px solid var(--fkds-color-border-primary);
+    border-radius: 4px;
+    color: var(--fkds-color-text-primary);
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+}
+.nav-links[data-v-4a70eede] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.top-nav .anchor[data-v-4a70eede] {
+    color: var(--fkds-color-text-inverted);
+    text-decoration-color: var(--fkds-color-text-inverted);
+}
+
+#app[data-v-fed30f33] {
+    display: flex;
+    flex-direction: column;
 }
