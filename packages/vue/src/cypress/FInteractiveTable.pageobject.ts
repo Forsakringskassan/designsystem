@@ -1,5 +1,4 @@
 import { type BasePageObject, type DefaultCypressChainable } from "./common";
-import { FCheckboxFieldPageObject } from ".";
 
 /**
  * @public
@@ -115,33 +114,6 @@ export class FInteractiveTablePageObject implements BasePageObject {
     }
 
     /**
-     * Get page object with selector for the checkbox in given row.
-     *
-     * For expandable rows the row count depend on whenever a row is expanded or
-     * not. If the first row is collapsed the second row refers to the next
-     * parent row while if the first row is expanded the second row refers to
-     * the first expanded row under the first row.
-     *
-     * Requires a `selectable` table of type `multi`.
-     *
-     * @public
-     * @deprecated Use ´.selectable()´ instead. Deprecated since v6.28.0.
-     * @param row - Row number (1-indexed).
-     * @returns Page object for `FCheckboxField`.
-     */
-    public checkbox(row: number): FCheckboxFieldPageObject {
-        const index = row - 1;
-        return new FCheckboxFieldPageObject(
-            [
-                this.selector,
-                `tbody`,
-                `tr:not(.table__expandable-row--collapsed):nth(${String(index)})`,
-                `.checkbox`,
-            ].join(" "),
-        );
-    }
-
-    /**
      * Get selectable input element (checkbox or radio) in given row.
      *
      * For expandable rows the row count depend on whenever a row is expanded or
@@ -158,7 +130,6 @@ export class FInteractiveTablePageObject implements BasePageObject {
      */
     public selectable(row: number): DefaultCypressChainable {
         const index = row - 1;
-
         return cy
             .get(
                 [

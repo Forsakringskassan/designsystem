@@ -124,6 +124,17 @@ Verify the result by running each affected Cypress test.
 
 :::
 
+Metoden `checkbox()` är borttagen och ersatt med `FInteractiveTablePageObject.selectable()`.
+
+::: details 🤖 Prompt för AI Agenter
+
+For each usage of the Cypress pageobject `FInteractiveTablePageObject`, replace each usage of `checkbox()` with `selectable()`.
+The former returns a wrapper around the `input type="checkbox">` element and the latter returns the `<input>` element directly.
+
+Verify the result by running each affected Cypress test.
+
+:::
+
 ## `FTextareaFieldPageObject`
 
 Metoden `errorIcon()` är borttagen och har ingen ersättare.

@@ -381,8 +381,8 @@ describe("`row()`", () => {
     });
 });
 
-describe("`checkbox()`", () => {
-    it("should get `FCheckboxFieldPageObject` for given row", () => {
+describe("`selectable()` row descriptions", () => {
+    it("should get the selectable input for given row", () => {
         cy.mount(TestComponent, {
             props: {
                 rows,
@@ -392,12 +392,19 @@ describe("`checkbox()`", () => {
             },
         });
 
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
-        table.checkbox(1).label().should("contain.text", "Select row A1");
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
-        table.checkbox(2).label().should("contain.text", "Select row A2");
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
-        table.checkbox(3).label().should("contain.text", "Select row A3");
+        table
+            .selectable(1)
+            .should("have.attr", "type", "checkbox")
+            .closest("tr")
+            .should("contain.text", "Select row A1");
+        table
+            .selectable(2)
+            .closest("tr")
+            .should("contain.text", "Select row A2");
+        table
+            .selectable(3)
+            .closest("tr")
+            .should("contain.text", "Select row A3");
     });
 
     it("should count expanded rows", () => {
@@ -411,12 +418,18 @@ describe("`checkbox()`", () => {
         });
 
         table.row(0).click();
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
-        table.checkbox(1).label().should("contain.text", "Select row A1");
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
-        table.checkbox(5).label().should("contain.text", "Select row A2");
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
-        table.checkbox(6).label().should("contain.text", "Select row A3");
+        table
+            .selectable(1)
+            .closest("tr")
+            .should("contain.text", "Select row A1");
+        table
+            .selectable(5)
+            .closest("tr")
+            .should("contain.text", "Select row A2");
+        table
+            .selectable(6)
+            .closest("tr")
+            .should("contain.text", "Select row A3");
     });
 
     it("should ignore collapsed rows", () => {
@@ -429,12 +442,18 @@ describe("`checkbox()`", () => {
             },
         });
 
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
-        table.checkbox(1).label().should("contain.text", "Select row A1");
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
-        table.checkbox(2).label().should("contain.text", "Select row A2");
-        /* eslint-disable-next-line @typescript-eslint/no-deprecated -- while deprecated, it should continue to work */
-        table.checkbox(3).label().should("contain.text", "Select row A3");
+        table
+            .selectable(1)
+            .closest("tr")
+            .should("contain.text", "Select row A1");
+        table
+            .selectable(2)
+            .closest("tr")
+            .should("contain.text", "Select row A2");
+        table
+            .selectable(3)
+            .closest("tr")
+            .should("contain.text", "Select row A3");
     });
 });
 
@@ -448,7 +467,6 @@ describe("`selectable()`", () => {
                 selectable: "multi",
             },
         });
-
         table.selectable(1).should("have.attr", "type", "checkbox");
     });
 
@@ -461,7 +479,6 @@ describe("`selectable()`", () => {
                 selectable: "single",
             },
         });
-
         table.selectable(1).should("have.attr", "type", "radio");
     });
 });
