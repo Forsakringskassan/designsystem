@@ -253,6 +253,7 @@ html {
 }
 
 body {
+  background-color: var(--fkds-color-background-primary);
   color: var(--fkds-color-text-primary);
   font-size: var(--f-font-size-standard);
   font-weight: var(--f-font-weight-normal);
