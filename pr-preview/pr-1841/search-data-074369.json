@@ -393,8 +393,8 @@
     "FLabelPageObject: FLabelPageObject() constructor",
     "cypress",
     "FInteractiveTablePageObject: cell() method",
-    "FInteractiveTablePageObject: checkbox() method",
     "FInteractiveTablePageObject: header() method",
+    "FInteractiveTablePageObject: selectable() method",
     "FFileItemPageObject: fileName() method",
     "FFileItemPageObject: typeOfFile() method",
     "FFileItemPageObject: FFileItemPageObject() constructor",
@@ -1877,13 +1877,13 @@
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html",
-      "title": "FInteractiveTablePageObject: checkbox() method",
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
+      "title": "FInteractiveTablePageObject: header() method",
       "terms": []
     },
     {
-      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/header.html",
-      "title": "FInteractiveTablePageObject: header() method",
+      "url": "functions/cypress/pageobjects/FInteractiveTablePageObject/selectable.html",
+      "title": "FInteractiveTablePageObject: selectable() method",
       "terms": []
     },
     {

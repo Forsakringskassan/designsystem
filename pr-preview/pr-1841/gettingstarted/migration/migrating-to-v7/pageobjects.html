@@ -48,10 +48,10 @@
             
         ></script><link
     rel="preload"
-    href="../../../search-data-7c5c6c.json"
+    href="../../../search-data-074369.json"
     as="fetch"
     crossorigin
-    integrity="sha384-1dMbClfXiNdozSVy+pVui4LmmzyFLYMQ1FCnhithDwW1BYkh1Sl8gKUUMsaRxwM5"
+    integrity="sha384-R5nYzJMD95zgvaPI3kqtg1or2ReCtlXkhrKcp8mLtE5r54a6TBID318PgdKuB5eu"
     id="search-data"
 />
 <script>
@@ -3685,19 +3685,6 @@
 
 <li class="link ">
         <a
-            href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html"
-            
-            
-            
-            data-path="functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html"
-            
-        >
-            checkbox()
-        </a>
-    </li>
-
-<li class="link ">
-        <a
             href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/header.html"
             
             
@@ -3706,6 +3693,19 @@
             
         >
             header()
+        </a>
+    </li>
+
+<li class="link ">
+        <a
+            href="../../../functions/cypress/pageobjects/FInteractiveTablePageObject/selectable.html"
+            
+            
+            
+            data-path="functions/cypress/pageobjects/FInteractiveTablePageObject/selectable.html"
+            
+        >
+            selectable()
         </a>
     </li></ul>
 
@@ -6364,6 +6364,8 @@ Despite the class name it references a <code>&lt;tr&gt;</code> row.
 </code></pre>
                 </div>
             <p class="docs-paragraph"><code>table.columnItem(0).tableRowHeaderContent().eq(N)</code> ska ersättas med <code>table.header(N + 1)</code>.</p>
+<p class="docs-paragraph">Behöver man tillgång till <code>&lt;td&gt;</code> elementen direkt (exempelvis för att assert antal kolumner med <code>.should(&quot;have.length&quot;)</code>) kan man använda <code>table.row(N)</code>.</p>
+<p class="docs-paragraph">Behöver man tillgång till checkbox för valbara rader kan man använda <code>table.selectable(N)</code>.</p>
 
             <details class="docs-messagebox docs-messagebox--details">
                 <summary class="docs-messagebox__title">
@@ -6373,6 +6375,7 @@ Despite the class name it references a <code>&lt;tr&gt;</code> row.
 The former returns a wrapper around the <code>&lt;tr&gt;</code> row and the latter returns a specific <code>&lt;td&gt;</code> or <code>&lt;th&gt;</code> cell.
 <code>cell()</code> needs both row and column to be 1-indexed.</p>
 <p class="docs-paragraph">If <code>columnItem()</code> is called with index 0 it referenced the row in <code>&lt;thead&gt;</code> and should be replaced with <code>header()</code> instead of <code>cell()</code>.</p>
+<p class="docs-paragraph">Flag other usages for manual review by the user.</p>
 <p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
 
             </details>
@@ -6380,7 +6383,7 @@ The former returns a wrapper around the <code>&lt;tr&gt;</code> row and the latt
 <p class="docs-paragraph">Notera att <code>header()</code> refererar till en specifik kolumnrubrik (<code>&lt;th&gt;</code> element) och inte hela tabellhuvudet (<code>&lt;thead&gt;</code> element) samt att <code>tableRowHeaderContent().eq()</code> är 0-indexerat (första kolumnen är 0, andra är 1, osv) medans <code>header()</code> är 1-indexerat.</p>
 
                 <div
-                    id="example-b60468"
+                    id="example-d72cbf"
                     class="code-preview code-preview--default"
                     
                     
@@ -6396,7 +6399,8 @@ The former returns a wrapper around the <code>&lt;tr&gt;</code> row and the latt
 <span class="hljs-addition">+table.header(1).should(&quot;contain.text&quot;, &quot;Column 1&quot;);</span>
 </code></pre>
                 </div>
-            
+            <p class="docs-paragraph">Behöver man tillgång till <code>&lt;th&gt;</code> elementen direkt (exempelvis för att assert antal kolumner med <code>.should(&quot;have.length&quot;)</code>) kan man använda <code>table.headersRow()</code>.</p>
+
             <details class="docs-messagebox docs-messagebox--details">
                 <summary class="docs-messagebox__title">
                     🤖 Prompt för AI Agenter
@@ -6404,6 +6408,18 @@ The former returns a wrapper around the <code>&lt;tr&gt;</code> row and the latt
                 <p class="docs-paragraph">For each usage of the Cypress pageobject <code>FInteractiveTablePageObject</code>, replace each usage of <code>headerRowItem()</code> with <code>header()</code>.
 The former returns a wrapper around the <code>&lt;tr&gt;</code> row and the latter returns a specific <code>&lt;th&gt;</code> cell.
 <code>cell()</code> needs both row and column to be 1-indexed.</p>
+<p class="docs-paragraph">Flag other usages for manual review by the user.</p>
+<p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
+
+            </details>
+        <p class="docs-paragraph">Metoden <code>checkbox()</code> är borttagen och ersatt med <code>FInteractiveTablePageObject.selectable()</code>.</p>
+
+            <details class="docs-messagebox docs-messagebox--details">
+                <summary class="docs-messagebox__title">
+                    🤖 Prompt för AI Agenter
+                </summary>
+                <p class="docs-paragraph">For each usage of the Cypress pageobject <code>FInteractiveTablePageObject</code>, replace each usage of <code>checkbox()</code> with <code>selectable()</code>.
+The former returns a wrapper around the <code>input type=&quot;checkbox&quot;&gt;</code> element and the latter returns the <code>&lt;input&gt;</code> element directly.</p>
 <p class="docs-paragraph">Verify the result by running each affected Cypress test.</p>
 
             </details>
@@ -6412,7 +6428,7 @@ The former returns a wrapper around the <code>&lt;tr&gt;</code> row and the latt
 Båda är funktionellt ekvivalenta och inga övriga åtgärder behöver göras.</p>
 
                 <div
-                    id="example-235b29"
+                    id="example-a2ff25"
                     class="code-preview code-preview--default"
                     
                     
@@ -6506,9 +6522,9 @@ Redovisa resultatet och ange om några tester inte kunde köras.</p>
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">feature/deprecated-pageobjects</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/96f4fcb16b58025f89847622b9489545e8ec1e57">96f4fcb</a>)<br />
+<div class="version"><span class="version-text-block">feature/deprecated-pageobjects</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/152f9c5ca870a02f0db025d08776d7d546c4fadf">152f9c5</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1841">PR 1841</a><br />
-       <span class="version-text-block">2026-11-12 17:19</span>
+       <span class="version-text-block">2026-11-13 08:59</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

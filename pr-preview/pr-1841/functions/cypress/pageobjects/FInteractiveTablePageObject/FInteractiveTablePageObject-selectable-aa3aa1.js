@@ -28,12 +28,12 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:docs/functions/cypress/pageobjects/FInteractiveTablePageObject/FInteractiveTablePageObject-checkbox.vue:FInteractiveTablePageObject-checkbox-353a72.js
+// virtual-entry:virtual:docs/functions/cypress/pageobjects/FInteractiveTablePageObject/FInteractiveTablePageObject-selectable.vue:FInteractiveTablePageObject-selectable-aa3aa1.js
 import { defineComponent as _defineComponent } from "vue";
 import { FInteractiveTable, FTableColumn } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue";
 var exampleComponent = /* @__PURE__ */ _defineComponent({
-  __name: "FInteractiveTablePageObject-checkbox",
+  __name: "FInteractiveTablePageObject-selectable",
   setup(__props, { expose: __expose }) {
     __expose();
     const rows = [
@@ -129,7 +129,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-353a72"
+  selector: "#example-aa3aa1"
 });
 export {
   render
