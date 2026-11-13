@@ -6281,12 +6281,124 @@
                     </div>
                     
 
-                    <div id="docs-content"><h2 id="oppna_modaler_programmatiskt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#oppna_modaler_programmatiskt">Öppna modaler programmatiskt</a></h2><p class="docs-paragraph">Tidigare var det också möjligt att lägga in modaler i sin template.</p>
+                    <div id="docs-content"><h2 id="oppna_modaler_programmatiskt" class="docs-heading docs-heading--h2"><a class="header-anchor" href="#oppna_modaler_programmatiskt">Öppna modaler programmatiskt</a></h2><p class="docs-paragraph">Tidigare kunde en applikation ha en modal inbäddad i sin template och styra den med <code>is-open</code>:</p>
+
+                <div
+                    id="example-1ef0b6"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { ref } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FModal</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> isOpen = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">false</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onClick</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
+    isOpen.<span class="hljs-property">value</span> = <span class="hljs-literal">true</span>;
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onClose</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> {
+    isOpen.<span class="hljs-property">value</span> = <span class="hljs-literal">false</span>;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>
+        Öppna modal
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-modal</span> <span class="hljs-attr">:is-open</span> @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>&gt;</span> My awesome modal <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span> My awesome content <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span>
+                    <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;primary&quot;</span>
+                    @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClose&quot;</span>
+                &gt;</span>
+                    Close
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-modal</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            <p class="docs-paragraph">För att öppna modalen programmatiskt istället:</p>
 <ol>
-<li>Bryt ut modalkod som ligger inbäddad i din template till en egen modal-komponent</li>
-<li>Öppna modal-komponenten programmatiskt med hjälp av <a href="../../../functions/functions/use-modal.html"><code>useModal()</code></a>.</li>
+<li>Flytta modalen till en egen komponent, till exempel <code>MyAwesomeModal.vue</code>.
+Modalen är alltid öppen (<code>is-open</code>) och skickar <code>close</code>-eventet vidare när den ska stängas:</li>
 </ol>
 
+                <div
+                    id="example-c49a21"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, <span class="hljs-title class_">FModal</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> emit = defineEmits&lt;{ <span class="hljs-attr">close</span>: [] }&gt;();
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-modal</span> <span class="hljs-attr">is-open</span> @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;emit(&#x27;close&#x27;)&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">header</span>&gt;</span> My awesome modal <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span> My awesome content <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-group__item&quot;</span>
+                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;large&quot;</span>
+                    <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;primary&quot;</span>
+                    @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;emit(&#x27;close&#x27;)&quot;</span>
+                &gt;</span>
+                    Close
+                <span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f-modal</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            <ol start="2">
+<li>Öppna sedan modalen med <code>openModal()</code> från <a href="../../../functions/functions/use-modal.html"><code>useModal()</code></a>:</li>
+</ol>
+
+                <div
+                    id="example-ad18da"
+                    class="code-preview code-preview--default"
+                    
+                    data-tags="static"
+                    data-language="vue"
+                >
+                    
+                    <pre class="code-preview__markup"><code class="hljs lang-html" tabindex="0"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">MyAwesomeModal</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./MyAwesomeModal.vue&quot;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FButton</span>, useModal } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@fkui/vue&quot;</span>;
+
+<span class="hljs-keyword">const</span> { openModal } = <span class="hljs-title function_">useModal</span>();
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onClick</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-keyword">void</span>&gt; {
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">openModal</span>(<span class="hljs-title class_">MyAwesomeModal</span>);
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f-button</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">&quot;secondary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>Öppna modal<span class="hljs-tag">&lt;/<span class="hljs-name">f-button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                </div>
+            
 
                     </div>
                 </main>
@@ -6354,9 +6466,9 @@
         <a class="docs-footer__anchor" href="../../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">modal-template-removal</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/02d5ca7d9c098157fd22722353a8088a7b22d35f">02d5ca7</a>)<br />
+<div class="version"><span class="version-text-block">modal-template-removal</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/ee7add566376822831824b83bf718a200e87106b">ee7add5</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1836">PR 1836</a><br />
-       <span class="version-text-block">2026-11-12 15:12</span>
+       <span class="version-text-block">2026-11-13 10:19</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">
