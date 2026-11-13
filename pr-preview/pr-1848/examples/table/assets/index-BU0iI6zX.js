@@ -21149,6 +21149,25 @@ var config = {
 		return production;
 	}
 };
+var ICloseButton_default = /* @__PURE__ */ defineComponent({
+	__name: "ICloseButton",
+	props: { disableHover: { type: Boolean } },
+	setup(__props) {
+		const $t = useTranslate();
+		return (_ctx, _cache) => {
+			return openBlock(), createBlock(unref(FButton_default), {
+				class: normalizeClass(["button--close", { "button--close--no-hover": __props.disableHover }]),
+				variant: "tertiary",
+				"tertiary-style": "muted",
+				size: "medium",
+				"icon-right": "close"
+			}, {
+				default: withCtx(() => [renderSlot(_ctx.$slots, "default", {}, () => [createTextVNode(toDisplayString(unref($t)("fkui.close-button.text", "Stäng")), 1)])]),
+				_: 3
+			}, 8, ["class"]);
+		};
+	}
+});
 (/* @__PURE__ */ __commonJSMin((() => {
 	var $ = require_export();
 	var call = require_function_call();
@@ -21213,7 +21232,7 @@ function sizeClass(size) {
 */
 var FModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 	name: "FModal",
-	components: { FIcon: FIcon_default },
+	components: { ICloseButton: ICloseButton_default },
 	mixins: [TranslationMixin],
 	inheritAttrs: true,
 	props: {
@@ -21397,9 +21416,8 @@ var _hoisted_8$10 = {
 };
 var _hoisted_9$8 = { class: "modal__footer" };
 var _hoisted_10$6 = { class: "modal__shelf" };
-var _hoisted_11$5 = ["aria-label"];
 function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
-	const _component_f_icon = resolveComponent("f-icon");
+	const _component_i_close_button = resolveComponent("i-close-button");
 	return _ctx.isOpen ? (openBlock(), createElementBlock("div", {
 		key: 0,
 		id: _ctx.id,
@@ -21409,7 +21427,7 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 		tabindex: "-1",
 		role: "dialog",
 		"aria-modal": "true",
-		onKeyup: _cache[3] || (_cache[3] = withKeys((...args) => _ctx.onClose && _ctx.onClose(...args), ["esc"]))
+		onKeyup: _cache[2] || (_cache[2] = withKeys((...args) => _ctx.onClose && _ctx.onClose(...args), ["esc"]))
 	}, [createBaseVNode("div", _hoisted_3$42, [createBaseVNode("div", {
 		ref: "modalDialogContainer",
 		class: normalizeClass(["modal__dialog-container", _ctx.containerClasses])
@@ -21420,30 +21438,33 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 					tabindex: "0",
 					onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
 				}, null, 32),
-				_cache[4] || (_cache[4] = createTextVNode()),
+				_cache[3] || (_cache[3] = createTextVNode()),
 				_ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$14, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("v-if", true)
 			]),
-			_cache[5] || (_cache[5] = createTextVNode()),
+			_cache[4] || (_cache[4] = createTextVNode()),
 			createBaseVNode("div", _hoisted_8$10, [renderSlot(_ctx.$slots, "content")], 512),
-			_cache[6] || (_cache[6] = createTextVNode()),
+			_cache[5] || (_cache[5] = createTextVNode()),
 			createBaseVNode("div", _hoisted_9$8, [renderSlot(_ctx.$slots, "footer")])
 		]),
-		_cache[9] || (_cache[9] = createTextVNode()),
+		_cache[7] || (_cache[7] = createTextVNode()),
 		createBaseVNode("div", _hoisted_10$6, [
-			createBaseVNode("button", {
-				type: "button",
-				class: "close-button",
+			createVNode(_component_i_close_button, {
+				class: "modal__close-button",
+				"disable-hover": _ctx.type !== "",
 				"aria-label": _ctx.ariaCloseText,
-				onClick: _cache[1] || (_cache[1] = (...args) => _ctx.onClose && _ctx.onClose(...args))
-			}, [
-				createBaseVNode("span", null, toDisplayString(_ctx.$t("fkui.modal.close", "Stäng")), 1),
-				_cache[7] || (_cache[7] = createTextVNode()),
-				createVNode(_component_f_icon, { name: "close" })
-			], 8, _hoisted_11$5),
-			_cache[8] || (_cache[8] = createTextVNode()),
+				onClick: _ctx.onClose
+			}, {
+				default: withCtx(() => [createTextVNode(toDisplayString(_ctx.$t("fkui.modal.close", "Stäng")), 1)]),
+				_: 1
+			}, 8, [
+				"disable-hover",
+				"aria-label",
+				"onClick"
+			]),
+			_cache[6] || (_cache[6] = createTextVNode()),
 			createBaseVNode("div", {
 				tabindex: "0",
-				onFocus: _cache[2] || (_cache[2] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
+				onFocus: _cache[1] || (_cache[1] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
 			}, null, 32)
 		])
 	])], 2)])], 32)])], 10, _hoisted_1$79)) : createCommentVNode("v-if", true);
