@@ -2220,6 +2220,11 @@ input[type=search]:focus-visible,
   top: calc(0.2rem * var(--f-density-factor));
   left: 0.2rem;
 }
+.list__item:focus-visible {
+  box-shadow: none;
+  outline: 3px solid var(--fkds-focus-indicator-color);
+  outline-offset: -3px;
+}
 @media (hover: hover) {
   .list--hover .list__item:hover {
     cursor: pointer;
