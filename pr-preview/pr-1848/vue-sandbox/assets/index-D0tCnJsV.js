@@ -8275,6 +8275,26 @@ function parseOrganisationsnummer(value) {
 	return `${match[1]}-${match[2]}`;
 }
 /**
+* Compares the position of the given node against another node in any document.
+*
+* Unset elements (e.g. `null`) are undefined behaviour but the current
+* non-contractural behaviour is to put them at the end of the sorted
+* array. The caller should ensure those elements are removed before sorting.
+*
+* @example
+* ```ts
+* const sorted = listOfElements.sort(documentOrderComparator);
+* ```
+*
+* @public
+*/
+function documentOrderComparator(a, b) {
+	if (!a) return 1;
+	if (!b) return -1;
+	const BITMASK = Node.DOCUMENT_POSITION_DISCONNECTED | Node.DOCUMENT_POSITION_PRECEDING;
+	return (a.compareDocumentPosition(b) & BITMASK) - 1;
+}
+/**
 * Check if an element is visible in the dom
 *
 * @public
@@ -15573,12 +15593,12 @@ async function formModal(callingInstance, Component, options) {
 }
 var ICloseButton_default = /* @__PURE__ */ defineComponent({
 	__name: "ICloseButton",
-	props: { disableHover: { type: Boolean } },
+	props: { compact: { type: Boolean } },
 	setup(__props) {
 		const $t = useTranslate();
 		return (_ctx, _cache) => {
 			return openBlock(), createBlock(unref(FButton_default), {
-				class: normalizeClass(["button--close", { "button--close--no-hover": __props.disableHover }]),
+				class: normalizeClass(["button--close", { "button--close--compact": __props.compact }]),
 				variant: "tertiary",
 				"tertiary-style": "muted",
 				size: "medium",
@@ -15822,22 +15842,20 @@ var FModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 var _hoisted_1$79 = ["id"];
 var _hoisted_2$56 = { class: "modal__backdrop" };
 var _hoisted_3$42 = { class: "modal__inner-container" };
-var _hoisted_4$33 = { class: "modal__dialog" };
-var _hoisted_5$25 = { class: "modal__dialog-inner" };
-var _hoisted_6$18 = { class: "modal__header" };
-var _hoisted_7$14 = {
+var _hoisted_4$33 = { class: "modal__dialog-inner" };
+var _hoisted_5$25 = { class: "modal__header" };
+var _hoisted_6$18 = {
 	key: 0,
 	ref: "modalTitle",
 	class: "modal__title",
 	tabindex: "-1"
 };
-var _hoisted_8$10 = {
+var _hoisted_7$14 = {
 	ref: "modalContent",
 	class: "modal__content",
 	tabindex: "-1"
 };
-var _hoisted_9$8 = { class: "modal__footer" };
-var _hoisted_10$6 = { class: "modal__shelf" };
+var _hoisted_8$10 = { class: "modal__footer" };
 function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_i_close_button = resolveComponent("i-close-button");
 	return _ctx.isOpen ? (openBlock(), createElementBlock("div", {
@@ -15853,33 +15871,33 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 	}, [createBaseVNode("div", _hoisted_3$42, [createBaseVNode("div", {
 		ref: "modalDialogContainer",
 		class: normalizeClass(["modal__dialog-container", _ctx.containerClasses])
-	}, [createBaseVNode("div", _hoisted_4$33, [
-		createBaseVNode("div", _hoisted_5$25, [
-			createBaseVNode("div", _hoisted_6$18, [
+	}, [createBaseVNode("div", { class: normalizeClass(["modal__dialog", { "modal__dialog--standard": _ctx.type === "" }]) }, [
+		createBaseVNode("div", _hoisted_4$33, [
+			createBaseVNode("div", _hoisted_5$25, [
 				createBaseVNode("div", {
 					tabindex: "0",
 					onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
 				}, null, 32),
 				_cache[3] || (_cache[3] = createTextVNode()),
-				_ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$14, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("v-if", true)
+				_ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_6$18, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("v-if", true)
 			]),
 			_cache[4] || (_cache[4] = createTextVNode()),
-			createBaseVNode("div", _hoisted_8$10, [renderSlot(_ctx.$slots, "content")], 512),
+			createBaseVNode("div", _hoisted_7$14, [renderSlot(_ctx.$slots, "content")], 512),
 			_cache[5] || (_cache[5] = createTextVNode()),
-			createBaseVNode("div", _hoisted_9$8, [renderSlot(_ctx.$slots, "footer")])
+			createBaseVNode("div", _hoisted_8$10, [renderSlot(_ctx.$slots, "footer")])
 		]),
 		_cache[7] || (_cache[7] = createTextVNode()),
-		createBaseVNode("div", _hoisted_10$6, [
+		createBaseVNode("div", { class: normalizeClass(_ctx.type ? "modal__shelf" : "modal__close") }, [
 			createVNode(_component_i_close_button, {
 				class: "modal__close-button",
-				"disable-hover": _ctx.type !== "",
+				compact: _ctx.type !== "",
 				"aria-label": _ctx.ariaCloseText,
 				onClick: _ctx.onClose
 			}, {
 				default: withCtx(() => [createTextVNode(toDisplayString(_ctx.$t("fkui.modal.close", "Stäng")), 1)]),
 				_: 1
 			}, 8, [
-				"disable-hover",
+				"compact",
 				"aria-label",
 				"onClick"
 			]),
@@ -15888,8 +15906,8 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 				tabindex: "0",
 				onFocus: _cache[1] || (_cache[1] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
 			}, null, 32)
-		])
-	])], 2)])], 32)])], 10, _hoisted_1$79)) : createCommentVNode("v-if", true);
+		], 2)
+	], 2)], 2)])], 32)])], 10, _hoisted_1$79)) : createCommentVNode("v-if", true);
 }
 var FModal_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FModal_vue_vue_type_script_lang_default, [["render", _sfc_render$49]]);
 (/* @__PURE__ */ __commonJSMin((() => {
@@ -16206,6 +16224,113 @@ function _sfc_render$46(_ctx, _cache, $props, $setup, $data, $options) {
 	return openBlock(), createElementBlock("div", { class: normalizeClass(["iflex__item", _ctx.classList]) }, [renderSlot(_ctx.$slots, "default")], 2);
 }
 var IFlexItem_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(IFlexItem_vue_vue_type_script_lang_default, [["render", _sfc_render$46]]);
+function focusError(item, root) {
+	const element = root.querySelector(`#${String(item.id)}`);
+	if (!element) throw new Error(`Can not find element with id "${String(item.id)}"`);
+	const focusElement = root.querySelector(`#${String(item.focusElementId)}`);
+	scrollTo(element, window.innerHeight * .25);
+	focus$1(focusElement !== null && focusElement !== void 0 ? focusElement : element);
+}
+var noop$6 = () => {};
+var FErrorList_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
+	name: "FErrorList",
+	components: {
+		FIcon: FIcon_default,
+		IFlex: IFlex_default,
+		IFlexItem: IFlexItem_default
+	},
+	props: {
+		/**
+		* List of errors of type `ErrorItem`.
+		* If element id is unspecified, no link will be rendered.
+		* If element with id don't exist on navigation, an exception is thrown.
+		*/
+		items: {
+			type: Array,
+			required: true
+		},
+		/**
+		* Optional callback for performing actions before navigation.
+		*/
+		beforeNavigate: {
+			type: Function,
+			required: false,
+			default() {
+				return noop$6;
+			}
+		}
+	},
+	computed: { hasTitleSlot() {
+		return hasSlot(this, "title");
+	} },
+	methods: { async onClickItem(item) {
+		await this.beforeNavigate(item);
+		focusError(item, this.$el.getRootNode());
+	} }
+});
+var _hoisted_1$77 = { class: "error-list" };
+var _hoisted_2$54 = { key: 0 };
+var _hoisted_3$40 = { class: "error-list__list error-list--list-style-none" };
+var _hoisted_4$32 = ["onClick"];
+var _hoisted_5$24 = { class: "error-list__link" };
+function _sfc_render$45(_ctx, _cache, $props, $setup, $data, $options) {
+	const _component_f_icon = resolveComponent("f-icon");
+	const _component_i_flex_item = resolveComponent("i-flex-item");
+	const _component_i_flex = resolveComponent("i-flex");
+	return openBlock(), createElementBlock("div", _hoisted_1$77, [createVNode(_component_i_flex, null, {
+		default: withCtx(() => [
+			_ctx.hasTitleSlot ? (openBlock(), createBlock(_component_i_flex_item, {
+				key: 0,
+				shrink: ""
+			}, {
+				default: withCtx(() => [createVNode(_component_f_icon, {
+					class: "error-list__icon",
+					name: "error"
+				})]),
+				_: 1
+			})) : createCommentVNode("v-if", true),
+			_cache[6] || (_cache[6] = createTextVNode()),
+			_ctx.hasTitleSlot ? (openBlock(), createBlock(_component_i_flex_item, {
+				key: 1,
+				shrink: ""
+			}, {
+				default: withCtx(() => [..._cache[0] || (_cache[0] = [createTextVNode("\xA0", -1)])]),
+				_: 1
+			})) : createCommentVNode("v-if", true),
+			_cache[7] || (_cache[7] = createTextVNode()),
+			createVNode(_component_i_flex_item, { grow: "" }, {
+				default: withCtx(() => [
+					_ctx.hasTitleSlot ? (openBlock(), createElementBlock("div", _hoisted_2$54, [renderSlot(_ctx.$slots, "title")])) : createCommentVNode("v-if", true),
+					_cache[5] || (_cache[5] = createTextVNode()),
+					createBaseVNode("ul", _hoisted_3$40, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.items, (item) => {
+						return openBlock(), createElementBlock("li", { key: item.id }, [item.id ? (openBlock(), createElementBlock("a", {
+							key: 0,
+							href: "javascript:",
+							onClick: withModifiers(($event) => _ctx.onClickItem(item), ["prevent"])
+						}, [
+							_cache[1] || (_cache[1] = createBaseVNode("span", {
+								class: "error-list__bullet",
+								"aria-hidden": "true"
+							}, null, -1)),
+							_cache[2] || (_cache[2] = createTextVNode()),
+							createBaseVNode("span", _hoisted_5$24, toDisplayString(item.title), 1)
+						], 8, _hoisted_4$32)) : (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+							_cache[3] || (_cache[3] = createBaseVNode("span", {
+								class: "error-list__bullet",
+								"aria-hidden": "true"
+							}, null, -1)),
+							_cache[4] || (_cache[4] = createTextVNode()),
+							createBaseVNode("span", null, toDisplayString(item.title), 1)
+						], 64))]);
+					}), 128))])
+				]),
+				_: 3
+			})
+		]),
+		_: 3
+	})]);
+}
+var FErrorList_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FErrorList_vue_vue_type_script_lang_default, [["render", _sfc_render$45]]);
 var require_es_iterator_every = /* @__PURE__ */ __commonJSMin((() => {
 	var $ = require_export();
 	var call = require_function_call();
@@ -16284,6 +16409,529 @@ var require_es_iterator_filter = /* @__PURE__ */ __commonJSMin((() => {
 }));
 require_es_iterator_every();
 require_es_iterator_filter();
+/**
+* Clean inputs which doesn't exist in the DOM
+*
+* @internal
+*/
+function cleanUpElements(vm) {
+	return new Promise((resolve) => {
+		/**
+		* To be able to clean up validation errors after elements that have been v-if:ed away (removed from DOM)
+		* the clean up needs to be runned after DOM has been updated, thus setTimeout. $nextTick can't be
+		* used due to only virtual DOM in Vue has been updated and not actual browse DOM.
+		*/
+		window.setTimeout(() => {
+			for (const id of Object.keys(vm.components)) if (!vm.$el.querySelector(`#${id}`)) delete vm.components[id];
+			resolve();
+		}, 0);
+	});
+}
+var FValidationGroup_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
+	name: "FValidationGroup",
+	props: {
+		/**
+		* A `GroupValidityEvent` object containing:
+		*
+		*   `isValid`: the aggregated validity of underlying components
+		*
+		*   `componentsWithError`: a list of components with errors sorted in DOM order
+		*
+		*   `componentCount`: number of registered components
+		*/
+		modelValue: {
+			type: Object,
+			required: false,
+			default: () => {
+				return {
+					isValid: false,
+					componentsWithError: [],
+					componentCount: 0
+				};
+			}
+		},
+		/**
+		* Controls whether component-validity event should be propagated or not from underlying components.
+		*/
+		stopPropagation: {
+			type: Boolean,
+			required: false
+		}
+	},
+	emits: ["group-validity", "update:modelValue"],
+	data() {
+		return { components: {} };
+	},
+	methods: {
+		onComponentUnmount(event) {
+			delete this.components[event.detail.elementId];
+			this.triggerGroupValidityEvent();
+		},
+		async onComponentValidity(event) {
+			if (this.stopPropagation) event.stopPropagation();
+			await cleanUpElements(this);
+			this.components[event.detail.elementId] = event.detail;
+			this.triggerGroupValidityEvent();
+		},
+		triggerGroupValidityEvent() {
+			const components = Object.values(this.components);
+			const isValid = components.every((component) => component.isValid);
+			const componentsWithError = components.filter((component) => component.validityMode === "ERROR");
+			componentsWithError.sort((a, b) => documentOrderComparator(a.target, b.target));
+			this.$emit("update:modelValue", {
+				isValid,
+				componentsWithError,
+				componentCount: components.length
+			});
+			this.$emit("group-validity", {
+				isValid,
+				componentsWithError,
+				componentCount: components.length
+			});
+		}
+	}
+});
+function _sfc_render$44(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", {
+		onComponentValidity: _cache[0] || (_cache[0] = (...args) => _ctx.onComponentValidity && _ctx.onComponentValidity(...args)),
+		onComponentUnmount: _cache[1] || (_cache[1] = (...args) => _ctx.onComponentUnmount && _ctx.onComponentUnmount(...args))
+	}, [renderSlot(_ctx.$slots, "default")], 32);
+}
+var FValidationGroup_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FValidationGroup_vue_vue_type_script_lang_default, [["render", _sfc_render$44]]);
+/**
+* @public
+*/
+var FValidationFormAction = /* @__PURE__ */ function(FValidationFormAction) {
+	FValidationFormAction[FValidationFormAction["CONTINUE"] = 0] = "CONTINUE";
+	FValidationFormAction[FValidationFormAction["CANCEL"] = 1] = "CANCEL";
+	return FValidationFormAction;
+}({});
+function noop$5() {}
+var FValidationForm_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
+	name: "FValidationForm",
+	components: {
+		FValidationGroup: FValidationGroup_default,
+		FErrorList: FErrorList_default
+	},
+	provide() {
+		return { [buttonInflightInjectionKey]: computed(() => this.isInflight) };
+	},
+	inheritAttrs: false,
+	props: {
+		/**
+		* Callback function triggered when the form is submitted.
+		*
+		* Since this component declares `emits: ["submit"]`, Vue automatically
+		* intercepts the `@submit` event listener. By declaring this `onSubmit`
+		* prop, the component can intercept, await, and monitor the lifecycle
+		* of the parent's asynchronous submit handler before the event is emitted.
+		*
+		* @ignore
+		*/
+		onSubmit: {
+			type: Function,
+			required: false,
+			default() {
+				return noop$5;
+			}
+		},
+		/**
+		* If given, this function is called before the `submit` event is emitted.
+		*
+		* Optionally this callback may return `FValidationFormAction`. If
+		* `FValidationFormAction.CANCEL` is returned the submission is
+		* cancelled and no event will be emitted. The consumer should make it
+		* clear why the action was cancelled.
+		*
+		* If a promise is returned it will be awaited.
+		*
+		* The consumer does not need to validate form data, it is handled
+		* internally by the component.
+		*/
+		beforeSubmit: {
+			type: Function,
+			required: false,
+			default() {
+				return noop$5;
+			}
+		},
+		/**
+		* If given, this function is called before the form data is validated and the `submit` event is emitted.
+		*/
+		beforeValidation: {
+			type: Function,
+			required: false,
+			default() {
+				return noop$5;
+			}
+		},
+		/**
+		* The id for the form id attribute.
+		* If the prop is not set a random value will be generated.
+		*/
+		id: {
+			type: String,
+			required: false,
+			default: () => ElementIdService.generateElementId()
+		},
+		/**
+		* Include the error list component.
+		*/
+		useErrorList: {
+			type: Boolean,
+			required: false,
+			default: true
+		},
+		/**
+		*Optional callback function to the error list component for performing actions before navigation.
+		*/
+		errorListBeforeNavigate: {
+			type: Function,
+			required: false,
+			default() {
+				return noop$5;
+			}
+		}
+	},
+	emits: ["submit"],
+	data() {
+		return {
+			validity: {
+				isValid: true,
+				componentsWithError: [],
+				componentCount: 0
+			},
+			submitted: false,
+			isInflight: false
+		};
+	},
+	computed: {
+		groupKey() {
+			return `${this.id}-group`;
+		},
+		errors() {
+			return this.validity.componentsWithError.map((c) => ({
+				id: c.elementId,
+				focusElementId: c.focusElementId,
+				title: c.errorMessage
+			}));
+		},
+		displayErrors() {
+			return this.useErrorList && this.submitted && this.errors.length > 0;
+		}
+	},
+	methods: {
+		async hasFormErrors() {
+			ValidationService.setSubmitted(this.$el);
+			await ValidationService.validateAllElements(this.$el);
+			await this.$nextTick();
+			await new Promise((resolve) => window.setTimeout(resolve, 0));
+			if (this.validity.isValid) return false;
+			if (this.useErrorList) focus$1(this.$refs.errors);
+			else {
+				const firstError = this.validity.componentsWithError[0];
+				focus$1(this.$el.querySelector(`#${firstError.focusElementId}`));
+			}
+			return true;
+		},
+		async submit(event) {
+			this.submitted = true;
+			this.isInflight = true;
+			try {
+				if ((this.beforeValidation ? await this.beforeValidation() : void 0) === FValidationFormAction.CANCEL) {
+					this.isInflight = false;
+					return;
+				}
+				if (await this.hasFormErrors()) {
+					this.isInflight = false;
+					return;
+				}
+				if ((this.beforeSubmit ? await this.beforeSubmit() : void 0) === FValidationFormAction.CANCEL) {
+					this.isInflight = false;
+					return;
+				}
+				if (await this.hasFormErrors()) {
+					this.isInflight = false;
+					return;
+				}
+				const parentSubmitHandler = this.$props.onSubmit;
+				if (typeof parentSubmitHandler === "function") await parentSubmitHandler(event);
+				else this.$emit("submit", event);
+			} finally {
+				this.isInflight = false;
+			}
+		}
+	}
+});
+var _hoisted_1$76 = ["id"];
+var _hoisted_2$53 = {
+	key: 0,
+	ref: "errors",
+	tabindex: "-1",
+	role: "group"
+};
+function _sfc_render$43(_ctx, _cache, $props, $setup, $data, $options) {
+	const _component_f_error_list = resolveComponent("f-error-list");
+	const _component_f_validation_group = resolveComponent("f-validation-group");
+	return openBlock(), createBlock(_component_f_validation_group, {
+		key: _ctx.groupKey,
+		modelValue: _ctx.validity,
+		"onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.validity = $event),
+		"stop-propagation": true
+	}, {
+		default: withCtx(() => [createBaseVNode("form", mergeProps({ id: _ctx.id }, _ctx.$attrs, {
+			novalidate: "",
+			autocomplete: "off",
+			onSubmit: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.submit && _ctx.submit(...args), ["prevent"]))
+		}), [
+			_ctx.displayErrors ? (openBlock(), createElementBlock("nav", _hoisted_2$53, [createVNode(_component_f_error_list, {
+				items: _ctx.errors,
+				"before-navigate": _ctx.errorListBeforeNavigate
+			}, {
+				title: withCtx(() => [renderSlot(_ctx.$slots, "error-message")]),
+				_: 3
+			}, 8, ["items", "before-navigate"])], 512)) : createCommentVNode("v-if", true),
+			_cache[2] || (_cache[2] = createTextVNode()),
+			renderSlot(_ctx.$slots, "default")
+		], 16, _hoisted_1$76)]),
+		_: 3
+	}, 8, ["modelValue"]);
+}
+var FFormModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
+	name: "FFormModal",
+	components: {
+		FModal: FModal_default,
+		FValidationForm: /* @__PURE__ */ _plugin_vue_export_helper_default$1(FValidationForm_vue_vue_type_script_lang_default, [["render", _sfc_render$43]])
+	},
+	mixins: [TranslationMixin],
+	inheritAttrs: true,
+	props: {
+		/**
+		* Enable fullscreen mode in mobile.
+		*/
+		fullscreen: {
+			type: Boolean,
+			required: false,
+			default: true
+		},
+		/**
+		* If the modal is open.
+		* Use this to toggle if the modal should be visible or not.
+		*/
+		isOpen: {
+			type: Boolean,
+			required: false,
+			default: true
+		},
+		/**
+		* See <f-modal> `size` props.
+		*/
+		size: {
+			type: String,
+			default: ""
+		},
+		/**
+		* @ignore
+		*/
+		dataTest: {
+			type: String,
+			required: false,
+			default: ""
+		},
+		/**
+		* The data that has been submitted.
+		*/
+		value: {
+			type: Object,
+			default() {
+				return {};
+			}
+		},
+		/**
+		* Include the error list component.
+		*/
+		useErrorList: {
+			type: Boolean,
+			required: false,
+			default: true
+		},
+		/**
+		* The id for the form id attribute.
+		* If the prop is not set a random value will be generated.
+		*/
+		formId: {
+			type: String,
+			required: false,
+			default: () => ElementIdService.generateElementId()
+		},
+		/**
+		* The aria-label attribute text for the top right close button.
+		*/
+		ariaCloseText: {
+			type: String,
+			required: false,
+			default: void 0
+		},
+		/**
+		* If given, this function is called before the [[submit]] event is emitted.
+		* See <f-validation-form> `beforeSubmit` props for more info.
+		*/
+		beforeSubmit: {
+			type: Function,
+			required: false,
+			default() {}
+		},
+		/**
+		* If given, this function is called before the form data is validated and the [[submit]] event is emitted.
+		* See <f-validation-form> `beforeValidation` props for more info.
+		*/
+		beforeValidation: {
+			type: Function,
+			required: false,
+			default() {}
+		},
+		/**
+		* List of buttons to display in the modal.
+		* Each button is defined as an FModalButtonDescriptor with the following properties:
+		* - `label` (String): The text displayed on the button.
+		* - `event` (String): The event emitted when the button is clicked.
+		* - `type` (String): The button type. Valid values are: "primary" or "secondary".
+		* - `submitButton` (Boolean): Whether the button is a submit button.
+		*/
+		buttons: {
+			type: Array,
+			required: false,
+			default: () => [{
+				label: TranslationService.provider.translate("fkui.form-modal.button.submit.text", "Spara"),
+				event: "submit",
+				type: "primary",
+				submitButton: true
+			}, {
+				label: TranslationService.provider.translate("fkui.form-modal.button.cancel.text", "Avbryt"),
+				event: "dismiss",
+				type: "secondary"
+			}]
+		}
+	},
+	emits: {
+		/**
+		* Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
+		* In most use cases the isOpen prop should be set to false when this event is triggered.
+		*/
+		cancel() {
+			return true;
+		},
+		/**
+		* Event that is dispatched when escape is pressed or when the cancel or close buttons are clicked.
+		* In most use cases the isOpen prop should be set to false when this event is triggered.
+		*/
+		close(_payload) {
+			return true;
+		},
+		/**
+		* Event that is dispatched when the submit button is is clicked.
+		* The event payload is the data that has been submitted.
+		*/
+		submit(_payload) {
+			return true;
+		}
+	},
+	data() {
+		return {};
+	},
+	computed: { preparedButtons() {
+		return prepareButtonList(this.buttons);
+	} },
+	methods: {
+		onClose() {
+			ValidationService.resetState(this.$el);
+			this.$emit("cancel");
+			this.$emit("close", { reason: "close" });
+		},
+		onSubmit() {
+			ValidationService.resetState(this.$el);
+			this.$emit("submit", { data: this.value });
+			this.$emit("close", {
+				reason: "submit",
+				data: this.value
+			});
+		},
+		onCancel() {
+			ValidationService.resetState(this.$el);
+			this.$emit("cancel");
+			this.$emit("close", { reason: "close" });
+		}
+	}
+});
+var _hoisted_1$75 = { class: "button-group" };
+var _hoisted_2$52 = [
+	"type",
+	"form",
+	"onClick"
+];
+var _hoisted_3$39 = {
+	key: 0,
+	class: "sr-only"
+};
+function _sfc_render$42(_ctx, _cache, $props, $setup, $data, $options) {
+	const _component_f_validation_form = resolveComponent("f-validation-form");
+	const _component_f_modal = resolveComponent("f-modal");
+	return openBlock(), createBlock(_component_f_modal, {
+		"data-test": _ctx.dataTest,
+		fullscreen: _ctx.fullscreen,
+		"is-open": _ctx.isOpen,
+		size: _ctx.size,
+		"aria-close-text": _ctx.ariaCloseText,
+		onClose: _ctx.onClose
+	}, {
+		header: withCtx(() => [renderSlot(_ctx.$slots, "header")]),
+		content: withCtx(() => [
+			createBaseVNode("div", null, [renderSlot(_ctx.$slots, "default")]),
+			_cache[1] || (_cache[1] = createTextVNode()),
+			createVNode(_component_f_validation_form, {
+				id: _ctx.formId,
+				"before-submit": _ctx.beforeSubmit,
+				"before-validation": _ctx.beforeValidation,
+				"use-error-list": _ctx.useErrorList,
+				onSubmit: _ctx.onSubmit,
+				onCancel: _ctx.onCancel
+			}, {
+				"error-message": withCtx(() => [renderSlot(_ctx.$slots, "error-message")]),
+				default: withCtx(() => [_cache[0] || (_cache[0] = createTextVNode()), renderSlot(_ctx.$slots, "input-text-fields")]),
+				_: 3
+			}, 8, [
+				"id",
+				"before-submit",
+				"before-validation",
+				"use-error-list",
+				"onSubmit",
+				"onCancel"
+			])
+		]),
+		footer: withCtx(() => [createBaseVNode("div", _hoisted_1$75, [(openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.preparedButtons, (button) => {
+			return openBlock(), createElementBlock("button", {
+				key: button.label,
+				type: button.buttonType,
+				class: normalizeClass([button.classlist, "button-group__item"]),
+				form: button.buttonType === "submit" ? _ctx.formId : void 0,
+				onClick: ($event) => button.buttonType === "button" ? _ctx.onCancel() : false
+			}, [
+				createBaseVNode("span", null, toDisplayString(button.label), 1),
+				_cache[2] || (_cache[2] = createTextVNode()),
+				button.screenreader ? (openBlock(), createElementBlock("span", _hoisted_3$39, "\xA0" + toDisplayString(button.screenreader), 1)) : createCommentVNode("v-if", true)
+			], 10, _hoisted_2$52);
+		}), 128))])]),
+		_: 3
+	}, 8, [
+		"data-test",
+		"fullscreen",
+		"is-open",
+		"size",
+		"aria-close-text",
+		"onClose"
+	]);
+}
+var FFormModal_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FFormModal_vue_vue_type_script_lang_default, [["render", _sfc_render$42]]);
 /**
 * Open a confirmation modal with given text.
 *
@@ -24470,6 +25118,8 @@ function createRouter(options) {
 	}
 	return router;
 }
+// src/views/CloseButtonModal.vue?vue&type=script&setup=true&lang.ts
+var heading = "Rubrik";
 // src/views/CloseButtonModal.vue
 var CloseButtonModal_default = /* @__PURE__ */ defineComponent({
 	__name: "CloseButtonModal",
@@ -24478,16 +25128,27 @@ var CloseButtonModal_default = /* @__PURE__ */ defineComponent({
 	setup(__props, { emit: __emit }) {
 		const emit = __emit;
 		return (_ctx, _cache) => {
-			return openBlock(), createBlock(unref(FModal_default), {
+			return __props.type === "form" ? (openBlock(), createBlock(unref(FFormModal_default), {
+				key: 0,
+				size: "small",
+				onClose: _cache[0] || (_cache[0] = ($event) => emit("close")),
+				onCancel: _cache[1] || (_cache[1] = ($event) => emit("close")),
+				onSubmit: _cache[2] || (_cache[2] = ($event) => emit("close"))
+			}, {
+				header: withCtx(() => [createTextVNode(toDisplayString(heading))]),
+				default: withCtx(() => [_cache[4] || (_cache[4] = createTextVNode(" Här finns formulärsmodalens innehåll. ", -1))]),
+				_: 1
+			})) : (openBlock(), createBlock(unref(FModal_default), {
+				key: 1,
 				"is-open": "",
 				type: __props.type,
 				size: "small",
-				onClose: _cache[0] || (_cache[0] = ($event) => emit("close"))
+				onClose: _cache[3] || (_cache[3] = ($event) => emit("close"))
 			}, {
-				header: withCtx(() => [..._cache[1] || (_cache[1] = [createTextVNode("Rubrik", -1)])]),
-				content: withCtx(() => [..._cache[2] || (_cache[2] = [createTextVNode("Här finns modalens innehåll.", -1)])]),
+				header: withCtx(() => [createTextVNode(toDisplayString(heading))]),
+				content: withCtx(() => [..._cache[5] || (_cache[5] = [createTextVNode("Här finns modalens innehåll.", -1)])]),
 				_: 1
-			}, 8, ["type"]);
+			}, 8, ["type"]));
 		};
 	}
 });
@@ -24517,8 +25178,8 @@ var DefaultView_default = /*#__PURE__*/ _plugin_vue_export_helper_default(/* @__
 		}
 		return (_ctx, _cache) => {
 			return openBlock(), createElementBlock("main", _hoisted_1, [
-				_cache[14] || (_cache[14] = createBaseVNode("h1", null, "Gemensam stängknapp", -1)),
-				_cache[15] || (_cache[15] = createBaseVNode("p", null, "Prova stängknappen i datumväljare, tooltip och modal.", -1)),
+				_cache[15] || (_cache[15] = createBaseVNode("h1", null, "Gemensam stängknapp", -1)),
+				_cache[16] || (_cache[16] = createBaseVNode("p", null, "Prova stängknappen i datumväljare, tooltip och modal.", -1)),
 				createBaseVNode("section", _hoisted_2, [_cache[3] || (_cache[3] = createBaseVNode("h2", { id: "datepicker-heading" }, "Datumväljare", -1)), createVNode(unref(FDatepickerField_default), {
 					modelValue: date.value,
 					"onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => date.value = $event)
@@ -24535,7 +25196,7 @@ var DefaultView_default = /*#__PURE__*/ _plugin_vue_export_helper_default(/* @__
 					_: 1
 				})]),
 				createBaseVNode("section", _hoisted_4, [
-					_cache[13] || (_cache[13] = createBaseVNode("h2", { id: "modal-heading" }, "Modal", -1)),
+					_cache[14] || (_cache[14] = createBaseVNode("h2", { id: "modal-heading" }, "Modal", -1)),
 					createVNode(unref(FSelectField_default), {
 						modelValue: modalType.value,
 						"onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => modalType.value = $event)
@@ -24543,9 +25204,10 @@ var DefaultView_default = /*#__PURE__*/ _plugin_vue_export_helper_default(/* @__
 						label: withCtx(() => [..._cache[7] || (_cache[7] = [createTextVNode("Typ av modal", -1)])]),
 						default: withCtx(() => [
 							_cache[8] || (_cache[8] = createBaseVNode("option", { value: "" }, "Standard", -1)),
-							_cache[9] || (_cache[9] = createBaseVNode("option", { value: "information" }, "Informationsmodal", -1)),
-							_cache[10] || (_cache[10] = createBaseVNode("option", { value: "warning" }, "Varningsmodal", -1)),
-							_cache[11] || (_cache[11] = createBaseVNode("option", { value: "error" }, "Felmodal", -1))
+							_cache[9] || (_cache[9] = createBaseVNode("option", { value: "form" }, "Formulärsmodal", -1)),
+							_cache[10] || (_cache[10] = createBaseVNode("option", { value: "information" }, "Informationsmodal", -1)),
+							_cache[11] || (_cache[11] = createBaseVNode("option", { value: "warning" }, "Varningsmodal", -1)),
+							_cache[12] || (_cache[12] = createBaseVNode("option", { value: "error" }, "Felmodal", -1))
 						]),
 						_: 1
 					}, 8, ["modelValue"]),
@@ -24554,14 +25216,14 @@ var DefaultView_default = /*#__PURE__*/ _plugin_vue_export_helper_default(/* @__
 						variant: "secondary",
 						onClick: onOpenModal
 					}, {
-						default: withCtx(() => [..._cache[12] || (_cache[12] = [createTextVNode("Öppna modal", -1)])]),
+						default: withCtx(() => [..._cache[13] || (_cache[13] = [createTextVNode("Öppna modal", -1)])]),
 						_: 1
 					})
 				])
 			]);
 		};
 	}
-}), [["__scopeId", "data-v-e0525a9e"]]);
+}), [["__scopeId", "data-v-7e18b384"]]);
 // src/router.ts
 var router = createRouter({
 	history: createWebHashHistory(),

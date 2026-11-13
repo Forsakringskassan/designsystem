@@ -21151,12 +21151,12 @@ var config = {
 };
 var ICloseButton_default = /* @__PURE__ */ defineComponent({
 	__name: "ICloseButton",
-	props: { disableHover: { type: Boolean } },
+	props: { compact: { type: Boolean } },
 	setup(__props) {
 		const $t = useTranslate();
 		return (_ctx, _cache) => {
 			return openBlock(), createBlock(unref(FButton_default), {
-				class: normalizeClass(["button--close", { "button--close--no-hover": __props.disableHover }]),
+				class: normalizeClass(["button--close", { "button--close--compact": __props.compact }]),
 				variant: "tertiary",
 				"tertiary-style": "muted",
 				size: "medium",
@@ -21400,22 +21400,20 @@ var FModal_vue_vue_type_script_lang_default = /*@__PURE__*/ defineComponent({
 var _hoisted_1$79 = ["id"];
 var _hoisted_2$56 = { class: "modal__backdrop" };
 var _hoisted_3$42 = { class: "modal__inner-container" };
-var _hoisted_4$33 = { class: "modal__dialog" };
-var _hoisted_5$25 = { class: "modal__dialog-inner" };
-var _hoisted_6$18 = { class: "modal__header" };
-var _hoisted_7$14 = {
+var _hoisted_4$33 = { class: "modal__dialog-inner" };
+var _hoisted_5$25 = { class: "modal__header" };
+var _hoisted_6$18 = {
 	key: 0,
 	ref: "modalTitle",
 	class: "modal__title",
 	tabindex: "-1"
 };
-var _hoisted_8$10 = {
+var _hoisted_7$14 = {
 	ref: "modalContent",
 	class: "modal__content",
 	tabindex: "-1"
 };
-var _hoisted_9$8 = { class: "modal__footer" };
-var _hoisted_10$6 = { class: "modal__shelf" };
+var _hoisted_8$10 = { class: "modal__footer" };
 function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 	const _component_i_close_button = resolveComponent("i-close-button");
 	return _ctx.isOpen ? (openBlock(), createElementBlock("div", {
@@ -21431,33 +21429,33 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 	}, [createBaseVNode("div", _hoisted_3$42, [createBaseVNode("div", {
 		ref: "modalDialogContainer",
 		class: normalizeClass(["modal__dialog-container", _ctx.containerClasses])
-	}, [createBaseVNode("div", _hoisted_4$33, [
-		createBaseVNode("div", _hoisted_5$25, [
-			createBaseVNode("div", _hoisted_6$18, [
+	}, [createBaseVNode("div", { class: normalizeClass(["modal__dialog", { "modal__dialog--standard": _ctx.type === "" }]) }, [
+		createBaseVNode("div", _hoisted_4$33, [
+			createBaseVNode("div", _hoisted_5$25, [
 				createBaseVNode("div", {
 					tabindex: "0",
 					onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
 				}, null, 32),
 				_cache[3] || (_cache[3] = createTextVNode()),
-				_ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_7$14, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("v-if", true)
+				_ctx.hasHeaderSlot ? (openBlock(), createElementBlock("h1", _hoisted_6$18, [renderSlot(_ctx.$slots, "header")], 512)) : createCommentVNode("v-if", true)
 			]),
 			_cache[4] || (_cache[4] = createTextVNode()),
-			createBaseVNode("div", _hoisted_8$10, [renderSlot(_ctx.$slots, "content")], 512),
+			createBaseVNode("div", _hoisted_7$14, [renderSlot(_ctx.$slots, "content")], 512),
 			_cache[5] || (_cache[5] = createTextVNode()),
-			createBaseVNode("div", _hoisted_9$8, [renderSlot(_ctx.$slots, "footer")])
+			createBaseVNode("div", _hoisted_8$10, [renderSlot(_ctx.$slots, "footer")])
 		]),
 		_cache[7] || (_cache[7] = createTextVNode()),
-		createBaseVNode("div", _hoisted_10$6, [
+		createBaseVNode("div", { class: normalizeClass(_ctx.type ? "modal__shelf" : "modal__close") }, [
 			createVNode(_component_i_close_button, {
 				class: "modal__close-button",
-				"disable-hover": _ctx.type !== "",
+				compact: _ctx.type !== "",
 				"aria-label": _ctx.ariaCloseText,
 				onClick: _ctx.onClose
 			}, {
 				default: withCtx(() => [createTextVNode(toDisplayString(_ctx.$t("fkui.modal.close", "Stäng")), 1)]),
 				_: 1
 			}, 8, [
-				"disable-hover",
+				"compact",
 				"aria-label",
 				"onClick"
 			]),
@@ -21466,8 +21464,8 @@ function _sfc_render$49(_ctx, _cache, $props, $setup, $data, $options) {
 				tabindex: "0",
 				onFocus: _cache[1] || (_cache[1] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
 			}, null, 32)
-		])
-	])], 2)])], 32)])], 10, _hoisted_1$79)) : createCommentVNode("v-if", true);
+		], 2)
+	], 2)], 2)])], 32)])], 10, _hoisted_1$79)) : createCommentVNode("v-if", true);
 }
 var FModal_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FModal_vue_vue_type_script_lang_default, [["render", _sfc_render$49]]);
 (/* @__PURE__ */ __commonJSMin((() => {

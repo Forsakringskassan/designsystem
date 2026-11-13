@@ -1843,7 +1843,11 @@ input[type=search]:focus-visible,
 .button.button--close:hover, .button--close.calendar-navbar__year-selector-button:hover, .button.button--close:active, .button--close.calendar-navbar__year-selector-button:active {
   transform: none;
 }
-.button.button--close--no-hover:hover, .button--close--no-hover.calendar-navbar__year-selector-button:hover, .button.button--close--no-hover:active, .button--close--no-hover.calendar-navbar__year-selector-button:active {
+.button.button--close--compact, .button--close--compact.calendar-navbar__year-selector-button {
+  border-width: 0;
+  padding-block: 0;
+}
+.button.button--close--compact:hover, .button--close--compact.calendar-navbar__year-selector-button:hover, .button.button--close--compact:active, .button--close--compact.calendar-navbar__year-selector-button:active {
   background-color: transparent;
 }
 .button--full-width {
@@ -4765,6 +4769,11 @@ input[type=search]:focus-visible,
   border-top-right-radius: var(--f-border-radius-medium);
   margin-bottom: 1rem;
 }
+.modal__close {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+}
 .modal__header {
   display: flex;
   margin-bottom: 0.5rem;
@@ -4830,6 +4839,9 @@ input[type=search]:focus-visible,
   width: 100%;
   position: relative;
   z-index: 9995;
+}
+.modal__dialog--standard {
+  padding-block-start: 4rem;
 }
 .modal__dialog .modal__dialog-inner {
   height: auto;

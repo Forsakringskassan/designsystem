@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Stängknapp - FK Designsystem</title><link
             rel="stylesheet"
-            href="../../assets/docs-79330f.css"
+            href="../../assets/docs-fbfb2b.css"
             crossorigin
-            integrity="sha384-S3touBM0e8XT4gBocD0nku8+L5StIwYW5Zzm6EEvUYSPxYC48Od70wu1MVVfjDU4"
+            integrity="sha384-l594P2XdPnoAxeP7EGjyISa4+GC/I/w0wtvOyr2CuzjuoqNsSeio0nS2pqIY94oh"
             
         />
         <link
@@ -26,7 +26,7 @@
     "@fkui/vue/selectors": "../../assets/vendor-fkui-vue-selectors-84bb3f.js",
     "@fkui/logic": "../../assets/vendor-fkui-logic-0375f2.js",
     "@fkui/date": "../../assets/vendor-fkui-date-e69aa3.js",
-    "@fkui/vue": "../../assets/vendor-fkui-vue-110f0a.js",
+    "@fkui/vue": "../../assets/vendor-fkui-vue-b1adf9.js",
     "@fkui/vue-labs": "../../assets/vendor-fkui-vue-labs-a2a6fb.js",
     "@forsakringskassan/docs-live-example": "../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js"
   },
@@ -35,7 +35,7 @@
     "../../assets/vendor-fkui-vue-selectors-84bb3f.js": "sha384-qnsWXuo9hC+Ls5FQ0c4x3xAbwbt23I9E12XnRoOAmUwLyhhC+KFkuGfMhXnnNxk+",
     "../../assets/vendor-fkui-logic-0375f2.js": "sha384-AmTACorVlStyNetYWs4/XxIjlxix05CTn9CkP8Ep73l33fRW8dC/jgfe0fWWcnHP",
     "../../assets/vendor-fkui-date-e69aa3.js": "sha384-jnB2UL07zrp0tG0WvHrWGs8AwuSkGCNmCw+vyrs6LHSKH1uvPeuA1mHMcqgmKzdA",
-    "../../assets/vendor-fkui-vue-110f0a.js": "sha384-OhoyeZoMHeN+vIv/EPJ0Hv7r2q/8XaZTrICxOdyiIloaaAkTjRJzSvBwzEPQKJXs",
+    "../../assets/vendor-fkui-vue-b1adf9.js": "sha384-1vvr4cSj/9MnXBg10VgRm3aZCSjfLaz5JETiED2RPY6E5ZZuaNNdnbIxfwYCWRbP",
     "../../assets/vendor-fkui-vue-labs-a2a6fb.js": "sha384-h40XX4ozhvBgz6AWNQ0/PORIMa6s3scmYMA6oJTujg2racMU/GypyFfqTvLaa6oJ",
     "../../assets/vendor-forsakringskassan-docs-live-example-0e520d.js": "sha384-Zomp3tpZgQ5vBn1jDfJPFtzxDwJLLe39dK/jC//bT97+TQqCbXlfNz6um+bZc61n"
   }
@@ -7153,7 +7153,7 @@
         <div class="docs-badge-list">
             
             
-            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/9b8538d35834530e5755746d47ed9a66ea469126/packages/vue/src/internal-components/ICloseButton/ICloseButton.vue">
+            <a class="docs-badge docs-badge--component docs-badge-link" href="https://github.com/Forsakringskassan/designsystem/blob/01b9a8d094b03a1148aacd28f053def86b7e1710/packages/vue/src/internal-components/ICloseButton/ICloseButton.vue">
                 ICloseButton
             </a>
             
@@ -7187,9 +7187,11 @@
 
                     <div id="docs-content"><p class="docs-paragraph">Stängknapp är en ramverkskomponent för att stänga exempelvis en dialog eller informationsruta.
 Knappen visar texten Stäng och ett kryss till höger.
-Den har en fast storlek, baserad på <a href="../button.html">tertiär knapp</a> i storlek medium.</p>
+Den bygger på <a href="../button.html">tertiär knapp</a> i storlek medium.</p>
 <p class="docs-paragraph">Knappen har nedtonad text och den tertiära knappens hoverbakgrund och rundade hörn.
-Med <code>disable-hover</code> saknar knappen hoverbakgrund, exempelvis för användning mot en färgad modalbalk.
+Med <code>compact</code> blir knappen lägre och saknar hoverbakgrund.
+Det kompakta läget används i modaler med färgad balk för att behålla balkens höjd.
+Utrymmet runt knappen för fokusmarkeringen behålls.
 Knappen saknar förflyttning vid klick.
 Fokusmarkeringen visas vid tangentbordsnavigation.</p>
 <p class="docs-paragraph">Du hanterar stängningen och eventuell återställning av fokus i komponenten som använder knappen.
@@ -7202,10 +7204,10 @@ Standardtexten översätts med textnyckeln <code>fkui.close-button.text</code>.<
         <dl class="docs-api docs-api--slots">
             
                         <dt>
-                            <code id="iclosebutton-prop-disablehover"
-                                ><a class="docs-api__anchor" href="#iclosebutton-prop-disablehover"
+                            <code id="iclosebutton-prop-compact"
+                                ><a class="docs-api__anchor" href="#iclosebutton-prop-compact"
                                     ><span class="docs-api__name"
-                                        >disableHover</span
+                                        >compact</span
                                     >: boolean</a
                                 ></code
                             >
@@ -7213,7 +7215,7 @@ Standardtexten översätts med textnyckeln <code>fkui.close-button.text</code>.<
                             
                         </dt>
                         <dd>
-                            <p>Disable the tertiary button hover background.</p>
+                            <p>Reduce button height and disable the hover background.</p>
 
                             
                             
@@ -7315,9 +7317,9 @@ Standardtexten översätts med textnyckeln <code>fkui.close-button.text</code>.<
         <a class="docs-footer__anchor" href="../../changelog.html"> Changelog </a>
     </li>
 </ul>
-<div class="version"><span class="version-text-block">feature/close-button</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/9b8538d35834530e5755746d47ed9a66ea469126">9b8538d</a>)<br />
+<div class="version"><span class="version-text-block">feature/close-button</span>  (<a href="https://github.com/Forsakringskassan/designsystem/commits/01b9a8d094b03a1148aacd28f053def86b7e1710">01b9a8d</a>)<br />
         <a href="https://github.com/Forsakringskassan/designsystem/pull/1848">PR 1848</a><br />
-       <span class="version-text-block">2026-11-13 01:35</span>
+       <span class="version-text-block">2026-11-13 09:14</span>
 </div>
 <form class="docs-selectable-version__form">
     <button type="submit" class="docs-selectable-version__button">

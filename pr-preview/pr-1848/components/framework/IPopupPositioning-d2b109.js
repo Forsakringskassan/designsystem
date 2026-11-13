@@ -2295,7 +2295,7 @@ import { FDate as FDate2 } from "@fkui/date";
 var ICloseButton_default = /* @__PURE__ */ _defineComponent2({
   __name: "ICloseButton",
   props: {
-    disableHover: { type: Boolean, required: false }
+    compact: { type: Boolean, required: false }
   },
   setup(__props, { expose: __expose }) {
     __expose();
@@ -2312,7 +2312,7 @@ var ICloseButton_default = /* @__PURE__ */ _defineComponent2({
 import { createCommentVNode as _createCommentVNode4, renderSlot as _renderSlot4, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, normalizeClass as _normalizeClass, withCtx as _withCtx, openBlock as _openBlock5, createBlock as _createBlock3 } from "vue";
 function render5(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock5(), _createBlock3($setup["FButton"], {
-    class: _normalizeClass(["button--close", { "button--close--no-hover": $props.disableHover }]),
+    class: _normalizeClass(["button--close", { "button--close--compact": $props.compact }]),
     variant: "tertiary",
     "tertiary-style": "muted",
     size: "medium",
@@ -2564,22 +2564,20 @@ import { createElementVNode as _createElementVNode4, createCommentVNode as _crea
 var _hoisted_14 = ["id"];
 var _hoisted_23 = { class: "modal__backdrop" };
 var _hoisted_32 = { class: "modal__inner-container" };
-var _hoisted_4 = { class: "modal__dialog" };
-var _hoisted_5 = { class: "modal__dialog-inner" };
-var _hoisted_6 = { class: "modal__header" };
-var _hoisted_7 = {
+var _hoisted_4 = { class: "modal__dialog-inner" };
+var _hoisted_5 = { class: "modal__header" };
+var _hoisted_6 = {
   key: 0,
   ref: "modalTitle",
   class: "modal__title",
   tabindex: "-1"
 };
-var _hoisted_8 = {
+var _hoisted_7 = {
   ref: "modalContent",
   class: "modal__content",
   tabindex: "-1"
 };
-var _hoisted_9 = { class: "modal__footer" };
-var _hoisted_10 = { class: "modal__shelf" };
+var _hoisted_8 = { class: "modal__footer" };
 function render6(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_i_close_button = _resolveComponent("i-close-button");
   return _ctx.isOpen ? (_openBlock6(), _createElementBlock5("div", {
@@ -2606,74 +2604,90 @@ function render6(_ctx, _cache, $props, $setup, $data, $options) {
                 class: _normalizeClass2(["modal__dialog-container", _ctx.containerClasses])
               },
               [
-                _createElementVNode4("div", _hoisted_4, [
-                  _createElementVNode4("div", _hoisted_5, [
-                    _createElementVNode4("div", _hoisted_6, [
+                _createElementVNode4(
+                  "div",
+                  {
+                    class: _normalizeClass2(["modal__dialog", { "modal__dialog--standard": _ctx.type === "" }])
+                  },
+                  [
+                    _createElementVNode4("div", _hoisted_4, [
+                      _createElementVNode4("div", _hoisted_5, [
+                        _createElementVNode4(
+                          "div",
+                          {
+                            tabindex: "0",
+                            onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
+                          },
+                          null,
+                          32
+                          /* NEED_HYDRATION */
+                        ),
+                        _ctx.hasHeaderSlot ? (_openBlock6(), _createElementBlock5(
+                          "h1",
+                          _hoisted_6,
+                          [
+                            _createCommentVNode5("@slot Slot for the header. "),
+                            _renderSlot5(_ctx.$slots, "header")
+                          ],
+                          512
+                          /* NEED_PATCH */
+                        )) : _createCommentVNode5("v-if", true)
+                      ]),
                       _createElementVNode4(
                         "div",
-                        {
-                          tabindex: "0",
-                          onFocus: _cache[0] || (_cache[0] = (...args) => _ctx.onFocusFirst && _ctx.onFocusFirst(...args))
-                        },
-                        null,
-                        32
-                        /* NEED_HYDRATION */
-                      ),
-                      _ctx.hasHeaderSlot ? (_openBlock6(), _createElementBlock5(
-                        "h1",
                         _hoisted_7,
                         [
-                          _createCommentVNode5("@slot Slot for the header. "),
-                          _renderSlot5(_ctx.$slots, "header")
+                          _createCommentVNode5("@slot Slot for the main content, e.g. paragraphs, input fields, etc. "),
+                          _renderSlot5(_ctx.$slots, "content")
                         ],
                         512
                         /* NEED_PATCH */
-                      )) : _createCommentVNode5("v-if", true)
+                      ),
+                      _createElementVNode4("div", _hoisted_8, [
+                        _createCommentVNode5("@slot Slot the footer content, i.e. buttons. "),
+                        _renderSlot5(_ctx.$slots, "footer")
+                      ])
                     ]),
                     _createElementVNode4(
                       "div",
-                      _hoisted_8,
-                      [
-                        _createCommentVNode5("@slot Slot for the main content, e.g. paragraphs, input fields, etc. "),
-                        _renderSlot5(_ctx.$slots, "content")
-                      ],
-                      512
-                      /* NEED_PATCH */
-                    ),
-                    _createElementVNode4("div", _hoisted_9, [
-                      _createCommentVNode5("@slot Slot the footer content, i.e. buttons. "),
-                      _renderSlot5(_ctx.$slots, "footer")
-                    ])
-                  ]),
-                  _createElementVNode4("div", _hoisted_10, [
-                    _createVNode(_component_i_close_button, {
-                      class: "modal__close-button",
-                      "disable-hover": _ctx.type !== "",
-                      "aria-label": _ctx.ariaCloseText,
-                      onClick: _ctx.onClose
-                    }, {
-                      default: _withCtx2(() => [
-                        _createTextVNode2(
-                          _toDisplayString2(_ctx.$t("fkui.modal.close", "St\xE4ng")),
-                          1
-                          /* TEXT */
-                        )
-                      ]),
-                      _: 1
-                      /* STABLE */
-                    }, 8, ["disable-hover", "aria-label", "onClick"]),
-                    _createElementVNode4(
-                      "div",
                       {
-                        tabindex: "0",
-                        onFocus: _cache[1] || (_cache[1] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
+                        class: _normalizeClass2(_ctx.type ? "modal__shelf" : "modal__close")
                       },
-                      null,
-                      32
-                      /* NEED_HYDRATION */
+                      [
+                        _createVNode(_component_i_close_button, {
+                          class: "modal__close-button",
+                          compact: _ctx.type !== "",
+                          "aria-label": _ctx.ariaCloseText,
+                          onClick: _ctx.onClose
+                        }, {
+                          default: _withCtx2(() => [
+                            _createTextVNode2(
+                              _toDisplayString2(_ctx.$t("fkui.modal.close", "St\xE4ng")),
+                              1
+                              /* TEXT */
+                            )
+                          ]),
+                          _: 1
+                          /* STABLE */
+                        }, 8, ["compact", "aria-label", "onClick"]),
+                        _createElementVNode4(
+                          "div",
+                          {
+                            tabindex: "0",
+                            onFocus: _cache[1] || (_cache[1] = (...args) => _ctx.onFocusLast && _ctx.onFocusLast(...args))
+                          },
+                          null,
+                          32
+                          /* NEED_HYDRATION */
+                        )
+                      ],
+                      2
+                      /* CLASS */
                     )
-                  ])
-                ])
+                  ],
+                  2
+                  /* CLASS */
+                )
               ],
               2
               /* CLASS */
