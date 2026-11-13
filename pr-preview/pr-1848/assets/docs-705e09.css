@@ -1837,7 +1837,7 @@ input[type=search]:focus-visible,
 .button.button--close, .button--close.calendar-navbar__year-selector-button, .button--close.docs-example-button {
   margin: 0.5rem;
   min-width: 0;
-  padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;
+  padding-inline: 0.5rem;
   transition: none;
 }
 .button.button--close:hover, .button--close.calendar-navbar__year-selector-button:hover, .button--close.docs-example-button:hover, .button.button--close:active, .button--close.calendar-navbar__year-selector-button:active, .button--close.docs-example-button:active {
