@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 6.65.1 (2026-11-13)
+
+### Bug Fixes
+
+* **@fkui/design:** set primary background color on body (refs SB-4982) 3310a54
+
 ## 6.65.0 (2026-11-12)
 
 ### Features
