@@ -102,5 +102,5 @@ it("closeButton() should exist when tooltip is open", async () => {
     const el = wrapper.get(closeButton());
     expect(el.element.tagName.toLowerCase()).toBe("button");
     expect((el.element as HTMLInputElement).type).toBe("button");
-    expect(el.classes()).toContain("close-button");
+    expect(el.classes()).toContain("tooltip__close-button");
 });

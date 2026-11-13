@@ -2,9 +2,9 @@
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
 import { ElementIdService, findTabbableElements, focus, popFocus, pushFocus } from "@fkui/logic";
+import { ICloseButton } from "../../internal-components/ICloseButton";
 import { TranslationMixin } from "../../plugins";
 import { findElementFromVueRef, getHTMLElementFromVueRef, hasSlot } from "../../utils";
-import { FIcon } from "../FIcon";
 import { type FModalData } from "./fmodal-data";
 import { focusElement } from "./focus-element";
 import { type FModalSize, sizeClass } from "./sizes";
@@ -14,7 +14,7 @@ import { type FModalSize, sizeClass } from "./sizes";
  */
 export default defineComponent({
     name: "FModal",
-    components: { FIcon },
+    components: { ICloseButton },
     /* eslint-disable-next-line sonarjs/no-vue-mixins -- technical debt */
     mixins: [TranslationMixin],
     inheritAttrs: true,
@@ -212,7 +212,7 @@ export default defineComponent({
             >
                 <div class="modal__inner-container">
                     <div ref="modalDialogContainer" class="modal__dialog-container" :class="containerClasses">
-                        <div class="modal__dialog">
+                        <div class="modal__dialog" :class="{ 'modal__dialog--standard': type === '' }">
                             <div class="modal__dialog-inner">
                                 <div class="modal__header">
                                     <div tabindex="0" @focus="onFocusFirst"></div>
@@ -233,11 +233,15 @@ export default defineComponent({
                                 </div>
                             </div>
 
-                            <div class="modal__shelf">
-                                <button type="button" class="close-button" :aria-label="ariaCloseText" @click="onClose">
-                                    <span>{{ $t("fkui.modal.close", "Stäng") }}</span>
-                                    <f-icon name="close"></f-icon>
-                                </button>
+                            <div :class="type ? 'modal__shelf' : 'modal__close'">
+                                <i-close-button
+                                    class="modal__close-button"
+                                    :compact="type !== ''"
+                                    :aria-label="ariaCloseText"
+                                    @click="onClose"
+                                >
+                                    {{ $t("fkui.modal.close", "Stäng") }}
+                                </i-close-button>
                                 <div tabindex="0" @focus="onFocusLast"></div>
                             </div>
                         </div>

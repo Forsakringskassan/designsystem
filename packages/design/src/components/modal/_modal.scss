@@ -48,6 +48,12 @@ $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
         margin-bottom: size.$margin-100;
     }
 
+    &__close {
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-end: 0;
+    }
+
     &__header {
         display: flex;
         margin-bottom: size.$margin-050;
@@ -116,6 +122,11 @@ $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
         position: relative;
         z-index: z-index.$MODAL_ZINDEX;
 
+        &--standard {
+            // Leave space below the full-height close button and its focus indicator.
+            padding-block-start: calc(1.5rem + 2 * size.$margin-100 + size.$margin-050);
+        }
+
         .modal__dialog-inner {
             height: auto;
             margin: 0 size.$margin-150 size.$margin-150;
@@ -156,21 +167,21 @@ $modal-width: calc(100vw - 40px) !default; // 100% - 20px each side;
 
     &--information .modal__shelf {
         background-color: $modal-shelf-info-color-background;
-        .close-button {
+        .modal__close-button {
             color: $modal-color-closebutton-text-inverted;
         }
     }
 
     &--warning .modal__shelf {
         background-color: $modal-shelf-warning-color-background;
-        .close-button {
+        .modal__close-button {
             color: $modal-color-closebutton-text-warning;
         }
     }
 
     &--error .modal__shelf {
         background-color: $modal-shelf-error-color-background;
-        .close-button {
+        .modal__close-button {
             color: $modal-color-closebutton-text-inverted;
         }
     }

@@ -154,7 +154,7 @@ export function FTooltipSelectors(selector: string = ".tooltip") {
          * @returns A selector for the close button element.
          */
         closeButton(): string {
-            return `${selector} .close-button`;
+            return `${selector} .tooltip__close-button`;
         },
     });
 }
