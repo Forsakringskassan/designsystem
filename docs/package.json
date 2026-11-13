@@ -1,6 +1,6 @@
 {
   "name": "@fkui/docs",
-  "version": "6.64.1",
+  "version": "6.65.1",
   "description": "FKUI documentation for including on third-party sites",
   "keywords": [
     "fkui",
@@ -32,18 +32,18 @@
     "prepublishOnly": "release-prepublish --bundle --retain-scripts"
   },
   "dependencies": {
-    "@fkui/icon-lib-default": "6.64.0",
-    "@fkui/theme-default": "6.64.0",
-    "@fkui/vue": "6.64.1",
-    "@fkui/vue-labs": "6.64.1"
+    "@fkui/icon-lib-default": "6.65.1",
+    "@fkui/theme-default": "6.65.0",
+    "@fkui/vue": "6.65.1",
+    "@fkui/vue-labs": "6.65.1"
   },
   "devDependencies": {
-    "@fkui/font-default": "6.64.0",
-    "@fkui/logo-default": "6.64.0",
-    "@forsakringskassan/docs-generator": "3.24.0",
-    "axios": "1.21.0",
+    "@fkui/font-default": "6.65.0",
+    "@fkui/logo-default": "6.65.0",
+    "@forsakringskassan/docs-generator": "3.24.2",
+    "axios": "1.21.1",
     "cypress": "16.2.1",
-    "vue": "3.5.43"
+    "vue": "3.5.45"
   },
   "engines": {
     "node": "^22.16 || >= 24"

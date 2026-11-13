@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## 6.65.1 (2026-11-13)
+
+### Bug Fixes
+
+* **@fkui/design:** set primary background color on body (refs SB-4982) 3310a54
+
+## 6.65.0 (2026-11-12)
+
+### Features
+
+* **@fkui/docs, @fkui/design, @fkui/vue:** add configurable text wrapping to FTable (refs SFKUI-8223) 08c2310
+* **@fkui/docs, @fkui/theme-default:** revert `legacy-palette` (refs SFKUI-6500) f938abf
+* **@fkui/vue:** add popup anchor overlap mode (refs SFKUI-8236) cfb8d58
+* **deps:** update dependency @adobe/css-tools to v5 7b6335b
+
+### Bug Fixes
+
+* **@fkui/design:** preserve datepicker close button text color (refs SFKUI-6500) 356478b
+* **@fkui/theme-builder:** match shortened hex colors to palette names (refs SFKUI-6500) 09d00f8
+* **@fkui/vue-labs, @fkui/vue:** increase vue peer dep to ^3.5.40 (refs SFKUI-6500) be1f6d8
+* **@fkui/vue:** prevent datepicker popup from overlapping field (refs SFKUI-8236) addddd5
+* **@fkui/vue:** prevent form submit when editing table cells with enter (fixes SFKUI-8363) a3fd29e
+* **deps:** update dependency i18next to v26.7.1 4414923
+* **deps:** update dependency i18next to v26.7.2 ([#1811](undefined/Forsakringskassan/designsystem/issues/1811)) f0c17ce
+* **deps:** update dependency sass to v1.108.0 2e2bb82
+* **deps:** update dependency sass to v1.108.1 51f90c2
+* **deps:** update vue monorepo to v3.5.44 ([#1759](undefined/Forsakringskassan/designsystem/issues/1759)) e3599b5
+
 ## 6.64.1 (2026-11-03)
 
 ### Bug Fixes

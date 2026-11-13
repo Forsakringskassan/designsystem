@@ -395,6 +395,7 @@ export default defineComponent({
         <i-popup
             :is-open="isCalendarOpen"
             :anchor="calendarInputs"
+            anchor-overlap="never"
             :inline="alwaysInline ? 'always' : undefined"
             :set-focus="false"
             @open="onOpenPopup"
