@@ -16463,11 +16463,11 @@ var _hoisted_2$39 = {
 };
 var _hoisted_3$28 = ["for"];
 var _hoisted_4$22 = ["for"];
-var _hoisted_5$18 = {
+var _hoisted_5$17 = {
 	key: 0,
 	class: "label__message label__message--error"
 };
-var _hoisted_6$15 = ["for"];
+var _hoisted_6$14 = ["for"];
 var _hoisted_7$11 = {
 	key: 0,
 	class: "label__message label__message--error"
@@ -16492,7 +16492,7 @@ function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
 				formatDescriptionClass: _ctx.formatDescriptionClass
 			}),
 			_cache[1] || (_cache[1] = createTextVNode()),
-			_ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$18, [
+			_ctx.hasErrorMessageSlot ? (openBlock(), createElementBlock("span", _hoisted_5$17, [
 				createVNode(_component_f_icon, {
 					class: "label__icon--left",
 					name: "error"
@@ -16521,7 +16521,7 @@ function _sfc_render$26(_ctx, _cache, $props, $setup, $data, $options) {
 			_cache[4] || (_cache[4] = createTextVNode()),
 			renderSlot(_ctx.$slots, "error-message")
 		])) : createCommentVNode("v-if", true)
-	], 8, _hoisted_6$15));
+	], 8, _hoisted_6$14));
 }
 var FLabel_default = /*#__PURE__*/ _plugin_vue_export_helper_default$1(FLabel_vue_vue_type_script_lang_default, [["render", _sfc_render$26]]);
 function resolveWidthClass(words, inline) {

@@ -268,8 +268,8 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#162f5d",
-          "palette": "blue-800"
+          "value": "#1b478d",
+          "palette": "blue-700"
         },
         "dark": {
           "value": "#a2bfe3",
@@ -324,8 +324,8 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#162f5d",
-          "palette": "blue-800"
+          "value": "#1b478d",
+          "palette": "blue-700"
         },
         "dark": {
           "value": "#d6d8dc",
@@ -842,12 +842,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#ecedef",
-          "palette": "neutral-100"
+          "value": "#f7f7f8",
+          "palette": "neutral-50"
         },
         "dark": {
-          "value": "#494f5b",
-          "palette": "neutral-700"
+          "value": "#292d34",
+          "palette": "neutral-800"
         }
       }
     },
@@ -870,12 +870,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#aad8c0",
-          "palette": "green-200"
+          "value": "#d9ede3",
+          "palette": "green-100"
         },
         "dark": {
-          "value": "#aad8c0",
-          "palette": "green-200"
+          "value": "#494f5b",
+          "palette": "neutral-700"
         }
       }
     },
@@ -888,8 +888,8 @@ var metadata_default = {
           "palette": "green-600"
         },
         "dark": {
-          "value": "#248f59",
-          "palette": "green-500"
+          "value": "#77bb98",
+          "palette": "green-300"
         }
       }
     },
@@ -958,8 +958,8 @@ var metadata_default = {
           "palette": "blue-100"
         },
         "dark": {
-          "value": "#1b1e23",
-          "palette": "neutral-900"
+          "value": "#494f5b",
+          "palette": "neutral-700"
         }
       }
     },
@@ -982,12 +982,12 @@ var metadata_default = {
       "comment": null,
       "values": {
         "light": {
-          "value": "#aad8c0",
-          "palette": "green-200"
+          "value": "#d9ede3",
+          "palette": "green-100"
         },
         "dark": {
-          "value": "#292d34",
-          "palette": "neutral-800"
+          "value": "#494f5b",
+          "palette": "neutral-700"
         }
       }
     },
@@ -1014,8 +1014,8 @@ var metadata_default = {
           "palette": "green-100"
         },
         "dark": {
-          "value": "#1b1e23",
-          "palette": "neutral-900"
+          "value": "#494f5b",
+          "palette": "neutral-700"
         }
       }
     },
