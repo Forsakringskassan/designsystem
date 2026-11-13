@@ -187,7 +187,7 @@
   --fkds-color-footer-text-primary: #ffffff;
   --fkds-focus-indicator-color: #1b1e23;
   --fkds-focus-indicator-color-background: #ffffff;
-  --fkui-theme-default-version: "6.64.0";
+  --fkui-theme-default-version: "6.65.0";
 }
 
 *,
@@ -253,6 +253,7 @@ html {
 }
 
 body {
+  background-color: var(--fkds-color-background-primary);
   color: var(--fkds-color-text-primary);
   font-size: var(--f-font-size-standard);
   font-weight: var(--f-font-weight-normal);
