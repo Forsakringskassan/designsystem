@@ -98,7 +98,7 @@
     "Version 5 migreringsguide",
     "Vue 3",
     "Version 7 migreringsguide: @fkui/theme-desktop",
-    "Version 7 migreringsguide: Modal api only",
+    "Version 7 migreringsguide: Modal API only",
     "Version 6 migreringsguide: Cypress Pageobjects",
     "Version 6 migreringsguide: @fkui/design",
     "Version 6 migreringsguide: @fkui/logic",
@@ -1018,7 +1018,7 @@
     },
     {
       "url": "gettingstarted/migration/migrating-to-v7/modal-api-only.html",
-      "title": "Version 7 migreringsguide: Modal api only",
+      "title": "Version 7 migreringsguide: Modal API only",
       "terms": []
     },
     {
