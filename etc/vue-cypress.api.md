@@ -388,8 +388,6 @@ export class FInteractiveTablePageObject implements BasePageObject {
         row: number;
         col: number;
     }): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
-    // @deprecated
-    checkbox(row: number): FCheckboxFieldPageObject;
     el(): DefaultCypressChainable;
     getColumnSortedByIcon(index: number, order: "ascending" | "descending" | "unsorted"): DefaultCypressChainable;
     header(col: number): Cypress.Chainable<JQuery<HTMLTableCellElement>>;

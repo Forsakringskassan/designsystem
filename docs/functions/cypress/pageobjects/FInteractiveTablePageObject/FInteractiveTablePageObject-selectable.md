@@ -1,14 +1,16 @@
 ---
-name: FInteractiveTablePageObject.checkbox
-title: "FInteractiveTablePageObject: checkbox() method"
-short-title: checkbox()
+name: FInteractiveTablePageObject.selectable
+title: "FInteractiveTablePageObject: selectable() method"
+short-title: selectable()
 layout: api.method
+redirect_from:
+	- functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html
 ---
 
 `FInteractiveTablePageObject` är deprekerad.
 Migrera tabellen till `FTable` och använd därefter `FTablePageObject.selectInput()`.
 
-Hämtar ut page objekt för en kryssruta i en valbar {@link component:FInteractiveTable interaktiv tabell} (FInteractiveTable).
+Hämtar ut input-elementet (kryssruta eller radioknapp) för en rad i en valbar {@link component:FInteractiveTable interaktiv tabell} (FInteractiveTable).
 
 Radnumreringen är 1-indexerad och inkluderar rader som har expanderats i en expanderbar tabell.
 Det innebär att om första raden är kollapsad refererar andra raden till nästa icke-expanderade rad.
@@ -17,7 +19,7 @@ Om första raden är expanderad refererar andra raden till den första expandera
 ## Syntax
 
 ```ts nocompile nolint
-checkbox(row);
+selectable(row);
 ```
 
 ### Parametrar
@@ -27,20 +29,20 @@ checkbox(row);
 
 ### Returvärde
 
-`FCheckboxFieldPageObject` med selektor för kryssrutan på den givna raden.
+`<input>`-elementet på den givna raden.
 
 ## Exempel
 
 ```import nomarkup
-FInteractiveTablePageObject-checkbox.vue
+FInteractiveTablePageObject-selectable.vue
 ```
 
 ```import static
-FInteractiveTablePageObject-checkbox.vue
+FInteractiveTablePageObject-selectable.vue
 ```
 
 ```import static
-FInteractiveTablePageObject-checkbox.cy.ts
+FInteractiveTablePageObject-selectable.cy.ts
 ```
 
 ## Relaterat
