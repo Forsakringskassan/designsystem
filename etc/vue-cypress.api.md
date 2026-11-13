@@ -91,10 +91,6 @@ export class FCalendarDayPageObject implements BasePageObject {
     srOnly(): DefaultCypressChainable;
 }
 
-// @public @deprecated (undocumented)
-export class FCalenderDayPageobject extends FCalendarDayPageObject {
-}
-
 // @public (undocumented)
 class FCheckboxFieldPageObject implements BasePageObject {
     constructor(selector: string, index?: number);
@@ -353,8 +349,6 @@ export class FFileItemPageObject implements BasePageObject {
     // @internal (undocumented)
     typeOfButtonIcon(): Cypress.Chainable<string>;
     typeOfFile(): Cypress.Chainable<string>;
-    // @deprecated (undocumented)
-    typeOfFileIcon(): Cypress.Chainable<string>;
 }
 
 // @public (undocumented)
@@ -392,15 +386,9 @@ export class FInteractiveTablePageObject implements BasePageObject {
         row: number;
         col: number;
     }): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
-    // @deprecated
-    checkbox(row: number): FCheckboxFieldPageObject;
-    // @deprecated
-    columnItem(index: number): FTableColumnPageObject;
     el(): DefaultCypressChainable;
     getColumnSortedByIcon(index: number, order: "ascending" | "descending" | "unsorted"): DefaultCypressChainable;
     header(col: number): Cypress.Chainable<JQuery<HTMLTableCellElement>>;
-    // @deprecated
-    headerRowItem(): FTableColumnPageObject;
     headersRow(): DefaultCypressChainable;
     row(index: number): DefaultCypressChainable;
     selectable(row: number): DefaultCypressChainable;
@@ -681,23 +669,6 @@ export class FStaticFieldPageObject implements BasePageObject {
     tooltip: FTooltipPageObject;
 }
 
-// @public @deprecated (undocumented)
-export class FTableColumnPageObject implements BasePageObject {
-    constructor(selector: string, index: number);
-    // @deprecated (undocumented)
-    checkbox(): FCheckboxFieldPageObject;
-    // (undocumented)
-    el: () => DefaultCypressChainable;
-    // (undocumented)
-    index: number;
-    // (undocumented)
-    selector: string;
-    // @deprecated (undocumented)
-    tableRowBodyContent(position: number): DefaultCypressChainable;
-    // @deprecated (undocumented)
-    tableRowHeaderContent(): DefaultCypressChainable;
-}
-
 // @public (undocumented)
 export class FTablePageObject implements BasePageObject {
     constructor(selector?: string);
@@ -732,8 +703,6 @@ export class FTextareaFieldPageObject extends Input implements BasePageObject {
     constructor(selector: string);
     // (undocumented)
     el: () => DefaultCypressChainable;
-    // @deprecated (undocumented)
-    errorIcon(): DefaultCypressChainable;
     // (undocumented)
     input(): DefaultCypressChainable;
     // (undocumented)
@@ -849,8 +818,6 @@ export class ICalendarNavbarPageObject implements BasePageObject {
     prevButton(): DefaultCypressChainable;
     // (undocumented)
     selector: string;
-    // @deprecated (undocumented)
-    text(): DefaultCypressChainable;
     // (undocumented)
     title(): DefaultCypressChainable;
     // @internal (undocumented)

@@ -133,8 +133,9 @@ functions/cypress/pageobjects/FFileItemPageObject/filename.html
 functions/cypress/pageobjects/FFileItemPageObject/index.html
 functions/cypress/pageobjects/FFileItemPageObject/typeoffile.html
 functions/cypress/pageobjects/FInteractiveTablePageObject/cell.html
-functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html
+functions/cypress/pageobjects/FInteractiveTablePageObject/checkbox.html -> functions/cypress/pageobjects/FInteractiveTablePageObject/selectable.html
 functions/cypress/pageobjects/FInteractiveTablePageObject/header.html
+functions/cypress/pageobjects/FInteractiveTablePageObject/selectable.html
 functions/cypress/pageobjects/FLabelPageObject/description.html
 functions/cypress/pageobjects/FLabelPageObject/error-icon.html
 functions/cypress/pageobjects/FLabelPageObject/error-message.html
@@ -266,6 +267,7 @@ gettingstarted/migration/migrating-to-v6/design.html
 gettingstarted/migration/migrating-to-v6/logic.html
 gettingstarted/migration/migrating-to-v6/overview.html
 gettingstarted/migration/migrating-to-v6/vue.html
+gettingstarted/migration/migrating-to-v7/pageobjects.html
 gettingstarted/migration/migration-to-v7/theme-desktop.html
 gettingstarted/use-design-system/getting-started-application.html
 gettingstarted/use-design-system/getting-started.html
