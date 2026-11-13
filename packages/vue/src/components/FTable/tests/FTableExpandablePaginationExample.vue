@@ -42,7 +42,7 @@ const columns = defineTableColumns<Row>([
         type: "button",
         header: "Åtgärd",
         icon: "trashcan",
-        text() {
+        srOnlyText() {
             return "Ta bort";
         },
         onClick(row) {

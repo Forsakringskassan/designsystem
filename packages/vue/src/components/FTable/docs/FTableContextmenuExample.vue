@@ -33,7 +33,7 @@ const columns = defineTableColumns<Row>([
     {
         header: "Åtgärd",
         type: "menu",
-        text(row) {
+        srOnlyText(row) {
             return `Visa åtgärder för rad "${row.id}"`;
         },
         actions: [

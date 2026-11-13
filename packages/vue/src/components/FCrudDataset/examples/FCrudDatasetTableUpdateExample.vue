@@ -12,7 +12,7 @@ const columns = defineTableColumns([
     {
         type: "button",
         header: "Åtgärd",
-        text: (row: FruitData) => `Ändra ${row.name}`,
+        srOnlyText: (row: FruitData) => `Ändra ${row.name}`,
         icon: "pen",
         onClick: (row: FruitData) => {
             crud.value?.updateItem(row);

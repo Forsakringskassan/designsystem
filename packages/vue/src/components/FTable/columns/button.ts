@@ -17,7 +17,7 @@ export interface TableColumnButton<
     type: "button";
     key?: K;
     /** Screenreader text  */
-    text(this: void, row: T): string | null;
+    srOnlyText(this: void, row: T): string | null;
     /** Callback when button is clicked */
     onClick?(this: void, row: T): void;
     /** Name of icon to show on the button, see {@link FIcon} for list of icons. */
@@ -42,7 +42,7 @@ export interface NormalizedTableColumnButton<
         row: T;
         column: NormalizedTableColumnButton<T, K>;
     }>;
-    text(this: void, row: T): string | null;
+    srOnlyText(this: void, row: T): string | null;
     onClick?(this: void, row: T): void;
 }
 
@@ -54,7 +54,7 @@ export function normalizeButtonColumn<T, K extends keyof T>(
 ): Omit<NormalizedTableColumnButton<T, K>, OmittedNormalizedColumnProperties> {
     return {
         type: "button",
-        text: getValueFn(column.text, column.key, String, ""),
+        srOnlyText: getValueFn(column.srOnlyText, column.key, String, ""),
         onClick: column.onClick,
         icon: column.icon ?? null,
         iconLibrary: column.iconLibrary,

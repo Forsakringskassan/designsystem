@@ -73,7 +73,7 @@ defineExpose(expose);
         <template v-if="visible">
             <button ref="button" class="icon-button" type="button" tabindex="-1" aria-haspopup="menu" @click="onToggle">
                 <f-icon :library="column.iconLibrary" :name="column.icon"></f-icon>
-                <span class="sr-only">{{ column.text(row) }}</span>
+                <span class="sr-only">{{ column.srOnlyText(row) }}</span>
             </button>
             <f-context-menu
                 :is-open

@@ -60,7 +60,7 @@ const columns = defineTableColumns<Row>([
     {
         type: "button",
         header: "Åtgärd",
-        text: (row) => `Öppna detaljpanel för ${row.column1}`,
+        srOnlyText: (row) => `Öppna detaljpanel för ${row.column1}`,
         icon: "arrow-right",
         onClick: openPanel,
     },

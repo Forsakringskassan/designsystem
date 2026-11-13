@@ -12,7 +12,7 @@ describe("ITableMenu", () => {
             type: "menu",
             header: "Actions",
             enabled: true,
-            text: () => "Actions",
+            srOnlyText: () => "Actions",
         });
         const wrapper = shallowMount(ITableMenu<typeof row>, {
             props: { column, row },
@@ -26,7 +26,7 @@ describe("ITableMenu", () => {
         const column = normalizeTableColumn<typeof row>({
             type: "menu",
             header: "Actions",
-            text(row) {
+            srOnlyText(row) {
                 return `Actions for "${row.text}"`;
             },
         });
@@ -43,7 +43,7 @@ describe("ITableMenu", () => {
         const column = normalizeTableColumn<typeof row>({
             type: "menu",
             header: "Actions",
-            text: () => "Actions",
+            srOnlyText: () => "Actions",
             actions: [
                 { label: "Foo", icon: "foo" },
                 { label: "Bar", icon: "bar" },
@@ -79,7 +79,7 @@ describe("ITableMenu", () => {
         const column = normalizeTableColumn({
             type: "menu",
             header: "Actions",
-            text: () => "Actions",
+            srOnlyText: () => "Actions",
         });
         const wrapper = mount(ITableMenu, {
             props: { column, row } as never,
@@ -94,7 +94,7 @@ describe("ITableMenu", () => {
         const column = normalizeTableColumn({
             type: "menu",
             header: "Actions",
-            text: () => "Actions",
+            srOnlyText: () => "Actions",
         });
         const wrapper = mount(ITableMenu, {
             props: { column, row } as never,
@@ -112,7 +112,7 @@ describe("ITableMenu", () => {
         const column = normalizeTableColumn<typeof row>({
             type: "menu",
             header: "Actions",
-            text: () => "Actions",
+            srOnlyText: () => "Actions",
             actions(row) {
                 return row.status === "draft"
                     ? [{ label: "Edit draft" }]
@@ -141,7 +141,7 @@ describe("ITableMenu", () => {
         const column = normalizeTableColumn<typeof row>({
             type: "menu",
             header: "Actions",
-            text: () => "Actions",
+            srOnlyText: () => "Actions",
             actions: [
                 {
                     label(row) {
@@ -174,7 +174,7 @@ describe("ITableMenu", () => {
         const column = normalizeTableColumn<typeof row>({
             type: "menu",
             header: "Actions",
-            text: () => "Actions",
+            srOnlyText: () => "Actions",
         });
 
         const wrapper = shallowMount(ITableMenu<typeof row>, {
@@ -192,7 +192,7 @@ describe("ITableMenu", () => {
         const column = normalizeTableColumn<typeof row>({
             type: "menu",
             header: "Actions",
-            text: () => "Actions",
+            srOnlyText: () => "Actions",
             icon: "trashcan",
         });
 
@@ -211,7 +211,7 @@ describe("ITableMenu", () => {
         const column = normalizeTableColumn<typeof row>({
             type: "menu",
             header: "Actions",
-            text: () => "Actions",
+            srOnlyText: () => "Actions",
             icon: "foo",
             iconLibrary: "bar",
         });

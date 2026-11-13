@@ -37,7 +37,7 @@ const columns = defineTableColumns<Row>([
         type: "button",
         header: "",
         icon: "trashcan",
-        text() {
+        srOnlyText() {
             return "Ta bort";
         },
         onClick: onRemoveRow,
@@ -45,7 +45,7 @@ const columns = defineTableColumns<Row>([
     {
         header: "",
         type: "menu",
-        text(row) {
+        srOnlyText(row) {
             return `Åtgärder för "${row.frukt}"`;
         },
         actions: [

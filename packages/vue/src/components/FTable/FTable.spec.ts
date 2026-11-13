@@ -1413,7 +1413,7 @@ describe("Clickable cells", () => {
                 header: "Knapp",
                 icon: "trashcan",
                 size: "shrink",
-                text() {
+                srOnlyText() {
                     return `Ta bort`;
                 },
                 onClick: (row) => {
