@@ -1835,15 +1835,16 @@ input[type=search]:focus-visible,
   }
 }
 .button.button--close, .button--close.calendar-navbar__year-selector-button {
-  border-radius: 0;
   margin: 0.5rem;
   min-width: 0;
   padding: calc(0.25rem * var(--f-density-factor)) 0.5rem;
   transition: none;
 }
 .button.button--close:hover, .button--close.calendar-navbar__year-selector-button:hover, .button.button--close:active, .button--close.calendar-navbar__year-selector-button:active {
-  background-color: transparent;
   transform: none;
+}
+.button.button--close--no-hover:hover, .button--close--no-hover.calendar-navbar__year-selector-button:hover, .button.button--close--no-hover:active, .button--close--no-hover.calendar-navbar__year-selector-button:active {
+  background-color: transparent;
 }
 .button--full-width {
   min-width: var(--f-width-full);
