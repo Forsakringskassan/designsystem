@@ -11,7 +11,8 @@ Vissa klasser på `button` ersätts med andra.
 
 ### Migrering
 
-Byt ut dessa klasser till den ersättande klassen. Om möjligt rekommendares det att använda `FButton` istället för egna knappar med dessa klasser.
+Byt ut dessa klasser till den ersättande klassen.
+Om möjligt rekommendares det att använda `FButton` istället för egna knappar med dessa klasser.
 
 - `button--text` ersätts med `button--tertiary`
 
@@ -21,4 +22,5 @@ Byt ut dessa klasser till den ersättande klassen. Om möjligt rekommendares det
 
 - `button--discrete--black` ersätts med `button--tertiary--muted`
 
-Efter migreringen kommer knapparna ha lite rundade kanter och en `min-width`. Kontrollera om detta behöver överskrivas i din applikation.
+Efter migreringen kommer knapparna ha lite rundade kanter och en `min-width`.
+Kontrollera om detta behöver överskrivas i din applikation.
