@@ -31,7 +31,7 @@ function setup(options) {
 // virtual-entry:virtual:docs/components/page-layout/FNavigationMenu.md:FNavigationMenu-685093.js
 import { defineComponent as _defineComponent } from "vue";
 
-// node_modules/vue-router/dist/useApi-CUWMwLLw.js
+// node_modules/vue-router/dist/useApi-il6ACzUc.js
 import { inject } from "vue";
 var routerKey = /* @__PURE__ */ Symbol(true ? "router" : "");
 function useRouter() {
@@ -39,7 +39,7 @@ function useRouter() {
 }
 
 // node_modules/vue-router/dist/vue-router.js
-import { computed, defineComponent, getCurrentInstance, h as h2, inject as inject2, nextTick, provide, reactive, ref, shallowReactive, shallowRef, unref, watch, watchEffect } from "vue";
+import { computed, defineComponent, getCurrentInstance, h as h2, inject as inject2, nextTick, provide, reactive, ref, shallowRef, unref, watch, watchEffect } from "vue";
 
 // virtual-entry:virtual:docs/components/page-layout/FNavigationMenu.md:FNavigationMenu-685093.js
 var exampleComponent = /* @__PURE__ */ _defineComponent({
@@ -65,10 +65,10 @@ setup({
 });
 /*! Bundled license information:
 
-vue-router/dist/useApi-CUWMwLLw.js:
+vue-router/dist/useApi-il6ACzUc.js:
 vue-router/dist/vue-router.js:
   (*!
-  * vue-router v5.4.0
+  * vue-router v5.5.0
   * (c) 2026 Eduardo San Martin Morote
   * @license MIT
   *)
