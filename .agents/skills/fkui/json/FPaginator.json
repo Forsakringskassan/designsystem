@@ -1,0 +1,41 @@
+{
+    "name": "FPaginator",
+    "slug": "fpaginator",
+    "models": [],
+    "props": [
+        {
+            "name": "numberOfPages",
+            "description": "The number of pages available.",
+            "type": "number",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "currentPage",
+            "description": "The number of the current page.",
+            "type": "number",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "numberOfPagesToShow",
+            "description": "The number of pages to show in the paginator (at most).",
+            "type": "number",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "navigatorLabel",
+            "description": "The label for the navigator.\nIf the prop is not set the value of the text key `fkui.paginator.defaultNavigatorLabel` will be used.",
+            "type": "string",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": []
+}

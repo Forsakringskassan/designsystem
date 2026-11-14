@@ -1,0 +1,124 @@
+{
+    "name": "FSelectField",
+    "slug": "fselectfield",
+    "models": [
+        {
+            "name": "v-model",
+            "description": "The value for the input.\nIf the prop is not set undefined will be used.",
+            "type": "string|number|object|array|boolean|null",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "id",
+            "description": "The id for the select id attribute.\nThe id for the label for attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "inline",
+            "description": "Show the component inline.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "labelWidth",
+            "description": "Set responsive width for label section.\n\n```\nlabel-width=\"md-9 lg-6\"\n```",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"sm-12\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "selectWidth",
+            "description": "Set responsive width for select section that wraps select element and icons.\n\n```\nselect-width=\"md-6 lg-3\"\n```",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"sm-12\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "change",
+            "description": "Emitted when the value of the dropdown changes.",
+            "properties": [
+                {
+                    "name": "<anonymous>",
+                    "type": "string",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "label",
+            "description": "Slot for label content.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "tooltip",
+            "description": "Slot for tooltip.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "description",
+            "description": "Optional slot for description. See {@link FLabel} for details.",
+            "bindings": [
+                {
+                    "name": "description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for primary description content."
+                },
+                {
+                    "name": "format-description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for format description."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "error-message",
+            "description": "Slot for displaying single or several error messages.",
+            "bindings": [
+                {
+                    "name": "hasError",
+                    "type": "boolean",
+                    "description": "Set to true when a validation error is present"
+                },
+                {
+                    "name": "validationMessage",
+                    "type": "string",
+                    "description": "Descriptive validation error message for current error"
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": null,
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

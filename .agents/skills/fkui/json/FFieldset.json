@@ -1,0 +1,136 @@
+{
+    "name": "FFieldset",
+    "slug": "ffieldset",
+    "models": [],
+    "props": [
+        {
+            "name": "id",
+            "description": "The id for the fieldset id attribute.\nIf the prop is not set a random value will be generated.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "() => ElementIdService.generateElementId()"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "name",
+            "description": "Name provided to child content as `sharedName` for optional usage (it will not be set on the fieldset element).\nFor radio inputs this is a shortcut to specify the shared name attribute at one place,\ninstead of repeatedly setting the name attribute on each radio input.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "undefined"
+            },
+            "deprecated": null
+        },
+        {
+            "name": "labelClass",
+            "description": "The CSS classes for the label, description and error-message slot.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "contentClass",
+            "description": "The CSS classes for the default slot.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "horizontal",
+            "description": "Aligns underlying items horizontally.\nSupported by radiobuttons and chip layout.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "chip",
+            "description": "Displays radio and checkbox content with chip layout.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "border",
+            "description": "Displays a box with border around radiobuttons and checkboxes.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "showDetails",
+            "description": "Sets visibility behaviour for details slot in selectable child items. By default details slot is not rendered.\n\n* `never` (default) - Never show item details.\n- `when-selected` - Show item details when selected.\n- `always` - Always show item details.",
+            "type": "\"never\" | \"when-selected\" | \"always\"",
+            "required": false,
+            "default": {
+                "value": "\"never\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "label",
+            "description": "Slot for label content. This slot is required.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "description",
+            "description": "Optional slot for description. See {@link FLabel} for details.",
+            "bindings": [
+                {
+                    "name": "description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for primary description content."
+                },
+                {
+                    "name": "format-description-class",
+                    "type": "string[]",
+                    "description": "CSS classes for format description."
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "error-message",
+            "description": "Slot for label content. This slot is required.",
+            "bindings": [
+                {
+                    "name": "hasError",
+                    "type": "boolean",
+                    "description": "Set to true when a validation error is present"
+                },
+                {
+                    "name": "validationMessage",
+                    "type": "string",
+                    "description": "Descriptive validation error message for current error"
+                }
+            ],
+            "deprecated": null
+        },
+        {
+            "name": "tooltip",
+            "description": "Slot for tooltip.",
+            "bindings": [],
+            "deprecated": null
+        },
+        {
+            "name": "default",
+            "description": "Slot for fieldset content.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

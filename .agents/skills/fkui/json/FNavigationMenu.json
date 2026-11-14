@@ -1,0 +1,99 @@
+{
+    "name": "FNavigationMenu",
+    "slug": "fnavigationmenu",
+    "models": [
+        {
+            "name": "v-model:route",
+            "description": "Current route.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        }
+    ],
+    "props": [
+        {
+            "name": "routes",
+            "description": "The route items to be diplayed in the menu",
+            "type": "NavigationMenuItem[]",
+            "required": true,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "vertical",
+            "description": "If true, show the menu vertically",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "selectedMenuItemScreenReaderText",
+            "description": "Screen reader text for selected item",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "menuMoreScreenReaderText",
+            "description": "Screen reader text for the more menu item",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "menuMoreWithSelectedItemsScreenReaderText",
+            "description": "Screen reader text for the more menu with selected items",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "menuAriaLabel",
+            "description": "Unique accessible name for navigation landmark in menu.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"Navigeringsmeny\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "popupAriaLabel",
+            "description": "Unique accessible name for navigation landmark in popup.",
+            "type": "string",
+            "required": false,
+            "default": {
+                "value": "\"Popupmeny\""
+            },
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "selectedRoute",
+            "description": "Event that is dispatched when a menu item is selected, for example, by clicking on the item.\nIn most use cases the event payload is used to call Vue `router.push()` from the consumer code.",
+            "properties": [
+                {
+                    "name": "route",
+                    "type": "string",
+                    "description": null
+                }
+            ],
+            "deprecated": null
+        }
+    ],
+    "slots": []
+}

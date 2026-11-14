@@ -1,0 +1,34 @@
+{
+    "name": "FBadge",
+    "slug": "fbadge",
+    "models": [],
+    "props": [
+        {
+            "name": "status",
+            "description": "The status of the badge, can be either 'default', 'warning', 'error', 'success' or 'info'.",
+            "type": "\"default\" | \"warning\" | \"error\" | \"success\" | \"info\"",
+            "required": false,
+            "default": {
+                "value": "\"default\""
+            },
+            "deprecated": null
+        },
+        {
+            "name": "inverted",
+            "description": "If badge should be inverted.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Slot for text to display in the badge.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}

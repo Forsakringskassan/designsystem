@@ -1,0 +1,47 @@
+{
+    "name": "FTableButton",
+    "slug": "ftablebutton",
+    "models": [],
+    "props": [
+        {
+            "name": "icon",
+            "description": "When set to an icon name an icon is displayed next to the label.",
+            "type": "string",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "iconLibrary",
+            "description": "The icon library to use when rendering an icon. If not set, the default icon library will be used.",
+            "type": "string",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        },
+        {
+            "name": "label",
+            "description": "By default the label is visually hidden. When this prop is enabled the\nlabel is rendered visually as well.",
+            "type": "boolean",
+            "required": false,
+            "default": null,
+            "deprecated": null
+        }
+    ],
+    "events": [
+        {
+            "name": "click",
+            "description": "Emitted when the button is pressed.",
+            "properties": [],
+            "deprecated": null
+        }
+    ],
+    "slots": [
+        {
+            "name": "default",
+            "description": "Label text.",
+            "bindings": [],
+            "deprecated": null
+        }
+    ]
+}
