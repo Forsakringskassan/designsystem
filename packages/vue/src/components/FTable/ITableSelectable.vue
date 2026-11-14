@@ -36,6 +36,9 @@ const multiSelectColumn: NormalizedTableColumnCheckbox<T, K> = {
     header: ref("selectable"),
     description: ref(null),
     sortable: null,
+    target: null,
+    iconLeft: null,
+    iconRight: null,
     size: ref(null),
     component: ITableCheckbox,
     label() {
