@@ -87,7 +87,7 @@ describe("events", () => {
                 isOpen: true,
             },
         });
-        const closeElement = wrapper.get(".close-button");
+        const closeElement = wrapper.get(".modal__close-button");
         await closeElement.trigger("click");
         expect(wrapper.emitted().cancel).toBeTruthy();
         expect(wrapper.emitted().close).toBeTruthy();

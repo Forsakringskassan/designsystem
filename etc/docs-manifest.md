@@ -31,6 +31,7 @@ components/framework/ianimateexpand.html
 components/framework/icalendarmonth.html
 components/framework/icalendarmonthgrid.html
 components/framework/icalendarnavbar.html
+components/framework/iclosebutton.html
 components/framework/iflex.html
 components/framework/iflexitem.html
 components/framework/ipopup.html

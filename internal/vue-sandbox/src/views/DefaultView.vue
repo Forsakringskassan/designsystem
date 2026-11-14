@@ -1,53 +1,63 @@
-<!-- eslint-disable vue/component-api-style -- technical debt: should be migrated from options to composition api -->
-<script lang="ts">
-import { defineComponent } from "vue";
-import { FTextField } from "@fkui/vue";
+<script setup lang="ts">
+import { ref } from "vue";
+import { FButton, FDatepickerField, FLabel, FSelectField, FTooltip, useModal } from "@fkui/vue";
+import CloseButtonModal from "./CloseButtonModal.vue";
 
-export default defineComponent({
-    components: { FTextField },
-    data() {
-        return {
-            awesomeModel: "",
-        };
-    },
-});
+const date = ref("");
+const modalType = ref<"" | "information" | "warning" | "error" | "form">("");
+const { openModal } = useModal();
+
+async function onOpenModal(): Promise<void> {
+    await openModal(CloseButtonModal, { props: { type: modalType.value } });
+}
 </script>
 
 <template>
-    <div class="sandbox-root">
-        <h1>FKUI Sandbox</h1>
-        <p>
-            Ett internt paket som innehåller en avskalad Vue-applikation. Applikationen är konsument av övriga
-            FKUI-paket och innehåller enbart ett tomt exempel.
-        </p>
-        <p>
-            <strong>Ändra och labba gärna här men glöm inte återställa innan merge!</strong>
-        </p>
-        <hr />
-        <f-text-field
-            id="awesome-field"
-            v-model="awesomeModel"
-            v-validation.required.maxLength="{ maxLength: { length: 10 } }"
-        >
-            <template #default> Inmatningsfält. </template>
-            <template #description="{ descriptionClass }">
-                <span :class="descriptionClass"> Lorem ipsum dolor sit amet. </span>
-            </template>
-        </f-text-field>
-    </div>
+    <main class="sandbox-root">
+        <h1>Gemensam stängknapp</h1>
+        <p>Prova stängknappen i datumväljare, tooltip och modal.</p>
+
+        <section id="datepicker" aria-labelledby="datepicker-heading">
+            <h2 id="datepicker-heading">Datumväljare</h2>
+            <f-datepicker-field v-model="date">Datum</f-datepicker-field>
+        </section>
+
+        <section id="tooltip" aria-labelledby="tooltip-heading">
+            <h2 id="tooltip-heading">Tooltip</h2>
+            <f-label>
+                Etikett
+                <template #tooltip>
+                    <f-tooltip screen-reader-text="Läs mer om etiketten">
+                        <template #body>Här finns mer information om fältet.</template>
+                    </f-tooltip>
+                </template>
+            </f-label>
+        </section>
+
+        <section id="modal" aria-labelledby="modal-heading">
+            <h2 id="modal-heading">Modal</h2>
+            <f-select-field v-model="modalType">
+                <template #label>Typ av modal</template>
+                <option value="">Standard</option>
+                <option value="form">Formulärsmodal</option>
+                <option value="information">Informationsmodal</option>
+                <option value="warning">Varningsmodal</option>
+                <option value="error">Felmodal</option>
+            </f-select-field>
+            <f-button size="medium" variant="secondary" @click="onOpenModal">Öppna modal</f-button>
+        </section>
+    </main>
 </template>
 
-<style>
+<style scoped>
 .sandbox-root {
-    width: min(100% - 2rem, 80ch);
-    margin: auto;
+    max-width: 75rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
 }
 
-h1 {
-    margin-top: 2rem;
-}
-
-hr {
-    margin-bottom: 2rem;
+section {
+    margin-top: 3rem;
+    scroll-margin-top: 1rem;
 }
 </style>

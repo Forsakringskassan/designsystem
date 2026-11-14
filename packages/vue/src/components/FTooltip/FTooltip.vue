@@ -12,7 +12,7 @@ import {
     watchEffect,
 } from "vue";
 import { TranslationService } from "@fkui/logic";
-import { IFlex, IFlexItem } from "../../internal-components";
+import { ICloseButton, IFlex, IFlexItem } from "../../internal-components";
 import { focus, hasSlot } from "../../utils";
 import { FExpand } from "../FExpand";
 import { FIcon } from "../FIcon";
@@ -22,7 +22,7 @@ import { useHorizontalOffset } from "./use-horizontal-offset";
 
 export default defineComponent({
     name: "FTooltip",
-    components: { FExpand, FIcon, IFlex, IFlexItem },
+    components: { FExpand, FIcon, ICloseButton, IFlex, IFlexItem },
     inheritAttrs: false,
     props: {
         /**
@@ -203,10 +203,9 @@ export default defineComponent({
             </div>
 
             <div class="tooltip__footer">
-                <button class="close-button" type="button" @click="onClickToggle">
-                    <span>{{ closeButtonText }}</span>
-                    <f-icon class="button__icon" name="close"></f-icon>
-                </button>
+                <i-close-button class="tooltip__close-button" @click="onClickToggle">
+                    {{ closeButtonText }}
+                </i-close-button>
             </div>
         </div>
     </div>

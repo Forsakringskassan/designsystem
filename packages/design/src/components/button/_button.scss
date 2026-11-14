@@ -300,6 +300,28 @@ $button--tertiary: (
         }
     }
 
+    &.button--close {
+        margin: size.$margin-050;
+        min-width: 0;
+        padding-inline: size.$padding-050;
+        transition: none;
+
+        &:hover,
+        &:active {
+            transform: none;
+        }
+
+        &--compact {
+            border-width: 0;
+            padding-block: 0;
+
+            &:hover,
+            &:active {
+                background-color: transparent;
+            }
+        }
+    }
+
     &--full-width {
         min-width: var(--f-width-full);
     }
