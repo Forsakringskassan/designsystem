@@ -23127,9 +23127,9 @@ var XPersonPanel_default = /* @__PURE__ */ defineComponent({
 		};
 	}
 });
-// ../../node_modules/vue-router/dist/useApi-CUWMwLLw.js
+// ../../node_modules/vue-router/dist/useApi-il6ACzUc.js
 /*!
-* vue-router v5.4.0
+* vue-router v5.5.0
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
@@ -23241,9 +23241,9 @@ var routerViewOnRouteRenderedKey = Symbol("");
 function useRouter() {
 	return inject(routerKey);
 }
-// ../../node_modules/vue-router/dist/devtools-CxgSYwGp.js
+// ../../node_modules/vue-router/dist/devtools-C2sLSl4b.js
 /*!
-* vue-router v5.4.0
+* vue-router v5.5.0
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
@@ -23511,6 +23511,19 @@ var START_LOCATION_NORMALIZED = {
 	redirectedFrom: void 0
 };
 /**
+* Creates the reactive route returned by `useRoute()` from a route ref.
+*
+* @internal
+*/
+function createReactiveRoute(routeRef) {
+	const route = {};
+	for (const key in START_LOCATION_NORMALIZED) Object.defineProperty(route, key, {
+		get: () => routeRef.value[key],
+		enumerable: true
+	});
+	return /* @__PURE__ */ shallowReactive(route);
+}
+/**
 * Normalizes a base by removing any trailing slash and reading the base tag if
 * present.
 *
@@ -23540,10 +23553,6 @@ function getElementPosition(el, offset) {
 		top: elRect.top - docRect.top - (offset.top || 0)
 	};
 }
-var computeScrollPosition = () => history.scrollRestoration === "manual" ? {
-	left: window.scrollX,
-	top: window.scrollY
-} : null;
 function scrollToPosition(position) {
 	let scrollToOptions;
 	if ("el" in position) {
@@ -23556,23 +23565,55 @@ function scrollToPosition(position) {
 	if ("scrollBehavior" in document.documentElement.style) window.scrollTo(scrollToOptions);
 	else window.scrollTo(scrollToOptions.left != null ? scrollToOptions.left : window.scrollX, scrollToOptions.top != null ? scrollToOptions.top : window.scrollY);
 }
+/**
+* Key of the scroll positions saved in `sessionStorage`. They persist across
+* reloads and documents of the same tab.
+*/
+var SCROLL_KEY = "vue-router:scroll";
+function readScrollPositions() {
+	try {
+		return assign({}, JSON.parse(sessionStorage[SCROLL_KEY]));
+	} catch {
+		return {};
+	}
+}
+var scrollPositions = /*#__PURE__*/ readScrollPositions();
+function persistScrollPositions() {
+	try {
+		sessionStorage[SCROLL_KEY] = JSON.stringify(scrollPositions);
+	} catch {}
+}
 function getScrollKey(path, delta) {
 	return (history.state ? history.state.position - delta : -1) + path;
 }
-var scrollPositions = /* @__PURE__ */ new Map();
-function saveScrollPosition(key) {
-	scrollPositions.set(key, computeScrollPosition());
+/**
+* Saves the position of the entry `delta` steps before the current one.
+*/
+function saveScrollPosition(path, delta = 0) {
+	if (history.scrollRestoration === "manual") {
+		scrollPositions[getScrollKey(path, delta)] = {
+			left: window.scrollX,
+			top: window.scrollY
+		};
+		persistScrollPositions();
+	}
 }
-function getSavedScrollPosition(key) {
-	const scroll = scrollPositions.get(key);
-	scrollPositions.delete(key);
+/**
+* Consumes the saved position of the current entry.
+*/
+function getSavedScrollPosition(path) {
+	const key = getScrollKey(path, 0);
+	const scroll = scrollPositions[key];
+	delete scrollPositions[key];
+	persistScrollPositions();
 	return scroll;
 }
 function invalidateScrollPositions(position, replace = false) {
-	for (const key of scrollPositions.keys()) {
+	for (const key in scrollPositions) {
 		const entryPosition = parseInt(key, 10);
-		if (entryPosition === position || !replace && entryPosition > position) scrollPositions.delete(key);
+		if (entryPosition === position || !replace && entryPosition > position) delete scrollPositions[key];
 	}
+	persistScrollPositions();
 }
 /**
 * ScrollBehavior instance used by the router to compute and restore the scroll
@@ -23751,7 +23792,7 @@ function extractChangingRecords(to, from) {
 }
 // ../../node_modules/vue-router/dist/vue-router.js
 /*!
-* vue-router v5.4.0
+* vue-router v5.5.0
 * (c) 2026 Eduardo San Martin Morote
 * @license MIT
 */
@@ -23810,19 +23851,17 @@ function useHistoryListeners(base, historyState, currentLocation, replace) {
 		teardowns.push(teardown);
 		return teardown;
 	}
-	function beforeUnloadListener() {
-		const { history } = window;
-		if (!history.state) return;
-		history.replaceState(assign({}, history.state, { scroll: computeScrollPosition() }), "");
+	function pageHideListener() {
+		saveScrollPosition(currentLocation.value);
 	}
 	function destroy() {
 		for (const teardown of teardowns) teardown();
 		teardowns = [];
 		window.removeEventListener("popstate", popStateHandler);
-		window.removeEventListener("pagehide", beforeUnloadListener);
+		window.removeEventListener("pagehide", pageHideListener);
 	}
 	window.addEventListener("popstate", popStateHandler);
-	window.addEventListener("pagehide", beforeUnloadListener);
+	window.addEventListener("pagehide", pageHideListener);
 	return {
 		pauseListeners,
 		listen,
@@ -23838,8 +23877,7 @@ function buildState(back, current, forward, replaced = false) {
 		current,
 		forward,
 		replaced,
-		position: window.history.length,
-		scroll: null
+		position: window.history.length
 	};
 }
 function useHistoryStateNavigation(base) {
@@ -23851,8 +23889,7 @@ function useHistoryStateNavigation(base) {
 		current: currentLocation.value,
 		forward: null,
 		position: history.length - 1,
-		replaced: true,
-		scroll: null
+		replaced: true
 	}, true);
 	function changeLocation(to, state, replace) {
 		/**
@@ -23881,13 +23918,11 @@ function useHistoryStateNavigation(base) {
 		currentLocation.value = to;
 	}
 	function push(to, data) {
-		const currentState = assign({}, historyState.value, history.state, {
-			forward: to,
-			scroll: computeScrollPosition()
-		});
+		const currentState = assign({}, historyState.value, history.state, { forward: to });
 		changeLocation(currentState.current, currentState, true);
-		changeLocation(to, assign({}, buildState(currentLocation.value, to, null), { position: currentState.position + 1 }, data), false);
 		invalidateScrollPositions(currentState.position);
+		saveScrollPosition(currentState.current);
+		changeLocation(to, assign({}, buildState(currentLocation.value, to, null), { position: currentState.position + 1 }, data), false);
 		currentLocation.value = to;
 	}
 	return {
@@ -24094,7 +24129,7 @@ function tokensToParser(segments, extraOptions) {
 						throw new Error(`Invalid custom RegExp for param "${value}" (${re}): ` + err.message);
 					}
 				}
-				let subPattern = repeatable ? `((?:${re})(?:/(?:${re}))*)` : `(${re})`;
+				let subPattern = repeatable && re !== ".+" && re !== ".*" ? `((?:${re})(?:/(?:${re}))*)` : `(${re})`;
 				if (!tokenIndex) subPattern = optional && segment.length < 2 ? `(?:/${subPattern})` : "/" + subPattern;
 				if (optional) subPattern += "?";
 				pattern += subPattern;
@@ -24619,6 +24654,7 @@ var RouterViewImpl = /*#__PURE__*/ defineComponent({
 		provide(viewDepthKey, computed(() => depth.value + 1));
 		provide(matchedRouteKey, matchedRouteRef);
 		provide(routerViewLocationKey, routeToDisplay);
+		provide(routeLocationKey, createReactiveRoute(routeToDisplay));
 		const onRouteRenderedCallbacks = /* @__PURE__ */ new Set();
 		provide(routerViewOnRouteRenderedKey, onRouteRenderedCallbacks);
 		const viewRef = /* @__PURE__ */ ref();
@@ -24653,7 +24689,8 @@ var RouterViewImpl = /*#__PURE__*/ defineComponent({
 				if (vnode.component.isUnmounted) matchedRoute.instances[currentName] = null;
 			};
 			const onVnodeSettled = (vnode) => nextTick(() => {
-				if (settledRoute === route || routeToDisplay.value !== route || vnode.el.getRootNode() !== app._container.getRootNode()) return;
+				while (!vnode.el && vnode.component) vnode = vnode.component.subTree;
+				if (settledRoute === route || routeToDisplay.value !== route || vnode.el?.getRootNode() !== app._container.getRootNode()) return;
 				const from = settledRoute;
 				settledRoute = route;
 				for (const callback of onRouteRenderedCallbacks) callback(route, from);
@@ -24821,7 +24858,7 @@ function createRouter(options) {
 				to: toLocation,
 				from
 			});
-			handleScroll(from, from, true, false);
+			handleScroll(from, from);
 		}
 		return (failure ? Promise.resolve(failure) : navigate(toLocation, from)).catch((error) => isNavigationFailure(error) ? isNavigationFailure(error, 2) ? error : markAsReady(error) : triggerError(error, toLocation, from)).then((failure) => {
 			if (failure) {
@@ -24900,13 +24937,13 @@ function createRouter(options) {
 		const error = checkCanceledNavigation(toLocation, from);
 		if (error) return error;
 		const isFirstNavigation = from === START_LOCATION_NORMALIZED;
-		const state = !isBrowser ? {} : history.state;
+		const savedPosition = isBrowser && (isFirstNavigation || !isPush) && getSavedScrollPosition(toLocation.fullPath);
 		if (isPush) {
-			if (replace || isFirstNavigation) routerHistory.replace(toLocation.fullPath, assign({ scroll: isFirstNavigation && state && state.scroll }, data));
+			if (replace || isFirstNavigation) routerHistory.replace(toLocation.fullPath, data);
 			else routerHistory.push(toLocation.fullPath, data);
 		}
 		currentRoute.value = toLocation;
-		handleScroll(toLocation, from, isPush, isFirstNavigation);
+		handleScroll(toLocation, from, savedPosition);
 		markAsReady();
 	}
 	let removeHistoryListener;
@@ -24925,7 +24962,7 @@ function createRouter(options) {
 			}
 			pendingLocation = toLocation;
 			const from = currentRoute.value;
-			if (isBrowser && info.delta) saveScrollPosition(getScrollKey(from.fullPath, info.delta));
+			if (isBrowser && info.delta) saveScrollPosition(from.fullPath, info.delta);
 			navigate(toLocation, from).catch((error) => {
 				if (isNavigationFailure(error, 12)) return error;
 				if (isNavigationFailure(error, 2)) {
@@ -24979,11 +25016,10 @@ function createRouter(options) {
 		}
 		return err;
 	}
-	function handleScroll(to, from, isPush, isFirstNavigation) {
+	function handleScroll(to, from, savedPosition) {
 		const { scrollBehavior } = options;
 		if (!isBrowser || !scrollBehavior) return Promise.resolve();
-		const scrollPosition = !isPush && getSavedScrollPosition(getScrollKey(to.fullPath, 0)) || (isFirstNavigation || !isPush) && history.state && history.state.scroll || null;
-		return nextTick().then(() => scrollBehavior(to, from, scrollPosition)).then((position) => to === currentRoute.value && position && scrollToPosition(position)).catch((err) => to === currentRoute.value && triggerError(err, to, from));
+		return nextTick().then(() => scrollBehavior(to, from, savedPosition || null)).then((position) => to === currentRoute.value && position && scrollToPosition(position)).catch((err) => to === currentRoute.value && triggerError(err, to, from));
 	}
 	const go = (delta) => routerHistory.go(delta);
 	let started;
@@ -25020,13 +25056,8 @@ function createRouter(options) {
 				started = true;
 				push(routerHistory.location).catch((err) => {});
 			}
-			const reactiveRoute = {};
-			for (const key in START_LOCATION_NORMALIZED) Object.defineProperty(reactiveRoute, key, {
-				get: () => currentRoute.value[key],
-				enumerable: true
-			});
 			app.provide(routerKey, router);
-			app.provide(routeLocationKey, /* @__PURE__ */ shallowReactive(reactiveRoute));
+			app.provide(routeLocationKey, createReactiveRoute(currentRoute));
 			app.provide(routerViewLocationKey, currentRoute);
 			const unmountApp = app.unmount;
 			installedApps.add(app);
