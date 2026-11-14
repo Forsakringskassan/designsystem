@@ -1583,7 +1583,13 @@ export interface TableColumnSelect<T, K extends keyof T> extends TableColumnBase
     // (undocumented)
     key?: K;
     label?(this: void, row: T): string;
-    options: string[] | ((this: void, row: T) => string[]);
+    options: Array<string | {
+        value: string;
+        label: string;
+    }> | ((this: void, row: T) => Array<string | {
+        value: string;
+        label: string;
+    }>);
     // (undocumented)
     selected?(this: void, row: T): string;
     type: "select";

@@ -139,6 +139,26 @@ $cell-border-width: 1px;
         .table-ng__editable {
             border: $editable-border-width solid transparent;
             box-sizing: border-box;
+            appearance: none;
+            background: transparent;
+            border-radius: 0;
+            color: inherit;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        option {
+            background: $table-ng-cell-color-background;
+        }
+
+        .table-ng__select-wrapper {
+            display: flex;
+            position: relative;
+
+            span {
+                right: 12px;
+                position: absolute;
+            }
         }
     }
 
@@ -362,16 +382,20 @@ $cell-border-width: 1px;
         color: CanvasText;
     }
 
+    .table-ng__cell--select {
+        color: CanvasText;
+    }
+
     @media (hover: hover) {
         .table-ng__cell--text:hover .table-ng__editable,
         .table-ng__cell--select:hover .table-ng__editable {
-            box-shadow: inset 0 (-$underline-thickness) 0 0 Highlight;
+            box-shadow: none;
             border-radius: 0;
         }
     }
 
     .table-ng__cell--text:has(:focus-visible) .table-ng__editable,
-    .table-ng__cell--select:focus-within .table-ng__editable {
+    .table-ng__cell--select:has(select:focus) .table-ng__editable {
         box-shadow: inset 0 (-$underline-thickness) 0 0 Highlight;
         border-radius: 0;
     }

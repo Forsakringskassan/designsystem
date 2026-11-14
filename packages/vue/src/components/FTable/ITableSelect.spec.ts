@@ -21,7 +21,7 @@ describe("ITableSelect", () => {
         });
 
         const displayedValue = (): string =>
-            wrapper.get(".table-ng__editable__text").text();
+            wrapper.get<HTMLSelectElement>("select").element.value;
 
         expect(displayedValue()).toBe("foo");
 
