@@ -35,16 +35,6 @@ $calendar-highlight-border: var(--f-border-width-small) solid $calendarday-highl
             }
         }
 
-        &:active:not(&--disabled) {
-            &::before {
-                border: var(--f-border-width-medium) solid $calendarday-highlight-color-border-selected;
-
-                @media (forced-colors: active) {
-                    border-color: highlightText;
-                }
-            }
-        }
-
         &.calendar-day--disabled {
             position: relative;
 
@@ -66,6 +56,10 @@ $calendar-highlight-border: var(--f-border-width-small) solid $calendarday-highl
         }
     }
 
+    &--selecting {
+        background-color: hotpink;
+    }
+
     &--selected {
         color: $calendarday-color-text-selected;
         background-color: $calendarday-color-background-selected;
@@ -85,20 +79,12 @@ $calendar-highlight-border: var(--f-border-width-small) solid $calendarday-highl
     }
 
     @media (hover: hover) {
-        &:hover:not(&--disabled, &--selected),
-        &--hover:not(&--disabled, &--selected) {
+        &:hover:not(&--disabled, &--selecting, &--selected),
+        &--hover:not(&--disabled, &--selecting, &--selected) {
             background-color: $calendarday-color-background-hover;
             color: $calendarday-color-text-hover;
 
             @include forcedcolors.hover-indicator(border, 2px);
         }
-    }
-
-    &:active:not(&--disabled),
-    &--active:not(&--disabled) {
-        color: $calendarday-color-text-selected;
-        background-color: $calendarday-color-background-selected;
-
-        @include forcedcolors.selected-indicator;
     }
 }
