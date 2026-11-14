@@ -27,7 +27,7 @@
     "@fkui/vue": "6.65.1",
     "@fkui/vue-labs": "6.65.1",
     "vue": "3.5.45",
-    "vue-router": "5.4.0"
+    "vue-router": "5.5.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "6.0.10",
