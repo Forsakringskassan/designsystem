@@ -48,4 +48,4 @@ function build(format) {
     };
 }
 
-export default [build("cjs"), build("esm")];
+export default [build("esm")];

@@ -7,7 +7,7 @@ const type = {
     esm: "module",
 };
 
-for (const format of ["cjs", "esm"]) {
+for (const format of ["esm"]) {
     const outdir = `dist/${format}`;
     const common = {
         logLevel: "info",
