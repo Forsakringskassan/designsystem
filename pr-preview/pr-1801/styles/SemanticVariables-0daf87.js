@@ -213,7 +213,7 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         },
         "dark": {
           "value": "#1b1e23",
@@ -227,7 +227,7 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         },
         "dark": {
           "value": "#1b1e23",
@@ -241,7 +241,7 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         },
         "dark": {
           "value": "#1b1e23",
@@ -255,7 +255,7 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         },
         "dark": {
           "value": "#1b1e23",
@@ -395,7 +395,7 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         },
         "dark": {
           "value": "#1b1e23",
@@ -451,7 +451,7 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         },
         "dark": {
           "value": "#1b1e23",
@@ -773,11 +773,11 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         },
         "dark": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         }
       }
     },
@@ -801,11 +801,11 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         },
         "dark": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         }
       }
     },
@@ -1053,7 +1053,7 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         },
         "dark": {
           "value": "#1b1e23",
@@ -1099,7 +1099,7 @@ var metadata_default = {
         },
         "dark": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         }
       }
     },
@@ -1109,7 +1109,7 @@ var metadata_default = {
       "values": {
         "light": {
           "value": "#fff",
-          "palette": null
+          "palette": "white-100"
         },
         "dark": {
           "value": "#1b1e23",
