@@ -72,7 +72,7 @@ const ariaLabel = computed(() => {
 const visible = computed((): boolean => isVisible(column.visible, row));
 
 function onCellKeyDown(event: KeyboardEvent): void {
-    if (event.target !== tdElement.value) {
+    if (event.target !== tdElement.value && event.target !== selectElement.value) {
         return;
     }
 
