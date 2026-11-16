@@ -5634,7 +5634,7 @@ xt2(lr2, { builders: () => Ni2, printer: () => Bi2, utils: () => wi2 });
 var Ni2 = { join: Je2, line: et2, softline: jr2, hardline: $2, literalline: qe, group: Ot2, conditionalGroup: Lr2, fill: Rr2, lineSuffix: Ie2, lineSuffixBoundary: Ur2, cursor: te2, breakParent: ce2, ifBreak: vr2, trim: Vr2, indent: ie2, indentIfBreak: Mr2, align: De2, addAlignmentToDoc: Ze2, markAsRoot: Qe2, dedentToRoot: kr2, dedent: Ir2, hardlineWithoutBreakParent: ke2, literallineWithoutBreakParent: Pt2, label: Yr2, concat: (t) => t };
 var Bi2 = { printDocToString: he2 };
 var wi2 = { willBreak: Nr2, traverseDoc: Oe2, findInDoc: Ke2, mapDoc: be2, removeLines: wr2, stripTrailingHardline: He2, replaceEndOfLine: Sr2, canBreak: Or2 };
-var Au = "3.10.0";
+var Au = "3.10.1";
 var pr2 = {};
 xt2(pr2, { addDanglingComment: () => ne2, addLeadingComment: () => le2, addTrailingComment: () => fe2, getAlignmentSize: () => ge2, getIndentSize: () => xu, getMaxContinuousCount: () => Tu, getNextNonSpaceNonCommentCharacter: () => Nu, getNextNonSpaceNonCommentCharacterIndex: () => Ui2, getPreferredQuote: () => Su, getStringWidth: () => Re2, hasNewline: () => J2, hasNewlineInRange: () => Ou, hasSpaces: () => Pu, isNextLineEmpty: () => Gi2, isNextLineEmptyAfterIndex: () => _t2, isPreviousLineEmpty: () => Wi2, makeString: () => zi2, skip: () => _e2, skipEverythingButNewLine: () => it2, skipInlineComment: () => Ne2, skipNewline: () => z, skipSpaces: () => U2, skipToLineEnd: () => ot, skipTrailingComment: () => Be3, skipWhitespace: () => on2 });
 function Si2(t, e) {
