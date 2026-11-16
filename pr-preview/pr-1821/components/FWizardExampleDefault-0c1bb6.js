@@ -28,7 +28,7 @@ function setup(options) {
   app.mount(selector);
 }
 
-// virtual-entry:virtual:packages/vue/src/components/FWizard/examples/FWizardExampleDefault.vue:FWizardExampleDefault-6939e4.js
+// virtual-entry:virtual:packages/vue/src/components/FWizard/examples/FWizardExampleDefault.vue:FWizardExampleDefault-0c1bb6.js
 import { defineComponent } from "vue";
 import { FDatepickerField, FSelectField, FTextField, FWizard, FWizardStep } from "@fkui/vue";
 import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, resolveDirective as _resolveDirective, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock, withDirectives as _withDirectives, createVNode as _createVNode, createElementVNode as _createElementVNode, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode } from "vue";
@@ -68,7 +68,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       default: _withCtx(() => [
         _createVNode(_component_f_wizard_step, {
           key: "foo",
-          "use-error-list": false,
           title: "Stegrubrik 1"
         }, {
           default: _withCtx(() => [
@@ -117,7 +116,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         _createVNode(_component_f_wizard_step, {
           key: "bar",
-          "use-error-list": false,
           title: "Stegrubrik 2"
         }, {
           default: _withCtx(() => [
@@ -195,7 +193,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         _createVNode(_component_f_wizard_step, {
           key: "baz",
-          "use-error-list": false,
           title: "Stegrubrik 3"
         }, {
           "next-button-text": _withCtx(() => [..._cache[10] || (_cache[10] = [
@@ -225,7 +222,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 exampleComponent.render = render;
 setup({
   rootComponent: exampleComponent,
-  selector: "#example-6939e4"
+  selector: "#example-0c1bb6"
 });
 export {
   render

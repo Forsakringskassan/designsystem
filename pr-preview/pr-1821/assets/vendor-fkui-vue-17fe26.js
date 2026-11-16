@@ -22875,8 +22875,7 @@ var FWizardStep_vue_vue_type_script_lang_default = /* @__PURE__ */ defineCompone
     */
     useErrorList: {
       type: Boolean,
-      required: false,
-      default: true
+      required: false
     }
   },
   setup() {
