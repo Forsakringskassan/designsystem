@@ -67,7 +67,7 @@ $table-input-offset-horizontal: 0.25rem;
 }
 
 %table-row-active {
-    background: var(--fkds-color-select-background-primary-hover);
+    background: $table-color-row-background-active;
     color: $table-color-row-text;
 }
 
@@ -326,7 +326,7 @@ $table-input-offset-horizontal: 0.25rem;
 
                 // these have higher priority
                 &.table__row--active {
-                    background: $table-color-row-background-hover;
+                    background: $table-color-row-background-active;
                     color: $table-color-row-text;
                 }
             }
